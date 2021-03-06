@@ -1,0 +1,11 @@
+global.player4_hue_base=255;global.player4_saturation_base=0;global.player4_value_base=255;
+global.player4_hue_skin=255;global.player4_saturation_skin=255;global.player4_value_skin=255;
+global.player4_hue_left_sclera=255;global.player4_saturation_left_sclera=255;global.player4_value_left_sclera=255;
+global.player4_hue_right_sclera=255;global.player4_saturation_right_sclera=255;global.player4_value_right_sclera=255;
+global.player4_hue_left_eyecolor=255;global.player4_saturation_left_eyecolor=255;global.player4_value_left_eyecolor=255;
+global.player4_hue_right_eyecolor=255;global.player4_saturation_right_eyecolor=255;global.player4_value_right_eyecolor=255;
+global.player4_hue_nose=255;global.player4_saturation_nose=255;global.player4_value_nose=255;
+global.player4_hue_cheek=255;global.player4_saturation_cheek=255;global.player4_value_cheek=255;
+global.player4_hue_neck=255;global.player4_saturation_neck=255;global.player4_value_neck=255;
+global.player4_hue_leg=255;global.player4_saturation_leg=255;global.player4_value_leg=255;
+global.player4_hue_hand=255;global.player4_saturation_hand=255;global.player4_value_hand=255;

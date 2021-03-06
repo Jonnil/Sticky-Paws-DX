@@ -1,0 +1,1420 @@
+#region /*Initialize Custom Character*/
+if (initialize_custom_character_timer < 2)
+{
+	initialize_custom_character_timer += 1;
+}
+
+if (initialize_custom_character_timer = 1)
+{
+/*The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y*/
+
+#region /*Create directories for the custom character*/
+
+#region /*Create directory for saving character data*/
+if (!directory_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data"))
+{
+	directory_create(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data");
+}
+#endregion /*Create directory for saving characters data END*/
+
+#region /*Create directory for saving character sounds*/
+if (!directory_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds"))
+{
+	directory_create(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds");
+}
+#endregion /*Create directory for saving character sounds END*/
+
+#region /*Create directory for saving character sprites*/
+if (!directory_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites"))
+{
+	directory_create(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites");
+}
+#endregion /*Create directory for saving character sprites END*/
+
+#endregion /*Create directories for the custom character END*/
+
+#region /*Play as Custom Character*/
+
+#region /*Sprite origin point variables*/
+
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
+{
+	ini_open(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data/character_config.ini");
+
+	#region /*Sprite map x and y origin points*/
+	#region /*Sprite map x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_map_xorig"))
+	{
+		sprite_map_xorig = ini_read_real("sprite origin points", "sprite_map_xorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_map_xorig", 0);
+		sprite_map_xorig = 0;
+	}
+	#endregion /*Sprite map x origin point END*/
+
+	#region /*Sprite map y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_map_yorig"))
+	{
+		sprite_map_yorig = ini_read_real("sprite origin points", "sprite_map_yorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_map_yorig", 0);
+		sprite_map_yorig = 0;
+	}
+	#endregion /*Sprite map y origin point END*/
+	#endregion /*Sprite map x and y origin points END*/
+	
+	#region /*Sprite map enter level x and y origin points*/
+	#region /*Sprite map enter level x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_map_enter_level_xorig"))
+	{
+		sprite_map_enter_level_xorig = ini_read_real("sprite origin points", "sprite_map_enter_level_xorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_map_enter_level_xorig", 0);
+		sprite_map_enter_level_xorig = 0;
+	}
+	#endregion /*Sprite map enter level x origin point END*/
+
+	#region /*Sprite map enter level y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_map_enter_level_yorig"))
+	{
+		sprite_map_enter_level_yorig = ini_read_real("sprite origin points", "sprite_map_enter_level_yorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_map_enter_level_yorig", 0);
+		sprite_map_enter_level_yorig = 0;
+	}
+	#endregion /*Sprite map enter level y origin point END*/
+	#endregion /*Sprite map enter level x and y origin points END*/
+	
+	ini_close();
+}
+#region /*If there is no config.ini file, then make every xorig and yorig variable zero*/
+else
+{
+	sprite_map_xorig = 0;
+	sprite_map_yorig = 0;
+	sprite_map_enter_level_xorig = 0;
+	sprite_map_enter_level_yorig = 0;
+}
+#endregion /*If there is no config.ini file, then make every xorig and yorig variable zero END*/
+
+#endregion /*Sprite origin point variables END*/
+
+#region /*Sprite variables*/
+
+#region /*Map sprite*/
+index=0
+repeat(50)
+{
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_strip"+string(index)+".png"))
+	{
+		sprite_map = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_strip"+string(index)+".png", index, false, false, sprite_map_xorig, sprite_map_yorig);
+	}
+	index+=1
+}
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map.png"))
+{
+	sprite_map = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map.png", 1, false, false, sprite_map_xorig, sprite_map_yorig);
+}
+#endregion /*Map sprite END*/
+
+#region /*Map enter level sprite*/
+index=0
+repeat(50)
+{
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_enter_level_strip"+string(index)+".png"))
+	{
+		sprite_map_enter_level = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_enter_level_strip"+string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+	}
+	index+=1
+}
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_enter_level.png"))
+{
+	sprite_map_enter_level = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_enter_level.png", 1, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+}
+#endregion /*Map enter level sprite END*/
+
+#endregion /*Sprite variables END*/
+
+#endregion /*Play as Custom Character END*/
+
+}
+#endregion /*Initialize Custom Character END*/
+
+#region /*Quit Game*/
+if (global.QuitLevel = true)
+or (global.QuitGame = true)
+{
+	global.level_clear_rate = "enter";
+	
+	#region /*Save Player Position*/
+	if (speed = 0)
+	{
+		ini_open("File" + string(global.file) + ".ini");
+		ini_write_real("Player", "player_x", x);
+		ini_write_real("Player", "player_y", y);
+		ini_close();
+	}
+	#endregion /*Save Player Position END*/
+	
+	scr_savelevel();
+	global.QuitLevel = false;
+	global.QuitGame = false;
+	room_persistent = false;
+	if (asset_get_type("room_title") == asset_room)
+	{
+		room_goto(room_title);
+	}
+	else
+	{
+		game_restart();
+	}
+}
+#endregion /*Quit Game END*/
+
+#region /*Color Skin*/
+image_blend = global.hex_color_for_player_1;
+#endregion /*Color Skin END*/
+
+#region /*Make sure level music and sound effects stops playing*/
+if (asset_get_type("snd_slip") == asset_sound)
+{
+	if (audio_is_playing(snd_slip))
+	{
+		audio_stop_sound(snd_slip);
+	}
+}
+if (asset_get_type("snd_slip_ice") == asset_sound)
+{
+	if (audio_is_playing(snd_slip_ice))
+	{
+		audio_stop_sound(snd_slip_ice);
+	}
+}
+if (asset_get_type("snd_music_titlescreen") == asset_sound)
+{
+	if (audio_is_playing(snd_music_titlescreen))
+	{
+		audio_stop_sound(snd_music_titlescreen);
+	}
+}
+if (asset_get_type("snd_music_boss") == asset_sound)
+{
+	if (audio_is_playing(snd_music_boss))
+	{
+		audio_stop_sound(snd_music_boss);
+	}
+}
+if (asset_get_type("snd_ambience_nature_day") == asset_sound)
+{
+	if audio_is_playing(snd_ambience_nature_day)
+	{
+		audio_stop_sound(snd_ambience_nature_day);
+	}
+}
+if (audio_is_playing(global.music))
+{
+	audio_stop_sound(global.music);
+}
+if (audio_is_playing(global.music_underwater))
+{
+	audio_stop_sound(global.music_underwater);
+}
+global.music = noone;
+global.music_underwater = noone;
+#endregion /*Make sure level music stops playing End*/
+
+#region /*Keep the game at 60 FPS*/
+room_speed = global.max_fps;
+
+#region /*Deactivate instances outside view*/
+instance_activate_all();
+instance_deactivate_region(
+camera_get_view_x(view_camera[view_current]) - 32,
+camera_get_view_y(view_camera[view_current]) - 32,
+camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+false, true);
+if (asset_get_type("obj_level") == asset_object)
+{
+	instance_activate_object(obj_level);
+}
+#endregion /*Deactivate instances outside view END*/
+
+#endregion /*Keep the game at 60 FPS END*/
+
+#region /*Hide all HUD elements*/
+global.hud_show_lives = true;
+global.hud_show_coins = false;
+global.hud_show_starcoins = false;
+global.hud_show_score = false;
+#endregion /*Hide all HUD elements END*/
+
+if (global.goal_active = true)
+{
+	global.goal_active = false;
+}
+
+if (asset_get_type("snd_music_map") == asset_sound)
+{
+	if (!audio_is_playing(snd_music_map))
+	{
+		audio_play_sound(snd_music_map, 0, true);
+	}
+	audio_sound_gain(snd_music_map, global.music_volume, 0);
+}
+
+#region /*Keyboard Controls*/
+gamepad_set_axis_deadzone(0, 0.50);
+key_up = (keyboard_check(global.player1_key_up)) and(!keyboard_check(global.player1_key_down)) or(gamepad_button_check(0, gp_padu)) and(!gamepad_button_check(0, gp_padd)) or(gamepad_axis_value(0, gp_axislv) < 0);
+key_left = (keyboard_check(global.player1_key_left)) and(!keyboard_check(global.player1_key_right)) or(gamepad_button_check(0, gp_padl)) and(!gamepad_button_check(0, gp_padr)) or(gamepad_axis_value(0, gp_axislh) < 0);
+key_right = (keyboard_check(global.player1_key_right)) and(!keyboard_check(global.player1_key_left)) or(gamepad_button_check(0, gp_padr)) and(!gamepad_button_check(0, gp_padl)) or(gamepad_axis_value(0, gp_axislh) > 0);
+key_down = (keyboard_check(global.player1_key_down)) and(!keyboard_check(global.player1_key_up)) or(gamepad_button_check(0, gp_padd)) and(!gamepad_button_check(0, gp_padu)) or(gamepad_axis_value(0, gp_axislv) > 0);
+key_a = (gamepad_button_check_pressed(0, gp_face1)) or(gamepad_button_check_pressed(0, gp_face2)) or(keyboard_check_pressed(global.player1_key_jump)) or(keyboard_check_pressed(vk_enter));
+key_b_pressed = (gamepad_button_check_pressed(0, gp_face3)) or(gamepad_button_check_pressed(0, gp_face4)) or(keyboard_check_pressed(global.player1_key_sprint));
+#endregion /*Keyboard Controls End*/
+
+depth = -10;
+xx = lerp(xx, x, 0.2);
+yy = lerp(yy, y, 0.2);
+draw_xscale = lerp(draw_xscale, 1, 0.1);
+draw_yscale = lerp(draw_yscale, 1, 0.1);
+if (sprite_index > noone)
+{
+	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale, draw_yscale, 0, image_blend, 1);
+}
+if (can_move = true)
+and(global.pause=false)
+and (asset_get_type("obj_camera") == asset_object)
+and (instance_exists(obj_camera))
+and (global.QuitLevel = false)
+and (global.QuitGame = false)
+{
+	
+	#region /*Pause*/
+	if (keyboard_check_pressed(vk_escape))
+	or(gamepad_button_check_pressed(0, gp_start))
+	or(gamepad_button_check_pressed(0, gp_select))
+	or(!window_has_focus())
+	{
+		global.pause_player = 0;
+		if (global.goal_active = false)
+		{
+			audio_pause_all();
+			if (asset_get_type("obj_pause") == asset_object)
+			and(!instance_exists(obj_pause))
+			{
+				global.pause=true;
+				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+			}
+		}
+	}
+
+	else
+	if (gamepad_button_check_pressed(1, gp_start))
+	or(gamepad_button_check_pressed(1, gp_select))
+	{
+		global.pause_player = 1;
+		if (global.goal_active = false)
+		{
+			audio_pause_all();
+			if (asset_get_type("obj_pause") == asset_object)
+			and(!instance_exists(obj_pause))
+			{
+				global.pause=true;
+				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+			}
+		}
+	}
+
+	else
+	if (gamepad_button_check_pressed(2, gp_start))
+	or(gamepad_button_check_pressed(2, gp_select))
+	{
+		global.pause_player = 2;
+		if (global.goal_active = false)
+		{
+			audio_pause_all();
+			if (asset_get_type("obj_pause") == asset_object)
+			and(!instance_exists(obj_pause))
+			{
+				global.pause=true;
+				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+			}
+		}
+	}
+
+	else
+	if (gamepad_button_check_pressed(3, gp_start))
+	or (gamepad_button_check_pressed(3, gp_select))
+	{
+		global.pause_player = 3;
+		if (global.goal_active = false)
+		{
+			audio_pause_all();
+			if (asset_get_type("obj_pause") == asset_object)
+			and(!instance_exists(obj_pause))
+			{
+				global.pause=true;
+				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+			}
+		}
+	}
+	#endregion /*Pause END*/
+
+	if (allow_free_movement = true)
+	{
+		
+		#region /*Free Movement*/
+		if (key_up)
+		and(point_distance(xx, yy, x, y) < 4)
+		and(move_delay > 10)
+		{
+			if (y > camera_get_view_y(view_camera[view_current]) + 64)
+			{
+				if (!position_meeting(x, y - 32, obj_wall))
+				and(!position_meeting(x, y - 64, obj_wall))
+				{
+					y -= 64;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (asset_get_type("snd_bump") == asset_sound)
+					{
+						if (!audio_is_playing(snd_bump))
+						{
+							draw_xscale = 1.5;
+							draw_yscale = 0.5;
+							yy -= 32;
+							audio_play_sound(snd_bump, 0, 0);
+							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+						}
+					}
+				}
+			}
+		}
+		if (key_left)
+		and(point_distance(xx, yy, x, y) < 4)
+		and(move_delay > 10)
+		{
+			if (x > camera_get_view_x(view_camera[view_current]) + 64)
+			{
+				if (!position_meeting(x - 32, y, obj_wall))
+				and(!position_meeting(x - 64, y, obj_wall))
+				{
+					x -= 64;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (asset_get_type("snd_bump") == asset_sound)
+					{
+						if (!audio_is_playing(snd_bump))
+						{
+							draw_xscale = 0.5;
+							draw_yscale = 1.5;
+							xx -= 32;
+							audio_play_sound(snd_bump, 0, 0);
+							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+						}
+					}
+				}
+			}
+		}
+		if (key_right)
+		and(point_distance(xx, yy, x, y) < 4)
+		and(move_delay > 10)
+		{
+			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 64)
+			{
+				if (!position_meeting(x + 32, y, obj_wall))
+				and(!position_meeting(x + 64, y, obj_wall))
+				{
+					x += 64;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (asset_get_type("snd_bump") == asset_sound)
+					{
+						if (!audio_is_playing(snd_bump))
+						{
+							draw_xscale = 0.5;
+							draw_yscale = 1.5;
+							xx += 32;
+							audio_play_sound(snd_bump, 0, 0);
+							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+						}
+					}
+				}
+			}
+		}
+		if (key_down)
+		and(point_distance(xx, yy, x, y) < 4)
+		and(move_delay > 10)
+		{
+			if (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 64)
+			{
+				if (!position_meeting(x, y + 32, obj_wall))
+				and(!position_meeting(x, y + 64, obj_wall))
+				{
+					y += 64;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (asset_get_type("snd_bump") == asset_sound)
+					{
+						if (!audio_is_playing(snd_bump))
+						{
+							draw_xscale = 1.5;
+							draw_yscale = 0.5;
+							yy += 32;
+							audio_play_sound(snd_bump, 0, 0);
+							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+						}
+					}
+				}
+			}
+		}
+		#endregion /*Free Movement END*/
+		
+	}
+	else
+	{
+		
+		#region /*Movement on paths*/
+		if (key_up)
+		and(move_delay > 10)
+		and(speed = 0)
+		{
+			if (y > camera_get_view_y(view_camera[view_current]) + 64)
+			{
+				if (!position_meeting(x, y - 32, obj_wall))
+				{
+					vspeed -= 8;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (asset_get_type("snd_bump") == asset_sound)
+					{
+						if (!audio_is_playing(snd_bump))
+						{
+							audio_play_sound(snd_bump, 0, 0);
+							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+							draw_xscale = 1.5;
+							draw_yscale = 0.5;
+							yy -= 32;
+						}
+					}
+				}
+			}
+		}
+		if (key_left)
+		and(move_delay > 10)
+		and(speed = 0)
+		{
+			if (x > camera_get_view_x(view_camera[view_current]) + 64)
+			{
+				if (!position_meeting(x - 32, y, obj_wall))
+				{
+					hspeed -= 8;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (asset_get_type("snd_bump") == asset_sound)
+					{
+						if (!audio_is_playing(snd_bump))
+						{
+							audio_play_sound(snd_bump, 0, 0);
+							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+							draw_xscale = 0.5;
+							draw_yscale = 1.5;
+							xx -= 32;
+						}
+					}
+				}
+			}
+		}
+		if (key_right)
+		and(move_delay > 10)
+		and(speed = 0)
+		{
+			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 64)
+			{
+				if (!position_meeting(x + 32, y, obj_wall))
+				{
+					hspeed += 8;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (asset_get_type("snd_bump") == asset_sound)
+					{
+						if (!audio_is_playing(snd_bump))
+						{
+							audio_play_sound(snd_bump, 0, 0);
+							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+							draw_xscale = 0.5;
+							draw_yscale = 1.5;
+							xx += 32;
+						}
+					}
+				}
+			}
+		}
+		if (key_down)
+		and(move_delay > 10)
+		and(speed = 0)
+		{
+			if (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 64)
+			{
+				if (!position_meeting(x, y + 32, obj_wall))
+				{
+					vspeed += 8;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (asset_get_type("snd_bump") == asset_sound)
+					{
+						if (!audio_is_playing(snd_bump))
+						{
+							audio_play_sound(snd_bump, 0, 0);
+							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+							draw_xscale = 1.5;
+							draw_yscale = 0.5;
+							yy += 32;
+						}
+					}
+				}
+			}
+		}
+		#endregion /*Movement on paths END*/
+
+		#region /*Show controls for where you can go*/
+		if (move_delay > 10)
+		and(speed = 0)
+		{
+			if (asset_get_type("obj_wall") == asset_object)
+			and(!place_meeting(x + 4, y, obj_wall))
+			and(speed = 0)
+			{
+				
+				#region /*Key Right*/
+				if (gamepad_is_connected(0))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+				{
+					draw_sprite_ext(spr_xbox_buttons, 6, x + 64, y, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_right, x + 64, y, 0.5, 0.5, 0, c_white, 1);
+				}
+				#endregion /*Key Right END*/
+				
+			}
+			if (asset_get_type("obj_wall") == asset_object)
+			and(!place_meeting(x - 4, y, obj_wall))
+			and(speed = 0)
+			{
+				
+				#region /*Key Left*/
+				if (gamepad_is_connected(0))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+				{
+					draw_sprite_ext(spr_xbox_buttons, 4, x - 64, y, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_left, x - 64, y, 0.5, 0.5, 0, c_white, 1);
+				}
+				#endregion /*Key Left END*/
+				
+			}
+			if (asset_get_type("obj_wall") == asset_object)
+			and(!place_meeting(x, y + 4, obj_wall))
+			and(speed = 0)
+			{
+				
+				#region /*Key Down*/
+				if (gamepad_is_connected(0))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+				{
+					draw_sprite_ext(spr_xbox_buttons, 7, x, y + 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_down, x, y + 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				#endregion /*Key Down END*/
+				
+			}
+			if (asset_get_type("obj_wall") == asset_object)
+			and(!place_meeting(x, y - 4, obj_wall))
+			and(speed = 0)
+			{
+				
+				#region /*Key Up*/
+				if (gamepad_is_connected(0))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+				{
+					draw_sprite_ext(spr_xbox_buttons, 5, x, y - 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_up, x, y - 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				#endregion /*Key Up END*/
+				
+			}
+		}
+		#endregion /*Show controls for where you can go END*/
+		
+	}
+	
+	#region /*Enter Level*/
+	if (key_a)
+	and(can_move = true)
+	and(can_enter_level >= 30)
+	and(asset_get_type("obj_level") == asset_object)
+	and(distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+	and(speed = 0)
+	{
+		if (instance_nearest(x, y, obj_level).clear_rate = "enter")
+		or(instance_nearest(x, y, obj_level).clear_rate = "clear")
+		{
+			global.current_level = instance_nearest(x, y, obj_level).level;
+			
+			#region /*Save Player Position*/
+			x = instance_nearest(x, y, obj_level).x;
+			y = instance_nearest(x, y, obj_level).y;
+			ini_open("File" + string(global.file) + ".ini");
+			ini_write_real("Player", "player_x", x);
+			ini_write_real("Player", "player_y", y);
+			ini_close();
+			#endregion /*Save Player Position END*/
+			
+			can_move = false;
+			entering_level = true;
+			delay = 0;
+			sprite_index = sprite_map_enter_level;
+			score = 0;
+			global.spikes_emerge_time = 0;
+			global.timeattack_transfer = true;
+			global.x_checkpoint = instance_nearest(x, y, obj_level).x_checkpoint;
+			global.y_checkpoint = instance_nearest(x, y, obj_level).y_checkpoint;
+			with(instance_nearest(x, y, obj_level))
+			{
+				if (x_checkpoint > 0)
+				or(y_checkpoint > 0)
+				{
+					global.checkpoint_realmillisecond = checkpoint_realmillisecond;
+					global.checkpoint_millisecond = checkpoint_millisecond;
+					global.checkpoint_second = checkpoint_second;
+					global.checkpoint_minute = checkpoint_minute;
+				}
+			}
+			global.star_coin1 = instance_nearest(x, y, obj_level).star_coin1;
+			global.star_coin2 = instance_nearest(x, y, obj_level).star_coin2;
+			global.star_coin3 = instance_nearest(x, y, obj_level).star_coin3;
+			global.star_coin4 = instance_nearest(x, y, obj_level).star_coin4;
+			global.star_coin5 = instance_nearest(x, y, obj_level).star_coin5;
+			global.lives_until_assist = instance_nearest(x, y, obj_level).lives_until_assist;
+		}
+	}
+	else
+	{
+		sprite_index = sprite_map;
+	}
+	#endregion /*Enter Level END*/
+	
+}
+
+#region /*Stop player when touching level*/
+if (instance_exists(obj_level))
+and(place_meeting(x,y,obj_level))
+and(stop_at_level = false)
+{
+	hspeed = 0;
+	vspeed = 0;
+	speed = 0;
+	stop_at_level = true;
+	x = instance_nearest(x, y, obj_level).x;
+	y = instance_nearest(x, y, obj_level).y;
+}
+if (instance_exists(obj_level))
+and(!place_meeting(x,y,obj_level))
+{
+	stop_at_level = false;
+}
+#endregion /*Stop player when touching level END*/
+
+#region /*Path Turning*/
+
+/*
+right down = 0
+up right = 1
+up left = 2
+left down = 3
+*/
+
+#region /*Touch Map Turn Right Down*/
+if (asset_get_type("obj_map_path_turn") == asset_object)
+and(place_meeting(x, y, obj_map_path_turn))
+and(instance_nearest(x, y, obj_map_path_turn).turn=0) /*Right Down = 0*/
+{
+	if (abs(hspeed) > 0)
+	and(instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	{
+		hspeed = 0;
+		vspeed = +8;
+		x = instance_nearest(x, y, obj_map_path_turn).x;
+		y = instance_nearest(x, y, obj_map_path_turn).y;
+		with(instance_nearest(x, y, obj_map_path_turn))
+		{
+			delay = 10;
+		}
+	}
+	else
+	if (abs(vspeed) > 0)
+	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	{
+		hspeed = +8;
+		vspeed = 0;
+		x = instance_nearest(x, y, obj_map_path_turn).x;
+		y = instance_nearest(x, y, obj_map_path_turn).y;
+		with(instance_nearest(x, y, obj_map_path_turn))
+		{
+			delay = 10;
+		}
+	}
+}
+#endregion /*Touch Map Turn Right Down END*/
+
+#region /*Touch Map Turn Up Right*/
+else
+if (asset_get_type("obj_map_path_turn") == asset_object)
+and(place_meeting(x, y, obj_map_path_turn))
+and(instance_nearest(x, y, obj_map_path_turn).turn=1) /*Up Right = 1*/
+{
+	if (abs(hspeed) > 0)
+	and(instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	{
+		hspeed = 0;
+		vspeed = -8;
+		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+		{
+			x = instance_nearest(x, y, obj_map_path_turn).x;
+			y = instance_nearest(x, y, obj_map_path_turn).y;
+			with(instance_nearest(x, y, obj_map_path_turn))
+			{
+				delay = 10;
+			}
+		}
+	}
+	else
+	if (abs(vspeed) > 0)
+	and(instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	{
+		hspeed = +8;
+		vspeed = 0;
+		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+		{
+			x = instance_nearest(x, y, obj_map_path_turn).x;
+			y = instance_nearest(x, y, obj_map_path_turn).y;
+			with(instance_nearest(x, y, obj_map_path_turn))
+			{
+				delay = 10;
+			}
+		}
+	}
+}
+#endregion /*Touch Map Turn Up Right END*/
+
+#region /*Touch Map Turn Up Left*/
+else
+if (asset_get_type("obj_map_path_turn") == asset_object)
+and(place_meeting(x, y, obj_map_path_turn))
+and(instance_nearest(x, y, obj_map_path_turn).turn=2) /*Up Left = 2*/
+{
+	if (abs(hspeed) > 0)
+	and(instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	{
+		hspeed = 0;
+		vspeed = -8;
+		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+		{
+			x = instance_nearest(x, y, obj_map_path_turn).x;
+			y = instance_nearest(x, y, obj_map_path_turn).y;
+			with(instance_nearest(x, y, obj_map_path_turn))
+			{
+				delay = 10;
+			}
+		}
+	}
+	else
+	if (abs(vspeed) > 0)
+	and(instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	{
+		hspeed = -8;
+		vspeed = 0;
+		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+		{
+			x = instance_nearest(x, y, obj_map_path_turn).x;
+			y = instance_nearest(x, y, obj_map_path_turn).y;
+			with(instance_nearest(x, y, obj_map_path_turn))
+			{
+				delay = 10;
+			}
+		}
+	}
+}
+#endregion /*Touch Map Turn Up Left END*/
+
+#region /*Touch Map Turn Left Down*/
+else
+if (asset_get_type("obj_map_path_turn") == asset_object)
+and(place_meeting(x, y, obj_map_path_turn))
+and(instance_nearest(x, y, obj_map_path_turn).turn=3) /*Left Down = 3*/
+{
+	if (abs(hspeed) > 0)
+	and(instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	{
+		hspeed = 0;
+		vspeed = +8;
+		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+		{
+			x = instance_nearest(x, y, obj_map_path_turn).x;
+			y = instance_nearest(x, y, obj_map_path_turn).y;
+			with(instance_nearest(x, y, obj_map_path_turn))
+			{
+				delay = 10;
+			}
+		}
+	}
+	else
+	if (abs(vspeed) > 0)
+	and(instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	{
+		hspeed = -8;
+		vspeed = 0;
+		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+		{
+			x = instance_nearest(x, y, obj_map_path_turn).x;
+			y = instance_nearest(x, y, obj_map_path_turn).y;
+			with(instance_nearest(x, y, obj_map_path_turn))
+			{
+				delay = 10;
+			}
+		}
+	}
+}
+#endregion /*Touch Map Turn Left Down END*/
+
+#endregion /*Path Turning END*/
+
+if (can_move = false)
+and(delay < 100)
+{
+	delay += 1;
+}
+
+#region /*Start Level*/
+if (can_move = false)
+and(delay >= 60)
+and(asset_get_type("obj_camera") == asset_object)
+and(instance_exists(obj_camera))
+and(obj_camera.iris_yscale <= 0.001)
+and(asset_get_type("obj_level") == asset_object)
+{
+	if (global.QuitLevel = false)
+	or(global.QuitGame = false)
+	{
+		audio_stop_all();
+		global.trigger_demo_ending = 0;
+		global.level_editor_level = instance_nearest(x, y, obj_level).level;
+		
+		#region /*Update All Backgrounds*/
+			
+			sprite_delete(global.custom_background1);
+			sprite_delete(global.custom_background2);
+			sprite_delete(global.custom_background3);
+			sprite_delete(global.custom_background4);
+			sprite_delete(global.custom_foreground1);
+			sprite_delete(global.custom_foreground2);
+			
+			#region /*Update Background1*/
+			/*BMP small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background1.bmp")){global.custom_background1=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background1.bmp",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_vtiled[0]=true;}else
+			/*BMP big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background1.bmp")){global.custom_background1=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background1.bmp",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*PNG small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background1.png")){global.custom_background1=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background1.png",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*PNG big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background1.png")){global.custom_background1=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background1.png",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*Gif (small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background1.gif")){global.custom_background1=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background1.gif",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*Gif (big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background1.gif")){global.custom_background1=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background1.gif",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*JPG small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background1.jpg")){global.custom_background1=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background1.jpg",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*JPG big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background1.jpg")){global.custom_background1=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background1.jpg",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			{
+				global.custom_background1=noone;
+			}
+			#endregion /*Update Background1 END*/
+			
+			#region /*Update Background2*/
+			/*BMP small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background2.bmp")){global.custom_background2=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background2.bmp",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_vtiled[0]=true;}else
+			/*BMP big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background2.bmp")){global.custom_background2=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background2.bmp",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*PNG small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background2.png")){global.custom_background2=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background2.png",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*PNG big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background2.png")){global.custom_background2=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background2.png",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*Gif (small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background2.gif")){global.custom_background2=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background2.gif",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*Gif (big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background2.gif")){global.custom_background2=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background2.gif",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*JPG small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background2.jpg")){global.custom_background2=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background2.jpg",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*JPG big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background2.jpg")){global.custom_background2=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background2.jpg",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			{
+				global.custom_background2=noone;
+			}
+			#endregion /*Update Background2 END*/
+			
+			#region /*Update Background3*/
+			/*BMP small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background3.bmp")){global.custom_background3=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background3.bmp",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_vtiled[0]=true;}else
+			/*BMP big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background3.bmp")){global.custom_background3=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background3.bmp",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*PNG small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background3.png")){global.custom_background3=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background3.png",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*PNG big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background3.png")){global.custom_background3=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background3.png",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*Gif (small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background3.gif")){global.custom_background3=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background3.gif",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*Gif (big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background3.gif")){global.custom_background3=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background3.gif",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*JPG small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background3.jpg")){global.custom_background3=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background3.jpg",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*JPG big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background3.jpg")){global.custom_background3=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background3.jpg",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			{
+				global.custom_background3=noone;
+			}
+			#endregion /*Update Background3 END*/
+			
+			#region /*Update Background4*/
+			/*BMP small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background4.bmp")){global.custom_background4=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background4.bmp",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_vtiled[0]=true;}else
+			/*BMP big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background4.bmp")){global.custom_background4=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background4.bmp",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*PNG small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background4.png")){global.custom_background4=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background4.png",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*PNG big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background4.png")){global.custom_background4=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background4.png",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*Gif (small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background4.gif")){global.custom_background4=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background4.gif",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*Gif (big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background4.gif")){global.custom_background4=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background4.gif",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*JPG small letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background4.jpg")){global.custom_background4=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/background4.jpg",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			/*JPG big letter File*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background4.jpg")){global.custom_background4=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds/Background4.jpg",0,false,false,0,0);layer_background_htiled[0]=true;layer_background_htiled[0]=true;}else
+			{
+				global.custom_background4=noone;
+			}
+			#endregion /*Update Background4 END*/
+			
+			#region /*Update Foreground1*/
+			
+			#region /*BMP small letter File*/
+			if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground1.bmp"))
+			{
+				global.custom_foreground1 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground1.bmp", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*BMP small letter File END*/
+			
+			#region /*BMP big letter File*/
+			if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground1.bmp"))
+			{
+				global.custom_foreground1 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground1.bmp", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*BMP big letter File END*/
+			
+			#region /*PNG small letter File*/
+			if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground1.png"))
+			{
+				global.custom_foreground1 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground1.png", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*PNG small letter File END*/
+			
+			#region /*PNG big letter File*/
+			if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground1.png"))
+			{
+				global.custom_foreground1 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground1.png", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*PNG big letter File END*/
+			
+			#region /*GIF small letter File*/
+			if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground1.gif"))
+			{
+				global.custom_foreground1 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground1.gif", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*GIF small letter File END*/
+			
+			#region /*GIF big letter File*/
+			if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground1.gif"))
+			{
+				global.custom_foreground1 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground1.gif", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*GIF big letter File END*/
+			
+			#region /*JPG small letter File*/
+			if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground1.jpg"))
+			{
+				global.custom_foreground1 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground1.jpg", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*JPG small letter File END*/
+			
+			#region /*JPG big letter File*/
+			if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground1.jpg"))
+			{
+				global.custom_foreground1 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground1.jpg", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*JPG big letter File END*/
+			
+			{
+				global.custom_foreground1 = noone;
+			}
+			
+			#endregion /*Update Foreround1 END*/
+			
+			#region /*Update Foreground2*/
+			
+			#region /*BMP small letter File*/
+			if file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground2.bmp")
+			{
+				global.custom_foreground2 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground2.bmp", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*BMP small letter File END*/
+			
+			#region /*BMP big letter File*/
+			if file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground2.bmp")
+			{
+				global.custom_foreground2 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground2.bmp", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*BMP big letter File END*/
+			
+			#region /*PNG small letter File*/
+			if file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground2.png")
+			{
+				global.custom_foreground2 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground2.png", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*PNG small letter File END*/
+			
+			#region /*PNG big letter File*/
+			if file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground2.png")
+			{
+				global.custom_foreground2 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground2.png", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*PNG big letter File END*/
+			
+			#region /*GIF small letter File*/
+			if file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground2.gif")
+			{
+				global.custom_foreground2 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground2.gif", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*GIF small letter File END*/
+			
+			#region /*GIF big letter File*/
+			if file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground2.gif")
+			{
+				global.custom_foreground2 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground2.gif", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*GIF big letter File END*/
+			
+			#region /*JPG small letter File*/
+			if file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground2.jpg")
+			{
+				global.custom_foreground2 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/foreground2.jpg", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*JPG small letter File END*/
+			
+			#region /*JPG big letter File*/
+			if file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground2.jpg")
+			{
+				global.custom_foreground2 = sprite_add(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Backgrounds/Foreground2.jpg", image_speed, false, false, 0, 0);
+			}
+			else
+			#endregion /*JPG big letter File END*/
+			
+			{
+				global.custom_foreground2 = noone;
+			}
+			
+			#endregion /*Update Foreround2 END*/
+			
+			#endregion /*Update All Backgrounds END*/
+		
+		if (asset_get_type("room_leveleditor") == asset_room)
+		{
+			global.actually_play_edited_level=true;
+			global.play_edited_level=false;
+			room_goto(room_leveleditor);
+		}
+	}
+}
+#endregion /*Start Level END*/
+
+if (move_delay < 50)
+{
+	move_delay += 1;
+}
+if (can_enter_level < 30)
+{
+	can_enter_level += 1;
+}
+
+if (asset_get_type("obj_level") == asset_object)
+and(distance_to_object(instance_nearest(xx, yy, obj_level)) > 32)
+{
+	global.level_clear_rate = noone;
+	global.x_checkpoint = false;
+	global.y_checkpoint = false;
+	global.timeattack_millisecond = 0;
+	global.timeattack_second = 0;
+	global.timeattack_minute = 0;
+	global.timeattack_realmillisecond = 999999999;
+	global.checkpoint_millisecond = 0;
+	global.checkpoint_second = 0;
+	global.checkpoint_minute = 0;
+	global.checkpoint_realmillisecond = 0;
+	global.lives_until_assist = 0;
+	can_move = true;
+	delay = 0;
+	transfer_data = false;
+}
+
+mask_index = spr_wall;
+
+#region /*Show Level Info*/
+
+/*Show high scores*/
+if (asset_get_type("obj_level") == asset_object)
+and(distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+and(move_delay > 10)
+{
+	if (instance_nearest(x, y, obj_level).clear_rate = "enter")
+	or (instance_nearest(x, y, obj_level).clear_rate = "clear")
+	{
+
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+
+		#region /*Show High Score*/
+		if (instance_nearest(x, y, obj_level).level_score > 0)
+		{
+			draw_text_transformed_colour(x - 2, y - 96, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+			draw_text_transformed_colour(x + 2, y - 96, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+			draw_text_transformed_colour(x, y - 96 - 2, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+			draw_text_transformed_colour(x, y - 96 + 2, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+			draw_text_transformed_colour(x, y - 96, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+		}
+		#endregion /*Show High Score END*/
+
+		#region /*Show Fastest Time*/
+		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
+		and(instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
+		{
+			draw_text_transformed_colour(x - 2, y - 64, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+			draw_text_transformed_colour(x + 2, y - 64, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+			draw_text_transformed_colour(x, y - 64 - 2, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+			draw_text_transformed_colour(x, y - 64 + 2, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+			draw_text_transformed_colour(x, y - 64, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+		}
+		#endregion /*Show Fastest Time END*/
+
+		#region /*Show Star Coin*/
+		if (asset_get_type("spr_star_coin") == asset_sprite)
+		{
+			if (instance_nearest(x, y, obj_level).star_coin1 = true)
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) - 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) - 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
+			}
+			if (instance_nearest(x, y, obj_level).star_coin2 = true)
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) - 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) - 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
+			}
+			if (instance_nearest(x, y, obj_level).star_coin3 = true)
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
+			}
+			if (instance_nearest(x, y, obj_level).star_coin4 = true)
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) + 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) + 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
+			}
+			if (instance_nearest(x, y, obj_level).star_coin5 = true)
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) + 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_star_coin, 0, camera_get_view_x(view_camera[view_current]) + 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
+			}
+		}
+		#endregion /*Show Star Coin END*/
+
+		#region /*Show if Checkpoint is activated*/
+		if (instance_nearest(x, y, obj_level).x_checkpoint > 0)
+		and(asset_get_type("spr_checkpoint") == asset_sprite)
+		or(instance_nearest(x, y, obj_level).y_checkpoint > 0)
+		and(asset_get_type("spr_checkpoint") == asset_sprite)
+		{
+			draw_sprite_ext(spr_checkpoint, 1, x + 122, y - 64, 0.3, 0.3, 0, c_white, 1);
+		}
+		#endregion /*Show if Checkpoint is activated END*/
+		
+	}
+}
+#endregion /*Show Level Info END*/
+
+#region /*Show Enter Level Key*/
+if (can_move = true)
+and(can_enter_level >= 30)
+and(asset_get_type("obj_level") == asset_object)
+and(distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+and(speed = 0)
+and(instance_nearest(x, y, obj_level).clear_rate != "closed")
+{
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "Enter Level:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80 + 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "Enter Level:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28 - 2, "Enter Level:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28 + 2, "Enter Level:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "Enter Level:", global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+	if (gamepad_is_connected(0))
+	and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+	{
+		draw_sprite_ext(spr_xbox_buttons, 0, camera_get_view_x(view_camera[view_current]) + 160, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, 0.5, 0.5, 0, c_white, 1);
+	}
+	else
+	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+	{
+		draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, camera_get_view_x(view_camera[view_current]) + 160, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, 0.5, 0.5, 0, c_white, 1);
+	}
+}
+#endregion /*Show Enter Level Key END*/
+
+#region /*Show View Gallery Key*/
+if (can_move = true)
+and(asset_get_type("obj_artwork_collection") == asset_object)
+and(distance_to_object(instance_nearest(x, y, obj_artwork_collection)) < 4)
+and(speed = 0)
+and(instance_nearest(x, y, obj_artwork_collection).can_navigate = false)
+{
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80 + 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28 - 2, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28 + 2, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+	if (gamepad_is_connected(0))
+	and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+	{
+		draw_sprite_ext(spr_xbox_buttons, 0, camera_get_view_x(view_camera[view_current]) + 170, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, 0.5, 0.5, 0, c_white, 1);
+	}
+	else
+	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+	{
+		draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, camera_get_view_x(view_camera[view_current]) + 170, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, 0.5, 0.5, 0, c_white, 1);
+	}
+}
+#endregion /*Show View Gallery Key END*/
+
+#region /*If player object is present, destroy the player object*/
+if (asset_get_type("obj_player") == asset_object)
+and(instance_exists(obj_player))
+{
+	with(obj_player)
+	{
+		instance_destroy()
+	}
+}
+#endregion /*If player object is present, destroy the player object END*/
+
+if (global.trigger_ending = true)
+and(asset_get_type("room_ending_cutscene") == asset_room)
+{
+	room_goto(room_ending_cutscene);
+}
+
+scr_loadconfig(); /*Load Config*/
+
+#region /*Starting Levels*/
+if (asset_get_type("obj_level") == asset_object)
+{
+	with(obj_level)
+	{
+		if (clear_rate = "closed")
+		and(level = 1)
+		{
+			clear_rate = "enter";
+		}
+	}
+}
+#endregion /*Starting Levels END*/
+
+#region /*Give the player lives if they get a game over*/
+if (lives <= 0)
+{
+	if (global.playergame <= 0)
+	{
+		lives = 5;
+	}
+	else
+	if (global.playergame = 1)
+	{
+		lives = 10;
+	}
+	else
+	if (global.playergame = 2)
+	{
+		lives = 15;
+	}
+	else
+	if (global.playergame >= 3)
+	{
+		lives = 20;
+	}
+}
+#endregion /*Give the player lives if they get a game over END*/
