@@ -1,3 +1,14 @@
+#region /*When editing a level, make the foreground transparent*/
+if (global.play_edited_level=false)
+{
+	image_alpha = 0.5;
+}
+else
+{
+	image_alpha = 1;
+}
+#endregion /*When editing a level, make the foreground transparent END*/
+
 #region /*Destroy this object if it ever appears in the wrong room*/
 if (asset_get_type("room_title") == asset_room)
 and(room = room_title)
@@ -25,3 +36,4 @@ if (global.custom_foreground1 > noone)
 	draw_sprite(global.custom_foreground1, image_index, 0, 0);
 }
 #endregion /*Update Foreground1 END*/
+draw_set_alpha(1);

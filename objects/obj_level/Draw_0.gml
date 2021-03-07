@@ -89,6 +89,7 @@ if (asset_get_type("obj_player_map") == asset_object)
 	{
 		if (obj_player_map.move_delay = 1)
 		and(obj_player_map.transfer_data = true)
+		and(file_exists("File" + string(global.file) + ".ini"))
 		{
 			ini_open("File" + string(global.file) + ".ini");
 			ini_write_string("Level" + string(level), "clear_rate", clear_rate);

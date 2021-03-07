@@ -80,21 +80,13 @@ if (quit_level_editor=4)
 	
 	instance_activate_all();
 	var file,str;
-	if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt")
-	{
-		file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"); /*Open file for writing*/
-	}
-	else
-	if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt")
-	{
-		file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt"); /*Open file for writing*/
-	}
+	file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"); /*Open file for writing*/
 	str=""; /*Reset string var*/
 	
 	#region /*Write wall objects to file*/
 	with(obj_leveleditor_placed_object)
 	{
-		str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|";//+string(angle_x)+"|"+string(angle_y)+"|";
+		str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|";
 	}
 	#endregion /*Write wall objects to file END*/
 	
@@ -157,13 +149,13 @@ if (quit_level_editor>5)
 #endregion /*End Game End*/
 
 #region /*Activate objects that always should be active*/
-if (asset_get_type("obj_level_map_mbb")==asset_object)
+if (asset_get_type("obj_foreground1")==asset_object)
 {
-	instance_activate_object(obj_level_map_mbb);
+	instance_activate_object(obj_foreground1);
 }
-if (asset_get_type("obj_level_map_mbf")==asset_object)
+if (asset_get_type("obj_foreground2")==asset_object)
 {
-	instance_activate_object(obj_level_map_mbf);
+	instance_activate_object(obj_foreground2);
 }
 if (asset_get_type("obj_level_start")==asset_object)
 {

@@ -455,6 +455,7 @@ and(can_input_player4_name=false)
 			if (global.character_for_player_1>0)
 			{
 				if (gamepad_is_connected(0))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player1_display_x-75,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,0.5,0.5,0,c_white,1);
 				}
@@ -486,6 +487,7 @@ and(can_input_player4_name=false)
 			if (file_exists(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1+1)+"/Data/character_config.ini"))
 			{
 				if (gamepad_is_connected(0))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons,6,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player1_display_x+75,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,0.5,0.5,0,c_white,1);
 				}
@@ -528,6 +530,7 @@ and(can_input_player4_name=false)
 			if (global.character_for_player_2>0)
 			{
 				if (gamepad_is_connected(1))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player2_display_x-75,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,0.5,0.5,0,c_white,1);
 				}
@@ -559,6 +562,7 @@ and(can_input_player4_name=false)
 			if (file_exists(working_directory + "/Custom Characters/Character "+string(global.character_for_player_2+1)+"/Data/character_config.ini"))
 			{
 				if (gamepad_is_connected(1))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons,6,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player2_display_x+75,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,0.5,0.5,0,c_white,1);
 				}
@@ -601,6 +605,7 @@ and(can_input_player4_name=false)
 			if (global.character_for_player_3>0)
 			{
 				if (gamepad_is_connected(2))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player3_display_x-75,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,0.5,0.5,0,c_white,1);
 				}
@@ -632,6 +637,7 @@ and(can_input_player4_name=false)
 			if (file_exists(working_directory + "/Custom Characters/Character "+string(global.character_for_player_3+1)+"/Data/character_config.ini"))
 			{
 				if (gamepad_is_connected(2))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons,6,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player3_display_x+75,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,0.5,0.5,0,c_white,1);
 				}
@@ -674,6 +680,7 @@ and(can_input_player4_name=false)
 			if (global.character_for_player_4>0)
 			{
 				if (gamepad_is_connected(3))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player4_display_x-75,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,0.5,0.5,0,c_white,1);
 				}
@@ -705,6 +712,7 @@ and(can_input_player4_name=false)
 			if (file_exists(working_directory + "/Custom Characters/Character "+string(global.character_for_player_4+1)+"/Data/character_config.ini"))
 			{
 				if (gamepad_is_connected(3))
+				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons,6,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player4_display_x+75,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,0.5,0.5,0,c_white,1);
 				}
@@ -786,6 +794,7 @@ and(can_input_player4_name=false)
 	
 		#region /*Key A*/
 		if (gamepad_is_connected(0))
+		and(asset_get_type("spr_xbox_buttons")==asset_sprite)
 		{
 			draw_sprite_ext(spr_xbox_buttons,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player1_display_x+40,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+150,0.5,0.5,0,c_white,1);
 		}
@@ -834,6 +843,7 @@ and(can_input_player4_name=false)
 		
 		#region /*Key B*/
 		if (gamepad_is_connected(0))
+		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 		{
 			draw_sprite_ext(spr_xbox_buttons,1,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player1_display_x+40,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+150,0.5,0.5,0,c_white,1);
 		}
@@ -893,6 +903,7 @@ and(can_input_player4_name=false)
 		
 		#region /*Key A*/
 		if (gamepad_is_connected(1))
+		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 		{
 			draw_sprite_ext(spr_xbox_buttons,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player2_display_x+40,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+150,0.5,0.5,0,c_white,1);
 		}
@@ -941,6 +952,7 @@ and(can_input_player4_name=false)
 		
 		#region /*Key B*/
 		if (gamepad_is_connected(1))
+		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 		{
 			draw_sprite_ext(spr_xbox_buttons,1,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player2_display_x+40,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+150,0.5,0.5,0,c_white,1);
 		}
@@ -997,6 +1009,7 @@ and(can_input_player4_name=false)
 	
 		#region /*Key A*/
 		if (gamepad_is_connected(2))
+		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 		{
 			draw_sprite_ext(spr_xbox_buttons,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player3_display_x+40,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+150,0.5,0.5,0,c_white,1);
 		}
@@ -1045,6 +1058,7 @@ and(can_input_player4_name=false)
 	
 		#region /*Key B*/
 		if (gamepad_is_connected(2))
+		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 		{
 			draw_sprite_ext(spr_xbox_buttons,1,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player3_display_x+40,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+150,0.5,0.5,0,c_white,1);
 		}
@@ -1101,6 +1115,7 @@ and(can_input_player4_name=false)
 	
 		#region /*Key A*/
 		if (gamepad_is_connected(3))
+		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 		{
 			draw_sprite_ext(spr_xbox_buttons,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player4_display_x+40,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+150,0.5,0.5,0,c_white,1);
 		}
@@ -1149,6 +1164,7 @@ and(can_input_player4_name=false)
 	
 		#region /*Key B*/
 		if (gamepad_is_connected(3))
+		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 		{
 			draw_sprite_ext(spr_xbox_buttons,1,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player4_display_x+40,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+150,0.5,0.5,0,c_white,1);
 		}
@@ -1187,6 +1203,7 @@ and(can_input_player4_name=false)
 	
 	#region /*Key A*/
 	if (gamepad_is_connected(0))
+	and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 	{
 		draw_sprite_ext(spr_xbox_buttons,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player1_display_x+70,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+280,0.5,0.5,0,c_white,1);
 	}
@@ -1220,6 +1237,7 @@ and(can_input_player4_name=false)
 	
 	#region /*Key A*/
 	if (gamepad_is_connected(1))
+	and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 	{
 		draw_sprite_ext(spr_xbox_buttons,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player2_display_x+70,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+280,0.5,0.5,0,c_white,1);
 	}
@@ -1253,6 +1271,7 @@ and(can_input_player4_name=false)
 	
 	#region /*Key A*/
 	if (gamepad_is_connected(2))
+	and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 	{
 		draw_sprite_ext(spr_xbox_buttons,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player3_display_x+70,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+280,0.5,0.5,0,c_white,1);
 	}
@@ -1286,6 +1305,7 @@ and(can_input_player4_name=false)
 	
 	#region /*Key A*/
 	if (gamepad_is_connected(3))
+	and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 	{
 		draw_sprite_ext(spr_xbox_buttons,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+player4_display_x+70,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+280,0.5,0.5,0,c_white,1);
 	}
@@ -3375,6 +3395,7 @@ and(can_input_player4_name=false)
 			
 			#region /*Show Key A on screen*/
 			if (gamepad_is_connected(0))
+			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_sprite_ext(spr_xbox_buttons,0,
 				camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+170,

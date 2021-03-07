@@ -357,13 +357,13 @@ if (asset_get_type("obj_player_die") == asset_object)
 {
 	instance_activate_object(obj_player_die);
 }
-if (asset_get_type("obj_level_map_mbb") == asset_object)
+if (asset_get_type("obj_foreground1") == asset_object)
 {
-	instance_activate_object(obj_level_map_mbb);
+	instance_activate_object(obj_foreground1);
 }
-if (asset_get_type("obj_level_map_mbf") == asset_object)
+if (asset_get_type("obj_foreground2") == asset_object)
 {
-	instance_activate_object(obj_level_map_mbf);
+	instance_activate_object(obj_foreground2);
 }
 #endregion /*Activate objects that always should be active END*/
 

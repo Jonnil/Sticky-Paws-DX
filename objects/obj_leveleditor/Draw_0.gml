@@ -66,10 +66,10 @@ if (room = room_leveleditor)
 #endregion /*Make background visible END*/
 
 #region /*Spawn transparent foreground*/
-if (asset_get_type("obj_level_map_mbf") == asset_object)
-and(!instance_exists(obj_level_map_mbf))
+if (asset_get_type("obj_foreground2") == asset_object)
+and(!instance_exists(obj_foreground2))
 {
-	instance_create_depth(0,0,0,obj_level_map_mbf);
+	instance_create_depth(0,0,0,obj_foreground2);
 }
 #endregion /*Spawn transparent foreground END*/
 
@@ -114,13 +114,13 @@ if (asset_get_type("obj_player_die")==asset_object)
 {
 	instance_activate_object(obj_player_die);
 }
-if (asset_get_type("obj_level_map_mbb")==asset_object)
+if (asset_get_type("obj_foreground1")==asset_object)
 {
-	instance_activate_object(obj_level_map_mbb);
+	instance_activate_object(obj_foreground1);
 }
-if (asset_get_type("obj_level_map_mbf")==asset_object)
+if (asset_get_type("obj_foreground2")==asset_object)
 {
-	instance_activate_object(obj_level_map_mbf);
+	instance_activate_object(obj_foreground2);
 }
 if (asset_get_type("obj_level_start")==asset_object)
 {
@@ -1305,7 +1305,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 			var file,str;
 			
 			#region /*Open file for writing*/
-			file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt");
+			file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt");
 			#endregion /*Open file for writing END*/
 			
 			/*Reset string var*/str="";
@@ -1315,7 +1315,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 			{
 				with(obj_leveleditor_placed_object)
 				{
-					str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|"+string(angle_x)+"|"+string(angle_y)+"|";
+					str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|";
 				}
 			}
 			#endregion /*Write wall objects to file END*/
@@ -1370,6 +1370,11 @@ or(gamepad_button_check_pressed(0,gp_select))
 		and(asset_get_type("obj_leveleditor_placed_object")==asset_object)
 		and(!place_meeting(x,y,obj_leveleditor_placed_object))
 		{
+			if (camera_get_view_width(view_camera[view_current])<1920)
+			or (camera_get_view_height(view_camera[view_current])<1080)
+			{
+				camera_set_view_size(view_camera[view_current],1920,1080);
+			}
 			instance_activate_all();
 			global.lives_until_assist=0;
 			global.actually_play_edited_level=false;

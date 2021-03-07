@@ -9,11 +9,11 @@ or(other.dive = true)
 			audio_play_sound(snd_boss_damaged, 0, 0);
 			audio_sound_gain(snd_boss_damaged, global.sfx_volume, 0);
 		}
-		if (other.groundpound = true)
+		if (other.ground_pound = true)
 		{
 			hp -= 2;
-			other.groundpound = false;
-			other.can_groundpound = false;
+			other.ground_pound = false;
+			other.can_ground_pound = false;
 			other.speed_max = 4;
 			draw_xscale = 1.75;
 			draw_yscale = 0.25;
@@ -21,14 +21,14 @@ or(other.dive = true)
 		else
 		{
 			hp -= 1;
-			other.groundpound = false;
-			other.can_groundpound = false;
+			other.ground_pound = false;
+			other.can_ground_pound = false;
 			draw_xscale = 1.25;
 			draw_yscale = 0.75;
 		}
 		other.dive = false;
-		other.groundpound = false;
-		other.can_groundpound = false;
+		other.ground_pound = false;
+		other.can_ground_pound = false;
 		if (other.key_jump_hold)
 		{
 			with(other)
@@ -63,8 +63,8 @@ or(other.dive = true)
 		{
 			other.hspeed = +5;
 		}
-		other.groundpound = false;
-		other.can_groundpound = false;
+		other.ground_pound = false;
+		other.can_ground_pound = false;
 		other.dive = false;
 		if (other.key_jump_hold)
 		{
@@ -97,8 +97,8 @@ if (can_jump_on_head = true)
 	{
 		other.hspeed = +5;
 	}
-	other.groundpound = false;
-	other.can_groundpound = false;
+	other.ground_pound = false;
+	other.can_ground_pound = false;
 	other.dive = false;
 	if (other.key_jump_hold)
 	{

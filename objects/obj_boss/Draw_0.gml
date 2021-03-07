@@ -1,4 +1,4 @@
-depth = + 20;
+depth = + 10;
 
 /*If enemies are disabled, destroy this object*/
 if (global.enable_enemies = false)

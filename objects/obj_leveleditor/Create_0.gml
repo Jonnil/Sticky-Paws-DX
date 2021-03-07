@@ -12,15 +12,15 @@ layer_background_vtiled(background_brightness_layer,true);
 #endregion /*Background Brightness END*/
 
 #region /*Create Foreground*/
-if (asset_get_type("obj_level_map_mbb")==asset_object)
-and(instance_exists(obj_level_map_mbb))
+if (asset_get_type("obj_foreground1")==asset_object)
+and(!instance_exists(obj_foreground1))
 {
-	instance_create_depth(0,0,0,obj_level_map_mbb);
+	instance_create_depth(0,0,0,obj_foreground1);
 }
-if (asset_get_type("obj_level_map_mbf")==asset_object)
-and(instance_exists(obj_level_map_mbf))
+if (asset_get_type("obj_foreground2")==asset_object)
+and(!instance_exists(obj_foreground2))
 {
-	instance_create_depth(0,0,0,obj_level_map_mbf);
+	instance_create_depth(0,0,0,obj_foreground2);
 }
 #endregion /*Create Foreground END*/
 
@@ -258,6 +258,11 @@ else
 	{
 		file = file_text_open_read(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt");
 	}
+	else
+	{
+		file = -1;
+	}
+	
 	if (file != -1)
 	{
 

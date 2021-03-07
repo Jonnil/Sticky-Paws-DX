@@ -380,55 +380,289 @@ function scr_options_menu(){
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
 
-	#region /*Assist Settings*/
-	if (global.settings_sidebar_menu="accessibility_settings"){
-
-	if (menu="assist_item_appear"){
-
-	if (global.assist_item_appear=0){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Assist Item: Always Appear",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);/*Show right arrow*/if (gamepad_is_connected(0)){draw_sprite_ext(spr_xbox_buttons,6,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+200,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);}else{if (asset_get_type("spr_keyboard_keys")==asset_sprite){draw_sprite_ext(spr_keyboard_keys,vk_right,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+200,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);}}/*Show right arrow END*/}else
-	if (global.assist_item_appear=1){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Assist Item: Appear after 1 death on a level",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-	if (global.assist_item_appear>=2)and(global.assist_item_appear<=9){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Assist Item: Appear after "+string(global.assist_item_appear)+" deaths on a level",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-	if (global.assist_item_appear>=10){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Assist Item: Never Appear",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);/*Show left arrow*/if (gamepad_is_connected(0)){draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-200,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);}else{if (asset_get_type("spr_keyboard_keys")==asset_sprite){draw_sprite_ext(spr_keyboard_keys,vk_left,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-200,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);}}/*Show left arrow END*/}}else{
-	if (global.assist_item_appear=0){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Assist Item: Always Appear",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-	if (global.assist_item_appear=1){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Assist Item: Appear after 1 death on a level",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-	if (global.assist_item_appear>=2)and(global.assist_item_appear<=9){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Assist Item: Appear after "+string(global.assist_item_appear)+" deaths on a level",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-	if (global.assist_item_appear>=10){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Assist Item: Never Appear",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-
-	if (menu="assist_default_hp")
-	{if (global.assist_default_hp>=2)and(global.assist_default_hp<=9){/*Show left arrow*/if (gamepad_is_connected(0)){draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-200,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,0.5,0.5,0,c_white,1);}else{if (asset_get_type("spr_keyboard_keys")==asset_sprite){draw_sprite_ext(spr_keyboard_keys,vk_left,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-200,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,0.5,0.5,0,c_white,1);}}/*Show left arrow END*/}
-	if (global.assist_default_hp>=10){/*Show left arrow*/if (gamepad_is_connected(0)){draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-250,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,0.5,0.5,0,c_white,1);}else{if (asset_get_type("spr_keyboard_keys")==asset_sprite){draw_sprite_ext(spr_keyboard_keys,vk_left,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-250,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,0.5,0.5,0,c_white,1);}}/*Show left arrow END*/}
-	if (global.assist_default_hp<=9){/*Show right arrow*/if (gamepad_is_connected(0)){draw_sprite_ext(spr_xbox_buttons,6,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+200,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,0.5,0.5,0,c_white,1);}else{if (asset_get_type("spr_keyboard_keys")==asset_sprite){draw_sprite_ext(spr_keyboard_keys,vk_right,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+200,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,0.5,0.5,0,c_white,1);}}/*Show right arrow END*/}
-	if (global.assist_default_hp<=9){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,"Default Health Points: "+string(global.assist_default_hp),global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-	if (global.assist_default_hp>=10){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,"Default Health Points: Invincible",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}else
-	{if (global.assist_default_hp<=9){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,"Default Health Points: "+string(global.assist_default_hp),global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-	if (global.assist_default_hp>=10){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+80,"Default Health Points: Invincible",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-
-	if (menu="assist_guiding_arrows")
-	{if (global.assist_guiding_arrows>=1){/*Show left arrow*/if (gamepad_is_connected(0)){draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-300,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,0.5,0.5,0,c_white,1);}else{if (asset_get_type("spr_keyboard_keys")==asset_sprite){draw_sprite_ext(spr_keyboard_keys,vk_left,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-300,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,0.5,0.5,0,c_white,1);}}/*Show left arrow END*/}
-	if (global.assist_guiding_arrows<=2){/*Show right arrow*/if (gamepad_is_connected(0)){draw_sprite_ext(spr_xbox_buttons,6,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+300,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,0.5,0.5,0,c_white,1);}else{if (asset_get_type("spr_keyboard_keys")==asset_sprite){draw_sprite_ext(spr_keyboard_keys,vk_right,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+300,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,0.5,0.5,0,c_white,1);}}/*Show right arrow END*/}
-	if (global.assist_guiding_arrows=0){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,"Guiding Arrows: Big and Small Arrows",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	if (global.assist_guiding_arrows=1){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,"Guiding Arrows: Only Big Arrows",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	if (global.assist_guiding_arrows=2){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,"Guiding Arrows: Only Small Arrows",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	if (global.assist_guiding_arrows=3){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,"Guiding Arrows: No Arrows",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}else
-	{if (global.assist_guiding_arrows=0){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,"Guiding Arrows: Big and Small Arrows",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	if (global.assist_guiding_arrows=1){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,"Guiding Arrows: Only Big Arrows",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	if (global.assist_guiding_arrows=2){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,"Guiding Arrows: Only Small Arrows",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	if (global.assist_guiding_arrows=3){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+110,"Guiding Arrows: No Arrows",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-
-	}#endregion /*Assist Settings END*/
+#region /*Assist Settings*/
+if (global.settings_sidebar_menu = "accessibility_settings")
+{
+	if (menu = "assist_item_appear")
+	{
+		if (global.assist_item_appear = 0)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Assist Item: Always Appear", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			
+			#region /*Show right arrow*/
+			if (gamepad_is_connected(0))
+			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+			{
+				draw_sprite_ext(spr_xbox_buttons, 6, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 200, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			{
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, vk_right, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 200, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, 0.5, 0.5, 0, c_white, 1);
+				}
+			}
+			#endregion /*Show right arrow END*/
+			
+		}
+		else
+		if (global.assist_item_appear = 1)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Assist Item: Appear after 1 death on a level", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
+		else
+		if (global.assist_item_appear >= 2) and(global.assist_item_appear <= 9)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Assist Item: Appear after " + string(global.assist_item_appear) + " deaths on a level", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
+		else
+		if (global.assist_item_appear >= 10)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Assist Item: Never Appear", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1); /*Show left arrow*/
+			
+			#region /*Show left arrow*/
+			if (gamepad_is_connected(0))
+			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+			{
+				draw_sprite_ext(spr_xbox_buttons, 4, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 200, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			{
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, vk_left, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 200, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, 0.5, 0.5, 0, c_white, 1);
+				}
+			}
+			#endregion /*Show left arrow END*/
+			
+		}
+	}
+	else
+	{
+		if (global.assist_item_appear = 0)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Assist Item: Always Appear", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+		else
+		if (global.assist_item_appear = 1)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Assist Item: Appear after 1 death on a level", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+		else
+		if (global.assist_item_appear >= 2) and(global.assist_item_appear <= 9)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Assist Item: Appear after " + string(global.assist_item_appear) + " deaths on a level", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+		else
+		if (global.assist_item_appear >= 10)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Assist Item: Never Appear", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+	}
+	if (menu = "assist_default_hp")
+	{
+		if (global.assist_default_hp >= 2)
+		and(global.assist_default_hp <= 9)
+		{
+			
+			#region /*Show left arrow*/
+			if (gamepad_is_connected(0))
+			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+			{
+				draw_sprite_ext(spr_xbox_buttons, 4, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 200, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			{
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, vk_left, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 200, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, 0.5, 0.5, 0, c_white, 1);
+				}
+			}
+			#endregion /*Show left arrow END*/
+			
+		}
+		if (global.assist_default_hp >= 10)
+		{
+			
+			#region /*Show left arrow*/
+			if (gamepad_is_connected(0))
+			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+			{
+				draw_sprite_ext(spr_xbox_buttons, 4, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 250, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			{
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, vk_left, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 250, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, 0.5, 0.5, 0, c_white, 1);
+				}
+			}
+			#endregion /*Show left arrow END*/
+			
+		}
+		if (global.assist_default_hp <= 9)
+		{
+			
+			#region /*Show right arrow*/
+			if (gamepad_is_connected(0))
+			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+			{
+				draw_sprite_ext(spr_xbox_buttons, 6, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 200, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			{
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, vk_right, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 200, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, 0.5, 0.5, 0, c_white, 1);
+				}
+			}
+			#endregion /*Show right arrow END*/
+			
+		}
+		if (global.assist_default_hp <= 9)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, "Default Health Points: " + string(global.assist_default_hp), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
+		else
+		if (global.assist_default_hp >= 10)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, "Default Health Points: Invincible", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
+	}
+	else
+	{
+		if (global.assist_default_hp <= 9)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, "Default Health Points: " + string(global.assist_default_hp), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+		else
+		if (global.assist_default_hp >= 10)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 80, "Default Health Points: Invincible", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+	}
+	if (menu = "assist_guiding_arrows")
+	{
+		if (global.assist_guiding_arrows >= 1)
+		{
+			
+			#region /*Show left arrow*/
+			if (gamepad_is_connected(0))
+			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+			{
+				draw_sprite_ext(spr_xbox_buttons, 4, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 300, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			{
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, vk_left, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 300, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, 0.5, 0.5, 0, c_white, 1);
+				}
+			}
+			#endregion /*Show left arrow END*/
+			
+		}
+		if (global.assist_guiding_arrows <= 2)
+		{
+			
+			#region /*Show right arrow*/
+			if (gamepad_is_connected(0))
+			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+			{
+				draw_sprite_ext(spr_xbox_buttons, 6, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 300, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			{
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, vk_right, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 300, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, 0.5, 0.5, 0, c_white, 1);
+				}
+			}
+			#endregion /*Show right arrow END*/
+			
+		}
+		if (global.assist_guiding_arrows = 0)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Guiding Arrows: Big and Small Arrows", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
+		if (global.assist_guiding_arrows = 1)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Guiding Arrows: Only Big Arrows", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
+		if (global.assist_guiding_arrows = 2)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Guiding Arrows: Only Small Arrows", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
+		if (global.assist_guiding_arrows = 3)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Guiding Arrows: No Arrows", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		}
+	}
+	else
+	{
+		if (global.assist_guiding_arrows = 0)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Guiding Arrows: Big and Small Arrows", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+		if (global.assist_guiding_arrows = 1)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Guiding Arrows: Only Big Arrows", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+		if (global.assist_guiding_arrows = 2)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Guiding Arrows: Only Small Arrows", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+		if (global.assist_guiding_arrows = 3)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Guiding Arrows: No Arrows", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+	}
+}
+#endregion /*Assist Settings END*/
 	
 	#region /*My Game Settings*/
 	
 	#region /*Game Settings*/
-	if (global.settings_sidebar_menu="game_settings"){
+	if (global.settings_sidebar_menu="game_settings")
+	{
 
-	if (menu="difficulty_settings"){
-	/*Show left arrow*/if (gamepad_is_connected(0)){draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-226,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);}else{if (asset_get_type("spr_keyboard_keys")==asset_sprite){draw_sprite_ext(spr_keyboard_keys,vk_left,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-226,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);}}/*Show left arrow END*/
-	/*Show right arrow*/if (gamepad_is_connected(0)){draw_sprite_ext(spr_xbox_buttons,6,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+226,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);}else{if (asset_get_type("spr_keyboard_keys")==asset_sprite){draw_sprite_ext(spr_keyboard_keys,vk_right,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+226,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);}}/*Show right arrow END*/
-	if (global.difficulty<=0){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Difficulty: Peaceful",global.default_text_size*1.1,c_black,c_aqua,1);}
-	if (global.difficulty=1){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Difficulty: Easy",global.default_text_size*1.1,c_black,c_lime,1);}
-	if (global.difficulty=2){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Difficulty: Normal",global.default_text_size*1.1,c_black,c_yellow,1);}
-	if (global.difficulty>=3){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Difficulty: Hard",global.default_text_size*1.1,c_black,c_red,1);}
+	if (menu="difficulty_settings")
+	{
+		
+		#region /*Show left arrow*/
+		if (gamepad_is_connected(0))
+		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+		{
+			draw_sprite_ext(spr_xbox_buttons,4,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-226,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);
+		}
+		else
+		{
+			if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+			{
+				draw_sprite_ext(spr_keyboard_keys,vk_left,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-226,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);
+			}
+		}
+		#endregion /*Show left arrow END*/
+		
+		#region /*Show right arrow*/
+		if (gamepad_is_connected(0))
+		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
+		{
+			draw_sprite_ext(spr_xbox_buttons,6,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+226,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);
+		}
+		else
+		{
+			if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+			{
+				draw_sprite_ext(spr_keyboard_keys,vk_right,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+226,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,0.5,0.5,0,c_white,1);
+			}
+		}
+		#endregion /*Show right arrow END*/
+		
+		if (global.difficulty<=0){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Difficulty: Peaceful",global.default_text_size*1.1,c_black,c_aqua,1);}
+		if (global.difficulty=1){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Difficulty: Easy",global.default_text_size*1.1,c_black,c_lime,1);}
+		if (global.difficulty=2){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Difficulty: Normal",global.default_text_size*1.1,c_black,c_yellow,1);}
+		if (global.difficulty>=3){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Difficulty: Hard",global.default_text_size*1.1,c_black,c_red,1);}
 	}
 	else{
 	if (global.difficulty<=0){draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+50,"Difficulty: Peaceful",global.default_text_size,c_black,c_aqua,1);}
