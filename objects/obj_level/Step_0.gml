@@ -1,19 +1,17 @@
-image_speed = 0;
-time = 0;
-level = 0;
-ring_color = c_yellow;
-level_color = c_black;
-level_perfect = false;
-enter_blink = 0;
-initialize_level_timer = 0;
-
-if (file_exists("File" + string(global.file) + ".ini"))
+if (initialize_level_timer < 2)
 {
+	initialize_level_timer += 1;
+}
+
+if (initialize_level_timer = 1)
+{
+	if (file_exists("File" + string(global.file) + ".ini"))
+	{
 	ini_open("File" + string(global.file) + ".ini");
 
 	#region /*Level Load*/
 	if (ini_section_exists("Level" + string(level)))
-	{	
+	{
 		clear_rate = ini_read_string("Level" + string(level), "clear_rate", "closed");
 		number_of_clears = ini_read_real("Level" + string(level), "number_of_clears", 0);
 		big_collectible1 = ini_read_real("Level" + string(level), "big_collectible1", 0);
@@ -58,6 +56,15 @@ if (file_exists("File" + string(global.file) + ".ini"))
 		timeattack_realmillisecond = 999999999;
 		level_score = 0;
 	}
+	
+	#region /*Make next level enterable if you have cleared this level*/
+	if (clear_rate = "closed")
+	and(level = 1+string(ini_read_real("Player","number_of_levels_cleared",0)))
+	{
+		clear_rate = "enter";
+	}
+	#endregion /*Make next level enterable if you have cleared this level END*/
+	
 	ini_close();
 	#endregion /*Level Load END*/
 	
@@ -86,4 +93,5 @@ else
 	timeattack_minute = 0;
 	timeattack_realmillisecond = 999999999;
 	level_score = 0;
+}
 }

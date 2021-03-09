@@ -383,6 +383,16 @@
   ],
   "IncludedFiles": [
     {"CopyToMask":153157610357391598,"filePath":"datafiles","resourceVersion":"1.0","name":"localization.csv","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1","resourceVersion":"1.0","name":"Automatic Thumbnail.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Backgrounds","resourceVersion":"1.0","name":"background1.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Backgrounds","resourceVersion":"1.0","name":"background3.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Backgrounds","resourceVersion":"1.0","name":"background2.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Backgrounds","resourceVersion":"1.0","name":"foreground2.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Backgrounds","resourceVersion":"1.0","name":"foreground1.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":153157610357391598,"filePath":"datafiles/Levels/Level1/Data","resourceVersion":"1.0","name":"level_information.ini","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Sounds/Music","resourceVersion":"1.0","name":"music.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Data","resourceVersion":"1.0","name":"Object_Placement.txt","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Tilesets","resourceVersion":"1.0","name":"ground_tileset.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",

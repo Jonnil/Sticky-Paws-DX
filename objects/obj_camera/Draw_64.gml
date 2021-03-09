@@ -222,7 +222,7 @@ and(!instance_exists(obj_title))
 		if (asset_get_type("spr_big_collectible") == asset_sprite)
 		{
 			#region /*Big Collectible 1*/
-			if (global.big_collectible_number1 = false)
+			if (global.big_collectible1 = false)
 			{
 				draw_sprite_ext(spr_big_collectible, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
 			}
@@ -233,7 +233,7 @@ and(!instance_exists(obj_title))
 			#endregion /*Big Collectible 1 END*/
 
 			#region /*Big Collectible 2*/
-			if (global.big_collectible_number2 = false)
+			if (global.big_collectible2 = false)
 			{
 				draw_sprite_ext(spr_big_collectible, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
 			}
@@ -244,7 +244,7 @@ and(!instance_exists(obj_title))
 			#endregion /*Big Collectible 2 END*/
 
 			#region /*Big Collectible 3*/
-			if (global.big_collectible_number3 = false)
+			if (global.big_collectible3 = false)
 			{
 				draw_sprite_ext(spr_big_collectible, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
 			}
@@ -255,7 +255,7 @@ and(!instance_exists(obj_title))
 			#endregion /*Big Collectible 3 END*/
 
 			#region /*Big Collectible 4*/
-			if (global.big_collectible_number4 = false)
+			if (global.big_collectible4 = false)
 			{
 				draw_sprite_ext(spr_big_collectible, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
 			}
@@ -266,7 +266,7 @@ and(!instance_exists(obj_title))
 			#endregion /*Big Collectible 4 END*/
 
 			#region /*Big Collectible 5*/
-			if (global.big_collectible_number5 = false)
+			if (global.big_collectible5 = false)
 			{
 				draw_sprite_ext(spr_big_collectible, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
 			}

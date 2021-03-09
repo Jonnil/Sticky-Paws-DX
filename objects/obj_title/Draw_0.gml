@@ -615,6 +615,7 @@ or(menu="quit")
 		global.character_select_in_this_menu="game";
 		in_settings=false;
 		menu_delay=10;
+		global.file = 1;
 		room_goto(room_level_select); /*TEMPORARY*/
 	}
 	else
@@ -1644,8 +1645,41 @@ if (menu="profile_shortcut")
 		menu="accessibility_shortcut";
 	}
 }
-else if (menu="quit"){if (key_up){menu="options";}else if (key_down){menu="main_game";}}
-else if (menu="delete"){if (key_down){if (global.file=1){menu="file1";}else if (global.file=2){menu="file2";}else if (global.file=3){menu="file3";}}}}
+else
+if (menu="quit")
+{
+	if (key_up)
+	{
+		menu="options";
+	}
+	else
+	if (key_down)
+	{
+		menu="main_game";
+	}
+}
+else
+if (menu="delete")
+{
+	if (key_down)
+	{
+		if (global.file=1)
+		{
+			menu="file1";
+		}
+		else
+		if (global.file=2)
+		{
+			menu="file2";
+		}
+		else
+		if (global.file=3)
+		{
+			menu="file3";
+		}
+	}
+}
+}
 #endregion /*Main Menu END*/
 
 #endregion /*Menu Navigation END*/

@@ -1293,11 +1293,11 @@ if (object=46)and(asset_get_type("obj_basic_collectible")==asset_object){with(in
 if (object=47)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=45;}instance_destroy();}
 #endregion /*Basic Collectible END*/
 #region /*Big Collectibles*/
-if (object=48)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible_number = 1;}instance_destroy();}
-if (object=49)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible_number = 2;}instance_destroy();}
-if (object=50)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible_number = 3;}instance_destroy();}
-if (object=51)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible_number = 4;}instance_destroy();}
-if (object=52)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible_number = 5;}instance_destroy();}
+if (object=48)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 1;}instance_destroy();}
+if (object=49)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 2;}instance_destroy();}
+if (object=50)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 3;}instance_destroy();}
+if (object=51)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 4;}instance_destroy();}
+if (object=52)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 5;}instance_destroy();}
 #endregion /*Big Collectibles END*/
 if (object=53)and(asset_get_type("obj_heart_balloon")==asset_object){instance_create_depth(x,y,0,obj_heart_balloon);instance_destroy();}
 if (object=54)and(asset_get_type("obj_hp_pickup")==asset_object){instance_create_depth(x,y,0,obj_hp_pickup);instance_destroy();}

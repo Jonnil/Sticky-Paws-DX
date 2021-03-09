@@ -8,11 +8,11 @@ function scr_savelevel() {
 
 	if global.level_clear_rate="clear"{ini_write_real("Level"+string(global.current_level),"number_of_clears",ini_read_real("Player","number_of_clears",false)+1);}
 
-	if global.big_collectible_number1=true{ini_write_real("Level"+string(global.current_level),"big_collectible_number1",true);}
-	if global.big_collectible_number2=true{ini_write_real("Level"+string(global.current_level),"big_collectible_number2",true);}
-	if global.big_collectible_number3=true{ini_write_real("Level"+string(global.current_level),"big_collectible_number3",true);}
-	if global.big_collectible_number4=true{ini_write_real("Level"+string(global.current_level),"big_collectible_number4",true);}
-	if global.big_collectible_number5=true{ini_write_real("Level"+string(global.current_level),"big_collectible_number5",true);}
+	if global.big_collectible1=true{ini_write_real("Level"+string(global.current_level),"big_collectible1",true);}
+	if global.big_collectible2=true{ini_write_real("Level"+string(global.current_level),"big_collectible2",true);}
+	if global.big_collectible3=true{ini_write_real("Level"+string(global.current_level),"big_collectible3",true);}
+	if global.big_collectible4=true{ini_write_real("Level"+string(global.current_level),"big_collectible4",true);}
+	if global.big_collectible5=true{ini_write_real("Level"+string(global.current_level),"big_collectible5",true);}
 	ini_write_real("Level"+string(global.current_level),"lives_until_assist",global.lives_until_assist);
 	ini_write_real("Level"+string(global.current_level),"x_checkpoint",global.x_checkpoint);
 	ini_write_real("Level"+string(global.current_level),"y_checkpoint",global.y_checkpoint);

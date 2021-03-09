@@ -178,7 +178,7 @@ if (place_meeting(x,y-8,other))
 				{
 					image_speed=1;
 					motion_set(90,10);
-					big_collectible_number=1;
+					big_collectible=1;
 					bounceup=true;
 				}
 			}
@@ -196,7 +196,7 @@ if (place_meeting(x,y-8,other))
 				{
 					image_speed=1;
 					motion_set(90,10);
-					big_collectible_number=2;
+					big_collectible=2;
 					bounceup=true;
 				}
 			}
@@ -214,7 +214,7 @@ if (place_meeting(x,y-8,other))
 				{
 					image_speed=1;
 					motion_set(90,10);
-					big_collectible_number=3;
+					big_collectible=3;
 					bounceup=true;
 				}
 			}
@@ -232,7 +232,7 @@ if (place_meeting(x,y-8,other))
 				{
 					image_speed=1;
 					motion_set(90,10);
-					big_collectible_number=4;
+					big_collectible=4;
 					bounceup=true;
 				}
 			}
@@ -250,7 +250,7 @@ if (place_meeting(x,y-8,other))
 				{
 					image_speed=1;
 					motion_set(90,10);
-					big_collectible_number=5;
+					big_collectible=5;
 					bounceup=true;
 				}
 			}

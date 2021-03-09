@@ -117,6 +117,7 @@ image_index=0;
 
 
 #region /*Load Level Information*/
+
 if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
 {
 	ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
@@ -186,77 +187,18 @@ player1_show_controls_alpha=0;
 
 ///Load Level
 
-#region /*Create directories*/
-
-#region /*Create directory for saving custom levels*/
-if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
-{
-	directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level));
-}
-#endregion /*Create directory for saving custom levels END*/
-
-#region /*Create directory for backgrouns in custom levels*/
-if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds"))
-{
-	directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds");
-}
-#endregion /*Create directory for backgrounds in custom levels END*/
-
-#region /*Create directory for data in custom levels*/
-if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data"))
-{
-	directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data");
-}
-#endregion /*Create directory for data in custom levels END*/
-
-#region /*Create directory for sounds in custom levels*/
-if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds"))
-{
-	directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds");
-}
-#endregion /*Create directory for sounds in custom levels END*/
-
-#region /*Create directory for melody in custom levels*/
-if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Melody"))
-{
-	directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Melody");
-}
-#endregion /*Create directory for melody in custom levels END*/
-
-#region /*Create directory for music in custom levels*/
-if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Music"))
-{
-	directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Music");
-}
-#endregion /*Create directory for music in custom levels END*/
-
-#region /*Create directory for sound effects in custom levels*/
-if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Sound Effect"))
-{
-	directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Sound Effect");
-}
-#endregion /*Create directory for sound effects in custom levels END*/
-
-#region /*Create directory for tilesets in custom levels*/
-if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets"))
-{
-	directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets");
-}
-#endregion /*Create directory for tilesets in custom levels END*/
-
-#endregion /*Create directories END*/
-
-else
+#region /*Load Main Game Level*/
+if (global.character_select_in_this_menu="game")
 {
 	var file, str, str_pos, str_temp, val, num;
-	if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt")
+	if file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt")
 	{
-		file = file_text_open_read(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt");
+		file = file_text_open_read("Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt");
 	}
 	else
-	if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt")
+	if file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt")
 	{
-		file = file_text_open_read(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt");
+		file = file_text_open_read("Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt");
 	}
 	else
 	{
@@ -265,26 +207,6 @@ else
 	
 	if (file != -1)
 	{
-
-	/*    str = file_text_read_string(file);
-	    file_text_readln(file);
-	    str_pos = 1;
-	    num = 0;
-	    str_temp = "";
-    
-	    while(str_pos < string_length(str))
-	        {
-	        while (string_char_at(str, str_pos) != "|")
-	            {
-	            str_temp += string_char_at(str, str_pos);
-	            str_pos += 1;
-	            }
-	        val[num] = real(str_temp);
-	        str_pos += 1;
-	        num += 1;
-	        str_temp = "";
-	        }
-	*/    
 		/*Next objects*/
 		str = file_text_read_string(file);
 		//file_text_readln(file);
@@ -325,5 +247,151 @@ else
 			}
 		}
 		file_text_close(file);
+	}
+}
+#endregion /*Load Main Game Level END*/
+
+else
+if (global.character_select_in_this_menu="level_editor")
+{
+	
+	#region /*Create directories*/
+
+	#region /*Create directory for saving custom levels*/
+	if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
+	{
+		directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level));
+	}
+	#endregion /*Create directory for saving custom levels END*/
+
+	#region /*Create directory for backgrouns in custom levels*/
+	if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds"))
+	{
+		directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Backgrounds");
+	}
+	#endregion /*Create directory for backgrounds in custom levels END*/
+
+	#region /*Create directory for data in custom levels*/
+	if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data"))
+	{
+		directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data");
+	}
+	#endregion /*Create directory for data in custom levels END*/
+
+	#region /*Create directory for sounds in custom levels*/
+	if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds"))
+	{
+		directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds");
+	}
+	#endregion /*Create directory for sounds in custom levels END*/
+
+	#region /*Create directory for melody in custom levels*/
+	if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Melody"))
+	{
+		directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Melody");
+	}
+	#endregion /*Create directory for melody in custom levels END*/
+
+	#region /*Create directory for music in custom levels*/
+	if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Music"))
+	{
+		directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Music");
+	}
+	#endregion /*Create directory for music in custom levels END*/
+
+	#region /*Create directory for sound effects in custom levels*/
+	if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Sound Effect"))
+	{
+		directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Sounds/Sound Effect");
+	}
+	#endregion /*Create directory for sound effects in custom levels END*/
+
+	#region /*Create directory for tilesets in custom levels*/
+	if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets"))
+	{
+		directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets");
+	}
+	#endregion /*Create directory for tilesets in custom levels END*/
+
+	#endregion /*Create directories END*/
+	
+	else
+	{
+		var file, str, str_pos, str_temp, val, num;
+		if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt")
+		{
+			file = file_text_open_read(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt");
+		}
+		else
+		if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt")
+		{
+			file = file_text_open_read(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt");
+		}
+		else
+		{
+			file = -1;
+		}
+	
+		if (file != -1)
+		{
+
+		/*    str = file_text_read_string(file);
+		    file_text_readln(file);
+		    str_pos = 1;
+		    num = 0;
+		    str_temp = "";
+    
+		    while(str_pos < string_length(str))
+		        {
+		        while (string_char_at(str, str_pos) != "|")
+		            {
+		            str_temp += string_char_at(str, str_pos);
+		            str_pos += 1;
+		            }
+		        val[num] = real(str_temp);
+		        str_pos += 1;
+		        num += 1;
+		        str_temp = "";
+		        }
+		*/    
+			/*Next objects*/
+			str = file_text_read_string(file);
+			//file_text_readln(file);
+			str_temp = "";
+			num = 0;
+			str_pos = 1;
+			while(str_pos < string_length(str))
+			{
+				while (string_char_at(str, str_pos) != "|")
+				{
+					str_temp += string_char_at(str, str_pos);
+					str_pos += 1;
+				}
+				val[num] = real(str_temp);
+				str_temp = "";
+				str_pos += 1;
+				num += 1;
+				if (num = 6) /*Number of variables to check for.
+				val[0] = object,
+				val[1] = x position,
+				val[2] = y position,
+				val[3] = easy,
+				val[4] = normal,
+				val[5] = hard,
+				val[6] = angle_x,
+				val[7] = angle_y*/
+				{
+					num = 0;
+					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+					{
+						object=val[2];
+						easy=val[3];
+						normal=val[4];
+						hard=val[5];
+					}
+				}
+			}
+			file_text_close(file);
+		}
 	}
 }

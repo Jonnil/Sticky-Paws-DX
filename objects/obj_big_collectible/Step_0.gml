@@ -71,25 +71,25 @@ if (bounceup = false)
 					#endregion /*1000 Score END*/
 					
 					#region /*What Big Collectible is this?*/
-					if (big_collectible_number = 1)
+					if (big_collectible = 1)
 					{
-						global.big_collectible_number1 = true;
+						global.big_collectible1 = true;
 					}
-					if (big_collectible_number = 2)
+					if (big_collectible = 2)
 					{
-						global.big_collectible_number2 = true;
+						global.big_collectible2 = true;
 					}
-					if (big_collectible_number = 3)
+					if (big_collectible = 3)
 					{
-						global.big_collectible_number3 = true;
+						global.big_collectible3 = true;
 					}
-					if (big_collectible_number = 4)
+					if (big_collectible = 4)
 					{
-						global.big_collectible_number4 = true;
+						global.big_collectible4 = true;
 					}
-					if (big_collectible_number = 5)
+					if (big_collectible = 5)
 					{
-						global.big_collectible_number5 = true;
+						global.big_collectible5 = true;
 					}
 					#endregion /*What Big Collectible is this? END*/
 					
@@ -216,25 +216,25 @@ if bounceup = true
 			#endregion /*1000 Score END*/
 			
 			#region /*What Big Collectible is this?*/
-			if (big_collectible_number = 1)
+			if (big_collectible = 1)
 			{
-				global.big_collectible_number1 = true;
+				global.big_collectible1 = true;
 			}
-			if (big_collectible_number = 2)
+			if (big_collectible = 2)
 			{
-				global.big_collectible_number2 = true;
+				global.big_collectible2 = true;
 			}
-			if (big_collectible_number = 3)
+			if (big_collectible = 3)
 			{
-				global.big_collectible_number3 = true;
+				global.big_collectible3 = true;
 			}
-			if (big_collectible_number = 4)
+			if (big_collectible = 4)
 			{
-				global.big_collectible_number4 = true;
+				global.big_collectible4 = true;
 			}
-			if (big_collectible_number = 5)
+			if (big_collectible = 5)
 			{
-				global.big_collectible_number5 = true;
+				global.big_collectible5 = true;
 			}
 			#endregion /*What Big Collectible is this? END*/
 			
@@ -262,39 +262,39 @@ if bounceup = true
 	
 }
 
-if (big_collectible_number = 1)
-and(global.big_collectible_number1 = true)
+if (big_collectible = 1)
+and(global.big_collectible1 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;
 }
-if (big_collectible_number = 2)
-and(global.big_collectible_number2 = true)
+if (big_collectible = 2)
+and(global.big_collectible2 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;
 }
-if (big_collectible_number = 3)
-and(global.big_collectible_number3 = true)
+if (big_collectible = 3)
+and(global.big_collectible3 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;
 }
-if (big_collectible_number = 4)
-and(global.big_collectible_number4 = true)
+if (big_collectible = 4)
+and(global.big_collectible4 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;
 }
-if (big_collectible_number = 5)
-and(global.big_collectible_number5 = true)
+if (big_collectible = 5)
+and(global.big_collectible5 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;
 }
 
 #region /*If big collectible value is 0, destroy the big collectible*/
-if (big_collectible_number = 0)
+if (big_collectible = 0)
 {
 	instance_destroy();
 }

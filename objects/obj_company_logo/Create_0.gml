@@ -182,7 +182,7 @@ global.checkpoint_realmillisecond=0;
 #endregion /*Checkpoint Timer End*/
 global.win=false;
 global.enemy_counter=0;
-global.file=0;
+global.file=1;
 global.controls_layout=1;
 global.background_brightness=0;/*full_black=-1, normal=0 (default), full_white=+1*/
 #region /*Music and Sound Volume*/

@@ -229,8 +229,8 @@ else
 	allow_ledgegrab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
 	allow_ground_pound = true; /*ground_pound*/
 	allow_ground_poundjump = true;
-	allow_wall_jump = true; /*WallJump*/
-	allow_wall_climb = false; /*WallClimb*/
+	allow_wall_jump = true; /*Wall Jump*/
+	allow_wall_climb = false; /*Wall Climb*/
 	allow_dive = true; /*Dive when you have speed or during a ground_pound*/
 	allow_dive_ground_boost = true;
 	allow_survive_lava = true;

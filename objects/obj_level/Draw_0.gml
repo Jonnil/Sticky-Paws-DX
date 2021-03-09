@@ -25,11 +25,11 @@ else
 if (clear_rate = "clear")
 {
 	image_alpha = 1;
-	if (star_coin1 = true)
-	and(star_coin2 = true)
-	and(star_coin3 = true)
-	and(star_coin4 = true)
-	and(star_coin5 = true)
+	if (big_collectible1 = true)
+	and(big_collectible2 = true)
+	and(big_collectible3 = true)
+	and(big_collectible4 = true)
+	and(big_collectible5 = true)
 	{
 		level_color = c_yellow;
 		level_perfect = true;
@@ -70,11 +70,9 @@ draw_text_transformed_colour(x, y + 2, string(level), global.default_text_size *
 draw_text_transformed_colour(x, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_white, c_white, c_white, c_white, image_alpha);
 
 if (global.demo = true)
+and(level > global.demo_max_levels)
 {
-	if (level > global.demo_max_levels)
-	{
-		instance_destroy();
-	}
+	instance_destroy();
 }
 
 if (clear_rate = 0)
@@ -84,34 +82,30 @@ if (clear_rate = 0)
 
 #region /*Level Save*/
 if (asset_get_type("obj_player_map") == asset_object)
+and(instance_exists(obj_player_map))
+and(obj_player_map.move_delay = 1)
+and(obj_player_map.transfer_data = true)
+and(file_exists("File" + string(global.file) + ".ini"))
 {
-	if (instance_exists(obj_player_map))
-	{
-		if (obj_player_map.move_delay = 1)
-		and(obj_player_map.transfer_data = true)
-		and(file_exists("File" + string(global.file) + ".ini"))
-		{
-			ini_open("File" + string(global.file) + ".ini");
-			ini_write_string("Level" + string(level), "clear_rate", clear_rate);
-			ini_write_real("Level" + string(level), "star_coin1", star_coin1);
-			ini_write_real("Level" + string(level), "star_coin2", star_coin2);
-			ini_write_real("Level" + string(level), "star_coin3", star_coin3);
-			ini_write_real("Level" + string(level), "star_coin4", star_coin4);
-			ini_write_real("Level" + string(level), "star_coin5", star_coin5);
-			ini_write_real("Level" + string(level), "lives_until_assist", lives_until_assist);
-			ini_write_real("Level" + string(level), "x_checkpoint", x_checkpoint);
-			ini_write_real("Level" + string(level), "y_checkpoint", y_checkpoint);
-			ini_write_real("Level" + string(level), "checkpoint_millisecond", checkpoint_millisecond);
-			ini_write_real("Level" + string(level), "checkpoint_second", checkpoint_second);
-			ini_write_real("Level" + string(level), "checkpoint_minute", checkpoint_minute);
-			ini_write_real("Level" + string(level), "checkpoint_realmillisecond", checkpoint_realmillisecond);
-			ini_write_real("Level" + string(level), "timeattack_millisecond", timeattack_millisecond);
-			ini_write_real("Level" + string(level), "timeattack_second", timeattack_second);
-			ini_write_real("Level" + string(level), "timeattack_minute", timeattack_minute);
-			ini_write_real("Level" + string(level), "timeattack_realmillisecond", timeattack_realmillisecond);
-			ini_write_real("Level" + string(level), "level_score", level_score);
-			ini_close();
-		}
-	}
+	ini_open("File" + string(global.file) + ".ini");
+	ini_write_string("Level" + string(level), "clear_rate", clear_rate);
+	ini_write_real("Level" + string(level), "big_collectible1", big_collectible1);
+	ini_write_real("Level" + string(level), "big_collectible2", big_collectible2);
+	ini_write_real("Level" + string(level), "big_collectible3", big_collectible3);
+	ini_write_real("Level" + string(level), "big_collectible4", big_collectible4);
+	ini_write_real("Level" + string(level), "big_collectible5", big_collectible5);
+	ini_write_real("Level" + string(level), "lives_until_assist", lives_until_assist);
+	ini_write_real("Level" + string(level), "x_checkpoint", x_checkpoint);
+	ini_write_real("Level" + string(level), "y_checkpoint", y_checkpoint);
+	ini_write_real("Level" + string(level), "checkpoint_millisecond", checkpoint_millisecond);
+	ini_write_real("Level" + string(level), "checkpoint_second", checkpoint_second);
+	ini_write_real("Level" + string(level), "checkpoint_minute", checkpoint_minute);
+	ini_write_real("Level" + string(level), "checkpoint_realmillisecond", checkpoint_realmillisecond);
+	ini_write_real("Level" + string(level), "timeattack_millisecond", timeattack_millisecond);
+	ini_write_real("Level" + string(level), "timeattack_second", timeattack_second);
+	ini_write_real("Level" + string(level), "timeattack_minute", timeattack_minute);
+	ini_write_real("Level" + string(level), "timeattack_realmillisecond", timeattack_realmillisecond);
+	ini_write_real("Level" + string(level), "level_score", level_score);
+	ini_close();
 }
 #endregion /*Level Save END*/
