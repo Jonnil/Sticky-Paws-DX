@@ -21,7 +21,7 @@ or(position_meeting(bbox_right,bbox_bottom+4,other))
 #region /*Landing on solid object*/
 if (position_meeting(x, bbox_bottom + 1, other))
 and(vspeed > 0)
-and(sticktowall = false)
+and(stick_to_wall = false)
 {
 	
 	#region /*Smoke Landing Effect*/
@@ -58,7 +58,8 @@ and(sticktowall = false)
 	draw_xscale = 1.25;
 	draw_yscale = 0.75;
 	can_groundpound = true;
-	spring = false;	
+	spring = false;
+	ledge_grab_jump = false;
 }
 #endregion /*Landing on solid object END*/
 

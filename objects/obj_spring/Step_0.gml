@@ -47,10 +47,10 @@ and(instance_exists(obj_player))
 			draw_yscale=1.5;
 			groundpound=false;
 			horizontal_rope_climb=false;
-			ledgegrabjump=false;
+			ledge_grab_jump=false;
 			speed_max=4;
 			spring=true;
-			sticktowall=false;
+			stick_to_wall=false;
 		}
 	}
 }

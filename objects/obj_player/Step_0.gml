@@ -67,12 +67,12 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 	#region /*Allow ledge grab*/
 	if (ini_key_exists("allow abilities", "allow_ledge_grab"))
 	{
-		allow_ledgegrab = ini_read_real("allow abilities", "allow_ledge_grab", false);
+		allow_ledge_grab = ini_read_real("allow abilities", "allow_ledge_grab", false);
 	}
 	else
 	{
 		ini_write_real("allow abilities", "allow_ledge_grab", false);
-		allow_ledgegrab = false;
+		allow_ledge_grab = false;
 	}
 	#endregion /*Allow ledge grab*/
 
@@ -226,7 +226,7 @@ else
 {
 	allow_double_jump = false; /*Makes the character able to double jump in mid-air*/
 	allow_roll = false;
-	allow_ledgegrab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
+	allow_ledge_grab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
 	allow_ground_pound = true; /*ground_pound*/
 	allow_ground_poundjump = true;
 	allow_wall_jump = true; /*Wall Jump*/
@@ -8763,8 +8763,8 @@ and(can_move = true)
 and(global.pause=false)
 {
 	if (wall_jump = false)
-	and(sticktowall = false)
-	and(ledgegrab = false)
+	and(stick_to_wall = false)
+	and(ledge_grab = false)
 	and(climb = false)
 	and(takendamage <= takendamage_freezetime)
 	{
@@ -8836,8 +8836,8 @@ and(can_move = true)
 and(global.pause=false)
 {
 	if (wall_jump = false)
-	and(sticktowall = false)
-	and(ledgegrab = false)
+	and(stick_to_wall = false)
+	and(ledge_grab = false)
 	and(climb = false)
 	and(takendamage <= takendamage_freezetime)
 	{
@@ -9304,7 +9304,7 @@ and(global.equipped_upgrade_double_jump=true)
 and(ground_pound=false)
 and(climb=false)
 and(horizontal_rope_climb=false)
-and(sticktowall=false)
+and(stick_to_wall=false)
 and(can_double_jump=true)
 and(asset_get_type("obj_wall")==asset_object)
 and(!place_meeting(x,y+1,obj_wall))
@@ -9744,7 +9744,7 @@ and(wall_jump_setting>=1)
 			{
 				if (crouch=false)
 				and(ground_pound=false)
-				and(ledgegrab=false)
+				and(ledge_grab=false)
 				and(burnt=false)
 				{
 					angle=0;
@@ -9753,7 +9753,7 @@ and(wall_jump_setting>=1)
 					dive=false;
 					dive_on_ground=false;
 					stomp_spin=false;
-					sticktowall=true;
+					stick_to_wall=true;
 					can_double_jump=true;
 					chain_reaction=0;
 					wall_jump=false;
@@ -9779,7 +9779,7 @@ and(wall_jump_setting>=1)
 			{
 				if (crouch=false)
 				and(ground_pound=false)
-				and(ledgegrab=false)
+				and(ledge_grab=false)
 				and(burnt=false)
 				{
 					angle=0;
@@ -9788,7 +9788,7 @@ and(wall_jump_setting>=1)
 					dive=false;
 					dive_on_ground=false;
 					stomp_spin=false;
-					sticktowall=true;
+					stick_to_wall=true;
 					can_double_jump=true;
 					chain_reaction=0;
 					wall_jump=false;
@@ -9799,7 +9799,7 @@ and(wall_jump_setting>=1)
 			}
 		}
 	}
-	if (sticktowall=true)
+	if (stick_to_wall=true)
 	{
 		
 		#region /*If there is ground under you while trying to go down, then stop wall climbing*/
@@ -9808,13 +9808,13 @@ and(wall_jump_setting>=1)
 		or(asset_get_type("obj_semisolid_platform")==asset_object)
 		and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 		{
-			sticktowall = false;
+			stick_to_wall = false;
 		}
 		#endregion /*If there is ground under you while trying to go down, then stop wall climbing END*/
 		
 		if (crouch=false)
 		and(ground_pound=false)
-		and(ledgegrab=false)
+		and(ledge_grab=false)
 		{
 			if (vspeed>0)
 			and(position_meeting(x+18*image_xscale,bbox_top,obj_wall))
@@ -9850,7 +9850,7 @@ and(wall_jump_setting>=1)
 			and(image_xscale>0)
 			or(place_meeting(x,y+1,obj_wall))
 			{
-				sticktowall=false;
+				stick_to_wall=false;
 				if (asset_get_type("snd_skiddingvertical")==asset_sound)
 				{
 					if (audio_is_playing(snd_skiddingvertical))
@@ -9876,7 +9876,7 @@ and(wall_jump_setting>=1)
 					audio_sound_gain(snd_move_ivy,global.sfx_volume,0);
 				}
 				can_ground_pound=false;
-				ledgegrabjump=false;
+				ledge_grab_jump=false;
 				vspeed=+4;
 			}
 			else
@@ -9903,7 +9903,7 @@ and(wall_jump_setting>=1)
 							audio_sound_gain(snd_move_ivy,global.sfx_volume,0);
 						}
 						can_ground_pound=true;
-						ledgegrabjump=true;
+						ledge_grab_jump=true;
 						vspeed=-4;
 					}
 					else
@@ -9938,7 +9938,7 @@ and(wall_jump_setting>=1)
 			if (vspeed>=0)
 			{
 				can_ground_pound=true;
-				ledgegrabjump=false;
+				ledge_grab_jump=false;
 				vspeed=0;
 				gravity=0;
 			}
@@ -9966,7 +9966,7 @@ and(wall_jump_setting>=1)
 		{
 			if (crouch=false)
 			and(ground_pound=false)
-			and(ledgegrab=false)
+			and(ledge_grab=false)
 			{
 				spring=false;
 				audio_stop_sound(voice);
@@ -10001,9 +10001,9 @@ and(wall_jump_setting>=1)
 				triplejumpdelay=50;
 				wall_jump=true;
 				crouch=false;
-				sticktowall=false;
+				stick_to_wall=false;
 				can_double_jump=true;
-				ledgegrabjump=false;
+				ledge_grab_jump=false;
 				speed_max=8;
 				vspeed=-normal_jump_height;
 				image_index=0;
@@ -10023,7 +10023,7 @@ and(wall_jump_setting>=1)
 		if (vspeed>=0)
 		{
 			wall_jump=false;
-			sticktowall=false;
+			stick_to_wall=false;
 		}
 		if (vspeed<0)
 		{
@@ -10059,7 +10059,7 @@ and(wall_jump_setting>=1)
 	and(!key_left)
 	and(!key_right)
 	and(key_sprint_pressed)
-	and(sticktowall=true)
+	and(stick_to_wall=true)
 	{
 		if (place_meeting(x-1,y,obj_wall))
 		{
@@ -10075,7 +10075,7 @@ and(wall_jump_setting>=1)
 		drop_off_wall_climb=true; /*Drop down from wall climbing*/
 		hspeed=0;
 		vspeed=+1;
-		sticktowall=false;
+		stick_to_wall=false;
 		crouch=false;
 	}
 	else
@@ -10105,7 +10105,7 @@ and(wall_jump_setting>=1)
 	{
 		if (crouch=false)
 		and(ground_pound=false)
-		and(ledgegrab=false)
+		and(ledge_grab=false)
 		{
 			spring=false;
 			audio_stop_sound(voice);
@@ -10141,8 +10141,8 @@ and(wall_jump_setting>=1)
 			triplejumpdelay=50;
 			wall_jump=true;
 			crouch=false;
-			sticktowall=false;
-			ledgegrabjump=false;
+			stick_to_wall=false;
+			ledge_grab_jump=false;
 			speed_max=8;
 			vspeed=-normal_jump_height;
 			image_index=0;
@@ -10158,8 +10158,8 @@ and(wall_jump_setting>=1)
 	
 }
 else
-sticktowall=false;
-if (sticktowall=false)
+stick_to_wall=false;
+if (stick_to_wall=false)
 {
 	if (asset_get_type("snd_skiddingvertical")==asset_sound)
 	and(audio_is_playing(snd_skiddingvertical))
@@ -10199,7 +10199,7 @@ and(takendamage<=takendamage_freezetime)
 					if (ground_pound=false)
 					{
 						ground_pound=true;
-						sticktowall=false;
+						stick_to_wall=false;
 						wall_jump=false;
 						if (image_xscale>0)
 						{
@@ -10376,7 +10376,7 @@ and(global.pause=false)
 	{
 		if (dive=false)
 		and(burnt=false)
-		and(sticktowall=false)
+		and(stick_to_wall=false)
 		and(climb=false)
 		and(horizontal_rope_climb=false)
 		and(takendamage<=takendamage_freezetime)
@@ -10576,19 +10576,19 @@ and(place_meeting(x,y+1,obj_semisolid_platform))
 #endregion /*Dive ground boost END*/
 
 #region /*Ledge Grab*/
-if (allow_ledgegrab=true)
+if (allow_ledge_grab=true)
 {
 	if (in_water=true)
 	or(x<camera_get_view_x(view_camera[view_current])+25)
 	or(x>camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])-25)
 	{
-		can_ledgegrab=false;
+		can_ledge_grab=false;
 	}
 	else
 	{
-		can_ledgegrab=true;
+		can_ledge_grab=true;
 	}
-	if (can_ledgegrab=true)
+	if (can_ledge_grab=true)
 	{
 		if (hspeed!=0)
 		{
@@ -10627,18 +10627,18 @@ if (allow_ledgegrab=true)
 				}
 				#endregion /*Make sure we are the right height END*/
 				
-				ledgegrabjump=false;
-				ledgegrab+=1;
-				sticktowall=false;
+				ledge_grab_jump=false;
+				ledge_grab+=1;
+				stick_to_wall=false;
 				wall_jump=false;
 				jump=0;
 			}
 		}
-		if (ledgegrab>0)
+		if (ledge_grab>0)
 		{
-			ledgegrab+=1;
+			ledge_grab+=1;
 		}
-		if (ledgegrab>false)
+		if (ledge_grab>false)
 		{
 			gravity=0;
 			hspeed=0;
@@ -10652,9 +10652,9 @@ if (allow_ledgegrab=true)
 				image_xscale=+1;
 			}
 			vspeed=0;
-			if (asset_get_type("spr_player_ledgegrab")==asset_sprite)
+			if (asset_get_type("spr_player_ledge_grab")==asset_sprite)
 			{
-				sprite_index=spr_player_ledgegrab;
+				sprite_index=spr_player_ledge_grab;
 			}
 			else
 			if (asset_get_type("spr_player_wall_slide")==asset_sprite)
@@ -10666,7 +10666,7 @@ if (allow_ledgegrab=true)
 			or(key_right)
 			and(image_xscale=+1)
 			{
-				if (ledgegrab>10)
+				if (ledge_grab>10)
 				{
 					if (image_xscale>0)
 					{
@@ -10682,9 +10682,9 @@ if (allow_ledgegrab=true)
 						audio_sound_gain(snd_pullup,global.sfx_volume,0);
 					}
 					vspeed=-8;
-					ledgegrab=false;
-					ledgegrabjump=true;
-					sticktowall=false;
+					ledge_grab=false;
+					ledge_grab_jump=true;
+					stick_to_wall=false;
 					wall_jump=false;
 				}
 			}
@@ -10706,9 +10706,9 @@ if (allow_ledgegrab=true)
 					audio_sound_gain(snd_pullupfast,global.sfx_volume,0);
 				}
 				vspeed=-normal_jump_height;
-				ledgegrab=false;
-				ledgegrabjump=true;
-				sticktowall=false;
+				ledge_grab=false;
+				ledge_grab_jump=true;
+				stick_to_wall=false;
 				wall_jump=false;
 			}
 			if (key_left)
@@ -10717,27 +10717,27 @@ if (allow_ledgegrab=true)
 			and(image_xscale=-1)
 			or(key_down)
 			{
-				if (ledgegrab>10)
+				if (ledge_grab>10)
 				{
 					hspeed=+0.1*-hspeed_dir;
-					ledgegrab=false;
-					ledgegrabjump=true;
-					sticktowall=false;
+					ledge_grab=false;
+					ledge_grab_jump=true;
+					stick_to_wall=false;
 					wall_jump=false;
 				}
 			}
 		}
 		if (place_meeting(x,y+1,obj_wall))
 		{
-			ledgegrabjump=false;
+			ledge_grab_jump=false;
 		}
 	}
 }
 #endregion /*Ledge Grab END*/
 
-#region /*Ledgegrabjump / Get up over ledge*/
-if (ledgegrabjump=true)
-and(sticktowall=false)
+#region /*ledge_grab_jump / Get up over ledge*/
+if (ledge_grab_jump=true)
+and(stick_to_wall=false)
 {
 	if (image_xscale=-1)
 	and(!place_meeting(x,y-4,obj_wall))
@@ -10753,10 +10753,10 @@ and(sticktowall=false)
 	if (place_meeting(x,y+1,obj_wall))
 	and(vspeed>=0)
 	{
-		ledgegrabjump=false;
+		ledge_grab_jump=false;
 	}
 }
-#endregion /*Ledgegrabjump / Get up over ledge END*/
+#endregion /*ledge_grab_jump / Get up over ledge END*/
 
 #region /*Put sprite angle at right angle*/
 if (angle<-360)
@@ -10852,7 +10852,7 @@ if (asset_get_type("obj_water")==asset_object)
 		can_ground_pound=false;
 		ground_pound=false;
 		can_wall_jump=false;
-		sticktowall=false;
+		stick_to_wall=false;
 		can_dive=false;
 
 		if (key_jump)
@@ -11035,7 +11035,7 @@ and(in_water=false)
 	and(!place_meeting(x,y-4,obj_wall))
 	and(vspeed>0)
 	and(ground_pound=false)
-	and(sticktowall=false)
+	and(stick_to_wall=false)
 	{
 		ground_pound=false;
 		dive=false;
@@ -11104,7 +11104,7 @@ if (asset_get_type("obj_lava")==asset_object)
 			burnt=true;
 			dive=false;
 			ground_pound=false;
-			sticktowall=false;
+			stick_to_wall=false;
 			crouch=false;
 			speed_max=8;
 			takendamage=100;
@@ -11533,7 +11533,7 @@ if (allow_homing_attack=true)
 	
 	#region /*Homing Enemy*/
 	if (!place_meeting(x,y+1,obj_wall))
-	and(sticktowall=false)
+	and(stick_to_wall=false)
 	and(climb=false)
 	and(horizontal_rope_climb=false)
 	and(key_jump)
@@ -11561,7 +11561,7 @@ if (allow_homing_attack=true)
 	
 	#region /*Homing Spring*/
 	if (!place_meeting(x,y+1,obj_wall))
-	and(sticktowall=false)
+	and(stick_to_wall=false)
 	and(climb=false)
 	and(horizontal_rope_climb=false)
 	and(key_jump)
@@ -11618,10 +11618,10 @@ and(place_meeting(x,y,obj_spring))
 	draw_yscale=1.5;
 	groundpound=false;
 	horizontal_rope_climb=false;
-	ledgegrabjump=false;
+	ledge_grab_jump=false;
 	speed_max=4;
 	spring=true;
-	sticktowall=false;
+	stick_to_wall=false;
 }
 
 if (spring=true)
@@ -11692,7 +11692,7 @@ and(!key_right)
 and(place_meeting(bbox_left-1,y,obj_wall))
 and(place_meeting(x,y+1,obj_wall))
 and(climb=false)
-and(sticktowall=false)
+and(stick_to_wall=false)
 {
 	if (asset_get_type("snd_bump")==asset_sound)
 	{
@@ -11711,7 +11711,7 @@ and(!key_left)
 and(place_meeting(bbox_right+1,y,obj_wall))
 and(place_meeting(x,y+1,obj_wall))
 and(climb=false)
-and(sticktowall=false)
+and(stick_to_wall=false)
 {
 	if (asset_get_type("snd_bump")==asset_sound)
 	{
@@ -11786,10 +11786,10 @@ and(in_water=false)
 		hspeed=0;
 		laststandingx=x;
 		laststandingy=y;
-		ledgegrabjump=false;
+		ledge_grab_jump=false;
 		speed_max=4;
 		spring=false;
-		sticktowall=false;
+		stick_to_wall=false;
 		vspeed=0;
 		y=instance_nearest(x,y,obj_horizontal_rope).y+16;
 		
@@ -12068,6 +12068,7 @@ and(place_meeting(x,y,obj_vine))
 			climb=true;
 			horizontal_rope_climb=false;
 			jump=0;
+			stick_to_wall = false;
 			
 			#region /*Make a sound effect that you have started cimbing*/
 			if (asset_get_type("snd_catch_ivy")==asset_sound)
@@ -12090,7 +12091,7 @@ and(place_meeting(x,y,obj_vine))
 		laststandingx=x;
 		laststandingy=y;
 		speed_max=4;
-		ledgegrabjump=false;
+		ledge_grab_jump=false;
 		ground_pound=false;
 		dive=false;
 		can_ground_pound=false;
@@ -12349,7 +12350,7 @@ and(!key_up)
 			if (place_meeting(x,y+1,obj_wall))
 			{
 				crouch = true;
-				sticktowall = false;
+				stick_to_wall = false;
 				y+=16;
 				if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
 				{sprite_index=sprite_stand;}
@@ -12385,7 +12386,7 @@ and(crouch=true)
 }
 if (crouch = true)
 {
-	sticktowall = false;
+	stick_to_wall = false;
 	if (place_meeting(x,y+1,obj_wall))
 	{
 		if (abs(hspeed)>3)
@@ -12749,7 +12750,7 @@ if (crouch=true)
 	
 		else
 		if (vspeed>0)
-		and(sticktowall=false)
+		and(stick_to_wall=false)
 		{
 			if (sprite_crouch_fall>noone){sprite_index=sprite_crouch_fall;}else
 			if (sprite_crouch_jump>noone){sprite_index=sprite_crouch_jump;}else
@@ -13115,12 +13116,12 @@ if (!place_meeting(x,y+1,obj_wall))
 	}
 else
 /*wall_slide down*/
-if (sticktowall=true)
+if (stick_to_wall=true)
 and(vspeed>=0)
 {
 	if (crouch=false)
 	and(ground_pound=false)
-	and(ledgegrab=false)
+	and(ledge_grab=false)
 	{
 		if (vspeed>0)
 		{
@@ -13185,11 +13186,11 @@ if (spring>=2)
 else
 /*Make it look natural when climbing wall*//*IMPORTANT*/
 /*Run up wall / wall_slide up*/
-if (sticktowall=true)
+if (stick_to_wall=true)
 {
 	if (crouch=false)
 	and(ground_pound=false)
-	and(ledgegrab=false)
+	and(ledge_grab=false)
 	{
 		if(sprite_wall_slide_up>noone){sprite_index=sprite_wall_slide_up;}else
 		if(sprite_wall_slide>noone){sprite_index=sprite_wall_slide;}else
@@ -13296,7 +13297,7 @@ else
 }
 else
 if (vspeed>0)
-and(sticktowall=false)
+and(stick_to_wall=false)
 and(spring=false)
 {
 	if (invincible>30)
@@ -13391,7 +13392,7 @@ if (place_meeting(x,y+1,obj_wall))
 			if (abs(hspeed)<7)
 			{
 				if (key_sprint)
-				and(sticktowall=false)
+				and(stick_to_wall=false)
 				and(wall_jump=false)
 				{
 					audio_stop_sound(voice);
@@ -13428,7 +13429,7 @@ if (place_meeting(x,y+1,obj_wall))
 			if (abs(hspeed)<7.5)
 			{
 				if (key_sprint)
-				and(sticktowall=false)
+				and(stick_to_wall=false)
 				and(wall_jump=false)
 				{
 					if (asset_get_type("snd_speeddash")==asset_sound)

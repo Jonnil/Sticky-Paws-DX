@@ -471,7 +471,7 @@ if (save_level_as_png = false)
 		#region /*When Player climbing up wall*/
 		with(instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player))
 		{
-			if (sticktowall = true) and(allow_wall_climb = true)
+			if (stick_to_wall = true) and(allow_wall_climb = true)
 			{
 				if (asset_get_type("obj_camera") == asset_object)
 				{
