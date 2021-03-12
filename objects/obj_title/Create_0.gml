@@ -1,5 +1,7 @@
 scr_set_arrays();
 
+max_number_of_official_characters = 0;
+
 /*Narrator Voice variable handeling*/
 narrator_name=noone;
 global.narrator_max_characters=1;
@@ -177,7 +179,7 @@ global.spikes_emerge_time=0;
 global.goal_active=false;
 global.PauseScreen=noone;
 global.QuitLevel=false;
-global.always_show_level_editor_buttons=true;/*If level editor buttons should always show or not. Should be true by default*/
+global.always_show_level_editor_buttons=true; /*If level editor buttons should always show or not. Should be true by default*/
 
 #region /*Select the sprite for each character portrait*/
 
@@ -247,6 +249,73 @@ else
 
 #endregion /*Select the sprite for each character portrait END*/
 
+#region /*Character select portrait x and y origin points*/
+if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini"))
+{
+	ini_open("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini");
+	
+	#region /*Character select portrait x and y origin points*/
+	#region /*Character select portrait y origin point*/
+	if (ini_key_exists("sprite origin points", "character_select_portrait_yorig"))
+	{
+		character_select_portrait_yorig = ini_read_real("sprite origin points", "character_select_portrait_yorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "character_select_portrait_yorig", 0);
+		character_select_portrait_yorig = 0;
+	}
+	#endregion /*Character select portrait y origin point END*/
+	
+	#region /*Character select portrait x origin point*/
+	if (ini_key_exists("sprite origin points", "character_select_portrait_xorig"))
+	{
+		character_select_portrait_xorig = ini_read_real("sprite origin points", "character_select_portrait_xorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "character_select_portrait_xorig", 0);
+		character_select_portrait_xorig = 0;
+	}
+	#endregion /*Character select portrait x origin point END*/
+	#endregion /*Character select portrait x and y origin points END*/
+	
+	#region /*Sprite stand x and y origin points*/
+	#region /*Sprite stand y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_stand_yorig"))
+	{
+		sprite_stand_yorig = ini_read_real("sprite origin points", "sprite_stand_yorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_stand_yorig", 0);
+		sprite_stand_yorig = 0;
+	}
+	#endregion /*Sprite stand y origin point END*/
+	
+	#region /*Sprite stand x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_stand_xorig"))
+	{
+		sprite_stand_xorig = ini_read_real("sprite origin points", "sprite_stand_xorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_stand_xorig", 0);
+		sprite_stand_xorig = 0;
+	}
+	#endregion /*Sprite stand x origin point END*/
+	#endregion /*Sprite stand x and y origin points END*/
+	
+	ini_close();
+}
+else
+{
+	character_select_portrait_xorig = 0;
+	character_select_portrait_yorig = 0;
+	sprite_stand_xorig = 0;
+	sprite_stand_yorig = 0;
+}
+#endregion /*Character select portrait x and y origin points END*/
 
 /*Load Config*/scr_loadconfig();
 

@@ -946,7 +946,9 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 	if (menu="remap_reset"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,camera_get_view_x(view_camera[view_current])+390,camera_get_view_y(view_camera[view_current])+128+640+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+640;
 	draw_sprite_ext(spr_menu_button,0,camera_get_view_x(view_camera[view_current])+410,camera_get_view_y(view_camera[view_current])+768+menu_y_offset,1,1,0,c_white,1);
 	draw_text_outlined(camera_get_view_x(view_camera[view_current])+420,camera_get_view_y(view_camera[view_current])+768+menu_y_offset,"Default Settings",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
-	if (key_a)and(menu_delay=0){
+	if (key_a)
+	and(menu_delay=0)
+	{
 	
 	#region /*Reset Player 1 Keyboard Remapping*/
 	if (remapping_player=1)
@@ -967,18 +969,23 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		#endregion /*Key 1 defaults END*/
 		
 		#region /*Key 2 defaults*/
-		global.player1_key2_jump=noone;
-		global.player1_key2_crouch=noone;
+		global.player1_key2_jump=ord("Z");
+		global.player1_key2_crouch=vk_down;
 		global.player1_key2_crouch_toggle=noone;
-		global.player1_key2_sprint=noone;
+		global.player1_key2_sprint=ord("X");
 		global.player1_key2_sprint_toggle=noone;
-		global.player1_key2_left=noone;
-		global.player1_key2_right=noone;
-		global.player1_key2_down=noone;
-		global.player1_key2_up=noone;
+		global.player1_key2_left=vk_left;
+		global.player1_key2_right=vk_right;
+		global.player1_key2_down=vk_down;
+		global.player1_key2_up=vk_up;
 		global.player1_key2_attack=noone;
 		#endregion /*Key 2 defaults END*/
 		
+		global.player1_up_key_is_jump_key=false;
+		global.player1_double_tap_to_run=true;
+		global.player1_wall_jump_setting=1;
+		global.player1_drop_from_rope=1;
+		global.player1_show_controls=0;
 	}
 	else
 	#endregion /*Reset Player 1 Keyboard Remapping END*/
@@ -1014,6 +1021,11 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		global.player2_key2_attack=noone;
 		#endregion /*Key 2 defaults END*/
 		
+		global.player2_up_key_is_jump_key=false;
+		global.player2_double_tap_to_run=true;
+		global.player2_wall_jump_setting=1;
+		global.player2_drop_from_rope=1;
+		global.player2_show_controls=0;
 	}
 	else #endregion /*Reset Player 2 Keyboard Remapping END*/
 	
@@ -1023,6 +1035,12 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		image_speed=0;
 		global.player3_key_jump=noone;global.player3_key_crouch=noone;global.player3_key_crouch_toggle=noone;global.player3_key_sprint=noone;global.player3_key_sprint_toggle=noone;global.player3_key_left=noone;global.player3_key_right=noone;global.player3_key_down=noone;global.player3_key_up=noone;global.player3_key_attack=noone;
 		global.player3_key2_jump=noone;global.player3_key2_crouch=noone;global.player3_key2_crouch_toggle=noone;global.player3_key2_sprint=noone;global.player3_key2_sprint_toggle=noone;global.player3_key2_left=noone;global.player3_key2_right=noone;global.player3_key2_down=noone;global.player3_key2_up=noone;global.player3_key2_attack=noone;
+	
+		global.player3_up_key_is_jump_key=false;
+		global.player3_double_tap_to_run=true;
+		global.player3_wall_jump_setting=1;
+		global.player3_drop_from_rope=1;
+		global.player3_show_controls=0;
 	}
 	else #endregion /*Reset Player 3 Keyboard Remapping END*/
 	
@@ -1032,7 +1050,14 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		image_speed=0;
 		global.player4_key_jump=noone;global.player4_key_crouch=noone;global.player4_key_crouch_toggle=noone;global.player4_key_sprint=noone;global.player4_key_sprint_toggle=noone;global.player4_key_left=noone;global.player4_key_right=noone;global.player4_key_down=noone;global.player4_key_up=noone;global.player4_key_attack=noone;
 		global.player4_key2_jump=noone;global.player4_key2_crouch=noone;global.player4_key2_crouch_toggle=noone;global.player4_key2_sprint=noone;global.player4_key2_sprint_toggle=noone;global.player4_key2_left=noone;global.player4_key2_right=noone;global.player4_key2_down=noone;global.player4_key2_up=noone;global.player4_key2_attack=noone;
-	}#endregion /*Reset Player 4 Keyboard Remapping END*/
+		
+		global.player4_up_key_is_jump_key=false;
+		global.player4_double_tap_to_run=true;
+		global.player4_wall_jump_setting=1;
+		global.player4_drop_from_rope=1;
+		global.player4_show_controls=0;
+	}
+	#endregion /*Reset Player 4 Keyboard Remapping END*/
 	
 	menu_delay=10;}
 	}

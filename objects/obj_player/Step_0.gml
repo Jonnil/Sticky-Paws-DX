@@ -11681,8 +11681,8 @@ if (spring=true)
 
 ///Platformer Player Part 2
 #region /*________________________________Handling the sprites and sounds in the step event________________________________*/
-draw_xscale = lerp(draw_xscale, 1, 0.1); /*Make horizontal stretching slowly reset back to 1*/
-draw_yscale = lerp(draw_yscale, 1, 0.1); /*Make vertical stretching slowly reset back to 1*/
+draw_xscale = lerp(draw_xscale, 1, 0.2); /*Make horizontal stretching slowly reset back to 1*/
+draw_yscale = lerp(draw_yscale, 1, 0.2); /*Make vertical stretching slowly reset back to 1*/
 
 #region /*A bump sound effect if a player walks into a wall to let them know that they they hit a wall*/
 

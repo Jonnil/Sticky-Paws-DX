@@ -211,24 +211,24 @@ global.fullscreen_key=vk_f11;
 #region /*Player 1 Keyboard Remapping*/
 global.player1_name="";
 global.player1_key_dive=ord("X");global.player1_key2_dive=noone;
-global.player1_key_jump=vk_space;global.player1_key2_jump=noone;
-global.player1_key_crouch=vk_shift;global.player1_key2_crouch=noone;
+global.player1_key_jump=vk_space;global.player1_key2_jump=ord("Z");
+global.player1_key_crouch=vk_shift;global.player1_key2_crouch=vk_down;
 global.player1_key_crouch_toggle=noone;global.player1_key2_crouch_toggle=noone;
-global.player1_key_sprint=vk_lcontrol;global.player1_key2_sprint=noone;
+global.player1_key_sprint=vk_lcontrol;global.player1_key2_sprint=ord("X");
 global.player1_key_sprint_toggle=noone;global.player1_key2_sprint_toggle=noone;
-global.player1_key_left=ord("A");global.player1_key2_left=noone;
-global.player1_key_right=ord("D");global.player1_key2_right=noone;
-global.player1_key_down=ord("S");global.player1_key2_down=noone;
-global.player1_key_up=ord("W");global.player1_key2_up=noone;
+global.player1_key_left=ord("A");global.player1_key2_left=vk_left;
+global.player1_key_right=ord("D");global.player1_key2_right=vk_right;
+global.player1_key_down=ord("S");global.player1_key2_down=vk_down;
+global.player1_key_up=ord("W");global.player1_key2_up=vk_up;
 global.player1_key_attack=noone;global.player1_key2_attack=noone;
 global.player1_up_key_is_jump_key=false;
 global.player1_double_tap_to_run=true;
-global.player1_wall_jump_setting=2;
+global.player1_wall_jump_setting=1;
 global.player1_drop_from_rope=1;
-global.player1_show_controls=true;
+global.player1_show_controls=false;
 #endregion /*Player 1 Keyboard Remapping END*/
 
-#region /*Player 2 Keyboard Remapping*/
+#region /*Player 2 Keyboard Remapping (everything should be set to noone)*/
 global.player2_name="";
 global.player2_key_dive=noone;global.player2_key2_dive=noone;
 global.player2_key_jump=noone;global.player2_key2_jump=noone;
@@ -243,12 +243,12 @@ global.player2_key_up=noone;global.player2_key2_up=noone;
 global.player2_key_attack=noone;global.player2_key2_attack=noone;
 global.player2_up_key_is_jump_key=false;
 global.player2_double_tap_to_run=true;
-global.player2_wall_jump_setting=2;
+global.player2_wall_jump_setting=1;
 global.player2_drop_from_rope=1;
-global.player2_show_controls=true;
-#endregion /*Player 2 Keyboard Remapping END*/
+global.player2_show_controls=false;
+#endregion /*Player 2 Keyboard Remapping (everything should be set to noone) END*/
 
-#region /*Player 3 Keyboard Remapping*/
+#region /*Player 3 Keyboard Remapping (everything should be set to noone)*/
 global.player3_name="";
 global.player3_key_dive=noone;global.player3_key2_dive=noone;
 global.player3_key_jump=noone;global.player3_key2_jump=noone;
@@ -263,12 +263,12 @@ global.player3_key_up=noone;global.player3_key2_up=noone;
 global.player3_key_attack=noone;global.player3_key2_attack=noone;
 global.player3_up_key_is_jump_key=false;
 global.player3_double_tap_to_run=true;
-global.player3_wall_jump_setting=2;
+global.player3_wall_jump_setting=1;
 global.player3_drop_from_rope=1;
-global.player3_show_controls=true;
-#endregion /*Player 3 Keyboard Remapping END*/
+global.player3_show_controls=false;
+#endregion /*Player 3 Keyboard Remapping (everything should be set to noone) END*/
 
-#region /*Player 4 Keyboard Remapping*/
+#region /*Player 4 Keyboard Remapping (everything should be set to noone)*/
 global.player4_name="";
 global.player4_key_dive=noone;global.player4_key2_dive=noone;
 global.player4_key_jump=noone;global.player4_key2_jump=noone;
@@ -283,10 +283,10 @@ global.player4_key_up=noone;global.player4_key2_up=noone;
 global.player4_key_attack=noone;global.player4_key2_attack=noone;
 global.player4_up_key_is_jump_key=false;
 global.player4_double_tap_to_run=true;
-global.player4_wall_jump_setting=2;
+global.player4_wall_jump_setting=1;
 global.player4_drop_from_rope=1;
-global.player4_show_controls=true;
-#endregion /*Player 4 Keyboard Remapping END*/
+global.player4_show_controls=false;
+#endregion /*Player 4 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Mobile Controls Settings*/
 global.mobile_joystick_x=0;
