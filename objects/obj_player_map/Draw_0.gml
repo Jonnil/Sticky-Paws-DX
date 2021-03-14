@@ -37,10 +37,19 @@ if (!directory_exists(working_directory + "/Custom Characters/Character "+string
 
 #region /*Sprite origin point variables*/
 
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
+or(file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))
 {
-	ini_open(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data/character_config.ini");
-
+	if (file_exists("Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
+	{
+		ini_open("Characters/Character "+string(custom_character)+"/Data/character_config.ini");
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))
+	{
+		ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini");
+	}
+	
 	#region /*Sprite map x and y origin points*/
 	#region /*Sprite map x origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_map_xorig"))
@@ -95,6 +104,7 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 	
 	ini_close();
 }
+
 #region /*If there is no config.ini file, then make every xorig and yorig variable zero*/
 else
 {
@@ -113,15 +123,25 @@ else
 index=0
 repeat(50)
 {
-	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_strip"+string(index)+".png"))
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/map_strip"+string(index)+".png"))
 	{
-		sprite_map = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_strip"+string(index)+".png", index, false, false, sprite_map_xorig, sprite_map_yorig);
+		sprite_map = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/map_strip"+string(index)+".png", index, false, false, sprite_map_xorig, sprite_map_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/map_strip"+string(index)+".png"))
+	{
+		sprite_map = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/map_strip"+string(index)+".png", index, false, false, sprite_map_xorig, sprite_map_yorig);
 	}
 	index+=1
 }
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map.png"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/map.png"))
 {
-	sprite_map = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map.png", 1, false, false, sprite_map_xorig, sprite_map_yorig);
+	sprite_map = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/map.png", 1, false, false, sprite_map_xorig, sprite_map_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/map.png"))
+{
+	sprite_map = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/map.png", 1, false, false, sprite_map_xorig, sprite_map_yorig);
 }
 #endregion /*Map sprite END*/
 
@@ -129,15 +149,25 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 index=0
 repeat(50)
 {
-	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_enter_level_strip"+string(index)+".png"))
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/map_enter_level_strip"+string(index)+".png"))
 	{
-		sprite_map_enter_level = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_enter_level_strip"+string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+		sprite_map_enter_level = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/map_enter_level_strip"+string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/map_enter_level_strip"+string(index)+".png"))
+	{
+		sprite_map_enter_level = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/map_enter_level_strip"+string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
 	}
 	index+=1
 }
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_enter_level.png"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/map_enter_level.png"))
 {
-	sprite_map_enter_level = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/map_enter_level.png", 1, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+	sprite_map_enter_level = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/map_enter_level.png", 1, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/map_enter_level.png"))
+{
+	sprite_map_enter_level = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/map_enter_level.png", 1, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
 }
 #endregion /*Map enter level sprite END*/
 

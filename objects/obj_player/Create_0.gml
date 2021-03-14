@@ -118,65 +118,11 @@ sprite_wall_slide_yorig = 0;
 #endregion /*Sprite origin point variables END*/
 
 #region /*Mask Index*/
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask.png"))
-{
-	sprite_mask = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask.png", 0, false, false, mask_xorig, mask_yorig);
-}
-else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask.png"))
-{
-	sprite_mask = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask.png", 0, false, false, mask_xorig, mask_yorig);
-}
-else
-if (asset_get_type("spr_player_mask") == asset_sprite)
-{
-	sprite_mask = spr_player_mask;
-}
-else
-if (asset_get_type("spr_player_stand") == asset_sprite)
-{
-	sprite_mask = spr_player_stand;
-}
-else
-{
-	sprite_mask = sprite_index;
-}
+sprite_mask = sprite_index;
 #endregion /*Mask Index END*/
 
 #region /*Mask Crouch Index*/
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask_crouch.png"))
-{
-	sprite_mask_crouch = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask_crouch.png", 0, false, false, mask_crouch_xorig, mask_crouch_yorig);
-}
-else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask_crouch.png"))
-{
-	sprite_mask_crouch = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask_crouch.png", 0, false, false, mask_crouch_xorig, mask_crouch_yorig);
-}
-else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask.png"))
-{
-	sprite_mask_crouch = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask.png", 0, false, false, mask_xorig, mask_yorig);
-}
-else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask.png"))
-{
-	sprite_mask_crouch = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites/mask.png", 0, false, false, mask_xorig, mask_yorig);
-}
-else
-if (asset_get_type("spr_player_mask_crouch") == asset_sprite)
-{
-	sprite_mask_crouch = spr_player_mask_crouch;
-}
-else
-if (asset_get_type("spr_player_stand") == asset_sprite)
-{
-	sprite_mask_crouch = spr_player_stand;
-}
-else
-{
-	sprite_mask_crouch = sprite_index;
-}
+sprite_mask_crouch = sprite_index;
 #endregion /*Mask Crouch Index END*/
 
 #region /*Sprite variables*/
@@ -452,204 +398,19 @@ voice_burned = noone;
 #endregion /*Play as Custom Character END*/
 
 #region /*Character Values Handeling*/
-
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
-{
-	ini_open(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data/character_config.ini");
-
-	#region /*Acceleration on ground*/
-	if (ini_key_exists("values", "acceleration_on_ground"))
-	{
-		acceleration_on_ground = ini_read_real("values", "acceleration_on_ground", 0.3);
-	}
-	else
-	{
-		ini_write_real("values", "acceleration_on_ground", 0.3);
-		acceleration_on_ground = 0.3;
-	}
-	#endregion /*Acceleration on ground END*/
-
-	#region /*Acceleration in air*/
-	if (ini_key_exists("values", "acceleration_in_air"))
-	{
-		acceleration_in_air = ini_read_real("values", "acceleration_in_air", 0.3);
-	}
-	else
-	{
-		ini_write_real("values", "acceleration_in_air", 0.3);
-		acceleration_in_air = 0.3;
-	}
-	#endregion /*Acceleration in air END*/
-
-	#region /*Acceleration on ice*/
-	if (ini_key_exists("values", "acceleration_on_ice"))
-	{
-		acceleration_on_ice = ini_read_real("values", "acceleration_on_ice", 0.05);
-	}
-	else
-	{
-		ini_write_real("values", "acceleration_on_ice", 0.05);
-		acceleration_on_ice = 0.05;
-	}
-	#endregion /*Acceleration on ice END*/
-
-	#region /*Starting HP*/
-	if (ini_key_exists("values", "hp"))
-	{
-		hp = ini_read_real("values", "hp", 1);
-	}
-	else
-	{
-		ini_write_real("values", "hp", 1);
-		hp = 1;
-	}
-	#endregion /*Starting HP END*/
-
-	#region /*Starting Max HP*/
-	if (ini_key_exists("values", "max_hp"))
-	{
-		max_hp = ini_read_real("values", "max_hp", 1);
-	}
-	else
-	{
-		ini_write_real("values", "max_hp", 1);
-		max_hp = 1;
-	}
-	#endregion /*Starting Max HP END*/
-
-	#region /*Starting Max Overflow HP*/
-	if (ini_key_exists("values", "max_overflow_hp"))
-	{
-		max_overflow_hp = ini_read_real("values", "max_overflow_hp", 4);
-	}
-	else
-	{
-		ini_write_real("values", "max_overflow_hp", 4);
-		max_overflow_hp = 4;
-	}
-	#endregion /*Starting Max Overflow HP END*/
-
-	#region /*Speed max walk*/
-	if (ini_key_exists("values", "speed_max_walk"))
-	{
-		speed_max_walk = ini_read_real("values", "speed_max_walk", 4);
-	}
-	else
-	{
-		ini_write_real("values", "speed_max_walk", 4);
-		speed_max_walk = 4;
-	}
-	#endregion /*Speed max walk END*/
-
-	#region /*Speed max run*/
-	if (ini_key_exists("values", "speed_max_run"))
-	{
-		speed_max_run = ini_read_real("values", "speed_max_run", 8);
-	}
-	else
-	{
-		ini_write_real("values", "speed_max_run", 8);
-		speed_max_run = 8;
-	}
-	#endregion /*Speed max run END*/
-
-	#region /*Jump Heights*/
-
-	#region /*Triple jump height*/
-	if (ini_key_exists("values", "triple_jump_height"))
-	{
-		triple_jump_height = ini_read_real("values", "triple_jump_height", 14.5);
-	}
-	else
-	{
-		ini_write_real("values", "triple_jump_height", 14.5);
-		triple_jump_height = 14.5;
-	}
-	#endregion /*Triple jump height END*/
-
-	#region /*Normal jump height*/
-	if (ini_key_exists("values", "normal_jump_height"))
-	{
-		normal_jump_height = ini_read_real("values", "normal_jump_height", 11.5);
-	}
-	else
-	{
-		ini_write_real("values", "normal_jump_height", 11.5);
-		normal_jump_height = 11.5;
-	}
-	#endregion /*Normal jump height END*/
-
-	#region /*Higher jump height*/
-	if (ini_key_exists("values", "higher_jump_height"))
-	{
-		higher_jump_height = ini_read_real("values", "higher_jump_height", 13);
-	}
-	else
-	{
-		ini_write_real("values", "higher_jump_height", 13);
-		higher_jump_height = 13;
-	}
-	#endregion /*Higher jump height END*/
-	
-	#region /*Double jump height*/
-	if (ini_key_exists("values", "double_jump_height"))
-	{
-		double_jump_height = ini_read_real("values", "double_jump_height", 11.5);
-	}
-	else
-	{
-		ini_write_real("values", "double_jump_height", 11.5);
-		double_jump_height = 11.5;
-	}
-	#endregion /*Double jump height END*/
-
-	#region /*Homing attack distance*/
-	if (ini_key_exists("values", "homing_attack_distance"))
-	{
-		hoverstomp_distance = ini_read_real("values", "homing_attack_distance", 500);
-	}
-	else
-	{
-		ini_write_real("values", "homing_attack_distance", 500);
-		hoverstomp_distance = 500;
-	}
-	#endregion /*Homing attack distance*/
-
-	#endregion /*Jump Heights END*/
-
-	ini_close();
-}
-else
-{
-	acceleration_on_ground = 0.3; /*How much acceleration the character has on ground*/
-	acceleration_in_air = 0.3; /*How much acceleration the character has in air*/
-	acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
-	hp = 1; /*Starting HP*/
-	max_hp = 1; /*Starting Max HP*/
-	max_overflow_hp = 4; /*Starting Max Overflow HP*/
-	speed_max_walk = 4 /*Default speed_max_walk is 4. Top speed with simple walking*/
-	speed_max_run = 8 /*Default speed_max_run is 8. Top speed with simple running*/
-	triple_jump_height = 14.5;
-	normal_jump_height = 11.5;
-	higher_jump_height = 13;
-	double_jump_height = 11.5;
-	hoverstomp_distance = 500;
-	ini_open(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data/character_config.ini");
-	ini_write_real("values", "acceleration_on_ground", 0.3);
-	ini_write_real("values", "acceleration_in_air", 0.3);
-	ini_write_real("values", "acceleration_on_ice", 0.05);
-	ini_write_real("values", "hp", 1);
-	ini_write_real("values", "max_hp", 1);
-	ini_write_real("values", "max_overflow_hp", 4);
-	ini_write_real("values", "speed_max_walk", 4);
-	ini_write_real("values", "speed_max_run", 8);
-	ini_write_real("values", "double_jump_height", 11.5);
-	ini_write_real("values", "triple_jump_height", 14.5);
-	ini_write_real("values", "normal_jump_height", 11.5);
-	ini_write_real("values", "higher_jump_height", 13);
-	ini_write_real("values", "homing_attack_distance", 500);
-	ini_close();
-}
+acceleration_on_ground = 0.3; /*How much acceleration the character has on ground*/
+acceleration_in_air = 0.3; /*How much acceleration the character has in air*/
+acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
+hp = 1; /*Starting HP*/
+max_hp = 1; /*Starting Max HP*/
+max_overflow_hp = 4; /*Starting Max Overflow HP*/
+speed_max_walk = 4 /*Default speed_max_walk is 4. Top speed with simple walking*/
+speed_max_run = 8 /*Default speed_max_run is 8. Top speed with simple running*/
+triple_jump_height = 14.5;
+normal_jump_height = 11.5;
+higher_jump_height = 13;
+double_jump_height = 11.5;
+hoverstomp_distance = 500;
 #endregion /*Character Values Handeling END*/
 
 #endregion /*Initialize Custom Character END*/

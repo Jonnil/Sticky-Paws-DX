@@ -6,7 +6,7 @@ draw_text_outlined(x+64,y+192,"sprite_stand_xorig: "+string(sprite_stand_xorig),
 draw_text_outlined(x+64,y+256,"sprite_stand_yorig: "+string(sprite_stand_yorig),global.default_text_size,c_white,c_black,1);
 draw_text_outlined(x+256,y+320,"ssc1: "+string(global.sprite_select_character_1),global.default_text_size,c_white,c_black,1);
 
-if(file_exists(working_directory + "/Custom Characters/Character "+string(global.sprite_select_character_1-max_number_of_official_characters)+"/Data/character_config.ini"))
+if(file_exists(working_directory + "/Custom Characters/Character "+string(global.sprite_select_character_1-global.max_number_of_official_characters)+"/Data/character_config.ini"))
 {
 	draw_text_outlined(x+64,y+320,"true",global.default_text_size,c_white,c_black,1);
 }

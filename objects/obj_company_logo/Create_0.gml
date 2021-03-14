@@ -10,6 +10,7 @@ global.character_select_screen=true;/*If this is true, there will be a character
 global.character_clothes_customization=false;/*If this is true, you can costumize the character's clothes in the menu*/
 global.character_color_select=false;/*If this is true, you can choose the character's color in the menu*/
 global.select_number_of_players_before_selecting_characters=false;/*If you should select how many players are going to play before you select what character to play as*/
+global.max_number_of_official_characters = 1; /*Update this whenever you add more official playable characters!*/
 
 global.max_fps=60;/*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
 global.default_text_size=0.2//0.1125;
