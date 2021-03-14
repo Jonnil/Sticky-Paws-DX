@@ -127,6 +127,10 @@ global.custom_background3=noone;
 global.custom_background4=noone;
 global.custom_foreground1=noone;
 global.custom_foreground2=noone;
+global.sprite_select_character_1=noone;
+global.sprite_select_character_2=noone;
+global.sprite_select_character_3=noone;
+global.sprite_select_character_4=noone;
 //global.spot_x=0;
 //global.spot_y=0;
 

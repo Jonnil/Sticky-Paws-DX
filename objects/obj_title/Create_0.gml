@@ -179,17 +179,94 @@ global.PauseScreen=noone;
 global.QuitLevel=false;
 global.always_show_level_editor_buttons=true; /*If level editor buttons should always show or not. Should be true by default*/
 
+#region /*Character select portrait x and y origin points*/
+if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini"))
+or(file_exists(working_directory + "Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini"))
+{
+	if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini"))
+	{
+		ini_open("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini");
+	}
+	else
+	if(file_exists(working_directory + "Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini"))
+	{
+		ini_open(working_directory + "Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini");
+	}
+	
+	#region /*Character select portrait x and y origin points*/
+	#region /*Character select portrait y origin point*/
+	if (ini_key_exists("sprite origin points", "character_select_portrait_yorig"))
+	{
+		character_select_portrait_yorig = ini_read_real("sprite origin points", "character_select_portrait_yorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "character_select_portrait_yorig", 0);
+		character_select_portrait_yorig = 0;
+	}
+	#endregion /*Character select portrait y origin point END*/
+
+	#region /*Character select portrait x origin point*/
+	if (ini_key_exists("sprite origin points", "character_select_portrait_xorig"))
+	{
+		character_select_portrait_xorig = ini_read_real("sprite origin points", "character_select_portrait_xorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "character_select_portrait_xorig", 0);
+		character_select_portrait_xorig = 0;
+	}
+	#endregion /*Character select portrait x origin point END*/
+	#endregion /*Character select portrait x and y origin points END*/
+						
+	#region /*Sprite stand x and y origin points*/
+	#region /*Sprite stand y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_stand_yorig"))
+	{
+		sprite_stand_yorig = ini_read_real("sprite origin points", "sprite_stand_yorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_stand_yorig", 0);
+		sprite_stand_yorig = 0;
+	}
+	#endregion /*Sprite stand y origin point END*/
+
+	#region /*Sprite stand x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_stand_xorig"))
+	{
+		sprite_stand_xorig = ini_read_real("sprite origin points", "sprite_stand_xorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_stand_xorig", 0);
+		sprite_stand_xorig = 0;
+	}
+	#endregion /*Sprite stand x origin point END*/
+	#endregion /*Sprite stand x and y origin points END*/
+						
+	ini_close();
+}
+else
+{
+	character_select_portrait_xorig = 0;
+	character_select_portrait_yorig = 0;
+	sprite_stand_xorig = 0;
+	sprite_stand_yorig = 0;
+}
+#endregion /*Character select portrait x and y origin points END*/
+
 #region /*Select the sprite for each character portrait*/
 
 #region /*Player 1 official character select portrait sprite*/
 if (file_exists("Characters/Character "+string(global.character_for_player_1)+"/Sprites/character_select_portrait.png"))
 {
-	global.sprite_select_character_1 = sprite_add("Characters/Character "+string(global.character_for_player_1)+"/Sprites/character_select_portrait.png", 0, false, false, 196, 287);
+	global.sprite_select_character_1 = sprite_add("Characters/Character "+string(global.character_for_player_1)+"/Sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 }
 else
 if (file_exists("Characters/Character "+string(global.character_for_player_1)+"/Sprites/stand.png"))
 {
-	global.sprite_select_character_1 = sprite_add("Characters/Character "+string(global.character_for_player_1)+"/Sprites/stand.png", 0, false, false, 36, 44);
+	global.sprite_select_character_1 = sprite_add("Characters/Character "+string(global.character_for_player_1)+"/Sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 }
 #endregion /*Player 1 official character select portrait sprite END*/
 
@@ -198,12 +275,12 @@ else
 #region /*Player 1 character select portrait sprite*/
 if (file_exists(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Sprites/character_select_portrait.png"))
 {
-	global.sprite_select_character_1 = sprite_add(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Sprites/character_select_portrait.png", 0, false, false, 196, 287);
+	global.sprite_select_character_1 = sprite_add(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 }
 else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Sprites/stand.png"))
 {
-	global.sprite_select_character_1 = sprite_add(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Sprites/stand.png", 0, false, false, 36, 44);
+	global.sprite_select_character_1 = sprite_add(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 }
 else
 {
@@ -302,83 +379,6 @@ else
 #endregion /*Player 4 character select portrait sprite END*/
 
 #endregion /*Select the sprite for each character portrait END*/
-
-#region /*Character 1 select portrait x and y origin points*/
-if (file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini"))
-or(file_exists(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini"))
-{
-	if (file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini"))
-	{
-		ini_open("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini");
-	}
-	else
-	if (file_exists(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini"))
-	{
-		ini_open(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini");
-	}
-	
-	#region /*Character select portrait x and y origin points*/
-	#region /*Character select portrait y origin point*/
-	if (ini_key_exists("sprite origin points", "character_select_portrait_yorig"))
-	{
-		character_select_portrait_yorig = ini_read_real("sprite origin points", "character_select_portrait_yorig", 0);
-	}
-	else
-	{
-		ini_write_real("sprite origin points", "character_select_portrait_yorig", 0);
-		character_select_portrait_yorig = 0;
-	}
-	#endregion /*Character select portrait y origin point END*/
-	
-	#region /*Character select portrait x origin point*/
-	if (ini_key_exists("sprite origin points", "character_select_portrait_xorig"))
-	{
-		character_select_portrait_xorig = ini_read_real("sprite origin points", "character_select_portrait_xorig", 0);
-	}
-	else
-	{
-		ini_write_real("sprite origin points", "character_select_portrait_xorig", 0);
-		character_select_portrait_xorig = 0;
-	}
-	#endregion /*Character select portrait x origin point END*/
-	#endregion /*Character select portrait x and y origin points END*/
-	
-	#region /*Sprite stand x and y origin points*/
-	#region /*Sprite stand y origin point*/
-	if (ini_key_exists("sprite origin points", "sprite_stand_yorig"))
-	{
-		sprite_stand_yorig = ini_read_real("sprite origin points", "sprite_stand_yorig", 0);
-	}
-	else
-	{
-		ini_write_real("sprite origin points", "sprite_stand_yorig", 0);
-		sprite_stand_yorig = 0;
-	}
-	#endregion /*Sprite stand y origin point END*/
-	
-	#region /*Sprite stand x origin point*/
-	if (ini_key_exists("sprite origin points", "sprite_stand_xorig"))
-	{
-		sprite_stand_xorig = ini_read_real("sprite origin points", "sprite_stand_xorig", 0);
-	}
-	else
-	{
-		ini_write_real("sprite origin points", "sprite_stand_xorig", 0);
-		sprite_stand_xorig = 0;
-	}
-	#endregion /*Sprite stand x origin point END*/
-	#endregion /*Sprite stand x and y origin points END*/
-	
-	ini_close();
-}
-else
-{
-	character_select_portrait_xorig = 0;
-	character_select_portrait_yorig = 0;
-	sprite_stand_xorig = 0;
-	sprite_stand_yorig = 0;
-}
-#endregion /*Character 1 select portrait x and y origin points END*/
 
 /*Load Config*/scr_loadconfig();
 

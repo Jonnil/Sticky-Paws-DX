@@ -15,6 +15,15 @@ else
 	draw_text_outlined(x+64,y+320,"false",global.default_text_size,c_white,c_black,1);
 }
 
+if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini"))
+{
+	draw_text_outlined(x+64,y+420,"Offical: true",global.default_text_size,c_white,c_black,1);
+}
+else
+{
+	draw_text_outlined(x+64,y+420,"Official: false",global.default_text_size,c_white,c_black,1);
+}
+
 if (global.background_brightness>-0.1)
 {
 	c_menu_outline=c_white;
