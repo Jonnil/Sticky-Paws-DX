@@ -1933,6 +1933,7 @@ and(can_input_player4_name=false)
 			and(mouse_check_button_pressed(mb_left))
 			{
 				if (menu_delay=0)
+				and(global.character_for_player_1>0)
 				{
 					menu_delay=10;
 					menu_joystick1_delay=30;
