@@ -463,6 +463,9 @@
     {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sounds","resourceVersion":"1.0","name":"enter_goal4.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sounds","resourceVersion":"1.0","name":"dive.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sounds","resourceVersion":"1.0","name":"jump2nd.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sprites","resourceVersion":"1.0","name":"standing_on_something.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sprites","resourceVersion":"1.0","name":"vine_climb_strip4.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sprites","resourceVersion":"1.0","name":"vine_stay.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.1.542",
