@@ -457,53 +457,65 @@ and(os_type != os_android)
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_center);
 			
+			show_left_key_x = 32;
+			show_right_key_x = 32;
+			show_up_key_x = 32;
+			show_down_key_x = 32;
+			show_sprint_key_x = 32;
+			show_dive_key_x = 32;
+			show_jump_key_x = 32;
+			
 			#region /*Show Left Key*/
-			draw_text_outlined(30, set_view_hview + 250 - 32, "Move Left:", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
+			draw_text_outlined(show_left_key_x + 22, display_get_gui_height - 32, "Move Left", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
 			if (gamepad_is_connected(0))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
-				draw_sprite_ext(spr_xbox_buttons, 4, 170, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 4, show_left_key_x, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
+			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player1_key_left, 170, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_keyboard_keys, global.player1_key_left, show_left_key_x, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			#endregion /*Show Left Key END*/
 			
 			#region /*Show Right Key*/
-			draw_text_outlined(180, set_view_hview + 250 - 32, "Move Right:", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
+			draw_text_outlined(210+22, set_view_hview + 250 - 32, "Move Right", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
 			if (gamepad_is_connected(0))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
-				draw_sprite_ext(spr_xbox_buttons, 6, 320, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 210, 210, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
+			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player1_key_right, 320, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_keyboard_keys, global.player1_key_right, 210, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			#endregion /*Show Right Key END*/
 			
 			#region /*Show Pounce Key*/
-			draw_text_outlined(350, set_view_hview + 250 - 32, "Pounce:", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
+			draw_text_outlined(400 + 22, set_view_hview + 250 - 32, "Pounce", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
 			if (gamepad_is_connected(0))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
-				draw_sprite_ext(spr_xbox_buttons, 2, 450, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 2, 400, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
+			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player1_key_sprint, 450, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_keyboard_keys, global.player1_key_sprint, 400, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			#endregion /*Show Pounce Key END*/
 			
 			#region /*Show Jump Key*/
-			draw_text_outlined(480, set_view_hview + 250 - 32, "Jump:", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
+			draw_text_outlined(480, set_view_hview + 250 - 32, "Jump", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
 			if (gamepad_is_connected(0))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_sprite_ext(spr_xbox_buttons, 0, 560, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
+			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
 				draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, 560, set_view_hview + 250 - 32, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}

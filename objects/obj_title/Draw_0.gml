@@ -1,28 +1,11 @@
-draw_set_halign(fa_left);
-draw_set_valign(fa_center);
-draw_text_outlined(x+64,y+64,"character_select_portrait_xorig: "+string(character_select_portrait_xorig),global.default_text_size,c_white,c_black,1);
-draw_text_outlined(x+64,y+128,"character_select_portrait_yorig: "+string(character_select_portrait_yorig),global.default_text_size,c_white,c_black,1);
-draw_text_outlined(x+64,y+192,"sprite_stand_xorig: "+string(sprite_stand_xorig),global.default_text_size,c_white,c_black,1);
-draw_text_outlined(x+64,y+256,"sprite_stand_yorig: "+string(sprite_stand_yorig),global.default_text_size,c_white,c_black,1);
-draw_text_outlined(x+256,y+320,"ssc1: "+string(global.sprite_select_character_1),global.default_text_size,c_white,c_black,1);
-
-if(file_exists(working_directory + "/Custom Characters/Character "+string(global.sprite_select_character_1-global.max_number_of_official_characters)+"/Data/character_config.ini"))
-{
-	draw_text_outlined(x+64,y+320,"true",global.default_text_size,c_white,c_black,1);
-}
-else
-{
-	draw_text_outlined(x+64,y+320,"false",global.default_text_size,c_white,c_black,1);
-}
-
-if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini"))
-{
-	draw_text_outlined(x+64,y+420,"Offical: true",global.default_text_size,c_white,c_black,1);
-}
-else
-{
-	draw_text_outlined(x+64,y+420,"Official: false",global.default_text_size,c_white,c_black,1);
-}
+//draw_set_halign(fa_left);draw_set_valign(fa_center);
+//draw_text_outlined(x+64,y+64,"character_select_portrait_xorig: "+string(character_select_portrait_xorig),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x+64,y+128,"character_select_portrait_yorig: "+string(character_select_portrait_yorig),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x+64,y+192,"sprite_stand_xorig: "+string(sprite_stand_xorig),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x+64,y+256,"sprite_stand_yorig: "+string(sprite_stand_yorig),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x+256,y+320,"ssc1: "+string(global.sprite_select_character_1),global.default_text_size,c_white,c_black,1);
+//if(file_exists(working_directory + "/Custom Characters/Character "+string(global.sprite_select_character_1-global.max_number_of_official_characters)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+320,"true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+320,"false",global.default_text_size,c_white,c_black,1);}
+//if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+420,"Offical: true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+420,"Official: false",global.default_text_size,c_white,c_black,1);}
 
 if (global.background_brightness>-0.1)
 {
