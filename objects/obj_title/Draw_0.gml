@@ -172,7 +172,12 @@ and(menu_delay=0)
 /*Play Title Screen Music*/if (asset_get_type("snd_music_titlescreen")==asset_sound){audio_sound_gain(snd_music_titlescreen,global.music_volume,0);}/*Play Title Screen Music END*/
 
 /*Draw Event*/
-/*Set a default font*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}/*Set a default font END*/
+#region /*Set a default font*/
+if (asset_get_type("font_default")==asset_font)
+{
+	draw_set_font(font_default);
+}
+#endregion /*Set a default font END*/
 
 #region /*Fullscreen and Change Window Size Text*/
 if (os_type!=os_ios)

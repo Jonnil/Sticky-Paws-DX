@@ -1,4 +1,4 @@
-draw_text_outlined(mouse_x+64,mouse_y-64,"x:"+string(mouse_x)+" y:"+string(mouse_y),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(mouse_x+64,mouse_y-64,"x:"+string(mouse_x)+" y:"+string(mouse_y),global.default_text_size,c_white,c_black,1);
 
 #region /*Set screen size*/
 camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
@@ -1222,7 +1222,7 @@ and(iris_xscale >= 10)
 	if (global.player1_show_controls = 0)
 	or(obj_player.can_move = false)
 	{
-		player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.1);
+		player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
 	}
 	else
 	if (global.player1_show_controls >= 1)
@@ -1230,7 +1230,7 @@ and(iris_xscale >= 10)
 	{
 		if (player1_show_controls_timer >= 1)
 		{
-			player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.1);
+			player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
 			player1_show_controls_timer -= 1;
 		}
 		if (player1_show_controls_timer <= 0)
@@ -1238,6 +1238,7 @@ and(iris_xscale >= 10)
 			player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
 		}
 	}
+	else
 	if (global.player1_show_controls = 10)
 	{
 		player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
@@ -1273,7 +1274,7 @@ and(iris_xscale >= 10)
 }
 else
 {
-	player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.1);
+	player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
 	player1_show_controls_timer = room_speed * global.player1_show_controls;
 }
 #endregion /*Player 1 Show Controls HUD timer*/
@@ -1287,7 +1288,7 @@ and(iris_xscale >= 10)
 	if (global.player2_show_controls = 0)
 	or(obj_player.can_move = false)
 	{
-		player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.1);
+		player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
 	}
 	else
 	if (global.player2_show_controls >= 1)
@@ -1295,7 +1296,7 @@ and(iris_xscale >= 10)
 	{
 		if (player2_show_controls_timer >= 1)
 		{
-			player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.1);
+			player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
 			player2_show_controls_timer -= 1;
 		}
 		if (player2_show_controls_timer <= 0)
@@ -1339,7 +1340,7 @@ and(iris_xscale >= 10)
 }
 else
 {
-	player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.1);
+	player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
 	player2_show_controls_timer = room_speed * global.player2_show_controls;
 }
 #endregion /*Player 2 Show Controls HUD timer*/
@@ -1353,7 +1354,7 @@ and(iris_xscale >= 10)
 	if (global.player3_show_controls = 0)
 	or(obj_player.can_move = false)
 	{
-		player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.1);
+		player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
 	}
 	else
 	if (global.player3_show_controls >= 1)
@@ -1361,7 +1362,7 @@ and(iris_xscale >= 10)
 	{
 		if (player3_show_controls_timer >= 1)
 		{
-			player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.1);
+			player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
 			player3_show_controls_timer -= 1;
 		}
 		if (player3_show_controls_timer <= 0)
@@ -1372,7 +1373,7 @@ and(iris_xscale >= 10)
 	else
 	if (global.player3_show_controls = 10)
 	{
-		player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.1);
+		player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.2);
 	}
 
 	if (keyboard_check(global.player3_key_up))
@@ -1405,7 +1406,7 @@ and(iris_xscale >= 10)
 }
 else
 {
-	player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.1);
+	player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
 	player3_show_controls_timer = room_speed * global.player3_show_controls;
 }
 #endregion /*Player 3 Show Controls HUD timer*/
@@ -1419,7 +1420,7 @@ and(iris_xscale >= 10)
 	if (global.player4_show_controls = 0)
 	or(obj_player.can_move = false)
 	{
-		player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.1);
+		player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.2);
 	}
 	else
 	if (global.player4_show_controls >= 1)
@@ -1427,7 +1428,7 @@ and(iris_xscale >= 10)
 	{
 		if (player4_show_controls_timer >= 1)
 		{
-			player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.1);
+			player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.2);
 			player4_show_controls_timer -= 1;
 		}
 		if (player4_show_controls_timer <= 0)
@@ -1471,7 +1472,7 @@ and(iris_xscale >= 10)
 }
 else
 {
-	player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.1);
+	player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.2);
 	player4_show_controls_timer = room_speed * global.player4_show_controls;
 }
 #endregion /*Player 4 Show Controls HUD timer*/

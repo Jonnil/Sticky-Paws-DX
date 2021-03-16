@@ -119,7 +119,7 @@ global.show_language_shortcut=false; /*If a shortcut for the language options sh
 global.show_accessibility_shortcut=false; /*If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu*/
 global.show_profile_shortcut=false; /*If a shortcut for the profile options should appear in the main menu to the right of the settings menu*/
 global.difficulty=2;/*Difficulty levels: 0 = peaceful, 1 = easy, 2 = normal (default), 3 = hard*/
-global.controls_used_for_menu_navigation="mouse";/*mouse, keyboard, or controller*/
+global.controls_used_for_menu_navigation="keyboard";/*keyboard, mouse, or controller*/
 global.pause=false;/*If game is paused or not*/
 global.custom_background1=noone;
 global.custom_background2=noone;
@@ -216,21 +216,21 @@ global.fullscreen_key=vk_f11;
 #region /*Player 1 Keyboard Remapping*/
 global.player1_name="";
 global.player1_key_dive=ord("X");global.player1_key2_dive=noone;
-global.player1_key_jump=vk_space;global.player1_key2_jump=ord("Z");
-global.player1_key_crouch=vk_shift;global.player1_key2_crouch=vk_down;
+global.player1_key_jump=ord("Z");global.player1_key2_jump=vk_space;
+global.player1_key_crouch=vk_down;global.player1_key2_crouch=vk_shift;
 global.player1_key_crouch_toggle=noone;global.player1_key2_crouch_toggle=noone;
 global.player1_key_sprint=vk_lcontrol;global.player1_key2_sprint=ord("X");
 global.player1_key_sprint_toggle=noone;global.player1_key2_sprint_toggle=noone;
-global.player1_key_left=ord("A");global.player1_key2_left=vk_left;
-global.player1_key_right=ord("D");global.player1_key2_right=vk_right;
-global.player1_key_down=ord("S");global.player1_key2_down=vk_down;
-global.player1_key_up=ord("W");global.player1_key2_up=vk_up;
+global.player1_key_left=vk_left;global.player1_key2_left=ord("A");
+global.player1_key_right=vk_right;global.player1_key2_right=ord("D");
+global.player1_key_down=vk_down;global.player1_key2_down=ord("S");
+global.player1_key_up=vk_up;global.player1_key2_up=ord("W");
 global.player1_key_attack=noone;global.player1_key2_attack=noone;
 global.player1_up_key_is_jump_key=false;
 global.player1_double_tap_to_run=true;
 global.player1_wall_jump_setting=1;
 global.player1_drop_from_rope=1;
-global.player1_show_controls=false;
+global.player1_show_controls=1;
 #endregion /*Player 1 Keyboard Remapping END*/
 
 #region /*Player 2 Keyboard Remapping (everything should be set to noone)*/
@@ -250,7 +250,7 @@ global.player2_up_key_is_jump_key=false;
 global.player2_double_tap_to_run=true;
 global.player2_wall_jump_setting=1;
 global.player2_drop_from_rope=1;
-global.player2_show_controls=false;
+global.player2_show_controls=1;
 #endregion /*Player 2 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 3 Keyboard Remapping (everything should be set to noone)*/
@@ -270,7 +270,7 @@ global.player3_up_key_is_jump_key=false;
 global.player3_double_tap_to_run=true;
 global.player3_wall_jump_setting=1;
 global.player3_drop_from_rope=1;
-global.player3_show_controls=false;
+global.player3_show_controls=1;
 #endregion /*Player 3 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 4 Keyboard Remapping (everything should be set to noone)*/
@@ -290,7 +290,7 @@ global.player4_up_key_is_jump_key=false;
 global.player4_double_tap_to_run=true;
 global.player4_wall_jump_setting=1;
 global.player4_drop_from_rope=1;
-global.player4_show_controls=false;
+global.player4_show_controls=1;
 #endregion /*Player 4 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Mobile Controls Settings*/
