@@ -8798,6 +8798,35 @@ and(hp<10)
 #region /*Customisable Keyboard Array*/
 if (player<=1)
 {
+	
+	#region /*Crouch Toggling*/
+	if(keyboard_check_pressed(global.player1_key_crouch_toggle))
+	{
+		if (global.player1_crouch_toggle = false)
+		{
+			global.player1_crouch_toggle = true;
+		}
+		else
+		{
+			global.player1_crouch_toggle = false;
+		}
+	}
+	#endregion /*Crouch Toggling END*/
+	
+	#region /*Sprint Toggling*/
+	if(keyboard_check_pressed(global.player1_key_sprint_toggle))
+	{
+		if (global.player1_sprint_toggle = false)
+		{
+			global.player1_sprint_toggle = true;
+		}
+		else
+		{
+			global.player1_sprint_toggle = false;
+		}
+	}
+	#endregion /*Sprint Toggling END*/
+	
 	gamepad_set_axis_deadzone(player-1,0.50);
 	
 	#region /*Player 1 Key Dive Pressed*/
@@ -8808,6 +8837,7 @@ if (player<=1)
 	or(gamepad_button_check_pressed(player-1,gp_face4));
 	#endregion /*Player 1 Key Dive Pressed END*/
 	
+	#region /*Player 1 Key Jump Pressed*/
 	key_jump=
 	(keyboard_check_pressed(global.player1_key_jump))
 	or(keyboard_check_pressed(global.player1_key2_jump))
@@ -8823,20 +8853,81 @@ if (player<=1)
 	or(up_key_is_jump_key=true)
 	and(gamepad_button_check_pressed(player-1,gp_padu))
 	and!(gamepad_button_check_pressed(player-1,gp_padd));
+	#endregion /*Player 1 Key Jump Pressed END*/
 	
-	key_jump_hold=(keyboard_check(global.player1_key_jump))or(keyboard_check(global.player1_key2_jump))or(up_key_is_jump_key=true)and(keyboard_check(global.player1_key_up))and(!keyboard_check(global.player1_key_down))and(!keyboard_check(global.player1_key2_down))or(up_key_is_jump_key=true)and(keyboard_check(global.player1_key2_up))and(!keyboard_check(global.player1_key_down))and(!keyboard_check(global.player1_key2_down))or(gamepad_button_check(player-1,gp_face1))or(gamepad_button_check(player-1,gp_face2))or(gamepad_button_check(player-1,gp_padu))and(!gamepad_button_check(player-1,gp_padd));
+	#region /*Player 1 Key Jump Hold*/
+	key_jump_hold=
+	(keyboard_check(global.player1_key_jump))
+	or(keyboard_check(global.player1_key2_jump))
+	or(up_key_is_jump_key=true)
+	and(keyboard_check(global.player1_key_up))
+	and(!keyboard_check(global.player1_key_down))
+	and(!keyboard_check(global.player1_key2_down))
+	or(up_key_is_jump_key=true)
+	and(keyboard_check(global.player1_key2_up))
+	and(!keyboard_check(global.player1_key_down))
+	and(!keyboard_check(global.player1_key2_down))
+	or(gamepad_button_check(player-1,gp_face1))
+	or(gamepad_button_check(player-1,gp_face2))
+	or(gamepad_button_check(player-1,gp_padu))
+	and(!gamepad_button_check(player-1,gp_padd));
+	#endregion /*Player 1 Key Jump Hold END*/
 	
-	key_jump_released=(keyboard_check_released(global.player1_key_jump))or(keyboard_check_released(global.player1_key2_jump))or(up_key_is_jump_key=true)and(keyboard_check_released(global.player1_key_up))or(up_key_is_jump_key=true)and(keyboard_check_released(global.player1_key2_up))or(gamepad_button_check_released(player-1,gp_face1))or(gamepad_button_check_released(player-1,gp_face2))or(up_key_is_jump_key=true)and(gamepad_button_check_released(player-1,gp_padu));
+	#region /*Player 1 Key Jump Released*/
+	key_jump_released=
+	(keyboard_check_released(global.player1_key_jump))
+	or(keyboard_check_released(global.player1_key2_jump))
+	or(up_key_is_jump_key=true)
+	and(keyboard_check_released(global.player1_key_up))
+	or(up_key_is_jump_key=true)
+	and(keyboard_check_released(global.player1_key2_up))
+	or(gamepad_button_check_released(player-1,gp_face1))
+	or(gamepad_button_check_released(player-1,gp_face2))
+	or(up_key_is_jump_key=true)
+	and(gamepad_button_check_released(player-1,gp_padu));
+	#endregion /*Player 1 Key Jump Released END*/
 	
-	key_crouch=(keyboard_check(global.player1_key_crouch))or(keyboard_check(global.player1_key2_crouch))or(gamepad_button_check(player-1,gp_padd))or(gamepad_axis_value(player-1,gp_axislv)>0);
+	#region /*Player 1 Key Crouch Hold*/
+	key_crouch=
+	(keyboard_check(global.player1_key_crouch))
+	or(keyboard_check(global.player1_key2_crouch))
+	or(gamepad_button_check(player-1,gp_padd))
+	or(gamepad_axis_value(player-1,gp_axislv)>0)
+	or(global.player1_crouch_toggle=true);
+	#endregion /*Player 1 Key Crouch Hold END*/
 	
-	key_crouch_pressed=(keyboard_check_pressed(global.player1_key_crouch))or(keyboard_check_pressed(global.player1_key2_crouch))or(gamepad_button_check_pressed(player-1,gp_padd))or(gamepad_axis_value(player-1,gp_axislv)>0);
+	#region /*Player 1 Key Crouch Pressed*/
+	key_crouch_pressed=
+	(keyboard_check_pressed(global.player1_key_crouch))
+	or(keyboard_check_pressed(global.player1_key2_crouch))
+	or(gamepad_button_check_pressed(player-1,gp_padd))
+	or(gamepad_axis_value(player-1,gp_axislv)>0);
+	#endregion /*Player 1 Key Crouch Pressed END*/
 	
-	key_sprint=(keyboard_check(global.player1_key_sprint))or(keyboard_check(global.player1_key2_sprint))or(gamepad_button_check(player-1,gp_face3))or(gamepad_button_check(player-1,gp_face4));
+	#region /*Player 1 Key Sprint Hold*/
+	key_sprint=
+	(keyboard_check(global.player1_key_sprint))
+	or(keyboard_check(global.player1_key2_sprint))
+	or(gamepad_button_check(player-1,gp_face3))
+	or(gamepad_button_check(player-1,gp_face4))
+	or(global.player1_sprint_toggle);
+	#endregion /*Player 1 Key Sprint Hold END*/
 	
-	key_sprint_pressed=(keyboard_check_pressed(global.player1_key_sprint))or(keyboard_check_pressed(global.player1_key2_sprint))or(gamepad_button_check_pressed(player-1,gp_face3))or(gamepad_button_check_pressed(player-1,gp_face4));
+	#region /*Player 1 Key Sprint Pressed*/
+	key_sprint_pressed=
+	(keyboard_check_pressed(global.player1_key_sprint))
+	or(keyboard_check_pressed(global.player1_key2_sprint))
+	or(gamepad_button_check_pressed(player-1,gp_face3))
+	or(gamepad_button_check_pressed(player-1,gp_face4));
+	#endregion /*Player 1 Key Sprint Pressed END*/
 	
-	key_sprint_released=(keyboard_check_released(global.player1_key_sprint))or(keyboard_check_released(global.player1_key2_sprint))or(gamepad_button_check_released(player-1,gp_face3))or(gamepad_button_check_released(player-1,gp_face4));
+	#region /*Player 1 Key Sprint Released*/
+	key_sprint_released=
+	(keyboard_check_released(global.player1_key_sprint))
+	or(keyboard_check_released(global.player1_key2_sprint))
+	or(gamepad_button_check_released(player-1,gp_face3))
+	or(gamepad_button_check_released(player-1,gp_face4));
+	#endregion /*Player 1 Key Sprint Released END*/
 	
 	key_up=(keyboard_check(global.player1_key_up))and(!keyboard_check(global.player1_key_down))and(!keyboard_check(global.player1_key2_down))or(keyboard_check(global.player1_key2_up))and(!keyboard_check(global.player1_key_down))and(!keyboard_check(global.player1_key2_down))or(gamepad_button_check(player-1,gp_padu))and(!gamepad_button_check(player-1,gp_padd))or(gamepad_axis_value(player-1,gp_axislv)<0);
 	

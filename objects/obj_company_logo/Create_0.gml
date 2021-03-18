@@ -209,6 +209,16 @@ global.QuitGame=false;
 global.trigger_demo_ending=0;
 global.enable_enemies=true;/*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default:true*/
 
+global.player1_crouch_toggle = false; /*If crouch toggle for player 1 is true or false (false by default)*/
+global.player2_crouch_toggle = false; /*If crouch toggle for player 2 is true or false (false by default)*/
+global.player3_crouch_toggle = false; /*If crouch toggle for player 3 is true or false (false by default)*/
+global.player4_crouch_toggle = false; /*If crouch toggle for player 4 is true or false (false by default)*/
+
+global.player1_sprint_toggle = false; /*If sprint toggle for player 1 is true or false (false by default)*/
+global.player2_sprint_toggle = false; /*If sprint toggle for player 2 is true or false (false by default)*/
+global.player3_sprint_toggle = false; /*If sprint toggle for player 3 is true or false (false by default)*/
+global.player4_sprint_toggle = false; /*If sprint toggle for player 4 is true or false (false by default)*/
+
 #region /*Universal Keyboard Remapping*/
 global.fullscreen_key=vk_f11;
 #endregion /*Universal Keyboard Remapping*/
