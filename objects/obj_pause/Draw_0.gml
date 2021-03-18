@@ -1,3 +1,6 @@
+//instance_deactivate_all(true);
+instance_activate_object(obj_pause);
+
 #region /*Menu cursor image speed*/
 menu_cursor_index += 0.3;
 if (menu_cursor_index > 4)
@@ -267,6 +270,12 @@ and(room = room_leveleditor)
 			audio_sound_gain(global.music,global.music_volume,0);
 			audio_sound_gain(global.music_underwater,0,0);
 			global.pause=false;
+			instance_activate_region(
+			camera_get_view_x(view_camera[view_current]) - 32,
+			camera_get_view_y(view_camera[view_current]) - 32,
+			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+			true);
 			instance_destroy();
 			#endregion /*Return to game END*/
 			
@@ -355,6 +364,12 @@ and(room = room_leveleditor)
 			global.theme = noone;
 			global.weather = noone;
 			global.pause=false;
+			instance_activate_region(
+			camera_get_view_x(view_camera[view_current]) - 32,
+			camera_get_view_y(view_camera[view_current]) - 32,
+			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+			true);
 			instance_destroy();
 		}
 		if (key_up)
@@ -387,6 +402,12 @@ and(room = room_leveleditor)
 			audio_sound_gain(global.music,global.music_volume,0);
 			audio_sound_gain(global.music_underwater,0,0);
 			global.pause=false;
+			instance_activate_region(
+			camera_get_view_x(view_camera[view_current]) - 32,
+			camera_get_view_y(view_camera[view_current]) - 32,
+			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+			true);
 			instance_destroy();
 		}
 	}
@@ -431,6 +452,12 @@ or(menu = "quit")
 			audio_sound_gain(global.music,global.music_volume,0);
 			audio_sound_gain(global.music_underwater,0,0);
 			global.pause=false;
+			instance_activate_region(
+			camera_get_view_x(view_camera[view_current]) - 32,
+			camera_get_view_y(view_camera[view_current]) - 32,
+			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+			true);
 			instance_destroy();
 			#endregion /*Return to game END*/
 			
@@ -517,6 +544,12 @@ or(menu = "quit")
 			global.theme = noone;
 			global.weather = noone;
 			global.pause=false;
+			instance_activate_region(
+			camera_get_view_x(view_camera[view_current]) - 32,
+			camera_get_view_y(view_camera[view_current]) - 32,
+			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+			true);
 			instance_destroy();
 		}
 		if (key_up)
@@ -561,6 +594,12 @@ or(menu = "quit")
 			global.theme = noone;
 			global.weather = noone;
 			global.pause=false;
+			instance_activate_region(
+			camera_get_view_x(view_camera[view_current]) - 32,
+			camera_get_view_y(view_camera[view_current]) - 32,
+			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+			true);
 			instance_destroy();
 		}
 		if (key_up)
@@ -593,6 +632,12 @@ or(menu = "quit")
 			audio_sound_gain(global.music,global.music_volume,0);
 			audio_sound_gain(global.music_underwater,0,0);
 			global.pause=false;
+			instance_activate_region(
+			camera_get_view_x(view_camera[view_current]) - 32,
+			camera_get_view_y(view_camera[view_current]) - 32,
+			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+			true);
 			instance_destroy();
 		}
 	}
@@ -630,8 +675,14 @@ or(gamepad_button_check_pressed(3, gp_select))
 	{
 		audio_resume_all();
 		audio_sound_gain(global.music,global.music_volume,0);
-			audio_sound_gain(global.music_underwater,0,0);
+		audio_sound_gain(global.music_underwater,0,0);
 		global.pause=false;
+		instance_activate_region(
+		camera_get_view_x(view_camera[view_current]) - 32,
+		camera_get_view_y(view_camera[view_current]) - 32,
+		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+		true);
 		instance_destroy();
 	}
 }

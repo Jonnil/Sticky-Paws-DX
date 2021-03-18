@@ -421,6 +421,7 @@ if (save_level_as_png = false)
 	#region /*ONE PLAYER CAMERA*/
 	else
 	if (asset_get_type("obj_player") == asset_object)
+	and(asset_get_type("obj_camera") == asset_object)
 	and(instance_number(obj_player) = 1)
 	{
 		/*Tries to be a bit ahead of player*/
@@ -747,12 +748,15 @@ if (save_level_as_png = false)
 	{
 		if (asset_get_type("obj_player_map") == asset_object)
 		{
-			/*Map Player*/
-			if (instance_number(obj_player_map) > 0)
+			
+			#region /*Map Player*/
+			if (instance_exists(obj_player_map))
 			{
 				obj_camera.xx = instance_nearest(x, y, obj_player_map).x;
 				obj_camera.yy = instance_nearest(x, y, obj_player_map).y;
 			}
+			#endregion /*Map Player END*/
+			
 		}
 	}
 
