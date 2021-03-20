@@ -51,6 +51,7 @@ function scr_loadconfig() {
 	if (ini_key_exists("Config","player1_key2_attack")){global.player1_key2_attack=ini_read_real("Config","player1_key2_attack",0);}
 	if (ini_key_exists("Config","player1_up_key_is_jump_key")){global.player1_up_key_is_jump_key=ini_read_real("Config","player1_up_key_is_jump_key",0);}
 	if (ini_key_exists("Config","player1_double_tap_to_run")){global.player1_double_tap_to_run=ini_read_real("Config","player1_double_tap_to_run",0);}
+	if (ini_key_exists("Config","player1_sprint_toggle")){global.player1_sprint_toggle=ini_read_real("Config","player1_sprint_toggle",0);}
 	if (ini_key_exists("Config","player1_wall_jump_setting")){global.player1_wall_jump_setting=ini_read_real("Config","player1_wall_jump_setting",0);}
 	if (ini_key_exists("Config","player1_drop_from_rope")){global.player1_drop_from_rope=ini_read_real("Config","player1_drop_from_rope",0);}
 	if (ini_key_exists("Config","player1_show_controls")){global.player1_show_controls=ini_read_real("Config","player1_show_controls",0);}//Load Player 1 Keyboard Remapping End
@@ -80,6 +81,7 @@ function scr_loadconfig() {
 	if (ini_key_exists("Config","player2_key2_attack")){global.player2_key2_attack=ini_read_real("Config","player2_key2_attack",0);}
 	if (ini_key_exists("Config","player2_up_key_is_jump_key")){global.player2_up_key_is_jump_key=ini_read_real("Config","player2_up_key_is_jump_key",0);}
 	if (ini_key_exists("Config","player2_double_tap_to_run")){global.player2_double_tap_to_run=ini_read_real("Config","player2_double_tap_to_run",0);}
+	if (ini_key_exists("Config","player2_sprint_toggle")){global.player2_sprint_toggle=ini_read_real("Config","player2_sprint_toggle",0);}
 	if (ini_key_exists("Config","player2_wall_jump_setting")){global.player2_wall_jump_setting=ini_read_real("Config","player2_wall_jump_setting",0);}
 	if (ini_key_exists("Config","player2_drop_from_rope")){global.player2_drop_from_rope=ini_read_real("Config","player2_drop_from_rope",0);}
 	if (ini_key_exists("Config","player2_show_controls")){global.player2_show_controls=ini_read_real("Config","player2_show_controls",0);}//Load Player 2 Keyboard Remapping End
@@ -109,6 +111,7 @@ function scr_loadconfig() {
 	if (ini_key_exists("Config","player3_key2_attack")){global.player3_key2_attack=ini_read_real("Config","player3_key2_attack",0);}
 	if (ini_key_exists("Config","player3_up_key_is_jump_key")){global.player3_up_key_is_jump_key=ini_read_real("Config","player3_up_key_is_jump_key",0);}
 	if (ini_key_exists("Config","player3_double_tap_to_run")){global.player3_double_tap_to_run=ini_read_real("Config","player3_double_tap_to_run",0);}
+	if (ini_key_exists("Config","player3_sprint_toggle")){global.player3_sprint_toggle=ini_read_real("Config","player3_sprint_toggle",0);}
 	if (ini_key_exists("Config","player3_wall_jump_setting")){global.player3_wall_jump_setting=ini_read_real("Config","player3_wall_jump_setting",0);}
 	if (ini_key_exists("Config","player3_drop_from_rope")){global.player3_drop_from_rope=ini_read_real("Config","player3_drop_from_rope",0);}
 	if (ini_key_exists("Config","player3_show_controls")){global.player3_show_controls=ini_read_real("Config","player3_show_controls",0);}//Load Player 3 Keyboard Remapping End
@@ -138,12 +141,14 @@ function scr_loadconfig() {
 	if (ini_key_exists("Config","player4_key2_attack")){global.player4_key2_attack=ini_read_real("Config","player4_key2_attack",0);}
 	if (ini_key_exists("Config","player4_up_key_is_jump_key")){global.player4_up_key_is_jump_key=ini_read_real("Config","player4_up_key_is_jump_key",0);}
 	if (ini_key_exists("Config","player4_double_tap_to_run")){global.player4_double_tap_to_run=ini_read_real("Config","player4_double_tap_to_run",0);}
+	if (ini_key_exists("Config","player4_sprint_toggle")){global.player4_sprint_toggle=ini_read_real("Config","player4_sprint_toggle",0);}
 	if (ini_key_exists("Config","player4_wall_jump_setting")){global.player4_wall_jump_setting=ini_read_real("Config","player4_wall_jump_setting",0);}
 	if (ini_key_exists("Config","player4_drop_from_rope")){global.player4_drop_from_rope=ini_read_real("Config","player4_drop_from_rope",0);}
 	if (ini_key_exists("Config","player4_show_controls")){global.player4_show_controls=ini_read_real("Config","player4_show_controls",0);}//Load Player 4 Keyboard Remapping End
 	ini_close();
-	}else{//Do Nothing
 	}
-
-
+	else
+	{
+		//Do Nothing
+	}
 }

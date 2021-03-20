@@ -218,6 +218,11 @@ player2_show_controls_alpha=0;
 player3_show_controls_alpha=0;
 player4_show_controls_alpha=0;
 
+show_sprint_toggle_for_player1=0;
+show_sprint_toggle_for_player2=0;
+show_sprint_toggle_for_player3=0;
+show_sprint_toggle_for_player4=0;
+
 /*Player 1*/player1_has_pressed_key_up=false;
 player1_has_pressed_key_left=false;
 player1_has_pressed_key_right=false;

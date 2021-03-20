@@ -1481,6 +1481,145 @@ else
 }
 #endregion /*Player 4 Show Controls HUD timer*/
 
+#region /*Sprint Toggling*/
+if(keyboard_check_pressed(global.player1_key_sprint_toggle))
+{
+	show_sprint_toggle_for_player1 = 100;
+	show_sprint_toggle_for_player2 = 0;
+	show_sprint_toggle_for_player3 = 0;
+	show_sprint_toggle_for_player4 = 0;
+	if (global.player1_sprint_toggle = false)
+	{
+		global.player1_sprint_toggle = true;
+	}
+	else
+	{
+		global.player1_sprint_toggle = false;
+	}
+}
+if(keyboard_check_pressed(global.player2_key_sprint_toggle))
+{
+	show_sprint_toggle_for_player1 = 0;
+	show_sprint_toggle_for_player2 = 100;
+	show_sprint_toggle_for_player3 = 0;
+	show_sprint_toggle_for_player4 = 0;
+	if (global.player2_sprint_toggle = false)
+	{
+		global.player2_sprint_toggle = true;
+	}
+	else
+	{
+		global.player2_sprint_toggle = false;
+	}
+}
+if(keyboard_check_pressed(global.player3_key_sprint_toggle))
+{
+	show_sprint_toggle_for_player1 = 0;
+	show_sprint_toggle_for_player2 = 0;
+	show_sprint_toggle_for_player3 = 100;
+	show_sprint_toggle_for_player4 = 0;
+	if (global.player3_sprint_toggle = false)
+	{
+		global.player3_sprint_toggle = true;
+	}
+	else
+	{
+		global.player3_sprint_toggle = false;
+	}
+}
+if(keyboard_check_pressed(global.player4_key_sprint_toggle))
+{
+	show_sprint_toggle_for_player1 = 0;
+	show_sprint_toggle_for_player2 = 0;
+	show_sprint_toggle_for_player3 = 0;
+	show_sprint_toggle_for_player4 = 100;
+	if (global.player4_sprint_toggle = false)
+	{
+		global.player4_sprint_toggle = true;
+	}
+	else
+	{
+		global.player4_sprint_toggle = false;
+	}
+}
+draw_set_halign(fa_left);
+draw_set_valign(fa_center);
+if (show_sprint_toggle_for_player1>0)
+{
+	show_sprint_toggle_for_player1 -= 1;
+	show_sprint_toggle_for_player2 = 0;
+	show_sprint_toggle_for_player3 = 0;
+	show_sprint_toggle_for_player4 = 0;
+	if (global.playergame <= 0)
+	{
+		if (global.player1_sprint_toggle = true)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Always Run: True",global.default_text_size,c_white,c_black,1);
+		}
+		else
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Always Run: False",global.default_text_size,c_white,c_black,1);
+		}
+	}
+	else
+	{
+		if (global.player1_sprint_toggle = true)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 1 Always Run: True",global.default_text_size,c_white,c_black,1);
+		}
+		else
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 1 Always Run: False",global.default_text_size,c_white,c_black,1);
+		}
+	}
+}
+if (show_sprint_toggle_for_player2>0)
+{
+	show_sprint_toggle_for_player1 = 0;
+	show_sprint_toggle_for_player2 -= 1;
+	show_sprint_toggle_for_player3 = 0;
+	show_sprint_toggle_for_player4 = 0;
+	if (global.player2_sprint_toggle = true)
+	{
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 2 Always Run: True",global.default_text_size,c_white,c_black,1);
+	}
+	else
+	{
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 2 Always Run: False",global.default_text_size,c_white,c_black,1);
+	}
+}
+if (show_sprint_toggle_for_player3>0)
+{
+	show_sprint_toggle_for_player1 = 0;
+	show_sprint_toggle_for_player2 = 0;
+	show_sprint_toggle_for_player3 -= 1;
+	show_sprint_toggle_for_player4 = 0;
+	if (global.player3_sprint_toggle = true)
+	{
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 3 Always Run: True",global.default_text_size,c_white,c_black,1);
+	}
+	else
+	{
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 3 Always Run: False",global.default_text_size,c_white,c_black,1);
+	}
+}
+if (show_sprint_toggle_for_player4>0)
+{
+	show_sprint_toggle_for_player1 = 0;
+	show_sprint_toggle_for_player2 = 0;
+	show_sprint_toggle_for_player3 = 0;
+	show_sprint_toggle_for_player4 -= 1;
+	if (global.player4_sprint_toggle = true)
+	{
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 4 Always Run: True",global.default_text_size,c_white,c_black,1);
+	}
+	else
+	{
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 4 Always Run: False",global.default_text_size,c_white,c_black,1);
+	}
+}
+#endregion /*Sprint Toggling END*/
+
 ///Fix Player not spawning in level editor
 /*The player doesn't spawn when you simply try to playtest in the level editor, don't know why this is happening, but doing this code in a step/draw event fixes it for now. Will have to look into this more at another time*/
 if (player_has_spawned = false)
