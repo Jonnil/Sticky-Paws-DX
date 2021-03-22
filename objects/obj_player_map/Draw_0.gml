@@ -209,9 +209,7 @@ or (global.QuitGame = true)
 }
 #endregion /*Quit Game END*/
 
-#region /*Color Skin*/
-image_blend = global.hex_color_for_player_1;
-#endregion /*Color Skin END*/
+image_blend = global.hex_color_for_player_1; /*Color Skin*/
 
 #region /*Make sure level music and sound effects stops playing*/
 if (asset_get_type("snd_slip") == asset_sound)
@@ -303,13 +301,82 @@ if (asset_get_type("snd_music_map") == asset_sound)
 
 #region /*Keyboard Controls*/
 gamepad_set_axis_deadzone(0, 0.50);
-key_up = (keyboard_check(global.player1_key_up)) and(!keyboard_check(global.player1_key_down)) or(gamepad_button_check(0, gp_padu)) and(!gamepad_button_check(0, gp_padd)) or(gamepad_axis_value(0, gp_axislv) < 0);
-key_left = (keyboard_check(global.player1_key_left)) and(!keyboard_check(global.player1_key_right)) or(gamepad_button_check(0, gp_padl)) and(!gamepad_button_check(0, gp_padr)) or(gamepad_axis_value(0, gp_axislh) < 0);
-key_right = (keyboard_check(global.player1_key_right)) and(!keyboard_check(global.player1_key_left)) or(gamepad_button_check(0, gp_padr)) and(!gamepad_button_check(0, gp_padl)) or(gamepad_axis_value(0, gp_axislh) > 0);
-key_down = (keyboard_check(global.player1_key_down)) and(!keyboard_check(global.player1_key_up)) or(gamepad_button_check(0, gp_padd)) and(!gamepad_button_check(0, gp_padu)) or(gamepad_axis_value(0, gp_axislv) > 0);
-key_a = (gamepad_button_check_pressed(0, gp_face1)) or(gamepad_button_check_pressed(0, gp_face2)) or(keyboard_check_pressed(global.player1_key_jump)) or(keyboard_check_pressed(vk_enter));
-key_b_pressed = (gamepad_button_check_pressed(0, gp_face3)) or(gamepad_button_check_pressed(0, gp_face4)) or(keyboard_check_pressed(global.player1_key_sprint));
-#endregion /*Keyboard Controls End*/
+
+#region /*Player 1 Key Left Hold*/
+key_left =
+(keyboard_check(global.player1_key_left))
+and(!keyboard_check(global.player1_key_right))
+or(keyboard_check(vk_left))
+and(!keyboard_check(vk_right))
+or(keyboard_check(ord("A")))
+and(!keyboard_check(ord("D")))
+or(gamepad_button_check(0, gp_padl))
+and(!gamepad_button_check(0, gp_padr))
+or(gamepad_axis_value(0, gp_axislh) < 0);
+#endregion /*Player 1 Key Left Hold END*/
+
+#region /*Player 1 Key Right Hold*/
+key_right =
+(keyboard_check(global.player1_key_right))
+and(!keyboard_check(global.player1_key_left))
+or(keyboard_check(vk_right))
+and(!keyboard_check(vk_left))
+or(keyboard_check(ord("D")))
+and(!keyboard_check(ord("A")))
+or(gamepad_button_check(0, gp_padr))
+and(!gamepad_button_check(0, gp_padl))
+or(gamepad_axis_value(0, gp_axislh) > 0);
+#endregion /*Player 1 Key Right Hold END*/
+
+#region /*Player 1 Key Down Hold*/
+key_down =
+(keyboard_check(global.player1_key_down))
+and(!keyboard_check(global.player1_key_up))
+or(keyboard_check(vk_down))
+and(!keyboard_check(vk_up))
+or(keyboard_check(ord("S")))
+and(!keyboard_check(ord("W")))
+or(gamepad_button_check(0, gp_padd))
+and(!gamepad_button_check(0, gp_padu))
+or(gamepad_axis_value(0, gp_axislv) > 0);
+#endregion /*Player 1 Key Down Hold END*/
+
+#region /*Player 1 Key Up Hold*/
+key_up =
+(keyboard_check(global.player1_key_up))
+and(!keyboard_check(global.player1_key_down))
+or(keyboard_check(vk_up))
+and(!keyboard_check(vk_down))
+or(keyboard_check(ord("W")))
+and(!keyboard_check(ord("S")))
+or(gamepad_button_check(0, gp_padu))
+and(!gamepad_button_check(0, gp_padd))
+or(gamepad_axis_value(0, gp_axislv) < 0);
+#endregion /*Player 1 Key Up Hold END*/
+
+#region /*Player 1 Key Accept Pressed*/
+key_a =
+(gamepad_button_check_pressed(0, gp_face1))
+or(gamepad_button_check_pressed(0, gp_face2))
+or(keyboard_check_pressed(global.player1_key_jump))
+or(keyboard_check_pressed(global.player1_key2_jump))
+or(keyboard_check_pressed(vk_space))
+or(keyboard_check_pressed(vk_enter))
+or(keyboard_check_pressed(ord("Z")));
+#endregion /*Player 1 Key Accept Pressed END*/
+
+#region /*Player 1 Key Back Pressed*/
+key_b_pressed =
+(gamepad_button_check_pressed(0, gp_face3))
+or(gamepad_button_check_pressed(0, gp_face4))
+or(keyboard_check_pressed(global.player1_key_sprint))
+or(keyboard_check_pressed(global.player1_key2_sprint))
+or(keyboard_check_pressed(vk_backspace))
+or(keyboard_check_pressed(vk_escape))
+or(keyboard_check_pressed(ord("X")));
+#endregion /*Player 1 Key Back Pressed*/
+
+#endregion /*Keyboard Controls END*/
 
 depth = -10;
 xx = lerp(xx, x, 0.2);

@@ -2,13 +2,22 @@
 function scr_options_menu(){
 
 	if (in_settings=true){
-	scr_saveconfig();/*Save Config*/
+	scr_saveconfig(); /*Save Config*/
 
 	if (global.narrator>=1){narrator_name="Kai";}
 
 	#region /*Set a default font*/
-	if (asset_get_type("font_other_languages")==asset_font)and(global.language_localization=localization.ar_sa){draw_set_font(font_other_languages);}else
-	if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}#endregion /*Set a default font END*/
+	if (asset_get_type("font_other_languages")==asset_font)
+	and(global.language_localization=localization.ar_sa)
+	{
+		draw_set_font(font_other_languages);
+	}
+	else
+	if (asset_get_type("font_default")==asset_font)
+	{
+		draw_set_font(font_default);
+	}
+	#endregion /*Set a default font END*/
 
 	#region /*Scroll menu on right side*/
 	menu_y_offset=lerp(menu_y_offset,menu_y_offset_real,0.1);
@@ -16,14 +25,17 @@ function scr_options_menu(){
 	{
 		menu_y_offset_real=0;
 	}
-	/*Scrolling menu down*/
+	
+	#region /*Scrolling menu down with mouse wheel*/
 	if (mouse_wheel_down())
 	and(can_navigate_settings_sidebar=false)
 	{
 		menu_y_offset_real-=10;
 		menu_y_offset-=10;
 	}
-	/*Scrolling menu up*/
+	#endregion /*Scrolling menu down with mouse wheel END*/
+	
+	#region /*Scrolling menu up with mouse wheel*/
 	if (mouse_wheel_up())
 	and(can_navigate_settings_sidebar=false)
 	and(menu_y_offset<=-10)
@@ -31,20 +43,25 @@ function scr_options_menu(){
 		menu_y_offset_real+=10;
 		menu_y_offset+=10;
 	}
+	#endregion /*Scrolling menu up with mouse wheel END*/
+	
 	if (abs(menu_y_offset_real)+camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-60<menu_cursor_y_position)
 	and(menu_cursor_y_position>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
 	{
 		menu_y_offset_real-=10;
 	}
+	
 	if (abs(menu_y_offset_real)+60>menu_cursor_y_position)
 	{
 		menu_y_offset_real+=10;
 	}
+	
 	if (abs(menu_y_offset_real)+camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+60<menu_cursor_y_position)
 	and(menu_cursor_y_position>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
 	{
 		menu_y_offset_real-=100;
 	}
+	
 	if (abs(menu_y_offset_real)-60>menu_cursor_y_position)
 	{
 		menu_y_offset_real+=100;

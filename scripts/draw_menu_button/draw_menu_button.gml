@@ -20,7 +20,7 @@ function draw_menu_button()
 	var clicked_on=false;
 	#endregion /*Initialize variables END*/
 	
-	if (point_in_rectangle(mouse_x,mouse_y,x_position,y_position+2,x_position+370,y_position+41))
+	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position+2,x_position+370,y_position+41))
 	and(global.controls_used_for_menu_navigation="mouse")
 	{
 		if (keyboard_check(vk_anykey))
@@ -43,7 +43,7 @@ function draw_menu_button()
 	}
 
 	#region /*Clicking the menu button*/
-	if (point_in_rectangle(mouse_x,mouse_y,x_position,y_position+2,x_position+370,y_position+41))
+	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position+2,x_position+370,y_position+41))
 	{
 		if (menu_takes_you_to=false)
 		or(menu_takes_you_to=noone)

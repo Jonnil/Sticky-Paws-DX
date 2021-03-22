@@ -108,8 +108,8 @@ if (global.pause_player = 3)
 
 #region /*Darker Background*/
 draw_set_alpha(0.5);
-draw_rectangle_colour(0, 0, room_width * 2, room_height, c_red, c_blue, c_blue, c_red, false);
-draw_rectangle_colour(0, 0, room_width * 2, room_height, c_black, c_black, c_black, c_black, false);
+draw_rectangle_colour(0, 0, window_get_width(), window_get_height(), c_red, c_blue, c_blue, c_red, false);
+draw_rectangle_colour(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
 #endregion /*Darker Background End*/
 
@@ -256,11 +256,10 @@ and(room = room_leveleditor)
 {
 	
 	/*Continue*/
+	draw_menu_button(window_get_width()/2,window_get_height()/2,"Continue","continue","continue");
+	
 	if (menu = "continue")
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, "> CONTINUE <", global.default_text_size * 2.3, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "OPTIONS", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "SAVE AND QUIT", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		if (key_a)
 		and(menu_delay = 0)
 		{
@@ -692,10 +691,10 @@ scr_options_menu(); /*Options*/
 
 #region /*Window is focused, hide cursor*/
 if (window_has_focus())
-and(mouse_x > camera_get_view_x(view_camera[view_current]) + 8)
-and(mouse_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8)
-and(mouse_y > camera_get_view_y(view_camera[view_current]) + 8)
-and(mouse_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8)
+and(window_mouse_get_x() > camera_get_view_x(view_camera[view_current]) + 8)
+and(window_mouse_get_x() < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8)
+and(window_mouse_get_y() > camera_get_view_y(view_camera[view_current]) + 8)
+and(window_mouse_get_y() < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8)
 {
 	window_set_cursor(cr_none);
 }
@@ -712,7 +711,12 @@ else
 if (!window_has_focus())
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), room_width, room_height, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(
+	0,
+	0,
+	window_get_width(),
+	window_get_height(),
+	c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
 #endregion /*If Window is unfocused, make the screen darker END*/
@@ -723,6 +727,6 @@ and(global.controls_used_for_menu_navigation="mouse")
 and(os_type!=os_ios)
 and(os_type!=os_android)
 {
-	draw_sprite_ext(spr_cursor,0,mouse_x,mouse_y,1,1,0,c_white,1);
+	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/
