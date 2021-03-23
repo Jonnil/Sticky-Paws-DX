@@ -57,6 +57,6 @@ and(global.controls_used_for_menu_navigation="mouse")
 and(os_type!=os_ios)
 and(os_type!=os_android)
 {
-	draw_sprite_ext(spr_cursor,0,mouse_x,mouse_y,1,1,0,c_white,1);
+	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/

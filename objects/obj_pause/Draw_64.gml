@@ -61,7 +61,7 @@ gamepad_set_axis_deadzone(1, 0.50);
 gamepad_set_axis_deadzone(2, 0.50);
 gamepad_set_axis_deadzone(3, 0.50);
 
-/*Player 1*/
+#region /*Player 1*/
 if (global.pause_player = 0)
 {
 	gamepad_set_axis_deadzone(0, 0.50);
@@ -72,8 +72,9 @@ if (global.pause_player = 0)
 	key_a = (gamepad_button_check_pressed(0, gp_face1)) or(keyboard_check_pressed(ord("Z"))) or(keyboard_check_pressed(vk_enter)) or(keyboard_check_pressed(vk_space));
 	key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or(keyboard_check_pressed(ord("X"))) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(vk_backspace));
 }
+#endregion /*Player 1 END*/
 
-/*Player 2*/
+#region /*Player 2*/
 if (global.pause_player = 1)
 {
 	key_up = (keyboard_check_pressed(global.player2_key_up)) and(!keyboard_check_pressed(global.player2_key_down)) or(gamepad_button_check_pressed(1, gp_padu)) and(!gamepad_button_check_pressed(1, gp_padd)) or(gamepad_axis_value(1, gp_axislv) < 0)
@@ -83,8 +84,9 @@ if (global.pause_player = 1)
 	key_a = (gamepad_button_check_pressed(1, gp_face1)) or(keyboard_check_pressed(global.player2_key_jump))
 	key_b_pressed = (gamepad_button_check_pressed(1, gp_face2)) or(keyboard_check_pressed(global.player2_key_sprint))
 }
+#endregion /*Player 2 END*/
 
-/*Player 3*/
+#region /*Player 3*/
 if (global.pause_player = 2)
 {
 	key_up = (keyboard_check_pressed(global.player3_key_up)) and(!keyboard_check_pressed(global.player3_key_down)) or(gamepad_button_check_pressed(2, gp_padu)) and(!gamepad_button_check_pressed(2, gp_padd)) or(gamepad_axis_value(2, gp_axislv) < 0)
@@ -94,7 +96,9 @@ if (global.pause_player = 2)
 	key_a = (gamepad_button_check_pressed(2, gp_face1)) or(keyboard_check_pressed(global.player3_key_jump))
 	key_b_pressed = (gamepad_button_check_pressed(2, gp_face2)) or(keyboard_check_pressed(global.player3_key_sprint))
 }
-/*Player 4*/
+#endregion /*Player 3 END*/
+
+#region /*Player 4*/
 if (global.pause_player = 3)
 {
 	key_up = (keyboard_check_pressed(global.player4_key_up)) and(!keyboard_check_pressed(global.player4_key_down)) or(gamepad_button_check_pressed(3, gp_padu)) and(!gamepad_button_check_pressed(3, gp_padd)) or(gamepad_axis_value(3, gp_axislv) < 0)
@@ -104,6 +108,8 @@ if (global.pause_player = 3)
 	key_a = (gamepad_button_check_pressed(3, gp_face1)) or(keyboard_check_pressed(global.player4_key_jump))
 	key_b_pressed = (gamepad_button_check_pressed(3, gp_face2)) or(keyboard_check_pressed(global.player4_key_sprint))
 }
+#endregion /*Player 4 END*/
+
 #endregion /*Keyboard Controls End*/
 
 #region /*Darker Background*/
@@ -160,7 +166,7 @@ and(menu != "remap_save")
 #region /*Games Logo in top left corner*/
 if asset_get_type("spr_title") == asset_sprite
 {
-	draw_sprite_ext(spr_title, 0, camera_get_view_x(view_camera[view_current]) + 100, camera_get_view_y(view_camera[view_current]) + 70, 0.3, 0.3, 0, c_white, 1);
+	draw_sprite_ext(spr_title, 0, 100, 70, 0.3, 0.3, 0, c_white, 1);
 }
 #endregion /*Games Logo in top left corner END*/
 
@@ -171,21 +177,21 @@ if (global.show_fps = true)
 	draw_set_valign(fa_center);
 	if (fps >= 60)
 	{
-		draw_text_outlined(0 + 30, camera_get_view_y(view_camera[view_current]) + 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_lime, 1);
+		draw_text_outlined(0 + 30, 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_lime, 1);
 	}
 	else
 	if (fps >= 50)
 	{
-		draw_text_outlined(0 + 30, camera_get_view_y(view_camera[view_current]) + 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_yellow, 1);
+		draw_text_outlined(0 + 30, 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_yellow, 1);
 	}
 	else
 	if (fps >= 40)
 	{
-		draw_text_outlined(0 + 30, camera_get_view_y(view_camera[view_current]) + 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_orange, 1);
+		draw_text_outlined(0 + 30, 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_orange, 1);
 	}
 	else
 	{
-		draw_text_outlined(0 + 30, camera_get_view_y(view_camera[view_current]) + 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_red, 1);
+		draw_text_outlined(0 + 30, 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_red, 1);
 	}
 }
 #endregion /*Show FPS End*/
@@ -256,11 +262,28 @@ and(room = room_leveleditor)
 {
 	
 	/*Continue*/
-	draw_menu_button(window_get_width()/2,window_get_height()/2,"Continue","continue","continue");
+	if (menu = "continue")
+	or(menu = "options")
+	or(menu = "quit")
+	{
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Continue","continue","continue");
+		if (global.convention_mode = false)
+		{
+			draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Options","options","options");
+			draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit","quit","quit");
+		}
+		else
+		{
+			draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit","quit","quit");
+		}
+	}
 	
 	if (menu = "continue")
 	{
 		if (key_a)
+		and(menu_delay = 0)
+		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2,window_get_width()/2+185,window_get_height()/2+41))
+		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
 		{
 			
@@ -300,12 +323,13 @@ and(room = room_leveleditor)
 	else
 	if (menu = "options")
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, "CONTINUE", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "> OPTIONS <", global.default_text_size * 2.3, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "SAVE AND QUIT", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-
+		
 		#region /*Select Options*/
 		if (key_a)
+		and(menu_delay = 0)
+		and(global.convention_mode = false)
+		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42,window_get_width()/2+185,window_get_height()/2+41+42))
+		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
 		and(global.convention_mode = false)
 		{
@@ -340,13 +364,13 @@ and(room = room_leveleditor)
 	#endregion /*Options END*/
 
 
-	/*Save and Quit*/
+	#region /*Save and Quit*/
 	if (menu = "quit")
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, "CONTINUE", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "OPTIONS", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "> SAVE AND QUIT <", global.default_text_size * 2.3, c_menu_outline, c_menu_fill, 1);
 		if (key_a)
+		and(menu_delay = 0)
+		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
+		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
 		{
 			/*Return to game*/
@@ -387,6 +411,7 @@ and(room = room_leveleditor)
 			menu = "continue";
 		}
 	}
+	#endregion /*Save and Quit END*/
 	
 	#region /*Return to game*/
 	if (menu = "continue")
