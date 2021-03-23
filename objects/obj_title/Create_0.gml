@@ -482,7 +482,6 @@ menu_cursor_index=0;
 in_settings=false;
 can_navigate_settings_sidebar=true;
 navigate_slider=false;
-enable_add_ons=false;/*Enable Add-ons or not*/
 menu_remap_key_number=0;
 name_enter_blink=0;
 can_navigate=true;

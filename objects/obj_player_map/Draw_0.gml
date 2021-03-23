@@ -1606,7 +1606,7 @@ and(move_delay > 10)
 		or(instance_nearest(x, y, obj_level).y_checkpoint > 0)
 		and(asset_get_type("spr_checkpoint") == asset_sprite)
 		{
-			draw_sprite_ext(spr_checkpoint, 1, x + 122, y - 64, 0.3, 0.3, 0, c_white, 1);
+			draw_sprite_ext(spr_checkpoint, 1, x + 152, y - 64, 0.3, 0.3, 0, c_white, 1);
 		}
 		#endregion /*Show if Checkpoint is activated END*/
 		

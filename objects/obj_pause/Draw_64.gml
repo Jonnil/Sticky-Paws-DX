@@ -170,32 +170,6 @@ if asset_get_type("spr_title") == asset_sprite
 }
 #endregion /*Games Logo in top left corner END*/
 
-#region /*Show FPS*/
-if (global.show_fps = true)
-{
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_center);
-	if (fps >= 60)
-	{
-		draw_text_outlined(0 + 30, 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_lime, 1);
-	}
-	else
-	if (fps >= 50)
-	{
-		draw_text_outlined(0 + 30, 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_yellow, 1);
-	}
-	else
-	if (fps >= 40)
-	{
-		draw_text_outlined(0 + 30, 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_orange, 1);
-	}
-	else
-	{
-		draw_text_outlined(0 + 30, 150, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_red, 1);
-	}
-}
-#endregion /*Show FPS End*/
-
 #region /*Pause Text blink effect*/
 if (pause_text_lerp <= 0)
 {
@@ -373,7 +347,8 @@ and(room = room_leveleditor)
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
 		{
-			/*Return to game*/
+			
+			#region /*Return to game*/
 
 			#region /*Reset timer back to zero*/
 			global.timeattack_realmillisecond = 0;
@@ -394,6 +369,9 @@ and(room = room_leveleditor)
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
 			true);
 			instance_destroy();
+			
+			#endregion /*Return to game END*/
+			
 		}
 		if (key_up)
 		and(!key_down)
@@ -436,20 +414,7 @@ and(room = room_leveleditor)
 		}
 	}
 	#endregion /*Return to game END*/
-	
-	#region /*Draw lock if convention mode is on*/
-	if (global.convention_mode = true)
-	{
-		if (menu = "continue")
-		or(menu = "options")
-		or(menu = "select_level")
-		or(menu = "quit")
-		{
-			draw_sprite(spr_lock, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 10);
-		}
-	}
-	#endregion /*Draw lock if convention mode is on END*/
-	
+
 }
 /*PAUSE LEVEL EDITOR MENU*/
 

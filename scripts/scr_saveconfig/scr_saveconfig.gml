@@ -14,6 +14,7 @@ function scr_saveconfig() {
 	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
 	ini_write_real("Config","interpolate",global.interpolate);
 	ini_write_real("Config","show_fps",global.show_fps);
+	ini_write_real("Config","show_fps_real",global.show_fps_real);
 	ini_write_real("Config","music_volume",global.music_volume);
 	ini_write_real("Config","sfx_volume",global.sfx_volume);
 	ini_write_real("Config","voices_volume",global.voices_volume);

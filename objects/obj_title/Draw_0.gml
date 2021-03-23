@@ -7,6 +7,22 @@
 //if(file_exists(working_directory + "/Custom Characters/Character "+string(global.sprite_select_character_1-global.max_number_of_official_characters)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+320,"true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+320,"false",global.default_text_size,c_white,c_black,1);}
 //if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+420,"Offical: true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+420,"Official: false",global.default_text_size,c_white,c_black,1);}
 
+#region /*Background Brightness Options*/
+if (global.background_brightness < 0)
+{
+	draw_set_alpha(abs(global.background_brightness));
+	draw_rectangle_color(0,0,room_width*2,room_height*2,c_black,c_black,c_black,c_black,false);
+	draw_set_alpha(1);
+}
+else
+if (global.background_brightness > 0)
+{
+	draw_set_alpha(abs(global.background_brightness));
+	draw_rectangle_color(0,0,room_width*2,room_height*2,c_white,c_white,c_white,c_white,false);
+	draw_set_alpha(1);
+}
+#endregion /*Background Brightness Options END*/
+
 if (global.background_brightness>-0.1)
 {
 	c_menu_outline=c_white;

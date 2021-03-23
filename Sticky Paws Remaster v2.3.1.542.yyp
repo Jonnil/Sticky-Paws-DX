@@ -180,6 +180,7 @@
     {"id":{"name":"obj_foreground1","path":"objects/obj_foreground1/obj_foreground1.yy",},"order":26,},
     {"id":{"name":"scr_savelevel","path":"scripts/scr_savelevel/scr_savelevel.yy",},"order":3,},
     {"id":{"name":"spr_sign_reset","path":"sprites/spr_sign_reset/spr_sign_reset.yy",},"order":82,},
+    {"id":{"name":"obj_background_brightness","path":"objects/obj_background_brightness/obj_background_brightness.yy",},"order":31,},
     {"id":{"name":"snd_catch_ivy","path":"sounds/snd_catch_ivy/snd_catch_ivy.yy",},"order":14,},
     {"id":{"name":"obj_level","path":"objects/obj_level/obj_level.yy",},"order":2,},
     {"id":{"name":"snd_menuvoice_4player","path":"sounds/snd_menuvoice_4player/snd_menuvoice_4player.yy",},"order":79,},

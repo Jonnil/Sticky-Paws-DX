@@ -31,7 +31,6 @@ menu_cursor_index=0;
 in_settings=false;
 can_navigate_settings_sidebar=true;
 navigate_slider=false;
-enable_add_ons=false;/*Enable Add-ons or not*/
 menu_remap_key_number=0;
 menu_y_offset=0;/*This is the y offset that will have lerping to make the menu scrolling smooth*/
 menu_y_offset_real=0;/*This is the real y offset for the menu, used for menu scrolling*/

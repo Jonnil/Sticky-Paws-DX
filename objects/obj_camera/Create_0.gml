@@ -5,14 +5,6 @@ mx = mouse_x;
 my = mouse_y;
 #endregion /*Mouse x and mouse y initializing END*/
 
-#region /*Background Brightness*/
-background_brightness_layer=layer_background_create(layer_create(50,"background_brightness"),spr_player_stand)
-layer_background_sprite(background_brightness_layer,spr_block_black);
-layer_background_alpha(background_brightness_layer,abs(global.background_brightness));
-layer_background_htiled(background_brightness_layer,true);
-layer_background_vtiled(background_brightness_layer,true);
-#endregion /*Background Brightness END*/
-
 #region /*Lives Icon*/
 if (file_exists(working_directory + "/Custom Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini"))
 {
@@ -67,7 +59,12 @@ else
 }
 #endregion /*Lives Icon END*/
 
-#region /*Create Foreground*/
+#region /*Create Foreground and Background Brightness Layer*/
+if (asset_get_type("obj_background_brightness")==asset_object)
+and(!instance_exists(obj_background_brightness))
+{
+	instance_create_depth(0,0,0,obj_background_brightness);
+}
 if (asset_get_type("obj_foreground1")==asset_object)
 and(!instance_exists(obj_foreground1))
 {
@@ -78,7 +75,7 @@ and(!instance_exists(obj_foreground2))
 {
 	instance_create_depth(0,0,0,obj_foreground2);
 }
-#endregion /*Create Foreground END*/
+#endregion /*Create Foreground and Background Brightness Layer END*/
 
 save_level_as_png=false;
 allow_spawn_decorations=false;

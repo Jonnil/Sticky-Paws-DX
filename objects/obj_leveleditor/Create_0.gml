@@ -81,7 +81,6 @@ menu_cursor_index=0;
 in_settings=false;
 can_navigate_settings_sidebar=true;
 navigate_slider=false;
-enable_add_ons=false;/*Enable Add-ons or not*/
 menu="continue"
 name_enter_blink=0;
 menu_delay=0;
