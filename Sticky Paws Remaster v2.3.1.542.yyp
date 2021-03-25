@@ -291,6 +291,7 @@
     {"id":{"name":"spr_blaster","path":"sprites/spr_blaster/spr_blaster.yy",},"order":2,},
     {"id":{"name":"obj_level_end","path":"objects/obj_level_end/obj_level_end.yy",},"order":9,},
     {"id":{"name":"spr_1up","path":"sprites/spr_1up/spr_1up.yy",},"order":65,},
+    {"id":{"name":"spr_pause_text","path":"sprites/spr_pause_text/spr_pause_text.yy",},"order":99,},
     {"id":{"name":"obj_pause","path":"objects/obj_pause/obj_pause.yy",},"order":10,},
     {"id":{"name":"snd_enemyvoice_defeated2","path":"sounds/snd_enemyvoice_defeated2/snd_enemyvoice_defeated2.yy",},"order":32,},
     {"id":{"name":"scr_translation","path":"scripts/scr_translation/scr_translation.yy",},"order":7,},

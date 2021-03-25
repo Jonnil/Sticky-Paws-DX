@@ -392,6 +392,8 @@ and(!instance_exists(obj_title))
 
 #region /*Show FPS Options*/
 if (global.pause = false)
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
 {
 	
 	#region /*FPS*/

@@ -5,13 +5,14 @@
 /*Readme textfile for how to use the level editor*/leveleditor_readme=noone;
 
 /*Change how menus look and function*/
-global.can_select_number_of_players=true;/*If this is true, there will be a number of players select screen before you start the game*/
-global.character_select_screen=true;/*If this is true, there will be a character select screen before you start the game*/
-global.character_clothes_customization=false;/*If this is true, you can costumize the character's clothes in the menu*/
-global.character_color_select=false;/*If this is true, you can choose the character's color in the menu*/
-global.select_number_of_players_before_selecting_characters=false;/*If you should select how many players are going to play before you select what character to play as*/
+global.can_select_number_of_players=true; /*If this is true, there will be a number of players select screen before you start the game*/
+global.character_select_screen=true; /*If this is true, there will be a character select screen before you start the game*/
+global.character_clothes_customization=false; /*If this is true, you can costumize the character's clothes in the menu*/
+global.character_color_select=false; /*If this is true, you can choose the character's color in the menu*/
+global.select_number_of_players_before_selecting_characters=false; /*If you should select how many players are going to play before you select what character to play as*/
 global.max_number_of_official_characters = 1; /*Update this whenever you add more official playable characters!*/
 
+#region /*What settings tabs to show up*/
 global.enable_multiplayer_settings = false; /*Enable Multiplayer settings*/
 global.enable_controller_settings = false; /*Enable Controller settings*/
 global.enable_touch_settings = false; /*Enable Touch settings*/
@@ -22,19 +23,25 @@ global.enable_language_settings = false; /*Enable Language settings*/
 global.enable_broadcast_settings = false; /*Enable Broadcast settings*/
 global.enable_how_to_play_settings = false; /*Enable How to play settings*/
 global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
+#endregion /*What settings tabs to show up END*/
 
-global.max_fps=60;/*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
-global.default_text_size=0.2//0.1125;
+#region /*What settings can be changed*/
+global.enable_verbosity_slider = false;
+global.enable_narrator = false;
+#region /*What settings can be changed*/
 
-global.demo=false;/*When making a demo version of the game, turn this to true, otherwise turn this to false for the full version*/
-global.demo_max_levels=3;/*Set how many levels the demo version have unlocked*/
+global.max_fps=60; /*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
+global.default_text_size=0.2 //0.1125;
+
+global.demo=false; /*When making a demo version of the game, turn this to true, otherwise turn this to false for the full version*/
+global.demo_max_levels=3; /*Set how many levels the demo version have unlocked*/
 
 /*Upgrades. Choose what abilities the player character have when they start the game*/
-global.has_upgrade_double_jump=false;/*If you have the Double Jump Upgrade*/
+global.has_upgrade_double_jump=false; /*If you have the Double Jump Upgrade*/
 
-global.deactivate_objects_outsiede_view=true;/*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
+global.deactivate_objects_outsiede_view=true; /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
 
-global.number_of_chain_kills_for_1up=8;/*How many chain reaction kills you need to get 1-ups. Default is 8*/
+global.number_of_chain_kills_for_1up=8; /*How many chain reaction kills you need to get 1-ups. Default is 8*/
 
 #endregion /*Things you could change END*/
 

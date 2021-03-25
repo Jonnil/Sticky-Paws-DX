@@ -29,6 +29,7 @@ function draw_menu_checkmark()
 	if (variable_to_check=false)
 	{
 		if (point_in_rectangle(mouse_x,mouse_y,x_position,y_position,x_position+370,y_position+32))
+		and(global.controls_used_for_menu_navigation="mouse")
 		{
 			draw_sprite_ext(spr_menu_checkmark,0,x_position+42,y_position,1,1,0,c_lime,1);
 		}
@@ -50,11 +51,14 @@ function draw_menu_checkmark()
 	}
 
 	#region /*Clicking the menu button*/
-	if (point_in_rectangle(mouse_x,mouse_y,x_position,y_position,x_position+370,y_position+32))and(mouse_check_button_pressed(mb_left))
+	if (point_in_rectangle(mouse_x,mouse_y,x_position,y_position,x_position+370,y_position+32))
+	and(mouse_check_button_pressed(mb_left))
+	and(global.controls_used_for_menu_navigation="mouse")
 	{
 		menu=menu_index;
 		can_navigate_settings_sidebar=false;
-	}#endregion /*Clicking the menu button END*/
+	}
+	#endregion /*Clicking the menu button END*/
 
 	#region /*Text inside the menu button*/
 	draw_set_halign(fa_left);
