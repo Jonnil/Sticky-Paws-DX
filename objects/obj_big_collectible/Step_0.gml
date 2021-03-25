@@ -123,8 +123,8 @@ if (follow_player = true)
 		}
 		#endregion /*Show Big Collectible HUD END*/
 		
-		x = lerp(x, instance_nearest(x, y, obj_player).x-16, 0.5);
-		y = lerp(y, instance_nearest(x, y, obj_player).y-16, 0.5);
+		x = lerp(x, instance_nearest(x, y, obj_player).x, 0.5);
+		y = lerp(y, instance_nearest(x, y, obj_player).y, 0.5);
 	}
 	else
 	{

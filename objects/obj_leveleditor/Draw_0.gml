@@ -168,7 +168,7 @@ if (selected_object=11){place_object=26;can_make_place_brush_size_bigger=true;if
 if (selected_object=12){place_object=27;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_cardboard_long")==asset_sprite){sprite_index=spr_cardboard_long;}if (asset_get_type("spr_cardboard_long")==asset_sprite){mask_index=spr_cardboard_long;}}
 if (selected_object=13){place_object=28;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;}mask_index=spr_wall;}
 if (selected_object=14){place_object=40;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;}mask_index=spr_wall;}
-if (selected_object=15){place_object=48;can_make_place_brush_size_bigger=false;if (asset_get_type("spr_big_collectible")==asset_sprite){sprite_index=spr_big_collectible;}mask_index=spr_2x2_block;}
+if (selected_object=15){place_object=48;can_make_place_brush_size_bigger=false;if (asset_get_type("spr_big_collectible")==asset_sprite){sprite_index=spr_big_collectible;}mask_index=spr_wall;}
 if (selected_object=16){place_object=53;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_heart")==asset_sprite){sprite_index=spr_heart;}mask_index=spr_wall;}
 if (selected_object=17){place_object=54;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_hp_pickup")==asset_sprite){sprite_index=spr_hp_pickup;}mask_index=spr_wall;}
 if (selected_object=18){place_object=55;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){sprite_index=spr_invincibility_powerup;}mask_index=spr_wall;}
@@ -306,6 +306,7 @@ if (keyboard_check_pressed(ord("F")))
 if (keyboard_check(vk_alt))
 and(keyboard_check_pressed(ord("A")))
 {
+	show_grid=true;
 	if (global.grid_hsnap>1)
 	or(global.grid_vsnap>1)
 	{
@@ -316,6 +317,7 @@ and(keyboard_check_pressed(ord("A")))
 if (keyboard_check(vk_alt))
 and(keyboard_check_pressed(ord("S")))
 {
+	show_grid=true;
 	global.grid_hsnap+=1;
 	global.grid_vsnap+=1;
 }
@@ -482,7 +484,7 @@ if (quit_level_editor=0)
 	if (asset_get_type("spr_cardboard_long")==asset_sprite){draw_sprite_ext(spr_cardboard_long,0,				camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*12-16,camera_get_view_y(view_camera[view_current])+64,0.5,0.5,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_bump_in_ground")==asset_sprite){draw_sprite_ext(spr_bump_in_ground,0,				camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*13,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,			camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*14,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
-	if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,				camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*15-16,camera_get_view_y(view_camera[view_current])+64-16,1,1,0,c_white,selected_menu_alpha);}
+	if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,				camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*15,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_heart")==asset_sprite){draw_sprite_ext(spr_heart,0,									camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*16,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_hp_pickup")==asset_sprite){draw_sprite_ext(spr_hp_pickup,0,							camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*17,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,	camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*18,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
@@ -1765,13 +1767,6 @@ and(can_input_level_name=true)
 }
 #endregion /*Pause Menu END*/
 
-#region /*Options*/
-if (pause=true)
-{
-	scr_options_menu();
-}
-#endregion /*Options END*/
-
 #region /*Menu Navigation Delay*/
 if (menu_delay>0)
 {
@@ -1840,8 +1835,6 @@ or(os_type == os_android)
 	#endregion /*Pause virtual key END*/
 	
 }
-
-scr_options_menu();
 
 //draw_text_transformed_color(weighted_x,weighted_y,"TEST",global.default_text_size,global.default_text_size,0,c_yellow,c_yellow,c_yellow,c_yellow,1);
 //draw_text_transformed_color(x+64,y+64,string(weighted_x)+","+string(weighted_y)+","+string(total_objects),global.default_text_size,global.default_text_size,0,c_yellow,c_yellow,c_yellow,c_yellow,1);

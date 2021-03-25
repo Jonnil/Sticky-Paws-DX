@@ -1,5 +1,11 @@
 if (quit_level_editor = false)
 {
+	#region /*Options*/
+	if (pause=true)
+	{
+		scr_options_menu();
+	}
+	#endregion /*Options END*/
 
 	#region /*Make bottom row of icons appear if mouse is hovering at bottom screen*/
 	if (drag_object = false)

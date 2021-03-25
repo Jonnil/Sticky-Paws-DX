@@ -11,7 +11,17 @@ global.character_clothes_customization=false;/*If this is true, you can costumiz
 global.character_color_select=false;/*If this is true, you can choose the character's color in the menu*/
 global.select_number_of_players_before_selecting_characters=false;/*If you should select how many players are going to play before you select what character to play as*/
 global.max_number_of_official_characters = 1; /*Update this whenever you add more official playable characters!*/
-global.enable_add_ons=false; /*Enable Add-ons in settings*/
+
+global.enable_multiplayer_settings = false; /*Enable Multiplayer settings*/
+global.enable_controller_settings = false; /*Enable Controller settings*/
+global.enable_touch_settings = false; /*Enable Touch settings*/
+global.enable_profile_settings = false; /*Enable Profile settings*/
+global.enable_global_resources_settings = false; /*Enable Global Resources settings*/
+global.enable_storage_settings = false; /*Enable Storage settings*/
+global.enable_language_settings = false; /*Enable Language settings*/
+global.enable_broadcast_settings = false; /*Enable Broadcast settings*/
+global.enable_how_to_play_settings = false; /*Enable How to play settings*/
+global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
 
 global.max_fps=60;/*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
 global.default_text_size=0.2//0.1125;
