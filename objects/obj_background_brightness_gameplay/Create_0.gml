@@ -1,0 +1,1 @@
+background_brightness_lerp = 0;

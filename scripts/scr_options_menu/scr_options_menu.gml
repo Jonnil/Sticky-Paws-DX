@@ -114,11 +114,22 @@ function scr_options_menu(){
 	
 	/*Main Settings on left sidebar*/
 	
-	#region /*Darken the entire background so it's easier to read the text*/
-	draw_set_alpha(0.2);
-	draw_rectangle_color(0,0,window_get_width(),window_get_height(),c_black,c_black,c_black,c_black,false);
-	draw_set_alpha(1);
-	#endregion /*Darken the entire background so it's easier to read the text END*/
+	#region /*Background Brightness in Menus Options*/
+	background_brightness_menu_lerp=lerp(background_brightness_menu_lerp,global.background_brightness_menu,0.1);
+	if (background_brightness_menu_lerp< 0)
+	{
+		draw_set_alpha(abs(background_brightness_menu_lerp));
+		draw_rectangle_color(-32,-32,room_width*2,room_height*2,c_black,c_black,c_black,c_black,false);
+		draw_set_alpha(1);
+	}
+	else
+	if (background_brightness_menu_lerp > 0)
+	{
+		draw_set_alpha(abs(background_brightness_menu_lerp));
+		draw_rectangle_color(-32,-32,room_width*2,room_height*2,c_white,c_white,c_white,c_white,false);
+		draw_set_alpha(1);
+	}
+	#endregion /*Background Brightness in Menus Options END*/
 	
 	#region /*Black Background behind sidebar*/
 	draw_set_alpha(1);
@@ -2600,59 +2611,113 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 	
 	draw_menu_checkmark(386,48*11,"Enable Foreground Layer 2","enable_foreground_layer2",global.enable_foreground_layer2);
 	
-	#region /*Background Brightness Bar*/
-	background_brightness_x = 600;
-	background_brightness_y = 48*9;
-	if (menu="background_brightness")
+	#region /*Background Brightness in Gameplay Bar*/
+	background_brightness_gameplay_x = 600;
+	background_brightness_gameplay_y = 48*9;
+	if (menu="background_brightness_gameplay")
 	{
-		draw_sprite_ext(spr_menu_cursor,menu_cursor_index,background_brightness_x-200,background_brightness_y+menu_y_offset+170,1,1,0,c_white,1);
-		draw_rectangle_colour(background_brightness_x-160-2,background_brightness_y+menu_y_offset+170-10-2,background_brightness_x+160+2,background_brightness_y+menu_y_offset+170+10+2,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill);
+		draw_sprite_ext(spr_menu_cursor,menu_cursor_index,background_brightness_gameplay_x-200,background_brightness_gameplay_y+170,1,1,0,c_white,1);
+		draw_rectangle_colour(background_brightness_gameplay_x-160-2,background_brightness_gameplay_y+170-10-2,background_brightness_gameplay_x+160+2,background_brightness_gameplay_y+170+10+2,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill);
 	}
 	
 	#region /*Draw a little arrow indicating what the default volume is*/
 	draw_set_color(c_menu_fill);
-	draw_arrow(background_brightness_x,background_brightness_y+menu_y_offset+170-20,background_brightness_x,background_brightness_y+menu_y_offset+170-10,25);
+	draw_arrow(background_brightness_gameplay_x,background_brightness_gameplay_y+170-20,background_brightness_gameplay_x,background_brightness_gameplay_y+170-10,25);
 	#endregion /*Draw a little arrow indicating what the default volume is END*/
 	
-	draw_rectangle_colour(background_brightness_x-160,background_brightness_y+menu_y_offset+170-10,background_brightness_x+160,background_brightness_y+menu_y_offset+170+10,c_black,c_white,c_white,c_black,false);
-	if (global.background_brightness=+1){draw_rectangle_colour(background_brightness_x+160-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+160+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=+0.9){draw_rectangle_colour(background_brightness_x+144-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+144+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=+0.8){draw_rectangle_colour(background_brightness_x+128-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+128+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=+0.7){draw_rectangle_colour(background_brightness_x+112-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+112+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=+0.6){draw_rectangle_colour(background_brightness_x+96-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+96+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=+0.5){draw_rectangle_colour(background_brightness_x+80-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+80+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=+0.4){draw_rectangle_colour(background_brightness_x+64-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+64+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=+0.3){draw_rectangle_colour(background_brightness_x+48-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+48+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=+0.2){draw_rectangle_colour(background_brightness_x+32-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+32+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=+0.1){draw_rectangle_colour(background_brightness_x+16-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+16+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=0){draw_rectangle_colour(background_brightness_x-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-0.1){draw_rectangle_colour(background_brightness_x-16-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-16+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-0.2){draw_rectangle_colour(background_brightness_x-32-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-32+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-0.3){draw_rectangle_colour(background_brightness_x-48-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-48+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-0.4){draw_rectangle_colour(background_brightness_x-64-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-64+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-0.5){draw_rectangle_colour(background_brightness_x-80-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-80+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-0.6){draw_rectangle_colour(background_brightness_x-96-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-96+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-0.7){draw_rectangle_colour(background_brightness_x-112-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-112+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-0.8){draw_rectangle_colour(background_brightness_x-128-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-128+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-0.9){draw_rectangle_colour(background_brightness_x-144-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-144+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
-	if (global.background_brightness=-1){draw_rectangle_colour(background_brightness_x-160-2,background_brightness_y+menu_y_offset+170-10,background_brightness_x-160+2,background_brightness_y+menu_y_offset+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	draw_rectangle_colour(background_brightness_gameplay_x-160,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+160,background_brightness_gameplay_y+170+10,c_black,c_white,c_white,c_black,false);
+	if (global.background_brightness_gameplay=+1){draw_rectangle_colour(background_brightness_gameplay_x+160-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+160+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=+0.9){draw_rectangle_colour(background_brightness_gameplay_x+144-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+144+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=+0.8){draw_rectangle_colour(background_brightness_gameplay_x+128-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+128+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=+0.7){draw_rectangle_colour(background_brightness_gameplay_x+112-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+112+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=+0.6){draw_rectangle_colour(background_brightness_gameplay_x+96-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+96+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=+0.5){draw_rectangle_colour(background_brightness_gameplay_x+80-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+80+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=+0.4){draw_rectangle_colour(background_brightness_gameplay_x+64-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+64+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=+0.3){draw_rectangle_colour(background_brightness_gameplay_x+48-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+48+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=+0.2){draw_rectangle_colour(background_brightness_gameplay_x+32-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+32+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=+0.1){draw_rectangle_colour(background_brightness_gameplay_x+16-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+16+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=0){draw_rectangle_colour(background_brightness_gameplay_x-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-0.1){draw_rectangle_colour(background_brightness_gameplay_x-16-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-16+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-0.2){draw_rectangle_colour(background_brightness_gameplay_x-32-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-32+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-0.3){draw_rectangle_colour(background_brightness_gameplay_x-48-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-48+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-0.4){draw_rectangle_colour(background_brightness_gameplay_x-64-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-64+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-0.5){draw_rectangle_colour(background_brightness_gameplay_x-80-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-80+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-0.6){draw_rectangle_colour(background_brightness_gameplay_x-96-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-96+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-0.7){draw_rectangle_colour(background_brightness_gameplay_x-112-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-112+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-0.8){draw_rectangle_colour(background_brightness_gameplay_x-128-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-128+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-0.9){draw_rectangle_colour(background_brightness_gameplay_x-144-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-144+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_gameplay=-1){draw_rectangle_colour(background_brightness_gameplay_x-160-2,background_brightness_gameplay_y+170-10,background_brightness_gameplay_x-160+2,background_brightness_gameplay_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
 	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	if (menu="background_brightness")
+	if (menu="background_brightness_gameplay")
 	{
-		draw_text_outlined(background_brightness_x,background_brightness_y+menu_y_offset+140,"Background Brightness:",global.default_text_size*0.6,c_menu_outline,c_menu_fill,1);
+		draw_text_outlined(background_brightness_gameplay_x,background_brightness_gameplay_y+140,"Background Brightness in Gameplay:",global.default_text_size*0.6,c_menu_outline,c_menu_fill,1);
 	}
 	else
 	{
-		draw_text_outlined(background_brightness_x,background_brightness_y+menu_y_offset+140,"Background Brightness:",global.default_text_size*0.5,c_menu_outline,c_menu_fill,1);
+		draw_text_outlined(background_brightness_gameplay_x,background_brightness_gameplay_y+140,"Background Brightness in Gameplay:",global.default_text_size*0.5,c_menu_outline,c_menu_fill,1);
 	}
-	if (global.background_brightness>-0.1)
-	and(global.background_brightness<+0.1)
+	if (global.background_brightness_gameplay>-0.1)
+	and(global.background_brightness_gameplay<+0.1)
 	{
-		global.background_brightness=0;
+		global.background_brightness_gameplay=0;
 	}
-	#endregion /*Background Brightness Bar END*/
+	#endregion /*Background Brightness in Gameplay Bar END*/
+	
+	#region /*Background Brightness in Menus Bar*/
+	background_brightness_menu_x = 600;
+	background_brightness_menu_y = 48*10+10;
+	if (menu="background_brightness_menu")
+	{
+		draw_sprite_ext(spr_menu_cursor,menu_cursor_index,background_brightness_menu_x-200,background_brightness_menu_y+170,1,1,0,c_white,1);
+		draw_rectangle_colour(background_brightness_menu_x-160-2,background_brightness_menu_y+170-10-2,background_brightness_menu_x+160+2,background_brightness_menu_y+170+10+2,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill);
+	}
+	
+	#region /*Draw a little arrow indicating what the default volume is*/
+	draw_set_color(c_menu_fill);
+	draw_arrow(background_brightness_menu_x,background_brightness_menu_y+170-20,background_brightness_menu_x,background_brightness_menu_y+170-10,25);
+	#endregion /*Draw a little arrow indicating what the default volume is END*/
+	
+	draw_rectangle_colour(background_brightness_menu_x-160,background_brightness_menu_y+170-10,background_brightness_menu_x+160,background_brightness_menu_y+170+10,c_black,c_white,c_white,c_black,false);
+	if (global.background_brightness_menu=+1){draw_rectangle_colour(background_brightness_menu_x+160-2,background_brightness_menu_y+170-10,background_brightness_menu_x+160+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=+0.9){draw_rectangle_colour(background_brightness_menu_x+144-2,background_brightness_menu_y+170-10,background_brightness_menu_x+144+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=+0.8){draw_rectangle_colour(background_brightness_menu_x+128-2,background_brightness_menu_y+170-10,background_brightness_menu_x+128+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=+0.7){draw_rectangle_colour(background_brightness_menu_x+112-2,background_brightness_menu_y+170-10,background_brightness_menu_x+112+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=+0.6){draw_rectangle_colour(background_brightness_menu_x+96-2,background_brightness_menu_y+170-10,background_brightness_menu_x+96+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=+0.5){draw_rectangle_colour(background_brightness_menu_x+80-2,background_brightness_menu_y+170-10,background_brightness_menu_x+80+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=+0.4){draw_rectangle_colour(background_brightness_menu_x+64-2,background_brightness_menu_y+170-10,background_brightness_menu_x+64+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=+0.3){draw_rectangle_colour(background_brightness_menu_x+48-2,background_brightness_menu_y+170-10,background_brightness_menu_x+48+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=+0.2){draw_rectangle_colour(background_brightness_menu_x+32-2,background_brightness_menu_y+170-10,background_brightness_menu_x+32+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=+0.1){draw_rectangle_colour(background_brightness_menu_x+16-2,background_brightness_menu_y+170-10,background_brightness_menu_x+16+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=0){draw_rectangle_colour(background_brightness_menu_x-2,background_brightness_menu_y+170-10,background_brightness_menu_x+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-0.1){draw_rectangle_colour(background_brightness_menu_x-16-2,background_brightness_menu_y+170-10,background_brightness_menu_x-16+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-0.2){draw_rectangle_colour(background_brightness_menu_x-32-2,background_brightness_menu_y+170-10,background_brightness_menu_x-32+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-0.3){draw_rectangle_colour(background_brightness_menu_x-48-2,background_brightness_menu_y+170-10,background_brightness_menu_x-48+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-0.4){draw_rectangle_colour(background_brightness_menu_x-64-2,background_brightness_menu_y+170-10,background_brightness_menu_x-64+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-0.5){draw_rectangle_colour(background_brightness_menu_x-80-2,background_brightness_menu_y+170-10,background_brightness_menu_x-80+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-0.6){draw_rectangle_colour(background_brightness_menu_x-96-2,background_brightness_menu_y+170-10,background_brightness_menu_x-96+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-0.7){draw_rectangle_colour(background_brightness_menu_x-112-2,background_brightness_menu_y+170-10,background_brightness_menu_x-112+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-0.8){draw_rectangle_colour(background_brightness_menu_x-128-2,background_brightness_menu_y+170-10,background_brightness_menu_x-128+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-0.9){draw_rectangle_colour(background_brightness_menu_x-144-2,background_brightness_menu_y+170-10,background_brightness_menu_x-144+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	if (global.background_brightness_menu=-1){draw_rectangle_colour(background_brightness_menu_x-160-2,background_brightness_menu_y+170-10,background_brightness_menu_x-160+2,background_brightness_menu_y+170+10,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);}
+	
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	if (menu="background_brightness_menu")
+	{
+		draw_text_outlined(background_brightness_menu_x,background_brightness_menu_y+140,"Background Brightness in Menus:",global.default_text_size*0.6,c_menu_outline,c_menu_fill,1);
+	}
+	else
+	{
+		draw_text_outlined(background_brightness_menu_x,background_brightness_menu_y+140,"Background Brightness in Menus:",global.default_text_size*0.5,c_menu_outline,c_menu_fill,1);
+	}
+	if (global.background_brightness_menu>-0.1)
+	and(global.background_brightness_menu<+0.1)
+	{
+		global.background_brightness_menu=0;
+	}
+	#endregion /*Background Brightness in Menus Bar END*/
 	
 	}
 	
@@ -3233,7 +3298,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		if (key_up)
 		and(menu_delay=0)
 		{
-			menu="background_brightness";
+			menu="background_brightness_menu";
 			menu_delay=10;
 		}
 		else
@@ -3262,7 +3327,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 			}
 			else
 			{
-				menu="background_brightness";
+				menu="background_brightness_gameplay";
 				menu_delay=10;
 			}
 		}
@@ -3305,24 +3370,24 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 	else if (menu="enable_background_layer3"){if (key_up)and(menu_delay=0){menu="enable_background_layer2";menu_delay=10;}else if (key_down)and(menu_delay=0){menu="enable_background_layer4";menu_delay=10;}}
 	else if (menu="enable_background_layer4"){if (key_up)and(menu_delay=0){menu="enable_background_layer3";menu_delay=10;}else if (key_down)and(menu_delay=0){menu="enable_foreground_layer1";menu_delay=10;}}
 	else if (menu="enable_foreground_layer1"){if (key_up)and(menu_delay=0){menu="enable_background_layer4";menu_delay=10;}else if (key_down)and(menu_delay=0){menu="enable_foreground_layer2";menu_delay=10;}}
-	else if (menu="enable_foreground_layer2"){if (key_up)and(menu_delay=0){menu="enable_foreground_layer1";menu_delay=10;}else if (key_down)and(menu_delay=0){menu="background_brightness";menu_delay=10;}}
+	else if (menu="enable_foreground_layer2"){if (key_up)and(menu_delay=0){menu="enable_foreground_layer1";menu_delay=10;}else if (key_down)and(menu_delay=0){menu="background_brightness_gameplay";menu_delay=10;}}
 	
-	#region /*Navigate Background Brightness*/
-	if (menu="background_brightness")
+	#region /*Navigate Background Brightness in Gameplay*/
+	if (menu="background_brightness_gameplay")
 	{
 		if (key_left)
 		and(menu_delay=0)
-		and (global.background_brightness>-1)
+		and (global.background_brightness_gameplay>-1)
 		{
-			global.background_brightness-=0.1;
+			global.background_brightness_gameplay-=0.1;
 			menu_delay=10;
 		}
 		else
 		if (key_right)
 		and(menu_delay=0)
-		and(global.background_brightness<+1)
+		and(global.background_brightness_gameplay<+1)
 		{
-			global.background_brightness+=0.1;
+			global.background_brightness_gameplay+=0.1;
 			menu_delay=10;
 		}
 		else
@@ -3330,6 +3395,43 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		and(menu_delay=0)
 		{
 			menu="enable_foreground_layer2";
+			menu_delay=10;
+		}
+		else
+		if (key_down)
+		and(menu_delay=0)
+		{
+				menu="background_brightness_menu";
+				menu_delay=10;
+		}
+	}
+	#endregion /*Navigate Background Brightness in Gameplay END*/
+	
+	else
+	
+	#region /*Navigate Background Brightness in Menus*/
+	if (menu="background_brightness_menu")
+	{
+		if (key_left)
+		and(menu_delay=0)
+		and (global.background_brightness_menu>-1)
+		{
+			global.background_brightness_menu-=0.1;
+			menu_delay=10;
+		}
+		else
+		if (key_right)
+		and(menu_delay=0)
+		and(global.background_brightness_menu<+1)
+		{
+			global.background_brightness_menu+=0.1;
+			menu_delay=10;
+		}
+		else
+		if (key_up)
+		and(menu_delay=0)
+		{
+			menu="background_brightness_gameplay";
 			menu_delay=10;
 		}
 		else
@@ -3349,7 +3451,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 			}
 		}
 	}
-	#endregion /*Navigate Background Brightness END*/
+	#endregion /*Navigate Background Brightness in Menus END*/
 	
 	else
 	

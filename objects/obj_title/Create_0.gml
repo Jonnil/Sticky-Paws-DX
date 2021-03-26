@@ -488,6 +488,7 @@ can_navigate=true;
 menu_y_offset=0;/*This is the y offset that will have lerping to make the menu scrolling smooth*/
 menu_y_offset_real=0;/*This is the real y offset for the menu, used for menu scrolling*/
 menu_cursor_y_position=0;
+background_brightness_menu_lerp = 0;
 #region /*Customize look of Options Menu*/
 c_menu_outline=c_white;
 c_menu_fill=c_black;

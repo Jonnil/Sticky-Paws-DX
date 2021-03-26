@@ -18,7 +18,7 @@ function scr_loadconfig() {
 	if (ini_key_exists("Config","music_volume")){global.music_volume=ini_read_real("Config","music_volume",0);}
 	if (ini_key_exists("Config","sfx_volume")){global.sfx_volume=ini_read_real("Config","sfx_volume",0);}
 	if (ini_key_exists("Config","voices_volume")){global.voices_volume=ini_read_real("Config","voices_volume",0);}
-	if (ini_key_exists("Config","background_brightness")){global.background_brightness=ini_read_real("Config","background_brightness",0);}
+	if (ini_key_exists("Config","background_brightness_gameplay")){global.background_brightness_gameplay=ini_read_real("Config","background_brightness_gameplay",0);}
 	if (ini_key_exists("Config","enable_background_layer1")){global.enable_background_layer1=ini_read_real("Config","enable_background_layer1",0);}
 	if (ini_key_exists("Config","enable_background_layer2")){global.enable_background_layer2=ini_read_real("Config","enable_background_layer2",0);}
 	if (ini_key_exists("Config","enable_background_layer3")){global.enable_background_layer3=ini_read_real("Config","enable_background_layer3",0);}

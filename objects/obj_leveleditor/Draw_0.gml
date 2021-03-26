@@ -1,5 +1,26 @@
 ///Draw Event
 
+#region /*Background Brightness in Gameplay Options*/
+if (asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+{
+	background_brightness_lerp=lerp(background_brightness_lerp,global.background_brightness_gameplay,0.1);
+	if (background_brightness_lerp< 0)
+	{
+		draw_set_alpha(abs(background_brightness_lerp));
+		draw_rectangle_color(-32,-32,room_width*2,room_height*2,c_black,c_black,c_black,c_black,false);
+		draw_set_alpha(1);
+	}
+	else
+	if (background_brightness_lerp > 0)
+	{
+		draw_set_alpha(abs(background_brightness_lerp));
+		draw_rectangle_color(-32,-32,room_width*2,room_height*2,c_white,c_white,c_white,c_white,false);
+		draw_set_alpha(1);
+	}
+}
+#endregion /*Background Brightness in Gameplay Options END*/
+
 #region /*Fullscreen Toggle if camera doesn't exist. Default: F11*/
 if (keyboard_check_pressed(global.fullscreen_key))
 {
@@ -1460,22 +1481,6 @@ camera_set_view_pos(view_camera[view_current],max(0,min(camera_get_view_x(view_c
 #endregion /*Limit view inside room END*/
 
 #endregion /*Limit so view and cursor can't go outside room END*/
-
-#region /*Background Brightness Options*/
-layer_background_alpha(background_brightness_layer,abs(global.background_brightness));
-if (asset_get_type("spr_block_black")==asset_sprite)
-or(asset_get_type("spr_block_white")==asset_sprite)
-{
-	if (global.background_brightness<0)
-	{
-		layer_background_sprite(background_brightness_layer,spr_block_black);
-	}
-	if (global.background_brightness>0)
-	{
-		layer_background_sprite(background_brightness_layer,spr_block_white);
-	}
-}
-#endregion /*Background Brightness Options END*/
 
 #region /*Pause Menu*/
 if (pause=false)

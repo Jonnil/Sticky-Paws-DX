@@ -1,15 +1,7 @@
-depth = -1000;
+depth = +1000;
 
 sprite_enemy1 = spr_mouse;
 sprite_enemy2 = spr_big_rat;
-
-#region /*Background Brightness*/
-background_brightness_layer=layer_background_create(layer_create(50,"background_brightness"),spr_player_stand)
-layer_background_sprite(background_brightness_layer,spr_block_black);
-layer_background_alpha(background_brightness_layer,abs(global.background_brightness));
-layer_background_htiled(background_brightness_layer,true);
-layer_background_vtiled(background_brightness_layer,true);
-#endregion /*Background Brightness END*/
 
 #region /*Create Foreground*/
 if (asset_get_type("obj_foreground1")==asset_object)
@@ -85,6 +77,8 @@ menu="continue"
 name_enter_blink=0;
 menu_delay=0;
 startup_loading_timer=0;
+background_brightness_lerp = 0;
+background_brightness_menu_lerp = 0;
 
 place_brush_icon_x = 32;
 erase_icon_x = 96;

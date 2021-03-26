@@ -207,7 +207,8 @@ global.win=false;
 global.enemy_counter=0;
 global.file=1;
 global.controls_layout=1;
-global.background_brightness=0;/*full_black=-1, normal=0 (default), full_white=+1*/
+global.background_brightness_gameplay=0; /*Background brightness in gameplay. full_black=-1, normal=0 (default), full_white=+1*/
+global.background_brightness_menu=0; /*Background brightness in menus. full_black=-1, normal=0 (default), full_white=+1*/
 #region /*Music and Sound Volume*/
 global.music_volume=1;
 global.sfx_volume=1;

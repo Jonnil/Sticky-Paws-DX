@@ -60,10 +60,10 @@ else
 #endregion /*Lives Icon END*/
 
 #region /*Create Foreground and Background Brightness Layer*/
-if (asset_get_type("obj_background_brightness")==asset_object)
-and(!instance_exists(obj_background_brightness))
+if (asset_get_type("obj_background_brightness_gameplay")==asset_object)
+and(!instance_exists(obj_background_brightness_gameplay))
 {
-	instance_create_depth(0,0,0,obj_background_brightness);
+	instance_create_depth(0,0,0,obj_background_brightness_gameplay);
 }
 if (asset_get_type("obj_foreground1")==asset_object)
 and(!instance_exists(obj_foreground1))
