@@ -114,6 +114,12 @@ function scr_options_menu(){
 	
 	/*Main Settings on left sidebar*/
 	
+	#region /*Darken the entire background so it's easier to read the text*/
+	draw_set_alpha(0.2);
+	draw_rectangle_color(0,0,window_get_width(),window_get_height(),c_black,c_black,c_black,c_black,false);
+	draw_set_alpha(1);
+	#endregion /*Darken the entire background so it's easier to read the text END*/
+	
 	#region /*Black Background behind sidebar*/
 	draw_set_alpha(1);
 	draw_rectangle_color(

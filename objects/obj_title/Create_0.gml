@@ -51,9 +51,9 @@ if (!directory_exists(working_directory+"/Custom Levels"))
 if (file_exists(working_directory + "/title_screen_background.png"))
 {
 	title_screen_background = sprite_add(working_directory + "/title_screen_background.png", 0, false, false, 0, 0);
-	if layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background 
+	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
 	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background );
+		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
 	}
 }
 else

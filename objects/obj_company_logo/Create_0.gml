@@ -28,7 +28,7 @@ global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
 #region /*What settings can be changed*/
 global.enable_verbosity_slider = false;
 global.enable_narrator = false;
-#region /*What settings can be changed*/
+#endregion /*What settings can be changed END*/
 
 global.max_fps=60; /*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
 global.default_text_size=0.2 //0.1125;
