@@ -1,3 +1,8 @@
+#region /*Set screen size*/
+camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
+display_set_gui_size(window_get_width(), window_get_height());
+#endregion /*Set screen size END*/
+
 #region /*Initialize Custom Character*/
 if (initialize_custom_character_timer < 2)
 {
@@ -355,7 +360,7 @@ or(gamepad_axis_value(0, gp_axislv) < 0);
 #endregion /*Player 1 Key Up Hold END*/
 
 #region /*Player 1 Key Accept Pressed*/
-key_a =
+key_a_pressed =
 (gamepad_button_check_pressed(0, gp_face1))
 or(gamepad_button_check_pressed(0, gp_face2))
 or(keyboard_check_pressed(global.player1_key_jump))
@@ -793,7 +798,7 @@ and (global.QuitGame = false)
 	}
 	
 	#region /*Enter Level*/
-	if (key_a)
+	if (key_a_pressed)
 	and(can_move = true)
 	and(can_enter_level >= 30)
 	and(asset_get_type("obj_level") == asset_object)

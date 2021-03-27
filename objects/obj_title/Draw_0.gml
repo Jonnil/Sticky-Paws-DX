@@ -138,7 +138,7 @@ key_up=(keyboard_check_pressed(vk_up))and(!keyboard_check_pressed(vk_down))or(ke
 key_left=(keyboard_check_pressed(vk_left))and(!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A")))and(!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0,gp_padl))and(!gamepad_button_check_pressed(0,gp_padr))or(gamepad_axis_value(0,gp_axislh)<0);
 key_right=(keyboard_check_pressed(vk_right))and(!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D")))and(!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0,gp_padr))and(!gamepad_button_check_pressed(0,gp_padl))or(gamepad_axis_value(0,gp_axislh)>0);
 key_down=(keyboard_check_pressed(vk_down))and(!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S")))and(!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0,gp_padd))and(!gamepad_button_check_pressed(0,gp_padu))or(gamepad_axis_value(0,gp_axislv)>0);
-key_a=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
+key_a_pressed=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
 key_b_pressed=(gamepad_button_check_pressed(0,gp_face2))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_escape))or(keyboard_check_pressed(vk_backspace));
 /*Keyboard Controls END*/
 
@@ -204,7 +204,7 @@ and(global.controls_used_for_menu_navigation!="controller")
 #endregion /*Fullscreen and Change Window Size Text END*/
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
-if (asset_get_type("obj_camera")==asset_sprite)
+if (asset_get_type("obj_camera")==asset_object)
 and(!instance_exists(obj_camera))
 and(keyboard_check_pressed(global.fullscreen_key))
 {
@@ -373,7 +373,7 @@ or(menu = "quit_game_yes")
 		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 370,
 		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 42))
 		and(mouse_check_button_released(mb_left))
-		or(key_a)
+		or(key_a_pressed)
 		and(menu_delay = 0)
 		{
 			
@@ -439,7 +439,7 @@ or(menu = "quit_game_yes")
 		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 370,
 		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84 + 42))
 		and(mouse_check_button_released(mb_left))
-		or(key_a)
+		or(key_a_pressed)
 		and(menu_delay = 0)
 		{
 			game_end();
@@ -625,22 +625,41 @@ or(menu="quit")
 	if (point_in_rectangle(mouse_x,mouse_y,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+100+40,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+185,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+100+60+19))
 	and(mouse_check_button_released(mb_left))
 	or(menu="main_game")
-	and(key_a)
+	and(key_a_pressed)
+	and(menu_delay=0)
 	{
 		global.character_select_in_this_menu="game";
 		in_settings=false;
-		menu_delay=10;
 		global.file = 1;
-		room_goto(room_level_select); /*TEMPORARY*/
+		global.actually_play_edited_level=false;
+		global.play_edited_level=false;
+		if (global.can_select_number_of_players=true)
+		{
+			if (global.select_number_of_players_before_selecting_characters=true)
+			{
+				menu="1player";
+				menu_delay=10;
+			}
+			else
+			{
+				menu="select_character";
+				menu_delay=10;
+			}
+		}
+		else
+		{
+			room_goto(room_level_select);
+		}
 	}
-	else
 	#endregion /*Click Main Game END*/
+	
+	else
 	
 	#region /*Click Level Editor*/
 	if (point_in_rectangle(mouse_x,mouse_y,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+100+80+1,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+185,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+100+100+19))
 	and(mouse_check_button_released(mb_left))
 	or(menu="leveleditor")
-	and(key_a)
+	and(key_a_pressed)
 	{
 		in_settings=false;
 		
@@ -650,7 +669,6 @@ or(menu="quit")
 		and(menu_delay=0)
 		and(global.demo=false)
 		{
-			menu_delay=10;
 			if (!audio_is_playing(menuvoice_leveleditor))
 			{
 				audio_play_sound(menuvoice_leveleditor,0,0);
@@ -661,20 +679,22 @@ or(menu="quit")
 			global.character_select_in_this_menu="level_editor";
 			if (global.can_select_number_of_players=true)
 			{
-				if (global.select_number_of_players_before_selecting_characters=false)
+				if (global.select_number_of_players_before_selecting_characters=true)
 				{
-					menu="select_character"
+					menu="1player";
+					menu_delay=10;
 				}
 				else
 				{
-					menu="1player";
+					menu="select_character";
+					menu_delay=10;
 				}
 			}
 			else
 			{
 				menu="select_custom_level";
+				menu_delay=10;
 			}
-			menu_delay=10;
 			global.level_editor_level=1;
 	
 			#region /*Update Thumbnail*/
@@ -729,7 +749,7 @@ or(menu="quit")
 	camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+100+140+19))
 	and(mouse_check_button_released(mb_left))
 	or(menu="options")
-	and(key_a)
+	and(key_a_pressed)
 	{
 		in_settings=true;
 		can_navigate_settings_sidebar=true;
@@ -753,7 +773,7 @@ or(menu="quit")
 	and(global.show_language_shortcut=true)
 	
 	or(menu="language_shortcut")
-	and(key_a)
+	and(key_a_pressed)
 	and(menu_delay=0)
 	and(global.show_language_shortcut=true)
 	{
@@ -794,7 +814,7 @@ or(menu="quit")
 	and(global.show_accessibility_shortcut=true)
 	
 	or(menu="accessibility_shortcut")
-	and(key_a)
+	and(key_a_pressed)
 	and(menu_delay=0)
 	and(global.show_accessibility_shortcut=true)
 	{
@@ -835,7 +855,7 @@ or(menu="quit")
 	and(global.show_profile_shortcut=true)
 	
 	or(menu="profile_shortcut")
-	and(key_a)
+	and(key_a_pressed)
 	and(menu_delay=0)
 	and(global.show_profile_shortcut=true)
 	{
@@ -868,7 +888,7 @@ or(menu="quit")
 	if (point_in_rectangle(mouse_x,mouse_y,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+100+180-20+1,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+185,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+100+180+19))
 	and(mouse_check_button_released(mb_left))
 	or(menu="quit")
-	and(key_a)
+	and(key_a_pressed)
 	{
 		in_settings=false;
 		menu = "quit_game_no";
@@ -985,6 +1005,7 @@ or(menu="4player")
 	if (global.select_number_of_players_before_selecting_characters=false)
 	{
 		menu="select_character";
+		menu_delay=10;
 	}
 	
 	draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+22,"Select how many players (1-4 players)",global.default_text_size*1.3,c_menu_outline,c_menu_fill,1);
@@ -1037,6 +1058,12 @@ or(menu="4player")
 		and(global.player2_key_right>0)
 		and(global.player2_key_sprint>0)
 		and(global.player2_key_jump>0)
+		or(global.player2_key2_up>0)
+		and(global.player2_key2_down>0)
+		and(global.player2_key2_left>0)
+		and(global.player2_key2_right>0)
+		and(global.player2_key2_sprint>0)
+		and(global.player2_key2_jump>0)
 		{
 			if (key_right)
 			and(menu="1player")
@@ -1097,6 +1124,20 @@ or(menu="4player")
 		and(global.player3_key_right>0)
 		and(global.player3_key_sprint>0)
 		and(global.player3_key_jump>0)
+		
+		or(global.player2_key2_up>0)
+		and(global.player2_key2_down>0)
+		and(global.player2_key2_left>0)
+		and(global.player2_key2_right>0)
+		and(global.player2_key2_sprint>0)
+		and(global.player2_key2_jump>0)
+
+		and(global.player3_key2_up>0
+		and global.player3_key2_down>0)
+		and(global.player3_key2_left>0)
+		and(global.player3_key2_right>0)
+		and(global.player3_key2_sprint>0)
+		and(global.player3_key2_jump>0)
 		{
 			if (key_right)
 			and(menu="2player")
@@ -1169,6 +1210,27 @@ or(menu="4player")
 		and(global.player4_key_right>0)
 		and(global.player4_key_sprint>0)
 		and(global.player4_key_jump>0)
+		
+		or(global.player2_key2_up>0)
+		and(global.player2_key2_down>0)
+		and(global.player2_key2_left>0)
+		and(global.player2_key2_right>0)
+		and(global.player2_key2_sprint>0)
+		and(global.player2_key2_jump>0)
+	
+		and(global.player3_key2_up>0)
+		and(global.player3_key2_down>0)
+		and(global.player3_key2_left>0)
+		and(global.player3_key2_right>0)
+		and(global.player3_key2_sprint>0)
+		and(global.player3_key2_jump>0)
+	
+		and(global.player4_key2_up>0)
+		and(global.player4_key2_down>0)
+		and(global.player4_key2_left>0)
+		and(global.player4_key2_right>0)
+		and(global.player4_key2_sprint>0)
+		and(global.player4_key2_jump>0)
 		{
 			if (key_right)
 			and(menu="3player")
@@ -1248,7 +1310,7 @@ or(menu="import_export_level")
 		menu_delay = 10;
 	}
 	if (menu="back_from_level_editor")
-	and(key_a)
+	and(key_a_pressed)
 	and(menu_delay=0)
 	{
 		menu = "leveleditor";
@@ -1960,7 +2022,8 @@ or(menu="4player")
 {
 	
 	#region /*Select 1 Player Game*/
-	if (menu="1player")
+	if (key_a_pressed)
+	and(menu="1player")
 	and(menu_delay=0)
 	{
 		if (!audio_is_playing(menuvoice_1player))
@@ -1993,11 +2056,13 @@ or(menu="4player")
 			}
 		}
 	}
-	else
 	#endregion /*Select 1 Player Game END*/
 	
+	else
+	
 	#region /*Select 2 Player Game*/
-	if (menu="2player")
+	if (key_a_pressed)
+	and(menu="2player")
 	and(menu_delay=0)
 	{
 		if (!audio_is_playing(menuvoice_2player))
@@ -2030,11 +2095,13 @@ or(menu="4player")
 			}
 		}
 	}
-	else
 	#endregion /*Select 2 Player Game END*/
 	
+	else
+	
 	#region /*Select 3 Player Game*/
-	if (menu="3player")
+	if (key_a_pressed)
+	and(menu="3player")
 	and(menu_delay=0)
 	{
 		if (!audio_is_playing(menuvoice_3player))
@@ -2067,11 +2134,13 @@ or(menu="4player")
 			}
 		}
 	}
-	else
 	#endregion /*Select 3 Player Game END*/
 	
+	else
+	
 	#region /*Select 4 Player Game*/
-	if (menu="4player")
+	if (key_a_pressed)
+	and(menu="4player")
 	and(menu_delay=0)
 	{
 		if (!audio_is_playing(menuvoice_4player))
@@ -2123,7 +2192,6 @@ or(menu="import_export_level")
 	and(menu_delay=0)
 	and(global.demo=false)
 	{
-		menu_delay=10;
 		if (!audio_is_playing(menuvoice_leveleditor))
 		{
 			audio_play_sound(menuvoice_leveleditor,0,0);
@@ -2137,17 +2205,19 @@ or(menu="import_export_level")
 			if (global.select_number_of_players_before_selecting_characters=false)
 			{
 				menu="select_character"
+				menu_delay = 10;
 			}
 			else
 			{
 				menu="1player";
+				menu_delay = 10;
 			}
 		}
 		else
 		{
 			menu="select_custom_level";
+			menu_delay = 10;
 		}
-		menu_delay=10;
 		global.level_editor_level=1;
 	
 		#region /*Update Thumbnail*/
@@ -2168,7 +2238,7 @@ or(menu="import_export_level")
 	
 	#region /*Make Custom Level*/
 	if (menu="level_editor_make")
-	and(key_a)
+	and(key_a_pressed)
 	or(point_in_rectangle(mouse_x,mouse_y,
 	camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
 	camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+64,
@@ -2195,7 +2265,7 @@ or(menu="import_export_level")
 		
 		#region /*Delete Level*/
 		if (menu="delete_level")
-		and(key_a)
+		and(key_a_pressed)
 		or(point_in_rectangle(mouse_x,mouse_y,
 		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
 		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+64+42+42,
@@ -2249,7 +2319,7 @@ or(menu="import_export_level")
 		
 		#region /*Play Custom Level*/
 		if (menu="level_editor_play")
-		and(key_a)
+		and(key_a_pressed)
 		or(point_in_rectangle(mouse_x,mouse_y,
 		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
 		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+64+42+42+42,
@@ -2297,7 +2367,7 @@ else
 
 #region /*Select Options*/
 if (menu="options")
-and(key_a)
+and(key_a_pressed)
 and(menu_delay=0)
 {
 	if (!audio_is_playing(menuvoice_options))
@@ -2314,7 +2384,7 @@ and(menu_delay=0)
 
 #region /*Select Quit*/
 if (menu="quit")
-and(key_a)
+and(key_a_pressed)
 and(menu_delay=0)
 {
 	menu = "quit_game_no";
@@ -2940,8 +3010,9 @@ and(obj_camera.iris_xscale<=0.001)
 }
 #endregion /*Start Game END*/
 
-/*Back*/
 else
+
+#region /*Back*/
 if (key_b_pressed)
 {
 	
@@ -2981,18 +3052,20 @@ if (key_b_pressed)
 				if (global.file=1)
 				{
 					menu="file1";
+					menu_delay=10;
 				}
 				else
 				if (global.file=2)
 				{
 					menu="file2";
+					menu_delay=10;
 				}
 				else
 				if (global.file=3)
 				{
 					menu="file3";
+					menu_delay=10;
 				}
-				menu_delay=10;
 			}
 			else
 			{
@@ -3020,6 +3093,7 @@ if (key_b_pressed)
 		}
 	}
 }
+#endregion /*Back END*/
 
 #region /*Menu Navigation Delay*/
 if (menu_delay>0)

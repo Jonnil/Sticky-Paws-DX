@@ -1,6 +1,17 @@
 //instance_deactivate_all(true);
 instance_activate_object(obj_pause);
 
+with (all)
+{
+	gravity = 0;
+	hspeed = 0;
+	vspeed = 0;
+	image_speed = 0;
+	speed = 0;
+	x = xprevious;
+	y = yprevious;
+}
+
 #region /*Menu cursor image speed*/
 menu_cursor_index += 0.3;
 if (menu_cursor_index > 4)
@@ -37,7 +48,7 @@ scr_saveconfig();
 room_speed = global.max_fps;
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
-if (asset_get_type("obj_camera")==asset_sprite)
+if (asset_get_type("obj_camera")==asset_object)
 and(!instance_exists(obj_camera))
 and(keyboard_check_pressed(global.fullscreen_key))
 {
@@ -69,7 +80,7 @@ if (global.pause_player = 0)
 	key_left = (keyboard_check_pressed(vk_left)) and(!keyboard_check_pressed(vk_right)) or(keyboard_check_pressed(ord("A"))) and(!keyboard_check_pressed(ord("D"))) or(gamepad_button_check_pressed(0, gp_padl)) and(!gamepad_button_check_pressed(0, gp_padr)) or(gamepad_axis_value(0, gp_axislh) < 0);
 	key_right = (keyboard_check_pressed(vk_right)) and(!keyboard_check_pressed(vk_left)) or(keyboard_check_pressed(ord("D"))) and(!keyboard_check_pressed(ord("A"))) or(gamepad_button_check_pressed(0, gp_padr)) and(!gamepad_button_check_pressed(0, gp_padl)) or(gamepad_axis_value(0, gp_axislh) > 0);
 	key_down = (keyboard_check_pressed(vk_down)) and(!keyboard_check_pressed(vk_up)) or(keyboard_check_pressed(ord("S"))) and(!keyboard_check_pressed(ord("W"))) or(gamepad_button_check_pressed(0, gp_padd)) and(!gamepad_button_check_pressed(0, gp_padu)) or(gamepad_axis_value(0, gp_axislv) > 0);
-	key_a = (gamepad_button_check_pressed(0, gp_face1)) or(keyboard_check_pressed(ord("Z"))) or(keyboard_check_pressed(vk_enter)) or(keyboard_check_pressed(vk_space));
+	key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or(keyboard_check_pressed(ord("Z"))) or(keyboard_check_pressed(vk_enter)) or(keyboard_check_pressed(vk_space));
 	key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or(keyboard_check_pressed(ord("X"))) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(vk_backspace));
 }
 #endregion /*Player 1 END*/
@@ -81,7 +92,7 @@ if (global.pause_player = 1)
 	key_left = (keyboard_check_pressed(global.player2_key_left)) and(!keyboard_check_pressed(global.player2_key_right)) or(gamepad_button_check_pressed(1, gp_padl)) and(!gamepad_button_check_pressed(1, gp_padr)) or(gamepad_axis_value(1, gp_axislh) < 0)
 	key_right = (keyboard_check_pressed(global.player2_key_right)) and(!keyboard_check_pressed(global.player2_key_left)) or(gamepad_button_check_pressed(1, gp_padr)) and(!gamepad_button_check_pressed(1, gp_padl)) or(gamepad_axis_value(1, gp_axislh) > 0)
 	key_down = (keyboard_check_pressed(global.player2_key_down)) and(!keyboard_check_pressed(global.player2_key_up)) or(gamepad_button_check_pressed(1, gp_padd)) and(!gamepad_button_check_pressed(1, gp_padu)) or(gamepad_axis_value(1, gp_axislv) > 0)
-	key_a = (gamepad_button_check_pressed(1, gp_face1)) or(keyboard_check_pressed(global.player2_key_jump))
+	key_a_pressed = (gamepad_button_check_pressed(1, gp_face1)) or(keyboard_check_pressed(global.player2_key_jump))
 	key_b_pressed = (gamepad_button_check_pressed(1, gp_face2)) or(keyboard_check_pressed(global.player2_key_sprint))
 }
 #endregion /*Player 2 END*/
@@ -93,7 +104,7 @@ if (global.pause_player = 2)
 	key_left = (keyboard_check_pressed(global.player3_key_left)) and(!keyboard_check_pressed(global.player3_key_right)) or(gamepad_button_check_pressed(2, gp_padl)) and(!gamepad_button_check_pressed(2, gp_padr)) or(gamepad_axis_value(2, gp_axislh) < 0)
 	key_right = (keyboard_check_pressed(global.player3_key_right)) and(!keyboard_check_pressed(global.player3_key_left)) or(gamepad_button_check_pressed(2, gp_padr)) and(!gamepad_button_check_pressed(2, gp_padl)) or(gamepad_axis_value(2, gp_axislh) > 0)
 	key_down = (keyboard_check_pressed(global.player3_key_down)) and(!keyboard_check_pressed(global.player3_key_up)) or(gamepad_button_check_pressed(2, gp_padd)) and(!gamepad_button_check_pressed(2, gp_padu)) or(gamepad_axis_value(2, gp_axislv) > 0)
-	key_a = (gamepad_button_check_pressed(2, gp_face1)) or(keyboard_check_pressed(global.player3_key_jump))
+	key_a_pressed = (gamepad_button_check_pressed(2, gp_face1)) or(keyboard_check_pressed(global.player3_key_jump))
 	key_b_pressed = (gamepad_button_check_pressed(2, gp_face2)) or(keyboard_check_pressed(global.player3_key_sprint))
 }
 #endregion /*Player 3 END*/
@@ -105,7 +116,7 @@ if (global.pause_player = 3)
 	key_left = (keyboard_check_pressed(global.player4_key_left)) and(!keyboard_check_pressed(global.player4_key_right)) or(gamepad_button_check_pressed(3, gp_padl)) and(!gamepad_button_check_pressed(3, gp_padr)) or(gamepad_axis_value(3, gp_axislh) < 0)
 	key_right = (keyboard_check_pressed(global.player4_key_right)) and(!keyboard_check_pressed(global.player4_key_left)) or(gamepad_button_check_pressed(3, gp_padr)) and(!gamepad_button_check_pressed(3, gp_padl)) or(gamepad_axis_value(3, gp_axislh) > 0)
 	key_down = (keyboard_check_pressed(global.player4_key_down)) and(!keyboard_check_pressed(global.player4_key_up)) or(gamepad_button_check_pressed(3, gp_padd)) and(!gamepad_button_check_pressed(3, gp_padu)) or(gamepad_axis_value(3, gp_axislv) > 0)
-	key_a = (gamepad_button_check_pressed(3, gp_face1)) or(keyboard_check_pressed(global.player4_key_jump))
+	key_a_pressed = (gamepad_button_check_pressed(3, gp_face1)) or(keyboard_check_pressed(global.player4_key_jump))
 	key_b_pressed = (gamepad_button_check_pressed(3, gp_face2)) or(keyboard_check_pressed(global.player4_key_sprint))
 }
 #endregion /*Player 4 END*/
@@ -211,7 +222,7 @@ and(menu != "remap_key_left")
 and(menu != "remap_key_right")
 and(menu != "remap_key_down")
 and(menu != "remap_key_up")
-and(menu != "remap_key_attack")
+and(menu != "remap_key_a_pressedttack")
 and(menu != "remap_reset")
 and(menu != "remap_save")
 {
@@ -254,7 +265,7 @@ and(room = room_leveleditor)
 	
 	if (menu = "continue")
 	{
-		if (key_a)
+		if (key_a_pressed)
 		and(menu_delay = 0)
 		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2,window_get_width()/2+185,window_get_height()/2+41))
 		and(mouse_check_button_pressed(mb_left))
@@ -299,7 +310,7 @@ and(room = room_leveleditor)
 	{
 		
 		#region /*Select Options*/
-		if (key_a)
+		if (key_a_pressed)
 		and(menu_delay = 0)
 		and(global.convention_mode = false)
 		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42,window_get_width()/2+185,window_get_height()/2+41+42))
@@ -341,7 +352,7 @@ and(room = room_leveleditor)
 	#region /*Save and Quit*/
 	if (menu = "quit")
 	{
-		if (key_a)
+		if (key_a_pressed)
 		and(menu_delay = 0)
 		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
 		and(mouse_check_button_pressed(mb_left))
@@ -432,7 +443,7 @@ or(menu = "quit")
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "OPTIONS", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "SELECT LEVEL", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 192, "SAVE AND QUIT", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		if (key_a)
+		if (key_a_pressed)
 		and(menu_delay = 0)
 		{
 			
@@ -477,7 +488,7 @@ or(menu = "quit")
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 192, "SAVE AND QUIT", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 
 		#region /*Select Options*/
-		if (key_a)
+		if (key_a_pressed)
 		and(menu_delay = 0)
 		and(global.convention_mode = false)
 		{
@@ -516,7 +527,7 @@ or(menu = "quit")
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "OPTIONS", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "> SELECT LEVEL <", global.default_text_size * 2.3, c_menu_outline, c_menu_fill, 1);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 192, "SAVE AND QUIT", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		if (key_a)
+		if (key_a_pressed)
 		and(menu_delay = 0)
 		{
 			/*Return to game*/
@@ -565,7 +576,7 @@ or(menu = "quit")
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "OPTIONS", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "SELECT LEVEL", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 192, "> SAVE AND QUIT <", global.default_text_size * 2.3, c_menu_outline, c_menu_fill, 1);
-		if (key_a)
+		if (key_a_pressed)
 		and(menu_delay = 0)
 		{
 			/*Return to game*/

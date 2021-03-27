@@ -1,3 +1,10 @@
+//draw_text_outlined(mouse_x+64,mouse_y-64,"x:"+string(mouse_x)+" y:"+string(mouse_y),global.default_text_size,c_white,c_black,1);
+
+#region /*Set screen size*/
+camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
+display_set_gui_size(window_get_width(), window_get_height());
+#endregion /*Set screen size END*/
+
 /*Draw Event*/
 key_a=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
 if (key_a)or(window_has_focus())and(mouse_check_button_pressed(mb_left)){if (room_next(room)<>-1){room_goto_next();}}
@@ -16,7 +23,24 @@ if (image_index=20)and(asset_get_type("menuvoice_companysplash")==asset_sound){i
 
 if (time=10)and(asset_get_type("menuvoice_controllersplash")==asset_sound){if (!audio_is_playing(menuvoice_controllersplash)){audio_play_sound(menuvoice_controllersplash,0,0);audio_sound_gain(menuvoice_controllersplash,global.voices_volume,0);}}
 
-/*Fullscreen Toggle f4*/if keyboard_check_pressed(vk_f4){if window_get_fullscreen(){window_set_fullscreen(false);}else{window_set_fullscreen(true);}ini_open("Config.ini");ini_write_real("Config","fullscreen_mode",window_get_fullscreen());ini_close();}/*Fullscreen Toggle f4 END*/
+#region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
+if (asset_get_type("obj_camera")==asset_object)
+and(!instance_exists(obj_camera))
+and(keyboard_check_pressed(global.fullscreen_key))
+{
+	if (window_get_fullscreen())
+	{
+		window_set_fullscreen(false);
+	}
+	else
+	{
+		window_set_fullscreen(true);
+	}
+	ini_open("Config.ini");
+	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
+	ini_close();
+}
+#endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
 
 /*Quit Game trough pause menu*/if global.convention_mode=false{
 if keyboard_check_pressed(vk_escape){if asset_get_type("room_pause")==asset_room{

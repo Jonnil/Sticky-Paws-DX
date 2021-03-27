@@ -117,6 +117,7 @@ if (lives < 0)
 #region /*Spawn Players*/
 if (lives > 0)
 and(instance_exists(obj_player))
+and(global.pause = false)
 {
 	with(obj_player)
 	{
@@ -228,6 +229,7 @@ and(obj_goal.goal = false)
 and(asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
 and(obj_player.allow_timeattack = true)
+and(global.pause = false)
 {
 	if (instance_exists(obj_player))
 	{
@@ -249,6 +251,7 @@ and(obj_player.allow_timeattack = true)
 }
 else
 if (asset_get_type("obj_goal") == asset_object)
+and(global.pause = false)
 {
 	if (instance_exists(obj_goal))
 	and(obj_goal.goal = false)
@@ -283,6 +286,7 @@ if (asset_get_type("obj_goal") == asset_object)
 if (asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
 and(obj_player.allow_timeup = true)
+and(global.pause = false)
 {
 	if (asset_get_type("obj_goal") == asset_object)
 	{
