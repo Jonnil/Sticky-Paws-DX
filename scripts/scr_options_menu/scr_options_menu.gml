@@ -1246,12 +1246,12 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 			if (gamepad_is_connected(0))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
-				draw_sprite_ext(spr_xbox_buttons,4,difficulty_settings_x-190,difficulty_settings_y+menu_y_offset+50,0.5,0.5,0,c_white,1);
+				draw_sprite_ext(spr_xbox_buttons,4,difficulty_settings_x-190,difficulty_settings_y+50,0.5,0.5,0,c_white,1);
 			}
 			else
 			if (asset_get_type("spr_keyboard_keys")==asset_sprite)
 			{
-				draw_sprite_ext(spr_keyboard_keys,vk_left,difficulty_settings_x-190,difficulty_settings_y+menu_y_offset+50,0.5,0.5,0,c_white,1);
+				draw_sprite_ext(spr_keyboard_keys,vk_left,difficulty_settings_x-190,difficulty_settings_y+50,0.5,0.5,0,c_white,1);
 			}
 			#endregion /*Show left arrow END*/
 			
@@ -1259,49 +1259,49 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 			if (gamepad_is_connected(0))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
-				draw_sprite_ext(spr_xbox_buttons,6,difficulty_settings_x+190,difficulty_settings_y+menu_y_offset+50,0.5,0.5,0,c_white,1);
+				draw_sprite_ext(spr_xbox_buttons,6,difficulty_settings_x+190,difficulty_settings_y+50,0.5,0.5,0,c_white,1);
 			}
 			else
 			if (asset_get_type("spr_keyboard_keys")==asset_sprite)
 			{
-				draw_sprite_ext(spr_keyboard_keys,vk_right,difficulty_settings_x+190,difficulty_settings_y+menu_y_offset+50,0.5,0.5,0,c_white,1);
+				draw_sprite_ext(spr_keyboard_keys,vk_right,difficulty_settings_x+190,difficulty_settings_y+50,0.5,0.5,0,c_white,1);
 			}
 			#endregion /*Show right arrow END*/
 			
 			if (global.difficulty<=0)
 			{
-				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+menu_y_offset+50,"Difficulty: Peaceful",global.default_text_size*1.1,c_black,c_aqua,1);
+				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+50,"Difficulty: Peaceful",global.default_text_size*1.1,c_black,c_aqua,1);
 			}
 			if (global.difficulty=1)
 			{
-				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+menu_y_offset+50,"Difficulty: Easy",global.default_text_size*1.1,c_black,c_lime,1);
+				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+50,"Difficulty: Easy",global.default_text_size*1.1,c_black,c_lime,1);
 			}
 			if (global.difficulty=2)
 			{
-				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+menu_y_offset+50,"Difficulty: Normal",global.default_text_size*1.1,c_black,c_yellow,1);
+				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+50,"Difficulty: Normal",global.default_text_size*1.1,c_black,c_yellow,1);
 			}
 			if (global.difficulty>=3)
 			{
-				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+menu_y_offset+50,"Difficulty: Hard",global.default_text_size*1.1,c_black,c_red,1);
+				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+50,"Difficulty: Hard",global.default_text_size*1.1,c_black,c_red,1);
 			}
 		}
 		else
 		{
 			if (global.difficulty<=0)
 			{
-				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+menu_y_offset+50,"Difficulty: Peaceful",global.default_text_size,c_black,c_aqua,1);
+				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+50,"Difficulty: Peaceful",global.default_text_size,c_black,c_aqua,1);
 			}
 			if (global.difficulty=1)
 			{
-				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+menu_y_offset+50,"Difficulty: Easy",global.default_text_size,c_black,c_lime,1);
+				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+50,"Difficulty: Easy",global.default_text_size,c_black,c_lime,1);
 			}
 			if (global.difficulty=2)
 			{
-				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+menu_y_offset+50,"Difficulty: Normal",global.default_text_size,c_black,c_yellow,1);
+				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+50,"Difficulty: Normal",global.default_text_size,c_black,c_yellow,1);
 			}
 			if (global.difficulty>=3)
 			{
-				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+menu_y_offset+50,"Difficulty: Hard",global.default_text_size,c_black,c_red,1);
+				draw_text_outlined(difficulty_settings_x,difficulty_settings_y+50,"Difficulty: Hard",global.default_text_size,c_black,c_red,1);
 			}
 		}
 		#endregion /*Difficulty Settings END*/
