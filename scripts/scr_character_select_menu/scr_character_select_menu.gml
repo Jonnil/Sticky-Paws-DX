@@ -95,8 +95,8 @@ function scr_character_select_menu()
 	
 	#region /*Select your character text*/
 	draw_text_outlined(
-	camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,
-	64,
+	window_get_width()/2,
+	70,
 	"Select your character!",global.default_text_size*2,c_black,c_white,1);
 	#endregion /*Select your character text END*/
 

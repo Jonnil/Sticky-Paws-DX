@@ -1,3 +1,8 @@
+#region /*Set screen size*/
+camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
+display_set_gui_size(window_get_width(), window_get_height());
+#endregion /*Set screen size END*/
+
 depth = +1000;
 
 sprite_enemy1 = spr_mouse;

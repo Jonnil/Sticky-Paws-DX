@@ -316,7 +316,7 @@ draw_set_valign(fa_center);
 if (menu = "quit_game_no")
 or(menu = "quit_game_yes")
 {
-	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
+	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 1.9, c_menu_outline, c_menu_fill, 1);
 	
 	if (point_in_rectangle(mouse_x, mouse_y, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 42, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 370, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 42))
 	and(mouse_check_button(mb_left))

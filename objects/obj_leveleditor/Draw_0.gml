@@ -333,6 +333,7 @@ if (keyboard_check_pressed(ord("F")))
 #region /*Grid hotkeys*/
 if (keyboard_check(vk_alt))
 and(keyboard_check_pressed(ord("A")))
+and(pause = false)
 {
 	show_grid=true;
 	if (global.grid_hsnap>1)
@@ -344,6 +345,7 @@ and(keyboard_check_pressed(ord("A")))
 }
 if (keyboard_check(vk_alt))
 and(keyboard_check_pressed(ord("S")))
+and(pause = false)
 {
 	show_grid=true;
 	global.grid_hsnap+=1;
@@ -355,6 +357,7 @@ and(keyboard_check_pressed(ord("S")))
 
 #region /*Show or hide grid hotkey*/
 if (keyboard_check_pressed(ord("G")))
+and(pause = false)
 {
 	if (show_grid=false)
 	{
@@ -364,7 +367,8 @@ if (keyboard_check_pressed(ord("G")))
 	{
 		show_grid=false;
 	}
-}#endregion /*Show or hide grid hotkey END*/
+}
+#endregion /*Show or hide grid hotkey END*/
 
 #region /*Fade grid in and out when toggeling*/
 if (show_grid=true)
@@ -378,7 +382,7 @@ else
 #endregion /*Fade grid in and out when toggeling END*/
 
 var grid_width=1,
-grid_offset=16;/*If the grid should have an offset from the top_left corner of the screen, normally this should be 0*/
+grid_offset=16; /*If the grid should have an offset from the top_left corner of the screen, normally this should be 0*/
 draw_set_alpha(grid_alpha);
 
 if (quit_level_editor<=0)
@@ -555,8 +559,8 @@ if (use_controller=false)
 {
 	x=mouse_x;
 	y=mouse_y;
-	cursor_x=device_mouse_x_to_gui(0);
-	cursor_y=device_mouse_y_to_gui(0);
+	cursor_x=window_mouse_get_x();
+	cursor_y=window_mouse_get_y();
 	
 	#region /*Change control type to gamepad if using a gamepad*/
 	if (gamepad_axis_value(0,gp_axislh)<0)
@@ -1061,8 +1065,8 @@ if (quit_level_editor=0)
 	and(!place_meeting(x,y,obj_level_end))
 	and(asset_get_type("obj_level_height")==asset_object)
 	and(!position_meeting(x,y,obj_level_height))
-	and(!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-	and(!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 256, -64, display_get_gui_width(), +64)) /*Can't place objects when clicking the top buttons*/
+	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64)) /*Can't place objects when clicking the top buttons*/
 	{
 		drag_object=false;
 		
@@ -1240,7 +1244,7 @@ and(fill_mode=true)
 and(erase_mode=false)
 and(pause=false)
 and(menu_delay=0)
-and(!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 {
 	if (!place_meeting(x,y,obj_leveleditor_placed_object))
 	and(!place_meeting(x,y,obj_leveleditor_fill))
@@ -1494,296 +1498,6 @@ max(0,min(camera_get_view_y(view_camera[view_current]),room_height-camera_get_vi
 #endregion /*Limit view inside room END*/
 
 #endregion /*Limit so view and cursor can't go outside room END*/
-
-#region /*Pause Menu*/
-if (pause=false)
-{
-	if (keyboard_check_pressed(vk_escape))
-	or(gamepad_button_check_pressed(0,gp_start))
-	{
-		quit_level_editor=false;
-		can_input_level_name=false;
-		pause=true;
-		menu="continue";
-	}
-}
-else
-if (pause=true)
-and(quit_level_editor<=0)
-{
-	#region /*Make Background Darker*/
-	draw_set_alpha(0.9);
-	draw_rectangle_colour(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
-	draw_set_alpha(1);
-	#endregion /*Make Background Darker END*/
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	if (keyboard_check_pressed(vk_escape))
-	or(gamepad_button_check_pressed(0,gp_start))
-	{
-		quit_level_editor=false;
-		can_input_level_name=false;
-		pause=false;
-		can_navigate=false;
-	}
-	/*Make the menu invisible when entering the options menu*/
-	if (menu="continue")
-	or(menu="options")
-	or(menu="quit")
-	{
-		#region /*If menu is on continue*/
-		draw_menu_button(
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2-84,
-		"Continue","continue",noone);
-		
-		if (point_in_rectangle(mouse_x,mouse_y,
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2-84,
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+185,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2-42))
-		and(mouse_check_button_pressed(mb_left))
-		{
-			menu_delay=10;
-			quit_level_editor=false;
-			can_input_level_name=false;
-			pause=false;
-		}
-		
-		if (menu="continue")
-		and(can_input_level_name=false)
-		{
-			if (key_up)
-			and(menu_joystick_delay=0)
-			and(menu_delay=0)
-			{
-				menu_delay=1;
-				menu="quit";
-			}
-			else
-			if (key_down)
-			and(menu_joystick_delay=0)
-			and(menu_delay=0)
-			{
-				menu_delay=1;
-				menu="options";
-			}
-			if (key_a_pressed)
-			or(keyboard_check_pressed(vk_enter))
-			{
-				if (menu_delay=0)
-				{
-					menu_delay=10;
-					quit_level_editor=false;
-					can_input_level_name=false;
-					pause=false;
-				}
-			}
-			if (key_b_pressed)
-			and(menu_delay=0)
-			{
-				menu_delay=10;
-				quit_level_editor=false;
-				can_input_level_name=false;
-				pause=false;
-				can_navigate=false;
-			}
-		}
-		#endregion /*If menu is on continue END*/
-
-		#region /*If menu is on options*/
-		draw_menu_button(
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2-42,
-		"Options","options",noone);
-		
-		if (point_in_rectangle(mouse_x,mouse_y,
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2-42,
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+185,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2))
-		and(mouse_check_button_pressed(mb_left))
-		{
-			quit_level_editor=false;
-			can_input_level_name=false;
-			pause=true;
-			can_navigate=true;
-			in_settings=true;
-			can_navigate_settings_sidebar=true;
-			global.settings_sidebar_menu="game_settings";
-			menu=noone;
-			menu_delay=10;
-		}
-		
-		if (menu="options")
-		and(can_input_level_name=false)
-		{
-			if (key_up)
-			and(menu_joystick_delay=0)
-			and(menu_delay=0)
-			{
-				menu_delay=1;
-				menu="continue";
-			}
-			else
-			if (key_down)
-			and(menu_joystick_delay=0)
-			and(menu_delay=0)
-			{
-				menu_delay=1;
-				menu="quit";
-			}
-			if (key_a_pressed)
-			or(keyboard_check_pressed(vk_enter))
-			{
-				if (menu_delay=0)
-				{
-					quit_level_editor=false;
-					can_input_level_name=false;
-					pause=true;
-					can_navigate=true;
-					in_settings=true;
-					can_navigate_settings_sidebar=true;
-					global.settings_sidebar_menu="game_settings";
-					menu=noone;
-					menu_delay=10;
-				}
-			}
-			if (key_b_pressed)
-			and(menu_delay=0)
-			{
-				menu_delay=10;
-				quit_level_editor=false;
-				can_input_level_name=false;
-				pause=false;
-				can_navigate=false;
-			}
-		}
-		#endregion /*If menu is on options END*/
-		
-		#region /*If menu is on quit*/
-		draw_menu_button(
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,
-		"Save and Quit","quit",noone);
-		
-		if (point_in_rectangle(mouse_x,mouse_y,
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+185,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+42))
-		and(mouse_check_button_pressed(mb_left))
-		{
-			menu_delay=10;
-			quit_level_editor=true;
-			can_input_level_name=false;
-			pause=false;
-		}
-		
-		if (menu="quit")
-		and(can_input_level_name=false)
-		{
-			if (key_up)
-			and(menu_joystick_delay=0)
-			and(menu_delay=0)
-			{
-				menu_delay=1;
-				menu="options";
-			}
-			else
-			if (key_down)
-			and(menu_joystick_delay=0)
-			and(menu_delay=0)
-			{
-				menu_delay=1;
-				menu="continue";
-			}
-			if (key_a_pressed)
-			or(keyboard_check_pressed(vk_enter))
-			{
-				if (menu_delay=0)
-				{
-					menu_delay=10;
-					quit_level_editor=true;
-					can_input_level_name=false;
-					pause=false;
-				}
-			}
-			if (key_b_pressed)
-			and(menu_delay=0)
-			{
-				menu_delay=10;
-				quit_level_editor=false;
-				can_input_level_name=false;
-				pause=false;
-				can_navigate=false;
-			}
-		}
-		#endregion /*If menu is on quit END*/
-		
-	}
-
-#region /*PLAYER 1 INPUT LEVEL NAME NOW*/
-if (menu="input_level_name")
-and(can_input_level_name=true)
-{
-
-	#region /*Press enter when done typing*/
-	if (keyboard_check_pressed(vk_enter))
-	or(gamepad_button_check_pressed(0,gp_start))
-	{
-		if (menu_delay=0)
-		{
-			menu_delay=10;
-			can_input_level_name=false;
-			quit_level_editor=false;
-			pause=true;
-			menu="enter_level_name";
-		}
-	}
-	#endregion /*Press enter when done typing END*/
-
-	#region /*Make Background Darker*/
-	draw_set_alpha(0.9);
-	draw_rectangle_colour(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
-	draw_set_alpha(1);
-	#endregion /*Make Background Darker END*/
-
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_center);
-
-	#region /*Inputed Name Text*/
-	if (name_enter_blink<1)
-	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-400-2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,"Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: "+string(level_name)+"|",global.default_text_size,c_black,c_white,1);
-	}
-	else
-	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-400-2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,"Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: "+string(level_name),global.default_text_size,c_black,c_white,1);
-	}
-	#endregion /*Inputed Name Text END*/
-
-	#region /*Limit Name Input Length for Level Name*/
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+100,"Limit: "+string(string_length(level_name))+"/32",global.default_text_size,c_black,c_white,1);
-	level_name=keyboard_string;
-	if (string_length(level_name)>32)
-	{
-		keyboard_string=string_copy(level_name,1,32);
-	}
-	#endregion /*Limit Name Input Length for Level Name END*/
-
-	name_enter_blink+=0.05;
-	if (name_enter_blink>1.5)
-	{
-		name_enter_blink=0;
-	}
-}
-#endregion /*PLAYER 1 INPUT LEVEL NAME NOW END*/
-
-}
-#endregion /*Pause Menu END*/
 
 #region /*Menu Navigation Delay*/
 if (menu_delay>0)

@@ -1,5 +1,305 @@
+#region /*Set screen size*/
+camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
+display_set_gui_size(window_get_width(), window_get_height());
+#endregion /*Set screen size END*/
+
 if (quit_level_editor = false)
 {
+	
+	#region /*Pause Menu*/
+	if (pause=false)
+	{
+		if (keyboard_check_pressed(vk_escape))
+		or(gamepad_button_check_pressed(0,gp_start))
+		{
+			quit_level_editor=false;
+			can_input_level_name=false;
+			pause=true;
+			menu="continue";
+		}
+	}
+	else
+	if (pause=true)
+	and(quit_level_editor<=0)
+	{
+		#region /*Make Background Darker*/
+		draw_set_alpha(0.9);
+		draw_rectangle_colour(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+		draw_set_alpha(1);
+		#endregion /*Make Background Darker END*/
+		
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		if (keyboard_check_pressed(vk_escape))
+		or(gamepad_button_check_pressed(0,gp_start))
+		{
+			quit_level_editor=false;
+			can_input_level_name=false;
+			pause=false;
+			can_navigate=false;
+		}
+	
+		#region /*Make the menu invisible when entering the options menu*/
+		if (menu="continue")
+		or(menu="options")
+		or(menu="quit")
+		{
+			
+			#region /*If menu is on continue*/
+			draw_menu_button(
+			window_get_width()/2-185,
+			window_get_height()/2-84,
+			"Continue","continue",noone);
+		
+			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
+			window_get_width()/2-185,
+			window_get_height()/2-84,
+			window_get_width()/2+185,
+			window_get_height()/2-42))
+			and(mouse_check_button_pressed(mb_left))
+			{
+				menu_delay=10;
+				quit_level_editor=false;
+				can_input_level_name=false;
+				pause=false;
+			}
+		
+			if (menu="continue")
+			and(can_input_level_name=false)
+			{
+				if (key_up)
+				and(menu_joystick_delay=0)
+				and(menu_delay=0)
+				{
+					menu_delay=1;
+					menu="quit";
+				}
+				else
+				if (key_down)
+				and(menu_joystick_delay=0)
+				and(menu_delay=0)
+				{
+					menu_delay=1;
+					menu="options";
+				}
+				if (key_a_pressed)
+				or(keyboard_check_pressed(vk_enter))
+				{
+					if (menu_delay=0)
+					{
+						menu_delay=10;
+						quit_level_editor=false;
+						can_input_level_name=false;
+						pause=false;
+					}
+				}
+				if (key_b_pressed)
+				and(menu_delay=0)
+				{
+					menu_delay=10;
+					quit_level_editor=false;
+					can_input_level_name=false;
+					pause=false;
+					can_navigate=false;
+				}
+			}
+			#endregion /*If menu is on continue END*/
+			
+			#region /*If menu is on options*/
+			draw_menu_button(
+			window_get_width()/2-185,
+			window_get_height()/2-42,
+			"Options","options",noone);
+			
+			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
+			window_get_width()/2-185,
+			window_get_height()/2-42,
+			window_get_width()/2+185,
+			window_get_height()/2))
+			and(mouse_check_button_pressed(mb_left))
+			{
+				quit_level_editor=false;
+				can_input_level_name=false;
+				pause=true;
+				can_navigate=true;
+				in_settings=true;
+				can_navigate_settings_sidebar=true;
+				global.settings_sidebar_menu="game_settings";
+				menu=noone;
+				menu_delay=10;
+			}
+			
+			if (menu="options")
+			and(can_input_level_name=false)
+			{
+				if (key_up)
+				and(menu_joystick_delay=0)
+				and(menu_delay=0)
+				{
+					menu_delay=1;
+					menu="continue";
+				}
+				else
+				if (key_down)
+				and(menu_joystick_delay=0)
+				and(menu_delay=0)
+				{
+					menu_delay=1;
+					menu="quit";
+				}
+				if (key_a_pressed)
+				or(keyboard_check_pressed(vk_enter))
+				{
+					if (menu_delay=0)
+					{
+						quit_level_editor=false;
+						can_input_level_name=false;
+						pause=true;
+						can_navigate=true;
+						in_settings=true;
+						can_navigate_settings_sidebar=true;
+						global.settings_sidebar_menu="game_settings";
+						menu=noone;
+						menu_delay=10;
+					}
+				}
+				if (key_b_pressed)
+				and(menu_delay=0)
+				{
+					menu_delay=10;
+					quit_level_editor=false;
+					can_input_level_name=false;
+					pause=false;
+					can_navigate=false;
+				}
+			}
+			#endregion /*If menu is on options END*/
+		
+			#region /*If menu is on quit*/
+			draw_menu_button(
+			window_get_width()/2-185,
+			window_get_height()/2,
+			"Save and Quit","quit",noone);
+			
+			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
+			window_get_width()/2-185,
+			window_get_height()/2,
+			window_get_width()/2+185,
+			window_get_height()/2+42))
+			and(mouse_check_button_pressed(mb_left))
+			{
+				menu_delay=10;
+				quit_level_editor=true;
+				can_input_level_name=false;
+				pause=false;
+			}
+			
+			if (menu="quit")
+			and(can_input_level_name=false)
+			{
+				if (key_up)
+				and(menu_joystick_delay=0)
+				and(menu_delay=0)
+				{
+					menu_delay=1;
+					menu="options";
+				}
+				else
+				if (key_down)
+				and(menu_joystick_delay=0)
+				and(menu_delay=0)
+				{
+					menu_delay=1;
+					menu="continue";
+				}
+				if (key_a_pressed)
+				or(keyboard_check_pressed(vk_enter))
+				{
+					if (menu_delay=0)
+					{
+						menu_delay=10;
+						quit_level_editor=true;
+						can_input_level_name=false;
+						pause=false;
+					}
+				}
+				if (key_b_pressed)
+				and(menu_delay=0)
+				{
+					menu_delay=10;
+					quit_level_editor=false;
+					can_input_level_name=false;
+					pause=false;
+					can_navigate=false;
+				}
+			}
+			#endregion /*If menu is on quit END*/
+			
+		}
+		#endregion /*Make the menu invisible when entering the options menu END*/
+	
+	#region /*PLAYER 1 INPUT LEVEL NAME NOW*/
+	if (menu="input_level_name")
+	and(can_input_level_name=true)
+	{
+		
+		#region /*Press enter when done typing*/
+		if (keyboard_check_pressed(vk_enter))
+		or(gamepad_button_check_pressed(0,gp_start))
+		{
+			if (menu_delay=0)
+			{
+				menu_delay=10;
+				can_input_level_name=false;
+				quit_level_editor=false;
+				pause=true;
+				menu="enter_level_name";
+			}
+		}
+		#endregion /*Press enter when done typing END*/
+		
+		#region /*Make Background Darker*/
+		draw_set_alpha(0.9);
+		draw_rectangle_colour(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+		draw_set_alpha(1);
+		#endregion /*Make Background Darker END*/
+		
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_center);
+		
+		#region /*Inputed Name Text*/
+		if (name_enter_blink<1)
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-400-2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,"Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: "+string(level_name)+"|",global.default_text_size,c_black,c_white,1);
+		}
+		else
+		{
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-400-2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2,"Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: "+string(level_name),global.default_text_size,c_black,c_white,1);
+		}
+		#endregion /*Inputed Name Text END*/
+		
+		#region /*Limit Name Input Length for Level Name*/
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+100,"Limit: "+string(string_length(level_name))+"/32",global.default_text_size,c_black,c_white,1);
+		level_name=keyboard_string;
+		if (string_length(level_name)>32)
+		{
+			keyboard_string=string_copy(level_name,1,32);
+		}
+		#endregion /*Limit Name Input Length for Level Name END*/
+		
+		name_enter_blink+=0.05;
+		if (name_enter_blink>1.5)
+		{
+			name_enter_blink=0;
+		}
+	}
+	#endregion /*PLAYER 1 INPUT LEVEL NAME NOW END*/
+	
+	}
+	#endregion /*Pause Menu END*/
+	
 	#region /*Options*/
 	if (pause=true)
 	and(menu!="continue")
@@ -9,7 +309,7 @@ if (quit_level_editor = false)
 		scr_options_menu();
 	}
 	#endregion /*Options END*/
-
+	
 	#region /*Make bottom row of icons appear if mouse is hovering at bottom screen*/
 	if (drag_object = false)
 	and(asset_get_type("obj_level_start") == asset_object)
@@ -19,7 +319,7 @@ if (quit_level_editor = false)
 	and(instance_exists(obj_level_end))
 	and(obj_level_end.drag_object = false)
 	{
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, display_get_gui_height() - 8, display_get_gui_width(), room_height * 2))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 8, display_get_gui_width(), room_height * 2))
 		or(global.always_show_level_editor_buttons = true)
 		{
 			if (show_icons_at_bottom = false)
@@ -28,7 +328,7 @@ if (quit_level_editor = false)
 			}
 		}
 		else
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, display_get_gui_width(), display_get_gui_height() - 64))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, display_get_gui_width(), display_get_gui_height() - 64))
 		and(global.always_show_level_editor_buttons = false)
 		{
 			if (show_icons_at_bottom = true)
@@ -38,7 +338,7 @@ if (quit_level_editor = false)
 		}
 	}
 	#endregion /*Make bottom row of icons appear if mouse is hovering at bottom screen END*/
-
+	
 	#region /*Make undo and redo icons appear if mouse is hovering at right screen*/
 	if (undo_and_redo_buttons_enabled = true)
 	and(drag_object = false)
@@ -49,7 +349,7 @@ if (quit_level_editor = false)
 	and(instance_exists(obj_level_end))
 	and(obj_level_end.drag_object = false)
 	{
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 8, 0, room_width * 2, display_get_gui_height()))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 8, 0, room_width * 2, display_get_gui_height()))
 		{
 			if (show_undo_redo_icons = false)
 			{
@@ -57,7 +357,7 @@ if (quit_level_editor = false)
 			}
 		}
 		else
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, display_get_gui_width() - 128, display_get_gui_height()))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, display_get_gui_width() - 128, display_get_gui_height()))
 		{
 			if (show_undo_redo_icons = true)
 			{
@@ -66,7 +366,7 @@ if (quit_level_editor = false)
 		}
 	}
 	#endregion /*Make undo and redo icons appear if mouse is hovering at right screen END*/
-
+	
 	#region /*Make top row of icons appear if mouse is hovering at top screen*/
 	if (drag_object = false)
 	and(asset_get_type("obj_level_start") == asset_object)
@@ -76,7 +376,7 @@ if (quit_level_editor = false)
 	and(instance_exists(obj_level_end))
 	and(obj_level_end.drag_object = false)
 	{
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), -32, -32, display_get_gui_width() + 32, +8))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), -32, -32, display_get_gui_width() + 32, +8))
 		or(global.always_show_level_editor_buttons = true)
 		{
 			if (show_icons_at_top = false)
@@ -85,7 +385,7 @@ if (quit_level_editor = false)
 			}
 		}
 		else
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), -32, +64, display_get_gui_width() + 32, display_get_gui_height() + 32))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), -32, +64, display_get_gui_width() + 32, display_get_gui_height() + 32))
 		{
 			if (show_icons_at_top = true)
 			{
@@ -94,7 +394,7 @@ if (quit_level_editor = false)
 		}
 	}
 	#endregion /*Make top row of icons appear if mouse is hovering at top screen END*/
-
+	
 	#region /*Show icons at bottom of screen*/
 	if (show_icons_at_bottom = true)
 	and(drag_object = false)
@@ -103,7 +403,7 @@ if (quit_level_editor = false)
 	and(drag_object = false)
 	and(pause = false)
 	{
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, display_get_gui_height() - 8, display_get_gui_width(), room_height * 2))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 8, display_get_gui_width(), room_height * 2))
 		and(asset_get_type("spr_cursor") == asset_sprite)
 		{
 			mouse_sprite = spr_cursor;
@@ -115,7 +415,7 @@ if (quit_level_editor = false)
 		icons_at_bottom_y = lerp(icons_at_bottom_y, +100, 0.1);
 	}
 	#endregion /*Show icons at bottom of screen END*/
-
+	
 	#region /*Show undo and redo icons to the right of screen*/
 	if (show_undo_redo_icons = true)
 	{
@@ -130,7 +430,7 @@ if (quit_level_editor = false)
 		undo_redo_icons_y = lerp(undo_redo_icons_y, +200, 0.1);
 	}
 	#endregion /*Show undo and redo icons to the right of screen END*/
-
+	
 	#region /*Level Editor Icons*/
 	if (asset_get_type("spr_leveleditor_icons") == asset_sprite)
 	{
@@ -205,7 +505,7 @@ if (quit_level_editor = false)
 			draw_sprite_ext(spr_leveleditor_icons, 5, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		#endregion /*Place brush icons END*/
-
+		
 		#region /*Erase icons*/
 		if (erase_brush_size <= 0)
 		{
@@ -272,7 +572,7 @@ if (quit_level_editor = false)
 			draw_sprite_ext(spr_leveleditor_icons, 11, erase_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		#endregion /*Erase icons END*/
-
+		
 		#region /*Fill icon*/
 		if (fill_mode = true)
 		and(erase_mode = false)
@@ -285,9 +585,9 @@ if (quit_level_editor = false)
 			draw_sprite_ext(spr_leveleditor_icons, 12, fill_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 		}
 		#endregion /*Fill icon END*/
-
+		
 		#region /*Show Undo icon*/
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
 		and(mouse_check_button(mb_left))
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 17, display_get_gui_width() - 96 + undo_redo_icons_y, display_get_gui_height() - 96, 1, 1, 0, c_white, 1);
@@ -297,9 +597,9 @@ if (quit_level_editor = false)
 			draw_sprite_ext(spr_leveleditor_icons, 17, display_get_gui_width() - 96 + undo_redo_icons_y, display_get_gui_height() - 96, 1, 1, 0, c_dkgray, 1);
 		}
 		#endregion /*Show Undo icon END*/
-	
+		
 		#region /*Show Redo icon*/
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
 		and(mouse_check_button(mb_left))
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 18, display_get_gui_width() - 32 + undo_redo_icons_y, display_get_gui_height() - 96, 1, 1, 0, c_white, 1);
@@ -309,7 +609,7 @@ if (quit_level_editor = false)
 			draw_sprite_ext(spr_leveleditor_icons, 18, display_get_gui_width() - 32 + undo_redo_icons_y, display_get_gui_height() - 96, 1, 1, 0, c_dkgray, 1);
 		}
 		#endregion /*Show Redo icon*/
-
+		
 		#region /*Set difficulty layer*/
 		if (set_difficulty_mode = true)
 		{
@@ -366,9 +666,10 @@ if (quit_level_editor = false)
 			draw_sprite_ext(spr_leveleditor_icons, 19, display_get_gui_width() - 32, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		#endregion /*Set difficulty layer END*/
-
+		
 		#region /*Show icons at top of screen*/
 		if (erase_mode = true)
+		and(pause = false)
 		{
 			erase_icons_at_top_y = lerp(erase_icons_at_top_y, -1, 0.1);
 		}
@@ -436,55 +737,73 @@ if (quit_level_editor = false)
 		{
 			icons_at_top_y = lerp(icons_at_top_y, -100, 0.1);
 		}
-		if (show_grid = true)
+		
+		if (pause = false)
 		{
-			draw_sprite_ext(spr_leveleditor_icons, 13, display_get_gui_width() - 224, +32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			
+			#region /*Show Grid*/
+			if (show_grid = true)
+			{
+				draw_sprite_ext(spr_leveleditor_icons, 13, display_get_gui_width() - 224, +32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icons, 13, display_get_gui_width() - 224, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+			}
+			#endregion /*Show Grid END*/
+		
+			#region /*Zoom Out*/
+			if (zoom_out = true)
+			{
+				draw_sprite_ext(spr_leveleditor_icons, 14, display_get_gui_width() - 160, +32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icons, 14, display_get_gui_width() - 160, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+			}
+			#endregion /*Zoom Out END*/
+		
+			#region /*Zoom Reset*/
+			if (zoom_reset = true)
+			{
+				draw_sprite_ext(spr_leveleditor_icons, 15, display_get_gui_width() - 96, +32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icons, 15, display_get_gui_width() - 96, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+			}
+			#endregion /*Zoom Reset END*/
+		
+			#region /*Zoom In*/
+			if (zoom_in = true)
+			{
+				draw_sprite_ext(spr_leveleditor_icons, 16, display_get_gui_width() - 32, +32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icons, 16, display_get_gui_width() - 32, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+			}
+			#endregion /*Zoom In END*/
+			
 		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 13, display_get_gui_width() - 224, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
-		}
-		if (zoom_out = true)
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 14, display_get_gui_width() - 160, +32 + icons_at_top_y, 1, 1, 0, c_white, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 14, display_get_gui_width() - 160, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
-		}
-		if (zoom_reset = true)
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 15, display_get_gui_width() - 96, +32 + icons_at_top_y, 1, 1, 0, c_white, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 15, display_get_gui_width() - 96, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
-		}
-		if (zoom_in = true)
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 16, display_get_gui_width() - 32, +32 + icons_at_top_y, 1, 1, 0, c_white, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 16, display_get_gui_width() - 32, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
-		}
+		
 		#endregion /*Show icons at top of screen END*/
-
+		
 	}
 	#endregion /*Level Editor Icons*/
-
+	
 	#region /*Show Tooltip when hovering over icon, this code needs to be after the show icons code so it appears above the icons*/
 	if (show_tooltip >= 100)
 	//and(!tooltip = "")
 	{
-		draw_rectangle_color(device_mouse_x_to_gui(0) + 16, device_mouse_y_to_gui(0) - 16, device_mouse_x_to_gui(0) + 240, device_mouse_y_to_gui(0) + 16, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(window_mouse_get_x() + 16, window_mouse_get_y() - 16, window_mouse_get_x() + 240, window_mouse_get_y() + 16, c_white, c_white, c_white, c_white, false);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		draw_text_transformed_color(device_mouse_x_to_gui(0) + 24 - 2, device_mouse_y_to_gui(0), string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-		draw_text_transformed_color(device_mouse_x_to_gui(0) + 24 + 2, device_mouse_y_to_gui(0), string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-		draw_text_transformed_color(device_mouse_x_to_gui(0) + 24, device_mouse_y_to_gui(0) - 2, string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-		draw_text_transformed_color(device_mouse_x_to_gui(0) + 24, device_mouse_y_to_gui(0) + 2, string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-		draw_text_transformed_color(device_mouse_x_to_gui(0) + 24, device_mouse_y_to_gui(0), string(tooltip), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+		draw_text_transformed_color(window_mouse_get_x() + 24 - 2, window_mouse_get_y(), string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+		draw_text_transformed_color(window_mouse_get_x() + 24 + 2, window_mouse_get_y(), string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+		draw_text_transformed_color(window_mouse_get_x() + 24, window_mouse_get_y() - 2, string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+		draw_text_transformed_color(window_mouse_get_x() + 24, window_mouse_get_y() + 2, string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+		draw_text_transformed_color(window_mouse_get_x() + 24, window_mouse_get_y(), string(tooltip), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
 	}
 	if (show_tooltip > 100)
 	{
@@ -497,9 +816,9 @@ if (quit_level_editor = false)
 		show_tooltip = 0;
 	}
 	#endregion /*Show Tooltip when hovering over icon, this code needs to be after the show icons code so it appears above the icons END*/
-
+	
 	#region /*Change mouse cursor*/
-
+	
 	#region /*Grab mouse cursor*/
 	if (asset_get_type("spr_cursor_grab") == asset_sprite)
 	and(position_meeting(mouse_x,mouse_y,obj_leveleditor_placed_object))
@@ -535,10 +854,10 @@ if (quit_level_editor = false)
 		draw_sprite_ext(spr_cursor_grab, 1, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /*Grab mouse cursor END*/
-
+	
 	#region /*Default mouse cursor*/
 	else
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	and(asset_get_type("spr_cursor") == asset_sprite)
 	or(pause=true)
 	{
@@ -607,7 +926,7 @@ if (quit_level_editor = false)
 	{
 		
 		#region /*Click Undo icon*/
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
 		{
 			tooltip = "Undo (CTRL+Z)";
 			show_tooltip += 2;
@@ -620,7 +939,7 @@ if (quit_level_editor = false)
 	
 		#region /*Click Redo icon*/
 		else
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
 		{
 			tooltip = "Redo (CTRL+Y)";
 			show_tooltip += 2;
@@ -640,7 +959,7 @@ if (quit_level_editor = false)
 	{
 	
 		#region /*Pen*/
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), place_brush_icon_x-32, display_get_gui_height() - 64, place_brush_icon_x+32, display_get_gui_height() + 64))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), place_brush_icon_x-32, display_get_gui_height() - 64, place_brush_icon_x+32, display_get_gui_height() + 64))
 		{
 			tooltip = "Paintbrush tool (D)";
 			show_tooltip += 2;
@@ -742,7 +1061,7 @@ if (quit_level_editor = false)
 		else
 
 	#region /*Erase (and more)*/
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), erase_icon_x-32, display_get_gui_height() - 64, erase_icon_x+32, display_get_gui_height() + 64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), erase_icon_x-32, display_get_gui_height() - 64, erase_icon_x+32, display_get_gui_height() + 64))
 	{
 		tooltip = "Erase tool (E)";
 		show_tooltip += 2;
@@ -801,7 +1120,7 @@ if (quit_level_editor = false)
 
 	#region /*Fill*/
 	else
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), fill_icon_x-32, display_get_gui_height() - 64, fill_icon_x+32, display_get_gui_height() + 64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), fill_icon_x-32, display_get_gui_height() - 64, fill_icon_x+32, display_get_gui_height() + 64))
 	{
 		tooltip = "Fill tool (F)";
 		show_tooltip += 2;
@@ -822,7 +1141,7 @@ if (quit_level_editor = false)
 
 	#region /*Easy*/
 	if (set_difficulty_mode = true)
-	and(point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 320, display_get_gui_height() - 64, display_get_gui_width() - 256, display_get_gui_height() + 64))
+	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 320, display_get_gui_height() - 64, display_get_gui_width() - 256, display_get_gui_height() + 64))
 	{
 		tooltip = "Show only objects in easy";
 		show_tooltip += 2;
@@ -838,7 +1157,7 @@ if (quit_level_editor = false)
 
 	#region /*Normal*/
 	if (set_difficulty_mode = true)
-	and(point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width() - 192, display_get_gui_height() + 64))
+	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width() - 192, display_get_gui_height() + 64))
 	{
 		tooltip = "Show only objects in normal";
 		show_tooltip += 2;
@@ -854,7 +1173,7 @@ if (quit_level_editor = false)
 
 	#region /*Hard*/
 	if (set_difficulty_mode = true)
-	and(point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 192, display_get_gui_height() - 64, display_get_gui_width() - 128, display_get_gui_height() + 64))
+	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 192, display_get_gui_height() - 64, display_get_gui_width() - 128, display_get_gui_height() + 64))
 	{
 		tooltip = "Show only objects in hard";
 		show_tooltip += 2;
@@ -870,7 +1189,7 @@ if (quit_level_editor = false)
 
 	#region /*All*/
 	if (set_difficulty_mode = true)
-	and(point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 128, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
+	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
 	{
 		tooltip = "Show all objects";
 		show_tooltip += 2;
@@ -885,7 +1204,7 @@ if (quit_level_editor = false)
 	#endregion /*All END*/
 
 	#region /*Set Difficulty Mode / Back*/
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
 	{
 		tooltip = "Set what objects should appear on what difficulty";
 		show_tooltip += 2;
@@ -913,7 +1232,7 @@ if (quit_level_editor = false)
 	#region /*Click icons at top of screen*/
 
 	#region /*Erase 6*/
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, -64, +64, +64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, -64, +64, +64))
 	and(erase_mode = true)
 	and(mouse_check_button_pressed(mb_left))
 	{
@@ -923,7 +1242,7 @@ if (quit_level_editor = false)
 
 	#region /*Erase 5*/
 	else
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), +64, -64, +128, +64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), +64, -64, +128, +64))
 	and(erase_mode = true)
 	and(mouse_check_button_pressed(mb_left))
 	{
@@ -933,7 +1252,7 @@ if (quit_level_editor = false)
 
 	#region /*Erase 4*/
 	else
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), +128, -64, +192, +64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), +128, -64, +192, +64))
 	and(erase_mode = true)
 	and(mouse_check_button_pressed(mb_left))
 	{
@@ -943,7 +1262,7 @@ if (quit_level_editor = false)
 
 	#region /*Erase 3*/
 	else
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), +192, -64, +256, +64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), +192, -64, +256, +64))
 	and(erase_mode = true)
 	and(mouse_check_button_pressed(mb_left))
 	{
@@ -953,7 +1272,7 @@ if (quit_level_editor = false)
 
 	#region /*Erase 2*/
 	else
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), +256, -64, +320, +64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), +256, -64, +320, +64))
 	and(erase_mode = true)
 	and(mouse_check_button_pressed(mb_left))
 	{
@@ -963,15 +1282,16 @@ if (quit_level_editor = false)
 
 	#region /*Erase 1*/
 	else
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), +320, -64, +384, +64)) and(erase_mode = true) and(mouse_check_button_pressed(mb_left))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), +320, -64, +384, +64)) and(erase_mode = true) and(mouse_check_button_pressed(mb_left))
 	{
 		erase_brush_size = 0;
 	}
 	#endregion /*Erase 1 END*/
 
 	#region /*Toggle Grid*/
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 256, -64, display_get_gui_width() - 192, +64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width() - 192, +64))
 	and(show_icons_at_top = true)
+	and(pause = false)
 	{
 		tooltip = "Toggle Grid (G)";
 		show_tooltip += 2;
@@ -994,7 +1314,7 @@ if (quit_level_editor = false)
 	and(keyboard_check(189))
 	and(!keyboard_check(187))
 	and(!keyboard_check(vk_enter))
-	or(point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 192, -64, display_get_gui_width() - 128, +64))
+	or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 192, -64, display_get_gui_width() - 128, +64))
 	and(show_icons_at_top = true)
 	and(mouse_check_button(mb_left))
 	{
@@ -1013,7 +1333,7 @@ if (quit_level_editor = false)
 	and(keyboard_check(vk_enter))
 	and(!keyboard_check(187))
 	and(!keyboard_check(189))
-	or(point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 128, -64, display_get_gui_width() - 64, +64))
+	or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, -64, display_get_gui_width() - 64, +64))
 	and(show_icons_at_top = true)
 	and(mouse_check_button(mb_left))
 	{
@@ -1032,7 +1352,7 @@ if (quit_level_editor = false)
 	and(keyboard_check(187))
 	and(!keyboard_check(189))
 	and(!keyboard_check(vk_enter))
-	or(point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 64, -64, display_get_gui_width(), +64))
+	or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, -64, display_get_gui_width(), +64))
 	and(show_icons_at_top = true)
 	and(mouse_check_button(mb_left))
 	{
@@ -1049,52 +1369,61 @@ if (quit_level_editor = false)
 	#endregion /*Click icons at top of screen END*/
 	
 	#region /*Show FPS Options*/
-	if (global.show_fps = true)
+	if (pause = false)
+	and(asset_get_type("obj_title") == asset_object)
+	and(!instance_exists(obj_title))
 	{
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
 	
 		#region /*FPS*/
-		if (fps >= 60)
+		if (global.show_fps = true)
 		{
-			draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_lime, 1);
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_center);
+	
+			if (fps >= 60)
+			{
+				draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_lime, 1);
+			}
+			else
+			if (fps >= 50)
+			{
+				draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_yellow, 1);
+			}
+			else
+			if (fps >= 40)
+			{
+				draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_orange, 1);
+			}
+			else
+			{
+				draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_red, 1);
+			}
 		}
-		else
-		if (fps >= 50)
-		{
-			draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_yellow, 1);
-		}
-		else
-		if (fps >= 40)
-		{
-			draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_orange, 1);
-		}
-		else
-		{
-			draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_red, 1);
-		}
-		#endregion /*FPS*/
+		#endregion /*FPS END*/
 	
 		#region /*FPS Real*/
-		if (fps_real >= 60)
+		if (global.show_fps_real = true)
 		{
-			draw_text_outlined(30, 132, "FPS Real: " + string(fps_real) + " / " + string(room_speed), global.default_text_size, c_black, c_lime, 1);
+			if (fps_real >= 60)
+			{
+				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_lime, 1);
+			}
+			else
+			if (fps_real >= 50)
+			{
+				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_yellow, 1);
+			}
+			else
+			if (fps_real >= 40)
+			{
+				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_orange, 1);
+			}
+			else
+			{
+				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_red, 1);
+			}
 		}
-		else
-		if (fps_real >= 50)
-		{
-			draw_text_outlined(30, 132, "FPS Real: " + string(fps_real) + " / " + string(room_speed), global.default_text_size, c_black, c_yellow, 1);
-		}
-		else
-		if (fps_real >= 40)
-		{
-			draw_text_outlined(30, 132, "FPS Real: " + string(fps_real) + " / " + string(room_speed), global.default_text_size, c_black, c_orange, 1);
-		}
-		else
-		{
-			draw_text_outlined(30, 132, "FPS Real: " + string(fps_real) + " / " + string(room_speed), global.default_text_size, c_black, c_red, 1);
-		}
-		#endregion /*FPS Real*/
+		#endregion /*FPS Real END*/
 	
 	}
 	#endregion /*Show FPS Options END*/

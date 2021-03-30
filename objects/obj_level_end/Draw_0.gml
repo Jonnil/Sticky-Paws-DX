@@ -18,7 +18,7 @@ and(obj_leveleditor.pause = false)
 {
 	if (!keyboard_check(vk_space))
 	and(!mouse_check_button(mb_middle))
-	and(!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	{
 		if (mouse_check_button_pressed(mb_left))
 		or(key_a_pressed)
