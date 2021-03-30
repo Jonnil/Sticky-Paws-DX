@@ -4,6 +4,13 @@
 if (asset_get_type("obj_title") == asset_object)
 and(!instance_exists(obj_title))
 {
+	if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
+	{
+		with (obj_background_brightness_gameplay)
+		{
+			instance_destroy();
+		}
+	}
 	background_brightness_lerp=lerp(background_brightness_lerp,global.background_brightness_gameplay,0.1);
 	if (background_brightness_lerp< 0)
 	{
@@ -165,7 +172,7 @@ key_up=(keyboard_check_pressed(global.player1_key_up))and(!keyboard_check_presse
 key_left=(keyboard_check_pressed(global.player1_key_left))and(!keyboard_check_pressed(global.player1_key_right))or(keyboard_check_pressed(vk_left))and(!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A")))and(!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0,gp_padl))and(!gamepad_button_check_pressed(0,gp_padr))or(gamepad_axis_value(0,gp_axislh)<0);
 key_right=(keyboard_check_pressed(global.player1_key_right))and(!keyboard_check_pressed(global.player1_key_left))or(keyboard_check_pressed(vk_right))and(!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D")))and(!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0,gp_padr))and(!gamepad_button_check_pressed(0,gp_padl))or(gamepad_axis_value(0,gp_axislh)>0);
 key_down=(keyboard_check_pressed(global.player1_key_down))and(!keyboard_check_pressed(global.player1_key_up))or(keyboard_check_pressed(vk_down))and(!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S")))and(!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0,gp_padd))and(!gamepad_button_check_pressed(0,gp_padu))or(gamepad_axis_value(0,gp_axislv)>0);
-key_a=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(global.player1_key_jump))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_space))or(keyboard_check_pressed(vk_enter));
+key_a_pressed=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(global.player1_key_jump))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_space))or(keyboard_check_pressed(vk_enter));
 key_a_released=(gamepad_button_check_released(0,gp_face1))or(keyboard_check_released(global.player1_key_jump))or(keyboard_check_released(ord("Z")))or(keyboard_check_released(vk_space))or(keyboard_check_released(vk_enter));
 key_a_hold=(gamepad_button_check(0,gp_face1))or(keyboard_check(global.player1_key_jump))or(keyboard_check(ord("Z")))or(keyboard_check(vk_space))or(keyboard_check(vk_enter));
 key_b=(gamepad_button_check(0,gp_face2))or(keyboard_check(global.player1_key_sprint))or(keyboard_check(ord("X")))or(keyboard_check(vk_backspace));
@@ -214,8 +221,8 @@ if (selected_object=36){place_object=95;can_make_place_brush_size_bigger=false;i
 #endregion /*List of Placable Objects End*/
 
 #region /*Change Brush Size. Key 187 = +. key 189 = -*/
-if (key_a)or(mouse_check_button(mb_left)){if (mouse_wheel_up())and!(mouse_check_button(mb_middle))or(keyboard_check_pressed(vk_add))or(keyboard_check_pressed(187))and!(keyboard_check(vk_control)){if (place_brush_size<5){place_brush_size+=1;}}}
-if (key_a)or(mouse_check_button(mb_left)){if (mouse_wheel_down())and!(mouse_check_button(mb_middle))or(keyboard_check_pressed(vk_subtract))or(keyboard_check_pressed(189))and!(keyboard_check(vk_control)){if (place_brush_size>0){place_brush_size-=1;}}}
+if (key_a_pressed)or(mouse_check_button(mb_left)){if (mouse_wheel_up())and!(mouse_check_button(mb_middle))or(keyboard_check_pressed(vk_add))or(keyboard_check_pressed(187))and!(keyboard_check(vk_control)){if (place_brush_size<5){place_brush_size+=1;}}}
+if (key_a_pressed)or(mouse_check_button(mb_left)){if (mouse_wheel_down())and!(mouse_check_button(mb_middle))or(keyboard_check_pressed(vk_subtract))or(keyboard_check_pressed(189))and!(keyboard_check(vk_control)){if (place_brush_size>0){place_brush_size-=1;}}}
 if (erase_mode=false){if (keyboard_check_pressed(vk_add))or(keyboard_check_pressed(187))and!(keyboard_check(vk_control)){if (place_brush_size<5){place_brush_size+=1;}}
 if (keyboard_check_pressed(vk_subtract))or(keyboard_check_pressed(189))and!(keyboard_check(vk_control)){if (place_brush_size>0){place_brush_size-=1;}}}
 if (erase_mode=true){if (mouse_wheel_up())and!(mouse_check_button(mb_middle))or(keyboard_check_pressed(vk_add))or(keyboard_check_pressed(187))and!(keyboard_check(vk_control)){if (erase_brush_size<5){erase_brush_size+=1;}}
@@ -797,8 +804,9 @@ and(!place_meeting(x,y,obj_level_end))
 }
 #endregion /*Fill Cursor END*/
 
-#region /*Erase Cursor*/
 else
+
+#region /*Erase Cursor*/
 if (erase_mode=true)
 {
 	draw_set_alpha(0.5);
@@ -954,9 +962,9 @@ and(pause=false)
 		window_set_cursor(cr_arrow);
 	}
 }
+else
 
 #region /*Drag Cursor*/
-else
 if (asset_get_type("obj_leveleditor_placed_object")==asset_object)
 and(place_meeting(x,y,obj_leveleditor_placed_object))
 or(asset_get_type("obj_level_start")==asset_object)
@@ -1017,6 +1025,7 @@ if (mouse_check_button_released(mb_right))
 
 if (quit_level_editor=0)
 {
+	
 	#region /*When pressing left click, increase current undo value*/
 	if (mouse_check_button_pressed(mb_left))
 	{
@@ -1198,6 +1207,7 @@ if (quit_level_editor=0)
 		if (asset_get_type("room_leveleditor")==asset_room)
 		and(room=room_leveleditor)
 		{
+			
 			#region /*Create directory for saving custom levels*/
 			if (!directory_exists(working_directory+"/Custom Levels"))
 			{
@@ -1245,7 +1255,7 @@ and(!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, d
 #region /*Scroll Objects Left*/
 if (mouse_wheel_up())
 and(!mouse_check_button(mb_middle))
-and(!key_a)
+and(!key_a_pressed)
 and(!mouse_check_button(mb_left))
 and(erase_mode=false)
 and(pause=false)
@@ -1274,7 +1284,7 @@ and(pause=false)
 #region /*Scroll Objects Right*/
 if (mouse_wheel_down())
 and(!mouse_check_button(mb_middle))
-and(!key_a)
+and(!key_a_pressed)
 and(!mouse_check_button(mb_left))
 and(erase_mode=false)
 and(pause=false)
@@ -1316,6 +1326,10 @@ or(gamepad_button_check_pressed(0,gp_select))
 		if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
 		{
 			directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level));
+		}
+		if (directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
+		and(!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data"))
+		{
 			directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data");
 		}
 		#endregion /*Create directory for saving custom levels END*/
@@ -1327,9 +1341,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 			instance_activate_all();
 			var file,str;
 			
-			#region /*Open file for writing*/
-			file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt");
-			#endregion /*Open file for writing END*/
+			file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"); /*Open file for writing*/
 			
 			/*Reset string var*/str="";
 			
@@ -1343,9 +1355,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 			}
 			#endregion /*Write wall objects to file END*/
 			
-			#region /*Write string with wall information to file and start a new line*/
-			file_text_write_string(file,str);
-			#endregion /*Write string with wall information to file and start a new line END*/
+			file_text_write_string(file,str); /*Write string with wall information to file and start a new line*/
 			
 			file_text_close(file);
 		}
@@ -1477,7 +1487,10 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 #endregion /*Limit x and y inside room END*/
 
 #region /*Limit view inside room*/
-camera_set_view_pos(view_camera[view_current],max(0,min(camera_get_view_x(view_camera[view_current]),room_width-camera_get_view_width(view_camera[view_current]))),max(0,min(camera_get_view_y(view_camera[view_current]),room_height-camera_get_view_height(view_camera[view_current]))));
+camera_set_view_pos(
+view_camera[view_current],
+max(0,min(camera_get_view_x(view_camera[view_current]),room_width-camera_get_view_width(view_camera[view_current]))),
+max(0,min(camera_get_view_y(view_camera[view_current]),room_height-camera_get_view_height(view_camera[view_current]))));
 #endregion /*Limit view inside room END*/
 
 #endregion /*Limit so view and cursor can't go outside room END*/
@@ -1555,7 +1568,7 @@ and(quit_level_editor<=0)
 				menu_delay=1;
 				menu="options";
 			}
-			if (key_a)
+			if (key_a_pressed)
 			or(keyboard_check_pressed(vk_enter))
 			{
 				if (menu_delay=0)
@@ -1620,7 +1633,7 @@ and(quit_level_editor<=0)
 				menu_delay=1;
 				menu="quit";
 			}
-			if (key_a)
+			if (key_a_pressed)
 			or(keyboard_check_pressed(vk_enter))
 			{
 				if (menu_delay=0)
@@ -1685,7 +1698,7 @@ and(quit_level_editor<=0)
 				menu_delay=1;
 				menu="continue";
 			}
-			if (key_a)
+			if (key_a_pressed)
 			or(keyboard_check_pressed(vk_enter))
 			{
 				if (menu_delay=0)

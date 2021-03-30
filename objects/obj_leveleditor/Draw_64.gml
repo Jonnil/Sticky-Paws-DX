@@ -2,6 +2,9 @@ if (quit_level_editor = false)
 {
 	#region /*Options*/
 	if (pause=true)
+	and(menu!="continue")
+	and(menu!="options")
+	and(menu!="quit")
 	{
 		scr_options_menu();
 	}
