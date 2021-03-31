@@ -118,6 +118,8 @@ if (lives < 0)
 if (lives > 0)
 and(instance_exists(obj_player))
 and(global.pause = false)
+and(asset_get_type("obj_player_map") == asset_object)
+and(!instance_exists(obj_player_map))
 {
 	with(obj_player)
 	{
@@ -1655,14 +1657,3 @@ and(!instance_exists(obj_player))
 	}
 	player_has_spawned = true;
 }
-
-#region /*Draw mouse cursor for menu navigation*/
-if (window_has_focus())
-and(global.controls_used_for_menu_navigation="mouse")
-and(os_type!=os_ios)
-and(os_type!=os_android)
-and(global.pause = false)
-{
-	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
-}
-#endregion /*Draw mouse cursor for menu navigation END*/

@@ -1,5 +1,54 @@
 ///Draw Event
 
+#region /*Set what controls are used to navigate the menus*/
+
+#region /*Get distance from fake mouse to real mouse*/
+var mouse_moving = point_distance(mx, my, window_mouse_get_x(), window_mouse_get_y());
+#endregion /*Get distance from fake mouse to real mouse END*/
+
+#region /*update positions of fake mouse*/
+mx = window_mouse_get_x();
+my = window_mouse_get_y();
+#endregion /*update positions of fake mouse*/
+
+if (keyboard_check(vk_anykey))
+{
+	global.controls_used_for_menu_navigation="keyboard";
+}
+else
+if (mouse_check_button(mb_any))
+or(mouse_wheel_down())
+or(mouse_wheel_up())
+or(mouse_moving)
+{
+	global.controls_used_for_menu_navigation="mouse";
+}
+else
+if (gamepad_button_check(0,gp_face1))
+or(gamepad_button_check(0,gp_face2))
+or(gamepad_button_check(0,gp_face3))
+or(gamepad_button_check(0,gp_face4))
+or(gamepad_button_check(0,gp_padd))
+or(gamepad_button_check(0,gp_padl))
+or(gamepad_button_check(0,gp_padr))
+or(gamepad_button_check(0,gp_padu))
+or(gamepad_button_check(0,gp_select))
+or(gamepad_button_check(0,gp_shoulderl))
+or(gamepad_button_check(0,gp_shoulderlb))
+or(gamepad_button_check(0,gp_shoulderr))
+or(gamepad_button_check(0,gp_shoulderrb))
+or(gamepad_button_check(0,gp_start))
+or(gamepad_button_check(0,gp_stickl))
+or(gamepad_button_check(0,gp_stickr))
+or(gamepad_axis_value(0,gp_axislh)<>0)
+or(gamepad_axis_value(0,gp_axislv)<>0)
+or(gamepad_axis_value(0,gp_axisrh)<>0)
+or(gamepad_axis_value(0,gp_axisrv)<>0)
+{
+	global.controls_used_for_menu_navigation="controller";
+}
+#endregion /*Set what controls are used to navigate the menus END*/
+
 #region /*Background Brightness in Gameplay Options*/
 if (asset_get_type("obj_title") == asset_object)
 and(!instance_exists(obj_title))
@@ -782,8 +831,9 @@ if (keyboard_check(vk_space))
 }
 #endregion /*Scroll Cursor END*/
 
-#region /*Fill Cursor*/
 else
+
+#region /*Fill Cursor*/
 if (fill_mode=true)
 and(erase_mode=false)
 and(!place_meeting(x,y,obj_level_start))
@@ -1065,7 +1115,8 @@ if (quit_level_editor=0)
 	and(!place_meeting(x,y,obj_level_end))
 	and(asset_get_type("obj_level_height")==asset_object)
 	and(!position_meeting(x,y,obj_level_height))
-	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
+	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
 	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64)) /*Can't place objects when clicking the top buttons*/
 	{
 		drag_object=false;
@@ -1244,7 +1295,9 @@ and(fill_mode=true)
 and(erase_mode=false)
 and(pause=false)
 and(menu_delay=0)
-and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64)) /*Can't place objects when clicking the top buttons*/
 {
 	if (!place_meeting(x,y,obj_leveleditor_placed_object))
 	and(!place_meeting(x,y,obj_leveleditor_fill))

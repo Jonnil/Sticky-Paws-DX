@@ -293,7 +293,8 @@ and(instance_exists(obj_leveleditor))
 and(obj_leveleditor.difficulty_layer>0)
 and(obj_leveleditor.drag_object=false)
 and(obj_leveleditor.pause=false)
-and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 and(!keyboard_check(vk_space))
 and(!mouse_check_button(mb_middle))
 {
@@ -1089,7 +1090,9 @@ and(obj_leveleditor.difficulty_layer=0)
 and(obj_leveleditor.drag_object=false)
 and(obj_leveleditor.erase_mode=true)
 and(obj_leveleditor.pause=false)
-and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64))
 and(!keyboard_check(vk_space))
 and(!mouse_check_button(mb_middle))
 {
@@ -1180,7 +1183,9 @@ and (delay>1)
 			{
 				if (drag_object<true)
 				and(obj_leveleditor.pause=false)
-				and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+				and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
+				and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+				and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64))
 				{
 					drag_object=true;
 					obj_leveleditor.drag_object=true;
@@ -1493,7 +1498,8 @@ if (object=95)and(asset_get_type("spr_boss_stand")==asset_sprite){sprite_index=s
 
 #region /*Difficulty settings per object*/
 if (instance_exists(obj_leveleditor))
-and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
+and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 {
 
 #region /*Set to appear on difficulty level*/

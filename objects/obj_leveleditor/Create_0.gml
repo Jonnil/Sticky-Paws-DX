@@ -5,6 +5,11 @@ display_set_gui_size(window_get_width(), window_get_height());
 
 depth = +1000;
 
+#region /*Mouse x and mouse y initializing*/
+mx = mouse_x;
+my = mouse_y;
+#endregion /*Mouse x and mouse y initializing END*/
+
 sprite_enemy1 = spr_mouse;
 sprite_enemy2 = spr_big_rat;
 
@@ -115,7 +120,6 @@ image_index=0;
 
 
 #region /*Load Level Information*/
-
 if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
 {
 	ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
@@ -131,15 +135,20 @@ if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_edi
 	and(ini_key_exists("Info","view_yview"))
 	{
 		camera_set_view_pos(view_camera[view_current], ini_read_string("Info", "view_xview", 0), ini_read_string("Info", "view_yview", 0));
+		x = ini_read_string("Info", "view_xview", 0);
+		y = ini_read_string("Info", "view_yview", 0);
 	}
 	else
 	if (ini_key_exists("Info","view_xview"))
 	{
 		camera_set_view_pos(view_camera[view_current], ini_read_string("Info", "view_xview", 0), 0);
+		x = ini_read_string("Info", "view_xview", 0);
 	}
+	else
 	if (ini_key_exists("Info","view_yview"))
 	{
 		camera_set_view_pos(view_camera[view_current], 0, ini_read_string("Info", "view_yview", 0));
+		y = ini_read_string("Info", "view_yview", 0);
 	}
 	ini_close();
 }

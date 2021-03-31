@@ -158,6 +158,8 @@ and(!instance_exists(obj_player_ending_cutscene))
 	}
 }
 else
+if (asset_get_type("obj_player_map")==asset_object)
+and(!instance_exists(obj_player_map))
 {
 	if (global.playergame>=0)
 	{

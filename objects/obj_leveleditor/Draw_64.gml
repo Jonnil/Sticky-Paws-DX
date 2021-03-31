@@ -319,7 +319,8 @@ if (quit_level_editor = false)
 	and(instance_exists(obj_level_end))
 	and(obj_level_end.drag_object = false)
 	{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 8, display_get_gui_width(), room_height * 2))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
+		and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 		or(global.always_show_level_editor_buttons = true)
 		{
 			if (show_icons_at_bottom = false)
@@ -328,7 +329,8 @@ if (quit_level_editor = false)
 			}
 		}
 		else
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, display_get_gui_width(), display_get_gui_height() - 64))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
+		and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 		and(global.always_show_level_editor_buttons = false)
 		{
 			if (show_icons_at_bottom = true)
@@ -403,7 +405,8 @@ if (quit_level_editor = false)
 	and(drag_object = false)
 	and(pause = false)
 	{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 8, display_get_gui_width(), room_height * 2))
+		if(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
+		and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 		and(asset_get_type("spr_cursor") == asset_sprite)
 		{
 			mouse_sprite = spr_cursor;
@@ -857,7 +860,8 @@ if (quit_level_editor = false)
 	
 	#region /*Default mouse cursor*/
 	else
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+	if(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
+	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	and(asset_get_type("spr_cursor") == asset_sprite)
 	or(pause=true)
 	{
