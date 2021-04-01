@@ -3,7 +3,7 @@ camera_set_view_size(view_camera[view_current], window_get_width(), window_get_h
 display_set_gui_size(window_get_width(), window_get_height());
 #endregion /*Set screen size END*/
 
-depth = +1000;
+depth = +100;
 
 #region /*Mouse x and mouse y initializing*/
 mx = mouse_x;
@@ -131,24 +131,28 @@ if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_edi
 	{
 		level_name="";
 	}
-	if (ini_key_exists("Info","view_xview"))
-	and(ini_key_exists("Info","view_yview"))
+	if(global.play_edited_level=false)
+	and(global.actually_play_edited_level=false)
 	{
-		camera_set_view_pos(view_camera[view_current], ini_read_string("Info", "view_xview", 0), ini_read_string("Info", "view_yview", 0));
-		x = ini_read_string("Info", "view_xview", 0);
-		y = ini_read_string("Info", "view_yview", 0);
-	}
-	else
-	if (ini_key_exists("Info","view_xview"))
-	{
-		camera_set_view_pos(view_camera[view_current], ini_read_string("Info", "view_xview", 0), 0);
-		x = ini_read_string("Info", "view_xview", 0);
-	}
-	else
-	if (ini_key_exists("Info","view_yview"))
-	{
-		camera_set_view_pos(view_camera[view_current], 0, ini_read_string("Info", "view_yview", 0));
-		y = ini_read_string("Info", "view_yview", 0);
+		if (ini_key_exists("Info","view_xview"))
+		and(ini_key_exists("Info","view_yview"))
+		{
+			camera_set_view_pos(view_camera[view_current], ini_read_string("Info", "view_xview", 0), ini_read_string("Info", "view_yview", 0));
+			x = ini_read_string("Info", "view_xview", 0);
+			y = ini_read_string("Info", "view_yview", 0);
+		}
+		else
+		if (ini_key_exists("Info","view_xview"))
+		{
+			camera_set_view_pos(view_camera[view_current], ini_read_string("Info", "view_xview", 0), 0);
+			x = ini_read_string("Info", "view_xview", 0);
+		}
+		else
+		if (ini_key_exists("Info","view_yview"))
+		{
+			camera_set_view_pos(view_camera[view_current], 0, ini_read_string("Info", "view_yview", 0));
+			y = ini_read_string("Info", "view_yview", 0);
+		}
 	}
 	ini_close();
 }

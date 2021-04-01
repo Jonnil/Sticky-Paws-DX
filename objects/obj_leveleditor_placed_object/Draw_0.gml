@@ -36,6 +36,8 @@ and(sprite_index>noone)
 	and(normal=true)
 	{
 		draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,1);
+		image_alpha = 1;
+		image_blend = c_white;
 	}
 	else
 	#endregion /*Show only normal difficulty layer in regular colors when saving a thumbnail END*/
@@ -50,6 +52,8 @@ and(sprite_index>noone)
 		and(hard=false)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,0.1);
+			image_alpha = 0.1;
+			image_blend = c_lime;
 		}
 		else
 		if (easy=true)
@@ -57,6 +61,8 @@ and(sprite_index>noone)
 		and(hard=false)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+			image_alpha = 0.1;
+			image_blend = c_white;
 		}
 		else
 		if (easy=false)
@@ -64,6 +70,8 @@ and(sprite_index>noone)
 		and(hard=false)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,0.1);
+			image_alpha = 0.1;
+			image_blend = c_yellow;
 		}
 		else
 		if (easy=false)
@@ -71,6 +79,8 @@ and(sprite_index>noone)
 		and(hard=true)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+			image_alpha = 0.1;
+			image_blend = c_white;
 		}
 		else
 		if (easy=false)
@@ -78,6 +88,8 @@ and(sprite_index>noone)
 		and(hard=true)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,0.1);
+			image_alpha = 0.1;
+			image_blend = c_red;
 		}
 		else
 		if (easy=true)
@@ -85,6 +97,8 @@ and(sprite_index>noone)
 		and(hard=true)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+			image_alpha = 0.1;
+			image_blend = c_white;
 		}
 		#endregion /*Transparent Object END*/
 	
@@ -94,6 +108,8 @@ and(sprite_index>noone)
 		and(hard=true)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,1);
+			image_alpha = 1;
+			image_blend = c_white;
 		}
 	}
 	else
@@ -106,6 +122,8 @@ and(sprite_index>noone)
 		if (easy=true)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,1);
+			image_alpha = 1;
+			image_blend = c_lime;
 		}
 		else
 		{
@@ -115,6 +133,8 @@ and(sprite_index>noone)
 			and(hard=false)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,0.1);
+				image_alpha = 0.1;
+				image_blend = c_lime;
 			}
 			else
 			if (easy=true)
@@ -122,6 +142,8 @@ and(sprite_index>noone)
 			and(hard=false)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+				image_alpha = 0.1;
+				image_blend = c_white;
 			}
 			else
 			if (easy=false)
@@ -129,6 +151,8 @@ and(sprite_index>noone)
 			and(hard=false)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,0.1);
+				image_alpha = 0.1;
+				image_blend = c_yellow;
 			}
 			else
 			if (easy=false)
@@ -136,6 +160,8 @@ and(sprite_index>noone)
 			and(hard=true)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+				image_alpha = 0.1;
+				image_blend = c_white;
 			}
 			else
 			if (easy=false)
@@ -143,6 +169,8 @@ and(sprite_index>noone)
 			and(hard=true)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,0.1);
+				image_alpha = 0.1;
+				image_blend = c_red;
 			}
 			else
 			if (easy=true)
@@ -150,6 +178,8 @@ and(sprite_index>noone)
 			and(hard=true)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+				image_alpha = 0.1;
+				image_blend = c_white;
 			}
 			#endregion /*Transparent Object END*/
 		}
@@ -163,6 +193,8 @@ and(sprite_index>noone)
 		if (normal=true)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,1);
+			image_alpha = 1;
+			image_blend = c_yellow;
 		}
 		else
 		{
@@ -172,6 +204,8 @@ and(sprite_index>noone)
 			and(hard=false)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,0.1);
+				image_alpha = 0.1;
+				image_blend = c_lime;
 			}
 			else
 			if (easy=true)
@@ -179,6 +213,8 @@ and(sprite_index>noone)
 			and(hard=false)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+				image_alpha = 0.1;
+				image_blend = c_white;
 			}
 			else
 			if (easy=false)
@@ -186,6 +222,8 @@ and(sprite_index>noone)
 			and(hard=false)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,0.1);
+				image_alpha = 0.1;
+				image_blend = c_yellow;
 			}
 			else
 			if (easy=false)
@@ -193,6 +231,8 @@ and(sprite_index>noone)
 			and(hard=true)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+				image_alpha = 0.1;
+				image_blend = c_white;
 			}
 			else
 			if (easy=false)
@@ -200,6 +240,8 @@ and(sprite_index>noone)
 			and(hard=true)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,0.1);
+				image_alpha = 0.1;
+				image_blend = c_red;
 			}
 			else
 			if (easy=true)
@@ -207,6 +249,8 @@ and(sprite_index>noone)
 			and(hard=true)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+				image_alpha = 0.1;
+				image_blend = c_white;
 			}
 			#endregion /*Transparent Object END*/
 		}
@@ -220,6 +264,8 @@ and(sprite_index>noone)
 		if (hard=true)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,1);
+			image_alpha = 1;
+			image_blend = c_red;
 		}
 		else
 		{
@@ -229,6 +275,8 @@ and(sprite_index>noone)
 			and(hard=false)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,0.1);
+				image_alpha = 0.1;
+				image_blend = c_lime;
 			}
 			else
 			if (easy=true)
@@ -236,6 +284,8 @@ and(sprite_index>noone)
 			and(hard=false)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+				image_alpha = 0.1;
+				image_blend = c_white;
 			}
 			else
 			if (easy=false)
@@ -243,6 +293,8 @@ and(sprite_index>noone)
 			and(hard=false)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,0.1);
+				image_alpha = 0.1;
+				image_blend = c_yellow;
 			}
 			else
 			if (easy=false)
@@ -250,6 +302,8 @@ and(sprite_index>noone)
 			and(hard=true)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+				image_alpha = 0.1;
+				image_blend = c_white;
 			}
 			else
 			if (easy=false)
@@ -257,6 +311,8 @@ and(sprite_index>noone)
 			and(hard=true)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,0.1);
+				image_alpha = 0.1;
+				image_blend = c_red;
 			}
 			else
 			if (easy=true)
@@ -264,6 +320,8 @@ and(sprite_index>noone)
 			and(hard=true)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
+				image_alpha = 0.1;
+				image_blend = c_white;
 			}
 			#endregion /*Transparent Object END*/
 		}
@@ -275,6 +333,8 @@ else
 if (sprite_index>noone)
 {
 	draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,1);
+	image_alpha = 1;
+	image_blend = c_white;
 }
 #endregion /*Make sprite transparent if you're setting difficulty levels END*/
 
@@ -1091,77 +1151,82 @@ and(obj_leveleditor.drag_object=false)
 and(obj_leveleditor.erase_mode=true)
 and(obj_leveleditor.pause=false)
 and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
-and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64))
 and(!keyboard_check(vk_space))
 and(!mouse_check_button(mb_middle))
 {
-	if (mouse_check_button(mb_right))
-	or(mouse_check_button(mb_left))
+	if (obj_leveleditor.set_difficulty_mode = true)
+	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+	or(obj_leveleditor.set_difficulty_mode = false)
+	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 	{
-		if (position_meeting(obj_leveleditor.x,obj_leveleditor.y,id))
-		
-		/*Erase brush size 1*/
-		or(obj_leveleditor.erase_brush_size>=1)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y,id))
-		or(obj_leveleditor.erase_brush_size>=1)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y+32,id))
-		or(obj_leveleditor.erase_brush_size>=1)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y+32,id))
-		/*Erase brush size 1 END*/
-		
-		/*Erase brush size 2*/
-		or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y-32,id))
-		or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y-32,id))
-		or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y-32,id))
-		or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y,id))
-		or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y+32,id))
-		/*Erase brush size 2 END*/
-		
-		/*Erase brush size 3*/
-		or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y-32,id))
-		or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y,id))
-		or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y+32,id))
-		or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y+64,id))
-		or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y+64,id))
-		or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y+64,id))
-		or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y+64,id))
-		/*Erase brush size 3 END*/
-		
-		/*Erase brush size 4*/
-		or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y-64,id))
-		or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y-64,id))
-		or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y-64,id))
-		or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y-64,id))
-		or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y-64,id))
-		or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y-32,id))
-		or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y,id))
-		or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y+32,id))
-		or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y+64,id))
-		/*Erase brush size 4 END*/
-		
-		/*Erase brush size 5*/
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y-64,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y-32,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y+32,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y+64,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y+96,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y+96,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y+96,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y+96,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y+96,id))
-		or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y+96,id))
-		/*Erase brush size 5 END*/
-		
+		if (mouse_check_button(mb_right))
+		or(mouse_check_button(mb_left))
 		{
-			if (asset_get_type("snd_leveleditor_erase_object")==asset_sound)
+			if (position_meeting(obj_leveleditor.x,obj_leveleditor.y,id))
+		
+			/*Erase brush size 1*/
+			or(obj_leveleditor.erase_brush_size>=1)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y,id))
+			or(obj_leveleditor.erase_brush_size>=1)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y+32,id))
+			or(obj_leveleditor.erase_brush_size>=1)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y+32,id))
+			/*Erase brush size 1 END*/
+		
+			/*Erase brush size 2*/
+			or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y-32,id))
+			or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y-32,id))
+			or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y-32,id))
+			or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y,id))
+			or(obj_leveleditor.erase_brush_size>=2)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y+32,id))
+			/*Erase brush size 2 END*/
+		
+			/*Erase brush size 3*/
+			or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y-32,id))
+			or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y,id))
+			or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y+32,id))
+			or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y+64,id))
+			or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y+64,id))
+			or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y+64,id))
+			or(obj_leveleditor.erase_brush_size>=3)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y+64,id))
+			/*Erase brush size 3 END*/
+		
+			/*Erase brush size 4*/
+			or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y-64,id))
+			or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y-64,id))
+			or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y-64,id))
+			or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y-64,id))
+			or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y-64,id))
+			or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y-32,id))
+			or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y,id))
+			or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y+32,id))
+			or(obj_leveleditor.erase_brush_size>=4)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y+64,id))
+			/*Erase brush size 4 END*/
+		
+			/*Erase brush size 5*/
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y-64,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y-32,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y+32,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y+64,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+96,obj_leveleditor.y+96,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+64,obj_leveleditor.y+96,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x+32,obj_leveleditor.y+96,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x,obj_leveleditor.y+96,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x-32,obj_leveleditor.y+96,id))
+			or(obj_leveleditor.erase_brush_size>=5)and(position_meeting(obj_leveleditor.x-64,obj_leveleditor.y+96,id))
+			/*Erase brush size 5 END*/
+		
 			{
-				audio_play_sound(snd_leveleditor_erase_object,0,0);
-				audio_sound_gain(snd_leveleditor_erase_object,global.sfx_volume,0);
+				if (asset_get_type("snd_leveleditor_erase_object")==asset_sound)
+				{
+					audio_play_sound(snd_leveleditor_erase_object,0,0);
+					audio_sound_gain(snd_leveleditor_erase_object,global.sfx_volume,0);
+				}
+				with(obj_leveleditor)
+				{
+					move_snap(global.grid_hsnap,global.grid_vsnap); /*Make sure to always move snap*/
+				}
+				instance_destroy();
 			}
-			with(obj_leveleditor)
-			{
-				move_snap(global.grid_hsnap,global.grid_vsnap); /*Make sure to always move snap*/
-			}
-			instance_destroy();
 		}
 	}
 }
@@ -1184,11 +1249,16 @@ and (delay>1)
 				if (drag_object<true)
 				and(obj_leveleditor.pause=false)
 				and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
-				and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 				and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64))
 				{
-					drag_object=true;
-					obj_leveleditor.drag_object=true;
+					if (obj_leveleditor.set_difficulty_mode = true)
+					and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+					or(obj_leveleditor.set_difficulty_mode = false)
+					and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+					{
+						drag_object=true;
+						obj_leveleditor.drag_object=true;
+					}
 				}
 			}
 		}
@@ -1232,136 +1302,134 @@ else
 #region /*Spawn objects when starting room*/
 if (global.play_edited_level=true)
 {
-
-/*Delete objects according to difficulty settings*/
-
-if (global.difficulty<=1)
-and(easy=true)
-or(global.difficulty=2)
-and(normal=true)
-or(global.difficulty>=3)
-and(hard=true)
-{
-if (object=1)and(asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}
-if (object=2){if (global.difficulty>=1)and(asset_get_type("obj_spikes")==asset_object){instance_create_depth(x,y,0,obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}}}
-if (object=3)and(asset_get_type("obj_semisolid_platform")==asset_object){instance_create_depth(x,y,0,obj_semisolid_platform);instance_destroy();}
-#region /*Brick Block*/
-if (object=4)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;}instance_destroy();}
-if (object=5)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "10_basic_collectibles";}instance_destroy();}
-if (object=6)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "heart_balloon";}instance_destroy();}
-if (object=7)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "1-up";}instance_destroy();}
-if (object=8)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "2-up";}instance_destroy();}
-if (object=9)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "3-up";}instance_destroy();}
-if (object=10)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "invincibility_powerup";}instance_destroy();}
-#endregion /*Brick Block END*/
-#region /*Question Block*/
-if (object=11)and(asset_get_type("obj_question_block")==asset_object){instance_create_depth(x,y,0,obj_question_block);instance_destroy();}
-if (object=12)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "10_basic_collectibles";}instance_destroy();}
-if (object=13)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "heart_balloon";}instance_destroy();}
-if (object=14)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "1-up";}instance_destroy();}
-if (object=15)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "2-up";}instance_destroy();}
-if (object=16)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "3-up";}instance_destroy();}
-if (object=17)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "invincibility_powerup";}instance_destroy();}
-#endregion /*Question Block END*/
-if (object=18)and(asset_get_type("obj_hard_block")==asset_object){instance_create_depth(x,y,0,obj_hard_block);instance_destroy();}
-#region /*Falling Block*/
-if (object=19)and(asset_get_type("obj_falling_block")==asset_object){instance_create_depth(x,y,0,obj_falling_block);instance_destroy();}
-if (object=20)and(asset_get_type("obj_falling_block_solid")==asset_object){instance_create_depth(x,y,0,obj_falling_block_solid);instance_destroy();}
-if (object=21)and(asset_get_type("obj_falling_block_long")==asset_object){instance_create_depth(x,y,0,obj_falling_block_long);instance_destroy();}
-if (object=22)and(asset_get_type("obj_falling_block_long_solid")==asset_object){instance_create_depth(x,y,0,obj_falling_block_long_solid);instance_destroy();}
-#endregion /*Question Block END*/
-if (object=23)and(asset_get_type("obj_cloud_block")==asset_object){instance_create_depth(x,y,0,obj_cloud_block);instance_destroy();}
-if (object=24)and(asset_get_type("obj_ice_block")==asset_object){instance_create_depth(x,y,0,obj_ice_block);instance_destroy();}
-if (object=25)and(asset_get_type("obj_cardboard_block")==asset_object){instance_create_depth(x,y,0,obj_cardboard_block);instance_destroy();}
-if (object=26)and(asset_get_type("obj_cardboard")==asset_object){instance_create_depth(x,y,0,obj_cardboard);instance_destroy();}
-if (object=27)and(asset_get_type("obj_cardboard_long")==asset_object){instance_create_depth(x,y,0,obj_cardboard_long);instance_destroy();}
-#region /*Bump in ground*/
-if (object=28)and(asset_get_type("obj_bump_in_ground")==asset_object){instance_create_depth(x,y,0,obj_bump_in_ground);instance_destroy();}
-if (object=29)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="8_basic_collectibles";}instance_destroy();}
-if (object=30)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="heart_balloon";}instance_destroy();}
-if (object=31)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="1-up";}instance_destroy();}
-if (object=32)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="2-up";}instance_destroy();}
-if (object=33)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="3-up";}instance_destroy();}
-if (object=34)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_1";}instance_destroy();}
-if (object=35)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_2";}instance_destroy();}
-if (object=36)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_3";}instance_destroy();}
-if (object=37)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_4";}instance_destroy();}
-if (object=38)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_5";}instance_destroy();}
-if (object=39)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="invincibility_powerup";}instance_destroy();}
-#endregion /*Bump in ground END*/
-#region /*Basic Collectible*/
-if (object=40)and(asset_get_type("obj_basic_collectible")==asset_object){instance_create_depth(x,y,0,obj_basic_collectible);instance_destroy();}
-if (object=41)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=315;}instance_destroy();}
-if (object=42)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=270;}instance_destroy();}
-if (object=43)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=225;}instance_destroy();}
-if (object=44)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=180;}instance_destroy();}
-if (object=45)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=135;}instance_destroy();}
-if (object=46)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=90;}instance_destroy();}
-if (object=47)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=45;}instance_destroy();}
-#endregion /*Basic Collectible END*/
-#region /*Big Collectibles*/
-if (object=48)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 1;}instance_destroy();}
-if (object=49)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 2;}instance_destroy();}
-if (object=50)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 3;}instance_destroy();}
-if (object=51)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 4;}instance_destroy();}
-if (object=52)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 5;}instance_destroy();}
-#endregion /*Big Collectibles END*/
-if (object=53)and(asset_get_type("obj_heart_balloon")==asset_object){instance_create_depth(x,y,0,obj_heart_balloon);instance_destroy();}
-if (object=54)and(asset_get_type("obj_hp_pickup")==asset_object){instance_create_depth(x,y,0,obj_hp_pickup);instance_destroy();}
-if (object=55)and(asset_get_type("obj_invincibility_powerup")==asset_object){instance_create_depth(x,y,0,obj_invincibility_powerup);instance_destroy();}
-if (object=56)and(asset_get_type("obj_extra_life_pickup")==asset_object){instance_create_depth(x,y,0,obj_extra_life_pickup);instance_destroy();}
-if (object=57)and(asset_get_type("obj_extra_life_pickup")==asset_object){with(instance_create_depth(x,y,0,obj_extra_life_pickup)){number_of_extra_lives = 2;}instance_destroy();}
-if (object=58)and(asset_get_type("obj_extra_life_pickup")==asset_object){with(instance_create_depth(x,y,0,obj_extra_life_pickup)){number_of_extra_lives = 3;}instance_destroy();}
-if (object=59){if (global.difficulty>=1)and(asset_get_type("obj_enemy1")==asset_object){instance_create_depth(x,y,0,obj_enemy1);instance_destroy();}else{instance_destroy();}}
-if (object=60){if (global.difficulty>=1)and(asset_get_type("obj_enemy2")==asset_object){instance_create_depth(x,y,0,obj_enemy2);instance_destroy();}else{instance_destroy();}}
-if (object=61){if (global.difficulty>=1)and(asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
-if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
-if (object=63)and(asset_get_type("obj_vine")==asset_object){instance_create_depth(x,y,0,obj_vine);instance_destroy();}
-#region /*Arrow Sign*/
-if (object=64)and(asset_get_type("obj_arrow_sign")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
-#endregion /*Arrow Sign End*/
-#region /*Arrow Sign Small*/
-if (object=65)and(asset_get_type("obj_arrow_sign_small")==asset_object){with(instance_create_depth(x+16,y+16,0,obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
-#endregion /*Arrow Sign Small End*/
-if (object=66)and(asset_get_type("obj_checkpoint")==asset_object){instance_create_depth(x+16,y,0,obj_checkpoint);instance_destroy();}
-if (object=67){if (global.difficulty>=1)and(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}else{instance_destroy();}}
-#region /*Oneway*/
-if (object=68)and(asset_get_type("obj_oneway")==asset_object){instance_create_depth(x,y,0,obj_oneway);instance_destroy();}
-if (object=69)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=90;}instance_destroy();}
-if (object=70)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=180;}instance_destroy();}
-if (object=71)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=270;}instance_destroy();}
-#endregion /*Oneway END*/
-if (object=72)and(asset_get_type("obj_horizontal_rope")==asset_object){instance_create_depth(x,y,0,obj_horizontal_rope);instance_destroy();}
-if (object=73)and(asset_get_type("obj_water")==asset_object){instance_create_depth(x,y,0,obj_water);instance_destroy();}
-if (object=74)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_shirt;}instance_destroy();}
-if (object=75)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_pants;}instance_destroy();}
-if (object=76)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_sock;}instance_destroy();}
-#region /*Bucket*/
-if (object=77)and(asset_get_type("obj_bucket")==asset_object){instance_create_depth(x,y,0,obj_bucket);instance_destroy();}
-if (object=78)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="8_basic_collectibles";}instance_destroy();}
-if (object=79)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="heart_balloon";}instance_destroy();}
-if (object=80)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="1-up";}instance_destroy();}
-if (object=81)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="2-up";}instance_destroy();}
-if (object=82)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="3-up";}instance_destroy();}
-if (object=83)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_1";}instance_destroy();}
-if (object=84)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_2";}instance_destroy();}
-if (object=85)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_3";}instance_destroy();}
-if (object=86)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_4";}instance_destroy();}
-if (object=87)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_5";}instance_destroy();}
-if (object=88)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="invincibility_powerup";}instance_destroy();}
-#endregion /*Bucket END*/
-if (object=89)and(asset_get_type("obj_bird")==asset_object){instance_create_depth(x,y,0,obj_bird);instance_destroy();}
-if (object=90)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}instance_destroy();}
-if (object=91)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}instance_destroy();}
-if (object=92)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_groundpound; sprite_sign = spr_sign_groundpound;}instance_destroy();}
-if (object=93)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}instance_destroy();}
-if (object=94)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_walljump; sprite_sign = spr_sign_walljump;}instance_destroy();}
-if (object=95)and(asset_get_type("obj_boss")==asset_object){instance_create_depth(x,y,0,obj_boss);instance_destroy();}
-}
-else
-{
-	instance_destroy();/*Destroy object if difficulty setting and difficulty on object doesn't match*/
-}
+	/*Delete objects according to difficulty settings*/
+	if (global.difficulty<=1)
+	and(easy=true)
+	or(global.difficulty=2)
+	and(normal=true)
+	or(global.difficulty>=3)
+	and(hard=true)
+	{
+		if (object=1)and(asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}
+		if (object=2){if (global.difficulty>=1)and(asset_get_type("obj_spikes")==asset_object){instance_create_depth(x,y,0,obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}}}
+		if (object=3)and(asset_get_type("obj_semisolid_platform")==asset_object){instance_create_depth(x,y,0,obj_semisolid_platform);instance_destroy();}
+		#region /*Brick Block*/
+		if (object=4)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;}instance_destroy();}
+		if (object=5)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "10_basic_collectibles";}instance_destroy();}
+		if (object=6)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "heart_balloon";}instance_destroy();}
+		if (object=7)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "1-up";}instance_destroy();}
+		if (object=8)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "2-up";}instance_destroy();}
+		if (object=9)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "3-up";}instance_destroy();}
+		if (object=10)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "invincibility_powerup";}instance_destroy();}
+		#endregion /*Brick Block END*/
+		#region /*Question Block*/
+		if (object=11)and(asset_get_type("obj_question_block")==asset_object){instance_create_depth(x,y,0,obj_question_block);instance_destroy();}
+		if (object=12)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "10_basic_collectibles";}instance_destroy();}
+		if (object=13)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "heart_balloon";}instance_destroy();}
+		if (object=14)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "1-up";}instance_destroy();}
+		if (object=15)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "2-up";}instance_destroy();}
+		if (object=16)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "3-up";}instance_destroy();}
+		if (object=17)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "invincibility_powerup";}instance_destroy();}
+		#endregion /*Question Block END*/
+		if (object=18)and(asset_get_type("obj_hard_block")==asset_object){instance_create_depth(x,y,0,obj_hard_block);instance_destroy();}
+		#region /*Falling Block*/
+		if (object=19)and(asset_get_type("obj_falling_block")==asset_object){instance_create_depth(x,y,0,obj_falling_block);instance_destroy();}
+		if (object=20)and(asset_get_type("obj_falling_block_solid")==asset_object){instance_create_depth(x,y,0,obj_falling_block_solid);instance_destroy();}
+		if (object=21)and(asset_get_type("obj_falling_block_long")==asset_object){instance_create_depth(x,y,0,obj_falling_block_long);instance_destroy();}
+		if (object=22)and(asset_get_type("obj_falling_block_long_solid")==asset_object){instance_create_depth(x,y,0,obj_falling_block_long_solid);instance_destroy();}
+		#endregion /*Question Block END*/
+		if (object=23)and(asset_get_type("obj_cloud_block")==asset_object){instance_create_depth(x,y,0,obj_cloud_block);instance_destroy();}
+		if (object=24)and(asset_get_type("obj_ice_block")==asset_object){instance_create_depth(x,y,0,obj_ice_block);instance_destroy();}
+		if (object=25)and(asset_get_type("obj_cardboard_block")==asset_object){instance_create_depth(x,y,0,obj_cardboard_block);instance_destroy();}
+		if (object=26)and(asset_get_type("obj_cardboard")==asset_object){instance_create_depth(x,y,0,obj_cardboard);instance_destroy();}
+		if (object=27)and(asset_get_type("obj_cardboard_long")==asset_object){instance_create_depth(x,y,0,obj_cardboard_long);instance_destroy();}
+		#region /*Bump in ground*/
+		if (object=28)and(asset_get_type("obj_bump_in_ground")==asset_object){instance_create_depth(x,y,0,obj_bump_in_ground);instance_destroy();}
+		if (object=29)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="8_basic_collectibles";}instance_destroy();}
+		if (object=30)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="heart_balloon";}instance_destroy();}
+		if (object=31)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="1-up";}instance_destroy();}
+		if (object=32)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="2-up";}instance_destroy();}
+		if (object=33)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="3-up";}instance_destroy();}
+		if (object=34)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_1";}instance_destroy();}
+		if (object=35)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_2";}instance_destroy();}
+		if (object=36)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_3";}instance_destroy();}
+		if (object=37)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_4";}instance_destroy();}
+		if (object=38)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_5";}instance_destroy();}
+		if (object=39)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="invincibility_powerup";}instance_destroy();}
+		#endregion /*Bump in ground END*/
+		#region /*Basic Collectible*/
+		if (object=40)and(asset_get_type("obj_basic_collectible")==asset_object){instance_create_depth(x,y,0,obj_basic_collectible);instance_destroy();}
+		if (object=41)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=315;}instance_destroy();}
+		if (object=42)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=270;}instance_destroy();}
+		if (object=43)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=225;}instance_destroy();}
+		if (object=44)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=180;}instance_destroy();}
+		if (object=45)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=135;}instance_destroy();}
+		if (object=46)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=90;}instance_destroy();}
+		if (object=47)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=45;}instance_destroy();}
+		#endregion /*Basic Collectible END*/
+		#region /*Big Collectibles*/
+		if (object=48)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 1;}instance_destroy();}
+		if (object=49)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 2;}instance_destroy();}
+		if (object=50)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 3;}instance_destroy();}
+		if (object=51)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 4;}instance_destroy();}
+		if (object=52)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 5;}instance_destroy();}
+		#endregion /*Big Collectibles END*/
+		if (object=53)and(asset_get_type("obj_heart_balloon")==asset_object){instance_create_depth(x,y,0,obj_heart_balloon);instance_destroy();}
+		if (object=54)and(asset_get_type("obj_hp_pickup")==asset_object){instance_create_depth(x,y,0,obj_hp_pickup);instance_destroy();}
+		if (object=55)and(asset_get_type("obj_invincibility_powerup")==asset_object){instance_create_depth(x,y,0,obj_invincibility_powerup);instance_destroy();}
+		if (object=56)and(asset_get_type("obj_extra_life_pickup")==asset_object){instance_create_depth(x,y,0,obj_extra_life_pickup);instance_destroy();}
+		if (object=57)and(asset_get_type("obj_extra_life_pickup")==asset_object){with(instance_create_depth(x,y,0,obj_extra_life_pickup)){number_of_extra_lives = 2;}instance_destroy();}
+		if (object=58)and(asset_get_type("obj_extra_life_pickup")==asset_object){with(instance_create_depth(x,y,0,obj_extra_life_pickup)){number_of_extra_lives = 3;}instance_destroy();}
+		if (object=59){if (global.difficulty>=1)and(asset_get_type("obj_enemy1")==asset_object){instance_create_depth(x,y,0,obj_enemy1);instance_destroy();}else{instance_destroy();}}
+		if (object=60){if (global.difficulty>=1)and(asset_get_type("obj_enemy2")==asset_object){instance_create_depth(x,y,0,obj_enemy2);instance_destroy();}else{instance_destroy();}}
+		if (object=61){if (global.difficulty>=1)and(asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
+		if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
+		if (object=63)and(asset_get_type("obj_vine")==asset_object){instance_create_depth(x,y,0,obj_vine);instance_destroy();}
+		#region /*Arrow Sign*/
+		if (object=64)and(asset_get_type("obj_arrow_sign")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
+		#endregion /*Arrow Sign End*/
+		#region /*Arrow Sign Small*/
+		if (object=65)and(asset_get_type("obj_arrow_sign_small")==asset_object){with(instance_create_depth(x+16,y+16,0,obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
+		#endregion /*Arrow Sign Small End*/
+		if (object=66)and(asset_get_type("obj_checkpoint")==asset_object){instance_create_depth(x+16,y,0,obj_checkpoint);instance_destroy();}
+		if (object=67){if (global.difficulty>=1)and(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}else{instance_destroy();}}
+		#region /*Oneway*/
+		if (object=68)and(asset_get_type("obj_oneway")==asset_object){instance_create_depth(x,y,0,obj_oneway);instance_destroy();}
+		if (object=69)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=90;}instance_destroy();}
+		if (object=70)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=180;}instance_destroy();}
+		if (object=71)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=270;}instance_destroy();}
+		#endregion /*Oneway END*/
+		if (object=72)and(asset_get_type("obj_horizontal_rope")==asset_object){instance_create_depth(x,y,0,obj_horizontal_rope);instance_destroy();}
+		if (object=73)and(asset_get_type("obj_water")==asset_object){instance_create_depth(x,y,0,obj_water);instance_destroy();}
+		if (object=74)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_shirt;}instance_destroy();}
+		if (object=75)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_pants;}instance_destroy();}
+		if (object=76)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_sock;}instance_destroy();}
+		#region /*Bucket*/
+		if (object=77)and(asset_get_type("obj_bucket")==asset_object){instance_create_depth(x,y,0,obj_bucket);instance_destroy();}
+		if (object=78)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="8_basic_collectibles";}instance_destroy();}
+		if (object=79)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="heart_balloon";}instance_destroy();}
+		if (object=80)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="1-up";}instance_destroy();}
+		if (object=81)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="2-up";}instance_destroy();}
+		if (object=82)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="3-up";}instance_destroy();}
+		if (object=83)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_1";}instance_destroy();}
+		if (object=84)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_2";}instance_destroy();}
+		if (object=85)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_3";}instance_destroy();}
+		if (object=86)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_4";}instance_destroy();}
+		if (object=87)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_5";}instance_destroy();}
+		if (object=88)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="invincibility_powerup";}instance_destroy();}
+		#endregion /*Bucket END*/
+		if (object=89)and(asset_get_type("obj_bird")==asset_object){instance_create_depth(x,y,0,obj_bird);instance_destroy();}
+		if (object=90)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}instance_destroy();}
+		if (object=91)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}instance_destroy();}
+		if (object=92)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_groundpound; sprite_sign = spr_sign_groundpound;}instance_destroy();}
+		if (object=93)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}instance_destroy();}
+		if (object=94)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_walljump; sprite_sign = spr_sign_walljump;}instance_destroy();}
+		if (object=95)and(asset_get_type("obj_boss")==asset_object){instance_create_depth(x,y,0,obj_boss);instance_destroy();}
+	}
+	else
+	{
+		instance_destroy();/*Destroy object if difficulty setting and difficulty on object doesn't match*/
+	}
 }
 #endregion /*Spawn objects when starting room END*/
 
@@ -1371,21 +1439,21 @@ if (object=2)and(asset_get_type("spr_spikes")==asset_sprite){sprite_index=spr_sp
 if (object=3)and(asset_get_type("spr_semisolid_platform")==asset_sprite){sprite_index=spr_semisolid_platform;mask_index=spr_wall;}
 #region /*Brick Block*/
 if (object=4)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;mask_index=spr_wall;}
-if (object=5)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
-if (object=6)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_heart")==asset_sprite){draw_sprite_ext(spr_heart,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
-if (object=7)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_red,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=8)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_lime,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=9)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_blue,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=10)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
+if (object=5)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
+if (object=6)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_heart")==asset_sprite){draw_sprite_ext(spr_heart,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
+if (object=7)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=8)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_2up")==asset_sprite){draw_sprite_ext(spr_2up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=9)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_3up")==asset_sprite){draw_sprite_ext(spr_3up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=10)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
 #endregion /*Brick Block END*/
 #region /*Question Block*/
 if (object=11)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;mask_index=spr_wall;}
-if (object=12)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
-if (object=13)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_heart")==asset_sprite){draw_sprite_ext(spr_heart,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
-if (object=14)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_red,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=15)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_lime,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=16)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_blue,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=17)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
+if (object=12)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
+if (object=13)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_heart")==asset_sprite){draw_sprite_ext(spr_heart,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
+if (object=14)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=15)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_2up")==asset_sprite){draw_sprite_ext(spr_2up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=16)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_3up")==asset_sprite){draw_sprite_ext(spr_3up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=17)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
 #endregion /*Question Block END*/
 if (object=18)and(asset_get_type("spr_hard_block")==asset_sprite){sprite_index=spr_hard_block;mask_index=spr_wall;}
 if (object=19)and(asset_get_type("spr_falling_block")==asset_sprite){sprite_index=spr_falling_block;mask_index=spr_wall;}
@@ -1399,41 +1467,41 @@ if (object=26)and(asset_get_type("spr_cardboard")==asset_sprite){sprite_index=sp
 if (object=27)and(asset_get_type("spr_cardboard_long")==asset_sprite){sprite_index=spr_cardboard_long;mask_index=spr_cardboard_long;}
 #region /*Bump in ground*/
 if (object=28)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;mask_index=spr_wall;}
-if (object=29)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
-if (object=30)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_heart")==asset_sprite){draw_sprite_ext(spr_heart,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
-if (object=31)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_red,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=32)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_lime,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=33)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_blue,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=34)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=35)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=36)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=37)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"4",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=38)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"5",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=39)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
+if (object=29)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
+if (object=30)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_heart")==asset_sprite){draw_sprite_ext(spr_heart,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
+if (object=31)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=32)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_2up")==asset_sprite){draw_sprite_ext(spr_2up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=33)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_3up")==asset_sprite){draw_sprite_ext(spr_3up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=34)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=35)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=36)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=37)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"4",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=38)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"5",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=39)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
 #endregion /*Bump in ground END*/
 #region /*Basic Collectible*/
-if (object=40)and(asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible, 0, x, y, 1, 1, 0, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
-if (object=41)and(asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible, 0, x, y, 1, 1, 315, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
-if (object=42)and(asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible, 0, x, y, 1, 1, 270, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
-if (object=43)and(asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible, 0, x, y, 1, 1, 225, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
-if (object=44)and(asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible, 0, x, y, 1, 1, 180, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
-if (object=45)and(asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible, 0, x, y, 1, 1, 135, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
-if (object=46)and(asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible, 0, x, y, 1, 1, 90, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
-if (object=47)and(asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible, 0, x, y, 1, 1, 45, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
+if (object=40)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 0;mask_index=spr_wall;}
+if (object=41)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 315;mask_index=spr_wall;}
+if (object=42)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 270;mask_index=spr_wall;}
+if (object=43)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 225;mask_index=spr_wall;}
+if (object=44)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 180;mask_index=spr_wall;}
+if (object=45)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 135;mask_index=spr_wall;}
+if (object=46)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 90;mask_index=spr_wall;}
+if (object=47)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 45;mask_index=spr_wall;}
 #endregion /*Basic Collectible END*/
 #region /*Big Collectibles*/
-if (object=48)and(asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible, 0, x, y, 1, 1, 0, c_white, 1);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1",global.default_text_size,c_white,c_black,1);sprite_index=noone;mask_index=spr_2x2_block;}
-if (object=49)and(asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible, 0, x, y, 1, 1, 0, c_white, 1);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2",global.default_text_size,c_white,c_black,1);sprite_index=noone;mask_index=spr_2x2_block;}
-if (object=50)and(asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible, 0, x, y, 1, 1, 0, c_white, 1);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3",global.default_text_size,c_white,c_black,1);sprite_index=noone;mask_index=spr_2x2_block;}
-if (object=51)and(asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible, 0, x, y, 1, 1, 0, c_white, 1);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"4",global.default_text_size,c_white,c_black,1);sprite_index=noone;mask_index=spr_2x2_block;}
-if (object=52)and(asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible, 0, x, y, 1, 1, 0, c_white, 1);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"5",global.default_text_size,c_white,c_black,1);sprite_index=noone;mask_index=spr_2x2_block;}
+if (object=48)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_index = spr_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
+if (object=49)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_index = spr_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
+if (object=50)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_index = spr_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
+if (object=51)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_index = spr_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"4",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
+if (object=52)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_index = spr_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"5",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
 #endregion /*Big Collectibles END*/
 if (object=53)and(asset_get_type("spr_heart")==asset_sprite){sprite_index=spr_heart;mask_index=spr_wall;}
 if (object=54)and(asset_get_type("spr_hp_pickup")==asset_sprite){sprite_index=spr_hp_pickup;mask_index=spr_wall;}
 if (object=55)and(asset_get_type("spr_invincibility_powerup")==asset_sprite){sprite_index=spr_invincibility_powerup;mask_index=spr_wall;}
-if (object=56)and(asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 1, 1, 0, c_red, 1);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,1);sprite_index=noone;mask_index=spr_wall;}
-if (object=57)and(asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 1, 1, 0, c_lime, 1);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,1);sprite_index=noone;mask_index=spr_wall;}
-if (object=58)and(asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 1, 1, 0, c_blue, 1);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,1);sprite_index=noone;mask_index=spr_wall;}
+if (object=56)and(asset_get_type("spr_1up")==asset_sprite){sprite_index = spr_1up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,image_blend,c_black,image_alpha);mask_index=spr_wall;}
+if (object=57)and(asset_get_type("spr_2up")==asset_sprite){sprite_index = spr_2up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,image_blend,c_black,image_alpha);mask_index=spr_wall;}
+if (object=58)and(asset_get_type("spr_3up")==asset_sprite){sprite_index = spr_3up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,image_blend,c_black,image_alpha);mask_index=spr_wall;}
 if (object=59){sprite_index=sprite_enemy1;mask_index=spr_wall;}
 if (object=60){sprite_index=sprite_enemy2;mask_index=spr_wall;}
 if (object=61)and(asset_get_type("spr_blaster")==asset_sprite){sprite_index=spr_blaster;mask_index=spr_wall;}
@@ -1444,7 +1512,7 @@ if (object=63)and(asset_get_type("spr_ladder")==asset_sprite){sprite_index=spr_l
 if (object = 64)
 and(asset_get_type("spr_arrow_sign") == asset_sprite)
 {
-	draw_sprite_ext(spr_arrow_sign, 0, x+16, y+16, 1, 1, draw_angle, c_white, 1);
+	draw_sprite_ext(spr_arrow_sign, 0, x, y, 1, 1, draw_angle, image_blend, image_alpha);
 	mask_index = spr_2x2_block;
 	sprite_index = noone;
 }
@@ -1454,19 +1522,19 @@ and(asset_get_type("spr_arrow_sign") == asset_sprite)
 if (object = 65)
 and(asset_get_type("spr_arrow_sign_small") == asset_sprite)
 {
-	draw_sprite_ext(spr_arrow_sign_small, 0, x+16, y+16, 0.5, 0.5, draw_angle, c_white, 1);
+	draw_sprite_ext(spr_arrow_sign_small, 0, x, y, 0.5, 0.5, draw_angle, image_blend, image_alpha);
 	mask_index = spr_2x2_block;
 	sprite_index = noone;
 }
 #endregion /*Arrow Signs Small END*/
 
-if (object=66)and(asset_get_type("spr_checkpoint")==asset_sprite){draw_sprite_ext(spr_checkpoint, 0, x+16, y, 1, 1, 0, c_white, 1);sprite_index=noone;mask_index=spr_2x2_block;}
-if (object=67)and(asset_get_type("spr_spikes_emerge_block")==asset_sprite){if!place_meeting(x,y+1,obj_leveleditor_placed_object){instance_destroy();}sprite_index=spr_spikes_emerge_block;mask_index=spr_wall;}
+if (object=66)and(asset_get_type("spr_checkpoint")==asset_sprite){sprite_index=spr_checkpoint;mask_index=spr_2x2_block;}
+if (object=67)and(asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;mask_index=spr_wall;}
 #region /*Oneway*/
-if (object=68)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index=spr_oneway;mask_index=spr_wall;}
-if (object=69)and(asset_get_type("spr_oneway")==asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1, 90, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
-if (object=70)and(asset_get_type("spr_oneway")==asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1, 180, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
-if (object=71)and(asset_get_type("spr_oneway")==asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1, 270, c_white, 1);sprite_index=noone;mask_index=spr_wall;}
+if (object=68)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 0;mask_index = spr_wall;}
+if (object=69)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 90;mask_index = spr_wall;}
+if (object=70)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 180;mask_index = spr_wall;}
+if (object=71)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 270;mask_index = spr_wall;}
 #endregion /*Oneway END*/
 if (object=72)and(asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_index=spr_horizontal_rope;mask_index=spr_wall;}
 if (object=73)and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
@@ -1475,17 +1543,17 @@ if (object=75)and(asset_get_type("spr_clipped_pants")==asset_sprite){sprite_inde
 if (object=76)and(asset_get_type("spr_clipped_sock")==asset_sprite){sprite_index=spr_clipped_sock;mask_index=spr_wall;}
 #region /*Bucket*/
 if (object=77)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;mask_index=spr_wall;}
-if (object=78)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
-if (object=79)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_heart")==asset_sprite){draw_sprite_ext(spr_heart,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
-if (object=80)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_red,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=81)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_lime,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=82)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_blue,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,1);mask_index=spr_wall;}
-if (object=83)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=84)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=85)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=86)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"4",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=87)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,1);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"5",global.default_text_size,c_white,c_black,1);mask_index=spr_wall;}
-if (object=88)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,1);}mask_index=spr_wall;}
+if (object=78)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
+if (object=79)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_heart")==asset_sprite){draw_sprite_ext(spr_heart,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
+if (object=80)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_1up")==asset_sprite){draw_sprite_ext(spr_1up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=81)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_2up")==asset_sprite){draw_sprite_ext(spr_2up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=82)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_3up")==asset_sprite){draw_sprite_ext(spr_3up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=83)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=84)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=85)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=86)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"4",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=87)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"5",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
+if (object=88)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
 #endregion /*Bucket END*/
 if (object=89)and(asset_get_type("spr_bird")==asset_sprite){sprite_index=spr_bird;mask_index=spr_wall;}
 if (object=90)and(asset_get_type("spr_sign_crouch")==asset_sprite){sprite_index=spr_sign_crouch;mask_index=spr_wall;}

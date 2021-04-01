@@ -5,10 +5,16 @@ if (asset_get_type("spr_wall")==asset_sprite)
 	mask_index=spr_wall;
 }
 
+if (can_bounce > 0)
+{
+	can_bounce -= 1;
+}
+
 #region /*Make player spring*/
 if (asset_get_type("obj_player")==asset_object)
 and(place_meeting(x,y,instance_nearest(x,y,obj_player)))
 and(instance_exists(obj_player))
+and(can_bounce=0)
 {
 	if (asset_get_type("snd_spring")==asset_sound)
 	{
@@ -51,8 +57,10 @@ and(instance_exists(obj_player))
 			speed_max=4;
 			spring=true;
 			stick_to_wall=false;
+			climb=false;
 		}
 	}
+	can_bounce = 10;
 }
 #endregion /*Make player spring END*/
 

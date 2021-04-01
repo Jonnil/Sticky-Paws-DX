@@ -16,3 +16,5 @@ angle_x = x;
 angle_y = y;
 
 draw_angle = 0;
+
+depth = +110;

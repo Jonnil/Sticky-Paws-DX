@@ -619,46 +619,35 @@ if (quit_level_editor = false)
 			#region /*Easy*/
 			if (difficulty_layer = 1)
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 20, display_get_gui_width() - 288, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 20, display_get_gui_width() - 224, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 20, display_get_gui_width() - 288, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 20, display_get_gui_width() - 224, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /*Easy END*/
 		
 			#region /*Normal*/
 			if (difficulty_layer = 2)
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 21, display_get_gui_width() - 224, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 21, display_get_gui_width() - 160, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 21, display_get_gui_width() - 224, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 21, display_get_gui_width() - 160, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /*Normal END*/
 		
 			#region /*Hard*/
 			if (difficulty_layer = 3)
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 22, display_get_gui_width() - 160, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 22, display_get_gui_width() - 96, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 22, display_get_gui_width() - 160, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 22, display_get_gui_width() - 96, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /*Hard END*/
-		
-			#region /*All*/
-			if (difficulty_layer = 0)
-			{
-				draw_sprite_ext(spr_leveleditor_icons, 23, display_get_gui_width() - 96, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_leveleditor_icons, 23, display_get_gui_width() - 96, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
-			}
-			#endregion /*All END*/
 		
 			#region /*Set Difficulty Mode / Back*/
 			draw_sprite_ext(spr_leveleditor_icons, 24, display_get_gui_width() - 32, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
@@ -1135,17 +1124,17 @@ if (quit_level_editor = false)
 		}
 	}
 	#endregion /*Fill END*/
-
+	
 	else
 	{
 		show_tooltip = 0;
 	}
-
+	
 	#region /*Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
-
+	
 	#region /*Easy*/
 	if (set_difficulty_mode = true)
-	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 320, display_get_gui_height() - 64, display_get_gui_width() - 256, display_get_gui_height() + 64))
+	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width() - 192, display_get_gui_height() + 64))
 	{
 		tooltip = "Show only objects in easy";
 		show_tooltip += 2;
@@ -1158,10 +1147,10 @@ if (quit_level_editor = false)
 		}
 	}
 	#endregion /*Easy END*/
-
+	
 	#region /*Normal*/
 	if (set_difficulty_mode = true)
-	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width() - 192, display_get_gui_height() + 64))
+	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 192, display_get_gui_height() - 64, display_get_gui_width() - 128, display_get_gui_height() + 64))
 	{
 		tooltip = "Show only objects in normal";
 		show_tooltip += 2;
@@ -1174,10 +1163,10 @@ if (quit_level_editor = false)
 		}
 	}
 	#endregion /*Normal END*/
-
+	
 	#region /*Hard*/
 	if (set_difficulty_mode = true)
-	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 192, display_get_gui_height() - 64, display_get_gui_width() - 128, display_get_gui_height() + 64))
+	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
 	{
 		tooltip = "Show only objects in hard";
 		show_tooltip += 2;
@@ -1190,23 +1179,7 @@ if (quit_level_editor = false)
 		}
 	}
 	#endregion /*Hard END*/
-
-	#region /*All*/
-	if (set_difficulty_mode = true)
-	and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
-	{
-		tooltip = "Show all objects";
-		show_tooltip += 2;
-		if (mouse_check_button_pressed(mb_left))
-		{
-			difficulty_layer = 0;
-			fill_mode = false;
-			erase_mode = false;
-			set_difficulty_mode = true;
-		}
-	}
-	#endregion /*All END*/
-
+	
 	#region /*Set Difficulty Mode / Back*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
 	{

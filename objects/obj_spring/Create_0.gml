@@ -4,3 +4,4 @@ image_speed=0;
 bounce_height=14.5*1.5
 angle_x = x;
 angle_y = y;
+can_bounce = 0;

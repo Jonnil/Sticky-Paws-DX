@@ -654,7 +654,33 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 	}
 	#endregion /*Sprite skidding y origin point END*/
 	#endregion /*Sprite skidding x and y origin points END*/
+	
+	#region /*Sprite skidding ice x and y origin points*/
+	#region /*Sprite skidding ice x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_skidding_ice_xorig"))
+	{
+		sprite_skidding_ice_xorig = ini_read_real("sprite origin points", "sprite_skidding_ice_xorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_skidding_ice_xorig", 0);
+		sprite_skidding_ice_xorig = 0;
+	}
+	#endregion /*Sprite skidding ice x origin point END*/
 
+	#region /*Sprite skidding ice y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_skidding_ice_yorig"))
+	{
+		sprite_skidding_ice_yorig = ini_read_real("sprite origin points", "sprite_skidding_ice_yorig", 0);
+	}
+	else
+	{
+		ini_write_real("sprite origin points", "sprite_skidding_ice_yorig", 0);
+		sprite_skidding_ice_yorig = 0;
+	}
+	#endregion /*Sprite skidding ice y origin point END*/
+	#endregion /*Sprite skidding ice x and y origin points END*/
+	
 	#region /*Sprite swim x and y origin points*/
 	#region /*Sprite swim x origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_swim_xorig"))
@@ -1523,6 +1549,8 @@ else
 	sprite_run4_yorig = 0;
 	sprite_skidding_xorig = 0;
 	sprite_skidding_yorig = 0;
+	sprite_skidding_ice_xorig = 0;
+	sprite_skidding_ice_yorig = 0;
 	sprite_stand_cold_xorig = 0;
 	sprite_stand_cold_yorig = 0;
 	sprite_stand_xorig = 0;
@@ -1875,6 +1903,32 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 	sprite_skidding = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/skidding.png", 1, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
 }
 #endregion /*Skidding sprite END*/
+
+#region /*Skidding Ice sprite*/
+index=0
+repeat(50)
+{
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/skidding_ice_strip"+string(index)+".png"))
+	{
+		sprite_skidding_ice = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/skidding_ice_strip"+string(index)+".png", index, false, false, sprite_skidding_ice_xorig, sprite_skidding_ice_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/skidding_ice_strip"+string(index)+".png"))
+	{
+		sprite_skidding_ice = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/skidding_ice_strip"+string(index)+".png", index, false, false, sprite_skidding_ice_xorig, sprite_skidding_ice_yorig);
+	}
+	index+=1
+}
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/skidding_ice.png"))
+{
+	sprite_skidding_ice = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/skidding_ice.png", 1, false, false, sprite_skidding_ice_xorig, sprite_skidding_ice_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/skidding_ice.png"))
+{
+	sprite_skidding_ice = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/skidding_ice.png", 1, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
+}
+#endregion /*Skidding Ice sprite END*/
 
 #region /*Swim sprite*/
 index=0
@@ -15326,6 +15380,7 @@ if (allow_homing_attack=true)
 	and(!collision_line(x,y,instance_nearest(x,y,obj_spring).x,instance_nearest(x,y,obj_spring).y,obj_wall,false,true))
 	and(distance_to_object(obj_spring)<hoverstomp_distance)
 	and(instance_nearest(x,y,obj_spring).bbox_bottom>y)
+	and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	{
 		x=instance_nearest(x,y,obj_spring).x;
 		y=instance_nearest(x,y,obj_spring).y;
@@ -15333,6 +15388,7 @@ if (allow_homing_attack=true)
 		spring_animation=0;
 		dive=false;
 		ground_pound=false;
+		instance_nearest(x,y,obj_spring).can_bounce=10;
 		if (speed_max<=4)
 		{
 			speed_max=4;
@@ -15350,7 +15406,9 @@ if (vspeed>0)
 
 #region /*Spring*/
 if (asset_get_type("obj_spring")==asset_object)
+and(instance_exists(obj_spring))
 and(place_meeting(x,y,obj_spring))
+and(instance_nearest(x,y,obj_spring).can_bounce=0)
 {
 	spring_animation=0;
 	move_towards_point(
@@ -15378,6 +15436,7 @@ and(place_meeting(x,y,obj_spring))
 	speed_max=4;
 	spring=true;
 	stick_to_wall=false;
+	instance_nearest(x,y,obj_spring).can_bounce = 10;
 }
 
 if (spring=true)
