@@ -67,6 +67,7 @@
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"fa429e76-12ed-47fb-b9d6-04cdba4f5048","tags":[],"resourceType":"GMImageLayer",},
   ],
+  "nineSlice": null,
   "parent": {
     "name": "mobile buttons",
     "path": "folders/Sprites/buttons/mobile buttons.yy",

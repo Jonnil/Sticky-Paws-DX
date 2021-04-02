@@ -13,6 +13,9 @@ global.select_number_of_players_before_selecting_characters=false; /*If you shou
 global.max_number_of_official_characters = 1; /*Update this whenever you add more official playable characters!*/
 
 #region /*What settings tabs to show up*/
+global.show_language_shortcut=false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
+global.show_accessibility_shortcut=false; /*If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu*/
+global.show_profile_shortcut=false; /*If a shortcut for the profile options should appear in the main menu to the right of the settings menu*/
 global.enable_multiplayer_settings = false; /*Enable Multiplayer settings*/
 global.enable_controller_settings = false; /*Enable Controller settings*/
 global.enable_touch_settings = false; /*Enable Touch settings*/
@@ -133,9 +136,6 @@ global.level_editor_level=0;/*What level is selected in the custom level editor*
 global.play_edited_level=false;/*Playtest edited level*/
 global.actually_play_edited_level=false;/*Actually playing finished edited level*/
 global.character_select_in_this_menu="game";/*In what menu character select is going to appear in*/
-global.show_language_shortcut=false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
-global.show_accessibility_shortcut=false; /*If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu*/
-global.show_profile_shortcut=false; /*If a shortcut for the profile options should appear in the main menu to the right of the settings menu*/
 global.difficulty=2;/*Difficulty levels: 0 = peaceful, 1 = easy, 2 = normal (default), 3 = hard*/
 global.controls_used_for_menu_navigation="keyboard";/*keyboard, mouse, or controller*/
 global.pause=false;/*If game is paused or not*/

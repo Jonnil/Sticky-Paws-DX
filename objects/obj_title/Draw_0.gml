@@ -2403,6 +2403,7 @@ and(obj_camera.iris_xscale<=0.001)
 	
 	#region /*Play Level Editor*/
 	if (menu="level_editor_play")
+	and(global.character_select_in_this_menu="level_editor")
 	{
 		if (asset_get_type("snd_music_titlescreen")==asset_sound)
 		{
@@ -2637,6 +2638,7 @@ and(obj_camera.iris_xscale<=0.001)
 	
 	#region /*Make Level Editor*/
 	if (menu="level_editor_make")
+	and(global.character_select_in_this_menu="level_editor")
 	{
 		if (asset_get_type("snd_music_titlescreen")==asset_sound)
 		{
@@ -2879,37 +2881,10 @@ and(obj_camera.iris_xscale<=0.001)
 				audio_stop_sound(snd_music_titlescreen);
 			}
 		}
-		if (file_exists("File1.ini"))
+		if (asset_get_type("room_level_select")==asset_room)
 		{
-			if (asset_get_type("room_level_select")==asset_room)
-			{
-				sprite_delete(title_screen_background);
-				room_goto(room_level_select);
-			}
-			else
-			{
-				if (room_next(room)<>-1)
-				{
-					sprite_delete(title_screen_background);
-					room_goto_next();
-				}
-			}
-		}
-		else
-		{
-			if (asset_get_type("room_intro_cutscene")==asset_room)
-			{
-				sprite_delete(title_screen_background);
-				room_goto(room_intro_cutscene);
-			}
-			else
-			{
-				if (room_next(room)<>-1)
-				{
-					sprite_delete(title_screen_background);
-					room_goto_next();
-				}
-			}
+			sprite_delete(title_screen_background);
+			room_goto(room_level_select);
 		}
 	}
 	#endregion /*Load File 1 END*/
@@ -2926,37 +2901,10 @@ and(obj_camera.iris_xscale<=0.001)
 				audio_stop_sound(snd_music_titlescreen);
 			}
 		}
-		if (file_exists("File2.ini"))
+		if (asset_get_type("room_level_select")==asset_room)
 		{
-			if (asset_get_type("room_level_select")==asset_room)
-			{
-				sprite_delete(title_screen_background);
-				room_goto(room_level_select);
-			}
-			else
-			{
-				if (room_next(room)<>-1)
-				{
-					sprite_delete(title_screen_background);
-					room_goto_next();
-				}
-			}
-		}
-		else
-		{
-			if (asset_get_type("room_intro_cutscene")==asset_room)
-			{
-				sprite_delete(title_screen_background);
-				room_goto(room_intro_cutscene);
-			}
-			else
-			{
-				if (room_next(room)<>-1)
-				{
-					sprite_delete(title_screen_background);
-					room_goto_next();
-				}
-			}
+			sprite_delete(title_screen_background);
+			room_goto(room_level_select);
 		}
 	}
 	#endregion /*Load File 2 END*/
@@ -2973,37 +2921,10 @@ and(obj_camera.iris_xscale<=0.001)
 				audio_stop_sound(snd_music_titlescreen);
 			}
 		}
-		if (file_exists("File3.ini"))
+		if (asset_get_type("room_level_select")==asset_room)
 		{
-			if (asset_get_type("room_level_select")==asset_room)
-			{
-				sprite_delete(title_screen_background);
-				room_goto(room_level_select);
-			}
-			else
-			{
-				if (room_next(room)<>-1)
-				{
-					sprite_delete(title_screen_background);
-					room_goto_next();
-				}
-			}
-		}
-		else
-		{
-			if (asset_get_type("room_intro_cutscene")==asset_room)
-			{
-				sprite_delete(title_screen_background);
-				room_goto(room_intro_cutscene);
-			}
-			else
-			{
-				if (room_next(room)<>-1)
-				{
-					sprite_delete(title_screen_background);
-					room_goto_next();
-				}
-			}
+			sprite_delete(title_screen_background);
+			room_goto(room_level_select);
 		}
 	}
 	#endregion /*Load File 3 END*/
