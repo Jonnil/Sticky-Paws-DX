@@ -1,4 +1,4 @@
-if (custom_tileset != noone) /*Make sure it's !=*/
+if (custom_tileset!=noone)
 {
 	draw_sprite_part_ext(custom_tileset, 0, 32*tile, 0, 32, 32, x-16, y-16, 1, 1, c_white, 1);
 }
@@ -7,6 +7,7 @@ else
 	draw_sprite_ext(sprite_index, 0, x, y, 1, 1, 0, c_white, 1);
 }
 
+#region /*Set Tile*/
 tile=44;
 if (position_meeting(x,y-look_outward,same_object))
 {
@@ -132,3 +133,4 @@ else if (position_meeting(x-look_outward,y,same_object))
 {
  tile=3;
 }
+#endregion /*Set Tile END*/
