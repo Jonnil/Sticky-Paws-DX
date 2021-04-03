@@ -5,10 +5,6 @@ key_a_released = (gamepad_button_check_released(0, gp_face1))
 or(keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
 or(keyboard_check(global.player1_key_sprint));
-draw_set_alpha(0.5);
-draw_rectangle_colour(x + 304, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
-draw_set_alpha(1);
-draw_line_width_colour(x + 304, 0, x + 304, room_height, 2, c_black, c_black);
 draw_self();
 
 #region /*Drag Object*/
@@ -71,21 +67,21 @@ else
 }
 
 #region /*Make sure the level end isn't outside of the level, this code has to be after the drag object code*/
-if (x < 1088)
+if (x < 32)
 {
-	x = 1088;
+	x = 32;
 }
 if (x < 0 + sprite_width - 32)
 {
-	x = 0 + sprite_width - 32
+	x = 0 + sprite_width - 32;
 }
 if (x > room_width - sprite_width + 16)
 {
 	x = room_width - sprite_width + 16;
 }
-if (y < 384)
+if (y < 32)
 {
-	y = 384
+	y = 32;
 }
 if (y > room_height)
 {
@@ -118,6 +114,5 @@ or(global.actually_play_edited_level = true)
 		global.play_edited_level = true;
 		background_visible[6] = false;
 	}
-	room_width = x + 288;
 	instance_destroy();
 }

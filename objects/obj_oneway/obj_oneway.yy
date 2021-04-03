@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Only in level editor",
-    "path": "folders/Objects/Only in level editor.yy",
+    "name": "Level Objects",
+    "path": "folders/Objects/Level Objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_oneway",

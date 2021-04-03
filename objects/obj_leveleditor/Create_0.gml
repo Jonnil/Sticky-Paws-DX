@@ -3,7 +3,7 @@ camera_set_view_size(view_camera[view_current], window_get_width(), window_get_h
 display_set_gui_size(window_get_width(), window_get_height());
 #endregion /*Set screen size END*/
 
-depth = +100;
+depth = -10;
 
 #region /*Mouse x and mouse y initializing*/
 mx = mouse_x;
@@ -25,6 +25,20 @@ and(!instance_exists(obj_foreground2))
 	instance_create_depth(0,0,0,obj_foreground2);
 }
 #endregion /*Create Foreground END*/
+
+#region /*Create level height and level width objects*/
+if (asset_get_type("obj_level_height")==asset_object)
+and(!instance_exists(obj_level_height))
+{
+	instance_create_depth(0,0,0,obj_level_height);
+}
+if (asset_get_type("obj_level_width")==asset_object)
+and(!instance_exists(obj_level_width))
+{
+	instance_create_depth(2720,0,0,obj_level_width);
+}
+#endregion /*Create level height and level width objects END*/
+
 
 audio_stop_all();
 if (global.actually_play_edited_level = true)

@@ -28,8 +28,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Map Screen",
-    "path": "folders/Objects/Map Screen.yy",
+    "name": "Map Screen Objects",
+    "path": "folders/Objects/Map Screen Objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_player_map",

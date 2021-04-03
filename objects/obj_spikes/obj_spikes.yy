@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Blocks",
-    "path": "folders/Objects/Only in level editor/Blocks.yy",
+    "path": "folders/Objects/Level Objects/Blocks.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_spikes",

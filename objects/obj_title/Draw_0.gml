@@ -2242,7 +2242,7 @@ or(menu="import_export_level")
 	and(key_a_pressed)
 	or(point_in_rectangle(mouse_x,mouse_y,
 	camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185,
-	camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+64,
+	camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+66,
 	camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2-185+370,
 	camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2+menu_y_offset+64+42))
 	and(mouse_check_button_pressed(mb_left))

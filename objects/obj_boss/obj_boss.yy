@@ -33,7 +33,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Enemies",
-    "path": "folders/Objects/Only in level editor/Enemies.yy",
+    "path": "folders/Objects/Level Objects/Enemies.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_boss",

@@ -211,6 +211,10 @@ if (asset_get_type("obj_level_height")==asset_object)
 {
 	instance_activate_object(obj_level_height);
 }
+if (asset_get_type("obj_level_width")==asset_object)
+{
+	instance_activate_object(obj_level_width);
+}
 #endregion /*Activate objects that always should be active END*/
 
 #endregion /*Deactivate instances outside view END*/
@@ -1115,6 +1119,8 @@ if (quit_level_editor=0)
 		and(!place_meeting(x,y,obj_level_end))
 		and(asset_get_type("obj_level_height")==asset_object)
 		and(!position_meeting(x,y,obj_level_height))
+		and(asset_get_type("obj_level_width")==asset_object)
+		and(!position_meeting(x,y,obj_level_width))
 		and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
 		and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64)) /*Can't place objects when clicking the top buttons*/
 		{
@@ -1453,6 +1459,13 @@ or(gamepad_button_check_pressed(0,gp_select))
 			if (instance_exists(obj_level_height))
 			{
 				ini_write_real("Info","level_height",obj_level_height.y);
+			}
+		}
+		if (asset_get_type("obj_level_width")==asset_object)
+		{
+			if (instance_exists(obj_level_width))
+			{
+				ini_write_real("Info","level_width",obj_level_width.x);
 			}
 		}
 		ini_write_real("Info","view_xview",camera_get_view_x(view_camera[view_current]));
