@@ -8,6 +8,11 @@ key_b = (gamepad_button_check(0, gp_face2))
 or(keyboard_check(global.player1_key_sprint));
 draw_self();
 
+if (global.actually_play_edited_level = true)
+{
+	draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+}
+
 #region /*Drag Object*/
 if (asset_get_type("obj_leveleditor") == asset_object)
 and(instance_exists(obj_leveleditor))

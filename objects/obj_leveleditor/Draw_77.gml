@@ -69,6 +69,7 @@ if (quit_level_editor=3)
 
 #region /*Save Level*/
 if (quit_level_editor=4)
+and(global.character_select_in_this_menu="level_editor")
 {
 	
 	#region /*Create directory for saving custom levels*/
@@ -78,21 +79,52 @@ if (quit_level_editor=4)
 	}
 	#endregion /*Create directory for saving custom levels END*/
 	
+	#region /*Save object placement*/
 	instance_activate_all();
 	var file,str;
 	file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"); /*Open file for writing*/
 	str=""; /*Reset string var*/
 	
-	#region /*Write wall objects to file*/
+	#region /*Write all objects to file*/
 	with(obj_leveleditor_placed_object)
 	{
-		str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|";
+		if (object != 62)
+		and(object != 64)
+		and(object != 65)
+		{
+			str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|";
+		}
 	}
-	#endregion /*Write wall objects to file END*/
+	#endregion /*Write all objects to file END*/
 	
 	file_text_write_string(file,str); /*Write string with wall information to file and start a new line*/
 	file_text_close(file);
-
+	
+	#endregion /*Save object placement END*/
+	
+	#region /*Save objects with rotation placement*/
+	instance_activate_all();
+	var file,str;
+	file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt"); /*Open file for writing*/
+	str=""; /*Reset string var*/
+	
+	#region /*Write all objects to file*/
+	with(obj_leveleditor_placed_object)
+	{
+		if (object = 62)
+		or(object = 64)
+		or(object = 65)
+		{
+			str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|"+string(angle_x)+"|"+string(angle_y)+"|";
+		}
+	}
+	#endregion /*Write all objects to file END*/
+	
+	file_text_write_string(file,str); /*Write string with wall information to file and start a new line*/
+	file_text_close(file);
+	
+	#endregion /*Save object with rotation placement END*/
+	
 	#region /*Save Level Information*/
 	ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
 	ini_write_string("Info","level_name",level_name);

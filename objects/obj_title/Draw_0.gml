@@ -376,10 +376,8 @@ or(menu = "quit_game_yes")
 		or(key_a_pressed)
 		and(menu_delay = 0)
 		{
-			
+			menu = "quit"; /*Return to game*/
 			menu_delay = 10;
-			menu = "main_game"; /*Return to game*/
-			
 		}
 		if (key_up)
 		and(!key_down)
@@ -889,6 +887,7 @@ or(menu="quit")
 	and(mouse_check_button_released(mb_left))
 	or(menu="quit")
 	and(key_a_pressed)
+	and(menu_delay=0)
 	{
 		in_settings=false;
 		menu = "quit_game_no";

@@ -72,11 +72,18 @@ if (brick_particle=false)
 		or(place_meeting(bbox_right+1,y,obj_player))
 		and(instance_nearest(x,y,obj_player).wall_jump=true)
 		and(!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,obj_wall,false,true))
+		
 		or(!place_meeting(x,bbox_bottom+1,obj_wall))
 		and(x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])-32)
 		and(x>camera_get_view_x(view_camera[view_current])+32)
 		and(bbox_bottom<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32)
 		and(y>camera_get_view_y(view_camera[view_current])+32)
+		and(!place_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+		and(x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])-32)
+		and(x>camera_get_view_x(view_camera[view_current])+32)
+		and(bbox_bottom<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32)
+		and(y>camera_get_view_y(view_camera[view_current])+32)
+		
 		or(asset_get_type("obj_blockbreak")==asset_object)
 		and(place_meeting(x,y,obj_blockbreak))
 		{

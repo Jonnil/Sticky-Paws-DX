@@ -3,7 +3,7 @@ camera_set_view_size(view_camera[view_current], window_get_width(), window_get_h
 display_set_gui_size(window_get_width(), window_get_height());
 #endregion /*Set screen size END*/
 
-depth = -10;
+depth = -30;
 
 #region /*Mouse x and mouse y initializing*/
 mx = mouse_x;
@@ -215,6 +215,8 @@ player1_show_controls_alpha=0;
 #region /*Load Main Game Level*/
 if (global.character_select_in_this_menu="game")
 {
+	
+	#region /*Object Placement*/
 	var file, str, str_pos, str_temp, val, num;
 	if file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt")
 	{
@@ -255,6 +257,63 @@ if (global.character_select_in_this_menu="game")
 			val[2] = y position,
 			val[3] = easy,
 			val[4] = normal,
+			val[5] = hard*/
+			{
+				num = 0;
+				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+				{
+					object=val[2];
+					easy=val[3];
+					normal=val[4];
+					hard=val[5];
+				}
+			}
+		}
+		file_text_close(file);
+	}
+	#endregion /*Object Placement END*/
+	
+	#region /*Object With Rotation Placement*/
+	var file, str, str_pos, str_temp, val, num;
+	if file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt")
+	{
+		file = file_text_open_read("Levels/Level"+string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt");
+	}
+	else
+	if file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/Object Rotation Placement.txt")
+	{
+		file = file_text_open_read("Levels/Level"+string(global.level_editor_level)+"/Data/Object Rotation Placement.txt");
+	}
+	else
+	{
+		file = -1;
+	}
+	
+	if (file != -1)
+	{
+		/*Next objects*/
+		str = file_text_read_string(file);
+		//file_text_readln(file);
+		str_temp = "";
+		num = 0;
+		str_pos = 1;
+		while(str_pos < string_length(str))
+		{
+			while (string_char_at(str, str_pos) != "|")
+			{
+				str_temp += string_char_at(str, str_pos);
+				str_pos += 1;
+			}
+			val[num] = real(str_temp);
+			str_temp = "";
+			str_pos += 1;
+			num += 1;
+			if (num = 8) /*Number of variables to check for.
+			val[0] = object,
+			val[1] = x position,
+			val[2] = y position,
+			val[3] = easy,
+			val[4] = normal,
 			val[5] = hard,
 			val[6] = angle_x,
 			val[7] = angle_y*/
@@ -266,13 +325,15 @@ if (global.character_select_in_this_menu="game")
 					easy=val[3];
 					normal=val[4];
 					hard=val[5];
-					//angle_x=val[6]; /*Remove*/
-					//angle_y=val[7]; /*Remove*/
+					angle_x=val[6];
+					angle_y=val[7];
 				}
 			}
 		}
 		file_text_close(file);
 	}
+	#endregion /*Object With Rotation Placement END*/
+	
 }
 #endregion /*Load Main Game Level END*/
 
@@ -342,6 +403,8 @@ if (global.character_select_in_this_menu="level_editor")
 	
 	else
 	{
+		
+		#region /*Object Placement*/
 		var file, str, str_pos, str_temp, val, num;
 		if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt")
 		{
@@ -359,26 +422,6 @@ if (global.character_select_in_this_menu="level_editor")
 	
 		if (file != -1)
 		{
-
-		/*    str = file_text_read_string(file);
-		    file_text_readln(file);
-		    str_pos = 1;
-		    num = 0;
-		    str_temp = "";
-    
-		    while(str_pos < string_length(str))
-		        {
-		        while (string_char_at(str, str_pos) != "|")
-		            {
-		            str_temp += string_char_at(str, str_pos);
-		            str_pos += 1;
-		            }
-		        val[num] = real(str_temp);
-		        str_pos += 1;
-		        num += 1;
-		        str_temp = "";
-		        }
-		*/    
 			/*Next objects*/
 			str = file_text_read_string(file);
 			//file_text_readln(file);
@@ -402,9 +445,7 @@ if (global.character_select_in_this_menu="level_editor")
 				val[2] = y position,
 				val[3] = easy,
 				val[4] = normal,
-				val[5] = hard,
-				val[6] = angle_x,
-				val[7] = angle_y*/
+				val[5] = hard*/
 				{
 					num = 0;
 					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
@@ -418,5 +459,68 @@ if (global.character_select_in_this_menu="level_editor")
 			}
 			file_text_close(file);
 		}
+		#endregion /*Object Placement END*/
+		
+		#region /*Object With Rotation Placement*/
+		var file, str, str_pos, str_temp, val, num;
+		if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt")
+		{
+			file = file_text_open_read(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt");
+		}
+		else
+		if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Rotation Placement.txt")
+		{
+			file = file_text_open_read(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Rotation Placement.txt");
+		}
+		else
+		{
+			file = -1;
+		}
+	
+		if (file != -1)
+		{
+			/*Next objects*/
+			str = file_text_read_string(file);
+			//file_text_readln(file);
+			str_temp = "";
+			num = 0;
+			str_pos = 1;
+			while(str_pos < string_length(str))
+			{
+				while (string_char_at(str, str_pos) != "|")
+				{
+					str_temp += string_char_at(str, str_pos);
+					str_pos += 1;
+				}
+				val[num] = real(str_temp);
+				str_temp = "";
+				str_pos += 1;
+				num += 1;
+				if (num = 8) /*Number of variables to check for.
+				val[0] = object,
+				val[1] = x position,
+				val[2] = y position,
+				val[3] = easy,
+				val[4] = normal,
+				val[5] = hard,
+				val[6] = angle_x,
+				val[7] = angle_y*/
+				{
+					num = 0;
+					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+					{
+						object=val[2];
+						easy=val[3];
+						normal=val[4];
+						hard=val[5];
+						angle_x=val[6];
+						angle_y=val[7];
+					}
+				}
+			}
+			file_text_close(file);
+		}
+		#endregion /*Object With Rotation Placement END*/
+		
 	}
 }

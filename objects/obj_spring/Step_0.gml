@@ -60,7 +60,7 @@ and(can_bounce=0)
 			climb=false;
 		}
 	}
-	can_bounce = 10;
+	//can_bounce = 10;
 }
 #endregion /*Make player spring END*/
 

@@ -1403,95 +1403,122 @@ or(gamepad_button_check_pressed(0,gp_select))
 			directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data");
 		}
 		#endregion /*Create directory for saving custom levels END*/
-	
+		
 		else
 		if (asset_get_type("obj_leveleditor_placed_object")==asset_object)
 		and(!place_meeting(x,y,obj_leveleditor_placed_object))
 		{
+		
+			#region /*Save object placement*/
 			instance_activate_all();
 			var file,str;
-			
 			file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"); /*Open file for writing*/
-			
-			/*Reset string var*/str="";
-			
-			#region /*Write wall objects to file*/
-			if (asset_get_type("obj_leveleditor_placed_object")==asset_object)
+			str=""; /*Reset string var*/
+	
+			#region /*Write all objects to file*/
+			with(obj_leveleditor_placed_object)
 			{
-				with(obj_leveleditor_placed_object)
+				if (object != 62)
+				and(object != 64)
+				and(object != 65)
 				{
 					str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|";
 				}
 			}
-			#endregion /*Write wall objects to file END*/
-			
+			#endregion /*Write all objects to file END*/
+	
 			file_text_write_string(file,str); /*Write string with wall information to file and start a new line*/
-			
 			file_text_close(file);
-		}
-
-		#region /*Save Level Information*/
-		ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
-		if (asset_get_type("obj_level_start")==asset_object)
-		{
-			if (instance_exists(obj_level_start))
-			{
-				ini_write_real("Info","level_start_x",obj_level_start.x);
-			}
-			if (instance_exists(obj_level_start))
-			{
-				ini_write_real("Info","level_start_y",obj_level_start.y);
-			}
-		}
-		if (asset_get_type("obj_level_end")==asset_object)
-		{
-			if (instance_exists(obj_level_end))
-			{
-				ini_write_real("Info","level_end_x",obj_level_end.x);
-			}
-			if (instance_exists(obj_level_end))
-			{
-				ini_write_real("Info","level_end_y",obj_level_end.y);
-			}
-		}
-		if (asset_get_type("obj_level_height")==asset_object)
-		{
-			if (instance_exists(obj_level_height))
-			{
-				ini_write_real("Info","level_height",obj_level_height.y);
-			}
-		}
-		if (asset_get_type("obj_level_width")==asset_object)
-		{
-			if (instance_exists(obj_level_width))
-			{
-				ini_write_real("Info","level_width",obj_level_width.x);
-			}
-		}
-		ini_write_real("Info","view_xview",camera_get_view_x(view_camera[view_current]));
-		ini_write_real("Info","view_yview",camera_get_view_y(view_camera[view_current]));
-		ini_close();
-		#endregion /*Save Level Information END*/
-
-		#endregion /*Save Level END*/
-
-		if (asset_get_type("obj_camera")==asset_object)
-		and(!instance_exists(obj_camera))
-		and(asset_get_type("obj_leveleditor_placed_object")==asset_object)
-		and(!place_meeting(x,y,obj_leveleditor_placed_object))
-		{
-			if (camera_get_view_width(view_camera[view_current])<1920)
-			or (camera_get_view_height(view_camera[view_current])<1080)
-			{
-				camera_set_view_size(view_camera[view_current],1920,1080);
-			}
+	
+			#endregion /*Save object placement END*/
+	
+			#region /*Save objects with rotation placement*/
 			instance_activate_all();
-			global.lives_until_assist=0;
-			global.actually_play_edited_level=false;
-			global.play_edited_level=true;
-			global.character_select_in_this_menu="level_editor";
-			instance_create_depth(x,y,0,obj_camera);
-			instance_destroy();
+			var file,str;
+			file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt"); /*Open file for writing*/
+			str=""; /*Reset string var*/
+	
+			#region /*Write all objects to file*/
+			with(obj_leveleditor_placed_object)
+			{
+				if (object = 62)
+				or(object = 64)
+				or(object = 65)
+				{
+					str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|"+string(angle_x)+"|"+string(angle_y)+"|";
+				}
+			}
+			#endregion /*Write all objects to file END*/
+	
+			file_text_write_string(file,str); /*Write string with wall information to file and start a new line*/
+			file_text_close(file);
+	
+			#endregion /*Save object with rotation placement END*/
+		
+		
+			#region /*Save Level Information*/
+			ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+			if (asset_get_type("obj_level_start")==asset_object)
+			{
+				if (instance_exists(obj_level_start))
+				{
+					ini_write_real("Info","level_start_x",obj_level_start.x);
+				}
+				if (instance_exists(obj_level_start))
+				{
+					ini_write_real("Info","level_start_y",obj_level_start.y);
+				}
+			}
+			if (asset_get_type("obj_level_end")==asset_object)
+			{
+				if (instance_exists(obj_level_end))
+				{
+					ini_write_real("Info","level_end_x",obj_level_end.x);
+				}
+				if (instance_exists(obj_level_end))
+				{
+					ini_write_real("Info","level_end_y",obj_level_end.y);
+				}
+			}
+			if (asset_get_type("obj_level_height")==asset_object)
+			{
+				if (instance_exists(obj_level_height))
+				{
+					ini_write_real("Info","level_height",obj_level_height.y);
+				}
+			}
+			if (asset_get_type("obj_level_width")==asset_object)
+			{
+				if (instance_exists(obj_level_width))
+				{
+					ini_write_real("Info","level_width",obj_level_width.x);
+				}
+			}
+			ini_write_real("Info","view_xview",camera_get_view_x(view_camera[view_current]));
+			ini_write_real("Info","view_yview",camera_get_view_y(view_camera[view_current]));
+			ini_close();
+			#endregion /*Save Level Information END*/
+
+			#endregion /*Save Level END*/
+
+			if (asset_get_type("obj_camera")==asset_object)
+			and(!instance_exists(obj_camera))
+			and(asset_get_type("obj_leveleditor_placed_object")==asset_object)
+			and(!place_meeting(x,y,obj_leveleditor_placed_object))
+			{
+				if (camera_get_view_width(view_camera[view_current])<1920)
+				or (camera_get_view_height(view_camera[view_current])<1080)
+				{
+					camera_set_view_size(view_camera[view_current],1920,1080);
+				}
+				instance_activate_all();
+				global.lives_until_assist=0;
+				global.actually_play_edited_level=false;
+				global.play_edited_level=true;
+				global.character_select_in_this_menu="level_editor";
+				instance_create_depth(x,y,0,obj_camera);
+				instance_destroy();
+			}
 		}
 	}
 }

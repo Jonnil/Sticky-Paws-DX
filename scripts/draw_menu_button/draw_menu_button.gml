@@ -22,11 +22,12 @@ function draw_menu_button()
 	
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position+2,x_position+370,y_position+41))
 	and(global.controls_used_for_menu_navigation="mouse")
+	and(menu_delay = 0)
 	{
-		if (keyboard_check(vk_anykey))
-		{
+		//if (keyboard_check(vk_anykey))
+		//{
 			menu=menu_index;
-		}
+		//}
 		draw_sprite_ext(spr_menu_button,0,x_position,y_position+21,1,1,0,c_lime,1);
 	}
 	else

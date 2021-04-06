@@ -1507,27 +1507,12 @@ if (object=60){sprite_index=sprite_enemy2;mask_index=spr_wall;}
 if (object=61)and(asset_get_type("spr_blaster")==asset_sprite){sprite_index=spr_blaster;mask_index=spr_wall;}
 if (object=62)and(asset_get_type("spr_spring")==asset_sprite){sprite_index=spr_spring;mask_index=spr_wall;}
 if (object=63)and(asset_get_type("spr_ladder")==asset_sprite){sprite_index=spr_ladder;mask_index=spr_wall;}
-
 #region /*Arrow Signs*/
-if (object = 64)
-and(asset_get_type("spr_arrow_sign") == asset_sprite)
-{
-	draw_sprite_ext(spr_arrow_sign, 0, x, y, 1, 1, draw_angle, image_blend, image_alpha);
-	mask_index = spr_2x2_block;
-	sprite_index = noone;
-}
+if (object = 64)and(asset_get_type("spr_arrow_sign") == asset_sprite){draw_sprite_ext(spr_arrow_sign, 0, x, y, 1, 1, draw_angle, image_blend, image_alpha);mask_index = spr_2x2_block;sprite_index = noone;}
 #endregion /*Arrow Signs END*/
-
 #region /*Arrow Signs Small*/
-if (object = 65)
-and(asset_get_type("spr_arrow_sign_small") == asset_sprite)
-{
-	draw_sprite_ext(spr_arrow_sign_small, 0, x, y, 0.5, 0.5, draw_angle, image_blend, image_alpha);
-	mask_index = spr_2x2_block;
-	sprite_index = noone;
-}
+if (object = 65)and(asset_get_type("spr_arrow_sign_small") == asset_sprite){draw_sprite_ext(spr_arrow_sign_small, 0, x, y, 0.5, 0.5, draw_angle, image_blend, image_alpha);mask_index = spr_2x2_block;sprite_index = noone;}
 #endregion /*Arrow Signs Small END*/
-
 if (object=66)and(asset_get_type("spr_checkpoint")==asset_sprite){sprite_index=spr_checkpoint;mask_index=spr_2x2_block;}
 if (object=67)and(asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;mask_index=spr_wall;}
 #region /*Oneway*/

@@ -193,8 +193,10 @@ function scr_character_select_menu()
 	and(keyboard_check_pressed(global.player1_key2_jump))
 	{
 		if (global.playergame<3)
+		and(menu_delay = 0)
 		{
 			global.playergame+=1;
+			menu_delay = 10;
 		}
 	}
 	
@@ -272,8 +274,10 @@ function scr_character_select_menu()
 	and(keyboard_check_pressed(global.player1_key2_jump))
 	{
 		if (global.playergame>0)
+		and(menu_delay = 0)
 		{
 			global.playergame-=1;
+			menu_delay = 10;
 		}
 	}
 	
