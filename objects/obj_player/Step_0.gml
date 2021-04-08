@@ -14842,7 +14842,7 @@ and(in_water=false)
 			
 	#region /*Jump on other players heads*/
 	if (position_meeting(x,bbox_bottom+1,obj_player))
-	and(!place_meeting(x,y-4,obj_wall))
+	and(!place_meeting(x,y-1,obj_wall))
 	and(vspeed>0)
 	and(ground_pound=false)
 	and(stick_to_wall=false)
@@ -14860,7 +14860,7 @@ and(in_water=false)
 		{
 			vspeed=-8;
 		}
-		with(instance_nearest(x,y+bbox_bottom+8,obj_player))
+		with(instance_nearest(x,bbox_bottom,obj_player))
 		{
 			draw_xscale=1.5;
 			draw_yscale=0.75;
@@ -16695,7 +16695,7 @@ and(key_left)
 			if (sprite_skidding_ice>noone){sprite_index=sprite_skidding_ice;}else
 			if (sprite_skidding>noone){sprite_index=sprite_skidding;}else
 			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone){sprite_index=sprite_walk;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
 			{sprite_index=sprite_stand;}
 			image_speed=0.5;
 		}
@@ -16706,7 +16706,7 @@ and(key_left)
 			if (abs(hspeed)>15)and(sprite_run3>noone){sprite_index=sprite_run3;}else
 			if (abs(hspeed)>10)and(sprite_run2>noone){sprite_index=sprite_run2;}else
 			if (abs(hspeed)>5)and(sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone){sprite_index=sprite_walk;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
 			{sprite_index=sprite_stand;}
 			image_speed=0.5;
 		}
@@ -16727,7 +16727,7 @@ and(!key_right)
 	if (abs(hspeed)>15)and(sprite_run3>noone){sprite_index=sprite_run3;image_speed=speed/10+0.1;}else
 	if (abs(hspeed)>10)and(sprite_run2>noone){sprite_index=sprite_run2;image_speed=speed/10+0.1;}else
 	if (abs(hspeed)>5)and(sprite_run>noone){sprite_index=sprite_run;image_speed=speed/10+0.1;}else
-	if (sprite_walk>noone){sprite_index=sprite_walk;image_speed=speed/10+0.1;}else
+	if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;image_speed=speed/10+0.1;}else
 	{sprite_index=sprite_stand;image_speed=0.5;}
 }
 #endregion /*Skidding Stop END*/
@@ -16809,7 +16809,7 @@ or(hspeed>-0.1)
 			if (sprite_run3>noone){sprite_index=sprite_run3;}else
 			if (sprite_run2>noone){sprite_index=sprite_run2;}else
 			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone){sprite_index=sprite_walk;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
 			{sprite_index=sprite_stand;}
 		}
 		else
@@ -16818,7 +16818,7 @@ or(hspeed>-0.1)
 			if (sprite_run3>noone){sprite_index=sprite_run3;}else
 			if (sprite_run2>noone){sprite_index=sprite_run2;}else
 			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone){sprite_index=sprite_walk;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
 			{sprite_index=sprite_stand;}
 		}
 		else
@@ -16826,14 +16826,14 @@ or(hspeed>-0.1)
 		{
 			if (sprite_run2>noone){sprite_index=sprite_run2;}else
 			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone){sprite_index=sprite_walk;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
 			{sprite_index=sprite_stand;}
 		}
 		else
 		if (abs(hspeed)>=5)
 		{
 			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone){sprite_index=sprite_walk;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
 			{sprite_index=sprite_stand;}
 		}
 
@@ -16874,7 +16874,7 @@ or(hspeed>-0.1)
 			/*Walk*/
 			else
 			{
-				if (sprite_walk>noone){sprite_index=sprite_walk;}else
+				if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
 				{sprite_index=sprite_stand}
 			}
 		}
