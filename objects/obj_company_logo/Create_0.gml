@@ -160,7 +160,7 @@ switch(os_get_language())
 	default: global.language_localization=localization.en_us;break;/*Set the default language to American English*/
 }
 
-global.settings_sidebar_menu="game_settings";/*Settings sidebar*/
+global.settings_sidebar_menu="settings_back";/*Settings sidebar*/
 global.show_tutorial_signs=true;
 global.enable_transitions=true;
 global.enable_background_layer1=true;

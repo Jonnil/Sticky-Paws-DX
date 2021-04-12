@@ -1474,6 +1474,10 @@ else
 
 #region /*Sprint Toggling*/
 if(keyboard_check_pressed(global.player1_key_sprint_toggle))
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+and(asset_get_type("obj_pause") == asset_object)
+and(!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 100;
 	show_sprint_toggle_for_player2 = 0;
@@ -1489,6 +1493,10 @@ if(keyboard_check_pressed(global.player1_key_sprint_toggle))
 	}
 }
 if(keyboard_check_pressed(global.player2_key_sprint_toggle))
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+and(asset_get_type("obj_pause") == asset_object)
+and(!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
 	show_sprint_toggle_for_player2 = 100;
@@ -1504,6 +1512,10 @@ if(keyboard_check_pressed(global.player2_key_sprint_toggle))
 	}
 }
 if(keyboard_check_pressed(global.player3_key_sprint_toggle))
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+and(asset_get_type("obj_pause") == asset_object)
+and(!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
 	show_sprint_toggle_for_player2 = 0;
@@ -1519,6 +1531,10 @@ if(keyboard_check_pressed(global.player3_key_sprint_toggle))
 	}
 }
 if(keyboard_check_pressed(global.player4_key_sprint_toggle))
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+and(asset_get_type("obj_pause") == asset_object)
+and(!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
 	show_sprint_toggle_for_player2 = 0;
@@ -1536,6 +1552,10 @@ if(keyboard_check_pressed(global.player4_key_sprint_toggle))
 draw_set_halign(fa_left);
 draw_set_valign(fa_center);
 if (show_sprint_toggle_for_player1>0)
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+and(asset_get_type("obj_pause") == asset_object)
+and(!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 -= 1;
 	show_sprint_toggle_for_player2 = 0;
@@ -1565,6 +1585,10 @@ if (show_sprint_toggle_for_player1>0)
 	}
 }
 if (show_sprint_toggle_for_player2>0)
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+and(asset_get_type("obj_pause") == asset_object)
+and(!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
 	show_sprint_toggle_for_player2 -= 1;
@@ -1580,6 +1604,10 @@ if (show_sprint_toggle_for_player2>0)
 	}
 }
 if (show_sprint_toggle_for_player3>0)
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+and(asset_get_type("obj_pause") == asset_object)
+and(!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
 	show_sprint_toggle_for_player2 = 0;
@@ -1595,6 +1623,10 @@ if (show_sprint_toggle_for_player3>0)
 	}
 }
 if (show_sprint_toggle_for_player4>0)
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+and(asset_get_type("obj_pause") == asset_object)
+and(!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
 	show_sprint_toggle_for_player2 = 0;

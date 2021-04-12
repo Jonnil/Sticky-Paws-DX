@@ -1,18 +1,27 @@
 if (goal=false)
+and(asset_get_type("obj_player")==asset_object)
+and(instance_exists(obj_player))
+and(place_meeting(x,y,obj_player))
+or(goal=false)
+and(asset_get_type("obj_player")==asset_object)
+and(instance_exists(obj_player))
+and(instance_nearest(x,y,obj_player).x>bbox_right)
+and(instance_nearest(x,y,obj_player).x<bbox_right+16)
+and(!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,obj_wall,false,true))
 {
 	image_index=1;
 	if (trigger_ending=true)
 	{
 		global.trigger_ending=true;
 	}
-
+	
 	#region /*Stop Music*/
 	audio_stop_sound(global.music);
 	audio_stop_sound(global.music_underwater);
 	global.music=noone;
 	global.music_underwater=noone;
 	#endregion /*Stop Music END*/
-
+	
 	if (global.demo=true)and(asset_get_type("room_level1")==asset_room)and(room=room_level1)and(global.demo_max_levels>=1)
 	or(global.demo=true)and(asset_get_type("room_level2")==asset_room)and(room=room_level2)and(global.demo_max_levels>=2)
 	or(global.demo=true)and(asset_get_type("room_level3")==asset_room)and(room=room_level3)and(global.demo_max_levels>=3)
@@ -28,7 +37,7 @@ if (goal=false)
 		global.trigger_demo_ending=500;
 	}
 	global.player_has_entered_goal=true;
-
+	
 	#region /*Steam Achievment, Clear stage 1 (or 2)*/
 	if (global.current_level=1)
 	or(global.current_level=2)
@@ -39,7 +48,7 @@ if (goal=false)
 		}
 	}
 	#endregion /*Steam Achievment, Clear stage 1 (or 2) END*/
-
+	
 	#region /*Save Level Editor Checkpoint*/
 	if (asset_get_type("room_leveleditor")==asset_room)
 	and(room=room_leveleditor)
@@ -59,7 +68,7 @@ if (goal=false)
 		ini_write_real("Level"+string(global.level_editor_level),"checkpoint_second",0);
 		ini_write_real("Level"+string(global.level_editor_level),"checkpoint_minute",0);
 		ini_write_real("Level"+string(global.level_editor_level),"checkpoint_realmillisecond",0);
-
+		
 		ini_close();
 	}
 	#endregion /*Save Level Editor Checkpoint END*/

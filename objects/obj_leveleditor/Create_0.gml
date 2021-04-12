@@ -104,6 +104,27 @@ startup_loading_timer=0;
 background_brightness_lerp = 0;
 background_brightness_menu_lerp = 0;
 
+darken_settings_alpha = 0;
+darken_settings_sidebar_alpha = 0;
+accessibility_settings_y = 40;
+game_text_y = 40*2;
+game_settings_y = 40*3;
+multiplayer_settings_y = 40*4;
+controls_text_y = 40*5;
+keyboard_and_mouse_settings_y = 40*6;
+controller_settings_y = 40*7;
+touch_settings_y = 40*8;
+general_text_y = 40*9;
+profile_settings_y = 40*10;
+video_settings_y = 40*11;
+audio_settings_y = 40*12;
+global_resources_settings_y = 40*13;
+storage_settings_y = 40*14;
+language_settings_y = 40*15;
+broadcast_settings_y = 40*16;
+how_to_play_y = 40*17;
+left_sidebar_x=-400;
+
 place_brush_icon_x = 32;
 erase_icon_x = 96;
 fill_icon_x = 160;

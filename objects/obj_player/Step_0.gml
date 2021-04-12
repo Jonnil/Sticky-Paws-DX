@@ -15276,7 +15276,12 @@ and(instance_exists(obj_goal))
 	{
 		if (!collision_line(x,y,instance_nearest(x,y,obj_goal).x,instance_nearest(x,y,obj_goal).y,obj_wall,false,true))
 		{
-			x=instance_nearest(x,y,obj_goal).bbox_right;
+			goal = true;
+			//with(instance_nearest(x,y,obj_goal))
+			//{
+			//	goal = true;
+			//}
+			//x=instance_nearest(x,y,obj_goal).bbox_right;
 		}
 	}
 	else

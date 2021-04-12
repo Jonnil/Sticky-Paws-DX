@@ -261,12 +261,12 @@ or(menu="quit")
 	can_input_player4_name=false;
 	#endregion /*What player can enter a name END*/
 	
-	image_alpha=1;
+	show_title_logo = true;
 	version_y_pos=lerp(version_y_pos,0,0.1);
 }
 else
 {
-	image_alpha=0;
+	show_title_logo = false;
 	version_y_pos=lerp(version_y_pos,128,0.1);
 }
 #endregion /*Hide Fullscreen and Version text / Set certain variables to default value END*/
@@ -275,22 +275,27 @@ else
 if (global.demo=true)
 {
 	draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,32,"Demo Version",global.default_text_size,c_menu_outline,c_menu_fill,1);
-}#endregion /*Demo Version Text END*/
+}
+#endregion /*Demo Version Text END*/
 
 #region /*Draw Title Screen*/
+draw_sprite_ext(sprite_index,image_index,
+camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,
+camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2-100+title_y,
+1,1,0,c_white,1);
+
 if (menu!="select_custom_level")
 and(menu!="level_editor_play")
 and(menu!="level_editor_make")
 and(menu!="import_export_level")
 and(menu!="delete_level")
+and(show_title_logo = true)
 {
-	if (asset_get_type("spr_title")==asset_sprite)
-	{
-		draw_sprite_ext(spr_title,image_index,
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])/2-100,
-		image_xscale,image_yscale,image_angle,image_blend,image_alpha);
-	}
+	title_y = lerp(title_y,0,0.1);
+}
+else
+{
+	title_y = lerp(title_y,camera_get_view_y(view_camera[view_current])-700,0.1);
 }
 #endregion /*Draw Title Screen END*/
 
@@ -463,7 +468,7 @@ or(menu = "quit_game_yes")
 		and(menu_delay = 0)
 		{
 			menu_delay = 10;
-			menu = "main_game";
+			menu = "quit";
 		}
 	}
 	#endregion /*Return to game END*/
@@ -751,7 +756,6 @@ or(menu="quit")
 	{
 		in_settings=true;
 		can_navigate_settings_sidebar=true;
-		global.settings_sidebar_menu="game_settings";
 		menu=noone;
 		menu_delay=10;
 	}
@@ -3005,11 +3009,7 @@ if (key_b_pressed)
 		{
 			global.file=1; /*File should be able to be selected, otherwise you can't navigate to the file selection or get past the character selection screen*/
 			menu="leveleditor";
-			image_alpha=1;
-			if (asset_get_type("spr_title")==asset_sprite)
-			{
-				sprite_index=spr_title;
-			}
+			show_title_logo = true;
 			menu_delay=10;
 		}
 	}

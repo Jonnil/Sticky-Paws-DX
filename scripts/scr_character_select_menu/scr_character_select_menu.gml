@@ -94,10 +94,9 @@ function scr_character_select_menu()
 	#endregion /*Player colors END*/
 	
 	#region /*Select your character text*/
-	draw_text_outlined(
-	window_get_width()/2,
-	70,
-	"Select your character!",global.default_text_size*2,c_black,c_white,1);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_outlined(window_get_width()/2,70,"Select your character!",global.default_text_size*2,c_black,c_white,1);
 	#endregion /*Select your character text END*/
 
 	#region /*Show Back key when you can go back to main menu*/
