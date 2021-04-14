@@ -907,7 +907,6 @@ if (save_level_as_png = false)
 			draw_rectangle_colour(instance_nearest(room_width, y, obj_player).x + iris_xscale * 128 - 1, camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
 			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), instance_nearest(room_width, y, obj_player).y + iris_yscale * 128, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
 		}
-
 		else
 		if (asset_get_type("obj_player_map") == asset_object)
 		and(instance_exists(obj_player_map))

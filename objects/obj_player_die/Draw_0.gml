@@ -327,9 +327,10 @@ and(last_player=true)
 		iris_zoom=1;
 	}
 	if (asset_get_type("obj_player_die")==asset_object)
-	and(instance_number(obj_player_die)>0)
+	and(instance_exists(obj_player_die))
 	{
 		if (iris_xscale<16)
+		and(global.enable_transitions = true)
 		{
 			if (asset_get_type("spr_iris_dead")==asset_sprite)
 			{

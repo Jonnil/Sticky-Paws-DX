@@ -404,8 +404,8 @@ voice_burned = noone;
 acceleration_on_ground = 0.3; /*How much acceleration the character has on ground*/
 acceleration_in_air = 0.3; /*How much acceleration the character has in air*/
 acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
-hp = 1; /*Starting HP*/
-max_hp = 1; /*Starting Max HP*/
+hp = 1 + global.assist_extra_hp; /*Starting HP*/
+max_hp = 1 + global.assist_extra_hp; /*Starting Max HP*/
 max_overflow_hp = 4; /*Starting Max Overflow HP*/
 speed_max_walk = 4 /*Default speed_max_walk is 4. Top speed with simple walking*/
 speed_max_run = 8 /*Default speed_max_run is 8. Top speed with simple running*/
@@ -448,6 +448,8 @@ stick_to_wall = false;
 wall_jump = false;
 can_wall_jump = true;
 look_up_start_animation = true;
+pause_hspeed = 0;
+pause_vspeed = 0;
 #endregion /*Don't change these variables END*/
 
 #region /*Rope Swing Variables*/

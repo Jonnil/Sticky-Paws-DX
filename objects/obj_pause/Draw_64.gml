@@ -283,6 +283,14 @@ and(room = room_leveleditor)
 			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
 			true);
+			if (instance_exists(obj_player))
+			{
+				with(obj_player)
+				{
+					hspeed = pause_hspeed;
+					vspeed = pause_vspeed;
+				}
+			}
 			instance_destroy();
 			#endregion /*Return to game END*/
 			
@@ -379,6 +387,14 @@ and(room = room_leveleditor)
 			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
 			true);
+			if (instance_exists(obj_player))
+			{
+				with(obj_player)
+				{
+					hspeed = pause_hspeed;
+					vspeed = pause_vspeed;
+				}
+			}
 			instance_destroy();
 			
 			#endregion /*Return to game END*/
@@ -421,6 +437,14 @@ and(room = room_leveleditor)
 			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
 			true);
+			if (instance_exists(obj_player))
+			{
+				with(obj_player)
+				{
+					hspeed = pause_hspeed;
+					vspeed = pause_vspeed;
+				}
+			}
 			instance_destroy();
 		}
 	}
@@ -458,6 +482,14 @@ or(menu = "quit")
 			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
 			true);
+			if (instance_exists(obj_player))
+			{
+				with(obj_player)
+				{
+					hspeed = pause_hspeed;
+					vspeed = pause_vspeed;
+				}
+			}
 			instance_destroy();
 			#endregion /*Return to game END*/
 			
@@ -550,6 +582,14 @@ or(menu = "quit")
 			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
 			true);
+			if (instance_exists(obj_player))
+			{
+				with(obj_player)
+				{
+					hspeed = pause_hspeed;
+					vspeed = pause_vspeed;
+				}
+			}
 			instance_destroy();
 		}
 		if (key_up)
@@ -600,6 +640,14 @@ or(menu = "quit")
 			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
 			true);
+			if (instance_exists(obj_player))
+			{
+				with(obj_player)
+				{
+					hspeed = pause_hspeed;
+					vspeed = pause_vspeed;
+				}
+			}
 			instance_destroy();
 		}
 		if (key_up)
@@ -638,6 +686,14 @@ or(menu = "quit")
 			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
 			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
 			true);
+			if (instance_exists(obj_player))
+			{
+				with(obj_player)
+				{
+					hspeed = pause_hspeed;
+					vspeed = pause_vspeed;
+				}
+			}
 			instance_destroy();
 		}
 	}
@@ -683,6 +739,14 @@ or(gamepad_button_check_pressed(3, gp_select))
 		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
 		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
 		true);
+		if (instance_exists(obj_player))
+		{
+			with(obj_player)
+			{
+				hspeed = pause_hspeed;
+				vspeed = pause_vspeed;
+			}
+		}
 		instance_destroy();
 	}
 }
@@ -731,3 +795,8 @@ and(os_type!=os_android)
 	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/
+
+//draw_text_outlined(1000,800,"menu_delay: "+string(menu_delay),global.default_text_size,c_black,c_white,1);
+//draw_text_outlined(1000,832,"menu_joystick_delay: "+string(menu_joystick_delay),global.default_text_size,c_black,c_white,1);
+//draw_text_outlined(1000,864,"input_key: "+string(input_key),global.default_text_size,c_black,c_white,1);
+//draw_text_outlined(1000,896,"can_navigate: "+string(can_navigate),global.default_text_size,c_black,c_white,1);

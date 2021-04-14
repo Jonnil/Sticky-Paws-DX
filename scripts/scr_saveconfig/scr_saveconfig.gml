@@ -9,7 +9,7 @@ function scr_saveconfig() {
 	ini_write_real("Config","hud_show_timer",global.hud_show_timer);
 	ini_write_real("Config","players_can_collide",global.players_can_collide);
 	/*Assist Settings*/ini_write_real("Config","assist_item_appear",global.assist_item_appear);
-	ini_write_real("Config","assist_default_hp",global.assist_default_hp);
+	ini_write_real("Config","assist_extra_hp",global.assist_extra_hp);
 	ini_write_real("Config","assist_guiding_arrows",global.assist_guiding_arrows);/*Assist Settings END*/
 	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
 	ini_write_real("Config","interpolate",global.interpolate);

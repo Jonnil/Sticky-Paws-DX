@@ -530,11 +530,6 @@
     {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sounds","resourceVersion":"1.0","name":"player2.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sounds","resourceVersion":"1.0","name":"burned_die.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sounds","resourceVersion":"1.0","name":"burned_running.ogg","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/Characters","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/Levels","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1","resourceVersion":"1.0","name":".DS_Store","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1","resourceVersion":"1.0","name":"level_information.ini","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {

@@ -1663,8 +1663,6 @@ and(asset_get_type("room_ending_cutscene") == asset_room)
 	room_goto(room_ending_cutscene);
 }
 
-scr_loadconfig(); /*Load Config*/
-
 #region /*Starting Levels*/
 if (asset_get_type("obj_level") == asset_object)
 {

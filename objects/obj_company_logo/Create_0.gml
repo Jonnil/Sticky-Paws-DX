@@ -187,7 +187,7 @@ global.big_collectible5=false;/*If you have Big Collectible 5 or not*/
 global.lives_until_assist=0;
 #region /*Assist Settings*/
 global.assist_item_appear=10;
-global.assist_default_hp=2;
+global.assist_extra_hp=0;
 global.assist_guiding_arrows=1;
 #endregion /*Assist Settings END*/
 global.x_checkpoint=false;global.y_checkpoint=false;

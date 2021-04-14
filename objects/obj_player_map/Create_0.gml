@@ -72,3 +72,5 @@ index=0
 sprite_map = noone;
 sprite_map_enter_level = noone;
 #endregion /*Play as custom character END*/
+
+scr_loadconfig(); /*Load Config only once in create event, or it will mess up the options menu navigation*/
