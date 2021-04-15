@@ -25,6 +25,8 @@ instance_activate_object(self);
 #region /*Update Foreground2*/
 if (global.custom_foreground2 > noone)
 and(global.enable_foreground_layer2 = true)
+and(asset_get_type("room_leveleditor") == asset_room)
+and(room = room_leveleditor)
 {
 	draw_sprite(global.custom_foreground2, image_index, 0, 0);
 }

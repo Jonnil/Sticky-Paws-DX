@@ -295,7 +295,7 @@ global.trigger_ending=false;
 global.spikes_emerge_time=0;
 global.goal_active=false;
 global.PauseScreen=noone;
-global.QuitLevel=false;
+global.quit_level=false;
 global.always_show_level_editor_buttons=true; /*If level editor buttons should always show or not. Should be true by default*/
 
 #region /*Character select portrait x and y origin points*/

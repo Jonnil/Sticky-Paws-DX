@@ -307,7 +307,7 @@ and(global.pause_room = room_leveleditor)
 {
 	if (menu = "continue")
 	or(menu = "options")
-	or(menu = "select_level")
+	or(menu = "restart")
 	or(menu = "quit")
 	{
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Continue","continue","continue");
@@ -319,26 +319,26 @@ and(global.pause_room = room_leveleditor)
 		{
 			if (global.convention_mode = false)
 			{
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Options","options","options");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Settings","options","options");
 				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Restart","restart","restart");
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42+42,"Quit","quit","quit");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42+42,"Quit","quit","quit_to_map");
 			}
 			else
 			{
 				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Restart","restart","restart");
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"quit_to_map","quit_to_map","quit_to_map");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit","quit","quit_to_map");
 			}
 		}
 		else
 		{
 			if (global.convention_mode = false)
 			{
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Options","options","options");
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit","quit","quit_to_map");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Settings","options","options");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit","quit","quit");
 			}
 			else
 			{
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit","quit","quit_to_map");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit","quit","quit");
 			}
 		}
 	}
@@ -445,14 +445,90 @@ and(global.pause_room = room_leveleditor)
 		}
 		else
 		if (key_down)
-			and(!key_up)
+		and(!key_up)
+		and(menu_delay <= 0)
+		{
+			if (global.pause_room = room_leveleditor)
+			{
+				menu_delay = 1;
+				menu = "restart";
+			}
+			else
+			{
+				menu_delay = 1;
+				menu = "quit";
+			}
+		}
+	}
+	#endregion /*Options END*/
+	
+	else
+	
+	#region /*Restart*/
+	if (menu = "restart")
+	{
+		if (key_a_pressed)
+		and(menu_delay = 0)
+		or(global.pause_room = room_leveleditor)
+		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42,window_get_width()/2+185,window_get_height()/2+41+42))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
+		{
+			#region /*Restart Level to Title*/
+				
+				#region /*Reset timer back to zero*/
+				global.timeattack_realmillisecond = 0;
+				global.timeattack_millisecond = 0;
+				global.timeattack_second = 0;
+				global.timeattack_minute = 0;
+				#endregion /*Reset timer back to zero END*/
+				
+				global.restart_level = true;
+				audio_stop_all();
+				global.theme = noone;
+				global.weather = noone;
+				global.pause=false;
+				instance_activate_region(
+				camera_get_view_x(view_camera[view_current]) - 32,
+				camera_get_view_y(view_camera[view_current]) - 32,
+				camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+				camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+				true);
+				if (instance_exists(obj_player))
+				{
+					with(obj_player)
+					{
+						hspeed = pause_hspeed;
+						vspeed = pause_vspeed;
+					}
+				}
+				if (asset_get_type("room_pause") == asset_room)
+				{
+					room = global.pause_room;
+				}
+				else
+				{
+					instance_destroy();
+				}
+				#endregion /*Restart Level END*/
+		}
+		if (key_up)
+		and(!key_down)
+		and(menu_delay <= 0)
+		{
+			menu_delay = 1;
+			menu = "options";
+		}
+		else
+		if (key_down)
+		and(!key_up)
 		and(menu_delay <= 0)
 		{
 			menu_delay = 1;
 			menu = "quit";
 		}
 	}
-	#endregion /*Options END*/
+	#endregion /*Restart END*/
 	
 	else
 	
@@ -461,19 +537,79 @@ and(global.pause_room = room_leveleditor)
 	{
 		if (key_a_pressed)
 		and(menu_delay = 0)
-		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
+		or(global.pause_room = room_level_select)
+		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
+		or(global.pause_room = room_leveleditor)
+		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
 		{
-			menu = "quit_to_map";
-			menu_delay = 10;
+			if (global.pause_room = room_level_select)
+			or(global.character_select_in_this_menu="level_editor")
+			{
+				
+				#region /*Instantly Return to Title*/
+				
+				#region /*Reset timer back to zero*/
+				global.timeattack_realmillisecond = 0;
+				global.timeattack_millisecond = 0;
+				global.timeattack_second = 0;
+				global.timeattack_minute = 0;
+				#endregion /*Reset timer back to zero END*/
+				
+				global.quit_level = true;
+				global.quit_to_title = true;
+				audio_stop_all();
+				global.theme = noone;
+				global.weather = noone;
+				global.pause=false;
+				instance_activate_region(
+				camera_get_view_x(view_camera[view_current]) - 32,
+				camera_get_view_y(view_camera[view_current]) - 32,
+				camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+				camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+				true);
+				if (instance_exists(obj_player))
+				{
+					with(obj_player)
+					{
+						hspeed = pause_hspeed;
+						vspeed = pause_vspeed;
+					}
+				}
+				if (asset_get_type("room_pause") == asset_room)
+				{
+					room = global.pause_room;
+				}
+				else
+				{
+					instance_destroy();
+				}
+				#endregion /*Instantly Return to Title END*/
+				
+			}
+			else
+			{
+				menu = "quit_to_map";
+				menu_delay = 10;
+			}
 		}
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
 		{
-			menu_delay = 1;
-			menu = "options";
+			if (global.pause_room = room_leveleditor)
+			{
+				menu_delay = 1;
+				menu = "restart";
+			}
+			else
+			{
+				menu_delay = 1;
+				menu = "options";
+			}
 		}
 		else
 		if (key_down)
@@ -493,8 +629,12 @@ and(global.pause_room = room_leveleditor)
 	{
 		if (key_a_pressed)
 		and(menu_delay = 0)
+		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2,window_get_width()/2+185,window_get_height()/2+41))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
 		{
-			/*Return to game*/
+			
+			#region /*Return to Map*/
 			
 			#region /*Reset timer back to zero*/
 			global.timeattack_realmillisecond = 0;
@@ -503,7 +643,8 @@ and(global.pause_room = room_leveleditor)
 			global.timeattack_minute = 0;
 			#endregion /*Reset timer back to zero END*/
 			
-			global.QuitLevel = true;
+			global.quit_level = true;
+			global.quit_to_map = true;
 			audio_stop_all();
 			global.theme = noone;
 			global.weather = noone;
@@ -530,6 +671,8 @@ and(global.pause_room = room_leveleditor)
 			{
 				instance_destroy();
 			}
+			#endregion /*Return to Map END*/
+			
 		}
 		if (key_up)
 		and(!key_down)
@@ -551,26 +694,27 @@ and(global.pause_room = room_leveleditor)
 	
 	else
 	
-	#region /*Save and Quit*/
+	#region /*Quit to Title*/
 	if (menu = "quit_to_title")
 	{
 		if (key_a_pressed)
 		and(menu_delay = 0)
-		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
+		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42,window_get_width()/2+185,window_get_height()/2+41+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
 		{
 			
-			#region /*Return to game*/
-
+			#region /*Return to Title*/
+			
 			#region /*Reset timer back to zero*/
 			global.timeattack_realmillisecond = 0;
 			global.timeattack_millisecond = 0;
 			global.timeattack_second = 0;
 			global.timeattack_minute = 0;
 			#endregion /*Reset timer back to zero END*/
-
-			global.QuitLevel = true;
+			
+			global.quit_level = true;
+			global.quit_to_title = true;
 			audio_stop_all();
 			global.theme = noone;
 			global.weather = noone;
@@ -597,7 +741,7 @@ and(global.pause_room = room_leveleditor)
 			{
 				instance_destroy();
 			}
-			#endregion /*Return to game END*/
+			#endregion /*Return to Title END*/
 			
 		}
 		if (key_up)
@@ -616,13 +760,22 @@ and(global.pause_room = room_leveleditor)
 			menu = "quit_nevermind";
 		}
 	}
-	#endregion /*Save and Quit END*/
+	#endregion /*Quit to Title END*/
 	
 	else
 	
 	#region /*Quit Nevermind*/
 	if (menu = "quit_nevermind")
 	{
+		if (key_a_pressed)
+		and(menu_delay = 0)
+		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
+		{
+			menu = "quit";
+			menu_delay = 0;
+		}
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
@@ -679,7 +832,21 @@ and(global.pause_room = room_leveleditor)
 		}
 	}
 	#endregion /*Return to game END*/
-
+	
+	#region /*Return to first menu*/
+	if (menu = "quit_to_map")
+	or(menu = "quit_to_title")
+	or(menu = "quit_nevermind")
+	{
+		if (key_b_pressed)
+		and(menu_delay = 0)
+		{
+			menu = "quit";
+			menu_delay = 10;
+		}
+	}
+	#endregion /*Return to first menu END*/
+	
 }
 /*PAUSE LEVEL EDITOR MENU*/
 

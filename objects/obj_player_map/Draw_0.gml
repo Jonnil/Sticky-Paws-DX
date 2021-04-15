@@ -184,7 +184,7 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 #endregion /*Initialize Custom Character END*/
 
 #region /*Quit Game*/
-if (global.QuitLevel = true)
+if (global.quit_level = true)
 or (global.QuitGame = true)
 {
 	global.level_clear_rate = "enter";
@@ -200,7 +200,7 @@ or (global.QuitGame = true)
 	#endregion /*Save Player Position END*/
 	
 	scr_savelevel();
-	global.QuitLevel = false;
+	global.quit_level = false;
 	global.QuitGame = false;
 	room_persistent = false;
 	if (asset_get_type("room_title") == asset_room)
@@ -396,7 +396,7 @@ if (can_move = true)
 and(global.pause=false)
 and (asset_get_type("obj_camera") == asset_object)
 and (instance_exists(obj_camera))
-and (global.QuitLevel = false)
+and (global.quit_level = false)
 and (global.QuitGame = false)
 {
 	
@@ -1096,7 +1096,7 @@ and(instance_exists(obj_camera))
 and(obj_camera.iris_yscale <= 0.001)
 and(asset_get_type("obj_level") == asset_object)
 {
-	if (global.QuitLevel = false)
+	if (global.quit_level = false)
 	or(global.QuitGame = false)
 	{
 		audio_stop_all();

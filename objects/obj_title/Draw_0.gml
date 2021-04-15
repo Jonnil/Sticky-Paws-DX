@@ -162,7 +162,7 @@ and(menu_delay=0)
 		{
 			room_persistent=false;
 		}
-		if (global.QuitLevel=true)
+		if (global.quit_level=true)
 		{
 			game_end();
 		}

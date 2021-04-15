@@ -109,7 +109,7 @@ if (quit_level_editor = false)
 			draw_menu_button(
 			window_get_width()/2-185,
 			window_get_height()/2-42,
-			"Options","options",noone);
+			"Settings","options",noone);
 			
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 			window_get_width()/2-185,

@@ -10777,10 +10777,11 @@ and(voice_burned_10>noone)
 
 room_speed=global.max_fps; /*Room Speed*/
 
-#region /*Quit Level*/
-if (global.QuitLevel=true)
+#region /*Restart Level*/
+if (global.restart_level = true)
 {
-	global.QuitLevel=false;
+	global.restart_level=false;
+	global.quit_level=false;
 	audio_stop_all();
 	room_persistent=false;
 	
@@ -10791,20 +10792,45 @@ if (global.QuitLevel=true)
 	global.timeattack_minute=0;	
 	#endregion /*Reset timer back to zero End*/
 	
+	score = 0;
+	
+	room_restart();
+}
+#endregion /*Restart Level END*/
+
+#region /*Quit Level*/
+if (global.quit_level=true)
+{
+	global.quit_level=false;
+	audio_stop_all();
+	room_persistent=false;
+	
+	#region /*Reset timer back to zero*/
+	global.timeattack_realmillisecond=0;
+	global.timeattack_millisecond=0;
+	global.timeattack_second=0;
+	global.timeattack_minute=0;	
+	#endregion /*Reset timer back to zero End*/
+	
+	score = 0;
+	
 	global.level_clear_rate="enter";
 	if (asset_get_type("scr_savelevel")==asset_script)
 	{
 		scr_savelevel();
 	}
-	if (asset_get_type("room_leveleditor")==asset_room)
-	and(room=room_leveleditor)
+	if (global.quit_to_map = true)
+	and(asset_get_type("room_level_select")==asset_room)
 	{
-		room_goto(room_title);
+		global.quit_to_map = false;
+		room_goto(room_level_select);
 	}
 	else
-	if (asset_get_type("room_level_select")==asset_room)
+	if (global.quit_to_title = true)
+	and(asset_get_type("room_title")==asset_room)
 	{
-		room_goto(room_level_select);
+		global.quit_to_title = false;
+		room_goto(room_title);
 	}
 	else
 	{

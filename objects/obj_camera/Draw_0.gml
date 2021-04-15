@@ -875,8 +875,8 @@ if (save_level_as_png = false)
 		}
 		else
 		{
-			iris_xscale = lerp(iris_xscale, 16, 0.015);
-			iris_yscale = lerp(iris_yscale, 16, 0.015);
+			iris_xscale = lerp(iris_xscale, 32, 0.015);
+			iris_yscale = lerp(iris_yscale, 32, 0.015);
 			if (iris_xscale >= 0.99)
 			{
 				iris_zoom = 1;
@@ -896,7 +896,7 @@ if (save_level_as_png = false)
 	{
 		if (asset_get_type("obj_player") == asset_object)
 		and(instance_exists(obj_player))
-		and(iris_xscale < 15)
+		and(iris_xscale < 31)
 		{
 			if (asset_get_type("spr_iris") == asset_sprite)
 			{

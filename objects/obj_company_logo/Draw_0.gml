@@ -114,7 +114,7 @@ if (global.convention_mode=false)
 	{
 		room_persistent=false;
 	}
-	if (global.QuitLevel=true)
+	if (global.quit_level=true)
 	{
 		game_end();
 	}

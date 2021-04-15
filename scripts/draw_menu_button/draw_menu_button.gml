@@ -60,7 +60,7 @@ function draw_menu_button()
 		}
 		else
 		{
-			if (mouse_check_button_released(mb_left))
+			if (mouse_check_button_pressed(mb_left))
 			{
 				menu=menu_takes_you_to;
 			}
