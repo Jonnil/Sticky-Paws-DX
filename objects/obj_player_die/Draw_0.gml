@@ -175,14 +175,6 @@ and(iris_xscale<=0.001)
 			and(room=room_leveleditor)
 			{
 				global.play_edited_level=false;
-				if (asset_get_type("obj_ground")==asset_object)
-				and(instance_exists(obj_ground))
-				{
-					with(obj_ground)
-					{
-						sprite_delete(custom_tileset);
-					}
-				}
 				room_restart();
 			}
 			else
@@ -195,14 +187,6 @@ and(iris_xscale<=0.001)
 			}
 			else
 			{
-				if (asset_get_type("obj_ground")==asset_object)
-				and(instance_exists(obj_ground))
-				{
-					with(obj_ground)
-					{
-						sprite_delete(custom_tileset);
-					}
-				}
 				room_restart();
 			}
 			#endregion /*Otherwise go to Level Select END*/
@@ -241,14 +225,6 @@ and(iris_xscale<=0.001)
 			and(room=room_leveleditor)
 			{
 				global.play_edited_level=false;
-				if (asset_get_type("obj_ground")==asset_object)
-				and(instance_exists(obj_ground))
-				{
-					with(obj_ground)
-					{
-						sprite_delete(custom_tileset);
-					}
-				}
 				room_restart();
 			}
 			else
@@ -261,14 +237,6 @@ and(iris_xscale<=0.001)
 			}
 			else
 			{
-				if (asset_get_type("obj_ground")==asset_object)
-				and(instance_exists(obj_ground))
-				{
-					with(obj_ground)
-					{
-						sprite_delete(custom_tileset);
-					}
-				}
 				room_restart();
 			}
 			#endregion /*Otherwise go to Level Select END*/

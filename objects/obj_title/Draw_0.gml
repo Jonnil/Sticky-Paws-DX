@@ -2630,6 +2630,26 @@ and(obj_camera.iris_xscale<=0.001)
 			
 			#endregion /*Update All Backgrounds END*/
 			
+			#region /*Custom Level Tileset File*/
+			sprite_delete(global.custom_tileset);
+			
+			if (global.character_select_in_this_menu="game")
+			and(file_exists("Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png"))
+			{
+				global.custom_tileset = sprite_add("Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png",0,false,false,0,0);
+			}
+			else
+			if (global.character_select_in_this_menu="level_editor")
+			and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png"))
+			{
+				global.custom_tileset = sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png",0,false,false,0,0);
+			}
+			else
+			{
+				global.custom_tileset = noone;
+			}
+			#endregion /*Custom Level Tileset File END*/
+			
 			room_goto(room_leveleditor);
 		}
 		global.actually_play_edited_level=true;

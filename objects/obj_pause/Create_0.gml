@@ -1,5 +1,10 @@
 depth = -20;
 
+#region /*Mouse x and mouse y initializing*/
+mx = mouse_x;
+my = mouse_y;
+#endregion /*Mouse x and mouse y initializing END*/
+
 scr_set_arrays();
 
 ///Narrator Voice variable handeling

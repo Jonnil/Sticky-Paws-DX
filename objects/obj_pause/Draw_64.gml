@@ -1,6 +1,55 @@
 //instance_deactivate_all(true);
 instance_activate_object(obj_pause);
 
+#region /*Set what controls are used to navigate the menus*/
+
+#region /*Get distance from fake mouse to real mouse*/
+var mouse_moving = point_distance(mx, my, window_mouse_get_x(), window_mouse_get_y());
+#endregion /*Get distance from fake mouse to real mouse END*/
+
+#region /*update positions of fake mouse*/
+mx = window_mouse_get_x();
+my = window_mouse_get_y();
+#endregion /*update positions of fake mouse*/
+
+if (keyboard_check(vk_anykey))
+{
+	global.controls_used_for_menu_navigation="keyboard";
+}
+else
+if (mouse_check_button(mb_any))
+or(mouse_wheel_down())
+or(mouse_wheel_up())
+or(mouse_moving)
+{
+	global.controls_used_for_menu_navigation="mouse";
+}
+else
+if (gamepad_button_check(0,gp_face1))
+or(gamepad_button_check(0,gp_face2))
+or(gamepad_button_check(0,gp_face3))
+or(gamepad_button_check(0,gp_face4))
+or(gamepad_button_check(0,gp_padd))
+or(gamepad_button_check(0,gp_padl))
+or(gamepad_button_check(0,gp_padr))
+or(gamepad_button_check(0,gp_padu))
+or(gamepad_button_check(0,gp_select))
+or(gamepad_button_check(0,gp_shoulderl))
+or(gamepad_button_check(0,gp_shoulderlb))
+or(gamepad_button_check(0,gp_shoulderr))
+or(gamepad_button_check(0,gp_shoulderrb))
+or(gamepad_button_check(0,gp_start))
+or(gamepad_button_check(0,gp_stickl))
+or(gamepad_button_check(0,gp_stickr))
+or(gamepad_axis_value(0,gp_axislh)<>0)
+or(gamepad_axis_value(0,gp_axislv)<>0)
+or(gamepad_axis_value(0,gp_axisrh)<>0)
+or(gamepad_axis_value(0,gp_axisrv)<>0)
+{
+	global.controls_used_for_menu_navigation="controller";
+}
+#endregion /*Set what controls are used to navigate the menus END*/
+
 with (all)
 {
 	gravity = 0;
@@ -123,6 +172,13 @@ if (global.pause_player = 3)
 
 #endregion /*Keyboard Controls End*/
 
+#region /*Pause Screenshot*/
+if (global.pause_screenshot>noone)
+{
+	draw_sprite_ext(global.pause_screenshot,0,0,0,1,0.971,0,c_white,1);
+}
+#endregion /*Pause Screenshot END*/
+
 #region /*Darker Background*/
 draw_set_alpha(0.5);
 draw_rectangle_colour(0, 0, window_get_width(), window_get_height(), c_red, c_blue, c_blue, c_red, false);
@@ -244,25 +300,58 @@ if (asset_get_type("room_level_select") == asset_room)
 and(room = room_level_select)
 or(asset_get_type("room_leveleditor") == asset_room)
 and(room = room_leveleditor)
+or(asset_get_type("room_level_select") == asset_room)
+and(global.pause_room = room_level_select)
+or(asset_get_type("room_leveleditor") == asset_room)
+and(global.pause_room = room_leveleditor)
 {
-	
-	/*Continue*/
 	if (menu = "continue")
 	or(menu = "options")
+	or(menu = "select_level")
 	or(menu = "quit")
 	{
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Continue","continue","continue");
-		if (global.convention_mode = false)
+		
+		if(asset_get_type("room_leveleditor") == asset_room)
+		and(room = room_leveleditor)
+		or(asset_get_type("room_leveleditor") == asset_room)
+		and(global.pause_room = room_leveleditor)
 		{
-			draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Options","options","options");
-			draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit","quit","quit");
+			if (global.convention_mode = false)
+			{
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Options","options","options");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Restart","restart","restart");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42+42,"Quit","quit","quit");
+			}
+			else
+			{
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Restart","restart","restart");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"quit_to_map","quit_to_map","quit_to_map");
+			}
 		}
 		else
 		{
-			draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit","quit","quit");
+			if (global.convention_mode = false)
+			{
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Options","options","options");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit","quit","quit_to_map");
+			}
+			else
+			{
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit","quit","quit_to_map");
+			}
 		}
 	}
+	if (menu = "quit_to_map")
+	or(menu = "quit_to_title")
+	or(menu = "quit_nevermind")
+	{
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Map","quit_to_map","quit_to_map");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit to Title","quit_to_title","quit_to_title");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Nevermind","quit_nevermind","quit");
+	}
 	
+	#region /*Continue*/
 	if (menu = "continue")
 	{
 		if (key_a_pressed)
@@ -291,7 +380,14 @@ and(room = room_leveleditor)
 					vspeed = pause_vspeed;
 				}
 			}
-			instance_destroy();
+			if (asset_get_type("room_pause") == asset_room)
+			{
+				room = global.pause_room;
+			}
+			else
+			{
+				instance_destroy();
+			}
 			#endregion /*Return to game END*/
 			
 		}
@@ -311,9 +407,11 @@ and(room = room_leveleditor)
 			menu = "options";
 		}
 	}
-
-	#region /*Options*/
+	#endregion /*Continue END*/
+	
 	else
+	
+	#region /*Options*/
 	if (menu = "options")
 	{
 		
@@ -355,10 +453,106 @@ and(room = room_leveleditor)
 		}
 	}
 	#endregion /*Options END*/
-
-
-	#region /*Save and Quit*/
+	
+	else
+	
+	#region /*Quit*/
 	if (menu = "quit")
+	{
+		if (key_a_pressed)
+		and(menu_delay = 0)
+		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
+		{
+			menu = "quit_to_map";
+			menu_delay = 10;
+		}
+		if (key_up)
+		and(!key_down)
+		and(menu_delay <= 0)
+		{
+			menu_delay = 1;
+			menu = "options";
+		}
+		else
+		if (key_down)
+		and(!key_up)
+		and(menu_delay <= 0)
+		{
+			menu_delay = 1;
+			menu = "continue";
+		}
+	}
+	#endregion /*Quit END*/
+	
+	else
+	
+	#region /*Quit to Map*/
+	if (menu = "quit_to_map")
+	{
+		if (key_a_pressed)
+		and(menu_delay = 0)
+		{
+			/*Return to game*/
+			
+			#region /*Reset timer back to zero*/
+			global.timeattack_realmillisecond = 0;
+			global.timeattack_millisecond = 0;
+			global.timeattack_second = 0;
+			global.timeattack_minute = 0;
+			#endregion /*Reset timer back to zero END*/
+			
+			global.QuitLevel = true;
+			audio_stop_all();
+			global.theme = noone;
+			global.weather = noone;
+			global.pause=false;
+			instance_activate_region(
+			camera_get_view_x(view_camera[view_current]) - 32,
+			camera_get_view_y(view_camera[view_current]) - 32,
+			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
+			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+			true);
+			if (instance_exists(obj_player))
+			{
+				with(obj_player)
+				{
+					hspeed = pause_hspeed;
+					vspeed = pause_vspeed;
+				}
+			}
+			if (asset_get_type("room_pause") == asset_room)
+			{
+				room = global.pause_room;
+			}
+			else
+			{
+				instance_destroy();
+			}
+		}
+		if (key_up)
+		and(!key_down)
+		and(menu_delay <= 0)
+		{
+			menu_delay = 1;
+			menu = "quit_nevermind";
+		}
+		else
+		if (key_down)
+		and(!key_up)
+		and(menu_delay <= 0)
+		{
+			menu_delay = 1;
+			menu = "quit_to_title";
+		}
+	}
+	#endregion /*Quit to Map END*/
+	
+	else
+	
+	#region /*Save and Quit*/
+	if (menu = "quit_to_title")
 	{
 		if (key_a_pressed)
 		and(menu_delay = 0)
@@ -395,8 +589,14 @@ and(room = room_leveleditor)
 					vspeed = pause_vspeed;
 				}
 			}
-			instance_destroy();
-			
+			if (asset_get_type("room_pause") == asset_room)
+			{
+				room = global.pause_room;
+			}
+			else
+			{
+				instance_destroy();
+			}
 			#endregion /*Return to game END*/
 			
 		}
@@ -405,7 +605,7 @@ and(room = room_leveleditor)
 		and(menu_delay <= 0)
 		{
 			menu_delay = 1;
-			menu = "options";
+			menu = "quit_to_map";
 		}
 		else
 		if (key_down)
@@ -413,10 +613,33 @@ and(room = room_leveleditor)
 		and(menu_delay <= 0)
 		{
 			menu_delay = 1;
-			menu = "continue";
+			menu = "quit_nevermind";
 		}
 	}
 	#endregion /*Save and Quit END*/
+	
+	else
+	
+	#region /*Quit Nevermind*/
+	if (menu = "quit_nevermind")
+	{
+		if (key_up)
+		and(!key_down)
+		and(menu_delay <= 0)
+		{
+			menu_delay = 1;
+			menu = "quit_to_title";
+		}
+		else
+		if (key_down)
+		and(!key_up)
+		and(menu_delay <= 0)
+		{
+			menu_delay = 1;
+			menu = "quit_to_map";
+		}
+	}
+	#endregion /*Quit Nevermind END*/
 	
 	#region /*Return to game*/
 	if (menu = "continue")
@@ -445,274 +668,20 @@ and(room = room_leveleditor)
 					vspeed = pause_vspeed;
 				}
 			}
-			instance_destroy();
+			if (asset_get_type("room_pause") == asset_room)
+			{
+				room = global.pause_room;
+			}
+			else
+			{
+				instance_destroy();
+			}
 		}
 	}
 	#endregion /*Return to game END*/
 
 }
 /*PAUSE LEVEL EDITOR MENU*/
-
-/*PAUSE INSIDE LEVEL MENU*/
-else
-if (menu = "continue")
-or(menu = "options")
-or(menu = "select_level")
-or(menu = "quit")
-{
-	/*Continue*/
-	if (menu = "continue")
-	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, "> CONTINUE <", global.default_text_size * 2.3, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "OPTIONS", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "SELECT LEVEL", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 192, "SAVE AND QUIT", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		if (key_a_pressed)
-		and(menu_delay = 0)
-		{
-			
-			#region /*Return to game*/
-			audio_resume_all();
-			audio_sound_gain(global.music,global.music_volume,0);
-			audio_sound_gain(global.music_underwater,0,0);
-			global.pause=false;
-			instance_activate_region(
-			camera_get_view_x(view_camera[view_current]) - 32,
-			camera_get_view_y(view_camera[view_current]) - 32,
-			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
-			true);
-			if (instance_exists(obj_player))
-			{
-				with(obj_player)
-				{
-					hspeed = pause_hspeed;
-					vspeed = pause_vspeed;
-				}
-			}
-			instance_destroy();
-			#endregion /*Return to game END*/
-			
-		}
-		if (key_up)
-		and(!key_down)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 1;
-			menu = "quit";
-		}
-		else
-		if (key_down)
-		and(!key_up)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 1;
-			menu = "options";
-		}
-	}
-
-	/*Options*/
-	if (menu = "options")
-	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, "CONTINUE", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "> OPTIONS <", global.default_text_size * 2.3, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "SELECT LEVEL", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 192, "SAVE AND QUIT", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-
-		#region /*Select Options*/
-		if (key_a_pressed)
-		and(menu_delay = 0)
-		and(global.convention_mode = false)
-		{
-			menu_delay = 10;
-			if (!audio_is_playing(menuvoice_options))
-			{
-				audio_play_sound(menuvoice_options, 0, 0);
-				audio_sound_gain(menuvoice_options, global.voices_volume, 0);
-			}
-			menu = "difficulty_settings";
-		}
-		#endregion /*Select Options END*/
-
-		if (key_up)
-		and(!key_down)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 1;
-			menu = "continue";
-		}
-		else
-		if (key_down)
-		and(!key_up)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 1;
-			menu = "select_level";
-		}
-	}
-	/*Options END*/
-
-	/*Select Level*/
-	if (menu = "select_level")
-	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, "CONTINUE", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "OPTIONS", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "> SELECT LEVEL <", global.default_text_size * 2.3, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 192, "SAVE AND QUIT", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		if (key_a_pressed)
-		and(menu_delay = 0)
-		{
-			/*Return to game*/
-			
-			#region /*Reset timer back to zero*/
-			global.timeattack_realmillisecond = 0;
-			global.timeattack_millisecond = 0;
-			global.timeattack_second = 0;
-			global.timeattack_minute = 0;
-			#endregion /*Reset timer back to zero END*/
-			
-			global.QuitLevel = true;
-			audio_stop_all();
-			global.theme = noone;
-			global.weather = noone;
-			global.pause=false;
-			instance_activate_region(
-			camera_get_view_x(view_camera[view_current]) - 32,
-			camera_get_view_y(view_camera[view_current]) - 32,
-			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
-			true);
-			if (instance_exists(obj_player))
-			{
-				with(obj_player)
-				{
-					hspeed = pause_hspeed;
-					vspeed = pause_vspeed;
-				}
-			}
-			instance_destroy();
-		}
-		if (key_up)
-		and(!key_down)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 1;
-			menu = "options";
-		}
-		else
-		if (key_down)
-		and(!key_up)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 1;
-			menu = "quit";
-		}
-	}
-
-	/*Save and Quit*/
-	if (menu = "quit")
-	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, "CONTINUE", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 64, "OPTIONS", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 128, "SELECT LEVEL", global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 192, "> SAVE AND QUIT <", global.default_text_size * 2.3, c_menu_outline, c_menu_fill, 1);
-		if (key_a_pressed)
-		and(menu_delay = 0)
-		{
-			/*Return to game*/
-			
-			#region /*Reset timer back to zero*/
-			global.timeattack_realmillisecond = 0;
-			global.timeattack_millisecond = 0;
-			global.timeattack_second = 0;
-			global.timeattack_minute = 0;
-			#endregion /*Reset timer back to zero END*/
-			
-			global.QuitLevel = true;
-			global.QuitGame = true;
-			audio_stop_all();
-			global.theme = noone;
-			global.weather = noone;
-			global.pause=false;
-			instance_activate_region(
-			camera_get_view_x(view_camera[view_current]) - 32,
-			camera_get_view_y(view_camera[view_current]) - 32,
-			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
-			true);
-			if (instance_exists(obj_player))
-			{
-				with(obj_player)
-				{
-					hspeed = pause_hspeed;
-					vspeed = pause_vspeed;
-				}
-			}
-			instance_destroy();
-		}
-		if (key_up)
-		and(!key_down)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 1;
-			menu = "select_level";
-		}
-		else
-		if (key_down)
-		and(!key_up)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 1;
-			menu = "continue";
-		}
-	}
-
-	#region /*Return to game*/
-	if (menu = "continue")
-	or(menu = "options")
-	or(menu = "select_level")
-	or(menu = "quit")
-	{
-		if (key_b_pressed)
-		and(menu_delay = 0)
-		{
-			audio_resume_all();
-			audio_sound_gain(global.music,global.music_volume,0);
-			audio_sound_gain(global.music_underwater,0,0);
-			global.pause=false;
-			instance_activate_region(
-			camera_get_view_x(view_camera[view_current]) - 32,
-			camera_get_view_y(view_camera[view_current]) - 32,
-			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
-			true);
-			if (instance_exists(obj_player))
-			{
-				with(obj_player)
-				{
-					hspeed = pause_hspeed;
-					vspeed = pause_vspeed;
-				}
-			}
-			instance_destroy();
-		}
-	}
-	#endregion /*Return to game END*/
-	
-	#region /*Draw lock if convention mode is on*/
-	if (global.convention_mode = true)
-	{
-		if (menu = "continue")
-		or(menu = "options")
-		or(menu = "select_level")
-		or(menu = "quit")
-		{
-			draw_sprite(spr_lock, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 25);
-		}
-	}
-	#endregion /*Draw lock if convention mode is on END*/
-	
-} /*PAUSE INSIDE LEVEL MENU END*/
 
 #region /*Return to game*/
 if (keyboard_check_pressed(vk_escape))
@@ -747,7 +716,14 @@ or(gamepad_button_check_pressed(3, gp_select))
 				vspeed = pause_vspeed;
 			}
 		}
-		instance_destroy();
+		if (asset_get_type("room_pause") == asset_room)
+		{
+			room = global.pause_room;
+		}
+		else
+		{
+			instance_destroy();
+		}
 	}
 }
 #endregion /*Return to game END*/

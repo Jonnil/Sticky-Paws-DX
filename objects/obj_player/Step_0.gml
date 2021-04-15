@@ -12365,27 +12365,40 @@ and(global.pause=false)
 	room_restart();
 	}
 	else
+	
+	
 	{
 		global.pause_player=0;
 		if (global.goal_active=false)
 		{
-			audio_pause_all();
-			if (asset_get_type("obj_pause") == asset_object)
-			and(!instance_exists(obj_pause))
+			if (asset_get_type("room_pause")==asset_room)
 			{
-				global.pause=true;
-				pause_hspeed = hspeed;
-				pause_vspeed = vspeed;
-				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+				room_persistent = true;
+				global.pause_room = room;
+				audio_pause_all();
+				room_goto(room_pause);
+			}
+			else
+			{
+				audio_pause_all();
+				if (asset_get_type("obj_pause") == asset_object)
+				and(!instance_exists(obj_pause))
+				{
+					global.pause=true;
+					pause_hspeed = hspeed;
+					pause_vspeed = vspeed;
+					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				}
 			}
 		}
 	}
 }
 
-	else
-	if (gamepad_button_check_pressed(1,gp_start))
-	or(gamepad_button_check_pressed(1,gp_select))
-	{
+else
+if (gamepad_button_check_pressed(1,gp_start))
+or(gamepad_button_check_pressed(1,gp_select))
+{
 
 	#region /*Show all HUD elements*/
 	global.hud_show_lives=true;
@@ -12430,23 +12443,34 @@ and(global.pause=false)
 		global.pause_player=1;
 		if (global.goal_active=false)
 		{
-			audio_pause_all();
-			if (asset_get_type("obj_pause") == asset_object)
-			and(!instance_exists(obj_pause))
+			if (asset_get_type("room_pause")==asset_room)
 			{
-				global.pause=true;
-				pause_hspeed = hspeed;
-				pause_vspeed = vspeed;
-				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+				room_persistent = true;
+				global.pause_room = room;
+				audio_pause_all();
+				room_goto(room_pause);
+			}
+			else
+			{
+				audio_pause_all();
+				if (asset_get_type("obj_pause") == asset_object)
+				and(!instance_exists(obj_pause))
+				{
+					global.pause=true;
+					pause_hspeed = hspeed;
+					pause_vspeed = vspeed;
+					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				}
 			}
 		}
 	}
 }
 
-	else
-	if (gamepad_button_check_pressed(2,gp_start))
-	or(gamepad_button_check_pressed(2,gp_select))
-	{
+else
+if (gamepad_button_check_pressed(2,gp_start))
+or(gamepad_button_check_pressed(2,gp_select))
+{
 
 	#region /*Show all HUD elements*/
 	global.hud_show_lives=true;
@@ -12491,23 +12515,34 @@ and(global.pause=false)
 		global.pause_player=2;
 		if (global.goal_active=false)
 		{
-			audio_pause_all();
-			if (asset_get_type("obj_pause") == asset_object)
-			and(!instance_exists(obj_pause))
+			if (asset_get_type("room_pause")==asset_room)
 			{
-				global.pause=true;
-				pause_hspeed = hspeed;
-				pause_vspeed = vspeed;
-				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+				room_persistent = true;
+				global.pause_room = room;
+				audio_pause_all();
+				room_goto(room_pause);
+			}
+			else
+			{
+				audio_pause_all();
+				if (asset_get_type("obj_pause") == asset_object)
+				and(!instance_exists(obj_pause))
+				{
+					global.pause=true;
+					pause_hspeed = hspeed;
+					pause_vspeed = vspeed;
+					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				}
 			}
 		}
 	}
 }
 
-	else
-	if (gamepad_button_check_pressed(3,gp_start))
-	or(gamepad_button_check_pressed(3,gp_select))
-	{
+else
+if (gamepad_button_check_pressed(3,gp_start))
+or(gamepad_button_check_pressed(3,gp_select))
+{
 
 	#region /*Show all HUD elements*/
 	global.hud_show_lives=true;
@@ -12552,14 +12587,25 @@ and(global.pause=false)
 		global.pause_player=3;
 		if (global.goal_active=false)
 		{
-			audio_pause_all();
-			if (asset_get_type("obj_pause") == asset_object)
-			and(!instance_exists(obj_pause))
+			if (asset_get_type("room_pause")==asset_room)
 			{
-				global.pause=true;
-				pause_hspeed = hspeed;
-				pause_vspeed = vspeed;
-				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+				room_persistent = true;
+				global.pause_room = room;
+				audio_pause_all();
+				room_goto(room_pause);
+			}
+			else
+			{
+				audio_pause_all();
+				if (asset_get_type("obj_pause") == asset_object)
+				and(!instance_exists(obj_pause))
+				{
+					global.pause=true;
+					pause_hspeed = hspeed;
+					pause_vspeed = vspeed;
+					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				}
 			}
 		}
 	}

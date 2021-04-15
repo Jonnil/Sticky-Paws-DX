@@ -409,12 +409,23 @@ and (global.QuitGame = false)
 		global.pause_player = 0;
 		if (global.goal_active = false)
 		{
-			audio_pause_all();
-			if (asset_get_type("obj_pause") == asset_object)
-			and(!instance_exists(obj_pause))
+			if (asset_get_type("room_pause")==asset_room)
 			{
-				global.pause=true;
-				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+				room_persistent = true;
+				global.pause_room = room;
+				audio_pause_all();
+				room_goto(room_pause);
+			}
+			else
+			{
+				audio_pause_all();
+				if (asset_get_type("obj_pause") == asset_object)
+				and(!instance_exists(obj_pause))
+				{
+					global.pause=true;
+					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				}
 			}
 		}
 	}
@@ -426,12 +437,23 @@ and (global.QuitGame = false)
 		global.pause_player = 1;
 		if (global.goal_active = false)
 		{
-			audio_pause_all();
-			if (asset_get_type("obj_pause") == asset_object)
-			and(!instance_exists(obj_pause))
+			if (asset_get_type("room_pause")==asset_room)
 			{
-				global.pause=true;
-				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+				room_persistent = true;
+				global.pause_room = room;
+				audio_pause_all();
+				room_goto(room_pause);
+			}
+			else
+			{
+				audio_pause_all();
+				if (asset_get_type("obj_pause") == asset_object)
+				and(!instance_exists(obj_pause))
+				{
+					global.pause=true;
+					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				}
 			}
 		}
 	}
@@ -443,12 +465,23 @@ and (global.QuitGame = false)
 		global.pause_player = 2;
 		if (global.goal_active = false)
 		{
-			audio_pause_all();
-			if (asset_get_type("obj_pause") == asset_object)
-			and(!instance_exists(obj_pause))
+			if (asset_get_type("room_pause")==asset_room)
 			{
-				global.pause=true;
-				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+				room_persistent = true;
+				global.pause_room = room;
+				audio_pause_all();
+				room_goto(room_pause);
+			}
+			else
+			{
+				audio_pause_all();
+				if (asset_get_type("obj_pause") == asset_object)
+				and(!instance_exists(obj_pause))
+				{
+					global.pause=true;
+					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				}
 			}
 		}
 	}
@@ -460,12 +493,23 @@ and (global.QuitGame = false)
 		global.pause_player = 3;
 		if (global.goal_active = false)
 		{
-			audio_pause_all();
-			if (asset_get_type("obj_pause") == asset_object)
-			and(!instance_exists(obj_pause))
+			if (asset_get_type("room_pause")==asset_room)
 			{
-				global.pause=true;
-				instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+				room_persistent = true;
+				global.pause_room = room;
+				audio_pause_all();
+				room_goto(room_pause);
+			}
+			else
+			{
+				audio_pause_all();
+				if (asset_get_type("obj_pause") == asset_object)
+				and(!instance_exists(obj_pause))
+				{
+					global.pause=true;
+					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+				}
 			}
 		}
 	}
@@ -1480,7 +1524,27 @@ and(asset_get_type("obj_level") == asset_object)
 			}
 			
 			#endregion /*Update All Backgrounds END*/
+			
+		#region /*Custom Level Tileset File*/
+		sprite_delete(global.custom_tileset);
 		
+		if (global.character_select_in_this_menu="game")
+		and(file_exists("Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png"))
+		{
+			global.custom_tileset = sprite_add("Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png",0,false,false,0,0);
+		}
+		else
+		if (global.character_select_in_this_menu="level_editor")
+		and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png"))
+		{
+			global.custom_tileset = sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png",0,false,false,0,0);
+		}
+		else
+		{
+			global.custom_tileset = noone;
+		}
+		#endregion /*Custom Level Tileset File END*/
+			
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{
 			global.actually_play_edited_level=true;
