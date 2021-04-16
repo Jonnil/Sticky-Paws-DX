@@ -899,10 +899,10 @@ scr_options_menu(); /*Options*/
 
 #region /*Window is focused, hide cursor*/
 if (window_has_focus())
-and(window_mouse_get_x() > camera_get_view_x(view_camera[view_current]) + 8)
-and(window_mouse_get_x() < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8)
-and(window_mouse_get_y() > camera_get_view_y(view_camera[view_current]) + 8)
-and(window_mouse_get_y() < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8)
+and(mouse_x > + 8)
+and(mouse_x < window_get_width() - 8)
+and(mouse_y > + 8)
+and(mouse_y < window_get_height() - 8)
 {
 	window_set_cursor(cr_none);
 }

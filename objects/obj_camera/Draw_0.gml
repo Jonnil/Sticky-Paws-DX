@@ -1072,24 +1072,6 @@ and(player1 > noone)
 }
 #endregion /*Tongue aim should always be above everything, it represents the mouse cursor END*/
 
-#region /*Window is focused, hide cursor*/
-if (window_has_focus())
-and(mouse_x > camera_get_view_x(view_camera[view_current]) + 8)
-and(mouse_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8)
-and(mouse_y > camera_get_view_y(view_camera[view_current]) + 8)
-and(mouse_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8)
-{
-	window_set_cursor(cr_none);
-}
-else
-{
-	if (!window_get_fullscreen())
-	{
-		window_set_cursor(cr_default);
-	}
-}
-#endregion /*Window is focused, hide cursor END*/
-
 #region /*Rain Effect*/
 if (global.weather = "rain")
 {

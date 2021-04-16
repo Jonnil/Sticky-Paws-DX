@@ -1840,3 +1840,21 @@ and(global.pause = false)
 	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/
+
+#region /*Window is focused, hide cursor*/
+if (window_has_focus())
+and(mouse_x > + 8)
+and(mouse_x < window_get_width() - 8)
+and(mouse_y > + 8)
+and(mouse_y < window_get_height() - 8)
+{
+	window_set_cursor(cr_none);
+}
+else
+{
+	if (!window_get_fullscreen())
+	{
+		window_set_cursor(cr_default);
+	}
+}
+#endregion /*Window is focused, hide cursor END*/
