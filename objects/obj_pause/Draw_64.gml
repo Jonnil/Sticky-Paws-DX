@@ -1,6 +1,11 @@
 //instance_deactivate_all(true);
 instance_activate_object(obj_pause);
 
+#region /*Set screen size*/
+camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
+display_set_gui_size(window_get_width(), window_get_height());
+#endregion /*Set screen size END*/
+
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/
