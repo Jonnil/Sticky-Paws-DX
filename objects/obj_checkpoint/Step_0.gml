@@ -24,6 +24,7 @@ and(instance_exists(obj_player))
 					hp+=1;
 				}
 				effect_create_above(ef_ring,x,y,2,c_white);
+				
 				#region /*Collect 10 basic collectibles*/
 				if (asset_get_type("obj_basic_collectible")==asset_object)
 				{

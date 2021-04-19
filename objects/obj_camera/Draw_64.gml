@@ -2,7 +2,7 @@
 if (asset_get_type("obj_title") == asset_object)
 and(!instance_exists(obj_title))
 {
-		
+	
 	#region /*Show HUD timers*/
 
 	#region /*If HUD show timer is set to always hide*/

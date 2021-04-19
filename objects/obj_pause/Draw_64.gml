@@ -837,27 +837,9 @@ and(global.pause_room = room_leveleditor)
 			global.theme = noone;
 			global.weather = noone;
 			global.pause=false;
-			instance_activate_region(
-			camera_get_view_x(view_camera[view_current]) - 32,
-			camera_get_view_y(view_camera[view_current]) - 32,
-			window_get_width() + 32,
-			window_get_height() + 32,
-			true);
-			if (instance_exists(obj_player))
-			{
-				with(obj_player)
-				{
-					hspeed = pause_hspeed;
-					vspeed = pause_vspeed;
-				}
-			}
 			if (asset_get_type("room_pause") == asset_room)
 			{
 				room = global.pause_room;
-			}
-			else
-			{
-				instance_destroy();
 			}
 			#endregion /*Return to Map END*/
 			

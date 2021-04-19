@@ -6,13 +6,18 @@ if (asset_get_type("spr_wall") == asset_sprite)
 {
 	mask_index = spr_wall;
 }
-if (asset_get_type("obj_camera") == asset_object)
-and(!instance_exists(obj_camera))
-{
-	instance_create_depth(x,y,0,obj_camera);
-}
 global.time_countdown = 500;
 global.player_has_entered_goal = false;
+global.quit_level = false;
+global.quit_to_map = false;
+
+#region /*Reset timer back to zero*/
+global.timeattack_realmillisecond = 0;
+global.timeattack_millisecond = 0;
+global.timeattack_second = 0;
+global.timeattack_minute = 0;
+#endregion /*Reset timer back to zero END*/
+
 image_speed = 0.3;
 can_move = true;
 can_enter = true;

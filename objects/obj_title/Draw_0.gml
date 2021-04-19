@@ -3026,6 +3026,7 @@ if (key_b_pressed)
 	if (menu="select_custom_level")
 	or(menu="level_editor_play")
 	or(menu="level_editor_make")
+	or(menu="level_editor_upload")
 	or(menu="import_export_level")
 	or(menu="delete_level")
 	{

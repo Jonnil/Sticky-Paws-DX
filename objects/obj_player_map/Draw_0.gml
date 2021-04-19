@@ -3,6 +3,12 @@ camera_set_view_size(view_camera[view_current], window_get_width(), window_get_h
 display_set_gui_size(window_get_width(), window_get_height());
 #endregion /*Set screen size END*/
 
+if (asset_get_type("obj_camera") == asset_object)
+and(!instance_exists(obj_camera))
+{
+	instance_create_depth(x,y,0,obj_camera);
+}
+
 #region /*Initialize Custom Character*/
 if (initialize_custom_character_timer < 2)
 {
@@ -277,6 +283,10 @@ if (asset_get_type("obj_level") == asset_object)
 {
 	instance_activate_object(obj_level);
 }
+if (asset_get_type("obj_camera") == asset_object)
+{
+	instance_activate_object(obj_camera);
+}
 #endregion /*Deactivate instances outside view END*/
 
 #endregion /*Keep the game at 60 FPS END*/
@@ -390,6 +400,9 @@ if (sprite_index > noone)
 {
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale, draw_yscale, 0, image_blend, 1);
 }
+
+draw_text_outlined(x,y+40,"obj_camera: "+string(instance_exists(obj_camera))+" (1)",global.default_text_size,c_black,c_white,1);
+
 if (can_move = true)
 and(global.pause=false)
 and (asset_get_type("obj_camera") == asset_object)
@@ -652,18 +665,14 @@ and (global.quit_level = false)
 					transfer_data = false;
 				}
 				else
+				if (asset_get_type("snd_bump") == asset_sound)
+				and(!audio_is_playing(snd_bump))
 				{
-					if (asset_get_type("snd_bump") == asset_sound)
-					{
-						if (!audio_is_playing(snd_bump))
-						{
-							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sfx_volume, 0);
-							draw_xscale = 1.5;
-							draw_yscale = 0.5;
-							yy -= 32;
-						}
-					}
+					audio_play_sound(snd_bump, 0, 0);
+					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					draw_xscale = 1.5;
+					draw_yscale = 0.5;
+					yy -= 32;
 				}
 			}
 		}
@@ -680,18 +689,14 @@ and (global.quit_level = false)
 					transfer_data = false;
 				}
 				else
+				if (asset_get_type("snd_bump") == asset_sound)
+				and(!audio_is_playing(snd_bump))
 				{
-					if (asset_get_type("snd_bump") == asset_sound)
-					{
-						if (!audio_is_playing(snd_bump))
-						{
-							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sfx_volume, 0);
-							draw_xscale = 0.5;
-							draw_yscale = 1.5;
-							xx -= 32;
-						}
-					}
+					audio_play_sound(snd_bump, 0, 0);
+					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					draw_xscale = 0.5;
+					draw_yscale = 1.5;
+					xx -= 32;
 				}
 			}
 		}
@@ -708,18 +713,14 @@ and (global.quit_level = false)
 					transfer_data = false;
 				}
 				else
+				if (asset_get_type("snd_bump") == asset_sound)
+				and(!audio_is_playing(snd_bump))
 				{
-					if (asset_get_type("snd_bump") == asset_sound)
-					{
-						if (!audio_is_playing(snd_bump))
-						{
-							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sfx_volume, 0);
-							draw_xscale = 0.5;
-							draw_yscale = 1.5;
-							xx += 32;
-						}
-					}
+					audio_play_sound(snd_bump, 0, 0);
+					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					draw_xscale = 0.5;
+					draw_yscale = 1.5;
+					xx += 32;
 				}
 			}
 		}
@@ -736,18 +737,14 @@ and (global.quit_level = false)
 					transfer_data = false;
 				}
 				else
+				if (asset_get_type("snd_bump") == asset_sound)
+				and(!audio_is_playing(snd_bump))
 				{
-					if (asset_get_type("snd_bump") == asset_sound)
-					{
-						if (!audio_is_playing(snd_bump))
-						{
-							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sfx_volume, 0);
-							draw_xscale = 1.5;
-							draw_yscale = 0.5;
-							yy += 32;
-						}
-					}
+					audio_play_sound(snd_bump, 0, 0);
+					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					draw_xscale = 1.5;
+					draw_yscale = 0.5;
+					yy += 32;
 				}
 			}
 		}
@@ -957,8 +954,9 @@ and(instance_nearest(x, y, obj_map_path_turn).turn=0) /*Right Down = 0*/
 }
 #endregion /*Touch Map Turn Right Down END*/
 
-#region /*Touch Map Turn Up Right*/
 else
+
+#region /*Touch Map Turn Up Right*/
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and(place_meeting(x, y, obj_map_path_turn))
 and(instance_nearest(x, y, obj_map_path_turn).turn=1) /*Up Right = 1*/
@@ -997,8 +995,9 @@ and(instance_nearest(x, y, obj_map_path_turn).turn=1) /*Up Right = 1*/
 }
 #endregion /*Touch Map Turn Up Right END*/
 
-#region /*Touch Map Turn Up Left*/
 else
+
+#region /*Touch Map Turn Up Left*/
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and(place_meeting(x, y, obj_map_path_turn))
 and(instance_nearest(x, y, obj_map_path_turn).turn=2) /*Up Left = 2*/
@@ -1037,8 +1036,9 @@ and(instance_nearest(x, y, obj_map_path_turn).turn=2) /*Up Left = 2*/
 }
 #endregion /*Touch Map Turn Up Left END*/
 
-#region /*Touch Map Turn Left Down*/
 else
+
+#region /*Touch Map Turn Left Down*/
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and(place_meeting(x, y, obj_map_path_turn))
 and(instance_nearest(x, y, obj_map_path_turn).turn=3) /*Left Down = 3*/
@@ -1085,7 +1085,7 @@ and(delay < 100)
 	delay += 1;
 }
 
-#region /*Start Level*/
+#region /*After pressing "Enter Level", the iris should shrink and then start the level*/
 if (can_move = false)
 and(delay >= 60)
 and(asset_get_type("obj_camera") == asset_object)
@@ -1549,7 +1549,7 @@ and(asset_get_type("obj_level") == asset_object)
 		}
 	}
 }
-#endregion /*Start Level END*/
+#endregion /*After pressing "Enter Level", the iris should shrink and then start the level END*/
 
 if (move_delay < 50)
 {

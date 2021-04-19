@@ -13283,7 +13283,10 @@ and(in_water=false)
 		{
 			angle=-360;
 		}
-		audio_stop_sound(voice);
+		if (voice_jump>noone)
+		{
+			audio_stop_sound(voice);
+		}
 		voice=audio_play_sound(voice_jump,0,0);
 		audio_sound_gain(voice_jump,global.voices_volume,0);
 		effect_create_above(ef_smoke,x-16,bbox_bottom,0,c_white);
