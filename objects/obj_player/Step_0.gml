@@ -1931,54 +1931,114 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 #endregion /*Skidding Ice sprite END*/
 
 #region /*Swim sprite*/
-index=0
-repeat(50)
+if(sprite_swim_xorig > 0)
+or(sprite_swim_yorig > 0)
 {
-	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_strip"+string(index)+".png"))
+	index=0
+	repeat(50)
 	{
-		sprite_swim = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_strip"+string(index)+".png", index, false, false, sprite_swim_xorig, sprite_swim_yorig);
+		if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_strip"+string(index)+".png"))
+		{
+			sprite_swim = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_strip"+string(index)+".png", index, false, false, sprite_swim_xorig, sprite_swim_yorig);
+		}
+		else
+		if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_strip"+string(index)+".png"))
+		{
+			sprite_swim = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_strip"+string(index)+".png", index, false, false, sprite_swim_xorig, sprite_swim_yorig);
+		}
+		index+=1
+	}
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim.png"))
+	{
+		sprite_swim = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim.png", 1, false, false, sprite_swim_xorig, sprite_swim_yorig);
 	}
 	else
-	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_strip"+string(index)+".png"))
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim.png"))
 	{
-		sprite_swim = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_strip"+string(index)+".png", index, false, false, sprite_swim_xorig, sprite_swim_yorig);
+		sprite_swim = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim.png", 1, false, false, sprite_swim_xorig, sprite_swim_yorig);
 	}
-	index+=1
-}
-if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim.png"))
-{
-	sprite_swim = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim.png", 1, false, false, sprite_swim_xorig, sprite_swim_yorig);
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim.png"))
 {
-	sprite_swim = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim.png", 1, false, false, sprite_swim_xorig, sprite_swim_yorig);
+	index=0
+	repeat(50)
+	{
+		if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_strip"+string(index)+".png"))
+		{
+			sprite_swim = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		}
+		else
+		if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_strip"+string(index)+".png"))
+		{
+			sprite_swim = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		}
+		index+=1
+	}
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim.png"))
+	{
+		sprite_swim = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim.png"))
+	{
+		sprite_swim = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+	}
 }
 #endregion /*Swim sprite END*/
 
 #region /*Swim fall sprite*/
-index=0
-repeat(50)
+if(sprite_swim_fall_xorig > 0)
+or(sprite_swim_fall_yorig > 0)
 {
-	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_fall_strip"+string(index)+".png"))
+	index=0
+	repeat(50)
 	{
-		sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_fall_strip"+string(index)+".png"))
+		{
+			sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		}
+		else
+		if (file_exists("Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall_strip"+string(index)+".png"))
+		{
+			sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		}
+		index+=1
+	}
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_fall.png"))
+	{
+		sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_fall.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 	}
 	else
-	if (file_exists("Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall_strip"+string(index)+".png"))
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png"))
 	{
-		sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 	}
-	index+=1
-}
-if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_fall.png"))
-{
-	sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_fall.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png"))
 {
-	sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+	index=0
+	repeat(50)
+	{
+		if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_fall_strip"+string(index)+".png"))
+		{
+			sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		}
+		else
+		if (file_exists("Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall_strip"+string(index)+".png"))
+		{
+			sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		}
+		index+=1
+	}
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_fall.png"))
+	{
+		sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_fall.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png"))
+	{
+		sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+	}
 }
 #endregion /*Swim fall sprite END*/
 
@@ -11078,8 +11138,9 @@ and(obj_camera.iris_xscale<3)
 			else
 			{
 				#region /*Restart Level Editor when finishing level*/
-				if (asset_get_type("room_level_select")==asset_room)
-				and(room=room_leveleditor)
+				if (asset_get_type("room_level_select") == asset_room)
+				and(room = room_leveleditor)
+				and(global.character_select_in_this_menu = "level_editor")
 				{
 					global.play_edited_level=false;
 					global.actually_play_edited_level=false;
@@ -11189,8 +11250,9 @@ else
 			else
 			{
 				#region /*Restart Level Editor when finishing level*/
-				if (asset_get_type("room_level_select")==asset_room)
-				and(room=room_leveleditor)
+				if (asset_get_type("room_level_select") == asset_room)
+				and(room = room_leveleditor)
+				and(global.character_select_in_this_menu = "level_editor")
 				{
 					global.play_edited_level=false;
 					global.actually_play_edited_level=false;
@@ -12373,6 +12435,7 @@ and(global.pause=false)
 	controller_connected=false;
 	if (global.play_edited_level=true)
 	and(global.actually_play_edited_level=false)
+	and(global.character_select_in_this_menu = "level_editor")
 	{
 		global.play_edited_level=false;
 		global.actually_play_edited_level=false;
@@ -12458,6 +12521,7 @@ or(gamepad_button_check_pressed(1,gp_select))
 
 	if (global.play_edited_level=true)
 	and(global.actually_play_edited_level=false)
+	and(global.character_select_in_this_menu = "level_editor")
 	{
 		global.play_edited_level=false;
 		global.actually_play_edited_level=false;
@@ -12530,6 +12594,7 @@ or(gamepad_button_check_pressed(2,gp_select))
 
 	if (global.play_edited_level=true)
 	and(global.actually_play_edited_level=false)
+	and(global.character_select_in_this_menu = "level_editor")
 	{
 		global.play_edited_level=false;
 		global.actually_play_edited_level=false;
@@ -12602,6 +12667,7 @@ or(gamepad_button_check_pressed(3,gp_select))
 
 	if (global.play_edited_level=true)
 	and(global.actually_play_edited_level=false)
+	and(global.character_select_in_this_menu = "level_editor")
 	{
 		global.play_edited_level=false;
 		global.actually_play_edited_level=false;
@@ -15357,11 +15423,6 @@ and(instance_exists(obj_goal))
 		if (!collision_line(x,y,instance_nearest(x,y,obj_goal).x,instance_nearest(x,y,obj_goal).y,obj_wall,false,true))
 		{
 			goal = true;
-			//with(instance_nearest(x,y,obj_goal))
-			//{
-			//	goal = true;
-			//}
-			//x=instance_nearest(x,y,obj_goal).bbox_right;
 		}
 	}
 	else
@@ -15509,6 +15570,7 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	{
 		image_xscale=+1;
 	}
+	can_climb_horizontal_rope_cooldown = 10;
 	can_doublejump=true;
 	can_groundpound=false;
 	chain_reaction=0;
@@ -15522,6 +15584,8 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	spring=true;
 	stick_to_wall=false;
 	instance_nearest(x,y,obj_spring).can_bounce = 10;
+	instance_nearest(x,y,obj_spring).image_index=1;
+	instance_nearest(x,y,obj_spring).image_speed=1;
 }
 
 if (spring=true)
@@ -15655,12 +15719,12 @@ and(instance_nearest(x,y,obj_horizontal_rope).active=true)
 and(!place_meeting(x,y+1,obj_wall))
 and(in_water=false)
 {
-	if (horizontal_rope_climb=false)
-	and(can_climb_horizontal_rope_cooldown<=0)
+	if (horizontal_rope_climb = false)
+	and(can_climb_horizontal_rope_cooldown <= 0)
 	{
-		horizontal_rope_climb=true;
-		climb=false;
-		jump=0;
+		horizontal_rope_climb = true;
+		climb = false;
+		jump = 0;
 		
 		#region /*Make a sound effect that you have started cimbing*/
 		if (asset_get_type("snd_catch_ivy")==asset_sound)
@@ -15806,9 +15870,9 @@ and(in_water=false)
 		#endregion /*Jump from rope spin END*/
 		
 		}
-
-		#region /*Drop down from rope*/
 		else
+		
+		#region /*Drop down from rope*/
 		if (drop_from_rope=0)
 		and(!key_jump_hold)
 		or(drop_from_rope=1)
@@ -15825,17 +15889,18 @@ and(in_water=false)
 		{
 			if (!key_up)
 			{
-				can_climb_horizontal_rope_cooldown=10;
-				can_ground_pound=false;
-				climb=false;
-				horizontal_rope_climb=false;
-				stomp_spin=false;
+				can_climb_horizontal_rope_cooldown = 10;
+				can_ground_pound = false;
+				climb = false;
+				horizontal_rope_climb = false;
+				stomp_spin = false;
 			}
 		}
 		#endregion /*Drop down from rope END*/
-
-		#region /*Climb left on horizontal rope*/
+		
 		else
+		
+		#region /*Climb left on horizontal rope*/
 		if (key_left)
 		and(!key_right)
 		and(!place_meeting(bbox_left-1,y,obj_wall))
@@ -15863,9 +15928,10 @@ and(in_water=false)
 			}
 		}
 		#endregion /*Climb left on horizontal rope END*/
-
-		#region /*Bump into wall on left side when climbing horizontal rope*/
+		
 		else
+		
+		#region /*Bump into wall on left side when climbing horizontal rope*/
 		if (key_left)
 		and(!key_right)
 		and(place_meeting(bbox_left-1,y,obj_wall))
@@ -15883,9 +15949,10 @@ and(in_water=false)
 			}
 		}
 		#endregion /*Bump into wall on left side when climbing horizontal rope END*/
-
-		#region /*Climb right on horizontal rope*/
+		
 		else
+		
+		#region /*Climb right on horizontal rope*/
 		if (key_right)
 		and(!key_left)
 		and(!place_meeting(bbox_right+1,y,obj_wall))
@@ -15913,9 +15980,10 @@ and(in_water=false)
 			}
 		}
 		#endregion /*Climb right on horizontal rope END*/
-
-		#region /*Bump into wall on left side when climbing horizontal rope*/
+		
 		else
+		
+		#region /*Bump into wall on left side when climbing horizontal rope*/
 		if (key_right)
 		and(!key_left)
 		and(place_meeting(bbox_right+1,y,obj_wall))
@@ -15934,8 +16002,9 @@ and(in_water=false)
 		}
 		#endregion /*Bump into wall on left side when climbing horizontal rope END*/
 		
-		#region /*Look up when on horizontal rope*/
 		else
+		
+		#region /*Look up when on horizontal rope*/
 		if (key_up)
 		{
 			if (sprite_climb_under_look_up>noone){sprite_index=sprite_climb_under_look_up;}else
@@ -15947,12 +16016,27 @@ and(in_water=false)
 
 		else
 		{
-			if (sprite_climb_under_still>noone){sprite_index=sprite_climb_under_still;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_climb_under_still>noone)
+			{
+				sprite_index=sprite_climb_under_still;
+			}
+			else
+			{
+				sprite_index=sprite_stand;
+			}
+		}
+		if (instance_nearest(x,y,obj_horizontal_rope).active = false)
+		{
+			can_climb_horizontal_rope_cooldown = 10;
+			can_ground_pound = false;
+			climb = false;
+			horizontal_rope_climb = false;
+			stomp_spin = false;
 		}
 	}
 }
 #endregion /*Climb Horizontal Rope END*/
+
 else
 
 #region /*Climb Vine*/

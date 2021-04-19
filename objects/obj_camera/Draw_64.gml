@@ -1843,10 +1843,10 @@ and(global.pause = false)
 
 #region /*Window is focused, hide cursor*/
 if (window_has_focus())
-and(mouse_x > + 8)
-and(mouse_x < window_get_width() - 8)
-and(mouse_y > + 8)
-and(mouse_y < window_get_height() - 8)
+and(window_mouse_get_x() > + 8)
+and(window_mouse_get_x() < window_get_width() - 8)
+and(window_mouse_get_y() > + 8)
+and(window_mouse_get_y() < window_get_height() - 8)
 {
 	window_set_cursor(cr_none);
 }

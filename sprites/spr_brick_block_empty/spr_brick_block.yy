@@ -72,7 +72,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_brick_block","path":"sprites/spr_brick_block/spr_brick_block.yy",},
     "resourceVersion": "1.3",
-    "name": "spr_brick_block",
+    "name": "",
     "tags": [],
     "resourceType": "GMSequence",
   },

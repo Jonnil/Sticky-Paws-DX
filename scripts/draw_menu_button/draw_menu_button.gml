@@ -61,6 +61,7 @@ function draw_menu_button()
 		else
 		{
 			if (mouse_check_button_pressed(mb_left))
+			and(menu_delay = 0)
 			{
 				menu=menu_takes_you_to;
 			}

@@ -317,34 +317,36 @@ if (asset_get_type("obj_camera")==asset_object)
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 
-#region /*Quit game menu*/
+#region /*Quit to Desktop menu*/
 if (menu = "quit_game_no")
 or(menu = "quit_game_yes")
 {
-	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 1.9, c_white, c_black, 1);
+	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 1.9, c_white, c_black, 1);
 	
-	if (point_in_rectangle(mouse_x, mouse_y, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 42, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 370, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 42))
+	if (point_in_rectangle(mouse_x, mouse_y, window_get_width() / 2 - 370, window_get_height() / 2 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 42))
 	and(mouse_check_button(mb_left))
+	and(menu_delay = 0)
 	{
 		menu = "quit_game_no";
 	}
-	if (point_in_rectangle(mouse_x, mouse_y, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84 - 42, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 370, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84 + 42))
+	if (point_in_rectangle(mouse_x, mouse_y, window_get_width() / 2 - 370, window_get_height() / 2 + 84 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 84 + 42))
 	and(mouse_check_button(mb_left))
+	and(menu_delay = 0)
 	{
 		menu = "quit_game_yes";
 	}
 
 	#region /*Continue*/
 	if (point_in_rectangle(mouse_x,mouse_y,
-	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 42,
-	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 370,
-	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 42))
+	window_get_width() / 2 - 370,
+	window_get_height() / 2 - 42,
+	window_get_width() / 2 + 370,
+	window_get_height() / 2 + 42))
 	and(global.controls_used_for_menu_navigation="mouse")
 	{
 		draw_sprite_ext(spr_menu_button,0,
-		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2,
+		window_get_width() / 2 - 370,
+		window_get_height() / 2,
 		2,2,0,c_lime,1);
 	}
 	else
@@ -353,36 +355,37 @@ or(menu = "quit_game_yes")
 		and(global.controls_used_for_menu_navigation="keyboard")
 		{
 			draw_sprite_ext(spr_menu_button,0,
-			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2,
+			window_get_width() / 2 - 370,
+			window_get_height() / 2,
 			2,2,0,c_gray,1);
 		}
 		else
 		{
 			draw_sprite_ext(spr_menu_button,0,
-			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2,
+			window_get_width() / 2 - 370,
+			window_get_height() / 2,
 			2,2,0,c_white,1);
 		}
 	}
 	draw_text_outlined(
-	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2,
-	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2,
+	window_get_width() / 2,
+	window_get_height() / 2,
 	"NO", global.default_text_size * 2.3, c_white, c_black, 1);
 	
 	if (menu = "quit_game_no")
 	{		
 		if (point_in_rectangle(mouse_x, mouse_y,
-		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 42,
-		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 370,
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 42))
-		and(mouse_check_button_released(mb_left))
+		window_get_width() / 2 - 370,
+		window_get_height() / 2 - 42,
+		window_get_width() / 2 + 370,
+		window_get_height() / 2 + 42))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
 		or(key_a_pressed)
 		and(menu_delay = 0)
 		{
-			menu = "quit"; /*Return to game*/
-			menu_delay = 10;
+			menu_delay = 3;
+			menu = "quit"; /*Return to main menu*/
 		}
 		if (key_up)
 		and(!key_down)
@@ -391,7 +394,7 @@ or(menu = "quit_game_yes")
 		and(!key_up)
 		and(menu_delay <= 0)
 		{
-			menu_delay = 1;
+			menu_delay = 3;
 			menu = "quit_game_yes";
 		}
 	}
@@ -400,15 +403,15 @@ or(menu = "quit_game_yes")
 	#region /*Quit*/
 	
 	if (point_in_rectangle(mouse_x,mouse_y,
-	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84 - 42,
-	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 370,
-	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84 + 42))
+	window_get_width() / 2 - 370,
+	window_get_height() / 2 + 84 - 42,
+	window_get_width() / 2 + 370,
+	window_get_height() / 2 + 84 + 42))
 	and(global.controls_used_for_menu_navigation="mouse")
 	{
 		draw_sprite_ext(spr_menu_button,0,
-		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84,
+		window_get_width() / 2 - 370,
+		window_get_height() / 2 + 84,
 		2,2,0,c_lime,1);
 	}
 	else
@@ -417,31 +420,32 @@ or(menu = "quit_game_yes")
 		and(global.controls_used_for_menu_navigation="keyboard")
 		{
 			draw_sprite_ext(spr_menu_button,0,
-			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84,
+			window_get_width() / 2 - 370,
+			window_get_height() / 2 + 84,
 			2,2,0,c_gray,1);
 		}
 		else
 		{
 			draw_sprite_ext(spr_menu_button,0,
-			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-			camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84,
+			window_get_width() / 2 - 370,
+			window_get_height() / 2 + 84,
 			2,2,0,c_white,1);
 		}
 	}
 	draw_text_outlined(
-	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2,
-	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84,
+	window_get_width() / 2,
+	window_get_height() / 2 + 84,
 	"YES", global.default_text_size * 2.3, c_white, c_black, 1);
 
 	if (menu = "quit_game_yes")
 	{
 		if (point_in_rectangle(mouse_x, mouse_y,
-		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 370,
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84 - 42,
-		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 370,
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 84 + 42))
-		and(mouse_check_button_released(mb_left))
+		window_get_width() / 2 - 370,
+		window_get_height() / 2 + 84 - 42,
+		window_get_width() / 2 + 370,
+		window_get_height() / 2 + 84 + 42))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
 		or(key_a_pressed)
 		and(menu_delay = 0)
 		{
@@ -454,7 +458,7 @@ or(menu = "quit_game_yes")
 		and(!key_up)
 		and(menu_delay <= 0)
 		{
-			menu_delay = 1;
+			menu_delay = 3;
 			menu = "quit_game_no";
 		}
 	}
@@ -467,14 +471,14 @@ or(menu = "quit_game_yes")
 		if (key_b_pressed)
 		and(menu_delay = 0)
 		{
-			menu_delay = 10;
+			menu_delay = 3;
 			menu = "quit";
 		}
 	}
 	#endregion /*Return to game END*/
 	
 }
-#endregion /*Quit game menu END*/
+#endregion /*Quit to Desktop menu END*/
 
 #region /*Darker background when deleting files*/
 if (menu="file1delete")
@@ -1326,15 +1330,15 @@ or(menu="import_export_level")
 	and(key_down)
 	and(menu_delay=0)
 	{
+		menu_dealy = 3;
 		menu = "select_custom_level";
-		menu_delay = 10;
 	}
 	if (menu="back_from_level_editor")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	{
+		menu_dealy = 3;
 		menu = "leveleditor";
-		menu_delay = 10;
 	}
 	if (menu="back_from_level_editor")
 	{
@@ -2208,19 +2212,19 @@ or(menu="import_export_level")
 		{
 			if (global.select_number_of_players_before_selecting_characters=false)
 			{
+				menu_delay = 3;
 				menu="select_character"
-				menu_delay = 10;
 			}
 			else
 			{
+				menu_delay = 3;
 				menu="1player";
-				menu_delay = 10;
 			}
 		}
 		else
 		{
+			menu_delay = 3;
 			menu="select_custom_level";
-			menu_delay = 10;
 		}
 		global.level_editor_level=1;
 	

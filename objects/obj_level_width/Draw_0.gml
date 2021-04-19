@@ -10,6 +10,7 @@ or(keyboard_check(global.player1_key_sprint));
 draw_set_alpha(0.5);
 draw_rectangle_colour(x-16, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
+draw_line_width_colour(x-16, 0, x-16, room_height, 3, c_white, c_white);
 draw_line_width_colour(x-16, 0, x-16, room_height, 2, c_black, c_black);
 draw_self();
 

@@ -508,8 +508,7 @@ and(!mouse_check_button(mb_middle))
 and(!mouse_check_button(mb_right))
 and(delay>1)
 {
-	if (mouse_check_button_pressed(mb_left))
-	or(key_a_pressed)
+	if (keyboard_check_pressed(ord("Q")))
 	{
 		if (asset_get_type("obj_leveleditor")==asset_object)
 		and(instance_exists(obj_leveleditor))
@@ -1614,22 +1613,6 @@ and(obj_leveleditor.drag_object=false)
 	/*Place Brush Size 5 END*/
 	
 	{
-		if (obj_leveleditor.difficulty_layer=0)
-		{
-			if (easy=false)
-			{
-				easy=true;
-			}
-			if (normal=false)
-			{
-				normal=true;
-			}
-			if (hard=false)
-			{
-				hard=true;
-			}
-		}
-		else
 		if (obj_leveleditor.difficulty_layer=1)
 		and(obj_leveleditor.set_difficulty_mode=true)
 		{

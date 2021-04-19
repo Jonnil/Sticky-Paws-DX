@@ -230,7 +230,6 @@ global.restart_level = false;
 global.quit_level = false;
 global.quit_to_map = false;
 global.quit_to_title = false;
-global.QuitGame=false;
 global.trigger_demo_ending=0;
 global.enable_enemies=true;/*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default:true*/
 

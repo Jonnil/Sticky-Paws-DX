@@ -45,19 +45,20 @@ and(can_bounce=0)
 					x=instance_nearest(x,y,obj_spring).bbox_right
 				}
 			}
-			can_doublejump=true;
-			can_groundpound=false;
-			chain_reaction=0;
-			dive=false;
-			draw_xscale=0.5;
-			draw_yscale=1.5;
-			groundpound=false;
-			horizontal_rope_climb=false;
-			ledge_grab_jump=false;
-			speed_max=4;
-			spring=true;
-			stick_to_wall=false;
-			climb=false;
+			can_climb_horizontal_rope_cooldown = 10;
+			can_doublejump = true;
+			can_groundpound = false;
+			chain_reaction = 0;
+			dive = false;
+			draw_xscale = 0.5;
+			draw_yscale = 1.5;
+			groundpound = false;
+			horizontal_rope_climb = false;
+			ledge_grab_jump = false;
+			speed_max = 4;
+			spring = true;
+			stick_to_wall = false;
+			climb = false;
 		}
 	}
 	//can_bounce = 10;

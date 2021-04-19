@@ -104,6 +104,24 @@ hud_show_time_timer=0;
 
 player_has_spawned=false;
 
+#region /*Checkpoint*/
+if (global.x_checkpoint>0)
+and(global.y_checkpoint>0)
+{
+	camera_set_view_pos(view_camera[view_current],global.x_checkpoint,global.y_checkpoint)
+	if (asset_get_type("obj_player")==asset_object)
+	and(instance_exists(obj_player))
+	{
+		obj_player.x=global.x_checkpoint;
+		obj_player.y=global.y_checkpoint;
+	}
+	x=global.x_checkpoint;
+	y=global.y_checkpoint;
+	xx=global.x_checkpoint;
+	yy=global.y_checkpoint;
+}
+#endregion /*Checkpoint End*/
+
 #region /*Spawn Players*/
 player1=noone;
 player2=noone;
@@ -528,31 +546,6 @@ else
 big_collectible_count=1;
 shake=false;
 scrolling_left=0;
-
-#region /*Checkpoint*/
-if (global.x_checkpoint>0)
-and(global.y_checkpoint>0)
-{
-	if (asset_get_type("obj_checkpoint")==asset_object)
-	and(instance_exists(obj_checkpoint))
-	{
-		if (asset_get_type("obj_player")==asset_object)
-		and(instance_exists(obj_player))
-		{
-			obj_player.x=global.x_checkpoint;
-			obj_player.y=global.y_checkpoint;
-		}
-		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
-		{
-			obj_camera.x=global.x_checkpoint;
-			obj_camera.y=global.y_checkpoint;
-			obj_camera.xx=global.x_checkpoint;
-			obj_camera.yy=global.y_checkpoint;
-		}
-	}
-}
-#endregion /*Checkpoint End*/
 
 #region /*Assist Item*/
 if (asset_get_type("obj_assist_item")==asset_object)

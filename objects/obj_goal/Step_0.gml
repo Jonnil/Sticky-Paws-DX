@@ -9,6 +9,10 @@ and(instance_nearest(x,y,obj_player).x>bbox_right)
 and(instance_nearest(x,y,obj_player).x<bbox_right+16)
 and(!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,obj_wall,false,true))
 {
+	global.quit_level = false;
+	global.quit_to_map = false;
+	global.quit_to_title = false;
+	global.restart_level = false;
 	image_index=1;
 	if (trigger_ending=true)
 	{
@@ -61,7 +65,15 @@ and(!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,
 		}
 		#endregion /*Create directory for saving custom levels*/
 		
-		ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
+		if (global.character_select_in_this_menu="game")
+		{
+			ini_open("File"+string(global.file)+".ini");
+		}
+		else
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
+		}
 		ini_write_real("Level"+string(global.level_editor_level),"x_checkpoint",0);
 		ini_write_real("Level"+string(global.level_editor_level),"y_checkpoint",0);
 		ini_write_real("Level"+string(global.level_editor_level),"checkpoint_millisecond",0);

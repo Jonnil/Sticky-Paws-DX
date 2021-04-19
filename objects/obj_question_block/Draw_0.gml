@@ -274,6 +274,7 @@ if (bounceup=false)
 #endregion /*Collision Event with player END*/
 
 if (brick_block=true)
+and(empty=false)
 {
 	if (asset_get_type("spr_brick_block") == asset_sprite)
 	{
@@ -281,6 +282,8 @@ if (brick_block=true)
 	}
 }
 else
+if (brick_block=false)
+and(empty=false)
 {
 	if (asset_get_type("spr_question_block") == asset_sprite)
 	{
@@ -315,9 +318,16 @@ if (bounceup = true)
 	{
 		if (empty=true)
 		{
-			if (asset_get_type("spr_empty_block") == asset_sprite)
+			if (brick_block = false)
+			and(asset_get_type("spr_question_block_empty") == asset_sprite)
 			{
-				sprite_index = spr_empty_block;
+				sprite_index = spr_question_block_empty;
+			}
+			else
+			if (brick_block = true)
+			and(asset_get_type("spr_brick_block_empty") == asset_sprite)
+			{
+				sprite_index = spr_brick_block_empty;
 			}
 			else
 			{
@@ -328,3 +338,7 @@ if (bounceup = true)
 	}
 }
 draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
+if (hit>=4)
+{
+	draw_sprite_ext(spr_cracks, image_index, xx, yy, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
+}
