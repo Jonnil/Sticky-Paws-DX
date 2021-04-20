@@ -2,6 +2,13 @@
 allow_free_movement = false; /*Turn this to true to move freely on the map instead of moving on paths, should be false by default*/
 #endregion /*Allow moves on world map END*/
 
+global.pause_room = noone;
+
+#region /*Mouse x and mouse y initializing*/
+mouse_x_position = mouse_x;
+mouse_y_position = mouse_y;
+#endregion /*Mouse x and mouse y initializing END*/
+
 if (asset_get_type("spr_wall") == asset_sprite)
 {
 	mask_index = spr_wall;
@@ -58,11 +65,10 @@ if (file_exists("File" + string(global.file) + ".ini"))
 
 xx = x;
 yy = y;
-if (asset_get_type("obj_camera") == asset_object)
-and (!instance_exists(obj_camera))
-{
-	instance_create_depth(x, y, 0, obj_camera);
-}
+
+iris_xscale = 0;
+iris_yscale = 0;
+iris_zoom = 0;
 
 #region /*Play as custom character*/
 initialize_custom_character_timer = 0;

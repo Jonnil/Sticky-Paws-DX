@@ -22,3 +22,92 @@ and(global.pause = false)
 	}
 }
 #endregion /*Show Enter Level Key END*/
+
+#region /*Show FPS Options*/
+if (global.pause = false)
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+{
+	
+	#region /*FPS*/
+	if (global.show_fps = true)
+	{
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_center);
+	
+		if (fps >= 60)
+		{
+			draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_lime, 1);
+		}
+		else
+		if (fps >= 50)
+		{
+			draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_yellow, 1);
+		}
+		else
+		if (fps >= 40)
+		{
+			draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_orange, 1);
+		}
+		else
+		{
+			draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, c_red, 1);
+		}
+	}
+	#endregion /*FPS END*/
+	
+	#region /*FPS Real*/
+	if (global.show_fps_real = true)
+	{
+		if (fps_real >= 60)
+		{
+			draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_lime, 1);
+		}
+		else
+		if (fps_real >= 50)
+		{
+			draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_yellow, 1);
+		}
+		else
+		if (fps_real >= 40)
+		{
+			draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_orange, 1);
+		}
+		else
+		{
+			draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_red, 1);
+		}
+	}
+	#endregion /*FPS Real END*/
+	
+}
+#endregion /*Show FPS Options END*/
+
+#region /*Draw mouse cursor for menu navigation*/
+if (window_has_focus())
+and(global.controls_used_for_menu_navigation="mouse")
+and(os_type!=os_ios)
+and(os_type!=os_android)
+and(global.pause = false)
+{
+	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
+}
+#endregion /*Draw mouse cursor for menu navigation END*/
+
+#region /*Window is focused, hide cursor*/
+if (window_has_focus())
+and(window_mouse_get_x() > + 8)
+and(window_mouse_get_x() < window_get_width() - 8)
+and(window_mouse_get_y() > + 8)
+and(window_mouse_get_y() < window_get_height() - 8)
+{
+	window_set_cursor(cr_none);
+}
+else
+{
+	if (!window_get_fullscreen())
+	{
+		window_set_cursor(cr_default);
+	}
+}
+#endregion /*Window is focused, hide cursor END*/

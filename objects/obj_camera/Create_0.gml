@@ -1,8 +1,10 @@
 depth = -2000;
 
+global.pause_room = noone;
+
 #region /*Mouse x and mouse y initializing*/
-mx = mouse_x;
-my = mouse_y;
+mouse_x_position = mouse_x;
+mouse_y_position = mouse_y;
 #endregion /*Mouse x and mouse y initializing END*/
 
 #region /*Lives Icon*/

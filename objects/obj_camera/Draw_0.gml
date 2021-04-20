@@ -8,12 +8,12 @@ display_set_gui_size(window_get_width(), window_get_height());
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/
-var mouse_moving = point_distance(mx, my, window_mouse_get_x(), window_mouse_get_y());
+var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y());
 #endregion /*Get distance from fake mouse to real mouse END*/
 
 #region /*update positions of fake mouse*/
-mx = window_mouse_get_x();
-my = window_mouse_get_y();
+mouse_x_position = window_mouse_get_x();
+mouse_y_position = window_mouse_get_y();
 #endregion /*update positions of fake mouse*/
 
 if (keyboard_check(vk_anykey))
