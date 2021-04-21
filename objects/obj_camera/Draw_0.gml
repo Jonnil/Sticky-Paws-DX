@@ -885,93 +885,43 @@ if (save_level_as_png = false)
 		#endregion /*Zoom Out End*/
 
 	}
-
-	#region /*Draw Iris Transitions*/
-	if (global.enable_transitions = true)
-	and(global.play_edited_level = false)
-	and(global.actually_play_edited_level = false)
-	or(global.enable_transitions = true)
-	and(global.play_edited_level = true)
-	and(global.actually_play_edited_level = true)
-	{
-		if (asset_get_type("obj_player") == asset_object)
-		and(instance_exists(obj_player))
-		and(iris_xscale < 31)
-		{
-			if (asset_get_type("spr_iris") == asset_sprite)
-			{
-				draw_sprite_ext(spr_iris, image_index, instance_nearest(room_width, y, obj_player).x, instance_nearest(room_width, y, obj_player).y, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
-			}
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), instance_nearest(room_width, y, obj_player).y - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), instance_nearest(room_width, y, obj_player).x - iris_xscale * 128, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(instance_nearest(room_width, y, obj_player).x + iris_xscale * 128 - 1, camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), instance_nearest(room_width, y, obj_player).y + iris_yscale * 128, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-		}
-		else
-		if (asset_get_type("obj_player_map") == asset_object)
-		and(instance_exists(obj_player_map))
-		and(iris_xscale < 15)
-		{
-			if (asset_get_type("spr_iris") == asset_sprite)
-			{
-				draw_sprite_ext(spr_iris, image_index, instance_nearest(x, y, obj_player_map).xx, instance_nearest(x, y, obj_player_map).yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
-			}
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), instance_nearest(x, y, obj_player_map).yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), instance_nearest(x, y, obj_player_map).xx - iris_xscale * 128, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(instance_nearest(x, y, obj_player_map).xx + iris_xscale * 128 - 1, camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), instance_nearest(x, y, obj_player_map).yy + iris_yscale * 128, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-		}
-
-		#region /*Intro Cutscene Player*/
-		else
-		if (asset_get_type("obj_player_intro_cutscene") == asset_object)
-		and(instance_number(obj_player_intro_cutscene) > 0)
-		and(iris_xscale < 15)
-		{
-			if (asset_get_type("spr_iris") == asset_sprite)
-			{
-				draw_sprite_ext(spr_iris, image_index, instance_nearest(x, y, obj_player_intro_cutscene).x, instance_nearest(x, y, obj_player_intro_cutscene).y, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
-			}
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), instance_nearest(x, y, obj_player_intro_cutscene).y - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), instance_nearest(x, y, obj_player_intro_cutscene).x - iris_xscale * 128, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(instance_nearest(x, y, obj_player_intro_cutscene).x + iris_xscale * 128 - 1, camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), instance_nearest(x, y, obj_player_intro_cutscene).y + iris_yscale * 128, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-		}
-		#endregion /*Intro Cutscene Player END*/
-
-		#region /*Ending Cutscene Player*/
-		else
-		if (asset_get_type("obj_player_ending_cutscene") == asset_object)
-		and(instance_exists(obj_player_ending_cutscene))
-		and(iris_xscale < 15)
-		{
-			if (asset_get_type("spr_iris") == asset_sprite)
-			{
-				draw_sprite_ext(spr_iris, image_index, instance_nearest(x, y, obj_player_ending_cutscene).x, instance_nearest(x, y, obj_player_ending_cutscene).y, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
-			}
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), instance_nearest(x, y, obj_player_ending_cutscene).y - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), instance_nearest(x, y, obj_player_ending_cutscene).x - iris_xscale * 128, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(instance_nearest(x, y, obj_player_ending_cutscene).x + iris_xscale * 128 - 1, camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), instance_nearest(x, y, obj_player_ending_cutscene).y + iris_yscale * 128, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-		}
-		#endregion /*Ending Cutscene Player END*/
-
-		else
-		if (iris_xscale < 15)
-		{
-			if (asset_get_type("spr_iris") == asset_sprite)
-			{
-				draw_sprite_ext(spr_iris, image_index, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
-			}
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - iris_xscale * 128, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + iris_xscale * 128 - 1, camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-			draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + iris_yscale * 128, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-		}
-	}
-	#endregion /*Draw Iris Transitions END*/
-	
 }
+
+#region /*Draw Iris Transitions*/
+if (global.enable_transitions = true)
+and(global.play_edited_level = false)
+and(global.actually_play_edited_level = false)
+or(global.enable_transitions = true)
+and(global.play_edited_level = true)
+and(global.actually_play_edited_level = true)
+{
+	if (asset_get_type("obj_player") == asset_object)
+	and(instance_exists(obj_player))
+	and(iris_xscale < 31)
+	{
+		if (asset_get_type("spr_iris") == asset_sprite)
+		{
+			draw_sprite_ext(spr_iris, image_index, instance_nearest(room_width, y, obj_player).x, instance_nearest(room_width, y, obj_player).y, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
+		}
+		draw_rectangle_colour(0, 0, room_width, instance_nearest(room_width, y, obj_player).y - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(0, 0, instance_nearest(room_width, y, obj_player).x - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(instance_nearest(room_width, y, obj_player).x + iris_xscale * 128 - 1, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(0, instance_nearest(room_width, y, obj_player).y + iris_yscale * 128, room_width, room_height, c_black, c_black, c_black, c_black, false);
+	}
+	else
+	if (iris_xscale < 15)
+	{
+		if (asset_get_type("spr_iris") == asset_sprite)
+		{
+			draw_sprite_ext(spr_iris, image_index, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
+		}
+		draw_rectangle_colour(0, 0, room_width, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(0, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + iris_xscale * 128 - 1, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + iris_yscale * 128, room_width, room_height, c_black, c_black, c_black, c_black, false);
+	}
+}
+#endregion /*Draw Iris Transitions END*/
 
 /*Iris END*/
 

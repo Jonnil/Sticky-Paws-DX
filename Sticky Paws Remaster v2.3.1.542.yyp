@@ -27,7 +27,6 @@
     {"id":{"name":"snd_enemyvoice_defeated","path":"sounds/snd_enemyvoice_defeated/snd_enemyvoice_defeated.yy",},"order":31,},
     {"id":{"name":"spr_iris","path":"sprites/spr_iris/spr_iris.yy",},"order":98,},
     {"id":{"name":"snd_cutscene_ahh","path":"sounds/snd_cutscene_ahh/snd_cutscene_ahh.yy",},"order":20,},
-    {"id":{"name":"obj_particle","path":"objects/obj_particle/obj_particle.yy",},"order":34,},
     {"id":{"name":"spr_invincibility_powerup","path":"sprites/spr_invincibility_powerup/spr_invincibility_powerup.yy",},"order":66,},
     {"id":{"name":"spr_water_surface","path":"sprites/spr_water_surface/spr_water_surface.yy",},"order":50,},
     {"id":{"name":"snd_die","path":"sounds/snd_die/snd_die.yy",},"order":24,},

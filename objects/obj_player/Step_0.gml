@@ -16509,7 +16509,7 @@ and(key_left)
 	{
 		sprite_index = sprite_swim;
 	}
-	instance_create_depth(x,bbox_bottom,depth-1,obj_particle);
+	effect_create_above(ef_smoke,x,bbox_bottom,1,c_white);
 	if (image_index>image_number-1)
 	{
 		image_speed = 0;
@@ -16947,8 +16947,7 @@ and(key_left)
 			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
 			{sprite_index=sprite_stand;}
 		}
-		//effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
-		instance_create_depth(x+random_range(-2,+2),bbox_bottom+random_range(-2,+2),depth-1,obj_particle);
+		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
 	}
 }
 #endregion /*Skidding END*/
