@@ -322,28 +322,20 @@ if (menu = "quit_game_no")
 or(menu = "quit_game_yes")
 {
 	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 1.9, c_white, c_black, 1);
-	
-	if (point_in_rectangle(mouse_x, mouse_y, window_get_width() / 2 - 370, window_get_height() / 2 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 42))
-	and(mouse_check_button(mb_left))
-	and(menu_delay = 0)
-	{
-		menu = "quit_game_no";
-	}
-	if (point_in_rectangle(mouse_x, mouse_y, window_get_width() / 2 - 370, window_get_height() / 2 + 84 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 84 + 42))
-	and(mouse_check_button(mb_left))
-	and(menu_delay = 0)
-	{
-		menu = "quit_game_yes";
-	}
-
-	#region /*Continue*/
-	if (point_in_rectangle(mouse_x,mouse_y,
+		
+	#region /*Quit No*/
+	if (point_in_rectangle(mouse_x, mouse_y,
 	window_get_width() / 2 - 370,
 	window_get_height() / 2 - 42,
 	window_get_width() / 2 + 370,
 	window_get_height() / 2 + 42))
 	and(global.controls_used_for_menu_navigation="mouse")
 	{
+		if (mouse_check_button(mb_left))
+		and(menu_delay = 0)
+		{
+			menu = "quit_game_no";
+		}
 		draw_sprite_ext(spr_menu_button,0,
 		window_get_width() / 2 - 370,
 		window_get_height() / 2,
@@ -385,7 +377,7 @@ or(menu = "quit_game_yes")
 		and(menu_delay = 0)
 		{
 			menu_delay = 3;
-			menu = "quit"; /*Return to main menu*/
+			menu = "quit_to_desktop"; /*Return to overall quit menu*/
 		}
 		if (key_up)
 		and(!key_down)
@@ -398,17 +390,21 @@ or(menu = "quit_game_yes")
 			menu = "quit_game_yes";
 		}
 	}
-	#endregion /*Continue END*/
+	#endregion /*Quit No END*/
 	
-	#region /*Quit*/
-	
-	if (point_in_rectangle(mouse_x,mouse_y,
+	#region /*Quit Yes*/
+	if (point_in_rectangle(mouse_x, mouse_y,
 	window_get_width() / 2 - 370,
 	window_get_height() / 2 + 84 - 42,
 	window_get_width() / 2 + 370,
 	window_get_height() / 2 + 84 + 42))
 	and(global.controls_used_for_menu_navigation="mouse")
 	{
+		if (mouse_check_button(mb_left))
+		and(menu_delay = 0)
+		{
+			menu = "quit_game_yes";
+		}
 		draw_sprite_ext(spr_menu_button,0,
 		window_get_width() / 2 - 370,
 		window_get_height() / 2 + 84,
@@ -458,11 +454,11 @@ or(menu = "quit_game_yes")
 		and(!key_up)
 		and(menu_delay <= 0)
 		{
-			menu_delay = 3;
+			menu_delay = 1;
 			menu = "quit_game_no";
 		}
 	}
-	#endregion /*Quit END*/
+	#endregion /*Quit Yes END*/
 	
 	#region /*Return to game*/
 	if (menu = "quit_game_no")
@@ -472,7 +468,7 @@ or(menu = "quit_game_yes")
 		and(menu_delay = 0)
 		{
 			menu_delay = 3;
-			menu = "quit";
+			menu = "quit_to_desktop";
 		}
 	}
 	#endregion /*Return to game END*/

@@ -28,7 +28,7 @@ if (number_of_extra_lives = 3)
 		draw_sprite_ext(spr_3up,image_index,x,y,1,1,0,c_white,1);
 	}
 	else
-	if (sprite_index>noone)
+	if (sprite_index>0)
 	{
 		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_blue,1);
 	}
@@ -42,7 +42,7 @@ if (number_of_extra_lives = 2)
 		draw_sprite_ext(spr_2up,image_index,x,y,1,1,0,c_white,1);
 	}
 	else
-	if (sprite_index>noone)
+	if (sprite_index>0)
 	{
 		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_lime,1);
 	}
@@ -55,7 +55,7 @@ else
 		draw_sprite_ext(spr_1up,image_index,x,y,1,1,0,c_white,1);
 	}
 	else
-	if (sprite_index>noone)
+	if (sprite_index>0)
 	{
 		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_red,1);
 	}
@@ -176,7 +176,7 @@ and(instance_exists(obj_player))
 		}
 		#endregion /*Give Life END*/
 		
-		effect_create_above(ef_ring, x, y, 1, c_white);
+		effect_create_below(ef_ring, x, y, 1, c_white);
 		instance_destroy();
 	}
 }
@@ -205,6 +205,6 @@ if effect_time > 60
 and(global.pause = false)
 {
 	effect_time = 0;
-	effect_create_above(ef_ring, x, y, 1, c_white);
+	effect_create_below(ef_ring, x, y, 1, c_white);
 }
 #endregion /*Expanding Ring Effect End*/

@@ -211,13 +211,13 @@ if (redblinktimer>25)
 and(have_heart_balloon=false)
 and(hp<=1)
 and(max_hp>=2)
-and(sprite_index>noone)
+and(sprite_index>0)
 {
 	draw_sprite_ext(sprite_index,image_index,xx+random_range(-8,+8),yy+random_range(-8,+8),draw_xscale*sign(image_xscale),draw_yscale,angle,c_red,image_alpha);
 }
 else
 if (takendamage%2==0)
-and(sprite_index>noone)
+and(sprite_index>0)
 {
 	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,image_blend,image_alpha);
 	if (hp<=1)
@@ -227,14 +227,14 @@ and(sprite_index>noone)
 	}
 }
 else
-if (sprite_index>noone)
+if (sprite_index>0)
 {
 	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,image_blend,0.5);
 }
 #endregion /*Blink red when only having 1 HP left and no heart balloon END*/
 
 if (double_jump_depleted_blink>=18)
-and(sprite_index>noone)
+and(sprite_index>0)
 {
 	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,c_ltgray,0.50);
 }
@@ -264,7 +264,7 @@ if (assist_invincible=false)
 		invincible-=1;
 	}
 	if (invincible>60)
-	and(sprite_index>noone)
+	and(sprite_index>0)
 	{
 		if (invincible<240)
 		{

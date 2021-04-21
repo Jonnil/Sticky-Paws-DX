@@ -28,7 +28,7 @@ and(undo_value<=obj_leveleditor.current_undo_value)
 #region /*Make sprite transparent if you're setting difficulty levels*/
 if (asset_get_type("obj_leveleditor")==asset_object)
 and(instance_exists(obj_leveleditor))
-and(sprite_index>noone)
+and(sprite_index>0)
 {
 
 	#region /*Show only normal difficulty layer in regular colors when saving a thumbnail*/
@@ -330,7 +330,7 @@ and(sprite_index>noone)
 
 }
 else
-if (sprite_index>noone)
+if (sprite_index>0)
 {
 	draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,1);
 	image_alpha = 1;
@@ -1217,6 +1217,7 @@ and(!mouse_check_button(mb_middle))
 			{
 				if (asset_get_type("snd_leveleditor_erase_object")==asset_sound)
 				{
+					audio_sound_pitch(snd_leveleditor_erase_object,random_range(0.9,1.1));
 					audio_play_sound(snd_leveleditor_erase_object,0,0);
 					audio_sound_gain(snd_leveleditor_erase_object,global.sfx_volume,0);
 				}

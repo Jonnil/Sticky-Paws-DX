@@ -2,7 +2,9 @@
 instance_activate_object(obj_pause);
 
 #region /*Set screen size*/
+camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current])); /*View Border*/
 camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
+camera_set_view_target(view_camera[view_current], self);
 display_set_gui_size(window_get_width(), window_get_height());
 #endregion /*Set screen size END*/
 
@@ -1033,28 +1035,20 @@ and(global.pause_room = room_leveleditor)
 	or(menu = "quit_game_yes")
 	{
 		draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 1.9, c_white, c_black, 1);
-	
-		if (point_in_rectangle(mouse_x, mouse_y, window_get_width() / 2 - 370, window_get_height() / 2 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 42))
-		and(mouse_check_button(mb_left))
-		and(menu_delay = 0)
-		{
-			menu = "quit_game_no";
-		}
-		if (point_in_rectangle(mouse_x, mouse_y, window_get_width() / 2 - 370, window_get_height() / 2 + 84 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 84 + 42))
-		and(mouse_check_button(mb_left))
-		and(menu_delay = 0)
-		{
-			menu = "quit_game_yes";
-		}
-
-		#region /*Continue*/
-		if (point_in_rectangle(mouse_x,mouse_y,
+		
+		#region /*Quit No*/
+		if (point_in_rectangle(mouse_x, mouse_y,
 		window_get_width() / 2 - 370,
 		window_get_height() / 2 - 42,
 		window_get_width() / 2 + 370,
 		window_get_height() / 2 + 42))
 		and(global.controls_used_for_menu_navigation="mouse")
 		{
+			if (mouse_check_button(mb_left))
+			and(menu_delay = 0)
+			{
+				menu = "quit_game_no";
+			}
 			draw_sprite_ext(spr_menu_button,0,
 			window_get_width() / 2 - 370,
 			window_get_height() / 2,
@@ -1109,17 +1103,21 @@ and(global.pause_room = room_leveleditor)
 				menu = "quit_game_yes";
 			}
 		}
-		#endregion /*Continue END*/
+		#endregion /*Quit No END*/
 	
-		#region /*Quit*/
-	
-		if (point_in_rectangle(mouse_x,mouse_y,
+		#region /*Quit Yes*/
+		if (point_in_rectangle(mouse_x, mouse_y,
 		window_get_width() / 2 - 370,
 		window_get_height() / 2 + 84 - 42,
 		window_get_width() / 2 + 370,
 		window_get_height() / 2 + 84 + 42))
 		and(global.controls_used_for_menu_navigation="mouse")
 		{
+			if (mouse_check_button(mb_left))
+			and(menu_delay = 0)
+			{
+				menu = "quit_game_yes";
+			}
 			draw_sprite_ext(spr_menu_button,0,
 			window_get_width() / 2 - 370,
 			window_get_height() / 2 + 84,
@@ -1173,7 +1171,7 @@ and(global.pause_room = room_leveleditor)
 				menu = "quit_game_no";
 			}
 		}
-		#endregion /*Quit END*/
+		#endregion /*Quit Yes END*/
 	
 		#region /*Return to game*/
 		if (menu = "quit_game_no")
@@ -1214,15 +1212,9 @@ and(global.pause_room = room_leveleditor)
 			}
 			if (asset_get_type("room_pause") == asset_room)
 			{
-				room = global.pause_room;
-			}
-			else
-			{
-				instance_destroy();
+				room = global.pause_room; /*Return to game END*/
 			}
 		}
-		#endregion /*Return to game END*/
-	
 		else
 	
 		#region /*Return to first menu*/

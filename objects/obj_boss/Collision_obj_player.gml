@@ -48,7 +48,7 @@ or(other.dive = true)
 			other.vspeed = -8;
 		}
 		image_index = 0;
-		effect_create_above(ef_ring, other.x, other.bbox_bottom, 0, c_white);
+		effect_create_below(ef_ring, other.x, other.bbox_bottom, 0, c_white);
 		takendamage = 100;
 		can_jump_on_head = false;
 		time = room_speed * 2

@@ -1,7 +1,9 @@
 //draw_text_outlined(mouse_x+64,mouse_y-64,"x:"+string(mouse_x)+" y:"+string(mouse_y),global.default_text_size,c_white,c_black,1);
 
 #region /*Set screen size*/
+camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current])); /*View Border*/
 camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
+camera_set_view_target(view_camera[view_current], self);
 display_set_gui_size(window_get_width(), window_get_height());
 #endregion /*Set screen size END*/
 
@@ -922,7 +924,6 @@ and(global.actually_play_edited_level = true)
 	}
 }
 #endregion /*Draw Iris Transitions END*/
-
 /*Iris END*/
 
 #region /*Parallax Scrolling Background*/

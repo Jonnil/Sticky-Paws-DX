@@ -16,7 +16,7 @@ if (bounceup = false)
 			if (asset_get_type("obj_wall") == asset_object)
 				and(!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 				{
-					effect_create_above(ef_ring, x, y, 0, c_white);
+					effect_create_below(ef_ring, x, y, 0, c_white);
 					score += 200;
 					global.hud_show_score = true;
 					if (asset_get_type("obj_camera") == asset_object)
@@ -101,7 +101,7 @@ if (bounceup = true)
 							hud_show_basic_collectibles_timer = global.hud_show_timer;
 						}
 					}
-				effect_create_above(ef_ring, x, y, 0, c_white);
+				effect_create_below(ef_ring, x, y, 0, c_white);
 				instance_destroy();
 			}
 	}

@@ -27,7 +27,7 @@ if (bounceup = false)
 				and(place_meeting(x, y - 16, obj_horizontal_rope))
 				or(instance_nearest(x, y, obj_player).climb = true)
 				{
-					effect_create_above(ef_ring, x, y, 2, c_white);
+					effect_create_below(ef_ring, x, y, 2, c_white);
 					#region /*3 Basic Collectibles*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -238,7 +238,7 @@ if bounceup = true
 			}
 			#endregion /*What Big Collectible is this? END*/
 			
-			effect_create_above(ef_ring, x, y, 2, c_white);
+			effect_create_below(ef_ring, x, y, 2, c_white);
 			instance_destroy();
 		}
 	}
@@ -305,6 +305,6 @@ effect_time += 1;
 if (effect_time > 60)
 {
 	effect_time = 0;
-	effect_create_above(ef_ring, x, y, 1, c_white);
+	effect_create_below(ef_ring, x, y, 1, c_white);
 }
 #endregion /*Expanding Ring Effect End*/

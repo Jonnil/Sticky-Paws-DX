@@ -707,7 +707,7 @@ if (die_volting=false)
 				can_doublejump=true;
 			}
 			flat=true;
-			effect_create_above(ef_ring,x,y,0,c_white);
+			effect_create_below(ef_ring,x,y,0,c_white);
 
 			#region /*Enemy Voice Defeated*/
 			audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3),0,0);
@@ -1418,7 +1418,7 @@ and(flat=false)
 		can_doublejump=true;
 	}
 	flat=true;
-	effect_create_above(ef_ring,x,y,0,c_white);
+	effect_create_below(ef_ring,x,y,0,c_white);
 
 	#region /*Enemy Voice Defeated*/
 	audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3),0,0);

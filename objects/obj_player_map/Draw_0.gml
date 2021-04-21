@@ -1,5 +1,7 @@
 #region /*Set screen size*/
+camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current])); /*View Border*/
 camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
+camera_set_view_target(view_camera[view_current], self);
 display_set_gui_size(window_get_width(), window_get_height());
 #endregion /*Set screen size END*/
 
@@ -318,10 +320,10 @@ room_speed = global.max_fps;
 #region /*Deactivate instances outside view*/
 instance_activate_all();
 instance_deactivate_region(
-camera_get_view_x(view_camera[view_current]) - 32,
-camera_get_view_y(view_camera[view_current]) - 32,
-camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
-camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+camera_get_view_x(view_camera[view_current]) - 64,
+camera_get_view_y(view_camera[view_current]) - 64,
+camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64,
+camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64,
 false, true);
 if (asset_get_type("obj_level") == asset_object)
 {
@@ -432,8 +434,8 @@ or(keyboard_check_pressed(ord("X")));
 #endregion /*Keyboard Controls END*/
 
 depth = -100;
-xx = lerp(xx, x, 0.2);
-yy = lerp(yy, y, 0.2);
+xx = lerp(xx, x, 0.1);
+yy = lerp(yy, y, 0.1);
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
 if (sprite_index > noone)
@@ -992,7 +994,7 @@ and(instance_nearest(x, y, obj_map_path_turn).turn=3) /*Left Down = 3*/
 
 #endregion /*Path Turning END*/
 
-//if (can_move = false)
+if (can_move = false)
 if (delay < 100)
 {
 	delay += 1;
@@ -1061,6 +1063,9 @@ and(global.quit_level = false)
 	global.trigger_demo_ending = 0;
 	global.level_editor_level = instance_nearest(x, y, obj_level).level;
 	entering_level = false;
+	can_move = true;
+	global.pause=false;
+	global.quit_level = false;
 	
 	#region /*Update All Backgrounds*/
 			

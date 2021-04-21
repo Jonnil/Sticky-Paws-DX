@@ -280,7 +280,6 @@ iris_zoom=0;
 
 /*Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen*/
 #region /*Initialize View*/
-camera_set_view_target(view_camera[view_current], self);
 /*View Size*/view_wview=1024+400-32;view_hview=768-32;/*View Size End*/
 
 #region /*View Size*/
@@ -291,10 +290,6 @@ if (view_wport<640-320){view_wport=640;}if (view_wview<640){view_wview=640;}if (
 if (view_wport>1920){view_wport=1920;}if (view_wview>1920){view_wview=1920;}if (view_hport>1080){view_hport=1080;}if (view_hview>1080){view_hview=1080;}
 if (view_wport<640){view_wport=640;}if (view_wview<640){view_wview=640;}if (view_hport<480){view_hport=480;}if (view_hview<480){view_hview=480;}}
 #endregion /*View Size END*/
-
-#region /*View Border*/
-camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]));
-#endregion /*View Border END*/
 
 #endregion /*Initialize View END*/
 
