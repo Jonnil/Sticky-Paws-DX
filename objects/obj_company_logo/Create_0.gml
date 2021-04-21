@@ -137,6 +137,7 @@ global.play_edited_level=false;/*Playtest edited level*/
 global.actually_play_edited_level=false;/*Actually playing finished edited level*/
 global.character_select_in_this_menu="game";/*In what menu character select is going to appear in*/
 global.difficulty=2;/*Difficulty levels: 0 = peaceful, 1 = easy, 2 = normal (default), 3 = hard*/
+global.show_timer = false; /*Show a countup timer or not*/
 global.controls_used_for_menu_navigation="keyboard";/*keyboard, mouse, or controller*/
 global.pause=false;/*If game is paused or not*/
 global.custom_background1=noone;

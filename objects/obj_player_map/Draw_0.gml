@@ -431,7 +431,7 @@ or(keyboard_check_pressed(ord("X")));
 
 #endregion /*Keyboard Controls END*/
 
-depth = -10;
+depth = -100;
 xx = lerp(xx, x, 0.2);
 yy = lerp(yy, y, 0.2);
 draw_xscale = lerp(draw_xscale, 1, 0.1);
@@ -1023,7 +1023,6 @@ and(speed = 0)
 		can_move = false;
 		entering_level = true;
 		delay = 0;
-		sprite_index = sprite_map_enter_level;
 		score = 0;
 		global.spikes_emerge_time = 0;
 		global.timeattack_transfer = true;
@@ -1061,7 +1060,8 @@ and(global.quit_level = false)
 	audio_stop_all();
 	global.trigger_demo_ending = 0;
 	global.level_editor_level = instance_nearest(x, y, obj_level).level;
-		
+	entering_level = false;
+	
 	#region /*Update All Backgrounds*/
 			
 	sprite_delete(global.custom_background1);
@@ -1483,7 +1483,7 @@ and(global.quit_level = false)
 	}
 			
 	#endregion /*Update All Backgrounds END*/
-		
+	
 	#region /*Custom Level Tileset File*/
 	sprite_delete(global.custom_tileset);
 		
@@ -1503,7 +1503,7 @@ and(global.quit_level = false)
 		global.custom_tileset = noone;
 	}
 	#endregion /*Custom Level Tileset File END*/
-		
+	
 	if (asset_get_type("room_leveleditor") == asset_room)
 	{
 		global.actually_play_edited_level=true;
@@ -1512,6 +1512,15 @@ and(global.quit_level = false)
 	}
 }
 #endregion /*After pressing "Enter Level", the iris should shrink and then start the level END*/
+
+if (entering_level = true)
+{
+	sprite_index = sprite_map_enter_level;
+}
+else
+{
+	sprite_index = sprite_map;
+}
 
 if (move_delay < 50)
 {
@@ -1780,10 +1789,10 @@ if (global.enable_transitions = true)
 		{
 			draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 		}
-		draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), xx - iris_xscale * 128, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(xx + iris_xscale * 128 - 1, camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), yy + iris_yscale * 128, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(0, 0, room_width, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(0, 0, xx - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(xx + iris_xscale * 128 - 1, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(0, yy + iris_yscale * 128, room_width, room_height, c_black, c_black, c_black, c_black, false);
 	}
 }
 #endregion /*Draw Iris Transitions END*/

@@ -83,6 +83,14 @@ and(!instance_exists(obj_title))
 }
 #endregion /*Show FPS Options END*/
 
+#region /*Have a black screen at the first frame so transitions look natural*/
+if (black_screen_at_start_delay<1)
+{
+	draw_rectangle_color(0,0,window_get_width()*2,window_get_height()*2,c_black,c_black,c_black,c_black,false);
+	black_screen_at_start_delay += 1;
+}
+#endregion /*Have a black screen at the first frame so transitions look natural END*/
+
 #region /*Draw mouse cursor for menu navigation*/
 if (window_has_focus())
 and(global.controls_used_for_menu_navigation="mouse")

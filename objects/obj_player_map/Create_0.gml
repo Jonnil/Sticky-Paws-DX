@@ -30,6 +30,7 @@ can_move = true;
 can_enter = true;
 entering_level = false;
 delay = 0;
+black_screen_at_start_delay = 0;
 transfer_data = false;
 fastest_time = 0;
 move_delay = 0;

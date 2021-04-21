@@ -3102,6 +3102,14 @@ if (menu_joystick_delay>0)
 }
 #endregion /*Menu navigation with joystick END*/
 
+#region /*Have a black screen at the first frame so transitions look natural*/
+if (black_screen_at_start_delay<1)
+{
+	draw_rectangle_color(0,0,window_get_width()*2,window_get_height()*2,c_black,c_black,c_black,c_black,false);
+	black_screen_at_start_delay += 1;
+}
+#endregion /*Have a black screen at the first frame so transitions look natural END*/
+
 #region /*Window is focused, hide cursor*/
 if (window_has_focus())
 and(mouse_x>camera_get_view_x(view_camera[view_current])+8)

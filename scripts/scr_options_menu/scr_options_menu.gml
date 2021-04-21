@@ -1678,6 +1678,8 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		#region /*Difficulty Settings*/
 		difficulty_settings_x = 600;
 		difficulty_settings_y = 48;
+		show_timer_settings_x = 350;
+		show_timer_settings_y = 48+48+48;
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
@@ -1747,6 +1749,10 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 			}
 		}
 		#endregion /*Difficulty Settings END*/
+		
+		#region /*Show Timer*/
+		draw_menu_checkmark(show_timer_settings_x,show_timer_settings_y,"Show Timer","show_timer_settings",global.show_timer);
+		#endregion /*Show Timer END*/
 		
 	}
 	#endregion /*Game Settings END*/
@@ -3771,13 +3777,13 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		{
 			if (global.difficulty>0)
 			{
+				menu_delay = 3;
 				global.difficulty-=1;
-				menu_delay=10;
 			}
 			else
 			{
+				menu_delay = 3;
 				global.difficulty=3;
-				menu_delay=10;
 			}
 		}
 		else
@@ -3786,17 +3792,52 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		{
 			if (global.difficulty<+3)
 			{
+				menu_delay = 3;
 				global.difficulty+=1;
-				menu_delay=10;
 			}
 			else
 			{
+				menu_delay = 3;
 				global.difficulty=0;
-				menu_delay=10;
 			}
+		}
+		else
+		if (key_up)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "show_timer_settings";
+		}
+		else
+		if (key_down)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "show_timer_settings";
 		}
 	}
 	#endregion /*Difficulty Settings Navigation END*/
+	
+	else
+	
+	#region /*Navigate Game Settings*/
+	if (menu = "show_timer_settings")
+	{
+		if (key_up)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "difficulty_settings";
+		}
+		else
+		if (key_down)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "difficulty_settings";
+		}
+	}
+	#endregion /*Navigate Game Settings END*/
 	
 	else if (menu="show_tutorial_signs"){if (key_up){menu="convention_mode"}else if (key_down){menu="hud_hide_time";}}
 	else if (menu="hud_hide_time"){if (key_left){if (global.hud_show_timer>0){global.hud_show_timer-=60;}}if (key_right){if (global.hud_show_timer<600){global.hud_show_timer+=60;}}if (key_up){menu="show_tutorial_signs";}if (key_down){menu="players_can_collide";}}

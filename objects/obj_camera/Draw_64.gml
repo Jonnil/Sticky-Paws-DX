@@ -316,11 +316,11 @@ and(!instance_exists(obj_title))
 				if (global.time_countdown <= 99)
 					and(global.timeattack_millisecond < room_speed / 2)
 					{
-						draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, "TIME IS RUNNING OUT!", global.default_text_size, c_black, c_red, 1);
+						draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, "HURRY UP!", global.default_text_size, c_black, c_red, 1);
 					}
 				else
 				{
-					draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, "TIME IS RUNNING OUT!", global.default_text_size, c_black, c_white, 1);
+					draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, "HURRY UP!", global.default_text_size, c_black, c_white, 1);
 				}
 			}
 		}
@@ -363,21 +363,24 @@ and(!instance_exists(obj_title))
 			}
 
 			#region /*Time in Minutes, Seconds and Milliseconds*/
-			if (global.player_has_entered_goal = false)
+			if (global.show_timer = true)
 			{
-				if (global.time_countdown <= 99)
-				and(global.timeattack_millisecond < room_speed / 2)
+				if (global.player_has_entered_goal = false)
 				{
-					draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_red, 1);
+					if (global.time_countdown <= 99)
+					and(global.timeattack_millisecond < room_speed / 2)
+					{
+						draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_red, 1);
+					}
+					else
+					{
+						draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
+					}
 				}
 				else
 				{
 					draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
 				}
-			}
-			else
-			{
-				draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
 			}
 			#endregion /*Time in Minutes, Seconds and Milliseconds END*/
 				
