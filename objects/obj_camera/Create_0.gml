@@ -277,6 +277,7 @@ iris_xscale=0;
 iris_yscale=0;
 allow_iris=true;
 iris_zoom=0;
+timer_blinking_alpha = 0;
 
 /*Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen*/
 #region /*Initialize View*/

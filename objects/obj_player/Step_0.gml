@@ -15346,7 +15346,7 @@ if (goal=false)
 	{
 		die=true;
 	}
-	if (global.time_countdown=99)
+	if (global.time_countdown = 99)
 	{
 		if (asset_get_type("snd_hurry_up")==asset_sound)
 		{
@@ -15395,7 +15395,7 @@ else
 			}
 		}
 	}
-	if (global.time_countdown=0)
+	if (global.time_countdown = 0)
 	{
 		if (asset_get_type("snd_beep")==asset_sound)
 		{

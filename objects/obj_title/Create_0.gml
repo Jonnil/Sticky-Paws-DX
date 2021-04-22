@@ -276,7 +276,6 @@ global.big_collectible5=false;
 global.lives_until_assist=0;
 global.x_checkpoint=false;
 global.y_checkpoint=false;
-global.time_countdown=500;
 global.timeattack_millisecond=0;
 global.timeattack_second=0;
 global.timeattack_minute=0;

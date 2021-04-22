@@ -347,44 +347,33 @@ and(!instance_exists(obj_title))
 					draw_text_outlined(window_get_width() - 32, 32, "TIME\n0", global.default_text_size, c_black, c_red, 1);
 				}
 				else
+				{
+					draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
+					draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_red, timer_blinking_alpha);
+				}
 				if (global.time_countdown <= 99)
 				and(global.timeattack_millisecond < room_speed / 2)
 				{
-					draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_red, 1);
+					timer_blinking_alpha = lerp(timer_blinking_alpha,1,0.2);
 				}
 				else
 				{
-					draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
+					timer_blinking_alpha = lerp(timer_blinking_alpha,0,0.2);
 				}
 			}
 			else
 			{
 				draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
 			}
-
-			#region /*Time in Minutes, Seconds and Milliseconds*/
-			if (global.show_timer = true)
-			{
-				if (global.player_has_entered_goal = false)
-				{
-					if (global.time_countdown <= 99)
-					and(global.timeattack_millisecond < room_speed / 2)
-					{
-						draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_red, 1);
-					}
-					else
-					{
-						draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
-					}
-				}
-				else
-				{
-					draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
-				}
-			}
-			#endregion /*Time in Minutes, Seconds and Milliseconds END*/
-				
 		}
+		
+		#region /*Time countup in Minutes, Seconds and Milliseconds*/
+		if (global.show_timer = true)
+		{
+			draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
+		}
+		#endregion /*Time countup in Minutes, Seconds and Milliseconds END*/
+		
 	}
 	#endregion /*Time Countdown END*/
 		

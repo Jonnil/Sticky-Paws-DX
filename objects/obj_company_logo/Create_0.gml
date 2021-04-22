@@ -194,7 +194,7 @@ global.assist_extra_hp=0;
 global.assist_guiding_arrows=1;
 #endregion /*Assist Settings END*/
 global.x_checkpoint=false;global.y_checkpoint=false;
-global.time_countdown=500;
+global.time_countdown = 0; /*Countdown timer before you get a Time Over, default should be 0 so most levels don't have a countdown*/
 global.timeattack_millisecond=0;
 global.timeattack_second=0;
 global.timeattack_minute=0;
