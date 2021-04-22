@@ -169,8 +169,8 @@ if (takendamage>=takendamage_freezetime)
 	hspeed=0;
 	vspeed=0;
 	speed=0;
-	if (sprite_die>noone){sprite_index=sprite_die;}else
-	{sprite_index=sprite_stand;}
+	if (sprite_die>noone){sprite_index = sprite_die;}else
+	{sprite_index = sprite_stand;}
 	if (image_index>image_number-1)
 	{
 		image_speed=0;

@@ -57,7 +57,7 @@ else
 	{
 		speed=0;
 		image_speed=0.5;
-		sprite_index=sprite_flat;
+		sprite_index = sprite_flat;
 		if (image_index>image_number-1)
 		{
 		effect_create_above(ef_smoke,x,y,2,c_white);
@@ -69,11 +69,11 @@ if (flat=false)
 {
 	if (distance_to_object(obj_player)<256)
 	{
-		sprite_index=sprite_angry;
+		sprite_index = sprite_angry;
 	}
 	else
 	{
-		sprite_index=sprite_walk;
+		sprite_index = sprite_walk;
 	}
 }
 

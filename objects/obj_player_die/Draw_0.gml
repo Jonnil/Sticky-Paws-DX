@@ -154,7 +154,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 and(instance_number(obj_player)<1)
 and(iris_xscale<=0.001)
 {
-	global.time_countdown = 0; /*Reset countdown back to default value*/
+	global.time_countdown = noone; /*Reset countdown back to default value*/
 	sprite_index=noone;
 	gravity=0;
 	speed=0;

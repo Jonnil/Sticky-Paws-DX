@@ -1502,8 +1502,8 @@ if (object=55)and(asset_get_type("spr_invincibility_powerup")==asset_sprite){spr
 if (object=56)and(asset_get_type("spr_1up")==asset_sprite){sprite_index = spr_1up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1-up",global.default_text_size/2,image_blend,c_black,image_alpha);mask_index=spr_wall;}
 if (object=57)and(asset_get_type("spr_2up")==asset_sprite){sprite_index = spr_2up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2-up",global.default_text_size/2,image_blend,c_black,image_alpha);mask_index=spr_wall;}
 if (object=58)and(asset_get_type("spr_3up")==asset_sprite){sprite_index = spr_3up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,image_blend,c_black,image_alpha);mask_index=spr_wall;}
-if (object=59){sprite_index=sprite_enemy1;mask_index=spr_wall;}
-if (object=60){sprite_index=sprite_enemy2;mask_index=spr_wall;}
+if (object=59){sprite_index = sprite_enemy1;mask_index=spr_wall;}
+if (object=60){sprite_index = sprite_enemy2;mask_index=spr_wall;}
 if (object=61)and(asset_get_type("spr_blaster")==asset_sprite){sprite_index=spr_blaster;mask_index=spr_wall;}
 if (object=62)and(asset_get_type("spr_spring")==asset_sprite){sprite_index=spr_spring;mask_index=spr_wall;}
 if (object=63)and(asset_get_type("spr_ladder")==asset_sprite){sprite_index=spr_ladder;mask_index=spr_wall;}

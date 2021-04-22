@@ -1,8 +1,3 @@
-#region /*Set screen size*/
-camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
-display_set_gui_size(window_get_width(), window_get_height());
-#endregion /*Set screen size END*/
-
 depth = -30;
 
 #region /*Mouse x and mouse y initializing*/
@@ -86,7 +81,6 @@ total_number_of_objects=0;
 quit_level_editor=0;
 use_controller=false;
 drag_object=false;
-global.time_countdown = 500; /*Set the countdown to whatever is stored in the level_information.ini file*/
 erase_mode=false;/*When erasing, this turns true*/
 fill_mode=false;/*When filling, this turns true*/
 can_input_level_name=false;
@@ -155,16 +149,37 @@ image_index=0;
 
 
 #region /*Load Level Information*/
-if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
+if (global.character_select_in_this_menu="game")
+and(file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
+or(global.character_select_in_this_menu="level_editor")
+and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
 {
-	ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+	if (global.character_select_in_this_menu="game")
+	{
+		ini_open("Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+	}
+	else
+	if (global.character_select_in_this_menu="level_editor")
+	{
+		ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+	}
 	if (ini_key_exists("Info","level_name"))
 	{
-		level_name=ini_read_string("Info","level_name",0);
+		level_name = ini_read_string("Info","level_name",0);
 	}
 	else
 	{
-		level_name="";
+		ini_write_string("Info","level_name",0);
+		level_name = "";
+	}
+	if (ini_key_exists("Info","time_countdown"))
+	{
+		global.time_countdown = ini_read_real("Info", "time_countdown", noone); /*Set the countdown to whatever is stored in the level_information.ini file*/
+	}
+	else
+	{
+		ini_write_real("Info", "time_countdown", noone);
+		global.time_countdown = noone;
 	}
 	if(global.play_edited_level=false)
 	and(global.actually_play_edited_level=false)
@@ -172,21 +187,21 @@ if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_edi
 		if (ini_key_exists("Info","view_xview"))
 		and(ini_key_exists("Info","view_yview"))
 		{
-			camera_set_view_pos(view_camera[view_current], ini_read_string("Info", "view_xview", 0), ini_read_string("Info", "view_yview", 0));
-			x = ini_read_string("Info", "view_xview", 0);
-			y = ini_read_string("Info", "view_yview", 0);
+			camera_set_view_pos(view_camera[view_current], ini_read_real("Info", "view_xview", 0), ini_read_real("Info", "view_yview", 0));
+			x = ini_read_real("Info", "view_xview", 0);
+			y = ini_read_real("Info", "view_yview", 0);
 		}
 		else
 		if (ini_key_exists("Info","view_xview"))
 		{
-			camera_set_view_pos(view_camera[view_current], ini_read_string("Info", "view_xview", 0), 0);
-			x = ini_read_string("Info", "view_xview", 0);
+			camera_set_view_pos(view_camera[view_current], ini_read_real("Info", "view_xview", 0), 0);
+			x = ini_read_real("Info", "view_xview", 0);
 		}
 		else
 		if (ini_key_exists("Info","view_yview"))
 		{
-			camera_set_view_pos(view_camera[view_current], 0, ini_read_string("Info", "view_yview", 0));
-			y = ini_read_string("Info", "view_yview", 0);
+			camera_set_view_pos(view_camera[view_current], 0, ini_read_real("Info", "view_yview", 0));
+			y = ini_read_real("Info", "view_yview", 0);
 		}
 	}
 	ini_close();
@@ -194,6 +209,7 @@ if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_edi
 else
 {
 	level_name="";
+	global.time_countdown = noone;
 }
 #endregion /*Load Level Information END*/
 

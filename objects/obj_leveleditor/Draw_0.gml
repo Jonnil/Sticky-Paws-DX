@@ -254,8 +254,8 @@ if (selected_object=16){place_object=53;can_make_place_brush_size_bigger=true;if
 if (selected_object=17){place_object=54;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_hp_pickup")==asset_sprite){sprite_index=spr_hp_pickup;}mask_index=spr_wall;}
 if (selected_object=18){place_object=55;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){sprite_index=spr_invincibility_powerup;}mask_index=spr_wall;}
 if (selected_object=19){place_object=56;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_1up")==asset_sprite){sprite_index=spr_1up;}mask_index=spr_wall;}
-if (selected_object=20){place_object=59;can_make_place_brush_size_bigger=true;sprite_index=sprite_enemy1;mask_index=spr_wall;}
-if (selected_object=21){place_object=60;can_make_place_brush_size_bigger=true;sprite_index=sprite_enemy2;mask_index=spr_wall;}
+if (selected_object=20){place_object=59;can_make_place_brush_size_bigger=true;sprite_index = sprite_enemy1;mask_index=spr_wall;}
+if (selected_object=21){place_object=60;can_make_place_brush_size_bigger=true;sprite_index = sprite_enemy2;mask_index=spr_wall;}
 if (selected_object=22){place_object=61;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_blaster")==asset_sprite){sprite_index=spr_blaster;}mask_index=spr_wall;}
 if (selected_object=23){place_object=62;can_make_place_brush_size_bigger=false;if (asset_get_type("spr_spring")==asset_sprite){sprite_index=spr_spring;}mask_index=spr_wall;}
 if (selected_object=24){place_object=63;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_ladder")==asset_sprite){sprite_index=spr_ladder;}mask_index=spr_wall;}
@@ -911,8 +911,9 @@ if (erase_mode=true)
 }
 #endregion /*Erase Cursor END*/
 
-/*Default Cursor*/
 else
+
+#region /*Default Cursor*/
 if (asset_get_type("obj_leveleditor_placed_object")==asset_object)
 and(drag_object=false)
 and(fill_mode=false)
@@ -1020,6 +1021,8 @@ and(pause=false)
 		window_set_cursor(cr_arrow);
 	}
 }
+#endregion /*Default Cursor END*/
+
 else
 
 #region /*Drag Cursor*/
@@ -1138,10 +1141,7 @@ if (quit_level_editor=0)
 					obj=instance_create_depth(x,y,0,obj_leveleditor_placed_object);
 					obj.object=obj_leveleditor.place_object;
 					obj.place_object_angle = true;
-			
-					#region /*Undo and Redo handeling*/
-					obj.undo_value=obj_leveleditor.current_undo_value;
-					#endregion /*Undo and Redo handeling END*/
+					obj.undo_value=obj_leveleditor.current_undo_value; /*Undo and Redo handeling*/
 			
 					#region /*When placing on difficulty layer*/
 					if (obj_leveleditor.set_difficulty_mode=true)

@@ -15340,11 +15340,11 @@ if (asset_get_type("obj_invincibility_powerup")==asset_object)
 #region /*Time*/
 if (goal=false)
 {
-	if (global.time_countdown<0)
-	and(allow_timeup=true)
-	and(global.player_has_entered_goal=false)
+	if (global.time_countdown = 0)
+	and(allow_timeup = true)
+	and(global.player_has_entered_goal = false)
 	{
-		die=true;
+		die = true;
 	}
 	if (global.time_countdown = 99)
 	{
@@ -15595,32 +15595,32 @@ if (spring=true)
 {
 	if (spring_animation=0)
 	{
-		if (sprite_spring_up>noone){sprite_index=sprite_spring_up;}else
-		if (sprite_spring_down>noone){sprite_index=sprite_spring_down;}else
-		if (sprite_double_jump>noone){sprite_index=sprite_double_jump;}else
-		if (sprite_jump>noone){sprite_index=sprite_jump;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
+		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
+		if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
+		if (sprite_jump>noone){sprite_index = sprite_jump;}else
+		{sprite_index = sprite_stand;}
 	}
 	else
 	if (spring_animation=1)
 	{
-		if (sprite_spring_transition>noone){sprite_index=sprite_spring_transition;}else
-		if (sprite_spring_up>noone){sprite_index=sprite_spring_up;}else
-		if (sprite_spring_down>noone){sprite_index=sprite_spring_down;}else
-		if (sprite_double_jump>noone){sprite_index=sprite_double_jump;}else
-		if (sprite_jump>noone){sprite_index=sprite_jump;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_spring_transition>noone){sprite_index = sprite_spring_transition;}else
+		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
+		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
+		if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
+		if (sprite_jump>noone){sprite_index = sprite_jump;}else
+		{sprite_index = sprite_stand;}
 	}
 	else
 	if (spring_animation=2)
 	{
-		if (sprite_spring_down>noone){sprite_index=sprite_spring_down;}else
-		if (sprite_spring_up>noone){sprite_index=sprite_spring_up;}else
-		if (key_jump_hold)and(sprite_fall_slower>noone){sprite_index=sprite_fall_slower;}else
-		if (sprite_fall>noone){sprite_index=sprite_fall;}else
-		if (sprite_double_jump>noone){sprite_index=sprite_double_jump;}else
-		if (sprite_jump>noone){sprite_index=sprite_jump;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
+		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
+		if (key_jump_hold)and(sprite_fall_slower>noone){sprite_index = sprite_fall_slower;}else
+		if (sprite_fall>noone){sprite_index = sprite_fall;}else
+		if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
+		if (sprite_jump>noone){sprite_index = sprite_jump;}else
+		{sprite_index = sprite_stand;}
 	}
 
 	if (spring_animation=0)
@@ -15801,15 +15801,15 @@ and(in_water=false)
 		}
 		if (image_speed<1)
 		{
-			if (sprite_climb_under_spin>noone){sprite_index=sprite_climb_under_spin;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_climb_under_spin>noone){sprite_index = sprite_climb_under_spin;}else
+			{sprite_index = sprite_stand;}
 		}
 		else
 		{
-			if (sprite_climb_under_spin_fast>noone){sprite_index=sprite_climb_under_spin_fast;}else
-			if (sprite_climb_under_spin>noone){sprite_index=sprite_climb_under_spin;}else
-			if (sprite_climb_under_still>noone){sprite_index=sprite_climb_under_still;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_climb_under_spin_fast>noone){sprite_index = sprite_climb_under_spin_fast;}else
+			if (sprite_climb_under_spin>noone){sprite_index = sprite_climb_under_spin;}else
+			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
+			{sprite_index = sprite_stand;}
 		}
 		if (image_index>=image_number-1)
 		and(image_number>1)
@@ -15910,8 +15910,8 @@ and(in_water=false)
 		and(takendamage<=takendamage_freezetime)
 		{
 			image_xscale=-1;
-			if(sprite_climb_under>noone){sprite_index=sprite_climb_under;}else
-			{sprite_index=sprite_stand;}
+			if(sprite_climb_under>noone){sprite_index = sprite_climb_under;}else
+			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			or(double_tap_left=3)
 			{
@@ -15941,8 +15941,8 @@ and(in_water=false)
 		and(takendamage<=takendamage_freezetime)
 		{
 			image_xscale=-1;
-			if (sprite_climb_under_still>noone){sprite_index=sprite_climb_under_still;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
+			{sprite_index = sprite_stand;}
 			image_speed=0;
 			if (asset_get_type("snd_bump")==asset_sound)
 			and(!audio_is_playing(snd_bump))
@@ -15962,8 +15962,8 @@ and(in_water=false)
 		and(takendamage<=takendamage_freezetime)
 		{
 			image_xscale=+1;
-			if (sprite_climb_under>noone){sprite_index=sprite_climb_under;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_climb_under>noone){sprite_index = sprite_climb_under;}else
+			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			or(double_tap_right=3)
 			{
@@ -15993,8 +15993,8 @@ and(in_water=false)
 		and(takendamage<=takendamage_freezetime)
 		{
 			image_xscale=+1;
-			if (sprite_climb_under_still>noone){sprite_index=sprite_climb_under_still;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
+			{sprite_index = sprite_stand;}
 			image_speed=0;
 			if (asset_get_type("snd_bump")==asset_sound)
 			and!audio_is_playing(snd_bump)
@@ -16010,9 +16010,9 @@ and(in_water=false)
 		#region /*Look up when on horizontal rope*/
 		if (key_up)
 		{
-			if (sprite_climb_under_look_up>noone){sprite_index=sprite_climb_under_look_up;}else
-			if (sprite_climb_under_still>noone){sprite_index=sprite_climb_under_still;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_climb_under_look_up>noone){sprite_index = sprite_climb_under_look_up;}else
+			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
+			{sprite_index = sprite_stand;}
 			image_speed=0.5;
 		}
 		#endregion /*Look up when on horizontal rope END*/
@@ -16021,11 +16021,11 @@ and(in_water=false)
 		{
 			if (sprite_climb_under_still>noone)
 			{
-				sprite_index=sprite_climb_under_still;
+				sprite_index = sprite_climb_under_still;
 			}
 			else
 			{
-				sprite_index=sprite_stand;
+				sprite_index = sprite_stand;
 			}
 		}
 		if (instance_nearest(x,y,obj_horizontal_rope).active = false)
@@ -16101,9 +16101,9 @@ and(place_meeting(x,y,obj_vine))
 			}
 			if (!position_meeting(x,bbox_top-1,obj_wall))
 			{
-				if (sprite_vine_climb>noone){sprite_index=sprite_vine_climb;}else
-				if (sprite_vine_stay>noone){sprite_index=sprite_vine_stay;}else
-				{sprite_index=sprite_stand;}
+				if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
+				if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
+				{sprite_index = sprite_stand;}
 				
 				if (key_sprint)
 				{
@@ -16126,8 +16126,8 @@ and(place_meeting(x,y,obj_vine))
 			}
 			else
 			{
-				if (sprite_vine_stay>noone){sprite_index=sprite_vine_stay;}else
-				{sprite_index=sprite_stand;}
+				if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
+				{sprite_index = sprite_stand;}
 			}
 		}
 		else
@@ -16143,9 +16143,9 @@ and(place_meeting(x,y,obj_vine))
 			{
 				x-=4;
 			}
-			if (sprite_vine_climb>noone){sprite_index=sprite_vine_climb;}else
-			if (sprite_vine_stay>noone){sprite_index=sprite_vine_stay;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
+			if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
+			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			{
 				y+=5;
@@ -16178,9 +16178,9 @@ and(place_meeting(x,y,obj_vine))
 		and(takendamage<=takendamage_freezetime)
 		{
 			image_xscale=-1;
-			if (sprite_vine_climb>noone){sprite_index=sprite_vine_climb;}else
-			if (sprite_vine_stay>noone){sprite_index=sprite_vine_stay;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
+			if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
+			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			{
 				x-=4;
@@ -16208,8 +16208,8 @@ and(place_meeting(x,y,obj_vine))
 		and(position_meeting(bbox_left-1,y,obj_wall))
 		and(takendamage<=takendamage_freezetime)
 		{
-			if (sprite_vine_stay>noone){sprite_index=sprite_vine_stay;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
+			{sprite_index = sprite_stand;}
 			image_speed=0;
 			image_xscale=-1;
 			if (asset_get_type("snd_bump")==asset_sound)
@@ -16230,9 +16230,9 @@ and(place_meeting(x,y,obj_vine))
 		and(takendamage<=takendamage_freezetime)
 		{
 			image_xscale=+1;
-			if (sprite_vine_climb>noone){sprite_index=sprite_vine_climb;}else
-			if (sprite_vine_stay>noone){sprite_index=sprite_vine_stay;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
+			if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
+			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			{
 				x+=4;
@@ -16260,8 +16260,8 @@ and(place_meeting(x,y,obj_vine))
 		and(position_meeting(bbox_right+1,y,obj_wall))
 		and(takendamage<=takendamage_freezetime)
 		{
-			if (sprite_vine_stay>noone){sprite_index=sprite_vine_stay;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
+			{sprite_index = sprite_stand;}
 			image_speed=0;
 			image_xscale=+1;
 			if (asset_get_type("snd_bump")==asset_sound)
@@ -16275,8 +16275,8 @@ and(place_meeting(x,y,obj_vine))
 		}
 		else
 		{
-			if (sprite_vine_stay>noone){sprite_index=sprite_vine_stay;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
+			{sprite_index = sprite_stand;}
 			image_speed=0.2;
 		}
 		if (key_jump)
@@ -16339,8 +16339,8 @@ and(!key_up)
 				crouch = true;
 				stick_to_wall = false;
 				y+=16;
-				if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
-				{sprite_index=sprite_stand;}
+				if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+				{sprite_index = sprite_stand;}
 				mask_index=sprite_mask_crouch;
 				if (asset_get_type("snd_crouch")==asset_sound)
 				{
@@ -16428,8 +16428,8 @@ if (crouch = true)
 		and(!key_left)
 		and(!key_right)
 		{
-			if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+			{sprite_index = sprite_stand;}
 			if (image_index>image_number-1)
 			{
 				image_speed=0;
@@ -16446,9 +16446,9 @@ if (crouch = true)
 		if (key_left)
 		or(key_right)
 		{
-			if (sprite_crouch_crawl>noone){sprite_index=sprite_crouch_crawl;}else
-			if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_crouch_crawl>noone){sprite_index = sprite_crouch_crawl;}else
+			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+			{sprite_index = sprite_stand;}
 			image_speed=0.5;
 		}
 		#endregion /*Crouch Crawl END*/
@@ -16471,11 +16471,11 @@ if (crouch = true)
 		}
 		if (vspeed>0)
 		{
-			sprite_index=sprite_swim_fall;
+			sprite_index = sprite_swim_fall;
 		}
 		else
 		{
-			sprite_index=sprite_swim;
+			sprite_index = sprite_swim;
 		}
 	}
 }
@@ -16522,7 +16522,7 @@ and(key_left)
 #endregion /*Skidding END*/
 
 //*Look Up*/else if hspeed=0 and key_up and!key_down and can_move=true{if asset_get_type("spr_player_swim_look_up")==asset_sprite{sprite_index=spr_player_swim_look_up;}image_speed=0.1;mask_index=sprite_mask;}
-/*Stand*/else if hspeed=0 and!key_left and!key_right{if asset_get_type("spr_player_swim_stand")==asset_sprite{sprite_index=spr_player_swim_stand;}else{sprite_index=sprite_swim;}image_speed=0.1;}
+/*Stand*/else if hspeed=0 and!key_left and!key_right{if asset_get_type("spr_player_swim_stand")==asset_sprite{sprite_index=spr_player_swim_stand;}else{sprite_index = sprite_swim;}image_speed=0.1;}
 /*Run*/
 else
 if (hspeed<+0.1)
@@ -16534,12 +16534,12 @@ or(hspeed>-0.1)
 	{
 		if (speeddash=true)
 		{
-			sprite_index=sprite_swim;
+			sprite_index = sprite_swim;
 		}
 		else
 		if (abs(speed)>=6)
 		{
-			sprite_index=sprite_swim;
+			sprite_index = sprite_swim;
 		}
 		/*Against Wall*/
 		else
@@ -16547,12 +16547,12 @@ or(hspeed>-0.1)
 			if (place_meeting(x-1,y,obj_wall))
 			or(place_meeting(x+1,y,obj_wall))
 			{
-				sprite_index=sprite_swim;
+				sprite_index = sprite_swim;
 			}
 			/*Walk*/
 			else
 			{
-				sprite_index=sprite_swim;
+				sprite_index = sprite_swim;
 			}
 		}
 		image_speed=speed/13.5+0.1;
@@ -16590,7 +16590,7 @@ and(image_xscale<0)
 	}
 	else
 	{
-		sprite_index=sprite_swim;
+		sprite_index = sprite_swim;
 	}
 	if (image_index>image_number-1)
 	{
@@ -16603,7 +16603,7 @@ and(image_xscale<0)
 }
 #endregion /*Skidding END*/
 
-/*Single Swim*/else if key_jump{image_index=0;}if image_index>image_number-1{image_speed=0;}else{image_speed=0.3;}if vspeed>0{sprite_index=sprite_swim_fall;}else{sprite_index=sprite_swim;}
+/*Single Swim*/else if key_jump{image_index=0;}if image_index>image_number-1{image_speed=0;}else{image_speed=0.3;}if vspeed>0{sprite_index = sprite_swim_fall;}else{sprite_index = sprite_swim;}
 mask_index=sprite_mask;}
 
 }
@@ -16625,7 +16625,7 @@ if (key_crouch)
 			crouch=true;
 			draw_xscale=1.5;
 			draw_yscale=0.5;
-			if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
+			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
 			{image_index=sprite_stand;}
 			
 			mask_index=sprite_mask_crouch;
@@ -16727,9 +16727,9 @@ if (crouch=true)
 	and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
 		mask_index=sprite_mask_crouch;
-		if (sprite_crouch_crawl>noone){sprite_index=sprite_crouch_crawl;}else
-		if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_crouch_crawl>noone){sprite_index = sprite_crouch_crawl;}else
+		if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+		{sprite_index = sprite_stand;}
 		if (image_index>image_number-1)
 		{
 			image_speed=0;
@@ -16751,9 +16751,9 @@ if (crouch=true)
 	and(!key_left)
 	and(!key_right)
 	{
-		sprite_index=sprite_crouch;
-		if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
-		{sprite_index=sprite_stand;}
+		sprite_index = sprite_crouch;
+		if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+		{sprite_index = sprite_stand;}
 		if (image_index>image_number-1)
 		{
 			image_speed=0;
@@ -16770,9 +16770,9 @@ if (crouch=true)
 	if (key_left)
 	or(key_right)
 	{
-		if (sprite_crouch_crawl>noone){sprite_index=sprite_crouch_crawl;}else
-		if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_crouch_crawl>noone){sprite_index = sprite_crouch_crawl;}else
+		if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+		{sprite_index = sprite_stand;}
 		image_speed=0.5;
 	}
 	#endregion /*Crouch Crawl END*/
@@ -16787,10 +16787,10 @@ if (crouch=true)
 		#region /*Crouch Jump*/
 		if (vspeed<0)
 		{
-			if (sprite_crouch_jump>noone){sprite_index=sprite_crouch_jump;}else
-			if (sprite_crouch_fall>noone){sprite_index=sprite_crouch_fall;}else
-			if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_crouch_jump>noone){sprite_index = sprite_crouch_jump;}else
+			if (sprite_crouch_fall>noone){sprite_index = sprite_crouch_fall;}else
+			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+			{sprite_index = sprite_stand;}
 			if (image_index>image_number-1)
 			{
 				image_speed=0;
@@ -16806,10 +16806,10 @@ if (crouch=true)
 		if (vspeed>0)
 		and(stick_to_wall=false)
 		{
-			if (sprite_crouch_fall>noone){sprite_index=sprite_crouch_fall;}else
-			if (sprite_crouch_jump>noone){sprite_index=sprite_crouch_jump;}else
-			if (sprite_crouch>noone){sprite_index=sprite_crouch;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_crouch_fall>noone){sprite_index = sprite_crouch_fall;}else
+			if (sprite_crouch_jump>noone){sprite_index = sprite_crouch_jump;}else
+			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+			{sprite_index = sprite_stand;}
 			
 			if (image_index>image_number-1)
 			{
@@ -16835,10 +16835,10 @@ if (crouch=true)
 else
 if (ground_pound=true)
 {
-	if (sprite_ground_pound>noone){sprite_index=sprite_ground_pound;}else
-	if (sprite_fall>noone){sprite_index=sprite_fall;}else
-	if (sprite_jump>noone){sprite_index=sprite_jump;}else
-	{sprite_index=sprite_stand;}
+	if (sprite_ground_pound>noone){sprite_index = sprite_ground_pound;}else
+	if (sprite_fall>noone){sprite_index = sprite_fall;}else
+	if (sprite_jump>noone){sprite_index = sprite_jump;}else
+	{sprite_index = sprite_stand;}
 	if (image_index>image_number-1)
 	{
 		image_speed=0;
@@ -16851,7 +16851,7 @@ if (ground_pound=true)
 else
 if (ground_pound=2)
 {
-	if (sprite_ground_pound_get_up>noone){sprite_index=sprite_ground_pound_get_up;}else
+	if (sprite_ground_pound_get_up>noone){sprite_index = sprite_ground_pound_get_up;}else
 	{
 		if (image_index>0)
 		{
@@ -16872,9 +16872,9 @@ if (ground_pound=2)
 else
 if (ground_pound=3)
 {
-	if (sprite_stomp_spin>noone){sprite_index=sprite_stomp_spin;}else
-	if (sprite_jump>noone){sprite_index=sprite_jump;}else
-	{sprite_index=sprite_stand;}
+	if (sprite_stomp_spin>noone){sprite_index = sprite_stomp_spin;}else
+	if (sprite_jump>noone){sprite_index = sprite_jump;}else
+	{sprite_index = sprite_stand;}
 	if (image_index>image_number-1)
 	{
 		image_speed=0;
@@ -16890,13 +16890,13 @@ if (asset_get_type("obj_wall")==asset_object)
 and(place_meeting(x,y+1,obj_wall))
 or(asset_get_type("obj_semisolid_platform")==asset_object)
 and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-and(vspeed>=0)
+and(vspeed=0)
 or(asset_get_type("obj_semisolid_platform")==asset_object)
 and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-and(vspeed>=0)
+and(vspeed=0)
 or(asset_get_type("obj_semisolid_platform")==asset_object)
 and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
-and(vspeed>=0)
+and(vspeed=0)
 {
 
 #region /*Skidding*/
@@ -16931,46 +16931,48 @@ and(key_left)
 		if (asset_get_type("obj_ice_block")==asset_object)
 		and(place_meeting(x,y+1,obj_ice_block))
 		{
-			if (sprite_skidding_ice>noone){sprite_index=sprite_skidding_ice;image_speed=0.5;}else
-			if (sprite_skidding>noone){sprite_index=sprite_skidding;image_speed=0.5;}else
-			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_skidding_ice>noone){sprite_index = sprite_skidding_ice;image_speed=0.5;}else
+			if (sprite_skidding>noone){sprite_index = sprite_skidding;image_speed=0.5;}else
+			if (sprite_run>noone){sprite_index = sprite_run;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
+			{sprite_index = sprite_stand;}
 		}
 		else
 		{
-			if (sprite_skidding>noone){sprite_index=sprite_skidding;image_speed=0.5;}else
-			if (abs(hspeed)>20)and(sprite_run4>noone){sprite_index=sprite_run4;}else
-			if (abs(hspeed)>15)and(sprite_run3>noone){sprite_index=sprite_run3;}else
-			if (abs(hspeed)>10)and(sprite_run2>noone){sprite_index=sprite_run2;}else
-			if (abs(hspeed)>5)and(sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_skidding>noone){sprite_index = sprite_skidding;image_speed=0.5;}else
+			if (abs(hspeed)>20)and(sprite_run4>noone){sprite_index = sprite_run4;}else
+			if (abs(hspeed)>15)and(sprite_run3>noone){sprite_index = sprite_run3;}else
+			if (abs(hspeed)>10)and(sprite_run2>noone){sprite_index = sprite_run2;}else
+			if (abs(hspeed)>5)and(sprite_run>noone){sprite_index = sprite_run;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
+			{sprite_index = sprite_stand;}
 		}
 		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
 	}
 }
 #endregion /*Skidding END*/
 
-#region /*Skidding Stop*/
 else
+
+#region /*Skidding Stop*/
 if (hspeed<0)
 and(!key_left)
 or(hspeed>0)
 and(!key_right)
 {
-	if (sprite_skidding_stop>noone){sprite_index=sprite_skidding_stop;image_speed=0.5;}else
-	if (abs(hspeed)>20)and(sprite_run4>noone){sprite_index=sprite_run4;image_speed=speed/10+0.1;}else
-	if (abs(hspeed)>15)and(sprite_run3>noone){sprite_index=sprite_run3;image_speed=speed/10+0.1;}else
-	if (abs(hspeed)>10)and(sprite_run2>noone){sprite_index=sprite_run2;image_speed=speed/10+0.1;}else
-	if (abs(hspeed)>5)and(sprite_run>noone){sprite_index=sprite_run;image_speed=speed/10+0.1;}else
-	if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;image_speed=speed/10+0.1;}else
-	{sprite_index=sprite_stand;image_speed=0.5;}
+	if (sprite_skidding_stop>noone){sprite_index = sprite_skidding_stop;image_speed=0.5;}else
+	if (abs(hspeed)>20)and(sprite_run4>noone){sprite_index = sprite_run4;image_speed=speed/10+0.1;}else
+	if (abs(hspeed)>15)and(sprite_run3>noone){sprite_index = sprite_run3;image_speed=speed/10+0.1;}else
+	if (abs(hspeed)>10)and(sprite_run2>noone){sprite_index = sprite_run2;image_speed=speed/10+0.1;}else
+	if (abs(hspeed)>5)and(sprite_run>noone){sprite_index = sprite_run;image_speed=speed/10+0.1;}else
+	if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;image_speed=speed/10+0.1;}else
+	{sprite_index = sprite_stand;image_speed=0.5;}
 }
 #endregion /*Skidding Stop END*/
 
-/*Look Up*/
 else
+
+#region /*Look Up*/
 if (hspeed=0)
 and(key_up)
 and(!key_down)
@@ -16978,14 +16980,14 @@ and(can_move=true)
 {
 	if (look_up_start_animation=true)
 	{
-		if (sprite_look_up_start>noone){sprite_index=sprite_look_up_start;}else
-		if (sprite_look_up>noone){sprite_index=sprite_look_up;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_look_up_start>noone){sprite_index = sprite_look_up_start;}else
+		if (sprite_look_up>noone){sprite_index = sprite_look_up;}else
+		{sprite_index = sprite_stand;}
 	}
 	else
 	{
-		if (sprite_look_up>noone){sprite_index=sprite_look_up;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_look_up>noone){sprite_index = sprite_look_up;}else
+		{sprite_index = sprite_stand;}
 	}
 	if (image_index>image_number-1)
 	and(look_up_start_animation=true)
@@ -16996,9 +16998,11 @@ and(can_move=true)
 	image_speed=0.3;
 	mask_index=sprite_mask;
 }
+#endregion /*Look Up END*/
+
+else
 
 #region /*Stand*/
-else
 if (hspeed=0)
 and(!key_left)
 and(!key_right)
@@ -17007,20 +17011,20 @@ and(!key_right)
 	if (asset_get_type("obj_bump_in_ground")==asset_object)
 	and(place_meeting(x,y+1,obj_bump_in_ground))
 	{
-		if (sprite_standing_on_something>noone){sprite_index=sprite_standing_on_something;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_standing_on_something>noone){sprite_index = sprite_standing_on_something;}else
+		{sprite_index = sprite_stand;}
 		image_speed=0.3;
 	}
 	else
 	if (global.weather="rain")
 	{
-		if (sprite_stand_cold>noone){sprite_index=sprite_stand_cold;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_stand_cold>noone){sprite_index = sprite_stand_cold;}else
+		{sprite_index = sprite_stand;}
 		image_speed=1;
 	}
 	else
 	{
-		sprite_index=sprite_stand;
+		sprite_index = sprite_stand;
 		image_speed=0.3;
 	}
 }
@@ -17037,41 +17041,41 @@ or(hspeed>-0.1)
 	{
 		//if (speeddash=true)
 		//{
-		//	sprite_index=sprite_run;
+		//	sprite_index = sprite_run;
 		//}
 		//else
 		if (abs(hspeed)>=20)
 		{
-			if (sprite_run4>noone){sprite_index=sprite_run4;}else
-			if (sprite_run3>noone){sprite_index=sprite_run3;}else
-			if (sprite_run2>noone){sprite_index=sprite_run2;}else
-			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_run4>noone){sprite_index = sprite_run4;}else
+			if (sprite_run3>noone){sprite_index = sprite_run3;}else
+			if (sprite_run2>noone){sprite_index = sprite_run2;}else
+			if (sprite_run>noone){sprite_index = sprite_run;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
+			{sprite_index = sprite_stand;}
 		}
 		else
 		if (abs(hspeed)>=15)
 		{
-			if (sprite_run3>noone){sprite_index=sprite_run3;}else
-			if (sprite_run2>noone){sprite_index=sprite_run2;}else
-			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_run3>noone){sprite_index = sprite_run3;}else
+			if (sprite_run2>noone){sprite_index = sprite_run2;}else
+			if (sprite_run>noone){sprite_index = sprite_run;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
+			{sprite_index = sprite_stand;}
 		}
 		else
 		if (abs(hspeed)>=10)
 		{
-			if (sprite_run2>noone){sprite_index=sprite_run2;}else
-			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_run2>noone){sprite_index = sprite_run2;}else
+			if (sprite_run>noone){sprite_index = sprite_run;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
+			{sprite_index = sprite_stand;}
 		}
 		else
 		if (abs(hspeed)>=5)
 		{
-			if (sprite_run>noone){sprite_index=sprite_run;}else
-			if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_run>noone){sprite_index = sprite_run;}else
+			if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
+			{sprite_index = sprite_stand;}
 		}
 
 		/*Against Wall*/
@@ -17096,8 +17100,8 @@ or(hspeed>-0.1)
 			{
 				if (crouch=false)
 				{
-					if (sprite_against_wall>noone){sprite_index=sprite_against_wall;image_speed=0.5;}else
-					{sprite_index=sprite_stand;image_speed=0.3;}
+					if (sprite_against_wall>noone){sprite_index = sprite_against_wall;image_speed=0.5;}else
+					{sprite_index = sprite_stand;image_speed=0.3;}
 				}
 				if (asset_get_type("snd_bump")==asset_sound)
 				{
@@ -17111,8 +17115,8 @@ or(hspeed>-0.1)
 			/*Walk*/
 			else
 			{
-				if (sprite_walk>noone)and(hspeed<>0){sprite_index=sprite_walk;}else
-				{sprite_index=sprite_stand}
+				if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
+				{sprite_index = sprite_stand}
 			}
 		}
 		if (asset_get_type("obj_ice_block")==asset_object)
@@ -17146,17 +17150,17 @@ if (!place_meeting(x,y+1,obj_wall))
 {
 	if (burnt>0)
 	{
-		if (sprite_burnt>noone){sprite_index=sprite_burnt;}else
-		if (sprite_die>noone){sprite_index=sprite_die;}else
-		if (sprite_jump>noone){sprite_index=sprite_jump;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_burnt>noone){sprite_index = sprite_burnt;}else
+		if (sprite_die>noone){sprite_index = sprite_die;}else
+		if (sprite_jump>noone){sprite_index = sprite_jump;}else
+		{sprite_index = sprite_stand;}
 	}
 	else
 	if (dive=true)
 	{
-		if (sprite_dive>noone){sprite_index=sprite_dive;}else
-		if (sprite_jump>noone){sprite_index=sprite_jump;}else
-		{sprite_index=sprite_stand;}
+		if (sprite_dive>noone){sprite_index = sprite_dive;}else
+		if (sprite_jump>noone){sprite_index = sprite_jump;}else
+		{sprite_index = sprite_stand;}
 		if (image_index>image_number-1)
 		{
 			image_speed=0;
@@ -17177,14 +17181,14 @@ and(vspeed>=0)
 	{
 		if (vspeed>0)
 		{
-			if (sprite_wall_slide_down>noone){sprite_index=sprite_wall_slide_down;}else
-			if (sprite_wall_slide>noone){sprite_index=sprite_wall_slide;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_wall_slide_down>noone){sprite_index = sprite_wall_slide_down;}else
+			if (sprite_wall_slide>noone){sprite_index = sprite_wall_slide;}else
+			{sprite_index = sprite_stand;}
 		}
 		else
 		{
-			if (sprite_wall_slide>noone){sprite_index=sprite_wall_slide;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_wall_slide>noone){sprite_index = sprite_wall_slide;}else
+			{sprite_index = sprite_stand;}
 			image_speed=0.5;
 		}
 	}
@@ -17194,9 +17198,9 @@ if (vspeed<0)
 {
 if (stomp_spin=true)
 {
-	if (sprite_stomp_spin>noone){sprite_index=sprite_stomp_spin;}else
-	if (sprite_jump>noone){sprite_index=sprite_jump;}else
-	{sprite_index=sprite_stand;}
+	if (sprite_stomp_spin>noone){sprite_index = sprite_stomp_spin;}else
+	if (sprite_jump>noone){sprite_index = sprite_jump;}else
+	{sprite_index = sprite_stand;}
 	if (image_index>image_number-1)
 	{
 		image_speed=0;
@@ -17215,7 +17219,7 @@ if (spring>=2)
 	}
 	else
 	{
-		sprite_index=sprite_stomp_spin;
+		sprite_index = sprite_stomp_spin;
 	}
 	if (image_index>image_number-1)
 	{
@@ -17235,9 +17239,9 @@ if (stick_to_wall=true)
 	and(ground_pound=false)
 	and(ledge_grab=false)
 	{
-		if(sprite_wall_slide_up>noone){sprite_index=sprite_wall_slide_up;}else
-		if(sprite_wall_slide>noone){sprite_index=sprite_wall_slide;}else
-		{sprite_index=sprite_stand;}
+		if(sprite_wall_slide_up>noone){sprite_index = sprite_wall_slide_up;}else
+		if(sprite_wall_slide>noone){sprite_index = sprite_wall_slide;}else
+		{sprite_index = sprite_stand;}
 		image_speed=0.5;
 	}
 }
@@ -17287,8 +17291,8 @@ else
 			}
 			else
 			{
-				if (sprite_jump>noone){sprite_index=sprite_jump;}else
-				{sprite_index=sprite_stand;}
+				if (sprite_jump>noone){sprite_index = sprite_jump;}else
+				{sprite_index = sprite_stand;}
 			}
 		}
 		else
@@ -17304,8 +17308,8 @@ else
 		}
 		else
 		{
-			if (sprite_jump>noone){sprite_index=sprite_jump;}else
-			{sprite_index=sprite_stand;}
+			if (sprite_jump>noone){sprite_index = sprite_jump;}else
+			{sprite_index = sprite_stand;}
 		}
 	}
 
@@ -17313,9 +17317,9 @@ else
 else
 if (jump=2)
 {
-	if (sprite_double_jump>noone){sprite_index=sprite_double_jump;}else
-	if (sprite_jump>noone){sprite_index=sprite_jump;}else
-	{sprite_index=sprite_stand;}
+	if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
+	if (sprite_jump>noone){sprite_index = sprite_jump;}else
+	{sprite_index = sprite_stand;}
 	image_speed=0.5;
 }
 #endregion /*Double Jump END*/
@@ -17324,9 +17328,9 @@ if (jump=2)
 else
 if (jump>2)
 {
-	if(sprite_triple_jump>noone){sprite_index=sprite_triple_jump;}else
-	if(sprite_jump>noone){sprite_index=sprite_jump;}else
-	{sprite_index=sprite_stand;}
+	if(sprite_triple_jump>noone){sprite_index = sprite_triple_jump;}else
+	if(sprite_jump>noone){sprite_index = sprite_jump;}else
+	{sprite_index = sprite_stand;}
 }
 if (image_index>image_number-1)
 {
@@ -17359,24 +17363,24 @@ and(spring=false)
 			}
 			else
 			{
-				if (sprite_fall>noone){sprite_index=sprite_fall;}else
-				if (sprite_fall_slower>noone){sprite_index=sprite_fall_slower;}else
-				{sprite_index=sprite_stand;}
+				if (sprite_fall>noone){sprite_index = sprite_fall;}else
+				if (sprite_fall_slower>noone){sprite_index = sprite_fall_slower;}else
+				{sprite_index = sprite_stand;}
 			}
 		}
 		else
 		{
 			if (key_jump_hold)
 			{
-				if (sprite_fall_slower>noone){sprite_index=sprite_fall_slower;}else
-				if (sprite_fall>noone){sprite_index=sprite_fall;}else
-				{sprite_index=sprite_stand;}
+				if (sprite_fall_slower>noone){sprite_index = sprite_fall_slower;}else
+				if (sprite_fall>noone){sprite_index = sprite_fall;}else
+				{sprite_index = sprite_stand;}
 			}
 			else
 			{
-				if (sprite_fall>noone){sprite_index=sprite_fall;}else
-				if (sprite_fall_slower>noone){sprite_index=sprite_fall_slower;}else
-				{sprite_index=sprite_stand;}
+				if (sprite_fall>noone){sprite_index = sprite_fall;}else
+				if (sprite_fall_slower>noone){sprite_index = sprite_fall_slower;}else
+				{sprite_index = sprite_stand;}
 			}
 			if (image_index>image_number-1)
 			{

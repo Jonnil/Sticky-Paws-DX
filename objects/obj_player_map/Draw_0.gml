@@ -1,9 +1,4 @@
-#region /*Set screen size*/
-camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current])); /*View Border*/
-camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
-camera_set_view_target(view_camera[view_current], self);
-display_set_gui_size(window_get_width(), window_get_height());
-#endregion /*Set screen size END*/
+scr_set_screen_size();
 
 #region /*Set what controls are used to navigate the menus*/
 
@@ -1575,11 +1570,7 @@ and(move_delay > 10)
 		#region /*Show High Score*/
 		if (instance_nearest(x, y, obj_level).level_score > 0)
 		{
-			draw_text_transformed_colour(x - 2, y - 96, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-			draw_text_transformed_colour(x + 2, y - 96, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-			draw_text_transformed_colour(x, y - 96 - 2, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-			draw_text_transformed_colour(x, y - 96 + 2, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-			draw_text_transformed_colour(x, y - 96, "High Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+			draw_text_outlined(x, y - 64, "Best Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_white, c_black, 1);
 		}
 		#endregion /*Show High Score END*/
 
@@ -1587,11 +1578,7 @@ and(move_delay > 10)
 		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
 		and(instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
 		{
-			draw_text_transformed_colour(x - 2, y - 64, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
-			draw_text_transformed_colour(x + 2, y - 64, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
-			draw_text_transformed_colour(x, y - 64 - 2, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
-			draw_text_transformed_colour(x, y - 64 + 2, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
-			draw_text_transformed_colour(x, y - 64, "Fastest Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+			draw_text_outlined(x, y - 96, "Best Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show Fastest Time END*/
 

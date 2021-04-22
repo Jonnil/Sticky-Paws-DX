@@ -37,7 +37,7 @@ else
 		gravity_direction=270;/*Direction of the gravity*/
 		gravity=0.5;/*The gravity*/
 		image_speed=0.5;
-		sprite_index=sprite_enemy_flat;
+		sprite_index = sprite_enemy_flat;
 		if (image_index>image_number-1)
 		{
 			effect_create_above(ef_smoke,x,y,2,c_white);

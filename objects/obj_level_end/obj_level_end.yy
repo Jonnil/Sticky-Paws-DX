@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Level Editor Objects",
-    "path": "folders/Objects/Level Editor Objects.yy",
+    "name": "Editor Objects",
+    "path": "folders/Objects/Editor Objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_level_end",

@@ -142,7 +142,7 @@ key_a_pressed=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_presse
 key_b_pressed=(gamepad_button_check_pressed(0,gp_face2))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_escape))or(keyboard_check_pressed(vk_backspace));
 /*Keyboard Controls END*/
 
-/*Quit Game trough pause menu*/
+#region /*Quit Game trough pause menu*/
 if (global.convention_mode=false)
 and(can_remap_key=false)
 and(input_key=false)
@@ -168,7 +168,7 @@ and(menu_delay=0)
 		}
 	}
 }
-/*Quit Game trough pause menu END*/
+#endregion /*Quit Game trough pause menu END*/
 
 /*Play Title Screen Music*/if (asset_get_type("snd_music_titlescreen")==asset_sound){audio_sound_gain(snd_music_titlescreen,global.music_volume,0);}/*Play Title Screen Music END*/
 
@@ -313,168 +313,6 @@ if (asset_get_type("obj_camera")==asset_object)
 	}
 }
 #endregion /*Create Camera END*/
-
-draw_set_halign(fa_center);
-draw_set_valign(fa_center);
-
-#region /*Quit to Desktop menu*/
-if (menu = "quit_game_no")
-or(menu = "quit_game_yes")
-{
-	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 1.9, c_white, c_black, 1);
-		
-	#region /*Quit No*/
-	if (point_in_rectangle(mouse_x, mouse_y,
-	window_get_width() / 2 - 370,
-	window_get_height() / 2 - 42,
-	window_get_width() / 2 + 370,
-	window_get_height() / 2 + 42))
-	and(global.controls_used_for_menu_navigation="mouse")
-	{
-		if (mouse_check_button(mb_left))
-		and(menu_delay = 0)
-		{
-			menu = "quit_game_no";
-		}
-		draw_sprite_ext(spr_menu_button,0,
-		window_get_width() / 2 - 370,
-		window_get_height() / 2,
-		2,2,0,c_lime,1);
-	}
-	else
-	{
-		if (menu="quit_game_no")
-		and(global.controls_used_for_menu_navigation="keyboard")
-		{
-			draw_sprite_ext(spr_menu_button,0,
-			window_get_width() / 2 - 370,
-			window_get_height() / 2,
-			2,2,0,c_gray,1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_menu_button,0,
-			window_get_width() / 2 - 370,
-			window_get_height() / 2,
-			2,2,0,c_white,1);
-		}
-	}
-	draw_text_outlined(
-	window_get_width() / 2,
-	window_get_height() / 2,
-	"NO", global.default_text_size * 2.3, c_white, c_black, 1);
-	
-	if (menu = "quit_game_no")
-	{		
-		if (point_in_rectangle(mouse_x, mouse_y,
-		window_get_width() / 2 - 370,
-		window_get_height() / 2 - 42,
-		window_get_width() / 2 + 370,
-		window_get_height() / 2 + 42))
-		and(mouse_check_button_pressed(mb_left))
-		and(menu_delay = 0)
-		or(key_a_pressed)
-		and(menu_delay = 0)
-		{
-			menu_delay = 3;
-			menu = "quit_to_desktop"; /*Return to overall quit menu*/
-		}
-		if (key_up)
-		and(!key_down)
-		and(menu_delay <= 0)
-		or(key_down)
-		and(!key_up)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 3;
-			menu = "quit_game_yes";
-		}
-	}
-	#endregion /*Quit No END*/
-	
-	#region /*Quit Yes*/
-	if (point_in_rectangle(mouse_x, mouse_y,
-	window_get_width() / 2 - 370,
-	window_get_height() / 2 + 84 - 42,
-	window_get_width() / 2 + 370,
-	window_get_height() / 2 + 84 + 42))
-	and(global.controls_used_for_menu_navigation="mouse")
-	{
-		if (mouse_check_button(mb_left))
-		and(menu_delay = 0)
-		{
-			menu = "quit_game_yes";
-		}
-		draw_sprite_ext(spr_menu_button,0,
-		window_get_width() / 2 - 370,
-		window_get_height() / 2 + 84,
-		2,2,0,c_lime,1);
-	}
-	else
-	{
-		if (menu="quit_game_yes")
-		and(global.controls_used_for_menu_navigation="keyboard")
-		{
-			draw_sprite_ext(spr_menu_button,0,
-			window_get_width() / 2 - 370,
-			window_get_height() / 2 + 84,
-			2,2,0,c_gray,1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_menu_button,0,
-			window_get_width() / 2 - 370,
-			window_get_height() / 2 + 84,
-			2,2,0,c_white,1);
-		}
-	}
-	draw_text_outlined(
-	window_get_width() / 2,
-	window_get_height() / 2 + 84,
-	"YES", global.default_text_size * 2.3, c_white, c_black, 1);
-
-	if (menu = "quit_game_yes")
-	{
-		if (point_in_rectangle(mouse_x, mouse_y,
-		window_get_width() / 2 - 370,
-		window_get_height() / 2 + 84 - 42,
-		window_get_width() / 2 + 370,
-		window_get_height() / 2 + 84 + 42))
-		and(mouse_check_button_pressed(mb_left))
-		and(menu_delay = 0)
-		or(key_a_pressed)
-		and(menu_delay = 0)
-		{
-			game_end();
-		}
-		if (key_up)
-		and(!key_down)
-		and(menu_delay <= 0)
-		or(key_down)
-		and(!key_up)
-		and(menu_delay <= 0)
-		{
-			menu_delay = 1;
-			menu = "quit_game_no";
-		}
-	}
-	#endregion /*Quit Yes END*/
-	
-	#region /*Return to game*/
-	if (menu = "quit_game_no")
-	or(menu = "quit_game_yes")
-	{
-		if (key_b_pressed)
-		and(menu_delay = 0)
-		{
-			menu_delay = 3;
-			menu = "quit_to_desktop";
-		}
-	}
-	#endregion /*Return to game END*/
-	
-}
-#endregion /*Quit to Desktop menu END*/
 
 #region /*Darker background when deleting files*/
 if (menu="file1delete")
@@ -1499,8 +1337,6 @@ and(!file_exists(working_directory+"/Custom Levels/Level"+string(global.level_ed
 #endregion /*If level files doesn't exist and the menu is somehow on play/delete, the menu should be on level select END*/
 
 #endregion /*Level Editor Menu END*/
-
-scr_options_menu(); /*Options*/
 
 scr_character_select_menu(); /*Character Select*/
 
@@ -3137,13 +2973,3 @@ if (!window_has_focus())
 	draw_set_alpha(1);
 }
 #endregion /*If Window is unfocused, darken the screen END*/
-
-#region /*Draw mouse cursor for menu navigation*/
-if (window_has_focus())
-and(global.controls_used_for_menu_navigation="mouse")
-and(os_type!=os_ios)
-and(os_type!=os_android)
-{
-	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
-}
-#endregion /*Draw mouse cursor for menu navigation END*/

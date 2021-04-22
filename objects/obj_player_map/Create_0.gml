@@ -13,7 +13,6 @@ if (asset_get_type("spr_wall") == asset_sprite)
 {
 	mask_index = spr_wall;
 }
-global.time_countdown = 500;
 global.player_has_entered_goal = false;
 global.quit_level = false;
 global.quit_to_map = false;
