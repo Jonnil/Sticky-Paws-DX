@@ -19,6 +19,7 @@ if (quit_level_editor = false)
 	if (pause=true)
 	and(quit_level_editor<=0)
 	{
+		
 		#region /*Make Background Darker*/
 		draw_set_alpha(0.9);
 		draw_rectangle_colour(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
@@ -946,7 +947,7 @@ if (quit_level_editor = false)
 	}
 	#endregion /*Undo and Redo icons END*/
 
-	/*Click icons at bottom of screen*/
+	#region /*Click icons at bottom of screen*/
 	if (show_icons_at_bottom = true)
 	and(pause = false)
 	{
@@ -1205,6 +1206,7 @@ if (quit_level_editor = false)
 	#endregion /*Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard END*/
 
 	}
+	#endregion /*Click icons at bottom of screen END*/
 
 	#region /*Click icons at top of screen*/
 

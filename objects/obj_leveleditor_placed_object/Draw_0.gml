@@ -3,6 +3,11 @@ key_a_pressed=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_presse
 key_a_released=(gamepad_button_check_released(0,gp_face1))or(keyboard_check_released(global.player1_key_jump));
 key_b=(gamepad_button_check(0,gp_face2))or(keyboard_check(global.player1_key_sprint));
 
+if (object = 73)
+{
+	object = "water";
+}
+
 #region /*if current undo value is less than this objects undo value, then delete this object*/
 if (asset_get_type("obj_leveleditor")==asset_object)
 and(instance_exists(obj_leveleditor))
@@ -797,8 +802,21 @@ and(delay>1)
 				}
 				#endregion /*Change Oneway Direction END*/
 				
-				#region /*Change Clipped Clothing on Rope*/
+				#region /*Change Water Rope*/
+				if (object = "water")
+				{
+					object = "water_surface";
+				}
 				else
+				if (object = "water_surface")
+				{
+					object = "water";
+				}
+				#endregion /*Change Water END*/
+				
+				else
+				
+				#region /*Change Clipped Clothing on Rope*/
 				if (object=74)
 				{
 					object=75;
@@ -1400,7 +1418,41 @@ if (global.play_edited_level=true)
 		if (object=71)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=270;}instance_destroy();}
 		#endregion /*Oneway END*/
 		if (object=72)and(asset_get_type("obj_horizontal_rope")==asset_object){instance_create_depth(x,y,0,obj_horizontal_rope);instance_destroy();}
-		if (object=73)and(asset_get_type("obj_water")==asset_object){instance_create_depth(x,y,0,obj_water);instance_destroy();}
+		
+		#region /*Create Water*/
+		if (object="water")
+		{
+			if (asset_get_type("obj_water")==asset_object)
+			{
+				with(instance_create_depth(x,y,0,obj_water))
+				{
+					if (asset_get_type("spr_water")==asset_sprite)
+					{
+						sprite_index = spr_water;
+					}
+				}
+			}
+			instance_destroy();
+		}
+		#endregion /*Create Water END*/
+		
+		#region /*Create Water Surface*/
+		if (object="water_surface")
+		{
+			if (asset_get_type("obj_water")==asset_object)
+			{
+				with(instance_create_depth(x,y,0,obj_water))
+				{
+					if (asset_get_type("spr_water_surface")==asset_sprite)
+					{
+						sprite_index = spr_water_surface;
+					}
+				}
+			}
+			instance_destroy();
+		}
+		#endregion /*Create Water Surface END*/
+		
 		if (object=74)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_shirt;}instance_destroy();}
 		if (object=75)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_pants;}instance_destroy();}
 		if (object=76)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_sock;}instance_destroy();}
@@ -1522,7 +1574,8 @@ if (object=70)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr
 if (object=71)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 270;mask_index = spr_wall;}
 #endregion /*Oneway END*/
 if (object=72)and(asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_index=spr_horizontal_rope;mask_index=spr_wall;}
-if (object=73)and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
+if (object=-73)or(object="water")and(asset_get_type("spr_water")==asset_sprite){sprite_index=spr_water;mask_index=spr_wall;}
+if (object=73)or(object="water_surface")and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
 if (object=74)and(asset_get_type("spr_clipped_shirt")==asset_sprite){sprite_index=spr_clipped_shirt;mask_index=spr_wall;}
 if (object=75)and(asset_get_type("spr_clipped_pants")==asset_sprite){sprite_index=spr_clipped_pants;mask_index=spr_wall;}
 if (object=76)and(asset_get_type("spr_clipped_sock")==asset_sprite){sprite_index=spr_clipped_sock;mask_index=spr_wall;}

@@ -96,6 +96,7 @@ if (y<camera_get_view_y(view_camera[view_current]))
 
 #region /*Draw arrow when player is outside bottom view*/
 if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
+and(y<room_height)
 {
 	draw_set_colour(c_black);
 	draw_arrow(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-16,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+2,30);

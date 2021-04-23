@@ -174,7 +174,12 @@ and(startup_loading_timer>10)
 	instance_activate_all();
 	if (global.deactivate_objects_outsiede_view=true)
 	{
-		instance_deactivate_region(camera_get_view_x(view_camera[view_current])-128,camera_get_view_y(view_camera[view_current])-128,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])+256,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+256,false,true);
+		instance_deactivate_region(
+		camera_get_view_x(view_camera[view_current])-32,
+		camera_get_view_y(view_camera[view_current])-32,
+		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])+32,
+		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+32,
+		false,true);
 	}
 }
 else

@@ -284,7 +284,7 @@ if (global.character_select_in_this_menu="game")
 				str_temp += string_char_at(str, str_pos);
 				str_pos += 1;
 			}
-			val[num] = real(str_temp);
+			val[num] = string(str_temp);
 			str_temp = "";
 			str_pos += 1;
 			num += 1;
@@ -341,7 +341,7 @@ if (global.character_select_in_this_menu="game")
 				str_temp += string_char_at(str, str_pos);
 				str_pos += 1;
 			}
-			val[num] = real(str_temp);
+			val[num] = string(str_temp);
 			str_temp = "";
 			str_pos += 1;
 			num += 1;
@@ -472,7 +472,7 @@ if (global.character_select_in_this_menu="level_editor")
 					str_temp += string_char_at(str, str_pos);
 					str_pos += 1;
 				}
-				val[num] = real(str_temp);
+				val[num] = string(str_temp);
 				str_temp = "";
 				str_pos += 1;
 				num += 1;
@@ -529,7 +529,7 @@ if (global.character_select_in_this_menu="level_editor")
 					str_temp += string_char_at(str, str_pos);
 					str_pos += 1;
 				}
-				val[num] = real(str_temp);
+				val[num] = string(str_temp);
 				str_temp = "";
 				str_pos += 1;
 				num += 1;
