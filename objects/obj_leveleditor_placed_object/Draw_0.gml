@@ -1284,8 +1284,13 @@ and (delay>1)
 	#region /*Drag the object*/
 	if (drag_object=true)
 	{
+		depth = -110;
 		x=obj_leveleditor.x;
 		y=obj_leveleditor.y;
+	}
+	else
+	{
+		depth = +110;
 	}
 	#endregion /*Drag the object END*/
 	

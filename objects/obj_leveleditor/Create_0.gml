@@ -1,4 +1,4 @@
-depth = -30;
+depth = -300;
 
 #region /*Mouse x and mouse y initializing*/
 mx = mouse_x;
