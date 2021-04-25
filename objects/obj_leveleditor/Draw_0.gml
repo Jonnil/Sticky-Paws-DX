@@ -162,14 +162,14 @@ layer_y(layer_get_id("Background_4"),camera_get_view_y(view_camera[view_current]
 #endregion /*Parallax Scrolling Background END*/
 
 #region /*Deactivate instances outside view*/
-if (startup_loading_timer<11)
+if (startup_loading_timer<=3)
 {
 	startup_loading_timer+=1;
 }
 
 if (quit_level_editor=0)
 and(global.play_edited_level=false)
-and(startup_loading_timer>10)
+and(startup_loading_timer>=3)
 {
 	instance_activate_all();
 	if (global.deactivate_objects_outsiede_view=true)
@@ -239,43 +239,43 @@ key_b_released=(gamepad_button_check_released(0,gp_face2))or(keyboard_check_rele
 
 #region /*List of Placable Objects*/
 total_number_of_objects=36;/*This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
-if (selected_object=0){place_object=1;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_wall")==asset_sprite){sprite_index=spr_wall;}mask_index=spr_wall;}
-if (selected_object=1){place_object=2;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_spikes")==asset_sprite){sprite_index=spr_spikes;}mask_index=spr_wall;}
-if (selected_object=2){place_object=3;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_semisolid_platform")==asset_sprite){sprite_index=spr_semisolid_platform;}mask_index=spr_wall;}
-if (selected_object=3){place_object=4;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;}mask_index=spr_wall;}
-if (selected_object=4){place_object=11;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;}mask_index=spr_wall;}
-if (selected_object=5){place_object=18;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_hard_block")==asset_sprite){sprite_index=spr_hard_block;}mask_index=spr_wall;}
-if (selected_object=6){place_object=19;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_falling_block")==asset_sprite){sprite_index=spr_falling_block;}mask_index=spr_wall;}
-if (selected_object=7){place_object=21;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_falling_block_long")==asset_sprite){sprite_index=spr_falling_block_long;}if (asset_get_type("spr_cardboard")==asset_sprite){mask_index=spr_cardboard;}}
-if (selected_object=8){place_object=23;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_cloud_block")==asset_sprite){sprite_index=spr_cloud_block;}mask_index=spr_wall;}
-if (selected_object=9){place_object=24;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_ice_block")==asset_sprite){sprite_index=spr_ice_block;}mask_index=spr_wall;}
-if (selected_object=10){place_object=25;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_cardboard_block")==asset_sprite){sprite_index=spr_cardboard_block;}mask_index=spr_wall;}
-if (selected_object=11){place_object=26;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_cardboard")==asset_sprite){sprite_index=spr_cardboard;}if (asset_get_type("spr_cardboard")==asset_sprite){mask_index=spr_cardboard;}}
-if (selected_object=12){place_object=27;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_cardboard_long")==asset_sprite){sprite_index=spr_cardboard_long;}if (asset_get_type("spr_cardboard_long")==asset_sprite){mask_index=spr_cardboard_long;}}
-if (selected_object=13){place_object=28;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;}mask_index=spr_wall;}
-if (selected_object=14){place_object=40;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;}mask_index=spr_wall;}
-if (selected_object=15){place_object=48;can_make_place_brush_size_bigger=false;if (asset_get_type("spr_big_collectible")==asset_sprite){sprite_index=spr_big_collectible;}mask_index=spr_wall;}
-if (selected_object=16){place_object=53;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_heart")==asset_sprite){sprite_index=spr_heart;}mask_index=spr_wall;}
-if (selected_object=17){place_object=54;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_hp_pickup")==asset_sprite){sprite_index=spr_hp_pickup;}mask_index=spr_wall;}
-if (selected_object=18){place_object=55;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){sprite_index=spr_invincibility_powerup;}mask_index=spr_wall;}
-if (selected_object=19){place_object=56;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_1up")==asset_sprite){sprite_index=spr_1up;}mask_index=spr_wall;}
-if (selected_object=20){place_object=59;can_make_place_brush_size_bigger=true;sprite_index = sprite_enemy1;mask_index=spr_wall;}
-if (selected_object=21){place_object=60;can_make_place_brush_size_bigger=true;sprite_index = sprite_enemy2;mask_index=spr_wall;}
-if (selected_object=22){place_object=61;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_blaster")==asset_sprite){sprite_index=spr_blaster;}mask_index=spr_wall;}
-if (selected_object=23){place_object=62;can_make_place_brush_size_bigger=false;if (asset_get_type("spr_spring")==asset_sprite){sprite_index=spr_spring;}mask_index=spr_wall;}
-if (selected_object=24){place_object=63;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_ladder")==asset_sprite){sprite_index=spr_ladder;}mask_index=spr_wall;}
-if (selected_object=25){place_object=64;can_make_place_brush_size_bigger=false;if (asset_get_type("spr_arrow_sign")==asset_sprite){if (!place_meeting(x,y,obj_leveleditor_placed_object))and(erase_mode=false){draw_sprite_ext(spr_arrow_sign,0,x,y,1,1,0,c_white,0.2);}sprite_index=noone;}mask_index=spr_2x2_block;}
-if (selected_object=26){place_object=65;can_make_place_brush_size_bigger=false;if (asset_get_type("spr_arrow_sign_small")==asset_sprite){if (!place_meeting(x,y,obj_leveleditor_placed_object))and(erase_mode=false){draw_sprite_ext(spr_arrow_sign_small,0,x,y,0.5,0.5,0,c_white,0.2);}sprite_index=noone;}mask_index=spr_2x2_block;}
-if (selected_object=27){place_object=66;can_make_place_brush_size_bigger=false;if (asset_get_type("spr_checkpoint")==asset_sprite){if (!place_meeting(x,y,obj_leveleditor_placed_object))and(erase_mode=false){draw_sprite_ext(spr_checkpoint,0,x,y,1,1,0,c_white,0.2);}sprite_index=noone;}mask_index=spr_2x2_block;}
-if (selected_object=28){place_object=67;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;}mask_index=spr_wall;}
-if (selected_object=29){place_object=68;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_oneway")==asset_sprite){sprite_index=spr_oneway;}if (asset_get_type("spr_oneway")==asset_sprite){mask_index=spr_oneway;}}
-if (selected_object=30){place_object=72;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_index=spr_horizontal_rope;}mask_index=spr_wall;}
-if (selected_object=31){place_object=73;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;}mask_index=spr_wall;}
-if (selected_object=32){place_object=74;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_clipped_shirt")==asset_sprite){sprite_index=spr_clipped_shirt;}mask_index=spr_wall;}
-if (selected_object=33){place_object=77;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;}mask_index=spr_wall;}
-if (selected_object=34){place_object=89;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bird")==asset_sprite){sprite_index=spr_bird;}mask_index=spr_wall;}
-if (selected_object=35){place_object=90;can_make_place_brush_size_bigger=true;if (asset_get_type("spr_sign_crouch")==asset_sprite){sprite_index=spr_sign_crouch;}mask_index=spr_wall;}
-if (selected_object=36){place_object=95;can_make_place_brush_size_bigger=false;if (asset_get_type("spr_boss_stand")==asset_sprite){sprite_index=spr_boss_stand;}mask_index=spr_wall;}
+if (selected_object=0){place_object="wall";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_wall")==asset_sprite){sprite_index=spr_wall;}mask_index=spr_wall;}
+if (selected_object=1){place_object="spikes";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_spikes")==asset_sprite){sprite_index=spr_spikes;}mask_index=spr_wall;}
+if (selected_object=2){place_object="semisolid_platform";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_semisolid_platform")==asset_sprite){sprite_index=spr_semisolid_platform;}mask_index=spr_wall;}
+if (selected_object=3){place_object="brick_block";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;}mask_index=spr_wall;}
+if (selected_object=4){place_object="question_block";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;}mask_index=spr_wall;}
+if (selected_object=5){place_object="hard_block";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_hard_block")==asset_sprite){sprite_index=spr_hard_block;}mask_index=spr_wall;}
+if (selected_object=6){place_object="falling_block";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_falling_block")==asset_sprite){sprite_index=spr_falling_block;}mask_index=spr_wall;}
+if (selected_object=7){place_object="falling_block_long";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_falling_block_long")==asset_sprite){sprite_index=spr_falling_block_long;}if (asset_get_type("spr_cardboard")==asset_sprite){mask_index=spr_cardboard;}}
+if (selected_object=8){place_object="cloud_block";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_cloud_block")==asset_sprite){sprite_index=spr_cloud_block;}mask_index=spr_wall;}
+if (selected_object=9){place_object="ice_block";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_ice_block")==asset_sprite){sprite_index=spr_ice_block;}mask_index=spr_wall;}
+if (selected_object=10){place_object="cardboard_block";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_cardboard_block")==asset_sprite){sprite_index=spr_cardboard_block;}mask_index=spr_wall;}
+if (selected_object=11){place_object="cardboard";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_cardboard")==asset_sprite){sprite_index=spr_cardboard;}if (asset_get_type("spr_cardboard")==asset_sprite){mask_index=spr_cardboard;}}
+if (selected_object=12){place_object="cardboard_long";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_cardboard_long")==asset_sprite){sprite_index=spr_cardboard_long;}if (asset_get_type("spr_cardboard_long")==asset_sprite){mask_index=spr_cardboard_long;}}
+if (selected_object=13){place_object="bump_in_ground";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;}mask_index=spr_wall;}
+if (selected_object=14){place_object="basic_collectible";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;}mask_index=spr_wall;}
+if (selected_object=15){place_object="big_collectible_1";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_big_collectible")==asset_sprite){sprite_index=spr_big_collectible;}mask_index=spr_wall;}
+if (selected_object=16){place_object="heart";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_heart")==asset_sprite){sprite_index=spr_heart;}mask_index=spr_wall;}
+if (selected_object=17){place_object="hp_pickup";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_hp_pickup")==asset_sprite){sprite_index=spr_hp_pickup;}mask_index=spr_wall;}
+if (selected_object=18){place_object="invincibility_powerup";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){sprite_index=spr_invincibility_powerup;}mask_index=spr_wall;}
+if (selected_object=19){place_object="1up";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_1up")==asset_sprite){sprite_index=spr_1up;}mask_index=spr_wall;}
+if (selected_object=20){place_object="enemy1";can_make_place_brush_size_bigger=true;sprite_index = sprite_enemy1;mask_index=spr_wall;}
+if (selected_object=21){place_object="enemy2";can_make_place_brush_size_bigger=true;sprite_index = sprite_enemy2;mask_index=spr_wall;}
+if (selected_object=22){place_object="blaster";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_blaster")==asset_sprite){sprite_index=spr_blaster;}mask_index=spr_wall;}
+if (selected_object=23){place_object="spring";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_spring")==asset_sprite){sprite_index=spr_spring;}mask_index=spr_wall;}
+if (selected_object=24){place_object="ladder";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_ladder")==asset_sprite){sprite_index=spr_ladder;}mask_index=spr_wall;}
+if (selected_object=25){place_object="arrow_sign";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_arrow_sign")==asset_sprite){if (!place_meeting(x,y,obj_leveleditor_placed_object))and(erase_mode=false){draw_sprite_ext(spr_arrow_sign,0,x,y,1,1,0,c_white,0.2);}sprite_index=noone;}mask_index=spr_2x2_block;}
+if (selected_object=26){place_object="arrow_sign_small";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_arrow_sign_small")==asset_sprite){if (!place_meeting(x,y,obj_leveleditor_placed_object))and(erase_mode=false){draw_sprite_ext(spr_arrow_sign_small,0,x,y,0.5,0.5,0,c_white,0.2);}sprite_index=noone;}mask_index=spr_2x2_block;}
+if (selected_object=27){place_object="checkpoint";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_checkpoint")==asset_sprite){if (!place_meeting(x,y,obj_leveleditor_placed_object))and(erase_mode=false){draw_sprite_ext(spr_checkpoint,0,x,y,1,1,0,c_white,0.2);}sprite_index=noone;}mask_index=spr_2x2_block;}
+if (selected_object=28){place_object="spikes_emerge_block";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;}mask_index=spr_wall;}
+if (selected_object=29){place_object="oneway";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_oneway")==asset_sprite){sprite_index=spr_oneway;}if (asset_get_type("spr_oneway")==asset_sprite){mask_index=spr_oneway;}}
+if (selected_object=30){place_object="horizontal_rope";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_index=spr_horizontal_rope;}mask_index=spr_wall;}
+if (selected_object=31){place_object="water";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;}mask_index=spr_wall;}
+if (selected_object=32){place_object="clipped_shirt";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_clipped_shirt")==asset_sprite){sprite_index=spr_clipped_shirt;}mask_index=spr_wall;}
+if (selected_object=33){place_object="bucket";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;}mask_index=spr_wall;}
+if (selected_object=34){place_object="bird";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bird")==asset_sprite){sprite_index=spr_bird;}mask_index=spr_wall;}
+if (selected_object=35){place_object="sign_crouch";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_sign_crouch")==asset_sprite){sprite_index=spr_sign_crouch;}mask_index=spr_wall;}
+if (selected_object=36){place_object="boss";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_boss_stand")==asset_sprite){sprite_index=spr_boss_stand;}mask_index=spr_wall;}
 #endregion /*List of Placable Objects End*/
 
 #region /*Change Brush Size. Key 187 = +. key 189 = -*/

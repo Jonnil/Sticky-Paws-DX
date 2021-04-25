@@ -258,6 +258,7 @@ global.hud_show_coins=false;
 global.hud_show_starcoins=false;
 global.hud_show_score=false;
 #endregion /*Hide certain HUD elements END*/
+
 global.playergame=0;/*Make the game singleplayer at the start of the game*/
 global.player_has_entered_goal=false;
 global.actually_play_edited_level=false;
@@ -609,6 +610,7 @@ menu_y_offset_real=0;/*This is the real y offset for the menu, used for menu scr
 menu_cursor_y_position=0;
 background_brightness_menu_lerp = 0;
 title_y = camera_get_view_y(view_camera[view_current])-700;
+title_logo_index = noone;
 show_title_logo = true;
 
 darken_settings_alpha = 0;

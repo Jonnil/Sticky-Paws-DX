@@ -1302,8 +1302,8 @@ if (!window_has_focus())
 	draw_rectangle_color(
 	0,
 	0,
-	window_get_width(),
-	window_get_height(),
+	window_get_width()*2,
+	window_get_height()*2,
 	c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
