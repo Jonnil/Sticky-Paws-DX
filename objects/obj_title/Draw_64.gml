@@ -283,7 +283,7 @@ if (title_logo_index>noone)
 {
 	draw_sprite_ext(title_logo_index,image_index,
 	window_get_width()/2,
-	window_get_height/2-100+title_y,
+	window_get_height()/2-100+title_y,
 	1,1,0,c_white,1);
 }
 
@@ -2403,7 +2403,7 @@ and(menu_delay=0)
 #region /*Start Game*/
 if (asset_get_type("obj_camera")==asset_object)
 and(instance_exists(obj_camera))
-and(obj_camera.iris_xscale<=0.001)
+and(iris_xscale<=0.001)
 {
 	
 	#region /*Play Level Editor*/
@@ -3139,3 +3139,69 @@ if (!window_has_focus())
 	draw_set_alpha(1);
 }
 #endregion /*If Window is unfocused, darken the screen END*/
+
+#region /*Draw Iris Transitions*/
+
+#region /*Iris Zooming*/
+if (menu_delay > 10)
+{
+	if (iris_zoom = 1)
+	{
+		iris_xscale = lerp(iris_xscale, 1, 0.15);
+		iris_yscale = lerp(iris_yscale, 1, 0.15);
+		if (iris_xscale <= 1.1)
+		{
+			iris_zoom = 0;
+		}
+	}
+	else
+	{
+		iris_xscale = lerp(iris_xscale, 0, 0.15);
+		iris_yscale = lerp(iris_yscale, 0, 0.15);
+		if (iris_xscale <= 1.1)
+		{
+			iris_zoom = 0;
+		}
+	}
+}
+
+else
+
+#region /*Zoom Out*/
+if (iris_zoom = 0)
+{
+	iris_xscale = lerp(iris_xscale, 1, 0.15);
+	iris_yscale = lerp(iris_yscale, 1, 0.15);
+	if (iris_xscale >= 0.99)
+	{
+		iris_zoom = 1;
+	}
+}
+else
+{
+	iris_xscale = lerp(iris_xscale, 32, 0.015);
+	iris_yscale = lerp(iris_yscale, 32, 0.015);
+	if (iris_xscale >= 0.99)
+	{
+		iris_zoom = 1;
+	}
+}
+#endregion /*Zoom Out End*/
+
+#endregion /*Iris Zooming END*/
+
+if (global.enable_transitions = true)
+{
+	if (iris_xscale < 15)
+	{
+		if (asset_get_type("spr_iris") == asset_sprite)
+		{
+			draw_sprite_ext(spr_iris, 0, window_get_width()/2, window_get_height()/2, iris_xscale, iris_yscale, 0, c_black, 1);
+		}
+		draw_rectangle_colour(0, 0, window_get_width()*2, window_get_height()/2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(0, 0, window_get_width()/2 - iris_xscale * 128, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(window_get_width()/2 + iris_xscale * 128 - 1, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_colour(0, window_get_height()/2 + iris_yscale * 128, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+	}
+}
+#endregion /*Draw Iris Transitions END*/

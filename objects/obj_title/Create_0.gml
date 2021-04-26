@@ -633,6 +633,9 @@ language_settings_y = 40*15;
 broadcast_settings_y = 40*16;
 how_to_play_y = 40*17;
 left_sidebar_x=-400;
+iris_xscale = 0;
+iris_yscale = 0;
+iris_zoom = 0;
 #region /*Customize look of Options Menu*/
 c_menu_outline=c_white;
 c_menu_fill=c_black;

@@ -3,10 +3,54 @@ key_a_pressed=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_presse
 key_a_released=(gamepad_button_check_released(0,gp_face1))or(keyboard_check_released(global.player1_key_jump));
 key_b=(gamepad_button_check(0,gp_face2))or(keyboard_check(global.player1_key_sprint));
 
-if (object = 73)
-{
-	object = "water";
-}
+#region /*Translate object names into object ID*/
+
+if (object = "wall"){object = 1;}
+if (object = "spikes"){object = 2;}
+if (object = "semisolid_platform"){object = 3;}
+if (object = "brick_block"){object = 4;}
+if (object = "question_block"){object = 11;}
+if (object = "hard_block"){object = 18;}
+if (object = "falling_block"){object = 19;}
+if (object = "falling_block_solid"){object = 20;}
+if (object = "falling_block_long"){object = 21;}
+if (object = "falling_block_long_solid"){object = 22;}
+if (object = "cloud_block"){object = 23;}
+if (object = "ice_block"){object = 24;}
+if (object = "cardboard_block"){object = 25;}
+if (object = "cardboard"){object = 26;}
+if (object = "cardboard_long"){object = 27;}
+if (object = "bump_in_ground"){object = 28;}
+if (object = "basic_collectible"){object = 40;}
+if (object = "big_collectible_1"){object = 48;}
+if (object = "heart"){object = 53;}
+if (object = "hp_pickup"){object = 54;}
+if (object = "invincibility_powerup"){object = 55;}
+if (object = "1up"){object = 56;}
+if (object = "2up"){object = 57;}
+if (object = "3up"){object = 58;}
+if (object = "enemy1"){object = 59;}
+if (object = "enemy2"){object = 60;}
+if (object = "blaster"){object = 61;}
+if (object = "spring"){object = 62;}
+if (object = "ladder"){object = 63;}
+if (object = "arrow_sign"){object = 64;}
+if (object = "arrow_sign_small"){object = 65;}
+if (object = "checkpoint"){object = 66;}
+if (object = "spikes_emerge_block"){object = 67;}
+if (object = "oneway"){object = 68;}
+if (object = "horizontal_rope"){object = 72;}
+if (object = "water"){object = 73;}
+if (object = "water_surface"){object = 731;}
+if (object = "clipped_shirt"){object = 74;}
+if (object = "clipped_pants"){object = 75;}
+if (object = "clipped_sock"){object = 76;}
+if (object = "bucket"){object = 77;}
+if (object = "bird"){object = 89;}
+if (object = "sign_crouch"){object = 90;}
+if (object = "boss"){object = 95;}
+
+#region /*All code before initializing the object*/
 
 #region /*if current undo value is less than this objects undo value, then delete this object*/
 if (asset_get_type("obj_leveleditor")==asset_object)
@@ -343,14 +387,7 @@ if (sprite_index>0)
 }
 #endregion /*Make sprite transparent if you're setting difficulty levels END*/
 
-#region /*if all dificulty variables are false, then delete the object*/
-if (easy=false)
-and(normal=false)
-and(hard=false)
-{
-	instance_destroy();
-}
-#endregion /*if all dificulty variables are false, then delete the object END*/
+if (easy=false)and(normal=false)and(hard=false){instance_destroy();} /*if all dificulty variables are false, then delete the object END*/
 
 #region /*Make object change difficulty layer depending on what difficulty layer is selected*/
 if (asset_get_type("obj_leveleditor")==asset_object)
@@ -466,6 +503,7 @@ if (asset_get_type("obj_leveleditor")==asset_object)
 and(instance_exists(obj_leveleditor))
 and(delay=3)
 {
+	
 	#region /*Destroy if erased or placed outside room*/
 	if (asset_get_type("obj_level_start")==asset_object)
 	and(instance_exists(obj_level_start))
@@ -482,6 +520,7 @@ and(delay=3)
 	or(y<0)
 	or(y>room_height)
 	{
+		
 		#region /*Reset Level Editor Checkpoint*/
 		if (asset_get_type("room_leveleditor")==asset_room)
 		and(room=room_leveleditor)
@@ -490,6 +529,7 @@ and(delay=3)
 			{
 				directory_create(working_directory+"/Custom Levels");
 			}
+			
 			#region /*Create directory for saving custom levels*/
 			ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
 			ini_key_delete("Level"+string(global.level_editor_level),"x_checkpoint");
@@ -500,11 +540,14 @@ and(delay=3)
 			ini_key_delete("Level"+string(global.level_editor_level),"checkpoint_realmillisecond");
 			ini_close();
 			#endregion /*Create directory for saving custom levels END*/
+			
 		}
 		#endregion /*Reset Level Editor Checkpoint END*/
+		
 		instance_destroy();
 	}
 	#endregion /*Destroy if erased or placed outside room END*/
+	
 }
 
 #region /*Modify Objects*/
@@ -803,14 +846,14 @@ and(delay>1)
 				#endregion /*Change Oneway Direction END*/
 				
 				#region /*Change Water Rope*/
-				if (object = "water")
+				if (object = 73)
 				{
-					object = "water_surface";
+					object = 731;
 				}
 				else
-				if (object = "water_surface")
+				if (object = 731)
 				{
-					object = "water";
+					object = 73;
 				}
 				#endregion /*Change Water END*/
 				
@@ -1325,7 +1368,8 @@ else
 #region /*Spawn objects when starting room*/
 if (global.play_edited_level=true)
 {
-	/*Delete objects according to difficulty settings*/
+	
+	#region /*Delete objects according to difficulty settings*/
 	if (global.difficulty<=1)
 	and(easy=true)
 	or(global.difficulty=2)
@@ -1336,6 +1380,7 @@ if (global.play_edited_level=true)
 		if (object=1)and(asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}
 		if (object=2){if (global.difficulty>=1)and(asset_get_type("obj_spikes")==asset_object){instance_create_depth(x,y,0,obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}}}
 		if (object=3)and(asset_get_type("obj_semisolid_platform")==asset_object){instance_create_depth(x,y,0,obj_semisolid_platform);instance_destroy();}
+		
 		#region /*Brick Block*/
 		if (object=4)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;}instance_destroy();}
 		if (object=5)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "10_basic_collectibles";}instance_destroy();}
@@ -1345,6 +1390,7 @@ if (global.play_edited_level=true)
 		if (object=9)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "3-up";}instance_destroy();}
 		if (object=10)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){brick_block = true;item_inside = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Brick Block END*/
+		
 		#region /*Question Block*/
 		if (object=11)and(asset_get_type("obj_question_block")==asset_object){instance_create_depth(x,y,0,obj_question_block);instance_destroy();}
 		if (object=12)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "10_basic_collectibles";}instance_destroy();}
@@ -1354,18 +1400,22 @@ if (global.play_edited_level=true)
 		if (object=16)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "3-up";}instance_destroy();}
 		if (object=17)and(asset_get_type("obj_question_block")==asset_object){with(instance_create_depth(x,y,0,obj_question_block)){item_inside = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Question Block END*/
+		
 		if (object=18)and(asset_get_type("obj_hard_block")==asset_object){instance_create_depth(x,y,0,obj_hard_block);instance_destroy();}
+		
 		#region /*Falling Block*/
 		if (object=19)and(asset_get_type("obj_falling_block")==asset_object){instance_create_depth(x,y,0,obj_falling_block);instance_destroy();}
 		if (object=20)and(asset_get_type("obj_falling_block_solid")==asset_object){instance_create_depth(x,y,0,obj_falling_block_solid);instance_destroy();}
 		if (object=21)and(asset_get_type("obj_falling_block_long")==asset_object){instance_create_depth(x,y,0,obj_falling_block_long);instance_destroy();}
 		if (object=22)and(asset_get_type("obj_falling_block_long_solid")==asset_object){instance_create_depth(x,y,0,obj_falling_block_long_solid);instance_destroy();}
-		#endregion /*Question Block END*/
+		#endregion /*Falling Block END*/
+		
 		if (object=23)and(asset_get_type("obj_cloud_block")==asset_object){instance_create_depth(x,y,0,obj_cloud_block);instance_destroy();}
 		if (object=24)and(asset_get_type("obj_ice_block")==asset_object){instance_create_depth(x,y,0,obj_ice_block);instance_destroy();}
 		if (object=25)and(asset_get_type("obj_cardboard_block")==asset_object){instance_create_depth(x,y,0,obj_cardboard_block);instance_destroy();}
 		if (object=26)and(asset_get_type("obj_cardboard")==asset_object){instance_create_depth(x,y,0,obj_cardboard);instance_destroy();}
 		if (object=27)and(asset_get_type("obj_cardboard_long")==asset_object){instance_create_depth(x,y,0,obj_cardboard_long);instance_destroy();}
+		
 		#region /*Bump in ground*/
 		if (object=28)and(asset_get_type("obj_bump_in_ground")==asset_object){instance_create_depth(x,y,0,obj_bump_in_ground);instance_destroy();}
 		if (object=29)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="8_basic_collectibles";}instance_destroy();}
@@ -1380,6 +1430,7 @@ if (global.play_edited_level=true)
 		if (object=38)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="big_collectible_5";}instance_destroy();}
 		if (object=39)and(asset_get_type("obj_bump_in_ground")==asset_object){with(instance_create_depth(x,y,0,obj_bump_in_ground)){type_of_bump="invincibility_powerup";}instance_destroy();}
 		#endregion /*Bump in ground END*/
+		
 		#region /*Basic Collectible*/
 		if (object=40)and(asset_get_type("obj_basic_collectible")==asset_object){instance_create_depth(x,y,0,obj_basic_collectible);instance_destroy();}
 		if (object=41)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=315;}instance_destroy();}
@@ -1390,6 +1441,7 @@ if (global.play_edited_level=true)
 		if (object=46)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=90;}instance_destroy();}
 		if (object=47)and(asset_get_type("obj_basic_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_basic_collectible)){image_angle=45;}instance_destroy();}
 		#endregion /*Basic Collectible END*/
+		
 		#region /*Big Collectibles*/
 		if (object=48)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 1;}instance_destroy();}
 		if (object=49)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 2;}instance_destroy();}
@@ -1397,6 +1449,7 @@ if (global.play_edited_level=true)
 		if (object=51)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 4;}instance_destroy();}
 		if (object=52)and(asset_get_type("obj_big_collectible")==asset_object){with(instance_create_depth(x,y,0,obj_big_collectible)){big_collectible = 5;}instance_destroy();}
 		#endregion /*Big Collectibles END*/
+		
 		if (object=53)and(asset_get_type("obj_heart_balloon")==asset_object){instance_create_depth(x,y,0,obj_heart_balloon);instance_destroy();}
 		if (object=54)and(asset_get_type("obj_hp_pickup")==asset_object){instance_create_depth(x,y,0,obj_hp_pickup);instance_destroy();}
 		if (object=55)and(asset_get_type("obj_invincibility_powerup")==asset_object){instance_create_depth(x,y,0,obj_invincibility_powerup);instance_destroy();}
@@ -1408,24 +1461,29 @@ if (global.play_edited_level=true)
 		if (object=61){if (global.difficulty>=1)and(asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
 		if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=63)and(asset_get_type("obj_vine")==asset_object){instance_create_depth(x,y,0,obj_vine);instance_destroy();}
+		
 		#region /*Arrow Sign*/
 		if (object=64)and(asset_get_type("obj_arrow_sign")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		#endregion /*Arrow Sign End*/
+		
 		#region /*Arrow Sign Small*/
 		if (object=65)and(asset_get_type("obj_arrow_sign_small")==asset_object){with(instance_create_depth(x+16,y+16,0,obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		#endregion /*Arrow Sign Small End*/
+		
 		if (object=66)and(asset_get_type("obj_checkpoint")==asset_object){instance_create_depth(x+16,y,0,obj_checkpoint);instance_destroy();}
 		if (object=67){if (global.difficulty>=1)and(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}else{instance_destroy();}}
+		
 		#region /*Oneway*/
 		if (object=68)and(asset_get_type("obj_oneway")==asset_object){instance_create_depth(x,y,0,obj_oneway);instance_destroy();}
 		if (object=69)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=90;}instance_destroy();}
 		if (object=70)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=180;}instance_destroy();}
 		if (object=71)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=270;}instance_destroy();}
 		#endregion /*Oneway END*/
+		
 		if (object=72)and(asset_get_type("obj_horizontal_rope")==asset_object){instance_create_depth(x,y,0,obj_horizontal_rope);instance_destroy();}
 		
 		#region /*Create Water*/
-		if (object="water")
+		if (object=73)
 		{
 			if (asset_get_type("obj_water")==asset_object)
 			{
@@ -1442,16 +1500,14 @@ if (global.play_edited_level=true)
 		#endregion /*Create Water END*/
 		
 		#region /*Create Water Surface*/
-		if (object="water_surface")
+		if (object=731)
 		{
 			if (asset_get_type("obj_water")==asset_object)
 			{
 				with(instance_create_depth(x,y,0,obj_water))
+				and(asset_get_type("spr_water_surface")==asset_sprite)
 				{
-					if (asset_get_type("spr_water_surface")==asset_sprite)
-					{
-						sprite_index = spr_water_surface;
-					}
+					sprite_index = spr_water_surface;
 				}
 			}
 			instance_destroy();
@@ -1461,6 +1517,7 @@ if (global.play_edited_level=true)
 		if (object=74)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_shirt;}instance_destroy();}
 		if (object=75)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_pants;}instance_destroy();}
 		if (object=76)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_sock;}instance_destroy();}
+		
 		#region /*Bucket*/
 		if (object=77)and(asset_get_type("obj_bucket")==asset_object){instance_create_depth(x,y,0,obj_bucket);instance_destroy();}
 		if (object=78)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="8_basic_collectibles";}instance_destroy();}
@@ -1475,6 +1532,7 @@ if (global.play_edited_level=true)
 		if (object=87)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="big_collectible_5";}instance_destroy();}
 		if (object=88)and(asset_get_type("obj_bucket")==asset_object){with(instance_create_depth(x,y,0,obj_bucket)){item_inside="invincibility_powerup";}instance_destroy();}
 		#endregion /*Bucket END*/
+		
 		if (object=89)and(asset_get_type("obj_bird")==asset_object){instance_create_depth(x,y,0,obj_bird);instance_destroy();}
 		if (object=90)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}instance_destroy();}
 		if (object=91)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}instance_destroy();}
@@ -1483,17 +1541,22 @@ if (global.play_edited_level=true)
 		if (object=94)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_walljump; sprite_sign = spr_sign_walljump;}instance_destroy();}
 		if (object=95)and(asset_get_type("obj_boss")==asset_object){instance_create_depth(x,y,0,obj_boss);instance_destroy();}
 	}
+	#endregion /*Delete objects according to difficulty settings END*/
+	
 	else
 	{
-		instance_destroy();/*Destroy object if difficulty setting and difficulty on object doesn't match*/
+		instance_destroy(); /*Destroy object if difficulty setting and difficulty on object doesn't match*/
 	}
 }
 #endregion /*Spawn objects when starting room END*/
+
+#endregion /*All code before initializing the object*/
 
 #region /*Initialize Object*/
 if (object=1)and(asset_get_type("spr_wall")==asset_sprite){sprite_index=spr_wall;mask_index=spr_wall;}
 if (object=2)and(asset_get_type("spr_spikes")==asset_sprite){sprite_index=spr_spikes;mask_index=spr_wall;}
 if (object=3)and(asset_get_type("spr_semisolid_platform")==asset_sprite){sprite_index=spr_semisolid_platform;mask_index=spr_wall;}
+
 #region /*Brick Block*/
 if (object=4)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;mask_index=spr_wall;}
 if (object=5)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
@@ -1503,6 +1566,7 @@ if (object=8)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=s
 if (object=9)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_3up")==asset_sprite){draw_sprite_ext(spr_3up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
 if (object=10)and(asset_get_type("spr_brick_block")==asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
 #endregion /*Brick Block END*/
+
 #region /*Question Block*/
 if (object=11)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;mask_index=spr_wall;}
 if (object=12)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
@@ -1512,16 +1576,22 @@ if (object=15)and(asset_get_type("spr_question_block")==asset_sprite){sprite_ind
 if (object=16)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_3up")==asset_sprite){draw_sprite_ext(spr_3up,0,x,y,0.5,0.5,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,image_alpha);mask_index=spr_wall;}
 if (object=17)and(asset_get_type("spr_question_block")==asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
 #endregion /*Question Block END*/
+
 if (object=18)and(asset_get_type("spr_hard_block")==asset_sprite){sprite_index=spr_hard_block;mask_index=spr_wall;}
+
+#region /*Falling Block*/
 if (object=19)and(asset_get_type("spr_falling_block")==asset_sprite){sprite_index=spr_falling_block;mask_index=spr_wall;}
 if (object=20)and(asset_get_type("spr_falling_block_solid")==asset_sprite){sprite_index=spr_falling_block_solid;mask_index=spr_wall;}
 if (object=21)and(asset_get_type("spr_falling_block_long")==asset_sprite){sprite_index=spr_falling_block_long;mask_index=spr_cardboard;}
 if (object=22)and(asset_get_type("spr_falling_block_long_solid")==asset_sprite){sprite_index=spr_falling_block_long_solid;mask_index=spr_cardboard;}
+#endregion /*Falling Block END*/
+
 if (object=23)and(asset_get_type("spr_cloud_block")==asset_sprite){sprite_index=spr_cloud_block;mask_index=spr_wall;}
 if (object=24)and(asset_get_type("spr_ice_block")==asset_sprite){sprite_index=spr_ice_block;mask_index=spr_wall;}
 if (object=25)and(asset_get_type("spr_cardboard_block")==asset_sprite){sprite_index=spr_cardboard_block;mask_index=spr_wall;}
 if (object=26)and(asset_get_type("spr_cardboard")==asset_sprite){sprite_index=spr_cardboard;mask_index=spr_cardboard;}
 if (object=27)and(asset_get_type("spr_cardboard_long")==asset_sprite){sprite_index=spr_cardboard_long;mask_index=spr_cardboard_long;}
+
 #region /*Bump in ground*/
 if (object=28)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;mask_index=spr_wall;}
 if (object=29)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
@@ -1536,6 +1606,7 @@ if (object=37)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_ind
 if (object=38)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"5",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
 if (object=39)and(asset_get_type("spr_bump_in_ground")==asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
 #endregion /*Bump in ground END*/
+
 #region /*Basic Collectible*/
 if (object=40)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 0;mask_index=spr_wall;}
 if (object=41)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 315;mask_index=spr_wall;}
@@ -1546,6 +1617,7 @@ if (object=45)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_
 if (object=46)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 90;mask_index=spr_wall;}
 if (object=47)and(asset_get_type("spr_basic_collectible")==asset_sprite){sprite_index=spr_basic_collectible;draw_angle = 45;mask_index=spr_wall;}
 #endregion /*Basic Collectible END*/
+
 #region /*Big Collectibles*/
 if (object=48)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_index = spr_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"1",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
 if (object=49)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_index = spr_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"2",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
@@ -1553,6 +1625,7 @@ if (object=50)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_in
 if (object=51)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_index = spr_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"4",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
 if (object=52)and(asset_get_type("spr_big_collectible")==asset_sprite){sprite_index = spr_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"5",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
 #endregion /*Big Collectibles END*/
+
 if (object=53)and(asset_get_type("spr_heart")==asset_sprite){sprite_index=spr_heart;mask_index=spr_wall;}
 if (object=54)and(asset_get_type("spr_hp_pickup")==asset_sprite){sprite_index=spr_hp_pickup;mask_index=spr_wall;}
 if (object=55)and(asset_get_type("spr_invincibility_powerup")==asset_sprite){sprite_index=spr_invincibility_powerup;mask_index=spr_wall;}
@@ -1564,26 +1637,32 @@ if (object=60){sprite_index = sprite_enemy2;mask_index=spr_wall;}
 if (object=61)and(asset_get_type("spr_blaster")==asset_sprite){sprite_index=spr_blaster;mask_index=spr_wall;}
 if (object=62)and(asset_get_type("spr_spring")==asset_sprite){sprite_index=spr_spring;mask_index=spr_wall;}
 if (object=63)and(asset_get_type("spr_ladder")==asset_sprite){sprite_index=spr_ladder;mask_index=spr_wall;}
+
 #region /*Arrow Signs*/
 if (object = 64)and(asset_get_type("spr_arrow_sign") == asset_sprite){draw_sprite_ext(spr_arrow_sign, 0, x, y, 1, 1, draw_angle, image_blend, image_alpha);mask_index = spr_2x2_block;sprite_index = noone;}
 #endregion /*Arrow Signs END*/
+
 #region /*Arrow Signs Small*/
 if (object = 65)and(asset_get_type("spr_arrow_sign_small") == asset_sprite){draw_sprite_ext(spr_arrow_sign_small, 0, x, y, 0.5, 0.5, draw_angle, image_blend, image_alpha);mask_index = spr_2x2_block;sprite_index = noone;}
 #endregion /*Arrow Signs Small END*/
+
 if (object=66)and(asset_get_type("spr_checkpoint")==asset_sprite){sprite_index=spr_checkpoint;mask_index=spr_2x2_block;}
 if (object=67)and(asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;mask_index=spr_wall;}
+
 #region /*Oneway*/
 if (object=68)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 0;mask_index = spr_wall;}
 if (object=69)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 90;mask_index = spr_wall;}
 if (object=70)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 180;mask_index = spr_wall;}
 if (object=71)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 270;mask_index = spr_wall;}
 #endregion /*Oneway END*/
+
 if (object=72)and(asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_index=spr_horizontal_rope;mask_index=spr_wall;}
-if (object=-73)or(object="water")and(asset_get_type("spr_water")==asset_sprite){sprite_index=spr_water;mask_index=spr_wall;}
-if (object=73)or(object="water_surface")and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
+if (object=73)or(object = "water")and(asset_get_type("spr_water")==asset_sprite){sprite_index=spr_water;mask_index=spr_wall;}
+if (object=731)or(object = "water_surface")and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
 if (object=74)and(asset_get_type("spr_clipped_shirt")==asset_sprite){sprite_index=spr_clipped_shirt;mask_index=spr_wall;}
 if (object=75)and(asset_get_type("spr_clipped_pants")==asset_sprite){sprite_index=spr_clipped_pants;mask_index=spr_wall;}
 if (object=76)and(asset_get_type("spr_clipped_sock")==asset_sprite){sprite_index=spr_clipped_sock;mask_index=spr_wall;}
+
 #region /*Bucket*/
 if (object=77)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;mask_index=spr_wall;}
 if (object=78)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_basic_collectible")==asset_sprite){draw_sprite_ext(spr_basic_collectible,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
@@ -1598,6 +1677,7 @@ if (object=86)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_b
 if (object=87)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_big_collectible")==asset_sprite){draw_sprite_ext(spr_big_collectible,0,x,y,0.4,0.4,0,c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x,y,"5",global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
 if (object=88)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_invincibility_powerup")==asset_sprite){draw_sprite_ext(spr_invincibility_powerup,0,x,y,0.5,0.5,0,c_white,image_alpha);}mask_index=spr_wall;}
 #endregion /*Bucket END*/
+
 if (object=89)and(asset_get_type("spr_bird")==asset_sprite){sprite_index=spr_bird;mask_index=spr_wall;}
 if (object=90)and(asset_get_type("spr_sign_crouch")==asset_sprite){sprite_index=spr_sign_crouch;mask_index=spr_wall;}
 if (object=91)and(asset_get_type("spr_sign_dive")==asset_sprite){sprite_index=spr_sign_dive;mask_index=spr_wall;}
