@@ -12,7 +12,9 @@ function scr_character_select_menu()
 	xx2=lerp(xx2,player2_display_x,0.1);
 	xx3=lerp(xx3,player3_display_x,0.1);
 	xx4=lerp(xx4,player4_display_x,0.1);
-
+	
+	#region /*All code before menu navigation code*/
+	
 	#region /*Player colors*/
 	
 	#region /*Player 1 colors*/
@@ -1937,7 +1939,9 @@ function scr_character_select_menu()
 	#endregion /*Limit Name Input Length for all players END*/
 	
 	#endregion /*Name Input END*/
-
+	
+	#endregion /*All code before menu navigation code END*/
+	
 	#region /*Menu Navigation*/
 	if (can_input_player1_name=false)
 	and(can_input_player2_name=false)

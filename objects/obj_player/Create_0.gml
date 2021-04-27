@@ -9,7 +9,6 @@ initialize_custom_character_timer = 0;
 #region /*Initialize Custom Character*/
 
 #region /*Allow*/
-allow_double_jump = false; /*Makes the character able to double jump in mid-air*/
 allow_roll = false;
 allow_ledge_grab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
 allow_ground_pound = true; /*If you can ground pound or not*/
@@ -407,6 +406,7 @@ acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
 hp = 1 + global.assist_extra_hp; /*Starting HP*/
 max_hp = 1 + global.assist_extra_hp; /*Starting Max HP*/
 max_overflow_hp = 4; /*Starting Max Overflow HP*/
+number_of_jumps = 1; /*How many times you can jump. -1 = infinite jumps, 0 = no jump, 1 = single jump, 2 = double jump*/
 speed_max_walk = 4 /*Default speed_max_walk is 4. Top speed with simple walking*/
 speed_max_run = 8 /*Default speed_max_run is 8. Top speed with simple running*/
 triple_jump_height = 14.5;

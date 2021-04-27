@@ -14,6 +14,7 @@ if (initialize_custom_character_timer = 1)
 
 #region /*Create directory for saving character data*/
 if (!directory_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data"))
+and(custom_character>=0)
 {
 	directory_create(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data");
 }
@@ -21,6 +22,7 @@ if (!directory_exists(working_directory + "/Custom Characters/Character "+string
 
 #region /*Create directory for saving character sounds*/
 if (!directory_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds"))
+and(custom_character>=0)
 {
 	directory_create(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds");
 }
@@ -28,6 +30,7 @@ if (!directory_exists(working_directory + "/Custom Characters/Character "+string
 
 #region /*Create directory for saving character sprites*/
 if (!directory_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites"))
+and(custom_character>=0)
 {
 	directory_create(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites");
 }
@@ -48,18 +51,6 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 	{
 		ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini");
 	}
-	
-	#region /*Allow double jump*/
-	if (ini_key_exists("allow abilities", "allow_double_jump"))
-	{
-		allow_double_jump = ini_read_real("allow abilities", "allow_double_jump", false);
-	}
-	else
-	{
-		ini_write_real("allow abilities", "allow_double_jump", false);
-		allow_double_jump = false;
-	}
-	#endregion /*Allow double jump*/
 
 	#region /*Allow roll*/
 	if (ini_key_exists("allow abilities", "allow_roll"))
@@ -235,7 +226,6 @@ else
 {
 	
 	#region /*Default abilities values*/
-	allow_double_jump = false; /*Makes the character able to double jump in mid-air*/
 	allow_roll = false;
 	allow_ledge_grab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
 	allow_ground_pound = true; /*ground_pound*/
@@ -250,72 +240,23 @@ else
 	allow_crawl = true;
 	allow_tongue = false; /*A tongue that extends*/
 	allow_overflow_hp = false;
-	ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini");
-	if(!ini_key_exists("allow abilities", "allow_wall_jump"))
-	{
-		ini_write_real("allow abilities", "allow_wall_jump", true);
-	}
-	if(!ini_key_exists("allow abilities", "allow_wall_climb"))
-	{
-		ini_write_real("allow abilities", "allow_wall_climb", false);
-	}
-	if(!ini_key_exists("allow abilities", "allow_tongue"))
-	{
-		ini_write_real("allow abilities", "allow_tongue", true);
-	}
-	if(!ini_key_exists("allow abilities", "allow_survive_lava"))
-	{
-		ini_write_real("allow abilities", "allow_survive_lava", true);
-	}
-	if(!ini_key_exists("allow abilities", "allow_run"))
-	{
-		ini_write_real("allow abilities", "allow_run", true);
-	}
-	if(!ini_key_exists("allow abilities", "allow_roll"))
-	{
-		ini_write_real("allow abilities", "allow_roll", false);
-	}
-	if(!ini_key_exists("allow abilities", "allow_ledge_grab"))
-	{
-		ini_write_real("allow abilities", "allow_ledge_grab", false);
-	}
-	if(!ini_key_exists("allow abilities", "allow_homing_attack"))
-	{
-		ini_write_real("allow abilities", "allow_homing_attack", false);
-	}
-	if(!ini_key_exists("allow abilities", "allow_ground_pound_jump"))
-	{
-		ini_write_real("allow abilities", "allow_ground_pound_jump", true);
-	}
-	if(!ini_key_exists("allow abilities", "allow_ground_pound"))
-	{
-		ini_write_real("allow abilities", "allow_ground_pound", true);
-	}
-	if(!ini_key_exists("allow abilities", "allow_double_jump"))
-	{
-		ini_write_real("allow abilities", "allow_double_jump", false);
-	}
-	if(!ini_key_exists("allow abilities", "allow_dive_ground_boost"))
-	{
-		ini_write_real("allow abilities", "allow_dive_ground_boost", true);
-	}
-	if(!ini_key_exists("allow abilities", "allow_dive"))
-	{
-		ini_write_real("allow abilities", "allow_dive", true);
-	}
-	if(!ini_key_exists("allow abilities", "allow_crawl"))
-	{
-		ini_write_real("allow abilities", "allow_crawl", true);
-	}
-	if(!ini_key_exists("allow abilities", "allow_tongue"))
-	{
-		ini_write_real("allow abilities", "allow_tongue", false);
-	}
-	if(!ini_key_exists("allow abilities", "allow_overflow_hp"))
-	{
-		ini_write_real("allow abilities", "allow_overflow_hp", false);
-	}
-	ini_close();
+	//ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini");
+	//if(!ini_key_exists("allow abilities", "allow_wall_jump")){ini_write_real("allow abilities", "allow_wall_jump", true);}
+	//if(!ini_key_exists("allow abilities", "allow_wall_climb")){ini_write_real("allow abilities", "allow_wall_climb", false);}
+	//if(!ini_key_exists("allow abilities", "allow_tongue")){ini_write_real("allow abilities", "allow_tongue", true);}
+	//if(!ini_key_exists("allow abilities", "allow_survive_lava")){ini_write_real("allow abilities", "allow_survive_lava", true);}
+	//if(!ini_key_exists("allow abilities", "allow_run")){ini_write_real("allow abilities", "allow_run", true);}
+	//if(!ini_key_exists("allow abilities", "allow_roll")){ini_write_real("allow abilities", "allow_roll", false);}
+	//if(!ini_key_exists("allow abilities", "allow_ledge_grab")){ini_write_real("allow abilities", "allow_ledge_grab", false);}
+	//if(!ini_key_exists("allow abilities", "allow_homing_attack")){ini_write_real("allow abilities", "allow_homing_attack", false);}
+	//if(!ini_key_exists("allow abilities", "allow_ground_pound_jump")){ini_write_real("allow abilities", "allow_ground_pound_jump", true);}
+	//if(!ini_key_exists("allow abilities", "allow_ground_pound")){ini_write_real("allow abilities", "allow_ground_pound", true);}
+	//if(!ini_key_exists("allow abilities", "allow_dive_ground_boost")){ini_write_real("allow abilities", "allow_dive_ground_boost", true);}
+	//if(!ini_key_exists("allow abilities", "allow_dive")){ini_write_real("allow abilities", "allow_dive", true);}
+	//if(!ini_key_exists("allow abilities", "allow_crawl")){ini_write_real("allow abilities", "allow_crawl", true);}
+	//if(!ini_key_exists("allow abilities", "allow_tongue")){ini_write_real("allow abilities", "allow_tongue", false);}
+	//if(!ini_key_exists("allow abilities", "allow_overflow_hp")){ini_write_real("allow abilities", "allow_overflow_hp", false);}
+	//ini_close();
 	#endregion /*Default abilities values END*/
 	
 }
@@ -329,18 +270,17 @@ stop_screen_from_scrolling_left = false; /*Stop the screen from being able to sc
 #region /*Play as Custom Character*/
 
 #region /*Sprite origin point variables*/
-
-if (file_exists("Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
-or(file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini"))
 {
-	if (file_exists("Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
+	if (file_exists("Characters/Character "+string(custom_character)+"/Data/sprite_origin_point.ini"))
 	{
-		ini_open("Characters/Character "+string(custom_character)+"/Data/character_config.ini");
+		ini_open("Characters/Character "+string(custom_character)+"/Data/sprite_origin_point.ini");
 	}
 	else
-	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini"))
 	{
-		ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini");
+		ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini");
 	}
 	
 	#region /*Mask x and y origin points*/
@@ -1489,8 +1429,9 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 
 	ini_close();
 }
-#region /*If there is no config.ini file, then make every xorig and yorig variable zero*/
 else
+
+#region /*If there is no config.ini file, then make every xorig and yorig variable zero*/
 {
 	mask_xorig = 0;
 	mask_yorig = 0;
@@ -8011,9 +7952,18 @@ voice_burned = noone;
 
 #region /*Character Values Handeling*/
 
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
+or(file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))
 {
-	ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini");
+	if (file_exists("Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
+	{
+		ini_open("Characters/Character "+string(custom_character)+"/Data/character_config.ini");
+	}
+	else
+	if(file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))
+	{
+		ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini");
+	}
 
 	#region /*Acceleration on ground*/
 	if (ini_key_exists("values", "acceleration_on_ground"))
@@ -8050,7 +8000,19 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 		acceleration_on_ice = 0.05;
 	}
 	#endregion /*Acceleration on ice END*/
-
+	
+	#region /*Number of jumps*/
+	if (ini_key_exists("values", "number_of_jumps"))
+	{
+		number_of_jumps = ini_read_real("allow abilities", "number_of_jumps", 1);
+	}
+	else
+	{
+		ini_write_real("values", "number_of_jumps", 1);
+		number_of_jumps = 1;
+	}
+	#endregion /*Number of jumps*/
+	
 	#region /*Starting HP*/
 	if (ini_key_exists("values", "hp"))
 	{
@@ -8086,7 +8048,7 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 		max_overflow_hp = 4;
 	}
 	#endregion /*Starting Max Overflow HP END*/
-
+	
 	#region /*Speed max walk*/
 	if (ini_key_exists("values", "speed_max_walk"))
 	{
@@ -8185,6 +8147,7 @@ else
 	hp = 1 + global.assist_extra_hp; /*Starting HP*/
 	max_hp = 1 + global.assist_extra_hp; /*Starting Max HP*/
 	max_overflow_hp = 4; /*Starting Max Overflow HP*/
+	number_of_jumps = 1; /*How many times you can jump. -1 = infinite jumps, 0 = no jump, 1 = single jump, 2 = double jump*/
 	speed_max_walk = 4 /*Default speed_max_walk is 4. Top speed with simple walking*/
 	speed_max_run = 8 /*Default speed_max_run is 8. Top speed with simple running*/
 	triple_jump_height = 14.5;
@@ -8192,21 +8155,22 @@ else
 	higher_jump_height = 13;
 	double_jump_height = 11.5;
 	hoverstomp_distance = 500;
-	ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini");
-	ini_write_real("values", "acceleration_on_ground", 0.3);
-	ini_write_real("values", "acceleration_in_air", 0.3);
-	ini_write_real("values", "acceleration_on_ice", 0.05);
-	ini_write_real("values", "hp", 1);
-	ini_write_real("values", "max_hp", 1);
-	ini_write_real("values", "max_overflow_hp", 4);
-	ini_write_real("values", "speed_max_walk", 4);
-	ini_write_real("values", "speed_max_run", 8);
-	ini_write_real("values", "double_jump_height", 11.5);
-	ini_write_real("values", "triple_jump_height", 14.5);
-	ini_write_real("values", "normal_jump_height", 11.5);
-	ini_write_real("values", "higher_jump_height", 13);
-	ini_write_real("values", "homing_attack_distance", 500);
-	ini_close();
+	//ini_open(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini");
+	//if (!ini_key_exists("values", "acceleration_on_ground")){ini_write_real("values", "acceleration_on_ground", 0.3);}
+	//if (!ini_key_exists("values", "acceleration_in_air")){ini_write_real("values", "acceleration_in_air", 0.3);}
+	//if (!ini_key_exists("values", "acceleration_on_ice")){ini_write_real("values", "acceleration_on_ice", 0.05);}
+	//if (!ini_key_exists("values", "hp")){ini_write_real("values", "hp", 1);}
+	//if (!ini_key_exists("values", "max_hp")){ini_write_real("values", "max_hp", 1);}
+	//if (!ini_key_exists("values", "max_overflow_hp")){ini_write_real("values", "max_overflow_hp", 4);}
+	//if (!ini_key_exists("values", "number_of_jumps")){ini_write_real("values", "number_of_jumps", 1);}
+	//if (!ini_key_exists("values", "speed_max_walk")){ini_write_real("values", "speed_max_walk", 4);}
+	//if (!ini_key_exists("values", "speed_max_run")){ini_write_real("values", "speed_max_run", 8);}
+	//if (!ini_key_exists("values", "double_jump_height")){ini_write_real("values", "double_jump_height", 11.5);}
+	//if (!ini_key_exists("values", "triple_jump_height")){ini_write_real("values", "triple_jump_height", 14.5);}
+	//if (!ini_key_exists("values", "normal_jump_height")){ini_write_real("values", "normal_jump_height", 11.5);}
+	//if (!ini_key_exists("values", "higher_jump_height")){ini_write_real("values", "higher_jump_height", 13);}
+	//if (!ini_key_exists("values", "homing_attack_distance")){ini_write_real("values", "homing_attack_distance", 500);}
+	//ini_close();
 }
 #endregion /*Character Values Handeling END*/
 
@@ -13073,6 +13037,9 @@ else
 
 #region /*Jumping*/
 if (key_jump)
+and(number_of_jumps >= 1)
+or(key_jump)
+and(number_of_jumps <= -1)
 {
 	buffer_jump = 10;
 }
@@ -13270,7 +13237,7 @@ and(!place_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 and(in_water=false)
 {
 	if (global.has_upgrade_double_jump=true)
-	or(allow_double_jump=true)
+	or(number_of_jumps >= 2)
 	{
 		buffer_jump = 0;
 		dive=false;

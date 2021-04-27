@@ -544,6 +544,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1","resourceVersion":"1.0","name":"level_information.ini","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sprites","resourceVersion":"1.0","name":"swim_fall_strip5.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Sprites","resourceVersion":"1.0","name":"swim_strip8.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Characters/Character 0/Data","resourceVersion":"1.0","name":"sprite_origin_point.ini","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.2.560",
