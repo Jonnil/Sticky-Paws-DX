@@ -1570,7 +1570,7 @@ and(move_delay > 10)
 		#region /*Show High Score*/
 		if (instance_nearest(x, y, obj_level).level_score > 0)
 		{
-			draw_text_outlined(x, y - 64, "Best Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_white, c_black, 1);
+			draw_text_outlined(x, y - 64, "Best Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show High Score END*/
 
