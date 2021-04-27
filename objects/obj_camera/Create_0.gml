@@ -131,8 +131,8 @@ player3=noone;
 player4=noone;
 if (asset_get_type("obj_player_map")==asset_object)
 and(!instance_exists(obj_player_map))
-and(asset_get_type("obj_player_ending_cutscene")==asset_object)
-and(!instance_exists(obj_player_ending_cutscene))
+and(asset_get_type("obj_title")==asset_object)
+and(!instance_exists(obj_title))
 {
 	if (global.playergame>=0)
 	{
@@ -180,6 +180,8 @@ and(!instance_exists(obj_player_ending_cutscene))
 else
 if (asset_get_type("obj_player_map")==asset_object)
 and(!instance_exists(obj_player_map))
+and(asset_get_type("obj_title")==asset_object)
+and(!instance_exists(obj_title))
 {
 	if (global.playergame>=0)
 	{
@@ -296,13 +298,13 @@ if (view_wport<640){view_wport=640;}if (view_wview<640){view_wview=640;}if (view
 
 #region /*Initialize Background*/
 if (global.character_select_in_this_menu="game")
-and(file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
+and(file_exists("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini"))
 or(global.character_select_in_this_menu="level_editor")
 and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu="game")
 	{
-		ini_open("Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+		ini_open("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini");
 	}
 	else
 	if (global.character_select_in_this_menu="level_editor")

@@ -117,6 +117,8 @@ and(instance_exists(obj_player))
 and(global.pause = false)
 and(asset_get_type("obj_player_map") == asset_object)
 and(!instance_exists(obj_player_map))
+and(asset_get_type("obj_title")==asset_object)
+and(!instance_exists(obj_title))
 {
 	with(obj_player)
 	{
@@ -1551,8 +1553,10 @@ and(!instance_exists(obj_pause))
 if (player_has_spawned = false)
 and(asset_get_type("room_leveleditor") == asset_room)
 and(room = room_leveleditor)
-and(asset_get_type("room_player") == asset_object)
+and(asset_get_type("obj_player") == asset_object)
 and(!instance_exists(obj_player))
+and(asset_get_type("obj_title")==asset_object)
+and(!instance_exists(obj_title))
 {
 	if (global.playergame >= 0)
 	{

@@ -2636,9 +2636,9 @@ and(iris_xscale<=0.001)
 			sprite_delete(global.custom_tileset);
 			
 			if (global.character_select_in_this_menu="game")
-			and(file_exists("Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png"))
+			and(file_exists("Levels/Level" +string(global.level_editor_level)+"/Tilesets/ground_tileset.png"))
 			{
-				global.custom_tileset = sprite_add("Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png",0,false,false,0,0);
+				global.custom_tileset = sprite_add("Levels/Level" +string(global.level_editor_level)+"/Tilesets/ground_tileset.png",0,false,false,0,0);
 			}
 			else
 			if (global.character_select_in_this_menu="level_editor")

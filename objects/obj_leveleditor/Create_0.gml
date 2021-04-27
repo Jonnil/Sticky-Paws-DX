@@ -150,13 +150,13 @@ image_index=0;
 
 #region /*Load Level Information*/
 if (global.character_select_in_this_menu="game")
-and(file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
+and(file_exists("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini"))
 or(global.character_select_in_this_menu="level_editor")
 and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu="game")
 	{
-		ini_open("Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+		ini_open("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini");
 	}
 	else
 	if (global.character_select_in_this_menu="level_editor")
@@ -178,7 +178,7 @@ and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_edi
 	}
 	else
 	{
-		ini_write_real("Info", "time_countdown", noone);
+		//ini_write_real("Info", "time_countdown", noone);
 		global.time_countdown = noone;
 	}
 	if(global.play_edited_level=false)
@@ -255,14 +255,14 @@ if (global.character_select_in_this_menu="game")
 	
 	#region /*Object Placement*/
 	var file, str, str_pos, str_temp, val, num;
-	if file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt")
+	if file_exists("Levels/Level" +string(global.level_editor_level)+"/Data/Object_Placement.txt")
 	{
-		file = file_text_open_read("Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt");
+		file = file_text_open_read("Levels/Level" +string(global.level_editor_level)+"/Data/Object_Placement.txt");
 	}
 	else
-	if file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt")
+	if file_exists("Levels/Level" +string(global.level_editor_level)+"/Data/Object Placement.txt")
 	{
-		file = file_text_open_read("Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt");
+		file = file_text_open_read("Levels/Level" +string(global.level_editor_level)+"/Data/Object Placement.txt");
 	}
 	else
 	{
@@ -312,14 +312,14 @@ if (global.character_select_in_this_menu="game")
 	
 	#region /*Object With Rotation Placement*/
 	var file, str, str_pos, str_temp, val, num;
-	if file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt")
+	if file_exists("Levels/Level" +string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt")
 	{
-		file = file_text_open_read("Levels/Level"+string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt");
+		file = file_text_open_read("Levels/Level" +string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt");
 	}
 	else
-	if file_exists("Levels/Level"+string(global.level_editor_level)+"/Data/Object Rotation Placement.txt")
+	if file_exists("Levels/Level" +string(global.level_editor_level)+"/Data/Object Rotation Placement.txt")
 	{
-		file = file_text_open_read("Levels/Level"+string(global.level_editor_level)+"/Data/Object Rotation Placement.txt");
+		file = file_text_open_read("Levels/Level" +string(global.level_editor_level)+"/Data/Object Rotation Placement.txt");
 	}
 	else
 	{

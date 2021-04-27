@@ -15,6 +15,8 @@
 //draw_text_outlined(x-32,y-96,"pause_vspeed: "+string(pause_vspeed),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x-128,y-128,"actually_play_edited_level: "+string(global.actually_play_edited_level),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x-128,y-96,"play_edited_level: "+string(global.play_edited_level),global.default_text_size,c_white,c_black,1);			
+draw_text_outlined(x-128,y-96,"number_of_jumps: "+string(number_of_jumps),global.default_text_size,c_white,c_black,1);			
+draw_text_outlined(x-128,y-56,"midair_jumps_left: "+string(midair_jumps_left),global.default_text_size,c_white,c_black,1);			
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart")==asset_sprite)
@@ -194,7 +196,7 @@ if (redblinktimer>30)
 {
 	redblinktimer=0;
 }
-if (can_double_jump=false)
+if (midair_jumps_left=0)
 {
 	double_jump_depleted_blink+=1;
 	if (double_jump_depleted_blink>20)

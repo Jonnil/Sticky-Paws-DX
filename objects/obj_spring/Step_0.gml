@@ -46,7 +46,7 @@ and(can_bounce=0)
 				}
 			}
 			can_climb_horizontal_rope_cooldown = 10;
-			can_doublejump = true;
+			midair_jumps_left=number_of_jumps;
 			can_groundpound = false;
 			chain_reaction = 0;
 			dive = false;
