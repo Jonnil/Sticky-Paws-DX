@@ -748,80 +748,81 @@ function scr_options_menu()
 	and(mouse_check_button_released(mb_left))
 	{
 		scr_saveconfig(); /*Save Config*/
+		input_key = false;
 		in_settings=false;
 		menu="options";
 		menu_delay = 3;
 	}
 	else
-	/*Back*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,0-room_height,370,40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="settings_back";can_navigate_settings_sidebar=true;}else
+	/*Back*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,0-room_height,370,40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="settings_back";input_key = false;can_navigate_settings_sidebar=true;}else
 	
-	/*Click Accessibility*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,accessibility_settings_y,370,(accessibility_settings_y+40)-1))and(global.settings_sidebar_menu="accessibility_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="accessibility_settings";menu_delay = 3;can_navigate_settings_sidebar=false;menu="assist_item_appear";}else
-	/*Accessibility*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,accessibility_settings_y,370,(accessibility_settings_y+40)-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="accessibility_settings";can_navigate_settings_sidebar=true;}else
+	/*Click Accessibility*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,accessibility_settings_y,370,(accessibility_settings_y+40)-1))and(global.settings_sidebar_menu="accessibility_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="accessibility_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;menu="assist_item_appear";}else
+	/*Accessibility*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,accessibility_settings_y,370,(accessibility_settings_y+40)-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="accessibility_settings";input_key = false;can_navigate_settings_sidebar=true;}else
 	
-	/*Click Game*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,game_settings_y,370,(game_settings_y+40)-1))and(global.settings_sidebar_menu="game_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="game_settings";menu_delay = 3;can_navigate_settings_sidebar=false;menu="difficulty_settings";}
-	/*Game*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,game_settings_y,370,(game_settings_y+40)-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="game_settings";can_navigate_settings_sidebar=true;}
+	/*Click Game*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,game_settings_y,370,(game_settings_y+40)-1))and(global.settings_sidebar_menu="game_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="game_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;menu="difficulty_settings";}
+	/*Game*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,game_settings_y,370,(game_settings_y+40)-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="game_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	
 	if (global.enable_multiplayer_settings = true)
 	{
-		/*Click Multiplayer*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,multiplayer_settings_y,370,multiplayer_settings_y+40-1))and(global.settings_sidebar_menu="multiplayer_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="multiplayer_settings";menu_delay = 3;can_navigate_settings_sidebar=false;}
-		/*Multiplayer*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,multiplayer_settings_y,370,multiplayer_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="multiplayer_settings";can_navigate_settings_sidebar=true;}
+		/*Click Multiplayer*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,multiplayer_settings_y,370,multiplayer_settings_y+40-1))and(global.settings_sidebar_menu="multiplayer_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="multiplayer_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;}
+		/*Multiplayer*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,multiplayer_settings_y,370,multiplayer_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="multiplayer_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
-	/*Click Keyboard and Mouse*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,keyboard_and_mouse_settings_y,370,keyboard_and_mouse_settings_y+40-1))and(global.settings_sidebar_menu="keyboard_and_mouse_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="keyboard_and_mouse_settings";menu_delay = 3;can_navigate_settings_sidebar=false;menu="remap_select_player";}
-	/*Keyboard and Mouse*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,keyboard_and_mouse_settings_y,370,keyboard_and_mouse_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="keyboard_and_mouse_settings";can_navigate_settings_sidebar=true;}
+	/*Click Keyboard and Mouse*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,keyboard_and_mouse_settings_y,370,keyboard_and_mouse_settings_y+40-1))and(global.settings_sidebar_menu="keyboard_and_mouse_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="keyboard_and_mouse_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;menu="remap_select_player";}
+	/*Keyboard and Mouse*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,keyboard_and_mouse_settings_y,370,keyboard_and_mouse_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="keyboard_and_mouse_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	
 	if(global.enable_controller_settings = true)
 	{
-		/*Click Controller*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,controller_settings_y,370,controller_settings_y+40-1))and(global.settings_sidebar_menu="controller_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="controller_settings";menu_delay = 3;can_navigate_settings_sidebar=false;}
-		/*Controller*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,controller_settings_y,370,controller_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="controller_settings";can_navigate_settings_sidebar=true;}
+		/*Click Controller*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,controller_settings_y,370,controller_settings_y+40-1))and(global.settings_sidebar_menu="controller_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="controller_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;}
+		/*Controller*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,controller_settings_y,370,controller_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="controller_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
 	if(global.enable_touch_settings = true)
 	{
-		/*Click Touch*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,touch_settings_y,370,touch_settings_y+40-1))and(global.settings_sidebar_menu="touch_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="touch_settings";menu_delay = 3;can_navigate_settings_sidebar=false;}
-		/*Touch*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,touch_settings_y,370,touch_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="touch_settings";can_navigate_settings_sidebar=true;}
+		/*Click Touch*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,touch_settings_y,370,touch_settings_y+40-1))and(global.settings_sidebar_menu="touch_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="touch_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;}
+		/*Touch*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,touch_settings_y,370,touch_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="touch_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
 	if(global.enable_profile_settings = true)
 	{
-		/*Click Profile*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,profile_settings_y,370,profile_settings_y+40-1))and(global.settings_sidebar_menu="profile_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="profile_settings";menu_delay = 3;can_navigate_settings_sidebar=false;}
-		/*Profile*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,profile_settings_y,370,profile_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="profile_settings";can_navigate_settings_sidebar=true;}
+		/*Click Profile*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,profile_settings_y,370,profile_settings_y+40-1))and(global.settings_sidebar_menu="profile_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="profile_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;}
+		/*Profile*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,profile_settings_y,370,profile_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="profile_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
-	/*Click Video*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,video_settings_y,370,video_settings_y+40-1))and(global.settings_sidebar_menu="video_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="video_settings";menu_delay = 3;can_navigate_settings_sidebar=false;menu="fullscreen_mode";}
-	/*Video*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,video_settings_y,370,video_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="video_settings";can_navigate_settings_sidebar=true;}
+	/*Click Video*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,video_settings_y,370,video_settings_y+40-1))and(global.settings_sidebar_menu="video_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="video_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;menu="fullscreen_mode";}
+	/*Video*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,video_settings_y,370,video_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="video_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	
-	/*Click Audio*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,audio_settings_y,370,audio_settings_y+40-1))and(global.settings_sidebar_menu="audio_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="audio_settings";menu_delay = 3;can_navigate_settings_sidebar=false;menu="music_volume";}
-	/*Audio*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,audio_settings_y,370,audio_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="audio_settings";can_navigate_settings_sidebar=true;}
+	/*Click Audio*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,audio_settings_y,370,audio_settings_y+40-1))and(global.settings_sidebar_menu="audio_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="audio_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;menu="music_volume";}
+	/*Audio*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,audio_settings_y,370,audio_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="audio_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	
 	if(global.enable_global_resources_settings = true)
 	{
-		/*Click Global Resources*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,global_resources_settings_y,370,global_resources_settings_y+40-1))and(global.settings_sidebar_menu="global_resources_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="global_resources_settings";menu_delay = 3;can_navigate_settings_sidebar=false;}
-		/*Global Resources*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,global_resources_settings_y,370,global_resources_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="global_resources_settings";can_navigate_settings_sidebar=true;}
+		/*Click Global Resources*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,global_resources_settings_y,370,global_resources_settings_y+40-1))and(global.settings_sidebar_menu="global_resources_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="global_resources_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;}
+		/*Global Resources*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,global_resources_settings_y,370,global_resources_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="global_resources_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
 	if(global.enable_storage_settings = true)
 	{
-		/*Click Storage*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,storage_settings_y,370,storage_settings_y+40-1))and(global.settings_sidebar_menu="storage_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="storage_settings";menu_delay = 3;can_navigate_settings_sidebar=false;}
-		/*Storage*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,storage_settings_y,370,storage_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="storage_settings";can_navigate_settings_sidebar=true;}
+		/*Click Storage*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,storage_settings_y,370,storage_settings_y+40-1))and(global.settings_sidebar_menu="storage_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="storage_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;}
+		/*Storage*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,storage_settings_y,370,storage_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="storage_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
 	if(global.enable_language_settings = true)
 	{
-		/*Click Language*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,language_settings_y,370,language_settings_y+40-1))and(global.settings_sidebar_menu="language_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="language_settings";menu_delay = 3;can_navigate_settings_sidebar=false;menu="language_id_id";}
-		/*Language*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,language_settings_y,370,language_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="language_settings";can_navigate_settings_sidebar=true;}
+		/*Click Language*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,language_settings_y,370,language_settings_y+40-1))and(global.settings_sidebar_menu="language_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="language_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;menu="language_id_id";}
+		/*Language*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,language_settings_y,370,language_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="language_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
 	if(global.enable_broadcast_settings = true)
 	{
-		/*Click Broadcast*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,broadcast_settings_y,370,broadcast_settings_y+40-1))and(global.settings_sidebar_menu="broadcast_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="broadcast_settings";menu_delay = 3;can_navigate_settings_sidebar=false;}
-		/*Broadcast*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,broadcast_settings_y,370,broadcast_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="broadcast_settings";can_navigate_settings_sidebar=true;}
+		/*Click Broadcast*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,broadcast_settings_y,370,broadcast_settings_y+40-1))and(global.settings_sidebar_menu="broadcast_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="broadcast_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;}
+		/*Broadcast*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,broadcast_settings_y,370,broadcast_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="broadcast_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
 	if(global.enable_how_to_play_settings = true)
 	{
-		/*Click How to Play*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,how_to_play_y,370,how_to_play_y+40-1))and(global.settings_sidebar_menu="how_to_play")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="how_to_play";menu_delay = 3;can_navigate_settings_sidebar=false;}
-		/*How to Play*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,how_to_play_y,370,how_to_play_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="how_to_play";can_navigate_settings_sidebar=true;}
+		/*Click How to Play*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,how_to_play_y,370,how_to_play_y+40-1))and(global.settings_sidebar_menu="how_to_play")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="how_to_play";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;}
+		/*How to Play*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,how_to_play_y,370,how_to_play_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="how_to_play";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
 	#endregion /*Menu navigation with mouse END*/
@@ -2293,7 +2294,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 	#endregion /*Reset to Default Settings End*/
 
 	#region /*Show the player when they can input a key to remap controls*/
-	if (input_key=true)
+	if (input_key = true)
 	{
 		
 		#region /*Text saying input key now for player 1*/
