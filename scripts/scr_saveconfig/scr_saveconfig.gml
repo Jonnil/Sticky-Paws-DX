@@ -4,13 +4,18 @@ function scr_saveconfig() {
 	ini_open("Config.ini");
 
 	ini_write_real("Config","difficulty",global.difficulty);
+	ini_write_real("Config","show_timer",global.show_timer);
 	ini_write_real("Config","narrator",global.narrator);
 	ini_write_real("Config","show_tutorial_signs",global.show_tutorial_signs);
 	ini_write_real("Config","hud_show_timer",global.hud_show_timer);
 	ini_write_real("Config","players_can_collide",global.players_can_collide);
-	/*Assist Settings*/ini_write_real("Config","assist_item_appear",global.assist_item_appear);
+	
+	#region /*Assist Settings*/
+	ini_write_real("Config","assist_item_appear",global.assist_item_appear);
 	ini_write_real("Config","assist_extra_hp",global.assist_extra_hp);
-	ini_write_real("Config","assist_guiding_arrows",global.assist_guiding_arrows);/*Assist Settings END*/
+	ini_write_real("Config","assist_guiding_arrows",global.assist_guiding_arrows);
+	#endregion /*Assist Settings END*/
+	
 	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
 	ini_write_real("Config","interpolate",global.interpolate);
 	ini_write_real("Config","show_fps",global.show_fps);
@@ -27,7 +32,8 @@ function scr_saveconfig() {
 	ini_write_real("Config","enable_foreground_layer1",global.enable_foreground_layer1);
 	ini_write_real("Config","enable_foreground_layer2",global.enable_foreground_layer2);
 	ini_write_real("Config","enable_transitions",global.enable_transitions);
-	//Save Player 1 Keyboard Remapping
+	
+	#region /*Save Player 1 Keyboard Remapping*/
 	ini_write_real("Config","character_for_player_1",global.character_for_player_1);
 	ini_write_real("Config","color_for_player_1",global.color_for_player_1);
 	ini_write_string("Config","player1_name",global.player1_name);
@@ -56,8 +62,10 @@ function scr_saveconfig() {
 	ini_write_real("Config","player1_sprint_toggle",global.player1_sprint_toggle);
 	ini_write_real("Config","player1_wall_jump_setting",global.player1_wall_jump_setting);
 	ini_write_real("Config","player1_drop_from_rope",global.player1_drop_from_rope);
-	ini_write_real("Config","player1_show_controls",global.player1_show_controls);//Save Player 1 Keyboard Remapping End
-	//Save Player 2 Keyboard Remapping
+	ini_write_real("Config","player1_show_controls",global.player1_show_controls);
+	#endregion /*Save Player 1 Keyboard Remapping END*/
+	
+	#region /*Save Player 2 Keyboard Remapping*/
 	ini_write_real("Config","character_for_player_2",global.character_for_player_2);
 	ini_write_real("Config","color_for_player_2",global.color_for_player_2);
 	ini_write_string("Config","player2_name",global.player2_name);
@@ -86,8 +94,10 @@ function scr_saveconfig() {
 	ini_write_real("Config","player2_sprint_toggle",global.player2_sprint_toggle);
 	ini_write_real("Config","player2_wall_jump_setting",global.player2_wall_jump_setting);
 	ini_write_real("Config","player2_drop_from_rope",global.player2_drop_from_rope);
-	ini_write_real("Config","player2_show_controls",global.player2_show_controls);//Save Player 2 Keyboard Remapping End
-	//Save Player 3 Keyboard Remapping
+	ini_write_real("Config","player2_show_controls",global.player2_show_controls);
+	#endregion /*Save Player 2 Keyboard Remapping END*/
+	
+	#region /*Save Player 3 Keyboard Remapping*/
 	ini_write_real("Config","character_for_player_3",global.character_for_player_3);
 	ini_write_real("Config","color_for_player_3",global.color_for_player_3);
 	ini_write_string("Config","player3_name",global.player3_name);
@@ -116,8 +126,10 @@ function scr_saveconfig() {
 	ini_write_real("Config","player3_sprint_toggle",global.player3_sprint_toggle);
 	ini_write_real("Config","player3_wall_jump_setting",global.player3_wall_jump_setting);
 	ini_write_real("Config","player3_drop_from_rope",global.player3_drop_from_rope);
-	ini_write_real("Config","player3_show_controls",global.player3_show_controls);//Save Player 3 Keyboard Remapping End
-	//Save Player 4 Keyboard Remapping
+	ini_write_real("Config","player3_show_controls",global.player3_show_controls);
+	#endregion /*Save Player 3 Keyboard Remapping END*/
+	
+	#region /*Save Player 4 Keyboard Remapping*/
 	ini_write_real("Config","character_for_player_4",global.character_for_player_4);
 	ini_write_real("Config","color_for_player_4",global.color_for_player_4);
 	ini_write_string("Config","player4_name",global.player4_name);
@@ -146,7 +158,8 @@ function scr_saveconfig() {
 	ini_write_real("Config","player4_sprint_toggle",global.player4_sprint_toggle);
 	ini_write_real("Config","player4_wall_jump_setting",global.player4_wall_jump_setting);
 	ini_write_real("Config","player4_drop_from_rope",global.player4_drop_from_rope);
-	ini_write_real("Config","player4_show_controls",global.player4_show_controls);//Save Player 4 Keyboard Remapping End
+	ini_write_real("Config","player4_show_controls",global.player4_show_controls);
+	#endregion /*Save Player 4 Keyboard Remapping END*/
 
 	ini_close();
 

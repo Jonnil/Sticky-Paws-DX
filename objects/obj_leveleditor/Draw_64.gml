@@ -731,6 +731,13 @@ if (quit_level_editor = false)
 		if (pause = false)
 		{
 			
+			if (can_put_objects_above_other_objects = true)
+			{
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_center);
+				draw_text_outlined(200, 100, "Can put objects above other objects: True", global.default_text_size, c_black, c_white, 1);
+			}
+			
 			#region /*Show Grid*/
 			if (show_grid = true)
 			{
@@ -744,7 +751,7 @@ if (quit_level_editor = false)
 				draw_sprite_ext(spr_leveleditor_icons, 13, display_get_gui_width() - 224, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /*Show Grid END*/
-		
+			
 			#region /*Zoom Out*/
 			if (zoom_out = true)
 			{
@@ -755,7 +762,7 @@ if (quit_level_editor = false)
 				draw_sprite_ext(spr_leveleditor_icons, 14, display_get_gui_width() - 160, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /*Zoom Out END*/
-		
+			
 			#region /*Zoom Reset*/
 			if (zoom_reset = true)
 			{
@@ -766,7 +773,7 @@ if (quit_level_editor = false)
 				draw_sprite_ext(spr_leveleditor_icons, 15, display_get_gui_width() - 96, +32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /*Zoom Reset END*/
-		
+			
 			#region /*Zoom In*/
 			if (zoom_in = true)
 			{

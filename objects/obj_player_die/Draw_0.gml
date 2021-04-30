@@ -79,7 +79,7 @@ count+=1;
 #region /*Check if the last player just died*/
 if (count=1)
 and(asset_get_type("obj_player")==asset_object)
-and(instance_number(obj_player)=0)
+and(!instance_exists(obj_player))
 {
 	last_player=true;
 }
@@ -119,7 +119,7 @@ and(sprite_index=spr_player_burnt)
 #endregion /*If the player is burned, have black smoke coming out END*/
 
 #region /*Play death melody*/
-if (instance_number(obj_player)=0)
+if (!instance_exists(obj_player))
 and(count=50)
 and(last_player=true)
 {
@@ -151,7 +151,7 @@ if (vspeed>+32)
 #endregion /*Limit the vertical speed END*/
 
 if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
-and(instance_number(obj_player)<1)
+and(!instance_exists(obj_player))
 and(iris_xscale<=0.001)
 {
 	global.time_countdown = noone; /*Reset countdown back to default value*/
@@ -266,7 +266,7 @@ else
 if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
 {
 	if (lives>0)
-	and(instance_number(obj_player)>0)
+	and(instance_exists(obj_player))
 	{
 		instance_destroy();
 	}
@@ -278,7 +278,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 	sprite_index=noone;
 }
 
-if (instance_number(obj_player)=0)
+if (!instance_exists(obj_player))
 and(count>49)
 and(last_player=true)
 {
@@ -454,7 +454,7 @@ if (bubble=true)
 	#endregion /*Bubble END*/
 
 	#region /*If there are no more players in the room*/
-	if (instance_number(obj_player)<1)
+	if (!instance_exists(obj_player))
 	{
 		bubble=false;
 		count=0;

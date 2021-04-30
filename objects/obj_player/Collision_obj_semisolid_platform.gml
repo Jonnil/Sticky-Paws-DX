@@ -57,7 +57,7 @@ and(stick_to_wall = false)
 	laststandingy = y + sprite_height / 2;
 	draw_xscale = 1.25;
 	draw_yscale = 0.75;
-	can_groundpound = true;
+	can_ground_pound = true;
 	spring = false;
 	ledge_grab_jump = false;
 }

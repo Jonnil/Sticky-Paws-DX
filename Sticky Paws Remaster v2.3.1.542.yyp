@@ -340,7 +340,7 @@
     {"id":{"name":"snd_menuvoice_sticky_2","path":"sounds/snd_menuvoice_sticky_2/snd_menuvoice_sticky_2.yy",},"order":88,},
     {"id":{"name":"spr_title_screen_background","path":"sprites/spr_title_screen_background/spr_title_screen_background.yy",},"order":90,},
     {"id":{"name":"spr_select_character_background","path":"sprites/spr_select_character_background/spr_select_character_background.yy",},"order":87,},
-    {"id":{"name":"spr_sign_groundpound","path":"sprites/spr_sign_groundpound/spr_sign_groundpound.yy",},"order":81,},
+    {"id":{"name":"spr_sign_ground_pound","path":"sprites/spr_sign_ground_pound/spr_sign_ground_pound.yy",},"order":81,},
     {"id":{"name":"room_pause","path":"rooms/room_pause/room_pause.yy",},"order":4,},
   ],
   "Options": [

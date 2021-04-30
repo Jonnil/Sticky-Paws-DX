@@ -5,54 +5,54 @@ key_b=(gamepad_button_check(0,gp_face2))or(keyboard_check(global.player1_key_spr
 
 #region /*Translate object names into object ID*/
 
-if (object = "wall"){object = 1;}
-if (object = "spikes"){object = 2;}
-if (object = "semisolid_platform"){object = 3;}
-if (object = "brick_block"){object = 4;}
-if (object = "question_block"){object = 11;}
-if (object = "hard_block"){object = 18;}
-if (object = "falling_block"){object = 19;}
-if (object = "falling_block_solid"){object = 20;}
-if (object = "falling_block_long"){object = 21;}
-if (object = "falling_block_long_solid"){object = 22;}
-if (object = "cloud_block"){object = 23;}
-if (object = "ice_block"){object = 24;}
-if (object = "cardboard_block"){object = 25;}
-if (object = "cardboard"){object = 26;}
-if (object = "cardboard_long"){object = 27;}
-if (object = "bump_in_ground"){object = 28;}
-if (object = "basic_collectible"){object = 40;}
-if (object = "big_collectible_1"){object = 48;}
-if (object = "heart"){object = 53;}
-if (object = "hp_pickup"){object = 54;}
-if (object = "invincibility_powerup"){object = 55;}
-if (object = "1up"){object = 56;}
-if (object = "2up"){object = 57;}
-if (object = "3up"){object = 58;}
-if (object = "enemy1"){object = 59;}
-if (object = "enemy2"){object = 60;}
-if (object = "blaster"){object = 61;}
-if (object = "spring"){object = 62;}
-if (object = "ladder"){object = 63;}
-if (object = "arrow_sign"){object = 64;}
-if (object = "arrow_sign_small"){object = 65;}
-if (object = "checkpoint"){object = 66;}
-if (object = "spikes_emerge_block"){object = 67;}
-if (object = "oneway"){object = 68;}
-if (object = "horizontal_rope"){object = 72;}
-if (object = "water"){object = 73;}
-if (object = "water_surface"){object = 731;}
-if (object = "clipped_shirt"){object = 74;}
-if (object = "clipped_pants"){object = 75;}
-if (object = "clipped_sock"){object = 76;}
-if (object = "bucket"){object = 77;}
-if (object = "bird"){object = 89;}
-if (object = "sign_crouch"){object = 90;}
+if (object = "wall"){object = 1;}else
+if (object = "spikes"){object = 2;}else
+if (object = "semisolid_platform"){object = 3;}else
+if (object = "brick_block"){object = 4;}else
+if (object = "question_block"){object = 11;}else
+if (object = "hard_block"){object = 18;}else
+if (object = "falling_block"){object = 19;}else
+if (object = "falling_block_solid"){object = 20;}else
+if (object = "falling_block_long"){object = 21;}else
+if (object = "falling_block_long_solid"){object = 22;}else
+if (object = "cloud_block"){object = 23;}else
+if (object = "ice_block"){object = 24;}else
+if (object = "cardboard_block"){object = 25;}else
+if (object = "cardboard"){object = 26;}else
+if (object = "cardboard_long"){object = 27;}else
+if (object = "bump_in_ground"){object = 28;}else
+if (object = "basic_collectible"){object = 40;}else
+if (object = "big_collectible_1"){object = 48;}else
+if (object = "heart"){object = 53;}else
+if (object = "hp_pickup"){object = 54;}else
+if (object = "invincibility_powerup"){object = 55;}else
+if (object = "one-up"){object = 56;}else
+if (object = "two-up"){object = 57;}else
+if (object = "three-up"){object = 58;}else
+if (object = "enemy1"){object = 59;}else
+if (object = "enemy2"){object = 60;}else
+if (object = "blaster"){object = 61;}else
+if (object = "spring"){object = 62;}else
+if (object = "ladder"){object = 63;}else
+if (object = "arrow_sign"){object = 64;}else
+if (object = "arrow_sign_small"){object = 65;}else
+if (object = "checkpoint"){object = 66;}else
+if (object = "spikes_emerge_block"){object = 67;}else
+if (object = "oneway"){object = 68;}else
+if (object = "horizontal_rope"){object = 72;}else
+if (object = "water"){object = 73;}else
+if (object = "water_surface"){object = 731;}else
+if (object = "clipped_shirt"){object = 74;}else
+if (object = "clipped_pants"){object = 75;}else
+if (object = "clipped_sock"){object = 76;}else
+if (object = "bucket"){object = 77;}else
+if (object = "bird"){object = 89;}else
+if (object = "sign_crouch"){object = 90;}else
 if (object = "boss"){object = 95;}
 
 #region /*All code before initializing the object*/
 
-#region /*if current undo value is less than this objects undo value, then delete this object*/
+#region /*If current undo value is less than this objects undo value, then delete this object*/
 if (asset_get_type("obj_leveleditor")==asset_object)
 and(instance_exists(obj_leveleditor))
 and(undo_value>obj_leveleditor.current_undo_value)
@@ -72,7 +72,7 @@ and(undo_value<=obj_leveleditor.current_undo_value)
 {
 	undo_value_visible=true;
 }
-#endregion /*if current undo value is less than this objects undo value, then delete this object END*/
+#endregion /*If current undo value is less than this objects undo value, then delete this object END*/
 
 #region /*Make sprite transparent if you're setting difficulty levels*/
 if (asset_get_type("obj_leveleditor")==asset_object)
@@ -804,8 +804,9 @@ and(delay>1)
 				}
 				#endregion /*Question Block*/
 				
-				#region /*Extra Lives Pickup*/
 				else
+				
+				#region /*Extra Lives Pickup*/
 				if (object=56)
 				{
 					object=57;
@@ -822,8 +823,9 @@ and(delay>1)
 				}
 				#endregion /*Extra Lives Pickup END*/
 				
-				#region /*Change Oneway Direction*/
 				else
+				
+				#region /*Change Oneway Direction*/
 				if (object=68)
 				{
 					object=69;
@@ -1297,6 +1299,7 @@ and(!mouse_check_button(mb_middle))
 if (asset_get_type("obj_leveleditor")==asset_object)
 and(instance_exists(obj_leveleditor))
 and(obj_leveleditor.set_difficulty_mode=false)
+and(obj_leveleditor.can_put_objects_above_other_objects=false)
 and (delay>1)
 {
 	if (!keyboard_check(vk_space))
@@ -1325,6 +1328,7 @@ and (delay>1)
 		}
 	}
 	#region /*Drag the object*/
+	
 	if (drag_object=true)
 	{
 		depth = -110;
@@ -1333,7 +1337,15 @@ and (delay>1)
 	}
 	else
 	{
-		depth = +110;
+		if (object = 73)
+		or(object = 731)
+		{
+			depth = +120;
+		}
+		else
+		{
+			depth = +110;
+		}
 	}
 	#endregion /*Drag the object END*/
 	
@@ -1536,7 +1548,7 @@ if (global.play_edited_level=true)
 		if (object=89)and(asset_get_type("obj_bird")==asset_object){instance_create_depth(x,y,0,obj_bird);instance_destroy();}
 		if (object=90)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}instance_destroy();}
 		if (object=91)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}instance_destroy();}
-		if (object=92)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_groundpound; sprite_sign = spr_sign_groundpound;}instance_destroy();}
+		if (object=92)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_ground_pound; sprite_sign = spr_sign_ground_pound;}instance_destroy();}
 		if (object=93)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}instance_destroy();}
 		if (object=94)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_walljump; sprite_sign = spr_sign_walljump;}instance_destroy();}
 		if (object=95)and(asset_get_type("obj_boss")==asset_object){instance_create_depth(x,y,0,obj_boss);instance_destroy();}
@@ -1657,8 +1669,8 @@ if (object=71)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr
 #endregion /*Oneway END*/
 
 if (object=72)and(asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_index=spr_horizontal_rope;mask_index=spr_wall;}
-if (object=73)or(object = "water")and(asset_get_type("spr_water")==asset_sprite){sprite_index=spr_water;mask_index=spr_wall;}
-if (object=731)or(object = "water_surface")and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
+if (object=73)and(asset_get_type("spr_water")==asset_sprite){sprite_index=spr_water;mask_index=spr_wall;}
+if (object=731)and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
 if (object=74)and(asset_get_type("spr_clipped_shirt")==asset_sprite){sprite_index=spr_clipped_shirt;mask_index=spr_wall;}
 if (object=75)and(asset_get_type("spr_clipped_pants")==asset_sprite){sprite_index=spr_clipped_pants;mask_index=spr_wall;}
 if (object=76)and(asset_get_type("spr_clipped_sock")==asset_sprite){sprite_index=spr_clipped_sock;mask_index=spr_wall;}
@@ -1681,7 +1693,7 @@ if (object=88)and(asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_b
 if (object=89)and(asset_get_type("spr_bird")==asset_sprite){sprite_index=spr_bird;mask_index=spr_wall;}
 if (object=90)and(asset_get_type("spr_sign_crouch")==asset_sprite){sprite_index=spr_sign_crouch;mask_index=spr_wall;}
 if (object=91)and(asset_get_type("spr_sign_dive")==asset_sprite){sprite_index=spr_sign_dive;mask_index=spr_wall;}
-if (object=92)and(asset_get_type("spr_sign_groundpound")==asset_sprite){sprite_index=spr_sign_groundpound;mask_index=spr_wall;}
+if (object=92)and(asset_get_type("spr_sign_ground_pound")==asset_sprite){sprite_index=spr_sign_ground_pound;mask_index=spr_wall;}
 if (object=93)and(asset_get_type("spr_sign_rope_spin")==asset_sprite){sprite_index=spr_sign_rope_spin;mask_index=spr_wall;}
 if (object=94)and(asset_get_type("spr_sign_walljump")==asset_sprite){sprite_index=spr_sign_walljump;mask_index=spr_wall;}
 if (object=95)and(asset_get_type("spr_boss_stand")==asset_sprite){sprite_index=spr_boss_stand;mask_index=spr_wall;}

@@ -6,13 +6,18 @@ function scr_loadconfig()
 		ini_open("Config.ini");
 		
 		if (ini_key_exists("Config","difficulty")){global.difficulty=ini_read_real("Config","difficulty",0);}
+		if (ini_key_exists("Config","show_timer")){global.show_timer=ini_read_real("Config","show_timer",0);}
 		if (ini_key_exists("Config","narrator")){global.narrator=ini_read_real("Config","narrator",0);}
 		if (ini_key_exists("Config","show_tutorial_signs")){global.show_tutorial_signs=ini_read_real("Config","show_tutorial_signs",0);}
 		if (ini_key_exists("Config","hud_show_timer")){global.hud_show_timer=ini_read_real("Config","hud_show_timer",0);}
 		if (ini_key_exists("Config","players_can_collide")){global.players_can_collide=ini_read_real("Config","players_can_collide",0);}
-		/*Assist Settings*/if (ini_key_exists("Config","assist_item_appear")){global.assist_item_appear=ini_read_real("Config","assist_item_appear",0);}
+		
+		#region /*Assist Settings*/
+		if (ini_key_exists("Config","assist_item_appear")){global.assist_item_appear=ini_read_real("Config","assist_item_appear",0);}
 		if (ini_key_exists("Config","assist_extra_hp")){global.assist_extra_hp=ini_read_real("Config","assist_extra_hp",0);}
-		if (ini_key_exists("Config","assist_guiding_arrows")){global.assist_guiding_arrows=ini_read_real("Config","assist_guiding_arrows",0);}/*Assist Settings END*/
+		if (ini_key_exists("Config","assist_guiding_arrows")){global.assist_guiding_arrows=ini_read_real("Config","assist_guiding_arrows",0);}
+		#endregion /*Assist Settings END*/
+		
 		if (ini_key_exists("Config","fullscreen_mode")){window_set_fullscreen(ini_read_real("Config","fullscreen_mode",0));}
 		if (ini_key_exists("Config","interpolate")){global.interpolate=ini_read_real("Config","interpolate",0);}
 		if (ini_key_exists("Config","show_fps")){global.show_fps=ini_read_real("Config","show_fps",0);}

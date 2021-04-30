@@ -111,7 +111,7 @@ if (lives < 0)
 }
 #endregion /*Make sure the lives counter never goes below 0 END*/
 
-#region /*Spawn Players*/
+#region /*Spawn Players in multiplayer*/
 if (lives > 0)
 and(instance_exists(obj_player))
 and(global.pause = false)
@@ -221,7 +221,7 @@ and(!instance_exists(obj_title))
 		}
 	}
 }
-#endregion /*Spawn Players End*/
+#endregion /*Spawn Players in multiplayer END*/
 
 #region /*Timer Countup*/
 if (asset_get_type("obj_goal") == asset_object)
@@ -1550,7 +1550,7 @@ and(!instance_exists(obj_pause))
 
 ///Fix Player not spawning in level editor
 /*The player doesn't spawn when you simply try to playtest in the level editor, don't know why this is happening, but doing this code in a step/draw event fixes it for now. Will have to look into this more at another time*/
-if (player_has_spawned = false)
+/*if (player_has_spawned = false)
 and(asset_get_type("room_leveleditor") == asset_room)
 and(room = room_leveleditor)
 and(asset_get_type("obj_player") == asset_object)

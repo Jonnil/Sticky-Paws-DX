@@ -47,12 +47,12 @@ and(can_bounce=0)
 			}
 			can_climb_horizontal_rope_cooldown = 10;
 			midair_jumps_left=number_of_jumps;
-			can_groundpound = false;
+			can_ground_pound = false;
 			chain_reaction = 0;
 			dive = false;
 			draw_xscale = 0.5;
 			draw_yscale = 1.5;
-			groundpound = false;
+			ground_pound = false;
 			horizontal_rope_climb = false;
 			ledge_grab_jump = false;
 			speed_max = 4;

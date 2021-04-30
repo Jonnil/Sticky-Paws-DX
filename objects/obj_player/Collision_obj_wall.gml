@@ -46,7 +46,7 @@ and(stick_to_wall = false)
 	laststandingy = y + sprite_height / 2;
 	draw_xscale = 1.25;
 	draw_yscale = 0.75;
-	can_groundpound = true;
+	can_ground_pound = true;
 	spring = false;
 	ledge_grab_jump = false;
 }
@@ -57,7 +57,7 @@ if (position_meeting(x, bbox_top - 1, other))
 and(stick_to_wall = false)
 {
 	vspeed += 4;
-	can_groundpound = false;
+	can_ground_pound = false;
 	draw_xscale = 1.25;
 	draw_yscale = 0.75;
 	if (abs(hspeed) < 1)
