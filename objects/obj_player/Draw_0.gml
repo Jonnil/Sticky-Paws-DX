@@ -15,8 +15,6 @@
 //draw_text_outlined(x-32,y-96,"pause_vspeed: "+string(pause_vspeed),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x-128,y-128,"actually_play_edited_level: "+string(global.actually_play_edited_level),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x-128,y-96,"play_edited_level: "+string(global.play_edited_level),global.default_text_size,c_white,c_black,1);			
-draw_text_outlined(x-128,y-96,"number_of_jumps: "+string(number_of_jumps),global.default_text_size,c_white,c_black,1);			
-draw_text_outlined(x-128,y-56,"midair_jumps_left: "+string(midair_jumps_left),global.default_text_size,c_white,c_black,1);			
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart")==asset_sprite)
@@ -451,6 +449,17 @@ if (global.playergame>0)
 }
 #endregion /*Display Player Number and Name END*/
 
+#region /*If the player can do 3 jumps, show that*/
+if (number_of_jumps>=3)
+and(midair_jumps_left<number_of_jumps)
+{
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_outlined(x,y-128,"Jumps: "+string(midair_jumps_left)+"/"+string(number_of_jumps),global.default_text_size,c_white,c_black,1);			
+}
+#endregion /*If the player can do 3 jumps, show that*/
+
+#region /*If player has more hp, show that*/
 if (hp > 0)
 and(max_hp > 1)
 and(global.assist_extra_hp<=9)
@@ -459,3 +468,4 @@ and(global.assist_extra_hp<=9)
 	draw_set_valign(fa_center);
 	draw_text_outlined(x,y-96,"HP: "+string(hp)+"/"+string(max_hp),global.default_text_size,c_white,c_black,1);
 }
+#endregion /*If player has more hp, show that END*/

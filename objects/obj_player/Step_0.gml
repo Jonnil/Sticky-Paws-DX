@@ -11079,7 +11079,7 @@ and(obj_camera.iris_xscale<3)
 					{
 						x=room_width+sprite_width/2;
 						hspeed=0;
-						vspeed=0;
+						vspeed =0;
 					}
 				}
 			}
@@ -11191,7 +11191,7 @@ else
 					{
 						x=room_width+sprite_width/2;
 						hspeed=0;
-						vspeed=0;
+						vspeed =0;
 					}
 				}
 			}
@@ -11425,7 +11425,7 @@ if (assist_invincible=true)
 		and(crouch=false)
 		and(vspeed>1)
 		{
-			vspeed=+1;
+			vspeed =+1;
 			crouch=false;
 			can_ground_pound=false;
 		}
@@ -13084,6 +13084,7 @@ and(key_jump_hold)
 		and(vspeed = 0)
 		{
 			jump += 1;
+			midair_jumps_left -= 1;
 			buffer_jump = 0; /*Reset jump buffer timer back to 0 when jumping*/
 			dive = false;
 			triplejumpdelay = 12;
@@ -13199,7 +13200,7 @@ and(key_jump_hold)
 }
 #endregion /*Jumping END*/
 
-#region /*Mid-Air Jumping*/
+#region /*Mid-Air / Double Jumping*/
 if (key_jump)
 and(can_move=true)
 and(global.pause=false)
@@ -13222,7 +13223,7 @@ and(in_water=false)
 	{
 		buffer_jump = 0;
 		dive=false;
-		vspeed=-double_jump_height;
+		vspeed = -double_jump_height;
 		if (midair_jumps_left=number_of_jumps)
 		{
 			if (image_xscale>0)
@@ -13250,9 +13251,9 @@ and(in_water=false)
 		}
 	}
 }
-#endregion /*Mid-Air Jumping END*/
+#endregion /*Mid-Air / Double Jumping END*/
 
-#region /*Recharge mid_air jump when landing on ground*/
+#region /*Recharge mid-air / double jump when landing on ground*/
 if (asset_get_type("obj_wall")==asset_object)
 and(place_meeting(x,y+1,obj_wall))
 or(asset_get_type("obj_semisolid_platform")==asset_object)
@@ -13262,9 +13263,12 @@ and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
 or(asset_get_type("obj_semisolid_platform")==asset_object)
 and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
 {
-	midair_jumps_left=number_of_jumps;
+	if (vspeed>=0)
+	{
+		midair_jumps_left=number_of_jumps;
+	}
 }
-#endregion /*Recharge double jump when landing on ground END*/
+#endregion /*Recharge mid-air / double jump when landing on ground END*/
 
 #region /*Do a small jump when releasing the jump button*/
 if (key_jump_released)
@@ -13336,7 +13340,7 @@ or(place_meeting(x,y+1,obj_semisolid_platform))
 {
 	if (vspeed>8)
 	{
-		vspeed=+8;
+		vspeed =+8;
 	}
 }
 else
@@ -13345,7 +13349,7 @@ else
 	{
 		if (vspeed>30)
 		{
-			vspeed=+30;
+			vspeed =+30;
 		}
 	}
 	else
@@ -13353,14 +13357,14 @@ else
 	{
 		if (vspeed>17)
 		{
-			vspeed=+17;
+			vspeed =+17;
 		}
 	}
 	else
 	{
 		if (vspeed>20)
 		{
-			vspeed=+20;
+			vspeed =+20;
 		}
 	}
 }
@@ -13491,7 +13495,7 @@ and(global.pause=false)
 			ropeX=grappleX+lengthdir_x(ropeLength,ropeAngle);
 			ropeY=grappleY+lengthdir_y(ropeLength,ropeAngle);
 			hspeed=ropeX-x;
-			vspeed=ropeY-y;
+			vspeed =ropeY-y;
 		}
 
 		if (instance_number(instance_nearest(x,y,obj_tongue))<1)
@@ -13510,7 +13514,7 @@ and(global.pause=false)
 				timer=25;
 				move_towards_point(instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,32);
 			}
-			vspeed=-normal_jump_height+vspeed;
+			vspeed = -normal_jump_height+vspeed;
 			ropeAngleVelocity=0;
 			grappleX=x;
 			grappleY=y;
@@ -13755,7 +13759,7 @@ and(wall_jump_setting>=1)
 			}
 			if (vspeed>=4)
 			{
-				vspeed=4;
+				vspeed =4;
 			}
 			if (!place_meeting(x-1,y,obj_wall))
 			and(image_xscale<0)
@@ -13790,7 +13794,7 @@ and(wall_jump_setting>=1)
 				}
 				can_ground_pound=false;
 				ledge_grab_jump=false;
-				vspeed=+4;
+				vspeed =+4;
 			}
 			else
 			if (key_up)
@@ -13817,7 +13821,7 @@ and(wall_jump_setting>=1)
 						}
 						can_ground_pound=true;
 						ledge_grab_jump=true;
-						vspeed=-4;
+						vspeed = -4;
 					}
 					else
 					{
@@ -13852,7 +13856,7 @@ and(wall_jump_setting>=1)
 			{
 				can_ground_pound=true;
 				ledge_grab_jump=false;
-				vspeed=0;
+				vspeed =0;
 				gravity=0;
 			}
 		}
@@ -13915,10 +13919,10 @@ and(wall_jump_setting>=1)
 				wall_jump=true;
 				crouch=false;
 				stick_to_wall=false;
-				midair_jumps_left=number_of_jumps;
 				ledge_grab_jump=false;
 				speed_max=8;
-				vspeed=-normal_jump_height;
+				vspeed = -normal_jump_height;
+				midair_jumps_left = number_of_jumps-1;
 				image_index=0;
 				effect_create_above(ef_smoke,x,bbox_bottom-8,0,c_white);
 				effect_create_above(ef_smoke,x,bbox_top+8,0,c_white);
@@ -13987,7 +13991,8 @@ and(wall_jump_setting>=1)
 		dive=false;
 		drop_off_wall_climb=true; /*Drop down from wall climbing*/
 		hspeed=0;
-		vspeed=+1;
+		vspeed = +1;
+		midair_jumps_left -= 1;
 		stick_to_wall=false;
 		crouch=false;
 	}
@@ -14057,7 +14062,7 @@ and(wall_jump_setting>=1)
 			stick_to_wall=false;
 			ledge_grab_jump=false;
 			speed_max=8;
-			vspeed=-normal_jump_height;
+			vspeed = -normal_jump_height;
 			image_index=0;
 			effect_create_above(ef_smoke,x,bbox_bottom-8,0,c_white);
 			effect_create_above(ef_smoke,x,bbox_top+8,0,c_white);
@@ -14133,12 +14138,12 @@ and(takendamage<=takendamage_freezetime)
 						if (image_index>image_number-1)
 						{
 							image_speed=0;
-							vspeed=+16;
+							vspeed =+16;
 						}
 						else
 						{
 							image_speed=0.5;
-							vspeed=-4;
+							vspeed = -4;
 						}
 					}
 				}
@@ -14152,7 +14157,7 @@ and(takendamage<=takendamage_freezetime)
 			}
 			if (vspeed>8)
 			{
-				vspeed=+24;
+				vspeed =+24;
 			}
 	
 			#region /*If hitting a corner of a wall, move the player either left or right*/
@@ -14231,12 +14236,13 @@ and(takendamage<=takendamage_freezetime)
 				if (allow_ground_poundjump=true)
 				and(key_jump_hold)
 				{
-					effect_create_above(ef_smoke,x,bbox_bottom,1,c_white);
-					image_index=0;
-					can_ground_pound=false;
-					speed_max=4;
-					vspeed=-higher_jump_height;
-					ground_pound=3;
+					can_ground_pound = false;
+					effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
+					ground_pound = 3;
+					image_index = 0;
+					midair_jumps_left -= 1;
+					speed_max = 4;
+					vspeed = -higher_jump_height;
 					if (image_xscale>0)
 					{
 						angle=-360;
@@ -14302,7 +14308,7 @@ and(global.pause=false)
 					{
 						speed_max=8;
 					}
-					vspeed=-6;
+					vspeed = -6;
 					
 					#region /*Choose direction to dive*/
 					if (key_left)
@@ -14524,7 +14530,7 @@ if (allow_ledge_grab=true)
 				}
 				gravity=0;
 				hspeed=0;
-				vspeed=0;
+				vspeed =0;
 				
 				#region /*Move against the ledge*/
 				while(!place_meeting(x+hspeed_dir,y,obj_wall))
@@ -14564,7 +14570,7 @@ if (allow_ledge_grab=true)
 			{
 				image_xscale=+1;
 			}
-			vspeed=0;
+			vspeed =0;
 			if (asset_get_type("spr_player_ledge_grab")==asset_sprite)
 			{
 				sprite_index=spr_player_ledge_grab;
@@ -14594,7 +14600,7 @@ if (allow_ledge_grab=true)
 						audio_play_sound(snd_pullup,0,0);
 						audio_sound_gain(snd_pullup,global.sfx_volume,0);
 					}
-					vspeed=-8;
+					vspeed = -8;
 					ledge_grab=false;
 					ledge_grab_jump=true;
 					stick_to_wall=false;
@@ -14618,7 +14624,7 @@ if (allow_ledge_grab=true)
 					audio_play_sound(snd_pullupfast,0,0);
 					audio_sound_gain(snd_pullupfast,global.sfx_volume,0);
 				}
-				vspeed=-normal_jump_height;
+				vspeed = -normal_jump_height;
 				ledge_grab=false;
 				ledge_grab_jump=true;
 				stick_to_wall=false;
@@ -14729,7 +14735,7 @@ if (asset_get_type("obj_water")==asset_object)
 		{
 			if (vspeed>1)
 			{
-				vspeed=1;
+				vspeed =1;
 			}
 		}
 		else
@@ -14737,14 +14743,14 @@ if (asset_get_type("obj_water")==asset_object)
 		{
 			if (vspeed>5)
 			{
-				vspeed=5;
+				vspeed =5;
 			}
 		}
 		else
 		{
 			if (vspeed>2)
 			{
-				vspeed=2;
+				vspeed =2;
 			}
 		}
 		
@@ -14797,7 +14803,7 @@ if (asset_get_type("obj_water")==asset_object)
 						}
 					}
 				}
-				vspeed=-normal_jump_height;
+				vspeed = -normal_jump_height;
 				
 				#region /*Jump sound effect*/
 				if (asset_get_type("snd_jump")==asset_sound)
@@ -14821,16 +14827,16 @@ if (asset_get_type("obj_water")==asset_object)
 			{
 				if (key_up)
 				{
-					vspeed=-6;
+					vspeed = -6;
 				}
 				else
 				if (key_down)
 				{
-					vspeed=-2;
+					vspeed = -2;
 				}
 				else
 				{
-					vspeed=-4;
+					vspeed = -4;
 				}
 				if (asset_get_type("snd_swim")==asset_sound)
 				{
@@ -14957,11 +14963,11 @@ and(in_water=false)
 		draw_yscale=1.5;
 		if (key_jump_hold)
 		{
-			vspeed=-higher_jump_height;
+			vspeed = -higher_jump_height;
 		}
 		else
 		{
-			vspeed=-8;
+			vspeed = -8;
 		}
 		with(instance_nearest(x,bbox_bottom,obj_player))
 		{
@@ -15036,7 +15042,7 @@ if (asset_get_type("obj_lava")==asset_object)
 			}
 			if (vspeed>0)
 			{
-				vspeed=-15;
+				vspeed = -15;
 			}
 		}
 		else
@@ -15057,7 +15063,7 @@ if (burnt=true)
 		ground_pound=false;
 		crouch=false;
 		speed_max=8;
-		vspeed=-7.5;
+		vspeed = -7.5;
 	}
 }
 else
@@ -15459,7 +15465,7 @@ if (allow_homing_attack=true)
 	{
 		x=instance_nearest(x,y,obj_enemy).x;
 		y=instance_nearest(x,y,obj_enemy).bbox_top+y-bbox_bottom+19;
-		vspeed=-triple_jump_height;
+		vspeed = -triple_jump_height;
 		stomp_spin=true;
 		dive=false;
 		ground_pound=false;
@@ -15679,6 +15685,7 @@ and(in_water=false)
 	if (horizontal_rope_climb = false)
 	and(can_climb_horizontal_rope_cooldown <= 0)
 	{
+		midair_jumps_left = number_of_jumps;
 		horizontal_rope_climb = true;
 		climb = false;
 		jump = 0;
@@ -15711,7 +15718,7 @@ and(in_water=false)
 		speed_max=4;
 		spring=false;
 		stick_to_wall=false;
-		vspeed=0;
+		vspeed =0;
 		y=instance_nearest(x,y,obj_horizontal_rope).y+16;
 		
 		if (key_up)
@@ -15792,6 +15799,7 @@ and(in_water=false)
 				audio_play_sound(snd_jump,0,0);
 				audio_sound_gain(snd_jump,global.sfx_volume,0);
 			}
+			midair_jumps_left -= 1;
 			y-=64;
 			climb=false;
 			horizontal_rope_climb=false;
@@ -15799,7 +15807,7 @@ and(in_water=false)
 			spring=true;
 			if (image_speed>=1)
 			{
-				vspeed=-triple_jump_height*1.25;
+				vspeed = -triple_jump_height*1.25;
 				audio_stop_sound(voice);
 				voice=audio_play_sound(voice_jump_rope,0,0);
 				audio_sound_gain(voice_jump_rope,global.voices_volume,0);
@@ -15807,21 +15815,21 @@ and(in_water=false)
 			else
 			if (image_speed>=0.9)
 			{
-				vspeed=-triple_jump_height*1.125;
+				vspeed = -triple_jump_height*1.125;
 			}
 			else
 			if (image_speed>=0.7)
 			{
-				vspeed=-triple_jump_height;
+				vspeed = -triple_jump_height;
 			}
 			else
 			if (image_speed>=0.4)
 			{
-				vspeed=-triple_jump_height/1.5;
+				vspeed = -triple_jump_height/1.5;
 			}
 			else
 			{
-				vspeed=-triple_jump_height/2;
+				vspeed = -triple_jump_height/2;
 			}
 		}
 		#endregion /*Jump from rope spin END*/
@@ -16028,7 +16036,7 @@ and(place_meeting(x,y,obj_vine))
 	{
 		gravity=0;
 		hspeed=0;
-		vspeed=0;
+		vspeed =0;
 		laststandingx=x;
 		laststandingy=y;
 		speed_max=4;
@@ -16237,7 +16245,8 @@ and(place_meeting(x,y,obj_vine))
 		{
 			if (!key_down)
 			{
-				vspeed=-11.5;
+				midair_jumps_left -= 1;
+				vspeed = -11.5;
 			}
 			climb=false;
 			stomp_spin=false;
@@ -16280,7 +16289,7 @@ and(!key_up)
 {
 	if (vspeed<-2)
 	{
-		vspeed=-2;
+		vspeed = -2;
 	}
 	if (crouch=false)
 	and(can_move=true)
@@ -16844,13 +16853,13 @@ if (asset_get_type("obj_wall")==asset_object)
 and(place_meeting(x,y+1,obj_wall))
 or(asset_get_type("obj_semisolid_platform")==asset_object)
 and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-and(vspeed=0)
+and(vspeed =0)
 or(asset_get_type("obj_semisolid_platform")==asset_object)
 and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-and(vspeed=0)
+and(vspeed =0)
 or(asset_get_type("obj_semisolid_platform")==asset_object)
 and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
-and(vspeed=0)
+and(vspeed =0)
 {
 
 #region /*Skidding*/
