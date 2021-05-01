@@ -250,17 +250,35 @@ global.fullscreen_key=vk_f11;
 
 #region /*Player 1 Keyboard Remapping*/
 global.player1_name="";
-global.player1_key_dive=ord("X");global.player1_key2_dive=noone;
-global.player1_key_jump=ord("Z");global.player1_key2_jump=vk_space;
-global.player1_key_crouch=vk_down;global.player1_key2_crouch=vk_shift;
-global.player1_key_crouch_toggle=noone;global.player1_key2_crouch_toggle=noone;
-global.player1_key_sprint=vk_lcontrol;global.player1_key2_sprint=ord("X");
-global.player1_key_sprint_toggle=noone;global.player1_key2_sprint_toggle=noone;
-global.player1_key_left=vk_left;global.player1_key2_left=ord("A");
-global.player1_key_right=vk_right;global.player1_key2_right=ord("D");
-global.player1_key_down=vk_down;global.player1_key2_down=ord("S");
-global.player1_key_up=vk_up;global.player1_key2_up=ord("W");
-global.player1_key_attack=noone;global.player1_key2_attack=noone;
+
+#region /*Player 1 Key 1 defaults*/
+global.player1_key_dive = ord("X");
+global.player1_key_jump = ord("Z");
+global.player1_key_crouch = vk_down;
+global.player1_key_crouch_toggle = noone;
+global.player1_key_sprint = vk_lcontrol;
+global.player1_key_sprint_toggle = noone;
+global.player1_key_left = vk_left;
+global.player1_key_right = vk_right;
+global.player1_key_down = vk_down;
+global.player1_key_up = vk_up;
+global.player1_key_attack = noone;
+#endregion /*Player 1 Key 1 defaults END*/
+
+#region /*Player 1 Key 2 defaults*/
+global.player1_key2_dive = noone;
+global.player1_key2_jump = vk_space;
+global.player1_key2_crouch = vk_shift;
+global.player1_key2_crouch_toggle = noone;
+global.player1_key2_sprint = ord("X");
+global.player1_key2_sprint_toggle = noone;
+global.player1_key2_left = ord("A");
+global.player1_key2_right = ord("D");
+global.player1_key2_down = ord("S");
+global.player1_key2_up = ord("W");
+global.player1_key2_attack = noone;
+#endregion /*Player 1 Key 2 defaults END*/
+
 global.player1_up_key_is_jump_key=false;
 global.player1_double_tap_to_run=true;
 global.player1_wall_jump_setting=1;
@@ -270,17 +288,35 @@ global.player1_show_controls=1;
 
 #region /*Player 2 Keyboard Remapping (everything should be set to noone)*/
 global.player2_name="";
-global.player2_key_dive=noone;global.player2_key2_dive=noone;
-global.player2_key_jump=noone;global.player2_key2_jump=noone;
-global.player2_key_crouch=noone;global.player2_key2_crouch=noone;
-global.player2_key_crouch_toggle=noone;global.player2_key2_crouch_toggle=noone;
-global.player2_key_sprint=noone;global.player2_key2_sprint=noone;
-global.player2_key_sprint_toggle=noone;global.player2_key2_sprint_toggle=noone;
-global.player2_key_left=noone;global.player2_key2_left=noone;
-global.player2_key_right=noone;global.player2_key2_right=noone;
-global.player2_key_down=noone;global.player2_key2_down=noone;
-global.player2_key_up=noone;global.player2_key2_up=noone;
-global.player2_key_attack=noone;global.player2_key2_attack=noone;
+
+#region /*Player 2 Key 1 defaults*/
+global.player2_key_dive = noone;
+global.player2_key_jump = noone;
+global.player2_key_crouch = noone;
+global.player2_key_crouch_toggle = noone;
+global.player2_key_sprint = noone;
+global.player2_key_sprint_toggle = noone;
+global.player2_key_left = noone;
+global.player2_key_right = noone;
+global.player2_key_down = noone;
+global.player2_key_up = noone;
+global.player2_key_attack = noone;
+#endregion /*Player 2 Key 1 defaults END*/
+
+#region /*Player 2 Key 2 defaults*/
+global.player2_key2_dive = noone;
+global.player2_key2_jump = noone;
+global.player2_key2_crouch = noone;
+global.player2_key2_crouch_toggle = noone;
+global.player2_key2_sprint = noone;
+global.player2_key2_sprint_toggle = noone;
+global.player2_key2_left = noone;
+global.player2_key2_right = noone;
+global.player2_key2_down = noone;
+global.player2_key2_up = noone;
+global.player2_key2_attack = noone;
+#endregion /*Player 2 Key 2 defaults END*/
+
 global.player2_up_key_is_jump_key=false;
 global.player2_double_tap_to_run=true;
 global.player2_wall_jump_setting=1;
@@ -290,17 +326,35 @@ global.player2_show_controls=1;
 
 #region /*Player 3 Keyboard Remapping (everything should be set to noone)*/
 global.player3_name="";
-global.player3_key_dive=noone;global.player3_key2_dive=noone;
-global.player3_key_jump=noone;global.player3_key2_jump=noone;
-global.player3_key_crouch=noone;global.player3_key2_crouch=noone;
-global.player3_key_crouch_toggle=noone;global.player3_key2_crouch_toggle=noone;
-global.player3_key_sprint=noone;global.player3_key2_sprint=noone;
-global.player3_key_sprint_toggle=noone;global.player3_key2_sprint_toggle=noone;
-global.player3_key_left=noone;global.player3_key2_left=noone;
-global.player3_key_right=noone;global.player3_key2_right=noone;
-global.player3_key_down=noone;global.player3_key2_down=noone;
-global.player3_key_up=noone;global.player3_key2_up=noone;
-global.player3_key_attack=noone;global.player3_key2_attack=noone;
+
+#region /*Player 3 Key 1 defaults*/
+global.player3_key_dive = noone;
+global.player3_key_jump = noone;
+global.player3_key_crouch = noone;
+global.player3_key_crouch_toggle = noone;
+global.player3_key_sprint = noone;
+global.player3_key_sprint_toggle = noone;
+global.player3_key_left = noone;
+global.player3_key_right = noone;
+global.player3_key_down = noone;
+global.player3_key_up = noone;
+global.player3_key_attack = noone;
+#endregion /*Player 3 Key 1 defaults END*/
+
+#region /*Player 3 Key 2 defaults*/
+global.player3_key2_dive = noone;
+global.player3_key2_jump = noone;
+global.player3_key2_crouch = noone;
+global.player3_key2_crouch_toggle = noone;
+global.player3_key2_sprint = noone;
+global.player3_key2_sprint_toggle = noone;
+global.player3_key2_left = noone;
+global.player3_key2_right = noone;
+global.player3_key2_down = noone;
+global.player3_key2_up = noone;
+global.player3_key2_attack = noone;
+#endregion /*Player 3 Key 2 defaults END*/
+
 global.player3_up_key_is_jump_key=false;
 global.player3_double_tap_to_run=true;
 global.player3_wall_jump_setting=1;
@@ -310,17 +364,35 @@ global.player3_show_controls=1;
 
 #region /*Player 4 Keyboard Remapping (everything should be set to noone)*/
 global.player4_name="";
-global.player4_key_dive=noone;global.player4_key2_dive=noone;
-global.player4_key_jump=noone;global.player4_key2_jump=noone;
-global.player4_key_crouch=noone;global.player4_key2_crouch=noone;
-global.player4_key_crouch_toggle=noone;global.player4_key2_crouch_toggle=noone;
-global.player4_key_sprint=noone;global.player4_key2_sprint=noone;
-global.player4_key_sprint_toggle=noone;global.player4_key2_sprint_toggle=noone;
-global.player4_key_left=noone;global.player4_key2_left=noone;
-global.player4_key_right=noone;global.player4_key2_right=noone;
-global.player4_key_down=noone;global.player4_key2_down=noone;
-global.player4_key_up=noone;global.player4_key2_up=noone;
-global.player4_key_attack=noone;global.player4_key2_attack=noone;
+
+#region /*Player 4 Key 1 defaults*/
+global.player4_key_dive = noone;
+global.player4_key_jump = noone;
+global.player4_key_crouch = noone;
+global.player4_key_crouch_toggle = noone;
+global.player4_key_sprint = noone;
+global.player4_key_sprint_toggle = noone;
+global.player4_key_left = noone;
+global.player4_key_right = noone;
+global.player4_key_down = noone;
+global.player4_key_up = noone;
+global.player4_key_attack = noone;
+#endregion /*Player 4 Key 1 defaults END*/
+
+#region /*Player 4 Key 2 defaults*/
+global.player4_key2_dive = noone;
+global.player4_key2_jump = noone;
+global.player4_key2_crouch = noone;
+global.player4_key2_crouch_toggle = noone;
+global.player4_key2_sprint = noone;
+global.player4_key2_sprint_toggle = noone;
+global.player4_key2_left = noone;
+global.player4_key2_right = noone;
+global.player4_key2_down = noone;
+global.player4_key2_up = noone;
+global.player4_key2_attack = noone;
+#endregion /*Player 4 Key 2 defaults END*/
+
 global.player4_up_key_is_jump_key=false;
 global.player4_double_tap_to_run=true;
 global.player4_wall_jump_setting=1;
