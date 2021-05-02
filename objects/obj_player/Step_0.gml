@@ -1644,9 +1644,19 @@ repeat(50)
 		sprite_look_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/look_up_strip"+string(index)+".png", index, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/lookup_strip"+string(index)+".png"))
+	{
+		sprite_look_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/lookup_strip"+string(index)+".png", index, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/look_up_strip"+string(index)+".png"))
 	{
 		sprite_look_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/look_up_strip"+string(index)+".png", index, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/lookup_strip"+string(index)+".png"))
+	{
+		sprite_look_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/lookup_strip"+string(index)+".png", index, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 	}
 	index+=1
 }
@@ -1655,9 +1665,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/look_
 	sprite_look_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/look_up.png", 1, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/lookup.png"))
+{
+	sprite_look_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/lookup.png", 1, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/look_up.png"))
 {
 	sprite_look_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/look_up.png", 1, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/lookup.png"))
+{
+	sprite_look_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/lookup.png", 1, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 }
 #endregion /*Look up sprite END*/
 
@@ -1696,9 +1716,19 @@ repeat(50)
 		sprite_crouch = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/crouch_strip"+string(index)+".png", index, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/squat_strip"+string(index)+".png"))
+	{
+		sprite_crouch = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/squat_strip"+string(index)+".png", index, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_strip"+string(index)+".png"))
 	{
 		sprite_crouch = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_strip"+string(index)+".png", index, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_strip"+string(index)+".png"))
+	{
+		sprite_crouch = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_strip"+string(index)+".png", index, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 	}
 	index+=1
 }
@@ -1707,9 +1737,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/crouc
 	sprite_crouch = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/crouch.png", 1, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/squat.png"))
+{
+	sprite_crouch = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/squat.png", 1, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch.png"))
 {
 	sprite_crouch = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch.png", 1, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat.png"))
+{
+	sprite_crouch = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat.png", 1, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 }
 #endregion /*Crouch sprite END*/
 
@@ -1722,9 +1762,19 @@ repeat(50)
 		sprite_crouch_crawl = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/crawl_strip"+string(index)+".png", index, false, false, sprite_crawl_xorig, sprite_crawl_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/squat_crawl_strip"+string(index)+".png"))
+	{
+		sprite_crouch_crawl = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/squat_crawl_strip"+string(index)+".png", index, false, false, sprite_crawl_xorig, sprite_crawl_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crawl_strip"+string(index)+".png"))
 	{
 		sprite_crouch_crawl = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crawl_strip"+string(index)+".png", index, false, false, sprite_crawl_xorig, sprite_crawl_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_crawl_strip"+string(index)+".png"))
+	{
+		sprite_crouch_crawl = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_crawl_strip"+string(index)+".png", index, false, false, sprite_crawl_xorig, sprite_crawl_yorig);
 	}
 	index+=1
 }
@@ -1733,9 +1783,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/crawl
 	sprite_crouch_crawl = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/crawl.png", 1, false, false, sprite_crawl_xorig, sprite_crawl_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/squat_crawl.png"))
+{
+	sprite_crouch_crawl = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/squat_crawl.png", 1, false, false, sprite_crawl_xorig, sprite_crawl_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crawl.png"))
 {
 	sprite_crouch_crawl = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crawl.png", 1, false, false, sprite_crawl_xorig, sprite_crawl_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_crawl.png"))
+{
+	sprite_crouch_crawl = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_crawl.png", 1, false, false, sprite_crawl_xorig, sprite_crawl_yorig);
 }
 #endregion /*Crawl sprite END*/
 
@@ -1748,9 +1808,19 @@ repeat(50)
 		sprite_crouch_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/crouch_jump_strip"+string(index)+".png", index, false, false, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/squat_jump_strip"+string(index)+".png"))
+	{
+		sprite_crouch_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/squat_jump_strip"+string(index)+".png", index, false, false, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_jump_strip"+string(index)+".png"))
 	{
 		sprite_crouch_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_jump_strip"+string(index)+".png", index, false, false, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_jump_strip"+string(index)+".png"))
+	{
+		sprite_crouch_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_jump_strip"+string(index)+".png", index, false, false, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
 	}
 	index+=1
 }
@@ -1759,9 +1829,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/crouc
 	sprite_crouch_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/crouch_jump.png", 1, false, false, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/squat_jump.png"))
+{
+	sprite_crouch_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/squat_jump.png", 1, false, false, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_jump.png"))
 {
 	sprite_crouch_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_jump.png", 1, false, false, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_jump.png"))
+{
+	sprite_crouch_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_jump.png", 1, false, false, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
 }
 #endregion /*Crouch jump sprite END*/
 
@@ -1774,9 +1854,19 @@ repeat(50)
 		sprite_crouch_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/crouch_fall_strip"+string(index)+".png", index, false, false, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/squat_fall_strip"+string(index)+".png"))
+	{
+		sprite_crouch_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/squat_fall_strip"+string(index)+".png", index, false, false, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_fall_strip"+string(index)+".png"))
 	{
 		sprite_crouch_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_fall_strip"+string(index)+".png", index, false, false, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_fall_strip"+string(index)+".png"))
+	{
+		sprite_crouch_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_fall_strip"+string(index)+".png", index, false, false, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
 	}
 	index+=1
 }
@@ -1785,9 +1875,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/crouc
 	sprite_crouch_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/crouch_fall.png", 1, false, false, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/squat_fall.png"))
+{
+	sprite_crouch_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/squat_fall.png", 1, false, false, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_fall.png"))
 {
 	sprite_crouch_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/crouch_fall.png", 1, false, false, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_fall.png"))
+{
+	sprite_crouch_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/squat_fall.png", 1, false, false, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
 }
 #endregion /*Crouch fall sprite END*/
 
@@ -1800,9 +1900,19 @@ repeat(50)
 		sprite_skidding = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/skidding_strip"+string(index)+".png", index, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/slip_strip"+string(index)+".png"))
+	{
+		sprite_skidding = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/slip_strip"+string(index)+".png", index, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/skidding_strip"+string(index)+".png"))
 	{
 		sprite_skidding = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/skidding_strip"+string(index)+".png", index, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/slip_strip"+string(index)+".png"))
+	{
+		sprite_skidding = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/slip_strip"+string(index)+".png", index, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
 	}
 	index+=1
 }
@@ -1811,9 +1921,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/skidd
 	sprite_skidding = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/skidding.png", 1, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/slip.png"))
+{
+	sprite_skidding = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/slip.png", 1, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/skidding.png"))
 {
 	sprite_skidding = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/skidding.png", 1, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/slip.png"))
+{
+	sprite_skidding = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/slip.png", 1, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
 }
 #endregion /*Skidding sprite END*/
 
@@ -1964,9 +2084,19 @@ repeat(50)
 		sprite_against_wall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/against_wall_strip"+string(index)+".png", index, false, false, sprite_against_wall_xorig, sprite_against_wall_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/againstwall_strip"+string(index)+".png"))
+	{
+		sprite_against_wall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/againstwall_strip"+string(index)+".png", index, false, false, sprite_against_wall_xorig, sprite_against_wall_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/against_wall_strip"+string(index)+".png"))
 	{
 		sprite_against_wall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/against_wall_strip"+string(index)+".png", index, false, false, sprite_against_wall_xorig, sprite_against_wall_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/againstwall_strip"+string(index)+".png"))
+	{
+		sprite_against_wall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/againstwall_strip"+string(index)+".png", index, false, false, sprite_against_wall_xorig, sprite_against_wall_yorig);
 	}
 	index+=1
 }
@@ -1975,9 +2105,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/again
 	sprite_against_wall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/against_wall.png", 1, false, false, sprite_against_wall_xorig, sprite_against_wall_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/againstwall.png"))
+{
+	sprite_against_wall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/againstwall.png", 1, false, false, sprite_against_wall_xorig, sprite_against_wall_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/against_wall.png"))
 {
 	sprite_against_wall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/against_wall.png", 1, false, false, sprite_against_wall_xorig, sprite_against_wall_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/againstwall.png"))
+{
+	sprite_against_wall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/againstwall.png", 1, false, false, sprite_against_wall_xorig, sprite_against_wall_yorig);
 }
 #endregion /*Against wall sprite END*/
 
@@ -2016,9 +2156,19 @@ repeat(50)
 		sprite_run = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/run_strip"+string(index)+".png", index, false, false, sprite_run_xorig, sprite_run_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/dash_strip"+string(index)+".png"))
+	{
+		sprite_run = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/dash_strip"+string(index)+".png", index, false, false, sprite_run_xorig, sprite_run_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run_strip"+string(index)+".png"))
 	{
 		sprite_run = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run_strip"+string(index)+".png", index, false, false, sprite_run_xorig, sprite_run_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash_strip"+string(index)+".png"))
+	{
+		sprite_run = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash_strip"+string(index)+".png", index, false, false, sprite_run_xorig, sprite_run_yorig);
 	}
 	index+=1
 }
@@ -2027,9 +2177,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/run.p
 	sprite_run = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/run.png", 1, false, false, sprite_run_xorig, sprite_run_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/dash.png"))
+{
+	sprite_run = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/dash.png", 1, false, false, sprite_run_xorig, sprite_run_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run.png"))
 {
 	sprite_run = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run.png", 1, false, false, sprite_run_xorig, sprite_run_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash.png"))
+{
+	sprite_run = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash.png", 1, false, false, sprite_run_xorig, sprite_run_yorig);
 }
 #endregion /*Run sprite END*/
 
@@ -2042,9 +2202,19 @@ repeat(50)
 		sprite_run2 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/run2_strip"+string(index)+".png", index, false, false, sprite_run2_xorig, sprite_run2_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/dash2_strip"+string(index)+".png"))
+	{
+		sprite_run2 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/dash2_strip"+string(index)+".png", index, false, false, sprite_run2_xorig, sprite_run2_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run2_strip"+string(index)+".png"))
 	{
 		sprite_run2 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run2_strip"+string(index)+".png", index, false, false, sprite_run2_xorig, sprite_run2_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash2_strip"+string(index)+".png"))
+	{
+		sprite_run2 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash2_strip"+string(index)+".png", index, false, false, sprite_run2_xorig, sprite_run2_yorig);
 	}
 	index+=1
 }
@@ -2053,9 +2223,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/run2.
 	sprite_run2 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/run2.png", 1, false, false, sprite_run2_xorig, sprite_run2_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/dash2.png"))
+{
+	sprite_run2 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/dash2.png", 1, false, false, sprite_run2_xorig, sprite_run2_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run2.png"))
 {
 	sprite_run2 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run2.png", 1, false, false, sprite_run2_xorig, sprite_run2_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash2.png"))
+{
+	sprite_run2 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash2.png", 1, false, false, sprite_run2_xorig, sprite_run2_yorig);
 }
 #endregion /*Run 2 sprite END*/
 
@@ -2068,9 +2248,19 @@ repeat(50)
 		sprite_run3 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/run3_strip"+string(index)+".png", index, false, false, sprite_run3_xorig, sprite_run3_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/dash3_strip"+string(index)+".png"))
+	{
+		sprite_run3 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/dash3_strip"+string(index)+".png", index, false, false, sprite_run3_xorig, sprite_run3_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run3_strip"+string(index)+".png"))
 	{
 		sprite_run3 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run3_strip"+string(index)+".png", index, false, false, sprite_run3_xorig, sprite_run3_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash3_strip"+string(index)+".png"))
+	{
+		sprite_run3 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash3_strip"+string(index)+".png", index, false, false, sprite_run3_xorig, sprite_run3_yorig);
 	}
 	index+=1
 }
@@ -2079,9 +2269,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/run3.
 	sprite_run3 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/run3.png", 1, false, false, sprite_run3_xorig, sprite_run3_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/dash3.png"))
+{
+	sprite_run3 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/dash3.png", 1, false, false, sprite_run3_xorig, sprite_run3_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run3.png"))
 {
 	sprite_run3 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run3.png", 1, false, false, sprite_run3_xorig, sprite_run3_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash3.png"))
+{
+	sprite_run3 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash3.png", 1, false, false, sprite_run3_xorig, sprite_run3_yorig);
 }
 #endregion /*Run 3 sprite END*/
 
@@ -2094,9 +2294,19 @@ repeat(50)
 		sprite_run4 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/run4_strip"+string(index)+".png", index, false, false, sprite_run4_xorig, sprite_run4_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/dash4_strip"+string(index)+".png"))
+	{
+		sprite_run4 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/dash4_strip"+string(index)+".png", index, false, false, sprite_run4_xorig, sprite_run4_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run4_strip"+string(index)+".png"))
 	{
 		sprite_run4 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run4_strip"+string(index)+".png", index, false, false, sprite_run4_xorig, sprite_run4_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash4_strip"+string(index)+".png"))
+	{
+		sprite_run4 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash4_strip"+string(index)+".png", index, false, false, sprite_run4_xorig, sprite_run4_yorig);
 	}
 	index+=1
 }
@@ -2105,9 +2315,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/run4.
 	sprite_run4 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/run4.png", 1, false, false, sprite_run4_xorig, sprite_run4_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/dash4.png"))
+{
+	sprite_run4 = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/dash4.png", 1, false, false, sprite_run4_xorig, sprite_run4_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run4.png"))
 {
 	sprite_run4 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/run4.png", 1, false, false, sprite_run4_xorig, sprite_run4_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash4.png"))
+{
+	sprite_run4 = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/dash4.png", 1, false, false, sprite_run4_xorig, sprite_run4_yorig);
 }
 #endregion /*Run 4 sprite END*/
 
@@ -2146,20 +2366,40 @@ repeat(50)
 		sprite_double_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/double_jump_strip"+string(index)+".png", index, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/doublejump_strip"+string(index)+".png"))
+	{
+		sprite_double_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/doublejump_strip"+string(index)+".png", index, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/double_jump_strip"+string(index)+".png"))
 	{
 		sprite_double_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/double_jump_strip"+string(index)+".png", index, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
 	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/doublejump_strip"+string(index)+".png"))
+	{
+		sprite_double_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/doublejump_strip"+string(index)+".png", index, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
+	}
 	index+=1
 }
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/double_jump.png"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/double_jump.png"))
 {
-	sprite_double_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/double_jump.png", 1, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
+	sprite_double_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/double_jump.png", 1, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
+}
+else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/doublejump.png"))
+{
+	sprite_double_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/doublejump.png", 1, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
 }
 else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/double_jump.png"))
 {
 	sprite_double_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/double_jump.png", 1, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/doublejump.png"))
+{
+	sprite_double_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/doublejump.png", 1, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
 }
 #endregion /*Double Jump sprite END*/
 
@@ -2172,9 +2412,19 @@ repeat(50)
 		sprite_triple_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/triple_jump_strip"+string(index)+".png", index, false, false, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/triplejump_strip"+string(index)+".png"))
+	{
+		sprite_triple_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/triplejump_strip"+string(index)+".png", index, false, false, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/triple_jump_strip"+string(index)+".png"))
 	{
 		sprite_triple_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/triple_jump_strip"+string(index)+".png", index, false, false, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/triplejump_strip"+string(index)+".png"))
+	{
+		sprite_triple_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/triplejump_strip"+string(index)+".png", index, false, false, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
 	}
 	index+=1
 }
@@ -2183,9 +2433,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/tripl
 	sprite_triple_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/triple_jump.png", 1, false, false, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/triplejump.png"))
+{
+	sprite_triple_jump = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/triplejump.png", 1, false, false, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/triple_jump.png"))
 {
 	sprite_triple_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/triple_jump.png", 1, false, false, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/triplejump.png"))
+{
+	sprite_triple_jump = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/triplejump.png", 1, false, false, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
 }
 #endregion /*Triple Jump sprite END*/
 
@@ -2224,9 +2484,19 @@ repeat(50)
 		sprite_fall_slower = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/fall_slower_strip"+string(index)+".png", index, false, false, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/fallslower_strip"+string(index)+".png"))
+	{
+		sprite_fall_slower = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/fallslower_strip"+string(index)+".png", index, false, false, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/fall_slower_strip"+string(index)+".png"))
 	{
 		sprite_fall_slower = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/fall_slower_strip"+string(index)+".png", index, false, false, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/fallslower_strip"+string(index)+".png"))
+	{
+		sprite_fall_slower = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/fallslower_strip"+string(index)+".png", index, false, false, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
 	}
 	index+=1
 }
@@ -2235,9 +2505,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/fall_
 	sprite_fall_slower = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/fall_slower.png", 1, false, false, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/fallslower.png"))
+{
+	sprite_fall_slower = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/fallslower.png", 1, false, false, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/fall_slower.png"))
 {
 	sprite_fall_slower = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/fall_slower.png", 1, false, false, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/fallslower.png"))
+{
+	sprite_fall_slower = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/fallslower.png", 1, false, false, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
 }
 #endregion /*Fall slower sprite END*/
 
@@ -2250,9 +2530,19 @@ repeat(50)
 		sprite_climb_under_still = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under_still_strip"+string(index)+".png", index, false, false, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder_still_strip"+string(index)+".png"))
+	{
+		sprite_climb_under_still = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder_still_strip"+string(index)+".png", index, false, false, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_still_strip"+string(index)+".png"))
 	{
 		sprite_climb_under_still = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_still_strip"+string(index)+".png", index, false, false, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_still_strip"+string(index)+".png"))
+	{
+		sprite_climb_under_still = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_still_strip"+string(index)+".png", index, false, false, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
 	}
 	index+=1
 }
@@ -2261,9 +2551,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climb
 	sprite_climb_under_still = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under_still.png", 1, false, false, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder_still.png"))
+{
+	sprite_climb_under_still = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder_still.png", 1, false, false, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_still.png"))
 {
 	sprite_climb_under_still = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_still.png", 1, false, false, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_still.png"))
+{
+	sprite_climb_under_still = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_still.png", 1, false, false, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
 }
 #endregion /*Climb under still sprite END*/
 
@@ -2276,9 +2576,19 @@ repeat(50)
 		sprite_climb_under = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under_strip"+string(index)+".png", index, false, false, sprite_climb_under_xorig, sprite_climb_under_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder_strip"+string(index)+".png"))
+	{
+		sprite_climb_under = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder_strip"+string(index)+".png", index, false, false, sprite_climb_under_xorig, sprite_climb_under_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_strip"+string(index)+".png"))
 	{
 		sprite_climb_under = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_strip"+string(index)+".png", index, false, false, sprite_climb_under_xorig, sprite_climb_under_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_strip"+string(index)+".png"))
+	{
+		sprite_climb_under = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_strip"+string(index)+".png", index, false, false, sprite_climb_under_xorig, sprite_climb_under_yorig);
 	}
 	index+=1
 }
@@ -2287,9 +2597,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climb
 	sprite_climb_under = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under.png", 1, false, false, sprite_climb_under_xorig, sprite_climb_under_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder.png"))
+{
+	sprite_climb_under = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder.png", 1, false, false, sprite_climb_under_xorig, sprite_climb_under_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under.png"))
 {
 	sprite_climb_under = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under.png", 1, false, false, sprite_climb_under_xorig, sprite_climb_under_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder.png"))
+{
+	sprite_climb_under = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder.png", 1, false, false, sprite_climb_under_xorig, sprite_climb_under_yorig);
 }
 #endregion /*Climb under sprite END*/
 
@@ -2302,9 +2622,19 @@ repeat(50)
 		sprite_climb_under_look_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under_look_up_strip"+string(index)+".png", index, false, false, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder_lookup_strip"+string(index)+".png"))
+	{
+		sprite_climb_under_look_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder_lookup_strip"+string(index)+".png", index, false, false, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_look_up_strip"+string(index)+".png"))
 	{
 		sprite_climb_under_look_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_look_up_strip"+string(index)+".png", index, false, false, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_lookup_strip"+string(index)+".png"))
+	{
+		sprite_climb_under_look_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_lookup_strip"+string(index)+".png", index, false, false, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
 	}
 	index+=1
 }
@@ -2313,9 +2643,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climb
 	sprite_climb_under_look_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under_look_up.png", 1, false, false, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder_lookup.png"))
+{
+	sprite_climb_under_look_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder_lookup.png", 1, false, false, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_look_up.png"))
 {
 	sprite_climb_under_look_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_look_up.png", 1, false, false, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_lookup.png"))
+{
+	sprite_climb_under_look_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_lookup.png", 1, false, false, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
 }
 #endregion /*Climb under look up sprite END*/
 
@@ -2328,9 +2668,19 @@ repeat(50)
 		sprite_climb_under_spin = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under_spin_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder_spin_strip"+string(index)+".png"))
+	{
+		sprite_climb_under_spin = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder_spin_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_spin_strip"+string(index)+".png"))
 	{
 		sprite_climb_under_spin = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_spin_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_spin_strip"+string(index)+".png"))
+	{
+		sprite_climb_under_spin = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_spin_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
 	}
 	index+=1
 }
@@ -2339,9 +2689,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climb
 	sprite_climb_under_spin = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under_spin.png", 1, false, false, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder_spin.png"))
+{
+	sprite_climb_under_spin = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder_spin.png", 1, false, false, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_spin.png"))
 {
 	sprite_climb_under_spin = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_spin.png", 1, false, false, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_spin.png"))
+{
+	sprite_climb_under_spin = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_spin.png", 1, false, false, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
 }
 #endregion /*Climb under spin sprite END*/
 
@@ -2354,9 +2714,19 @@ repeat(50)
 		sprite_climb_under_spin_fast = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under_spin_fast_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder_spin_fast_strip"+string(index)+".png"))
+	{
+		sprite_climb_under_spin_fast = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder_spin_fast_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_spin_fast_strip"+string(index)+".png"))
 	{
 		sprite_climb_under_spin_fast = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_spin_fast_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_spin_fast_strip"+string(index)+".png"))
+	{
+		sprite_climb_under_spin_fast = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_spin_fast_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
 	}
 	index+=1
 }
@@ -2365,9 +2735,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climb
 	sprite_climb_under_spin_fast = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climb_under_spin_fast.png", 1, false, false, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/climbunder_spin_fast.png"))
+{
+	sprite_climb_under_spin_fast = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/climbunder_spin_fast.png", 1, false, false, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_spin_fast.png"))
 {
 	sprite_climb_under_spin_fast = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climb_under_spin_fast.png", 1, false, false, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_spin_fast.png"))
+{
+	sprite_climb_under_spin_fast = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/climbunder_spin_fast.png", 1, false, false, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
 }
 #endregion /*Climb under spin fast sprite END*/
 
@@ -2380,9 +2760,19 @@ repeat(50)
 		sprite_ground_pound = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/ground_pound_strip"+string(index)+".png", index, false, false, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/groundpound_strip"+string(index)+".png"))
+	{
+		sprite_ground_pound = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/groundpound_strip"+string(index)+".png", index, false, false, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/ground_pound_strip"+string(index)+".png"))
 	{
 		sprite_ground_pound = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/ground_pound_strip"+string(index)+".png", index, false, false, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/groundpound_strip"+string(index)+".png"))
+	{
+		sprite_ground_pound = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/groundpound_strip"+string(index)+".png", index, false, false, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
 	}
 	index+=1
 }
@@ -2391,9 +2781,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/groun
 	sprite_ground_pound = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/ground_pound.png", 1, false, false, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/groundpound.png"))
+{
+	sprite_ground_pound = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/groundpound.png", 1, false, false, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/ground_pound.png"))
 {
 	sprite_ground_pound = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/ground_pound.png", 1, false, false, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/groundpound.png"))
+{
+	sprite_ground_pound = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/groundpound.png", 1, false, false, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
 }
 #endregion /*Ground pound sprite END*/
 
@@ -2406,9 +2806,19 @@ repeat(50)
 		sprite_ground_pound_get_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/ground_pound_get_up_strip"+string(index)+".png", index, false, false, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/groundpound_getup_strip"+string(index)+".png"))
+	{
+		sprite_ground_pound_get_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/groundpound_getup_strip"+string(index)+".png", index, false, false, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/ground_pound_get_up_strip"+string(index)+".png"))
 	{
 		sprite_ground_pound_get_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/ground_pound_get_up_strip"+string(index)+".png", index, false, false, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/groundpound_getup_strip"+string(index)+".png"))
+	{
+		sprite_ground_pound_get_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/groundpound_getup_strip"+string(index)+".png", index, false, false, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
 	}
 	index+=1
 }
@@ -2417,9 +2827,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/groun
 	sprite_ground_pound_get_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/ground_pound_get_up.png", 1, false, false, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/groundpound_getup.png"))
+{
+	sprite_ground_pound_get_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/groundpound_getup.png", 1, false, false, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/ground_pound_get_up.png"))
 {
 	sprite_ground_pound_get_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/ground_pound_get_up.png", 1, false, false, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/groundpound_getup.png"))
+{
+	sprite_ground_pound_get_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/groundpound_getup.png", 1, false, false, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
 }
 #endregion /*Ground pound get up sprite END*/
 
@@ -2432,9 +2852,19 @@ repeat(50)
 		sprite_stomp_spin = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/stomp_spin_strip"+string(index)+".png", index, false, false, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/stompspin_strip"+string(index)+".png"))
+	{
+		sprite_stomp_spin = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/stompspin_strip"+string(index)+".png", index, false, false, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stomp_spin_strip"+string(index)+".png"))
 	{
 		sprite_stomp_spin = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stomp_spin_strip"+string(index)+".png", index, false, false, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stompspin_strip"+string(index)+".png"))
+	{
+		sprite_stomp_spin = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stompspin_strip"+string(index)+".png", index, false, false, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
 	}
 	index+=1
 }
@@ -2443,9 +2873,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/stomp
 	sprite_stomp_spin = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/stomp_spin.png", 1, false, false, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/stompspin.png"))
+{
+	sprite_stomp_spin = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/stompspin.png", 1, false, false, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stomp_spin.png"))
 {
 	sprite_stomp_spin = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stomp_spin.png", 1, false, false, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stompspin.png"))
+{
+	sprite_stomp_spin = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stompspin.png", 1, false, false, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
 }
 #endregion /*Stomp spin sprite END*/
 
@@ -2536,9 +2976,19 @@ repeat(50)
 		sprite_wall_slide = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wall_slide_strip"+string(index)+".png", index, false, false, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/wallslide_strip"+string(index)+".png"))
+	{
+		sprite_wall_slide = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wallslide_strip"+string(index)+".png", index, false, false, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_strip"+string(index)+".png"))
 	{
 		sprite_wall_slide = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_strip"+string(index)+".png", index, false, false, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_strip"+string(index)+".png"))
+	{
+		sprite_wall_slide = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_strip"+string(index)+".png", index, false, false, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
 	}
 	index+=1
 }
@@ -2547,9 +2997,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/wall_
 	sprite_wall_slide = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wall_slide.png", 1, false, false, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/wallslide.png"))
+{
+	sprite_wall_slide = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wallslide.png", 1, false, false, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide.png"))
 {
 	sprite_wall_slide = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide.png", 1, false, false, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide.png"))
+{
+	sprite_wall_slide = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide.png", 1, false, false, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
 }
 #endregion /*Wall slide sprite END*/
 
@@ -2562,9 +3022,19 @@ repeat(50)
 		sprite_wall_slide_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wall_slide_up_strip"+string(index)+".png", index, false, false, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/wallslide_up_strip"+string(index)+".png"))
+	{
+		sprite_wall_slide_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wallslide_up_strip"+string(index)+".png", index, false, false, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_up_strip"+string(index)+".png"))
 	{
 		sprite_wall_slide_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_up_strip"+string(index)+".png", index, false, false, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_up_strip"+string(index)+".png"))
+	{
+		sprite_wall_slide_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_up_strip"+string(index)+".png", index, false, false, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
 	}
 	index+=1
 }
@@ -2573,9 +3043,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/wall_
 	sprite_wall_slide_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wall_slide_up.png", 1, false, false, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/wallslide_up.png"))
+{
+	sprite_wall_slide_up = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wallslide_up.png", 1, false, false, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_up.png"))
 {
 	sprite_wall_slide_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_up.png", 1, false, false, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_up.png"))
+{
+	sprite_wall_slide_up = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_up.png", 1, false, false, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
 }
 #endregion /*Wall slide up sprite END*/
 
@@ -2588,9 +3068,19 @@ repeat(50)
 		sprite_wall_slide_down = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wall_slide_down_strip"+string(index)+".png", index, false, false, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
 	}
 	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/wallslide_down_strip"+string(index)+".png"))
+	{
+		sprite_wall_slide_down = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wallslide_down_strip"+string(index)+".png", index, false, false, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
+	}
+	else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_down_strip"+string(index)+".png"))
 	{
 		sprite_wall_slide_down = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_down_strip"+string(index)+".png", index, false, false, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_down_strip"+string(index)+".png"))
+	{
+		sprite_wall_slide_down = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_down_strip"+string(index)+".png", index, false, false, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
 	}
 	index+=1
 }
@@ -2599,9 +3089,19 @@ if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/wall_
 	sprite_wall_slide_down = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wall_slide_down.png", 1, false, false, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
 }
 else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/wallslide_down.png"))
+{
+	sprite_wall_slide_down = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/wallslide_down.png", 1, false, false, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
+}
+else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_down.png"))
 {
 	sprite_wall_slide_down = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wall_slide_down.png", 1, false, false, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_down.png"))
+{
+	sprite_wall_slide_down = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/wallslide_down.png", 1, false, false, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
 }
 #endregion /*Wall slide down sprite END*/
 

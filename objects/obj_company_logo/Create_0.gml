@@ -10,7 +10,7 @@ global.character_select_screen=true; /*If this is true, there will be a characte
 global.character_clothes_customization=false; /*If this is true, you can costumize the character's clothes in the menu*/
 global.character_color_select=false; /*If this is true, you can choose the character's color in the menu*/
 global.select_number_of_players_before_selecting_characters=false; /*If you should select how many players are going to play before you select what character to play as*/
-global.max_number_of_official_characters = 1; /*Update this whenever you add more official playable characters!*/
+global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters!*/
 
 #region /*What settings tabs to show up*/
 global.show_language_shortcut=false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
