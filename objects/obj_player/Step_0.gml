@@ -13533,6 +13533,14 @@ if (buffer_jump > 0)
 	buffer_jump -= 1;
 }
 
+#region /*If you're falling from a triple jump, reset the jump variable to 0*/
+if (jump >= 3)
+and(vspeed >= 0)
+{
+	jump = 0;
+}
+#endregion /*If you're falling from a triple jump, reset the jump variable to 0 END*/
+
 if (buffer_jump > 0)
 and(can_move = true)
 and(global.pause=false)
@@ -17734,7 +17742,7 @@ else
 	}
 	else
 	/*Single Jump*/
-	if (jump<2)
+	if (jump < 2)
 	{
 		if (speeddash=true)
 		{
@@ -17779,7 +17787,7 @@ else
 	else
 
 #region /*Double Jump*/
-if (jump=2)
+if (jump = 2)
 {
 	if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
 	if (sprite_jump>noone){sprite_index = sprite_jump;}else
@@ -17791,7 +17799,7 @@ if (jump=2)
 else
 
 #region /*Triple Jump*/
-if (jump>2)
+if (jump > 2)
 {
 	if(sprite_triple_jump>noone){sprite_index = sprite_triple_jump;}else
 	if(sprite_jump>noone){sprite_index = sprite_jump;}else
