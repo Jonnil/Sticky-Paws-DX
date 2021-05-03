@@ -320,6 +320,16 @@ voice_dive_7 = noone; /*Voice Dive 7*/
 voice_dive_8 = noone; /*Voice Dive 8*/
 voice_dive_9 = noone; /*Voice Dive 9*/
 voice_dive_10 = noone; /*Voice Dive 10*/
+voice_dive_11 = noone; /*Voice Dive 11*/
+voice_dive_12 = noone; /*Voice Dive 12*/
+voice_dive_13 = noone; /*Voice Dive 13*/
+voice_dive_14 = noone; /*Voice Dive 14*/
+voice_dive_15 = noone; /*Voice Dive 15*/
+voice_dive_16 = noone; /*Voice Dive 16*/
+voice_dive_17 = noone; /*Voice Dive 17*/
+voice_dive_18 = noone; /*Voice Dive 18*/
+voice_dive_19 = noone; /*Voice Dive 19*/
+voice_dive_20 = noone; /*Voice Dive 20*/
 #endregion /*Voice Dive END*/
 
 #region /*Voice Damage*/
