@@ -181,7 +181,7 @@ else
 #endregion /*Custom Title Screen Background*/
 
 #region /*Custom colors for character*/
-global.player1_hue_base=255;global.player1_saturation_base=0;global.player1_value_base=255;
+/*global.player1_hue_base=255;global.player1_saturation_base=0;global.player1_value_base=255;
 global.player1_hue_skin=255;global.player1_saturation_skin=255;global.player1_value_skin=255;
 global.player1_hue_left_sclera=255;global.player1_saturation_left_sclera=255;global.player1_value_left_sclera=255;
 global.player1_hue_right_sclera=255;global.player1_saturation_right_sclera=255;global.player1_value_right_sclera=255;
@@ -228,6 +228,7 @@ global.player4_hue_cheek=255;global.player4_saturation_cheek=255;global.player4_
 global.player4_hue_neck=255;global.player4_saturation_neck=255;global.player4_value_neck=255;
 global.player4_hue_leg=255;global.player4_saturation_leg=255;global.player4_value_leg=255;
 global.player4_hue_hand=255;global.player4_saturation_hand=255;global.player4_value_hand=255;
+*/
 #endregion /*Custom colors for character END*/
 
 #region /*Character Select Accept Selection*/
@@ -300,7 +301,7 @@ global.always_show_level_editor_buttons=true; /*If level editor buttons should a
 
 #region /*Character select portrait x and y origin points*/
 if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/sprite_origin_point.ini"))
-or(file_exists(working_directory + "Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini"))
+or(file_exists(working_directory + "Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini"))
 {
 	if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/sprite_origin_point.ini"))
 	{
@@ -310,7 +311,7 @@ or(file_exists(working_directory + "Custom Characters/Character "+string(global.
 	{
 		ini_open(working_directory + "Custom Characters/Character "+string(global.character_for_player_1-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini");
 	}
-	
+						
 	#region /*Character select portrait x and y origin points*/
 	#region /*Character select portrait y origin point*/
 	if (ini_key_exists("sprite origin points", "character_select_portrait_yorig"))
@@ -359,6 +360,30 @@ or(file_exists(working_directory + "Custom Characters/Character "+string(global.
 	#endregion /*Sprite stand x origin point END*/
 	#endregion /*Sprite stand x and y origin points END*/
 						
+	#region /*Character select portrait x_scale and y_scale origin points*/
+	#region /*Character select portrait y_scale origin point*/
+	if (ini_key_exists("sprite origin points", "player_select_portrait_yscale"))
+	{
+		player1_select_portrait_yscale = ini_read_real("sprite origin points", "player_select_portrait_yscale", 1);
+	}
+	else
+	{
+		player1_select_portrait_yscale = 1;
+	}
+	#endregion /*Character select portrait y_scale origin point END*/
+
+	#region /*Character select portrait x_scale origin point*/
+	if (ini_key_exists("sprite origin points", "player_select_portrait_xscale"))
+	{
+		player1_select_portrait_xscale = ini_read_real("sprite origin points", "player_select_portrait_xscale", 1);
+	}
+	else
+	{
+		player1_select_portrait_xscale = 1;
+	}
+	#endregion /*Character select portrait x_scale origin point END*/
+	#endregion /*Character select portrait x_scale and y_scale origin points END*/
+						
 	ini_close();
 }
 else
@@ -367,8 +392,147 @@ else
 	character_select_portrait_yorig = 0;
 	sprite_stand_xorig = 0;
 	sprite_stand_yorig = 0;
+	player1_select_portrait_xscale = 1;
+	player1_select_portrait_yscale = 1;
 }
-#endregion /*Character select portrait x and y origin points END*/
+
+#region /*Player 2 Character select portrait x and y origin points*/
+if(file_exists("Characters/Character "+string(global.character_for_player_2)+"/Data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "Custom Characters/Character "+string(global.character_for_player_2-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini"))
+{
+	if(file_exists("Characters/Character "+string(global.character_for_player_2)+"/Data/sprite_origin_point.ini"))
+	{
+		ini_open("Characters/Character "+string(global.character_for_player_2)+"/Data/sprite_origin_point.ini");
+	}
+	else
+	{
+		ini_open(working_directory + "Custom Characters/Character "+string(global.character_for_player_2-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini");
+	}
+	
+	#region /*Character select portrait x_scale and y_scale origin points*/
+	#region /*Character select portrait y_scale origin point*/
+	if (ini_key_exists("sprite origin points", "player_select_portrait_yscale"))
+	{
+		player2_select_portrait_yscale = ini_read_real("sprite origin points", "player_select_portrait_yscale", 1);
+	}
+	else
+	{
+		player2_select_portrait_yscale = 1;
+	}
+	#endregion /*Character select portrait y_scale origin point END*/
+
+	#region /*Character select portrait x_scale origin point*/
+	if (ini_key_exists("sprite origin points", "player_select_portrait_xscale"))
+	{
+		player2_select_portrait_xscale = ini_read_real("sprite origin points", "player_select_portrait_xscale", 1);
+	}
+	else
+	{
+		player2_select_portrait_xscale = 1;
+	}
+	#endregion /*Character select portrait x_scale origin point END*/
+	#endregion /*Character select portrait x_scale and y_scale origin points END*/
+						
+	ini_close();
+}
+else
+{
+	player2_select_portrait_xscale = 1;
+	player2_select_portrait_yscale = 1;
+}
+#endregion /*Player 2 Character select portrait x and y origin points END*/
+
+#region /*Player 3 Character select portrait x and y origin points*/
+if(file_exists("Characters/Character "+string(global.character_for_player_3)+"/Data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "Custom Characters/Character "+string(global.character_for_player_3-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini"))
+{
+	if(file_exists("Characters/Character "+string(global.character_for_player_3)+"/Data/sprite_origin_point.ini"))
+	{
+		ini_open("Characters/Character "+string(global.character_for_player_3)+"/Data/sprite_origin_point.ini");
+	}
+	else
+	{
+		ini_open(working_directory + "Custom Characters/Character "+string(global.character_for_player_3-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini");
+	}
+	
+	#region /*Character select portrait x_scale and y_scale origin points*/
+	#region /*Character select portrait y_scale origin point*/
+	if (ini_key_exists("sprite origin points", "player_select_portrait_yscale"))
+	{
+		player3_select_portrait_yscale = ini_read_real("sprite origin points", "player_select_portrait_yscale", 1);
+	}
+	else
+	{
+		player3_select_portrait_yscale = 1;
+	}
+	#endregion /*Character select portrait y_scale origin point END*/
+
+	#region /*Character select portrait x_scale origin point*/
+	if (ini_key_exists("sprite origin points", "player_select_portrait_xscale"))
+	{
+		player3_select_portrait_xscale = ini_read_real("sprite origin points", "player_select_portrait_xscale", 1);
+	}
+	else
+	{
+		player3_select_portrait_xscale = 1;
+	}
+	#endregion /*Character select portrait x_scale origin point END*/
+	#endregion /*Character select portrait x_scale and y_scale origin points END*/
+						
+	ini_close();
+}
+else
+{
+	player3_select_portrait_xscale = 1;
+	player3_select_portrait_yscale = 1;
+}
+#endregion /*Player 3 Character select portrait x and y origin points END*/
+
+#region /*Player 4 Character select portrait x and y origin points*/
+if(file_exists("Characters/Character "+string(global.character_for_player_4)+"/Data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "Custom Characters/Character "+string(global.character_for_player_4-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini"))
+{
+	if(file_exists("Characters/Character "+string(global.character_for_player_4)+"/Data/sprite_origin_point.ini"))
+	{
+		ini_open("Characters/Character "+string(global.character_for_player_4)+"/Data/sprite_origin_point.ini");
+	}
+	else
+	{
+		ini_open(working_directory + "Custom Characters/Character "+string(global.character_for_player_4-global.max_number_of_official_characters)+"/Data/sprite_origin_point.ini");
+	}
+	
+	#region /*Character select portrait x_scale and y_scale origin points*/
+	#region /*Character select portrait y_scale origin point*/
+	if (ini_key_exists("sprite origin points", "player_select_portrait_yscale"))
+	{
+		player4_select_portrait_yscale = ini_read_real("sprite origin points", "player_select_portrait_yscale", 1);
+	}
+	else
+	{
+		player4_select_portrait_yscale = 1;
+	}
+	#endregion /*Character select portrait y_scale origin point END*/
+
+	#region /*Character select portrait x_scale origin point*/
+	if (ini_key_exists("sprite origin points", "player_select_portrait_xscale"))
+	{
+		player4_select_portrait_xscale = ini_read_real("sprite origin points", "player_select_portrait_xscale", 1);
+	}
+	else
+	{
+		player4_select_portrait_xscale = 1;
+	}
+	#endregion /*Character select portrait x_scale origin point END*/
+	#endregion /*Character select portrait x_scale and y_scale origin points END*/
+						
+	ini_close();
+}
+else
+{
+	player4_select_portrait_xscale = 1;
+	player4_select_portrait_yscale = 1;
+}
+#endregion /*Player 4 Character select portrait x and y origin points END*/
 
 #region /*Select the sprite for each character portrait*/
 
