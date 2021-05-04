@@ -9,10 +9,11 @@ if (quit_level_editor = false)
 		if (keyboard_check_pressed(vk_escape))
 		or(gamepad_button_check_pressed(0,gp_start))
 		{
-			quit_level_editor=false;
-			can_input_level_name=false;
-			pause=true;
-			menu="continue";
+			quit_level_editor = false;
+			can_input_level_name = false;
+			pause = true;
+			input_key = false;
+			menu = "continue";
 		}
 	}
 	else
@@ -29,12 +30,14 @@ if (quit_level_editor = false)
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		if (keyboard_check_pressed(vk_escape))
+		and(input_key = false)
 		or(gamepad_button_check_pressed(0,gp_start))
+		and(input_key = false)
 		{
-			quit_level_editor=false;
-			can_input_level_name=false;
-			pause=false;
-			can_navigate=false;
+			quit_level_editor = false;
+			can_input_level_name = false;
+			pause = false;
+			can_navigate = false;
 		}
 	
 		#region /*Make the menu invisible when entering the options menu*/

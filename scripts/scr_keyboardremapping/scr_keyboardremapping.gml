@@ -10,7 +10,7 @@ function scr_keyboardremapping()
 	else
 	if (keyboard_check_pressed(vk_escape))
 	{
-		lastkey = 0;
+		lastkey = noone;
 		can_remap_key = true;
 	}
 	

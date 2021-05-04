@@ -10,4 +10,3 @@ flying_back=false;
 takendamage=0;
 draw_xscale=0;draw_yscale=0;
 redblinktimer=0;
-global.music=snd_music_boss;

@@ -11708,7 +11708,8 @@ else
 }
 
 #region /*Music Pitch*/
-if (global.time_countdown<100)
+if (global.time_countdown < 100)
+and(global.time_countdown > noone)
 and(allow_timeup=true)
 {
 	audio_sound_pitch(global.music,music_pitch+0.3);

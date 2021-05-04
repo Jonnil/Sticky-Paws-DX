@@ -1,3 +1,10 @@
+if (distance_to_object(obj_player)<2000)
+if (global.music != snd_music_boss)
+{
+	audio_stop_sound(global.music);
+	global.music = snd_music_boss;
+}
+
 depth = + 10;
 
 /*If enemies are disabled, destroy this object*/
@@ -32,14 +39,7 @@ else
 	angle = lerp(angle, 0, 0.1);
 }
 time += 1;
-if (asset_get_type("snd_music_boss") == asset_sound)
-and(asset_get_type("obj_player") == asset_object)
-and(instance_exists(obj_player))
-{
-	audio_stop_sound(global.music);
-	audio_stop_sound(global.music_underwater);
-	global.music = snd_music_boss;
-}
+
 if (takendamage > 0)
 {
 	takendamage -= 1;

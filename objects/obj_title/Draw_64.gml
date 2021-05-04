@@ -7,6 +7,110 @@
 //if(file_exists(working_directory + "/Custom Characters/Character "+string(global.sprite_select_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+320,"true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+320,"false",global.default_text_size,c_white,c_black,1);}
 //if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+420,"Offical: true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+420,"Official: false",global.default_text_size,c_white,c_black,1);}
 
+#region /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus*/
+
+#region /*Player 1 reset keys to noone if they happen to be 0*/
+if (global.player1_key_dive = 0){global.player1_key_dive = noone;}
+if (global.player1_key_jump = 0){global.player1_key_jump = noone;}
+if (global.player1_key_crouch = 0){global.player1_key_crouch = noone;}
+if (global.player1_key_crouch_toggle = 0){global.player1_key_crouch_toggle = noone;}
+if (global.player1_key_sprint = 0){global.player1_key_sprint = noone;}
+if (global.player1_key_sprint_toggle = 0){global.player1_key_sprint_toggle = noone;}
+if (global.player1_key_left = 0){global.player1_key_left = noone;}
+if (global.player1_key_right = 0){global.player1_key_right = noone;}
+if (global.player1_key_down = 0){global.player1_key_down = noone;}
+if (global.player1_key_up = 0){global.player1_key_up = noone;}
+if (global.player1_key_attack = 0){global.player1_key_attack = noone;}
+if (global.player1_key2_dive = 0){global.player1_key2_dive = noone;}
+if (global.player1_key2_jump = 0){global.player1_key2_jump = noone;}
+if (global.player1_key2_crouch = 0){global.player1_key2_crouch = noone;}
+if (global.player1_key2_crouch_toggle = 0){global.player1_key2_crouch_toggle = noone;}
+if (global.player1_key2_sprint = 0){global.player1_key2_sprint = noone;}
+if (global.player1_key2_sprint_toggle = 0){global.player1_key2_sprint_toggle = noone;}
+if (global.player1_key2_left = 0){global.player1_key2_left = noone;}
+if (global.player1_key2_right = 0){global.player1_key2_right = noone;}
+if (global.player1_key2_down = 0){global.player1_key2_down = noone;}
+if (global.player1_key2_up = 0){global.player1_key2_up = noone;}
+if (global.player1_key2_attack = 0){global.player1_key2_attack = noone;}
+#endregion /*Player 1 reset keys to noone if they happen to be 0 END*/
+
+#region /*Player 2 reset keys to noone if they happen to be 0*/
+if (global.player2_key_dive = 0){global.player2_key_dive = noone;}
+if (global.player2_key_jump = 0){global.player2_key_jump = noone;}
+if (global.player2_key_crouch = 0){global.player2_key_crouch = noone;}
+if (global.player2_key_crouch_toggle = 0){global.player2_key_crouch_toggle = noone;}
+if (global.player2_key_sprint = 0){global.player2_key_sprint = noone;}
+if (global.player2_key_sprint_toggle = 0){global.player2_key_sprint_toggle = noone;}
+if (global.player2_key_left = 0){global.player2_key_left = noone;}
+if (global.player2_key_right = 0){global.player2_key_right = noone;}
+if (global.player2_key_down = 0){global.player2_key_down = noone;}
+if (global.player2_key_up = 0){global.player2_key_up = noone;}
+if (global.player2_key_attack = 0){global.player2_key_attack = noone;}
+if (global.player2_key2_dive = 0){global.player2_key2_dive = noone;}
+if (global.player2_key2_jump = 0){global.player2_key2_jump = noone;}
+if (global.player2_key2_crouch = 0){global.player2_key2_crouch = noone;}
+if (global.player2_key2_crouch_toggle = 0){global.player2_key2_crouch_toggle = noone;}
+if (global.player2_key2_sprint = 0){global.player2_key2_sprint = noone;}
+if (global.player2_key2_sprint_toggle = 0){global.player2_key2_sprint_toggle = noone;}
+if (global.player2_key2_left = 0){global.player2_key2_left = noone;}
+if (global.player2_key2_right = 0){global.player2_key2_right = noone;}
+if (global.player2_key2_down = 0){global.player2_key2_down = noone;}
+if (global.player2_key2_up = 0){global.player2_key2_up = noone;}
+if (global.player2_key2_attack = 0){global.player2_key2_attack = noone;}
+#endregion /*Player 2 reset keys to noone if they happen to be 0 END*/
+
+#region /*Player 3 reset keys to noone if they happen to be 0*/
+if (global.player3_key_dive = 0){global.player3_key_dive = noone;}
+if (global.player3_key_jump = 0){global.player3_key_jump = noone;}
+if (global.player3_key_crouch = 0){global.player3_key_crouch = noone;}
+if (global.player3_key_crouch_toggle = 0){global.player3_key_crouch_toggle = noone;}
+if (global.player3_key_sprint = 0){global.player3_key_sprint = noone;}
+if (global.player3_key_sprint_toggle = 0){global.player3_key_sprint_toggle = noone;}
+if (global.player3_key_left = 0){global.player3_key_left = noone;}
+if (global.player3_key_right = 0){global.player3_key_right = noone;}
+if (global.player3_key_down = 0){global.player3_key_down = noone;}
+if (global.player3_key_up = 0){global.player3_key_up = noone;}
+if (global.player3_key_attack = 0){global.player3_key_attack = noone;}
+if (global.player3_key2_dive = 0){global.player3_key2_dive = noone;}
+if (global.player3_key2_jump = 0){global.player3_key2_jump = noone;}
+if (global.player3_key2_crouch = 0){global.player3_key2_crouch = noone;}
+if (global.player3_key2_crouch_toggle = 0){global.player3_key2_crouch_toggle = noone;}
+if (global.player3_key2_sprint = 0){global.player3_key2_sprint = noone;}
+if (global.player3_key2_sprint_toggle = 0){global.player3_key2_sprint_toggle = noone;}
+if (global.player3_key2_left = 0){global.player3_key2_left = noone;}
+if (global.player3_key2_right = 0){global.player3_key2_right = noone;}
+if (global.player3_key2_down = 0){global.player3_key2_down = noone;}
+if (global.player3_key2_up = 0){global.player3_key2_up = noone;}
+if (global.player3_key2_attack = 0){global.player3_key2_attack = noone;}
+#endregion /*Player 3 reset keys to noone if they happen to be 0 END*/
+
+#region /*Player 4 reset keys to noone if they happen to be 0*/
+if (global.player4_key_dive = 0){global.player4_key_dive = noone;}
+if (global.player4_key_jump = 0){global.player4_key_jump = noone;}
+if (global.player4_key_crouch = 0){global.player4_key_crouch = noone;}
+if (global.player4_key_crouch_toggle = 0){global.player4_key_crouch_toggle = noone;}
+if (global.player4_key_sprint = 0){global.player4_key_sprint = noone;}
+if (global.player4_key_sprint_toggle = 0){global.player4_key_sprint_toggle = noone;}
+if (global.player4_key_left = 0){global.player4_key_left = noone;}
+if (global.player4_key_right = 0){global.player4_key_right = noone;}
+if (global.player4_key_down = 0){global.player4_key_down = noone;}
+if (global.player4_key_up = 0){global.player4_key_up = noone;}
+if (global.player4_key_attack = 0){global.player4_key_attack = noone;}
+if (global.player4_key2_dive = 0){global.player4_key2_dive = noone;}
+if (global.player4_key2_jump = 0){global.player4_key2_jump = noone;}
+if (global.player4_key2_crouch = 0){global.player4_key2_crouch = noone;}
+if (global.player4_key2_crouch_toggle = 0){global.player4_key2_crouch_toggle = noone;}
+if (global.player4_key2_sprint = 0){global.player4_key2_sprint = noone;}
+if (global.player4_key2_sprint_toggle = 0){global.player4_key2_sprint_toggle = noone;}
+if (global.player4_key2_left = 0){global.player4_key2_left = noone;}
+if (global.player4_key2_right = 0){global.player4_key2_right = noone;}
+if (global.player4_key2_down = 0){global.player4_key2_down = noone;}
+if (global.player4_key2_up = 0){global.player4_key2_up = noone;}
+if (global.player4_key2_attack = 0){global.player4_key2_attack = noone;}
+#endregion /*Player 4 reset keys to noone if they happen to be 0 END*/
+
+#endregion /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus END*/
+
 if (global.background_brightness_menu>-0.1)
 {
 	c_menu_outline=c_white;
