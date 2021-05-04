@@ -2,11 +2,6 @@
 function scr_options_menu()
 {
 	
-	#region /*Black Background behind sidebar*/
-	draw_set_alpha(1);
-	draw_rectangle_color(left_sidebar_x+0,0,left_sidebar_x+370,window_get_height(),c_black,c_black,c_black,c_black,false);
-	#endregion /*Black Background behind sidebar END*/
-	
 	#region /*Background Brightness in Menus Options*/
 	if (background_brightness_menu_lerp< 0)
 	{
@@ -22,6 +17,11 @@ function scr_options_menu()
 		draw_set_alpha(1);
 	}
 	#endregion /*Background Brightness in Menus Options END*/
+	
+	#region /*Black Background behind sidebar*/
+	draw_set_alpha(1);
+	draw_rectangle_color(left_sidebar_x+0,0,left_sidebar_x+370,window_get_height(),c_black,c_black,c_black,c_black,false);
+	#endregion /*Black Background behind sidebar END*/
 	
 	#region /*Set Font*/
 	if (global.language_localization=localization.ar_sa)

@@ -1,9 +1,6 @@
 ///scr_character_select_menu()
 function scr_character_select_menu()
 {
-	
-	draw_text_outlined(300,32,"player1_select_portrait_xscale: "+string(player1_select_portrait_xscale),global.default_text_size,c_white,c_black,1);			
-	
 	var voice=noone;
 
 	if (menu="select_character")

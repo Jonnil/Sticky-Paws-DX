@@ -811,7 +811,7 @@ else
 }
 #endregion /*Player 4 character select portrait sprite END*/
 
-/*Load Config*/scr_loadconfig();
+scr_loadconfig(); /*Load Config*/
 
 lives=5;
 level_name="";
