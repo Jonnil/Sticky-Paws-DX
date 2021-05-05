@@ -1331,7 +1331,7 @@ and (delay>1)
 	
 	if (drag_object=true)
 	{
-		depth = -110;
+		depth = -300;
 		x=obj_leveleditor.x;
 		y=obj_leveleditor.y;
 	}
@@ -1340,11 +1340,11 @@ and (delay>1)
 		if (object = 73)
 		or(object = 731)
 		{
-			depth = +120;
+			depth = -200;
 		}
 		else
 		{
-			depth = +110;
+			depth = -190;
 		}
 	}
 	#endregion /*Drag the object END*/
