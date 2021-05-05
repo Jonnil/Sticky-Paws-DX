@@ -134,11 +134,13 @@ function scr_character_select_menu()
 			}
 		}
 		
-		if (keyboard_check_pressed(global.player1_key_jump))
-		or(keyboard_check_pressed(vk_enter))
-		or(keyboard_check_pressed(vk_space))
-		or(gamepad_button_check_pressed(0,gp_face1))
-		or(gamepad_button_check_pressed(0,gp_start))
+		/*if (keyboard_check_pressed(global.player1_key_jump))
+		or (keyboard_check_pressed(global.player1_key2_jump))
+		or (keyboard_check_pressed(ord("Z")))
+		or (keyboard_check_pressed(vk_enter))
+		or (keyboard_check_pressed(vk_space))
+		or (gamepad_button_check_pressed(0,gp_face1))
+		or (gamepad_button_check_pressed(0,gp_start))
 		{
 			if (menu = 0)
 			{
@@ -157,7 +159,7 @@ function scr_character_select_menu()
 					menu = "leveleditor";
 				}
 			}
-		}
+		}*/
 	}
 	#endregion /*Show Back key when you can go back to main menu END*/
 	
@@ -489,8 +491,8 @@ function scr_character_select_menu()
 	{
 	
 		#region /*Player 1*/
-		if (global.playergame>=0)
-		and (player_1_menu = "select_character")
+		if (player_1_menu = "select_character")
+		or(global.controls_used_for_menu_navigation="mouse")
 		{
 			if (player1_accept_selection=false)
 			{
@@ -521,7 +523,9 @@ function scr_character_select_menu()
 					window_get_height()/2-16,
 					window_get_width()/2+player1_display_x-75+16,
 					window_get_height()/2+16))
+					and(global.controls_used_for_menu_navigation="mouse")
 					{
+						player_1_menu = "select_character";
 						draw_set_alpha(0.5);
 						draw_rectangle_color(
 						window_get_width()/2+player1_display_x-75-16,
@@ -561,7 +565,9 @@ function scr_character_select_menu()
 					window_get_height()/2-16,
 					window_get_width()/2+player1_display_x+75+16,
 					window_get_height()/2+16))
+					and(global.controls_used_for_menu_navigation="mouse")
 					{
+						player_1_menu = "select_character";
 						draw_set_alpha(0.5);
 						draw_rectangle_color(
 						window_get_width()/2+player1_display_x+75-16,
@@ -581,6 +587,8 @@ function scr_character_select_menu()
 		#region /*Player 2*/
 		if (global.playergame>=1)
 		and(player_2_menu = "select_character")
+		or (global.playergame>=1)
+		and(global.controls_used_for_menu_navigation="mouse")
 		{
 			if (player2_accept_selection=false)
 			{
@@ -611,7 +619,9 @@ function scr_character_select_menu()
 					window_get_height()/2-16,
 					window_get_width()/2+player2_display_x-75+16,
 					window_get_height()/2+16))
+					and(global.controls_used_for_menu_navigation="mouse")
 					{
+						player_2_menu = "select_character";
 						draw_set_alpha(0.5);
 						draw_rectangle_color(
 						window_get_width()/2+player2_display_x-75-16,
@@ -651,7 +661,9 @@ function scr_character_select_menu()
 					window_get_height()/2-16,
 					window_get_width()/2+player2_display_x+75+16,
 					window_get_height()/2+16))
+					and(global.controls_used_for_menu_navigation="mouse")
 					{
+						player_2_menu = "select_character";
 						draw_set_alpha(0.5);
 						draw_rectangle_color(
 						window_get_width()/2+player2_display_x+75-16,
@@ -671,6 +683,8 @@ function scr_character_select_menu()
 		#region /*Player 3*/
 		if (global.playergame>=2)
 		and(player_3_menu = "select_character")
+		or (global.playergame>=2)
+		and(global.controls_used_for_menu_navigation="mouse")
 		{
 			if (player3_accept_selection=false)
 			{
@@ -701,7 +715,9 @@ function scr_character_select_menu()
 					window_get_height()/2-16,
 					window_get_width()/2+player3_display_x-75+16,
 					window_get_height()/2+16))
+					and(global.controls_used_for_menu_navigation="mouse")
 					{
+						player_3_menu = "select_character";
 						draw_set_alpha(0.5);
 						draw_rectangle_color(
 						window_get_width()/2+player3_display_x-75-16,
@@ -741,7 +757,9 @@ function scr_character_select_menu()
 					window_get_height()/2-16,
 					window_get_width()/2+player3_display_x+75+16,
 					window_get_height()/2+16))
+					and(global.controls_used_for_menu_navigation="mouse")
 					{
+						player_3_menu = "select_character";
 						draw_set_alpha(0.5);
 						draw_rectangle_color(
 						window_get_width()/2+player3_display_x+75-16,
@@ -761,6 +779,8 @@ function scr_character_select_menu()
 		#region /*Player 4*/
 		if (global.playergame>=3)
 		and(player_4_menu = "select_character")
+		or (global.playergame>=3)
+		and(global.controls_used_for_menu_navigation="mouse")
 		{
 			if (player4_accept_selection=false)
 			{
@@ -791,7 +811,9 @@ function scr_character_select_menu()
 					window_get_height()/2-16,
 					window_get_width()/2+player4_display_x-75+16,
 					window_get_height()/2+16))
+					and(global.controls_used_for_menu_navigation="mouse")
 					{
+						player_4_menu = "select_character";
 						draw_set_alpha(0.5);
 						draw_rectangle_color(
 						window_get_width()/2+player4_display_x-75-16,
@@ -831,7 +853,9 @@ function scr_character_select_menu()
 					window_get_height()/2-16,
 					window_get_width()/2+player4_display_x+75+16,
 					window_get_height()/2+16))
+					and(global.controls_used_for_menu_navigation="mouse")
 					{
+						player_4_menu = "select_character";
 						draw_set_alpha(0.5);
 						draw_rectangle_color(
 						window_get_width()/2+player4_display_x+75-16,
@@ -865,6 +889,7 @@ function scr_character_select_menu()
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
 	and(can_input_player4_name=false)
+	or (global.controls_used_for_menu_navigation="mouse")
 	{
 		if (player1_accept_selection=false)
 		{
@@ -985,6 +1010,7 @@ function scr_character_select_menu()
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
 	and(can_input_player4_name=false)
+	or (global.controls_used_for_menu_navigation="mouse")
 	{
 		if (player2_accept_selection=false)
 		{
@@ -1102,6 +1128,7 @@ function scr_character_select_menu()
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
 	and(can_input_player4_name=false)
+	or (global.controls_used_for_menu_navigation="mouse")
 	{
 		if (player3_accept_selection=false)
 		{
@@ -1219,6 +1246,7 @@ function scr_character_select_menu()
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
 	and(can_input_player4_name=false)
+	or (global.controls_used_for_menu_navigation="mouse")
 	{
 		if (player4_accept_selection=false)
 		{
@@ -1336,6 +1364,7 @@ function scr_character_select_menu()
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
 	and(can_input_player4_name=false)
+	and(global.controls_used_for_menu_navigation != "mouse")
 	{
 	
 		#region /*Accept Text*/
@@ -1376,6 +1405,7 @@ function scr_character_select_menu()
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
 	and(can_input_player4_name=false)
+	and(global.controls_used_for_menu_navigation != "mouse")
 	{
 	
 		#region /*Accept Text*/
@@ -1416,6 +1446,7 @@ function scr_character_select_menu()
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
 	and(can_input_player4_name=false)
+	and(global.controls_used_for_menu_navigation != "mouse")
 	{
 	
 		#region /*Accept Text*/
@@ -1456,6 +1487,7 @@ function scr_character_select_menu()
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
 	and(can_input_player4_name=false)
+	and(global.controls_used_for_menu_navigation != "mouse")
 	{
 	
 		#region /*Accept Text*/
@@ -1527,6 +1559,7 @@ function scr_character_select_menu()
 	window_get_height()/2+250-16,
 	window_get_width()/2+player1_display_x+150,
 	window_get_height()/2+250+16))
+	and(global.controls_used_for_menu_navigation="mouse")
 	and(can_input_player1_name=false)
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
@@ -1627,6 +1660,7 @@ function scr_character_select_menu()
 	window_get_height()/2+250-16,
 	window_get_width()/2+player2_display_x+150,
 	window_get_height()/2+250+16))
+	and(global.controls_used_for_menu_navigation="mouse")
 	and(can_input_player1_name=false)
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
@@ -1727,6 +1761,7 @@ function scr_character_select_menu()
 	window_get_height()/2+250-16,
 	window_get_width()/2+player3_display_x+150,
 	window_get_height()/2+250+16))
+	and(global.controls_used_for_menu_navigation="mouse")
 	and(can_input_player1_name=false)
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
@@ -1827,6 +1862,7 @@ function scr_character_select_menu()
 	window_get_height()/2+250-16,
 	window_get_width()/2+player4_display_x+150,
 	window_get_height()/2+250+16))
+	and(global.controls_used_for_menu_navigation="mouse")
 	and(can_input_player1_name=false)
 	and(can_input_player2_name=false)
 	and(can_input_player3_name=false)
@@ -4314,6 +4350,21 @@ and(menu_delay=0)
 	or (keyboard_check_pressed(ord("X")))
 	or (keyboard_check_pressed(vk_backspace))
 	or (keyboard_check_pressed(vk_escape))
+	
+	or (keyboard_check_pressed(global.player1_key_jump))
+	and(menu = "back_from_character_select")
+	or (keyboard_check_pressed(global.player1_key2_jump))
+	and(menu = "back_from_character_select")
+	or (keyboard_check_pressed(ord("Z")))
+	and(menu = "back_from_character_select")
+	or (keyboard_check_pressed(vk_enter))
+	and(menu = "back_from_character_select")
+	or (keyboard_check_pressed(vk_space))
+	and(menu = "back_from_character_select")
+	or (gamepad_button_check_pressed(0,gp_face1))
+	and(menu = "back_from_character_select")
+	or (gamepad_button_check_pressed(0,gp_start))
+	and(menu = "back_from_character_select")
 	{
 		if (menu_delay=0)
 		and(player1_start_game=false)
