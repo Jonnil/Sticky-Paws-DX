@@ -34,6 +34,8 @@ function draw_menu_button()
 	{
 		if (menu=menu_index)
 		and(global.controls_used_for_menu_navigation="keyboard")
+		or (menu=menu_index)
+		and(global.controls_used_for_menu_navigation="controller")
 		{
 			draw_sprite_ext(spr_menu_button,0,x_position,y_position+21,1,1,0,c_gray,1);
 		}

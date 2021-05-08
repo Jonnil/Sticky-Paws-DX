@@ -16,6 +16,7 @@
 //draw_text_outlined(x-128,y-128,"actually_play_edited_level: "+string(global.actually_play_edited_level),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x-128,y-96,"play_edited_level: "+string(global.play_edited_level),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x-128,y-96,"jump: "+string(jump),global.default_text_size,c_white,c_black,1);			
+draw_text_outlined(x-128,y-96,"can_climb_horizontal_rope_cooldown: "+string(can_climb_horizontal_rope_cooldown),global.default_text_size,c_white,c_black,1);			
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart")==asset_sprite)
