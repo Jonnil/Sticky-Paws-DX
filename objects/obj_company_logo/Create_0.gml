@@ -244,6 +244,16 @@ global.player2_sprint_toggle = false; /*If sprint toggle for player 2 is true or
 global.player3_sprint_toggle = false; /*If sprint toggle for player 3 is true or false (false by default)*/
 global.player4_sprint_toggle = false; /*If sprint toggle for player 4 is true or false (false by default)*/
 
+global.player1_cancel_dive_by_pressing_jump_or_dive_button = false;
+global.player2_cancel_dive_by_pressing_jump_or_dive_button = false;
+global.player3_cancel_dive_by_pressing_jump_or_dive_button = false;
+global.player4_cancel_dive_by_pressing_jump_or_dive_button = false;
+
+global.player1_cancel_dive_by_pressing_opposite_direction = false;
+global.player2_cancel_dive_by_pressing_opposite_direction = false;
+global.player3_cancel_dive_by_pressing_opposite_direction = false;
+global.player4_cancel_dive_by_pressing_opposite_direction = false;
+
 #region /*Universal Keyboard Remapping*/
 global.fullscreen_key=vk_f11;
 #endregion /*Universal Keyboard Remapping*/

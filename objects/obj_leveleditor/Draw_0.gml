@@ -492,17 +492,20 @@ if (pause=false)
 			draw_rectangle_color(0,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-8,room_width,room_height,c_red,c_red,c_red,c_red,false);
 		}
 	}
-	else
 	#endregion /*Zoom Out END*/
-
+	
+	else
+	
 	#region /*Reset Zoom*/
 	if (zoom_reset=true)
 	{
-		camera_set_view_size(view_camera[view_current],view_wview,view_hview);
+		//camera_set_view_size(view_camera[view_current],view_wview,view_hview);
+		scr_set_screen_size();
 	}
-	else
 	#endregion /*Reset Zoom END*/
-
+	
+	else
+	
 	#region /*Zoom In*/
 	if (zoom_in=true)
 	{

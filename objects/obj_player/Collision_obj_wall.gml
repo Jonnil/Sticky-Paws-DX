@@ -47,6 +47,7 @@ and(stick_to_wall = false)
 	draw_xscale = 1.25;
 	draw_yscale = 0.75;
 	can_ground_pound = true;
+	can_dive = true;
 	spring = false;
 	ledge_grab_jump = false;
 }

@@ -12123,6 +12123,50 @@ if (player=4)
 }
 #endregion /*Double tap direction to run END*/
 
+#region /*Cancel dive by pressing jump or dive button*/
+if (player=1)
+{
+	cancel_dive_by_pressing_jump_or_dive_button=global.player1_cancel_dive_by_pressing_jump_or_dive_button;
+}
+else
+if (player=2)
+{
+	cancel_dive_by_pressing_jump_or_dive_button=global.player2_cancel_dive_by_pressing_jump_or_dive_button;
+}
+else
+if (player=3)
+{
+	cancel_dive_by_pressing_jump_or_dive_button=global.player3_cancel_dive_by_pressing_jump_or_dive_button;
+}
+else
+if (player=4)
+{
+	cancel_dive_by_pressing_jump_or_dive_button=global.player4_cancel_dive_by_pressing_jump_or_dive_button;
+}
+#endregion /*Cancel dive by pressing jump or dive button END*/
+
+#region /*Cancel dive by pressing opposite direction*/
+if (player=1)
+{
+	cancel_dive_by_pressing_opposite_direction=global.player1_cancel_dive_by_pressing_opposite_direction;
+}
+else
+if (player=2)
+{
+	cancel_dive_by_pressing_opposite_direction=global.player1_cancel_dive_by_pressing_opposite_direction;
+}
+else
+if (player=3)
+{
+	cancel_dive_by_pressing_opposite_direction=global.player1_cancel_dive_by_pressing_opposite_direction;
+}
+else
+if (player=4)
+{
+	cancel_dive_by_pressing_opposite_direction=global.player1_cancel_dive_by_pressing_opposite_direction;
+}
+#endregion /*Cancel dive by pressing opposite direction END*/
+
 #region /*Hold Direction Wall jump*/
 if (player=1)
 {
@@ -12188,7 +12232,7 @@ if (assist_invincible=true)
 		{
 			vspeed =+1;
 			crouch=false;
-			can_ground_pound=false;
+			can_ground_pound = false;
 		}
 	}
 }
@@ -14190,7 +14234,7 @@ and(global.pause=false)
 	#region /*Rope Swing*/
 	if (ropeswing=true)
 	{
-		can_ground_pound=false;
+		can_ground_pound = false;
 		ground_pound=false;
 		gravity=0; /*No gravity when rope swinging*/
 		if (asset_get_type("obj_tongue")==asset_object)
@@ -14561,7 +14605,7 @@ and(wall_jump_setting>=1)
 					audio_play_sound(snd_move_ivy,0,0);
 					audio_sound_gain(snd_move_ivy,global.sfx_volume,0);
 				}
-				can_ground_pound=false;
+				can_ground_pound = false;
 				ledge_grab_jump=false;
 				vspeed =+4;
 			}
@@ -14588,7 +14632,8 @@ and(wall_jump_setting>=1)
 							audio_play_sound(snd_move_ivy,0,0);
 							audio_sound_gain(snd_move_ivy,global.sfx_volume,0);
 						}
-						can_ground_pound=true;
+						can_ground_pound = true;
+						can_dive = true;
 						ledge_grab_jump=true;
 						vspeed = -4;
 					}
@@ -14623,7 +14668,8 @@ and(wall_jump_setting>=1)
 			else
 			if (vspeed>=0)
 			{
-				can_ground_pound=true;
+				can_ground_pound = true;
+				can_dive = true;
 				ledge_grab_jump=false;
 				vspeed =0;
 				gravity=0;
@@ -14745,6 +14791,11 @@ and(wall_jump_setting>=1)
 	and(!key_left)
 	and(!key_right)
 	and(key_sprint_pressed)
+	and(stick_to_wall=true)
+	or (key_down)
+	and(!key_left)
+	and(!key_right)
+	and(key_dive_pressed)
 	and(stick_to_wall=true)
 	{
 		if (place_meeting(x-1,y,obj_wall))
@@ -14984,6 +15035,8 @@ and(takendamage<=takendamage_freezetime)
 			else
 			if (key_up)
 			and(vspeed>4)
+			or (key_dive_pressed)
+			and(vspeed>4)
 			or(vspeed<-4)
 			{
 				image_index=0;
@@ -15050,7 +15103,7 @@ and(takendamage<=takendamage_freezetime)
 if (can_ground_pound=false)
 and(!key_down)
 {
-	can_ground_pound=true;
+	can_ground_pound = true;
 }
 #endregion /*Ground Pound END*/
 
@@ -15112,7 +15165,7 @@ and(global.pause=false)
 					#endregion /*Choose direction to dive*/
 					
 					ground_pound=false;
-					can_ground_pound=false;
+					can_ground_pound = false;
 					if (asset_get_type("snd_dive")==asset_sound)
 					{
 						audio_play_sound(snd_dive,0,0);
@@ -15189,21 +15242,44 @@ and(global.pause=false)
 			and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
 			and(vspeed>=0)
 			{
-				dive=false;
-				dive_on_ground=10;
-				ground_pound=false;
-				can_ground_pound=false;
+				dive = false;
+				dive_on_ground = 10;
+				ground_pound = false;
+				can_ground_pound = false;
 			}
 			#endregion /*If player lands on ground when diving, stop diving END*/
 
 			#region /*If player lands in water when diving, stop diving*/
 			if (in_water=true)
 			{
-				dive=false;
-				crouch=false;
+				dive = false;
+				crouch = false;
 			}
 			#endregion /*If player lands in water when diving, stop diving END*/
-
+			
+			#region /*Cancel dive (only when you have enabled dive canceling in settings)*/
+			if (cancel_dive_by_pressing_jump_or_dive_button = true)
+			{
+				if (key_jump)
+				or (key_dive_pressed)
+				{
+					dive = false;
+					can_dive = false;
+				}
+			}
+			if (cancel_dive_by_pressing_opposite_direction = true)
+			{
+				if (hspeed < 0)
+				and (key_right)
+				or (hspeed > 0)
+				and (key_left)
+				{
+					dive = false;
+					can_dive = false;
+				}
+			}
+			#endregion /*Cancel dive (only when you have enabled dive canceling in settings) END*/
+			
 		}
 	}
 }
@@ -15537,7 +15613,7 @@ if (asset_get_type("obj_water")==asset_object)
 		
 		speed_max=4;
 		allow_roll=false;
-		can_ground_pound=false;
+		can_ground_pound = false;
 		ground_pound=false;
 		can_wall_jump=false;
 		stick_to_wall=false;
@@ -15669,10 +15745,9 @@ if (asset_get_type("obj_water")==asset_object)
 	}
 	else
 	{
-		can_dive=true;
 		in_water=false;
 		allow_roll=false;
-		can_ground_pound=true;
+		can_ground_pound = true;
 		can_wall_jump=true;
 	}
 }
@@ -16304,7 +16379,7 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	}
 	can_climb_horizontal_rope_cooldown = 10;
 	midair_jumps_left=number_of_jumps;
-	can_ground_pound=false;
+	can_ground_pound = false;
 	chain_reaction=0;
 	dive=false;
 	draw_xscale=0.5;
@@ -16475,7 +16550,8 @@ and(in_water=false)
 	{
 		angle=0;
 		midair_jumps_left=number_of_jumps;
-		can_ground_pound=false;
+		can_ground_pound = false;
+		can_dive = true;
 		chain_reaction=0;
 		dive=false;
 		gravity=0;
@@ -16813,7 +16889,8 @@ and(place_meeting(x,y,obj_vine))
 		ledge_grab_jump=false;
 		ground_pound=false;
 		dive=false;
-		can_ground_pound=false;
+		can_ground_pound = false;
+		can_dive = true;
 		stomp_spin=false;
 		midair_jumps_left=number_of_jumps;
 		spring=false;
@@ -17050,7 +17127,7 @@ and(place_meeting(x,y,obj_vine))
 if (asset_get_type("obj_water")==asset_object)
 and(position_meeting(x,y,obj_water))
 {
-	can_ground_pound=false;
+	can_ground_pound = false;
 	chain_reaction=0;
 
 /*Crouch*/

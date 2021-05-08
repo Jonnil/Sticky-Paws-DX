@@ -4200,6 +4200,7 @@ and(menu_delay=0)
 	#region /*Player 1 Back / Cancel Selection*/
 	if (gamepad_button_check_pressed(0,gp_face2))
 	or(keyboard_check_pressed(vk_escape))
+	or(keyboard_check_pressed(vk_backspace))
 	or(keyboard_check_pressed(ord("X")))
 	or(keyboard_check_pressed(global.player1_key_sprint))
 	or(keyboard_check_pressed(global.player1_key2_sprint))
