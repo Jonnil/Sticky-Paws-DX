@@ -385,6 +385,8 @@ and(!instance_exists(obj_title))
 
 scr_show_fps();
 
+draw_text_outlined( 32, 320, "instance count: "+string(instance_count),global.default_text_size, c_black, c_white, 1);
+
 #region /*Show Controls*/
 if (os_type != os_ios)
 and(os_type != os_android)

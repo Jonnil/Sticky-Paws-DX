@@ -1,13 +1,5 @@
-depth = 12;
-tile = 0;
-
-look_outward=17;
-same_object = obj_ground;
-
-image_speed=0;
-
 #region /*Set Tile*/
-tile=44;
+/*tile=44;
 if (position_meeting(x,y-look_outward,same_object))
 {
  tile=0;

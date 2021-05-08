@@ -16529,13 +16529,11 @@ and(in_water=false)
 {
 	if (horizontal_rope_climb = false)
 	and(can_climb_horizontal_rope_cooldown <= 0)
-	//and(!key_down)
 	{
 		midair_jumps_left = number_of_jumps;
 		horizontal_rope_climb = true;
 		climb = false;
 		jump = 0;
-		can_climb_horizontal_rope_cooldown = 10;
 		
 		#region /*Make a sound effect that you have started cimbing*/
 		if (asset_get_type("snd_catch_ivy")==asset_sound)
@@ -16553,7 +16551,6 @@ and(in_water=false)
 	{
 		angle=0;
 		midair_jumps_left=number_of_jumps;
-		can_climb_horizontal_rope_cooldown = 10;
 		can_ground_pound = false;
 		can_dive = true;
 		chain_reaction=0;
@@ -18348,5 +18345,10 @@ or(invincible>0)
 	}
 }
 #endregion /*Speedlines Effect End*/
+
+if (place_meeting(x,y+1,obj_wall))
+{
+	can_dive = true;
+}
 
 #endregion /*________________________________Handling the sprites and sounds in the step event________________________________END*/
