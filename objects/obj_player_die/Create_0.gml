@@ -24,3 +24,47 @@ if (instance_number(obj_camera)>0)
 
 voice_damage=noone;
 voice_burned_die=noone;
+
+#region /*Disable the players for the camera*/
+
+#region /*Disable player 1*/
+if (player=1)
+{
+	with(obj_camera)
+	{
+		player1=0;
+	}
+}
+#endregion /*Disable player 1 END*/
+
+#region /*Disable player 2*/
+if (player=2)
+{
+	with(obj_camera)
+	{
+		player2=0;
+	}
+}
+#endregion /*Disable player 2 END*/
+
+#region /*Disable player 3*/
+if (player=3)
+{
+	with(obj_camera)
+	{
+		player3=0;
+	}
+}
+#endregion /*Disable player 3 END*/
+
+#region /*Disable player 4*/
+if (player=4)
+{
+	with(obj_camera)
+	{
+		player4=0;
+	}
+}
+#endregion /*Disable player 4 END*/
+
+#endregion /*Disable the players for the camera END*/

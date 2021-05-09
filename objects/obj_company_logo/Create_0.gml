@@ -33,7 +33,7 @@ global.enable_verbosity_slider = false;
 global.enable_narrator = false;
 #endregion /*What settings can be changed END*/
 
-global.max_fps=60; /*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
+global.max_fps = 60; /*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
 global.default_text_size=0.2 //0.1125;
 
 global.demo=false; /*When making a demo version of the game, turn this to true, otherwise turn this to false for the full version*/

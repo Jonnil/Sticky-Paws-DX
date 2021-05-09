@@ -30,50 +30,6 @@ if (player=4)
 
 #endregion /*Color Skin END*/
 
-#region /*Disable the players for the camera*/
-
-#region /*Disable player 1*/
-if (player=1)
-{
-	with(obj_camera)
-	{
-		player1=noone;
-	}
-}
-#endregion /*Disable player 1 END*/
-
-#region /*Disable player 2*/
-if (player=2)
-{
-	with(obj_camera)
-	{
-		player2=noone;
-	}
-}
-#endregion /*Disable player 2 END*/
-
-#region /*Disable player 3*/
-if (player=3)
-{
-	with(obj_camera)
-	{
-		player3=noone;
-	}
-}
-#endregion /*Disable player 3 END*/
-
-#region /*Disable player 4*/
-if (player=4)
-{
-	with(obj_camera)
-	{
-		player4=noone;
-	}
-}
-#endregion /*Disable player 4 END*/
-
-#endregion /*Disable the players for the camera END*/
-
 count+=1;
 
 #region /*Check if the last player just died*/
@@ -268,6 +224,51 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 	if (lives>0)
 	and(instance_exists(obj_player))
 	{
+		
+		#region /*Disable the players for the camera*/
+		
+		#region /*Disable player 1*/
+		if (player=1)
+		{
+			with(obj_camera)
+			{
+				player1 = noone;
+			}
+		}
+		#endregion /*Disable player 1 END*/
+		
+		#region /*Disable player 2*/
+		if (player=2)
+		{
+			with(obj_camera)
+			{
+				player2 = noone;
+			}
+		}
+		#endregion /*Disable player 2 END*/
+		
+		#region /*Disable player 3*/
+		if (player=3)
+		{
+			with(obj_camera)
+			{
+				player3 = noone;
+			}
+		}
+		#endregion /*Disable player 3 END*/
+		
+		#region /*Disable player 4*/
+		if (player=4)
+		{
+			with(obj_camera)
+			{
+				player4 = noone;
+			}
+		}
+		#endregion /*Disable player 4 END*/
+		
+		#endregion /*Disable the players for the camera END*/
+		
 		instance_destroy();
 	}
 }

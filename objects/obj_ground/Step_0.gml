@@ -1,5 +1,5 @@
 #region /*Set Tile*/
-/*tile=44;
+tile=44;
 if (position_meeting(x,y-look_outward,same_object))
 {
  tile=0;

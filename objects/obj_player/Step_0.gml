@@ -8755,7 +8755,18 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 		//ini_write_real("values", "number_of_jumps", 1);
 		midair_jumps_left = 1;
 	}
-	#endregion /*Mid-air jumps left*/
+	#endregion /*Mid-air jumps left END*/
+	
+	#region /*Mid-air Flip Animation counter*/
+	if (ini_key_exists("values", "midair_jump_flip_animation"))
+	{
+		midair_jump_flip_animation = ini_read_real("values", "midair_jump_flip_animation", 2);
+	}
+	else
+	{
+		midair_jump_flip_animation = 2;
+	}
+	#endregion /*Mid-air Flip Animation counter END*/
 	
 	#region /*Starting HP*/
 	if (ini_key_exists("values", "hp"))
@@ -14037,17 +14048,6 @@ and(in_water=false)
 		buffer_jump = 0;
 		dive=false;
 		vspeed = -double_jump_height;
-		if (midair_jumps_left=number_of_jumps)
-		{
-			if (image_xscale>0)
-			{
-				angle=+360;
-			}
-			else
-			{
-				angle=-360;
-			}
-		}
 		if (voice_jump>noone)
 		{
 			audio_stop_sound(voice);
@@ -14058,10 +14058,28 @@ and(in_water=false)
 		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
 		effect_create_above(ef_smoke,x+16,bbox_bottom,0,c_white);
 		image_index=0;
+		
 		if (number_of_jumps > -1)
 		{
 			midair_jumps_left-=1;
 		}
+		
+		#region /*Mid-air flip animation*/
+		if (midair_jumps_left >= midair_jump_flip_animation)
+		or (number_of_jumps = 2)
+		and(midair_jump_flip_animation >= 2)
+		{
+			if (image_xscale>0)
+			{
+				angle=+360;
+			}
+			else
+			{
+				angle=-360;
+			}
+		}
+		#endregion /*Mid-air flip animation END*/
+		
 	}
 }
 #endregion /*Mid-Air / Double Jumping END*/
@@ -18214,34 +18232,318 @@ mask_index=sprite_mask;
 /*Stop skidding ice sound*/if asset_get_type("obj_ice_block")==asset_object{if asset_get_type("snd_skidding_ice")==asset_sound{
 if crouch=false{if speed<2 or hspeed>0 and key_right or hspeed<0 and key_left or!key_left and!key_right or!place_meeting(x,y+1,obj_ice_block){if asset_get_type("snd_skidding_ice")==asset_sound{if audio_is_playing(snd_skidding_ice){audio_stop_sound(snd_skidding_ice);}}}}else if!place_meeting(x,y+1,obj_ice_block)or speed<1{if asset_get_type("snd_skidding_ice")==asset_sound{if audio_is_playing(snd_skidding_ice){audio_stop_sound(snd_skidding_ice);}}}}}/*Stop skidding ice sound end*/
 /*Stop skidding sound*/if crouch=false{if speed<2 or hspeed>0 and key_right or hspeed<0 and key_left or!key_left and!key_right or!place_meeting(x,y+1,obj_wall){if asset_get_type("snd_skidding")==asset_sound{if audio_is_playing(snd_skidding){audio_stop_sound(snd_skidding);}}}}else if!place_meeting(x,y+1,obj_wall)or speed<1{if asset_get_type("snd_skidding")==asset_sound{if audio_is_playing(snd_skidding){audio_stop_sound(snd_skidding);}}}/*Stop skidding sound end*/
-/*Footstep sounds*/if place_meeting(x,y+1,obj_wall){if speed>0 and crouch=false{
-if hspeed<0 and!key_right or hspeed>0 and!key_left{
-if image_index<1{
 
-/*Metal Footstep Left*/if asset_get_type("obj_ground_metal")==asset_object and place_meeting(x,y+1,obj_ground_metal){if asset_get_type("snd_footstep_metal_left")==asset_sound{if!audio_is_playing(snd_footstep_metal_left){audio_play_sound(snd_footstep_metal_left,0,0);audio_sound_gain(snd_footstep_metal_left,global.sfx_volume,0);}}}else
-/*Stone Footstep Left*/if asset_get_type("obj_ground_stone")==asset_object and place_meeting(x,y+1,obj_ground_stone){if asset_get_type("snd_footstep_stone_left")==asset_sound{if!audio_is_playing(snd_footstep_stone_left){audio_play_sound(snd_footstep_stone_left,0,0);audio_sound_gain(snd_footstep_stone_left,global.sfx_volume,0);}}}else
-/*Wood Footstep Left*/if asset_get_type("obj_ground_wood")==asset_object and place_meeting(x,y+1,obj_ground_wood){if asset_get_type("snd_footstep_wood_left")==asset_sound{if!audio_is_playing(snd_footstep_wood_left){audio_play_sound(snd_footstep_wood_left,0,0);audio_sound_gain(snd_footstep_wood_left,global.sfx_volume,0);}}}else
-/*Dirt Footstep Left*/if asset_get_type("obj_ground_dirt")==asset_object and place_meeting(x,y+1,obj_ground_dirt){if asset_get_type("snd_footstep_dirt_left")==asset_sound{if!audio_is_playing(snd_footstep_dirt_left){audio_play_sound(snd_footstep_dirt_left,0,0);audio_sound_gain(snd_footstep_dirt_left,global.sfx_volume,0);}}}else
-/*Gravel Footstep Left*/if asset_get_type("obj_ground_gravel")==asset_object and place_meeting(x,y+1,obj_ground_gravel){if asset_get_type("snd_footstep_gravel_left")==asset_sound{if!audio_is_playing(snd_footstep_gravel_left){audio_play_sound(snd_footstep_gravel_left,0,0);audio_sound_gain(snd_footstep_gravel_left,global.sfx_volume,0);}}}else
-/*Grass Footstep Left*/if asset_get_type("obj_ground_grass")==asset_object and place_meeting(x,y+1,obj_ground_grass){if asset_get_type("snd_footstep_grass_left")==asset_sound{if!audio_is_playing(snd_footstep_grass_left){audio_play_sound(snd_footstep_grass_left,0,0);audio_sound_gain(snd_footstep_grass_left,global.sfx_volume,0);}}}else
-/*Glass Footstep Left*/if asset_get_type("obj_ground_glass")==asset_object and place_meeting(x,y+1,obj_ground_glass){if asset_get_type("snd_footstep_glass_left")==asset_sound{if!audio_is_playing(snd_footstep_glass_left){audio_play_sound(snd_footstep_glass_left,0,0);audio_sound_gain(snd_footstep_glass_left,global.sfx_volume,0);}}}else
-/*Default Footstep Left*/{if asset_get_type("snd_footstep_default_left")==asset_sound{if!audio_is_playing(snd_footstep_default_left){audio_play_sound(snd_footstep_default_left,0,0);audio_sound_gain(snd_footstep_default_left,global.sfx_volume,0);}}}/*Default Footstep Left END*/}
-
-
-else
-if (image_index>image_number/2-1)
-and(image_index<image_number/2+1)
+#region /*Footstep sounds*/
+if (place_meeting(x,y+1,obj_wall))
 {
-
-/*Metal Footstep Right*/if asset_get_type("obj_ground_metal")==asset_object and place_meeting(x,y+1,obj_ground_metal){if asset_get_type("snd_footstep_metal_right")==asset_sound{if!audio_is_playing(snd_footstep_metal_right){audio_play_sound(snd_footstep_metal_right,0,0);audio_sound_gain(snd_footstep_metal_right,global.sfx_volume,0);}}}else
-/*Stone Footstep Right*/if asset_get_type("obj_ground_stone")==asset_object and place_meeting(x,y+1,obj_ground_stone){if asset_get_type("snd_footstep_stone_right")==asset_sound{if!audio_is_playing(snd_footstep_stone_right){audio_play_sound(snd_footstep_stone_right,0,0);audio_sound_gain(snd_footstep_stone_right,global.sfx_volume,0);}}}else
-/*Wood Footstep Right*/if asset_get_type("obj_ground_wood")==asset_object and place_meeting(x,y+1,obj_ground_wood){if asset_get_type("snd_footstep_wood_right")==asset_sound{if!audio_is_playing(snd_footstep_wood_right){audio_play_sound(snd_footstep_wood_right,0,0);audio_sound_gain(snd_footstep_wood_right,global.sfx_volume,0);}}}else
-/*Dirt Footstep Right*/if asset_get_type("obj_ground_dirt")==asset_object and place_meeting(x,y+1,obj_ground_dirt){if asset_get_type("snd_footstep_dirt_right")==asset_sound{if!audio_is_playing(snd_footstep_dirt_right){audio_play_sound(snd_footstep_dirt_right,0,0);audio_sound_gain(snd_footstep_dirt_right,global.sfx_volume,0);}}}else
-/*Gravel Footstep Right*/if asset_get_type("obj_ground_gravel")==asset_object and place_meeting(x,y+1,obj_ground_gravel){if asset_get_type("snd_footstep_gravel_right")==asset_sound{if!audio_is_playing(snd_footstep_gravel_right){audio_play_sound(snd_footstep_gravel_right,0,0);audio_sound_gain(snd_footstep_gravel_right,global.sfx_volume,0);}}}else
-/*Grass Footstep Right*/if asset_get_type("obj_ground_grass")==asset_object and place_meeting(x,y+1,obj_ground_grass){if asset_get_type("snd_footstep_grass_right")==asset_sound{if!audio_is_playing(snd_footstep_grass_right){audio_play_sound(snd_footstep_grass_right,0,0);audio_sound_gain(snd_footstep_grass_right,global.sfx_volume,0);}}}else
-/*Glass Footstep Right*/if asset_get_type("obj_ground_glass")==asset_object and place_meeting(x,y+1,obj_ground_glass){if asset_get_type("snd_footstep_glass_right")==asset_sound{if!audio_is_playing(snd_footstep_glass_right){audio_play_sound(snd_footstep_glass_right,0,0);audio_sound_gain(snd_footstep_glass_right,global.sfx_volume,0);}}}else
-/*Default Footstep Right*/{if asset_get_type("snd_footstep_default_right")==asset_sound{if!audio_is_playing(snd_footstep_default_right){audio_play_sound(snd_footstep_default_right,0,0);audio_sound_gain(snd_footstep_default_right,global.sfx_volume,0);}}}/*Default Footstep Right END*/}
-}}}/*Footstep sounds end*/
+	if (speed>0)
+	and (crouch=false)
+	{
+		if (hspeed<0)
+		and(!key_right)
+		or(hspeed>0)
+		and(!key_left)
+		{
+			if (image_index<1)
+			{
+				
+				#region /*Left Footstep Sounds*/
+				
+				#region /*Dirt Footstep Left*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
+				{
+					if (asset_get_type("snd_footstep_dirt_left")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_dirt_left))
+						{
+							audio_play_sound(snd_footstep_dirt_left,0,0);
+							audio_sound_gain(snd_footstep_dirt_left,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Dirt Footstep Left END*/
+				
+				else
+				
+				#region /*Glass Footstep Left*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
+				{
+					if (asset_get_type("snd_footstep_glass_left")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_glass_left))
+						{
+							audio_play_sound(snd_footstep_glass_left,0,0);
+							audio_sound_gain(snd_footstep_glass_left,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Glass Footstep Left END*/
+				
+				else
+				
+				#region /*Grass Footstep Left*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
+				{
+					if (asset_get_type("snd_footstep_grass_left")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_grass_left))
+						{
+							audio_play_sound(snd_footstep_grass_left,0,0);
+							audio_sound_gain(snd_footstep_grass_left,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Grass Footstep Left END*/
+				
+				else
+				
+				#region /*Gravel Footstep Left*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
+				{
+					if (asset_get_type("snd_footstep_gravel_left")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_gravel_left))
+						{
+							audio_play_sound(snd_footstep_gravel_left,0,0);
+							audio_sound_gain(snd_footstep_gravel_left,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Gravel Footstep Left END*/
+				
+				else
+				
+				#region /*Metal Footstep Left*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and (place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
+				{
+					if (asset_get_type("snd_footstep_metal_left")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_metal_left))
+						{
+							audio_play_sound(snd_footstep_metal_left,0,0);
+							audio_sound_gain(snd_footstep_metal_left,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Metal Footstep Left END*/
+				
+				else
+				
+				#region /*Stone Footstep Left*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
+				{
+					if (asset_get_type("snd_footstep_stone_left")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_stone_left))
+						{
+							audio_play_sound(snd_footstep_stone_left,0,0);
+							audio_sound_gain(snd_footstep_stone_left,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Stone Footstep Left END*/
+				
+				else
+				
+				#region /*Wood Footstep Left*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
+				{
+					if (asset_get_type("snd_footstep_wood_left")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_wood_left))
+						{
+							audio_play_sound(snd_footstep_wood_left,0,0);
+							audio_sound_gain(snd_footstep_wood_left,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Wood Footstep Left END*/
+				
+				else
+				
+				#region /*Default Footstep Left*/
+				{
+					if (asset_get_type("snd_footstep_default_left")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_default_left))
+						{
+							audio_play_sound(snd_footstep_default_left,0,0);
+							audio_sound_gain(snd_footstep_default_left,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Default Footstep Left END*/
+				
+				#endregion /*Left Footstep Sounds END*/
+				
+			}
+			else
+			if (image_index>image_number/2-1)
+			and(image_index<image_number/2+1)
+			{
+				
+				#region /*Right Footstep Sounds*/
+				
+				#region /*Dirt Footstep Right*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
+				{
+					if (asset_get_type("snd_footstep_dirt_right")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_dirt_right))
+						{
+							audio_play_sound(snd_footstep_dirt_right,0,0);
+							audio_sound_gain(snd_footstep_dirt_right,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Dirt Footstep Right END*/
+				
+				else
+				
+				#region /*Glass Footstep Right*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
+				{
+					if (asset_get_type("snd_footstep_glass_right")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_glass_right))
+						{
+							audio_play_sound(snd_footstep_glass_right,0,0);
+							audio_sound_gain(snd_footstep_glass_right,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Glass Footstep Right END*/
+				
+				else
+				
+				#region /*Grass Footstep Right*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
+				{
+					if (asset_get_type("snd_footstep_grass_right")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_grass_right))
+						{
+							audio_play_sound(snd_footstep_grass_right,0,0);
+							audio_sound_gain(snd_footstep_grass_right,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Grass Footstep Right END*/
+				
+				else
+				
+				#region /*Gravel Footstep Right*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
+				{
+					if (asset_get_type("snd_footstep_gravel_right")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_gravel_right))
+						{
+							audio_play_sound(snd_footstep_gravel_right,0,0);
+							audio_sound_gain(snd_footstep_gravel_right,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Gravel Footstep Right END*/
+				
+				else
+				
+				#region /*Metal Footstep Right*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and (place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
+				{
+					if (asset_get_type("snd_footstep_metal_right")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_metal_right))
+						{
+							audio_play_sound(snd_footstep_metal_right,0,0);
+							audio_sound_gain(snd_footstep_metal_right,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Metal Footstep Right END*/
+				
+				else
+				
+				#region /*Stone Footstep Right*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
+				{
+					if (asset_get_type("snd_footstep_stone_right")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_stone_right))
+						{
+							audio_play_sound(snd_footstep_stone_right,0,0);
+							audio_sound_gain(snd_footstep_stone_right,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Stone Footstep Right END*/
+				
+				else
+				
+				#region /*Wood Footstep Right*/
+				if (asset_get_type("obj_ground")==asset_object)
+				and(place_meeting(x,y+1,obj_ground))
+				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
+				{
+					if (asset_get_type("snd_footstep_wood_right")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_wood_right))
+						{
+							audio_play_sound(snd_footstep_wood_right,0,0);
+							audio_sound_gain(snd_footstep_wood_right,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Wood Footstep Right END*/
+				
+				else
+				
+				#region /*Default Footstep Right*/
+				{
+					if (asset_get_type("snd_footstep_default_right")==asset_sound)
+					{
+						if (!audio_is_playing(snd_footstep_default_right))
+						{
+							audio_play_sound(snd_footstep_default_right,0,0);
+							audio_sound_gain(snd_footstep_default_right,global.sfx_volume,0);
+						}
+					}
+				}
+				#endregion /*Default Footstep Right END*/
+				
+				#endregion /*Right Footstep Sounds END*/
+				
+			}
+		}
+	}
+}
+#endregion /*Footstep sounds END*/
 
 #region /*Running Sparks Effect*/
 if (place_meeting(x,y+1,obj_wall))

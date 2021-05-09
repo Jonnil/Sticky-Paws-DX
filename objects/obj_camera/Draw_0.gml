@@ -145,7 +145,7 @@ and(!instance_exists(obj_title))
 			}
 			if (asset_get_type("obj_player") == asset_object)
 			{
-				player1 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+				player1 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
 				with(player1)
 				{
 					custom_character = global.character_for_player_1;
@@ -361,35 +361,35 @@ if (save_level_as_png = false)
 	if (asset_get_type("obj_player") == asset_object)
 	and(asset_get_type("obj_boss") == asset_object)
 	and(instance_exists(obj_player))
-	and(instance_exists(obj_boss) > 0)
+	and(instance_exists(obj_boss))
 	and(distance_to_object(obj_boss) < 1000)
 	{
 
 		view_wview_lerp = lerp(view_wview_lerp, set_view_wview, 0.05); /*0.0005*/
 		view_hview_lerp = lerp(view_hview_lerp, set_view_hview, 0.05); /*0.0005*/
 
-		if (player1 > noone)
+		if (player1 > 0)
 		{
-			xx = mean(player1.x, obj_boss.x);
-			yy = mean(player1.y, obj_boss.y);
+			//xx = mean(player1.x, obj_boss.x);
+			//yy = mean(player1.y, obj_boss.y);
 		}
 		else
-		if (player2 > noone)
+		if (player2 > 0)
 		{
-			xx = mean(player2.x, obj_boss.x);
-			yy = mean(player2.y, obj_boss.y);
+			//xx = mean(player2.x, obj_boss.x);
+			//yy = mean(player2.y, obj_boss.y);
 		}
 		else
-		if (player3 > noone)
+		if (player3 > 0)
 		{
-			xx = mean(player3.x, obj_boss.x);
-			yy = mean(player3.y, obj_boss.y);
+			//xx = mean(player3.x, obj_boss.x);
+			//yy = mean(player3.y, obj_boss.y);
 		}
 		else
-		if (player4 > noone)
+		if (player4 > 0)
 		{
-			xx = mean(player4.x, obj_boss.x);
-			yy = mean(player4.y, obj_boss.y);
+			//xx = mean(player4.x, obj_boss.x);
+			//yy = mean(player4.y, obj_boss.y);
 		}
 	}
 	#endregion /*Boss Battle Camera END*/
@@ -521,23 +521,23 @@ if (save_level_as_png = false)
 	#region /*MULTIPLAYER CAMERA*/
 	else
 	if (asset_get_type("obj_player") == asset_object)
-	and(instance_number(obj_player) > 1)
+	and(instance_exists(obj_player))
 	{
 
 		/*1,2,3,4*/
-		if (player1 > noone)
-		and(player2 > noone)
-		and(player3 > noone)
-		and(player4 > noone)
+		if (player1 > 0)
+		and(player2 > 0)
+		and(player3 > 0)
+		and(player4 > 0)
 		{
 			xx = mean(player1.x, player2.x, player3.x, player4.x);
 			yy = mean(player1.y, player2.y, player3.y, player4.y);
 		}
 		/*1,2,3*/
 		else
-		if (player1 > noone)
-		and(player2 > noone)
-		and(player3 > noone)
+		if (player1 > 0)
+		and(player2 > 0)
+		and(player3 > 0)
 		{
 			xx = mean(player1.x, player2.x, player3.x);
 			yy = mean(player1.y, player2.y, player3.y);
@@ -545,24 +545,24 @@ if (save_level_as_png = false)
 
 		/*1,2*/
 		else
-		if (player1 > noone)
-		and(player2 > noone)
+		if (player1 > 0)
+		and(player2 > 0)
 		{
 			xx = mean(player1.x, player2.x);
 			yy = mean(player1.y, player2.y);
 		}
 		/*1,3*/
 		else
-		if (player1 > noone)
-		and(player3 > noone)
+		if (player1 > 0)
+		and(player3 > 0)
 		{
 			xx = mean(player1.x, player3.x);
 			yy = mean(player1.y, player3.y);
 		}
 		/*1,4*/
 		else
-		if (player1 > noone)
-		and(player4 > noone)
+		if (player1 > 0)
+		and(player4 > 0)
 		{
 			xx = mean(player1.x, player4.x);
 			yy = mean(player1.y, player4.y);
@@ -570,24 +570,24 @@ if (save_level_as_png = false)
 
 		/*2,1*/
 		else
-		if (player2 > noone)
-		and(player1 > noone)
+		if (player2 > 0)
+		and(player1 > 0)
 		{
 			xx = mean(player2.x, player1.x);
 			yy = mean(player2.y, player1.y);
 		}
 		/*2,3*/
 		else
-		if (player2 > noone)
-		and(player3 > noone)
+		if (player2 > 0)
+		and(player3 > 0)
 		{
 			xx = mean(player2.x, player3.x);
 			yy = mean(player2.y, player3.y);
 		}
 		/*2,4*/
 		else
-		if (player2 > noone)
-		and(player4 > noone)
+		if (player2 > 0)
+		and(player4 > 0)
 		{
 			xx = mean(player2.x, player4.x);
 			yy = mean(player2.y, player4.y);
@@ -595,24 +595,24 @@ if (save_level_as_png = false)
 
 		/*3,1*/
 		else
-		if (player3 > noone)
-		and(player1 > noone)
+		if (player3 > 0)
+		and(player1 > 0)
 		{
 			xx = mean(player3.x, player1.x);
 			yy = mean(player3.y, player1.y);
 		}
 		/*3,2*/
 		else
-		if (player3 > noone)
-		and(player2 > noone)
+		if (player3 > 0)
+		and(player2 > 0)
 		{
 			xx = mean(player3.x, player2.x);
 			yy = mean(player3.y, player2.y);
 		}
 		/*3,4*/
 		else
-		if (player3 > noone)
-		and(player4 > noone)
+		if (player3 > 0)
+		and(player4 > 0)
 		{
 			xx = mean(player3.x, player4.x);
 			yy = mean(player3.y, player4.y);
@@ -620,24 +620,24 @@ if (save_level_as_png = false)
 
 		/*4,1*/
 		else
-		if (player4 > noone)
-		and(player1 > noone)
+		if (player4 > 0)
+		and(player1 > 0)
 		{
 			xx = mean(player4.x, player1.x);
 			yy = mean(player4.y, player1.y);
 		}
 		/*4,2*/
 		else
-		if (player4 > noone)
-		and(player2 > noone)
+		if (player4 > 0)
+		and(player2 > 0)
 		{
 			xx = mean(player4.x, player2.x);
 			yy = mean(player4.y, player2.y);
 		}
 		/*4,3*/
 		else
-		if (player4 > noone)
-		and(player3 > noone)
+		if (player4 > 0)
+		and(player3 > 0)
 		{
 			xx = mean(player4.x, player3.x);
 			yy = mean(player4.y, player3.y);
@@ -646,28 +646,28 @@ if (save_level_as_png = false)
 		#region /*Just in case something goes wrong, just follow one player*/
 		/*1*/
 		else
-		if (player1 > noone)
+		if (player1 > 0)
 		{
 			xx = player1.x;
 			yy = player1.y;
 		}
 		/*2*/
 		else
-		if (player2 > noone)
+		if (player2 > 0)
 		{
 			xx = player2.x;
 			yy = player2.y;
 		}
 		/*3*/
 		else
-		if (player3 > noone)
+		if (player3 > 0)
 		{
 			xx = player3.x;
 			yy = player3.y;
 		}
 		/*4*/
 		else
-		if (player4 > noone)
+		if (player4 > 0)
 		{
 			xx = player4.x;
 			yy = player4.y;
@@ -926,7 +926,7 @@ else
 #region /*Tongue aim should always be above everything, it represents the mouse cursor*/
 if (asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
-and(player1 > noone)
+and(player1 > 0)
 {
 	if (player1.allow_tongue = true)
 	and(player1.can_tongue = true)
@@ -1073,7 +1073,7 @@ or(os_type == os_android)
 ///Multiplayer - Has pressed keys
 
 #region /*Player 1 Show Controls HUD timer*/
-if (player1 > noone)
+if (player1 > 0)
 and(asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
 and(iris_xscale >= 10)
@@ -1139,7 +1139,7 @@ else
 #endregion /*Player 1 Show Controls HUD timer*/
 
 #region /*Player 2 Show Controls HUD timer*/
-if (player2 > noone)
+if (player2 > 0)
 and(asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
 and(iris_xscale >= 10)
@@ -1205,7 +1205,7 @@ else
 #endregion /*Player 2 Show Controls HUD timer*/
 
 #region /*Player 3 Show Controls HUD timer*/
-if (player3 > noone)
+if (player3 > 0)
 and(asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
 and(iris_xscale >= 10)
@@ -1271,7 +1271,7 @@ else
 #endregion /*Player 3 Show Controls HUD timer*/
 
 #region /*Player 4 Show Controls HUD timer*/
-if (player4 > noone)
+if (player4 > 0)
 and(asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
 and(iris_xscale >= 10)

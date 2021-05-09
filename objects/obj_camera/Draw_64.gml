@@ -10,7 +10,7 @@ and(!instance_exists(obj_title))
 	{
 		global.hud_show_lives = false;
 		global.hud_show_big_collectibles = false;
-		global.hud_show_big_collectibles = false;
+		global.hud_show_basic_collectibles = false;
 		global.hud_show_score = false;
 	}
 	#endregion /*If HUD show timer is set to always hide*/
@@ -20,155 +20,160 @@ and(!instance_exists(obj_title))
 	{
 		global.hud_show_lives = true;
 		global.hud_show_big_collectibles = true;
-		global.hud_show_big_collectibles = true;
+		global.hud_show_basic_collectibles = true;
 		global.hud_show_score = true;
 	}
 	#endregion /*If HUD show timer is set to never hide*/
-
-	#region /*Show Lives*/
-	if (asset_get_type("room_level_select") == asset_room)
-	and(room = room_level_select)
+	
+	if (global.hud_show_timer > 0)
 	{
-		hud_show_lives = 32;
-	}
-	else
-	{
-		if (global.hud_show_lives = true)
+		
+		#region /*Show Lives*/
+		if (asset_get_type("room_level_select") == asset_room)
+		and(room = room_level_select)
 		{
-			hud_show_lives = lerp(hud_show_lives, 32, 0.1);
-			if (hud_show_lives_timer = 32)
+			hud_show_lives = 32;
+		}
+		else
+		{
+			if (global.hud_show_lives = true)
 			{
-				global.hud_show_lives = false;
+				hud_show_lives = lerp(hud_show_lives, 32, 0.1);
+				if (hud_show_lives_timer = 32)
+				{
+					global.hud_show_lives = false;
+				}
+				if (hud_show_lives_timer = -32)
+				{
+					hud_show_lives_timer = global.hud_show_timer;
+				}
 			}
-			if (hud_show_lives_timer = -32)
+			else
 			{
-				hud_show_lives_timer = global.hud_show_timer;
+				hud_show_lives = lerp(hud_show_lives, -32, 0.1);
+			}
+			if (hud_show_lives_timer > -32)
+			{
+				hud_show_lives_timer -= 1;
+			}
+		}
+		#endregion /*Show Lives END*/
+		
+		#region /*Show Big Collectibles*/
+		if (global.hud_show_big_collectibles = true)
+		{
+			if (hud_show_lives > 0)
+			{
+				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 60, 0.1);
+				if (hud_show_big_collectibles_timer = 60)
+				{
+					global.hud_show_big_collectibles = false;
+				}
+			}
+			else
+			{
+				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 20, 0.1);
+				if (hud_show_big_collectibles_timer = 20)
+				{
+					global.hud_show_big_collectibles = false;
+				}
+			}
+			if (hud_show_big_collectibles_timer = -32)
+			{
+				hud_show_big_collectibles_timer = global.hud_show_timer;
 			}
 		}
 		else
 		{
-			hud_show_lives = lerp(hud_show_lives, -32, 0.1);
+			hud_show_big_collectibles = lerp(hud_show_big_collectibles, -32, 0.1);
 		}
-		if (hud_show_lives_timer > -32)
+		if (hud_show_big_collectibles_timer > -32)
 		{
-			hud_show_lives_timer -= 1;
+			hud_show_big_collectibles_timer -= 1;
 		}
-	}
-	#endregion /*Show Lives END*/
-
-	#region /*Show Big Collectibles*/
-	if (global.hud_show_big_collectibles = true)
-	{
-		if (hud_show_lives > 0)
+		#endregion /*Show Big Collectibles END*/
+		
+		#region /*Show Basic Collectible*/
+		if (global.hud_show_basic_collectibles = true)
 		{
-			hud_show_big_collectibles = lerp(hud_show_big_collectibles, 60, 0.1);
-			if (hud_show_big_collectibles_timer = 60)
+			if (hud_show_lives > 0)
+			and (hud_show_big_collectibles > 0)
 			{
-				global.hud_show_big_collectibles = false;
+				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 110, 0.1);
+				if (hud_show_basic_collectibles_timer = 110)
+				{
+					global.hud_show_basic_collectibles = false;
+				}
 			}
-		}
-		else
-		{
-			hud_show_big_collectibles = lerp(hud_show_big_collectibles, 20, 0.1);
-			if (hud_show_big_collectibles_timer = 20)
+			else
+			if (hud_show_lives > 0)
+			and (hud_show_big_collectibles < 0)
 			{
-				global.hud_show_big_collectibles = false;
+				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 64, 0.1);
+				if (hud_show_basic_collectibles_timer = 64)
+				{
+					global.hud_show_basic_collectibles = false;
+				}
 			}
-		}
-		if (hud_show_big_collectibles_timer = -32)
-		{
-			hud_show_big_collectibles_timer = global.hud_show_timer;
-		}
-	}
-	else
-	{
-		hud_show_big_collectibles = lerp(hud_show_big_collectibles, -32, 0.1);
-	}
-	if (hud_show_big_collectibles_timer > -32)
-	{
-		hud_show_big_collectibles_timer -= 1;
-	}
-	#endregion /*Show Big Collectibles END*/
-
-	#region /*Show Basic Collectible*/
-	if (global.hud_show_basic_collectibles = true)
-	{
-		if (hud_show_lives > 0)
-		and (hud_show_big_collectibles > 0)
-		{
-			hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 110, 0.1);
-			if (hud_show_basic_collectibles_timer = 110)
+			else
+			if (hud_show_lives < 0)
+			and (hud_show_big_collectibles > 0)
 			{
-				global.hud_show_basic_collectibles = false;
+				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 64, 0.1);
+				if (hud_show_basic_collectibles_timer = 64)
+				{
+					global.hud_show_basic_collectibles = false;
+				}
 			}
-		}
-		else
-		if (hud_show_lives > 0)
-		and (hud_show_big_collectibles < 0)
-		{
-			hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 64, 0.1);
-			if (hud_show_basic_collectibles_timer = 64)
+			else
 			{
-				global.hud_show_basic_collectibles = false;
+				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 32, 0.1);
+				if (hud_show_basic_collectibles_timer = 32)
+				{
+					global.hud_show_basic_collectibles = false;
+				}
 			}
-		}
-		else
-		if (hud_show_lives < 0)
-		and (hud_show_big_collectibles > 0)
-		{
-			hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 64, 0.1);
-			if (hud_show_basic_collectibles_timer = 64)
-			{
-				global.hud_show_basic_collectibles = false;
-			}
-		}
-		else
-		{
-			hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 32, 0.1);
-			if (hud_show_basic_collectibles_timer = 32)
-			{
-				global.hud_show_basic_collectibles = false;
-			}
-		}
 			
-		if (hud_show_basic_collectibles_timer = -32)
-		{
-			hud_show_basic_collectibles_timer = global.hud_show_timer;
+			if (hud_show_basic_collectibles_timer = -32)
+			{
+				hud_show_basic_collectibles_timer = global.hud_show_timer;
+			}
 		}
-	}
-	else
-	{
-		hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, -32, 0.1);
-	}
-	if (hud_show_basic_collectibles_timer > -32)
-	{
-		hud_show_basic_collectibles_timer -= 1;
-	}
-	#endregion /*Show Basic Collectible END*/
-
-	#region /*Show Score*/
-	if (global.hud_show_score = true)
-	{
-		hud_show_score = lerp(hud_show_score, 32, 0.1);
-		if (hud_show_score_timer = 32)
+		else
 		{
-			global.hud_show_score = false;
+			hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, -32, 0.1);
 		}
-		if (hud_show_score_timer = -32)
+		if (hud_show_basic_collectibles_timer > -32)
 		{
-			hud_show_score_timer = global.hud_show_timer;
+			hud_show_basic_collectibles_timer -= 1;
 		}
+		#endregion /*Show Basic Collectible END*/
+		
+		#region /*Show Score*/
+		if (global.hud_show_score = true)
+		{
+			hud_show_score = lerp(hud_show_score, 32, 0.1);
+			if (hud_show_score_timer = 32)
+			{
+				global.hud_show_score = false;
+			}
+			if (hud_show_score_timer = -32)
+			{
+				hud_show_score_timer = global.hud_show_timer;
+			}
+		}
+		else
+		{
+			hud_show_score = lerp(hud_show_score, -32, 0.1);
+		}
+		if (hud_show_score_timer > -32)
+		{
+			hud_show_score_timer -= 1;
+		}
+		#endregion /*Show Score END*/
+		
 	}
-	else
-	{
-		hud_show_score = lerp(hud_show_score, -32, 0.1);
-	}
-	if (hud_show_score_timer > -32)
-	{
-		hud_show_score_timer -= 1;
-	}
-	#endregion /*Show Score END*/
-
+	
 	#endregion /*Show HUD timers END*/
 		
 	#region /*Lives, Big Collectibles, Basic Collectibles, Score and Timer*/
@@ -385,7 +390,18 @@ and(!instance_exists(obj_title))
 
 scr_show_fps();
 
-draw_text_outlined( 32, 320, "instance count: "+string(instance_count),global.default_text_size, c_black, c_white, 1);
+if (global.pause = false)
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+{
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_center);
+	draw_text_outlined( 32, 164, "Instance Count: "+string(instance_count),global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined( 32, 164+32, "player1: "+string(player1),global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined( 32, 164+64, "player2: "+string(player2),global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined( 32, 164+64+32, "player3: "+string(player3),global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined( 32, 164+64+64, "player4: "+string(player4),global.default_text_size, c_black, c_white, 1);
+}
 
 #region /*Show Controls*/
 if (os_type != os_ios)

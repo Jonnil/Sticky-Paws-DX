@@ -65,6 +65,7 @@ zoom_out=false;/*When this is true, zoom out*/
 difficulty_layer=0;/*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
 set_difficulty_mode=false;/*Toggle so you get a pen that can select what object appear in what difficulty*/
 place_object=noone;
+wall_surface_selected = 0; /*What kind of wall you're putting down*/
 show_icons_at_bottom=false;
 show_icons_at_top=false;
 icons_at_bottom_y=+100;

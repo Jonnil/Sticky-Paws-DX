@@ -418,6 +418,7 @@ max_hp = 1 + global.assist_extra_hp; /*Starting Max HP*/
 max_overflow_hp = 4; /*Starting Max Overflow HP*/
 number_of_jumps = 1; /*How many times you can jump. -1 = infinite jumps, 0 = no jump, 1 = single jump, 2 = double jump*/
 midair_jumps_left = 1; /*How many mid-air jumps you have left to perform*/
+midair_jump_flip_animation = 2; /*How many flip animations the character do in mid-air, after you have jumped this many times, you stop doing the flip animation*/
 speed_max_walk = 4; /*Default speed_max_walk is 4. Top speed with simple walking*/
 speed_max_run = 8; /*Default speed_max_run is 8. Top speed with simple running*/
 triple_jump_height = 14.5;

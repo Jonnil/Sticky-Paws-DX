@@ -138,50 +138,10 @@ and(asset_get_type("snd_hitblockbound") == asset_sound)
 
 #region /*Footstep Land sounds*/
 
-#region /*Metal Footstep Right*/
-if (asset_get_type("obj_ground_metal") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_metal))
-{
-	if (asset_get_type("snd_footstep_metal_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_metal_right))
-	{
-		audio_play_sound(snd_footstep_metal_right, 0, 0);
-		audio_sound_gain(snd_footstep_metal_right, global.sfx_volume, 0);
-	}
-}
-#endregion /*Metal Footstep Right END*/
-
-#region /*Stone Footstep Right*/
-else
-if (asset_get_type("obj_ground_stone") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_stone))
-{
-	if (asset_get_type("snd_footstep_stone_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_stone_right))
-	{
-		audio_play_sound(snd_footstep_stone_right, 0, 0);
-		audio_sound_gain(snd_footstep_stone_right, global.sfx_volume, 0);
-	}
-}
-else #endregion /*Stone Footstep Right END*/
-
-#region /*Wood Footstep Right*/
-if (asset_get_type("obj_ground_wood") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_wood))
-{
-	if (asset_get_type("snd_footstep_wood_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_wood_right))
-	{
-		audio_play_sound(snd_footstep_wood_right, 0, 0);
-		audio_sound_gain(snd_footstep_wood_right, global.sfx_volume, 0);
-	}
-}
-#endregion /*Wood Footstep Right END*/
-
 #region /*Dirt Footstep Right*/
-else
-if (asset_get_type("obj_ground_dirt") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_dirt))
+if (asset_get_type("obj_ground") == asset_object)
+and(place_meeting(x, y + 1, obj_ground))
+and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
 {
 	if (asset_get_type("snd_footstep_dirt_right") == asset_sound)
 	and(!audio_is_playing(snd_footstep_dirt_right))
@@ -190,39 +150,14 @@ and(place_meeting(x, y + 1, obj_ground_dirt))
 		audio_sound_gain(snd_footstep_dirt_right, global.sfx_volume, 0);
 	}
 }
-else #endregion /*Dirt Footstep Right END*/
+#endregion /*Dirt Footstep Right END*/
 
-#region /*Gravel Footstep Right*/
-if (asset_get_type("obj_ground_gravel") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_gravel))
-{
-	if (asset_get_type("snd_footstep_gravel_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_gravel_right))
-	{
-		audio_play_sound(snd_footstep_gravel_right, 0, 0);
-		audio_sound_gain(snd_footstep_gravel_right, global.sfx_volume, 0);
-	}
-}
-#endregion /*Gravel Footstep Right END*/
-
-#region /*Grass Footstep Right*/
 else
-if (asset_get_type("obj_ground_grass") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_grass))
-{
-	if (asset_get_type("snd_footstep_grass_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_grass_right))
-	{
-		audio_play_sound(snd_footstep_grass_right, 0, 0);
-		audio_sound_gain(snd_footstep_grass_right, global.sfx_volume, 0);
-	}
-}
-#endregion /*Grass Footstep Right END*/
 
 #region /*Glass Footstep Right*/
-else
-if (asset_get_type("obj_ground_glass") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_glass))
+if (asset_get_type("obj_ground") == asset_object)
+and(place_meeting(x, y + 1, obj_ground))
+and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
 {
 	if (asset_get_type("snd_footstep_glass_right") == asset_sound)
 	and(!audio_is_playing(snd_footstep_glass_right))
@@ -233,8 +168,89 @@ and(place_meeting(x, y + 1, obj_ground_glass))
 }
 #endregion /*Glass Footstep Right END*/
 
-#region /*Default Footstep Right*/
 else
+
+#region /*Grass Footstep Right*/
+if (asset_get_type("obj_ground") == asset_object)
+and(place_meeting(x, y + 1, obj_ground))
+and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
+{
+	if (asset_get_type("snd_footstep_grass_right") == asset_sound)
+	and(!audio_is_playing(snd_footstep_grass_right))
+	{
+		audio_play_sound(snd_footstep_grass_right, 0, 0);
+		audio_sound_gain(snd_footstep_grass_right, global.sfx_volume, 0);
+	}
+}
+#endregion /*Grass Footstep Right END*/
+
+else
+
+#region /*Gravel Footstep Right*/
+if (asset_get_type("obj_ground") == asset_object)
+and(place_meeting(x, y + 1, obj_ground))
+and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
+{
+	if (asset_get_type("snd_footstep_gravel_right") == asset_sound)
+	and(!audio_is_playing(snd_footstep_gravel_right))
+	{
+		audio_play_sound(snd_footstep_gravel_right, 0, 0);
+		audio_sound_gain(snd_footstep_gravel_right, global.sfx_volume, 0);
+	}
+}
+#endregion /*Gravel Footstep Right END*/
+
+else
+
+#region /*Metal Footstep Right*/
+if (asset_get_type("obj_ground") == asset_object)
+and(place_meeting(x, y + 1, obj_ground))
+and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
+{
+	if (asset_get_type("snd_footstep_metal_right") == asset_sound)
+	and(!audio_is_playing(snd_footstep_metal_right))
+	{
+		audio_play_sound(snd_footstep_metal_right, 0, 0);
+		audio_sound_gain(snd_footstep_metal_right, global.sfx_volume, 0);
+	}
+}
+#endregion /*Metal Footstep Right END*/
+
+else
+
+#region /*Stone Footstep Right*/
+if (asset_get_type("obj_ground") == asset_object)
+and(place_meeting(x, y + 1, obj_ground))
+and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
+{
+	if (asset_get_type("snd_footstep_stone_right") == asset_sound)
+	and(!audio_is_playing(snd_footstep_stone_right))
+	{
+		audio_play_sound(snd_footstep_stone_right, 0, 0);
+		audio_sound_gain(snd_footstep_stone_right, global.sfx_volume, 0);
+	}
+}
+#endregion /*Stone Footstep Right END*/
+
+else
+
+#region /*Wood Footstep Right*/
+if (asset_get_type("obj_ground") == asset_object)
+and(place_meeting(x, y + 1, obj_ground))
+and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
+{
+	if (asset_get_type("snd_footstep_wood_right") == asset_sound)
+	and(!audio_is_playing(snd_footstep_wood_right))
+	{
+		audio_play_sound(snd_footstep_wood_right, 0, 0);
+		audio_sound_gain(snd_footstep_wood_right, global.sfx_volume, 0);
+	}
+}
+#endregion /*Wood Footstep Right END*/
+
+else
+
+#region /*Default Footstep Right*/
 {
 	if (asset_get_type("snd_footstep_default_right") == asset_sound)
 	{

@@ -2040,7 +2040,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		if (menu="remap_key_right")
 		and(menu_remap_key_number= 0)
 		{
-			if(global.player1_key_left > noone)
+			if(global.player1_key_right > noone)
 			{
 				draw_sprite_ext(spr_keyboard_keys,global.player1_key_right,window_get_width()/2+224,menu_y_remap_key_right+menu_y_offset,1,1,0,c_white,1);
 			}
@@ -2051,7 +2051,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		}
 		else
 		{
-			if(global.player1_key_left > noone)
+			if(global.player1_key_right > noone)
 			{
 				draw_sprite_ext(spr_keyboard_keys,global.player1_key_right,window_get_width()/2+224,menu_y_remap_key_right+menu_y_offset,0.9,0.9,0,c_gray,0.9);
 			}
@@ -2570,7 +2570,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		if (menu="remap_key_right")
 		and(menu_remap_key_number= 0)
 		{
-			if(global.player2_key_left > noone)
+			if(global.player2_key_right > noone)
 			{
 				draw_sprite_ext(spr_keyboard_keys,global.player2_key_right,window_get_width()/2+224,menu_y_remap_key_right+menu_y_offset,1,1,0,c_white,1);
 			}
@@ -2581,7 +2581,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		}
 		else
 		{
-			if(global.player2_key_left > noone)
+			if(global.player2_key_right > noone)
 			{
 				draw_sprite_ext(spr_keyboard_keys,global.player2_key_right,window_get_width()/2+224,menu_y_remap_key_right+menu_y_offset,0.9,0.9,0,c_gray,0.9);
 			}
@@ -3100,7 +3100,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		if (menu="remap_key_right")
 		and(menu_remap_key_number= 0)
 		{
-			if(global.player3_key_left > noone)
+			if(global.player3_key_right > noone)
 			{
 				draw_sprite_ext(spr_keyboard_keys,global.player3_key_right,window_get_width()/2+224,menu_y_remap_key_right+menu_y_offset,1,1,0,c_white,1);
 			}
@@ -3111,7 +3111,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		}
 		else
 		{
-			if(global.player3_key_left > noone)
+			if(global.player3_key_right > noone)
 			{
 				draw_sprite_ext(spr_keyboard_keys,global.player3_key_right,window_get_width()/2+224,menu_y_remap_key_right+menu_y_offset,0.9,0.9,0,c_gray,0.9);
 			}
@@ -3630,7 +3630,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		if (menu="remap_key_right")
 		and(menu_remap_key_number= 0)
 		{
-			if(global.player4_key_left > noone)
+			if(global.player4_key_right > noone)
 			{
 				draw_sprite_ext(spr_keyboard_keys,global.player4_key_right,window_get_width()/2+224,menu_y_remap_key_right+menu_y_offset,1,1,0,c_white,1);
 			}
@@ -3641,7 +3641,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 		}
 		else
 		{
-			if(global.player4_key_left > noone)
+			if(global.player4_key_right > noone)
 			{
 				draw_sprite_ext(spr_keyboard_keys,global.player4_key_right,window_get_width()/2+224,menu_y_remap_key_right+menu_y_offset,0.9,0.9,0,c_gray,0.9);
 			}
