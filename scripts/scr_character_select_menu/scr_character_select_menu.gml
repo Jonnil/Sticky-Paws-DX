@@ -985,13 +985,28 @@ function scr_character_select_menu()
 			{
 				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
 				{
+					if (global.player1_key_dive > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player1_key_dive, window_get_width()/2+player1_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player1_key2_dive > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player1_key2_dive, window_get_width()/2+player1_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
 					if (global.player1_key_sprint > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys,global.player1_key_sprint,window_get_width()/2+player1_display_x+40,window_get_height()/2+150,0.5,0.5,0,c_white,1);
+						draw_sprite_ext(spr_keyboard_keys, global.player1_key_sprint, window_get_width()/2+player1_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player1_key2_sprint > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player1_key2_sprint, window_get_width()/2+player1_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
-						draw_sprite_ext(spr_keyboard_keys,0,window_get_width()/2+player1_display_x+40,window_get_height()/2+150,0.5,0.5,0,c_white,1);
+						draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/2+player1_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
 					}
 				}
 			}
@@ -1103,13 +1118,28 @@ function scr_character_select_menu()
 			{
 				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
 				{
+					if (global.player2_key_dive > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player2_key_dive, window_get_width()/2+player2_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player2_key2_dive > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player2_key2_dive, window_get_width()/2+player2_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
 					if (global.player2_key_sprint > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys,global.player2_key_sprint,window_get_width()/2+player2_display_x+40,window_get_height()/2+150,0.5,0.5,0,c_white,1);
+						draw_sprite_ext(spr_keyboard_keys, global.player2_key_sprint, window_get_width()/2+player2_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player2_key2_sprint > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player2_key2_sprint, window_get_width()/2+player2_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
-						draw_sprite_ext(spr_keyboard_keys,0,window_get_width()/2+player2_display_x+40,window_get_height()/2+150,0.5,0.5,0,c_white,1);
+						draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/2+player2_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
 					}
 				}
 			}
@@ -1221,13 +1251,28 @@ function scr_character_select_menu()
 			{
 				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
 				{
+					if (global.player3_key_dive > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player3_key_dive, window_get_width()/2+player3_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player3_key2_dive > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player3_key2_dive, window_get_width()/2+player3_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
 					if (global.player3_key_sprint > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys,global.player3_key_sprint,window_get_width()/2+player3_display_x+40,window_get_height()/2+150,0.5,0.5,0,c_white,1);
+						draw_sprite_ext(spr_keyboard_keys, global.player3_key_sprint, window_get_width()/2+player3_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player3_key2_sprint > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player3_key2_sprint, window_get_width()/2+player3_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
-						draw_sprite_ext(spr_keyboard_keys,0,window_get_width()/2+player3_display_x+40,window_get_height()/2+150,0.5,0.5,0,c_white,1);
+						draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/2+player3_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
 					}
 				}
 			}
@@ -1339,13 +1384,28 @@ function scr_character_select_menu()
 			{
 				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
 				{
+					if (global.player4_key_dive > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player4_key_dive, window_get_width()/2+player4_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player4_key2_dive > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player4_key2_dive, window_get_width()/2+player4_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
 					if (global.player4_key_sprint > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys,global.player4_key_sprint,window_get_width()/2+player4_display_x+40,window_get_height()/2+150,0.5,0.5,0,c_white,1);
+						draw_sprite_ext(spr_keyboard_keys, global.player4_key_sprint, window_get_width()/2+player4_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player4_key2_sprint > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player4_key2_sprint, window_get_width()/2+player4_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
-						draw_sprite_ext(spr_keyboard_keys,0,window_get_width()/2+player4_display_x+40,window_get_height()/2+150,0.5,0.5,0,c_white,1);
+						draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/2+player4_display_x+40, window_get_height()/2+150, 0.5, 0.5, 0, c_white, 1);
 					}
 				}
 			}
@@ -4202,6 +4262,8 @@ and(menu_delay=0)
 	or(keyboard_check_pressed(vk_escape))
 	or(keyboard_check_pressed(vk_backspace))
 	or(keyboard_check_pressed(ord("X")))
+	or(keyboard_check_pressed(global.player1_key_dive))
+	or(keyboard_check_pressed(global.player1_key2_dive))
 	or(keyboard_check_pressed(global.player1_key_sprint))
 	or(keyboard_check_pressed(global.player1_key2_sprint))
 	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
@@ -4223,6 +4285,8 @@ and(menu_delay=0)
 	
 	#region /*Player 2 Back / Cancel Selection*/
 	if (gamepad_button_check_pressed(1,gp_face2))
+	or(keyboard_check_pressed(global.player2_key_dive))
+	or(keyboard_check_pressed(global.player2_key2_dive))
 	or(keyboard_check_pressed(global.player2_key_sprint))
 	or(keyboard_check_pressed(global.player2_key2_sprint))
 	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
@@ -4244,6 +4308,8 @@ and(menu_delay=0)
 	
 	#region /*Player 3 Back / Cancel Selection*/
 	if (gamepad_button_check_pressed(2,gp_face2))
+	or(keyboard_check_pressed(global.player3_key_dive))
+	or(keyboard_check_pressed(global.player3_key2_dive))
 	or(keyboard_check_pressed(global.player3_key_sprint))
 	or(keyboard_check_pressed(global.player3_key2_sprint))
 	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
@@ -4265,6 +4331,8 @@ and(menu_delay=0)
 	
 	#region /*Player 4 Back / Cancel Selection*/
 	if (gamepad_button_check_pressed(3,gp_face2))
+	or(keyboard_check_pressed(global.player4_key_dive))
+	or(keyboard_check_pressed(global.player4_key2_dive))
 	or(keyboard_check_pressed(global.player4_key_sprint))
 	or(keyboard_check_pressed(global.player4_key2_sprint))
 	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
@@ -4346,7 +4414,9 @@ and(menu_delay=0)
 	}
 	#endregion /*If 4 Player Game is selected and player 1, 2, 3 and 4 has selected a character END*/
 	
-	if (keyboard_check_pressed(global.player1_key_sprint))
+	if (keyboard_check_pressed(global.player2_key_dive))
+	or (keyboard_check_pressed(global.player2_key2_dive))
+	or (keyboard_check_pressed(global.player1_key_sprint))
 	or (keyboard_check_pressed(global.player1_key2_sprint))
 	or (keyboard_check_pressed(ord("X")))
 	or (keyboard_check_pressed(vk_backspace))

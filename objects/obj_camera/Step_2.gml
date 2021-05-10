@@ -3,10 +3,10 @@ instance_activate_all();
 if (global.deactivate_objects_outsiede_view = true) /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
 {
 	instance_deactivate_region(
-	camera_get_view_x(view_camera[view_current]) - 32,
-	camera_get_view_y(view_camera[view_current]) - 32,
-	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32,
-	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32,
+	camera_get_view_x(view_camera[view_current]) - 64,
+	camera_get_view_y(view_camera[view_current]) - 64,
+	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64,
+	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64,
 	false, true);
 }
 #endregion /*Deactivate instances outside view END*/

@@ -233,6 +233,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 			with(obj_camera)
 			{
 				player1 = noone;
+				can_spawn_player1 = true;
 			}
 		}
 		#endregion /*Disable player 1 END*/
@@ -243,6 +244,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 			with(obj_camera)
 			{
 				player2 = noone;
+				can_spawn_player2 = true;
 			}
 		}
 		#endregion /*Disable player 2 END*/
@@ -253,6 +255,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 			with(obj_camera)
 			{
 				player3 = noone;
+				can_spawn_player3 = true;
 			}
 		}
 		#endregion /*Disable player 3 END*/
@@ -263,6 +266,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 			with(obj_camera)
 			{
 				player4 = noone;
+				can_spawn_player4 = true;
 			}
 		}
 		#endregion /*Disable player 4 END*/

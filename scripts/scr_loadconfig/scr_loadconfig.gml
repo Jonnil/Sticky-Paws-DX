@@ -39,6 +39,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","character_for_player_1")){global.character_for_player_1=ini_read_real("Config","character_for_player_1",0);}
 		if (ini_key_exists("Config","color_for_player_1")){global.color_for_player_1=ini_read_real("Config","color_for_player_1",0);}
 		if (ini_key_exists("Config","player1_name")){global.player1_name=ini_read_string("Config","player1_name",0);}
+		if (ini_key_exists("Config","player1_key_dive")){global.player1_key_dive=ini_read_real("Config","player1_key_dive",0);}
 		if (ini_key_exists("Config","player1_key_jump")){global.player1_key_jump=ini_read_real("Config","player1_key_jump",0);}
 		if (ini_key_exists("Config","player1_key_crouch")){global.player1_key_crouch=ini_read_real("Config","player1_key_crouch",0);}
 		if (ini_key_exists("Config","player1_key_crouch_toggle")){global.player1_key_crouch_toggle=ini_read_real("Config","player1_key_crouch_toggle",0);}
@@ -49,6 +50,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player1_key_down")){global.player1_key_down=ini_read_real("Config","player1_key_down",0);}
 		if (ini_key_exists("Config","player1_key_up")){global.player1_key_up=ini_read_real("Config","player1_key_up",0);}
 		if (ini_key_exists("Config","player1_key_attack")){global.player1_key_attack=ini_read_real("Config","player1_key_attack",0);}
+		if (ini_key_exists("Config","player1_key2_dive")){global.player1_key2_dive=ini_read_real("Config","player1_key2_dive",0);}
 		if (ini_key_exists("Config","player1_key2_jump")){global.player1_key2_jump=ini_read_real("Config","player1_key2_jump",0);}
 		if (ini_key_exists("Config","player1_key2_crouch")){global.player1_key2_crouch=ini_read_real("Config","player1_key2_crouch",0);}
 		if (ini_key_exists("Config","player1_key2_crouch_toggle")){global.player1_key2_crouch_toggle=ini_read_real("Config","player1_key2_crouch_toggle",0);}
@@ -73,6 +75,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","character_for_player_2")){global.character_for_player_2=ini_read_real("Config","character_for_player_2",0);}
 		if (ini_key_exists("Config","color_for_player_2")){global.color_for_player_2=ini_read_real("Config","color_for_player_2",0);}
 		if (ini_key_exists("Config","player2_name")){global.player2_name=ini_read_string("Config","player2_name",0);}
+		if (ini_key_exists("Config","player2_key_dive")){global.player2_key_dive=ini_read_real("Config","player2_key_dive",0);}
 		if (ini_key_exists("Config","player2_key_jump")){global.player2_key_jump=ini_read_real("Config","player2_key_jump",0);}
 		if (ini_key_exists("Config","player2_key_crouch")){global.player2_key_crouch=ini_read_real("Config","player2_key_crouch",0);}
 		if (ini_key_exists("Config","player2_key_crouch_toggle")){global.player2_key_crouch_toggle=ini_read_real("Config","player2_key_crouch_toggle",0);}
@@ -83,6 +86,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player2_key_down")){global.player2_key_down=ini_read_real("Config","player2_key_down",0);}
 		if (ini_key_exists("Config","player2_key_up")){global.player2_key_up=ini_read_real("Config","player2_key_up",0);}
 		if (ini_key_exists("Config","player2_key_attack")){global.player2_key_attack=ini_read_real("Config","player2_key_attack",0);}
+		if (ini_key_exists("Config","player2_key2_dive")){global.player2_key2_dive=ini_read_real("Config","player2_key2_dive",0);}
 		if (ini_key_exists("Config","player2_key2_jump")){global.player2_key2_jump=ini_read_real("Config","player2_key2_jump",0);}
 		if (ini_key_exists("Config","player2_key2_crouch")){global.player2_key2_crouch=ini_read_real("Config","player2_key2_crouch",0);}
 		if (ini_key_exists("Config","player2_key2_crouch_toggle")){global.player2_key2_crouch_toggle=ini_read_real("Config","player2_key2_crouch_toggle",0);}
@@ -107,6 +111,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","character_for_player_3")){global.character_for_player_3=ini_read_real("Config","character_for_player_3",0);}
 		if (ini_key_exists("Config","color_for_player_3")){global.color_for_player_3=ini_read_real("Config","color_for_player_3",0);}
 		if (ini_key_exists("Config","player3_name")){global.player3_name=ini_read_string("Config","player3_name",0);}
+		if (ini_key_exists("Config","player3_key_dive")){global.player3_key_dive=ini_read_real("Config","player3_key_dive",0);}
 		if (ini_key_exists("Config","player3_key_jump")){global.player3_key_jump=ini_read_real("Config","player3_key_jump",0);}
 		if (ini_key_exists("Config","player3_key_crouch")){global.player3_key_crouch=ini_read_real("Config","player3_key_crouch",0);}
 		if (ini_key_exists("Config","player3_key_crouch_toggle")){global.player3_key_crouch_toggle=ini_read_real("Config","player3_key_crouch_toggle",0);}
@@ -117,6 +122,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player3_key_down")){global.player3_key_down=ini_read_real("Config","player3_key_down",0);}
 		if (ini_key_exists("Config","player3_key_up")){global.player3_key_up=ini_read_real("Config","player3_key_up",0);}
 		if (ini_key_exists("Config","player3_key_attack")){global.player3_key_attack=ini_read_real("Config","player3_key_attack",0);}
+		if (ini_key_exists("Config","player3_key2_dive")){global.player3_key2_dive=ini_read_real("Config","player3_key2_dive",0);}
 		if (ini_key_exists("Config","player3_key2_jump")){global.player3_key2_jump=ini_read_real("Config","player3_key2_jump",0);}
 		if (ini_key_exists("Config","player3_key2_crouch")){global.player3_key2_crouch=ini_read_real("Config","player3_key2_crouch",0);}
 		if (ini_key_exists("Config","player3_key2_crouch_toggle")){global.player3_key2_crouch_toggle=ini_read_real("Config","player3_key2_crouch_toggle",0);}
@@ -141,6 +147,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","character_for_player_4")){global.character_for_player_4=ini_read_real("Config","character_for_player_4",0);}
 		if (ini_key_exists("Config","color_for_player_4")){global.color_for_player_4=ini_read_real("Config","color_for_player_4",0);}
 		if (ini_key_exists("Config","player4_name")){global.player4_name=ini_read_string("Config","player4_name",0);}
+		if (ini_key_exists("Config","player4_key_dive")){global.player4_key_dive=ini_read_real("Config","player4_key_dive",0);}
 		if (ini_key_exists("Config","player4_key_jump")){global.player4_key_jump=ini_read_real("Config","player4_key_jump",0);}
 		if (ini_key_exists("Config","player4_key_crouch")){global.player4_key_crouch=ini_read_real("Config","player4_key_crouch",0);}
 		if (ini_key_exists("Config","player4_key_crouch_toggle")){global.player4_key_crouch_toggle=ini_read_real("Config","player4_key_crouch_toggle",0);}
@@ -151,6 +158,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player4_key_down")){global.player4_key_down=ini_read_real("Config","player4_key_down",0);}
 		if (ini_key_exists("Config","player4_key_up")){global.player4_key_up=ini_read_real("Config","player4_key_up",0);}
 		if (ini_key_exists("Config","player4_key_attack")){global.player4_key_attack=ini_read_real("Config","player4_key_attack",0);}
+		if (ini_key_exists("Config","player4_key2_dive")){global.player4_key2_dive=ini_read_real("Config","player4_key2_dive",0);}
 		if (ini_key_exists("Config","player4_key2_jump")){global.player4_key2_jump=ini_read_real("Config","player4_key2_jump",0);}
 		if (ini_key_exists("Config","player4_key2_crouch")){global.player4_key2_crouch=ini_read_real("Config","player4_key2_crouch",0);}
 		if (ini_key_exists("Config","player4_key2_crouch_toggle")){global.player4_key2_crouch_toggle=ini_read_real("Config","player4_key2_crouch_toggle",0);}

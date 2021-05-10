@@ -32,7 +32,8 @@ if (player=1)
 {
 	with(obj_camera)
 	{
-		player1=0;
+		can_spawn_player1 = false;
+		player1 = noone;
 	}
 }
 #endregion /*Disable player 1 END*/
@@ -42,7 +43,8 @@ if (player=2)
 {
 	with(obj_camera)
 	{
-		player2=0;
+		can_spawn_player2 = false;
+		player2 = noone;
 	}
 }
 #endregion /*Disable player 2 END*/
@@ -52,7 +54,8 @@ if (player=3)
 {
 	with(obj_camera)
 	{
-		player3=0;
+		can_spawn_player3 = false;
+		player3 = noone;
 	}
 }
 #endregion /*Disable player 3 END*/
@@ -62,7 +65,8 @@ if (player=4)
 {
 	with(obj_camera)
 	{
-		player4=0;
+		can_spawn_player4 = false;
+		player4 = noone;
 	}
 }
 #endregion /*Disable player 4 END*/

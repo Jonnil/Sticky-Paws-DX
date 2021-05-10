@@ -5308,19 +5308,21 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 	
 	draw_menu_checkmark(386,48*4,"Show FPS Real","show_fps_real",global.show_fps_real);
 	
-	draw_menu_checkmark(386,48*5,"Enable Transitions","enable_transitions",global.enable_transitions);
+	draw_menu_checkmark(386,48*5,"Show Instance Count","show_instance_count",global.show_instance_count);
 	
-	draw_menu_checkmark(386,48*6,"Enable Background Layer 1","enable_background_layer1",global.enable_background_layer1);
+	draw_menu_checkmark(386,48*6,"Enable Transitions","enable_transitions",global.enable_transitions);
 	
-	draw_menu_checkmark(386,48*7,"Enable Background Layer 2","enable_background_layer2",global.enable_background_layer2);
+	draw_menu_checkmark(386,48*7,"Enable Background Layer 1","enable_background_layer1",global.enable_background_layer1);
 	
-	draw_menu_checkmark(386,48*8,"Enable Background Layer 3","enable_background_layer3",global.enable_background_layer3);
+	draw_menu_checkmark(386,48*8,"Enable Background Layer 2","enable_background_layer2",global.enable_background_layer2);
 	
-	draw_menu_checkmark(386,48*9,"Enable Background Layer 4","enable_background_layer4",global.enable_background_layer4);
+	draw_menu_checkmark(386,48*9,"Enable Background Layer 3","enable_background_layer3",global.enable_background_layer3);
 	
-	draw_menu_checkmark(386,48*10,"Enable Foreground Layer 1","enable_foreground_layer1",global.enable_foreground_layer1);
+	draw_menu_checkmark(386,48*10,"Enable Background Layer 4","enable_background_layer4",global.enable_background_layer4);
 	
-	draw_menu_checkmark(386,48*11,"Enable Foreground Layer 2","enable_foreground_layer2",global.enable_foreground_layer2);
+	draw_menu_checkmark(386,48*11,"Enable Foreground Layer 1","enable_foreground_layer1",global.enable_foreground_layer1);
+	
+	draw_menu_checkmark(386,48*12,"Enable Foreground Layer 2","enable_foreground_layer2",global.enable_foreground_layer2);
 	
 	#region /*Background Brightness in Gameplay Bar*/
 	background_brightness_gameplay_x = 600;

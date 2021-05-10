@@ -14018,7 +14018,7 @@ and(key_jump_hold)
 			}
 			#endregion /*Jump sound effect end*/
 			draw_xscale = 0.75;
-			draw_yscale = 1.5;
+			draw_yscale = 1.25;
 		}
 	}
 }
