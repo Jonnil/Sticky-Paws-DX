@@ -934,6 +934,8 @@ or(menu = "quit_game_yes")
 	{
 		if (menu="quit_game_no")
 		and(global.controls_used_for_menu_navigation="keyboard")
+		or (menu="quit_game_no")
+		and(global.controls_used_for_menu_navigation="controller")
 		{
 			draw_sprite_ext(spr_menu_button,0,
 			window_get_width() / 2 - 370,
@@ -971,9 +973,11 @@ or(menu = "quit_game_yes")
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		or(key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit_game_yes";
@@ -1003,6 +1007,8 @@ or(menu = "quit_game_yes")
 	{
 		if (menu="quit_game_yes")
 		and(global.controls_used_for_menu_navigation="keyboard")
+		or (menu="quit_game_yes")
+		and(global.controls_used_for_menu_navigation="controller")
 		{
 			draw_sprite_ext(spr_menu_button,0,
 			window_get_width() / 2 - 370,
@@ -1039,9 +1045,11 @@ or(menu = "quit_game_yes")
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		or(key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 1;
 			menu = "quit_game_no";
@@ -1434,14 +1442,14 @@ or(menu="import_export_level")
 	and(key_down)
 	and(menu_delay=0)
 	{
-		menu_dealy = 3;
+		menu_delay = 3;
 		menu = "select_custom_level";
 	}
 	if (menu="back_from_level_editor")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	{
-		menu_dealy = 3;
+		menu_delay = 3;
 		menu = "leveleditor";
 	}
 	if (menu="back_from_level_editor")
@@ -3182,11 +3190,12 @@ or(gamepad_axis_value(3,gp_axislv)>0)
 or(gamepad_axis_value(3,gp_axislh)<0)
 or(gamepad_axis_value(3,gp_axislh)>0)
 {
-	if (menu_joystick_delay=0)
+	if (menu_joystick_delay = 0)
 	{
-		menu_joystick_delay=15;
+		menu_joystick_delay = 15;
 	}
 }
+
 if (gamepad_axis_value(0,gp_axislv)=0)
 and(gamepad_axis_value(0,gp_axislh)=0)
 and(gamepad_axis_value(1,gp_axislv)=0)
@@ -3196,11 +3205,11 @@ and(gamepad_axis_value(2,gp_axislh)=0)
 and(gamepad_axis_value(3,gp_axislv)=0)
 and(gamepad_axis_value(3,gp_axislh)=0)
 {
-	menu_joystick_delay=0;
+	menu_joystick_delay = 0;
 }
-if (menu_joystick_delay>0)
+if (menu_joystick_delay > 0)
 {
-	menu_joystick_delay-=1;
+	menu_joystick_delay -= 1;
 }
 #endregion /*Menu navigation with joystick END*/
 

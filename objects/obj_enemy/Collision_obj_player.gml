@@ -24,8 +24,9 @@ or(other.dive_on_ground>0)
 		global.enemy_counter+=1;
 		with(instance_nearest(x,y,obj_player))
 		{
-			chain_reaction+=1;
-			midair_jumps_left=number_of_jumps;
+			chain_reaction += 1;
+			midair_jumps_left = number_of_jumps-1;
+			can_dive = true;
 		}
 		if (other.x<x)
 		{
@@ -703,8 +704,9 @@ if (die_volting=false)
 			global.enemy_counter+=1;
 			with(instance_nearest(x,y,obj_player))
 			{
-				chain_reaction+=1;
-				midair_jumps_left=number_of_jumps;
+				chain_reaction += 1;
+				midair_jumps_left = number_of_jumps-1;
+				can_dive = true;
 			}
 			flat=true;
 			effect_create_below(ef_ring,x,y,0,c_white);
@@ -1414,8 +1416,9 @@ and(flat=false)
 	global.enemy_counter+=1;
 	with(instance_nearest(x,y,obj_player))
 	{
-		chain_reaction+=1;
-		midair_jumps_left=number_of_jumps;
+		chain_reaction += 1;
+		midair_jumps_left = number_of_jumps-1;
+		can_dive = true;
 	}
 	flat=true;
 	effect_create_below(ef_ring,x,y,0,c_white);

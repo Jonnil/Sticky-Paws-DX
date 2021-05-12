@@ -3,7 +3,7 @@
 scr_set_screen_size();
 
 /*Draw Event*/
-key_a=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
+key_a=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space))or(keyboard_check_pressed(vk_escape));
 if (key_a)or(window_has_focus())and(mouse_check_button_pressed(mb_left)){if (room_next(room)<>-1){room_goto_next();}}
 
 draw_set_halign(fa_center); /*Initialize Font*/
@@ -89,34 +89,6 @@ and(keyboard_check_pressed(global.fullscreen_key))
 	ini_close();
 }
 #endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
-
-#region /*Quit Game trough pause menu*/
-if (global.convention_mode=false)
-{
-	if keyboard_check_pressed(vk_escape)
-	{
-		if (asset_get_type("room_pause")==asset_room)
-		{
-			global.PauseScreen=sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
-			room_persistent=true;
-			global.PauseRoom=room;
-			room_goto(room_pause);
-		}
-		else
-		{
-			game_end();
-		}
-	}
-	else
-	{
-		room_persistent=false;
-	}
-	if (global.quit_level=true)
-	{
-		game_end();
-	}
-}
-#endregion /*Quit Game trough pause menu END*/
 
 #region /*Window is focused, hide cursor*/
 if (window_has_focus())

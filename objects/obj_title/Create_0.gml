@@ -897,7 +897,7 @@ remapping_player=1;
 input_key=false;
 can_remap_key=false;
 #endregion /*Remapping options variables END*/
-menu_delay=3;
+menu_delay = 3;
 menu_joystick_delay=3;
 menu_joystick1_delay=3;
 menu_joystick2_delay=3;

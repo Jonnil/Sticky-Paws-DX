@@ -14060,8 +14060,13 @@ and(in_water=false)
 		image_index=0;
 		
 		if (number_of_jumps > -1)
+		and(midair_jumps_left != number_of_jumps)
 		{
-			midair_jumps_left-=1;
+			midair_jumps_left -= 1;
+		}
+		else
+		{
+			midair_jumps_left -= 2;
 		}
 		
 		#region /*Mid-air flip animation*/
@@ -14428,10 +14433,19 @@ if (assist_invincible=true)
 #endregion /*Chain Reaction Reset END*/
 
 #region /*Triple Jump*/
-if (place_meeting(x,y+1,obj_wall))
-and(triplejumpdelay>0)
+if (asset_get_type("obj_wall")==asset_object)
+and(place_meeting(x,y+1,obj_wall))
+or(asset_get_type("obj_semisolid_platform")==asset_object)
+and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+or(asset_get_type("obj_semisolid_platform")==asset_object)
+and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+or(asset_get_type("obj_semisolid_platform")==asset_object)
+and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
 {
-	triplejumpdelay-=1;
+	if (triplejumpdelay>0)
+	{
+		triplejumpdelay-=1;
+	}
 }
 if (place_meeting(x,y+1,obj_wall))
 and(speed<7) /*Player must be running at this speed to be able to triple jump*/

@@ -2612,12 +2612,13 @@ function scr_character_select_menu()
 	and(can_input_player3_name=false)
 	and(can_input_player4_name=false)
 	{
-		if (gamepad_button_check_pressed(0,gp_face1))
-		or(keyboard_check_pressed(vk_enter))
-		or(keyboard_check_pressed(vk_space))
-		or(keyboard_check_pressed(ord("Z")))
-		or(keyboard_check_pressed(global.player1_key_jump))
-		or(keyboard_check_pressed(global.player1_key2_jump))
+		if (key_a_pressed)
+		//if (gamepad_button_check_pressed(0,gp_face1))
+		//or(keyboard_check_pressed(vk_enter))
+		//or(keyboard_check_pressed(vk_space))
+		//or(keyboard_check_pressed(ord("Z")))
+		//or(keyboard_check_pressed(global.player1_key_jump))
+		//or(keyboard_check_pressed(global.player1_key2_jump))
 		{
 			if (menu_delay=0)
 			{
@@ -4003,11 +4004,12 @@ and(menu_delay=0)
 	{
 		
 		#region /*Accept*/
-		if (gamepad_button_check_pressed(0,gp_face1))
-		or(keyboard_check_pressed(vk_enter))
-		or(keyboard_check_pressed(ord("Z")))
-		or(keyboard_check_pressed(global.player1_key_jump))
-		or(keyboard_check_pressed(global.player1_key2_jump))
+		if (key_a_pressed)
+		//if (gamepad_button_check_pressed(0,gp_face1))
+		//or(keyboard_check_pressed(vk_enter))
+		//or(keyboard_check_pressed(ord("Z")))
+		//or(keyboard_check_pressed(global.player1_key_jump))
+		//or(keyboard_check_pressed(global.player1_key2_jump))
 		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 		window_get_width()/2+player1_display_x-100,
 		window_get_height()/2+150-20,
@@ -4212,16 +4214,13 @@ and(menu_delay=0)
 	
 	#endregion /*Start Game END*/
 	
-	if (gamepad_button_check_pressed(0,gp_face1))
-	or(keyboard_check_pressed(vk_enter))
-	or(keyboard_check_pressed(ord("Z")))
-	or(keyboard_check_pressed(global.player1_key_jump))
-	or(keyboard_check_pressed(global.player1_key2_jump))
-	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
-	0,
-	window_get_height()/2-32,
-	window_get_width(),
-	window_get_height()/2+32,))
+	if (key_a_pressed)
+	//if (gamepad_button_check_pressed(0,gp_face1))
+	//or(keyboard_check_pressed(vk_enter))
+	//or(keyboard_check_pressed(ord("Z")))
+	//or(keyboard_check_pressed(global.player1_key_jump))
+	//or(keyboard_check_pressed(global.player1_key2_jump))
+	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0,window_get_height()/2-32,window_get_width(),window_get_height()/2+32,))
 	and(mouse_check_button_pressed(mb_left))
 	{
 		if (player1_start_game=true)
@@ -4258,14 +4257,15 @@ and(menu_delay=0)
 	#region /*Back / Cancel Selection*/
 	
 	#region /*Player 1 Back / Cancel Selection*/
-	if (gamepad_button_check_pressed(0,gp_face2))
-	or(keyboard_check_pressed(vk_escape))
-	or(keyboard_check_pressed(vk_backspace))
-	or(keyboard_check_pressed(ord("X")))
-	or(keyboard_check_pressed(global.player1_key_dive))
-	or(keyboard_check_pressed(global.player1_key2_dive))
-	or(keyboard_check_pressed(global.player1_key_sprint))
-	or(keyboard_check_pressed(global.player1_key2_sprint))
+	if (key_b_pressed)
+	//if (gamepad_button_check_pressed(0,gp_face2))
+	//or(keyboard_check_pressed(vk_escape))
+	//or(keyboard_check_pressed(vk_backspace))
+	//or(keyboard_check_pressed(ord("X")))
+	//or(keyboard_check_pressed(global.player1_key_dive))
+	//or(keyboard_check_pressed(global.player1_key2_dive))
+	//or(keyboard_check_pressed(global.player1_key_sprint))
+	//or(keyboard_check_pressed(global.player1_key2_sprint))
 	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 	window_get_width()/2+player1_display_x-100,
 	window_get_height()/2+150-20,
@@ -4414,28 +4414,30 @@ and(menu_delay=0)
 	}
 	#endregion /*If 4 Player Game is selected and player 1, 2, 3 and 4 has selected a character END*/
 	
-	if (keyboard_check_pressed(global.player2_key_dive))
-	or (keyboard_check_pressed(global.player2_key2_dive))
-	or (keyboard_check_pressed(global.player1_key_sprint))
-	or (keyboard_check_pressed(global.player1_key2_sprint))
-	or (keyboard_check_pressed(ord("X")))
-	or (keyboard_check_pressed(vk_backspace))
-	or (keyboard_check_pressed(vk_escape))
+	if (key_b_pressed)
+	//if (keyboard_check_pressed(global.player2_key_dive))
+	//or (keyboard_check_pressed(global.player2_key2_dive))
+	//or (keyboard_check_pressed(global.player1_key_sprint))
+	//or (keyboard_check_pressed(global.player1_key2_sprint))
+	//or (keyboard_check_pressed(ord("X")))
+	//or (keyboard_check_pressed(vk_backspace))
+	//or (keyboard_check_pressed(vk_escape))
 	
-	or (keyboard_check_pressed(global.player1_key_jump))
+	//or (keyboard_check_pressed(global.player1_key_jump))
+	or (key_a_pressed)
 	and(menu = "back_from_character_select")
-	or (keyboard_check_pressed(global.player1_key2_jump))
-	and(menu = "back_from_character_select")
-	or (keyboard_check_pressed(ord("Z")))
-	and(menu = "back_from_character_select")
-	or (keyboard_check_pressed(vk_enter))
-	and(menu = "back_from_character_select")
-	or (keyboard_check_pressed(vk_space))
-	and(menu = "back_from_character_select")
-	or (gamepad_button_check_pressed(0,gp_face1))
-	and(menu = "back_from_character_select")
-	or (gamepad_button_check_pressed(0,gp_start))
-	and(menu = "back_from_character_select")
+	//or (keyboard_check_pressed(global.player1_key2_jump))
+	//and(menu = "back_from_character_select")
+	//or (keyboard_check_pressed(ord("Z")))
+	//and(menu = "back_from_character_select")
+	//or (keyboard_check_pressed(vk_enter))
+	//and(menu = "back_from_character_select")
+	//or (keyboard_check_pressed(vk_space))
+	//and(menu = "back_from_character_select")
+	//or (gamepad_button_check_pressed(0,gp_face1))
+	//and(menu = "back_from_character_select")
+	//or (gamepad_button_check_pressed(0,gp_start))
+	//and(menu = "back_from_character_select")
 	{
 		if (menu_delay=0)
 		and(player1_start_game=false)

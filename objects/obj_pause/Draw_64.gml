@@ -216,6 +216,8 @@ or(menu = "quit_game_yes")
 	{
 		if (menu="quit_game_no")
 		and(global.controls_used_for_menu_navigation="keyboard")
+		or (menu="quit_game_no")
+		and(global.controls_used_for_menu_navigation="controller")
 		{
 			draw_sprite_ext(spr_menu_button,0,
 			window_get_width() / 2 - 370,
@@ -253,9 +255,11 @@ or(menu = "quit_game_yes")
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		or(key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit_game_yes";
@@ -285,6 +289,8 @@ or(menu = "quit_game_yes")
 	{
 		if (menu="quit_game_yes")
 		and(global.controls_used_for_menu_navigation="keyboard")
+		or (menu="quit_game_yes")
+		and(global.controls_used_for_menu_navigation="controller")
 		{
 			draw_sprite_ext(spr_menu_button,0,
 			window_get_width() / 2 - 370,
@@ -321,9 +327,11 @@ or(menu = "quit_game_yes")
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		or(key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 1;
 			menu = "quit_game_no";
@@ -583,6 +591,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit";
@@ -591,6 +600,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "options";
@@ -628,6 +638,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "continue";
@@ -636,6 +647,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			if (global.pause_room = room_leveleditor)
 			{
@@ -715,6 +727,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "options";
@@ -723,6 +736,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit";
@@ -778,6 +792,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "restart_nevermind";
@@ -786,6 +801,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "reset_from_start";
@@ -864,6 +880,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "reset_from_checkpoint";
@@ -872,6 +889,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "restart_nevermind";
@@ -896,6 +914,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "reset_from_start";
@@ -904,6 +923,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "reset_from_checkpoint";
@@ -942,6 +962,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			if (global.pause_room = room_leveleditor)
 			{
@@ -958,6 +979,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "continue";
@@ -1003,6 +1025,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit_nevermind";
@@ -1011,6 +1034,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit_to_title";
@@ -1078,6 +1102,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			if (global.pause_room = room_leveleditor)
@@ -1094,6 +1119,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit_to_desktop";
@@ -1123,6 +1149,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit_to_title";
@@ -1131,6 +1158,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit_nevermind";
@@ -1160,6 +1188,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_up)
 		and(!key_down)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			menu = "quit_to_desktop";
@@ -1168,6 +1197,7 @@ and(global.pause_room = room_leveleditor)
 		if (key_down)
 		and(!key_up)
 		and(menu_delay <= 0)
+		and(menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			if (global.pause_room = room_leveleditor)
@@ -1276,6 +1306,46 @@ or(gamepad_button_check_pressed(3, gp_select))
 #endregion /*Return to game END*/
 
 scr_options_menu(); /*Options*/
+
+#region /*Menu navigation with joystick*/
+if (gamepad_axis_value(0,gp_axislv)<0)
+or(gamepad_axis_value(0,gp_axislv)>0)
+or(gamepad_axis_value(0,gp_axislh)<0)
+or(gamepad_axis_value(0,gp_axislh)>0)
+or(gamepad_axis_value(1,gp_axislv)<0)
+or(gamepad_axis_value(1,gp_axislv)>0)
+or(gamepad_axis_value(1,gp_axislh)<0)
+or(gamepad_axis_value(1,gp_axislh)>0)
+or(gamepad_axis_value(2,gp_axislv)<0)
+or(gamepad_axis_value(2,gp_axislv)>0)
+or(gamepad_axis_value(2,gp_axislh)<0)
+or(gamepad_axis_value(2,gp_axislh)>0)
+or(gamepad_axis_value(3,gp_axislv)<0)
+or(gamepad_axis_value(3,gp_axislv)>0)
+or(gamepad_axis_value(3,gp_axislh)<0)
+or(gamepad_axis_value(3,gp_axislh)>0)
+{
+	if (menu_joystick_delay = 0)
+	{
+		menu_joystick_delay = 15;
+	}
+}
+if (gamepad_axis_value(0,gp_axislv)= 0)
+and(gamepad_axis_value(0,gp_axislh)= 0)
+and(gamepad_axis_value(1,gp_axislv)= 0)
+and(gamepad_axis_value(1,gp_axislh)= 0)
+and(gamepad_axis_value(2,gp_axislv)= 0)
+and(gamepad_axis_value(2,gp_axislh)= 0)
+and(gamepad_axis_value(3,gp_axislv)= 0)
+and(gamepad_axis_value(3,gp_axislh)= 0)
+{
+	menu_joystick_delay= 0;
+}
+if (menu_joystick_delay>0)
+{
+	menu_joystick_delay-=1;
+}
+#endregion /*Menu navigation with joystick END*/
 
 #region /*Window is focused, hide cursor*/
 if (window_has_focus())

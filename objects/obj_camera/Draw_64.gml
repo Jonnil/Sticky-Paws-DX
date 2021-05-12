@@ -496,7 +496,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(show_crouch_key_x + 22, window_get_height() - show_player1_controls_y, "Crouch", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 0, show_crouch_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, show_crouch_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -535,7 +535,7 @@ and(!instance_exists(obj_pause))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_text_outlined(show_sprint_key_x + 22, window_get_height() - show_player1_controls_y, "Sprint", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
-					draw_sprite_ext(spr_xbox_buttons, 0, show_sprint_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+					draw_sprite_ext(spr_xbox_buttons, 2, show_sprint_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 				}
 				else
 				if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -619,7 +619,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(show_down_key_x + 22, window_get_height() - show_player1_controls_y, "Down", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, show_down_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, show_down_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -642,7 +642,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(show_up_key_x + 22, window_get_height() - show_player1_controls_y, "Up", global.default_text_size, c_black, c_white, player1_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, show_up_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 5, show_up_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -753,7 +753,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(show_crouch_key_x + 22, window_get_height() - show_player1_controls_y, "Crouch", global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 0, show_crouch_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, show_crouch_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -792,7 +792,7 @@ and(!instance_exists(obj_pause))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_text_outlined(show_sprint_key_x + 22, window_get_height() - show_player1_controls_y, "Sprint", global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
-					draw_sprite_ext(spr_xbox_buttons, 0, show_sprint_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+					draw_sprite_ext(spr_xbox_buttons, 2, show_sprint_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 				}
 				else
 				if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -876,7 +876,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(show_down_key_x + 22, window_get_height() - show_player1_controls_y, "Down", global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, show_down_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, show_down_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -899,7 +899,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(show_up_key_x + 22, window_get_height() - show_player1_controls_y, "Up", global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, show_up_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 5, show_up_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -929,9 +929,10 @@ and(!instance_exists(obj_pause))
 			
 			#region /*Show Join Game Key*/
 			if (can_spawn_player = true)
+			and(can_spawn_player1 = true)
 			and(global.player1_key_jump>noone)
 			{
-				draw_text_outlined(30, window_get_height() - 158, "Join Game:", global.default_text_size, c_black, global.player1_color, 1);
+				draw_text_outlined(30, window_get_height() - 158, "Join Game", global.default_text_size, c_black, global.player1_color, 1);
 				if (gamepad_is_connected(0))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
@@ -1030,7 +1031,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_crouch_key_x + 22, window_get_height() - show_player2_controls_y, "Crouch", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 0, player2_show_crouch_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, player2_show_crouch_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1069,7 +1070,7 @@ and(!instance_exists(obj_pause))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_text_outlined(player2_show_sprint_key_x + 22, window_get_height() - show_player2_controls_y, "Sprint", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
-					draw_sprite_ext(spr_xbox_buttons, 0, player2_show_sprint_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
+					draw_sprite_ext(spr_xbox_buttons, 2, player2_show_sprint_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 				}
 				else
 				if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1153,7 +1154,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_down_key_x + 22, window_get_height() - show_player2_controls_y, "Down", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, player2_show_down_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, player2_show_down_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1176,7 +1177,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_up_key_x + 22, window_get_height() - show_player2_controls_y, "Up", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, player2_show_up_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 5, player2_show_up_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1206,9 +1207,10 @@ and(!instance_exists(obj_pause))
 
 			#region /*Show Join Game Key*/
 			if (can_spawn_player = true)
+			if (can_spawn_player2 = true)
 			and(global.player2_key_jump>noone)
 			{
-				draw_text_outlined(30, window_get_height() - 116, "Join Game:", global.default_text_size, c_black, global.player2_color, 1);
+				draw_text_outlined(30, window_get_height() - 116, "Join Game", global.default_text_size, c_black, global.player2_color, 1);
 				if (gamepad_is_connected(0))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
@@ -1307,7 +1309,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_crouch_key_x + 22, window_get_height() - show_player3_controls_y, "Crouch", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 0, player3_show_crouch_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, player3_show_crouch_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1430,7 +1432,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_down_key_x + 22, window_get_height() - show_player3_controls_y, "Down", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, player3_show_down_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, player3_show_down_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1453,7 +1455,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_up_key_x + 22, window_get_height() - show_player3_controls_y, "Up", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, player3_show_up_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 5, player3_show_up_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1483,9 +1485,10 @@ and(!instance_exists(obj_pause))
 			
 			#region /*Show Join Game Key*/
 			if (can_spawn_player = true)
+			and(can_spawn_player3 = true)
 			and(global.player3_key_jump>noone)
 			{
-				draw_text_outlined(30, window_get_height() - 74, "Join Game:", global.default_text_size, c_black, global.player3_color, 1);
+				draw_text_outlined(30, window_get_height() - 74, "Join Game", global.default_text_size, c_black, global.player3_color, 1);
 				if (gamepad_is_connected(0))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
@@ -1584,7 +1587,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_crouch_key_x + 22, window_get_height() - show_player4_controls_y, "Crouch", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 0, player4_show_crouch_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, player4_show_crouch_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1623,7 +1626,7 @@ and(!instance_exists(obj_pause))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_text_outlined(player4_show_sprint_key_x + 22, window_get_height() - show_player4_controls_y, "Sprint", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
-					draw_sprite_ext(spr_xbox_buttons, 0, player4_show_sprint_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
+					draw_sprite_ext(spr_xbox_buttons, 2, player4_show_sprint_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 				}
 				else
 				if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1707,7 +1710,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_down_key_x + 22, window_get_height() - show_player4_controls_y, "Down", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, player4_show_down_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 7, player4_show_down_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1730,7 +1733,7 @@ and(!instance_exists(obj_pause))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_up_key_x + 22, window_get_height() - show_player4_controls_y, "Up", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
-				draw_sprite_ext(spr_xbox_buttons, 210, player4_show_up_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
+				draw_sprite_ext(spr_xbox_buttons, 5, player4_show_up_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
 			else
 			if(asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1760,9 +1763,10 @@ and(!instance_exists(obj_pause))
 			
 			#region /*Show Join Game Key*/
 			if (can_spawn_player = true)
+			and(can_spawn_player4 = true)
 			and(global.player4_key_jump>noone)
 			{
-				draw_text_outlined(30, window_get_height() - 32, "Join Game:", global.default_text_size, c_black, global.player4_color, 1);
+				draw_text_outlined(30, window_get_height() - 32, "Join Game", global.default_text_size, c_black, global.player4_color, 1);
 				if (gamepad_is_connected(0))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
