@@ -234,7 +234,7 @@ key_a_pressed=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_presse
 key_a_released=(gamepad_button_check_released(0,gp_face1))or(keyboard_check_released(global.player1_key_jump))or(keyboard_check_released(ord("Z")))or(keyboard_check_released(vk_space))or(keyboard_check_released(vk_enter));
 key_a_hold=(gamepad_button_check(0,gp_face1))or(keyboard_check(global.player1_key_jump))or(keyboard_check(ord("Z")))or(keyboard_check(vk_space))or(keyboard_check(vk_enter));
 key_b=(gamepad_button_check(0,gp_face2))or(keyboard_check(global.player1_key_sprint))or(keyboard_check(ord("X")))or(keyboard_check(vk_backspace));
-key_b_pressed=(gamepad_button_check_pressed(0,gp_face2))or(keyboard_check_pressed(global.player1_key_sprint))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_backspace));
+key_b_pressed=(gamepad_button_check_pressed(0,gp_face2))or(keyboard_check_pressed(global.player1_key_sprint))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_backspace))or(mouse_check_button_pressed(mb_right));
 key_b_released=(gamepad_button_check_released(0,gp_face2))or(keyboard_check_released(global.player1_key_sprint))or(keyboard_check_released(ord("X")))or(keyboard_check_released(vk_backspace));#endregion /*Controls for level editor END*/
 
 #region /*List of Placable Objects*/

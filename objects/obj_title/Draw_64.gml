@@ -238,12 +238,12 @@ if (global.voices_volume > 1)
 
 /*Keyboard Controls*/
 gamepad_set_axis_deadzone(0,0.50);
-key_up=(keyboard_check_pressed(vk_up))and(!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W")))and(!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0,gp_padu))and(!gamepad_button_check_pressed(0,gp_padd))or(gamepad_axis_value(0,gp_axislv)<0);
-key_left=(keyboard_check_pressed(vk_left))and(!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A")))and(!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0,gp_padl))and(!gamepad_button_check_pressed(0,gp_padr))or(gamepad_axis_value(0,gp_axislh)<0);
-key_right=(keyboard_check_pressed(vk_right))and(!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D")))and(!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0,gp_padr))and(!gamepad_button_check_pressed(0,gp_padl))or(gamepad_axis_value(0,gp_axislh)>0);
-key_down=(keyboard_check_pressed(vk_down))and(!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S")))and(!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0,gp_padd))and(!gamepad_button_check_pressed(0,gp_padu))or(gamepad_axis_value(0,gp_axislv)>0);
-key_a_pressed=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
-key_b_pressed=(gamepad_button_check_pressed(0,gp_face2))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_escape))or(keyboard_check_pressed(vk_backspace));
+key_up = (keyboard_check_pressed(vk_up))and(!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W")))and(!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0,gp_padu))and(!gamepad_button_check_pressed(0,gp_padd))or(gamepad_axis_value(0,gp_axislv)<0);
+key_left = (keyboard_check_pressed(vk_left))and(!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A")))and(!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0,gp_padl))and(!gamepad_button_check_pressed(0,gp_padr))or(gamepad_axis_value(0,gp_axislh)<0);
+key_right = (keyboard_check_pressed(vk_right))and(!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D")))and(!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0,gp_padr))and(!gamepad_button_check_pressed(0,gp_padl))or(gamepad_axis_value(0,gp_axislh)>0);
+key_down = (keyboard_check_pressed(vk_down))and(!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S")))and(!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0,gp_padd))and(!gamepad_button_check_pressed(0,gp_padu))or(gamepad_axis_value(0,gp_axislv)>0);
+key_a_pressed = (gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space))or(mouse_check_button_pressed(mb_left));
+key_b_pressed = (gamepad_button_check_pressed(0,gp_face2))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_escape))or(keyboard_check_pressed(vk_backspace))or(mouse_check_button_pressed(mb_right));
 /*Keyboard Controls END*/
 
 #region /*Quit Game trough pause menu*/
@@ -274,7 +274,12 @@ and(menu_delay=0)
 }
 #endregion /*Quit Game trough pause menu END*/
 
-/*Play Title Screen Music*/if (asset_get_type("snd_music_titlescreen")==asset_sound){audio_sound_gain(snd_music_titlescreen,global.music_volume,0);}/*Play Title Screen Music END*/
+#region /*Play Title Screen Music*/
+if (asset_get_type("snd_music_titlescreen")==asset_sound)
+{
+	audio_sound_gain(snd_music_titlescreen,global.music_volume,0);
+}
+#endregion /*Play Title Screen Music END*/
 
 /*Draw Event*/
 #region /*Set a default font*/
@@ -388,7 +393,7 @@ if (title_logo_index>noone)
 	draw_sprite_ext(title_logo_index,image_index,
 	window_get_width()/2,
 	window_get_height()/2-100+title_y,
-	1,1,0,c_white,1);
+	1,1,0,c_white,title_alpha);
 }
 
 if (menu!="select_custom_level")
@@ -398,11 +403,13 @@ and(menu!="import_export_level")
 and(menu!="delete_level")
 and(show_title_logo = true)
 {
-	title_y = lerp(title_y,0,0.1);
+	title_y = lerp(title_y, 0, 0.1);
+	title_alpha = lerp(title_alpha, 1, 0.1);
 }
 else
 {
-	title_y = lerp(title_y,-700,0.1);
+	title_y = lerp(title_y, -800, 0.1);
+	title_alpha = lerp(title_alpha, 0, 0.1);
 }
 #endregion /*Draw Title Screen END*/
 

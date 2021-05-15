@@ -172,20 +172,6 @@ if (global.pause_player = 3)
 
 #endregion /*Keyboard Controls End*/
 
-#region /*Pause Screenshot*/
-if (global.pause_screenshot>noone)
-{
-	draw_sprite_ext(global.pause_screenshot,0,0,0,1,0.971,0,c_white,1);
-}
-#endregion /*Pause Screenshot END*/
-
-#region /*Darker Background*/
-draw_set_alpha(0.5);
-draw_rectangle_colour(0, 0, window_get_width(), window_get_height(), c_red, c_blue, c_blue, c_red, false);
-draw_rectangle_colour(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
-draw_set_alpha(1);
-#endregion /*Darker Background End*/
-
 #region /*Quit to Desktop menu*/
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);

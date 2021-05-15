@@ -28,10 +28,14 @@ function draw_menu_checkmark()
 	
 	if (variable_to_check=false)
 	{
-		if (point_in_rectangle(window_get_width(),window_get_height(),x_position,y_position,x_position+370,y_position+32))
+		if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position,x_position+370,y_position+32))
 		and(global.controls_used_for_menu_navigation="mouse")
 		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(x_position, y_position, x_position+370, y_position+32, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
 			draw_sprite_ext(spr_menu_checkmark,0,x_position+42,y_position,1,1,0,c_lime,1);
+			menu = menu_index;
 		}
 		else
 		{
@@ -40,10 +44,14 @@ function draw_menu_checkmark()
 	}
 	else
 	{
-		if (point_in_rectangle(window_get_width(),window_get_height(),x_position,y_position,x_position+370,y_position+32))
+		if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position,x_position+370,y_position+32))
 		and(global.controls_used_for_menu_navigation="mouse")
 		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(x_position, y_position, x_position+370, y_position+32, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
 			draw_sprite_ext(spr_menu_checkmark,1,x_position+42,y_position,1,1,0,c_lime,1);
+			menu = menu_index;
 		}
 		else
 		{
@@ -52,11 +60,11 @@ function draw_menu_checkmark()
 	}
 
 	#region /*Clicking the menu button*/
-	if (point_in_rectangle(window_get_width(),window_get_height(),x_position,y_position,x_position+370,y_position+32))
+	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position,x_position+370,y_position+32))
 	and(mouse_check_button_pressed(mb_left))
 	and(global.controls_used_for_menu_navigation="mouse")
 	{
-		menu=menu_index;
+		menu = menu_index;
 		can_navigate_settings_sidebar=false;
 	}
 	#endregion /*Clicking the menu button END*/
