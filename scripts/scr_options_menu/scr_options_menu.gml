@@ -5485,7 +5485,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 	
 	#region /*Background Brightness in Gameplay Bar*/
 	background_brightness_gameplay_x = 600;
-	background_brightness_gameplay_y = 48*9;
+	background_brightness_gameplay_y = 48*10;
 	if (menu="background_brightness_gameplay")
 	{
 		draw_sprite_ext(spr_menu_cursor,menu_cursor_index,background_brightness_gameplay_x-200,background_brightness_gameplay_y+170,1,1,0,c_white,1);
@@ -5539,7 +5539,7 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 	
 	#region /*Background Brightness in Menus Bar*/
 	background_brightness_menu_x = 600;
-	background_brightness_menu_y = 48*10+10;
+	background_brightness_menu_y = 48*11+10;
 	if (menu="background_brightness_menu")
 	{
 		draw_sprite_ext(spr_menu_cursor,menu_cursor_index,background_brightness_menu_x-200,background_brightness_menu_y+170,1,1,0,c_white,1);
@@ -6744,64 +6744,66 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 
 	#region /*Accept*/
 	if (key_a_pressed)
+	or (mouse_check_button_pressed(mb_left))
+	and(window_mouse_get_x() > 370)
 	{
-	if (menu="difficulty_settings")and(menu_delay= 0){if (global.difficulty= 0){global.difficulty=1;menu_delay = 3;}else if (global.difficulty=1){global.difficulty=2;menu_delay = 3;}else if (global.difficulty=2){global.difficulty=3;menu_delay = 3;}else if (global.difficulty=3){global.difficulty= 0;menu_delay = 3;}}
-	if (menu="show_timer_settings")and(menu_delay= 0){if (global.show_timer=true){global.show_timer=false;}else{global.show_timer=true;}menu_delay = 3;}
-	if (menu="show_tutorial_signs")and(menu_delay= 0){if (global.show_tutorial_signs=true){global.show_tutorial_signs=false;}else{global.show_tutorial_signs=true;}menu_delay = 3;}
-	if (menu="players_can_collide")and(menu_delay= 0){if (global.players_can_collide=true){global.players_can_collide=false;}else{global.players_can_collide=true;}menu_delay = 3;}
-	if (menu="assist_settings")and(menu_delay= 0){menu="assist_item_appear";menu_delay = 3;}
-	if (menu="convention_mode")and(menu_delay= 0){if (global.convention_mode=true){global.convention_mode=false;}else{global.convention_mode=true;}menu_delay = 3;}
-
-	if (menu="fullscreen_mode")and(menu_delay= 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}menu_delay = 3;}
-	if (menu="interpolate")and(menu_delay= 0){if (global.interpolate=true){global.interpolate=false;gpu_set_texfilter(false);}else{global.interpolate=true;gpu_set_texfilter(true);}menu_delay = 3;}
-	if (menu="show_fps")and(menu_delay= 0){if (global.show_fps=true){global.show_fps=false;}else{global.show_fps=true;}menu_delay = 3;}
-	if (menu="show_fps_real")and(menu_delay= 0){if (global.show_fps_real=true){global.show_fps_real=false;}else{global.show_fps_real=true;}menu_delay = 3;}
-	if (menu="show_instance_count")and(menu_delay= 0){if (global.show_instance_count=true){global.show_instance_count=false;}else{global.show_instance_count=true;}menu_delay = 3;}
-	if (menu="enable_transitions")and(menu_delay= 0){if (global.enable_transitions=true){global.enable_transitions=false;}else{global.enable_transitions=true;}menu_delay = 3;}
-
-	if (menu="enable_background_layer1")and(menu_delay= 0){if (global.enable_background_layer1=true){global.enable_background_layer1=false;}else{global.enable_background_layer1=true;}menu_delay = 3;}
-	if (menu="enable_background_layer2")and(menu_delay= 0){if (global.enable_background_layer2=true){global.enable_background_layer2=false;}else{global.enable_background_layer2=true;}menu_delay = 3;}
-	if (menu="enable_background_layer3")and(menu_delay= 0){if (global.enable_background_layer3=true){global.enable_background_layer3=false;}else{global.enable_background_layer3=true;}menu_delay = 3;}
-	if (menu="enable_background_layer4")and(menu_delay= 0){if (global.enable_background_layer4=true){global.enable_background_layer4=false;}else{global.enable_background_layer4=true;}menu_delay = 3;}
-	if (menu="enable_foreground_layer1")and(menu_delay= 0){if (global.enable_foreground_layer1=true){global.enable_foreground_layer1=false;}else{global.enable_foreground_layer1=true;}menu_delay = 3;}
-	if (menu="enable_foreground_layer2")and(menu_delay= 0){if (global.enable_foreground_layer2=true){global.enable_foreground_layer2=false;}else{global.enable_foreground_layer2=true;}menu_delay = 3;}
-
-	if (menu="keyboard_controls_remapping")and(menu_delay= 0){image_alpha= 0;menu="remap_save";menu_delay = 3;}
-	if (menu="up_key_is_jump_key")and(menu_delay= 0){
-	if (remapping_player=1){if (global.player1_up_key_is_jump_key=true){global.player1_up_key_is_jump_key=false;}else{global.player1_up_key_is_jump_key=true;}menu_delay = 3;}
-	else if (remapping_player=2){if (global.player2_up_key_is_jump_key=true){global.player2_up_key_is_jump_key=false;}else{global.player2_up_key_is_jump_key=true;}menu_delay = 3;}
-	else if (remapping_player=3){if (global.player3_up_key_is_jump_key=true){global.player3_up_key_is_jump_key=false;}else{global.player3_up_key_is_jump_key=true;}menu_delay = 3;}
-	else if (remapping_player=4){if (global.player4_up_key_is_jump_key=true){global.player4_up_key_is_jump_key=false;}else{global.player4_up_key_is_jump_key=true;}menu_delay = 3;}}
-
-	if (menu="double_tap_to_run")and(menu_delay= 0){
-	if (remapping_player=1){if (global.player1_double_tap_to_run=true){global.player1_double_tap_to_run=false;}else{global.player1_double_tap_to_run=true;}menu_delay = 3;}else
-	if (remapping_player=2){if (global.player2_double_tap_to_run=true){global.player2_double_tap_to_run=false;}else{global.player2_double_tap_to_run=true;}menu_delay = 3;}else
-	if (remapping_player=3){if (global.player3_double_tap_to_run=true){global.player3_double_tap_to_run=false;}else{global.player3_double_tap_to_run=true;}menu_delay = 3;}else
-	if (remapping_player=4){if (global.player4_double_tap_to_run=true){global.player4_double_tap_to_run=false;}else{global.player4_double_tap_to_run=true;}menu_delay = 3;}}
-	
-	if (menu="always_run")and(menu_delay= 0){
-	if (remapping_player=1){if (global.player1_sprint_toggle=true){global.player1_sprint_toggle=false;}else{global.player1_sprint_toggle=true;}menu_delay = 3;}else
-	if (remapping_player=2){if (global.player2_sprint_toggle=true){global.player2_sprint_toggle=false;}else{global.player2_sprint_toggle=true;}menu_delay = 3;}else
-	if (remapping_player=3){if (global.player3_sprint_toggle=true){global.player3_sprint_toggle=false;}else{global.player3_sprint_toggle=true;}menu_delay = 3;}else
-	if (remapping_player=4){if (global.player4_sprint_toggle=true){global.player4_sprint_toggle=false;}else{global.player4_sprint_toggle=true;}menu_delay = 3;}}
-	
-	if (menu="cancel_dive_by_pressing_jump_or_dive_button")and(menu_delay= 0){
-	if (remapping_player=1){if (global.player1_cancel_dive_by_pressing_jump_or_dive_button=true){global.player1_cancel_dive_by_pressing_jump_or_dive_button=false;}else{global.player1_cancel_dive_by_pressing_jump_or_dive_button=true;}menu_delay = 3;}else
-	if (remapping_player=2){if (global.player2_cancel_dive_by_pressing_jump_or_dive_button=true){global.player2_cancel_dive_by_pressing_jump_or_dive_button=false;}else{global.player2_cancel_dive_by_pressing_jump_or_dive_button=true;}menu_delay = 3;}else
-	if (remapping_player=3){if (global.player3_cancel_dive_by_pressing_jump_or_dive_button=true){global.player3_cancel_dive_by_pressing_jump_or_dive_button=false;}else{global.player3_cancel_dive_by_pressing_jump_or_dive_button=true;}menu_delay = 3;}else
-	if (remapping_player=4){if (global.player4_cancel_dive_by_pressing_jump_or_dive_button=true){global.player4_cancel_dive_by_pressing_jump_or_dive_button=false;}else{global.player4_cancel_dive_by_pressing_jump_or_dive_button=true;}menu_delay = 3;}}
-	
-	if (menu="cancel_dive_by_pressing_opposite_direction")and(menu_delay= 0){
-	if (remapping_player=1){if (global.player1_cancel_dive_by_pressing_opposite_direction=true){global.player1_cancel_dive_by_pressing_opposite_direction=false;}else{global.player1_cancel_dive_by_pressing_opposite_direction=true;}menu_delay = 3;}else
-	if (remapping_player=2){if (global.player2_cancel_dive_by_pressing_opposite_direction=true){global.player2_cancel_dive_by_pressing_opposite_direction=false;}else{global.player2_cancel_dive_by_pressing_opposite_direction=true;}menu_delay = 3;}else
-	if (remapping_player=3){if (global.player3_cancel_dive_by_pressing_opposite_direction=true){global.player3_cancel_dive_by_pressing_opposite_direction=false;}else{global.player3_cancel_dive_by_pressing_opposite_direction=true;}menu_delay = 3;}else
-	if (remapping_player=4){if (global.player4_cancel_dive_by_pressing_opposite_direction=true){global.player4_cancel_dive_by_pressing_opposite_direction=false;}else{global.player4_cancel_dive_by_pressing_opposite_direction=true;}menu_delay = 3;}}
-	
-	if (menu="wall_jump_setting")and(menu_delay= 0){
-	if (remapping_player=1){if (global.player1_wall_jump_setting= 0){global.player1_wall_jump_setting=1;}else if (global.player1_wall_jump_setting=1){global.player1_wall_jump_setting=2;}else{global.player1_wall_jump_setting= 0;}menu_delay = 3;}else
-	if (remapping_player=2){if (global.player2_wall_jump_setting= 0){global.player2_wall_jump_setting=1;}else if (global.player2_wall_jump_setting=1){global.player2_wall_jump_setting=2;}else{global.player2_wall_jump_setting= 0;}menu_delay = 3;}else
-	if (remapping_player=3){if (global.player3_wall_jump_setting= 0){global.player3_wall_jump_setting=1;}else if (global.player3_wall_jump_setting=1){global.player3_wall_jump_setting=2;}else{global.player3_wall_jump_setting= 0;}menu_delay = 3;}else
-	if (remapping_player=4){if (global.player4_wall_jump_setting= 0){global.player4_wall_jump_setting=1;}else if (global.player4_wall_jump_setting=1){global.player4_wall_jump_setting=2;}else{global.player4_wall_jump_setting= 0;}menu_delay = 3;}}
+		if (menu="difficulty_settings")and(menu_delay= 0){if (global.difficulty= 0){global.difficulty=1;menu_delay = 3;}else if (global.difficulty=1){global.difficulty=2;menu_delay = 3;}else if (global.difficulty=2){global.difficulty=3;menu_delay = 3;}else if (global.difficulty=3){global.difficulty= 0;menu_delay = 3;}}
+		if (menu="show_timer_settings")and(menu_delay= 0){if (global.show_timer=true){global.show_timer=false;}else{global.show_timer=true;}menu_delay = 3;}
+		if (menu="show_tutorial_signs")and(menu_delay= 0){if (global.show_tutorial_signs=true){global.show_tutorial_signs=false;}else{global.show_tutorial_signs=true;}menu_delay = 3;}
+		if (menu="players_can_collide")and(menu_delay= 0){if (global.players_can_collide=true){global.players_can_collide=false;}else{global.players_can_collide=true;}menu_delay = 3;}
+		if (menu="assist_settings")and(menu_delay= 0){menu="assist_item_appear";menu_delay = 3;}
+		if (menu="convention_mode")and(menu_delay= 0){if (global.convention_mode=true){global.convention_mode=false;}else{global.convention_mode=true;}menu_delay = 3;}
+		
+		if (menu="fullscreen_mode")and(menu_delay= 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}menu_delay = 3;}
+		if (menu="interpolate")and(menu_delay= 0){if (global.interpolate=true){global.interpolate=false;gpu_set_texfilter(false);}else{global.interpolate=true;gpu_set_texfilter(true);}menu_delay = 3;}
+		if (menu="show_fps")and(menu_delay= 0){if (global.show_fps=true){global.show_fps=false;}else{global.show_fps=true;}menu_delay = 3;}
+		if (menu="show_fps_real")and(menu_delay= 0){if (global.show_fps_real=true){global.show_fps_real=false;}else{global.show_fps_real=true;}menu_delay = 3;}
+		if (menu="show_instance_count")and(menu_delay= 0){if (global.show_instance_count=true){global.show_instance_count=false;}else{global.show_instance_count=true;}menu_delay = 3;}
+		if (menu="enable_transitions")and(menu_delay= 0){if (global.enable_transitions=true){global.enable_transitions=false;}else{global.enable_transitions=true;}menu_delay = 3;}
+		
+		if (menu="enable_background_layer1")and(menu_delay= 0){if (global.enable_background_layer1=true){global.enable_background_layer1=false;}else{global.enable_background_layer1=true;}menu_delay = 3;}
+		if (menu="enable_background_layer2")and(menu_delay= 0){if (global.enable_background_layer2=true){global.enable_background_layer2=false;}else{global.enable_background_layer2=true;}menu_delay = 3;}
+		if (menu="enable_background_layer3")and(menu_delay= 0){if (global.enable_background_layer3=true){global.enable_background_layer3=false;}else{global.enable_background_layer3=true;}menu_delay = 3;}
+		if (menu="enable_background_layer4")and(menu_delay= 0){if (global.enable_background_layer4=true){global.enable_background_layer4=false;}else{global.enable_background_layer4=true;}menu_delay = 3;}
+		if (menu="enable_foreground_layer1")and(menu_delay= 0){if (global.enable_foreground_layer1=true){global.enable_foreground_layer1=false;}else{global.enable_foreground_layer1=true;}menu_delay = 3;}
+		if (menu="enable_foreground_layer2")and(menu_delay= 0){if (global.enable_foreground_layer2=true){global.enable_foreground_layer2=false;}else{global.enable_foreground_layer2=true;}menu_delay = 3;}
+		
+		if (menu="keyboard_controls_remapping")and(menu_delay= 0){image_alpha= 0;menu="remap_save";menu_delay = 3;}
+		if (menu="up_key_is_jump_key")and(menu_delay= 0){
+		if (remapping_player=1){if (global.player1_up_key_is_jump_key=true){global.player1_up_key_is_jump_key=false;}else{global.player1_up_key_is_jump_key=true;}menu_delay = 3;}
+		else if (remapping_player=2){if (global.player2_up_key_is_jump_key=true){global.player2_up_key_is_jump_key=false;}else{global.player2_up_key_is_jump_key=true;}menu_delay = 3;}
+		else if (remapping_player=3){if (global.player3_up_key_is_jump_key=true){global.player3_up_key_is_jump_key=false;}else{global.player3_up_key_is_jump_key=true;}menu_delay = 3;}
+		else if (remapping_player=4){if (global.player4_up_key_is_jump_key=true){global.player4_up_key_is_jump_key=false;}else{global.player4_up_key_is_jump_key=true;}menu_delay = 3;}}
+		
+		if (menu="double_tap_to_run")and(menu_delay= 0){
+		if (remapping_player=1){if (global.player1_double_tap_to_run=true){global.player1_double_tap_to_run=false;}else{global.player1_double_tap_to_run=true;}menu_delay = 3;}else
+		if (remapping_player=2){if (global.player2_double_tap_to_run=true){global.player2_double_tap_to_run=false;}else{global.player2_double_tap_to_run=true;}menu_delay = 3;}else
+		if (remapping_player=3){if (global.player3_double_tap_to_run=true){global.player3_double_tap_to_run=false;}else{global.player3_double_tap_to_run=true;}menu_delay = 3;}else
+		if (remapping_player=4){if (global.player4_double_tap_to_run=true){global.player4_double_tap_to_run=false;}else{global.player4_double_tap_to_run=true;}menu_delay = 3;}}
+		
+		if (menu="always_run")and(menu_delay= 0){
+		if (remapping_player=1){if (global.player1_sprint_toggle=true){global.player1_sprint_toggle=false;}else{global.player1_sprint_toggle=true;}menu_delay = 3;}else
+		if (remapping_player=2){if (global.player2_sprint_toggle=true){global.player2_sprint_toggle=false;}else{global.player2_sprint_toggle=true;}menu_delay = 3;}else
+		if (remapping_player=3){if (global.player3_sprint_toggle=true){global.player3_sprint_toggle=false;}else{global.player3_sprint_toggle=true;}menu_delay = 3;}else
+		if (remapping_player=4){if (global.player4_sprint_toggle=true){global.player4_sprint_toggle=false;}else{global.player4_sprint_toggle=true;}menu_delay = 3;}}
+		
+		if (menu="cancel_dive_by_pressing_jump_or_dive_button")and(menu_delay= 0){
+		if (remapping_player=1){if (global.player1_cancel_dive_by_pressing_jump_or_dive_button=true){global.player1_cancel_dive_by_pressing_jump_or_dive_button=false;}else{global.player1_cancel_dive_by_pressing_jump_or_dive_button=true;}menu_delay = 3;}else
+		if (remapping_player=2){if (global.player2_cancel_dive_by_pressing_jump_or_dive_button=true){global.player2_cancel_dive_by_pressing_jump_or_dive_button=false;}else{global.player2_cancel_dive_by_pressing_jump_or_dive_button=true;}menu_delay = 3;}else
+		if (remapping_player=3){if (global.player3_cancel_dive_by_pressing_jump_or_dive_button=true){global.player3_cancel_dive_by_pressing_jump_or_dive_button=false;}else{global.player3_cancel_dive_by_pressing_jump_or_dive_button=true;}menu_delay = 3;}else
+		if (remapping_player=4){if (global.player4_cancel_dive_by_pressing_jump_or_dive_button=true){global.player4_cancel_dive_by_pressing_jump_or_dive_button=false;}else{global.player4_cancel_dive_by_pressing_jump_or_dive_button=true;}menu_delay = 3;}}
+		
+		if (menu="cancel_dive_by_pressing_opposite_direction")and(menu_delay= 0){
+		if (remapping_player=1){if (global.player1_cancel_dive_by_pressing_opposite_direction=true){global.player1_cancel_dive_by_pressing_opposite_direction=false;}else{global.player1_cancel_dive_by_pressing_opposite_direction=true;}menu_delay = 3;}else
+		if (remapping_player=2){if (global.player2_cancel_dive_by_pressing_opposite_direction=true){global.player2_cancel_dive_by_pressing_opposite_direction=false;}else{global.player2_cancel_dive_by_pressing_opposite_direction=true;}menu_delay = 3;}else
+		if (remapping_player=3){if (global.player3_cancel_dive_by_pressing_opposite_direction=true){global.player3_cancel_dive_by_pressing_opposite_direction=false;}else{global.player3_cancel_dive_by_pressing_opposite_direction=true;}menu_delay = 3;}else
+		if (remapping_player=4){if (global.player4_cancel_dive_by_pressing_opposite_direction=true){global.player4_cancel_dive_by_pressing_opposite_direction=false;}else{global.player4_cancel_dive_by_pressing_opposite_direction=true;}menu_delay = 3;}}
+		
+		if (menu="wall_jump_setting")and(menu_delay= 0){
+		if (remapping_player=1){if (global.player1_wall_jump_setting= 0){global.player1_wall_jump_setting=1;}else if (global.player1_wall_jump_setting=1){global.player1_wall_jump_setting=2;}else{global.player1_wall_jump_setting= 0;}menu_delay = 3;}else
+		if (remapping_player=2){if (global.player2_wall_jump_setting= 0){global.player2_wall_jump_setting=1;}else if (global.player2_wall_jump_setting=1){global.player2_wall_jump_setting=2;}else{global.player2_wall_jump_setting= 0;}menu_delay = 3;}else
+		if (remapping_player=3){if (global.player3_wall_jump_setting= 0){global.player3_wall_jump_setting=1;}else if (global.player3_wall_jump_setting=1){global.player3_wall_jump_setting=2;}else{global.player3_wall_jump_setting= 0;}menu_delay = 3;}else
+		if (remapping_player=4){if (global.player4_wall_jump_setting= 0){global.player4_wall_jump_setting=1;}else if (global.player4_wall_jump_setting=1){global.player4_wall_jump_setting=2;}else{global.player4_wall_jump_setting= 0;}menu_delay = 3;}}
 	}
 	#endregion /*Accept END*/
 

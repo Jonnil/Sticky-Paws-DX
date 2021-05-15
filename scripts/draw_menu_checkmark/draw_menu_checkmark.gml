@@ -19,12 +19,8 @@ function draw_menu_checkmark()
 	var variable_to_check=argument4;
 	var bottom_text=argument5;
 	var clicked_on=false;
+	var hover_over_button = false;
 	#endregion /*Initialize variables END*/
-	
-	if (menu=menu_index)
-	{
-		draw_sprite_ext(spr_menu_cursor,menu_cursor_index,x_position+16,y_position+16,1,1,0,c_white,1);
-	}
 	
 	if (variable_to_check=false)
 	{
@@ -58,7 +54,14 @@ function draw_menu_checkmark()
 			draw_sprite_ext(spr_menu_checkmark,1,x_position+42,y_position,1,1,0,c_white,1);
 		}
 	}
-
+	
+	#region /*Show a menu cursor when the option is highlighted*/
+	if (menu= menu_index)
+	{
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position+16, y_position+16, 1, 1, 0, c_white, 1);
+	}
+	#endregion /*Show a menu cursor when the option is highlighted END*/
+	
 	#region /*Clicking the menu button*/
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position,x_position+370,y_position+32))
 	and(mouse_check_button_pressed(mb_left))
