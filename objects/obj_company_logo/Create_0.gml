@@ -139,7 +139,6 @@ global.character_select_in_this_menu="game";/*In what menu character select is g
 global.difficulty=2;/*Difficulty levels: 0 = peaceful, 1 = easy, 2 = normal (default), 3 = hard*/
 global.show_timer = false; /*Show a countup timer or not*/
 global.controls_used_for_menu_navigation="keyboard";/*keyboard, mouse, or controller*/
-global.hover_over_button = false; /*If mouse is hovering over button or not*/
 global.pause=false;/*If game is paused or not*/
 global.custom_background1=noone;
 global.custom_background2=noone;

@@ -75,15 +75,15 @@ if (brick_particle=false)
 		and(!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,obj_wall,false,true))
 		
 		or(!place_meeting(x,bbox_bottom+1,obj_wall))
-		and(x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])-32)
-		and(x>camera_get_view_x(view_camera[view_current])+32)
-		and(bbox_bottom<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32)
-		and(y>camera_get_view_y(view_camera[view_current])+32)
+		and(x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])+32)
+		and(x>camera_get_view_x(view_camera[view_current])-32)
+		and(bbox_bottom<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+32)
+		and(y>camera_get_view_y(view_camera[view_current])-32)
 		and(!place_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-		and(x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])-32)
-		and(x>camera_get_view_x(view_camera[view_current])+32)
-		and(bbox_bottom<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32)
-		and(y>camera_get_view_y(view_camera[view_current])+32)
+		and(x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])+32)
+		and(x>camera_get_view_x(view_camera[view_current])-32)
+		and(bbox_bottom<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+32)
+		and(y>camera_get_view_y(view_camera[view_current])-32)
 		
 		or(asset_get_type("obj_blockbreak")==asset_object)
 		and(place_meeting(x,y,obj_blockbreak))
@@ -129,12 +129,22 @@ if (brick_particle=false)
 					hud_show_score_timer=global.hud_show_timer;
 				}
 			}
-			effect_create_above(ef_smoke,x,y,1,c_dkgray);
-			if (asset_get_type("snd_blockbreak")==asset_sound)
+			
+			#region /*Only do the breaking smoke effect and sound effect if it's inside the view*/
+			if (x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
+			and(x>camera_get_view_x(view_camera[view_current]))
+			and(bbox_bottom<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
+			and(y>camera_get_view_y(view_camera[view_current]))
 			{
-				audio_play_sound(snd_blockbreak,0,0);
-				audio_sound_gain(snd_blockbreak,global.sfx_volume,0);
+				effect_create_above(ef_smoke,x,y,1,c_dkgray);
+				if (asset_get_type("snd_blockbreak")==asset_sound)
+				{
+					audio_play_sound(snd_blockbreak,0,0);
+					audio_sound_gain(snd_blockbreak,global.sfx_volume,0);
+				}
 			}
+			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/
+			
 			instance_destroy();
 		}
 	}
@@ -194,12 +204,22 @@ if (brick_particle=false)
 					hud_show_score_timer=global.hud_show_timer;
 				}
 			}
-			effect_create_above(ef_smoke,x,y,1,c_dkgray);
-			if (asset_get_type("snd_blockbreak")==asset_sound)
+			
+			#region /*Only do the breaking smoke effect and sound effect if it's inside the view*/
+			if (x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
+			and(x>camera_get_view_x(view_camera[view_current]))
+			and(bbox_bottom<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
+			and(y>camera_get_view_y(view_camera[view_current]))
 			{
-				audio_play_sound(snd_blockbreak,0,0);
-				audio_sound_gain(snd_blockbreak,global.sfx_volume,0);
+				effect_create_above(ef_smoke,x,y,1,c_dkgray);
+				if (asset_get_type("snd_blockbreak")==asset_sound)
+				{
+					audio_play_sound(snd_blockbreak,0,0);
+					audio_sound_gain(snd_blockbreak,global.sfx_volume,0);
+				}
 			}
+			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/
+			
 			instance_destroy();
 		}
 	}

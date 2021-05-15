@@ -468,26 +468,56 @@ if (bubble=true)
 }
 #endregion /*Bubble END*/
 
-#region /*Multiplayer Colors*/
+#region /*Display Player Number and Name*/
 if (global.playergame>0)
+and (y < room_height)
+and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
 	if (player=1)
 	{
-		draw_text_outlined(x,y-64,"P"+string(player),global.default_text_size,c_black,global.player1_color,1);
+		if (global.player1_name="")
+		{
+			draw_text_outlined(x,y-64,"P1",global.default_text_size,c_black,global.player1_color,1);
+		}
+		else
+		{
+			draw_text_outlined(x,y-64,string(global.player1_name),global.default_text_size,c_black,global.player1_color,1);
+		}
 	}
 	if (player=2)
 	{
-		draw_text_outlined(x,y-64,"P"+string(player),global.default_text_size,c_black,global.player2_color,1);
+		if (global.player2_name="")
+		{
+			draw_text_outlined(x,y-64,"P2",global.default_text_size,c_black,global.player2_color,1);
+		}
+		else
+		{
+			draw_text_outlined(x,y-64,string(global.player2_name),global.default_text_size,c_black,global.player2_color,1);
+		}
 	}
 	if (player=3)
 	{
-		draw_text_outlined(x,y-64,"P"+string(player),global.default_text_size,c_black,global.player3_color,1);
+		if (global.player3_name="")
+		{
+			draw_text_outlined(x,y-64,"P3",global.default_text_size,c_black,global.player3_color,1);
+		}
+		else
+		{
+			draw_text_outlined(x,y-64,string(global.player3_name),global.default_text_size,c_black,global.player3_color,1);
+		}
 	}
 	if (player=4)
 	{
-		draw_text_outlined(x,y-64,"P"+string(player),global.default_text_size,c_black,global.player4_color,1);
+		if (global.player4_name="")
+		{
+			draw_text_outlined(x,y-64,"P4",global.default_text_size,c_black,global.player4_color,1);
+		}
+		else
+		{
+			draw_text_outlined(x,y-64,string(global.player4_name),global.default_text_size,c_black,global.player4_color,1);
+		}
 	}
 }
-#endregion /*Multiplayer Colors End*/
+#endregion /*Display Player Number and Name END*/
