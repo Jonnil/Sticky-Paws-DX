@@ -16428,9 +16428,9 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	instance_nearest(x,y,obj_spring).image_speed=1;
 }
 
-if (spring=true)
+if (spring = true)
 {
-	if (spring_animation=0)
+	if (spring_animation = 0)
 	{
 		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
 		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
@@ -16439,17 +16439,13 @@ if (spring=true)
 		{sprite_index = sprite_stand;}
 	}
 	else
-	if (spring_animation=1)
+	if (spring_animation = 1)
 	{
 		if (sprite_spring_transition>noone){sprite_index = sprite_spring_transition;}else
-		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
-		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
-		if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
-		if (sprite_jump>noone){sprite_index = sprite_jump;}else
-		{sprite_index = sprite_stand;}
+		{spring_animation = 2;}
 	}
 	else
-	if (spring_animation=2)
+	if (spring_animation = 2)
 	{
 		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
 		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
@@ -16460,22 +16456,29 @@ if (spring=true)
 		{sprite_index = sprite_stand;}
 	}
 
-	if (spring_animation=0)
+	if (spring_animation = 0)
 	and(image_index>image_number-1)
 	{
 		image_index=0;
 		if(vspeed>=-4)
 		or(vspeed>=0)
 		{
-			spring_animation=1;
+			if (sprite_spring_transition>noone)
+			{
+				spring_animation = 1;
+			}
+			else
+			{
+				spring_animation = 2;
+			}
 		}
 	}
 	else
-	if (spring_animation=1)
+	if (spring_animation = 1)
 	and(image_index>image_number-1)
 	{
 		image_index=0;
-		spring_animation=2;
+		spring_animation = 2;
 	}
 	image_speed=0.5;
 }
