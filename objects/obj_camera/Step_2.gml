@@ -6,7 +6,7 @@ if (global.deactivate_objects_outsiede_view = true) /*This global variable is fo
 	camera_get_view_x(view_camera[view_current]) - 64,
 	camera_get_view_y(view_camera[view_current]) - 64,
 	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64,
-	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64,
+	camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 128,
 	false, true);
 }
 #endregion /*Deactivate instances outside view END*/

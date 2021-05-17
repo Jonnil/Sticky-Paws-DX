@@ -17159,9 +17159,8 @@ and(place_meeting(x,y,obj_vine))
 }
 #endregion /*Climb Vine END*/
 
-/*IN WATER*/
-if (asset_get_type("obj_water")==asset_object)
-and(position_meeting(x,y,obj_water))
+#region /*In Water Animations*/
+if (in_water = true)
 {
 	can_ground_pound = false;
 	chain_reaction=0;
@@ -17453,8 +17452,11 @@ and(image_xscale<0)
 mask_index=sprite_mask;}
 
 }
+#endregion /*In Water Animations END*/
+
 else
 {
+
 #region /*Crouch*/
 if (key_crouch)
 {
@@ -17489,8 +17491,9 @@ if (key_crouch)
 }
 #endregion /*Crouch END*/
 
-#region /*Don't crouch*/
 else
+
+#region /*Don't crouch*/
 if (!key_down)
 and(!place_meeting(x,y-8,obj_wall))
 and(crouch=true)
@@ -17924,42 +17927,6 @@ or(hspeed > +0.1)
 		else
 		{
 			
-			#region /*Against Wall*/
-			if (place_meeting(x-1,y,obj_wall))
-			and(position_meeting(x,bbox_bottom+1,obj_wall))
-			and(key_left)
-			and(global.pause=false)
-			or(place_meeting(x+1,y,obj_wall))
-			and(position_meeting(x,bbox_bottom+1,obj_wall))
-			and(key_right)
-			and(global.pause=false)
-			or(place_meeting(x-1,y,obj_wall))
-			and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-			and(key_left)
-			and(global.pause=false)
-			or(place_meeting(x+1,y,obj_wall))
-			and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-			and(key_right)
-			and(global.pause=false)
-			{
-				if (crouch=false)
-				{
-					if (sprite_against_wall>noone){sprite_index = sprite_against_wall;image_speed=0.5;}else
-					{sprite_index = sprite_stand;image_speed=0.3;}
-				}
-				if (asset_get_type("snd_bump")==asset_sound)
-				{
-					if (!audio_is_playing(snd_bump))
-					{
-						audio_play_sound(snd_bump,0,0);
-						audio_sound_gain(snd_bump,global.sfx_volume,0);
-					}
-				}
-			}
-			#endregion /*Against Wall END*/
-			
-			else
-			
 			#region /*Walk*/
 			{
 				if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
@@ -17980,6 +17947,38 @@ or(hspeed > +0.1)
 	}
 }
 #endregion /*Run END*/
+
+else
+
+#region /*Against Wall*/
+if (place_meeting(x-1,y,obj_wall))
+and(place_meeting(x,y+1,obj_wall))
+and(key_left)
+or(place_meeting(x+1,y,obj_wall))
+and(place_meeting(x,y+1,obj_wall))
+and(key_right)
+or(place_meeting(x-1,y,obj_wall))
+and(place_meeting(x,y+1,obj_semisolid_platform))
+and(key_left)
+or(place_meeting(x+1,y,obj_wall))
+and(place_meeting(x,y+1,obj_semisolid_platform))
+and(key_right)
+{
+	if (crouch=false)
+	{
+		if (sprite_against_wall>noone){sprite_index = sprite_against_wall;image_speed=0.5;}else
+		{sprite_index = sprite_stand;image_speed=0.3;}
+	}
+	if (asset_get_type("snd_bump")==asset_sound)
+	{
+		if (!audio_is_playing(snd_bump))
+		{
+			audio_play_sound(snd_bump,0,0);
+			audio_sound_gain(snd_bump,global.sfx_volume,0);
+		}
+	}
+}
+#endregion /*Against Wall END*/
 
 else
 {
@@ -18053,69 +18052,11 @@ and(vspeed>=0)
 else
 if (vspeed<0)
 {
-if (stomp_spin=true)
-{
-	if (sprite_stomp_spin>noone){sprite_index = sprite_stomp_spin;}else
-	if (sprite_jump>noone){sprite_index = sprite_jump;}else
-	{sprite_index = sprite_stand;}
-	if (image_index>image_number-1)
+	if (stomp_spin=true)
 	{
-		image_speed=0;
-	}
-	else
-	{
-		image_speed=0.5;
-	}
-}
-else
-if (spring>=2)
-{
-	if (asset_get_type("spr_player_spring_double")==asset_sprite)
-	{
-		sprite_index=spr_player_spring_double;
-	}
-	else
-	{
-		sprite_index = sprite_stomp_spin;
-	}
-	if (image_index>image_number-1)
-	{
-		image_speed=0;
-	}
-	else
-	{
-		image_speed=0.5;
-	}
-}
-else
-/*Make it look natural when climbing wall*//*IMPORTANT*/
-/*Run up wall / wall_slide up*/
-if (stick_to_wall=true)
-{
-	if (crouch=false)
-	and(ground_pound=false)
-	and(ledge_grab=false)
-	{
-		if(sprite_wall_slide_up>noone){sprite_index = sprite_wall_slide_up;}else
-		if(sprite_wall_slide>noone){sprite_index = sprite_wall_slide;}else
+		if (sprite_stomp_spin>noone){sprite_index = sprite_stomp_spin;}else
+		if (sprite_jump>noone){sprite_index = sprite_jump;}else
 		{sprite_index = sprite_stand;}
-		image_speed=0.5;
-	}
-}
-else
-if (invincible>30)
-and(asset_get_type("spr_player_invincible_jump")==asset_sprite)
-{
-	sprite_index=spr_player_invincible_jump;
-	image_speed=1;
-}
-/*Walljump*/
-else
-{
-	if (wall_jump=true)
-	and(asset_get_type("spr_player_wall_jump")==asset_sprite)
-	{
-		sprite_index=spr_player_wall_jump;
 		if (image_index>image_number-1)
 		{
 			image_speed=0;
@@ -18126,14 +18067,90 @@ else
 		}
 	}
 	else
-	/*Single Jump*/
-	if (jump < 2)
+	if (spring>=2)
 	{
-		if (speeddash=true)
+		if (asset_get_type("spr_player_spring_double")==asset_sprite)
 		{
-			if (asset_get_type("spr_player_speeddashjump")==asset_sprite)
+			sprite_index=spr_player_spring_double;
+		}
+		else
+		{
+			sprite_index = sprite_stomp_spin;
+		}
+		if (image_index>image_number-1)
+		{
+			image_speed=0;
+		}
+		else
+		{
+			image_speed=0.5;
+		}
+	}
+	else
+	/*Make it look natural when climbing wall*//*IMPORTANT*/
+	/*Run up wall / wall_slide up*/
+	if (stick_to_wall=true)
+	{
+		if (crouch=false)
+		and(ground_pound=false)
+		and(ledge_grab=false)
+		{
+			if(sprite_wall_slide_up>noone){sprite_index = sprite_wall_slide_up;}else
+			if(sprite_wall_slide>noone){sprite_index = sprite_wall_slide;}else
+			{sprite_index = sprite_stand;}
+			image_speed=0.5;
+		}
+	}
+	else
+	if (invincible>30)
+	and(asset_get_type("spr_player_invincible_jump")==asset_sprite)
+	{
+		sprite_index=spr_player_invincible_jump;
+		image_speed=1;
+	}
+	/*Walljump*/
+	else
+	{
+		if (wall_jump=true)
+		and(asset_get_type("spr_player_wall_jump")==asset_sprite)
+		{
+			sprite_index=spr_player_wall_jump;
+			if (image_index>image_number-1)
 			{
-				sprite_index=spr_player_speeddashjump;
+				image_speed=0;
+			}
+			else
+			{
+				image_speed=0.5;
+			}
+		}
+		else
+		
+		/*Single Jump*/
+		if (jump < 2)
+		{
+			if (speeddash=true)
+			{
+				if (asset_get_type("spr_player_speeddashjump")==asset_sprite)
+				{
+					sprite_index=spr_player_speeddashjump;
+				}
+				else
+				if (asset_get_type("spr_player_jump2")==asset_sprite)
+				and(asset_get_type("spr_player_jump3")==asset_sprite)
+				{
+					if (sprite_index!=sprite_jump)
+					and(sprite_index!=spr_player_jump2)
+					and(sprite_index!=spr_player_jump3)
+					{
+						sprite_index=choose(sprite_jump,spr_player_jump2,spr_player_jump3);
+					}
+				}
+				else
+				{
+					if (sprite_jump>noone){sprite_index = sprite_jump;}else
+					{sprite_index = sprite_stand;}
+				}
 			}
 			else
 			if (asset_get_type("spr_player_jump2")==asset_sprite)
@@ -18153,54 +18170,37 @@ else
 			}
 		}
 		else
-		if (asset_get_type("spr_player_jump2")==asset_sprite)
-		and(asset_get_type("spr_player_jump3")==asset_sprite)
+		
+		#region /*Double Jump*/
+		if (jump = 2)
 		{
-			if (sprite_index!=sprite_jump)
-			and(sprite_index!=spr_player_jump2)
-			and(sprite_index!=spr_player_jump3)
-			{
-				sprite_index=choose(sprite_jump,spr_player_jump2,spr_player_jump3);
-			}
+			if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
+			if (sprite_jump>noone){sprite_index = sprite_jump;}else
+			{sprite_index = sprite_stand;}
+			image_speed=0.5;
+		}
+		#endregion /*Double Jump END*/
+
+		else
+
+		#region /*Triple Jump*/
+		if (jump > 2)
+		{
+			if(sprite_triple_jump>noone){sprite_index = sprite_triple_jump;}else
+			if(sprite_jump>noone){sprite_index = sprite_jump;}else
+			{sprite_index = sprite_stand;}
+		}
+		#endregion /*Triple Jump*/
+
+		if (image_index>image_number-1)
+		{
+			image_speed=0;
 		}
 		else
 		{
-			if (sprite_jump>noone){sprite_index = sprite_jump;}else
-			{sprite_index = sprite_stand;}
+			image_speed=0.5;
 		}
 	}
-	else
-
-#region /*Double Jump*/
-if (jump = 2)
-{
-	if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
-	if (sprite_jump>noone){sprite_index = sprite_jump;}else
-	{sprite_index = sprite_stand;}
-	image_speed=0.5;
-}
-#endregion /*Double Jump END*/
-
-else
-
-#region /*Triple Jump*/
-if (jump > 2)
-{
-	if(sprite_triple_jump>noone){sprite_index = sprite_triple_jump;}else
-	if(sprite_jump>noone){sprite_index = sprite_jump;}else
-	{sprite_index = sprite_stand;}
-}
-#endregion /*Triple Jump*/
-
-if (image_index>image_number-1)
-{
-	image_speed=0;
-}
-else
-{
-	image_speed=0.5;
-}
-}
 }
 else
 if (vspeed>0)
