@@ -4632,461 +4632,98 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 	#endregion /*Remap Keyboard and Mouse End*/
 	
 	#region /*Up Key Is Jump Key*/
-	if (remapping_player=1){if (menu="up_key_is_jump_key"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_up_key_is_jump_key+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_up_key_is_jump_key;
-	if (global.player1_up_key_is_jump_key=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}
-	else if (global.player1_up_key_is_jump_key=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-
-	else if (remapping_player=2){if (menu="up_key_is_jump_key"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_up_key_is_jump_key+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_up_key_is_jump_key;
-	if (global.player2_up_key_is_jump_key=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}
-	else if (global.player2_up_key_is_jump_key=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-
-	else if (remapping_player=3){if (menu="up_key_is_jump_key"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_up_key_is_jump_key+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_up_key_is_jump_key;
-	if (global.player3_up_key_is_jump_key=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}
-	else if (global.player3_up_key_is_jump_key=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-
-	else if (remapping_player=4){if (menu="up_key_is_jump_key"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_up_key_is_jump_key+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_up_key_is_jump_key;
-	if (global.player4_up_key_is_jump_key=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}
-	else if (global.player4_up_key_is_jump_key=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_sprite_ext(spr_checkbox,true,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_sprite_ext(spr_checkbox,false,430,menu_y_up_key_is_jump_key+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_up_key_is_jump_key+menu_y_offset,"Up key is jump key",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-
+	if (remapping_player = 1)
+	{
+		draw_menu_checkmark(390, menu_y_up_key_is_jump_key+menu_y_offset, "Up key is jump key", "up_key_is_jump_key", global.player1_up_key_is_jump_key);
+	}
+	if (remapping_player = 2)
+	{
+		draw_menu_checkmark(390, menu_y_up_key_is_jump_key+menu_y_offset, "Up key is jump key", "up_key_is_jump_key", global.player2_up_key_is_jump_key);
+	}
+	if (remapping_player = 3)
+	{
+		draw_menu_checkmark(390, menu_y_up_key_is_jump_key+menu_y_offset, "Up key is jump key", "up_key_is_jump_key", global.player3_up_key_is_jump_key);
+	}
+	if (remapping_player = 4)
+	{
+		draw_menu_checkmark(390, menu_y_up_key_is_jump_key+menu_y_offset, "Up key is jump key", "up_key_is_jump_key", global.player4_up_key_is_jump_key);
+	}
 	#endregion /*Up Key Is Jump Key END*/
 	
 	#region /*Double tap direction to run*/
-	if (remapping_player=1){if (menu="double_tap_to_run"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_double_tap_direction_to_run+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_double_tap_direction_to_run;
-	if (global.player1_double_tap_to_run=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}
-	else if (global.player1_double_tap_to_run=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-	
-	else if (remapping_player=2){if (menu="double_tap_to_run"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_double_tap_direction_to_run+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_double_tap_direction_to_run;
-	if (global.player2_double_tap_to_run=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}
-	else if (global.player2_double_tap_to_run=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-	
-	else if (remapping_player=3){if (menu="double_tap_to_run"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_double_tap_direction_to_run+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_double_tap_direction_to_run;
-	if (global.player3_double_tap_to_run=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}
-	else if (global.player3_double_tap_to_run=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
-	
-	else if (remapping_player=4){if (menu="double_tap_to_run"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_double_tap_direction_to_run+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_double_tap_direction_to_run;
-	if (global.player4_double_tap_to_run=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}
-	else if (global.player4_double_tap_to_run=true){draw_sprite_ext(spr_checkbox,true,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-	else{draw_sprite_ext(spr_checkbox,false,430,menu_y_double_tap_direction_to_run+menu_y_offset,0.5,0.5,0,c_white,1);draw_text_outlined(460,menu_y_double_tap_direction_to_run+menu_y_offset,"Double tap direction to run",global.default_text_size,c_menu_outline,c_menu_fill,1);}}
+	if (remapping_player = 1)
+	{
+		draw_menu_checkmark(390, menu_y_double_tap_direction_to_run+menu_y_offset, "Double tap direction to run", "double_tap_to_run", global.player1_double_tap_to_run);
+	}
+	if (remapping_player = 2)
+	{
+		draw_menu_checkmark(390, menu_y_double_tap_direction_to_run+menu_y_offset, "Double tap direction to run", "double_tap_to_run", global.player2_double_tap_to_run);
+	}
+	if (remapping_player = 3)
+	{
+		draw_menu_checkmark(390, menu_y_double_tap_direction_to_run+menu_y_offset, "Double tap direction to run", "double_tap_to_run", global.player3_double_tap_to_run);
+	}
+	if (remapping_player = 4)
+	{
+		draw_menu_checkmark(390, menu_y_double_tap_direction_to_run+menu_y_offset, "Double tap direction to run", "double_tap_to_run", global.player4_double_tap_to_run);
+	}
 	#endregion /*Double tap direction to run END*/
 	
 	#region /*Always run*/
-	
-	#region /*Player 1 always run*/
 	if (remapping_player = 1)
 	{
-		if (menu = "always_run")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = menu_y_always_run;
-			if (global.player1_sprint_toggle = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else
-		if (global.player1_sprint_toggle = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_always_run+menu_y_offset, "Always run", "always_run", global.player1_sprint_toggle);
 	}
-	#endregion /*Player 1 always run END*/
-	
-	else
-	
-	#region /*Player 2 always run*/
 	if (remapping_player = 2)
 	{
-		if (menu = "always_run")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = menu_y_always_run;
-			if (global.player2_sprint_toggle = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else if (global.player2_sprint_toggle = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_always_run+menu_y_offset, "Always run", "always_run", global.player2_sprint_toggle);
 	}
-	#endregion /*Player 2 always run END*/
-	
-	else
-	
-	#region /*Player 3 always run*/
 	if (remapping_player = 3)
 	{
-		if (menu = "always_run")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = menu_y_always_run;
-			if (global.player3_sprint_toggle = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else if (global.player3_sprint_toggle = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_always_run+menu_y_offset, "Always run", "always_run", global.player3_sprint_toggle);
 	}
-	#endregion /*Player 3 always run END*/
-	
-	else
-	
-	#region /*Player 4 always run*/
 	if (remapping_player = 4)
 	{
-		if (menu = "always_run")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = 850;
-			if (global.player4_sprint_toggle = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else if (global.player4_sprint_toggle = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_always_run + menu_y_offset, "Always run", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_always_run+menu_y_offset, "Always run", "always_run", global.player4_sprint_toggle);
 	}
-	#endregion /*Player 4 always run END*/
-	
 	#endregion /*Always run END*/
 	
 	#region /*Cancel dive by pressing jump or dive button*/
-	
-	#region /*Player 1 cancel dive by pressing jump or dive button*/
 	if (remapping_player = 1)
 	{
-		if (menu = "cancel_dive_by_pressing_jump_or_dive_button")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = menu_y_cancel_dive_by_pressing_jump_or_dive_button;
-			if (global.player1_cancel_dive_by_pressing_jump_or_dive_button = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else
-		if (global.player1_cancel_dive_by_pressing_jump_or_dive_button = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button+menu_y_offset, "Cancel dive by pressing jump or dive button", "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
 	}
-	#endregion /*Player 1 cancel dive by pressing jump or dive button END*/
-	
-	else
-	
-	#region /*Player 2 cancel dive by pressing jump or dive button*/
 	if (remapping_player = 2)
 	{
-		if (menu = "cancel_dive_by_pressing_jump_or_dive_button")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = menu_y_cancel_dive_by_pressing_jump_or_dive_button;
-			if (global.player2_cancel_dive_by_pressing_jump_or_dive_button = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else if (global.player2_cancel_dive_by_pressing_jump_or_dive_button = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button+menu_y_offset, "Cancel dive by pressing jump or dive button", "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
 	}
-	#endregion /*Player 2 Cancel dive by pressing jump or dive button END*/
-	
-	else
-	
-	#region /*Player 3 cancel dive by pressing jump or dive button*/
 	if (remapping_player = 3)
 	{
-		if (menu = "cancel_dive_by_pressing_jump_or_dive_button")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = menu_y_cancel_dive_by_pressing_jump_or_dive_button;
-			if (global.player3_cancel_dive_by_pressing_jump_or_dive_button = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else if (global.player3_cancel_dive_by_pressing_jump_or_dive_button = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button+menu_y_offset, "Cancel dive by pressing jump or dive button", "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
 	}
-	#endregion /*Player 3 cancel dive by pressing jump or dive button END*/
-	
-	else
-	
-	#region /*Player 4 cancel dive by pressing jump or dive button*/
 	if (remapping_player = 4)
 	{
-		if (menu = "cancel_dive_by_pressing_jump_or_dive_button")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = 850;
-			if (global.player4_cancel_dive_by_pressing_jump_or_dive_button = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else if (global.player4_cancel_dive_by_pressing_jump_or_dive_button = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button+menu_y_offset, "Cancel dive by pressing jump or dive button", "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
 	}
-	#endregion /*Player 4 cancel dive by pressing jump or dive button END*/
-	
 	#endregion /*Cancel dive by pressing jump or dive button END*/
 	
 	#region /*Cancel dive by pressing opposite direction*/
-	
-	#region /*Player 1 cancel dive by pressing opposite direction*/
 	if (remapping_player = 1)
 	{
-		if (menu = "cancel_dive_by_pressing_opposite_direction")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = menu_y_cancel_dive_by_pressing_opposite_direction;
-			if (global.player1_cancel_dive_by_pressing_opposite_direction = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else
-		if (global.player1_cancel_dive_by_pressing_opposite_direction = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction+menu_y_offset, "Cancel dive by pressing opposite direction", "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
 	}
-	#endregion /*Player 1 cancel dive by pressing opposite direction END*/
-	
-	else
-	
-	#region /*Player 2 cancel dive by pressing opposite direction*/
 	if (remapping_player = 2)
 	{
-		if (menu = "cancel_dive_by_pressing_opposite_direction")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = menu_y_cancel_dive_by_pressing_opposite_direction;
-			if (global.player2_cancel_dive_by_pressing_opposite_direction = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else if (global.player2_cancel_dive_by_pressing_opposite_direction = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction+menu_y_offset, "Cancel dive by pressing opposite direction", "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
 	}
-	#endregion /*Player 2 cancel dive by pressing opposite direction END*/
-	
-	else
-	
-	#region /*Player 3 cancel dive by pressing opposite direction*/
 	if (remapping_player = 3)
 	{
-		if (menu = "cancel_dive_by_pressing_opposite_direction")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = menu_y_cancel_dive_by_pressing_opposite_direction;
-			if (global.player3_cancel_dive_by_pressing_opposite_direction = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else if (global.player3_cancel_dive_by_pressing_opposite_direction = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction+menu_y_offset, "Cancel dive by pressing opposite direction", "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
 	}
-	#endregion /*Player 3 cancel dive by pressing opposite direction END*/
-	
-	else
-	
-	#region /*Player 4 cancel dive by pressing opposite direction*/
 	if (remapping_player = 4)
 	{
-		if (menu = "cancel_dive_by_pressing_opposite_direction")
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 1, 1, 0, c_white, 1);
-			menu_cursor_y_position = 850;
-			if (global.player4_cancel_dive_by_pressing_opposite_direction = true)
-			{
-				draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else if (global.player4_cancel_dive_by_pressing_opposite_direction = true)
-		{
-			draw_sprite_ext(spr_checkbox, true, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_checkbox, false, 430, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-			draw_text_outlined(460, camera_get_view_y(view_camera[view_current]) + menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction+menu_y_offset, "Cancel dive by pressing opposite direction", "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
 	}
-	#endregion /*Player 4 cancel dive by pressing opposite direction END*/
-	
 	#endregion /*Cancel dive by pressing opposite direction END*/
 	
 	#region /*Wall Jump Setting*/
@@ -6713,12 +6350,96 @@ if (global.settings_sidebar_menu = "accessibility_settings")
 
 		else if (key_up)and(menu_delay= 0){menu="show_controls";menu_delay = 3;}else if (key_down)and(menu_delay= 0){menu="remap_key_dive";menu_delay = 3;}
 	}
-	else if (menu="up_key_is_jump_key"){if (key_up)and(menu_delay= 0){menu="remap_reset";menu_delay = 3;}else if (key_down)and(menu_delay= 0){menu="double_tap_to_run";menu_delay = 3;}}
-	else if (menu="double_tap_to_run"){if (key_up)and(menu_delay= 0){menu="up_key_is_jump_key";menu_delay = 3;}else if (key_down)and(menu_delay= 0){menu="always_run";menu_delay = 3;}}
-	else if (menu="always_run"){if (key_up)and(menu_delay= 0){menu="double_tap_to_run";menu_delay = 3;}else if (key_down)and(menu_delay= 0){menu="cancel_dive_by_pressing_jump_or_dive_button";menu_delay = 3;}}
-	
-	else if (menu="cancel_dive_by_pressing_jump_or_dive_button"){if (key_up)and(menu_delay= 0){menu="always_run";menu_delay = 3;}else if (key_down)and(menu_delay= 0){menu="cancel_dive_by_pressing_opposite_direction";menu_delay = 3;}}
-	else if (menu="cancel_dive_by_pressing_opposite_direction"){if (key_up)and(menu_delay= 0){menu="cancel_dive_by_pressing_jump_or_dive_button";menu_delay = 3;}else if (key_down)and(menu_delay= 0){menu="wall_jump_setting";menu_delay = 3;}}
+	else
+	if (menu = "up_key_is_jump_key")
+	{
+		menu_cursor_y_position = menu_y_up_key_is_jump_key;
+		if (key_up)
+		and(menu_delay = 0)
+		{
+			menu = "remap_reset";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and(menu_delay= 0)
+		{
+			menu = "double_tap_to_run";
+			menu_delay = 3;
+		}
+	}
+	else
+	if (menu = "double_tap_to_run")
+	{
+		menu_cursor_y_position = menu_y_double_tap_direction_to_run;
+		if (key_up)
+		and(menu_delay = 0)
+		{
+			menu = "up_key_is_jump_key";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and(menu_delay = 0)
+		{
+			menu = "always_run";
+			menu_delay = 3;
+		}
+	}
+	else
+	if (menu = "always_run")
+	{
+		menu_cursor_y_position = menu_y_always_run;
+		if (key_up)
+		and(menu_delay = 0)
+		{
+			menu = "double_tap_to_run";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and(menu_delay = 0)
+		{
+			menu = "cancel_dive_by_pressing_jump_or_dive_button";
+			menu_delay = 3;
+		}
+	}
+	else
+	if (menu = "cancel_dive_by_pressing_jump_or_dive_button")
+	{
+		menu_cursor_y_position = menu_y_cancel_dive_by_pressing_jump_or_dive_button;
+		if (key_up)
+		and(menu_delay = 0)
+		{
+			menu = "always_run";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and(menu_delay = 0)
+		{
+			menu = "cancel_dive_by_pressing_opposite_direction";
+			menu_delay = 3;
+		}
+	}
+	else
+	if (menu = "cancel_dive_by_pressing_opposite_direction")
+	{
+		menu_cursor_y_position = menu_y_cancel_dive_by_pressing_opposite_direction;
+		if (key_up)
+		and(menu_delay = 0)
+		{
+			menu = "cancel_dive_by_pressing_jump_or_dive_button";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and(menu_delay = 0)
+		{
+			menu = "wall_jump_setting";
+			menu_delay = 3;
+		}
+	}
 	
 	else if (menu="wall_jump_setting"){
 	if (remapping_player=1){if (key_left){if (global.player1_wall_jump_setting>0){global.player1_wall_jump_setting-=1;}else{global.player1_wall_jump_setting=2;}}else if (key_right)or(key_a_pressed){if (global.player1_wall_jump_setting<+2){global.player1_wall_jump_setting+=1;}else{global.player1_wall_jump_setting= 0;}}}
