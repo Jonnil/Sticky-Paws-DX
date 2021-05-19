@@ -1,5 +1,5 @@
 var xx = x,
-	yy = y;
+var yy = y;
 if (asset_get_type("obj_player") == asset_object)
 and(position_meeting(x, bbox_top - 1, obj_player))
 and(fall < 100)
@@ -52,9 +52,9 @@ if (fall >= 100)
 }
 draw_sprite_ext(sprite_index, image_index, xx, yy, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 
-if (asset_get_type("spr_semisolid_platform") == asset_sprite)
+if (asset_get_type("spr_falling_block") == asset_sprite)
 {
-	mask_index = spr_semisolid_platform;
+	mask_index = spr_falling_block;
 }
 
 #region /*Limit the vertical speed*/

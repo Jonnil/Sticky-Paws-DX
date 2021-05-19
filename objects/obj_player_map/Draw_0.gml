@@ -427,7 +427,6 @@ or(gamepad_axis_value(0, gp_axislv) < 0);
 #region /*Player 1 Key Accept Pressed*/
 key_a_pressed =
 (gamepad_button_check_pressed(0, gp_face1))
-or(gamepad_button_check_pressed(0, gp_face2))
 or(keyboard_check_pressed(global.player1_key_jump))
 or(keyboard_check_pressed(global.player1_key2_jump))
 or(keyboard_check_pressed(vk_space))
@@ -437,8 +436,9 @@ or(keyboard_check_pressed(ord("Z")));
 
 #region /*Player 1 Key Back Pressed*/
 key_b_pressed =
-(gamepad_button_check_pressed(0, gp_face3))
-or(gamepad_button_check_pressed(0, gp_face4))
+(gamepad_button_check_pressed(0, gp_face2))
+or(keyboard_check_pressed(global.player1_key_dive))
+or(keyboard_check_pressed(global.player1_key2_dive))
 or(keyboard_check_pressed(global.player1_key_sprint))
 or(keyboard_check_pressed(global.player1_key2_sprint))
 or(keyboard_check_pressed(vk_backspace))

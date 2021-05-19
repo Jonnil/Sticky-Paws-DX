@@ -16434,7 +16434,6 @@ if (spring = true)
 	{
 		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
 		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
-		if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
 		if (sprite_jump>noone){sprite_index = sprite_jump;}else
 		{sprite_index = sprite_stand;}
 	}
@@ -18677,6 +18676,7 @@ or(invincible>0)
 #endregion /*Speedlines Effect End*/
 
 if (place_meeting(x,y+1,obj_wall))
+or (place_meeting(x,y+1,obj_semisolid_platform))
 {
 	can_dive = true;
 }

@@ -3179,7 +3179,7 @@ if (instance_exists(obj_player))
 }
 #endregion /*If player object is present, destroy the player object END*/
 
-#region /*Menu navigation with joystick*/
+#region /*Menu navigation with joystick (This code must come after all menu navigation code)*/
 if (gamepad_axis_value(0,gp_axislv)<0)
 or(gamepad_axis_value(0,gp_axislv)>0)
 or(gamepad_axis_value(0,gp_axislh)<0)
@@ -3218,7 +3218,7 @@ if (menu_joystick_delay > 0)
 {
 	menu_joystick_delay -= 1;
 }
-#endregion /*Menu navigation with joystick END*/
+#endregion /*Menu navigation with joystick (This code must come after all menu navigation code) END*/
 
 #region /*Have a black screen at the first frame so transitions look natural*/
 if (black_screen_at_start_delay<1)

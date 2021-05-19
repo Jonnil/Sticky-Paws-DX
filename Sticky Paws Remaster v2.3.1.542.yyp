@@ -200,7 +200,7 @@
     {"id":{"name":"spr_level_height","path":"sprites/spr_level_height/spr_level_height.yy",},"order":86,},
     {"id":{"name":"obj_water","path":"objects/obj_water/obj_water.yy",},"order":9,},
     {"id":{"name":"obj_foreground2","path":"objects/obj_foreground2/obj_foreground2.yy",},"order":27,},
-    {"id":{"name":"spr_ground_tileset","path":"sprites/spr_ground_tileset/spr_ground_tileset.yy",},"order":29,},
+    {"id":{"name":"spr_ground_tileset","path":"sprites/spr_ground_tileset/spr_ground_tileset.yy",},"order":8,},
     {"id":{"name":"draw_menu_checkmark","path":"scripts/draw_menu_checkmark/draw_menu_checkmark.yy",},"order":1,},
     {"id":{"name":"snd_footstep_gravel_right","path":"sounds/snd_footstep_gravel_right/snd_footstep_gravel_right.yy",},"order":47,},
     {"id":{"name":"snd_menuvoice_titlesplash","path":"sounds/snd_menuvoice_titlesplash/snd_menuvoice_titlesplash.yy",},"order":90,},

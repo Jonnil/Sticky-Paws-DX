@@ -13,39 +13,39 @@ my = window_mouse_get_y();
 
 if (keyboard_check(vk_anykey))
 {
-	global.controls_used_for_menu_navigation="keyboard";
+	global.controls_used_for_menu_navigation = "keyboard";
 }
 else
 if (mouse_check_button(mb_any))
-or(mouse_wheel_down())
-or(mouse_wheel_up())
-or(mouse_moving)
+or (mouse_wheel_down())
+or (mouse_wheel_up())
+or (mouse_moving)
 {
-	global.controls_used_for_menu_navigation="mouse";
+	global.controls_used_for_menu_navigation = "mouse";
 }
 else
 if (gamepad_button_check(0,gp_face1))
-or(gamepad_button_check(0,gp_face2))
-or(gamepad_button_check(0,gp_face3))
-or(gamepad_button_check(0,gp_face4))
-or(gamepad_button_check(0,gp_padd))
-or(gamepad_button_check(0,gp_padl))
-or(gamepad_button_check(0,gp_padr))
-or(gamepad_button_check(0,gp_padu))
-or(gamepad_button_check(0,gp_select))
-or(gamepad_button_check(0,gp_shoulderl))
-or(gamepad_button_check(0,gp_shoulderlb))
-or(gamepad_button_check(0,gp_shoulderr))
-or(gamepad_button_check(0,gp_shoulderrb))
-or(gamepad_button_check(0,gp_start))
-or(gamepad_button_check(0,gp_stickl))
-or(gamepad_button_check(0,gp_stickr))
-or(gamepad_axis_value(0,gp_axislh)<>0)
-or(gamepad_axis_value(0,gp_axislv)<>0)
-or(gamepad_axis_value(0,gp_axisrh)<>0)
-or(gamepad_axis_value(0,gp_axisrv)<>0)
+or (gamepad_button_check(0,gp_face2))
+or (gamepad_button_check(0,gp_face3))
+or (gamepad_button_check(0,gp_face4))
+or (gamepad_button_check(0,gp_padd))
+or (gamepad_button_check(0,gp_padl))
+or (gamepad_button_check(0,gp_padr))
+or (gamepad_button_check(0,gp_padu))
+or (gamepad_button_check(0,gp_select))
+or (gamepad_button_check(0,gp_shoulderl))
+or (gamepad_button_check(0,gp_shoulderlb))
+or (gamepad_button_check(0,gp_shoulderr))
+or (gamepad_button_check(0,gp_shoulderrb))
+or (gamepad_button_check(0,gp_start))
+or (gamepad_button_check(0,gp_stickl))
+or (gamepad_button_check(0,gp_stickr))
+or (gamepad_axis_value(0,gp_axislh)<>0)
+or (gamepad_axis_value(0,gp_axislv)<>0)
+or (gamepad_axis_value(0,gp_axisrh)<>0)
+or (gamepad_axis_value(0,gp_axisrv)<>0)
 {
-	global.controls_used_for_menu_navigation="controller";
+	global.controls_used_for_menu_navigation = "controller";
 }
 #endregion /*Set what controls are used to navigate the menus END*/
 
@@ -640,34 +640,11 @@ if (use_controller=false)
 	cursor_y=window_mouse_get_y();
 	
 	#region /*Change control type to gamepad if using a gamepad*/
-	if (gamepad_axis_value(0,gp_axislh)<0)
-	or(gamepad_axis_value(0,gp_axislh)>0)
-	or(gamepad_axis_value(0,gp_axislv)<0)
-	or(gamepad_axis_value(0,gp_axislv)>0)
-	or(gamepad_axis_value(0,gp_axisrh)<0)
-	or(gamepad_axis_value(0,gp_axisrh)>0)
-	or(gamepad_axis_value(0,gp_axisrv)<0)
-	or(gamepad_axis_value(0,gp_axisrv)>0)
-	or(gamepad_button_check(0,gp_face1))
-	or(gamepad_button_check(0,gp_face2))
-	or(gamepad_button_check(0,gp_face3))
-	or(gamepad_button_check(0,gp_face4))
-	or(gamepad_button_check(0,gp_padd))
-	or(gamepad_button_check(0,gp_padl))
-	or(gamepad_button_check(0,gp_padr))
-	or(gamepad_button_check(0,gp_padu))
-	or(gamepad_button_check(0,gp_select))
-	or(gamepad_button_check(0,gp_shoulderl))
-	or(gamepad_button_check(0,gp_shoulderlb))
-	or(gamepad_button_check(0,gp_shoulderr))
-	or(gamepad_button_check(0,gp_shoulderrb))
-	or(gamepad_button_check(0,gp_start))
-	or(gamepad_button_check(0,gp_stickl))
-	or(gamepad_button_check(0,gp_stickr))
+	if (global.controls_used_for_menu_navigation = "controller")
 	{
-		controller_x=mouse_x;
-		controller_y=mouse_y;
-		use_controller=true;
+		controller_x = mouse_x;
+		controller_y = mouse_y;
+		use_controller = true;
 	}
 	#endregion /*Change control type to gamepad if using a gamepad END*/
 	
@@ -820,8 +797,8 @@ if (use_controller=true)
 		}
 	}
 	#endregion /*Move view with gamepad END*/
-	x=controller_x;
-	y=controller_y;
+	x = controller_x;
+	y = controller_y;
 	cursor_x=controller_x;
 	cursor_y=controller_y;
 }
@@ -1696,46 +1673,6 @@ if (menu_delay<0)
 	menu_delay=0;
 }
 #endregion /*Menu Navigation Delay END*/
-
-#region /*Menu navigation with joystick*/
-if (gamepad_axis_value(0,gp_axislv)<0)
-or(gamepad_axis_value(0,gp_axislv)>0)
-or(gamepad_axis_value(0,gp_axislh)<0)
-or(gamepad_axis_value(0,gp_axislh)>0)
-or(gamepad_axis_value(1,gp_axislv)<0)
-or(gamepad_axis_value(1,gp_axislv)>0)
-or(gamepad_axis_value(1,gp_axislh)<0)
-or(gamepad_axis_value(1,gp_axislh)>0)
-or(gamepad_axis_value(2,gp_axislv)<0)
-or(gamepad_axis_value(2,gp_axislv)>0)
-or(gamepad_axis_value(2,gp_axislh)<0)
-or(gamepad_axis_value(2,gp_axislh)>0)
-or(gamepad_axis_value(3,gp_axislv)<0)
-or(gamepad_axis_value(3,gp_axislv)>0)
-or(gamepad_axis_value(3,gp_axislh)<0)
-or(gamepad_axis_value(3,gp_axislh)>0)
-{
-	if (menu_joystick_delay=0)
-	{
-		menu_joystick_delay=15;
-	}
-}
-if (gamepad_axis_value(0,gp_axislv)=0)
-and(gamepad_axis_value(0,gp_axislh)=0)
-and(gamepad_axis_value(1,gp_axislv)=0)
-and(gamepad_axis_value(1,gp_axislh)=0)
-and(gamepad_axis_value(2,gp_axislv)=0)
-and(gamepad_axis_value(2,gp_axislh)=0)
-and(gamepad_axis_value(3,gp_axislv)=0)
-and(gamepad_axis_value(3,gp_axislh)=0)
-{
-	menu_joystick_delay=0;
-}
-if (menu_joystick_delay>0)
-{
-	menu_joystick_delay-=1;
-}
-#endregion /*Menu navigation with joystick END*/
 
 if (os_type == os_ios)
 or(os_type == os_android)

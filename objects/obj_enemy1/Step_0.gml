@@ -90,8 +90,11 @@ if (position_meeting(bbox_right+1,y,obj_wall))
 
 #region /*Kill enemy if it's inside the wall*/
 if (position_meeting(x,y,obj_wall))
+and(die = false)
+and(draw_xscale>=0.8)
 {
-	flat=true;
-	die=true;
+	flat = false;
+	die = true;
+	die_volting = true;
 }
 #endregion /*Kill enemy if it's inside the wall END*/
