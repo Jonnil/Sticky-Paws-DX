@@ -19,7 +19,7 @@ function scr_show_fps()
 			}
 			else
 			{
-				draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, make_colour_hsv(50/60*fps, 255, 255), 1);
+				draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(room_speed), global.default_text_size, c_black, make_color_hsv(50/60*fps, 255, 255), 1);
 			}
 		
 		}
@@ -34,7 +34,7 @@ function scr_show_fps()
 			}
 			else
 			{
-				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, make_colour_hsv(50/120*fps_real, 255, 255), 1);
+				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, make_color_hsv(50/120*fps_real, 255, 255), 1);
 			}
 		}
 		#endregion /*FPS Real END*/

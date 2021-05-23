@@ -63,11 +63,11 @@ if (asset_get_type("spr_level_crown") == asset_sprite)
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_text_transformed_colour(x - 2, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
-draw_text_transformed_colour(x + 2, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
-draw_text_transformed_colour(x, y - 2, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
-draw_text_transformed_colour(x, y + 2, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
-draw_text_transformed_colour(x, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_white, c_white, c_white, c_white, image_alpha);
+draw_text_transformed_color(x - 2, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
+draw_text_transformed_color(x + 2, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
+draw_text_transformed_color(x, y - 2, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
+draw_text_transformed_color(x, y + 2, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
+draw_text_transformed_color(x, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_white, c_white, c_white, c_white, image_alpha);
 
 if (global.demo = true)
 and(level > global.demo_max_levels)

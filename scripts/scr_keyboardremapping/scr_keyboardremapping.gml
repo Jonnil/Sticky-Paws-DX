@@ -445,9 +445,9 @@ function scr_keyboardremapping()
 			{
 				global.player4_key2_attack = lastkey;
 			}
+			menu_delay = 10;
 			can_remap_key = false;
 			input_key = false;
-			menu_delay = 10;
 		}
 	}
 	#endregion /*Remapping 4 END*/

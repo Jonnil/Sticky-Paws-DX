@@ -35,8 +35,8 @@ and(have_heart_balloon=true)
 	}
 	if (takendamage%2==0)
 	{
-		draw_line_width_colour(xx,yy,xx_heart,yy_heart,6,c_black,c_black);
-		draw_line_width_colour(xx,yy,xx_heart,yy_heart,3,c_white,c_white);
+		draw_line_width_color(xx,yy,xx_heart,yy_heart,6,c_black,c_black);
+		draw_line_width_color(xx,yy,xx_heart,yy_heart,3,c_white,c_white);
 		draw_sprite_ext(spr_heart,0,xx_heart,yy_heart,1,1,0,c_white,1);
 	}
 	else
@@ -63,12 +63,12 @@ else
 #region /*Draw arrow when player is outside top view*/
 if (y<camera_get_view_y(view_camera[view_current]))
 {
-	draw_set_colour(c_black);
+	draw_set_color(c_black);
 	draw_arrow(x,camera_get_view_y(view_camera[view_current])+16,x,camera_get_view_y(view_camera[view_current])-2,30);
-	draw_set_colour(c_white);
+	draw_set_color(c_white);
 	draw_arrow(x,camera_get_view_y(view_camera[view_current])+16,x,camera_get_view_y(view_camera[view_current]),20);
-	draw_circle_colour(x,camera_get_view_y(view_camera[view_current])+32,24,c_black,c_black,true);
-	draw_circle_colour(x,camera_get_view_y(view_camera[view_current])+32,22,c_white,c_white,true);
+	draw_circle_color(x,camera_get_view_y(view_camera[view_current])+32,24,c_black,c_black,true);
+	draw_circle_color(x,camera_get_view_y(view_camera[view_current])+32,22,c_white,c_white,true);
 	
 	if (assist_invincible=false)
 	and(invincible>60)
@@ -100,12 +100,12 @@ if (y<camera_get_view_y(view_camera[view_current]))
 if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
 and(y<room_height)
 {
-	draw_set_colour(c_black);
+	draw_set_color(c_black);
 	draw_arrow(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-16,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+2,30);
-	draw_set_colour(c_white);
+	draw_set_color(c_white);
 	draw_arrow(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-16,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),20);
-	draw_circle_colour(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,24,c_black,c_black,true);
-	draw_circle_colour(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,22,c_white,c_white,true);
+	draw_circle_color(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,24,c_black,c_black,true);
+	draw_circle_color(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,22,c_white,c_white,true);
 	
 	if (assist_invincible=false)
 	and(invincible>60)
@@ -288,7 +288,6 @@ if (assist_invincible=false)
 }
 
 if (invincible>60)
-or(global.assist_extra_hp>=10)
 {
 	if (floor(random(10-1))=0)
 	{
@@ -464,7 +463,7 @@ and(midair_jumps_left<number_of_jumps)
 #region /*If player has more hp, show that*/
 if (hp > 0)
 and(max_hp > 1)
-and(global.assist_extra_hp<=9)
+and(global.assist_invincible = false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);

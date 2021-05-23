@@ -569,7 +569,7 @@ else
 if (quit_level_editor=0)
 {
 	draw_set_alpha(selected_menu_alpha);
-	draw_rectangle_colour(0,0,room_width,camera_get_view_y(view_camera[view_current])+128,c_black,c_black,c_black,c_black,false);
+	draw_rectangle_color(0,0,room_width,camera_get_view_y(view_camera[view_current])+128,c_black,c_black,c_black,c_black,false);
 	if (asset_get_type("spr_wall")==asset_sprite)and(wall_surface_selected = 0){draw_sprite_ext(spr_wall,0,									camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_wall_dirt")==asset_sprite)and(wall_surface_selected = 1){draw_sprite_ext(spr_wall_dirt,0,						camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_wall_glass")==asset_sprite)and(wall_surface_selected = 2){draw_sprite_ext(spr_wall_glass,0,						camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
@@ -872,31 +872,31 @@ if (erase_mode=true)
 	{
 		if (erase_brush_size=5)
 		{
-			draw_rectangle_colour(x-80,y-80,x+112,y+112,c_red,c_red,c_red,c_red,false);
+			draw_rectangle_color(x-80,y-80,x+112,y+112,c_red,c_red,c_red,c_red,false);
 		}
 		else
 		if (erase_brush_size=4)
 		{
-			draw_rectangle_colour(x-80,y-80,x+80,y+80,c_red,c_red,c_red,c_red,false);
+			draw_rectangle_color(x-80,y-80,x+80,y+80,c_red,c_red,c_red,c_red,false);
 		}
 		else
 		if (erase_brush_size=3)
 		{
-			draw_rectangle_colour(x-48,y-48,x+80,y+80,c_red,c_red,c_red,c_red,false);
+			draw_rectangle_color(x-48,y-48,x+80,y+80,c_red,c_red,c_red,c_red,false);
 		}
 		else
 		if (erase_brush_size=2)
 		{
-			draw_rectangle_colour(x-48,y-48,x+48,y+48,c_red,c_red,c_red,c_red,false);
+			draw_rectangle_color(x-48,y-48,x+48,y+48,c_red,c_red,c_red,c_red,false);
 		}
 		else
 		if (erase_brush_size=1)
 		{
-			draw_rectangle_colour(x-16,y-16,x+48,y+48,c_red,c_red,c_red,c_red,false);
+			draw_rectangle_color(x-16,y-16,x+48,y+48,c_red,c_red,c_red,c_red,false);
 		}
 		else
 		{
-			draw_rectangle_colour(x-16,y-16,x+16,y+16,c_red,c_red,c_red,c_red,false);
+			draw_rectangle_color(x-16,y-16,x+16,y+16,c_red,c_red,c_red,c_red,false);
 		}
 	}
 	draw_set_alpha(1);
@@ -973,41 +973,41 @@ and(pause=false)
 	if (place_brush_size=5)
 	and(can_make_place_brush_size_bigger=true)
 	{
-		draw_rectangle_colour(x-80,y-80,x+112,y+112,c_black,c_black,c_black,c_black,true);
+		draw_rectangle_color(x-80,y-80,x+112,y+112,c_black,c_black,c_black,c_black,true);
 	}
 	else
 	if (place_brush_size=4)
 	and(can_make_place_brush_size_bigger=true)
 	{
-		draw_rectangle_colour(x-80,y-80,x+80,y+80,c_black,c_black,c_black,c_black,true);
+		draw_rectangle_color(x-80,y-80,x+80,y+80,c_black,c_black,c_black,c_black,true);
 	}
 	else
 	if (place_brush_size=3)
 	and(can_make_place_brush_size_bigger=true)
 	{
-		draw_rectangle_colour(x-48,y-48,x+80,y+80,c_black,c_black,c_black,c_black,true);
+		draw_rectangle_color(x-48,y-48,x+80,y+80,c_black,c_black,c_black,c_black,true);
 	}
 	else
 	if (place_brush_size=2)
 	and(can_make_place_brush_size_bigger=true)
 	{
-		draw_rectangle_colour(x-48,y-48,x+48,y+48,c_black,c_black,c_black,c_black,true);
+		draw_rectangle_color(x-48,y-48,x+48,y+48,c_black,c_black,c_black,c_black,true);
 	}
 	else
 	if (place_brush_size=1)
 	and(can_make_place_brush_size_bigger=true)
 	{
-		draw_rectangle_colour(x-16,y-16,x+48,y+48,c_black,c_black,c_black,c_black,true);
+		draw_rectangle_color(x-16,y-16,x+48,y+48,c_black,c_black,c_black,c_black,true);
 	}
 	else
 	{
 		if (mask_index=spr_2x2_block)
 		{
-			draw_rectangle_colour(x-24,y-24,x+24,y+24,c_black,c_black,c_black,c_black,true);
+			draw_rectangle_color(x-24,y-24,x+24,y+24,c_black,c_black,c_black,c_black,true);
 		}
 		else
 		{
-			draw_rectangle_colour(x-16,y-16,x+16,y+16,c_black,c_black,c_black,c_black,true);
+			draw_rectangle_color(x-16,y-16,x+16,y+16,c_black,c_black,c_black,c_black,true);
 		}
 	}
 	#endregion /*Draw a rectangle around the placable objects END*/

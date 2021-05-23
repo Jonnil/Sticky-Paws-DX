@@ -191,7 +191,9 @@ global.lives_until_assist=0;
 #region /*Assist Settings*/
 global.assist_item_appear=10;
 global.assist_extra_hp=0;
-global.assist_guiding_arrows=1;
+global.assist_invincible = false;
+global.assist_guiding_arrows = false;
+global.assist_normal_arrows = true;
 #endregion /*Assist Settings END*/
 global.x_checkpoint=false;global.y_checkpoint=false;
 global.time_countdown = noone; /*Countdown timer before you get a Time Over, default should be "noone" so most levels don't have a countdown*/

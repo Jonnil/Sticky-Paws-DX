@@ -8,10 +8,10 @@ or(keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
 or(keyboard_check(global.player1_key_sprint));
 draw_set_alpha(0.5);
-draw_rectangle_colour(0, y-16, room_width, room_height, c_black, c_black, c_black, c_black, false);
+draw_rectangle_color(0, y-16, room_width, room_height, c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
-draw_line_width_colour(0, y-16, room_width, y-16, 3, c_white, c_white);
-draw_line_width_colour(0, y-16, room_width, y-16, 2, c_black, c_black);
+draw_line_width_color(0, y-16, room_width, y-16, 3, c_white, c_white);
+draw_line_width_color(0, y-16, room_width, y-16, 2, c_black, c_black);
 draw_self();
 
 #region /*Drag Object*/

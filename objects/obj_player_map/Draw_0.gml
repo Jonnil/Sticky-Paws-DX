@@ -1671,11 +1671,11 @@ and(instance_nearest(x, y, obj_artwork_collection).can_navigate = false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
-	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80 + 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
-	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28 - 2, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
-	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28 + 2, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
-	draw_text_transformed_colour(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+	draw_text_transformed_color(camera_get_view_x(view_camera[view_current]) + 80 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_color(camera_get_view_x(view_camera[view_current]) + 80 + 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_color(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28 - 2, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_color(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28 + 2, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+	draw_text_transformed_color(camera_get_view_x(view_camera[view_current]) + 80, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 28, "View Gallery:", global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
 	if (gamepad_is_connected(0))
 	and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 	{
@@ -1801,10 +1801,10 @@ if (global.enable_transitions = true)
 		{
 			draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 		}
-		draw_rectangle_colour(0, 0, room_width, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(0, 0, xx - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(xx + iris_xscale * 128 - 1, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(0, yy + iris_yscale * 128, room_width, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, room_width, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, xx - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(xx + iris_xscale * 128 - 1, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, yy + iris_yscale * 128, room_width, room_height, c_black, c_black, c_black, c_black, false);
 	}
 }
 #endregion /*Draw Iris Transitions END*/

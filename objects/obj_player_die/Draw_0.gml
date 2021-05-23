@@ -316,10 +316,10 @@ and(last_player=true)
 			{
 				draw_sprite_ext(spr_iris,image_index,xx,yy,iris_xscale,iris_yscale,image_angle,image_blend,image_alpha);
 			}
-			draw_rectangle_colour(0,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),yy-iris_yscale*128,c_black,c_black,c_black,c_black,false);
-			draw_rectangle_colour(0,0,xx-iris_xscale*128,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
-			draw_rectangle_colour(xx+iris_xscale*128,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
-			draw_rectangle_colour(0,yy+iris_yscale*128,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
+			draw_rectangle_color(0,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),yy-iris_yscale*128,c_black,c_black,c_black,c_black,false);
+			draw_rectangle_color(0,0,xx-iris_xscale*128,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
+			draw_rectangle_color(xx+iris_xscale*128,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
+			draw_rectangle_color(0,yy+iris_yscale*128,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
 		}
 	}
 }
@@ -451,11 +451,11 @@ if (bubble=true)
 
 	#region /*Bubble*/
 	draw_self();
-	draw_circle_colour(x,y,52,c_black,c_black,true);
-	draw_circle_colour(x,y,53,c_white,c_white,true);
-	draw_circle_colour(x,y,54,c_white,c_white,true);
-	draw_circle_colour(x,y,55,c_white,c_white,true);
-	draw_circle_colour(x,y,56,c_black,c_black,true);
+	draw_circle_color(x,y,52,c_black,c_black,true);
+	draw_circle_color(x,y,53,c_white,c_white,true);
+	draw_circle_color(x,y,54,c_white,c_white,true);
+	draw_circle_color(x,y,55,c_white,c_white,true);
+	draw_circle_color(x,y,56,c_black,c_black,true);
 	#endregion /*Bubble END*/
 
 	#region /*If there are no more players in the room*/

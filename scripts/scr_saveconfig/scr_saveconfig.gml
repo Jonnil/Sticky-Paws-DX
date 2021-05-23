@@ -17,7 +17,9 @@ function scr_saveconfig()
 	#region /*Assist Settings*/
 	ini_write_real("Config","assist_item_appear",global.assist_item_appear);
 	ini_write_real("Config","assist_extra_hp",global.assist_extra_hp);
+	ini_write_real("Config","assist_invincible",global.assist_invincible);
 	ini_write_real("Config","assist_guiding_arrows",global.assist_guiding_arrows);
+	ini_write_real("Config","assist_normal_arrows",global.assist_normal_arrows);
 	#endregion /*Assist Settings END*/
 	
 	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());

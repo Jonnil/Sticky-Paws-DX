@@ -16,8 +16,7 @@ if (time > 200)
 {
 	time = 0;
 }
-if (global.assist_guiding_arrows = 0)
-or(global.assist_guiding_arrows = 1)
+if (global.assist_normal_arrows = true)
 {
 	visible = true;
 }

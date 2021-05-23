@@ -15,7 +15,9 @@ function scr_loadconfig()
 		#region /*Assist Settings*/
 		if (ini_key_exists("Config","assist_item_appear")){global.assist_item_appear=ini_read_real("Config","assist_item_appear",0);}
 		if (ini_key_exists("Config","assist_extra_hp")){global.assist_extra_hp=ini_read_real("Config","assist_extra_hp",0);}
+		if (ini_key_exists("Config","assist_invincible")){global.assist_invincible=ini_read_real("Config","assist_invincible",0);}
 		if (ini_key_exists("Config","assist_guiding_arrows")){global.assist_guiding_arrows=ini_read_real("Config","assist_guiding_arrows",0);}
+		if (ini_key_exists("Config","assist_normal_arrows")){global.assist_normal_arrows=ini_read_real("Config","assist_normal_arrows",0);}
 		#endregion /*Assist Settings END*/
 		
 		if (ini_key_exists("Config","fullscreen_mode")){window_set_fullscreen(ini_read_real("Config","fullscreen_mode",0));}

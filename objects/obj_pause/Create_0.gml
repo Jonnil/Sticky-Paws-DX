@@ -29,6 +29,7 @@ menu_delay=10;
 lastkey=noone;
 remapping_player=1;
 input_key=false;
+open_dropdown = false;
 menu_joystick_delay=0;
 can_navigate=true;
 remap_y_pos=0;

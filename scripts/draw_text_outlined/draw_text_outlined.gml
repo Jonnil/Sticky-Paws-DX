@@ -52,8 +52,8 @@ function draw_text_outlined()
 	var i;
 	for(i = 0; i < array_height_2d(vector) - 1; i+=1)
 	{
-		draw_text_transformed_colour(x_position+vector[i][0],y_position+vector[i][1]+y_offset,string_text,text_size,text_size,0,outline_color,outline_color,outline_color,outline_color,img_alpha);
+		draw_text_transformed_color(x_position+vector[i][0],y_position+vector[i][1]+y_offset,string_text,text_size,text_size,0,outline_color,outline_color,outline_color,outline_color,img_alpha);
 	}
 
-/*Text*/ draw_text_transformed_colour(x_position,y_position+y_offset,string_text,text_size,text_size,0,text_color,text_color,text_color,text_color,img_alpha);
+/*Text*/ draw_text_transformed_color(x_position,y_position+y_offset,string_text,text_size,text_size,0,text_color,text_color,text_color,text_color,img_alpha);
 }

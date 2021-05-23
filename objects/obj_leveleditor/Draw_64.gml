@@ -23,7 +23,7 @@ if (quit_level_editor = false)
 		
 		#region /*Make Background Darker*/
 		draw_set_alpha(0.9);
-		draw_rectangle_colour(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+		draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
 		draw_set_alpha(1);
 		#endregion /*Make Background Darker END*/
 		
@@ -261,7 +261,7 @@ if (quit_level_editor = false)
 		
 		#region /*Make Background Darker*/
 		draw_set_alpha(0.9);
-		draw_rectangle_colour(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+		draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
 		draw_set_alpha(1);
 		#endregion /*Make Background Darker END*/
 		

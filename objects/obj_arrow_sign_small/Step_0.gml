@@ -28,8 +28,7 @@ else
 image_xscale = 0.5;
 image_yscale = 0.5;
 
-if (global.assist_guiding_arrows = 0)
-or(global.assist_guiding_arrows = 2)
+if (global.assist_guiding_arrows = true)
 {
 	visible = true;
 }

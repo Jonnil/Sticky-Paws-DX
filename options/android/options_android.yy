@@ -13,7 +13,7 @@
   "option_android_package_product": "game",
   "option_android_arch_armv7": true,
   "option_android_arch_x86": false,
-  "option_android_arch_arm64": false,
+  "option_android_arch_arm64": true,
   "option_android_arch_x86_64": false,
   "option_android_orient_portrait": true,
   "option_android_orient_portrait_flipped": true,

@@ -15,86 +15,6 @@ function scr_character_select_menu()
 	
 	#region /*All code before menu navigation code*/
 	
-	#region /*Player colors*/
-	
-	#region /*Player 1 colors*/
-	if global.color_for_player_1=0{global.hex_color_for_player_1=c_white;}
-	if global.color_for_player_1=1{global.hex_color_for_player_1=c_ltgray;}
-	if global.color_for_player_1=2{global.hex_color_for_player_1=c_dkgray;}
-	if global.color_for_player_1=3{global.hex_color_for_player_1=c_black;}
-	if global.color_for_player_1=4{global.hex_color_for_player_1=make_colour_rgb(40,26,13);}
-	if global.color_for_player_1=5{global.hex_color_for_player_1=c_red;}
-	if global.color_for_player_1=6{global.hex_color_for_player_1=c_orange;}
-	if global.color_for_player_1=7{global.hex_color_for_player_1=c_yellow;}
-	if global.color_for_player_1=8{global.hex_color_for_player_1=c_lime;}
-	if global.color_for_player_1=9{global.hex_color_for_player_1=c_green;}
-	if global.color_for_player_1=10{global.hex_color_for_player_1=make_colour_rgb(0,255,255);}
-	if global.color_for_player_1=11{global.hex_color_for_player_1=make_colour_rgb(173,216,230);}
-	if global.color_for_player_1=12{global.hex_color_for_player_1=c_blue;}
-	if global.color_for_player_1=13{global.hex_color_for_player_1=c_purple;}
-	if global.color_for_player_1=14{global.hex_color_for_player_1=make_colour_rgb(255,0,255);}
-	if global.color_for_player_1=15{global.hex_color_for_player_1=make_colour_rgb(255,192,203);}
-	#endregion /*Player 1 colors END*/
-
-	#region /*Player 2 colors*/
-	if global.color_for_player_2=0{global.hex_color_for_player_2=c_white;}
-	if global.color_for_player_2=1{global.hex_color_for_player_2=c_ltgray;}
-	if global.color_for_player_2=2{global.hex_color_for_player_2=c_dkgray;}
-	if global.color_for_player_2=3{global.hex_color_for_player_2=c_black;}
-	if global.color_for_player_2=4{global.hex_color_for_player_2=make_colour_rgb(40,26,13);}
-	if global.color_for_player_2=5{global.hex_color_for_player_2=c_red;}
-	if global.color_for_player_2=6{global.hex_color_for_player_2=c_orange;}
-	if global.color_for_player_2=7{global.hex_color_for_player_2=c_yellow;}
-	if global.color_for_player_2=8{global.hex_color_for_player_2=c_lime;}
-	if global.color_for_player_2=9{global.hex_color_for_player_2=c_green;}
-	if global.color_for_player_2=10{global.hex_color_for_player_2=make_colour_rgb(0,255,255);}
-	if global.color_for_player_2=11{global.hex_color_for_player_2=make_colour_rgb(173,216,230);}
-	if global.color_for_player_2=12{global.hex_color_for_player_2=c_blue;}
-	if global.color_for_player_2=13{global.hex_color_for_player_2=c_purple;}
-	if global.color_for_player_2=14{global.hex_color_for_player_2=make_colour_rgb(255,0,255);}
-	if global.color_for_player_2=15{global.hex_color_for_player_2=make_colour_rgb(255,192,203);}
-	#endregion /*Player 2 colors END*/
-
-	#region /*Player 3 colors*/
-	if global.color_for_player_3=0{global.hex_color_for_player_3=c_white;}
-	if global.color_for_player_3=1{global.hex_color_for_player_3=c_ltgray;}
-	if global.color_for_player_3=2{global.hex_color_for_player_3=c_dkgray;}
-	if global.color_for_player_3=3{global.hex_color_for_player_3=c_black;}
-	if global.color_for_player_3=4{global.hex_color_for_player_3=make_colour_rgb(40,26,13);}
-	if global.color_for_player_3=5{global.hex_color_for_player_3=c_red;}
-	if global.color_for_player_3=6{global.hex_color_for_player_3=c_orange;}
-	if global.color_for_player_3=7{global.hex_color_for_player_3=c_yellow;}
-	if global.color_for_player_3=8{global.hex_color_for_player_3=c_lime;}
-	if global.color_for_player_3=9{global.hex_color_for_player_3=c_green;}
-	if global.color_for_player_3=10{global.hex_color_for_player_3=make_colour_rgb(0,255,255);}
-	if global.color_for_player_3=11{global.hex_color_for_player_3=make_colour_rgb(173,216,230);}
-	if global.color_for_player_3=12{global.hex_color_for_player_3=c_blue;}
-	if global.color_for_player_3=13{global.hex_color_for_player_3=c_purple;}
-	if global.color_for_player_3=14{global.hex_color_for_player_3=make_colour_rgb(255,0,255);}
-	if global.color_for_player_3=15{global.hex_color_for_player_3=make_colour_rgb(255,192,203);}
-	#endregion /*Player 3 colors END*/
-
-	#region /*Player 4 colors*/
-	if global.color_for_player_4=0{global.hex_color_for_player_4=c_white;}
-	if global.color_for_player_4=1{global.hex_color_for_player_4=c_ltgray;}
-	if global.color_for_player_4=2{global.hex_color_for_player_4=c_dkgray;}
-	if global.color_for_player_4=3{global.hex_color_for_player_4=c_black;}
-	if global.color_for_player_4=4{global.hex_color_for_player_4=make_colour_rgb(40,26,13);}
-	if global.color_for_player_4=5{global.hex_color_for_player_4=c_red;}
-	if global.color_for_player_4=6{global.hex_color_for_player_4=c_orange;}
-	if global.color_for_player_4=7{global.hex_color_for_player_4=c_yellow;}
-	if global.color_for_player_4=8{global.hex_color_for_player_4=c_lime;}
-	if global.color_for_player_4=9{global.hex_color_for_player_4=c_green;}
-	if global.color_for_player_4=10{global.hex_color_for_player_4=make_colour_rgb(0,255,255);}
-	if global.color_for_player_4=11{global.hex_color_for_player_4=make_colour_rgb(173,216,230);}
-	if global.color_for_player_4=12{global.hex_color_for_player_4=c_blue;}
-	if global.color_for_player_4=13{global.hex_color_for_player_4=c_purple;}
-	if global.color_for_player_4=14{global.hex_color_for_player_4=make_colour_rgb(255,0,255);}
-	if global.color_for_player_4=15{global.hex_color_for_player_4=make_colour_rgb(255,192,203);}
-	#endregion /*Player 4 colors END*/
-	
-	#endregion /*Player colors END*/
-	
 	#region /*Select your character text*/
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
@@ -133,33 +53,6 @@ function scr_character_select_menu()
 				menu = "select_character";
 			}
 		}
-		
-		/*if (keyboard_check_pressed(global.player1_key_jump))
-		or (keyboard_check_pressed(global.player1_key2_jump))
-		or (keyboard_check_pressed(ord("Z")))
-		or (keyboard_check_pressed(vk_enter))
-		or (keyboard_check_pressed(vk_space))
-		or (gamepad_button_check_pressed(0,gp_face1))
-		or (gamepad_button_check_pressed(0,gp_start))
-		{
-			if (menu = 0)
-			{
-				player1_accept_selection=false;
-				player2_accept_selection=false;
-				player3_accept_selection=false;
-				player4_accept_selection=false;
-				if (global.character_select_in_this_menu = "game")
-				{
-					menu_delay=10;
-					menu = "main_game";
-				}
-				else
-				{
-					menu_delay=10;
-					menu = "leveleditor";
-				}
-			}
-		}*/
 	}
 	#endregion /*Show Back key when you can go back to main menu END*/
 	
@@ -1582,7 +1475,7 @@ function scr_character_select_menu()
 	and(can_input_player4_name=false)
 	{
 		draw_set_alpha(0.5);
-		draw_rectangle_colour(
+		draw_rectangle_color(
 		window_get_width()/2+player1_display_x-155,
 		window_get_height()/2+200,
 		window_get_width()/2+player1_display_x+155,
@@ -1683,7 +1576,7 @@ function scr_character_select_menu()
 	and(can_input_player4_name=false)
 	{
 		draw_set_alpha(0.5);
-		draw_rectangle_colour(
+		draw_rectangle_color(
 		window_get_width()/2+player2_display_x-155,
 		window_get_height()/2+200,
 		window_get_width()/2+player2_display_x+155,
@@ -1784,7 +1677,7 @@ function scr_character_select_menu()
 	and(can_input_player4_name=false)
 	{
 		draw_set_alpha(0.5);
-		draw_rectangle_colour(
+		draw_rectangle_color(
 		window_get_width()/2+player3_display_x-155,
 		window_get_height()/2+200,
 		window_get_width()/2+player3_display_x+155,
@@ -1885,7 +1778,7 @@ function scr_character_select_menu()
 	and(can_input_player4_name=true)
 	{
 		draw_set_alpha(0.5);
-		draw_rectangle_colour(
+		draw_rectangle_color(
 		window_get_width()/2+player4_display_x-155,
 		window_get_height()/2+200,
 		window_get_width()/2+player4_display_x+155,
@@ -2601,12 +2494,6 @@ function scr_character_select_menu()
 	and(can_input_player4_name=false)
 	{
 		if (key_a_pressed)
-		//if (gamepad_button_check_pressed(0,gp_face1))
-		//or(keyboard_check_pressed(vk_enter))
-		//or(keyboard_check_pressed(vk_space))
-		//or(keyboard_check_pressed(ord("Z")))
-		//or(keyboard_check_pressed(global.player1_key_jump))
-		//or(keyboard_check_pressed(global.player1_key2_jump))
 		{
 			if (menu_delay=0)
 			{
@@ -3047,11 +2934,11 @@ function scr_character_select_menu()
 			#region /*Player 3 change portrait when clicking left or right*/
 			
 			#region /*Player 3 Key Left (change portrait sprites)*/
-			if (keyboard_check_pressed(global.player2_key_left))
-			and(!keyboard_check_pressed(global.player2_key_right))
-			or(gamepad_button_check_pressed(1,gp_padl))
-			and(!gamepad_button_check_pressed(1,gp_padr))
-			or(gamepad_axis_value(1,gp_axislh)<0)
+			if (keyboard_check_pressed(global.player3_key_left))
+			and(!keyboard_check_pressed(global.player3_key_right))
+			or(gamepad_button_check_pressed(2,gp_padl))
+			and(!gamepad_button_check_pressed(2,gp_padr))
+			or(gamepad_axis_value(2,gp_axislh)<0)
 			and(menu_joystick3_delay<=0)
 			or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 			window_get_width()/2+player3_display_x-75-16,
@@ -3210,11 +3097,11 @@ function scr_character_select_menu()
 			#endregion /*Player 3 Key Left (change portrait sprites) END*/
 	
 			#region /*Player 3 Key Right (change portrait sprites)*/
-			if (keyboard_check_pressed(global.player2_key_right))
-			and(!keyboard_check_pressed(global.player2_key_left))
-			or(gamepad_button_check_pressed(1,gp_padr))
-			and(!gamepad_button_check_pressed(1,gp_padl))
-			or(gamepad_axis_value(1,gp_axislh)>0)
+			if (keyboard_check_pressed(global.player3_key_right))
+			and(!keyboard_check_pressed(global.player3_key_left))
+			or(gamepad_button_check_pressed(2,gp_padr))
+			and(!gamepad_button_check_pressed(2,gp_padl))
+			or(gamepad_axis_value(2,gp_axislh)>0)
 			and(menu_joystick3_delay<=0)
 			or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 			window_get_width()/2+player3_display_x+75-16,
@@ -3479,11 +3366,11 @@ function scr_character_select_menu()
 			#region /*Player 4 change portrait when clicking left or right*/
 			
 			#region /*Player 4 Key Left (change portrait sprites)*/
-			if (keyboard_check_pressed(global.player2_key_left))
-			and(!keyboard_check_pressed(global.player2_key_right))
-			or(gamepad_button_check_pressed(1,gp_padl))
-			and(!gamepad_button_check_pressed(1,gp_padr))
-			or(gamepad_axis_value(1,gp_axislh)<0)
+			if (keyboard_check_pressed(global.player4_key_left))
+			and(!keyboard_check_pressed(global.player4_key_right))
+			or(gamepad_button_check_pressed(3,gp_padl))
+			and(!gamepad_button_check_pressed(3,gp_padr))
+			or(gamepad_axis_value(3,gp_axislh)<0)
 			and(menu_joystick4_delay<=0)
 			or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 			window_get_width()/2+player4_display_x-75-16,
@@ -3666,11 +3553,11 @@ function scr_character_select_menu()
 			#endregion /*Player 4 Key Left (change portrait sprites) END*/
 	
 			#region /*Player 4 Key Right (change portrait sprites)*/
-			if (keyboard_check_pressed(global.player2_key_right))
-			and(!keyboard_check_pressed(global.player2_key_left))
-			or(gamepad_button_check_pressed(1,gp_padr))
-			and(!gamepad_button_check_pressed(1,gp_padl))
-			or(gamepad_axis_value(1,gp_axislh)>0)
+			if (keyboard_check_pressed(global.player4_key_right))
+			and(!keyboard_check_pressed(global.player4_key_left))
+			or(gamepad_button_check_pressed(3,gp_padr))
+			and(!gamepad_button_check_pressed(3,gp_padl))
+			or(gamepad_axis_value(3,gp_axislh)>0)
 			and(menu_joystick4_delay<=0)
 			or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 			window_get_width()/2+player4_display_x+75-16,
@@ -3993,11 +3880,6 @@ and(menu_delay=0)
 		
 		#region /*Accept*/
 		if (key_a_pressed)
-		//if (gamepad_button_check_pressed(0,gp_face1))
-		//or(keyboard_check_pressed(vk_enter))
-		//or(keyboard_check_pressed(ord("Z")))
-		//or(keyboard_check_pressed(global.player1_key_jump))
-		//or(keyboard_check_pressed(global.player1_key2_jump))
 		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 		window_get_width()/2+player1_display_x-100,
 		window_get_height()/2+150-20,
@@ -4203,11 +4085,6 @@ and(menu_delay=0)
 	#endregion /*Start Game END*/
 	
 	if (key_a_pressed)
-	//if (gamepad_button_check_pressed(0,gp_face1))
-	//or(keyboard_check_pressed(vk_enter))
-	//or(keyboard_check_pressed(ord("Z")))
-	//or(keyboard_check_pressed(global.player1_key_jump))
-	//or(keyboard_check_pressed(global.player1_key2_jump))
 	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0,window_get_height()/2-32,window_get_width(),window_get_height()/2+32,))
 	and(mouse_check_button_pressed(mb_left))
 	{
@@ -4246,14 +4123,6 @@ and(menu_delay=0)
 	
 	#region /*Player 1 Back / Cancel Selection*/
 	if (key_b_pressed)
-	//if (gamepad_button_check_pressed(0,gp_face2))
-	//or(keyboard_check_pressed(vk_escape))
-	//or(keyboard_check_pressed(vk_backspace))
-	//or(keyboard_check_pressed(ord("X")))
-	//or(keyboard_check_pressed(global.player1_key_dive))
-	//or(keyboard_check_pressed(global.player1_key2_dive))
-	//or(keyboard_check_pressed(global.player1_key_sprint))
-	//or(keyboard_check_pressed(global.player1_key2_sprint))
 	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 	window_get_width()/2+player1_display_x-100,
 	window_get_height()/2+150-20,
@@ -4403,29 +4272,8 @@ and(menu_delay=0)
 	#endregion /*If 4 Player Game is selected and player 1, 2, 3 and 4 has selected a character END*/
 	
 	if (key_b_pressed)
-	//if (keyboard_check_pressed(global.player2_key_dive))
-	//or (keyboard_check_pressed(global.player2_key2_dive))
-	//or (keyboard_check_pressed(global.player1_key_sprint))
-	//or (keyboard_check_pressed(global.player1_key2_sprint))
-	//or (keyboard_check_pressed(ord("X")))
-	//or (keyboard_check_pressed(vk_backspace))
-	//or (keyboard_check_pressed(vk_escape))
-	
-	//or (keyboard_check_pressed(global.player1_key_jump))
 	or (key_a_pressed)
 	and(menu = "back_from_character_select")
-	//or (keyboard_check_pressed(global.player1_key2_jump))
-	//and(menu = "back_from_character_select")
-	//or (keyboard_check_pressed(ord("Z")))
-	//and(menu = "back_from_character_select")
-	//or (keyboard_check_pressed(vk_enter))
-	//and(menu = "back_from_character_select")
-	//or (keyboard_check_pressed(vk_space))
-	//and(menu = "back_from_character_select")
-	//or (gamepad_button_check_pressed(0,gp_face1))
-	//and(menu = "back_from_character_select")
-	//or (gamepad_button_check_pressed(0,gp_start))
-	//and(menu = "back_from_character_select")
 	{
 		if (menu_delay=0)
 		and(player1_start_game=false)

@@ -200,10 +200,10 @@ else
 	#region /*Default abilities values*/
 	allow_roll = false;
 	allow_ledge_grab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
-	allow_ground_pound = true; /*ground_pound*/
+	allow_ground_pound = true; /*Allow Ground Pound*/
 	allow_ground_poundjump = true;
-	allow_wall_jump = true; /*Wall Jump*/
-	allow_wall_climb = false; /*Wall Climb*/
+	allow_wall_jump = true; /*Allow Wall Jump*/
+	allow_wall_climb = false; /*Allow Wall Climb*/
 	allow_dive = true; /*Dive when you have speed or during a ground_pound*/
 	allow_dive_ground_boost = true;
 	allow_survive_lava = true;
@@ -12250,7 +12250,7 @@ if (assist_invincible=true)
 #endregion /*Assist Invincible END*/
 
 #region /*If Assist delault hp is invincible, stay invincible*/
-if (global.assist_extra_hp>=10)
+if (global.assist_invincible = true)
 and(hp<max_hp)
 {
 	hp=max_hp;
@@ -14717,13 +14717,13 @@ and(wall_jump_setting>=1)
 		and(place_meeting(x-1,y,obj_wall))
 		
 		or(allow_dive=true)
-		and(key_sprint_pressed)
+		and(key_dive_pressed) /*Press dive to jump from wall using a dive*/
 		and(key_left)
 		and(!key_right)
 		and(place_meeting(x+1,y,obj_wall))
 		
 		or(allow_dive=true)
-		and(key_sprint_pressed)
+		and(key_dive_pressed) /*Press dive to jump from wall using a dive*/
 		and(key_right)
 		and(!key_left)
 		and(place_meeting(x-1,y,obj_wall))
@@ -14793,7 +14793,7 @@ and(wall_jump_setting>=1)
 		{
 		
 			#region /*Change direction when diving*/
-			if (key_sprint_pressed)
+			if (key_dive_pressed)
 			and(allow_dive=true)
 			and(key_left)
 			and(!key_right)
@@ -14801,7 +14801,7 @@ and(wall_jump_setting>=1)
 				image_xscale=-1;
 			}
 			else
-			if (key_sprint_pressed)
+			if (key_dive_pressed)
 			and(allow_dive=true)
 			and(key_right)
 			and(!key_left)

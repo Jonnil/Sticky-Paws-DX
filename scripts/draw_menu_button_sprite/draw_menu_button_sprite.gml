@@ -29,8 +29,10 @@ function draw_menu_button_sprite()
 	if (point_in_rectangle(mouse_x,mouse_y,x_position,y_position+1,x_position+spr_width,y_position+spr_height))
 	and(global.controls_used_for_menu_navigation="mouse")
 	{
-		if (menu=menu_index)
-		and(global.controls_used_for_menu_navigation="keyboard")
+		if (menu = menu_index)
+		and (global.controls_used_for_menu_navigation = "keyboard")
+		or (menu = menu_index)
+		and (global.controls_used_for_menu_navigation = "controller")
 		{
 			draw_sprite_ext(spr_index,0,x_position,y_position,1,1,0,c_green,1);
 		}
@@ -41,8 +43,10 @@ function draw_menu_button_sprite()
 	}
 	else
 	{
-		if (menu=menu_index)
-		and(global.controls_used_for_menu_navigation="keyboard")
+		if (menu = menu_index)
+		and (global.controls_used_for_menu_navigation = "keyboard")
+		or (menu = menu_index)
+		and (global.controls_used_for_menu_navigation = "controller")
 		{
 			draw_sprite_ext(spr_index,0,x_position,y_position,1,1,0,c_gray,1);
 		}

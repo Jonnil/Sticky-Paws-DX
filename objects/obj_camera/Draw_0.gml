@@ -791,10 +791,10 @@ and(global.actually_play_edited_level = true)
 		{
 			draw_sprite_ext(spr_iris, 0, instance_nearest(room_width, y, obj_player).x, instance_nearest(room_width, y, obj_player).y, iris_xscale, iris_yscale, 0, c_black, 1);
 		}
-		draw_rectangle_colour(0, 0, room_width, instance_nearest(room_width, y, obj_player).y - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(0, 0, instance_nearest(room_width, y, obj_player).x - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(instance_nearest(room_width, y, obj_player).x + iris_xscale * 128 - 1, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(0, instance_nearest(room_width, y, obj_player).y + iris_yscale * 128, room_width, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, room_width, instance_nearest(room_width, y, obj_player).y - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, instance_nearest(room_width, y, obj_player).x - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(instance_nearest(room_width, y, obj_player).x + iris_xscale * 128 - 1, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, instance_nearest(room_width, y, obj_player).y + iris_yscale * 128, room_width, room_height, c_black, c_black, c_black, c_black, false);
 	}
 	else
 	if (iris_xscale < 15)
@@ -803,10 +803,10 @@ and(global.actually_play_edited_level = true)
 		{
 			draw_sprite_ext(spr_iris, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, iris_xscale, iris_yscale, 0, c_black, 1);
 		}
-		draw_rectangle_colour(0, 0, room_width, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(0, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + iris_xscale * 128 - 1, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_colour(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + iris_yscale * 128, room_width, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, room_width, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + iris_xscale * 128 - 1, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + iris_yscale * 128, room_width, room_height, c_black, c_black, c_black, c_black, false);
 	}
 }
 #endregion /*Draw Iris Transitions END*/
@@ -849,8 +849,8 @@ or(show_letterbox > 0)
 and(global.play_edited_level = true)
 and(global.actually_play_edited_level = true)
 {
-	draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), letterbox_top_y, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_colour(camera_get_view_x(view_camera[view_current]), letterbox_bottom_y, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), letterbox_top_y, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(camera_get_view_x(view_camera[view_current]), letterbox_bottom_y, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
 }
 if (asset_get_type("obj_player") == asset_object)
 and(!instance_exists(obj_player))
