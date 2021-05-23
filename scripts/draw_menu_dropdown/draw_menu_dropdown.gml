@@ -38,6 +38,13 @@ function draw_menu_dropdown()
 	
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
 	and (global.controls_used_for_menu_navigation="mouse")
+	and (menu != "assist_enable")
+	and (menu_delay = 0)
+	and (open_dropdown = false)
+	or (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
+	and (global.controls_used_for_menu_navigation="mouse")
+	and (global.assist_enable = true)
+	and (menu = "assist_enable")
 	and (menu_delay = 0)
 	and (open_dropdown = false)
 	{
@@ -52,15 +59,12 @@ function draw_menu_dropdown()
 	{
 		if (menu=menu_index)
 		and(global.controls_used_for_menu_navigation="keyboard")
-		//and (open_dropdown = false)
 		or (menu=menu_index)
 		and(global.controls_used_for_menu_navigation="controller")
-		//and (open_dropdown = false)
 		{
 			draw_sprite_ext(spr_menu_dropdown,0,x_position+32,y_position+21,1,1,0,c_gray,1);
 		}
 		else
-		//if (open_dropdown = false)
 		{
 			draw_sprite_ext(spr_menu_dropdown,0,x_position+32,y_position+21,1,1,0,c_white,1);
 		}
@@ -68,8 +72,10 @@ function draw_menu_dropdown()
 	
 	#region /*Show a menu cursor when the option is highlighted*/
 	if (menu = menu_index)
+	and(open_dropdown = false)
 	and (global.controls_used_for_menu_navigation = "keyboard")
 	or (menu = menu_index)
+	and(open_dropdown = false)
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position+16, y_position+24, 1, 1, 0, c_white, 1);
@@ -78,7 +84,16 @@ function draw_menu_dropdown()
 	
 	#region /*Clicking the menu button*/
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
+	and (global.controls_used_for_menu_navigation="mouse")
 	and (mouse_check_button_pressed(mb_left))
+	and (menu != "assist_enable")
+	and (menu_delay = 0)
+	and (open_dropdown = false)
+	or (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
+	and (global.controls_used_for_menu_navigation="mouse")
+	and (mouse_check_button_pressed(mb_left))
+	and (global.assist_enable = true)
+	and (menu = "assist_enable")
 	and (menu_delay = 0)
 	and (open_dropdown = false)
 	{
@@ -90,74 +105,66 @@ function draw_menu_dropdown()
 	#endregion /*Clicking the menu button END*/
 	
 	#region /*Text above the menu button*/
-	//if (open_dropdown = false)
-	//or (open_dropdown = true)
-	//and (menu = menu_index)
-	//{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
-		draw_text_outlined(x_position+277+32,y_position+21-32,string(string_text),global.default_text_size,c_white,c_black,1);
-	//}
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_outlined(x_position+277+32,y_position+21-32,string(string_text),global.default_text_size,c_white,c_black,1);
 	#endregion /*Text above the menu button END*/
 	
 	#region /*Text inside the menu button*/
-	//if (open_dropdown = false)
-	//{
-		if (variable_to_change = 0)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item1),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 1)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item2),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 2)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item3),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 3)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item4),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 4)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item5),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 5)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item6),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 6)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item7),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 7)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item8),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 8)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item9),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 9)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item10),global.default_text_size,c_white,c_black,1);
-		}
-		else
-		if (variable_to_change = 10)
-		{
-			draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item11),global.default_text_size,c_white,c_black,1);
-		}
-	//}
+	if (variable_to_change = 0)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item1),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 1)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item2),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 2)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item3),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 3)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item4),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 4)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item5),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 5)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item6),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 6)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item7),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 7)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item8),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 8)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item9),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 9)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item10),global.default_text_size,c_white,c_black,1);
+	}
+	else
+	if (variable_to_change = 10)
+	{
+		draw_text_outlined(x_position+277+32,y_position+21,string(string_text_item11),global.default_text_size,c_white,c_black,1);
+	}
 	#endregion /*Text inside the menu button END*/
 	
 	#region /*Open dropdown menu*/
@@ -182,6 +189,7 @@ function draw_menu_dropdown()
 	
 	#region /*Clicking outside the menu button*/
 	if (!point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
+	and (global.controls_used_for_menu_navigation="mouse")
 	and (open_dropdown = true)
 	and (menu = menu_index)
 	and (menu_delay = 0)

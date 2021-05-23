@@ -15,6 +15,7 @@ function scr_saveconfig()
 	ini_write_real("Config","players_can_collide",global.players_can_collide);
 	
 	#region /*Assist Settings*/
+	ini_write_real("Config","assist_enable",global.assist_enable);
 	ini_write_real("Config","assist_item_appear",global.assist_item_appear);
 	ini_write_real("Config","assist_extra_hp",global.assist_extra_hp);
 	ini_write_real("Config","assist_invincible",global.assist_invincible);

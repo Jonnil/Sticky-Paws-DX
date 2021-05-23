@@ -188,14 +188,18 @@ global.big_collectible3=false;/*If you have Big Collectible 3 or not*/
 global.big_collectible4=false;/*If you have Big Collectible 4 or not*/
 global.big_collectible5=false;/*If you have Big Collectible 5 or not*/
 global.lives_until_assist=0;
+
 #region /*Assist Settings*/
-global.assist_item_appear=10;
-global.assist_extra_hp=0;
+global.assist_enable = false;
+global.assist_item_appear = 10;
+global.assist_extra_hp = 0;
 global.assist_invincible = false;
 global.assist_guiding_arrows = false;
 global.assist_normal_arrows = true;
 #endregion /*Assist Settings END*/
-global.x_checkpoint=false;global.y_checkpoint=false;
+
+global.x_checkpoint = false;
+global.y_checkpoint = false;
 global.time_countdown = noone; /*Countdown timer before you get a Time Over, default should be "noone" so most levels don't have a countdown*/
 global.timeattack_millisecond=0;
 global.timeattack_second=0;

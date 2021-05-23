@@ -674,7 +674,7 @@ and(!instance_exists(obj_pause))
 		#region /*MULTIPLAYER PLAYER 1*/
 		if (player1 > noone)
 		and(asset_get_type("obj_player") == asset_object)
-		and(instance_number(obj_player) > 0)
+		and(instance_exists(obj_player))
 		and(global.player1_show_controls >= true)
 		{
 			draw_set_halign(fa_left);
@@ -921,7 +921,7 @@ and(!instance_exists(obj_pause))
 		else
 		if (player1 = noone)
 		and(asset_get_type("obj_player") == asset_object)
-		and(instance_number(obj_player) > 0)
+		and(instance_exists(obj_player))
 		and(lives > 0)
 		{
 			draw_set_halign(fa_left);
@@ -931,6 +931,7 @@ and(!instance_exists(obj_pause))
 			if (can_spawn_player = true)
 			and(can_spawn_player1 = true)
 			and(global.player1_key_jump>noone)
+			and(lives > 0)
 			{
 				draw_text_outlined(30, window_get_height() - 158, "Join Game", global.default_text_size, c_black, global.player1_color, 1);
 				if (gamepad_is_connected(0))
@@ -952,7 +953,7 @@ and(!instance_exists(obj_pause))
 		#region /*MULTIPLAYER PLAYER 2*/
 		if (player2 > noone)
 		and(asset_get_type("obj_player") == asset_object)
-		and(instance_number(obj_player) > 0)
+		and(instance_exists(obj_player))
 		and(global.player2_show_controls >= true)
 		{
 			draw_set_halign(fa_left);
@@ -981,7 +982,7 @@ and(!instance_exists(obj_pause))
 			show_player2_controls_y = 116;
 			
 			#region /*Show Dive Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(1))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_dive_key_x + 22, window_get_height() - show_player2_controls_y, "Pounce", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
@@ -1004,7 +1005,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Dive Key END*/
 			
 			#region /*Show Jump Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(1))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_jump_key_x + 22, window_get_height() - show_player2_controls_y, "Jump", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
@@ -1027,7 +1028,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Jump Key END*/
 			
 			#region /*Show Crouch Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(1))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_crouch_key_x + 22, window_get_height() - show_player2_controls_y, "Crouch", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
@@ -1066,7 +1067,7 @@ and(!instance_exists(obj_pause))
 			#region /*Show Sprint Key*/
 			if (global.player2_sprint_toggle = false)
 			{
-				if (gamepad_is_connected(0))
+				if (gamepad_is_connected(1))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_text_outlined(player2_show_sprint_key_x + 22, window_get_height() - show_player2_controls_y, "Sprint", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
@@ -1104,7 +1105,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Sprint Key END*/
 			
 			#region /*Show Left Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(1))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_left_key_x + 22, window_get_height() - show_player2_controls_y, "Left", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
@@ -1127,7 +1128,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Left Key END*/
 			
 			#region /*Show Right Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(1))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_right_key_x + 22, window_get_height() - show_player2_controls_y, "Right", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
@@ -1150,7 +1151,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Right Key END*/
 			
 			#region /*Show Down Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(1))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_down_key_x + 22, window_get_height() - show_player2_controls_y, "Down", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
@@ -1173,7 +1174,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Down Key END*/
 			
 			#region /*Show Up Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(1))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player2_show_up_key_x + 22, window_get_height() - show_player2_controls_y, "Up", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
@@ -1199,7 +1200,7 @@ and(!instance_exists(obj_pause))
 		else
 		if (player2 = noone)
 		and(asset_get_type("obj_player") == asset_object)
-		and(instance_number(obj_player) > 0)
+		and(instance_exists(obj_player))
 		and(global.playergame > 0)
 		{
 			draw_set_halign(fa_left);
@@ -1209,9 +1210,10 @@ and(!instance_exists(obj_pause))
 			if (can_spawn_player = true)
 			if (can_spawn_player2 = true)
 			and(global.player2_key_jump>noone)
+			and(lives > 0)
 			{
 				draw_text_outlined(30, window_get_height() - 116, "Join Game", global.default_text_size, c_black, global.player2_color, 1);
-				if (gamepad_is_connected(0))
+				if (gamepad_is_connected(1))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - 116, 0.5, 0.5, 0, c_white, 1);
@@ -1230,7 +1232,7 @@ and(!instance_exists(obj_pause))
 		#region /*MULTIPLAYER PLAYER 3*/
 		if (player3 > noone)
 		and(asset_get_type("obj_player") == asset_object)
-		and(instance_number(obj_player) > 0)
+		and(instance_exists(obj_player))
 		and(global.player3_show_controls >= true)
 		{
 			draw_set_halign(fa_left);
@@ -1259,7 +1261,7 @@ and(!instance_exists(obj_pause))
 			show_player3_controls_y = 74;
 			
 			#region /*Show Dive Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(2))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_dive_key_x + 22, window_get_height() - show_player3_controls_y, "Pounce", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
@@ -1282,7 +1284,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Dive Key END*/
 			
 			#region /*Show Jump Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(2))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_jump_key_x + 22, window_get_height() - show_player3_controls_y, "Jump", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
@@ -1305,7 +1307,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Jump Key END*/
 			
 			#region /*Show Crouch Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(2))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_crouch_key_x + 22, window_get_height() - show_player3_controls_y, "Crouch", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
@@ -1344,7 +1346,7 @@ and(!instance_exists(obj_pause))
 			#region /*Show Sprint Key*/
 			if (global.player3_sprint_toggle = false)
 			{
-				if (gamepad_is_connected(0))
+				if (gamepad_is_connected(2))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_text_outlined(player3_show_sprint_key_x + 22, window_get_height() - show_player3_controls_y, "Sprint", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
@@ -1382,7 +1384,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Sprint Key END*/
 			
 			#region /*Show Left Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(2))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_left_key_x + 22, window_get_height() - show_player3_controls_y, "Left", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
@@ -1405,7 +1407,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Left Key END*/
 			
 			#region /*Show Right Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(2))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_right_key_x + 22, window_get_height() - show_player3_controls_y, "Right", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
@@ -1428,7 +1430,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Right Key END*/
 			
 			#region /*Show Down Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(2))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_down_key_x + 22, window_get_height() - show_player3_controls_y, "Down", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
@@ -1451,7 +1453,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Down Key END*/
 			
 			#region /*Show Up Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(2))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player3_show_up_key_x + 22, window_get_height() - show_player3_controls_y, "Up", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
@@ -1477,7 +1479,7 @@ and(!instance_exists(obj_pause))
 		else
 		if (player3 = noone)
 		and(asset_get_type("obj_player") == asset_object)
-		and(instance_number(obj_player) > 0)
+		and(instance_exists(obj_player))
 		and(global.playergame > 1)
 		{
 			draw_set_halign(fa_left);
@@ -1487,9 +1489,10 @@ and(!instance_exists(obj_pause))
 			if (can_spawn_player = true)
 			and(can_spawn_player3 = true)
 			and(global.player3_key_jump>noone)
+			and(lives > 0)
 			{
 				draw_text_outlined(30, window_get_height() - 74, "Join Game", global.default_text_size, c_black, global.player3_color, 1);
-				if (gamepad_is_connected(0))
+				if (gamepad_is_connected(2))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - 74, 0.5, 0.5, 0, c_white, 1);
@@ -1508,7 +1511,7 @@ and(!instance_exists(obj_pause))
 		#region /*MULTIPLAYER PLAYER 4*/
 		if (player4 > noone)
 		and(asset_get_type("obj_player") == asset_object)
-		and(instance_number(obj_player) > 0)
+		and(instance_exists(obj_player))
 		and(global.player4_show_controls >= true)
 		{
 			draw_set_halign(fa_left);
@@ -1537,7 +1540,7 @@ and(!instance_exists(obj_pause))
 			show_player4_controls_y = 32;
 			
 			#region /*Show Dive Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(3))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_dive_key_x + 22, window_get_height() - show_player4_controls_y, "Pounce", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
@@ -1560,7 +1563,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Dive Key END*/
 			
 			#region /*Show Jump Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(3))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_jump_key_x + 22, window_get_height() - show_player4_controls_y, "Jump", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
@@ -1583,7 +1586,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Jump Key END*/
 			
 			#region /*Show Crouch Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(3))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_crouch_key_x + 22, window_get_height() - show_player4_controls_y, "Crouch", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
@@ -1622,7 +1625,7 @@ and(!instance_exists(obj_pause))
 			#region /*Show Sprint Key*/
 			if (global.player4_sprint_toggle = false)
 			{
-				if (gamepad_is_connected(0))
+				if (gamepad_is_connected(3))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_text_outlined(player4_show_sprint_key_x + 22, window_get_height() - show_player4_controls_y, "Sprint", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
@@ -1660,7 +1663,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Sprint Key END*/
 			
 			#region /*Show Left Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(3))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_left_key_x + 22, window_get_height() - show_player4_controls_y, "Left", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
@@ -1683,7 +1686,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Left Key END*/
 			
 			#region /*Show Right Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(3))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_right_key_x + 22, window_get_height() - show_player4_controls_y, "Right", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
@@ -1706,7 +1709,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Right Key END*/
 			
 			#region /*Show Down Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(3))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_down_key_x + 22, window_get_height() - show_player4_controls_y, "Down", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
@@ -1729,7 +1732,7 @@ and(!instance_exists(obj_pause))
 			#endregion /*Show Down Key END*/
 			
 			#region /*Show Up Key*/
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(3))
 			and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_text_outlined(player4_show_up_key_x + 22, window_get_height() - show_player4_controls_y, "Up", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
@@ -1755,7 +1758,7 @@ and(!instance_exists(obj_pause))
 		else
 		if (player4 = noone)
 		and(asset_get_type("obj_player") == asset_object)
-		and(instance_number(obj_player) > 0)
+		and(instance_exists(obj_player))
 		and(global.playergame > 2)
 		{
 			draw_set_halign(fa_left);
@@ -1765,9 +1768,10 @@ and(!instance_exists(obj_pause))
 			if (can_spawn_player = true)
 			and(can_spawn_player4 = true)
 			and(global.player4_key_jump>noone)
+			and(lives > 0)
 			{
 				draw_text_outlined(30, window_get_height() - 32, "Join Game", global.default_text_size, c_black, global.player4_color, 1);
-				if (gamepad_is_connected(0))
+				if (gamepad_is_connected(3))
 				and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 				{
 					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - 32, 0.5, 0.5, 0, c_white, 1);

@@ -13,6 +13,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","players_can_collide")){global.players_can_collide=ini_read_real("Config","players_can_collide",0);}
 		
 		#region /*Assist Settings*/
+		if (ini_key_exists("Config","assist_enable")){global.assist_enable=ini_read_real("Config","assist_enable",0);}
 		if (ini_key_exists("Config","assist_item_appear")){global.assist_item_appear=ini_read_real("Config","assist_item_appear",0);}
 		if (ini_key_exists("Config","assist_extra_hp")){global.assist_extra_hp=ini_read_real("Config","assist_extra_hp",0);}
 		if (ini_key_exists("Config","assist_invincible")){global.assist_invincible=ini_read_real("Config","assist_invincible",0);}

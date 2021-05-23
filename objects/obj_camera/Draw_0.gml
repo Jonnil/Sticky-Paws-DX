@@ -112,8 +112,7 @@ if (lives < 0)
 #endregion /*Make sure the lives counter never goes below 0 END*/
 
 #region /*Spawn Players in multiplayer*/
-if (lives > 0)
-and(instance_exists(obj_player))
+if (instance_exists(obj_player))
 and(global.pause = false)
 and(asset_get_type("obj_player_map") == asset_object)
 and(!instance_exists(obj_player_map))
@@ -139,6 +138,7 @@ and(!instance_exists(obj_title))
 		if (player1 = noone)
 		and(can_spawn_player = true)
 		and(can_spawn_player1 = true)
+		and (lives > 0)
 		{
 			if (global.playergame < 0)
 			{
@@ -154,6 +154,11 @@ and(!instance_exists(obj_title))
 				}
 			}
 		}
+		else
+		{
+			global.hud_show_lives = true;
+			hud_show_lives_timer = global.hud_show_timer;
+		}
 	}
 	if (gamepad_button_check_pressed(1, gp_face1))
 	or(keyboard_check_pressed(global.player2_key_jump))
@@ -162,6 +167,7 @@ and(!instance_exists(obj_title))
 		if (player2 = noone)
 		and(can_spawn_player = true)
 		and(can_spawn_player2 = true)
+		and (lives > 0)
 		{
 			if (global.playergame < 1)
 			{
@@ -177,6 +183,11 @@ and(!instance_exists(obj_title))
 				}
 			}
 		}
+		else
+		{
+			global.hud_show_lives = true;
+			hud_show_lives_timer = global.hud_show_timer;
+		}
 	}
 	if (gamepad_button_check_pressed(2, gp_face1))
 	or(keyboard_check_pressed(global.player3_key_jump))
@@ -185,6 +196,7 @@ and(!instance_exists(obj_title))
 		if (player3 = noone)
 		and(can_spawn_player = true)
 		and(can_spawn_player3 = true)
+		and (lives > 0)
 		{
 			if (global.playergame < 2)
 			{
@@ -200,6 +212,11 @@ and(!instance_exists(obj_title))
 				}
 			}
 		}
+		else
+		{
+			global.hud_show_lives = true;
+			hud_show_lives_timer = global.hud_show_timer;
+		}
 	}
 	if (gamepad_button_check_pressed(3, gp_face1))
 	or(keyboard_check_pressed(global.player4_key_jump))
@@ -208,6 +225,7 @@ and(!instance_exists(obj_title))
 		if (player4 = noone)
 		and(can_spawn_player = true)
 		and(can_spawn_player4 = true)
+		and (lives > 0)
 		{
 			if (global.playergame < 3)
 			{
@@ -222,6 +240,11 @@ and(!instance_exists(obj_title))
 					player = 4;
 				}
 			}
+		}
+		else
+		{
+			global.hud_show_lives = true;
+			hud_show_lives_timer = global.hud_show_timer;
 		}
 	}
 }
