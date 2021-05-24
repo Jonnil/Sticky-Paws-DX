@@ -3779,7 +3779,7 @@ function scr_options_menu()
 	if (menu="remap_key_dive")
 	{
 		draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_dive+menu_y_offset,1,1,0,c_white,1);
-		menu_cursor_y_position=128;
+		menu_cursor_y_position =128;
 		draw_text_outlined(410,menu_y_remap_key_dive+menu_y_offset,"Dive",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 		if (input_key=true)
 		and(can_remap_key=false)
@@ -3802,61 +3802,61 @@ function scr_options_menu()
 	#endregion /*Remap Key Dive End*/
 	
 	#region /*Remap Key Jump*/
-	if (menu="remap_key_jump"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_jump+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128;
+	if (menu="remap_key_jump"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_jump+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128;
 	draw_text_outlined(410,menu_y_remap_key_jump+menu_y_offset,"Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_jump+menu_y_offset,"Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Jump End*/
 	
 	#region /*Remap Key Crouch*/
-	if (menu="remap_key_crouch"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_crouch+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+64;
+	if (menu="remap_key_crouch"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_crouch+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128+64;
 	draw_text_outlined(410,menu_y_remap_key_crouch+menu_y_offset,"Crouch",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_crouch+menu_y_offset,"Crouch",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Crouch End*/
 	
 	#region /*Remap Key Crouch Toggle*/
-	if (menu="remap_key_crouch_toggle"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_crouch_toggle+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+128;
+	if (menu="remap_key_crouch_toggle"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_crouch_toggle+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128+128;
 	draw_text_outlined(410,menu_y_remap_key_crouch_toggle+menu_y_offset,"Crouch Toggle",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_crouch_toggle+menu_y_offset,"Crouch Toggle",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Crouch Toggle End*/
 	
 	#region /*Remap Key Sprint*/
-	if (menu="remap_key_sprint"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_sprint+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+192;
+	if (menu="remap_key_sprint"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_sprint+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128+192;
 	draw_text_outlined(410,menu_y_remap_key_sprint+menu_y_offset,"Sprint",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_sprint+menu_y_offset,"Sprint",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Sprint End*/
 	
 	#region /*Remap Key Sprint Toggle*/
-	if (menu="remap_key_sprint_toggle"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_sprint_toggle+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+256;
+	if (menu="remap_key_sprint_toggle"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_sprint_toggle+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128+256;
 	draw_text_outlined(410,menu_y_remap_key_sprint_toggle+menu_y_offset,"Sprint Toggle",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_sprint_toggle+menu_y_offset,"Sprint Toggle",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Sprint Toggle End*/
 	
 	#region /*Remap Key Left*/
-	if (menu="remap_key_left"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_left+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+320;
+	if (menu="remap_key_left"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_left+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128+320;
 	draw_text_outlined(410,menu_y_remap_key_left+menu_y_offset,"Left",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_left+menu_y_offset,"Left",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Left End*/
 	
 	#region /*Remap Key Right*/
-	if (menu="remap_key_right"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_right+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+384;
+	if (menu="remap_key_right"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_right+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128+384;
 	draw_text_outlined(410,menu_y_remap_key_right+menu_y_offset,"Right",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_right+menu_y_offset,"Right",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Right End*/
 	
 	#region /*Remap Key Down*/
-	if (menu="remap_key_down"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_down+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+448;
+	if (menu="remap_key_down"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_down+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128+448;
 	draw_text_outlined(410,menu_y_remap_key_down+menu_y_offset,"Down",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_down+menu_y_offset,"Down",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Down End*/
 	
 	#region /*Remap Key Up*/
-	if (menu="remap_key_up"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_up+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+512;
+	if (menu="remap_key_up"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_up+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128+512;
 	draw_text_outlined(410,menu_y_remap_key_up+menu_y_offset,"Up",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_up+menu_y_offset,"Up",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Up End*/
 	
 	#region /*Remap Key Attack*/
-	if (menu="remap_key_attack"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_attack+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=128+576;
+	if (menu="remap_key_attack"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_key_attack+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position =128+576;
 	draw_text_outlined(410,menu_y_remap_key_attack+menu_y_offset,"Tongue",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 	if (input_key=true)and(can_remap_key=false){menu_delay = 3;scr_keyboardremapping();}else if (key_a_pressed)and(menu_delay= 0){menu_delay = 3;input_key=true;}}else{draw_text_outlined(410,menu_y_remap_key_attack+menu_y_offset,"Tongue",global.default_text_size,c_menu_outline,c_menu_fill,1);}
 	#endregion /*Remap Key Up End*/
@@ -3868,7 +3868,7 @@ function scr_options_menu()
 	if (menu="remap_reset")
 	{
 		draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_remap_reset+menu_y_offset,1,1,0,c_white,1);
-		menu_cursor_y_position=menu_y_remap_reset;
+		menu_cursor_y_position =menu_y_remap_reset;
 		draw_sprite_ext(spr_menu_button,0,410,menu_y_remap_reset+menu_y_offset,1,1,0,c_white,1);
 		draw_text_outlined(420,menu_y_remap_reset+menu_y_offset,"Default Settings",global.default_text_size*1.1,c_white,c_black,1);
 		if (key_a_pressed)
@@ -4521,276 +4521,86 @@ function scr_options_menu()
 	}
 	#endregion /*Cancel dive by pressing opposite direction END*/
 	
-	#region /*Wall Jump Setting*/
-	if (remapping_player = 0)
-	{
-		draw_menu_dropdown(390, menu_y_wall_jump_setting+menu_y_offset, "Walljump", "wall_jump_setting", global.player1_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
-	}
-	
-	if (remapping_player = 1)
-	{
-		draw_menu_dropdown(390, menu_y_wall_jump_setting+menu_y_offset, "Walljump", "wall_jump_setting", global.player2_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
-	}
-	
-	if (remapping_player = 2)
-	{
-		draw_menu_dropdown(390, menu_y_wall_jump_setting+menu_y_offset, "Walljump", "wall_jump_setting", global.player3_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
-	}
-	
-	if (remapping_player = 3)
-	{
-		draw_menu_dropdown(390, menu_y_wall_jump_setting+menu_y_offset, "Walljump", "wall_jump_setting", global.player4_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
-	}
-	#endregion /*Wall Jump Settings END*/
-	
-	#region /*Drop down from Rope*/
-	if (remapping_player = 0)
-	{
-		if (menu="drop_from_rope")
-		{
-			draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_drop_down_from_rope+menu_y_offset,1,1,0,c_white,1);
-			menu_cursor_y_position = menu_y_drop_down_from_rope;
-			if (key_left)
-			and(menu_joystick_delay = 0)
-			{
-				if (global.player1_drop_from_rope>0)
-				{
-					global.player1_drop_from_rope-=1;
-				}
-				else
-				{
-					global.player1_drop_from_rope=4;
-				}
-			}
-			if (key_right)
-			and(menu_joystick_delay = 0)
-			or(key_a_pressed)
-			{
-				if (global.player1_drop_from_rope<4)
-				{
-					global.player1_drop_from_rope+=1;
-				}
-				else
-				{
-					global.player1_drop_from_rope= 0;
-				}
-			}
-			if (global.player1_drop_from_rope= 0){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Release Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_drop_from_rope=1){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down or Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_drop_from_rope=2){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Down",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_drop_from_rope=3){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_drop_from_rope=4){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down + Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-			}else
-			{
-			if (global.player1_drop_from_rope= 0){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Release Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_drop_from_rope=1){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down or Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_drop_from_rope=2){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Down",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_drop_from_rope=3){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_drop_from_rope=4){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down + Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-			}
-	}
-	else
-
-	if (remapping_player = 1)
-	{
-		if (menu="drop_from_rope")
-		{
-			draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_drop_down_from_rope+menu_y_offset,1,1,0,c_white,1);
-			menu_cursor_y_position = menu_y_drop_down_from_rope;
-			if (key_left)
-			and(menu_joystick_delay = 0)
-			{
-				if (global.player2_drop_from_rope>0)
-				{
-					global.player2_drop_from_rope-=1;
-				}
-				else
-				{
-					global.player2_drop_from_rope=4;
-				}
-			}
-			if (key_right)
-			and(menu_joystick_delay = 0)
-			or(key_a_pressed)
-			{
-				if (global.player2_drop_from_rope<4)
-				{
-					global.player2_drop_from_rope+=1;
-				}
-				else
-				{
-					global.player2_drop_from_rope= 0;
-				}
-			}
-	
-			if (global.player2_drop_from_rope= 0){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Release Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player2_drop_from_rope=1){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down or Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player2_drop_from_rope=2){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Down",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player2_drop_from_rope=3){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player2_drop_from_rope=4){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down + Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-			}else
-			{
-			if (global.player2_drop_from_rope= 0){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Release Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player2_drop_from_rope=1){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down or Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player2_drop_from_rope=2){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Down",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player2_drop_from_rope=3){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player2_drop_from_rope=4){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down + Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-			}
-	}
-	else
-
-	if (remapping_player = 2)
-	{
-		if (menu="drop_from_rope")
-		{
-			draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_drop_down_from_rope+menu_y_offset,1,1,0,c_white,1);
-			menu_cursor_y_position = menu_y_drop_down_from_rope;
-			if (key_left)
-			and(menu_joystick_delay = 0)
-			{
-				if (global.player3_drop_from_rope>0)
-				{
-					global.player3_drop_from_rope-=1;
-				}
-				else
-				{
-					global.player3_drop_from_rope=4;
-				}
-			}
-			if (key_right)
-			and(menu_joystick_delay = 0)
-			or(key_a_pressed)
-			{
-				if (global.player3_drop_from_rope<4)
-				{
-					global.player3_drop_from_rope+=1;
-				}
-				else
-				{
-					global.player3_drop_from_rope= 0;
-				}
-			}
-			
-			if (global.player3_drop_from_rope= 0){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Release Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player3_drop_from_rope=1){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down or Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player3_drop_from_rope=2){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Down",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player3_drop_from_rope=3){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player3_drop_from_rope=4){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down + Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-			}else
-			{
-			if (global.player3_drop_from_rope= 0){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Release Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player3_drop_from_rope=1){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down or Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player3_drop_from_rope=2){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Down",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player3_drop_from_rope=3){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player3_drop_from_rope=4){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down + Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-		}
-	}
-	else
-
-	if (remapping_player = 3)
-	{
-		if (menu="drop_from_rope")
-		{
-			draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_drop_down_from_rope+menu_y_offset,1,1,0,c_white,1);
-			menu_cursor_y_position = menu_y_drop_down_from_rope;
-			if (key_left)
-			and(menu_joystick_delay = 0)
-			{
-				if (global.player4_drop_from_rope>0)
-				{
-					global.player4_drop_from_rope-=1;
-				}
-				else
-				{
-					global.player4_drop_from_rope=4;
-				}
-			}
-			if (key_right)
-			and(menu_joystick_delay = 0)
-			or(key_a_pressed)
-			{
-				if (global.player4_drop_from_rope<4)
-				{
-					global.player4_drop_from_rope+=1;
-				}
-				else
-				{
-					global.player4_drop_from_rope= 0;
-				}
-			}
-
-			if (global.player4_drop_from_rope= 0){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Release Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player4_drop_from_rope=1){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down or Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player4_drop_from_rope=2){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Down",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player4_drop_from_rope=3){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player4_drop_from_rope=4){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down + Jump",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
-			}else
-			{
-			if (global.player4_drop_from_rope= 0){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Release Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player4_drop_from_rope=1){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down or Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player4_drop_from_rope=2){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Down",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player4_drop_from_rope=3){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Only Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player4_drop_from_rope=4){draw_text_outlined(410,menu_y_drop_down_from_rope+menu_y_offset,"Drop down from rope: Down + Jump",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-		}
-	}
-	#endregion /*Drop down from Rope END*/
-
 	#region /*Show Controls*/
 	if (os_type!=os_ios)
 	and(os_type!=os_android)
 	{
 		if (remapping_player = 0)
 		{
-			if (menu="show_controls"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_show_controls+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_show_controls;
-			if (global.player1_show_controls<= 0){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Never Show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_show_controls=1){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player1_show_controls)+" Second",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_show_controls>=2)and(global.player1_show_controls<=9){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player1_show_controls)+" Seconds",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_show_controls>=10){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Always Show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}
-			else
-			if (global.player1_show_controls<= 0){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Never Show",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_show_controls=1){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player1_show_controls)+" Second",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_show_controls>=2)and(global.player1_show_controls<=9){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player1_show_controls)+" Seconds",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-			if (global.player1_show_controls>=10){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Always Show",global.default_text_size,c_menu_outline,c_menu_fill,1);}
+			draw_menu_dropdown(390, menu_y_show_controls+menu_y_offset, "Show Controls", "show_controls", global.player1_show_controls, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
 		}
-		else
-
-		if (remapping_player = 1){if (menu="show_controls"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_show_controls+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_show_controls;
-		if (global.player2_show_controls<= 0){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Never Show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-		if (global.player2_show_controls=1){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player2_show_controls)+" Second",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-		if (global.player2_show_controls>=2)and(global.player2_show_controls<=9){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player2_show_controls)+" Seconds",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-		if (global.player2_show_controls>=10){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Always Show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}else
-
-		if (global.player2_show_controls<= 0){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Never Show",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-		if (global.player2_show_controls=1){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player2_show_controls)+" Second",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-		if (global.player2_show_controls>=2)and(global.player2_show_controls<=9){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player2_show_controls)+" Seconds",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-		if (global.player2_show_controls>=10){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Always Show",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-		}else
-
-		if (remapping_player = 2){if (menu="show_controls"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_show_controls+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_show_controls;
-		if (global.player3_show_controls<= 0){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Never Show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-		if (global.player3_show_controls=1){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player3_show_controls)+" Second",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-		if (global.player3_show_controls>=2)and(global.player3_show_controls<=9){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player3_show_controls)+" Seconds",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-		if (global.player3_show_controls>=10){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Always Show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}else
-
-		if (global.player3_show_controls<= 0){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Never Show",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-		if (global.player3_show_controls=1){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player3_show_controls)+" Second",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-		if (global.player3_show_controls>=2)and(global.player3_show_controls<=9){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player3_show_controls)+" Seconds",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-		if (global.player3_show_controls>=10){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Always Show",global.default_text_size,c_menu_outline,c_menu_fill,1);}
-		}else
-
-		if (remapping_player = 3){if (menu="show_controls"){draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,menu_y_show_controls+menu_y_offset,1,1,0,c_white,1);menu_cursor_y_position=menu_y_show_controls;
-		if (global.player4_show_controls<= 0){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,">Show Controls: Never Show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-		if (global.player4_show_controls=1){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player4_show_controls)+" Second",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-		if (global.player4_show_controls>=2)and(global.player4_show_controls<=9){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player4_show_controls)+" Seconds",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}else
-		if (global.player4_show_controls>=10){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Always Show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}}else
+		if (remapping_player = 1)
+		{
+			draw_menu_dropdown(390, menu_y_show_controls+menu_y_offset, "Show Controls", "show_controls", global.player2_show_controls, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
+		}
 	
-		if (global.player4_show_controls<= 0){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Never Show",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-		if (global.player4_show_controls=1){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player4_show_controls)+" Second",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-		if (global.player4_show_controls>=2)and(global.player4_show_controls<=9){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls After: "+string(global.player4_show_controls)+" Seconds",global.default_text_size,c_menu_outline,c_menu_fill,1);}else
-		if (global.player4_show_controls>=10){draw_text_outlined(410,menu_y_show_controls+menu_y_offset,"Show Controls: Always Show",global.default_text_size,c_menu_outline,c_menu_fill,1);}
+		if (remapping_player = 2)
+		{
+			draw_menu_dropdown(390, menu_y_show_controls+menu_y_offset, "Show Controls", "show_controls", global.player3_show_controls, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
+		}
+	
+		if (remapping_player = 3)
+		{
+			draw_menu_dropdown(390, menu_y_show_controls+menu_y_offset, "Show Controls", "show_controls", global.player4_show_controls, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
+		}
+		if (menu="show_controls")
+		{
+			menu_cursor_y_position = menu_y_show_controls+250;
 		}
 	}
 	#endregion /*Show Controls END*/
+	
+	#region /*Drop down from Rope*/
+	if (remapping_player = 0)
+	{
+		draw_menu_dropdown(390, menu_y_drop_down_from_rope+menu_y_offset, "Drop down from rope", "drop_from_rope", global.player1_drop_from_rope, "Release Jump", "Down or Jump", "Only Down", "Only Jump", "Down + Jump");
+	}
+	
+	if (remapping_player = 1)
+	{
+		draw_menu_dropdown(390, menu_y_drop_down_from_rope+menu_y_offset, "Drop down from rope", "drop_from_rope", global.player2_drop_from_rope, "Release Jump", "Down or Jump", "Only Down", "Only Jump", "Down + Jump");
+	}
+	
+	if (remapping_player = 2)
+	{
+		draw_menu_dropdown(390, menu_y_drop_down_from_rope+menu_y_offset, "Drop down from rope", "drop_from_rope", global.player3_drop_from_rope, "Release Jump", "Down or Jump", "Only Down", "Only Jump", "Down + Jump");
+	}
+	
+	if (remapping_player = 3)
+	{
+		draw_menu_dropdown(390, menu_y_drop_down_from_rope+menu_y_offset, "Drop down from rope", "drop_from_rope", global.player4_drop_from_rope, "Release Jump", "Down or Jump", "Only Down", "Only Jump", "Down + Jump");
+	}
+	if (menu="drop_from_rope")
+	{
+		menu_cursor_y_position = menu_y_drop_down_from_rope+250;
+	}
+	#endregion /*Drop down from Rope END*/
+	
+	#region /*Wall Jump Setting*/
+	if (remapping_player = 0)
+	{
+		draw_menu_dropdown(390, menu_y_wall_jump_setting+menu_y_offset, "Wall Jump", "wall_jump_setting", global.player1_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
+	}
+	
+	if (remapping_player = 1)
+	{
+		draw_menu_dropdown(390, menu_y_wall_jump_setting+menu_y_offset, "Wall Jump", "wall_jump_setting", global.player2_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
+	}
+	
+	if (remapping_player = 2)
+	{
+		draw_menu_dropdown(390, menu_y_wall_jump_setting+menu_y_offset, "Wall Jump", "wall_jump_setting", global.player3_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
+	}
+	
+	if (remapping_player = 3)
+	{
+		draw_menu_dropdown(390, menu_y_wall_jump_setting+menu_y_offset, "Wall Jump", "wall_jump_setting", global.player4_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
+	}
+	if (menu="wall_jump_setting")
+	{
+		menu_cursor_y_position = menu_y_wall_jump_setting+250;
+	}
+	#endregion /*Wall Jump Settings END*/
 	
 	#region /*Remap Select Player - Which player do you want to remap the controls for?*/
 	draw_menu_dropdown(390, 50+menu_y_offset, "Remap This Player", "remap_select_player", remapping_player, "Player 1", "Player 2", "Player 3", "Player 4");
@@ -5054,7 +4864,8 @@ function scr_options_menu()
 	if (global.music_volume= 0.2){draw_rectangle_color(410,20+(40*2)-5,410+64,20+(40*2)+5,c_red,c_red,c_red,c_red,false);}
 	if (global.music_volume= 0.15){draw_rectangle_color(410,20+(40*2)-5,410+48,20+(40*2)+5,c_red,c_red,c_red,c_red,false);}
 	if (global.music_volume= 0.1){draw_rectangle_color(410,20+(40*2)-5,410+32,20+(40*2)+5,c_red,c_red,c_red,c_red,false);}
-	if (global.music_volume= 0.05){draw_rectangle_color(410,20+(40*2)-5,410+16,20+(40*2)+5,c_red,c_red,c_red,c_red,false);}#endregion /*Music Bar END*/
+	if (global.music_volume= 0.05){draw_rectangle_color(410,20+(40*2)-5,410+16,20+(40*2)+5,c_red,c_red,c_red,c_red,false);}
+	#endregion /*Music Bar END*/
 	
 	#region /*Sound Effects Bar*/
 	if (menu="sfx_volume"){
@@ -6258,7 +6069,20 @@ function scr_options_menu()
 		if (remapping_player = 3)and(menu_delay= 0){remapping_player = 0;menu_delay = 3;}
 		}
 
-		else if (key_up)and(menu_delay= 0){menu="show_controls";menu_delay = 3;}else if (key_down)and(menu_delay= 0){menu="remap_key_dive";menu_delay = 3;}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		{
+			menu = "show_controls";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay= 0)
+		{
+			menu = "remap_key_dive";
+			menu_delay = 3;
+		}
 	}
 	else
 	if (menu = "up_key_is_jump_key")
@@ -6454,15 +6278,211 @@ function scr_options_menu()
 	}
 	#endregion /*Navigate Wall Jump Setting END*/
 	
-	else if (menu="drop_from_rope"){
-
-	if (key_up)and(menu_delay= 0){menu="wall_jump_setting";menu_delay = 3;}else if (key_down)and(menu_delay= 0){menu="show_controls";menu_delay = 3;}}
-	else if (menu="show_controls"){
-	if (remapping_player = 0){if (key_left){if (global.player1_show_controls>0){global.player1_show_controls-=1;}else{global.player1_show_controls=10;}}else if (key_right)or(key_a_pressed){if (global.player1_show_controls<10){global.player1_show_controls+=1;}else{global.player1_show_controls= 0;}}}
-	if (remapping_player = 1){if (key_left){if (global.player2_show_controls>0){global.player2_show_controls-=1;}else{global.player2_show_controls=10;}}else if (key_right)or(key_a_pressed){if (global.player2_show_controls<10){global.player2_show_controls+=1;}else{global.player2_show_controls= 0;}}}
-	if (remapping_player = 2){if (key_left){if (global.player3_show_controls>0){global.player3_show_controls-=1;}else{global.player3_show_controls=10;}}else if (key_right)or(key_a_pressed){if (global.player3_show_controls<10){global.player3_show_controls+=1;}else{global.player3_show_controls= 0;}}}
-	if (remapping_player = 3){if (key_left){if (global.player4_show_controls>0){global.player4_show_controls-=1;}else{global.player4_show_controls=10;}}else if (key_right)or(key_a_pressed){if (global.player4_show_controls<10){global.player4_show_controls+=1;}else{global.player4_show_controls= 0;}}}
-	if (key_up)and(menu_delay= 0){menu="drop_from_rope";menu_delay = 3;}else if (key_down)and(menu_delay= 0){menu="remap_select_player";menu_delay = 3;}}
+	else
+	
+	#region /*Navigate Drop From Rope Setting*/
+	if (menu = "drop_from_rope")
+	{
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "wall_jump_setting";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "show_controls";
+			menu_delay = 3;
+		}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 0)
+		and (global.player1_drop_from_rope>0)
+		{
+			global.player1_drop_from_rope-=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 0)
+		and (global.player1_drop_from_rope<4)
+		{
+			global.player1_drop_from_rope+=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 1)
+		and (global.player2_drop_from_rope>0)
+		{
+			global.player2_drop_from_rope-=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 1)
+		and (global.player2_drop_from_rope<4)
+		{
+			global.player2_drop_from_rope+=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 2)
+		and (global.player3_drop_from_rope>0)
+		{
+			global.player3_drop_from_rope-=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 2)
+		and (global.player3_drop_from_rope<4)
+		{
+			global.player3_drop_from_rope+=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 3)
+		and (global.player4_drop_from_rope>0)
+		{
+			global.player4_drop_from_rope-=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 3)
+		and (global.player4_drop_from_rope<4)
+		{
+			global.player4_drop_from_rope+=1;
+			menu_delay = 3;
+		}
+	}
+	#endregion /*Navigate Drop From Rope Setting END*/
+	
+	else
+	
+	#region /*Navigate Show Controls Settings*/
+	if (menu = "show_controls")
+	{
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "drop_from_rope";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "remap_select_player";
+			menu_delay = 3;
+		}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 0)
+		and (global.player1_show_controls>0)
+		{
+			global.player1_show_controls-=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 0)
+		and (global.player1_show_controls<10)
+		{
+			global.player1_show_controls+=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 1)
+		and (global.player2_show_controls>0)
+		{
+			global.player2_show_controls-=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 1)
+		and (global.player2_show_controls<10)
+		{
+			global.player2_show_controls+=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 2)
+		and (global.player3_show_controls>0)
+		{
+			global.player3_show_controls-=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 2)
+		and (global.player3_show_controls<10)
+		{
+			global.player3_show_controls+=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 3)
+		and (global.player4_show_controls>0)
+		{
+			global.player4_show_controls-=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (remapping_player = 3)
+		and (global.player4_show_controls<10)
+		{
+			global.player4_show_controls+=1;
+			menu_delay = 3;
+		}
+	}
+	#endregion /*Navigate Show Controls Settings END*/
 
 	#endregion /*Options Menu END*/
 	
@@ -6472,13 +6492,27 @@ function scr_options_menu()
 	#region /*Accept*/
 	if (key_a_pressed)
 	or (mouse_check_button_pressed(mb_left))
-	and(window_mouse_get_x() > 370)
+	and (window_mouse_get_x() > 370)
 	{
-		if (menu="assist_enable")and(menu_delay= 0){if (global.assist_enable=true){global.assist_enable=false;}else{global.assist_enable=true;}menu_delay = 3;}
+		if (menu = "assist_enable")
+		and (menu_delay = 0)
+		{
+			if (global.assist_enable = true)
+			{
+				global.assist_enable = false;
+			}
+			else
+			{
+				global.assist_enable = true;
+			}
+			menu_delay = 3;
+		}
 		
 		if (menu="assist_item_appear")
 		or (menu="assist_extra_hp")
 		or (menu="wall_jump_setting")
+		or (menu="drop_from_rope")
+		or (menu="show_controls")
 		{
 			if (menu_delay= 0)
 			and(open_dropdown = false)
