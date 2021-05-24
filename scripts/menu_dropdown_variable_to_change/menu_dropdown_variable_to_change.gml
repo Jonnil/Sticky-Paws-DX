@@ -20,4 +20,28 @@ function menu_dropdown_variable_to_change()
 	{
 		remapping_player = change_to_value;
 	}
+	else
+	if (variable_to_change = global.player1_wall_jump_setting)
+	and (menu = "wall_jump_setting")
+	{
+		global.player1_wall_jump_setting = change_to_value;
+	}
+	else
+	if (variable_to_change = global.player2_wall_jump_setting)
+	and (menu = "wall_jump_setting")
+	{
+		global.player2_wall_jump_setting = change_to_value;
+	}
+	else
+	if (variable_to_change = global.player3_wall_jump_setting)
+	and (menu = "wall_jump_setting")
+	{
+		global.player3_wall_jump_setting = change_to_value;
+	}
+	else
+	if (variable_to_change = global.player4_wall_jump_setting)
+	and (menu = "wall_jump_setting")
+	{
+		global.player4_wall_jump_setting = change_to_value;
+	}
 }
