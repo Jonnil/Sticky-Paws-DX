@@ -713,6 +713,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/Levels/Level2","resourceVersion":"1.0","name":"Automatic Thumbnail.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Levels/Level2","resourceVersion":"1.0","name":"level_information.ini","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Data","resourceVersion":"1.0","name":"Object_Rotation_Placement.txt","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level2/Sounds/Music","resourceVersion":"1.0","name":"music.ogg","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.2.560",

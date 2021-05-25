@@ -13966,7 +13966,9 @@ and(key_jump_hold)
 			dive = false;
 			triplejumpdelay = 12;
 			if (abs(hspeed) > 3)
-			or(key_up)
+			and (!place_meeting(x,y-8,obj_wall))
+			or (key_up)
+			and (!place_meeting(x,y-8,obj_wall))
 			{
 				if (jump > 2)
 				{
@@ -13986,6 +13988,7 @@ and(key_jump_hold)
 				}
 			}
 			else
+			if (!place_meeting(x,y-8,obj_wall))
 			{
 				vspeed = -normal_jump_height;
 			}
