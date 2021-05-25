@@ -629,19 +629,20 @@ scrolling_left=0;
 
 #region /*Assist Item*/
 if (asset_get_type("obj_assist_item")==asset_object)
-and(asset_get_type("obj_player")==asset_object)
+and (asset_get_type("obj_player")==asset_object)
+and (global.assist_enable = true)
 {
 	if (global.assist_item_appear<10)
 	{
 		if (global.lives_until_assist>=global.assist_item_appear)
 		or(global.assist_item_appear<=0)
 		{
-			if (instance_number(obj_assist_item)<1)
+			if (!instance_exists(obj_assist_item))
 			and(instance_exists(obj_player))
 			{
-				with(instance_nearest(x,y,obj_player))
+				with(instance_nearest(x, y, obj_player))
 				{
-					instance_create_depth(x-32,y-128,0,obj_assist_item);
+					instance_create_depth(x-32, y-128, 0, obj_assist_item);
 				}
 			}
 		}
@@ -649,11 +650,33 @@ and(asset_get_type("obj_player")==asset_object)
 }
 #endregion /*Assist Item End*/
 
-/*Start Timer*/
+#region /*Start Timer*/
 time_second=0;
-if (instance_number(obj_player)>0)and(asset_get_type("obj_player_map")==asset_object)and(instance_number(obj_player_map)<1){if (global.trigger_ending=false){
-if (global.x_checkpoint>0)or(global.y_checkpoint>0){global.timeattack_realmillisecond=global.checkpoint_realmillisecond;global.timeattack_millisecond=global.checkpoint_millisecond;global.timeattack_second=global.checkpoint_second;global.timeattack_minute=global.checkpoint_minute;}
-else{global.timeattack_realmillisecond=0;global.timeattack_millisecond=0;global.timeattack_second=0;global.timeattack_minute=0;}}}
+if (instance_exists(obj_player))
+and (asset_get_type("obj_player_map")==asset_object)
+and (!instance_exists(obj_player_map))
+{
+	if (global.trigger_ending=false)
+	{
+		if (global.x_checkpoint>0)
+		or (global.y_checkpoint>0)
+		{
+			global.timeattack_realmillisecond=global.checkpoint_realmillisecond;
+			global.timeattack_millisecond=global.checkpoint_millisecond;
+			global.timeattack_second=global.checkpoint_second;
+			global.timeattack_minute=global.checkpoint_minute;
+		}
+		else
+		{
+			global.timeattack_realmillisecond=0;
+			global.timeattack_millisecond=0;
+			global.timeattack_second=0;
+			global.timeattack_minute=0;
+		}
+	}
+}
+#endregion /*Start Timer END*/
+
 //if (global.x_checkpoint>0{view_xview=global.x_checkpoint;}
 //if (global.y_checkpoint>0{view_yview=global.y_checkpoint;}
 

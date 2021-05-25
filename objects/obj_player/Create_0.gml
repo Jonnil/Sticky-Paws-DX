@@ -413,8 +413,16 @@ voice_burned = noone;
 acceleration_on_ground = 0.3; /*How much acceleration the character has on ground*/
 acceleration_in_air = 0.3; /*How much acceleration the character has in air*/
 acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
-hp = 1 + global.assist_extra_hp; /*Starting HP*/
-max_hp = 1 + global.assist_extra_hp; /*Starting Max HP*/
+if (global.assist_enable = false)
+{
+	hp = 1; /*Starting HP*/
+	max_hp = 1; /*Starting Max HP*/
+}
+else
+{
+	hp = 1 + global.assist_extra_hp; /*Starting HP*/
+	max_hp = 1 + global.assist_extra_hp; /*Starting Max HP*/
+}
 max_overflow_hp = 4; /*Starting Max Overflow HP*/
 number_of_jumps = 1; /*How many times you can jump. -1 = infinite jumps, 0 = no jump, 1 = single jump, 2 = double jump*/
 midair_jumps_left = 1; /*How many mid-air jumps you have left to perform*/

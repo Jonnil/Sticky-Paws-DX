@@ -1,0 +1,1 @@
+other.assist_invincible = true;

@@ -1,0 +1,1 @@
+effect_time = 0;

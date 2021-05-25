@@ -8768,30 +8768,59 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 	}
 	#endregion /*Mid-air Flip Animation counter END*/
 	
-	#region /*Starting HP*/
-	if (ini_key_exists("values", "hp"))
+	if (global.assist_enable = false)
 	{
-		hp = ini_read_real("values", "hp", 1) + global.assist_extra_hp;
+		
+		#region /*Starting HP*/
+		if (ini_key_exists("values", "hp"))
+		{
+			hp = ini_read_real("values", "hp", 1);
+		}
+		else
+		{
+			hp = 1;
+		}
+		#endregion /*Starting HP END*/
+
+		#region /*Starting Max HP*/
+		if (ini_key_exists("values", "max_hp"))
+		{
+			max_hp = ini_read_real("values", "max_hp", 1);
+		}
+		else
+		{
+			max_hp = 1;
+		}
+		#endregion /*Starting Max HP END*/
+		
 	}
 	else
 	{
-		//ini_write_real("values", "hp", 1);
-		hp = 1 + global.assist_extra_hp;
-	}
-	#endregion /*Starting HP END*/
+		
+		#region /*Starting HP + Extra Assist HP*/
+		if (ini_key_exists("values", "hp"))
+		{
+			hp = ini_read_real("values", "hp", 1) + global.assist_extra_hp;
+		}
+		else
+		{
+			hp = 1 + global.assist_extra_hp;
+		}
+		#endregion /*Starting HP + Extra Assist HP END*/
 
-	#region /*Starting Max HP*/
-	if (ini_key_exists("values", "max_hp"))
-	{
-		max_hp = ini_read_real("values", "max_hp", 1) + global.assist_extra_hp;
+		#region /*Starting Max HP + Extra Assist HP*/
+		if (ini_key_exists("values", "max_hp"))
+		{
+			max_hp = ini_read_real("values", "max_hp", 1) + global.assist_extra_hp;
+		}
+		else
+		{
+			max_hp = 1 + global.assist_extra_hp;
+		}
+		#endregion /*Starting Max HP + Extra Assist HP END*/
+		
 	}
-	else
-	{
-		//ini_write_real("values", "max_hp", 1);
-		max_hp = 1 + global.assist_extra_hp;
-	}
-	#endregion /*Starting Max HP END*/
-
+	
 	#region /*Starting Max Overflow HP*/
 	if (ini_key_exists("values", "max_overflow_hp"))
 	{
@@ -12250,7 +12279,8 @@ if (assist_invincible=true)
 #endregion /*Assist Invincible END*/
 
 #region /*If Assist delault hp is invincible, stay invincible*/
-if (global.assist_invincible = true)
+if (global.assist_enable)
+and (global.assist_invincible = true)
 and(hp<max_hp)
 {
 	hp=max_hp;

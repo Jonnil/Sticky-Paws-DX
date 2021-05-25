@@ -85,9 +85,6 @@ function draw_menu_checkmark()
 	
 	#region /*Show a menu cursor when the option is highlighted*/
 	if (menu = menu_index)
-	and (global.controls_used_for_menu_navigation = "keyboard")
-	or (menu = menu_index)
-	and (global.controls_used_for_menu_navigation = "controller")
 	{
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position+16, y_position+16, 1, 1, 0, c_white, 1);
 	}
