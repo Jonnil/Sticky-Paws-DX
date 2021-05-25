@@ -8733,6 +8733,18 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 	}
 	#endregion /*Acceleration on ice END*/
 	
+	#region /*Can Attack After Dive On Ground Max Value*/
+	if (ini_key_exists("values", "can_attack_after_dive_on_ground_max_value"))
+	{
+		can_attack_after_dive_on_ground_max_value = ini_read_real("values", "can_attack_after_dive_on_ground_max_value", 20);
+	}
+	else
+	{
+		//ini_write_real("values", "number_of_jumps", 1);
+		can_attack_after_dive_on_ground_max_value = 20;
+	}
+	#endregion /*Can Attack After Dive On Ground Max Value END*/
+	
 	#region /*Number of jumps*/
 	if (ini_key_exists("values", "number_of_jumps"))
 	{
@@ -8743,7 +8755,7 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 		//ini_write_real("values", "number_of_jumps", 1);
 		number_of_jumps = 1;
 	}
-	#endregion /*Number of jumps*/
+	#endregion /*Number of jumps END*/
 	
 	#region /*Mid-air jumps left*/
 	if (ini_key_exists("values", "number_of_jumps"))
@@ -8906,7 +8918,9 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 		double_jump_height = 11.5;
 	}
 	#endregion /*Double jump height END*/
-
+	
+	#endregion /*Jump Heights END*/
+	
 	#region /*Homing attack distance*/
 	if (ini_key_exists("values", "homing_attack_distance"))
 	{
@@ -8917,10 +8931,19 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 		//ini_write_real("values", "homing_attack_distance", 500);
 		hoverstomp_distance = 500;
 	}
-	#endregion /*Homing attack distance*/
-
-	#endregion /*Jump Heights END*/
-
+	#endregion /*Homing attack distance END*/
+	
+	#region /*Wall Jump Time*/
+	if (ini_key_exists("values", "wall_jump_time"))
+	{
+		wall_jump_time = ini_read_real("values", "wall_jump_time", 10);
+	}
+	else
+	{
+		wall_jump_time = 10;
+	}
+	#endregion /*Wall Jump Time END*/
+	
 	ini_close();
 }
 else
@@ -13508,7 +13531,7 @@ and(!key_right)
 and(can_move = true)
 and(global.pause=false)
 {
-	if (wall_jump = false)
+	if (wall_jump = 0)
 	and(stick_to_wall = false)
 	and(ledge_grab = false)
 	and(climb = false)
@@ -13581,7 +13604,7 @@ and(!key_left)
 and(can_move = true)
 and(global.pause=false)
 {
-	if (wall_jump = false)
+	if (wall_jump = 0)
 	and(stick_to_wall = false)
 	and(ledge_grab = false)
 	and(climb = false)
@@ -14503,8 +14526,8 @@ and(vspeed>=0)
 #endregion /*Triple Jump END*/
 
 #region /*Wall Jump*/
-if (allow_wall_jump=true)
-and(can_wall_jump=true)
+if (allow_wall_jump = true)
+and(can_wall_jump = true)
 and(can_move=true)
 and(global.pause=false)
 and(takendamage<=takendamage_freezetime)
@@ -14545,10 +14568,10 @@ and(wall_jump_setting>=1)
 					dive=false;
 					dive_on_ground=false;
 					stomp_spin=false;
-					stick_to_wall=true;
+					stick_to_wall = true;
 					midair_jumps_left=number_of_jumps;
 					chain_reaction=0;
-					wall_jump=false;
+					wall_jump = 0;
 					ground_pound=false;
 					spring=false;
 					triplejumpdelay=0;
@@ -14580,10 +14603,10 @@ and(wall_jump_setting>=1)
 					dive=false;
 					dive_on_ground=false;
 					stomp_spin=false;
-					stick_to_wall=true;
+					stick_to_wall = true;
 					midair_jumps_left=number_of_jumps;
 					chain_reaction=0;
-					wall_jump=false;
+					wall_jump = 0;
 					ground_pound=false;
 					spring=false;
 					triplejumpdelay=0;
@@ -14591,8 +14614,25 @@ and(wall_jump_setting>=1)
 			}
 		}
 	}
-	if (stick_to_wall=true)
+	if (stick_to_wall = true)
 	{
+		
+		#region /*Pressing opposite direction to drop off from wall*/
+		if (key_left)
+		and (!key_right)
+		and (image_xscale = +1)
+		or (key_right)
+		and (!key_left)
+		and (image_xscale = -1)
+		{
+			pressing_opposite_direction_to_drop_off_from_wall += 1;
+		}
+		else
+		if (pressing_opposite_direction_to_drop_off_from_wall > 0)
+		{
+			pressing_opposite_direction_to_drop_off_from_wall -= 1;
+		}
+		#endregion /*Pressing opposite direction to drop off from wall END*/
 		
 		#region /*If there is ground under you while trying to go down, then stop wall climbing*/
 		if (asset_get_type("obj_wall")==asset_object)
@@ -14793,7 +14833,7 @@ and(wall_jump_setting>=1)
 				}
 				jump=1;
 				triplejumpdelay=50;
-				wall_jump=true;
+				wall_jump = wall_jump_time;
 				crouch=false;
 				stick_to_wall=false;
 				ledge_grab_jump=false;
@@ -14812,11 +14852,15 @@ and(wall_jump_setting>=1)
 		#endregion /*When pressing the jump button and besides the wall, do the wall jump END*/
 
 	}
-	if (wall_jump=true)
+	else
 	{
+		pressing_opposite_direction_to_drop_off_from_wall = 0;
+	}
+	if (wall_jump > 0)
+	{
+		wall_jump -= 1;
 		if (vspeed>=0)
 		{
-			wall_jump=false;
 			stick_to_wall=false;
 		}
 		if (vspeed<0)
@@ -14853,12 +14897,13 @@ and(wall_jump_setting>=1)
 	and(!key_left)
 	and(!key_right)
 	and(key_sprint_pressed)
-	and(stick_to_wall=true)
+	and(stick_to_wall = true)
 	or (key_down)
 	and(!key_left)
 	and(!key_right)
 	and(key_dive_pressed)
-	and(stick_to_wall=true)
+	and(stick_to_wall = true)
+	or (pressing_opposite_direction_to_drop_off_from_wall >=10)
 	{
 		if (place_meeting(x-1,y,obj_wall))
 		{
@@ -14868,6 +14913,7 @@ and(wall_jump_setting>=1)
 		{
 			x-=1;
 		}
+		pressing_opposite_direction_to_drop_off_from_wall = 0;
 		climb=false;
 		horizontal_rope_climb=false;
 		dive=false;
@@ -14939,7 +14985,7 @@ and(wall_jump_setting>=1)
 			}
 			jump=1;
 			triplejumpdelay=50;
-			wall_jump=true;
+			wall_jump = wall_jump_time;
 			crouch=false;
 			stick_to_wall=false;
 			ledge_grab_jump=false;
@@ -15001,7 +15047,7 @@ and(takendamage<=takendamage_freezetime)
 						can_climb_horizontal_rope_cooldown = 20;
 						ground_pound=true;
 						stick_to_wall=false;
-						wall_jump=false;
+						wall_jump = 0;
 						if (image_xscale>0)
 						{
 							angle=+360;
@@ -15307,6 +15353,7 @@ and(global.pause=false)
 			{
 				dive = false;
 				dive_on_ground = 10;
+				can_attack_after_dive_on_ground = can_attack_after_dive_on_ground_max_value;
 				ground_pound = false;
 				can_ground_pound = false;
 			}
@@ -15348,6 +15395,22 @@ and(global.pause=false)
 }
 #endregion /*Dive END*/
 
+#region /*Can Attack After Dive On Ground*/
+if (can_attack_after_dive_on_ground>0)
+and(asset_get_type("obj_wall")==asset_object)
+and(place_meeting(x,y+1,obj_wall))
+or (can_attack_after_dive_on_ground>0)
+and(asset_get_type("obj_semisolid_platform")==asset_object)
+and(place_meeting(x,y+1,obj_semisolid_platform))
+{
+	can_attack_after_dive_on_ground -= 1;
+	if (key_jump)
+	{
+		can_attack_after_dive_on_ground = false;
+	}
+}
+#endregion /*Can Attack After Dive On Ground END*/
+
 #region /*Dive ground boost*/
 if (allow_dive_ground_boost=true)
 and(dive_on_ground>0)
@@ -15358,7 +15421,7 @@ and(dive_on_ground>0)
 and(asset_get_type("obj_semisolid_platform")==asset_object)
 and(place_meeting(x,y+1,obj_semisolid_platform))
 {
-	dive_on_ground-=1;
+	dive_on_ground -= 1;
 	if (key_jump)
 	{
 		dive_on_ground=false;
@@ -15457,7 +15520,7 @@ if (allow_ledge_grab=true)
 				ledge_grab_jump=false;
 				ledge_grab+=1;
 				stick_to_wall=false;
-				wall_jump=false;
+				wall_jump = 0;
 				jump=0;
 			}
 		}
@@ -15512,7 +15575,7 @@ if (allow_ledge_grab=true)
 					ledge_grab=false;
 					ledge_grab_jump=true;
 					stick_to_wall=false;
-					wall_jump=false;
+					wall_jump = 0;
 				}
 			}
 			else
@@ -15536,7 +15599,7 @@ if (allow_ledge_grab=true)
 				ledge_grab=false;
 				ledge_grab_jump=true;
 				stick_to_wall=false;
-				wall_jump=false;
+				wall_jump = 0;
 			}
 			if (key_left)
 			and(image_xscale=+1)
@@ -15550,7 +15613,7 @@ if (allow_ledge_grab=true)
 					ledge_grab=false;
 					ledge_grab_jump=true;
 					stick_to_wall=false;
-					wall_jump=false;
+					wall_jump = 0;
 				}
 			}
 		}
@@ -15678,7 +15741,7 @@ if (asset_get_type("obj_water")==asset_object)
 		allow_roll=false;
 		can_ground_pound = false;
 		ground_pound=false;
-		can_wall_jump=false;
+		can_wall_jump = false;
 		stick_to_wall=false;
 		can_dive=false;
 
@@ -15811,7 +15874,7 @@ if (asset_get_type("obj_water")==asset_object)
 		in_water=false;
 		allow_roll=false;
 		can_ground_pound = true;
-		can_wall_jump=true;
+		can_wall_jump = true;
 	}
 }
 #endregion /*In Water END*/
@@ -18057,7 +18120,7 @@ if (!place_meeting(x,y+1,obj_wall))
 	}
 else
 /*wall_slide down*/
-if (stick_to_wall=true)
+if (stick_to_wall = true)
 and(vspeed>=0)
 {
 	if (crouch=false)
@@ -18118,7 +18181,7 @@ if (vspeed<0)
 	else
 	/*Make it look natural when climbing wall*//*IMPORTANT*/
 	/*Run up wall / wall_slide up*/
-	if (stick_to_wall=true)
+	if (stick_to_wall = true)
 	{
 		if (crouch=false)
 		and(ground_pound=false)
@@ -18140,7 +18203,7 @@ if (vspeed<0)
 	/*Walljump*/
 	else
 	{
-		if (wall_jump=true)
+		if (wall_jump >= 0)
 		and(asset_get_type("spr_player_wall_jump")==asset_sprite)
 		{
 			sprite_index=spr_player_wall_jump;
@@ -18613,7 +18676,7 @@ if (place_meeting(x,y+1,obj_wall))
 			{
 				if (key_sprint)
 				and(stick_to_wall=false)
-				and(wall_jump=false)
+				and(wall_jump = 0)
 				{
 					audio_stop_sound(voice);
 					voice=audio_play_sound(voice_startdash,0,0);
@@ -18650,7 +18713,7 @@ if (place_meeting(x,y+1,obj_wall))
 			{
 				if (key_sprint)
 				and(stick_to_wall=false)
-				and(wall_jump=false)
+				and(wall_jump = 0)
 				{
 					if (asset_get_type("snd_speeddash")==asset_sound)
 					{
