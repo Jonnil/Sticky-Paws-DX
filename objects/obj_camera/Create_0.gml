@@ -1,4 +1,4 @@
-depth = -2000;
+depth = -9000;
 
 global.pause_room = noone;
 
@@ -622,6 +622,42 @@ else
 	custom_background_4_y_parallax = 9;
 }
 #endregion /*Initialize Background END*/
+
+#region /*Initialize Weather*/
+if (global.character_select_in_this_menu="game")
+and(file_exists("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini"))
+or(global.character_select_in_this_menu="level_editor")
+and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
+{
+	if (global.character_select_in_this_menu="game")
+	{
+		ini_open("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini");
+	}
+	else
+	if (global.character_select_in_this_menu="level_editor")
+	{
+		ini_open(working_directory + "/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+	}
+	
+	#region /*Rain*/
+	if (ini_key_exists("Info", "rain"))
+	{
+		rain = ini_read_real("Info", "rain", false);
+	}
+	else
+	{
+		ini_write_real("Info", "rain", false);
+		rain = false;
+	}
+	#endregion /*Rain END*/
+	
+	ini_close();
+}
+else
+{
+	rain = false;
+}
+#endregion /*Initialize Weather END*/
 
 big_collectible_count=1;
 shake=false;

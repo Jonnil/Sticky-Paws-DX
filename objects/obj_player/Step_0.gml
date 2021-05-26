@@ -11857,7 +11857,6 @@ and(obj_camera.iris_xscale<3)
 					global.checkpoint_realmillisecond=0;
 					global.lives_until_assist=0;
 					global.theme="ground";
-					global.weather=noone;
 					if (global.actually_play_edited_level=false)
 					and(global.play_edited_level=true)
 					and(global.character_select_in_this_menu="level_editor")
@@ -11988,7 +11987,6 @@ else
 					global.checkpoint_realmillisecond=0;
 					global.lives_until_assist=0;
 					global.theme="ground";
-					global.weather=noone;
 					if (global.trigger_ending=true)
 					and(asset_get_type("room_ending_cutscene")==asset_room)
 					{
@@ -17962,7 +17960,9 @@ and(!key_right)
 		image_speed=0.3;
 	}
 	else
-	if (global.weather="rain")
+	if (asset_get_type("obj_camera")==asset_object)
+	and (instance_exists(obj_camera))
+	and (obj_camera.rain = true)
 	{
 		if (sprite_stand_cold>noone){sprite_index = sprite_stand_cold;}else
 		{sprite_index = sprite_stand;}

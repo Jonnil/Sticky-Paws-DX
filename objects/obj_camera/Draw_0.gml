@@ -934,7 +934,11 @@ and(can_spawn_player1 = true)
 #endregion /*Tongue aim should always be above everything, it represents the mouse cursor END*/
 
 #region /*Rain Effect*/
-if (global.weather = "rain")
+if (rain = true)
+and (asset_get_type("obj_title") == asset_object)
+and (!instance_exists(obj_title))
+and (asset_get_type("obj_player_map") == asset_object)
+and (!instance_exists(obj_player_map))
 {
 	if (asset_get_type("snd_rain") == asset_sound)
 	{

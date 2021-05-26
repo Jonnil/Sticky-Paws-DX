@@ -267,7 +267,6 @@ global.play_edited_level=false;
 global.current_level=0;
 global.playergame=0;
 global.theme="ground";
-global.weather=noone;
 global.coins=0;
 global.level_clear_rate=noone;
 global.big_collectible1=false;
@@ -892,15 +891,17 @@ else
 
 /*Level code copied to clipboard*/copy_to_clipboard_message=0;paste_from_clipboard_message=0;
 lastkey=noone;
+
 #region /*Remapping options variables*/
 remapping_player = 0;
 /*remapping_player 0 = player 1.
 remapping_player 1 = player 2.
 remapping_player 2 = player 3.
 remapping_player 3 = player 4*/
-input_key=false;
-can_remap_key=false;
+input_key = false;
+can_remap_key = false;
 #endregion /*Remapping options variables END*/
+
 open_dropdown = false;
 menu_delay = 3;
 menu_joystick_delay=3;

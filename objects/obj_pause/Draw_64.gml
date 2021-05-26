@@ -508,18 +508,37 @@ and(global.pause_room = room_leveleditor)
 	}
 	else
 	if(global.pause_room = room_leveleditor)
+	and(global.character_select_in_this_menu = "game")
 	and (menu = "quit_to_map")
 	or(global.pause_room = room_leveleditor)
+	and(global.character_select_in_this_menu = "game")
 	and(menu = "quit_to_title")
 	or(global.pause_room = room_leveleditor)
+	and(global.character_select_in_this_menu = "game")
 	and(menu = "quit_to_desktop")
 	or(global.pause_room = room_leveleditor)
+	and(global.character_select_in_this_menu = "game")
 	and(menu = "quit_nevermind")
 	{
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Map","quit_to_map","quit_to_map");
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit to Title","quit_to_title","quit_to_title");
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit to Desktop","quit_to_desktop","quit_to_desktop");
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42+42,"Nevermind","quit_nevermind","quit_nevermind");
+	}
+	else
+	if(global.pause_room = room_leveleditor)
+	and(global.character_select_in_this_menu = "level_editor")
+	and(menu = "quit_to_title")
+	or(global.pause_room = room_leveleditor)
+	and(global.character_select_in_this_menu = "level_editor")
+	and(menu = "quit_to_desktop")
+	or(global.pause_room = room_leveleditor)
+	and(global.character_select_in_this_menu = "level_editor")
+	and(menu = "quit_nevermind")
+	{
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Title","quit_to_title","quit_to_title");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit to Desktop","quit_to_desktop","quit_to_desktop");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Nevermind","quit_nevermind","quit_nevermind");
 	}
 	else
 	if(global.pause_room = room_level_select)
@@ -677,7 +696,6 @@ and(global.pause_room = room_leveleditor)
 				global.restart_level = true;
 				audio_stop_all();
 				global.theme = noone;
-				global.weather = noone;
 				global.pause=false;
 				instance_activate_region(
 				camera_get_view_x(view_camera[view_current]) - 32,
@@ -748,7 +766,6 @@ and(global.pause_room = room_leveleditor)
 			global.restart_level = true;
 			audio_stop_all();
 			global.theme = noone;
-			global.weather = noone;
 			global.pause=false;
 			instance_activate_region(
 			camera_get_view_x(view_camera[view_current]) - 32,
@@ -836,7 +853,6 @@ and(global.pause_room = room_leveleditor)
 			global.restart_level = true;
 			audio_stop_all();
 			global.theme = noone;
-			global.weather = noone;
 			global.pause=false;
 			instance_activate_region(
 			camera_get_view_x(view_camera[view_current]) - 32,
@@ -935,6 +951,7 @@ and(global.pause_room = room_leveleditor)
 		{
 			menu_delay = 3;
 			if (global.pause_room = room_leveleditor)
+			and(global.character_select_in_this_menu = "game")
 			{
 				menu_delay = 3;
 				menu = "quit_to_map";
@@ -978,6 +995,7 @@ and(global.pause_room = room_leveleditor)
 	#region /*Quit to Map*/
 	if (menu = "quit_to_map")
 	and(global.pause_room = room_leveleditor)
+	and(global.character_select_in_this_menu = "game")
 	{
 		if (key_a_pressed)
 		and(menu_delay = 0)
@@ -999,7 +1017,6 @@ and(global.pause_room = room_leveleditor)
 			global.quit_to_map = true;
 			audio_stop_all();
 			global.theme = noone;
-			global.weather = noone;
 			global.pause=false;
 			if (asset_get_type("room_pause") == asset_room)
 			{
@@ -1058,7 +1075,6 @@ and(global.pause_room = room_leveleditor)
 			global.quit_to_title = true;
 			audio_stop_all();
 			global.theme = noone;
-			global.weather = noone;
 			global.pause=false;
 			instance_activate_region(
 			camera_get_view_x(view_camera[view_current]) - 32,
@@ -1092,11 +1108,11 @@ and(global.pause_room = room_leveleditor)
 		{
 			menu_delay = 3;
 			if (global.pause_room = room_leveleditor)
+			and(global.character_select_in_this_menu = "game")
 			{
 				menu = "quit_to_map";
 			}
 			else
-			if (global.pause_room = room_level_select)
 			{
 				menu = "quit_nevermind";
 			}
@@ -1187,11 +1203,11 @@ and(global.pause_room = room_leveleditor)
 		{
 			menu_delay = 3;
 			if (global.pause_room = room_leveleditor)
+			and(global.character_select_in_this_menu = "game")
 			{
 				menu = "quit_to_map";
 			}
 			else
-			if (global.pause_room = room_level_select)
 			{
 				menu = "quit_to_title";
 			}
@@ -1239,6 +1255,7 @@ and(global.pause_room = room_leveleditor)
 		else
 		if (menu = "quit_to_map")
 		or(menu = "quit_to_title")
+		or(menu = "quit_to_desktop")
 		or(menu = "quit_nevermind")
 		{
 			menu_delay = 3;

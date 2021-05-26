@@ -179,7 +179,6 @@ global.key_used="";
 global.current_level=0;
 global.playergame=0;
 global.theme="ground";
-global.weather=noone;
 global.basic_collectibles=0;
 global.level_clear_rate=noone;
 global.big_collectible1=false;/*If you have Big Collectible 1 or not*/

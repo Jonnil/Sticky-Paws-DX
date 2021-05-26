@@ -121,7 +121,6 @@ and(iris_xscale<=0.001)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
-			global.weather=noone;
 			global.level_clear_rate="enter";
 			score = 0;
 			scr_savelevel();
@@ -152,7 +151,6 @@ and(iris_xscale<=0.001)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
-			global.weather=noone;
 			global.level_clear_rate="enter";
 			scr_savelevel();
 			audio_stop_all();
@@ -172,7 +170,6 @@ and(iris_xscale<=0.001)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
-			global.weather=noone;
 			global.level_clear_rate="enter";
 			score = 0;
 			scr_savelevel();
@@ -203,7 +200,6 @@ and(iris_xscale<=0.001)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
-			global.weather=noone;
 			global.level_clear_rate="enter";
 			scr_savelevel();
 			audio_stop_all();

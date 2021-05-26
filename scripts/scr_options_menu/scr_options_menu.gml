@@ -1402,7 +1402,14 @@ function scr_options_menu()
 		
 		if (global.assist_enable = false)
 		{
-			menu = "assist_enable";
+			if (menu = "assist_invincible")
+			or (menu = "assist_guiding_arrows")
+			or (menu = "assist_normal_arrows")
+			or (menu = "assist_extra_hp")
+			or (menu = "assist_item_appear")
+			{
+				menu = "assist_enable";
+			}
 			open_dropdown = false;
 			draw_set_alpha(0.5);
 			draw_rectangle_color(left_sidebar_x+370, 125, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);

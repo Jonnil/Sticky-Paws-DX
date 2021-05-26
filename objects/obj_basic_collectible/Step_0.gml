@@ -9,7 +9,7 @@ if (bounceup = false)
 	if (asset_get_type("obj_player") == asset_object)
 	{
 		if (place_meeting(bbox_left, y, obj_player))
-			or(place_meeting(bbox_right, y, obj_player))
+		or(place_meeting(bbox_right, y, obj_player))
 		or(place_meeting(x, bbox_top, obj_player))
 		or(place_meeting(x, bbox_bottom, obj_player))
 		{
@@ -72,38 +72,39 @@ if (bounceup = true)
 		gravity = 0.5; /*The gravity*/
 		#endregion /*Set the gravity END*/
 		if (vspeed > 0)
-			and(y > ystart - 32)
-			{
-				score += 200;
-				global.hud_show_score = true;
-				if (asset_get_type("obj_camera") == asset_object)
-					and(instance_exists(obj_camera))
-					{
-						with(obj_camera)
-						{
-							hud_show_score_timer = global.hud_show_timer;
-						}
-					}
-				if (asset_get_type("obj_player") == asset_object)
+		and(y > ystart - 32)
+		or (delay >= delay_time + 60)
+		{
+			score += 200;
+			global.hud_show_score = true;
+			if (asset_get_type("obj_camera") == asset_object)
+				and(instance_exists(obj_camera))
 				{
-					with(instance_nearest(x, y, obj_player))
+					with(obj_camera)
 					{
-						basic_collectibles += 1;
+						hud_show_score_timer = global.hud_show_timer;
 					}
 				}
-				global.basic_collectibles += 1;
-				global.hud_show_basic_collectibles = true;
-				if (asset_get_type("obj_camera") == asset_object)
-					and(instance_exists(obj_camera))
-					{
-						with(obj_camera)
-						{
-							hud_show_basic_collectibles_timer = global.hud_show_timer;
-						}
-					}
-				effect_create_above(ef_ring, x, y, 0, c_white);
-				instance_destroy();
+			if (asset_get_type("obj_player") == asset_object)
+			{
+				with(instance_nearest(x, y, obj_player))
+				{
+					basic_collectibles += 1;
+				}
 			}
+			global.basic_collectibles += 1;
+			global.hud_show_basic_collectibles = true;
+			if (asset_get_type("obj_camera") == asset_object)
+			and(instance_exists(obj_camera))
+			{
+				with(obj_camera)
+				{
+					hud_show_basic_collectibles_timer = global.hud_show_timer;
+				}
+			}
+			effect_create_above(ef_ring, x, y, 0, c_white);
+			instance_destroy();
+		}
 	}
 	else
 	{
@@ -124,9 +125,9 @@ if (bounceup = true)
 	{
 		y = camera_get_view_y(view_camera[view_current]) + 32;
 	}
-	if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
+	if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 	{
-		y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32;
+		y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
 	}
 	#endregion /*Don't go outside view boundary END*/
 }
