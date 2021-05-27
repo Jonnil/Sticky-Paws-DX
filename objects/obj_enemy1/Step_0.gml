@@ -26,22 +26,27 @@ or(die_volting=+1)
 }
 else
 {
+	
 	#region /*Set the gravity*/
 	gravity_direction=270;/*Direction of the gravity*/
 	if (asset_get_type("obj_wall")==asset_object)
+	and (!place_meeting(x, y + 1, obj_wall))
+	and (asset_get_type("obj_semisolid_platform") == asset_object)
+	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
-		if (!place_meeting(x,y+1,obj_wall))
-		and(x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
-		and(x>camera_get_view_x(view_camera[view_current]))
-		and(y<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
-		and(y>camera_get_view_y(view_camera[view_current]))
+		if (x < camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
+		and (x > camera_get_view_x(view_camera[view_current]))
+		and (y < camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
+		and (y > camera_get_view_y(view_camera[view_current]))
 		{
-			gravity=0.5;/*The gravity*/
+			gravity = 0.5; /*The gravity*/
 		}
 	}
 	else
 	{
-		gravity=0;
+		gravity = 0;
 	}
 	#endregion /*Set the gravity END*/
 	

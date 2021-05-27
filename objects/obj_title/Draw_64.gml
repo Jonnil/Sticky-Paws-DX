@@ -1455,6 +1455,9 @@ or(menu="import_export_level")
 	if (menu="back_from_level_editor")
 	and(key_a_pressed)
 	and(menu_delay=0)
+	or (menu="back_from_level_editor")
+	and(key_b_pressed)
+	and(menu_delay=0)
 	{
 		menu_delay = 3;
 		menu = "leveleditor";

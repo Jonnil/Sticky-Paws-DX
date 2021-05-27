@@ -9,8 +9,8 @@ if (die=false)
 	#endregion /*Push the enemy out of the solid object END*/
 
 	#region /*Landing on solid object*/
-	if (place_meeting(x,y+1,other))
-	and(vspeed>=0)
+	if (place_meeting(x, y+1, other))
+	and(vspeed >= 0)
 	{
 		effect_create_above(ef_smoke,x-16,bbox_bottom,0,c_white);
 		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);

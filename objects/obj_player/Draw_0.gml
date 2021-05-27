@@ -14,7 +14,6 @@
 //draw_text_outlined(x-32,y-96,"pause_vspeed: "+string(pause_vspeed),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x-128,y-128,"actually_play_edited_level: "+string(global.actually_play_edited_level),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x-128,y-96,"play_edited_level: "+string(global.play_edited_level),global.default_text_size,c_white,c_black,1);			
-//draw_text_outlined(x-128,y-96,"jump: "+string(jump),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x-128,y-96,"can_climb_horizontal_rope_cooldown: "+string(can_climb_horizontal_rope_cooldown),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x,y-96,string(pressing_opposite_direction_to_drop_off_from_wall),global.default_text_size,c_white,c_black,1);			
 

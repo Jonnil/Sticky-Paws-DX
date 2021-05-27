@@ -420,9 +420,10 @@ if (save_level_as_png = false)
 		}
 	}
 	#endregion /*Boss Battle Camera END*/
-
-	#region /*ONE PLAYER CAMERA*/
+	
 	else
+	
+	#region /*ONE PLAYER CAMERA*/
 	if (asset_get_type("obj_player") == asset_object)
 	and(asset_get_type("obj_camera") == asset_object)
 	and(instance_number(obj_player) = 1)
@@ -696,19 +697,6 @@ if (save_level_as_png = false)
 		}
 	}
 	#endregion /*MULTIPLAYER CAMERA*/
-
-	else
-	
-	#region /*Map Player*/
-	if (asset_get_type("obj_camera") == asset_object)
-	and(asset_get_type("obj_player_map") == asset_object)
-	and(instance_exists(obj_camera))
-	and(instance_exists(obj_player_map))
-	{
-		obj_camera.xx = instance_nearest(x, y, obj_player_map).x;
-		obj_camera.yy = instance_nearest(x, y, obj_player_map).y;
-	}
-	#endregion /*Map Player END*/
 	
 	/*Iris*/
 	if (allow_iris = true)

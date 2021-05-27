@@ -448,7 +448,6 @@ or(keyboard_check_pressed(ord("X")));
 
 #endregion /*Keyboard Controls END*/
 
-depth = -100;
 xx = lerp(xx, x, 0.1);
 yy = lerp(yy, y, 0.1);
 draw_xscale = lerp(draw_xscale, 1, 0.1);

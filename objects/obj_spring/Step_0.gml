@@ -1,5 +1,4 @@
 image_angle = point_direction(x, y, angle_x, angle_y)-90;
-bounce_height = point_distance(x, y, angle_x, angle_y)*0.05;
 
 if (asset_get_type("spr_wall")==asset_sprite)
 {

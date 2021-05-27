@@ -1596,6 +1596,16 @@ repeat(50)
 	{
 		sprite_stand_cold = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stand_cold_strip"+string(index)+".png", index, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 	}
+	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/cold_strip"+string(index)+".png"))
+	{
+		sprite_stand_cold = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/cold_strip"+string(index)+".png", index, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/cold_strip"+string(index)+".png"))
+	{
+		sprite_stand_cold = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/cold_strip"+string(index)+".png", index, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
+	}
 	index+=1
 }
 if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/stand_cold.png"))
@@ -1606,6 +1616,16 @@ else
 if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stand_cold.png"))
 {
 	sprite_stand_cold = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stand_cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
+}
+else
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/cold.png"))
+{
+	sprite_stand_cold = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/cold.png"))
+{
+	sprite_stand_cold = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 }
 #endregion /*Stand cold sprite END*/
 
@@ -14080,33 +14100,45 @@ and(key_jump_hold)
 
 #region /*Mid-Air / Double Jumping*/
 if (key_jump)
-and(can_move=true)
-and(global.pause=false)
-and(global.equipped_upgrade_double_jump=true)
-and(ground_pound=false)
-and(climb=false)
-and(horizontal_rope_climb=false)
-and(stick_to_wall=false)
-and(asset_get_type("obj_wall")==asset_object)
-and(!place_meeting(x,y+1,obj_wall))
-and(asset_get_type("obj_semisolid_platform")==asset_object)
-and(!place_meeting(x,y+1,obj_semisolid_platform))
-and(!place_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-and(in_water=false)
+and (can_move = true)
+and (global.pause = false)
+and (global.equipped_upgrade_double_jump = true)
+and (ground_pound = false)
+and (climb = false)
+and (horizontal_rope_climb = false)
+and (stick_to_wall = false)
+and (asset_get_type("obj_wall") == asset_object)
+and (!place_meeting(x, y+1, obj_wall))
+and (asset_get_type("obj_semisolid_platform") == asset_object)
+and (!place_meeting(x, y+1, obj_semisolid_platform))
+and (!place_meeting(x, bbox_bottom+1, obj_semisolid_platform))
+and (in_water = false)
 {
-	if (global.has_upgrade_double_jump=true)
-	or(number_of_jumps >= 2)
-	and(midair_jumps_left>0)
-	or(number_of_jumps <= -1)
+	if (global.has_upgrade_double_jump = true)
+	or (number_of_jumps >= 2)
+	and (midair_jumps_left > 0)
+	or (number_of_jumps <= -1)
 	{
 		buffer_jump = 0;
-		dive=false;
-		vspeed = -double_jump_height;
-		if (voice_jump>noone)
+		dive = false;
+		if (!place_meeting(x, y-double_jump_height, obj_wall))
+		{
+			vspeed = -double_jump_height;
+		}
+		else
+		if (!place_meeting(x, y-4, obj_wall))
+		{
+			vspeed = -4;
+		}
+		else
+		{
+			vspeed = 0;
+		}
+		if (voice_jump > noone)
 		{
 			audio_stop_sound(voice);
 		}
-		voice=audio_play_sound(voice_jump,0,0);
+		voice = audio_play_sound(voice_jump, 0, 0);
 		audio_sound_gain(voice_jump,global.voices_volume,0);
 		effect_create_above(ef_smoke,x-16,bbox_bottom,0,c_white);
 		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
@@ -15048,6 +15080,7 @@ and(takendamage<=takendamage_freezetime)
 						can_climb_horizontal_rope_cooldown = 20;
 						ground_pound=true;
 						stick_to_wall=false;
+						move_towards_spring_endpoint = false;
 						wall_jump = 0;
 						if (image_xscale>0)
 						{
@@ -15222,8 +15255,8 @@ if (allow_dive=true)
 and(can_move=true)
 and(global.pause=false)
 {
-	if (can_dive=true)
-	and(drop_off_wall_climb=false)
+	if (can_dive = true)
+	and (drop_off_wall_climb = false)
 	{
 		if (dive=false)
 		and(burnt=false)
@@ -15240,7 +15273,14 @@ and(global.pause=false)
 					{
 						speed_max=8;
 					}
-					vspeed = -6;
+					if (!place_meeting(x, y-8, obj_wall))
+					{
+						vspeed = -6;
+					}
+					else
+					{
+						vspeed = 0;
+					}
 					
 					#region /*Choose direction to dive*/
 					if (key_left)
@@ -15250,7 +15290,7 @@ and(global.pause=false)
 						if (hspeed>-10)
 						{
 							if (asset_get_type("obj_wall")==asset_object)
-							and(!place_meeting(x-1,y,obj_wall))
+							and(!place_meeting(x-4,y,obj_wall))
 							{
 								hspeed=-10;
 							}
@@ -15265,7 +15305,7 @@ and(global.pause=false)
 						if (hspeed<+10)
 						{
 							if (asset_get_type("obj_wall")==asset_object)
-							and(!place_meeting(x+1,y,obj_wall))
+							and(!place_meeting(x+4,y,obj_wall))
 							{
 								hspeed=+10;
 							}
@@ -15287,6 +15327,7 @@ and(global.pause=false)
 					dive=true;
 					jump=0;
 					spring=false;
+					move_towards_spring_endpoint = false;
 					if (asset_get_type("obj_wall")==asset_object)
 					and(!place_meeting(x,y+1,obj_wall))
 					and(asset_get_type("obj_semisolid_platform")==asset_object)
@@ -15318,9 +15359,15 @@ and(global.pause=false)
 				if (hspeed>-4)
 				{
 					if (asset_get_type("obj_wall")==asset_object)
-					and(!place_meeting(x-1,y,obj_wall))
+					and(!place_meeting(x-4,y,obj_wall))
 					{
 						hspeed=-4;
+					}
+					else
+					if (asset_get_type("obj_wall")==asset_object)
+					and(!place_meeting(x-1,y,obj_wall))
+					{
+						hspeed=-1;
 					}
 				}
 			}
@@ -15330,9 +15377,15 @@ and(global.pause=false)
 				if (hspeed<+4)
 				{
 					if (asset_get_type("obj_wall")==asset_object)
-					and(!place_meeting(x+1,y,obj_wall))
+					and(!place_meeting(x+4,y,obj_wall))
 					{
 						hspeed=+4;
+					}
+					else
+					if (asset_get_type("obj_wall")==asset_object)
+					and(!place_meeting(x+1,y,obj_wall))
+					{
+						hspeed=+1;
 					}
 				}
 			}
@@ -16516,10 +16569,29 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	ledge_grab_jump=false;
 	speed_max=4;
 	spring=true;
+	move_towards_spring_endpoint = true;
+	spring_endpoint_x = instance_nearest(x,y,obj_spring).angle_x;
+	spring_endpoint_y = instance_nearest(x,y,obj_spring).angle_y;
 	stick_to_wall=false;
 	instance_nearest(x,y,obj_spring).can_bounce = 10;
 	instance_nearest(x,y,obj_spring).image_index=1;
 	instance_nearest(x,y,obj_spring).image_speed=1;
+}
+
+if (move_towards_spring_endpoint = true)
+{
+	move_towards_point(spring_endpoint_x, spring_endpoint_y, 20);
+	if (distance_to_point(spring_endpoint_x, spring_endpoint_y)<340)
+	and (point_distance(
+	spring_endpoint_x,
+	spring_endpoint_y,
+	instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).x,
+	instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).y)>32)
+	{
+		move_towards_spring_endpoint = false;
+		spring_endpoint_x = 0;
+		spring_endpoint_y = 0;
+	}
 }
 
 if (spring = true)
@@ -17506,7 +17578,9 @@ or(image_index=4)
 }
 /*Stand*/else{mask_index=sprite_mask;}}
 /*Swimming Sprites*/
-else if!place_meeting(x,y+1,obj_wall){
+else
+if (!place_meeting(x,y+1,obj_wall))
+{
 
 #region /*Skidding*/
 if (hspeed<-0.2)

@@ -3,6 +3,7 @@ allow_free_movement = false; /*Turn this to true to move freely on the map inste
 #endregion /*Allow moves on world map END*/
 
 global.pause_room = noone;
+depth = -100;
 
 #region /*Mouse x and mouse y initializing*/
 mouse_x_position = mouse_x;
@@ -36,11 +37,6 @@ move_delay = 0;
 stop_at_level = false;
 can_enter_level = 0;
 game_saved_message = 256;
-if (asset_get_type("obj_player_map_overlay") == asset_object)
-and(!instance_exists(obj_player_map_overlay))
-{
-	instance_create_depth(x, y, 0, obj_player_map_overlay);
-}
 draw_xscale = 1;
 draw_yscale = 1;
 
