@@ -51,6 +51,11 @@ if (file_exists("File" + string(global.file) + ".ini"))
 	{
 		x = ini_read_real("Player", "player_x", 0);
 		y = ini_read_real("Player", "player_y", 0);
+		if (!position_meeting(x, y, obj_level))
+		{
+			x = instance_nearest(x, y, obj_level).x;
+			y = instance_nearest(x, y, obj_level).y;
+		}
 	}
 	#endregion /*Load Player Position END*/
 	

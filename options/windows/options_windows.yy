@@ -1,9 +1,9 @@
 {
   "option_windows_display_name": "Sticky Paws",
-  "option_windows_executable_name": "Sticky Paws DX",
+  "option_windows_executable_name": "Sticky Paws",
   "option_windows_version": "1.0.0.0",
   "option_windows_company_info": "Jonathan Nilsson (Jonnil)",
-  "option_windows_product_info": "Sticky Paws DX",
+  "option_windows_product_info": "Sticky Paws",
   "option_windows_copyright_info": "",
   "option_windows_description_info": "A GameMaker Studio 2 Game",
   "option_windows_display_cursor": true,
