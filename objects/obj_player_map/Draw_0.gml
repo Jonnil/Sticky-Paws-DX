@@ -49,7 +49,7 @@ or(gamepad_axis_value(0,gp_axisrv)<>0)
 }
 #endregion /*Set what controls are used to navigate the menus END*/
 
-#region /*Initialize Custom Character*/
+#region /*Initialize Custom Character */
 if (initialize_custom_character_timer < 2)
 {
 	initialize_custom_character_timer += 1;
@@ -84,7 +84,7 @@ if (!directory_exists(working_directory + "/Custom Characters/Character "+string
 
 #endregion /*Create directories for the custom character END*/
 
-#region /*Play as Custom Character*/
+#region /*Play as Custom Character */
 
 #region /*Sprite origin point variables*/
 
@@ -244,11 +244,11 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 
 #endregion /*Sprite variables END*/
 
-#endregion /*Play as Custom Character END*/
+#endregion /*Play as Custom CharacterEND*/
 
 sprite_index = sprite_map;
 }
-#endregion /*Initialize Custom Character END*/
+#endregion /*Initialize Custom CharacterEND*/
 
 #region /*Quit Game*/
 if (global.quit_level = true)
@@ -284,47 +284,26 @@ image_blend = global.hex_color_for_player_1; /*Color Skin*/
 #region /*Make sure level music and sound effects stops playing*/
 if (asset_get_type("snd_slip") == asset_sound)
 {
-	if (audio_is_playing(snd_slip))
-	{
-		audio_stop_sound(snd_slip);
-	}
+	audio_stop_sound(snd_skidding);
 }
 if (asset_get_type("snd_slip_ice") == asset_sound)
 {
-	if (audio_is_playing(snd_slip_ice))
-	{
-		audio_stop_sound(snd_slip_ice);
-	}
+	audio_stop_sound(snd_skidding_ice);
 }
 if (asset_get_type("snd_music_titlescreen") == asset_sound)
 {
-	if (audio_is_playing(snd_music_titlescreen))
-	{
-		audio_stop_sound(snd_music_titlescreen);
-	}
+	audio_stop_sound(snd_music_titlescreen);
 }
 if (asset_get_type("snd_music_boss") == asset_sound)
 {
-	if (audio_is_playing(snd_music_boss))
-	{
-		audio_stop_sound(snd_music_boss);
-	}
+	audio_stop_sound(snd_music_boss);
 }
 if (asset_get_type("snd_ambience_nature_day") == asset_sound)
 {
-	if audio_is_playing(snd_ambience_nature_day)
-	{
-		audio_stop_sound(snd_ambience_nature_day);
-	}
+	audio_stop_sound(snd_ambience_nature_day);
 }
-if (audio_is_playing(global.music))
-{
-	audio_stop_sound(global.music);
-}
-if (audio_is_playing(global.music_underwater))
-{
-	audio_stop_sound(global.music_underwater);
-}
+audio_stop_sound(global.music);
+audio_stop_sound(global.music_underwater);
 global.music = noone;
 global.music_underwater = noone;
 #endregion /*Make sure level music stops playing End*/

@@ -1451,6 +1451,7 @@ if (keyboard_check_pressed(vk_enter))
 or(gamepad_button_check_pressed(0,gp_select))
 {
 	if (pause=false)
+	and (global.character_select_in_this_menu = "level_editor")
 	and(asset_get_type("obj_level_start")==asset_object)
 	{
 
@@ -1476,7 +1477,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 			#region /*Save object placement*/
 			instance_activate_all();
 			var file,str;
-			file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"); /*Open file for writing*/
+			file = file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"); /*Open file for writing*/
 			str=""; /*Reset string var*/
 	
 			#region /*Write all objects to file*/

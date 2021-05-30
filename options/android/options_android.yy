@@ -1,6 +1,6 @@
 {
   "option_android_sync_amazon": false,
-  "option_android_display_name": "Created with GameMaker Studio 2",
+  "option_android_display_name": "Sticky Paws",
   "option_android_version": "1.0.0.0",
   "option_android_tools_from_version": false,
   "option_android_build_tools": "28.0.3",
@@ -9,8 +9,8 @@
   "option_android_minimum_sdk": "16",
   "option_android_compile_sdk": "29",
   "option_android_package_domain": "com",
-  "option_android_package_company": "company",
-  "option_android_package_product": "game",
+  "option_android_package_company": "jonnil",
+  "option_android_package_product": "stickypaws",
   "option_android_arch_armv7": true,
   "option_android_arch_x86": false,
   "option_android_arch_arm64": true,

@@ -1,6 +1,8 @@
 //instance_deactivate_all(true);
 instance_activate_object(obj_pause);
 
+//draw_text_outlined(300, 300, "menu = "+string(menu), global.default_text_size, c_white, c_black, 1);
+
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/
@@ -995,8 +997,11 @@ and(global.pause_room = room_leveleditor)
 	#region /*Quit to Map*/
 	if (menu = "quit_to_map")
 	and(global.pause_room = room_leveleditor)
-	and(global.character_select_in_this_menu = "game")
 	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			menu = "quit_to_title";
+		}
 		if (key_a_pressed)
 		and(menu_delay = 0)
 		or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2,window_get_width()/2+185,window_get_height()/2+41))
@@ -1057,6 +1062,11 @@ and(global.pause_room = room_leveleditor)
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
 		or(global.pause_room = room_level_select)
+		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2,window_get_width()/2+185,window_get_height()/2+41))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
+		or(global.pause_room = room_leveleditor)
+		and (global.character_select_in_this_menu = "level_editor")
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2,window_get_width()/2+185,window_get_height()/2+41))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
@@ -1144,6 +1154,11 @@ and(global.pause_room = room_leveleditor)
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42,window_get_width()/2+185,window_get_height()/2+41+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
+		or(global.pause_room = room_leveleditor)
+		and (global.character_select_in_this_menu = "level_editor")
+		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42,window_get_width()/2+185,window_get_height()/2+41+42))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
 		{
 			menu_delay = 3;
 			menu = "quit_game_no";
@@ -1180,6 +1195,11 @@ and(global.pause_room = room_leveleditor)
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
 		or(global.pause_room = room_level_select)
+		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
+		and(mouse_check_button_pressed(mb_left))
+		and(menu_delay = 0)
+		or(global.pause_room = room_leveleditor)
+		and (global.character_select_in_this_menu = "level_editor")
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)

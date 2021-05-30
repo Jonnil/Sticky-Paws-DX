@@ -6,6 +6,7 @@
 //draw_text_outlined(x+256,y+320,"ssc1: "+string(global.sprite_select_player_1),global.default_text_size,c_white,c_black,1);
 //if(file_exists(working_directory + "/Custom Characters/Character "+string(global.sprite_select_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+320,"true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+320,"false",global.default_text_size,c_white,c_black,1);}
 //if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+420,"Offical: true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+420,"Official: false",global.default_text_size,c_white,c_black,1);}
+//draw_text_outlined(x+256,y+320,"global.character_for_player_1: "+string(global.character_for_player_1),global.default_text_size,c_white,c_black,1);
 
 #region /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus*/
 
@@ -148,7 +149,7 @@ menuvoice_leveleditor_denied=noone;
 menuvoice_options=noone;
 }
 
-/*Character 1 as narrator*/
+/*Character1 as narrator*/
 if (global.narrator=1){
 narrator_name="Kai";
 menuvoice_titlesplash=noone;
@@ -348,20 +349,20 @@ or(menu="accessibility_shortcut")
 or(menu="profile_shortcut")
 or(menu="quit")
 {
-	#region /*Character Select Accept Selection*/
+	#region /*CharacterSelect Accept Selection*/
 	player1_accept_selection=false;
 	player2_accept_selection=false;
 	player3_accept_selection=false;
 	player4_accept_selection=false;
 	player1_start_game=false;
-	#endregion /*Character Select Accept Selection END*/
+	#endregion /*CharacterSelect Accept Selection END*/
 
-	#region /*Color Select for Character Select*/
+	#region /*Color Select for CharacterSelect*/
 	player_1_menu="select_character";
 	player_2_menu="select_character";
 	player_3_menu="select_character";
 	player_4_menu="select_character";
-	#endregion /*Color Select for Character Select END*/
+	#endregion /*Color Select for CharacterSelect END*/
 
 	#region /*What player can enter a name*/
 	can_input_player1_name=false;
@@ -1626,7 +1627,7 @@ and(!file_exists(working_directory+"/Custom Levels/Level"+string(global.level_ed
 
 #endregion /*Level Editor Menu END*/
 
-scr_character_select_menu(); /*Character Select*/
+scr_character_select_menu(); /*CharacterSelect*/
 
 #region /*Menu Navigation*/
 if (menu_joystick_delay<=0)

@@ -1,6 +1,6 @@
 {
-  "option_mac_display_name": "Created with GameMaker Studio 2",
-  "option_mac_app_id": "com.company.game",
+  "option_mac_display_name": "Sticky Paws",
+  "option_mac_app_id": "com.jonnil.stickypaws",
   "option_mac_version": "1.0.0.0",
   "option_mac_output_dir": "~/gamemakerstudio2",
   "option_mac_team_id": "",
@@ -9,7 +9,7 @@
   "option_mac_splash_png": "${base_options_dir}/mac/splash/splash.png",
   "option_mac_icon_png": "${base_options_dir}/mac/icons/1024.png",
   "option_mac_installer_background_png": "${base_options_dir}/mac/splash/installer_background.png",
-  "option_mac_menu_dock": false,
+  "option_mac_menu_dock": true,
   "option_mac_display_cursor": true,
   "option_mac_start_fullscreen": false,
   "option_mac_allow_fullscreen": true,

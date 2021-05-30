@@ -20,7 +20,10 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(globa
 	}
 	else
 	{
-		ini_write_real("sprite origin points", "lives_icon_xorig", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("sprite origin points", "lives_icon_xorig", 0);
+		}
 		lives_icon_xorig = 0;
 	}
 	#endregion /*Sprite lives icon x origin point END*/
@@ -32,7 +35,10 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(globa
 	}
 	else
 	{
-		ini_write_real("sprite origin points", "lives_icon_yorig", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("sprite origin points", "lives_icon_yorig", 0);
+		}
 		lives_icon_yorig = 0;
 	}
 	#endregion /*Sprite lives icon y origin point END*/
@@ -375,6 +381,7 @@ else
 	global.music = noone;
 	global.music_underwater = noone;
 }
+#endregion /*Custom Music END*/
 
 #region /*Initialize Background*/
 if (global.character_select_in_this_menu="game")
@@ -400,7 +407,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
+		}
 		custom_background_4_y_parallax = 9;
 	}
 	#endregion /*Custom Background 4 y parallax point END*/
@@ -412,7 +422,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
+		}
 		custom_background_4_x_parallax = 9;
 	}
 	#endregion /*Custom Background 4 x parallax point END*/
@@ -426,7 +439,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
+		}
 		custom_background_3_y_parallax = 7;
 	}
 	#endregion /*Custom Background 3 y parallax point END*/
@@ -438,7 +454,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
+		}
 		custom_background_3_x_parallax = 7;
 	}
 	#endregion /*Custom Background 3 x parallax point END*/
@@ -452,7 +471,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
+		}
 		custom_background_2_y_parallax = 5;
 	}
 	#endregion /*Custom Background 2 y parallax point END*/
@@ -464,7 +486,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
+		}
 		custom_background_2_x_parallax = 5;
 	}
 	#endregion /*Custom Background 2 x parallax point END*/
@@ -478,7 +503,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
+		}
 		custom_background_1_y_parallax = 3;
 	}
 	#endregion /*Custom Background 1 y parallax point END*/
@@ -490,7 +518,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
+		}
 		custom_background_1_x_parallax = 3;
 	}
 	#endregion /*Custom Background 1 x parallax point END*/
@@ -504,7 +535,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
+		}
 		custom_background_4_y_offset = 0;
 	}
 	#endregion /*Custom Background 4 y offset point END*/
@@ -516,7 +550,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
+		}
 		custom_background_4_x_offset = 0;
 	}
 	#endregion /*Custom Background 4 x offset point END*/
@@ -530,7 +567,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
+		}
 		custom_background_3_y_offset = 0;
 	}
 	#endregion /*Custom Background 3 y offset point END*/
@@ -542,7 +582,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
+		}
 		custom_background_3_x_offset = 0;
 	}
 	#endregion /*Custom Background 3 x offset point END*/
@@ -556,7 +599,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
+		}
 		custom_background_2_y_offset = 0;
 	}
 	#endregion /*Custom Background 2 y offset point END*/
@@ -568,7 +614,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
+		}
 		custom_background_2_x_offset = 0;
 	}
 	#endregion /*Custom Background 2 x offset point END*/
@@ -582,7 +631,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
+		}
 		custom_background_1_y_offset = 0;
 	}
 	#endregion /*Custom Background 1 y offset point END*/
@@ -594,7 +646,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
+		}
 		custom_background_1_x_offset = 0;
 	}
 	#endregion /*Custom Background 1 x offset point END*/
@@ -646,7 +701,10 @@ and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_e
 	}
 	else
 	{
-		ini_write_real("Info", "rain", false);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_real("Info", "rain", false);
+		}
 		rain = false;
 	}
 	#endregion /*Rain END*/

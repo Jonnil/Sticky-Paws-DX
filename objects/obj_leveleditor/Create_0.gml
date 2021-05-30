@@ -94,6 +94,7 @@ in_settings=false;
 can_navigate_settings_sidebar=true;
 navigate_slider=false;
 menu="continue"
+open_dropdown = false;
 name_enter_blink=0;
 menu_delay=0;
 startup_loading_timer=0;

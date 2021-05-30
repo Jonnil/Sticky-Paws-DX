@@ -22,29 +22,23 @@ and(can_bounce=0)
 		audio_sound_pitch(snd_spring,1);
 		audio_sound_gain(snd_spring,global.sfx_volume,0);
 	}
-	with(instance_nearest(x,y,obj_player))
-	{
-		audio_stop_sound(voice);
-		voice=audio_play_sound(voice_jump_spring,0,0);
-		audio_sound_gain(voice_jump_spring,global.voices_volume,0);
-	}
 	if (instance_nearest(x,y,obj_player).horizontal_rope_climb=false)
 	{
 		image_index=1;
 		image_speed=1;
 		with(instance_nearest(x,y,obj_player))
 		{
-			if (x<instance_nearest(x,y,obj_spring).bbox_left)
-			{
-				x=instance_nearest(x,y,obj_spring).bbox_left;
-			}
-			else
-			{
-				if (x>instance_nearest(x,y,obj_spring).bbox_right)
-				{
-					x=instance_nearest(x,y,obj_spring).bbox_right
-				}
-			}
+			//if (x<instance_nearest(x,y,obj_spring).bbox_left)
+			//{
+			//	x=instance_nearest(x,y,obj_spring).bbox_left;
+			//}
+			//else
+			//{
+			//	if (x>instance_nearest(x,y,obj_spring).bbox_right)
+			//	{
+			//		x=instance_nearest(x,y,obj_spring).bbox_right
+			//	}
+			//}
 			can_climb_horizontal_rope_cooldown = 10;
 			midair_jumps_left=number_of_jumps;
 			can_ground_pound = false;
@@ -61,7 +55,6 @@ and(can_bounce=0)
 			climb = false;
 		}
 	}
-	//can_bounce = 10;
 }
 #endregion /*Make player spring END*/
 

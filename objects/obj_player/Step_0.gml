@@ -1,6 +1,6 @@
 ///Platformer Player Part 1
 
-#region /*Initialize Custom Character*/
+#region /*Initialize Custom Character */
 if (initialize_custom_character_timer < 2)
 {
 	initialize_custom_character_timer += 1;
@@ -239,7 +239,7 @@ allow_timeattack = true;
 simple_controls = false; /*Simple Controls, used for testing if a level can be completed with limitations. All levels should be able to be finished, not 100% completed, with this option set to true. This option should be false by default when creating executable*/
 stop_screen_from_scrolling_left = false; /*Stop the screen from being able to screoll left*/
 
-#region /*Play as Custom Character*/
+#region /*Play as Custom Character */
 
 #region /*Sprite origin point variables*/
 if (file_exists("Characters/Character "+string(custom_character)+"/Data/sprite_origin_point.ini"))
@@ -2055,6 +2055,16 @@ or(sprite_swim_fall_yorig > 0)
 		{
 			sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 		}
+		else
+		if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_falling_strip"+string(index)+".png"))
+		{
+			sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		}
+		else
+		if (file_exists("Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_falling_strip"+string(index)+".png"))
+		{
+			sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		}
 		index+=1
 	}
 	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_fall.png"))
@@ -2065,6 +2075,16 @@ or(sprite_swim_fall_yorig > 0)
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png"))
 	{
 		sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+	}
+	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_falling.png"))
+	{
+		sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_falling.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_falling.png"))
+	{
+		sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_falling.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 	}
 }
 else
@@ -2081,6 +2101,16 @@ else
 		{
 			sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
 		}
+		else
+		if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_falling_strip"+string(index)+".png"))
+		{
+			sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		}
+		else
+		if (file_exists("Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_falling_strip"+string(index)+".png"))
+		{
+			sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		}
 		index+=1
 	}
 	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_fall.png"))
@@ -2091,6 +2121,16 @@ else
 	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png"))
 	{
 		sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_fall.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+	}
+	else
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/swim_falling.png"))
+	{
+		sprite_swim_fall = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/swim_falling.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_falling.png"))
+	{
+		sprite_swim_fall = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/swim_falling.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
 	}
 }
 #endregion /*Swim fall sprite END*/
@@ -8700,9 +8740,9 @@ voice_burned = noone;
 
 #endregion /*Sound variables END*/
 
-#endregion /*Play as Custom Character END*/
+#endregion /*Play as Custom CharacterEND*/
 
-#region /*Character Values Handeling*/
+#region /*CharacterValues Handeling*/
 
 if (file_exists("Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
 or(file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))
@@ -8999,10 +9039,10 @@ else
 	//if (!ini_key_exists("values", "homing_attack_distance")){ini_write_real("values", "homing_attack_distance", 500);}
 	//ini_close();
 }
-#endregion /*Character Values Handeling END*/
+#endregion /*CharacterValues Handeling END*/
 
 }
-#endregion /*Initialize Custom Character END*/
+#endregion /*Initialize Custom CharacterEND*/
 
 #region /*Choose to play voice clips randomly*/
 
@@ -13278,6 +13318,7 @@ and(global.pause=false)
 
 	#region /*Save Level Information when in level editor*/
 	if (global.level_editor_level>0)
+	and (global.character_select_in_this_menu = "level_editor")
 	{
 		ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/level_information.ini");
 		ini_write_real("Info","view_xview",camera_get_view_x(view_camera[view_current]));
@@ -16251,10 +16292,10 @@ if (die=true)
 if (asset_get_type("obj_spikes")==asset_object)
 and(instance_exists(obj_spikes))
 {
-	if (place_meeting(x-1,y,instance_nearest(x,y,obj_spikes)))
-	or(place_meeting(x+1,y,instance_nearest(x,y,obj_spikes)))
-	or(place_meeting(x,y-1,instance_nearest(x,y,obj_spikes)))
-	or(place_meeting(x,y+1,instance_nearest(x,y,obj_spikes)))
+	if (place_meeting(x-1,y,obj_spikes))
+	or(place_meeting(x+1,y,obj_spikes))
+	or(place_meeting(x,y-1,obj_spikes))
+	or(place_meeting(x,y+1,obj_spikes))
 	{
 		if (takendamage<1)
 		and(assist_invincible=false)
@@ -16581,16 +16622,33 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 if (move_towards_spring_endpoint = true)
 {
 	move_towards_point(spring_endpoint_x, spring_endpoint_y, 20);
-	if (distance_to_point(spring_endpoint_x, spring_endpoint_y)<340)
-	and (point_distance(
-	spring_endpoint_x,
-	spring_endpoint_y,
-	instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).x,
-	instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).y)>32)
+	
+	if (asset_get_type("obj_spring")==asset_object)
+	and(instance_exists(obj_spring))
+	and (distance_to_point(spring_endpoint_x, spring_endpoint_y)<340)
+	and (point_distance(spring_endpoint_x, spring_endpoint_y, instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).x, instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).y)>32)
+	or (distance_to_point(spring_endpoint_x, spring_endpoint_y)<340)
 	{
 		move_towards_spring_endpoint = false;
 		spring_endpoint_x = 0;
 		spring_endpoint_y = 0;
+	}
+	if (asset_get_type("obj_wall")==asset_object)
+	and(instance_exists(obj_wall))
+	{
+		if (place_meeting(x-4, y, obj_wall))
+		and (hspeed<0)
+		or (place_meeting(x+4, y, obj_wall))
+		and (hspeed>0)
+		or (place_meeting(x, y-4, obj_wall))
+		and (vspeed<0)
+		or (place_meeting(x, y+4, obj_wall))
+		and (vspeed>0)
+		{
+			move_towards_spring_endpoint = false;
+			spring_endpoint_x = 0;
+			spring_endpoint_y = 0;
+		}
 	}
 }
 

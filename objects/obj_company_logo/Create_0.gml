@@ -116,10 +116,10 @@ if (file_exists(working_directory+"Custom Levels/level_data.zip"))
 global.grid_hsnap=32;/*Horizontal grid snapping*/
 global.grid_vsnap=32;/*Vertical grid snapping*/
 global.narrator=1;/*Select Narrator*/
-global.character_for_player_1=0;/*Player 1 Select Character 1*/
-global.character_for_player_2=0;/*Player 2 Select Character 2*/
-global.character_for_player_3=0;/*Player 3 Select Character 3*/
-global.character_for_player_4=0;/*Player 4 Select Character 4*/
+global.character_for_player_1=0;/*Player 1 Select Character1*/
+global.character_for_player_2=0;/*Player 2 Select Character2*/
+global.character_for_player_3=0;/*Player 3 Select Character3*/
+global.character_for_player_4=0;/*Player 4 Select Character4*/
 global.player1_color=c_aqua;/*Player 1 Name Color, default:aqua*/
 global.player2_color=c_red;/*Player 1 Name Color, default:red*/
 global.player3_color=c_lime;/*Player 1 Name Color, default:lime*/
@@ -442,13 +442,13 @@ if (global.narrator=false)
 }
 #endregion /*No Narrator END*/
 
-#region /*Character 1 as Narrator*/
+#region /*Character1 as Narrator*/
 if (global.narrator=1)
 {
 	menuvoice_companysplash=noone;
 	menuvoice_controllersplash=noone;
 }
-#endregion /*Character 1 as Narrator END*/
+#endregion /*Character1 as Narrator END*/
 
 #endregion /*Narrator Voice variable handeling END*/
 

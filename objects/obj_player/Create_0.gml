@@ -6,7 +6,7 @@ custom_character = global.character_for_player_1;
 initialize_custom_character_timer = 0;
 #endregion /*What custom character to use. Change the character sprites and voice END*/
 
-#region /*Initialize Custom Character*/
+#region /*Initialize Custom Character */
 
 #region /*Allow*/
 allow_roll = false;
@@ -25,7 +25,7 @@ allow_tongue = false; /*A tongue that extends*/
 allow_overflow_hp = false;
 #endregion /*Allow END*/
 
-#region /*Play as Custom Character*/
+#region /*Play as Custom Character */
 
 #region /*Sprite origin point variables*/
 mask_xorig = 0;
@@ -407,9 +407,9 @@ voice_burned = noone;
 
 #endregion /*Sound variables END*/
 
-#endregion /*Play as Custom Character END*/
+#endregion /*Play as Custom CharacterEND*/
 
-#region /*Character Values Handeling*/
+#region /*CharacterValues Handeling*/
 acceleration_on_ground = 0.3; /*How much acceleration the character has on ground*/
 acceleration_in_air = 0.3; /*How much acceleration the character has in air*/
 acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
@@ -434,9 +434,9 @@ normal_jump_height = 11.5;
 higher_jump_height = 13;
 double_jump_height = 11.5;
 hoverstomp_distance = 500;
-#endregion /*Character Values Handeling END*/
+#endregion /*CharacterValues Handeling END*/
 
-#endregion /*Initialize Custom Character END*/
+#endregion /*Initialize Custom CharacterEND*/
 
 /*________________________________*/
 
