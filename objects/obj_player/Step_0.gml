@@ -3278,124 +3278,124 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 #region /*Voice Wall Jump*/
 
 #region /*Voice Wall Jump 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_1.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump1.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_1.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump1.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_1.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick1.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_1.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick1.ogg");
+	voice_wall_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_1.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump1.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_1.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump1.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_1.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick1.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_1.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick1.ogg"))
 {
-	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick1.ogg");
+	voice_wall_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick1.ogg");
 }
 else
 {
@@ -3404,84 +3404,84 @@ else
 #endregion /*Voice Wall Jump 1 END*/
 
 #region /*Voice Wall Jump 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_2.ogg");
+	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump2.ogg");
+	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_2.ogg");
+	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump2.ogg");
+	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_2.ogg");
+	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick2.ogg");
+	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_2.ogg");
+	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick2.ogg");
+	voice_wall_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_2.ogg");
+	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump2.ogg");
+	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_2.ogg");
+	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump2.ogg");
+	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_2.ogg");
+	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick2.ogg");
+	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_2.ogg");
+	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick2.ogg"))
 {
-	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick2.ogg");
+	voice_wall_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick2.ogg");
 }
 else
 {
@@ -3490,84 +3490,84 @@ else
 #endregion /*Voice Wall Jump 2 END*/
 
 #region /*Voice Wall Jump 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_3.ogg");
+	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump3.ogg");
+	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_3.ogg");
+	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump3.ogg");
+	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_3.ogg");
+	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick3.ogg");
+	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_3.ogg");
+	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick3.ogg");
+	voice_wall_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_3.ogg");
+	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump3.ogg");
+	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_3.ogg");
+	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump3.ogg");
+	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_3.ogg");
+	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick3.ogg");
+	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_3.ogg");
+	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick3.ogg"))
 {
-	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick3.ogg");
+	voice_wall_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick3.ogg");
 }
 else
 {
@@ -3576,84 +3576,84 @@ else
 #endregion /*Voice Wall Jump 3 END*/
 
 #region /*Voice Wall Jump 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_4.ogg");
+	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump4.ogg");
+	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_4.ogg");
+	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump4.ogg");
+	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_4.ogg");
+	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick4.ogg");
+	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_4.ogg");
+	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick4.ogg");
+	voice_wall_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_4.ogg");
+	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump4.ogg");
+	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_4.ogg");
+	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump4.ogg");
+	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_4.ogg");
+	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick4.ogg");
+	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_4.ogg");
+	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick4.ogg"))
 {
-	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick4.ogg");
+	voice_wall_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick4.ogg");
 }
 else
 {
@@ -3662,84 +3662,84 @@ else
 #endregion /*Voice Wall Jump 4 END*/
 
 #region /*Voice Wall Jump 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_5.ogg");
+	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump5.ogg");
+	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_5.ogg");
+	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump5.ogg");
+	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_5.ogg");
+	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick5.ogg");
+	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_5.ogg");
+	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick5.ogg");
+	voice_wall_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_5.ogg");
+	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump5.ogg");
+	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_5.ogg");
+	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump5.ogg");
+	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_5.ogg");
+	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick5.ogg");
+	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_5.ogg");
+	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick5.ogg"))
 {
-	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick5.ogg");
+	voice_wall_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick5.ogg");
 }
 else
 {
@@ -3748,84 +3748,84 @@ else
 #endregion /*Voice Wall Jump 5 END*/
 
 #region /*Voice Wall Jump 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_6.ogg");
+	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump6.ogg");
+	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_6.ogg");
+	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump6.ogg");
+	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_6.ogg");
+	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick6.ogg");
+	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_6.ogg");
+	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick6.ogg");
+	voice_wall_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_6.ogg");
+	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump6.ogg");
+	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_6.ogg");
+	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump6.ogg");
+	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_6.ogg");
+	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick6.ogg");
+	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_6.ogg");
+	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick6.ogg"))
 {
-	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick6.ogg");
+	voice_wall_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick6.ogg");
 }
 else
 {
@@ -3834,84 +3834,84 @@ else
 #endregion /*Voice Wall Jump 6 END*/
 
 #region /*Voice Wall Jump 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_7.ogg");
+	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump7.ogg");
+	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_7.ogg");
+	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump7.ogg");
+	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_7.ogg");
+	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick7.ogg");
+	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_7.ogg");
+	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick7.ogg");
+	voice_wall_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_7.ogg");
+	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump7.ogg");
+	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_7.ogg");
+	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump7.ogg");
+	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_7.ogg");
+	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick7.ogg");
+	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_7.ogg");
+	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick7.ogg"))
 {
-	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick7.ogg");
+	voice_wall_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick7.ogg");
 }
 else
 {
@@ -3920,84 +3920,84 @@ else
 #endregion /*Voice Wall Jump 7 END*/
 
 #region /*Voice Wall Jump 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_8.ogg");
+	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump8.ogg");
+	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_8.ogg");
+	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump8.ogg");
+	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_8.ogg");
+	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick8.ogg");
+	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_8.ogg");
+	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick8.ogg");
+	voice_wall_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_8.ogg");
+	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump8.ogg");
+	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_8.ogg");
+	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump8.ogg");
+	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_8.ogg");
+	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick8.ogg");
+	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_8.ogg");
+	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick8.ogg"))
 {
-	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick8.ogg");
+	voice_wall_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick8.ogg");
 }
 else
 {
@@ -4006,84 +4006,84 @@ else
 #endregion /*Voice Wall Jump 8 END*/
 
 #region /*Voice Wall Jump 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_9.ogg");
+	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump9.ogg");
+	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_9.ogg");
+	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump9.ogg");
+	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_9.ogg");
+	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick9.ogg");
+	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_9.ogg");
+	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick9.ogg");
+	voice_wall_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_9.ogg");
+	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump9.ogg");
+	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_9.ogg");
+	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump9.ogg");
+	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_9.ogg");
+	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick9.ogg");
+	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_9.ogg");
+	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick9.ogg"))
 {
-	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick9.ogg");
+	voice_wall_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick9.ogg");
 }
 else
 {
@@ -4092,84 +4092,84 @@ else
 #endregion /*Voice Wall Jump 9 END*/
 
 #region /*Voice Wall Jump 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump_10.ogg");
+	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_jump10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_jump10.ogg");
+	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump_10.ogg");
+	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/walljump10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/walljump10.ogg");
+	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick_10.ogg");
+	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wall_kick10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wall_kick10.ogg");
+	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick_10.ogg");
+	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/wallkick10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/wallkick10.ogg");
+	voice_wall_jump_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump_10.ogg");
+	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_jump10.ogg");
+	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_jump10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump_10.ogg");
+	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/walljump10.ogg");
+	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/walljump10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick_10.ogg");
+	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wall_kick10.ogg");
+	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wall_kick10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick_10.ogg");
+	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick10.ogg"))
 {
-	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/wallkick10.ogg");
+	voice_wall_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/wallkick10.ogg");
 }
 else
 {
@@ -4182,124 +4182,124 @@ else
 #region /*Voice Start Running*/
 
 #region /*Voice Start Running 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_1.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running1.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/startrunning.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/startrunning_1.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/startrunning1.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_dash.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_dash.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_dash_1.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_dash_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_dash1.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_dash1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/startdash.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startdash.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/startdash_1.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startdash_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/startdash1.ogg");
+	voice_start_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startdash1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_1.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running1.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startrunning.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startrunning.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startrunning_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning_1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startrunning_1.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startrunning1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startrunning1.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_dash.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_dash.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_dash.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_dash.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_dash_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_dash_1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_dash_1.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_dash_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_dash1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_dash1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_dash1.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_dash1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startdash.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startdash.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startdash.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startdash.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startdash_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startdash_1.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startdash_1.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startdash_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startdash.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startdash.ogg"))
 {
-	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/startrunning1.ogg");
+	voice_start_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/startrunning1.ogg");
 }
 else
 {
@@ -4308,24 +4308,24 @@ else
 #endregion /*Voice Start Running 1 END*/
 
 #region /*Voice Start Running 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_2.ogg"))
 {
-	voice_start_running_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_2.ogg");
+	voice_start_running_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running2.ogg"))
 {
-	voice_start_running_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running2.ogg");
+	voice_start_running_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_2.ogg"))
 {
-	voice_start_running_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_2.ogg");
+	voice_start_running_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running2.ogg"))
 {
-	voice_start_running_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running2.ogg");
+	voice_start_running_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running2.ogg");
 }
 else
 {
@@ -4334,24 +4334,24 @@ else
 #endregion /*Voice Start Running 2 END*/
 
 #region /*Voice Start Running 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_3.ogg"))
 {
-	voice_start_running_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_3.ogg");
+	voice_start_running_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running3.ogg"))
 {
-	voice_start_running_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running3.ogg");
+	voice_start_running_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_3.ogg"))
 {
-	voice_start_running_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_3.ogg");
+	voice_start_running_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running3.ogg"))
 {
-	voice_start_running_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running3.ogg");
+	voice_start_running_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running3.ogg");
 }
 else
 {
@@ -4360,24 +4360,24 @@ else
 #endregion /*Voice Start Running 3 END*/
 
 #region /*Voice Start Running 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_4.ogg"))
 {
-	voice_start_running_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_4.ogg");
+	voice_start_running_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running4.ogg"))
 {
-	voice_start_running_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running4.ogg");
+	voice_start_running_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_4.ogg"))
 {
-	voice_start_running_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_4.ogg");
+	voice_start_running_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running4.ogg"))
 {
-	voice_start_running_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running4.ogg");
+	voice_start_running_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running4.ogg");
 }
 else
 {
@@ -4386,24 +4386,24 @@ else
 #endregion /*Voice Start Running 4 END*/
 
 #region /*Voice Start Running 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_5.ogg"))
 {
-	voice_start_running_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_5.ogg");
+	voice_start_running_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running5.ogg"))
 {
-	voice_start_running_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running5.ogg");
+	voice_start_running_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_5.ogg"))
 {
-	voice_start_running_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_5.ogg");
+	voice_start_running_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running5.ogg"))
 {
-	voice_start_running_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running5.ogg");
+	voice_start_running_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running5.ogg");
 }
 else
 {
@@ -4412,24 +4412,24 @@ else
 #endregion /*Voice Start Running 5 END*/
 
 #region /*Voice Start Running 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_6.ogg"))
 {
-	voice_start_running_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_6.ogg");
+	voice_start_running_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running6.ogg"))
 {
-	voice_start_running_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running6.ogg");
+	voice_start_running_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_6.ogg"))
 {
-	voice_start_running_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_6.ogg");
+	voice_start_running_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running6.ogg"))
 {
-	voice_start_running_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running6.ogg");
+	voice_start_running_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running6.ogg");
 }
 else
 {
@@ -4438,24 +4438,24 @@ else
 #endregion /*Voice Start Running 6 END*/
 
 #region /*Voice Start Running 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_7.ogg"))
 {
-	voice_start_running_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_7.ogg");
+	voice_start_running_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running7.ogg"))
 {
-	voice_start_running_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running7.ogg");
+	voice_start_running_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_7.ogg"))
 {
-	voice_start_running_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_7.ogg");
+	voice_start_running_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running7.ogg"))
 {
-	voice_start_running_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running7.ogg");
+	voice_start_running_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running7.ogg");
 }
 else
 {
@@ -4464,24 +4464,24 @@ else
 #endregion /*Voice Start Running 7 END*/
 
 #region /*Voice Start Running 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_8.ogg"))
 {
-	voice_start_running_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_8.ogg");
+	voice_start_running_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running8.ogg"))
 {
-	voice_start_running_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running8.ogg");
+	voice_start_running_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_8.ogg"))
 {
-	voice_start_running_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_8.ogg");
+	voice_start_running_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running8.ogg"))
 {
-	voice_start_running_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running8.ogg");
+	voice_start_running_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running8.ogg");
 }
 else
 {
@@ -4490,24 +4490,24 @@ else
 #endregion /*Voice Start Running 8 END*/
 
 #region /*Voice Start Running 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_9.ogg"))
 {
-	voice_start_running_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_9.ogg");
+	voice_start_running_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running9.ogg"))
 {
-	voice_start_running_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running9.ogg");
+	voice_start_running_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_9.ogg"))
 {
-	voice_start_running_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_9.ogg");
+	voice_start_running_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running9.ogg"))
 {
-	voice_start_running_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running9.ogg");
+	voice_start_running_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running9.ogg");
 }
 else
 {
@@ -4516,24 +4516,24 @@ else
 #endregion /*Voice Start Running 9 END*/
 
 #region /*Voice Start Running 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_10.ogg"))
 {
-	voice_start_running_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running_10.ogg");
+	voice_start_running_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/start_running10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running10.ogg"))
 {
-	voice_start_running_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/start_running10.ogg");
+	voice_start_running_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_10.ogg"))
 {
-	voice_start_running_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running_10.ogg");
+	voice_start_running_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running10.ogg"))
 {
-	voice_start_running_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/start_running10.ogg");
+	voice_start_running_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/start_running10.ogg");
 }
 else
 {
@@ -4546,34 +4546,34 @@ else
 #region /*Voice Rope Catch*/
 
 #region /*Voice Rope Catch 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch.ogg"))
 {
-	voice_rope_catch_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch.ogg");
+	voice_rope_catch_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_1.ogg"))
 {
-	voice_rope_catch_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_1.ogg");
+	voice_rope_catch_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch1.ogg"))
 {
-	voice_rope_catch_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch1.ogg");
+	voice_rope_catch_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch.ogg"))
 {
-	voice_rope_catch_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch.ogg");
+	voice_rope_catch_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_1.ogg"))
 {
-	voice_rope_catch_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_1.ogg");
+	voice_rope_catch_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch1.ogg"))
 {
-	voice_rope_catch_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch1.ogg");
+	voice_rope_catch_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch1.ogg");
 }
 else
 {
@@ -4582,24 +4582,24 @@ else
 #endregion /*Voice Rope Catch 1 END*/
 
 #region /*Voice Rope Catch 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_2.ogg"))
 {
-	voice_rope_catch_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_2.ogg");
+	voice_rope_catch_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch2.ogg"))
 {
-	voice_rope_catch_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch2.ogg");
+	voice_rope_catch_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_2.ogg"))
 {
-	voice_rope_catch_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_2.ogg");
+	voice_rope_catch_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch2.ogg"))
 {
-	voice_rope_catch_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch2.ogg");
+	voice_rope_catch_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch2.ogg");
 }
 else
 {
@@ -4608,24 +4608,24 @@ else
 #endregion /*Voice Rope Catch 2 END*/
 
 #region /*Voice Rope Catch 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_3.ogg"))
 {
-	voice_rope_catch_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_3.ogg");
+	voice_rope_catch_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch3.ogg"))
 {
-	voice_rope_catch_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch3.ogg");
+	voice_rope_catch_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_3.ogg"))
 {
-	voice_rope_catch_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_3.ogg");
+	voice_rope_catch_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch3.ogg"))
 {
-	voice_rope_catch_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch3.ogg");
+	voice_rope_catch_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch3.ogg");
 }
 else
 {
@@ -4634,24 +4634,24 @@ else
 #endregion /*Voice Rope Catch 3 END*/
 
 #region /*Voice Rope Catch 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_4.ogg"))
 {
-	voice_rope_catch_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_4.ogg");
+	voice_rope_catch_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch4.ogg"))
 {
-	voice_rope_catch_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch4.ogg");
+	voice_rope_catch_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_4.ogg"))
 {
-	voice_rope_catch_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_4.ogg");
+	voice_rope_catch_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch4.ogg"))
 {
-	voice_rope_catch_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch4.ogg");
+	voice_rope_catch_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch4.ogg");
 }
 else
 {
@@ -4660,24 +4660,24 @@ else
 #endregion /*Voice Rope Catch 4 END*/
 
 #region /*Voice Rope Catch 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_5.ogg"))
 {
-	voice_rope_catch_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_5.ogg");
+	voice_rope_catch_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch5.ogg"))
 {
-	voice_rope_catch_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch5.ogg");
+	voice_rope_catch_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_5.ogg"))
 {
-	voice_rope_catch_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_5.ogg");
+	voice_rope_catch_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch5.ogg"))
 {
-	voice_rope_catch_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch5.ogg");
+	voice_rope_catch_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch5.ogg");
 }
 else
 {
@@ -4686,24 +4686,24 @@ else
 #endregion /*Voice Rope Catch 5 END*/
 
 #region /*Voice Rope Catch 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_6.ogg"))
 {
-	voice_rope_catch_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_6.ogg");
+	voice_rope_catch_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch6.ogg"))
 {
-	voice_rope_catch_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch6.ogg");
+	voice_rope_catch_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_6.ogg"))
 {
-	voice_rope_catch_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_6.ogg");
+	voice_rope_catch_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch6.ogg"))
 {
-	voice_rope_catch_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch6.ogg");
+	voice_rope_catch_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch6.ogg");
 }
 else
 {
@@ -4712,24 +4712,24 @@ else
 #endregion /*Voice Rope Catch 6 END*/
 
 #region /*Voice Rope Catch 7*/
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/rope_catch_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_7.ogg"))
 {
-	voice_rope_catch_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/rope_catch_7.ogg");
+	voice_rope_catch_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/rope_catch7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch7.ogg"))
 {
-	voice_rope_catch_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/rope_catch7.ogg");
+	voice_rope_catch_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_7.ogg"))
 {
-	voice_rope_catch_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_7.ogg");
+	voice_rope_catch_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch7.ogg"))
 {
-	voice_rope_catch_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch7.ogg");
+	voice_rope_catch_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch7.ogg");
 }
 else
 {
@@ -4738,24 +4738,24 @@ else
 #endregion /*Voice Rope Catch 7 END*/
 
 #region /*Voice Rope Catch 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_8.ogg"))
 {
-	voice_rope_catch_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_8.ogg");
+	voice_rope_catch_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch8.ogg"))
 {
-	voice_rope_catch_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch8.ogg");
+	voice_rope_catch_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_8.ogg"))
 {
-	voice_rope_catch_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_8.ogg");
+	voice_rope_catch_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch8.ogg"))
 {
-	voice_rope_catch_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch8.ogg");
+	voice_rope_catch_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch8.ogg");
 }
 else
 {
@@ -4764,24 +4764,24 @@ else
 #endregion /*Voice Rope Catch 8 END*/
 
 #region /*Voice Rope Catch 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_9.ogg"))
 {
-	voice_rope_catch_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_9.ogg");
+	voice_rope_catch_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch9.ogg"))
 {
-	voice_rope_catch_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch9.ogg");
+	voice_rope_catch_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_9.ogg"))
 {
-	voice_rope_catch_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_9.ogg");
+	voice_rope_catch_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch9.ogg"))
 {
-	voice_rope_catch_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch9.ogg");
+	voice_rope_catch_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch9.ogg");
 }
 else
 {
@@ -4790,24 +4790,24 @@ else
 #endregion /*Voice Rope Catch 9 END*/
 
 #region /*Voice Rope Catch 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_10.ogg"))
 {
-	voice_rope_catch_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch_10.ogg");
+	voice_rope_catch_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/rope_catch10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch10.ogg"))
 {
-	voice_rope_catch_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/rope_catch10.ogg");
+	voice_rope_catch_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_10.ogg"))
 {
-	voice_rope_catch_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch_10.ogg");
+	voice_rope_catch_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch10.ogg"))
 {
-	voice_rope_catch_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/rope_catch10.ogg");
+	voice_rope_catch_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/rope_catch10.ogg");
 }
 else
 {
@@ -4820,34 +4820,34 @@ else
 #region /*Voice Jump Spring*/
 
 #region /*Voice Jump Spring 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring.ogg"))
 {
-	voice_jump_spring_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring.ogg");
+	voice_jump_spring_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_1.ogg"))
 {
-	voice_jump_spring_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_1.ogg");
+	voice_jump_spring_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring1.ogg"))
 {
-	voice_jump_spring_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring1.ogg");
+	voice_jump_spring_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring.ogg"))
 {
-	voice_jump_spring_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring.ogg");
+	voice_jump_spring_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_1.ogg"))
 {
-	voice_jump_spring_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_1.ogg");
+	voice_jump_spring_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring1.ogg"))
 {
-	voice_jump_spring_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring1.ogg");
+	voice_jump_spring_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring1.ogg");
 }
 else
 {
@@ -4856,24 +4856,24 @@ else
 #endregion /*Voice Jump Spring 1 END*/
 
 #region /*Voice Jump Spring 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_2.ogg"))
 {
-	voice_jump_spring_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_2.ogg");
+	voice_jump_spring_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring2.ogg"))
 {
-	voice_jump_spring_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring2.ogg");
+	voice_jump_spring_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_2.ogg"))
 {
-	voice_jump_spring_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_2.ogg");
+	voice_jump_spring_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring2.ogg"))
 {
-	voice_jump_spring_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring2.ogg");
+	voice_jump_spring_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring2.ogg");
 }
 else
 {
@@ -4882,24 +4882,24 @@ else
 #endregion /*Voice Jump Spring 2 END*/
 
 #region /*Voice Jump Spring 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_3.ogg"))
 {
-	voice_jump_spring_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_3.ogg");
+	voice_jump_spring_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring3.ogg"))
 {
-	voice_jump_spring_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring3.ogg");
+	voice_jump_spring_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_3.ogg"))
 {
-	voice_jump_spring_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_3.ogg");
+	voice_jump_spring_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring3.ogg"))
 {
-	voice_jump_spring_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring3.ogg");
+	voice_jump_spring_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring3.ogg");
 }
 else
 {
@@ -4908,24 +4908,24 @@ else
 #endregion /*Voice Jump Spring 3 END*/
 
 #region /*Voice Jump Spring 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_4.ogg"))
 {
-	voice_jump_spring_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_4.ogg");
+	voice_jump_spring_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring4.ogg"))
 {
-	voice_jump_spring_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring4.ogg");
+	voice_jump_spring_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_4.ogg"))
 {
-	voice_jump_spring_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_4.ogg");
+	voice_jump_spring_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring4.ogg"))
 {
-	voice_jump_spring_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring4.ogg");
+	voice_jump_spring_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring4.ogg");
 }
 else
 {
@@ -4934,24 +4934,24 @@ else
 #endregion /*Voice Jump Spring 4 END*/
 
 #region /*Voice Jump Spring 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_5.ogg"))
 {
-	voice_jump_spring_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_5.ogg");
+	voice_jump_spring_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring5.ogg"))
 {
-	voice_jump_spring_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring5.ogg");
+	voice_jump_spring_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_5.ogg"))
 {
-	voice_jump_spring_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_5.ogg");
+	voice_jump_spring_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring5.ogg"))
 {
-	voice_jump_spring_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring5.ogg");
+	voice_jump_spring_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring5.ogg");
 }
 else
 {
@@ -4960,24 +4960,24 @@ else
 #endregion /*Voice Jump Spring 5 END*/
 
 #region /*Voice Jump Spring 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_6.ogg"))
 {
-	voice_jump_spring_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_6.ogg");
+	voice_jump_spring_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring6.ogg"))
 {
-	voice_jump_spring_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring6.ogg");
+	voice_jump_spring_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_6.ogg"))
 {
-	voice_jump_spring_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_6.ogg");
+	voice_jump_spring_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring6.ogg"))
 {
-	voice_jump_spring_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring6.ogg");
+	voice_jump_spring_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring6.ogg");
 }
 else
 {
@@ -4986,24 +4986,24 @@ else
 #endregion /*Voice Jump Spring 6 END*/
 
 #region /*Voice Jump Spring 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_7.ogg"))
 {
-	voice_jump_spring_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_7.ogg");
+	voice_jump_spring_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring7.ogg"))
 {
-	voice_jump_spring_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring7.ogg");
+	voice_jump_spring_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_7.ogg"))
 {
-	voice_jump_spring_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_7.ogg");
+	voice_jump_spring_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring7.ogg"))
 {
-	voice_jump_spring_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring7.ogg");
+	voice_jump_spring_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring7.ogg");
 }
 else
 {
@@ -5012,24 +5012,24 @@ else
 #endregion /*Voice Jump Spring 7 END*/
 
 #region /*Voice Jump Spring 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_8.ogg"))
 {
-	voice_jump_spring_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_8.ogg");
+	voice_jump_spring_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring8.ogg"))
 {
-	voice_jump_spring_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring8.ogg");
+	voice_jump_spring_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_8.ogg"))
 {
-	voice_jump_spring_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_8.ogg");
+	voice_jump_spring_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring8.ogg"))
 {
-	voice_jump_spring_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring8.ogg");
+	voice_jump_spring_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring8.ogg");
 }
 else
 {
@@ -5038,24 +5038,24 @@ else
 #endregion /*Voice Jump Spring 8 END*/
 
 #region /*Voice Jump Spring 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_9.ogg"))
 {
-	voice_jump_spring_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_9.ogg");
+	voice_jump_spring_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring9.ogg"))
 {
-	voice_jump_spring_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring9.ogg");
+	voice_jump_spring_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_9.ogg"))
 {
-	voice_jump_spring_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_9.ogg");
+	voice_jump_spring_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring9.ogg"))
 {
-	voice_jump_spring_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring9.ogg");
+	voice_jump_spring_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring9.ogg");
 }
 else
 {
@@ -5064,24 +5064,24 @@ else
 #endregion /*Voice Jump Spring 9 END*/
 
 #region /*Voice Jump Spring 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_10.ogg"))
 {
-	voice_jump_spring_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring_10.ogg");
+	voice_jump_spring_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_spring10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring10.ogg"))
 {
-	voice_jump_spring_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_spring10.ogg");
+	voice_jump_spring_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_10.ogg"))
 {
-	voice_jump_spring_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring_10.ogg");
+	voice_jump_spring_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring10.ogg"))
 {
-	voice_jump_spring_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_spring10.ogg");
+	voice_jump_spring_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_spring10.ogg");
 }
 else
 {
@@ -5094,34 +5094,34 @@ else
 #region /*Voice Jump Rope*/
 
 #region /*Voice Jump Rope 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope.ogg"))
 {
-	voice_jump_rope_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope.ogg");
+	voice_jump_rope_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_1.ogg"))
 {
-	voice_jump_rope_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_1.ogg");
+	voice_jump_rope_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope1.ogg"))
 {
-	voice_jump_rope_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope1.ogg");
+	voice_jump_rope_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope.ogg"))
 {
-	voice_jump_rope_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope.ogg");
+	voice_jump_rope_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_1.ogg"))
 {
-	voice_jump_rope_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_1.ogg");
+	voice_jump_rope_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope1.ogg"))
 {
-	voice_jump_rope_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope1.ogg");
+	voice_jump_rope_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope1.ogg");
 }
 else
 {
@@ -5130,24 +5130,24 @@ else
 #endregion /*Voice Jump Rope 1 END*/
 
 #region /*Voice Jump Rope 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_2.ogg"))
 {
-	voice_jump_rope_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_2.ogg");
+	voice_jump_rope_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope2.ogg"))
 {
-	voice_jump_rope_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope2.ogg");
+	voice_jump_rope_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_2.ogg"))
 {
-	voice_jump_rope_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_2.ogg");
+	voice_jump_rope_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope2.ogg"))
 {
-	voice_jump_rope_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope2.ogg");
+	voice_jump_rope_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope2.ogg");
 }
 else
 {
@@ -5156,24 +5156,24 @@ else
 #endregion /*Voice Jump Rope 2 END*/
 
 #region /*Voice Jump Rope 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_3.ogg"))
 {
-	voice_jump_rope_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_3.ogg");
+	voice_jump_rope_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope3.ogg"))
 {
-	voice_jump_rope_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope3.ogg");
+	voice_jump_rope_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_3.ogg"))
 {
-	voice_jump_rope_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_3.ogg");
+	voice_jump_rope_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope3.ogg"))
 {
-	voice_jump_rope_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope3.ogg");
+	voice_jump_rope_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope3.ogg");
 }
 else
 {
@@ -5182,24 +5182,24 @@ else
 #endregion /*Voice Jump Rope 3 END*/
 
 #region /*Voice Jump Rope 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_4.ogg"))
 {
-	voice_jump_rope_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_4.ogg");
+	voice_jump_rope_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope4.ogg"))
 {
-	voice_jump_rope_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope4.ogg");
+	voice_jump_rope_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_4.ogg"))
 {
-	voice_jump_rope_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_4.ogg");
+	voice_jump_rope_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope4.ogg"))
 {
-	voice_jump_rope_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope4.ogg");
+	voice_jump_rope_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope4.ogg");
 }
 else
 {
@@ -5208,24 +5208,24 @@ else
 #endregion /*Voice Jump Rope 4 END*/
 
 #region /*Voice Jump Rope 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_5.ogg"))
 {
-	voice_jump_rope_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_5.ogg");
+	voice_jump_rope_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope5.ogg"))
 {
-	voice_jump_rope_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope5.ogg");
+	voice_jump_rope_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_5.ogg"))
 {
-	voice_jump_rope_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_5.ogg");
+	voice_jump_rope_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope5.ogg"))
 {
-	voice_jump_rope_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope5.ogg");
+	voice_jump_rope_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope5.ogg");
 }
 else
 {
@@ -5234,24 +5234,24 @@ else
 #endregion /*Voice Jump Rope 5 END*/
 
 #region /*Voice Jump Rope 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_6.ogg"))
 {
-	voice_jump_rope_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_6.ogg");
+	voice_jump_rope_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope6.ogg"))
 {
-	voice_jump_rope_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope6.ogg");
+	voice_jump_rope_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_6.ogg"))
 {
-	voice_jump_rope_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_6.ogg");
+	voice_jump_rope_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope6.ogg"))
 {
-	voice_jump_rope_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope6.ogg");
+	voice_jump_rope_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope6.ogg");
 }
 else
 {
@@ -5260,24 +5260,24 @@ else
 #endregion /*Voice Jump Rope 6 END*/
 
 #region /*Voice Jump Rope 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_7.ogg"))
 {
-	voice_jump_rope_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_7.ogg");
+	voice_jump_rope_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope7.ogg"))
 {
-	voice_jump_rope_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope7.ogg");
+	voice_jump_rope_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_7.ogg"))
 {
-	voice_jump_rope_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_7.ogg");
+	voice_jump_rope_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope7.ogg"))
 {
-	voice_jump_rope_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope7.ogg");
+	voice_jump_rope_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope7.ogg");
 }
 else
 {
@@ -5286,24 +5286,24 @@ else
 #endregion /*Voice Jump Rope 7 END*/
 
 #region /*Voice Jump Rope 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_8.ogg"))
 {
-	voice_jump_rope_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_8.ogg");
+	voice_jump_rope_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope8.ogg"))
 {
-	voice_jump_rope_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope8.ogg");
+	voice_jump_rope_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_8.ogg"))
 {
-	voice_jump_rope_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_8.ogg");
+	voice_jump_rope_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope8.ogg"))
 {
-	voice_jump_rope_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope8.ogg");
+	voice_jump_rope_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope8.ogg");
 }
 else
 {
@@ -5312,24 +5312,24 @@ else
 #endregion /*Voice Jump Rope 8 END*/
 
 #region /*Voice Jump Rope 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_9.ogg"))
 {
-	voice_jump_rope_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_9.ogg");
+	voice_jump_rope_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope9.ogg"))
 {
-	voice_jump_rope_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope9.ogg");
+	voice_jump_rope_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_9.ogg"))
 {
-	voice_jump_rope_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_9.ogg");
+	voice_jump_rope_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope9.ogg"))
 {
-	voice_jump_rope_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope9.ogg");
+	voice_jump_rope_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope9.ogg");
 }
 else
 {
@@ -5338,24 +5338,24 @@ else
 #endregion /*Voice Jump Rope 9 END*/
 
 #region /*Voice Jump Rope 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_10.ogg"))
 {
-	voice_jump_rope_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope_10.ogg");
+	voice_jump_rope_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_rope10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope10.ogg"))
 {
-	voice_jump_rope_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_rope10.ogg");
+	voice_jump_rope_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_10.ogg"))
 {
-	voice_jump_rope_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope_10.ogg");
+	voice_jump_rope_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope10.ogg"))
 {
-	voice_jump_rope_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_rope10.ogg");
+	voice_jump_rope_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_rope10.ogg");
 }
 else
 {
@@ -5368,34 +5368,34 @@ else
 #region /*Voice Jump*/
 
 #region /*Voice Jump 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump.ogg"))
 {
-	voice_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump.ogg");
+	voice_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_1.ogg"))
 {
-	voice_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_1.ogg");
+	voice_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump1.ogg"))
 {
-	voice_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump1.ogg");
+	voice_jump_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump.ogg"))
 {
-	voice_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump.ogg");
+	voice_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_1.ogg"))
 {
-	voice_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_1.ogg");
+	voice_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump1.ogg"))
 {
-	voice_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump1.ogg");
+	voice_jump_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump1.ogg");
 }
 else
 {
@@ -5404,24 +5404,24 @@ else
 #endregion /*Voice Jump 1 END*/
 
 #region /*Voice Jump 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2.ogg"))
 {
-	voice_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2.ogg");
+	voice_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2.ogg"))
 {
-	voice_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2.ogg");
+	voice_jump_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2.ogg"))
 {
-	voice_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2.ogg");
+	voice_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2.ogg"))
 {
-	voice_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2.ogg");
+	voice_jump_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2.ogg");
 }
 else
 {
@@ -5430,24 +5430,24 @@ else
 #endregion /*Voice Jump 2 END*/
 
 #region /*Voice Jump 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3.ogg"))
 {
-	voice_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3.ogg");
+	voice_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3.ogg"))
 {
-	voice_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3.ogg");
+	voice_jump_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3.ogg"))
 {
-	voice_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3.ogg");
+	voice_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3.ogg"))
 {
-	voice_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3.ogg");
+	voice_jump_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3.ogg");
 }
 else
 {
@@ -5456,24 +5456,24 @@ else
 #endregion /*Voice Jump 3 END*/
 
 #region /*Voice Jump 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_4.ogg"))
 {
-	voice_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_4.ogg");
+	voice_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump4.ogg"))
 {
-	voice_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump4.ogg");
+	voice_jump_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_4.ogg"))
 {
-	voice_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_4.ogg");
+	voice_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump4.ogg"))
 {
-	voice_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump4.ogg");
+	voice_jump_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump4.ogg");
 }
 else
 {
@@ -5482,24 +5482,24 @@ else
 #endregion /*Voice Jump 4 END*/
 
 #region /*Voice Jump 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_5.ogg"))
 {
-	voice_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_5.ogg");
+	voice_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump5.ogg"))
 {
-	voice_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump5.ogg");
+	voice_jump_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_5.ogg"))
 {
-	voice_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_5.ogg");
+	voice_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump5.ogg"))
 {
-	voice_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump5.ogg");
+	voice_jump_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump5.ogg");
 }
 else
 {
@@ -5508,24 +5508,24 @@ else
 #endregion /*Voice Jump 5 END*/
 
 #region /*Voice Jump 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_6.ogg"))
 {
-	voice_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_6.ogg");
+	voice_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump6.ogg"))
 {
-	voice_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump6.ogg");
+	voice_jump_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_6.ogg"))
 {
-	voice_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_6.ogg");
+	voice_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump6.ogg"))
 {
-	voice_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump6.ogg");
+	voice_jump_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump6.ogg");
 }
 else
 {
@@ -5534,24 +5534,24 @@ else
 #endregion /*Voice Jump 6 END*/
 
 #region /*Voice Jump 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_7.ogg"))
 {
-	voice_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_7.ogg");
+	voice_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump7.ogg"))
 {
-	voice_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump7.ogg");
+	voice_jump_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_7.ogg"))
 {
-	voice_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_7.ogg");
+	voice_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump7.ogg"))
 {
-	voice_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump7.ogg");
+	voice_jump_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump7.ogg");
 }
 else
 {
@@ -5560,24 +5560,24 @@ else
 #endregion /*Voice Jump 7 END*/
 
 #region /*Voice Jump 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_8.ogg"))
 {
-	voice_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_8.ogg");
+	voice_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump8.ogg"))
 {
-	voice_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump8.ogg");
+	voice_jump_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_8.ogg"))
 {
-	voice_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_8.ogg");
+	voice_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump8.ogg"))
 {
-	voice_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump8.ogg");
+	voice_jump_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump8.ogg");
 }
 else
 {
@@ -5586,24 +5586,24 @@ else
 #endregion /*Voice Jump 8 END*/
 
 #region /*Voice Jump 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_9.ogg"))
 {
-	voice_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_9.ogg");
+	voice_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump9.ogg"))
 {
-	voice_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump9.ogg");
+	voice_jump_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_9.ogg"))
 {
-	voice_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_9.ogg");
+	voice_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump9.ogg"))
 {
-	voice_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump9.ogg");
+	voice_jump_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump9.ogg");
 }
 else
 {
@@ -5612,24 +5612,24 @@ else
 #endregion /*Voice Jump 9 END*/
 
 #region /*Voice Jump 10*/
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/jump_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_10.ogg"))
 {
-	voice_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/jump_10.ogg");
+	voice_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/jump10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump10.ogg"))
 {
-	voice_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/jump10.ogg");
+	voice_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_10.ogg"))
 {
-	voice_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_10.ogg");
+	voice_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump10.ogg"))
 {
-	voice_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump10.ogg");
+	voice_jump_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump10.ogg");
 }
 else
 {
@@ -5642,64 +5642,64 @@ else
 #region /*Voice Jump 3rd*/
 
 #region /*Voice Jump 3rd 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd.ogg");
+	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_1.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_1.ogg");
+	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd1.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd1.ogg");
+	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd.ogg");
+	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_1.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_1.ogg");
+	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd1.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd1.ogg");
+	voice_jump_3rd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd.ogg");
+	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_1.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_1.ogg");
+	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd1.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd1.ogg");
+	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd.ogg");
+	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_1.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_1.ogg");
+	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd1.ogg"))
 {
-	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd1.ogg");
+	voice_jump_3rd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd1.ogg");
 }
 else
 {
@@ -5708,44 +5708,44 @@ else
 #endregion /*Voice Jump 3rd 1 END*/
 
 #region /*Voice Jump 3rd 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_2.ogg"))
 {
-	voice_jump_3rd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_2.ogg");
+	voice_jump_3rd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd2.ogg"))
 {
-	voice_jump_3rd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd2.ogg");
+	voice_jump_3rd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_2.ogg"))
 {
-	voice_jump_3rd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_2.ogg");
+	voice_jump_3rd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd2.ogg"))
 {
-	voice_jump_3rd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd2.ogg");
+	voice_jump_3rd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_2.ogg"))
 {
-	voice_jump_3rd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_2.ogg");
+	voice_jump_3rd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd2.ogg"))
 {
-	voice_jump_3rd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd2.ogg");
+	voice_jump_3rd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_2.ogg"))
 {
-	voice_jump_3rd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_2.ogg");
+	voice_jump_3rd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd2.ogg"))
 {
-	voice_jump_3rd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd2.ogg");
+	voice_jump_3rd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd2.ogg");
 }
 else
 {
@@ -5754,44 +5754,44 @@ else
 #endregion /*Voice Jump 3rd 2 END*/
 
 #region /*Voice Jump 3rd 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/Voice Pack/jump_3rd_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/Voice Pack/jump_3rd_3.ogg"))
 {
-	voice_jump_3rd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_3.ogg");
+	voice_jump_3rd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd3.ogg"))
 {
-	voice_jump_3rd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd3.ogg");
+	voice_jump_3rd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_3.ogg"))
 {
-	voice_jump_3rd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_3.ogg");
+	voice_jump_3rd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd3.ogg"))
 {
-	voice_jump_3rd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd3.ogg");
+	voice_jump_3rd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_3.ogg"))
 {
-	voice_jump_3rd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_3.ogg");
+	voice_jump_3rd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd3.ogg"))
 {
-	voice_jump_3rd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd3.ogg");
+	voice_jump_3rd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_3.ogg"))
 {
-	voice_jump_3rd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_3.ogg");
+	voice_jump_3rd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd3.ogg"))
 {
-	voice_jump_3rd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd3.ogg");
+	voice_jump_3rd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd3.ogg");
 }
 else
 {
@@ -5800,44 +5800,44 @@ else
 #endregion /*Voice Jump 3rd 3 END*/
 
 #region /*Voice Jump 3rd 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_4.ogg"))
 {
-	voice_jump_3rd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_4.ogg");
+	voice_jump_3rd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd4.ogg"))
 {
-	voice_jump_3rd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd4.ogg");
+	voice_jump_3rd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_4.ogg"))
 {
-	voice_jump_3rd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_4.ogg");
+	voice_jump_3rd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd4.ogg"))
 {
-	voice_jump_3rd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd4.ogg");
+	voice_jump_3rd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_4.ogg"))
 {
-	voice_jump_3rd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_4.ogg");
+	voice_jump_3rd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd4.ogg"))
 {
-	voice_jump_3rd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd4.ogg");
+	voice_jump_3rd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_4.ogg"))
 {
-	voice_jump_3rd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_4.ogg");
+	voice_jump_3rd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd4.ogg"))
 {
-	voice_jump_3rd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd4.ogg");
+	voice_jump_3rd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd4.ogg");
 }
 else
 {
@@ -5846,44 +5846,44 @@ else
 #endregion /*Voice Jump 3rd 4 END*/
 
 #region /*Voice Jump 3rd 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_5.ogg"))
 {
-	voice_jump_3rd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_5.ogg");
+	voice_jump_3rd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd5.ogg"))
 {
-	voice_jump_3rd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd5.ogg");
+	voice_jump_3rd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_5.ogg"))
 {
-	voice_jump_3rd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_5.ogg");
+	voice_jump_3rd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd5.ogg"))
 {
-	voice_jump_3rd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd5.ogg");
+	voice_jump_3rd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_5.ogg"))
 {
-	voice_jump_3rd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_5.ogg");
+	voice_jump_3rd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd5.ogg"))
 {
-	voice_jump_3rd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd5.ogg");
+	voice_jump_3rd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_5.ogg"))
 {
-	voice_jump_3rd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_5.ogg");
+	voice_jump_3rd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd5.ogg"))
 {
-	voice_jump_3rd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd5.ogg");
+	voice_jump_3rd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd5.ogg");
 }
 else
 {
@@ -5892,44 +5892,44 @@ else
 #endregion /*Voice Jump 3rd 5 END*/
 
 #region /*Voice Jump 3rd 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_6.ogg"))
 {
-	voice_jump_3rd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_6.ogg");
+	voice_jump_3rd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd6.ogg"))
 {
-	voice_jump_3rd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd6.ogg");
+	voice_jump_3rd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_6.ogg"))
 {
-	voice_jump_3rd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_6.ogg");
+	voice_jump_3rd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd6.ogg"))
 {
-	voice_jump_3rd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd6.ogg");
+	voice_jump_3rd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_6.ogg"))
 {
-	voice_jump_3rd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_6.ogg");
+	voice_jump_3rd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd6.ogg"))
 {
-	voice_jump_3rd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd6.ogg");
+	voice_jump_3rd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_6.ogg"))
 {
-	voice_jump_3rd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_6.ogg");
+	voice_jump_3rd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd6.ogg"))
 {
-	voice_jump_3rd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd6.ogg");
+	voice_jump_3rd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd6.ogg");
 }
 else
 {
@@ -5938,44 +5938,44 @@ else
 #endregion /*Voice Jump 3rd 6 END*/
 
 #region /*Voice Jump 3rd 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_7.ogg"))
 {
-	voice_jump_3rd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_7.ogg");
+	voice_jump_3rd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd7.ogg"))
 {
-	voice_jump_3rd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd7.ogg");
+	voice_jump_3rd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_7.ogg"))
 {
-	voice_jump_3rd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_7.ogg");
+	voice_jump_3rd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd7.ogg"))
 {
-	voice_jump_3rd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd7.ogg");
+	voice_jump_3rd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_7.ogg"))
 {
-	voice_jump_3rd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_7.ogg");
+	voice_jump_3rd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd7.ogg"))
 {
-	voice_jump_3rd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd7.ogg");
+	voice_jump_3rd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_7.ogg"))
 {
-	voice_jump_3rd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_7.ogg");
+	voice_jump_3rd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd7.ogg"))
 {
-	voice_jump_3rd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd7.ogg");
+	voice_jump_3rd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd7.ogg");
 }
 else
 {
@@ -5984,44 +5984,44 @@ else
 #endregion /*Voice Jump 3rd 7 END*/
 
 #region /*Voice Jump 3rd 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_8.ogg"))
 {
-	voice_jump_3rd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_8.ogg");
+	voice_jump_3rd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd8.ogg"))
 {
-	voice_jump_3rd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd8.ogg");
+	voice_jump_3rd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_8.ogg"))
 {
-	voice_jump_3rd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_8.ogg");
+	voice_jump_3rd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd8.ogg"))
 {
-	voice_jump_3rd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd8.ogg");
+	voice_jump_3rd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_8.ogg"))
 {
-	voice_jump_3rd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_8.ogg");
+	voice_jump_3rd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd8.ogg"))
 {
-	voice_jump_3rd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd8.ogg");
+	voice_jump_3rd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_8.ogg"))
 {
-	voice_jump_3rd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_8.ogg");
+	voice_jump_3rd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd8.ogg"))
 {
-	voice_jump_3rd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd8.ogg");
+	voice_jump_3rd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd8.ogg");
 }
 else
 {
@@ -6030,44 +6030,44 @@ else
 #endregion /*Voice Jump 3rd 8 END*/
 
 #region /*Voice Jump 3rd 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_9.ogg"))
 {
-	voice_jump_3rd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_9.ogg");
+	voice_jump_3rd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd9.ogg"))
 {
-	voice_jump_3rd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd9.ogg");
+	voice_jump_3rd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_9.ogg"))
 {
-	voice_jump_3rd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_9.ogg");
+	voice_jump_3rd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd9.ogg"))
 {
-	voice_jump_3rd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd9.ogg");
+	voice_jump_3rd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_9.ogg"))
 {
-	voice_jump_3rd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_9.ogg");
+	voice_jump_3rd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd9.ogg"))
 {
-	voice_jump_3rd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd9.ogg");
+	voice_jump_3rd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_9.ogg"))
 {
-	voice_jump_3rd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_9.ogg");
+	voice_jump_3rd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd9.ogg"))
 {
-	voice_jump_3rd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd9.ogg");
+	voice_jump_3rd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd9.ogg");
 }
 else
 {
@@ -6076,44 +6076,44 @@ else
 #endregion /*Voice Jump 3rd 9 END*/
 
 #region /*Voice Jump 3rd 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_10.ogg"))
 {
-	voice_jump_3rd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd_10.ogg");
+	voice_jump_3rd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd10.ogg"))
 {
-	voice_jump_3rd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_3rd10.ogg");
+	voice_jump_3rd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_10.ogg"))
 {
-	voice_jump_3rd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd_10.ogg");
+	voice_jump_3rd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump3rd10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd10.ogg"))
 {
-	voice_jump_3rd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump3rd10.ogg");
+	voice_jump_3rd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_10.ogg"))
 {
-	voice_jump_3rd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd_10.ogg");
+	voice_jump_3rd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd10.ogg"))
 {
-	voice_jump_3rd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_3rd10.ogg");
+	voice_jump_3rd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_3rd10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_10.ogg"))
 {
-	voice_jump_3rd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd_10.ogg");
+	voice_jump_3rd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd10.ogg"))
 {
-	voice_jump_3rd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump3rd10.ogg");
+	voice_jump_3rd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump3rd10.ogg");
 }
 else
 {
@@ -6126,64 +6126,64 @@ else
 #region /*Voice Jump 2nd*/
 
 #region /*Voice Jump 2nd 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd.ogg");
+	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_1.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_1.ogg");
+	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd1.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd1.ogg");
+	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd.ogg");
+	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_1.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_1.ogg");
+	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd1.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd1.ogg");
+	voice_jump_2nd_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd.ogg");
+	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_1.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_1.ogg");
+	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd1.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd1.ogg");
+	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd.ogg");
+	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_1.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_1.ogg");
+	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd1.ogg"))
 {
-	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd1.ogg");
+	voice_jump_2nd_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd1.ogg");
 }
 else
 {
@@ -6192,44 +6192,44 @@ else
 #endregion /*Voice Jump 2nd 1 END*/
 
 #region /*Voice Jump 2nd 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_2.ogg"))
 {
-	voice_jump_2nd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_2.ogg");
+	voice_jump_2nd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd2.ogg"))
 {
-	voice_jump_2nd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd2.ogg");
+	voice_jump_2nd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_2.ogg"))
 {
-	voice_jump_2nd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_2.ogg");
+	voice_jump_2nd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd2.ogg"))
 {
-	voice_jump_2nd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd2.ogg");
+	voice_jump_2nd_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_2.ogg"))
 {
-	voice_jump_2nd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_2.ogg");
+	voice_jump_2nd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd2.ogg"))
 {
-	voice_jump_2nd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd2.ogg");
+	voice_jump_2nd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_2.ogg"))
 {
-	voice_jump_2nd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_2.ogg");
+	voice_jump_2nd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd2.ogg"))
 {
-	voice_jump_2nd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd2.ogg");
+	voice_jump_2nd_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd2.ogg");
 }
 else
 {
@@ -6238,44 +6238,44 @@ else
 #endregion /*Voice Jump 2nd 2 END*/
 
 #region /*Voice Jump 2nd 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_3.ogg"))
 {
-	voice_jump_2nd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_3.ogg");
+	voice_jump_2nd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd3.ogg"))
 {
-	voice_jump_2nd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd3.ogg");
+	voice_jump_2nd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_3.ogg"))
 {
-	voice_jump_2nd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_3.ogg");
+	voice_jump_2nd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd3.ogg"))
 {
-	voice_jump_2nd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd3.ogg");
+	voice_jump_2nd_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_3.ogg"))
 {
-	voice_jump_2nd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_3.ogg");
+	voice_jump_2nd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd3.ogg"))
 {
-	voice_jump_2nd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd3.ogg");
+	voice_jump_2nd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_3.ogg"))
 {
-	voice_jump_2nd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_3.ogg");
+	voice_jump_2nd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd3.ogg"))
 {
-	voice_jump_2nd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd3.ogg");
+	voice_jump_2nd_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd3.ogg");
 }
 else
 {
@@ -6284,44 +6284,44 @@ else
 #endregion /*Voice Jump 2nd 3 END*/
 
 #region /*Voice Jump 2nd 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_4.ogg"))
 {
-	voice_jump_2nd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_4.ogg");
+	voice_jump_2nd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd4.ogg"))
 {
-	voice_jump_2nd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd4.ogg");
+	voice_jump_2nd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_4.ogg"))
 {
-	voice_jump_2nd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_4.ogg");
+	voice_jump_2nd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd4.ogg"))
 {
-	voice_jump_2nd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd4.ogg");
+	voice_jump_2nd_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_4.ogg"))
 {
-	voice_jump_2nd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_4.ogg");
+	voice_jump_2nd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd4.ogg"))
 {
-	voice_jump_2nd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd4.ogg");
+	voice_jump_2nd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_4.ogg"))
 {
-	voice_jump_2nd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_4.ogg");
+	voice_jump_2nd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd4.ogg"))
 {
-	voice_jump_2nd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd4.ogg");
+	voice_jump_2nd_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd4.ogg");
 }
 else
 {
@@ -6330,44 +6330,44 @@ else
 #endregion /*Voice Jump 2nd 4 END*/
 
 #region /*Voice Jump 2nd 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_5.ogg"))
 {
-	voice_jump_2nd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_5.ogg");
+	voice_jump_2nd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd5.ogg"))
 {
-	voice_jump_2nd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd5.ogg");
+	voice_jump_2nd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_5.ogg"))
 {
-	voice_jump_2nd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_5.ogg");
+	voice_jump_2nd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd5.ogg"))
 {
-	voice_jump_2nd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd5.ogg");
+	voice_jump_2nd_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_5.ogg"))
 {
-	voice_jump_2nd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_5.ogg");
+	voice_jump_2nd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd5.ogg"))
 {
-	voice_jump_2nd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd5.ogg");
+	voice_jump_2nd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_5.ogg"))
 {
-	voice_jump_2nd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_5.ogg");
+	voice_jump_2nd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd5.ogg"))
 {
-	voice_jump_2nd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd5.ogg");
+	voice_jump_2nd_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd5.ogg");
 }
 else
 {
@@ -6376,44 +6376,44 @@ else
 #endregion /*Voice Jump 2nd 5 END*/
 
 #region /*Voice Jump 2nd 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_6.ogg"))
 {
-	voice_jump_2nd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_6.ogg");
+	voice_jump_2nd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd6.ogg"))
 {
-	voice_jump_2nd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd6.ogg");
+	voice_jump_2nd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_6.ogg"))
 {
-	voice_jump_2nd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_6.ogg");
+	voice_jump_2nd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd6.ogg"))
 {
-	voice_jump_2nd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd6.ogg");
+	voice_jump_2nd_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_6.ogg"))
 {
-	voice_jump_2nd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_6.ogg");
+	voice_jump_2nd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd6.ogg"))
 {
-	voice_jump_2nd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd6.ogg");
+	voice_jump_2nd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_6.ogg"))
 {
-	voice_jump_2nd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_6.ogg");
+	voice_jump_2nd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd6.ogg"))
 {
-	voice_jump_2nd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd6.ogg");
+	voice_jump_2nd_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd6.ogg");
 }
 else
 {
@@ -6422,44 +6422,44 @@ else
 #endregion /*Voice Jump 2nd 6 END*/
 
 #region /*Voice Jump 2nd 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_7.ogg"))
 {
-	voice_jump_2nd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_7.ogg");
+	voice_jump_2nd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd7.ogg"))
 {
-	voice_jump_2nd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd7.ogg");
+	voice_jump_2nd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_7.ogg"))
 {
-	voice_jump_2nd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_7.ogg");
+	voice_jump_2nd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd7.ogg"))
 {
-	voice_jump_2nd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd7.ogg");
+	voice_jump_2nd_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_7.ogg"))
 {
-	voice_jump_2nd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_7.ogg");
+	voice_jump_2nd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd7.ogg"))
 {
-	voice_jump_2nd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd7.ogg");
+	voice_jump_2nd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_7.ogg"))
 {
-	voice_jump_2nd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_7.ogg");
+	voice_jump_2nd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd7.ogg"))
 {
-	voice_jump_2nd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd7.ogg");
+	voice_jump_2nd_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd7.ogg");
 }
 else
 {
@@ -6468,44 +6468,44 @@ else
 #endregion /*Voice Jump 2nd 7 END*/
 
 #region /*Voice Jump 2nd 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_8.ogg"))
 {
-	voice_jump_2nd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_8.ogg");
+	voice_jump_2nd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd8.ogg"))
 {
-	voice_jump_2nd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd8.ogg");
+	voice_jump_2nd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_8.ogg"))
 {
-	voice_jump_2nd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_8.ogg");
+	voice_jump_2nd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd8.ogg"))
 {
-	voice_jump_2nd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd8.ogg");
+	voice_jump_2nd_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_8.ogg"))
 {
-	voice_jump_2nd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_8.ogg");
+	voice_jump_2nd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd8.ogg"))
 {
-	voice_jump_2nd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd8.ogg");
+	voice_jump_2nd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_8.ogg"))
 {
-	voice_jump_2nd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_8.ogg");
+	voice_jump_2nd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd8.ogg"))
 {
-	voice_jump_2nd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd8.ogg");
+	voice_jump_2nd_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd8.ogg");
 }
 else
 {
@@ -6514,44 +6514,44 @@ else
 #endregion /*Voice Jump 2nd 8 END*/
 
 #region /*Voice Jump 2nd 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_9.ogg"))
 {
-	voice_jump_2nd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_9.ogg");
+	voice_jump_2nd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd9.ogg"))
 {
-	voice_jump_2nd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd9.ogg");
+	voice_jump_2nd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_9.ogg"))
 {
-	voice_jump_2nd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_9.ogg");
+	voice_jump_2nd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd9.ogg"))
 {
-	voice_jump_2nd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd9.ogg");
+	voice_jump_2nd_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_9.ogg"))
 {
-	voice_jump_2nd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_9.ogg");
+	voice_jump_2nd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd9.ogg"))
 {
-	voice_jump_2nd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd9.ogg");
+	voice_jump_2nd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_9.ogg"))
 {
-	voice_jump_2nd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_9.ogg");
+	voice_jump_2nd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd9.ogg"))
 {
-	voice_jump_2nd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd9.ogg");
+	voice_jump_2nd_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd9.ogg");
 }
 else
 {
@@ -6560,44 +6560,44 @@ else
 #endregion /*Voice Jump 2nd 9 END*/
 
 #region /*Voice Jump 2nd 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_10.ogg"))
 {
-	voice_jump_2nd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd_10.ogg");
+	voice_jump_2nd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd10.ogg"))
 {
-	voice_jump_2nd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump_2nd10.ogg");
+	voice_jump_2nd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_10.ogg"))
 {
-	voice_jump_2nd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd_10.ogg");
+	voice_jump_2nd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/jump2nd10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd10.ogg"))
 {
-	voice_jump_2nd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/jump2nd10.ogg");
+	voice_jump_2nd_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_10.ogg"))
 {
-	voice_jump_2nd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd_10.ogg");
+	voice_jump_2nd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd10.ogg"))
 {
-	voice_jump_2nd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump_2nd10.ogg");
+	voice_jump_2nd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump_2nd10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_10.ogg"))
 {
-	voice_jump_2nd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd_10.ogg");
+	voice_jump_2nd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd10.ogg"))
 {
-	voice_jump_2nd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/jump2nd10.ogg");
+	voice_jump_2nd_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/jump2nd10.ogg");
 }
 else
 {
@@ -6610,64 +6610,64 @@ else
 #region /*Voice Get Invincibility*/
 
 #region /*Voice Get Invincibility 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility.ogg");
+	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_1.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_1.ogg");
+	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility1.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility1.ogg");
+	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star.ogg");
+	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_1.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_1.ogg");
+	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star.ogg");
+	voice_get_invincibility_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility.ogg");
+	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_1.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_1.ogg");
+	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility1.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility1.ogg");
+	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star.ogg");
+	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_1.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_1.ogg");
+	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star.ogg"))
 {
-	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star.ogg");
+	voice_get_invincibility_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star.ogg");
 }
 else
 {
@@ -6676,44 +6676,44 @@ else
 #endregion /*Voice Get Invincibility 1 END*/
 
 #region /*Voice Get Invincibility 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_2.ogg"))
 {
-	voice_get_invincibility_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_2.ogg");
+	voice_get_invincibility_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility2.ogg"))
 {
-	voice_get_invincibility_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility2.ogg");
+	voice_get_invincibility_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_2.ogg"))
 {
-	voice_get_invincibility_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_2.ogg");
+	voice_get_invincibility_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star2.ogg"))
 {
-	voice_get_invincibility_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star2.ogg");
+	voice_get_invincibility_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_2.ogg"))
 {
-	voice_get_invincibility_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_2.ogg");
+	voice_get_invincibility_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility2.ogg"))
 {
-	voice_get_invincibility_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility2.ogg");
+	voice_get_invincibility_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_2.ogg"))
 {
-	voice_get_invincibility_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_2.ogg");
+	voice_get_invincibility_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star2.ogg"))
 {
-	voice_get_invincibility_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star2.ogg");
+	voice_get_invincibility_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star2.ogg");
 }
 else
 {
@@ -6722,44 +6722,44 @@ else
 #endregion /*Voice Get Invincibility 2 END*/
 
 #region /*Voice Get Invincibility 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_3.ogg"))
 {
-	voice_get_invincibility_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_3.ogg");
+	voice_get_invincibility_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility3.ogg"))
 {
-	voice_get_invincibility_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility3.ogg");
+	voice_get_invincibility_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_3.ogg"))
 {
-	voice_get_invincibility_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_3.ogg");
+	voice_get_invincibility_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star3.ogg"))
 {
-	voice_get_invincibility_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star3.ogg");
+	voice_get_invincibility_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_3.ogg"))
 {
-	voice_get_invincibility_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_3.ogg");
+	voice_get_invincibility_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility3.ogg"))
 {
-	voice_get_invincibility_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility3.ogg");
+	voice_get_invincibility_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_3.ogg"))
 {
-	voice_get_invincibility_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_3.ogg");
+	voice_get_invincibility_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star3.ogg"))
 {
-	voice_get_invincibility_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star3.ogg");
+	voice_get_invincibility_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star3.ogg");
 }
 else
 {
@@ -6768,44 +6768,44 @@ else
 #endregion /*Voice Get Invincibility 3 END*/
 
 #region /*Voice Get Invincibility 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_4.ogg"))
 {
-	voice_get_invincibility_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_4.ogg");
+	voice_get_invincibility_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility4.ogg"))
 {
-	voice_get_invincibility_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility4.ogg");
+	voice_get_invincibility_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_4.ogg"))
 {
-	voice_get_invincibility_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_4.ogg");
+	voice_get_invincibility_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star4.ogg"))
 {
-	voice_get_invincibility_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star4.ogg");
+	voice_get_invincibility_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_4.ogg"))
 {
-	voice_get_invincibility_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_4.ogg");
+	voice_get_invincibility_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility4.ogg"))
 {
-	voice_get_invincibility_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility4.ogg");
+	voice_get_invincibility_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_4.ogg"))
 {
-	voice_get_invincibility_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_4.ogg");
+	voice_get_invincibility_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star4.ogg"))
 {
-	voice_get_invincibility_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star4.ogg");
+	voice_get_invincibility_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star4.ogg");
 }
 else
 {
@@ -6814,44 +6814,44 @@ else
 #endregion /*Voice Get Invincibility 4 END*/
 
 #region /*Voice Get Invincibility 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_5.ogg"))
 {
-	voice_get_invincibility_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_5.ogg");
+	voice_get_invincibility_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility5.ogg"))
 {
-	voice_get_invincibility_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility5.ogg");
+	voice_get_invincibility_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_5.ogg"))
 {
-	voice_get_invincibility_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_5.ogg");
+	voice_get_invincibility_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star5.ogg"))
 {
-	voice_get_invincibility_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star5.ogg");
+	voice_get_invincibility_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_5.ogg"))
 {
-	voice_get_invincibility_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_5.ogg");
+	voice_get_invincibility_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility5.ogg"))
 {
-	voice_get_invincibility_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility5.ogg");
+	voice_get_invincibility_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_5.ogg"))
 {
-	voice_get_invincibility_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_5.ogg");
+	voice_get_invincibility_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star5.ogg"))
 {
-	voice_get_invincibility_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star5.ogg");
+	voice_get_invincibility_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star5.ogg");
 }
 else
 {
@@ -6860,44 +6860,44 @@ else
 #endregion /*Voice Get Invincibility 5 END*/
 
 #region /*Voice Get Invincibility 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_6.ogg"))
 {
-	voice_get_invincibility_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_6.ogg");
+	voice_get_invincibility_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility6.ogg"))
 {
-	voice_get_invincibility_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility6.ogg");
+	voice_get_invincibility_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_6.ogg"))
 {
-	voice_get_invincibility_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_6.ogg");
+	voice_get_invincibility_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star6.ogg"))
 {
-	voice_get_invincibility_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star6.ogg");
+	voice_get_invincibility_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_6.ogg"))
 {
-	voice_get_invincibility_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_6.ogg");
+	voice_get_invincibility_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility6.ogg"))
 {
-	voice_get_invincibility_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility6.ogg");
+	voice_get_invincibility_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_6.ogg"))
 {
-	voice_get_invincibility_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_6.ogg");
+	voice_get_invincibility_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star6.ogg"))
 {
-	voice_get_invincibility_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star6.ogg");
+	voice_get_invincibility_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star6.ogg");
 }
 else
 {
@@ -6906,44 +6906,44 @@ else
 #endregion /*Voice Get Invincibility 6 END*/
 
 #region /*Voice Get Invincibility 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_7.ogg"))
 {
-	voice_get_invincibility_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_7.ogg");
+	voice_get_invincibility_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility7.ogg"))
 {
-	voice_get_invincibility_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility7.ogg");
+	voice_get_invincibility_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_7.ogg"))
 {
-	voice_get_invincibility_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_7.ogg");
+	voice_get_invincibility_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star7.ogg"))
 {
-	voice_get_invincibility_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star7.ogg");
+	voice_get_invincibility_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_7.ogg"))
 {
-	voice_get_invincibility_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_7.ogg");
+	voice_get_invincibility_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility7.ogg"))
 {
-	voice_get_invincibility_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility7.ogg");
+	voice_get_invincibility_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_7.ogg"))
 {
-	voice_get_invincibility_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_7.ogg");
+	voice_get_invincibility_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star7.ogg"))
 {
-	voice_get_invincibility_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star7.ogg");
+	voice_get_invincibility_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star7.ogg");
 }
 else
 {
@@ -6952,44 +6952,44 @@ else
 #endregion /*Voice Get Invincibility 7 END*/
 
 #region /*Voice Get Invincibility 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_8.ogg"))
 {
-	voice_get_invincibility_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_8.ogg");
+	voice_get_invincibility_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility8.ogg"))
 {
-	voice_get_invincibility_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility8.ogg");
+	voice_get_invincibility_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_8.ogg"))
 {
-	voice_get_invincibility_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_8.ogg");
+	voice_get_invincibility_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star8.ogg"))
 {
-	voice_get_invincibility_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star8.ogg");
+	voice_get_invincibility_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_8.ogg"))
 {
-	voice_get_invincibility_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_8.ogg");
+	voice_get_invincibility_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility8.ogg"))
 {
-	voice_get_invincibility_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility8.ogg");
+	voice_get_invincibility_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_8.ogg"))
 {
-	voice_get_invincibility_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_8.ogg");
+	voice_get_invincibility_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star8.ogg"))
 {
-	voice_get_invincibility_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star8.ogg");
+	voice_get_invincibility_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star8.ogg");
 }
 else
 {
@@ -6998,44 +6998,44 @@ else
 #endregion /*Voice Get Invincibility 8 END*/
 
 #region /*Voice Get Invincibility 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_9.ogg"))
 {
-	voice_get_invincibility_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_9.ogg");
+	voice_get_invincibility_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility9.ogg"))
 {
-	voice_get_invincibility_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility9.ogg");
+	voice_get_invincibility_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_9.ogg"))
 {
-	voice_get_invincibility_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_9.ogg");
+	voice_get_invincibility_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star9.ogg"))
 {
-	voice_get_invincibility_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star9.ogg");
+	voice_get_invincibility_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_9.ogg"))
 {
-	voice_get_invincibility_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_9.ogg");
+	voice_get_invincibility_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility9.ogg"))
 {
-	voice_get_invincibility_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility9.ogg");
+	voice_get_invincibility_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_9.ogg"))
 {
-	voice_get_invincibility_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_9.ogg");
+	voice_get_invincibility_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star9.ogg"))
 {
-	voice_get_invincibility_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star9.ogg");
+	voice_get_invincibility_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star9.ogg");
 }
 else
 {
@@ -7044,44 +7044,44 @@ else
 #endregion /*Voice Get Invincibility 9 END*/
 
 #region /*Voice Get Invincibility 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_10.ogg"))
 {
-	voice_get_invincibility_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility_10.ogg");
+	voice_get_invincibility_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility10.ogg"))
 {
-	voice_get_invincibility_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_invincibility10.ogg");
+	voice_get_invincibility_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_10.ogg"))
 {
-	voice_get_invincibility_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star_10.ogg");
+	voice_get_invincibility_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/get_star10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star10.ogg"))
 {
-	voice_get_invincibility_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/get_star10.ogg");
+	voice_get_invincibility_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_10.ogg"))
 {
-	voice_get_invincibility_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility_10.ogg");
+	voice_get_invincibility_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility10.ogg"))
 {
-	voice_get_invincibility_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_invincibility10.ogg");
+	voice_get_invincibility_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_invincibility10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_10.ogg"))
 {
-	voice_get_invincibility_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star_10.ogg");
+	voice_get_invincibility_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star10.ogg"))
 {
-	voice_get_invincibility_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/get_star10.ogg");
+	voice_get_invincibility_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/get_star10.ogg");
 }
 else
 {
@@ -7094,34 +7094,34 @@ else
 #region /*Voice Enter Goal*/
 
 #region /*Voice Enter Goal 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal.ogg"))
 {
-	voice_enter_goal_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal.ogg");
+	voice_enter_goal_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_1.ogg"))
 {
-	voice_enter_goal_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_1.ogg");
+	voice_enter_goal_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal1.ogg"))
 {
-	voice_enter_goal_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal1.ogg");
+	voice_enter_goal_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal.ogg"))
 {
-	voice_enter_goal_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal.ogg");
+	voice_enter_goal_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_1.ogg"))
 {
-	voice_enter_goal_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_1.ogg");
+	voice_enter_goal_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal1.ogg"))
 {
-	voice_enter_goal_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal1.ogg");
+	voice_enter_goal_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal1.ogg");
 }
 else
 {
@@ -7130,24 +7130,24 @@ else
 #endregion /*Voice Enter Goal 1 END*/
 
 #region /*Voice Enter Goal 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_2.ogg"))
 {
-	voice_enter_goal_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_2.ogg");
+	voice_enter_goal_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal2.ogg"))
 {
-	voice_enter_goal_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal2.ogg");
+	voice_enter_goal_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_2.ogg"))
 {
-	voice_enter_goal_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_2.ogg");
+	voice_enter_goal_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal2.ogg"))
 {
-	voice_enter_goal_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal2.ogg");
+	voice_enter_goal_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal2.ogg");
 }
 else
 {
@@ -7156,24 +7156,24 @@ else
 #endregion /*Voice Enter Goal 2 END*/
 
 #region /*Voice Enter Goal 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_3.ogg"))
 {
-	voice_enter_goal_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_3.ogg");
+	voice_enter_goal_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal3.ogg"))
 {
-	voice_enter_goal_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal3.ogg");
+	voice_enter_goal_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_3.ogg"))
 {
-	voice_enter_goal_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_3.ogg");
+	voice_enter_goal_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal3.ogg"))
 {
-	voice_enter_goal_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal3.ogg");
+	voice_enter_goal_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal3.ogg");
 }
 else
 {
@@ -7182,24 +7182,24 @@ else
 #endregion /*Voice Enter Goal 3 END*/
 
 #region /*Voice Enter Goal 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_4.ogg"))
 {
-	voice_enter_goal_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_4.ogg");
+	voice_enter_goal_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal4.ogg"))
 {
-	voice_enter_goal_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal4.ogg");
+	voice_enter_goal_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_4.ogg"))
 {
-	voice_enter_goal_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_4.ogg");
+	voice_enter_goal_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal4.ogg"))
 {
-	voice_enter_goal_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal4.ogg");
+	voice_enter_goal_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal4.ogg");
 }
 else
 {
@@ -7208,24 +7208,24 @@ else
 #endregion /*Voice Enter Goal 4 END*/
 
 #region /*Voice Enter Goal 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_5.ogg"))
 {
-	voice_enter_goal_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_5.ogg");
+	voice_enter_goal_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal5.ogg"))
 {
-	voice_enter_goal_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal5.ogg");
+	voice_enter_goal_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_5.ogg"))
 {
-	voice_enter_goal_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_5.ogg");
+	voice_enter_goal_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal5.ogg"))
 {
-	voice_enter_goal_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal5.ogg");
+	voice_enter_goal_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal5.ogg");
 }
 else
 {
@@ -7234,24 +7234,24 @@ else
 #endregion /*Voice Enter Goal 5 END*/
 
 #region /*Voice Enter Goal 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_6.ogg"))
 {
-	voice_enter_goal_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_6.ogg");
+	voice_enter_goal_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal6.ogg"))
 {
-	voice_enter_goal_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal6.ogg");
+	voice_enter_goal_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_6.ogg"))
 {
-	voice_enter_goal_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_6.ogg");
+	voice_enter_goal_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal6.ogg"))
 {
-	voice_enter_goal_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal6.ogg");
+	voice_enter_goal_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal6.ogg");
 }
 else
 {
@@ -7260,24 +7260,24 @@ else
 #endregion /*Voice Enter Goal 6 END*/
 
 #region /*Voice Enter Goal 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_7.ogg"))
 {
-	voice_enter_goal_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_7.ogg");
+	voice_enter_goal_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal7.ogg"))
 {
-	voice_enter_goal_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal7.ogg");
+	voice_enter_goal_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_7.ogg"))
 {
-	voice_enter_goal_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_7.ogg");
+	voice_enter_goal_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal7.ogg"))
 {
-	voice_enter_goal_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal7.ogg");
+	voice_enter_goal_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal7.ogg");
 }
 else
 {
@@ -7286,24 +7286,24 @@ else
 #endregion /*Voice Enter Goal 7 END*/
 
 #region /*Voice Enter Goal 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_8.ogg"))
 {
-	voice_enter_goal_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_8.ogg");
+	voice_enter_goal_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal8.ogg"))
 {
-	voice_enter_goal_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal8.ogg");
+	voice_enter_goal_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_8.ogg"))
 {
-	voice_enter_goal_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_8.ogg");
+	voice_enter_goal_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal8.ogg"))
 {
-	voice_enter_goal_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal8.ogg");
+	voice_enter_goal_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal8.ogg");
 }
 else
 {
@@ -7312,24 +7312,24 @@ else
 #endregion /*Voice Enter Goal 8 END*/
 
 #region /*Voice Enter Goal 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_9.ogg"))
 {
-	voice_enter_goal_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_9.ogg");
+	voice_enter_goal_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal9.ogg"))
 {
-	voice_enter_goal_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal9.ogg");
+	voice_enter_goal_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_9.ogg"))
 {
-	voice_enter_goal_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_9.ogg");
+	voice_enter_goal_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal9.ogg"))
 {
-	voice_enter_goal_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal9.ogg");
+	voice_enter_goal_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal9.ogg");
 }
 else
 {
@@ -7338,24 +7338,24 @@ else
 #endregion /*Voice Enter Goal 9 END*/
 
 #region /*Voice Enter Goal 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_10.ogg"))
 {
-	voice_enter_goal_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal_10.ogg");
+	voice_enter_goal_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/enter_goal10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal10.ogg"))
 {
-	voice_enter_goal_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/enter_goal10.ogg");
+	voice_enter_goal_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_10.ogg"))
 {
-	voice_enter_goal_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal_10.ogg");
+	voice_enter_goal_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal10.ogg"))
 {
-	voice_enter_goal_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/enter_goal10.ogg");
+	voice_enter_goal_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/enter_goal10.ogg");
 }
 else
 {
@@ -7368,34 +7368,34 @@ else
 #region /*Voice Dive*/
 
 #region /*Voice Dive 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive.ogg"))
 {
-	voice_dive_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive.ogg");
+	voice_dive_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_1.ogg"))
 {
-	voice_dive_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_1.ogg");
+	voice_dive_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive1.ogg"))
 {
-	voice_dive_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive1.ogg");
+	voice_dive_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive.ogg"))
 {
-	voice_dive_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive.ogg");
+	voice_dive_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_1.ogg"))
 {
-	voice_dive_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_1.ogg");
+	voice_dive_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive1.ogg"))
 {
-	voice_dive_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive1.ogg");
+	voice_dive_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive1.ogg");
 }
 else
 {
@@ -7404,24 +7404,24 @@ else
 #endregion /*Voice Dive 1 END*/
 
 #region /*Voice Dive 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_2.ogg"))
 {
-	voice_dive_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_2.ogg");
+	voice_dive_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive2.ogg"))
 {
-	voice_dive_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive2.ogg");
+	voice_dive_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_2.ogg"))
 {
-	voice_dive_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_2.ogg");
+	voice_dive_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive2.ogg"))
 {
-	voice_dive_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive2.ogg");
+	voice_dive_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive2.ogg");
 }
 else
 {
@@ -7430,24 +7430,24 @@ else
 #endregion /*Voice Dive 2 END*/
 
 #region /*Voice Dive 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_3.ogg"))
 {
-	voice_dive_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_3.ogg");
+	voice_dive_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive3.ogg"))
 {
-	voice_dive_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive3.ogg");
+	voice_dive_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_3.ogg"))
 {
-	voice_dive_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_3.ogg");
+	voice_dive_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive3.ogg"))
 {
-	voice_dive_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive3.ogg");
+	voice_dive_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive3.ogg");
 }
 else
 {
@@ -7456,24 +7456,24 @@ else
 #endregion /*Voice Dive 3 END*/
 
 #region /*Voice Dive 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_4.ogg"))
 {
-	voice_dive_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_4.ogg");
+	voice_dive_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive4.ogg"))
 {
-	voice_dive_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive4.ogg");
+	voice_dive_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_4.ogg"))
 {
-	voice_dive_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_4.ogg");
+	voice_dive_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive4.ogg"))
 {
-	voice_dive_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive4.ogg");
+	voice_dive_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive4.ogg");
 }
 else
 {
@@ -7482,24 +7482,24 @@ else
 #endregion /*Voice Dive 4 END*/
 
 #region /*Voice Dive 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_5.ogg"))
 {
-	voice_dive_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_5.ogg");
+	voice_dive_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive5.ogg"))
 {
-	voice_dive_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive5.ogg");
+	voice_dive_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_5.ogg"))
 {
-	voice_dive_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_5.ogg");
+	voice_dive_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive5.ogg"))
 {
-	voice_dive_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive5.ogg");
+	voice_dive_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive5.ogg");
 }
 else
 {
@@ -7508,24 +7508,24 @@ else
 #endregion /*Voice Dive 5 END*/
 
 #region /*Voice Dive 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_6.ogg"))
 {
-	voice_dive_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_6.ogg");
+	voice_dive_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive6.ogg"))
 {
-	voice_dive_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive6.ogg");
+	voice_dive_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_6.ogg"))
 {
-	voice_dive_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_6.ogg");
+	voice_dive_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive6.ogg"))
 {
-	voice_dive_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive6.ogg");
+	voice_dive_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive6.ogg");
 }
 else
 {
@@ -7534,24 +7534,24 @@ else
 #endregion /*Voice Dive 6 END*/
 
 #region /*Voice Dive 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_7.ogg"))
 {
-	voice_dive_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_7.ogg");
+	voice_dive_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive7.ogg"))
 {
-	voice_dive_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive7.ogg");
+	voice_dive_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_7.ogg"))
 {
-	voice_dive_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_7.ogg");
+	voice_dive_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive7.ogg"))
 {
-	voice_dive_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive7.ogg");
+	voice_dive_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive7.ogg");
 }
 else
 {
@@ -7560,24 +7560,24 @@ else
 #endregion /*Voice Dive 7 END*/
 
 #region /*Voice Dive 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_8.ogg"))
 {
-	voice_dive_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_8.ogg");
+	voice_dive_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive8.ogg"))
 {
-	voice_dive_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive8.ogg");
+	voice_dive_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_8.ogg"))
 {
-	voice_dive_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_8.ogg");
+	voice_dive_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive8.ogg"))
 {
-	voice_dive_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive8.ogg");
+	voice_dive_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive8.ogg");
 }
 else
 {
@@ -7586,24 +7586,24 @@ else
 #endregion /*Voice Dive 8 END*/
 
 #region /*Voice Dive 9*/
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/dive_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_9.ogg"))
 {
-	voice_dive_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/dive_9.ogg");
+	voice_dive_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/dive9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive9.ogg"))
 {
-	voice_dive_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/dive9.ogg");
+	voice_dive_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_9.ogg"))
 {
-	voice_dive_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_9.ogg");
+	voice_dive_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive9.ogg"))
 {
-	voice_dive_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive9.ogg");
+	voice_dive_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive9.ogg");
 }
 else
 {
@@ -7612,24 +7612,24 @@ else
 #endregion /*Voice Dive 9 END*/
 
 #region /*Voice Dive 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_10.ogg"))
 {
-	voice_dive_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_10.ogg");
+	voice_dive_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive10.ogg"))
 {
-	voice_dive_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive10.ogg");
+	voice_dive_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_10.ogg"))
 {
-	voice_dive_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_10.ogg");
+	voice_dive_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive10.ogg"))
 {
-	voice_dive_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive10.ogg");
+	voice_dive_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive10.ogg");
 }
 else
 {
@@ -7638,24 +7638,24 @@ else
 #endregion /*Voice Dive 10 END*/
 
 #region /*Voice Dive 11*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_11.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_11.ogg"))
 {
-	voice_dive_11 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_11.ogg");
+	voice_dive_11 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_11.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive11.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive11.ogg"))
 {
-	voice_dive_11 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive11.ogg");
+	voice_dive_11 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive11.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_11.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_11.ogg"))
 {
-	voice_dive_11 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_11.ogg");
+	voice_dive_11 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_11.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive11.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive11.ogg"))
 {
-	voice_dive_11 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive11.ogg");
+	voice_dive_11 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive11.ogg");
 }
 else
 {
@@ -7664,24 +7664,24 @@ else
 #endregion /*Voice Dive 11 END*/
 
 #region /*Voice Dive 12*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_12.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_12.ogg"))
 {
-	voice_dive_12 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_12.ogg");
+	voice_dive_12 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_12.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive12.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive12.ogg"))
 {
-	voice_dive_12 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive12.ogg");
+	voice_dive_12 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive12.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_12.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_12.ogg"))
 {
-	voice_dive_12 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_12.ogg");
+	voice_dive_12 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_12.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive12.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive12.ogg"))
 {
-	voice_dive_12 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive12.ogg");
+	voice_dive_12 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive12.ogg");
 }
 else
 {
@@ -7690,24 +7690,24 @@ else
 #endregion /*Voice Dive 12 END*/
 
 #region /*Voice Dive 13*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_13.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_13.ogg"))
 {
-	voice_dive_13 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_13.ogg");
+	voice_dive_13 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_13.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive13.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive13.ogg"))
 {
-	voice_dive_13 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive13.ogg");
+	voice_dive_13 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive13.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_13.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_13.ogg"))
 {
-	voice_dive_13 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_13.ogg");
+	voice_dive_13 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_13.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive13.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive13.ogg"))
 {
-	voice_dive_13 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive13.ogg");
+	voice_dive_13 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive13.ogg");
 }
 else
 {
@@ -7716,24 +7716,24 @@ else
 #endregion /*Voice Dive 13 END*/
 
 #region /*Voice Dive 14*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_14.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_14.ogg"))
 {
-	voice_dive_14 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_14.ogg");
+	voice_dive_14 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_14.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive14.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive14.ogg"))
 {
-	voice_dive_14 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive14.ogg");
+	voice_dive_14 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive14.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_14.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_14.ogg"))
 {
-	voice_dive_14 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_14.ogg");
+	voice_dive_14 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_14.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive14.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive14.ogg"))
 {
-	voice_dive_14 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive14.ogg");
+	voice_dive_14 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive14.ogg");
 }
 else
 {
@@ -7742,24 +7742,24 @@ else
 #endregion /*Voice Dive 14 END*/
 
 #region /*Voice Dive 15*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_15.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_15.ogg"))
 {
-	voice_dive_15 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_15.ogg");
+	voice_dive_15 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_15.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive15.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive15.ogg"))
 {
-	voice_dive_15 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive15.ogg");
+	voice_dive_15 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive15.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_15.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_15.ogg"))
 {
-	voice_dive_15 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_15.ogg");
+	voice_dive_15 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_15.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive15.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive15.ogg"))
 {
-	voice_dive_15 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive15.ogg");
+	voice_dive_15 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive15.ogg");
 }
 else
 {
@@ -7768,24 +7768,24 @@ else
 #endregion /*Voice Dive 15 END*/
 
 #region /*Voice Dive 16*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_16.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_16.ogg"))
 {
-	voice_dive_16 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_16.ogg");
+	voice_dive_16 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_16.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive16.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive16.ogg"))
 {
-	voice_dive_16 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive16.ogg");
+	voice_dive_16 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive16.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_16.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_16.ogg"))
 {
-	voice_dive_16 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_16.ogg");
+	voice_dive_16 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_16.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive16.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive16.ogg"))
 {
-	voice_dive_16 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive16.ogg");
+	voice_dive_16 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive16.ogg");
 }
 else
 {
@@ -7794,24 +7794,24 @@ else
 #endregion /*Voice Dive 16 END*/
 
 #region /*Voice Dive 17*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_17.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_17.ogg"))
 {
-	voice_dive_17 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_17.ogg");
+	voice_dive_17 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_17.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive17.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive17.ogg"))
 {
-	voice_dive_17 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive17.ogg");
+	voice_dive_17 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive17.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_17.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_17.ogg"))
 {
-	voice_dive_17 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_17.ogg");
+	voice_dive_17 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_17.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive17.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive17.ogg"))
 {
-	voice_dive_17 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive17.ogg");
+	voice_dive_17 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive17.ogg");
 }
 else
 {
@@ -7820,24 +7820,24 @@ else
 #endregion /*Voice Dive 17 END*/
 
 #region /*Voice Dive 18*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_18.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_18.ogg"))
 {
-	voice_dive_18 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_18.ogg");
+	voice_dive_18 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_18.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive18.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive18.ogg"))
 {
-	voice_dive_18 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive18.ogg");
+	voice_dive_18 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive18.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_18.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_18.ogg"))
 {
-	voice_dive_18 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_18.ogg");
+	voice_dive_18 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_18.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive18.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive18.ogg"))
 {
-	voice_dive_18 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive18.ogg");
+	voice_dive_18 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive18.ogg");
 }
 else
 {
@@ -7846,24 +7846,24 @@ else
 #endregion /*Voice Dive 18 END*/
 
 #region /*Voice Dive 19*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_19.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_19.ogg"))
 {
-	voice_dive_19 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_19.ogg");
+	voice_dive_19 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_19.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive19.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive19.ogg"))
 {
-	voice_dive_19 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive19.ogg");
+	voice_dive_19 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive19.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_19.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_19.ogg"))
 {
-	voice_dive_19 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_19.ogg");
+	voice_dive_19 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_19.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive19.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive19.ogg"))
 {
-	voice_dive_19 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive19.ogg");
+	voice_dive_19 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive19.ogg");
 }
 else
 {
@@ -7872,24 +7872,24 @@ else
 #endregion /*Voice Dive 19 END*/
 
 #region /*Voice Dive 20*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive_20.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_20.ogg"))
 {
-	voice_dive_20 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive_20.ogg");
+	voice_dive_20 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_20.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/dive20.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive20.ogg"))
 {
-	voice_dive_20 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/dive20.ogg");
+	voice_dive_20 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive20.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_20.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_20.ogg"))
 {
-	voice_dive_20 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive_20.ogg");
+	voice_dive_20 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive_20.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive20.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive20.ogg"))
 {
-	voice_dive_20 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/dive20.ogg");
+	voice_dive_20 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/dive20.ogg");
 }
 else
 {
@@ -7902,34 +7902,34 @@ else
 #region /*Voice Damage*/
 
 #region /*Voice Damage 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage.ogg"))
 {
-	voice_damage_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage.ogg");
+	voice_damage_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_1.ogg"))
 {
-	voice_damage_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_1.ogg");
+	voice_damage_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage1.ogg"))
 {
-	voice_damage_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage1.ogg");
+	voice_damage_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage.ogg"))
 {
-	voice_damage_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage.ogg");
+	voice_damage_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_1.ogg"))
 {
-	voice_damage_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_1.ogg");
+	voice_damage_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage1.ogg"))
 {
-	voice_damage_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage1.ogg");
+	voice_damage_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage1.ogg");
 }
 else
 {
@@ -7938,24 +7938,24 @@ else
 #endregion /*Voice Damage 1 END*/
 
 #region /*Voice Damage 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_2.ogg"))
 {
-	voice_damage_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_2.ogg");
+	voice_damage_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage2.ogg"))
 {
-	voice_damage_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage2.ogg");
+	voice_damage_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_2.ogg"))
 {
-	voice_damage_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_2.ogg");
+	voice_damage_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage2.ogg"))
 {
-	voice_damage_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage2.ogg");
+	voice_damage_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage2.ogg");
 }
 else
 {
@@ -7964,24 +7964,24 @@ else
 #endregion /*Voice Damage 2 END*/
 
 #region /*Voice Damage 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_3.ogg"))
 {
-	voice_damage_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_3.ogg");
+	voice_damage_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage3.ogg"))
 {
-	voice_damage_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage3.ogg");
+	voice_damage_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_3.ogg"))
 {
-	voice_damage_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_3.ogg");
+	voice_damage_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage3.ogg"))
 {
-	voice_damage_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage3.ogg");
+	voice_damage_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage3.ogg");
 }
 else
 {
@@ -7990,24 +7990,24 @@ else
 #endregion /*Voice Damage 3 END*/
 
 #region /*Voice Damage 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_4.ogg"))
 {
-	voice_damage_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_4.ogg");
+	voice_damage_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage4.ogg"))
 {
-	voice_damage_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage4.ogg");
+	voice_damage_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_4.ogg"))
 {
-	voice_damage_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_4.ogg");
+	voice_damage_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage4.ogg"))
 {
-	voice_damage_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage4.ogg");
+	voice_damage_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage4.ogg");
 }
 else
 {
@@ -8016,24 +8016,24 @@ else
 #endregion /*Voice Damage 4 END*/
 
 #region /*Voice Damage 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_5.ogg"))
 {
-	voice_damage_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_5.ogg");
+	voice_damage_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage5.ogg"))
 {
-	voice_damage_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage5.ogg");
+	voice_damage_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_5.ogg"))
 {
-	voice_damage_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_5.ogg");
+	voice_damage_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage5.ogg"))
 {
-	voice_damage_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage5.ogg");
+	voice_damage_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage5.ogg");
 }
 else
 {
@@ -8042,24 +8042,24 @@ else
 #endregion /*Voice Damage 5 END*/
 
 #region /*Voice Damage 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_6.ogg"))
 {
-	voice_damage_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_6.ogg");
+	voice_damage_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage6.ogg"))
 {
-	voice_damage_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage6.ogg");
+	voice_damage_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_6.ogg"))
 {
-	voice_damage_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_6.ogg");
+	voice_damage_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage6.ogg"))
 {
-	voice_damage_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage6.ogg");
+	voice_damage_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage6.ogg");
 }
 else
 {
@@ -8068,24 +8068,24 @@ else
 #endregion /*Voice Damage 6 END*/
 
 #region /*Voice Damage 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_7.ogg"))
 {
-	voice_damage_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_7.ogg");
+	voice_damage_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage7.ogg"))
 {
-	voice_damage_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage7.ogg");
+	voice_damage_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_7.ogg"))
 {
-	voice_damage_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_7.ogg");
+	voice_damage_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage7.ogg"))
 {
-	voice_damage_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage7.ogg");
+	voice_damage_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage7.ogg");
 }
 else
 {
@@ -8094,24 +8094,24 @@ else
 #endregion /*Voice Damage 7 END*/
 
 #region /*Voice Damage 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_8.ogg"))
 {
-	voice_damage_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_8.ogg");
+	voice_damage_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage8.ogg"))
 {
-	voice_damage_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage8.ogg");
+	voice_damage_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_8.ogg"))
 {
-	voice_damage_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_8.ogg");
+	voice_damage_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage8.ogg"))
 {
-	voice_damage_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage8.ogg");
+	voice_damage_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage8.ogg");
 }
 else
 {
@@ -8120,24 +8120,24 @@ else
 #endregion /*Voice Damage 8 END*/
 
 #region /*Voice Damage 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_9.ogg"))
 {
-	voice_damage_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_9.ogg");
+	voice_damage_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage9.ogg"))
 {
-	voice_damage_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage9.ogg");
+	voice_damage_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_9.ogg"))
 {
-	voice_damage_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_9.ogg");
+	voice_damage_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage9.ogg"))
 {
-	voice_damage_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage9.ogg");
+	voice_damage_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage9.ogg");
 }
 else
 {
@@ -8146,24 +8146,24 @@ else
 #endregion /*Voice Damage 9 END*/
 
 #region /*Voice Damage 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_10.ogg"))
 {
-	voice_damage_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage_10.ogg");
+	voice_damage_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/damage10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage10.ogg"))
 {
-	voice_damage_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/damage10.ogg");
+	voice_damage_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_10.ogg"))
 {
-	voice_damage_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage_10.ogg");
+	voice_damage_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage10.ogg"))
 {
-	voice_damage_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/damage10.ogg");
+	voice_damage_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/damage10.ogg");
 }
 else
 {
@@ -8176,34 +8176,34 @@ else
 #region /*Voice Burned Running*/
 
 #region /*Voice Burned Running 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running.ogg"))
 {
-	voice_burned_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running.ogg");
+	voice_burned_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_1.ogg"))
 {
-	voice_burned_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_1.ogg");
+	voice_burned_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running1.ogg"))
 {
-	voice_burned_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running1.ogg");
+	voice_burned_running_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running.ogg"))
 {
-	voice_burned_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running.ogg");
+	voice_burned_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_1.ogg"))
 {
-	voice_burned_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_1.ogg");
+	voice_burned_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running1.ogg"))
 {
-	voice_burned_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running1.ogg");
+	voice_burned_running_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running1.ogg");
 }
 else
 {
@@ -8212,24 +8212,24 @@ else
 #endregion /*Voice Burned Running 1 END*/
 
 #region /*Voice Burned Running 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_2.ogg"))
 {
-	voice_burned_running_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_2.ogg");
+	voice_burned_running_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running2.ogg"))
 {
-	voice_burned_running_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running2.ogg");
+	voice_burned_running_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_2.ogg"))
 {
-	voice_burned_running_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_2.ogg");
+	voice_burned_running_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running2.ogg"))
 {
-	voice_burned_running_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running2.ogg");
+	voice_burned_running_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running2.ogg");
 }
 else
 {
@@ -8238,24 +8238,24 @@ else
 #endregion /*Voice Burned Running 2 END*/
 
 #region /*Voice Burned Running 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_3.ogg"))
 {
-	voice_burned_running_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_3.ogg");
+	voice_burned_running_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running3.ogg"))
 {
-	voice_burned_running_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running3.ogg");
+	voice_burned_running_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_3.ogg"))
 {
-	voice_burned_running_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_3.ogg");
+	voice_burned_running_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running3.ogg"))
 {
-	voice_burned_running_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running3.ogg");
+	voice_burned_running_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running3.ogg");
 }
 else
 {
@@ -8264,24 +8264,24 @@ else
 #endregion /*Voice Burned Running 3 END*/
 
 #region /*Voice Burned Running 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_4.ogg"))
 {
-	voice_burned_running_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_4.ogg");
+	voice_burned_running_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running4.ogg"))
 {
-	voice_burned_running_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running4.ogg");
+	voice_burned_running_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_4.ogg"))
 {
-	voice_burned_running_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_4.ogg");
+	voice_burned_running_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running4.ogg"))
 {
-	voice_burned_running_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running4.ogg");
+	voice_burned_running_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running4.ogg");
 }
 else
 {
@@ -8290,24 +8290,24 @@ else
 #endregion /*Voice Burned Running 4 END*/
 
 #region /*Voice Burned Running 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_5.ogg"))
 {
-	voice_burned_running_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_5.ogg");
+	voice_burned_running_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running5.ogg"))
 {
-	voice_burned_running_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running5.ogg");
+	voice_burned_running_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_5.ogg"))
 {
-	voice_burned_running_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_5.ogg");
+	voice_burned_running_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running5.ogg"))
 {
-	voice_burned_running_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running5.ogg");
+	voice_burned_running_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running5.ogg");
 }
 else
 {
@@ -8316,24 +8316,24 @@ else
 #endregion /*Voice Burned Running 5 END*/
 
 #region /*Voice Burned Running 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_6.ogg"))
 {
-	voice_burned_running_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_6.ogg");
+	voice_burned_running_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running6.ogg"))
 {
-	voice_burned_running_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running6.ogg");
+	voice_burned_running_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_6.ogg"))
 {
-	voice_burned_running_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_6.ogg");
+	voice_burned_running_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running6.ogg"))
 {
-	voice_burned_running_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running6.ogg");
+	voice_burned_running_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running6.ogg");
 }
 else
 {
@@ -8342,24 +8342,24 @@ else
 #endregion /*Voice Burned Running 6 END*/
 
 #region /*Voice Burned Running 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_7.ogg"))
 {
-	voice_burned_running_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_7.ogg");
+	voice_burned_running_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running7.ogg"))
 {
-	voice_burned_running_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running7.ogg");
+	voice_burned_running_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_7.ogg"))
 {
-	voice_burned_running_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_7.ogg");
+	voice_burned_running_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running7.ogg"))
 {
-	voice_burned_running_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running7.ogg");
+	voice_burned_running_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running7.ogg");
 }
 else
 {
@@ -8368,24 +8368,24 @@ else
 #endregion /*Voice Burned Running 7 END*/
 
 #region /*Voice Burned Running 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_8.ogg"))
 {
-	voice_burned_running_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_8.ogg");
+	voice_burned_running_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running8.ogg"))
 {
-	voice_burned_running_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running8.ogg");
+	voice_burned_running_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_8.ogg"))
 {
-	voice_burned_running_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_8.ogg");
+	voice_burned_running_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running8.ogg"))
 {
-	voice_burned_running_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running8.ogg");
+	voice_burned_running_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running8.ogg");
 }
 else
 {
@@ -8394,24 +8394,24 @@ else
 #endregion /*Voice Burned Running 8 END*/
 
 #region /*Voice Burned Running 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_9.ogg"))
 {
-	voice_burned_running_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_9.ogg");
+	voice_burned_running_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running9.ogg"))
 {
-	voice_burned_running_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running9.ogg");
+	voice_burned_running_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_9.ogg"))
 {
-	voice_burned_running_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_9.ogg");
+	voice_burned_running_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running9.ogg"))
 {
-	voice_burned_running_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running9.ogg");
+	voice_burned_running_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running9.ogg");
 }
 else
 {
@@ -8420,24 +8420,24 @@ else
 #endregion /*Voice Burned Running 9 END*/
 
 #region /*Voice Burned Running 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_10.ogg"))
 {
-	voice_burned_running_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running_10.ogg");
+	voice_burned_running_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_running10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running10.ogg"))
 {
-	voice_burned_running_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_running10.ogg");
+	voice_burned_running_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_10.ogg"))
 {
-	voice_burned_running_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running_10.ogg");
+	voice_burned_running_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running10.ogg"))
 {
-	voice_burned_running_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_running10.ogg");
+	voice_burned_running_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_running10.ogg");
 }
 else
 {
@@ -8450,34 +8450,34 @@ else
 #region /*Voice Burned*/
 
 #region /*Voice Burned 1*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned.ogg"))
 {
-	voice_burned_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned.ogg");
+	voice_burned_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_1.ogg"))
 {
-	voice_burned_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_1.ogg");
+	voice_burned_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_1.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned1.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned1.ogg"))
 {
-	voice_burned_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned1.ogg");
+	voice_burned_1 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned.ogg"))
 {
-	voice_burned_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned.ogg");
+	voice_burned_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_1.ogg"))
 {
-	voice_burned_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_1.ogg");
+	voice_burned_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_1.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned1.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned1.ogg"))
 {
-	voice_burned_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned1.ogg");
+	voice_burned_1 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned1.ogg");
 }
 else
 {
@@ -8486,24 +8486,24 @@ else
 #endregion /*Voice Burned 1 END*/
 
 #region /*Voice Burned 2*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_2.ogg"))
 {
-	voice_burned_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_2.ogg");
+	voice_burned_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_2.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned2.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned2.ogg"))
 {
-	voice_burned_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned2.ogg");
+	voice_burned_2 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_2.ogg"))
 {
-	voice_burned_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_2.ogg");
+	voice_burned_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_2.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned2.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned2.ogg"))
 {
-	voice_burned_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned2.ogg");
+	voice_burned_2 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned2.ogg");
 }
 else
 {
@@ -8512,24 +8512,24 @@ else
 #endregion /*Voice Burned 2 END*/
 
 #region /*Voice Burned 3*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_3.ogg"))
 {
-	voice_burned_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_3.ogg");
+	voice_burned_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_3.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned3.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned3.ogg"))
 {
-	voice_burned_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned3.ogg");
+	voice_burned_3 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_3.ogg"))
 {
-	voice_burned_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_3.ogg");
+	voice_burned_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_3.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned3.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned3.ogg"))
 {
-	voice_burned_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned3.ogg");
+	voice_burned_3 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned3.ogg");
 }
 else
 {
@@ -8538,24 +8538,24 @@ else
 #endregion /*Voice Burned 3 END*/
 
 #region /*Voice Burned 4*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_4.ogg"))
 {
-	voice_burned_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_4.ogg");
+	voice_burned_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_4.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned4.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned4.ogg"))
 {
-	voice_burned_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned4.ogg");
+	voice_burned_4 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_4.ogg"))
 {
-	voice_burned_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_4.ogg");
+	voice_burned_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_4.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned4.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned4.ogg"))
 {
-	voice_burned_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned4.ogg");
+	voice_burned_4 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned4.ogg");
 }
 else
 {
@@ -8564,24 +8564,24 @@ else
 #endregion /*Voice Burned 4 END*/
 
 #region /*Voice Burned 5*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_5.ogg"))
 {
-	voice_burned_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_5.ogg");
+	voice_burned_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_5.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned5.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned5.ogg"))
 {
-	voice_burned_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned5.ogg");
+	voice_burned_5 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_5.ogg"))
 {
-	voice_burned_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_5.ogg");
+	voice_burned_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_5.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned5.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned5.ogg"))
 {
-	voice_burned_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned5.ogg");
+	voice_burned_5 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned5.ogg");
 }
 else
 {
@@ -8590,24 +8590,24 @@ else
 #endregion /*Voice Burned 5 END*/
 
 #region /*Voice Burned 6*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_6.ogg"))
 {
-	voice_burned_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_6.ogg");
+	voice_burned_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_6.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned6.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned6.ogg"))
 {
-	voice_burned_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned6.ogg");
+	voice_burned_6 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_6.ogg"))
 {
-	voice_burned_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_6.ogg");
+	voice_burned_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_6.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned6.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned6.ogg"))
 {
-	voice_burned_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned6.ogg");
+	voice_burned_6 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned6.ogg");
 }
 else
 {
@@ -8616,24 +8616,24 @@ else
 #endregion /*Voice Burned 6 END*/
 
 #region /*Voice Burned 7*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_7.ogg"))
 {
-	voice_burned_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_7.ogg");
+	voice_burned_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_7.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned7.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned7.ogg"))
 {
-	voice_burned_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned7.ogg");
+	voice_burned_7 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_7.ogg"))
 {
-	voice_burned_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_7.ogg");
+	voice_burned_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_7.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned7.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned7.ogg"))
 {
-	voice_burned_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned7.ogg");
+	voice_burned_7 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned7.ogg");
 }
 else
 {
@@ -8642,24 +8642,24 @@ else
 #endregion /*Voice Burned 7 END*/
 
 #region /*Voice Burned 8*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_8.ogg"))
 {
-	voice_burned_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_8.ogg");
+	voice_burned_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_8.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned8.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned8.ogg"))
 {
-	voice_burned_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned8.ogg");
+	voice_burned_8 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_8.ogg"))
 {
-	voice_burned_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_8.ogg");
+	voice_burned_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_8.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned8.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned8.ogg"))
 {
-	voice_burned_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned8.ogg");
+	voice_burned_8 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned8.ogg");
 }
 else
 {
@@ -8668,24 +8668,24 @@ else
 #endregion /*Voice Burned 8 END*/
 
 #region /*Voice Burned 9*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_9.ogg"))
 {
-	voice_burned_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_9.ogg");
+	voice_burned_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_9.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned9.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned9.ogg"))
 {
-	voice_burned_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned9.ogg");
+	voice_burned_9 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_9.ogg"))
 {
-	voice_burned_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_9.ogg");
+	voice_burned_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_9.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned9.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned9.ogg"))
 {
-	voice_burned_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned9.ogg");
+	voice_burned_9 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned9.ogg");
 }
 else
 {
@@ -8694,24 +8694,24 @@ else
 #endregion /*Voice Burned 9 END*/
 
 #region /*Voice Burned 10*/
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned_10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_10.ogg"))
 {
-	voice_burned_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned_10.ogg");
+	voice_burned_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_10.ogg");
 }
 else
-if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/burned10.ogg"))
+if (file_exists("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned10.ogg"))
 {
-	voice_burned_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/burned10.ogg");
+	voice_burned_10 = audio_create_stream("Characters/Character "+string(custom_character)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_10.ogg"))
 {
-	voice_burned_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned_10.ogg");
+	voice_burned_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned_10.ogg");
 }
 else
-if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned10.ogg"))
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned10.ogg"))
 {
-	voice_burned_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/burned10.ogg");
+	voice_burned_10 = audio_create_stream(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sounds/voicepack"+string(selected_voice_pack)+"/burned10.ogg");
 }
 else
 {

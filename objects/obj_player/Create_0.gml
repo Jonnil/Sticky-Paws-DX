@@ -3,6 +3,7 @@
 #region /*What custom character to use. Change the character sprites and voice*/
 player = 1;
 custom_character = global.character_for_player_1;
+selected_voice_pack = global.voicepack_for_player_1;
 initialize_custom_character_timer = 0;
 #endregion /*What custom character to use. Change the character sprites and voice END*/
 

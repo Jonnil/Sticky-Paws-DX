@@ -1396,22 +1396,26 @@ and(pause=false)
 or(gamepad_button_check_pressed(0,gp_shoulderl))
 and(pause=false)
 {
-	if (asset_get_type("snd_leveleditor_cycle_item_left")==asset_sound)
+	if (asset_get_type("obj_leveleditor_fill")==asset_object)
+	and (!instance_exists(obj_leveleditor_fill))
 	{
-		audio_play_sound(snd_leveleditor_cycle_item_left,0,0);
-		audio_sound_gain(snd_leveleditor_cycle_item_left,global.sfx_volume,0);
+		if (asset_get_type("snd_leveleditor_cycle_item_left")==asset_sound)
+		{
+			audio_play_sound(snd_leveleditor_cycle_item_left,0,0);
+			audio_sound_gain(snd_leveleditor_cycle_item_left,global.sfx_volume,0);
+		}
+		if (selected_object>0)
+		{
+			selected_object-=1;
+			selected_object_menu_x+=64;
+		}
+		else
+		{
+			selected_object=total_number_of_objects;
+			selected_object_menu_x=-64*total_number_of_objects;
+		}
+		selected_menu_alpha=2;
 	}
-	if (selected_object>0)
-	{
-		selected_object-=1;
-		selected_object_menu_x+=64;
-	}
-	else
-	{
-		selected_object=total_number_of_objects;
-		selected_object_menu_x=-64*total_number_of_objects;
-	}
-	selected_menu_alpha=2;
 }
 #endregion /*Scroll Objects Left End*/
 
@@ -1425,22 +1429,26 @@ and(pause=false)
 or(gamepad_button_check_pressed(0,gp_shoulderr))
 and(pause=false)
 {
-	if (asset_get_type("snd_leveleditor_cycle_item_right")==asset_sound)
+	if (asset_get_type("obj_leveleditor_fill")==asset_object)
+	and (!instance_exists(obj_leveleditor_fill))
 	{
-		audio_play_sound(snd_leveleditor_cycle_item_right,0,0);
-		audio_sound_gain(snd_leveleditor_cycle_item_right,global.sfx_volume,0);
+		if (asset_get_type("snd_leveleditor_cycle_item_right")==asset_sound)
+		{
+			audio_play_sound(snd_leveleditor_cycle_item_right,0,0);
+			audio_sound_gain(snd_leveleditor_cycle_item_right,global.sfx_volume,0);
+		}
+		if (selected_object<total_number_of_objects)
+		{
+			selected_object+=1;
+			selected_object_menu_x-=64;
+		}
+		else
+		{
+			selected_object=0;
+			selected_object_menu_x=0;
+		}
+		selected_menu_alpha=2;
 	}
-	if (selected_object<total_number_of_objects)
-	{
-		selected_object+=1;
-		selected_object_menu_x-=64;
-	}
-	else
-	{
-		selected_object=0;
-		selected_object_menu_x=0;
-	}
-	selected_menu_alpha=2;
 }
 #endregion /*Scroll Objects Right End*/
 
