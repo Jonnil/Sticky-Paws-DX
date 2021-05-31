@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_big_collectible",
-    "path": "sprites/spr_big_collectible/spr_big_collectible.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

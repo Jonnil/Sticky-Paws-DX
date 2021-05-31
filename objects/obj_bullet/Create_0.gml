@@ -1,5 +1,11 @@
 depth =+ 9;
 
+sprite_index = global.resourcepack_sprite_bullet;
+if (asset_get_type("spr_wall")==asset_sprite)
+{
+	mask_index=spr_wall;
+}
+
 image_speed=0.3;
 if (asset_get_type("obj_player")==asset_object)
 and(instance_exists(obj_player))

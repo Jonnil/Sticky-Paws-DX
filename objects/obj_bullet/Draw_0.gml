@@ -45,11 +45,6 @@ else
 		}
 	}
 }
-if (asset_get_type("spr_wall")==asset_sprite)
-{
-	mask_index=spr_wall;
-}
-
 if (image_xscale<0)
 {
 	hspeed=-4;

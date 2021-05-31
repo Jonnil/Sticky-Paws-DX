@@ -1,5 +1,8 @@
 depth = -9000;
 
+sprite_index = global.resourcepack_sprite_basic_collectible;
+image_speed = 0.25;
+
 global.pause_room = noone;
 
 #region /*Mouse x and mouse y initializing*/

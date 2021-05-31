@@ -1581,48 +1581,45 @@ and(move_delay > 10)
 		#endregion /*Show Fastest Time END*/
 
 		#region /*Show Star Coin*/
-		if (asset_get_type("spr_big_collectible") == asset_sprite)
+		if (instance_nearest(x, y, obj_level).big_collectible1 = true)
 		{
-			if (instance_nearest(x, y, obj_level).big_collectible1 = true)
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) - 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) - 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
-			}
-			if (instance_nearest(x, y, obj_level).big_collectible2 = true)
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) - 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) - 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
-			}
-			if (instance_nearest(x, y, obj_level).big_collectible3 = true)
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
-			}
-			if (instance_nearest(x, y, obj_level).big_collectible4 = true)
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
-			}
-			if (instance_nearest(x, y, obj_level).big_collectible5 = true)
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
-			}
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) - 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) - 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
+		}
+		if (instance_nearest(x, y, obj_level).big_collectible2 = true)
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) - 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) - 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
+		}
+		if (instance_nearest(x, y, obj_level).big_collectible3 = true)
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
+		}
+		if (instance_nearest(x, y, obj_level).big_collectible4 = true)
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 24 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
+		}
+		if (instance_nearest(x, y, obj_level).big_collectible5 = true)
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, camera_get_view_x(view_camera[view_current]) + 48 + 74, camera_get_view_y(view_camera[view_current]) + 64, 0.3, 0.3, 0, c_gray, 0.5);
 		}
 		#endregion /*Show Star Coin END*/
 

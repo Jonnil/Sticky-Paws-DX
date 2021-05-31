@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_invincibility_powerup",
-    "path": "sprites/spr_invincibility_powerup/spr_invincibility_powerup.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

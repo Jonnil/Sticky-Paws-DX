@@ -93,7 +93,7 @@ menu_cursor_index=0;
 in_settings=false;
 can_navigate_settings_sidebar=true;
 navigate_slider=false;
-menu="continue"
+menu="continue";
 open_dropdown = false;
 name_enter_blink=0;
 menu_delay=0;
@@ -131,7 +131,7 @@ screenie_y=0;
 total_objects=0;
 
 #region /*Options*/
-remapping_player = 1;
+remapping_player = 0;
 input_key = false;
 can_remap_key = false;
 can_navigate = false;

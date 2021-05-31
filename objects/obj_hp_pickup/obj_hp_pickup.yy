@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_hp_pickup",
-    "path": "sprites/spr_hp_pickup/spr_hp_pickup.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

@@ -10,3 +10,5 @@ coinsound = false;
 big_collectible = 0;
 follow_player = false;
 effect_time = 0;
+
+sprite_index = global.resourcepack_sprite_big_collectible;

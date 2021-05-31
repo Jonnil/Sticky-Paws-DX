@@ -54,6 +54,19 @@ global.number_of_chain_kills_for_1up=8; /*How many chain reaction kills you need
 
 #region /*Things you shouldn't change, warning, don't change any of these options or you might break the game!*/
 
+#region /*Resource Packs*/
+global.selected_resourcepack = 1;
+global.max_number_of_official_resourcepacks = 1;
+
+global.resourcepack_sprite_basic_collectible = spr_wall;
+global.resourcepack_sprite_big_collectible = spr_wall;
+global.resourcepack_sprite_bullet = spr_wall;
+global.resourcepack_sprite_hp_pickup = spr_wall;
+global.resourcepack_sprite_invincibility_powerup = spr_wall;
+
+scr_load_resource_pack_sprite();
+#endregion /*Resource Packs END*/
+
 /*Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu*/
 global.equipped_upgrade_double_jump=true;/*If you have equipped the Double Jump Upgrade*/
 
