@@ -5,8 +5,8 @@ mx = mouse_x;
 my = mouse_y;
 #endregion /*Mouse x and mouse y initializing END*/
 
-sprite_enemy1 = spr_mouse;
-sprite_enemy2 = spr_big_rat;
+sprite_enemy1 = global.resourcepack_sprite_basic_enemy;
+sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
 
 #region /*Create Foreground*/
 if (asset_get_type("obj_foreground1")==asset_object)

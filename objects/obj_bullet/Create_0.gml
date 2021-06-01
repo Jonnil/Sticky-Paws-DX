@@ -48,5 +48,3 @@ else
 {
 	enemyvoice_defeated3=noone;
 }
-
-sprite_enemy_flat=spr_mouse_flat;
