@@ -59,31 +59,6 @@ if (initialize_custom_character_timer = 1)
 {
 /*The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y*/
 
-#region /*Create directories for the custom character*/
-
-#region /*Create directory for saving character data*/
-if (!directory_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data"))
-{
-	directory_create(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Data");
-}
-#endregion /*Create directory for saving characters data END*/
-
-#region /*Create directory for saving character sounds*/
-if (!directory_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds"))
-{
-	directory_create(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sounds");
-}
-#endregion /*Create directory for saving character sounds END*/
-
-#region /*Create directory for saving character sprites*/
-if (!directory_exists(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites"))
-{
-	directory_create(working_directory + "/Custom Characters/Character "+string(custom_character)+"/Sprites");
-}
-#endregion /*Create directory for saving character sprites END*/
-
-#endregion /*Create directories for the custom character END*/
-
 #region /*Play as Custom Character */
 
 #region /*Sprite origin point variables*/
@@ -153,6 +128,32 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 	#endregion /*Sprite map enter level y origin point END*/
 	#endregion /*Sprite map enter level x and y origin points END*/
 	
+	#region /*Sprite stand x and y origin points*/
+	#region /*Sprite stand x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_stand_xorig"))
+	{
+		sprite_stand_xorig = ini_read_real("sprite origin points", "sprite_stand_xorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_stand_xorig", 0);
+		sprite_stand_xorig = 0;
+	}
+	#endregion /*Sprite stand x origin point END*/
+
+	#region /*Sprite stand y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_stand_yorig"))
+	{
+		sprite_stand_yorig = ini_read_real("sprite origin points", "sprite_stand_yorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_stand_yorig", 0);
+		sprite_stand_yorig = 0;
+	}
+	#endregion /*Sprite stand y origin point END*/
+	#endregion /*Sprite stand x and y origin points END*/
+	
 	ini_close();
 }
 
@@ -163,6 +164,8 @@ else
 	sprite_map_yorig = 0;
 	sprite_map_enter_level_xorig = 0;
 	sprite_map_enter_level_yorig = 0;
+	sprite_stand_xorig = 0;
+	sprite_stand_yorig = 0;
 }
 #endregion /*If there is no config.ini file, then make every xorig and yorig variable zero END*/
 
@@ -242,11 +245,45 @@ if (file_exists(working_directory + "/Custom Characters/Character "+string(custo
 }
 #endregion /*Map enter level sprite END*/
 
+#region /*Stand sprite*/
+index=0
+repeat(50)
+{
+	if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/stand_strip"+string(index)+".png"))
+	{
+		sprite_stand = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/stand_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stand_strip"+string(index)+".png"))
+	{
+		sprite_stand = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stand_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+	}
+	index+=1
+}
+if (file_exists("Characters/Character "+string(custom_character)+"/Sprites/stand.png"))
+{
+	sprite_stand = sprite_add("Characters/Character "+string(custom_character)+"/Sprites/stand.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+}
+else
+if (file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stand.png"))
+{
+	sprite_stand = sprite_add(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Sprites/stand.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+}
+#endregion /*Stand sprite END*/
+
 #endregion /*Sprite variables END*/
 
 #endregion /*Play as Custom CharacterEND*/
 
-sprite_index = sprite_map;
+if (sprite_map > noone)
+{
+	sprite_index = sprite_map;
+}
+else
+if (sprite_stand > noone)
+{
+	sprite_index = sprite_stand;
+}
 }
 #endregion /*Initialize Custom CharacterEND*/
 
@@ -1513,11 +1550,32 @@ and(global.quit_level = false)
 
 if (entering_level = true)
 {
-	sprite_index = sprite_map_enter_level;
+	if (sprite_map_enter_level > noone)
+	{
+		sprite_index = sprite_map_enter_level;
+	}
+	else
+	if (sprite_map > noone)
+	{
+		sprite_index = sprite_map;
+	}
+	else
+	if (sprite_stand > noone)
+	{
+		sprite_index = sprite_stand;
+	}
 }
 else
 {
-	sprite_index = sprite_map;
+	if (sprite_map > noone)
+	{
+		sprite_index = sprite_map;
+	}
+	else
+	if (sprite_stand > noone)
+	{
+		sprite_index = sprite_stand;
+	}
 }
 
 if (move_delay < 50)
