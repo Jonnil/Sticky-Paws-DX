@@ -61,6 +61,13 @@ global.max_number_of_official_resourcepacks = 1;
 global.resourcepack_sprite_basic_collectible = spr_wall;
 global.resourcepack_sprite_big_collectible = spr_wall;
 global.resourcepack_sprite_bullet = spr_wall;
+global.resourcepack_sprite_bullet_flattened = spr_wall;
+global.resourcepack_sprite_blaster = spr_wall;
+global.resourcepack_sprite_basic_enemy = spr_wall;
+global.resourcepack_sprite_basic_enemy_angry = spr_wall;
+global.resourcepack_sprite_basic_enemy_flattened = spr_wall;
+global.resourcepack_sprite_big_stationary_enemy = spr_wall;
+global.resourcepack_sprite_big_stationary_enemy_flattened = spr_wall;
 global.resourcepack_sprite_hp_pickup = spr_wall;
 global.resourcepack_sprite_invincibility_powerup = spr_wall;
 

@@ -31,4 +31,5 @@ else
 	enemyvoice_defeated3 = noone;
 }
 
-sprite_flat = spr_big_rat_flat;
+sprite_index = global.resourcepack_sprite_big_stationary_enemy;
+sprite_flat = global.resourcepack_sprite_big_stationary_enemy_flattened;
