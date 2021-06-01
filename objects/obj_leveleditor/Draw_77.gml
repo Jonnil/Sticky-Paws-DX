@@ -161,21 +161,6 @@ and(global.character_select_in_this_menu="level_editor")
 
 if (quit_level_editor>5)
 {
-
-	/*Save whole level as png file*/
-	//global.show_tutorial_signs=false;
-	//if asset_get_type("obj_camera")==asset_object and instance_number(obj_camera)>0{instance_destroy(obj_camera)}
-	//var custom_level_map_sprite;
-	//camera_get_view_x(view_camera[view_current])[0]=0;
-	//camera_get_view_y(view_camera[view_current])[0]=0;
-	//camera_get_view_width(view_camera[view_current])[0]=room_width;
-	//camera_get_view_height(view_camera[view_current])[0]=room_height;
-	//window_set_rectangle(0,0,room_width,room_height);
-	//surface_resize(application_surface,room_width,room_height);
-	//custom_level_map_sprite=sprite_create_from_surface(application_surface,0,0,room_width,room_height,false,false,0,0);
-	//sprite_save(custom_level_map_sprite,0,working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Level Map.png");
-	//sprite_delete(custom_level_map_sprite);/*Save whole level as png file END*/
-	
 	room_goto(room_title);
 }
 #endregion /*End Game End*/

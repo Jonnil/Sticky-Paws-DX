@@ -1,5 +1,29 @@
 ///Platformer Player Part 1
 
+#region /*Save whole level as png file*/
+if (keyboard_check_pressed(ord("P")))
+{
+	instance_activate_all();
+	global.deactivate_objects_outsiede_view = false;
+	global.show_tutorial_signs = false;
+	if (asset_get_type("obj_camera")==asset_object)
+	and (instance_exists(obj_camera))
+	{
+		instance_destroy(obj_camera);
+	}
+	camera_set_view_border(view_camera[view_current], room_width, room_height); /*View Border*/
+	camera_set_view_pos(view_camera[view_current], 0, 0);
+	camera_set_view_size(view_camera[view_current], room_width, room_height);
+	display_set_gui_size(room_width, room_height);
+	surface_resize(application_surface, room_width, room_height);
+	window_set_rectangle(0, 0, room_width, room_height);
+	var custom_level_map_sprite;
+	custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
+	sprite_save(custom_level_map_sprite, 0, working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Full Level Map.png");
+	sprite_delete(custom_level_map_sprite);
+}
+#endregion /*Save whole level as png file END*/
+
 #region /*Initialize Custom Character */
 if (initialize_custom_character_timer < 2)
 {
@@ -11888,6 +11912,7 @@ and(asset_get_type("obj_camera")==asset_object)
 if (asset_get_type("obj_checkpoint")==asset_object)
 and(asset_get_type("obj_camera")==asset_object)
 and(!place_meeting(x,y,obj_checkpoint))
+and(instance_exists(obj_camera))
 and(obj_camera.iris_xscale<3)
 {
 	
@@ -16443,10 +16468,11 @@ else
 #region /*Goal*/
 if (asset_get_type("obj_goal")==asset_object)
 and(instance_exists(obj_goal))
+and(distance_to_object(obj_goal) < 1920)
 {
-	if (x>instance_nearest(x,y,obj_goal).bbox_right)
-	and(x<instance_nearest(x,y,obj_goal).bbox_right+16)
-	and(goal=false)
+	if (x > instance_nearest(x,y,obj_goal).bbox_right)
+	and(x < instance_nearest(x,y,obj_goal).bbox_right+16)
+	and(goal = false)
 	{
 		if (!collision_line(x,y,instance_nearest(x,y,obj_goal).x,instance_nearest(x,y,obj_goal).y,obj_wall,false,true))
 		{
