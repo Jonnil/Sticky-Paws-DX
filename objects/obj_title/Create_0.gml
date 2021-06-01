@@ -37,14 +37,21 @@ if (!directory_exists(working_directory+"/Custom Characters"))
 {
 	directory_create(working_directory+"/Custom Characters");
 }
-#endregion /*Create directory for saving custom levels*/
+#endregion /*Create directory for saving custom levels END*/
 
 #region /*Create directory for saving custom levels*/
 if (!directory_exists(working_directory+"/Custom Levels"))
 {
 	directory_create(working_directory+"/Custom Levels");
 }
-#endregion /*Create directory for saving custom levels*/
+#endregion /*Create directory for saving custom levels END*/
+
+#region /*Create directory for saving custom resourcepacks*/
+if (!directory_exists(working_directory+"/Custom Resourcepacks"))
+{
+	directory_create(working_directory+"/Custom Resourcepacks");
+}
+#endregion /*Create directory for saving custom resourcepacks END*/
 
 #endregion /*Create directories END*/
 

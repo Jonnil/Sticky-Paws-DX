@@ -1,7 +1,6 @@
-scr_set_screen_size();
-
 if (quit_level_editor = false)
 {
+	scr_set_screen_size();
 	
 	#region /*Pause Menu*/
 	if (pause=false)
