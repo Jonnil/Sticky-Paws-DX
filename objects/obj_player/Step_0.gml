@@ -169,14 +169,14 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 	#endregion /*Allow run*/
 
 	#region /*Allow homing attack*/
-	if (ini_key_exists("allow abilities", "allow_homing_attack"))
+	if (ini_key_exists("allow abilities", "allow_homing_tongue"))
 	{
-		allow_homing_attack = ini_read_real("allow abilities", "allow_homing_attack", false);
+		allow_homing_tongue = ini_read_real("allow abilities", "allow_homing_tongue", false);
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_homing_attack", false);
-		allow_homing_attack = false;
+		//ini_write_real("allow abilities", "allow_homing_tongue", false);
+		allow_homing_tongue = false;
 	}
 	#endregion /*Allow homing attack*/
 
@@ -232,7 +232,7 @@ else
 	allow_dive_ground_boost = true;
 	allow_survive_lava = true;
 	allow_run = true;
-	allow_homing_attack = false;
+	allow_homing_tongue = false;
 	allow_crawl = true;
 	allow_tongue = false; /*A tongue that extends*/
 	allow_overflow_hp = false;
@@ -244,7 +244,7 @@ else
 	//if(!ini_key_exists("allow abilities", "allow_run")){ini_write_real("allow abilities", "allow_run", true);}
 	//if(!ini_key_exists("allow abilities", "allow_roll")){ini_write_real("allow abilities", "allow_roll", false);}
 	//if(!ini_key_exists("allow abilities", "allow_ledge_grab")){ini_write_real("allow abilities", "allow_ledge_grab", false);}
-	//if(!ini_key_exists("allow abilities", "allow_homing_attack")){ini_write_real("allow abilities", "allow_homing_attack", false);}
+	//if(!ini_key_exists("allow abilities", "allow_homing_tongue")){ini_write_real("allow abilities", "allow_homing_tongue", false);}
 	//if(!ini_key_exists("allow abilities", "allow_ground_pound_jump")){ini_write_real("allow abilities", "allow_ground_pound_jump", true);}
 	//if(!ini_key_exists("allow abilities", "allow_ground_pound")){ini_write_real("allow abilities", "allow_ground_pound", true);}
 	//if(!ini_key_exists("allow abilities", "allow_dive_ground_boost")){ini_write_real("allow abilities", "allow_dive_ground_boost", true);}
@@ -8818,14 +8818,14 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 	#endregion /*Acceleration on ice END*/
 	
 	#region /*Can Attack After Dive On Ground Max Value*/
-	if (ini_key_exists("values", "can_attack_after_dive_on_ground_max_value"))
+	if (ini_key_exists("values", "can_tongue_after_dive_on_ground_max_value"))
 	{
-		can_attack_after_dive_on_ground_max_value = ini_read_real("values", "can_attack_after_dive_on_ground_max_value", 20);
+		can_tongue_after_dive_on_ground_max_value = ini_read_real("values", "can_tongue_after_dive_on_ground_max_value", 20);
 	}
 	else
 	{
 		//ini_write_real("values", "number_of_jumps", 1);
-		can_attack_after_dive_on_ground_max_value = 20;
+		can_tongue_after_dive_on_ground_max_value = 20;
 	}
 	#endregion /*Can Attack After Dive On Ground Max Value END*/
 	
@@ -9006,13 +9006,13 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 	#endregion /*Jump Heights END*/
 	
 	#region /*Homing attack distance*/
-	if (ini_key_exists("values", "homing_attack_distance"))
+	if (ini_key_exists("values", "homing_tongue_distance"))
 	{
-		hoverstomp_distance = ini_read_real("values", "homing_attack_distance", 500);
+		hoverstomp_distance = ini_read_real("values", "homing_tongue_distance", 500);
 	}
 	else
 	{
-		//ini_write_real("values", "homing_attack_distance", 500);
+		//ini_write_real("values", "homing_tongue_distance", 500);
 		hoverstomp_distance = 500;
 	}
 	#endregion /*Homing attack distance END*/
@@ -9060,7 +9060,7 @@ else
 	//if (!ini_key_exists("values", "triple_jump_height")){ini_write_real("values", "triple_jump_height", 14.5);}
 	//if (!ini_key_exists("values", "normal_jump_height")){ini_write_real("values", "normal_jump_height", 11.5);}
 	//if (!ini_key_exists("values", "higher_jump_height")){ini_write_real("values", "higher_jump_height", 13);}
-	//if (!ini_key_exists("values", "homing_attack_distance")){ini_write_real("values", "homing_attack_distance", 500);}
+	//if (!ini_key_exists("values", "homing_tongue_distance")){ini_write_real("values", "homing_tongue_distance", 500);}
 	//ini_close();
 }
 #endregion /*CharacterValues Handeling END*/
@@ -11861,11 +11861,11 @@ and(allow_timeup=true)
 {
 	audio_sound_pitch(global.music,music_pitch+0.3);
 	audio_sound_pitch(global.music_underwater,music_pitch+0.3);
-	if (crouch=true)
+	if (crouch = true)
 	or(ground_pound=true)
 	and(place_meeting(x,y+sprite_height,obj_wall))
 	{
-		music_pitch=lerp(music_pitch,0.9,0.001);
+		music_pitch=lerp(music_pitch,0.95,0.001);
 	}
 	else
 	{
@@ -11876,11 +11876,11 @@ else
 {
 	audio_sound_pitch(global.music,music_pitch);
 	audio_sound_pitch(global.music_underwater,music_pitch);
-	if (crouch=true)
+	if (crouch = true)
 	or(ground_pound=true)
 	and(place_meeting(x,y+sprite_height,obj_wall))
 	{
-		music_pitch=lerp(music_pitch,0.9,0.001);
+		music_pitch=lerp(music_pitch,0.95,0.001);
 	}
 	else
 	{
@@ -12414,21 +12414,21 @@ if (player<=1)
 	gamepad_set_axis_deadzone(player-1,0.50);
 	
 	#region /*Player 1 Key Attack Hold*/
-	key_attack=
-	(keyboard_check(global.player1_key_attack))
-	or(keyboard_check(global.player1_key2_attack));
+	key_tongue=
+	(keyboard_check(global.player1_key_tongue))
+	or(keyboard_check(global.player1_key2_tongue));
 	#endregion /*Player 1 Key Attack Hold END*/
 	
 	#region /*Player 1 Key Attack Pressed*/
-	key_attack_pressed=
-	(keyboard_check_pressed(global.player1_key_attack))
-	or(keyboard_check_pressed(global.player1_key2_attack));
+	key_tongue_pressed=
+	(keyboard_check_pressed(global.player1_key_tongue))
+	or(keyboard_check_pressed(global.player1_key2_tongue));
 	#endregion /*Player 1 Key Attack Pressed END*/
 	
 	#region /*Player 1 Key Attack Released*/
-	key_attack_released=
-	(keyboard_check_released(global.player1_key_attack))
-	or(keyboard_check_released(global.player1_key2_attack));
+	key_tongue_released=
+	(keyboard_check_released(global.player1_key_tongue))
+	or(keyboard_check_released(global.player1_key2_tongue));
 	#endregion /*Player 1 Key Attack Released END*/
 	
 	#region /*Player 1 Key Dive Pressed*/
@@ -12630,21 +12630,21 @@ if (player=2)
 	gamepad_set_axis_deadzone(player-1,0.50);
 	
 	#region /*Player 2 Key Attack Hold*/
-	key_attack=
-	(keyboard_check(global.player2_key_attack))
-	or(keyboard_check(global.player2_key2_attack));
+	key_tongue=
+	(keyboard_check(global.player2_key_tongue))
+	or(keyboard_check(global.player2_key2_tongue));
 	#endregion /*Player 2 Key Attack Hold END*/
 	
 	#region /*Player 2 Key Attack Pressed*/
-	key_attack_pressed=
-	(keyboard_check_pressed(global.player2_key_attack))
-	or(keyboard_check_pressed(global.player2_key2_attack));
+	key_tongue_pressed=
+	(keyboard_check_pressed(global.player2_key_tongue))
+	or(keyboard_check_pressed(global.player2_key2_tongue));
 	#endregion /*Player 2 Key Attack Pressed END*/
 	
 	#region /*Player 2 Key Attack Released*/
-	key_attack_released=
-	(keyboard_check_released(global.player2_key_attack))
-	or(keyboard_check_released(global.player2_key2_attack));
+	key_tongue_released=
+	(keyboard_check_released(global.player2_key_tongue))
+	or(keyboard_check_released(global.player2_key2_tongue));
 	#endregion /*Player 2 Key Attack Released END*/
 	
 	#region /*Player 2 Key Dive Pressed*/
@@ -12846,21 +12846,21 @@ if (player=3)
 	gamepad_set_axis_deadzone(player-1,0.50);
 	
 	#region /*Player 3 Key Attack Hold*/
-	key_attack=
-	(keyboard_check(global.player3_key_attack))
-	or(keyboard_check(global.player3_key2_attack));
+	key_tongue=
+	(keyboard_check(global.player3_key_tongue))
+	or(keyboard_check(global.player3_key2_tongue));
 	#endregion /*Player 3 Key Attack Hold END*/
 	
 	#region /*Player 3 Key Attack Pressed*/
-	key_attack_pressed=
-	(keyboard_check_pressed(global.player3_key_attack))
-	or(keyboard_check_pressed(global.player3_key2_attack));
+	key_tongue_pressed=
+	(keyboard_check_pressed(global.player3_key_tongue))
+	or(keyboard_check_pressed(global.player3_key2_tongue));
 	#endregion /*Player 3 Key Attack Pressed END*/
 	
 	#region /*Player 3 Key Attack Released*/
-	key_attack_released=
-	(keyboard_check_released(global.player3_key_attack))
-	or(keyboard_check_released(global.player3_key2_attack));
+	key_tongue_released=
+	(keyboard_check_released(global.player3_key_tongue))
+	or(keyboard_check_released(global.player3_key2_tongue));
 	#endregion /*Player 3 Key Attack Released END*/
 	
 	#region /*Player 3 Key Dive Pressed*/
@@ -13062,21 +13062,21 @@ if (player=4)
 	gamepad_set_axis_deadzone(player-1,0.50);
 	
 	#region /*Player 4 Key Attack Hold*/
-	key_attack=
-	(keyboard_check(global.player4_key_attack))
-	or(keyboard_check(global.player4_key2_attack));
+	key_tongue=
+	(keyboard_check(global.player4_key_tongue))
+	or(keyboard_check(global.player4_key2_tongue));
 	#endregion /*Player 4 Key Attack Hold END*/
 	
 	#region /*Player 4 Key Attack Pressed*/
-	key_attack_pressed=
-	(keyboard_check_pressed(global.player4_key_attack))
-	or(keyboard_check_pressed(global.player4_key2_attack));
+	key_tongue_pressed=
+	(keyboard_check_pressed(global.player4_key_tongue))
+	or(keyboard_check_pressed(global.player4_key2_tongue));
 	#endregion /*Player 4 Key Attack Pressed END*/
 	
 	#region /*Player 4 Key Attack Released*/
-	key_attack_released=
-	(keyboard_check_released(global.player4_key_attack))
-	or(keyboard_check_released(global.player4_key2_attack));
+	key_tongue_released=
+	(keyboard_check_released(global.player4_key_tongue))
+	or(keyboard_check_released(global.player4_key2_tongue));
 	#endregion /*Player 4 Key Attack Released END*/
 	
 	#region /*Player 4 Key Dive Pressed*/
@@ -14390,7 +14390,7 @@ if (can_move=true)
 and(global.pause=false)
 {
 	if (asset_get_type("obj_tongue")==asset_object){if (!instance_exists(obj_tongue)){can_tongue=true;}}
-	if (allow_tongue=true){if (can_tongue=true)and(climb=false)and(horizontal_rope_climb=false){if (asset_get_type("obj_tongue")==asset_object){if (key_attack_pressed)or(mouse_check_button_pressed(mb_left))or
+	if (allow_tongue=true){if (can_tongue=true)and(climb=false)and(horizontal_rope_climb=false){if (asset_get_type("obj_tongue")==asset_object){if (key_tongue_pressed)or(mouse_check_button_pressed(mb_left))or
 	(gamepad_axis_value(0,gp_axisrh)<-0.5)or(gamepad_axis_value(0,gp_axisrh)>+0.5)or(gamepad_axis_value(0,gp_axisrv)<-0.5)or(gamepad_axis_value(0,gp_axisrv)>+0.5)
 	{can_tongue=false;tongue_obj=instance_create_depth(x,y,0,obj_tongue);
 
@@ -15473,7 +15473,7 @@ and(global.pause=false)
 			{
 				dive = false;
 				dive_on_ground = 10;
-				can_attack_after_dive_on_ground = can_attack_after_dive_on_ground_max_value;
+				can_tongue_after_dive_on_ground = can_tongue_after_dive_on_ground_max_value;
 				ground_pound = false;
 				can_ground_pound = false;
 			}
@@ -15516,17 +15516,17 @@ and(global.pause=false)
 #endregion /*Dive END*/
 
 #region /*Can Attack After Dive On Ground*/
-if (can_attack_after_dive_on_ground>0)
+if (can_tongue_after_dive_on_ground>0)
 and(asset_get_type("obj_wall")==asset_object)
 and(place_meeting(x,y+1,obj_wall))
-or (can_attack_after_dive_on_ground>0)
+or (can_tongue_after_dive_on_ground>0)
 and(asset_get_type("obj_semisolid_platform")==asset_object)
 and(place_meeting(x,y+1,obj_semisolid_platform))
 {
-	can_attack_after_dive_on_ground -= 1;
+	can_tongue_after_dive_on_ground -= 1;
 	if (key_jump)
 	{
-		can_attack_after_dive_on_ground = false;
+		can_tongue_after_dive_on_ground = false;
 	}
 }
 #endregion /*Can Attack After Dive On Ground END*/
@@ -16538,7 +16538,7 @@ and(global.time_countdown<=0)
 #endregion /*Goal End*/
 
 #region /*Homing Attack*/
-if (allow_homing_attack=true)
+if (allow_homing_tongue=true)
 {
 	
 	#region /*Homing Enemy*/
@@ -17789,8 +17789,30 @@ and(roll=true)
 	}
 }
 else
-if (crouch=true)
+if (crouch = true)
 {
+	
+	#region /*Destroy blocks above you when you jump while crouching*/
+	if (key_jump)
+	{
+		with (instance_create_depth(bbox_left+16, bbox_top, 0, obj_blockbreak))
+		{
+			image_xscale = 0.5;
+			image_yscale = 0.5;
+		}
+		with (instance_create_depth(x, bbox_top, 0, obj_blockbreak))
+		{
+			image_xscale = 0.5;
+			image_yscale = 0.5;
+		}
+		with (instance_create_depth(bbox_right-16, bbox_top, 0, obj_blockbreak))
+		{
+			image_xscale = 0.5;
+			image_yscale = 0.5;
+		}
+	}
+	#endregion /*Destroy blocks above you when you jump while crouching END*/
+	
 	if (place_meeting(x,y+1,obj_wall))
 	or(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
 	or(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
@@ -17891,6 +17913,10 @@ if (crouch=true)
 		{
 			if (sprite_crouch_jump>noone){sprite_index = sprite_crouch_jump;}else
 			if (sprite_crouch_fall>noone){sprite_index = sprite_crouch_fall;}else
+			if (sprite_jump>noone)and(vspeed<=0){sprite_index = sprite_jump;}else
+			if (sprite_fall_slower>noone)and(vspeed>0)and(key_a_hold){sprite_index = sprite_fall_slower;}else
+			if (sprite_fall>noone)and(vspeed>0){sprite_index = sprite_fall;}else
+			if (sprite_jump>noone){sprite_index = sprite_jump;}else
 			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
 			{sprite_index = sprite_stand;}
 			if (image_index>image_number-1)
@@ -17910,6 +17936,10 @@ if (crouch=true)
 		{
 			if (sprite_crouch_fall>noone){sprite_index = sprite_crouch_fall;}else
 			if (sprite_crouch_jump>noone){sprite_index = sprite_crouch_jump;}else
+			if (sprite_jump>noone)and(vspeed<=0){sprite_index = sprite_jump;}else
+			if (sprite_fall_slower>noone)and(vspeed>0)and(key_a_hold){sprite_index = sprite_fall_slower;}else
+			if (sprite_fall>noone)and(vspeed>0){sprite_index = sprite_fall;}else
+			if (sprite_jump>noone){sprite_index = sprite_jump;}else
 			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
 			{sprite_index = sprite_stand;}
 			
@@ -18261,6 +18291,9 @@ if (!place_meeting(x,y+1,obj_wall))
 	{
 		if (sprite_burnt>noone){sprite_index = sprite_burnt;}else
 		if (sprite_die>noone){sprite_index = sprite_die;}else
+		if (sprite_jump>noone)and(vspeed<=0){sprite_index = sprite_jump;}else
+		if (sprite_fall_slower>noone)and(vspeed>0)and(key_a_hold){sprite_index = sprite_fall_slower;}else
+		if (sprite_fall>noone)and(vspeed>0){sprite_index = sprite_fall;}else
 		if (sprite_jump>noone){sprite_index = sprite_jump;}else
 		{sprite_index = sprite_stand;}
 	}
@@ -18268,6 +18301,9 @@ if (!place_meeting(x,y+1,obj_wall))
 	if (dive=true)
 	{
 		if (sprite_dive>noone){sprite_index = sprite_dive;}else
+		if (sprite_jump>noone)and(vspeed<=0){sprite_index = sprite_jump;}else
+		if (sprite_fall_slower>noone)and(vspeed>0)and(key_a_hold){sprite_index = sprite_fall_slower;}else
+		if (sprite_fall>noone)and(vspeed>0){sprite_index = sprite_fall;}else
 		if (sprite_jump>noone){sprite_index = sprite_jump;}else
 		{sprite_index = sprite_stand;}
 		if (image_index>image_number-1)
@@ -18478,6 +18514,7 @@ and(spring=false)
 			{
 				if (sprite_fall>noone){sprite_index = sprite_fall;}else
 				if (sprite_fall_slower>noone){sprite_index = sprite_fall_slower;}else
+				if (sprite_jump>noone){sprite_index = sprite_jump;}else
 				{sprite_index = sprite_stand;}
 			}
 		}
@@ -18487,12 +18524,14 @@ and(spring=false)
 			{
 				if (sprite_fall_slower>noone){sprite_index = sprite_fall_slower;}else
 				if (sprite_fall>noone){sprite_index = sprite_fall;}else
+				if (sprite_jump>noone){sprite_index = sprite_jump;}else
 				{sprite_index = sprite_stand;}
 			}
 			else
 			{
 				if (sprite_fall>noone){sprite_index = sprite_fall;}else
 				if (sprite_fall_slower>noone){sprite_index = sprite_fall_slower;}else
+				if (sprite_jump>noone){sprite_index = sprite_jump;}else
 				{sprite_index = sprite_stand;}
 			}
 			if (image_index>image_number-1)

@@ -5,7 +5,7 @@ draw_yscale=1;
 flat = false;
 die = false;
 die_volting = false;
-mask = sprite_index;
+mask = spr_big_stationary_enemy;
 if (asset_get_type("snd_enemyvoice_big_defeated") == asset_sound)
 {
 	enemyvoice_defeated1 = snd_enemyvoice_big_defeated;
@@ -31,5 +31,4 @@ else
 	enemyvoice_defeated3 = noone;
 }
 
-sprite_index = global.resourcepack_sprite_big_stationary_enemy;
-sprite_flat = global.resourcepack_sprite_big_stationary_enemy_flattened;
+sprite_used = "stand";

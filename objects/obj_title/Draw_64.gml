@@ -21,7 +21,7 @@ if (global.player1_key_left = 0){global.player1_key_left = noone;}
 if (global.player1_key_right = 0){global.player1_key_right = noone;}
 if (global.player1_key_down = 0){global.player1_key_down = noone;}
 if (global.player1_key_up = 0){global.player1_key_up = noone;}
-if (global.player1_key_attack = 0){global.player1_key_attack = noone;}
+if (global.player1_key_tongue = 0){global.player1_key_tongue = noone;}
 if (global.player1_key2_dive = 0){global.player1_key2_dive = noone;}
 if (global.player1_key2_jump = 0){global.player1_key2_jump = noone;}
 if (global.player1_key2_crouch = 0){global.player1_key2_crouch = noone;}
@@ -32,7 +32,7 @@ if (global.player1_key2_left = 0){global.player1_key2_left = noone;}
 if (global.player1_key2_right = 0){global.player1_key2_right = noone;}
 if (global.player1_key2_down = 0){global.player1_key2_down = noone;}
 if (global.player1_key2_up = 0){global.player1_key2_up = noone;}
-if (global.player1_key2_attack = 0){global.player1_key2_attack = noone;}
+if (global.player1_key2_tongue = 0){global.player1_key2_tongue = noone;}
 #endregion /*Player 1 reset keys to noone if they happen to be 0 END*/
 
 #region /*Player 2 reset keys to noone if they happen to be 0*/
@@ -46,7 +46,7 @@ if (global.player2_key_left = 0){global.player2_key_left = noone;}
 if (global.player2_key_right = 0){global.player2_key_right = noone;}
 if (global.player2_key_down = 0){global.player2_key_down = noone;}
 if (global.player2_key_up = 0){global.player2_key_up = noone;}
-if (global.player2_key_attack = 0){global.player2_key_attack = noone;}
+if (global.player2_key_tongue = 0){global.player2_key_tongue = noone;}
 if (global.player2_key2_dive = 0){global.player2_key2_dive = noone;}
 if (global.player2_key2_jump = 0){global.player2_key2_jump = noone;}
 if (global.player2_key2_crouch = 0){global.player2_key2_crouch = noone;}
@@ -57,7 +57,7 @@ if (global.player2_key2_left = 0){global.player2_key2_left = noone;}
 if (global.player2_key2_right = 0){global.player2_key2_right = noone;}
 if (global.player2_key2_down = 0){global.player2_key2_down = noone;}
 if (global.player2_key2_up = 0){global.player2_key2_up = noone;}
-if (global.player2_key2_attack = 0){global.player2_key2_attack = noone;}
+if (global.player2_key2_tongue = 0){global.player2_key2_tongue = noone;}
 #endregion /*Player 2 reset keys to noone if they happen to be 0 END*/
 
 #region /*Player 3 reset keys to noone if they happen to be 0*/
@@ -71,7 +71,7 @@ if (global.player3_key_left = 0){global.player3_key_left = noone;}
 if (global.player3_key_right = 0){global.player3_key_right = noone;}
 if (global.player3_key_down = 0){global.player3_key_down = noone;}
 if (global.player3_key_up = 0){global.player3_key_up = noone;}
-if (global.player3_key_attack = 0){global.player3_key_attack = noone;}
+if (global.player3_key_tongue = 0){global.player3_key_tongue = noone;}
 if (global.player3_key2_dive = 0){global.player3_key2_dive = noone;}
 if (global.player3_key2_jump = 0){global.player3_key2_jump = noone;}
 if (global.player3_key2_crouch = 0){global.player3_key2_crouch = noone;}
@@ -82,7 +82,7 @@ if (global.player3_key2_left = 0){global.player3_key2_left = noone;}
 if (global.player3_key2_right = 0){global.player3_key2_right = noone;}
 if (global.player3_key2_down = 0){global.player3_key2_down = noone;}
 if (global.player3_key2_up = 0){global.player3_key2_up = noone;}
-if (global.player3_key2_attack = 0){global.player3_key2_attack = noone;}
+if (global.player3_key2_tongue = 0){global.player3_key2_tongue = noone;}
 #endregion /*Player 3 reset keys to noone if they happen to be 0 END*/
 
 #region /*Player 4 reset keys to noone if they happen to be 0*/
@@ -96,7 +96,7 @@ if (global.player4_key_left = 0){global.player4_key_left = noone;}
 if (global.player4_key_right = 0){global.player4_key_right = noone;}
 if (global.player4_key_down = 0){global.player4_key_down = noone;}
 if (global.player4_key_up = 0){global.player4_key_up = noone;}
-if (global.player4_key_attack = 0){global.player4_key_attack = noone;}
+if (global.player4_key_tongue = 0){global.player4_key_tongue = noone;}
 if (global.player4_key2_dive = 0){global.player4_key2_dive = noone;}
 if (global.player4_key2_jump = 0){global.player4_key2_jump = noone;}
 if (global.player4_key2_crouch = 0){global.player4_key2_crouch = noone;}
@@ -107,7 +107,7 @@ if (global.player4_key2_left = 0){global.player4_key2_left = noone;}
 if (global.player4_key2_right = 0){global.player4_key2_right = noone;}
 if (global.player4_key2_down = 0){global.player4_key2_down = noone;}
 if (global.player4_key2_up = 0){global.player4_key2_up = noone;}
-if (global.player4_key2_attack = 0){global.player4_key2_attack = noone;}
+if (global.player4_key2_tongue = 0){global.player4_key2_tongue = noone;}
 #endregion /*Player 4 reset keys to noone if they happen to be 0 END*/
 
 #endregion /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus END*/
@@ -260,7 +260,7 @@ and(menu_delay=0)
 	{
 		if (keyboard_check_pressed(vk_escape))
 		{
-			menu_delay=10;
+			menu_delay = 3;
 			menu = "quit_game_no";
 		}
 		else
@@ -594,12 +594,12 @@ or(menu="quit")
 			if (global.select_number_of_players_before_selecting_characters=true)
 			{
 				menu="1player";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 			else
 			{
 				menu="select_character";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 		}
 		else
@@ -638,18 +638,18 @@ or(menu="quit")
 				if (global.select_number_of_players_before_selecting_characters=true)
 				{
 					menu="1player";
-					menu_delay=10;
+					menu_delay = 3;
 				}
 				else
 				{
 					menu="select_character";
-					menu_delay=10;
+					menu_delay = 3;
 				}
 			}
 			else
 			{
 				menu="select_custom_level";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 			global.level_editor_level=1;
 	
@@ -710,7 +710,7 @@ or(menu="quit")
 		in_settings=true;
 		can_navigate_settings_sidebar=true;
 		menu=noone;
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	#endregion /*Click Options END*/
 	
@@ -732,7 +732,7 @@ or(menu="quit")
 	and(menu_delay=0)
 	and(global.show_language_shortcut=true)
 	{
-		menu_delay=10;
+		menu_delay = 3;
 		in_settings=true;
 		can_navigate_settings_sidebar=false;
 		global.settings_sidebar_menu="language_settings";
@@ -773,7 +773,7 @@ or(menu="quit")
 	and(menu_delay=0)
 	and(global.show_accessibility_shortcut=true)
 	{
-		menu_delay=10;
+		menu_delay = 3;
 		in_settings=true;
 		can_navigate_settings_sidebar=false;
 		global.settings_sidebar_menu="accessibility_settings";
@@ -814,7 +814,7 @@ or(menu="quit")
 	and(menu_delay=0)
 	and(global.show_profile_shortcut=true)
 	{
-		menu_delay=10;
+		menu_delay = 3;
 		in_settings=true;
 		can_navigate_settings_sidebar=false;
 		global.settings_sidebar_menu="profile_settings";
@@ -848,7 +848,7 @@ or(menu="quit")
 	{
 		in_settings=false;
 		menu = "quit_game_no";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	else
 
@@ -1132,7 +1132,7 @@ or(menu="4player")
 	if (global.select_number_of_players_before_selecting_characters=false)
 	{
 		menu="select_character";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	
 	draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+22,"Select how many players (1-4 players)",global.default_text_size*1.3,c_menu_outline,c_menu_fill,1);
@@ -1197,7 +1197,7 @@ or(menu="4player")
 			and(menu_delay=0)
 			{
 				menu="2player";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 			if (asset_get_type("spr_menu_button_2player")==asset_sprite)
 			{
@@ -1271,7 +1271,7 @@ or(menu="4player")
 			and(menu_delay=0)
 			{
 				menu="3player";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 			if (asset_get_type("spr_menu_button_3player")==asset_sprite)
 			{
@@ -1364,7 +1364,7 @@ or(menu="4player")
 			and(menu_delay=0)
 			{
 				menu="4player";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 			if (asset_get_type("spr_menu_button_4player")==asset_sprite)
 			{
@@ -1397,21 +1397,21 @@ or(menu="4player")
 	and(menu_delay=0)
 	{
 		menu="3player";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	if (key_left)
 	and(menu="3player")
 	and(menu_delay=0)
 	{
 		menu="2player";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	if (key_left)
 	and(menu="2player")
 	and(menu_delay=0)
 	{
 		menu="1player";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 }
 #endregion /*Select how many players (1-4 players) END*/
@@ -1446,6 +1446,14 @@ or(menu="import_export_level")
 	
 	#region /*Back Button*/
 	draw_menu_button(0,0,"Back","back_from_level_editor","leveleditor");
+	if (menu="back_from_level_editor")
+	and(key_up)
+	and(menu_delay=0)
+	{
+		menu_delay = 3;
+		menu = "level_editor_play";
+	}
+	else
 	if (menu="back_from_level_editor")
 	and(key_down)
 	and(menu_delay=0)
@@ -1646,7 +1654,7 @@ and(key_up)
 and(menu_delay=0)
 {
 	menu="back_from_level_editor";
-	menu_delay=10;
+	menu_delay = 3;
 }
 
 if (menu="select_custom_level")
@@ -1654,7 +1662,7 @@ and(key_down)
 and(menu_delay=0)
 {
 	menu="level_editor_make";
-	menu_delay=10;
+	menu_delay = 3;
 }
 
 if (menu="select_custom_level")
@@ -1669,7 +1677,7 @@ window_get_height()/2+menu_y_offset+16))
 and(mouse_check_button_pressed(mb_left))
 and(global.level_editor_level>1)
 {
-	menu_delay=10;
+	menu_delay = 3;
 	global.level_editor_level-=1;
 	copy_to_clipboard_message=0;
 	paste_from_clipboard_message=0;
@@ -1696,7 +1704,7 @@ window_get_width()/2+189+16,
 window_get_height()/2+menu_y_offset+16))
 and(mouse_check_button_pressed(mb_left))
 {
-	menu_delay=10;
+	menu_delay = 3;
 	global.level_editor_level+=1;
 	copy_to_clipboard_message=0;
 	paste_from_clipboard_message=0;
@@ -1719,7 +1727,7 @@ if (menu="level_editor_make")
 	and(menu_delay=0)
 	{
 		menu="select_custom_level";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	else
 	if (key_down)
@@ -1730,7 +1738,7 @@ if (menu="level_editor_make")
 	and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt"))
 	{
 		menu="level_editor_upload";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 }
 if (menu="level_editor_upload")
@@ -1739,7 +1747,7 @@ if (menu="level_editor_upload")
 	and(menu_delay=0)
 	{
 		menu="level_editor_make";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	else
 	if (key_down)
@@ -1750,7 +1758,7 @@ if (menu="level_editor_upload")
 	and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt"))
 	{
 		menu="delete_level";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 }
 if (menu="delete_level")
@@ -1759,7 +1767,7 @@ if (menu="delete_level")
 	and(menu_delay=0)
 	{
 		menu="level_editor_upload";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	else
 	if (key_down)
@@ -1770,7 +1778,7 @@ if (menu="delete_level")
 	and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object Placement.txt"))
 	{
 		menu="level_editor_play";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 }
 if (menu="level_editor_play")
@@ -1779,7 +1787,14 @@ if (menu="level_editor_play")
 	and(menu_delay=0)
 	{
 		menu="delete_level";
-		menu_delay=10;
+		menu_delay = 3;
+	}
+	else
+	if (key_down)
+	and(menu_delay=0)
+	{
+		menu="back_from_level_editor";
+		menu_delay = 3;
 	}
 }
 
@@ -1910,7 +1925,7 @@ and(menu_delay=0)
 		{
 			menu="1player";
 		}
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	else
 	{
@@ -1974,7 +1989,7 @@ and(menu_delay=0)
 		{
 			menu="1player";
 		}
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	else
 	{
@@ -2038,7 +2053,7 @@ and(menu_delay=0)
 		{
 			menu="1player";
 		}
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	else
 	{
@@ -2106,7 +2121,7 @@ and(menu_delay=0)
 	{
 		menu="file3delete";
 	}
-	menu_delay=10;
+	menu_delay = 3;
 }
 if (menu="file1delete")
 and(menu_delay=0)
@@ -2117,7 +2132,7 @@ and(menu_delay=0)
 	}
 	global.file=1;
 	menu="file1";
-	menu_delay=10;
+	menu_delay = 3;
 }
 if (menu="file2delete")
 and(menu_delay=0)
@@ -2128,7 +2143,7 @@ and(menu_delay=0)
 	}
 	global.file=2;
 	menu="file2";
-	menu_delay=10;
+	menu_delay = 3;
 }
 if (menu="file3delete")
 and(menu_delay=0)
@@ -2139,7 +2154,7 @@ and(menu_delay=0)
 	}
 	global.file=3;
 	menu="file3";
-	menu_delay=10;
+	menu_delay = 3;
 }
 #endregion /*Delete File END*/
 
@@ -2162,7 +2177,7 @@ or(menu="4player")
 		}
 		global.playergame=0;
 		can_navigate=true;
-		menu_delay=10;
+		menu_delay = 3;
 		menu_joystick1_delay=0;
 		menu_joystick2_delay=0;
 		menu_joystick3_delay=0;
@@ -2181,7 +2196,7 @@ or(menu="4player")
 			else
 			{
 				menu="select_custom_level";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 		}
 	}
@@ -2201,7 +2216,7 @@ or(menu="4player")
 		}
 		global.playergame=1;
 		can_navigate=true;
-		menu_delay=10;
+		menu_delay = 3;
 		menu_joystick1_delay=0;
 		menu_joystick2_delay=0;
 		menu_joystick3_delay=0;
@@ -2220,7 +2235,7 @@ or(menu="4player")
 			else
 			{
 				menu="select_custom_level";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 		}
 	}
@@ -2240,7 +2255,7 @@ or(menu="4player")
 		}
 		global.playergame=2;
 		can_navigate=true;
-		menu_delay=10;
+		menu_delay = 3;
 		menu_joystick1_delay=0;
 		menu_joystick2_delay=0;
 		menu_joystick3_delay=0;
@@ -2259,7 +2274,7 @@ or(menu="4player")
 			else
 			{
 				menu="select_custom_level";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 		}
 	}
@@ -2279,7 +2294,7 @@ or(menu="4player")
 		}
 		global.playergame=3;
 		can_navigate=true;
-		menu_delay=10;
+		menu_delay = 3;
 		menu_joystick1_delay=0;
 		menu_joystick2_delay=0;
 		menu_joystick3_delay=0;
@@ -2298,7 +2313,7 @@ or(menu="4player")
 			else
 			{
 				menu="select_custom_level";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 		}
 	}
@@ -2402,7 +2417,7 @@ or(menu="import_export_level")
 		window_get_height()/2+menu_y_offset+64+42+42+42))
 		and(mouse_check_button_pressed(mb_left))
 		{
-			menu_delay=10;
+			menu_delay = 3;
 	
 			#region /*Reset Level Editor Checkpoint*/
 			if (!directory_exists(working_directory+"/Custom Levels"))
@@ -2507,7 +2522,7 @@ and(menu_delay=0)
 	menu=noone;
 	in_settings=true;
 	can_navigate_settings_sidebar=true;
-	menu_delay=10;
+	menu_delay = 3;
 }
 #endregion /*Select Options END*/
 
@@ -2517,7 +2532,7 @@ and(key_a_pressed)
 and(menu_delay=0)
 {
 	menu = "quit_game_no";
-	menu_delay=10;
+	menu_delay = 3;
 }
 #endregion /*Select Quit END*/
 
@@ -3092,21 +3107,21 @@ if (key_b_pressed)
 	{
 		global.file=1;
 		menu="file1";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	if (menu="file2delete")
 	and(menu_delay=0)
 	{
 		global.file=2;
 		menu="file2";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	if (menu="file3delete")
 	and(menu_delay=0)
 	{
 		global.file=3;
 		menu="file3";
-		menu_delay=10;
+		menu_delay = 3;
 	}
 	#endregion /*Delete File END*/
 	
@@ -3122,25 +3137,25 @@ if (key_b_pressed)
 				if (global.file=1)
 				{
 					menu="file1";
-					menu_delay=10;
+					menu_delay = 3;
 				}
 				else
 				if (global.file=2)
 				{
 					menu="file2";
-					menu_delay=10;
+					menu_delay = 3;
 				}
 				else
 				if (global.file=3)
 				{
 					menu="file3";
-					menu_delay=10;
+					menu_delay = 3;
 				}
 			}
 			else
 			{
 				menu="leveleditor";
-				menu_delay=10;
+				menu_delay = 3;
 			}
 		}
 	}
@@ -3156,7 +3171,7 @@ if (key_b_pressed)
 			global.file=1; /*File should be able to be selected, otherwise you can't navigate to the file selection or get past the character selection screen*/
 			menu="leveleditor";
 			show_title_logo = true;
-			menu_delay=10;
+			menu_delay = 3;
 		}
 	}
 }

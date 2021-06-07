@@ -27,6 +27,7 @@ or(die_volting = +1)
 	gravity = 0.5; /*The gravity*/
 	#endregion /*Set the gravity END*/
 	
+	sprite_used = "stand";
 }
 else
 {
@@ -54,7 +55,7 @@ else
 	}
 	#endregion /*Set the gravity END*/
 	
-	if flat = true
+	if (flat = true)
 	{
 		speed = 0;
 		if (image_index > image_number - 1)
@@ -65,12 +66,16 @@ else
 		{
 			image_speed = 0.5;
 		}
-		sprite_index = sprite_flat;
+		sprite_used = "flattened";
 		if (image_index > image_number - 1)
 		{
 			effect_create_above(ef_smoke, x, y, 2, c_white);
 			instance_destroy();
 		}
+	}
+	else
+	{
+		sprite_used = "stand";
 	}
 }
 mask_index = mask;

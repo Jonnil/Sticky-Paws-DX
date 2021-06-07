@@ -39,6 +39,4 @@ if (asset_get_type("spr_wall")==asset_sprite)
 }
 #endregion /*Mask END*/
 
-sprite_walk = global.resourcepack_sprite_basic_enemy;
-sprite_angry= global.resourcepack_sprite_basic_enemy_angry;
-sprite_flat= global.resourcepack_sprite_basic_enemy_flattened;
+sprite_used = "stand";

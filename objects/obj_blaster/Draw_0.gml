@@ -71,4 +71,7 @@ if (time>200)
 	time=0;
 }
 
-draw_sprite_ext(sprite_index, image_index, x, yy, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
+if (global.resourcepack_sprite_blaster > 0)
+{
+	draw_sprite_ext(global.resourcepack_sprite_blaster, image_index, x, yy, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
+}

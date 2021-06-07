@@ -12,12 +12,17 @@ if (die=false)
 	if (place_meeting(x, y+1, other))
 	and(vspeed >= 0)
 	{
-		effect_create_above(ef_smoke,x-16,bbox_bottom,0,c_white);
-		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
-		effect_create_above(ef_smoke,x+16,bbox_bottom,0,c_white);
-		effect_create_above(ef_smoke,x-16-8,bbox_bottom-8,0,c_white);
-		effect_create_above(ef_smoke,x,bbox_bottom-8,0,c_white);
-		effect_create_above(ef_smoke,x+16+8,bbox_bottom-8,0,c_white);
+		if (asset_get_type("obj_camera") == asset_object)
+		and (instance_exists(obj_camera))
+		and (obj_camera.iris_xscale > 1)
+		{
+			effect_create_above(ef_smoke,x-16,bbox_bottom,0,c_white);
+			effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
+			effect_create_above(ef_smoke,x+16,bbox_bottom,0,c_white);
+			effect_create_above(ef_smoke,x-16-8,bbox_bottom-8,0,c_white);
+			effect_create_above(ef_smoke,x,bbox_bottom-8,0,c_white);
+			effect_create_above(ef_smoke,x+16+8,bbox_bottom-8,0,c_white);
+		}
 		vspeed=0;
 		gravity=0;
 		draw_xscale=1.25;

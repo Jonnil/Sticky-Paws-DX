@@ -27,7 +27,7 @@ else
 
 if (asset_get_type("spr_wall")==asset_sprite)
 {
-	mask_index=spr_wall;
+	mask_index = spr_wall;
 }
 
 draw_xscale=1;

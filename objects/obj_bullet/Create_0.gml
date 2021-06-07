@@ -1,6 +1,5 @@
 depth =+ 9;
 
-sprite_index = global.resourcepack_sprite_bullet;
 if (asset_get_type("spr_wall")==asset_sprite)
 {
 	mask_index=spr_wall;

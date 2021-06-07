@@ -1,4 +1,4 @@
-depth = -1999;
+depth = -9999;
 count=0;
 last_player=false;
 iris_xscale=16;

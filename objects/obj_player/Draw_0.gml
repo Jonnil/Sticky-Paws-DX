@@ -197,6 +197,7 @@ if (redblinktimer>30)
 	redblinktimer=0;
 }
 if (midair_jumps_left=0)
+and (number_of_jumps > 1)
 {
 	double_jump_depleted_blink+=1;
 	if (double_jump_depleted_blink>20)
@@ -237,6 +238,7 @@ if (sprite_index>0)
 #endregion /*Blink red when only having 1 HP left and no heart balloon END*/
 
 if (double_jump_depleted_blink>=18)
+and (number_of_jumps > 1)
 and(sprite_index>0)
 {
 	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,c_ltgray,0.50);
@@ -318,7 +320,7 @@ else
 #endregion /*Don't make it look like the player is teleporting when the plyaer teleports END*/
 
 #region /*Homing Attack*/
-if (allow_homing_attack=true)
+if (allow_homing_tongue=true)
 {
 
 	#region /*Homing Enemy*/

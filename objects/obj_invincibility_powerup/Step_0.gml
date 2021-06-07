@@ -1,3 +1,5 @@
+sprite_index = global.resourcepack_sprite_invincibility_powerup;
+
 image_speed = 0.1;
 gravity_direction = 270;
 gravity = 0.5;

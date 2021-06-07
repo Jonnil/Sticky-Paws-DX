@@ -38,6 +38,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","enable_foreground_layer1")){global.enable_foreground_layer1=ini_read_real("Config","enable_foreground_layer1",0);}
 		if (ini_key_exists("Config","enable_foreground_layer2")){global.enable_foreground_layer2=ini_read_real("Config","enable_foreground_layer2",0);}
 		if (ini_key_exists("Config","enable_transitions")){global.enable_transitions=ini_read_real("Config","enable_transitions",0);}
+		if (ini_key_exists("Config","selected_resourcepack")){global.selected_resourcepack=ini_read_real("Config","selected_resourcepack",0);}
 		
 		#region /*Load Player 1 Keyboard Remapping*/
 		if (ini_key_exists("Config","character_for_player_1")){global.character_for_player_1=ini_read_real("Config","character_for_player_1",0);}
@@ -53,7 +54,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player1_key_right")){global.player1_key_right=ini_read_real("Config","player1_key_right",0);}
 		if (ini_key_exists("Config","player1_key_down")){global.player1_key_down=ini_read_real("Config","player1_key_down",0);}
 		if (ini_key_exists("Config","player1_key_up")){global.player1_key_up=ini_read_real("Config","player1_key_up",0);}
-		if (ini_key_exists("Config","player1_key_attack")){global.player1_key_attack=ini_read_real("Config","player1_key_attack",0);}
+		if (ini_key_exists("Config","player1_key_tongue")){global.player1_key_tongue=ini_read_real("Config","player1_key_tongue",0);}
 		if (ini_key_exists("Config","player1_key2_dive")){global.player1_key2_dive=ini_read_real("Config","player1_key2_dive",0);}
 		if (ini_key_exists("Config","player1_key2_jump")){global.player1_key2_jump=ini_read_real("Config","player1_key2_jump",0);}
 		if (ini_key_exists("Config","player1_key2_crouch")){global.player1_key2_crouch=ini_read_real("Config","player1_key2_crouch",0);}
@@ -64,7 +65,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player1_key2_right")){global.player1_key2_right=ini_read_real("Config","player1_key2_right",0);}
 		if (ini_key_exists("Config","player1_key2_down")){global.player1_key2_down=ini_read_real("Config","player1_key2_down",0);}
 		if (ini_key_exists("Config","player1_key2_up")){global.player1_key2_up=ini_read_real("Config","player1_key2_up",0);}
-		if (ini_key_exists("Config","player1_key2_attack")){global.player1_key2_attack=ini_read_real("Config","player1_key2_attack",0);}
+		if (ini_key_exists("Config","player1_key2_tongue")){global.player1_key2_tongue=ini_read_real("Config","player1_key2_tongue",0);}
 		if (ini_key_exists("Config","player1_up_key_is_jump_key")){global.player1_up_key_is_jump_key=ini_read_real("Config","player1_up_key_is_jump_key",0);}
 		if (ini_key_exists("Config","player1_double_tap_to_run")){global.player1_double_tap_to_run=ini_read_real("Config","player1_double_tap_to_run",0);}
 		if (ini_key_exists("Config","player1_sprint_toggle")){global.player1_sprint_toggle=ini_read_real("Config","player1_sprint_toggle",0);}
@@ -89,7 +90,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player2_key_right")){global.player2_key_right=ini_read_real("Config","player2_key_right",0);}
 		if (ini_key_exists("Config","player2_key_down")){global.player2_key_down=ini_read_real("Config","player2_key_down",0);}
 		if (ini_key_exists("Config","player2_key_up")){global.player2_key_up=ini_read_real("Config","player2_key_up",0);}
-		if (ini_key_exists("Config","player2_key_attack")){global.player2_key_attack=ini_read_real("Config","player2_key_attack",0);}
+		if (ini_key_exists("Config","player2_key_tongue")){global.player2_key_tongue=ini_read_real("Config","player2_key_tongue",0);}
 		if (ini_key_exists("Config","player2_key2_dive")){global.player2_key2_dive=ini_read_real("Config","player2_key2_dive",0);}
 		if (ini_key_exists("Config","player2_key2_jump")){global.player2_key2_jump=ini_read_real("Config","player2_key2_jump",0);}
 		if (ini_key_exists("Config","player2_key2_crouch")){global.player2_key2_crouch=ini_read_real("Config","player2_key2_crouch",0);}
@@ -100,7 +101,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player2_key2_right")){global.player2_key2_right=ini_read_real("Config","player2_key2_right",0);}
 		if (ini_key_exists("Config","player2_key2_down")){global.player2_key2_down=ini_read_real("Config","player2_key2_down",0);}
 		if (ini_key_exists("Config","player2_key2_up")){global.player2_key2_up=ini_read_real("Config","player2_key2_up",0);}
-		if (ini_key_exists("Config","player2_key2_attack")){global.player2_key2_attack=ini_read_real("Config","player2_key2_attack",0);}
+		if (ini_key_exists("Config","player2_key2_tongue")){global.player2_key2_tongue=ini_read_real("Config","player2_key2_tongue",0);}
 		if (ini_key_exists("Config","player2_up_key_is_jump_key")){global.player2_up_key_is_jump_key=ini_read_real("Config","player2_up_key_is_jump_key",0);}
 		if (ini_key_exists("Config","player2_double_tap_to_run")){global.player2_double_tap_to_run=ini_read_real("Config","player2_double_tap_to_run",0);}
 		if (ini_key_exists("Config","player2_sprint_toggle")){global.player2_sprint_toggle=ini_read_real("Config","player2_sprint_toggle",0);}
@@ -125,7 +126,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player3_key_right")){global.player3_key_right=ini_read_real("Config","player3_key_right",0);}
 		if (ini_key_exists("Config","player3_key_down")){global.player3_key_down=ini_read_real("Config","player3_key_down",0);}
 		if (ini_key_exists("Config","player3_key_up")){global.player3_key_up=ini_read_real("Config","player3_key_up",0);}
-		if (ini_key_exists("Config","player3_key_attack")){global.player3_key_attack=ini_read_real("Config","player3_key_attack",0);}
+		if (ini_key_exists("Config","player3_key_tongue")){global.player3_key_tongue=ini_read_real("Config","player3_key_tongue",0);}
 		if (ini_key_exists("Config","player3_key2_dive")){global.player3_key2_dive=ini_read_real("Config","player3_key2_dive",0);}
 		if (ini_key_exists("Config","player3_key2_jump")){global.player3_key2_jump=ini_read_real("Config","player3_key2_jump",0);}
 		if (ini_key_exists("Config","player3_key2_crouch")){global.player3_key2_crouch=ini_read_real("Config","player3_key2_crouch",0);}
@@ -136,7 +137,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player3_key2_right")){global.player3_key2_right=ini_read_real("Config","player3_key2_right",0);}
 		if (ini_key_exists("Config","player3_key2_down")){global.player3_key2_down=ini_read_real("Config","player3_key2_down",0);}
 		if (ini_key_exists("Config","player3_key2_up")){global.player3_key2_up=ini_read_real("Config","player3_key2_up",0);}
-		if (ini_key_exists("Config","player3_key2_attack")){global.player3_key2_attack=ini_read_real("Config","player3_key2_attack",0);}
+		if (ini_key_exists("Config","player3_key2_tongue")){global.player3_key2_tongue=ini_read_real("Config","player3_key2_tongue",0);}
 		if (ini_key_exists("Config","player3_up_key_is_jump_key")){global.player3_up_key_is_jump_key=ini_read_real("Config","player3_up_key_is_jump_key",0);}
 		if (ini_key_exists("Config","player3_double_tap_to_run")){global.player3_double_tap_to_run=ini_read_real("Config","player3_double_tap_to_run",0);}
 		if (ini_key_exists("Config","player3_sprint_toggle")){global.player3_sprint_toggle=ini_read_real("Config","player3_sprint_toggle",0);}
@@ -161,7 +162,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player4_key_right")){global.player4_key_right=ini_read_real("Config","player4_key_right",0);}
 		if (ini_key_exists("Config","player4_key_down")){global.player4_key_down=ini_read_real("Config","player4_key_down",0);}
 		if (ini_key_exists("Config","player4_key_up")){global.player4_key_up=ini_read_real("Config","player4_key_up",0);}
-		if (ini_key_exists("Config","player4_key_attack")){global.player4_key_attack=ini_read_real("Config","player4_key_attack",0);}
+		if (ini_key_exists("Config","player4_key_tongue")){global.player4_key_tongue=ini_read_real("Config","player4_key_tongue",0);}
 		if (ini_key_exists("Config","player4_key2_dive")){global.player4_key2_dive=ini_read_real("Config","player4_key2_dive",0);}
 		if (ini_key_exists("Config","player4_key2_jump")){global.player4_key2_jump=ini_read_real("Config","player4_key2_jump",0);}
 		if (ini_key_exists("Config","player4_key2_crouch")){global.player4_key2_crouch=ini_read_real("Config","player4_key2_crouch",0);}
@@ -172,7 +173,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","player4_key2_right")){global.player4_key2_right=ini_read_real("Config","player4_key2_right",0);}
 		if (ini_key_exists("Config","player4_key2_down")){global.player4_key2_down=ini_read_real("Config","player4_key2_down",0);}
 		if (ini_key_exists("Config","player4_key2_up")){global.player4_key2_up=ini_read_real("Config","player4_key2_up",0);}
-		if (ini_key_exists("Config","player4_key2_attack")){global.player4_key2_attack=ini_read_real("Config","player4_key2_attack",0);}
+		if (ini_key_exists("Config","player4_key2_tongue")){global.player4_key2_tongue=ini_read_real("Config","player4_key2_tongue",0);}
 		if (ini_key_exists("Config","player4_up_key_is_jump_key")){global.player4_up_key_is_jump_key=ini_read_real("Config","player4_up_key_is_jump_key",0);}
 		if (ini_key_exists("Config","player4_double_tap_to_run")){global.player4_double_tap_to_run=ini_read_real("Config","player4_double_tap_to_run",0);}
 		if (ini_key_exists("Config","player4_sprint_toggle")){global.player4_sprint_toggle=ini_read_real("Config","player4_sprint_toggle",0);}

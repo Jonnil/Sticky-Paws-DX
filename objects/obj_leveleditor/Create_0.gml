@@ -217,7 +217,8 @@ else
 #endregion /*Load Level Information END*/
 
 #region /*Create Ground Tileset PNG if there is none*/
-if (!file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png"))
+if (global.character_select_in_this_menu = "level_editor")
+and (!file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Tilesets/ground_tileset.png"))
 {
 	#region /*Save sprite in directory*/
 	sprite_variable = sprite_duplicate(spr_ground_tileset);

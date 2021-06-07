@@ -40,6 +40,7 @@ function scr_saveconfig()
 	ini_write_real("Config","enable_foreground_layer1",global.enable_foreground_layer1);
 	ini_write_real("Config","enable_foreground_layer2",global.enable_foreground_layer2);
 	ini_write_real("Config","enable_transitions",global.enable_transitions);
+	ini_write_real("Config","selected_resourcepack",global.selected_resourcepack);
 	
 	#region /*Save Player 1 Keyboard Remapping*/
 	ini_write_real("Config","character_for_player_1",global.character_for_player_1);
@@ -55,7 +56,7 @@ function scr_saveconfig()
 	ini_write_real("Config","player1_key_right",global.player1_key_right);
 	ini_write_real("Config","player1_key_down",global.player1_key_down);
 	ini_write_real("Config","player1_key_up",global.player1_key_up);
-	ini_write_real("Config","player1_key_attack",global.player1_key_attack);
+	ini_write_real("Config","player1_key_tongue",global.player1_key_tongue);
 	ini_write_real("Config","player1_key2_dive",global.player1_key2_dive);
 	ini_write_real("Config","player1_key2_jump",global.player1_key2_jump);
 	ini_write_real("Config","player1_key2_crouch",global.player1_key2_crouch);
@@ -66,7 +67,7 @@ function scr_saveconfig()
 	ini_write_real("Config","player1_key2_right",global.player1_key2_right);
 	ini_write_real("Config","player1_key2_down",global.player1_key2_down);
 	ini_write_real("Config","player1_key2_up",global.player1_key2_up);
-	ini_write_real("Config","player1_key2_attack",global.player1_key2_attack);
+	ini_write_real("Config","player1_key2_tongue",global.player1_key2_tongue);
 	ini_write_real("Config","player1_up_key_is_jump_key",global.player1_up_key_is_jump_key);
 	ini_write_real("Config","player1_double_tap_to_run",global.player1_double_tap_to_run);
 	ini_write_real("Config","player1_sprint_toggle",global.player1_sprint_toggle);
@@ -91,7 +92,7 @@ function scr_saveconfig()
 	ini_write_real("Config","player2_key_right",global.player2_key_right);
 	ini_write_real("Config","player2_key_down",global.player2_key_down);
 	ini_write_real("Config","player2_key_up",global.player2_key_up);
-	ini_write_real("Config","player2_key_attack",global.player2_key_attack);
+	ini_write_real("Config","player2_key_tongue",global.player2_key_tongue);
 	ini_write_real("Config","player2_key2_dive",global.player2_key2_dive);
 	ini_write_real("Config","player2_key2_jump",global.player2_key2_jump);
 	ini_write_real("Config","player2_key2_crouch",global.player2_key2_crouch);
@@ -102,7 +103,7 @@ function scr_saveconfig()
 	ini_write_real("Config","player2_key2_right",global.player2_key2_right);
 	ini_write_real("Config","player2_key2_down",global.player2_key2_down);
 	ini_write_real("Config","player2_key2_up",global.player2_key2_up);
-	ini_write_real("Config","player2_key2_attack",global.player2_key2_attack);
+	ini_write_real("Config","player2_key2_tongue",global.player2_key2_tongue);
 	ini_write_real("Config","player2_up_key_is_jump_key",global.player2_up_key_is_jump_key);
 	ini_write_real("Config","player2_double_tap_to_run",global.player2_double_tap_to_run);
 	ini_write_real("Config","player2_sprint_toggle",global.player2_sprint_toggle);
@@ -127,7 +128,7 @@ function scr_saveconfig()
 	ini_write_real("Config","player3_key_right",global.player3_key_right);
 	ini_write_real("Config","player3_key_down",global.player3_key_down);
 	ini_write_real("Config","player3_key_up",global.player3_key_up);
-	ini_write_real("Config","player3_key_attack",global.player3_key_attack);
+	ini_write_real("Config","player3_key_tongue",global.player3_key_tongue);
 	ini_write_real("Config","player3_key2_dive",global.player3_key2_dive);
 	ini_write_real("Config","player3_key2_jump",global.player3_key2_jump);
 	ini_write_real("Config","player3_key2_crouch",global.player3_key2_crouch);
@@ -138,7 +139,7 @@ function scr_saveconfig()
 	ini_write_real("Config","player3_key2_right",global.player3_key2_right);
 	ini_write_real("Config","player3_key2_down",global.player3_key2_down);
 	ini_write_real("Config","player3_key2_up",global.player3_key2_up);
-	ini_write_real("Config","player3_key2_attack",global.player3_key2_attack);
+	ini_write_real("Config","player3_key2_tongue",global.player3_key2_tongue);
 	ini_write_real("Config","player3_up_key_is_jump_key",global.player3_up_key_is_jump_key);
 	ini_write_real("Config","player3_double_tap_to_run",global.player3_double_tap_to_run);
 	ini_write_real("Config","player3_sprint_toggle",global.player3_sprint_toggle);
@@ -163,7 +164,7 @@ function scr_saveconfig()
 	ini_write_real("Config","player4_key_right",global.player4_key_right);
 	ini_write_real("Config","player4_key_down",global.player4_key_down);
 	ini_write_real("Config","player4_key_up",global.player4_key_up);
-	ini_write_real("Config","player4_key_attack",global.player4_key_attack);
+	ini_write_real("Config","player4_key_tongue",global.player4_key_tongue);
 	ini_write_real("Config","player4_key2_dive",global.player4_key2_dive);
 	ini_write_real("Config","player4_key2_jump",global.player4_key2_jump);
 	ini_write_real("Config","player4_key2_crouch",global.player4_key2_crouch);
@@ -174,7 +175,7 @@ function scr_saveconfig()
 	ini_write_real("Config","player4_key2_right",global.player4_key2_right);
 	ini_write_real("Config","player4_key2_down",global.player4_key2_down);
 	ini_write_real("Config","player4_key2_up",global.player4_key2_up);
-	ini_write_real("Config","player4_key2_attack",global.player4_key2_attack);
+	ini_write_real("Config","player4_key2_tongue",global.player4_key2_tongue);
 	ini_write_real("Config","player4_up_key_is_jump_key",global.player4_up_key_is_jump_key);
 	ini_write_real("Config","player4_double_tap_to_run",global.player4_double_tap_to_run);
 	ini_write_real("Config","player4_sprint_toggle",global.player4_sprint_toggle);

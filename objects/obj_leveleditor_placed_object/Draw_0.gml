@@ -88,19 +88,22 @@ and(undo_value<=obj_leveleditor.current_undo_value)
 if (asset_get_type("obj_leveleditor")==asset_object)
 and(instance_exists(obj_leveleditor))
 and(sprite_index>0)
+and(global.character_select_in_this_menu="level_editor")
 {
 
 	#region /*Show only normal difficulty layer in regular colors when saving a thumbnail*/
 	if (obj_leveleditor.quit_level_editor>=true)
-	and(normal=true)
+	and (normal=true)
+	and (sprite_index > 0)
 	{
 		draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,1);
 		image_alpha = 1;
 		image_blend = c_white;
 	}
-	else
 	#endregion /*Show only normal difficulty layer in regular colors when saving a thumbnail END*/
-
+	
+	else
+	
 	#region /*All layer*/
 	if (obj_leveleditor.difficulty_layer=0)
 	and(obj_leveleditor.quit_level_editor=false)
@@ -109,6 +112,7 @@ and(sprite_index>0)
 		if (easy=true)
 		and(normal=false)
 		and(hard=false)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,0.1);
 			image_alpha = 0.1;
@@ -118,6 +122,7 @@ and(sprite_index>0)
 		if (easy=true)
 		and(normal=true)
 		and(hard=false)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 			image_alpha = 0.1;
@@ -127,6 +132,7 @@ and(sprite_index>0)
 		if (easy=false)
 		and(normal=true)
 		and(hard=false)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,0.1);
 			image_alpha = 0.1;
@@ -136,6 +142,7 @@ and(sprite_index>0)
 		if (easy=false)
 		and(normal=true)
 		and(hard=true)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 			image_alpha = 0.1;
@@ -145,6 +152,7 @@ and(sprite_index>0)
 		if (easy=false)
 		and(normal=false)
 		and(hard=true)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,0.1);
 			image_alpha = 0.1;
@@ -154,6 +162,7 @@ and(sprite_index>0)
 		if (easy=true)
 		and(normal=false)
 		and(hard=true)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 			image_alpha = 0.1;
@@ -163,8 +172,9 @@ and(sprite_index>0)
 	
 		else
 		if (easy=true)
-		and(normal=true)
-		and(hard=true)
+		and (normal=true)
+		and (hard=true)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,1);
 			image_alpha = 1;
@@ -179,6 +189,7 @@ and(sprite_index>0)
 	and(obj_leveleditor.quit_level_editor=false)
 	{
 		if (easy=true)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,1);
 			image_alpha = 1;
@@ -190,6 +201,7 @@ and(sprite_index>0)
 			if (easy=true)
 			and(normal=false)
 			and(hard=false)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,0.1);
 				image_alpha = 0.1;
@@ -199,6 +211,7 @@ and(sprite_index>0)
 			if (easy=true)
 			and(normal=true)
 			and(hard=false)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 				image_alpha = 0.1;
@@ -208,6 +221,7 @@ and(sprite_index>0)
 			if (easy=false)
 			and(normal=true)
 			and(hard=false)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,0.1);
 				image_alpha = 0.1;
@@ -217,6 +231,7 @@ and(sprite_index>0)
 			if (easy=false)
 			and(normal=true)
 			and(hard=true)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 				image_alpha = 0.1;
@@ -226,6 +241,7 @@ and(sprite_index>0)
 			if (easy=false)
 			and(normal=false)
 			and(hard=true)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,0.1);
 				image_alpha = 0.1;
@@ -235,6 +251,7 @@ and(sprite_index>0)
 			if (easy=true)
 			and(normal=false)
 			and(hard=true)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 				image_alpha = 0.1;
@@ -250,6 +267,7 @@ and(sprite_index>0)
 	and(obj_leveleditor.quit_level_editor=false)
 	{
 		if (normal=true)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,1);
 			image_alpha = 1;
@@ -261,6 +279,7 @@ and(sprite_index>0)
 			if (easy=true)
 			and(normal=false)
 			and(hard=false)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,0.1);
 				image_alpha = 0.1;
@@ -270,6 +289,7 @@ and(sprite_index>0)
 			if (easy=true)
 			and(normal=true)
 			and(hard=false)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 				image_alpha = 0.1;
@@ -279,6 +299,7 @@ and(sprite_index>0)
 			if (easy=false)
 			and(normal=true)
 			and(hard=false)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,0.1);
 				image_alpha = 0.1;
@@ -288,6 +309,7 @@ and(sprite_index>0)
 			if (easy=false)
 			and(normal=true)
 			and(hard=true)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 				image_alpha = 0.1;
@@ -297,6 +319,7 @@ and(sprite_index>0)
 			if (easy=false)
 			and(normal=false)
 			and(hard=true)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,0.1);
 				image_alpha = 0.1;
@@ -306,6 +329,7 @@ and(sprite_index>0)
 			if (easy=true)
 			and(normal=false)
 			and(hard=true)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 				image_alpha = 0.1;
@@ -321,6 +345,7 @@ and(sprite_index>0)
 	and(obj_leveleditor.quit_level_editor=false)
 	{
 		if (hard=true)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,1);
 			image_alpha = 1;
@@ -332,6 +357,7 @@ and(sprite_index>0)
 			if (easy=true)
 			and(normal=false)
 			and(hard=false)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_lime,0.1);
 				image_alpha = 0.1;
@@ -341,6 +367,7 @@ and(sprite_index>0)
 			if (easy=true)
 			and(normal=true)
 			and(hard=false)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 				image_alpha = 0.1;
@@ -350,6 +377,7 @@ and(sprite_index>0)
 			if (easy=false)
 			and(normal=true)
 			and(hard=false)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_yellow,0.1);
 				image_alpha = 0.1;
@@ -359,6 +387,7 @@ and(sprite_index>0)
 			if (easy=false)
 			and(normal=true)
 			and(hard=true)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 				image_alpha = 0.1;
@@ -368,6 +397,7 @@ and(sprite_index>0)
 			if (easy=false)
 			and(normal=false)
 			and(hard=true)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_red,0.1);
 				image_alpha = 0.1;
@@ -377,6 +407,7 @@ and(sprite_index>0)
 			if (easy=true)
 			and(normal=false)
 			and(hard=true)
+			and (sprite_index > 0)
 			{
 				draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,0.1);
 				image_alpha = 0.1;
@@ -389,7 +420,8 @@ and(sprite_index>0)
 
 }
 else
-if (sprite_index>0)
+if (sprite_index > 0)
+and(global.character_select_in_this_menu="level_editor")
 {
 	draw_sprite_ext(sprite_index,image_index,x,y,1,1,draw_angle,c_white,1);
 	image_alpha = 1;
@@ -397,7 +429,14 @@ if (sprite_index>0)
 }
 #endregion /*Make sprite transparent if you're setting difficulty levels END*/
 
-if (easy=false)and(normal=false)and(hard=false){instance_destroy();} /*if all dificulty variables are false, then delete the object END*/
+#region /*If all dificulty variables are false, then delete the object*/
+if (easy = false)
+and (normal = false)
+and (hard = false)
+{
+	instance_destroy();
+}
+#endregion /*If all dificulty variables are false, then delete the object END*/
 
 #region /*Make object change difficulty layer depending on what difficulty layer is selected*/
 if (asset_get_type("obj_leveleditor")==asset_object)
@@ -1442,11 +1481,11 @@ if (global.play_edited_level=true)
 {
 	
 	#region /*Delete objects according to difficulty settings*/
-	if (global.difficulty<=1)
+	if (global.difficulty<=0)
 	and(easy=true)
-	or(global.difficulty=2)
+	or(global.difficulty=1)
 	and(normal=true)
-	or(global.difficulty>=3)
+	or(global.difficulty>=2)
 	and(hard=true)
 	{
 		if (object = 1)and(asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}
@@ -1458,7 +1497,7 @@ if (global.play_edited_level=true)
 		if (object = 1006)and(asset_get_type("obj_ground")==asset_object){with(instance_create_depth(x,y,0,obj_ground)){ground_surface = 6;}instance_destroy();}
 		if (object = 1007)and(asset_get_type("obj_ground")==asset_object){with(instance_create_depth(x,y,0,obj_ground)){ground_surface = 7;}instance_destroy();}
 		
-		if (object=2){if (global.difficulty>=1)and(asset_get_type("obj_spikes")==asset_object){instance_create_depth(x,y,0,obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}}}
+		if (object=2){if (global.enable_spikes = true)and(asset_get_type("obj_spikes")==asset_object){instance_create_depth(x,y,0,obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}}}
 		if (object=3)and(asset_get_type("obj_semisolid_platform")==asset_object){instance_create_depth(x,y,0,obj_semisolid_platform);instance_destroy();}
 		
 		#region /*Brick Block*/
@@ -1536,9 +1575,9 @@ if (global.play_edited_level=true)
 		if (object=56)and(asset_get_type("obj_extra_life_pickup")==asset_object){instance_create_depth(x,y,0,obj_extra_life_pickup);instance_destroy();}
 		if (object=57)and(asset_get_type("obj_extra_life_pickup")==asset_object){with(instance_create_depth(x,y,0,obj_extra_life_pickup)){number_of_extra_lives = 2;}instance_destroy();}
 		if (object=58)and(asset_get_type("obj_extra_life_pickup")==asset_object){with(instance_create_depth(x,y,0,obj_extra_life_pickup)){number_of_extra_lives = 3;}instance_destroy();}
-		if (object=59){if (global.difficulty>=1)and(asset_get_type("obj_enemy1")==asset_object){instance_create_depth(x,y,0,obj_enemy1);instance_destroy();}else{instance_destroy();}}
-		if (object=60){if (global.difficulty>=1)and(asset_get_type("obj_enemy2")==asset_object){instance_create_depth(x,y,0,obj_enemy2);instance_destroy();}else{instance_destroy();}}
-		if (object=61){if (global.difficulty>=1)and(asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
+		if (object=59){if (global.enable_enemies = true)and(asset_get_type("obj_enemy1")==asset_object){instance_create_depth(x,y,0,obj_enemy1);instance_destroy();}else{instance_destroy();}}
+		if (object=60){if (global.enable_enemies = true)and(asset_get_type("obj_enemy2")==asset_object){instance_create_depth(x,y,0,obj_enemy2);instance_destroy();}else{instance_destroy();}}
+		if (object=61){if (global.enable_enemies = true)and(asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
 		if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=63)and(asset_get_type("obj_vine")==asset_object){instance_create_depth(x,y,0,obj_vine);instance_destroy();}
 		
@@ -1551,7 +1590,7 @@ if (global.play_edited_level=true)
 		#endregion /*Arrow Sign Small End*/
 		
 		if (object=66)and(asset_get_type("obj_checkpoint")==asset_object){instance_create_depth(x+16,y,0,obj_checkpoint);instance_destroy();}
-		if (object=67){if (global.difficulty>=1)and(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}else{instance_destroy();}}
+		if (object=67){if (global.enable_spikes = true)and(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}else{instance_destroy();}}
 		
 		#region /*Oneway*/
 		if (object=68)and(asset_get_type("obj_oneway")==asset_object){instance_create_depth(x,y,0,obj_oneway);instance_destroy();}

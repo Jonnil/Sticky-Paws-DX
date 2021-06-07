@@ -1,3 +1,5 @@
+sprite_index = global.resourcepack_sprite_hp_pickup;
+
 #region /*Set the gravity*/
 gravity_direction=270;/*Direction of the gravity*/
 if (!place_meeting(x,y+1,obj_wall))

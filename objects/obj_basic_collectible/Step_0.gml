@@ -1,3 +1,5 @@
+sprite_index = global.resourcepack_sprite_basic_collectible;
+
 if (bounceup = false)
 {
 	visible = true;

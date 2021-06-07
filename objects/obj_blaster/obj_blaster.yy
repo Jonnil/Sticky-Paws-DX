@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_blaster",
-    "path": "sprites/spr_blaster/spr_blaster.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

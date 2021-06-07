@@ -44,4 +44,10 @@ function menu_dropdown_variable_to_change()
 	{
 		global.player4_wall_jump_setting = change_to_value;
 	}
+	else
+	if (variable_to_change = global.difficulty)
+	and (menu = "difficulty_settings")
+	{
+		global.difficulty = change_to_value;
+	}
 }

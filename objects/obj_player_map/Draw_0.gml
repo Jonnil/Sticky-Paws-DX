@@ -1522,7 +1522,7 @@ and(global.quit_level = false)
 	#region /*Custom Level Tileset File*/
 	sprite_delete(global.custom_tileset);
 		
-	if (global.character_select_in_this_menu="game")
+	if (global.character_select_in_this_menu = "game")
 	and(file_exists("Levels/Level" +string(global.level_editor_level)+"/Tilesets/ground_tileset.png"))
 	{
 		global.custom_tileset = sprite_add("Levels/Level" +string(global.level_editor_level)+"/Tilesets/ground_tileset.png",0,false,false,0,0);

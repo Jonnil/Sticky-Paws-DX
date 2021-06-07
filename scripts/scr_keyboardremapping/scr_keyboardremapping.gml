@@ -60,9 +60,9 @@ function scr_keyboardremapping()
 			{
 				global.player1_key_up = lastkey;
 			}
-			else if (menu = "remap_key_attack")
+			else if (menu = "remap_key_tongue")
 			{
-				global.player1_key_attack = lastkey;
+				global.player1_key_tongue = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -111,9 +111,9 @@ function scr_keyboardremapping()
 			{
 				global.player1_key2_up = lastkey;
 			}
-			else if (menu = "remap_key_attack")
+			else if (menu = "remap_key_tongue")
 			{
-				global.player1_key2_attack = lastkey;
+				global.player1_key2_tongue = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -170,9 +170,9 @@ function scr_keyboardremapping()
 			{
 				global.player2_key_up = lastkey;
 			}
-			else if (menu = "remap_key_attack")
+			else if (menu = "remap_key_tongue")
 			{
-				global.player2_key_attack = lastkey;
+				global.player2_key_tongue = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -221,9 +221,9 @@ function scr_keyboardremapping()
 			{
 				global.player2_key2_up = lastkey;
 			}
-			else if (menu = "remap_key_attack")
+			else if (menu = "remap_key_tongue")
 			{
-				global.player2_key2_attack = lastkey;
+				global.player2_key2_tongue = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -280,9 +280,9 @@ function scr_keyboardremapping()
 			{
 				global.player3_key_up = lastkey;
 			}
-			else if (menu = "remap_key_attack")
+			else if (menu = "remap_key_tongue")
 			{
-				global.player3_key_attack = lastkey;
+				global.player3_key_tongue = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -331,9 +331,9 @@ function scr_keyboardremapping()
 			{
 				global.player3_key2_up = lastkey;
 			}
-			else if (menu = "remap_key_attack")
+			else if (menu = "remap_key_tongue")
 			{
-				global.player3_key2_attack = lastkey;
+				global.player3_key2_tongue = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -390,9 +390,9 @@ function scr_keyboardremapping()
 			{
 				global.player4_key_up = lastkey;
 			}
-			else if (menu = "remap_key_attack")
+			else if (menu = "remap_key_tongue")
 			{
-				global.player4_key_attack = lastkey;
+				global.player4_key_tongue = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -441,9 +441,9 @@ function scr_keyboardremapping()
 			{
 				global.player4_key2_up = lastkey;
 			}
-			else if (menu = "remap_key_attack")
+			else if (menu = "remap_key_tongue")
 			{
-				global.player4_key2_attack = lastkey;
+				global.player4_key2_tongue = lastkey;
 			}
 			menu_delay = 10;
 			can_remap_key = false;

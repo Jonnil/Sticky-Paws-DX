@@ -7,6 +7,24 @@ function scr_load_resource_pack_sprite()
 	var xorig_variable = 0;
 	var yorig_variable = 0;
 	
+	#region /*Delete sprites before loading new sprites*/
+	if (room != room_splash_screen)
+	{
+		if (global.resourcepack_sprite_basic_collectible > 0){sprite_delete(global.resourcepack_sprite_basic_collectible);}
+		if (global.resourcepack_sprite_basic_enemy > 0){sprite_delete(global.resourcepack_sprite_basic_enemy);}
+		if (global.resourcepack_sprite_basic_enemy_angry > 0){sprite_delete(global.resourcepack_sprite_basic_enemy_angry);}
+		if (global.resourcepack_sprite_basic_enemy_flattened > 0){sprite_delete(global.resourcepack_sprite_basic_enemy_flattened);}
+		if (global.resourcepack_sprite_big_collectible > 0){sprite_delete(global.resourcepack_sprite_big_collectible);}
+		if (global.resourcepack_sprite_big_stationary_enemy > 0){sprite_delete(global.resourcepack_sprite_big_stationary_enemy);}
+		if (global.resourcepack_sprite_big_stationary_enemy_flattened > 0){sprite_delete(global.resourcepack_sprite_big_stationary_enemy_flattened);}
+		if (global.resourcepack_sprite_blaster > 0){sprite_delete(global.resourcepack_sprite_blaster);}
+		if (global.resourcepack_sprite_bullet > 0){sprite_delete(global.resourcepack_sprite_bullet);}
+		if (global.resourcepack_sprite_bullet_flattened > 0){sprite_delete(global.resourcepack_sprite_bullet_flattened);}
+		if (global.resourcepack_sprite_hp_pickup > 0){sprite_delete(global.resourcepack_sprite_hp_pickup);}
+		if (global.resourcepack_sprite_invincibility_powerup > 0){sprite_delete(global.resourcepack_sprite_invincibility_powerup);}
+	}
+	#endregion /*Delete sprites before loading new sprites END*/
+	
 	if (file_exists("Resourcepacks/Resourcepack"+string(global.selected_resourcepack)+"/Data/sprite_origin_point.ini"))
 	or(file_exists(working_directory + "/Custom Resourcepacks/Resourcepack"+string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/Data/sprite_origin_point.ini"))
 	{

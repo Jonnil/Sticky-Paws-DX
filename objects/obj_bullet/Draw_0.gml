@@ -22,6 +22,8 @@ or(die_volting=+1)
 	gravity_direction=270;/*Direction of the gravity*/
 	gravity=0.5;/*The gravity*/
 	#endregion /*Set the gravity END*/
+	
+	sprite_index = global.resourcepack_sprite_bullet;
 }
 else
 {
@@ -30,6 +32,7 @@ else
 		/*Set the gravity*/
 		gravity_direction=270;/*Direction of the gravity*/
 		gravity=0;/*The gravity*/
+		sprite_index = global.resourcepack_sprite_bullet;
 	}
 	else
 	if (flat=true)

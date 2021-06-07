@@ -10,7 +10,8 @@ global.character_select_screen=true; /*If this is true, there will be a characte
 global.character_clothes_customization=false; /*If this is true, you can costumize the character's clothes in the menu*/
 global.character_color_select=false; /*If this is true, you can choose the character's color in the menu*/
 global.select_number_of_players_before_selecting_characters=false; /*If you should select how many players are going to play before you select what character to play as*/
-global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters!*/
+global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters! 1 = default*/
+global.max_number_of_official_resourcepacks = 1; /*Update this whenever you add more official resource packs! 1 = default*/
 
 #region /*What settings tabs to show up*/
 global.show_language_shortcut=false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
@@ -20,7 +21,7 @@ global.enable_multiplayer_settings = false; /*Enable Multiplayer settings*/
 global.enable_controller_settings = false; /*Enable Controller settings*/
 global.enable_touch_settings = false; /*Enable Touch settings*/
 global.enable_profile_settings = false; /*Enable Profile settings*/
-global.enable_global_resources_settings = false; /*Enable Global Resources settings*/
+global.enable_global_resources_settings = true; /*Enable Global Resources settings*/
 global.enable_storage_settings = false; /*Enable Storage settings*/
 global.enable_language_settings = false; /*Enable Language settings*/
 global.enable_broadcast_settings = false; /*Enable Broadcast settings*/
@@ -53,26 +54,6 @@ global.number_of_chain_kills_for_1up=8; /*How many chain reaction kills you need
 
 
 #region /*Things you shouldn't change, warning, don't change any of these options or you might break the game!*/
-
-#region /*Resource Packs*/
-global.selected_resourcepack = 1;
-global.max_number_of_official_resourcepacks = 1;
-
-global.resourcepack_sprite_basic_collectible = spr_wall;
-global.resourcepack_sprite_big_collectible = spr_wall;
-global.resourcepack_sprite_bullet = spr_wall;
-global.resourcepack_sprite_bullet_flattened = spr_wall;
-global.resourcepack_sprite_blaster = spr_wall;
-global.resourcepack_sprite_basic_enemy = spr_wall;
-global.resourcepack_sprite_basic_enemy_angry = spr_wall;
-global.resourcepack_sprite_basic_enemy_flattened = spr_wall;
-global.resourcepack_sprite_big_stationary_enemy = spr_wall;
-global.resourcepack_sprite_big_stationary_enemy_flattened = spr_wall;
-global.resourcepack_sprite_hp_pickup = spr_wall;
-global.resourcepack_sprite_invincibility_powerup = spr_wall;
-
-scr_load_resource_pack_sprite();
-#endregion /*Resource Packs END*/
 
 /*Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu*/
 global.equipped_upgrade_double_jump=true;/*If you have equipped the Double Jump Upgrade*/
@@ -160,7 +141,7 @@ global.level_editor_level=0;/*What level is selected in the custom level editor*
 global.play_edited_level=false;/*Playtest edited level*/
 global.actually_play_edited_level=false;/*Actually playing finished edited level*/
 global.character_select_in_this_menu="game";/*In what menu character select is going to appear in*/
-global.difficulty=2;/*Difficulty levels: 0 = peaceful, 1 = easy, 2 = normal (default), 3 = hard*/
+global.difficulty = 1; /*Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard*/
 global.show_timer = false; /*Show a countup timer or not*/
 global.controls_used_for_menu_navigation="keyboard";/*keyboard, mouse, or controller*/
 global.pause=false;/*If game is paused or not*/
@@ -175,6 +156,7 @@ global.sprite_select_player_1=noone;
 global.sprite_select_player_2=noone;
 global.sprite_select_player_3=noone;
 global.sprite_select_player_4=noone;
+global.selected_resourcepack = 0; /*0 = default*/
 //global.spot_x=0;
 //global.spot_y=0;
 
@@ -262,7 +244,8 @@ global.quit_level = false;
 global.quit_to_map = false;
 global.quit_to_title = false;
 global.trigger_demo_ending=0;
-global.enable_enemies=true;/*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default:true*/
+global.enable_enemies = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default: true*/
+global.enable_spikes = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default: true*/
 
 global.player1_crouch_toggle = false; /*If crouch toggle for player 1 is true or false (false by default)*/
 global.player2_crouch_toggle = false; /*If crouch toggle for player 2 is true or false (false by default)*/
@@ -302,7 +285,7 @@ global.player1_key_left = vk_left;
 global.player1_key_right = vk_right;
 global.player1_key_down = vk_down;
 global.player1_key_up = vk_up;
-global.player1_key_attack = noone;
+global.player1_key_tongue = noone;
 #endregion /*Player 1 Key 1 defaults END*/
 
 #region /*Player 1 Key 2 defaults*/
@@ -316,7 +299,7 @@ global.player1_key2_left = ord("A");
 global.player1_key2_right = ord("D");
 global.player1_key2_down = ord("S");
 global.player1_key2_up = ord("W");
-global.player1_key2_attack = noone;
+global.player1_key2_tongue = noone;
 #endregion /*Player 1 Key 2 defaults END*/
 
 global.player1_up_key_is_jump_key=false;
@@ -340,7 +323,7 @@ global.player2_key_left = noone;
 global.player2_key_right = noone;
 global.player2_key_down = noone;
 global.player2_key_up = noone;
-global.player2_key_attack = noone;
+global.player2_key_tongue = noone;
 #endregion /*Player 2 Key 1 defaults END*/
 
 #region /*Player 2 Key 2 defaults*/
@@ -354,7 +337,7 @@ global.player2_key2_left = noone;
 global.player2_key2_right = noone;
 global.player2_key2_down = noone;
 global.player2_key2_up = noone;
-global.player2_key2_attack = noone;
+global.player2_key2_tongue = noone;
 #endregion /*Player 2 Key 2 defaults END*/
 
 global.player2_up_key_is_jump_key=false;
@@ -378,7 +361,7 @@ global.player3_key_left = noone;
 global.player3_key_right = noone;
 global.player3_key_down = noone;
 global.player3_key_up = noone;
-global.player3_key_attack = noone;
+global.player3_key_tongue = noone;
 #endregion /*Player 3 Key 1 defaults END*/
 
 #region /*Player 3 Key 2 defaults*/
@@ -392,7 +375,7 @@ global.player3_key2_left = noone;
 global.player3_key2_right = noone;
 global.player3_key2_down = noone;
 global.player3_key2_up = noone;
-global.player3_key2_attack = noone;
+global.player3_key2_tongue = noone;
 #endregion /*Player 3 Key 2 defaults END*/
 
 global.player3_up_key_is_jump_key=false;
@@ -416,7 +399,7 @@ global.player4_key_left = noone;
 global.player4_key_right = noone;
 global.player4_key_down = noone;
 global.player4_key_up = noone;
-global.player4_key_attack = noone;
+global.player4_key_tongue = noone;
 #endregion /*Player 4 Key 1 defaults END*/
 
 #region /*Player 4 Key 2 defaults*/
@@ -430,7 +413,7 @@ global.player4_key2_left = noone;
 global.player4_key2_right = noone;
 global.player4_key2_down = noone;
 global.player4_key2_up = noone;
-global.player4_key2_attack = noone;
+global.player4_key2_tongue = noone;
 #endregion /*Player 4 Key 2 defaults END*/
 
 global.player4_up_key_is_jump_key=false;
@@ -455,6 +438,23 @@ if (asset_get_type("scr_loadconfig")==asset_script)
 	scr_loadconfig();
 }
 #endregion /*Load Config END*/
+
+#region /*Resource Packs (put this code after the scr_loadconfig so the right sprites can load)*/
+global.resourcepack_sprite_basic_collectible = spr_wall;
+global.resourcepack_sprite_big_collectible = spr_wall;
+global.resourcepack_sprite_bullet = spr_wall;
+global.resourcepack_sprite_bullet_flattened = spr_wall;
+global.resourcepack_sprite_blaster = spr_wall;
+global.resourcepack_sprite_basic_enemy = spr_wall;
+global.resourcepack_sprite_basic_enemy_angry = spr_wall;
+global.resourcepack_sprite_basic_enemy_flattened = spr_wall;
+global.resourcepack_sprite_big_stationary_enemy = spr_wall;
+global.resourcepack_sprite_big_stationary_enemy_flattened = spr_wall;
+global.resourcepack_sprite_hp_pickup = spr_wall;
+global.resourcepack_sprite_invincibility_powerup = spr_wall;
+
+scr_load_resource_pack_sprite();
+#endregion /*Resource Packs END*/
 
 #region /*Narrator Voice variable handeling*/
 

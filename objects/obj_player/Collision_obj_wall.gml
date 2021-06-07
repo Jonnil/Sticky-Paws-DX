@@ -15,6 +15,9 @@ and(stick_to_wall = false)
 	
 	#region /*Smoke Landing Effect*/
 	if (asset_get_type("obj_wall") == asset_object)
+	and (asset_get_type("obj_camera") == asset_object)
+	and (instance_exists(obj_camera))
+	and (obj_camera.iris_xscale > 1)
 	{
 		if (position_meeting(x - 24, bbox_bottom + 2, obj_wall))
 		{

@@ -1,3 +1,5 @@
+sprite_index = global.resourcepack_sprite_big_collectible;
+
 if (bounceup = false)
 {
 	if (asset_get_type("obj_camera") == asset_object)

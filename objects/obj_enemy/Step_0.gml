@@ -23,3 +23,6 @@ and(draw_xscale>=0.8)
 	die_volting = true;
 }
 #endregion /*Kill enemy if it's inside the wall END*/
+
+draw_xscale = lerp(draw_xscale, 1, 0.1);
+draw_yscale = lerp(draw_yscale, 1, 0.1);
