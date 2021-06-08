@@ -1,7 +1,8 @@
 depth =+ 9;
 
 #region /*If enemies are disabled, destroy this object*/
-if (global.enable_enemies = false)
+if (global.activate_cheats = true)
+and (global.enable_enemies = false)
 {
 	instance_destroy();
 }

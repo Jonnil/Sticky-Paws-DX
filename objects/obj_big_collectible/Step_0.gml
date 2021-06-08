@@ -120,7 +120,7 @@ if (follow_player = true)
 		{
 			with(obj_camera)
 			{
-				hud_show_big_collectibles_timer = global.hud_show_timer;
+				hud_show_big_collectibles_timer = global.hud_hide_time;
 			}
 		}
 		#endregion /*Show Big Collectible HUD END*/
@@ -150,7 +150,7 @@ if bounceup = true
 	{
 		with(obj_camera)
 		{
-			hud_show_big_collectibles_timer = global.hud_show_timer;
+			hud_show_big_collectibles_timer = global.hud_hide_time;
 		}
 	}
 	#endregion /*Show Big Collectible HUD END*/

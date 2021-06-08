@@ -78,7 +78,7 @@ else
 	{
 		with(obj_camera)
 		{
-			hud_show_score_timer=global.hud_show_timer;
+			hud_show_score_timer=global.hud_hide_time;
 		}
 	}
 	draw_text_outlined(x,y,string(scoreup),global.default_text_size*image_xscale,c_white,c_black,image_alpha);

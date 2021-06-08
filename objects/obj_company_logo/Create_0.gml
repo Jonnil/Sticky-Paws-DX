@@ -71,11 +71,11 @@ if (!os_browser)
 global.convention_mode=false;/*When showing the game on a convention, turn this to true*/
 
 #region /*Show HUD Global Variables*/
-global.hud_show_timer=180;
-global.hud_show_lives=true;
-global.hud_show_basic_collectibles=false;
-global.hud_show_big_collectibles=false;
-global.hud_show_score=false;
+global.hud_hide_time = 3;
+global.hud_show_lives = true;
+global.hud_show_basic_collectibles = false;
+global.hud_show_big_collectibles = false;
+global.hud_show_score = false;
 #endregion /*Show HUD Global Variables END*/
 
 /*Game Start Event*/
@@ -243,7 +243,8 @@ global.restart_level = false;
 global.quit_level = false;
 global.quit_to_map = false;
 global.quit_to_title = false;
-global.trigger_demo_ending=0;
+global.trigger_demo_ending = 0;
+global.activate_cheats = false;
 global.enable_enemies = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default: true*/
 global.enable_spikes = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default: true*/
 

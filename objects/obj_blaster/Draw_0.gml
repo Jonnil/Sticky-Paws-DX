@@ -1,12 +1,3 @@
-#region /*If enemies are disabled, replace this object with ground object*/
-if (global.enable_enemies=false)
-{
-	move_snap(32,32);
-	instance_create_depth(x,y+32,0,obj_ground);
-	instance_change(obj_ground,true);
-}
-#endregion /*If enemies are disabled, replace this object with ground object END*/
-
 #region /*Gravity*/
 if (asset_get_type("obj_wall")==asset_object)
 and(!position_meeting(x,bbox_bottom+1,obj_wall))
@@ -30,6 +21,14 @@ if (vspeed>=16)
 }
 #endregion /*Gravity End*/
 
+#region /*Stop firing if enemies are disabled*/
+if (global.activate_cheats = true)
+and (global.enable_enemies = false)
+{
+	time = 0;
+}
+#endregion /*Stop firing if enemies are disabled END*/
+
 if (asset_get_type("obj_player")==asset_object)
 and(asset_get_type("obj_wall")==asset_object)
 and(instance_exists(obj_player))
@@ -42,7 +41,10 @@ and(instance_exists(obj_player))
 		yy=lerp(yy,y,0.5);
 		draw_xscale=lerp(draw_xscale,image_xscale,0.5);
 		draw_yscale=lerp(draw_yscale,image_yscale,0.5);
-		time+=1;
+		if (time < 200)
+		{
+			time+=1;
+		}
 	}
 	else
 	{

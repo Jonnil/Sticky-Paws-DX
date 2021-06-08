@@ -135,7 +135,7 @@ and(!instance_exists(obj_title))
 	or(keyboard_check_pressed(global.player1_key_jump))
 	or(keyboard_check_pressed(global.player1_key2_jump))
 	{
-		if (player1 = noone)
+		if (player1 <= 0)
 		and(can_spawn_player = true)
 		and(can_spawn_player1 = true)
 		and (lives > 0)
@@ -156,16 +156,17 @@ and(!instance_exists(obj_title))
 			}
 		}
 		else
+		if (lives <= 0)
 		{
 			global.hud_show_lives = true;
-			hud_show_lives_timer = global.hud_show_timer;
+			hud_show_lives_timer = global.hud_hide_time*60;
 		}
 	}
 	if (gamepad_button_check_pressed(1, gp_face1))
 	or(keyboard_check_pressed(global.player2_key_jump))
 	or(keyboard_check_pressed(global.player2_key2_jump))
 	{
-		if (player2 = noone)
+		if (player2 <= 0)
 		and(can_spawn_player = true)
 		and(can_spawn_player2 = true)
 		and (lives > 0)
@@ -186,16 +187,17 @@ and(!instance_exists(obj_title))
 			}
 		}
 		else
+		if (lives <= 0)
 		{
 			global.hud_show_lives = true;
-			hud_show_lives_timer = global.hud_show_timer;
+			hud_show_lives_timer = global.hud_hide_time*60;
 		}
 	}
 	if (gamepad_button_check_pressed(2, gp_face1))
 	or(keyboard_check_pressed(global.player3_key_jump))
 	or(keyboard_check_pressed(global.player3_key2_jump))
 	{
-		if (player3 = noone)
+		if (player3 <= 0)
 		and(can_spawn_player = true)
 		and(can_spawn_player3 = true)
 		and (lives > 0)
@@ -216,16 +218,17 @@ and(!instance_exists(obj_title))
 			}
 		}
 		else
+		if (lives <= 0)
 		{
 			global.hud_show_lives = true;
-			hud_show_lives_timer = global.hud_show_timer;
+			hud_show_lives_timer = global.hud_hide_time*60;
 		}
 	}
 	if (gamepad_button_check_pressed(3, gp_face1))
 	or(keyboard_check_pressed(global.player4_key_jump))
 	or(keyboard_check_pressed(global.player4_key2_jump))
 	{
-		if (player4 = noone)
+		if (player4 <= 0)
 		and(can_spawn_player = true)
 		and(can_spawn_player4 = true)
 		and (lives > 0)
@@ -246,9 +249,10 @@ and(!instance_exists(obj_title))
 			}
 		}
 		else
+		if (lives <= 0)
 		{
 			global.hud_show_lives = true;
-			hud_show_lives_timer = global.hud_show_timer;
+			hud_show_lives_timer = global.hud_hide_time*60;
 		}
 	}
 }

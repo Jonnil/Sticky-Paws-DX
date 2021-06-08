@@ -166,7 +166,7 @@ and(instance_exists(obj_player))
 		{
 			with(obj_camera)
 			{
-				hud_show_lives_timer = global.hud_show_timer;
+				hud_show_lives_timer = global.hud_hide_time;
 			}
 		}
 		if (asset_get_type("snd_1up") == asset_sound)

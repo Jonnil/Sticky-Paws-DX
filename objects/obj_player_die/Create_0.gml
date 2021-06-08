@@ -18,7 +18,7 @@ if (instance_number(obj_camera)>0)
 {
 	with(obj_camera)
 	{
-		hud_show_lives_timer=global.hud_show_timer;
+		hud_show_lives_timer=global.hud_hide_time;
 	}
 }
 

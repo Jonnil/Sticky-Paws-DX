@@ -7,11 +7,13 @@ if (global.music != snd_music_boss)
 
 depth = + 10;
 
-/*If enemies are disabled, destroy this object*/
-if (global.enable_enemies = false)
+#region /*If enemies are disabled, destroy this object*/
+if (global.activate_cheats = true)
+and (global.enable_enemies = false)
 {
 	instance_destroy();
 }
+#endregion /*If enemies are disabled, destroy this object END*/
 
 #region /*Set the gravity*/
 gravity_direction=270;/*Direction of the gravity*/

@@ -9,7 +9,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","show_timer")){global.show_timer=ini_read_real("Config","show_timer",0);}
 		if (ini_key_exists("Config","narrator")){global.narrator=ini_read_real("Config","narrator",0);}
 		if (ini_key_exists("Config","show_tutorial_signs")){global.show_tutorial_signs=ini_read_real("Config","show_tutorial_signs",0);}
-		if (ini_key_exists("Config","hud_show_timer")){global.hud_show_timer=ini_read_real("Config","hud_show_timer",0);}
+		if (ini_key_exists("Config","hud_hide_time")){global.hud_hide_time=ini_read_real("Config","hud_hide_time",0);}
 		if (ini_key_exists("Config","players_can_collide")){global.players_can_collide=ini_read_real("Config","players_can_collide",0);}
 		
 		#region /*Assist Settings*/

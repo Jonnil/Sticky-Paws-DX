@@ -6,7 +6,7 @@ and(!instance_exists(obj_title))
 	#region /*Show HUD timers*/
 
 	#region /*If HUD show timer is set to always hide*/
-	if (global.hud_show_timer <= 0)
+	if (global.hud_hide_time <= 0)
 	{
 		global.hud_show_lives = false;
 		global.hud_show_big_collectibles = false;
@@ -16,7 +16,7 @@ and(!instance_exists(obj_title))
 	#endregion /*If HUD show timer is set to always hide*/
 
 	#region /*If HUD show timer is set to never hide*/
-	if (global.hud_show_timer >= 600)
+	if (global.hud_hide_time >= 10)
 	{
 		global.hud_show_lives = true;
 		global.hud_show_big_collectibles = true;
@@ -25,7 +25,7 @@ and(!instance_exists(obj_title))
 	}
 	#endregion /*If HUD show timer is set to never hide*/
 	
-	if (global.hud_show_timer > 0)
+	if (global.hud_hide_time > 0)
 	{
 		
 		#region /*Show Lives*/
@@ -45,7 +45,7 @@ and(!instance_exists(obj_title))
 				}
 				if (hud_show_lives_timer = -32)
 				{
-					hud_show_lives_timer = global.hud_show_timer;
+					hud_show_lives_timer = global.hud_hide_time*60;
 				}
 			}
 			else
@@ -80,7 +80,7 @@ and(!instance_exists(obj_title))
 			}
 			if (hud_show_big_collectibles_timer = -32)
 			{
-				hud_show_big_collectibles_timer = global.hud_show_timer;
+				hud_show_big_collectibles_timer = global.hud_hide_time*60;
 			}
 		}
 		else
@@ -136,7 +136,7 @@ and(!instance_exists(obj_title))
 			
 			if (hud_show_basic_collectibles_timer = -32)
 			{
-				hud_show_basic_collectibles_timer = global.hud_show_timer;
+				hud_show_basic_collectibles_timer = global.hud_hide_time*60;
 			}
 		}
 		else
@@ -159,7 +159,7 @@ and(!instance_exists(obj_title))
 			}
 			if (hud_show_score_timer = -32)
 			{
-				hud_show_score_timer = global.hud_show_timer;
+				hud_show_score_timer = global.hud_hide_time*60;
 			}
 		}
 		else
@@ -326,7 +326,7 @@ and(!instance_exists(obj_title))
 		}
 		#endregion /*Time Over Message END*/
 
-		if (global.hud_show_timer > 0)
+		if (global.hud_hide_time > 0)
 		if (global.time_countdown >= 0)
 		{
 			draw_set_halign(fa_right);

@@ -11,7 +11,7 @@ function scr_saveconfig()
 	ini_write_real("Config","show_timer",global.show_timer);
 	ini_write_real("Config","narrator",global.narrator);
 	ini_write_real("Config","show_tutorial_signs",global.show_tutorial_signs);
-	ini_write_real("Config","hud_show_timer",global.hud_show_timer);
+	ini_write_real("Config","hud_hide_time",global.hud_hide_time);
 	ini_write_real("Config","players_can_collide",global.players_can_collide);
 	
 	#region /*Assist Settings*/

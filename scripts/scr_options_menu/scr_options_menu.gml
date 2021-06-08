@@ -1453,35 +1453,41 @@ function scr_options_menu()
 	#region /*Game Settings*/
 	if (global.settings_sidebar_menu="game_settings")
 	{
-		difficulty_settings_x = 600;
+		difficulty_settings_x = 380;
 		difficulty_settings_y = 48;
 		show_timer_settings_y = 164;
 		show_tutorial_signs_y = 164+(48);
-		hud_show_timer_y = 164+(48*2);
+		hud_hide_time_y = 164+(48*3);
+		activate_cheats_y = 164+(48*5);
+		enable_enemies_y = 164+(48*6);
+		enable_spikes_y = 164+(48*7);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
 		draw_menu_checkmark(380,show_timer_settings_y,"Show Timer","show_timer_settings",global.show_timer); /*Show Timer*/
 		draw_menu_checkmark(380,show_tutorial_signs_y,"Show Tutorial Signs","show_tutorial_signs",global.show_tutorial_signs); /*Show Tutorial Signs*/
-		if (menu="hud_hide_time")
+		draw_menu_checkmark(380, activate_cheats_y, "Activate Cheats", "activate_cheats", global.activate_cheats);
+		draw_menu_checkmark(380, enable_enemies_y, "Enable Enemies", "enable_enemies", global.enable_enemies);
+		draw_menu_checkmark(380, enable_spikes_y, "Enable Spikes", "enable_spikes", global.enable_spikes);
+		
+		if (global.activate_cheats = false)
 		{
-			draw_sprite_ext(spr_menu_cursor,menu_cursor_index,395,hud_show_timer_y,1,1,0,c_white,1);
-			/*HUD hide timer: 1 Second*/if (global.hud_show_timer>0)and(global.hud_show_timer<=60){draw_text_outlined(420,hud_show_timer_y,"HUD hide timer: "+string(global.hud_show_timer/60)+" Second",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}/*HUD hide timer END*/
-			/*HUD hide timer: 2 or more Seconds*/else if (global.hud_show_timer>60)and(global.hud_show_timer<600){draw_text_outlined(420,hud_show_timer_y,"HUD hide timer: "+string(global.hud_show_timer/60)+" Seconds",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}/*HUD hide timer END*/
-			/*HUD hide timer: Never show*/else if (global.hud_show_timer<= 0){draw_text_outlined(420,hud_show_timer_y,"HUD: Never show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}/*HUD hide timer: Never show END*/
-			/*HUD hide timer: Always show*/else if (global.hud_show_timer>=600){draw_text_outlined(420,hud_show_timer_y,"HUD: Always show",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}/*HUD hide timer: Always show END*/
+			draw_set_alpha(0.5);
+			draw_rectangle_color(left_sidebar_x+370, 164+(48*5)+40, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
 		}
-		else
+		
+		draw_menu_dropdown(380, hud_hide_time_y, "HUD hide timer", "hud_hide_time", global.hud_hide_time, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
+		
+		if (global.hud_hide_time > 10)
 		{
-			/*HUD hide timer: 1 Second*/if (global.hud_show_timer>0)and(global.hud_show_timer<=60){draw_text_outlined(420,hud_show_timer_y,"HUD hide timer: "+string(global.hud_show_timer/60)+" Second",global.default_text_size,c_menu_outline,c_menu_fill,1);}/*HUD hide timer END*/
-			/*HUD hide timer: 2 or more Seconds*/else if (global.hud_show_timer>60)and(global.hud_show_timer<600){draw_text_outlined(420,hud_show_timer_y,"HUD hide timer: "+string(global.hud_show_timer/60)+" Seconds",global.default_text_size,c_menu_outline,c_menu_fill,1);}/*HUD hide timer END*/
-			/*HUD hide timer: Never show*/else if (global.hud_show_timer<= 0){draw_text_outlined(420,hud_show_timer_y,"HUD: Never show",global.default_text_size,c_menu_outline,c_menu_fill,1);}/*HUD hide timer: Never show END*/
-			/*HUD hide timer: Always show*/else if (global.hud_show_timer>=600){draw_text_outlined(420,hud_show_timer_y,"HUD: Always show",global.default_text_size,c_menu_outline,c_menu_fill,1);}/*HUD hide timer: Always show END*/
+			global.hud_hide_time = 3;
 		}
 		
 		#region /*Difficulty Settings*/
-		draw_menu_dropdown(difficulty_settings_x-150, difficulty_settings_y+50, "Level Layout Difficulty", "difficulty_settings", global.difficulty, "Easy", "Normal", "Hard");
+		draw_menu_dropdown(difficulty_settings_x, difficulty_settings_y+50, "Level Layout Difficulty", "difficulty_settings", global.difficulty, "Easy", "Normal", "Hard");
 		#endregion /*Difficulty Settings END*/
+		
 	}
 	#endregion /*Game Settings END*/
 	
@@ -6667,12 +6673,20 @@ function scr_options_menu()
 			menu_delay = 3;
 			global.difficulty += 1;
 		}
+		else
 		if (key_up)
 		and (open_dropdown = false)
 		and(menu_delay = 0)
 		{
 			menu_delay = 3;
-			menu = "show_tutorial_signs";
+			if (global.activate_cheats = true)
+			{
+				menu = "enable_spikes";
+			}
+			else
+			{
+				menu = "activate_cheats";
+			}
 		}
 		else
 		if (key_down)
@@ -6725,9 +6739,123 @@ function scr_options_menu()
 			menu = "hud_hide_time";
 		}
 	}
+	else
+	if (menu = "hud_hide_time")
+	{
+		if (key_up)
+		and (open_dropdown = true)
+		and(menu_delay = 0)
+		and(global.hud_hide_time > 0)
+		{
+			menu_delay = 3;
+			global.hud_hide_time -= 1;
+		}
+		else
+		if (key_down)
+		and (open_dropdown = true)
+		and(menu_delay = 0)
+		and(global.hud_hide_time < 10)
+		{
+			menu_delay = 3;
+			global.hud_hide_time += 1;
+		}
+		else
+		if (key_up)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "show_tutorial_signs";
+		}
+		else
+		if (key_down)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "activate_cheats";
+		}
+	}
+	else
+	if (menu = "activate_cheats")
+	{
+		if (key_up)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "hud_hide_time";
+		}
+		else
+		if (key_down)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			if (global.activate_cheats = true)
+			{
+				menu = "enable_enemies";
+			}
+			else
+			{
+				menu = "difficulty_settings";
+			}
+		}
+	}
+	else
+	if (menu = "enable_enemies")
+	{
+		if (key_up)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "activate_cheats";
+		}
+		else
+		if (key_down)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			if (global.activate_cheats = true)
+			{
+				menu = "enable_spikes";
+			}
+			else
+			{
+				menu = "difficulty_settings";
+			}
+		}
+	}
+	else
+	if (menu = "enable_spikes")
+	{
+		if (key_up)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			if (global.activate_cheats = true)
+			{
+				menu = "enable_enemies";
+			}
+			else
+			{
+				menu = "activate_cheats";
+			}
+		}
+		else
+		if (key_down)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "difficulty_settings";
+		}
+	}
 	#endregion /*Navigate Game Settings END*/
 	
-	else if (menu="hud_hide_time"){if (key_left){if (global.hud_show_timer>0){global.hud_show_timer-=60;}}if (key_right){if (global.hud_show_timer<600){global.hud_show_timer+=60;}}if (key_up){menu="show_tutorial_signs";}if (key_down){menu="difficulty_settings";}}
 	else if (menu="players_can_collide"){if (key_up){menu="hud_hide_time"}else if (key_down){menu="assist_settings";}}
 	else if (menu="assist_settings"){if (key_up){menu="players_can_collide"}else if (key_down){menu="convention_mode";}}
 	else if (menu="convention_mode"){if (key_up){menu="assist_settings";}else if (key_down){menu="show_tutorial_signs";}}
@@ -7792,6 +7920,7 @@ function scr_options_menu()
 		if (menu="assist_item_appear")
 		or (menu="assist_extra_hp")
 		or (menu="difficulty_settings")
+		or (menu="hud_hide_time")
 		or (menu="remap_select_player")
 		or (menu="wall_jump_setting")
 		or (menu="drop_from_rope")
@@ -7818,6 +7947,9 @@ function scr_options_menu()
 		
 		if (menu="show_timer_settings")and(menu_delay= 0){if (global.show_timer=true){global.show_timer=false;}else{global.show_timer=true;}menu_delay = 3;}
 		if (menu="show_tutorial_signs")and(menu_delay= 0){if (global.show_tutorial_signs=true){global.show_tutorial_signs=false;}else{global.show_tutorial_signs=true;}menu_delay = 3;}
+		if (menu="activate_cheats")and(menu_delay= 0){if (global.activate_cheats=true){global.activate_cheats=false;}else{global.activate_cheats=true;}menu_delay = 3;}
+		if (menu="enable_enemies")and(menu_delay= 0)and (global.activate_cheats=true){if (global.enable_enemies=true){global.enable_enemies=false;}else{global.enable_enemies=true;}menu_delay = 3;}
+		if (menu="enable_spikes")and(menu_delay= 0)and (global.activate_cheats=true){if (global.enable_spikes=true){global.enable_spikes=false;}else{global.enable_spikes=true;}menu_delay = 3;}
 		if (menu="players_can_collide")and(menu_delay= 0){if (global.players_can_collide=true){global.players_can_collide=false;}else{global.players_can_collide=true;}menu_delay = 3;}
 		if (menu="convention_mode")and(menu_delay= 0){if (global.convention_mode=true){global.convention_mode=false;}else{global.convention_mode=true;}menu_delay = 3;}
 		

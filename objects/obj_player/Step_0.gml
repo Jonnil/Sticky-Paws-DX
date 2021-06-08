@@ -13309,7 +13309,7 @@ and(global.pause=false)
 	{
 		with(obj_camera)
 		{
-			hud_show_lives_timer=global.hud_show_timer;
+			hud_show_lives_timer=global.hud_hide_time;
 		}
 	}
 	global.hud_show_basic_collectibles=true;
@@ -13318,7 +13318,7 @@ and(global.pause=false)
 	{
 		with(obj_camera)
 		{
-			hud_show_basic_collectibles_timer=global.hud_show_timer;
+			hud_show_basic_collectibles_timer=global.hud_hide_time;
 		}
 	}
 	global.hud_show_big_collectibles=true;
@@ -13327,7 +13327,7 @@ and(global.pause=false)
 	{
 		with(obj_camera)
 		{
-			hud_show_big_collectibles_timer=global.hud_show_timer;
+			hud_show_big_collectibles_timer=global.hud_hide_time;
 		}
 	}
 	#endregion /*Show all HUD elements END*/
@@ -13397,7 +13397,7 @@ or(gamepad_button_check_pressed(1,gp_select))
 	{
 		with(obj_camera)
 		{
-			hud_show_lives_timer=global.hud_show_timer;
+			hud_show_lives_timer=global.hud_hide_time;
 		}
 	}
 	global.hud_show_basic_collectibles=true;
@@ -13406,7 +13406,7 @@ or(gamepad_button_check_pressed(1,gp_select))
 	{
 		with(obj_camera)
 		{
-			hud_show_basic_collectibles_timer=global.hud_show_timer;
+			hud_show_basic_collectibles_timer=global.hud_hide_time;
 		}
 	}
 	global.hud_show_big_collectibles=true;
@@ -13415,7 +13415,7 @@ or(gamepad_button_check_pressed(1,gp_select))
 	{
 		with(obj_camera)
 		{
-			hud_show_big_collectibles_timer=global.hud_show_timer;
+			hud_show_big_collectibles_timer=global.hud_hide_time;
 		}
 	}
 	#endregion /*Show all HUD elements END*/
@@ -13470,7 +13470,7 @@ or(gamepad_button_check_pressed(2,gp_select))
 	{
 		with(obj_camera)
 		{
-			hud_show_lives_timer=global.hud_show_timer;
+			hud_show_lives_timer=global.hud_hide_time;
 		}
 	}
 	global.hud_show_basic_collectibles=true;
@@ -13479,7 +13479,7 @@ or(gamepad_button_check_pressed(2,gp_select))
 	{
 		with(obj_camera)
 		{
-			hud_show_basic_collectibles_timer=global.hud_show_timer;
+			hud_show_basic_collectibles_timer=global.hud_hide_time;
 		}
 	}
 	global.hud_show_big_collectibles=true;
@@ -13488,7 +13488,7 @@ or(gamepad_button_check_pressed(2,gp_select))
 	{
 		with(obj_camera)
 		{
-			hud_show_big_collectibles_timer=global.hud_show_timer;
+			hud_show_big_collectibles_timer=global.hud_hide_time;
 		}
 	}
 	#endregion /*Show all HUD elements END*/
@@ -13543,7 +13543,7 @@ or(gamepad_button_check_pressed(3,gp_select))
 	{
 		with(obj_camera)
 		{
-			hud_show_lives_timer=global.hud_show_timer;
+			hud_show_lives_timer=global.hud_hide_time;
 		}
 	}
 	global.hud_show_basic_collectibles=true;
@@ -13552,7 +13552,7 @@ or(gamepad_button_check_pressed(3,gp_select))
 	{
 		with(obj_camera)
 		{
-			hud_show_basic_collectibles_timer=global.hud_show_timer;
+			hud_show_basic_collectibles_timer=global.hud_hide_time;
 		}
 	}
 	global.hud_show_big_collectibles=true;
@@ -13561,7 +13561,7 @@ or(gamepad_button_check_pressed(3,gp_select))
 	{
 		with(obj_camera)
 		{
-			hud_show_big_collectibles_timer=global.hud_show_timer;
+			hud_show_big_collectibles_timer=global.hud_hide_time;
 		}
 	}
 	#endregion /*Show all HUD elements END*/
@@ -16368,7 +16368,7 @@ if (asset_get_type("obj_invincibility_powerup")==asset_object)
 		{
 			with(obj_camera)
 			{
-				hud_show_score_timer=global.hud_show_timer;
+				hud_show_score_timer=global.hud_hide_time;
 			}
 		}
 		if (asset_get_type("obj_scoreup")==asset_object)
@@ -16423,7 +16423,7 @@ else
 		{
 			with(obj_camera)
 			{
-				hud_show_score_timer=global.hud_show_timer;
+				hud_show_score_timer=global.hud_hide_time;
 			}
 		}
 		if (global.time_countdown>3)
