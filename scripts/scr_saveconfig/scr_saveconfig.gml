@@ -9,6 +9,9 @@ function scr_saveconfig()
 
 	ini_write_real("Config","difficulty",global.difficulty);
 	ini_write_real("Config","show_timer",global.show_timer);
+	ini_write_real("Config","activate_cheats",global.activate_cheats);
+	ini_write_real("Config","enable_enemies",global.enable_enemies);
+	ini_write_real("Config","enable_spikes",global.enable_spikes);
 	ini_write_real("Config","narrator",global.narrator);
 	ini_write_real("Config","show_tutorial_signs",global.show_tutorial_signs);
 	ini_write_real("Config","hud_hide_time",global.hud_hide_time);

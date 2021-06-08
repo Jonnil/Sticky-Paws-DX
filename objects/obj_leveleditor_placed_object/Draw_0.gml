@@ -1577,7 +1577,7 @@ if (global.play_edited_level=true)
 		if (object=58)and(asset_get_type("obj_extra_life_pickup")==asset_object){with(instance_create_depth(x,y,0,obj_extra_life_pickup)){number_of_extra_lives = 3;}instance_destroy();}
 		if (object=59){if (global.enable_enemies = true)and(asset_get_type("obj_enemy1")==asset_object){instance_create_depth(x,y,0,obj_enemy1);instance_destroy();}else{instance_destroy();}}
 		if (object=60){if (global.enable_enemies = true)and(asset_get_type("obj_enemy2")==asset_object){instance_create_depth(x,y,0,obj_enemy2);instance_destroy();}else{instance_destroy();}}
-		if (object=61){if (global.enable_enemies = true)and(asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
+		if (object=61){if (asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
 		if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=63)and(asset_get_type("obj_vine")==asset_object){instance_create_depth(x,y,0,obj_vine);instance_destroy();}
 		

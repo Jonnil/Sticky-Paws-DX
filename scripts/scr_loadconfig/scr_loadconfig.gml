@@ -7,6 +7,9 @@ function scr_loadconfig()
 		
 		if (ini_key_exists("Config","difficulty")){global.difficulty=ini_read_real("Config","difficulty",0);}
 		if (ini_key_exists("Config","show_timer")){global.show_timer=ini_read_real("Config","show_timer",0);}
+		if (ini_key_exists("Config","activate_cheats")){global.activate_cheats=ini_read_real("Config","activate_cheats",0);}
+		if (ini_key_exists("Config","enable_enemies")){global.enable_enemies=ini_read_real("Config","enable_enemies",0);}
+		if (ini_key_exists("Config","enable_spikes")){global.enable_spikes=ini_read_real("Config","enable_spikes",0);}
 		if (ini_key_exists("Config","narrator")){global.narrator=ini_read_real("Config","narrator",0);}
 		if (ini_key_exists("Config","show_tutorial_signs")){global.show_tutorial_signs=ini_read_real("Config","show_tutorial_signs",0);}
 		if (ini_key_exists("Config","hud_hide_time")){global.hud_hide_time=ini_read_real("Config","hud_hide_time",0);}

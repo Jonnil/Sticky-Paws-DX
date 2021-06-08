@@ -247,6 +247,7 @@ global.trigger_demo_ending = 0;
 global.activate_cheats = false;
 global.enable_enemies = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default: true*/
 global.enable_spikes = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default: true*/
+global.full_level_map_screenshot = false;
 
 global.player1_crouch_toggle = false; /*If crouch toggle for player 1 is true or false (false by default)*/
 global.player2_crouch_toggle = false; /*If crouch toggle for player 2 is true or false (false by default)*/

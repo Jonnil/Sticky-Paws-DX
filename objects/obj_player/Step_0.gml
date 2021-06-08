@@ -1,28 +1,58 @@
 ///Platformer Player Part 1
 
-#region /*Save whole level as png file*/
-if (keyboard_check_pressed(ord("P")))
+#region /*Save whole level as screenshot png file*/
+if (keyboard_check(vk_control))
+and (keyboard_check_pressed(ord("P")))
 {
 	instance_activate_all();
-	global.deactivate_objects_outsiede_view = false;
-	global.show_tutorial_signs = false;
+	//global.deactivate_objects_outsiede_view = false;
+	//global.show_tutorial_signs = false;
+	
+	global.full_level_map_screenshot = true;
+	
+	#region /*Delete some objects so it doesn't show up in the screenshot*/
 	if (asset_get_type("obj_camera")==asset_object)
 	and (instance_exists(obj_camera))
 	{
 		instance_destroy(obj_camera);
 	}
+	#endregion /*Delete some objects so it doesn't show up in the screenshot END*/
+	
 	camera_set_view_border(view_camera[view_current], room_width, room_height); /*View Border*/
 	camera_set_view_pos(view_camera[view_current], 0, 0);
 	camera_set_view_size(view_camera[view_current], room_width, room_height);
 	display_set_gui_size(room_width, room_height);
 	surface_resize(application_surface, room_width, room_height);
 	window_set_rectangle(0, 0, room_width, room_height);
+	full_level_map_screenshot_timer = 1;
+}
+
+if (full_level_map_screenshot_timer >= 1)
+{
+	full_level_map_screenshot_timer += 1;
+}
+
+if (full_level_map_screenshot_timer = 5)
+{
 	var custom_level_map_sprite;
 	custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
 	sprite_save(custom_level_map_sprite, 0, working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Full Level Map.png");
 	sprite_delete(custom_level_map_sprite);
 }
-#endregion /*Save whole level as png file END*/
+
+if (full_level_map_screenshot_timer = 10)
+{
+	camera_set_view_border(view_camera[view_current], 1920, 1080); /*View Border*/
+	camera_set_view_pos(view_camera[view_current], x, y);
+	camera_set_view_size(view_camera[view_current], 1920, 1080);
+	display_set_gui_size(1920, 1080);
+	surface_resize(application_surface, 1920, 1080);
+	window_set_rectangle(0, 0, 1920, 1080);
+	scr_set_screen_size();
+	global.full_level_map_screenshot = false;
+	full_level_map_screenshot_timer = 0;
+}
+#endregion /*Save whole level as screenshot png file END*/
 
 #region /*Initialize Custom Character */
 if (initialize_custom_character_timer < 2)
@@ -16651,9 +16681,16 @@ if (move_towards_spring_endpoint = true)
 	
 	if (asset_get_type("obj_spring")==asset_object)
 	and(instance_exists(obj_spring))
-	and (distance_to_point(spring_endpoint_x, spring_endpoint_y)<340)
-	and (point_distance(spring_endpoint_x, spring_endpoint_y, instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).x, instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).y)>32)
-	or (distance_to_point(spring_endpoint_x, spring_endpoint_y)<340)
+	and (point_distance(
+	spring_endpoint_x,
+	spring_endpoint_y,
+	instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).x,
+	instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).y)<32)
+	{
+		move_towards_spring_endpoint = true;
+	}
+	else
+	if (distance_to_point(spring_endpoint_x, spring_endpoint_y)<340)
 	{
 		move_towards_spring_endpoint = false;
 		spring_endpoint_x = 0;

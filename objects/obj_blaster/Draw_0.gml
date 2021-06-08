@@ -41,7 +41,7 @@ and(instance_exists(obj_player))
 		yy=lerp(yy,y,0.5);
 		draw_xscale=lerp(draw_xscale,image_xscale,0.5);
 		draw_yscale=lerp(draw_yscale,image_yscale,0.5);
-		if (time < 200)
+		if (time < 201)
 		{
 			time+=1;
 		}

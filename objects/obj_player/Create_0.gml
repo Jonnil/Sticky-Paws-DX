@@ -446,6 +446,7 @@ allow_timeup = true;
 allow_timeattack = true;
 simple_controls = false; /*Simple Controls, used for testing if a level can be completed with limitations. All levels should be able to be finished, not 100% completed, with this option set to true. This option should be false by default when creating executable*/
 stop_screen_from_scrolling_left = false; /*Stop the screen from being able to screoll left*/
+full_level_map_screenshot_timer = 0;
 
 assist_invincible = false;
 buffer_jump = 0; /*Jump buffer timer, set to 0*/
