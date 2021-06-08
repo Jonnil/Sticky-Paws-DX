@@ -64,6 +64,7 @@ else
 		speed=0;
 		image_speed=0.5;
 		sprite_used = "flattened";
+		sprite_index = global.resourcepack_sprite_basic_enemy_flattened;
 		if (image_index>image_number-1)
 		{
 		effect_create_above(ef_smoke,x,y,2,c_white);
@@ -76,10 +77,12 @@ if (flat = false)
 	if (distance_to_object(obj_player)<256)
 	{
 		sprite_used = "angry";
+		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
 	}
 	else
 	{
 		sprite_used = "stand";
+		sprite_index = global.resourcepack_sprite_basic_enemy;
 	}
 }
 
