@@ -64,7 +64,7 @@ and(!instance_exists(obj_title))
 		{
 			if (hud_show_lives > 0)
 			{
-				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 60, 0.1);
+				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 70, 0.1);
 				if (hud_show_big_collectibles_timer = 60)
 				{
 					global.hud_show_big_collectibles = false;
@@ -72,7 +72,7 @@ and(!instance_exists(obj_title))
 			}
 			else
 			{
-				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 20, 0.1);
+				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 30, 0.1);
 				if (hud_show_big_collectibles_timer = 20)
 				{
 					global.hud_show_big_collectibles = false;
@@ -189,9 +189,9 @@ and(!instance_exists(obj_title))
 	and(sprite_lives_icon > noone)
 	{
 		if (asset_get_type("spr_1up") == asset_sprite)
-		and(sprite_lives_icon=spr_1up)
+		and(sprite_lives_icon = spr_1up)
 		{
-			draw_sprite_ext(spr_1up, 0, 16, hud_show_lives, 0.75, 0.75, 0, c_white, 1);
+			draw_sprite_ext(spr_1up, 0, 32, hud_show_lives, 0.75, 0.75, 0, c_white, 1);
 		}
 		else
 		{
@@ -199,26 +199,26 @@ and(!instance_exists(obj_title))
 		}
 		if (lives < 0)
 		{
-			draw_text_outlined(32, hud_show_lives, "0", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(64, hud_show_lives, "0", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(32, hud_show_lives, lives, global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(64, hud_show_lives, lives, global.default_text_size, c_black, c_white, 1);
 		}
 	}
 	else
 	{
 		if (asset_get_type("spr_1up") == asset_sprite)
 		{
-			draw_sprite_ext(spr_1up, 0, 16, hud_show_lives, 0.75, 0.75, 0, c_white, 1);
+			draw_sprite_ext(spr_1up, 0, 32, hud_show_lives, 0.75, 0.75, 0, c_white, 1);
 		}
 		if (lives < 0)
 		{
-			draw_text_outlined(32, hud_show_lives, "0", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(64, hud_show_lives, "0", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(32, hud_show_lives, lives, global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(64, hud_show_lives, lives, global.default_text_size, c_black, c_white, 1);
 		}
 	}
 	#endregion /*Lives END*/

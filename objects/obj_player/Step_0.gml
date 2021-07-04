@@ -14273,17 +14273,17 @@ and (in_water = false)
 
 #region /*Recharge mid-air / double jump when landing on ground*/
 if (asset_get_type("obj_wall")==asset_object)
-and(place_meeting(x,y+1,obj_wall))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+and (place_meeting(x,y+1,obj_wall))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
 {
-	if (vspeed>=0)
+	if (vspeed >= 0)
 	{
-		midair_jumps_left=number_of_jumps;
+		midair_jumps_left = number_of_jumps;
 	}
 }
 #endregion /*Recharge mid-air / double jump when landing on ground END*/
@@ -14293,7 +14293,7 @@ if (key_jump_released)
 and(!key_spin)
 and(spring=false)
 {
-	if (vspeed<0) /*When falling down*/
+	if (vspeed<0) /*When still traveling up*/
 	{
 		vspeed/=2; /*Divide the vertical speed by half*/
 	}
@@ -14301,9 +14301,9 @@ and(spring=false)
 #endregion /*Do a small jump when releasing the jump button END*/
 
 #region /*Fall faster*/
-if (vspeed>0)
+if (vspeed > 0)
 {
-	vspeed+=0.4;
+	vspeed += 0.4;
 }
 #endregion /*Fall faster END*/
 
@@ -15246,11 +15246,11 @@ and(takendamage<=takendamage_freezetime)
 
 			#region /*If touching the ground when doing a ground pound*/
 			if (position_meeting(bbox_left+1,bbox_bottom+1,obj_wall))
-			or(position_meeting(x,bbox_bottom+1,obj_wall))
-			or(position_meeting(bbox_right-1,bbox_bottom+1,obj_wall))
-			or(position_meeting(bbox_left+1,bbox_bottom+1,obj_semisolid_platform))
-			or(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-			or(position_meeting(bbox_right-1,bbox_bottom+1,obj_semisolid_platform))
+			or (position_meeting(x,bbox_bottom+1,obj_wall))
+			or (position_meeting(bbox_right-1,bbox_bottom+1,obj_wall))
+			or (position_meeting(bbox_left+1,bbox_bottom+1,obj_semisolid_platform))
+			or (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+			or (position_meeting(bbox_right-1,bbox_bottom+1,obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke,x,bbox_bottom,2,c_white);
 				image_index=0;
@@ -16640,6 +16640,27 @@ and(instance_exists(obj_spring))
 and(place_meeting(x,y,obj_spring))
 and(instance_nearest(x,y,obj_spring).can_bounce=0)
 {
+	
+	if (ground_pound = true)
+	{
+		effect_create_above(ef_smoke,x,bbox_bottom,2,c_white);
+		image_index = 0;
+		ground_pound = false;
+		speed_max = 4;
+		if (asset_get_type("obj_camera")==asset_object)
+		{
+			with(instance_nearest(x,y,obj_camera))
+			{
+				shake = 10;
+			}
+		}
+		if (asset_get_type("snd_hipattack")==asset_sound)
+		{
+			audio_play_sound(snd_hipattack,0,0);
+			audio_sound_gain(snd_hipattack,global.sfx_volume,0);
+		}
+	}
+	
 	spring_animation=0;
 	move_towards_point(
 	instance_nearest(x,y,obj_spring).angle_x,
@@ -16661,7 +16682,6 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	dive=false;
 	draw_xscale=0.5;
 	draw_yscale=1.5;
-	ground_pound=false;
 	horizontal_rope_climb=false;
 	ledge_grab_jump=false;
 	speed_max=4;

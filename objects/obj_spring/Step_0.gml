@@ -28,17 +28,6 @@ and(can_bounce=0)
 		image_speed=1;
 		with(instance_nearest(x,y,obj_player))
 		{
-			//if (x<instance_nearest(x,y,obj_spring).bbox_left)
-			//{
-			//	x=instance_nearest(x,y,obj_spring).bbox_left;
-			//}
-			//else
-			//{
-			//	if (x>instance_nearest(x,y,obj_spring).bbox_right)
-			//	{
-			//		x=instance_nearest(x,y,obj_spring).bbox_right
-			//	}
-			//}
 			can_climb_horizontal_rope_cooldown = 10;
 			midair_jumps_left=number_of_jumps;
 			can_ground_pound = false;
@@ -46,7 +35,6 @@ and(can_bounce=0)
 			dive = false;
 			draw_xscale = 0.5;
 			draw_yscale = 1.5;
-			ground_pound = false;
 			horizontal_rope_climb = false;
 			ledge_grab_jump = false;
 			speed_max = 4;

@@ -426,18 +426,8 @@ if (asset_get_type("font_default") == asset_font)
 #endregion /*Set a default font End*/
 
 if (in_settings = false)
-and(menu != "remap_key_jump")
-and(menu != "remap_key_crouch")
-and(menu != "remap_key_crouch_toggle")
-and(menu != "remap_key_sprint")
-and(menu != "remap_key_sprint_toggle")
-and(menu != "remap_key_left")
-and(menu != "remap_key_right")
-and(menu != "remap_key_down")
-and(menu != "remap_key_up")
-and(menu != "remap_key_a_pressedttack")
-and(menu != "remap_reset")
-and(menu != "remap_save")
+and (menu != "quit_game_no")
+and (menu != "quit_game_yes")
 {
 	if (asset_get_type("spr_pause_text") == asset_sprite)
 	{
