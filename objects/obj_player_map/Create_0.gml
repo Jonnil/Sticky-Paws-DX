@@ -26,6 +26,8 @@ global.timeattack_minute = 0;
 #endregion /*Reset timer back to zero END*/
 
 image_speed = 0.3;
+view_hview_lerp = 1;
+view_wview_lerp = 1;
 can_move = true;
 can_enter = true;
 entering_level = false;

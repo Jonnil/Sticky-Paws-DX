@@ -73,10 +73,6 @@ function draw_menu_dropdown()
 	#region /*Show a menu cursor when the option is highlighted*/
 	if (menu = menu_index)
 	and(open_dropdown = false)
-	and (global.controls_used_for_menu_navigation = "keyboard")
-	or (menu = menu_index)
-	and(open_dropdown = false)
-	and (global.controls_used_for_menu_navigation = "controller")
 	{
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position+16, y_position+24, 1, 1, 0, c_white, 1);
 	}
@@ -107,7 +103,7 @@ function draw_menu_dropdown()
 	#region /*Text above the menu button*/
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x_position+277+32,y_position+21-32,string(string_text),global.default_text_size,c_white,c_black,1);
+	draw_text_outlined(x_position+277+32,y_position+21-32,string(string_text),global.default_text_size*0.75,c_menu_outline,c_menu_fill,1);
 	#endregion /*Text above the menu button END*/
 	
 	#region /*Text inside the menu button*/

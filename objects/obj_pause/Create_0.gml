@@ -73,8 +73,8 @@ how_to_play_y = 40*17;
 left_sidebar_x=-400;
 
 #region /*Customize look of Options Menu*/
-c_menu_outline=c_black;
-c_menu_fill=c_white;
+c_menu_outline = c_black;
+c_menu_fill = c_white;
 #endregion /*Customize look of Options Menu END*/
 
 /*Pause sound effects and music*/audio_pause_all();

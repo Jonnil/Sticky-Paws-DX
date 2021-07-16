@@ -1106,6 +1106,17 @@ and(iris_xscale >= 10)
 	or(gamepad_button_check(0, gp_face4))
 	or(keyboard_check(global.player1_key_sprint))
 	or(keyboard_check(global.player1_key2_sprint))
+	
+	or(keyboard_check(global.player1_key_sprint_toggle))
+	or(keyboard_check(global.player1_key2_sprint_toggle))
+	or(keyboard_check(global.player1_key_crouch))
+	or(keyboard_check(global.player1_key2_crouch))
+	or(keyboard_check(global.player1_key_crouch_toggle))
+	or(keyboard_check(global.player1_key2_crouch_toggle))
+	or(keyboard_check(global.player1_key_dive))
+	or(keyboard_check(global.player1_key2_dive))
+	or(keyboard_check(global.player1_key_tongue))
+	or(keyboard_check(global.player1_key2_tongue))
 	{
 		player1_show_controls_timer = room_speed * global.player1_show_controls;
 	}
@@ -1172,6 +1183,17 @@ and(iris_xscale >= 10)
 	or(gamepad_button_check(1, gp_face4))
 	or(keyboard_check(global.player2_key_sprint))
 	or(keyboard_check(global.player2_key2_sprint))
+	
+	or(keyboard_check(global.player2_key_sprint_toggle))
+	or(keyboard_check(global.player2_key2_sprint_toggle))
+	or(keyboard_check(global.player2_key_crouch))
+	or(keyboard_check(global.player2_key2_crouch))
+	or(keyboard_check(global.player2_key_crouch_toggle))
+	or(keyboard_check(global.player2_key2_crouch_toggle))
+	or(keyboard_check(global.player2_key_dive))
+	or(keyboard_check(global.player2_key2_dive))
+	or(keyboard_check(global.player2_key_tongue))
+	or(keyboard_check(global.player2_key2_tongue))
 	{
 		player2_show_controls_timer = room_speed * global.player2_show_controls;
 	}
@@ -1238,6 +1260,17 @@ and(iris_xscale >= 10)
 	or(gamepad_button_check(2, gp_face4))
 	or(keyboard_check(global.player3_key_sprint))
 	or(keyboard_check(global.player3_key2_sprint))
+	
+	or(keyboard_check(global.player3_key_sprint_toggle))
+	or(keyboard_check(global.player3_key2_sprint_toggle))
+	or(keyboard_check(global.player3_key_crouch))
+	or(keyboard_check(global.player3_key2_crouch))
+	or(keyboard_check(global.player3_key_crouch_toggle))
+	or(keyboard_check(global.player3_key2_crouch_toggle))
+	or(keyboard_check(global.player3_key_dive))
+	or(keyboard_check(global.player3_key2_dive))
+	or(keyboard_check(global.player3_key_tongue))
+	or(keyboard_check(global.player3_key2_tongue))
 	{
 		player3_show_controls_timer = room_speed * global.player3_show_controls;
 	}
@@ -1304,6 +1337,17 @@ and(iris_xscale >= 10)
 	or(gamepad_button_check(3, gp_face4))
 	or(keyboard_check(global.player4_key_sprint))
 	or(keyboard_check(global.player4_key2_sprint))
+	
+	or(keyboard_check(global.player4_key_sprint_toggle))
+	or(keyboard_check(global.player4_key2_sprint_toggle))
+	or(keyboard_check(global.player4_key_crouch))
+	or(keyboard_check(global.player4_key2_crouch))
+	or(keyboard_check(global.player4_key_crouch_toggle))
+	or(keyboard_check(global.player4_key2_crouch_toggle))
+	or(keyboard_check(global.player4_key_dive))
+	or(keyboard_check(global.player4_key2_dive))
+	or(keyboard_check(global.player4_key_tongue))
+	or(keyboard_check(global.player4_key2_tongue))
 	{
 		player4_show_controls_timer = room_speed * global.player4_show_controls;
 	}

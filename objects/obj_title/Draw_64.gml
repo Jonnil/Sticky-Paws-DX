@@ -3247,24 +3247,6 @@ if (black_screen_at_start_delay<1)
 }
 #endregion /*Have a black screen at the first frame so transitions look natural END*/
 
-#region /*Window is focused, hide cursor*/
-if (window_has_focus())
-and(window_mouse_get_x()>0+8)
-and(window_mouse_get_x()<window_get_width()-8)
-and(window_mouse_get_y()>0+8)
-and(window_mouse_get_y()<window_get_height()-8)
-{
-	window_set_cursor(cr_none);
-}
-else
-{
-	if (!window_get_fullscreen())
-	{
-		window_set_cursor(cr_default);
-	}
-}
-#endregion /*Window is focused, hide cursor END*/
-
 #region /*If Window is unfocused, darken the screen*/
 if (!window_has_focus())
 {

@@ -442,6 +442,8 @@ hoverstomp_distance = 500;
 /*________________________________*/
 
 #region /*Don't change these variables*/
+view_hview_lerp = 1;
+view_wview_lerp = 1;
 allow_timeup = true;
 allow_timeattack = true;
 simple_controls = false; /*Simple Controls, used for testing if a level can be completed with limitations. All levels should be able to be finished, not 100% completed, with this option set to true. This option should be false by default when creating executable*/

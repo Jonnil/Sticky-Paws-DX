@@ -34,8 +34,8 @@ if (black_screen_at_start_delay<1)
 #endregion /*Have a black screen at the first frame so transitions look natural END*/
 
 #region /*Draw mouse cursor for menu navigation*/
-if (window_has_focus())
-and(global.controls_used_for_menu_navigation="mouse")
+//if (window_has_focus())
+if (global.controls_used_for_menu_navigation="mouse")
 and(os_type!=os_ios)
 and(os_type!=os_android)
 and(global.pause = false)
@@ -43,21 +43,3 @@ and(global.pause = false)
 	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/
-
-#region /*Window is focused, hide cursor*/
-if (window_has_focus())
-and(window_mouse_get_x() > + 8)
-and(window_mouse_get_x() < window_get_width() - 8)
-and(window_mouse_get_y() > + 8)
-and(window_mouse_get_y() < window_get_height() - 8)
-{
-	window_set_cursor(cr_none);
-}
-else
-{
-	if (!window_get_fullscreen())
-	{
-		window_set_cursor(cr_default);
-	}
-}
-#endregion /*Window is focused, hide cursor END*/

@@ -1,6 +1,17 @@
 //instance_deactivate_all(true);
 instance_activate_object(obj_pause);
 
+if (global.background_brightness_menu>-0.1)
+{
+	c_menu_outline=c_white;
+	c_menu_fill=c_black;
+}
+else
+{
+	c_menu_outline=c_black;
+	c_menu_fill=c_white;
+}
+
 //draw_text_outlined(300, 300, "menu = "+string(menu), global.default_text_size, c_white, c_black, 1);
 
 #region /*Set what controls are used to navigate the menus*/
@@ -1360,24 +1371,6 @@ if (menu_joystick_delay>0)
 }
 #endregion /*Menu navigation with joystick END*/
 
-#region /*Window is focused, hide cursor*/
-if (window_has_focus())
-and(window_mouse_get_x() > + 8)
-and(window_mouse_get_x() < window_get_width() - 8)
-and(window_mouse_get_y() > + 8)
-and(window_mouse_get_y() < window_get_height() - 8)
-{
-	window_set_cursor(cr_none);
-}
-else
-{
-	if (!window_get_fullscreen())
-	{
-		window_set_cursor(cr_default);
-	}
-}
-#endregion /*Window is focused, hide cursor END*/
-
 #region /*If Window is unfocused, make the screen darker*/
 if (!window_has_focus())
 {
@@ -1393,8 +1386,8 @@ if (!window_has_focus())
 #endregion /*If Window is unfocused, make the screen darker END*/
 
 #region /*Draw mouse cursor for menu navigation*/
-if (window_has_focus())
-and(global.controls_used_for_menu_navigation="mouse")
+//if (window_has_focus())
+if (global.controls_used_for_menu_navigation="mouse")
 and(os_type!=os_ios)
 and(os_type!=os_android)
 {

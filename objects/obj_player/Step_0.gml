@@ -12015,9 +12015,9 @@ and(obj_camera.iris_xscale<3)
 				{
 					if (x>room_width+sprite_width/2)
 					{
-						x=room_width+sprite_width/2;
-						hspeed=0;
-						vspeed =0;
+						x = room_width+sprite_width/2;
+						hspeed = 0;
+						vspeed = 0;
 					}
 				}
 			}
@@ -12048,13 +12048,18 @@ and(obj_camera.iris_xscale<3)
 		
 		#region /*Don't go outside view*/
 		if (x < camera_get_view_x(view_camera[view_current]))
+		and (instance_number(obj_player)>=2)
 		{
 			x = camera_get_view_x(view_camera[view_current]);
 		}
 		if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+		and (instance_number(obj_player)>=2)
 		{
 			x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
 		}
+		#endregion /*Don't go outside view END*/
+		
+		#region /*Don't go outside room*/
 		if (x < 0)
 		{
 			x = 0;
@@ -12067,7 +12072,7 @@ and(obj_camera.iris_xscale<3)
 		{
 			y = -64;
 		}
-		#endregion /*Don't go outside view END*/
+		#endregion /*Don't go outside room END*/
 		
 	}
 }
@@ -12157,41 +12162,30 @@ else
 	{
 		
 		#region /*Don't go outside view*/
-		if (x<camera_get_view_x(view_camera[view_current]))
+		if (x < camera_get_view_x(view_camera[view_current]))
+		and (instance_number(obj_player)>=2)
 		{
-			x=camera_get_view_x(view_camera[view_current]);
-			if (speed_max<4)
-			{
-				speed_max=4;
-			}
+			x = camera_get_view_x(view_camera[view_current]);
 		}
-		if (x>camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
+		if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+		and (instance_number(obj_player)>=2)
 		{
-			x=camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]);
-			if (speed_max<4)
-			{
-				speed_max=4;
-			}
+			x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
 		}
-		if (x<0)
+		#endregion /*Don't go outside view END*/
+		
+		#region /*Don't go outside room*/
+		if (x < 0)
 		{
-			x=0;
-			if (speed_max<4)
-			{
-				speed_max=4;
-			}
+			x = 0;
 		}
-		if (x>room_width)
+		if (x > room_width)
 		{
-			x=room_width;
-			if (speed_max<4)
-			{
-				speed_max=4;
-			}
+			x = room_width;
 		}
-		if (y<0-64)
+		if (y < -64)
 		{
-			y=0-64;
+			y = -64;
 		}
 		#endregion /*Don't go outside room END*/
 		

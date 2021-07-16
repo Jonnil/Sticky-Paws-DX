@@ -368,7 +368,10 @@ and(!instance_exists(obj_title))
 		#region /*Time countup in Minutes, Seconds and Milliseconds*/
 		if (global.show_timer = true)
 		{
-			draw_text_outlined(window_get_width() - 32, 74, string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(global.timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
+			draw_set_halign(fa_right)
+			draw_text_outlined(window_get_width() - 90, 74, string(global.timeattack_minute) + ":", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() - 60, 74, string(global.timeattack_second), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() - 30, 74, "." + string(global.timeattack_millisecond), global.default_text_size*0.75, c_black, c_white, 1);
 		}
 		#endregion /*Time countup in Minutes, Seconds and Milliseconds END*/
 		
@@ -392,10 +395,16 @@ and(!instance_exists(obj_title))
 	draw_text_outlined( 32, 164, "Instance Count: "+string(instance_count),global.default_text_size, c_black, c_white, 1);
 }
 
-//draw_text_outlined( 32, 164+32, "player1: "+string(player1),global.default_text_size, c_black, c_white, 1);
-//draw_text_outlined( 32, 164+64, "player2: "+string(player2),global.default_text_size, c_black, c_white, 1);
-//draw_text_outlined( 32, 164+64+32, "player3: "+string(player3),global.default_text_size, c_black, c_white, 1);
-//draw_text_outlined( 32, 164+64+64, "player4: "+string(player4),global.default_text_size, c_black, c_white, 1);
+#region /*Show if you have Assist mode enabled or not*/
+if (global.assist_enable = true)
+and (asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+{
+	draw_set_halign(fa_right);
+	draw_set_valign(fa_center);
+	draw_text_outlined(window_get_width()-32, window_get_height()-32, "Assist Mode", global.default_text_size, c_black, c_white, 1);
+}
+#endregion /*Show if you have Assist mode enabled or not END*/
 
 #region /*Show Controls*/
 if (os_type != os_ios)
@@ -1786,8 +1795,7 @@ and(!instance_exists(obj_pause))
 #endregion /*Show Controls END*/
 
 #region /*Draw mouse cursor for menu navigation*/
-if (window_has_focus())
-and(global.controls_used_for_menu_navigation="mouse")
+if (global.controls_used_for_menu_navigation="mouse")
 and(os_type!=os_ios)
 and(os_type!=os_android)
 and(global.pause = false)
@@ -1795,21 +1803,3 @@ and(global.pause = false)
 	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/
-
-#region /*Window is focused, hide cursor*/
-if (window_has_focus())
-and(window_mouse_get_x() > + 8)
-and(window_mouse_get_x() < window_get_width() - 8)
-and(window_mouse_get_y() > + 8)
-and(window_mouse_get_y() < window_get_height() - 8)
-{
-	window_set_cursor(cr_none);
-}
-else
-{
-	if (!window_get_fullscreen())
-	{
-		window_set_cursor(cr_default);
-	}
-}
-#endregion /*Window is focused, hide cursor END*/

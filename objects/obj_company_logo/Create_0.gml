@@ -2,7 +2,7 @@
 
 #region /*Things you could change*/
 
-/*Readme textfile for how to use the level editor*/leveleditor_readme=noone;
+/*Readme textfile for how to use the level editor*/leveleditor_readme = noone;
 
 /*Change how menus look and function*/
 global.can_select_number_of_players=true; /*If this is true, there will be a number of players select screen before you start the game*/
@@ -114,6 +114,9 @@ if (file_exists(working_directory+"Custom Levels/level_data.zip"))
 }
 #endregion /*Unzip custom level files END*/
 
+view_hview_lerp = 1;
+view_wview_lerp = 1;
+window_set_cursor(cr_none);
 global.grid_hsnap=32;/*Horizontal grid snapping*/
 global.grid_vsnap=32;/*Vertical grid snapping*/
 global.narrator=1;/*Select Narrator*/
@@ -491,5 +494,6 @@ else
 #endregion /*Interpolation END*/
 
 time=0;
+sprite_index = spr_company_logo;
 
 #endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/
