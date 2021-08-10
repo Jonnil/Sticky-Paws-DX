@@ -57,11 +57,13 @@ if (count=50)
 		}
 		audio_play_sound(voice_burned_die,0,0);
 		audio_sound_gain(voice_burned_die,global.voices_volume,0);
+		audio_sound_pitch(voice_burned_die, default_voice_pitch);
 	}
 	else
 	{
 		audio_play_sound(voice_damage,0,0);
 		audio_sound_gain(voice_damage,global.voices_volume,0);
+		audio_sound_pitch(voice_damage, default_voice_pitch);
 	}
 }
 #endregion /*Start death animation, falling off screen END*/
@@ -329,7 +331,7 @@ else
 }
 if (sprite_index>0)
 {
-	draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
+	draw_sprite_ext(sprite_index,image_index,x,y,image_xscale*default_xscale,image_yscale*default_yscale,image_angle,image_blend,image_alpha);
 }
 
 #region /*Bubble*/

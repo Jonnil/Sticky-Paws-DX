@@ -77,21 +77,21 @@ if (y<camera_get_view_y(view_camera[view_current]))
 		{
 			if (invincible%2==0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+32,draw_xscale/2*sign(image_xscale),draw_yscale/2,angle,random(9999),image_alpha);
+				draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+32,draw_xscale*default_xscale/2*sign(image_xscale),draw_yscale*default_yscale/2,angle,random(9999),image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+32,draw_xscale/2*sign(image_xscale),draw_yscale/2,angle,image_blend,image_alpha);
+				draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+32,draw_xscale*default_xscale/2*sign(image_xscale),draw_yscale*default_yscale/2,angle,image_blend,image_alpha);
 			}
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+32,draw_xscale/2*sign(image_xscale),draw_yscale/2,angle,random(9999),image_alpha);
+			draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+32,draw_xscale*default_xscale/2*sign(image_xscale),draw_yscale*default_yscale/2,angle,random(9999),image_alpha);
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+32,draw_xscale/2*sign(image_xscale),draw_yscale/2,angle,image_blend,image_alpha);
+		draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+32,draw_xscale*default_xscale/2*sign(image_xscale),draw_yscale*default_yscale/2,angle,image_blend,image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside top view END*/
@@ -114,21 +114,21 @@ and(y<room_height)
 		{
 			if (invincible%2==0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,draw_xscale/2*sign(image_xscale),draw_yscale/2,angle,random(9999),image_alpha);
+				draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,draw_xscale*default_xscale/2*sign(image_xscale),draw_yscale*default_yscale/2,angle,random(9999),image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,draw_xscale/2*sign(image_xscale),draw_yscale/2,angle,image_blend,image_alpha);
+				draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,draw_xscale*default_xscale/2*sign(image_xscale),draw_yscale*default_yscale/2,angle,image_blend,image_alpha);
 			}
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,draw_xscale/2*sign(image_xscale),draw_yscale/2,angle,random(9999),image_alpha);
+			draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,draw_xscale*default_xscale/2*sign(image_xscale),draw_yscale*default_yscale/2,angle,random(9999),image_alpha);
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,draw_xscale/2*sign(image_xscale),draw_yscale/2,angle,image_blend,image_alpha);
+		draw_sprite_ext(sprite_index,image_index,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,draw_xscale*default_xscale/2*sign(image_xscale),draw_yscale*default_yscale/2,angle,image_blend,image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside bottom view END*/
@@ -185,9 +185,11 @@ if (takendamage>=takendamage_freezetime)
 }
 if (takendamage>=100)
 and(die=false)
+and(hp>0)
 {
 	audio_play_sound(voice_damage,0,0);
 	audio_sound_gain(voice_damage,global.voices_volume,0);
+	audio_sound_pitch(voice_damage, default_voice_pitch);
 }
 #endregion /*Make it obvious if you take damage END*/
 
@@ -217,32 +219,26 @@ and(hp<=1)
 and(max_hp>=2)
 and(sprite_index>0)
 {
-	draw_sprite_ext(sprite_index,image_index,xx+random_range(-8,+8),yy+random_range(-8,+8),draw_xscale*sign(image_xscale),draw_yscale,angle,c_red,image_alpha);
+	draw_sprite_ext(sprite_index,image_index,xx+random_range(-8,+8),yy+random_range(-8,+8),draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,c_red,image_alpha);
 }
 else
 if (takendamage%2==0)
 and(sprite_index>0)
 {
-	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,image_blend,image_alpha);
+	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,image_blend,image_alpha);
 	if (hp<=1)
 	and(max_hp>=2)
 	{
-		draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,c_red,0.1);
+		draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,c_red,0.1);
 	}
 }
 else
 if (sprite_index>0)
 {
-	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,image_blend,0.5);
+	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,image_blend,0.5);
 }
 #endregion /*Blink red when only having 1 HP left and no heart balloon END*/
 
-if (double_jump_depleted_blink>=18)
-and (number_of_jumps > 1)
-and(sprite_index>0)
-{
-	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,c_ltgray,0.50);
-}
 #endregion /*Draw Self END*/
 
 #region /*Turnaround Effect*/
@@ -252,7 +248,7 @@ and(horizontal_rope_climb=false)
 {
 	if (asset_get_type("spr_effect_turnaround")==asset_sprite)
 	{
-		draw_sprite_ext(spr_effect_turnaround,effect_turnaround_subimg,x,y,image_xscale,image_yscale,angle,c_white,0.5);
+		draw_sprite_ext(spr_effect_turnaround,effect_turnaround_subimg,x,y,1,1,angle,c_white,0.5);
 	}
 }
 if (effect_turnaround_subimg<11)
@@ -275,16 +271,16 @@ if (assist_invincible = false)
 		{
 			if (invincible%2==0)
 			{
-				draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,random(9999),image_alpha);
+				draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,random(9999),image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,image_blend,image_alpha);
+				draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,image_blend,image_alpha);
 			}
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*sign(image_xscale),draw_yscale,angle,random(9999),image_alpha);
+			draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,random(9999),image_alpha);
 		}
 	}
 }

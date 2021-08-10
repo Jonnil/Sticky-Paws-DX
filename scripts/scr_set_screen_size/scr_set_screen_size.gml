@@ -1,6 +1,6 @@
 function scr_set_screen_size()
 {
-	draw_text_outlined(view_camera[view_current], camera_get_view_width(view_camera[view_current]), "")
+	//draw_text_outlined(view_camera[view_current], camera_get_view_width(view_camera[view_current]), "")
 	
 	#region /*Set screen size*/
 	camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current])); /*View Border*/

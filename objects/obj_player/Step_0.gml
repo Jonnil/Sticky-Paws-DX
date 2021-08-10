@@ -8794,9 +8794,9 @@ voice_burned = noone;
 
 #endregion /*Sound variables END*/
 
-#endregion /*Play as Custom CharacterEND*/
+#endregion /*Play as Custom Character END*/
 
-#region /*CharacterValues Handeling*/
+#region /*Character Values Handeling*/
 
 if (file_exists("Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
 or(file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))
@@ -9057,6 +9057,39 @@ or(file_exists(working_directory + "/Custom Characters/Character "+string(custom
 		wall_jump_time = 10;
 	}
 	#endregion /*Wall Jump Time END*/
+	
+	#region /*Default Xscale*/
+	if (ini_key_exists("values", "default_xscale"))
+	{
+		default_xscale = ini_read_real("values", "default_xscale", 1);
+	}
+	else
+	{
+		default_xscale = 1;
+	}
+	#endregion /*Default Xscale END*/
+	
+	#region /*Default Yscale*/
+	if (ini_key_exists("values", "default_yscale"))
+	{
+		default_yscale = ini_read_real("values", "default_yscale", 1);
+	}
+	else
+	{
+		default_yscale = 1;
+	}
+	#endregion /*Default Yscale END*/
+	
+	#region /*Default Voice Pitch*/
+	if (ini_key_exists("values", "default_voice_pitch"))
+	{
+		default_voice_pitch = ini_read_real("values", "default_voice_pitch", 1);
+	}
+	else
+	{
+		default_voice_pitch = 1;
+	}
+	#endregion /*Default Voice Pitch END*/
 	
 	ini_close();
 }
@@ -14165,6 +14198,7 @@ and(key_jump_hold)
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump, 0, 0);
 				audio_sound_gain(voice_jump, global.voices_volume, 0);
+				audio_sound_pitch(voice_jump, default_voice_pitch);
 			}
 			if (jump = 2)
 			//if (random(global.verbosity_slider*100) >= 100)
@@ -14172,6 +14206,7 @@ and(key_jump_hold)
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump2nd, 0, 0);
 				audio_sound_gain(voice_jump2nd, global.voices_volume, 0);
+				audio_sound_pitch(voice_jump2nd, default_voice_pitch);
 			}
 			if (jump = 3)
 			//if (random(global.verbosity_slider*100) >= 100)
@@ -14179,6 +14214,7 @@ and(key_jump_hold)
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump3rd, 0, 0);
 				audio_sound_gain(voice_jump3rd, global.voices_volume, 0);
+				audio_sound_pitch(voice_jump3rd, default_voice_pitch);
 			}
 			#endregion /*Jump sound effect end*/
 			draw_xscale = 0.75;
@@ -14230,6 +14266,7 @@ and (in_water = false)
 		}
 		voice = audio_play_sound(voice_jump, 0, 0);
 		audio_sound_gain(voice_jump,global.voices_volume,0);
+		audio_sound_pitch(voice_jump, default_voice_pitch);
 		effect_create_above(ef_smoke,x-16,bbox_bottom,0,c_white);
 		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
 		effect_create_above(ef_smoke,x+16,bbox_bottom,0,c_white);
@@ -14929,6 +14966,7 @@ and(wall_jump_setting>=1)
 				audio_stop_sound(voice);
 				voice=audio_play_sound(voice_wallkick,0,0);
 				audio_sound_gain(voice_wallkick,global.voices_volume,0);
+				audio_sound_pitch(voice_wallkick, default_voice_pitch);
 				if (asset_get_type("snd_wallkick")==asset_sound)
 				{
 					audio_play_sound(snd_wallkick,0,0);
@@ -15080,7 +15118,9 @@ and(wall_jump_setting>=1)
 			audio_stop_sound(voice);
 			voice=audio_play_sound(choose(voice_wallkick,voice_jump),0,0);
 			audio_sound_gain(voice_wallkick,global.voices_volume,0);
+			audio_sound_pitch(voice_wallkick, default_voice_pitch);
 			audio_sound_gain(voice_jump,global.voices_volume,0);
+			audio_sound_pitch(voice_jump, default_voice_pitch);
 			if (asset_get_type("snd_wallkick")==asset_sound)
 			{
 				audio_play_sound(snd_wallkick,0,0);
@@ -15414,6 +15454,7 @@ and(global.pause=false)
 					audio_stop_sound(voice);
 					voice=audio_play_sound(voice_dive,0,0);
 					audio_sound_gain(voice_dive,global.voices_volume,0);
+					audio_sound_pitch(voice_dive, default_voice_pitch);
 					dive=true;
 					jump=0;
 					spring=false;
@@ -16146,6 +16187,7 @@ if (asset_get_type("obj_lava")==asset_object)
 				audio_stop_sound(voice);
 				voice=audio_play_sound(voice_burned,0,0);
 				audio_sound_gain(voice_burned,global.voices_volume,0);
+				audio_sound_pitch(voice_burned, default_voice_pitch);
 				hp-=1;
 			}
 			if (invincible>0)
@@ -16153,6 +16195,7 @@ if (asset_get_type("obj_lava")==asset_object)
 				audio_stop_sound(voice);
 				voice=audio_play_sound(voice_burned,0,0);
 				audio_sound_gain(voice_burned,global.voices_volume,0);
+				audio_sound_pitch(voice_burned, default_voice_pitch);
 			}
 			if (vspeed>0)
 			{
@@ -16172,6 +16215,7 @@ if (burnt=true)
 	{
 		audio_play_sound(voice_burned_running,0,0);
 		audio_sound_gain(voice_burned_running,global.voices_volume,0);
+		audio_sound_pitch(voice_burned_running, default_voice_pitch);
 		burnt=2;
 		dive=false;
 		ground_pound=false;
@@ -16271,6 +16315,9 @@ if (die=true)
 					if (instance_nearest(x,y,obj_player).sprite_die>noone){sprite_index=instance_nearest(x,y,obj_player).sprite_die;}else
 					{sprite_index=instance_nearest(x,y,obj_player).sprite_stand;}
 					voice_damage=instance_nearest(x,y,obj_player).voice_damage;
+					default_voice_pitch=instance_nearest(x,y,obj_player).default_voice_pitch;
+					default_xscale=instance_nearest(x,y,obj_player).default_xscale;
+					default_yscale=instance_nearest(x,y,obj_player).default_yscale;
 				}
 			}
 			#endregion /*Player 1 Die END*/
@@ -16287,6 +16334,9 @@ if (die=true)
 					if (instance_nearest(x,y,obj_player).sprite_die>noone){sprite_index=instance_nearest(x,y,obj_player).sprite_die;}else
 					{sprite_index=instance_nearest(x,y,obj_player).sprite_stand;}
 					voice_damage=instance_nearest(x,y,obj_player).voice_damage;
+					default_voice_pitch=instance_nearest(x,y,obj_player).default_voice_pitch;
+					default_xscale=instance_nearest(x,y,obj_player).default_xscale;
+					default_yscale=instance_nearest(x,y,obj_player).default_yscale;
 				}
 			}
 			#endregion /*Player 2 Die END*/
@@ -16303,6 +16353,9 @@ if (die=true)
 					if (instance_nearest(x,y,obj_player).sprite_die>noone){sprite_index=instance_nearest(x,y,obj_player).sprite_die;}else
 					{sprite_index=instance_nearest(x,y,obj_player).sprite_stand;}
 					voice_damage=instance_nearest(x,y,obj_player).voice_damage;
+					default_voice_pitch=instance_nearest(x,y,obj_player).default_voice_pitch;
+					default_xscale=instance_nearest(x,y,obj_player).default_xscale;
+					default_yscale=instance_nearest(x,y,obj_player).default_yscale;
 				}
 			}
 			#endregion /*Player 3 Die END*/
@@ -16319,6 +16372,9 @@ if (die=true)
 					if (instance_nearest(x,y,obj_player).sprite_die>noone){sprite_index=instance_nearest(x,y,obj_player).sprite_die;}else
 					{sprite_index=instance_nearest(x,y,obj_player).sprite_stand;}
 					voice_damage=instance_nearest(x,y,obj_player).voice_damage;
+					default_voice_pitch=instance_nearest(x,y,obj_player).default_voice_pitch;
+					default_xscale=instance_nearest(x,y,obj_player).default_xscale;
+					default_yscale=instance_nearest(x,y,obj_player).default_yscale;
 				}
 			}
 			#endregion /*Player 4 Die END*/
@@ -16385,6 +16441,7 @@ if (asset_get_type("obj_invincibility_powerup")==asset_object)
 		audio_stop_sound(voice);
 		voice=audio_play_sound(voice_get_star,0,0);
 		audio_sound_gain(voice_get_star,global.voices_volume,0);
+		audio_sound_pitch(voice_get_star, default_voice_pitch);
 		score+=1000;
 		global.hud_show_score=true;
 		if (asset_get_type("obj_camera")==asset_object)
@@ -16520,6 +16577,7 @@ and(distance_to_object(obj_goal) < 1920)
 		audio_stop_sound(voice);
 		voice=audio_play_sound(voice_enter_goal,0,0);
 		audio_sound_gain(voice_enter_goal,global.voices_volume,0);
+		audio_sound_pitch(voice_enter_goal, default_voice_pitch);
 		goal=true;
 		global.goal_active=true;
 		if (invincible>100)
@@ -16635,6 +16693,13 @@ and(place_meeting(x,y,obj_spring))
 and(instance_nearest(x,y,obj_spring).can_bounce=0)
 {
 	
+	#region /*Play jumping on spring voice clip*/
+	audio_stop_sound(voice);
+	voice=audio_play_sound(voice_jump_spring,0,0);
+	audio_sound_gain(voice_jump_spring,global.voices_volume,0);
+	audio_sound_pitch(voice_jump_spring, default_voice_pitch);
+	#endregion /*Play jumping on spring voice clip END*/
+	
 	if (ground_pound = true)
 	{
 		effect_create_above(ef_smoke,x,bbox_bottom,2,c_white);
@@ -16653,6 +16718,7 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 			audio_play_sound(snd_hipattack,0,0);
 			audio_sound_gain(snd_hipattack,global.sfx_volume,0);
 		}
+		
 	}
 	
 	spring_animation=0;
@@ -16879,6 +16945,7 @@ and(in_water=false)
 		audio_stop_sound(voice);
 		voice=audio_play_sound(voice_rope_catch,0,0);
 		audio_sound_gain(voice_rope_catch,global.voices_volume,0);
+		audio_sound_pitch(voice_rope_catch, default_voice_pitch);
 		#endregion /*Make a sound effect that you have started cimbing END*/
 		
 	}
@@ -16992,6 +17059,7 @@ and(in_water=false)
 				audio_stop_sound(voice);
 				voice=audio_play_sound(voice_jump_rope,0,0);
 				audio_sound_gain(voice_jump_rope,global.voices_volume,0);
+				audio_sound_pitch(voice_jump_rope, default_voice_pitch);
 			}
 			else
 			if (image_speed>=0.9)
@@ -17210,6 +17278,7 @@ and(place_meeting(x,y,obj_vine))
 			audio_stop_sound(voice);
 			voice=audio_play_sound(voice_rope_catch,0,0);
 			audio_sound_gain(voice_rope_catch,global.voices_volume,0);
+			audio_sound_pitch(voice_rope_catch, default_voice_pitch);
 			#endregion /*Make a sound effect and voice clip that you have started cimbing END*/
 			
 		}
@@ -18932,6 +19001,7 @@ if (place_meeting(x,y+1,obj_wall))
 					audio_stop_sound(voice);
 					voice=audio_play_sound(voice_startdash,0,0);
 					audio_sound_gain(voice_startdash,global.voices_volume,0);
+					audio_sound_pitch(voice_startdash, default_voice_pitch);
 				}
 			}
 			if (asset_get_type("obj_spark1")==asset_object)

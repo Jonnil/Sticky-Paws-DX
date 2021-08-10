@@ -6,6 +6,11 @@ iris_yscale=16;
 iris_zoom=0;
 xx=x;
 yy=y;
+
+default_voice_pitch=1;
+default_xscale=1;
+default_yscale=1;
+
 bubble=false;
 if (bubble=false)
 {
