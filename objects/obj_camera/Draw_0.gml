@@ -140,9 +140,9 @@ and(!instance_exists(obj_title))
 		and(can_spawn_player1 = true)
 		and (lives > 0)
 		{
-			if (global.playergame < 0)
+			if (global.player1_can_play = false)
 			{
-				global.playergame = 0;
+				global.player1_can_play = true;
 			}
 			if (asset_get_type("obj_player") == asset_object)
 			{
@@ -171,9 +171,9 @@ and(!instance_exists(obj_title))
 		and(can_spawn_player2 = true)
 		and (lives > 0)
 		{
-			if (global.playergame < 1)
+			if (global.player2_can_play = false)
 			{
-				global.playergame = 1;
+				global.player2_can_play = true;
 			}
 			if (asset_get_type("obj_player") == asset_object)
 			{
@@ -202,9 +202,9 @@ and(!instance_exists(obj_title))
 		and(can_spawn_player3 = true)
 		and (lives > 0)
 		{
-			if (global.playergame < 2)
+			if (global.player3_can_play = false)
 			{
-				global.playergame = 2;
+				global.player3_can_play = true;
 			}
 			if (asset_get_type("obj_player") == asset_object)
 			{
@@ -233,9 +233,9 @@ and(!instance_exists(obj_title))
 		and(can_spawn_player4 = true)
 		and (lives > 0)
 		{
-			if (global.playergame < 3)
+			if (global.player4_can_play = false)
 			{
-				global.playergame = 3;
+				global.player4_can_play = true;
 			}
 			if (asset_get_type("obj_player") == asset_object)
 			{
@@ -1448,7 +1448,7 @@ and(!instance_exists(obj_pause))
 	show_sprint_toggle_for_player2 = 0;
 	show_sprint_toggle_for_player3 = 0;
 	show_sprint_toggle_for_player4 = 0;
-	if (global.playergame <= 0)
+	if (global.player1_can_play = true)
 	{
 		if (global.player1_sprint_toggle = true)
 		{

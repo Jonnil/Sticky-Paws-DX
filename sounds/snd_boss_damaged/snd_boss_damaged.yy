@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_boss_damaged.wav",
-  "duration": 0.564375,
+  "duration": 0.559375,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

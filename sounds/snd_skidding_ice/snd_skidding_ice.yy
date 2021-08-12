@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_skidding_ice.wav",
-  "duration": 11.5611877,
+  "duration": 11.5561876,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

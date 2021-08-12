@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_boss_defeated.wav",
-  "duration": 1.537521,
+  "duration": 1.532521,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

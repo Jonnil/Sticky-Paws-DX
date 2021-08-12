@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_leveleditor_erase_right.wav",
-  "duration": 3.34754,
+  "duration": 3.34254,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

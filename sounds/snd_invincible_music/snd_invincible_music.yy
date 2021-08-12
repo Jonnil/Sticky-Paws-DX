@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_invincible_music.mp3",
-  "duration": 303.547882,
+  "duration": 303.542877,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

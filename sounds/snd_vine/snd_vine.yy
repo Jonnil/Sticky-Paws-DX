@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_vine.wav",
-  "duration": 2.005,
+  "duration": 2.0,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

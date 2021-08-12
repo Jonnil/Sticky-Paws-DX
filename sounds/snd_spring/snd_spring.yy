@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_spring.wav",
-  "duration": 0.651122,
+  "duration": 0.646122,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

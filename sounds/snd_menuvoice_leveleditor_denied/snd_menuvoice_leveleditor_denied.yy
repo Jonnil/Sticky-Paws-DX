@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_menuvoice_leveleditor_denied.wav",
-  "duration": 4.323912,
+  "duration": 4.318912,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

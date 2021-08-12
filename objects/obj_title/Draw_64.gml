@@ -349,19 +349,19 @@ or(menu="accessibility_shortcut")
 or(menu="profile_shortcut")
 or(menu="quit")
 {
-	#region /*CharacterSelect Accept Selection*/
-	player1_accept_selection=false;
-	player2_accept_selection=false;
-	player3_accept_selection=false;
-	player4_accept_selection=false;
+	#region /*Character Select Accept Selection*/
+	player1_accept_selection=-1;
+	player2_accept_selection=-1;
+	player3_accept_selection=-1;
+	player4_accept_selection=-1;
 	player1_start_game=false;
-	#endregion /*CharacterSelect Accept Selection END*/
+	#endregion /*Character Select Accept Selection END*/
 
 	#region /*Color Select for CharacterSelect*/
-	player_1_menu="select_character";
-	player_2_menu="select_character";
-	player_3_menu="select_character";
-	player_4_menu="select_character";
+	player1_menu="select_character";
+	player2_menu="select_character";
+	player3_menu="select_character";
+	player4_menu="select_character";
 	#endregion /*Color Select for CharacterSelect END*/
 
 	#region /*What player can enter a name*/
@@ -584,6 +584,10 @@ or(menu="quit")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	{
+		player1_accept_selection=-1;
+		player2_accept_selection=-1;
+		player3_accept_selection=-1;
+		player4_accept_selection=-1;
 		global.character_select_in_this_menu="game";
 		in_settings=false;
 		global.file = 1;
@@ -617,6 +621,10 @@ or(menu="quit")
 	or(menu="leveleditor")
 	and(key_a_pressed)
 	{
+		player1_accept_selection=-1;
+		player2_accept_selection=-1;
+		player3_accept_selection=-1;
+		player4_accept_selection=-1;
 		in_settings=false;
 		
 		#region /*Select Level Editor*/

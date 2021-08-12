@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_music_titlescreen.wav",
-  "duration": 108.498154,
+  "duration": 108.493149,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

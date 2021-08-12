@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_die_melody.wav",
-  "duration": 1.768583,
+  "duration": 1.763583,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

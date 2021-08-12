@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_rise.wav",
-  "duration": 0.262333,
+  "duration": 0.257333,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

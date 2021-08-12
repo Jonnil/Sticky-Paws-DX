@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_menuvoice_2player.wav",
-  "duration": 0.864138,
+  "duration": 0.859138,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

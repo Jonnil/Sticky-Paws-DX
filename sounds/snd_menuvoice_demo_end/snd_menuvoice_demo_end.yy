@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_menuvoice_demo_end.wav",
-  "duration": 2.106927,
+  "duration": 2.101927,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

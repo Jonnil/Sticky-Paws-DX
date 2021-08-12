@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_footstep_wood_right.wav",
-  "duration": 0.11602,
+  "duration": 0.11102,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

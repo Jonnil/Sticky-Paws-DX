@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_boss_voice_laugh.wav",
-  "duration": 0.794479,
+  "duration": 0.789479,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

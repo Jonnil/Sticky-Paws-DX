@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_menuvoice_companysplash_easteregg.wav",
-  "duration": 1.194479,
+  "duration": 1.189479,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_enemyvoice_big_defeated.wav",
-  "duration": 0.643549,
+  "duration": 0.638549,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

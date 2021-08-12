@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_music_boss.mp3",
-  "duration": 64.08335,
+  "duration": 64.07835,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_move_ivy.wav",
-  "duration": 0.254,
+  "duration": 0.249,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_footstep_metal_right.wav",
-  "duration": 0.16175,
+  "duration": 0.15675,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

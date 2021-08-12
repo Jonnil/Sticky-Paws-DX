@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_squat.wav",
-  "duration": 0.107,
+  "duration": 0.102,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",
