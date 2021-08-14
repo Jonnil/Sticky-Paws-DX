@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_land_rock.wav",
-  "duration": 0.181563,
+  "duration": 0.176563,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

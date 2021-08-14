@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_rolling.wav",
-  "duration": 0.121094,
+  "duration": 0.116094,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

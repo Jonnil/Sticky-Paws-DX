@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_3rdjump.wav",
-  "duration": 1.119781,
+  "duration": 1.114781,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_beep.wav",
-  "duration": 0.076354,
+  "duration": 0.071354,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

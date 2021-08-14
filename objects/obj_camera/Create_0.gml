@@ -147,7 +147,7 @@ and(!instance_exists(obj_player_map))
 and(asset_get_type("obj_title")==asset_object)
 and(!instance_exists(obj_title))
 {
-	if (global.playergame>=0)
+	if (global.player1_can_play = true)
 	{
 		player1=instance_create_depth(x,y,0,obj_player)
 		with(player1)
@@ -157,7 +157,7 @@ and(!instance_exists(obj_title))
 			player=1;
 		}
 	}
-	if (global.playergame>=1)
+	if (global.player2_can_play = true)
 	{
 		player2=instance_create_depth(x-32,y,0,obj_player)
 		with(player2)
@@ -167,7 +167,7 @@ and(!instance_exists(obj_title))
 			player=2;
 		}
 	}
-	if (global.playergame>=2)
+	if (global.player3_can_play = true)
 	{
 		player3=instance_create_depth(x-64,y,0,obj_player)
 		with(player3)
@@ -177,7 +177,7 @@ and(!instance_exists(obj_title))
 			player=3;
 		}
 	}
-	if (global.playergame>=3)
+	if (global.player4_can_play = true)
 	{
 		player4=instance_create_depth(x-96,y,0,obj_player)
 		with(player4)
@@ -200,7 +200,7 @@ and(!instance_exists(obj_player_map))
 and(asset_get_type("obj_title")==asset_object)
 and(!instance_exists(obj_title))
 {
-	if (global.playergame>=0)
+	if (global.player1_can_play = true)
 	{
 		player1=instance_create_depth(x,y,0,obj_player)
 		with(player1)
@@ -210,7 +210,7 @@ and(!instance_exists(obj_title))
 			player=1;
 		}
 	}
-	if (global.playergame>=1)
+	if (global.player2_can_play = true)
 	{
 		player2=instance_create_depth(x-32,y,0,obj_player)
 		with(player2)
@@ -220,7 +220,7 @@ and(!instance_exists(obj_title))
 			player=2;
 		}
 	}
-	if (global.playergame>=2)
+	if (global.player3_can_play = true)
 	{
 		player3=instance_create_depth(x-64,y,0,obj_player)
 		with(player3)
@@ -230,7 +230,7 @@ and(!instance_exists(obj_title))
 			player=3;
 		}
 	}
-	if (global.playergame>=3)
+	if (global.player4_can_play = true)
 	{
 		player4=instance_create_depth(x-96,y,0,obj_player)
 		with(player4)

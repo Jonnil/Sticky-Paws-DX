@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_skidding.wav",
-  "duration": 11.7885,
+  "duration": 11.7835,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

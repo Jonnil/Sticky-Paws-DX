@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_skiddingvertical.wav",
-  "duration": 19.5176888,
+  "duration": 19.5126877,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_cutscene_scream.wav",
-  "duration": 1.073118,
+  "duration": 1.068118,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

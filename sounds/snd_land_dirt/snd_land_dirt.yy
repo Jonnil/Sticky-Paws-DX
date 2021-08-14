@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_land_dirt.wav",
-  "duration": 0.2445,
+  "duration": 0.2395,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

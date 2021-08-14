@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_cutscene_ahh.wav",
-  "duration": 0.898968,
+  "duration": 0.893968,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

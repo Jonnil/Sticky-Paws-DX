@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_blockbreak.wav",
-  "duration": 0.479344,
+  "duration": 0.474344,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

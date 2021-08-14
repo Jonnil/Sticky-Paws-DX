@@ -238,19 +238,19 @@ global.player4_hue_hand=255;global.player4_saturation_hand=255;global.player4_va
 */
 #endregion /*Custom colors for character END*/
 
-#region /*CharacterSelect Accept Selection*/
-player1_accept_selection=false;
-player2_accept_selection=false;
-player3_accept_selection=false;
-player4_accept_selection=false;
-player1_start_game=false;
+#region /*Character Select Accept Selection*/
+player1_accept_selection=-1;
+player2_accept_selection=-1;
+player3_accept_selection=-1;
+player4_accept_selection=-1;
+player_start_game=false;
 #endregion /*CharacterSelect Accept Selection END*/
 
 #region /*Color Select for CharacterSelect*/
-player_1_menu="select_character";
-player_2_menu="select_character";
-player_3_menu="select_character";
-player_4_menu="select_character";
+player1_menu="select_character";
+player2_menu="select_character";
+player3_menu="select_character";
+player4_menu="select_character";
 #endregion /*Color Select for CharacterSelect END*/
 
 #region /*What player can enter a name*/
@@ -268,11 +268,14 @@ global.hud_show_score=false;
 #endregion /*Hide certain HUD elements END*/
 
 global.playergame=0;/*Make the game singleplayer at the start of the game*/
+global.player1_can_play = false;
+global.player2_can_play = false;
+global.player3_can_play = false;
+global.player4_can_play = false;
 global.player_has_entered_goal=false;
 global.actually_play_edited_level=false;
 global.play_edited_level=false;
 global.current_level=0;
-global.playergame=0;
 global.theme="ground";
 global.coins=0;
 global.level_clear_rate=noone;

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_catch_ivy.wav",
-  "duration": 0.227,
+  "duration": 0.222,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

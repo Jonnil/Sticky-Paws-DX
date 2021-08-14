@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_leveleditor_place_object.wav",
-  "duration": 0.15593,
+  "duration": 0.15093,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_boss_invulnerable.wav",
-  "duration": 0.504229,
+  "duration": 0.499229,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

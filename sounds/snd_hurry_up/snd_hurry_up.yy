@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_hurry_up.wav",
-  "duration": 2.051576,
+  "duration": 2.046576,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

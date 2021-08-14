@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_dive.wav",
-  "duration": 0.456655,
+  "duration": 0.451655,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

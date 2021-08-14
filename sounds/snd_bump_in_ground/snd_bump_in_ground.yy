@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_bump_in_ground.wav",
-  "duration": 1.009917,
+  "duration": 1.004917,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

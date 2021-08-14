@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_menuvoice_sticky.wav",
-  "duration": 1.015068,
+  "duration": 1.010068,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

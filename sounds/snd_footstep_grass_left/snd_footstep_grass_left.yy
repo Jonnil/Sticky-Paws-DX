@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_footstep_grass_left.wav",
-  "duration": 0.256688,
+  "duration": 0.251688,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

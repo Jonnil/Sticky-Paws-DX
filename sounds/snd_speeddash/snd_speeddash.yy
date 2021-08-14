@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_speeddash.wav",
-  "duration": 0.774161,
+  "duration": 0.769161,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

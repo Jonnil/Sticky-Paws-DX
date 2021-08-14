@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_incorrect.wav",
-  "duration": 0.18568,
+  "duration": 0.18068,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "snd_menuvoice_controllersplash.wav",
-  "duration": 1.676837,
+  "duration": 1.671837,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",
