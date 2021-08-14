@@ -243,7 +243,7 @@ player1_accept_selection=-1;
 player2_accept_selection=-1;
 player3_accept_selection=-1;
 player4_accept_selection=-1;
-player1_start_game=false;
+player_start_game=false;
 #endregion /*CharacterSelect Accept Selection END*/
 
 #region /*Color Select for CharacterSelect*/
