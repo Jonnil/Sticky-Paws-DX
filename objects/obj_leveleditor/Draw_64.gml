@@ -1357,6 +1357,9 @@ if (quit_level_editor = false)
 
 	#endregion /*Click icons at top of screen END*/
 	
+	draw_sprite_ext(spr_menu_button_play, 0, window_get_width(), window_get_height()/2, 1, 1, 0, c_white, 1);
+	virtual_key_add(window_get_width()-32, window_get_height()/2-32, 64, 64, vk_enter);
+	
 	scr_show_fps();
 	
 	#region /*Menu navigation with joystick (This code must come after all menu navigation code)*/

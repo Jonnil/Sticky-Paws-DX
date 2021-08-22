@@ -75,7 +75,25 @@ iris_zoom = 0;
 
 #region /*Play as custom character*/
 initialize_custom_character_timer = 0;
-custom_character = global.character_for_player_1;
+if (global.player1_can_play = true)
+{
+	custom_character = global.character_for_player_1;
+}
+else
+if (global.player2_can_play = true)
+{
+	custom_character = global.character_for_player_2;
+}
+else
+if (global.player3_can_play = true)
+{
+	custom_character = global.character_for_player_3;
+}
+else
+if (global.player4_can_play = true)
+{
+	custom_character = global.character_for_player_4;
+}
 
 sprite_map_xorig = 0;
 sprite_map_yorig = 0;

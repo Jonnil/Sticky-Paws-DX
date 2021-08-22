@@ -54,7 +54,7 @@ if (full_level_map_screenshot_timer = 10)
 }
 #endregion /*Save whole level as screenshot png file END*/
 
-#region /*Initialize Custom Character */
+#region /*Initialize Custom character*/
 if (initialize_custom_character_timer < 2)
 {
 	initialize_custom_character_timer += 1;
@@ -293,7 +293,7 @@ allow_timeattack = true;
 simple_controls = false; /*Simple Controls, used for testing if a level can be completed with limitations. All levels should be able to be finished, not 100% completed, with this option set to true. This option should be false by default when creating executable*/
 stop_screen_from_scrolling_left = false; /*Stop the screen from being able to screoll left*/
 
-#region /*Play as Custom Character */
+#region /*Play as Custom character*/
 
 #region /*Sprite origin point variables*/
 if (file_exists("Characters/Character "+string(custom_character)+"/Data/sprite_origin_point.ini"))
@@ -8794,9 +8794,9 @@ voice_burned = noone;
 
 #endregion /*Sound variables END*/
 
-#endregion /*Play as Custom Character END*/
+#endregion /*Play as Custom characterEND*/
 
-#region /*Character Values Handeling*/
+#region /*characterValues Handeling*/
 
 if (file_exists("Characters/Character "+string(custom_character)+"/Data/character_config.ini"))
 or(file_exists(working_directory + "/Custom Characters/Character "+string(custom_character-global.max_number_of_official_characters)+"/Data/character_config.ini"))

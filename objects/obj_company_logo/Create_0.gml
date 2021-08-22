@@ -117,6 +117,7 @@ if (file_exists(working_directory+"Custom Levels/level_data.zip"))
 view_hview_lerp = 1;
 view_wview_lerp = 1;
 window_set_cursor(cr_none);
+global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 global.grid_hsnap=32;/*Horizontal grid snapping*/
 global.grid_vsnap=32;/*Vertical grid snapping*/
 global.narrator=1;/*Select Narrator*/
@@ -429,12 +430,12 @@ global.player4_show_controls=1;
 #endregion /*Player 4 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Mobile Controls Settings*/
-global.mobile_joystick_x=0;
-global.mobile_joystick_y=0;
-global.mobile_key_a_x=0;
-global.mobile_key_a_y=0;
-global.mobile_key_b_x=0;
-global.mobile_key_b_y=0;
+global.mobile_joystick_x = 0;
+global.mobile_joystick_y = 300;
+global.mobile_key_jump_x = 1824;
+global.mobile_key_jump_y = 984-16;
+global.mobile_key_sprint_x = 1568;
+global.mobile_key_sprint_y = 984-16;
 #endregion /*Mobile Controls Settings END*/
 
 #region /*Load Config*/

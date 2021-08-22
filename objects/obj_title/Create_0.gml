@@ -1,5 +1,7 @@
 scr_set_arrays();
 
+level_index = 0
+
 /*Narrator Voice variable handeling*/
 narrator_name=noone;
 global.narrator_max_characters=1;
@@ -238,7 +240,7 @@ global.player4_hue_hand=255;global.player4_saturation_hand=255;global.player4_va
 */
 #endregion /*Custom colors for character END*/
 
-#region /*Character Select Accept Selection*/
+#region /*characterSelect Accept Selection*/
 player1_accept_selection=-1;
 player2_accept_selection=-1;
 player3_accept_selection=-1;

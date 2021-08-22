@@ -7,7 +7,7 @@ selected_voice_pack = global.voicepack_for_player_1;
 initialize_custom_character_timer = 0;
 #endregion /*What custom character to use. Change the character sprites and voice END*/
 
-#region /*Initialize Custom Character */
+#region /*Initialize Custom character*/
 
 #region /*Allow*/
 allow_roll = false;
@@ -26,7 +26,7 @@ allow_tongue = false; /*A tongue that extends*/
 allow_overflow_hp = false;
 #endregion /*Allow END*/
 
-#region /*Play as Custom Character */
+#region /*Play as Custom character*/
 
 #region /*Sprite origin point variables*/
 mask_xorig = 0;

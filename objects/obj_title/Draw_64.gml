@@ -349,13 +349,13 @@ or(menu="accessibility_shortcut")
 or(menu="profile_shortcut")
 or(menu="quit")
 {
-	#region /*Character Select Accept Selection*/
+	#region /*characterSelect Accept Selection*/
 	player1_accept_selection=-1;
 	player2_accept_selection=-1;
 	player3_accept_selection=-1;
 	player4_accept_selection=-1;
 	player_start_game=false;
-	#endregion /*Character Select Accept Selection END*/
+	#endregion /*characterSelect Accept Selection END*/
 
 	#region /*Color Select for CharacterSelect*/
 	player1_menu="select_character";
@@ -1424,11 +1424,17 @@ or(menu="4player")
 }
 #endregion /*Select how many players (1-4 players) END*/
 
+draw_text_outlined(100, 100, string(ds_list_find_value(global.all_loaded_custom_levels,0)), global.default_text_size, c_white, c_black, 1);
 
+#region /*Select Custom Level Menu*/
+if (menu="select_custom_level")
+{
+	scr_select_custom_level_menu();
+}
+#endregion /*Select Custom Level Menu END*/
 
 #region /*Level Editor Menu*/
 if (menu="back_from_level_editor")
-or(menu="select_custom_level")
 or(menu="level_editor_make")
 or(menu="level_editor_upload")
 or(menu="delete_level")
@@ -1437,19 +1443,19 @@ or(menu="import_export_level")
 {
 	
 	#region /*Draw Thumbnail*/
-	if (directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
-	and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png"))
-	or(directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
-	and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png"))
-	{
-		if (global.thumbnail_sprite>noone)
-		{
-			draw_sprite_ext(global.thumbnail_sprite,0,
-			window_get_width()/2+250,
-			0,
-			0.59,0.59,0,c_white,1);
-		}
-	}
+	//if (directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
+	//and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png"))
+	//or(directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
+	//and(file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png"))
+	//{
+	//	if (global.thumbnail_sprite>noone)
+	//	{
+	//		draw_sprite_ext(global.thumbnail_sprite,0,
+	//		window_get_width()/2+250,
+	//		0,
+	//		0.59,0.59,0,c_white,1);
+	//	}
+	//}
 	#endregion /*Draw Thumbnail END*/
 	
 	#region /*Back Button*/

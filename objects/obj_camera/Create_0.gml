@@ -5,6 +5,11 @@ image_speed = 0.25;
 
 global.pause_room = noone;
 
+show_controller_input_change_prompt = 0;
+show_keyboard_and_mouse_input_change_prompt = 0;
+show_controller_input_change_prompt_y = 0;
+show_keyboard_and_mouse_input_change_prompt_y = 0;
+
 #region /*Mouse x and mouse y initializing*/
 mouse_x_position = mouse_x;
 mouse_y_position = mouse_y;
@@ -786,18 +791,3 @@ and (!instance_exists(obj_player_map))
 //if (global.y_checkpoint>0{view_yview=global.y_checkpoint;}
 
 //}
-
-/*Virtual Controls*/
-//display_set_gui_size(view_wview,view_hview);
-//global.virtual_key_up=virtual_key_add(0,450,300,100,vk_up);
-//global.virtual_key_left=virtual_key_add(0,450,100,300,vk_left);
-//global.virtual_key_right=virtual_key_add(200,450,100,300,vk_right);
-//global.virtual_key_down=virtual_key_add(0,650,300,100,vk_down);
-//global.virtual_key_a=virtual_key_add(1200,450,200,300,vk_space);
-//global.virtual_key_b=virtual_key_add(1100,450,200,300,vk_shift);
-//virtual_key_show(global.virtual_key_up);
-//virtual_key_show(global.virtual_key_left);
-//virtual_key_show(global.virtual_key_right);
-//virtual_key_show(global.virtual_key_down);
-//virtual_key_show(global.virtual_key_a);
-//virtual_key_show(global.virtual_key_b);
