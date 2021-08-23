@@ -1,5 +1,8 @@
 scr_set_arrays();
 
+background_layer_x = 0;
+background_layer_y = 0;
+
 level_index = 0
 
 /*Narrator Voice variable handeling*/

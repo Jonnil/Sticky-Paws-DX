@@ -858,24 +858,6 @@ layer_x(layer_get_id("Background_3"),camera_get_view_x(view_camera[view_current]
 layer_y(layer_get_id("Background_3"),camera_get_view_y(view_camera[view_current])/custom_background_3_y_parallax+custom_background_3_y_offset);
 layer_x(layer_get_id("Background_4"),camera_get_view_x(view_camera[view_current])/custom_background_4_x_parallax+custom_background_4_x_offset);
 layer_y(layer_get_id("Background_4"),camera_get_view_y(view_camera[view_current])/custom_background_4_y_parallax+custom_background_4_y_offset);
-
-//3
-//3
-//5
-//5
-//7
-//7
-//9
-//9
-
-//draw_text_outlined(x,y,"bg1x: "+string(custom_background_1_x_offset),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y+32,"bg1y: "+string(custom_background_1_y_offset),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y+64,"bg2x: "+string(custom_background_2_x_offset),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y+96,"bg2y: "+string(custom_background_2_y_offset),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y+128,"bg3x: "+string(custom_background_3_x_offset),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y+160,"bg3y: "+string(custom_background_3_y_offset),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y+192,"bg4x: "+string(custom_background_4_x_offset),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y+224,"bg4y: "+string(custom_background_4_y_offset),global.default_text_size,c_white,c_black,1);
 #endregion /*Parallax Scrolling Background END*/
 
 #region /*Letterboxing during cutscenes (when the player object is absent)*/
