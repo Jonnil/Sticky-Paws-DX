@@ -31,6 +31,7 @@ function scr_saveconfig()
 	ini_write_real("Config","show_fps",global.show_fps);
 	ini_write_real("Config","show_fps_real",global.show_fps_real);
 	ini_write_real("Config","show_instance_count",global.show_instance_count);
+	ini_write_real("Config","show_collision_mask",global.show_collision_mask);
 	ini_write_real("Config","music_volume",global.music_volume);
 	ini_write_real("Config","sfx_volume",global.sfx_volume);
 	ini_write_real("Config","voices_volume",global.voices_volume);

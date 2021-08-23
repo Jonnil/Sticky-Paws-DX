@@ -182,10 +182,15 @@ if (current_day>=24)
 and(current_day<=26)
 and(current_month=12)
 {
-	effect_create_below(ef_snow,0,0,2,c_white);
+	effect_create_below(ef_snow,0,0,2,c_white); /*Make the title screen snow when it's between 24th and 26th December*/
 	if (asset_get_type("spr_title_christmas")==asset_sprite)
 	{
 		title_logo_index = spr_title_christmas;
+	}
+	else
+	if (asset_get_type("spr_title")==asset_sprite)
+	{
+		title_logo_index = spr_title;
 	}
 }
 else
@@ -194,6 +199,11 @@ if (current_month=12)
 	if (asset_get_type("spr_title_christmas")==asset_sprite)
 	{
 		title_logo_index = spr_title_christmas;
+	}
+	else
+	if (asset_get_type("spr_title")==asset_sprite)
+	{
+		title_logo_index = spr_title;
 	}
 }
 else

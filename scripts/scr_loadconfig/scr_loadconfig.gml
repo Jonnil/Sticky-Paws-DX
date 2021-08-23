@@ -29,6 +29,7 @@ function scr_loadconfig()
 		if (ini_key_exists("Config","show_fps")){global.show_fps=ini_read_real("Config","show_fps",0);}
 		if (ini_key_exists("Config","show_fps_real")){global.show_fps_real=ini_read_real("Config","show_fps_real",0);}
 		if (ini_key_exists("Config","show_instance_count")){global.show_instance_count=ini_read_real("Config","show_instance_count",0);}
+		if (ini_key_exists("Config","show_collision_mask")){global.show_collision_mask=ini_read_real("Config","show_collision_mask",0);}
 		if (ini_key_exists("Config","music_volume")){global.music_volume=ini_read_real("Config","music_volume",0);}
 		if (ini_key_exists("Config","sfx_volume")){global.sfx_volume=ini_read_real("Config","sfx_volume",0);}
 		if (ini_key_exists("Config","voices_volume")){global.voices_volume=ini_read_real("Config","voices_volume",0);}

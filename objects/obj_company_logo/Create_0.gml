@@ -242,6 +242,7 @@ global.interpolate=true
 global.show_fps=false;
 global.show_fps_real=false;
 global.show_instance_count=false;
+global.show_collision_mask=false;
 global.pause_screenshot=noone;
 global.restart_level = false;
 global.quit_level = false;

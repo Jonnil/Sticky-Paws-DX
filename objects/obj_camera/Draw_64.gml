@@ -457,10 +457,6 @@ and (!instance_exists(obj_pause))
 				show_player1_controls_y = 32;
 			}
 			else
-			if (global.player1_can_play = true)
-			and (global.player2_can_play = true)
-			and (global.player3_can_play = true)
-			and (global.player4_can_play = true)
 			{
 				show_player1_controls_y = 158;
 			}

@@ -100,6 +100,7 @@ can_spawn_player1 = true;
 can_spawn_player2 = true;
 can_spawn_player3 = true;
 can_spawn_player4 = true;
+show_player1_controls_y = 0;
 
 /*Default Views:   set_view_wview = 1024+400-32   set_view_hview = 768-32   */
 set_view_wview=1392;set_view_hview=736;

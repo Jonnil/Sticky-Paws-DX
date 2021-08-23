@@ -172,8 +172,14 @@ if (takendamage>=takendamage_freezetime)
 	hspeed=0;
 	vspeed=0;
 	speed=0;
-	if (sprite_die>noone){sprite_index = sprite_die;}else
-	{sprite_index = sprite_stand;}
+	if (sprite_die>noone)
+	{
+		sprite_index = sprite_die;
+	}
+	else
+	{
+		sprite_index = sprite_stand;
+	}
 	if (image_index>image_number-1)
 	{
 		image_speed=0;
@@ -240,6 +246,27 @@ if (sprite_index>0)
 #endregion /*Blink red when only having 1 HP left and no heart balloon END*/
 
 #endregion /*Draw Self END*/
+
+#region /*Draw Collision Mask*/
+if (global.show_collision_mask = true)
+{
+	if (crouch = true)
+	{
+		draw_sprite_ext(sprite_mask_crouch, 0, x, y, 1, 1, 0, c_white, 1);
+	}
+	else
+	{
+		draw_sprite_ext(sprite_mask, 0, x, y, 1, 1, 0, c_white, 1);
+	}
+	draw_rectangle_color(x-2, y, x+2, y, c_red, c_red, c_red, c_red, false);
+	draw_rectangle_color(x, y-2, x, y+2, c_red, c_red, c_red, c_red, false);
+	image_alpha = 0.5;
+}
+else
+{
+	image_alpha = 1;
+}
+#endregion /*Draw Collision Mask END*/
 
 #region /*Turnaround Effect*/
 if (effect_turnaround_subimg<10)
@@ -397,7 +424,8 @@ if (player=4)
 #endregion /*Color Skin END*/
 
 #region /*Display Player Number and Name*/
-if (global.playergame>0)
+if (instance_number(obj_player)>=2) /*If there is more than 1 player*/
+or (instance_number(obj_player_die)>=1) /*If there is any other player die object*/
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);

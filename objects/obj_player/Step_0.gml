@@ -14448,24 +14448,249 @@ else
 
 #region /*Tongue*/
 if (can_move=true)
-and(global.pause=false)
+and (global.pause=false)
 {
-	if (asset_get_type("obj_tongue")==asset_object){if (!instance_exists(obj_tongue)){can_tongue=true;}}
-	if (allow_tongue=true){if (can_tongue=true)and(climb=false)and(horizontal_rope_climb=false){if (asset_get_type("obj_tongue")==asset_object){if (key_tongue_pressed)or(mouse_check_button_pressed(mb_left))or
-	(gamepad_axis_value(0,gp_axisrh)<-0.5)or(gamepad_axis_value(0,gp_axisrh)>+0.5)or(gamepad_axis_value(0,gp_axisrv)<-0.5)or(gamepad_axis_value(0,gp_axisrv)>+0.5)
-	{can_tongue=false;tongue_obj=instance_create_depth(x,y,0,obj_tongue);
-
-	if (mouse_check_button_pressed(mb_left)){with(tongue_obj){motion_set(point_direction(obj_player.x,obj_player.y,mouse_x,mouse_y),16);}}
-	else if (gamepad_axis_value(0,gp_axisrh)!=0)or(gamepad_axis_value(0,gp_axisrv)!=0){with(tongue_obj){motion_set(point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv)),16);}}
-	else if (gamepad_axis_value(0,gp_axislh)!=0)or(gamepad_axis_value(0,gp_axislv)!=0){if (key_sprint_pressed){with(tongue_obj){motion_set(point_direction(0,0,gamepad_axis_value(0,gp_axislh),gamepad_axis_value(0,gp_axislv)),16);}}}
-
-
-	else if (key_up){if (key_left)and!place_meeting(x-1,y,obj_wall){with(tongue_obj){motion_set(135,16);}}else if (key_right)and!place_meeting(x+1,y,obj_wall){with(tongue_obj){motion_set(45,16);}}else{with(tongue_obj){motion_set(90,16);}}}
-	else if (key_left)and!place_meeting(x-1,y,obj_wall){if (key_up){with(tongue_obj){motion_set(135,16);}}else if (key_down){with(tongue_obj){motion_set(225,16);}}else{with(tongue_obj){motion_set(180,16);}}}
-	else if (key_right)and!place_meeting(x+1,y,obj_wall){if (key_up){with(tongue_obj){motion_set(85,16);}}else if (key_down){with(tongue_obj){motion_set(315,16);}}else{with(tongue_obj){motion_set(0,16);}}}
-	else if (key_down)and!place_meeting(x,y+1,obj_wall){if (key_left)and!place_meeting(x-1,y,obj_wall){with(tongue_obj){motion_set(225,16);}}else if (key_right)and(!place_meeting(x+1,y,obj_wall)){with(tongue_obj){motion_set(315,16);}}else{with(tongue_obj){motion_set(270,16);}}}
-	else if (image_xscale<0)and!place_meeting(x-1,y,obj_wall){with(tongue_obj){motion_set(180,16);}}else if (image_xscale>0)and(!place_meeting(x+1,y,obj_wall)){with(tongue_obj){motion_set(0,16);}}
-	}}}}
+	if (asset_get_type("obj_tongue")==asset_object)
+	{
+		if (!instance_exists(obj_tongue))
+		{
+			can_tongue=true;
+		}
+	}
+	if (allow_tongue=true)
+	{
+		if (can_tongue=true)
+		and (climb=false)
+		and (horizontal_rope_climb=false)
+		{
+			if (asset_get_type("obj_tongue")==asset_object)
+			{
+				
+				#region /*Key Tongue Pressed*/
+				if (key_tongue_pressed)
+				or (mouse_check_button_pressed(mb_left))
+				or (gamepad_axis_value(0,gp_axisrh)<-0.5)
+				or (gamepad_axis_value(0,gp_axisrh)>+0.5)
+				or (gamepad_axis_value(0,gp_axisrv)<-0.5)
+				or (gamepad_axis_value(0,gp_axisrv)>+0.5)
+				{
+					can_tongue=false;
+					tongue_obj=instance_create_depth(x,y,0,obj_tongue);
+					if (mouse_check_button_pressed(mb_left))
+					{
+						with(tongue_obj)
+						{
+							motion_set(point_direction(obj_player.x,obj_player.y,mouse_x,mouse_y),16);
+						}
+					}
+					else
+					if (gamepad_axis_value(0,gp_axisrh)!=0)
+					or (gamepad_axis_value(0,gp_axisrv)!=0)
+					{
+						with(tongue_obj)
+						{
+							motion_set(point_direction(0,0,gamepad_axis_value(0,gp_axisrh),gamepad_axis_value(0,gp_axisrv)),16);
+						}
+					}
+					else
+					if (gamepad_axis_value(0,gp_axislh)!=0)
+					or (gamepad_axis_value(0,gp_axislv)!=0)
+					{
+						
+						#region /*Key Sprint Pressed*/
+						if (key_sprint_pressed)
+						{
+							with(tongue_obj)
+							{
+								motion_set(point_direction(0,0,gamepad_axis_value(0,gp_axislh),gamepad_axis_value(0,gp_axislv)),16);
+							}
+						}
+						#endregion /*Key Sprint Pressed END*/
+						
+					}
+					else
+					
+					#region /*Key Up*/
+					if (key_up)
+					{
+						
+						#region /*Key Left*/
+						if (key_left)
+						and(!place_meeting(x-1,y,obj_wall))
+						{
+							with(tongue_obj)
+							{
+								motion_set(135,16);
+							}
+						}
+						#endregion /*Key Left END*/
+						
+						else
+						
+						#region /*Key Right*/
+						if (key_right)
+						and (!place_meeting(x+1,y,obj_wall))
+						{
+							with(tongue_obj)
+							{
+								motion_set(45,16);
+							}
+						}
+						#endregion /*Key Right END*/
+						
+						else
+						{
+							with(tongue_obj)
+							{
+								motion_set(90,16);
+							}
+						}
+					}
+					#endregion /*Key Up END*/
+					
+					else
+					
+					#region /*Key Left*/
+					if (key_left)
+					and (!place_meeting(x-1,y,obj_wall))
+					{
+						
+						#region /*Key Up*/
+						if (key_up)
+						{
+							with(tongue_obj)
+							{
+								motion_set(135,16);
+							}
+						}
+						#region /*Key Up END*/
+						
+						else
+						
+						#region /*Key Down*/
+						if (key_down)
+						{
+							with(tongue_obj)
+							{
+								motion_set(225,16);
+							}
+						}
+						#region /*Key Down END*/
+						
+						else
+						{
+							with(tongue_obj)
+							{
+								motion_set(180,16);
+							}
+						}
+					}
+					#endregion /*Key Left END*/
+					
+					else
+					
+					#region /*Key Right*/
+					if (key_right)
+					and (!place_meeting(x+1,y,obj_wall))
+					{
+						
+						#region /*Key Up*/
+						if (key_up)
+						{
+							with(tongue_obj)
+							{
+								motion_set(85,16);
+							}
+						}
+						#endregion /*Key Up END*/
+						
+						else
+						
+						#region /*Key Down*/
+						if (key_down)
+						{
+							with(tongue_obj)
+							{
+								motion_set(315,16);
+							}
+						}
+						#endregion /*Key Down END*/
+						
+						else
+						{
+							with(tongue_obj)
+							{
+								motion_set(0,16);
+							}
+						}
+					}
+					#endregion /*Key Right END*/
+					
+					else
+					
+					#region /*Key Down*/
+					if (key_down)
+					and (!place_meeting(x,y+1,obj_wall))
+					{
+						
+						#region /*Key Left*/
+						if (key_left)
+						and (!place_meeting(x-1,y,obj_wall))
+						{
+							with(tongue_obj)
+							{
+								motion_set(225,16);
+							}
+						}
+						#endregion /*Key Left END*/
+						
+						else
+						
+						#region /*Key Right*/
+						if (key_right)
+						and (!place_meeting(x+1,y,obj_wall))
+						{
+							with(tongue_obj)
+							{
+								motion_set(315,16);
+							}
+						}
+						#endregion /*Key Right END*/
+						
+						else
+						{
+							with(tongue_obj)
+							{
+								motion_set(270,16);
+							}
+						}
+					}
+					#endregion /*Key Down END*/
+					
+					else
+					if (image_xscale<0)
+					and (!place_meeting(x-1,y,obj_wall))
+					{
+						with(tongue_obj)
+						{
+							motion_set(180,16);
+						}
+					}
+					else
+					if (image_xscale>0)
+					and (!place_meeting(x+1,y,obj_wall))
+					{
+						with(tongue_obj)
+						{
+							motion_set(0,16);
+						}
+					}
+				}
+				#endregion /*Key Tongue Pressed END*/
+				
+			}
+		}
+	}
 
 	#region /*Rope Swing*/
 	if (ropeswing=true)
@@ -14481,6 +14706,8 @@ and(global.pause=false)
 			ropeAngle=point_direction(grappleX,grappleY,x,y);
 			ropeLength=point_distance(grappleX,grappleY,x,y);
 			var rope_angle_acceleration=-0.4*dcos(ropeAngle);
+			
+			#region /*Key Right*/
 			if (key_right)
 			and(obj_tongue.y>y)
 			and(obj_tongue.x>x-1)
@@ -14489,7 +14716,11 @@ and(global.pause=false)
 			{
 				rope_angle_acceleration-=0.08;
 			}
+			#endregion /*Key Right END*/
+			
 			else
+			
+			#region /*Key Left*/
 			if (key_left)
 			and(obj_tongue.y>y)
 			and(obj_tongue.x>x-1)
@@ -14498,18 +14729,29 @@ and(global.pause=false)
 			{
 				rope_angle_acceleration+=0.08;
 			}
+			#endregion /*Key Left END*/
+			
 			else
+			
+			#region /*Key Left*/
 			if (key_left)
 			and(!place_meeting(x-4,y,obj_wall))
 			{
 				rope_angle_acceleration-=0.08;
 			}
+			#endregion /*Key Left END*/
+			
 			else
+			
+			#region /*Key Right*/
 			if (key_right)
 			and(!place_meeting(x+4,y,obj_wall))
 			{
 				rope_angle_acceleration+=0.08;
 			}
+			#endregion /*Key Right END*/
+			
+			#region /*Key Up or Down*/
 			if (key_up)
 			and(obj_tongue.y<y)
 			or(key_down)
@@ -14521,7 +14763,11 @@ and(global.pause=false)
 					ropeLength-=2;
 				}
 			}
+			#endregion /*Key Up or Down*/
+			
 			else
+			
+			#region /*Key Down or Up*/
 			if (key_down)
 			and(obj_tongue.y<y)
 			or(key_up)
@@ -14533,6 +14779,8 @@ and(global.pause=false)
 					ropeLength+=2;
 				}
 			}
+			#endregion /*Key Down or Up END*/
+			
 			if (ropeLength>320)
 			{
 				ropeLength-=1;
@@ -14556,6 +14804,8 @@ and(global.pause=false)
 			ropeswing=false;
 		}
 		else
+		
+		#region /*Key Jump*/
 		if (key_jump)
 		{
 			with(instance_nearest(x,y,obj_tongue))
@@ -14571,6 +14821,8 @@ and(global.pause=false)
 			ropeLength=point_distance(grappleX,grappleY,x,y);
 			ropeswing=false;
 		}
+		#endregion /*Key Jump END*/
+		
 	}
 	#endregion /*Rope Swing END*/
 	

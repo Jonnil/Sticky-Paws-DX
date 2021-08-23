@@ -5905,24 +5905,26 @@ function scr_options_menu()
 	
 	draw_menu_checkmark(386,48*5,"Show Instance Count","show_instance_count",global.show_instance_count);
 	
-	draw_menu_checkmark(386,48*6,"Enable Transitions","enable_transitions",global.enable_transitions);
+	draw_menu_checkmark(386,48*6,"Show Collision Mask","show_collision_mask",global.show_collision_mask);
 	
-	draw_menu_checkmark(386,48*7,"Enable Background Layer 1","enable_background_layer1",global.enable_background_layer1);
+	draw_menu_checkmark(386,48*7,"Enable Transitions","enable_transitions",global.enable_transitions);
 	
-	draw_menu_checkmark(386,48*8,"Enable Background Layer 2","enable_background_layer2",global.enable_background_layer2);
+	draw_menu_checkmark(386,48*8,"Enable Background Layer 1","enable_background_layer1",global.enable_background_layer1);
 	
-	draw_menu_checkmark(386,48*9,"Enable Background Layer 3","enable_background_layer3",global.enable_background_layer3);
+	draw_menu_checkmark(386,48*9,"Enable Background Layer 2","enable_background_layer2",global.enable_background_layer2);
 	
-	draw_menu_checkmark(386,48*10,"Enable Background Layer 4","enable_background_layer4",global.enable_background_layer4);
+	draw_menu_checkmark(386,48*10,"Enable Background Layer 3","enable_background_layer3",global.enable_background_layer3);
 	
-	draw_menu_checkmark(386,48*11,"Enable Foreground Layer 1","enable_foreground_layer1",global.enable_foreground_layer1);
+	draw_menu_checkmark(386,48*11,"Enable Background Layer 4","enable_background_layer4",global.enable_background_layer4);
 	
-	draw_menu_checkmark(386,48*12,"Enable Foreground Layer 2","enable_foreground_layer2",global.enable_foreground_layer2);
+	draw_menu_checkmark(386,48*12,"Enable Foreground Layer 1","enable_foreground_layer1",global.enable_foreground_layer1);
+	
+	draw_menu_checkmark(386,48*13,"Enable Foreground Layer 2","enable_foreground_layer2",global.enable_foreground_layer2);
 	
 	#region /*Background Brightness Bars*/
 	
-	draw_menu_slider(420, 680, "Background Brightness in Gameplay", "background_brightness_gameplay", global.background_brightness_gameplay, c_gray);
-	draw_menu_slider(420, 744, "Background Brightness in Menus", "background_brightness_menu", global.background_brightness_menu, c_gray);
+	draw_menu_slider(420, 780, "Background Brightness in Gameplay", "background_brightness_gameplay", global.background_brightness_gameplay, c_gray);
+	draw_menu_slider(420, 844, "Background Brightness in Menus", "background_brightness_menu", global.background_brightness_menu, c_gray);
 	
 	#region /*Draw a little arrow indicating what the default value is*/
 	draw_set_color(c_menu_fill);
@@ -6897,7 +6899,8 @@ function scr_options_menu()
 	
 	else if (menu="show_fps"){if (key_up){menu="interpolate";}else if (key_down){menu="show_fps_real";}}
 	else if (menu="show_fps_real"){if (key_up){menu="show_fps";}else if (key_down){menu="show_instance_count";}}
-	else if (menu="show_instance_count"){if (key_up){menu="show_fps_real";}else if (key_down){menu="enable_transitions";}}
+	else if (menu="show_instance_count"){if (key_up){menu="show_fps_real";}else if (key_down){menu="show_collision_mask";}}
+	else if (menu="show_collision_mask"){if (key_up){menu="show_instance_count";}else if (key_down){menu="enable_transitions";}}
 	
 	else
 	
@@ -6907,7 +6910,7 @@ function scr_options_menu()
 		if (key_up)
 		and(menu_delay= 0)
 		{
-			menu="show_instance_count";
+			menu="show_collision_mask";
 			menu_delay = 3;
 		}
 		else
@@ -7773,6 +7776,7 @@ function scr_options_menu()
 		if (menu="show_fps")and(menu_delay= 0){if (global.show_fps=true){global.show_fps=false;}else{global.show_fps=true;}menu_delay = 3;}
 		if (menu="show_fps_real")and(menu_delay= 0){if (global.show_fps_real=true){global.show_fps_real=false;}else{global.show_fps_real=true;}menu_delay = 3;}
 		if (menu="show_instance_count")and(menu_delay= 0){if (global.show_instance_count=true){global.show_instance_count=false;}else{global.show_instance_count=true;}menu_delay = 3;}
+		if (menu="show_collision_mask")and(menu_delay= 0){if (global.show_collision_mask=true){global.show_collision_mask=false;}else{global.show_collision_mask=true;}menu_delay = 3;}
 		if (menu="enable_transitions")and(menu_delay= 0){if (global.enable_transitions=true){global.enable_transitions=false;}else{global.enable_transitions=true;}menu_delay = 3;}
 		
 		if (menu="enable_background_layer1")and(menu_delay= 0){if (global.enable_background_layer1=true){global.enable_background_layer1=false;}else{global.enable_background_layer1=true;}menu_delay = 3;}
