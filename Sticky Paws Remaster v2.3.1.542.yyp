@@ -219,6 +219,7 @@
     {"id":{"name":"snd_music_boss","path":"sounds/snd_music_boss/snd_music_boss.yy",},"order":92,},
     {"id":{"name":"spr_spikes_emerge_block","path":"sprites/spr_spikes_emerge_block/spr_spikes_emerge_block.yy",},"order":75,},
     {"id":{"name":"snd_footstep_wood_right","path":"sounds/snd_footstep_wood_right/snd_footstep_wood_right.yy",},"order":55,},
+    {"id":{"name":"spr_title_christmas","path":"sprites/spr_title_christmas/spr_title_christmas.yy",},"order":118,},
     {"id":{"name":"obj_cardboard","path":"objects/obj_cardboard/obj_cardboard.yy",},"order":0,},
     {"id":{"name":"spr_cursor_grab","path":"sprites/spr_cursor_grab/spr_cursor_grab.yy",},"order":25,},
     {"id":{"name":"spr_map_turn_right_down","path":"sprites/spr_map_turn_right_down/spr_map_turn_right_down.yy",},"order":92,},
