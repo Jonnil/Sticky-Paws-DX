@@ -404,7 +404,7 @@ and(menu!="import_export_level")
 and(menu!="delete_level")
 and(show_title_logo = true)
 {
-	title_y = lerp(title_y, 0, 0.1);
+	title_y = lerp(title_y, sin(get_timer()/500000)*10, 0.1);
 	title_alpha = lerp(title_alpha, 1, 0.1);
 }
 else

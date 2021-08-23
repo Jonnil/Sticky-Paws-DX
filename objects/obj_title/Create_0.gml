@@ -12,27 +12,27 @@ global.narrator_max_characters=1;
 /*No Narrator*/
 if (global.narrator=0)
 {
-menuvoice_titlesplash=noone;
-menuvoice_1player=noone;
-menuvoice_2player=noone;
-menuvoice_3player=noone;
-menuvoice_4player=noone;
-menuvoice_leveleditor=noone;
-menuvoice_leveleditor_denied=noone;
-menuvoice_options=noone;
+	menuvoice_titlesplash=noone;
+	menuvoice_1player=noone;
+	menuvoice_2player=noone;
+	menuvoice_3player=noone;
+	menuvoice_4player=noone;
+	menuvoice_leveleditor=noone;
+	menuvoice_leveleditor_denied=noone;
+	menuvoice_options=noone;
 }
 
 /*Character1 as narrator*/
 if (global.narrator=1)
 {
-menuvoice_titlesplash=noone;
-menuvoice_1player=noone;
-menuvoice_2player=noone;
-menuvoice_3player=noone;
-menuvoice_4player=noone;
-menuvoice_leveleditor=noone;
-menuvoice_leveleditor_denied=noone;
-menuvoice_options=noone;
+	menuvoice_titlesplash=noone;
+	menuvoice_1player=noone;
+	menuvoice_2player=noone;
+	menuvoice_3player=noone;
+	menuvoice_4player=noone;
+	menuvoice_leveleditor=noone;
+	menuvoice_leveleditor_denied=noone;
+	menuvoice_options=noone;
 }
 
 #region /*Create directories*/
