@@ -1466,17 +1466,19 @@ function scr_options_menu()
 	{
 		difficulty_settings_x = 380;
 		difficulty_settings_y = 48;
-		show_timer_settings_y = 164;
-		show_tutorial_signs_y = 164+(48);
-		hud_hide_time_y = 164+(48*3);
+		automatically_pause_when_window_is_unfocused_settings_y = 164;
+		show_timer_settings_y = 164+(48);
+		show_tutorial_signs_y = 164+(48*2);
+		hud_hide_time_y = 164+(48*4)-16;
 		activate_cheats_y = 164+(48*5);
 		enable_enemies_y = 164+(48*6);
 		enable_spikes_y = 164+(48*7);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		draw_menu_checkmark(380,show_timer_settings_y,"Show Timer","show_timer_settings",global.show_timer); /*Show Timer*/
-		draw_menu_checkmark(380,show_tutorial_signs_y,"Show Tutorial Signs","show_tutorial_signs",global.show_tutorial_signs); /*Show Tutorial Signs*/
+		draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y,"Automatically Pause When Window Is Unfocused","automatically_pause_when_window_is_unfocused_settings",global.automatically_pause_when_window_is_unfocused); /*Automatically Pause When Window Is Unfocused*/
+		draw_menu_checkmark(380, show_timer_settings_y,"Show Timer","show_timer_settings",global.show_timer); /*Show Timer*/
+		draw_menu_checkmark(380, show_tutorial_signs_y,"Show Tutorial Signs","show_tutorial_signs",global.show_tutorial_signs); /*Show Tutorial Signs*/
 		draw_menu_checkmark(380, activate_cheats_y, "Activate Cheats", "activate_cheats", global.activate_cheats);
 		draw_menu_checkmark(380, enable_enemies_y, "Enable Enemies", "enable_enemies", global.enable_enemies);
 		draw_menu_checkmark(380, enable_spikes_y, "Enable Spikes", "enable_spikes", global.enable_spikes);
@@ -6511,7 +6513,7 @@ function scr_options_menu()
 		and(menu_delay = 0)
 		{
 			menu_delay = 3;
-			menu = "show_timer_settings";
+			menu = "automatically_pause_when_window_is_unfocused_settings";
 		}
 	}
 	#endregion /*Difficulty Settings Navigation END*/
@@ -6519,7 +6521,7 @@ function scr_options_menu()
 	else
 	
 	#region /*Navigate Game Settings*/
-	if (menu = "show_timer_settings")
+	if (menu = "automatically_pause_when_window_is_unfocused_settings")
 	{
 		if (key_up)
 		and (open_dropdown = false)
@@ -6527,6 +6529,25 @@ function scr_options_menu()
 		{
 			menu_delay = 3;
 			menu = "difficulty_settings";
+		}
+		else
+		if (key_down)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "show_timer_settings";
+		}
+	}
+	else
+	if (menu = "show_timer_settings")
+	{
+		if (key_up)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "automatically_pause_when_window_is_unfocused_settings";
 		}
 		else
 		if (key_down)
@@ -7763,6 +7784,7 @@ function scr_options_menu()
 		if (menu="assist_guiding_arrows")and(menu_delay= 0){if (global.assist_guiding_arrows=true){global.assist_guiding_arrows=false;}else{global.assist_guiding_arrows=true;}menu_delay = 3;}
 		if (menu="assist_normal_arrows")and(menu_delay= 0){if (global.assist_normal_arrows=true){global.assist_normal_arrows=false;}else{global.assist_normal_arrows=true;}menu_delay = 3;}
 		
+		if (menu="automatically_pause_when_window_is_unfocused_settings")and(menu_delay= 0){if (global.automatically_pause_when_window_is_unfocused=true){global.automatically_pause_when_window_is_unfocused=false;}else{global.automatically_pause_when_window_is_unfocused=true;}menu_delay = 3;}
 		if (menu="show_timer_settings")and(menu_delay= 0){if (global.show_timer=true){global.show_timer=false;}else{global.show_timer=true;}menu_delay = 3;}
 		if (menu="show_tutorial_signs")and(menu_delay= 0){if (global.show_tutorial_signs=true){global.show_tutorial_signs=false;}else{global.show_tutorial_signs=true;}menu_delay = 3;}
 		if (menu="activate_cheats")and(menu_delay= 0){if (global.activate_cheats=true){global.activate_cheats=false;}else{global.activate_cheats=true;}menu_delay = 3;}
@@ -7869,7 +7891,6 @@ function scr_options_menu()
 	#endregion /*Menu navigation with joystick END*/
 	
 	#region /*Draw mouse cursor for menu navigation*/
-	//if (window_has_focus())
 	if (global.controls_used_for_menu_navigation="mouse")
 	and(os_type!=os_ios)
 	and(os_type!=os_android)

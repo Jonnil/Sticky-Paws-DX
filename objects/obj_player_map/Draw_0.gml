@@ -446,6 +446,7 @@ if (sprite_index >= 0)
 if (keyboard_check_pressed(vk_escape))
 or(gamepad_button_check_pressed(0, gp_start))
 or(!window_has_focus())
+and(global.automatically_pause_when_window_is_unfocused = true)
 {
 	if (asset_get_type("room_pause")==asset_room)
 	{

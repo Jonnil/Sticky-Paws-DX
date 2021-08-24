@@ -3275,12 +3275,7 @@ if (black_screen_at_start_delay<1)
 if (!window_has_focus())
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(
-	0,
-	0,
-	window_get_width()*2,
-	window_get_height()*2,
-	c_black,c_black,c_black,c_black,false);
+	draw_rectangle_color(0, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
 #endregion /*If Window is unfocused, darken the screen END*/

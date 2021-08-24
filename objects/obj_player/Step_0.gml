@@ -13357,6 +13357,7 @@ and(global.pause=false)
 	and(controller_connected=true)
 	or(global.actually_play_edited_level=true)
 	and(!window_has_focus())
+	and(global.automatically_pause_when_window_is_unfocused = true)
 	{
 	
 	#region /*Show all HUD elements*/

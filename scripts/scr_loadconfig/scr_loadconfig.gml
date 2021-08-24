@@ -6,6 +6,7 @@ function scr_loadconfig()
 		ini_open("Config.ini");
 		
 		if (ini_key_exists("Config","difficulty")){global.difficulty=ini_read_real("Config","difficulty",0);}
+		if (ini_key_exists("Config","automatically_pause_when_window_is_unfocused")){global.automatically_pause_when_window_is_unfocused=ini_read_real("Config","automatically_pause_when_window_is_unfocused",0);}
 		if (ini_key_exists("Config","show_timer")){global.show_timer=ini_read_real("Config","show_timer",0);}
 		if (ini_key_exists("Config","activate_cheats")){global.activate_cheats=ini_read_real("Config","activate_cheats",0);}
 		if (ini_key_exists("Config","enable_enemies")){global.enable_enemies=ini_read_real("Config","enable_enemies",0);}

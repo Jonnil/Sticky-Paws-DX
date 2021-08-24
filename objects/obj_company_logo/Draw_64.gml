@@ -130,7 +130,6 @@ if (!window_has_focus())
 #endregion /*If Window is unfocused, make the screen darker END*/
 
 #region /*Draw mouse cursor for menu navigation*/
-//if (window_has_focus())
 if (window_mouse_get_x()>0)
 and(window_mouse_get_y()>0)
 and(os_type!=os_ios)

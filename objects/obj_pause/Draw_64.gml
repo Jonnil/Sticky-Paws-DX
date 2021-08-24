@@ -1375,18 +1375,12 @@ if (menu_joystick_delay>0)
 if (!window_has_focus())
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(
-	0,
-	0,
-	window_get_width()*2,
-	window_get_height()*2,
-	c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
 #endregion /*If Window is unfocused, make the screen darker END*/
 
 #region /*Draw mouse cursor for menu navigation*/
-//if (window_has_focus())
 if (global.controls_used_for_menu_navigation="mouse")
 and(os_type!=os_ios)
 and(os_type!=os_android)
