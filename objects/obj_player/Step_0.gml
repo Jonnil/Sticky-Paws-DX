@@ -15038,6 +15038,7 @@ and(wall_jump_setting>=1)
 		and (!key_left)
 		and (image_xscale = -1)
 		{
+			dive = false;
 			pressing_opposite_direction_to_drop_off_from_wall += 1;
 		}
 		else

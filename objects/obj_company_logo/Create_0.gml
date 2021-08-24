@@ -58,8 +58,6 @@ global.number_of_chain_kills_for_1up=8; /*How many chain reaction kills you need
 /*Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu*/
 global.equipped_upgrade_double_jump=true;/*If you have equipped the Double Jump Upgrade*/
 
-audio_channel_num(16);/*Limit the number of sound channels, should be on 16 for best performance as default, but let the player change this in Audio Settings. From 0 to 200, 16 is default*/
-
 #region /*View Border and Port Size*/
 if (!os_browser)
 {
@@ -233,6 +231,7 @@ global.music_volume=1;
 global.sfx_volume=1;
 global.voices_volume=1;
 global.verbosity_slider=1;
+global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
 global.music=noone;
 global.music_underwater=noone;

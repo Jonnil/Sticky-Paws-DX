@@ -5930,8 +5930,8 @@ function scr_options_menu()
 	
 	#region /*Draw a little arrow indicating what the default value is*/
 	draw_set_color(c_menu_fill);
-	draw_arrow(420+160,680-20,420+160,680-10,25);
-	draw_arrow(420+160,744-20,420+160,744-10,25);
+	draw_arrow(420+160,780-20,420+160,780-10,25);
+	draw_arrow(420+160,844-20,420+160,844-10,25);
 	#endregion /*Draw a little arrow indicating what the default value is END*/
 	
 	if (global.background_brightness_gameplay>-0.1)
@@ -5970,6 +5970,8 @@ function scr_options_menu()
 	draw_menu_slider(410, 100, "Music Volume", "music_volume", global.music_volume, c_red);
 	draw_menu_slider(410, 164, "SFX Volume", "sfx_volume", global.sfx_volume, c_lime);
 	draw_menu_slider(410, 228, "Voices Volume", "voices_volume", global.voices_volume, c_aqua);
+	
+	draw_menu_dropdown(410, 292, "Number of Audio Channels", "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256");
 	
 	#region /*Verbosity Bar*/
 	if (global.enable_verbosity_slider = true)
@@ -7039,6 +7041,7 @@ function scr_options_menu()
 	{
 		if (key_left)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.music_volume > 0)
 			{
@@ -7048,6 +7051,7 @@ function scr_options_menu()
 		else
 		if (key_right)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.music_volume < +1)
 			{
@@ -7057,6 +7061,7 @@ function scr_options_menu()
 		else
 		if (key_up)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.enable_narrator = true)
 			{
@@ -7078,6 +7083,7 @@ function scr_options_menu()
 		else
 		if (key_down)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			menu = "sfx_volume";
 			menu_delay = 3;
@@ -7092,6 +7098,7 @@ function scr_options_menu()
 	{
 		if (key_left)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.sfx_volume > 0)
 			{
@@ -7101,6 +7108,7 @@ function scr_options_menu()
 		else
 		if (key_right)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.sfx_volume < +1)
 			{
@@ -7110,6 +7118,7 @@ function scr_options_menu()
 		else
 		if (key_up)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			menu = "music_volume"
 			menu_delay = 3;
@@ -7117,6 +7126,7 @@ function scr_options_menu()
 		else
 		if (key_down)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			menu = "voices_volume"
 			menu_delay = 3;
@@ -7131,6 +7141,7 @@ function scr_options_menu()
 	{
 		if (key_left)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.voices_volume > 0)
 			{
@@ -7140,6 +7151,7 @@ function scr_options_menu()
 		else
 		if (key_right)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.voices_volume < +1)
 			{
@@ -7149,6 +7161,7 @@ function scr_options_menu()
 		else
 		if (key_up)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			menu = "sfx_volume"
 			menu_delay = 3;
@@ -7156,6 +7169,30 @@ function scr_options_menu()
 		else
 		if (key_down)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "number_of_audio_channels";
+			menu_delay = 3;
+		}
+	}
+	#endregion /*Voices Volume Navigation END*/
+
+	else
+	
+	#region /*Number of Audio Channels Navigation*/
+	if (menu = "number_of_audio_channels")
+	{
+		if (key_up)
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "voices_volume"
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.enable_verbosity_slider = true)
 			{
@@ -7174,16 +7211,35 @@ function scr_options_menu()
 				menu_delay = 3;
 			}
 		}
+		else
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (global.number_of_audio_channels>0)
+		{
+			global.number_of_audio_channels-=1;
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = true)
+		and (global.number_of_audio_channels<7)
+		{
+			global.number_of_audio_channels+=1;
+			menu_delay = 3;
+		}
 	}
-	#endregion /*Music Volume Navigation END*/
-
+	#endregion /*Number of Audio Channels Navigation END*/
+	
 	else
-
+	
 	#region /*Verbosity Slider Navigation*/
 	if (menu = "verbosity_slider")
 	{
 		if (key_left)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.verbosity_slider > 0)
 			{
@@ -7193,6 +7249,7 @@ function scr_options_menu()
 		else
 		if (key_right)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.verbosity_slider < +1)
 			{
@@ -7202,6 +7259,7 @@ function scr_options_menu()
 		else
 		if (key_up)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			menu = "voices_volume"
 			menu_delay = 3;
@@ -7209,6 +7267,7 @@ function scr_options_menu()
 		else
 		if (key_down)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.enable_narrator = true)
 			{
@@ -7231,6 +7290,7 @@ function scr_options_menu()
 	{
 		if (key_left)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.narrator > 0)
 			{
@@ -7240,6 +7300,7 @@ function scr_options_menu()
 		else
 		if (key_right)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.narrator < +global.narrator_max_characters)
 			{
@@ -7249,6 +7310,7 @@ function scr_options_menu()
 		else
 		if (key_up)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			if (global.enable_verbosity_slider = true)
 			{
@@ -7264,6 +7326,7 @@ function scr_options_menu()
 		else
 		if (key_down)
 		and(menu_delay = 0)
+		and (open_dropdown = false)
 		{
 			menu = "music_volume";
 			menu_delay = 3;
@@ -7756,6 +7819,7 @@ function scr_options_menu()
 			menu_delay = 3;
 		}
 		
+		#region /*Drop down menu*/
 		if (menu="assist_item_appear")
 		or (menu="assist_extra_hp")
 		or (menu="difficulty_settings")
@@ -7764,6 +7828,7 @@ function scr_options_menu()
 		or (menu="wall_jump_setting")
 		or (menu="drop_from_rope")
 		or (menu="show_controls")
+		or (menu="number_of_audio_channels")
 		{
 			if (menu_delay= 0)
 			and(open_dropdown = false)
@@ -7779,6 +7844,7 @@ function scr_options_menu()
 				menu_delay = 3;
 			}
 		}
+		#endregion /*Drop down menu END*/
 		
 		if (menu="assist_invincible")and(menu_delay= 0){if (global.assist_invincible=true){global.assist_invincible=false;}else{global.assist_invincible=true;}menu_delay = 3;}
 		if (menu="assist_guiding_arrows")and(menu_delay= 0){if (global.assist_guiding_arrows=true){global.assist_guiding_arrows=false;}else{global.assist_guiding_arrows=true;}menu_delay = 3;}
