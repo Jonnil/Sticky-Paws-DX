@@ -408,9 +408,9 @@ voice_burned = noone;
 
 #endregion /*Sound variables END*/
 
-#endregion /*Play as Custom CharacterEND*/
+#endregion /*Play as Custom Character END*/
 
-#region /*CharacterValues Handeling*/
+#region /*Character Values Handeling*/
 acceleration_on_ground = 0.3; /*How much acceleration the character has on ground*/
 acceleration_in_air = 0.3; /*How much acceleration the character has in air*/
 acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
@@ -435,15 +435,15 @@ normal_jump_height = 11.5;
 higher_jump_height = 13;
 double_jump_height = 11.5;
 hoverstomp_distance = 500;
-#endregion /*CharacterValues Handeling END*/
+#endregion /*Character Values Handeling END*/
 
-#endregion /*Initialize Custom CharacterEND*/
+#endregion /*Initialize Custom Character END*/
 
 /*________________________________*/
 
 #region /*Don't change these variables*/
-view_hview_lerp = 1;
-view_wview_lerp = 1;
+view_hview_lerp = 0;
+view_wview_lerp = 0;
 allow_timeup = true;
 allow_timeattack = true;
 simple_controls = false; /*Simple Controls, used for testing if a level can be completed with limitations. All levels should be able to be finished, not 100% completed, with this option set to true. This option should be false by default when creating executable*/

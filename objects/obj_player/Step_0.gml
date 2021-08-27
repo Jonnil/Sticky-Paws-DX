@@ -15641,6 +15641,7 @@ and(global.pause=false)
 {
 	if (can_dive = true)
 	and (drop_off_wall_climb = false)
+	and (in_water = false)
 	{
 		if (dive=false)
 		and(burnt=false)
@@ -15802,6 +15803,7 @@ and(global.pause=false)
 			if (in_water=true)
 			{
 				dive = false;
+				can_dive = true;
 				crouch = false;
 			}
 			#endregion /*If player lands in water when diving, stop diving END*/
@@ -16135,10 +16137,19 @@ if (asset_get_type("obj_water")==asset_object)
 {
 	if (position_meeting(x,y,obj_water))
 	{
-		dive=false;
-		in_water=true;
-		jump=0;
-		midair_jumps_left=number_of_jumps;
+		dive = false;
+		in_water = true;
+		jump = 0;
+		midair_jumps_left = number_of_jumps;
+		speed_max = 4;
+		allow_roll = false;
+		can_ground_pound = false;
+		ground_pound = false;
+		can_wall_jump = false;
+		stick_to_wall = false;
+		can_dive = true; /*Can dive when you jump out of water still*/
+		wall_jump = false;
+		
 		if (key_up)
 		or(key_jump_hold)
 		and(!key_down)
@@ -16175,14 +16186,6 @@ if (asset_get_type("obj_water")==asset_object)
 			gravity=0;
 		}
 		#endregion /*Set the gravity underwater END*/
-		
-		speed_max=4;
-		allow_roll=false;
-		can_ground_pound = false;
-		ground_pound=false;
-		can_wall_jump = false;
-		stick_to_wall=false;
-		can_dive=false;
 
 		if (key_jump)
 		{
@@ -16310,8 +16313,8 @@ if (asset_get_type("obj_water")==asset_object)
 	}
 	else
 	{
-		in_water=false;
-		allow_roll=false;
+		in_water = false;
+		allow_roll = false;
 		can_ground_pound = true;
 		can_wall_jump = true;
 	}

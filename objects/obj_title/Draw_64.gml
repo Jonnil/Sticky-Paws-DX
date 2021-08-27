@@ -673,37 +673,37 @@ or(menu="quit")
 	
 			#region /*Update Thumbnail*/
 	
-			#region /*BMP Custom Thumbnail*/
-			if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
-			#endregion /*BMP Custom Thumbnail END*/
+			//#region /*BMP Custom Thumbnail*/
+			//if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
+			//#endregion /*BMP Custom Thumbnail END*/
 	
-			#region /*PNG Custom Thumbnail*/
-			if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png",0,false,true,window_get_width()/2,0);}else
-			#endregion /*PNG Custom Thumbnail END*/
+			//#region /*PNG Custom Thumbnail*/
+			//if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png",0,false,true,window_get_width()/2,0);}else
+			//#endregion /*PNG Custom Thumbnail END*/
 	
-			#region /*GIF Custom Thumbnail*/
-			if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
-			#endregion /*GIF Custom Thumbnail END*/
+			//#region /*GIF Custom Thumbnail*/
+			//if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
+			//#endregion /*GIF Custom Thumbnail END*/
 	
-			#region /*JPG Custom Thumbnail*/
-			if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg",0,false,true,window_get_width()/2,0);}else
-			#endregion /*JPG Custom Thumbnail END*/
+			//#region /*JPG Custom Thumbnail*/
+			//if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg",0,false,true,window_get_width()/2,0);}else
+			//#endregion /*JPG Custom Thumbnail END*/
 	
-			#region /*BMP Automatic Thumbnail*/
-			if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
-			#endregion /*BMP Automatic Thumbnail END*/
+			//#region /*BMP Automatic Thumbnail*/
+			//if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
+			//#endregion /*BMP Automatic Thumbnail END*/
 	
-			#region /*PNG Automatic Thumbnail*/
-			if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png",0,false,true,window_get_width()/2,0);}else
-			#endregion /*PNG Automatic Thumbnail END*/
+			//#region /*PNG Automatic Thumbnail*/
+			//if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png",0,false,true,window_get_width()/2,0);}else
+			//#endregion /*PNG Automatic Thumbnail END*/
 	
-			#region /*GIF Automatic Thumbnail*/
-			if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
-			#endregion /*GIF Automatic Thumbnail END*/
+			//#region /*GIF Automatic Thumbnail*/
+			//if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
+			//#endregion /*GIF Automatic Thumbnail END*/
 	
-			#region /*JPG Automatic Thumbnail*/
-			if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg",0,false,true,window_get_width()/2,0);}
-			#endregion /*JPG Automatic Thumbnail END*/
+			//#region /*JPG Automatic Thumbnail*/
+			//if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg",0,false,true,window_get_width()/2,0);}
+			//#endregion /*JPG Automatic Thumbnail END*/
 	
 			#endregion /*Update Thumbnail END*/
 			
@@ -1434,7 +1434,11 @@ or(menu="4player")
 }
 #endregion /*Select how many players (1-4 players) END*/
 
-draw_text_outlined(100, 100, string(ds_list_find_value(global.all_loaded_custom_levels,0)), global.default_text_size, c_white, c_black, 1);
+if (menu = "load_custom_level")
+{
+	draw_sprite_ext(spr_loading, 0, window_get_width()/2, window_get_height()/2, 1, 1, file_load_timer, c_white, 1);
+	draw_text_outlined(window_get_width()/2, window_get_height()/2+64, "Loading", global.default_text_size, c_white, c_black, 1);
+}
 
 #region /*Select Custom Level Menu*/
 if (menu="select_custom_level")
@@ -1477,14 +1481,14 @@ or(menu="import_export_level")
 		menu_delay = 3;
 		menu = "level_editor_play";
 	}
-	else
-	if (menu="back_from_level_editor")
-	and(key_down)
-	and(menu_delay=0)
-	{
-		menu_delay = 3;
-		menu = "select_custom_level";
-	}
+	//else
+	//if (menu="back_from_level_editor")
+	//and(key_down)
+	//and(menu_delay=0)
+	//{
+	//	menu_delay = 3;
+	//	menu = "select_custom_level";
+	//}
 	if (menu="back_from_level_editor")
 	and(key_a_pressed)
 	and(menu_delay=0)
@@ -1527,13 +1531,13 @@ or(menu="import_export_level")
 
 	draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset-32,string(level_name),global.default_text_size,c_menu_outline,c_menu_fill,1);
 
-	if (menu="select_custom_level")
+	/*if (menu="select_custom_level")
 	and(global.level_editor_level>0)
 	or(global.controls_used_for_menu_navigation="mouse")
 	{
 
 	#region /*Show left arrow when selecting custom level*/
-	if (global.level_editor_level>1)
+	/*if (global.level_editor_level>1)
 	{
 		if (gamepad_is_connected(0))
 		and(asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -1556,8 +1560,8 @@ or(menu="import_export_level")
 	}
 	#endregion /*Show left arrow when selecting custom level END*/
 
-	#region /*Show right arrow when selecting custom level*/
-	if (gamepad_is_connected(0))
+	//#region /*Show right arrow when selecting custom level*/
+	/*if (gamepad_is_connected(0))
 	and(asset_get_type("spr_xbox_buttons") == asset_sprite)
 	{
 		draw_sprite_ext(spr_xbox_buttons,6,
@@ -1577,7 +1581,7 @@ or(menu="import_export_level")
 	}
 	#endregion /*Show right arrow when selecting custom level END*/
 
-	draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset,"Custom Level "+string(global.level_editor_level),global.default_text_size*1.3,c_menu_outline,c_menu_fill,1);
+	/*draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset,"Custom Level "+string(global.level_editor_level),global.default_text_size*1.3,c_menu_outline,c_menu_fill,1);
 	}
 	else
 	{
@@ -1642,8 +1646,8 @@ or(menu="import_export_level")
 		window_get_height()/2+menu_y_offset+64+42+42+42,
 		"Play","level_editor_play",noone);
 	}
+	*/
 }
-
 #region /*If level files doesn't exist and the menu is somehow on play/delete, the menu should be on level select*/
 if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
 and(!file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"))
@@ -1673,7 +1677,7 @@ if (global.level_editor_level<=0)
 	global.level_editor_level=1;
 }
 
-if (menu="select_custom_level")
+/*if (menu="select_custom_level")
 and(key_up)
 and(menu_delay=0)
 {
@@ -1681,15 +1685,15 @@ and(menu_delay=0)
 	menu_delay = 3;
 }
 
-if (menu="select_custom_level")
-and(key_down)
-and(menu_delay=0)
-{
-	menu="level_editor_make";
-	menu_delay = 3;
-}
+//if (menu="select_custom_level")
+//and(key_down)
+//and(menu_delay=0)
+//{
+//	menu="level_editor_make";
+//	menu_delay = 3;
+//}
 
-if (menu="select_custom_level")
+/*if (menu="select_custom_level")
 and(key_left)
 and(menu_delay=0)
 and(global.level_editor_level>1)
@@ -1707,17 +1711,17 @@ and(global.level_editor_level>1)
 	paste_from_clipboard_message=0;
 	
 	#region /*Update Thumbnail*/
-	/*BMP Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
-	/*PNG Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png",0,false,true,window_get_width()/2,0);}else
-	/*GIF Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
-	/*JPG Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg",0,false,true,window_get_width()/2,0);}else	
-	/*BMP Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
-	/*PNG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png",0,false,true,window_get_width()/2,0);}else
-	/*GIF Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
-	/*JPG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg",0,false,true,window_get_width()/2,0);}/*Update Thumbnail END*/
-	#endregion /*Update Thumbnail END*/
+	//*BMP Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
+	//*PNG Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png",0,false,true,window_get_width()/2,0);}else
+	//*GIF Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
+	//*JPG Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg",0,false,true,window_get_width()/2,0);}else	
+	//*BMP Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
+	//*PNG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png",0,false,true,window_get_width()/2,0);}else
+	//*GIF Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
+	//*JPG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg",0,false,true,window_get_width()/2,0);}/*Update Thumbnail END*/
+	//#endregion /*Update Thumbnail END*/
 	
-}
+/*}
 if (menu="select_custom_level")
 and(key_right)
 and(menu_delay=0)
@@ -1734,17 +1738,17 @@ and(mouse_check_button_pressed(mb_left))
 	paste_from_clipboard_message=0;
 
 	#region /*Update Thumbnail*/
-	/*BMP Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
-	/*PNG Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png",0,false,true,window_get_width()/2,0);}else
-	/*GIF Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
-	/*JPG Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg",0,false,true,window_get_width()/2,0);}else
-	/*BMP Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
-	/*PNG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png",0,false,true,window_get_width()/2,0);}else
-	/*GIF Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
-	/*JPG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg",0,false,true,window_get_width()/2,0);}
-	#endregion /*Update Thumbnail END*/
+	//*BMP Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
+	//*PNG Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png",0,false,true,window_get_width()/2,0);}else
+	//*GIF Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
+	//*JPG Custom Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg",0,false,true,window_get_width()/2,0);}else
+	//*BMP Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
+	//*PNG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png",0,false,true,window_get_width()/2,0);}else
+	//*GIF Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
+	//*JPG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg")){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg",0,false,true,window_get_width()/2,0);}
+	//#endregion /*Update Thumbnail END*/
 	
-}
+/*}
 if (menu="level_editor_make")
 {
 	if (key_up)
@@ -1821,7 +1825,7 @@ if (menu="level_editor_play")
 		menu_delay = 3;
 	}
 }
-
+*/
 #region /*Main Menu*/
 if (menu="main_game"){if (key_up){menu="quit";}else if (key_down){menu="leveleditor";}}
 else if (menu="leveleditor"){if (key_up){menu="main_game";}if (key_down)and(global.convention_mode=false){menu="options"}}
@@ -1924,9 +1928,9 @@ if (menu="delete")
 		}
 	}
 }
-}
 #endregion /*Main Menu END*/
 
+}
 #endregion /*Menu Navigation END*/
 
 #region /*Accept*/
@@ -2390,14 +2394,14 @@ or(menu="import_export_level")
 	
 		#region /*Update Thumbnail*/
 
-		/*BMP Custom Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
-		/*PNG Custom Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png",0,false,true,window_get_width()/2,0);}else
-		/*GIF Custom Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
-		/*JPG Custom Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg",0,false,true,window_get_width()/2,0);}else
-		/*BMP Automatic Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
-		/*PNG Automatic Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png",0,false,true,window_get_width()/2,0);}else
-		/*GIF Automatic Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
-		/*JPG Automatic Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg",0,false,true,window_get_width()/2,0);}
+		//*BMP Custom Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
+		//*PNG Custom Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.png",0,false,true,window_get_width()/2,0);}else
+		//*GIF Custom Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
+		//*JPG Custom Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Thumbnail.jpg",0,false,true,window_get_width()/2,0);}else
+		//*BMP Automatic Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.bmp",0,false,true,window_get_width()/2,0);}else
+		//*PNG Automatic Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png",0,false,true,window_get_width()/2,0);}else
+		//*GIF Automatic Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.gif",0,false,true,window_get_width()/2,0);}else
+		//*JPG Automatic Thumbnail*/if file_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg"){global.thumbnail_sprite=sprite_add(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.jpg",0,false,true,window_get_width()/2,0);}
 	
 		#endregion /*Update Thumbnail END*/
 	

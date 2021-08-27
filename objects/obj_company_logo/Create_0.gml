@@ -112,10 +112,11 @@ if (file_exists(working_directory+"Custom Levels/level_data.zip"))
 }
 #endregion /*Unzip custom level files END*/
 
-view_hview_lerp = 1;
-view_wview_lerp = 1;
+view_hview_lerp = 0;
+view_wview_lerp = 0;
 window_set_cursor(cr_none);
 global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
+global.thumbnail_sprite = ds_list_create();
 global.grid_hsnap=32;/*Horizontal grid snapping*/
 global.grid_vsnap=32;/*Vertical grid snapping*/
 global.narrator=1;/*Select Narrator*/

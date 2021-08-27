@@ -102,12 +102,9 @@ can_spawn_player3 = true;
 can_spawn_player4 = true;
 show_player1_controls_y = 0;
 
-/*Default Views:   set_view_wview = 1024+400-32   set_view_hview = 768-32   */
-set_view_wview=1392;set_view_hview=736;
-
 #region /*Smooth the camera out even more*/
-view_wview_lerp = set_view_wview;
-view_hview_lerp = set_view_hview;
+view_wview_lerp = 0;
+view_hview_lerp = 0;
 #endregion /*Smooth the camera out even more END*/
 
 #region /*Hud Variables*/

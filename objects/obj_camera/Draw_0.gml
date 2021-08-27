@@ -418,8 +418,8 @@ if (save_level_as_png = false)
 	and(distance_to_object(obj_boss) < 1000)
 	{
 
-		view_wview_lerp = lerp(view_wview_lerp, set_view_wview, 0.05); /*0.0005*/
-		view_hview_lerp = lerp(view_hview_lerp, set_view_hview, 0.05); /*0.0005*/
+		view_wview_lerp = lerp(0, 0, 0.05); /*0.0005*/
+		view_hview_lerp = lerp(0, 0, 0.05); /*0.0005*/
 
 		if (instance_exists(player1))
 		{
@@ -567,17 +567,20 @@ if (save_level_as_png = false)
 		
 		#endregion /*Follow Player in y position when doing specific things END*/
 
-		view_wview_lerp = lerp(view_wview_lerp, set_view_wview, 0.1);
-		view_hview_lerp = lerp(view_hview_lerp, set_view_hview, 0.1);
+		view_wview_lerp = lerp(view_wview_lerp, 0, 0.1);
+		view_hview_lerp = lerp(view_hview_lerp, 0, 0.1);
 	}
 	#endregion /*ONE PLAYER CAMERA END*/
-
-	#region /*MULTIPLAYER CAMERA*/
+	
 	else
+	
+	#region /*MULTIPLAYER CAMERA*/
 	if (asset_get_type("obj_player") == asset_object)
 	and(instance_exists(obj_player))
 	{
-
+		
+		#region /*Camera should follow multiple players*/
+		
 		/*1,2,3,4*/
 		if (instance_exists(player1))
 		and(instance_exists(player2))
@@ -587,8 +590,10 @@ if (save_level_as_png = false)
 			xx = mean(player1.x, player2.x, player3.x, player4.x);
 			yy = mean(player1.y, player2.y, player3.y, player4.y);
 		}
-		/*1,2,3*/
+		
 		else
+		
+		/*1,2,3*/
 		if (instance_exists(player1))
 		and(instance_exists(player2))
 		and(instance_exists(player3))
@@ -597,130 +602,138 @@ if (save_level_as_png = false)
 			xx = mean(player1.x, player2.x, player3.x);
 			yy = mean(player1.y, player2.y, player3.y);
 		}
-
-		/*1,2*/
+		
 		else
+		
+		/*1,2*/
 		if (instance_exists(player1))
 		and(instance_exists(player2))
 		{
 			xx = mean(player1.x, player2.x);
 			yy = mean(player1.y, player2.y);
 		}
-		/*1,3*/
+		
 		else
+		
+		/*1,3*/
 		if (instance_exists(player1))
 		and(instance_exists(player3))
 		{
 			xx = mean(player1.x, player3.x);
 			yy = mean(player1.y, player3.y);
 		}
-		/*1,4*/
+		
 		else
+		
+		/*1,4*/
 		if (instance_exists(player1))
 		and(instance_exists(player4))
 		{
 			xx = mean(player1.x, player4.x);
 			yy = mean(player1.y, player4.y);
 		}
-		/*2,3*/
+		
 		else
+		
+		/*2,3*/
 		if (instance_exists(player2))
 		and(instance_exists(player3))
 		{
 			xx = mean(player2.x, player3.x);
 			yy = mean(player2.y, player3.y);
 		}
-		/*2,4*/
+		
 		else
+		
+		/*2,4*/
 		if (instance_exists(player2))
 		and(instance_exists(player4))
 		{
 			xx = mean(player2.x, player4.x);
 			yy = mean(player2.y, player4.y);
 		}
-		/*3,4*/
+		
 		else
+		
+		/*3,4*/
 		if (instance_exists(player3))
 		and(instance_exists(player4))
 		{
 			xx = mean(player3.x, player4.x);
 			yy = mean(player3.y, player4.y);
 		}
-
+		
+		else
+		
 		#region /*Just in case something goes wrong, just follow one player*/
 		/*1*/
-		else
 		if (instance_exists(player1))
 		{
 			xx = player1.x;
 			yy = player1.y;
 		}
-		/*2*/
+		
 		else
+		
+		/*2*/
 		if (instance_exists(player2))
 		{
 			xx = player2.x;
 			yy = player2.y;
 		}
-		/*3*/
+		
 		else
+		
+		/*3*/
 		if (instance_exists(player3))
 		{
 			xx = player3.x;
 			yy = player3.y;
 		}
-		/*4*/
+		
 		else
+		
+		/*4*/
 		if (instance_exists(player4))
 		{
 			xx = player4.x;
 			yy = player4.y;
 		}
 		#endregion /*Just in case something goes wrong, just follow one player*/
-
-		/*Zoom out view when players are going outside view*/
+		
+		#endregion /*Camera should follow multiple players END*/
+		
+		#region /*Zoom out the view when players are going outside view*/
 		if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
 		and(fps_real >= global.max_fps)
 		or(instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
 		and(fps_real >= global.max_fps)
-		{
-			if (room_width >= set_view_wview * 2)
-			and(room_height >= set_view_hview * 2)
-			{
-				view_wview_lerp = lerp(view_wview_lerp, set_view_wview * 2, 0.05); /*0.0005*/
-				view_hview_lerp = lerp(view_hview_lerp, set_view_hview * 2, 0.05); /*0.0005*/
-			}
-			else
-			{
-				view_wview_lerp = lerp(view_wview_lerp, set_view_wview * 1.59, 0.05); /*0.0005*/
-				view_hview_lerp = lerp(view_hview_lerp, set_view_hview * 1.59, 0.05); /*0.0005*/
-			}
-		}
-		else
-		if (instance_nearest(0, room_height / 2, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 320)
+		or(instance_nearest(0, room_height / 2, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 320)
 		and(instance_nearest(room_width, room_height / 2, obj_player).x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 320)
 		and(fps_real >= global.max_fps)
 		or(instance_nearest(room_width / 2, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 320)
 		and(instance_nearest(room_width / 2, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 320)
 		and(fps_real >= global.max_fps)
 		{
-			if (room_width >= set_view_wview * 2)
-			and(room_height >= set_view_hview * 2)
+			if (camera_get_view_height(view_camera[view_current]) < room_height)
+			and (camera_get_view_width(view_camera[view_current]) < room_width)
 			{
-				view_wview_lerp = lerp(view_wview_lerp, set_view_wview * 2, 0.005); /*0.0005*/
-				view_hview_lerp = lerp(view_hview_lerp, set_view_hview * 2, 0.005); /*0.0005*/
+				view_wview_lerp = lerp(view_wview_lerp, 10, 0.005); /*1920*/
+				view_hview_lerp = lerp(view_hview_lerp, 10, 0.005); /*1080*/
 			}
 			else
 			{
-				view_wview_lerp = lerp(view_wview_lerp, set_view_wview * 1.59, 0.005); /*0.0005*/
-				view_hview_lerp = lerp(view_hview_lerp, set_view_hview * 1.59, 0.005); /*0.0005*/
+				view_wview_lerp = lerp(view_wview_lerp, 0, 0.005); /*0.0005*/
+				view_hview_lerp = lerp(view_hview_lerp, 0, 0.005); /*0.0005*/
 			}
 		}
 		else
 		{
-			view_wview_lerp = lerp(view_wview_lerp, set_view_wview, 0.005); /*0.0005*/
-			view_hview_lerp = lerp(view_hview_lerp, set_view_hview, 0.005); /*0.0005*/
+			view_wview_lerp = lerp(view_wview_lerp, 0, 0.005); /*0.0005*/
+			view_hview_lerp = lerp(view_hview_lerp, 0, 0.005); /*0.0005*/
 		}
+		#endregion /*Zoom out the view when players are going outside view END*/
+		
 	}
 	#endregion /*MULTIPLAYER CAMERA*/
 	
