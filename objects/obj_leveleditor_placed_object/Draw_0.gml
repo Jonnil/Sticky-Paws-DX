@@ -52,6 +52,9 @@ if (object = "oneway"){object = 68;}else
 if (object = "horizontal_rope"){object = 72;}else
 if (object = "water"){object = 73;}else
 if (object = "water_surface"){object = 731;}else
+if (object = "water_level_change_slow"){object = 732;}else
+if (object = "water_level_change_fast"){object = 733;}else
+if (object = "water_level_change_faster"){object = 734;}else
 if (object = "clipped_shirt"){object = 74;}else
 if (object = "clipped_pants"){object = 75;}else
 if (object = "clipped_sock"){object = 76;}else
@@ -1633,6 +1636,48 @@ if (global.play_edited_level=true)
 		}
 		#endregion /*Create Water Surface END*/
 		
+		#region /*Create Water Level Change Slow*/
+		if (object=732)
+		{
+			if (asset_get_type("obj_water_level_change")==asset_object)
+			{
+				with(instance_create_depth(x,y,0,obj_water_level_change))
+				{
+					water_level_change_speed = 0;
+				}
+			}
+			instance_destroy();
+		}
+		#endregion /*Create Water Level Change Slow END*/
+		
+		#region /*Create Water Level Change Fast*/
+		if (object=733)
+		{
+			if (asset_get_type("obj_water_level_change")==asset_object)
+			{
+				with(instance_create_depth(x,y,0,obj_water_level_change))
+				{
+					water_level_change_speed = 1;
+				}
+			}
+			instance_destroy();
+		}
+		#endregion /*Create Water Level Change Fast END*/
+		
+		#region /*Create Water Level Change Faster*/
+		if (object=734)
+		{
+			if (asset_get_type("obj_water_level_change")==asset_object)
+			{
+				with(instance_create_depth(x,y,0,obj_water_level_change))
+				{
+					water_level_change_speed = 2;
+				}
+			}
+			instance_destroy();
+		}
+		#endregion /*Create Water Level Change Faster END*/
+		
 		if (object=74)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_shirt;}instance_destroy();}
 		if (object=75)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_pants;}instance_destroy();}
 		if (object=76)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_sock;}instance_destroy();}
@@ -1786,6 +1831,9 @@ if (object=71)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr
 if (object=72)and(asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_index=spr_horizontal_rope;mask_index=spr_wall;}
 if (object=73)and(asset_get_type("spr_water")==asset_sprite){sprite_index=spr_water;mask_index=spr_wall;}
 if (object=731)and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
+if (object=732)and(asset_get_type("spr_water_level_change_slow")==asset_sprite){sprite_index=spr_water_level_change_slow;mask_index=spr_wall;}
+if (object=733)and(asset_get_type("spr_water_level_change_fast")==asset_sprite){sprite_index=spr_water_level_change_fast;mask_index=spr_wall;}
+if (object=734)and(asset_get_type("spr_water_level_change_faster")==asset_sprite){sprite_index=spr_water_level_change_faster;mask_index=spr_wall;}
 if (object=74)and(asset_get_type("spr_clipped_shirt")==asset_sprite){sprite_index=spr_clipped_shirt;mask_index=spr_wall;}
 if (object=75)and(asset_get_type("spr_clipped_pants")==asset_sprite){sprite_index=spr_clipped_pants;mask_index=spr_wall;}
 if (object=76)and(asset_get_type("spr_clipped_sock")==asset_sprite){sprite_index=spr_clipped_sock;mask_index=spr_wall;}

@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_water",
-    "path": "sprites/spr_water/spr_water.yy",
+    "name": "spr_water_level",
+    "path": "sprites/spr_water_level/spr_water_level.yy",
   },
   "solid": false,
   "visible": true,
@@ -26,6 +26,7 @@
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],

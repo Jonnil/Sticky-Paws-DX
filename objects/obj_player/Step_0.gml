@@ -14162,7 +14162,10 @@ and(key_jump_hold)
 			and(in_water = true)
 			and(!place_meeting(x, y - sprite_height, obj_water))
 			{
-				instance_create_depth(x, instance_nearest(x, y, obj_water).y - 16, 0, obj_water_splash);
+				if (instance_exists(obj_water))
+				{
+					instance_create_depth(x, instance_nearest(x, y, obj_water).y - 16, 0, obj_water_splash);
+				}
 				if (asset_get_type("obj_water_splash_particle") == asset_object)
 				{
 					repeat(10)
@@ -16136,6 +16139,9 @@ else
 if (asset_get_type("obj_water")==asset_object)
 {
 	if (position_meeting(x,y,obj_water))
+	or (asset_get_type("obj_water_level")==asset_object)
+	and (instance_exists(obj_water_level))
+	and (y > obj_water_level.y)
 	{
 		dive = false;
 		in_water = true;

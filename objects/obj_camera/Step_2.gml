@@ -36,4 +36,8 @@ if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
 {
 	instance_activate_object(obj_background_brightness_gameplay);
 }
+if (asset_get_type("obj_water_level") == asset_object)
+{
+	instance_activate_object(obj_water_level);
+}
 #endregion /*Activate objects that always should be active END*/

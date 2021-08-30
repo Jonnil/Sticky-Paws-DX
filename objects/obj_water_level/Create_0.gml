@@ -1,5 +1,16 @@
 water_level_change_speed = 0;
-water_level_change_new_y = y;
 
+depth = -50;
 image_alpha = 0.5;
-depth = -100;
+
+if (asset_get_type("obj_level_height") == asset_object)
+and (instance_exists(obj_level_height))
+{
+	water_level_change_new_y = obj_level_height.y + 128;
+	y = obj_level_height.y + 128;
+}
+else
+{
+	water_level_change_new_y = room_height + 128;
+	y = room_height + 128;
+}

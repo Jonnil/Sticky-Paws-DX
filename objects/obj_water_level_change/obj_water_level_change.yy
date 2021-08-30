@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_water_level_change_fast",
-    "path": "sprites/spr_water_level_change_fast/spr_water_level_change_fast.yy",
+    "name": "spr_water_level_change_slow",
+    "path": "sprites/spr_water_level_change_slow/spr_water_level_change_slow.yy",
   },
   "solid": false,
   "visible": true,
