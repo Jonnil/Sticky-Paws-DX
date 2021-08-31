@@ -5,7 +5,15 @@ key_a_released = (gamepad_button_check_released(0, gp_face1))
 or(keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
 or(keyboard_check(global.player1_key_sprint));
-draw_self();
+
+if (asset_get_type("spr_goal") == asset_sprite)
+{
+	draw_sprite_ext(spr_goal, 0, x, y-256, 1, 1, 0, c_white, 1);
+}
+if (asset_get_type("spr_level_end") == asset_sprite)
+{
+	draw_sprite_ext(spr_level_end, 0, x, y, 1, 1, 0, c_white, 1);
+}
 
 if (global.actually_play_edited_level = true)
 {

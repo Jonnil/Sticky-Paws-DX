@@ -12,7 +12,11 @@ draw_rectangle_color(x-16, 0, room_width, room_height, c_black, c_black, c_black
 draw_set_alpha(1);
 draw_line_width_color(x-16, 0, x-16, room_height, 3, c_white, c_white);
 draw_line_width_color(x-16, 0, x-16, room_height, 2, c_black, c_black);
-draw_self();
+
+if (asset_get_type("spr_level_height") == asset_sprite)
+{
+	draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);
+}
 
 #region /*Drag Object*/
 if (asset_get_type("obj_leveleditor") == asset_object)

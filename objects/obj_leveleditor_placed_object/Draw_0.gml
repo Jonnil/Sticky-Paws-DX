@@ -1280,18 +1280,35 @@ and(delay>1)
 #endregion /*Modify Objects END*/
 
 #region /*Change certain objects angle*/
+
+/*Spring*/
 if (object=62)
 {
 	draw_line_width_color(x,y,angle_x,angle_y,4,c_black,c_black);
 	draw_line_width_color(x,y,angle_x,angle_y,2,c_white,c_white);
 	draw_angle = point_direction(x, y, angle_x, angle_y)-90;
 }
+
+else
+
+/*Water Level Change*/
+if (object=732)
+or (object=733)
+or (object=734)
+{
+	draw_line_width_color(x,y,x,angle_y,4,c_black,c_black);
+	draw_line_width_color(x,y,x,angle_y,2,c_white,c_white);
+	draw_angle = point_direction(x, y, x, angle_y)-90;
+}
+
+else
+
+/*Arrows*/
 if (object=64)
 or(object=65)
 {
 	draw_angle = point_direction(x, y, angle_x, angle_y);
 }
-
 
 if (place_object_angle = true)
 {	
@@ -1583,25 +1600,14 @@ if (global.play_edited_level=true)
 		if (object=61){if (asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
 		if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=63)and(asset_get_type("obj_vine")==asset_object){instance_create_depth(x,y,0,obj_vine);instance_destroy();}
-		
-		#region /*Arrow Sign*/
 		if (object=64)and(asset_get_type("obj_arrow_sign")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
-		#endregion /*Arrow Sign End*/
-		
-		#region /*Arrow Sign Small*/
 		if (object=65)and(asset_get_type("obj_arrow_sign_small")==asset_object){with(instance_create_depth(x+16,y+16,0,obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
-		#endregion /*Arrow Sign Small End*/
-		
 		if (object=66)and(asset_get_type("obj_checkpoint")==asset_object){instance_create_depth(x+16,y,0,obj_checkpoint);instance_destroy();}
 		if (object=67){if (global.enable_spikes = true)and(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}else{instance_destroy();}}
-		
-		#region /*Oneway*/
 		if (object=68)and(asset_get_type("obj_oneway")==asset_object){instance_create_depth(x,y,0,obj_oneway);instance_destroy();}
 		if (object=69)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=90;}instance_destroy();}
 		if (object=70)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=180;}instance_destroy();}
 		if (object=71)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=270;}instance_destroy();}
-		#endregion /*Oneway END*/
-		
 		if (object=72)and(asset_get_type("obj_horizontal_rope")==asset_object){instance_create_depth(x,y,0,obj_horizontal_rope);instance_destroy();}
 		
 		#region /*Create Water*/
@@ -1636,47 +1642,9 @@ if (global.play_edited_level=true)
 		}
 		#endregion /*Create Water Surface END*/
 		
-		#region /*Create Water Level Change Slow*/
-		if (object=732)
-		{
-			if (asset_get_type("obj_water_level_change")==asset_object)
-			{
-				with(instance_create_depth(x,y,0,obj_water_level_change))
-				{
-					water_level_change_speed = 0;
-				}
-			}
-			instance_destroy();
-		}
-		#endregion /*Create Water Level Change Slow END*/
-		
-		#region /*Create Water Level Change Fast*/
-		if (object=733)
-		{
-			if (asset_get_type("obj_water_level_change")==asset_object)
-			{
-				with(instance_create_depth(x,y,0,obj_water_level_change))
-				{
-					water_level_change_speed = 1;
-				}
-			}
-			instance_destroy();
-		}
-		#endregion /*Create Water Level Change Fast END*/
-		
-		#region /*Create Water Level Change Faster*/
-		if (object=734)
-		{
-			if (asset_get_type("obj_water_level_change")==asset_object)
-			{
-				with(instance_create_depth(x,y,0,obj_water_level_change))
-				{
-					water_level_change_speed = 2;
-				}
-			}
-			instance_destroy();
-		}
-		#endregion /*Create Water Level Change Faster END*/
+		if (object=732)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
+		if (object=733)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 1; if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
+		if (object=734)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 2; if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		
 		if (object=74)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_shirt;}instance_destroy();}
 		if (object=75)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_pants;}instance_destroy();}

@@ -253,7 +253,14 @@ background_x_offset[0]=0;background_x[0]=0;background_y_offset[0]=0;background_y
 player1_show_controls_timer=0;
 player1_show_controls_alpha=0;
 
-///Load Level
+#region /*Load Level*/
+
+#region /*Destory all placed objects before loading the level, just in case there is leftover placed objects*/
+with(obj_leveleditor_placed_object)
+{
+	instance_destroy();
+}
+#endregion /*Destory all placed objects before loading the level, just in case there is leftover placed objects END*/
 
 #region /*Load Main Game Level*/
 if (global.character_select_in_this_menu="game")
@@ -381,6 +388,8 @@ if (global.character_select_in_this_menu="game")
 #endregion /*Load Main Game Level END*/
 
 else
+
+#region /*Load Level Editor Level*/
 if (global.character_select_in_this_menu="level_editor")
 {
 	
@@ -567,3 +576,6 @@ if (global.character_select_in_this_menu="level_editor")
 		
 	}
 }
+#endregion /*Load Level Editor Level END*/
+
+#endregion /*Load Level END*/

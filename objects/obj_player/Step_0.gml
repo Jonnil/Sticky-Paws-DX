@@ -12232,17 +12232,17 @@ if (goal=true)
 	if (x<camera_get_view_x(view_camera[view_current])-32)
 	{
 		x=camera_get_view_x(view_camera[view_current])-32;
-		if (speed_max<4)
+		if (hspeed>0)
 		{
-			speed_max=4;
+			hspeed=0;
 		}
 	}
 	if (x>camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])+32)
 	{
 		x=camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])+32;
-		if (speed_max<4)
+		if (hspeed>0)
 		{
-			speed_max=4;
+			hspeed=0;
 		}
 	}
 	if (y<-64)

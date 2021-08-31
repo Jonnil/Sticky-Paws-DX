@@ -28,16 +28,18 @@ if (water_level_change_speed = 1)
 else
 if (water_level_change_speed = 2)
 {
-	if (y < water_level_change_new_y - 1)
+	if (y < water_level_change_new_y)
 	{
 		y += 4;
 	}
 	else
-	if (y > water_level_change_new_y + 1)
+	if (y > water_level_change_new_y)
 	{
 		y -= 4;
 	}
 }
+
+water_level_change_new_y_lerp = lerp(water_level_change_new_y_lerp, y, 0.1);
 
 image_xscale = room_width;
 image_yscale = room_height;

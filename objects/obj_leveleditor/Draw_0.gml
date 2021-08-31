@@ -279,9 +279,9 @@ if (selected_object=28){place_object="spikes_emerge_block";can_make_place_brush_
 if (selected_object=29){place_object="oneway";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_oneway")==asset_sprite){sprite_index=spr_oneway;}if (asset_get_type("spr_oneway")==asset_sprite){mask_index=spr_oneway;}}
 if (selected_object=30){place_object="horizontal_rope";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_index=spr_horizontal_rope;}mask_index=spr_wall;}
 if (selected_object=31){place_object="water";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;}mask_index=spr_wall;}
-if (selected_object=32){place_object="water_level_change_slow";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_water_level_change_slow")==asset_sprite){sprite_index=spr_water_level_change_slow;}mask_index=spr_wall;}
-if (selected_object=33){place_object="water_level_change_fast";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_water_level_change_fast")==asset_sprite){sprite_index=spr_water_level_change_fast;}mask_index=spr_wall;}
-if (selected_object=34){place_object="water_level_change_faster";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_water_level_change_faster")==asset_sprite){sprite_index=spr_water_level_change_faster;}mask_index=spr_wall;}
+if (selected_object=32){place_object="water_level_change_slow";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_water_level_change_slow")==asset_sprite){sprite_index=spr_water_level_change_slow;}mask_index=spr_wall;}
+if (selected_object=33){place_object="water_level_change_fast";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_water_level_change_fast")==asset_sprite){sprite_index=spr_water_level_change_fast;}mask_index=spr_wall;}
+if (selected_object=34){place_object="water_level_change_faster";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_water_level_change_faster")==asset_sprite){sprite_index=spr_water_level_change_faster;}mask_index=spr_wall;}
 if (selected_object=35){place_object="clipped_shirt";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_clipped_shirt")==asset_sprite){sprite_index=spr_clipped_shirt;}mask_index=spr_wall;}
 if (selected_object=36){place_object="bucket";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bucket")==asset_sprite){sprite_index=spr_bucket;}mask_index=spr_wall;}
 if (selected_object=37){place_object="bird";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bird")==asset_sprite){sprite_index=spr_bird;}mask_index=spr_wall;}
@@ -1500,6 +1500,9 @@ or(gamepad_button_check_pressed(0,gp_select))
 				if (object != 62)
 				and(object != 64)
 				and(object != 65)
+				and(object != 732)
+				and(object != 733)
+				and(object != 734)
 				{
 					str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|";
 				}
@@ -1511,29 +1514,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 	
 			#endregion /*Save object placement END*/
 	
-			#region /*Save objects with rotation placement*/
-			instance_activate_all();
-			var file,str;
-			file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Rotation_Placement.txt"); /*Open file for writing*/
-			str=""; /*Reset string var*/
-	
-			#region /*Write all objects to file*/
-			with(obj_leveleditor_placed_object)
-			{
-				if (object = 62)
-				or(object = 64)
-				or(object = 65)
-				{
-					str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|"+string(angle_x)+"|"+string(angle_y)+"|";
-				}
-			}
-			#endregion /*Write all objects to file END*/
-	
-			file_text_write_string(file,str); /*Write string with wall information to file and start a new line*/
-			file_text_close(file);
-	
-			#endregion /*Save object with rotation placement END*/
-		
+			scr_save_objects_with_rotation_placement();
 		
 			#region /*Save Level Information*/
 			ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
