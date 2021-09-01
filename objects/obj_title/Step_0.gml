@@ -16,7 +16,8 @@ if (menu = "load_custom_level")
 		if file_found==""
 		{
 			file_find_close()
-			menu = "select_custom_level";
+			select_custom_level_menu_open = true;
+			menu = "level_editor_play";
 		}
 		else
 		{

@@ -6,7 +6,8 @@ background_layer_y = 0;
 level_index = 0;
 file_found="";
 file_load_timer=0;
-select_level_index=0;
+open_sub_menu=false;
+select_custom_level_menu_open = false;
 
 /*Narrator Voice variable handeling*/
 narrator_name=noone;
