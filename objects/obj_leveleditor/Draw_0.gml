@@ -1352,12 +1352,12 @@ if (quit_level_editor=0)
 					#endregion /*Create directory for saving custom levels END*/
 					
 					ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
-					ini_key_delete("Level"+string(global.level_editor_level),"x_checkpoint");
-					ini_key_delete("Level"+string(global.level_editor_level),"y_checkpoint");
-					ini_key_delete("Level"+string(global.level_editor_level),"checkpoint_millisecond");
-					ini_key_delete("Level"+string(global.level_editor_level),"checkpoint_second");
-					ini_key_delete("Level"+string(global.level_editor_level),"checkpoint_minute");
-					ini_key_delete("Level"+string(global.level_editor_level),"checkpoint_realmillisecond");
+					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"x_checkpoint");
+					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"y_checkpoint");
+					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_millisecond");
+					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_second");
+					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_minute");
+					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_realmillisecond");
 					ini_close();
 				}
 				#endregion /*Reset Level Editor Checkpoint END*/
@@ -1477,9 +1477,9 @@ or(gamepad_button_check_pressed(0,gp_select))
 			directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level));
 		}
 		if (directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
-		and(!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data"))
+		and(!directory_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data"))
 		{
-			directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data");
+			directory_create(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data");
 		}
 		#endregion /*Create directory for saving custom levels END*/
 		
@@ -1491,7 +1491,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 			#region /*Save object placement*/
 			instance_activate_all();
 			var file,str;
-			file = file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"); /*Open file for writing*/
+			file = file_text_open_write(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object_Placement.txt"); /*Open file for writing*/
 			str=""; /*Reset string var*/
 	
 			#region /*Write all objects to file*/
@@ -1517,7 +1517,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 			scr_save_objects_with_rotation_placement();
 		
 			#region /*Save Level Information*/
-			ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+			ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
 			if (asset_get_type("obj_level_start")==asset_object)
 			{
 				if (instance_exists(obj_level_start))

@@ -584,12 +584,12 @@ and(delay=3)
 			
 			#region /*Create directory for saving custom levels*/
 			ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
-			ini_key_delete("Level"+string(global.level_editor_level),"x_checkpoint");
-			ini_key_delete("Level"+string(global.level_editor_level),"y_checkpoint");
-			ini_key_delete("Level"+string(global.level_editor_level),"checkpoint_millisecond");
-			ini_key_delete("Level"+string(global.level_editor_level),"checkpoint_second");
-			ini_key_delete("Level"+string(global.level_editor_level),"checkpoint_minute");
-			ini_key_delete("Level"+string(global.level_editor_level),"checkpoint_realmillisecond");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"x_checkpoint");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"y_checkpoint");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_millisecond");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_second");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_minute");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_realmillisecond");
 			ini_close();
 			#endregion /*Create directory for saving custom levels END*/
 			

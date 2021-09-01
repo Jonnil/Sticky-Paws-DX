@@ -158,12 +158,12 @@ and(instance_exists(obj_player))
 					#endregion /*Create directory for saving custom levels END*/
 					ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
 
-					ini_write_real("Level"+string(global.level_editor_level),"x_checkpoint",global.x_checkpoint);
-					ini_write_real("Level"+string(global.level_editor_level),"y_checkpoint",global.y_checkpoint);
-					ini_write_real("Level"+string(global.level_editor_level),"checkpoint_millisecond",global.timeattack_millisecond);
-					ini_write_real("Level"+string(global.level_editor_level),"checkpoint_second",global.timeattack_second);
-					ini_write_real("Level"+string(global.level_editor_level),"checkpoint_minute",global.timeattack_minute);
-					ini_write_real("Level"+string(global.level_editor_level),"checkpoint_realmillisecond",global.timeattack_realmillisecond);
+					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"x_checkpoint",global.x_checkpoint);
+					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"y_checkpoint",global.y_checkpoint);
+					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_millisecond",global.timeattack_millisecond);
+					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_second",global.timeattack_second);
+					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_minute",global.timeattack_minute);
+					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_realmillisecond",global.timeattack_realmillisecond);
 
 					ini_close();
 				}

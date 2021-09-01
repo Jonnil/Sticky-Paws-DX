@@ -327,29 +327,29 @@ and(room != room_title)
 	
 	#region /*Update Music*/
 	/*OGG small letter File*/
-	if (file_exists("Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/music.ogg"))
+	if (file_exists("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Sounds/Music/music.ogg"))
 	and(global.character_select_in_this_menu="game")
 	{
-		global.music = audio_create_stream("Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/music.ogg");
+		global.music = audio_create_stream("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Sounds/Music/music.ogg");
 	}
 	else
 	/*OGG big letter File*/
-	if (file_exists("Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/Music.ogg"))
+	if (file_exists("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Sounds/Music/Music.ogg"))
 	and(global.character_select_in_this_menu="game")
 	{
-		global.music = audio_create_stream("Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/Music.ogg");
+		global.music = audio_create_stream("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Sounds/Music/Music.ogg");
 	}
 	else
 	/*OGG small letter File*/
-	if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/music.ogg"))
+	if (file_exists(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Sounds/Music/music.ogg"))
 	{
-		global.music = audio_create_stream(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/music.ogg");
+		global.music = audio_create_stream(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Sounds/Music/music.ogg");
 	}
 	else
 	/*OGG big letter File*/
-	if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/Music.ogg"))
+	if (file_exists(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Sounds/Music/Music.ogg"))
 	{
-		global.music = audio_create_stream(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/Music.ogg");
+		global.music = audio_create_stream(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Sounds/Music/Music.ogg");
 	}
 	else
 	{
@@ -359,29 +359,29 @@ and(room != room_title)
 	
 	#region /*Update Music Underwater*/
 	/*OGG small letter File*/
-	if (file_exists("Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/music_underwater.ogg"))
+	if (file_exists("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Sounds/Music/music_underwater.ogg"))
 	and(global.character_select_in_this_menu="game")
 	{
-		global.music_underwater = audio_create_stream("Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/music_underwater.ogg");
+		global.music_underwater = audio_create_stream("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Sounds/Music/music_underwater.ogg");
 	}
 	else
 	/*OGG big letter File*/
-	if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/Music_underwater.ogg"))
+	if (file_exists(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Sounds/Music/Music_underwater.ogg"))
 	and(global.character_select_in_this_menu="game")
 	{
-		global.music_underwater = audio_create_stream(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/Music_underwater.ogg");
+		global.music_underwater = audio_create_stream(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Sounds/Music/Music_underwater.ogg");
 	}
 	else
 	/*OGG small letter File*/
-	if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/music_underwater.ogg"))
+	if (file_exists(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Sounds/Music/music_underwater.ogg"))
 	{
-		global.music_underwater = audio_create_stream(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/music_underwater.ogg");
+		global.music_underwater = audio_create_stream(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Sounds/Music/music_underwater.ogg");
 	}
 	else
 	/*OGG big letter File*/
-	if (file_exists(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/Music_underwater.ogg"))
+	if (file_exists(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Sounds/Music/Music_underwater.ogg"))
 	{
-		global.music_underwater = audio_create_stream(working_directory + "/Custom Levels/Level" + string(global.level_editor_level) + "/Sounds/Music/Music_underwater.ogg");
+		global.music_underwater = audio_create_stream(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Sounds/Music/Music_underwater.ogg");
 	}
 	else
 	{
@@ -399,18 +399,18 @@ else
 
 #region /*Initialize Background*/
 if (global.character_select_in_this_menu="game")
-and(file_exists("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini"))
+and(file_exists("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Data/level_information.ini"))
 or(global.character_select_in_this_menu="level_editor")
-and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
+and(file_exists(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu="game")
 	{
-		ini_open("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini");
+		ini_open("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Data/level_information.ini");
 	}
 	else
 	if (global.character_select_in_this_menu="level_editor")
 	{
-		ini_open(working_directory + "/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+		ini_open(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
 	}
 	
 	#region /*Custom Background 4 x and y parallax points*/
@@ -694,18 +694,18 @@ else
 
 #region /*Initialize Weather*/
 if (global.character_select_in_this_menu="game")
-and(file_exists("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini"))
+and(file_exists("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Data/level_information.ini"))
 or(global.character_select_in_this_menu="level_editor")
-and(file_exists(working_directory + "/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini"))
+and(file_exists(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu="game")
 	{
-		ini_open("Levels/Level" +string(global.level_editor_level)+"/Data/level_information.ini");
+		ini_open("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Data/level_information.ini");
 	}
 	else
 	if (global.character_select_in_this_menu="level_editor")
 	{
-		ini_open(working_directory + "/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+		ini_open(working_directory + "/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
 	}
 	
 	#region /*Rain*/

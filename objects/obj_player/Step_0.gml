@@ -36,7 +36,7 @@ if (full_level_map_screenshot_timer = 5)
 {
 	var custom_level_map_sprite;
 	custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
-	sprite_save(custom_level_map_sprite, 0, working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Full Level Map.png");
+	sprite_save(custom_level_map_sprite, 0, working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Full Level Map.png");
 	sprite_delete(custom_level_map_sprite);
 }
 
@@ -13403,7 +13403,7 @@ and(global.pause=false)
 	if (global.level_editor_level>0)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
-		ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/level_information.ini");
+		ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/level_information.ini");
 		ini_write_real("Info","view_xview",camera_get_view_x(view_camera[view_current]));
 		ini_write_real("Info","view_yview",camera_get_view_y(view_camera[view_current]));
 		ini_close();
@@ -16155,6 +16155,7 @@ if (asset_get_type("obj_water")==asset_object)
 		stick_to_wall = false;
 		can_dive = true; /*Can dive when you jump out of water still*/
 		wall_jump = false;
+		spring = false;
 		
 		if (key_up)
 		or(key_jump_hold)
@@ -16523,10 +16524,10 @@ if (die=true)
 		#endregion /*Create directory for saving custom levels END*/
 		
 		ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
-		ini_write_real("Level"+string(global.level_editor_level),"checkpoint_millisecond",global.timeattack_millisecond);
-		ini_write_real("Level"+string(global.level_editor_level),"checkpoint_second",global.timeattack_second);
-		ini_write_real("Level"+string(global.level_editor_level),"checkpoint_minute",global.timeattack_minute);
-		ini_write_real("Level"+string(global.level_editor_level),"checkpoint_realmillisecond",global.timeattack_realmillisecond);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_millisecond",global.timeattack_millisecond);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_second",global.timeattack_second);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_minute",global.timeattack_minute);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_realmillisecond",global.timeattack_realmillisecond);
 		ini_close();
 	}
 	#endregion /*Update Level Editor Checkpoint Time END*/

@@ -846,8 +846,8 @@ and(global.pause_room = room_leveleditor)
 			{
 				ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
 			}
-			ini_write_real("Level"+string(global.level_editor_level),"x_checkpoint",0);
-			ini_write_real("Level"+string(global.level_editor_level),"y_checkpoint",0);
+			ini_write_real(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"x_checkpoint",0);
+			ini_write_real(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"y_checkpoint",0);
 			ini_close();
 			
 			global.x_checkpoint = 0;

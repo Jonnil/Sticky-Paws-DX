@@ -52,7 +52,7 @@ weighted_y = weighted_y / total_objects;
 
 if (quit_level_editor=3)
 {
-	file_delete(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png")
+	file_delete(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic Thumbnail.png")
 	var thumbnail_sprite;
 	thumbnail_sprite = sprite_create_from_surface(application_surface,
 	//screenie_x,
@@ -62,7 +62,7 @@ if (quit_level_editor=3)
 	camera_get_view_width(view_camera[view_current]),
 	camera_get_view_height(view_camera[view_current]),
 	false,true,0,0);
-	sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Automatic Thumbnail.png");
+	sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic Thumbnail.png");
 	sprite_delete(thumbnail_sprite);
 }
 #endregion /*Save Thumbnail End*/
@@ -82,7 +82,7 @@ and(global.character_select_in_this_menu="level_editor")
 	#region /*Save object placement*/
 	instance_activate_all();
 	var file,str;
-	file=file_text_open_write(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/Object_Placement.txt"); /*Open file for writing*/
+	file=file_text_open_write(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object_Placement.txt"); /*Open file for writing*/
 	str=""; /*Reset string var*/
 	
 	#region /*Write all objects to file*/
@@ -108,7 +108,7 @@ and(global.character_select_in_this_menu="level_editor")
 	scr_save_objects_with_rotation_placement();
 	
 	#region /*Save Level Information*/
-	ini_open(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)+"/Data/level_information.ini");
+	ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
 	ini_write_string("Info","level_name",level_name);
 	if (instance_exists(obj_level_start))
 	{
