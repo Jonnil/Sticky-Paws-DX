@@ -16328,6 +16328,35 @@ if (asset_get_type("obj_water")==asset_object)
 }
 #endregion /*In Water END*/
 
+#region /*Drowning*/
+if (allow_drowning = true)
+{
+	
+	if (millisecond_until_drowning > (seconds_until_drowning*60))
+	{
+		millisecond_until_drowning = (seconds_until_drowning*60)
+	}
+	if (millisecond_until_drowning < 0)
+	{
+		millisecond_until_drowning = 0;
+	}
+	
+	if (in_water = true)
+	{
+		millisecond_until_drowning -=1;
+		if (millisecond_until_drowning < 0)
+		{
+			millisecond_until_drowning = 0;
+			hp -= 2;
+		}
+	}
+	else
+	{
+		millisecond_until_drowning +=12; /*12 frames = 0.2 seconds*/
+	}
+}
+#endregion /*Drowning END*/
+
 #region /*Speedup to Dashspeed*/
 if (abs(hspeed)>7)
 and(invincible>0)
@@ -17794,6 +17823,7 @@ and(place_meeting(x,y,obj_vine))
 
 #region /*In Water Animations*/
 if (in_water = true)
+and (climb = false)
 {
 	can_ground_pound = false;
 	chain_reaction=0;

@@ -112,15 +112,6 @@ or(global.actually_play_edited_level = true)
 	if (asset_get_type("obj_ground") == asset_object)
 	{
 		instance_create_depth(x, y, 0, obj_ground);
-		instance_create_depth(x + 32, y, 0, obj_ground);
-		instance_create_depth(x + 64, y, 0, obj_ground);
-		instance_create_depth(x + 96, y, 0, obj_ground);
-		instance_create_depth(x + 128, y, 0, obj_ground);
-		instance_create_depth(x + 160, y, 0, obj_ground);
-		instance_create_depth(x + 192, y, 0, obj_ground);
-		instance_create_depth(x + 224, y, 0, obj_ground);
-		instance_create_depth(x + 256, y, 0, obj_ground);
-		instance_create_depth(x + 288, y, 0, obj_ground);
 	}
 	if (global.actually_play_edited_level = true)
 	{

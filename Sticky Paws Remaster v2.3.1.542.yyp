@@ -233,6 +233,7 @@
     {"id":{"name":"spr_ladder","path":"sprites/spr_ladder/spr_ladder.yy",},"order":44,},
     {"id":{"name":"scr_options_menu","path":"scripts/scr_options_menu/scr_options_menu.yy",},"order":2,},
     {"id":{"name":"draw_menu_dropdown","path":"scripts/draw_menu_dropdown/draw_menu_dropdown.yy",},"order":3,},
+    {"id":{"name":"obj_air_bubbles_spawner","path":"objects/obj_air_bubbles_spawner/obj_air_bubbles_spawner.yy",},"order":27,},
     {"id":{"name":"snd_menuvoice_3player","path":"sounds/snd_menuvoice_3player/snd_menuvoice_3player.yy",},"order":78,},
     {"id":{"name":"spr_wall_grass","path":"sprites/spr_wall_grass/spr_wall_grass.yy",},"order":6,},
     {"id":{"name":"scr_load_resource_pack_sprite","path":"scripts/scr_load_resource_pack_sprite/scr_load_resource_pack_sprite.yy",},"order":12,},
