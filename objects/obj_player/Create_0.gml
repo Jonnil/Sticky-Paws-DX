@@ -575,6 +575,7 @@ invincible_pitch = 1;
 drop_off_wall_climb = false;
 
 in_water = false; /*If the player is in water or not, instead of checking for the actual obj_water, check for this variable instead*/
+old_in_water = false; /*This just checks if water splash effect should be done or not, by checking if the actual in_water is different from the old_in_water*/
 jump = 0;
 triplejumpdelay = 0;
 crouch = false;

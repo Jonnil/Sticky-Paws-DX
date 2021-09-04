@@ -7,10 +7,10 @@
 //if(file_exists(working_directory + "/Custom Characters/Character "+string(global.sprite_select_player_1-global.max_number_of_official_characters)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+320,"true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+320,"false",global.default_text_size,c_white,c_black,1);}
 //if(file_exists("Characters/Character "+string(global.character_for_player_1)+"/Data/character_config.ini")){draw_text_outlined(x+64,y+420,"Offical: true",global.default_text_size,c_white,c_black,1);}else{draw_text_outlined(x+64,y+420,"Official: false",global.default_text_size,c_white,c_black,1);}
 //draw_text_outlined(x+256,y+320,"global.character_for_player_1: "+string(global.character_for_player_1),global.default_text_size,c_white,c_black,1);
-draw_text_outlined(x+5,y+100,"menu_delay: "+string(menu_delay),global.default_text_size*0.75,c_white,c_black,1);
-draw_text_outlined(x+5,y+200,"menu_joystick_delay: "+string(menu_joystick_delay),global.default_text_size*0.75,c_white,c_black,1);
-draw_text_outlined(x+5,y+300,"input_key: "+string(input_key),global.default_text_size*0.75,c_white,c_black,1);
-draw_text_outlined(x+5,y+400,"can_navigate: "+string(can_navigate),global.default_text_size*0.75,c_white,c_black,1);
+//draw_text_outlined(x+5,y+100,"menu_delay: "+string(menu_delay),global.default_text_size*0.75,c_white,c_black,1);
+//draw_text_outlined(x+5,y+200,"menu_joystick_delay: "+string(menu_joystick_delay),global.default_text_size*0.75,c_white,c_black,1);
+//draw_text_outlined(x+5,y+300,"input_key: "+string(input_key),global.default_text_size*0.75,c_white,c_black,1);
+//draw_text_outlined(x+5,y+400,"can_navigate: "+string(can_navigate),global.default_text_size*0.75,c_white,c_black,1);
 
 #region /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus*/
 

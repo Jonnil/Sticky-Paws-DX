@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_air_bubbles_spawner",
-    "path": "sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",
+    "name": "spr_bubble",
+    "path": "sprites/spr_bubble/spr_bubble.yy",
   },
   "solid": false,
   "visible": true,
@@ -22,16 +22,15 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Level Objects",
-    "path": "folders/Objects/Level Objects.yy",
+    "name": "Objects",
+    "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_air_bubbles_spawner",
+  "name": "obj_bubble",
   "tags": [],
   "resourceType": "GMObject",
 }

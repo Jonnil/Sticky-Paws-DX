@@ -12232,7 +12232,7 @@ if (goal=true)
 	if (x<camera_get_view_x(view_camera[view_current])-32)
 	{
 		x=camera_get_view_x(view_camera[view_current])-32;
-		if (hspeed>0)
+		if (hspeed<0)
 		{
 			hspeed=0;
 		}
@@ -12249,9 +12249,14 @@ if (goal=true)
 	{
 		y=-64;
 	}
-	if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
+	if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+32)
 	{
-		y=camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]);
+		y=camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+32;
+		if (vspeed>0)
+		{
+			vspeed=0;
+		}
+		gravity = 0;
 	}
 }
 #endregion /*Don't let the player outside the view too much when winning END*/
@@ -13413,8 +13418,6 @@ and(global.pause=false)
 	room_restart();
 	}
 	else
-	
-	
 	{
 		global.pause_player=0;
 		if (global.goal_active=false)
@@ -14157,28 +14160,7 @@ and(key_jump_hold)
 			#endregion /*Smoke effect under player when jumping END*/
 			
 			image_index = 0;
-			if (asset_get_type("obj_water") == asset_object)
-			and(asset_get_type("obj_water_splash") == asset_object)
-			and(in_water = true)
-			and(!place_meeting(x, y - sprite_height, obj_water))
-			{
-				if (instance_exists(obj_water))
-				{
-					instance_create_depth(x, instance_nearest(x, y, obj_water).y - 16, 0, obj_water_splash);
-				}
-				if (asset_get_type("obj_water_splash_particle") == asset_object)
-				{
-					repeat(10)
-					{
-						obj = instance_create_depth(x, y - 16, 0, obj_water_splash_particle);
-						with(obj)
-						{
-							direction = random_range(0, 180);
-							speed = random_range(4, 10);
-						}
-					}
-				}
-			}
+			
 			#region /*Jump sound sfx*/
 			if (jump = 3)
 			{
@@ -14244,64 +14226,69 @@ and (!place_meeting(x, y+1, obj_semisolid_platform))
 and (!place_meeting(x, bbox_bottom+1, obj_semisolid_platform))
 and (in_water = false)
 {
-	if (global.has_upgrade_double_jump = true)
-	or (number_of_jumps >= 2)
-	and (midair_jumps_left > 0)
-	or (number_of_jumps <= -1)
+	if (spring = true)
+	and (vspeed > -20)
+	or (spring = false)
 	{
-		buffer_jump = 0;
-		dive = false;
-		if (!place_meeting(x, y-double_jump_height, obj_wall))
+		if (global.has_upgrade_double_jump = true)
+		or (number_of_jumps >= 2)
+		and (midair_jumps_left > 0)
+		or (number_of_jumps <= -1)
 		{
-			vspeed = -double_jump_height;
-		}
-		else
-		if (!place_meeting(x, y-4, obj_wall))
-		{
-			vspeed = -4;
-		}
-		else
-		{
-			vspeed = 0;
-		}
-		if (voice_jump > noone)
-		{
-			audio_stop_sound(voice);
-		}
-		voice = audio_play_sound(voice_jump, 0, 0);
-		audio_sound_gain(voice_jump,global.voices_volume,0);
-		audio_sound_pitch(voice_jump, default_voice_pitch);
-		effect_create_above(ef_smoke,x-16,bbox_bottom,0,c_white);
-		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
-		effect_create_above(ef_smoke,x+16,bbox_bottom,0,c_white);
-		image_index=0;
-		
-		if (number_of_jumps > -1)
-		and(midair_jumps_left != number_of_jumps)
-		{
-			midair_jumps_left -= 1;
-		}
-		else
-		{
-			midair_jumps_left -= 2;
-		}
-		
-		#region /*Mid-air flip animation*/
-		if (midair_jumps_left >= midair_jump_flip_animation)
-		or (number_of_jumps = 2)
-		and(midair_jump_flip_animation >= 2)
-		{
-			if (image_xscale>0)
+			buffer_jump = 0;
+			dive = false;
+			if (!place_meeting(x, y-double_jump_height, obj_wall))
 			{
-				angle=+360;
+				vspeed = -double_jump_height;
+			}
+			else
+			if (!place_meeting(x, y-4, obj_wall))
+			{
+				vspeed = -4;
 			}
 			else
 			{
-				angle=-360;
+				vspeed = 0;
 			}
-		}
-		#endregion /*Mid-air flip animation END*/
+			if (voice_jump > noone)
+			{
+				audio_stop_sound(voice);
+			}
+			voice = audio_play_sound(voice_jump, 0, 0);
+			audio_sound_gain(voice_jump,global.voices_volume,0);
+			audio_sound_pitch(voice_jump, default_voice_pitch);
+			effect_create_above(ef_smoke,x-16,bbox_bottom,0,c_white);
+			effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
+			effect_create_above(ef_smoke,x+16,bbox_bottom,0,c_white);
+			image_index=0;
 		
+			if (number_of_jumps > -1)
+			and(midair_jumps_left != number_of_jumps)
+			{
+				midair_jumps_left -= 1;
+			}
+			else
+			{
+				midair_jumps_left -= 2;
+			}
+		
+			#region /*Mid-air flip animation*/
+			if (midair_jumps_left >= midair_jump_flip_animation)
+			or (number_of_jumps = 2)
+			and(midair_jump_flip_animation >= 2)
+			{
+				if (image_xscale>0)
+				{
+					angle=+360;
+				}
+				else
+				{
+					angle=-360;
+				}
+			}
+			#endregion /*Mid-air flip animation END*/
+		
+		}
 	}
 }
 #endregion /*Mid-Air / Double Jumping END*/
@@ -16197,52 +16184,6 @@ if (asset_get_type("obj_water")==asset_object)
 		if (key_jump)
 		{
 			
-			#region /*Water Splash Effect when jumping out of water*/
-			if (!position_meeting(x,y-32,obj_water))
-			and(!place_meeting(x,y-1,obj_wall))
-			and(!place_meeting(x,y-4,obj_wall))
-			and(!place_meeting(x,y-8,obj_wall))
-			and(!place_meeting(x,y-12,obj_wall))
-			and(!place_meeting(x,y-16,obj_wall))
-			{
-				if (asset_get_type("obj_water")==asset_object)
-				and(asset_get_type("obj_water_splash")==asset_object)
-				and(place_meeting(x,y,obj_water))
-				{
-					instance_create_depth(x,instance_nearest(x,y,obj_water).bbox_top,0,obj_water_splash);
-					if (asset_get_type("obj_water_splash_particle")==asset_object)
-					{
-						repeat(10)
-						{
-							obj=instance_create_depth(x,bbox_top,0,obj_water_splash_particle);
-							with(obj)
-							{
-								direction=random_range(0,180);
-								speed=random_range(4,10);
-							}
-						}
-					}
-				}
-				vspeed = -normal_jump_height;
-				
-				#region /*Jump sound effect*/
-				if (asset_get_type("snd_jump")==asset_sound)
-				{
-					audio_play_sound(snd_jump,0,0);
-					audio_sound_gain(snd_jump,global.sfx_volume,0);
-				}
-				if (asset_get_type("snd_swim")==asset_sound)
-				{
-					audio_play_sound(snd_swim,0,0);
-					audio_sound_gain(snd_swim,global.sfx_volume,0);
-				}
-				#endregion /*Jump sound effect END*/
-				
-			}
-			#endregion /*Water Splash Effect when jumping out of water END*/
-			
-			else
-			
 			#region /*Swim up*/
 			{
 				if (key_up)
@@ -16356,6 +16297,55 @@ if (allow_drowning = true)
 	}
 }
 #endregion /*Drowning END*/
+
+#region /*Water Splash Effect*/
+if (in_water != old_in_water)
+{
+	
+	#region /*Jump out of water*/
+	if (key_jump_hold)
+	and (in_water = false)
+	and (vspeed > -normal_jump_height)
+	{
+		vspeed = -normal_jump_height;
+		
+		#region /*Jump sound effect*/
+		if (asset_get_type("snd_jump")==asset_sound)
+		{
+			audio_play_sound(snd_jump,0,0);
+			audio_sound_gain(snd_jump,global.sfx_volume,0);
+		}
+		if (asset_get_type("snd_swim")==asset_sound)
+		{
+			audio_play_sound(snd_swim,0,0);
+			audio_sound_gain(snd_swim,global.sfx_volume,0);
+		}
+		#endregion /*Jump sound effect END*/
+		
+	}
+	#endregion /*Jump out of water END*/
+	
+	old_in_water = in_water;
+	
+	if (asset_get_type("obj_water")==asset_object)
+	and(asset_get_type("obj_water_splash")==asset_object)
+	{
+		instance_create_depth(x,instance_nearest(x,y,obj_water).bbox_top,0,obj_water_splash);
+		if (asset_get_type("obj_water_splash_particle")==asset_object)
+		{
+			repeat(10)
+			{
+				obj=instance_create_depth(x,bbox_top,0,obj_water_splash_particle);
+				with(obj)
+				{
+					direction=random_range(0,180);
+					speed=random_range(2,10);
+				}
+			}
+		}
+	}
+}
+#endregion /*Water Splash Effect END*/
 
 #region /*Speedup to Dashspeed*/
 if (abs(hspeed)>7)
@@ -16842,64 +16832,67 @@ else
 #region /*Goal*/
 if (asset_get_type("obj_goal")==asset_object)
 and(instance_exists(obj_goal))
-and(distance_to_object(obj_goal) < 1920)
 {
-	if (x > instance_nearest(x,y,obj_goal).bbox_right)
-	and(x < instance_nearest(x,y,obj_goal).bbox_right+16)
-	and(goal = false)
+	if (distance_to_object(obj_goal) < 1920)
 	{
-		if (!collision_line(x,y,instance_nearest(x,y,obj_goal).x,instance_nearest(x,y,obj_goal).y,obj_wall,false,true))
+		if (x > instance_nearest(x,y,obj_goal).bbox_right)
+		and (x < instance_nearest(x,y,obj_goal).bbox_right+16)
+		and (y < instance_nearest(x,y,obj_goal).bbox_bottom)
+		and (goal = false)
 		{
-			goal = true;
-		}
-	}
-	else
-	if (x<instance_nearest(x,y,obj_goal).bbox_left+4)
-	and(goal=true)
-	{
-		x=instance_nearest(x,y,obj_goal).bbox_left+4;
-	}
-	if (place_meeting(x,y,obj_goal))
-	and(instance_exists(obj_goal))
-	and(goal=false)
-	{
-		audio_stop_sound(global.music);
-		audio_stop_sound(global.music_underwater);
-		global.music=noone;
-		global.music_underwater=noone;
-		audio_stop_sound(voice);
-		voice=audio_play_sound(voice_enter_goal,0,0);
-		audio_sound_gain(voice_enter_goal,global.voices_volume,0);
-		audio_sound_pitch(voice_enter_goal, default_voice_pitch);
-		goal=true;
-		global.goal_active=true;
-		if (invincible>100)
-		{
-			invincible=100;
-		}
-		audio_stop_sound(global.music);
-		audio_stop_sound(global.music_underwater);
-		music=noone;
-		music_underwater=noone;
-
-		#region /*Level Clear Melody*/
-		if (level_clear_melody>noone)
-		{
-			if (!audio_is_playing(level_clear_melody))
+			if (!collision_line(x,y,instance_nearest(x,y,obj_goal).x,instance_nearest(x,y,obj_goal).y,obj_wall,false,true))
 			{
-				audio_play_sound(level_clear_melody,0,0);
-				audio_sound_gain(level_clear_melody,global.music_volume,0);
+				goal = true;
 			}
 		}
 		else
-		if (asset_get_type("snd_level_clear")==asset_sound)
-		and(!audio_is_playing(snd_level_clear))
+		if (x<instance_nearest(x,y,obj_goal).bbox_left+4)
+		and (goal=true)
 		{
-			audio_play_sound(snd_level_clear,0,0);
-			audio_sound_gain(snd_level_clear,global.music_volume,0);
+			x=instance_nearest(x,y,obj_goal).bbox_left+4;
 		}
-		#endregion /*Level Clear Melody END*/
+		if (place_meeting(x,y,obj_goal))
+		and (instance_exists(obj_goal))
+		and (goal=false)
+		{
+			audio_stop_sound(global.music);
+			audio_stop_sound(global.music_underwater);
+			global.music=noone;
+			global.music_underwater=noone;
+			audio_stop_sound(voice);
+			voice=audio_play_sound(voice_enter_goal,0,0);
+			audio_sound_gain(voice_enter_goal,global.voices_volume,0);
+			audio_sound_pitch(voice_enter_goal, default_voice_pitch);
+			goal=true;
+			global.goal_active=true;
+			if (invincible>100)
+			{
+				invincible=100;
+			}
+			audio_stop_sound(global.music);
+			audio_stop_sound(global.music_underwater);
+			music=noone;
+			music_underwater=noone;
+			
+			#region /*Level Clear Melody*/
+			if (level_clear_melody>noone)
+			{
+				if (!audio_is_playing(level_clear_melody))
+				{
+					audio_play_sound(level_clear_melody,0,0);
+					audio_sound_gain(level_clear_melody,global.music_volume,0);
+				}
+			}
+			else
+			if (asset_get_type("snd_level_clear")==asset_sound)
+			and(!audio_is_playing(snd_level_clear))
+			{
+				audio_play_sound(snd_level_clear,0,0);
+				audio_sound_gain(snd_level_clear,global.music_volume,0);
+			}
+			#endregion /*Level Clear Melody END*/
 		
+		}
 	}
 }
 if (goal=true)

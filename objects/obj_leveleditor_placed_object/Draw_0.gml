@@ -52,6 +52,7 @@ if (object = "oneway"){object = 68;}else
 if (object = "horizontal_rope"){object = 72;}else
 if (object = "water"){object = 73;}else
 if (object = "water_surface"){object = 731;}else
+if (object = "air_bubbles_spawner"){object = 735;}else
 if (object = "water_level_change_slow"){object = 732;}else
 if (object = "water_level_change_fast"){object = 733;}else
 if (object = "water_level_change_faster"){object = 734;}else
@@ -1642,6 +1643,7 @@ if (global.play_edited_level=true)
 		}
 		#endregion /*Create Water Surface END*/
 		
+		if (object=735)and(asset_get_type("obj_air_bubbles_spawner")==asset_object){instance_create_depth(x,y,0,obj_air_bubbles_spawner);instance_destroy();}
 		if (object=732)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=733)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 1; if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=734)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 2; if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
@@ -1799,6 +1801,8 @@ if (object=71)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr
 if (object=72)and(asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_index=spr_horizontal_rope;mask_index=spr_wall;}
 if (object=73)and(asset_get_type("spr_water")==asset_sprite){sprite_index=spr_water;mask_index=spr_wall;}
 if (object=731)and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
+if (object=735)and(asset_get_type("spr_air_bubbles_spawner")==asset_sprite){sprite_index=spr_air_bubbles_spawner;mask_index=spr_wall;}
+else if (object=735)and(asset_get_type("spr_bubble")==asset_sprite){sprite_index=spr_bubble;mask_index=spr_wall;}
 if (object=732)and(asset_get_type("spr_water_level_change_slow")==asset_sprite){sprite_index=spr_water_level_change_slow;mask_index=spr_wall;}
 if (object=733)and(asset_get_type("spr_water_level_change_fast")==asset_sprite){sprite_index=spr_water_level_change_fast;mask_index=spr_wall;}
 if (object=734)and(asset_get_type("spr_water_level_change_faster")==asset_sprite){sprite_index=spr_water_level_change_faster;mask_index=spr_wall;}

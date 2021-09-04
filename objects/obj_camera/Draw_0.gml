@@ -416,6 +416,7 @@ if (save_level_as_png = false)
 	and(instance_exists(obj_player))
 	and(instance_exists(obj_boss))
 	and(distance_to_object(obj_boss) < 1000)
+	and (global.player_has_entered_goal = false)
 	{
 
 		view_wview_lerp = lerp(0, 0, 0.05); /*0.0005*/
@@ -453,6 +454,7 @@ if (save_level_as_png = false)
 	if (asset_get_type("obj_player") == asset_object)
 	and(asset_get_type("obj_camera") == asset_object)
 	and(instance_number(obj_player) = 1)
+	and (global.player_has_entered_goal = false)
 	{
 		/*Tries to be a bit ahead of player*/
 		obj_camera.xx = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player).x + instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player).hspeed * 15;
@@ -577,6 +579,7 @@ if (save_level_as_png = false)
 	#region /*MULTIPLAYER CAMERA*/
 	if (asset_get_type("obj_player") == asset_object)
 	and(instance_exists(obj_player))
+	and (global.player_has_entered_goal = false)
 	{
 		
 		#region /*Camera should follow multiple players*/

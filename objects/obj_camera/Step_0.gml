@@ -40,4 +40,12 @@ if (asset_get_type("obj_water_level") == asset_object)
 {
 	instance_activate_object(obj_water_level);
 }
+if (asset_get_type("obj_level_height") == asset_object)
+{
+	instance_activate_object(obj_level_height);
+}
+if (asset_get_type("obj_level_width") == asset_object)
+{
+	instance_activate_object(obj_level_width);
+}
 #endregion /*Activate objects that always should be active END*/
