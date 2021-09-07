@@ -1,5 +1,8 @@
 depth = -300;
 
+global.player_has_entered_goal = false;
+global.time_countdown_bonus = 500;
+
 #region /*Mouse x and mouse y initializing*/
 mx = mouse_x;
 my = mouse_y;
@@ -82,7 +85,6 @@ selected_object=0;
 selected_object_menu_x=0;
 selected_menu_alpha=0;
 total_number_of_objects=0;
-quit_level_editor=0;
 use_controller=false;
 drag_object=false;
 erase_mode=false;/*When erasing, this turns true*/
@@ -183,7 +185,7 @@ and(file_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(gl
 	}
 	else
 	{
-		//ini_write_real("Info", "time_countdown", noone);
+		ini_write_string("Info","time_countdown",noone);
 		global.time_countdown = noone;
 	}
 	if(global.play_edited_level=false)
@@ -215,6 +217,7 @@ else
 {
 	level_name="";
 	global.time_countdown = noone;
+	global.time_countdown_bonus = 500;
 }
 #endregion /*Load Level Information END*/
 

@@ -339,7 +339,6 @@ and(global.pause = false)
 #region /*Time Countdown*/
 if (asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
-and(obj_player.allow_timeup = true)
 and(global.pause = false)
 {
 	if (asset_get_type("obj_goal") == asset_object)
@@ -352,7 +351,11 @@ and(global.pause = false)
 			if (time_second > room_speed)
 			{
 				time_second = 0;
-				global.time_countdown -= 1;
+				global.time_countdown_bonus -= 1;
+				if (obj_player.allow_timeup = true)
+				{
+					global.time_countdown -= 1;
+				}
 			}
 		}
 	}
@@ -750,7 +753,7 @@ if (save_level_as_png = false)
 		and(instance_exists(obj_player))
 		and(instance_exists(obj_goal))
 		and(instance_nearest(room_width, y, obj_player).goal = true)
-		and(global.time_countdown <= 0)
+		and(global.time_countdown_bonus <= 0)
 		{
 			if (iris_zoom = 1)
 			{

@@ -113,6 +113,7 @@ and(!instance_exists(obj_player))
 and(iris_xscale<=0.001)
 {
 	global.time_countdown = noone; /*Reset countdown back to default value*/
+	global.time_countdown_bonus = 500; /*Reset countdown bonus back to default value*/
 	sprite_index=noone;
 	gravity=0;
 	speed=0;

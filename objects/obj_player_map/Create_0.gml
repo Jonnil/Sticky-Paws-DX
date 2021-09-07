@@ -38,7 +38,6 @@ fastest_time = 0;
 move_delay = 0;
 stop_at_level = false;
 can_enter_level = 0;
-game_saved_message = 256;
 draw_xscale = 1;
 draw_yscale = 1;
 

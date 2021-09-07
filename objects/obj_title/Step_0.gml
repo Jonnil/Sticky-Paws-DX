@@ -7,9 +7,9 @@ if (menu = "load_custom_level")
 {
 	/*Load custom level data*/
 	
-	file_load_timer+=10
+	file_load_timer+=1
 	
-	if file_load_timer>360
+	if (file_load_timer>global.custom_level_load_delay)
 	{
 		file_found=file_find_next()
 	
@@ -70,7 +70,7 @@ if (menu = "load_custom_level")
 			}
 			#endregion /*Update Thumbnail END*/
 			
-			file_load_timer=0
+			file_load_timer = 0;
 		}
 	}
 }

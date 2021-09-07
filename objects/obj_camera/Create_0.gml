@@ -197,59 +197,6 @@ and(!instance_exists(obj_title))
 		player_has_spawned=true;
 	}
 }
-else
-if (asset_get_type("obj_player_map")==asset_object)
-and(!instance_exists(obj_player_map))
-and(asset_get_type("obj_title")==asset_object)
-and(!instance_exists(obj_title))
-{
-	if (global.player1_can_play = true)
-	{
-		player1=instance_create_depth(x,y,0,obj_player)
-		with(player1)
-		{
-			custom_character = global.character_for_player_1;
-			selected_voice_pack = global.voicepack_for_player_1;
-			player=1;
-		}
-	}
-	if (global.player2_can_play = true)
-	{
-		player2=instance_create_depth(x-32,y,0,obj_player)
-		with(player2)
-		{
-			custom_character = global.character_for_player_2;
-			selected_voice_pack = global.voicepack_for_player_2;
-			player=2;
-		}
-	}
-	if (global.player3_can_play = true)
-	{
-		player3=instance_create_depth(x-64,y,0,obj_player)
-		with(player3)
-		{
-			custom_character = global.character_for_player_3;
-			selected_voice_pack = global.voicepack_for_player_3;
-			player=3;
-		}
-	}
-	if (global.player4_can_play = true)
-	{
-		player4=instance_create_depth(x-96,y,0,obj_player)
-		with(player4)
-		{
-			custom_character = global.character_for_player_4;
-			selected_voice_pack = global.voicepack_for_player_4;
-			player=4;
-		}
-	}
-	if (asset_get_type("room_leveleditor")==asset_room)
-	and(room=room_leveleditor)
-	and(global.actually_play_edited_level=true)
-	{
-		player_has_spawned=true;
-	}
-}
 #endregion /*Spawn Players End*/
 
 /*HUD Show Controls keys that have been pressed*/

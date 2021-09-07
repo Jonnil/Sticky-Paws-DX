@@ -55,6 +55,7 @@ if (vspeed > 16)
 
 #region /*Falling Block falling outside of view*/
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+and (fall >= 100)
 {
 	x = xstart;
 	y = camera_get_view_y(view_camera[view_current]);

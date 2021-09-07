@@ -8,6 +8,7 @@ file_found="";
 file_load_timer=0;
 open_sub_menu=false;
 select_custom_level_menu_open = false;
+loading_spinning_angle = 0;
 
 /*Narrator Voice variable handeling*/
 narrator_name=noone;
@@ -277,10 +278,6 @@ global.hud_show_score=false;
 #endregion /*Hide certain HUD elements END*/
 
 global.playergame=0;/*Make the game singleplayer at the start of the game*/
-global.player1_can_play = false;
-global.player2_can_play = false;
-global.player3_can_play = false;
-global.player4_can_play = false;
 global.player_has_entered_goal=false;
 global.actually_play_edited_level=false;
 global.play_edited_level=false;
@@ -838,8 +835,24 @@ level_name="";
 if (global.level_editor_level>0)
 and(global.character_select_in_this_menu="level_editor")
 {
-	
-	menu="select_custom_level";
+	ds_list_clear(global.all_loaded_custom_levels)
+	ds_list_add(global.all_loaded_custom_levels, "Create_Level")
+	ds_list_clear(global.thumbnail_sprite)
+	ds_list_add(global.thumbnail_sprite, spr_menu_create_custom_level)
+	first_level=file_find_first(working_directory+"/Custom Levels/*", fa_directory)
+	if directory_exists(first_level)
+	ds_list_add(global.all_loaded_custom_levels, first_level)
+	can_navigate = true;
+	menu_delay = 3;
+	player1_accept_selection = false;
+	player2_accept_selection = false;
+	player3_accept_selection = false;
+	player4_accept_selection = false;
+	can_input_player1_name = false;
+	can_input_player2_name = false;
+	can_input_player3_name = false;
+	can_input_player4_name = false;
+	menu = "load_custom_level";
 	
 	//#region /*BMP Custom Thumbnail*/
 	/*if (file_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Thumbnail.bmp"))

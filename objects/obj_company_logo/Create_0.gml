@@ -67,6 +67,7 @@ if (!os_browser)
 #endregion /*View Border and Port Size END*/
 
 global.convention_mode=false;/*When showing the game on a convention, turn this to true*/
+global.custom_level_load_delay = 1; /*How many frames each custom level takes to load. Having this number be too low can crash the game on weaker devices, so have an option in the game where you can change this number*/
 
 #region /*Show HUD Global Variables*/
 global.hud_hide_time = 3;
@@ -136,6 +137,10 @@ global.player1_color=c_aqua;/*Player 1 Name Color, default:aqua*/
 global.player2_color=c_red;/*Player 1 Name Color, default:red*/
 global.player3_color=c_lime;/*Player 1 Name Color, default:lime*/
 global.player4_color=c_yellow;/*Player 1 Name Color, default:yellow*/
+global.player1_can_play = false; /*Player 1 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
+global.player2_can_play = false; /*Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
+global.player3_can_play = false; /*Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
+global.player4_can_play = false; /*Player 4 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.color_for_player_1=0;/*Player 1 Select Color 1*/
 global.color_for_player_2=0;/*Player 2 Select Color 2*/
 global.color_for_player_3=0;/*Player 3 Select Color 3*/
@@ -214,6 +219,7 @@ global.assist_normal_arrows = true;
 global.x_checkpoint = false;
 global.y_checkpoint = false;
 global.time_countdown = noone; /*Countdown timer before you get a Time Over, default should be "noone" so most levels don't have a countdown*/
+global.time_countdown_bonus = 500; /*Bonus countdown timer that gives extra points if you finish a level quickly, default should be "500" so you get bonus points if you win a level less than 8 minutes*/
 global.timeattack_millisecond=0;
 global.timeattack_second=0;
 global.timeattack_minute=0;

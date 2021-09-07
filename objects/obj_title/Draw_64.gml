@@ -1441,7 +1441,8 @@ or(menu="4player")
 
 if (menu = "load_custom_level")
 {
-	draw_sprite_ext(spr_loading, 0, window_get_width()/2, window_get_height()/2, 1, 1, file_load_timer, c_white, 1);
+	loading_spinning_angle -= 1;
+	draw_sprite_ext(spr_loading, 0, window_get_width()/2, window_get_height()/2, 1, 1, loading_spinning_angle, c_white, 1);
 	draw_text_outlined(window_get_width()/2, window_get_height()/2+64, "Loading", global.default_text_size, c_white, c_black, 1);
 }
 
@@ -1497,7 +1498,7 @@ or(menu="import_export_level")
 	}
 	#endregion /*Load Level Name END*/
 
-	draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset-32,string(level_name),global.default_text_size,c_menu_outline,c_menu_fill,1);
+	//draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset-32,string(level_name),global.default_text_size,c_menu_outline,c_menu_fill,1);
 
 	/*if (menu="select_custom_level")
 	and(global.level_editor_level>0)

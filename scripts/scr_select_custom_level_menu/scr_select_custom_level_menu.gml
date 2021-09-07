@@ -1,9 +1,8 @@
 function scr_select_custom_level_menu()
 {
-	R=4
-	draw_text_outlined(100, 100, string(ds_list_find_value(global.all_loaded_custom_levels,0)), global.default_text_size, c_white, c_black, 1);
+	R = 4;
 	
-	C=floor(global.select_level_index/R)
+	C = floor(global.select_level_index/R)
 	
 	#region /*Navigate Menu*/
 	

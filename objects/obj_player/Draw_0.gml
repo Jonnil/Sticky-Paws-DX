@@ -497,7 +497,7 @@ and (global.assist_enable = false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x,y-96,"HP: "+string(hp)+"/"+string(max_hp),global.default_text_size,c_white,c_black,1);
+	draw_text_outlined(x,bbox_top-32,"HP: "+string(hp)+"/"+string(max_hp),global.default_text_size,c_white,c_black,1);
 }
 #endregion /*If player has more hp, show that END*/
 
@@ -507,43 +507,43 @@ and (millisecond_until_drowning < seconds_until_drowning*60)
 {
 	if (millisecond_until_drowning > 60)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128, y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64, bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 	if (millisecond_until_drowning > 60*2)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128+16, y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64+16, bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 	if (millisecond_until_drowning > 60*3)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128+(16*2), y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64+(16*2), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 	if (millisecond_until_drowning > 60*4)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128+(16*3), y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64+(16*3), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 	if (millisecond_until_drowning > 60*5)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128+(16*4), y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64+(16*4), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 	if (millisecond_until_drowning > 60*6)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128+(16*5), y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64+(16*5), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 	if (millisecond_until_drowning > 60*7)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128+(16*6), y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64+(16*6), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 	if (millisecond_until_drowning > 60*8)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128+(16*7), y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64+(16*7), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 	if (millisecond_until_drowning > 60*9)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128+(16*8), y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64+(16*8), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 	if (millisecond_until_drowning > 60*10)
 	{
-		draw_sprite_ext(spr_bubble, 1, x-128+(16*9), y-96, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_bubble, 1, x-64+(16*9), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
 }
 #endregion /*Show Drowning END*/

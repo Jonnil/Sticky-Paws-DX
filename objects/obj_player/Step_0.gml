@@ -11981,7 +11981,7 @@ and(obj_camera.iris_xscale<3)
 	
 	#region /*Don't go outside view boundary*/
 	if (goal=true)
-	and(global.time_countdown<=0)
+	and(global.time_countdown_bonus<=0)
 	{
 		if (instance_exists(obj_camera))
 		and(obj_camera.iris_xscale<=0.01)
@@ -12114,7 +12114,7 @@ else
 	
 	#region /*Don't go outside view boundary*/
 	if (goal=true)
-	and(global.time_countdown<=0)
+	and(global.time_countdown_bonus<=0)
 	{
 		if (asset_get_type("obj_camera")==asset_object)
 		and(instance_exists(obj_camera))
@@ -13821,7 +13821,7 @@ and(global.pause=false)
 
 #region /*If player has finished the level, make the player run off to the right off screen, and disable player control*/
 if (goal=true)
-and(global.time_countdown<=0)
+and(global.time_countdown_bonus<=0)
 {
 	hspeed+=0.3;
 	can_move=false;
@@ -13834,7 +13834,7 @@ and(global.time_countdown<=0)
 
 #region /*Sprint*/
 if (goal = true)
-and(global.time_countdown <= 0)
+and(global.time_countdown_bonus <= 0)
 {
 	speed_max = lerp(speed_max, speed_max_run, 0.1);
 }
@@ -14928,7 +14928,7 @@ and(vspeed>=0)
 }
 #endregion /*Triple Jump END*/
 
-#region /*Wall Jump*/
+#region /*Wall Jump and Wall Climb*/
 if (allow_wall_jump = true)
 and(can_wall_jump = true)
 and(can_move=true)
@@ -15099,7 +15099,8 @@ and(wall_jump_setting>=1)
 		
 		#region /*Wall Climb*/
 		if (allow_wall_climb=true)
-		{	
+		{
+			dive = false;
 			laststandingy=y;
 			if (key_down)
 			and(!key_up)
@@ -15424,7 +15425,7 @@ if (drop_off_wall_climb>false)
 {
 	drop_off_wall_climb-=0.1;
 }
-#endregion /*Wall Jump END*/
+#endregion /*Wall Jump and Wall Climb END*/
 
 #region /*Ground Pound*/
 if (allow_ground_pound=true)
@@ -16779,7 +16780,7 @@ if (goal=false)
 }
 else
 {
-	if (global.time_countdown>0)
+	if (global.time_countdown_bonus>0)
 	{
 		global.hud_show_score=true;
 		if (asset_get_type("obj_camera")==asset_object)
@@ -16790,14 +16791,14 @@ else
 				hud_show_score_timer=global.hud_hide_time;
 			}
 		}
-		if (global.time_countdown>3)
+		if (global.time_countdown_bonus>3)
 		{
-			global.time_countdown-=3;
+			global.time_countdown_bonus-=3;
 			score+=150;
 		}
 		else
 		{
-			global.time_countdown-=1;
+			global.time_countdown_bonus-=1;
 			score+=50;
 		}
 		if (asset_get_type("snd_beep")==asset_sound)
@@ -16809,7 +16810,7 @@ else
 			}
 		}
 	}
-	if (global.time_countdown = 0)
+	if (global.time_countdown_bonus = 0)
 	{
 		if (asset_get_type("snd_beep")==asset_sound)
 		{
@@ -16896,7 +16897,7 @@ and(instance_exists(obj_goal))
 	}
 }
 if (goal=true)
-and(global.time_countdown<=0)
+and(global.time_countdown_bonus<=0)
 {
 	allow_ground_pound=false;
 	ground_pound=false;
@@ -17085,6 +17086,23 @@ if (spring = true)
 {
 	if (spring_animation = 0)
 	{
+		if (image_index > image_number-1)
+		{
+			image_index=0;
+			if(vspeed>=-4)
+			if(vspeed>=0)
+			{
+				if (sprite_spring_transition>noone)
+				{
+					spring_animation = 1;
+				}
+				else
+				{
+					spring_animation = 2;
+				}
+			}
+		}
+		
 		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
 		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
 		if (sprite_jump>noone){sprite_index = sprite_jump;}else
@@ -17093,6 +17111,12 @@ if (spring = true)
 	else
 	if (spring_animation = 1)
 	{
+		if (image_index > image_number-1)
+		{
+			image_index=0;
+			spring_animation = 2;
+		}
+		
 		if (sprite_spring_transition>noone){sprite_index = sprite_spring_transition;}else
 		{spring_animation = 2;}
 	}
@@ -17107,31 +17131,7 @@ if (spring = true)
 		if (sprite_jump>noone){sprite_index = sprite_jump;}else
 		{sprite_index = sprite_stand;}
 	}
-
-	if (spring_animation = 0)
-	and(image_index>image_number-1)
-	{
-		image_index=0;
-		if(vspeed>=-4)
-		or(vspeed>=0)
-		{
-			if (sprite_spring_transition>noone)
-			{
-				spring_animation = 1;
-			}
-			else
-			{
-				spring_animation = 2;
-			}
-		}
-	}
-	else
-	if (spring_animation = 1)
-	and(image_index>image_number-1)
-	{
-		image_index=0;
-		spring_animation = 2;
-	}
+	
 	image_speed=0.5;
 }
 #endregion /*Spring END*/
@@ -18741,8 +18741,8 @@ and(vspeed>=0)
 		{
 			if (sprite_wall_slide>noone){sprite_index = sprite_wall_slide;}else
 			{sprite_index = sprite_stand;}
-			image_speed=0.5;
 		}
+		image_speed=0.5;
 	}
 }
 else
@@ -18823,7 +18823,7 @@ if (vspeed<0)
 		else
 		
 		/*Single Jump*/
-		if (jump < 2)
+		if (jump <= 1)
 		{
 			if (speeddash=true)
 			{
@@ -18843,6 +18843,7 @@ if (vspeed<0)
 					}
 				}
 				else
+				if (spring = false)
 				{
 					if (sprite_jump>noone){sprite_index = sprite_jump;}else
 					{sprite_index = sprite_stand;}
@@ -18860,6 +18861,7 @@ if (vspeed<0)
 				}
 			}
 			else
+			if (spring = false)
 			{
 				if (sprite_jump>noone){sprite_index = sprite_jump;}else
 				{sprite_index = sprite_stand;}

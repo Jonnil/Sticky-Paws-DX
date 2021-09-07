@@ -1156,7 +1156,6 @@ and(speed = 0)
 	if (instance_nearest(x, y, obj_level).clear_rate = "enter")
 	or(instance_nearest(x, y, obj_level).clear_rate = "clear")
 	{
-		global.current_level = instance_nearest(x, y, obj_level).level;
 			
 		#region /*Save Player Position*/
 		x = instance_nearest(x, y, obj_level).x;
@@ -1196,6 +1195,7 @@ and(speed = 0)
 }
 #endregion /*Enter Level END*/
 
+global.current_level = instance_nearest(x, y, obj_level).level;
 global.select_level_index = instance_nearest(x, y, obj_level).level-1;
 
 #region /*After pressing "Enter Level", the iris should shrink and then start the level*/
@@ -1208,7 +1208,6 @@ and(global.quit_level = false)
 {
 	audio_stop_all();
 	global.trigger_demo_ending = 0;
-	//global.select_level_index = instance_nearest(x, y, obj_level).level-1;
 	entering_level = false;
 	can_move = true;
 	global.pause=false;
