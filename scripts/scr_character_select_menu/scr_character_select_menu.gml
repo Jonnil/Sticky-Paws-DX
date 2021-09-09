@@ -4191,14 +4191,6 @@ and (menu_delay=0)
 			}
 			can_navigate = true;
 			global.level_editor_level = 1;
-			
-			#region /*Update Thumbnail*/
-			//if (file_exists(working_directory+"\Custom Levels\"+ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)+"/Thumbnail.png"))
-			//{
-			//	global.thumbnail_sprite=sprite_add(working_directory+"\Custom Levels\"+ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)+"/Thumbnail.png",0,false,true,window_get_width()/2,0);
-			//}
-			#endregion /*Update Thumbnail END*/
-			
 		}
 	}
 	#endregion /*Back / Cancel Selection END*/

@@ -1464,15 +1464,15 @@ function scr_options_menu()
 	#region /*Game Settings*/
 	if (global.settings_sidebar_menu="game_settings")
 	{
-		difficulty_settings_x = 380;
-		difficulty_settings_y = 48;
+		difficulty_settings_y = 98;
 		automatically_pause_when_window_is_unfocused_settings_y = 164;
 		show_timer_settings_y = 164+(48);
 		show_tutorial_signs_y = 164+(48*2);
 		hud_hide_time_y = 164+(48*4)-16;
-		activate_cheats_y = 164+(48*5);
-		enable_enemies_y = 164+(48*6);
-		enable_spikes_y = 164+(48*7);
+		custom_level_load_delay_settings_y = 164+(48*6)-16;
+		activate_cheats_y = 164+(48*7);
+		enable_enemies_y = 164+(48*8);
+		enable_spikes_y = 164+(48*9);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
@@ -1486,28 +1486,27 @@ function scr_options_menu()
 		if (global.activate_cheats = false)
 		{
 			draw_set_alpha(0.5);
-			draw_rectangle_color(left_sidebar_x+370, 164+(48*5)+40, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(left_sidebar_x+370, activate_cheats_y+40, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 		}
-		
-		draw_menu_dropdown(380, hud_hide_time_y, "HUD hide timer", "hud_hide_time", global.hud_hide_time, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
-		
 		if (global.hud_hide_time > 10)
 		{
 			global.hud_hide_time = 3;
 		}
 		
-		#region /*Difficulty Settings*/
-		draw_menu_dropdown(difficulty_settings_x, difficulty_settings_y+50, "Level Layout Difficulty", "difficulty_settings", global.difficulty, "Easy", "Normal", "Hard");
-		#endregion /*Difficulty Settings END*/
+		draw_menu_dropdown(380, custom_level_load_delay_settings_y, "Custom Level Load Delay", "custom_level_load_delay_settings", global.custom_level_load_delay, "1 Frame", "2 Frames", "4 Frames", "8 Frames", "16 Frames", "32 Frames", "64 Frames", "128 Frames", "256 Frames", "512 Frames");
+		draw_menu_dropdown(380, hud_hide_time_y, "HUD hide timer", "hud_hide_time", global.hud_hide_time, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
+		draw_menu_dropdown(380, difficulty_settings_y, "Level Layout Difficulty", "difficulty_settings", global.difficulty, "Easy", "Normal", "Hard"); /*Difficulty Settings*/
 		
 	}
 	#endregion /*Game Settings END*/
 	
 	#region /*Multiplayer Settings*/
-	if (global.settings_sidebar_menu="multiplayer_settings"){
-	draw_set_halign(fa_left);draw_set_valign(fa_center);
-	draw_text_outlined(410,20+(40*3),"Change how multiplayer works here",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);}
+	if (global.settings_sidebar_menu="multiplayer_settings")
+	{
+		draw_set_halign(fa_left);draw_set_valign(fa_center);
+		draw_text_outlined(410,20+(40*3),"Change how multiplayer works here",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
+	}
 	#endregion /*Multiplayer Settings END*/
 	
 	#endregion /*My Game Settings*/
@@ -6613,6 +6612,42 @@ function scr_options_menu()
 		and(menu_delay = 0)
 		{
 			menu_delay = 3;
+			menu = "custom_level_load_delay_settings";
+		}
+	}
+	else
+	if (menu = "custom_level_load_delay_settings")
+	{
+		if (key_up)
+		and (open_dropdown = true)
+		and(menu_delay = 0)
+		and(global.custom_level_load_delay > 0)
+		{
+			menu_delay = 3;
+			global.custom_level_load_delay -= 1;
+		}
+		else
+		if (key_down)
+		and (open_dropdown = true)
+		and(menu_delay = 0)
+		and(global.custom_level_load_delay < 9)
+		{
+			menu_delay = 3;
+			global.custom_level_load_delay += 1;
+		}
+		if (key_up)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "hud_hide_time";
+		}
+		else
+		if (key_down)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
 			menu = "activate_cheats";
 		}
 	}
@@ -6624,7 +6659,7 @@ function scr_options_menu()
 		and(menu_delay = 0)
 		{
 			menu_delay = 3;
-			menu = "hud_hide_time";
+			menu = "custom_level_load_delay_settings";
 		}
 		else
 		if (key_down)
@@ -7824,6 +7859,7 @@ function scr_options_menu()
 		or (menu="assist_extra_hp")
 		or (menu="difficulty_settings")
 		or (menu="hud_hide_time")
+		or (menu="custom_level_load_delay_settings")
 		or (menu="remap_select_player")
 		or (menu="wall_jump_setting")
 		or (menu="drop_from_rope")

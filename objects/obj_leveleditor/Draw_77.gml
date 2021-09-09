@@ -17,25 +17,25 @@ if (quit_level_editor>0)
 #region /*Save Thumbnail*/
 
 #region /*Center screenshot on weighted_x and weighted_y*/
-var weighted_x = 0;
-var weighted_y = 0;
+//var weighted_x = 0;
+//var weighted_y = 0;
 
-with (all)
-{
-	if (x > camera_get_view_x(view_camera[view_current]))
-	and(x < camera_get_view_x(view_camera[view_current])+
-	camera_get_view_width(view_camera[view_current]))
-	and(y > camera_get_view_y(view_camera[view_current]))
-	and(y < camera_get_view_y(view_camera[view_current])+
-	camera_get_view_height(view_camera[view_current]))
-	{
-		obj_leveleditor.total_objects++;
-		weighted_x += x;
-		weighted_y += y;
-	}
-}
-weighted_x = weighted_x / total_objects;
-weighted_y = weighted_y / total_objects;
+//with (all)
+//{
+//	if (x > camera_get_view_x(view_camera[view_current]))
+//	and(x < camera_get_view_x(view_camera[view_current])+
+//	camera_get_view_width(view_camera[view_current]))
+//	and(y > camera_get_view_y(view_camera[view_current]))
+//	and(y < camera_get_view_y(view_camera[view_current])+
+//	camera_get_view_height(view_camera[view_current]))
+//	{
+//		obj_leveleditor.total_objects++;
+//		weighted_x += x;
+//		weighted_y += y;
+//	}
+//}
+//weighted_x = weighted_x / total_objects;
+//weighted_y = weighted_y / total_objects;
 
 
 
@@ -56,9 +56,11 @@ if (quit_level_editor=3)
 	var thumbnail_sprite;
 	thumbnail_sprite = sprite_create_from_surface(application_surface,
 	//screenie_x,
-	weighted_x+100,
+	//weighted_x+100,
 	//screenie_y,
-	weighted_y+100,
+	//weighted_y+100,
+	camera_get_view_x(view_camera[view_current]),
+	camera_get_view_y(view_camera[view_current]),
 	camera_get_view_width(view_camera[view_current]),
 	camera_get_view_height(view_camera[view_current]),
 	false,true,0,0);

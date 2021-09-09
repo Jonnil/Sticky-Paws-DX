@@ -67,7 +67,7 @@ if (!os_browser)
 #endregion /*View Border and Port Size END*/
 
 global.convention_mode=false;/*When showing the game on a convention, turn this to true*/
-global.custom_level_load_delay = 1; /*How many frames each custom level takes to load. Having this number be too low can crash the game on weaker devices, so have an option in the game where you can change this number*/
+global.custom_level_load_delay = 0; /*How many frames each custom level takes to load. Having this number be too low can crash the game on weaker devices, so have an option in the game where you can change this number*/
 
 #region /*Show HUD Global Variables*/
 global.hud_hide_time = 3;

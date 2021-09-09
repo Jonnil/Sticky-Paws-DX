@@ -13408,7 +13408,7 @@ and(global.pause=false)
 	if (global.level_editor_level>0)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
-		ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/level_information.ini");
+		ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
 		ini_write_real("Info","view_xview",camera_get_view_x(view_camera[view_current]));
 		ini_write_real("Info","view_yview",camera_get_view_y(view_camera[view_current]));
 		ini_close();
@@ -17105,6 +17105,7 @@ if (spring = true)
 		
 		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
 		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
+		if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
 		if (sprite_jump>noone){sprite_index = sprite_jump;}else
 		{sprite_index = sprite_stand;}
 	}

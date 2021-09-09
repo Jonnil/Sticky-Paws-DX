@@ -10,6 +10,7 @@ function scr_saveconfig()
 	ini_write_real("Config","difficulty",global.difficulty);
 	ini_write_real("Config","automatically_pause_when_window_is_unfocused",global.automatically_pause_when_window_is_unfocused);
 	ini_write_real("Config","show_timer",global.show_timer);
+	ini_write_real("Config","custom_level_load_delay",global.custom_level_load_delay);
 	ini_write_real("Config","activate_cheats",global.activate_cheats);
 	ini_write_real("Config","enable_enemies",global.enable_enemies);
 	ini_write_real("Config","enable_spikes",global.enable_spikes);
