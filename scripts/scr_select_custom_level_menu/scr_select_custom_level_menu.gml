@@ -8,11 +8,14 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key Up*/
 	if (key_up)
+	and (menu_delay = 0)
 	and (open_sub_menu = false)
+	and (menu!="back_from_level_editor")
 	{
 		if (global.select_level_index-R < 0)
 		{
-			global.select_level_index = ds_list_size(global.thumbnail_sprite)-1;
+			menu_delay = 3;
+			menu = "back_from_level_editor";
 		}
 		else
 		{
@@ -25,11 +28,14 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key Down*/
 	if (key_down)
+	and (menu_delay = 0)
 	and (open_sub_menu = false)
+	and (menu!="back_from_level_editor")
 	{
 		if (global.select_level_index+R > ds_list_size(global.thumbnail_sprite)-1)
 		{
-			global.select_level_index = 0;
+			menu_delay = 3;
+			menu = "back_from_level_editor";
 		}
 		else
 		{
@@ -43,6 +49,7 @@ function scr_select_custom_level_menu()
 	#region /*Key Left*/
 	if (key_left)
 	and (open_sub_menu = false)
+	and (menu!="back_from_level_editor")
 	{
 		if (global.select_level_index-1 < 0)
 		{
@@ -60,6 +67,7 @@ function scr_select_custom_level_menu()
 	#region /*Key Right*/
 	if (key_right)
 	and (open_sub_menu = false)
+	and (menu!="back_from_level_editor")
 	{
 		if (global.select_level_index+1 > ds_list_size(global.thumbnail_sprite)-1)
 		{
@@ -78,6 +86,7 @@ function scr_select_custom_level_menu()
 	if (key_a_pressed)
 	and (open_sub_menu = false)
 	and (menu_delay = 0)
+	and (menu!="back_from_level_editor")
 	{
 		
 		#region /*Create New Level*/
@@ -119,6 +128,7 @@ function scr_select_custom_level_menu()
 		{
 			menu_delay = 3;
 			open_sub_menu = false;
+			menu = "level_editor_play";
 		}
 	}
 	#endregion /*Key B Pressed END*/
@@ -141,6 +151,30 @@ function scr_select_custom_level_menu()
 		select_custom_level_menu_open = false;
 		menu = "leveleditor";
 	}
+	if (menu="back_from_level_editor")
+	and(key_up)
+	and(menu_delay=0)
+	{
+		menu_delay = 3;
+		can_navigate = true;
+		select_custom_level_menu_open = true;
+		menu = "level_editor_play";
+		if (global.select_level_index-R < 0)
+		{
+			global.select_level_index = ds_list_size(global.thumbnail_sprite)-1;
+		}
+	}
+	if (menu="back_from_level_editor")
+	and(key_down)
+	and(menu_delay=0)
+	{
+		menu_delay = 3;
+		can_navigate = true;
+		select_custom_level_menu_open = true;
+		menu = "level_editor_play";
+		global.select_level_index = 0;
+	}
+	
 	if (menu="back_from_level_editor")
 	{
 		if (global.controls_used_for_menu_navigation="keyboard")
