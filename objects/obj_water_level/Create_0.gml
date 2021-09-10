@@ -1,4 +1,6 @@
 water_level_change_speed = 0;
+water_bob_distance = 1.5;
+water_bob_speed = 5;
 
 depth = -50;
 image_alpha = 0.5;
