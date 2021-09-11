@@ -1405,7 +1405,7 @@ function scr_options_menu()
 	if (global.settings_sidebar_menu = "accessibility_settings")
 	{
 		draw_menu_checkmark(450, 50, "Enable Assist Mode", "assist_enable", global.assist_enable);
-		draw_text_outlined(450, 100, "Only if you are unable to fully enjoy the game without extra help.", global.default_text_size*0.75, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(450, 100, "The game is meant to be played without Assist Mode. Only if you are unable to fully enjoy the game without extra help should you enable this.", global.default_text_size*0.75, c_menu_outline, c_menu_fill, 1);
 		
 		draw_menu_checkmark(450, 300, "Invincible", "assist_invincible", global.assist_invincible);
 		draw_menu_checkmark(450, 350, "Show Assist Arrows", "assist_guiding_arrows", global.assist_guiding_arrows);
@@ -1471,8 +1471,8 @@ function scr_options_menu()
 		hud_hide_time_y = 164+(48*4)-16;
 		custom_level_load_delay_settings_y = 164+(48*6)-16;
 		activate_cheats_y = 164+(48*7);
-		enable_enemies_y = 164+(48*8);
-		enable_spikes_y = 164+(48*9);
+		enable_enemies_y = 164+(48*9);
+		enable_spikes_y = 164+(48*10);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
@@ -1480,13 +1480,14 @@ function scr_options_menu()
 		draw_menu_checkmark(380, show_timer_settings_y,"Show Timer","show_timer_settings",global.show_timer); /*Show Timer*/
 		draw_menu_checkmark(380, show_tutorial_signs_y,"Show Tutorial Signs","show_tutorial_signs",global.show_tutorial_signs); /*Show Tutorial Signs*/
 		draw_menu_checkmark(380, activate_cheats_y, "Activate Cheats", "activate_cheats", global.activate_cheats);
+		draw_text_outlined(450, activate_cheats_y + 50, "The game is meant to be played without Cheats.", global.default_text_size*0.75, c_menu_outline, c_menu_fill, 1);
 		draw_menu_checkmark(380, enable_enemies_y, "Enable Enemies", "enable_enemies", global.enable_enemies);
 		draw_menu_checkmark(380, enable_spikes_y, "Enable Spikes", "enable_spikes", global.enable_spikes);
 		
 		if (global.activate_cheats = false)
 		{
 			draw_set_alpha(0.5);
-			draw_rectangle_color(left_sidebar_x+370, activate_cheats_y+40, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(left_sidebar_x+370, activate_cheats_y+72, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 		}
 		if (global.hud_hide_time > 10)

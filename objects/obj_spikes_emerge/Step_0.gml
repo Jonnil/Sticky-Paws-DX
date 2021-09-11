@@ -1,11 +1,12 @@
 depth = +10;
 
-#region /*If enemies are disabled, destroy this object*/
-if (global.enable_enemies = false)
+#region /*If spikes are disabled, destroy this object*/
+if (global.activate_cheats = true)
+and (global.enable_spikes = false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object*/
+#endregion /*If spikes are disabled, destroy this object*/
 
 if (global.spikes_emerge_time < room_speed * 1)
 {
