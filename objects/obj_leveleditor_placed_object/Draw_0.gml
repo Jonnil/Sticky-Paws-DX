@@ -3,8 +3,6 @@ key_a_pressed=(gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_presse
 key_a_released=(gamepad_button_check_released(0,gp_face1))or(keyboard_check_released(global.player1_key_jump));
 key_b=(gamepad_button_check(0,gp_face2))or(keyboard_check(global.player1_key_sprint));
 
-//draw_text_outlined(x,y-96,string(object),global.default_text_size,c_white,c_black,1);
-
 #region /*Translate object names into object ID*/
 
 if (object = "wall"){object = 1;}else
@@ -928,6 +926,28 @@ and(delay>1)
 				
 				else
 				
+				#region /*Spikes Emerge Direction*/
+				if (object=67)
+				{
+					object=671;
+				}
+				else
+				if (object=671)
+				{
+					object=672;
+				}
+				else
+				if (object=672)
+				{
+					object=673;
+				}
+				else
+				if (object=673)
+				{
+					object=67;
+				}
+				#endregion /*Spikes Emerge Direction END*/
+				
 				#region /*Change Oneway Direction*/
 				if (object=68)
 				{
@@ -1518,7 +1538,7 @@ if (global.play_edited_level=true)
 		if (object = 1006)and(asset_get_type("obj_ground")==asset_object){with(instance_create_depth(x,y,0,obj_ground)){ground_surface = 6;}instance_destroy();}
 		if (object = 1007)and(asset_get_type("obj_ground")==asset_object){with(instance_create_depth(x,y,0,obj_ground)){ground_surface = 7;}instance_destroy();}
 		
-		if (object=2){if (global.enable_spikes = true)and(asset_get_type("obj_spikes")==asset_object){instance_create_depth(x,y,0,obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}}}
+		if (object=2){if(asset_get_type("obj_spikes")==asset_object){instance_create_depth(x,y,0,obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}}}
 		if (object=3)and(asset_get_type("obj_semisolid_platform")==asset_object){instance_create_depth(x,y,0,obj_semisolid_platform);instance_destroy();}
 		
 		#region /*Brick Block*/
@@ -1596,15 +1616,18 @@ if (global.play_edited_level=true)
 		if (object=56)and(asset_get_type("obj_extra_life_pickup")==asset_object){instance_create_depth(x,y,0,obj_extra_life_pickup);instance_destroy();}
 		if (object=57)and(asset_get_type("obj_extra_life_pickup")==asset_object){with(instance_create_depth(x,y,0,obj_extra_life_pickup)){number_of_extra_lives = 2;}instance_destroy();}
 		if (object=58)and(asset_get_type("obj_extra_life_pickup")==asset_object){with(instance_create_depth(x,y,0,obj_extra_life_pickup)){number_of_extra_lives = 3;}instance_destroy();}
-		if (object=59){if (global.activate_cheats = false)or (global.enable_enemies = true)and(asset_get_type("obj_enemy1")==asset_object){instance_create_depth(x,y,0,obj_enemy1);instance_destroy();}else{instance_destroy();}}
-		if (object=60){if (global.activate_cheats = false)or (global.enable_enemies = true)and(asset_get_type("obj_enemy2")==asset_object){instance_create_depth(x,y,0,obj_enemy2);instance_destroy();}else{instance_destroy();}}
-		if (object=61){if (asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
+		if (object=59){if(asset_get_type("obj_enemy1")==asset_object){instance_create_depth(x,y,0,obj_enemy1);instance_destroy();}else{instance_destroy();}}
+		if (object=60){if(asset_get_type("obj_enemy2")==asset_object){instance_create_depth(x,y,0,obj_enemy2);instance_destroy();}else{instance_destroy();}}
+		if (object=61){if(asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
 		if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=63)and(asset_get_type("obj_vine")==asset_object){instance_create_depth(x,y,0,obj_vine);instance_destroy();}
 		if (object=64)and(asset_get_type("obj_arrow_sign")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=65)and(asset_get_type("obj_arrow_sign_small")==asset_object){with(instance_create_depth(x+16,y+16,0,obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=66)and(asset_get_type("obj_checkpoint")==asset_object){instance_create_depth(x+16,y,0,obj_checkpoint);instance_destroy();}
-		if (object=67){if (global.activate_cheats = false)or (global.enable_spikes = true)and(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}else{instance_destroy();}}
+		if (object=67){if(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}}
+		if (object=671){if(asset_get_type("obj_spikes_emerge")==asset_object){with(instance_create_depth(x,y+16,0,obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}instance_destroy();}}
+		if (object=672){if(asset_get_type("obj_spikes_emerge")==asset_object){with(instance_create_depth(x,y+16,0,obj_spikes_emerge)){image_angle = 180; y -= 30;}instance_destroy();}}
+		if (object=673){if(asset_get_type("obj_spikes_emerge")==asset_object){with(instance_create_depth(x,y+16,0,obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15;}instance_destroy();}}
 		if (object=68)and(asset_get_type("obj_oneway")==asset_object){instance_create_depth(x,y,0,obj_oneway);instance_destroy();}
 		if (object=69)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=90;}instance_destroy();}
 		if (object=70)and(asset_get_type("obj_oneway")==asset_object){with(instance_create_depth(x,y,0,obj_oneway)){image_angle=180;}instance_destroy();}
@@ -1789,7 +1812,10 @@ if (object = 65)and(asset_get_type("spr_arrow_sign_small") == asset_sprite){draw
 #endregion /*Arrow Signs Small END*/
 
 if (object=66)and(asset_get_type("spr_checkpoint")==asset_sprite){sprite_index=spr_checkpoint;mask_index=spr_2x2_block;}
-if (object=67)and(asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;mask_index=spr_wall;}
+if (object=67)and(asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;draw_angle = 0; mask_index=spr_wall;}
+if (object=671)and(asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;draw_angle = 90; mask_index=spr_wall;}
+if (object=672)and(asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;draw_angle = 180; mask_index=spr_wall;}
+if (object=673)and(asset_get_type("spr_spikes_emerge_block")==asset_sprite){sprite_index=spr_spikes_emerge_block;draw_angle = 270; mask_index=spr_wall;}
 
 #region /*Oneway*/
 if (object=68)and(asset_get_type("spr_oneway")==asset_sprite){sprite_index = spr_oneway;draw_angle = 0;mask_index = spr_wall;}

@@ -185,7 +185,33 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /*Back Button END*/
 	
-	draw_rectangle_color(394*(global.select_level_index-C*R)+300-3, 226*C+250-3, 394*(global.select_level_index-C*R)+300+384+3, 226*C+250+216+3, c_red, c_red, c_red, c_red, false);
+	#region /*Red Rectangle to indicate what level you are selecting*/
+	if (menu!="back_from_level_editor")
+	{
+		if (custom_level_select_blinking_old = 0)
+		{
+			custom_level_select_blinking = lerp(custom_level_select_blinking, 1, 0.1);
+		}
+		else
+		if (custom_level_select_blinking_old = 1)
+		{
+			custom_level_select_blinking = lerp(custom_level_select_blinking, 0, 0.1);
+		}
+		if (custom_level_select_blinking >= 0.99)
+		{
+			custom_level_select_blinking_old = 1;
+		}
+		else
+		if (custom_level_select_blinking <= 0.01)
+		{
+			custom_level_select_blinking_old = 0;
+		}
+		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3, 226*C+250-3, 394*(global.select_level_index-C*R)+300+384+3, 226*C+250+216+3, c_red, c_red, c_red, c_red, false);
+		draw_set_alpha(custom_level_select_blinking);
+		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3, 226*C+250-3, 394*(global.select_level_index-C*R)+300+384+3, 226*C+250+216+3, c_yellow, c_yellow, c_yellow, c_yellow, false);
+		draw_set_alpha(1);
+	}
+	#endregion /*Red Rectangle to indicate what level you are selecting END*/
 	
 	#region /*Draw Thumbnail*/
 	for (i=0;i<ds_list_size(global.thumbnail_sprite);i+=1)

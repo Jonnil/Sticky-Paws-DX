@@ -3,6 +3,9 @@ depth = -300;
 global.player_has_entered_goal = false;
 global.time_countdown_bonus = 500;
 
+old_window_get_height = 0;
+old_window_get_width = 0;
+
 #region /*Mouse x and mouse y initializing*/
 mx = mouse_x;
 my = mouse_y;

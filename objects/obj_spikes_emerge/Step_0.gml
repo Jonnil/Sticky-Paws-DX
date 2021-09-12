@@ -202,22 +202,3 @@ if (image_angle = 270)
 		}
 	}
 }
-
-if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-and(x > camera_get_view_x(view_camera[view_current]))
-and(y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and(y > camera_get_view_y(view_camera[view_current]))
-{
-	if (image_angle = 0)
-	and(!position_meeting(x, bbox_bottom + 4, obj_wall))
-	or(image_angle = 90)
-	and(!position_meeting(bbox_right + 4, y, obj_wall))
-	or(image_angle = 180)
-	and(!position_meeting(x, bbox_top - 4, obj_wall))
-	or(image_angle = 270)
-	and(!position_meeting(bbox_left - 4, y, obj_wall))
-	{
-		effect_create_above(ef_smoke, x, y, 1, c_white);
-		instance_destroy();
-	}
-}

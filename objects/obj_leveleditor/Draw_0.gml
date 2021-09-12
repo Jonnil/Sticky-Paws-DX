@@ -452,22 +452,12 @@ else
 #endregion /*Fade grid in and out when toggeling END*/
 
 var grid_width=1,
-grid_offset=16; /*If the grid should have an offset from the top_left corner of the screen, normally this should be 0*/
+grid_offset=16; /*If the grid should have an offset from the top_left corner of the screen, normally this should be 16*/
 draw_set_alpha(grid_alpha);
 
 if (quit_level_editor<=0)
 {
 	
-	#region /*Draw Vertical Line in the Grid*/
-	for(var i=0;i<room_height;i+=global.grid_vsnap)
-	{
-		if (global.grid_vsnap>1)
-		{
-			draw_line_width_color(-16+grid_offset,i+grid_offset,room_width+16+grid_offset,i+grid_offset,grid_width,c_white,c_white);
-		}
-	}
-	#endregion /*Draw Vertical Line in the Grid END*/
-
 	#region /*Draw Horizontal Line in the Grid*/
 	for(var i=0;i<room_width;i+=global.grid_hsnap)
 	{
@@ -478,6 +468,18 @@ if (quit_level_editor<=0)
 	}
 	#endregion /*Draw Horizontal Line in the Grid END*/
 	
+	#region /*Draw Vertical Line in the Grid*/
+	for(var i=0;i<room_height;i+=global.grid_vsnap)
+	{
+		if (global.grid_vsnap>1)
+		{
+			draw_line_width_color(-16+grid_offset,i+grid_offset,room_width+16+grid_offset,i+grid_offset,grid_width,c_white,c_white);
+		}
+	}
+	#endregion /*Draw Vertical Line in the Grid END*/
+	
+	draw_line_width_color(0,obj_level_height.y/2,room_width,obj_level_height.y/2,grid_width+1,c_purple,c_purple); /*Draw Horizontal Line in the middle of the level*/
+	draw_line_width_color(obj_level_width.x/2,0,obj_level_width.x/2,room_height,grid_width+1,c_purple,c_purple); /*Draw Vertical Line in the middle of the level*/
 }
 
 draw_set_alpha(1);
@@ -511,7 +513,6 @@ if (pause=false)
 	#region /*Reset Zoom*/
 	if (zoom_reset=true)
 	{
-		//camera_set_view_size(view_camera[view_current],view_wview,view_hview);
 		scr_set_screen_size();
 	}
 	#endregion /*Reset Zoom END*/

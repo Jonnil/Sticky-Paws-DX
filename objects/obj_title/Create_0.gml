@@ -9,6 +9,8 @@ file_load_timer=0;
 open_sub_menu=false;
 select_custom_level_menu_open = false;
 loading_spinning_angle = 0;
+custom_level_select_blinking = 0;
+custom_level_select_blinking_old = 0;
 
 /*Narrator Voice variable handeling*/
 narrator_name=noone;
