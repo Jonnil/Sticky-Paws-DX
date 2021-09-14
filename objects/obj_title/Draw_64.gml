@@ -905,7 +905,7 @@ if (menu = "quit_game_no")
 or(menu = "quit_game_yes")
 {
 	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 1.9, c_white, c_black, 1);
-		
+	
 	#region /*Quit No*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
 	window_get_width() / 2 - 370,
@@ -919,6 +919,8 @@ or(menu = "quit_game_yes")
 		{
 			menu = "quit_game_no";
 		}
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2, 1, 1, 180, c_white, 1);
 		draw_sprite_ext(spr_menu_button,0,
 		window_get_width() / 2 - 370,
 		window_get_height() / 2,
@@ -931,6 +933,8 @@ or(menu = "quit_game_yes")
 		or (menu="quit_game_no")
 		and(global.controls_used_for_menu_navigation="controller")
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2, 1, 1, 180, c_white, 1);
 			draw_sprite_ext(spr_menu_button,0,
 			window_get_width() / 2 - 370,
 			window_get_height() / 2,
@@ -992,6 +996,8 @@ or(menu = "quit_game_yes")
 		{
 			menu = "quit_game_yes";
 		}
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2 + 84, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2 + 84, 1, 1, 180, c_white, 1);
 		draw_sprite_ext(spr_menu_button,0,
 		window_get_width() / 2 - 370,
 		window_get_height() / 2 + 84,
@@ -1004,6 +1010,8 @@ or(menu = "quit_game_yes")
 		or (menu="quit_game_yes")
 		and(global.controls_used_for_menu_navigation="controller")
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2 + 84, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2 + 84, 1, 1, 180, c_white, 1);
 			draw_sprite_ext(spr_menu_button,0,
 			window_get_width() / 2 - 370,
 			window_get_height() / 2 + 84,

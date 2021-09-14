@@ -238,7 +238,7 @@ key_b_pressed=(gamepad_button_check_pressed(0,gp_face2))or(keyboard_check_presse
 key_b_released=(gamepad_button_check_released(0,gp_face2))or(keyboard_check_released(global.player1_key_sprint))or(keyboard_check_released(ord("X")))or(keyboard_check_released(vk_backspace));#endregion /*Controls for level editor END*/
 
 #region /*List of Placable Objects*/
-total_number_of_objects=40;/*This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
+total_number_of_objects=41;/*This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
 if (selected_object=0)and(wall_surface_selected = 0){place_object="wall";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_wall")==asset_sprite){sprite_index=spr_wall;}mask_index=spr_wall;}
 if (selected_object=0)and(wall_surface_selected = 1){place_object="wall_dirt";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_wall_dirt")==asset_sprite){sprite_index=spr_wall_dirt;}mask_index=spr_wall;}
 if (selected_object=0)and(wall_surface_selected = 2){place_object="wall_glass";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_wall_glass")==asset_sprite){sprite_index=spr_wall_glass;}mask_index=spr_wall;}
@@ -288,6 +288,7 @@ if (selected_object=37){place_object="bucket";can_make_place_brush_size_bigger=t
 if (selected_object=38){place_object="bird";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_bird")==asset_sprite){sprite_index=spr_bird;}mask_index=spr_wall;}
 if (selected_object=39){place_object="sign_crouch";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_sign_crouch")==asset_sprite){sprite_index=spr_sign_crouch;}mask_index=spr_wall;}
 if (selected_object=40){place_object="boss";can_make_place_brush_size_bigger=false;if (asset_get_type("spr_boss_stand")==asset_sprite){sprite_index=spr_boss_stand;}mask_index=spr_wall;}
+if (selected_object=41){place_object="boss_barrier";can_make_place_brush_size_bigger=true;if (asset_get_type("spr_boss_barrier")==asset_sprite){sprite_index=spr_boss_barrier;}mask_index=spr_wall;}
 #endregion /*List of Placable Objects End*/
 
 #region /*Change Brush Size. Key 187 = +. key 189 = -*/
@@ -625,6 +626,7 @@ if (quit_level_editor=0)
 	if (asset_get_type("spr_bird")==asset_sprite){draw_sprite_ext(spr_bird,0,											camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*38,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_sign_crouch")==asset_sprite){draw_sprite_ext(spr_sign_crouch,0,								camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*39,camera_get_view_y(view_camera[view_current])+64,0.4,0.4,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_boss_stand")==asset_sprite){draw_sprite_ext(spr_boss_stand,0,								camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*40,camera_get_view_y(view_camera[view_current])+64,0.4,0.4,0,c_white,selected_menu_alpha);}
+	if (asset_get_type("spr_boss_barrier")==asset_sprite){draw_sprite_ext(spr_boss_barrier,0,							camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*41,camera_get_view_y(view_camera[view_current])+64,0.4,0.4,0,c_white,selected_menu_alpha);}
 	draw_set_color(c_black);
 	draw_arrow(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+16-8,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+16+8,40);
 	draw_set_color(c_white);

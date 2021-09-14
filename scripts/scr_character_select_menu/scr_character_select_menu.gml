@@ -1274,7 +1274,7 @@ function scr_character_select_menu()
 		}
 	}
 	#endregion /*Player 4: Tell the player what button to push to select or cancel a selection END*/
-
+	
 	#region /*Tell player 1 what button to push to enter a name*/
 	draw_set_halign(fa_middle);
 	draw_set_valign(fa_middle);
@@ -1466,264 +1466,276 @@ function scr_character_select_menu()
 	draw_set_halign(fa_middle);
 	draw_set_valign(fa_middle);
 
-	#region /*Player 1*/
-	
-	#region /*Opaque transparent black box*/
-	if (can_input_player1_name = true)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
+	#region /*Player 1 Input Name*/
+	if (player1_accept_selection >= 0)
 	{
-		draw_set_alpha(0.5);
-		draw_rectangle_color(window_get_width()/2+player1_display_x-155, window_get_height()/2+200, window_get_width()/2+player1_display_x+155, window_get_height()/2+310, c_black, c_black, c_black, c_black, false);
+		
+		#region /*Opaque transparent black box*/
+		if (can_input_player1_name = true)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(window_get_width()/2+player1_display_x-155, window_get_height()/2+200, window_get_width()/2+player1_display_x+155, window_get_height()/2+310, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+		}
+		#endregion /*Opaque transparent black box END*/
+		
+		#region /*Box where name is written on*/
 		draw_set_alpha(1);
-	}
-	#endregion /*Opaque transparent black box END*/
+		draw_rectangle_color(window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16, global.player1_color, global.player1_color, global.player1_color, global.player1_color, false);
 	
-	#region /*Box where name is written on*/
-	draw_set_alpha(1);
-	draw_rectangle_color(window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16, global.player1_color, global.player1_color, global.player1_color, global.player1_color, false);
-	
-	if (player1_menu = "select_name")
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16))
-	and (global.controls_used_for_menu_navigation="mouse")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	{
-		draw_set_alpha(0.9);
-	}
-	else
-	{
-		draw_set_alpha(0.5);
-	}
-	draw_rectangle_color(window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16, c_white, c_white, c_white, c_white, false);
-	
-	draw_set_alpha(1);
-	draw_rectangle_color(window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16, c_black, c_black, c_black, c_black, true);
-	#endregion /*Box where name is written on END*/
-	
-	#region /*Inputed Name Text*/
-	if (can_input_player1_name = true)
-	{
-		if (name_enter_blink<1)
+		if (player1_menu = "select_name")
+		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16))
+		and (global.controls_used_for_menu_navigation="mouse")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
 		{
-			draw_text_outlined(window_get_width()/2+player1_display_x+4, window_get_height()/2+250, string(global.player1_name)+"|", global.default_text_size, c_black, c_white, 1);
+			draw_set_alpha(0.9);
 		}
 		else
 		{
-			draw_text_outlined(window_get_width()/2+player1_display_x, window_get_height()/2+250, string(global.player1_name), global.default_text_size, c_black, c_white, 1);
+			draw_set_alpha(0.5);
 		}
-	}
-	else
-	{
-		if (global.player1_name ="")
+		draw_rectangle_color(window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16, c_white, c_white, c_white, c_white, false);
+	
+		draw_set_alpha(1);
+		draw_rectangle_color(window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16, c_black, c_black, c_black, c_black, true);
+		#endregion /*Box where name is written on END*/
+		
+		#region /*Inputed Name Text*/
+		if (can_input_player1_name = true)
 		{
-			draw_text_outlined(window_get_width()/2+player1_display_x, window_get_height()/2+250, "Player 1", global.default_text_size, c_white, c_black, 1);
+			if (name_enter_blink<1)
+			{
+				draw_text_outlined(window_get_width()/2+player1_display_x+4, window_get_height()/2+250, string(global.player1_name)+"|", global.default_text_size, c_black, c_white, 1);
+			}
+			else
+			{
+				draw_text_outlined(window_get_width()/2+player1_display_x, window_get_height()/2+250, string(global.player1_name), global.default_text_size, c_black, c_white, 1);
+			}
 		}
 		else
 		{
-			draw_text_outlined(window_get_width()/2+player1_display_x, window_get_height()/2+250, string(global.player1_name), global.default_text_size, c_white, c_black, 1);
+			if (global.player1_name ="")
+			{
+				draw_text_outlined(window_get_width()/2+player1_display_x, window_get_height()/2+250, "Player 1", global.default_text_size, c_white, c_black, 1);
+			}
+			else
+			{
+				draw_text_outlined(window_get_width()/2+player1_display_x, window_get_height()/2+250, string(global.player1_name), global.default_text_size, c_white, c_black, 1);
+			}
 		}
+		#endregion /*Inputed Name Text END*/
+		
 	}
-	#endregion /*Inputed Name Text END*/
-	
-	#endregion /*Player 1 END*/
+	#endregion /*Player 1 Input Name END*/
 
-	#region /*Player 2*/
-	
-	#region /*Opaque transparent black box*/
-	if (can_input_player1_name = false)
-	and (can_input_player2_name = true)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
+	#region /*Player Input Name 2*/
+	if (player2_accept_selection >= 0)
 	{
-		draw_set_alpha(0.5);
-		draw_rectangle_color(window_get_width()/2+player2_display_x-155, window_get_height()/2+200, window_get_width()/2+player2_display_x+155, window_get_height()/2+310, c_black, c_black, c_black, c_black, false);
+		
+		#region /*Opaque transparent black box*/
+		if (can_input_player1_name = false)
+		and (can_input_player2_name = true)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(window_get_width()/2+player2_display_x-155, window_get_height()/2+200, window_get_width()/2+player2_display_x+155, window_get_height()/2+310, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+		}
+		#endregion /*Opaque transparent black box END*/
+		
+		#region /*Box where name is written on*/
 		draw_set_alpha(1);
-	}
-	#endregion /*Opaque transparent black box END*/
+		draw_rectangle_color(window_get_width()/2+player2_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player2_display_x+150, window_get_height()/2+250+16, global.player2_color, global.player2_color, global.player2_color, global.player2_color, false);
 	
-	#region /*Box where name is written on*/
-	draw_set_alpha(1);
-	draw_rectangle_color(window_get_width()/2+player2_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player2_display_x+150, window_get_height()/2+250+16, global.player2_color, global.player2_color, global.player2_color, global.player2_color, false);
-	
-	if (player2_menu = "select_name")
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player2_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player2_display_x+150, window_get_height()/2+250+16))
-	and (global.controls_used_for_menu_navigation="mouse")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	{
-		draw_set_alpha(0.9);
-	}
-	else
-	{
-		draw_set_alpha(0.5);
-	}
-	draw_rectangle_color(window_get_width()/2+player2_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player2_display_x+150, window_get_height()/2+250+16, c_white, c_white, c_white, c_white, false);
-	
-	draw_set_alpha(1);
-	draw_rectangle_color(window_get_width()/2+player2_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player2_display_x+150, window_get_height()/2+250+16, c_black, c_black, c_black, c_black, true);
-	#endregion /*Box where name is written on END*/
-	
-	#region /*Inputed Name Text*/
-	if (can_input_player2_name = true)
-	{
-		if (name_enter_blink<1)
+		if (player2_menu = "select_name")
+		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player2_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player2_display_x+150, window_get_height()/2+250+16))
+		and (global.controls_used_for_menu_navigation="mouse")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
 		{
-			draw_text_outlined(window_get_width()/2+player2_display_x+4, window_get_height()/2+250, string(global.player2_name)+"|", global.default_text_size, c_black, c_white, 1);
+			draw_set_alpha(0.9);
 		}
 		else
 		{
-			draw_text_outlined(window_get_width()/2+player2_display_x, window_get_height()/2+250, string(global.player2_name), global.default_text_size, c_black, c_white, 1);
+			draw_set_alpha(0.5);
 		}
-	}
-	else
-	{
-		if (global.player2_name ="")
+		draw_rectangle_color(window_get_width()/2+player2_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player2_display_x+150, window_get_height()/2+250+16, c_white, c_white, c_white, c_white, false);
+	
+		draw_set_alpha(1);
+		draw_rectangle_color(window_get_width()/2+player2_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player2_display_x+150, window_get_height()/2+250+16, c_black, c_black, c_black, c_black, true);
+		#endregion /*Box where name is written on END*/
+		
+		#region /*Inputed Name Text*/
+		if (can_input_player2_name = true)
 		{
-			draw_text_outlined(window_get_width()/2+player2_display_x, window_get_height()/2+250, "Player 2",global.default_text_size, c_white, c_black, 1);
+			if (name_enter_blink<1)
+			{
+				draw_text_outlined(window_get_width()/2+player2_display_x+4, window_get_height()/2+250, string(global.player2_name)+"|", global.default_text_size, c_black, c_white, 1);
+			}
+			else
+			{
+				draw_text_outlined(window_get_width()/2+player2_display_x, window_get_height()/2+250, string(global.player2_name), global.default_text_size, c_black, c_white, 1);
+			}
 		}
 		else
 		{
-			draw_text_outlined(window_get_width()/2+player2_display_x, window_get_height()/2+250, string(global.player2_name), global.default_text_size, c_white, c_black, 1);
+			if (global.player2_name ="")
+			{
+				draw_text_outlined(window_get_width()/2+player2_display_x, window_get_height()/2+250, "Player 2",global.default_text_size, c_white, c_black, 1);
+			}
+			else
+			{
+				draw_text_outlined(window_get_width()/2+player2_display_x, window_get_height()/2+250, string(global.player2_name), global.default_text_size, c_white, c_black, 1);
+			}
 		}
+		#endregion /*Inputed Name Text END*/
+		
 	}
-	#endregion /*Inputed Name Text END*/
-	
-	#endregion /*Player 2 END*/
+	#endregion /*Player 2 Input Name END*/
 
-	#region /*Player 3*/
-	
-	#region /*Opaque transparent black box*/
-	if (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = true)
-	and (can_input_player4_name = false)
+	#region /*Player 3 Input Name*/
+	if (player3_accept_selection >= 0)
 	{
-		draw_set_alpha(0.5);
-		draw_rectangle_color(window_get_width()/2+player3_display_x-155, window_get_height()/2+200, window_get_width()/2+player3_display_x+155, window_get_height()/2+310, c_black, c_black, c_black, c_black, false);
+		
+		#region /*Opaque transparent black box*/
+		if (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = true)
+		and (can_input_player4_name = false)
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(window_get_width()/2+player3_display_x-155, window_get_height()/2+200, window_get_width()/2+player3_display_x+155, window_get_height()/2+310, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+		}
+		#endregion /*Opaque transparent black box END*/
+		
+		#region /*Box where name is written on*/
 		draw_set_alpha(1);
-	}
-	#endregion /*Opaque transparent black box END*/
+		draw_rectangle_color(window_get_width()/2+player3_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player3_display_x+150, window_get_height()/2+250+16, global.player3_color, global.player3_color, global.player3_color, global.player3_color, false);
 	
-	#region /*Box where name is written on*/
-	draw_set_alpha(1);
-	draw_rectangle_color(window_get_width()/2+player3_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player3_display_x+150, window_get_height()/2+250+16, global.player3_color, global.player3_color, global.player3_color, global.player3_color, false);
-	
-	if (player3_menu = "select_name")
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player3_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player3_display_x+150, window_get_height()/2+250+16))
-	and (global.controls_used_for_menu_navigation="mouse")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	{
-		draw_set_alpha(0.9);
-	}
-	else
-	{
-		draw_set_alpha(0.5);
-	}
-	draw_rectangle_color(window_get_width()/2+player3_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player3_display_x+150, window_get_height()/2+250+16, c_white, c_white, c_white, c_white, false);
-	
-	draw_set_alpha(1);
-	draw_rectangle_color(window_get_width()/2+player3_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player3_display_x+150, window_get_height()/2+250+16, c_black, c_black, c_black, c_black, true);
-	#endregion /*Box where name is written on END*/
-	
-	#region /*Inputed Name Text*/
-	if (can_input_player3_name = true)
-	{
-		if (name_enter_blink<1)
+		if (player3_menu = "select_name")
+		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player3_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player3_display_x+150, window_get_height()/2+250+16))
+		and (global.controls_used_for_menu_navigation="mouse")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
 		{
-			draw_text_outlined(window_get_width()/2+player3_display_x+4, window_get_height()/2+250, string(global.player3_name)+"|", global.default_text_size, c_black, c_white, 1);
+			draw_set_alpha(0.9);
 		}
 		else
 		{
-			draw_text_outlined(window_get_width()/2+player3_display_x, window_get_height()/2+250, string(global.player3_name), global.default_text_size, c_black, c_white, 1);
+			draw_set_alpha(0.5);
 		}
-	}
-	else
-	{
-		if (global.player3_name ="")
+		draw_rectangle_color(window_get_width()/2+player3_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player3_display_x+150, window_get_height()/2+250+16, c_white, c_white, c_white, c_white, false);
+	
+		draw_set_alpha(1);
+		draw_rectangle_color(window_get_width()/2+player3_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player3_display_x+150, window_get_height()/2+250+16, c_black, c_black, c_black, c_black, true);
+		#endregion /*Box where name is written on END*/
+		
+		#region /*Inputed Name Text*/
+		if (can_input_player3_name = true)
 		{
-			draw_text_outlined(window_get_width()/2+player3_display_x, window_get_height()/2+250, "Player 3", global.default_text_size, c_white, c_black, 1);
+			if (name_enter_blink<1)
+			{
+				draw_text_outlined(window_get_width()/2+player3_display_x+4, window_get_height()/2+250, string(global.player3_name)+"|", global.default_text_size, c_black, c_white, 1);
+			}
+			else
+			{
+				draw_text_outlined(window_get_width()/2+player3_display_x, window_get_height()/2+250, string(global.player3_name), global.default_text_size, c_black, c_white, 1);
+			}
 		}
 		else
 		{
-			draw_text_outlined(window_get_width()/2+player3_display_x, window_get_height()/2+250, string(global.player3_name), global.default_text_size, c_white, c_black, 1);
+			if (global.player3_name ="")
+			{
+				draw_text_outlined(window_get_width()/2+player3_display_x, window_get_height()/2+250, "Player 3", global.default_text_size, c_white, c_black, 1);
+			}
+			else
+			{
+				draw_text_outlined(window_get_width()/2+player3_display_x, window_get_height()/2+250, string(global.player3_name), global.default_text_size, c_white, c_black, 1);
+			}
 		}
+		#endregion /*Inputed Name Text END*/
+		
 	}
-	#endregion /*Inputed Name Text END*/
-	
-	#endregion /*Player 3 END*/
+	#endregion /*Player 3 Input Name END*/
 
-	#region /*Player 4*/
-	
-	#region /*Opaque transparent black box*/
-	if (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = true)
+	#region /*Player 4 Input Name*/
+	if (player4_accept_selection >= 0)
 	{
-		draw_set_alpha(0.5);
-		draw_rectangle_color(window_get_width()/2+player4_display_x-155, window_get_height()/2+200, window_get_width()/2+player4_display_x+155, window_get_height()/2+310, c_black, c_black, c_black, c_black, false);
+		
+		#region /*Opaque transparent black box*/
+		if (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = true)
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(window_get_width()/2+player4_display_x-155, window_get_height()/2+200, window_get_width()/2+player4_display_x+155, window_get_height()/2+310, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+		}
+		#endregion /*Opaque transparent black box END*/
+		
+		#region /*Box where name is written on*/
 		draw_set_alpha(1);
-	}
-	#endregion /*Opaque transparent black box END*/
+		draw_rectangle_color(window_get_width()/2+player4_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player4_display_x+150, window_get_height()/2+250+16, global.player4_color, global.player4_color, global.player4_color, global.player4_color, false);
 	
-	#region /*Box where name is written on*/
-	draw_set_alpha(1);
-	draw_rectangle_color(window_get_width()/2+player4_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player4_display_x+150, window_get_height()/2+250+16, global.player4_color, global.player4_color, global.player4_color, global.player4_color, false);
-	
-	if (player4_menu = "select_name")
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player4_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player4_display_x+150, window_get_height()/2+250+16))
-	and (global.controls_used_for_menu_navigation="mouse")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	{
-		draw_set_alpha(0.9);
-	}
-	else
-	{
-		draw_set_alpha(0.5);
-	}
-	draw_rectangle_color(window_get_width()/2+player4_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player4_display_x+150, window_get_height()/2+250+16, c_white, c_white, c_white, c_white, false);
-	
-	draw_set_alpha(1);
-	draw_rectangle_color(window_get_width()/2+player4_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player4_display_x+150, window_get_height()/2+250+16, c_black, c_black, c_black, c_black, true);
-	#endregion /*Box where name is written on END*/
-	
-	#region /*Inputed Name Text*/
-	if (can_input_player4_name = true)
-	{
-		if (name_enter_blink<1)
+		if (player4_menu = "select_name")
+		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player4_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player4_display_x+150, window_get_height()/2+250+16))
+		and (global.controls_used_for_menu_navigation="mouse")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
 		{
-			draw_text_outlined(window_get_width()/2+player4_display_x+4, window_get_height()/2+250, string(global.player4_name)+"|", global.default_text_size, c_black, c_white, 1);
+			draw_set_alpha(0.9);
 		}
 		else
 		{
-			draw_text_outlined(window_get_width()/2+player4_display_x, window_get_height()/2+250, string(global.player4_name), global.default_text_size, c_black, c_white, 1);
+			draw_set_alpha(0.5);
 		}
-	}
-	else
-	{
-		if (global.player4_name ="")
+		draw_rectangle_color(window_get_width()/2+player4_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player4_display_x+150, window_get_height()/2+250+16, c_white, c_white, c_white, c_white, false);
+	
+		draw_set_alpha(1);
+		draw_rectangle_color(window_get_width()/2+player4_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player4_display_x+150, window_get_height()/2+250+16, c_black, c_black, c_black, c_black, true);
+		#endregion /*Box where name is written on END*/
+		
+		#region /*Inputed Name Text*/
+		if (can_input_player4_name = true)
 		{
-			draw_text_outlined(window_get_width()/2+player4_display_x, window_get_height()/2+250, "Player 4", global.default_text_size, c_white, c_black, 1);
+			if (name_enter_blink<1)
+			{
+				draw_text_outlined(window_get_width()/2+player4_display_x+4, window_get_height()/2+250, string(global.player4_name)+"|", global.default_text_size, c_black, c_white, 1);
+			}
+			else
+			{
+				draw_text_outlined(window_get_width()/2+player4_display_x, window_get_height()/2+250, string(global.player4_name), global.default_text_size, c_black, c_white, 1);
+			}
 		}
 		else
 		{
-			draw_text_outlined(window_get_width()/2+player4_display_x, window_get_height()/2+250, string(global.player4_name), global.default_text_size, c_white, c_black, 1);
+			if (global.player4_name ="")
+			{
+				draw_text_outlined(window_get_width()/2+player4_display_x, window_get_height()/2+250, "Player 4", global.default_text_size, c_white, c_black, 1);
+			}
+			else
+			{
+				draw_text_outlined(window_get_width()/2+player4_display_x, window_get_height()/2+250, string(global.player4_name), global.default_text_size, c_white, c_black, 1);
+			}
 		}
+		#endregion /*Inputed Name Text END*/
+		
 	}
-	#endregion /*Inputed Name Text END*/
-	
 	#endregion /*Player 4 END*/
 
 	#endregion /*Tell the player the inputed name END*/
@@ -3683,6 +3695,7 @@ window_get_width()/2+player1_display_x+150,
 window_get_height()/2+250+16))
 and (mouse_check_button_pressed(mb_left))
 and (menu_delay=0)
+and (player1_accept_selection >= 0)
 {
 	menu_delay=3;
 	keyboard_string=global.player1_name;
@@ -3698,6 +3711,7 @@ window_get_width()/2+player2_display_x+150,
 window_get_height()/2+250+16))
 and (mouse_check_button_pressed(mb_left))
 and (menu_delay=0)
+and (player2_accept_selection >= 0)
 {
 	menu_delay=3;
 	keyboard_string=global.player2_name;
@@ -3713,6 +3727,7 @@ window_get_width()/2+player3_display_x+150,
 window_get_height()/2+250+16))
 and (mouse_check_button_pressed(mb_left))
 and (menu_delay=0)
+and (player3_accept_selection >= 0)
 {
 	menu_delay=3;
 	keyboard_string=global.player3_name;
@@ -3728,6 +3743,7 @@ window_get_width()/2+player4_display_x+150,
 window_get_height()/2+250+16))
 and (mouse_check_button_pressed(mb_left))
 and (menu_delay=0)
+and (player4_accept_selection >= 0)
 {
 	menu_delay=3;
 	keyboard_string=global.player4_name;
@@ -3936,64 +3952,76 @@ and (menu_delay=0)
 	and (player3_accept_selection != 0)
 	and (player4_accept_selection != 0)
 	and (keyboard_check_pressed(global.player1_key_jump))
+	and (player1_menu != "back_from_character_select")
 	or (player1_accept_selection = true)
 	and (player2_accept_selection != 0)
 	and (player3_accept_selection != 0)
 	and (player4_accept_selection != 0)
 	and (keyboard_check_pressed(global.player1_key2_jump))
+	and (player1_menu != "back_from_character_select")
 	or (player1_accept_selection = true)
 	and (player2_accept_selection != 0)
 	and (player3_accept_selection != 0)
 	and (player4_accept_selection != 0)
 	and (gamepad_button_check_pressed(0, gp_face1))
+	and (player1_menu != "back_from_character_select")
 	
 	or (player1_accept_selection = -1)
 	and (player2_accept_selection = true)
 	and (player3_accept_selection != 0)
 	and (player4_accept_selection != 0)
 	and (keyboard_check_pressed(global.player2_key_jump))
+	and (player2_menu != "back_from_character_select")
 	or (player1_accept_selection = -1)
 	and (player2_accept_selection = true)
 	and (player3_accept_selection != 0)
 	and (player4_accept_selection != 0)
 	and (keyboard_check_pressed(global.player2_key2_jump))
+	and (player2_menu != "back_from_character_select")
 	or (player1_accept_selection = -1)
 	and (player2_accept_selection = true)
 	and (player3_accept_selection != 0)
 	and (player4_accept_selection != 0)
 	and (gamepad_button_check_pressed(1, gp_face1))
+	and (player2_menu != "back_from_character_select")
 	
 	or (player1_accept_selection = -1)
 	and (player2_accept_selection = -1)
 	and (player3_accept_selection = true)
 	and (player4_accept_selection != 0)
 	and (keyboard_check_pressed(global.player3_key_jump))
+	and (player3_menu != "back_from_character_select")
 	or (player1_accept_selection = -1)
 	and (player2_accept_selection = -1)
 	and (player3_accept_selection = true)
 	and (player4_accept_selection != 0)
 	and (keyboard_check_pressed(global.player3_key2_jump))
+	and (player3_menu != "back_from_character_select")
 	or (player1_accept_selection = -1)
 	and (player2_accept_selection = -1)
 	and (player3_accept_selection = true)
 	and (player4_accept_selection != 0)
 	and (gamepad_button_check_pressed(2, gp_face1))
+	and (player3_menu != "back_from_character_select")
 	
 	or (player1_accept_selection = -1)
 	and (player2_accept_selection = -1)
 	and (player3_accept_selection = -1)
 	and (player4_accept_selection = true)
 	and (keyboard_check_pressed(global.player4_key_jump))
+	and (player3_menu != "back_from_character_select")
 	or (player1_accept_selection = -1)
 	and (player2_accept_selection = -1)
 	and (player3_accept_selection = -1)
 	and (player4_accept_selection = true)
 	and (keyboard_check_pressed(global.player4_key2_jump))
+	and (player3_menu != "back_from_character_select")
 	or (player1_accept_selection = -1)
 	and (player2_accept_selection = -1)
 	and (player3_accept_selection = -1)
 	and (player4_accept_selection = true)
 	and (gamepad_button_check_pressed(3, gp_face1))
+	and (player3_menu != "back_from_character_select")
 	
 	or (player_start_game = true)
 	and (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0,play_the_game_text_y-32,window_get_width(),play_the_game_text_y+32,))
@@ -4155,6 +4183,14 @@ and (menu_delay=0)
 	and (player1_accept_selection <= -1)
 	or (key_a_pressed)
 	and (menu = "back_from_character_select")
+	or (key_a_pressed)
+	and (player1_menu = "back_from_character_select")
+	or (key_a_pressed)
+	and (player2_menu = "back_from_character_select")
+	or (key_a_pressed)
+	and (player3_menu = "back_from_character_select")
+	or (key_a_pressed)
+	and (player4_menu = "back_from_character_select")
 	{
 		if (menu_delay = 0)
 		{

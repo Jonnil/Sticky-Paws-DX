@@ -418,12 +418,12 @@ if (save_level_as_png = false)
 	and(asset_get_type("obj_boss") == asset_object)
 	and(instance_exists(obj_player))
 	and(instance_exists(obj_boss))
-	and(distance_to_object(obj_boss) < 1000)
+	and(distance_to_object(obj_boss) < 500)
 	and (global.player_has_entered_goal = false)
 	{
 
-		view_wview_lerp = lerp(0, 0, 0.05); /*0.0005*/
-		view_hview_lerp = lerp(0, 0, 0.05); /*0.0005*/
+		view_wview_lerp = lerp(0, 0, 0.05);
+		view_hview_lerp = lerp(0, 0, 0.05);
 
 		if (instance_exists(player1))
 		{

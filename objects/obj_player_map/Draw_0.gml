@@ -1874,6 +1874,8 @@ if (lives <= 0)
 }
 #endregion /*Give the player lives if they get a game over END*/
 
+#region /*Zoom In and Out*/
+
 #region /*Zoom In*/
 if (entering_level = true)
 {
@@ -1920,6 +1922,8 @@ else
 	}
 }
 #endregion /*Zoom Out End*/
+
+#endregion /*Zoom In and Out END*/
 
 #region /*Draw Iris Transitions*/
 if (global.enable_transitions = true)
