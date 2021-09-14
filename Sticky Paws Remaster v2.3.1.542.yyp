@@ -327,7 +327,7 @@
     {"id":{"name":"obj_water_splash","path":"objects/obj_water_splash/obj_water_splash.yy",},"order":36,},
     {"id":{"name":"spr_settings_icons","path":"sprites/spr_settings_icons/spr_settings_icons.yy",},"order":12,},
     {"id":{"name":"obj_basic_collectible","path":"objects/obj_basic_collectible/obj_basic_collectible.yy",},"order":3,},
-    {"id":{"name":"wave","path":"scripts/wave/wave.yy",},"order":17,},
+    {"id":{"name":"Wave","path":"scripts/Wave/Wave.yy",},"order":17,},
     {"id":{"name":"snd_footstep_metal_right","path":"sounds/snd_footstep_metal_right/snd_footstep_metal_right.yy",},"order":49,},
     {"id":{"name":"obj_level_start","path":"objects/obj_level_start/obj_level_start.yy",},"order":5,},
     {"id":{"name":"snd_rolling","path":"sounds/snd_rolling/snd_rolling.yy",},"order":121,},
