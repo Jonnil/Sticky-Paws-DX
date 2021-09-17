@@ -15438,6 +15438,7 @@ and(takendamage<=takendamage_freezetime)
 	and(burnt = false)
 	{
 		if (key_crouch_pressed)
+		and (joystick_can_ground_pound = true)
 		{
 			if (crouch=false)
 			and(climb=false)
@@ -15623,6 +15624,47 @@ and(!key_down)
 {
 	can_ground_pound = true;
 }
+
+#region /*joystick_can_ground_pound makes sure that when ground pounding using the joystick doesn't make the cahracter ground pound on every frame*/
+
+#region /*You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true*/
+if (joystick_can_ground_pound = false)
+and(gamepad_axis_value(0, gp_axislv)<=0)
+and(player <= 1)
+or (joystick_can_ground_pound = false)
+and(gamepad_axis_value(1, gp_axislv)<=0)
+and(player <= 2)
+or (joystick_can_ground_pound = false)
+and(gamepad_axis_value(2, gp_axislv)<=0)
+and(player <= 3)
+or (joystick_can_ground_pound = false)
+and(gamepad_axis_value(3, gp_axislv)<=0)
+and(player <= 4)
+{
+	joystick_can_ground_pound = true;
+}
+#endregion /*You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true END*/
+
+#region /*You must have this code after the previous code otherwise the joystick_can_ground_pound is always set to true*/
+if (joystick_can_ground_pound = true)
+and(gamepad_axis_value(0, gp_axislv)>0)
+and(player <= 1)
+or (joystick_can_ground_pound = true)
+and(gamepad_axis_value(1, gp_axislv)>0)
+and(player <= 2)
+or (joystick_can_ground_pound = true)
+and(gamepad_axis_value(2, gp_axislv)>0)
+and(player <= 3)
+or (joystick_can_ground_pound = true)
+and(gamepad_axis_value(3, gp_axislv)>0)
+and(player <= 4)
+{
+	joystick_can_ground_pound = false;
+}
+#endregion /*You must have this code after the previous code otherwise the joystick_can_ground_pound is always set to true END*/
+
+#endregion /*joystick_can_ground_pound makes sure that when ground pounding using the joystick doesn't make the cahracter ground pound on every frame END*/
+
 #endregion /*Ground Pound END*/
 
 #region /*Dive*/

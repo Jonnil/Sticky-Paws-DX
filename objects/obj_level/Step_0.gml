@@ -59,7 +59,7 @@ if (initialize_level_timer = 1)
 	
 	#region /*Make next level enterable if you have cleared this level*/
 	if (clear_rate = "closed")
-	and(level = 1+string(ini_read_real("Player","number_of_levels_cleared",0))) /*Fix this*/
+	and(level = 1+string(ini_read_real("Player","number_of_levels_cleared",0)))
 	{
 		clear_rate = "enter";
 	}

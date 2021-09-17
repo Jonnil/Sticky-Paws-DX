@@ -1523,50 +1523,53 @@ or(gamepad_button_check_pressed(0,gp_select))
 			scr_save_objects_with_rotation_placement();
 		
 			#region /*Save Level Information*/
-			ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
-			if (asset_get_type("obj_level_start")==asset_object)
+			if (global.character_select_in_this_menu="level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
 			{
-				if (instance_exists(obj_level_start))
+				ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
+				if (asset_get_type("obj_level_start")==asset_object)
 				{
-					ini_write_real("Info","level_start_x",obj_level_start.x);
+					if (instance_exists(obj_level_start))
+					{
+						ini_write_real("Info","level_start_x",obj_level_start.x);
+					}
+					if (instance_exists(obj_level_start))
+					{
+						ini_write_real("Info","level_start_y",obj_level_start.y);
+					}
 				}
-				if (instance_exists(obj_level_start))
+				if (asset_get_type("obj_level_end")==asset_object)
 				{
-					ini_write_real("Info","level_start_y",obj_level_start.y);
+					if (instance_exists(obj_level_end))
+					{
+						ini_write_real("Info","level_end_x",obj_level_end.x);
+					}
+					if (instance_exists(obj_level_end))
+					{
+						ini_write_real("Info","level_end_y",obj_level_end.y);
+					}
 				}
+				if (asset_get_type("obj_level_height")==asset_object)
+				{
+					if (instance_exists(obj_level_height))
+					{
+						ini_write_real("Info","level_height",obj_level_height.y);
+					}
+				}
+				if (asset_get_type("obj_level_width")==asset_object)
+				{
+					if (instance_exists(obj_level_width))
+					{
+						ini_write_real("Info","level_width",obj_level_width.x);
+					}
+				}
+				ini_write_real("Info","view_xview",camera_get_view_x(view_camera[view_current]));
+				ini_write_real("Info","view_yview",camera_get_view_y(view_camera[view_current]));
+				ini_close();
 			}
-			if (asset_get_type("obj_level_end")==asset_object)
-			{
-				if (instance_exists(obj_level_end))
-				{
-					ini_write_real("Info","level_end_x",obj_level_end.x);
-				}
-				if (instance_exists(obj_level_end))
-				{
-					ini_write_real("Info","level_end_y",obj_level_end.y);
-				}
-			}
-			if (asset_get_type("obj_level_height")==asset_object)
-			{
-				if (instance_exists(obj_level_height))
-				{
-					ini_write_real("Info","level_height",obj_level_height.y);
-				}
-			}
-			if (asset_get_type("obj_level_width")==asset_object)
-			{
-				if (instance_exists(obj_level_width))
-				{
-					ini_write_real("Info","level_width",obj_level_width.x);
-				}
-			}
-			ini_write_real("Info","view_xview",camera_get_view_x(view_camera[view_current]));
-			ini_write_real("Info","view_yview",camera_get_view_y(view_camera[view_current]));
-			ini_close();
 			#endregion /*Save Level Information END*/
-
+			
 			#endregion /*Save Level END*/
-
+			
 			if (asset_get_type("obj_camera")==asset_object)
 			and(!instance_exists(obj_camera))
 			and(asset_get_type("obj_leveleditor_placed_object")==asset_object)

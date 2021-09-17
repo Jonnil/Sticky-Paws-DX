@@ -94,5 +94,9 @@ or(global.actually_play_edited_level = true)
 		global.play_edited_level = true;
 	}
 	room_height = bbox_top;
+	if (asset_get_type("obj_water_level") == asset_object)
+	{
+		instance_create_depth(x, y, 0, obj_water_level);
+	}
 	instance_destroy();
 }

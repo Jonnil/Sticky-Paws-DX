@@ -458,6 +458,7 @@ buffer_jump = 0; /*Jump buffer timer, set to 0*/
 can_climb_horizontal_rope_cooldown = 0;
 can_dive = true;
 can_ground_pound = true;
+joystick_can_ground_pound = true;
 can_ledge_grab = true;
 can_tongue = true;
 dive = false;

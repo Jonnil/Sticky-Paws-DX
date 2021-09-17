@@ -4045,19 +4045,23 @@ and (player4_accept_selection >= 0)
 				ds_list_clear(global.thumbnail_sprite)
 				ds_list_add(global.thumbnail_sprite, spr_menu_create_custom_level)
 				first_level=file_find_first(working_directory+"/Custom Levels/*", fa_directory)
-				if directory_exists(first_level)
-				ds_list_add(global.all_loaded_custom_levels, first_level)
-				can_navigate = true;
-				menu_delay = 3;
-				player1_accept_selection = false;
-				player2_accept_selection = false;
-				player3_accept_selection = false;
-				player4_accept_selection = false;
+				if (directory_exists(first_level))
+				{
+					ds_list_add(global.all_loaded_custom_levels, first_level)
+				}
 				can_input_player1_name = false;
 				can_input_player2_name = false;
 				can_input_player3_name = false;
 				can_input_player4_name = false;
+				can_navigate = true;
+				global.select_level_index = 0;
 				menu = "load_custom_level";
+				menu_delay = 3;
+				open_sub_menu = false;
+				player1_accept_selection = false;
+				player2_accept_selection = false;
+				player3_accept_selection = false;
+				player4_accept_selection = false;
 			}
 		}
 	}

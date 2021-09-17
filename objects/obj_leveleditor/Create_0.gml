@@ -179,7 +179,10 @@ and(file_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(gl
 	}
 	else
 	{
-		ini_write_string("Info","level_name",0);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_string("Info","level_name",0);
+		}
 		level_name = "";
 	}
 	if (ini_key_exists("Info","time_countdown"))
@@ -188,7 +191,10 @@ and(file_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(gl
 	}
 	else
 	{
-		ini_write_string("Info","time_countdown",noone);
+		if (global.character_select_in_this_menu="level_editor")
+		{
+			ini_write_string("Info","time_countdown",noone);
+		}
 		global.time_countdown = noone;
 	}
 	if(global.play_edited_level=false)
