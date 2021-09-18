@@ -1,4 +1,4 @@
-///scr_savelevel()
+/*Save Level Information like if you have cleared the level or if you have a checkpoint*/
 function scr_savelevel()
 {
 	ini_open("File"+string(global.file)+".ini");

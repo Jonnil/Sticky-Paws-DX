@@ -7112,7 +7112,7 @@ function scr_options_menu()
 			}
 			else
 			{
-				menu = "voices_volume";
+				menu = "number_of_audio_channels";
 				menu_delay = 3;
 			}
 		}

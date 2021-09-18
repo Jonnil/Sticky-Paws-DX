@@ -17299,11 +17299,12 @@ and(in_water=false)
 		y=instance_nearest(x,y,obj_horizontal_rope).y+16;
 		
 		if (key_up)
-		and(!key_down)
-		and(!place_meeting(x,y-16,obj_wall))
-		and(!place_meeting(x,y-32,obj_wall))
-		and(!place_meeting(x,y-48,obj_wall))
-		and(simple_controls=false)
+		and (!key_down)
+		and (!place_meeting(x, y-16, obj_wall))
+		and (!place_meeting(x, y-32, obj_wall))
+		and (!place_meeting(x, y-48, obj_wall))
+		and (!place_meeting(x, y-64, obj_wall))
+		and (simple_controls=false)
 		{
 		
 		#region /*Start spinning on rope*/

@@ -56,34 +56,43 @@ and(!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,
 	
 	#region /*Save Level Editor Checkpoint*/
 	if (asset_get_type("room_leveleditor")==asset_room)
-	and(room=room_leveleditor)
-	and(global.actually_play_edited_level=true)
+	and (room = room_leveleditor)
+	and (global.character_select_in_this_menu = "game")
+	{
+		ini_open(working_directory+"/File"+string(global.file)+".ini");
+					
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"x_checkpoint",0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"y_checkpoint",0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"checkpoint_millisecond",0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"checkpoint_second",0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"checkpoint_minute",0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"checkpoint_realmillisecond",0);
+					
+		ini_close();
+	}
+	else
+	if (asset_get_type("room_leveleditor")==asset_room)
+	and (room = room_leveleditor)
+	and (global.character_select_in_this_menu = "level_editor")
 	{
 		#region /*Create directory for saving custom levels*/
 		if (!directory_exists(working_directory+"/Custom Levels"))
 		{
 			directory_create(working_directory+"/Custom Levels");
 		}
-		#endregion /*Create directory for saving custom levels*/
-		
-		if (global.character_select_in_this_menu="game")
-		{
-			ini_open("File"+string(global.file)+".ini");
-		}
-		else
-		if (global.character_select_in_this_menu="level_editor")
-		{
-			ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
-		}
+		#endregion /*Create directory for saving custom levels END*/
+		ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
+					
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"x_checkpoint",0);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"y_checkpoint",0);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_millisecond",0);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_second",0);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_minute",0);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_realmillisecond",0);
-		
+					
 		ini_close();
 	}
 	#endregion /*Save Level Editor Checkpoint END*/
+	
 	goal=true;
 }
