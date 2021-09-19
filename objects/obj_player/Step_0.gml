@@ -13405,7 +13405,7 @@ and(global.pause=false)
 		score=0;
 
 	#region /*Save Level Information when in level editor*/
-	if (global.level_editor_level>0)
+	if (global.select_level_index>0)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
 		ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
@@ -16585,7 +16585,7 @@ if (die=true)
 		}
 		#endregion /*Create directory for saving custom levels END*/
 		
-		ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
+		ini_open(working_directory+"/custom_level_save.ini");
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_millisecond",global.timeattack_millisecond);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_second",global.timeattack_second);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_minute",global.timeattack_minute);

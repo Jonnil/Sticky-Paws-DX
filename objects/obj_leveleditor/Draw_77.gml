@@ -54,12 +54,12 @@ if (quit_level_editor=3)
 {
 	if (global.select_level_index >= 1)
 	{
-		file_delete(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic Thumbnail.png")
+		file_delete(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic_Thumbnail.png")
 	}
 	else
 	if (global.select_level_index <= 0)
 	{
-		file_delete(working_directory+"/Custom Levels/"+string(global.level_name)+"/Automatic Thumbnail.png")
+		file_delete(working_directory+"/Custom Levels/"+string(global.level_name)+"/Automatic_Thumbnail.png")
 	}
 	var thumbnail_sprite;
 	thumbnail_sprite = sprite_create_from_surface(application_surface,
@@ -74,12 +74,12 @@ if (quit_level_editor=3)
 	false,true,0,0);
 	if (global.select_level_index >= 1)
 	{
-		sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic Thumbnail.png");
+		sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic_Thumbnail.png");
 	}
 	else
 	if (global.select_level_index <= 0)
 	{
-		sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(global.level_name)+"/Automatic Thumbnail.png");
+		sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(global.level_name)+"/Automatic_Thumbnail.png");
 	}
 	sprite_delete(thumbnail_sprite);
 }
@@ -91,9 +91,16 @@ and(global.character_select_in_this_menu="level_editor")
 {
 	
 	#region /*Create directory for saving custom levels*/
-	if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
+	if (global.select_level_index >= 1)
+	and (!directory_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
 	{
-		directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level));
+		directory_create(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)));
+	}
+	else
+	if (global.select_level_index <= 0)
+	and (!directory_exists(working_directory+"/Custom Levels/"+string(global.level_name)))
+	{
+		directory_create(working_directory+"/Custom Levels/"+string(global.level_name));
 	}
 	#endregion /*Create directory for saving custom levels END*/
 	

@@ -270,6 +270,7 @@
     {"id":{"name":"scr_select_custom_level_menu","path":"scripts/scr_select_custom_level_menu/scr_select_custom_level_menu.yy",},"order":1,},
     {"id":{"name":"snd_swim","path":"sounds/snd_swim/snd_swim.yy",},"order":136,},
     {"id":{"name":"snd_skiddingvertical","path":"sounds/snd_skiddingvertical/snd_skiddingvertical.yy",},"order":127,},
+    {"id":{"name":"scr_load_custom_level_initializing","path":"scripts/scr_load_custom_level_initializing/scr_load_custom_level_initializing.yy",},"order":3,},
     {"id":{"name":"obj_spikes","path":"objects/obj_spikes/obj_spikes.yy",},"order":13,},
     {"id":{"name":"snd_footstep_wood_left","path":"sounds/snd_footstep_wood_left/snd_footstep_wood_left.yy",},"order":54,},
     {"id":{"name":"spr_3up","path":"sprites/spr_3up/spr_3up.yy",},"order":101,},

@@ -1,11 +1,5 @@
 scr_set_screen_size();
 
-//for (var i = 0; i < ds_list_size(global.all_loaded_main_levels); i += 1)
-//draw_text_outlined(100, 200+i*32, string(ds_list_find_value(global.all_loaded_main_levels, i)), global.default_text_size, c_white, c_black, 1);
-
-//draw_text_outlined(100, 100, "select_level_index: "+string(global.select_level_index), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(100, 100, "current_level: "+string(global.current_level), global.default_text_size, c_white, c_black, 1);
-
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/

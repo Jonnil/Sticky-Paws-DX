@@ -583,7 +583,7 @@ and(delay=3)
 			}
 			
 			#region /*Create directory for saving custom levels*/
-			ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
+			ini_open(working_directory+"/custom_level_save.ini");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"x_checkpoint");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"y_checkpoint");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_millisecond");

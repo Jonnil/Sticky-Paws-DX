@@ -7,7 +7,7 @@ if (menu = "load_custom_level")
 {
 	/*Load custom level data*/
 	
-	file_load_timer+=1
+	file_load_timer += 1;
 	
 	if (global.custom_level_load_delay = 0)
 	and (file_load_timer>1)
@@ -32,9 +32,9 @@ if (menu = "load_custom_level")
 	{
 		file_found=file_find_next()
 	
-		if file_found==""
+		if (file_found=="")
 		{
-			file_find_close()
+			file_find_close();
 			select_custom_level_menu_open = true;
 			menu = "level_editor_play";
 		}
@@ -63,25 +63,11 @@ if (menu = "load_custom_level")
 			{
 				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory+"/Custom Levels/"+file_found+"/Thumbnail.jpg",0,false,true,0,0));
 			}
-			else	
-			/*BMP Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/"+file_found+"/Automatic Thumbnail.bmp"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory+"/Custom Levels/"+file_found+"/Automatic Thumbnail.bmp",0,false,true,0,0));
-			}
 			else
-			/*PNG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/"+file_found+"/Automatic Thumbnail.png"))
+			/*PNG Automatic Thumbnail*/
+			if (file_exists(working_directory+"/Custom Levels/"+file_found+"/Automatic_Thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory+"/Custom Levels/"+file_found+"/Automatic Thumbnail.png",0,false,true,0,0));
-			}
-			else
-			/*GIF Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/"+file_found+"/Automatic Thumbnail.gif"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory+"/Custom Levels/"+file_found+"/Automatic Thumbnail.gif",0,false,true,0,0));
-			}
-			else
-			/*JPG Automatic Thumbnail*/if (file_exists(working_directory+"/Custom Levels/"+file_found+"/Automatic Thumbnail.jpg"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory+"/Custom Levels/"+file_found+"/Automatic Thumbnail.jpg",0,false,true,0,0));
+				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory+"/Custom Levels/"+file_found+"/Automatic_Thumbnail.png",0,false,true,0,0));
 			}
 			else
 			{
@@ -89,7 +75,7 @@ if (menu = "load_custom_level")
 			}
 			#endregion /*Update Thumbnail END*/
 			
-			file_load_timer = 0;
+			file_load_timer = 0; /*1 not 0. So it doesn't do the file_find_first code which it does at 0*/
 		}
 	}
 }

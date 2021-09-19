@@ -163,9 +163,11 @@ image_index=0;
 #region /*Load Level Information*/
 if (global.character_select_in_this_menu="game")
 and(file_exists("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Data/level_information.ini"))
+
 or(global.character_select_in_this_menu="level_editor")
 and (global.select_level_index >= 1)
 and(file_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini"))
+
 or(global.character_select_in_this_menu="level_editor")
 and (global.select_level_index <= 0)
 and(file_exists(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data/level_information.ini"))
@@ -265,8 +267,6 @@ and (!file_exists(working_directory+"/Custom Levels/"+string(global.level_name)+
 }
 #endregion /*Create Ground Tileset PNG if there is none END*/
 
-lives=5;
-
 #region /*View Size*/
 view_wview = 1392;
 view_hview = 736;
@@ -309,11 +309,6 @@ if (global.character_select_in_this_menu="game")
 	if file_exists("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Data/Object_Placement.txt")
 	{
 		file = file_text_open_read("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Data/Object_Placement.txt");
-	}
-	else
-	if file_exists("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Data/Object Placement.txt")
-	{
-		file = file_text_open_read("Levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Data/Object Placement.txt");
 	}
 	else
 	{
@@ -558,10 +553,10 @@ if (global.character_select_in_this_menu="level_editor")
 			file = file_text_open_read(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object_Placement.txt");
 		}
 		else
-		if (global.select_level_index >= 1)
-		and file_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object Placement.txt")
+		if (global.select_level_index <= 0)
+		and file_exists(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data/Object_Placement.txt")
 		{
-			file = file_text_open_read(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object Placement.txt");
+			file = file_text_open_read(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data/Object_Placement.txt");
 		}
 		else
 		{

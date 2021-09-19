@@ -1357,7 +1357,7 @@ if (quit_level_editor=0)
 					}
 					#endregion /*Create directory for saving custom levels END*/
 					
-					ini_open(working_directory+"/Custom Levels/custom_level_save.ini");
+					ini_open(working_directory+"/custom_level_save.ini");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"x_checkpoint");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"y_checkpoint");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_millisecond");
@@ -1507,7 +1507,6 @@ or(gamepad_button_check_pressed(0,gp_select))
 		}
 		#endregion /*Create Data directory for saving custom level data END*/
 		
-		else
 		if (asset_get_type("obj_leveleditor_placed_object")==asset_object)
 		and(!place_meeting(x,y,obj_leveleditor_placed_object))
 		{
@@ -1540,14 +1539,14 @@ or(gamepad_button_check_pressed(0,gp_select))
 				}
 			}
 			#endregion /*Write all objects to file END*/
-	
+			
 			file_text_write_string(file,str); /*Write string with wall information to file and start a new line*/
 			file_text_close(file);
-	
+			
 			#endregion /*Save object placement END*/
-	
+			
 			scr_save_objects_with_rotation_placement();
-		
+			
 			#region /*Save Level Information*/
 			if (global.character_select_in_this_menu="level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
 			{

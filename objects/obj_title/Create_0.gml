@@ -4,9 +4,9 @@ background_layer_x = 0;
 background_layer_y = 0;
 
 level_index = 0;
-file_found="";
-file_load_timer=0;
-open_sub_menu=false;
+file_found = "";
+file_load_timer = 0;
+open_sub_menu = false;
 select_custom_level_menu_open = false;
 loading_spinning_angle = 0;
 custom_level_select_blinking = 0;
@@ -835,27 +835,20 @@ lives=5;
 level_name="";
 
 #region /*If title screen should start at the level editor menu or the main menu*/
-if (global.level_editor_level>0)
-and(global.character_select_in_this_menu="level_editor")
+if (global.character_select_in_this_menu="level_editor")
 {
-	ds_list_clear(global.all_loaded_custom_levels)
-	ds_list_add(global.all_loaded_custom_levels, "Create_Level")
-	ds_list_clear(global.thumbnail_sprite)
-	ds_list_add(global.thumbnail_sprite, spr_menu_create_custom_level)
-	first_level=file_find_first(working_directory+"/Custom Levels/*", fa_directory)
-	if directory_exists(first_level)
-	ds_list_add(global.all_loaded_custom_levels, first_level)
-	can_navigate = true;
-	menu_delay = 3;
-	player1_accept_selection = false;
-	player2_accept_selection = false;
-	player3_accept_selection = false;
-	player4_accept_selection = false;
+	scr_load_custom_level_initializing();
 	can_input_player1_name = false;
 	can_input_player2_name = false;
 	can_input_player3_name = false;
 	can_input_player4_name = false;
-	can_input_level_name = false;
+	can_navigate = true;
+	menu_delay = 3;
+	open_sub_menu = false;
+	player1_accept_selection = false;
+	player2_accept_selection = false;
+	player3_accept_selection = false;
+	player4_accept_selection = false;
 	menu = "load_custom_level";
 }
 else
