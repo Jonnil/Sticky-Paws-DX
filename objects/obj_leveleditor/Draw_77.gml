@@ -52,7 +52,15 @@ if (quit_level_editor>0)
 
 if (quit_level_editor=3)
 {
-	file_delete(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic Thumbnail.png")
+	if (global.select_level_index >= 1)
+	{
+		file_delete(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic Thumbnail.png")
+	}
+	else
+	if (global.select_level_index <= 0)
+	{
+		file_delete(working_directory+"/Custom Levels/"+string(global.level_name)+"/Automatic Thumbnail.png")
+	}
 	var thumbnail_sprite;
 	thumbnail_sprite = sprite_create_from_surface(application_surface,
 	//screenie_x,
@@ -64,7 +72,15 @@ if (quit_level_editor=3)
 	camera_get_view_width(view_camera[view_current]),
 	camera_get_view_height(view_camera[view_current]),
 	false,true,0,0);
-	sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic Thumbnail.png");
+	if (global.select_level_index >= 1)
+	{
+		sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic Thumbnail.png");
+	}
+	else
+	if (global.select_level_index <= 0)
+	{
+		sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(global.level_name)+"/Automatic Thumbnail.png");
+	}
 	sprite_delete(thumbnail_sprite);
 }
 #endregion /*Save Thumbnail End*/
@@ -84,7 +100,15 @@ and(global.character_select_in_this_menu="level_editor")
 	#region /*Save object placement*/
 	instance_activate_all();
 	var file,str;
-	file=file_text_open_write(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object_Placement.txt"); /*Open file for writing*/
+	if (global.select_level_index >= 1)
+	{
+		file=file_text_open_write(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object_Placement.txt"); /*Open file for writing*/
+	}
+	else
+	if (global.select_level_index <= 0)
+	{
+		file=file_text_open_write(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data/Object_Placement.txt"); /*Open file for writing*/
+	}
 	str=""; /*Reset string var*/
 	
 	#region /*Write all objects to file*/
@@ -112,7 +136,15 @@ and(global.character_select_in_this_menu="level_editor")
 	#region /*Save Level Information*/
 	if (global.character_select_in_this_menu="level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
 	{
-		ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
+		if (global.select_level_index >= 1)
+		{
+			ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
+		}
+		else
+		if (global.select_level_index <= 0)
+		{
+			ini_open(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data/level_information.ini");
+		}
 		ini_write_string("Info","level_name",level_name);
 		if (instance_exists(obj_level_start))
 		{

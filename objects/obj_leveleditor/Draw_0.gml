@@ -1474,20 +1474,38 @@ or(gamepad_button_check_pressed(0,gp_select))
 	and (global.character_select_in_this_menu = "level_editor")
 	and(asset_get_type("obj_level_start")==asset_object)
 	{
-
+		
 		#region /*Save Level*/
-	
+		
 		#region /*Create directory for saving custom levels*/
-		if (!directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
+		if (global.select_level_index >= 1)
+		and (!directory_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
 		{
-			directory_create(working_directory+"/Custom Levels/Level"+string(global.level_editor_level));
+			directory_create(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)));
 		}
-		if (directory_exists(working_directory+"/Custom Levels/Level"+string(global.level_editor_level)))
-		and(!directory_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data"))
+		else
+		if (global.select_level_index <= 0)
+		and (!directory_exists(working_directory+"/Custom Levels/"+string(global.level_name)))
+		{
+			directory_create(working_directory+"/Custom Levels/"+string(global.level_name));
+		}
+		#endregion /*Create directory for saving custom levels END*/
+		
+		#region /*Create Data directory for saving custom level data*/
+		if (global.select_level_index >= 1)
+		and (directory_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
+		and (!directory_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data"))
 		{
 			directory_create(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data");
 		}
-		#endregion /*Create directory for saving custom levels END*/
+		else
+		if (global.select_level_index <= 0)
+		and (directory_exists(working_directory+"/Custom Levels/"+string(global.level_name)))
+		and (!directory_exists(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data"))
+		{
+			directory_create(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data");
+		}
+		#endregion /*Create Data directory for saving custom level data END*/
 		
 		else
 		if (asset_get_type("obj_leveleditor_placed_object")==asset_object)
@@ -1497,7 +1515,15 @@ or(gamepad_button_check_pressed(0,gp_select))
 			#region /*Save object placement*/
 			instance_activate_all();
 			var file,str;
-			file = file_text_open_write(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object_Placement.txt"); /*Open file for writing*/
+			if (global.select_level_index >= 1)
+			{
+				file = file_text_open_write(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object_Placement.txt"); /*Open file for writing*/
+			}
+			else
+			if (global.select_level_index <= 0)
+			{
+				file = file_text_open_write(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data/Object_Placement.txt"); /*Open file for writing*/
+			}
 			str=""; /*Reset string var*/
 	
 			#region /*Write all objects to file*/
@@ -1525,7 +1551,15 @@ or(gamepad_button_check_pressed(0,gp_select))
 			#region /*Save Level Information*/
 			if (global.character_select_in_this_menu="level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
 			{
-				ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
+				if (global.select_level_index >= 1)
+				{
+					ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
+				}
+				else
+				if (global.select_level_index <= 0)
+				{
+					ini_open(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data/level_information.ini");
+				}
 				if (asset_get_type("obj_level_start")==asset_object)
 				{
 					if (instance_exists(obj_level_start))

@@ -7,6 +7,7 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key Up*/
 	if (key_up)
+	and (can_input_level_name = false)
 	and (menu_delay = 0)
 	and (menu_joystick_delay <= 0)
 	and (open_sub_menu = false)
@@ -29,6 +30,7 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key Down*/
 	if (key_down)
+	and (can_input_level_name = false)
 	and (menu_delay = 0)
 	and (menu_joystick_delay <= 0)
 	and (open_sub_menu = false)
@@ -51,6 +53,7 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key Left*/
 	if (key_left)
+	and (can_input_level_name = false)
 	and (menu_delay = 0)
 	and (menu_joystick_delay <= 0)
 	and (open_sub_menu = false)
@@ -72,6 +75,7 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key Right*/
 	if (key_right)
+	and (can_input_level_name = false)
 	and (menu_delay = 0)
 	and (menu_joystick_delay <= 0)
 	and (open_sub_menu = false)
@@ -93,6 +97,7 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key A Pressed*/
 	if (key_a_pressed)
+	and (can_input_level_name = false)
 	and (open_sub_menu = false)
 	and (menu_delay = 0)
 	and (menu!="back_from_level_editor")
@@ -125,6 +130,7 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key B Pressed*/
 	if (key_b_pressed)
+	and (can_input_level_name = false)
 	and (menu_delay = 0)
 	{
 		if (open_sub_menu = true)
@@ -234,6 +240,7 @@ function scr_select_custom_level_menu()
 		
 		#region /*Navigate Sub Menu*/
 		if (key_up)
+		and (can_input_level_name = false)
 		and (menu_delay = 0)
 		and (menu_joystick_delay <= 0)
 		{
@@ -280,6 +287,7 @@ function scr_select_custom_level_menu()
 		}
 		else
 		if (key_down)
+		and (can_input_level_name = false)
 		and (menu_delay = 0)
 		and (menu_joystick_delay <= 0)
 		{
@@ -324,9 +332,47 @@ function scr_select_custom_level_menu()
 			}
 			menu_delay = 3;
 		}
+		#endregion /*Navigate Sub Menu END*/
+		
+		#region /*Pressing the Create from Scratch button*/
+		if (menu = "level_editor_create_from_scratch")
+		and (can_input_level_name = false)
+		and (menu_delay = 0)
+		{
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*C+475-3, 394*(global.select_level_index-C*R)+110-3+370, 226*C+475-3+42))
+			and (mouse_check_button_pressed(mb_left))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			or (key_a_pressed)
+			{
+				menu_delay = 3;
+				keyboard_string = "";
+				can_input_level_name = true;
+			}
+		}
+		#endregion /*Pressing the Create from Scratch button END*/
+		
+		else
+		
+		#region /*Pressing the Create from Back button*/
+		if (menu = "level_editor_create_from_back")
+		and (can_input_level_name = false)
+		and (menu_delay = 0)
+		{
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*C+569-3, 394*(global.select_level_index-C*R)+110-3+370, 226*C+569-3+42))
+			and (mouse_check_button_pressed(mb_left))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			or (key_a_pressed)
+			{
+				menu_delay=3;
+				open_sub_menu = false;
+				menu = "level_editor_play";
+			}
+		}
+		#endregion /*Pressing the Create from Back button END*/
 		
 		#region /*Key A Pressed*/
 		if (key_a_pressed)
+		and (can_input_level_name = false)
 		and (menu_delay = 0)
 		{
 			
@@ -370,24 +416,6 @@ function scr_select_custom_level_menu()
 			
 			else
 			
-			#region /*Pressing the Create from Scratch button*/
-			if (menu = "level_editor_create_from_scratch")
-			{
-				global.actually_play_edited_level = false;
-				global.play_edited_level = false;
-				can_navigate=false;
-				menu_delay=999;
-				if (asset_get_type("obj_camera")==asset_object)
-				and(instance_exists(obj_camera))
-				{
-					with(obj_camera)
-					{
-						iris_zoom=0;
-					}
-				}
-			}
-			#endregion /*Pressing the Create from Scratch button END*/
-			
 			#region /*Pressing the Create from Template button*/
 			if (menu = "level_editor_create_from_template")
 			{
@@ -395,17 +423,6 @@ function scr_select_custom_level_menu()
 				menu = "level_editor_create_from_template";
 			}
 			#endregion /*Pressing the Create from Template button END*/
-			
-			else
-			
-			#region /*Pressing the Create from Back button*/
-			if (menu = "level_editor_create_from_back")
-			{
-				menu_delay=3;
-				menu = "level_editor_make";
-				open_sub_menu = false;
-			}
-			#endregion /*Pressing the Create from Back button END*/
 			
 			else
 			
@@ -483,7 +500,7 @@ function scr_select_custom_level_menu()
 			draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*C+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*C+408+216+3, c_white, c_white, c_white, c_white, false);
 			draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+475-3, "Create from Scratch", "level_editor_create_from_scratch", "level_editor_create_from_scratch");
 			draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+522-3, "Create from Template", "level_editor_create_from_template", "level_editor_create_from_template"); /*+47 on y*/
-			draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+569-3, "Back", "level_editor_create_from_back", "level_editor_play");
+			draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+569-3, "Back", "level_editor_create_from_back", "level_editor_create_from_back");
 		}
 		else
 		if (menu = "level_editor_delete_no")
@@ -507,10 +524,12 @@ function scr_select_custom_level_menu()
 			draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+522-3, "No", "level_editor_delete_no", "level_editor_delete"); /*+47 on y*/
 			draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+569-3, "Yes", "level_editor_delete_yes", "level_editor_play");
 		}
+		#endregion /*Navigate Sub Menu END*/
+		
 	}
 	#endregion /*Draw sub menu END*/
 	
-	#region /*Enter Level*/
+	#region /*Enter Custom Level*/
 	if (iris_xscale<=0.001)
 	and (global.character_select_in_this_menu="level_editor")
 	{
@@ -741,6 +760,139 @@ function scr_select_custom_level_menu()
 		global.actually_play_edited_level=false;
 		global.play_edited_level=false;
 	}
-	#endregion /*Enter Level END*/
+	#endregion /*Enter Custom Level END*/
+	
+	#region /*Input Level Name*/
+	
+	draw_set_halign(fa_middle);
+	draw_set_valign(fa_middle);
+	
+	#region /*Opaque transparent black box*/
+	if (can_input_level_name = true)
+	{
+		draw_set_alpha(0.5);
+		draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+	}
+	#endregion /*Opaque transparent black box END*/
+	
+	#region /*Box where name is written on*/
+	draw_set_alpha(1);
+	draw_rectangle_color(window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16, c_white, c_white, c_white, c_white, false);
+	
+	draw_set_alpha(1);
+	draw_rectangle_color(window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16, c_black, c_black, c_black, c_black, true);
+	#endregion /*Box where name is written on END*/
+	
+	#region /*Inputed Name Text*/
+	if (can_input_level_name = true)
+	{
+		if (name_enter_blink<1)
+		{
+			draw_text_outlined(window_get_width()/2+player1_display_x+4, window_get_height()/2+250, string(global.level_name)+"|", global.default_text_size, c_black, c_white, 1);
+		}
+		else
+		{
+			draw_text_outlined(window_get_width()/2+player1_display_x, window_get_height()/2+250, string(global.level_name), global.default_text_size, c_black, c_white, 1);
+		}
+	}
+	else
+	{
+		if (global.level_name = "")
+		{
+			draw_text_outlined(window_get_width()/2+player1_display_x, window_get_height()/2+250, "Player 1", global.default_text_size, c_white, c_black, 1);
+		}
+		else
+		{
+			draw_text_outlined(window_get_width()/2+player1_display_x, window_get_height()/2+250, string(global.level_name), global.default_text_size, c_white, c_black, 1);
+		}
+	}
+	#endregion /*Inputed Name Text END*/
+	
+	#region /*INPUT LEVEL NAME NOW*/
+	if (can_input_level_name = true)
+	{
+		draw_set_alpha(1);
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_center);
+		
+		global.level_name = keyboard_string;
+		
+		#region /*Limit Name Input Length for Level*/
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		
+		if (string_length(global.level_name)>=120)
+		{
+			draw_text_outlined(
+			window_get_width()/2+player1_display_x+100,
+			window_get_height()/2+290,
+			"120/120",global.default_text_size,c_black,c_white,1);
+		}
+		else
+		{
+			draw_text_outlined(
+			window_get_width()/2+player1_display_x+100,
+			window_get_height()/2+290,
+			string(string_length(global.level_name))+"/120",global.default_text_size,c_black,c_ltgray,1);
+		}
+		
+		if (string_length(global.level_name)>120)
+		{
+			global.level_name =string_copy(global.level_name,1,120);
+		}
+		#endregion /*Limit Name Input Length for Name END*/
+		
+	}
+	#endregion /*INPUT LEVEL NAME NOW END*/
+	
+	#region /*Name Enter Blinking*/
+	name_enter_blink+=0.05;
+	if (name_enter_blink>1.5)
+	{
+		name_enter_blink=0;
+	}
+	#endregion /*Name Enter Blinking END*/
+	
+	#region /*Press Enter to make new level from scratch*/
+	if (keyboard_check_pressed(vk_enter))
+	and (can_input_level_name = true)
+	and (menu_delay = 0)
+	{
+		global.actually_play_edited_level = false;
+		global.play_edited_level = false;
+		can_navigate=false;
+		menu_delay=999;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				iris_zoom=0;
+			}
+		}
+		can_input_level_name = false;
+	}
+	#endregion /*Press Enter to make new level from scratch END*/
+	
+	#region /*Press Escape to back out from level from scratch menu*/
+	if (keyboard_check_pressed(vk_escape))
+	and (can_input_level_name = true)
+	and (menu_delay = 0)
+	{
+		menu_delay = 3;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				iris_zoom=0;
+			}
+		}
+		can_input_level_name = false;
+	}
+	#endregion /*Press Escape to back out from level from scratch menu END*/
+	
+	#endregion /*Input Level Name END*/
 	
 }

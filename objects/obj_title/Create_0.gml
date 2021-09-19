@@ -270,6 +270,7 @@ can_input_player1_name=false;
 can_input_player2_name=false;
 can_input_player3_name=false;
 can_input_player4_name=false;
+can_input_level_name = false;
 #endregion /*What player can enter a name END*/
 
 #region /*Hide certain HUD elements*/
@@ -854,6 +855,7 @@ and(global.character_select_in_this_menu="level_editor")
 	can_input_player2_name = false;
 	can_input_player3_name = false;
 	can_input_player4_name = false;
+	can_input_level_name = false;
 	menu = "load_custom_level";
 }
 else

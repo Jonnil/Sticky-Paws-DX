@@ -133,10 +133,10 @@ global.voicepack_for_player_1 = 0; /*Player 1 Select Voicepack1*/
 global.voicepack_for_player_2 = 0; /*Player 2 Select Voicepack2*/
 global.voicepack_for_player_3 = 0; /*Player 3 Select Voicepack3*/
 global.voicepack_for_player_4 = 0; /*Player 4 Select Voicepack4*/
-global.player1_color=c_aqua;/*Player 1 Name Color, default:aqua*/
-global.player2_color=c_red;/*Player 1 Name Color, default:red*/
-global.player3_color=c_lime;/*Player 1 Name Color, default:lime*/
-global.player4_color=c_yellow;/*Player 1 Name Color, default:yellow*/
+global.player1_color=c_aqua;/*Player 1 Color, default:aqua*/
+global.player2_color=c_red;/*Player 1 Color, default:red*/
+global.player3_color=c_lime;/*Player 1 Color, default:lime*/
+global.player4_color=c_yellow;/*Player 1 Color, default:yellow*/
 global.player1_can_play = false; /*Player 1 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player2_can_play = false; /*Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player3_can_play = false; /*Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
@@ -288,6 +288,8 @@ global.player4_cancel_dive_by_pressing_opposite_direction = false;
 #region /*Universal Keyboard Remapping*/
 global.fullscreen_key=vk_f11;
 #endregion /*Universal Keyboard Remapping*/
+
+global.level_name=""; /*In the level editor, the name of the currently selected level will be stored here*/
 
 #region /*Player 1 Keyboard Remapping*/
 global.player1_name="";

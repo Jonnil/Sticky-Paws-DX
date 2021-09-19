@@ -408,7 +408,9 @@ if (title_logo_index>noone)
 	draw_sprite_ext(title_logo_index,image_index,
 	window_get_width()/2,
 	window_get_height()/2-100+title_y,
-	1,1,0,c_white,title_alpha);
+	window_get_height()/1080,
+	window_get_height()/1080,
+	0,c_white,title_alpha);
 }
 
 if (menu!="select_custom_level")
@@ -591,6 +593,7 @@ or(menu="profile_shortcut")
 or(menu="quit")
 {
 	select_custom_level_menu_open = false;
+	can_input_level_name = false;
 
 	#region /*Click Main Game*/
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+100+40,window_get_width()/2+185,window_get_height()/2+100+60+19))
