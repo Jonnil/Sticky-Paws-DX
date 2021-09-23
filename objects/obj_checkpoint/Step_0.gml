@@ -149,6 +149,7 @@ and(instance_exists(obj_player))
 				if (asset_get_type("room_leveleditor")==asset_room)
 				and (room = room_leveleditor)
 				and (global.character_select_in_this_menu = "game")
+				and (global.actually_play_edited_level = true)
 				{
 					ini_open(working_directory+"/File"+string(global.file)+".ini");
 					
@@ -165,13 +166,15 @@ and(instance_exists(obj_player))
 				if (asset_get_type("room_leveleditor")==asset_room)
 				and (room = room_leveleditor)
 				and (global.character_select_in_this_menu = "level_editor")
+				and (global.actually_play_edited_level = true)
 				{
 					#region /*Create directory for saving custom levels*/
-					if (!directory_exists(working_directory+"/Custom Levels"))
+					if (!directory_exists(working_directory+"/custom_characters"))
 					{
-						directory_create(working_directory+"/Custom Levels");
+						directory_create(working_directory+"/custom_characters");
 					}
 					#endregion /*Create directory for saving custom levels END*/
+					
 					ini_open(working_directory+"/custom_level_save.ini");
 					
 					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"x_checkpoint",global.x_checkpoint);

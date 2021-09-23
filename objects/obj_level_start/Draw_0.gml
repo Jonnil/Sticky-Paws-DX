@@ -126,11 +126,23 @@ or(global.actually_play_edited_level = true)
 		if (asset_get_type("obj_camera") == asset_object)
 		and(!instance_exists(obj_camera))
 		{
-			#region /*Load Checkpoint*/
-			if (file_exists(working_directory + "\Custom Levels\custom_level_save.ini"))
+			
+			#region /*Load Custom Level Checkpoint*/
+			if (file_exists(working_directory + "\File"+string(global.file)+".ini"))
+			and (global.character_select_in_this_menu = "main_game")
+			or (file_exists(working_directory + "\custom_level_save.ini"))
+			and (global.character_select_in_this_menu = "leveleditor")
 			{
-				ini_open(working_directory + "\Custom Levels\custom_level_save.ini");
-
+				if (global.character_select_in_this_menu = "main_game")
+				{
+					ini_open(working_directory + "\File"+string(global.file)+".ini");
+				}
+				else
+				if (global.character_select_in_this_menu = "leveleditor")
+				{
+					ini_open(working_directory + "\custom_level_save.ini");
+				}
+				
 				if (ini_key_exists("Level" + string(global.level_editor_level), "x_checkpoint"))
 				{
 					global.x_chekpoint = ini_read_real("Level" + string(global.level_editor_level), "x_checkpoint", 0);
@@ -155,12 +167,11 @@ or(global.actually_play_edited_level = true)
 				{
 					global.checkpoint_realmillisecond = ini_read_real("Level" + string(global.level_editor_level), "checkpoint_realmillisecond", 0);
 				}
-
+				
 				if (global.x_checkpoint > 0)
 				or(global.y_checkpoint > 0)
 				{
-					view_xview = global.x_checkpoint - view_wview / 2;
-					view_yview = global.y_checkpoint - view_hview / 2;
+					camera_set_view_pos(view_camera[view_current], global.x_checkpoint, global.y_checkpoint);
 					instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_camera);
 				}
 				else

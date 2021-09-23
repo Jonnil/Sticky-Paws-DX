@@ -577,9 +577,9 @@ and(delay=3)
 		if (asset_get_type("room_leveleditor")==asset_room)
 		and(room=room_leveleditor)
 		{
-			if (!directory_exists(working_directory+"/Custom Levels"))
+			if (!directory_exists(working_directory+"/custom_characters"))
 			{
-				directory_create(working_directory+"/Custom Levels");
+				directory_create(working_directory+"/custom_characters");
 			}
 			
 			#region /*Create directory for saving custom levels*/

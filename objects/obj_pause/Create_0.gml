@@ -102,9 +102,9 @@ and (room = room_leveleditor)
 and (global.character_select_in_this_menu = "level_editor")
 {
 	#region /*Create directory for saving custom levels*/
-	if (!directory_exists(working_directory+"/Custom Levels"))
+	if (!directory_exists(working_directory+"/custom_characters"))
 	{
-		directory_create(working_directory+"/Custom Levels");
+		directory_create(working_directory+"/custom_characters");
 	}
 	#endregion /*Create directory for saving custom levels END*/
 	ini_open(working_directory+"/custom_level_save.ini");

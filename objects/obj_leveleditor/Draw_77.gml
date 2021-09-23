@@ -54,12 +54,12 @@ if (quit_level_editor=3)
 {
 	if (global.select_level_index >= 1)
 	{
-		file_delete(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic_Thumbnail.png")
+		file_delete(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic_Thumbnail.png")
 	}
 	else
 	if (global.select_level_index <= 0)
 	{
-		file_delete(working_directory+"/Custom Levels/"+string(global.level_name)+"/Automatic_Thumbnail.png")
+		file_delete(working_directory+"/custom_levels/"+string(global.level_name)+"/Automatic_Thumbnail.png")
 	}
 	var thumbnail_sprite;
 	thumbnail_sprite = sprite_create_from_surface(application_surface,
@@ -74,12 +74,12 @@ if (quit_level_editor=3)
 	false,true,0,0);
 	if (global.select_level_index >= 1)
 	{
-		sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic_Thumbnail.png");
+		sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Automatic_Thumbnail.png");
 	}
 	else
 	if (global.select_level_index <= 0)
 	{
-		sprite_save(thumbnail_sprite,0,working_directory+"/Custom Levels/"+string(global.level_name)+"/Automatic_Thumbnail.png");
+		sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/"+string(global.level_name)+"/Automatic_Thumbnail.png");
 	}
 	sprite_delete(thumbnail_sprite);
 }
@@ -92,15 +92,15 @@ and(global.character_select_in_this_menu="level_editor")
 	
 	#region /*Create directory for saving custom levels*/
 	if (global.select_level_index >= 1)
-	and (!directory_exists(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
+	and (!directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
 	{
-		directory_create(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)));
+		directory_create(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)));
 	}
 	else
 	if (global.select_level_index <= 0)
-	and (!directory_exists(working_directory+"/Custom Levels/"+string(global.level_name)))
+	and (!directory_exists(working_directory+"/custom_levels/"+string(global.level_name)))
 	{
-		directory_create(working_directory+"/Custom Levels/"+string(global.level_name));
+		directory_create(working_directory+"/custom_levels/"+string(global.level_name));
 	}
 	#endregion /*Create directory for saving custom levels END*/
 	
@@ -109,12 +109,12 @@ and(global.character_select_in_this_menu="level_editor")
 	var file,str;
 	if (global.select_level_index >= 1)
 	{
-		file=file_text_open_write(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/Object_Placement.txt"); /*Open file for writing*/
+		file=file_text_open_write(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/Object_Placement.txt"); /*Open file for writing*/
 	}
 	else
 	if (global.select_level_index <= 0)
 	{
-		file=file_text_open_write(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data/Object_Placement.txt"); /*Open file for writing*/
+		file=file_text_open_write(working_directory+"/custom_levels/"+string(global.level_name)+"/data/Object_Placement.txt"); /*Open file for writing*/
 	}
 	str=""; /*Reset string var*/
 	
@@ -145,12 +145,12 @@ and(global.character_select_in_this_menu="level_editor")
 	{
 		if (global.select_level_index >= 1)
 		{
-			ini_open(working_directory+"/Custom Levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data/level_information.ini");
+			ini_open(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
 		}
 		else
 		if (global.select_level_index <= 0)
 		{
-			ini_open(working_directory+"/Custom Levels/"+string(global.level_name)+"/Data/level_information.ini");
+			ini_open(working_directory+"/custom_levels/"+string(global.level_name)+"/data/level_information.ini");
 		}
 		ini_write_string("Info","level_name",level_name);
 		if (instance_exists(obj_level_start))

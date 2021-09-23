@@ -82,16 +82,16 @@ global.hud_show_score = false;
 /*File Handeling*/
 
 #region /*Create directory for saving custom levels*/
-if (!directory_exists(working_directory+"\Custom Levels"))
+if (!directory_exists(working_directory+"\custom_levels"))
 {
-	directory_create(working_directory+"\Custom Levels");
+	directory_create(working_directory+"\custom_levels");
 }
 #endregion /*Create directory for saving custom levels END*/
 
 #region /*Create a readme file in custom levels folder explaining how to use the level editor*/
 if (leveleditor_readme>noone)
 {
-	leveleditor_readme_file=file_text_open_write(working_directory+"\Custom Levels\readme.txt");
+	leveleditor_readme_file=file_text_open_write(working_directory+"\custom_levels\readme.txt");
 	/*Write readme textfile*/
 	file_text_write_string(leveleditor_readme_file,leveleditor_readme);
 	file_text_close(leveleditor_readme_file);
@@ -99,17 +99,17 @@ if (leveleditor_readme>noone)
 #endregion /*Create a readme file in custom levels folder explaining how to use the level editor END*/
 
 #region /*Create directory for saving custom characters*/
-if (!directory_exists("Custom Characters"))
+if (!directory_exists(working_directory+"\custom_characters"))
 {
-	directory_create("Custom Characters");
+	directory_create(working_directory+"\custom_characters");
 }
 #endregion /*Create directory for saving custom characters END*/
 
 #region /*Unzip custom level files*/
-if (file_exists(working_directory+"Custom Levels/level_data.zip"))
+if (file_exists(working_directory+"custom_levels/*.zip"))
 {
-	zip_unzip(working_directory+"Custom Levels/level_data.zip",working_directory+"Custom Levels/");
-	file_delete(working_directory+"Custom Levels/level_data.zip");/*Delete the zip file after it's been unzip*/
+	zip_unzip(working_directory+"custom_levels/*.zip",working_directory+"custom_levels/");
+	file_delete(working_directory+"custom_levels/*.zip");/*Delete the zip file after it's been unzip*/
 }
 #endregion /*Unzip custom level files END*/
 

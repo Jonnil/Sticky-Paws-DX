@@ -1,7 +1,8 @@
-if (distance_to_object(obj_player)<2000)
+if (distance_to_object(obj_camera)<500)
 if (global.music != snd_music_boss)
 {
 	audio_stop_sound(global.music);
+	audio_stop_sound(global.music_underwater);
 	global.music = snd_music_boss;
 }
 

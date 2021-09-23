@@ -18,6 +18,7 @@
 //draw_text_outlined(x,y-96,string(pressing_opposite_direction_to_drop_off_from_wall),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x,y-96,string(wall_jump),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x,y-96,string(joystick_can_ground_pound),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x,y-96,string(global.music_underwater),global.default_text_size,c_white,c_black,1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart")==asset_sprite)
@@ -30,6 +31,8 @@ and(have_heart_balloon=true)
 	and(!key_down)
 	and(!place_meeting(x,y-16,obj_wall))
 	and(!place_meeting(x,y-32,obj_wall))
+	and(!place_meeting(x,y-48,obj_wall))
+	and(!place_meeting(x,y-64,obj_wall))
 	{
 		xx_heart=lerp(xx_heart,x,0.1);
 		yy_heart=lerp(yy_heart,y+32,0.1);
