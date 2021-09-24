@@ -131,14 +131,14 @@ or(global.actually_play_edited_level = true)
 			if (file_exists(working_directory + "\File"+string(global.file)+".ini"))
 			and (global.character_select_in_this_menu = "main_game")
 			or (file_exists(working_directory + "\custom_level_save.ini"))
-			and (global.character_select_in_this_menu = "leveleditor")
+			and (global.character_select_in_this_menu = "level_editor")
 			{
 				if (global.character_select_in_this_menu = "main_game")
 				{
 					ini_open(working_directory + "\File"+string(global.file)+".ini");
 				}
 				else
-				if (global.character_select_in_this_menu = "leveleditor")
+				if (global.character_select_in_this_menu = "level_editor")
 				{
 					ini_open(working_directory + "\custom_level_save.ini");
 				}

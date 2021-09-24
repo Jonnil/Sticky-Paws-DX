@@ -1,1 +1,1 @@
-level = 7;
+level = 6;

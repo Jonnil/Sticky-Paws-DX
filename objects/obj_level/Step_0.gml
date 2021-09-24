@@ -34,7 +34,6 @@ if (initialize_level_timer = 1)
 	}
 	else
 	{
-		//ini_open("File" + string(global.file) + ".ini");
 		ini_write_string("Level" + string(level), "clear_rate", "closed");
 		clear_rate = "closed";
 		number_of_clears = 0;
@@ -57,13 +56,7 @@ if (initialize_level_timer = 1)
 		level_score = 0;
 	}
 	
-	#region /*Make next level enterable if you have cleared this level*/
-	if (clear_rate = "closed")
-	and(level = 1+string(ini_read_real("Player","number_of_levels_cleared",0)))
-	{
-		clear_rate = "enter";
-	}
-	#endregion /*Make next level enterable if you have cleared this level END*/
+	scr_unlock_next_level();
 	
 	ini_close();
 	#endregion /*Level Load END*/

@@ -532,7 +532,7 @@ function scr_select_custom_level_menu()
 	
 	#region /*Enter Custom Level*/
 	if (iris_xscale<=0.001)
-	and (global.character_select_in_this_menu="level_editor")
+	and (global.character_select_in_this_menu = "level_editor")
 	{
 		if (asset_get_type("snd_music_titlescreen")==asset_sound)
 		{

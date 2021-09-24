@@ -1,9 +1,9 @@
 ///scr_loadconfig()
 function scr_loadconfig()
 {
-	if (file_exists("Config.ini"))
+	if (file_exists("config.ini"))
 	{
-		ini_open("Config.ini");
+		ini_open("config.ini");
 		
 		if (ini_key_exists("Config","difficulty")){global.difficulty=ini_read_real("Config","difficulty",0);}
 		if (ini_key_exists("Config","automatically_pause_when_window_is_unfocused")){global.automatically_pause_when_window_is_unfocused=ini_read_real("Config","automatically_pause_when_window_is_unfocused",0);}

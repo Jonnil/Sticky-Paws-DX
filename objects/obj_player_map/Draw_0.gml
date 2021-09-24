@@ -1,5 +1,7 @@
 scr_set_screen_size();
 
+draw_text_outlined(x,y-96,string(global.select_level_index),global.default_text_size,c_white,c_black,1);
+
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/
@@ -1191,7 +1193,7 @@ and(speed = 0)
 #endregion /*Enter Level END*/
 
 global.current_level = instance_nearest(x, y, obj_level).level;
-global.select_level_index = instance_nearest(x, y, obj_level).level-1;
+global.select_level_index = instance_nearest(x, y, obj_level).level;
 
 #region /*After pressing "Enter Level", the iris should shrink and then start the level*/
 if (can_move = false)
@@ -1218,7 +1220,7 @@ and(global.quit_level = false)
 	sprite_delete(global.custom_foreground2);
 	
 	#region /*Load Main Game Levels*/
-	if (global.character_select_in_this_menu="game")
+	if (global.character_select_in_this_menu = "main_game")
 	{
 			
 	#region /*Update Background1*/
@@ -1429,7 +1431,7 @@ and(global.quit_level = false)
 	
 	#region /*Load Custom Levels*/
 	
-	if (global.character_select_in_this_menu="level_editor")
+	if (global.character_select_in_this_menu = "level_editor")
 	{
 	
 	#region /*Update Background1*/
@@ -1640,13 +1642,13 @@ and(global.quit_level = false)
 	#region /*Level Tileset File*/
 	sprite_delete(global.custom_tileset);
 		
-	if (global.character_select_in_this_menu = "game")
+	if (global.character_select_in_this_menu = "main_game")
 	and(file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Tilesets/ground_tileset.png"))
 	{
 		global.custom_tileset = sprite_add("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Tilesets/ground_tileset.png",0,false,false,0,0);
 	}
 	else
-	if (global.character_select_in_this_menu="level_editor")
+	if (global.character_select_in_this_menu = "level_editor")
 	and(file_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Tilesets/ground_tileset.png"))
 	{
 		global.custom_tileset = sprite_add(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Tilesets/ground_tileset.png",0,false,false,0,0);
@@ -1737,14 +1739,21 @@ and(move_delay > 10)
 	if (instance_nearest(x, y, obj_level).clear_rate = "enter")
 	or (instance_nearest(x, y, obj_level).clear_rate = "clear")
 	{
-
+		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-
+		
+		#region /*Number of times played*/
+		if (instance_nearest(x, y, obj_level).number_of_clears > 0)
+		{
+			draw_text_outlined(x, y - 64, "Times Cleared: " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
+		}
+		#endregion /*Number of times played END*/
+		
 		#region /*Show High Score*/
 		if (instance_nearest(x, y, obj_level).level_score > 0)
 		{
-			draw_text_outlined(x, y - 64, "Best Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y - 96, "Best Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show High Score END*/
 
@@ -1752,50 +1761,50 @@ and(move_delay > 10)
 		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
 		and(instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
 		{
-			draw_text_outlined(x, y - 96, "Best Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y - 128, "Best Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show Fastest Time END*/
 
 		#region /*Show Star Coin*/
 		if (instance_nearest(x, y, obj_level).big_collectible1 = true)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 128, 0.3, 0.3, 0, c_white, 1);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 160, 0.3, 0.3, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 128, 0.3, 0.3, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
 		}
 		if (instance_nearest(x, y, obj_level).big_collectible2 = true)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 128, 0.3, 0.3, 0, c_white, 1);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 160, 0.3, 0.3, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 128, 0.3, 0.3, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
 		}
 		if (instance_nearest(x, y, obj_level).big_collectible3 = true)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 128, 0.3, 0.3, 0, c_white, 1);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 160, 0.3, 0.3, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 128, 0.3, 0.3, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
 		}
 		if (instance_nearest(x, y, obj_level).big_collectible4 = true)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 128, 0.3, 0.3, 0, c_white, 1);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 160, 0.3, 0.3, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 128, 0.3, 0.3, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
 		}
 		if (instance_nearest(x, y, obj_level).big_collectible5 = true)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 128, 0.3, 0.3, 0, c_white, 1);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 160, 0.3, 0.3, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 128, 0.3, 0.3, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
 		}
 		#endregion /*Show Star Coin END*/
 		
@@ -1819,20 +1828,6 @@ and(asset_get_type("room_ending_cutscene") == asset_room)
 {
 	room_goto(room_ending_cutscene);
 }
-
-#region /*Starting Levels*/
-if (asset_get_type("obj_level") == asset_object)
-{
-	with(obj_level)
-	{
-		if (clear_rate = "closed")
-		and(level = 1)
-		{
-			clear_rate = "enter";
-		}
-	}
-}
-#endregion /*Starting Levels END*/
 
 #region /*Give the player lives if they get a game over*/
 if (lives <= 0)

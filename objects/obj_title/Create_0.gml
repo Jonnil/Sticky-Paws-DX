@@ -44,12 +44,12 @@ if (global.narrator=1)
 
 #region /*Create directories*/
 
-#region /*Create directory for saving custom levels*/
+#region /*Create directory for saving custom characters*/
 if (!directory_exists(working_directory+"/custom_characters"))
 {
 	directory_create(working_directory+"/custom_characters");
 }
-#endregion /*Create directory for saving custom levels END*/
+#endregion /*Create directory for saving custom characters END*/
 
 #region /*Create directory for saving custom levels*/
 if (!directory_exists(working_directory+"/custom_levels"))
@@ -835,7 +835,7 @@ lives=5;
 level_name="";
 
 #region /*If title screen should start at the level editor menu or the main menu*/
-if (global.character_select_in_this_menu="level_editor")
+if (global.character_select_in_this_menu = "level_editor")
 {
 	scr_load_custom_level_initializing();
 	can_input_player1_name = false;

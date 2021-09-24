@@ -152,7 +152,7 @@ global.hex_color_for_player_4=c_white;/*Player 1 Hex Value Color*/
 global.level_editor_level=0;/*What level is selected in the custom level editor*/
 global.play_edited_level=false;/*Playtest edited level*/
 global.actually_play_edited_level=false;/*Actually playing finished edited level*/
-global.character_select_in_this_menu="game";/*In what menu character select is going to appear in*/
+global.character_select_in_this_menu = "main_game";/*In what menu character select is going to appear in*/
 global.difficulty = 1; /*Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard*/
 global.automatically_pause_when_window_is_unfocused = true; /*Whenever you unfocus the window by clicking off the window, the game pauses by itself*/
 global.show_timer = false; /*Show a countup timer or not*/

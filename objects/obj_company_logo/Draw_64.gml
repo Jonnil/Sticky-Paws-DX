@@ -114,7 +114,7 @@ and(keyboard_check_pressed(global.fullscreen_key))
 	{
 		window_set_fullscreen(true);
 	}
-	ini_open("Config.ini");
+	ini_open("config.ini");
 	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
 	ini_close();
 }

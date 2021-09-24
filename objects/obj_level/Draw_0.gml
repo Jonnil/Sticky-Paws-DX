@@ -46,6 +46,14 @@ and(clear_rate != "clear")
 	clear_rate = "closed";
 }
 
+#region /*Starting Levels*/
+if (clear_rate = "closed")
+and(level = 0)
+{
+	clear_rate = "enter";
+}
+#endregion /*Starting Levels END*/
+
 #region /*Draw level sprite*/
 if (asset_get_type("spr_level_ring") == asset_sprite)
 {
@@ -63,21 +71,12 @@ if (asset_get_type("spr_level_crown") == asset_sprite)
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_text_transformed_color(x - 2, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
-draw_text_transformed_color(x + 2, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
-draw_text_transformed_color(x, y - 2, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
-draw_text_transformed_color(x, y + 2, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_black, c_black, c_black, c_black, image_alpha);
-draw_text_transformed_color(x, y, string(level), global.default_text_size * 2, global.default_text_size * 2, 0, c_white, c_white, c_white, c_white, image_alpha);
+draw_text_outlined(x, y, string(level+1), global.default_text_size * 2, c_black, c_white, image_alpha);
 
 if (global.demo = true)
 and(level > global.demo_max_levels)
 {
 	instance_destroy();
-}
-
-if (clear_rate = 0)
-{
-	clear_rate = "closed";
 }
 
 #region /*Level Save*/

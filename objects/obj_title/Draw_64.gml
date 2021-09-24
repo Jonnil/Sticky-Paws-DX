@@ -340,7 +340,7 @@ and(keyboard_check_pressed(global.fullscreen_key))
 	{
 		window_set_fullscreen(true);
 	}
-	ini_open("Config.ini");
+	ini_open("config.ini");
 	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
 	ini_close();
 }
@@ -467,7 +467,7 @@ or(menu="file3")
 	if (menu="file1")
 	{
 		global.file=1;
-		global.character_select_in_this_menu="game";
+		global.character_select_in_this_menu = "main_game";
 		if (file_exists("File1.ini"))
 		{
 			ini_open("File1.ini");
@@ -494,7 +494,7 @@ or(menu="file3")
 	if (menu="file2")
 	{
 		global.file=2;
-		global.character_select_in_this_menu="game";
+		global.character_select_in_this_menu = "main_game";
 		if (file_exists("File2.ini"))
 		{
 			ini_open("File2.ini");
@@ -521,7 +521,7 @@ or(menu="file3")
 	if (menu="file3")
 	{
 		global.file=3;
-		global.character_select_in_this_menu="game";
+		global.character_select_in_this_menu = "main_game";
 		if (file_exists("File3.ini"))
 		{
 			ini_open("File3.ini");
@@ -606,7 +606,7 @@ or(menu="quit")
 		player2_accept_selection=-1;
 		player3_accept_selection=-1;
 		player4_accept_selection=-1;
-		global.character_select_in_this_menu="game";
+		global.character_select_in_this_menu = "main_game";
 		in_settings=false;
 		global.file = 1;
 		global.actually_play_edited_level=false;
@@ -658,7 +658,7 @@ or(menu="quit")
 			}
 			global.actually_play_edited_level=false;
 			global.play_edited_level=false;
-			global.character_select_in_this_menu="level_editor";
+			global.character_select_in_this_menu = "level_editor";
 			if (global.can_select_number_of_players=true)
 			{
 				if (global.select_number_of_players_before_selecting_characters=true)
@@ -843,7 +843,7 @@ or(menu="quit")
 
 	if (menu="main_game")
 	{
-		global.character_select_in_this_menu="game";
+		global.character_select_in_this_menu = "main_game";
 	}
 
 	if (asset_get_type("room_leveleditor")==asset_room)
@@ -853,7 +853,7 @@ or(menu="quit")
 		{
 			global.level_editor_level=0;
 		}
-		global.character_select_in_this_menu="level_editor"; /*No custom level is selected before you go into the level editor*/
+		global.character_select_in_this_menu = "level_editor"; /*No custom level is selected before you go into the level editor*/
 	}
 
 	draw_menu_button(window_get_width()/2-185,window_get_height()/2+100+40,"Main Game","main_game","main_game");
@@ -1580,7 +1580,7 @@ and(menu_delay=0)
 	global.actually_play_edited_level=false;
 	global.play_edited_level=false;
 	global.file=1;
-	global.character_select_in_this_menu="game";
+	global.character_select_in_this_menu = "main_game";
 	if (global.can_select_number_of_players=true)
 	{
 		if (global.select_number_of_players_before_selecting_characters=false)
@@ -1854,7 +1854,7 @@ or(menu="4player")
 		}
 		else
 		{
-			if (global.character_select_in_this_menu="game")
+			if (global.character_select_in_this_menu = "main_game")
 			{
 				can_navigate=false;
 				menu_delay=999;
@@ -1894,7 +1894,7 @@ or(menu="4player")
 		}
 		else
 		{
-			if (global.character_select_in_this_menu="game")
+			if (global.character_select_in_this_menu = "main_game")
 			{
 				can_navigate=false;
 				menu_delay=999;
@@ -1934,7 +1934,7 @@ or(menu="4player")
 		}
 		else
 		{
-			if (global.character_select_in_this_menu="game")
+			if (global.character_select_in_this_menu = "main_game")
 			{
 				can_navigate=false;
 				menu_delay=999;
@@ -1974,7 +1974,7 @@ or(menu="4player")
 		}
 		else
 		{
-			if (global.character_select_in_this_menu="game")
+			if (global.character_select_in_this_menu = "main_game")
 			{
 				can_navigate=false;
 				menu_delay=999;
@@ -2049,7 +2049,7 @@ and(iris_xscale<=0.001)
 	
 	#region /*Play Level Editor*/
 	if (menu="level_editor_play")
-	and(global.character_select_in_this_menu="level_editor")
+	and(global.character_select_in_this_menu = "level_editor")
 	{
 		if (asset_get_type("snd_music_titlescreen")==asset_sound)
 		{
@@ -2276,13 +2276,13 @@ and(iris_xscale<=0.001)
 			#region /*Custom Level Tileset File*/
 			sprite_delete(global.custom_tileset);
 			
-			if (global.character_select_in_this_menu="game")
+			if (global.character_select_in_this_menu = "main_game")
 			and(file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Tilesets/ground_tileset.png"))
 			{
 				global.custom_tileset = sprite_add("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/Tilesets/ground_tileset.png",0,false,false,0,0);
 			}
 			else
-			if (global.character_select_in_this_menu="level_editor")
+			if (global.character_select_in_this_menu = "level_editor")
 			and(file_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Tilesets/ground_tileset.png"))
 			{
 				global.custom_tileset = sprite_add(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Tilesets/ground_tileset.png",0,false,false,0,0);
@@ -2304,7 +2304,7 @@ and(iris_xscale<=0.001)
 	
 	#region /*Make Level Editor*/
 	if (menu="level_editor_make")
-	and(global.character_select_in_this_menu="level_editor")
+	and(global.character_select_in_this_menu = "level_editor")
 	{
 		if (asset_get_type("snd_music_titlescreen")==asset_sound)
 		{
@@ -2635,7 +2635,7 @@ if (key_b_pressed)
 	{
 		if (menu_delay=0)
 		{
-			if (global.character_select_in_this_menu="game")
+			if (global.character_select_in_this_menu = "main_game")
 			{
 				if (global.file=1)
 				{

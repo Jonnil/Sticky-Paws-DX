@@ -161,29 +161,29 @@ image_index=0;
 
 
 #region /*Load Level Information*/
-if (global.character_select_in_this_menu="game")
+if (global.character_select_in_this_menu = "main_game")
 and(file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
 
-or(global.character_select_in_this_menu="level_editor")
+or(global.character_select_in_this_menu = "level_editor")
 and (global.select_level_index >= 1)
 and(file_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini"))
 
-or(global.character_select_in_this_menu="level_editor")
+or(global.character_select_in_this_menu = "level_editor")
 and (global.select_level_index <= 0)
 and(file_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/data/level_information.ini"))
 {
-	if (global.character_select_in_this_menu="game")
+	if (global.character_select_in_this_menu = "main_game")
 	{
 		ini_open("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini");
 	}
 	else
-	if (global.character_select_in_this_menu="level_editor")
+	if (global.character_select_in_this_menu = "level_editor")
 	and (global.select_level_index >= 1)
 	{
 		ini_open(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
 	}
 	else
-	if (global.character_select_in_this_menu="level_editor")
+	if (global.character_select_in_this_menu = "level_editor")
 	and (global.select_level_index <= 0)
 	{
 		ini_open(working_directory+"/custom_levels/"+string(global.level_name)+"/data/level_information.ini");
@@ -194,7 +194,7 @@ and(file_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_string("Info","level_name",0);
 		}
@@ -206,7 +206,7 @@ and(file_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_string("Info","time_countdown",noone);
 		}
@@ -301,7 +301,7 @@ with(obj_leveleditor_placed_object)
 #endregion /*Destory all placed objects before loading the level, just in case there is leftover placed objects END*/
 
 #region /*Load Main Game Level*/
-if (global.character_select_in_this_menu="game")
+if (global.character_select_in_this_menu = "main_game")
 {
 	
 	#region /*Object Placement*/
@@ -423,7 +423,7 @@ if (global.character_select_in_this_menu="game")
 else
 
 #region /*Load Level Editor Level*/
-if (global.character_select_in_this_menu="level_editor")
+if (global.character_select_in_this_menu = "level_editor")
 {
 	
 	#region /*Create directories*/

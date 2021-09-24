@@ -295,6 +295,7 @@
     {"id":{"name":"spr_title","path":"sprites/spr_title/spr_title.yy",},"order":32,},
     {"id":{"name":"obj_hard_block","path":"objects/obj_hard_block/obj_hard_block.yy",},"order":6,},
     {"id":{"name":"obj_company_logo","path":"objects/obj_company_logo/obj_company_logo.yy",},"order":3,},
+    {"id":{"name":"scr_unlock_next_level","path":"scripts/scr_unlock_next_level/scr_unlock_next_level.yy",},"order":18,},
     {"id":{"name":"snd_incorrect","path":"sounds/snd_incorrect/snd_incorrect.yy",},"order":61,},
     {"id":{"name":"obj_player_die","path":"objects/obj_player_die/obj_player_die.yy",},"order":14,},
     {"id":{"name":"obj_tongue","path":"objects/obj_tongue/obj_tongue.yy",},"order":4,},

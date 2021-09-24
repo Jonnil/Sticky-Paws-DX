@@ -7,7 +7,8 @@ level_perfect = false;
 enter_blink = 0;
 initialize_level_timer = 0;
 
-if (file_exists("File" + string(global.file) + ".ini"))
+if (global.file >= 1)
+and (file_exists("File" + string(global.file) + ".ini"))
 {
 	ini_open("File" + string(global.file) + ".ini");
 
@@ -36,7 +37,6 @@ if (file_exists("File" + string(global.file) + ".ini"))
 	}
 	else
 	{
-		//ini_open("File" + string(global.file) + ".ini");
 		ini_write_string("Level" + string(level), "clear_rate", "closed");
 		clear_rate = "closed";
 		number_of_clears = 0;
@@ -62,11 +62,33 @@ if (file_exists("File" + string(global.file) + ".ini"))
 	#endregion /*Level Load END*/
 	
 }
-
 else
+if (global.file >= 1)
 {
 	ini_open("File" + string(global.file) + ".ini");
 	ini_write_string("Level" + string(level), "clear_rate", "closed");
+	clear_rate = "closed";
+	number_of_clears = 0;
+	big_collectible1 = false;
+	big_collectible2 = false;
+	big_collectible3 = false;
+	big_collectible4 = false;
+	big_collectible5 = false;
+	lives_until_assist = 0;
+	x_checkpoint = false;
+	y_checkpoint = false;
+	checkpoint_millisecond = 0;
+	checkpoint_second = 0;
+	checkpoint_minute = 0;
+	checkpoint_realmillisecond = 0;
+	timeattack_millisecond = 0;
+	timeattack_second = 0;
+	timeattack_minute = 0;
+	timeattack_realmillisecond = 999999999;
+	level_score = 0;
+}
+else
+{
 	clear_rate = "closed";
 	number_of_clears = 0;
 	big_collectible1 = false;

@@ -91,7 +91,7 @@ and(undo_value<=obj_leveleditor.current_undo_value)
 if (asset_get_type("obj_leveleditor")==asset_object)
 and(instance_exists(obj_leveleditor))
 and(sprite_index>0)
-and(global.character_select_in_this_menu="level_editor")
+and(global.character_select_in_this_menu = "level_editor")
 {
 
 	#region /*Show only normal difficulty layer in regular colors when saving a thumbnail*/
@@ -424,7 +424,7 @@ and(global.character_select_in_this_menu="level_editor")
 }
 else
 if (sprite_index > 0)
-and(global.character_select_in_this_menu="level_editor")
+and(global.character_select_in_this_menu = "level_editor")
 {
 	draw_sprite_ext(sprite_index,image_index,x,y,1,draw_yscale,draw_angle,c_white,1);
 	image_alpha = 1;
@@ -576,13 +576,8 @@ and(delay=3)
 		#region /*Reset Level Editor Checkpoint*/
 		if (asset_get_type("room_leveleditor")==asset_room)
 		and(room=room_leveleditor)
+		and (global.character_select_in_this_menu = "level_editor")
 		{
-			if (!directory_exists(working_directory+"/custom_characters"))
-			{
-				directory_create(working_directory+"/custom_characters");
-			}
-			
-			#region /*Create directory for saving custom levels*/
 			ini_open(working_directory+"/custom_level_save.ini");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"x_checkpoint");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"y_checkpoint");
@@ -590,9 +585,7 @@ and(delay=3)
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_second");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_minute");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"checkpoint_realmillisecond");
-			ini_close();
-			#endregion /*Create directory for saving custom levels END*/
-			
+			ini_close();			
 		}
 		#endregion /*Reset Level Editor Checkpoint END*/
 		

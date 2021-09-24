@@ -11967,7 +11967,7 @@ and(obj_camera.iris_xscale<3)
 {
 	
 	#region /*Don't go outside view boundary*/
-	if (goal=true)
+	if (goal = true)
 	and(global.time_countdown_bonus<=0)
 	{
 		if (instance_exists(obj_camera))
@@ -11983,9 +11983,9 @@ and(obj_camera.iris_xscale<3)
 				if (obj_camera.iris_yscale<=0.001)
 				{
 					audio_stop_all();
-					global.level_clear_rate="clear";
-					global.x_checkpoint=false;
-					global.y_checkpoint=false;
+					global.level_clear_rate = "clear";
+					global.x_checkpoint=0;
+					global.y_checkpoint=0;
 					global.checkpoint_millisecond=0;
 					global.checkpoint_second=0;
 					global.checkpoint_minute=0;
@@ -11994,7 +11994,7 @@ and(obj_camera.iris_xscale<3)
 					global.theme="ground";
 					if (global.actually_play_edited_level=false)
 					and(global.play_edited_level=true)
-					and(global.character_select_in_this_menu="level_editor")
+					and(global.character_select_in_this_menu = "level_editor")
 					{
 						global.actually_play_edited_level=false;
 						global.play_edited_level=false;
@@ -12003,7 +12003,7 @@ and(obj_camera.iris_xscale<3)
 					else
 					if (global.actually_play_edited_level=true)
 					and(global.play_edited_level=true)
-					and(global.character_select_in_this_menu="level_editor")
+					and(global.character_select_in_this_menu = "level_editor")
 					and(asset_get_type("room_title")==asset_room)
 					{						
 						global.actually_play_edited_level=false;
@@ -12014,20 +12014,13 @@ and(obj_camera.iris_xscale<3)
 					if (global.trigger_ending=true)
 					and(asset_get_type("room_ending_cutscene")==asset_room)
 					{
-						if (asset_get_type("scr_savelevel")==asset_script)
-						{
-							scr_savelevel();
-						}
+						scr_savelevel();
 						room_goto(room_ending_cutscene);
 					}
 					else
 					if (asset_get_type("room_level_select")==asset_room)
-					and(obj_camera.iris_yscale<=0.001)
 					{
-						if (asset_get_type("scr_savelevel")==asset_script)
-						{
-							scr_savelevel();
-						}
+						scr_savelevel();
 						room_goto(room_level_select);
 					}
 				}
@@ -12100,7 +12093,7 @@ else
 {
 	
 	#region /*Don't go outside view boundary*/
-	if (goal=true)
+	if (goal = true)
 	and(global.time_countdown_bonus<=0)
 	{
 		if (asset_get_type("obj_camera")==asset_object)
@@ -12214,7 +12207,7 @@ else
 #endregion /*Winning the level and transitioning to the next area END*/
 
 #region /*Don't let the player outside the view too much when winning*/
-if (goal=true)
+if (goal = true)
 {
 	if (x<camera_get_view_x(view_camera[view_current])-32)
 	{
@@ -12266,7 +12259,7 @@ and(keyboard_check_pressed(global.fullscreen_key))
 	{
 		window_set_fullscreen(true);
 	}
-	ini_open("Config.ini");
+	ini_open("config.ini");
 	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
 	ini_close();
 }
@@ -13807,7 +13800,7 @@ and(global.pause=false)
 #endregion /*If player is allowed to move END*/
 
 #region /*If player has finished the level, make the player run off to the right off screen, and disable player control*/
-if (goal=true)
+if (goal = true)
 and(global.time_countdown_bonus<=0)
 {
 	hspeed+=0.3;
@@ -16317,28 +16310,17 @@ if (asset_get_type("obj_water")==asset_object)
 #region /*Drowning*/
 if (allow_drowning = true)
 {
-	
-	if (millisecond_until_drowning > (seconds_until_drowning*60))
-	{
-		millisecond_until_drowning = (seconds_until_drowning*60)
-	}
-	if (millisecond_until_drowning < 0)
-	{
-		millisecond_until_drowning = 0;
-	}
-	
 	if (in_water = true)
 	{
-		millisecond_until_drowning -=1;
-		if (millisecond_until_drowning < 0)
+		frames_until_drowning = clamp(frames_until_drowning-1, 0, seconds_until_drowning*60-1);
+		if (frames_until_drowning <= 0)
 		{
-			millisecond_until_drowning = 0;
 			hp -= 2;
 		}
 	}
 	else
 	{
-		millisecond_until_drowning +=12; /*12 frames = 0.2 seconds*/
+		frames_until_drowning +=12; /*12 frames = 0.2 seconds*/
 	}
 }
 #endregion /*Drowning END*/
@@ -16578,15 +16560,8 @@ if (die=true)
 	if (asset_get_type("room_leveleditor")==asset_room)
 	and(room=room_leveleditor)
 	and(global.actually_play_edited_level=true)
+	and (global.character_select_in_this_menu = "level_editor")
 	{
-		
-		#region /*Create directory for saving custom levels*/
-		if (!directory_exists(working_directory+"/custom_characters"))
-		{
-			directory_create(working_directory+"/custom_characters");
-		}
-		#endregion /*Create directory for saving custom levels END*/
-		
 		ini_open(working_directory+"/custom_level_save.ini");
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_millisecond",global.timeattack_millisecond);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_second",global.timeattack_second);
@@ -16892,7 +16867,7 @@ and(instance_exists(obj_goal))
 		}
 		else
 		if (x<instance_nearest(x,y,obj_goal).bbox_left+4)
-		and (goal=true)
+		and (goal = true)
 		{
 			x=instance_nearest(x,y,obj_goal).bbox_left+4;
 		}
@@ -16908,7 +16883,7 @@ and(instance_exists(obj_goal))
 			voice=audio_play_sound(voice_enter_goal,0,0);
 			audio_sound_gain(voice_enter_goal,global.voices_volume,0);
 			audio_sound_pitch(voice_enter_goal, default_voice_pitch);
-			goal=true;
+			goal = true;
 			global.goal_active=true;
 			if (invincible>100)
 			{
@@ -16940,7 +16915,7 @@ and(instance_exists(obj_goal))
 		}
 	}
 }
-if (goal=true)
+if (goal = true)
 and(global.time_countdown_bonus<=0)
 {
 	allow_ground_pound=false;
@@ -18080,7 +18055,7 @@ or(hspeed>-0.1)
 {
 	if (can_move=true)
 	and(goal=false)
-	or(goal=true)
+	or(goal = true)
 	{
 		if (speeddash=true)
 		{
@@ -18653,7 +18628,7 @@ or(hspeed > +0.1)
 {
 	if (can_move=true)
 	and(goal=false)
-	or(goal=true)
+	or(goal = true)
 	{
 		if (abs(hspeed)>=20)
 		{

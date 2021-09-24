@@ -87,7 +87,7 @@ if (quit_level_editor=3)
 
 #region /*Save Level*/
 if (quit_level_editor=4)
-and(global.character_select_in_this_menu="level_editor")
+and(global.character_select_in_this_menu = "level_editor")
 {
 	
 	#region /*Create directory for saving custom levels*/
@@ -141,7 +141,7 @@ and(global.character_select_in_this_menu="level_editor")
 	scr_save_objects_with_rotation_placement();
 	
 	#region /*Save Level Information*/
-	if (global.character_select_in_this_menu="level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
+	if (global.character_select_in_this_menu = "level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
 	{
 		if (global.select_level_index >= 1)
 		{

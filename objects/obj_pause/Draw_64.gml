@@ -122,7 +122,7 @@ and(keyboard_check_pressed(global.fullscreen_key))
 	{
 		window_set_fullscreen(true);
 	}
-	ini_open("Config.ini");
+	ini_open("config.ini");
 	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
 	ini_close();
 }
@@ -519,16 +519,16 @@ and(global.pause_room = room_leveleditor)
 	}
 	else
 	if(global.pause_room = room_leveleditor)
-	and(global.character_select_in_this_menu = "game")
+	and(global.character_select_in_this_menu = "main_game")
 	and (menu = "quit_to_map")
 	or(global.pause_room = room_leveleditor)
-	and(global.character_select_in_this_menu = "game")
+	and(global.character_select_in_this_menu = "main_game")
 	and(menu = "quit_to_title")
 	or(global.pause_room = room_leveleditor)
-	and(global.character_select_in_this_menu = "game")
+	and(global.character_select_in_this_menu = "main_game")
 	and(menu = "quit_to_desktop")
 	or(global.pause_room = room_leveleditor)
-	and(global.character_select_in_this_menu = "game")
+	and(global.character_select_in_this_menu = "main_game")
 	and(menu = "quit_nevermind")
 	{
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Map","quit_to_map","quit_to_map");
@@ -845,12 +845,12 @@ and(global.pause_room = room_leveleditor)
 			global.timeattack_minute = 0;
 			#endregion /*Reset timer back to zero END*/
 			
-			if (global.character_select_in_this_menu="game")
+			if (global.character_select_in_this_menu = "main_game")
 			{
 				ini_open("File"+string(global.file)+".ini");
 			}
 			else
-			if (global.character_select_in_this_menu="level_editor")
+			if (global.character_select_in_this_menu = "level_editor")
 			{
 				ini_open(working_directory+"/custom_level_save.ini");
 			}
@@ -962,7 +962,7 @@ and(global.pause_room = room_leveleditor)
 		{
 			menu_delay = 3;
 			if (global.pause_room = room_leveleditor)
-			and(global.character_select_in_this_menu = "game")
+			and(global.character_select_in_this_menu = "main_game")
 			{
 				menu_delay = 3;
 				menu = "quit_to_map";
@@ -1127,7 +1127,7 @@ and(global.pause_room = room_leveleditor)
 		{
 			menu_delay = 3;
 			if (global.pause_room = room_leveleditor)
-			and(global.character_select_in_this_menu = "game")
+			and(global.character_select_in_this_menu = "main_game")
 			{
 				menu = "quit_to_map";
 			}
@@ -1232,7 +1232,7 @@ and(global.pause_room = room_leveleditor)
 		{
 			menu_delay = 3;
 			if (global.pause_room = room_leveleditor)
-			and(global.character_select_in_this_menu = "game")
+			and(global.character_select_in_this_menu = "main_game")
 			{
 				menu = "quit_to_map";
 			}

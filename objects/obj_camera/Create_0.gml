@@ -28,7 +28,7 @@ if (file_exists(working_directory + "/custom_characters/Character"+string(global
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("sprite origin points", "lives_icon_xorig", 0);
 		}
@@ -43,7 +43,7 @@ if (file_exists(working_directory + "/custom_characters/Character"+string(global
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("sprite origin points", "lives_icon_yorig", 0);
 		}
@@ -279,7 +279,7 @@ and(room != room_title)
 	#region /*Update Music*/
 	/*OGG small letter File*/
 	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/music/music.ogg"))
-	and(global.character_select_in_this_menu="game")
+	and(global.character_select_in_this_menu = "main_game")
 	{
 		global.music = audio_create_stream("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/music/music.ogg");
 	}
@@ -298,7 +298,7 @@ and(room != room_title)
 	#region /*Update Music Underwater*/
 	/*OGG small letter File*/
 	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/music/music_underwater.ogg"))
-	and(global.character_select_in_this_menu="game")
+	and(global.character_select_in_this_menu = "main_game")
 	{
 		global.music_underwater = audio_create_stream("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/music/music_underwater.ogg");
 	}
@@ -323,17 +323,17 @@ else
 #endregion /*Custom Music END*/
 
 #region /*Initialize Background*/
-if (global.character_select_in_this_menu="game")
+if (global.character_select_in_this_menu = "main_game")
 and(file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
-or(global.character_select_in_this_menu="level_editor")
+or(global.character_select_in_this_menu = "level_editor")
 and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini"))
 {
-	if (global.character_select_in_this_menu="game")
+	if (global.character_select_in_this_menu = "main_game")
 	{
 		ini_open("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini");
 	}
 	else
-	if (global.character_select_in_this_menu="level_editor")
+	if (global.character_select_in_this_menu = "level_editor")
 	{
 		ini_open(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
 	}
@@ -346,7 +346,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
 		}
@@ -361,7 +361,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
 		}
@@ -378,7 +378,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
 		}
@@ -393,7 +393,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
 		}
@@ -410,7 +410,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
 		}
@@ -425,7 +425,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
 		}
@@ -442,7 +442,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
 		}
@@ -457,7 +457,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
 		}
@@ -474,7 +474,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
 		}
@@ -489,7 +489,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
 		}
@@ -506,7 +506,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
 		}
@@ -521,7 +521,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
 		}
@@ -538,7 +538,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
 		}
@@ -553,7 +553,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
 		}
@@ -570,7 +570,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
 		}
@@ -585,7 +585,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
 		}
@@ -618,17 +618,17 @@ else
 #endregion /*Initialize Background END*/
 
 #region /*Initialize Weather*/
-if (global.character_select_in_this_menu="game")
+if (global.character_select_in_this_menu = "main_game")
 and(file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
-or(global.character_select_in_this_menu="level_editor")
+or(global.character_select_in_this_menu = "level_editor")
 and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini"))
 {
-	if (global.character_select_in_this_menu="game")
+	if (global.character_select_in_this_menu = "main_game")
 	{
 		ini_open("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini");
 	}
 	else
-	if (global.character_select_in_this_menu="level_editor")
+	if (global.character_select_in_this_menu = "level_editor")
 	{
 		ini_open(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
 	}
@@ -640,7 +640,7 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	else
 	{
-		if (global.character_select_in_this_menu="level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_real("Info", "rain", false);
 		}

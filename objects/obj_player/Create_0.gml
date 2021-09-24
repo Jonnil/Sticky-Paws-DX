@@ -32,7 +32,7 @@ acceleration_on_ground = 0.3; /*How much acceleration the character has on groun
 acceleration_in_air = 0.3; /*How much acceleration the character has in air*/
 acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
 seconds_until_drowning = 10; /*How many seconds you can breathe underwater*/
-millisecond_until_drowning = seconds_until_drowning*60;
+frames_until_drowning = seconds_until_drowning*60;
 if (global.assist_enable = false)
 {
 	hp = 1; /*Starting HP*/
@@ -504,28 +504,28 @@ and(room != room_title)
 	#region /*Update Level Clear Melody*/
 	/*OGG small letter File*/
 	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/Melody/clear_melody.ogg"))
-	and(global.character_select_in_this_menu="game")
+	and(global.character_select_in_this_menu = "main_game")
 	{
 		level_clear_melody = audio_create_stream("/levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/Melody/clear_melody.ogg");
 	}
 	else
 	/*OGG big letter File*/
 	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/Melody/Clear_Melody.ogg"))
-	and(global.character_select_in_this_menu="game")
+	and(global.character_select_in_this_menu = "main_game")
 	{
 		level_clear_melody = audio_create_stream("/levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/Melody/Clear_Melody.ogg");
 	}
 	else
 	/*OGG small letter File*/
 	if (file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/Melody/clear_melody.ogg"))
-	and(global.character_select_in_this_menu="level_editor")
+	and(global.character_select_in_this_menu = "level_editor")
 	{
 		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/Melody/clear_melody.ogg");
 	}
 	else
 	/*OGG big letter File*/
 	if (file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/Melody/Clear_Melody.ogg"))
-	and(global.character_select_in_this_menu="level_editor")
+	and(global.character_select_in_this_menu = "level_editor")
 	{
 		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/Melody/Clear_Melody.ogg");
 	}

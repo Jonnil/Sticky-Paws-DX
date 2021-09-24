@@ -24,7 +24,7 @@ function scr_character_select_menu()
 	#endregion /*Select your character text END*/
 
 	#region /*Show Back key when you can go back to main menu*/
-	if (global.character_select_in_this_menu = "game")
+	if (global.character_select_in_this_menu = "main_game")
 	{
 		draw_menu_button(0,0,"Back","back_from_character_select","main_game");
 	}
@@ -4034,7 +4034,7 @@ and (player4_accept_selection >= 0)
 		and (can_input_player4_name = false)
 		and (menu_delay = 0)
 		{
-			if (global.character_select_in_this_menu = "game")
+			if (global.character_select_in_this_menu = "main_game")
 			{
 				can_navigate = false;
 				menu_delay = 999;
@@ -4214,7 +4214,7 @@ and (player4_accept_selection >= 0)
 			xx2 = player2_display_x;
 			xx3 = player3_display_x;
 			xx4 = player4_display_x;
-			if (global.character_select_in_this_menu = "game")
+			if (global.character_select_in_this_menu = "main_game")
 			{
 				menu = "main_game";
 			}

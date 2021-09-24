@@ -1,11 +1,11 @@
 ///scr_saveconfig()
 function scr_saveconfig()
 {
-	if (file_exists("Config.ini"))
+	if (file_exists("config.ini"))
 	{
-		file_delete("Config.ini");
+		file_delete("config.ini");
 	}
-	ini_open("Config.ini");
+	ini_open("config.ini");
 
 	ini_write_real("Config","difficulty",global.difficulty);
 	ini_write_real("Config","automatically_pause_when_window_is_unfocused",global.automatically_pause_when_window_is_unfocused);

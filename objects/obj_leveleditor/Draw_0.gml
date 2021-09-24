@@ -88,7 +88,7 @@ if (keyboard_check_pressed(global.fullscreen_key))
 	{
 		window_set_fullscreen(true);
 	}
-	ini_open("Config.ini");
+	ini_open("config.ini");
 	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
 	ini_close();
 }
@@ -1348,15 +1348,8 @@ if (quit_level_editor=0)
 				#region /*Reset Level Editor Checkpoint*/
 				if (asset_get_type("room_leveleditor")==asset_room)
 				and(room=room_leveleditor)
+				and (global.character_select_in_this_menu = "level_editor")
 				{
-					
-					#region /*Create directory for saving custom levels*/
-					if (!directory_exists(working_directory+"/custom_characters"))
-					{
-						directory_create(working_directory+"/custom_characters");
-					}
-					#endregion /*Create directory for saving custom levels END*/
-					
 					ini_open(working_directory+"/custom_level_save.ini");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"x_checkpoint");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"y_checkpoint");
@@ -1548,7 +1541,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 			scr_save_objects_with_rotation_placement();
 			
 			#region /*Save Level Information*/
-			if (global.character_select_in_this_menu="level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
+			if (global.character_select_in_this_menu = "level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
 			{
 				if (global.select_level_index >= 1)
 				{
@@ -1617,7 +1610,7 @@ or(gamepad_button_check_pressed(0,gp_select))
 				global.lives_until_assist=0;
 				global.actually_play_edited_level=false;
 				global.play_edited_level=true;
-				global.character_select_in_this_menu="level_editor";
+				global.character_select_in_this_menu = "level_editor";
 				instance_create_depth(x,y,0,obj_camera);
 				instance_destroy();
 			}
