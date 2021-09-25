@@ -363,13 +363,13 @@ or(menu="accessibility_shortcut")
 or(menu="profile_shortcut")
 or(menu="quit")
 {
-	#region /*characterSelect Accept Selection*/
+	#region /*Character select Accept Selection*/
 	player1_accept_selection=-1;
 	player2_accept_selection=-1;
 	player3_accept_selection=-1;
 	player4_accept_selection=-1;
 	player_start_game=false;
-	#endregion /*characterSelect Accept Selection END*/
+	#endregion /*Character select Accept Selection END*/
 
 	#region /*Color Select for CharacterSelect*/
 	player1_menu="select_character";
@@ -1427,7 +1427,7 @@ if (select_custom_level_menu_open = true)
 }
 #endregion /*Select Custom Level Menu END*/
 
-scr_character_select_menu(); /*CharacterSelect*/
+scr_character_select_menu(); /*Character select*/
 
 #region /*Menu Navigation*/
 if (menu_joystick_delay<=0)

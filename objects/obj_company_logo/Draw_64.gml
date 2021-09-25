@@ -1,9 +1,11 @@
 scr_set_screen_size();
 
 /*Draw Event*/
-key_a = (gamepad_button_check_pressed(0,gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space))or(keyboard_check_pressed(vk_escape));
-
-if (key_a)
+if(gamepad_button_check_pressed(0,gp_face1))
+or(keyboard_check_pressed(ord("Z")))
+or(keyboard_check_pressed(vk_enter))
+or(keyboard_check_pressed(vk_space))
+or(keyboard_check_pressed(vk_escape))
 or(window_has_focus())
 and(mouse_check_button_pressed(mb_left))
 {
