@@ -509,6 +509,29 @@ and (global.assist_enable = false)
 if (allow_drowning = true)
 and (frames_until_drowning < seconds_until_drowning*60)
 {
+	//Outline
+	draw_circular_bar(
+	x+2,
+	bbox_top-44,
+	frames_until_drowning,
+	seconds_until_drowning*60,
+	c_black,
+	20,
+	0.8,
+	4
+	);
+	//Drown Bar™
+	draw_circular_bar(
+	x,
+	bbox_top-46,
+	frames_until_drowning,
+	seconds_until_drowning*60,
+	MakeColorHSVTransition(frames_until_drowning, seconds_until_drowning*60, 0, 100, 255, 255, 255, 255),
+	20,
+	1,
+	6
+	);
+	/*
 	if (frames_until_drowning > 60)
 	{
 		draw_sprite_ext(spr_bubble, 1, x-64, bbox_top-32, 1, 1, 0, c_white, 1);
@@ -549,5 +572,6 @@ and (frames_until_drowning < seconds_until_drowning*60)
 	{
 		draw_sprite_ext(spr_bubble, 1, x-64+(16*9), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
+	*/
 }
 #endregion /*Show Drowning END*/
