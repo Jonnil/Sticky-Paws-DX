@@ -46,8 +46,8 @@ and (file_exists("File" + string(global.file) + ".ini"))
 		big_collectible4 = false;
 		big_collectible5 = false;
 		lives_until_assist = 0;
-		x_checkpoint = false;
-		y_checkpoint = false;
+		x_checkpoint = 0;
+		y_checkpoint = 0;
 		checkpoint_millisecond = 0;
 		checkpoint_second = 0;
 		checkpoint_minute = 0;
@@ -75,8 +75,8 @@ if (global.file >= 1)
 	big_collectible4 = false;
 	big_collectible5 = false;
 	lives_until_assist = 0;
-	x_checkpoint = false;
-	y_checkpoint = false;
+	x_checkpoint = 0;
+	y_checkpoint = 0;
 	checkpoint_millisecond = 0;
 	checkpoint_second = 0;
 	checkpoint_minute = 0;
@@ -86,6 +86,7 @@ if (global.file >= 1)
 	timeattack_minute = 0;
 	timeattack_realmillisecond = 999999999;
 	level_score = 0;
+	ini_close();
 }
 else
 {

@@ -143,29 +143,29 @@ or(global.actually_play_edited_level = true)
 					ini_open(working_directory + "\custom_level_save.ini");
 				}
 				
-				if (ini_key_exists("Level" + string(global.level_editor_level), "x_checkpoint"))
+				if (ini_key_exists("Level" + string(global.select_level_index), "x_checkpoint"))
 				{
-					global.x_chekpoint = ini_read_real("Level" + string(global.level_editor_level), "x_checkpoint", 0);
+					global.x_chekpoint = ini_read_real("Level" + string(global.select_level_index), "x_checkpoint", 0);
 				}
-				if (ini_key_exists("Level" + string(global.level_editor_level), "y_checkpoint"))
+				if (ini_key_exists("Level" + string(global.select_level_index), "y_checkpoint"))
 				{
-					global.y_checkpoint = ini_read_real("Level" + string(global.level_editor_level), "y_checkpoint", 0);
+					global.y_checkpoint = ini_read_real("Level" + string(global.select_level_index), "y_checkpoint", 0);
 				}
-				if (ini_key_exists("Level" + string(global.level_editor_level), "checkpoint_millisecond"))
+				if (ini_key_exists("Level" + string(global.select_level_index), "checkpoint_millisecond"))
 				{
-					global.checkpoint_millisecond = ini_read_real("Level" + string(global.level_editor_level), "checkpoint_millisecond", 0);
+					global.checkpoint_millisecond = ini_read_real("Level" + string(global.select_level_index), "checkpoint_millisecond", 0);
 				}
-				if (ini_key_exists("Level" + string(global.level_editor_level), "checkpoint_second"))
+				if (ini_key_exists("Level" + string(global.select_level_index), "checkpoint_second"))
 				{
-					global.checkpoint_second = ini_read_real("Level" + string(global.level_editor_level), "checkpoint_second", 0);
+					global.checkpoint_second = ini_read_real("Level" + string(global.select_level_index), "checkpoint_second", 0);
 				}
-				if (ini_key_exists("Level" + string(global.level_editor_level), "checkpoint_minute"))
+				if (ini_key_exists("Level" + string(global.select_level_index), "checkpoint_minute"))
 				{
-					global.checkpoint_minute = ini_read_real("Level" + string(global.level_editor_level), "checkpoint_minute", 0);
+					global.checkpoint_minute = ini_read_real("Level" + string(global.select_level_index), "checkpoint_minute", 0);
 				}
-				if (ini_key_exists("Level" + string(global.level_editor_level), "checkpoint_realmillisecond"))
+				if (ini_key_exists("Level" + string(global.select_level_index), "checkpoint_realmillisecond"))
 				{
-					global.checkpoint_realmillisecond = ini_read_real("Level" + string(global.level_editor_level), "checkpoint_realmillisecond", 0);
+					global.checkpoint_realmillisecond = ini_read_real("Level" + string(global.select_level_index), "checkpoint_realmillisecond", 0);
 				}
 				
 				if (global.x_checkpoint > 0)

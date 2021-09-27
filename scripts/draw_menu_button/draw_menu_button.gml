@@ -8,6 +8,7 @@
 
 function draw_menu_button()
 {
+	
 	#region /*Button*/
 	
 	#region /*Initialize variables*/
@@ -43,8 +44,6 @@ function draw_menu_button()
 	}
 
 	#region /*Clicking the menu button*/
-	//draw_text_outlined(x_position+400,y_position,"x: "+string(x_position)+" y: "+string(y_position+2)+" x2: "+string(x_position+370)+" y2: "+string(y_position+41),global.default_text_size,c_white,c_black,1);
-	
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position+2,x_position+370,y_position+41))
 	{
 		if (menu_takes_you_to=false)
@@ -69,4 +68,5 @@ function draw_menu_button()
 	#endregion /*Clicking the menu button END*/
 	
 	#endregion /*Button END*/
+	
 }

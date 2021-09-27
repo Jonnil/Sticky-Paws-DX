@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Editor Objects",
+    "path": "folders/Objects/Editor Objects.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_goal",

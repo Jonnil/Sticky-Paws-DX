@@ -12111,9 +12111,9 @@ else
 				and(obj_camera.iris_yscale<=0.001)
 				{
 					audio_stop_all();
-					global.level_clear_rate="clear";
-					global.x_checkpoint=false;
-					global.y_checkpoint=false;
+					global.level_clear_rate = "clear";
+					global.x_checkpoint=0;
+					global.y_checkpoint=0;
 					global.checkpoint_millisecond=0;
 					global.checkpoint_second=0;
 					global.checkpoint_minute=0;

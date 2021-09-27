@@ -1711,8 +1711,8 @@ if (asset_get_type("obj_level") == asset_object)
 and(distance_to_object(instance_nearest(xx, yy, obj_level)) > 32)
 {
 	global.level_clear_rate = noone;
-	global.x_checkpoint = false;
-	global.y_checkpoint = false;
+	global.x_checkpoint = 0;
+	global.y_checkpoint = 0;
 	global.timeattack_millisecond = 0;
 	global.timeattack_second = 0;
 	global.timeattack_minute = 0;
