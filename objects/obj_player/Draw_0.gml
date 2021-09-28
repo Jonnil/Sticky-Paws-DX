@@ -506,8 +506,7 @@ and (global.assist_enable = false)
 #endregion /*If player has more hp, show that END*/
 
 #region /*Show Drowning*/
-if (allow_drowning = true)
-and (frames_until_drowning < seconds_until_drowning*60)
+if (allow_drowning == true) && (frames_until_drowning < seconds_until_drowning*60+1)
 {
 	//Outline
 	draw_circular_bar(
@@ -518,7 +517,7 @@ and (frames_until_drowning < seconds_until_drowning*60)
 	c_black,
 	20,
 	0.8,
-	4
+	6
 	);
 	//Drown Bar™
 	draw_circular_bar(
@@ -531,7 +530,11 @@ and (frames_until_drowning < seconds_until_drowning*60)
 	1,
 	6
 	);
-	/*
+}
+
+/*if (allow_drowning = true)
+and (frames_until_drowning < seconds_until_drowning*60)
+{
 	if (frames_until_drowning > 60)
 	{
 		draw_sprite_ext(spr_bubble, 1, x-64, bbox_top-32, 1, 1, 0, c_white, 1);
@@ -572,6 +575,5 @@ and (frames_until_drowning < seconds_until_drowning*60)
 	{
 		draw_sprite_ext(spr_bubble, 1, x-64+(16*9), bbox_top-32, 1, 1, 0, c_white, 1);
 	}
-	*/
-}
+}*/
 #endregion /*Show Drowning END*/
