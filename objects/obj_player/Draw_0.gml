@@ -506,7 +506,7 @@ and (global.assist_enable = false)
 #endregion /*If player has more hp, show that END*/
 
 #region /*Show Drowning*/
-if (allow_drowning == true) && (frames_until_drowning < seconds_until_drowning*60+1)
+if (allow_drowning == true) && (frames_until_drowning <= seconds_until_drowning*60)
 {
 	//Outline
 	draw_circular_bar(
