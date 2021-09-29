@@ -16312,7 +16312,7 @@ if (allow_drowning = true)
 {
 	if (in_water = true)
 	{
-		frames_until_drowning = clamp(frames_until_drowning-1, 0, seconds_until_drowning*60-1);
+		frames_until_drowning = clamp(frames_until_drowning-1, 0, seconds_until_drowning*60);
 		if (frames_until_drowning <= 0)
 		{
 			hp -= 2;
@@ -16320,7 +16320,8 @@ if (allow_drowning = true)
 	}
 	else
 	{
-		frames_until_drowning +=12; /*12 frames = 0.2 seconds*/
+		frames_until_drowning = seconds_until_drowning*60; /*Reset air meter to full*/
+		//frames_until_drowning +=12; /*12 frames = 0.2 seconds*/
 	}
 }
 #endregion /*Drowning END*/

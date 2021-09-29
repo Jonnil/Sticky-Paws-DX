@@ -18,7 +18,7 @@
 //draw_text_outlined(x,y-96,string(pressing_opposite_direction_to_drop_off_from_wall),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x,y-96,string(wall_jump),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x,y-96,string(joystick_can_ground_pound),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y-96,string(global.music_underwater),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x,y-96,string(spring_animation),global.default_text_size,c_white,c_black,1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart")==asset_sprite)
@@ -504,76 +504,3 @@ and (global.assist_enable = false)
 	draw_text_outlined(x,bbox_top-32,"HP: "+string(hp)+"/"+string(max_hp),global.default_text_size,c_white,c_black,1);
 }
 #endregion /*If player has more hp, show that END*/
-
-#region /*Show Drowning*/
-if (allow_drowning == true) && (frames_until_drowning <= seconds_until_drowning*60)
-{
-	//Outline
-	draw_circular_bar(
-	x+2,
-	bbox_top-44,
-	frames_until_drowning,
-	seconds_until_drowning*60,
-	c_black,
-	20,
-	0.8,
-	6
-	);
-	//Drown Bar™
-	draw_circular_bar(
-	x,
-	bbox_top-46,
-	frames_until_drowning,
-	seconds_until_drowning*60,
-	MakeColorHSVTransition(frames_until_drowning, seconds_until_drowning*60, 0, 100, 255, 255, 255, 255),
-	20,
-	1,
-	6
-	);
-}
-
-/*if (allow_drowning = true)
-and (frames_until_drowning < seconds_until_drowning*60)
-{
-	if (frames_until_drowning > 60)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64, bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-	if (frames_until_drowning > 60*2)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64+16, bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-	if (frames_until_drowning > 60*3)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64+(16*2), bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-	if (frames_until_drowning > 60*4)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64+(16*3), bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-	if (frames_until_drowning > 60*5)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64+(16*4), bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-	if (frames_until_drowning > 60*6)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64+(16*5), bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-	if (frames_until_drowning > 60*7)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64+(16*6), bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-	if (frames_until_drowning > 60*8)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64+(16*7), bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-	if (frames_until_drowning > 60*9)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64+(16*8), bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-	if (frames_until_drowning > 60*10)
-	{
-		draw_sprite_ext(spr_bubble, 1, x-64+(16*9), bbox_top-32, 1, 1, 0, c_white, 1);
-	}
-}*/
-#endregion /*Show Drowning END*/

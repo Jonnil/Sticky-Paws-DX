@@ -10,15 +10,17 @@
 
 function draw_circular_bar(x ,y ,value, max, colour, radius, transparency, width)
 {
-	if (argument2 > 0) { // no point even running if there is nothing to display (also stops /0
+	if (argument2 > 0)
+	{ // no point even running if there is nothing to display (also stops /0
 	    var i, len, tx, ty, val;
     
 	    var numberofsections = 60 // there is no draw_get_circle_precision() else I would use that here
 	    var sizeofsection = 360/numberofsections
     
-	    val = (argument2/argument3) * numberofsections 
+	    val = (argument2/argument3) * numberofsections;
     
-	    if (val > 1) { // HTML5 version doesnt like triangle with only 2 sides 
+	    if (val > 1)
+		{ // HTML5 version doesnt like triangle with only 2 sides 
     
 	        piesurface = surface_create(argument5*2,argument5*2)
             
@@ -33,7 +35,8 @@ function draw_circular_bar(x ,y ,value, max, colour, radius, transparency, width
 	        draw_primitive_begin(pr_trianglefan);
 	        draw_vertex(argument5, argument5);
         
-	        for(i=0; i<=val; i++) {
+	        for(i=0; i<=val; i++)
+			{
 	            len = (i*sizeofsection)+90; // the 90 here is the starting angle
 	            tx = lengthdir_x(argument5, len);
 	            ty = lengthdir_y(argument5, len);

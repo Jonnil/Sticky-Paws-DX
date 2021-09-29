@@ -174,7 +174,7 @@ and(sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible")==asset_object)
 			{
 				var obj;
-				obj=instance_create_depth(x-16,bbox_top,0,obj_big_collectible);
+				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
 				with(obj)
 				{
 					image_speed=1;
@@ -192,7 +192,7 @@ and(sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible")==asset_object)
 			{
 				var obj;
-				obj=instance_create_depth(x-16,bbox_top,0,obj_big_collectible);
+				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
 				with(obj)
 				{
 					image_speed=1;
@@ -210,7 +210,7 @@ and(sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible")==asset_object)
 			{
 				var obj;
-				obj=instance_create_depth(x-16,bbox_top,0,obj_big_collectible);
+				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
 				with(obj)
 				{
 					image_speed=1;
@@ -228,7 +228,7 @@ and(sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible")==asset_object)
 			{
 				var obj;
-				obj=instance_create_depth(x-16,bbox_top,0,obj_big_collectible);
+				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
 				with(obj)
 				{
 					image_speed=1;
@@ -246,7 +246,7 @@ and(sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible")==asset_object)
 			{
 				var obj;
-				obj=instance_create_depth(x-16,bbox_top,0,obj_big_collectible);
+				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
 				with(obj)
 				{
 					image_speed=1;

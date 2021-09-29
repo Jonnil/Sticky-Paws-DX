@@ -2,6 +2,12 @@
 if (die=false)
 {
 
+if (other.vspeed>=0)
+{
+	other.spring = false;
+	other.spring_animation = 0;
+}
+
 if (other.invincible>0)
 or(other.takendamage>0)
 or(other.dive=true)

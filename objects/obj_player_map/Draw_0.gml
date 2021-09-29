@@ -1,6 +1,6 @@
 scr_set_screen_size();
 
-draw_text_outlined(x,y-96,string(global.select_level_index),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x,y-96,string(global.select_level_index),global.default_text_size,c_white,c_black,1);
 
 #region /*Set what controls are used to navigate the menus*/
 
