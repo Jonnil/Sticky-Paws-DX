@@ -16310,6 +16310,8 @@ if (asset_get_type("obj_water")==asset_object)
 #region /*Drowning*/
 if (allow_drowning = true)
 {
+	drawn_frames_until_drowning = lerp(drawn_frames_until_drowning, frames_until_drowning, 0.1);
+	
 	if (in_water = true)
 	{
 		frames_until_drowning = clamp(frames_until_drowning-1, 0, seconds_until_drowning*60);
@@ -16320,7 +16322,7 @@ if (allow_drowning = true)
 	}
 	else
 	{
-		frames_until_drowning = seconds_until_drowning*60; /*Reset air meter to full*/
+		frames_until_drowning = seconds_until_drowning*60+1; /*Reset air meter to full*/
 		//frames_until_drowning +=12; /*12 frames = 0.2 seconds*/
 	}
 }
