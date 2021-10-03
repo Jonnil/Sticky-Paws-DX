@@ -152,53 +152,53 @@ and(global.character_select_in_this_menu = "level_editor")
 		{
 			ini_open(working_directory+"/custom_levels/"+string(global.level_name)+"/data/level_information.ini");
 		}
-		ini_write_string("Info","level_name",level_name);
+		ini_write_string("info","level_name",level_name);
 		if (instance_exists(obj_level_player_1_start))
 		{
-			ini_write_real("Info","level_player_1_start_x",obj_level_player_1_start.x);
+			ini_write_real("info","level_player_1_start_x",obj_level_player_1_start.x);
 		}
 		if (instance_exists(obj_level_player_1_start))
 		{
-			ini_write_real("Info","level_player_1_start_y",obj_level_player_1_start.y);
+			ini_write_real("info","level_player_1_start_y",obj_level_player_1_start.y);
 		}
 		if (instance_exists(obj_level_player_2_start))
 		{
-			ini_write_real("Info","level_player_2_start_x",obj_level_player_2_start.x);
+			ini_write_real("info","level_player_2_start_x",obj_level_player_2_start.x);
 		}
 		if (instance_exists(obj_level_player_2_start))
 		{
-			ini_write_real("Info","level_player_2_start_y",obj_level_player_2_start.y);
+			ini_write_real("info","level_player_2_start_y",obj_level_player_2_start.y);
 		}
 		if (instance_exists(obj_level_player_3_start))
 		{
-			ini_write_real("Info","level_player_3_start_x",obj_level_player_3_start.x);
+			ini_write_real("info","level_player_3_start_x",obj_level_player_3_start.x);
 		}
 		if (instance_exists(obj_level_player_3_start))
 		{
-			ini_write_real("Info","level_player_3_start_y",obj_level_player_3_start.y);
+			ini_write_real("info","level_player_3_start_y",obj_level_player_3_start.y);
 		}
 		if (instance_exists(obj_level_player_4_start))
 		{
-			ini_write_real("Info","level_player_4_start_x",obj_level_player_4_start.x);
+			ini_write_real("info","level_player_4_start_x",obj_level_player_4_start.x);
 		}
 		if (instance_exists(obj_level_player_4_start))
 		{
-			ini_write_real("Info","level_player_4_start_y",obj_level_player_4_start.y);
+			ini_write_real("info","level_player_4_start_y",obj_level_player_4_start.y);
 		}
 		if (instance_exists(obj_level_end))
 		{
-			ini_write_real("Info","level_end_x",obj_level_end.x);
+			ini_write_real("info","level_end_x",obj_level_end.x);
 		}
 		if (instance_exists(obj_level_end))
 		{
-			ini_write_real("Info","level_end_y",obj_level_end.y);
+			ini_write_real("info","level_end_y",obj_level_end.y);
 		}
 		if (instance_exists(obj_level_height))
 		{
-			ini_write_real("Info","level_height",obj_level_height.y);
+			ini_write_real("info","level_height",obj_level_height.y);
 		}
-		ini_write_real("Info","view_xview",camera_get_view_x(view_camera[view_current]));
-		ini_write_real("Info","view_yview",camera_get_view_y(view_camera[view_current]));
+		ini_write_real("info","view_xview",camera_get_view_x(view_camera[view_current]));
+		ini_write_real("info","view_yview",camera_get_view_y(view_camera[view_current]));
 		ini_close();
 	}
 	#endregion /*Save Level Information END*/

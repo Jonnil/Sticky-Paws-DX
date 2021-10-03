@@ -751,9 +751,9 @@ function scr_select_custom_level_menu()
 	if (file_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini"))
 	{
 		ini_open(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
-		if (ini_key_exists("Info","level_name"))
+		if (ini_key_exists("info","level_name"))
 		{
-			level_name=ini_read_string("Info","level_name",0);
+			level_name=ini_read_string("info","level_name",0);
 		}
 		else
 		{

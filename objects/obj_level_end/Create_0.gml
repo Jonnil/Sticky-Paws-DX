@@ -18,13 +18,13 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 		ini_open(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
 	}
 	
-	if (ini_key_exists("Info", "level_end_x"))
+	if (ini_key_exists("info", "level_end_x"))
 	{
-		x = ini_read_real("Info", "level_end_x", 0);
+		x = ini_read_real("info", "level_end_x", 0);
 	}
-	if (ini_key_exists("Info", "level_end_y"))
+	if (ini_key_exists("info", "level_end_y"))
 	{
-		y = ini_read_real("Info", "level_end_y", 0);
+		y = ini_read_real("info", "level_end_y", 0);
 	}
 	ini_close();
 }

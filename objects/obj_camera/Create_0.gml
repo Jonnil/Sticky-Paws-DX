@@ -668,15 +668,15 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	
 	#region /*Rain*/
-	if (ini_key_exists("Info", "rain"))
+	if (ini_key_exists("info", "rain"))
 	{
-		rain = ini_read_real("Info", "rain", false);
+		rain = ini_read_real("info", "rain", false);
 	}
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_write_real("Info", "rain", false);
+			ini_write_real("info", "rain", false);
 		}
 		rain = false;
 	}

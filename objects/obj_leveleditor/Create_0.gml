@@ -31,7 +31,7 @@ and(!instance_exists(obj_foreground2))
 if (asset_get_type("obj_level_height")==asset_object)
 and(!instance_exists(obj_level_height))
 {
-	instance_create_depth(0,0,0,obj_level_height);
+	instance_create_depth(0,1080,0,obj_level_height);
 }
 if (asset_get_type("obj_level_width")==asset_object)
 and(!instance_exists(obj_level_width))
@@ -188,51 +188,51 @@ and(file_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/
 	{
 		ini_open(working_directory+"/custom_levels/"+string(global.level_name)+"/data/level_information.ini");
 	}
-	if (ini_key_exists("Info","level_name"))
+	if (ini_key_exists("info","level_name"))
 	{
-		level_name = ini_read_string("Info","level_name",0);
+		level_name = ini_read_string("info","level_name",0);
 	}
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_write_string("Info","level_name",0);
+			ini_write_string("info","level_name",0);
 		}
 		level_name = "";
 	}
-	if (ini_key_exists("Info","time_countdown"))
+	if (ini_key_exists("info","time_countdown"))
 	{
-		global.time_countdown = ini_read_real("Info", "time_countdown", noone); /*Set the countdown to whatever is stored in the level_information.ini file*/
+		global.time_countdown = ini_read_real("info", "time_countdown", noone); /*Set the countdown to whatever is stored in the level_information.ini file*/
 	}
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_write_string("Info","time_countdown",noone);
+			ini_write_string("info","time_countdown",noone);
 		}
 		global.time_countdown = noone;
 	}
 	if(global.play_edited_level=false)
 	and(global.actually_play_edited_level=false)
 	{
-		if (ini_key_exists("Info","view_xview"))
-		and(ini_key_exists("Info","view_yview"))
+		if (ini_key_exists("info","view_xview"))
+		and(ini_key_exists("info","view_yview"))
 		{
-			camera_set_view_pos(view_camera[view_current], ini_read_real("Info", "view_xview", 0), ini_read_real("Info", "view_yview", 0));
-			x = ini_read_real("Info", "view_xview", 0);
-			y = ini_read_real("Info", "view_yview", 0);
+			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0));
+			x = ini_read_real("info", "view_xview", 0);
+			y = ini_read_real("info", "view_yview", 0);
 		}
 		else
-		if (ini_key_exists("Info","view_xview"))
+		if (ini_key_exists("info","view_xview"))
 		{
-			camera_set_view_pos(view_camera[view_current], ini_read_real("Info", "view_xview", 0), 0);
-			x = ini_read_real("Info", "view_xview", 0);
+			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), 0);
+			x = ini_read_real("info", "view_xview", 0);
 		}
 		else
-		if (ini_key_exists("Info","view_yview"))
+		if (ini_key_exists("info","view_yview"))
 		{
-			camera_set_view_pos(view_camera[view_current], 0, ini_read_real("Info", "view_yview", 0));
-			y = ini_read_real("Info", "view_yview", 0);
+			camera_set_view_pos(view_camera[view_current], 0, ini_read_real("info", "view_yview", 0));
+			y = ini_read_real("info", "view_yview", 0);
 		}
 	}
 	ini_close();
