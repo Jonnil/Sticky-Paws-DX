@@ -146,15 +146,54 @@ and (global.play_edited_level = true)
 }
 #endregion /*Checkpoint End*/
 
+#region /*Initialize Intro Animation*/
+if (global.character_select_in_this_menu = "main_game")
+and(file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
+or(global.character_select_in_this_menu = "level_editor")
+and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini"))
+{
+	if (global.character_select_in_this_menu = "main_game")
+	{
+		ini_open("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini");
+	}
+	else
+	if (global.character_select_in_this_menu = "level_editor")
+	{
+		ini_open(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
+	}
+	
+	#region /*Intro Animation*/
+	if (ini_key_exists("info", "intro_animation"))
+	{
+		intro_animation = ini_read_string("info", "intro_animation", "");
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_string("info", "intro_animation", "");
+		}
+		intro_animation = "";
+	}
+	#endregion /*Intro Animation END*/
+	
+	ini_close();
+}
+else
+{
+	intro_animation = "";
+}
+#endregion /*Initialize Intro Animation END*/
+
 #region /*Spawn Players*/
-player1=noone;
-player2=noone;
-player3=noone;
-player4=noone;
-if (asset_get_type("obj_player_map")==asset_object)
-and(!instance_exists(obj_player_map))
-and(asset_get_type("obj_title")==asset_object)
-and(!instance_exists(obj_title))
+player1 = noone;
+player2 = noone;
+player3 = noone;
+player4 = noone;
+if (asset_get_type("obj_player_map") == asset_object)
+and (!instance_exists(obj_player_map))
+and (asset_get_type("obj_title") == asset_object)
+and (!instance_exists(obj_title))
 {
 	if (global.player1_can_play = true)
 	{
@@ -171,7 +210,8 @@ and(!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_1;
 			selected_voice_pack = global.voicepack_for_player_1;
-			player=1;
+			intro_animation = obj_camera.intro_animation;
+			player = 1;
 		}
 	}
 	if (global.player2_can_play = true)
@@ -189,6 +229,7 @@ and(!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_2;
 			selected_voice_pack = global.voicepack_for_player_2;
+			intro_animation = obj_camera.intro_animation;
 			player=2;
 		}
 	}
@@ -207,6 +248,7 @@ and(!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_3;
 			selected_voice_pack = global.voicepack_for_player_3;
+			intro_animation = obj_camera.intro_animation;
 			player=3;
 		}
 	}
@@ -225,6 +267,7 @@ and(!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_4;
 			selected_voice_pack = global.voicepack_for_player_4;
+			intro_animation = obj_camera.intro_animation;
 			player=4;
 		}
 	}

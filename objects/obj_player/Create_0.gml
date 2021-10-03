@@ -59,7 +59,7 @@ hoverstomp_distance = 500;
 
 #region /*Play as Custom character*/
 
-#region /*Sprite origin point variables*/
+#region /*Sprite origin point variables. If there is no config.ini file, then make every xorig and yorig variable zero*/
 mask_xorig = 0;
 mask_yorig = 0;
 mask_crouch_xorig = 0;
@@ -146,9 +146,7 @@ sprite_wall_slide_up_xorig = 0;
 sprite_wall_slide_up_yorig = 0;
 sprite_wall_slide_xorig = 0;
 sprite_wall_slide_yorig = 0;
-#endregion /*If there is no config.ini file, then make every xorig and yorig variable zero END*/
-
-#endregion /*Sprite origin point variables END*/
+#endregion /*Sprite origin point variables. If there is no config.ini file, then make every xorig and yorig variable zero. END*/
 
 #region /*Mask Index*/
 sprite_mask = sprite_index;
@@ -205,6 +203,13 @@ sprite_dive = noone;
 sprite_die = noone;
 sprite_vine_climb = noone;
 sprite_vine_stay = noone;
+
+sprite_sitting_down_to_eat = noone;
+sprite_sitting_eat_closed_mouth = noone;
+sprite_sitting_eat_open_mouth = noone;
+sprite_sitting_eat_open_mouth_open_eye = noone;
+sprite_sitting_eat_surprised = noone;
+sprite_sitting_eating = noone;
 #endregion /*Sprite variables END*/
 
 #region /*Sound variables*/
@@ -453,6 +458,11 @@ allow_timeattack = true;
 simple_controls = false; /*Simple Controls, used for testing if a level can be completed with limitations. All levels should be able to be finished, not 100% completed, with this option set to true. This option should be false by default when creating executable*/
 stop_screen_from_scrolling_left = false; /*Stop the screen from being able to screoll left*/
 full_level_map_screenshot_timer = 0;
+
+#region /*Intro Animation Variables*/
+intro_animation = ""; /*This determines the intro animation to play when you first enter a level*/
+cutscene_time = 0; /*Timer that determines what will happen in the intro animation*/
+#endregion /*Intro Animation Variables END*/
 
 assist_invincible = false;
 buffer_jump = 0; /*Jump buffer timer, set to 0*/
