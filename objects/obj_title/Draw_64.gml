@@ -176,10 +176,7 @@ sprite_select_player_1=noone;/*Select the sprite for each character portrait END
 
 /*Title Screen (You must have a spr_logo for the code to work)*/
 
-/*Create Event*/
-//global.playergame=0;
-//global.theme="ground";
-/*Room Speed*/room_speed=global.max_fps;/*Room Speed END*/
+room_speed = global.max_fps;/*Room Speed END*/
 
 #region /*Change the logo to different designs during specific times and dates*/
 if (current_day>=24)
@@ -341,7 +338,7 @@ and(keyboard_check_pressed(global.fullscreen_key))
 		window_set_fullscreen(true);
 	}
 	ini_open("config.ini");
-	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
+	ini_write_real("config","fullscreen_mode",window_get_fullscreen());
 	ini_close();
 }
 #endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/

@@ -10,6 +10,8 @@ show_keyboard_and_mouse_input_change_prompt = 0;
 show_controller_input_change_prompt_y = 0;
 show_keyboard_and_mouse_input_change_prompt_y = 0;
 
+delay = 0;
+
 #region /*Mouse x and mouse y initializing*/
 mouse_x_position = mouse_x;
 mouse_y_position = mouse_y;
@@ -156,7 +158,15 @@ and(!instance_exists(obj_title))
 {
 	if (global.player1_can_play = true)
 	{
-		player1=instance_create_depth(x,y,0,obj_player)
+		if (global.actually_play_edited_level = true)
+		and (instance_exists(obj_level_player_1_start))
+		{
+			player1 = instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_player);
+		}
+		else
+		{
+			player1 = instance_create_depth(x, y, 0, obj_player);
+		}
 		with(player1)
 		{
 			custom_character = global.character_for_player_1;
@@ -166,7 +176,15 @@ and(!instance_exists(obj_title))
 	}
 	if (global.player2_can_play = true)
 	{
-		player2=instance_create_depth(x-32,y,0,obj_player)
+		if (global.actually_play_edited_level = true)
+		and (instance_exists(obj_level_player_2_start))
+		{
+			player2 = instance_create_depth(obj_level_player_2_start.x, obj_level_player_2_start.y, 0, obj_player);
+		}
+		else
+		{
+			player2 = instance_create_depth(x, y, 0, obj_player);
+		}
 		with(player2)
 		{
 			custom_character = global.character_for_player_2;
@@ -176,7 +194,15 @@ and(!instance_exists(obj_title))
 	}
 	if (global.player3_can_play = true)
 	{
-		player3=instance_create_depth(x-64,y,0,obj_player)
+		if (global.actually_play_edited_level = true)
+		and (instance_exists(obj_level_player_3_start))
+		{
+			player3 = instance_create_depth(obj_level_player_3_start.x, obj_level_player_3_start.y, 0, obj_player);
+		}
+		else
+		{
+			player3 = instance_create_depth(x, y, 0, obj_player);
+		}
 		with(player3)
 		{
 			custom_character = global.character_for_player_3;
@@ -186,7 +212,15 @@ and(!instance_exists(obj_title))
 	}
 	if (global.player4_can_play = true)
 	{
-		player4=instance_create_depth(x-96,y,0,obj_player)
+		if (global.actually_play_edited_level = true)
+		and (instance_exists(obj_level_player_4_start))
+		{
+			player4 = instance_create_depth(obj_level_player_4_start.x, obj_level_player_4_start.y, 0, obj_player);
+		}
+		else
+		{
+			player4 = instance_create_depth(x, y, 0, obj_player);
+		}
 		with(player4)
 		{
 			custom_character = global.character_for_player_4;
@@ -755,8 +789,3 @@ if (global.number_of_audio_channels = 7)
 	audio_channel_num(256);
 }
 #endregion /*Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default END*/
-
-//if (global.x_checkpoint>0{view_xview=global.x_checkpoint;}
-//if (global.y_checkpoint>0{view_yview=global.y_checkpoint;}
-
-//}

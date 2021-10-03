@@ -1756,16 +1756,18 @@ and(move_delay > 10)
 			draw_text_outlined(x, y - 96, "Best Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show High Score END*/
-
+		
 		#region /*Show Fastest Time*/
 		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
 		and(instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
 		{
-			draw_text_outlined(x, y - 128, "Best Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" + string(instance_nearest(x, y, obj_level).timeattack_second) + "." + string(instance_nearest(x, y, obj_level).timeattack_millisecond), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y - 128, "Best Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
+			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_second, 2, 0), " ", "0")) + "." +
+			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show Fastest Time END*/
-
-		#region /*Show Star Coin*/
+		
+		#region /*Show Big Collectible*/
 		if (instance_nearest(x, y, obj_level).big_collectible1 = true)
 		{
 			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 160, 0.3, 0.3, 0, c_white, 1);
@@ -1806,7 +1808,7 @@ and(move_delay > 10)
 		{
 			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
 		}
-		#endregion /*Show Star Coin END*/
+		#endregion /*Show Big Collectible END*/
 		
 	}
 }

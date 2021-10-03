@@ -396,7 +396,7 @@ if (keyboard_check_pressed(global.fullscreen_key))
 		window_set_fullscreen(true);
 	}
 	ini_open("config.ini");
-	ini_write_real("Config", "fullscreen_mode", window_get_fullscreen());
+	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
 	ini_close();
 }
 #endregion /*Fullscreen Toggle. Default: F11 END*/
@@ -746,6 +746,10 @@ if (save_level_as_png = false)
 	/*Iris*/
 	if (allow_iris = true)
 	{
+		if (delay <= 1)
+		{
+			draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+		}
 
 		#region /*Zoom In Player Goal*/
 		if (asset_get_type("obj_player") == asset_object)

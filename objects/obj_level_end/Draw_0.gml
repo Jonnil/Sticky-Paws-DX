@@ -12,7 +12,7 @@ if (asset_get_type("spr_goal") == asset_sprite)
 }
 if (asset_get_type("spr_level_end") == asset_sprite)
 {
-	draw_sprite_ext(spr_level_end, 0, x, y, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_level_end, 0, x, y, 1, 1, 0, c_white, 0.5);
 }
 
 if (global.actually_play_edited_level = true)
@@ -108,10 +108,6 @@ or(global.actually_play_edited_level = true)
 	if (asset_get_type("obj_goal") == asset_object)
 	{
 		instance_create_depth(x, y - 256, 0, obj_goal);
-	}
-	if (asset_get_type("obj_ground") == asset_object)
-	{
-		instance_create_depth(x, y, 0, obj_ground);
 	}
 	if (global.actually_play_edited_level = true)
 	{

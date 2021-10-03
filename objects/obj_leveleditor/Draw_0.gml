@@ -89,7 +89,7 @@ if (keyboard_check_pressed(global.fullscreen_key))
 		window_set_fullscreen(true);
 	}
 	ini_open("config.ini");
-	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
+	ini_write_real("config","fullscreen_mode",window_get_fullscreen());
 	ini_close();
 }
 #endregion /*Fullscreen Toggle if camera doesn't exist. Default: F11 END*/
@@ -204,9 +204,21 @@ if (asset_get_type("obj_foreground2")==asset_object)
 {
 	instance_activate_object(obj_foreground2);
 }
-if (asset_get_type("obj_level_start")==asset_object)
+if (asset_get_type("obj_level_player_1_start")==asset_object)
 {
-	instance_activate_object(obj_level_start);
+	instance_activate_object(obj_level_player_1_start);
+}
+if (asset_get_type("obj_level_player_2_start")==asset_object)
+{
+	instance_activate_object(obj_level_player_2_start);
+}
+if (asset_get_type("obj_level_player_3_start")==asset_object)
+{
+	instance_activate_object(obj_level_player_3_start);
+}
+if (asset_get_type("obj_level_player_4_start")==asset_object)
+{
+	instance_activate_object(obj_level_player_4_start);
 }
 if (asset_get_type("obj_level_end")==asset_object)
 {
@@ -853,7 +865,10 @@ else
 #region /*Fill Cursor*/
 if (fill_mode=true)
 and(erase_mode=false)
-and(!place_meeting(x,y,obj_level_start))
+and(!place_meeting(x,y,obj_level_player_1_start))
+and(!place_meeting(x,y,obj_level_player_2_start))
+and(!place_meeting(x,y,obj_level_player_3_start))
+and(!place_meeting(x,y,obj_level_player_4_start))
 and(!place_meeting(x,y,obj_level_end))
 {
 	if (!place_meeting(x,y,obj_leveleditor_placed_object))
@@ -1041,8 +1056,14 @@ else
 #region /*Drag Cursor*/
 if (asset_get_type("obj_leveleditor_placed_object")==asset_object)
 and(place_meeting(x,y,obj_leveleditor_placed_object))
-or(asset_get_type("obj_level_start")==asset_object)
-and(place_meeting(x,y,obj_level_start))
+or(asset_get_type("obj_level_player_1_start")==asset_object)
+and(place_meeting(x,y,obj_level_player_1_start))
+or(asset_get_type("obj_level_player_2_start")==asset_object)
+and(place_meeting(x,y,obj_level_player_2_start))
+or(asset_get_type("obj_level_player_3_start")==asset_object)
+and(place_meeting(x,y,obj_level_player_3_start))
+or(asset_get_type("obj_level_player_4_start")==asset_object)
+and(place_meeting(x,y,obj_level_player_4_start))
 or(asset_get_type("obj_level_end")==asset_object)
 and(place_meeting(x,y,obj_level_end))
 {
@@ -1143,10 +1164,14 @@ if (quit_level_editor=0)
 		and(pause=false)
 		and(menu_delay=0)
 		and(asset_get_type("obj_leveleditor_placed_object")==asset_object)
-		and(asset_get_type("obj_level_start")==asset_object)
-		and(!place_meeting(x,y,obj_level_start))
-		and(asset_get_type("obj_level_end")==asset_object)
-		and(!place_meeting(x,y,obj_level_end))
+		and(asset_get_type("obj_level_player_1_start")==asset_object)
+		and(!place_meeting(x,y,obj_level_player_1_start))
+		and(asset_get_type("obj_level_player_2_start")==asset_object)
+		and(!place_meeting(x,y,obj_level_player_2_start))
+		and(asset_get_type("obj_level_player_3_start")==asset_object)
+		and(!place_meeting(x,y,obj_level_player_3_start))
+		and(asset_get_type("obj_level_player_4_start")==asset_object)
+		and(!place_meeting(x,y,obj_level_player_4_start))
 		and(asset_get_type("obj_level_height")==asset_object)
 		and(!position_meeting(x,y,obj_level_height))
 		and(asset_get_type("obj_level_width")==asset_object)
@@ -1465,7 +1490,10 @@ or(gamepad_button_check_pressed(0,gp_select))
 {
 	if (pause=false)
 	and (global.character_select_in_this_menu = "level_editor")
-	and(asset_get_type("obj_level_start")==asset_object)
+	and(asset_get_type("obj_level_player_1_start")==asset_object)
+	and(asset_get_type("obj_level_player_2_start")==asset_object)
+	and(asset_get_type("obj_level_player_3_start")==asset_object)
+	and(asset_get_type("obj_level_player_4_start")==asset_object)
 	{
 		
 		#region /*Save Level*/
@@ -1552,15 +1580,48 @@ or(gamepad_button_check_pressed(0,gp_select))
 				{
 					ini_open(working_directory+"/custom_levels/"+string(global.level_name)+"/data/level_information.ini");
 				}
-				if (asset_get_type("obj_level_start")==asset_object)
+				if (asset_get_type("obj_level_player_1_start")==asset_object)
 				{
-					if (instance_exists(obj_level_start))
+					if (instance_exists(obj_level_player_1_start))
 					{
-						ini_write_real("Info","level_start_x",obj_level_start.x);
+						ini_write_real("Info","level_player_1_start_x",obj_level_player_1_start.x);
 					}
-					if (instance_exists(obj_level_start))
+					if (instance_exists(obj_level_player_1_start))
 					{
-						ini_write_real("Info","level_start_y",obj_level_start.y);
+						ini_write_real("Info","level_player_1_start_y",obj_level_player_1_start.y);
+					}
+				}
+				if (asset_get_type("obj_level_player_2_start")==asset_object)
+				{
+					if (instance_exists(obj_level_player_2_start))
+					{
+						ini_write_real("Info","level_player_2_start_x",obj_level_player_2_start.x);
+					}
+					if (instance_exists(obj_level_player_2_start))
+					{
+						ini_write_real("Info","level_player_2_start_y",obj_level_player_2_start.y);
+					}
+				}
+				if (asset_get_type("obj_level_player_3_start")==asset_object)
+				{
+					if (instance_exists(obj_level_player_3_start))
+					{
+						ini_write_real("Info","level_player_3_start_x",obj_level_player_3_start.x);
+					}
+					if (instance_exists(obj_level_player_3_start))
+					{
+						ini_write_real("Info","level_player_3_start_y",obj_level_player_3_start.y);
+					}
+				}
+				if (asset_get_type("obj_level_player_4_start")==asset_object)
+				{
+					if (instance_exists(obj_level_player_4_start))
+					{
+						ini_write_real("Info","level_player_4_start_x",obj_level_player_4_start.x);
+					}
+					if (instance_exists(obj_level_player_4_start))
+					{
+						ini_write_real("Info","level_player_4_start_y",obj_level_player_4_start.y);
 					}
 				}
 				if (asset_get_type("obj_level_end")==asset_object)

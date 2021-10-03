@@ -557,20 +557,28 @@ and(delay=3)
 {
 	
 	#region /*Destroy if erased or placed outside room*/
-	if (asset_get_type("obj_level_start")==asset_object)
-	and(instance_exists(obj_level_start))
-	and(place_meeting(x,y,obj_level_start))
-	and(obj_leveleditor.drag_object=false)
-	and(obj_level_start.drag_object=false)
-	or(asset_get_type("obj_level_end")==asset_object)
-	and(instance_exists(obj_level_end))
-	and(place_meeting(x,y,obj_level_end))
-	and(obj_leveleditor.drag_object=false)
-	and(obj_level_end.drag_object=false)
-	or(x<0)
-	or(x>room_width)
-	or(y<0)
-	or(y>room_height)
+	if (asset_get_type("obj_level_player_1_start")==asset_object)
+	and (instance_exists(obj_level_player_1_start))
+	and (place_meeting(x,y,obj_level_player_1_start))
+	and (asset_get_type("obj_level_player_2_start")==asset_object)
+	and (instance_exists(obj_level_player_2_start))
+	and (place_meeting(x,y,obj_level_player_2_start))
+	and (asset_get_type("obj_level_player_3_start")==asset_object)
+	and (instance_exists(obj_level_player_3_start))
+	and (place_meeting(x,y,obj_level_player_3_start))
+	and (asset_get_type("obj_level_player_4_start")==asset_object)
+	and (instance_exists(obj_level_player_4_start))
+	and (place_meeting(x,y,obj_level_player_4_start))
+	and (obj_leveleditor.drag_object=false)
+	and (obj_level_player_1_start.drag_object=false)
+	and (obj_level_player_2_start.drag_object=false)
+	and (obj_level_player_3_start.drag_object=false)
+	and (obj_level_player_4_start.drag_object=false)
+	and (obj_leveleditor.drag_object=false)
+	or (x<0)
+	or (x>room_width)
+	or (y<0)
+	or (y>room_height)
 	{
 		
 		#region /*Reset Level Editor Checkpoint*/
@@ -1474,11 +1482,11 @@ and (delay>1)
 		if (object = 73)
 		or(object = 731)
 		{
-			depth = -200;
+			depth = -20;
 		}
 		else
 		{
-			depth = -190;
+			depth = -19;
 		}
 	}
 	#endregion /*Drag the object END*/

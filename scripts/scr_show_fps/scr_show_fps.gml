@@ -28,13 +28,13 @@ function scr_show_fps()
 		#region /*FPS Real*/
 		if (global.show_fps_real = true)
 		{
-			if (fps_real >= 120)
+			if (fps_real >= 200)
 			{
 				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_lime, 1);
 			}
 			else
 			{
-				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, make_color_hsv(50/120*fps_real, 255, 255), 1);
+				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, make_color_hsv(50/200*fps_real, 255, 255), 1);
 			}
 		}
 		#endregion /*FPS Real END*/

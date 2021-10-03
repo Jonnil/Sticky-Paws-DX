@@ -123,7 +123,7 @@ and(keyboard_check_pressed(global.fullscreen_key))
 		window_set_fullscreen(true);
 	}
 	ini_open("config.ini");
-	ini_write_real("Config","fullscreen_mode",window_get_fullscreen());
+	ini_write_real("config","fullscreen_mode",window_get_fullscreen());
 	ini_close();
 }
 #endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
@@ -848,15 +848,18 @@ and(global.pause_room = room_leveleditor)
 			if (global.character_select_in_this_menu = "main_game")
 			{
 				ini_open("File"+string(global.file)+".ini");
+				ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "x_checkpoint", 0);
+				ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "y_checkpoint", 0);
+				ini_close();
 			}
 			else
 			if (global.character_select_in_this_menu = "level_editor")
 			{
 				ini_open(working_directory+"/custom_level_save.ini");
+				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint", 0);
+				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "y_checkpoint", 0);
+				ini_close();
 			}
-			ini_write_real(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"x_checkpoint",0);
-			ini_write_real(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"y_checkpoint",0);
-			ini_close();
 			
 			global.x_checkpoint = 0;
 			global.y_checkpoint = 0;
