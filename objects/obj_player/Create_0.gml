@@ -32,7 +32,7 @@ acceleration_on_ground = 0.3; /*How much acceleration the character has on groun
 acceleration_in_air = 0.3; /*How much acceleration the character has in air*/
 acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
 seconds_until_drowning = 10; /*How many seconds you can breathe underwater*/
-frames_until_drowning = seconds_until_drowning*60;
+frames_until_drowning = seconds_until_drowning*60+1;
 drawn_frames_until_drowning = frames_until_drowning;
 if (global.assist_enable = false)
 {
