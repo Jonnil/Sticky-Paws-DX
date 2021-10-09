@@ -1338,61 +1338,6 @@ or(other.chain_reaction>=8)
 }
 #endregion /*Rewards End*/
 
-/*Rewards*/
-//if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction<=1 or other.chain_reaction<=1{
-///*1 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}}
-///*200 Score*/score+=200;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=200;}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=2 or other.chain_reaction=2{
-///*2 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}}
-///*400 Score*/score+=400;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=400;}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.1);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=3 or other.chain_reaction=3{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*800 Score*/score+=800;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=800;}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.2);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=4 or other.chain_reaction=4{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*1000 Score*/score+=1000;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=1000;}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.3);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=5 or other.chain_reaction=5{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*2000 Score*/score+=2000;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=2000;}}
-///*1-UP*/lives+=1;global.hud_show_lives=true;if asset_get_type("snd_1up")==asset_sound{audio_play_sound(snd_1up,0,0);audio_sound_gain(snd_1up,global.sfx_volume,0);}if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y-16,0,obj_scoreup);with(obj){scoreup="1-UP";}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.4);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=6 or other.chain_reaction=6{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*4000 Score*/score+=4000;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=4000;}}
-///*1-UP*/lives+=1;global.hud_show_lives=true;if asset_get_type("snd_1up")==asset_sound{audio_play_sound(snd_1up,0,0);audio_sound_gain(snd_1up,global.sfx_volume,0);}if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y-32,0,obj_scoreup);with(obj){scoreup="1-UP";}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.5);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=7 or other.chain_reaction=7{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*8000 Score*/score+=8000;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=8000;}}
-///*1-UP*/lives+=1;global.hud_show_lives=true;if asset_get_type("snd_1up")==asset_sound{audio_play_sound(snd_1up,0,0);audio_sound_gain(snd_1up,global.sfx_volume,0);}if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y-32,0,obj_scoreup);with(obj){scoreup="1-UP";}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.6);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction>=8 or other.chain_reaction>=8{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*1-UP*/lives+=1;global.hud_show_lives=true;if asset_get_type("snd_1up")==asset_sound{audio_play_sound(snd_1up,0,0);audio_sound_gain(snd_1up,global.sfx_volume,0);}if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y-32,0,obj_scoreup);with(obj){scoreup="1-UP";}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.7);}
-//}
-/*Rewards End*/
-
-
-
-
 speed=0;
 if (other.key_jump_hold)
 {
@@ -2049,60 +1994,6 @@ or(other.chain_reaction>=8)
 	}
 }
 #endregion /*Rewards End*/
-
-/*Rewards*/
-//if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction<=1 or other.chain_reaction<=1{
-///*1 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}}
-///*200 Score*/score+=200;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=200;}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=2 or other.chain_reaction=2{
-///*2 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}}
-///*400 Score*/score+=400;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=400;}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.1);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=3 or other.chain_reaction=3{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*800 Score*/score+=800;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=800;}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.2);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=4 or other.chain_reaction=4{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*1000 Score*/score+=1000;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=1000;}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.3);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=5 or other.chain_reaction=5{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*2000 Score*/score+=2000;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=2000;}}
-///*1-UP*/lives+=1;global.hud_show_lives=true;if asset_get_type("snd_1up")==asset_sound{audio_play_sound(snd_1up,0,0);audio_sound_gain(snd_1up,global.sfx_volume,0);}if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y-16,0,obj_scoreup);with(obj){scoreup="1-UP";}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.4);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=6 or other.chain_reaction=6{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*4000 Score*/score+=4000;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=4000;}}
-///*1-UP*/lives+=1;global.hud_show_lives=true;if asset_get_type("snd_1up")==asset_sound{audio_play_sound(snd_1up,0,0);audio_sound_gain(snd_1up,global.sfx_volume,0);}if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y-32,0,obj_scoreup);with(obj){scoreup="1-UP";}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.5);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction=7 or other.chain_reaction=7{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*8000 Score*/score+=8000;if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y,0,obj_scoreup);with(obj){scoreup=8000;}}
-///*1-UP*/lives+=1;global.hud_show_lives=true;if asset_get_type("snd_1up")==asset_sound{audio_play_sound(snd_1up,0,0);audio_sound_gain(snd_1up,global.sfx_volume,0);}if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y-32,0,obj_scoreup);with(obj){scoreup="1-UP";}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.6);}
-//}
-//else if instance_number(obj_player)>0 and instance_nearest(x,y,obj_player).chain_reaction>=8 or other.chain_reaction>=8{
-///*4 Coin*/if asset_get_type("obj_basic_collectible")==asset_object{var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=10;}
-//obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=20;}obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);with(obj){image_speed=1;motion_set(90,10);bounceup=true;delay_time=30;}}
-///*1-UP*/lives+=1;global.hud_show_lives=true;if asset_get_type("snd_1up")==asset_sound{audio_play_sound(snd_1up,0,0);audio_sound_gain(snd_1up,global.sfx_volume,0);}if asset_get_type("obj_scoreup")==asset_object{obj=instance_create_depth(x,y-32,0,obj_scoreup);with(obj){scoreup="1-UP";}}
-//if asset_get_type("snd_stomp")==asset_sound{audio_play_sound(snd_stomp,0,0);audio_sound_gain(snd_stomp,global.sfx_volume,0);audio_sound_pitch(snd_stomp,1.7);}
-//}
-/*Rewards End*/
-
-
 
 speed=0;
 image_index=0;

@@ -1084,15 +1084,18 @@ draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+16,"
 
 if (menu="file1delete"){global.file=1;
 if (file_exists("File1.ini")){draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"> File 1 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"> New 1 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}}
-else if (file_exists("File1.ini")){draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"File 1",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"New 1",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
+else
+if (file_exists("File1.ini")){draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"File 1",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"New 1",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
 
 if (menu="file2delete"){global.file=2;
 if (file_exists("File2.ini")){draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"> File 2 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"> New 2 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}}
-else if (file_exists("File2.ini")){draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"File 2",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"New 2",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
+else
+if (file_exists("File2.ini")){draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"File 2",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"New 2",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
 
 if (menu="file3delete"){global.file=3;
 if (file_exists("File3.ini")){draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"> File 3 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"> New 3 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}}
-else if (file_exists("File3.ini")){draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"File 3",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"New 3",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
+else
+if (file_exists("File3.ini")){draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"File 3",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"New 3",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
 
 #region /*Show how many goals have been reached in each file*/
 if (file_exists("File1.ini"))

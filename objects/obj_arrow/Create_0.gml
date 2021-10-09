@@ -11,7 +11,8 @@ if asset_get_type("obj_player") == asset_object and instance_number(obj_player) 
 	{
 		image_xscale = -1;
 	}
-	else if instance_nearest(x, y, obj_player).x > x
+	else
+	if instance_nearest(x, y, obj_player).x > x
 	{
 		image_xscale = +1;
 	}
@@ -23,7 +24,8 @@ if asset_get_type("obj_player_die") == asset_object and instance_number(obj_play
 	{
 		image_xscale = -1;
 	}
-	else if instance_nearest(x, y, obj_player_die).x > x
+	else
+	if instance_nearest(x, y, obj_player_die).x > x
 	{
 		image_xscale = +1;
 	}

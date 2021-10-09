@@ -672,7 +672,33 @@ or(file_exists(working_directory + "/custom_characters/Character" + string(custo
 	}
 	#endregion /*Sprite swim y origin point END*/
 	#endregion /*Sprite swim x and y origin points END*/
-
+	
+	#region /*Sprite swim stand x and y origin points*/
+	#region /*Sprite swim stand x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_swim_stand_xorig"))
+	{
+		sprite_swim_stand_xorig = ini_read_real("sprite origin points", "sprite_swim_stand_xorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_swim_stand_xorig", 0);
+		sprite_swim_stand_xorig = 0;
+	}
+	#endregion /*Sprite swim stand x origin point END*/
+	
+	#region /*Sprite swim stand y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_swim_stand_yorig"))
+	{
+		sprite_swim_stand_yorig = ini_read_real("sprite origin points", "sprite_swim_stand_yorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_swim_stand_yorig", 0);
+		sprite_swim_stand_yorig = 0;
+	}
+	#endregion /*Sprite swim stand y origin point END*/
+	#endregion /*Sprite swim stand x and y origin points END*/
+	
 	#region /*Sprite swim fall x and y origin points*/
 	#region /*Sprite swim fall x origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_swim_fall_xorig"))
@@ -1452,7 +1478,155 @@ or(file_exists(working_directory + "/custom_characters/Character" + string(custo
 	}
 	#endregion /*Sprite vine stay y origin point END*/
 	#endregion /*Sprite vine stay x and y origin points END*/
-
+	
+	#region /*Cutscene specific origin points*/
+	
+	#region /*Sprite sitting down to eat x and y origin points*/
+	#region /*Sprite sitting down to eat x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_down_to_eat_xorig"))
+	{
+		sprite_sitting_down_to_eat_xorig = ini_read_real("sprite origin points", "sprite_sitting_down_to_eat_xorig", 0);
+	}
+	else
+	{
+		sprite_sitting_down_to_eat_xorig = 0;
+	}
+	#endregion /*Sprite sitting down to eat x origin point END*/
+	
+	#region /*Sprite sitting down to eat y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_down_to_eat_yorig"))
+	{
+		sprite_sitting_down_to_eat_yorig = ini_read_real("sprite origin points", "sprite_sitting_down_to_eat_yorig", 0);
+	}
+	else
+	{
+		sprite_sitting_down_to_eat_yorig = 0;
+	}
+	#endregion /*Sprite sitting down to eat y origin point END*/
+	#endregion /*Sprite sitting down to eat x and y origin points END*/
+	
+	#region /*Sprite sitting eat closed mouth x and y origin points*/
+	#region /*Sprite sitting eat closed mouth x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eat_closed_mouth_xorig"))
+	{
+		sprite_sitting_eat_closed_mouth_xorig = ini_read_real("sprite origin points", "sprite_sitting_eat_closed_mouth_xorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eat_closed_mouth_xorig = 0;
+	}
+	#endregion /*Sprite sitting eat closed mouth x origin point END*/
+	
+	#region /*Sprite sitting eat closed mouth y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eat_closed_mouth_yorig"))
+	{
+		sprite_sitting_eat_closed_mouth_yorig = ini_read_real("sprite origin points", "sprite_sitting_eat_closed_mouth_yorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eat_closed_mouth_yorig = 0;
+	}
+	#endregion /*Sprite sitting eat closed mouth y origin point END*/
+	#endregion /*Sprite sitting eat closed mouth x and y origin points END*/
+	
+	#region /*Sprite sitting eat open mouth x and y origin points*/
+	#region /*Sprite sitting eat open mouth x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eat_open_mouth_xorig"))
+	{
+		sprite_sitting_eat_open_mouth_xorig = ini_read_real("sprite origin points", "sprite_sitting_eat_open_mouth_xorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eat_open_mouth_xorig = 0;
+	}
+	#endregion /*Sprite sitting eat open mouth x origin point END*/
+	
+	#region /*Sprite sitting eat open mouth y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eat_open_mouth_yorig"))
+	{
+		sprite_sitting_eat_open_mouth_yorig = ini_read_real("sprite origin points", "sprite_sitting_eat_open_mouth_yorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eat_open_mouth_yorig = 0;
+	}
+	#endregion /*Sprite sitting eat open mouth y origin point END*/
+	#endregion /*Sprite sitting eat open mouth x and y origin points END*/
+	
+	#region /*Sprite sitting eat open mouth open eye x and y origin points*/
+	#region /*Sprite sitting eat open mouth open eye x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eat_open_mouth_open_eye_xorig"))
+	{
+		sprite_sitting_eat_open_mouth_open_eye_xorig = ini_read_real("sprite origin points", "sprite_sitting_eat_open_mouth_open_eye_xorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eat_open_mouth_open_eye_xorig = 0;
+	}
+	#endregion /*Sprite sitting eat open mouth open eye x origin point END*/
+	
+	#region /*Sprite sitting eat open mouth open eye y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eat_open_mouth_open_eye_yorig"))
+	{
+		sprite_sitting_eat_open_mouth_open_eye_yorig = ini_read_real("sprite origin points", "sprite_sitting_eat_open_mouth_open_eye_yorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eat_open_mouth_open_eye_yorig = 0;
+	}
+	#endregion /*Sprite sitting eat open mouth open eye y origin point END*/
+	#endregion /*Sprite sitting eat open mouth open eye x and y origin points END*/
+	
+	#region /*Sprite sitting eat surprised x and y origin points*/
+	#region /*Sprite sitting eat surprised x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eat_surprised_xorig"))
+	{
+		sprite_sitting_eat_surprised_xorig = ini_read_real("sprite origin points", "sprite_sitting_eat_surprised_xorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eat_surprised_xorig = 0;
+	}
+	#endregion /*Sprite sitting eat surprised x origin point END*/
+	
+	#region /*Sprite sitting eat surprised y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eat_surprised_yorig"))
+	{
+		sprite_sitting_eat_surprised_yorig = ini_read_real("sprite origin points", "sprite_sitting_eat_surprised_yorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eat_surprised_yorig = 0;
+	}
+	#endregion /*Sprite sitting eat surprised y origin point END*/
+	#endregion /*Sprite sitting eat surprised x and y origin points END*/
+	
+	#region /*Sprite sitting eating x and y origin points*/
+	#region /*Sprite sitting eating x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eating_xorig"))
+	{
+		sprite_sitting_eating_xorig = ini_read_real("sprite origin points", "sprite_sitting_eating_xorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eating_xorig = 0;
+	}
+	#endregion /*Sprite sitting eating x origin point END*/
+	
+	#region /*Sprite sitting eating y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_sitting_eating_yorig"))
+	{
+		sprite_sitting_eating_yorig = ini_read_real("sprite origin points", "sprite_sitting_eating_yorig", 0);
+	}
+	else
+	{
+		sprite_sitting_eating_yorig = 0;
+	}
+	#endregion /*Sprite sitting eating y origin point END*/
+	#endregion /*Sprite sitting eating x and y origin points END*/
+	
+	#endregion /*Cutscene specific origin points END*/
+	
 	ini_close();
 }
 else
@@ -1530,6 +1704,8 @@ else
 	sprite_swim_fall_yorig = 0;
 	sprite_swim_xorig = 0;
 	sprite_swim_yorig = 0;
+	sprite_swim_stand_xorig = 0;
+	sprite_swim_stand_yorig = 0;
 	sprite_vine_climb_xorig = 0;
 	sprite_vine_climb_yorig = 0;
 	sprite_vine_stay_xorig = 0;
@@ -1542,6 +1718,18 @@ else
 	sprite_wall_slide_up_yorig = 0;
 	sprite_wall_slide_xorig = 0;
 	sprite_wall_slide_yorig = 0;
+	sprite_sitting_down_to_eat_xorig = 0;
+	sprite_sitting_down_to_eat_yorig = 0;
+	sprite_sitting_eat_closed_mouth_xorig = 0;
+	sprite_sitting_eat_closed_mouth_yorig = 0;
+	sprite_sitting_eat_open_mouth_xorig = 0;
+	sprite_sitting_eat_open_mouth_yorig = 0;
+	sprite_sitting_eat_open_mouth_open_eye_xorig = 0;
+	sprite_sitting_eat_open_mouth_open_eye_yorig = 0;
+	sprite_sitting_eat_surprised_xorig = 0;
+	sprite_sitting_eat_surprised_yorig = 0;
+	sprite_sitting_eating_xorig = 0;
+	sprite_sitting_eating_yorig = 0;
 }
 #endregion /*If there is no config.ini file, then make every xorig and yorig variable zero END*/
 
@@ -1612,7 +1800,7 @@ else
 #region /*Sprite variables*/
 
 #region /*Stand sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/stand_strip"+string(index)+".png"))
@@ -1624,7 +1812,7 @@ repeat(50)
 	{
 		sprite_stand = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/stand_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/stand.png"))
 {
@@ -1660,28 +1848,31 @@ repeat(50)
 	{
 		sprite_stand_cold = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/cold_strip"+string(index)+".png", index, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/stand_cold.png"))
 {
 	sprite_stand_cold = sprite_add("characters/character" + string(custom_character)+"/sprites/stand_cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 }
-else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/stand_cold.png"))
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/stand_cold.png"))
 {
 	sprite_stand_cold = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/stand_cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 }
-else if (file_exists("characters/character" + string(custom_character)+"/sprites/cold.png"))
+else
+if (file_exists("characters/character" + string(custom_character)+"/sprites/cold.png"))
 {
 	sprite_stand_cold = sprite_add("characters/character" + string(custom_character)+"/sprites/cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 }
-else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/cold.png"))
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/cold.png"))
 {
 	sprite_stand_cold = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 }
 #endregion /*Stand cold sprite END*/
 
 #region /*Standing on something sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/standing_on_something_strip"+string(index)+".png"))
@@ -1693,60 +1884,67 @@ repeat(50)
 	{
 		sprite_standing_on_something = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/standing_on_something_strip"+string(index)+".png", index, false, false, sprite_standing_on_something_xorig, sprite_standing_on_something_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/standing_on_something.png"))
 {
 	sprite_standing_on_something = sprite_add("characters/character" + string(custom_character)+"/sprites/standing_on_something.png", 1, false, false, sprite_standing_on_something_xorig, sprite_standing_on_something_yorig);
 }
-else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/standing_on_something.png"))
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/standing_on_something.png"))
 {
 	sprite_standing_on_something = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/standing_on_something.png", 1, false, false, sprite_standing_on_something_xorig, sprite_standing_on_something_yorig);
 }
 #endregion /*Standing on something sprite END*/
 
 #region /*Look up sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/look_up_strip"+string(index)+".png"))
 	{
 		sprite_look_up = sprite_add("characters/character" + string(custom_character)+"/sprites/look_up_strip"+string(index)+".png", index, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 	}
-	else if (file_exists("characters/character" + string(custom_character)+"/sprites/lookup_strip"+string(index)+".png"))
+	else
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/lookup_strip"+string(index)+".png"))
 	{
 		sprite_look_up = sprite_add("characters/character" + string(custom_character)+"/sprites/lookup_strip"+string(index)+".png", index, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 	}
-	else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/look_up_strip"+string(index)+".png"))
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/look_up_strip"+string(index)+".png"))
 	{
 		sprite_look_up = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/look_up_strip"+string(index)+".png", index, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 	}
-	else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/lookup_strip"+string(index)+".png"))
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/lookup_strip"+string(index)+".png"))
 	{
 		sprite_look_up = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/lookup_strip"+string(index)+".png", index, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/look_up.png"))
 {
 	sprite_look_up = sprite_add("characters/character" + string(custom_character)+"/sprites/look_up.png", 1, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 }
-else if (file_exists("characters/character" + string(custom_character)+"/sprites/lookup.png"))
+else
+if (file_exists("characters/character" + string(custom_character)+"/sprites/lookup.png"))
 {
 	sprite_look_up = sprite_add("characters/character" + string(custom_character)+"/sprites/lookup.png", 1, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 }
-else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/look_up.png"))
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/look_up.png"))
 {
 	sprite_look_up = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/look_up.png", 1, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 }
-else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/lookup.png"))
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/lookup.png"))
 {
 	sprite_look_up = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/lookup.png", 1, false, false, sprite_look_up_xorig, sprite_look_up_yorig);
 }
 #endregion /*Look up sprite END*/
 
 #region /*Look up start sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/look_up_start_strip"+string(index)+".png"))
@@ -1758,7 +1956,7 @@ repeat(50)
 	{
 		sprite_look_up_start = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/look_up_start_strip"+string(index)+".png", index, false, false, sprite_look_up_start_xorig, sprite_look_up_start_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/look_up_start.png"))
 {
@@ -1772,47 +1970,53 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Look up start sprite END*/
 
 #region /*Crouch sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/crouch_strip"+string(index)+".png"))
 	{
 		sprite_crouch = sprite_add("characters/character" + string(custom_character)+"/sprites/crouch_strip"+string(index)+".png", index, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 	}
-	else if (file_exists("characters/character" + string(custom_character)+"/sprites/squat_strip"+string(index)+".png"))
+	else
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/squat_strip"+string(index)+".png"))
 	{
 		sprite_crouch = sprite_add("characters/character" + string(custom_character)+"/sprites/squat_strip"+string(index)+".png", index, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 	}
-	else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/crouch_strip"+string(index)+".png"))
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/crouch_strip"+string(index)+".png"))
 	{
 		sprite_crouch = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/crouch_strip"+string(index)+".png", index, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 	}
-	else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/squat_strip"+string(index)+".png"))
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/squat_strip"+string(index)+".png"))
 	{
 		sprite_crouch = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/squat_strip"+string(index)+".png", index, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/crouch.png"))
 {
 	sprite_crouch = sprite_add("characters/character" + string(custom_character)+"/sprites/crouch.png", 1, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 }
-else if (file_exists("characters/character" + string(custom_character)+"/sprites/squat.png"))
+else
+if (file_exists("characters/character" + string(custom_character)+"/sprites/squat.png"))
 {
 	sprite_crouch = sprite_add("characters/character" + string(custom_character)+"/sprites/squat.png", 1, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 }
-else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/crouch.png"))
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/crouch.png"))
 {
 	sprite_crouch = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/crouch.png", 1, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 }
-else if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/squat.png"))
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/squat.png"))
 {
 	sprite_crouch = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/squat.png", 1, false, false, sprite_crouch_xorig, sprite_crouch_yorig);
 }
 #endregion /*Crouch sprite END*/
 
 #region /*Crawl sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/crawl_strip"+string(index)+".png"))
@@ -1834,7 +2038,7 @@ repeat(50)
 	{
 		sprite_crouch_crawl = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/squat_crawl_strip"+string(index)+".png", index, false, false, sprite_crawl_xorig, sprite_crawl_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/crawl.png"))
 {
@@ -1858,7 +2062,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Crawl sprite END*/
 
 #region /*Crouch jump sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/crouch_jump_strip"+string(index)+".png"))
@@ -1880,7 +2084,7 @@ repeat(50)
 	{
 		sprite_crouch_jump = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/squat_jump_strip"+string(index)+".png", index, false, false, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/crouch_jump.png"))
 {
@@ -1904,7 +2108,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Crouch jump sprite END*/
 
 #region /*Crouch fall sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/crouch_fall_strip"+string(index)+".png"))
@@ -1926,7 +2130,7 @@ repeat(50)
 	{
 		sprite_crouch_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/squat_fall_strip"+string(index)+".png", index, false, false, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/crouch_fall.png"))
 {
@@ -1950,7 +2154,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Crouch fall sprite END*/
 
 #region /*Skidding sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/skidding_strip"+string(index)+".png"))
@@ -1972,7 +2176,7 @@ repeat(50)
 	{
 		sprite_skidding = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/slip_strip"+string(index)+".png", index, false, false, sprite_skidding_xorig, sprite_skidding_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/skidding.png"))
 {
@@ -1996,7 +2200,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Skidding sprite END*/
 
 #region /*Skidding Ice sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/skidding_ice_strip"+string(index)+".png"))
@@ -2008,7 +2212,7 @@ repeat(50)
 	{
 		sprite_skidding_ice = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/skidding_ice_strip"+string(index)+".png", index, false, false, sprite_skidding_ice_xorig, sprite_skidding_ice_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/skidding_ice.png"))
 {
@@ -2021,160 +2225,106 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 }
 #endregion /*Skidding Ice sprite END*/
 
-#region /*Swim sprite*/
-if(sprite_swim_xorig > 0)
-or(sprite_swim_yorig > 0)
+#region /*Swim stand sprite*/
+index = 0;
+repeat(50)
 {
-	index=0
-	repeat(50)
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_stand_strip"+string(index)+".png"))
 	{
-		if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_strip"+string(index)+".png"))
-		{
-			sprite_swim = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_strip"+string(index)+".png", index, false, false, sprite_swim_xorig, sprite_swim_yorig);
-		}
-		else
-		if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_strip"+string(index)+".png"))
-		{
-			sprite_swim = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_strip"+string(index)+".png", index, false, false, sprite_swim_xorig, sprite_swim_yorig);
-		}
-		index+=1
-	}
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim.png"))
-	{
-		sprite_swim = sprite_add("characters/character" + string(custom_character)+"/sprites/swim.png", 1, false, false, sprite_swim_xorig, sprite_swim_yorig);
+		sprite_swim_stand = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_stand_strip"+string(index)+".png", index, false, false, sprite_swim_stand_xorig, sprite_swim_stand_yorig);
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim.png"))
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_stand_strip"+string(index)+".png"))
 	{
-		sprite_swim = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim.png", 1, false, false, sprite_swim_xorig, sprite_swim_yorig);
+		sprite_swim_stand = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_stand_strip"+string(index)+".png", index, false, false, sprite_swim_stand_xorig, sprite_swim_stand_yorig);
 	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_stand.png"))
+{
+	sprite_swim_stand = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_stand.png", 1, false, false, sprite_swim_stand_xorig, sprite_swim_stand_yorig);
 }
 else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_stand.png"))
 {
-	index=0
-	repeat(50)
+	sprite_swim_stand = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_stand.png", 1, false, false, sprite_swim_stand_xorig, sprite_swim_stand_yorig);
+}
+#endregion /*Swim stand sprite END*/
+
+#region /*Swim sprite*/
+index = 0;
+repeat(50)
+{
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_strip"+string(index)+".png"))
 	{
-		if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_strip"+string(index)+".png"))
-		{
-			sprite_swim = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
-		}
-		else
-		if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_strip"+string(index)+".png"))
-		{
-			sprite_swim = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
-		}
-		index+=1
-	}
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim.png"))
-	{
-		sprite_swim = sprite_add("characters/character" + string(custom_character)+"/sprites/swim.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		sprite_swim = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_strip"+string(index)+".png", index, false, false, sprite_swim_xorig, sprite_swim_yorig);
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim.png"))
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_strip"+string(index)+".png"))
 	{
-		sprite_swim = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		sprite_swim = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_strip"+string(index)+".png", index, false, false, sprite_swim_xorig, sprite_swim_yorig);
 	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/swim.png"))
+{
+	sprite_swim = sprite_add("characters/character" + string(custom_character)+"/sprites/swim.png", 1, false, false, sprite_swim_xorig, sprite_swim_yorig);
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim.png"))
+{
+	sprite_swim = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim.png", 1, false, false, sprite_swim_xorig, sprite_swim_yorig);
 }
 #endregion /*Swim sprite END*/
 
 #region /*Swim fall sprite*/
-if(sprite_swim_fall_xorig > 0)
-or(sprite_swim_fall_yorig > 0)
+index = 0;
+repeat(50)
 {
-	index=0
-	repeat(50)
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_fall_strip"+string(index)+".png"))
 	{
-		if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_fall_strip"+string(index)+".png"))
-		{
-			sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
-		}
-		else
-		if (file_exists("characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall_strip"+string(index)+".png"))
-		{
-			sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
-		}
-		else
-		if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_falling_strip"+string(index)+".png"))
-		{
-			sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
-		}
-		else
-		if (file_exists("characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling_strip"+string(index)+".png"))
-		{
-			sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
-		}
-		index+=1
-	}
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_fall.png"))
-	{
-		sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_fall.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall.png"))
+	if (file_exists("characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall_strip"+string(index)+".png"))
 	{
-		sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 	}
 	else
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_falling.png"))
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_falling_strip"+string(index)+".png"))
 	{
-		sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_falling.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling.png"))
+	if (file_exists("characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling_strip"+string(index)+".png"))
 	{
-		sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+		sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_fall.png"))
+{
+	sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_fall.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 }
 else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall.png"))
 {
-	index=0
-	repeat(50)
-	{
-		if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_fall_strip"+string(index)+".png"))
-		{
-			sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
-		}
-		else
-		if (file_exists("characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall_strip"+string(index)+".png"))
-		{
-			sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
-		}
-		else
-		if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_falling_strip"+string(index)+".png"))
-		{
-			sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
-		}
-		else
-		if (file_exists("characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling_strip"+string(index)+".png"))
-		{
-			sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
-		}
-		index+=1
-	}
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_fall.png"))
-	{
-		sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_fall.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
-	}
-	else
-	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall.png"))
-	{
-		sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
-	}
-	else
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_falling.png"))
-	{
-		sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_falling.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
-	}
-	else
-	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling.png"))
-	{
-		sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
-	}
+	sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_fall.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+}
+else
+if (file_exists("characters/character" + string(custom_character)+"/sprites/swim_falling.png"))
+{
+	sprite_swim_fall = sprite_add("characters/character" + string(custom_character)+"/sprites/swim_falling.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling.png"))
+{
+	sprite_swim_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/swim_falling.png", 1, false, false, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 }
 #endregion /*Swim fall sprite END*/
 
 #region /*Against wall sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/against_wall_strip"+string(index)+".png"))
@@ -2196,7 +2346,7 @@ repeat(50)
 	{
 		sprite_against_wall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/againstwall_strip"+string(index)+".png", index, false, false, sprite_against_wall_xorig, sprite_against_wall_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/against_wall.png"))
 {
@@ -2220,7 +2370,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Against wall sprite END*/
 
 #region /*Walk sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/walk_strip"+string(index)+".png"))
@@ -2232,7 +2382,7 @@ repeat(50)
 	{
 		sprite_walk = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/walk_strip"+string(index)+".png", index, false, false, sprite_walk_xorig, sprite_walk_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/walk.png"))
 {
@@ -2246,7 +2396,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Walk sprite END*/
 
 #region /*Run sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/run_strip"+string(index)+".png"))
@@ -2268,7 +2418,7 @@ repeat(50)
 	{
 		sprite_run = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/dash_strip"+string(index)+".png", index, false, false, sprite_run_xorig, sprite_run_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/run.png"))
 {
@@ -2292,7 +2442,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Run sprite END*/
 
 #region /*Run 2 sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/run2_strip"+string(index)+".png"))
@@ -2314,7 +2464,7 @@ repeat(50)
 	{
 		sprite_run2 = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/dash2_strip"+string(index)+".png", index, false, false, sprite_run2_xorig, sprite_run2_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/run2.png"))
 {
@@ -2338,7 +2488,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Run 2 sprite END*/
 
 #region /*Run 3 sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/run3_strip"+string(index)+".png"))
@@ -2360,7 +2510,7 @@ repeat(50)
 	{
 		sprite_run3 = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/dash3_strip"+string(index)+".png", index, false, false, sprite_run3_xorig, sprite_run3_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/run3.png"))
 {
@@ -2384,7 +2534,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Run 3 sprite END*/
 
 #region /*Run 4 sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/run4_strip"+string(index)+".png"))
@@ -2406,7 +2556,7 @@ repeat(50)
 	{
 		sprite_run4 = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/dash4_strip"+string(index)+".png", index, false, false, sprite_run4_xorig, sprite_run4_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/run4.png"))
 {
@@ -2430,7 +2580,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Run 4 sprite END*/
 
 #region /*Jump sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/jump_strip"+string(index)+".png"))
@@ -2442,7 +2592,7 @@ repeat(50)
 	{
 		sprite_jump = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/jump_strip"+string(index)+".png", index, false, false, sprite_jump_xorig, sprite_jump_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/jump.png"))
 {
@@ -2456,7 +2606,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Jump sprite END*/
 
 #region /*Double Jump sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/double_jump_strip"+string(index)+".png"))
@@ -2478,7 +2628,7 @@ repeat(50)
 	{
 		sprite_double_jump = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/doublejump_strip"+string(index)+".png", index, false, false, sprite_double_jump_xorig, sprite_double_jump_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/double_jump.png"))
 {
@@ -2502,7 +2652,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Double Jump sprite END*/
 
 #region /*Triple Jump sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/triple_jump_strip"+string(index)+".png"))
@@ -2524,7 +2674,7 @@ repeat(50)
 	{
 		sprite_triple_jump = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/triplejump_strip"+string(index)+".png", index, false, false, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/triple_jump.png"))
 {
@@ -2548,7 +2698,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Triple Jump sprite END*/
 
 #region /*Fall sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/fall_strip"+string(index)+".png"))
@@ -2560,7 +2710,7 @@ repeat(50)
 	{
 		sprite_fall = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/fall_strip"+string(index)+".png", index, false, false, sprite_fall_xorig, sprite_fall_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/fall.png"))
 {
@@ -2574,7 +2724,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Fall sprite END*/
 
 #region /*Fall slower sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/fall_slower_strip"+string(index)+".png"))
@@ -2596,7 +2746,7 @@ repeat(50)
 	{
 		sprite_fall_slower = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/fallslower_strip"+string(index)+".png", index, false, false, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/fall_slower.png"))
 {
@@ -2620,7 +2770,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Fall slower sprite END*/
 
 #region /*Climb under still sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under_still_strip"+string(index)+".png"))
@@ -2642,7 +2792,7 @@ repeat(50)
 	{
 		sprite_climb_under_still = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/climbunder_still_strip"+string(index)+".png", index, false, false, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under_still.png"))
 {
@@ -2666,7 +2816,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Climb under still sprite END*/
 
 #region /*Climb under sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under_strip"+string(index)+".png"))
@@ -2688,7 +2838,7 @@ repeat(50)
 	{
 		sprite_climb_under = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/climbunder_strip"+string(index)+".png", index, false, false, sprite_climb_under_xorig, sprite_climb_under_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under.png"))
 {
@@ -2712,7 +2862,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Climb under sprite END*/
 
 #region /*Climb under look up sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under_look_up_strip"+string(index)+".png"))
@@ -2734,7 +2884,7 @@ repeat(50)
 	{
 		sprite_climb_under_look_up = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/climbunder_lookup_strip"+string(index)+".png", index, false, false, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under_look_up.png"))
 {
@@ -2758,7 +2908,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Climb under look up sprite END*/
 
 #region /*Climb under spin sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under_spin_strip"+string(index)+".png"))
@@ -2780,7 +2930,7 @@ repeat(50)
 	{
 		sprite_climb_under_spin = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/climbunder_spin_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under_spin.png"))
 {
@@ -2804,7 +2954,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Climb under spin sprite END*/
 
 #region /*Climb under spin fast sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under_spin_fast_strip"+string(index)+".png"))
@@ -2826,7 +2976,7 @@ repeat(50)
 	{
 		sprite_climb_under_spin_fast = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/climbunder_spin_fast_strip"+string(index)+".png", index, false, false, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/climb_under_spin_fast.png"))
 {
@@ -2850,7 +3000,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Climb under spin fast sprite END*/
 
 #region /*Ground pound sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/ground_pound_strip"+string(index)+".png"))
@@ -2872,7 +3022,7 @@ repeat(50)
 	{
 		sprite_ground_pound = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/groundpound_strip"+string(index)+".png", index, false, false, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/ground_pound.png"))
 {
@@ -2896,7 +3046,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Ground pound sprite END*/
 
 #region /*Ground pound get up sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/ground_pound_get_up_strip"+string(index)+".png"))
@@ -2918,7 +3068,7 @@ repeat(50)
 	{
 		sprite_ground_pound_get_up = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/groundpound_getup_strip"+string(index)+".png", index, false, false, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/ground_pound_get_up.png"))
 {
@@ -2942,7 +3092,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Ground pound get up sprite END*/
 
 #region /*Stomp spin sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/stomp_spin_strip"+string(index)+".png"))
@@ -2964,7 +3114,7 @@ repeat(50)
 	{
 		sprite_stomp_spin = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/stompspin_strip"+string(index)+".png", index, false, false, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/stomp_spin.png"))
 {
@@ -2988,7 +3138,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Stomp spin sprite END*/
 
 #region /*Spring up sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/spring_up_strip"+string(index)+".png"))
@@ -3000,7 +3150,7 @@ repeat(50)
 	{
 		sprite_spring_up = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/spring_up_strip"+string(index)+".png", index, false, false, sprite_spring_up_xorig, sprite_spring_up_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/spring_up.png"))
 {
@@ -3014,7 +3164,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Spring up sprite END*/
 
 #region /*Spring transition sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/spring_transition_strip"+string(index)+".png"))
@@ -3026,7 +3176,7 @@ repeat(50)
 	{
 		sprite_spring_transition = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/spring_transition_strip"+string(index)+".png", index, false, false, sprite_spring_transition_xorig, sprite_spring_transition_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/spring_transition.png"))
 {
@@ -3040,7 +3190,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Spring transition sprite END*/
 
 #region /*Spring down sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/spring_down_strip"+string(index)+".png"))
@@ -3052,7 +3202,7 @@ repeat(50)
 	{
 		sprite_spring_down = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/spring_down_strip"+string(index)+".png", index, false, false, sprite_spring_down_xorig, sprite_spring_down_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/spring_down.png"))
 {
@@ -3066,7 +3216,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Spring down sprite END*/
 
 #region /*Wall slide sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/wall_slide_strip"+string(index)+".png"))
@@ -3088,7 +3238,7 @@ repeat(50)
 	{
 		sprite_wall_slide = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/wallslide_strip"+string(index)+".png", index, false, false, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/wall_slide.png"))
 {
@@ -3112,7 +3262,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Wall slide sprite END*/
 
 #region /*Wall slide up sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/wall_slide_up_strip"+string(index)+".png"))
@@ -3134,7 +3284,7 @@ repeat(50)
 	{
 		sprite_wall_slide_up = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/wallslide_up_strip"+string(index)+".png", index, false, false, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/wall_slide_up.png"))
 {
@@ -3158,7 +3308,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Wall slide up sprite END*/
 
 #region /*Wall slide down sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/wall_slide_down_strip"+string(index)+".png"))
@@ -3180,7 +3330,7 @@ repeat(50)
 	{
 		sprite_wall_slide_down = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/wallslide_down_strip"+string(index)+".png", index, false, false, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/wall_slide_down.png"))
 {
@@ -3204,7 +3354,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Wall slide down sprite END*/
 
 #region /*Dive sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/dive_strip"+string(index)+".png"))
@@ -3216,7 +3366,7 @@ repeat(50)
 	{
 		sprite_dive = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/dive_strip"+string(index)+".png", index, false, false, sprite_dive_xorig, sprite_dive_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/dive.png"))
 {
@@ -3230,7 +3380,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Dive sprite END*/
 
 #region /*Die sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/die_strip"+string(index)+".png"))
@@ -3242,7 +3392,7 @@ repeat(50)
 	{
 		sprite_die = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/die_strip"+string(index)+".png", index, false, false, sprite_die_xorig, sprite_die_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/die.png"))
 {
@@ -3256,7 +3406,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Die sprite END*/
 
 #region /*Vine climb sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/vine_climb_strip"+string(index)+".png"))
@@ -3268,7 +3418,7 @@ repeat(50)
 	{
 		sprite_vine_climb = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/vine_climb_strip"+string(index)+".png", index, false, false, sprite_vine_climb_xorig, sprite_vine_climb_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/vine_climb.png"))
 {
@@ -3282,7 +3432,7 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 #endregion /*Vine climb sprite END*/
 
 #region /*Vine stay sprite*/
-index=0
+index = 0;
 repeat(50)
 {
 	if (file_exists("characters/character" + string(custom_character)+"/sprites/vine_stay_strip"+string(index)+".png"))
@@ -3294,7 +3444,7 @@ repeat(50)
 	{
 		sprite_vine_stay = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/vine_stay_strip"+string(index)+".png", index, false, false, sprite_vine_stay_xorig, sprite_vine_stay_yorig);
 	}
-	index+=1
+	index += 1;
 }
 if (file_exists("characters/character" + string(custom_character)+"/sprites/vine_stay.png"))
 {
@@ -3306,6 +3456,166 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 	sprite_vine_stay = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/vine_stay.png", 1, false, false, sprite_vine_stay_xorig, sprite_vine_stay_yorig);
 }
 #endregion /*Vine stay sprite END*/
+
+#region /*Cutscene Specific Sprites*/
+
+#region /*Sitting down to eat sprite*/
+index = 0;
+repeat(50)
+{
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_down_to_eat_strip"+string(index)+".png"))
+	{
+		sprite_sitting_down_to_eat = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_down_to_eat_strip"+string(index)+".png", index, false, false, sprite_sitting_down_to_eat_xorig, sprite_sitting_down_to_eat_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_down_to_eat_strip"+string(index)+".png"))
+	{
+		sprite_sitting_down_to_eat = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_down_to_eat_strip"+string(index)+".png", index, false, false, sprite_sitting_down_to_eat_xorig, sprite_sitting_down_to_eat_yorig);
+	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_down_to_eat.png"))
+{
+	sprite_sitting_down_to_eat = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_down_to_eat.png", 1, false, false, sprite_sitting_down_to_eat_xorig, sprite_sitting_down_to_eat_yorig);
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_down_to_eat.png"))
+{
+	sprite_sitting_down_to_eat = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_down_to_eat.png", 1, false, false, sprite_sitting_down_to_eat_xorig, sprite_sitting_down_to_eat_yorig);
+}
+#endregion /*Sitting down to eat sprite END*/
+
+#region /*Sitting eat closed mouth sprite*/
+index = 0;
+repeat(50)
+{
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eat_closed_mouth_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eat_closed_mouth = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eat_closed_mouth_strip"+string(index)+".png", index, false, false, sprite_sitting_eat_closed_mouth_xorig, sprite_sitting_eat_closed_mouth_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_closed_mouth_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eat_closed_mouth = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_closed_mouth_strip"+string(index)+".png", index, false, false, sprite_sitting_eat_closed_mouth_xorig, sprite_sitting_eat_closed_mouth_yorig);
+	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eat_closed_mouth.png"))
+{
+	sprite_sitting_eat_closed_mouth = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eat_closed_mouth.png", 1, false, false, sprite_sitting_eat_closed_mouth_xorig, sprite_sitting_eat_closed_mouth_yorig);
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_closed_mouth.png"))
+{
+	sprite_sitting_eat_closed_mouth = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_closed_mouth.png", 1, false, false, sprite_sitting_eat_closed_mouth_xorig, sprite_sitting_eat_closed_mouth_yorig);
+}
+#endregion /*Sitting eat closed mouth sprite END*/
+
+#region /*Sitting eat open mouth sprite*/
+index = 0;
+repeat(50)
+{
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eat_open_mouth_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eat_open_mouth = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eat_open_mouth_strip"+string(index)+".png", index, false, false, sprite_sitting_eat_open_mouth_xorig, sprite_sitting_eat_open_mouth_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_open_mouth_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eat_open_mouth = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_open_mouth_strip"+string(index)+".png", index, false, false, sprite_sitting_eat_open_mouth_xorig, sprite_sitting_eat_open_mouth_yorig);
+	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eat_open_mouth.png"))
+{
+	sprite_sitting_eat_open_mouth = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eat_open_mouth.png", 1, false, false, sprite_sitting_eat_open_mouth_xorig, sprite_sitting_eat_open_mouth_yorig);
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_open_mouth.png"))
+{
+	sprite_sitting_eat_open_mouth = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_open_mouth.png", 1, false, false, sprite_sitting_eat_open_mouth_xorig, sprite_sitting_eat_open_mouth_yorig);
+}
+#endregion /*Sitting eat open mouth sprite END*/
+
+#region /*Sitting eat open mouth open eye sprite*/
+index = 0;
+repeat(50)
+{
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eat_open_mouth_open_eye_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eat_open_mouth_open_eye = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eat_open_mouth_open_eye_strip"+string(index)+".png", index, false, false, sprite_sitting_eat_open_mouth_open_eye_xorig, sprite_sitting_eat_open_mouth_open_eye_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_open_mouth_open_eye_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eat_open_mouth_open_eye = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_open_mouth_open_eye_strip"+string(index)+".png", index, false, false, sprite_sitting_eat_open_mouth_open_eye_xorig, sprite_sitting_eat_open_mouth_open_eye_yorig);
+	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eat_open_mouth_open_eye.png"))
+{
+	sprite_sitting_eat_open_mouth_open_eye = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eat_open_mouth_open_eye.png", 1, false, false, sprite_sitting_eat_open_mouth_open_eye_xorig, sprite_sitting_eat_open_mouth_open_eye_yorig);
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_open_mouth_open_eye.png"))
+{
+	sprite_sitting_eat_open_mouth_open_eye = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_open_mouth_open_eye.png", 1, false, false, sprite_sitting_eat_open_mouth_open_eye_xorig, sprite_sitting_eat_open_mouth_open_eye_yorig);
+}
+#endregion /*Sitting eat open mouth open eye sprite END*/
+
+#region /*Sitting eat surprised sprite*/
+index = 0;
+repeat(50)
+{
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eat_surprised_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eat_surprised = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eat_surprised_strip"+string(index)+".png", index, false, false, sprite_sitting_eat_surprised_xorig, sprite_sitting_eat_surprised_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_surprised_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eat_surprised = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_surprised_strip"+string(index)+".png", index, false, false, sprite_sitting_eat_surprised_xorig, sprite_sitting_eat_surprised_yorig);
+	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eat_surprised.png"))
+{
+	sprite_sitting_eat_surprised = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eat_surprised.png", 1, false, false, sprite_sitting_eat_surprised_xorig, sprite_sitting_eat_surprised_yorig);
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_surprised.png"))
+{
+	sprite_sitting_eat_surprised = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eat_surprised.png", 1, false, false, sprite_sitting_eat_surprised_xorig, sprite_sitting_eat_surprised_yorig);
+}
+#endregion /*Sitting eat surprised sprite END*/
+
+#region /*Sitting eating sprite*/
+index = 0;
+repeat(50)
+{
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eating_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eating = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eating_strip"+string(index)+".png", index, false, false, sprite_sitting_eating_xorig, sprite_sitting_eating_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eating_strip"+string(index)+".png"))
+	{
+		sprite_sitting_eating = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eating_strip"+string(index)+".png", index, false, false, sprite_sitting_eating_xorig, sprite_sitting_eating_yorig);
+	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/sitting_eating.png"))
+{
+	sprite_sitting_eating = sprite_add("characters/character" + string(custom_character)+"/sprites/sitting_eating.png", 1, false, false, sprite_sitting_eating_xorig, sprite_sitting_eating_yorig);
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eating.png"))
+{
+	sprite_sitting_eating = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/sitting_eating.png", 1, false, false, sprite_sitting_eating_xorig, sprite_sitting_eating_yorig);
+}
+#endregion /*Sitting eating sprite END*/
+
+#region /*Cutscene Specific Sprites*/
 
 #endregion /*Sprite variables END*/
 
@@ -8780,7 +9090,7 @@ voice_burned = noone;
 
 #endregion /*Play as Custom characterEND*/
 
-#region /*characterValues Handeling*/
+#region /*Character Values Handeling*/
 
 if (file_exists("characters/character" + string(custom_character)+"/data/character_config.ini"))
 or(file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/data/character_config.ini"))
@@ -9110,7 +9420,7 @@ else
 	//if (!ini_key_exists("values", "homing_tongue_distance")){ini_write_real("values", "homing_tongue_distance", 500);}
 	//ini_close();
 }
-#endregion /*CharacterValues Handeling END*/
+#endregion /*Character Values Handeling END*/
 
 }
 #endregion /*Initialize Custom CharacterEND*/
@@ -11744,28 +12054,42 @@ if (intro_animation = "cake_stolen")
 {
 	can_move = false;
 	cutscene_time += 1;
-	if (cutscene_time = 60*3)
+	if (cutscene_time <= 1)
 	{
-		audio_play_sound(cutscene_ahh,0,0);
-		audio_sound_gain(cutscene_ahh,global.voices_volume,0);
-		image_index = 1;
-		image_speed = 0;
-	}
-	if (cutscene_time = 60*6)
-	{
-		audio_play_sound(cutscene_huh,0,0);
-		audio_sound_gain(cutscene_huh,global.voices_volume,0);
-		image_index = 2;
-		image_speed = 0;
-	}
-	if (cutscene_time = 60*8)
-	{
-		audio_play_sound(cutscene_scream,0,0);
-		audio_sound_gain(cutscene_scream,global.voices_volume,0);
-		sprite_index = sprite_cutscene_suprised;
+		instance_create_depth(x+32, y, 0, obj_cake);
+		instance_create_depth(x-128, y, 0, obj_cake_stealing_enemy);
+		intro_animation_sprite = sprite_sitting_eat_closed_mouth;
 		image_index = 0;
 		image_speed = 1;
 	}
+	else
+	if (cutscene_time = 60*3)
+	{
+		audio_play_sound(voice_ahh,0,0);
+		audio_sound_gain(voice_ahh,global.voices_volume,0);
+		intro_animation_sprite = sprite_sitting_eat_open_mouth;
+		image_index = 0;
+		image_speed = 1;
+	}
+	else
+	if (cutscene_time = 60*6)
+	{
+		audio_play_sound(voice_huh,0,0);
+		audio_sound_gain(voice_huh,global.voices_volume,0);
+		intro_animation_sprite = sprite_sitting_eat_open_mouth_open_eye;
+		image_index = 0;
+		image_speed = 1;
+	}
+	else
+	if (cutscene_time = 60*8)
+	{
+		audio_play_sound(voice_scream,0,0);
+		audio_sound_gain(voice_scream,global.voices_volume,0);
+		intro_animation_sprite = sprite_sitting_eat_surprised;
+		image_index = 0;
+		image_speed = 1;
+	}
+	else
 	if (cutscene_time > 60*9)
 	{
 		hspeed = +8;
@@ -14261,7 +14585,7 @@ and (in_water = false)
 			effect_create_above(ef_smoke,x-16,bbox_bottom,0,c_white);
 			effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
 			effect_create_above(ef_smoke,x+16,bbox_bottom,0,c_white);
-			image_index=0;
+			image_index = 0;;
 		
 			if (number_of_jumps > -1)
 			and(midair_jumps_left != number_of_jumps)
@@ -15220,7 +15544,7 @@ and(wall_jump_setting>=1)
 				}
 				angle=0;
 				laststandingy=y;
-				image_index=0;
+				image_index = 0;;
 				if (place_meeting(x+1,y,obj_wall))
 				{
 					image_xscale=-1;
@@ -15247,7 +15571,7 @@ and(wall_jump_setting>=1)
 				speed_max=8;
 				vspeed = -normal_jump_height;
 				midair_jumps_left = number_of_jumps-1;
-				image_index=0;
+				image_index = 0;;
 				effect_create_above(ef_smoke,x,bbox_bottom-8,0,c_white);
 				effect_create_above(ef_smoke,x,bbox_top+8,0,c_white);
 				if (asset_get_type("obj_wall_jumpspark")==asset_object)
@@ -15374,7 +15698,7 @@ and(wall_jump_setting>=1)
 			}
 			angle=0;
 			laststandingy=y;
-			image_index=0;
+			image_index = 0;;
 			if (place_meeting(x+1,y,obj_wall))
 			{
 				image_xscale=-1;
@@ -15400,7 +15724,7 @@ and(wall_jump_setting>=1)
 			ledge_grab_jump=false;
 			speed_max=8;
 			vspeed = -normal_jump_height;
-			image_index=0;
+			image_index = 0;;
 			effect_create_above(ef_smoke,x,bbox_bottom-8,0,c_white);
 			effect_create_above(ef_smoke,x,bbox_top+8,0,c_white);
 			if (asset_get_type("obj_wall_jumpspark")==asset_object)
@@ -15467,7 +15791,7 @@ and(takendamage<=takendamage_freezetime)
 						{
 							angle=-360;
 						}
-						image_index=0;
+						image_index = 0;;
 						if (asset_get_type("snd_rolling")==asset_sound)
 						{
 							audio_play_sound(snd_rolling,0,0);
@@ -15534,7 +15858,7 @@ and(takendamage<=takendamage_freezetime)
 			or (position_meeting(bbox_right-1,bbox_bottom+1,obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke,x,bbox_bottom,2,c_white);
-				image_index=0;
+				image_index = 0;;
 				ground_pound=2;
 				speed_max=4;
 				if (asset_get_type("obj_camera")==asset_object)
@@ -15559,7 +15883,7 @@ and(takendamage<=takendamage_freezetime)
 			and(vspeed>4)
 			or(vspeed<-4)
 			{
-				image_index=0;
+				image_index = 0;;
 				ground_pound=false;
 				speed_max=4;
 				spring_animation=2;
@@ -15755,7 +16079,7 @@ and(global.pause=false)
 					{
 						crouch=false;
 					}
-					image_index=0;
+					image_index = 0;;
 					angle=0;
 				}
 			}
@@ -17131,7 +17455,7 @@ if (spring = true)
 	{
 		if (image_index > image_number-1)
 		{
-			image_index=0;
+			image_index = 0;;
 			if(vspeed>=-4)
 			if(vspeed>=0)
 			{
@@ -17157,7 +17481,7 @@ if (spring = true)
 	{
 		if (image_index > image_number-1)
 		{
-			image_index=0;
+			image_index = 0;;
 			spring_animation = 2;
 		}
 		
@@ -17239,12 +17563,6 @@ and(!place_meeting(x,y,obj_horizontal_rope))
 {
 	horizontal_rope_climb=false;
 }
-if (hp<=0)
-and(asset_get_type("spr_player_hit")==asset_sprite)
-{
-	sprite_index=spr_player_hit;
-}
-else
 
 #region /*Climb Horizontal Rope*/
 if (can_climb_horizontal_rope_cooldown>0)
@@ -17359,7 +17677,7 @@ and(in_water=false)
 				audio_play_sound(snd_swing,0,0);
 				audio_sound_gain(snd_swing,global.sfx_volume,0);
 			}
-			image_index=0;
+			image_index = 0;;
 		}
 		image_speed+=0.02;
 		if (image_speed>1)
@@ -18005,7 +18323,7 @@ if (crouch = true)
 	{
 		if (key_jump)
 		{
-			image_index=0;
+			image_index = 0;;
 		}
 		if (image_index>image_number-1)
 		{
@@ -18070,12 +18388,27 @@ and(key_left)
 }
 #endregion /*Skidding END*/
 
-//*Look Up*/else if hspeed=0 and key_up and!key_down and can_move=true{if asset_get_type("spr_player_swim_look_up")==asset_sprite{sprite_index=spr_player_swim_look_up;}image_speed=0.1;mask_index=sprite_mask;}
-/*Stand*/else if hspeed=0 and!key_left and!key_right{if asset_get_type("spr_player_swim_stand")==asset_sprite{sprite_index=spr_player_swim_stand;}else{sprite_index = sprite_swim;}image_speed=0.1;}
+/*Stand*/
+else
+if (hspeed = 0)
+and (!key_left)
+and (!key_right)
+{
+	if (sprite_swim_stand > noone)
+	{
+		sprite_index = sprite_swim_stand;
+	}
+	else
+	{
+		sprite_index = sprite_swim;
+	}
+	image_speed = 0.1;
+}
+
 /*Run*/
 else
-if (hspeed<+0.1)
-or(hspeed>-0.1)
+if (hspeed <+ 0.1)
+or (hspeed >- 0.1)
 {
 	if (can_move=true)
 	and(goal=false)
@@ -19032,8 +19365,10 @@ mask_index=sprite_mask;
 }
 
 /*Stop skidding ice sound*/if asset_get_type("obj_ice_block")==asset_object{if asset_get_type("snd_skidding_ice")==asset_sound{
-if crouch=false{if speed<2 or hspeed>0 and key_right or hspeed<0 and key_left or!key_left and!key_right or!place_meeting(x,y+1,obj_ice_block){if asset_get_type("snd_skidding_ice")==asset_sound{if audio_is_playing(snd_skidding_ice){audio_stop_sound(snd_skidding_ice);}}}}else if!place_meeting(x,y+1,obj_ice_block)or speed<1{if asset_get_type("snd_skidding_ice")==asset_sound{if audio_is_playing(snd_skidding_ice){audio_stop_sound(snd_skidding_ice);}}}}}/*Stop skidding ice sound end*/
-/*Stop skidding sound*/if crouch=false{if speed<2 or hspeed>0 and key_right or hspeed<0 and key_left or!key_left and!key_right or!place_meeting(x,y+1,obj_wall){if asset_get_type("snd_skidding")==asset_sound{if audio_is_playing(snd_skidding){audio_stop_sound(snd_skidding);}}}}else if!place_meeting(x,y+1,obj_wall)or speed<1{if asset_get_type("snd_skidding")==asset_sound{if audio_is_playing(snd_skidding){audio_stop_sound(snd_skidding);}}}/*Stop skidding sound end*/
+if crouch=false{if speed<2 or hspeed>0 and key_right or hspeed<0 and key_left or!key_left and!key_right or!place_meeting(x,y+1,obj_ice_block){if asset_get_type("snd_skidding_ice")==asset_sound{if audio_is_playing(snd_skidding_ice){audio_stop_sound(snd_skidding_ice);}}}}else
+if!place_meeting(x,y+1,obj_ice_block)or speed<1{if asset_get_type("snd_skidding_ice")==asset_sound{if audio_is_playing(snd_skidding_ice){audio_stop_sound(snd_skidding_ice);}}}}}/*Stop skidding ice sound end*/
+/*Stop skidding sound*/if crouch=false{if speed<2 or hspeed>0 and key_right or hspeed<0 and key_left or!key_left and!key_right or!place_meeting(x,y+1,obj_wall){if asset_get_type("snd_skidding")==asset_sound{if audio_is_playing(snd_skidding){audio_stop_sound(snd_skidding);}}}}else
+if!place_meeting(x,y+1,obj_wall)or speed<1{if asset_get_type("snd_skidding")==asset_sound{if audio_is_playing(snd_skidding){audio_stop_sound(snd_skidding);}}}/*Stop skidding sound end*/
 
 #region /*Footstep sounds*/
 if (place_meeting(x,y+1,obj_wall))

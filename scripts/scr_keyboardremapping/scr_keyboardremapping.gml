@@ -24,43 +24,53 @@ function scr_keyboardremapping()
 			{
 				global.player1_key_dive = lastkey;
 			}
-			else if (menu = "remap_key_jump")
+			else
+			if (menu = "remap_key_jump")
 			{
 				global.player1_key_jump = lastkey;
 			}
-			else if (menu = "remap_key_crouch")
+			else
+			if (menu = "remap_key_crouch")
 			{
 				global.player1_key_crouch = lastkey;
 			}
-			else if (menu = "remap_key_crouch_toggle")
+			else
+			if (menu = "remap_key_crouch_toggle")
 			{
 				global.player1_key_crouch_toggle = lastkey;
 			}
-			else if (menu = "remap_key_sprint")
+			else
+			if (menu = "remap_key_sprint")
 			{
 				global.player1_key_sprint = lastkey;
 			}
-			else if (menu = "remap_key_sprint_toggle")
+			else
+			if (menu = "remap_key_sprint_toggle")
 			{
 				global.player1_key_sprint_toggle = lastkey;
 			}
-			else if (menu = "remap_key_left")
+			else
+			if (menu = "remap_key_left")
 			{
 				global.player1_key_left = lastkey;
 			}
-			else if (menu = "remap_key_right")
+			else
+			if (menu = "remap_key_right")
 			{
 				global.player1_key_right = lastkey;
 			}
-			else if (menu = "remap_key_down")
+			else
+			if (menu = "remap_key_down")
 			{
 				global.player1_key_down = lastkey;
 			}
-			else if (menu = "remap_key_up")
+			else
+			if (menu = "remap_key_up")
 			{
 				global.player1_key_up = lastkey;
 			}
-			else if (menu = "remap_key_tongue")
+			else
+			if (menu = "remap_key_tongue")
 			{
 				global.player1_key_tongue = lastkey;
 			}
@@ -75,43 +85,53 @@ function scr_keyboardremapping()
 			{
 				global.player1_key2_dive = lastkey;
 			}
-			else if (menu = "remap_key_jump")
+			else
+			if (menu = "remap_key_jump")
 			{
 				global.player1_key2_jump = lastkey;
 			}
-			else if (menu = "remap_key_crouch")
+			else
+			if (menu = "remap_key_crouch")
 			{
 				global.player1_key2_crouch = lastkey;
 			}
-			else if (menu = "remap_key_crouch_toggle")
+			else
+			if (menu = "remap_key_crouch_toggle")
 			{
 				global.player1_key2_crouch_toggle = lastkey;
 			}
-			else if (menu = "remap_key_sprint")
+			else
+			if (menu = "remap_key_sprint")
 			{
 				global.player1_key2_sprint = lastkey;
 			}
-			else if (menu = "remap_key_sprint_toggle")
+			else
+			if (menu = "remap_key_sprint_toggle")
 			{
 				global.player1_key2_sprint_toggle = lastkey;
 			}
-			else if (menu = "remap_key_left")
+			else
+			if (menu = "remap_key_left")
 			{
 				global.player1_key2_left = lastkey;
 			}
-			else if (menu = "remap_key_right")
+			else
+			if (menu = "remap_key_right")
 			{
 				global.player1_key2_right = lastkey;
 			}
-			else if (menu = "remap_key_down")
+			else
+			if (menu = "remap_key_down")
 			{
 				global.player1_key2_down = lastkey;
 			}
-			else if (menu = "remap_key_up")
+			else
+			if (menu = "remap_key_up")
 			{
 				global.player1_key2_up = lastkey;
 			}
-			else if (menu = "remap_key_tongue")
+			else
+			if (menu = "remap_key_tongue")
 			{
 				global.player1_key2_tongue = lastkey;
 			}
@@ -134,43 +154,53 @@ function scr_keyboardremapping()
 			{
 				global.player2_key_dive = lastkey;
 			}
-			else if (menu = "remap_key_jump")
+			else
+			if (menu = "remap_key_jump")
 			{
 				global.player2_key_jump = lastkey;
 			}
-			else if (menu = "remap_key_crouch")
+			else
+			if (menu = "remap_key_crouch")
 			{
 				global.player2_key_crouch = lastkey;
 			}
-			else if (menu = "remap_key_crouch_toggle")
+			else
+			if (menu = "remap_key_crouch_toggle")
 			{
 				global.player2_key_crouch_toggle = lastkey;
 			}
-			else if (menu = "remap_key_sprint")
+			else
+			if (menu = "remap_key_sprint")
 			{
 				global.player2_key_sprint = lastkey;
 			}
-			else if (menu = "remap_key_sprint_toggle")
+			else
+			if (menu = "remap_key_sprint_toggle")
 			{
 				global.player2_key_sprint_toggle = lastkey;
 			}
-			else if (menu = "remap_key_left")
+			else
+			if (menu = "remap_key_left")
 			{
 				global.player2_key_left = lastkey;
 			}
-			else if (menu = "remap_key_right")
+			else
+			if (menu = "remap_key_right")
 			{
 				global.player2_key_right = lastkey;
 			}
-			else if (menu = "remap_key_down")
+			else
+			if (menu = "remap_key_down")
 			{
 				global.player2_key_down = lastkey;
 			}
-			else if (menu = "remap_key_up")
+			else
+			if (menu = "remap_key_up")
 			{
 				global.player2_key_up = lastkey;
 			}
-			else if (menu = "remap_key_tongue")
+			else
+			if (menu = "remap_key_tongue")
 			{
 				global.player2_key_tongue = lastkey;
 			}
@@ -185,43 +215,53 @@ function scr_keyboardremapping()
 			{
 				global.player2_key2_dive = lastkey;
 			}
-			else if (menu = "remap_key_jump")
+			else
+			if (menu = "remap_key_jump")
 			{
 				global.player2_key2_jump = lastkey;
 			}
-			else if (menu = "remap_key_crouch")
+			else
+			if (menu = "remap_key_crouch")
 			{
 				global.player2_key2_crouch = lastkey;
 			}
-			else if (menu = "remap_key_crouch_toggle")
+			else
+			if (menu = "remap_key_crouch_toggle")
 			{
 				global.player2_key2_crouch_toggle = lastkey;
 			}
-			else if (menu = "remap_key_sprint")
+			else
+			if (menu = "remap_key_sprint")
 			{
 				global.player2_key2_sprint = lastkey;
 			}
-			else if (menu = "remap_key_sprint_toggle")
+			else
+			if (menu = "remap_key_sprint_toggle")
 			{
 				global.player2_key2_sprint_toggle = lastkey;
 			}
-			else if (menu = "remap_key_left")
+			else
+			if (menu = "remap_key_left")
 			{
 				global.player2_key2_left = lastkey;
 			}
-			else if (menu = "remap_key_right")
+			else
+			if (menu = "remap_key_right")
 			{
 				global.player2_key2_right = lastkey;
 			}
-			else if (menu = "remap_key_down")
+			else
+			if (menu = "remap_key_down")
 			{
 				global.player2_key2_down = lastkey;
 			}
-			else if (menu = "remap_key_up")
+			else
+			if (menu = "remap_key_up")
 			{
 				global.player2_key2_up = lastkey;
 			}
-			else if (menu = "remap_key_tongue")
+			else
+			if (menu = "remap_key_tongue")
 			{
 				global.player2_key2_tongue = lastkey;
 			}
@@ -244,43 +284,53 @@ function scr_keyboardremapping()
 			{
 				global.player3_key_dive = lastkey;
 			}
-			else if (menu = "remap_key_jump")
+			else
+			if (menu = "remap_key_jump")
 			{
 				global.player3_key_jump = lastkey;
 			}
-			else if (menu = "remap_key_crouch")
+			else
+			if (menu = "remap_key_crouch")
 			{
 				global.player3_key_crouch = lastkey;
 			}
-			else if (menu = "remap_key_crouch_toggle")
+			else
+			if (menu = "remap_key_crouch_toggle")
 			{
 				global.player3_key_crouch_toggle = lastkey;
 			}
-			else if (menu = "remap_key_sprint")
+			else
+			if (menu = "remap_key_sprint")
 			{
 				global.player3_key_sprint = lastkey;
 			}
-			else if (menu = "remap_key_sprint_toggle")
+			else
+			if (menu = "remap_key_sprint_toggle")
 			{
 				global.player3_key_sprint_toggle = lastkey;
 			}
-			else if (menu = "remap_key_left")
+			else
+			if (menu = "remap_key_left")
 			{
 				global.player3_key_left = lastkey;
 			}
-			else if (menu = "remap_key_right")
+			else
+			if (menu = "remap_key_right")
 			{
 				global.player3_key_right = lastkey;
 			}
-			else if (menu = "remap_key_down")
+			else
+			if (menu = "remap_key_down")
 			{
 				global.player3_key_down = lastkey;
 			}
-			else if (menu = "remap_key_up")
+			else
+			if (menu = "remap_key_up")
 			{
 				global.player3_key_up = lastkey;
 			}
-			else if (menu = "remap_key_tongue")
+			else
+			if (menu = "remap_key_tongue")
 			{
 				global.player3_key_tongue = lastkey;
 			}
@@ -295,43 +345,53 @@ function scr_keyboardremapping()
 			{
 				global.player3_key2_dive = lastkey;
 			}
-			else if (menu = "remap_key_jump")
+			else
+			if (menu = "remap_key_jump")
 			{
 				global.player3_key2_jump = lastkey;
 			}
-			else if (menu = "remap_key_crouch")
+			else
+			if (menu = "remap_key_crouch")
 			{
 				global.player3_key2_crouch = lastkey;
 			}
-			else if (menu = "remap_key_crouch_toggle")
+			else
+			if (menu = "remap_key_crouch_toggle")
 			{
 				global.player3_key2_crouch_toggle = lastkey;
 			}
-			else if (menu = "remap_key_sprint")
+			else
+			if (menu = "remap_key_sprint")
 			{
 				global.player3_key2_sprint = lastkey;
 			}
-			else if (menu = "remap_key_sprint_toggle")
+			else
+			if (menu = "remap_key_sprint_toggle")
 			{
 				global.player3_key2_sprint_toggle = lastkey;
 			}
-			else if (menu = "remap_key_left")
+			else
+			if (menu = "remap_key_left")
 			{
 				global.player3_key2_left = lastkey;
 			}
-			else if (menu = "remap_key_right")
+			else
+			if (menu = "remap_key_right")
 			{
 				global.player3_key2_right = lastkey;
 			}
-			else if (menu = "remap_key_down")
+			else
+			if (menu = "remap_key_down")
 			{
 				global.player3_key2_down = lastkey;
 			}
-			else if (menu = "remap_key_up")
+			else
+			if (menu = "remap_key_up")
 			{
 				global.player3_key2_up = lastkey;
 			}
-			else if (menu = "remap_key_tongue")
+			else
+			if (menu = "remap_key_tongue")
 			{
 				global.player3_key2_tongue = lastkey;
 			}
@@ -354,43 +414,53 @@ function scr_keyboardremapping()
 			{
 				global.player4_key_dive = lastkey;
 			}
-			else if (menu = "remap_key_jump")
+			else
+			if (menu = "remap_key_jump")
 			{
 				global.player4_key_jump = lastkey;
 			}
-			else if (menu = "remap_key_crouch")
+			else
+			if (menu = "remap_key_crouch")
 			{
 				global.player4_key_crouch = lastkey;
 			}
-			else if (menu = "remap_key_crouch_toggle")
+			else
+			if (menu = "remap_key_crouch_toggle")
 			{
 				global.player4_key_crouch_toggle = lastkey;
 			}
-			else if (menu = "remap_key_sprint")
+			else
+			if (menu = "remap_key_sprint")
 			{
 				global.player4_key_sprint = lastkey;
 			}
-			else if (menu = "remap_key_sprint_toggle")
+			else
+			if (menu = "remap_key_sprint_toggle")
 			{
 				global.player4_key_sprint_toggle = lastkey;
 			}
-			else if (menu = "remap_key_left")
+			else
+			if (menu = "remap_key_left")
 			{
 				global.player4_key_left = lastkey;
 			}
-			else if (menu = "remap_key_right")
+			else
+			if (menu = "remap_key_right")
 			{
 				global.player4_key_right = lastkey;
 			}
-			else if (menu = "remap_key_down")
+			else
+			if (menu = "remap_key_down")
 			{
 				global.player4_key_down = lastkey;
 			}
-			else if (menu = "remap_key_up")
+			else
+			if (menu = "remap_key_up")
 			{
 				global.player4_key_up = lastkey;
 			}
-			else if (menu = "remap_key_tongue")
+			else
+			if (menu = "remap_key_tongue")
 			{
 				global.player4_key_tongue = lastkey;
 			}
@@ -405,43 +475,53 @@ function scr_keyboardremapping()
 			{
 				global.player4_key2_dive = lastkey;
 			}
-			else if (menu = "remap_key_jump")
+			else
+			if (menu = "remap_key_jump")
 			{
 				global.player4_key2_jump = lastkey;
 			}
-			else if (menu = "remap_key_crouch")
+			else
+			if (menu = "remap_key_crouch")
 			{
 				global.player4_key2_crouch = lastkey;
 			}
-			else if (menu = "remap_key_crouch_toggle")
+			else
+			if (menu = "remap_key_crouch_toggle")
 			{
 				global.player4_key2_crouch_toggle = lastkey;
 			}
-			else if (menu = "remap_key_sprint")
+			else
+			if (menu = "remap_key_sprint")
 			{
 				global.player4_key2_sprint = lastkey;
 			}
-			else if (menu = "remap_key_sprint_toggle")
+			else
+			if (menu = "remap_key_sprint_toggle")
 			{
 				global.player4_key2_sprint_toggle = lastkey;
 			}
-			else if (menu = "remap_key_left")
+			else
+			if (menu = "remap_key_left")
 			{
 				global.player4_key2_left = lastkey;
 			}
-			else if (menu = "remap_key_right")
+			else
+			if (menu = "remap_key_right")
 			{
 				global.player4_key2_right = lastkey;
 			}
-			else if (menu = "remap_key_down")
+			else
+			if (menu = "remap_key_down")
 			{
 				global.player4_key2_down = lastkey;
 			}
-			else if (menu = "remap_key_up")
+			else
+			if (menu = "remap_key_up")
 			{
 				global.player4_key2_up = lastkey;
 			}
-			else if (menu = "remap_key_tongue")
+			else
+			if (menu = "remap_key_tongue")
 			{
 				global.player4_key2_tongue = lastkey;
 			}

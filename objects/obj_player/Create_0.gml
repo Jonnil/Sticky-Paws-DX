@@ -130,6 +130,8 @@ sprite_standing_on_something_xorig = 0;
 sprite_standing_on_something_yorig = 0;
 sprite_stomp_spin_xorig = 0;
 sprite_stomp_spin_yorig = 0;
+sprite_swim_stand_xorig = 0;
+sprite_swim_stand_yorig = 0;
 sprite_swim_fall_xorig = 0;
 sprite_swim_fall_yorig = 0;
 sprite_swim_xorig = 0;
@@ -146,6 +148,18 @@ sprite_wall_slide_up_xorig = 0;
 sprite_wall_slide_up_yorig = 0;
 sprite_wall_slide_xorig = 0;
 sprite_wall_slide_yorig = 0;
+sprite_sitting_down_to_eat_xorig = 0;
+sprite_sitting_down_to_eat_yorig = 0;
+sprite_sitting_eat_closed_mouth_xorig = 0;
+sprite_sitting_eat_closed_mouth_yorig = 0;
+sprite_sitting_eat_open_mouth_xorig = 0;
+sprite_sitting_eat_open_mouth_yorig = 0;
+sprite_sitting_eat_open_mouth_open_eye_xorig = 0;
+sprite_sitting_eat_open_mouth_open_eye_yorig = 0;
+sprite_sitting_eat_surprised_xorig = 0;
+sprite_sitting_eat_surprised_yorig = 0;
+sprite_sitting_eating_xorig = 0;
+sprite_sitting_eating_yorig = 0;
 #endregion /*Sprite origin point variables. If there is no config.ini file, then make every xorig and yorig variable zero. END*/
 
 #region /*Mask Index*/
@@ -175,6 +189,7 @@ sprite_spring_down = noone;
 sprite_player_spring_up = noone;
 sprite_player_spring_transition = noone;
 sprite_player_spring_down = noone;
+sprite_swim_stand = noone;
 sprite_swim = noone;
 sprite_swim_fall = noone;
 sprite_against_wall = noone;
@@ -442,6 +457,10 @@ voice_damage = noone;
 voice_burned_running = noone;
 voice_burned = noone;
 
+voice_ahh = noone;
+voice_huh = noone;
+voice_scream = noone;
+
 #endregion /*Sound variables END*/
 
 #endregion /*Play as Custom Character END*/
@@ -462,6 +481,7 @@ full_level_map_screenshot_timer = 0;
 #region /*Intro Animation Variables*/
 intro_animation = ""; /*This determines the intro animation to play when you first enter a level*/
 cutscene_time = 0; /*Timer that determines what will happen in the intro animation*/
+intro_animation_sprite = noone; /*When there is a intro animation, the sprites for the into animation gets stored here, and the normal sprites for gameplay are hidden so the into sprites can play out correctly*/
 #endregion /*Intro Animation Variables END*/
 
 assist_invincible = false;

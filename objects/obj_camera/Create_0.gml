@@ -12,10 +12,8 @@ show_keyboard_and_mouse_input_change_prompt_y = 0;
 
 delay = 0;
 
-#region /*Mouse x and mouse y initializing*/
-mouse_x_position = mouse_x;
-mouse_y_position = mouse_y;
-#endregion /*Mouse x and mouse y initializing END*/
+mouse_x_position = mouse_x; /*Mouse x initializing*/
+mouse_y_position = mouse_y; /*Mouse y initializing*/
 
 #region /*Lives Icon*/
 if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_1)+"/data/character_config.ini"))
@@ -128,8 +126,8 @@ player_has_spawned=false;
 if (global.actually_play_edited_level = true)
 and (global.play_edited_level = true)
 {
-	if (global.x_checkpoint>0)
-	or (global.y_checkpoint>0)
+	if (global.x_checkpoint > 0)
+	or (global.y_checkpoint > 0)
 	{
 		camera_set_view_pos(view_camera[view_current],global.x_checkpoint,global.y_checkpoint)
 		if (asset_get_type("obj_player")==asset_object)
@@ -197,6 +195,14 @@ and (!instance_exists(obj_title))
 {
 	if (global.player1_can_play = true)
 	{
+		if (global.x_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		or (global.y_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		{
+			player1 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+		}
+		else
 		if (global.actually_play_edited_level = true)
 		and (instance_exists(obj_level_player_1_start))
 		{
@@ -210,12 +216,20 @@ and (!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_1;
 			selected_voice_pack = global.voicepack_for_player_1;
-			intro_animation = obj_camera.intro_animation;
+			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 1;
 		}
 	}
 	if (global.player2_can_play = true)
 	{
+		if (global.x_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		or (global.y_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		{
+			player2 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+		}
+		else
 		if (global.actually_play_edited_level = true)
 		and (instance_exists(obj_level_player_2_start))
 		{
@@ -229,12 +243,20 @@ and (!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_2;
 			selected_voice_pack = global.voicepack_for_player_2;
-			intro_animation = obj_camera.intro_animation;
+			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player=2;
 		}
 	}
 	if (global.player3_can_play = true)
 	{
+		if (global.x_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		or (global.y_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		{
+			player3 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+		}
+		else
 		if (global.actually_play_edited_level = true)
 		and (instance_exists(obj_level_player_3_start))
 		{
@@ -248,12 +270,20 @@ and (!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_3;
 			selected_voice_pack = global.voicepack_for_player_3;
-			intro_animation = obj_camera.intro_animation;
+			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player=3;
 		}
 	}
 	if (global.player4_can_play = true)
 	{
+		if (global.x_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		or (global.y_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		{
+			player4 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+		}
+		else
 		if (global.actually_play_edited_level = true)
 		and (instance_exists(obj_level_player_4_start))
 		{
@@ -267,7 +297,7 @@ and (!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_4;
 			selected_voice_pack = global.voicepack_for_player_4;
-			intro_animation = obj_camera.intro_animation;
+			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player=4;
 		}
 	}

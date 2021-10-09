@@ -18,7 +18,6 @@
 //draw_text_outlined(x,y-96,string(pressing_opposite_direction_to_drop_off_from_wall),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x,y-96,string(wall_jump),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x,y-96,string(joystick_can_ground_pound),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y-96,string(spring_animation),global.default_text_size,c_white,c_black,1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart")==asset_sprite)
@@ -157,10 +156,10 @@ if (global.basic_collectibles>99)
 	}
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y-16,0,obj_scoreup);
+		obj = instance_create_depth(x, y-16, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup="1-UP";
+			scoreup = "1-UP";
 		}
 	}
 }
@@ -168,58 +167,68 @@ if (global.basic_collectibles>99)
 
 #region /*Draw Self*/
 
-#region /*Make it obvious if you take damage*/
-if (takendamage>=takendamage_freezetime)
+#region /*Draw intro animation sprites if intro is playing*/
+if (intro_animation != "")
+and (intro_animation_sprite > noone)
 {
-	dive=false;
-	gravity=0;
-	hspeed=0;
-	vspeed=0;
-	speed=0;
-	if (sprite_die>noone)
+	draw_sprite_ext(intro_animation_sprite, image_index, xx, yy, draw_xscale*default_xscale*sign(image_xscale), draw_yscale*default_yscale, angle, image_blend, 1);
+}
+#endregion /*Draw intro animation sprites if intro is playing END*/
+
+#region /*Make it obvious if you take damage*/
+if (takendamage >= takendamage_freezetime)
+{
+	dive = false;
+	gravity = 0;
+	hspeed = 0;
+	vspeed = 0;
+	speed = 0;
+	if (sprite_die > noone)
+	and (intro_animation = "")
 	{
 		sprite_index = sprite_die;
 	}
 	else
+	if (intro_animation = "")
 	{
 		sprite_index = sprite_stand;
 	}
-	if (image_index>image_number-1)
+	if (image_index > image_number-1)
 	{
-		image_speed=0;
+		image_speed = 0;
 	}
 	else
 	{
-		image_speed=0.5;
+		image_speed = 0.5;
 	}
 }
-if (takendamage>=100)
-and(die=false)
-and(hp>0)
+if (takendamage >= 100)
+and(die = false)
+and(hp > 0)
 {
-	audio_play_sound(voice_damage,0,0);
-	audio_sound_gain(voice_damage,global.voices_volume,0);
+	audio_play_sound(voice_damage, 0, 0);
+	audio_sound_gain(voice_damage, global.voices_volume, 0);
 	audio_sound_pitch(voice_damage, default_voice_pitch);
 }
 #endregion /*Make it obvious if you take damage END*/
 
-redblinktimer+=1;
-if (redblinktimer>30)
+redblinktimer += 1;
+if (redblinktimer > 30)
 {
-	redblinktimer=0;
+	redblinktimer = 0;
 }
-if (midair_jumps_left=0)
+if (midair_jumps_left = 0)
 and (number_of_jumps > 1)
 {
-	double_jump_depleted_blink+=1;
-	if (double_jump_depleted_blink>20)
+	double_jump_depleted_blink += 1;
+	if (double_jump_depleted_blink > 20)
 	{
-		double_jump_depleted_blink=0;
+		double_jump_depleted_blink = 0;
 	}
 }
 else
 {
-	double_jump_depleted_blink=0;
+	double_jump_depleted_blink = 0;
 }
 
 #region /*Blink red when only having 1 HP left and no heart balloon*/
@@ -227,13 +236,15 @@ if (redblinktimer>25)
 and(have_heart_balloon=false)
 and(hp<=1)
 and(max_hp>=2)
-and(sprite_index>0)
+and(sprite_index > 0)
+and (intro_animation = "")
 {
 	draw_sprite_ext(sprite_index,image_index,xx+random_range(-8,+8),yy+random_range(-8,+8),draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,c_red,image_alpha);
 }
 else
 if (takendamage%2==0)
-and(sprite_index>0)
+and(sprite_index > 0)
+and (intro_animation = "")
 {
 	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,image_blend,image_alpha);
 	if (hp<=1)
@@ -244,6 +255,7 @@ and(sprite_index>0)
 }
 else
 if (sprite_index>0)
+and (intro_animation = "")
 {
 	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,image_blend,0.5);
 }

@@ -1831,7 +1831,8 @@ if (object=72)and(asset_get_type("spr_horizontal_rope")==asset_sprite){sprite_in
 if (object=73)and(asset_get_type("spr_water")==asset_sprite){sprite_index=spr_water;mask_index=spr_wall;}
 if (object=731)and(asset_get_type("spr_water_surface")==asset_sprite){sprite_index=spr_water_surface;mask_index=spr_wall;}
 if (object=735)and(asset_get_type("spr_air_bubbles_spawner")==asset_sprite){sprite_index=spr_air_bubbles_spawner;mask_index=spr_wall;}
-else if (object=735)and(asset_get_type("spr_bubble")==asset_sprite){sprite_index=spr_bubble;mask_index=spr_wall;}
+else
+if (object=735)and(asset_get_type("spr_bubble")==asset_sprite){sprite_index=spr_bubble;mask_index=spr_wall;}
 if (object=732)and(asset_get_type("spr_water_level_change_slow")==asset_sprite){sprite_index=spr_water_level_change_slow;mask_index=spr_wall;}
 if (object=733)and(asset_get_type("spr_water_level_change_fast")==asset_sprite){sprite_index=spr_water_level_change_fast;mask_index=spr_wall;}
 if (object=734)and(asset_get_type("spr_water_level_change_faster")==asset_sprite){sprite_index=spr_water_level_change_faster;mask_index=spr_wall;}
