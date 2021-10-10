@@ -7,15 +7,19 @@ key_a_released = (gamepad_button_check_released(0, gp_face1))
 or(keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
 or(keyboard_check(global.player1_key_sprint));
-draw_set_alpha(0.5);
-draw_rectangle_color(0, y-16, room_width, room_height, c_black, c_black, c_black, c_black, false);
-draw_set_alpha(1);
-draw_line_width_color(0, y-16, room_width, y-16, 3, c_white, c_white);
-draw_line_width_color(0, y-16, room_width, y-16, 2, c_black, c_black);
 
-if (asset_get_type("spr_level_height") == asset_sprite)
+if (global.actually_play_edited_level = false)
+and (global.play_edited_level = false)
 {
-	draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);
+	draw_set_alpha(0.5);
+	draw_rectangle_color(0, y-16, room_width, room_height, c_black, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+	draw_line_width_color(0, y-16, room_width, y-16, 3, c_white, c_white);
+	draw_line_width_color(0, y-16, room_width, y-16, 2, c_black, c_black);
+	if (asset_get_type("spr_level_height") == asset_sprite)
+	{
+		draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);
+	}
 }
 
 #region /*Drag Object*/
@@ -76,9 +80,22 @@ else
 }
 
 #region /*Make sure the level end isn't outside of the level, this code has to be after the drag object code*/
-if (y < 1080-16)
+if (y < 1080+16)
+and (global.actually_play_edited_level = false)
+and (global.play_edited_level = false)
 {
-	y = 1080-16;
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_outlined(x, y+32, "Height: "+string(bbox_top), global.default_text_size, c_black, c_red, 1);
+	draw_text_outlined(x, y+64, "Warning! Level height shorter than normal", global.default_text_size*0.75, c_black, c_red, 1);
+}
+else
+if (global.actually_play_edited_level = false)
+and (global.play_edited_level = false)
+{
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_outlined(x, y+32, "Height: "+string(bbox_top), global.default_text_size, c_black, c_white, 1);
 }
 if (y > room_height)
 {

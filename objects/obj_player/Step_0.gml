@@ -12056,8 +12056,9 @@ if (intro_animation = "cake_stolen")
 	cutscene_time += 1;
 	if (cutscene_time <= 1)
 	{
-		instance_create_depth(x+32, y, 0, obj_cake);
-		instance_create_depth(x-128, y, 0, obj_cake_stealing_enemy);
+		instance_create_depth(x+10, y, 0, obj_chair_and_table);
+		instance_create_depth(x+40, y+10, 0, obj_cake);
+		instance_create_depth(x-318, y, 0, obj_cake_stealing_enemy);
 		intro_animation_sprite = sprite_sitting_eat_closed_mouth;
 		image_index = 0;
 		image_speed = 1;
@@ -12097,6 +12098,10 @@ if (intro_animation = "cake_stolen")
 		can_move = true;
 		intro_animation = "";
 	}
+}
+else
+{
+	intro_animation = "";
 }
 #endregion /*Start Intro Animations END*/
 
@@ -18184,9 +18189,8 @@ and (climb = false)
 	can_ground_pound = false;
 	chain_reaction=0;
 
-/*Crouch*/
-if (key_down)
-and(!key_up)
+/*Crouch Underwater*/
+if (key_crouch)
 {
 	if (vspeed<-2)
 	{
@@ -18215,9 +18219,9 @@ and(!key_up)
 		}
 	}
 }
-/*Don't Crouch*/
+/*Don't Crouch Underwater*/
 else
-if (!key_down)
+if (!key_crouch)
 and(!place_meeting(x,y-8,obj_wall))
 and(crouch=true)
 {
@@ -18448,7 +18452,12 @@ or(image_index=4)
 		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
 	}
 }
-/*Stand*/else{mask_index=sprite_mask;}}
+/*Stand*/
+else
+{
+	mask_index = sprite_mask;
+}
+}
 /*Swimming Sprites*/
 else
 if (!place_meeting(x,y+1,obj_wall))

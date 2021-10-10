@@ -1,6 +1,6 @@
-depth =+ 10;
+depth = +10;
 friction = 0.05;
-gravity = 0.1;
+gravity = random_range(0.01, 0.1);
 gravity_direction = 90;
 if (hspeed < -5)
 {
@@ -13,9 +13,9 @@ if (asset_get_type("obj_water")==asset_object)
 		image_alpha = lerp(image_alpha, 0, 0.3);
 		gravity = 0;
 		vspeed = 0;
-		if (image_alpha<=0)
-		{
-			instance_destroy();
-		}
 	}
+}
+if (image_alpha<=0)
+{
+	instance_destroy();
 }

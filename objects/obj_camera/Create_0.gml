@@ -724,7 +724,7 @@ else
 }
 #endregion /*Initialize Background END*/
 
-#region /*Initialize Weather*/
+#region /*Initialize Level Info*/
 if (global.character_select_in_this_menu = "main_game")
 and(file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
 or(global.character_select_in_this_menu = "level_editor")
@@ -739,6 +739,38 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	{
 		ini_open(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
 	}
+	
+	#region /*Default View Width*/
+	if (ini_key_exists("info", "default_view_width"))
+	{
+		global.default_view_width = ini_read_real("info", "default_view_width", 1920);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("info", "default_view_width", 1920);
+		}
+		global.default_view_width = 1920;
+	}
+	#endregion /*Default View Width END*/
+	
+	#region /*Default View Height*/
+	if (ini_key_exists("info", "default_view_height"))
+	{
+		global.default_view_height = ini_read_real("info", "default_view_height", 1080);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("info", "default_view_height", 1080);
+		}
+		global.default_view_height = 1080;
+	}
+	#endregion /*Default View Height END*/
+	
+	#region /*Initialize Weather*/
 	
 	#region /*Rain*/
 	if (ini_key_exists("info", "rain"))
@@ -755,13 +787,15 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	#endregion /*Rain END*/
 	
+	#endregion /*Initialize Weather END*/
+	
 	ini_close();
 }
 else
 {
 	rain = false;
 }
-#endregion /*Initialize Weather END*/
+#endregion /*Initialize Level Info END*/
 
 big_collectible_count=1;
 shake=false;

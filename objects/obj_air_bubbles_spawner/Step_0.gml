@@ -14,6 +14,7 @@ if (time > 180)
 }
 if (place_meeting(x, y, obj_water))
 and (random(10) >= 9)
+and (fps_real >= 210)
 {
 	with(instance_create_depth(x, bbox_bottom, 0, obj_bubble))
 	{

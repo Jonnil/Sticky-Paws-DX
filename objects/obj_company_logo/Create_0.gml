@@ -35,17 +35,19 @@ global.enable_narrator = false;
 #endregion /*What settings can be changed END*/
 
 global.max_fps = 60; /*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
-global.default_text_size=0.2 //0.1125;
+global.default_text_size = 0.2 //0.1125;
+global.default_view_width = 1920;
+global.default_view_height = 1080;
 
-global.demo=false; /*When making a demo version of the game, turn this to true, otherwise turn this to false for the full version*/
-global.demo_max_levels=3; /*Set how many levels the demo version have unlocked*/
+global.demo = false; /*When making a demo version of the game, turn this to true, otherwise turn this to false for the full version*/
+global.demo_max_levels = 3; /*Set how many levels the demo version have unlocked*/
 
 /*Upgrades. Choose what abilities the player character have when they start the game*/
-global.has_upgrade_double_jump=false; /*If you have the Double Jump Upgrade*/
+global.has_upgrade_double_jump = false; /*If you have the Double Jump Upgrade*/
 
-global.deactivate_objects_outsiede_view=true; /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
+global.deactivate_objects_outsiede_view = true; /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
 
-global.number_of_chain_kills_for_1up=8; /*How many chain reaction kills you need to get 1-ups. Default is 8*/
+global.number_of_chain_kills_for_1up = 8; /*How many chain reaction kills you need to get 1-ups. Default is 8*/
 
 #endregion /*Things you could change END*/
 
