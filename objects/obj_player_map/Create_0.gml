@@ -42,9 +42,9 @@ draw_xscale = 1;
 draw_yscale = 1;
 
 #region /*Load Game*/
-if (file_exists("File" + string(global.file) + ".ini"))
+if (file_exists("file" + string(global.file) + ".ini"))
 {
-	ini_open("File" + string(global.file) + ".ini");
+	ini_open("file" + string(global.file) + ".ini");
 	
 	#region /*Load Player Position*/
 	if (ini_read_real("Player", "player_x", 0) > 0)

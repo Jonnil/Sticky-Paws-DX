@@ -3,6 +3,15 @@ background_layer_y += 1;
 layer_x(layer_get_id("Background"),background_layer_x);
 layer_y(layer_get_id("Background"),background_layer_y);
 
+if lerp_on == true
+{
+	scroll = lerp(scroll, scroll_to, 0.15)
+	if scroll == scroll_to
+	{
+		lerp_on = false;
+	}
+}
+
 if (menu = "load_custom_level")
 {
 	/*Load custom level data*/
@@ -65,9 +74,9 @@ if (menu = "load_custom_level")
 			}
 			else
 			/*PNG Automatic Thumbnail*/
-			if (file_exists(working_directory+"/custom_levels/"+file_found+"/Automatic_Thumbnail.png"))
+			if (file_exists(working_directory+"/custom_levels/"+file_found+"/automatic_thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory+"/custom_levels/"+file_found+"/Automatic_Thumbnail.png",0,false,true,0,0));
+				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory+"/custom_levels/"+file_found+"/automatic_thumbnail.png",0,false,true,0,0));
 			}
 			else
 			{

@@ -303,7 +303,7 @@ and (!instance_exists(obj_title))
 	}
 	if (asset_get_type("room_leveleditor")==asset_room)
 	and(room=room_leveleditor)
-	and(global.actually_play_edited_level=true)
+	and(global.actually_play_edited_level = true)
 	{
 		player_has_spawned=true;
 	}

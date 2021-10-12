@@ -6,7 +6,7 @@ if (instance_number(obj_player) > 0)
 		y = instance_nearest(x, y, obj_player).bbox_top - 32;
 	}
 }
-if (room = room_level_select)
+if (room = room_world_map)
 {
 	if (global.win = true)
 	{

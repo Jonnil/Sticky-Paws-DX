@@ -31,7 +31,7 @@ function scr_set_screen_size()
 	}
 	
 	if (global.play_edited_level = true)
-	or (room = room_level_select)
+	or (room = room_world_map)
 	{
 		camera_set_view_speed(view_camera[view_current], -1, -1);
 	}

@@ -1,6 +1,7 @@
 image_speed = 0;
 time = 0;
 level = 0;
+level_number = 0;
 ring_color = c_yellow;
 level_color = c_black;
 level_perfect = false;
@@ -8,10 +9,9 @@ enter_blink = 0;
 initialize_level_timer = 0;
 
 if (global.file >= 1)
-and (file_exists("File" + string(global.file) + ".ini"))
+and (file_exists("file" + string(global.file) + ".ini"))
 {
-	ini_open("File" + string(global.file) + ".ini");
-
+	ini_open("file" + string(global.file) + ".ini");
 	#region /*Level Load*/
 	if (ini_section_exists(ds_list_find_value(global.all_loaded_main_levels,level)))
 	{	
@@ -65,7 +65,7 @@ and (file_exists("File" + string(global.file) + ".ini"))
 else
 if (global.file >= 1)
 {
-	ini_open("File" + string(global.file) + ".ini");
+	ini_open("file" + string(global.file) + ".ini");
 	ini_write_string(ds_list_find_value(global.all_loaded_main_levels,level), "clear_rate", "closed");
 	clear_rate = "closed";
 	number_of_clears = 0;

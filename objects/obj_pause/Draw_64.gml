@@ -462,12 +462,12 @@ and (menu != "quit_game_yes")
 
 
 /*PAUSE LEVEL SELECT / LEVEL EDITOR MENU*/
-if (asset_get_type("room_level_select") == asset_room)
-and(room = room_level_select)
+if (asset_get_type("room_world_map") == asset_room)
+and(room = room_world_map)
 or(asset_get_type("room_leveleditor") == asset_room)
 and(room = room_leveleditor)
-or(asset_get_type("room_level_select") == asset_room)
-and(global.pause_room = room_level_select)
+or(asset_get_type("room_world_map") == asset_room)
+and(global.pause_room = room_world_map)
 or(asset_get_type("room_leveleditor") == asset_room)
 and(global.pause_room = room_leveleditor)
 {
@@ -552,11 +552,11 @@ and(global.pause_room = room_leveleditor)
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Nevermind","quit_nevermind","quit_nevermind");
 	}
 	else
-	if(global.pause_room = room_level_select)
+	if(global.pause_room = room_world_map)
 	and(menu = "quit_to_title")
-	or(global.pause_room = room_level_select)
+	or(global.pause_room = room_world_map)
 	and(menu = "quit_to_desktop")
-	or(global.pause_room = room_level_select)
+	or(global.pause_room = room_world_map)
 	and(menu = "quit_nevermind")
 	{
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Title","quit_to_title","quit_to_title");
@@ -847,7 +847,7 @@ and(global.pause_room = room_leveleditor)
 			
 			if (global.character_select_in_this_menu = "main_game")
 			{
-				ini_open("File"+string(global.file)+".ini");
+				ini_open("file"+string(global.file)+".ini");
 				ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "x_checkpoint", 0);
 				ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "y_checkpoint", 0);
 				ini_close();
@@ -954,7 +954,7 @@ and(global.pause_room = room_leveleditor)
 	{
 		if (key_a_pressed)
 		and(menu_delay = 0)
-		or(global.pause_room = room_level_select)
+		or(global.pause_room = room_world_map)
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
@@ -1073,7 +1073,7 @@ and(global.pause_room = room_leveleditor)
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42,window_get_width()/2+185,window_get_height()/2+41+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
-		or(global.pause_room = room_level_select)
+		or(global.pause_room = room_world_map)
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2,window_get_width()/2+185,window_get_height()/2+41))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
@@ -1162,7 +1162,7 @@ and(global.pause_room = room_leveleditor)
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
-		or(global.pause_room = room_level_select)
+		or(global.pause_room = room_world_map)
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42,window_get_width()/2+185,window_get_height()/2+41+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
@@ -1206,7 +1206,7 @@ and(global.pause_room = room_leveleditor)
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)
-		or(global.pause_room = room_level_select)
+		or(global.pause_room = room_world_map)
 		and(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+2+42+42,window_get_width()/2+185,window_get_height()/2+41+42+42))
 		and(mouse_check_button_pressed(mb_left))
 		and(menu_delay = 0)

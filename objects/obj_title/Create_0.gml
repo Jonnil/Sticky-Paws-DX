@@ -11,6 +11,9 @@ select_custom_level_menu_open = false;
 loading_spinning_angle = 0;
 custom_level_select_blinking = 0;
 custom_level_select_blinking_old = 0;
+scroll = 0;
+scroll_to = 0;
+lerp_on = false;
 
 /*Narrator Voice variable handeling*/
 narrator_name=noone;
@@ -282,9 +285,9 @@ global.hud_show_score=false;
 
 global.playergame=0;/*Make the game singleplayer at the start of the game*/
 global.player_has_entered_goal=false;
-global.actually_play_edited_level=false;
-global.play_edited_level=false;
-global.current_level=0;
+global.actually_play_edited_level = false;
+global.play_edited_level = false;
+global.current_level = 0;
 global.theme="ground";
 global.coins=0;
 global.level_clear_rate=noone;
@@ -314,7 +317,7 @@ global.trigger_ending=false;
 global.spikes_emerge_time=0;
 global.goal_active=false;
 global.PauseScreen=noone;
-global.quit_level=false;
+global.quit_level = false;
 global.always_show_level_editor_buttons=true; /*If level editor buttons should always show or not. Should be true by default*/
 
 #region /*Player 1 Characterselect portrait x and y origin points*/

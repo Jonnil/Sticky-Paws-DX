@@ -212,8 +212,8 @@ and(file_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/
 		}
 		global.time_countdown = noone;
 	}
-	if(global.play_edited_level=false)
-	and(global.actually_play_edited_level=false)
+	if(global.play_edited_level = false)
+	and(global.actually_play_edited_level = false)
 	{
 		if (ini_key_exists("info","view_xview"))
 		and(ini_key_exists("info","view_yview"))

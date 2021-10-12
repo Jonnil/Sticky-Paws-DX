@@ -7,21 +7,28 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key Up*/
 	if (key_up)
-	and (can_input_level_name = false)
-	and (menu_delay = 0)
-	and (menu_joystick_delay <= 0)
-	and (open_sub_menu = false)
-	and (menu!="back_from_level_editor")
+	or (mouse_wheel_up())
 	{
-		if (global.select_level_index-R < 0)
+		if (can_input_level_name = false)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		and (open_sub_menu = false)
+		and (menu!="back_from_level_editor")
 		{
-			menu_delay = 3;
-			menu = "back_from_level_editor";
-		}
-		else
-		{
-			menu_delay = 3;
-			global.select_level_index -= R;
+			//scroll_to = floor(clamp(scroll_to-1, 0, (ds_list_size(global.all_loaded_custom_levels)-1)/R))
+			if (global.select_level_index-R < 0)
+			and (global.controls_used_for_menu_navigation != "mouse")
+			{
+				menu_delay = 3;
+				menu = "back_from_level_editor";
+			}
+			else
+			{
+				menu_delay = 3;
+				global.select_level_index -= clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
+				scroll_to = clamp(C-1, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
+				lerp_on = true;
+			}
 		}
 	}
 	#endregion /*Key Up END*/
@@ -30,21 +37,31 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key Down*/
 	if (key_down)
-	and (can_input_level_name = false)
-	and (menu_delay = 0)
-	and (menu_joystick_delay <= 0)
-	and (open_sub_menu = false)
-	and (menu!="back_from_level_editor")
+	or (mouse_wheel_down())
 	{
-		if (global.select_level_index+R > ds_list_size(global.thumbnail_sprite)-1)
+		if (can_input_level_name = false)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		and (open_sub_menu = false)
+		and (menu!="back_from_level_editor")
 		{
-			menu_delay = 3;
-			menu = "back_from_level_editor";
-		}
-		else
-		{
-			menu_delay = 3;
-			global.select_level_index += R;
+		
+			//scroll_to = floor(clamp(scroll_to+1, 0, (ds_list_size(global.all_loaded_custom_levels)-1)/R))
+			//lerp_on = true;
+		
+			if (global.select_level_index+R > ds_list_size(global.thumbnail_sprite)-1)
+			and (global.controls_used_for_menu_navigation != "mouse")
+			{
+				menu_delay = 3;
+				menu = "back_from_level_editor";
+			}
+			else
+			{
+				menu_delay = 3;
+				global.select_level_index += clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
+				scroll_to = clamp(C+1, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
+				lerp_on = true;
+			}
 		}
 	}
 	#endregion /*Key Down END*/
@@ -68,6 +85,8 @@ function scr_select_custom_level_menu()
 			global.select_level_index -= 1;
 		}
 		menu_delay = 3;
+		scroll_to = floor(global.select_level_index/R);
+		lerp_on = true;
 	}
 	#endregion /*Key Left END*/
 	
@@ -90,6 +109,8 @@ function scr_select_custom_level_menu()
 			global.select_level_index += 1;
 		}
 		menu_delay = 3;
+		scroll_to = floor(global.select_level_index/R);
+		lerp_on = true;
 	}
 	#endregion /*Key Right END*/
 	
@@ -103,14 +124,14 @@ function scr_select_custom_level_menu()
 	and (menu!="back_from_level_editor")
 	{
 		
-		#region /*Create New Level*/
+		#region /*(C-scroll)reate New Level*/
 		if (global.select_level_index = 0)
 		{
 			menu = "level_editor_create_from_scratch";
 			menu_delay = 3;
 			open_sub_menu = true;
 		}
-		#endregion /*Create New Level END*/
+		#endregion /*(C-scroll)reate New Level END*/
 		
 		else
 		
@@ -144,56 +165,6 @@ function scr_select_custom_level_menu()
 	
 	#endregion /*Navigate Menu END*/
 	
-	#region /*Back Button*/
-	draw_menu_button(0,0,"Back","back_from_level_editor","leveleditor");
-	
-	if (menu="back_from_level_editor")
-	and(key_a_pressed)
-	and(menu_delay=0)
-	and(open_sub_menu = false)
-	and(can_input_level_name = false)
-	or(key_b_pressed)
-	and(menu_delay=0)
-	and(open_sub_menu = false)
-	and(can_input_level_name = false)
-	{
-		menu_delay = 3;
-		can_navigate = true;
-		select_custom_level_menu_open = false;
-		menu = "leveleditor";
-	}
-	if (menu="back_from_level_editor")
-	and(key_up)
-	and (menu_delay = 0)
-	and (menu_joystick_delay <= 0)
-	{
-		menu_delay = 3;
-		can_navigate = true;
-		select_custom_level_menu_open = true;
-		menu = "level_editor_play";
-		if (global.select_level_index-R < 0)
-		{
-			global.select_level_index = ds_list_size(global.thumbnail_sprite)-1;
-		}
-	}
-	if (menu="back_from_level_editor")
-	and(key_down)
-	and (menu_delay = 0)
-	and (menu_joystick_delay <= 0)
-	{
-		menu_delay = 3;
-		can_navigate = true;
-		select_custom_level_menu_open = true;
-		menu = "level_editor_play";
-		global.select_level_index = 0;
-	}
-	
-	if (menu="back_from_level_editor")
-	{
-		open_sub_menu = false;
-	}
-	#endregion /*Back Button END*/
-	
 	#region /*Red Rectangle to indicate what level you are selecting*/
 	if (menu!="back_from_level_editor")
 	{
@@ -215,9 +186,9 @@ function scr_select_custom_level_menu()
 		{
 			custom_level_select_blinking_old = 0;
 		}
-		draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*C+250-3, 394*(global.select_level_index-C*R)+100+384+3, 226*C+250+216+3, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*(C-scroll)+250-3, 394*(global.select_level_index-C*R)+100+384+3, 226*(C-scroll)+250+216+3, c_red, c_red, c_red, c_red, false);
 		draw_set_alpha(custom_level_select_blinking);
-		draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*C+250-3, 394*(global.select_level_index-C*R)+100+384+3, 226*C+250+216+3, c_yellow, c_yellow, c_yellow, c_yellow, false);
+		draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*(C-scroll)+250-3, 394*(global.select_level_index-C*R)+100+384+3, 226*(C-scroll)+250+216+3, c_yellow, c_yellow, c_yellow, c_yellow, false);
 		draw_set_alpha(1);
 	}
 	#endregion /*Red Rectangle to indicate what level you are selecting END*/
@@ -226,11 +197,11 @@ function scr_select_custom_level_menu()
 	for (i=0;i<ds_list_size(global.thumbnail_sprite);i+=1)
 	{
 		C=floor(i/R)
-		draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394*(i-C*R)+100, 226*C+250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
+		draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394*(i-C*R)+100, 226*(C-scroll)+250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
 	}
 	#endregion /*Draw Thumbnail END*/
 	
-	C=floor(global.select_level_index/R)
+	C=floor(global.select_level_index/R); /*Do this code again here so the sub menu doesn't get misaligned*/
 	
 	#region /*Draw sub menu (code must be here to be above everything else)*/
 	if (open_sub_menu = true)
@@ -337,7 +308,7 @@ function scr_select_custom_level_menu()
 		and (can_input_level_name = false)
 		and (menu_delay = 0)
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*C+475-3, 394*(global.select_level_index-C*R)+110-3+370, 226*C+475-3+42))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+475-3, 394*(global.select_level_index-C*R)+110-3+370, 226*(C-scroll)+475-3+42))
 			and (mouse_check_button_pressed(mb_left))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			or (key_a_pressed)
@@ -354,7 +325,7 @@ function scr_select_custom_level_menu()
 		and (can_input_level_name = false)
 		and (menu_delay = 0)
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*C+569-3, 394*(global.select_level_index-C*R)+110-3+370, 226*C+569-3+42))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+569-3, 394*(global.select_level_index-C*R)+110-3+370, 226*(C-scroll)+569-3+42))
 			and (mouse_check_button_pressed(mb_left))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			or (key_a_pressed)
@@ -371,7 +342,7 @@ function scr_select_custom_level_menu()
 		and (can_input_level_name = false)
 		and (menu_delay = 0)
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*C+475-3, 394*(global.select_level_index-C*R)+110-3+370, 226*C+475-3+42))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+475-3, 394*(global.select_level_index-C*R)+110-3+370, 226*(C-scroll)+475-3+42))
 			and (mouse_check_button_pressed(mb_left))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			or (key_a_pressed)
@@ -482,37 +453,91 @@ function scr_select_custom_level_menu()
 			or (menu = "level_editor_make")
 			or (menu = "level_editor_delete")
 			{
-				draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*C+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*C+408+216+3, c_white, c_white, c_white, c_white, false);
-				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+475-3, "Play", "level_editor_play", "level_editor_play");
-				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+522-3, "Make", "level_editor_make", "level_editor_make"); /*+47 on y*/
-				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+569-3, "Delete", "level_editor_delete", "level_editor_delete_no");
+				draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*(C-scroll)+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*(C-scroll)+408+216+3, c_white, c_white, c_white, c_white, false);
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+475-3, "Play", "level_editor_play", "level_editor_play");
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+522-3, "Make", "level_editor_make", "level_editor_make"); /*+47 on y*/
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+569-3, "Delete", "level_editor_delete", "level_editor_delete_no");
 			}
 			else
 			if (menu = "level_editor_create_from_scratch")
 			or (menu = "level_editor_create_from_template")
 			or (menu = "level_editor_create_from_back")
 			{
-				draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*C+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*C+408+216+3, c_white, c_white, c_white, c_white, false);
-				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+475-3, "Create from Scratch", "level_editor_create_from_scratch", "level_editor_create_from_scratch");
-				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+522-3, "Create from Template", "level_editor_create_from_template", "level_editor_create_from_template"); /*+47 on y*/
-				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+569-3, "Back", "level_editor_create_from_back", "level_editor_create_from_back");
+				draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*(C-scroll)+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*(C-scroll)+408+216+3, c_white, c_white, c_white, c_white, false);
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+475-3, "Create from Scratch", "level_editor_create_from_scratch", "level_editor_create_from_scratch");
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+522-3, "Create from Template", "level_editor_create_from_template", "level_editor_create_from_template"); /*+47 on y*/
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+569-3, "Back", "level_editor_create_from_back", "level_editor_create_from_back");
 			}
 			else
 			if (menu = "level_editor_delete_no")
 			or (menu = "level_editor_delete_yes")
 			{
-				draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*C+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*C+408+216+3, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*(C-scroll)+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*(C-scroll)+408+216+3, c_red, c_red, c_red, c_red, false);
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_center);
-				draw_text_outlined(394*(global.select_level_index-C*R)+300-3, 226*C+485-3, "Delete Level?", global.default_text_size*1.2, c_white, c_black, 1);
-				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+522-3, "No", "level_editor_delete_no", "level_editor_delete"); /*+47 on y*/
-				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*C+569-3, "Yes", "level_editor_delete_yes", "level_editor_play");
+				draw_text_outlined(394*(global.select_level_index-C*R)+300-3, 226*(C-scroll)+485-3, "Delete Level?", global.default_text_size*1.2, c_white, c_black, 1);
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+522-3, "No", "level_editor_delete_no", "level_editor_delete"); /*+47 on y*/
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+569-3, "Yes", "level_editor_delete_yes", "level_editor_play");
 			}
 		}
 		#endregion /*Navigate Sub Menu END*/
 		
 	}
 	#endregion /*Draw sub menu END*/
+	
+	#region /*Back Button*/
+	draw_menu_button(0,0,"Back","back_from_level_editor","leveleditor");
+	
+	if (menu="back_from_level_editor")
+	and(key_a_pressed)
+	and(menu_delay=0)
+	and(open_sub_menu = false)
+	and(can_input_level_name = false)
+	or(key_b_pressed)
+	and(menu_delay=0)
+	and(open_sub_menu = false)
+	and(can_input_level_name = false)
+	{
+		menu_delay = 3;
+		can_navigate = true;
+		select_custom_level_menu_open = false;
+		menu = "leveleditor";
+	}
+	if (menu="back_from_level_editor")
+	and(key_up)
+	and (menu_delay = 0)
+	and (menu_joystick_delay <= 0)
+	{
+		menu_delay = 3;
+		can_navigate = true;
+		select_custom_level_menu_open = true;
+		menu = "level_editor_play";
+		if (global.select_level_index-R < 0)
+		{
+			global.select_level_index = ds_list_size(global.thumbnail_sprite)-1;
+		}
+		scroll_to = floor(global.select_level_index/R);
+		lerp_on = true;
+	}
+	if (menu="back_from_level_editor")
+	and(key_down)
+	and (menu_delay = 0)
+	and (menu_joystick_delay <= 0)
+	{
+		menu_delay = 3;
+		can_navigate = true;
+		select_custom_level_menu_open = true;
+		menu = "level_editor_play";
+		global.select_level_index = 0;
+		scroll_to = floor(global.select_level_index/R);
+		lerp_on = true;
+	}
+	
+	if (menu="back_from_level_editor")
+	{
+		open_sub_menu = false;
+	}
+	#endregion /*Back Button END*/
 	
 	#region /*Enter Custom Level*/
 	if (iris_xscale<=0.001)
@@ -742,8 +767,8 @@ function scr_select_custom_level_menu()
 			
 			room_goto(room_leveleditor);
 		}
-		global.actually_play_edited_level=false;
-		global.play_edited_level=false;
+		global.actually_play_edited_level = false;
+		global.play_edited_level = false;
 	}
 	#endregion /*Enter Custom Level END*/
 	
@@ -785,10 +810,10 @@ function scr_select_custom_level_menu()
 	if (can_input_level_name = true)
 	{
 		draw_set_alpha(1);
-		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3-150, 226*C+569-3-16, 394*(global.select_level_index-C*R)+300-3+150, 226*C+569-3+16, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3-150, 226*(C-scroll)+569-3-16, 394*(global.select_level_index-C*R)+300-3+150, 226*(C-scroll)+569-3+16, c_white, c_white, c_white, c_white, false);
 	
 		draw_set_alpha(1);
-		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3-150, 226*C+569-3-16, 394*(global.select_level_index-C*R)+300-3+150, 226*C+569-3+16, c_black, c_black, c_black, c_black, true);
+		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3-150, 226*(C-scroll)+569-3-16, 394*(global.select_level_index-C*R)+300-3+150, 226*(C-scroll)+569-3+16, c_black, c_black, c_black, c_black, true);
 	}
 	#endregion /*Box where name is written on END*/
 	
@@ -797,11 +822,11 @@ function scr_select_custom_level_menu()
 	{
 		if (name_enter_blink<1)
 		{
-			draw_text_outlined(394*(global.select_level_index-C*R)+300, 226*C+569-3, string(global.level_name)+"|", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(394*(global.select_level_index-C*R)+300, 226*(C-scroll)+569-3, string(global.level_name)+"|", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(394*(global.select_level_index-C*R)+300, 226*C+569-3, string(global.level_name), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(394*(global.select_level_index-C*R)+300, 226*(C-scroll)+569-3, string(global.level_name), global.default_text_size, c_black, c_white, 1);
 		}
 	}
 	#endregion /*Inputed Name Text END*/
@@ -822,13 +847,13 @@ function scr_select_custom_level_menu()
 		if (string_length(global.level_name)>=120)
 		{
 			draw_text_outlined(
-			394*(global.select_level_index-C*R)+400, 226*C+609-3,
+			394*(global.select_level_index-C*R)+400, 226*(C-scroll)+609-3,
 			"120/120",global.default_text_size,c_black,c_white,1);
 		}
 		else
 		{
 			draw_text_outlined(
-			394*(global.select_level_index-C*R)+400, 226*C+609-3,
+			394*(global.select_level_index-C*R)+400, 226*(C-scroll)+609-3,
 			string(string_length(global.level_name))+"/120",global.default_text_size,c_black,c_ltgray,1);
 		}
 		

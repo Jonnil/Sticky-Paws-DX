@@ -297,7 +297,7 @@ if (global.quit_level = true)
 	#region /*Save Player Position*/
 	if (speed = 0)
 	{
-		ini_open("File" + string(global.file) + ".ini");
+		ini_open("file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_close();
@@ -1157,7 +1157,7 @@ and(speed = 0)
 		#region /*Save Player Position*/
 		x = instance_nearest(x, y, obj_level).x;
 		y = instance_nearest(x, y, obj_level).y;
-		ini_open("File" + string(global.file) + ".ini");
+		ini_open("file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_close();
@@ -1661,8 +1661,8 @@ and(global.quit_level = false)
 	
 	if (asset_get_type("room_leveleditor") == asset_room)
 	{
-		global.actually_play_edited_level=true;
-		global.play_edited_level=false;
+		global.actually_play_edited_level = true;
+		global.play_edited_level = false;
 		room_goto(room_leveleditor);
 	}
 }
@@ -1733,8 +1733,9 @@ mask_index = spr_wall;
 
 /*Show high scores*/
 if (asset_get_type("obj_level") == asset_object)
-and(distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-and(move_delay > 10)
+and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+and (move_delay > 10)
+and (instance_nearest(x, y, obj_level).level_number > 0)
 {
 	if (instance_nearest(x, y, obj_level).clear_rate = "enter")
 	or (instance_nearest(x, y, obj_level).clear_rate = "clear")

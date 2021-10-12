@@ -71,7 +71,10 @@ if (asset_get_type("spr_level_crown") == asset_sprite)
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_text_outlined(x, y, string(level+1), global.default_text_size * 2, c_black, c_white, image_alpha);
+if (level_number > 0)
+{
+	draw_text_outlined(x, y, string(level_number), global.default_text_size * 2, c_black, c_white, image_alpha);
+}
 
 if (global.demo = true)
 and(level > global.demo_max_levels)
@@ -84,9 +87,9 @@ if (asset_get_type("obj_player_map") == asset_object)
 and(instance_exists(obj_player_map))
 and(obj_player_map.move_delay = 1)
 and(obj_player_map.transfer_data = true)
-and(file_exists("File" + string(global.file) + ".ini"))
+and(file_exists("file" + string(global.file) + ".ini"))
 {
-	ini_open("File" + string(global.file) + ".ini");
+	ini_open("file" + string(global.file) + ".ini");
 	ini_write_string(ds_list_find_value(global.all_loaded_main_levels,level), "clear_rate", clear_rate);
 	ini_write_real(ds_list_find_value(global.all_loaded_main_levels,level), "big_collectible1", big_collectible1);
 	ini_write_real(ds_list_find_value(global.all_loaded_main_levels,level), "big_collectible2", big_collectible2);

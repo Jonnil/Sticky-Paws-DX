@@ -278,7 +278,7 @@ and(menu_delay=0)
 		{
 			room_persistent=false;
 		}
-		if (global.quit_level=true)
+		if (global.quit_level = true)
 		{
 			game_end();
 		}
@@ -606,8 +606,8 @@ or(menu="quit")
 		global.character_select_in_this_menu = "main_game";
 		in_settings=false;
 		global.file = 1;
-		global.actually_play_edited_level=false;
-		global.play_edited_level=false;
+		global.actually_play_edited_level = false;
+		global.play_edited_level = false;
 		if (global.can_select_number_of_players=true)
 		{
 			if (global.select_number_of_players_before_selecting_characters=true)
@@ -623,7 +623,7 @@ or(menu="quit")
 		}
 		else
 		{
-			room_goto(room_level_select);
+			room_goto(room_world_map);
 		}
 	}
 	#endregion /*Click Main Game END*/
@@ -653,8 +653,8 @@ or(menu="quit")
 				audio_play_sound(menuvoice_leveleditor,0,0);
 				audio_sound_gain(menuvoice_leveleditor,global.voices_volume,0);
 			}
-			global.actually_play_edited_level=false;
-			global.play_edited_level=false;
+			global.actually_play_edited_level = false;
+			global.play_edited_level = false;
 			global.character_select_in_this_menu = "level_editor";
 			if (global.can_select_number_of_players=true)
 			{
@@ -674,7 +674,7 @@ or(menu="quit")
 				menu="select_custom_level";
 				menu_delay = 3;
 			}
-			global.level_editor_level=1;
+			global.level_editor_level = 1;
 		}
 		#endregion /*Select Level Editor END*/
 	
@@ -848,7 +848,7 @@ or(menu="quit")
 	{
 		if (global.level_editor_level>0)
 		{
-			global.level_editor_level=0;
+			global.level_editor_level = 0;
 		}
 		global.character_select_in_this_menu = "level_editor"; /*No custom level is selected before you go into the level editor*/
 	}
@@ -1438,7 +1438,7 @@ and(can_navigate=true)
 	/*Level Editor Menu*/
 	if (global.level_editor_level<=0)
 	{
-		global.level_editor_level=1;
+		global.level_editor_level = 1;
 	}
 
 	#region /*Navigate Main Menu*/
@@ -1577,8 +1577,8 @@ and(can_navigate=true)
 if (menu="file1")
 and(menu_delay=0)
 {
-	global.actually_play_edited_level=false;
-	global.play_edited_level=false;
+	global.actually_play_edited_level = false;
+	global.play_edited_level = false;
 	global.file=1;
 	global.character_select_in_this_menu = "main_game";
 	if (global.can_select_number_of_players=true)
@@ -1605,10 +1605,10 @@ and(menu_delay=0)
 		#region /*Load File 1*/
 		if (file_exists("File1.ini"))
 		{
-			if (asset_get_type("room_level_select")==asset_room)
+			if (asset_get_type("room_world_map")==asset_room)
 			{
 				sprite_delete(title_screen_background);
-				room_goto(room_level_select);
+				room_goto(room_world_map);
 			}
 			else
 			{
@@ -1642,8 +1642,8 @@ and(menu_delay=0)
 if (menu="file2")
 and(menu_delay=0)
 {
-	global.actually_play_edited_level=false;
-	global.play_edited_level=false;
+	global.actually_play_edited_level = false;
+	global.play_edited_level = false;
 	global.file=2;
 	if (global.can_select_number_of_players=true)
 	{
@@ -1669,10 +1669,10 @@ and(menu_delay=0)
 		#region /*Load File 2*/
 		if (file_exists("File2.ini"))
 		{
-			if (asset_get_type("room_level_select")==asset_room)
+			if (asset_get_type("room_world_map")==asset_room)
 			{
 				sprite_delete(title_screen_background);
-				room_goto(room_level_select);
+				room_goto(room_world_map);
 			}
 			else
 			{
@@ -1706,8 +1706,8 @@ and(menu_delay=0)
 if (menu="file3")
 and(menu_delay=0)
 {
-	global.actually_play_edited_level=false;
-	global.play_edited_level=false;
+	global.actually_play_edited_level = false;
+	global.play_edited_level = false;
 	global.file=3;
 	if (global.can_select_number_of_players=true)
 	{
@@ -1733,10 +1733,10 @@ and(menu_delay=0)
 		#region /*Load File 3*/
 		if (file_exists("File3.ini"))
 		{
-			if (asset_get_type("room_level_select")==asset_room)
+			if (asset_get_type("room_world_map")==asset_room)
 			{
 				sprite_delete(title_screen_background);
-				room_goto(room_level_select);
+				room_goto(room_world_map);
 			}
 			else
 			{
@@ -2295,8 +2295,8 @@ and(iris_xscale<=0.001)
 			
 			room_goto(room_leveleditor);
 		}
-		global.actually_play_edited_level=true;
-		global.play_edited_level=true;
+		global.actually_play_edited_level = true;
+		global.play_edited_level = true;
 	}
 	#endregion /*Play Level Editor END*/
 	
@@ -2530,8 +2530,8 @@ and(iris_xscale<=0.001)
 			
 			room_goto(room_leveleditor);
 		}
-		global.actually_play_edited_level=false;
-		global.play_edited_level=false;
+		global.actually_play_edited_level = false;
+		global.play_edited_level = false;
 	}
 	#endregion /*Make Level Editor END*/
 	
@@ -2547,10 +2547,10 @@ and(iris_xscale<=0.001)
 				audio_stop_sound(snd_music_titlescreen);
 			}
 		}
-		if (asset_get_type("room_level_select")==asset_room)
+		if (asset_get_type("room_world_map")==asset_room)
 		{
 			sprite_delete(title_screen_background);
-			room_goto(room_level_select);
+			room_goto(room_world_map);
 		}
 	}
 	#endregion /*Load File 1 END*/
@@ -2567,10 +2567,10 @@ and(iris_xscale<=0.001)
 				audio_stop_sound(snd_music_titlescreen);
 			}
 		}
-		if (asset_get_type("room_level_select")==asset_room)
+		if (asset_get_type("room_world_map")==asset_room)
 		{
 			sprite_delete(title_screen_background);
-			room_goto(room_level_select);
+			room_goto(room_world_map);
 		}
 	}
 	#endregion /*Load File 2 END*/
@@ -2587,10 +2587,10 @@ and(iris_xscale<=0.001)
 				audio_stop_sound(snd_music_titlescreen);
 			}
 		}
-		if (asset_get_type("room_level_select")==asset_room)
+		if (asset_get_type("room_world_map")==asset_room)
 		{
 			sprite_delete(title_screen_background);
-			room_goto(room_level_select);
+			room_goto(room_world_map);
 		}
 	}
 	#endregion /*Load File 3 END*/

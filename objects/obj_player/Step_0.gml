@@ -12108,8 +12108,8 @@ else
 #region /*Restart Level*/
 if (global.restart_level = true)
 {
-	global.restart_level=false;
-	global.quit_level=false;
+	global.restart_level = false;
+	global.quit_level = false;
 	audio_stop_all();
 	room_persistent=false;
 	
@@ -12127,9 +12127,9 @@ if (global.restart_level = true)
 #endregion /*Restart Level END*/
 
 #region /*Quit Level*/
-if (global.quit_level=true)
+if (global.quit_level = true)
 {
-	global.quit_level=false;
+	global.quit_level = false;
 	audio_stop_all();
 	room_persistent=false;
 	
@@ -12148,10 +12148,10 @@ if (global.quit_level=true)
 		scr_savelevel();
 	}
 	if (global.quit_to_map = true)
-	and(asset_get_type("room_level_select")==asset_room)
+	and(asset_get_type("room_world_map")==asset_room)
 	{
 		global.quit_to_map = false;
-		room_goto(room_level_select);
+		room_goto(room_world_map);
 	}
 	else
 	if (global.quit_to_title = true)
@@ -12342,22 +12342,22 @@ and(obj_camera.iris_xscale<3)
 					global.checkpoint_realmillisecond=0;
 					global.lives_until_assist=0;
 					global.theme="ground";
-					if (global.actually_play_edited_level=false)
-					and(global.play_edited_level=true)
+					if (global.actually_play_edited_level = false)
+					and(global.play_edited_level = true)
 					and(global.character_select_in_this_menu = "level_editor")
 					{
-						global.actually_play_edited_level=false;
-						global.play_edited_level=false;
+						global.actually_play_edited_level = false;
+						global.play_edited_level = false;
 						room_restart();
 					}
 					else
-					if (global.actually_play_edited_level=true)
-					and(global.play_edited_level=true)
+					if (global.actually_play_edited_level = true)
+					and(global.play_edited_level = true)
 					and(global.character_select_in_this_menu = "level_editor")
 					and(asset_get_type("room_title")==asset_room)
 					{						
-						global.actually_play_edited_level=false;
-						global.play_edited_level=false;
+						global.actually_play_edited_level = false;
+						global.play_edited_level = false;
 						room_goto(room_title);
 					}
 					else
@@ -12368,10 +12368,10 @@ and(obj_camera.iris_xscale<3)
 						room_goto(room_ending_cutscene);
 					}
 					else
-					if (asset_get_type("room_level_select")==asset_room)
+					if (asset_get_type("room_world_map")==asset_room)
 					{
 						scr_savelevel();
-						room_goto(room_level_select);
+						room_goto(room_world_map);
 					}
 				}
 				else
@@ -12387,12 +12387,12 @@ and(obj_camera.iris_xscale<3)
 			else
 			{
 				#region /*Restart Level Editor when finishing level*/
-				if (asset_get_type("room_level_select") == asset_room)
+				if (asset_get_type("room_world_map") == asset_room)
 				and(room = room_leveleditor)
 				and(global.character_select_in_this_menu = "level_editor")
 				{
-					global.play_edited_level=false;
-					global.actually_play_edited_level=false;
+					global.play_edited_level = false;
+					global.actually_play_edited_level = false;
 					score=0;
 					room_restart();
 				}
@@ -12457,7 +12457,7 @@ else
 			}
 			if (room_next(room)<>-1)
 			{
-				if (asset_get_type("room_level_select")==asset_room)
+				if (asset_get_type("room_world_map")==asset_room)
 				and(obj_camera.iris_yscale<=0.001)
 				{
 					audio_stop_all();
@@ -12480,14 +12480,14 @@ else
 						room_goto(room_ending_cutscene);
 					}
 					else
-					if (asset_get_type("room_level_select")==asset_room)
+					if (asset_get_type("room_world_map")==asset_room)
 					and(obj_camera.iris_yscale<=0.001)
 					{
 						if (asset_get_type("scr_savelevel")==asset_script)
 						{
 							scr_savelevel();
 						}
-						room_goto(room_level_select);
+						room_goto(room_world_map);
 					}
 				}
 				else
@@ -12503,12 +12503,12 @@ else
 			else
 			{
 				#region /*Restart Level Editor when finishing level*/
-				if (asset_get_type("room_level_select") == asset_room)
+				if (asset_get_type("room_world_map") == asset_room)
 				and(room = room_leveleditor)
 				and(global.character_select_in_this_menu = "level_editor")
 				{
-					global.play_edited_level=false;
-					global.actually_play_edited_level=false;
+					global.play_edited_level = false;
+					global.actually_play_edited_level = false;
 					score=0;
 					room_restart();
 				}
@@ -13690,7 +13690,7 @@ and(global.pause=false)
 	or(player=4)
 	and(!gamepad_is_connected(3))
 	and(controller_connected=true)
-	or(global.actually_play_edited_level=true)
+	or(global.actually_play_edited_level = true)
 	and(!window_has_focus())
 	and(global.automatically_pause_when_window_is_unfocused = true)
 	{
@@ -13726,12 +13726,12 @@ and(global.pause=false)
 	#endregion /*Show all HUD elements END*/
 
 	controller_connected=false;
-	if (global.play_edited_level=true)
-	and(global.actually_play_edited_level=false)
+	if (global.play_edited_level = true)
+	and(global.actually_play_edited_level = false)
 	and(global.character_select_in_this_menu = "level_editor")
 	{
-		global.play_edited_level=false;
-		global.actually_play_edited_level=false;
+		global.play_edited_level = false;
+		global.actually_play_edited_level = false;
 		score=0;
 
 	#region /*Save Level Information when in level editor*/
@@ -13811,12 +13811,12 @@ or(gamepad_button_check_pressed(1,gp_select))
 	}
 	#endregion /*Show all HUD elements END*/
 
-	if (global.play_edited_level=true)
-	and(global.actually_play_edited_level=false)
+	if (global.play_edited_level = true)
+	and(global.actually_play_edited_level = false)
 	and(global.character_select_in_this_menu = "level_editor")
 	{
-		global.play_edited_level=false;
-		global.actually_play_edited_level=false;
+		global.play_edited_level = false;
+		global.actually_play_edited_level = false;
 		score=0;
 		room_restart();
 	}
@@ -13884,12 +13884,12 @@ or(gamepad_button_check_pressed(2,gp_select))
 	}
 	#endregion /*Show all HUD elements END*/
 
-	if (global.play_edited_level=true)
-	and(global.actually_play_edited_level=false)
+	if (global.play_edited_level = true)
+	and(global.actually_play_edited_level = false)
 	and(global.character_select_in_this_menu = "level_editor")
 	{
-		global.play_edited_level=false;
-		global.actually_play_edited_level=false;
+		global.play_edited_level = false;
+		global.actually_play_edited_level = false;
 		score=0;
 		room_restart();
 	}
@@ -13957,12 +13957,12 @@ or(gamepad_button_check_pressed(3,gp_select))
 	}
 	#endregion /*Show all HUD elements END*/
 
-	if (global.play_edited_level=true)
-	and(global.actually_play_edited_level=false)
+	if (global.play_edited_level = true)
+	and(global.actually_play_edited_level = false)
 	and(global.character_select_in_this_menu = "level_editor")
 	{
-		global.play_edited_level=false;
-		global.actually_play_edited_level=false;
+		global.play_edited_level = false;
+		global.actually_play_edited_level = false;
 		score=0;
 		room_restart();
 	}
@@ -16912,7 +16912,7 @@ if (die=true)
 	#region /*Update Level Editor Checkpoint Time*/
 	if (asset_get_type("room_leveleditor")==asset_room)
 	and(room=room_leveleditor)
-	and(global.actually_play_edited_level=true)
+	and(global.actually_play_edited_level = true)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
 		ini_open(working_directory+"/custom_level_save.ini");

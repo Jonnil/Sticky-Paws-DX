@@ -29,8 +29,8 @@ and (!instance_exists(obj_title))
 	{
 		
 		#region /*Show Lives*/
-		if (asset_get_type("room_level_select") == asset_room)
-		and (room = room_level_select)
+		if (asset_get_type("room_world_map") == asset_room)
+		and (room = room_world_map)
 		{
 			hud_show_lives = 32;
 		}

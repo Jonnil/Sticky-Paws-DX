@@ -91,11 +91,10 @@ if (!directory_exists(working_directory+"\custom_levels"))
 #endregion /*Create directory for saving custom levels END*/
 
 #region /*Create a readme file in custom levels folder explaining how to use the level editor*/
-if (leveleditor_readme>noone)
+if (leveleditor_readme > noone)
 {
-	leveleditor_readme_file=file_text_open_write(working_directory+"\custom_levels\readme.txt");
-	/*Write readme textfile*/
-	file_text_write_string(leveleditor_readme_file,leveleditor_readme);
+	leveleditor_readme_file = file_text_open_write(working_directory+"\custom_levels\readme.txt");
+	file_text_write_string(leveleditor_readme_file, leveleditor_readme); /*Write readme textfile*/
 	file_text_close(leveleditor_readme_file);
 }
 #endregion /*Create a readme file in custom levels folder explaining how to use the level editor END*/
@@ -111,7 +110,7 @@ if (!directory_exists(working_directory+"\custom_characters"))
 if (file_exists(working_directory+"custom_levels/*.zip"))
 {
 	zip_unzip(working_directory+"custom_levels/*.zip",working_directory+"custom_levels/");
-	file_delete(working_directory+"custom_levels/*.zip");/*Delete the zip file after it's been unzip*/
+	file_delete(working_directory+"custom_levels/*.zip"); /*Delete the zip file after it's been unzip*/
 }
 #endregion /*Unzip custom level files END*/
 
@@ -121,7 +120,7 @@ window_set_cursor(cr_none);
 global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 ds_list_add(global.all_loaded_custom_levels, "");
 global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
-ds_list_add(global.all_loaded_main_levels, "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9");
+ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9");
 global.select_level_index=0;/*What level is selected in the custom level editor*/
 global.thumbnail_sprite = ds_list_create();
 global.grid_hsnap=32;/*Horizontal grid snapping*/
@@ -151,9 +150,9 @@ global.hex_color_for_player_1=c_white;/*Player 1 Hex Value Color*/
 global.hex_color_for_player_2=c_white;/*Player 1 Hex Value Color*/
 global.hex_color_for_player_3=c_white;/*Player 1 Hex Value Color*/
 global.hex_color_for_player_4=c_white;/*Player 1 Hex Value Color*/
-global.level_editor_level=0;/*What level is selected in the custom level editor*/
-global.play_edited_level=false;/*Playtest edited level*/
-global.actually_play_edited_level=false;/*Actually playing finished edited level*/
+global.level_editor_level = 0;/*What level is selected in the custom level editor*/
+global.play_edited_level = false;/*Playtest edited level*/
+global.actually_play_edited_level = false;/*Actually playing finished edited level*/
 global.character_select_in_this_menu = "main_game";/*In what menu character select is going to appear in*/
 global.difficulty = 1; /*Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard*/
 global.automatically_pause_when_window_is_unfocused = true; /*Whenever you unfocus the window by clicking off the window, the game pauses by itself*/
@@ -197,7 +196,7 @@ global.player_has_entered_goal=false;
 global.pause_room=noone;
 global.pause_player=0;
 global.key_used="";
-global.current_level=0;
+global.current_level = 0;
 global.playergame=0;
 global.theme="ground";
 global.basic_collectibles=0;
@@ -302,7 +301,7 @@ global.player1_key_jump = ord("Z");
 global.player1_key_crouch = vk_down;
 global.player1_key_crouch_toggle = noone;
 global.player1_key_sprint = vk_lcontrol;
-global.player1_key_sprint_toggle = noone;
+global.player1_key_sprint_toggle = 20;
 global.player1_key_left = vk_left;
 global.player1_key_right = vk_right;
 global.player1_key_down = vk_down;

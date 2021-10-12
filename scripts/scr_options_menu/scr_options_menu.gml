@@ -5108,7 +5108,7 @@ function scr_options_menu()
 				global.player1_key_crouch = vk_down;
 				global.player1_key_crouch_toggle = noone;
 				global.player1_key_sprint = vk_lcontrol;
-				global.player1_key_sprint_toggle = noone;
+				global.player1_key_sprint_toggle = 20;
 				global.player1_key_left = vk_left;
 				global.player1_key_right = vk_right;
 				global.player1_key_down = vk_down;

@@ -32,9 +32,9 @@ if (asset_get_type("room_title")==asset_room)
 	}
 }
 else
-if (asset_get_type("room_level_select")==asset_room)
+if (asset_get_type("room_world_map")==asset_room)
 {
-	if (room = room_level_select)
+	if (room = room_world_map)
 	{
 		instance_destroy();
 	}

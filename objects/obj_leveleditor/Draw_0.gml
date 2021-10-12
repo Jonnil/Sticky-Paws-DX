@@ -168,7 +168,7 @@ if (startup_loading_timer<=3)
 }
 
 if (quit_level_editor=0)
-and(global.play_edited_level=false)
+and(global.play_edited_level = false)
 and(startup_loading_timer>=3)
 {
 	instance_activate_all();
@@ -1737,8 +1737,8 @@ or(gamepad_button_check_pressed(0,gp_select))
 				}
 				instance_activate_all();
 				global.lives_until_assist=0;
-				global.actually_play_edited_level=false;
-				global.play_edited_level=true;
+				global.actually_play_edited_level = false;
+				global.play_edited_level = true;
 				global.character_select_in_this_menu = "level_editor";
 				instance_create_depth(x,y,0,obj_camera);
 				instance_destroy();

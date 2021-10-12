@@ -133,16 +133,16 @@ and(iris_xscale<=0.001)
 			if (asset_get_type("room_leveleditor")==asset_room)
 			and(room=room_leveleditor)
 			{
-				global.play_edited_level=false;
+				global.play_edited_level = false;
 				room_restart();
 			}
 			else
 			#endregion /*Go to level editor if you die in level editor END*/
 			
 			#region /*Otherwise go to Level Select*/
-			if (asset_get_type("room_level_select")==asset_room)
+			if (asset_get_type("room_world_map")==asset_room)
 			{
-				room_goto(room_level_select);
+				room_goto(room_world_map);
 			}
 			else
 			{
@@ -182,16 +182,16 @@ and(iris_xscale<=0.001)
 			if (asset_get_type("room_leveleditor")==asset_room)
 			and(room=room_leveleditor)
 			{
-				global.play_edited_level=false;
+				global.play_edited_level = false;
 				room_restart();
 			}
 			else
 			#endregion /*Go to level editor if you die in level editor END*/
 		
 			#region /*Otherwise go to Level Select*/
-			if (asset_get_type("room_level_select")==asset_room)
+			if (asset_get_type("room_world_map")==asset_room)
 			{
-				room_goto(room_level_select);
+				room_goto(room_world_map);
 			}
 			else
 			{

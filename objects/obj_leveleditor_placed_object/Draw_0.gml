@@ -1520,7 +1520,7 @@ else
 #endregion /*Drag Object END*/
 
 #region /*Spawn objects when starting room*/
-if (global.play_edited_level=true)
+if (global.play_edited_level = true)
 {
 	
 	#region /*Delete objects according to difficulty settings*/
