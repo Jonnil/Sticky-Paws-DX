@@ -137,7 +137,7 @@ or(global.actually_play_edited_level = true)
 					ini_open(working_directory + "\File"+string(global.file)+".ini");
 					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "x_checkpoint"))
 					{
-						global.x_chekpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "x_checkpoint", 0);
+						global.x_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "x_checkpoint", 0);
 					}
 					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "y_checkpoint"))
 					{
@@ -167,7 +167,7 @@ or(global.actually_play_edited_level = true)
 					ini_open(working_directory + "\custom_level_save.ini");
 					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "x_checkpoint"))
 					{
-						global.x_chekpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "x_checkpoint", 0);
+						global.x_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "x_checkpoint", 0);
 					}
 					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "y_checkpoint"))
 					{

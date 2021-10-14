@@ -93,6 +93,10 @@ if (global.player4_can_play = true)
 {
 	custom_character = global.character_for_player_4;
 }
+else
+{
+	custom_character = noone;
+}
 
 sprite_map_xorig = 0;
 sprite_map_yorig = 0;

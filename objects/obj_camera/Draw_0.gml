@@ -748,7 +748,8 @@ if (save_level_as_png = false)
 	{
 		if (delay <= 1)
 		{
-			draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+			/*Makes the screen black when starting a level so you don't see the level loading in. Also make sure this black rectangle is bigger than the level, in case the level is smaller than the view size*/
+			draw_rectangle_color(0,0,window_get_width()*3,window_get_height()*3,c_black,c_black,c_black,c_black,false);
 		}
 
 		#region /*Zoom In Player Goal*/
@@ -891,8 +892,8 @@ or(show_letterbox > 0)
 and(global.play_edited_level = true)
 and(global.actually_play_edited_level = true)
 {
-	draw_rectangle_color(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), letterbox_top_y, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(camera_get_view_x(view_camera[view_current]), letterbox_bottom_y, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]), window_get_width()*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, letterbox_bottom_y, window_get_width()*3, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
 }
 if (asset_get_type("obj_player") == asset_object)
 and(!instance_exists(obj_player))

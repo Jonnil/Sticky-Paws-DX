@@ -175,11 +175,27 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	#endregion /*Intro Animation END*/
 	
+	#region /*Intro Animation Play Only Once*/
+	if (ini_key_exists("info", "intro_animation_play_only_once"))
+	{
+		intro_animation_play_only_once = ini_read_string("info", "intro_animation_play_only_once", false);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_string("info", "intro_animation_play_only_once", false);
+		}
+		intro_animation_play_only_once = false;
+	}
+	#endregion /*Intro Animation Play Only Once END*/
+	
 	ini_close();
 }
 else
 {
 	intro_animation = "";
+	intro_animation_play_only_once = false;
 }
 #endregion /*Initialize Intro Animation END*/
 
@@ -352,15 +368,15 @@ player4_has_pressed_key_jump=false;
 player4_has_pressed_key_dash=false;/*Player 4 END*/
 /*HUD Show Controls keys that have been pressed END*/
 
-xx=x;
-yy=y;
-letterbox_top_y=view_yview;
-letterbox_bottom_y=room_height;
-show_letterbox=60;
-iris_xscale=0;
-iris_yscale=0;
-allow_iris=true;
-iris_zoom=0;
+xx = x;
+yy = y;
+letterbox_top_y = 0;
+letterbox_bottom_y = room_height;
+show_letterbox = 60;
+iris_xscale = 0;
+iris_yscale = 0;
+allow_iris = true;
+iris_zoom = 0;
 timer_blinking_alpha = 0;
 
 /*Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen*/

@@ -18,7 +18,6 @@
 //draw_text_outlined(x,y-96,string(pressing_opposite_direction_to_drop_off_from_wall),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x,y-96,string(wall_jump),global.default_text_size,c_white,c_black,1);			
 //draw_text_outlined(x,y-96,string(joystick_can_ground_pound),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y-96,string(keyboard_lastkey),global.default_text_size,c_white,c_black,1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart")==asset_sprite)

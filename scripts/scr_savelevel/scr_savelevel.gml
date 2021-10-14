@@ -6,13 +6,13 @@ function scr_savelevel()
 	{
 		ini_open("file"+string(global.file)+".ini");
 		
-		if (global.level_clear_rate="clear")
+		if (global.level_clear_rate = "clear")
 		and(ini_read_string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"clear_rate","closed")!="clear")
 		{
 			ini_write_string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"clear_rate","clear");
 			ini_write_real("Player","number_of_levels_cleared",ini_read_real("Player","number_of_levels_cleared",false)+1);
 		}
-		if (global.level_clear_rate="clear")
+		if (global.level_clear_rate = "clear")
 		{
 			ini_write_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"number_of_clears",ini_read_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"number_of_clears",0)+1);
 		}

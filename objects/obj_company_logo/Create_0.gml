@@ -201,6 +201,7 @@ global.playergame=0;
 global.theme="ground";
 global.basic_collectibles=0;
 global.level_clear_rate=noone;
+global.current_level_clear_rate = noone;
 global.big_collectible1=false;/*If you have Big Collectible 1 or not*/
 global.big_collectible2=false;/*If you have Big Collectible 2 or not*/
 global.big_collectible3=false;/*If you have Big Collectible 3 or not*/

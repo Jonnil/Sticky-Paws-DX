@@ -124,7 +124,7 @@ and(iris_xscale<=0.001)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
-			global.level_clear_rate="enter";
+			global.level_clear_rate = "enter";
 			score = 0;
 			scr_savelevel();
 			audio_stop_all();
@@ -154,7 +154,7 @@ and(iris_xscale<=0.001)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
-			global.level_clear_rate="enter";
+			global.level_clear_rate = "enter";
 			scr_savelevel();
 			audio_stop_all();
 			if (asset_get_type("room_game_over")==asset_room)
@@ -173,7 +173,7 @@ and(iris_xscale<=0.001)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
-			global.level_clear_rate="enter";
+			global.level_clear_rate = "enter";
 			score = 0;
 			scr_savelevel();
 			audio_stop_all();
@@ -203,7 +203,7 @@ and(iris_xscale<=0.001)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
-			global.level_clear_rate="enter";
+			global.level_clear_rate = "enter";
 			scr_savelevel();
 			audio_stop_all();
 			if (asset_get_type("room_game_over")==asset_room)

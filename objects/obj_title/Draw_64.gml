@@ -449,7 +449,6 @@ or(menu="file3delete")
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
-	draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
 	draw_set_alpha(1);
 }
 #endregion /*Darker background when deleting files END*/
@@ -2730,7 +2729,7 @@ if (menu_joystick_delay > 0)
 #region /*Have a black screen at the first frame so transitions look natural*/
 if (black_screen_at_start_delay<1)
 {
-	draw_rectangle_color(0,0,window_get_width()*2,window_get_height()*2,c_black,c_black,c_black,c_black,false);
+	draw_rectangle_color(0,0,window_get_width()*3,window_get_height()*3,c_black,c_black,c_black,c_black,false);
 	black_screen_at_start_delay += 1;
 }
 #endregion /*Have a black screen at the first frame so transitions look natural END*/
@@ -2739,7 +2738,7 @@ if (black_screen_at_start_delay<1)
 if (!window_has_focus())
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(0, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, window_get_width()*3, window_get_height()*3, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
 #endregion /*If Window is unfocused, darken the screen END*/

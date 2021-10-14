@@ -5,9 +5,6 @@ if (keyboard_check(vk_control))
 and (keyboard_check_pressed(ord("P")))
 {
 	instance_activate_all();
-	//global.deactivate_objects_outsiede_view = false;
-	//global.show_tutorial_signs = false;
-	
 	global.full_level_map_screenshot = true;
 	
 	#region /*Delete some objects so it doesn't show up in the screenshot*/
@@ -9088,10 +9085,9 @@ voice_burned = noone;
 
 #endregion /*Sound variables END*/
 
-#endregion /*Play as Custom characterEND*/
+#endregion /*Play as Custom character END*/
 
 #region /*Character Values Handeling*/
-
 if (file_exists("characters/character" + string(custom_character)+"/data/character_config.ini"))
 or(file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/data/character_config.ini"))
 {
@@ -12049,61 +12045,7 @@ and(voice_burned_10>noone)
 
 room_speed = global.max_fps; /*Room Speed*/
 
-#region /*Start Intro Animations*/
-if (intro_animation = "cake_stolen")
-{
-	can_move = false;
-	cutscene_time += 1;
-	if (cutscene_time <= 1)
-	{
-		instance_create_depth(x+10, y, 0, obj_chair_and_table);
-		instance_create_depth(x+40, y+10, 0, obj_cake);
-		instance_create_depth(x-318, y, 0, obj_cake_stealing_enemy);
-		intro_animation_sprite = sprite_sitting_eat_closed_mouth;
-		image_index = 0;
-		image_speed = 1;
-	}
-	else
-	if (cutscene_time = 60*3)
-	{
-		audio_play_sound(voice_ahh,0,0);
-		audio_sound_gain(voice_ahh,global.voices_volume,0);
-		intro_animation_sprite = sprite_sitting_eat_open_mouth;
-		image_index = 0;
-		image_speed = 1;
-	}
-	else
-	if (cutscene_time = 60*6)
-	{
-		audio_play_sound(voice_huh,0,0);
-		audio_sound_gain(voice_huh,global.voices_volume,0);
-		intro_animation_sprite = sprite_sitting_eat_open_mouth_open_eye;
-		image_index = 0;
-		image_speed = 1;
-	}
-	else
-	if (cutscene_time = 60*8)
-	{
-		audio_play_sound(voice_scream,0,0);
-		audio_sound_gain(voice_scream,global.voices_volume,0);
-		intro_animation_sprite = sprite_sitting_eat_surprised;
-		image_index = 0;
-		image_speed = 1;
-	}
-	else
-	if (cutscene_time > 60*9)
-	{
-		hspeed = +8;
-		vspeed = -8;
-		can_move = true;
-		intro_animation = "";
-	}
-}
-else
-{
-	intro_animation = "";
-}
-#endregion /*Start Intro Animations END*/
+scr_start_intro_animations();
 
 #region /*Restart Level*/
 if (global.restart_level = true)
@@ -12142,7 +12084,7 @@ if (global.quit_level = true)
 	
 	score = 0;
 	
-	global.level_clear_rate="enter";
+	global.level_clear_rate = "enter";
 	if (asset_get_type("scr_savelevel")==asset_script)
 	{
 		scr_savelevel();
@@ -14884,7 +14826,7 @@ and (global.pause=false)
 								motion_set(135,16);
 							}
 						}
-						#region /*Key Up END*/
+						#endregion /*Key Up END*/
 						
 						else
 						
@@ -14896,7 +14838,7 @@ and (global.pause=false)
 								motion_set(225,16);
 							}
 						}
-						#region /*Key Down END*/
+						#endregion /*Key Down END*/
 						
 						else
 						{
@@ -15014,7 +14956,7 @@ and (global.pause=false)
 	}
 
 	#region /*Rope Swing*/
-	if (ropeswing=true)
+	if (rope_swing=true)
 	{
 		can_ground_pound = false;
 		ground_pound=false;
@@ -15022,11 +14964,11 @@ and (global.pause=false)
 		if (asset_get_type("obj_tongue")==asset_object)
 		and(instance_exists(obj_tongue))
 		{
-			grappleX=instance_nearest(x,y,obj_tongue).x;
-			grappleY=instance_nearest(x,y,obj_tongue).y;
-			ropeAngle=point_direction(grappleX,grappleY,x,y);
-			ropeLength=point_distance(grappleX,grappleY,x,y);
-			var rope_angle_acceleration=-0.4*dcos(ropeAngle);
+			grapple_x=instance_nearest(x,y,obj_tongue).x;
+			grapple_y=instance_nearest(x,y,obj_tongue).y;
+			rope_angle=point_direction(grapple_x,grapple_y,x,y);
+			rope_length=point_distance(grapple_x,grapple_y,x,y);
+			var rope_angle_acceleration=-0.4*dcos(rope_angle);
 			
 			#region /*Key Right*/
 			if (key_right)
@@ -15078,10 +15020,10 @@ and (global.pause=false)
 			or(key_down)
 			and(obj_tongue.y>y)
 			{
-				if (ropeLength>5)
+				if (rope_length>5)
 				and(!place_meeting(x,y-4,obj_wall))
 				{
-					ropeLength-=2;
+					rope_length-=2;
 				}
 			}
 			#endregion /*Key Up or Down*/
@@ -15094,26 +15036,26 @@ and (global.pause=false)
 			or(key_up)
 			and(obj_tongue.y>y)
 			{
-				if (ropeLength<320)
+				if (rope_length<320)
 				and(!place_meeting(x,y+4,obj_wall))
 				{
-					ropeLength+=2;
+					rope_length+=2;
 				}
 			}
 			#endregion /*Key Down or Up END*/
 			
-			if (ropeLength>320)
+			if (rope_length > 320)
 			{
-				ropeLength-=1;
+				rope_length -= 1;
 			}
-			ropeLength=max(ropeLength,0);
-			ropeAngleVelocity+=rope_angle_acceleration;
-			ropeAngle+=ropeAngleVelocity;
-			ropeAngleVelocity*=0.99;
-			ropeX=grappleX+lengthdir_x(ropeLength,ropeAngle);
-			ropeY=grappleY+lengthdir_y(ropeLength,ropeAngle);
-			hspeed=ropeX-x;
-			vspeed =ropeY-y;
+			rope_length = max(rope_length, 0);
+			rope_angle_velocity += rope_angle_acceleration;
+			rope_angle += rope_angle_velocity;
+			rope_angle_velocity *= 0.99;
+			ropeX=grapple_x+lengthdir_x(rope_length, rope_angle);
+			ropeY=grapple_y+lengthdir_y(rope_length, rope_angle);
+			hspeed = ropeX-x;
+			vspeed = ropeY-y;
 		}
 
 		if (instance_number(instance_nearest(x,y,obj_tongue))<1)
@@ -15122,7 +15064,7 @@ and (global.pause=false)
 			{
 				move_towards_point(instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,32);
 			}
-			ropeswing=false;
+			rope_swing = false;
 		}
 		else
 		
@@ -15131,16 +15073,16 @@ and (global.pause=false)
 		{
 			with(instance_nearest(x,y,obj_tongue))
 			{
-				timer=25;
-				move_towards_point(instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,32);
+				timer = 25;
+				move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
 			}
 			vspeed = -normal_jump_height+vspeed;
-			ropeAngleVelocity=0;
-			grappleX=x;
-			grappleY=y;
-			ropeAngle=point_direction(grappleX,grappleY,x,y);
-			ropeLength=point_distance(grappleX,grappleY,x,y);
-			ropeswing=false;
+			rope_angle_velocity = 0;
+			grapple_x = x;
+			grapple_y = y;
+			rope_angle = point_direction(grapple_x, grapple_y, x, y);
+			rope_length = point_distance(grapple_x, grapple_y, x, y);
+			rope_swing = false;
 		}
 		#endregion /*Key Jump END*/
 		
@@ -15150,7 +15092,7 @@ and (global.pause=false)
 }
 else
 {
-	ropeswing=false;
+	rope_swing = false;
 	if (instance_exists(obj_tongue))
 	{
 		with(obj_tongue)

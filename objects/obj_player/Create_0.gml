@@ -502,8 +502,8 @@ hspeed_dir = 1;
 ledge_grab = false;
 ledge_grab_jump = false;
 roll = false;
-ropeAngleVelocity = 0;
-ropeswing = false;
+rope_angle_velocity = 0;
+rope_swing = false;
 stick_to_wall = false;
 wall_jump = false;
 can_wall_jump = true;
@@ -515,10 +515,10 @@ pause_vspeed = 0;
 #endregion /*Don't change these variables END*/
 
 #region /*Rope Swing Variables*/
-grappleX = x;
-grappleY = y;
-ropeAngle = point_direction(grappleX, grappleY, x, y);
-ropeLength = point_distance(grappleX, grappleY, x, y);
+grapple_x = x;
+grapple_y = y;
+rope_angle = point_direction(grapple_x, grapple_y, x, y);
+rope_length = point_distance(grapple_x, grapple_y, x, y);
 #endregion /*Rope Swing Variables END*/
 
 speed_max = 4; /*Default max speed is 4, this value is what changes and determines the max speed*/
