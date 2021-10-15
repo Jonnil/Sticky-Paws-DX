@@ -1144,7 +1144,10 @@ if (delay < 100)
 }
 
 #region /*Enter Level*/
-if (key_a_pressed)
+if (file_exists("file" + string(global.file) + ".ini"))
+and (brand_new_file = true)
+and(can_move = true)
+or (key_a_pressed)
 and(can_move = true)
 and(can_enter_level >= 30)
 and(asset_get_type("obj_level") == asset_object)
@@ -1161,6 +1164,7 @@ and(speed = 0)
 		ini_open("file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
+		ini_write_real("Player", "brand_new_file", false)
 		ini_close();
 		#endregion /*Save Player Position END*/
 			

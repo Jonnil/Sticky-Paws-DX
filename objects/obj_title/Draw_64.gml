@@ -216,8 +216,6 @@ else
 }
 #endregion /*Change the logo to different designs during specific times and dates END*/
 
-/*Save Config*/scr_saveconfig();/*Save Config END*/
-
 #region /*Volumes stay between 0 and 1*/
 if (global.music_volume < 0)
 {

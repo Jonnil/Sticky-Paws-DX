@@ -16,6 +16,7 @@ function scr_start_intro_animations()
 		{
 			can_move = false;
 			cutscene_time += 1;
+			intro_animation_image_index += 1;
 			if (cutscene_time <= 1)
 			{
 				instance_create_depth(x+10, y, 0, obj_chair_and_table);

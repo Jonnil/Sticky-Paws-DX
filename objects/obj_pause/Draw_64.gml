@@ -103,10 +103,6 @@ if (global.narrator >= 0)
 	menuvoice_options = noone;
 }
 
-#region /*Save Config*/
-scr_saveconfig();
-#endregion /*Save Config END*/
-
 room_speed = global.max_fps;
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/

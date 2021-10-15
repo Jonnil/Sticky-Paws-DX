@@ -167,13 +167,13 @@ if (global.basic_collectibles>99)
 
 #region /*Draw Self*/
 
-#region /*Draw intro animation sprites if intro is playing*/
+#region /*Draw intro animation sprites (cutscene) if intro is playing*/
 if (intro_animation != "")
 and (intro_animation_sprite > noone)
 {
-	draw_sprite_ext(intro_animation_sprite, image_index, xx, yy, draw_xscale*default_xscale*sign(image_xscale), draw_yscale*default_yscale, angle, image_blend, 1);
+	draw_sprite_ext(intro_animation_sprite, intro_animation_image_index, xx, yy, draw_xscale*default_xscale*sign(image_xscale), draw_yscale*default_yscale, angle, image_blend, 1);
 }
-#endregion /*Draw intro animation sprites if intro is playing END*/
+#endregion /*Draw intro animation sprites (cutscene) if intro is playing END*/
 
 #region /*Make it obvious if you take damage*/
 if (takendamage >= takendamage_freezetime)

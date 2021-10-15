@@ -482,6 +482,7 @@ full_level_map_screenshot_timer = 0;
 intro_animation = ""; /*This determines the intro animation to play when you first enter a level*/
 cutscene_time = 0; /*Timer that determines what will happen in the intro animation*/
 intro_animation_sprite = noone; /*When there is a intro animation, the sprites for the into animation gets stored here, and the normal sprites for gameplay are hidden so the into sprites can play out correctly*/
+intro_animation_image_index = 0; /*Image index of intro animation*/
 #endregion /*Intro Animation Variables END*/
 
 assist_invincible = false;

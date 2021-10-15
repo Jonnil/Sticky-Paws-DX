@@ -46,6 +46,8 @@ if (file_exists("file" + string(global.file) + ".ini"))
 {
 	ini_open("file" + string(global.file) + ".ini");
 	
+	brand_new_file = ini_read_real("Player", "brand_new_file", true);
+	
 	#region /*Load Player Position*/
 	if (ini_read_real("Player", "player_x", 0) > 0)
 	and(ini_read_real("Player", "player_y", 0) > 0)
@@ -62,6 +64,13 @@ if (file_exists("file" + string(global.file) + ".ini"))
 	
 	ini_close();
 	move_snap(32, 32);
+}
+else
+{
+	ini_open("file" + string(global.file) + ".ini");
+	ini_write_real("Player", "brand_new_file", true);
+	ini_close();
+	brand_new_file = true;
 }
 #endregion /*Load Game END*/
 
