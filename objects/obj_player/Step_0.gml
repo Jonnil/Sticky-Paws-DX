@@ -9066,6 +9066,54 @@ else
 
 #endregion /*Voice Burned END*/
 
+#region /*Voice Open Mouth*/
+if (file_exists("characters/character" + string(custom_character)+"/sounds/voicepack"+string(selected_voice_pack)+"/open_mouth.ogg"))
+{
+	voice_open_mouth = audio_create_stream("characters/character" + string(custom_character)+"/sounds/voicepack"+string(selected_voice_pack)+"/open_mouth.ogg");
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sounds/voicepack"+string(selected_voice_pack)+"/open_mouth.ogg"))
+{
+	voice_open_mouth = audio_create_stream(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sounds/voicepack"+string(selected_voice_pack)+"/open_mouth.ogg");
+}
+else
+{
+	voice_open_mouth = noone;
+}
+#endregion /*Voice Open Mouth END*/
+
+#region /*Voice Notice*/
+if (file_exists("characters/character" + string(custom_character)+"/sounds/voicepack"+string(selected_voice_pack)+"/notice.ogg"))
+{
+	voice_notice = audio_create_stream("characters/character" + string(custom_character)+"/sounds/voicepack"+string(selected_voice_pack)+"/notice.ogg");
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sounds/voicepack"+string(selected_voice_pack)+"/notice.ogg"))
+{
+	voice_notice = audio_create_stream(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sounds/voicepack"+string(selected_voice_pack)+"/notice.ogg");
+}
+else
+{
+	voice_notice = noone;
+}
+#endregion /*Voice Notice END*/
+
+#region /*Voice Scream*/
+if (file_exists("characters/character" + string(custom_character)+"/sounds/voicepack"+string(selected_voice_pack)+"/scream.ogg"))
+{
+	voice_scream = audio_create_stream("characters/character" + string(custom_character)+"/sounds/voicepack"+string(selected_voice_pack)+"/scream.ogg");
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sounds/voicepack"+string(selected_voice_pack)+"/scream.ogg"))
+{
+	voice_scream = audio_create_stream(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sounds/voicepack"+string(selected_voice_pack)+"/scream.ogg");
+}
+else
+{
+	voice_scream = noone;
+}
+#endregion /*Voice Scream END*/
+
 #endregion /*Voices END*/
 
 voice_wallkick = noone;

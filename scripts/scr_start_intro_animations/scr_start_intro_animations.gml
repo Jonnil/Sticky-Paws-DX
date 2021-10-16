@@ -29,8 +29,8 @@ function scr_start_intro_animations()
 			else
 			if (cutscene_time = 60*3)
 			{
-				audio_play_sound(voice_ahh,0,0);
-				audio_sound_gain(voice_ahh,global.voices_volume,0);
+				audio_play_sound(voice_open_mouth,0,0);
+				audio_sound_gain(voice_open_mouth,global.voices_volume,0);
 				intro_animation_sprite = sprite_sitting_eat_open_mouth;
 				image_index = 0;
 				image_speed = 1;
@@ -38,8 +38,8 @@ function scr_start_intro_animations()
 			else
 			if (cutscene_time = 60*6)
 			{
-				audio_play_sound(voice_huh,0,0);
-				audio_sound_gain(voice_huh,global.voices_volume,0);
+				audio_play_sound(voice_notice,0,0);
+				audio_sound_gain(voice_notice,global.voices_volume,0);
 				intro_animation_sprite = sprite_sitting_eat_open_mouth_open_eye;
 				image_index = 0;
 				image_speed = 1;

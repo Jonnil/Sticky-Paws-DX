@@ -457,8 +457,8 @@ voice_damage = noone;
 voice_burned_running = noone;
 voice_burned = noone;
 
-voice_ahh = noone;
-voice_huh = noone;
+voice_open_mouth = noone;
+voice_notice = noone;
 voice_scream = noone;
 
 #endregion /*Sound variables END*/

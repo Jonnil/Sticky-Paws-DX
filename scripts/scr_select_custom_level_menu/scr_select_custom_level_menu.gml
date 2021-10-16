@@ -1,7 +1,7 @@
 function scr_select_custom_level_menu()
 {
 	R = 4;
-	C = floor(global.select_level_index/R)
+	C = clamp(floor(global.select_level_index/R), 0, floor(ds_list_size(global.all_loaded_custom_levels)))
 	
 	#region /*Navigate Menu*/
 	
@@ -15,7 +15,6 @@ function scr_select_custom_level_menu()
 		and (open_sub_menu = false)
 		and (menu!="back_from_level_editor")
 		{
-			//scroll_to = floor(clamp(scroll_to-1, 0, (ds_list_size(global.all_loaded_custom_levels)-1)/R))
 			if (global.select_level_index-R < 0)
 			and (global.controls_used_for_menu_navigation != "mouse")
 			{
@@ -23,6 +22,7 @@ function scr_select_custom_level_menu()
 				menu = "back_from_level_editor";
 			}
 			else
+			if (global.select_level_index-R > -1)
 			{
 				menu_delay = 3;
 				global.select_level_index -= clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
@@ -45,10 +45,6 @@ function scr_select_custom_level_menu()
 		and (open_sub_menu = false)
 		and (menu!="back_from_level_editor")
 		{
-		
-			//scroll_to = floor(clamp(scroll_to+1, 0, (ds_list_size(global.all_loaded_custom_levels)-1)/R))
-			//lerp_on = true;
-		
 			if (global.select_level_index+R > ds_list_size(global.thumbnail_sprite)-1)
 			and (global.controls_used_for_menu_navigation != "mouse")
 			{
@@ -56,6 +52,7 @@ function scr_select_custom_level_menu()
 				menu = "back_from_level_editor";
 			}
 			else
+			if (global.select_level_index+R < ds_list_size(global.thumbnail_sprite))
 			{
 				menu_delay = 3;
 				global.select_level_index += clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
