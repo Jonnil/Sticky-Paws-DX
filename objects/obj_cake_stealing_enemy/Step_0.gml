@@ -35,7 +35,7 @@ if (asset_get_type("obj_semisolid_platform") == asset_object)
 if (cutscene = 0)
 {
 	time += 1;
-	if (time >= room_speed*4)
+	if (time >= room_speed*2.3)
 	{
 		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
 		hspeed = +7;
