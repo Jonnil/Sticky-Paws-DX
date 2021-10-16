@@ -55,7 +55,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time > 60*5)
+			if (cutscene_time > 60*5.2)
 			{
 				hspeed = +8;
 				vspeed = -8;
