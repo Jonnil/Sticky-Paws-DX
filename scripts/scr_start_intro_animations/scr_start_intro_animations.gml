@@ -21,13 +21,13 @@ function scr_start_intro_animations()
 			{
 				instance_create_depth(x+10, y, 0, obj_chair_and_table);
 				instance_create_depth(x+40, y+10, 0, obj_cake);
-				instance_create_depth(x-300, y, 0, obj_cake_stealing_enemy);
+				instance_create_depth(x-318.79522439, y, 0, obj_cake_stealing_enemy);
 				intro_animation_sprite = sprite_sitting_eat_closed_mouth;
 				image_index = 0;
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time = 60*3)
+			if (cutscene_time = 60*2)
 			{
 				audio_play_sound(voice_ahh,0,0);
 				audio_sound_gain(voice_ahh,global.voices_volume,0);
@@ -36,7 +36,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time = 60*6)
+			if (cutscene_time = 60*3.5)
 			{
 				audio_play_sound(voice_huh,0,0);
 				audio_sound_gain(voice_huh,global.voices_volume,0);
@@ -45,7 +45,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time = 60*7)
+			if (cutscene_time = 60*4.2)
 			{
 				audio_play_sound(voice_scream,0,0);
 				audio_sound_gain(voice_scream,global.voices_volume,0);
@@ -55,7 +55,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time > 60*8)
+			if (cutscene_time > 60*5)
 			{
 				hspeed = +8;
 				vspeed = -8;
