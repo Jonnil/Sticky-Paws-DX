@@ -34,6 +34,7 @@ function scr_loadconfig()
 		if (ini_key_exists("config","show_collision_mask")){global.show_collision_mask=ini_read_real("config","show_collision_mask",0);}
 		if (ini_key_exists("config","music_volume")){global.music_volume=ini_read_real("config","music_volume",0);}
 		if (ini_key_exists("config","sfx_volume")){global.sfx_volume=ini_read_real("config","sfx_volume",0);}
+		if (ini_key_exists("config","ambient_volume")){global.ambient_volume=ini_read_real("config","ambient_volume",0);}
 		if (ini_key_exists("config","voices_volume")){global.voices_volume=ini_read_real("config","voices_volume",0);}
 		if (ini_key_exists("config","background_brightness_gameplay")){global.background_brightness_gameplay=ini_read_real("config","background_brightness_gameplay",0);}
 		if (ini_key_exists("config","background_brightness_menu")){global.background_brightness_menu=ini_read_real("config","background_brightness_menu",0);}

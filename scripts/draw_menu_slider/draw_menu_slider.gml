@@ -44,6 +44,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0;}else
 				if (menu = "voices_volume"){global.voices_volume = 0;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -1;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -1;}
@@ -53,6 +54,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.05;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.05;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.05;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.05;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -0.9;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -0.9;}
@@ -62,6 +64,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.1;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.1;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.1;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.1;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -0.8;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -0.8;}
@@ -71,6 +74,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.15;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.15;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.15;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.15;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -0.7;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -0.7;}
@@ -80,6 +84,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.2;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.2;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.2;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.2;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -0.6;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -0.6;}
@@ -89,6 +94,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.25;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.25;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.25;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.25;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -0.5;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -0.5;}
@@ -98,6 +104,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.3;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.3;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.3;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.3;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -0.4;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -0.4;}
@@ -107,6 +114,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.35;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.35;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.35;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.35;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -0.3;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -0.3;}
@@ -116,6 +124,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.4;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.4;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.4;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.4;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -0.2;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -0.2;}
@@ -125,6 +134,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.45;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.45;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.45;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.45;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -0.1;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -0.1;}
@@ -134,6 +144,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.5;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.5;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.5;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.5;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0;}
@@ -143,6 +154,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.55;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.55;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.55;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.55;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0.1;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0.1;}
@@ -152,6 +164,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.6;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.6;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.6;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.6;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0.2;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0.2;}
@@ -161,6 +174,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.65;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.65;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.65;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.65;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0.3;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0.3;}
@@ -170,6 +184,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.7;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.7;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.7;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.7;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0.4;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0.4;}
@@ -179,6 +194,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.75;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.75;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.75;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.75;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0.5;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0.5;}
@@ -188,6 +204,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.8;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.8;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.8;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.8;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0.6;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0.6;}
@@ -197,6 +214,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.85;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.85;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.85;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.85;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0.7;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0.7;}
@@ -206,6 +224,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.9;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.9;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.9;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.9;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0.8;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0.8;}
@@ -215,6 +234,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 0.95;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 0.95;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 0.95;}else
 				if (menu = "voices_volume"){global.voices_volume = 0.95;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 0.9;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 0.9;}
@@ -224,6 +244,7 @@ function draw_menu_slider()
 			{
 				if (menu = "music_volume"){global.music_volume = 1;}else
 				if (menu = "sfx_volume"){global.sfx_volume = 1;}else
+				if (menu = "ambient_volume"){global.ambient_volume = 1;}else
 				if (menu = "voices_volume"){global.voices_volume = 1;}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = 1;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = 1;}

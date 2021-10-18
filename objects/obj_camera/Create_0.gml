@@ -437,11 +437,51 @@ and(room != room_title)
 	}
 	#endregion /*Update Music Underwater END*/
 	
+	#region /*Update Ambiance*/
+	/*OGG small letter File*/
+	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambiance/ambiance.ogg"))
+	and(global.character_select_in_this_menu = "main_game")
+	{
+		global.ambiance = audio_create_stream("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambiance/ambiance.ogg");
+	}
+	else
+	/*OGG small letter File*/
+	if (file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance/ambiance.ogg"))
+	{
+		global.ambiance = audio_create_stream(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance/ambiance.ogg");
+	}
+	else
+	{
+		global.ambiance = noone;
+	}
+	#endregion /*Update Ambiance END*/
+	
+	#region /*Update Ambiance Underwater*/
+	/*OGG small letter File*/
+	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambiance/ambiance_underwater.ogg"))
+	and(global.character_select_in_this_menu = "main_game")
+	{
+		global.ambiance_underwater = audio_create_stream("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambiance/ambiance_underwater.ogg");
+	}
+	else
+	/*OGG small letter File*/
+	if (file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance/ambiance_underwater.ogg"))
+	{
+		global.ambiance_underwater = audio_create_stream(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance/ambiance_underwater.ogg");
+	}
+	else
+	{
+		global.ambiance_underwater = noone;
+	}
+	#endregion /*Update Ambiance Underwater END*/
+	
 }
 else
 {
 	global.music = noone;
 	global.music_underwater = noone;
+	global.ambiance = noone;
+	global.ambiance_underwater = noone;
 }
 #endregion /*Custom Music END*/
 

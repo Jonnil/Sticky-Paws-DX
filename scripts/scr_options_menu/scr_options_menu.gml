@@ -5970,6 +5970,8 @@ function scr_options_menu()
 	if (global.music_volume>1){global.music_volume=1;}
 	if (global.sfx_volume<0){global.sfx_volume= 0;}else
 	if (global.sfx_volume>1){global.sfx_volume=1;}
+	if (global.ambient_volume<0){global.ambient_volume= 0;}else
+	if (global.ambient_volume>1){global.ambient_volume=1;}
 	if (global.voices_volume<0){global.voices_volume= 0;}else
 	if (global.voices_volume>1){global.voices_volume=1;}
 	if (global.verbosity_slider<0){global.verbosity_slider= 0;}else
@@ -5980,9 +5982,9 @@ function scr_options_menu()
 	
 	draw_menu_slider(410, 100, "Music Volume", "music_volume", global.music_volume, c_red);
 	draw_menu_slider(410, 164, "SFX Volume", "sfx_volume", global.sfx_volume, c_lime);
-	draw_menu_slider(410, 228, "Voices Volume", "voices_volume", global.voices_volume, c_aqua);
-	
-	draw_menu_dropdown(410, 292, "Number of Audio Channels", "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256");
+	draw_menu_slider(410, 228, "Ambient Volume", "ambient_volume", global.ambient_volume, c_lime);
+	draw_menu_slider(410, 292, "Voices Volume", "voices_volume", global.voices_volume, c_aqua);
+	draw_menu_dropdown(410, 356, "Number of Audio Channels", "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256");
 	
 	#region /*Verbosity Bar*/
 	if (global.enable_verbosity_slider = true)
@@ -7193,7 +7195,7 @@ function scr_options_menu()
 		and(menu_delay = 0)
 		and (open_dropdown = false)
 		{
-			menu = "music_volume"
+			menu = "music_volume";
 			menu_delay = 3;
 		}
 		else
@@ -7201,14 +7203,57 @@ function scr_options_menu()
 		and(menu_delay = 0)
 		and (open_dropdown = false)
 		{
-			menu = "voices_volume"
+			menu = "ambient_volume";
 			menu_delay = 3;
 		}
 	}
 	#endregion /*Music Volume Navigation END*/
-
+	
 	else
-
+	
+	#region /*Ambient Volume Navigation*/
+	if (menu = "ambient_volume")
+	{
+		if (key_left)
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.ambient_volume > 0)
+			{
+				global.ambient_volume -= 0.05;
+			}
+		}
+		else
+		if (key_right)
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.ambient_volume < +1)
+			{
+				global.ambient_volume += 0.05;
+			}
+		}
+		else
+		if (key_up)
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "sfx_volume";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "voices_volume";
+			menu_delay = 3;
+		}
+	}
+	#endregion /*Ambient Volume Navigation END*/
+	
+	else
+	
 	#region /*Voices Volume Navigation*/
 	if (menu = "voices_volume")
 	{
@@ -7236,7 +7281,7 @@ function scr_options_menu()
 		and(menu_delay = 0)
 		and (open_dropdown = false)
 		{
-			menu = "sfx_volume"
+			menu = "ambient_volume";
 			menu_delay = 3;
 		}
 		else
@@ -7259,7 +7304,7 @@ function scr_options_menu()
 		and(menu_delay = 0)
 		and (open_dropdown = false)
 		{
-			menu = "voices_volume"
+			menu = "voices_volume";
 			menu_delay = 3;
 		}
 		else
@@ -7334,7 +7379,7 @@ function scr_options_menu()
 		and(menu_delay = 0)
 		and (open_dropdown = false)
 		{
-			menu = "voices_volume"
+			menu = "voices_volume";
 			menu_delay = 3;
 		}
 		else
@@ -7349,7 +7394,7 @@ function scr_options_menu()
 			}
 			else
 			{
-				menu = "music_volume"
+				menu = "music_volume";
 				menu_delay = 3;
 			}
 		}

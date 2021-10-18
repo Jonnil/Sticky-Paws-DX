@@ -1583,16 +1583,16 @@ or(gamepad_button_check_pressed(0,gp_select))
 		#region /*Create Data directory for saving custom level data*/
 		if (global.select_level_index >= 1)
 		and (directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
-		and (!directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data"))
+		and (!directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data"))
 		{
-			directory_create(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Data");
+			directory_create(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data");
 		}
 		else
 		if (global.select_level_index <= 0)
 		and (directory_exists(working_directory+"/custom_levels/"+string(global.level_name)))
-		and (!directory_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/Data"))
+		and (!directory_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/data"))
 		{
-			directory_create(working_directory+"/custom_levels/"+string(global.level_name)+"/Data");
+			directory_create(working_directory+"/custom_levels/"+string(global.level_name)+"/data");
 		}
 		#endregion /*Create Data directory for saving custom level data END*/
 		
@@ -1605,12 +1605,12 @@ or(gamepad_button_check_pressed(0,gp_select))
 			var file,str;
 			if (global.select_level_index >= 1)
 			{
-				file = file_text_open_write(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/Object_Placement.txt"); /*Open file for writing*/
+				file = file_text_open_write(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/object_placement.txt"); /*Open file for writing*/
 			}
 			else
 			if (global.select_level_index <= 0)
 			{
-				file = file_text_open_write(working_directory+"/custom_levels/"+string(global.level_name)+"/data/Object_Placement.txt"); /*Open file for writing*/
+				file = file_text_open_write(working_directory+"/custom_levels/"+string(global.level_name)+"/data/object_placement.txt"); /*Open file for writing*/
 			}
 			str=""; /*Reset string var*/
 	

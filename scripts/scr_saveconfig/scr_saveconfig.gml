@@ -36,6 +36,7 @@ function scr_saveconfig()
 	ini_write_real("config","show_collision_mask",global.show_collision_mask);
 	ini_write_real("config","music_volume",global.music_volume);
 	ini_write_real("config","sfx_volume",global.sfx_volume);
+	ini_write_real("config","ambient_volume",global.ambient_volume);
 	ini_write_real("config","voices_volume",global.voices_volume);
 	ini_write_real("config","background_brightness_gameplay",global.background_brightness_gameplay);
 	ini_write_real("config","background_brightness_menu",global.background_brightness_menu);

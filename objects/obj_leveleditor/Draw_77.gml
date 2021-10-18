@@ -109,12 +109,12 @@ and(global.character_select_in_this_menu = "level_editor")
 	var file,str;
 	if (global.select_level_index >= 1)
 	{
-		file=file_text_open_write(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/Object_Placement.txt"); /*Open file for writing*/
+		file=file_text_open_write(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/object_placement.txt"); /*Open file for writing*/
 	}
 	else
 	if (global.select_level_index <= 0)
 	{
-		file=file_text_open_write(working_directory+"/custom_levels/"+string(global.level_name)+"/data/Object_Placement.txt"); /*Open file for writing*/
+		file=file_text_open_write(working_directory+"/custom_levels/"+string(global.level_name)+"/data/object_placement.txt"); /*Open file for writing*/
 	}
 	str=""; /*Reset string var*/
 	

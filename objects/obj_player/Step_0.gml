@@ -12244,6 +12244,22 @@ else
 
 }
 
+#region /*Play Ambience*/
+if (!audio_is_playing(global.ambiance))
+{
+	audio_play_sound(global.ambiance,0,true);
+	audio_sound_gain(global.ambiance,global.ambient_volume,0);
+}
+#endregion /*Play Ambience END*/
+
+#region /*Play Underwater Ambience*/
+if (!audio_is_playing(global.ambiance_underwater))
+{
+	audio_play_sound(global.ambiance_underwater,0,true);
+	audio_sound_gain(global.ambiance_underwater,0,0);
+}
+#endregion /*Play Underwater Ambience END*/
+
 #region /*Music Pitch*/
 if (global.time_countdown < 100)
 and(global.time_countdown > noone)
@@ -16488,13 +16504,25 @@ else
 if (in_water = true)
 and (global.music_underwater > 0)
 {
-	audio_sound_gain(global.music,0,0);/*time: 1000*/
+	audio_sound_gain(global.music,0,0);
 	audio_sound_gain(global.music_underwater,global.music_volume,0);
 }
 else
 {
 	audio_sound_gain(global.music,global.music_volume,0);
 	audio_sound_gain(global.music_underwater,0,0);
+}
+
+if (in_water = true)
+and (global.ambiance_underwater > 0)
+{
+	audio_sound_gain(global.ambiance,0,0);
+	audio_sound_gain(global.ambiance_underwater,global.ambient_volume,0);
+}
+else
+{
+	audio_sound_gain(global.ambiance,global.ambient_volume,0);
+	audio_sound_gain(global.ambiance_underwater,0,0);
 }
 
 #region /*In Water*/
@@ -16921,6 +16949,8 @@ if (die=true)
 		{
 			audio_stop_sound(global.music);
 			audio_stop_sound(global.music_underwater);
+			audio_stop_sound(global.ambiance);
+			audio_stop_sound(global.ambiance_underwater);
 			music=noone;
 			music_underwater=noone;
 			if (asset_get_type("snd_music_invincible")==asset_sound)

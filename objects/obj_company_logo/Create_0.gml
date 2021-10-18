@@ -242,12 +242,15 @@ global.background_brightness_menu=0; /*Background brightness in menus. full_blac
 #region /*Music and Sound Volume*/
 global.music_volume=1;
 global.sfx_volume=1;
+global.ambient_volume=1;
 global.voices_volume=1;
 global.verbosity_slider=1;
 global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
 global.music=noone;
 global.music_underwater=noone;
+global.ambiance=noone;
+global.ambiance_underwater=noone;
 global.trigger_ending=false;
 global.spikes_emerge_time=0;
 global.goal_active=false;
