@@ -703,7 +703,7 @@ function scr_options_menu()
 	and(can_navigate_settings_sidebar=true)
 	and(input_key = false)
 	{
-		scr_saveconfig(); /*Save Config*/
+		scr_config_save(); /*Save Config*/
 		if (global.pause_room != room_leveleditor)
 		{
 			scr_load_resource_pack_sprite(); /*Load new sprites from resource pack*/
@@ -763,7 +763,7 @@ function scr_options_menu()
 	and(global.settings_sidebar_menu="settings_back")
 	and(mouse_check_button_released(mb_left))
 	{
-		scr_saveconfig(); /*Save Config*/
+		scr_config_save(); /*Save Config*/
 		if (global.pause_room != room_leveleditor)
 		{
 			scr_load_resource_pack_sprite(); /*Load new sprites from resource pack*/

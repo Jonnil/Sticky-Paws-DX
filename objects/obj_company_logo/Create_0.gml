@@ -458,13 +458,13 @@ global.mobile_key_sprint_y = 984-16;
 #endregion /*Mobile Controls Settings END*/
 
 #region /*Load Config*/
-if (asset_get_type("scr_loadconfig")==asset_script)
+if (asset_get_type("scr_config_load")==asset_script)
 {
-	scr_loadconfig();
+	scr_config_load();
 }
 #endregion /*Load Config END*/
 
-#region /*Resource Packs (put this code after the scr_loadconfig so the right sprites can load)*/
+#region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
 global.resourcepack_sprite_basic_collectible = spr_wall;
 global.resourcepack_sprite_big_collectible = spr_wall;
 global.resourcepack_sprite_bullet = spr_wall;

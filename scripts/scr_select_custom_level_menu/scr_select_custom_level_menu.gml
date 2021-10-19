@@ -773,9 +773,9 @@ function scr_select_custom_level_menu()
 	if (file_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini"))
 	{
 		ini_open(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
-		if (ini_key_exists("info","level_name"))
+		if (ini_key_exists("info", "level_name"))
 		{
-			level_name=ini_read_string("info","level_name",0);
+			level_name = ini_read_string("info", "level_name", 0);
 		}
 		else
 		{
@@ -785,7 +785,7 @@ function scr_select_custom_level_menu()
 	}
 	else
 	{
-		level_name="";
+		level_name = "";
 	}
 	#endregion /*Load Level Name END*/
 	
@@ -835,28 +835,38 @@ function scr_select_custom_level_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		global.level_name = keyboard_string;
+		var _key = keyboard_lastchar;
+		if (ord(_key) != ord("/"))
+		and (ord(_key) != ord(":"))
+		and (ord(_key) != ord("*"))
+		and (ord(_key) != ord("?"))
+		and (ord(_key) != ord("<"))
+		and (ord(_key) != ord(">"))
+		and (ord(_key) != ord("|"))
+		{
+			global.level_name = keyboard_string;
+		}
+		else
+		{
+			keyboard_string = string_copy(global.level_name, 1, 120);
+		}
 		
 		#region /*Limit Name Input Length for Level*/
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		
-		if (string_length(global.level_name)>=120)
+		if (string_length(global.level_name) >= 120)
 		{
-			draw_text_outlined(
-			394*(global.select_level_index-C*R)+400, 226*(C-scroll)+609-3,
-			"120/120",global.default_text_size,c_black,c_white,1);
+			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, "120/120", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(
-			394*(global.select_level_index-C*R)+400, 226*(C-scroll)+609-3,
-			string(string_length(global.level_name))+"/120",global.default_text_size,c_black,c_ltgray,1);
+			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, string(string_length(global.level_name)) + "/120", global.default_text_size, c_black, c_ltgray, 1);
 		}
 		
-		if (string_length(global.level_name)>120)
+		if (string_length(global.level_name) > 120)
 		{
-			global.level_name = string_copy(global.level_name,1,120);
+			global.level_name = string_copy(global.level_name, 1, 120);
 		}
 		#endregion /*Limit Name Input Length for Name END*/
 		

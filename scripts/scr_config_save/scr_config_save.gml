@@ -1,5 +1,5 @@
-///scr_saveconfig()
-function scr_saveconfig()
+///scr_config_save()
+function scr_config_save()
 {
 	if (file_exists("config.ini"))
 	{

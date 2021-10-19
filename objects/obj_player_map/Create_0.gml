@@ -104,7 +104,7 @@ if (global.player4_can_play = true)
 }
 else
 {
-	custom_character = noone;
+	custom_character = 0;
 }
 
 sprite_map_xorig = 0;
@@ -120,4 +120,4 @@ sprite_map_enter_level = noone;
 sprite_stand = noone;
 #endregion /*Play as custom character END*/
 
-scr_loadconfig(); /*Load Config only once in create event, or it will mess up the options menu navigation*/
+scr_config_load(); /*Load Config only once in create event, or it will mess up the options menu navigation*/

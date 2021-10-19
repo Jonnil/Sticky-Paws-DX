@@ -1963,19 +1963,19 @@ function scr_character_select_menu()
 			window_get_height()/2+16))
 			and (mouse_check_button_pressed(mb_left))
 			{
-				if (menu_delay=0)
-				and (global.character_for_player_1>0)
+				if (menu_delay = 0)
+				and (global.character_for_player_1 > 0)
 				{
-					menu_delay=3;
-					menu_joystick1_delay=30;
-					if (global.character_for_player_1>0)
+					menu_delay = 3;
+					menu_joystick1_delay = 30;
+					if (global.character_for_player_1 > 0)
 					{
-						global.character_for_player_1-=1;
-						xx1=player1_display_x-32;
+						global.character_for_player_1 -= 1;
+						xx1 = player1_display_x - 32;
 					}
 					else
 					{
-						global.character_for_player_1=0;
+						global.character_for_player_1 = 0;
 					}
 					
 					sprite_delete(global.sprite_select_player_1);
@@ -3775,14 +3775,14 @@ and (player4_accept_selection >= 0)
 				menu_delay=3;
 				player1_accept_selection = true;
 				global.player1_can_play = true;
-				if (global.character_for_player_1=0)
+				if (global.character_for_player_1 = 0)
 				{
 					audio_stop_sound(voice);
 					voice=audio_play_sound(menuvoice_select_character0,0,0);
 					audio_sound_gain(menuvoice_select_character0,global.voices_volume,0);
 				}
 				else
-				if (global.character_for_player_1=1)
+				if (global.character_for_player_1 = 1)
 				{
 					audio_stop_sound(voice);
 					voice=audio_play_sound(menuvoice_select_character1,0,0);
@@ -4037,6 +4037,12 @@ and (player4_accept_selection >= 0)
 		and (can_input_player4_name = false)
 		and (menu_delay = 0)
 		{
+			ini_open("config.ini"); /*Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame*/
+			ini_write_real("config","character_for_player_1",global.character_for_player_1);
+			ini_write_real("config","character_for_player_2",global.character_for_player_2);
+			ini_write_real("config","character_for_player_3",global.character_for_player_3);
+			ini_write_real("config","character_for_player_4",global.character_for_player_4);
+			ini_close();
 			if (global.character_select_in_this_menu = "main_game")
 			{
 				can_navigate = false;
