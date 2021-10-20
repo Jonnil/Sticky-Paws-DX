@@ -7,6 +7,12 @@ iris_zoom=0;
 xx=x;
 yy=y;
 
+#region /*Game Over variables*/
+game_over_sprite_y = -300;
+game_over_text_y = -300;
+sprite_game_over_character_portrait = noone;
+#endregion /*Game Over variables END*/
+
 default_voice_pitch=1;
 default_xscale=1;
 default_yscale=1;

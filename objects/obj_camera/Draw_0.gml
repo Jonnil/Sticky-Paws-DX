@@ -892,8 +892,8 @@ or(show_letterbox > 0)
 and(global.play_edited_level = true)
 and(global.actually_play_edited_level = true)
 {
-	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]), window_get_width()*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(0, letterbox_bottom_y, window_get_width()*3, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]), room_width*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, letterbox_bottom_y, room_width*3, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
 }
 if (asset_get_type("obj_player") == asset_object)
 and(!instance_exists(obj_player))

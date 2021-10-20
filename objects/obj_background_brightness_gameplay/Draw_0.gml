@@ -1,5 +1,3 @@
-depth = 90;
-
 #region /*Background Brightness in Gameplay Options*/
 if (asset_get_type("obj_title") == asset_object)
 and(!instance_exists(obj_title))

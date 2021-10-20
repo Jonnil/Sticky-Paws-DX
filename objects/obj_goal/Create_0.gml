@@ -1,4 +1,4 @@
-depth = +30;
+depth = +29;
 image_index = 0;
 image_speed = 0;
 trigger_ending = false;

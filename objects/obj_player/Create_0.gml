@@ -86,6 +86,8 @@ sprite_crouch_xorig = 0;
 sprite_crouch_yorig = 0;
 sprite_die_xorig = 0;
 sprite_die_yorig = 0;
+sprite_game_over_character_portrait_xorig = 0;
+sprite_game_over_character_portrait_yorig = 0;
 sprite_dive_xorig = 0;
 sprite_dive_yorig = 0;
 sprite_double_jump_xorig = 0;
@@ -216,6 +218,7 @@ sprite_wall_slide_up = noone;
 sprite_wall_slide_down = noone;
 sprite_dive = noone;
 sprite_die = noone;
+sprite_game_over_character_portrait = noone;
 sprite_vine_climb = noone;
 sprite_vine_stay = noone;
 

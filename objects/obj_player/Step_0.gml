@@ -1410,7 +1410,7 @@ or(file_exists(working_directory + "/custom_characters/Character" + string(custo
 		sprite_die_xorig = 0;
 	}
 	#endregion /*Sprite die x origin point END*/
-
+	
 	#region /*Sprite die y origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_die_yorig"))
 	{
@@ -1423,7 +1423,33 @@ or(file_exists(working_directory + "/custom_characters/Character" + string(custo
 	}
 	#endregion /*Sprite die y origin point END*/
 	#endregion /*Sprite die x and y origin points END*/
+	
+	#region /*Sprite game over character portrait x and y origin points*/
+	#region /*Sprite game over character portrait x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_game_over_character_portrait_xorig"))
+	{
+		sprite_game_over_character_portrait_xorig = ini_read_real("sprite origin points", "sprite_game_over_character_portrait_xorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_game_over_character_portrait_xorig", 0);
+		sprite_game_over_character_portrait_xorig = 0;
+	}
+	#endregion /*Sprite game over character portrait x origin point END*/
 
+	#region /*Sprite game over character portrait y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_game_over_character_portrait_yorig"))
+	{
+		sprite_game_over_character_portrait_yorig = ini_read_real("sprite origin points", "sprite_game_over_character_portrait_yorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_game_over_character_portrait_yorig", 0);
+		sprite_game_over_character_portrait_yorig = 0;
+	}
+	#endregion /*Sprite game over character portrait y origin point END*/
+	#endregion /*Sprite game over character portrait x and y origin points END*/
+	
 	#region /*Sprite vine climb x and y origin points*/
 	#region /*Sprite vine climb x origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_vine_climb_xorig"))
@@ -1657,6 +1683,8 @@ else
 	sprite_crouch_yorig = 0;
 	sprite_die_xorig = 0;
 	sprite_die_yorig = 0;
+	sprite_game_over_character_portrait_xorig = 0;
+	sprite_game_over_character_portrait_yorig = 0;
 	sprite_dive_xorig = 0;
 	sprite_dive_yorig = 0;
 	sprite_double_jump_xorig = 0;
@@ -3401,6 +3429,32 @@ if (file_exists(working_directory + "/custom_characters/Character" + string(cust
 	sprite_die = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/die.png", 1, false, false, sprite_die_xorig, sprite_die_yorig);
 }
 #endregion /*Die sprite END*/
+
+#region /*Game over character portrait sprite*/
+index = 0;
+repeat(50)
+{
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/game_over_character_portrait_strip"+string(index)+".png"))
+	{
+		sprite_game_over_character_portrait = sprite_add("characters/character" + string(custom_character)+"/sprites/game_over_character_portrait_strip"+string(index)+".png", index, false, false, sprite_game_over_character_portrait_xorig, sprite_game_over_character_portrait_yorig);
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/game_over_character_portrait_strip"+string(index)+".png"))
+	{
+		sprite_game_over_character_portrait = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/game_over_character_portrait_strip"+string(index)+".png", index, false, false, sprite_game_over_character_portrait_xorig, sprite_game_over_character_portrait_yorig);
+	}
+	index += 1;
+}
+if (file_exists("characters/character" + string(custom_character)+"/sprites/game_over_character_portrait.png"))
+{
+	sprite_game_over_character_portrait = sprite_add("characters/character" + string(custom_character)+"/sprites/game_over_character_portrait.png", 1, false, false, sprite_game_over_character_portrait_xorig, sprite_game_over_character_portrait_yorig);
+}
+else
+if (file_exists(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/game_over_character_portrait.png"))
+{
+	sprite_game_over_character_portrait = sprite_add(working_directory + "/custom_characters/Character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/game_over_character_portrait.png", 1, false, false, sprite_game_over_character_portrait_xorig, sprite_game_over_character_portrait_yorig);
+}
+#endregion /*Game over character portrait sprite END*/
 
 #region /*Vine climb sprite*/
 index = 0;
@@ -16970,30 +17024,40 @@ if (die=true)
 				audio_stop_sound(snd_skiddingvertical);
 			}
 		}
-		speed=0;
-		takendamage=0;
-		invinvible=false;
-		if (asset_get_type("snd_die")==asset_sound)
+		speed = 0;
+		takendamage = 0;
+		invinvible = false;
+		if (asset_get_type("snd_die") == asset_sound)
 		{
-			audio_play_sound(snd_die,0,0);
-			audio_sound_gain(snd_die,global.sfx_volume,0);
+			audio_play_sound(snd_die, 0, 0);
+			audio_sound_gain(snd_die, global.sfx_volume, 0);
 		}
-		if (asset_get_type("obj_player_die")==asset_object)
+		if (asset_get_type("obj_player_die") == asset_object)
 		{
 			
 			#region /*Player 1 Die*/
-			if (player=1)
+			if (player = 1)
 			{
 				obj=instance_create_depth(x,y,0,obj_player_die);
 				with(obj)
 				{
-					player=1;
-					if (instance_nearest(x,y,obj_player).sprite_die>noone){sprite_index=instance_nearest(x,y,obj_player).sprite_die;}else
-					{sprite_index=instance_nearest(x,y,obj_player).sprite_stand;}
-					voice_damage=instance_nearest(x,y,obj_player).voice_damage;
-					default_voice_pitch=instance_nearest(x,y,obj_player).default_voice_pitch;
-					default_xscale=instance_nearest(x,y,obj_player).default_xscale;
-					default_yscale=instance_nearest(x,y,obj_player).default_yscale;
+					player = 1;
+					if (instance_nearest(x, y, obj_player).sprite_die > noone)
+					{
+						sprite_index = instance_nearest(x, y, obj_player).sprite_die;
+					}
+					else
+					{
+						sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
+					}
+					if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
+					{
+						sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
+					}
+					voice_damage = instance_nearest(x, y, obj_player).voice_damage;
+					default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
+					default_xscale = instance_nearest(x, y, obj_player).default_xscale;
+					default_yscale = instance_nearest(x, y, obj_player).default_yscale;
 				}
 			}
 			#endregion /*Player 1 Die END*/
@@ -17001,18 +17065,28 @@ if (die=true)
 			else
 			
 			#region /*Player 2 Die*/
-			if (player=2)
+			if (player = 2)
 			{
 				obj=instance_create_depth(x,y,0,obj_player_die);
 				with(obj)
 				{
-					player=2;
-					if (instance_nearest(x,y,obj_player).sprite_die>noone){sprite_index=instance_nearest(x,y,obj_player).sprite_die;}else
-					{sprite_index=instance_nearest(x,y,obj_player).sprite_stand;}
-					voice_damage=instance_nearest(x,y,obj_player).voice_damage;
-					default_voice_pitch=instance_nearest(x,y,obj_player).default_voice_pitch;
-					default_xscale=instance_nearest(x,y,obj_player).default_xscale;
-					default_yscale=instance_nearest(x,y,obj_player).default_yscale;
+					player = 2;
+					if (instance_nearest(x, y, obj_player).sprite_die > noone)
+					{
+						sprite_index = instance_nearest(x, y, obj_player).sprite_die;
+					}
+					else
+					{
+						sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
+					}
+					if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
+					{
+						sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
+					}
+					voice_damage = instance_nearest(x, y, obj_player).voice_damage;
+					default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
+					default_xscale = instance_nearest(x, y, obj_player).default_xscale;
+					default_yscale = instance_nearest(x, y, obj_player).default_yscale;
 				}
 			}
 			#endregion /*Player 2 Die END*/
@@ -17020,18 +17094,28 @@ if (die=true)
 			else
 			
 			#region /*Player 3 Die*/
-			if (player=3)
+			if (player = 3)
 			{
 				obj=instance_create_depth(x,y,0,obj_player_die);
 				with(obj)
 				{
-					player=3;
-					if (instance_nearest(x,y,obj_player).sprite_die>noone){sprite_index=instance_nearest(x,y,obj_player).sprite_die;}else
-					{sprite_index=instance_nearest(x,y,obj_player).sprite_stand;}
-					voice_damage=instance_nearest(x,y,obj_player).voice_damage;
-					default_voice_pitch=instance_nearest(x,y,obj_player).default_voice_pitch;
-					default_xscale=instance_nearest(x,y,obj_player).default_xscale;
-					default_yscale=instance_nearest(x,y,obj_player).default_yscale;
+					player = 3;
+					if (instance_nearest(x, y, obj_player).sprite_die > noone)
+					{
+						sprite_index = instance_nearest(x, y, obj_player).sprite_die;
+					}
+					else
+					{
+						sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
+					}
+					if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
+					{
+						sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
+					}
+					voice_damage = instance_nearest(x, y, obj_player).voice_damage;
+					default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
+					default_xscale = instance_nearest(x, y, obj_player).default_xscale;
+					default_yscale = instance_nearest(x, y, obj_player).default_yscale;
 				}
 			}
 			#endregion /*Player 3 Die END*/
@@ -17039,18 +17123,28 @@ if (die=true)
 			else
 			
 			#region /*Player 4 Die*/
-			if (player=4)
+			if (player = 4)
 			{
 				obj=instance_create_depth(x,y,0,obj_player_die);
 				with(obj)
 				{
-					player=4;
-					if (instance_nearest(x,y,obj_player).sprite_die>noone){sprite_index=instance_nearest(x,y,obj_player).sprite_die;}else
-					{sprite_index=instance_nearest(x,y,obj_player).sprite_stand;}
-					voice_damage=instance_nearest(x,y,obj_player).voice_damage;
-					default_voice_pitch=instance_nearest(x,y,obj_player).default_voice_pitch;
-					default_xscale=instance_nearest(x,y,obj_player).default_xscale;
-					default_yscale=instance_nearest(x,y,obj_player).default_yscale;
+					player = 4;
+					if (instance_nearest(x, y, obj_player).sprite_die > noone)
+					{
+						sprite_index = instance_nearest(x, y, obj_player).sprite_die;
+					}
+					else
+					{
+						sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
+					}
+					if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
+					{
+						sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
+					}
+					voice_damage = instance_nearest(x, y, obj_player).voice_damage;
+					default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
+					default_xscale = instance_nearest(x, y, obj_player).default_xscale;
+					default_yscale = instance_nearest(x, y, obj_player).default_yscale;
 				}
 			}
 			#endregion /*Player 4 Die END*/

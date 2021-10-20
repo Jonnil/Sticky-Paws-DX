@@ -89,18 +89,6 @@ and(last_player=true)
 }
 #endregion /*Play death melody END*/
 
-#region /*When you get a game over, reset checkpoints*/
-if (lives<0)
-{
-	global.x_checkpoint=0;
-	global.y_checkpoint=0;
-	global.checkpoint_millisecond=0;
-	global.checkpoint_second=0;
-	global.checkpoint_minute=0;
-	global.checkpoint_realmillisecond=0;
-}
-#endregion /*When you get a game over, reset checkpoints END*/
-
 #region /*Limit the vertical speed*/
 if (vspeed>+32)
 {
@@ -120,7 +108,7 @@ and(iris_xscale<=0.001)
 	if (asset_get_type("snd_die_melody")==asset_sound)
 	and(!audio_is_playing(snd_die_melody))
 	{
-		if (lives>-1)
+		if (lives >= 1)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
@@ -136,40 +124,13 @@ and(iris_xscale<=0.001)
 				global.play_edited_level = false;
 				room_restart();
 			}
-			else
 			#endregion /*Go to level editor if you die in level editor END*/
 			
-			#region /*Otherwise go to Level Select*/
-			if (asset_get_type("room_world_map")==asset_room)
-			{
-				room_goto(room_world_map);
-			}
-			else
-			{
-				room_restart();
-			}
-			#endregion /*Otherwise go to Level Select END*/
-		}
-		else
-		{
-			global.timeattack_realmillisecond=0;
-			global.theme="ground";
-			global.level_clear_rate = "enter";
-			scr_savelevel();
-			audio_stop_all();
-			if (asset_get_type("room_game_over")==asset_room)
-			{
-				room_goto(room_game_over);
-			}
-			else
-			{
-				game_restart();
-			}
 		}
 	}
 	else
 	{
-		if (lives>-1)
+		if (lives >= 1)
 		{
 			global.timeattack_realmillisecond=0;
 			global.theme="ground";
@@ -185,43 +146,16 @@ and(iris_xscale<=0.001)
 				global.play_edited_level = false;
 				room_restart();
 			}
-			else
 			#endregion /*Go to level editor if you die in level editor END*/
-		
-			#region /*Otherwise go to Level Select*/
-			if (asset_get_type("room_world_map")==asset_room)
-			{
-				room_goto(room_world_map);
-			}
-			else
-			{
-				room_restart();
-			}
-			#endregion /*Otherwise go to Level Select END*/
-		}
-		else
-		{
-			global.timeattack_realmillisecond=0;
-			global.theme="ground";
-			global.level_clear_rate = "enter";
-			scr_savelevel();
-			audio_stop_all();
-			if (asset_get_type("room_game_over")==asset_room)
-			{
-				room_goto(room_game_over);
-			}
-			else
-			{
-				game_restart();
-			}
+			
 		}
 	}
 }
 else
 if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
 {
-	if (lives>0)
-	and(instance_exists(obj_player))
+	if (lives >= 1)
+	and (instance_exists(obj_player))
 	{
 		
 		#region /*Disable the players for the camera*/
@@ -303,22 +237,22 @@ and(last_player=true)
 	if (asset_get_type("obj_player_die")==asset_object)
 	and(instance_exists(obj_player_die))
 	{
-		if (iris_xscale<16)
+		if (iris_xscale < 16)
 		and(global.enable_transitions = true)
 		{
-			if (asset_get_type("spr_iris_dead")==asset_sprite)
+			if (asset_get_type("spr_iris_dead") == asset_sprite)
 			{
-				draw_sprite_ext(spr_iris_dead,image_index,xx,yy,iris_xscale,iris_yscale,image_angle,image_blend,image_alpha);
+				draw_sprite_ext(spr_iris_dead, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 			}
 			else
-			if (asset_get_type("spr_iris")==asset_sprite)
+			if (asset_get_type("spr_iris") == asset_sprite)
 			{
-				draw_sprite_ext(spr_iris,image_index,xx,yy,iris_xscale,iris_yscale,image_angle,image_blend,image_alpha);
+				draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 			}
-			draw_rectangle_color(0,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),yy-iris_yscale*128,c_black,c_black,c_black,c_black,false);
-			draw_rectangle_color(0,0,xx-iris_xscale*128,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
-			draw_rectangle_color(xx+iris_xscale*128,0,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
-			draw_rectangle_color(0,yy+iris_yscale*128,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
+			draw_rectangle_color(0, 0, room_width*3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, 0, xx - iris_xscale * 128, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(xx + iris_xscale * 128, 0, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, yy + iris_yscale * 128, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
 		}
 	}
 }
@@ -338,9 +272,7 @@ if (sprite_index>0)
 #region /*Bubble*/
 if (bubble=true)
 {
-	#region /*Get bubble sprite*/
-	sprite_index=spr_player_bubble;
-	#endregion /*Get bubble sprite End*/
+	sprite_index = spr_player_bubble; /*Get bubble sprite*/
 	
 	#region /*Don't go outside view boundary*/
 	if (x<camera_get_view_x(view_camera[view_current])+32)
@@ -520,3 +452,83 @@ and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(v
 	}
 }
 #endregion /*Display Player Number and Name END*/
+
+#region /*Game Over*/
+if (lives <= 0)
+{
+	
+	#region /*When you get a game over, reset checkpoints*/
+	global.x_checkpoint=0;
+	global.y_checkpoint=0;
+	global.checkpoint_millisecond=0;
+	global.checkpoint_second=0;
+	global.checkpoint_minute=0;
+	global.checkpoint_realmillisecond=0;
+	#endregion /*When you get a game over, reset checkpoints END*/
+	
+	draw_set_halign(fa_center);
+	if (iris_xscale <= 0.3)
+	{
+		game_over_sprite_y = lerp(game_over_sprite_y, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 170, 0.07);
+		game_over_text_y = lerp(game_over_text_y, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 170, 0.1);
+	}
+	
+	if (sprite_game_over_character_portrait > noone)
+	{
+		draw_sprite(sprite_game_over_character_portrait, image_index, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, game_over_sprite_y);
+	}
+	
+	draw_sprite(spr_game_over_text, image_index, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, game_over_text_y);
+	
+	if (keyboard_check_pressed(global.player1_key_jump))
+	or (keyboard_check_pressed(global.player2_key_jump))
+	or (keyboard_check_pressed(global.player3_key_jump))
+	or (keyboard_check_pressed(global.player4_key_jump))
+	or (keyboard_check_pressed(global.player1_key2_jump))
+	or (keyboard_check_pressed(global.player2_key2_jump))
+	or (keyboard_check_pressed(global.player3_key2_jump))
+	or (keyboard_check_pressed(global.player4_key2_jump))
+	or (gamepad_button_check_pressed(0, gp_face1))
+	or (gamepad_button_check_pressed(1, gp_face1))
+	or (gamepad_button_check_pressed(2, gp_face1))
+	or (gamepad_button_check_pressed(3, gp_face1))
+	{
+		if (global.playergame = 0)
+		{
+			lives = 5;
+		}
+		if (global.playergame = 1)
+		{
+			lives = 10;
+		}
+		if (global.playergame = 2)
+		{
+			lives = 15;
+		}
+		if (global.playergame = 3)
+		{
+			lives = 20;
+		}
+		
+		#region /*Reset Level*/
+		global.timeattack_realmillisecond=0;
+		global.theme="ground";
+		global.level_clear_rate = "enter";
+		score = 0;
+		scr_savelevel();
+		audio_stop_all();
+		
+		#region /*Go to level editor if you die in level editor*/
+		if (asset_get_type("room_leveleditor")==asset_room)
+		and(room=room_leveleditor)
+		{
+			global.play_edited_level = false;
+			room_restart();
+		}
+		#endregion /*Go to level editor if you die in level editor END*/
+		
+		#endregion /*Reset Level END*/
+		
+	}
+}
+#endregion /*Game Over END*/
