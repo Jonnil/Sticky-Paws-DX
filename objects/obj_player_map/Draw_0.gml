@@ -1775,44 +1775,51 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 		
 		#region /*Show Big Collectible*/
 		if (instance_nearest(x, y, obj_level).big_collectible1 = true)
+		or (instance_nearest(x, y, obj_level).big_collectible2 = true)
+		or (instance_nearest(x, y, obj_level).big_collectible3 = true)
+		or (instance_nearest(x, y, obj_level).big_collectible4 = true)
+		or (instance_nearest(x, y, obj_level).big_collectible5 = true)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 160, 0.3, 0.3, 0, c_white, 1);
-		}
-		else
-		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
-		}
-		if (instance_nearest(x, y, obj_level).big_collectible2 = true)
-		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 160, 0.3, 0.3, 0, c_white, 1);
-		}
-		else
-		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
-		}
-		if (instance_nearest(x, y, obj_level).big_collectible3 = true)
-		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 160, 0.3, 0.3, 0, c_white, 1);
-		}
-		else
-		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
-		}
-		if (instance_nearest(x, y, obj_level).big_collectible4 = true)
-		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 160, 0.3, 0.3, 0, c_white, 1);
-		}
-		else
-		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
-		}
-		if (instance_nearest(x, y, obj_level).big_collectible5 = true)
-		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 160, 0.3, 0.3, 0, c_white, 1);
-		}
-		else
-		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+			if (instance_nearest(x, y, obj_level).big_collectible1 = true)
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 160, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+			}
+			if (instance_nearest(x, y, obj_level).big_collectible2 = true)
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 160, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+			}
+			if (instance_nearest(x, y, obj_level).big_collectible3 = true)
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 160, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+			}
+			if (instance_nearest(x, y, obj_level).big_collectible4 = true)
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 160, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+			}
+			if (instance_nearest(x, y, obj_level).big_collectible5 = true)
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 160, 0.3, 0.3, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+			}
 		}
 		#endregion /*Show Big Collectible END*/
 		

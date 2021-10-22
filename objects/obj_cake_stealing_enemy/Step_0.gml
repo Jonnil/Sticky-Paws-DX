@@ -80,3 +80,8 @@ if (cutscene = 2)
 		image_xscale = -1;
 	}
 }
+
+if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +16)
+{
+	instance_destroy();
+}

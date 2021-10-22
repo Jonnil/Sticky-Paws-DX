@@ -17,3 +17,9 @@ if (room = room_world_map)
 		visible = false;
 	}
 }
+
+if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +16)
+and (attatch_player = false)
+{
+	instance_destroy();
+}

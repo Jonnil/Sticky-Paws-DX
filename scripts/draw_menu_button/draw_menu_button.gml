@@ -46,14 +46,14 @@ function draw_menu_button()
 	#region /*Clicking the menu button*/
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position+2,x_position+370,y_position+41))
 	{
-		if (menu_takes_you_to=false)
-		or(menu_takes_you_to=noone)
-		or(menu_takes_you_to="")
-		or(menu_takes_you_to=menu_index)
+		if (menu_takes_you_to = false)
+		or(menu_takes_you_to = noone)
+		or(menu_takes_you_to = "")
+		or(menu_takes_you_to = menu_index)
 		{
 			if (mouse_check_button(mb_left))
 			{
-				menu=menu_index;
+				menu = menu_index;
 			}
 		}
 		else
@@ -61,7 +61,7 @@ function draw_menu_button()
 			if (mouse_check_button_pressed(mb_left))
 			and(menu_delay = 0)
 			{
-				menu=menu_takes_you_to;
+				menu = menu_takes_you_to;
 			}
 		}
 	}

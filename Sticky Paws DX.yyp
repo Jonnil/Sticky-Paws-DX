@@ -171,6 +171,7 @@
     {"id":{"name":"spr_virtual_key_jump","path":"sprites/spr_virtual_key_jump/spr_virtual_key_jump.yy",},"order":0,},
     {"id":{"name":"spr_boss_smash_against_wall","path":"sprites/spr_boss_smash_against_wall/spr_boss_smash_against_wall.yy",},"order":10,},
     {"id":{"name":"snd_hurry_up","path":"sounds/snd_hurry_up/snd_hurry_up.yy",},"order":60,},
+    {"id":{"name":"scr_quit_to_desktop_menu","path":"scripts/scr_quit_to_desktop_menu/scr_quit_to_desktop_menu.yy",},"order":4,},
     {"id":{"name":"room_world_map","path":"rooms/room_world_map/room_world_map.yy",},"order":5,},
     {"id":{"name":"snd_leveleditor_erase_left","path":"sounds/snd_leveleditor_erase_left/snd_leveleditor_erase_left.yy",},"order":72,},
     {"id":{"name":"snd_running_out","path":"sounds/snd_running_out/snd_running_out.yy",},"order":123,},
