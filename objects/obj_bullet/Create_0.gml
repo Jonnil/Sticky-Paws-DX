@@ -23,6 +23,7 @@ draw_yscale=1;
 flat=false;
 die=false;
 die_volting=false;
+give_rewards = true;
 if (asset_get_type("snd_enemyvoice_defeated")==asset_sound)
 {
 	enemyvoice_defeated1=snd_enemyvoice_defeated;

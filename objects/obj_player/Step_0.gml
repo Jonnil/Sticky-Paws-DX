@@ -14656,10 +14656,30 @@ and (in_water = false)
 			and(midair_jumps_left != number_of_jumps)
 			{
 				midair_jumps_left -= 1;
+				if (number_of_jumps >= 3)
+				and (midair_jumps_left < number_of_jumps)
+				{
+					with(instance_create_depth(x, bbox_bottom, 0, obj_scoreup))
+					{
+						scoreup = instance_nearest(x, y, obj_player).midair_jumps_left; /*If the player can do 3 jumps, show that*/
+						not_score = true;
+						show_remaining_jumps = true;
+					}
+				}
 			}
 			else
 			{
 				midair_jumps_left -= 2;
+				if (number_of_jumps >= 3)
+				and (midair_jumps_left < number_of_jumps)
+				{
+					with(instance_create_depth(x, bbox_bottom, 0, obj_scoreup))
+					{
+						scoreup = instance_nearest(x, y, obj_player).midair_jumps_left; /*If the player can do 3 jumps, show that*/
+						not_score = true;
+						show_remaining_jumps = true;
+					}
+				}
 			}
 		
 			#region /*Mid-air flip animation*/
@@ -16779,19 +16799,19 @@ if (in_water != old_in_water)
 	
 	old_in_water = in_water;
 	
-	if (asset_get_type("obj_water")==asset_object)
-	and(asset_get_type("obj_water_splash")==asset_object)
+	if (asset_get_type("obj_water") == asset_object)
+	and (asset_get_type("obj_water_splash") == asset_object)
 	{
-		instance_create_depth(x,instance_nearest(x,y,obj_water).bbox_top,0,obj_water_splash);
-		if (asset_get_type("obj_water_splash_particle")==asset_object)
+		instance_create_depth(x, y, 0, obj_water_splash);
+		if (asset_get_type("obj_water_splash_particle") == asset_object)
 		{
 			repeat(10)
 			{
-				obj=instance_create_depth(x,bbox_top,0,obj_water_splash_particle);
+				obj = instance_create_depth(x, bbox_top, 0, obj_water_splash_particle);
 				with(obj)
 				{
-					direction=random_range(0,180);
-					speed=random_range(2,10);
+					direction = random_range(0, 180);
+					speed = random_range(2, 10);
 				}
 			}
 		}
@@ -19413,8 +19433,8 @@ if (vspeed<0)
 		#region /*Triple Jump*/
 		if (jump > 2)
 		{
-			if(sprite_triple_jump>noone){sprite_index = sprite_triple_jump;}else
-			if(sprite_jump>noone){sprite_index = sprite_jump;}else
+			if (sprite_triple_jump > noone){sprite_index = sprite_triple_jump;}else
+			if (sprite_jump > noone){sprite_index = sprite_jump;}else
 			{sprite_index = sprite_stand;}
 		}
 		#endregion /*Triple Jump*/

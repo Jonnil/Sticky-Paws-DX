@@ -492,16 +492,6 @@ or (instance_number(obj_player_die)>=1) /*If there is any other player die objec
 }
 #endregion /*Display Player Number and Name END*/
 
-#region /*If the player can do 3 jumps, show that*/
-if (number_of_jumps>=3)
-and(midair_jumps_left<number_of_jumps)
-{
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	draw_text_outlined(x,y-128,"Jumps: "+string(midair_jumps_left)+"/"+string(number_of_jumps),global.default_text_size,c_white,c_black,1);			
-}
-#endregion /*If the player can do 3 jumps, show that*/
-
 #region /*If player has more hp, show that*/
 if (hp > 0)
 and(max_hp > 1)
