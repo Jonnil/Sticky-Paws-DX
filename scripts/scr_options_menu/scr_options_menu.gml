@@ -63,7 +63,6 @@ function scr_options_menu()
 	and(global.enable_controller_settings = false)
 	and(global.enable_touch_settings = false)
 	and(global.enable_profile_settings = false)
-	//and(global.enable_global_resources_settings = false)
 	and(global.enable_storage_settings = false)
 	and(global.enable_language_settings = false)
 	and(global.enable_broadcast_settings = false)
@@ -819,7 +818,7 @@ function scr_options_menu()
 	and (global.pause_room != room_leveleditor)
 	
 	{
-		/*Click Global Resources*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,global_resources_settings_y,370,global_resources_settings_y+40-1))and(global.settings_sidebar_menu="global_resources_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="global_resources_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;}
+		/*Click Global Resources*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,global_resources_settings_y,370,global_resources_settings_y+40-1))and(global.settings_sidebar_menu="global_resources_settings")and(mouse_check_button_released(mb_left)){global.settings_sidebar_menu="global_resources_settings";menu_delay = 3;input_key = false;can_navigate_settings_sidebar=false;menu="resourcepacks";}
 		/*Global Resources*/if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),0-room_width,global_resources_settings_y,370,global_resources_settings_y+40-1))and(mouse_check_button(mb_left)){global.settings_sidebar_menu="global_resources_settings";input_key = false;can_navigate_settings_sidebar=true;}
 	}
 	
@@ -6434,10 +6433,27 @@ function scr_options_menu()
 			}
 		}
 		
+		if (key_up)
+		{
+			menu = "resourcepacks";
+		}
+		else
+		if (key_down)
+		{
+			menu = "title_backgrounds";
+		}
+		
+		if (menu = "resourcepacks")
+		{
+			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x-32-32, 20+(40*4));
+		}
+		
 		if (key_left)
+		and (menu = "resourcepacks")
 		or (mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32-16, 20+(40*4)-16, resource_pack_x-32+16, 20+(40*4)+16))
 		{
+			menu = "resourcepacks";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
 			and (global.selected_resourcepack > 0)
@@ -6449,9 +6465,11 @@ function scr_options_menu()
 		}
 		else
 		if (key_right)
+		and (menu = "resourcepacks")
 		or (mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x+resource_pack_right_arrow_x-16, 20+(40*4)-16, resource_pack_x+resource_pack_right_arrow_x+16, 20+(40*4)+16))
 		{
+			menu = "resourcepacks";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
 			and (file_exists(working_directory+"/custom_resourcepacks/Resourcepack"+string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+1)+"/data/sprite_origin_point.ini"))
@@ -6461,6 +6479,106 @@ function scr_options_menu()
 				menu_delay = 3;
 			}
 		}
+		
+		#region /*Custom Title Background*/
+		draw_text_outlined(resource_pack_x,20+(40*6),"Title Background: "+string(global.selected_title_background),global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
+		
+		if (global.selected_title_background > 0)
+		{
+			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x-32, 20+(40*6), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32-16, 20+(40*6)-16, resource_pack_x-32+16, 20+(40*6)+16))
+			{
+				draw_set_alpha(0.5);
+				draw_rectangle_color(resource_pack_x-32-16, 20+(40*6)-16, resource_pack_x-32+16, 20+(40*6)+16, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
+		}
+		
+		if (file_exists("title_backgrounds/title_background"+string(global.selected_title_background+1)+".png"))
+		or (file_exists(working_directory+"/custom_title_backgrounds/title_background"+string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1)+".png"))
+		{
+			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x+resource_pack_right_arrow_x, 20+(40*6), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x+resource_pack_right_arrow_x-16, 20+(40*6)-16, resource_pack_x+resource_pack_right_arrow_x+16, 20+(40*6)+16))
+			{
+				draw_set_alpha(0.5);
+				draw_rectangle_color(resource_pack_x+resource_pack_right_arrow_x-16, 20+(40*6)-16, resource_pack_x+resource_pack_right_arrow_x+16, 20+(40*6)+16, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
+		}
+		
+		if (menu = "title_backgrounds")
+		{
+			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x-32-32, 20+(40*6));
+		}
+		
+		if (key_left)
+		and (menu = "title_backgrounds")
+		or (mouse_check_button_pressed(mb_left))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32-16, 20+(40*6)-16, resource_pack_x-32+16, 20+(40*6)+16))
+		{
+			menu = "title_backgrounds";
+			if (menu_delay = 0)
+			and (can_navigate_settings_sidebar = false)
+			and (global.selected_title_background > 0)
+			{
+				global.selected_title_background -= 1;
+				menu_delay = 3;
+			}
+			if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background)+".png"))
+			{
+				title_screen_background = sprite_add("title_backgrounds/title_background" + string(global.selected_title_background)+".png", 1, false, false, 0, 0);
+			}
+			else
+			if (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png"))
+			{
+				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png", 1, false, false, 0, 0);
+			}
+			else
+			{
+				title_screen_background = noone;
+			}
+			if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
+			{
+				layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
+			}
+		}
+		else
+		if (key_right)
+		and (menu = "title_backgrounds")
+		or (mouse_check_button_pressed(mb_left))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x+resource_pack_right_arrow_x-16, 20+(40*6)-16, resource_pack_x+resource_pack_right_arrow_x+16, 20+(40*6)+16))
+		{
+			menu = "title_backgrounds";
+			if (menu_delay = 0)
+			and (can_navigate_settings_sidebar = false)
+			and (file_exists("/title_backgrounds/title_background"+string(global.selected_title_background+1)+".png"))
+			or (menu_delay = 0)
+			and (can_navigate_settings_sidebar = false)
+			and (file_exists(working_directory+"/custom_title_backgrounds/title_background"+string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1)+".png"))
+			{
+				global.selected_title_background += 1;
+				menu_delay = 3;
+			}
+			if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background)+".png"))
+			{
+				title_screen_background = sprite_add("title_backgrounds/title_background" + string(global.selected_title_background)+".png", 1, false, false, 0, 0);
+			}
+			else
+			if (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png"))
+			{
+				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png", 1, false, false, 0, 0);
+			}
+			else
+			{
+				title_screen_background = noone;
+			}
+			if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
+			{
+				layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
+			}
+		}
+		#endregion /*Custom Title Background END*/
+		
 	}
 	#endregion /*Global Resources Settings END*/
 	

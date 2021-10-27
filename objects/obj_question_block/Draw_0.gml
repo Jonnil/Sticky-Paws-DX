@@ -99,7 +99,7 @@ if (bounceup=false)
 					{
 						with(obj_camera)
 						{
-							hud_show_score_timer = global.hud_hide_time;
+							hud_show_score_timer = global.hud_hide_time*60;
 						}
 					}
 					if (show_scoreup = true)

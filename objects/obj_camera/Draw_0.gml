@@ -122,13 +122,6 @@ if (room = room_leveleditor)
 }
 #endregion /*Make background visible END*/
 
-#region /*Make sure the lives counter never goes below 0*/
-if (lives < 0)
-{
-	lives = 0;
-}
-#endregion /*Make sure the lives counter never goes below 0 END*/
-
 #region /*Spawn Players in multiplayer*/
 if (instance_exists(obj_player))
 and(global.pause = false)

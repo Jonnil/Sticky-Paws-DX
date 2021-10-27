@@ -2,6 +2,8 @@ function scr_select_custom_level_menu()
 {
 	R = 4;
 	C = clamp(floor(global.select_level_index/R), 0, floor(ds_list_size(global.all_loaded_custom_levels)))
+	scroll_to = clamp(C, 0, ds_list_size(global.all_loaded_custom_levels-2/R));
+	lerp_on = true;
 	
 	#region /*Navigate Menu*/
 	
@@ -26,8 +28,6 @@ function scr_select_custom_level_menu()
 			{
 				menu_delay = 3;
 				global.select_level_index -= clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
-				scroll_to = clamp(C-1, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
-				lerp_on = true;
 			}
 		}
 	}
@@ -56,8 +56,6 @@ function scr_select_custom_level_menu()
 			{
 				menu_delay = 3;
 				global.select_level_index += clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
-				scroll_to = clamp(C+1, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
-				lerp_on = true;
 			}
 		}
 	}
@@ -836,10 +834,12 @@ function scr_select_custom_level_menu()
 		draw_set_valign(fa_center);
 		
 		var _key = keyboard_lastchar;
-		if (ord(_key) != ord("/"))
+		if (ord(_key) != ord("\\"))
+		and (ord(_key) != ord("/"))
 		and (ord(_key) != ord(":"))
 		and (ord(_key) != ord("*"))
 		and (ord(_key) != ord("?"))
+		and (ord(_key) != ord("\""))
 		and (ord(_key) != ord("<"))
 		and (ord(_key) != ord(">"))
 		and (ord(_key) != ord("|"))

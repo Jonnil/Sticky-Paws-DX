@@ -13755,310 +13755,343 @@ and(global.pause=false)
 	and(global.automatically_pause_when_window_is_unfocused = true)
 	{
 	
-	#region /*Show all HUD elements*/
-	global.hud_show_lives=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
+		#region /*Show all HUD elements*/
+		global.hud_show_lives=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
 		{
-			hud_show_lives_timer=global.hud_hide_time;
-		}
-	}
-	global.hud_show_basic_collectibles=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_basic_collectibles_timer=global.hud_hide_time;
-		}
-	}
-	global.hud_show_big_collectibles=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_big_collectibles_timer=global.hud_hide_time;
-		}
-	}
-	#endregion /*Show all HUD elements END*/
-
-	controller_connected=false;
-	if (global.play_edited_level = true)
-	and(global.actually_play_edited_level = false)
-	and(global.character_select_in_this_menu = "level_editor")
-	{
-		global.play_edited_level = false;
-		global.actually_play_edited_level = false;
-		score=0;
-
-	#region /*Save Level Information when in level editor*/
-	if (global.select_level_index>0)
-	and (global.character_select_in_this_menu = "level_editor")
-	{
-		ini_open(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
-		ini_write_real("info","view_xview",camera_get_view_x(view_camera[view_current]));
-		ini_write_real("info","view_yview",camera_get_view_y(view_camera[view_current]));
-		ini_close();
-	}
-	#endregion /*Save Level Information when in level editor END*/
-
-	room_restart();
-	}
-	else
-	{
-		global.pause_player=0;
-		if (global.goal_active=false)
-		{
-			if (asset_get_type("room_pause")==asset_room)
+			with(obj_camera)
 			{
-				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
-				room_persistent = true;
-				global.pause_room = room;
-				audio_pause_all();
-				room_goto(room_pause);
-			}
-			else
-			{
-				audio_pause_all();
-				if (asset_get_type("obj_pause") == asset_object)
-				and(!instance_exists(obj_pause))
-				{
-					global.pause=true;
-					pause_hspeed = hspeed;
-					pause_vspeed = vspeed;
-					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
-				}
+				hud_show_lives_timer = global.hud_hide_time*60;
 			}
 		}
-	}
-}
-
-else
-if (gamepad_button_check_pressed(1,gp_start))
-or(gamepad_button_check_pressed(1,gp_select))
-{
-
-	#region /*Show all HUD elements*/
-	global.hud_show_lives=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
+		global.hud_show_deaths=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
 		{
-			hud_show_lives_timer=global.hud_hide_time;
+			with(obj_camera)
+			{
+				hud_show_deaths_timer = global.hud_hide_time*60;
+			}
 		}
-	}
-	global.hud_show_basic_collectibles=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
+		global.hud_show_basic_collectibles=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
 		{
-			hud_show_basic_collectibles_timer=global.hud_hide_time;
+			with(obj_camera)
+			{
+				hud_show_basic_collectibles_timer = global.hud_hide_time*60;
+			}
 		}
-	}
-	global.hud_show_big_collectibles=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
+		global.hud_show_big_collectibles=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
 		{
-			hud_show_big_collectibles_timer=global.hud_hide_time;
+			with(obj_camera)
+			{
+				hud_show_big_collectibles_timer = global.hud_hide_time*60;
+			}
 		}
-	}
-	#endregion /*Show all HUD elements END*/
+		#endregion /*Show all HUD elements END*/
 
-	if (global.play_edited_level = true)
-	and(global.actually_play_edited_level = false)
-	and(global.character_select_in_this_menu = "level_editor")
-	{
-		global.play_edited_level = false;
-		global.actually_play_edited_level = false;
-		score=0;
+		controller_connected=false;
+		if (global.play_edited_level = true)
+		and(global.actually_play_edited_level = false)
+		and(global.character_select_in_this_menu = "level_editor")
+		{
+			global.play_edited_level = false;
+			global.actually_play_edited_level = false;
+			score=0;
+
+		#region /*Save Level Information when in level editor*/
+		if (global.select_level_index>0)
+		and (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_open(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
+			ini_write_real("info","view_xview",camera_get_view_x(view_camera[view_current]));
+			ini_write_real("info","view_yview",camera_get_view_y(view_camera[view_current]));
+			ini_close();
+		}
+		#endregion /*Save Level Information when in level editor END*/
+
 		room_restart();
-	}
-	else
-	{
-		global.pause_player=1;
-		if (global.goal_active=false)
+		}
+		else
 		{
-			if (asset_get_type("room_pause")==asset_room)
+			global.pause_player=0;
+			if (global.goal_active=false)
 			{
-				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
-				room_persistent = true;
-				global.pause_room = room;
-				audio_pause_all();
-				room_goto(room_pause);
-			}
-			else
-			{
-				audio_pause_all();
-				if (asset_get_type("obj_pause") == asset_object)
-				and(!instance_exists(obj_pause))
+				if (asset_get_type("room_pause")==asset_room)
 				{
-					global.pause=true;
-					pause_hspeed = hspeed;
-					pause_vspeed = vspeed;
-					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+					global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+					room_persistent = true;
+					global.pause_room = room;
+					audio_pause_all();
+					room_goto(room_pause);
+				}
+				else
+				{
+					audio_pause_all();
+					if (asset_get_type("obj_pause") == asset_object)
+					and(!instance_exists(obj_pause))
+					{
+						global.pause=true;
+						pause_hspeed = hspeed;
+						pause_vspeed = vspeed;
+						instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+					}
 				}
 			}
 		}
 	}
-}
-
-else
-if (gamepad_button_check_pressed(2,gp_start))
-or(gamepad_button_check_pressed(2,gp_select))
-{
-
-	#region /*Show all HUD elements*/
-	global.hud_show_lives=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_lives_timer=global.hud_hide_time;
-		}
-	}
-	global.hud_show_basic_collectibles=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_basic_collectibles_timer=global.hud_hide_time;
-		}
-	}
-	global.hud_show_big_collectibles=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_big_collectibles_timer=global.hud_hide_time;
-		}
-	}
-	#endregion /*Show all HUD elements END*/
-
-	if (global.play_edited_level = true)
-	and(global.actually_play_edited_level = false)
-	and(global.character_select_in_this_menu = "level_editor")
-	{
-		global.play_edited_level = false;
-		global.actually_play_edited_level = false;
-		score=0;
-		room_restart();
-	}
 	else
+	if (gamepad_button_check_pressed(1,gp_start))
+	or(gamepad_button_check_pressed(1,gp_select))
 	{
-		global.pause_player=2;
-		if (global.goal_active=false)
+
+		#region /*Show all HUD elements*/
+		global.hud_show_lives=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
 		{
-			if (asset_get_type("room_pause")==asset_room)
+			with(obj_camera)
 			{
-				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
-				room_persistent = true;
-				global.pause_room = room;
-				audio_pause_all();
-				room_goto(room_pause);
+				hud_show_lives_timer = global.hud_hide_time*60;
 			}
-			else
+		}
+		global.hud_show_deaths=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
 			{
-				audio_pause_all();
-				if (asset_get_type("obj_pause") == asset_object)
-				and(!instance_exists(obj_pause))
+				hud_show_deaths_timer = global.hud_hide_time*60;
+			}
+		}
+		global.hud_show_basic_collectibles=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				hud_show_basic_collectibles_timer = global.hud_hide_time*60;
+			}
+		}
+		global.hud_show_big_collectibles=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				hud_show_big_collectibles_timer = global.hud_hide_time*60;
+			}
+		}
+		#endregion /*Show all HUD elements END*/
+
+		if (global.play_edited_level = true)
+		and(global.actually_play_edited_level = false)
+		and(global.character_select_in_this_menu = "level_editor")
+		{
+			global.play_edited_level = false;
+			global.actually_play_edited_level = false;
+			score=0;
+			room_restart();
+		}
+		else
+		{
+			global.pause_player=1;
+			if (global.goal_active=false)
+			{
+				if (asset_get_type("room_pause")==asset_room)
 				{
-					global.pause=true;
-					pause_hspeed = hspeed;
-					pause_vspeed = vspeed;
-					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+					global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+					room_persistent = true;
+					global.pause_room = room;
+					audio_pause_all();
+					room_goto(room_pause);
+				}
+				else
+				{
+					audio_pause_all();
+					if (asset_get_type("obj_pause") == asset_object)
+					and(!instance_exists(obj_pause))
+					{
+						global.pause=true;
+						pause_hspeed = hspeed;
+						pause_vspeed = vspeed;
+						instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+					}
 				}
 			}
 		}
 	}
-}
-
-else
-if (gamepad_button_check_pressed(3,gp_start))
-or(gamepad_button_check_pressed(3,gp_select))
-{
-
-	#region /*Show all HUD elements*/
-	global.hud_show_lives=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_lives_timer=global.hud_hide_time;
-		}
-	}
-	global.hud_show_basic_collectibles=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_basic_collectibles_timer=global.hud_hide_time;
-		}
-	}
-	global.hud_show_big_collectibles=true;
-	if (asset_get_type("obj_camera")==asset_object)
-	and(instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_big_collectibles_timer=global.hud_hide_time;
-		}
-	}
-	#endregion /*Show all HUD elements END*/
-
-	if (global.play_edited_level = true)
-	and(global.actually_play_edited_level = false)
-	and(global.character_select_in_this_menu = "level_editor")
-	{
-		global.play_edited_level = false;
-		global.actually_play_edited_level = false;
-		score=0;
-		room_restart();
-	}
 	else
+	if (gamepad_button_check_pressed(2,gp_start))
+	or(gamepad_button_check_pressed(2,gp_select))
 	{
-		global.pause_player=3;
-		if (global.goal_active=false)
+
+		#region /*Show all HUD elements*/
+		global.hud_show_lives=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
 		{
-			if (asset_get_type("room_pause")==asset_room)
+			with(obj_camera)
 			{
-				global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
-				room_persistent = true;
-				global.pause_room = room;
-				audio_pause_all();
-				room_goto(room_pause);
+				hud_show_lives_timer = global.hud_hide_time*60;
 			}
-			else
+		}
+		global.hud_show_deaths=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
 			{
-				audio_pause_all();
-				if (asset_get_type("obj_pause") == asset_object)
-				and(!instance_exists(obj_pause))
+				hud_show_deaths_timer = global.hud_hide_time*60;
+			}
+		}
+		global.hud_show_basic_collectibles=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				hud_show_basic_collectibles_timer = global.hud_hide_time*60;
+			}
+		}
+		global.hud_show_big_collectibles=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				hud_show_big_collectibles_timer = global.hud_hide_time*60;
+			}
+		}
+		#endregion /*Show all HUD elements END*/
+
+		if (global.play_edited_level = true)
+		and(global.actually_play_edited_level = false)
+		and(global.character_select_in_this_menu = "level_editor")
+		{
+			global.play_edited_level = false;
+			global.actually_play_edited_level = false;
+			score=0;
+			room_restart();
+		}
+		else
+		{
+			global.pause_player=2;
+			if (global.goal_active=false)
+			{
+				if (asset_get_type("room_pause")==asset_room)
 				{
-					global.pause=true;
-					pause_hspeed = hspeed;
-					pause_vspeed = vspeed;
-					instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+					global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+					room_persistent = true;
+					global.pause_room = room;
+					audio_pause_all();
+					room_goto(room_pause);
+				}
+				else
+				{
+					audio_pause_all();
+					if (asset_get_type("obj_pause") == asset_object)
+					and(!instance_exists(obj_pause))
+					{
+						global.pause=true;
+						pause_hspeed = hspeed;
+						pause_vspeed = vspeed;
+						instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+					}
 				}
 			}
 		}
 	}
-}
-else
-{
-	room_persistent=false;
-}
-#endregion /*Pause End*/
+	else
+	if (gamepad_button_check_pressed(3,gp_start))
+	or(gamepad_button_check_pressed(3,gp_select))
+	{
+
+		#region /*Show all HUD elements*/
+		global.hud_show_lives=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				hud_show_lives_timer = global.hud_hide_time*60;
+			}
+		}
+		global.hud_show_deaths=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				hud_show_deaths_timer = global.hud_hide_time*60;
+			}
+		}
+		global.hud_show_basic_collectibles=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				hud_show_basic_collectibles_timer = global.hud_hide_time*60;
+			}
+		}
+		global.hud_show_big_collectibles=true;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				hud_show_big_collectibles_timer = global.hud_hide_time*60;
+			}
+		}
+		#endregion /*Show all HUD elements END*/
+
+		if (global.play_edited_level = true)
+		and(global.actually_play_edited_level = false)
+		and(global.character_select_in_this_menu = "level_editor")
+		{
+			global.play_edited_level = false;
+			global.actually_play_edited_level = false;
+			score=0;
+			room_restart();
+		}
+		else
+		{
+			global.pause_player=3;
+			if (global.goal_active=false)
+			{
+				if (asset_get_type("room_pause")==asset_room)
+				{
+					global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+					room_persistent = true;
+					global.pause_room = room;
+					audio_pause_all();
+					room_goto(room_pause);
+				}
+				else
+				{
+					audio_pause_all();
+					if (asset_get_type("obj_pause") == asset_object)
+					and(!instance_exists(obj_pause))
+					{
+						global.pause=true;
+						pause_hspeed = hspeed;
+						pause_vspeed = vspeed;
+						instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		room_persistent=false;
+	}
+	#endregion /*Pause End*/
 
 #region /*Go Left*/
 if (key_left)
@@ -17239,7 +17272,7 @@ if (asset_get_type("obj_invincibility_powerup")==asset_object)
 		{
 			with(obj_camera)
 			{
-				hud_show_score_timer=global.hud_hide_time;
+				hud_show_score_timer = global.hud_hide_time*60;
 			}
 		}
 		if (asset_get_type("obj_scoreup")==asset_object)
@@ -17294,7 +17327,7 @@ else
 		{
 			with(obj_camera)
 			{
-				hud_show_score_timer=global.hud_hide_time;
+				hud_show_score_timer = global.hud_hide_time*60;
 			}
 		}
 		if (global.time_countdown_bonus>3)

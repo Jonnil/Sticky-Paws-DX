@@ -12,6 +12,7 @@ global.character_color_select=false; /*If this is true, you can choose the chara
 global.select_number_of_players_before_selecting_characters=false; /*If you should select how many players are going to play before you select what character to play as*/
 global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters! 1 = default*/
 global.max_number_of_official_resourcepacks = 1; /*Update this whenever you add more official resource packs! 1 = default*/
+global.max_number_of_official_title_backgrounds = 1; /*Update this whenever you add more official title backgrounds! 1 = default*/
 
 #region /*What settings tabs to show up*/
 global.show_language_shortcut=false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
@@ -74,6 +75,7 @@ global.custom_level_load_delay = 0; /*How many frames each custom level takes to
 #region /*Show HUD Global Variables*/
 global.hud_hide_time = 3;
 global.hud_show_lives = true;
+global.hud_show_deaths = true;
 global.hud_show_basic_collectibles = false;
 global.hud_show_big_collectibles = false;
 global.hud_show_score = false;
@@ -171,6 +173,7 @@ global.sprite_select_player_2=noone;
 global.sprite_select_player_3=noone;
 global.sprite_select_player_4=noone;
 global.selected_resourcepack = 0; /*0 = default*/
+global.selected_title_background = 0; /*0 = default*/
 //global.spot_x=0;
 //global.spot_y=0;
 

@@ -45,6 +45,7 @@ function scr_config_load()
 		if (ini_key_exists("config","enable_foreground_layer2")){global.enable_foreground_layer2 = ini_read_real("config","enable_foreground_layer2",0);}
 		if (ini_key_exists("config","enable_transitions")){global.enable_transitions = ini_read_real("config","enable_transitions",0);}
 		if (ini_key_exists("config","selected_resourcepack")){global.selected_resourcepack = ini_read_real("config","selected_resourcepack",0);}
+		if (ini_key_exists("config","selected_title_background")){global.selected_title_background = ini_read_real("config","selected_title_background",0);}
 		
 		#region /*Load Player 1 Keyboard Remapping*/
 		if (ini_key_exists("config","character_for_player_1")){global.character_for_player_1 = ini_read_real("config","character_for_player_1",0);}

@@ -368,8 +368,9 @@ if (asset_get_type("obj_level") == asset_object)
 
 #region /*Hide all HUD elements*/
 global.hud_show_lives = true;
-global.hud_show_coins = false;
-global.hud_show_starcoins = false;
+global.hud_show_deaths = true;
+global.hud_show_basic_collectibles = false;
+global.hud_show_big_collectibles = false;
 global.hud_show_score = false;
 #endregion /*Hide all HUD elements END*/
 

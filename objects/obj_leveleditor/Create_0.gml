@@ -31,7 +31,7 @@ and(!instance_exists(obj_foreground2))
 if (asset_get_type("obj_level_height")==asset_object)
 and(!instance_exists(obj_level_height))
 {
-	instance_create_depth(0,1080,0,obj_level_height);
+	instance_create_depth(0,1104,0,obj_level_height);
 }
 if (asset_get_type("obj_level_width")==asset_object)
 and(!instance_exists(obj_level_width))

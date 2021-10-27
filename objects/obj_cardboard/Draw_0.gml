@@ -138,7 +138,7 @@ if (brick_particle=false)
 			{
 				with(obj_camera)
 				{
-					hud_show_score_timer=global.hud_hide_time;
+					hud_show_score_timer = global.hud_hide_time*60;
 				}
 			}
 			
@@ -213,7 +213,7 @@ if (brick_particle=false)
 			{
 				with(obj_camera)
 				{
-					hud_show_score_timer=global.hud_hide_time;
+					hud_show_score_timer = global.hud_hide_time*60;
 				}
 			}
 			

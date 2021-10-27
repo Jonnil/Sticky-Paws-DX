@@ -108,16 +108,18 @@ view_hview_lerp = 0;
 #endregion /*Smooth the camera out even more END*/
 
 #region /*Hud Variables*/
-hud_show_lives=-32;
-hud_show_lives_timer=-32;
-hud_show_basic_collectibles=-32;
-hud_show_basic_collectibles_timer=-32;
-hud_show_big_collectibles=-32;
-hud_show_big_collectibles_timer=-32;
-hud_show_score=-32;
-hud_show_score_timer=0;
-hud_show_time=-32;
-hud_show_time_timer=0;
+hud_show_lives = -32;
+hud_show_lives_timer = global.hud_hide_time*60;
+hud_show_deaths = -32;
+hud_show_deaths_timer = global.hud_hide_time*60;
+hud_show_basic_collectibles = -32;
+hud_show_basic_collectibles_timer = 0;
+hud_show_big_collectibles = -32;
+hud_show_big_collectibles_timer = 0;
+hud_show_score = -32;
+hud_show_score_timer = 0;
+hud_show_time = -32;
+hud_show_time_timer = 0;
 #endregion /*Hud Variables END*/
 
 player_has_spawned=false;

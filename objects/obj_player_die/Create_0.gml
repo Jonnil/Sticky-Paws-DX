@@ -24,12 +24,22 @@ if (bubble=false)
 	global.lives_until_assist+=1;
 }
 player=1;
-global.hud_show_lives=true;
-if (instance_number(obj_camera)>0)
+global.hud_show_lives = true;
+if (asset_get_type("obj_camera") == asset_object)
+and (instance_exists(obj_camera))
 {
 	with(obj_camera)
 	{
-		hud_show_lives_timer=global.hud_hide_time;
+		hud_show_lives_timer = global.hud_hide_time*60;
+	}
+}
+global.hud_show_deaths = true;
+if (asset_get_type("obj_camera") == asset_object)
+and(instance_exists(obj_camera))
+{
+	with(obj_camera)
+	{
+		hud_show_deaths_timer = global.hud_hide_time*60;
 	}
 }
 

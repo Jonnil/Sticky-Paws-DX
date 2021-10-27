@@ -68,137 +68,33 @@ if (!directory_exists(working_directory+"/custom_resourcepacks"))
 }
 #endregion /*Create directory for saving custom resourcepacks END*/
 
+#region /*Create directory for saving custom title backgrounds*/
+if (!directory_exists(working_directory+"/custom_title_backgrounds"))
+{
+	directory_create(working_directory+"/custom_title_backgrounds");
+}
+#endregion /*Create directory for saving custom title backgrounds END*/
+
 #endregion /*Create directories END*/
 
 #region /*Custom Title Screen Background*/
-if (file_exists(working_directory + "/title_screen_background.png"))
+if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background)+".png"))
 {
-	title_screen_background = sprite_add(working_directory + "/title_screen_background.png", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
+	title_screen_background = sprite_add("title_backgrounds/title_background" + string(global.selected_title_background)+".png", 1, false, false, 0, 0);
 }
 else
-if (file_exists(working_directory + "/screen_background.png"))
+if (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png"))
 {
-	title_screen_background = sprite_add(working_directory + "/screen_background.png", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/title_background.png"))
-{
-	title_screen_background = sprite_add(working_directory + "/title_background.png", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/title_screen.png"))
-{
-	title_screen_background = sprite_add(working_directory + "/title_screen.png", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/title.png"))
-{
-	title_screen_background = sprite_add(working_directory + "/title.png", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/screen.png"))
-{
-	title_screen_background = sprite_add(working_directory + "/screen.png", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/background.png"))
-{
-	title_screen_background = sprite_add(working_directory + "/background.png", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/title_screen_background.jpg"))
-{
-	title_screen_background = sprite_add(working_directory + "/title_screen_background.jpg", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/screen_background.jpg"))
-{
-	title_screen_background = sprite_add(working_directory + "/screen_background.jpg", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/title_background.jpg"))
-{
-	title_screen_background = sprite_add(working_directory + "/title_background.jpg", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/title_screen.jpg"))
-{
-	title_screen_background = sprite_add(working_directory + "/title_screen.jpg", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/title.jpg"))
-{
-	title_screen_background = sprite_add(working_directory + "/title.jpg", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/screen.jpg"))
-{
-	title_screen_background = sprite_add(working_directory + "/screen.jpg", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
-}
-else
-if (file_exists(working_directory + "/background.jpg"))
-{
-	title_screen_background = sprite_add(working_directory + "/background.jpg", 0, false, false, 0, 0);
-	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-	{
-		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
-	}
+	title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png", 1, false, false, 0, 0);
 }
 else
 {
 	title_screen_background = noone;
+}
+
+if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
+{
+	layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
 }
 #endregion /*Custom Title Screen Background*/
 
@@ -278,8 +174,9 @@ can_input_level_name = false;
 
 #region /*Hide certain HUD elements*/
 global.hud_show_lives=true;
-global.hud_show_coins=false;
-global.hud_show_starcoins=false;
+global.hud_show_deaths=false;
+global.hud_show_basic_collectibles=false;
+global.hud_show_big_collectibles=false;
 global.hud_show_score=false;
 #endregion /*Hide certain HUD elements END*/
 
