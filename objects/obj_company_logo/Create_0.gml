@@ -12,7 +12,7 @@ global.character_color_select=false; /*If this is true, you can choose the chara
 global.select_number_of_players_before_selecting_characters=false; /*If you should select how many players are going to play before you select what character to play as*/
 global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters! 1 = default*/
 global.max_number_of_official_resourcepacks = 1; /*Update this whenever you add more official resource packs! 1 = default*/
-global.max_number_of_official_title_backgrounds = 1; /*Update this whenever you add more official title backgrounds! 1 = default*/
+global.max_number_of_official_title_backgrounds = 2; /*Update this whenever you add more official title backgrounds! 1 = default, but more title backgrounds can be added, for example: 1 = light theme, 2 = dark theme*/
 
 #region /*What settings tabs to show up*/
 global.show_language_shortcut=false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
@@ -468,6 +468,8 @@ if (asset_get_type("scr_config_load")==asset_script)
 #endregion /*Load Config END*/
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
+global.resourcepack_sprite_title_logo = noone;
+global.resourcepack_sprite_title_logo_christmas = noone;
 global.resourcepack_sprite_basic_collectible = spr_wall;
 global.resourcepack_sprite_big_collectible = spr_wall;
 global.resourcepack_sprite_bullet = spr_wall;

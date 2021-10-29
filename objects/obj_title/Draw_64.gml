@@ -170,34 +170,46 @@ and(current_day<=26)
 and(current_month=12)
 {
 	effect_create_below(ef_snow,0,0,2,c_white); /*Make the title screen snow when it's between 24th and 26th December*/
-	if (asset_get_type("spr_title_christmas")==asset_sprite)
+	if (global.resourcepack_sprite_title_logo_christmas > noone)
 	{
-		title_logo_index = spr_title_christmas;
+		title_logo_index = global.resourcepack_sprite_title_logo_christmas;
 	}
 	else
-	if (asset_get_type("spr_title")==asset_sprite)
+	if (global.resourcepack_sprite_title_logo > noone)
 	{
-		title_logo_index = spr_title;
+		title_logo_index = global.resourcepack_sprite_title_logo;
+	}
+	else
+	{
+		title_logo_index = spr_wall;
 	}
 }
 else
 if (current_month=12)
 {
-	if (asset_get_type("spr_title_christmas")==asset_sprite)
+	if (global.resourcepack_sprite_title_logo_christmas > noone)
 	{
-		title_logo_index = spr_title_christmas;
+		title_logo_index = global.resourcepack_sprite_title_logo_christmas;
 	}
 	else
-	if (asset_get_type("spr_title")==asset_sprite)
+	if (global.resourcepack_sprite_title_logo > noone)
 	{
-		title_logo_index = spr_title;
+		title_logo_index = global.resourcepack_sprite_title_logo;
+	}
+	else
+	{
+		title_logo_index = spr_wall;
 	}
 }
 else
 {
-	if (asset_get_type("spr_title")==asset_sprite)
+	if (global.resourcepack_sprite_title_logo > noone)
 	{
-		title_logo_index = spr_title;
+		title_logo_index = global.resourcepack_sprite_title_logo;
+	}
+	else
+	{
+		title_logo_index = spr_wall;
 	}
 }
 #endregion /*Change the logo to different designs during specific times and dates END*/
@@ -393,14 +405,10 @@ if (global.demo=true)
 #endregion /*Demo Version Text END*/
 
 #region /*Draw Title Screen*/
-if (title_logo_index>noone)
+if (global.resourcepack_sprite_title_logo > 0)
+or (global.resourcepack_sprite_title_logo_christmas > 0)
 {
-	draw_sprite_ext(title_logo_index,image_index,
-	window_get_width()/2,
-	window_get_height()/2-100+title_y,
-	window_get_height()/1080,
-	window_get_height()/1080,
-	0,c_white,title_alpha);
+	draw_sprite_ext(title_logo_index, image_index, window_get_width()/2, window_get_height()/2-100+title_y, window_get_height()/1080, window_get_height()/1080, 0, c_white, title_alpha);
 }
 
 if (menu!="select_custom_level")

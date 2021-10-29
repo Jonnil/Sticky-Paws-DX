@@ -228,9 +228,9 @@ and(menu != "remap_save")
 #endregion /*Which player is controling the pause menu? END*/
 
 #region /*Games Logo in top left corner*/
-if asset_get_type("spr_title") == asset_sprite
+if (global.resourcepack_sprite_title_logo > noone)
 {
-	draw_sprite_ext(spr_title, 0, 100, 70, 0.3, 0.3, 0, c_white, 1);
+	draw_sprite_ext(global.resourcepack_sprite_title_logo, 0, 100, 70, 0.3, 0.3, 0, c_white, 1);
 }
 #endregion /*Games Logo in top left corner END*/
 

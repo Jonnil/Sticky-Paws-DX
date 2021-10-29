@@ -6483,6 +6483,8 @@ function scr_options_menu()
 		#region /*Custom Title Background*/
 		draw_text_outlined(resource_pack_x,20+(40*6),"Title Background: "+string(global.selected_title_background),global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 		
+		draw_text_outlined(resource_pack_x,20+(40*7),string(global.selected_title_background)+" - "+string(global.max_number_of_official_title_backgrounds)+" = "+string(global.selected_title_background-global.max_number_of_official_title_backgrounds),global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
+		
 		if (global.selected_title_background > 0)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x-32, 20+(40*6), 0.5, 0.5, 0, c_white, 1);
@@ -6494,8 +6496,8 @@ function scr_options_menu()
 			}
 		}
 		
-		if (file_exists("title_backgrounds/title_background"+string(global.selected_title_background+1)+".png"))
-		or (file_exists(working_directory+"/custom_title_backgrounds/title_background"+string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1)+".png"))
+		if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background+1)+".png"))
+		or (file_exists(working_directory+"/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1)+".png"))
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x+resource_pack_right_arrow_x, 20+(40*6), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x+resource_pack_right_arrow_x-16, 20+(40*6)-16, resource_pack_x+resource_pack_right_arrow_x+16, 20+(40*6)+16))
@@ -6542,7 +6544,6 @@ function scr_options_menu()
 				layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
 			}
 		}
-		else
 		if (key_right)
 		and (menu = "title_backgrounds")
 		or (mouse_check_button_pressed(mb_left))
@@ -6551,10 +6552,10 @@ function scr_options_menu()
 			menu = "title_backgrounds";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
-			and (file_exists("/title_backgrounds/title_background"+string(global.selected_title_background+1)+".png"))
+			and (file_exists("title_backgrounds/title_background" + string(global.selected_title_background+1)+".png"))
 			or (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
-			and (file_exists(working_directory+"/custom_title_backgrounds/title_background"+string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1)+".png"))
+			and (file_exists(working_directory+"/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1)+".png"))
 			{
 				global.selected_title_background += 1;
 				menu_delay = 3;

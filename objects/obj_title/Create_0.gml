@@ -797,7 +797,7 @@ menu_cursor_y_position=0;
 background_brightness_menu_lerp = 0;
 title_y = -800;
 title_alpha = 0;
-title_logo_index = noone;
+title_logo_index = spr_wall;
 show_title_logo = true;
 
 darken_settings_alpha = 0;
