@@ -1466,17 +1466,19 @@ function scr_options_menu()
 		difficulty_settings_y = 98;
 		automatically_pause_when_window_is_unfocused_settings_y = 164;
 		show_timer_settings_y = 164+(48);
-		show_tutorial_signs_y = 164+(48*2);
-		hud_hide_time_y = 164+(48*4)-16;
-		custom_level_load_delay_settings_y = 164+(48*6)-16;
-		activate_cheats_y = 164+(48*7);
-		enable_enemies_y = 164+(48*9);
-		enable_spikes_y = 164+(48*10);
+		show_deaths_counter_settings_y = 164+(48*2);
+		show_tutorial_signs_y = 164+(48*3);
+		hud_hide_time_y = 164+(48*5)-16;
+		custom_level_load_delay_settings_y = 164+(48*7)-16;
+		activate_cheats_y = 164+(48*8);
+		enable_enemies_y = 164+(48*10);
+		enable_spikes_y = 164+(48*11);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
 		draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y,"Automatically Pause When Window Is Unfocused","automatically_pause_when_window_is_unfocused_settings",global.automatically_pause_when_window_is_unfocused); /*Automatically Pause When Window Is Unfocused*/
 		draw_menu_checkmark(380, show_timer_settings_y,"Show Timer","show_timer_settings",global.show_timer); /*Show Timer*/
+		draw_menu_checkmark(380, show_deaths_counter_settings_y,"Show Deaths Counter","show_deaths_counter_settings",global.show_deaths_counter); /*Show Deaths Counter*/
 		draw_menu_checkmark(380, show_tutorial_signs_y,"Show Tutorial Signs","show_tutorial_signs",global.show_tutorial_signs); /*Show Tutorial Signs*/
 		draw_menu_checkmark(380, activate_cheats_y, "Activate Cheats", "activate_cheats", global.activate_cheats);
 		draw_text_outlined(450, activate_cheats_y + 50, "The game is meant to be played without Cheats.", global.default_text_size*0.75, c_menu_outline, c_menu_fill, 1);
@@ -6483,8 +6485,6 @@ function scr_options_menu()
 		#region /*Custom Title Background*/
 		draw_text_outlined(resource_pack_x,20+(40*6),"Title Background: "+string(global.selected_title_background),global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 		
-		draw_text_outlined(resource_pack_x,20+(40*7),string(global.selected_title_background)+" - "+string(global.max_number_of_official_title_backgrounds)+" = "+string(global.selected_title_background-global.max_number_of_official_title_backgrounds),global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
-		
 		if (global.selected_title_background > 0)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x-32, 20+(40*6), 0.5, 0.5, 0, c_white, 1);
@@ -6682,6 +6682,25 @@ function scr_options_menu()
 		{
 			menu_delay = 3;
 			menu = "automatically_pause_when_window_is_unfocused_settings";
+		}
+		else
+		if (key_down)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "show_deaths_counter_settings";
+		}
+	}
+	else
+	if (menu = "show_deaths_counter_settings")
+	{
+		if (key_up)
+		and (open_dropdown = false)
+		and(menu_delay = 0)
+		{
+			menu_delay = 3;
+			menu = "show_timer_settings";
 		}
 		else
 		if (key_down)
@@ -8090,6 +8109,7 @@ function scr_options_menu()
 		
 		if (menu="automatically_pause_when_window_is_unfocused_settings")and(menu_delay= 0){if (global.automatically_pause_when_window_is_unfocused=true){global.automatically_pause_when_window_is_unfocused=false;}else{global.automatically_pause_when_window_is_unfocused=true;}menu_delay = 3;}
 		if (menu="show_timer_settings")and(menu_delay= 0){if (global.show_timer=true){global.show_timer=false;}else{global.show_timer=true;}menu_delay = 3;}
+		if (menu="show_deaths_counter_settings")and(menu_delay= 0){if (global.show_deaths_counter=true){global.show_deaths_counter=false;}else{global.show_deaths_counter=true;}menu_delay = 3;}
 		if (menu="show_tutorial_signs")and(menu_delay= 0){if (global.show_tutorial_signs=true){global.show_tutorial_signs=false;}else{global.show_tutorial_signs=true;}menu_delay = 3;}
 		if (menu="activate_cheats")and(menu_delay= 0){if (global.activate_cheats=true){global.activate_cheats=false;}else{global.activate_cheats=true;}menu_delay = 3;}
 		if (menu="enable_enemies")and(menu_delay= 0)and (global.activate_cheats=true){if (global.enable_enemies=true){global.enable_enemies=false;}else{global.enable_enemies=true;}menu_delay = 3;}

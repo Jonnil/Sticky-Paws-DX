@@ -20,7 +20,10 @@ and (!instance_exists(obj_title))
 	if (global.hud_hide_time >= 10)
 	{
 		global.hud_show_lives = true;
-		global.hud_show_deaths = true;
+		if (global.show_deaths_counter = true)
+		{
+			global.hud_show_deaths = true;
+		}
 		global.hud_show_big_collectibles = true;
 		global.hud_show_basic_collectibles = true;
 		global.hud_show_score = true;
@@ -30,7 +33,10 @@ and (!instance_exists(obj_title))
 	if (global.hud_hide_time >= 10)
 	{
 		global.hud_show_lives = true;
-		global.hud_show_deaths = true;
+		if (global.show_deaths_counter = true)
+		{
+			global.hud_show_deaths = true;
+		}
 		global.hud_show_basic_collectibles = true;
 		global.hud_show_big_collectibles = true;
 		global.hud_show_score = true;
@@ -108,6 +114,7 @@ and (!instance_exists(obj_title))
 		
 		#region /*Show Deaths*/
 		if (global.hud_show_deaths = true)
+		and (global.show_deaths_counter = true)
 		{
 			if (hud_show_lives > 0)
 			{
@@ -129,6 +136,7 @@ and (!instance_exists(obj_title))
 		{
 			if (hud_show_lives > 0)
 			and (hud_show_deaths > 0)
+			and (global.show_deaths_counter = true)
 			{
 				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 110, 0.1);
 			}
@@ -137,6 +145,7 @@ and (!instance_exists(obj_title))
 			and (hud_show_deaths < 0)
 			or (hud_show_lives < 0)
 			and (hud_show_deaths > 0)
+			and (global.show_deaths_counter = true)
 			{
 				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 70, 0.1);
 			}
@@ -156,6 +165,7 @@ and (!instance_exists(obj_title))
 		{
 			if (hud_show_lives > 0)
 			and (hud_show_deaths > 0)
+			and (global.show_deaths_counter = true)
 			and (hud_show_big_collectibles > 0)
 			{
 				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 150, 0.1);
@@ -163,12 +173,14 @@ and (!instance_exists(obj_title))
 			else
 			if (hud_show_lives < 0)
 			and (hud_show_deaths > 0)
+			and (global.show_deaths_counter = true)
 			and (hud_show_big_collectibles > 0)
 			or (hud_show_lives > 0)
 			and (hud_show_deaths < 0)
 			and (hud_show_big_collectibles > 0)
 			or (hud_show_lives > 0)
 			and (hud_show_deaths > 0)
+			and (global.show_deaths_counter = true)
 			and (hud_show_big_collectibles < 0)
 			{
 				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 110, 0.1);
@@ -179,6 +191,7 @@ and (!instance_exists(obj_title))
 			and (hud_show_big_collectibles < 0)
 			or (hud_show_lives < 0)
 			and (hud_show_deaths > 0)
+			and (global.show_deaths_counter = true)
 			and (hud_show_big_collectibles < 0)
 			or (hud_show_lives < 0)
 			and (hud_show_deaths < 0)
@@ -260,13 +273,16 @@ and (!instance_exists(obj_title))
 		#endregion /*Lives END*/
 		
 		#region /*Death Counter*/
-		if (asset_get_type("spr_1up") == asset_sprite)
+		if (global.show_deaths_counter = true)
 		{
-			draw_sprite_ext(spr_1up, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
+			if (asset_get_type("spr_1up") == asset_sprite)
+			{
+				draw_sprite_ext(spr_1up, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
+			}
+			draw_line_width_color(32-16, hud_show_deaths-16, 32+16, hud_show_deaths+16, 3, c_red, c_red);
+			draw_line_width_color(32-16, hud_show_deaths+16, 32+16, hud_show_deaths-16, 3, c_red, c_red);
+			draw_text_outlined(64, hud_show_deaths, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 		}
-		draw_line_width_color(32-16, hud_show_deaths-16, 32+16, hud_show_deaths+16, 3, c_red, c_red);
-		draw_line_width_color(32-16, hud_show_deaths+16, 32+16, hud_show_deaths-16, 3, c_red, c_red);
-		draw_text_outlined(64, hud_show_deaths, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 		#endregion /*Death Counter END*/
 		
 		#region /*Big Collectibles*/

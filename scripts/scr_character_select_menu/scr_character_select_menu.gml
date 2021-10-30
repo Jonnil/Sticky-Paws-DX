@@ -454,7 +454,7 @@ function scr_character_select_menu()
 			
 				#region /*Key Right*/
 				if (file_exists("characters/character"+string(global.character_for_player_1+1)+"/data/character_config.ini"))
-				or (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_1+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
+				or (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_1+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
 				{
 					if (gamepad_is_connected(0))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -552,7 +552,7 @@ function scr_character_select_menu()
 			
 				#region /*Key Right*/
 				if (file_exists("characters/character"+string(global.character_for_player_2+1)+"/data/character_config.ini"))
-				or (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_2+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
+				or (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_2+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
 				{
 					if (gamepad_is_connected(1))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -649,7 +649,7 @@ function scr_character_select_menu()
 			
 				#region /*Key Right*/
 				if (file_exists("characters/character"+string(global.character_for_player_3+1)+"/data/character_config.ini"))
-				or (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_3+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
+				or (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_3+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
 				{
 					if (gamepad_is_connected(2))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -746,7 +746,7 @@ function scr_character_select_menu()
 			
 				#region /*Key Right*/
 				if (file_exists("characters/character"+string(global.character_for_player_4+1)+"/data/character_config.ini"))
-				or (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_4+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
+				or (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_4+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
 				{
 					if (gamepad_is_connected(3))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -2093,14 +2093,14 @@ function scr_character_select_menu()
 					else
 					
 					#region /*Player 1 character select portrait sprite*/
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
 					{
-						global.sprite_select_player_1 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
+						global.sprite_select_player_1 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/stand.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/stand.png"))
 					{
-						global.sprite_select_player_1 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
+						global.sprite_select_player_1 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 					}
 					else
 					{
@@ -2138,7 +2138,7 @@ function scr_character_select_menu()
 						xx1=player1_display_x+32;
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_1+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_1+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
 					{
 						global.character_for_player_1+=1;
 						xx1=player1_display_x+32;
@@ -2259,14 +2259,14 @@ function scr_character_select_menu()
 					else
 					
 					#region /*Player 1 character select portrait sprite*/
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
 					{
-						global.sprite_select_player_1 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
+						global.sprite_select_player_1 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/stand.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/stand.png"))
 					{
-						global.sprite_select_player_1 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
+						global.sprite_select_player_1 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_1-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 					}
 					else
 					{
@@ -2527,14 +2527,14 @@ function scr_character_select_menu()
 					else
 					
 					#region /*Player 2 character select portrait sprite*/
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
 					{
-						global.sprite_select_player_2 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
+						global.sprite_select_player_2 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/stand.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/stand.png"))
 					{
-						global.sprite_select_player_2 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
+						global.sprite_select_player_2 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 					}
 					else
 					{
@@ -2572,7 +2572,7 @@ function scr_character_select_menu()
 						xx2=player2_display_x+32;
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_2+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_2+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
 					{
 						global.character_for_player_2+=1;
 						xx2=player2_display_x+32;
@@ -2693,14 +2693,14 @@ function scr_character_select_menu()
 					else
 					
 					#region /*Player 2 character select portrait sprite*/
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
 					{
-						global.sprite_select_player_2 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
+						global.sprite_select_player_2 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/stand.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/stand.png"))
 					{
-						global.sprite_select_player_2 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
+						global.sprite_select_player_2 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_2-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 					}
 					else
 					{
@@ -2942,14 +2942,14 @@ function scr_character_select_menu()
 					else
 					
 					#region /*Player 3 character select portrait sprite*/
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
 					{
-						global.sprite_select_player_3 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
+						global.sprite_select_player_3 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/stand.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/stand.png"))
 					{
-						global.sprite_select_player_3 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
+						global.sprite_select_player_3 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 					}
 					else
 					{
@@ -2987,7 +2987,7 @@ function scr_character_select_menu()
 						xx3=player3_display_x+32;
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_3+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_3+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
 					{
 						global.character_for_player_3+=1;
 						xx3=player3_display_x+32;
@@ -3132,14 +3132,14 @@ function scr_character_select_menu()
 					else
 					
 					#region /*Player 3 character select portrait sprite*/
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
 					{
-						global.sprite_select_player_3 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
+						global.sprite_select_player_3 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/stand.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/stand.png"))
 					{
-						global.sprite_select_player_3 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
+						global.sprite_select_player_3 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_3-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 					}
 					else
 					{
@@ -3404,14 +3404,14 @@ function scr_character_select_menu()
 					else
 					
 					#region /*Player 4 character select portrait sprite*/
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
 					{
-						global.sprite_select_player_4 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
+						global.sprite_select_player_4 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/stand.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/stand.png"))
 					{
-						global.sprite_select_player_4 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
+						global.sprite_select_player_4 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 					}
 					else
 					{
@@ -3449,7 +3449,7 @@ function scr_character_select_menu()
 						xx4=player4_display_x+32;
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_4+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_4+1-global.max_number_of_official_characters)+"/data/character_config.ini"))
 					{
 						global.character_for_player_4+=1;
 						xx4=player4_display_x+32;
@@ -3594,14 +3594,14 @@ function scr_character_select_menu()
 					else
 					
 					#region /*Player 4 character select portrait sprite*/
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png"))
 					{
-						global.sprite_select_player_4 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
+						global.sprite_select_player_4 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/character_select_portrait.png", 0, false, false, character_select_portrait_xorig, character_select_portrait_yorig);
 					}
 					else
-					if (file_exists(working_directory + "/custom_characters/Character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/stand.png"))
+					if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/stand.png"))
 					{
-						global.sprite_select_player_4 = sprite_add(working_directory + "/custom_characters/Character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
+						global.sprite_select_player_4 = sprite_add(working_directory + "/custom_characters/character"+string(global.character_for_player_4-global.max_number_of_official_characters)+"/sprites/stand.png", 0, false, false, sprite_stand_xorig, sprite_stand_yorig);
 					}
 					else
 					{

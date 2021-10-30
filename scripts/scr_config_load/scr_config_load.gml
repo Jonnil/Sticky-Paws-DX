@@ -7,6 +7,7 @@ function scr_config_load()
 		if (ini_key_exists("config","difficulty")){global.difficulty = ini_read_real("config","difficulty",0);}
 		if (ini_key_exists("config","automatically_pause_when_window_is_unfocused")){global.automatically_pause_when_window_is_unfocused = ini_read_real("config","automatically_pause_when_window_is_unfocused",0);}
 		if (ini_key_exists("config","show_timer")){global.show_timer = ini_read_real("config","show_timer",0);}
+		if (ini_key_exists("config","show_deaths_counter")){global.show_deaths_counter = ini_read_real("config","show_deaths_counter",0);}
 		if (ini_key_exists("config","custom_level_load_delay")){global.custom_level_load_delay = ini_read_real("config","custom_level_load_delay",0);}
 		if (ini_key_exists("config","activate_cheats")){global.activate_cheats = ini_read_real("config","activate_cheats",0);}
 		if (ini_key_exists("config","enable_enemies")){global.enable_enemies = ini_read_real("config","enable_enemies",0);}

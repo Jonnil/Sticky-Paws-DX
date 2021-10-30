@@ -1,15 +1,3 @@
-#region /*Set screen size*/
-camera_set_view_border(view_camera[view_current], 1920, 1080); /*View Border*/
-camera_set_view_size(view_camera[view_current], 1920, 1080);
-
-if (asset_get_type("obj_leveleditor")==asset_object)
-and(!instance_exists(obj_leveleditor))
-{
-	camera_set_view_target(view_camera[view_current], self);
-}
-display_set_gui_size(window_get_width(), window_get_height());
-#endregion /*Set screen size END*/
-
 #region /*Pause Screenshot*/
 if (global.pause_screenshot > noone)
 {

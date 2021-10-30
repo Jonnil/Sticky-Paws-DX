@@ -1290,7 +1290,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"title_logo_christmas.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.5.589",
+    "IDEVersion": "2.3.6.595",
   },
   "resourceVersion": "1.4",
   "name": "Sticky Paws DX",

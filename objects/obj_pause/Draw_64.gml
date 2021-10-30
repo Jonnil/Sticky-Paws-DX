@@ -105,25 +105,6 @@ if (global.narrator >= 0)
 
 room_speed = global.max_fps;
 
-#region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
-if (asset_get_type("obj_camera")==asset_object)
-and(!instance_exists(obj_camera))
-and(keyboard_check_pressed(global.fullscreen_key))
-{
-	if (window_get_fullscreen())
-	{
-		window_set_fullscreen(false);
-	}
-	else
-	{
-		window_set_fullscreen(true);
-	}
-	ini_open("config.ini");
-	ini_write_real("config","fullscreen_mode",window_get_fullscreen());
-	ini_close();
-}
-#endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
-
 #region /*Keyboard Controls*/
 gamepad_set_axis_deadzone(0, 0.50);
 gamepad_set_axis_deadzone(1, 0.50);
@@ -230,7 +211,7 @@ and(menu != "remap_save")
 #region /*Games Logo in top left corner*/
 if (global.resourcepack_sprite_title_logo > noone)
 {
-	draw_sprite_ext(global.resourcepack_sprite_title_logo, 0, 100, 70, 0.3, 0.3, 0, c_white, 1);
+	draw_sprite_ext(global.resourcepack_sprite_title_logo, 0, 160, 100, 0.3, 0.3, 0, c_white, 1);
 }
 #endregion /*Games Logo in top left corner END*/
 

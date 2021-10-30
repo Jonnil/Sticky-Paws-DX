@@ -40,6 +40,8 @@ stop_at_level = false;
 can_enter_level = 0;
 draw_xscale = 1;
 draw_yscale = 1;
+default_xscale = 1;
+default_yscale = 1;
 
 #region /*Load Game*/
 if (file_exists("file" + string(global.file) + ".ini"))
