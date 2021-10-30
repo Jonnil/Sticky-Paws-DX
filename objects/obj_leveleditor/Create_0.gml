@@ -521,19 +521,19 @@ if (global.character_select_in_this_menu = "level_editor")
 	}
 	#endregion /*Create directory for sound effects in custom levels END*/
 	
-	#region /*Create directory for ambiance in custom levels*/
+	#region /*Create directory for ambience in custom levels*/
 	if (global.select_level_index >= 1)
-	and (!directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance"))
+	and (!directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience"))
 	{
-		directory_create(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance");
+		directory_create(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience");
 	}
 	else
 	if (global.select_level_index <= 0)
-	and (!directory_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/sounds/ambiance"))
+	and (!directory_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/sounds/ambience"))
 	{
-		directory_create(working_directory+"/custom_levels/"+string(global.level_name)+"/sounds/ambiance");
+		directory_create(working_directory+"/custom_levels/"+string(global.level_name)+"/sounds/ambience");
 	}
-	#endregion /*Create directory for ambiance in custom levels END*/
+	#endregion /*Create directory for ambience in custom levels END*/
 	
 	#region /*Create directory for tilesets in custom levels*/
 	if (global.select_level_index >= 1)

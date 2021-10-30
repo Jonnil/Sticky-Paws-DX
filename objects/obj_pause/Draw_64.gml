@@ -380,8 +380,8 @@ and(global.pause_room = room_leveleditor)
 			audio_resume_all();
 			audio_sound_gain(global.music,global.music_volume,0);
 			audio_sound_gain(global.music_underwater,0,0);
-			audio_sound_gain(global.ambiance,global.ambient_volume,0);
-			audio_sound_gain(global.ambiance_underwater,0,0);
+			audio_sound_gain(global.ambience,global.ambient_volume,0);
+			audio_sound_gain(global.ambience_underwater,0,0);
 			global.pause=false;
 			instance_activate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, window_get_width() + 32, window_get_height() + 32, true);
 			if (instance_exists(obj_player))
@@ -1059,8 +1059,8 @@ and(global.pause_room = room_leveleditor)
 			audio_resume_all();
 			audio_sound_gain(global.music,global.music_volume,0);
 			audio_sound_gain(global.music_underwater,0,0);
-			audio_sound_gain(global.ambiance,global.ambient_volume,0);
-			audio_sound_gain(global.ambiance_underwater,0,0);
+			audio_sound_gain(global.ambience,global.ambient_volume,0);
+			audio_sound_gain(global.ambience_underwater,0,0);
 			global.pause=false;
 			if (instance_exists(obj_player))
 			{
@@ -1120,8 +1120,8 @@ or(gamepad_button_check_pressed(3, gp_select))
 		audio_resume_all();
 		audio_sound_gain(global.music,global.music_volume,0);
 		audio_sound_gain(global.music_underwater,0,0);
-		audio_sound_gain(global.ambiance,global.ambient_volume,0);
-		audio_sound_gain(global.ambiance_underwater,0,0);
+		audio_sound_gain(global.ambience,global.ambient_volume,0);
+		audio_sound_gain(global.ambience_underwater,0,0);
 		global.pause=false;
 		if (instance_exists(obj_player))
 		{

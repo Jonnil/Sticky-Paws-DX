@@ -253,8 +253,8 @@ global.number_of_audio_channels = 3; /*How many audio channels there should be. 
 #endregion /*Music and Sound Volume END*/
 global.music=noone;
 global.music_underwater=noone;
-global.ambiance=noone;
-global.ambiance_underwater=noone;
+global.ambience=noone;
+global.ambience_underwater=noone;
 global.trigger_ending=false;
 global.spikes_emerge_time=0;
 global.goal_active=false;

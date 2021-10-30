@@ -12299,18 +12299,18 @@ else
 }
 
 #region /*Play Ambience*/
-if (!audio_is_playing(global.ambiance))
+if (!audio_is_playing(global.ambience))
 {
-	audio_play_sound(global.ambiance,0,true);
-	audio_sound_gain(global.ambiance,global.ambient_volume,0);
+	audio_play_sound(global.ambience,0,true);
+	audio_sound_gain(global.ambience,global.ambient_volume,0);
 }
 #endregion /*Play Ambience END*/
 
 #region /*Play Underwater Ambience*/
-if (!audio_is_playing(global.ambiance_underwater))
+if (!audio_is_playing(global.ambience_underwater))
 {
-	audio_play_sound(global.ambiance_underwater,0,true);
-	audio_sound_gain(global.ambiance_underwater,0,0);
+	audio_play_sound(global.ambience_underwater,0,true);
+	audio_sound_gain(global.ambience_underwater,0,0);
 }
 #endregion /*Play Underwater Ambience END*/
 
@@ -16622,15 +16622,15 @@ else
 }
 
 if (in_water = true)
-and (global.ambiance_underwater > 0)
+and (global.ambience_underwater > 0)
 {
-	audio_sound_gain(global.ambiance,0,0);
-	audio_sound_gain(global.ambiance_underwater,global.ambient_volume,0);
+	audio_sound_gain(global.ambience,0,0);
+	audio_sound_gain(global.ambience_underwater,global.ambient_volume,0);
 }
 else
 {
-	audio_sound_gain(global.ambiance,global.ambient_volume,0);
-	audio_sound_gain(global.ambiance_underwater,0,0);
+	audio_sound_gain(global.ambience,global.ambient_volume,0);
+	audio_sound_gain(global.ambience_underwater,0,0);
 }
 
 #region /*In Water*/
@@ -17057,8 +17057,8 @@ if (die = true)
 		{
 			audio_stop_sound(global.music);
 			audio_stop_sound(global.music_underwater);
-			audio_stop_sound(global.ambiance);
-			audio_stop_sound(global.ambiance_underwater);
+			audio_stop_sound(global.ambience);
+			audio_stop_sound(global.ambience_underwater);
 			music=noone;
 			music_underwater=noone;
 			if (asset_get_type("snd_music_invincible")==asset_sound)
