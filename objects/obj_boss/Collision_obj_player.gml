@@ -124,11 +124,18 @@ else
 	if (hp > 0)
 	and(takendamage = 0)
 	{
-		if (other.takendamage < 1)
-		and(!other.assist_invincible = true)
+		if (other.takendamage<=0)
+		and(other.assist_invincible=false)
 		{
-			other.hp -= 1;
-			other.takendamage = 100;
+			if (other.have_heart_balloon=true)
+			{
+				other.have_heart_balloon=false;
+			}
+			else
+			{
+				other.hp-=1;
+			}
+			other.takendamage=100;
 		}
 	}
 }

@@ -415,7 +415,32 @@ if (keyboard_check_pressed(ord("F")))
 #endregion /*Keyboard Shortcuts END*/
 
 #region /*Grid hotkeys*/
-if (keyboard_check(vk_alt))
+if (keyboard_check(vk_control))
+and (keyboard_check(vk_shift))
+and(keyboard_check_pressed(ord("A")))
+and(pause = false)
+{
+	show_grid=true;
+	if (global.grid_hsnap>16)
+	or(global.grid_vsnap>16)
+	{
+		global.grid_hsnap-=16;
+		global.grid_vsnap-=16;
+	}
+}
+else
+if (keyboard_check(vk_control))
+and (keyboard_check(vk_shift))
+and(keyboard_check_pressed(ord("S")))
+and(pause = false)
+{
+	show_grid=true;
+	global.grid_hsnap+=16;
+	global.grid_vsnap+=16;
+}
+else
+if (keyboard_check(vk_control))
+and (!keyboard_check(vk_shift))
 and(keyboard_check_pressed(ord("A")))
 and(pause = false)
 {
@@ -427,7 +452,9 @@ and(pause = false)
 		global.grid_vsnap-=1;
 	}
 }
-if (keyboard_check(vk_alt))
+else
+if (keyboard_check(vk_control))
+and (!keyboard_check(vk_shift))
 and(keyboard_check_pressed(ord("S")))
 and(pause = false)
 {
@@ -435,7 +462,7 @@ and(pause = false)
 	global.grid_hsnap+=1;
 	global.grid_vsnap+=1;
 }
-#endregion
+#endregion /*Grid hotkeys END*/
 
 #region /*Draw Grid*/
 
@@ -631,7 +658,7 @@ if (quit_level_editor=0)
 	if (asset_get_type("spr_water_surface")==asset_sprite){draw_sprite_ext(spr_water_surface,0,							camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*31,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_air_bubbles_spawner")==asset_sprite){draw_sprite_ext(spr_air_bubbles_spawner,0,				camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*32,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	else
-	if (asset_get_type("spr_bubble")==asset_sprite){draw_sprite_ext(spr_bubble,0,									camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*32,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
+	if (asset_get_type("spr_bubble")==asset_sprite){draw_sprite_ext(spr_bubble,0,										camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*32,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_water_level_change_slow")==asset_sprite){draw_sprite_ext(spr_water_level_change_slow,0,		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*33,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_water_level_change_fast")==asset_sprite){draw_sprite_ext(spr_water_level_change_fast,0,		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*34,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_water_level_change_faster")==asset_sprite){draw_sprite_ext(spr_water_level_change_faster,0,	camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2+selected_object_menu_x+64*35,camera_get_view_y(view_camera[view_current])+64,1,1,0,c_white,selected_menu_alpha);}
@@ -1554,195 +1581,35 @@ and(pause=false)
 
 #region /*Play Level*/
 if (keyboard_check_pressed(vk_enter))
-or(gamepad_button_check_pressed(0,gp_select))
+or (gamepad_button_check_pressed(0, gp_select))
 {
-	if (pause=false)
+	if (pause = false)
 	and (global.character_select_in_this_menu = "level_editor")
-	and(asset_get_type("obj_level_player_1_start")==asset_object)
-	and(asset_get_type("obj_level_player_2_start")==asset_object)
-	and(asset_get_type("obj_level_player_3_start")==asset_object)
-	and(asset_get_type("obj_level_player_4_start")==asset_object)
+	and (asset_get_type("obj_level_player_1_start") == asset_object)
+	and (asset_get_type("obj_level_player_2_start") == asset_object)
+	and (asset_get_type("obj_level_player_3_start") == asset_object)
+	and (asset_get_type("obj_level_player_4_start") == asset_object)
 	{
 		
-		#region /*Save Level*/
+		scr_save_custom_level();
 		
-		#region /*Create directory for saving custom levels*/
-		if (global.select_level_index >= 1)
-		and (!directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
-		{
-			directory_create(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)));
-		}
-		else
-		if (global.select_level_index <= 0)
-		and (!directory_exists(working_directory+"/custom_levels/"+string(global.level_name)))
-		{
-			directory_create(working_directory+"/custom_levels/"+string(global.level_name));
-		}
-		#endregion /*Create directory for saving custom levels END*/
-		
-		#region /*Create Data directory for saving custom level data*/
-		if (global.select_level_index >= 1)
-		and (directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
-		and (!directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data"))
-		{
-			directory_create(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data");
-		}
-		else
-		if (global.select_level_index <= 0)
-		and (directory_exists(working_directory+"/custom_levels/"+string(global.level_name)))
-		and (!directory_exists(working_directory+"/custom_levels/"+string(global.level_name)+"/data"))
-		{
-			directory_create(working_directory+"/custom_levels/"+string(global.level_name)+"/data");
-		}
-		#endregion /*Create Data directory for saving custom level data END*/
-		
-		if (asset_get_type("obj_leveleditor_placed_object")==asset_object)
+		if (asset_get_type("obj_camera")==asset_object)
+		and(!instance_exists(obj_camera))
+		and(asset_get_type("obj_leveleditor_placed_object")==asset_object)
 		and(!place_meeting(x,y,obj_leveleditor_placed_object))
 		{
-		
-			#region /*Save object placement*/
+			if (camera_get_view_width(view_camera[view_current])<1920)
+			or (camera_get_view_height(view_camera[view_current])<1080)
+			{
+				camera_set_view_size(view_camera[view_current],1920,1080);
+			}
 			instance_activate_all();
-			var file,str;
-			if (global.select_level_index >= 1)
-			{
-				file = file_text_open_write(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/object_placement.txt"); /*Open file for writing*/
-			}
-			else
-			if (global.select_level_index <= 0)
-			{
-				file = file_text_open_write(working_directory+"/custom_levels/"+string(global.level_name)+"/data/object_placement.txt"); /*Open file for writing*/
-			}
-			str=""; /*Reset string var*/
-	
-			#region /*Write all objects to file*/
-			with(obj_leveleditor_placed_object)
-			{
-				if (object != 62)
-				and(object != 64)
-				and(object != 65)
-				and(object != 732)
-				and(object != 733)
-				and(object != 734)
-				{
-					str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|";
-				}
-			}
-			#endregion /*Write all objects to file END*/
-			
-			file_text_write_string(file,str); /*Write string with wall information to file and start a new line*/
-			file_text_close(file);
-			
-			#endregion /*Save object placement END*/
-			
-			scr_save_objects_with_rotation_placement();
-			
-			#region /*Save Level Information*/
-			if (global.character_select_in_this_menu = "level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
-			{
-				if (global.select_level_index >= 1)
-				{
-					ini_open(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
-				}
-				else
-				if (global.select_level_index <= 0)
-				{
-					ini_open(working_directory+"/custom_levels/"+string(global.level_name)+"/data/level_information.ini");
-				}
-				if (asset_get_type("obj_level_player_1_start")==asset_object)
-				{
-					if (instance_exists(obj_level_player_1_start))
-					{
-						ini_write_real("info","level_player_1_start_x",obj_level_player_1_start.x);
-					}
-					if (instance_exists(obj_level_player_1_start))
-					{
-						ini_write_real("info","level_player_1_start_y",obj_level_player_1_start.y);
-					}
-				}
-				if (asset_get_type("obj_level_player_2_start")==asset_object)
-				{
-					if (instance_exists(obj_level_player_2_start))
-					{
-						ini_write_real("info","level_player_2_start_x",obj_level_player_2_start.x);
-					}
-					if (instance_exists(obj_level_player_2_start))
-					{
-						ini_write_real("info","level_player_2_start_y",obj_level_player_2_start.y);
-					}
-				}
-				if (asset_get_type("obj_level_player_3_start")==asset_object)
-				{
-					if (instance_exists(obj_level_player_3_start))
-					{
-						ini_write_real("info","level_player_3_start_x",obj_level_player_3_start.x);
-					}
-					if (instance_exists(obj_level_player_3_start))
-					{
-						ini_write_real("info","level_player_3_start_y",obj_level_player_3_start.y);
-					}
-				}
-				if (asset_get_type("obj_level_player_4_start")==asset_object)
-				{
-					if (instance_exists(obj_level_player_4_start))
-					{
-						ini_write_real("info","level_player_4_start_x",obj_level_player_4_start.x);
-					}
-					if (instance_exists(obj_level_player_4_start))
-					{
-						ini_write_real("info","level_player_4_start_y",obj_level_player_4_start.y);
-					}
-				}
-				if (asset_get_type("obj_level_end")==asset_object)
-				{
-					if (instance_exists(obj_level_end))
-					{
-						ini_write_real("info","level_end_x",obj_level_end.x);
-					}
-					if (instance_exists(obj_level_end))
-					{
-						ini_write_real("info","level_end_y",obj_level_end.y);
-					}
-				}
-				if (asset_get_type("obj_level_height")==asset_object)
-				{
-					if (instance_exists(obj_level_height))
-					{
-						ini_write_real("info","level_height",obj_level_height.y);
-					}
-				}
-				if (asset_get_type("obj_level_width")==asset_object)
-				{
-					if (instance_exists(obj_level_width))
-					{
-						ini_write_real("info","level_width",obj_level_width.x);
-					}
-				}
-				ini_write_real("info","view_xview",camera_get_view_x(view_camera[view_current]));
-				ini_write_real("info","view_yview",camera_get_view_y(view_camera[view_current]));
-				ini_close();
-			}
-			#endregion /*Save Level Information END*/
-			
-			#endregion /*Save Level END*/
-			
-			if (asset_get_type("obj_camera")==asset_object)
-			and(!instance_exists(obj_camera))
-			and(asset_get_type("obj_leveleditor_placed_object")==asset_object)
-			and(!place_meeting(x,y,obj_leveleditor_placed_object))
-			{
-				if (camera_get_view_width(view_camera[view_current])<1920)
-				or (camera_get_view_height(view_camera[view_current])<1080)
-				{
-					camera_set_view_size(view_camera[view_current],1920,1080);
-				}
-				instance_activate_all();
-				global.lives_until_assist=0;
-				global.actually_play_edited_level = false;
-				global.play_edited_level = true;
-				global.character_select_in_this_menu = "level_editor";
-				instance_create_depth(x,y,0,obj_camera);
-				instance_destroy();
-			}
+			global.lives_until_assist=0;
+			global.actually_play_edited_level = false;
+			global.play_edited_level = true;
+			global.character_select_in_this_menu = "level_editor";
+			instance_create_depth(x,y,0,obj_camera);
+			instance_destroy();
 		}
 	}
 }

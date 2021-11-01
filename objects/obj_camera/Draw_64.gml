@@ -759,7 +759,7 @@ and (!instance_exists(obj_pause))
 			
 		}
 		else
-		if (player1 = noone)
+		if (player1 <= 0)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and(global.player1_can_play = true)
@@ -1039,7 +1039,7 @@ and (!instance_exists(obj_pause))
 			
 		}
 		else
-		if (player2 = noone)
+		if (player2 <= 0)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player2_can_play = true)
@@ -1318,7 +1318,7 @@ and (!instance_exists(obj_pause))
 			
 		}
 		else
-		if (player3 = noone)
+		if (player3 <= 0)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player3_can_play = true)
@@ -1597,7 +1597,7 @@ and (!instance_exists(obj_pause))
 			
 		}
 		else
-		if (player4 = noone)
+		if (player4 <= 0)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player4_can_play = true)
@@ -1656,8 +1656,26 @@ else
 {
 	show_keyboard_and_mouse_input_change_prompt_y = lerp(show_keyboard_and_mouse_input_change_prompt_y, 0, 0.1);
 }
-draw_sprite_ext(spr_change_input_to_controller, 0, 110, window_get_height()+300+show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
-draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_get_height()+300+show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
+if (global.player1_can_play >= 1) /*Only show controller input change if there is only one player in the game*/
+and (global.player2_can_play <= 0)
+and (global.player3_can_play <= 0)
+and (global.player4_can_play <= 0)
+or (global.player1_can_play <= 0)
+and (global.player2_can_play >= 1)
+and (global.player3_can_play <= 0)
+and (global.player4_can_play <= 0)
+or (global.player1_can_play <= 0)
+and (global.player2_can_play <= 0)
+and (global.player3_can_play >= 1)
+and (global.player4_can_play <= 0)
+or (global.player1_can_play <= 0)
+and (global.player2_can_play <= 0)
+and (global.player3_can_play <= 0)
+and (global.player4_can_play >= 1)
+{
+	draw_sprite_ext(spr_change_input_to_controller, 0, 110, window_get_height()+300+show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_get_height()+300+show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
+}
 #endregion /*Show what input is used END*/
 
 scr_virtual_keys();

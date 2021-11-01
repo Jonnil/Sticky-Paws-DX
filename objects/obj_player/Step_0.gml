@@ -12837,7 +12837,7 @@ if (assist_invincible=true)
 #endregion /*Assist Invincible END*/
 
 #region /*If Assist delault hp is invincible, stay invincible*/
-if (global.assist_enable)
+if (global.assist_enable = true)
 and (global.assist_invincible = true)
 and(hp<max_hp)
 {
@@ -15631,9 +15631,15 @@ and(wall_jump_setting>=1)
 		#region /*When pressing the jump button and besides the wall, do the wall jump*/
 		if (key_jump)
 		and(place_meeting(x+1,y,obj_wall))
+		and(!place_meeting(x,y+1,obj_wall))
+		and(asset_get_type("obj_semisolid_platform") == asset_object)
+		and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		
 		or(key_jump)
 		and(place_meeting(x-1,y,obj_wall))
+		and(!place_meeting(x,y+1,obj_wall))
+		and(asset_get_type("obj_semisolid_platform") == asset_object)
+		and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		
 		or(allow_dive=true)
 		and(key_dive_pressed) /*Press dive to jump from wall using a dive*/
@@ -15781,6 +15787,8 @@ and(wall_jump_setting>=1)
 	and(wall_jump_setting>=1)
 	and(place_meeting(x+1,y,obj_wall))
 	and(!place_meeting(x,y+16,obj_wall))
+	and(asset_get_type("obj_semisolid_platform") == asset_object)
+	and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	
 	or(key_jump)
 	and(key_left)
@@ -15788,16 +15796,22 @@ and(wall_jump_setting>=1)
 	and(wall_jump_setting>=1)
 	and(place_meeting(x-1,y,obj_wall))
 	and(!place_meeting(x,y+16,obj_wall))
+	and(asset_get_type("obj_semisolid_platform") == asset_object)
+	and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	
 	or(key_jump)
 	and(wall_jump_setting=1)
 	and(place_meeting(x+1,y,obj_wall))
 	and(!place_meeting(x,y+16,obj_wall))
+	and(asset_get_type("obj_semisolid_platform") == asset_object)
+	and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	
 	or(key_jump)
 	and(wall_jump_setting=1)
 	and(place_meeting(x-1,y,obj_wall))
 	and(!place_meeting(x,y+16,obj_wall))
+	and(asset_get_type("obj_semisolid_platform") == asset_object)
+	and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (crouch=false)
 		and(ground_pound=false)
@@ -16785,22 +16799,29 @@ if (asset_get_type("obj_water")==asset_object)
 
 #region /*Drowning*/
 if (allow_drowning = true)
+and (global.assist_enable = true)
+and (global.assist_invincible = false)
+or (allow_drowning = true)
+and (global.assist_enable = false)
 {
 	drawn_frames_until_drowning = lerp(drawn_frames_until_drowning, frames_until_drowning, 0.1);
-	
 	if (in_water = true)
 	{
 		frames_until_drowning = clamp(frames_until_drowning-1, 0, seconds_until_drowning*60);
 		if (frames_until_drowning <= 0)
 		{
-			hp -= 2;
+			hp -= 1;
 		}
 	}
 	else
 	{
 		frames_until_drowning = seconds_until_drowning*60+1; /*Reset air meter to full*/
-		//frames_until_drowning +=12; /*12 frames = 0.2 seconds*/
 	}
+}
+else
+{
+	frames_until_drowning = seconds_until_drowning*60+1; /*Reset air meter to full*/
+	drawn_frames_until_drowning = frames_until_drowning;
 }
 #endregion /*Drowning END*/
 
