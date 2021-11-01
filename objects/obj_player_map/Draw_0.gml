@@ -395,12 +395,12 @@ if (asset_get_type("snd_music_boss") == asset_sound)
 }
 audio_stop_sound(global.music);
 audio_stop_sound(global.music_underwater);
-audio_stop_sound(global.ambiance);
-audio_stop_sound(global.ambiance_underwater);
+audio_stop_sound(global.ambience);
+audio_stop_sound(global.ambience_underwater);
 global.music = noone;
 global.music_underwater = noone;
-global.ambiance = noone;
-global.ambiance_underwater = noone;
+global.ambience = noone;
+global.ambience_underwater = noone;
 #endregion /*Make sure level music stops playing End*/
 
 #region /*Keep the game at 60 FPS*/

@@ -1274,7 +1274,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/levels/Intro/Data","resourceVersion":"1.0","name":"Object_Rotation_Placement.txt","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Intro/Data","resourceVersion":"1.0","name":"level_information.ini","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Intro/Tilesets","resourceVersion":"1.0","name":"ground_tileset.png","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/levels/Intro/Sounds/ambiance","resourceVersion":"1.0","name":"ambiance.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/levels/Intro/Sounds/ambience","resourceVersion":"1.0","name":"ambience.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Level7","resourceVersion":"1.0","name":"automatic_thumbnail.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Level7/Sounds/music","resourceVersion":"1.0","name":"music.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Sounds/music","resourceVersion":"1.0","name":"music.ogg","resourceType":"GMIncludedFile",},

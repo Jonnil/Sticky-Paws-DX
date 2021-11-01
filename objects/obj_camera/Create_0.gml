@@ -441,53 +441,53 @@ and(room != room_title)
 	}
 	#endregion /*Update Music Underwater END*/
 	
-	#region /*Update Ambiance*/
+	#region /*Update Ambience*/
 	/*OGG small letter File*/
-	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambiance/ambiance.ogg"))
+	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambience/ambience.ogg"))
 	and(global.character_select_in_this_menu = "main_game")
 	{
-		global.ambiance = audio_create_stream("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambiance/ambiance.ogg");
+		global.ambience = audio_create_stream("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambience/ambience.ogg");
 	}
 	else
 	/*OGG small letter File*/
-	if (file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance/ambiance.ogg"))
+	if (file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience/ambience.ogg"))
 	and(global.character_select_in_this_menu = "level_editor")
 	{
-		global.ambiance = audio_create_stream(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance/ambiance.ogg");
+		global.ambience = audio_create_stream(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience/ambience.ogg");
 	}
 	else
 	{
-		global.ambiance = noone;
+		global.ambience = noone;
 	}
-	#endregion /*Update Ambiance END*/
+	#endregion /*Update Ambience END*/
 	
-	#region /*Update Ambiance Underwater*/
+	#region /*Update Ambience Underwater*/
 	/*OGG small letter File*/
-	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambiance/ambiance_underwater.ogg"))
+	if (file_exists("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambience/ambience_underwater.ogg"))
 	and(global.character_select_in_this_menu = "main_game")
 	{
-		global.ambiance_underwater = audio_create_stream("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambiance/ambiance_underwater.ogg");
+		global.ambience_underwater = audio_create_stream("levels/"+string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambience/ambience_underwater.ogg");
 	}
 	else
 	/*OGG small letter File*/
-	if (file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance/ambiance_underwater.ogg"))
+	if (file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience/ambience_underwater.ogg"))
 	and(global.character_select_in_this_menu = "level_editor")
 	{
-		global.ambiance_underwater = audio_create_stream(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambiance/ambiance_underwater.ogg");
+		global.ambience_underwater = audio_create_stream(working_directory + "/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience/ambience_underwater.ogg");
 	}
 	else
 	{
-		global.ambiance_underwater = noone;
+		global.ambience_underwater = noone;
 	}
-	#endregion /*Update Ambiance Underwater END*/
+	#endregion /*Update Ambience Underwater END*/
 	
 }
 else
 {
 	global.music = noone;
 	global.music_underwater = noone;
-	global.ambiance = noone;
-	global.ambiance_underwater = noone;
+	global.ambience = noone;
+	global.ambience_underwater = noone;
 }
 #endregion /*Custom Music END*/
 
