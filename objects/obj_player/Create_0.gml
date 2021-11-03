@@ -4,7 +4,7 @@
 player = 1;
 custom_character = global.character_for_player_1;
 selected_voice_pack = global.voicepack_for_player_1;
-initialize_custom_character_timer = 0;
+alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
 #endregion /*What custom character to use. Change the character sprites and voice END*/
 
 #region /*Initialize Custom character*/
@@ -601,6 +601,7 @@ overflow_hp = 0; /*Starting Overflow HP. Should be 0 by default*/
 controller_connected = false;
 stuck_in_wall_counter = 0;
 effect_turnaround_subimg = 11
+effect_speedspark_subimg = 11;
 redblinktimer = 0;
 die = false;
 time = 600;

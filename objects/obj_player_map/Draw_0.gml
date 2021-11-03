@@ -19,8 +19,6 @@ and(keyboard_check_pressed(global.fullscreen_key))
 }
 #endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
 
-//draw_text_outlined(x,y-96,string(global.select_level_index),global.default_text_size,c_white,c_black,1);
-
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/

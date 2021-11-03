@@ -283,20 +283,34 @@ else
 #endregion /*Draw Collision Mask END*/
 
 #region /*Turnaround Effect*/
-if (effect_turnaround_subimg<10)
-and(climb=false)
-and(horizontal_rope_climb=false)
+if (effect_turnaround_subimg < 10)
 {
-	if (asset_get_type("spr_effect_turnaround")==asset_sprite)
+	if (climb = false)
+	and (horizontal_rope_climb = false)
+	and (asset_get_type("spr_effect_turnaround") == asset_sprite)
 	{
-		draw_sprite_ext(spr_effect_turnaround,effect_turnaround_subimg,x,y,1,1,angle,c_white,0.5);
+		draw_sprite_ext(spr_effect_turnaround, effect_turnaround_subimg, x, y, image_xscale, 1, angle, c_white, 0.5);
 	}
-}
-if (effect_turnaround_subimg<11)
-{
-	effect_turnaround_subimg+=1;
+	effect_turnaround_subimg += 1;
 }
 #endregion /*Turnaround Effect END*/
+
+#region /*Running Sparks Effect*/
+if (effect_speedspark_subimg < 4)
+{
+	if (place_meeting(x, y+1, obj_wall))
+	or (position_meeting(x, bbox_bottom+1, obj_semisolid_platform))
+	{
+		if (climb = false)
+		and (horizontal_rope_climb = false)
+		and (asset_get_type("spr_speedspark") == asset_sprite)
+		{
+			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, x, bbox_bottom, image_xscale, 1, angle, c_white, 1);
+		}
+	}
+	effect_speedspark_subimg += 1;
+}
+#endregion /*Running Sparks Effect END*/
 
 #region /*Invinsible*/
 if (assist_invincible = false)

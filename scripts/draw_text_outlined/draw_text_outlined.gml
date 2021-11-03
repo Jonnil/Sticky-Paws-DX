@@ -1,24 +1,24 @@
-/// @description draw_text_outlined(x,y,string,text_size,outline_color,text_color,image_alpha);
-/// @param x
-/// @param y
-/// @param string
-/// @param text_size
-/// @param outline_color
-/// @param text_color
-/// @param image_alpha
+/// @desc draw_text_outlined(x,y,string,text_size,outline_color,text_color,image_alpha);
+/// @arg x
+/// @arg y
+/// @arg string
+/// @arg text_size
+/// @arg outline_color
+/// @arg text_color
+/// @arg image_alpha
 
 function draw_text_outlined()
 {
-	var x_position=argument0;/*The texts x origin position*/
-	var y_position=argument1;/*The texts y origin position*/
+	var x_position = argument0;/*The texts x origin position*/
+	var y_position = argument1;/*The texts y origin position*/
 	
-	var string_text=argument2;
-	var text_size=argument3;
-	var text_color=argument5;
+	var string_text = argument2;
+	var text_size = argument3;
+	var text_color = argument5;
 	
-	var outline_color=argument4;
-	var y_offset=0;/*Y origin position offset for broken fonts*/
-	var img_alpha=argument6;
+	var outline_color = argument4;
+	var y_offset = 0; /*Y origin position offset for broken fonts*/
+	var img_alpha = argument6;
 	
 	#region /*Arabic text offset, only used if you have arabic text*/
 	if (asset_get_type("font_other_languages")==asset_font)
