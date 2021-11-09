@@ -160,7 +160,7 @@ global.difficulty = 1; /*Difficulty levels: 0 = easy, 1 = normal (default), 2 = 
 global.automatically_pause_when_window_is_unfocused = true; /*Whenever you unfocus the window by clicking off the window, the game pauses by itself*/
 global.show_timer = false; /*Show a countup timer or not*/
 global.show_deaths_counter = false; /*Show a deaths counter or not*/
-global.controls_used_for_menu_navigation="keyboard";/*keyboard, mouse, or controller*/
+global.controls_used_for_menu_navigation = "keyboard";/*keyboard, mouse, or controller*/
 global.pause=false;/*If game is paused or not*/
 global.custom_background1=noone;
 global.custom_background2=noone;

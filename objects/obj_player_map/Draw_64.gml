@@ -87,7 +87,7 @@ if (black_screen_at_start_delay<1)
 #endregion /*Have a black screen at the first frame so transitions look natural END*/
 
 #region /*Draw mouse cursor for menu navigation*/
-if (global.controls_used_for_menu_navigation="mouse")
+if (global.controls_used_for_menu_navigation = "mouse")
 and(os_type!=os_ios)
 and(os_type!=os_android)
 and(global.pause = false)

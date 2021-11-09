@@ -1,12 +1,23 @@
-if (distance_to_object(obj_camera)<500)
-if (global.music != snd_music_boss)
+if (asset_get_type("obj_camera") == asset_object)
+and (instance_exists(obj_camera))
+and (distance_to_object(obj_camera)<500)
+and (asset_get_type("snd_music_boss") == asset_sound)
+and (global.music != snd_music_boss)
+and (has_seen_player = true)
 {
 	audio_stop_sound(global.music);
 	audio_stop_sound(global.music_underwater);
 	global.music = snd_music_boss;
 }
 
-depth = + 10;
+if (asset_get_type("obj_player") == asset_object)
+and (instance_exists(obj_player))
+and (distance_to_object(obj_player) < 500)
+and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, true, true))
+and (has_seen_player = false)
+{
+	has_seen_player = true; /*Only see player if player is close and in line of sight*/
+}
 
 #region /*If enemies are disabled, destroy this object*/
 if (global.activate_cheats = true)
@@ -53,7 +64,11 @@ else
 {
 	angle = lerp(angle, 0, 0.1);
 }
-time += 1;
+
+if (has_seen_player = true)
+{
+	time += 1;
+}
 
 if (takendamage > 0)
 {
@@ -77,6 +92,7 @@ if (time = room_speed * 3)
 
 /*Phase 1*/
 if (hp >= 3)
+and (has_seen_player = true)
 {
 	if (time < room_speed * 7)
 	{
@@ -230,6 +246,7 @@ if (hp >= 3)
 /*Phase 2*/
 else
 if (hp >= 2)
+and (has_seen_player = true)
 {
 	if (time < room_speed * 8)
 	and(instance_exists(obj_player))
@@ -381,6 +398,7 @@ if (hp >= 2)
 
 /*Phase 3*/
 else
+if (has_seen_player = true)
 {
 	if (time < room_speed * 9)
 	{
@@ -673,6 +691,7 @@ if (takendamage = 50)
 if (position_meeting(x,y,obj_wall))
 and(die = false)
 and(draw_xscale>=0.8)
+and (has_seen_player = true)
 {
 	flat = false;
 	die = true;

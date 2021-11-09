@@ -113,18 +113,6 @@ else
 	c_menu_fill=c_white;
 }
 
-menu_cursor_index+=0.3;
-
-/*Menu cursor image_speed*/
-if (menu_cursor_index>4)
-{
-	menu_cursor_index=0;
-}
-if (menu_delay>0)
-{
-	menu_delay-=1;
-}
-
 /*Narrator Voice variable handeling*/
 /*No Narrator*/
 if (global.narrator=0){

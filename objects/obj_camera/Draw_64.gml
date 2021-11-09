@@ -494,7 +494,7 @@ and (!instance_exists(obj_pause))
 	{
 		
 		#region /*MULTIPLAYER PLAYER 1*/
-		if (player1 > noone)
+		if (player1 >= 1)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player1_show_controls >= true)
@@ -792,7 +792,7 @@ and (!instance_exists(obj_pause))
 		#endregion /*MULTIPLAYER PLAYER 1*/
 		
 		#region /*MULTIPLAYER PLAYER 2*/
-		if (player2 > noone)
+		if (player2 >= 1)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player2_show_controls >= true)
@@ -1071,7 +1071,7 @@ and (!instance_exists(obj_pause))
 		#endregion /*MULTIPLAYER PLAYER 2*/
 		
 		#region /*MULTIPLAYER PLAYER 3*/
-		if (player3 > noone)
+		if (player3 >= 1)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player3_show_controls >= true)
@@ -1350,7 +1350,7 @@ and (!instance_exists(obj_pause))
 		#endregion /*MULTIPLAYER PLAYER 3 END*/
 		
 		#region /*MULTIPLAYER PLAYER 4*/
-		if (player4 > noone)
+		if (player4 >= 1)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player4_show_controls >= true)
@@ -1681,11 +1681,11 @@ and (global.player4_can_play >= 1)
 scr_virtual_keys();
 
 #region /*Draw mouse cursor for menu navigation*/
-if (global.controls_used_for_menu_navigation="mouse")
-and (os_type!=os_ios)
-and (os_type!=os_android)
+if (global.controls_used_for_menu_navigation = "mouse")
+and (os_type != os_ios)
+and (os_type != os_android)
 and (global.pause = false)
 {
-	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
+	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/

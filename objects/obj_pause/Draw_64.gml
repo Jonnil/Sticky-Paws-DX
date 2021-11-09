@@ -27,7 +27,7 @@ my = window_mouse_get_y();
 
 if (keyboard_check(vk_anykey))
 {
-	global.controls_used_for_menu_navigation="keyboard";
+	global.controls_used_for_menu_navigation = "keyboard";
 }
 else
 if (mouse_check_button(mb_any))
@@ -35,7 +35,7 @@ or(mouse_wheel_down())
 or(mouse_wheel_up())
 or(mouse_moving)
 {
-	global.controls_used_for_menu_navigation="mouse";
+	global.controls_used_for_menu_navigation = "mouse";
 }
 else
 if (gamepad_button_check(0,gp_face1))
@@ -59,7 +59,7 @@ or(gamepad_axis_value(0,gp_axislv)<>0)
 or(gamepad_axis_value(0,gp_axisrh)<>0)
 or(gamepad_axis_value(0,gp_axisrv)<>0)
 {
-	global.controls_used_for_menu_navigation="controller";
+	global.controls_used_for_menu_navigation = "controller";
 }
 #endregion /*Set what controls are used to navigate the menus END*/
 
@@ -646,7 +646,7 @@ and(global.pause_room = room_leveleditor)
 			
 			if (global.character_select_in_this_menu = "main_game")
 			{
-				ini_open("file"+string(global.file)+".ini");
+				ini_open("file" + string(global.file) + ".ini");
 				ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "x_checkpoint", 0);
 				ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "y_checkpoint", 0);
 				ini_close();
@@ -1195,7 +1195,7 @@ if (!window_has_focus())
 #endregion /*If Window is unfocused, make the screen darker END*/
 
 #region /*Draw mouse cursor for menu navigation*/
-if (global.controls_used_for_menu_navigation="mouse")
+if (global.controls_used_for_menu_navigation = "mouse")
 and(os_type!=os_ios)
 and(os_type!=os_android)
 {

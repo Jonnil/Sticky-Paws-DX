@@ -18,46 +18,46 @@
 //draw_text_outlined(x,y-96,string(joystick_can_ground_pound),global.default_text_size,c_white,c_black,1);
 
 #region /*Heart above head*/
-if (asset_get_type("spr_heart")==asset_sprite)
-and(have_heart_balloon=true)
+if (asset_get_type("spr_heart") == asset_sprite)
+and (have_heart_balloon = true)
 {
-	if (asset_get_type("obj_horizontal_rope")==asset_object)
-	and(place_meeting(x,y-1,obj_horizontal_rope))
-	and(horizontal_rope_climb=true)
-	and(key_up)
-	and(!key_down)
-	and(!place_meeting(x,y-16,obj_wall))
-	and(!place_meeting(x,y-32,obj_wall))
-	and(!place_meeting(x,y-48,obj_wall))
-	and(!place_meeting(x,y-64,obj_wall))
+	if (asset_get_type("obj_horizontal_rope") == asset_object)
+	and (place_meeting(x, y - 1, obj_horizontal_rope))
+	and (horizontal_rope_climb = true)
+	and (key_up)
+	and (!key_down)
+	and (!place_meeting(x, y - 16, obj_wall))
+	and (!place_meeting(x, y - 32, obj_wall))
+	and (!place_meeting(x, y - 48, obj_wall))
+	and (!place_meeting(x, y - 64, obj_wall))
 	{
-		xx_heart=lerp(xx_heart,x,0.1);
-		yy_heart=lerp(yy_heart,y+32,0.1);
+		xx_heart = lerp(xx_heart, x, 0.1);
+		yy_heart = lerp(yy_heart, y + 32, 0.1);
 	}
-	if (takendamage%2==0)
+	if (takendamage %2 == 0)
 	{
-		draw_line_width_color(xx,yy,xx_heart,yy_heart,6,c_black,c_black);
-		draw_line_width_color(xx,yy,xx_heart,yy_heart,3,c_white,c_white);
-		draw_sprite_ext(spr_heart,0,xx_heart,yy_heart,1,1,0,c_white,1);
+		draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
+		draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
+		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, 1);
 	}
 	else
 	{
-		draw_sprite_ext(spr_heart,0,xx_heart,yy_heart,1,1,0,c_white,0.3);
+		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, 0.3);
 	}
 }
 
-if (have_heart_balloon=false)
-and(asset_get_type("obj_heart_balloon")==asset_object)
-and(instance_exists(obj_heart_balloon))
-and(distance_to_object(obj_heart_balloon)<32)
+if (have_heart_balloon = false)
+and (asset_get_type("obj_heart_balloon") == asset_object)
+and (instance_exists(obj_heart_balloon))
+and (distance_to_object(obj_heart_balloon) < 32)
 {
-	xx_heart=lerp(xx_heart,instance_nearest(x,y,obj_heart_balloon).x,1);
-	yy_heart=lerp(yy_heart,instance_nearest(x,y,obj_heart_balloon).y,1);
+	xx_heart = lerp(xx_heart, instance_nearest(x, y, obj_heart_balloon).x, 1);
+	yy_heart = lerp(yy_heart, instance_nearest(x, y, obj_heart_balloon).y, 1);
 }
 else
 {
-	xx_heart=lerp(xx_heart,x,0.1);
-	yy_heart=lerp(yy_heart,y-64,0.1);
+	xx_heart = lerp(xx_heart, x, 0.1);
+	yy_heart = lerp(yy_heart, y - 64, 0.1);
 }
 #endregion /*Heart above head END*/
 
@@ -289,7 +289,7 @@ if (effect_turnaround_subimg < 10)
 	and (horizontal_rope_climb = false)
 	and (asset_get_type("spr_effect_turnaround") == asset_sprite)
 	{
-		draw_sprite_ext(spr_effect_turnaround, effect_turnaround_subimg, x, y, image_xscale, 1, angle, c_white, 0.5);
+		draw_sprite_ext(spr_effect_turnaround, effect_turnaround_subimg, xx, yy, image_xscale, 1, angle, c_white, 0.5);
 	}
 	effect_turnaround_subimg += 1;
 }
@@ -305,7 +305,7 @@ if (effect_speedspark_subimg < 4)
 		and (horizontal_rope_climb = false)
 		and (asset_get_type("spr_speedspark") == asset_sprite)
 		{
-			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, x, bbox_bottom, image_xscale, 1, angle, c_white, 1);
+			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, angle, c_white, 1);
 		}
 	}
 	effect_speedspark_subimg += 1;

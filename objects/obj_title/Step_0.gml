@@ -3,10 +3,23 @@ background_layer_y += 1;
 layer_x(layer_get_id("Background"),background_layer_x);
 layer_y(layer_get_id("Background"),background_layer_y);
 
-if lerp_on == true
+#region /*Menu cursor image speed*/
+menu_cursor_index += 0.3;
+if (menu_cursor_index > 4)
+{
+	menu_cursor_index = 0;
+}
+#endregion /*Menu cursor image speed END*/
+
+if (menu_delay > 0)
+{
+	menu_delay -= 1;
+}
+
+if (lerp_on == true)
 {
 	scroll = lerp(scroll, scroll_to, 0.15)
-	if scroll == scroll_to
+	if (scroll == scroll_to)
 	{
 		lerp_on = false;
 	}

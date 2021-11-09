@@ -32,7 +32,7 @@ mouse_y_position = window_mouse_get_y();
 
 if (keyboard_check(vk_anykey))
 {
-	global.controls_used_for_menu_navigation="keyboard";
+	global.controls_used_for_menu_navigation = "keyboard";
 }
 else
 if (mouse_check_button(mb_any))
@@ -40,7 +40,7 @@ or(mouse_wheel_down())
 or(mouse_wheel_up())
 or(mouse_moving)
 {
-	global.controls_used_for_menu_navigation="mouse";
+	global.controls_used_for_menu_navigation = "mouse";
 }
 else
 if (gamepad_button_check(0,gp_face1))
@@ -64,7 +64,7 @@ or(gamepad_axis_value(0,gp_axislv)<>0)
 or(gamepad_axis_value(0,gp_axisrh)<>0)
 or(gamepad_axis_value(0,gp_axisrv)<>0)
 {
-	global.controls_used_for_menu_navigation="controller";
+	global.controls_used_for_menu_navigation = "controller";
 }
 #endregion /*Set what controls are used to navigate the menus END*/
 
@@ -1804,17 +1804,43 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		
+		if (global.show_deaths_counter = true)
+		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
+		{
+			total_deaths_y = -64;
+			times_cleared_y = -96;
+			best_score_y = -128;
+			best_time_y = -160;
+			show_big_collectibles_y = -192;
+		}
+		else
+		{
+			total_deaths_y = 0;
+			times_cleared_y = -64;
+			best_score_y = -96;
+			best_time_y = -128;
+			show_big_collectibles_y = -160;
+		}
+		
+		#region /*Total number of deaths*/
+		if (global.show_deaths_counter = true)
+		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
+		{
+			draw_text_outlined(x, y + total_deaths_y, "Total Deaths: " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
+		}
+		#endregion /*Total number of deaths END*/
+		
 		#region /*Number of times played*/
 		if (instance_nearest(x, y, obj_level).number_of_clears > 0)
 		{
-			draw_text_outlined(x, y - 64, "Times Cleared: " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y + times_cleared_y, "Times Cleared: " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Number of times played END*/
 		
 		#region /*Show High Score*/
 		if (instance_nearest(x, y, obj_level).level_score > 0)
 		{
-			draw_text_outlined(x, y - 96, "Best Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y + best_score_y, "Best Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show High Score END*/
 		
@@ -1822,7 +1848,7 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
 		and(instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
 		{
-			draw_text_outlined(x, y - 128, "Best Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
+			draw_text_outlined(x, y + best_time_y, "Best Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_second, 2, 0), " ", "0")) + "." +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
 		}
@@ -1837,43 +1863,43 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 		{
 			if (instance_nearest(x, y, obj_level).big_collectible1 = true)
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 160, 0.3, 0.3, 0, c_white, 1);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible2 = true)
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 160, 0.3, 0.3, 0, c_white, 1);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible3 = true)
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 160, 0.3, 0.3, 0, c_white, 1);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible4 = true)
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 160, 0.3, 0.3, 0, c_white, 1);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible5 = true)
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 160, 0.3, 0.3, 0, c_white, 1);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y - 160, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
 			}
 		}
 		#endregion /*Show Big Collectible END*/

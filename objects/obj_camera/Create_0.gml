@@ -12,8 +12,8 @@ show_keyboard_and_mouse_input_change_prompt_y = 0;
 
 delay = 0;
 
-mouse_x_position = mouse_x; /*Mouse x initializing*/
-mouse_y_position = mouse_y; /*Mouse y initializing*/
+mouse_x_position = window_mouse_get_x(); /*Mouse x initializing*/
+mouse_y_position = window_mouse_get_y(); /*Mouse y initializing*/
 
 #region /*Lives Icon*/
 if (file_exists(working_directory + "/custom_characters/character"+string(global.character_for_player_1)+"/data/character_config.ini"))

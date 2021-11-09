@@ -27,7 +27,7 @@ function draw_menu_button_sprite()
 	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(mouse_x,mouse_y,x_position,y_position+1,x_position+spr_width,y_position+spr_height))
-	and(global.controls_used_for_menu_navigation="mouse")
+	and(global.controls_used_for_menu_navigation = "mouse")
 	{
 		if (menu = menu_index)
 		and (global.controls_used_for_menu_navigation = "keyboard")

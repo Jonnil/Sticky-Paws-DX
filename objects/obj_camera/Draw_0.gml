@@ -1,5 +1,3 @@
-//draw_text_outlined(mouse_x+64,mouse_y-64,"x:"+string(mouse_x)+" y:"+string(mouse_y),global.default_text_size,c_white,c_black,1);
-
 scr_set_screen_size();
 
 #region /*Set what controls are used to navigate the menus*/
@@ -20,7 +18,7 @@ or (mouse_wheel_up())
 or (mouse_moving)
 {
 	show_controller_input_change_prompt = 0;
-	if (global.controls_used_for_menu_navigation="controller")
+	if (global.controls_used_for_menu_navigation = "controller")
 	{
 		show_keyboard_and_mouse_input_change_prompt = 100;
 	}
@@ -28,17 +26,17 @@ or (mouse_moving)
 
 if (keyboard_check(vk_anykey))
 {
-	global.controls_used_for_menu_navigation="keyboard";
+	global.controls_used_for_menu_navigation = "keyboard";
 }
-else
+
 if (mouse_check_button(mb_any))
 or (mouse_wheel_down())
 or (mouse_wheel_up())
 or (mouse_moving)
 {
-	global.controls_used_for_menu_navigation="mouse";
+	global.controls_used_for_menu_navigation = "mouse";
 }
-else
+
 if (gamepad_button_check(0,gp_face1))
 or (gamepad_button_check(0,gp_face2))
 or (gamepad_button_check(0,gp_face3))
@@ -61,9 +59,9 @@ or (gamepad_axis_value(0,gp_axisrh)<>0)
 or (gamepad_axis_value(0,gp_axisrv)<>0)
 {
 	show_keyboard_and_mouse_input_change_prompt = 0;
-	if (global.controls_used_for_menu_navigation!="controller")
+	if (global.controls_used_for_menu_navigation != "controller")
 	{
-		global.controls_used_for_menu_navigation="controller";
+		global.controls_used_for_menu_navigation = "controller";
 		show_controller_input_change_prompt = 100;
 	}
 }
@@ -916,7 +914,7 @@ else
 #region /*Tongue aim should always be above everything, it represents the mouse cursor*/
 if (asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
-and(player1 > noone)
+and(player1 >= 1)
 and(can_spawn_player1 = true)
 {
 	if (player1.allow_tongue = true)
@@ -971,7 +969,7 @@ and (!instance_exists(obj_player_map))
 ///Multiplayer - Has pressed keys
 
 #region /*Player 1 Show Controls HUD timer*/
-if (player1 > noone)
+if (player1 >= 1)
 and(can_spawn_player1 = true)
 and(asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
@@ -1049,7 +1047,7 @@ else
 #endregion /*Player 1 Show Controls HUD timer*/
 
 #region /*Player 2 Show Controls HUD timer*/
-if (player2 > noone)
+if (player2 >= 1)
 and(asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
 and(iris_xscale >= 10)
@@ -1126,7 +1124,7 @@ else
 #endregion /*Player 2 Show Controls HUD timer*/
 
 #region /*Player 3 Show Controls HUD timer*/
-if (player3 > noone)
+if (player3 >= 1)
 and(asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
 and(iris_xscale >= 10)
@@ -1203,7 +1201,7 @@ else
 #endregion /*Player 3 Show Controls HUD timer*/
 
 #region /*Player 4 Show Controls HUD timer*/
-if (player4 > noone)
+if (player4 >= 1)
 and(asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
 and(iris_xscale >= 10)

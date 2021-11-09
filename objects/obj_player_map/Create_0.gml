@@ -6,8 +6,8 @@ global.pause_room = noone;
 depth = -100;
 
 #region /*Mouse x and mouse y initializing*/
-mouse_x_position = mouse_x;
-mouse_y_position = mouse_y;
+mouse_x_position = window_mouse_get_x();
+mouse_y_position = window_mouse_get_y();
 #endregion /*Mouse x and mouse y initializing END*/
 
 if (asset_get_type("spr_wall") == asset_sprite)

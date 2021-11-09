@@ -6,6 +6,11 @@ iris_yscale=16;
 iris_zoom=0;
 xx=x;
 yy=y;
+menu = "continue";
+menu_cursor_index = 0;
+game_over_menu_y = 370;
+game_over_menu_seperation_distance = 64;
+menu_delay = 0;
 
 #region /*Game Over variables*/
 game_over_sprite_y = -300;
@@ -16,6 +21,16 @@ sprite_game_over_character_portrait = noone;
 default_voice_pitch=1;
 default_xscale=1;
 default_yscale=1;
+
+#region /*Save how many times you have died*/
+if (global.file >= 1)
+and (global.character_select_in_this_menu = "main_game")
+{
+	ini_open("file" + string(global.file) + ".ini");
+	ini_write_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"number_of_deaths",ini_read_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"number_of_deaths",0)+1);
+	ini_close();
+}
+#endregion /*Save how many times you have died END*/
 
 bubble=false;
 if (bubble=false)

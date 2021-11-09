@@ -392,7 +392,7 @@ function scr_character_select_menu()
 	
 		#region /*Player 1*/
 		if (player1_menu = "select_character")
-		or (global.controls_used_for_menu_navigation="mouse")
+		or (global.controls_used_for_menu_navigation = "mouse")
 		{
 			if (player1_accept_selection = false)
 			{
@@ -442,7 +442,7 @@ function scr_character_select_menu()
 					}
 					
 					if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player1_display_x-75-16, window_get_height()/2-16, window_get_width()/2+player1_display_x-75+16, window_get_height()/2+16))
-					and (global.controls_used_for_menu_navigation="mouse")
+					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						player1_menu = "select_character";
 						draw_set_alpha(0.5);
@@ -481,7 +481,7 @@ function scr_character_select_menu()
 					}
 				
 					if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player1_display_x+75-16, window_get_height()/2-16, window_get_width()/2+player1_display_x+75+16, window_get_height()/2+16))
-					and (global.controls_used_for_menu_navigation="mouse")
+					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						player1_menu = "select_character";
 						draw_set_alpha(0.5);
@@ -497,7 +497,7 @@ function scr_character_select_menu()
 
 		#region /*Player 2*/
 		if (player2_menu = "select_character")
-		or (global.controls_used_for_menu_navigation="mouse")
+		or (global.controls_used_for_menu_navigation = "mouse")
 		{
 			if (player2_accept_selection = false)
 			{
@@ -540,7 +540,7 @@ function scr_character_select_menu()
 					}
 			
 					if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player2_display_x-75-16, window_get_height()/2-16, window_get_width()/2+player2_display_x-75+16, window_get_height()/2+16))
-					and (global.controls_used_for_menu_navigation="mouse")
+					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						player2_menu = "select_character";
 						draw_set_alpha(0.5);
@@ -578,7 +578,7 @@ function scr_character_select_menu()
 					}
 			
 					if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player2_display_x+75-16, window_get_height()/2-16, window_get_width()/2+player2_display_x+75+16, window_get_height()/2+16))
-					and (global.controls_used_for_menu_navigation="mouse")
+					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						player2_menu = "select_character";
 						draw_set_alpha(0.5);
@@ -594,7 +594,7 @@ function scr_character_select_menu()
 
 		#region /*Player 3*/
 		if (player3_menu = "select_character")
-		or (global.controls_used_for_menu_navigation="mouse")
+		or (global.controls_used_for_menu_navigation = "mouse")
 		{
 			if (player3_accept_selection = false)
 			{
@@ -637,7 +637,7 @@ function scr_character_select_menu()
 					}
 			
 					if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player3_display_x-75-16, window_get_height()/2-16, window_get_width()/2+player3_display_x-75+16, window_get_height()/2+16))
-					and (global.controls_used_for_menu_navigation="mouse")
+					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						player3_menu = "select_character";
 						draw_set_alpha(0.5);
@@ -675,7 +675,7 @@ function scr_character_select_menu()
 					}
 			
 					if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player3_display_x+75-16, window_get_height()/2-16, window_get_width()/2+player3_display_x+75+16, window_get_height()/2+16))
-					and (global.controls_used_for_menu_navigation="mouse")
+					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						player3_menu = "select_character";
 						draw_set_alpha(0.5);
@@ -691,7 +691,7 @@ function scr_character_select_menu()
 	
 		#region /*Player 4*/
 		if (player4_menu = "select_character")
-		or (global.controls_used_for_menu_navigation="mouse")
+		or (global.controls_used_for_menu_navigation = "mouse")
 		{
 			if (player4_accept_selection = false)
 			{
@@ -734,7 +734,7 @@ function scr_character_select_menu()
 					}
 			
 					if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player4_display_x-75-16, window_get_height()/2-16, window_get_width()/2+player4_display_x-75+16, window_get_height()/2+16))
-					and (global.controls_used_for_menu_navigation="mouse")
+					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						player4_menu = "select_character";
 						draw_set_alpha(0.5);
@@ -772,7 +772,7 @@ function scr_character_select_menu()
 					}
 			
 					if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player4_display_x+75-16, window_get_height()/2-16, window_get_width()/2+player4_display_x+75+16, window_get_height()/2+16))
-					and (global.controls_used_for_menu_navigation="mouse")
+					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						player4_menu = "select_character";
 						draw_set_alpha(0.5);
@@ -803,12 +803,12 @@ function scr_character_select_menu()
 	and (can_input_player2_name = false)
 	and (can_input_player3_name = false)
 	and (can_input_player4_name = false)
-	or (global.controls_used_for_menu_navigation="mouse")
+	or (global.controls_used_for_menu_navigation = "mouse")
 	{
 		if (player1_accept_selection = false)
 		{
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player1_display_x-100, window_get_height()/2+150-20, window_get_width()/2+player1_display_x+100, window_get_height()/2+150+20))
-			and (global.controls_used_for_menu_navigation="mouse")
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				player1_menu = "select_character";
 			
@@ -857,7 +857,7 @@ function scr_character_select_menu()
 		if (player1_accept_selection = true)
 		{
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player1_display_x-100, window_get_height()/2+150-20, window_get_width()/2+player1_display_x+100, window_get_height()/2+150+20))
-			and (global.controls_used_for_menu_navigation="mouse")
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				player1_menu = "select_character";
 			
@@ -923,12 +923,12 @@ function scr_character_select_menu()
 	and (can_input_player2_name = false)
 	and (can_input_player3_name = false)
 	and (can_input_player4_name = false)
-	or (global.controls_used_for_menu_navigation="mouse")
+	or (global.controls_used_for_menu_navigation = "mouse")
 	{
 		if (player2_accept_selection = false)
 		{
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player2_display_x-100, window_get_height()/2+150-20, window_get_width()/2+player2_display_x+100, window_get_height()/2+150+20))
-			and (global.controls_used_for_menu_navigation="mouse")
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				player2_menu = "select_character";
 			
@@ -973,7 +973,7 @@ function scr_character_select_menu()
 		if (player2_accept_selection = true)
 		{
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player2_display_x-100, window_get_height()/2+150-20, window_get_width()/2+player2_display_x+100, window_get_height()/2+150+20))
-			and (global.controls_used_for_menu_navigation="mouse")
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				player2_menu = "select_character";
 			
@@ -1038,12 +1038,12 @@ function scr_character_select_menu()
 	and (can_input_player2_name = false)
 	and (can_input_player3_name = false)
 	and (can_input_player4_name = false)
-	or (global.controls_used_for_menu_navigation="mouse")
+	or (global.controls_used_for_menu_navigation = "mouse")
 	{
 		if (player3_accept_selection = false)
 		{
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player3_display_x-100, window_get_height()/2+150-20, window_get_width()/2+player3_display_x+100, window_get_height()/2+150+20))
-			and (global.controls_used_for_menu_navigation="mouse")
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				player3_menu = "select_character";
 			
@@ -1088,7 +1088,7 @@ function scr_character_select_menu()
 		if (player3_accept_selection = true)
 		{
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player3_display_x-100, window_get_height()/2+150-20, window_get_width()/2+player3_display_x+100, window_get_height()/2+150+20))
-			and (global.controls_used_for_menu_navigation="mouse")
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				player3_menu = "select_character";
 			
@@ -1153,12 +1153,12 @@ function scr_character_select_menu()
 	and (can_input_player2_name = false)
 	and (can_input_player3_name = false)
 	and (can_input_player4_name = false)
-	or (global.controls_used_for_menu_navigation="mouse")
+	or (global.controls_used_for_menu_navigation = "mouse")
 	{
 		if (player4_accept_selection = false)
 		{
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player4_display_x-100, window_get_height()/2+150-20, window_get_width()/2+player4_display_x+100, window_get_height()/2+150+20))
-			and (global.controls_used_for_menu_navigation="mouse")
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				player4_menu = "select_character";
 			
@@ -1207,7 +1207,7 @@ function scr_character_select_menu()
 			window_get_height()/2+150-20,
 			window_get_width()/2+player4_display_x+100,
 			window_get_height()/2+150+20))
-			and (global.controls_used_for_menu_navigation="mouse")
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				player4_menu = "select_character";
 			
@@ -1486,7 +1486,7 @@ function scr_character_select_menu()
 	
 		if (player1_menu = "select_name")
 		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player1_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player1_display_x+150, window_get_height()/2+250+16))
-		and (global.controls_used_for_menu_navigation="mouse")
+		and (global.controls_used_for_menu_navigation = "mouse")
 		and (can_input_player1_name = false)
 		and (can_input_player2_name = false)
 		and (can_input_player3_name = false)
@@ -1554,7 +1554,7 @@ function scr_character_select_menu()
 	
 		if (player2_menu = "select_name")
 		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player2_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player2_display_x+150, window_get_height()/2+250+16))
-		and (global.controls_used_for_menu_navigation="mouse")
+		and (global.controls_used_for_menu_navigation = "mouse")
 		and (can_input_player1_name = false)
 		and (can_input_player2_name = false)
 		and (can_input_player3_name = false)
@@ -1622,7 +1622,7 @@ function scr_character_select_menu()
 	
 		if (player3_menu = "select_name")
 		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player3_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player3_display_x+150, window_get_height()/2+250+16))
-		and (global.controls_used_for_menu_navigation="mouse")
+		and (global.controls_used_for_menu_navigation = "mouse")
 		and (can_input_player1_name = false)
 		and (can_input_player2_name = false)
 		and (can_input_player3_name = false)
@@ -1690,7 +1690,7 @@ function scr_character_select_menu()
 	
 		if (player4_menu = "select_name")
 		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2+player4_display_x-150, window_get_height()/2+250-16, window_get_width()/2+player4_display_x+150, window_get_height()/2+250+16))
-		and (global.controls_used_for_menu_navigation="mouse")
+		and (global.controls_used_for_menu_navigation = "mouse")
 		and (can_input_player1_name = false)
 		and (can_input_player2_name = false)
 		and (can_input_player3_name = false)
@@ -4349,7 +4349,7 @@ and (player4_accept_selection >= 0)
 				play_the_game_text_y-32,
 				window_get_width(),
 				play_the_game_text_y+32,))
-				and (global.controls_used_for_menu_navigation="mouse")
+				and (global.controls_used_for_menu_navigation = "mouse")
 				{
 					draw_rectangle_color(
 					0,

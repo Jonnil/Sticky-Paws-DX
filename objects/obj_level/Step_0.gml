@@ -13,6 +13,7 @@ if (initialize_level_timer = 1)
 	if (ini_section_exists(string(ds_list_find_value(global.all_loaded_main_levels,level))))
 	{
 		clear_rate = ini_read_string(string(ds_list_find_value(global.all_loaded_main_levels,level)), "clear_rate", "closed");
+		number_of_deaths = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,level)), "number_of_deaths", 0);
 		number_of_clears = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,level)), "number_of_clears", 0);
 		big_collectible1 = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,level)), "big_collectible1", 0);
 		big_collectible2 = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,level)), "big_collectible2", 0);
@@ -36,6 +37,7 @@ if (initialize_level_timer = 1)
 	{
 		ini_write_string(string(ds_list_find_value(global.all_loaded_main_levels,level)), "clear_rate", "closed");
 		clear_rate = "closed";
+		number_of_deaths = 0;
 		number_of_clears = 0;
 		big_collectible1 = false;
 		big_collectible2 = false;
@@ -68,6 +70,7 @@ else
 	ini_open("file" + string(global.file) + ".ini");
 	ini_write_string(string(ds_list_find_value(global.all_loaded_main_levels,level)), "clear_rate", "closed");
 	clear_rate = "closed";
+	number_of_deaths = 0;
 	number_of_clears = 0;
 	big_collectible1 = false;
 	big_collectible2 = false;

@@ -4,7 +4,7 @@ function scr_savelevel()
 	if (global.file >= 1)
 	and (global.character_select_in_this_menu = "main_game")
 	{
-		ini_open("file"+string(global.file)+".ini");
+		ini_open("file" + string(global.file) + ".ini");
 		
 		if (global.level_clear_rate = "clear")
 		and(ini_read_string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"clear_rate","closed")!="clear")

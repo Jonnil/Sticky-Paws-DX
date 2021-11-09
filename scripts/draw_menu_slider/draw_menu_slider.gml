@@ -23,7 +23,7 @@ function draw_menu_slider()
 	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position-16,x_position+320,y_position+16))
-	and (global.controls_used_for_menu_navigation="mouse")
+	and (global.controls_used_for_menu_navigation = "mouse")
 	and (menu_delay = 0)
 	and (open_dropdown = false)
 	{
@@ -37,7 +37,7 @@ function draw_menu_slider()
 		draw_rectangle_color(x_position-2,y_position-16-2,x_position+320+2,y_position+16+2,c_black,c_black,c_black,c_black,false);
 		
 		#region /*Click to change value*/
-		if (global.controls_used_for_menu_navigation="mouse")
+		if (global.controls_used_for_menu_navigation = "mouse")
 		and (mouse_check_button(mb_left))
 		{
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position-32,y_position-32,x_position+8,y_position+32))
@@ -332,12 +332,12 @@ function draw_menu_slider()
 	
 	#region /*Clicking the menu button*/
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+320,y_position+41))
-	and (global.controls_used_for_menu_navigation="mouse")
+	and (global.controls_used_for_menu_navigation = "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	and (menu != "assist_enable")
 	and (menu_delay = 0)
 	or (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+320,y_position+41))
-	and (global.controls_used_for_menu_navigation="mouse")
+	and (global.controls_used_for_menu_navigation = "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	and (global.assist_enable = true)
 	and (menu = "assist_enable")

@@ -37,12 +37,12 @@ function draw_menu_dropdown()
 	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
-	and (global.controls_used_for_menu_navigation="mouse")
+	and (global.controls_used_for_menu_navigation = "mouse")
 	and (menu != "assist_enable")
 	and (menu_delay = 0)
 	and (open_dropdown = false)
 	or (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
-	and (global.controls_used_for_menu_navigation="mouse")
+	and (global.controls_used_for_menu_navigation = "mouse")
 	and (global.assist_enable = true)
 	and (menu = "assist_enable")
 	and (menu_delay = 0)
@@ -58,9 +58,9 @@ function draw_menu_dropdown()
 	else
 	{
 		if (menu=menu_index)
-		and(global.controls_used_for_menu_navigation="keyboard")
+		and(global.controls_used_for_menu_navigation = "keyboard")
 		or (menu=menu_index)
-		and(global.controls_used_for_menu_navigation="controller")
+		and(global.controls_used_for_menu_navigation = "controller")
 		{
 			draw_sprite_ext(spr_menu_dropdown,0,x_position+32,y_position+21,1,1,0,c_gray,1);
 		}
@@ -80,13 +80,13 @@ function draw_menu_dropdown()
 	
 	#region /*Clicking the menu button*/
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
-	and (global.controls_used_for_menu_navigation="mouse")
+	and (global.controls_used_for_menu_navigation = "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	and (menu != "assist_enable")
 	and (menu_delay = 0)
 	and (open_dropdown = false)
 	or (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
-	and (global.controls_used_for_menu_navigation="mouse")
+	and (global.controls_used_for_menu_navigation = "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	and (global.assist_enable = true)
 	and (menu = "assist_enable")
@@ -185,7 +185,7 @@ function draw_menu_dropdown()
 	
 	#region /*Clicking outside the menu button*/
 	if (!point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+32,y_position+2,x_position+555+32,y_position+41))
-	and (global.controls_used_for_menu_navigation="mouse")
+	and (global.controls_used_for_menu_navigation = "mouse")
 	and (open_dropdown = true)
 	and (menu = menu_index)
 	and (menu_delay = 0)

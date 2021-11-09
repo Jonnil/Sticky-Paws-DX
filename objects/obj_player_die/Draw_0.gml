@@ -30,7 +30,7 @@ if (player=4)
 
 #endregion /*Color Skin END*/
 
-count+=1;
+count += 1;
 
 #region /*Check if the last player just died*/
 if (count=1)
@@ -161,7 +161,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 		#region /*Disable the players for the camera*/
 		
 		#region /*Disable player 1*/
-		if (player=1)
+		if (player = 1)
 		{
 			with(obj_camera)
 			{
@@ -172,7 +172,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 		#endregion /*Disable player 1 END*/
 		
 		#region /*Disable player 2*/
-		if (player=2)
+		if (player = 2)
 		{
 			with(obj_camera)
 			{
@@ -183,7 +183,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 		#endregion /*Disable player 2 END*/
 		
 		#region /*Disable player 3*/
-		if (player=3)
+		if (player = 3)
 		{
 			with(obj_camera)
 			{
@@ -194,7 +194,7 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 		#endregion /*Disable player 3 END*/
 		
 		#region /*Disable player 4*/
-		if (player=4)
+		if (player = 4)
 		{
 			with(obj_camera)
 			{
@@ -452,83 +452,3 @@ and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(v
 	}
 }
 #endregion /*Display Player Number and Name END*/
-
-#region /*Game Over*/
-if (lives <= 0)
-{
-	
-	#region /*When you get a game over, reset checkpoints*/
-	global.x_checkpoint=0;
-	global.y_checkpoint=0;
-	global.checkpoint_millisecond=0;
-	global.checkpoint_second=0;
-	global.checkpoint_minute=0;
-	global.checkpoint_realmillisecond=0;
-	#endregion /*When you get a game over, reset checkpoints END*/
-	
-	draw_set_halign(fa_center);
-	if (iris_xscale <= 0.3)
-	{
-		game_over_sprite_y = lerp(game_over_sprite_y, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 170, 0.07);
-		game_over_text_y = lerp(game_over_text_y, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 170, 0.1);
-	}
-	
-	if (sprite_game_over_character_portrait > noone)
-	{
-		draw_sprite(sprite_game_over_character_portrait, image_index, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, game_over_sprite_y);
-	}
-	
-	draw_sprite(spr_game_over_text, image_index, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, game_over_text_y);
-	
-	if (keyboard_check_pressed(global.player1_key_jump))
-	or (keyboard_check_pressed(global.player2_key_jump))
-	or (keyboard_check_pressed(global.player3_key_jump))
-	or (keyboard_check_pressed(global.player4_key_jump))
-	or (keyboard_check_pressed(global.player1_key2_jump))
-	or (keyboard_check_pressed(global.player2_key2_jump))
-	or (keyboard_check_pressed(global.player3_key2_jump))
-	or (keyboard_check_pressed(global.player4_key2_jump))
-	or (gamepad_button_check_pressed(0, gp_face1))
-	or (gamepad_button_check_pressed(1, gp_face1))
-	or (gamepad_button_check_pressed(2, gp_face1))
-	or (gamepad_button_check_pressed(3, gp_face1))
-	{
-		if (global.playergame = 0)
-		{
-			lives = 5;
-		}
-		if (global.playergame = 1)
-		{
-			lives = 10;
-		}
-		if (global.playergame = 2)
-		{
-			lives = 15;
-		}
-		if (global.playergame = 3)
-		{
-			lives = 20;
-		}
-		
-		#region /*Reset Level*/
-		global.timeattack_realmillisecond=0;
-		global.theme="ground";
-		global.level_clear_rate = "enter";
-		score = 0;
-		scr_savelevel();
-		audio_stop_all();
-		
-		#region /*Go to level editor if you die in level editor*/
-		if (asset_get_type("room_leveleditor")==asset_room)
-		and(room=room_leveleditor)
-		{
-			global.play_edited_level = false;
-			room_restart();
-		}
-		#endregion /*Go to level editor if you die in level editor END*/
-		
-		#endregion /*Reset Level END*/
-		
-	}
-}
-#endregion /*Game Over END*/
