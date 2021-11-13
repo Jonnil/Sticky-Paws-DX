@@ -1,4 +1,23 @@
 ///Draw Event
+draw_set_alpha(0.5);
+draw_rectangle_color(camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), 0, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
+draw_set_alpha(1);
+draw_line_width_color(0, camera_get_view_y(view_camera[0]), 0, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), 4, c_white, c_white);
+draw_line_width_color(0, camera_get_view_y(view_camera[0]), 0, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), 2, c_black, c_black);
+
+draw_set_alpha(0.5);
+draw_rectangle_color(1, camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), 0, c_black, c_black, c_black, c_black, false);
+draw_set_alpha(1);
+draw_line_width_color(camera_get_view_x(view_camera[0]), 0, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), 0, 4, c_white, c_white);
+draw_line_width_color(camera_get_view_x(view_camera[0]), 0, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), 0, 2, c_black, c_black);
+
+/*Level Height Line*/
+draw_line_width_color(camera_get_view_x(view_camera[0]), obj_level_height.y-16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), obj_level_height.y-16, 4, c_white, c_white);
+draw_line_width_color(camera_get_view_x(view_camera[0]), obj_level_height.y-16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), obj_level_height.y-16, 2, c_black, c_black);
+
+/*Level Width Line*/
+draw_line_width_color(obj_level_width.x-16, camera_get_view_y(view_camera[0]), obj_level_width.x-16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), 4, c_white, c_white);
+draw_line_width_color(obj_level_width.x-16, camera_get_view_y(view_camera[0]), obj_level_width.x-16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), 2, c_black, c_black);
 
 #region /*Set what controls are used to navigate the menus*/
 
@@ -77,23 +96,6 @@ and(!instance_exists(obj_title))
 }
 #endregion /*Background Brightness in Gameplay Options END*/
 
-#region /*Fullscreen Toggle if camera doesn't exist. Default: F11*/
-if (keyboard_check_pressed(global.fullscreen_key))
-{
-	if (window_get_fullscreen())
-	{
-		window_set_fullscreen(false);
-	}
-	else
-	{
-		window_set_fullscreen(true);
-	}
-	ini_open("config.ini");
-	ini_write_real("config","fullscreen_mode",window_get_fullscreen());
-	ini_close();
-}
-#endregion /*Fullscreen Toggle if camera doesn't exist. Default: F11 END*/
-
 #region /*Backgrounds*/
 layer_background_sprite(layer_background_get_id(layer_get_id("Background")),global.custom_background1);
 layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")),global.custom_background2);
@@ -149,92 +151,6 @@ and(!instance_exists(obj_foreground2))
 	instance_create_depth(0,0,0,obj_foreground2);
 }
 #endregion /*Spawn transparent foreground END*/
-
-#region /*Parallax Scrolling Background*/
-layer_x(layer_get_id("Background"),camera_get_view_x(view_camera[view_current])/3);
-layer_y(layer_get_id("Background"),camera_get_view_y(view_camera[view_current])/3);
-layer_x(layer_get_id("Background_2"),camera_get_view_x(view_camera[view_current])/4);
-layer_y(layer_get_id("Background_2"),camera_get_view_y(view_camera[view_current])/4);
-layer_x(layer_get_id("Background_3"),camera_get_view_x(view_camera[view_current])/7);
-layer_y(layer_get_id("Background_3"),camera_get_view_y(view_camera[view_current])/7);
-layer_x(layer_get_id("Background_4"),camera_get_view_x(view_camera[view_current])/9);
-layer_y(layer_get_id("Background_4"),camera_get_view_y(view_camera[view_current])/9);
-#endregion /*Parallax Scrolling Background END*/
-
-#region /*Deactivate instances outside view*/
-if (startup_loading_timer<=3)
-{
-	startup_loading_timer+=1;
-}
-
-if (quit_level_editor=0)
-and(global.play_edited_level = false)
-and(startup_loading_timer>=3)
-{
-	instance_activate_all();
-	if (global.deactivate_objects_outsiede_view=true)
-	{
-		instance_deactivate_region(
-		camera_get_view_x(view_camera[view_current])-32,
-		camera_get_view_y(view_camera[view_current])-32,
-		camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])+32,
-		camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+32,
-		false,true);
-	}
-}
-else
-{
-	instance_activate_all();
-}
-
-#region /*Activate objects that always should be active*/
-if (asset_get_type("obj_player")==asset_object)
-{
-	instance_activate_object(obj_player);
-}
-if (asset_get_type("obj_player_die")==asset_object)
-{
-	instance_activate_object(obj_player_die);
-}
-if (asset_get_type("obj_foreground1")==asset_object)
-{
-	instance_activate_object(obj_foreground1);
-}
-if (asset_get_type("obj_foreground2")==asset_object)
-{
-	instance_activate_object(obj_foreground2);
-}
-if (asset_get_type("obj_level_player_1_start")==asset_object)
-{
-	instance_activate_object(obj_level_player_1_start);
-}
-if (asset_get_type("obj_level_player_2_start")==asset_object)
-{
-	instance_activate_object(obj_level_player_2_start);
-}
-if (asset_get_type("obj_level_player_3_start")==asset_object)
-{
-	instance_activate_object(obj_level_player_3_start);
-}
-if (asset_get_type("obj_level_player_4_start")==asset_object)
-{
-	instance_activate_object(obj_level_player_4_start);
-}
-if (asset_get_type("obj_level_end")==asset_object)
-{
-	instance_activate_object(obj_level_end);
-}
-if (asset_get_type("obj_level_height")==asset_object)
-{
-	instance_activate_object(obj_level_height);
-}
-if (asset_get_type("obj_level_width")==asset_object)
-{
-	instance_activate_object(obj_level_width);
-}
-#endregion /*Activate objects that always should be active END*/
-
-#endregion /*Deactivate instances outside view END*/
 
 #region /*Controls for level editor*/
 gamepad_set_axis_deadzone(0,0.5);
@@ -526,7 +442,7 @@ if (quit_level_editor<=0)
 draw_set_alpha(1);
 #endregion /*Draw Grid END*/
 
-#region /*Zoom In and Out*/
+#region /*Zoom In and Out (Draw red rectangles around the screen when you can't zoom any more)*/
 if (pause=false)
 {
 
@@ -534,7 +450,7 @@ if (pause=false)
 	if (zoom_out=true)
 	{
 		if (camera_get_view_width(view_camera[view_current])<room_width)
-		and(camera_get_view_height(view_camera[view_current])<room_height)
+		and (camera_get_view_height(view_camera[view_current])<room_height)
 		{
 			camera_set_view_size((view_camera[view_current]),camera_get_view_width(view_camera[view_current])+8,camera_get_view_height(view_camera[view_current])+4.5);
 			camera_set_view_pos((view_camera[view_current]),camera_get_view_x(view_camera[view_current])-4,camera_get_view_y(view_camera[view_current])-2.5);
@@ -555,6 +471,56 @@ if (pause=false)
 	if (zoom_reset=true)
 	{
 		scr_set_screen_size();
+		
+		#region /*Limit so cursor and view can't go outside room*/
+
+		#region /*Limit controller x and controller y inside room*/
+		if (controller_x<camera_get_view_x(view_camera[view_current]))
+		{
+			controller_x=camera_get_view_x(view_camera[view_current]);
+		}
+		if (controller_x>camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
+		{
+			controller_x=camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]);
+		}
+		if (controller_y<camera_get_view_y(view_camera[view_current]))
+		{
+			controller_y=camera_get_view_y(view_camera[view_current]);
+		}
+		if (controller_y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
+		{
+			controller_y=camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]);
+		}
+		#endregion /*Limit controller x and controller y inside room END*/
+
+		#region /*Limit x and y inside room*/
+		if (x<camera_get_view_x(view_camera[view_current]))
+		{
+			x=camera_get_view_x(view_camera[view_current]);
+		}
+		if (x>camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
+		{
+			x=camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]);
+		}
+		if (y<camera_get_view_y(view_camera[view_current]))
+		{
+			y=camera_get_view_y(view_camera[view_current]);
+		}
+		if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
+		{
+			y=camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]);
+		}
+		#endregion /*Limit x and y inside room END*/
+
+		#region /*Limit view inside room*/
+		camera_set_view_pos(
+		view_camera[view_current],
+		max(0,min(camera_get_view_x(view_camera[view_current]),room_width-camera_get_view_width(view_camera[view_current]))),
+		max(0,min(camera_get_view_y(view_camera[view_current]),room_height-camera_get_view_height(view_camera[view_current]))));
+		#endregion /*Limit view inside room END*/
+
+		#endregion /*Limit so view and cursor can't go outside room END*/
+		
 	}
 	#endregion /*Reset Zoom END*/
 	
@@ -563,8 +529,8 @@ if (pause=false)
 	#region /*Zoom In*/
 	if (zoom_in=true)
 	{
-		if (camera_get_view_width(view_camera[view_current])>1392/2)
-		and(camera_get_view_height(view_camera[view_current])>736/2)
+		if (camera_get_view_width(view_camera[view_current])>696)
+		and (camera_get_view_height(view_camera[view_current])>368)
 		{
 			camera_set_view_size((view_camera[view_current]),camera_get_view_width(view_camera[view_current])-8,camera_get_view_height(view_camera[view_current])-4.5);
 			camera_set_view_pos((view_camera[view_current]),camera_get_view_x(view_camera[view_current])+4,camera_get_view_y(view_camera[view_current])+2.5);
@@ -580,26 +546,7 @@ if (pause=false)
 	#endregion /*Zoom In END*/
 
 }
-#endregion /*Zoom In and Out End*/
-
-#region /*Always keep the brush size within these values*/
-if (place_brush_size<0)
-{
-	place_brush_size=0;
-}
-if (place_brush_size>5)
-{
-	place_brush_size=5;
-}
-if (erase_brush_size<0)
-{
-	erase_brush_size=0;
-}
-if (erase_brush_size>5)
-{
-	erase_brush_size=5;
-}
-#endregion /*Always keep the brush size within these values END*/
+#endregion /*Zoom In and Out (Draw red rectangles around the screen when you can't zoom any more) End*/
 
 #region /*Select Object Menu*/
 if (mouse_check_button(mb_any))
@@ -1640,55 +1587,6 @@ or(mouse_check_button(mb_middle))
 #endregion /*Scroll View End*/
 
 }
-
-#region /*Limit so cursor and view can't go outside room*/
-
-#region /*Limit controller x and controller y inside room*/
-if (controller_x<camera_get_view_x(view_camera[view_current]))
-{
-	controller_x=camera_get_view_x(view_camera[view_current]);
-}
-if (controller_x>camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
-{
-	controller_x=camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]);
-}
-if (controller_y<camera_get_view_y(view_camera[view_current]))
-{
-	controller_y=camera_get_view_y(view_camera[view_current]);
-}
-if (controller_y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
-{
-	controller_y=camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]);
-}
-#endregion /*Limit controller x and controller y inside room END*/
-
-#region /*Limit x and y inside room*/
-if (x<camera_get_view_x(view_camera[view_current]))
-{
-	x=camera_get_view_x(view_camera[view_current]);
-}
-if (x>camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
-{
-	x=camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]);
-}
-if (y<camera_get_view_y(view_camera[view_current]))
-{
-	y=camera_get_view_y(view_camera[view_current]);
-}
-if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
-{
-	y=camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]);
-}
-#endregion /*Limit x and y inside room END*/
-
-#region /*Limit view inside room*/
-camera_set_view_pos(
-view_camera[view_current],
-max(0,min(camera_get_view_x(view_camera[view_current]),room_width-camera_get_view_width(view_camera[view_current]))),
-max(0,min(camera_get_view_y(view_camera[view_current]),room_height-camera_get_view_height(view_camera[view_current]))));
-#endregion /*Limit view inside room END*/
-
-#endregion /*Limit so view and cursor can't go outside room END*/
 
 #region /*Menu Navigation Delay*/
 if (menu_delay>0)

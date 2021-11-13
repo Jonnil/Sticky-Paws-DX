@@ -51,6 +51,7 @@ if (cutscene = 1)
 		time += 30;
 	}
 	if (time >= room_speed*0.25)
+	and (!position_meeting(x+32, y, obj_wall))
 	{
 		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
 		hspeed = +12;
@@ -68,6 +69,7 @@ if (cutscene = 2)
 {
 	time += 1;
 	if (time >= room_speed*2)
+	and (!position_meeting(x+32, y, obj_wall))
 	{
 		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
 		hspeed = +7;

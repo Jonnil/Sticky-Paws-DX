@@ -5,7 +5,8 @@ function scr_start_intro_animations()
 	if (global.x_checkpoint <= 0) /*Make sure that you aren't in the middle of a level by touching a checkpoint*/
 	and (global.y_checkpoint <= 0)
 	{
-		/*This intro animation is called "cake_stolen", more intros can be added here*/
+		
+		#region /*This intro animation is called "cake_stolen", more intros can be added here*/
 		if (intro_animation = "cake_stolen")
 		and (instance_exists(obj_camera))
 		and (obj_camera.intro_animation_play_only_once = false)
@@ -63,6 +64,54 @@ function scr_start_intro_animations()
 				intro_animation = "";
 			}
 		}
+		#endregion /*This intro animation is called "cake_stolen", more intros can be added here END*/
+		
+		else
+		
+		#region /*This intro animation is called "ending", more intros can be added here*/
+		if (intro_animation = "ending")
+		and (instance_exists(obj_camera))
+		and (obj_camera.intro_animation_play_only_once = false)
+		or (intro_animation = "ending")
+		and (instance_exists(obj_camera))
+		and (obj_camera.intro_animation_play_only_once = true)
+		and (global.current_level_clear_rate = "enter")
+		{
+			can_move = false;
+			cutscene_time += 1;
+			intro_animation_image_index += 0.4;
+			if (cutscene_time <= 1)
+			{
+				x = -16-sprite_width;
+				hspeed = 0;
+				instance_create_depth(-16-sprite_width, y, 0, obj_cake);
+				with(instance_create_depth(-16-sprite_width, y, 0, obj_cake_stealing_enemy))
+				{
+					time = room_speed*2;
+				}
+				intro_animation_sprite = sprite_run;
+				image_index = 0;
+				image_speed = 1;
+			}
+			else
+			if (cutscene_time >= 60*1)
+			and (cutscene_time < 60*2)
+			{
+				x += 8;
+				intro_animation_sprite = sprite_run;
+				image_index = 0;
+				image_speed = 1;
+			}
+			else
+			if (cutscene_time > 60*2)
+			{
+				hspeed += 8;
+				can_move = true;
+				intro_animation = "";
+			}
+		}
+		#endregion /*This intro animation is called "cake_stolen", more intros can be added here END*/
+		
 		else
 		{
 			intro_animation = "";

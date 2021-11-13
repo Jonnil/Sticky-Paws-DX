@@ -556,7 +556,7 @@ and(instance_exists(obj_leveleditor))
 and(delay=3)
 {
 	
-	#region /*Destroy if erased or placed outside room*/
+	#region /*Destroy if erased*/
 	if (asset_get_type("obj_level_player_1_start")==asset_object)
 	and (instance_exists(obj_level_player_1_start))
 	and (place_meeting(x,y,obj_level_player_1_start))
@@ -575,10 +575,6 @@ and(delay=3)
 	and (obj_level_player_3_start.drag_object=false)
 	and (obj_level_player_4_start.drag_object=false)
 	and (obj_leveleditor.drag_object=false)
-	or (x<0)
-	or (x>room_width)
-	or (y<0)
-	or (y>room_height)
 	{
 		
 		#region /*Reset Level Editor Checkpoint*/
@@ -599,7 +595,7 @@ and(delay=3)
 		
 		instance_destroy();
 	}
-	#endregion /*Destroy if erased or placed outside room END*/
+	#endregion /*Destroy if erased END*/
 	
 }
 
@@ -1624,7 +1620,7 @@ if (global.play_edited_level = true)
 		if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=63)and(asset_get_type("obj_vine")==asset_object){instance_create_depth(x,y,0,obj_vine);instance_destroy();}
 		if (object=64)and(asset_get_type("obj_arrow_sign")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
-		if (object=65)and(asset_get_type("obj_arrow_sign_small")==asset_object){with(instance_create_depth(x+16,y+16,0,obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
+		if (object=65)and(asset_get_type("obj_arrow_sign_small")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
 		if (object=66)and(asset_get_type("obj_checkpoint")==asset_object){instance_create_depth(x,y,0,obj_checkpoint);instance_destroy();}
 		if (object=67){if(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}}
 		if (object=671){if(asset_get_type("obj_spikes_emerge")==asset_object){with(instance_create_depth(x,y+16,0,obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}instance_destroy();}}

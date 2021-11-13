@@ -1,3 +1,5 @@
+depth = -100;
+
 y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2;
 
 key_a = (gamepad_button_check(0, gp_face1)) or(keyboard_check(global.player1_key_jump));
@@ -12,10 +14,8 @@ if (global.actually_play_edited_level = false)
 and (global.play_edited_level = false)
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(x-16, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(x-16, 0, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
-	draw_line_width_color(x-16, 0, x-16, room_height, 3, c_white, c_white);
-	draw_line_width_color(x-16, 0, x-16, room_height, 2, c_black, c_black);
 	if (asset_get_type("spr_level_height") == asset_sprite)
 	{
 		draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);

@@ -740,7 +740,7 @@ if (save_level_as_png = false)
 		if (delay <= 1)
 		{
 			/*Makes the screen black when starting a level so you don't see the level loading in. Also make sure this black rectangle is bigger than the level, in case the level is smaller than the view size*/
-			draw_rectangle_color(0,0,window_get_width()*3,window_get_height()*3,c_black,c_black,c_black,c_black,false);
+			draw_rectangle_color(0, 0, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
 		}
 
 		#region /*Zoom In Player Goal*/

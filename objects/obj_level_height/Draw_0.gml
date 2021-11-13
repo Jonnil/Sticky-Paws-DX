@@ -12,10 +12,8 @@ if (global.actually_play_edited_level = false)
 and (global.play_edited_level = false)
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(0, y-16, room_width, room_height, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, y-16, obj_level_width.x-16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
-	draw_line_width_color(0, y-16, room_width, y-16, 3, c_white, c_white);
-	draw_line_width_color(0, y-16, room_width, y-16, 2, c_black, c_black);
 	if (asset_get_type("spr_level_height") == asset_sprite)
 	{
 		draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);
