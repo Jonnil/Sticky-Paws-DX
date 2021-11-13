@@ -5,7 +5,7 @@
   "option_windows_company_info": "Jonathan Nilsson (Jonnil)",
   "option_windows_product_info": "Sticky Paws",
   "option_windows_copyright_info": "",
-  "option_windows_description_info": "A GameMaker Studio 2 Game",
+  "option_windows_description_info": "Sticky Paws",
   "option_windows_display_cursor": true,
   "option_windows_icon": "icons/icon.ico",
   "option_windows_save_location": 0,
