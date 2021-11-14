@@ -37,10 +37,19 @@ if (cutscene = 0)
 	time += 1;
 	if (time >= room_speed*2.3)
 	{
-		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
-		hspeed = +7;
-		image_xscale = +1;
-		visible = true;
+		if (place_meeting(x + 1, y, obj_wall))
+		{
+			sprite_index = global.resourcepack_sprite_basic_enemy;
+			hspeed = 0;
+			image_xscale = -1;
+		}
+		else
+		{
+			sprite_index = global.resourcepack_sprite_basic_enemy_angry;
+			hspeed = +7;
+			image_xscale = +1;
+			visible = true;
+		}
 	}
 }
 else
@@ -50,40 +59,49 @@ if (cutscene = 1)
 	{
 		time += 30;
 	}
-	if (time >= room_speed*0.25)
-	and (!position_meeting(x+32, y, obj_wall))
-	{
-		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
-		hspeed = +12;
-		image_xscale = +1;
-	}
-	if (position_meeting(x+32, y, obj_wall))
+	if (place_meeting(x+1, y, obj_wall))
 	{
 		sprite_index = global.resourcepack_sprite_basic_enemy;
 		hspeed = 0;
 		image_xscale = -1;
+	}
+	else
+	if (time >= room_speed*0.25)
+	and (!place_meeting(x+1, y, obj_wall))
+	{
+		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
+		hspeed = +12;
+		image_xscale = +1;
 	}
 }
 else
 if (cutscene = 2)
 {
 	time += 1;
-	if (time >= room_speed*2)
-	and (!position_meeting(x+32, y, obj_wall))
-	{
-		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
-		hspeed = +7;
-		image_xscale = +1;
-	}
-	if (position_meeting(x + 32, y, obj_wall))
+	if (place_meeting(x + 1, y, obj_wall))
 	{
 		sprite_index = global.resourcepack_sprite_basic_enemy;
 		hspeed = 0;
 		image_xscale = -1;
+	}
+	else
+	if (time >= room_speed*2)
+	and (!place_meeting(x + 1, y, obj_wall))
+	{
+		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
+		hspeed = +7;
+		image_xscale = +1;
 	}
 }
 
 if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +16)
 {
 	instance_destroy();
+}
+
+if (instance_exists(obj_player))
+and (place_meeting(x, y, obj_player))
+and (instance_nearest(x, y, obj_player).intro_animation = "")
+{
+	instance_change(obj_enemy1, true);
 }

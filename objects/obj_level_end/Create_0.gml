@@ -26,5 +26,6 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	{
 		y = ini_read_real("info", "level_end_y", 0);
 	}
+	
 	ini_close();
 }

@@ -28,6 +28,7 @@ if (bounceup = false)
 				or(asset_get_type("obj_horizontal_rope") == asset_object)
 				and(place_meeting(x, y - 16, obj_horizontal_rope))
 				or(instance_nearest(x, y, obj_player).climb = true)
+				or(instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
 				{
 					effect_create_above(ef_ring, x, y, 2, c_white);
 					#region /*3 Basic Collectibles*/

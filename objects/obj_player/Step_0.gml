@@ -2897,11 +2897,11 @@ and(asset_get_type("obj_camera")==asset_object)
 #endregion /*Make sure the heart stays on the character if you spawn from a checkpoint END*/
 
 #region /*Winning the level and transitioning to the next area*/
-if (asset_get_type("obj_checkpoint")==asset_object)
-and(asset_get_type("obj_camera")==asset_object)
-and(!place_meeting(x,y,obj_checkpoint))
-and(instance_exists(obj_camera))
-and(obj_camera.iris_xscale<3)
+if (asset_get_type("obj_checkpoint") == asset_object)
+and (asset_get_type("obj_camera") == asset_object)
+and (!place_meeting(x, y, obj_checkpoint))
+and (instance_exists(obj_camera))
+and (obj_camera.iris_xscale < 3)
 {
 	
 	#region /*Don't go outside view boundary*/
@@ -2949,14 +2949,16 @@ and(obj_camera.iris_xscale<3)
 						room_goto(room_title);
 					}
 					else
-					if (global.trigger_ending=true)
-					and(asset_get_type("room_ending_cutscene")==asset_room)
+					if (obj_camera.after_goal_go_to_this_level >= 0)
+					and(asset_get_type("room_leveleditor") == asset_room)
 					{
 						scr_savelevel();
-						room_goto(room_ending_cutscene);
+						global.select_level_index = obj_camera.after_goal_go_to_this_level;
+						scr_update_all_backgrounds();
+						room_goto(room_leveleditor);
 					}
 					else
-					if (asset_get_type("room_world_map")==asset_room)
+					if (asset_get_type("room_world_map") == asset_room)
 					{
 						scr_savelevel();
 						room_goto(room_world_map);
@@ -5073,7 +5075,7 @@ and(key_jump_hold)
 		and(vspeed = 0)
 		{
 			jump += 1;
-			midair_jumps_left -= 1;
+			midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
 			buffer_jump = 0; /*Reset jump buffer timer back to 0 when jumping*/
 			dive = false;
 			triplejumpdelay = 12;
@@ -5232,7 +5234,7 @@ and (in_water = false)
 			if (number_of_jumps > -1)
 			and(midair_jumps_left != number_of_jumps)
 			{
-				midair_jumps_left -= 1;
+				midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
 				if (number_of_jumps >= 3)
 				and (midair_jumps_left < number_of_jumps)
 				{
@@ -5246,7 +5248,7 @@ and (in_water = false)
 			}
 			else
 			{
-				midair_jumps_left -= 2;
+				midair_jumps_left = clamp(midair_jumps_left-2, 0, number_of_jumps);
 				if (number_of_jumps >= 3)
 				and (midair_jumps_left < number_of_jumps)
 				{
@@ -6320,7 +6322,7 @@ and(wall_jump_setting>=1)
 		drop_off_wall_climb=true; /*Drop down from wall climbing*/
 		hspeed=0;
 		vspeed = +1;
-		midair_jumps_left -= 1;
+		midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
 		stick_to_wall=false;
 		crouch=false;
 	}
@@ -6455,7 +6457,7 @@ and(takendamage<=takendamage_freezetime)
 				{
 					if (ground_pound=false)
 					{
-						can_climb_horizontal_rope_cooldown = 20;
+						can_climb_horizontal_rope_cooldown = sprite_height/6;
 						ground_pound=true;
 						stick_to_wall=false;
 						move_towards_spring_endpoint = false;
@@ -6583,7 +6585,7 @@ and(takendamage<=takendamage_freezetime)
 					effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
 					ground_pound = 3;
 					image_index = 0;
-					midair_jumps_left -= 1;
+					midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
 					speed_max = 4;
 					vspeed = -higher_jump_height;
 					if (image_xscale>0)
@@ -8127,7 +8129,7 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	{
 		image_xscale=+1;
 	}
-	can_climb_horizontal_rope_cooldown = 10;
+	can_climb_horizontal_rope_cooldown = sprite_height/10;
 	midair_jumps_left=number_of_jumps;
 	can_ground_pound = false;
 	chain_reaction=0;
@@ -8303,16 +8305,16 @@ and(!place_meeting(x,y,obj_horizontal_rope))
 }
 
 #region /*Climb Horizontal Rope*/
-if (can_climb_horizontal_rope_cooldown>0)
+if (can_climb_horizontal_rope_cooldown > 0)
 {
-	can_climb_horizontal_rope_cooldown-=1;
+	can_climb_horizontal_rope_cooldown -= 1;
 }
 
-if (asset_get_type("obj_horizontal_rope")==asset_object)
-and(place_meeting(x,y,obj_horizontal_rope))
-and(instance_nearest(x,y,obj_horizontal_rope).active=true)
-and(!place_meeting(x,y+1,obj_wall))
-and(in_water=false)
+if (asset_get_type("obj_horizontal_rope") == asset_object)
+and (place_meeting(x, y, obj_horizontal_rope))
+and (instance_nearest(x, y, obj_horizontal_rope).active = true)
+and (!place_meeting(x, y+1, obj_wall))
+and (in_water = false)
 {
 	if (horizontal_rope_climb = false)
 	and(can_climb_horizontal_rope_cooldown <= 0)
@@ -8335,25 +8337,25 @@ and(in_water=false)
 		#endregion /*Make a sound effect that you have started cimbing END*/
 		
 	}
-	if (horizontal_rope_climb=true)
+	if (horizontal_rope_climb = true)
 	{
-		angle=0;
-		midair_jumps_left=number_of_jumps;
+		angle = 0;
+		midair_jumps_left = number_of_jumps;
 		can_ground_pound = false;
 		can_dive = true;
-		chain_reaction=0;
-		dive=false;
-		gravity=0;
-		ground_pound=false;
-		hspeed=0;
-		laststandingx=x;
-		laststandingy=y;
-		ledge_grab_jump=false;
-		speed_max=4;
-		spring=false;
-		stick_to_wall=false;
-		vspeed =0;
-		y=instance_nearest(x,y,obj_horizontal_rope).y+16;
+		chain_reaction = 0;
+		dive = false;
+		gravity = 0;
+		ground_pound = false;
+		hspeed = 0;
+		laststandingx = x;
+		laststandingy = y;
+		ledge_grab_jump = false;
+		speed_max = 4;
+		spring = false;
+		stick_to_wall = false;
+		vspeed = 0;
+		y = instance_nearest(x, y, obj_horizontal_rope).y + climb_under_y_offset;
 		
 		if (key_up)
 		and (!key_down)
@@ -8398,6 +8400,7 @@ and(in_water=false)
 		if (image_speed<1)
 		{
 			if (sprite_climb_under_spin>noone){sprite_index = sprite_climb_under_spin;}else
+			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
 			{sprite_index = sprite_stand;}
 		}
 		else
@@ -8434,7 +8437,8 @@ and(in_water=false)
 				audio_play_sound(snd_jump,0,0);
 				audio_sound_gain(snd_jump,global.sfx_volume,0);
 			}
-			midair_jumps_left -= 1;
+			can_climb_horizontal_rope_cooldown = sprite_height/20;
+			midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
 			y-=64;
 			climb=false;
 			horizontal_rope_climb=false;
@@ -8490,12 +8494,12 @@ and(in_water=false)
 		{
 			if (!key_up)
 			{
-				can_climb_horizontal_rope_cooldown = 10;
+				can_climb_horizontal_rope_cooldown = sprite_height/10;
 				can_ground_pound = false;
 				climb = false;
 				horizontal_rope_climb = false;
 				stomp_spin = false;
-				midair_jumps_left -= 1;
+				midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
 			}
 		}
 		#endregion /*Drop down from rope END*/
@@ -8510,6 +8514,7 @@ and(in_water=false)
 		{
 			image_xscale=-1;
 			if(sprite_climb_under>noone){sprite_index = sprite_climb_under;}else
+			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			or(double_tap_left=3)
@@ -8562,6 +8567,7 @@ and(in_water=false)
 		{
 			image_xscale=+1;
 			if (sprite_climb_under>noone){sprite_index = sprite_climb_under;}else
+			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			or(double_tap_right=3)
@@ -8629,7 +8635,7 @@ and(in_water=false)
 		}
 		if (instance_nearest(x,y,obj_horizontal_rope).active = false)
 		{
-			can_climb_horizontal_rope_cooldown = 10;
+			can_climb_horizontal_rope_cooldown = sprite_height/10;
 			can_ground_pound = false;
 			climb = false;
 			horizontal_rope_climb = false;
@@ -8884,7 +8890,7 @@ and(place_meeting(x,y,obj_vine))
 		{
 			if (!key_down)
 			{
-				midair_jumps_left -= 1;
+				midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
 				vspeed = -11.5;
 			}
 			climb=false;

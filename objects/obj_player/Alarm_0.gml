@@ -948,7 +948,18 @@ or(file_exists(working_directory + "/custom_characters/character" + string(custo
 	}
 	#endregion /*Sprite fall slower y origin point END*/
 	#endregion /*Sprite fall slower x and y origin points END*/
-
+	
+	#region /*Climb under y offset*/
+	if (ini_key_exists("sprite origin points", "climb_under_y_offset"))
+	{
+		climb_under_y_offset = ini_read_real("sprite origin points", "climb_under_y_offset", 0);
+	}
+	else
+	{
+		climb_under_y_offset = 0;
+	}
+	#endregion /*Climb under y offset END*/
+	
 	#region /*Sprite climb under still x and y origin points*/
 	#region /*Sprite climb under still x origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_climb_under_still_xorig"))

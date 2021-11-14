@@ -184,7 +184,6 @@ global.playergame=0;/*Make the game singleplayer at the start of the game*/
 global.player_has_entered_goal=false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;
-global.current_level = 0;
 global.theme="ground";
 global.coins=0;
 global.level_clear_rate=noone;

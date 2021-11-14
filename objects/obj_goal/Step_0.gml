@@ -29,18 +29,6 @@ and(!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,
 	
 	global.player_has_entered_goal = true;
 	
-	#region /*Steam Achievment, Clear stage 1 (or 2)*/
-	if (global.current_level = 1)
-	or (global.current_level = 2)
-	{
-		if (!steam_get_achievement("CLEAR_FIRST_STAGE"))
-		and (global.character_select_in_this_menu = "main_game")
-		{
-			steam_set_achievement("CLEAR_FIRST_STAGE");
-		}
-	}
-	#endregion /*Steam Achievment, Clear stage 1 (or 2) END*/
-	
 	#region /*Save Checkpoint*/
 	if (asset_get_type("room_leveleditor")==asset_room)
 	and (room = room_leveleditor)

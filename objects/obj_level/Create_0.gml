@@ -7,6 +7,9 @@ level_color = c_black;
 level_perfect = false;
 enter_blink = 0;
 initialize_level_timer = 0;
+always_open = false; /*If a level should always be open or not*/
+
+alarm[0] = 1;
 
 if (global.file >= 1)
 and (file_exists("file" + string(global.file) + ".ini"))

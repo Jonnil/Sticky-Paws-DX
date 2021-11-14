@@ -192,6 +192,21 @@ and(file_exists(working_directory + "/custom_levels/"+string(ds_list_find_value(
 	}
 	#endregion /*Intro Animation Play Only Once END*/
 	
+	#region /*After goal go to this level*/
+	if (ini_key_exists("info", "after_goal_go_to_this_level"))
+	{
+		after_goal_go_to_this_level = ini_read_string("info", "after_goal_go_to_this_level", noone);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_string("info", "after_goal_go_to_this_level", noone);
+		}
+		after_goal_go_to_this_level = noone;
+	}
+	#endregion /*After goal go to this level END*/
+	
 	ini_close();
 }
 else

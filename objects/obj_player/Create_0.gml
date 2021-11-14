@@ -76,6 +76,7 @@ sprite_climb_under_still_xorig = 0;
 sprite_climb_under_still_yorig = 0;
 sprite_climb_under_xorig = 0;
 sprite_climb_under_yorig = 0;
+climb_under_y_offset = 0;
 sprite_crawl_xorig = 0;
 sprite_crawl_yorig = 0;
 sprite_crouch_fall_xorig = 0;

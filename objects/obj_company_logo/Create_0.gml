@@ -122,7 +122,7 @@ window_set_cursor(cr_none);
 global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 ds_list_add(global.all_loaded_custom_levels, "");
 global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
-ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9");
+ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Ending", "Level9");
 global.select_level_index=0;/*What level is selected in the custom level editor*/
 global.thumbnail_sprite = ds_list_create();
 global.grid_hsnap=32;/*Horizontal grid snapping*/
@@ -200,7 +200,6 @@ global.player_has_entered_goal=false;
 global.pause_room=noone;
 global.pause_player=0;
 global.key_used="";
-global.current_level = 0;
 global.playergame=0;
 global.theme="ground";
 global.basic_collectibles=0;
