@@ -103,5 +103,46 @@ if (instance_exists(obj_player))
 and (place_meeting(x, y, obj_player))
 and (instance_nearest(x, y, obj_player).intro_animation = "")
 {
-	instance_change(obj_enemy1, true);
+	with (instance_create_depth(x, y, 0, obj_enemy1))
+	{
+		image_xscale = -1;
+		
+		#region /*Enemy Voice Defeated*/
+		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3),0,0);
+		audio_sound_gain(enemyvoice_defeated1,global.voices_volume,0);
+		audio_sound_gain(enemyvoice_defeated2,global.voices_volume,0);
+		audio_sound_gain(enemyvoice_defeated3,global.voices_volume,0);
+		#endregion /*Enemy Voice Defeated End*/
+		
+		if (asset_get_type("snd_stomp")==asset_sound)
+		{
+			audio_play_sound(snd_stomp,0,0);
+			audio_sound_gain(snd_stomp,global.sfx_volume,0);
+			audio_sound_pitch(snd_stomp,1);
+		}
+		
+		flat = true;
+		die = true;
+	}
+	
+	if (instance_nearest(x, y, obj_player).key_jump_hold)
+	{
+		with(instance_nearest(x, y, obj_player))
+		{
+			if (simple_controls=false)
+			{
+				vspeed=-triple_jump_height;
+			}
+			else
+			{
+				vspeed=-8;
+			}
+		}
+	}
+	else
+	{
+		instance_nearest(x, y, obj_player).vspeed=-8;
+	}
+	
+	instance_destroy();
 }

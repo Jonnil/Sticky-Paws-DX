@@ -11,37 +11,6 @@ while (place_meeting(x, y, other))
 if (place_meeting(x, y + 1, other))
 and(vspeed >= 0)
 {
-	
-	#region /*Smoke Landing Effect*/
-	if (asset_get_type("obj_wall") == asset_object)
-	and (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
-	and (obj_camera.iris_xscale > 1)
-	{
-		if (position_meeting(x - 24, bbox_bottom + 2, obj_wall))
-		{
-			effect_create_above(ef_smoke, x - 24, bbox_bottom - 8, 0, c_white);
-		}
-		if (position_meeting(x - 16, bbox_bottom + 2, obj_wall))
-		{
-			effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
-		}
-		if (position_meeting(x, bbox_bottom + 2, obj_wall))
-		{
-			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom - 8, 0, c_white);
-		}
-		if (position_meeting(x + 16, bbox_bottom + 2, obj_wall))
-		{
-			effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
-		}
-		if (position_meeting(x + 24, bbox_bottom + 2, obj_wall))
-		{
-			effect_create_above(ef_smoke, x + 24, bbox_bottom - 8, 0, c_white);	
-		}
-	}
-	#endregion /*Smoke Landing Effect END*/
-	
 	vspeed = 0;
 	gravity = 0;
 }

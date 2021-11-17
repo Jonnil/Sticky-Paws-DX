@@ -14,6 +14,8 @@ if (object = "wall_metal"){object = 1005;}else
 if (object = "wall_stone"){object = 1006;}else
 if (object = "wall_wood"){object = 1007;}else
 
+if (object = "wall_jump_panel"){object = 1008;}else
+if (object = "wall_climb_panel"){object = 1009;}else
 if (object = "spikes"){object = 2;}else
 if (object = "semisolid_platform"){object = 3;}else
 if (object = "brick_block"){object = 4;}else
@@ -47,6 +49,9 @@ if (object = "arrow_sign_small"){object = 65;}else
 if (object = "checkpoint"){object = 66;}else
 if (object = "spikes_emerge_block"){object = 67;}else
 if (object = "oneway"){object = 68;}else
+if (object = "oneway2"){object = 69;}else
+if (object = "oneway3"){object = 70;}else
+if (object = "oneway4"){object = 71;}else
 if (object = "horizontal_rope"){object = 72;}else
 if (object = "water"){object = 73;}else
 if (object = "water_surface"){object = 731;}else
@@ -1536,6 +1541,8 @@ if (global.play_edited_level = true)
 		if (object = 1006)and(asset_get_type("obj_ground")==asset_object){with(instance_create_depth(x,y,0,obj_ground)){ground_surface = 6;}instance_destroy();}
 		if (object = 1007)and(asset_get_type("obj_ground")==asset_object){with(instance_create_depth(x,y,0,obj_ground)){ground_surface = 7;}instance_destroy();}
 		
+		if (object=1008){if(asset_get_type("obj_wall_jump_panel")==asset_object){instance_create_depth(x,y,0,obj_wall_jump_panel);instance_destroy();}else{if (asset_get_type("obj_wall_jump_panel")==asset_object){instance_create_depth(x,y,0,obj_wall_jump_panel);instance_destroy();}}}
+		if (object=1009){if(asset_get_type("obj_wall_climb_panel")==asset_object){instance_create_depth(x,y,0,obj_wall_climb_panel);instance_destroy();}else{if (asset_get_type("obj_wall_climb_panel")==asset_object){instance_create_depth(x,y,0,obj_wall_climb_panel);instance_destroy();}}}
 		if (object=2){if(asset_get_type("obj_spikes")==asset_object){instance_create_depth(x,y,0,obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground")==asset_object){instance_create_depth(x,y,0,obj_ground);instance_destroy();}}}
 		if (object=3)and(asset_get_type("obj_semisolid_platform")==asset_object){instance_create_depth(x,y,0,obj_semisolid_platform);instance_destroy();}
 		
@@ -1718,6 +1725,8 @@ if (object = 1005)and(asset_get_type("spr_wall_metal")==asset_sprite){sprite_ind
 if (object = 1006)and(asset_get_type("spr_wall_stone")==asset_sprite){sprite_index=spr_wall_stone;mask_index=spr_wall;}
 if (object = 1007)and(asset_get_type("spr_wall_wood")==asset_sprite){sprite_index=spr_wall_wood;mask_index=spr_wall;}
 
+if (object=1008)and(asset_get_type("spr_wall_jump_panel")==asset_sprite){sprite_index=spr_wall_jump_panel;mask_index=spr_wall;}
+if (object=1009)and(asset_get_type("spr_wall_climb_panel")==asset_sprite){sprite_index=spr_wall_climb_panel;mask_index=spr_wall;}
 if (object=2)and(asset_get_type("spr_spikes")==asset_sprite){sprite_index=spr_spikes;mask_index=spr_wall;}
 if (object=3)and(asset_get_type("spr_semisolid_platform")==asset_sprite){sprite_index=spr_semisolid_platform;mask_index=spr_wall;}
 

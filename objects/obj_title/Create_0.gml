@@ -859,10 +859,26 @@ if (asset_get_type("menuvoice_titlesplash")==asset_sound)
 }
 #endregion /*Say the games title END*/
 
-#region /*Play title screen music*/
-if (asset_get_type("snd_music_titlescreen")==asset_sound)
+#region /*Update Music*/
+if (file_exists("resourcepacks/resourcepack"+string(global.selected_resourcepack)+"/music/title_screen.ogg"))
 {
-	audio_play_sound(snd_music_titlescreen,0,true);
-	audio_sound_gain(snd_music_titlescreen,global.music_volume,0);
+	title_music = audio_create_stream("resourcepacks/resourcepack"+string(global.selected_resourcepack)+"/music/title_screen.ogg");
+}
+else
+if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack"+string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/music/title_screen.ogg"))
+{
+	title_music = audio_create_stream(working_directory + "/custom_resourcepacks/Resourcepack"+string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/music/title_screen.ogg");
+}
+else
+{
+	title_music = noone;
+}
+#endregion /*Update Music END*/
+
+#region /*Play title screen music*/
+if (title_music > noone)
+{
+	audio_play_sound(title_music, 0, true);
+	audio_sound_gain(title_music, global.music_volume, 0);
 }
 #endregion /*Play title screen music End*/

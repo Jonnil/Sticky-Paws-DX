@@ -71,6 +71,10 @@ if (asset_get_type("obj_level_width") == asset_object)
 {
 	instance_activate_object(obj_level_width);
 }
+if (asset_get_type("obj_credits") == asset_object)
+{
+	instance_activate_object(obj_credits);
+}
 #endregion /*Activate objects that always should be active END*/
 
 #region /*Make sure the lives counter never goes below 0*/

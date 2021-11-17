@@ -1,69 +1,86 @@
 /*Collision Event with a solid object*/
 
-if (position_meeting(x,bbox_bottom+1,other))
-or(position_meeting(x,bbox_bottom+2,other))
-or(position_meeting(x,bbox_bottom+3,other))
-or(position_meeting(x,bbox_bottom+4,other))
-
-or(position_meeting(bbox_left,bbox_bottom+1,other))
-or(position_meeting(bbox_left,bbox_bottom+2,other))
-or(position_meeting(bbox_left,bbox_bottom+3,other))
-or(position_meeting(bbox_left,bbox_bottom+4,other))
-
-or(position_meeting(bbox_right,bbox_bottom+1,other))
-or(position_meeting(bbox_right,bbox_bottom+2,other))
-or(position_meeting(bbox_right,bbox_bottom+3,other))
-or(position_meeting(bbox_right,bbox_bottom+4,other))
+if (in_water = false)
 {
-	y-=1;
+	if (position_meeting(x,bbox_bottom+1,other))
+	or(position_meeting(x,bbox_bottom+2,other))
+	or(position_meeting(x,bbox_bottom+3,other))
+	or(position_meeting(x,bbox_bottom+4,other))
+
+	or(position_meeting(bbox_left,bbox_bottom+1,other))
+	or(position_meeting(bbox_left,bbox_bottom+2,other))
+	or(position_meeting(bbox_left,bbox_bottom+3,other))
+	or(position_meeting(bbox_left,bbox_bottom+4,other))
+
+	or(position_meeting(bbox_right,bbox_bottom+1,other))
+	or(position_meeting(bbox_right,bbox_bottom+2,other))
+	or(position_meeting(bbox_right,bbox_bottom+3,other))
+	or(position_meeting(bbox_right,bbox_bottom+4,other))
+	{
+		y-=1;
+	}
 }
 
 #region /*Landing on solid object*/
 if (position_meeting(x, bbox_bottom + 1, other))
-and(vspeed > 0)
+and(stick_to_wall = false)
+or (position_meeting(bbox_left, bbox_bottom + 1, other))
+and(stick_to_wall = false)
+or (position_meeting(bbox_right, bbox_bottom + 1, other))
 and(stick_to_wall = false)
 {
 	
 	#region /*Smoke Landing Effect*/
-	if (asset_get_type("obj_wall") == asset_object)
+	if (asset_get_type("other") == asset_object)
 	and (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_camera))
 	and (obj_camera.iris_xscale > 1)
 	{
-		if (position_meeting(x - 24, bbox_bottom + 2, obj_wall))
+		if (vspeed > 0)
 		{
-			effect_create_above(ef_smoke, x - 24, bbox_bottom - 8, 0, c_white);
-		}
-		if (position_meeting(x - 16, bbox_bottom + 2, obj_wall))
-		{
-			effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
-		}
-		if (position_meeting(x, bbox_bottom + 2, obj_wall))
-		{
-			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom - 8, 0, c_white);
-		}
-		if (position_meeting(x + 16, bbox_bottom + 2, obj_wall))
-		{
-			effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
-		}
-		if (position_meeting(x + 24, bbox_bottom + 2, obj_wall))
-		{
-			effect_create_above(ef_smoke, x + 24, bbox_bottom - 8, 0, c_white);	
+			if (position_meeting(x - 24, bbox_bottom + 2, other))
+			{
+				effect_create_above(ef_smoke, x - 24, bbox_bottom - 8, 0, c_white);
+			}
+			if (position_meeting(x - 16, bbox_bottom + 2, other))
+			{
+				effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
+			}
+			if (position_meeting(x, bbox_bottom + 2, other))
+			{
+				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+				effect_create_above(ef_smoke, x, bbox_bottom - 8, 0, c_white);
+			}
+			if (position_meeting(x + 16, bbox_bottom + 2, other))
+			{
+				effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
+			}
+			if (position_meeting(x + 24, bbox_bottom + 2, other))
+			{
+				effect_create_above(ef_smoke, x + 24, bbox_bottom - 8, 0, c_white);	
+			}
 		}
 	}
 	#endregion /*Smoke Landing Effect END*/
 	
-	vspeed = 0;
-	gravity = 0;
-	laststandingx = x;
-	laststandingy = y + sprite_height / 2;
-	draw_xscale = 1.25;
-	draw_yscale = 0.75;
-	can_ground_pound = true;
-	can_dive = true;
-	spring = false;
-	ledge_grab_jump = false;
+	if (vspeed > 0)
+	and (in_water = false)
+	{
+		draw_xscale = 1.25;
+		draw_yscale = 0.75;
+	}
+	
+	if (vspeed >= 0)
+	{
+		vspeed = 0;
+		gravity = 0;
+		laststandingx = x;
+		laststandingy = y + sprite_height / 2;
+		can_ground_pound = true;
+		can_dive = true;
+		spring = false;
+		ledge_grab_jump = false;
+	}
 }
 #endregion /*Landing on solid object END*/
 

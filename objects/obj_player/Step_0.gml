@@ -3065,16 +3065,6 @@ else
 					global.checkpoint_realmillisecond=0;
 					global.lives_until_assist=0;
 					global.theme="ground";
-					if (global.trigger_ending=true)
-					and(asset_get_type("room_ending_cutscene")==asset_room)
-					{
-						if (asset_get_type("scr_savelevel")==asset_script)
-						{
-							scr_savelevel();
-						}
-						room_goto(room_ending_cutscene);
-					}
-					else
 					if (asset_get_type("room_world_map")==asset_room)
 					and(obj_camera.iris_yscale<=0.001)
 					{
@@ -5114,7 +5104,7 @@ and(key_jump_hold)
 			{
 				effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
 			}
-			if (position_meeting(x, bbox_bottom + 1, obj_wall))
+			if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			{
@@ -5322,6 +5312,9 @@ if (vspeed > 0)
 gravity_direction = 270; /*Direction of the gravity*/
 if (asset_get_type("obj_wall") == asset_object)
 and(!place_meeting(x, y + 1, obj_wall))
+and(!position_meeting(x, bbox_bottom + 1, obj_wall))
+and(!position_meeting(bbox_left, bbox_bottom + 1, obj_wall))
+and(!position_meeting(bbox_right, bbox_bottom + 1, obj_wall))
 and(climb = false)
 and(horizontal_rope_climb = false)
 {
@@ -5925,6 +5918,18 @@ and(can_move=true)
 and(global.pause=false)
 and(takendamage<=takendamage_freezetime)
 and(wall_jump_setting>=1)
+or (allow_wall_jump = false)
+and(can_wall_jump = true)
+and(can_move=true)
+and(global.pause=false)
+and(takendamage<=takendamage_freezetime)
+and(place_meeting(x, y, obj_wall_jump_panel))
+or (allow_wall_climb = false)
+and (can_wall_jump = true)
+and(can_move=true)
+and(global.pause=false)
+and(takendamage<=takendamage_freezetime)
+and(place_meeting(x, y, obj_wall_climb_panel))
 {
 	if (asset_get_type("obj_wall")==asset_object)
 	and(!place_meeting(x,y+1,obj_wall))
@@ -6089,6 +6094,7 @@ and(wall_jump_setting>=1)
 		
 		#region /*Wall Climb*/
 		if (allow_wall_climb=true)
+		or (place_meeting(x, y, obj_wall_climb_panel))
 		{
 			dive = false;
 			laststandingy=y;
@@ -7218,40 +7224,50 @@ if (asset_get_type("obj_water")==asset_object)
 		wall_jump = false;
 		spring = false;
 		
-		if (key_up)
-		or(key_jump_hold)
-		and(!key_down)
+		if (!place_meeting(x, y + 1, obj_wall))
+		and (!position_meeting(x, bbox_bottom + 1, obj_wall))
+		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_wall))
+		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_wall))
 		{
-			if (vspeed>1)
+			if (key_up)
+			or(key_jump_hold)
+			and(!key_down)
 			{
-				vspeed =1;
+				if (vspeed>1)
+				{
+					vspeed =1;
+				}
 			}
-		}
-		else
-		if (key_down)
-		{
-			if (vspeed>5)
+			else
+			if (key_down)
 			{
-				vspeed =5;
+				if (vspeed>5)
+				{
+					vspeed =5;
+				}
 			}
-		}
-		else
-		{
-			if (vspeed>2)
+			else
 			{
-				vspeed =2;
+				if (vspeed>2)
+				{
+					vspeed =2;
+				}
 			}
 		}
 		
 		#region /*Set the gravity underwater*/
 		gravity_direction=270; /*Direction of the gravity*/
 		if (!place_meeting(x,y+1,obj_wall))
+		and (!position_meeting(x, bbox_bottom + 1, obj_wall))
+		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_wall))
+		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_wall))
 		{
-			gravity=0.1; /*Set gravity*/
+			gravity = 0.1; /*Set gravity*/
 		}
 		else
 		{
-			gravity=0;
+			gravity = 0;
+			vspeed = 0;
 		}
 		#endregion /*Set the gravity underwater END*/
 
@@ -7304,6 +7320,9 @@ if (asset_get_type("obj_water")==asset_object)
 			}
 		}
 		if (place_meeting(x,y+1,obj_wall))
+		or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			if (hspeed<-2)
 			{
@@ -7439,6 +7458,9 @@ and(power_meter_running_sound=true)
 			}
 		}
 		if (place_meeting(x,y+1,obj_wall))
+		or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			speeddash=true;
 		}
@@ -7568,6 +7590,9 @@ if (burnt=true)
 {
 	effect_create_above(ef_smoke,x,bbox_bottom,0,c_black);
 	if (place_meeting(x,y+1,obj_wall))
+	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		audio_play_sound(voice_burned_running,0,0);
 		audio_sound_gain(voice_burned_running,global.voices_volume,0);
@@ -7585,6 +7610,9 @@ if (burnt=2)
 {
 	effect_create_above(ef_smoke,x,bbox_bottom,0,c_black);
 	if (place_meeting(x,y+1,obj_wall))
+	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		burnt=false;
 	}
@@ -8132,6 +8160,7 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	can_climb_horizontal_rope_cooldown = sprite_height/10;
 	midair_jumps_left=number_of_jumps;
 	can_ground_pound = false;
+	can_dive = true; /*Can dive when you jump out of a spring still*/
 	chain_reaction=0;
 	dive=false;
 	draw_xscale=0.5;
@@ -8772,6 +8801,9 @@ and(place_meeting(x,y,obj_vine))
 				}
 			}
 			if (place_meeting(x,y+1,obj_wall))
+			or (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+			or (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+			or (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 			{
 				climb=false;
 			}
@@ -8942,6 +8974,9 @@ if (key_crouch)
 		and(dive=false)
 		{
 			if (place_meeting(x,y+1,obj_wall))
+			or (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+			or (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+			or (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 			{
 				crouch = true;
 				stick_to_wall = false;
@@ -8982,6 +9017,9 @@ if (crouch = true)
 {
 	stick_to_wall = false;
 	if (place_meeting(x,y+1,obj_wall))
+	or (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
 		if (abs(hspeed)>3)
 		{
@@ -9006,6 +9044,12 @@ if (crouch = true)
 	}
 	if (abs(hspeed)>=2.5)
 	and(place_meeting(x,y+1,obj_wall))
+	or (abs(hspeed)>=2.5)
+	and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+	or (abs(hspeed)>=2.5)
+	and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+	or (abs(hspeed)>=2.5)
+	and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
 		if (asset_get_type("spr_player_slide")==asset_sprite)
 		{
@@ -9028,6 +9072,9 @@ if (crouch = true)
 	}
 	else
 	if (place_meeting(x,y+1,obj_wall))
+	or (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
 		
 		#region /*Crouch Stand*/
@@ -9063,6 +9110,9 @@ if (crouch = true)
 	}
 	else
 	if (!place_meeting(x,y+1,obj_wall))
+	or (!position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+	or (!position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+	or (!position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
 		if (key_jump)
 		{
@@ -9080,11 +9130,13 @@ if (crouch = true)
 		{
 			if (sprite_swim_fall > noone){sprite_index = sprite_swim_fall;}else
 			if (sprite_swim > noone){sprite_index = sprite_swim;}else
+			if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}
 		}
 		else
 		{
 			if (sprite_swim > noone){sprite_index = sprite_swim;}else
+			if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}
 		}
 	}
@@ -9094,7 +9146,9 @@ else
 if (asset_get_type("obj_wall")==asset_object)
 and(place_meeting(x,y+1,obj_wall))
 or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(place_meeting(x,y+1,obj_semisolid_platform))
+and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 {
 
 #region /*Skidding*/
@@ -9117,7 +9171,9 @@ and(key_left)
 	}
 	else
 	{
-		sprite_index = sprite_swim;
+		if (sprite_swim > noone){sprite_index = sprite_swim;}else
+		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
+		if (sprite_stand > noone){sprite_index = sprite_stand;}
 	}
 	effect_create_above(ef_smoke,x,bbox_bottom,1,c_white);
 	if (image_index>image_number-1)
@@ -9137,14 +9193,8 @@ if (hspeed = 0)
 and (!key_left)
 and (!key_right)
 {
-	if (sprite_swim_stand > noone)
-	{
-		sprite_index = sprite_swim_stand;
-	}
-	else
-	{
-		sprite_index = sprite_swim;
-	}
+	if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
+	if (sprite_stand > noone){sprite_index = sprite_stand;}
 	image_speed = 0.1;
 }
 
@@ -9159,25 +9209,36 @@ or (hspeed >- 0.1)
 	{
 		if (speeddash=true)
 		{
-			sprite_index = sprite_swim;
+			if (sprite_swim > noone){sprite_index = sprite_swim;}else
+			if (sprite_run > noone){sprite_index = sprite_run;}
+			if (sprite_walk > noone){sprite_index = sprite_walk;}
+			if (sprite_stand > noone){sprite_index = sprite_stand;}
 		}
 		else
 		if (abs(speed)>=6)
 		{
-			sprite_index = sprite_swim;
+			if (sprite_swim > noone){sprite_index = sprite_swim;}else
+			if (sprite_run > noone){sprite_index = sprite_run;}else
+			if (sprite_walk > noone){sprite_index = sprite_walk;}
+			if (sprite_stand > noone){sprite_index = sprite_stand;}
 		}
 		/*Against Wall*/
 		else
 		{
 			if (place_meeting(x-1,y,obj_wall))
-			or(place_meeting(x+1,y,obj_wall))
+			or (place_meeting(x+1,y,obj_wall))
 			{
-				sprite_index = sprite_swim;
+				if (sprite_swim > noone){sprite_index = sprite_swim;}else
+				if (sprite_against_wall > noone){sprite_index = sprite_against_wall;}else
+				if (sprite_stand > noone){sprite_index = sprite_stand;}
 			}
 			/*Walk*/
 			else
 			{
-				sprite_index = sprite_swim;
+				if (sprite_swim > noone){sprite_index = sprite_swim;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk;}else
+				if (sprite_run > noone){sprite_index = sprite_run;}else
+				if (sprite_stand > noone){sprite_index = sprite_stand;}
 			}
 		}
 		image_speed=speed/13.5+0.1;
@@ -9200,6 +9261,9 @@ else
 /*Swimming Sprites*/
 else
 if (!place_meeting(x,y+1,obj_wall))
+or (!position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+or (!position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+or (!position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 {
 
 #region /*Skidding*/
@@ -9222,7 +9286,8 @@ and(image_xscale<0)
 	}
 	else
 	{
-		sprite_index = sprite_swim;
+		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
+		if (sprite_stand > noone){sprite_index = sprite_stand;}
 	}
 	if (image_index>image_number-1)
 	{
@@ -9253,11 +9318,13 @@ if (vspeed > 0)
 {
 	if (sprite_swim_fall > noone){sprite_index = sprite_swim_fall;}else
 	if (sprite_swim > noone){sprite_index = sprite_swim;}else
+	if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
 	if (sprite_stand > noone){sprite_index = sprite_stand;}
 }
 else
 {
 	if (sprite_swim > noone){sprite_index = sprite_swim;}else
+	if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
 	if (sprite_stand > noone){sprite_index = sprite_stand;}
 }
 mask_index = sprite_mask;
@@ -9278,9 +9345,9 @@ if (key_crouch)
 	and(dive=false)
 	{
 		if (place_meeting(x,y+1,obj_wall))
-		or(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-		or(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
-		or(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+		or (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+		or (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+		or (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 		{
 			crouch=true;
 			draw_xscale=1.5;
@@ -9290,6 +9357,9 @@ if (key_crouch)
 			
 			mask_index=sprite_mask_crouch;
 			if (!place_meeting(x,y+16,obj_wall))
+			or (!position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+			or (!position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+			or (!position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 			{
 			y+=32;
 			}
@@ -10111,6 +10181,9 @@ if!place_meeting(x,y+1,obj_wall)or speed<1{if asset_get_type("snd_skidding")==as
 
 #region /*Footstep sounds*/
 if (place_meeting(x,y+1,obj_wall))
+or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (speed>0)
 	and (crouch=false)
@@ -10423,7 +10496,9 @@ if (place_meeting(x,y+1,obj_wall))
 
 #region /*Running Sparks Effect*/
 if (place_meeting(x,y+1,obj_wall))
-or (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (abs(hspeed)>speed_max_walk + 1)
 	{
@@ -10499,7 +10574,9 @@ or(invincible>0)
 #endregion /*Speedlines Effect End*/
 
 if (place_meeting(x,y+1,obj_wall))
-or (place_meeting(x,y+1,obj_semisolid_platform))
+or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	can_dive = true;
 }

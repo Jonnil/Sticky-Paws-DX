@@ -1,6 +1,6 @@
 {
   "option_linux_display_name": "Sticky Paws",
-  "option_linux_version": "1.0.0.0",
+  "option_linux_version": "1.0.7",
   "option_linux_maintainer_email": "",
   "option_linux_homepage": "http://www.jonnil.com",
   "option_linux_short_desc": "",

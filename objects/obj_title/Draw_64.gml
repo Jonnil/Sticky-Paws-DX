@@ -280,9 +280,9 @@ and(menu_delay=0)
 #endregion /*Quit Game trough pause menu END*/
 
 #region /*Play Title Screen Music*/
-if (asset_get_type("snd_music_titlescreen")==asset_sound)
+if (title_music > noone)
 {
-	audio_sound_gain(snd_music_titlescreen,global.music_volume,0);
+	audio_sound_gain(title_music, global.music_volume, 0);
 }
 #endregion /*Play Title Screen Music END*/
 
@@ -587,6 +587,10 @@ or(menu="quit")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	{
+		global.player1_can_play = false;
+		global.player2_can_play = false;
+		global.player3_can_play = false;
+		global.player4_can_play = false;
 		player1_accept_selection=-1;
 		player2_accept_selection=-1;
 		player3_accept_selection=-1;
@@ -624,6 +628,10 @@ or(menu="quit")
 	or(menu="leveleditor")
 	and(key_a_pressed)
 	{
+		global.player1_can_play = false;
+		global.player2_can_play = false;
+		global.player3_can_play = false;
+		global.player4_can_play = false;
 		player1_accept_selection=-1;
 		player2_accept_selection=-1;
 		player3_accept_selection=-1;
@@ -1864,11 +1872,11 @@ and(iris_xscale<=0.001)
 	if (menu="level_editor_play")
 	and(global.character_select_in_this_menu = "level_editor")
 	{
-		if (asset_get_type("snd_music_titlescreen")==asset_sound)
+		if (title_music > noone)
 		{
-			if (audio_is_playing(snd_music_titlescreen))
+			if (audio_is_playing(title_music))
 			{
-				audio_stop_sound(snd_music_titlescreen);
+				audio_stop_sound(title_music);
 			}
 		}
 		if (asset_get_type("room_leveleditor")==asset_room)
@@ -2119,11 +2127,11 @@ and(iris_xscale<=0.001)
 	if (menu="level_editor_make")
 	and(global.character_select_in_this_menu = "level_editor")
 	{
-		if (asset_get_type("snd_music_titlescreen")==asset_sound)
+		if (title_music > noone)
 		{
-			if (audio_is_playing(snd_music_titlescreen))
+			if (audio_is_playing(title_music))
 			{
-				audio_stop_sound(snd_music_titlescreen);
+				audio_stop_sound(title_music);
 			}
 		}
 		if (asset_get_type("room_leveleditor")==asset_room)
@@ -2353,11 +2361,11 @@ and(iris_xscale<=0.001)
 	#region /*Load File 1*/
 	if (global.file=1)
 	{
-		if (asset_get_type("snd_music_titlescreen")==asset_sound)
+		if (title_music > noone)
 		{
-			if (audio_is_playing(snd_music_titlescreen))
+			if (audio_is_playing(title_music))
 			{
-				audio_stop_sound(snd_music_titlescreen);
+				audio_stop_sound(title_music);
 			}
 		}
 		if (asset_get_type("room_world_map")==asset_room)
@@ -2373,11 +2381,11 @@ and(iris_xscale<=0.001)
 	#region /*Load File 2*/
 	if (global.file=2)
 	{
-		if (asset_get_type("snd_music_titlescreen")==asset_sound)
+		if (title_music > noone)
 		{
-			if (audio_is_playing(snd_music_titlescreen))
+			if (audio_is_playing(title_music))
 			{
-				audio_stop_sound(snd_music_titlescreen);
+				audio_stop_sound(title_music);
 			}
 		}
 		if (asset_get_type("room_world_map")==asset_room)
@@ -2393,11 +2401,11 @@ and(iris_xscale<=0.001)
 	#region /*Load File 3*/
 	if (global.file=3)
 	{
-		if (asset_get_type("snd_music_titlescreen")==asset_sound)
+		if (title_music > noone)
 		{
-			if (audio_is_playing(snd_music_titlescreen))
+			if (audio_is_playing(title_music))
 			{
-				audio_stop_sound(snd_music_titlescreen);
+				audio_stop_sound(title_music);
 			}
 		}
 		if (asset_get_type("room_world_map")==asset_room)

@@ -242,14 +242,16 @@ global.file=1;
 global.controls_layout=1;
 global.background_brightness_gameplay=0; /*Background brightness in gameplay. full_black=-1, normal=0 (default), full_white=+1*/
 global.background_brightness_menu=0; /*Background brightness in menus. full_black=-1, normal=0 (default), full_white=+1*/
+
 #region /*Music and Sound Volume*/
-global.music_volume=1;
-global.sfx_volume=1;
-global.ambient_volume=1;
-global.voices_volume=1;
+global.music_volume = 0.7; /*Make the volumes set to 0.7 by default, so the volume of the game is not too loud when one start the game for the first time*/
+global.sfx_volume = 0.7;
+global.ambient_volume = 0.7;
+global.voices_volume = 0.7;
 global.verbosity_slider=1;
 global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
+
 global.music=noone;
 global.music_underwater=noone;
 global.ambience=noone;
