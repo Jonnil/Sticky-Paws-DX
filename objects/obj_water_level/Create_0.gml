@@ -18,3 +18,6 @@ else
 	water_level_change_new_y_lerp = room_height + 128;
 	y = room_height + 128;
 }
+
+second_x = x+16;
+second_y = y+16;

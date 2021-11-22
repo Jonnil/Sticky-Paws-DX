@@ -257,10 +257,11 @@ and(can_remap_key=false)
 and(input_key=false)
 and(menu_delay=0)
 {
-	if (menu="main_game")
-	or(menu="leveleditor")
-	or(menu="options")
-	or(menu="quit")
+	if (menu = "main_game")
+	or (menu = "leveleditor")
+	or (menu = "options")
+	or (menu = "credits")
+	or (menu = "quit")
 	{
 		if (keyboard_check_pressed(vk_escape))
 		{
@@ -278,13 +279,6 @@ and(menu_delay=0)
 	}
 }
 #endregion /*Quit Game trough pause menu END*/
-
-#region /*Play Title Screen Music*/
-if (title_music > noone)
-{
-	audio_sound_gain(title_music, global.music_volume, 0);
-}
-#endregion /*Play Title Screen Music END*/
 
 /*Draw Event*/
 #region /*Set a default font*/
@@ -345,13 +339,14 @@ draw_set_valign(fa_center);
 #endregion /*Build Date and Version END*/
 
 #region /*Hide Fullscreen and Version text / Set certain variables to default value*/
-if (menu="main_game")
-or(menu="leveleditor")
-or(menu="options")
-or(menu="language_shortcut")
-or(menu="accessibility_shortcut")
-or(menu="profile_shortcut")
-or(menu="quit")
+if (menu = "main_game")
+or (menu = "leveleditor")
+or (menu = "options")
+or (menu = "language_shortcut")
+or (menu = "accessibility_shortcut")
+or (menu = "profile_shortcut")
+or (menu = "credits")
+or (menu = "quit")
 {
 	#region /*Character select Accept Selection*/
 	player1_accept_selection=-1;
@@ -432,9 +427,9 @@ if (asset_get_type("obj_camera")==asset_object)
 #endregion /*Create Camera END*/
 
 #region /*Darker background when deleting files*/
-if (menu="file1delete")
-or(menu="file2delete")
-or(menu="file3delete")
+if (menu = "file1delete")
+or (menu = "file2delete")
+or (menu = "file3delete")
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
@@ -443,13 +438,13 @@ or(menu="file3delete")
 #endregion /*Darker background when deleting files END*/
 
 #region /*File select*/
-if (menu="delete")
-or(menu="file1")
-or(menu="file2")
-or(menu="file3")
+if (menu = "delete")
+or (menu = "file1")
+or (menu = "file2")
+or (menu = "file3")
 {
 
-	if (menu="file1")
+	if (menu = "file1")
 	{
 		global.file=1;
 		global.character_select_in_this_menu = "main_game";
@@ -476,7 +471,7 @@ or(menu="file3")
 		draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"New 1",global.default_text_size,c_menu_outline,c_menu_fill,1);
 	}
 
-	if (menu="file2")
+	if (menu = "file2")
 	{
 		global.file=2;
 		global.character_select_in_this_menu = "main_game";
@@ -503,7 +498,7 @@ or(menu="file3")
 		draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"New 2",global.default_text_size,c_menu_outline,c_menu_fill,1);
 	}
 
-	if (menu="file3")
+	if (menu = "file3")
 	{
 		global.file=3;
 		global.character_select_in_this_menu = "main_game";
@@ -530,7 +525,7 @@ or(menu="file3")
 		draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"New 3",global.default_text_size,c_menu_outline,c_menu_fill,1);
 	}
 
-	if (menu="delete")
+	if (menu = "delete")
 	{
 	draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+16,"> Delete <",global.default_text_size*1.3,c_menu_outline,c_menu_fill,1);
 	}
@@ -569,13 +564,14 @@ or(menu="file3")
 #endregion /*File select END*/
 
 #region /*Main Menu*/
-if (menu="main_game")
-or(menu="leveleditor")
-or(menu="options")
-or(menu="language_shortcut")
-or(menu="accessibility_shortcut")
-or(menu="profile_shortcut")
-or(menu="quit")
+if (menu = "main_game")
+or (menu = "leveleditor")
+or (menu = "options")
+or (menu = "language_shortcut")
+or (menu = "accessibility_shortcut")
+or (menu = "profile_shortcut")
+or (menu = "credits")
+or (menu = "quit")
 {
 	select_custom_level_menu_open = false;
 	can_input_level_name = false;
@@ -583,7 +579,7 @@ or(menu="quit")
 	#region /*Click Main Game*/
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+100+40,window_get_width()/2+185,window_get_height()/2+100+60+19))
 	and(mouse_check_button_released(mb_left))
-	or(menu="main_game")
+	or (menu = "main_game")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	{
@@ -625,7 +621,7 @@ or(menu="quit")
 	#region /*Click Level Editor*/
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+100+80+1,window_get_width()/2+185,window_get_height()/2+100+100+19))
 	and(mouse_check_button_released(mb_left))
-	or(menu="leveleditor")
+	or (menu = "leveleditor")
 	and(key_a_pressed)
 	{
 		global.player1_can_play = false;
@@ -686,7 +682,7 @@ or(menu="quit")
 	window_get_width()/2+185,
 	window_get_height()/2+100+140+19))
 	and(mouse_check_button_released(mb_left))
-	or(menu="options")
+	or (menu = "options")
 	and(key_a_pressed)
 	{
 		in_settings=true;
@@ -709,7 +705,7 @@ or(menu="quit")
 	and(menu_delay=0)
 	and(global.show_language_shortcut=true)
 	
-	or(menu="language_shortcut")
+	or (menu = "language_shortcut")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	and(global.show_language_shortcut=true)
@@ -750,7 +746,7 @@ or(menu="quit")
 	and(menu_delay=0)
 	and(global.show_accessibility_shortcut=true)
 	
-	or(menu="accessibility_shortcut")
+	or (menu = "accessibility_shortcut")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	and(global.show_accessibility_shortcut=true)
@@ -791,7 +787,7 @@ or(menu="quit")
 	and(menu_delay=0)
 	and(global.show_profile_shortcut=true)
 	
-	or(menu="profile_shortcut")
+	or (menu = "profile_shortcut")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	and(global.show_profile_shortcut=true)
@@ -820,11 +816,28 @@ or(menu="quit")
 	#endregion /*Profile Shortcut END*/
 	
 	else
-
-	/*Click Quit*/
+	
+	/*Click Credits*/
 	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+100+180-20+1,window_get_width()/2+185,window_get_height()/2+100+180+19))
 	and(mouse_check_button_released(mb_left))
-	or(menu="quit")
+	or (menu = "credits")
+	and(key_a_pressed)
+	and(menu_delay = 0)
+	{
+		if (!instance_exists(obj_credits))
+		{
+			instance_create_depth(x, y, 0, obj_credits);
+		}
+		in_settings = false;
+		menu = "play_credits";
+		menu_delay = 3;
+	}
+	else
+	
+	/*Click Quit*/
+	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-185,window_get_height()/2+100+220-20+1,window_get_width()/2+185,window_get_height()/2+100+220+19))
+	and(mouse_check_button_released(mb_left))
+	or (menu = "quit")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	{
@@ -834,7 +847,7 @@ or(menu="quit")
 	}
 	else
 
-	if (menu="main_game")
+	if (menu = "main_game")
 	{
 		global.character_select_in_this_menu = "main_game";
 	}
@@ -858,11 +871,13 @@ or(menu="quit")
 		draw_menu_button(window_get_width()/2-185,window_get_height()/2+100+120,"Settings","options","options");
 	}
 	
-	draw_menu_button(window_get_width()/2-185,window_get_height()/2+100+160,"Quit","quit","quit");
+	draw_menu_button(window_get_width()/2-185,window_get_height()/2+100+160,"Credits","credits","play_credits");
+	
+	draw_menu_button(window_get_width()/2-185,window_get_height()/2+100+200,"Quit","quit","quit");
 
 	if (global.show_language_shortcut=true)
 	{
-		if (menu="language_shortcut")
+		if (menu = "language_shortcut")
 		{
 		if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2-250,window_get_height()/2+100+140-20,window_get_width()/2-208,window_get_height()/2+100+140+19)){draw_sprite_ext(spr_menu_button_small,0,window_get_width()/2-250,window_get_height()/2+100+140,1,1,0,c_green,1);}else{draw_sprite_ext(spr_menu_button_small,0,window_get_width()/2-250,window_get_height()/2+100+140,1,1,0,c_gray,1);}
 		draw_sprite_ext(spr_settings_icons,12,window_get_width()/2-230,window_get_height()/2+100+140,1,1,0,c_white,1);}
@@ -872,7 +887,7 @@ or(menu="quit")
 
 	if (global.show_accessibility_shortcut=true)
 	{
-		if (menu="accessibility_shortcut")
+		if (menu = "accessibility_shortcut")
 		{
 		if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2+208,window_get_height()/2+100+140-20,window_get_width()/2+250,window_get_height()/2+100+140+19)){draw_sprite_ext(spr_menu_button_small,0,window_get_width()/2+208,window_get_height()/2+100+140,1,1,0,c_green,1);}else{draw_sprite_ext(spr_menu_button_small,0,window_get_width()/2+208,window_get_height()/2+100+140,1,1,0,c_gray,1);}
 		draw_sprite_ext(spr_settings_icons,1,window_get_width()/2+230,window_get_height()/2+100+140,1,1,0,c_white,1);}
@@ -882,7 +897,7 @@ or(menu="quit")
 
 	if (global.show_profile_shortcut=true)
 	{
-		if (menu="profile_shortcut")
+		if (menu = "profile_shortcut")
 		{
 		if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),window_get_width()/2+208+50,window_get_height()/2+100+140-20,window_get_width()/2+250+50,window_get_height()/2+100+140+19)){draw_sprite_ext(spr_menu_button_small,0,window_get_width()/2+208+50,window_get_height()/2+100+140,1,1,0,c_green,1);}else{draw_sprite_ext(spr_menu_button_small,0,window_get_width()/2+208+50,window_get_height()/2+100+140,1,1,0,c_gray,1);}
 		draw_sprite_ext(spr_settings_icons,7,window_get_width()/2+230+50,window_get_height()/2+100+140,1,1,0,c_white,1);}
@@ -903,17 +918,17 @@ or (menu = "file3delete")
 
 draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+16,"Which file to delete?",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);
 
-if (menu="file1delete"){global.file=1;
+if (menu = "file1delete"){global.file=1;
 if (file_exists("File1.ini")){draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"> File 1 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"> New 1 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}}
 else
 if (file_exists("File1.ini")){draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"File 1",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+64,"New 1",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
 
-if (menu="file2delete"){global.file=2;
+if (menu = "file2delete"){global.file=2;
 if (file_exists("File2.ini")){draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"> File 2 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"> New 2 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}}
 else
 if (file_exists("File2.ini")){draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"File 2",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+64,"New 2",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
 
-if (menu="file3delete"){global.file=3;
+if (menu = "file3delete"){global.file=3;
 if (file_exists("File3.ini")){draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"> File 3 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"> New 3 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}}
 else
 if (file_exists("File3.ini")){draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"File 3",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"New 3",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
@@ -942,10 +957,10 @@ if (file_exists("File3.ini"))
 
 #region /*Select how many players (1-4 players)*/
 else
-if (menu="1player")
-or(menu="2player")
-or(menu="3player")
-or(menu="4player")
+if (menu = "1player")
+or (menu = "2player")
+or (menu = "3player")
+or (menu = "4player")
 {
 	if (global.select_number_of_players_before_selecting_characters=false)
 	{
@@ -982,7 +997,7 @@ or(menu="4player")
 	#endregion /*Menu Button for 1 Player END*/
 
 	#region /*Menu Button for 2 Player*/
-	if (menu="2player")
+	if (menu = "2player")
 	{
 		global.playergame=1;
 		if (asset_get_type("spr_menu_button_2player")==asset_sprite)
@@ -1044,7 +1059,7 @@ or(menu="4player")
 	#endregion /*Menu Button for 2 Player END*/
 
 	#region /*Menu Button for 3 Player*/
-	if (menu="3player")
+	if (menu = "3player")
 	{
 		global.playergame=2;
 		if (asset_get_type("spr_menu_button_3player")==asset_sprite)
@@ -1118,7 +1133,7 @@ or(menu="4player")
 	#endregion /*Menu Button for 3 Player END*/
 
 	#region /*Menu Button for 4 Player*/
-	if (menu="4player")
+	if (menu = "4player")
 	{
 		global.playergame=3;
 		if (asset_get_type("spr_menu_button_4player")==asset_sprite)
@@ -1263,7 +1278,7 @@ and(can_navigate=true)
 	}
 
 	#region /*Navigate Main Menu*/
-	if (menu="main_game")
+	if (menu = "main_game")
 	{
 		if (key_up)
 		{
@@ -1276,7 +1291,7 @@ and(can_navigate=true)
 		}
 	}
 	else
-	if (menu="leveleditor")
+	if (menu = "leveleditor")
 	{
 		if (key_up)
 		{
@@ -1289,7 +1304,7 @@ and(can_navigate=true)
 		}
 	}
 	else
-	if (menu="options")
+	if (menu = "options")
 	{
 		if (key_left)
 		and(global.show_language_shortcut=true)
@@ -1318,13 +1333,11 @@ and(can_navigate=true)
 		if (key_down)
 		and(global.convention_mode=false)
 		{
-			{
-				menu="quit";
-			}
+			menu="credits";
 		}
 	}
 	else
-	if (menu="language_shortcut")
+	if (menu = "language_shortcut")
 	{
 		if (key_right)
 		{
@@ -1332,7 +1345,7 @@ and(can_navigate=true)
 		}
 	}
 	else
-	if (menu="accessibility_shortcut")
+	if (menu = "accessibility_shortcut")
 	{
 		if (key_left)
 		{
@@ -1346,7 +1359,7 @@ and(can_navigate=true)
 		}
 	}
 	else
-	if (menu="profile_shortcut")
+	if (menu = "profile_shortcut")
 	{
 		if (key_left)
 		{
@@ -1354,7 +1367,7 @@ and(can_navigate=true)
 		}
 	}
 	else
-	if (menu="quit")
+	if (menu = "credits")
 	{
 		if (key_up)
 		{
@@ -1363,11 +1376,24 @@ and(can_navigate=true)
 		else
 		if (key_down)
 		{
+			menu="quit";
+		}
+	}
+	else
+	if (menu = "quit")
+	{
+		if (key_up)
+		{
+			menu="credits";
+		}
+		else
+		if (key_down)
+		{
 			menu="main_game";
 		}
 	}
 	else
-	if (menu="delete")
+	if (menu = "delete")
 	{
 		if (key_down)
 		{
@@ -1395,7 +1421,7 @@ and(can_navigate=true)
 #region /*Accept*/
 
 #region /*Select File*/
-if (menu="file1")
+if (menu = "file1")
 and(menu_delay=0)
 {
 	global.actually_play_edited_level = false;
@@ -1460,7 +1486,7 @@ and(menu_delay=0)
 		}
 	}
 }
-if (menu="file2")
+if (menu = "file2")
 and(menu_delay=0)
 {
 	global.actually_play_edited_level = false;
@@ -1524,7 +1550,7 @@ and(menu_delay=0)
 		}
 	}
 }
-if (menu="file3")
+if (menu = "file3")
 and(menu_delay=0)
 {
 	global.actually_play_edited_level = false;
@@ -1591,7 +1617,7 @@ and(menu_delay=0)
 #endregion /*Select File END*/
 
 #region /*Delete File*/
-if (menu="delete")
+if (menu = "delete")
 and(menu_delay=0)
 {
 	if (global.file=1)
@@ -1610,7 +1636,7 @@ and(menu_delay=0)
 	}
 	menu_delay = 3;
 }
-if (menu="file1delete")
+if (menu = "file1delete")
 and(menu_delay=0)
 {
 	if (file_exists("File1.ini"))
@@ -1621,7 +1647,7 @@ and(menu_delay=0)
 	menu="file1";
 	menu_delay = 3;
 }
-if (menu="file2delete")
+if (menu = "file2delete")
 and(menu_delay=0)
 {
 	if (file_exists("File2.ini"))
@@ -1632,7 +1658,7 @@ and(menu_delay=0)
 	menu="file2";
 	menu_delay = 3;
 }
-if (menu="file3delete")
+if (menu = "file3delete")
 and(menu_delay=0)
 {
 	if (file_exists("File3.ini"))
@@ -1646,10 +1672,10 @@ and(menu_delay=0)
 #endregion /*Delete File END*/
 
 #region /*Select Number of Players*/
-if (menu="1player")
-or(menu="2player")
-or(menu="3player")
-or(menu="4player")
+if (menu = "1player")
+or (menu = "2player")
+or (menu = "3player")
+or (menu = "4player")
 {
 	
 	#region /*Select 1 Player Game*/
@@ -1815,7 +1841,7 @@ or(menu="4player")
 
 #region /*Can't enter level editor in demo version*/
 {
-	if (menu="leveleditor")
+	if (menu = "leveleditor")
 	and(menu_delay=0)
 	and(global.demo=true)
 	{
@@ -1834,7 +1860,7 @@ or(menu="4player")
 #endregion /*Can't enter level editor in demo version END*/
 
 #region /*Select Options*/
-if (menu="options")
+if (menu = "options")
 and(key_a_pressed)
 and(menu_delay=0)
 {
@@ -1850,8 +1876,34 @@ and(menu_delay=0)
 }
 #endregion /*Select Options END*/
 
+#region /*Select Credits*/
+if (menu = "credits")
+and(key_a_pressed)
+and(menu_delay=0)
+{
+	if (!instance_exists(obj_credits))
+	{
+		instance_create_depth(x, y, 0, obj_credits);
+	}
+	in_settings = false;
+	can_navigate_settings_sidebar = false;
+	menu_delay = 3;
+	menu = "play_credits";
+}
+#endregion /*Select Credits END*/
+
+#region /*Make sure credits play when selected credits*/
+if (menu = "play_credits")
+{
+	if (!instance_exists(obj_credits))
+	{
+		instance_create_depth(x, y, 0, obj_credits);
+	}
+}
+#region /*Make sure credits play when selected credits*/
+
 #region /*Select Quit*/
-if (menu="quit")
+if (menu = "quit")
 and(key_a_pressed)
 and(menu_delay=0)
 {
@@ -1869,7 +1921,7 @@ and(iris_xscale<=0.001)
 {
 	
 	#region /*Play Level Editor*/
-	if (menu="level_editor_play")
+	if (menu = "level_editor_play")
 	and(global.character_select_in_this_menu = "level_editor")
 	{
 		if (title_music > noone)
@@ -2124,7 +2176,7 @@ and(iris_xscale<=0.001)
 	else
 	
 	#region /*Make Level Editor*/
-	if (menu="level_editor_make")
+	if (menu = "level_editor_make")
 	and(global.character_select_in_this_menu = "level_editor")
 	{
 		if (title_music > noone)
@@ -2426,21 +2478,21 @@ if (key_b_pressed)
 {
 	
 	#region /*Delete File*/
-	if (menu="file1delete")
+	if (menu = "file1delete")
 	and(menu_delay=0)
 	{
 		global.file=1;
 		menu="file1";
 		menu_delay = 3;
 	}
-	if (menu="file2delete")
+	if (menu = "file2delete")
 	and(menu_delay=0)
 	{
 		global.file=2;
 		menu="file2";
 		menu_delay = 3;
 	}
-	if (menu="file3delete")
+	if (menu = "file3delete")
 	and(menu_delay=0)
 	{
 		global.file=3;
@@ -2449,10 +2501,10 @@ if (key_b_pressed)
 	}
 	#endregion /*Delete File END*/
 	
-	if (menu="1player")
-	or(menu="2player")
-	or(menu="3player")
-	or(menu="4player")
+	if (menu = "1player")
+	or (menu = "2player")
+	or (menu = "3player")
+	or (menu = "4player")
 	{
 		if (menu_delay=0)
 		{

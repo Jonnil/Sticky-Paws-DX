@@ -12,8 +12,8 @@ sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
 
 place_object_angle = false;
 
-angle_x = x;
-angle_y = y;
+second_x = x;
+second_y = y;
 
 draw_yscale = 1;
 draw_angle = 0;

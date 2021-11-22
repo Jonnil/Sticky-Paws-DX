@@ -101,3 +101,10 @@ if (menu = "load_custom_level")
 		}
 	}
 }
+
+#region /*Play Title Screen Music*/
+if (title_music > noone)
+{
+	audio_sound_gain(title_music, global.music_volume, 0);
+}
+#endregion /*Play Title Screen Music END*/

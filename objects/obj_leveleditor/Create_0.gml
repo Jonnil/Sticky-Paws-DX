@@ -393,8 +393,8 @@ if (global.character_select_in_this_menu = "main_game")
 			val[3] = easy,
 			val[4] = normal,
 			val[5] = hard,
-			val[6] = angle_x,
-			val[7] = angle_y*/
+			val[6] = second_x,
+			val[7] = second_y*/
 			{
 				num = 0;
 				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
@@ -403,8 +403,8 @@ if (global.character_select_in_this_menu = "main_game")
 					easy=val[3];
 					normal=val[4];
 					hard=val[5];
-					angle_x=val[6];
-					angle_y=val[7];
+					second_x=val[6];
+					second_y=val[7];
 				}
 			}
 		}
@@ -651,8 +651,8 @@ if (global.character_select_in_this_menu = "level_editor")
 				val[3] = easy,
 				val[4] = normal,
 				val[5] = hard,
-				val[6] = angle_x,
-				val[7] = angle_y*/
+				val[6] = second_x,
+				val[7] = second_y*/
 				{
 					num = 0;
 					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
@@ -661,8 +661,8 @@ if (global.character_select_in_this_menu = "level_editor")
 						easy=val[3];
 						normal=val[4];
 						hard=val[5];
-						angle_x=val[6];
-						angle_y=val[7];
+						second_x=val[6];
+						second_y=val[7];
 					}
 				}
 			}

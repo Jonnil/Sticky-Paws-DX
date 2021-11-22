@@ -1306,40 +1306,50 @@ and(delay>1)
 #region /*Change certain objects angle*/
 
 /*Spring*/
-if (object=62)
+if (object = 62)
 {
-	draw_line_width_color(x,y,angle_x,angle_y,4,c_black,c_black);
-	draw_line_width_color(x,y,angle_x,angle_y,2,c_white,c_white);
-	draw_angle = point_direction(x, y, angle_x, angle_y)-90;
+	draw_line_width_color(x,y,second_x,second_y,4,c_black,c_black);
+	draw_line_width_color(x,y,second_x,second_y,2,c_white,c_white);
+	draw_angle = point_direction(x, y, second_x, second_y)-90;
 }
 
 else
 
 /*Water Level Change*/
-if (object=732)
-or (object=733)
-or (object=734)
+if (object = 732)
+or (object = 733)
+or (object = 734)
 {
-	draw_line_width_color(x,y,x,angle_y,4,c_black,c_black);
-	draw_line_width_color(x,y,x,angle_y,2,c_white,c_white);
-	draw_angle = point_direction(x, y, x, angle_y)-90;
+	draw_line_width_color(x,y,x,second_y,4,c_black,c_black);
+	draw_line_width_color(x,y,x,second_y,2,c_white,c_white);
+	draw_angle = point_direction(x, y, x, second_y)-90;
 }
 
 else
 
 /*Arrows*/
-if (object=64)
-or(object=65)
+if (object = 64)
+or (object = 65)
 {
-	draw_angle = point_direction(x, y, angle_x, angle_y);
+	draw_angle = point_direction(x, y, second_x, second_y);
+}
+
+else
+
+/*Water Block*/
+if (object = 73)
+{
+	draw_set_alpha(0.5);
+	draw_rectangle_color(x-16, y-16, second_x+16, second_y+16, c_blue, c_blue, c_blue, c_blue, false);
+	draw_set_alpha(1);
 }
 
 if (place_object_angle = true)
 {	
 	if (instance_exists(obj_leveleditor))
 	{
-		angle_x = obj_leveleditor.x;
-		angle_y = obj_leveleditor.y;
+		second_x = obj_leveleditor.x;
+		second_y = obj_leveleditor.y;
 	}
 	if (mouse_check_button_released(mb_left))
 	{
@@ -1624,10 +1634,10 @@ if (global.play_edited_level = true)
 		if (object=59){if(asset_get_type("obj_enemy1")==asset_object){instance_create_depth(x,y,0,obj_enemy1);instance_destroy();}else{instance_destroy();}}
 		if (object=60){if(asset_get_type("obj_enemy2")==asset_object){instance_create_depth(x,y,0,obj_enemy2);instance_destroy();}else{instance_destroy();}}
 		if (object=61){if(asset_get_type("obj_blaster")==asset_object){instance_create_depth(x,y,0,obj_blaster);instance_destroy();}else{instance_destroy();}}
-		if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
+		if (object=62)and(asset_get_type("obj_spring")==asset_object){with(instance_create_depth(x,y,0,obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){second_x=instance_nearest(x,y,obj_leveleditor_placed_object).second_x;second_y=instance_nearest(x,y,obj_leveleditor_placed_object).second_y;}}instance_destroy();}
 		if (object=63)and(asset_get_type("obj_vine")==asset_object){instance_create_depth(x,y,0,obj_vine);instance_destroy();}
-		if (object=64)and(asset_get_type("obj_arrow_sign")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
-		if (object=65)and(asset_get_type("obj_arrow_sign_small")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
+		if (object=64)and(asset_get_type("obj_arrow_sign")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){second_x=instance_nearest(x,y,obj_leveleditor_placed_object).second_x;second_y=instance_nearest(x,y,obj_leveleditor_placed_object).second_y;}}instance_destroy();}
+		if (object=65)and(asset_get_type("obj_arrow_sign_small")==asset_object){with(instance_create_depth(x,y,0,obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x=instance_nearest(x,y,obj_leveleditor_placed_object).second_x;second_y=instance_nearest(x,y,obj_leveleditor_placed_object).second_y;}}instance_destroy();}
 		if (object=66)and(asset_get_type("obj_checkpoint")==asset_object){instance_create_depth(x,y,0,obj_checkpoint);instance_destroy();}
 		if (object=67){if(asset_get_type("obj_spikes_emerge")==asset_object){instance_create_depth(x,y+16,0,obj_spikes_emerge);instance_destroy();}}
 		if (object=671){if(asset_get_type("obj_spikes_emerge")==asset_object){with(instance_create_depth(x,y+16,0,obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}instance_destroy();}}
@@ -1646,6 +1656,8 @@ if (global.play_edited_level = true)
 			{
 				with(instance_create_depth(x,y,0,obj_water))
 				{
+					second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+					second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
 					if (asset_get_type("spr_water")==asset_sprite)
 					{
 						sprite_index = spr_water;
@@ -1662,9 +1674,18 @@ if (global.play_edited_level = true)
 			if (asset_get_type("obj_water")==asset_object)
 			{
 				with(instance_create_depth(x,y,0,obj_water))
-				and(asset_get_type("spr_water_surface")==asset_sprite)
 				{
-					sprite_index = spr_water_surface;
+					second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+					second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
+					if (asset_get_type("spr_water_surface") == asset_sprite)
+					{
+						sprite_index = spr_water_surface;
+					}
+					else
+					if (asset_get_type("spr_water")==asset_sprite)
+					{
+						sprite_index = spr_water;
+					}
 				}
 			}
 			instance_destroy();
@@ -1672,9 +1693,9 @@ if (global.play_edited_level = true)
 		#endregion /*Create Water Surface END*/
 		
 		if (object=735)and(asset_get_type("obj_air_bubbles_spawner")==asset_object){instance_create_depth(x,y,0,obj_air_bubbles_spawner);instance_destroy();}
-		if (object=732)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
-		if (object=733)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 1; if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
-		if (object=734)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 2; if (instance_exists(obj_leveleditor_placed_object)){angle_x=instance_nearest(x,y,obj_leveleditor_placed_object).angle_x;angle_y=instance_nearest(x,y,obj_leveleditor_placed_object).angle_y;}}instance_destroy();}
+		if (object=732)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){second_x=instance_nearest(x,y,obj_leveleditor_placed_object).second_x;second_y=instance_nearest(x,y,obj_leveleditor_placed_object).second_y;}}instance_destroy();}
+		if (object=733)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 1; if (instance_exists(obj_leveleditor_placed_object)){second_x=instance_nearest(x,y,obj_leveleditor_placed_object).second_x;second_y=instance_nearest(x,y,obj_leveleditor_placed_object).second_y;}}instance_destroy();}
+		if (object=734)and(asset_get_type("obj_water_level_change")==asset_object){with(instance_create_depth(x,y,0,obj_water_level_change)){water_level_change_speed = 2; if (instance_exists(obj_leveleditor_placed_object)){second_x=instance_nearest(x,y,obj_leveleditor_placed_object).second_x;second_y=instance_nearest(x,y,obj_leveleditor_placed_object).second_y;}}instance_destroy();}
 		
 		if (object=74)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_shirt;}instance_destroy();}
 		if (object=75)and(asset_get_type("obj_clipped_clothes")==asset_object){with(instance_create_depth(x,y,0,obj_clipped_clothes)){sprite_index=spr_clipped_pants;}instance_destroy();}

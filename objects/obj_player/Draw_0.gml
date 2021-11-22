@@ -10,7 +10,7 @@
 //draw_text_outlined(x-32,y-64,"Crouch Toggle: "+string(global.player1_crouch_toggle),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x-32,y-128,"Sprint Toggle: "+string(global.player1_sprint_toggle),global.default_text_size,c_white,c_black,1);
 //if(voice_jump_3rd_1>noone){draw_text_outlined(x,y-64,"True",global.default_text_size,c_white,c_black,1);}
-//draw_text_outlined(x-128,y-128,"actually_play_edited_level: "+string(global.actually_play_edited_level),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x,y-128,string(wall_jump),global.default_text_size,c_white,c_black,1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)

@@ -2,7 +2,7 @@
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
-  "origin": 4,
+  "origin": 0,
   "preMultiplyAlpha": false,
   "edgeFiltering": false,
   "collisionTolerance": 0,
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3","path":"sprites/spr_water/spr_water.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3","path":"sprites/spr_water/spr_water.yy",},"LayerId":{"name":"b0957d8c-8fd4-4137-989a-ca1e7475fb0c","path":"sprites/spr_water/spr_water.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_water","path":"sprites/spr_water/spr_water.yy",},"resourceVersion":"1.0","name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3","path":"sprites/spr_water_origin_point_top_left/spr_water_origin_point_top_left.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3","path":"sprites/spr_water_origin_point_top_left/spr_water_origin_point_top_left.yy",},"LayerId":{"name":"b0957d8c-8fd4-4137-989a-ca1e7475fb0c","path":"sprites/spr_water_origin_point_top_left/spr_water_origin_point_top_left.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_water_origin_point_top_left","path":"sprites/spr_water_origin_point_top_left/spr_water_origin_point_top_left.yy",},"resourceVersion":"1.0","name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_water","path":"sprites/spr_water/spr_water.yy",},
+    "spriteId": {"name":"spr_water_origin_point_top_left","path":"sprites/spr_water_origin_point_top_left/spr_water_origin_point_top_left.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"6eca9629-d716-4061-af78-8593f128641d","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3","path":"sprites/spr_water/spr_water.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"12a2ce29-dcf8-4faf-af30-2ce6e071e5b7","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3","path":"sprites/spr_water_origin_point_top_left/spr_water_origin_point_top_left.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -54,13 +54,13 @@
     "backdropHeight": 768,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
-    "xorigin": 16,
-    "yorigin": 16,
+    "xorigin": 0,
+    "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_water","path":"sprites/spr_water/spr_water.yy",},
+    "parent": {"name":"spr_water_origin_point_top_left","path":"sprites/spr_water_origin_point_top_left/spr_water_origin_point_top_left.yy",},
     "resourceVersion": "1.3",
-    "name": "spr_water",
+    "name": "spr_water_origin_point_top_left",
     "tags": [],
     "resourceType": "GMSequence",
   },
@@ -73,7 +73,7 @@
     "path": "folders/Sprites.yy",
   },
   "resourceVersion": "1.0",
-  "name": "spr_water",
+  "name": "spr_water_origin_point_top_left",
   "tags": [],
   "resourceType": "GMSprite",
 }

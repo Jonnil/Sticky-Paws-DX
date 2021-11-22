@@ -1,5 +1,5 @@
 depth = 11;
 yy = y;
 time = 0;
-angle_x = x;
-angle_y = y;
+second_x = x;
+second_y = y;

@@ -24,6 +24,6 @@ and (place_meeting(x, y, obj_player))
 	with (obj_water_level)
 	{
 		water_level_change_speed = instance_nearest(obj_player.x, obj_player.y, obj_water_level_change).water_level_change_speed;
-		water_level_change_new_y = instance_nearest(obj_player.x, obj_player.y, obj_water_level_change).angle_y;
+		water_level_change_new_y = instance_nearest(obj_player.x, obj_player.y, obj_water_level_change).second_y;
 	}
 }

@@ -1,4 +1,4 @@
-image_angle = point_direction(x, y, angle_x, angle_y);
+image_angle = point_direction(x, y, second_x, second_y);
 
 y = lerp(y, yy, 0.01);
 time += 1;

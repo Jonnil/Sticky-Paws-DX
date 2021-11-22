@@ -80,6 +80,7 @@ and(stick_to_wall = false)
 		can_dive = true;
 		spring = false;
 		ledge_grab_jump = false;
+		wall_jump = 0;
 	}
 }
 #endregion /*Landing on solid object END*/

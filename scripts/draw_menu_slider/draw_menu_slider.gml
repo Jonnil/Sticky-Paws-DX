@@ -22,7 +22,7 @@ function draw_menu_slider()
 	var background_brightness_indicator_x = 160;
 	#endregion /*Initialize variables END*/
 	
-	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position-16,x_position+320,y_position+16))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position-16, x_position+320, y_position+16))
 	and (global.controls_used_for_menu_navigation = "mouse")
 	and (menu_delay = 0)
 	and (open_dropdown = false)

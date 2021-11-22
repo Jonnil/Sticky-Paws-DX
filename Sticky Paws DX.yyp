@@ -367,6 +367,7 @@
     {"id":{"name":"spr_1up","path":"sprites/spr_1up/spr_1up.yy",},"order":65,},
     {"id":{"name":"spr_pause_text","path":"sprites/spr_pause_text/spr_pause_text.yy",},"order":99,},
     {"id":{"name":"obj_pause","path":"objects/obj_pause/obj_pause.yy",},"order":7,},
+    {"id":{"name":"spr_water_origin_point_top_left","path":"sprites/spr_water_origin_point_top_left/spr_water_origin_point_top_left.yy",},"order":141,},
     {"id":{"name":"snd_enemyvoice_defeated2","path":"sounds/snd_enemyvoice_defeated2/snd_enemyvoice_defeated2.yy",},"order":32,},
     {"id":{"name":"spr_menu_create_custom_level","path":"sprites/spr_menu_create_custom_level/spr_menu_create_custom_level.yy",},"order":20,},
     {"id":{"name":"scr_translation","path":"scripts/scr_translation/scr_translation.yy",},"order":6,},
@@ -1333,6 +1334,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/levels/Ending/sounds/ambience","resourceVersion":"1.0","name":"ambience.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/character1/Sprites","resourceVersion":"1.0","name":"sitting_eating.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/music","resourceVersion":"1.0","name":"title_screen.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"credits.txt","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.6.595",

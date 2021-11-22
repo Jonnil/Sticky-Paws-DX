@@ -6766,6 +6766,7 @@ and(global.pause=false)
 					}
 					image_index = 0;;
 					angle=0;
+					wall_jump = 0;
 				}
 			}
 		}
@@ -7206,6 +7207,9 @@ if (asset_get_type("obj_water")==asset_object)
 	or (asset_get_type("obj_water_level")==asset_object)
 	and (instance_exists(obj_water_level))
 	and (y > obj_water_level.y)
+	//or (in_water = true)
+	//or (instance_exists(obj_water))
+	//and collision_rectangle(instance_nearest(x, y, obj_water).x, instance_nearest(x, y, obj_water).y, instance_nearest(x, y, obj_water).second_x, instance_nearest(x, y, obj_water).second_y, obj_water, false, true)
 	{
 		dive = false;
 		if (in_water = false)
@@ -8145,8 +8149,8 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	
 	spring_animation=0;
 	move_towards_point(
-	instance_nearest(x,y,obj_spring).angle_x,
-	instance_nearest(x,y,obj_spring).angle_y,
+	instance_nearest(x,y,obj_spring).second_x,
+	instance_nearest(x,y,obj_spring).second_y,
 	instance_nearest(x,y,obj_spring).bounce_height);
 	if (hspeed<0)
 	{
@@ -8170,8 +8174,8 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	speed_max=4;
 	spring=true;
 	move_towards_spring_endpoint = true;
-	spring_endpoint_x = instance_nearest(x,y,obj_spring).angle_x;
-	spring_endpoint_y = instance_nearest(x,y,obj_spring).angle_y;
+	spring_endpoint_x = instance_nearest(x,y,obj_spring).second_x;
+	spring_endpoint_y = instance_nearest(x,y,obj_spring).second_y;
 	stick_to_wall=false;
 	instance_nearest(x,y,obj_spring).can_bounce = 10;
 	instance_nearest(x,y,obj_spring).image_index=1;
@@ -9210,8 +9214,8 @@ or (hspeed >- 0.1)
 		if (speeddash=true)
 		{
 			if (sprite_swim > noone){sprite_index = sprite_swim;}else
-			if (sprite_run > noone){sprite_index = sprite_run;}
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
+			if (sprite_run > noone){sprite_index = sprite_run;}else
+			if (sprite_walk > noone){sprite_index = sprite_walk;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}
 		}
 		else
@@ -9219,7 +9223,7 @@ or (hspeed >- 0.1)
 		{
 			if (sprite_swim > noone){sprite_index = sprite_swim;}else
 			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
+			if (sprite_walk > noone){sprite_index = sprite_walk;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}
 		}
 		/*Against Wall*/
