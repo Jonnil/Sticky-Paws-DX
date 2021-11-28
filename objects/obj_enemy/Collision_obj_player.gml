@@ -1338,11 +1338,16 @@ or(other.chain_reaction>=8)
 }
 #endregion /*Rewards End*/
 
-speed=0;
+speed = 0;
 if (other.key_jump_hold)
 {
 	with(other)
 	{
+		if (in_water = true)
+		{
+			vspeed=-4;
+		}
+		else
 		if (simple_controls=false)
 		{
 			vspeed=-triple_jump_height;
@@ -1355,7 +1360,14 @@ if (other.key_jump_hold)
 }
 else
 {
-	other.vspeed=-8;
+	if (other.in_water = true)
+	{
+		other.vspeed=-4;
+	}
+	else
+	{
+		other.vspeed=-8;
+	}
 }
 image_index=0;
 }

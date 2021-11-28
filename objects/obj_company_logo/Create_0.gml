@@ -205,6 +205,7 @@ global.theme="ground";
 global.basic_collectibles=0;
 global.level_clear_rate=noone;
 global.current_level_clear_rate = noone;
+global.increase_number_of_levels_cleared = true; /*Some levels shouldn't increase the number of levels cleared, so switch this true or false for certain levels*/
 global.big_collectible1=false;/*If you have Big Collectible 1 or not*/
 global.big_collectible2=false;/*If you have Big Collectible 2 or not*/
 global.big_collectible3=false;/*If you have Big Collectible 3 or not*/

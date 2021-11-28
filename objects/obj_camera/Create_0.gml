@@ -108,6 +108,8 @@ view_hview_lerp = 0;
 #endregion /*Smooth the camera out even more END*/
 
 #region /*Hud Variables*/
+global.hud_show_lives = true;
+global.hud_show_deaths = true;
 hud_show_lives = -32;
 hud_show_lives_timer = global.hud_hide_time*60;
 hud_show_deaths = -32;
@@ -389,7 +391,7 @@ xx = x;
 yy = y;
 letterbox_top_y = 0;
 letterbox_bottom_y = room_height;
-show_letterbox = 60;
+show_letterbox = 0;
 iris_xscale = 0;
 iris_yscale = 0;
 allow_iris = true;
@@ -398,7 +400,11 @@ timer_blinking_alpha = 0;
 
 /*Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen*/
 #region /*Initialize View*/
-/*View Size*/view_wview=1024+400-32;view_hview=768-32;/*View Size End*/
+
+/*View Size*/
+view_wview=1024+400-32;
+view_hview=768-32;
+/*View Size End*/
 
 #region /*View Size*/
 if (os_type==os_ios)or(os_type==os_android){

@@ -123,3 +123,11 @@ sprite_stand = noone;
 #endregion /*Play as custom character END*/
 
 scr_config_load(); /*Load Config only once in create event, or it will mess up the options menu navigation*/
+
+/*Make number of level cleared 1 because of the level intro*/
+ini_open("file" + string(global.file) + ".ini");
+if (ini_read_real("Player","number_of_levels_cleared",0) < 1)
+{
+	ini_write_real("Player","number_of_levels_cleared",1)
+}
+ini_close();

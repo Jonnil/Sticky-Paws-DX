@@ -10,7 +10,10 @@ function scr_savelevel()
 		and(ini_read_string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"clear_rate","closed")!="clear")
 		{
 			ini_write_string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"clear_rate","clear");
-			ini_write_real("Player","number_of_levels_cleared",ini_read_real("Player","number_of_levels_cleared",false)+1);
+			if (global.increase_number_of_levels_cleared = true)
+			{
+				ini_write_real("Player","number_of_levels_cleared",ini_read_real("Player","number_of_levels_cleared",0)+1);
+			}
 		}
 		if (global.level_clear_rate = "clear")
 		{

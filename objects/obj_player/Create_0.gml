@@ -491,6 +491,7 @@ intro_animation_image_index = 0; /*Image index of intro animation*/
 
 assist_invincible = false;
 buffer_jump = 0; /*Jump buffer timer, set to 0*/
+can_mid_air_jump = 0; /*When 0, you can mid air jump. Counts down when above 0*/
 can_climb_horizontal_rope_cooldown = 0;
 can_dive = true;
 can_ground_pound = true;
@@ -610,7 +611,7 @@ time_second = 0;
 aim_image_index = 0;
 invincible = false;
 invincible_pitch = 1;
-drop_off_wall_climb = false;
+drop_off_wall_climb = 0;
 
 in_water = false; /*If the player is in water or not, instead of checking for the actual obj_water, check for this variable instead*/
 old_in_water = false; /*This just checks if water splash effect should be done or not, by checking if the actual in_water is different from the old_in_water*/

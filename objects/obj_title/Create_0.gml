@@ -837,10 +837,6 @@ if (asset_get_type("snd_menuvoice_controllersplash")==asset_sound)
 {
 	audio_stop_sound(snd_menuvoice_controllersplash);
 }
-if (asset_get_type("snd_rain")==asset_sound)
-{
-	audio_stop_sound(snd_rain);
-}
 if (asset_get_type("snd_slip") == asset_sound)
 {
 	audio_stop_sound(snd_skidding);

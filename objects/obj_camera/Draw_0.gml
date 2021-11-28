@@ -446,8 +446,8 @@ if (save_level_as_png = false)
 	
 	#region /*ONE PLAYER CAMERA*/
 	if (asset_get_type("obj_player") == asset_object)
-	and(asset_get_type("obj_camera") == asset_object)
-	and(instance_number(obj_player) = 1)
+	and (asset_get_type("obj_camera") == asset_object)
+	and (instance_number(obj_player) = 1)
 	and (global.player_has_entered_goal = false)
 	{
 		/*Tries to be a bit ahead of player*/
@@ -481,16 +481,13 @@ if (save_level_as_png = false)
 		#region /*When Player is in water*/
 		with(instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player))
 		{
-			if (asset_get_type("obj_water") == asset_object)
+			if (instance_nearest(x, y, obj_player).in_water = true)
 			{
-				if (place_meeting(x, y, obj_water))
+				if (asset_get_type("obj_camera") == asset_object)
 				{
-					if (asset_get_type("obj_camera") == asset_object)
+					if (instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
 					{
-						if (instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
-						{
-							obj_camera.yy = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player).y;
-						}
+						obj_camera.yy = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player).y;
 					}
 				}
 			}
@@ -875,42 +872,6 @@ layer_x(layer_get_id("Background_4"),camera_get_view_x(view_camera[view_current]
 layer_y(layer_get_id("Background_4"),camera_get_view_y(view_camera[view_current])/custom_background_4_y_parallax+custom_background_4_y_offset);
 #endregion /*Parallax Scrolling Background END*/
 
-#region /*Letterboxing during cutscenes (when the player object is absent)*/
-if (show_letterbox > 0)
-and(global.play_edited_level = false)
-and(global.actually_play_edited_level = false)
-or(show_letterbox > 0)
-and(global.play_edited_level = true)
-and(global.actually_play_edited_level = true)
-{
-	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]), room_width*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(0, letterbox_bottom_y, room_width*3, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-}
-if (asset_get_type("obj_player") == asset_object)
-and(!instance_exists(obj_player))
-and(asset_get_type("obj_player_map") == asset_object)
-and(!instance_exists(obj_player_map))
-and(asset_get_type("obj_title") == asset_object)
-and(!instance_exists(obj_title))
-or(asset_get_type("obj_player") == asset_object)
-and(instance_exists(obj_player))
-and(obj_player.can_move = false)
-{
-	letterbox_top_y = lerp(letterbox_top_y, camera_get_view_y(view_camera[view_current]) + 64, 0.1);
-	letterbox_bottom_y = lerp(letterbox_bottom_y, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 64, 0.1);
-	show_letterbox = 60;
-}
-else
-{
-	letterbox_top_y = lerp(letterbox_top_y, camera_get_view_y(view_camera[view_current]), 0.1);
-	letterbox_bottom_y = lerp(letterbox_bottom_y, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), 0.1);
-	if (show_letterbox > 0)
-	{
-		show_letterbox -= 1;
-	}
-}
-#endregion /*Letterboxing during cutscenes (when the player object is absent) END*/
-
 #region /*Tongue aim should always be above everything, it represents the mouse cursor*/
 if (asset_get_type("obj_player") == asset_object)
 and(instance_exists(obj_player))
@@ -951,14 +912,6 @@ and (!instance_exists(obj_title))
 and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 {
-	if (asset_get_type("snd_rain") == asset_sound)
-	{
-		if (!audio_is_playing(snd_rain))
-		{
-			audio_play_sound(snd_rain, 0, true);
-			audio_sound_gain(snd_rain, global.sfx_volume, 0);
-		}
-	}
 	if (floor(random(10 - 1)) = 0)
 	{
 		effect_create_above(ef_rain, x, y, 2, c_white);

@@ -1340,7 +1340,7 @@ else
 if (object = 73)
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(x-16, y-16, second_x+16, second_y+16, c_blue, c_blue, c_blue, c_blue, false);
+	draw_rectangle_color(x-16, y-16, 16 + second_x, 16 + second_y, c_blue, c_blue, c_blue, c_blue, false);
 	draw_set_alpha(1);
 }
 

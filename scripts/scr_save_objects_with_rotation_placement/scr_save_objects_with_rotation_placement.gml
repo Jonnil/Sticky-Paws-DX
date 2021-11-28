@@ -24,6 +24,7 @@ with(obj_leveleditor_placed_object)
 	or(object = 732)
 	or(object = 733)
 	or(object = 734)
+	or(object = 73)
 	{
 		str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|"+string(second_x)+"|"+string(second_y)+"|";
 	}

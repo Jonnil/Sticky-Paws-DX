@@ -1248,6 +1248,7 @@ and(speed = 0)
 		global.big_collectible4 = instance_nearest(x, y, obj_level).big_collectible4;
 		global.big_collectible5 = instance_nearest(x, y, obj_level).big_collectible5;
 		global.lives_until_assist = instance_nearest(x, y, obj_level).lives_until_assist;
+		global.increase_number_of_levels_cleared = instance_nearest(x, y, obj_level).increase_number_of_levels_cleared;
 	}
 }
 #endregion /*Enter Level END*/

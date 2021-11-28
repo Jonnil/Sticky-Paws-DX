@@ -534,27 +534,6 @@ or (menu = "file3")
 		draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+16,"Delete",global.default_text_size,c_menu_outline,c_menu_fill,1);
 	}
 
-	#region /*Show how many goals have been reached in each file*/
-	if (file_exists("File1.ini"))
-	{
-		ini_open("File1.ini");
-		draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+94,"No. Levels Cleared: "+string(ini_read_real("Player","number_of_levels_cleared",0)),global.default_text_size*0.5,global.default_text_size*0.5,0,c_black,c_black,c_black,c_black,1);
-		ini_close();
-	}
-	if (file_exists("File2.ini"))
-	{
-		ini_open("File2.ini");
-		draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+94,"No. Levels Cleared: "+string(ini_read_real("Player","number_of_levels_cleared",0)),global.default_text_size*0.5,global.default_text_size*0.5,0,c_black,c_black,c_black,c_black,1);
-		ini_close();
-	}
-	if (file_exists("File3.ini"))
-	{
-		ini_open("File3.ini");
-		draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+94,"No. Levels Cleared: "+string(ini_read_real("Player","number_of_levels_cleared",0)),global.default_text_size*0.5,global.default_text_size*0.5,0,c_black,c_black,c_black,c_black,1);
-		ini_close();
-	}
-	#endregion /*Show how many goals have been reached in each file END*/
-
 	if (global.demo=true)
 	{
 		draw_sprite_ext(spr_lock,0,window_get_width()/2,window_get_height()/2+menu_y_offset+156,0.5,0.5,0,c_white,1);
@@ -932,26 +911,6 @@ if (menu = "file3delete"){global.file=3;
 if (file_exists("File3.ini")){draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"> File 3 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"> New 3 <",global.default_text_size*1.3,global.default_text_size*1.3,0,c_red,c_red,c_red,c_red,1);}}
 else
 if (file_exists("File3.ini")){draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"File 3",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}else{draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+64,"New 3",global.default_text_size,global.default_text_size,0,c_red,c_red,c_red,c_red,1);}
-
-#region /*Show how many goals have been reached in each file*/
-if (file_exists("File1.ini"))
-{
-	ini_open("File1.ini");
-	draw_text_outlined(window_get_width()/2-128,window_get_height()/2+menu_y_offset+94,"No. Levels Cleared: "+string(ini_read_real("Player","number_of_levels_cleared",0)),global.default_text_size*0.5,global.default_text_size*0.5,0,c_red,c_red,c_red,c_red,1);
-	ini_close();
-}
-if (file_exists("File2.ini"))
-{
-	ini_open("File2.ini");
-	draw_text_outlined(window_get_width()/2,window_get_height()/2+menu_y_offset+94,"No. Levels Cleared: "+string(ini_read_real("Player","number_of_levels_cleared",0)),global.default_text_size*0.5,global.default_text_size*0.5,0,c_red,c_red,c_red,c_red,1);
-	ini_close();
-}
-if (file_exists("File3.ini"))
-{
-	ini_open("File3.ini");draw_text_outlined(window_get_width()/2+128,window_get_height()/2+menu_y_offset+94,"No. Levels Cleared: "+string(ini_read_real("Player","number_of_levels_cleared",0)),global.default_text_size*0.5,global.default_text_size*0.5,0,c_red,c_red,c_red,c_red,1);
-	ini_close();
-}
-#endregion /*Show how many goals have been reached in each file END*/
 
 }
 

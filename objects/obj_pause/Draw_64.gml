@@ -1056,6 +1056,7 @@ and(global.pause_room = room_leveleditor)
 		or(menu = "restart")
 		or(menu = "quit")
 		{
+			scr_config_save(); /*Save Config*/
 			audio_resume_all();
 			audio_sound_gain(global.music,global.music_volume,0);
 			audio_sound_gain(global.music_underwater,0,0);
@@ -1117,6 +1118,7 @@ or(gamepad_button_check_pressed(3, gp_select))
 	and(input_key = false)
 	and(menu_delay = 0)
 	{
+		scr_config_save(); /*Save Config*/
 		audio_resume_all();
 		audio_sound_gain(global.music,global.music_volume,0);
 		audio_sound_gain(global.music_underwater,0,0);

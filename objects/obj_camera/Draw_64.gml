@@ -7,6 +7,7 @@ and (!instance_exists(obj_title))
 
 	#region /*If HUD show timer is set to always hide*/
 	if (global.hud_hide_time <= 0)
+	or (show_letterbox > 0)
 	{
 		global.hud_show_lives = false;
 		global.hud_show_deaths = false;
@@ -1679,6 +1680,42 @@ and (global.player4_can_play >= 1)
 #endregion /*Show what input is used END*/
 
 scr_virtual_keys();
+
+#region /*Letterboxing during cutscenes (when the player object is absent)*/
+if (show_letterbox > 0)
+and(global.play_edited_level = false)
+and(global.actually_play_edited_level = false)
+or(show_letterbox > 0)
+and(global.play_edited_level = true)
+and(global.actually_play_edited_level = true)
+{
+	draw_rectangle_color(0, 0, room_width*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, letterbox_bottom_y, room_width*3, window_get_height(), c_black, c_black, c_black, c_black, false);
+}
+if (asset_get_type("obj_player") == asset_object)
+and(!instance_exists(obj_player))
+and(asset_get_type("obj_player_map") == asset_object)
+and(!instance_exists(obj_player_map))
+and(asset_get_type("obj_title") == asset_object)
+and(!instance_exists(obj_title))
+or(asset_get_type("obj_player") == asset_object)
+and(instance_exists(obj_player))
+and(obj_player.can_move = false)
+{
+	letterbox_top_y = lerp(letterbox_top_y, +64, 0.1);
+	letterbox_bottom_y = lerp(letterbox_bottom_y, window_get_height() - 64, 0.1);
+	show_letterbox = 60;
+}
+else
+{
+	letterbox_top_y = lerp(letterbox_top_y, 0, 0.1);
+	letterbox_bottom_y = lerp(letterbox_bottom_y, window_get_height(), 0.1);
+	if (show_letterbox > 0)
+	{
+		show_letterbox -= 1;
+	}
+}
+#endregion /*Letterboxing during cutscenes (when the player object is absent) END*/
 
 #region /*Draw mouse cursor for menu navigation*/
 if (global.controls_used_for_menu_navigation = "mouse")

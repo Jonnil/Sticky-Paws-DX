@@ -1,7 +1,7 @@
 if (file_exists("file" + string(global.file) + ".ini"))
 {
 	ini_open("file" + string(global.file) + ".ini");
-		
+	
 	#region /*Level Load*/
 	if (ini_section_exists(string(ds_list_find_value(global.all_loaded_main_levels,level))))
 	{
@@ -50,9 +50,9 @@ if (file_exists("file" + string(global.file) + ".ini"))
 		timeattack_realmillisecond = 999999999;
 		level_score = 0;
 	}
-		
+	
 	scr_unlock_next_level();
-		
+	
 	ini_close();
 	#endregion /*Level Load END*/
 		

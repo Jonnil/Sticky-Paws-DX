@@ -8,6 +8,7 @@ level_perfect = false;
 enter_blink = 0;
 initialize_level_timer = 0;
 always_open = false; /*If a level should always be open or not*/
+increase_number_of_levels_cleared = true;
 
 alarm[0] = 1;
 
@@ -17,7 +18,7 @@ and (file_exists("file" + string(global.file) + ".ini"))
 	ini_open("file" + string(global.file) + ".ini");
 	#region /*Level Load*/
 	if (ini_section_exists(ds_list_find_value(global.all_loaded_main_levels,level)))
-	{	
+	{
 		clear_rate = ini_read_string(ds_list_find_value(global.all_loaded_main_levels,level), "clear_rate", "closed");
 		number_of_deaths = ini_read_real(ds_list_find_value(global.all_loaded_main_levels,level), "number_of_deaths", 0);
 		number_of_clears = ini_read_real(ds_list_find_value(global.all_loaded_main_levels,level), "number_of_clears", 0);
