@@ -63,7 +63,6 @@ function scr_options_menu()
 	and(global.enable_controller_settings = false)
 	and(global.enable_touch_settings = false)
 	and(global.enable_profile_settings = false)
-	and(global.enable_storage_settings = false)
 	and(global.enable_language_settings = false)
 	and(global.enable_broadcast_settings = false)
 	and(global.enable_how_to_play_settings = false)
@@ -78,6 +77,7 @@ function scr_options_menu()
 		video_settings_y = 40*7;
 		audio_settings_y = 40*8;
 		global_resources_settings_y = 40*9;
+		storage_settings_y = 40*10;
 	}
 	#endregion /*Menu navigation tabs y positions END*/
 	
@@ -439,7 +439,7 @@ function scr_options_menu()
 				draw_sprite_ext(spr_menu_button,0,left_sidebar_x,20+storage_settings_y,1,1,0,c_gray,1);
 			}
 			draw_sprite_ext(spr_settings_icons,11,left_sidebar_x+20+icon_x_offset,20+storage_settings_y,1,1,0,c_white,1); /*Settings Icon*/
-			draw_text_outlined(left_sidebar_x+40+text_x_offset,20+(40*14),Text("Storage"),global.default_text_size*1.1,c_black,c_white,1);
+			draw_text_outlined(left_sidebar_x+40+text_x_offset,20+storage_settings_y,Text("Storage"),global.default_text_size*1.1,c_black,c_white,1);
 		}
 		else
 		{
@@ -1209,7 +1209,29 @@ function scr_options_menu()
 				and(can_navigate_settings_sidebar=true)
 				and(menu_delay= 0)
 				{
-					global.settings_sidebar_menu="language_settings";
+					if (global.enable_language_settings = true)
+					{
+						global.settings_sidebar_menu="language_settings";
+					}
+					else
+					if (global.enable_broadcast_settings = true)
+					{
+						global.settings_sidebar_menu="broadcast_settings";
+					}
+					else
+					if (global.enable_how_to_play_settings = true)
+					{
+						global.settings_sidebar_menu="how_to_play_settings";
+					}
+					else
+					if (global.enable_add_ons_settings = true)
+					{
+						global.settings_sidebar_menu="resource_packs_settings";
+					}
+					else
+					{
+						global.settings_sidebar_menu="settings_back";
+					}
 					menu_delay = 3;
 				}
 			}
@@ -7271,6 +7293,25 @@ function scr_options_menu()
 				global.music_volume += 0.05;
 			}
 		}
+		if (mouse_wheel_down())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.music_volume > 0)
+			{
+				global.music_volume -= 0.0001;
+			}
+		}
+		else
+		if (mouse_wheel_up())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.music_volume < +1)
+			{
+				global.music_volume += 0.0001;
+			}
+		}
 		else
 		if (key_up)
 		and(menu_delay = 0)
@@ -7329,6 +7370,26 @@ function scr_options_menu()
 			}
 		}
 		else
+		if (mouse_wheel_down())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.sfx_volume > 0)
+			{
+				global.sfx_volume -= 0.0001;
+			}
+		}
+		else
+		if (mouse_wheel_up())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.sfx_volume < +1)
+			{
+				global.sfx_volume += 0.0001;
+			}
+		}
+		else
 		if (key_up)
 		and(menu_delay = 0)
 		and (open_dropdown = false)
@@ -7369,6 +7430,25 @@ function scr_options_menu()
 			if (global.ambient_volume < +1)
 			{
 				global.ambient_volume += 0.05;
+			}
+		}
+		if (mouse_wheel_down())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.ambient_volume > 0)
+			{
+				global.ambient_volume -= 0.0001;
+			}
+		}
+		else
+		if (mouse_wheel_up())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.ambient_volume < +1)
+			{
+				global.ambient_volume += 0.0001;
 			}
 		}
 		else
@@ -7412,6 +7492,26 @@ function scr_options_menu()
 			if (global.voices_volume < +1)
 			{
 				global.voices_volume += 0.05;
+			}
+		}
+		else
+		if (mouse_wheel_down())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.voices_volume > 0)
+			{
+				global.voices_volume -= 0.0001;
+			}
+		}
+		else
+		if (mouse_wheel_up())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.voices_volume < +1)
+			{
+				global.voices_volume += 0.0001;
 			}
 		}
 		else
@@ -7510,6 +7610,26 @@ function scr_options_menu()
 			if (global.verbosity_slider < +1)
 			{
 				global.verbosity_slider += 0.05;
+			}
+		}
+		else
+		if (mouse_wheel_down())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.verbosity_slider > 0)
+			{
+				global.verbosity_slider -= 0.0001;
+			}
+		}
+		else
+		if (mouse_wheel_up())
+		and(menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			if (global.verbosity_slider < +1)
+			{
+				global.verbosity_slider += 0.0001;
 			}
 		}
 		else
