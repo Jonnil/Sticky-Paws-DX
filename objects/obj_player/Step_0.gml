@@ -1,5 +1,14 @@
 ///Platformer Player Part 1
 
+if (current_file != global.file)
+or (!file_exists("file" + string(current_file) + ".ini"))
+{
+	current_file = global.file;
+	room_persistent = false;
+	global.quit_level = true;
+	global.quit_to_map = true;
+}
+
 #region /*Save whole level as screenshot png file*/
 if (keyboard_check(vk_control))
 and (keyboard_check_pressed(ord("P")))

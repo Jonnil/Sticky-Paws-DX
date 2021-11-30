@@ -489,6 +489,7 @@ intro_animation_sprite = noone; /*When there is a intro animation, the sprites f
 intro_animation_image_index = 0; /*Image index of intro animation*/
 #endregion /*Intro Animation Variables END*/
 
+current_file = global.file;
 assist_invincible = false;
 buffer_jump = 0; /*Jump buffer timer, set to 0*/
 can_mid_air_jump = 0; /*When 0, you can mid air jump. Counts down when above 0*/

@@ -3,6 +3,7 @@ scr_set_screen_size();
 draw_text_outlined(x, y+128, string(current_file), global.default_text_size, c_white, c_black, 1);
 
 if (current_file != global.file)
+or (!file_exists("file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false;

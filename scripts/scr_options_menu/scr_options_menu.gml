@@ -1203,7 +1203,15 @@ function scr_options_menu()
 				and (can_navigate_settings_sidebar=true)
 				and (menu_delay= 0)
 				{
-					global.settings_sidebar_menu = "global_resources_settings";
+					if (global.enable_global_resources_settings = true)
+					and (global.pause_room != room_leveleditor)
+					{
+						global.settings_sidebar_menu = "global_resources_settings";
+					}
+					else
+					{
+						global.settings_sidebar_menu = "audio_settings";
+					}
 					menu_delay = 3;
 				}
 				else
@@ -6619,12 +6627,11 @@ function scr_options_menu()
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
+		draw_text_outlined(file_select_x,20+(40*4),"File: " + string(global.file),global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 		
 		if (menu != "file_delete_yes")
 		and (menu != "file_delete_no")
 		{
-			draw_text_outlined(file_select_x,20+(40*4),"File: " + string(global.file),global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
-			
 			if (file_exists("file" + string(global.file)+".ini"))
 			{
 				draw_menu_button(450, 20+(40*5), "Delete File", "file_delete", "file_delete_no");
@@ -6634,14 +6641,32 @@ function scr_options_menu()
 		if (menu = "file_delete_yes")
 		or (menu = "file_delete_no")
 		{
+			can_navigate_settings_sidebar = false;
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, 0, window_get_width()*3, window_get_height()*3, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(0.1);
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_center);
 			draw_text_outlined(window_get_width()/2, window_get_height()/2-100, "Are you sure you want to delete file "+string(global.file)+"?", global.default_text_size, c_black, c_red, 1);
-			draw_menu_button(window_get_width()/2-370-32, window_get_height()/2, "Yes", "file_delete_yes", "file_select");
-			draw_menu_button(window_get_width()/2+32, window_get_height()/2, "No", "file_delete_no", "file_select");
+			draw_menu_button(window_get_width()/2-370-32, window_get_height()/2, "Yes", "file_delete_yes", "file_delete_yes");
+			draw_menu_button(window_get_width()/2+32, window_get_height()/2, "No", "file_delete_no", "file_delete");
+			
+			if (key_left)
+			and (menu_joystick_delay = 0)
+			or (key_right)
+			and (menu_joystick_delay = 0)
+			{
+				menu_joystick_delay = 30;
+				if (menu = "file_delete_no")
+				{
+					menu = "file_delete_yes";
+				}
+				else
+				if (menu = "file_delete_yes")
+				{
+					menu = "file_delete_no";
+				}
+			}
 		}
 		
 		if (global.file < 1)
@@ -6668,16 +6693,63 @@ function scr_options_menu()
 			draw_set_alpha(1);
 		}
 		
-		if (key_up)
-		and (can_navigate_settings_sidebar = false)
+		if (menu = "file_delete")
+		and (key_a_pressed)
+		and (menu_delay = 0)
 		{
+			can_navigate_settings_sidebar = false;
+			menu = "file_delete_no";
+			menu_delay = 10;
+		}
+		
+		if (menu = "file_delete_no")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		or (menu = "file_delete_no")
+		and (key_b_pressed)
+		and (menu_delay = 0)
+		or (menu = "file_delete_yes")
+		and (key_b_pressed)
+		and (menu_delay = 0)
+		{
+			can_navigate_settings_sidebar = false;
+			menu = "file_delete";
+			menu_delay = 10;
+			
+		}
+		
+		if (menu = "file_delete_yes")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		or (menu = "file_delete_yes")
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/2-370-32, window_get_height()/2-21, window_get_width()/2-370-32+370, window_get_height()/2+42))
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		{
+			can_navigate_settings_sidebar = false;
+			menu = "file_select";
+			file_delete("file" + string(global.file)+".ini");
+			menu_delay = 10;
+		}
+		
+		if (key_up)
+		and (menu != "file_delete_yes")
+		and (menu != "file_delete_no")
+		and (can_navigate_settings_sidebar = false)
+		and (menu_joystick_delay = 0)
+		{
+			menu_joystick_delay = 10;
 			menu = "file_select";
 		}
 		else
 		if (key_down)
+		and (menu != "file_delete_yes")
+		and (menu != "file_delete_no")
 		and (can_navigate_settings_sidebar = false)
+		and (menu_joystick_delay = 0)
 		and (file_exists("file" + string(global.file)+".ini"))
 		{
+			menu_joystick_delay = 10;
 			menu = "file_delete";
 		}
 		
@@ -6692,13 +6764,15 @@ function scr_options_menu()
 		or (mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32-16, 20+(40*4)-16, file_select_x-32+16, 20+(40*4)+16))
 		{
+			can_navigate_settings_sidebar = false;
 			menu = "file_select";
 			if (menu_delay = 0)
-			and (can_navigate_settings_sidebar = false)
+			and (menu_joystick_delay = 0)
 			and (global.file > 1)
 			{
 				global.file -= 1;
 				menu_delay = 3;
+				menu_joystick_delay = 30;
 			}
 		}
 		else
@@ -6708,12 +6782,14 @@ function scr_options_menu()
 		or (mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x+file_select_right_arrow_x-16, 20+(40*4)-16, file_select_x+file_select_right_arrow_x+16, 20+(40*4)+16))
 		{
+			can_navigate_settings_sidebar = false;
 			menu = "file_select";
 			if (menu_delay = 0)
-			and (can_navigate_settings_sidebar = false)
+			and (menu_joystick_delay = 0)
 			{
 				global.file += 1;
 				menu_delay = 3;
+				menu_joystick_delay = 30;
 			}
 		}
 	}
