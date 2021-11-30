@@ -20,12 +20,12 @@ if (quit_level_editor>0)
 	{
 		if (global.select_level_index >= 1)
 		{
-			file_delete(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/automatic_thumbnail.png")
+			file_delete(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/automatic_thumbnail.png")
 		}
 		else
 		if (global.select_level_index <= 0)
 		{
-			file_delete(working_directory+"/custom_levels/"+string(global.level_name)+"/automatic_thumbnail.png")
+			file_delete(working_directory+"/custom_levels/" + string(global.level_name)+"/automatic_thumbnail.png")
 		}
 		var thumbnail_sprite;
 		thumbnail_sprite = sprite_create_from_surface(application_surface,
@@ -40,12 +40,12 @@ if (quit_level_editor>0)
 		false,true,0,0);
 		if (global.select_level_index >= 1)
 		{
-			sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/automatic_thumbnail.png");
+			sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/automatic_thumbnail.png");
 		}
 		else
 		if (global.select_level_index <= 0)
 		{
-			sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/"+string(global.level_name)+"/automatic_thumbnail.png");
+			sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/" + string(global.level_name)+"/automatic_thumbnail.png");
 		}
 		sprite_delete(thumbnail_sprite);
 	}

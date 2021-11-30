@@ -1,4 +1,6 @@
 depth = -20;
+global.slider_x_offset = 0;
+global.slider_width_offset = 25;
 
 #region /*Mouse x and mouse y initializing*/
 mx = mouse_x;
@@ -24,7 +26,7 @@ if (global.narrator >= 0)
 
 pause_text_alpha=0;
 pause_text_lerp=1;
-menu="continue";
+menu = "continue";
 menu_delay=10;
 lastkey=noone;
 
@@ -85,7 +87,7 @@ if (asset_get_type("room_leveleditor")==asset_room)
 and (room = room_leveleditor)
 and (global.character_select_in_this_menu = "main_game")
 {
-	ini_open(working_directory+"/File"+string(global.file)+".ini");
+	ini_open(working_directory+"/File" + string(global.file)+".ini");
 	
 	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"x_checkpoint",global.x_checkpoint);
 	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"y_checkpoint",global.y_checkpoint);

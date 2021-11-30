@@ -175,6 +175,8 @@ global.sprite_select_player_3=noone;
 global.sprite_select_player_4=noone;
 global.selected_resourcepack = 0; /*0 = default*/
 global.selected_title_background = 0; /*0 = default*/
+global.slider_x_offset = 32;
+global.slider_width_offset = 0;
 //global.spot_x=0;
 //global.spot_y=0;
 
@@ -186,7 +188,7 @@ switch(os_get_language())
 	default: global.language_localization=localization.en_us;break;/*Set the default language to American English*/
 }
 
-global.settings_sidebar_menu="settings_back";/*Settings sidebar*/
+global.settings_sidebar_menu = "settings_back";/*Settings sidebar*/
 global.show_tutorial_signs=true;
 global.enable_transitions=true;
 global.enable_background_layer1=true;

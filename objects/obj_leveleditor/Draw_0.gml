@@ -1626,4 +1626,4 @@ or(os_type == os_android)
 }
 
 //draw_text_transformed_color(weighted_x,weighted_y,"TEST",global.default_text_size,global.default_text_size,0,c_yellow,c_yellow,c_yellow,c_yellow,1);
-//draw_text_transformed_color(x+64,y+64,string(weighted_x)+","+string(weighted_y)+","+string(total_objects),global.default_text_size,global.default_text_size,0,c_yellow,c_yellow,c_yellow,c_yellow,1);
+//draw_text_transformed_color(x+64,y+64,string(weighted_x)+"," + string(weighted_y)+"," + string(total_objects),global.default_text_size,global.default_text_size,0,c_yellow,c_yellow,c_yellow,c_yellow,1);

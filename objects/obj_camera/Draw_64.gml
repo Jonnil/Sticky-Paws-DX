@@ -466,7 +466,7 @@ and (!instance_exists(obj_title))
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined( 32, 164, "Instance Count: "+string(instance_count),global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined( 32, 164, "Instance Count: " + string(instance_count),global.default_text_size, c_black, c_white, 1);
 }
 
 #region /*Show if you have Assist mode enabled or not*/

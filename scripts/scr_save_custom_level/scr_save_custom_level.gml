@@ -7,15 +7,15 @@ function scr_save_custom_level()
 	
 		#region /*Create directory for saving custom levels*/
 		if (global.select_level_index >= 1)
-		and (!directory_exists(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
+		and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
 		{
-			directory_create(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)));
+			directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)));
 		}
 		else
 		if (global.select_level_index <= 0)
-		and (!directory_exists(working_directory+"/custom_levels/"+string(global.level_name)))
+		and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)))
 		{
-			directory_create(working_directory+"/custom_levels/"+string(global.level_name));
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name));
 		}
 		#endregion /*Create directory for saving custom levels END*/
 	
@@ -24,12 +24,12 @@ function scr_save_custom_level()
 		var file,str;
 		if (global.select_level_index >= 1)
 		{
-			file=file_text_open_write(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/object_placement.txt"); /*Open file for writing*/
+			file=file_text_open_write(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/object_placement.txt"); /*Open file for writing*/
 		}
 		else
 		if (global.select_level_index <= 0)
 		{
-			file=file_text_open_write(working_directory+"/custom_levels/"+string(global.level_name)+"/data/object_placement.txt"); /*Open file for writing*/
+			file=file_text_open_write(working_directory+"/custom_levels/" + string(global.level_name)+"/data/object_placement.txt"); /*Open file for writing*/
 		}
 		str=""; /*Reset string var*/
 	
@@ -44,7 +44,7 @@ function scr_save_custom_level()
 			and(object != 734)
 			and(object != 73)
 			{
-				str+=string(x)+"|"+string(y)+"|"+string(object)+"|"+string(easy)+"|"+string(normal)+"|"+string(hard)+"|";
+				str+=string(x)+"|" + string(y)+"|" + string(object)+"|" + string(easy)+"|" + string(normal)+"|" + string(hard)+"|";
 			}
 		}
 		#endregion /*Write all objects to file END*/
@@ -61,12 +61,12 @@ function scr_save_custom_level()
 		{
 			if (global.select_level_index >= 1)
 			{
-				ini_open(working_directory+"/custom_levels/"+string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
+				ini_open(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
 			}
 			else
 			if (global.select_level_index <= 0)
 			{
-				ini_open(working_directory+"/custom_levels/"+string(global.level_name)+"/data/level_information.ini");
+				ini_open(working_directory+"/custom_levels/" + string(global.level_name)+"/data/level_information.ini");
 			}
 			ini_write_string("info","level_name",level_name);
 			if (instance_exists(obj_level_player_1_start))

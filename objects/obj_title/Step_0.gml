@@ -3,6 +3,11 @@ background_layer_y += 1;
 layer_x(layer_get_id("Background"),background_layer_x);
 layer_y(layer_get_id("Background"),background_layer_y);
 
+if (global.file < 1)
+{
+	global.file = 1; /*Don't let file go less than 1*/
+}
+
 #region /*Menu cursor image speed*/
 menu_cursor_index += 0.3;
 if (menu_cursor_index > 4)

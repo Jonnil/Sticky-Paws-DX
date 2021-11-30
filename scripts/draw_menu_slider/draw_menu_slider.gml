@@ -43,13 +43,13 @@ function draw_menu_slider()
 		{
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position-32,y_position-32,x_position+352,y_position+32)) /*Within the length of the slider*/
 			{
-				if (menu = "music_volume"){global.music_volume = clamp((mouse_x-x_position+32)/296, 0, 1);}else
-				if (menu = "sfx_volume"){global.sfx_volume = clamp((mouse_x-x_position+32)/296, 0, 1);}else
-				if (menu = "ambient_volume"){global.ambient_volume = clamp((mouse_x-x_position+32)/296, 0, 1);}else
-				if (menu = "voices_volume"){global.voices_volume = clamp((mouse_x-x_position+32)/296, 0, 1);}else
+				if (menu = "music_volume"){global.music_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
+				if (menu = "sfx_volume"){global.sfx_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
+				if (menu = "ambient_volume"){global.ambient_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
+				if (menu = "voices_volume"){global.voices_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
 				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -1;}else
 				if (menu = "background_brightness_menu"){global.background_brightness_menu = -1;}
-				variable_to_change = clamp((mouse_x-x_position+32)/296, 0, 1);
+				variable_to_change = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);
 			}
 		}
 		#endregion /*Click to change value*/
@@ -136,7 +136,7 @@ function draw_menu_slider()
 	#region /*Text above the menu button*/
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x_position,y_position-32,string(string_text)+": "+string(show_percent)+"%",global.default_text_size*0.75,c_menu_outline,c_menu_fill,1);
+	draw_text_outlined(x_position,y_position-32,string(string_text)+": " + string(show_percent)+"%",global.default_text_size*0.75,c_menu_outline,c_menu_fill,1);
 	#endregion /*Text above the menu button END*/
 	
 }

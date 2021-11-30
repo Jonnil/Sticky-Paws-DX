@@ -12,7 +12,7 @@ else
 	c_menu_fill=c_white;
 }
 
-//draw_text_outlined(300, 300, "menu = "+string(menu), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(300, 300, "menu = " + string(menu), global.default_text_size, c_white, c_black, 1);
 
 #region /*Set what controls are used to navigate the menus*/
 

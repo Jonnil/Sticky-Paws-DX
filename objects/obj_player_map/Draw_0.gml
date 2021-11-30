@@ -1,5 +1,14 @@
 scr_set_screen_size();
 
+draw_text_outlined(x, y+128, string(current_file), global.default_text_size, c_white, c_black, 1);
+
+if (current_file != global.file)
+{
+	current_file = global.file;
+	room_persistent = false;
+	room_restart();
+}
+
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
 if (asset_get_type("obj_camera")==asset_object)
 and(!instance_exists(obj_camera))
@@ -233,14 +242,14 @@ else
 index=0
 repeat(50)
 {
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/map_strip"+string(index)+".png"))
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/map_strip" + string(index)+".png"))
 	{
-		sprite_map = sprite_add("characters/character" + string(custom_character)+"/sprites/map_strip"+string(index)+".png", index, false, false, sprite_map_xorig, sprite_map_yorig);
+		sprite_map = sprite_add("characters/character" + string(custom_character)+"/sprites/map_strip" + string(index)+".png", index, false, false, sprite_map_xorig, sprite_map_yorig);
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_strip"+string(index)+".png"))
+	if (file_exists(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_strip" + string(index)+".png"))
 	{
-		sprite_map = sprite_add(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_strip"+string(index)+".png", index, false, false, sprite_map_xorig, sprite_map_yorig);
+		sprite_map = sprite_add(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_strip" + string(index)+".png", index, false, false, sprite_map_xorig, sprite_map_yorig);
 	}
 	index+=1
 }
@@ -259,24 +268,24 @@ if (file_exists(working_directory + "/custom_characters/character" + string(cust
 index=0
 repeat(50)
 {
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/map_enter_level_strip"+string(index)+".png"))
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/map_enter_level_strip" + string(index)+".png"))
 	{
-		sprite_map_enter_level = sprite_add("characters/character" + string(custom_character)+"/sprites/map_enter_level_strip"+string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+		sprite_map_enter_level = sprite_add("characters/character" + string(custom_character)+"/sprites/map_enter_level_strip" + string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
 	}
 	else
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/map_enter_strip"+string(index)+".png"))
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/map_enter_strip" + string(index)+".png"))
 	{
-		sprite_map_enter_level = sprite_add("characters/character" + string(custom_character)+"/sprites/map_enter_strip"+string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+		sprite_map_enter_level = sprite_add("characters/character" + string(custom_character)+"/sprites/map_enter_strip" + string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_enter_level_strip"+string(index)+".png"))
+	if (file_exists(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_enter_level_strip" + string(index)+".png"))
 	{
-		sprite_map_enter_level = sprite_add(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_enter_level_strip"+string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+		sprite_map_enter_level = sprite_add(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_enter_level_strip" + string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_enter_strip"+string(index)+".png"))
+	if (file_exists(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_enter_strip" + string(index)+".png"))
 	{
-		sprite_map_enter_level = sprite_add(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_enter_strip"+string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+		sprite_map_enter_level = sprite_add(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/map_enter_strip" + string(index)+".png", index, false, false, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
 	}
 	index+=1
 }
@@ -305,14 +314,14 @@ if (file_exists(working_directory + "/custom_characters/character" + string(cust
 index=0
 repeat(50)
 {
-	if (file_exists("characters/character" + string(custom_character)+"/sprites/stand_strip"+string(index)+".png"))
+	if (file_exists("characters/character" + string(custom_character)+"/sprites/stand_strip" + string(index)+".png"))
 	{
-		sprite_stand = sprite_add("characters/character" + string(custom_character)+"/sprites/stand_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		sprite_stand = sprite_add("characters/character" + string(custom_character)+"/sprites/stand_strip" + string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/stand_strip"+string(index)+".png"))
+	if (file_exists(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/stand_strip" + string(index)+".png"))
 	{
-		sprite_stand = sprite_add(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/stand_strip"+string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
+		sprite_stand = sprite_add(working_directory + "/custom_characters/character" + string(custom_character-global.max_number_of_official_characters)+"/sprites/stand_strip" + string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
 	}
 	index+=1
 }
