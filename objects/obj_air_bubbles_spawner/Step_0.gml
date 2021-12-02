@@ -5,7 +5,7 @@ if (time > 180)
 {
 	if (place_meeting(x, y, obj_water))
 	{
-		with(instance_create_depth(x, bbox_bottom, 0, obj_big_air_bubble))
+		with(instance_create_depth(x, bbox_top, 0, obj_big_air_bubble))
 		{
 			hspeed = random_range(-0.1, +0.1);
 		}
@@ -16,7 +16,7 @@ if (place_meeting(x, y, obj_water))
 and (random(10) >= 9)
 and (fps_real >= 210)
 {
-	with(instance_create_depth(x, bbox_bottom, 0, obj_bubble))
+	with(instance_create_depth(x, bbox_top, 0, obj_bubble))
 	{
 		hspeed = random_range(-1, +1);
 	}

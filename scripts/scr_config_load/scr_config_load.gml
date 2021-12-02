@@ -4,6 +4,7 @@ function scr_config_load()
 	if (file_exists("config.ini"))
 	{
 		ini_open("config.ini");
+		if (ini_key_exists("config","current_file")){global.file = ini_read_real("config","current_file",0);}
 		if (ini_key_exists("config","difficulty")){global.difficulty = ini_read_real("config","difficulty",0);}
 		if (ini_key_exists("config","automatically_pause_when_window_is_unfocused")){global.automatically_pause_when_window_is_unfocused = ini_read_real("config","automatically_pause_when_window_is_unfocused",0);}
 		if (ini_key_exists("config","show_timer")){global.show_timer = ini_read_real("config","show_timer",0);}
@@ -22,8 +23,10 @@ function scr_config_load()
 		if (ini_key_exists("config","assist_item_appear")){global.assist_item_appear = ini_read_real("config","assist_item_appear",0);}
 		if (ini_key_exists("config","assist_extra_hp")){global.assist_extra_hp = ini_read_real("config","assist_extra_hp",0);}
 		if (ini_key_exists("config","assist_invincible")){global.assist_invincible = ini_read_real("config","assist_invincible",0);}
+		if (ini_key_exists("config","assist_breathe_underwater")){global.assist_breathe_underwater = ini_read_real("config","assist_breathe_underwater",0);}
 		if (ini_key_exists("config","assist_guiding_arrows")){global.assist_guiding_arrows = ini_read_real("config","assist_guiding_arrows",0);}
 		if (ini_key_exists("config","assist_normal_arrows")){global.assist_normal_arrows = ini_read_real("config","assist_normal_arrows",0);}
+		if (ini_key_exists("config","assist_show_assist_mode_text")){global.assist_show_assist_mode_text = ini_read_real("config","assist_show_assist_mode_text",0);}
 		#endregion /*Assist Settings END*/
 		
 		if (ini_key_exists("config","fullscreen_mode")){window_set_fullscreen(ini_read_real("config","fullscreen_mode",0));}

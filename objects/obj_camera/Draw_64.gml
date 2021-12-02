@@ -471,6 +471,7 @@ and (!instance_exists(obj_title))
 
 #region /*Show if you have Assist mode enabled or not*/
 if (global.assist_enable = true)
+and (global.assist_show_assist_mode_text = true)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 {

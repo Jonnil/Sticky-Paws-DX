@@ -1439,8 +1439,10 @@ function scr_options_menu()
 		draw_text_outlined(450, 100, "The game is meant to be played without Assist Mode. Only if you are unable to fully enjoy the game without extra help should you enable this.", global.default_text_size*0.75, c_menu_outline, c_menu_fill, 1);
 		
 		draw_menu_checkmark(450, 300, "Invincible", "assist_invincible", global.assist_invincible);
-		draw_menu_checkmark(450, 350, "Show Assist Arrows", "assist_guiding_arrows", global.assist_guiding_arrows);
-		draw_menu_checkmark(450, 400, "Show Normal Arrows", "assist_normal_arrows", global.assist_normal_arrows);
+		draw_menu_checkmark(450, 350, "Breathe Underwater", "assist_breathe_underwater", global.assist_breathe_underwater);
+		draw_menu_checkmark(450, 400, "Show Assist Arrows", "assist_guiding_arrows", global.assist_guiding_arrows);
+		draw_menu_checkmark(450, 450, "Show Normal Arrows", "assist_normal_arrows", global.assist_normal_arrows);
+		draw_menu_checkmark(450, 500, "Show Assist Mode Text", "assist_show_assist_mode_text", global.assist_show_assist_mode_text);
 		
 		#region /*Assist Extra HP*/
 		draw_menu_dropdown(450, 230 + menu_y_offset, "Extra Health Points", "assist_extra_hp", global.assist_extra_hp,
@@ -1475,10 +1477,12 @@ function scr_options_menu()
 		if (global.assist_enable = false)
 		{
 			if (menu = "assist_invincible")
+			if (menu = "assist_breathe_underwater")
 			or (menu = "assist_guiding_arrows")
 			or (menu = "assist_normal_arrows")
 			or (menu = "assist_extra_hp")
 			or (menu = "assist_item_appear")
+			or (menu = "assist_show_assist_mode_text")
 			{
 				menu = "assist_enable";
 			}
@@ -7145,7 +7149,7 @@ function scr_options_menu()
 		and (menu_delay = 0)
 		and (open_dropdown = false)
 		{
-			menu = "assist_normal_arrows";
+			menu = "assist_show_assist_mode_text";
 			menu_delay = 3;
 		}
 		else
@@ -7252,11 +7256,34 @@ function scr_options_menu()
 		and (menu_delay = 0)
 		and (open_dropdown = false)
 		{
-			menu = "assist_guiding_arrows";
+			menu = "assist_breathe_underwater";
 			menu_delay = 3;
 		}
 	}
 	#endregion /*Assist Invincible Navigation END*/
+	
+	else
+	
+	#region /*Assist Breathe Underwater Navigation*/
+	if (menu = "assist_breathe_underwater")
+	{
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "assist_invincible";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "assist_guiding_arrows";
+			menu_delay = 3;
+		}
+	}
+	#endregion /*Assist Breathe Underwater Navigation END*/
 	
 	else
 	
@@ -7267,7 +7294,7 @@ function scr_options_menu()
 		and (menu_delay = 0)
 		and (open_dropdown = false)
 		{
-			menu = "assist_invincible";
+			menu = "assist_breathe_underwater";
 			menu_delay = 3;
 		}
 		else
@@ -7298,11 +7325,34 @@ function scr_options_menu()
 		and (menu_delay = 0)
 		and (open_dropdown = false)
 		{
-			menu = "assist_enable";
+			menu = "assist_show_assist_mode_text";
 			menu_delay = 3;
 		}
 	}
 	#endregion /*Assist Normal Arrows Navigation END*/
+	
+	else
+	
+	#region /*Assist Show Assist Mode Text Navigation*/
+	if (menu = "assist_show_assist_mode_text")
+	{
+		if (key_up)
+		and (menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "assist_normal_arrows";
+			menu_delay = 3;
+		}
+		else
+		if (key_down)
+		and (menu_delay = 0)
+		and (open_dropdown = false)
+		{
+			menu = "assist_enable";
+			menu_delay = 3;
+		}
+	}
+	#endregion /*Assist Show Assist Mode Text Navigation END*/
 	
 	else
 	
@@ -8484,8 +8534,10 @@ function scr_options_menu()
 		#endregion /*Drop down menu END*/
 		
 		if (menu = "assist_invincible")and (menu_delay= 0){if (global.assist_invincible=true){global.assist_invincible=false;}else{global.assist_invincible=true;}menu_delay = 3;}
+		if (menu = "assist_breathe_underwater")and (menu_delay= 0){if (global.assist_breathe_underwater=true){global.assist_breathe_underwater=false;}else{global.assist_breathe_underwater=true;}menu_delay = 3;}
 		if (menu = "assist_guiding_arrows")and (menu_delay= 0){if (global.assist_guiding_arrows=true){global.assist_guiding_arrows=false;}else{global.assist_guiding_arrows=true;}menu_delay = 3;}
 		if (menu = "assist_normal_arrows")and (menu_delay= 0){if (global.assist_normal_arrows=true){global.assist_normal_arrows=false;}else{global.assist_normal_arrows=true;}menu_delay = 3;}
+		if (menu = "assist_show_assist_mode_text")and (menu_delay= 0){if (global.assist_show_assist_mode_text=true){global.assist_show_assist_mode_text=false;}else{global.assist_show_assist_mode_text=true;}menu_delay = 3;}
 		
 		if (menu = "automatically_pause_when_window_is_unfocused_settings")and (menu_delay= 0){if (global.automatically_pause_when_window_is_unfocused=true){global.automatically_pause_when_window_is_unfocused=false;}else{global.automatically_pause_when_window_is_unfocused=true;}menu_delay = 3;}
 		if (menu = "show_timer_settings")and (menu_delay= 0){if (global.show_timer=true){global.show_timer=false;}else{global.show_timer=true;}menu_delay = 3;}

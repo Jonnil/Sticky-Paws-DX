@@ -7464,7 +7464,7 @@ if (asset_get_type("obj_water")==asset_object)
 #region /*Drowning*/
 if (allow_drowning = true)
 and (global.assist_enable = true)
-and (global.assist_invincible = false)
+and (global.assist_breathe_underwater = false)
 or (allow_drowning = true)
 and (global.assist_enable = false)
 {

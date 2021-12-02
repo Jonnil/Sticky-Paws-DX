@@ -220,8 +220,10 @@ global.assist_enable = false;
 global.assist_item_appear = 10;
 global.assist_extra_hp = 0;
 global.assist_invincible = false;
+global.assist_breathe_underwater = false;
 global.assist_guiding_arrows = false;
 global.assist_normal_arrows = true;
+global.assist_show_assist_mode_text = true;
 #endregion /*Assist Settings END*/
 
 global.x_checkpoint = false;
