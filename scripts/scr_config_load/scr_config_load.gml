@@ -52,7 +52,8 @@ function scr_config_load()
 		if (ini_key_exists("config","selected_title_background")){global.selected_title_background = ini_read_real("config","selected_title_background",0);}
 		
 		#region /*Load Player 1 Keyboard Remapping*/
-		if (ini_key_exists("config","character_for_player_1")){global.character_for_player_1 = ini_read_real("config","character_for_player_1",0);}
+		//if (ini_key_exists("config","character_for_player_1")){global.character_for_player_1 = ini_read_real("config","character_for_player_1",0);}
+		if (ini_key_exists("config","character_index_player_1")){global.character_index[0] = ini_read_real("config","character_index_player_1",0);}
 		if (ini_key_exists("config","color_for_player_1")){global.color_for_player_1 = ini_read_real("config","color_for_player_1",0);}
 		if (ini_key_exists("config","player1_name")){global.player1_name = ini_read_string("config","player1_name",0);}
 		if (ini_key_exists("config","player1_key_dive")){global.player1_key_dive = ini_read_real("config","player1_key_dive",0);}
@@ -88,7 +89,8 @@ function scr_config_load()
 		#endregion /*Load Player 1 Keyboard Remapping END*/
 		
 		#region /*Load Player 2 Keyboard Remapping*/
-		if (ini_key_exists("config","character_for_player_2")){global.character_for_player_2 = ini_read_real("config","character_for_player_2",0);}
+		//if (ini_key_exists("config","character_for_player_2")){global.character_for_player_2 = ini_read_real("config","character_for_player_2",0);}
+		if (ini_key_exists("config","character_index_player_2")){global.character_index[1] = ini_read_real("config","character_index_player_2",0);}
 		if (ini_key_exists("config","color_for_player_2")){global.color_for_player_2 = ini_read_real("config","color_for_player_2",0);}
 		if (ini_key_exists("config","player2_name")){global.player2_name = ini_read_string("config","player2_name",0);}
 		if (ini_key_exists("config","player2_key_dive")){global.player2_key_dive = ini_read_real("config","player2_key_dive",0);}
@@ -124,7 +126,8 @@ function scr_config_load()
 		#endregion /*Load Player 2 Keyboard Remapping END*/
 		
 		#region /*Load Player 3 Keyboard Remapping*/
-		if (ini_key_exists("config","character_for_player_3")){global.character_for_player_3 = ini_read_real("config","character_for_player_3",0);}
+		//if (ini_key_exists("config","character_for_player_3")){global.character_for_player_3 = ini_read_real("config","character_for_player_3",0);}
+		if (ini_key_exists("config","character_index_player_3")){global.character_index[2] = ini_read_real("config","character_index_player_3",0);}
 		if (ini_key_exists("config","color_for_player_3")){global.color_for_player_3 = ini_read_real("config","color_for_player_3",0);}
 		if (ini_key_exists("config","player3_name")){global.player3_name = ini_read_string("config","player3_name",0);}
 		if (ini_key_exists("config","player3_key_dive")){global.player3_key_dive = ini_read_real("config","player3_key_dive",0);}
@@ -160,7 +163,8 @@ function scr_config_load()
 		#endregion /*Load Player 3 Keyboard Remapping END*/
 		
 		#region /*Load Player 4 Keyboard Remapping*/
-		if (ini_key_exists("config","character_for_player_4")){global.character_for_player_4 = ini_read_real("config","character_for_player_4",0);}
+		//if (ini_key_exists("config","character_for_player_4")){global.character_for_player_4 = ini_read_real("config","character_for_player_4",0);}
+		if (ini_key_exists("config","character_index_player_4")){global.character_index[3] = ini_read_real("config","character_index_player_4",0);}
 		if (ini_key_exists("config","color_for_player_4")){global.color_for_player_4 = ini_read_real("config","color_for_player_4",0);}
 		if (ini_key_exists("config","player4_name")){global.player4_name = ini_read_string("config","player4_name",0);}
 		if (ini_key_exists("config","player4_key_dive")){global.player4_key_dive = ini_read_real("config","player4_key_dive",0);}

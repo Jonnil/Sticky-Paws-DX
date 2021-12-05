@@ -123,15 +123,26 @@ global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load
 ds_list_add(global.all_loaded_custom_levels, "");
 global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
 ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Ending", "Level9");
+global.all_loaded_characters = ds_list_create();
 global.select_level_index=0;/*What level is selected in the custom level editor*/
+
+max_players = 4; /*How many players you want to be able to play*/
+var i = max_players-1;
+
+repeat(max_players)
+{
+	global.character_index[i] = 0;
+	i -= 1;
+}
+
 global.thumbnail_sprite = ds_list_create();
 global.grid_hsnap=32;/*Horizontal grid snapping*/
 global.grid_vsnap=32;/*Vertical grid snapping*/
 global.narrator=1;/*Select Narrator*/
-global.character_for_player_1 = 0; /*Player 1 Select Character1*/
-global.character_for_player_2 = 0; /*Player 2 Select Character2*/
-global.character_for_player_3 = 0; /*Player 3 Select Character3*/
-global.character_for_player_4 = 0; /*Player 4 Select Character4*/
+global.character_for_player_1 = "Sticky"; /*Player 1 Select Character1*/
+global.character_for_player_2 = "Sticky"; /*Player 2 Select Character2*/
+global.character_for_player_3 = "Sticky"; /*Player 3 Select Character3*/
+global.character_for_player_4 = "Sticky"; /*Player 4 Select Character4*/
 global.voicepack_for_player_1 = 0; /*Player 1 Select Voicepack1*/
 global.voicepack_for_player_2 = 0; /*Player 2 Select Voicepack2*/
 global.voicepack_for_player_3 = 0; /*Player 3 Select Voicepack3*/
@@ -169,10 +180,10 @@ global.custom_background4=noone;
 global.custom_foreground1=noone;
 global.custom_foreground2=noone;
 global.custom_tileset=noone;
-global.sprite_select_player_1=noone;
-global.sprite_select_player_2=noone;
-global.sprite_select_player_3=noone;
-global.sprite_select_player_4=noone;
+global.sprite_select_player_1 = noone;
+global.sprite_select_player_2 = noone;
+global.sprite_select_player_3 = noone;
+global.sprite_select_player_4 = noone;
 global.selected_resourcepack = 0; /*0 = default*/
 global.selected_title_background = 0; /*0 = default*/
 global.slider_x_offset = 32;

@@ -356,13 +356,6 @@ or (menu = "quit")
 	player_start_game=false;
 	#endregion /*Character select Accept Selection END*/
 
-	#region /*Color Select for CharacterSelect*/
-	player1_menu = "select_character";
-	player2_menu = "select_character";
-	player3_menu = "select_character";
-	player4_menu = "select_character";
-	#endregion /*Color Select for CharacterSelect END*/
-
 	#region /*What player can enter a name*/
 	can_input_player1_name=false;
 	can_input_player2_name=false;
@@ -478,7 +471,8 @@ or (menu = "quit")
 			}
 			else
 			{
-				menu = "select_character";
+				scr_load_character_initializing();
+				menu = "load_characters";
 				menu_delay = 3;
 			}
 		}
@@ -530,7 +524,8 @@ or (menu = "quit")
 				}
 				else
 				{
-					menu = "select_character";
+					scr_load_character_initializing();
+					menu = "load_characters";
 					menu_delay = 3;
 				}
 			}
@@ -792,7 +787,8 @@ or (menu = "4player")
 {
 	if (global.select_number_of_players_before_selecting_characters=false)
 	{
-		menu = "select_character";
+		scr_load_character_initializing();
+		menu = "load_characters";
 		menu_delay = 3;
 	}
 	
@@ -1084,6 +1080,13 @@ if (menu = "load_custom_level")
 	draw_text_outlined(window_get_width()/2, window_get_height()/2+64, "Loading", global.default_text_size, c_white, c_black, 1);
 }
 
+if (menu = "load_characters")
+{
+	loading_spinning_angle -= 10;
+	draw_sprite_ext(spr_loading, 0, window_get_width()/2, window_get_height()/2, 1, 1, loading_spinning_angle, c_white, 1);
+	draw_text_outlined(window_get_width()/2, window_get_height()/2+64, "Loading", global.default_text_size, c_white, c_black, 1);
+}
+
 #region /*Select Custom Level Menu*/
 if (select_custom_level_menu_open = true)
 {
@@ -1253,7 +1256,8 @@ or (menu = "4player")
 		menu_joystick4_delay=0;
 		if (global.character_select_screen=true)
 		{
-			menu = "select_character";
+			scr_load_character_initializing();
+			menu = "load_characters";
 		}
 		else
 		{
@@ -1293,7 +1297,8 @@ or (menu = "4player")
 		menu_joystick4_delay=0;
 		if (global.character_select_screen=true)
 		{
-			menu = "select_character";
+			scr_load_character_initializing();
+			menu = "load_characters";
 		}
 		else
 		{
@@ -1333,7 +1338,8 @@ or (menu = "4player")
 		menu_joystick4_delay=0;
 		if (global.character_select_screen=true)
 		{
-			menu = "select_character";
+			scr_load_character_initializing();
+			menu = "load_characters";
 		}
 		else
 		{
@@ -1373,7 +1379,8 @@ or (menu = "4player")
 		menu_joystick4_delay=0;
 		if (global.character_select_screen=true)
 		{
-			menu = "select_character";
+			scr_load_character_initializing();
+			menu = "load_characters";
 		}
 		else
 		{
@@ -1979,6 +1986,7 @@ and(iris_xscale<=0.001)
 		if (asset_get_type("room_world_map")==asset_room)
 		{
 			sprite_delete(title_screen_background);
+			scr_config_save();
 			room_goto(room_world_map);
 		}
 	}

@@ -95,26 +95,26 @@ iris_zoom = 0;
 initialize_custom_character_timer = 0;
 if (global.player1_can_play = true)
 {
-	custom_character = global.character_for_player_1;
+	current_character = 0;
 }
 else
 if (global.player2_can_play = true)
 {
-	custom_character = global.character_for_player_2;
+	current_character = 1;
 }
 else
 if (global.player3_can_play = true)
 {
-	custom_character = global.character_for_player_3;
+	current_character = 2;
 }
 else
 if (global.player4_can_play = true)
 {
-	custom_character = global.character_for_player_4;
+	current_character = 3;
 }
 else
 {
-	custom_character = 0;
+	current_character = 0;
 }
 
 sprite_map_xorig = 0;

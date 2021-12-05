@@ -12,8 +12,6 @@ else
 	c_menu_fill=c_white;
 }
 
-//draw_text_outlined(300, 300, "menu = " + string(menu), global.default_text_size, c_white, c_black, 1);
-
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/
@@ -174,6 +172,89 @@ if (asset_get_type("font_default") == asset_font)
 	draw_set_font(font_default);
 }
 #endregion /*Set a default font End*/
+
+#region /*Hide menu for clean screenshots text*/
+if (hide_menu_for_clean_screenshots_timer < 60*3)
+{
+	hide_menu_for_clean_screenshots_timer += 1;
+}
+if (hide_menu_for_clean_screenshots_timer = 60*3)
+{
+	hide_menu_for_clean_screenshots_alpha = lerp(hide_menu_for_clean_screenshots_alpha, 1, 0.01);
+}
+if (in_settings = true)
+or (menu = "quit_game_yes")
+or (menu = "quit_game_no")
+{
+	hide_menu_for_clean_screenshots_alpha = 0;
+	hide_menu_for_clean_screenshots_timer = 0;
+}
+
+if (hide_menu_for_clean_screenshots = false)
+and (in_settings = false)
+{
+	if (global.controls_used_for_menu_navigation = "keyboard")
+	or (global.controls_used_for_menu_navigation = "mouse")
+	{
+		draw_sprite_ext(spr_keyboard_keys, ord("Y"), 32, window_get_height() - 32, 0.75, 0.75, 0, c_white, hide_menu_for_clean_screenshots_alpha);
+	}
+	else
+	{
+		draw_sprite_ext(spr_xbox_buttons, 3, 32, window_get_height() - 32, 0.75, 0.75, 0, c_white, hide_menu_for_clean_screenshots_alpha);
+	}
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_center);
+	draw_text_outlined(64, window_get_height() - 32, ": Hide menu for clean screenshots", global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha);
+}
+
+if (keyboard_check_pressed(ord("Y")))
+or (gamepad_button_check_pressed(0, gp_face4))
+or (gamepad_button_check_pressed(1, gp_face4))
+or (gamepad_button_check_pressed(2, gp_face4))
+or (gamepad_button_check_pressed(3, gp_face4))
+{
+	if (hide_menu_for_clean_screenshots = false)
+	and (menu_delay = 0)
+	and (in_settings = false)
+	and (menu != "quit_game_yes")
+	and (menu != "quit_game_no")
+	{
+		hide_menu_for_clean_screenshots = true;
+		menu_delay = 10;
+	}
+}
+
+if (keyboard_check_pressed(vk_anykey))
+or (mouse_check_button_pressed(mb_middle))
+or (mouse_check_button_pressed(mb_right))
+or (gamepad_button_check_pressed(0, gp_face1))
+or (gamepad_button_check_pressed(0, gp_face2))
+or (gamepad_button_check_pressed(0, gp_face3))
+or (gamepad_button_check_pressed(0, gp_face4))
+or (gamepad_button_check_pressed(1, gp_face1))
+or (gamepad_button_check_pressed(1, gp_face2))
+or (gamepad_button_check_pressed(1, gp_face3))
+or (gamepad_button_check_pressed(1, gp_face4))
+or (gamepad_button_check_pressed(2, gp_face1))
+or (gamepad_button_check_pressed(2, gp_face2))
+or (gamepad_button_check_pressed(2, gp_face3))
+or (gamepad_button_check_pressed(2, gp_face4))
+or (gamepad_button_check_pressed(3, gp_face1))
+or (gamepad_button_check_pressed(3, gp_face2))
+or (gamepad_button_check_pressed(3, gp_face3))
+or (gamepad_button_check_pressed(3, gp_face4))
+{
+	if (hide_menu_for_clean_screenshots = true)
+	and (menu_delay = 0)
+	{
+		hide_menu_for_clean_screenshots = false;
+		menu_delay = 10;
+	}
+}
+#endregion /*Hide menu for clean screenshots text END*/
+
+if (hide_menu_for_clean_screenshots = false)
+{
 
 if (in_settings = false)
 and(menu != "remap_key_up")
@@ -1187,8 +1268,11 @@ if (menu_joystick_delay>0)
 }
 #endregion /*Menu navigation with joystick END*/
 
+}
+
 #region /*If Window is unfocused, make the screen darker*/
 if (!window_has_focus())
+and (hide_menu_for_clean_screenshots = false)
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);

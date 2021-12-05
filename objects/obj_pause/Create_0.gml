@@ -74,6 +74,9 @@ language_settings_y = 40*15;
 broadcast_settings_y = 40*16;
 how_to_play_y = 40*17;
 left_sidebar_x=-400;
+hide_menu_for_clean_screenshots = false;
+hide_menu_for_clean_screenshots_alpha = 0;
+hide_menu_for_clean_screenshots_timer = 0;
 
 #region /*Customize look of Options Menu*/
 c_menu_outline = c_black;

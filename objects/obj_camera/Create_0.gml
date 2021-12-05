@@ -16,9 +16,9 @@ mouse_x_position = window_mouse_get_x(); /*Mouse x initializing*/
 mouse_y_position = window_mouse_get_y(); /*Mouse y initializing*/
 
 #region /*Lives Icon*/
-if (file_exists(working_directory + "/custom_characters/character" + string(global.character_for_player_1)+"/data/character_config.ini"))
+if (file_exists(working_directory + "/custom_characters/" + string(global.character_for_player_1)+"/data/character_config.ini"))
 {
-	ini_open(working_directory + "/custom_characters/character" + string(global.character_for_player_1)+"/data/character_config.ini");
+	ini_open(working_directory + "/custom_characters/" + string(global.character_for_player_1)+"/data/character_config.ini");
 	
 	#region /*Sprite lives icon x and y origin points*/
 	#region /*Sprite lives icon x origin point*/
@@ -55,9 +55,9 @@ if (file_exists(working_directory + "/custom_characters/character" + string(glob
 	ini_close();
 }
 
-if (file_exists(working_directory + "/custom_characters/character" + string(global.character_for_player_1)+"/sprites/lives_icon.png"))
+if (file_exists(working_directory + "/custom_characters/" + string(global.character_for_player_1)+"/sprites/lives_icon.png"))
 {
-	sprite_lives_icon = sprite_add(working_directory + "/custom_characters/character" + string(global.character_for_player_1)+"/sprites/lives_icon.png", 0, false, false, lives_icon_xorig, lives_icon_yorig);
+	sprite_lives_icon = sprite_add(working_directory + "/custom_characters/" + string(global.character_for_player_1)+"/sprites/lives_icon.png", 0, false, false, lives_icon_xorig, lives_icon_yorig);
 }
 else
 if (asset_get_type("spr_1up") == asset_sprite)

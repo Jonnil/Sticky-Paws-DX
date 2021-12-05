@@ -27,13 +27,13 @@ and (image_index <= 3)
 	image_speed = 0;
 }
 
-if (global.character_for_player_1 = 1)
+if (global.character_for_player_1 = "Catlyn")
 and (global.player1_can_play = true)
-or (global.character_for_player_2 = 1)
+or (global.character_for_player_2 = "Catlyn")
 and (global.player2_can_play = true)
-or (global.character_for_player_3 = 1)
+or (global.character_for_player_3 = "Catlyn")
 and (global.player3_can_play = true)
-or (global.character_for_player_4 = 1)
+or (global.character_for_player_4 = "Catlyn")
 and (global.player4_can_play = true)
 {
 	instance_destroy(); /*If anyone is playing as Catlyn, destroy this object*/
