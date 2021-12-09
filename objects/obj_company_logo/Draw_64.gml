@@ -25,10 +25,26 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 #endregion /*Initialize Font*/
 
-/*Sprite*/ draw_sprite_ext(sprite_index,image_index,window_get_width()/2,window_get_height()/2,1,1,0,c_white,1);
+/*Sprite*/
+draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_height() / 2, 1, 1, 0, c_white, 1);
+
+if (sprite_splash_easteregg > noone)
+{
+	draw_sprite_ext(sprite_splash_easteregg, image_index, +128, window_get_height()+sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
+}
+
+if (gamepad_button_check_pressed(0,gp_face4))
+or (keyboard_check_pressed(ord("Y")))
+{
+	sprite_splash_easteregg_yoffset = +127;
+}
+
+if (sprite_splash_easteregg_yoffset <= 127)
+{
+	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, -128, 0.1);
+}
 
 if (image_index>image_number-2)
-and(asset_get_type("spr_company_logo")==asset_sprite)
 and(sprite_index=spr_company_logo)
 {
 	if (!gamepad_is_connected(0))
@@ -36,9 +52,9 @@ and(sprite_index=spr_company_logo)
 	and(!gamepad_is_connected(2))
 	and(!gamepad_is_connected(3))
 	{
-		if (asset_get_type("spr_splash_controller")==asset_sprite)
+		if (sprite_splash_controller > noone)
 		{
-			sprite_index=spr_splash_controller;
+			sprite_index = sprite_splash_controller;
 		}
 		else
 		{
@@ -65,8 +81,8 @@ and(sprite_index=spr_company_logo)
 	}
 }
 
-if (asset_get_type("spr_splash_controller")==asset_sprite)
-and(sprite_index=spr_splash_controller)
+if (sprite_splash_controller > noone)
+and(sprite_index = sprite_splash_controller)
 {
 	time+=1;
 	if (time>100)

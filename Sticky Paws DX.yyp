@@ -341,6 +341,7 @@
     {"id":{"name":"obj_cardboard_particle","path":"objects/obj_cardboard_particle/obj_cardboard_particle.yy",},"order":13,},
     {"id":{"name":"obj_bump_in_ground","path":"objects/obj_bump_in_ground/obj_bump_in_ground.yy",},"order":21,},
     {"id":{"name":"obj_leveleditor","path":"objects/obj_leveleditor/obj_leveleditor.yy",},"order":0,},
+    {"id":{"name":"obj_artwork_collection","path":"objects/obj_artwork_collection/obj_artwork_collection.yy",},"order":35,},
     {"id":{"name":"obj_arrow_sign","path":"objects/obj_arrow_sign/obj_arrow_sign.yy",},"order":17,},
     {"id":{"name":"spr_water_level_change_fast","path":"sprites/spr_water_level_change_fast/spr_water_level_change_fast.yy",},"order":121,},
     {"id":{"name":"snd_enemyvoice_big_defeated","path":"sounds/snd_enemyvoice_big_defeated/snd_enemyvoice_big_defeated.yy",},"order":28,},
@@ -1090,6 +1091,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/characters/Sticky/sprites","resourceVersion":"1.0","name":"wall_slide_up_strip8.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/Sticky/sounds/voicepack2","resourceVersion":"1.0","name":"powerup_already_have.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/Sticky/sounds/voicepack2","resourceVersion":"1.0","name":"company_splash.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"splash_controller.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"splash_easteregg.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.7.603",

@@ -2,7 +2,7 @@
 
 #region /*Things you could change*/
 
-/*Readme textfile for how to use the level editor*/leveleditor_readme = noone;
+leveleditor_readme = noone; /*Readme textfile for how to use the level editor*/
 
 /*Change how menus look and function*/
 global.can_select_number_of_players=true; /*If this is true, there will be a number of players select screen before you start the game*/
@@ -488,6 +488,7 @@ if (asset_get_type("scr_config_load")==asset_script)
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
 global.resourcepack_sprite_title_logo = noone;
 global.resourcepack_sprite_title_logo_christmas = noone;
+global.resourcepack_sprite_artwork_collection = spr_wall;
 global.resourcepack_sprite_basic_collectible = spr_wall;
 global.resourcepack_sprite_big_collectible = spr_wall;
 global.resourcepack_sprite_bullet = spr_wall;
@@ -535,6 +536,142 @@ else
 	gpu_set_texfilter(false);
 }
 #endregion /*Interpolation END*/
+
+sprite_splash_easteregg_yoffset = +128;
+
+if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini"))
+or (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
+{
+	
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini"))
+	{
+		ini_open("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini");
+	}
+	else
+	if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
+	{
+		ini_open(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini");
+	}
+	
+	#region /*Splash Controller*/
+	file_name = "splash_controller";
+	
+	#region /*x origin point*/
+	if (ini_key_exists("sprite origin points", file_name+"_xorig"))
+	{
+		xorig_variable = ini_read_real("sprite origin points", file_name+"_xorig", 0);
+	}
+	else
+	{
+		xorig_variable = 0;
+	}
+	#endregion /*x origin point END*/
+	
+	#region /*y origin point*/
+	if (ini_key_exists("sprite origin points", file_name+"_yorig"))
+	{
+		yorig_variable = ini_read_real("sprite origin points", file_name+"_yorig", 0);
+	}
+	else
+	{
+		yorig_variable = 0;
+	}
+	#endregion /*y origin point END*/
+	
+	#region /*Sprite Add*/
+	sprite_splash_controller = noone;
+	index=0
+	repeat(50)
+	{
+		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+		{
+			sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+		}
+		else
+		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+		{
+			sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+		}
+		index+=1
+	}
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png"))
+	{
+		sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+	}
+	else
+	if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+	{
+		sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+	}
+	#endregion /*Sprite Add END*/
+	
+	#endregion /*Splash Controller END*/
+	
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini"))
+	{
+		ini_open("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini");
+	}
+	else
+	if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
+	{
+		ini_open(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini");
+	}
+	
+	#region /*Splash Easteregg*/
+	file_name = "splash_easteregg";
+	
+	#region /*x origin point*/
+	if (ini_key_exists("sprite origin points", file_name+"_xorig"))
+	{
+		xorig_variable = ini_read_real("sprite origin points", file_name+"_xorig", 0);
+	}
+	else
+	{
+		xorig_variable = 0;
+	}
+	#endregion /*x origin point END*/
+	
+	#region /*y origin point*/
+	if (ini_key_exists("sprite origin points", file_name+"_yorig"))
+	{
+		yorig_variable = ini_read_real("sprite origin points", file_name+"_yorig", 0);
+	}
+	else
+	{
+		yorig_variable = 0;
+	}
+	#endregion /*y origin point END*/
+	
+	#region /*Sprite Add*/
+	sprite_splash_easteregg = noone;
+	index=0
+	repeat(50)
+	{
+		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+		{
+			sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+		}
+		else
+		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+		{
+			sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+		}
+		index+=1
+	}
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png"))
+	{
+		sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+	}
+	else
+	if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+	{
+		sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+	}
+	#endregion /*Sprite Add END*/
+	
+	#endregion /*Splash Easteregg END*/
+	
+}
 
 time=0;
 sprite_index = spr_company_logo;
