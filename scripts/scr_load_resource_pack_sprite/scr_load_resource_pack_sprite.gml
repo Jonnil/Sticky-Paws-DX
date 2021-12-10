@@ -175,7 +175,7 @@ function scr_load_resource_pack_sprite()
 		
 		#region /*Sprite Add*/
 		index=0
-		repeat(50)
+		repeat(100)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{

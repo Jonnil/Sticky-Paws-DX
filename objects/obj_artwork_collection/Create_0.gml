@@ -1,9 +1,9 @@
 artwork = 1;
-max_artwork = 46; /*The number of artworks corresponds with the total amount of big collectibles in the game*/
+max_artwork = 45; /*The number of artworks corresponds with the total amount of big collectibles in the game*/
 can_navigate = false;
 show_comments = true;
 current_comment = "Test";
-xx = view_xview + view_wview / 2;
+xx = window_get_width() / 2;
 if (global.demo = true)
 {
 	instance_destroy();
@@ -72,57 +72,57 @@ if (file_exists("file" + string(global.file) + ".ini"))
 }
 else
 {
-	level1_big_collectible1 = noone;
-	level1_big_collectible2 = noone;
-	level1_big_collectible3 = noone;
-	level1_big_collectible4 = noone;
-	level1_big_collectible5 = noone;
+	level1_big_collectible1 = false;
+	level1_big_collectible2 = false;
+	level1_big_collectible3 = false;
+	level1_big_collectible4 = false;
+	level1_big_collectible5 = false;
 	
-	level2_big_collectible1 = noone;
-	level2_big_collectible2 = noone;
-	level2_big_collectible3 = noone;
-	level2_big_collectible4 = noone;
-	level2_big_collectible5 = noone;
+	level2_big_collectible1 = false;
+	level2_big_collectible2 = false;
+	level2_big_collectible3 = false;
+	level2_big_collectible4 = false;
+	level2_big_collectible5 = false;
 	
-	level3_big_collectible1 = noone;
-	level3_big_collectible2 = noone;
-	level3_big_collectible3 = noone;
-	level3_big_collectible4 = noone;
-	level3_big_collectible5 = noone;
+	level3_big_collectible1 = false;
+	level3_big_collectible2 = false;
+	level3_big_collectible3 = false;
+	level3_big_collectible4 = false;
+	level3_big_collectible5 = false;
 	
-	level4_big_collectible1 = noone;
-	level4_big_collectible2 = noone;
-	level4_big_collectible3 = noone;
-	level4_big_collectible4 = noone;
-	level4_big_collectible5 = noone;
+	level4_big_collectible1 = false;
+	level4_big_collectible2 = false;
+	level4_big_collectible3 = false;
+	level4_big_collectible4 = false;
+	level4_big_collectible5 = false;
 	
-	level5_big_collectible1 = noone;
-	level5_big_collectible2 = noone;
-	level5_big_collectible3 = noone;
-	level5_big_collectible4 = noone;
-	level5_big_collectible5 = noone;
+	level5_big_collectible1 = false;
+	level5_big_collectible2 = false;
+	level5_big_collectible3 = false;
+	level5_big_collectible4 = false;
+	level5_big_collectible5 = false;
 	
-	level6_big_collectible1 = noone;
-	level6_big_collectible2 = noone;
-	level6_big_collectible3 = noone;
-	level6_big_collectible4 = noone;
-	level6_big_collectible5 = noone;
+	level6_big_collectible1 = false;
+	level6_big_collectible2 = false;
+	level6_big_collectible3 = false;
+	level6_big_collectible4 = false;
+	level6_big_collectible5 = false;
 	
-	level7_big_collectible1 = noone;
-	level7_big_collectible2 = noone;
-	level7_big_collectible3 = noone;
-	level7_big_collectible4 = noone;
-	level7_big_collectible5 = noone;
+	level7_big_collectible1 = false;
+	level7_big_collectible2 = false;
+	level7_big_collectible3 = false;
+	level7_big_collectible4 = false;
+	level7_big_collectible5 = false;
 	
-	level8_big_collectible1 = noone;
-	level8_big_collectible2 = noone;
-	level8_big_collectible3 = noone;
-	level8_big_collectible4 = noone;
-	level8_big_collectible5 = noone;
+	level8_big_collectible1 = false;
+	level8_big_collectible2 = false;
+	level8_big_collectible3 = false;
+	level8_big_collectible4 = false;
+	level8_big_collectible5 = false;
 	
-	level9_big_collectible1 = noone;
-	level9_big_collectible2 = noone;
-	level9_big_collectible3 = noone;
-	level9_big_collectible4 = noone;
-	level9_big_collectible5 = noone;
+	level9_big_collectible1 = false;
+	level9_big_collectible2 = false;
+	level9_big_collectible3 = false;
+	level9_big_collectible4 = false;
+	level9_big_collectible5 = false;
 }

@@ -67,6 +67,7 @@ if (object = "bird"){object = 89;}else
 if (object = "sign_crouch"){object = 90;}else
 if (object = "boss"){object = 95;}
 if (object = "boss_barrier"){object = 96;}
+if (object = "artwork_collection"){object = 97;}
 
 #region /*All code before initializing the object*/
 
@@ -1724,6 +1725,7 @@ if (global.play_edited_level = true)
 		if (object=94)and(asset_get_type("obj_sign_moveset")==asset_object){with(instance_create_depth(x,y,0,obj_sign_moveset)){sprite_index = spr_sign_walljump; sprite_sign = spr_sign_walljump;}instance_destroy();}
 		if (object=95)and(asset_get_type("obj_boss")==asset_object){instance_create_depth(x,y,0,obj_boss);instance_destroy();}
 		if (object=96)and(asset_get_type("obj_boss_barrier")==asset_object){instance_create_depth(x,y,0,obj_boss_barrier);instance_destroy();}
+		if (object=97)and(asset_get_type("obj_artwork_collection")==asset_object){instance_create_depth(x,y,0,obj_artwork_collection);instance_destroy();}
 	}
 	#endregion /*Delete objects according to difficulty settings END*/
 	
@@ -1889,6 +1891,7 @@ if (object=93)and(asset_get_type("spr_sign_rope_spin")==asset_sprite){sprite_ind
 if (object=94)and(asset_get_type("spr_sign_walljump")==asset_sprite){sprite_index=spr_sign_walljump;mask_index=spr_wall;}
 if (object=95)and(asset_get_type("spr_boss_stand")==asset_sprite){sprite_index=spr_boss_stand;mask_index=spr_wall;}
 if (object=96)and(asset_get_type("spr_boss_barrier")==asset_sprite){sprite_index=spr_boss_barrier;mask_index=spr_wall;}
+if (object=97)and(asset_get_type("spr_artwork_collection")==asset_sprite){sprite_index=spr_artwork_collection;mask_index=spr_wall;}
 #endregion /*Initialize Object End*/
 
 #region /*Difficulty settings per object*/
