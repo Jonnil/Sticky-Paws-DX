@@ -102,7 +102,7 @@ if (global.player4_key2_tongue = 0){global.player4_key2_tongue = noone;}
 
 #endregion /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus END*/
 
-if (global.background_brightness_menu>-0.1)
+if (global.background_brightness_menu>0.5)
 {
 	c_menu_outline=c_white;
 	c_menu_fill=c_black;
@@ -1091,6 +1091,7 @@ if (menu = "load_characters")
 if (select_custom_level_menu_open = true)
 {
 	scr_select_custom_level_menu();
+	scr_custom_level_select_with_the_mouse()
 }
 #endregion /*Select Custom Level Menu END*/
 

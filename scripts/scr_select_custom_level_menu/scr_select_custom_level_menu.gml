@@ -2,8 +2,6 @@ function scr_select_custom_level_menu()
 {
 	R = 4;
 	C = clamp(floor(global.select_level_index/R), 0, floor(ds_list_size(global.all_loaded_custom_levels)))
-	scroll_to = clamp(C, 0, ds_list_size(global.all_loaded_custom_levels-2/R));
-	lerp_on = true;
 	
 	#region /*Navigate Menu*/
 	
@@ -25,8 +23,10 @@ function scr_select_custom_level_menu()
 			}
 			else
 			if (global.select_level_index-R > -1)
-			{
+			{	
 				menu_delay = 3;
+				scroll_to = floor(global.select_level_index/R);
+				lerp_on = true;
 				global.select_level_index -= clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
 			}
 		}
@@ -55,6 +55,8 @@ function scr_select_custom_level_menu()
 			if (global.select_level_index+R < ds_list_size(global.thumbnail_sprite))
 			{
 				menu_delay = 3;
+				scroll_to = floor(global.select_level_index/R);
+				lerp_on = true;
 				global.select_level_index += clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
 			}
 		}
@@ -113,32 +115,35 @@ function scr_select_custom_level_menu()
 	
 	#region /*Key A Pressed*/
 	if (key_a_pressed)
-	and (can_input_level_name = false)
-	and (open_sub_menu = false)
-	and (menu_delay = 0)
-	and (menu!="back_from_level_editor")
+	or mouse_check_button_pressed(mb_left)
 	{
-		
-		#region /*(C-scroll)reate New Level*/
-		if (global.select_level_index = 0)
+		if (can_input_level_name = false)
+		and (open_sub_menu = false)
+		and (menu_delay = 0)
+		and (menu!="back_from_level_editor")
 		{
-			menu = "level_editor_create_from_scratch";
-			menu_delay = 3;
-			open_sub_menu = true;
+		
+			#region /*(C-scroll)reate New Level*/
+			if (global.select_level_index = 0)
+			{
+				menu = "level_editor_create_from_scratch";
+				menu_delay = 3;
+				open_sub_menu = true;
+			}
+			#endregion /*(C-scroll)reate New Level END*/
+		
+			else
+		
+			#region /*Open sub menu for levels*/
+			if (global.select_level_index >= 1)
+			{
+				menu = "level_editor_play";
+				menu_delay=3;
+				open_sub_menu = true;
+			}
+			#endregion /*Open sub menu for levels END*/
+		
 		}
-		#endregion /*(C-scroll)reate New Level END*/
-		
-		else
-		
-		#region /*Open sub menu for levels*/
-		if (global.select_level_index >= 1)
-		{
-			menu = "level_editor_play";
-			menu_delay=3;
-			open_sub_menu = true;
-		}
-		#endregion /*Open sub menu for levels END*/
-		
 	}
 	#endregion /*Key A Pressed END*/
 	

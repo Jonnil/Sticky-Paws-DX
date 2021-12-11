@@ -1776,79 +1776,9 @@ else
 
 #region /*Sprite variables*/
 
-#region /*Stand sprite*/
-/*index = 0;
-repeat(50)
-{
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_strip" + string(index)+".png"))
-	{
-		sprite_stand = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_strip" + string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
-	}
-	else
-	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_strip" + string(index)+".png"))
-	{
-		sprite_stand = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_strip" + string(index)+".png", index, false, false, sprite_stand_xorig, sprite_stand_yorig);
-	}
-	index += 1;
-}
-if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand.png"))
-{
-	sprite_stand = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
-}
-else
-if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand.png"))
-{
-	sprite_stand = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand.png", 1, false, false, sprite_stand_xorig, sprite_stand_yorig);
-}*/
-#endregion /*Stand sprite END*/
-
 sprite_stand = scr_initialize_custom_character_sprite("stand", sprite_stand, sprite_stand_xorig, sprite_stand_yorig);
-
-#region /*Stand cold sprite*/
-index = 0;
-repeat(50)
-{
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_cold_strip" + string(index)+".png"))
-	{
-		sprite_stand_cold = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_cold_strip" + string(index)+".png", index, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-	}
-	else
-	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_cold_strip" + string(index)+".png"))
-	{
-		sprite_stand_cold = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_cold_strip" + string(index)+".png", index, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-	}
-	else
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/cold_strip" + string(index)+".png"))
-	{
-		sprite_stand_cold = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/cold_strip" + string(index)+".png", index, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-	}
-	else
-	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/cold_strip" + string(index)+".png"))
-	{
-		sprite_stand_cold = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/cold_strip" + string(index)+".png", index, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-	}
-	index += 1;
-}
-if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_cold.png"))
-{
-	sprite_stand_cold = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-}
-else
-if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_cold.png"))
-{
-	sprite_stand_cold = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/stand_cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-}
-else
-if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/cold.png"))
-{
-	sprite_stand_cold = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-}
-else
-if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/cold.png"))
-{
-	sprite_stand_cold = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/sprites/cold.png", 1, false, false, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-}
-#endregion /*Stand cold sprite END*/
+sprite_stand_cold = scr_initialize_custom_character_sprite("stand_cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
+sprite_stand_cold = scr_initialize_custom_character_sprite("cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 
 #region /*Standing on something sprite*/
 index = 0;

@@ -3,7 +3,7 @@ function scr_options_menu()
 {
 	
 	#region /*Background Brightness in Menus Options*/
-	if (background_brightness_menu_lerp< 0)
+	if (background_brightness_menu_lerp < 0)
 	{
 		draw_set_alpha(abs(background_brightness_menu_lerp));
 		draw_rectangle_color(-32,-32,room_width*2,room_height*2,c_black,c_black,c_black,c_black,false);

@@ -1,11 +1,12 @@
-/// @function draw_menu_slider(x, y, string, menu_index, menu_takes_you_to)
-/// @description draw_menu_button(x,y,string,menu_index)
+/// @function draw_menu_slider(x, y, string, menu_index, menu_takes_you_to, variable_to_change)
+/// @description draw_menu_button(x,y,string,menu_index, variable_to_change)
 /// @param x
 /// @param y
 /// @param string
 /// @param menu_index
 /// @param variable_to_change
 /// @param bar_color
+/// @param variable_to_change
 
 function draw_menu_slider()
 {
@@ -18,8 +19,6 @@ function draw_menu_slider()
 	var menu_index = argument3;
 	var variable_to_change = argument4;
 	var bar_color = argument5;
-	var show_percent = 0;
-	var background_brightness_indicator_x = 160;
 	
 	#endregion /*Initialize variables END*/
 	
@@ -47,9 +46,22 @@ function draw_menu_slider()
 				if (menu = "sfx_volume"){global.sfx_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
 				if (menu = "ambient_volume"){global.ambient_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
 				if (menu = "voices_volume"){global.voices_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
-				if (menu = "background_brightness_gameplay"){global.background_brightness_gameplay = -1;}else
-				if (menu = "background_brightness_menu"){global.background_brightness_menu = -1;}
-				variable_to_change = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);
+				
+				if (menu = "background_brightness_gameplay")
+				{
+					global.background_brightness_gameplay = clamp((mouse_x-x_position+global.slider_x_offset-148)/(296+global.slider_width_offset), -1, 1);
+					variable_to_change = (global.background_brightness_gameplay+1)*160;
+				}
+				else
+				if (menu = "background_brightness_menu")
+				{
+					global.background_brightness_menu = clamp((mouse_x-x_position+global.slider_x_offset-148)/(296+global.slider_width_offset), -1, 1);
+					variable_to_change = (global.background_brightness_menu+1)*160;
+				}
+				else
+				{
+					variable_to_change = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);
+				}
 			}
 		}
 		#endregion /*Click to change value*/
@@ -58,51 +70,28 @@ function draw_menu_slider()
 	if (menu_index = "background_brightness_gameplay")
 	or (menu_index = "background_brightness_menu")
 	{
-		if (variable_to_change=+1){background_brightness_indicator_x = 320; show_percent = 100;}
-		if (variable_to_change=+0.9){background_brightness_indicator_x = 304; show_percent = 90;}
-		if (variable_to_change=+0.8){background_brightness_indicator_x = 288; show_percent = 80;}
-		if (variable_to_change=+0.7){background_brightness_indicator_x = 272; show_percent = 70;}
-		if (variable_to_change=+0.6){background_brightness_indicator_x = 256; show_percent = 60;}
-		if (variable_to_change=+0.5){background_brightness_indicator_x = 240; show_percent = 50;}
-		if (variable_to_change=+0.4){background_brightness_indicator_x = 224; show_percent = 40;}
-		if (variable_to_change=+0.3){background_brightness_indicator_x = 208; show_percent = 30;}
-		if (variable_to_change=+0.2){background_brightness_indicator_x = 192; show_percent = 20;}
-		if (variable_to_change=+0.1){background_brightness_indicator_x = 176; show_percent = 10;}
-		if (variable_to_change= 0){background_brightness_indicator_x = 160; show_percent = 0;}
-		if (variable_to_change=-0.1){background_brightness_indicator_x = 144; show_percent = -10;}
-		if (variable_to_change=-0.2){background_brightness_indicator_x = 128; show_percent = -20;}
-		if (variable_to_change=-0.3){background_brightness_indicator_x = 112; show_percent = -30;}
-		if (variable_to_change=-0.4){background_brightness_indicator_x = 96; show_percent = -40;}
-		if (variable_to_change=-0.5){background_brightness_indicator_x = 80; show_percent = -50;}
-		if (variable_to_change=-0.6){background_brightness_indicator_x = 64; show_percent = -60;}
-		if (variable_to_change=-0.7){background_brightness_indicator_x = 48; show_percent = -70;}
-		if (variable_to_change=-0.8){background_brightness_indicator_x = 32; show_percent = -80;}
-		if (variable_to_change=-0.9){background_brightness_indicator_x = 16; show_percent = -90;}
-		if (variable_to_change=-1){background_brightness_indicator_x = 0; show_percent = -100;}
-		
 		draw_rectangle_color(x_position,y_position-16,x_position+320,y_position+16,c_black,c_white,c_white,c_black,false);
 		if (menu_index = "background_brightness_gameplay")
 		{
 			if (variable_to_change < 0)
 			{
-				draw_rectangle_color(x_position+background_brightness_indicator_x-2,y_position-16,x_position+background_brightness_indicator_x+2,y_position+16,c_white,c_white,c_white,c_white,false);
+				draw_rectangle_color(x_position+variable_to_change-2,y_position-16,x_position+variable_to_change+2,y_position+16,c_white,c_white,c_white,c_white,false);
 			}
 			else
 			{
-				draw_rectangle_color(x_position+background_brightness_indicator_x-2,y_position-16,x_position+background_brightness_indicator_x+2,y_position+16,c_black,c_black,c_black,c_black,false);
+				draw_rectangle_color(x_position+variable_to_change-2,y_position-16,x_position+variable_to_change+2,y_position+16,c_black,c_black,c_black,c_black,false);
 			}
 		}
 		else
 		if (menu_index = "background_brightness_menu")
 		{
-			draw_rectangle_color(x_position+background_brightness_indicator_x-2,y_position-16,x_position+background_brightness_indicator_x+2,y_position+16,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);
+			draw_rectangle_color(x_position+variable_to_change-2,y_position-16,x_position+variable_to_change+2,y_position+16,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);
 		}
 	}
 	else
 	{
 		draw_rectangle_color(x_position,y_position-16,x_position+320,y_position+16,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);
 		draw_rectangle_color(x_position,y_position-16,x_position+variable_to_change*320,y_position+16,bar_color,bar_color,bar_color,bar_color,false);
-		show_percent = variable_to_change * 100;
 	}
 	#endregion /*Draw Bar END*/
 	
@@ -136,7 +125,7 @@ function draw_menu_slider()
 	#region /*Text above the menu button*/
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x_position,y_position-32,string(string_text)+": " + string(show_percent)+"%",global.default_text_size*0.75,c_menu_outline,c_menu_fill,1);
+	draw_text_outlined(x_position,y_position-32,string(string_text)+": " + string(variable_to_change * 100)+"%",global.default_text_size*0.75,c_menu_outline,c_menu_fill,1);
 	#endregion /*Text above the menu button END*/
 	
 }
