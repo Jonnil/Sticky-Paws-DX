@@ -1097,6 +1097,11 @@
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"splash_easteregg.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"artwork_collection_strip75.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Intro/Sounds/ambiance","resourceVersion":"1.0","name":"ambiance.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Intro/Sounds/ambiance","resourceVersion":"1.0","name":"ambiance.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level3/Sounds/ambience","resourceVersion":"1.0","name":"ambience.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Resourcepacks/Resourcepack0/Sprites","resourceVersion":"1.0","name":"artwork_collection_strip75.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Resourcepacks/Resourcepack0/Sprites","resourceVersion":"1.0","name":"splash_controller.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Resourcepacks/Resourcepack0/Sprites","resourceVersion":"1.0","name":"splash_easteregg.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.7.606",
