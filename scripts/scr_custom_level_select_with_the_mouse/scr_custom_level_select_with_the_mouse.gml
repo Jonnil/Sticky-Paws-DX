@@ -3,7 +3,6 @@ function scr_custom_level_select_with_the_mouse()
 	R = 4;
 	C = clamp(floor(global.select_level_index/R), 0, floor(ds_list_size(global.all_loaded_custom_levels)))
 	if global.controls_used_for_menu_navigation = "mouse"
-	and !lerp_on
 	and open_sub_menu = false
 		{
 		for (i=0;i<ds_list_size(global.thumbnail_sprite);i+=1)
