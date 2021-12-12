@@ -29,7 +29,7 @@ function scr_load_resource_pack_sprite()
 	#endregion /*Delete sprites before loading new sprites END*/
 	
 	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini"))
-	or (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
+	or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
 	{
 		
 		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini"))
@@ -37,9 +37,9 @@ function scr_load_resource_pack_sprite()
 			ini_open("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini");
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
 		{
-			ini_open(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini");
+			ini_open(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini");
 		}
 		
 		#region /*Title Logo*/
@@ -76,9 +76,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_title_logo = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_title_logo = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_title_logo = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -87,9 +87,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_title_logo = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_title_logo = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_title_logo = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -129,9 +129,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_title_logo_christmas = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_title_logo_christmas = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_title_logo_christmas = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -140,9 +140,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_title_logo_christmas = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_title_logo_christmas = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_title_logo_christmas = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -182,9 +182,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_artwork_collection = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_artwork_collection = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_artwork_collection = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -193,9 +193,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_artwork_collection = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_artwork_collection = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_artwork_collection = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -235,9 +235,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_basic_collectible = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_basic_collectible = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_basic_collectible = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -246,9 +246,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_basic_collectible = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_basic_collectible = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_basic_collectible = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -288,9 +288,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_big_collectible = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_big_collectible = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_big_collectible = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -299,9 +299,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_big_collectible = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_big_collectible = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_big_collectible = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -341,9 +341,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_bullet = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_bullet = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_bullet = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -352,9 +352,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_bullet = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_bullet = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_bullet = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -394,9 +394,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_bullet_flattened = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_bullet_flattened = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_bullet_flattened = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -405,9 +405,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_bullet_flattened = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_bullet_flattened = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_bullet_flattened = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -447,9 +447,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_blaster = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_blaster = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_blaster = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -458,9 +458,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_blaster = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_blaster = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_blaster = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -500,9 +500,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_basic_enemy = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_basic_enemy = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_basic_enemy = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -511,9 +511,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_basic_enemy = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_basic_enemy = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_basic_enemy = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -553,9 +553,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_basic_enemy_angry = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_basic_enemy_angry = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_basic_enemy_angry = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -564,9 +564,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_basic_enemy_angry = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_basic_enemy_angry = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_basic_enemy_angry = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -606,9 +606,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_basic_enemy_flattened = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_basic_enemy_flattened = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_basic_enemy_flattened = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -617,9 +617,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_basic_enemy_flattened = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_basic_enemy_flattened = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_basic_enemy_flattened = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -659,9 +659,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_big_stationary_enemy = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_big_stationary_enemy = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_big_stationary_enemy = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -670,9 +670,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_big_stationary_enemy = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_big_stationary_enemy = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_big_stationary_enemy = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -712,9 +712,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_big_stationary_enemy_flattened = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_big_stationary_enemy_flattened = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_big_stationary_enemy_flattened = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -723,9 +723,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_big_stationary_enemy_flattened = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_big_stationary_enemy_flattened = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_big_stationary_enemy_flattened = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -765,9 +765,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_hp_pickup = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_hp_pickup= sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_hp_pickup= sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -776,9 +776,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_hp_pickup = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_hp_pickup = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_hp_pickup = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		
@@ -818,9 +818,9 @@ function scr_load_resource_pack_sprite()
 				global.resourcepack_sprite_invincibility_powerup = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			else
-			if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
 			{
-				global.resourcepack_sprite_invincibility_powerup = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_invincibility_powerup = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -829,9 +829,9 @@ function scr_load_resource_pack_sprite()
 			global.resourcepack_sprite_invincibility_powerup = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
 		{
-			global.resourcepack_sprite_invincibility_powerup = sprite_add(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+			global.resourcepack_sprite_invincibility_powerup = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 		}
 		#endregion /*Sprite Add END*/
 		

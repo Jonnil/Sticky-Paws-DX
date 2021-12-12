@@ -6435,7 +6435,7 @@ function scr_options_menu()
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		if (!file_exists(working_directory+"/custom_resourcepacks/Resourcepack0/data/sprite_origin_point.ini"))
+		if (!file_exists(working_directory+"/custom_resourcepacks/resourcepack0/data/sprite_origin_point.ini"))
 		{
 			draw_text_outlined(resource_pack_x,20+(40*3),"Add Custom Resourcepacks in Local Appdata and it will appear here!",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 		}
@@ -6460,7 +6460,7 @@ function scr_options_menu()
 			}
 		}
 		
-		if (file_exists(working_directory+"/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+1)+"/data/sprite_origin_point.ini"))
+		if (file_exists(working_directory+"/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+1)+"/data/sprite_origin_point.ini"))
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x+resource_pack_right_arrow_x, 20+(40*4), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x+resource_pack_right_arrow_x-16, 20+(40*4)-16, resource_pack_x+resource_pack_right_arrow_x+16, 20+(40*4)+16))
@@ -6514,7 +6514,7 @@ function scr_options_menu()
 			menu = "resourcepacks";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
-			and (file_exists(working_directory+"/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+1)+"/data/sprite_origin_point.ini"))
+			and (file_exists(working_directory+"/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+1)+"/data/sprite_origin_point.ini"))
 			and (global.pause_room != room_leveleditor)
 			{
 				global.selected_resourcepack += 1;

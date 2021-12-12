@@ -741,9 +741,9 @@ if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepa
 	title_music = audio_create_stream("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/music/title_screen.ogg");
 }
 else
-if (file_exists(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/music/title_screen.ogg"))
+if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/music/title_screen.ogg"))
 {
-	title_music = audio_create_stream(working_directory + "/custom_resourcepacks/Resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/music/title_screen.ogg");
+	title_music = audio_create_stream(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/music/title_screen.ogg");
 }
 else
 {

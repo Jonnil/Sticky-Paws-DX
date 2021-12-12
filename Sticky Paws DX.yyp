@@ -1097,6 +1097,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"splash_easteregg.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"artwork_collection_strip75.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Intro/Sounds/ambiance","resourceVersion":"1.0","name":"ambiance.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sound","resourceVersion":"1.0","name":"splash_easteregg.ogg","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.7.606",

@@ -35,8 +35,12 @@ if (sprite_splash_easteregg > noone)
 
 if (gamepad_button_check_pressed(0,gp_face4))
 or (keyboard_check_pressed(ord("Y")))
+and (sprite_splash_easteregg_yoffset = 128)
 {
 	sprite_splash_easteregg_yoffset = +127;
+	audio_play_sound(audio_splash_easteregg, 0, false);
+	audio_sound_gain(audio_splash_easteregg, global.voices_volume, 0);
+	
 }
 
 if (sprite_splash_easteregg_yoffset <= 127)
