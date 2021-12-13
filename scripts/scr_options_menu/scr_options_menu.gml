@@ -704,6 +704,7 @@ function scr_options_menu()
 	{
 		scr_config_save(); /*Save Config*/
 		if (global.pause_room != room_leveleditor)
+		and (global.selected_resourcepack != old_selected_resource_pack)
 		{
 			scr_load_resource_pack_sprite(); /*Load new sprites from resource pack*/
 		}
@@ -766,11 +767,12 @@ function scr_options_menu()
 	{
 		scr_config_save(); /*Save Config*/
 		if (global.pause_room != room_leveleditor)
+		and (global.selected_resourcepack != old_selected_resource_pack)
 		{
 			scr_load_resource_pack_sprite(); /*Load new sprites from resource pack*/
 		}
 		input_key = false;
-		in_settings=false;
+		in_settings = false;
 		menu = "options";
 		menu_delay = 3;
 	}

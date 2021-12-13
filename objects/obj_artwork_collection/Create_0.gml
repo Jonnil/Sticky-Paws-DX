@@ -1,9 +1,11 @@
 artwork = 1;
+image_alpha = 0;
 max_artwork = 45; /*The number of artworks corresponds with the total amount of big collectibles in the game*/
 can_navigate = false;
 show_comments = true;
 current_comment = "Test";
 xx = window_get_width() / 2;
+yy = y;
 if (global.demo = true)
 {
 	instance_destroy();

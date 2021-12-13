@@ -459,7 +459,7 @@ or (menu = "quit")
 		player3_accept_selection=-1;
 		player4_accept_selection=-1;
 		global.character_select_in_this_menu = "main_game";
-		in_settings=false;
+		in_settings = false;
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 		if (global.can_select_number_of_players=true)
@@ -499,7 +499,7 @@ or (menu = "quit")
 		player2_accept_selection=-1;
 		player3_accept_selection=-1;
 		player4_accept_selection=-1;
-		in_settings=false;
+		in_settings = false;
 		
 		#region /*Select Level Editor*/
 		if (asset_get_type("room_leveleditor")==asset_room)
@@ -709,7 +709,7 @@ or (menu = "quit")
 	and(key_a_pressed)
 	and(menu_delay=0)
 	{
-		in_settings=false;
+		in_settings = false;
 		menu = "quit_game_no";
 		menu_delay = 3;
 	}

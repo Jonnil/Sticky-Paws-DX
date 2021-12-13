@@ -1,4 +1,5 @@
 xx = lerp(xx, window_get_width() / 2, 0.1);
+yy = lerp(yy, Wave(y-8, y+8, 4.5, 0), 0.1);
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (place_meeting(x, y, obj_player))
@@ -248,6 +249,7 @@ and (os_type != os_android)
 	
 	#region /*Draw Show Comments Key*/
 	if (gamepad_is_connected(0))
+	and (global.controls_used_for_menu_navigation = "controller")
 	{
 		draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()-180, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
 	}
@@ -259,6 +261,7 @@ and (os_type != os_android)
 	
 	#region /*Draw Back Key*/
 	if (gamepad_is_connected(0))
+	and (global.controls_used_for_menu_navigation = "controller")
 	{
 		draw_sprite_ext(spr_xbox_buttons, 1, window_get_width()-32, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
 	}
@@ -343,7 +346,17 @@ else
 	}
 	
 	depth = +10;
-	image_alpha = 1;
+	if (asset_get_type("obj_player") == asset_object)
+	and (instance_exists(obj_player))
+	and (instance_nearest(x, y, obj_player).can_move = true)
+	and (instance_nearest(x, y, obj_player).intro_animation = "")
+	{
+		image_alpha = lerp(image_alpha, 1, 0.1); /*Only show art collection enterance whenever the character can actually move, so it doesn't show up during cutscenes*/
+	}
+	else
+	{
+		image_alpha = lerp(image_alpha, 0, 0.1);
+	}
 	image_speed = 0;
 }
 
