@@ -426,25 +426,6 @@ if (allow_homing_tongue=true)
 }
 #endregion /*Homing Attack END*/
 
-#region /*Color Skin*/
-if (player=1)
-{
-	image_blend=global.hex_color_for_player_1;
-}
-if (player=2)
-{
-	image_blend=global.hex_color_for_player_2;
-}
-if (player=3)
-{
-	image_blend=global.hex_color_for_player_3;
-}
-if (player=4)
-{
-	image_blend=global.hex_color_for_player_4;
-}
-#endregion /*Color Skin END*/
-
 #region /*Display Player Number and Name*/
 if (instance_number(obj_player)>=2) /*If there is more than 1 player*/
 or (instance_number(obj_player_die)>=1) /*If there is any other player die object*/

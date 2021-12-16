@@ -160,6 +160,7 @@ and(!instance_exists(obj_title))
 				{
 					custom_character = global.character_for_player_1;
 					selected_voice_pack = global.voicepack_for_player_1;
+					selected_skin = global.skin_for_player_1;
 					player = 1;
 				}
 			}
@@ -191,6 +192,7 @@ and(!instance_exists(obj_title))
 				{
 					custom_character = global.character_for_player_2;
 					selected_voice_pack = global.voicepack_for_player_2;
+					selected_skin = global.skin_for_player_2;
 					player = 2;
 				}
 			}
@@ -222,6 +224,7 @@ and(!instance_exists(obj_title))
 				{
 					custom_character = global.character_for_player_3;
 					selected_voice_pack = global.voicepack_for_player_3;
+					selected_skin = global.skin_for_player_3;
 					player = 3;
 				}
 			}
@@ -253,6 +256,7 @@ and(!instance_exists(obj_title))
 				{
 					custom_character = global.character_for_player_4;
 					selected_voice_pack = global.voicepack_for_player_4;
+					selected_skin = global.skin_for_player_4;
 					player = 4;
 				}
 			}

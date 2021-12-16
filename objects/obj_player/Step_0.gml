@@ -9078,7 +9078,14 @@ if (key_crouch)
 				y+=16;
 				if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
 				{sprite_index = sprite_stand;}
-				mask_index=sprite_mask_crouch;
+				if (sprite_mask_crouch > 0)
+				{
+					mask_index = sprite_mask_crouch;
+				}
+				else
+				{
+					mask_index = sprite_index;
+				}
 				if (asset_get_type("snd_crouch")==asset_sound)
 				{
 					audio_play_sound(snd_crouch,0,0);
@@ -9102,7 +9109,14 @@ and(crouch=true)
 		y-=16;
 		draw_xscale=0.75;
 		draw_yscale=1.25;
-		mask_index=sprite_mask;
+		if (sprite_mask > 0)
+		{
+			mask_index = sprite_mask;
+		}
+		else
+		{
+			mask_index = sprite_index;
+		}
 		if (asset_get_type("snd_rise")==asset_sound)
 		{
 			audio_play_sound(snd_rise,0,0);
@@ -9150,12 +9164,26 @@ if (crouch = true)
 	{
 		if (asset_get_type("spr_player_slide")==asset_sprite)
 		{
-			mask_index=sprite_mask_crouch;
+			if (sprite_mask_crouch > 0)
+			{
+				mask_index = sprite_mask_crouch;
+			}
+			else
+			{
+				mask_index = sprite_index;
+			}
 			sprite_index=spr_player_slide;
 		}
 		else
 		{
-			mask_index=sprite_mask_crouch;
+			if (sprite_mask_crouch > 0)
+			{
+				mask_index = sprite_mask_crouch;
+			}
+			else
+			{
+				mask_index = sprite_index;
+			}
 			sprite_index=spr_player_crouch_crawl;
 			if (image_index>image_number-1)
 			{
@@ -9353,7 +9381,14 @@ or(image_index=4)
 /*Stand*/
 else
 {
-	mask_index = sprite_mask;
+	if (sprite_mask > 0)
+	{
+		mask_index = sprite_mask;
+	}
+	else
+	{
+		mask_index = sprite_index;
+	}
 }
 }
 /*Swimming Sprites*/
@@ -9425,7 +9460,14 @@ else
 	if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
 	if (sprite_stand > noone){sprite_index = sprite_stand;}
 }
-mask_index = sprite_mask;
+if (sprite_mask > 0)
+{
+	mask_index = sprite_mask;
+}
+else
+{
+	mask_index = sprite_index;
+}
 }
 
 }
@@ -9453,7 +9495,14 @@ if (key_crouch)
 			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
 			{image_index=sprite_stand;}
 			
-			mask_index=sprite_mask_crouch;
+			if (sprite_mask_crouch > 0)
+			{
+				mask_index = sprite_mask_crouch;
+			}
+			else
+			{
+				mask_index = sprite_index;
+			}
 			if (!place_meeting(x,y+16,obj_wall))
 			or (!position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
 			or (!position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
@@ -9484,7 +9533,14 @@ and(crouch=true)
 		y-=16;
 		draw_xscale=0.75;
 		draw_yscale=1.25;
-		mask_index=sprite_mask;
+		if (sprite_mask > 0)
+		{
+			mask_index = sprite_mask;
+		}
+		else
+		{
+			mask_index = sprite_index;
+		}
 		if (asset_get_type("snd_rise")==asset_sound)
 		{
 			audio_play_sound(snd_rise,0,0);
@@ -9502,7 +9558,14 @@ and(roll=true)
 	{
 		sprite_index=spr_player_roll;
 	}
-	mask_index=sprite_mask_crouch;
+	if (sprite_mask_crouch > 0)
+	{
+		mask_index = sprite_mask_crouch;
+	}
+	else
+	{
+		mask_index = sprite_index;
+	}
 	if (!place_meeting(x,y+1,obj_wall))
 	{
 		roll=false;
@@ -9577,7 +9640,14 @@ if (crouch = true)
 	or(abs(hspeed)>=2.5)
 	and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
-		mask_index=sprite_mask_crouch;
+		if (sprite_mask_crouch > 0)
+		{
+			mask_index = sprite_mask_crouch;
+		}
+		else
+		{
+			mask_index = sprite_index;
+		}
 		if (sprite_crouch_crawl>noone){sprite_index = sprite_crouch_crawl;}else
 		if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
 		{sprite_index = sprite_stand;}
@@ -9691,7 +9761,14 @@ if (crouch = true)
 		}
 	}
 	jump=0;
-	mask_index=sprite_mask_crouch;
+	if (sprite_mask_crouch > 0)
+	{
+		mask_index = sprite_mask_crouch;
+	}
+	else
+	{
+		mask_index = sprite_index;
+	}
 }
 else
 if (ground_pound=true)
@@ -9859,7 +9936,14 @@ and (can_move = true)
 		look_up_start_animation = false;
 	}
 	image_speed = 0.3;
-	mask_index = sprite_mask;
+	if (sprite_mask > 0)
+	{
+		mask_index = sprite_mask;
+	}
+	else
+	{
+		mask_index = sprite_index;
+	}
 }
 #endregion /*Look Up END*/
 
@@ -9999,7 +10083,14 @@ or (image_index = floor(6))
 /*Stand*/
 else
 {
-	mask_index=sprite_mask;
+	if (sprite_mask > 0)
+	{
+		mask_index = sprite_mask;
+	}
+	else
+	{
+		mask_index = sprite_index;
+	}
 }
 }
 else
@@ -10267,7 +10358,14 @@ and(spring=false)
 		}
 	}
 }
-mask_index=sprite_mask;
+if (sprite_mask > 0)
+{
+	mask_index = sprite_mask;
+}
+else
+{
+	mask_index = sprite_index;
+}
 }
 }
 

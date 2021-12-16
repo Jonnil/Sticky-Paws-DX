@@ -380,8 +380,6 @@ if (global.quit_level = true)
 }
 #endregion /*Quit Game END*/
 
-image_blend = global.hex_color_for_player_1; /*Color Skin*/
-
 #region /*Make sure level music and sound effects stops playing*/
 if (asset_get_type("snd_slip") == asset_sound)
 {

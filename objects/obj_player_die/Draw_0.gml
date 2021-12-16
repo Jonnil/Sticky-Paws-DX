@@ -1,35 +1,3 @@
-#region /*Color Skin*/
-
-#region /*Image blend for player 1*/
-if (player=1)
-{
-	image_blend=global.hex_color_for_player_1;
-}
-#endregion /*Image blend for player 1 END*/
-
-#region /*Image blend for player 2*/
-if (player=2)
-{
-	image_blend=global.hex_color_for_player_2;
-}
-#endregion /*Image blend for player 2 END*/
-
-#region /*Image blend for player 3*/
-if (player=3)
-{
-	image_blend=global.hex_color_for_player_3;
-}
-#endregion /*Image blend for player 3 END*/
-
-#region /*Image blend for player 4*/
-if (player=4)
-{
-	image_blend=global.hex_color_for_player_4;
-}
-#endregion /*Image blend for player 4 END*/
-
-#endregion /*Color Skin END*/
-
 count += 1;
 
 #region /*Check if the last player just died*/

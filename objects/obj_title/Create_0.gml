@@ -98,57 +98,6 @@ if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background
 }
 #endregion /*Custom Title Screen Background*/
 
-#region /*Custom colors for character*/
-/*global.player1_hue_base=255;global.player1_saturation_base=0;global.player1_value_base=255;
-global.player1_hue_skin=255;global.player1_saturation_skin=255;global.player1_value_skin=255;
-global.player1_hue_left_sclera=255;global.player1_saturation_left_sclera=255;global.player1_value_left_sclera=255;
-global.player1_hue_right_sclera=255;global.player1_saturation_right_sclera=255;global.player1_value_right_sclera=255;
-global.player1_hue_left_eyecolor=255;global.player1_saturation_left_eyecolor=255;global.player1_value_left_eyecolor=255;
-global.player1_hue_right_eyecolor=255;global.player1_saturation_right_eyecolor=255;global.player1_value_right_eyecolor=255;
-global.player1_hue_nose=255;global.player1_saturation_nose=255;global.player1_value_nose=255;
-global.player1_hue_cheek=255;global.player1_saturation_cheek=255;global.player1_value_cheek=255;
-global.player1_hue_neck=255;global.player1_saturation_neck=255;global.player1_value_neck=255;
-global.player1_hue_leg=255;global.player1_saturation_leg=255;global.player1_value_leg=255;
-global.player1_hue_hand=255;global.player1_saturation_hand=255;global.player1_value_hand=255;
-
-global.player2_hue_base=255;global.player2_saturation_base=0;global.player2_value_base=255;
-global.player2_hue_skin=255;global.player2_saturation_skin=255;global.player2_value_skin=255;
-global.player2_hue_left_sclera=255;global.player2_saturation_left_sclera=255;global.player2_value_left_sclera=255;
-global.player2_hue_right_sclera=255;global.player2_saturation_right_sclera=255;global.player2_value_right_sclera=255;
-global.player2_hue_left_eyecolor=255;global.player2_saturation_left_eyecolor=255;global.player2_value_left_eyecolor=255;
-global.player2_hue_right_eyecolor=255;global.player2_saturation_right_eyecolor=255;global.player2_value_right_eyecolor=255;
-global.player2_hue_nose=255;global.player2_saturation_nose=255;global.player2_value_nose=255;
-global.player2_hue_cheek=255;global.player2_saturation_cheek=255;global.player2_value_cheek=255;
-global.player2_hue_neck=255;global.player2_saturation_neck=255;global.player2_value_neck=255;
-global.player2_hue_leg=255;global.player2_saturation_leg=255;global.player2_value_leg=255;
-global.player2_hue_hand=255;global.player2_saturation_hand=255;global.player2_value_hand=255;
-
-global.player3_hue_base=255;global.player3_saturation_base=0;global.player3_value_base=255;
-global.player3_hue_skin=255;global.player3_saturation_skin=255;global.player3_value_skin=255;
-global.player3_hue_left_sclera=255;global.player3_saturation_left_sclera=255;global.player3_value_left_sclera=255;
-global.player3_hue_right_sclera=255;global.player3_saturation_right_sclera=255;global.player3_value_right_sclera=255;
-global.player3_hue_left_eyecolor=255;global.player3_saturation_left_eyecolor=255;global.player3_value_left_eyecolor=255;
-global.player3_hue_right_eyecolor=255;global.player3_saturation_right_eyecolor=255;global.player3_value_right_eyecolor=255;
-global.player3_hue_nose=255;global.player3_saturation_nose=255;global.player3_value_nose=255;
-global.player3_hue_cheek=255;global.player3_saturation_cheek=255;global.player3_value_cheek=255;
-global.player3_hue_neck=255;global.player3_saturation_neck=255;global.player3_value_neck=255;
-global.player3_hue_leg=255;global.player3_saturation_leg=255;global.player3_value_leg=255;
-global.player3_hue_hand=255;global.player3_saturation_hand=255;global.player3_value_hand=255;
-
-global.player4_hue_base=255;global.player4_saturation_base=0;global.player4_value_base=255;
-global.player4_hue_skin=255;global.player4_saturation_skin=255;global.player4_value_skin=255;
-global.player4_hue_left_sclera=255;global.player4_saturation_left_sclera=255;global.player4_value_left_sclera=255;
-global.player4_hue_right_sclera=255;global.player4_saturation_right_sclera=255;global.player4_value_right_sclera=255;
-global.player4_hue_left_eyecolor=255;global.player4_saturation_left_eyecolor=255;global.player4_value_left_eyecolor=255;
-global.player4_hue_right_eyecolor=255;global.player4_saturation_right_eyecolor=255;global.player4_value_right_eyecolor=255;
-global.player4_hue_nose=255;global.player4_saturation_nose=255;global.player4_value_nose=255;
-global.player4_hue_cheek=255;global.player4_saturation_cheek=255;global.player4_value_cheek=255;
-global.player4_hue_neck=255;global.player4_saturation_neck=255;global.player4_value_neck=255;
-global.player4_hue_leg=255;global.player4_saturation_leg=255;global.player4_value_leg=255;
-global.player4_hue_hand=255;global.player4_saturation_hand=255;global.player4_value_hand=255;
-*/
-#endregion /*Custom colors for character END*/
-
 #region /*Character select Accept Selection*/
 player1_accept_selection=-1;
 player2_accept_selection=-1;

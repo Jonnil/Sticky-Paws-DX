@@ -251,6 +251,7 @@ and (!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_1;
 			selected_voice_pack = global.voicepack_for_player_1;
+			selected_skin = global.skin_for_player_1;
 			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 1;
 		}
@@ -278,6 +279,7 @@ and (!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_2;
 			selected_voice_pack = global.voicepack_for_player_2;
+			selected_skin = global.skin_for_player_2;
 			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 2;
 		}
@@ -305,6 +307,7 @@ and (!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_3;
 			selected_voice_pack = global.voicepack_for_player_3;
+			selected_skin = global.skin_for_player_3;
 			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 3;
 		}
@@ -332,6 +335,7 @@ and (!instance_exists(obj_title))
 		{
 			custom_character = global.character_for_player_4;
 			selected_voice_pack = global.voicepack_for_player_4;
+			selected_skin = global.skin_for_player_4;
 			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 4;
 		}
