@@ -7786,6 +7786,7 @@ if (die = true)
 			#region /*Player 1 Die*/
 			if (player = 1)
 			{
+				obj_camera.player1 = noone;
 				obj=instance_create_depth(x,y,0,obj_player_die);
 				with(obj)
 				{
@@ -7815,6 +7816,7 @@ if (die = true)
 			#region /*Player 2 Die*/
 			if (player = 2)
 			{
+				obj_camera.player2 = noone;
 				obj=instance_create_depth(x,y,0,obj_player_die);
 				with(obj)
 				{
@@ -7844,6 +7846,7 @@ if (die = true)
 			#region /*Player 3 Die*/
 			if (player = 3)
 			{
+				obj_camera.player3 = noone;
 				obj=instance_create_depth(x,y,0,obj_player_die);
 				with(obj)
 				{
@@ -7873,6 +7876,7 @@ if (die = true)
 			#region /*Player 4 Die*/
 			if (player = 4)
 			{
+				obj_camera.player4 = noone;
 				obj=instance_create_depth(x,y,0,obj_player_die);
 				with(obj)
 				{

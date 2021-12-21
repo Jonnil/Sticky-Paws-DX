@@ -100,7 +100,10 @@ can_spawn_player1 = true;
 can_spawn_player2 = true;
 can_spawn_player3 = true;
 can_spawn_player4 = true;
-show_player1_controls_y = 0;
+show_player1_controls_y = +32;
+show_player2_controls_y = +32;
+show_player3_controls_y = +32;
+show_player4_controls_y = +32;
 
 #region /*Smooth the camera out even more*/
 view_wview_lerp = 0;
@@ -350,15 +353,15 @@ and (!instance_exists(obj_title))
 #endregion /*Spawn Players End*/
 
 /*HUD Show Controls keys that have been pressed*/
-player1_show_controls_timer=0;
-player2_show_controls_timer=0;
-player3_show_controls_timer=0;
-player4_show_controls_timer=0;
+player1_show_controls_timer = 0;
+player2_show_controls_timer = 0;
+player3_show_controls_timer = 0;
+player4_show_controls_timer = 0;
 
-player1_show_controls_alpha=0;
-player2_show_controls_alpha=0;
-player3_show_controls_alpha=0;
-player4_show_controls_alpha=0;
+player1_show_controls_alpha = 0;
+player2_show_controls_alpha = 0;
+player3_show_controls_alpha = 0;
+player4_show_controls_alpha = 0;
 
 show_sprint_toggle_for_player1=0;
 show_sprint_toggle_for_player2=0;

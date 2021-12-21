@@ -1,5 +1,8 @@
 scr_set_screen_size();
 
+//draw_text_outlined(x,y-228,"P1: "+string(player1),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x,y-128,"P2: "+string(player2),global.default_text_size,c_white,c_black,1);
+
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/
@@ -454,6 +457,7 @@ if (save_level_as_png = false)
 	and (instance_number(obj_player) = 1)
 	and (global.player_has_entered_goal = false)
 	{
+		
 		/*Tries to be a bit ahead of player*/
 		obj_camera.xx = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player).x + instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player).hspeed * 15;
 		with(instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player))
@@ -573,7 +577,7 @@ if (save_level_as_png = false)
 	
 	#region /*MULTIPLAYER CAMERA*/
 	if (asset_get_type("obj_player") == asset_object)
-	and(instance_exists(obj_player))
+	and(instance_number(obj_player) >= 2)
 	and (global.player_has_entered_goal = false)
 	{
 		
@@ -581,9 +585,9 @@ if (save_level_as_png = false)
 		
 		/*1,2,3,4*/
 		if (instance_exists(player1))
-		and(instance_exists(player2))
-		and(instance_exists(player3))
-		and(instance_exists(player4))
+		and (instance_exists(player2))
+		and (instance_exists(player3))
+		and (instance_exists(player4))
 		{
 			xx = mean(player1.x, player2.x, player3.x, player4.x);
 			yy = mean(player1.y, player2.y, player3.y, player4.y);
@@ -593,8 +597,8 @@ if (save_level_as_png = false)
 		
 		/*1,2,3*/
 		if (instance_exists(player1))
-		and(instance_exists(player2))
-		and(instance_exists(player3))
+		and (instance_exists(player2))
+		and (instance_exists(player3))
 		
 		{
 			xx = mean(player1.x, player2.x, player3.x);
@@ -605,7 +609,7 @@ if (save_level_as_png = false)
 		
 		/*1,2*/
 		if (instance_exists(player1))
-		and(instance_exists(player2))
+		and (instance_exists(player2))
 		{
 			xx = mean(player1.x, player2.x);
 			yy = mean(player1.y, player2.y);
@@ -615,7 +619,7 @@ if (save_level_as_png = false)
 		
 		/*1,3*/
 		if (instance_exists(player1))
-		and(instance_exists(player3))
+		and (instance_exists(player3))
 		{
 			xx = mean(player1.x, player3.x);
 			yy = mean(player1.y, player3.y);
@@ -625,7 +629,7 @@ if (save_level_as_png = false)
 		
 		/*1,4*/
 		if (instance_exists(player1))
-		and(instance_exists(player4))
+		and (instance_exists(player4))
 		{
 			xx = mean(player1.x, player4.x);
 			yy = mean(player1.y, player4.y);
@@ -635,7 +639,7 @@ if (save_level_as_png = false)
 		
 		/*2,3*/
 		if (instance_exists(player2))
-		and(instance_exists(player3))
+		and (instance_exists(player3))
 		{
 			xx = mean(player2.x, player3.x);
 			yy = mean(player2.y, player3.y);
@@ -645,7 +649,7 @@ if (save_level_as_png = false)
 		
 		/*2,4*/
 		if (instance_exists(player2))
-		and(instance_exists(player4))
+		and (instance_exists(player4))
 		{
 			xx = mean(player2.x, player4.x);
 			yy = mean(player2.y, player4.y);
@@ -655,7 +659,7 @@ if (save_level_as_png = false)
 		
 		/*3,4*/
 		if (instance_exists(player3))
-		and(instance_exists(player4))
+		and (instance_exists(player4))
 		{
 			xx = mean(player3.x, player4.x);
 			yy = mean(player3.y, player4.y);
@@ -697,12 +701,20 @@ if (save_level_as_png = false)
 			xx = player4.x;
 			yy = player4.y;
 		}
+		
+		else
+		
+		/*nothing*/
+		{
+			xx = x;
+			yy = y;
+		}
 		#endregion /*Just in case something goes wrong, just follow one player*/
 		
 		#endregion /*Camera should follow multiple players END*/
 		
 		#region /*Zoom out the view when players are going outside view*/
-		if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
+		/*if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
 		and(fps_real >= global.max_fps)
 		or(instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
 		and(fps_real >= global.max_fps)
@@ -716,20 +728,20 @@ if (save_level_as_png = false)
 			if (camera_get_view_height(view_camera[view_current]) < room_height)
 			and (camera_get_view_width(view_camera[view_current]) < room_width)
 			{
-				view_wview_lerp = lerp(view_wview_lerp, 10, 0.005); /*1920*/
-				view_hview_lerp = lerp(view_hview_lerp, 10, 0.005); /*1080*/
+				view_wview_lerp = lerp(view_wview_lerp, 10, 0.005);
+				view_hview_lerp = lerp(view_hview_lerp, 10, 0.005);
 			}
 			else
 			{
-				view_wview_lerp = lerp(view_wview_lerp, 0, 0.005); /*0.0005*/
-				view_hview_lerp = lerp(view_hview_lerp, 0, 0.005); /*0.0005*/
+				view_wview_lerp = lerp(view_wview_lerp, 0, 0.005);
+				view_hview_lerp = lerp(view_hview_lerp, 0, 0.005);
 			}
 		}
 		else
 		{
-			view_wview_lerp = lerp(view_wview_lerp, 0, 0.005); /*0.0005*/
-			view_hview_lerp = lerp(view_hview_lerp, 0, 0.005); /*0.0005*/
-		}
+			view_wview_lerp = lerp(view_wview_lerp, 0, 0.005);
+			view_hview_lerp = lerp(view_hview_lerp, 0, 0.005);
+		}*/
 		#endregion /*Zoom out the view when players are going outside view END*/
 		
 	}

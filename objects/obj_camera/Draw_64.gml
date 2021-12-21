@@ -495,6 +495,93 @@ and (!instance_exists(obj_pause))
 	or (global.player4_can_play = true)
 	{
 		
+		#region /*Y position of show controls for each player*/
+		if (player1_show_controls_alpha > 0)
+		and (player2_show_controls_alpha <= 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, 32, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+		}
+		else
+		if (player1_show_controls_alpha <= 0)
+		and (player2_show_controls_alpha > 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+		}
+		else
+		if (player1_show_controls_alpha <= 0)
+		and (player2_show_controls_alpha <= 0)
+		and (player3_show_controls_alpha > 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player2_controls_y = lerp(show_player2_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+		}
+		else
+		if (player1_show_controls_alpha <= 0)
+		and (player2_show_controls_alpha <= 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha > 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player2_controls_y = lerp(show_player2_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
+		}
+		else
+		if (player1_show_controls_alpha > 0)
+		and (player2_show_controls_alpha > 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+		}
+		else
+		if (player1_show_controls_alpha > 0)
+		and (player2_show_controls_alpha > 0)
+		and (player3_show_controls_alpha > 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, 116, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+		}
+		else
+		if (player1_show_controls_alpha <= 0)
+		and (player2_show_controls_alpha <= 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, +32, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, +32, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+		}
+		else
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, 158, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, 116, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, 74, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
+		}
+		
+		#endregion /*Y position of show controls for each player END*/
+		
 		#region /*MULTIPLAYER PLAYER 1*/
 		if (player1 >= 1)
 		and (asset_get_type("obj_player") == asset_object)
@@ -522,18 +609,6 @@ and (!instance_exists(obj_pause))
 				show_right_key_x = 32+150+150+150+150;
 				show_down_key_x = 32+150+150+150+150+150;
 				show_up_key_x = 32+150+150+150+150+150+150;
-			}
-			
-			if (global.player1_can_play = true)
-			and (global.player2_can_play = false)
-			and (global.player3_can_play = false)
-			and (global.player4_can_play = false)
-			{
-				show_player1_controls_y = 32;
-			}
-			else
-			{
-				show_player1_controls_y = 158;
 			}
 			
 			#region /*Show Dive Key*/
@@ -764,7 +839,7 @@ and (!instance_exists(obj_pause))
 		if (player1 <= 0)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
-		and(global.player1_can_play = true)
+		and (global.player1_can_play = true)
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_center);
@@ -774,24 +849,26 @@ and (!instance_exists(obj_pause))
 			and (can_spawn_player1 = true)
 			and (global.player1_key_jump>noone)
 			and (lives > 0)
+			and (global.player1_show_controls >= 1)
 			{
-				draw_text_outlined(30, window_get_height() - show_player1_controls_y, "Join Game", global.default_text_size, c_black, global.player1_color, 1);
+				player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.3);
+				draw_text_outlined(30, window_get_height() - show_player1_controls_y, "Join Game", global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
 				if (gamepad_is_connected(0))
 				and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, 200, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, 200, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 				}
 			}
 			#endregion /*Show Join Game Key END*/
 			
 		}
-		#endregion /*MULTIPLAYER PLAYER 1*/
+		#endregion /*MULTIPLAYER PLAYER 1 END*/
 		
 		#region /*MULTIPLAYER PLAYER 2*/
 		if (player2 >= 1)
@@ -821,8 +898,6 @@ and (!instance_exists(obj_pause))
 				player2_show_down_key_x = 32+150+150+150+150+150;
 				player2_show_up_key_x = 32+150+150+150+150+150+150;
 			}
-			
-			show_player2_controls_y = 116;
 			
 			#region /*Show Dive Key*/
 			if (gamepad_is_connected(1))
@@ -1054,23 +1129,26 @@ and (!instance_exists(obj_pause))
 			and (can_spawn_player2 = true)
 			and (global.player2_key_jump>noone)
 			and (lives > 0)
+			and (global.player2_show_controls >= 1)
 			{
-				draw_text_outlined(30, window_get_height() - show_player2_controls_y, "Join Game", global.default_text_size, c_black, global.player2_color, 1);
+				player2_show_controls_alpha = lerp(player2_show_controls_alpha, 1, 0.3);
+				draw_text_outlined(30, window_get_height() - show_player2_controls_y, "Join Game", global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
 				if (gamepad_is_connected(1))
 				and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, 200, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, 200, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 				}
 			}
 			#endregion /*Show Join Game Key END*/
 			
 		}
-		#endregion /*MULTIPLAYER PLAYER 2*/
+		#endregion /*MULTIPLAYER PLAYER 2 END*/
 		
 		#region /*MULTIPLAYER PLAYER 3*/
 		if (player3 >= 1)
@@ -1100,8 +1178,6 @@ and (!instance_exists(obj_pause))
 				player3_show_down_key_x = 32+150+150+150+150+150;
 				player3_show_up_key_x = 32+150+150+150+150+150+150;
 			}
-			
-			show_player3_controls_y = 74;
 			
 			#region /*Show Dive Key*/
 			if (gamepad_is_connected(2))
@@ -1333,17 +1409,20 @@ and (!instance_exists(obj_pause))
 			and (can_spawn_player3 = true)
 			and (global.player3_key_jump>noone)
 			and (lives > 0)
+			and (global.player3_show_controls >= 1)
 			{
-				draw_text_outlined(30, window_get_height() - show_player3_controls_y, "Join Game", global.default_text_size, c_black, global.player3_color, 1);
+				player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.3);
+				draw_text_outlined(30, window_get_height() - show_player3_controls_y, "Join Game", global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
 				if (gamepad_is_connected(2))
 				and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, 200, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, 200, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 				}
 			}
 			#endregion /*Show Join Game Key END*/
@@ -1379,8 +1458,6 @@ and (!instance_exists(obj_pause))
 				player4_show_down_key_x = 32+150+150+150+150+150;
 				player4_show_up_key_x = 32+150+150+150+150+150+150;
 			}
-			
-			show_player4_controls_y = 32;
 			
 			#region /*Show Dive Key*/
 			if (gamepad_is_connected(3))
@@ -1612,17 +1689,20 @@ and (!instance_exists(obj_pause))
 			and (can_spawn_player4 = true)
 			and (global.player4_key_jump>noone)
 			and (lives > 0)
+			and (global.player4_show_controls >= 1)
 			{
-				draw_text_outlined(30, window_get_height() - show_player4_controls_y, "Join Game", global.default_text_size, c_black, global.player4_color, 1);
+				player4_show_controls_alpha = lerp(player4_show_controls_alpha, 1, 0.3);
+				draw_text_outlined(30, window_get_height() - show_player4_controls_y, "Join Game", global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
 				if (gamepad_is_connected(3))
 				and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_xbox_buttons, 0, 200, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, 200, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, 200, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 				}
 			}
 			#endregion /*Show Join Game Key END*/

@@ -5,6 +5,8 @@
 /*Player 1 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or (keyboard_check_pressed(global.player1_key_jump)) or (keyboard_check_pressed(global.player1_key2_jump)) or (keyboard_check_pressed(vk_space)) or (keyboard_check_pressed(vk_enter)) or (keyboard_check_pressed(ord("Z")));
 /*Player 1 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or (keyboard_check_pressed(global.player1_key_dive)) or (keyboard_check_pressed(global.player1_key2_dive)) or (keyboard_check_pressed(global.player1_key_sprint)) or (keyboard_check_pressed(global.player1_key2_sprint)) or (keyboard_check_pressed(vk_backspace)) or (keyboard_check_pressed(vk_escape)) or (keyboard_check_pressed(ord("X")));
 
+alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
+
 #region /*Allow moves on world map*/
 allow_free_movement = false; /*Turn this to true to move freely on the map instead of moving on paths, should be false by default*/
 #endregion /*Allow moves on world map END*/
@@ -92,29 +94,31 @@ iris_yscale = 0;
 iris_zoom = 0;
 
 #region /*Play as custom character*/
+selected_voice_pack = global.voicepack_for_player_1;
+selected_skin = global.skin_for_player_1;
 initialize_custom_character_timer = 0;
 if (global.player1_can_play = true)
 {
-	current_character = 0;
+	player = 1;
 }
 else
 if (global.player2_can_play = true)
 {
-	current_character = 1;
+	player = 2;
 }
 else
 if (global.player3_can_play = true)
 {
-	current_character = 2;
+	player = 3;
 }
 else
 if (global.player4_can_play = true)
 {
-	current_character = 3;
+	player = 4;
 }
 else
 {
-	current_character = 0;
+	player = 1;
 }
 
 sprite_map_xorig = 0;
