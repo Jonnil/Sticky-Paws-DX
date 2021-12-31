@@ -1976,6 +1976,7 @@ and(iris_xscale<=0.001)
 	
 	#region /*Load File*/
 	if (menu = "select_character")
+	or (menu = "back_from_character_select")
 	{
 		if (title_music > noone)
 		{

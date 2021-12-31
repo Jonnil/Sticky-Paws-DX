@@ -1,5 +1,8 @@
 scr_set_arrays();
 
+player = 1;
+selected_skin = 0;
+
 background_layer_x = 0;
 background_layer_y = 0;
 

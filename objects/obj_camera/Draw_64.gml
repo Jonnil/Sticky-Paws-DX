@@ -4,7 +4,7 @@ and (!instance_exists(obj_title))
 {
 	
 	#region /*Show HUD timers*/
-
+	
 	#region /*If HUD show timer is set to always hide*/
 	if (global.hud_hide_time <= 0)
 	or (show_letterbox > 0)
@@ -16,7 +16,7 @@ and (!instance_exists(obj_title))
 		global.hud_show_score = false;
 	}
 	#endregion /*If HUD show timer is set to always hide*/
-
+	
 	#region /*If HUD show timer is set to never hide*/
 	if (global.hud_hide_time >= 10)
 	{

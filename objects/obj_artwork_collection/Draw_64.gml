@@ -240,11 +240,11 @@ and (os_type != os_android)
 	draw_set_valign(fa_center);
 	if (show_comments = true)
 	{
-		draw_text_outlined(window_get_width()-32, window_get_height()-32, "Hide Comments:          Back:     ", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(window_get_width()-32, window_get_height()-32, "Hide Text:          Back:     ", global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	{
-		draw_text_outlined(window_get_width()-32, window_get_height()-32, "Show Comments:          Back:     ", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(window_get_width()-32, window_get_height()-32, "Show Text:          Back:     ", global.default_text_size, c_black, c_white, 1);
 	}
 	
 	#region /*Draw Show Comments Key*/

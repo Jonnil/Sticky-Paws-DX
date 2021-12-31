@@ -229,6 +229,11 @@ function scr_select_custom_level_menu()
 				menu = "level_editor_play";
 			}
 			else
+			if (menu = "level_editor_selected_back")
+			{
+				menu = "level_editor_delete";
+			}
+			else
 			if (menu = "level_editor_create_from_scratch")
 			{
 				menu = "level_editor_create_from_back";
@@ -274,6 +279,11 @@ function scr_select_custom_level_menu()
 			if (menu = "level_editor_make")
 			{
 				menu = "level_editor_delete";
+			}
+			else
+			if (menu = "level_editor_selected_back")
+			{
+				menu = "level_editor_play";
 			}
 			else
 			if (menu = "level_editor_create_from_scratch")
@@ -342,6 +352,23 @@ function scr_select_custom_level_menu()
 			}
 		}
 		#endregion /*Pressing the Create from Back button END*/
+		
+		#region /*Pressing the Back button when selecting level*/
+		if (menu = "level_editor_selected_back")
+		and (can_input_level_name = false)
+		and (menu_delay = 0)
+		{
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+616-3, 394*(global.select_level_index-C*R)+110-3+370, 226*(C-scroll)+616-3+42))
+			and (mouse_check_button_pressed(mb_left))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			or (key_a_pressed)
+			{
+				menu_delay=3;
+				open_sub_menu = false;
+				menu = "level_editor_play";
+			}
+		}
+		#endregion /*Pressing the Back button when selecting level END*/
 		
 		#region /*Pressing the Play button*/
 		if (menu = "level_editor_play")
@@ -458,11 +485,13 @@ function scr_select_custom_level_menu()
 			if (menu = "level_editor_play")
 			or (menu = "level_editor_make")
 			or (menu = "level_editor_delete")
+			or (menu = "level_editor_selected_back")
 			{
-				draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*(C-scroll)+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*(C-scroll)+408+216+3, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*(C-scroll)+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*(C-scroll)+408+216+47+3, c_white, c_white, c_white, c_white, false);
 				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+475-3, "Play", "level_editor_play", "level_editor_play");
 				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+522-3, "Make", "level_editor_make", "level_editor_make"); /*+47 on y*/
 				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+569-3, "Delete", "level_editor_delete", "level_editor_delete_no");
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+616-3, "Back", "level_editor_selected_back", "level_editor_selected_back");
 			}
 			else
 			if (menu = "level_editor_create_from_scratch")
