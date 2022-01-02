@@ -23,14 +23,18 @@ function scr_select_custom_level_menu()
 			}
 			else
 			if (global.select_level_index-R > -1)
-			{	
+			{
+				global.select_level_index -= clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
 				menu_delay = 3;
 				if (mouse_wheel_up())
-				{scroll_to = scroll-1}
+				{
+					scroll_to = scroll-1;
+				}
 				else
-				{scroll_to = floor(global.select_level_index/R);}
+				{
+					scroll_to = floor(global.select_level_index/R);
+				}
 				lerp_on = true;
-				global.select_level_index -= clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
 			}
 		}
 	}
@@ -57,13 +61,17 @@ function scr_select_custom_level_menu()
 			else
 			if (global.select_level_index+R < ds_list_size(global.thumbnail_sprite))
 			{
+				global.select_level_index += clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
 				menu_delay = 3;
 				if (mouse_wheel_down())
-				{scroll_to = scroll+1}
+				{
+					scroll_to = scroll+1
+				}
 				else
-				{scroll_to = floor(global.select_level_index/R);}
+				{
+					scroll_to = floor(global.select_level_index/R);
+				}
 				lerp_on = true;
-				global.select_level_index += clamp(R, 0 , ds_list_size(global.all_loaded_custom_levels-2/R));
 			}
 		}
 	}
@@ -132,6 +140,8 @@ function scr_select_custom_level_menu()
 			#region /*(C-scroll)reate New Level*/
 			if (global.select_level_index = 0)
 			{
+				scroll_to = floor(global.select_level_index/R);
+				lerp_on = true;
 				menu = "level_editor_create_from_scratch";
 				menu_delay = 3;
 				open_sub_menu = true;
@@ -143,6 +153,8 @@ function scr_select_custom_level_menu()
 			#region /*Open sub menu for levels*/
 			if (global.select_level_index >= 1)
 			{
+				scroll_to = floor(global.select_level_index/R);
+				lerp_on = true;
 				menu = "level_editor_play";
 				menu_delay=3;
 				open_sub_menu = true;

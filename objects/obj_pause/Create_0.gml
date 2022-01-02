@@ -1,6 +1,4 @@
 depth = -20;
-global.slider_x_offset = 0;
-global.slider_width_offset = 25;
 
 #region /*Mouse x and mouse y initializing*/
 mx = mouse_x;

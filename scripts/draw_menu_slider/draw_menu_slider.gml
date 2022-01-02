@@ -20,6 +20,7 @@ function draw_menu_slider()
 	var variable_to_change = argument4;
 	var bar_color = argument5;
 	
+	length_variable = 320;
 	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position-16, x_position+320, y_position+16))
@@ -42,25 +43,25 @@ function draw_menu_slider()
 		{
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position-32,y_position-32,x_position+352,y_position+32)) /*Within the length of the slider*/
 			{
-				if (menu = "music_volume"){global.music_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
-				if (menu = "sfx_volume"){global.sfx_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
-				if (menu = "ambient_volume"){global.ambient_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
-				if (menu = "voices_volume"){global.voices_volume = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);}else
+				if (menu = "music_volume"){global.music_volume = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1);}else
+				if (menu = "sfx_volume"){global.sfx_volume = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1);}else
+				if (menu = "ambient_volume"){global.ambient_volume = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1);}else
+				if (menu = "voices_volume"){global.voices_volume = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1);}else
 				
 				if (menu = "background_brightness_gameplay")
 				{
-					global.background_brightness_gameplay = clamp((mouse_x-x_position+global.slider_x_offset-148)/(296+global.slider_width_offset), -1, 1);
+					global.background_brightness_gameplay = clamp((window_mouse_get_x()-x_position-148)/(length_variable), -1, 1);
 					variable_to_change = (global.background_brightness_gameplay+1)*160;
 				}
 				else
 				if (menu = "background_brightness_menu")
 				{
-					global.background_brightness_menu = clamp((mouse_x-x_position+global.slider_x_offset-148)/(296+global.slider_width_offset), -1, 1);
+					global.background_brightness_menu = clamp((window_mouse_get_x()-x_position-148)/(length_variable), -1, 1);
 					variable_to_change = (global.background_brightness_menu+1)*160;
 				}
 				else
 				{
-					variable_to_change = clamp((mouse_x-x_position+global.slider_x_offset)/(296+global.slider_width_offset), 0, 1);
+					variable_to_change = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1);
 				}
 			}
 		}
