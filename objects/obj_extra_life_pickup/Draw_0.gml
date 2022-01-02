@@ -20,46 +20,39 @@ if (vspeed>=0)
 }
 #endregion /*When falling, it's not bouncing up anymore END*/
 
+if (instance_exists(obj_camera))
+and (obj_camera.sprite_lives_icon > noone)
+{
+	sprite_index = obj_camera.sprite_lives_icon;
+}
+
+text_alpha = lerp(text_alpha, Wave(0,1,3,0), 0.1);
+
 #region /*Color the extra live pickup differently if it grants you different amounts of lives*/
 if (number_of_extra_lives = 3)
 {
-	if (asset_get_type("spr_3up") == asset_sprite)
-	{
-		draw_sprite_ext(spr_3up,image_index,x,y,1,1,0,c_white,1);
-	}
-	else
-	if (sprite_index>0)
+	if (sprite_index > 0)
 	{
 		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_blue,1);
 	}
-	draw_text_outlined(x,y,"3-up",global.default_text_size/2,c_white,c_black,1);
+	draw_text_outlined(x, y, "3-up", global.default_text_size/2, c_white, c_black, text_alpha);
 }
 else
 if (number_of_extra_lives = 2)
 {
-	if (asset_get_type("spr_2up") == asset_sprite)
-	{
-		draw_sprite_ext(spr_2up,image_index,x,y,1,1,0,c_white,1);
-	}
-	else
-	if (sprite_index>0)
+	if (sprite_index > 0)
 	{
 		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_lime,1);
 	}
-	draw_text_outlined(x,y,"2-up",global.default_text_size/2,c_white,c_black,1);
+	draw_text_outlined(x, y, "2-up", global.default_text_size/2, c_white, c_black, text_alpha);
 }
 else
 {
-	if (asset_get_type("spr_1up") == asset_sprite)
+	if (sprite_index > 0)
 	{
-		draw_sprite_ext(spr_1up,image_index,x,y,1,1,0,c_white,1);
+		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_white,1);
 	}
-	else
-	if (sprite_index>0)
-	{
-		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_red,1);
-	}
-	draw_text_outlined(x,y,"1-up",global.default_text_size/2,c_white,c_black,1);
+	draw_text_outlined(x, y, "1-up", global.default_text_size/2, c_white, c_black, text_alpha);
 }
 #endregion /*Color the extra live pickup differently if it grants you different amounts of lives END*/
 

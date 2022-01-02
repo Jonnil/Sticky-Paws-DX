@@ -234,51 +234,26 @@ and (!instance_exists(obj_title))
 		#region /*Lives*/
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		if (asset_get_type("obj_player") == asset_object)
-		and (instance_exists(obj_player))
-		and (sprite_lives_icon > noone)
+		if (sprite_lives_icon > noone)
 		{
-			if (asset_get_type("spr_1up") == asset_sprite)
-			and (sprite_lives_icon = spr_1up)
-			{
-				draw_sprite_ext(spr_1up, 0, 32, hud_show_lives, 0.75, 0.75, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_lives, 1, 1, 0, c_white, 1);
-			}
-			if (lives < 0)
-			{
-				draw_text_outlined(64, hud_show_lives, "0", global.default_text_size, c_black, c_white, 1);
-			}
-			else
-			{
-				draw_text_outlined(64, hud_show_lives, lives, global.default_text_size, c_black, c_white, 1);
-			}
+			draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_lives, 1, 1, 0, c_white, 1);
+		}
+		if (lives < 0)
+		{
+			draw_text_outlined(64, hud_show_lives, "0", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			if (asset_get_type("spr_1up") == asset_sprite)
-			{
-				draw_sprite_ext(spr_1up, 0, 32, hud_show_lives, 0.75, 0.75, 0, c_white, 1);
-			}
-			if (lives < 0)
-			{
-				draw_text_outlined(64, hud_show_lives, "0", global.default_text_size, c_black, c_white, 1);
-			}
-			else
-			{
-				draw_text_outlined(64, hud_show_lives, lives, global.default_text_size, c_black, c_white, 1);
-			}
+			draw_text_outlined(64, hud_show_lives, lives, global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Lives END*/
 		
 		#region /*Death Counter*/
 		if (global.show_deaths_counter = true)
 		{
-			if (asset_get_type("spr_1up") == asset_sprite)
+			if (sprite_lives_icon > noone)
 			{
-				draw_sprite_ext(spr_1up, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
+				draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
 			}
 			draw_line_width_color(32-16, hud_show_deaths-16, 32+16, hud_show_deaths+16, 3, c_red, c_red);
 			draw_line_width_color(32-16, hud_show_deaths+16, 32+16, hud_show_deaths-16, 3, c_red, c_red);

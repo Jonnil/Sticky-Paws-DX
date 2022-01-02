@@ -15,64 +15,45 @@ delay = 0;
 mouse_x_position = window_mouse_get_x(); /*Mouse x initializing*/
 mouse_y_position = window_mouse_get_y(); /*Mouse y initializing*/
 
-#region /*Lives Icon*/
-if (file_exists(working_directory + "/custom_characters/" + string(global.character_for_player_1)+"/data/character_config.ini"))
+if (global.player1_can_play = true)
 {
-	ini_open(working_directory + "/custom_characters/" + string(global.character_for_player_1)+"/data/character_config.ini");
-	
-	#region /*Sprite lives icon x and y origin points*/
-	#region /*Sprite lives icon x origin point*/
-	if (ini_key_exists("sprite origin points", "lives_icon_xorig"))
-	{
-		lives_icon_xorig = ini_read_real("sprite origin points", "lives_icon_xorig", 0);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu = "level_editor")
-		{
-			ini_write_real("sprite origin points", "lives_icon_xorig", 0);
-		}
-		lives_icon_xorig = 0;
-	}
-	#endregion /*Sprite lives icon x origin point END*/
-
-	#region /*Sprite lives icon y origin point*/
-	if (ini_key_exists("sprite origin points", "lives_icon_yorig"))
-	{
-		lives_icon_yorig = ini_read_real("sprite origin points", "lives_icon_yorig", 0);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu = "level_editor")
-		{
-			ini_write_real("sprite origin points", "lives_icon_yorig", 0);
-		}
-		lives_icon_yorig = 0;
-	}
-	#endregion /*Sprite lives icon y origin point END*/
-	#endregion /*Sprite lives icon x and y origin points END*/
-	
-	ini_close();
-}
-
-if (file_exists(working_directory + "/custom_characters/" + string(global.character_for_player_1)+"/sprites/lives_icon.png"))
-{
-	sprite_lives_icon = sprite_add(working_directory + "/custom_characters/" + string(global.character_for_player_1)+"/sprites/lives_icon.png", 0, false, false, lives_icon_xorig, lives_icon_yorig);
+	camera_player = 0;
+	camera_selected_skin = global.skin_for_player_1;
 }
 else
+if (global.player2_can_play = true)
+{
+	camera_player = 1;
+	camera_selected_skin = global.skin_for_player_2;
+}
+else
+if (global.player3_can_play = true)
+{
+	camera_player = 2;
+	camera_selected_skin = global.skin_for_player_3;
+}
+else
+if (global.player4_can_play = true)
+{
+	camera_player = 3;
+	camera_selected_skin = global.skin_for_player_4;
+}
+else
+{
+	camera_player = 0;
+	camera_selected_skin = global.skin_for_player_1;
+}
+
 if (asset_get_type("spr_1up") == asset_sprite)
 {
 	sprite_lives_icon = spr_1up;
 }
 else
-if (asset_get_type("spr_lives_icon") == asset_sprite)
-{
-	sprite_lives_icon = spr_lives_icon;
-}
-else
 {
 	sprite_lives_icon = noone;
 }
+alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
+
 #endregion /*Lives Icon END*/
 
 #region /*Create Foreground and Background Brightness Layer*/

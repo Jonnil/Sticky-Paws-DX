@@ -1,8 +1,9 @@
 /// @desc initialize_custom_character_sprite(sprite_name,sprite_variable,sprite_xorig,sprite_yorig);
-/// @arg argument0
-/// @arg argument1
-/// @arg argument2
-/// @arg argument3
+/// @description initialize_custom_character_sprite(sprite_name,sprite_variable,sprite_xorig,sprite_yorig);
+/// @arg sprite_name
+/// @arg sprite_variable
+/// @arg sprite_xorig
+/// @arg sprite_yorig
 
 function scr_initialize_custom_character_sprite(argument0, argument1, argument2, argument3)
 {

@@ -1,4 +1,5 @@
-/// @desc initialize_custom_character_sprite(sprite_name,sprite_variable,sprite_xorig,sprite_yorig,player,selected_skin);
+/// @desc initialize_custom_character_select_sprite(sprite_name,sprite_variable,sprite_xorig,sprite_yorig,player,selected_skin);
+/// @description initialize_custom_character_select_sprite(sprite_name,sprite_variable,sprite_xorig,sprite_yorig,player,selected_skin);
 /// @arg sprite_name
 /// @arg sprite_variable
 /// @arg sprite_xorig

@@ -94,31 +94,39 @@ iris_yscale = 0;
 iris_zoom = 0;
 
 #region /*Play as custom character*/
-selected_voice_pack = global.voicepack_for_player_1;
-selected_skin = global.skin_for_player_1;
 initialize_custom_character_timer = 0;
 if (global.player1_can_play = true)
 {
 	player = 1;
+	selected_voice_pack = global.voicepack_for_player_1;
+	selected_skin = global.skin_for_player_1;
 }
 else
 if (global.player2_can_play = true)
 {
 	player = 2;
+	selected_voice_pack = global.voicepack_for_player_2;
+	selected_skin = global.skin_for_player_2;
 }
 else
 if (global.player3_can_play = true)
 {
 	player = 3;
+	selected_voice_pack = global.voicepack_for_player_3;
+	selected_skin = global.skin_for_player_3;
 }
 else
 if (global.player4_can_play = true)
 {
 	player = 4;
+	selected_voice_pack = global.voicepack_for_player_4;
+	selected_skin = global.skin_for_player_4;
 }
 else
 {
 	player = 1;
+	selected_voice_pack = global.voicepack_for_player_1;
+	selected_skin = global.skin_for_player_1;
 }
 
 sprite_map_xorig = 0;
@@ -128,7 +136,7 @@ sprite_map_enter_level_yorig = 0;
 sprite_stand_xorig = 0;
 sprite_stand_yorig = 0;
 
-index=0
+index = 0;
 sprite_map = noone;
 sprite_map_enter_level = noone;
 sprite_stand = noone;
