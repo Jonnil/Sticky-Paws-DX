@@ -225,6 +225,7 @@
     {"id":{"name":"scr_savelevel","path":"scripts/scr_savelevel/scr_savelevel.yy",},"order":3,},
     {"id":{"name":"spr_sign_reset","path":"sprites/spr_sign_reset/spr_sign_reset.yy",},"order":82,},
     {"id":{"name":"spr_thumbnail_missing","path":"sprites/spr_thumbnail_missing/spr_thumbnail_missing.yy",},"order":19,},
+    {"id":{"name":"scr_select_official_level_menu","path":"scripts/scr_select_official_level_menu/scr_select_official_level_menu.yy",},"order":7,},
     {"id":{"name":"spr_artwork_collection","path":"sprites/spr_artwork_collection/spr_artwork_collection.yy",},"order":141,},
     {"id":{"name":"spr_spring_strong","path":"sprites/spr_spring_strong/spr_spring_strong.yy",},"order":115,},
     {"id":{"name":"obj_background_brightness_gameplay","path":"objects/obj_background_brightness_gameplay/obj_background_brightness_gameplay.yy",},"order":22,},

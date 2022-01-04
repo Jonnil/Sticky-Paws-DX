@@ -1,3 +1,5 @@
+draw_text_outlined(200, 200, string(menu), global.default_text_size, c_black, c_white, 1)
+
 #region /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus*/
 
 #region /*Player 1 reset keys to noone if they happen to be 0*/
@@ -1073,23 +1075,42 @@ or (menu = "4player")
 }
 #endregion /*Select how many players (1-4 players) END*/
 
+#region /*Loading Screen*/
 if (menu = "load_custom_level")
+or (menu = "load_characters")
+or (menu = "load_official_level_template")
 {
 	loading_spinning_angle -= 10;
 	draw_sprite_ext(spr_loading, 0, window_get_width()/2, window_get_height()/2, 1, 1, loading_spinning_angle, c_white, 1);
 	draw_text_outlined(window_get_width()/2, window_get_height()/2+64, "Loading", global.default_text_size, c_white, c_black, 1);
 }
-
-if (menu = "load_characters")
-{
-	loading_spinning_angle -= 10;
-	draw_sprite_ext(spr_loading, 0, window_get_width()/2, window_get_height()/2, 1, 1, loading_spinning_angle, c_white, 1);
-	draw_text_outlined(window_get_width()/2, window_get_height()/2+64, "Loading", global.default_text_size, c_white, c_black, 1);
-}
+#endregion /*Loading Screen END*/
 
 #region /*Select Custom Level Menu*/
+if (level_editor_template_select = true)
+{
+	select_custom_level_menu_open = false;
+	scr_select_official_level_menu();
+	scr_custom_level_select_with_the_mouse()
+	R = 4;
+	C = clamp(floor(global.select_level_index/R), 0, floor(ds_list_size(global.all_loaded_main_levels)))
+	if (global.controls_used_for_menu_navigation = "mouse")
+	and (open_sub_menu = false)
+	{
+		for (i = 0; i < ds_list_size(global.thumbnail_sprite); i += 1)
+		{
+			C = floor(i/R)
+			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),394*(i-C*R)+100-3, 226*(C-scroll)+250-3, 394*(i-C*R)+100+384+3, 226*(C-scroll)+250+216+3))
+			{
+				global.select_level_index = i;
+			}
+		}
+	}
+}
+else
 if (select_custom_level_menu_open = true)
 {
+	level_editor_template_select = false;
 	scr_select_custom_level_menu();
 	scr_custom_level_select_with_the_mouse()
 }

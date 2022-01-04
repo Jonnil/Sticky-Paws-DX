@@ -17,6 +17,7 @@ custom_level_select_blinking_old = 0;
 scroll = 0;
 scroll_to = 0;
 lerp_on = false;
+level_editor_template_select = false;
 
 /*Narrator Voice variable handeling*/
 narrator_name=noone;
