@@ -4377,7 +4377,7 @@ and(global.pause = false)
 						global.pause=true;
 						pause_hspeed = hspeed;
 						pause_vspeed = vspeed;
-						instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+						instance_create_depth(x, y, 0, obj_pause); /*This pause objects creates, that handles the pause screen*/
 					}
 				}
 			}
@@ -4458,7 +4458,7 @@ and(global.pause = false)
 						global.pause=true;
 						pause_hspeed = hspeed;
 						pause_vspeed = vspeed;
-						instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+						instance_create_depth(x, y, 0, obj_pause); /*This pause objects creates, that handles the pause screen*/
 					}
 				}
 			}
@@ -4539,7 +4539,7 @@ and(global.pause = false)
 						global.pause=true;
 						pause_hspeed = hspeed;
 						pause_vspeed = vspeed;
-						instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+						instance_create_depth(x, y, 0, obj_pause); /*This pause objects creates, that handles the pause screen*/
 					}
 				}
 			}
@@ -4620,7 +4620,7 @@ and(global.pause = false)
 						global.pause=true;
 						pause_hspeed = hspeed;
 						pause_vspeed = vspeed;
-						instance_create_depth(x,y,0,obj_pause); /*This pause objects creates, that handles the pause screen*/
+						instance_create_depth(x, y, 0, obj_pause); /*This pause objects creates, that handles the pause screen*/
 					}
 				}
 			}
@@ -5499,7 +5499,7 @@ and (global.pause=false)
 				or (gamepad_axis_value(0,gp_axisrv)>+0.5)
 				{
 					can_tongue=false;
-					tongue_obj=instance_create_depth(x,y,0,obj_tongue);
+					tongue_obj=instance_create_depth(x, y, 0, obj_tongue);
 					if (mouse_check_button_pressed(mb_left))
 					{
 						with(tongue_obj)
@@ -6313,7 +6313,7 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 				effect_create_above(ef_smoke,x,bbox_top+8,0,c_white);
 				if (asset_get_type("obj_wall_jumpspark")==asset_object)
 				{
-					instance_create_depth(x,y,0,obj_wall_jumpspark);
+					instance_create_depth(x, y, 0, obj_wall_jumpspark);
 				}
 			}
 		}
@@ -6355,7 +6355,7 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 			crouch=false;
 			if (asset_get_type("obj_speedline")==asset_object)
 			{
-				instance_create_depth(x,y,0,obj_speedline);
+				instance_create_depth(x, y, 0, obj_speedline);
 			}
 		}
 	}
@@ -6482,7 +6482,7 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 			effect_create_above(ef_smoke,x,bbox_top+8,0,c_white);
 			if (asset_get_type("obj_wall_jumpspark")==asset_object)
 			{
-				instance_create_depth(x,y,0,obj_wall_jumpspark);
+				instance_create_depth(x, y, 0, obj_wall_jumpspark);
 			}
 		}
 	}
@@ -6570,7 +6570,7 @@ and (takendamage <= takendamage_freezetime)
 		{
 			if (asset_get_type("obj_speedline")==asset_object)
 			{
-				instance_create_depth(x,y,0,obj_speedline);
+				instance_create_depth(x, y, 0, obj_speedline);
 			}
 			if (vspeed>8)
 			{
@@ -7335,7 +7335,6 @@ if (asset_get_type("obj_water")==asset_object)
 			else
 			if (key_down)
 			and (!key_up)
-			and (crouch = false)
 			{
 				if (vspeed>5)
 				{
@@ -7395,7 +7394,7 @@ if (asset_get_type("obj_water")==asset_object)
 				}
 				if (asset_get_type("obj_bubble")==asset_object)
 				{
-					obj=instance_create_depth(x,y,0,obj_bubble);
+					obj=instance_create_depth(x, y, 0, obj_bubble);
 					with(obj)
 					{
 						direction=random(360);
@@ -7410,7 +7409,7 @@ if (asset_get_type("obj_water")==asset_object)
 		{
 			if (floor(random(30-1))=0)
 			{
-				obj=instance_create_depth(x,y,0,obj_bubble);
+				obj=instance_create_depth(x, y, 0, obj_bubble);
 				with(obj)
 				{
 					direction=random(360);
@@ -7787,7 +7786,7 @@ if (die = true)
 			if (player = 1)
 			{
 				obj_camera.player1 = noone;
-				obj=instance_create_depth(x,y,0,obj_player_die);
+				obj=instance_create_depth(x, y, 0, obj_player_die);
 				with(obj)
 				{
 					player = 1;
@@ -7817,7 +7816,7 @@ if (die = true)
 			if (player = 2)
 			{
 				obj_camera.player2 = noone;
-				obj=instance_create_depth(x,y,0,obj_player_die);
+				obj=instance_create_depth(x, y, 0, obj_player_die);
 				with(obj)
 				{
 					player = 2;
@@ -7847,7 +7846,7 @@ if (die = true)
 			if (player = 3)
 			{
 				obj_camera.player3 = noone;
-				obj=instance_create_depth(x,y,0,obj_player_die);
+				obj=instance_create_depth(x, y, 0, obj_player_die);
 				with(obj)
 				{
 					player = 3;
@@ -7877,7 +7876,7 @@ if (die = true)
 			if (player = 4)
 			{
 				obj_camera.player4 = noone;
-				obj=instance_create_depth(x,y,0,obj_player_die);
+				obj=instance_create_depth(x, y, 0, obj_player_die);
 				with(obj)
 				{
 					player = 4;
@@ -7976,7 +7975,7 @@ if (asset_get_type("obj_invincibility_powerup")==asset_object)
 		}
 		if (asset_get_type("obj_scoreup")==asset_object)
 		{
-			obj=instance_create_depth(x,y,0,obj_scoreup);
+			obj=instance_create_depth(x, y, 0, obj_scoreup);
 			with(obj)
 			{
 				scoreup=1000;
@@ -8513,7 +8512,7 @@ and (in_water = false)
 		{
 			if (asset_get_type("obj_blockbreak")==asset_object)
 			{
-				instance_create_depth(x,y,0,obj_blockbreak);
+				instance_create_depth(x, y, 0, obj_blockbreak);
 				instance_create_depth(x,y+32,0,obj_blockbreak);
 				instance_create_depth(x,y+64,0,obj_blockbreak);
 			}
@@ -8524,7 +8523,7 @@ and (in_water = false)
 		{
 			if (asset_get_type("obj_blockbreak")==asset_object)
 			{
-				instance_create_depth(x,y,0,obj_blockbreak);
+				instance_create_depth(x, y, 0, obj_blockbreak);
 				instance_create_depth(x,y-32,0,obj_blockbreak);
 				instance_create_depth(x,y-64,0,obj_blockbreak);
 			}

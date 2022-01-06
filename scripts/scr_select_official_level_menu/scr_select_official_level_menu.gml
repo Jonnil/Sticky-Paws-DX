@@ -223,8 +223,264 @@ function scr_select_official_level_menu()
 	}
 	#endregion /*Back Button END*/
 	
-	#region /*Enter Custom Level*/
-	if (iris_xscale<=0.001)
+	#region /*Load Level Name*/
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
+	{
+		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini");
+		if (ini_key_exists("info", "level_name"))
+		{
+			level_name = ini_read_string("info", "level_name", 0);
+		}
+		else
+		{
+			level_name="";
+		}
+		ini_close();
+	}
+	else
+	{
+		level_name = "";
+	}
+	#endregion /*Load Level Name END*/
+	
+	#region /*Input Level Name*/
+	
+	draw_set_halign(fa_middle);
+	draw_set_valign(fa_middle);
+	
+	#region /*Opaque transparent black box*/
+	if (can_input_level_name = true)
+	{
+		draw_set_alpha(0.5);
+		draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+	}
+	#endregion /*Opaque transparent black box END*/
+	
+	#region /*Box where name is written on*/
+	if (can_input_level_name = true)
+	{
+		draw_set_alpha(1);
+		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3-150, 226*(C-scroll)+569-3-16, 394*(global.select_level_index-C*R)+300-3+150, 226*(C-scroll)+569-3+16, c_white, c_white, c_white, c_white, false);
+	
+		draw_set_alpha(1);
+		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3-150, 226*(C-scroll)+569-3-16, 394*(global.select_level_index-C*R)+300-3+150, 226*(C-scroll)+569-3+16, c_black, c_black, c_black, c_black, true);
+	}
+	#endregion /*Box where name is written on END*/
+	
+	#region /*Inputed Name Text*/
+	if (can_input_level_name = true)
+	{
+		if (name_enter_blink<1)
+		{
+			draw_text_outlined(394*(global.select_level_index-C*R)+300, 226*(C-scroll)+569-3, string(global.level_name)+"|", global.default_text_size, c_black, c_white, 1);
+		}
+		else
+		{
+			draw_text_outlined(394*(global.select_level_index-C*R)+300, 226*(C-scroll)+569-3, string(global.level_name), global.default_text_size, c_black, c_white, 1);
+		}
+	}
+	#endregion /*Inputed Name Text END*/
+	
+	#region /*INPUT LEVEL NAME NOW*/
+	if (can_input_level_name = true)
+	{
+		draw_set_alpha(1);
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_center);
+		
+		var _key = keyboard_lastchar;
+		if (ord(_key) != ord("\\"))
+		and (ord(_key) != ord("/"))
+		and (ord(_key) != ord(":"))
+		and (ord(_key) != ord("*"))
+		and (ord(_key) != ord("?"))
+		and (ord(_key) != ord("\""))
+		and (ord(_key) != ord("<"))
+		and (ord(_key) != ord(">"))
+		and (ord(_key) != ord("|"))
+		{
+			global.level_name = keyboard_string;
+		}
+		else
+		{
+			keyboard_string = string_copy(global.level_name, 1, 120);
+		}
+		
+		#region /*Limit Name Input Length for Level*/
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		
+		if (string_length(global.level_name) >= 120)
+		{
+			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, "120/120", global.default_text_size, c_black, c_white, 1);
+		}
+		else
+		{
+			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, string(string_length(global.level_name)) + "/120", global.default_text_size, c_black, c_ltgray, 1);
+		}
+		
+		if (string_length(global.level_name) > 120)
+		{
+			global.level_name = string_copy(global.level_name, 1, 120);
+		}
+		#endregion /*Limit Name Input Length for Name END*/
+		
+	}
+	#endregion /*INPUT LEVEL NAME NOW END*/
+	
+	#region /*Name Enter Blinking*/
+	name_enter_blink+=0.05;
+	if (name_enter_blink>1.5)
+	{
+		name_enter_blink=0;
+	}
+	#endregion /*Name Enter Blinking END*/
+	
+	#region /*Press Enter to make new level from template*/
+	if (keyboard_check_pressed(vk_enter))
+	and (can_input_level_name = true)
+	and (menu_delay = 0)
+	and (keyboard_string != "")
+	{
+		global.actually_play_edited_level = false;
+		global.play_edited_level = false;
+		global.create_level_from_template = true;
+		can_navigate=false;
+		menu_delay=999;
+		
+		#region /*Create directories*/
+		
+		#region /*Create directory for saving custom levels*/
+		if (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)))
+		{
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name));
+		}
+		#endregion /*Create directory for saving custom levels END*/
+		
+		#region /*Create directory for backgrouns in custom levels*/
+		if (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)+"/backgrounds"))
+		{
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name)+"/backgrounds");
+		}
+		#endregion /*Create directory for backgrounds in custom levels END*/
+		
+		#region /*Create directory for data in custom levels*/
+		if (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)+"/data"))
+		{
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name)+"/data");
+		}
+		#endregion /*Create directory for data in custom levels END*/
+		
+		#region /*Create directory for sounds in custom levels*/
+		if (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds"))
+		{
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds");
+		}
+		#endregion /*Create directory for sounds in custom levels END*/
+		
+		#region /*Create directory for melody in custom levels*/
+		if (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds/melody"))
+		{
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds/melody");
+		}
+		#endregion /*Create directory for melody in custom levels END*/
+		
+		#region /*Create directory for music in custom levels*/
+		if (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds/music"))
+		{
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds/music");
+		}
+		#endregion /*Create directory for music in custom levels END*/
+		
+		#region /*Create directory for sound effects in custom levels*/
+		if (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds/sound_effect"))
+		{
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds/sound_effect");
+		}
+		#endregion /*Create directory for sound effects in custom levels END*/
+		
+		#region /*Create directory for ambience in custom levels*/
+		if (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds/ambience"))
+		{
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name)+"/sounds/ambience");
+		}
+		#endregion /*Create directory for ambience in custom levels END*/
+		
+		#region /*Create directory for tilesets in custom levels*/
+		if (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)+"/tilesets"))
+		{
+			directory_create(working_directory+"/custom_levels/" + string(global.level_name)+"/tilesets");
+		}
+		#endregion /*Create directory for tilesets in custom levels END*/
+		
+		#endregion /*Create directories END*/
+		
+		#region /*Copy files from official levels to level editor*/
+		
+		#region /*Copy level_information.ini from offical levels to level editor*/
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
+		{
+			file_copy(
+			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini",
+			working_directory+"/custom_levels/" + string(global.level_name)+"/data/level_information.ini"); /*Copy file to the new folder that you just named*/
+		}
+		#endregion /*Copy level_information.ini from offical levels to level editor END*/
+		
+		#region /*Copy object_placement.txt from offical levels to level editor*/
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/object_placement.txt"))
+		{
+			file_copy(
+			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/object_placement.txt",
+			working_directory+"/custom_levels/" + string(global.level_name)+"/data/object_placement.txt"); /*Copy file to the new folder that you just named*/
+		}
+		#endregion /*Copy object_placement.txt from offical levels to level editor END*/
+		
+		#region /*Copy object_rotation_placement.txt from offical levels to level editor*/
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/object_rotation_placement.txt"))
+		{
+			file_copy(
+			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/object_rotation_placement.txt",
+			working_directory+"/custom_levels/" + string(global.level_name)+"/data/object_rotation_placement.txt"); /*Copy file to the new folder that you just named*/
+		}
+		#endregion /*Copy object_rotation_placement.txt from offical levels to level editor END*/
+		
+		#endregion /*Copy files from official levels to level editor END*/
+		
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				iris_zoom=0;
+			}
+		}
+		can_input_level_name = false;
+	}
+	#endregion /*Press Enter to make new level from template END*/
+	
+	#region /*Press Escape to back out from level from scratch menu*/
+	if (keyboard_check_pressed(vk_escape))
+	and (can_input_level_name = true)
+	and (menu_delay = 0)
+	{
+		menu_delay = 3;
+		if (asset_get_type("obj_camera")==asset_object)
+		and(instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				iris_zoom=0;
+			}
+		}
+		can_input_level_name = false;
+	}
+	#endregion /*Press Escape to back out from level from scratch menu END*/
+	
+	#endregion /*Input Level Name END*/
+	
+	#region /*Enter Template Level*/
+	if (iris_xscale <= 0.001)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
 		if (asset_get_type("snd_music_titlescreen")==asset_sound)
@@ -454,163 +710,7 @@ function scr_select_official_level_menu()
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 	}
-	#endregion /*Enter Custom Level END*/
-	
-	#region /*Load Level Name*/
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
-	{
-		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini");
-		if (ini_key_exists("info", "level_name"))
-		{
-			level_name = ini_read_string("info", "level_name", 0);
-		}
-		else
-		{
-			level_name="";
-		}
-		ini_close();
-	}
-	else
-	{
-		level_name = "";
-	}
-	#endregion /*Load Level Name END*/
-	
-	#region /*Input Level Name*/
-	
-	draw_set_halign(fa_middle);
-	draw_set_valign(fa_middle);
-	
-	#region /*Opaque transparent black box*/
-	if (can_input_level_name = true)
-	{
-		draw_set_alpha(0.5);
-		draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-	}
-	#endregion /*Opaque transparent black box END*/
-	
-	#region /*Box where name is written on*/
-	if (can_input_level_name = true)
-	{
-		draw_set_alpha(1);
-		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3-150, 226*(C-scroll)+569-3-16, 394*(global.select_level_index-C*R)+300-3+150, 226*(C-scroll)+569-3+16, c_white, c_white, c_white, c_white, false);
-	
-		draw_set_alpha(1);
-		draw_rectangle_color(394*(global.select_level_index-C*R)+300-3-150, 226*(C-scroll)+569-3-16, 394*(global.select_level_index-C*R)+300-3+150, 226*(C-scroll)+569-3+16, c_black, c_black, c_black, c_black, true);
-	}
-	#endregion /*Box where name is written on END*/
-	
-	#region /*Inputed Name Text*/
-	if (can_input_level_name = true)
-	{
-		if (name_enter_blink<1)
-		{
-			draw_text_outlined(394*(global.select_level_index-C*R)+300, 226*(C-scroll)+569-3, string(global.level_name)+"|", global.default_text_size, c_black, c_white, 1);
-		}
-		else
-		{
-			draw_text_outlined(394*(global.select_level_index-C*R)+300, 226*(C-scroll)+569-3, string(global.level_name), global.default_text_size, c_black, c_white, 1);
-		}
-	}
-	#endregion /*Inputed Name Text END*/
-	
-	#region /*INPUT LEVEL NAME NOW*/
-	if (can_input_level_name = true)
-	{
-		draw_set_alpha(1);
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
-		
-		var _key = keyboard_lastchar;
-		if (ord(_key) != ord("\\"))
-		and (ord(_key) != ord("/"))
-		and (ord(_key) != ord(":"))
-		and (ord(_key) != ord("*"))
-		and (ord(_key) != ord("?"))
-		and (ord(_key) != ord("\""))
-		and (ord(_key) != ord("<"))
-		and (ord(_key) != ord(">"))
-		and (ord(_key) != ord("|"))
-		{
-			global.level_name = keyboard_string;
-		}
-		else
-		{
-			keyboard_string = string_copy(global.level_name, 1, 120);
-		}
-		
-		#region /*Limit Name Input Length for Level*/
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
-		
-		if (string_length(global.level_name) >= 120)
-		{
-			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, "120/120", global.default_text_size, c_black, c_white, 1);
-		}
-		else
-		{
-			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, string(string_length(global.level_name)) + "/120", global.default_text_size, c_black, c_ltgray, 1);
-		}
-		
-		if (string_length(global.level_name) > 120)
-		{
-			global.level_name = string_copy(global.level_name, 1, 120);
-		}
-		#endregion /*Limit Name Input Length for Name END*/
-		
-	}
-	#endregion /*INPUT LEVEL NAME NOW END*/
-	
-	#region /*Name Enter Blinking*/
-	name_enter_blink+=0.05;
-	if (name_enter_blink>1.5)
-	{
-		name_enter_blink=0;
-	}
-	#endregion /*Name Enter Blinking END*/
-	
-	#region /*Press Enter to make new level from scratch*/
-	if (keyboard_check_pressed(vk_enter))
-	and (can_input_level_name = true)
-	and (menu_delay = 0)
-	and (keyboard_string != "")
-	{
-		global.actually_play_edited_level = false;
-		global.play_edited_level = false;
-		can_navigate=false;
-		menu_delay=999;
-		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
-		{
-			with(obj_camera)
-			{
-				iris_zoom=0;
-			}
-		}
-		can_input_level_name = false;
-	}
-	#endregion /*Press Enter to make new level from scratch END*/
-	
-	#region /*Press Escape to back out from level from scratch menu*/
-	if (keyboard_check_pressed(vk_escape))
-	and (can_input_level_name = true)
-	and (menu_delay = 0)
-	{
-		menu_delay = 3;
-		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
-		{
-			with(obj_camera)
-			{
-				iris_zoom=0;
-			}
-		}
-		can_input_level_name = false;
-	}
-	#endregion /*Press Escape to back out from level from scratch menu END*/
-	
-	#endregion /*Input Level Name END*/
+	#endregion /*Enter Template Level END*/
 	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);

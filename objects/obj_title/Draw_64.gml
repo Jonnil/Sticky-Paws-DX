@@ -1,5 +1,3 @@
-draw_text_outlined(200, 200, string(menu), global.default_text_size, c_black, c_white, 1)
-
 #region /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus*/
 
 #region /*Player 1 reset keys to noone if they happen to be 0*/
@@ -411,7 +409,7 @@ if (asset_get_type("obj_camera")==asset_object)
 {
 	if (!instance_exists(obj_camera))
 	{
-		instance_create_depth(x,y,0,obj_camera);
+		instance_create_depth(x, y, 0, obj_camera);
 	}
 	if (instance_exists(obj_camera))
 	{
@@ -1091,7 +1089,6 @@ if (level_editor_template_select = true)
 {
 	select_custom_level_menu_open = false;
 	scr_select_official_level_menu();
-	scr_custom_level_select_with_the_mouse()
 	R = 4;
 	C = clamp(floor(global.select_level_index/R), 0, floor(ds_list_size(global.all_loaded_main_levels)))
 	if (global.controls_used_for_menu_navigation = "mouse")
@@ -1501,13 +1498,14 @@ and(menu_delay=0)
 
 #region /*Start Game*/
 if (asset_get_type("obj_camera")==asset_object)
-and(instance_exists(obj_camera))
-and(iris_xscale<=0.001)
+and (instance_exists(obj_camera))
+and (iris_xscale <= 0.001)
 {
 	
 	#region /*Play Level Editor*/
 	if (menu = "level_editor_play")
 	and(global.character_select_in_this_menu = "level_editor")
+	and(global.create_level_from_template = false)
 	{
 		if (title_music > noone)
 		{

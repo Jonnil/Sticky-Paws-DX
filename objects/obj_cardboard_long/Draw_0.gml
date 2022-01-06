@@ -112,7 +112,7 @@ if (brick_particle=false)
 			{
 				if (instance_nearest(x,y,obj_player).x<x)
 				{
-					obj=instance_create_depth(x,y,0,obj_cardboard_long);
+					obj=instance_create_depth(x, y, 0, obj_cardboard_long);
 					with(obj)
 					{
 						motion_set(random_range(45-32,45+32),random_range(5,10)+instance_nearest(x,y,obj_player).speed/2);
@@ -122,7 +122,7 @@ if (brick_particle=false)
 				}
 				else
 				{
-					obj=instance_create_depth(x,y,0,obj_cardboard_long);
+					obj=instance_create_depth(x, y, 0, obj_cardboard_long);
 					with(obj)
 					{
 						motion_set(random_range(135-32,135+32),random_range(5,10)+instance_nearest(x,y,obj_player).speed/2);
@@ -177,7 +177,7 @@ if (brick_particle=false)
 			{
 				if (instance_nearest(x,y,obj_bullet).x<x)
 				{
-					obj=instance_create_depth(x,y,0,obj_cardboard_long);
+					obj=instance_create_depth(x, y, 0, obj_cardboard_long);
 					with(obj)
 					{
 						motion_set(random_range(45-32,45+32),random_range(5,10)+instance_nearest(x,y,obj_bullet).speed/2);
@@ -187,7 +187,7 @@ if (brick_particle=false)
 				}
 				else
 				{
-					obj=instance_create_depth(x,y,0,obj_cardboard_long);
+					obj=instance_create_depth(x, y, 0, obj_cardboard_long);
 					with(obj)
 					{
 						motion_set(random_range(135-32,135+32),random_range(5,10)+instance_nearest(x,y,obj_bullet).speed/2);

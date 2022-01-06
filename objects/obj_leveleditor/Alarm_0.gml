@@ -1,0 +1,1 @@
+global.create_level_from_template = false;

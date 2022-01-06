@@ -34,7 +34,7 @@ with(other)
 		score+=200;
 		if (asset_get_type("obj_scoreup")==asset_object)
 		{
-			obj=instance_create_depth(x,y,0,obj_scoreup);
+			obj=instance_create_depth(x, y, 0, obj_scoreup);
 			with(obj)
 			{
 				scoreup=200;

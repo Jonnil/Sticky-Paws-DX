@@ -434,33 +434,6 @@ function scr_select_custom_level_menu()
 			
 			else
 			
-			#region /*Pressing the Create from Template button*/
-			if (menu = "level_editor_create_from_template")
-			{
-				ds_list_clear(global.all_loaded_main_levels);
-				//ds_list_add(global.all_loaded_main_levels, "Create_Level");
-				ds_list_clear(global.thumbnail_sprite);
-				ds_list_add(global.thumbnail_sprite, spr_menu_create_custom_level);
-				first_level = string(file_find_first("levels/*", fa_directory))
-				if (directory_exists("levels/"+first_level))
-				{
-					if (file_exists("levels/"+first_level+"/automatic_thumbnail.png"))
-					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/"+first_level+"/automatic_thumbnail.png", 0, false, true, 0, 0));
-					}
-					else
-					{
-						ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing);
-					}
-					ds_list_add(global.all_loaded_main_levels, first_level)
-				}
-				menu_delay=3;
-				menu = "load_official_level_template";
-			}
-			#endregion /*Pressing the Create from Template button END*/
-			
-			else
-			
 			#region /*Pressing the Delete button*/
 			if (menu = "level_editor_delete")
 			{
@@ -508,6 +481,28 @@ function scr_select_custom_level_menu()
 		}
 		#endregion /*Key A Pressed END*/
 		
+		#region /*Pressing the Create from Template button*/
+		if (key_a_pressed)
+		and (can_input_level_name = false)
+		and (menu_delay = 0)
+		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+522-3, 394*(global.select_level_index-C*R)+110-3+320, 226*(C-scroll)+522-3+42))
+		and (mouse_check_button_pressed(mb_left))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (can_input_level_name = false)
+		and (menu_delay = 0)
+		{
+			if (menu = "level_editor_create_from_template")
+			{
+				file_found = "";
+				file_load_timer = 0;
+				level_find_pos = 0;
+				ds_list_clear(global.thumbnail_sprite);
+				menu_delay=3;
+				menu = "load_official_level_template";
+			}
+		}
+		#endregion /*Pressing the Create from Template button END*/
+		
 		#region /*Navigate Sub Menu*/
 		if (can_input_level_name = false)
 		{
@@ -529,7 +524,7 @@ function scr_select_custom_level_menu()
 			{
 				draw_rectangle_color(394*(global.select_level_index-C*R)+100-3, 226*(C-scroll)+455-3, 394*(global.select_level_index-C*R)+100+384+3, 226*(C-scroll)+408+216+3, c_white, c_white, c_white, c_white, false);
 				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+475-3, "Create from Scratch", "level_editor_create_from_scratch", "level_editor_create_from_scratch");
-				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+522-3, "Create from Template", "level_editor_create_from_template", "load_official_level_template"); /*+47 on y*/
+				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+522-3, "Create from Template", "level_editor_create_from_template", "level_editor_create_from_template"); /*+47 on y*/
 				draw_menu_button(394*(global.select_level_index-C*R)+110-3, 226*(C-scroll)+569-3, "Back", "level_editor_create_from_back", "level_editor_create_from_back");
 			}
 			else

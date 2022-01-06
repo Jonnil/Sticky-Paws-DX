@@ -1178,7 +1178,7 @@ if (quit_level_editor=0)
 				or(can_put_objects_above_other_objects=true)
 				and(mouse_check_button_pressed(mb_left))
 				{
-					obj=instance_create_depth(x,y,0,obj_leveleditor_placed_object);
+					obj=instance_create_depth(x, y, 0, obj_leveleditor_placed_object);
 					obj.object=obj_leveleditor.place_object;
 					obj.place_object_angle = true;
 					obj.undo_value=obj_leveleditor.current_undo_value; /*Undo and Redo handeling*/
@@ -1460,7 +1460,7 @@ and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_
 	if (!place_meeting(x,y,obj_leveleditor_placed_object))
 	and(!place_meeting(x,y,obj_leveleditor_fill))
 	{
-		instance_create_depth(x,y,0,obj_leveleditor_fill);
+		instance_create_depth(x, y, 0, obj_leveleditor_fill);
 	}
 }
 #endregion /*Fill with Objects END*/
@@ -1535,18 +1535,19 @@ and(pause=false)
 
 #endregion /*SELECT WHAT OBJECT TO PLACE END*/
 
-#region /*Play Level*/
+#region /*Play Level when pressing Enter Key*/
 if (keyboard_check_pressed(vk_enter))
 or (gamepad_button_check_pressed(0, gp_select))
 {
 	if (pause = false)
+	and (menu_delay = 0)
 	and (global.character_select_in_this_menu = "level_editor")
 	and (asset_get_type("obj_level_player_1_start") == asset_object)
 	and (asset_get_type("obj_level_player_2_start") == asset_object)
 	and (asset_get_type("obj_level_player_3_start") == asset_object)
 	and (asset_get_type("obj_level_player_4_start") == asset_object)
 	{
-		
+		menu_delay = 999;
 		scr_save_custom_level();
 		
 		if (asset_get_type("obj_camera")==asset_object)
@@ -1565,12 +1566,12 @@ or (gamepad_button_check_pressed(0, gp_select))
 			global.actually_play_edited_level = false;
 			global.play_edited_level = true;
 			global.character_select_in_this_menu = "level_editor";
-			instance_create_depth(x,y,0,obj_camera);
+			instance_create_depth(x, y, 0, obj_camera);
 			instance_destroy();
 		}
 	}
 }
-#endregion /*Play Level End*/
+#endregion /*Play Level when pressing Enter Key End*/
 
 #region /*Scroll View*/
 if (mouse_check_button_pressed(mb_left))

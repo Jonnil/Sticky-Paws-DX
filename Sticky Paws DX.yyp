@@ -559,8 +559,6 @@
     {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Backgrounds","resourceVersion":"1.0","name":"foreground1.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Backgrounds","resourceVersion":"1.0","name":"foreground2.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Data","resourceVersion":"1.0","name":"level_information.ini","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Data","resourceVersion":"1.0","name":"Object_Rotation_Placement.txt","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Data","resourceVersion":"1.0","name":"Object_Placement.txt","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Sounds/Music","resourceVersion":"1.0","name":"music.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Tilesets","resourceVersion":"1.0","name":"ground_tileset.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/levels/Level1","resourceVersion":"1.0","name":"automatic_thumbnail.png","resourceType":"GMIncludedFile",},
@@ -1494,6 +1492,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/characters/Sticky/sprites/skin5","resourceVersion":"1.0","name":"wall_slide_down_strip6.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/Sticky/sprites/skin5","resourceVersion":"1.0","name":"wall_slide_up_strip8.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/Sticky/sprites/skin5","resourceVersion":"1.0","name":"against_wall.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Data","resourceVersion":"1.0","name":"object_placement.txt","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/levels/Level1/Data","resourceVersion":"1.0","name":"object_rotation_placement.txt","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.7.606",

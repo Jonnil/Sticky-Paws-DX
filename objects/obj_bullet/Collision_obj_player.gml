@@ -93,7 +93,7 @@ or (other.chain_reaction<=1)
 	score+=200;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=200;
@@ -160,7 +160,7 @@ or(other.chain_reaction=2)
 	score+=400;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=400;
@@ -243,7 +243,7 @@ or(other.chain_reaction=3)
 	score+=800;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=800;
@@ -326,7 +326,7 @@ or(other.chain_reaction=4)
 	score+=1000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=1000;
@@ -409,7 +409,7 @@ or(other.chain_reaction=5)
 	score+=2000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=2000;
@@ -492,7 +492,7 @@ or(other.chain_reaction=6)
 	score+=4000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=4000;
@@ -575,7 +575,7 @@ or(other.chain_reaction=7)
 	score+=8000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=8000;
@@ -782,7 +782,7 @@ or (other.chain_reaction<=1)
 	score+=200;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=200;
@@ -849,7 +849,7 @@ or(other.chain_reaction=2)
 	score+=400;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=400;
@@ -932,7 +932,7 @@ or(other.chain_reaction=3)
 	score+=800;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=800;
@@ -1015,7 +1015,7 @@ or(other.chain_reaction=4)
 	score+=1000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=1000;
@@ -1098,7 +1098,7 @@ or(other.chain_reaction=5)
 	score+=2000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=2000;
@@ -1181,7 +1181,7 @@ or(other.chain_reaction=6)
 	score+=4000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=4000;
@@ -1264,7 +1264,7 @@ or(other.chain_reaction=7)
 	score+=8000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=8000;
@@ -1469,7 +1469,7 @@ or (other.chain_reaction<=1)
 	score+=200;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=200;
@@ -1536,7 +1536,7 @@ or(other.chain_reaction=2)
 	score+=400;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=400;
@@ -1619,7 +1619,7 @@ or(other.chain_reaction=3)
 	score+=800;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=800;
@@ -1702,7 +1702,7 @@ or(other.chain_reaction=4)
 	score+=1000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=1000;
@@ -1785,7 +1785,7 @@ or(other.chain_reaction=5)
 	score+=2000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=2000;
@@ -1868,7 +1868,7 @@ or(other.chain_reaction=6)
 	score+=4000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=4000;
@@ -1951,7 +1951,7 @@ or(other.chain_reaction=7)
 	score+=8000;
 	if (asset_get_type("obj_scoreup")==asset_object)
 	{
-		obj=instance_create_depth(x,y,0,obj_scoreup);
+		obj=instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
 			scoreup=8000;
