@@ -42,7 +42,7 @@ if (full_level_map_screenshot_timer = 5)
 {
 	var custom_level_map_sprite;
 	custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
-	sprite_save(custom_level_map_sprite, 0, working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/Full Level Map.png");
+	sprite_save(custom_level_map_sprite, 0, working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/Full Level Map.png");
 	sprite_delete(custom_level_map_sprite);
 }
 
@@ -4343,10 +4343,20 @@ and(global.pause = false)
 			score=0;
 
 		#region /*Save Level Information when in level editor*/
-		if (global.select_level_index>0)
+		if (global.create_level_from_template = true)
+		and (global.character_select_in_this_menu = "level_editor")
+		and (global.level_name != "")
+		{
+			ini_open(working_directory+"/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_write_real("info","view_xview",camera_get_view_x(view_camera[view_current]));
+			ini_write_real("info","view_yview",camera_get_view_y(view_camera[view_current]));
+			ini_close();
+		}
+		else
+		if (global.select_level_index >= 1)
 		and (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_open(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
+			ini_open(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini");
 			ini_write_real("info","view_xview",camera_get_view_x(view_camera[view_current]));
 			ini_write_real("info","view_yview",camera_get_view_y(view_camera[view_current]));
 			ini_close();

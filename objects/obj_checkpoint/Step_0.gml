@@ -151,7 +151,7 @@ and(instance_exists(obj_player))
 				and (global.character_select_in_this_menu = "main_game")
 				and (global.actually_play_edited_level = true)
 				{
-					ini_open(working_directory+"/File" + string(global.file)+".ini");
+					ini_open(working_directory+"/File" + string(global.file) + ".ini");
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"x_checkpoint",x);
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"y_checkpoint",y);
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"checkpoint_millisecond",global.timeattack_millisecond);

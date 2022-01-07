@@ -132,20 +132,29 @@ and (global.play_edited_level = true)
 }
 #endregion /*Checkpoint End*/
 
-#region /*Initialize Intro Animation*/
+#region /*Initialize level_information.ini*/
 if (global.character_select_in_this_menu = "main_game")
-and(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
+and(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/level_information.ini"))
+or (global.create_level_from_template)
+and(file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 or(global.character_select_in_this_menu = "level_editor")
-and(file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini"))
+and(file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu = "main_game")
 	{
-		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini");
+		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/level_information.ini");
+	}
+	else
+	if (global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template = true)
+	and (global.level_name != "")
+	{
+		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
 	{
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
+		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini");
 	}
 	
 	#region /*Intro Animation*/
@@ -192,329 +201,6 @@ and(file_exists(working_directory + "/custom_levels/" + string(ds_list_find_valu
 		after_goal_go_to_this_level = noone;
 	}
 	#endregion /*After goal go to this level END*/
-	
-	ini_close();
-}
-else
-{
-	intro_animation = "";
-	intro_animation_play_only_once = false;
-}
-#endregion /*Initialize Intro Animation END*/
-
-#region /*Spawn Players*/
-player1 = noone;
-player2 = noone;
-player3 = noone;
-player4 = noone;
-if (asset_get_type("obj_player_map") == asset_object)
-and (!instance_exists(obj_player_map))
-and (asset_get_type("obj_title") == asset_object)
-and (!instance_exists(obj_title))
-{
-	if (global.player1_can_play = true)
-	{
-		if (global.x_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		or (global.y_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		{
-			player1 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
-		}
-		else
-		if (global.actually_play_edited_level = true)
-		and (instance_exists(obj_level_player_1_start))
-		{
-			player1 = instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_player);
-		}
-		else
-		{
-			player1 = instance_create_depth(x, y, 0, obj_player);
-		}
-		with(player1)
-		{
-			custom_character = global.character_for_player_1;
-			selected_voice_pack = global.voicepack_for_player_1;
-			selected_skin = global.skin_for_player_1;
-			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
-			player = 1;
-		}
-	}
-	if (global.player2_can_play = true)
-	{
-		if (global.x_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		or (global.y_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		{
-			player2 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
-		}
-		else
-		if (global.actually_play_edited_level = true)
-		and (instance_exists(obj_level_player_2_start))
-		{
-			player2 = instance_create_depth(obj_level_player_2_start.x, obj_level_player_2_start.y, 0, obj_player);
-		}
-		else
-		{
-			player2 = instance_create_depth(x, y, 0, obj_player);
-		}
-		with(player2)
-		{
-			custom_character = global.character_for_player_2;
-			selected_voice_pack = global.voicepack_for_player_2;
-			selected_skin = global.skin_for_player_2;
-			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
-			player = 2;
-		}
-	}
-	if (global.player3_can_play = true)
-	{
-		if (global.x_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		or (global.y_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		{
-			player3 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
-		}
-		else
-		if (global.actually_play_edited_level = true)
-		and (instance_exists(obj_level_player_3_start))
-		{
-			player3 = instance_create_depth(obj_level_player_3_start.x, obj_level_player_3_start.y, 0, obj_player);
-		}
-		else
-		{
-			player3 = instance_create_depth(x, y, 0, obj_player);
-		}
-		with(player3)
-		{
-			custom_character = global.character_for_player_3;
-			selected_voice_pack = global.voicepack_for_player_3;
-			selected_skin = global.skin_for_player_3;
-			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
-			player = 3;
-		}
-	}
-	if (global.player4_can_play = true)
-	{
-		if (global.x_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		or (global.y_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		{
-			player4 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
-		}
-		else
-		if (global.actually_play_edited_level = true)
-		and (instance_exists(obj_level_player_4_start))
-		{
-			player4 = instance_create_depth(obj_level_player_4_start.x, obj_level_player_4_start.y, 0, obj_player);
-		}
-		else
-		{
-			player4 = instance_create_depth(x, y, 0, obj_player);
-		}
-		with(player4)
-		{
-			custom_character = global.character_for_player_4;
-			selected_voice_pack = global.voicepack_for_player_4;
-			selected_skin = global.skin_for_player_4;
-			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
-			player = 4;
-		}
-	}
-	if (asset_get_type("room_leveleditor") == asset_room)
-	and (room = room_leveleditor)
-	and (global.actually_play_edited_level = true)
-	{
-		player_has_spawned = true;
-	}
-}
-#endregion /*Spawn Players End*/
-
-/*HUD Show Controls keys that have been pressed*/
-player1_show_controls_timer = 0;
-player2_show_controls_timer = 0;
-player3_show_controls_timer = 0;
-player4_show_controls_timer = 0;
-
-player1_show_controls_alpha = 0;
-player2_show_controls_alpha = 0;
-player3_show_controls_alpha = 0;
-player4_show_controls_alpha = 0;
-
-show_sprint_toggle_for_player1=0;
-show_sprint_toggle_for_player2=0;
-show_sprint_toggle_for_player3=0;
-show_sprint_toggle_for_player4=0;
-
-/*Player 1*/player1_has_pressed_key_up=false;
-player1_has_pressed_key_left=false;
-player1_has_pressed_key_right=false;
-player1_has_pressed_key_down=false;
-player1_has_pressed_key_jump=false;
-player1_has_pressed_key_dash=false;/*Player 1 END*/
-/*Player 2*/player2_has_pressed_key_up=false;
-player2_has_pressed_key_left=false;
-player2_has_pressed_key_right=false;
-player2_has_pressed_key_down=false;
-player2_has_pressed_key_jump=false;
-player2_has_pressed_key_dash=false;/*Player 2 END*/
-/*Player 3*/player3_has_pressed_key_up=false;
-player3_has_pressed_key_left=false;
-player3_has_pressed_key_right=false;
-player3_has_pressed_key_down=false;
-player3_has_pressed_key_jump=false;
-player3_has_pressed_key_dash=false;/*Player 3 END*/
-/*Player 4*/player4_has_pressed_key_up=false;
-player4_has_pressed_key_left=false;
-player4_has_pressed_key_right=false;
-player4_has_pressed_key_down=false;
-player4_has_pressed_key_jump=false;
-player4_has_pressed_key_dash=false;/*Player 4 END*/
-/*HUD Show Controls keys that have been pressed END*/
-
-xx = x;
-yy = y;
-letterbox_top_y = 0;
-letterbox_bottom_y = room_height;
-show_letterbox = 0;
-iris_xscale = 0;
-iris_yscale = 0;
-allow_iris = true;
-iris_zoom = 0;
-timer_blinking_alpha = 0;
-
-/*Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen*/
-#region /*Initialize View*/
-
-/*View Size*/
-view_wview=1024+400-32;
-view_hview=768-32;
-/*View Size End*/
-
-#region /*View Size*/
-if (os_type==os_ios)or(os_type==os_android){
-if (view_wport>1920){view_wport=1920;}if (view_wview>1920-64){view_wview=1920-64;}if (view_hport>1080){view_hport=1080;}if (view_hview>1080-64){view_hview=1080-64;}
-if (view_wport<640-320){view_wport=640;}if (view_wview<640){view_wview=640;}if (view_hport<480){view_hport=480;}if (view_hview<480){view_hview=480;}
-}else{
-if (view_wport>1920){view_wport=1920;}if (view_wview>1920){view_wview=1920;}if (view_hport>1080){view_hport=1080;}if (view_hview>1080){view_hview=1080;}
-if (view_wport<640){view_wport=640;}if (view_wview<640){view_wview=640;}if (view_hport<480){view_hport=480;}if (view_hview<480){view_hview=480;}}
-#endregion /*View Size END*/
-
-#endregion /*Initialize View END*/
-
-#region /*Custom Music*/
-if (asset_get_type("room_title") == asset_room)
-and(room != room_title)
-{
-	
-	#region /*Update Music*/
-	/*OGG small letter File*/
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/music/music.ogg"))
-	and(global.character_select_in_this_menu = "main_game")
-	{
-		global.music = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/music/music.ogg");
-	}
-	else
-	/*OGG small letter File*/
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/music/music.ogg"))
-	and(global.character_select_in_this_menu = "level_editor")
-	{
-		global.music = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/music/music.ogg");
-	}
-	else
-	{
-		global.music = noone;
-	}
-	#endregion /*Update Music END*/
-	
-	#region /*Update Music Underwater*/
-	/*OGG small letter File*/
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/music/music_underwater.ogg"))
-	and(global.character_select_in_this_menu = "main_game")
-	{
-		global.music_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/music/music_underwater.ogg");
-	}
-	else
-	/*OGG small letter File*/
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/music/music_underwater.ogg"))
-	and(global.character_select_in_this_menu = "level_editor")
-	{
-		global.music_underwater = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/music/music_underwater.ogg");
-	}
-	else
-	{
-		global.music_underwater = noone;
-	}
-	#endregion /*Update Music Underwater END*/
-	
-	#region /*Update Ambience*/
-	/*OGG small letter File*/
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambience/ambience.ogg"))
-	and(global.character_select_in_this_menu = "main_game")
-	{
-		global.ambience = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambience/ambience.ogg");
-	}
-	else
-	/*OGG small letter File*/
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience/ambience.ogg"))
-	and(global.character_select_in_this_menu = "level_editor")
-	{
-		global.ambience = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience/ambience.ogg");
-	}
-	else
-	{
-		global.ambience = noone;
-	}
-	#endregion /*Update Ambience END*/
-	
-	#region /*Update Ambience Underwater*/
-	/*OGG small letter File*/
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambience/ambience_underwater.ogg"))
-	and(global.character_select_in_this_menu = "main_game")
-	{
-		global.ambience_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/sounds/ambience/ambience_underwater.ogg");
-	}
-	else
-	/*OGG small letter File*/
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience/ambience_underwater.ogg"))
-	and(global.character_select_in_this_menu = "level_editor")
-	{
-		global.ambience_underwater = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/sounds/ambience/ambience_underwater.ogg");
-	}
-	else
-	{
-		global.ambience_underwater = noone;
-	}
-	#endregion /*Update Ambience Underwater END*/
-	
-}
-else
-{
-	global.music = noone;
-	global.music_underwater = noone;
-	global.ambience = noone;
-	global.ambience_underwater = noone;
-}
-#endregion /*Custom Music END*/
-
-#region /*Initialize Background*/
-if (global.character_select_in_this_menu = "main_game")
-and(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
-or(global.character_select_in_this_menu = "level_editor")
-and(file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini"))
-{
-	if (global.character_select_in_this_menu = "main_game")
-	{
-		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini");
-	}
-	else
-	if (global.character_select_in_this_menu = "level_editor")
-	{
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
-	}
 	
 	#region /*Custom Background 4 x and y parallax points*/
 	#region /*Custom Background 4 y parallax point*/
@@ -772,45 +458,6 @@ and(file_exists(working_directory + "/custom_levels/" + string(ds_list_find_valu
 	#endregion /*Custom Background 1 x offset point END*/
 	#endregion /*Custom Background 1 x and y offset points END*/
 	
-	ini_close();
-}
-else
-{
-	custom_background_1_x_offset = 0;
-	custom_background_1_y_offset = 0;
-	custom_background_2_x_offset = 0;
-	custom_background_2_y_offset = 0;
-	custom_background_3_x_offset = 0;
-	custom_background_3_y_offset = 0;
-	custom_background_4_x_offset = 0;
-	custom_background_4_y_offset = 0;
-	custom_background_1_x_parallax = 3;
-	custom_background_1_y_parallax = 3;
-	custom_background_2_x_parallax = 5;
-	custom_background_2_y_parallax = 5;
-	custom_background_3_x_parallax = 7;
-	custom_background_3_y_parallax = 7;
-	custom_background_4_x_parallax = 9;
-	custom_background_4_y_parallax = 9;
-}
-#endregion /*Initialize Background END*/
-
-#region /*Initialize Level Info*/
-if (global.character_select_in_this_menu = "main_game")
-and(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini"))
-or(global.character_select_in_this_menu = "level_editor")
-and(file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini"))
-{
-	if (global.character_select_in_this_menu = "main_game")
-	{
-		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index))+"/data/level_information.ini");
-	}
-	else
-	if (global.character_select_in_this_menu = "level_editor")
-	{
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))+"/data/level_information.ini");
-	}
-	
 	#region /*Default View Width*/
 	if (ini_key_exists("info", "default_view_width"))
 	{
@@ -864,9 +511,327 @@ and(file_exists(working_directory + "/custom_levels/" + string(ds_list_find_valu
 }
 else
 {
+	intro_animation = "";
+	intro_animation_play_only_once = false;
+	custom_background_1_x_offset = 0;
+	custom_background_1_y_offset = 0;
+	custom_background_2_x_offset = 0;
+	custom_background_2_y_offset = 0;
+	custom_background_3_x_offset = 0;
+	custom_background_3_y_offset = 0;
+	custom_background_4_x_offset = 0;
+	custom_background_4_y_offset = 0;
+	custom_background_1_x_parallax = 3;
+	custom_background_1_y_parallax = 3;
+	custom_background_2_x_parallax = 5;
+	custom_background_2_y_parallax = 5;
+	custom_background_3_x_parallax = 7;
+	custom_background_3_y_parallax = 7;
+	custom_background_4_x_parallax = 9;
+	custom_background_4_y_parallax = 9;
 	rain = false;
+	global.default_view_height = 1080;
+	global.default_view_width = 1920;
 }
-#endregion /*Initialize Level Info END*/
+#endregion /*Initialize level_information.ini END*/
+
+#region /*Spawn Players*/
+player1 = noone;
+player2 = noone;
+player3 = noone;
+player4 = noone;
+if (asset_get_type("obj_player_map") == asset_object)
+and (!instance_exists(obj_player_map))
+and (asset_get_type("obj_title") == asset_object)
+and (!instance_exists(obj_title))
+{
+	if (global.player1_can_play = true)
+	{
+		if (global.x_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		or (global.y_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		{
+			player1 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+		}
+		else
+		if (global.actually_play_edited_level = true)
+		and (instance_exists(obj_level_player_1_start))
+		{
+			player1 = instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_player);
+		}
+		else
+		{
+			player1 = instance_create_depth(x, y, 0, obj_player);
+		}
+		with(player1)
+		{
+			custom_character = global.character_for_player_1;
+			selected_voice_pack = global.voicepack_for_player_1;
+			selected_skin = global.skin_for_player_1;
+			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
+			player = 1;
+		}
+	}
+	if (global.player2_can_play = true)
+	{
+		if (global.x_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		or (global.y_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		{
+			player2 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+		}
+		else
+		if (global.actually_play_edited_level = true)
+		and (instance_exists(obj_level_player_2_start))
+		{
+			player2 = instance_create_depth(obj_level_player_2_start.x, obj_level_player_2_start.y, 0, obj_player);
+		}
+		else
+		{
+			player2 = instance_create_depth(x, y, 0, obj_player);
+		}
+		with(player2)
+		{
+			custom_character = global.character_for_player_2;
+			selected_voice_pack = global.voicepack_for_player_2;
+			selected_skin = global.skin_for_player_2;
+			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
+			player = 2;
+		}
+	}
+	if (global.player3_can_play = true)
+	{
+		if (global.x_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		or (global.y_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		{
+			player3 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+		}
+		else
+		if (global.actually_play_edited_level = true)
+		and (instance_exists(obj_level_player_3_start))
+		{
+			player3 = instance_create_depth(obj_level_player_3_start.x, obj_level_player_3_start.y, 0, obj_player);
+		}
+		else
+		{
+			player3 = instance_create_depth(x, y, 0, obj_player);
+		}
+		with(player3)
+		{
+			custom_character = global.character_for_player_3;
+			selected_voice_pack = global.voicepack_for_player_3;
+			selected_skin = global.skin_for_player_3;
+			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
+			player = 3;
+		}
+	}
+	if (global.player4_can_play = true)
+	{
+		if (global.x_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		or (global.y_checkpoint > 0)
+		and (global.actually_play_edited_level = true)
+		{
+			player4 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+		}
+		else
+		if (global.actually_play_edited_level = true)
+		and (instance_exists(obj_level_player_4_start))
+		{
+			player4 = instance_create_depth(obj_level_player_4_start.x, obj_level_player_4_start.y, 0, obj_player);
+		}
+		else
+		{
+			player4 = instance_create_depth(x, y, 0, obj_player);
+		}
+		with(player4)
+		{
+			custom_character = global.character_for_player_4;
+			selected_voice_pack = global.voicepack_for_player_4;
+			selected_skin = global.skin_for_player_4;
+			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
+			player = 4;
+		}
+	}
+	if (asset_get_type("room_leveleditor") == asset_room)
+	and (room = room_leveleditor)
+	and (global.actually_play_edited_level = true)
+	{
+		player_has_spawned = true;
+	}
+}
+#endregion /*Spawn Players End*/
+
+/*HUD Show Controls keys that have been pressed*/
+player1_show_controls_timer = 0;
+player2_show_controls_timer = 0;
+player3_show_controls_timer = 0;
+player4_show_controls_timer = 0;
+
+player1_show_controls_alpha = 0;
+player2_show_controls_alpha = 0;
+player3_show_controls_alpha = 0;
+player4_show_controls_alpha = 0;
+
+show_sprint_toggle_for_player1=0;
+show_sprint_toggle_for_player2=0;
+show_sprint_toggle_for_player3=0;
+show_sprint_toggle_for_player4=0;
+
+/*Player 1*/player1_has_pressed_key_up=false;
+player1_has_pressed_key_left=false;
+player1_has_pressed_key_right=false;
+player1_has_pressed_key_down=false;
+player1_has_pressed_key_jump=false;
+player1_has_pressed_key_dash=false;/*Player 1 END*/
+/*Player 2*/player2_has_pressed_key_up=false;
+player2_has_pressed_key_left=false;
+player2_has_pressed_key_right=false;
+player2_has_pressed_key_down=false;
+player2_has_pressed_key_jump=false;
+player2_has_pressed_key_dash=false;/*Player 2 END*/
+/*Player 3*/player3_has_pressed_key_up=false;
+player3_has_pressed_key_left=false;
+player3_has_pressed_key_right=false;
+player3_has_pressed_key_down=false;
+player3_has_pressed_key_jump=false;
+player3_has_pressed_key_dash=false;/*Player 3 END*/
+/*Player 4*/player4_has_pressed_key_up=false;
+player4_has_pressed_key_left=false;
+player4_has_pressed_key_right=false;
+player4_has_pressed_key_down=false;
+player4_has_pressed_key_jump=false;
+player4_has_pressed_key_dash=false;/*Player 4 END*/
+/*HUD Show Controls keys that have been pressed END*/
+
+xx = x;
+yy = y;
+letterbox_top_y = 0;
+letterbox_bottom_y = room_height;
+show_letterbox = 0;
+iris_xscale = 0;
+iris_yscale = 0;
+allow_iris = true;
+iris_zoom = 0;
+timer_blinking_alpha = 0;
+
+/*Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen*/
+#region /*Initialize View*/
+
+/*View Size*/
+view_wview=1024+400-32;
+view_hview=768-32;
+/*View Size End*/
+
+#region /*View Size*/
+if (os_type==os_ios)or(os_type==os_android){
+if (view_wport>1920){view_wport=1920;}if (view_wview>1920-64){view_wview=1920-64;}if (view_hport>1080){view_hport=1080;}if (view_hview>1080-64){view_hview=1080-64;}
+if (view_wport<640-320){view_wport=640;}if (view_wview<640){view_wview=640;}if (view_hport<480){view_hport=480;}if (view_hview<480){view_hview=480;}
+}else{
+if (view_wport>1920){view_wport=1920;}if (view_wview>1920){view_wview=1920;}if (view_hport>1080){view_hport=1080;}if (view_hview>1080){view_hview=1080;}
+if (view_wport<640){view_wport=640;}if (view_wview<640){view_wview=640;}if (view_hport<480){view_hport=480;}if (view_hview<480){view_hview=480;}}
+#endregion /*View Size END*/
+
+#endregion /*Initialize View END*/
+
+#region /*Custom Music*/
+if (asset_get_type("room_title") == asset_room)
+and(room != room_title)
+{
+	
+	#region /*Update Music*/
+	/*OGG small letter File*/
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music.ogg"))
+	and(global.character_select_in_this_menu = "main_game")
+	{
+		global.music = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music.ogg");
+	}
+	else
+	/*OGG small letter File*/
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/music/music.ogg"))
+	and(global.character_select_in_this_menu = "level_editor")
+	{
+		global.music = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/music/music.ogg");
+	}
+	else
+	{
+		global.music = noone;
+	}
+	#endregion /*Update Music END*/
+	
+	#region /*Update Music Underwater*/
+	/*OGG small letter File*/
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music_underwater.ogg"))
+	and(global.character_select_in_this_menu = "main_game")
+	{
+		global.music_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music_underwater.ogg");
+	}
+	else
+	/*OGG small letter File*/
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/music/music_underwater.ogg"))
+	and(global.character_select_in_this_menu = "level_editor")
+	{
+		global.music_underwater = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/music/music_underwater.ogg");
+	}
+	else
+	{
+		global.music_underwater = noone;
+	}
+	#endregion /*Update Music Underwater END*/
+	
+	#region /*Update Ambience*/
+	/*OGG small letter File*/
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience.ogg"))
+	and(global.character_select_in_this_menu = "main_game")
+	{
+		global.ambience = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience.ogg");
+	}
+	else
+	/*OGG small letter File*/
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/ambience/ambience.ogg"))
+	and(global.character_select_in_this_menu = "level_editor")
+	{
+		global.ambience = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/ambience/ambience.ogg");
+	}
+	else
+	{
+		global.ambience = noone;
+	}
+	#endregion /*Update Ambience END*/
+	
+	#region /*Update Ambience Underwater*/
+	/*OGG small letter File*/
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience_underwater.ogg"))
+	and(global.character_select_in_this_menu = "main_game")
+	{
+		global.ambience_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience_underwater.ogg");
+	}
+	else
+	/*OGG small letter File*/
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/ambience/ambience_underwater.ogg"))
+	and(global.character_select_in_this_menu = "level_editor")
+	{
+		global.ambience_underwater = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/ambience/ambience_underwater.ogg");
+	}
+	else
+	{
+		global.ambience_underwater = noone;
+	}
+	#endregion /*Update Ambience Underwater END*/
+	
+}
+else
+{
+	global.music = noone;
+	global.music_underwater = noone;
+	global.ambience = noone;
+	global.ambience_underwater = noone;
+}
+#endregion /*Custom Music END*/
 
 big_collectible_count=1;
 shake=false;

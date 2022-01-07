@@ -113,14 +113,14 @@ or(global.actually_play_edited_level = true)
 		{
 			
 			#region /*Load Custom Level Checkpoint*/
-			if (file_exists(working_directory + "\File" + string(global.file)+".ini"))
+			if (file_exists(working_directory + "\File" + string(global.file) + ".ini"))
 			and (global.character_select_in_this_menu = "main_game")
 			or (file_exists(working_directory + "\custom_level_save.ini"))
 			and (global.character_select_in_this_menu = "level_editor")
 			{
 				if (global.character_select_in_this_menu = "main_game")
 				{
-					ini_open(working_directory + "\File" + string(global.file)+".ini");
+					ini_open(working_directory + "\File" + string(global.file) + ".ini");
 					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "x_checkpoint"))
 					{
 						global.x_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "x_checkpoint", 0);

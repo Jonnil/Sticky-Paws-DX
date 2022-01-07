@@ -1,3 +1,10 @@
+#region /*Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden*/
+if (iris_xscale <= 0.001)
+{
+	draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+}
+#endregion /*Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden END*/
+
 #region /*Game Over*/
 if (lives <= 0)
 {

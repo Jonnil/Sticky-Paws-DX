@@ -542,18 +542,18 @@ else
 
 sprite_splash_easteregg_yoffset = +128;
 
-if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini"))
-or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
+if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini"))
+or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini"))
 {
 	
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini"))
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini"))
 	{
-		ini_open("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini");
+		ini_open("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini");
 	}
 	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
+	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini"))
 	{
-		ini_open(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini");
+		ini_open(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini");
 	}
 	
 	#region /*Splash Controller*/
@@ -586,38 +586,38 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 	index=0
 	repeat(50)
 	{
-		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
 		{
-			sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+			sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
 		{
-			sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+			sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
 		index+=1
 	}
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png"))
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+".png"))
 	{
-		sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+		sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 	}
 	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+".png"))
 	{
-		sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+		sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 	}
 	#endregion /*Sprite Add END*/
 	
 	#endregion /*Splash Controller END*/
 	
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini"))
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini"))
 	{
-		ini_open("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/data/sprite_origin_point.ini");
+		ini_open("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini");
 	}
 	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini"))
+	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini"))
 	{
-		ini_open(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/data/sprite_origin_point.ini");
+		ini_open(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini");
 	}
 	
 	#region /*Splash Easteregg*/
@@ -650,25 +650,25 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 	index=0
 	repeat(50)
 	{
-		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
 		{
-			sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+			sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
 		{
-			sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+"_strip" + string(index)+".png", index, false, false, xorig_variable, yorig_variable);
+			sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
 		index+=1
 	}
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png"))
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+".png"))
 	{
-		sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+		sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 	}
 	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png"))
+	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+".png"))
 	{
-		sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
+		sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+".png", 1, false, false, xorig_variable, yorig_variable);
 	}
 	#endregion /*Sprite Add END*/
 	
@@ -676,19 +676,19 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 	
 }
 
-if (directory_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sound"))
-or (directory_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sound"))
+if (directory_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sound"))
+or (directory_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sound"))
 {
 	
 	#region /*Sound Add*/
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sound/splash_easteregg.ogg"))
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sound/splash_easteregg.ogg"))
 	{
-		audio_splash_easteregg = audio_create_stream("resourcepacks/resourcepack" + string(global.selected_resourcepack)+"/sound/splash_easteregg.ogg");
+		audio_splash_easteregg = audio_create_stream("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sound/splash_easteregg.ogg");
 	}
 	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sound/splash_easteregg.ogg"))
+	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sound/splash_easteregg.ogg"))
 	{
-		audio_splash_easteregg = audio_create_stream(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks)+"/sound/splash_easteregg.ogg");
+		audio_splash_easteregg = audio_create_stream(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sound/splash_easteregg.ogg");
 	}
 	else
 	{

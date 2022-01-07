@@ -6066,11 +6066,11 @@ function scr_options_menu()
 		if (menu = "verbosity_slider")
 		{
 			draw_sprite_ext(spr_menu_cursor,menu_cursor_index,390,20+(40*7),1,1,0,c_white,1);
-			draw_text_outlined(410,20+(40*7),"Verbosity: " + string(round(global.verbosity_slider*100))+"%",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(410,20+(40*7),"Verbosity: " + string(round(global.verbosity_slider*100)) + "%",global.default_text_size*1.1,c_menu_outline,c_menu_fill,1);
 		}
 		else
 		{
-			draw_text_outlined(410,20+(40*7),"Verbosity: " + string(round(global.verbosity_slider*100))+"%",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(410,20+(40*7),"Verbosity: " + string(round(global.verbosity_slider*100)) + "%",global.default_text_size,c_menu_outline,c_menu_fill,1);
 		}
 	}
 	#endregion /*Verbosity Slider END*/
@@ -6462,7 +6462,7 @@ function scr_options_menu()
 			}
 		}
 		
-		if (file_exists(working_directory+"/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+1)+"/data/sprite_origin_point.ini"))
+		if (file_exists(working_directory+"/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+1) + "/data/sprite_origin_point.ini"))
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x+resource_pack_right_arrow_x, 20+(40*4), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x+resource_pack_right_arrow_x-16, 20+(40*4)-16, resource_pack_x+resource_pack_right_arrow_x+16, 20+(40*4)+16))
@@ -6516,7 +6516,7 @@ function scr_options_menu()
 			menu = "resourcepacks";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
-			and (file_exists(working_directory+"/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+1)+"/data/sprite_origin_point.ini"))
+			and (file_exists(working_directory+"/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+1) + "/data/sprite_origin_point.ini"))
 			and (global.pause_room != room_leveleditor)
 			{
 				global.selected_resourcepack += 1;
@@ -6538,8 +6538,8 @@ function scr_options_menu()
 			}
 		}
 		
-		if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background+1)+".png"))
-		or (file_exists(working_directory+"/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1)+".png"))
+		if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background+1) + ".png"))
+		or (file_exists(working_directory+"/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1) + ".png"))
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x+resource_pack_right_arrow_x, 20+(40*6), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x+resource_pack_right_arrow_x-16, 20+(40*6)-16, resource_pack_x+resource_pack_right_arrow_x+16, 20+(40*6)+16))
@@ -6568,14 +6568,14 @@ function scr_options_menu()
 				global.selected_title_background -= 1;
 				menu_delay = 3;
 			}
-			if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background)+".png"))
+			if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background) + ".png"))
 			{
-				title_screen_background = sprite_add("title_backgrounds/title_background" + string(global.selected_title_background)+".png", 1, false, false, 0, 0);
+				title_screen_background = sprite_add("title_backgrounds/title_background" + string(global.selected_title_background) + ".png", 1, false, false, 0, 0);
 			}
 			else
-			if (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png"))
+			if (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds) + ".png"))
 			{
-				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png", 1, false, false, 0, 0);
+				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds) + ".png", 1, false, false, 0, 0);
 			}
 			else
 			{
@@ -6594,22 +6594,22 @@ function scr_options_menu()
 			menu = "title_backgrounds";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
-			and (file_exists("title_backgrounds/title_background" + string(global.selected_title_background+1)+".png"))
+			and (file_exists("title_backgrounds/title_background" + string(global.selected_title_background+1) + ".png"))
 			or (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
-			and (file_exists(working_directory+"/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1)+".png"))
+			and (file_exists(working_directory+"/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+1) + ".png"))
 			{
 				global.selected_title_background += 1;
 				menu_delay = 3;
 			}
-			if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background)+".png"))
+			if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background) + ".png"))
 			{
-				title_screen_background = sprite_add("title_backgrounds/title_background" + string(global.selected_title_background)+".png", 1, false, false, 0, 0);
+				title_screen_background = sprite_add("title_backgrounds/title_background" + string(global.selected_title_background) + ".png", 1, false, false, 0, 0);
 			}
 			else
-			if (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png"))
+			if (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds) + ".png"))
 			{
-				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds)+".png", 1, false, false, 0, 0);
+				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds) + ".png", 1, false, false, 0, 0);
 			}
 			else
 			{
@@ -6638,7 +6638,7 @@ function scr_options_menu()
 		if (menu != "file_delete_yes")
 		and (menu != "file_delete_no")
 		{
-			if (file_exists("file" + string(global.file)+".ini"))
+			if (file_exists("file" + string(global.file) + ".ini"))
 			{
 				draw_menu_button(450, 20+(40*5), "Delete File", "file_delete", "file_delete_no");
 			}
@@ -6653,7 +6653,7 @@ function scr_options_menu()
 			draw_set_alpha(0.1);
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_center);
-			draw_text_outlined(window_get_width()/2, window_get_height()/2-100, "Are you sure you want to delete file "+string(global.file)+"?", global.default_text_size, c_black, c_red, 1);
+			draw_text_outlined(window_get_width()/2, window_get_height()/2-100, "Are you sure you want to delete file "+string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
 			draw_menu_button(window_get_width()/2-370-32, window_get_height()/2, "Yes", "file_delete_yes", "file_delete_yes");
 			draw_menu_button(window_get_width()/2+32, window_get_height()/2, "No", "file_delete_no", "file_delete");
 			
@@ -6734,7 +6734,7 @@ function scr_options_menu()
 		{
 			can_navigate_settings_sidebar = false;
 			menu = "file_select";
-			file_delete("file" + string(global.file)+".ini");
+			file_delete("file" + string(global.file) + ".ini");
 			menu_delay = 10;
 		}
 		
@@ -6753,7 +6753,7 @@ function scr_options_menu()
 		and (menu != "file_delete_no")
 		and (can_navigate_settings_sidebar = false)
 		and (menu_joystick_delay = 0)
-		and (file_exists("file" + string(global.file)+".ini"))
+		and (file_exists("file" + string(global.file) + ".ini"))
 		{
 			menu_joystick_delay = 10;
 			menu = "file_delete";

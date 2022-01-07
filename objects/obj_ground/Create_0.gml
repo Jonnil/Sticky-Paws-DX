@@ -1,7 +1,7 @@
 depth = 12;
 tile = 0;
 
-look_outward=17;
+look_outward = 17;
 same_object = obj_ground;
 
 ground_surface = 0;
@@ -18,7 +18,7 @@ ground_surface = 0;
 image_speed=0;
 
 if (y <= 0)
-and(!instance_place(x, y-1, obj_ground))
+and (!instance_place(x, y-1, obj_ground))
 {
 	instance_create_depth(x, y-32, 0, obj_wall);
 }

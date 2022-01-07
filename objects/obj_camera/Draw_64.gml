@@ -1,3 +1,5 @@
+//draw_text(320, 320, string(global.character_for_player_1));
+
 ///HUD
 if (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))

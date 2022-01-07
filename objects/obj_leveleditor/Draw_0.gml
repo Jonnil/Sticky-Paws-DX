@@ -1425,6 +1425,7 @@ if (quit_level_editor=0)
 				if (asset_get_type("room_leveleditor")==asset_room)
 				and(room=room_leveleditor)
 				and (global.character_select_in_this_menu = "level_editor")
+				and (global.create_level_from_template = false)
 				{
 					ini_open(working_directory+"/custom_level_save.ini");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index),"x_checkpoint");
@@ -1547,25 +1548,53 @@ or (gamepad_button_check_pressed(0, gp_select))
 	and (asset_get_type("obj_level_player_3_start") == asset_object)
 	and (asset_get_type("obj_level_player_4_start") == asset_object)
 	{
-		menu_delay = 999;
-		scr_save_custom_level();
-		
 		if (asset_get_type("obj_camera")==asset_object)
 		and(!instance_exists(obj_camera))
 		and(asset_get_type("obj_leveleditor_placed_object")==asset_object)
 		and(!place_meeting(x,y,obj_leveleditor_placed_object))
 		{
+			
+			#region /*Save Thumbnail*/
+			if (global.select_level_index >= 1)
+			and (global.create_level_from_template = false)
+			{
+				file_delete(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/automatic_thumbnail.png")
+			}
+			else
+			{
+				file_delete(working_directory+"/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png")
+			}
+			var thumbnail_sprite;
+			thumbnail_sprite = sprite_create_from_surface(application_surface, camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
+			if (global.select_level_index >= 1)
+			and (global.create_level_from_template = false)
+			{
+				sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/automatic_thumbnail.png");
+			}
+			else
+			{
+				sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
+			}
+			sprite_delete(thumbnail_sprite);
+			#endregion /*Save Thumbnail End*/
+			
+			menu_delay = 999; /*Disable all menu control*/
+			instance_activate_all(); /*Activate all instances before saving the custom level*/
+			scr_save_custom_level();
 			if (camera_get_view_width(view_camera[view_current])<1920)
 			or (camera_get_view_height(view_camera[view_current])<1080)
 			{
 				camera_set_view_size(view_camera[view_current],1920,1080);
 			}
-			instance_activate_all();
 			lives = 5;
 			global.lives_until_assist = 0;
 			global.actually_play_edited_level = false;
 			global.play_edited_level = true;
 			global.character_select_in_this_menu = "level_editor";
+			if (global.create_level_from_template = true)
+			{
+				global.create_level_from_template = 2;
+			}
 			instance_create_depth(x, y, 0, obj_camera);
 			instance_destroy();
 		}
@@ -1629,4 +1658,4 @@ or(os_type == os_android)
 }
 
 //draw_text_transformed_color(weighted_x,weighted_y,"TEST",global.default_text_size,global.default_text_size,0,c_yellow,c_yellow,c_yellow,c_yellow,1);
-//draw_text_transformed_color(x+64,y+64,string(weighted_x)+"," + string(weighted_y)+"," + string(total_objects),global.default_text_size,global.default_text_size,0,c_yellow,c_yellow,c_yellow,c_yellow,1);
+//draw_text_transformed_color(x+64,y+64,string(weighted_x) + "," + string(weighted_y) + "," + string(total_objects),global.default_text_size,global.default_text_size,0,c_yellow,c_yellow,c_yellow,c_yellow,1);

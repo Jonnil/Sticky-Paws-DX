@@ -4,17 +4,17 @@
 
 #region /*Play as Custom Character*/
 
-if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/character_config.ini"))
-or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/character_config.ini"))
+if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
+or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
 {
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/character_config.ini"))
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
 	{
-		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/character_config.ini");
+		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini");
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/character_config.ini"))
+	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
 	{
-		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/character_config.ini");
+		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini");
 	}
 	
 	#region /*Default Xscale*/
@@ -43,17 +43,17 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 
 #region /*Sprite origin point variables*/
 
-if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/sprite_origin_point.ini"))
-or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/sprite_origin_point.ini"))
+if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini"))
 {
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/sprite_origin_point.ini"))
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini"))
 	{
-		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/sprite_origin_point.ini");
+		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini");
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/sprite_origin_point.ini"))
+	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini"))
 	{
-		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1]))+"/data/sprite_origin_point.ini");
+		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini");
 	}
 	
 	#region /*Sprite map x and y origin points*/

@@ -29,22 +29,22 @@ function scr_character_select_menu()
 	#region /*All code before menu navigation code*/
 	
 	#region /*If a unavailable skin is selected, then go to the last selectable skin for each player*/
-	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin" + string(global.skin_for_player_1)))
+	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player_1)))
 	and (global.skin_for_player_1 > 0)
 	{
 		global.skin_for_player_1 -= 1;
 		
 		#region /*Character select portrait x and y origin points*/
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
-		or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+		or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 		{
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 		{
-		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 		}
 		else
 		{
-		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 		}
 							
 		#region /*Character select portrait x and y origin points*/
@@ -140,22 +140,22 @@ function scr_character_select_menu()
 		
 	}
 		
-	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin" + string(global.skin_for_player_2)))
+	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player_2)))
 	and (global.skin_for_player_2 > 0)
 	{
 		global.skin_for_player_2 -= 1;
 		
 		#region /*Character select portrait x and y origin points*/
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
-		or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
+		or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 		{
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 		{
-		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 		}
 		else
 		{
-		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 		}
 							
 		#region /*Character select portrait x and y origin points*/
@@ -251,22 +251,22 @@ function scr_character_select_menu()
 		
 	}
 		
-	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin" + string(global.skin_for_player_3)))
+	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player_3)))
 	and (global.skin_for_player_3 > 0)
 	{
 		global.skin_for_player_3 -= 1;
 		
 		#region /*Character select portrait x and y origin points*/
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
-		or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
+		or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 		{
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 		{
-		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 		}
 		else
 		{
-		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 		}
 							
 		#region /*Character select portrait x and y origin points*/
@@ -362,22 +362,22 @@ function scr_character_select_menu()
 		
 	}
 		
-	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin" + string(global.skin_for_player_4)))
+	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player_4)))
 	and (global.skin_for_player_4 > 0)
 	{
 		global.skin_for_player_4 -= 1;
 		
 		#region /*Character select portrait x and y origin points*/
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
-		or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
+		or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 		{
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 		{
-		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 		}
 		else
 		{
-		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 		}
 							
 		#region /*Character select portrait x and y origin points*/
@@ -475,25 +475,25 @@ function scr_character_select_menu()
 	#endregion /*If a unavailable skin is selected, then go to the last selectable skin for each player END*/
 	
 	#region /*If a unavailable voice pack is selected, then go to the last selectable voice pack for each player*/
-	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack" + string(global.voicepack_for_player_1)))
+	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1)))
 	and (global.voicepack_for_player_1> 0)
 	{
 		global.voicepack_for_player_1 -= 1;
 	}
 		
-	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack" + string(global.voicepack_for_player_2)))
+	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2)))
 	and (global.voicepack_for_player_2 > 0)
 	{
 		global.voicepack_for_player_2 -= 1;
 	}
 		
-	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack" + string(global.voicepack_for_player_3)))
+	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3)))
 	and (global.voicepack_for_player_3 > 0)
 	{
 		global.voicepack_for_player_3 -= 1;
 	}
 		
-	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack" + string(global.voicepack_for_player_4)))
+	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4)))
 	and (global.voicepack_for_player_4 > 0)
 	{
 		global.voicepack_for_player_4 -= 1;
@@ -880,8 +880,8 @@ function scr_character_select_menu()
 		skin_y = 192;
 		
 		#region /*Player 1 Select Skin*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin1"))
 		and (player1_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -916,16 +916,16 @@ function scr_character_select_menu()
 							global.skin_for_player_1 -= 1;
 							
 							#region /*Character select portrait x and y origin points*/
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
-							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 							{
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 							{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 							}
 							else
 							{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 							}
 							
 							#region /*Character select portrait x and y origin points*/
@@ -1037,7 +1037,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin" + string(global.skin_for_player_1 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player_1 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick1_delay = 30;
@@ -1045,16 +1045,16 @@ function scr_character_select_menu()
 							global.skin_for_player_1 += 1;
 							
 							#region /*Character select portrait x and y origin points*/
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
-							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 							{
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 							{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 							}
 							else
 							{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 							}
 							
 							#region /*Character select portrait x and y origin points*/
@@ -1185,8 +1185,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick1_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack1"))
 							{
 								player1_menu = "select_voicepack";
 							}
@@ -1236,7 +1236,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character skin select END*/
 					
 					#region /*Show right key for character skin select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin" + string(global.skin_for_player_1 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player_1 + 1)))
 					{
 						if (gamepad_is_connected(0))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -1278,8 +1278,8 @@ function scr_character_select_menu()
 		#endregion /*Player 1 Select Skin END*/
 		
 		#region /*Player 2 Select Skin*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin1"))
 		and (player2_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -1314,16 +1314,16 @@ function scr_character_select_menu()
 							global.skin_for_player_2 -= 1;
 							
 							#region /*Character select portrait x and y origin points*/
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
-							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
+							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 							{
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 							{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 							}
 							else
 							{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 							}
 							
 							#region /*Character select portrait x and y origin points*/
@@ -1435,7 +1435,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin" + string(global.skin_for_player_2 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player_2 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick2_delay = 30;
@@ -1443,16 +1443,16 @@ function scr_character_select_menu()
 							global.skin_for_player_2 += 1;
 							
 							#region /*Character select portrait x and y origin points*/
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
-							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
+							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 							{
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 							{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 							}
 							else
 							{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 							}
 							
 							#region /*Character select portrait x and y origin points*/
@@ -1583,8 +1583,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick2_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack1"))
 							{
 								player2_menu = "select_voicepack";
 							}
@@ -1634,7 +1634,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character skin select END*/
 					
 					#region /*Show right key for character skin select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin" + string(global.skin_for_player_2 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player_2 + 1)))
 					{
 						if (gamepad_is_connected(1))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -1676,8 +1676,8 @@ function scr_character_select_menu()
 		#endregion /*Player 2 Select Skin END*/
 		
 		#region /*Player 3 Select Skin*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin1"))
 		and (player3_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -1712,16 +1712,16 @@ function scr_character_select_menu()
 							global.skin_for_player_3 -= 1;
 							
 							#region /*Character select portrait x and y origin points*/
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
-							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
+							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 							{
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 							{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 							}
 							else
 							{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 							}
 							
 							#region /*Character select portrait x and y origin points*/
@@ -1833,7 +1833,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin" + string(global.skin_for_player_3 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player_3 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick3_delay = 30;
@@ -1841,16 +1841,16 @@ function scr_character_select_menu()
 							global.skin_for_player_3 += 1;
 							
 							#region /*Character select portrait x and y origin points*/
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
-							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
+							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 							{
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 							{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 							}
 							else
 							{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 							}
 							
 							#region /*Character select portrait x and y origin points*/
@@ -1981,8 +1981,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick3_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack1"))
 							{
 								player3_menu = "select_voicepack";
 							}
@@ -2032,7 +2032,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character skin select END*/
 					
 					#region /*Show right key for character skin select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin" + string(global.skin_for_player_3 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player_3 + 1)))
 					{
 						if (gamepad_is_connected(2))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -2074,8 +2074,8 @@ function scr_character_select_menu()
 		#endregion /*Player 3 Select Skin END*/
 		
 		#region /*Player 4 Select Skin*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin1"))
 		and (player4_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -2110,16 +2110,16 @@ function scr_character_select_menu()
 							global.skin_for_player_4 -= 1;
 							
 							#region /*Character select portrait x and y origin points*/
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
-							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
+							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 							{
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 							{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 							}
 							else
 							{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 							}
 							
 							#region /*Character select portrait x and y origin points*/
@@ -2231,7 +2231,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin" + string(global.skin_for_player_4 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player_4 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick4_delay = 30;
@@ -2239,16 +2239,16 @@ function scr_character_select_menu()
 							global.skin_for_player_4 += 1;
 							
 							#region /*Character select portrait x and y origin points*/
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
-							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
+							or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 							{
-							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 							{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 							}
 							else
 							{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 							}
 							
 							#region /*Character select portrait x and y origin points*/
@@ -2379,8 +2379,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick4_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack1"))
 							{
 								player4_menu = "select_voicepack";
 							}
@@ -2430,7 +2430,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character skin select END*/
 					
 					#region /*Show right key for character skin select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin" + string(global.skin_for_player_4 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player_4 + 1)))
 					{
 						if (gamepad_is_connected(2))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -2484,8 +2484,8 @@ function scr_character_select_menu()
 		voicepack_y = 234;
 		
 		#region /*Player 1 Select Voice Pack*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack1"))
 		and (player1_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -2536,7 +2536,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack" + string(global.voicepack_for_player_1 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick1_delay = 30;
@@ -2561,8 +2561,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick1_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin1"))
 							{
 								player1_menu = "select_skin"; /*Go from selecting voicepack to selecting skin*/
 							}
@@ -2631,7 +2631,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character voicepack select END*/
 					
 					#region /*Show right key for character voicepack select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack" + string(global.voicepack_for_player_1 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1 + 1)))
 					{
 						if (gamepad_is_connected(0))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -2673,8 +2673,8 @@ function scr_character_select_menu()
 		#endregion /*Player 1 Select Voice Pack END*/
 		
 		#region /*Player 2 Select Voice Pack*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack1"))
 		and (player2_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -2725,7 +2725,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack" + string(global.voicepack_for_player_2 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick2_delay = 30;
@@ -2749,8 +2749,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick2_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin1"))
 							{
 								player2_menu = "select_skin"; /*Go from selecting voicepack to selecting skin*/
 							}
@@ -2819,7 +2819,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character voicepack select END*/
 					
 					#region /*Show right key for character voicepack select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack" + string(global.voicepack_for_player_2 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2 + 1)))
 					{
 						if (gamepad_is_connected(1))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -2861,8 +2861,8 @@ function scr_character_select_menu()
 		#endregion /*Player 2 Select Voice Pack END*/
 		
 		#region /*Player 3 Select Voice Pack*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack1"))
 		and (player3_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -2913,7 +2913,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack" + string(global.voicepack_for_player_3 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick3_delay = 30;
@@ -2937,8 +2937,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick3_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin1"))
 							{
 								player3_menu = "select_skin"; /*Go from selecting voicepack to selecting skin*/
 							}
@@ -3007,7 +3007,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character voicepack select END*/
 					
 					#region /*Show right key for character voicepack select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack" + string(global.voicepack_for_player_3 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3 + 1)))
 					{
 						if (gamepad_is_connected(2))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -3049,8 +3049,8 @@ function scr_character_select_menu()
 		#endregion /*Player 3 Select Voice Pack END*/
 		
 		#region /*Player 4 Select Voice Pack*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack1"))
 		and (player4_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -3101,7 +3101,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack" + string(global.voicepack_for_player_4 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick4_delay = 30;
@@ -3125,8 +3125,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick4_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin1"))
 							{
 								player4_menu = "select_skin"; /*Go from selecting voicepack to selecting skin*/
 							}
@@ -3195,7 +3195,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character voicepack select END*/
 					
 					#region /*Show right key for character voicepack select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack" + string(global.voicepack_for_player_4 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4 + 1)))
 					{
 						if (gamepad_is_connected(2))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -4363,7 +4363,7 @@ function scr_character_select_menu()
 		{
 			if (name_enter_blink<1)
 			{
-				draw_text_outlined(window_get_width()/2 + player1_display_x + 4, window_get_height()/2 + name_y, string(global.player1_name)+"|", global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(window_get_width()/2 + player1_display_x + 4, window_get_height()/2 + name_y, string(global.player1_name) + "|", global.default_text_size, c_black, c_white, 1);
 			}
 			else
 			{
@@ -4431,7 +4431,7 @@ function scr_character_select_menu()
 		{
 			if (name_enter_blink<1)
 			{
-				draw_text_outlined(window_get_width()/2 + player2_display_x + 4, window_get_height()/2 + name_y, string(global.player2_name)+"|", global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(window_get_width()/2 + player2_display_x + 4, window_get_height()/2 + name_y, string(global.player2_name) + "|", global.default_text_size, c_black, c_white, 1);
 			}
 			else
 			{
@@ -4499,7 +4499,7 @@ function scr_character_select_menu()
 		{
 			if (name_enter_blink<1)
 			{
-				draw_text_outlined(window_get_width()/2 + player3_display_x + 4, window_get_height()/2 + name_y, string(global.player3_name)+"|", global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(window_get_width()/2 + player3_display_x + 4, window_get_height()/2 + name_y, string(global.player3_name) + "|", global.default_text_size, c_black, c_white, 1);
 			}
 			else
 			{
@@ -4567,7 +4567,7 @@ function scr_character_select_menu()
 		{
 			if (name_enter_blink<1)
 			{
-				draw_text_outlined(window_get_width()/2 + player4_display_x + 4, window_get_height()/2 + name_y, string(global.player4_name)+"|", global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(window_get_width()/2 + player4_display_x + 4, window_get_height()/2 + name_y, string(global.player4_name) + "|", global.default_text_size, c_black, c_white, 1);
 			}
 			else
 			{
@@ -4627,7 +4627,7 @@ function scr_character_select_menu()
 			draw_text_outlined(
 			window_get_width()/2 + player1_display_x + 100,
 			window_get_height()/2+290,
-			string(string_length(global.player1_name))+"/20",global.default_text_size,c_black,c_ltgray,1);
+			string(string_length(global.player1_name)) + "/20",global.default_text_size,c_black,c_ltgray,1);
 		}
 		
 		if (string_length(global.player1_name)>20)
@@ -4664,7 +4664,7 @@ function scr_character_select_menu()
 			draw_text_outlined(
 			window_get_width()/2 + player2_display_x + 100,
 			window_get_height()/2+290,
-			string(string_length(global.player2_name))+"/20",global.default_text_size,c_black,c_ltgray,1);
+			string(string_length(global.player2_name)) + "/20",global.default_text_size,c_black,c_ltgray,1);
 		}
 		
 		if (string_length(global.player2_name)>20)
@@ -4701,7 +4701,7 @@ function scr_character_select_menu()
 			draw_text_outlined(
 			window_get_width()/2 + player3_display_x + 100,
 			window_get_height()/2+290,
-			string(string_length(global.player3_name))+"/20",global.default_text_size,c_black,c_ltgray,1);
+			string(string_length(global.player3_name)) + "/20",global.default_text_size,c_black,c_ltgray,1);
 		}
 		
 		if (string_length(global.player3_name)>20)
@@ -4738,7 +4738,7 @@ function scr_character_select_menu()
 			draw_text_outlined(
 			window_get_width()/2 + player4_display_x + 100,
 			window_get_height()/2+290,
-			string(string_length(global.player4_name))+"/20",global.default_text_size,c_black,c_ltgray,1);
+			string(string_length(global.player4_name)) + "/20",global.default_text_size,c_black,c_ltgray,1);
 		}
 		
 		if (string_length(global.player4_name)>20)
@@ -4836,16 +4836,16 @@ function scr_character_select_menu()
 				}
 				
 				#region /*Character select portrait x and y origin points*/
-				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
-				or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+				or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 				{
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 					{
-						ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+						ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 					}
 					else
 					{
-						ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+						ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 					}
 						
 					#region /*Character select portrait x and y origin points*/
@@ -4970,16 +4970,16 @@ function scr_character_select_menu()
 				xx1=player1_display_x + 32;
 					
 				#region /*Character select portrait x and y origin points*/
-				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
-				or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+				or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 				{
-				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini"))
+				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 				{
-				ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+				ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 				}
 				else
 				{
-				ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/data/sprite_origin_point.ini");
+				ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini");
 				}
 						
 				#region /*Character select portrait x and y origin points*/
@@ -5118,14 +5118,14 @@ function scr_character_select_menu()
 			menu_delay = 3;
 			menu_joystick1_delay = 30;
 			player1_accept_selection = 0;
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin1"))
 			{
 				player1_menu = "select_skin";
 			}
 			else
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack1"))
 			{
 				player1_menu = "select_voicepack";
 			}
@@ -5155,14 +5155,14 @@ function scr_character_select_menu()
 		{
 			menu_delay = 3;
 			menu_joystick1_delay = 30;
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sounds/voicepack1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack1"))
 			{
 				player1_menu = "select_voicepack";
 			}
 			else
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))+"/sprites/skin1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin1"))
 			{
 				player1_menu = "select_skin";
 			}
@@ -5243,16 +5243,16 @@ function scr_character_select_menu()
 					}
 					
 					#region /*Character select portrait x and y origin points*/
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
-					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
+					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 					{
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 						{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 						}
 						else
 						{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 						}
 						
 						#region /*Character select portrait x and y origin points*/
@@ -5378,16 +5378,16 @@ function scr_character_select_menu()
 					
 					
 					#region /*Character select portrait x and y origin points*/
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
-					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
+					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 					{
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 						{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 						}
 						else
 						{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini");
 						}
 						
 						#region /*Character select portrait x and y origin points*/
@@ -5505,14 +5505,14 @@ function scr_character_select_menu()
 		{
 			menu_delay = 3;
 			menu_joystick2_delay = 30;
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin1"))
 			{
 				player2_menu = "select_skin";
 			}
 			else
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack1"))
 			{
 				player2_menu = "select_voicepack";
 			}
@@ -5541,14 +5541,14 @@ function scr_character_select_menu()
 			{
 				menu_delay=3;
 				menu_joystick2_delay=30;
-				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack0"))
-				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sounds/voicepack1"))
+				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack0"))
+				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack1"))
 				{
 					player2_menu = "select_voicepack";
 				}
 				else
-				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin0"))
-				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))+"/sprites/skin1"))
+				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin0"))
+				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin1"))
 				{
 					player2_menu = "select_skin";
 				}
@@ -5632,16 +5632,16 @@ function scr_character_select_menu()
 					}
 					
 					#region /*Character select portrait x and y origin points*/
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
-					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
+					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 					{
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 						{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 						}
 						else
 						{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 						}
 						
 						#region /*Character select portrait x and y origin points*/
@@ -5766,16 +5766,16 @@ function scr_character_select_menu()
 					xx3=player3_display_x + 32;
 					
 					#region /*Character select portrait x and y origin points*/
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
-					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
+					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 					{
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 						{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 						}
 						else
 						{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini");
 						}
 						
 						#region /*Character select portrait x and y origin points*/
@@ -5917,14 +5917,14 @@ function scr_character_select_menu()
 		{
 			menu_delay = 3;
 			menu_joystick3_delay = 30;
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin1"))
 			{
 				player3_menu = "select_skin";
 			}
 			else
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack1"))
 			{
 				player3_menu = "select_voicepack";
 			}
@@ -5953,14 +5953,14 @@ function scr_character_select_menu()
 			{
 				menu_delay=3;
 				menu_joystick3_delay=30;
-				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack0"))
-				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sounds/voicepack1"))
+				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack0"))
+				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack1"))
 				{
 					player3_menu = "select_voicepack";
 				}
 				else
-				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin0"))
-				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))+"/sprites/skin1"))
+				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin0"))
+				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin1"))
 				{
 					player3_menu = "select_skin";
 				}
@@ -6043,16 +6043,16 @@ function scr_character_select_menu()
 					}
 					
 					#region /*Character select portrait x and y origin points*/
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
-					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
+					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 					{
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 						{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 						}
 						else
 						{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 						}
 						
 						#region /*Character select portrait x and y origin points*/
@@ -6201,16 +6201,16 @@ function scr_character_select_menu()
 					xx4=player4_display_x + 32;
 					
 					#region /*Character select portrait x and y origin points*/
-					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
-					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
+					or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 					{
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 						{
-							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+							ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 						}
 						else
 						{
-							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/data/sprite_origin_point.ini");
+							ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini");
 						}
 						
 						#region /*Character select portrait x and y origin points*/
@@ -6352,14 +6352,14 @@ function scr_character_select_menu()
 		{
 			menu_delay = 3;
 			menu_joystick4_delay = 30;
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin1"))
 			{
 				player4_menu = "select_skin";
 			}
 			else
-			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack0"))
-			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack1"))
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack0"))
+			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack1"))
 			{
 				player4_menu = "select_voicepack";
 			}
@@ -6388,14 +6388,14 @@ function scr_character_select_menu()
 			{
 				menu_delay=3;
 				menu_joystick4_delay=30;
-				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack0"))
-				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sounds/voicepack1"))
+				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack0"))
+				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack1"))
 				{
 					player4_menu = "select_voicepack";
 				}
 				else
-				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin0"))
-				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))+"/sprites/skin1"))
+				if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin0"))
+				and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin1"))
 				{
 					player4_menu = "select_skin";
 				}
@@ -6916,6 +6916,10 @@ and (player4_accept_selection >= 0)
 	and (player3_accept_selection != 0)
 	and (player4_accept_selection != 0)
 	{
+		global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+		global.character_for_player_2 = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
+		global.character_for_player_3 = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
+		global.character_for_player_4 = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
 		player_start_game = true;
 	}
 	else
@@ -6924,6 +6928,10 @@ and (player4_accept_selection >= 0)
 	and (player3_accept_selection != 0)
 	and (player4_accept_selection != 0)
 	{
+		global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+		global.character_for_player_2 = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
+		global.character_for_player_3 = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
+		global.character_for_player_4 = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
 		player_start_game = true;
 	}
 	else
@@ -6932,6 +6940,10 @@ and (player4_accept_selection >= 0)
 	and (player3_accept_selection = true)
 	and (player4_accept_selection != 0)
 	{
+		global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+		global.character_for_player_2 = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
+		global.character_for_player_3 = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
+		global.character_for_player_4 = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
 		player_start_game = true;
 	}
 	else
@@ -6940,6 +6952,10 @@ and (player4_accept_selection >= 0)
 	and (player3_accept_selection != 0)
 	and (player4_accept_selection = true)
 	{
+		global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+		global.character_for_player_2 = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
+		global.character_for_player_3 = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
+		global.character_for_player_4 = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
 		player_start_game = true;
 	}
 	else
