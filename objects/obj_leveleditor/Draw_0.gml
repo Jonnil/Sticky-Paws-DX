@@ -1561,6 +1561,7 @@ or (gamepad_button_check_pressed(0, gp_select))
 				file_delete(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/automatic_thumbnail.png")
 			}
 			else
+			if (global.level_name != "")
 			{
 				file_delete(working_directory+"/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png")
 			}
@@ -1572,6 +1573,7 @@ or (gamepad_button_check_pressed(0, gp_select))
 				sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/automatic_thumbnail.png");
 			}
 			else
+			if (global.level_name != "")
 			{
 				sprite_save(thumbnail_sprite,0,working_directory+"/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
 			}

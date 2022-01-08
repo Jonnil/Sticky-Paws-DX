@@ -673,6 +673,34 @@ function scr_select_official_level_menu()
 			
 			#endregion /*Update All Backgrounds END*/
 			
+			#region /*Create Ground Tileset PNG if there is none*/
+			if (global.character_select_in_this_menu = "level_editor")
+			and (global.level_name != "")
+			and (!file_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
+			{
+				#region /*Save sprite in directory*/
+				sprite_variable = sprite_duplicate(spr_ground_tileset);
+				sprite_save(sprite_variable, 0, working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png");
+				#endregion /*Save sprite in directory END*/
+			}
+			#endregion /*Create Ground Tileset PNG if there is none END*/
+			
+			#region /*Level Tileset File*/
+			sprite_delete(global.custom_tileset);
+			
+			if (global.character_select_in_this_menu = "level_editor")
+			and (global.create_level_from_template >= true)
+			and (global.level_name != "")
+			and(file_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
+			{
+				global.custom_tileset = sprite_add(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png",0,false,false,0,0);
+			}
+			else
+			{
+				global.custom_tileset = noone;
+			}
+			#endregion /*Level Tileset File END*/
+			
 			room_goto(room_leveleditor);
 		}
 		global.actually_play_edited_level = false;
@@ -685,6 +713,6 @@ function scr_select_official_level_menu()
 	draw_set_alpha(0.5);
 	draw_rectangle_color(400, 16, window_get_width()-400, 116, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
-	draw_text_outlined(window_get_width()/2, 50, "Select Template Level", global.default_text_size*2, c_white, c_black, 1);
-	draw_text_outlined(window_get_width()/2, 100, "These are official levels from the game. Learn how these levels were made!", global.default_text_size, c_white, c_black, 1);
+	draw_text_outlined(window_get_width()/2, 50, "Select Template Level", global.default_text_size*2, c_black, c_white, 1);
+	draw_text_outlined(window_get_width()/2, 100, "These are official levels from the game. Learn how these levels were made!", global.default_text_size, c_black, c_white, 1);
 }

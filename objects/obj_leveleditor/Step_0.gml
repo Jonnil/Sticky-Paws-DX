@@ -15,16 +15,7 @@ if (keyboard_check_pressed(global.fullscreen_key))
 }
 #endregion /*Fullscreen Toggle if camera doesn't exist. Default: F11 END*/
 
-#region /*Parallax Scrolling Background*/
-layer_x(layer_get_id("Background"),camera_get_view_x(view_camera[view_current])/3);
-layer_y(layer_get_id("Background"),camera_get_view_y(view_camera[view_current])/3);
-layer_x(layer_get_id("Background_2"),camera_get_view_x(view_camera[view_current])/4);
-layer_y(layer_get_id("Background_2"),camera_get_view_y(view_camera[view_current])/4);
-layer_x(layer_get_id("Background_3"),camera_get_view_x(view_camera[view_current])/7);
-layer_y(layer_get_id("Background_3"),camera_get_view_y(view_camera[view_current])/7);
-layer_x(layer_get_id("Background_4"),camera_get_view_x(view_camera[view_current])/9);
-layer_y(layer_get_id("Background_4"),camera_get_view_y(view_camera[view_current])/9);
-#endregion /*Parallax Scrolling Background END*/
+scr_parallax_scrolling_background();
 
 #region /*Deactivate instances outside view*/
 if (startup_loading_timer<=3)

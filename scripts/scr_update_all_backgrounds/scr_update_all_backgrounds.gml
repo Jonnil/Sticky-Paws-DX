@@ -439,6 +439,13 @@ function scr_update_all_backgrounds()
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template >= true)
+	and(file_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
+	{
+		global.custom_tileset = sprite_add(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png",0,false,false,0,0);
+	}
+	else
+	if (global.character_select_in_this_menu = "level_editor")
 	and(file_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/tilesets/ground_tileset.png"))
 	{
 		global.custom_tileset = sprite_add(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/tilesets/ground_tileset.png",0,false,false,0,0);

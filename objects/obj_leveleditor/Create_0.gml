@@ -160,35 +160,304 @@ room_speed = global.max_fps; /*Room Speed is Max FPS*/
 image_speed=0;
 image_index=0;
 
-
-#region /*Load Level Information*/
+#region /*Initialize level_information.ini*/
 if (global.character_select_in_this_menu = "main_game")
-and(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/level_information.ini"))
+and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
-and (global.select_level_index >= 1)
-and(file_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini"))
+or (global.character_select_in_this_menu = "level_editor")
+and (global.create_level_from_template = true)
+and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
+or (global.character_select_in_this_menu = "level_editor")
 and (global.select_level_index <= 0)
-and(file_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+
+or (global.character_select_in_this_menu = "level_editor")
+and (global.create_level_from_template >= 2)
+and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+
+or (global.character_select_in_this_menu = "level_editor")
+and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu = "main_game")
+	or (global.create_level_from_template = true)
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/level_information.ini");
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
-	and (global.select_level_index >= 1)
+	and (global.select_level_index <= 0)
+	or (global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template >= 2)
 	{
-		ini_open(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini");
+		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
-	and (global.level_name != "")
 	{
-		ini_open(working_directory+"/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini");
 	}
+	
+	#region /*Custom Backgrounds*/
+	
+	#region /*Custom Background 4 x and y parallax points*/
+	#region /*Custom Background 4 y parallax point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_y_parallax"))
+	{
+		custom_background_4_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
+		}
+		custom_background_4_y_parallax = 9;
+	}
+	#endregion /*Custom Background 4 y parallax point END*/
+	
+	#region /*Custom Background 4 x parallax point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_x_parallax"))
+	{
+		custom_background_4_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
+		}
+		custom_background_4_x_parallax = 9;
+	}
+	#endregion /*Custom Background 4 x parallax point END*/
+	#endregion /*Custom Background 4 x and y parallax points END*/
+	
+	#region /*Custom Background 3 x and y parallax points*/
+	#region /*Custom Background 3 y parallax point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_y_parallax"))
+	{
+		custom_background_3_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
+		}
+		custom_background_3_y_parallax = 7;
+	}
+	#endregion /*Custom Background 3 y parallax point END*/
+	
+	#region /*Custom Background 3 x parallax point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_x_parallax"))
+	{
+		custom_background_3_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
+		}
+		custom_background_3_x_parallax = 7;
+	}
+	#endregion /*Custom Background 3 x parallax point END*/
+	#endregion /*Custom Background 3 x and y parallax points END*/
+	
+	#region /*Custom Background 2 x and y parallax points*/
+	#region /*Custom Background 2 y parallax point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_y_parallax"))
+	{
+		custom_background_2_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
+		}
+		custom_background_2_y_parallax = 5;
+	}
+	#endregion /*Custom Background 2 y parallax point END*/
+	
+	#region /*Custom Background 2 x parallax point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_x_parallax"))
+	{
+		custom_background_2_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
+		}
+		custom_background_2_x_parallax = 5;
+	}
+	#endregion /*Custom Background 2 x parallax point END*/
+	#endregion /*Custom Background 2 x and y parallax points END*/
+	
+	#region /*Custom Background 1 x and y parallax points*/
+	#region /*Custom Background 1 y parallax point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_y_parallax"))
+	{
+		custom_background_1_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
+		}
+		custom_background_1_y_parallax = 3;
+	}
+	#endregion /*Custom Background 1 y parallax point END*/
+	
+	#region /*Custom Background 1 x parallax point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_x_parallax"))
+	{
+		custom_background_1_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
+		}
+		custom_background_1_x_parallax = 3;
+	}
+	#endregion /*Custom Background 1 x parallax point END*/
+	#endregion /*Custom Background 1 x and y parallax points END*/
+	
+	#region /*Custom Background 4 x and y offset points*/
+	#region /*Custom Background 4 y offset point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_y_offset"))
+	{
+		custom_background_4_y_offset = ini_read_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
+		}
+		custom_background_4_y_offset = 0;
+	}
+	#endregion /*Custom Background 4 y offset point END*/
+	
+	#region /*Custom Background 4 x offset point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_x_offset"))
+	{
+		custom_background_4_x_offset = ini_read_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
+		}
+		custom_background_4_x_offset = 0;
+	}
+	#endregion /*Custom Background 4 x offset point END*/
+	#endregion /*Custom Background 4 x and y offset points END*/
+	
+	#region /*Custom Background 3 x and y offset points*/
+	#region /*Custom Background 3 y offset point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_y_offset"))
+	{
+		custom_background_3_y_offset = ini_read_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
+		}
+		custom_background_3_y_offset = 0;
+	}
+	#endregion /*Custom Background 3 y offset point END*/
+	
+	#region /*Custom Background 3 x offset point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_x_offset"))
+	{
+		custom_background_3_x_offset = ini_read_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
+		}
+		custom_background_3_x_offset = 0;
+	}
+	#endregion /*Custom Background 3 x offset point END*/
+	#endregion /*Custom Background 3 x and y offset points END*/
+	
+	#region /*Custom Background 2 x and y offset points*/
+	#region /*Custom Background 2 y offset point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_y_offset"))
+	{
+		custom_background_2_y_offset = ini_read_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
+		}
+		custom_background_2_y_offset = 0;
+	}
+	#endregion /*Custom Background 2 y offset point END*/
+	
+	#region /*Custom Background 2 x offset point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_x_offset"))
+	{
+		custom_background_2_x_offset = ini_read_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
+		}
+		custom_background_2_x_offset = 0;
+	}
+	#endregion /*Custom Background 2 x offset point END*/
+	#endregion /*Custom Background 2 x and y offset points END*/
+	
+	#region /*Custom Background 1 x and y offset points*/
+	#region /*Custom Background 1 y offset point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_y_offset"))
+	{
+		custom_background_1_y_offset = ini_read_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
+		}
+		custom_background_1_y_offset = 0;
+	}
+	#endregion /*Custom Background 1 y offset point END*/
+	
+	#region /*Custom Background 1 x offset point*/
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_x_offset"))
+	{
+		custom_background_1_x_offset = ini_read_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
+		}
+		custom_background_1_x_offset = 0;
+	}
+	#endregion /*Custom Background 1 x offset point END*/
+	#endregion /*Custom Background 1 x and y offset points END*/
+	
+	#endregion /*Custom Backgrounds END*/
+	
 	if (ini_key_exists("info","level_name"))
 	{
 		level_name = ini_read_string("info","level_name",0);
@@ -236,15 +505,32 @@ and(file_exists(working_directory+"/custom_levels/" + string(global.level_name) 
 			y = ini_read_real("info", "view_yview", 0);
 		}
 	}
+	
 	ini_close();
 }
 else
 {
+	custom_background_1_x_offset = 0;
+	custom_background_1_y_offset = 0;
+	custom_background_2_x_offset = 0;
+	custom_background_2_y_offset = 0;
+	custom_background_3_x_offset = 0;
+	custom_background_3_y_offset = 0;
+	custom_background_4_x_offset = 0;
+	custom_background_4_y_offset = 0;
+	custom_background_1_x_parallax = 3;
+	custom_background_1_y_parallax = 3;
+	custom_background_2_x_parallax = 5;
+	custom_background_2_y_parallax = 5;
+	custom_background_3_x_parallax = 7;
+	custom_background_3_y_parallax = 7;
+	custom_background_4_x_parallax = 9;
+	custom_background_4_y_parallax = 9;
 	level_name="";
 	global.time_countdown = noone;
 	global.time_countdown_bonus = 500;
 }
-#endregion /*Load Level Information END*/
+#endregion /*Initialize level_information.ini END*/
 
 #region /*Create Ground Tileset PNG if there is none*/
 if (global.character_select_in_this_menu = "level_editor")

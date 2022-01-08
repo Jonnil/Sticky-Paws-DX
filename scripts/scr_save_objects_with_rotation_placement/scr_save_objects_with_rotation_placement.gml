@@ -10,6 +10,7 @@ and (global.create_level_from_template = false)
 	file = file_text_open_write(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/object_rotation_placement.txt"); /*Open file for writing*/
 }
 else
+if (global.level_name != "")
 {
 	file = file_text_open_write(working_directory+"/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"); /*Open file for writing*/
 }
