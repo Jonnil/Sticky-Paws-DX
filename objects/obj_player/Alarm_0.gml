@@ -147,7 +147,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 		allow_homing_tongue = false;
 	}
 	#endregion /*Allow homing attack*/
-
+	
 	#region /*Allow crawl*/
 	if (ini_key_exists("allow abilities", "allow_crawl"))
 	{
@@ -159,7 +159,19 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 		allow_crawl = true;
 	}
 	#endregion /*Allow crawl*/
-
+	
+	#region /*Allow crouch*/
+	if (ini_key_exists("allow abilities", "allow_crouch"))
+	{
+		allow_crouch = ini_read_real("allow abilities", "allow_crouch", true);
+	}
+	else
+	{
+		//ini_write_real("allow abilities", "allow_crouch", true);
+		allow_crouch = true;
+	}
+	#endregion /*Allow crouch*/
+	
 	#region /*Allow tongue*/
 	if (ini_key_exists("allow abilities", "allow_tongue"))
 	{
@@ -202,6 +214,7 @@ else
 	allow_run = true;
 	allow_homing_tongue = false;
 	allow_crawl = true;
+	allow_crouch = true;
 	allow_tongue = false; /*A tongue that extends*/
 	allow_overflow_hp = false;
 	//ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini");
@@ -218,6 +231,7 @@ else
 	//if(!ini_key_exists("allow abilities", "allow_dive_ground_boost")){ini_write_real("allow abilities", "allow_dive_ground_boost", true);}
 	//if(!ini_key_exists("allow abilities", "allow_dive")){ini_write_real("allow abilities", "allow_dive", true);}
 	//if(!ini_key_exists("allow abilities", "allow_crawl")){ini_write_real("allow abilities", "allow_crawl", true);}
+	//if(!ini_key_exists("allow abilities", "allow_crouch")){ini_write_real("allow abilities", "allow_crouch", true);}
 	//if(!ini_key_exists("allow abilities", "allow_tongue")){ini_write_real("allow abilities", "allow_tongue", false);}
 	//if(!ini_key_exists("allow abilities", "allow_overflow_hp")){ini_write_real("allow abilities", "allow_overflow_hp", false);}
 	//ini_close();

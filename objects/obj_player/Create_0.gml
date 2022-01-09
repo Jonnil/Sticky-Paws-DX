@@ -646,6 +646,7 @@ stomp_spin = false;
 chain_reaction = 0;
 goal = false;
 spring = false;
+spring_twist_sprite = false;
 move_towards_spring_endpoint = false;
 spring_endpoint_x = 0;
 spring_endpoint_y = 0;

@@ -12,3 +12,4 @@ takendamage=0;
 draw_xscale=0;draw_yscale=0;
 redblinktimer=0;
 has_seen_player = false; /*If boss hasn't seen player, then don't activate the fight yet.*/
+arrow_xscale = 0;

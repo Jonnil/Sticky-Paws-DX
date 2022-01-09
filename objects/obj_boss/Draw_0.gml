@@ -622,12 +622,11 @@ else
 		}
 	}
 }
-if asset_get_type("spr_arrow_boss") == asset_sprite
+if (asset_get_type("spr_arrow_sign") == asset_sprite)
+and (can_jump_on_head = true)
 {
-	if can_jump_on_head = true
-	{
-		draw_sprite_ext(spr_arrow_boss, image_index, x, y - 32, image_xscale, image_yscale, 0, image_blend, 1);
-	}
+	arrow_xscale = Wave(1, 0, 1, 0);
+	draw_sprite_ext(spr_arrow_sign, image_index, x, y - 32, 1, arrow_xscale, 270, image_blend, 1);
 }
 
 if (hp <= 0)
