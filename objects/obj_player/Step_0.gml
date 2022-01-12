@@ -6541,6 +6541,7 @@ and (takendamage <= takendamage_freezetime)
 				{
 					if (ground_pound = false)
 					{
+						spring_twist_sprite = false;
 						can_climb_horizontal_rope_cooldown = sprite_height / 6;
 						ground_pound = true;
 						stick_to_wall = false;
@@ -8257,18 +8258,16 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	}
 	
 	spring_animation=0;
-	move_towards_point(
-	instance_nearest(x,y,obj_spring).second_x,
-	instance_nearest(x,y,obj_spring).second_y,
-	instance_nearest(x,y,obj_spring).bounce_height);
-	if (hspeed<0)
+	spring_twist_sprite = true;
+	move_towards_point(instance_nearest(x,y,obj_spring).second_x, instance_nearest(x,y,obj_spring).second_y, instance_nearest(x,y,obj_spring).bounce_height);
+	if (hspeed < 0)
 	{
-		image_xscale=-1;
+		image_xscale = -1;
 	}
 	else
-	if (hspeed>0)
+	if (hspeed > 0)
 	{
-		image_xscale=+1;
+		image_xscale = +1;
 	}
 	can_climb_horizontal_rope_cooldown = sprite_height/10;
 	midair_jumps_left=number_of_jumps;
@@ -8335,7 +8334,6 @@ if (spring = true)
 {
 	if (spring_animation = 0)
 	{
-		spring_twist_sprite = true;
 		if (image_index > image_number-1)
 		{
 			image_index = 0;;
@@ -8387,8 +8385,10 @@ if (spring = true)
 	#region /*Make the cahracter face wherever you're going*/
 	if (spring_twist_sprite = true)
 	{
-		angle = lerp(angle, direction-90, 0.1);
-		if (speed < 4)
+		angle = direction-90;
+		if (speed < 6)
+		or (direction >= 90-10)
+		and (direction <= 90+10)
 		{
 			spring_twist_sprite = false;
 		}

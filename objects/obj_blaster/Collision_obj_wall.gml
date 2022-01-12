@@ -5,7 +5,7 @@ and(!position_meeting(x,bbox_bottom+1,obj_wall))
 }
 else
 {
-	move_snap(32,32);
+	move_snap(32, 32);
 	hspeed=0;
 	vspeed=0;
 	gravity=0;

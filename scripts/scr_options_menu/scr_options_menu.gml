@@ -5830,35 +5830,43 @@ function scr_options_menu()
 	#region /*Show the player when they can input a key to remap controls*/
 	if (input_key = true)
 	{
-		draw_set_alpha(0.5);
-		draw_rectangle_color(window_get_width()/2-232, 32-16, window_get_width()/2+232, 32+16, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(0.75);
+		draw_rectangle_color(window_get_width()/2-232, 32-20, window_get_width()/2+232, 64+20, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
 		#region /*Text saying input key now for player 1*/
 		if (remapping_player = 0)
 		{
-			draw_text_outlined(window_get_width()/2,32,"INPUT KEY NOW FOR PLAYER 1",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(window_get_width()/2, 32,"INPUT KEY NOW FOR PLAYER 1",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(window_get_width()/2-10, 64,"Buttons can be disabled using ",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 		}
 		#endregion /*Text saying input key now for player 1 END*/
 		
 		#region /*Text saying input key now for player 2*/
 		if (remapping_player = 1)
 		{
-			draw_text_outlined(window_get_width()/2,32,"INPUT KEY NOW FOR PLAYER 2",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(window_get_width()/2, 32,"INPUT KEY NOW FOR PLAYER 2/nButtons can be disabled using ",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(window_get_width()/2-10, 64,"Buttons can be disabled using ",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 		}
 		#endregion /*Text saying input key now for player 2 END*/
 		
 		#region /*Text saying input key now for player 3*/
 		if (remapping_player = 2)
 		{
-			draw_text_outlined(window_get_width()/2,32,"INPUT KEY NOW FOR PLAYER 3",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(window_get_width()/2, 32,"INPUT KEY NOW FOR PLAYER 3/nButtons can be disabled using ",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(window_get_width()/2-10, 64,"Buttons can be disabled using ",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 		}
 		#endregion /*Text saying input key now for player 3 END*/
 		
 		#region /*Text saying input key now for player 4*/
 		if (remapping_player = 3)
 		{
-			draw_text_outlined(window_get_width()/2,32,"INPUT KEY NOW FOR PLAYER 4",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(window_get_width()/2, 32,"INPUT KEY NOW FOR PLAYER 4/nButtons can be disabled using ",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_text_outlined(window_get_width()/2-10, 64,"Buttons can be disabled using ",global.default_text_size,c_menu_outline,c_menu_fill,1);
+			draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 		}
 		#endregion /*Text saying input key now for player 4 END*/
 		

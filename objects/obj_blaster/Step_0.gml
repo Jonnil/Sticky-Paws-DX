@@ -10,7 +10,7 @@ and(y>camera_get_view_y(view_camera[view_current]))
 }
 else
 {
-	move_snap(32,32);
+	move_snap(32, 32);
 	hspeed=0;
 	vspeed=0;
 	gravity=0;
