@@ -1559,6 +1559,12 @@
     {"CopyToMask":-1,"filePath":"datafiles/characters/Sticky/sprites/skin6","resourceVersion":"1.0","name":"vine_stay.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/Sticky/sprites/skin6","resourceVersion":"1.0","name":"wall_slide_up_strip8.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/Sticky/sprites/skin6","resourceVersion":"1.0","name":"map_enter_level_strip9.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Intro/Sounds/ambiance","resourceVersion":"1.0","name":"ambiance.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Levels/Level3/Sounds/ambience","resourceVersion":"1.0","name":"ambience.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Resourcepacks/Resourcepack0/sound","resourceVersion":"1.0","name":"splash_easteregg.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Resourcepacks/Resourcepack0/Sprites","resourceVersion":"1.0","name":"artwork_collection_strip75.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Resourcepacks/Resourcepack0/Sprites","resourceVersion":"1.0","name":"splash_controller.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/Resourcepacks/Resourcepack0/Sprites","resourceVersion":"1.0","name":"splash_easteregg.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.7.606",

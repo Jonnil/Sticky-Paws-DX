@@ -50,14 +50,14 @@ function draw_menu_slider()
 				
 				if (menu = "background_brightness_gameplay")
 				{
-					global.background_brightness_gameplay = clamp((window_mouse_get_x()-x_position-148)/(length_variable), -1, 1);
-					variable_to_change = (global.background_brightness_gameplay+1)*160;
+					global.background_brightness_gameplay = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(-1))+(-1);
+					variable_to_change = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(-1))+(-1);
 				}
 				else
 				if (menu = "background_brightness_menu")
 				{
-					global.background_brightness_menu = clamp((window_mouse_get_x()-x_position-148)/(length_variable), -1, 1);
-					variable_to_change = (global.background_brightness_menu+1)*160;
+					global.background_brightness_menu = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(-1))+(-1);
+					variable_to_change = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(-1))+(-1);
 				}
 				else
 				{
@@ -76,17 +76,17 @@ function draw_menu_slider()
 		{
 			if (variable_to_change < 0)
 			{
-				draw_rectangle_color(x_position+variable_to_change-2,y_position-16,x_position+variable_to_change+2,y_position+16,c_white,c_white,c_white,c_white,false);
+				draw_rectangle_color(x_position+(variable_to_change-(-1))/(1-(-1))*320-2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320+2,y_position+16,c_white,c_white,c_white,c_white,false);
 			}
 			else
 			{
-				draw_rectangle_color(x_position+variable_to_change-2,y_position-16,x_position+variable_to_change+2,y_position+16,c_black,c_black,c_black,c_black,false);
+				draw_rectangle_color(x_position+(variable_to_change-(-1))/(1-(-1))*320-2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320+2,y_position+16,c_black,c_black,c_black,c_black,false);
 			}
 		}
 		else
 		if (menu_index = "background_brightness_menu")
 		{
-			draw_rectangle_color(x_position+variable_to_change-2,y_position-16,x_position+variable_to_change+2,y_position+16,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);
+			draw_rectangle_color(x_position+(variable_to_change-(-1))/(1-(-1))*320-2,y_position-16,x_position+(variable_to_change - (-1))/(1-(-1))*320+2,y_position+16,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);
 		}
 	}
 	else

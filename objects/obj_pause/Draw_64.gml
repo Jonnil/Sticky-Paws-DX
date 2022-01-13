@@ -1,7 +1,7 @@
 //instance_deactivate_all(true);
 instance_activate_object(obj_pause);
 
-if (global.background_brightness_menu>-0.1)
+if (global.background_brightness_menu>-0.001)
 {
 	c_menu_outline=c_white;
 	c_menu_fill=c_black;
