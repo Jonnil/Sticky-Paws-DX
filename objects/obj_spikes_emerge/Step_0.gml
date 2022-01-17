@@ -19,7 +19,7 @@ if (global.spikes_emerge_time < room_speed * 1)
 }
 else
 if (global.spikes_emerge_time < room_speed * 2)
-and(global.spikes_emerge_time > room_speed * 1)
+and (global.spikes_emerge_time > room_speed * 1)
 {
 	if (asset_get_type("spr_spikes_emerge") == asset_sprite)
 	{
@@ -49,30 +49,30 @@ else
 }
 
 if (image_angle = 0)
-and(place_meeting(x, y - 2, instance_nearest(x, y, obj_player)))
-and(!place_meeting(x - 1, y, instance_nearest(x, y, obj_player)))
-and(!place_meeting(x + 1, y, instance_nearest(x, y, obj_player)))
-and(instance_nearest(x, y, obj_player).vspeed >= 0)
-or(image_angle = 90)
-and(place_meeting(x - 2, y, instance_nearest(x, y, obj_player)))
-and(!place_meeting(x, y - 1, instance_nearest(x, y, obj_player)))
-and(!place_meeting(x, y + 1, instance_nearest(x, y, obj_player)))
-and(instance_nearest(x, y, obj_player).hspeed >= 0)
-or(image_angle = 180)
-and(place_meeting(x, y + 2, instance_nearest(x, y, obj_player)))
-and(!place_meeting(x - 1, y, instance_nearest(x, y, obj_player)))
-and(!place_meeting(x + 1, y, instance_nearest(x, y, obj_player)))
-and(instance_nearest(x, y, obj_player).vspeed <= 0)
-or(image_angle = 270)
-and(place_meeting(x + 2, y, instance_nearest(x, y, obj_player)))
-and(!place_meeting(x, y - 1, instance_nearest(x, y, obj_player)))
-and(!place_meeting(x, y + 1, instance_nearest(x, y, obj_player)))
-and(instance_nearest(x, y, obj_player).hspeed <= 0)
+and (place_meeting(x, y - 2, instance_nearest(x, y, obj_player)))
+and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_player)))
+and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_player)))
+and (instance_nearest(x, y, obj_player).vspeed >= 0)
+or (image_angle = 90)
+and (place_meeting(x - 2, y, instance_nearest(x, y, obj_player)))
+and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_player)))
+and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_player)))
+and (instance_nearest(x, y, obj_player).hspeed >= 0)
+or (image_angle = 180)
+and (place_meeting(x, y + 2, instance_nearest(x, y, obj_player)))
+and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_player)))
+and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_player)))
+and (instance_nearest(x, y, obj_player).vspeed <= 0)
+or (image_angle = 270)
+and (place_meeting(x + 2, y, instance_nearest(x, y, obj_player)))
+and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_player)))
+and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_player)))
+and (instance_nearest(x, y, obj_player).hspeed <= 0)
 {
 	if (instance_nearest(x, y, obj_player).takendamage < 1)
-	and(instance_nearest(x, y, obj_player).assist_invincible = false)
-	and(asset_get_type("spr_spikes_emerge") == asset_sprite)
-	and(sprite_index = spr_spikes_emerge)
+	and (instance_nearest(x, y, obj_player).assist_invincible = false)
+	and (asset_get_type("spr_spikes_emerge") == asset_sprite)
+	and (sprite_index = spr_spikes_emerge)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
@@ -90,7 +90,7 @@ if (image_angle = 0)
 	if (position_meeting(x, y, instance_nearest(x, y, obj_player)))
 	{
 		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
-		and(sprite_index = spr_spikes_emerge)
+		and (sprite_index = spr_spikes_emerge)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{
@@ -105,7 +105,7 @@ if (image_angle = 90)
 	if (position_meeting(x, y, instance_nearest(x, y, obj_player)))
 	{
 		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
-		and(sprite_index = spr_spikes_emerge)
+		and (sprite_index = spr_spikes_emerge)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{
@@ -121,7 +121,7 @@ if (image_angle = 180)
 	if (position_meeting(x, y, instance_nearest(x, y, obj_player)))
 	{
 		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
-		and(sprite_index = spr_spikes_emerge)
+		and (sprite_index = spr_spikes_emerge)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{
@@ -136,7 +136,7 @@ if (image_angle = 270)
 	if (position_meeting(x, y, instance_nearest(x, y, obj_player)))
 	{
 		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
-		and(sprite_index = spr_spikes_emerge)
+		and (sprite_index = spr_spikes_emerge)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{
@@ -151,7 +151,7 @@ if (image_angle = 270)
 if (image_angle = 0)
 {
 	if (position_meeting(x, y - 4, instance_nearest(x, y, obj_player)))
-	and(instance_nearest(x, y, obj_player).dive = true)
+	and (instance_nearest(x, y, obj_player).dive = true)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
@@ -164,7 +164,7 @@ if (image_angle = 0)
 if (image_angle = 90)
 {
 	if (position_meeting(x - 4, y, instance_nearest(x, y, obj_player)))
-	and(instance_nearest(x, y, obj_player).dive = true)
+	and (instance_nearest(x, y, obj_player).dive = true)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
@@ -178,7 +178,7 @@ if (image_angle = 90)
 if (image_angle = 180)
 {
 	if (position_meeting(x, y + 4, instance_nearest(x, y, obj_player)))
-	and(instance_nearest(x, y, obj_player).dive = true)
+	and (instance_nearest(x, y, obj_player).dive = true)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
@@ -191,7 +191,7 @@ if (image_angle = 180)
 if (image_angle = 270)
 {
 	if (position_meeting(x + 4, y, instance_nearest(x, y, obj_player)))
-	and(instance_nearest(x, y, obj_player).dive = true)
+	and (instance_nearest(x, y, obj_player).dive = true)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{

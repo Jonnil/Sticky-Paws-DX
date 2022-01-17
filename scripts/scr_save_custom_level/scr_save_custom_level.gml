@@ -39,12 +39,12 @@ function scr_save_custom_level()
 		with(obj_leveleditor_placed_object)
 		{
 			if (object != 62)
-			and(object != 64)
-			and(object != 65)
-			and(object != 732)
-			and(object != 733)
-			and(object != 734)
-			and(object != 73)
+			and (object != 64)
+			and (object != 65)
+			and (object != 732)
+			and (object != 733)
+			and (object != 734)
+			and (object != 73)
 			{
 				str+=string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "|";
 			}

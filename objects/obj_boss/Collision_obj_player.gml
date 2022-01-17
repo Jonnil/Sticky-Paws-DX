@@ -1,6 +1,6 @@
 if (other.vspeed > 0)
-or(other.bbox_bottom < y)
-or(other.dive = true)
+or (other.bbox_bottom < y)
+or (other.dive = true)
 {
 	if (can_jump_on_head = true)
 	{
@@ -122,10 +122,10 @@ if (can_jump_on_head = true)
 else
 {
 	if (hp > 0)
-	and(takendamage = 0)
+	and (takendamage = 0)
 	{
 		if (other.takendamage<=0)
-		and(other.assist_invincible=false)
+		and (other.assist_invincible=false)
 		{
 			if (other.have_heart_balloon=true)
 			{
@@ -141,7 +141,7 @@ else
 }
 
 if (other.invincible > 0)
-and(hp > 0)
+and (hp > 0)
 {
 	hp = 0;
 	takendamage = 100;

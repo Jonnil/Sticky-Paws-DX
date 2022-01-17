@@ -59,7 +59,7 @@ else
 #region /*Set the gravity*/
 gravity_direction = 270; /*Direction of the gravity*/
 if (asset_get_type("obj_wall") == asset_object)
-and(!place_meeting(x, y + 1, obj_wall))
+and (!place_meeting(x, y + 1, obj_wall))
 {
 	gravity = 0.5; /*The gravity*/
 }
@@ -70,14 +70,14 @@ else
 #endregion /*Set the gravity END*/
 
 if (asset_get_type("obj_player") == asset_object)
-and(instance_exists(obj_player))
+and (instance_exists(obj_player))
 {
 	if (allow_move = true)
 	{
 		if (dir = +1)
 		{
 			if (instance_nearest(x, y, obj_player).x > x)
-			and(instance_nearest(x, y, obj_player).hspeed > +2)
+			and (instance_nearest(x, y, obj_player).hspeed > +2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed > +8)
@@ -93,7 +93,7 @@ and(instance_exists(obj_player))
 		else
 		{
 			if (instance_nearest(x, y, obj_player).x < x)
-			and(instance_nearest(x, y, obj_player).hspeed < -2)
+			and (instance_nearest(x, y, obj_player).hspeed < -2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed < -8)
@@ -112,7 +112,7 @@ and(instance_exists(obj_player))
 		hspeed = 0;
 	}
 	if (place_meeting(x, y, obj_player))
-	and(bounceup = false)
+	and (bounceup = false)
 	{
 		
 		#region /*Give Life*/
@@ -155,7 +155,7 @@ and(instance_exists(obj_player))
 		}
 		global.hud_show_lives = true;
 		if (asset_get_type("obj_camera") == asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -195,7 +195,7 @@ if effect_time < 60
 	effect_time += 1;
 }
 if effect_time > 60
-and(global.pause = false)
+and (global.pause = false)
 {
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);

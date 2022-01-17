@@ -21,10 +21,10 @@ if (clear_rate = "clear")
 {
 	image_alpha = 1;
 	if (big_collectible1 = true)
-	and(big_collectible2 = true)
-	and(big_collectible3 = true)
-	and(big_collectible4 = true)
-	and(big_collectible5 = true)
+	and (big_collectible2 = true)
+	and (big_collectible3 = true)
+	and (big_collectible4 = true)
+	and (big_collectible5 = true)
 	{
 		level_color = c_yellow;
 		level_perfect = true;
@@ -42,10 +42,10 @@ else
 
 #region /*Level Save*/
 if (asset_get_type("obj_player_map") == asset_object)
-and(instance_exists(obj_player_map))
-and(obj_player_map.move_delay = 1)
-and(obj_player_map.transfer_data = true)
-and(file_exists("file" + string(global.file) + ".ini"))
+and (instance_exists(obj_player_map))
+and (obj_player_map.move_delay = 1)
+and (obj_player_map.transfer_data = true)
+and (file_exists("file" + string(global.file) + ".ini"))
 {
 	ini_open("file" + string(global.file) + ".ini");
 	ini_write_string(ds_list_find_value(global.all_loaded_main_levels,level), "clear_rate", clear_rate);

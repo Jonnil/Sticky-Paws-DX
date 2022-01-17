@@ -62,7 +62,7 @@ if (file_exists("file" + string(global.file) + ".ini"))
 	
 	#region /*Load Player Position*/
 	if (ini_read_real("Player", "player_x", 0) > 0)
-	and(ini_read_real("Player", "player_y", 0) > 0)
+	and (ini_read_real("Player", "player_y", 0) > 0)
 	{
 		x = ini_read_real("Player", "player_x", 0);
 		y = ini_read_real("Player", "player_y", 0);

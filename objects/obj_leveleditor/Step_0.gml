@@ -24,8 +24,8 @@ if (startup_loading_timer<=3)
 }
 
 if (quit_level_editor=0)
-and(global.play_edited_level = false)
-and(startup_loading_timer>=3)
+and (global.play_edited_level = false)
+and (startup_loading_timer>=3)
 {
 	instance_activate_all();
 	if (global.deactivate_objects_outsiede_view=true)
@@ -59,6 +59,10 @@ if (asset_get_type("obj_foreground1")==asset_object)
 if (asset_get_type("obj_foreground2")==asset_object)
 {
 	instance_activate_object(obj_foreground2);
+}
+if (asset_get_type("obj_foreground_secret")==asset_object)
+{
+	instance_activate_object(obj_foreground_secret);
 }
 if (asset_get_type("obj_level_player_1_start")==asset_object)
 {

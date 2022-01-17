@@ -1,5 +1,5 @@
 if (asset_get_type("spr_bucket")==asset_sprite)
-and(sprite_index=spr_bucket)
+and (sprite_index=spr_bucket)
 {
 	if (asset_get_type("spr_bucket_clothes")==asset_sprite)
 	{

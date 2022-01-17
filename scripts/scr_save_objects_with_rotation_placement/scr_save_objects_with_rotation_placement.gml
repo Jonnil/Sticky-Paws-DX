@@ -20,12 +20,12 @@ str=""; /*Reset string var*/
 with(obj_leveleditor_placed_object)
 {
 	if (object = 62)
-	or(object = 64)
-	or(object = 65)
-	or(object = 732)
-	or(object = 733)
-	or(object = 734)
-	or(object = 73)
+	or (object = 64)
+	or (object = 65)
+	or (object = 732)
+	or (object = 733)
+	or (object = 734)
+	or (object = 73)
 	{
 		str+=string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "|" + string(second_x) + "|" + string(second_y) + "|";
 	}

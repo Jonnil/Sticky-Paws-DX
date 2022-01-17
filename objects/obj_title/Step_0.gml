@@ -187,9 +187,9 @@ if (menu = "load_official_level_template")
 		file_found = ds_list_find_value(global.all_loaded_main_levels, level_find_pos)
 		level_find_pos += 1;
 		
-		if (file_found = ds_list_find_value(global.all_loaded_main_levels, ds_list_size(global.all_loaded_main_levels)-1))
+		if (file_found = ds_list_find_value(global.all_loaded_main_levels, ds_list_size(global.all_loaded_main_levels) - 1))
 		{
-			file_found = ds_list_find_value(global.all_loaded_main_levels, ds_list_size(global.all_loaded_main_levels)-1)
+			file_found = ds_list_find_value(global.all_loaded_main_levels, ds_list_size(global.all_loaded_main_levels) - 1)
 			
 			#region /*Update Thumbnail*/
 			

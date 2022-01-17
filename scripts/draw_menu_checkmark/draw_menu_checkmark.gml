@@ -39,7 +39,7 @@ function draw_menu_checkmark()
 		and (open_dropdown = false)
 		{
 			draw_set_alpha(0.5);
-			draw_rectangle_color(x_position, y_position-widen_button_offset, x_position+width_of_button, y_position+32+widen_button_offset, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color (x_position, y_position-widen_button_offset, x_position+width_of_button, y_position+32+widen_button_offset, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			draw_sprite_ext(spr_menu_checkmark,0,x_position+42,y_position,1,1,0,c_lime,1);
 			{
@@ -67,7 +67,7 @@ function draw_menu_checkmark()
 		and (open_dropdown = false)
 		{
 			draw_set_alpha(0.5);
-			draw_rectangle_color(x_position, y_position-widen_button_offset, x_position+width_of_button, y_position+32+widen_button_offset, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color (x_position, y_position-widen_button_offset, x_position+width_of_button, y_position+32+widen_button_offset, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			draw_sprite_ext(spr_menu_checkmark,1,x_position+42,y_position,1,1,0,c_lime,1);
 			if (input_key = false)
@@ -123,7 +123,7 @@ function draw_menu_checkmark()
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		draw_set_alpha(0.5);
-		draw_rectangle_color(0,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-128,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
+		draw_rectangle_color (0,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]) - 128,camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]),camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
 		draw_set_alpha(1);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])/2,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-64,string(bottom_text),global.default_text_size,c_menu_outline,c_menu_fill,1);
 	}

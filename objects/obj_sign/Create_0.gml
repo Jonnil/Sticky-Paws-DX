@@ -1,7 +1,7 @@
 show_text=false;/*false by default, if text should show up or not*/
 button_prompt_alpha=0;button_prompt_blink=false;/*Button prompt visibility*/
 textbox_number=0;
-textrow_y=0;
+textrow_y = 0;
 text_row1="Hello!";
 text_row2="This is a test!";
 text_row3="Adding signs to level editor";

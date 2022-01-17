@@ -3,8 +3,8 @@ function scr_show_fps()
 	
 	#region /*Show FPS*/
 	if (global.pause = false)
-	and(asset_get_type("obj_title") == asset_object)
-	and(!instance_exists(obj_title))
+	and (asset_get_type("obj_title") == asset_object)
+	and (!instance_exists(obj_title))
 	{
 		
 		#region /*FPS*/

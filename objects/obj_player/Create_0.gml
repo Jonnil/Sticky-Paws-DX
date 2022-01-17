@@ -22,7 +22,7 @@ allow_dive = true; /*Dive when you have speed or during a ground pound*/
 allow_dive_ground_boost = true;
 allow_survive_lava = true;
 allow_run = true;
-allow_homing_tongue = false;
+allow_homing_attack = false;
 allow_crawl = true;
 allow_tongue = false; /*A tongue that extends*/
 allow_overflow_hp = false;
@@ -537,34 +537,34 @@ double_tap_right = false;
 
 #region /*Custom Music*/
 if (asset_get_type("room_title") == asset_room)
-and(room != room_title)
+and (room != room_title)
 {
 	
 	#region /*Update Level Clear Melody*/
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/clear_melody.ogg"))
-	and(global.character_select_in_this_menu = "main_game")
+	and (global.character_select_in_this_menu = "main_game")
 	{
 		level_clear_melody = audio_create_stream("/levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/clear_melody.ogg");
 	}
 	else
 	/*OGG big letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg"))
-	and(global.character_select_in_this_menu = "main_game")
+	and (global.character_select_in_this_menu = "main_game")
 	{
 		level_clear_melody = audio_create_stream("/levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg");
 	}
 	else
 	/*OGG small letter File*/
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody/clear_melody.ogg"))
-	and(global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu = "level_editor")
 	{
 		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody/clear_melody.ogg");
 	}
 	else
 	/*OGG big letter File*/
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg"))
-	and(global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu = "level_editor")
 	{
 		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg");
 	}
@@ -583,7 +583,7 @@ else
 
 #region /*Camera*/
 if (asset_get_type("obj_camera") == asset_object)
-and(!instance_exists(obj_camera))
+and (!instance_exists(obj_camera))
 {
 	instance_create_depth(x, y, 0, obj_camera);
 }
@@ -615,6 +615,8 @@ invincible = false;
 invincible_pitch = 1;
 drop_off_wall_climb = 0;
 
+homing_attack_x = 0;
+homing_attack_y = 0;
 in_water = false; /*If the player is in water or not, instead of checking for the actual obj_water, check for this variable instead*/
 old_in_water = false; /*This just checks if water splash effect should be done or not, by checking if the actual in_water is different from the old_in_water*/
 jump = 0;

@@ -27,7 +27,7 @@ function draw_menu_button_sprite()
 	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(mouse_x,mouse_y,x_position,y_position+1,x_position+spr_width,y_position+spr_height))
-	and(global.controls_used_for_menu_navigation = "mouse")
+	and (global.controls_used_for_menu_navigation = "mouse")
 	{
 		if (menu = menu_index)
 		and (global.controls_used_for_menu_navigation = "keyboard")
@@ -60,12 +60,12 @@ function draw_menu_button_sprite()
 	if (point_in_rectangle(mouse_x,mouse_y,x_position,y_position,x_position+spr_width,y_position+spr_height))
 	{
 		if (menu_takes_you_to=false)
-		or(menu_takes_you_to=noone)
-		or(menu_takes_you_to="")
-		or(menu_takes_you_to=menu_index)
+		or (menu_takes_you_to=noone)
+		or (menu_takes_you_to="")
+		or (menu_takes_you_to=menu_index)
 		{
 			if (mouse_check_button(mb_left))
-			and(menu_index>noone)
+			and (menu_index>noone)
 			{
 				menu=menu_index;
 			}

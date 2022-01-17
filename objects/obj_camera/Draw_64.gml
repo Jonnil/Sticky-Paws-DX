@@ -257,8 +257,8 @@ and (!instance_exists(obj_title))
 			{
 				draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
 			}
-			draw_line_width_color(32-16, hud_show_deaths-16, 32+16, hud_show_deaths+16, 3, c_red, c_red);
-			draw_line_width_color(32-16, hud_show_deaths+16, 32+16, hud_show_deaths-16, 3, c_red, c_red);
+			draw_line_width_color (32-16, hud_show_deaths-16, 32+16, hud_show_deaths+16, 3, c_red, c_red);
+			draw_line_width_color (32-16, hud_show_deaths+16, 32+16, hud_show_deaths-16, 3, c_red, c_red);
 			draw_text_outlined(64, hud_show_deaths, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Death Counter END*/
@@ -1741,24 +1741,24 @@ scr_virtual_keys();
 
 #region /*Letterboxing during cutscenes (when the player object is absent)*/
 if (show_letterbox > 0)
-and(global.play_edited_level = false)
-and(global.actually_play_edited_level = false)
-or(show_letterbox > 0)
-and(global.play_edited_level = true)
-and(global.actually_play_edited_level = true)
+and (global.play_edited_level = false)
+and (global.actually_play_edited_level = false)
+or (show_letterbox > 0)
+and (global.play_edited_level = true)
+and (global.actually_play_edited_level = true)
 {
-	draw_rectangle_color(0, 0, room_width*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(0, letterbox_bottom_y, room_width*3, window_get_height(), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color (0, 0, room_width*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color (0, letterbox_bottom_y, room_width*3, window_get_height(), c_black, c_black, c_black, c_black, false);
 }
 if (asset_get_type("obj_player") == asset_object)
-and(!instance_exists(obj_player))
-and(asset_get_type("obj_player_map") == asset_object)
-and(!instance_exists(obj_player_map))
-and(asset_get_type("obj_title") == asset_object)
-and(!instance_exists(obj_title))
-or(asset_get_type("obj_player") == asset_object)
-and(instance_exists(obj_player))
-and(obj_player.can_move = false)
+and (!instance_exists(obj_player))
+and (asset_get_type("obj_player_map") == asset_object)
+and (!instance_exists(obj_player_map))
+and (asset_get_type("obj_title") == asset_object)
+and (!instance_exists(obj_title))
+or (asset_get_type("obj_player") == asset_object)
+and (instance_exists(obj_player))
+and (obj_player.can_move = false)
 {
 	letterbox_top_y = lerp(letterbox_top_y, +64, 0.1);
 	letterbox_bottom_y = lerp(letterbox_bottom_y, window_get_height() - 64, 0.1);

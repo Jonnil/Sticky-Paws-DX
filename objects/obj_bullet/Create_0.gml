@@ -7,7 +7,7 @@ if (asset_get_type("spr_wall")==asset_sprite)
 
 image_speed=0.3;
 if (asset_get_type("obj_player")==asset_object)
-and(instance_exists(obj_player))
+and (instance_exists(obj_player))
 {
 	if (instance_nearest(x,y,obj_player).x<x)
 	{

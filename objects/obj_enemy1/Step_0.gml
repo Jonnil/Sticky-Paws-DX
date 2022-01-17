@@ -7,7 +7,7 @@ and (global.enable_enemies = false)
 #endregion /*If enemies are disabled, destroy this object END*/
 
 if (die_volting=-1)
-or(die_volting=+1)
+or (die_volting=+1)
 {
 	depth = -900;
 	if (die_volting=-1)
@@ -22,7 +22,7 @@ or(die_volting=+1)
 	}
 	#region /*Set the gravity*/
 	gravity_direction=270;/*Direction of the gravity*/
-	gravity=0.5;/*The gravity*/
+	gravity = 0.5;/*The gravity*/
 	#endregion /*Set the gravity END*/
 	
 }
@@ -100,8 +100,8 @@ if (position_meeting(bbox_right+1,y,obj_wall))
 
 #region /*Kill enemy if it's inside the wall*/
 if (position_meeting(x,y,obj_wall))
-and(die = false)
-and(draw_xscale>=0.8)
+and (die = false)
+and (draw_xscale>=0.8)
 {
 	flat = false;
 	die = true;

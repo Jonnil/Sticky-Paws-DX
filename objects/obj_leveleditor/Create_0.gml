@@ -16,25 +16,30 @@ sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
 
 #region /*Create Foreground*/
 if (asset_get_type("obj_foreground1")==asset_object)
-and(!instance_exists(obj_foreground1))
+and (!instance_exists(obj_foreground1))
 {
 	instance_create_depth(0,0,0,obj_foreground1);
 }
 if (asset_get_type("obj_foreground2")==asset_object)
-and(!instance_exists(obj_foreground2))
+and (!instance_exists(obj_foreground2))
 {
 	instance_create_depth(0,0,0,obj_foreground2);
+}
+if (asset_get_type("obj_foreground_secret")==asset_object)
+and (!instance_exists(obj_foreground_secret))
+{
+	instance_create_depth(0,0,0,obj_foreground_secret);
 }
 #endregion /*Create Foreground END*/
 
 #region /*Create level height and level width objects*/
 if (asset_get_type("obj_level_height")==asset_object)
-and(!instance_exists(obj_level_height))
+and (!instance_exists(obj_level_height))
 {
 	instance_create_depth(0,1104,0,obj_level_height);
 }
 if (asset_get_type("obj_level_width")==asset_object)
-and(!instance_exists(obj_level_width))
+and (!instance_exists(obj_level_width))
 {
 	instance_create_depth(2720,0,0,obj_level_width);
 }
@@ -94,7 +99,7 @@ erase_mode=false;/*When erasing, this turns true*/
 fill_mode=false;/*When filling, this turns true*/
 can_input_level_name=false;
 quit_level_editor=false;
-menu_joystick_delay=0;
+menu_joystick_delay = 0;
 pause=false;
 menu_cursor_index=0;
 in_settings = false;
@@ -135,7 +140,7 @@ erase_icon_x = 96;
 fill_icon_x = 160;
 
 screenie_x=0;
-screenie_y=0;
+screenie_y = 0;
 total_objects=0;
 
 #region /*Options*/
@@ -483,10 +488,10 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		global.time_countdown = noone;
 	}
 	if(global.play_edited_level = false)
-	and(global.actually_play_edited_level = false)
+	and (global.actually_play_edited_level = false)
 	{
 		if (ini_key_exists("info","view_xview"))
-		and(ini_key_exists("info","view_yview"))
+		and (ini_key_exists("info","view_yview"))
 		{
 			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0));
 			x = ini_read_real("info", "view_xview", 0);

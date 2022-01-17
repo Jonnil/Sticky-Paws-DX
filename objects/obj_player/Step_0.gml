@@ -64,44 +64,44 @@ if (full_level_map_screenshot_timer = 10)
 
 #region /*Wall jump sound variation*/
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2=noone)
-and(voice_wall_jump_3=noone)
-and(voice_wall_jump_4=noone)
-and(voice_wall_jump_5=noone)
-and(voice_wall_jump_6=noone)
-and(voice_wall_jump_7=noone)
-and(voice_wall_jump_8=noone)
-and(voice_wall_jump_9=noone)
-and(voice_wall_jump_10=noone)
+and (voice_wall_jump_2=noone)
+and (voice_wall_jump_3=noone)
+and (voice_wall_jump_4=noone)
+and (voice_wall_jump_5=noone)
+and (voice_wall_jump_6=noone)
+and (voice_wall_jump_7=noone)
+and (voice_wall_jump_8=noone)
+and (voice_wall_jump_9=noone)
+and (voice_wall_jump_10=noone)
 {
 	voice_wallkick=voice_wall_jump_1;
 }
 else
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2>noone)
-and(voice_wall_jump_3=noone)
-and(voice_wall_jump_4=noone)
-and(voice_wall_jump_5=noone)
-and(voice_wall_jump_6=noone)
-and(voice_wall_jump_7=noone)
-and(voice_wall_jump_8=noone)
-and(voice_wall_jump_9=noone)
-and(voice_wall_jump_10=noone)
+and (voice_wall_jump_2>noone)
+and (voice_wall_jump_3=noone)
+and (voice_wall_jump_4=noone)
+and (voice_wall_jump_5=noone)
+and (voice_wall_jump_6=noone)
+and (voice_wall_jump_7=noone)
+and (voice_wall_jump_8=noone)
+and (voice_wall_jump_9=noone)
+and (voice_wall_jump_10=noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2);
 }
 else
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2>noone)
-and(voice_wall_jump_3>noone)
-and(voice_wall_jump_4=noone)
-and(voice_wall_jump_5=noone)
-and(voice_wall_jump_6=noone)
-and(voice_wall_jump_7=noone)
-and(voice_wall_jump_8=noone)
-and(voice_wall_jump_9=noone)
-and(voice_wall_jump_10=noone)
+and (voice_wall_jump_2>noone)
+and (voice_wall_jump_3>noone)
+and (voice_wall_jump_4=noone)
+and (voice_wall_jump_5=noone)
+and (voice_wall_jump_6=noone)
+and (voice_wall_jump_7=noone)
+and (voice_wall_jump_8=noone)
+and (voice_wall_jump_9=noone)
+and (voice_wall_jump_10=noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -109,15 +109,15 @@ and(voice_wall_jump_10=noone)
 }
 else
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2>noone)
-and(voice_wall_jump_3>noone)
-and(voice_wall_jump_4>noone)
-and(voice_wall_jump_5=noone)
-and(voice_wall_jump_6=noone)
-and(voice_wall_jump_7=noone)
-and(voice_wall_jump_8=noone)
-and(voice_wall_jump_9=noone)
-and(voice_wall_jump_10=noone)
+and (voice_wall_jump_2>noone)
+and (voice_wall_jump_3>noone)
+and (voice_wall_jump_4>noone)
+and (voice_wall_jump_5=noone)
+and (voice_wall_jump_6=noone)
+and (voice_wall_jump_7=noone)
+and (voice_wall_jump_8=noone)
+and (voice_wall_jump_9=noone)
+and (voice_wall_jump_10=noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -126,15 +126,15 @@ and(voice_wall_jump_10=noone)
 }
 else
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2>noone)
-and(voice_wall_jump_3>noone)
-and(voice_wall_jump_4>noone)
-and(voice_wall_jump_5>noone)
-and(voice_wall_jump_6=noone)
-and(voice_wall_jump_7=noone)
-and(voice_wall_jump_8=noone)
-and(voice_wall_jump_9=noone)
-and(voice_wall_jump_10=noone)
+and (voice_wall_jump_2>noone)
+and (voice_wall_jump_3>noone)
+and (voice_wall_jump_4>noone)
+and (voice_wall_jump_5>noone)
+and (voice_wall_jump_6=noone)
+and (voice_wall_jump_7=noone)
+and (voice_wall_jump_8=noone)
+and (voice_wall_jump_9=noone)
+and (voice_wall_jump_10=noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -144,15 +144,15 @@ and(voice_wall_jump_10=noone)
 }
 else
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2>noone)
-and(voice_wall_jump_3>noone)
-and(voice_wall_jump_4>noone)
-and(voice_wall_jump_5>noone)
-and(voice_wall_jump_6>noone)
-and(voice_wall_jump_7=noone)
-and(voice_wall_jump_8=noone)
-and(voice_wall_jump_9=noone)
-and(voice_wall_jump_10=noone)
+and (voice_wall_jump_2>noone)
+and (voice_wall_jump_3>noone)
+and (voice_wall_jump_4>noone)
+and (voice_wall_jump_5>noone)
+and (voice_wall_jump_6>noone)
+and (voice_wall_jump_7=noone)
+and (voice_wall_jump_8=noone)
+and (voice_wall_jump_9=noone)
+and (voice_wall_jump_10=noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -163,15 +163,15 @@ and(voice_wall_jump_10=noone)
 }
 else
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2>noone)
-and(voice_wall_jump_3>noone)
-and(voice_wall_jump_4>noone)
-and(voice_wall_jump_5>noone)
-and(voice_wall_jump_6>noone)
-and(voice_wall_jump_7>noone)
-and(voice_wall_jump_8=noone)
-and(voice_wall_jump_9=noone)
-and(voice_wall_jump_10=noone)
+and (voice_wall_jump_2>noone)
+and (voice_wall_jump_3>noone)
+and (voice_wall_jump_4>noone)
+and (voice_wall_jump_5>noone)
+and (voice_wall_jump_6>noone)
+and (voice_wall_jump_7>noone)
+and (voice_wall_jump_8=noone)
+and (voice_wall_jump_9=noone)
+and (voice_wall_jump_10=noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -183,15 +183,15 @@ and(voice_wall_jump_10=noone)
 }
 else
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2>noone)
-and(voice_wall_jump_3>noone)
-and(voice_wall_jump_4>noone)
-and(voice_wall_jump_5>noone)
-and(voice_wall_jump_6>noone)
-and(voice_wall_jump_7>noone)
-and(voice_wall_jump_8>noone)
-and(voice_wall_jump_9=noone)
-and(voice_wall_jump_10=noone)
+and (voice_wall_jump_2>noone)
+and (voice_wall_jump_3>noone)
+and (voice_wall_jump_4>noone)
+and (voice_wall_jump_5>noone)
+and (voice_wall_jump_6>noone)
+and (voice_wall_jump_7>noone)
+and (voice_wall_jump_8>noone)
+and (voice_wall_jump_9=noone)
+and (voice_wall_jump_10=noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -204,15 +204,15 @@ and(voice_wall_jump_10=noone)
 }
 else
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2>noone)
-and(voice_wall_jump_3>noone)
-and(voice_wall_jump_4>noone)
-and(voice_wall_jump_5>noone)
-and(voice_wall_jump_6>noone)
-and(voice_wall_jump_7>noone)
-and(voice_wall_jump_8>noone)
-and(voice_wall_jump_9>noone)
-and(voice_wall_jump_10=noone)
+and (voice_wall_jump_2>noone)
+and (voice_wall_jump_3>noone)
+and (voice_wall_jump_4>noone)
+and (voice_wall_jump_5>noone)
+and (voice_wall_jump_6>noone)
+and (voice_wall_jump_7>noone)
+and (voice_wall_jump_8>noone)
+and (voice_wall_jump_9>noone)
+and (voice_wall_jump_10=noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -226,15 +226,15 @@ and(voice_wall_jump_10=noone)
 }
 else
 if (voice_wall_jump_1>noone)
-and(voice_wall_jump_2>noone)
-and(voice_wall_jump_3>noone)
-and(voice_wall_jump_4>noone)
-and(voice_wall_jump_5>noone)
-and(voice_wall_jump_6>noone)
-and(voice_wall_jump_7>noone)
-and(voice_wall_jump_8>noone)
-and(voice_wall_jump_9>noone)
-and(voice_wall_jump_10>noone)
+and (voice_wall_jump_2>noone)
+and (voice_wall_jump_3>noone)
+and (voice_wall_jump_4>noone)
+and (voice_wall_jump_5>noone)
+and (voice_wall_jump_6>noone)
+and (voice_wall_jump_7>noone)
+and (voice_wall_jump_8>noone)
+and (voice_wall_jump_9>noone)
+and (voice_wall_jump_10>noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -251,44 +251,44 @@ and(voice_wall_jump_10>noone)
 
 #region /*Start running sound variation*/
 if (voice_start_running_1>noone)
-and(voice_start_running_2=noone)
-and(voice_start_running_3=noone)
-and(voice_start_running_4=noone)
-and(voice_start_running_5=noone)
-and(voice_start_running_6=noone)
-and(voice_start_running_7=noone)
-and(voice_start_running_8=noone)
-and(voice_start_running_9=noone)
-and(voice_start_running_10=noone)
+and (voice_start_running_2=noone)
+and (voice_start_running_3=noone)
+and (voice_start_running_4=noone)
+and (voice_start_running_5=noone)
+and (voice_start_running_6=noone)
+and (voice_start_running_7=noone)
+and (voice_start_running_8=noone)
+and (voice_start_running_9=noone)
+and (voice_start_running_10=noone)
 {
 	voice_startdash=voice_start_running_1;
 }
 else
 if (voice_start_running_1>noone)
-and(voice_start_running_2>noone)
-and(voice_start_running_3=noone)
-and(voice_start_running_4=noone)
-and(voice_start_running_5=noone)
-and(voice_start_running_6=noone)
-and(voice_start_running_7=noone)
-and(voice_start_running_8=noone)
-and(voice_start_running_9=noone)
-and(voice_start_running_10=noone)
+and (voice_start_running_2>noone)
+and (voice_start_running_3=noone)
+and (voice_start_running_4=noone)
+and (voice_start_running_5=noone)
+and (voice_start_running_6=noone)
+and (voice_start_running_7=noone)
+and (voice_start_running_8=noone)
+and (voice_start_running_9=noone)
+and (voice_start_running_10=noone)
 {
 	voice_startdash=choose(voice_start_running_1,
 						voice_start_running_2);
 }
 else
 if (voice_start_running_1>noone)
-and(voice_start_running_2>noone)
-and(voice_start_running_3>noone)
-and(voice_start_running_4=noone)
-and(voice_start_running_5=noone)
-and(voice_start_running_6=noone)
-and(voice_start_running_7=noone)
-and(voice_start_running_8=noone)
-and(voice_start_running_9=noone)
-and(voice_start_running_10=noone)
+and (voice_start_running_2>noone)
+and (voice_start_running_3>noone)
+and (voice_start_running_4=noone)
+and (voice_start_running_5=noone)
+and (voice_start_running_6=noone)
+and (voice_start_running_7=noone)
+and (voice_start_running_8=noone)
+and (voice_start_running_9=noone)
+and (voice_start_running_10=noone)
 {
 	voice_startdash=choose(voice_start_running_1,
 						voice_start_running_2,
@@ -296,15 +296,15 @@ and(voice_start_running_10=noone)
 }
 else
 if (voice_start_running_1>noone)
-and(voice_start_running_2>noone)
-and(voice_start_running_3>noone)
-and(voice_start_running_4>noone)
-and(voice_start_running_5=noone)
-and(voice_start_running_6=noone)
-and(voice_start_running_7=noone)
-and(voice_start_running_8=noone)
-and(voice_start_running_9=noone)
-and(voice_start_running_10=noone)
+and (voice_start_running_2>noone)
+and (voice_start_running_3>noone)
+and (voice_start_running_4>noone)
+and (voice_start_running_5=noone)
+and (voice_start_running_6=noone)
+and (voice_start_running_7=noone)
+and (voice_start_running_8=noone)
+and (voice_start_running_9=noone)
+and (voice_start_running_10=noone)
 {
 	voice_startdash=choose(voice_start_running_1,
 						voice_start_running_2,
@@ -313,15 +313,15 @@ and(voice_start_running_10=noone)
 }
 else
 if (voice_start_running_1>noone)
-and(voice_start_running_2>noone)
-and(voice_start_running_3>noone)
-and(voice_start_running_4>noone)
-and(voice_start_running_5>noone)
-and(voice_start_running_6=noone)
-and(voice_start_running_7=noone)
-and(voice_start_running_8=noone)
-and(voice_start_running_9=noone)
-and(voice_start_running_10=noone)
+and (voice_start_running_2>noone)
+and (voice_start_running_3>noone)
+and (voice_start_running_4>noone)
+and (voice_start_running_5>noone)
+and (voice_start_running_6=noone)
+and (voice_start_running_7=noone)
+and (voice_start_running_8=noone)
+and (voice_start_running_9=noone)
+and (voice_start_running_10=noone)
 {
 	voice_startdash=choose(voice_start_running_1,
 						voice_start_running_2,
@@ -331,15 +331,15 @@ and(voice_start_running_10=noone)
 }
 else
 if (voice_start_running_1>noone)
-and(voice_start_running_2>noone)
-and(voice_start_running_3>noone)
-and(voice_start_running_4>noone)
-and(voice_start_running_5>noone)
-and(voice_start_running_6>noone)
-and(voice_start_running_7=noone)
-and(voice_start_running_8=noone)
-and(voice_start_running_9=noone)
-and(voice_start_running_10=noone)
+and (voice_start_running_2>noone)
+and (voice_start_running_3>noone)
+and (voice_start_running_4>noone)
+and (voice_start_running_5>noone)
+and (voice_start_running_6>noone)
+and (voice_start_running_7=noone)
+and (voice_start_running_8=noone)
+and (voice_start_running_9=noone)
+and (voice_start_running_10=noone)
 {
 	voice_startdash=choose(voice_start_running_1,
 						voice_start_running_2,
@@ -350,15 +350,15 @@ and(voice_start_running_10=noone)
 }
 else
 if (voice_start_running_1>noone)
-and(voice_start_running_2>noone)
-and(voice_start_running_3>noone)
-and(voice_start_running_4>noone)
-and(voice_start_running_5>noone)
-and(voice_start_running_6>noone)
-and(voice_start_running_7>noone)
-and(voice_start_running_8=noone)
-and(voice_start_running_9=noone)
-and(voice_start_running_10=noone)
+and (voice_start_running_2>noone)
+and (voice_start_running_3>noone)
+and (voice_start_running_4>noone)
+and (voice_start_running_5>noone)
+and (voice_start_running_6>noone)
+and (voice_start_running_7>noone)
+and (voice_start_running_8=noone)
+and (voice_start_running_9=noone)
+and (voice_start_running_10=noone)
 {
 	voice_startdash=choose(voice_start_running_1,
 						voice_start_running_2,
@@ -370,15 +370,15 @@ and(voice_start_running_10=noone)
 }
 else
 if (voice_start_running_1>noone)
-and(voice_start_running_2>noone)
-and(voice_start_running_3>noone)
-and(voice_start_running_4>noone)
-and(voice_start_running_5>noone)
-and(voice_start_running_6>noone)
-and(voice_start_running_7>noone)
-and(voice_start_running_8>noone)
-and(voice_start_running_9=noone)
-and(voice_start_running_10=noone)
+and (voice_start_running_2>noone)
+and (voice_start_running_3>noone)
+and (voice_start_running_4>noone)
+and (voice_start_running_5>noone)
+and (voice_start_running_6>noone)
+and (voice_start_running_7>noone)
+and (voice_start_running_8>noone)
+and (voice_start_running_9=noone)
+and (voice_start_running_10=noone)
 {
 	voice_startdash=choose(voice_start_running_1,
 						voice_start_running_2,
@@ -391,15 +391,15 @@ and(voice_start_running_10=noone)
 }
 else
 if (voice_start_running_1>noone)
-and(voice_start_running_2>noone)
-and(voice_start_running_3>noone)
-and(voice_start_running_4>noone)
-and(voice_start_running_5>noone)
-and(voice_start_running_6>noone)
-and(voice_start_running_7>noone)
-and(voice_start_running_8>noone)
-and(voice_start_running_9>noone)
-and(voice_start_running_10=noone)
+and (voice_start_running_2>noone)
+and (voice_start_running_3>noone)
+and (voice_start_running_4>noone)
+and (voice_start_running_5>noone)
+and (voice_start_running_6>noone)
+and (voice_start_running_7>noone)
+and (voice_start_running_8>noone)
+and (voice_start_running_9>noone)
+and (voice_start_running_10=noone)
 {
 	voice_startdash=choose(voice_start_running_1,
 						voice_start_running_2,
@@ -413,15 +413,15 @@ and(voice_start_running_10=noone)
 }
 else
 if (voice_start_running_1>noone)
-and(voice_start_running_2>noone)
-and(voice_start_running_3>noone)
-and(voice_start_running_4>noone)
-and(voice_start_running_5>noone)
-and(voice_start_running_6>noone)
-and(voice_start_running_7>noone)
-and(voice_start_running_8>noone)
-and(voice_start_running_9>noone)
-and(voice_start_running_10>noone)
+and (voice_start_running_2>noone)
+and (voice_start_running_3>noone)
+and (voice_start_running_4>noone)
+and (voice_start_running_5>noone)
+and (voice_start_running_6>noone)
+and (voice_start_running_7>noone)
+and (voice_start_running_8>noone)
+and (voice_start_running_9>noone)
+and (voice_start_running_10>noone)
 {
 	voice_startdash=choose(voice_start_running_1,
 						voice_start_running_2,
@@ -438,44 +438,44 @@ and(voice_start_running_10>noone)
 
 #region /*Rope catch sound variation*/
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2=noone)
-and(voice_rope_catch_3=noone)
-and(voice_rope_catch_4=noone)
-and(voice_rope_catch_5=noone)
-and(voice_rope_catch_6=noone)
-and(voice_rope_catch_7=noone)
-and(voice_rope_catch_8=noone)
-and(voice_rope_catch_9=noone)
-and(voice_rope_catch_10=noone)
+and (voice_rope_catch_2=noone)
+and (voice_rope_catch_3=noone)
+and (voice_rope_catch_4=noone)
+and (voice_rope_catch_5=noone)
+and (voice_rope_catch_6=noone)
+and (voice_rope_catch_7=noone)
+and (voice_rope_catch_8=noone)
+and (voice_rope_catch_9=noone)
+and (voice_rope_catch_10=noone)
 {
 	voice_rope_catch=voice_rope_catch_1;
 }
 else
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2>noone)
-and(voice_rope_catch_3=noone)
-and(voice_rope_catch_4=noone)
-and(voice_rope_catch_5=noone)
-and(voice_rope_catch_6=noone)
-and(voice_rope_catch_7=noone)
-and(voice_rope_catch_8=noone)
-and(voice_rope_catch_9=noone)
-and(voice_rope_catch_10=noone)
+and (voice_rope_catch_2>noone)
+and (voice_rope_catch_3=noone)
+and (voice_rope_catch_4=noone)
+and (voice_rope_catch_5=noone)
+and (voice_rope_catch_6=noone)
+and (voice_rope_catch_7=noone)
+and (voice_rope_catch_8=noone)
+and (voice_rope_catch_9=noone)
+and (voice_rope_catch_10=noone)
 {
 	voice_rope_catch=choose(voice_rope_catch_1,
 						voice_rope_catch_2);
 }
 else
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2>noone)
-and(voice_rope_catch_3>noone)
-and(voice_rope_catch_4=noone)
-and(voice_rope_catch_5=noone)
-and(voice_rope_catch_6=noone)
-and(voice_rope_catch_7=noone)
-and(voice_rope_catch_8=noone)
-and(voice_rope_catch_9=noone)
-and(voice_rope_catch_10=noone)
+and (voice_rope_catch_2>noone)
+and (voice_rope_catch_3>noone)
+and (voice_rope_catch_4=noone)
+and (voice_rope_catch_5=noone)
+and (voice_rope_catch_6=noone)
+and (voice_rope_catch_7=noone)
+and (voice_rope_catch_8=noone)
+and (voice_rope_catch_9=noone)
+and (voice_rope_catch_10=noone)
 {
 	voice_rope_catch=choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -483,15 +483,15 @@ and(voice_rope_catch_10=noone)
 }
 else
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2>noone)
-and(voice_rope_catch_3>noone)
-and(voice_rope_catch_4>noone)
-and(voice_rope_catch_5=noone)
-and(voice_rope_catch_6=noone)
-and(voice_rope_catch_7=noone)
-and(voice_rope_catch_8=noone)
-and(voice_rope_catch_9=noone)
-and(voice_rope_catch_10=noone)
+and (voice_rope_catch_2>noone)
+and (voice_rope_catch_3>noone)
+and (voice_rope_catch_4>noone)
+and (voice_rope_catch_5=noone)
+and (voice_rope_catch_6=noone)
+and (voice_rope_catch_7=noone)
+and (voice_rope_catch_8=noone)
+and (voice_rope_catch_9=noone)
+and (voice_rope_catch_10=noone)
 {
 	voice_rope_catch=choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -500,15 +500,15 @@ and(voice_rope_catch_10=noone)
 }
 else
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2>noone)
-and(voice_rope_catch_3>noone)
-and(voice_rope_catch_4>noone)
-and(voice_rope_catch_5>noone)
-and(voice_rope_catch_6=noone)
-and(voice_rope_catch_7=noone)
-and(voice_rope_catch_8=noone)
-and(voice_rope_catch_9=noone)
-and(voice_rope_catch_10=noone)
+and (voice_rope_catch_2>noone)
+and (voice_rope_catch_3>noone)
+and (voice_rope_catch_4>noone)
+and (voice_rope_catch_5>noone)
+and (voice_rope_catch_6=noone)
+and (voice_rope_catch_7=noone)
+and (voice_rope_catch_8=noone)
+and (voice_rope_catch_9=noone)
+and (voice_rope_catch_10=noone)
 {
 	voice_rope_catch=choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -518,15 +518,15 @@ and(voice_rope_catch_10=noone)
 }
 else
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2>noone)
-and(voice_rope_catch_3>noone)
-and(voice_rope_catch_4>noone)
-and(voice_rope_catch_5>noone)
-and(voice_rope_catch_6>noone)
-and(voice_rope_catch_7=noone)
-and(voice_rope_catch_8=noone)
-and(voice_rope_catch_9=noone)
-and(voice_rope_catch_10=noone)
+and (voice_rope_catch_2>noone)
+and (voice_rope_catch_3>noone)
+and (voice_rope_catch_4>noone)
+and (voice_rope_catch_5>noone)
+and (voice_rope_catch_6>noone)
+and (voice_rope_catch_7=noone)
+and (voice_rope_catch_8=noone)
+and (voice_rope_catch_9=noone)
+and (voice_rope_catch_10=noone)
 {
 	voice_rope_catch=choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -537,15 +537,15 @@ and(voice_rope_catch_10=noone)
 }
 else
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2>noone)
-and(voice_rope_catch_3>noone)
-and(voice_rope_catch_4>noone)
-and(voice_rope_catch_5>noone)
-and(voice_rope_catch_6>noone)
-and(voice_rope_catch_7>noone)
-and(voice_rope_catch_8=noone)
-and(voice_rope_catch_9=noone)
-and(voice_rope_catch_10=noone)
+and (voice_rope_catch_2>noone)
+and (voice_rope_catch_3>noone)
+and (voice_rope_catch_4>noone)
+and (voice_rope_catch_5>noone)
+and (voice_rope_catch_6>noone)
+and (voice_rope_catch_7>noone)
+and (voice_rope_catch_8=noone)
+and (voice_rope_catch_9=noone)
+and (voice_rope_catch_10=noone)
 {
 	voice_rope_catch=choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -557,15 +557,15 @@ and(voice_rope_catch_10=noone)
 }
 else
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2>noone)
-and(voice_rope_catch_3>noone)
-and(voice_rope_catch_4>noone)
-and(voice_rope_catch_5>noone)
-and(voice_rope_catch_6>noone)
-and(voice_rope_catch_7>noone)
-and(voice_rope_catch_8>noone)
-and(voice_rope_catch_9=noone)
-and(voice_rope_catch_10=noone)
+and (voice_rope_catch_2>noone)
+and (voice_rope_catch_3>noone)
+and (voice_rope_catch_4>noone)
+and (voice_rope_catch_5>noone)
+and (voice_rope_catch_6>noone)
+and (voice_rope_catch_7>noone)
+and (voice_rope_catch_8>noone)
+and (voice_rope_catch_9=noone)
+and (voice_rope_catch_10=noone)
 {
 	voice_rope_catch=choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -578,15 +578,15 @@ and(voice_rope_catch_10=noone)
 }
 else
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2>noone)
-and(voice_rope_catch_3>noone)
-and(voice_rope_catch_4>noone)
-and(voice_rope_catch_5>noone)
-and(voice_rope_catch_6>noone)
-and(voice_rope_catch_7>noone)
-and(voice_rope_catch_8>noone)
-and(voice_rope_catch_9>noone)
-and(voice_rope_catch_10=noone)
+and (voice_rope_catch_2>noone)
+and (voice_rope_catch_3>noone)
+and (voice_rope_catch_4>noone)
+and (voice_rope_catch_5>noone)
+and (voice_rope_catch_6>noone)
+and (voice_rope_catch_7>noone)
+and (voice_rope_catch_8>noone)
+and (voice_rope_catch_9>noone)
+and (voice_rope_catch_10=noone)
 {
 	voice_rope_catch=choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -600,15 +600,15 @@ and(voice_rope_catch_10=noone)
 }
 else
 if (voice_rope_catch_1>noone)
-and(voice_rope_catch_2>noone)
-and(voice_rope_catch_3>noone)
-and(voice_rope_catch_4>noone)
-and(voice_rope_catch_5>noone)
-and(voice_rope_catch_6>noone)
-and(voice_rope_catch_7>noone)
-and(voice_rope_catch_8>noone)
-and(voice_rope_catch_9>noone)
-and(voice_rope_catch_10>noone)
+and (voice_rope_catch_2>noone)
+and (voice_rope_catch_3>noone)
+and (voice_rope_catch_4>noone)
+and (voice_rope_catch_5>noone)
+and (voice_rope_catch_6>noone)
+and (voice_rope_catch_7>noone)
+and (voice_rope_catch_8>noone)
+and (voice_rope_catch_9>noone)
+and (voice_rope_catch_10>noone)
 {
 	voice_rope_catch=choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -625,44 +625,44 @@ and(voice_rope_catch_10>noone)
 
 #region /*Jump spring sound variation*/
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2=noone)
-and(voice_jump_spring_3=noone)
-and(voice_jump_spring_4=noone)
-and(voice_jump_spring_5=noone)
-and(voice_jump_spring_6=noone)
-and(voice_jump_spring_7=noone)
-and(voice_jump_spring_8=noone)
-and(voice_jump_spring_9=noone)
-and(voice_jump_spring_10=noone)
+and (voice_jump_spring_2=noone)
+and (voice_jump_spring_3=noone)
+and (voice_jump_spring_4=noone)
+and (voice_jump_spring_5=noone)
+and (voice_jump_spring_6=noone)
+and (voice_jump_spring_7=noone)
+and (voice_jump_spring_8=noone)
+and (voice_jump_spring_9=noone)
+and (voice_jump_spring_10=noone)
 {
 	voice_jump_spring=voice_jump_spring_1;
 }
 else
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2>noone)
-and(voice_jump_spring_3=noone)
-and(voice_jump_spring_4=noone)
-and(voice_jump_spring_5=noone)
-and(voice_jump_spring_6=noone)
-and(voice_jump_spring_7=noone)
-and(voice_jump_spring_8=noone)
-and(voice_jump_spring_9=noone)
-and(voice_jump_spring_10=noone)
+and (voice_jump_spring_2>noone)
+and (voice_jump_spring_3=noone)
+and (voice_jump_spring_4=noone)
+and (voice_jump_spring_5=noone)
+and (voice_jump_spring_6=noone)
+and (voice_jump_spring_7=noone)
+and (voice_jump_spring_8=noone)
+and (voice_jump_spring_9=noone)
+and (voice_jump_spring_10=noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2);
 }
 else
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2>noone)
-and(voice_jump_spring_3>noone)
-and(voice_jump_spring_4=noone)
-and(voice_jump_spring_5=noone)
-and(voice_jump_spring_6=noone)
-and(voice_jump_spring_7=noone)
-and(voice_jump_spring_8=noone)
-and(voice_jump_spring_9=noone)
-and(voice_jump_spring_10=noone)
+and (voice_jump_spring_2>noone)
+and (voice_jump_spring_3>noone)
+and (voice_jump_spring_4=noone)
+and (voice_jump_spring_5=noone)
+and (voice_jump_spring_6=noone)
+and (voice_jump_spring_7=noone)
+and (voice_jump_spring_8=noone)
+and (voice_jump_spring_9=noone)
+and (voice_jump_spring_10=noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -670,15 +670,15 @@ and(voice_jump_spring_10=noone)
 }
 else
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2>noone)
-and(voice_jump_spring_3>noone)
-and(voice_jump_spring_4>noone)
-and(voice_jump_spring_5=noone)
-and(voice_jump_spring_6=noone)
-and(voice_jump_spring_7=noone)
-and(voice_jump_spring_8=noone)
-and(voice_jump_spring_9=noone)
-and(voice_jump_spring_10=noone)
+and (voice_jump_spring_2>noone)
+and (voice_jump_spring_3>noone)
+and (voice_jump_spring_4>noone)
+and (voice_jump_spring_5=noone)
+and (voice_jump_spring_6=noone)
+and (voice_jump_spring_7=noone)
+and (voice_jump_spring_8=noone)
+and (voice_jump_spring_9=noone)
+and (voice_jump_spring_10=noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -687,15 +687,15 @@ and(voice_jump_spring_10=noone)
 }
 else
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2>noone)
-and(voice_jump_spring_3>noone)
-and(voice_jump_spring_4>noone)
-and(voice_jump_spring_5>noone)
-and(voice_jump_spring_6=noone)
-and(voice_jump_spring_7=noone)
-and(voice_jump_spring_8=noone)
-and(voice_jump_spring_9=noone)
-and(voice_jump_spring_10=noone)
+and (voice_jump_spring_2>noone)
+and (voice_jump_spring_3>noone)
+and (voice_jump_spring_4>noone)
+and (voice_jump_spring_5>noone)
+and (voice_jump_spring_6=noone)
+and (voice_jump_spring_7=noone)
+and (voice_jump_spring_8=noone)
+and (voice_jump_spring_9=noone)
+and (voice_jump_spring_10=noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -705,15 +705,15 @@ and(voice_jump_spring_10=noone)
 }
 else
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2>noone)
-and(voice_jump_spring_3>noone)
-and(voice_jump_spring_4>noone)
-and(voice_jump_spring_5>noone)
-and(voice_jump_spring_6>noone)
-and(voice_jump_spring_7=noone)
-and(voice_jump_spring_8=noone)
-and(voice_jump_spring_9=noone)
-and(voice_jump_spring_10=noone)
+and (voice_jump_spring_2>noone)
+and (voice_jump_spring_3>noone)
+and (voice_jump_spring_4>noone)
+and (voice_jump_spring_5>noone)
+and (voice_jump_spring_6>noone)
+and (voice_jump_spring_7=noone)
+and (voice_jump_spring_8=noone)
+and (voice_jump_spring_9=noone)
+and (voice_jump_spring_10=noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -724,15 +724,15 @@ and(voice_jump_spring_10=noone)
 }
 else
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2>noone)
-and(voice_jump_spring_3>noone)
-and(voice_jump_spring_4>noone)
-and(voice_jump_spring_5>noone)
-and(voice_jump_spring_6>noone)
-and(voice_jump_spring_7>noone)
-and(voice_jump_spring_8=noone)
-and(voice_jump_spring_9=noone)
-and(voice_jump_spring_10=noone)
+and (voice_jump_spring_2>noone)
+and (voice_jump_spring_3>noone)
+and (voice_jump_spring_4>noone)
+and (voice_jump_spring_5>noone)
+and (voice_jump_spring_6>noone)
+and (voice_jump_spring_7>noone)
+and (voice_jump_spring_8=noone)
+and (voice_jump_spring_9=noone)
+and (voice_jump_spring_10=noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -744,15 +744,15 @@ and(voice_jump_spring_10=noone)
 }
 else
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2>noone)
-and(voice_jump_spring_3>noone)
-and(voice_jump_spring_4>noone)
-and(voice_jump_spring_5>noone)
-and(voice_jump_spring_6>noone)
-and(voice_jump_spring_7>noone)
-and(voice_jump_spring_8>noone)
-and(voice_jump_spring_9=noone)
-and(voice_jump_spring_10=noone)
+and (voice_jump_spring_2>noone)
+and (voice_jump_spring_3>noone)
+and (voice_jump_spring_4>noone)
+and (voice_jump_spring_5>noone)
+and (voice_jump_spring_6>noone)
+and (voice_jump_spring_7>noone)
+and (voice_jump_spring_8>noone)
+and (voice_jump_spring_9=noone)
+and (voice_jump_spring_10=noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -765,15 +765,15 @@ and(voice_jump_spring_10=noone)
 }
 else
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2>noone)
-and(voice_jump_spring_3>noone)
-and(voice_jump_spring_4>noone)
-and(voice_jump_spring_5>noone)
-and(voice_jump_spring_6>noone)
-and(voice_jump_spring_7>noone)
-and(voice_jump_spring_8>noone)
-and(voice_jump_spring_9>noone)
-and(voice_jump_spring_10=noone)
+and (voice_jump_spring_2>noone)
+and (voice_jump_spring_3>noone)
+and (voice_jump_spring_4>noone)
+and (voice_jump_spring_5>noone)
+and (voice_jump_spring_6>noone)
+and (voice_jump_spring_7>noone)
+and (voice_jump_spring_8>noone)
+and (voice_jump_spring_9>noone)
+and (voice_jump_spring_10=noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -787,15 +787,15 @@ and(voice_jump_spring_10=noone)
 }
 else
 if (voice_jump_spring_1>noone)
-and(voice_jump_spring_2>noone)
-and(voice_jump_spring_3>noone)
-and(voice_jump_spring_4>noone)
-and(voice_jump_spring_5>noone)
-and(voice_jump_spring_6>noone)
-and(voice_jump_spring_7>noone)
-and(voice_jump_spring_8>noone)
-and(voice_jump_spring_9>noone)
-and(voice_jump_spring_10>noone)
+and (voice_jump_spring_2>noone)
+and (voice_jump_spring_3>noone)
+and (voice_jump_spring_4>noone)
+and (voice_jump_spring_5>noone)
+and (voice_jump_spring_6>noone)
+and (voice_jump_spring_7>noone)
+and (voice_jump_spring_8>noone)
+and (voice_jump_spring_9>noone)
+and (voice_jump_spring_10>noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -812,44 +812,44 @@ and(voice_jump_spring_10>noone)
 
 #region /*Jump rope sound variation*/
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2=noone)
-and(voice_jump_rope_3=noone)
-and(voice_jump_rope_4=noone)
-and(voice_jump_rope_5=noone)
-and(voice_jump_rope_6=noone)
-and(voice_jump_rope_7=noone)
-and(voice_jump_rope_8=noone)
-and(voice_jump_rope_9=noone)
-and(voice_jump_rope_10=noone)
+and (voice_jump_rope_2=noone)
+and (voice_jump_rope_3=noone)
+and (voice_jump_rope_4=noone)
+and (voice_jump_rope_5=noone)
+and (voice_jump_rope_6=noone)
+and (voice_jump_rope_7=noone)
+and (voice_jump_rope_8=noone)
+and (voice_jump_rope_9=noone)
+and (voice_jump_rope_10=noone)
 {
 	voice_jump_rope=voice_jump_rope_1;
 }
 else
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2>noone)
-and(voice_jump_rope_3=noone)
-and(voice_jump_rope_4=noone)
-and(voice_jump_rope_5=noone)
-and(voice_jump_rope_6=noone)
-and(voice_jump_rope_7=noone)
-and(voice_jump_rope_8=noone)
-and(voice_jump_rope_9=noone)
-and(voice_jump_rope_10=noone)
+and (voice_jump_rope_2>noone)
+and (voice_jump_rope_3=noone)
+and (voice_jump_rope_4=noone)
+and (voice_jump_rope_5=noone)
+and (voice_jump_rope_6=noone)
+and (voice_jump_rope_7=noone)
+and (voice_jump_rope_8=noone)
+and (voice_jump_rope_9=noone)
+and (voice_jump_rope_10=noone)
 {
 	voice_jump_rope=choose(voice_jump_rope_1,
 						voice_jump_rope_2);
 }
 else
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2>noone)
-and(voice_jump_rope_3>noone)
-and(voice_jump_rope_4=noone)
-and(voice_jump_rope_5=noone)
-and(voice_jump_rope_6=noone)
-and(voice_jump_rope_7=noone)
-and(voice_jump_rope_8=noone)
-and(voice_jump_rope_9=noone)
-and(voice_jump_rope_10=noone)
+and (voice_jump_rope_2>noone)
+and (voice_jump_rope_3>noone)
+and (voice_jump_rope_4=noone)
+and (voice_jump_rope_5=noone)
+and (voice_jump_rope_6=noone)
+and (voice_jump_rope_7=noone)
+and (voice_jump_rope_8=noone)
+and (voice_jump_rope_9=noone)
+and (voice_jump_rope_10=noone)
 {
 	voice_jump_rope=choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -857,15 +857,15 @@ and(voice_jump_rope_10=noone)
 }
 else
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2>noone)
-and(voice_jump_rope_3>noone)
-and(voice_jump_rope_4>noone)
-and(voice_jump_rope_5=noone)
-and(voice_jump_rope_6=noone)
-and(voice_jump_rope_7=noone)
-and(voice_jump_rope_8=noone)
-and(voice_jump_rope_9=noone)
-and(voice_jump_rope_10=noone)
+and (voice_jump_rope_2>noone)
+and (voice_jump_rope_3>noone)
+and (voice_jump_rope_4>noone)
+and (voice_jump_rope_5=noone)
+and (voice_jump_rope_6=noone)
+and (voice_jump_rope_7=noone)
+and (voice_jump_rope_8=noone)
+and (voice_jump_rope_9=noone)
+and (voice_jump_rope_10=noone)
 {
 	voice_jump_rope=choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -874,15 +874,15 @@ and(voice_jump_rope_10=noone)
 }
 else
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2>noone)
-and(voice_jump_rope_3>noone)
-and(voice_jump_rope_4>noone)
-and(voice_jump_rope_5>noone)
-and(voice_jump_rope_6=noone)
-and(voice_jump_rope_7=noone)
-and(voice_jump_rope_8=noone)
-and(voice_jump_rope_9=noone)
-and(voice_jump_rope_10=noone)
+and (voice_jump_rope_2>noone)
+and (voice_jump_rope_3>noone)
+and (voice_jump_rope_4>noone)
+and (voice_jump_rope_5>noone)
+and (voice_jump_rope_6=noone)
+and (voice_jump_rope_7=noone)
+and (voice_jump_rope_8=noone)
+and (voice_jump_rope_9=noone)
+and (voice_jump_rope_10=noone)
 {
 	voice_jump_rope=choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -892,15 +892,15 @@ and(voice_jump_rope_10=noone)
 }
 else
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2>noone)
-and(voice_jump_rope_3>noone)
-and(voice_jump_rope_4>noone)
-and(voice_jump_rope_5>noone)
-and(voice_jump_rope_6>noone)
-and(voice_jump_rope_7=noone)
-and(voice_jump_rope_8=noone)
-and(voice_jump_rope_9=noone)
-and(voice_jump_rope_10=noone)
+and (voice_jump_rope_2>noone)
+and (voice_jump_rope_3>noone)
+and (voice_jump_rope_4>noone)
+and (voice_jump_rope_5>noone)
+and (voice_jump_rope_6>noone)
+and (voice_jump_rope_7=noone)
+and (voice_jump_rope_8=noone)
+and (voice_jump_rope_9=noone)
+and (voice_jump_rope_10=noone)
 {
 	voice_jump_rope=choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -911,15 +911,15 @@ and(voice_jump_rope_10=noone)
 }
 else
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2>noone)
-and(voice_jump_rope_3>noone)
-and(voice_jump_rope_4>noone)
-and(voice_jump_rope_5>noone)
-and(voice_jump_rope_6>noone)
-and(voice_jump_rope_7>noone)
-and(voice_jump_rope_8=noone)
-and(voice_jump_rope_9=noone)
-and(voice_jump_rope_10=noone)
+and (voice_jump_rope_2>noone)
+and (voice_jump_rope_3>noone)
+and (voice_jump_rope_4>noone)
+and (voice_jump_rope_5>noone)
+and (voice_jump_rope_6>noone)
+and (voice_jump_rope_7>noone)
+and (voice_jump_rope_8=noone)
+and (voice_jump_rope_9=noone)
+and (voice_jump_rope_10=noone)
 {
 	voice_jump_rope=choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -931,15 +931,15 @@ and(voice_jump_rope_10=noone)
 }
 else
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2>noone)
-and(voice_jump_rope_3>noone)
-and(voice_jump_rope_4>noone)
-and(voice_jump_rope_5>noone)
-and(voice_jump_rope_6>noone)
-and(voice_jump_rope_7>noone)
-and(voice_jump_rope_8>noone)
-and(voice_jump_rope_9=noone)
-and(voice_jump_rope_10=noone)
+and (voice_jump_rope_2>noone)
+and (voice_jump_rope_3>noone)
+and (voice_jump_rope_4>noone)
+and (voice_jump_rope_5>noone)
+and (voice_jump_rope_6>noone)
+and (voice_jump_rope_7>noone)
+and (voice_jump_rope_8>noone)
+and (voice_jump_rope_9=noone)
+and (voice_jump_rope_10=noone)
 {
 	voice_jump_rope=choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -952,15 +952,15 @@ and(voice_jump_rope_10=noone)
 }
 else
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2>noone)
-and(voice_jump_rope_3>noone)
-and(voice_jump_rope_4>noone)
-and(voice_jump_rope_5>noone)
-and(voice_jump_rope_6>noone)
-and(voice_jump_rope_7>noone)
-and(voice_jump_rope_8>noone)
-and(voice_jump_rope_9>noone)
-and(voice_jump_rope_10=noone)
+and (voice_jump_rope_2>noone)
+and (voice_jump_rope_3>noone)
+and (voice_jump_rope_4>noone)
+and (voice_jump_rope_5>noone)
+and (voice_jump_rope_6>noone)
+and (voice_jump_rope_7>noone)
+and (voice_jump_rope_8>noone)
+and (voice_jump_rope_9>noone)
+and (voice_jump_rope_10=noone)
 {
 	voice_jump_rope=choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -974,15 +974,15 @@ and(voice_jump_rope_10=noone)
 }
 else
 if (voice_jump_rope_1>noone)
-and(voice_jump_rope_2>noone)
-and(voice_jump_rope_3>noone)
-and(voice_jump_rope_4>noone)
-and(voice_jump_rope_5>noone)
-and(voice_jump_rope_6>noone)
-and(voice_jump_rope_7>noone)
-and(voice_jump_rope_8>noone)
-and(voice_jump_rope_9>noone)
-and(voice_jump_rope_10>noone)
+and (voice_jump_rope_2>noone)
+and (voice_jump_rope_3>noone)
+and (voice_jump_rope_4>noone)
+and (voice_jump_rope_5>noone)
+and (voice_jump_rope_6>noone)
+and (voice_jump_rope_7>noone)
+and (voice_jump_rope_8>noone)
+and (voice_jump_rope_9>noone)
+and (voice_jump_rope_10>noone)
 {
 	voice_jump_rope=choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -999,44 +999,44 @@ and(voice_jump_rope_10>noone)
 
 #region /*Jump sound variation*/
 if (voice_jump_1>noone)
-and(voice_jump_2=noone)
-and(voice_jump_3=noone)
-and(voice_jump_4=noone)
-and(voice_jump_5=noone)
-and(voice_jump_6=noone)
-and(voice_jump_7=noone)
-and(voice_jump_8=noone)
-and(voice_jump_9=noone)
-and(voice_jump_10=noone)
+and (voice_jump_2=noone)
+and (voice_jump_3=noone)
+and (voice_jump_4=noone)
+and (voice_jump_5=noone)
+and (voice_jump_6=noone)
+and (voice_jump_7=noone)
+and (voice_jump_8=noone)
+and (voice_jump_9=noone)
+and (voice_jump_10=noone)
 {
 	voice_jump=voice_jump_1;
 }
 else
 if (voice_jump_1>noone)
-and(voice_jump_2>noone)
-and(voice_jump_3=noone)
-and(voice_jump_4=noone)
-and(voice_jump_5=noone)
-and(voice_jump_6=noone)
-and(voice_jump_7=noone)
-and(voice_jump_8=noone)
-and(voice_jump_9=noone)
-and(voice_jump_10=noone)
+and (voice_jump_2>noone)
+and (voice_jump_3=noone)
+and (voice_jump_4=noone)
+and (voice_jump_5=noone)
+and (voice_jump_6=noone)
+and (voice_jump_7=noone)
+and (voice_jump_8=noone)
+and (voice_jump_9=noone)
+and (voice_jump_10=noone)
 {
 	voice_jump=choose(voice_jump_1,
 						voice_jump_2);
 }
 else
 if (voice_jump_1>noone)
-and(voice_jump_2>noone)
-and(voice_jump_3>noone)
-and(voice_jump_4=noone)
-and(voice_jump_5=noone)
-and(voice_jump_6=noone)
-and(voice_jump_7=noone)
-and(voice_jump_8=noone)
-and(voice_jump_9=noone)
-and(voice_jump_10=noone)
+and (voice_jump_2>noone)
+and (voice_jump_3>noone)
+and (voice_jump_4=noone)
+and (voice_jump_5=noone)
+and (voice_jump_6=noone)
+and (voice_jump_7=noone)
+and (voice_jump_8=noone)
+and (voice_jump_9=noone)
+and (voice_jump_10=noone)
 {
 	voice_jump=choose(voice_jump_1,
 						voice_jump_2,
@@ -1044,15 +1044,15 @@ and(voice_jump_10=noone)
 }
 else
 if (voice_jump_1>noone)
-and(voice_jump_2>noone)
-and(voice_jump_3>noone)
-and(voice_jump_4>noone)
-and(voice_jump_5=noone)
-and(voice_jump_6=noone)
-and(voice_jump_7=noone)
-and(voice_jump_8=noone)
-and(voice_jump_9=noone)
-and(voice_jump_10=noone)
+and (voice_jump_2>noone)
+and (voice_jump_3>noone)
+and (voice_jump_4>noone)
+and (voice_jump_5=noone)
+and (voice_jump_6=noone)
+and (voice_jump_7=noone)
+and (voice_jump_8=noone)
+and (voice_jump_9=noone)
+and (voice_jump_10=noone)
 {
 	voice_jump=choose(voice_jump_1,
 						voice_jump_2,
@@ -1061,15 +1061,15 @@ and(voice_jump_10=noone)
 }
 else
 if (voice_jump_1>noone)
-and(voice_jump_2>noone)
-and(voice_jump_3>noone)
-and(voice_jump_4>noone)
-and(voice_jump_5>noone)
-and(voice_jump_6=noone)
-and(voice_jump_7=noone)
-and(voice_jump_8=noone)
-and(voice_jump_9=noone)
-and(voice_jump_10=noone)
+and (voice_jump_2>noone)
+and (voice_jump_3>noone)
+and (voice_jump_4>noone)
+and (voice_jump_5>noone)
+and (voice_jump_6=noone)
+and (voice_jump_7=noone)
+and (voice_jump_8=noone)
+and (voice_jump_9=noone)
+and (voice_jump_10=noone)
 {
 	voice_jump=choose(voice_jump_1,
 						voice_jump_2,
@@ -1079,15 +1079,15 @@ and(voice_jump_10=noone)
 }
 else
 if (voice_jump_1>noone)
-and(voice_jump_2>noone)
-and(voice_jump_3>noone)
-and(voice_jump_4>noone)
-and(voice_jump_5>noone)
-and(voice_jump_6>noone)
-and(voice_jump_7=noone)
-and(voice_jump_8=noone)
-and(voice_jump_9=noone)
-and(voice_jump_10=noone)
+and (voice_jump_2>noone)
+and (voice_jump_3>noone)
+and (voice_jump_4>noone)
+and (voice_jump_5>noone)
+and (voice_jump_6>noone)
+and (voice_jump_7=noone)
+and (voice_jump_8=noone)
+and (voice_jump_9=noone)
+and (voice_jump_10=noone)
 {
 	voice_jump=choose(voice_jump_1,
 						voice_jump_2,
@@ -1098,15 +1098,15 @@ and(voice_jump_10=noone)
 }
 else
 if (voice_jump_1>noone)
-and(voice_jump_2>noone)
-and(voice_jump_3>noone)
-and(voice_jump_4>noone)
-and(voice_jump_5>noone)
-and(voice_jump_6>noone)
-and(voice_jump_7>noone)
-and(voice_jump_8=noone)
-and(voice_jump_9=noone)
-and(voice_jump_10=noone)
+and (voice_jump_2>noone)
+and (voice_jump_3>noone)
+and (voice_jump_4>noone)
+and (voice_jump_5>noone)
+and (voice_jump_6>noone)
+and (voice_jump_7>noone)
+and (voice_jump_8=noone)
+and (voice_jump_9=noone)
+and (voice_jump_10=noone)
 {
 	voice_jump=choose(voice_jump_1,
 						voice_jump_2,
@@ -1118,15 +1118,15 @@ and(voice_jump_10=noone)
 }
 else
 if (voice_jump_1>noone)
-and(voice_jump_2>noone)
-and(voice_jump_3>noone)
-and(voice_jump_4>noone)
-and(voice_jump_5>noone)
-and(voice_jump_6>noone)
-and(voice_jump_7>noone)
-and(voice_jump_8>noone)
-and(voice_jump_9=noone)
-and(voice_jump_10=noone)
+and (voice_jump_2>noone)
+and (voice_jump_3>noone)
+and (voice_jump_4>noone)
+and (voice_jump_5>noone)
+and (voice_jump_6>noone)
+and (voice_jump_7>noone)
+and (voice_jump_8>noone)
+and (voice_jump_9=noone)
+and (voice_jump_10=noone)
 {
 	voice_jump=choose(voice_jump_1,
 						voice_jump_2,
@@ -1139,15 +1139,15 @@ and(voice_jump_10=noone)
 }
 else
 if (voice_jump_1>noone)
-and(voice_jump_2>noone)
-and(voice_jump_3>noone)
-and(voice_jump_4>noone)
-and(voice_jump_5>noone)
-and(voice_jump_6>noone)
-and(voice_jump_7>noone)
-and(voice_jump_8>noone)
-and(voice_jump_9>noone)
-and(voice_jump_10=noone)
+and (voice_jump_2>noone)
+and (voice_jump_3>noone)
+and (voice_jump_4>noone)
+and (voice_jump_5>noone)
+and (voice_jump_6>noone)
+and (voice_jump_7>noone)
+and (voice_jump_8>noone)
+and (voice_jump_9>noone)
+and (voice_jump_10=noone)
 {
 	voice_jump=choose(voice_jump_1,
 						voice_jump_2,
@@ -1161,15 +1161,15 @@ and(voice_jump_10=noone)
 }
 else
 if (voice_jump_1>noone)
-and(voice_jump_2>noone)
-and(voice_jump_3>noone)
-and(voice_jump_4>noone)
-and(voice_jump_5>noone)
-and(voice_jump_6>noone)
-and(voice_jump_7>noone)
-and(voice_jump_8>noone)
-and(voice_jump_9>noone)
-and(voice_jump_10>noone)
+and (voice_jump_2>noone)
+and (voice_jump_3>noone)
+and (voice_jump_4>noone)
+and (voice_jump_5>noone)
+and (voice_jump_6>noone)
+and (voice_jump_7>noone)
+and (voice_jump_8>noone)
+and (voice_jump_9>noone)
+and (voice_jump_10>noone)
 {
 	voice_jump=choose(voice_jump_1,
 						voice_jump_2,
@@ -1186,44 +1186,44 @@ and(voice_jump_10>noone)
 
 #region /*Jump 3rd sound variation*/
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2=noone)
-and(voice_jump_3rd_3=noone)
-and(voice_jump_3rd_4=noone)
-and(voice_jump_3rd_5=noone)
-and(voice_jump_3rd_6=noone)
-and(voice_jump_3rd_7=noone)
-and(voice_jump_3rd_8=noone)
-and(voice_jump_3rd_9=noone)
-and(voice_jump_3rd_10=noone)
+and (voice_jump_3rd_2=noone)
+and (voice_jump_3rd_3=noone)
+and (voice_jump_3rd_4=noone)
+and (voice_jump_3rd_5=noone)
+and (voice_jump_3rd_6=noone)
+and (voice_jump_3rd_7=noone)
+and (voice_jump_3rd_8=noone)
+and (voice_jump_3rd_9=noone)
+and (voice_jump_3rd_10=noone)
 {
 	voice_jump3rd=voice_jump_3rd_1;
 }
 else
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2>noone)
-and(voice_jump_3rd_3=noone)
-and(voice_jump_3rd_4=noone)
-and(voice_jump_3rd_5=noone)
-and(voice_jump_3rd_6=noone)
-and(voice_jump_3rd_7=noone)
-and(voice_jump_3rd_8=noone)
-and(voice_jump_3rd_9=noone)
-and(voice_jump_3rd_10=noone)
+and (voice_jump_3rd_2>noone)
+and (voice_jump_3rd_3=noone)
+and (voice_jump_3rd_4=noone)
+and (voice_jump_3rd_5=noone)
+and (voice_jump_3rd_6=noone)
+and (voice_jump_3rd_7=noone)
+and (voice_jump_3rd_8=noone)
+and (voice_jump_3rd_9=noone)
+and (voice_jump_3rd_10=noone)
 {
 	voice_jump3rd=choose(voice_jump_3rd_1,
 						voice_jump_3rd_2);
 }
 else
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2>noone)
-and(voice_jump_3rd_3>noone)
-and(voice_jump_3rd_4=noone)
-and(voice_jump_3rd_5=noone)
-and(voice_jump_3rd_6=noone)
-and(voice_jump_3rd_7=noone)
-and(voice_jump_3rd_8=noone)
-and(voice_jump_3rd_9=noone)
-and(voice_jump_3rd_10=noone)
+and (voice_jump_3rd_2>noone)
+and (voice_jump_3rd_3>noone)
+and (voice_jump_3rd_4=noone)
+and (voice_jump_3rd_5=noone)
+and (voice_jump_3rd_6=noone)
+and (voice_jump_3rd_7=noone)
+and (voice_jump_3rd_8=noone)
+and (voice_jump_3rd_9=noone)
+and (voice_jump_3rd_10=noone)
 {
 	voice_jump3rd=choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1231,15 +1231,15 @@ and(voice_jump_3rd_10=noone)
 }
 else
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2>noone)
-and(voice_jump_3rd_3>noone)
-and(voice_jump_3rd_4>noone)
-and(voice_jump_3rd_5=noone)
-and(voice_jump_3rd_6=noone)
-and(voice_jump_3rd_7=noone)
-and(voice_jump_3rd_8=noone)
-and(voice_jump_3rd_9=noone)
-and(voice_jump_3rd_10=noone)
+and (voice_jump_3rd_2>noone)
+and (voice_jump_3rd_3>noone)
+and (voice_jump_3rd_4>noone)
+and (voice_jump_3rd_5=noone)
+and (voice_jump_3rd_6=noone)
+and (voice_jump_3rd_7=noone)
+and (voice_jump_3rd_8=noone)
+and (voice_jump_3rd_9=noone)
+and (voice_jump_3rd_10=noone)
 {
 	voice_jump3rd=choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1248,15 +1248,15 @@ and(voice_jump_3rd_10=noone)
 }
 else
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2>noone)
-and(voice_jump_3rd_3>noone)
-and(voice_jump_3rd_4>noone)
-and(voice_jump_3rd_5>noone)
-and(voice_jump_3rd_6=noone)
-and(voice_jump_3rd_7=noone)
-and(voice_jump_3rd_8=noone)
-and(voice_jump_3rd_9=noone)
-and(voice_jump_3rd_10=noone)
+and (voice_jump_3rd_2>noone)
+and (voice_jump_3rd_3>noone)
+and (voice_jump_3rd_4>noone)
+and (voice_jump_3rd_5>noone)
+and (voice_jump_3rd_6=noone)
+and (voice_jump_3rd_7=noone)
+and (voice_jump_3rd_8=noone)
+and (voice_jump_3rd_9=noone)
+and (voice_jump_3rd_10=noone)
 {
 	voice_jump3rd=choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1266,15 +1266,15 @@ and(voice_jump_3rd_10=noone)
 }
 else
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2>noone)
-and(voice_jump_3rd_3>noone)
-and(voice_jump_3rd_4>noone)
-and(voice_jump_3rd_5>noone)
-and(voice_jump_3rd_6>noone)
-and(voice_jump_3rd_7=noone)
-and(voice_jump_3rd_8=noone)
-and(voice_jump_3rd_9=noone)
-and(voice_jump_3rd_10=noone)
+and (voice_jump_3rd_2>noone)
+and (voice_jump_3rd_3>noone)
+and (voice_jump_3rd_4>noone)
+and (voice_jump_3rd_5>noone)
+and (voice_jump_3rd_6>noone)
+and (voice_jump_3rd_7=noone)
+and (voice_jump_3rd_8=noone)
+and (voice_jump_3rd_9=noone)
+and (voice_jump_3rd_10=noone)
 {
 	voice_jump3rd=choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1285,15 +1285,15 @@ and(voice_jump_3rd_10=noone)
 }
 else
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2>noone)
-and(voice_jump_3rd_3>noone)
-and(voice_jump_3rd_4>noone)
-and(voice_jump_3rd_5>noone)
-and(voice_jump_3rd_6>noone)
-and(voice_jump_3rd_7>noone)
-and(voice_jump_3rd_8=noone)
-and(voice_jump_3rd_9=noone)
-and(voice_jump_3rd_10=noone)
+and (voice_jump_3rd_2>noone)
+and (voice_jump_3rd_3>noone)
+and (voice_jump_3rd_4>noone)
+and (voice_jump_3rd_5>noone)
+and (voice_jump_3rd_6>noone)
+and (voice_jump_3rd_7>noone)
+and (voice_jump_3rd_8=noone)
+and (voice_jump_3rd_9=noone)
+and (voice_jump_3rd_10=noone)
 {
 	voice_jump3rd=choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1305,15 +1305,15 @@ and(voice_jump_3rd_10=noone)
 }
 else
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2>noone)
-and(voice_jump_3rd_3>noone)
-and(voice_jump_3rd_4>noone)
-and(voice_jump_3rd_5>noone)
-and(voice_jump_3rd_6>noone)
-and(voice_jump_3rd_7>noone)
-and(voice_jump_3rd_8>noone)
-and(voice_jump_3rd_9=noone)
-and(voice_jump_3rd_10=noone)
+and (voice_jump_3rd_2>noone)
+and (voice_jump_3rd_3>noone)
+and (voice_jump_3rd_4>noone)
+and (voice_jump_3rd_5>noone)
+and (voice_jump_3rd_6>noone)
+and (voice_jump_3rd_7>noone)
+and (voice_jump_3rd_8>noone)
+and (voice_jump_3rd_9=noone)
+and (voice_jump_3rd_10=noone)
 {
 	voice_jump3rd=choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1326,15 +1326,15 @@ and(voice_jump_3rd_10=noone)
 }
 else
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2>noone)
-and(voice_jump_3rd_3>noone)
-and(voice_jump_3rd_4>noone)
-and(voice_jump_3rd_5>noone)
-and(voice_jump_3rd_6>noone)
-and(voice_jump_3rd_7>noone)
-and(voice_jump_3rd_8>noone)
-and(voice_jump_3rd_9>noone)
-and(voice_jump_3rd_10=noone)
+and (voice_jump_3rd_2>noone)
+and (voice_jump_3rd_3>noone)
+and (voice_jump_3rd_4>noone)
+and (voice_jump_3rd_5>noone)
+and (voice_jump_3rd_6>noone)
+and (voice_jump_3rd_7>noone)
+and (voice_jump_3rd_8>noone)
+and (voice_jump_3rd_9>noone)
+and (voice_jump_3rd_10=noone)
 {
 	voice_jump3rd=choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1348,15 +1348,15 @@ and(voice_jump_3rd_10=noone)
 }
 else
 if (voice_jump_3rd_1>noone)
-and(voice_jump_3rd_2>noone)
-and(voice_jump_3rd_3>noone)
-and(voice_jump_3rd_4>noone)
-and(voice_jump_3rd_5>noone)
-and(voice_jump_3rd_6>noone)
-and(voice_jump_3rd_7>noone)
-and(voice_jump_3rd_8>noone)
-and(voice_jump_3rd_9>noone)
-and(voice_jump_3rd_10>noone)
+and (voice_jump_3rd_2>noone)
+and (voice_jump_3rd_3>noone)
+and (voice_jump_3rd_4>noone)
+and (voice_jump_3rd_5>noone)
+and (voice_jump_3rd_6>noone)
+and (voice_jump_3rd_7>noone)
+and (voice_jump_3rd_8>noone)
+and (voice_jump_3rd_9>noone)
+and (voice_jump_3rd_10>noone)
 {
 	voice_jump3rd=choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1373,44 +1373,44 @@ and(voice_jump_3rd_10>noone)
 
 #region /*Jump 2nd sound variation*/
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2=noone)
-and(voice_jump_2nd_3=noone)
-and(voice_jump_2nd_4=noone)
-and(voice_jump_2nd_5=noone)
-and(voice_jump_2nd_6=noone)
-and(voice_jump_2nd_7=noone)
-and(voice_jump_2nd_8=noone)
-and(voice_jump_2nd_9=noone)
-and(voice_jump_2nd_10=noone)
+and (voice_jump_2nd_2=noone)
+and (voice_jump_2nd_3=noone)
+and (voice_jump_2nd_4=noone)
+and (voice_jump_2nd_5=noone)
+and (voice_jump_2nd_6=noone)
+and (voice_jump_2nd_7=noone)
+and (voice_jump_2nd_8=noone)
+and (voice_jump_2nd_9=noone)
+and (voice_jump_2nd_10=noone)
 {
 	voice_jump2nd=voice_jump_2nd_1;
 }
 else
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2>noone)
-and(voice_jump_2nd_3=noone)
-and(voice_jump_2nd_4=noone)
-and(voice_jump_2nd_5=noone)
-and(voice_jump_2nd_6=noone)
-and(voice_jump_2nd_7=noone)
-and(voice_jump_2nd_8=noone)
-and(voice_jump_2nd_9=noone)
-and(voice_jump_2nd_10=noone)
+and (voice_jump_2nd_2>noone)
+and (voice_jump_2nd_3=noone)
+and (voice_jump_2nd_4=noone)
+and (voice_jump_2nd_5=noone)
+and (voice_jump_2nd_6=noone)
+and (voice_jump_2nd_7=noone)
+and (voice_jump_2nd_8=noone)
+and (voice_jump_2nd_9=noone)
+and (voice_jump_2nd_10=noone)
 {
 	voice_jump2nd=choose(voice_jump_2nd_1,
 						voice_jump_2nd_2);
 }
 else
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2>noone)
-and(voice_jump_2nd_3>noone)
-and(voice_jump_2nd_4=noone)
-and(voice_jump_2nd_5=noone)
-and(voice_jump_2nd_6=noone)
-and(voice_jump_2nd_7=noone)
-and(voice_jump_2nd_8=noone)
-and(voice_jump_2nd_9=noone)
-and(voice_jump_2nd_10=noone)
+and (voice_jump_2nd_2>noone)
+and (voice_jump_2nd_3>noone)
+and (voice_jump_2nd_4=noone)
+and (voice_jump_2nd_5=noone)
+and (voice_jump_2nd_6=noone)
+and (voice_jump_2nd_7=noone)
+and (voice_jump_2nd_8=noone)
+and (voice_jump_2nd_9=noone)
+and (voice_jump_2nd_10=noone)
 {
 	voice_jump2nd=choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1418,15 +1418,15 @@ and(voice_jump_2nd_10=noone)
 }
 else
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2>noone)
-and(voice_jump_2nd_3>noone)
-and(voice_jump_2nd_4>noone)
-and(voice_jump_2nd_5=noone)
-and(voice_jump_2nd_6=noone)
-and(voice_jump_2nd_7=noone)
-and(voice_jump_2nd_8=noone)
-and(voice_jump_2nd_9=noone)
-and(voice_jump_2nd_10=noone)
+and (voice_jump_2nd_2>noone)
+and (voice_jump_2nd_3>noone)
+and (voice_jump_2nd_4>noone)
+and (voice_jump_2nd_5=noone)
+and (voice_jump_2nd_6=noone)
+and (voice_jump_2nd_7=noone)
+and (voice_jump_2nd_8=noone)
+and (voice_jump_2nd_9=noone)
+and (voice_jump_2nd_10=noone)
 {
 	voice_jump2nd=choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1435,15 +1435,15 @@ and(voice_jump_2nd_10=noone)
 }
 else
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2>noone)
-and(voice_jump_2nd_3>noone)
-and(voice_jump_2nd_4>noone)
-and(voice_jump_2nd_5>noone)
-and(voice_jump_2nd_6=noone)
-and(voice_jump_2nd_7=noone)
-and(voice_jump_2nd_8=noone)
-and(voice_jump_2nd_9=noone)
-and(voice_jump_2nd_10=noone)
+and (voice_jump_2nd_2>noone)
+and (voice_jump_2nd_3>noone)
+and (voice_jump_2nd_4>noone)
+and (voice_jump_2nd_5>noone)
+and (voice_jump_2nd_6=noone)
+and (voice_jump_2nd_7=noone)
+and (voice_jump_2nd_8=noone)
+and (voice_jump_2nd_9=noone)
+and (voice_jump_2nd_10=noone)
 {
 	voice_jump2nd=choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1453,15 +1453,15 @@ and(voice_jump_2nd_10=noone)
 }
 else
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2>noone)
-and(voice_jump_2nd_3>noone)
-and(voice_jump_2nd_4>noone)
-and(voice_jump_2nd_5>noone)
-and(voice_jump_2nd_6>noone)
-and(voice_jump_2nd_7=noone)
-and(voice_jump_2nd_8=noone)
-and(voice_jump_2nd_9=noone)
-and(voice_jump_2nd_10=noone)
+and (voice_jump_2nd_2>noone)
+and (voice_jump_2nd_3>noone)
+and (voice_jump_2nd_4>noone)
+and (voice_jump_2nd_5>noone)
+and (voice_jump_2nd_6>noone)
+and (voice_jump_2nd_7=noone)
+and (voice_jump_2nd_8=noone)
+and (voice_jump_2nd_9=noone)
+and (voice_jump_2nd_10=noone)
 {
 	voice_jump2nd=choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1472,15 +1472,15 @@ and(voice_jump_2nd_10=noone)
 }
 else
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2>noone)
-and(voice_jump_2nd_3>noone)
-and(voice_jump_2nd_4>noone)
-and(voice_jump_2nd_5>noone)
-and(voice_jump_2nd_6>noone)
-and(voice_jump_2nd_7>noone)
-and(voice_jump_2nd_8=noone)
-and(voice_jump_2nd_9=noone)
-and(voice_jump_2nd_10=noone)
+and (voice_jump_2nd_2>noone)
+and (voice_jump_2nd_3>noone)
+and (voice_jump_2nd_4>noone)
+and (voice_jump_2nd_5>noone)
+and (voice_jump_2nd_6>noone)
+and (voice_jump_2nd_7>noone)
+and (voice_jump_2nd_8=noone)
+and (voice_jump_2nd_9=noone)
+and (voice_jump_2nd_10=noone)
 {
 	voice_jump2nd=choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1492,15 +1492,15 @@ and(voice_jump_2nd_10=noone)
 }
 else
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2>noone)
-and(voice_jump_2nd_3>noone)
-and(voice_jump_2nd_4>noone)
-and(voice_jump_2nd_5>noone)
-and(voice_jump_2nd_6>noone)
-and(voice_jump_2nd_7>noone)
-and(voice_jump_2nd_8>noone)
-and(voice_jump_2nd_9=noone)
-and(voice_jump_2nd_10=noone)
+and (voice_jump_2nd_2>noone)
+and (voice_jump_2nd_3>noone)
+and (voice_jump_2nd_4>noone)
+and (voice_jump_2nd_5>noone)
+and (voice_jump_2nd_6>noone)
+and (voice_jump_2nd_7>noone)
+and (voice_jump_2nd_8>noone)
+and (voice_jump_2nd_9=noone)
+and (voice_jump_2nd_10=noone)
 {
 	voice_jump2nd=choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1513,15 +1513,15 @@ and(voice_jump_2nd_10=noone)
 }
 else
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2>noone)
-and(voice_jump_2nd_3>noone)
-and(voice_jump_2nd_4>noone)
-and(voice_jump_2nd_5>noone)
-and(voice_jump_2nd_6>noone)
-and(voice_jump_2nd_7>noone)
-and(voice_jump_2nd_8>noone)
-and(voice_jump_2nd_9>noone)
-and(voice_jump_2nd_10=noone)
+and (voice_jump_2nd_2>noone)
+and (voice_jump_2nd_3>noone)
+and (voice_jump_2nd_4>noone)
+and (voice_jump_2nd_5>noone)
+and (voice_jump_2nd_6>noone)
+and (voice_jump_2nd_7>noone)
+and (voice_jump_2nd_8>noone)
+and (voice_jump_2nd_9>noone)
+and (voice_jump_2nd_10=noone)
 {
 	voice_jump2nd=choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1535,15 +1535,15 @@ and(voice_jump_2nd_10=noone)
 }
 else
 if (voice_jump_2nd_1>noone)
-and(voice_jump_2nd_2>noone)
-and(voice_jump_2nd_3>noone)
-and(voice_jump_2nd_4>noone)
-and(voice_jump_2nd_5>noone)
-and(voice_jump_2nd_6>noone)
-and(voice_jump_2nd_7>noone)
-and(voice_jump_2nd_8>noone)
-and(voice_jump_2nd_9>noone)
-and(voice_jump_2nd_10>noone)
+and (voice_jump_2nd_2>noone)
+and (voice_jump_2nd_3>noone)
+and (voice_jump_2nd_4>noone)
+and (voice_jump_2nd_5>noone)
+and (voice_jump_2nd_6>noone)
+and (voice_jump_2nd_7>noone)
+and (voice_jump_2nd_8>noone)
+and (voice_jump_2nd_9>noone)
+and (voice_jump_2nd_10>noone)
 {
 	voice_jump2nd=choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1560,44 +1560,44 @@ and(voice_jump_2nd_10>noone)
 
 #region /*Get invincibility sound variation*/
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2=noone)
-and(voice_get_invincibility_3=noone)
-and(voice_get_invincibility_4=noone)
-and(voice_get_invincibility_5=noone)
-and(voice_get_invincibility_6=noone)
-and(voice_get_invincibility_7=noone)
-and(voice_get_invincibility_8=noone)
-and(voice_get_invincibility_9=noone)
-and(voice_get_invincibility_10=noone)
+and (voice_get_invincibility_2=noone)
+and (voice_get_invincibility_3=noone)
+and (voice_get_invincibility_4=noone)
+and (voice_get_invincibility_5=noone)
+and (voice_get_invincibility_6=noone)
+and (voice_get_invincibility_7=noone)
+and (voice_get_invincibility_8=noone)
+and (voice_get_invincibility_9=noone)
+and (voice_get_invincibility_10=noone)
 {
 	voice_get_star=voice_get_invincibility_1;
 }
 else
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2>noone)
-and(voice_get_invincibility_3=noone)
-and(voice_get_invincibility_4=noone)
-and(voice_get_invincibility_5=noone)
-and(voice_get_invincibility_6=noone)
-and(voice_get_invincibility_7=noone)
-and(voice_get_invincibility_8=noone)
-and(voice_get_invincibility_9=noone)
-and(voice_get_invincibility_10=noone)
+and (voice_get_invincibility_2>noone)
+and (voice_get_invincibility_3=noone)
+and (voice_get_invincibility_4=noone)
+and (voice_get_invincibility_5=noone)
+and (voice_get_invincibility_6=noone)
+and (voice_get_invincibility_7=noone)
+and (voice_get_invincibility_8=noone)
+and (voice_get_invincibility_9=noone)
+and (voice_get_invincibility_10=noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2);
 }
 else
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2>noone)
-and(voice_get_invincibility_3>noone)
-and(voice_get_invincibility_4=noone)
-and(voice_get_invincibility_5=noone)
-and(voice_get_invincibility_6=noone)
-and(voice_get_invincibility_7=noone)
-and(voice_get_invincibility_8=noone)
-and(voice_get_invincibility_9=noone)
-and(voice_get_invincibility_10=noone)
+and (voice_get_invincibility_2>noone)
+and (voice_get_invincibility_3>noone)
+and (voice_get_invincibility_4=noone)
+and (voice_get_invincibility_5=noone)
+and (voice_get_invincibility_6=noone)
+and (voice_get_invincibility_7=noone)
+and (voice_get_invincibility_8=noone)
+and (voice_get_invincibility_9=noone)
+and (voice_get_invincibility_10=noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1605,15 +1605,15 @@ and(voice_get_invincibility_10=noone)
 }
 else
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2>noone)
-and(voice_get_invincibility_3>noone)
-and(voice_get_invincibility_4>noone)
-and(voice_get_invincibility_5=noone)
-and(voice_get_invincibility_6=noone)
-and(voice_get_invincibility_7=noone)
-and(voice_get_invincibility_8=noone)
-and(voice_get_invincibility_9=noone)
-and(voice_get_invincibility_10=noone)
+and (voice_get_invincibility_2>noone)
+and (voice_get_invincibility_3>noone)
+and (voice_get_invincibility_4>noone)
+and (voice_get_invincibility_5=noone)
+and (voice_get_invincibility_6=noone)
+and (voice_get_invincibility_7=noone)
+and (voice_get_invincibility_8=noone)
+and (voice_get_invincibility_9=noone)
+and (voice_get_invincibility_10=noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1622,15 +1622,15 @@ and(voice_get_invincibility_10=noone)
 }
 else
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2>noone)
-and(voice_get_invincibility_3>noone)
-and(voice_get_invincibility_4>noone)
-and(voice_get_invincibility_5>noone)
-and(voice_get_invincibility_6=noone)
-and(voice_get_invincibility_7=noone)
-and(voice_get_invincibility_8=noone)
-and(voice_get_invincibility_9=noone)
-and(voice_get_invincibility_10=noone)
+and (voice_get_invincibility_2>noone)
+and (voice_get_invincibility_3>noone)
+and (voice_get_invincibility_4>noone)
+and (voice_get_invincibility_5>noone)
+and (voice_get_invincibility_6=noone)
+and (voice_get_invincibility_7=noone)
+and (voice_get_invincibility_8=noone)
+and (voice_get_invincibility_9=noone)
+and (voice_get_invincibility_10=noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1640,15 +1640,15 @@ and(voice_get_invincibility_10=noone)
 }
 else
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2>noone)
-and(voice_get_invincibility_3>noone)
-and(voice_get_invincibility_4>noone)
-and(voice_get_invincibility_5>noone)
-and(voice_get_invincibility_6>noone)
-and(voice_get_invincibility_7=noone)
-and(voice_get_invincibility_8=noone)
-and(voice_get_invincibility_9=noone)
-and(voice_get_invincibility_10=noone)
+and (voice_get_invincibility_2>noone)
+and (voice_get_invincibility_3>noone)
+and (voice_get_invincibility_4>noone)
+and (voice_get_invincibility_5>noone)
+and (voice_get_invincibility_6>noone)
+and (voice_get_invincibility_7=noone)
+and (voice_get_invincibility_8=noone)
+and (voice_get_invincibility_9=noone)
+and (voice_get_invincibility_10=noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1659,15 +1659,15 @@ and(voice_get_invincibility_10=noone)
 }
 else
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2>noone)
-and(voice_get_invincibility_3>noone)
-and(voice_get_invincibility_4>noone)
-and(voice_get_invincibility_5>noone)
-and(voice_get_invincibility_6>noone)
-and(voice_get_invincibility_7>noone)
-and(voice_get_invincibility_8=noone)
-and(voice_get_invincibility_9=noone)
-and(voice_get_invincibility_10=noone)
+and (voice_get_invincibility_2>noone)
+and (voice_get_invincibility_3>noone)
+and (voice_get_invincibility_4>noone)
+and (voice_get_invincibility_5>noone)
+and (voice_get_invincibility_6>noone)
+and (voice_get_invincibility_7>noone)
+and (voice_get_invincibility_8=noone)
+and (voice_get_invincibility_9=noone)
+and (voice_get_invincibility_10=noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1679,15 +1679,15 @@ and(voice_get_invincibility_10=noone)
 }
 else
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2>noone)
-and(voice_get_invincibility_3>noone)
-and(voice_get_invincibility_4>noone)
-and(voice_get_invincibility_5>noone)
-and(voice_get_invincibility_6>noone)
-and(voice_get_invincibility_7>noone)
-and(voice_get_invincibility_8>noone)
-and(voice_get_invincibility_9=noone)
-and(voice_get_invincibility_10=noone)
+and (voice_get_invincibility_2>noone)
+and (voice_get_invincibility_3>noone)
+and (voice_get_invincibility_4>noone)
+and (voice_get_invincibility_5>noone)
+and (voice_get_invincibility_6>noone)
+and (voice_get_invincibility_7>noone)
+and (voice_get_invincibility_8>noone)
+and (voice_get_invincibility_9=noone)
+and (voice_get_invincibility_10=noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1700,15 +1700,15 @@ and(voice_get_invincibility_10=noone)
 }
 else
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2>noone)
-and(voice_get_invincibility_3>noone)
-and(voice_get_invincibility_4>noone)
-and(voice_get_invincibility_5>noone)
-and(voice_get_invincibility_6>noone)
-and(voice_get_invincibility_7>noone)
-and(voice_get_invincibility_8>noone)
-and(voice_get_invincibility_9>noone)
-and(voice_get_invincibility_10=noone)
+and (voice_get_invincibility_2>noone)
+and (voice_get_invincibility_3>noone)
+and (voice_get_invincibility_4>noone)
+and (voice_get_invincibility_5>noone)
+and (voice_get_invincibility_6>noone)
+and (voice_get_invincibility_7>noone)
+and (voice_get_invincibility_8>noone)
+and (voice_get_invincibility_9>noone)
+and (voice_get_invincibility_10=noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1722,15 +1722,15 @@ and(voice_get_invincibility_10=noone)
 }
 else
 if (voice_get_invincibility_1>noone)
-and(voice_get_invincibility_2>noone)
-and(voice_get_invincibility_3>noone)
-and(voice_get_invincibility_4>noone)
-and(voice_get_invincibility_5>noone)
-and(voice_get_invincibility_6>noone)
-and(voice_get_invincibility_7>noone)
-and(voice_get_invincibility_8>noone)
-and(voice_get_invincibility_9>noone)
-and(voice_get_invincibility_10>noone)
+and (voice_get_invincibility_2>noone)
+and (voice_get_invincibility_3>noone)
+and (voice_get_invincibility_4>noone)
+and (voice_get_invincibility_5>noone)
+and (voice_get_invincibility_6>noone)
+and (voice_get_invincibility_7>noone)
+and (voice_get_invincibility_8>noone)
+and (voice_get_invincibility_9>noone)
+and (voice_get_invincibility_10>noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1747,44 +1747,44 @@ and(voice_get_invincibility_10>noone)
 
 #region /*Enter goal sound variation*/
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2=noone)
-and(voice_enter_goal_3=noone)
-and(voice_enter_goal_4=noone)
-and(voice_enter_goal_5=noone)
-and(voice_enter_goal_6=noone)
-and(voice_enter_goal_7=noone)
-and(voice_enter_goal_8=noone)
-and(voice_enter_goal_9=noone)
-and(voice_enter_goal_10=noone)
+and (voice_enter_goal_2=noone)
+and (voice_enter_goal_3=noone)
+and (voice_enter_goal_4=noone)
+and (voice_enter_goal_5=noone)
+and (voice_enter_goal_6=noone)
+and (voice_enter_goal_7=noone)
+and (voice_enter_goal_8=noone)
+and (voice_enter_goal_9=noone)
+and (voice_enter_goal_10=noone)
 {
 	voice_enter_goal=voice_enter_goal_1;
 }
 else
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2>noone)
-and(voice_enter_goal_3=noone)
-and(voice_enter_goal_4=noone)
-and(voice_enter_goal_5=noone)
-and(voice_enter_goal_6=noone)
-and(voice_enter_goal_7=noone)
-and(voice_enter_goal_8=noone)
-and(voice_enter_goal_9=noone)
-and(voice_enter_goal_10=noone)
+and (voice_enter_goal_2>noone)
+and (voice_enter_goal_3=noone)
+and (voice_enter_goal_4=noone)
+and (voice_enter_goal_5=noone)
+and (voice_enter_goal_6=noone)
+and (voice_enter_goal_7=noone)
+and (voice_enter_goal_8=noone)
+and (voice_enter_goal_9=noone)
+and (voice_enter_goal_10=noone)
 {
 	voice_enter_goal=choose(voice_enter_goal_1,
 						voice_enter_goal_2);
 }
 else
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2>noone)
-and(voice_enter_goal_3>noone)
-and(voice_enter_goal_4=noone)
-and(voice_enter_goal_5=noone)
-and(voice_enter_goal_6=noone)
-and(voice_enter_goal_7=noone)
-and(voice_enter_goal_8=noone)
-and(voice_enter_goal_9=noone)
-and(voice_enter_goal_10=noone)
+and (voice_enter_goal_2>noone)
+and (voice_enter_goal_3>noone)
+and (voice_enter_goal_4=noone)
+and (voice_enter_goal_5=noone)
+and (voice_enter_goal_6=noone)
+and (voice_enter_goal_7=noone)
+and (voice_enter_goal_8=noone)
+and (voice_enter_goal_9=noone)
+and (voice_enter_goal_10=noone)
 {
 	voice_enter_goal=choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1792,15 +1792,15 @@ and(voice_enter_goal_10=noone)
 }
 else
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2>noone)
-and(voice_enter_goal_3>noone)
-and(voice_enter_goal_4>noone)
-and(voice_enter_goal_5=noone)
-and(voice_enter_goal_6=noone)
-and(voice_enter_goal_7=noone)
-and(voice_enter_goal_8=noone)
-and(voice_enter_goal_9=noone)
-and(voice_enter_goal_10=noone)
+and (voice_enter_goal_2>noone)
+and (voice_enter_goal_3>noone)
+and (voice_enter_goal_4>noone)
+and (voice_enter_goal_5=noone)
+and (voice_enter_goal_6=noone)
+and (voice_enter_goal_7=noone)
+and (voice_enter_goal_8=noone)
+and (voice_enter_goal_9=noone)
+and (voice_enter_goal_10=noone)
 {
 	voice_enter_goal=choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1809,15 +1809,15 @@ and(voice_enter_goal_10=noone)
 }
 else
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2>noone)
-and(voice_enter_goal_3>noone)
-and(voice_enter_goal_4>noone)
-and(voice_enter_goal_5>noone)
-and(voice_enter_goal_6=noone)
-and(voice_enter_goal_7=noone)
-and(voice_enter_goal_8=noone)
-and(voice_enter_goal_9=noone)
-and(voice_enter_goal_10=noone)
+and (voice_enter_goal_2>noone)
+and (voice_enter_goal_3>noone)
+and (voice_enter_goal_4>noone)
+and (voice_enter_goal_5>noone)
+and (voice_enter_goal_6=noone)
+and (voice_enter_goal_7=noone)
+and (voice_enter_goal_8=noone)
+and (voice_enter_goal_9=noone)
+and (voice_enter_goal_10=noone)
 {
 	voice_enter_goal=choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1827,15 +1827,15 @@ and(voice_enter_goal_10=noone)
 }
 else
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2>noone)
-and(voice_enter_goal_3>noone)
-and(voice_enter_goal_4>noone)
-and(voice_enter_goal_5>noone)
-and(voice_enter_goal_6>noone)
-and(voice_enter_goal_7=noone)
-and(voice_enter_goal_8=noone)
-and(voice_enter_goal_9=noone)
-and(voice_enter_goal_10=noone)
+and (voice_enter_goal_2>noone)
+and (voice_enter_goal_3>noone)
+and (voice_enter_goal_4>noone)
+and (voice_enter_goal_5>noone)
+and (voice_enter_goal_6>noone)
+and (voice_enter_goal_7=noone)
+and (voice_enter_goal_8=noone)
+and (voice_enter_goal_9=noone)
+and (voice_enter_goal_10=noone)
 {
 	voice_enter_goal=choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1846,15 +1846,15 @@ and(voice_enter_goal_10=noone)
 }
 else
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2>noone)
-and(voice_enter_goal_3>noone)
-and(voice_enter_goal_4>noone)
-and(voice_enter_goal_5>noone)
-and(voice_enter_goal_6>noone)
-and(voice_enter_goal_7>noone)
-and(voice_enter_goal_8=noone)
-and(voice_enter_goal_9=noone)
-and(voice_enter_goal_10=noone)
+and (voice_enter_goal_2>noone)
+and (voice_enter_goal_3>noone)
+and (voice_enter_goal_4>noone)
+and (voice_enter_goal_5>noone)
+and (voice_enter_goal_6>noone)
+and (voice_enter_goal_7>noone)
+and (voice_enter_goal_8=noone)
+and (voice_enter_goal_9=noone)
+and (voice_enter_goal_10=noone)
 {
 	voice_enter_goal=choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1866,15 +1866,15 @@ and(voice_enter_goal_10=noone)
 }
 else
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2>noone)
-and(voice_enter_goal_3>noone)
-and(voice_enter_goal_4>noone)
-and(voice_enter_goal_5>noone)
-and(voice_enter_goal_6>noone)
-and(voice_enter_goal_7>noone)
-and(voice_enter_goal_8>noone)
-and(voice_enter_goal_9=noone)
-and(voice_enter_goal_10=noone)
+and (voice_enter_goal_2>noone)
+and (voice_enter_goal_3>noone)
+and (voice_enter_goal_4>noone)
+and (voice_enter_goal_5>noone)
+and (voice_enter_goal_6>noone)
+and (voice_enter_goal_7>noone)
+and (voice_enter_goal_8>noone)
+and (voice_enter_goal_9=noone)
+and (voice_enter_goal_10=noone)
 {
 	voice_enter_goal=choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1887,15 +1887,15 @@ and(voice_enter_goal_10=noone)
 }
 else
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2>noone)
-and(voice_enter_goal_3>noone)
-and(voice_enter_goal_4>noone)
-and(voice_enter_goal_5>noone)
-and(voice_enter_goal_6>noone)
-and(voice_enter_goal_7>noone)
-and(voice_enter_goal_8>noone)
-and(voice_enter_goal_9>noone)
-and(voice_enter_goal_10=noone)
+and (voice_enter_goal_2>noone)
+and (voice_enter_goal_3>noone)
+and (voice_enter_goal_4>noone)
+and (voice_enter_goal_5>noone)
+and (voice_enter_goal_6>noone)
+and (voice_enter_goal_7>noone)
+and (voice_enter_goal_8>noone)
+and (voice_enter_goal_9>noone)
+and (voice_enter_goal_10=noone)
 {
 	voice_enter_goal=choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1909,15 +1909,15 @@ and(voice_enter_goal_10=noone)
 }
 else
 if (voice_enter_goal_1>noone)
-and(voice_enter_goal_2>noone)
-and(voice_enter_goal_3>noone)
-and(voice_enter_goal_4>noone)
-and(voice_enter_goal_5>noone)
-and(voice_enter_goal_6>noone)
-and(voice_enter_goal_7>noone)
-and(voice_enter_goal_8>noone)
-and(voice_enter_goal_9>noone)
-and(voice_enter_goal_10>noone)
+and (voice_enter_goal_2>noone)
+and (voice_enter_goal_3>noone)
+and (voice_enter_goal_4>noone)
+and (voice_enter_goal_5>noone)
+and (voice_enter_goal_6>noone)
+and (voice_enter_goal_7>noone)
+and (voice_enter_goal_8>noone)
+and (voice_enter_goal_9>noone)
+and (voice_enter_goal_10>noone)
 {
 	voice_enter_goal=choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1934,44 +1934,44 @@ and(voice_enter_goal_10>noone)
 
 #region /*Dive sound variation*/
 if (voice_dive_1>noone)
-and(voice_dive_2=noone)
-and(voice_dive_3=noone)
-and(voice_dive_4=noone)
-and(voice_dive_5=noone)
-and(voice_dive_6=noone)
-and(voice_dive_7=noone)
-and(voice_dive_8=noone)
-and(voice_dive_9=noone)
-and(voice_dive_10=noone)
+and (voice_dive_2=noone)
+and (voice_dive_3=noone)
+and (voice_dive_4=noone)
+and (voice_dive_5=noone)
+and (voice_dive_6=noone)
+and (voice_dive_7=noone)
+and (voice_dive_8=noone)
+and (voice_dive_9=noone)
+and (voice_dive_10=noone)
 {
 	voice_dive=voice_dive_1;
 }
 else
 if (voice_dive_1>noone)
-and(voice_dive_2>noone)
-and(voice_dive_3=noone)
-and(voice_dive_4=noone)
-and(voice_dive_5=noone)
-and(voice_dive_6=noone)
-and(voice_dive_7=noone)
-and(voice_dive_8=noone)
-and(voice_dive_9=noone)
-and(voice_dive_10=noone)
+and (voice_dive_2>noone)
+and (voice_dive_3=noone)
+and (voice_dive_4=noone)
+and (voice_dive_5=noone)
+and (voice_dive_6=noone)
+and (voice_dive_7=noone)
+and (voice_dive_8=noone)
+and (voice_dive_9=noone)
+and (voice_dive_10=noone)
 {
 	voice_dive=choose(voice_dive_1,
 						voice_dive_2);
 }
 else
 if (voice_dive_1>noone)
-and(voice_dive_2>noone)
-and(voice_dive_3>noone)
-and(voice_dive_4=noone)
-and(voice_dive_5=noone)
-and(voice_dive_6=noone)
-and(voice_dive_7=noone)
-and(voice_dive_8=noone)
-and(voice_dive_9=noone)
-and(voice_dive_10=noone)
+and (voice_dive_2>noone)
+and (voice_dive_3>noone)
+and (voice_dive_4=noone)
+and (voice_dive_5=noone)
+and (voice_dive_6=noone)
+and (voice_dive_7=noone)
+and (voice_dive_8=noone)
+and (voice_dive_9=noone)
+and (voice_dive_10=noone)
 {
 	voice_dive=choose(voice_dive_1,
 						voice_dive_2,
@@ -1979,15 +1979,15 @@ and(voice_dive_10=noone)
 }
 else
 if (voice_dive_1>noone)
-and(voice_dive_2>noone)
-and(voice_dive_3>noone)
-and(voice_dive_4>noone)
-and(voice_dive_5=noone)
-and(voice_dive_6=noone)
-and(voice_dive_7=noone)
-and(voice_dive_8=noone)
-and(voice_dive_9=noone)
-and(voice_dive_10=noone)
+and (voice_dive_2>noone)
+and (voice_dive_3>noone)
+and (voice_dive_4>noone)
+and (voice_dive_5=noone)
+and (voice_dive_6=noone)
+and (voice_dive_7=noone)
+and (voice_dive_8=noone)
+and (voice_dive_9=noone)
+and (voice_dive_10=noone)
 {
 	voice_dive=choose(voice_dive_1,
 						voice_dive_2,
@@ -1996,15 +1996,15 @@ and(voice_dive_10=noone)
 }
 else
 if (voice_dive_1>noone)
-and(voice_dive_2>noone)
-and(voice_dive_3>noone)
-and(voice_dive_4>noone)
-and(voice_dive_5>noone)
-and(voice_dive_6=noone)
-and(voice_dive_7=noone)
-and(voice_dive_8=noone)
-and(voice_dive_9=noone)
-and(voice_dive_10=noone)
+and (voice_dive_2>noone)
+and (voice_dive_3>noone)
+and (voice_dive_4>noone)
+and (voice_dive_5>noone)
+and (voice_dive_6=noone)
+and (voice_dive_7=noone)
+and (voice_dive_8=noone)
+and (voice_dive_9=noone)
+and (voice_dive_10=noone)
 {
 	voice_dive=choose(voice_dive_1,
 						voice_dive_2,
@@ -2014,15 +2014,15 @@ and(voice_dive_10=noone)
 }
 else
 if (voice_dive_1>noone)
-and(voice_dive_2>noone)
-and(voice_dive_3>noone)
-and(voice_dive_4>noone)
-and(voice_dive_5>noone)
-and(voice_dive_6>noone)
-and(voice_dive_7=noone)
-and(voice_dive_8=noone)
-and(voice_dive_9=noone)
-and(voice_dive_10=noone)
+and (voice_dive_2>noone)
+and (voice_dive_3>noone)
+and (voice_dive_4>noone)
+and (voice_dive_5>noone)
+and (voice_dive_6>noone)
+and (voice_dive_7=noone)
+and (voice_dive_8=noone)
+and (voice_dive_9=noone)
+and (voice_dive_10=noone)
 {
 	voice_dive=choose(voice_dive_1,
 						voice_dive_2,
@@ -2033,15 +2033,15 @@ and(voice_dive_10=noone)
 }
 else
 if (voice_dive_1>noone)
-and(voice_dive_2>noone)
-and(voice_dive_3>noone)
-and(voice_dive_4>noone)
-and(voice_dive_5>noone)
-and(voice_dive_6>noone)
-and(voice_dive_7>noone)
-and(voice_dive_8=noone)
-and(voice_dive_9=noone)
-and(voice_dive_10=noone)
+and (voice_dive_2>noone)
+and (voice_dive_3>noone)
+and (voice_dive_4>noone)
+and (voice_dive_5>noone)
+and (voice_dive_6>noone)
+and (voice_dive_7>noone)
+and (voice_dive_8=noone)
+and (voice_dive_9=noone)
+and (voice_dive_10=noone)
 {
 	voice_dive=choose(voice_dive_1,
 						voice_dive_2,
@@ -2053,15 +2053,15 @@ and(voice_dive_10=noone)
 }
 else
 if (voice_dive_1>noone)
-and(voice_dive_2>noone)
-and(voice_dive_3>noone)
-and(voice_dive_4>noone)
-and(voice_dive_5>noone)
-and(voice_dive_6>noone)
-and(voice_dive_7>noone)
-and(voice_dive_8>noone)
-and(voice_dive_9=noone)
-and(voice_dive_10=noone)
+and (voice_dive_2>noone)
+and (voice_dive_3>noone)
+and (voice_dive_4>noone)
+and (voice_dive_5>noone)
+and (voice_dive_6>noone)
+and (voice_dive_7>noone)
+and (voice_dive_8>noone)
+and (voice_dive_9=noone)
+and (voice_dive_10=noone)
 {
 	voice_dive=choose(voice_dive_1,
 						voice_dive_2,
@@ -2074,15 +2074,15 @@ and(voice_dive_10=noone)
 }
 else
 if (voice_dive_1>noone)
-and(voice_dive_2>noone)
-and(voice_dive_3>noone)
-and(voice_dive_4>noone)
-and(voice_dive_5>noone)
-and(voice_dive_6>noone)
-and(voice_dive_7>noone)
-and(voice_dive_8>noone)
-and(voice_dive_9>noone)
-and(voice_dive_10=noone)
+and (voice_dive_2>noone)
+and (voice_dive_3>noone)
+and (voice_dive_4>noone)
+and (voice_dive_5>noone)
+and (voice_dive_6>noone)
+and (voice_dive_7>noone)
+and (voice_dive_8>noone)
+and (voice_dive_9>noone)
+and (voice_dive_10=noone)
 {
 	voice_dive=choose(voice_dive_1,
 						voice_dive_2,
@@ -2096,15 +2096,15 @@ and(voice_dive_10=noone)
 }
 else
 if (voice_dive_1>noone)
-and(voice_dive_2>noone)
-and(voice_dive_3>noone)
-and(voice_dive_4>noone)
-and(voice_dive_5>noone)
-and(voice_dive_6>noone)
-and(voice_dive_7>noone)
-and(voice_dive_8>noone)
-and(voice_dive_9>noone)
-and(voice_dive_10>noone)
+and (voice_dive_2>noone)
+and (voice_dive_3>noone)
+and (voice_dive_4>noone)
+and (voice_dive_5>noone)
+and (voice_dive_6>noone)
+and (voice_dive_7>noone)
+and (voice_dive_8>noone)
+and (voice_dive_9>noone)
+and (voice_dive_10>noone)
 {
 	voice_dive=choose(voice_dive_1,
 						voice_dive_2,
@@ -2121,44 +2121,44 @@ and(voice_dive_10>noone)
 
 #region /*Damage sound variation*/
 if (voice_damage_1>noone)
-and(voice_damage_2=noone)
-and(voice_damage_3=noone)
-and(voice_damage_4=noone)
-and(voice_damage_5=noone)
-and(voice_damage_6=noone)
-and(voice_damage_7=noone)
-and(voice_damage_8=noone)
-and(voice_damage_9=noone)
-and(voice_damage_10=noone)
+and (voice_damage_2=noone)
+and (voice_damage_3=noone)
+and (voice_damage_4=noone)
+and (voice_damage_5=noone)
+and (voice_damage_6=noone)
+and (voice_damage_7=noone)
+and (voice_damage_8=noone)
+and (voice_damage_9=noone)
+and (voice_damage_10=noone)
 {
 	voice_damage=voice_damage_1;
 }
 else
 if (voice_damage_1>noone)
-and(voice_damage_2>noone)
-and(voice_damage_3=noone)
-and(voice_damage_4=noone)
-and(voice_damage_5=noone)
-and(voice_damage_6=noone)
-and(voice_damage_7=noone)
-and(voice_damage_8=noone)
-and(voice_damage_9=noone)
-and(voice_damage_10=noone)
+and (voice_damage_2>noone)
+and (voice_damage_3=noone)
+and (voice_damage_4=noone)
+and (voice_damage_5=noone)
+and (voice_damage_6=noone)
+and (voice_damage_7=noone)
+and (voice_damage_8=noone)
+and (voice_damage_9=noone)
+and (voice_damage_10=noone)
 {
 	voice_damage=choose(voice_damage_1,
 						voice_damage_2);
 }
 else
 if (voice_damage_1>noone)
-and(voice_damage_2>noone)
-and(voice_damage_3>noone)
-and(voice_damage_4=noone)
-and(voice_damage_5=noone)
-and(voice_damage_6=noone)
-and(voice_damage_7=noone)
-and(voice_damage_8=noone)
-and(voice_damage_9=noone)
-and(voice_damage_10=noone)
+and (voice_damage_2>noone)
+and (voice_damage_3>noone)
+and (voice_damage_4=noone)
+and (voice_damage_5=noone)
+and (voice_damage_6=noone)
+and (voice_damage_7=noone)
+and (voice_damage_8=noone)
+and (voice_damage_9=noone)
+and (voice_damage_10=noone)
 {
 	voice_damage=choose(voice_damage_1,
 						voice_damage_2,
@@ -2166,15 +2166,15 @@ and(voice_damage_10=noone)
 }
 else
 if (voice_damage_1>noone)
-and(voice_damage_2>noone)
-and(voice_damage_3>noone)
-and(voice_damage_4>noone)
-and(voice_damage_5=noone)
-and(voice_damage_6=noone)
-and(voice_damage_7=noone)
-and(voice_damage_8=noone)
-and(voice_damage_9=noone)
-and(voice_damage_10=noone)
+and (voice_damage_2>noone)
+and (voice_damage_3>noone)
+and (voice_damage_4>noone)
+and (voice_damage_5=noone)
+and (voice_damage_6=noone)
+and (voice_damage_7=noone)
+and (voice_damage_8=noone)
+and (voice_damage_9=noone)
+and (voice_damage_10=noone)
 {
 	voice_damage=choose(voice_damage_1,
 						voice_damage_2,
@@ -2183,15 +2183,15 @@ and(voice_damage_10=noone)
 }
 else
 if (voice_damage_1>noone)
-and(voice_damage_2>noone)
-and(voice_damage_3>noone)
-and(voice_damage_4>noone)
-and(voice_damage_5>noone)
-and(voice_damage_6=noone)
-and(voice_damage_7=noone)
-and(voice_damage_8=noone)
-and(voice_damage_9=noone)
-and(voice_damage_10=noone)
+and (voice_damage_2>noone)
+and (voice_damage_3>noone)
+and (voice_damage_4>noone)
+and (voice_damage_5>noone)
+and (voice_damage_6=noone)
+and (voice_damage_7=noone)
+and (voice_damage_8=noone)
+and (voice_damage_9=noone)
+and (voice_damage_10=noone)
 {
 	voice_damage=choose(voice_damage_1,
 						voice_damage_2,
@@ -2201,15 +2201,15 @@ and(voice_damage_10=noone)
 }
 else
 if (voice_damage_1>noone)
-and(voice_damage_2>noone)
-and(voice_damage_3>noone)
-and(voice_damage_4>noone)
-and(voice_damage_5>noone)
-and(voice_damage_6>noone)
-and(voice_damage_7=noone)
-and(voice_damage_8=noone)
-and(voice_damage_9=noone)
-and(voice_damage_10=noone)
+and (voice_damage_2>noone)
+and (voice_damage_3>noone)
+and (voice_damage_4>noone)
+and (voice_damage_5>noone)
+and (voice_damage_6>noone)
+and (voice_damage_7=noone)
+and (voice_damage_8=noone)
+and (voice_damage_9=noone)
+and (voice_damage_10=noone)
 {
 	voice_damage=choose(voice_damage_1,
 						voice_damage_2,
@@ -2220,15 +2220,15 @@ and(voice_damage_10=noone)
 }
 else
 if (voice_damage_1>noone)
-and(voice_damage_2>noone)
-and(voice_damage_3>noone)
-and(voice_damage_4>noone)
-and(voice_damage_5>noone)
-and(voice_damage_6>noone)
-and(voice_damage_7>noone)
-and(voice_damage_8=noone)
-and(voice_damage_9=noone)
-and(voice_damage_10=noone)
+and (voice_damage_2>noone)
+and (voice_damage_3>noone)
+and (voice_damage_4>noone)
+and (voice_damage_5>noone)
+and (voice_damage_6>noone)
+and (voice_damage_7>noone)
+and (voice_damage_8=noone)
+and (voice_damage_9=noone)
+and (voice_damage_10=noone)
 {
 	voice_damage=choose(voice_damage_1,
 						voice_damage_2,
@@ -2240,15 +2240,15 @@ and(voice_damage_10=noone)
 }
 else
 if (voice_damage_1>noone)
-and(voice_damage_2>noone)
-and(voice_damage_3>noone)
-and(voice_damage_4>noone)
-and(voice_damage_5>noone)
-and(voice_damage_6>noone)
-and(voice_damage_7>noone)
-and(voice_damage_8>noone)
-and(voice_damage_9=noone)
-and(voice_damage_10=noone)
+and (voice_damage_2>noone)
+and (voice_damage_3>noone)
+and (voice_damage_4>noone)
+and (voice_damage_5>noone)
+and (voice_damage_6>noone)
+and (voice_damage_7>noone)
+and (voice_damage_8>noone)
+and (voice_damage_9=noone)
+and (voice_damage_10=noone)
 {
 	voice_damage=choose(voice_damage_1,
 						voice_damage_2,
@@ -2261,15 +2261,15 @@ and(voice_damage_10=noone)
 }
 else
 if (voice_damage_1>noone)
-and(voice_damage_2>noone)
-and(voice_damage_3>noone)
-and(voice_damage_4>noone)
-and(voice_damage_5>noone)
-and(voice_damage_6>noone)
-and(voice_damage_7>noone)
-and(voice_damage_8>noone)
-and(voice_damage_9>noone)
-and(voice_damage_10=noone)
+and (voice_damage_2>noone)
+and (voice_damage_3>noone)
+and (voice_damage_4>noone)
+and (voice_damage_5>noone)
+and (voice_damage_6>noone)
+and (voice_damage_7>noone)
+and (voice_damage_8>noone)
+and (voice_damage_9>noone)
+and (voice_damage_10=noone)
 {
 	voice_damage=choose(voice_damage_1,
 						voice_damage_2,
@@ -2283,15 +2283,15 @@ and(voice_damage_10=noone)
 }
 else
 if (voice_damage_1>noone)
-and(voice_damage_2>noone)
-and(voice_damage_3>noone)
-and(voice_damage_4>noone)
-and(voice_damage_5>noone)
-and(voice_damage_6>noone)
-and(voice_damage_7>noone)
-and(voice_damage_8>noone)
-and(voice_damage_9>noone)
-and(voice_damage_10>noone)
+and (voice_damage_2>noone)
+and (voice_damage_3>noone)
+and (voice_damage_4>noone)
+and (voice_damage_5>noone)
+and (voice_damage_6>noone)
+and (voice_damage_7>noone)
+and (voice_damage_8>noone)
+and (voice_damage_9>noone)
+and (voice_damage_10>noone)
 {
 	voice_damage=choose(voice_damage_1,
 						voice_damage_2,
@@ -2308,44 +2308,44 @@ and(voice_damage_10>noone)
 
 #region /*Burned running sound variation*/
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2=noone)
-and(voice_burned_running_3=noone)
-and(voice_burned_running_4=noone)
-and(voice_burned_running_5=noone)
-and(voice_burned_running_6=noone)
-and(voice_burned_running_7=noone)
-and(voice_burned_running_8=noone)
-and(voice_burned_running_9=noone)
-and(voice_burned_running_10=noone)
+and (voice_burned_running_2=noone)
+and (voice_burned_running_3=noone)
+and (voice_burned_running_4=noone)
+and (voice_burned_running_5=noone)
+and (voice_burned_running_6=noone)
+and (voice_burned_running_7=noone)
+and (voice_burned_running_8=noone)
+and (voice_burned_running_9=noone)
+and (voice_burned_running_10=noone)
 {
 	voice_burned_running=voice_burned_running_1;
 }
 else
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2>noone)
-and(voice_burned_running_3=noone)
-and(voice_burned_running_4=noone)
-and(voice_burned_running_5=noone)
-and(voice_burned_running_6=noone)
-and(voice_burned_running_7=noone)
-and(voice_burned_running_8=noone)
-and(voice_burned_running_9=noone)
-and(voice_burned_running_10=noone)
+and (voice_burned_running_2>noone)
+and (voice_burned_running_3=noone)
+and (voice_burned_running_4=noone)
+and (voice_burned_running_5=noone)
+and (voice_burned_running_6=noone)
+and (voice_burned_running_7=noone)
+and (voice_burned_running_8=noone)
+and (voice_burned_running_9=noone)
+and (voice_burned_running_10=noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2);
 }
 else
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2>noone)
-and(voice_burned_running_3>noone)
-and(voice_burned_running_4=noone)
-and(voice_burned_running_5=noone)
-and(voice_burned_running_6=noone)
-and(voice_burned_running_7=noone)
-and(voice_burned_running_8=noone)
-and(voice_burned_running_9=noone)
-and(voice_burned_running_10=noone)
+and (voice_burned_running_2>noone)
+and (voice_burned_running_3>noone)
+and (voice_burned_running_4=noone)
+and (voice_burned_running_5=noone)
+and (voice_burned_running_6=noone)
+and (voice_burned_running_7=noone)
+and (voice_burned_running_8=noone)
+and (voice_burned_running_9=noone)
+and (voice_burned_running_10=noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2353,15 +2353,15 @@ and(voice_burned_running_10=noone)
 }
 else
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2>noone)
-and(voice_burned_running_3>noone)
-and(voice_burned_running_4>noone)
-and(voice_burned_running_5=noone)
-and(voice_burned_running_6=noone)
-and(voice_burned_running_7=noone)
-and(voice_burned_running_8=noone)
-and(voice_burned_running_9=noone)
-and(voice_burned_running_10=noone)
+and (voice_burned_running_2>noone)
+and (voice_burned_running_3>noone)
+and (voice_burned_running_4>noone)
+and (voice_burned_running_5=noone)
+and (voice_burned_running_6=noone)
+and (voice_burned_running_7=noone)
+and (voice_burned_running_8=noone)
+and (voice_burned_running_9=noone)
+and (voice_burned_running_10=noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2370,15 +2370,15 @@ and(voice_burned_running_10=noone)
 }
 else
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2>noone)
-and(voice_burned_running_3>noone)
-and(voice_burned_running_4>noone)
-and(voice_burned_running_5>noone)
-and(voice_burned_running_6=noone)
-and(voice_burned_running_7=noone)
-and(voice_burned_running_8=noone)
-and(voice_burned_running_9=noone)
-and(voice_burned_running_10=noone)
+and (voice_burned_running_2>noone)
+and (voice_burned_running_3>noone)
+and (voice_burned_running_4>noone)
+and (voice_burned_running_5>noone)
+and (voice_burned_running_6=noone)
+and (voice_burned_running_7=noone)
+and (voice_burned_running_8=noone)
+and (voice_burned_running_9=noone)
+and (voice_burned_running_10=noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2388,15 +2388,15 @@ and(voice_burned_running_10=noone)
 }
 else
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2>noone)
-and(voice_burned_running_3>noone)
-and(voice_burned_running_4>noone)
-and(voice_burned_running_5>noone)
-and(voice_burned_running_6>noone)
-and(voice_burned_running_7=noone)
-and(voice_burned_running_8=noone)
-and(voice_burned_running_9=noone)
-and(voice_burned_running_10=noone)
+and (voice_burned_running_2>noone)
+and (voice_burned_running_3>noone)
+and (voice_burned_running_4>noone)
+and (voice_burned_running_5>noone)
+and (voice_burned_running_6>noone)
+and (voice_burned_running_7=noone)
+and (voice_burned_running_8=noone)
+and (voice_burned_running_9=noone)
+and (voice_burned_running_10=noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2407,15 +2407,15 @@ and(voice_burned_running_10=noone)
 }
 else
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2>noone)
-and(voice_burned_running_3>noone)
-and(voice_burned_running_4>noone)
-and(voice_burned_running_5>noone)
-and(voice_burned_running_6>noone)
-and(voice_burned_running_7>noone)
-and(voice_burned_running_8=noone)
-and(voice_burned_running_9=noone)
-and(voice_burned_running_10=noone)
+and (voice_burned_running_2>noone)
+and (voice_burned_running_3>noone)
+and (voice_burned_running_4>noone)
+and (voice_burned_running_5>noone)
+and (voice_burned_running_6>noone)
+and (voice_burned_running_7>noone)
+and (voice_burned_running_8=noone)
+and (voice_burned_running_9=noone)
+and (voice_burned_running_10=noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2427,15 +2427,15 @@ and(voice_burned_running_10=noone)
 }
 else
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2>noone)
-and(voice_burned_running_3>noone)
-and(voice_burned_running_4>noone)
-and(voice_burned_running_5>noone)
-and(voice_burned_running_6>noone)
-and(voice_burned_running_7>noone)
-and(voice_burned_running_8>noone)
-and(voice_burned_running_9=noone)
-and(voice_burned_running_10=noone)
+and (voice_burned_running_2>noone)
+and (voice_burned_running_3>noone)
+and (voice_burned_running_4>noone)
+and (voice_burned_running_5>noone)
+and (voice_burned_running_6>noone)
+and (voice_burned_running_7>noone)
+and (voice_burned_running_8>noone)
+and (voice_burned_running_9=noone)
+and (voice_burned_running_10=noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2448,15 +2448,15 @@ and(voice_burned_running_10=noone)
 }
 else
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2>noone)
-and(voice_burned_running_3>noone)
-and(voice_burned_running_4>noone)
-and(voice_burned_running_5>noone)
-and(voice_burned_running_6>noone)
-and(voice_burned_running_7>noone)
-and(voice_burned_running_8>noone)
-and(voice_burned_running_9>noone)
-and(voice_burned_running_10=noone)
+and (voice_burned_running_2>noone)
+and (voice_burned_running_3>noone)
+and (voice_burned_running_4>noone)
+and (voice_burned_running_5>noone)
+and (voice_burned_running_6>noone)
+and (voice_burned_running_7>noone)
+and (voice_burned_running_8>noone)
+and (voice_burned_running_9>noone)
+and (voice_burned_running_10=noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2470,15 +2470,15 @@ and(voice_burned_running_10=noone)
 }
 else
 if (voice_burned_running_1>noone)
-and(voice_burned_running_2>noone)
-and(voice_burned_running_3>noone)
-and(voice_burned_running_4>noone)
-and(voice_burned_running_5>noone)
-and(voice_burned_running_6>noone)
-and(voice_burned_running_7>noone)
-and(voice_burned_running_8>noone)
-and(voice_burned_running_9>noone)
-and(voice_burned_running_10>noone)
+and (voice_burned_running_2>noone)
+and (voice_burned_running_3>noone)
+and (voice_burned_running_4>noone)
+and (voice_burned_running_5>noone)
+and (voice_burned_running_6>noone)
+and (voice_burned_running_7>noone)
+and (voice_burned_running_8>noone)
+and (voice_burned_running_9>noone)
+and (voice_burned_running_10>noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2495,44 +2495,44 @@ and(voice_burned_running_10>noone)
 
 #region /*Burned sound variation*/
 if (voice_burned_1>noone)
-and(voice_burned_2=noone)
-and(voice_burned_3=noone)
-and(voice_burned_4=noone)
-and(voice_burned_5=noone)
-and(voice_burned_6=noone)
-and(voice_burned_7=noone)
-and(voice_burned_8=noone)
-and(voice_burned_9=noone)
-and(voice_burned_10=noone)
+and (voice_burned_2=noone)
+and (voice_burned_3=noone)
+and (voice_burned_4=noone)
+and (voice_burned_5=noone)
+and (voice_burned_6=noone)
+and (voice_burned_7=noone)
+and (voice_burned_8=noone)
+and (voice_burned_9=noone)
+and (voice_burned_10=noone)
 {
 	voice_burned=voice_burned_1;
 }
 else
 if (voice_burned_1>noone)
-and(voice_burned_2>noone)
-and(voice_burned_3=noone)
-and(voice_burned_4=noone)
-and(voice_burned_5=noone)
-and(voice_burned_6=noone)
-and(voice_burned_7=noone)
-and(voice_burned_8=noone)
-and(voice_burned_9=noone)
-and(voice_burned_10=noone)
+and (voice_burned_2>noone)
+and (voice_burned_3=noone)
+and (voice_burned_4=noone)
+and (voice_burned_5=noone)
+and (voice_burned_6=noone)
+and (voice_burned_7=noone)
+and (voice_burned_8=noone)
+and (voice_burned_9=noone)
+and (voice_burned_10=noone)
 {
 	voice_burned=choose(voice_burned_1,
 						voice_burned_2);
 }
 else
 if (voice_burned_1>noone)
-and(voice_burned_2>noone)
-and(voice_burned_3>noone)
-and(voice_burned_4=noone)
-and(voice_burned_5=noone)
-and(voice_burned_6=noone)
-and(voice_burned_7=noone)
-and(voice_burned_8=noone)
-and(voice_burned_9=noone)
-and(voice_burned_10=noone)
+and (voice_burned_2>noone)
+and (voice_burned_3>noone)
+and (voice_burned_4=noone)
+and (voice_burned_5=noone)
+and (voice_burned_6=noone)
+and (voice_burned_7=noone)
+and (voice_burned_8=noone)
+and (voice_burned_9=noone)
+and (voice_burned_10=noone)
 {
 	voice_burned=choose(voice_burned_1,
 						voice_burned_2,
@@ -2540,15 +2540,15 @@ and(voice_burned_10=noone)
 }
 else
 if (voice_burned_1>noone)
-and(voice_burned_2>noone)
-and(voice_burned_3>noone)
-and(voice_burned_4>noone)
-and(voice_burned_5=noone)
-and(voice_burned_6=noone)
-and(voice_burned_7=noone)
-and(voice_burned_8=noone)
-and(voice_burned_9=noone)
-and(voice_burned_10=noone)
+and (voice_burned_2>noone)
+and (voice_burned_3>noone)
+and (voice_burned_4>noone)
+and (voice_burned_5=noone)
+and (voice_burned_6=noone)
+and (voice_burned_7=noone)
+and (voice_burned_8=noone)
+and (voice_burned_9=noone)
+and (voice_burned_10=noone)
 {
 	voice_burned=choose(voice_burned_1,
 						voice_burned_2,
@@ -2557,15 +2557,15 @@ and(voice_burned_10=noone)
 }
 else
 if (voice_burned_1>noone)
-and(voice_burned_2>noone)
-and(voice_burned_3>noone)
-and(voice_burned_4>noone)
-and(voice_burned_5>noone)
-and(voice_burned_6=noone)
-and(voice_burned_7=noone)
-and(voice_burned_8=noone)
-and(voice_burned_9=noone)
-and(voice_burned_10=noone)
+and (voice_burned_2>noone)
+and (voice_burned_3>noone)
+and (voice_burned_4>noone)
+and (voice_burned_5>noone)
+and (voice_burned_6=noone)
+and (voice_burned_7=noone)
+and (voice_burned_8=noone)
+and (voice_burned_9=noone)
+and (voice_burned_10=noone)
 {
 	voice_burned=choose(voice_burned_1,
 						voice_burned_2,
@@ -2575,15 +2575,15 @@ and(voice_burned_10=noone)
 }
 else
 if (voice_burned_1>noone)
-and(voice_burned_2>noone)
-and(voice_burned_3>noone)
-and(voice_burned_4>noone)
-and(voice_burned_5>noone)
-and(voice_burned_6>noone)
-and(voice_burned_7=noone)
-and(voice_burned_8=noone)
-and(voice_burned_9=noone)
-and(voice_burned_10=noone)
+and (voice_burned_2>noone)
+and (voice_burned_3>noone)
+and (voice_burned_4>noone)
+and (voice_burned_5>noone)
+and (voice_burned_6>noone)
+and (voice_burned_7=noone)
+and (voice_burned_8=noone)
+and (voice_burned_9=noone)
+and (voice_burned_10=noone)
 {
 	voice_burned=choose(voice_burned_1,
 						voice_burned_2,
@@ -2594,15 +2594,15 @@ and(voice_burned_10=noone)
 }
 else
 if (voice_burned_1>noone)
-and(voice_burned_2>noone)
-and(voice_burned_3>noone)
-and(voice_burned_4>noone)
-and(voice_burned_5>noone)
-and(voice_burned_6>noone)
-and(voice_burned_7>noone)
-and(voice_burned_8=noone)
-and(voice_burned_9=noone)
-and(voice_burned_10=noone)
+and (voice_burned_2>noone)
+and (voice_burned_3>noone)
+and (voice_burned_4>noone)
+and (voice_burned_5>noone)
+and (voice_burned_6>noone)
+and (voice_burned_7>noone)
+and (voice_burned_8=noone)
+and (voice_burned_9=noone)
+and (voice_burned_10=noone)
 {
 	voice_burned=choose(voice_burned_1,
 						voice_burned_2,
@@ -2614,15 +2614,15 @@ and(voice_burned_10=noone)
 }
 else
 if (voice_burned_1>noone)
-and(voice_burned_2>noone)
-and(voice_burned_3>noone)
-and(voice_burned_4>noone)
-and(voice_burned_5>noone)
-and(voice_burned_6>noone)
-and(voice_burned_7>noone)
-and(voice_burned_8>noone)
-and(voice_burned_9=noone)
-and(voice_burned_10=noone)
+and (voice_burned_2>noone)
+and (voice_burned_3>noone)
+and (voice_burned_4>noone)
+and (voice_burned_5>noone)
+and (voice_burned_6>noone)
+and (voice_burned_7>noone)
+and (voice_burned_8>noone)
+and (voice_burned_9=noone)
+and (voice_burned_10=noone)
 {
 	voice_burned=choose(voice_burned_1,
 						voice_burned_2,
@@ -2635,15 +2635,15 @@ and(voice_burned_10=noone)
 }
 else
 if (voice_burned_1>noone)
-and(voice_burned_2>noone)
-and(voice_burned_3>noone)
-and(voice_burned_4>noone)
-and(voice_burned_5>noone)
-and(voice_burned_6>noone)
-and(voice_burned_7>noone)
-and(voice_burned_8>noone)
-and(voice_burned_9>noone)
-and(voice_burned_10=noone)
+and (voice_burned_2>noone)
+and (voice_burned_3>noone)
+and (voice_burned_4>noone)
+and (voice_burned_5>noone)
+and (voice_burned_6>noone)
+and (voice_burned_7>noone)
+and (voice_burned_8>noone)
+and (voice_burned_9>noone)
+and (voice_burned_10=noone)
 {
 	voice_burned=choose(voice_burned_1,
 						voice_burned_2,
@@ -2657,15 +2657,15 @@ and(voice_burned_10=noone)
 }
 else
 if (voice_burned_1>noone)
-and(voice_burned_2>noone)
-and(voice_burned_3>noone)
-and(voice_burned_4>noone)
-and(voice_burned_5>noone)
-and(voice_burned_6>noone)
-and(voice_burned_7>noone)
-and(voice_burned_8>noone)
-and(voice_burned_9>noone)
-and(voice_burned_10>noone)
+and (voice_burned_2>noone)
+and (voice_burned_3>noone)
+and (voice_burned_4>noone)
+and (voice_burned_5>noone)
+and (voice_burned_6>noone)
+and (voice_burned_7>noone)
+and (voice_burned_8>noone)
+and (voice_burned_9>noone)
+and (voice_burned_10>noone)
 {
 	voice_burned=choose(voice_burned_1,
 						voice_burned_2,
@@ -2729,14 +2729,14 @@ if (global.quit_level = true)
 		scr_savelevel();
 	}
 	if (global.quit_to_map = true)
-	and(asset_get_type("room_world_map")==asset_room)
+	and (asset_get_type("room_world_map")==asset_room)
 	{
 		global.quit_to_map = false;
 		room_goto(room_world_map);
 	}
 	else
 	if (global.quit_to_title = true)
-	and(asset_get_type("room_title")==asset_room)
+	and (asset_get_type("room_title")==asset_room)
 	{
 		global.quit_to_title = false;
 		room_goto(room_title);
@@ -2752,7 +2752,7 @@ if (global.quit_level = true)
 if (asset_get_type("snd_music_invincible")==asset_sound)
 {
 	if (invincible<room_speed*10)
-	and(assist_invincible=false)
+	and (assist_invincible=false)
 	{
 		invincible_pitch+=0.001;
 		audio_sound_pitch(snd_music_invincible,invincible_pitch);
@@ -2763,7 +2763,7 @@ if (asset_get_type("snd_music_invincible")==asset_sound)
 		audio_sound_pitch(snd_music_invincible,1);
 	}
 	if (invincible=180)
-	and(assist_invincible=false)
+	and (assist_invincible=false)
 	{
 		if (asset_get_type("snd_running_out")==asset_sound)
 		{
@@ -2772,7 +2772,7 @@ if (asset_get_type("snd_music_invincible")==asset_sound)
 		}
 	}
 	if (invincible>120)
-	and(assist_invincible=false)
+	and (assist_invincible=false)
 	{
 		if (audio_is_playing(snd_music_invincible))
 		{
@@ -2853,14 +2853,14 @@ if (!audio_is_playing(global.ambience_underwater))
 
 #region /*Music Pitch*/
 if (global.time_countdown < 100)
-and(global.time_countdown > noone)
-and(allow_timeup=true)
+and (global.time_countdown > noone)
+and (allow_timeup=true)
 {
 	audio_sound_pitch(global.music,music_pitch+0.3);
 	audio_sound_pitch(global.music_underwater,music_pitch+0.3);
 	if (crouch = true)
-	or(ground_pound=true)
-	and(place_meeting(x,y+sprite_height,obj_wall))
+	or (ground_pound=true)
+	and (place_meeting(x,y+sprite_height,obj_wall))
 	{
 		music_pitch=lerp(music_pitch,0.95,0.001);
 	}
@@ -2874,8 +2874,8 @@ else
 	audio_sound_pitch(global.music,music_pitch);
 	audio_sound_pitch(global.music_underwater,music_pitch);
 	if (crouch = true)
-	or(ground_pound=true)
-	and(place_meeting(x,y+sprite_height,obj_wall))
+	or (ground_pound=true)
+	and (place_meeting(x,y+sprite_height,obj_wall))
 	{
 		music_pitch=lerp(music_pitch,0.95,0.001);
 	}
@@ -2888,15 +2888,15 @@ else
 
 #region /*Make sure the heart stays on the character if you spawn from a checkpoint*/
 if (asset_get_type("obj_checkpoint")==asset_object)
-and(asset_get_type("obj_camera")==asset_object)
+and (asset_get_type("obj_camera")==asset_object)
 {
 	if (instance_exists(obj_checkpoint))
-	and(place_meeting(x,y,obj_checkpoint))
-	and(instance_exists(obj_camera))
-	and(place_meeting(x,y,obj_camera))
+	and (place_meeting(x,y,obj_checkpoint))
+	and (instance_exists(obj_camera))
+	and (place_meeting(x,y,obj_camera))
 	{
 		if (obj_camera.iris_xscale<0.3)
-		or(obj_camera.iris_yscale<0.3)
+		or (obj_camera.iris_yscale<0.3)
 		{
 			xx_heart=x;
 			yy_heart=y;
@@ -2915,13 +2915,13 @@ and (obj_camera.iris_xscale < 3)
 	
 	#region /*Don't go outside view boundary*/
 	if (goal = true)
-	and(global.time_countdown_bonus<=0)
+	and (global.time_countdown_bonus<=0)
 	{
 		if (instance_exists(obj_camera))
-		and(obj_camera.iris_xscale<=0.01)
+		and (obj_camera.iris_xscale<=0.01)
 		{
 			if (asset_get_type("snd_level_clear")==asset_sound)
-			and(audio_is_playing(snd_level_clear))
+			and (audio_is_playing(snd_level_clear))
 			{
 				audio_stop_sound(snd_level_clear);
 			}
@@ -2940,8 +2940,8 @@ and (obj_camera.iris_xscale < 3)
 					global.lives_until_assist=0;
 					global.theme="ground";
 					if (global.actually_play_edited_level = false)
-					and(global.play_edited_level = true)
-					and(global.character_select_in_this_menu = "level_editor")
+					and (global.play_edited_level = true)
+					and (global.character_select_in_this_menu = "level_editor")
 					{
 						global.actually_play_edited_level = false;
 						global.play_edited_level = false;
@@ -2949,9 +2949,9 @@ and (obj_camera.iris_xscale < 3)
 					}
 					else
 					if (global.actually_play_edited_level = true)
-					and(global.play_edited_level = true)
-					and(global.character_select_in_this_menu = "level_editor")
-					and(asset_get_type("room_title")==asset_room)
+					and (global.play_edited_level = true)
+					and (global.character_select_in_this_menu = "level_editor")
+					and (asset_get_type("room_title")==asset_room)
 					{						
 						global.actually_play_edited_level = false;
 						global.play_edited_level = false;
@@ -2959,7 +2959,7 @@ and (obj_camera.iris_xscale < 3)
 					}
 					else
 					if (obj_camera.after_goal_go_to_this_level >= 0)
-					and(asset_get_type("room_leveleditor") == asset_room)
+					and (asset_get_type("room_leveleditor") == asset_room)
 					{
 						scr_savelevel();
 						global.select_level_index = obj_camera.after_goal_go_to_this_level;
@@ -2987,8 +2987,8 @@ and (obj_camera.iris_xscale < 3)
 			{
 				#region /*Restart Level Editor when finishing level*/
 				if (asset_get_type("room_world_map") == asset_room)
-				and(room = room_leveleditor)
-				and(global.character_select_in_this_menu = "level_editor")
+				and (room = room_leveleditor)
+				and (global.character_select_in_this_menu = "level_editor")
 				{
 					global.play_edited_level = false;
 					global.actually_play_edited_level = false;
@@ -3048,21 +3048,21 @@ else
 	
 	#region /*Don't go outside view boundary*/
 	if (goal = true)
-	and(global.time_countdown_bonus<=0)
+	and (global.time_countdown_bonus<=0)
 	{
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
-		and(obj_camera.iris_xscale<=0.01)
+		and (instance_exists(obj_camera))
+		and (obj_camera.iris_xscale<=0.01)
 		{
 			if (asset_get_type("snd_level_clear")==asset_sound)
-			and(audio_is_playing(snd_level_clear))
+			and (audio_is_playing(snd_level_clear))
 			{
 				audio_stop_sound(snd_level_clear);
 			}
 			if (room_next(room)<>-1)
 			{
 				if (asset_get_type("room_world_map")==asset_room)
-				and(obj_camera.iris_yscale<=0.001)
+				and (obj_camera.iris_yscale<=0.001)
 				{
 					audio_stop_all();
 					global.level_clear_rate = "clear";
@@ -3075,7 +3075,7 @@ else
 					global.lives_until_assist=0;
 					global.theme="ground";
 					if (asset_get_type("room_world_map")==asset_room)
-					and(obj_camera.iris_yscale<=0.001)
+					and (obj_camera.iris_yscale<=0.001)
 					{
 						if (asset_get_type("scr_savelevel")==asset_script)
 						{
@@ -3098,8 +3098,8 @@ else
 			{
 				#region /*Restart Level Editor when finishing level*/
 				if (asset_get_type("room_world_map") == asset_room)
-				and(room = room_leveleditor)
-				and(global.character_select_in_this_menu = "level_editor")
+				and (room = room_leveleditor)
+				and (global.character_select_in_this_menu = "level_editor")
 				{
 					global.play_edited_level = false;
 					global.actually_play_edited_level = false;
@@ -3197,8 +3197,8 @@ if (hspeed!=0)
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
 if (asset_get_type("obj_camera")==asset_object)
-and(!instance_exists(obj_camera))
-and(keyboard_check_pressed(global.fullscreen_key))
+and (!instance_exists(obj_camera))
+and (keyboard_check_pressed(global.fullscreen_key))
 {
 	if (window_get_fullscreen())
 	{
@@ -3362,10 +3362,10 @@ if (assist_invincible = true)
 	if (key_jump_hold)
 	{
 		if (!place_meeting(x, y + 1, obj_wall))
-		and(dive = false)
-		and(ground_pound = false)
-		and(crouch = false)
-		and(vspeed > 1)
+		and (dive = false)
+		and (ground_pound = false)
+		and (crouch = false)
+		and (vspeed > 1)
 		{
 			vspeed =+ 1;
 			crouch = false;
@@ -3407,196 +3407,196 @@ if (player<=1)
 	#region /*Player 1 Key Attack Hold*/
 	key_tongue=
 	(keyboard_check(global.player1_key_tongue))
-	or(keyboard_check(global.player1_key2_tongue));
+	or (keyboard_check(global.player1_key2_tongue));
 	#endregion /*Player 1 Key Attack Hold END*/
 	
 	#region /*Player 1 Key Attack Pressed*/
 	key_tongue_pressed=
 	(keyboard_check_pressed(global.player1_key_tongue))
-	or(keyboard_check_pressed(global.player1_key2_tongue));
+	or (keyboard_check_pressed(global.player1_key2_tongue));
 	#endregion /*Player 1 Key Attack Pressed END*/
 	
 	#region /*Player 1 Key Attack Released*/
 	key_tongue_released=
 	(keyboard_check_released(global.player1_key_tongue))
-	or(keyboard_check_released(global.player1_key2_tongue));
+	or (keyboard_check_released(global.player1_key2_tongue));
 	#endregion /*Player 1 Key Attack Released END*/
 	
 	#region /*Player 1 Key Dive Pressed*/
 	key_dive_pressed=
 	(keyboard_check_pressed(global.player1_key_dive))
-	or(keyboard_check_pressed(global.player1_key2_dive))
-	or(gamepad_button_check_pressed(player-1,gp_face3))
-	or(gamepad_button_check_pressed(player-1,gp_face4));
+	or (keyboard_check_pressed(global.player1_key2_dive))
+	or (gamepad_button_check_pressed(player-1,gp_face3))
+	or (gamepad_button_check_pressed(player-1,gp_face4));
 	#endregion /*Player 1 Key Dive Pressed END*/
 	
 	#region /*Player 1 Key Jump Pressed*/
 	key_jump=
 	(keyboard_check_pressed(global.player1_key_jump))
-	or(keyboard_check_pressed(global.player1_key2_jump))
-	or(up_key_is_jump_key=true)and(keyboard_check_pressed(global.player1_key_up))
+	or (keyboard_check_pressed(global.player1_key2_jump))
+	or (up_key_is_jump_key=true)and (keyboard_check_pressed(global.player1_key_up))
 	and!(keyboard_check_pressed(global.player1_key_down))
 	and!(keyboard_check_pressed(global.player1_key2_down))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_pressed(global.player1_key2_up))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_pressed(global.player1_key2_up))
 	and!(keyboard_check_pressed(global.player1_key_down))
 	and!(keyboard_check_pressed(global.player1_key2_down))
-	or(gamepad_button_check_pressed(player-1,gp_face1))
-	or(gamepad_button_check_pressed(player-1,gp_face2))
-	or(up_key_is_jump_key=true)
-	and(gamepad_button_check_pressed(player-1,gp_padu))
+	or (gamepad_button_check_pressed(player-1,gp_face1))
+	or (gamepad_button_check_pressed(player-1,gp_face2))
+	or (up_key_is_jump_key=true)
+	and (gamepad_button_check_pressed(player-1,gp_padu))
 	and!(gamepad_button_check_pressed(player-1,gp_padd));
 	#endregion /*Player 1 Key Jump Pressed END*/
 	
 	#region /*Player 1 Key Jump Hold*/
 	key_jump_hold=
 	(keyboard_check(global.player1_key_jump))
-	or(keyboard_check(global.player1_key2_jump))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check(global.player1_key_up))
-	and(!keyboard_check(global.player1_key_down))
-	and(!keyboard_check(global.player1_key2_down))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check(global.player1_key2_up))
-	and(!keyboard_check(global.player1_key_down))
-	and(!keyboard_check(global.player1_key2_down))
-	or(gamepad_button_check(player-1,gp_face1))
-	or(gamepad_button_check(player-1,gp_face2))
-	or(gamepad_button_check(player-1,gp_padu))
-	and(!gamepad_button_check(player-1,gp_padd));
+	or (keyboard_check(global.player1_key2_jump))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check(global.player1_key_up))
+	and (!keyboard_check(global.player1_key_down))
+	and (!keyboard_check(global.player1_key2_down))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check(global.player1_key2_up))
+	and (!keyboard_check(global.player1_key_down))
+	and (!keyboard_check(global.player1_key2_down))
+	or (gamepad_button_check(player-1,gp_face1))
+	or (gamepad_button_check(player-1,gp_face2))
+	or (gamepad_button_check(player-1,gp_padu))
+	and (!gamepad_button_check(player-1,gp_padd));
 	#endregion /*Player 1 Key Jump Hold END*/
 	
 	#region /*Player 1 Key Jump Released*/
 	key_jump_released=
 	(keyboard_check_released(global.player1_key_jump))
-	or(keyboard_check_released(global.player1_key2_jump))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_released(global.player1_key_up))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_released(global.player1_key2_up))
-	or(gamepad_button_check_released(player-1,gp_face1))
-	or(gamepad_button_check_released(player-1,gp_face2))
-	or(up_key_is_jump_key=true)
-	and(gamepad_button_check_released(player-1,gp_padu));
+	or (keyboard_check_released(global.player1_key2_jump))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_released(global.player1_key_up))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_released(global.player1_key2_up))
+	or (gamepad_button_check_released(player-1,gp_face1))
+	or (gamepad_button_check_released(player-1,gp_face2))
+	or (up_key_is_jump_key=true)
+	and (gamepad_button_check_released(player-1,gp_padu));
 	#endregion /*Player 1 Key Jump Released END*/
 	
 	#region /*Player 1 Key Crouch Hold*/
 	key_crouch=
 	(keyboard_check(global.player1_key_crouch))
-	or(keyboard_check(global.player1_key2_crouch))
-	or(gamepad_button_check(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)>0)
-	or(global.player1_crouch_toggle=true);
+	or (keyboard_check(global.player1_key2_crouch))
+	or (gamepad_button_check(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)>0)
+	or (global.player1_crouch_toggle=true);
 	#endregion /*Player 1 Key Crouch Hold END*/
 	
 	#region /*Player 1 Key Crouch Pressed*/
 	key_crouch_pressed=
 	(keyboard_check_pressed(global.player1_key_crouch))
-	or(keyboard_check_pressed(global.player1_key2_crouch))
-	or(gamepad_button_check_pressed(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)>0);
+	or (keyboard_check_pressed(global.player1_key2_crouch))
+	or (gamepad_button_check_pressed(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)>0);
 	#endregion /*Player 1 Key Crouch Pressed END*/
 	
 	#region /*Player 1 Key Sprint Hold*/
 	key_sprint=
 	(keyboard_check(global.player1_key_sprint))
-	or(keyboard_check(global.player1_key2_sprint))
-	or(gamepad_button_check(player-1,gp_face3))
-	or(gamepad_button_check(player-1,gp_face4))
-	or(global.player1_sprint_toggle = true);
+	or (keyboard_check(global.player1_key2_sprint))
+	or (gamepad_button_check(player-1,gp_face3))
+	or (gamepad_button_check(player-1,gp_face4))
+	or (global.player1_sprint_toggle = true);
 	#endregion /*Player 1 Key Sprint Hold END*/
 	
 	#region /*Player 1 Key Sprint Pressed*/
 	key_sprint_pressed=
 	(keyboard_check_pressed(global.player1_key_sprint))
-	or(keyboard_check_pressed(global.player1_key2_sprint))
-	or(gamepad_button_check_pressed(player-1,gp_face3))
-	or(gamepad_button_check_pressed(player-1,gp_face4));
+	or (keyboard_check_pressed(global.player1_key2_sprint))
+	or (gamepad_button_check_pressed(player-1,gp_face3))
+	or (gamepad_button_check_pressed(player-1,gp_face4));
 	#endregion /*Player 1 Key Sprint Pressed END*/
 	
 	#region /*Player 1 Key Sprint Released*/
 	key_sprint_released=
 	(keyboard_check_released(global.player1_key_sprint))
-	or(keyboard_check_released(global.player1_key2_sprint))
-	or(gamepad_button_check_released(player-1,gp_face3))
-	or(gamepad_button_check_released(player-1,gp_face4));
+	or (keyboard_check_released(global.player1_key2_sprint))
+	or (gamepad_button_check_released(player-1,gp_face3))
+	or (gamepad_button_check_released(player-1,gp_face4));
 	#endregion /*Player 1 Key Sprint Released END*/
 	
 	#region /*Player 1 Key Left Hold*/
 	key_left=
 	(keyboard_check(global.player1_key_left))
-	and(!keyboard_check(global.player1_key_right))
-	and(!keyboard_check(global.player1_key2_right))
-	or(keyboard_check(global.player1_key2_left))
-	and(!keyboard_check(global.player1_key_right))
-	and(!keyboard_check(global.player1_key2_right))
-	or(gamepad_button_check(player-1,gp_padl))
-	and(!gamepad_button_check(player-1,gp_padr))
-	or(gamepad_axis_value(player-1,gp_axislh)<0);
+	and (!keyboard_check(global.player1_key_right))
+	and (!keyboard_check(global.player1_key2_right))
+	or (keyboard_check(global.player1_key2_left))
+	and (!keyboard_check(global.player1_key_right))
+	and (!keyboard_check(global.player1_key2_right))
+	or (gamepad_button_check(player-1,gp_padl))
+	and (!gamepad_button_check(player-1,gp_padr))
+	or (gamepad_axis_value(player-1,gp_axislh)<0);
 	#endregion /*Player 1 Key Left Hold END*/
 	
 	#region /*Player 1 Key Right Hold*/
 	key_right=
 	(keyboard_check(global.player1_key_right))
-	and(!keyboard_check(global.player1_key_left))
-	and(!keyboard_check(global.player1_key2_left))
-	or(keyboard_check(global.player1_key2_right))
-	and(!keyboard_check(global.player1_key_left))
-	and(!keyboard_check(global.player1_key2_left))
-	or(gamepad_button_check(player-1,gp_padr))
-	and(!gamepad_button_check(player-1,gp_padl))
-	or(gamepad_axis_value(player-1,gp_axislh)>0);
+	and (!keyboard_check(global.player1_key_left))
+	and (!keyboard_check(global.player1_key2_left))
+	or (keyboard_check(global.player1_key2_right))
+	and (!keyboard_check(global.player1_key_left))
+	and (!keyboard_check(global.player1_key2_left))
+	or (gamepad_button_check(player-1,gp_padr))
+	and (!gamepad_button_check(player-1,gp_padl))
+	or (gamepad_axis_value(player-1,gp_axislh)>0);
 	#endregion /*Player 1 Key Right Hold END*/
 	
 	#region /*Player 1 Key Down Hold*/
 	key_down=
 	(keyboard_check(global.player1_key_down))
-	and(!keyboard_check(global.player1_key_up))
-	and(!keyboard_check(global.player1_key2_up))
-	or(keyboard_check(global.player1_key2_down))
-	and(!keyboard_check(global.player1_key_up))
-	and(!keyboard_check(global.player1_key2_up))
-	or(gamepad_button_check(player-1,gp_padd))
-	and(!gamepad_button_check(player-1,gp_padu))
-	or(gamepad_axis_value(player-1,gp_axislv)>0);
+	and (!keyboard_check(global.player1_key_up))
+	and (!keyboard_check(global.player1_key2_up))
+	or (keyboard_check(global.player1_key2_down))
+	and (!keyboard_check(global.player1_key_up))
+	and (!keyboard_check(global.player1_key2_up))
+	or (gamepad_button_check(player-1,gp_padd))
+	and (!gamepad_button_check(player-1,gp_padu))
+	or (gamepad_axis_value(player-1,gp_axislv)>0);
 	#endregion /*Player 1 Key Down Hold END*/
 	
 	#region /*Player 1 Key Up Hold*/
 	key_up=
 	(keyboard_check(global.player1_key_up))
-	and(!keyboard_check(global.player1_key_down))
-	and(!keyboard_check(global.player1_key2_down))
-	or(keyboard_check(global.player1_key2_up))
-	and(!keyboard_check(global.player1_key_down))
-	and(!keyboard_check(global.player1_key2_down))
-	or(gamepad_button_check(player-1,gp_padu))
-	and(!gamepad_button_check(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)<0);
+	and (!keyboard_check(global.player1_key_down))
+	and (!keyboard_check(global.player1_key2_down))
+	or (keyboard_check(global.player1_key2_up))
+	and (!keyboard_check(global.player1_key_down))
+	and (!keyboard_check(global.player1_key2_down))
+	or (gamepad_button_check(player-1,gp_padu))
+	and (!gamepad_button_check(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)<0);
 	#endregion /*Player 1 Key Up Hold END*/
 	
 	#region /*Player 1 Key Up Pressed*/
 	key_up_pressed=
 	(keyboard_check_pressed(global.player1_key_up))
-	or(keyboard_check_pressed(global.player1_key2_up))
-	or(gamepad_button_check_pressed(player-1,gp_padu))
-	and(!gamepad_button_check_pressed(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)<0);
+	or (keyboard_check_pressed(global.player1_key2_up))
+	or (gamepad_button_check_pressed(player-1,gp_padu))
+	and (!gamepad_button_check_pressed(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)<0);
 	#endregion /*Player 1 Key Up Hold END*/
 	
 	#region /*Player 1 Key Spin Hold*/
 	key_spin=
 	(gamepad_button_check(player-1,gp_shoulderl))
-	or(gamepad_button_check(player-1,gp_shoulderlb))
-	or(gamepad_button_check(player-1,gp_shoulderr))
-	or(gamepad_button_check(player-1,gp_shoulderrb));
+	or (gamepad_button_check(player-1,gp_shoulderlb))
+	or (gamepad_button_check(player-1,gp_shoulderr))
+	or (gamepad_button_check(player-1,gp_shoulderrb));
 	#endregion /*Player 1 Key Spin Hold*/
 	
 	#region /*Player 1 Key Spin Pressed*/
 	key_spin_pressed=
 	(gamepad_button_check_pressed(player-1,gp_shoulderl))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderlb))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderr))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderrb));
+	or (gamepad_button_check_pressed(player-1,gp_shoulderlb))
+	or (gamepad_button_check_pressed(player-1,gp_shoulderr))
+	or (gamepad_button_check_pressed(player-1,gp_shoulderrb));
 	#endregion /*Player 1 Key Spin Pressed END*/
 	
 }
@@ -3623,196 +3623,196 @@ if (player=2)
 	#region /*Player 2 Key Attack Hold*/
 	key_tongue=
 	(keyboard_check(global.player2_key_tongue))
-	or(keyboard_check(global.player2_key2_tongue));
+	or (keyboard_check(global.player2_key2_tongue));
 	#endregion /*Player 2 Key Attack Hold END*/
 	
 	#region /*Player 2 Key Attack Pressed*/
 	key_tongue_pressed=
 	(keyboard_check_pressed(global.player2_key_tongue))
-	or(keyboard_check_pressed(global.player2_key2_tongue));
+	or (keyboard_check_pressed(global.player2_key2_tongue));
 	#endregion /*Player 2 Key Attack Pressed END*/
 	
 	#region /*Player 2 Key Attack Released*/
 	key_tongue_released=
 	(keyboard_check_released(global.player2_key_tongue))
-	or(keyboard_check_released(global.player2_key2_tongue));
+	or (keyboard_check_released(global.player2_key2_tongue));
 	#endregion /*Player 2 Key Attack Released END*/
 	
 	#region /*Player 2 Key Dive Pressed*/
 	key_dive_pressed=
 	(keyboard_check_pressed(global.player2_key_dive))
-	or(keyboard_check_pressed(global.player2_key2_dive))
-	or(gamepad_button_check_pressed(player-1,gp_face3))
-	or(gamepad_button_check_pressed(player-1,gp_face4));
+	or (keyboard_check_pressed(global.player2_key2_dive))
+	or (gamepad_button_check_pressed(player-1,gp_face3))
+	or (gamepad_button_check_pressed(player-1,gp_face4));
 	#endregion /*Player 2 Key Dive Pressed END*/
 	
 	#region /*Player 2 Key Jump Pressed*/
 	key_jump=
 	(keyboard_check_pressed(global.player2_key_jump))
-	or(keyboard_check_pressed(global.player2_key2_jump))
-	or(up_key_is_jump_key=true)and(keyboard_check_pressed(global.player2_key_up))
+	or (keyboard_check_pressed(global.player2_key2_jump))
+	or (up_key_is_jump_key=true)and (keyboard_check_pressed(global.player2_key_up))
 	and!(keyboard_check_pressed(global.player2_key_down))
 	and!(keyboard_check_pressed(global.player2_key2_down))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_pressed(global.player2_key2_up))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_pressed(global.player2_key2_up))
 	and!(keyboard_check_pressed(global.player2_key_down))
 	and!(keyboard_check_pressed(global.player2_key2_down))
-	or(gamepad_button_check_pressed(player-1,gp_face1))
-	or(gamepad_button_check_pressed(player-1,gp_face2))
-	or(up_key_is_jump_key=true)
-	and(gamepad_button_check_pressed(player-1,gp_padu))
+	or (gamepad_button_check_pressed(player-1,gp_face1))
+	or (gamepad_button_check_pressed(player-1,gp_face2))
+	or (up_key_is_jump_key=true)
+	and (gamepad_button_check_pressed(player-1,gp_padu))
 	and!(gamepad_button_check_pressed(player-1,gp_padd));
 	#endregion /*Player 2 Key Jump Pressed END*/
 	
 	#region /*Player 2 Key Jump Hold*/
 	key_jump_hold=
 	(keyboard_check(global.player2_key_jump))
-	or(keyboard_check(global.player2_key2_jump))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check(global.player2_key_up))
-	and(!keyboard_check(global.player2_key_down))
-	and(!keyboard_check(global.player2_key2_down))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check(global.player2_key2_up))
-	and(!keyboard_check(global.player2_key_down))
-	and(!keyboard_check(global.player2_key2_down))
-	or(gamepad_button_check(player-1,gp_face1))
-	or(gamepad_button_check(player-1,gp_face2))
-	or(gamepad_button_check(player-1,gp_padu))
-	and(!gamepad_button_check(player-1,gp_padd));
+	or (keyboard_check(global.player2_key2_jump))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check(global.player2_key_up))
+	and (!keyboard_check(global.player2_key_down))
+	and (!keyboard_check(global.player2_key2_down))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check(global.player2_key2_up))
+	and (!keyboard_check(global.player2_key_down))
+	and (!keyboard_check(global.player2_key2_down))
+	or (gamepad_button_check(player-1,gp_face1))
+	or (gamepad_button_check(player-1,gp_face2))
+	or (gamepad_button_check(player-1,gp_padu))
+	and (!gamepad_button_check(player-1,gp_padd));
 	#endregion /*Player 2 Key Jump Hold END*/
 	
 	#region /*Player 2 Key Jump Released*/
 	key_jump_released=
 	(keyboard_check_released(global.player2_key_jump))
-	or(keyboard_check_released(global.player2_key2_jump))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_released(global.player2_key_up))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_released(global.player2_key2_up))
-	or(gamepad_button_check_released(player-1,gp_face1))
-	or(gamepad_button_check_released(player-1,gp_face2))
-	or(up_key_is_jump_key=true)
-	and(gamepad_button_check_released(player-1,gp_padu));
+	or (keyboard_check_released(global.player2_key2_jump))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_released(global.player2_key_up))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_released(global.player2_key2_up))
+	or (gamepad_button_check_released(player-1,gp_face1))
+	or (gamepad_button_check_released(player-1,gp_face2))
+	or (up_key_is_jump_key=true)
+	and (gamepad_button_check_released(player-1,gp_padu));
 	#endregion /*Player 2 Key Jump Released END*/
 	
 	#region /*Player 2 Key Crouch Hold*/
 	key_crouch=
 	(keyboard_check(global.player2_key_crouch))
-	or(keyboard_check(global.player2_key2_crouch))
-	or(gamepad_button_check(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)>0)
-	or(global.player2_crouch_toggle=true);
+	or (keyboard_check(global.player2_key2_crouch))
+	or (gamepad_button_check(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)>0)
+	or (global.player2_crouch_toggle=true);
 	#endregion /*Player 2 Key Crouch Hold END*/
 	
 	#region /*Player 2 Key Crouch Pressed*/
 	key_crouch_pressed=
 	(keyboard_check_pressed(global.player2_key_crouch))
-	or(keyboard_check_pressed(global.player2_key2_crouch))
-	or(gamepad_button_check_pressed(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)>0);
+	or (keyboard_check_pressed(global.player2_key2_crouch))
+	or (gamepad_button_check_pressed(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)>0);
 	#endregion /*Player 2 Key Crouch Pressed END*/
 	
 	#region /*Player 2 Key Sprint Hold*/
 	key_sprint=
 	(keyboard_check(global.player2_key_sprint))
-	or(keyboard_check(global.player2_key2_sprint))
-	or(gamepad_button_check(player-1,gp_face3))
-	or(gamepad_button_check(player-1,gp_face4))
-	or(global.player2_sprint_toggle = true);
+	or (keyboard_check(global.player2_key2_sprint))
+	or (gamepad_button_check(player-1,gp_face3))
+	or (gamepad_button_check(player-1,gp_face4))
+	or (global.player2_sprint_toggle = true);
 	#endregion /*Player 2 Key Sprint Hold END*/
 	
 	#region /*Player 2 Key Sprint Pressed*/
 	key_sprint_pressed=
 	(keyboard_check_pressed(global.player2_key_sprint))
-	or(keyboard_check_pressed(global.player2_key2_sprint))
-	or(gamepad_button_check_pressed(player-1,gp_face3))
-	or(gamepad_button_check_pressed(player-1,gp_face4));
+	or (keyboard_check_pressed(global.player2_key2_sprint))
+	or (gamepad_button_check_pressed(player-1,gp_face3))
+	or (gamepad_button_check_pressed(player-1,gp_face4));
 	#endregion /*Player 2 Key Sprint Pressed END*/
 	
 	#region /*Player 2 Key Sprint Released*/
 	key_sprint_released=
 	(keyboard_check_released(global.player2_key_sprint))
-	or(keyboard_check_released(global.player2_key2_sprint))
-	or(gamepad_button_check_released(player-1,gp_face3))
-	or(gamepad_button_check_released(player-1,gp_face4));
+	or (keyboard_check_released(global.player2_key2_sprint))
+	or (gamepad_button_check_released(player-1,gp_face3))
+	or (gamepad_button_check_released(player-1,gp_face4));
 	#endregion /*Player 2 Key Sprint Released END*/
 	
 	#region /*Player 2 Key Left Hold*/
 	key_left=
 	(keyboard_check(global.player2_key_left))
-	and(!keyboard_check(global.player2_key_right))
-	and(!keyboard_check(global.player2_key2_right))
-	or(keyboard_check(global.player2_key2_left))
-	and(!keyboard_check(global.player2_key_right))
-	and(!keyboard_check(global.player2_key2_right))
-	or(gamepad_button_check(player-1,gp_padl))
-	and(!gamepad_button_check(player-1,gp_padr))
-	or(gamepad_axis_value(player-1,gp_axislh)<0);
+	and (!keyboard_check(global.player2_key_right))
+	and (!keyboard_check(global.player2_key2_right))
+	or (keyboard_check(global.player2_key2_left))
+	and (!keyboard_check(global.player2_key_right))
+	and (!keyboard_check(global.player2_key2_right))
+	or (gamepad_button_check(player-1,gp_padl))
+	and (!gamepad_button_check(player-1,gp_padr))
+	or (gamepad_axis_value(player-1,gp_axislh)<0);
 	#endregion /*Player 2 Key Left Hold END*/
 	
 	#region /*Player 2 Key Right Hold*/
 	key_right=
 	(keyboard_check(global.player2_key_right))
-	and(!keyboard_check(global.player2_key_left))
-	and(!keyboard_check(global.player2_key2_left))
-	or(keyboard_check(global.player2_key2_right))
-	and(!keyboard_check(global.player2_key_left))
-	and(!keyboard_check(global.player2_key2_left))
-	or(gamepad_button_check(player-1,gp_padr))
-	and(!gamepad_button_check(player-1,gp_padl))
-	or(gamepad_axis_value(player-1,gp_axislh)>0);
+	and (!keyboard_check(global.player2_key_left))
+	and (!keyboard_check(global.player2_key2_left))
+	or (keyboard_check(global.player2_key2_right))
+	and (!keyboard_check(global.player2_key_left))
+	and (!keyboard_check(global.player2_key2_left))
+	or (gamepad_button_check(player-1,gp_padr))
+	and (!gamepad_button_check(player-1,gp_padl))
+	or (gamepad_axis_value(player-1,gp_axislh)>0);
 	#endregion /*Player 2 Key Right Hold END*/
 	
 	#region /*Player 2 Key Down Hold*/
 	key_down=
 	(keyboard_check(global.player2_key_down))
-	and(!keyboard_check(global.player2_key_up))
-	and(!keyboard_check(global.player2_key2_up))
-	or(keyboard_check(global.player2_key2_down))
-	and(!keyboard_check(global.player2_key_up))
-	and(!keyboard_check(global.player2_key2_up))
-	or(gamepad_button_check(player-1,gp_padd))
-	and(!gamepad_button_check(player-1,gp_padu))
-	or(gamepad_axis_value(player-1,gp_axislv)>0);
+	and (!keyboard_check(global.player2_key_up))
+	and (!keyboard_check(global.player2_key2_up))
+	or (keyboard_check(global.player2_key2_down))
+	and (!keyboard_check(global.player2_key_up))
+	and (!keyboard_check(global.player2_key2_up))
+	or (gamepad_button_check(player-1,gp_padd))
+	and (!gamepad_button_check(player-1,gp_padu))
+	or (gamepad_axis_value(player-1,gp_axislv)>0);
 	#endregion /*Player 2 Key Down Hold END*/
 	
 	#region /*Player 2 Key Up Hold*/
 	key_up=
 	(keyboard_check(global.player2_key_up))
-	and(!keyboard_check(global.player2_key_down))
-	and(!keyboard_check(global.player2_key2_down))
-	or(keyboard_check(global.player2_key2_up))
-	and(!keyboard_check(global.player2_key_down))
-	and(!keyboard_check(global.player2_key2_down))
-	or(gamepad_button_check(player-1,gp_padu))
-	and(!gamepad_button_check(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)<0);
+	and (!keyboard_check(global.player2_key_down))
+	and (!keyboard_check(global.player2_key2_down))
+	or (keyboard_check(global.player2_key2_up))
+	and (!keyboard_check(global.player2_key_down))
+	and (!keyboard_check(global.player2_key2_down))
+	or (gamepad_button_check(player-1,gp_padu))
+	and (!gamepad_button_check(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)<0);
 	#endregion /*Player 2 Key Up Hold END*/
 	
 	#region /*Player 2 Key Up Pressed*/
 	key_up_pressed=
 	(keyboard_check_pressed(global.player2_key_up))
-	or(keyboard_check_pressed(global.player2_key2_up))
-	or(gamepad_button_check_pressed(player-1,gp_padu))
-	and(!gamepad_button_check_pressed(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)<0);
+	or (keyboard_check_pressed(global.player2_key2_up))
+	or (gamepad_button_check_pressed(player-1,gp_padu))
+	and (!gamepad_button_check_pressed(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)<0);
 	#endregion /*Player 2 Key Up Hold END*/
 	
 	#region /*Player 2 Key Spin Hold*/
 	key_spin=
 	(gamepad_button_check(player-1,gp_shoulderl))
-	or(gamepad_button_check(player-1,gp_shoulderlb))
-	or(gamepad_button_check(player-1,gp_shoulderr))
-	or(gamepad_button_check(player-1,gp_shoulderrb));
+	or (gamepad_button_check(player-1,gp_shoulderlb))
+	or (gamepad_button_check(player-1,gp_shoulderr))
+	or (gamepad_button_check(player-1,gp_shoulderrb));
 	#endregion /*Player 2 Key Spin Hold*/
 	
 	#region /*Player 2 Key Spin Pressed*/
 	key_spin_pressed=
 	(gamepad_button_check_pressed(player-1,gp_shoulderl))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderlb))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderr))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderrb));
+	or (gamepad_button_check_pressed(player-1,gp_shoulderlb))
+	or (gamepad_button_check_pressed(player-1,gp_shoulderr))
+	or (gamepad_button_check_pressed(player-1,gp_shoulderrb));
 	#endregion /*Player 2 Key Spin Pressed END*/
 	
 }
@@ -3839,196 +3839,196 @@ if (player=3)
 	#region /*Player 3 Key Attack Hold*/
 	key_tongue=
 	(keyboard_check(global.player3_key_tongue))
-	or(keyboard_check(global.player3_key2_tongue));
+	or (keyboard_check(global.player3_key2_tongue));
 	#endregion /*Player 3 Key Attack Hold END*/
 	
 	#region /*Player 3 Key Attack Pressed*/
 	key_tongue_pressed=
 	(keyboard_check_pressed(global.player3_key_tongue))
-	or(keyboard_check_pressed(global.player3_key2_tongue));
+	or (keyboard_check_pressed(global.player3_key2_tongue));
 	#endregion /*Player 3 Key Attack Pressed END*/
 	
 	#region /*Player 3 Key Attack Released*/
 	key_tongue_released=
 	(keyboard_check_released(global.player3_key_tongue))
-	or(keyboard_check_released(global.player3_key2_tongue));
+	or (keyboard_check_released(global.player3_key2_tongue));
 	#endregion /*Player 3 Key Attack Released END*/
 	
 	#region /*Player 3 Key Dive Pressed*/
 	key_dive_pressed=
 	(keyboard_check_pressed(global.player3_key_dive))
-	or(keyboard_check_pressed(global.player3_key2_dive))
-	or(gamepad_button_check_pressed(player-1,gp_face3))
-	or(gamepad_button_check_pressed(player-1,gp_face4));
+	or (keyboard_check_pressed(global.player3_key2_dive))
+	or (gamepad_button_check_pressed(player-1,gp_face3))
+	or (gamepad_button_check_pressed(player-1,gp_face4));
 	#endregion /*Player 3 Key Dive Pressed END*/
 	
 	#region /*Player 3 Key Jump Pressed*/
 	key_jump=
 	(keyboard_check_pressed(global.player3_key_jump))
-	or(keyboard_check_pressed(global.player3_key2_jump))
-	or(up_key_is_jump_key=true)and(keyboard_check_pressed(global.player3_key_up))
+	or (keyboard_check_pressed(global.player3_key2_jump))
+	or (up_key_is_jump_key=true)and (keyboard_check_pressed(global.player3_key_up))
 	and!(keyboard_check_pressed(global.player3_key_down))
 	and!(keyboard_check_pressed(global.player3_key2_down))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_pressed(global.player3_key2_up))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_pressed(global.player3_key2_up))
 	and!(keyboard_check_pressed(global.player3_key_down))
 	and!(keyboard_check_pressed(global.player3_key2_down))
-	or(gamepad_button_check_pressed(player-1,gp_face1))
-	or(gamepad_button_check_pressed(player-1,gp_face2))
-	or(up_key_is_jump_key=true)
-	and(gamepad_button_check_pressed(player-1,gp_padu))
+	or (gamepad_button_check_pressed(player-1,gp_face1))
+	or (gamepad_button_check_pressed(player-1,gp_face2))
+	or (up_key_is_jump_key=true)
+	and (gamepad_button_check_pressed(player-1,gp_padu))
 	and!(gamepad_button_check_pressed(player-1,gp_padd));
 	#endregion /*Player 3 Key Jump Pressed END*/
 	
 	#region /*Player 3 Key Jump Hold*/
 	key_jump_hold=
 	(keyboard_check(global.player3_key_jump))
-	or(keyboard_check(global.player3_key2_jump))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check(global.player3_key_up))
-	and(!keyboard_check(global.player3_key_down))
-	and(!keyboard_check(global.player3_key2_down))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check(global.player3_key2_up))
-	and(!keyboard_check(global.player3_key_down))
-	and(!keyboard_check(global.player3_key2_down))
-	or(gamepad_button_check(player-1,gp_face1))
-	or(gamepad_button_check(player-1,gp_face2))
-	or(gamepad_button_check(player-1,gp_padu))
-	and(!gamepad_button_check(player-1,gp_padd));
+	or (keyboard_check(global.player3_key2_jump))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check(global.player3_key_up))
+	and (!keyboard_check(global.player3_key_down))
+	and (!keyboard_check(global.player3_key2_down))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check(global.player3_key2_up))
+	and (!keyboard_check(global.player3_key_down))
+	and (!keyboard_check(global.player3_key2_down))
+	or (gamepad_button_check(player-1,gp_face1))
+	or (gamepad_button_check(player-1,gp_face2))
+	or (gamepad_button_check(player-1,gp_padu))
+	and (!gamepad_button_check(player-1,gp_padd));
 	#endregion /*Player 3 Key Jump Hold END*/
 	
 	#region /*Player 3 Key Jump Released*/
 	key_jump_released=
 	(keyboard_check_released(global.player3_key_jump))
-	or(keyboard_check_released(global.player3_key2_jump))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_released(global.player3_key_up))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_released(global.player3_key2_up))
-	or(gamepad_button_check_released(player-1,gp_face1))
-	or(gamepad_button_check_released(player-1,gp_face2))
-	or(up_key_is_jump_key=true)
-	and(gamepad_button_check_released(player-1,gp_padu));
+	or (keyboard_check_released(global.player3_key2_jump))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_released(global.player3_key_up))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_released(global.player3_key2_up))
+	or (gamepad_button_check_released(player-1,gp_face1))
+	or (gamepad_button_check_released(player-1,gp_face2))
+	or (up_key_is_jump_key=true)
+	and (gamepad_button_check_released(player-1,gp_padu));
 	#endregion /*Player 3 Key Jump Released END*/
 	
 	#region /*Player 3 Key Crouch Hold*/
 	key_crouch=
 	(keyboard_check(global.player3_key_crouch))
-	or(keyboard_check(global.player3_key2_crouch))
-	or(gamepad_button_check(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)>0)
-	or(global.player3_crouch_toggle=true);
+	or (keyboard_check(global.player3_key2_crouch))
+	or (gamepad_button_check(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)>0)
+	or (global.player3_crouch_toggle=true);
 	#endregion /*Player 3 Key Crouch Hold END*/
 	
 	#region /*Player 3 Key Crouch Pressed*/
 	key_crouch_pressed=
 	(keyboard_check_pressed(global.player3_key_crouch))
-	or(keyboard_check_pressed(global.player3_key2_crouch))
-	or(gamepad_button_check_pressed(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)>0);
+	or (keyboard_check_pressed(global.player3_key2_crouch))
+	or (gamepad_button_check_pressed(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)>0);
 	#endregion /*Player 3 Key Crouch Pressed END*/
 	
 	#region /*Player 3 Key Sprint Hold*/
 	key_sprint=
 	(keyboard_check(global.player3_key_sprint))
-	or(keyboard_check(global.player3_key2_sprint))
-	or(gamepad_button_check(player-1,gp_face3))
-	or(gamepad_button_check(player-1,gp_face4))
-	or(global.player3_sprint_toggle = true);
+	or (keyboard_check(global.player3_key2_sprint))
+	or (gamepad_button_check(player-1,gp_face3))
+	or (gamepad_button_check(player-1,gp_face4))
+	or (global.player3_sprint_toggle = true);
 	#endregion /*Player 3 Key Sprint Hold END*/
 	
 	#region /*Player 3 Key Sprint Pressed*/
 	key_sprint_pressed=
 	(keyboard_check_pressed(global.player3_key_sprint))
-	or(keyboard_check_pressed(global.player3_key2_sprint))
-	or(gamepad_button_check_pressed(player-1,gp_face3))
-	or(gamepad_button_check_pressed(player-1,gp_face4));
+	or (keyboard_check_pressed(global.player3_key2_sprint))
+	or (gamepad_button_check_pressed(player-1,gp_face3))
+	or (gamepad_button_check_pressed(player-1,gp_face4));
 	#endregion /*Player 3 Key Sprint Pressed END*/
 	
 	#region /*Player 3 Key Sprint Released*/
 	key_sprint_released=
 	(keyboard_check_released(global.player3_key_sprint))
-	or(keyboard_check_released(global.player3_key2_sprint))
-	or(gamepad_button_check_released(player-1,gp_face3))
-	or(gamepad_button_check_released(player-1,gp_face4));
+	or (keyboard_check_released(global.player3_key2_sprint))
+	or (gamepad_button_check_released(player-1,gp_face3))
+	or (gamepad_button_check_released(player-1,gp_face4));
 	#endregion /*Player 3 Key Sprint Released END*/
 	
 	#region /*Player 3 Key Left Hold*/
 	key_left=
 	(keyboard_check(global.player3_key_left))
-	and(!keyboard_check(global.player3_key_right))
-	and(!keyboard_check(global.player3_key2_right))
-	or(keyboard_check(global.player3_key2_left))
-	and(!keyboard_check(global.player3_key_right))
-	and(!keyboard_check(global.player3_key2_right))
-	or(gamepad_button_check(player-1,gp_padl))
-	and(!gamepad_button_check(player-1,gp_padr))
-	or(gamepad_axis_value(player-1,gp_axislh)<0);
+	and (!keyboard_check(global.player3_key_right))
+	and (!keyboard_check(global.player3_key2_right))
+	or (keyboard_check(global.player3_key2_left))
+	and (!keyboard_check(global.player3_key_right))
+	and (!keyboard_check(global.player3_key2_right))
+	or (gamepad_button_check(player-1,gp_padl))
+	and (!gamepad_button_check(player-1,gp_padr))
+	or (gamepad_axis_value(player-1,gp_axislh)<0);
 	#endregion /*Player 3 Key Left Hold END*/
 	
 	#region /*Player 3 Key Right Hold*/
 	key_right=
 	(keyboard_check(global.player3_key_right))
-	and(!keyboard_check(global.player3_key_left))
-	and(!keyboard_check(global.player3_key2_left))
-	or(keyboard_check(global.player3_key2_right))
-	and(!keyboard_check(global.player3_key_left))
-	and(!keyboard_check(global.player3_key2_left))
-	or(gamepad_button_check(player-1,gp_padr))
-	and(!gamepad_button_check(player-1,gp_padl))
-	or(gamepad_axis_value(player-1,gp_axislh)>0);
+	and (!keyboard_check(global.player3_key_left))
+	and (!keyboard_check(global.player3_key2_left))
+	or (keyboard_check(global.player3_key2_right))
+	and (!keyboard_check(global.player3_key_left))
+	and (!keyboard_check(global.player3_key2_left))
+	or (gamepad_button_check(player-1,gp_padr))
+	and (!gamepad_button_check(player-1,gp_padl))
+	or (gamepad_axis_value(player-1,gp_axislh)>0);
 	#endregion /*Player 3 Key Right Hold END*/
 	
 	#region /*Player 3 Key Down Hold*/
 	key_down=
 	(keyboard_check(global.player3_key_down))
-	and(!keyboard_check(global.player3_key_up))
-	and(!keyboard_check(global.player3_key2_up))
-	or(keyboard_check(global.player3_key2_down))
-	and(!keyboard_check(global.player3_key_up))
-	and(!keyboard_check(global.player3_key2_up))
-	or(gamepad_button_check(player-1,gp_padd))
-	and(!gamepad_button_check(player-1,gp_padu))
-	or(gamepad_axis_value(player-1,gp_axislv)>0);
+	and (!keyboard_check(global.player3_key_up))
+	and (!keyboard_check(global.player3_key2_up))
+	or (keyboard_check(global.player3_key2_down))
+	and (!keyboard_check(global.player3_key_up))
+	and (!keyboard_check(global.player3_key2_up))
+	or (gamepad_button_check(player-1,gp_padd))
+	and (!gamepad_button_check(player-1,gp_padu))
+	or (gamepad_axis_value(player-1,gp_axislv)>0);
 	#endregion /*Player 3 Key Down Hold END*/
 	
 	#region /*Player 3 Key Up Hold*/
 	key_up=
 	(keyboard_check(global.player3_key_up))
-	and(!keyboard_check(global.player3_key_down))
-	and(!keyboard_check(global.player3_key2_down))
-	or(keyboard_check(global.player3_key2_up))
-	and(!keyboard_check(global.player3_key_down))
-	and(!keyboard_check(global.player3_key2_down))
-	or(gamepad_button_check(player-1,gp_padu))
-	and(!gamepad_button_check(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)<0);
+	and (!keyboard_check(global.player3_key_down))
+	and (!keyboard_check(global.player3_key2_down))
+	or (keyboard_check(global.player3_key2_up))
+	and (!keyboard_check(global.player3_key_down))
+	and (!keyboard_check(global.player3_key2_down))
+	or (gamepad_button_check(player-1,gp_padu))
+	and (!gamepad_button_check(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)<0);
 	#endregion /*Player 3 Key Up Hold END*/
 	
 	#region /*Player 3 Key Up Pressed*/
 	key_up_pressed=
 	(keyboard_check_pressed(global.player3_key_up))
-	or(keyboard_check_pressed(global.player3_key2_up))
-	or(gamepad_button_check_pressed(player-1,gp_padu))
-	and(!gamepad_button_check_pressed(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)<0);
+	or (keyboard_check_pressed(global.player3_key2_up))
+	or (gamepad_button_check_pressed(player-1,gp_padu))
+	and (!gamepad_button_check_pressed(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)<0);
 	#endregion /*Player 3 Key Up Hold END*/
 	
 	#region /*Player 3 Key Spin Hold*/
 	key_spin=
 	(gamepad_button_check(player-1,gp_shoulderl))
-	or(gamepad_button_check(player-1,gp_shoulderlb))
-	or(gamepad_button_check(player-1,gp_shoulderr))
-	or(gamepad_button_check(player-1,gp_shoulderrb));
+	or (gamepad_button_check(player-1,gp_shoulderlb))
+	or (gamepad_button_check(player-1,gp_shoulderr))
+	or (gamepad_button_check(player-1,gp_shoulderrb));
 	#endregion /*Player 3 Key Spin Hold*/
 	
 	#region /*Player 3 Key Spin Pressed*/
 	key_spin_pressed=
 	(gamepad_button_check_pressed(player-1,gp_shoulderl))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderlb))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderr))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderrb));
+	or (gamepad_button_check_pressed(player-1,gp_shoulderlb))
+	or (gamepad_button_check_pressed(player-1,gp_shoulderr))
+	or (gamepad_button_check_pressed(player-1,gp_shoulderrb));
 	#endregion /*Player 3 Key Spin Pressed END*/
 	
 }
@@ -4055,196 +4055,196 @@ if (player=4)
 	#region /*Player 4 Key Attack Hold*/
 	key_tongue=
 	(keyboard_check(global.player4_key_tongue))
-	or(keyboard_check(global.player4_key2_tongue));
+	or (keyboard_check(global.player4_key2_tongue));
 	#endregion /*Player 4 Key Attack Hold END*/
 	
 	#region /*Player 4 Key Attack Pressed*/
 	key_tongue_pressed=
 	(keyboard_check_pressed(global.player4_key_tongue))
-	or(keyboard_check_pressed(global.player4_key2_tongue));
+	or (keyboard_check_pressed(global.player4_key2_tongue));
 	#endregion /*Player 4 Key Attack Pressed END*/
 	
 	#region /*Player 4 Key Attack Released*/
 	key_tongue_released=
 	(keyboard_check_released(global.player4_key_tongue))
-	or(keyboard_check_released(global.player4_key2_tongue));
+	or (keyboard_check_released(global.player4_key2_tongue));
 	#endregion /*Player 4 Key Attack Released END*/
 	
 	#region /*Player 4 Key Dive Pressed*/
 	key_dive_pressed=
 	(keyboard_check_pressed(global.player4_key_dive))
-	or(keyboard_check_pressed(global.player4_key2_dive))
-	or(gamepad_button_check_pressed(player-1,gp_face3))
-	or(gamepad_button_check_pressed(player-1,gp_face4));
+	or (keyboard_check_pressed(global.player4_key2_dive))
+	or (gamepad_button_check_pressed(player-1,gp_face3))
+	or (gamepad_button_check_pressed(player-1,gp_face4));
 	#endregion /*Player 4 Key Dive Pressed END*/
 	
 	#region /*Player 4 Key Jump Pressed*/
 	key_jump=
 	(keyboard_check_pressed(global.player4_key_jump))
-	or(keyboard_check_pressed(global.player4_key2_jump))
-	or(up_key_is_jump_key=true)and(keyboard_check_pressed(global.player4_key_up))
+	or (keyboard_check_pressed(global.player4_key2_jump))
+	or (up_key_is_jump_key=true)and (keyboard_check_pressed(global.player4_key_up))
 	and!(keyboard_check_pressed(global.player4_key_down))
 	and!(keyboard_check_pressed(global.player4_key2_down))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_pressed(global.player4_key2_up))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_pressed(global.player4_key2_up))
 	and!(keyboard_check_pressed(global.player4_key_down))
 	and!(keyboard_check_pressed(global.player4_key2_down))
-	or(gamepad_button_check_pressed(player-1,gp_face1))
-	or(gamepad_button_check_pressed(player-1,gp_face2))
-	or(up_key_is_jump_key=true)
-	and(gamepad_button_check_pressed(player-1,gp_padu))
+	or (gamepad_button_check_pressed(player-1,gp_face1))
+	or (gamepad_button_check_pressed(player-1,gp_face2))
+	or (up_key_is_jump_key=true)
+	and (gamepad_button_check_pressed(player-1,gp_padu))
 	and!(gamepad_button_check_pressed(player-1,gp_padd));
 	#endregion /*Player 4 Key Jump Pressed END*/
 	
 	#region /*Player 4 Key Jump Hold*/
 	key_jump_hold=
 	(keyboard_check(global.player4_key_jump))
-	or(keyboard_check(global.player4_key2_jump))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check(global.player4_key_up))
-	and(!keyboard_check(global.player4_key_down))
-	and(!keyboard_check(global.player4_key2_down))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check(global.player4_key2_up))
-	and(!keyboard_check(global.player4_key_down))
-	and(!keyboard_check(global.player4_key2_down))
-	or(gamepad_button_check(player-1,gp_face1))
-	or(gamepad_button_check(player-1,gp_face2))
-	or(gamepad_button_check(player-1,gp_padu))
-	and(!gamepad_button_check(player-1,gp_padd));
+	or (keyboard_check(global.player4_key2_jump))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check(global.player4_key_up))
+	and (!keyboard_check(global.player4_key_down))
+	and (!keyboard_check(global.player4_key2_down))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check(global.player4_key2_up))
+	and (!keyboard_check(global.player4_key_down))
+	and (!keyboard_check(global.player4_key2_down))
+	or (gamepad_button_check(player-1,gp_face1))
+	or (gamepad_button_check(player-1,gp_face2))
+	or (gamepad_button_check(player-1,gp_padu))
+	and (!gamepad_button_check(player-1,gp_padd));
 	#endregion /*Player 4 Key Jump Hold END*/
 	
 	#region /*Player 4 Key Jump Released*/
 	key_jump_released=
 	(keyboard_check_released(global.player4_key_jump))
-	or(keyboard_check_released(global.player4_key2_jump))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_released(global.player4_key_up))
-	or(up_key_is_jump_key=true)
-	and(keyboard_check_released(global.player4_key2_up))
-	or(gamepad_button_check_released(player-1,gp_face1))
-	or(gamepad_button_check_released(player-1,gp_face2))
-	or(up_key_is_jump_key=true)
-	and(gamepad_button_check_released(player-1,gp_padu));
+	or (keyboard_check_released(global.player4_key2_jump))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_released(global.player4_key_up))
+	or (up_key_is_jump_key=true)
+	and (keyboard_check_released(global.player4_key2_up))
+	or (gamepad_button_check_released(player-1,gp_face1))
+	or (gamepad_button_check_released(player-1,gp_face2))
+	or (up_key_is_jump_key=true)
+	and (gamepad_button_check_released(player-1,gp_padu));
 	#endregion /*Player 4 Key Jump Released END*/
 	
 	#region /*Player 4 Key Crouch Hold*/
 	key_crouch=
 	(keyboard_check(global.player4_key_crouch))
-	or(keyboard_check(global.player4_key2_crouch))
-	or(gamepad_button_check(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)>0)
-	or(global.player4_crouch_toggle=true);
+	or (keyboard_check(global.player4_key2_crouch))
+	or (gamepad_button_check(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)>0)
+	or (global.player4_crouch_toggle=true);
 	#endregion /*Player 4 Key Crouch Hold END*/
 	
 	#region /*Player 4 Key Crouch Pressed*/
 	key_crouch_pressed=
 	(keyboard_check_pressed(global.player4_key_crouch))
-	or(keyboard_check_pressed(global.player4_key2_crouch))
-	or(gamepad_button_check_pressed(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)>0);
+	or (keyboard_check_pressed(global.player4_key2_crouch))
+	or (gamepad_button_check_pressed(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)>0);
 	#endregion /*Player 4 Key Crouch Pressed END*/
 	
 	#region /*Player 4 Key Sprint Hold*/
 	key_sprint=
 	(keyboard_check(global.player4_key_sprint))
-	or(keyboard_check(global.player4_key2_sprint))
-	or(gamepad_button_check(player-1,gp_face3))
-	or(gamepad_button_check(player-1,gp_face4))
-	or(global.player4_sprint_toggle = true);
+	or (keyboard_check(global.player4_key2_sprint))
+	or (gamepad_button_check(player-1,gp_face3))
+	or (gamepad_button_check(player-1,gp_face4))
+	or (global.player4_sprint_toggle = true);
 	#endregion /*Player 4 Key Sprint Hold END*/
 	
 	#region /*Player 4 Key Sprint Pressed*/
 	key_sprint_pressed=
 	(keyboard_check_pressed(global.player4_key_sprint))
-	or(keyboard_check_pressed(global.player4_key2_sprint))
-	or(gamepad_button_check_pressed(player-1,gp_face3))
-	or(gamepad_button_check_pressed(player-1,gp_face4));
+	or (keyboard_check_pressed(global.player4_key2_sprint))
+	or (gamepad_button_check_pressed(player-1,gp_face3))
+	or (gamepad_button_check_pressed(player-1,gp_face4));
 	#endregion /*Player 4 Key Sprint Pressed END*/
 	
 	#region /*Player 4 Key Sprint Released*/
 	key_sprint_released=
 	(keyboard_check_released(global.player4_key_sprint))
-	or(keyboard_check_released(global.player4_key2_sprint))
-	or(gamepad_button_check_released(player-1,gp_face3))
-	or(gamepad_button_check_released(player-1,gp_face4));
+	or (keyboard_check_released(global.player4_key2_sprint))
+	or (gamepad_button_check_released(player-1,gp_face3))
+	or (gamepad_button_check_released(player-1,gp_face4));
 	#endregion /*Player 4 Key Sprint Released END*/
 	
 	#region /*Player 4 Key Left Hold*/
 	key_left=
 	(keyboard_check(global.player4_key_left))
-	and(!keyboard_check(global.player4_key_right))
-	and(!keyboard_check(global.player4_key2_right))
-	or(keyboard_check(global.player4_key2_left))
-	and(!keyboard_check(global.player4_key_right))
-	and(!keyboard_check(global.player4_key2_right))
-	or(gamepad_button_check(player-1,gp_padl))
-	and(!gamepad_button_check(player-1,gp_padr))
-	or(gamepad_axis_value(player-1,gp_axislh)<0);
+	and (!keyboard_check(global.player4_key_right))
+	and (!keyboard_check(global.player4_key2_right))
+	or (keyboard_check(global.player4_key2_left))
+	and (!keyboard_check(global.player4_key_right))
+	and (!keyboard_check(global.player4_key2_right))
+	or (gamepad_button_check(player-1,gp_padl))
+	and (!gamepad_button_check(player-1,gp_padr))
+	or (gamepad_axis_value(player-1,gp_axislh)<0);
 	#endregion /*Player 4 Key Left Hold END*/
 	
 	#region /*Player 4 Key Right Hold*/
 	key_right=
 	(keyboard_check(global.player4_key_right))
-	and(!keyboard_check(global.player4_key_left))
-	and(!keyboard_check(global.player4_key2_left))
-	or(keyboard_check(global.player4_key2_right))
-	and(!keyboard_check(global.player4_key_left))
-	and(!keyboard_check(global.player4_key2_left))
-	or(gamepad_button_check(player-1,gp_padr))
-	and(!gamepad_button_check(player-1,gp_padl))
-	or(gamepad_axis_value(player-1,gp_axislh)>0);
+	and (!keyboard_check(global.player4_key_left))
+	and (!keyboard_check(global.player4_key2_left))
+	or (keyboard_check(global.player4_key2_right))
+	and (!keyboard_check(global.player4_key_left))
+	and (!keyboard_check(global.player4_key2_left))
+	or (gamepad_button_check(player-1,gp_padr))
+	and (!gamepad_button_check(player-1,gp_padl))
+	or (gamepad_axis_value(player-1,gp_axislh)>0);
 	#endregion /*Player 4 Key Right Hold END*/
 	
 	#region /*Player 4 Key Down Hold*/
 	key_down=
 	(keyboard_check(global.player4_key_down))
-	and(!keyboard_check(global.player4_key_up))
-	and(!keyboard_check(global.player4_key2_up))
-	or(keyboard_check(global.player4_key2_down))
-	and(!keyboard_check(global.player4_key_up))
-	and(!keyboard_check(global.player4_key2_up))
-	or(gamepad_button_check(player-1,gp_padd))
-	and(!gamepad_button_check(player-1,gp_padu))
-	or(gamepad_axis_value(player-1,gp_axislv)>0);
+	and (!keyboard_check(global.player4_key_up))
+	and (!keyboard_check(global.player4_key2_up))
+	or (keyboard_check(global.player4_key2_down))
+	and (!keyboard_check(global.player4_key_up))
+	and (!keyboard_check(global.player4_key2_up))
+	or (gamepad_button_check(player-1,gp_padd))
+	and (!gamepad_button_check(player-1,gp_padu))
+	or (gamepad_axis_value(player-1,gp_axislv)>0);
 	#endregion /*Player 4 Key Down Hold END*/
 	
 	#region /*Player 4 Key Up Hold*/
 	key_up=
 	(keyboard_check(global.player4_key_up))
-	and(!keyboard_check(global.player4_key_down))
-	and(!keyboard_check(global.player4_key2_down))
-	or(keyboard_check(global.player4_key2_up))
-	and(!keyboard_check(global.player4_key_down))
-	and(!keyboard_check(global.player4_key2_down))
-	or(gamepad_button_check(player-1,gp_padu))
-	and(!gamepad_button_check(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)<0);
+	and (!keyboard_check(global.player4_key_down))
+	and (!keyboard_check(global.player4_key2_down))
+	or (keyboard_check(global.player4_key2_up))
+	and (!keyboard_check(global.player4_key_down))
+	and (!keyboard_check(global.player4_key2_down))
+	or (gamepad_button_check(player-1,gp_padu))
+	and (!gamepad_button_check(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)<0);
 	#endregion /*Player 4 Key Up Hold END*/
 	
 	#region /*Player 4 Key Up Pressed*/
 	key_up_pressed=
 	(keyboard_check_pressed(global.player4_key_up))
-	or(keyboard_check_pressed(global.player4_key2_up))
-	or(gamepad_button_check_pressed(player-1,gp_padu))
-	and(!gamepad_button_check_pressed(player-1,gp_padd))
-	or(gamepad_axis_value(player-1,gp_axislv)<0);
+	or (keyboard_check_pressed(global.player4_key2_up))
+	or (gamepad_button_check_pressed(player-1,gp_padu))
+	and (!gamepad_button_check_pressed(player-1,gp_padd))
+	or (gamepad_axis_value(player-1,gp_axislv)<0);
 	#endregion /*Player 4 Key Up Hold END*/
 	
 	#region /*Player 4 Key Spin Hold*/
 	key_spin=
 	(gamepad_button_check(player-1,gp_shoulderl))
-	or(gamepad_button_check(player-1,gp_shoulderlb))
-	or(gamepad_button_check(player-1,gp_shoulderr))
-	or(gamepad_button_check(player-1,gp_shoulderrb));
+	or (gamepad_button_check(player-1,gp_shoulderlb))
+	or (gamepad_button_check(player-1,gp_shoulderr))
+	or (gamepad_button_check(player-1,gp_shoulderrb));
 	#endregion /*Player 4 Key Spin Hold*/
 	
 	#region /*Player 4 Key Spin Pressed*/
 	key_spin_pressed=
 	(gamepad_button_check_pressed(player-1,gp_shoulderl))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderlb))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderr))
-	or(gamepad_button_check_pressed(player-1,gp_shoulderrb));
+	or (gamepad_button_check_pressed(player-1,gp_shoulderlb))
+	or (gamepad_button_check_pressed(player-1,gp_shoulderr))
+	or (gamepad_button_check_pressed(player-1,gp_shoulderrb));
 	#endregion /*Player 4 Key Spin Pressed END*/
 	
 }
@@ -4268,36 +4268,36 @@ and (gamepad_is_connected(3))
 
 #region /*If player is allowed to move*/
 if (can_move = true)
-and(global.pause = false)
+and (global.pause = false)
 {
 	
 	#region /*Pause*/	
 	if (keyboard_check_pressed(vk_escape))
-	or(keyboard_check(vk_tab))
-	and(keyboard_check(vk_lshift))
-	or(gamepad_button_check_pressed(0,gp_start))
-	or(gamepad_button_check_pressed(0,gp_select))
-	or(player=1)
-	and(!gamepad_is_connected(0))
-	and(controller_connected=true)
-	or(player=2)
-	and(!gamepad_is_connected(1))
-	and(controller_connected=true)
-	or(player=3)
-	and(!gamepad_is_connected(2))
-	and(controller_connected=true)
-	or(player=4)
-	and(!gamepad_is_connected(3))
-	and(controller_connected=true)
-	or(global.actually_play_edited_level = true)
-	and(!window_has_focus())
-	and(global.automatically_pause_when_window_is_unfocused = true)
+	or (keyboard_check(vk_tab))
+	and (keyboard_check(vk_lshift))
+	or (gamepad_button_check_pressed(0,gp_start))
+	or (gamepad_button_check_pressed(0,gp_select))
+	or (player=1)
+	and (!gamepad_is_connected(0))
+	and (controller_connected=true)
+	or (player=2)
+	and (!gamepad_is_connected(1))
+	and (controller_connected=true)
+	or (player=3)
+	and (!gamepad_is_connected(2))
+	and (controller_connected=true)
+	or (player=4)
+	and (!gamepad_is_connected(3))
+	and (controller_connected=true)
+	or (global.actually_play_edited_level = true)
+	and (!window_has_focus())
+	and (global.automatically_pause_when_window_is_unfocused = true)
 	{
 	
 		#region /*Show all HUD elements*/
 		global.hud_show_lives=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4306,7 +4306,7 @@ and(global.pause = false)
 		}
 		global.hud_show_deaths=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4315,7 +4315,7 @@ and(global.pause = false)
 		}
 		global.hud_show_basic_collectibles=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4324,7 +4324,7 @@ and(global.pause = false)
 		}
 		global.hud_show_big_collectibles=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4335,8 +4335,8 @@ and(global.pause = false)
 
 		controller_connected=false;
 		if (global.play_edited_level = true)
-		and(global.actually_play_edited_level = false)
-		and(global.character_select_in_this_menu = "level_editor")
+		and (global.actually_play_edited_level = false)
+		and (global.character_select_in_this_menu = "level_editor")
 		{
 			global.play_edited_level = false;
 			global.actually_play_edited_level = false;
@@ -4382,7 +4382,7 @@ and(global.pause = false)
 				{
 					audio_pause_all();
 					if (asset_get_type("obj_pause") == asset_object)
-					and(!instance_exists(obj_pause))
+					and (!instance_exists(obj_pause))
 					{
 						global.pause=true;
 						pause_hspeed = hspeed;
@@ -4395,13 +4395,13 @@ and(global.pause = false)
 	}
 	else
 	if (gamepad_button_check_pressed(1,gp_start))
-	or(gamepad_button_check_pressed(1,gp_select))
+	or (gamepad_button_check_pressed(1,gp_select))
 	{
 
 		#region /*Show all HUD elements*/
 		global.hud_show_lives=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4410,7 +4410,7 @@ and(global.pause = false)
 		}
 		global.hud_show_deaths=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4419,7 +4419,7 @@ and(global.pause = false)
 		}
 		global.hud_show_basic_collectibles=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4428,7 +4428,7 @@ and(global.pause = false)
 		}
 		global.hud_show_big_collectibles=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4438,8 +4438,8 @@ and(global.pause = false)
 		#endregion /*Show all HUD elements END*/
 
 		if (global.play_edited_level = true)
-		and(global.actually_play_edited_level = false)
-		and(global.character_select_in_this_menu = "level_editor")
+		and (global.actually_play_edited_level = false)
+		and (global.character_select_in_this_menu = "level_editor")
 		{
 			global.play_edited_level = false;
 			global.actually_play_edited_level = false;
@@ -4463,7 +4463,7 @@ and(global.pause = false)
 				{
 					audio_pause_all();
 					if (asset_get_type("obj_pause") == asset_object)
-					and(!instance_exists(obj_pause))
+					and (!instance_exists(obj_pause))
 					{
 						global.pause=true;
 						pause_hspeed = hspeed;
@@ -4476,13 +4476,13 @@ and(global.pause = false)
 	}
 	else
 	if (gamepad_button_check_pressed(2,gp_start))
-	or(gamepad_button_check_pressed(2,gp_select))
+	or (gamepad_button_check_pressed(2,gp_select))
 	{
 
 		#region /*Show all HUD elements*/
 		global.hud_show_lives=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4491,7 +4491,7 @@ and(global.pause = false)
 		}
 		global.hud_show_deaths=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4500,7 +4500,7 @@ and(global.pause = false)
 		}
 		global.hud_show_basic_collectibles=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4509,7 +4509,7 @@ and(global.pause = false)
 		}
 		global.hud_show_big_collectibles=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4519,8 +4519,8 @@ and(global.pause = false)
 		#endregion /*Show all HUD elements END*/
 
 		if (global.play_edited_level = true)
-		and(global.actually_play_edited_level = false)
-		and(global.character_select_in_this_menu = "level_editor")
+		and (global.actually_play_edited_level = false)
+		and (global.character_select_in_this_menu = "level_editor")
 		{
 			global.play_edited_level = false;
 			global.actually_play_edited_level = false;
@@ -4544,7 +4544,7 @@ and(global.pause = false)
 				{
 					audio_pause_all();
 					if (asset_get_type("obj_pause") == asset_object)
-					and(!instance_exists(obj_pause))
+					and (!instance_exists(obj_pause))
 					{
 						global.pause=true;
 						pause_hspeed = hspeed;
@@ -4557,13 +4557,13 @@ and(global.pause = false)
 	}
 	else
 	if (gamepad_button_check_pressed(3,gp_start))
-	or(gamepad_button_check_pressed(3,gp_select))
+	or (gamepad_button_check_pressed(3,gp_select))
 	{
 
 		#region /*Show all HUD elements*/
 		global.hud_show_lives=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4572,7 +4572,7 @@ and(global.pause = false)
 		}
 		global.hud_show_deaths=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4581,7 +4581,7 @@ and(global.pause = false)
 		}
 		global.hud_show_basic_collectibles=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4590,7 +4590,7 @@ and(global.pause = false)
 		}
 		global.hud_show_big_collectibles=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -4600,8 +4600,8 @@ and(global.pause = false)
 		#endregion /*Show all HUD elements END*/
 
 		if (global.play_edited_level = true)
-		and(global.actually_play_edited_level = false)
-		and(global.character_select_in_this_menu = "level_editor")
+		and (global.actually_play_edited_level = false)
+		and (global.character_select_in_this_menu = "level_editor")
 		{
 			global.play_edited_level = false;
 			global.actually_play_edited_level = false;
@@ -4625,7 +4625,7 @@ and(global.pause = false)
 				{
 					audio_pause_all();
 					if (asset_get_type("obj_pause") == asset_object)
-					and(!instance_exists(obj_pause))
+					and (!instance_exists(obj_pause))
 					{
 						global.pause=true;
 						pause_hspeed = hspeed;
@@ -4644,15 +4644,16 @@ and(global.pause = false)
 
 #region /*Go Left*/
 if (key_left)
-and(!key_right)
-and(can_move = true)
-and(global.pause=false)
+and (!key_right)
+and (can_move = true)
+and (global.pause=false)
 {
 	if (wall_jump = 0)
-	and(stick_to_wall = false)
-	and(ledge_grab = false)
-	and(climb = false)
-	and(takendamage <= takendamage_freezetime)
+	and (stick_to_wall = false)
+	and (ledge_grab = false)
+	and (climb = false)
+	and (horizontal_rope_climb = false)
+	and (takendamage <= takendamage_freezetime)
 	{
 		if (dive = false)
 		{
@@ -4677,19 +4678,19 @@ and(global.pause=false)
 			if (!place_meeting(x - 1, y, obj_wall))
 			{
 				if (asset_get_type("obj_ice_block") == asset_object)
-				and(place_meeting(x, y + 1, obj_ice_block))
+				and (place_meeting(x, y + 1, obj_ice_block))
 				{
 					hspeed -= acceleration_on_ice;
 				}
 				else
 				{
 					if (place_meeting(x, y + 1, obj_wall))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						hspeed -= acceleration_on_ground;
 					}
@@ -4702,15 +4703,15 @@ and(global.pause=false)
 			else
 			{
 				if (!place_meeting(x - 2, y, obj_wall))
-				and(!place_meeting(x, y - 2, obj_wall))
+				and (!place_meeting(x, y - 2, obj_wall))
 				{
 					if (place_meeting(x, y + 1, obj_wall))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						hspeed -= acceleration_on_ground;
 					}
@@ -4730,15 +4731,16 @@ and(global.pause=false)
 
 #region /*Go Right*/
 if (key_right)
-and(!key_left)
-and(can_move = true)
-and(global.pause=false)
+and (!key_left)
+and (can_move = true)
+and (global.pause=false)
 {
 	if (wall_jump = 0)
-	and(stick_to_wall = false)
-	and(ledge_grab = false)
-	and(climb = false)
-	and(takendamage <= takendamage_freezetime)
+	and (stick_to_wall = false)
+	and (ledge_grab = false)
+	and (climb = false)
+	and (horizontal_rope_climb = false)
+	and (takendamage <= takendamage_freezetime)
 	{
 		if (dive = false)
 		{
@@ -4763,19 +4765,19 @@ and(global.pause=false)
 			if (!place_meeting(x + 1, y, obj_wall))
 			{
 				if (asset_get_type("obj_ice_block") == asset_object)
-				and(place_meeting(x, y + 1, obj_ice_block))
+				and (place_meeting(x, y + 1, obj_ice_block))
 				{
 					hspeed += acceleration_on_ice;
 				}
 				else
 				{
 					if (place_meeting(x, y + 1, obj_wall))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						hspeed += acceleration_on_ground;
 					}
@@ -4788,15 +4790,15 @@ and(global.pause=false)
 			else
 			{
 				if (!place_meeting(x + 2, y, obj_wall))
-				and(!place_meeting(x, y - 2, obj_wall))
+				and (!place_meeting(x, y - 2, obj_wall))
 				{
 					if (place_meeting(x, y + 1, obj_wall))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or(asset_get_type("obj_semisolid_platform") == asset_object)
-					and(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						hspeed += acceleration_on_ground;
 					}
@@ -4819,7 +4821,7 @@ and(global.pause=false)
 
 #region /*If player has finished the level, make the player run off to the right off screen, and disable player control*/
 if (goal = true)
-and(global.time_countdown_bonus<=0)
+and (global.time_countdown_bonus<=0)
 {
 	hspeed+=0.3;
 	can_move=false;
@@ -4832,22 +4834,22 @@ and(global.time_countdown_bonus<=0)
 
 #region /*Sprint*/
 if (goal = true)
-and(global.time_countdown_bonus <= 0)
+and (global.time_countdown_bonus <= 0)
 {
 	speed_max = lerp(speed_max, speed_max_run, 0.1);
 }
 else
 {
 	if (crouch = true)
-	and(asset_get_type("obj_wall") == asset_object)
-	and(place_meeting(x, y + 1, obj_wall))
-	or(crouch = true)
+	and (asset_get_type("obj_wall") == asset_object)
+	and (place_meeting(x, y + 1, obj_wall))
+	or (crouch = true)
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or(crouch = true)
+	or (crouch = true)
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or(crouch = true)
+	or (crouch = true)
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
@@ -4891,7 +4893,7 @@ else
 	else
 	{
 		if (asset_get_type("obj_wall") == asset_object)
-		and(place_meeting(x, y + 1, obj_wall))
+		and (place_meeting(x, y + 1, obj_wall))
 		or (asset_get_type("obj_semisolid_platform") == asset_object)
 		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		or (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -4900,7 +4902,7 @@ else
 		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			if (invincible > 0)
-			and(assist_invincible = false)
+			and (assist_invincible = false)
 			{
 				speed_max = lerp(speed_max, 6, 0.05);
 			}
@@ -4966,16 +4968,16 @@ if (double_tap_to_run=true)
 		
 		else
 		if (!key_left)
-		and(!key_right)
+		and (!key_right)
 		{
 			if (double_tap_left=true)
-			and(double_tap_run_timer<=28)
+			and (double_tap_run_timer<=28)
 			{
 				double_tap_left=2;
 			}
 			else
 			if (double_tap_right=true)
-			and(double_tap_run_timer<=28)
+			and (double_tap_run_timer<=28)
 			{
 				double_tap_right=2;
 			}
@@ -4999,7 +5001,7 @@ if (double_tap_run_timer<=0)
 
 #region /*Set the friction*/
 if (asset_get_type("obj_wall") == asset_object)
-and(place_meeting(x, y + 1, obj_wall))
+and (place_meeting(x, y + 1, obj_wall))
 or (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 or (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -5010,11 +5012,11 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	if (speed > 0)
 	{
 		if (asset_get_type("obj_ice_block") == asset_object)
-		and(place_meeting(x, y + 1, obj_ice_block))
+		and (place_meeting(x, y + 1, obj_ice_block))
 		{
 			if (key_left)
-			or(key_right)
-			or(goal = true)
+			or (key_right)
+			or (goal = true)
 			{
 				friction = 0.01;
 			}
@@ -5026,8 +5028,8 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		else
 		{
 			if (key_left)
-			or(key_right)
-			or(goal = true)
+			or (key_right)
+			or (goal = true)
 			{
 				friction = 0.1;
 			}
@@ -5046,9 +5048,9 @@ else
 
 #region /*Jumping*/
 if (key_jump)
-and(number_of_jumps >= 1)
-or(key_jump)
-and(number_of_jumps <= -1)
+and (number_of_jumps >= 1)
+or (key_jump)
+and (number_of_jumps <= -1)
 {
 	buffer_jump = 10;
 }
@@ -5060,31 +5062,31 @@ if (buffer_jump > 0)
 
 #region /*If you're falling from a triple jump, reset the jump variable to 0*/
 if (jump >= 3)
-and(vspeed >= 0)
+and (vspeed >= 0)
 {
 	jump = 0;
 }
 #endregion /*If you're falling from a triple jump, reset the jump variable to 0 END*/
 
 if (buffer_jump > 0)
-and(can_move = true)
-and(global.pause=false)
-and(key_jump_hold)
+and (can_move = true)
+and (global.pause=false)
+and (key_jump_hold)
 {
 	
 	#region /*Drop down below semisolid platform*/
 	if (key_crouch)
-	and(ground_pound=false)
-	and(asset_get_type("obj_semisolid_platform") == asset_object)
-	and(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	and(asset_get_type("obj_wall") == asset_object)
-	and(!place_meeting(x, y + 1, obj_wall))
-	or(key_down)
-	and(ground_pound=false)
-	and(asset_get_type("obj_semisolid_platform") == asset_object)
-	and(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	and(asset_get_type("obj_wall") == asset_object)
-	and(!place_meeting(x, y + 1, obj_wall))
+	and (ground_pound=false)
+	and (asset_get_type("obj_semisolid_platform") == asset_object)
+	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (asset_get_type("obj_wall") == asset_object)
+	and (!place_meeting(x, y + 1, obj_wall))
+	or (key_down)
+	and (ground_pound=false)
+	and (asset_get_type("obj_semisolid_platform") == asset_object)
+	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (asset_get_type("obj_wall") == asset_object)
+	and (!place_meeting(x, y + 1, obj_wall))
 	{
 		can_ground_pound = false;
 		can_mid_air_jump = 10;
@@ -5097,25 +5099,25 @@ and(key_jump_hold)
 	if (ground_pound = 0)
 	{
 		if (asset_get_type("obj_wall") == asset_object)
-		and(place_meeting(x, y + 1, obj_wall))
-		and(crouch = false)
+		and (place_meeting(x, y + 1, obj_wall))
+		and (crouch = false)
 		
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
-		and(place_meeting(x, y + 1, obj_semisolid_platform))
-		and(crouch = false)
-		and(vspeed = 0)
+		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		and (place_meeting(x, y + 1, obj_semisolid_platform))
+		and (crouch = false)
+		and (vspeed = 0)
 		
-		or(asset_get_type("obj_wall") == asset_object)
-		and(place_meeting(x, y + 1, obj_wall))
+		or (asset_get_type("obj_wall") == asset_object)
+		and (place_meeting(x, y + 1, obj_wall))
 		and!(place_meeting(x, y - 1, obj_wall))
-		and(crouch = true)
-		and(vspeed = 0)
+		and (crouch = true)
+		and (vspeed = 0)
 		
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
-		and(place_meeting(x, y + 1, obj_semisolid_platform))
+		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		and (place_meeting(x, y + 1, obj_semisolid_platform))
 		and!(place_meeting(x, y - 1, obj_semisolid_platform))
-		and(crouch = true)
-		and(vspeed = 0)
+		and (crouch = true)
+		and (vspeed = 0)
 		{
 			jump += 1;
 			midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
@@ -5152,20 +5154,20 @@ and(key_jump_hold)
 			
 			#region /*Smoke effect under player when jumping*/
 			if (position_meeting(x - 16, bbox_bottom + 1, obj_wall))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and(position_meeting(x - 16, bbox_bottom + 1, obj_semisolid_platform))
+			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			and (position_meeting(x - 16, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
 			}
 			if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 			}
 			if (position_meeting(x + 16, bbox_bottom + 1, obj_wall))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and(position_meeting(x + 16, bbox_bottom + 1, obj_semisolid_platform))
+			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			and (position_meeting(x + 16, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
 			}
@@ -5282,7 +5284,7 @@ and (can_mid_air_jump = 0)
 			image_index = 0;;
 		
 			if (number_of_jumps > -1)
-			and(midair_jumps_left != number_of_jumps)
+			and (midair_jumps_left != number_of_jumps)
 			{
 				midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
 				if (number_of_jumps >= 3)
@@ -5314,7 +5316,7 @@ and (can_mid_air_jump = 0)
 			#region /*Mid-air flip animation*/
 			if (midair_jumps_left >= midair_jump_flip_animation)
 			or (number_of_jumps = 2)
-			and(midair_jump_flip_animation >= 2)
+			and (midair_jump_flip_animation >= 2)
 			{
 				if (image_xscale>0)
 				{
@@ -5351,8 +5353,8 @@ and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
 
 #region /*Do a small jump when releasing the jump button*/
 if (key_jump_released)
-and(!key_spin)
-and(spring=false)
+and (!key_spin)
+and (spring=false)
 {
 	if (vspeed<0) /*When still traveling up*/
 	{
@@ -5371,12 +5373,12 @@ if (vspeed > 0)
 #region /*Set the gravity*/
 gravity_direction = 270; /*Direction of the gravity*/
 if (asset_get_type("obj_wall") == asset_object)
-and(!place_meeting(x, y + 1, obj_wall))
-and(!position_meeting(x, bbox_bottom + 1, obj_wall))
-and(!position_meeting(bbox_left, bbox_bottom + 1, obj_wall))
-and(!position_meeting(bbox_right, bbox_bottom + 1, obj_wall))
-and(climb = false)
-and(horizontal_rope_climb = false)
+and (!place_meeting(x, y + 1, obj_wall))
+and (!position_meeting(x, bbox_bottom + 1, obj_wall))
+and (!position_meeting(bbox_left, bbox_bottom + 1, obj_wall))
+and (!position_meeting(bbox_right, bbox_bottom + 1, obj_wall))
+and (climb = false)
+and (horizontal_rope_climb = false)
 {
 	gravity = 0.5; /*The gravity*/
 }
@@ -5388,19 +5390,19 @@ else
 if (asset_get_type("obj_semisolid_platform") == asset_object)
 {
 	if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or(position_meeting(x, bbox_bottom + 2, obj_semisolid_platform))
-	or(position_meeting(x, bbox_bottom + 3, obj_semisolid_platform))
-	or(position_meeting(x, bbox_bottom + 4, obj_semisolid_platform))
+	or (position_meeting(x, bbox_bottom + 2, obj_semisolid_platform))
+	or (position_meeting(x, bbox_bottom + 3, obj_semisolid_platform))
+	or (position_meeting(x, bbox_bottom + 4, obj_semisolid_platform))
 
-	or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or(position_meeting(bbox_left, bbox_bottom + 2, obj_semisolid_platform))
-	or(position_meeting(bbox_left, bbox_bottom + 3, obj_semisolid_platform))
-	or(position_meeting(bbox_left, bbox_bottom + 4, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 2, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 3, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 4, obj_semisolid_platform))
 
-	or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or(position_meeting(bbox_right, bbox_bottom + 2, obj_semisolid_platform))
-	or(position_meeting(bbox_right, bbox_bottom + 3, obj_semisolid_platform))
-	or(position_meeting(bbox_right, bbox_bottom + 4, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 2, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 3, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 4, obj_semisolid_platform))
 	{
 		gravity = 0;
 	}
@@ -5416,9 +5418,9 @@ if (abs(hspeed) > speed_max)
 
 #region /*Limits the vertical speed*/
 if (place_meeting(x,y+32,obj_semisolid_platform))
-or(place_meeting(x,y+16,obj_semisolid_platform))
-or(place_meeting(x,y+8,obj_semisolid_platform))
-or(place_meeting(x,y+1,obj_semisolid_platform))
+or (place_meeting(x,y+16,obj_semisolid_platform))
+or (place_meeting(x,y+8,obj_semisolid_platform))
+or (place_meeting(x,y+1,obj_semisolid_platform))
 {
 	if (vspeed>8)
 	{
@@ -5550,7 +5552,7 @@ and (global.pause=false)
 						
 						#region /*Key Left*/
 						if (key_left)
-						and(!place_meeting(x-1,y,obj_wall))
+						and (!place_meeting(x-1,y,obj_wall))
 						{
 							with(tongue_obj)
 							{
@@ -5731,9 +5733,9 @@ and (global.pause=false)
 	{
 		can_ground_pound = false;
 		ground_pound=false;
-		gravity=0; /*No gravity when rope swinging*/
+		gravity = 0; /*No gravity when rope swinging*/
 		if (asset_get_type("obj_tongue")==asset_object)
-		and(instance_exists(obj_tongue))
+		and (instance_exists(obj_tongue))
 		{
 			grapple_x=instance_nearest(x,y,obj_tongue).x;
 			grapple_y=instance_nearest(x,y,obj_tongue).y;
@@ -5743,10 +5745,10 @@ and (global.pause=false)
 			
 			#region /*Key Right*/
 			if (key_right)
-			and(obj_tongue.y>y)
-			and(obj_tongue.x>x-1)
-			and(obj_tongue.x<x+1)
-			and(!place_meeting(x+4,y,obj_wall))
+			and (obj_tongue.y>y)
+			and (obj_tongue.x>x-1)
+			and (obj_tongue.x<x+1)
+			and (!place_meeting(x+4,y,obj_wall))
 			{
 				rope_angle_acceleration-=0.08;
 			}
@@ -5756,10 +5758,10 @@ and (global.pause=false)
 			
 			#region /*Key Left*/
 			if (key_left)
-			and(obj_tongue.y>y)
-			and(obj_tongue.x>x-1)
-			and(obj_tongue.x<x+1)
-			and(!place_meeting(x-4,y,obj_wall))
+			and (obj_tongue.y>y)
+			and (obj_tongue.x>x-1)
+			and (obj_tongue.x<x+1)
+			and (!place_meeting(x-4,y,obj_wall))
 			{
 				rope_angle_acceleration+=0.08;
 			}
@@ -5769,7 +5771,7 @@ and (global.pause=false)
 			
 			#region /*Key Left*/
 			if (key_left)
-			and(!place_meeting(x-4,y,obj_wall))
+			and (!place_meeting(x-4,y,obj_wall))
 			{
 				rope_angle_acceleration-=0.08;
 			}
@@ -5779,7 +5781,7 @@ and (global.pause=false)
 			
 			#region /*Key Right*/
 			if (key_right)
-			and(!place_meeting(x+4,y,obj_wall))
+			and (!place_meeting(x+4,y,obj_wall))
 			{
 				rope_angle_acceleration+=0.08;
 			}
@@ -5787,12 +5789,12 @@ and (global.pause=false)
 			
 			#region /*Key Up or Down*/
 			if (key_up)
-			and(obj_tongue.y<y)
-			or(key_down)
-			and(obj_tongue.y>y)
+			and (obj_tongue.y<y)
+			or (key_down)
+			and (obj_tongue.y>y)
 			{
 				if (rope_length>5)
-				and(!place_meeting(x,y-4,obj_wall))
+				and (!place_meeting(x,y-4,obj_wall))
 				{
 					rope_length-=2;
 				}
@@ -5803,12 +5805,12 @@ and (global.pause=false)
 			
 			#region /*Key Down or Up*/
 			if (key_down)
-			and(obj_tongue.y<y)
-			or(key_up)
-			and(obj_tongue.y>y)
+			and (obj_tongue.y<y)
+			or (key_up)
+			and (obj_tongue.y>y)
 			{
 				if (rope_length<320)
-				and(!place_meeting(x,y+4,obj_wall))
+				and (!place_meeting(x,y+4,obj_wall))
 				{
 					rope_length+=2;
 				}
@@ -5876,7 +5878,7 @@ else
 
 #region /*Roll when landing*/
 if (allow_roll=true)
-and(place_meeting(x,y+1,obj_wall))
+and (place_meeting(x,y+1,obj_wall))
 {
 	if (abs(hspeed)<1)
 	{
@@ -5912,13 +5914,13 @@ if (place_meeting(x,y+4,obj_wall))
 
 #region /*Chain Reaction Reset*/
 if (asset_get_type("obj_wall")==asset_object)
-and(place_meeting(x,y+1,obj_wall))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+and (place_meeting(x,y+1,obj_wall))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
 {
 	if (invincible<1)
 	{
@@ -5933,13 +5935,13 @@ if (assist_invincible=true)
 
 #region /*Triple Jump*/
 if (asset_get_type("obj_wall")==asset_object)
-and(place_meeting(x,y+1,obj_wall))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+and (place_meeting(x,y+1,obj_wall))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
 {
 	if (triplejumpdelay>0)
 	{
@@ -5947,24 +5949,24 @@ and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
 	}
 }
 if (place_meeting(x,y+1,obj_wall))
-and(speed<7) /*Player must be running at this speed to be able to triple jump*/
-and(jump>1)
-or(place_meeting(x,y+1,obj_wall))
-and(triplejumpdelay<1)
-or(jump>3)
-or(place_meeting(x,y+1,obj_wall))
-and(vspeed>=0)
-and(jump=3)
+and (speed<7) /*Player must be running at this speed to be able to triple jump*/
+and (jump>1)
+or (place_meeting(x,y+1,obj_wall))
+and (triplejumpdelay<1)
+or (jump>3)
+or (place_meeting(x,y+1,obj_wall))
+and (vspeed>=0)
+and (jump=3)
 {
 	jump=0;
 }
 if (place_meeting(x,y+2,obj_wall))
-and(jump>2)
-and(vspeed>=0)
+and (jump>2)
+and (vspeed>=0)
 {
 	jump=0;
 	if (!key_left)
-	and(!key_right)
+	and (!key_right)
 	{
 		hspeed=0;
 	}
@@ -5973,54 +5975,54 @@ and(vspeed>=0)
 
 #region /*Wall Jump and Wall Climb*/
 if (allow_wall_jump = true)
-and(can_wall_jump = true)
-and(can_move=true)
-and(global.pause=false)
-and(takendamage<=takendamage_freezetime)
-and(wall_jump_setting>=1)
+and (can_wall_jump = true)
+and (can_move=true)
+and (global.pause=false)
+and (takendamage<=takendamage_freezetime)
+and (wall_jump_setting>=1)
 or (allow_wall_jump = false)
-and(can_wall_jump = true)
-and(can_move=true)
-and(global.pause=false)
-and(takendamage<=takendamage_freezetime)
-and(place_meeting(x, y, obj_wall_jump_panel))
+and (can_wall_jump = true)
+and (can_move=true)
+and (global.pause=false)
+and (takendamage<=takendamage_freezetime)
+and (place_meeting(x, y, obj_wall_jump_panel))
 or (allow_wall_climb = false)
 and (can_wall_jump = true)
-and(can_move=true)
-and(global.pause=false)
-and(takendamage<=takendamage_freezetime)
-and(place_meeting(x, y, obj_wall_climb_panel))
+and (can_move=true)
+and (global.pause=false)
+and (takendamage<=takendamage_freezetime)
+and (place_meeting(x, y, obj_wall_climb_panel))
 {
 	if (asset_get_type("obj_wall")==asset_object)
-	and(!place_meeting(x,y+1,obj_wall))
-	and(!place_meeting(x,y+32,obj_wall))
-	and(asset_get_type("obj_semisolid_platform")==asset_object)
+	and (!place_meeting(x,y+1,obj_wall))
+	and (!place_meeting(x,y+32,obj_wall))
+	and (asset_get_type("obj_semisolid_platform")==asset_object)
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (climb=false)
-		and(horizontal_rope_climb=false)
-		and(vspeed>=0)
+		and (horizontal_rope_climb=false)
+		and (vspeed>=0)
 		{
 			if (key_left)
-			and(!key_right)
-			and(wall_jump_setting=2)
-			and(place_meeting(x-1,y,obj_wall))
-			or(!key_right)
-			and(dive=false)
-			and(wall_jump_setting=1)
-			and(place_meeting(x-1,y,obj_wall))
-			and(image_xscale<0)
-			or(dive=true)
-			and(wall_jump_setting=1)
-			and(place_meeting(x-1,y,obj_wall))
-			and(image_xscale<0)
+			and (!key_right)
+			and (wall_jump_setting=2)
+			and (place_meeting(x-1,y,obj_wall))
+			or (!key_right)
+			and (dive=false)
+			and (wall_jump_setting=1)
+			and (place_meeting(x-1,y,obj_wall))
+			and (image_xscale<0)
+			or (dive=true)
+			and (wall_jump_setting=1)
+			and (place_meeting(x-1,y,obj_wall))
+			and (image_xscale<0)
 			{
 				if (crouch=false)
-				and(ground_pound=false)
-				and(ledge_grab=false)
-				and(burnt=false)
+				and (ground_pound=false)
+				and (ledge_grab=false)
+				and (burnt=false)
 				{
 					angle=0;
 					image_xscale=-1;
@@ -6034,28 +6036,28 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 					wall_jump = 0;
 					ground_pound=false;
 					spring=false;
-					triplejumpdelay=0;
+					triplejumpdelay = 0;
 				}
 			}
 			else
 			if (key_right)
-			and(!key_left)
-			and(wall_jump_setting=2)
-			and(place_meeting(x+1,y,obj_wall))
-			or(!key_left)
-			and(dive=false)
-			and(wall_jump_setting=1)
-			and(place_meeting(x+1,y,obj_wall))
-			and(image_xscale>0)
-			or(dive=true)
-			and(wall_jump_setting=1)
-			and(place_meeting(x+1,y,obj_wall))
-			and(image_xscale>0)
+			and (!key_left)
+			and (wall_jump_setting=2)
+			and (place_meeting(x+1,y,obj_wall))
+			or (!key_left)
+			and (dive=false)
+			and (wall_jump_setting=1)
+			and (place_meeting(x+1,y,obj_wall))
+			and (image_xscale>0)
+			or (dive=true)
+			and (wall_jump_setting=1)
+			and (place_meeting(x+1,y,obj_wall))
+			and (image_xscale>0)
 			{
 				if (crouch=false)
-				and(ground_pound=false)
-				and(ledge_grab=false)
-				and(burnt=false)
+				and (ground_pound=false)
+				and (ledge_grab=false)
+				and (burnt=false)
 				{
 					angle=0;
 					image_xscale=+1;
@@ -6069,7 +6071,7 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 					wall_jump = 0;
 					ground_pound=false;
 					spring=false;
-					triplejumpdelay=0;
+					triplejumpdelay = 0;
 				}
 			}
 		}
@@ -6097,12 +6099,12 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 		
 		#region /*If there is ground under you while trying to go down, then stop wall climbing*/
 		if (asset_get_type("obj_wall")==asset_object)
-		and(place_meeting(x,y+1,obj_wall))
-		or(asset_get_type("obj_semisolid_platform")==asset_object)
+		and (place_meeting(x,y+1,obj_wall))
+		or (asset_get_type("obj_semisolid_platform")==asset_object)
 		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or(asset_get_type("obj_semisolid_platform")==asset_object)
+		or (asset_get_type("obj_semisolid_platform")==asset_object)
 		and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or(asset_get_type("obj_semisolid_platform")==asset_object)
+		or (asset_get_type("obj_semisolid_platform")==asset_object)
 		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			stick_to_wall = false;
@@ -6110,11 +6112,11 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 		#endregion /*If there is ground under you while trying to go down, then stop wall climbing END*/
 		
 		if (crouch=false)
-		and(ground_pound=false)
-		and(ledge_grab=false)
+		and (ground_pound=false)
+		and (ledge_grab=false)
 		{
 			if (vspeed>0)
-			and(position_meeting(x+18*image_xscale,bbox_top,obj_wall))
+			and (position_meeting(x+18*image_xscale,bbox_top,obj_wall))
 			{
 				effect_create_above(ef_smoke,x+17*image_xscale,bbox_top,0,c_white);
 				if (asset_get_type("snd_skiddingvertical")==asset_sound)
@@ -6142,10 +6144,10 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 				vspeed =4;
 			}
 			if (!place_meeting(x-1,y,obj_wall))
-			and(image_xscale<0)
-			or(!place_meeting(x+1,y,obj_wall))
-			and(image_xscale>0)
-			or(place_meeting(x,y+1,obj_wall))
+			and (image_xscale<0)
+			or (!place_meeting(x+1,y,obj_wall))
+			and (image_xscale>0)
+			or (place_meeting(x,y+1,obj_wall))
 			{
 				stick_to_wall=false;
 				if (asset_get_type("snd_skiddingvertical")==asset_sound)
@@ -6165,11 +6167,11 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 			dive = false;
 			laststandingy=y;
 			if (key_down)
-			and(!key_up)
-			and(takendamage<=takendamage_freezetime)
+			and (!key_up)
+			and (takendamage<=takendamage_freezetime)
 			{
 				if (asset_get_type("snd_move_ivy")==asset_sound)
-				and(!audio_is_playing(snd_move_ivy))
+				and (!audio_is_playing(snd_move_ivy))
 				{
 					audio_play_sound(snd_move_ivy,0,0);
 					audio_sound_gain(snd_move_ivy,global.sfx_volume,0);
@@ -6180,23 +6182,23 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 			}
 			else
 			if (key_up)
-			and(!key_down)
+			and (!key_down)
 			
-			or(image_xscale<0)
-			and(key_left)
-			and(!key_right)
+			or (image_xscale<0)
+			and (key_left)
+			and (!key_right)
 			
-			or(image_xscale>0)
-			and(key_right)
-			and(!key_left)
+			or (image_xscale>0)
+			and (key_right)
+			and (!key_left)
 			{
 				if (bbox_bottom>0)
-				and(takendamage<=takendamage_freezetime)
+				and (takendamage<=takendamage_freezetime)
 				{
 					if (!place_meeting(x,y-16,obj_wall))
 					{
 						if (asset_get_type("snd_move_ivy")==asset_sound)
-						and(!audio_is_playing(snd_move_ivy))
+						and (!audio_is_playing(snd_move_ivy))
 						{
 							audio_play_sound(snd_move_ivy,0,0);
 							audio_sound_gain(snd_move_ivy,global.sfx_volume,0);
@@ -6211,7 +6213,7 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 						
 						#region /*Stop climbing up if there is a wall above you*/
 						if (asset_get_type("snd_bump")==asset_sound)
-						and(!audio_is_playing(snd_bump))
+						and (!audio_is_playing(snd_bump))
 						{
 							audio_play_sound(snd_bump,0,0);
 							audio_sound_gain(snd_bump,global.sfx_volume,0);
@@ -6225,7 +6227,7 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 					
 					#region /*Stop climbing up if you're above the level and there is nothing above you*/
 					if (asset_get_type("snd_bump")==asset_sound)
-					and(!audio_is_playing(snd_bump))
+					and (!audio_is_playing(snd_bump))
 					{
 						audio_play_sound(snd_bump,0,0);
 						audio_sound_gain(snd_bump,global.sfx_volume,0);
@@ -6241,43 +6243,44 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 				can_dive = true;
 				ledge_grab_jump=false;
 				vspeed =0;
-				gravity=0;
+				gravity = 0;
 			}
 		}
 		#endregion /*Wall Climb END*/
 
 		#region /*When pressing the jump button and besides the wall, do the wall jump*/
 		if (key_jump)
-		and(place_meeting(x+1,y,obj_wall))
-		and(!place_meeting(x,y+1,obj_wall))
-		and(asset_get_type("obj_semisolid_platform") == asset_object)
+		and (place_meeting(x+1,y,obj_wall))
+		and (!place_meeting(x,y+1,obj_wall))
+		and (asset_get_type("obj_semisolid_platform") == asset_object)
 		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		
-		or(key_jump)
-		and(place_meeting(x-1,y,obj_wall))
-		and(!place_meeting(x,y+1,obj_wall))
-		and(asset_get_type("obj_semisolid_platform") == asset_object)
+		or (key_jump)
+		and (place_meeting(x-1,y,obj_wall))
+		and (!place_meeting(x,y+1,obj_wall))
+		and (asset_get_type("obj_semisolid_platform") == asset_object)
 		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		
-		or(allow_dive=true)
-		and(key_dive_pressed) /*Press dive to jump from wall using a dive*/
-		and(key_left)
-		and(!key_right)
-		and(place_meeting(x+1,y,obj_wall))
+		or (allow_dive=true)
+		and (key_dive_pressed) /*Press dive to jump from wall using a dive*/
+		and (key_left)
+		and (!key_right)
+		and (place_meeting(x+1,y,obj_wall))
 		
-		or(allow_dive=true)
-		and(key_dive_pressed) /*Press dive to jump from wall using a dive*/
-		and(key_right)
-		and(!key_left)
-		and(place_meeting(x-1,y,obj_wall))
+		or (allow_dive=true)
+		and (key_dive_pressed) /*Press dive to jump from wall using a dive*/
+		and (key_right)
+		and (!key_left)
+		and (place_meeting(x-1,y,obj_wall))
 		{
-			if (crouch=false)
-			and(ground_pound=false)
-			and(ledge_grab=false)
+			if (crouch = false)
+			and (ground_pound = false)
+			and (ledge_grab = false)
+			and (horizontal_rope_climb = false)
 			{
 				spring=false;
 				audio_stop_sound(voice);
@@ -6346,17 +6349,17 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 		
 			#region /*Change direction when diving*/
 			if (key_dive_pressed)
-			and(allow_dive=true)
-			and(key_left)
-			and(!key_right)
+			and (allow_dive=true)
+			and (key_left)
+			and (!key_right)
 			{
 				image_xscale=-1;
 			}
 			else
 			if (key_dive_pressed)
-			and(allow_dive=true)
-			and(key_right)
-			and(!key_left)
+			and (allow_dive=true)
+			and (key_right)
+			and (!key_left)
 			{
 				image_xscale=+1;
 			}
@@ -6372,15 +6375,15 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 
 	#region /*When pressing the jump button, a direction and besides the wall, do the wall jump even if you still haven't started the wall jump liding down state*/
 	if (key_down)
-	and(!key_left)
-	and(!key_right)
-	and(key_sprint_pressed)
-	and(stick_to_wall = true)
+	and (!key_left)
+	and (!key_right)
+	and (key_sprint_pressed)
+	and (stick_to_wall = true)
 	or (key_down)
-	and(!key_left)
-	and(!key_right)
-	and(key_dive_pressed)
-	and(stick_to_wall = true)
+	and (!key_left)
+	and (!key_right)
+	and (key_dive_pressed)
+	and (stick_to_wall = true)
 	or (pressing_opposite_direction_to_drop_off_from_wall >=10)
 	{
 		if (place_meeting(x-1,y,obj_wall))
@@ -6404,48 +6407,49 @@ and(place_meeting(x, y, obj_wall_climb_panel))
 	}
 	else
 	if (key_jump)
-	and(key_right)
-	and(!key_left)
-	and(wall_jump_setting>=1)
-	and(place_meeting(x+1,y,obj_wall))
-	and(!place_meeting(x,y+16,obj_wall))
-	and(asset_get_type("obj_semisolid_platform") == asset_object)
+	and (key_right)
+	and (!key_left)
+	and (wall_jump_setting>=1)
+	and (place_meeting(x+1,y,obj_wall))
+	and (!place_meeting(x,y+16,obj_wall))
+	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
-	or(key_jump)
-	and(key_left)
-	and(!key_right)
-	and(wall_jump_setting>=1)
-	and(place_meeting(x-1,y,obj_wall))
-	and(!place_meeting(x,y+16,obj_wall))
-	and(asset_get_type("obj_semisolid_platform") == asset_object)
+	or (key_jump)
+	and (key_left)
+	and (!key_right)
+	and (wall_jump_setting>=1)
+	and (place_meeting(x-1,y,obj_wall))
+	and (!place_meeting(x,y+16,obj_wall))
+	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
-	or(key_jump)
-	and(wall_jump_setting=1)
-	and(place_meeting(x+1,y,obj_wall))
-	and(!place_meeting(x,y+16,obj_wall))
-	and(asset_get_type("obj_semisolid_platform") == asset_object)
+	or (key_jump)
+	and (wall_jump_setting=1)
+	and (place_meeting(x+1,y,obj_wall))
+	and (!place_meeting(x,y+16,obj_wall))
+	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
-	or(key_jump)
-	and(wall_jump_setting=1)
-	and(place_meeting(x-1,y,obj_wall))
-	and(!place_meeting(x,y+16,obj_wall))
-	and(asset_get_type("obj_semisolid_platform") == asset_object)
+	or (key_jump)
+	and (wall_jump_setting=1)
+	and (place_meeting(x-1,y,obj_wall))
+	and (!place_meeting(x,y+16,obj_wall))
+	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
-		if (crouch=false)
-		and(ground_pound=false)
-		and(ledge_grab=false)
+		if (crouch = false)
+		and (ground_pound = false)
+		and (ledge_grab = false)
+		and (horizontal_rope_climb = false)
 		{
 			spring=false;
 			audio_stop_sound(voice);
@@ -6504,7 +6508,7 @@ stick_to_wall=false;
 if (stick_to_wall=false)
 {
 	if (asset_get_type("snd_skiddingvertical")==asset_sound)
-	and(audio_is_playing(snd_skiddingvertical))
+	and (audio_is_playing(snd_skiddingvertical))
 	{
 		audio_stop_sound(snd_skiddingvertical);
 	}
@@ -6594,7 +6598,7 @@ and (takendamage <= takendamage_freezetime)
 		
 				#region /*Move left to avoid a left corner*/
 				if (!position_meeting(bbox_left-1,bbox_bottom+1,obj_wall))
-				and(position_meeting(bbox_right+1,bbox_bottom+1,obj_wall))
+				and (position_meeting(bbox_right+1,bbox_bottom+1,obj_wall))
 				{
 					x-=1;
 				}
@@ -6604,7 +6608,7 @@ and (takendamage <= takendamage_freezetime)
 		
 				#region /*Move right to avoid a right corner*/
 				if (position_meeting(bbox_left-1,bbox_bottom+1,obj_wall))
-				and(!position_meeting(bbox_right+1,bbox_bottom+1,obj_wall))
+				and (!position_meeting(bbox_right+1,bbox_bottom+1,obj_wall))
 				{
 					y+=1;
 				}
@@ -6642,10 +6646,10 @@ and (takendamage <= takendamage_freezetime)
 	
 			else
 			if (key_up)
-			and(vspeed>4)
+			and (vspeed>4)
 			or (key_dive_pressed)
-			and(vspeed>4)
-			or(vspeed<-4)
+			and (vspeed>4)
+			or (vspeed<-4)
 			{
 				image_index = 0;;
 				ground_pound=false;
@@ -6657,18 +6661,18 @@ and (takendamage <= takendamage_freezetime)
 		if (ground_pound=2)
 		{
 			if (asset_get_type("obj_wall")==asset_object)
-			and(place_meeting(x,y+1,obj_wall))
-			or(asset_get_type("obj_semisolid_platform")==asset_object)
+			and (place_meeting(x,y+1,obj_wall))
+			or (asset_get_type("obj_semisolid_platform")==asset_object)
 			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform")==asset_object)
+			or (asset_get_type("obj_semisolid_platform")==asset_object)
 			and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform")==asset_object)
+			or (asset_get_type("obj_semisolid_platform")==asset_object)
 			and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				speed_max=0;
 				hspeed=0;
 				if (allow_ground_poundjump=true)
-				and(key_jump_hold)
+				and (key_jump_hold)
 				{
 					can_ground_pound = false;
 					effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
@@ -6705,7 +6709,7 @@ and (takendamage <= takendamage_freezetime)
 				speed_max=4;
 			}
 			if (image_index>image_number-1)
-			or(vspeed>0)
+			or (vspeed>0)
 			{
 				ground_pound=false;
 			}
@@ -6713,7 +6717,7 @@ and (takendamage <= takendamage_freezetime)
 	}
 }
 if (can_ground_pound=false)
-and(!key_down)
+and (!key_down)
 {
 	can_ground_pound = true;
 }
@@ -6722,17 +6726,17 @@ and(!key_down)
 
 #region /*You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true*/
 if (joystick_can_ground_pound = false)
-and(gamepad_axis_value(0, gp_axislv)<=0)
-and(player <= 1)
+and (gamepad_axis_value(0, gp_axislv)<=0)
+and (player <= 1)
 or (joystick_can_ground_pound = false)
-and(gamepad_axis_value(1, gp_axislv)<=0)
-and(player <= 2)
+and (gamepad_axis_value(1, gp_axislv)<=0)
+and (player <= 2)
 or (joystick_can_ground_pound = false)
-and(gamepad_axis_value(2, gp_axislv)<=0)
-and(player <= 3)
+and (gamepad_axis_value(2, gp_axislv)<=0)
+and (player <= 3)
 or (joystick_can_ground_pound = false)
-and(gamepad_axis_value(3, gp_axislv)<=0)
-and(player <= 4)
+and (gamepad_axis_value(3, gp_axislv)<=0)
+and (player <= 4)
 {
 	joystick_can_ground_pound = true;
 }
@@ -6740,17 +6744,17 @@ and(player <= 4)
 
 #region /*You must have this code after the previous code otherwise the joystick_can_ground_pound is always set to true*/
 if (joystick_can_ground_pound = true)
-and(gamepad_axis_value(0, gp_axislv)>0)
-and(player <= 1)
+and (gamepad_axis_value(0, gp_axislv)>0)
+and (player <= 1)
 or (joystick_can_ground_pound = true)
-and(gamepad_axis_value(1, gp_axislv)>0)
-and(player <= 2)
+and (gamepad_axis_value(1, gp_axislv)>0)
+and (player <= 2)
 or (joystick_can_ground_pound = true)
-and(gamepad_axis_value(2, gp_axislv)>0)
-and(player <= 3)
+and (gamepad_axis_value(2, gp_axislv)>0)
+and (player <= 3)
 or (joystick_can_ground_pound = true)
-and(gamepad_axis_value(3, gp_axislv)>0)
-and(player <= 4)
+and (gamepad_axis_value(3, gp_axislv)>0)
+and (player <= 4)
 {
 	joystick_can_ground_pound = false;
 }
@@ -6762,19 +6766,19 @@ and(player <= 4)
 
 #region /*Dive*/
 if (allow_dive=true)
-and(can_move=true)
-and(global.pause=false)
+and (can_move=true)
+and (global.pause=false)
 {
 	if (can_dive = true)
 	and (drop_off_wall_climb = 0)
 	and (in_water = false)
 	{
 		if (dive=false)
-		and(burnt=false)
-		and(stick_to_wall=false)
-		and(climb=false)
-		and(horizontal_rope_climb=false)
-		and(takendamage<=takendamage_freezetime)
+		and (burnt=false)
+		and (stick_to_wall=false)
+		and (climb=false)
+		and (horizontal_rope_climb=false)
+		and (takendamage<=takendamage_freezetime)
 		{
 			if (key_dive_pressed)
 			{
@@ -6795,13 +6799,13 @@ and(global.pause=false)
 					
 					#region /*Choose direction to dive*/
 					if (key_left)
-					and(!key_right)
-					or(image_xscale<0)
+					and (!key_right)
+					or (image_xscale<0)
 					{
 						if (hspeed>-10)
 						{
 							if (asset_get_type("obj_wall")==asset_object)
-							and(!place_meeting(x-4,y,obj_wall))
+							and (!place_meeting(x-4,y,obj_wall))
 							{
 								hspeed=-10;
 							}
@@ -6810,13 +6814,13 @@ and(global.pause=false)
 					}
 					else
 					if (key_right)
-					and(!key_left)
-					or(image_xscale>0)
+					and (!key_left)
+					or (image_xscale>0)
 					{
 						if (hspeed<+10)
 						{
 							if (asset_get_type("obj_wall")==asset_object)
-							and(!place_meeting(x+4,y,obj_wall))
+							and (!place_meeting(x+4,y,obj_wall))
 							{
 								hspeed=+10;
 							}
@@ -6841,8 +6845,8 @@ and(global.pause=false)
 					spring=false;
 					move_towards_spring_endpoint = false;
 					if (asset_get_type("obj_wall")==asset_object)
-					and(!place_meeting(x,y+1,obj_wall))
-					and(asset_get_type("obj_semisolid_platform")==asset_object)
+					and (!place_meeting(x,y+1,obj_wall))
+					and (asset_get_type("obj_semisolid_platform")==asset_object)
 					and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 					and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 					and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -6859,11 +6863,11 @@ and(global.pause=false)
 		if (dive=true)
 		{
 			if (key_left)
-			and(asset_get_type("obj_wall")==asset_object)
-			and(place_meeting(x+1,y,obj_wall))
-			or(key_right)
-			and(asset_get_type("obj_wall")==asset_object)
-			and(place_meeting(x-1,y,obj_wall))
+			and (asset_get_type("obj_wall")==asset_object)
+			and (place_meeting(x+1,y,obj_wall))
+			or (key_right)
+			and (asset_get_type("obj_wall")==asset_object)
+			and (place_meeting(x-1,y,obj_wall))
 			{
 				hspeed=0;
 			}
@@ -6874,13 +6878,13 @@ and(global.pause=false)
 				if (hspeed>-4)
 				{
 					if (asset_get_type("obj_wall")==asset_object)
-					and(!place_meeting(x-4,y,obj_wall))
+					and (!place_meeting(x-4,y,obj_wall))
 					{
 						hspeed=-4;
 					}
 					else
 					if (asset_get_type("obj_wall")==asset_object)
-					and(!place_meeting(x-1,y,obj_wall))
+					and (!place_meeting(x-1,y,obj_wall))
 					{
 						hspeed=-1;
 					}
@@ -6892,13 +6896,13 @@ and(global.pause=false)
 				if (hspeed<+4)
 				{
 					if (asset_get_type("obj_wall")==asset_object)
-					and(!place_meeting(x+4,y,obj_wall))
+					and (!place_meeting(x+4,y,obj_wall))
 					{
 						hspeed=+4;
 					}
 					else
 					if (asset_get_type("obj_wall")==asset_object)
-					and(!place_meeting(x+1,y,obj_wall))
+					and (!place_meeting(x+1,y,obj_wall))
 					{
 						hspeed=+1;
 					}
@@ -6908,17 +6912,17 @@ and(global.pause=false)
 			
 			#region /*If player lands on ground when diving, stop diving*/
 			if (asset_get_type("obj_wall")==asset_object)
-			and(place_meeting(x,y+1,obj_wall))
-			and(vspeed>=0)
-			or(asset_get_type("obj_semisolid_platform")==asset_object)
-			and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-			and(vspeed>=0)
-			or(asset_get_type("obj_semisolid_platform")==asset_object)
-			and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-			and(vspeed>=0)
-			or(asset_get_type("obj_semisolid_platform")==asset_object)
-			and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
-			and(vspeed>=0)
+			and (place_meeting(x,y+1,obj_wall))
+			and (vspeed>=0)
+			or (asset_get_type("obj_semisolid_platform")==asset_object)
+			and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+			and (vspeed>=0)
+			or (asset_get_type("obj_semisolid_platform")==asset_object)
+			and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+			and (vspeed>=0)
+			or (asset_get_type("obj_semisolid_platform")==asset_object)
+			and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+			and (vspeed>=0)
 			{
 				dive = false;
 				dive_on_ground = 10;
@@ -6967,16 +6971,16 @@ and(global.pause=false)
 
 #region /*Can Attack After Dive On Ground*/
 if (can_tongue_after_dive_on_ground>0)
-and(asset_get_type("obj_wall")==asset_object)
-and(place_meeting(x,y+1,obj_wall))
+and (asset_get_type("obj_wall")==asset_object)
+and (place_meeting(x,y+1,obj_wall))
 or (can_tongue_after_dive_on_ground>0)
-and(asset_get_type("obj_semisolid_platform")==asset_object)
+and (asset_get_type("obj_semisolid_platform")==asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 or (can_tongue_after_dive_on_ground>0)
-and(asset_get_type("obj_semisolid_platform")==asset_object)
+and (asset_get_type("obj_semisolid_platform")==asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 or (can_tongue_after_dive_on_ground>0)
-and(asset_get_type("obj_semisolid_platform")==asset_object)
+and (asset_get_type("obj_semisolid_platform")==asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	can_tongue_after_dive_on_ground -= 1;
@@ -6989,20 +6993,20 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 
 #region /*Dive ground boost*/
 if (allow_dive_ground_boost=true)
-and(dive_on_ground>0)
-and(asset_get_type("obj_wall")==asset_object)
-and(place_meeting(x,y+1,obj_wall))
-or(allow_dive_ground_boost=true)
-and(dive_on_ground>0)
-and(asset_get_type("obj_semisolid_platform")==asset_object)
+and (dive_on_ground>0)
+and (asset_get_type("obj_wall")==asset_object)
+and (place_meeting(x,y+1,obj_wall))
+or (allow_dive_ground_boost=true)
+and (dive_on_ground>0)
+and (asset_get_type("obj_semisolid_platform")==asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or(allow_dive_ground_boost=true)
-and(dive_on_ground>0)
-and(asset_get_type("obj_semisolid_platform")==asset_object)
+or (allow_dive_ground_boost=true)
+and (dive_on_ground>0)
+and (asset_get_type("obj_semisolid_platform")==asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or(allow_dive_ground_boost=true)
-and(dive_on_ground>0)
-and(asset_get_type("obj_semisolid_platform")==asset_object)
+or (allow_dive_ground_boost=true)
+and (dive_on_ground>0)
+and (asset_get_type("obj_semisolid_platform")==asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	dive_on_ground -= 1;
@@ -7057,8 +7061,8 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 if (allow_ledge_grab=true)
 {
 	if (in_water = true)
-	or(x<camera_get_view_x(view_camera[view_current])+25)
-	or(x>camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])-25)
+	or (x<camera_get_view_x(view_camera[view_current])+25)
+	or (x>camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])-25)
 	{
 		can_ledge_grab=false;
 	}
@@ -7073,21 +7077,21 @@ if (allow_ledge_grab=true)
 			hspeed_dir=sign(hspeed);
 		}
 		if (ground_pound<1)
-		and(burnt<1)
+		and (burnt<1)
 		{
 			if (!position_meeting(x+37*hspeed_dir,bbox_top-16,obj_wall))
-			and(position_meeting(x+37*hspeed_dir,bbox_top+8,obj_wall))
-			and(yprevious-16<y)
-			and(vspeed>0)
-			and(!place_meeting(x,y+sprite_height/3,obj_wall))
-			and(!key_down)
+			and (position_meeting(x+37*hspeed_dir,bbox_top+8,obj_wall))
+			and (yprevious-16<y)
+			and (vspeed>0)
+			and (!place_meeting(x,y+sprite_height/3,obj_wall))
+			and (!key_down)
 			{
 				if (asset_get_type("snd_grabledge")==asset_sound)
 				{
 					audio_play_sound(snd_grabledge,0,0);
 					audio_sound_gain(snd_grabledge,global.sfx_volume,0);
 				}
-				gravity=0;
+				gravity = 0;
 				hspeed=0;
 				vspeed =0;
 				
@@ -7118,7 +7122,7 @@ if (allow_ledge_grab=true)
 		}
 		if (ledge_grab>false)
 		{
-			gravity=0;
+			gravity = 0;
 			hspeed=0;
 			if (place_meeting(x-1,y,obj_wall))
 			{
@@ -7140,9 +7144,9 @@ if (allow_ledge_grab=true)
 				sprite_index=spr_player_wall_slide;
 			}
 			if (key_left)
-			and(image_xscale=-1)
-			or(key_right)
-			and(image_xscale=+1)
+			and (image_xscale=-1)
+			or (key_right)
+			and (image_xscale=+1)
 			{
 				if (ledge_grab>10)
 				{
@@ -7168,7 +7172,7 @@ if (allow_ledge_grab=true)
 			}
 			else
 			if (key_jump)
-			or(key_up)
+			or (key_up)
 			{
 				if (image_xscale>0)
 				{
@@ -7190,10 +7194,10 @@ if (allow_ledge_grab=true)
 				wall_jump = 0;
 			}
 			if (key_left)
-			and(image_xscale=+1)
-			or(key_right)
-			and(image_xscale=-1)
-			or(key_down)
+			and (image_xscale=+1)
+			or (key_right)
+			and (image_xscale=-1)
+			or (key_down)
 			{
 				if (ledge_grab>10)
 				{
@@ -7215,21 +7219,21 @@ if (allow_ledge_grab=true)
 
 #region /*ledge_grab_jump / Get up over ledge*/
 if (ledge_grab_jump=true)
-and(stick_to_wall=false)
+and (stick_to_wall=false)
 {
 	if (image_xscale=-1)
-	and(!place_meeting(x,y-4,obj_wall))
+	and (!place_meeting(x,y-4,obj_wall))
 	{
 		hspeed-=0.1;
 	}
 	else
 	if (image_xscale=+1)
-	and(!place_meeting(x,y+4,obj_wall))
+	and (!place_meeting(x,y+4,obj_wall))
 	{
 		hspeed+=0.1;
 	}
 	if (place_meeting(x,y+1,obj_wall))
-	and(vspeed>=0)
+	and (vspeed>=0)
 	{
 		ledge_grab_jump=false;
 	}
@@ -7254,16 +7258,16 @@ if (ground_pound=true)
 else
 {
 	if (!place_meeting(x,y+1,obj_wall))
-	and(vspeed>0)
+	and (vspeed>0)
 	{
 		if (key_left)
-		and(!key_right)
+		and (!key_right)
 		{
 			angle=lerp(angle,0+10,0.1);
 		}
 		else
 		if (key_right)
-		and(!key_left)
+		and (!key_left)
 		{
 			angle=lerp(angle,0-10,0.1);
 		}
@@ -7334,9 +7338,9 @@ if (asset_get_type("obj_water")==asset_object)
 		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_wall))
 		{
 			if (key_up)
-			and(!key_down)
-			or(key_jump_hold)
-			and(!key_down)
+			and (!key_down)
+			or (key_jump_hold)
+			and (!key_down)
 			{
 				if (vspeed>1)
 				{
@@ -7551,8 +7555,8 @@ if (in_water != old_in_water)
 
 #region /*Speedup to Dashspeed*/
 if (abs(hspeed)>7)
-and(invincible>0)
-and(power_meter_running_sound=true)
+and (invincible>0)
+and (power_meter_running_sound=true)
 {
 	speedunit+=2;
 	if (speedunit>100)
@@ -7589,15 +7593,15 @@ else
 
 #region /*Interaction with other players*/
 if (asset_get_type("obj_player")==asset_object)
-and(in_water = false)
+and (in_water = false)
 {
 			
 	#region /*Jump on other players heads*/
 	if (position_meeting(x,bbox_bottom+1,obj_player))
-	and(!place_meeting(x,y-1,obj_wall))
-	and(vspeed>0)
-	and(ground_pound=false)
-	and(stick_to_wall=false)
+	and (!place_meeting(x,y-1,obj_wall))
+	and (vspeed>0)
+	and (ground_pound=false)
+	and (stick_to_wall=false)
 	{
 		ground_pound=false;
 		dive=false;
@@ -7661,7 +7665,7 @@ if (asset_get_type("obj_lava")==asset_object)
 	if (place_meeting(x,y,obj_lava))
 	{
 		if (allow_survive_lava=true)
-		and(hp>0)
+		and (hp>0)
 		{
 			burnt=true;
 			dive=false;
@@ -7742,8 +7746,8 @@ if (die = true)
 	
 	#region /*Update Level Editor Checkpoint Time*/
 	if (asset_get_type("room_leveleditor")==asset_room)
-	and(room=room_leveleditor)
-	and(global.actually_play_edited_level = true)
+	and (room=room_leveleditor)
+	and (global.actually_play_edited_level = true)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
 		ini_open(working_directory+"/custom_level_save.ini");
@@ -7756,7 +7760,7 @@ if (die = true)
 	#endregion /*Update Level Editor Checkpoint Time END*/
 	
 	if (asset_get_type("obj_player")==asset_object)
-	and(global.pause=false)
+	and (global.pause=false)
 	{
 		if (instance_number(obj_player)<=1)
 		{
@@ -7928,16 +7932,16 @@ if (die = true)
 
 #region /*If you touch spikes, take damage*/
 if (asset_get_type("obj_spikes")==asset_object)
-and(instance_exists(obj_spikes))
+and (instance_exists(obj_spikes))
 {
 	if (place_meeting(x-1,y,obj_spikes))
-	or(place_meeting(x+1,y,obj_spikes))
-	or(place_meeting(x,y-1,obj_spikes))
-	or(place_meeting(x,y+1,obj_spikes))
+	or (place_meeting(x+1,y,obj_spikes))
+	or (place_meeting(x,y-1,obj_spikes))
+	or (place_meeting(x,y+1,obj_spikes))
 	{
 		if (takendamage<1)
-		and(assist_invincible=false)
-		and(invincible<=false)
+		and (assist_invincible=false)
+		and (invincible<=false)
 		{
 			if (have_heart_balloon=true)
 			{
@@ -7957,7 +7961,7 @@ and(instance_exists(obj_spikes))
 if (asset_get_type("obj_invincibility_powerup")==asset_object)
 {
 	if (place_meeting(x,y,obj_invincibility_powerup))
-	and(instance_nearest(x,y,obj_invincibility_powerup).bounceup = false)
+	and (instance_nearest(x,y,obj_invincibility_powerup).bounceup = false)
 	{
 		chain_reaction=0;
 		invincible=room_speed*20;
@@ -7978,7 +7982,7 @@ if (asset_get_type("obj_invincibility_powerup")==asset_object)
 		score+=1000;
 		global.hud_show_score=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -8005,8 +8009,8 @@ if (asset_get_type("obj_invincibility_powerup")==asset_object)
 if (goal=false)
 {
 	if (global.time_countdown = 0)
-	and(allow_timeup = true)
-	and(global.player_has_entered_goal = false)
+	and (allow_timeup = true)
+	and (global.player_has_entered_goal = false)
 	{
 		die = true;
 	}
@@ -8033,7 +8037,7 @@ else
 	{
 		global.hud_show_score=true;
 		if (asset_get_type("obj_camera")==asset_object)
-		and(instance_exists(obj_camera))
+		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -8081,7 +8085,7 @@ else
 
 #region /*Goal*/
 if (asset_get_type("obj_goal")==asset_object)
-and(instance_exists(obj_goal))
+and (instance_exists(obj_goal))
 {
 	if (distance_to_object(obj_goal) < 1920)
 	{
@@ -8135,7 +8139,7 @@ and(instance_exists(obj_goal))
 			}
 			else
 			if (asset_get_type("snd_level_clear")==asset_sound)
-			and(!audio_is_playing(snd_level_clear))
+			and (!audio_is_playing(snd_level_clear))
 			{
 				audio_play_sound(snd_level_clear,0,0);
 				audio_sound_gain(snd_level_clear,global.music_volume,0);
@@ -8146,7 +8150,7 @@ and(instance_exists(obj_goal))
 	}
 }
 if (goal = true)
-and(global.time_countdown_bonus<=0)
+and (global.time_countdown_bonus<=0)
 {
 	allow_ground_pound=false;
 	ground_pound=false;
@@ -8156,31 +8160,34 @@ and(global.time_countdown_bonus<=0)
 #endregion /*Goal End*/
 
 #region /*Homing Attack*/
-if (allow_homing_tongue=true)
+if (allow_homing_attack = true)
 {
 	
 	#region /*Homing Enemy*/
-	if (!place_meeting(x,y+1,obj_wall))
-	and(stick_to_wall=false)
-	and(climb=false)
-	and(horizontal_rope_climb=false)
-	and(key_jump)
-	and(asset_get_type("obj_enemy")==asset_object)
-	and(instance_exists(obj_enemy))
-	and(!collision_line(x,y,instance_nearest(x,y,obj_enemy).x,instance_nearest(x,y,obj_enemy).y,obj_wall,false,true))
-	and(distance_to_object(obj_enemy)<hoverstomp_distance)
-	and(instance_nearest(x,y,obj_enemy).bbox_bottom>y)
-	and(instance_nearest(x,y,obj_enemy).die = false)
+	if (!place_meeting(x, y + 1, obj_wall))
+	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	and (stick_to_wall = false)
+	and (climb = false)
+	and (horizontal_rope_climb = false)
+	and (key_jump)
+	and (asset_get_type("obj_enemy") == asset_object)
+	and (instance_exists(obj_enemy))
+	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
+	and (distance_to_object(obj_enemy) < hoverstomp_distance)
+	and (instance_nearest(x, y, obj_enemy).bbox_bottom>y)
+	and (instance_nearest(x, y, obj_enemy).die = false)
+	and (homing_attack_x = 0)
+	and (homing_attack_y = 0)
 	{
-		x=instance_nearest(x,y,obj_enemy).x;
-		y=instance_nearest(x,y,obj_enemy).bbox_top+y-bbox_bottom+19;
-		vspeed = -triple_jump_height;
-		stomp_spin=true;
-		dive=false;
-		ground_pound=false;
-		if (speed_max<=4)
+		homing_attack_x = instance_nearest(x, y, obj_enemy).x;
+		homing_attack_y = instance_nearest(x, y, obj_enemy).bbox_top + y - bbox_bottom + 19;
+		dive = false;
+		ground_pound = false;
+		if (speed_max <= 4)
 		{
-			speed_max=4;
+			speed_max = 4;
 		}
 	}
 	#endregion /*Homing Enemy END*/
@@ -8188,32 +8195,49 @@ if (allow_homing_tongue=true)
 	else
 	
 	#region /*Homing Spring*/
-	if (!place_meeting(x,y+1,obj_wall))
-	and(stick_to_wall=false)
-	and(climb=false)
-	and(horizontal_rope_climb=false)
-	and(key_jump)
-	and(asset_get_type("obj_spring")==asset_object)
-	and(instance_exists(obj_spring))
-	and(!collision_line(x,y,instance_nearest(x,y,obj_spring).x,instance_nearest(x,y,obj_spring).y,obj_wall,false,true))
-	and(distance_to_object(obj_spring)<hoverstomp_distance)
-	and(instance_nearest(x,y,obj_spring).bbox_bottom>y)
-	and(instance_nearest(x,y,obj_spring).can_bounce=0)
+	if (!place_meeting(x, y + 1, obj_wall))
+	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	and (stick_to_wall = false)
+	and (climb = false)
+	and (horizontal_rope_climb = false)
+	and (key_jump)
+	and (asset_get_type("obj_spring") == asset_object)
+	and (instance_exists(obj_spring))
+	and (!collision_line(x, y, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, obj_wall, false, true))
+	and (distance_to_object(obj_spring) < hoverstomp_distance)
+	and (instance_nearest(x,y,obj_spring).bbox_bottom > y)
+	and (instance_nearest(x,y,obj_spring).can_bounce = 0)
+	and (homing_attack_x = 0)
+	and (homing_attack_y = 0)
 	{
-		x=instance_nearest(x,y,obj_spring).x;
-		y=instance_nearest(x,y,obj_spring).y;
-		spring=true;
-		spring_animation=0;
-		dive=false;
-		ground_pound=false;
-		instance_nearest(x,y,obj_spring).can_bounce=10;
-		if (speed_max<=4)
+		homing_attack_x = instance_nearest(x, y, obj_spring).x;
+		homing_attack_y = instance_nearest(x, y, obj_spring).y;
+		dive = false;
+		ground_pound = false;
+		if (speed_max <= 4)
 		{
-			speed_max=4;
+			speed_max = 4;
 		}
 	}
 	#endregion /*Homing Spring END*/
 	
+	if (homing_attack_x > 0)
+	{
+		move_towards_point(homing_attack_x, homing_attack_y, 30);
+	}
+	if (place_meeting(x, y, obj_enemy))
+	{
+		if (homing_attack_x > 0)
+		or (homing_attack_y > 0)
+		{
+			hspeed = 0;
+			vspeed = -triple_jump_height;
+			homing_attack_x = 0;
+			homing_attack_y = 0;
+		}
+	}
 }
 #endregion /*Homing Attack End*/
 
@@ -8224,9 +8248,9 @@ if (vspeed>0)
 
 #region /*Spring*/
 if (asset_get_type("obj_spring")==asset_object)
-and(instance_exists(obj_spring))
-and(place_meeting(x,y,obj_spring))
-and(instance_nearest(x,y,obj_spring).can_bounce=0)
+and (instance_exists(obj_spring))
+and (place_meeting(x,y,obj_spring))
+and (instance_nearest(x,y,obj_spring).can_bounce=0)
 {
 	
 	#region /*Play jumping on spring voice clip*/
@@ -8285,6 +8309,8 @@ and(instance_nearest(x,y,obj_spring).can_bounce=0)
 	spring_endpoint_x = instance_nearest(x,y,obj_spring).second_x;
 	spring_endpoint_y = instance_nearest(x,y,obj_spring).second_y;
 	stick_to_wall=false;
+	homing_attack_x = 0;
+	homing_attack_y = 0;
 	instance_nearest(x,y,obj_spring).can_bounce = 10;
 	instance_nearest(x,y,obj_spring).image_index=1;
 	instance_nearest(x,y,obj_spring).image_speed=1;
@@ -8295,7 +8321,7 @@ if (move_towards_spring_endpoint = true)
 	move_towards_point(spring_endpoint_x, spring_endpoint_y, 20);
 	
 	if (asset_get_type("obj_spring")==asset_object)
-	and(instance_exists(obj_spring))
+	and (instance_exists(obj_spring))
 	and (point_distance(
 	spring_endpoint_x,
 	spring_endpoint_y,
@@ -8312,7 +8338,7 @@ if (move_towards_spring_endpoint = true)
 		spring_endpoint_y = 0;
 	}
 	if (asset_get_type("obj_wall")==asset_object)
-	and(instance_exists(obj_wall))
+	and (instance_exists(obj_wall))
 	{
 		if (place_meeting(x-4, y, obj_wall))
 		and (hspeed<0)
@@ -8375,7 +8401,7 @@ if (spring = true)
 	{
 		if (sprite_spring_down>noone){sprite_index = sprite_spring_down;}else
 		if (sprite_spring_up>noone){sprite_index = sprite_spring_up;}else
-		if (key_jump_hold)and(sprite_fall_slower>noone){sprite_index = sprite_fall_slower;}else
+		if (key_jump_hold)and (sprite_fall_slower>noone){sprite_index = sprite_fall_slower;}else
 		if (sprite_fall>noone){sprite_index = sprite_fall;}else
 		if (sprite_double_jump>noone){sprite_index = sprite_double_jump;}else
 		if (sprite_jump>noone){sprite_index = sprite_jump;}else
@@ -8410,11 +8436,11 @@ draw_yscale = lerp(draw_yscale, 1, 0.2); /*Make vertical stretching slowly reset
 
 #region /*Left*/
 if (key_left)
-and(!key_right)
-and(place_meeting(bbox_left-1,y,obj_wall))
-and(place_meeting(x,y+1,obj_wall))
-and(climb=false)
-and(stick_to_wall=false)
+and (!key_right)
+and (place_meeting(bbox_left-1,y,obj_wall))
+and (place_meeting(x,y+1,obj_wall))
+and (climb=false)
+and (stick_to_wall=false)
 {
 	if (asset_get_type("snd_bump")==asset_sound)
 	{
@@ -8429,11 +8455,11 @@ and(stick_to_wall=false)
 
 #region /*Right*/
 if (key_right)
-and(!key_left)
-and(place_meeting(bbox_right+1,y,obj_wall))
-and(place_meeting(x,y+1,obj_wall))
-and(climb=false)
-and(stick_to_wall=false)
+and (!key_left)
+and (place_meeting(bbox_right+1,y,obj_wall))
+and (place_meeting(x,y+1,obj_wall))
+and (climb=false)
+and (stick_to_wall=false)
 {
 	if (asset_get_type("snd_bump")==asset_sound)
 	{
@@ -8449,12 +8475,12 @@ and(stick_to_wall=false)
 #endregion /*A bump sound effect if a player walks into a wall to let them know that they they hit a wall END*/
 
 if (asset_get_type("obj_vine")==asset_object)
-and(!place_meeting(x,y,obj_vine))
+and (!place_meeting(x,y,obj_vine))
 {
 	climb=false;
 }
 if (asset_get_type("obj_horizontal_rope")==asset_object)
-and(!place_meeting(x,y,obj_horizontal_rope))
+and (!place_meeting(x,y,obj_horizontal_rope))
 {
 	horizontal_rope_climb=false;
 }
@@ -8472,7 +8498,7 @@ and (!place_meeting(x, y+1, obj_wall))
 and (in_water = false)
 {
 	if (horizontal_rope_climb = false)
-	and(can_climb_horizontal_rope_cooldown <= 0)
+	and (can_climb_horizontal_rope_cooldown <= 0)
 	{
 		midair_jumps_left = number_of_jumps;
 		horizontal_rope_climb = true;
@@ -8502,7 +8528,6 @@ and (in_water = false)
 		dive = false;
 		gravity = 0;
 		ground_pound = false;
-		hspeed = 0;
 		laststandingx = x;
 		laststandingy = y;
 		ledge_grab_jump = false;
@@ -8510,146 +8535,201 @@ and (in_water = false)
 		spring = false;
 		stick_to_wall = false;
 		vspeed = 0;
+		if (key_left)
+		or (key_right)
+		{
+			friction = 0.2;
+		}
+		else
+		{
+			friction = 0.5;
+		}
 		y = instance_nearest(x, y, obj_horizontal_rope).y + climb_under_y_offset;
 		
+		#region /*Spinning on horizontal rope*/
 		if (key_up)
 		and (!key_down)
 		and (!place_meeting(x, y-16, obj_wall))
 		and (!place_meeting(x, y-32, obj_wall))
 		and (!place_meeting(x, y-48, obj_wall))
 		and (!place_meeting(x, y-64, obj_wall))
-		and (simple_controls=false)
+		and (simple_controls = false)
 		{
+			friction = 0.5; /*Make the character stop horizontal movement sooner when spinning on horizontal rope*/
+				
+			#region /*Start spinning on rope*/
+			if (place_meeting(x - 1, y, obj_wall))
+			or (place_meeting(x - 4, y - 16, obj_wall))
+			or (place_meeting(x - 4, y - 32, obj_wall))
+			or (place_meeting(x - 4, y - 48, obj_wall))
+			or (place_meeting(x - 4, y - 64, obj_wall))
+			{
+				x += 1;
+				hspeed = 0;
+			}
+			else
+			if (place_meeting(x + 1, y, obj_wall))
+			or (place_meeting(x + 4, y - 16, obj_wall))
+			or (place_meeting(x + 4, y - 32, obj_wall))
+			or (place_meeting(x + 4, y - 48, obj_wall))
+			or (place_meeting(x + 4, y - 64, obj_wall))
+			{
+				x -= 1;
+				hspeed = 0;
+			}
+			if (image_index <= 5)
+			and (image_speed > 0.3)
+			{
+				if (asset_get_type("obj_blockbreak") == asset_object)
+				{
+					instance_create_depth(x, y, 0, obj_blockbreak);
+					instance_create_depth(x, y + 32, 0, obj_blockbreak);
+					instance_create_depth(x, y + 64, 0, obj_blockbreak);
+				}
+			}
+			else
+			if (image_index >= 5)
+			and (image_speed > 0.3)
+			{
+				if (asset_get_type("obj_blockbreak") == asset_object)
+				{
+					instance_create_depth(x, y, 0, obj_blockbreak);
+					instance_create_depth(x, y - 32, 0, obj_blockbreak);
+					instance_create_depth(x, y - 64, 0, obj_blockbreak);
+				}
+			}
+			if (image_speed < 1)
+			{
+				if (sprite_climb_under_spin>noone){sprite_index = sprite_climb_under_spin;}else
+				if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
+				{sprite_index = sprite_stand;}
+			}
+			else
+			{
+				if (sprite_climb_under_spin_fast>noone){sprite_index = sprite_climb_under_spin_fast;}else
+				if (sprite_climb_under_spin>noone){sprite_index = sprite_climb_under_spin;}else
+				if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
+				{sprite_index = sprite_stand;}
+			}
+			if (image_index>=image_number-1)
+			and (image_number>1)
+			{
+				if (asset_get_type("snd_swing")==asset_sound)
+				{
+					audio_play_sound(snd_swing,0,0);
+					audio_sound_gain(snd_swing,global.sfx_volume,0);
+				}
+				image_index = 0;;
+			}
+			image_speed+=0.02;
+			if (image_speed>1)
+			{
+				image_speed=1;
+			}
+			#endregion /*Start spinning on rope END*/
+				
+			#region /*Jump from rope spin*/
+			if (key_jump)
+			or (up_key_is_jump_key = true)
+			and (!key_up)
+			{
+				if (asset_get_type("snd_jump")==asset_sound)
+				{
+					audio_play_sound(snd_jump,0,0);
+					audio_sound_gain(snd_jump,global.sfx_volume,0);
+				}
+				can_climb_horizontal_rope_cooldown = sprite_height/35;
+				midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
+				y-=64;
+				climb=false;
+				horizontal_rope_climb=false;
+				spring_animation=0;
+				spring=true;
+				
+				#region /*Do a charged upward jump depending on how fast you spin*/
+				if (image_speed>=1)
+				{
+					vspeed = -triple_jump_height*1.25;
+					audio_stop_sound(voice);
+					voice=audio_play_sound(voice_jump_rope,0,0);
+					audio_sound_gain(voice_jump_rope,global.voices_volume,0);
+					audio_sound_pitch(voice_jump_rope, default_voice_pitch);
+				}
+				else
+				if (image_speed>=0.9)
+				{
+					vspeed = -triple_jump_height*1.125;
+				}
+				else
+				if (image_speed>=0.7)
+				{
+					vspeed = -triple_jump_height;
+				}
+				else
+				{
+					vspeed = -normal_jump_height; /*Do the normal upward jump, when you haven't spinned fast enough*/
+				}
+				#endregion /*Do a charged upward jump depending on how fast you spin END*/
+				
+			}
+			#endregion /*Jump from rope spin END*/
+				
+		}
+		#endregion /*Spinning on horizontal rope END*/
 		
-		#region /*Start spinning on rope*/
-		if (place_meeting(x-1,y,obj_wall))
-		{
-			x+=1;
-		}
 		else
-		if (place_meeting(x+1,y,obj_wall))
-		{
-			x-=1;
-		}
-		if (image_index<=5)
-		and(image_speed>0.3)
-		{
-			if (asset_get_type("obj_blockbreak")==asset_object)
-			{
-				instance_create_depth(x, y, 0, obj_blockbreak);
-				instance_create_depth(x,y+32,0,obj_blockbreak);
-				instance_create_depth(x,y+64,0,obj_blockbreak);
-			}
-		}
-		else
-		if (image_index>=5)
-		and(image_speed>0.3)
-		{
-			if (asset_get_type("obj_blockbreak")==asset_object)
-			{
-				instance_create_depth(x, y, 0, obj_blockbreak);
-				instance_create_depth(x,y-32,0,obj_blockbreak);
-				instance_create_depth(x,y-64,0,obj_blockbreak);
-			}
-		}
-		if (image_speed<1)
-		{
-			if (sprite_climb_under_spin>noone){sprite_index = sprite_climb_under_spin;}else
-			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
-			{sprite_index = sprite_stand;}
-		}
-		else
-		{
-			if (sprite_climb_under_spin_fast>noone){sprite_index = sprite_climb_under_spin_fast;}else
-			if (sprite_climb_under_spin>noone){sprite_index = sprite_climb_under_spin;}else
-			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
-			{sprite_index = sprite_stand;}
-		}
-		if (image_index>=image_number-1)
-		and(image_number>1)
-		{
-			if (asset_get_type("snd_swing")==asset_sound)
-			{
-				audio_play_sound(snd_swing,0,0);
-				audio_sound_gain(snd_swing,global.sfx_volume,0);
-			}
-			image_index = 0;;
-		}
-		image_speed+=0.02;
-		if (image_speed>1)
-		{
-			image_speed=1;
-		}
-		#endregion /*Start spinning on rope END*/
 		
-		#region /*Jump from rope spin*/
-		if (key_jump)
-		or(up_key_is_jump_key=true)
-		and(!key_up)
+		#region /*Jump upward normally from rope spin if drop down from rope doesn't use jump*/
+		if (drop_from_rope = 0) /*Drop down from rope: Release Jump*/
+		and (key_jump)
+		or (drop_from_rope = 2) /*Drop down from rope: Only Down*/
+		and (key_jump)
+		or (drop_from_rope = 4) /*Drop down from rope: Down + Jump*/
+		and (key_jump)
+		and (!key_down)
 		{
-			if (asset_get_type("snd_jump")==asset_sound)
+			if (!place_meeting(x, y-16, obj_wall))
+			and (!place_meeting(x, y-32, obj_wall))
+			and (!place_meeting(x, y-48, obj_wall))
+			and (!place_meeting(x, y-64, obj_wall))
 			{
-				audio_play_sound(snd_jump,0,0);
-				audio_sound_gain(snd_jump,global.sfx_volume,0);
-			}
-			can_climb_horizontal_rope_cooldown = sprite_height/35;
-			midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
-			y-=64;
-			climb=false;
-			horizontal_rope_climb=false;
-			spring_animation=0;
-			spring=true;
-			if (image_speed>=1)
-			{
-				vspeed = -triple_jump_height*1.25;
-				audio_stop_sound(voice);
-				voice=audio_play_sound(voice_jump_rope,0,0);
-				audio_sound_gain(voice_jump_rope,global.voices_volume,0);
-				audio_sound_pitch(voice_jump_rope, default_voice_pitch);
-			}
-			else
-			if (image_speed>=0.9)
-			{
-				vspeed = -triple_jump_height*1.125;
-			}
-			else
-			if (image_speed>=0.7)
-			{
-				vspeed = -triple_jump_height;
-			}
-			else
-			if (image_speed>=0.4)
-			{
-				vspeed = -triple_jump_height/1.5;
-			}
-			else
-			{
-				vspeed = -triple_jump_height/2;
+				if (asset_get_type("snd_jump")==asset_sound)
+				{
+					audio_play_sound(snd_jump,0,0);
+					audio_sound_gain(snd_jump,global.sfx_volume,0);
+				}
+				can_climb_horizontal_rope_cooldown = sprite_height/35;
+				midair_jumps_left = clamp(midair_jumps_left-1, 0, number_of_jumps);
+				y-=64;
+				climb=false;
+				horizontal_rope_climb=false;
+				spring_animation=0;
+				spring=true;
+				vspeed = -normal_jump_height; /*Do the normal upward jump, no chargeup*/
 			}
 		}
-		#endregion /*Jump from rope spin END*/
+		#endregion /*Jump upward normally from rope spin if drop down from rope doesn't use jump END*/
 		
-		}
 		else
 		
 		#region /*Drop down from rope*/
-		if (drop_from_rope=0)
-		and(!key_jump_hold)
-		or(drop_from_rope=1)
-		and(key_down)
-		or(drop_from_rope=1)
-		and(key_jump)
-		or(drop_from_rope=2)
-		and(key_down)
-		or(drop_from_rope=3)
-		and(key_jump)
-		or(drop_from_rope=4)
-		and(key_down)
-		and(key_jump)
+		if (drop_from_rope = 0) /*Drop down from rope: Release Jump*/
+		and (!key_jump_hold)
+		or (drop_from_rope = 1) /*Drop down from rope: Down or Jump*/
+		and (key_down)
+		or (drop_from_rope = 1) /*Drop down from rope: Down or Jump*/
+		and (key_jump)
+		or (drop_from_rope = 2) /*Drop down from rope: Only Down*/
+		and (key_down)
+		or (drop_from_rope = 3) /*Drop down from rope: Only Jump*/
+		and (key_jump)
+		or (drop_from_rope = 4) /*Drop down from rope: Down + Jump*/
+		and (key_down)
+		and (key_jump)
 		{
 			if (!key_up)
 			{
-				can_climb_horizontal_rope_cooldown = sprite_height/10;
+				can_climb_horizontal_rope_cooldown = sprite_height/9; /*Cooldown timer before you can start climbing again. The deviding number should be high enough so you grab a rope below you but not grabbing the same rope you were just on*/
 				can_ground_pound = false;
 				climb = false;
 				horizontal_rope_climb = false;
@@ -8663,122 +8743,102 @@ and (in_water = false)
 		
 		#region /*Climb left on horizontal rope*/
 		if (key_left)
-		and(!key_right)
-		and(!place_meeting(bbox_left-1,y,obj_wall))
-		and(takendamage<=takendamage_freezetime)
+		and (!key_right)
+		and (!place_meeting(bbox_left - 1, y, obj_wall))
+		and (place_meeting(bbox_left - 1, y, obj_horizontal_rope))
+		and (takendamage <= takendamage_freezetime)
 		{
-			image_xscale=-1;
-			if(sprite_climb_under>noone){sprite_index = sprite_climb_under;}else
-			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
+			image_xscale = -1;
+			if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+			if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
-			or(double_tap_left=3)
+			or (double_tap_left = 3)
 			{
-				x-=5;
-				image_speed=0.5;
+				hspeed -= 0.5;
+				speed_max = speed_max_run;
+				image_speed = speed / 10 + 0.1;
 			}
 			else
 			{
-				x-=3;
-				image_speed=0.3;
+				hspeed -= 0.5;
+				speed_max = speed_max_walk;
+				image_speed = speed / 10 + 0.1;
 			}
-			if (asset_get_type("snd_move_ivy")==asset_sound)
-			and(!audio_is_playing(snd_move_ivy))
+			if (asset_get_type("snd_move_ivy") == asset_sound)
+			and (!audio_is_playing(snd_move_ivy))
 			{
-				audio_play_sound(snd_move_ivy,0,0);
-				audio_sound_gain(snd_move_ivy,global.sfx_volume,0);
+				audio_play_sound(snd_move_ivy, 0, 0);
+				audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
 			}
 		}
 		#endregion /*Climb left on horizontal rope END*/
 		
 		else
 		
-		#region /*Bump into wall on left side when climbing horizontal rope*/
-		if (key_left)
-		and(!key_right)
-		and(place_meeting(bbox_left-1,y,obj_wall))
-		and(takendamage<=takendamage_freezetime)
-		{
-			image_xscale=-1;
-			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
-			{sprite_index = sprite_stand;}
-			image_speed=0;
-			if (asset_get_type("snd_bump")==asset_sound)
-			and(!audio_is_playing(snd_bump))
-			{
-				audio_play_sound(snd_bump,0,0);
-				audio_sound_gain(snd_bump,global.sfx_volume,0);
-			}
-		}
-		#endregion /*Bump into wall on left side when climbing horizontal rope END*/
-		
-		else
-		
 		#region /*Climb right on horizontal rope*/
 		if (key_right)
-		and(!key_left)
-		and(!place_meeting(bbox_right+1,y,obj_wall))
-		and(takendamage<=takendamage_freezetime)
+		and (!key_left)
+		and (!place_meeting(bbox_right + 1, y, obj_wall))
+		and (place_meeting(bbox_right + 1, y, obj_horizontal_rope))
+		and (takendamage <= takendamage_freezetime)
 		{
-			image_xscale=+1;
-			if (sprite_climb_under>noone){sprite_index = sprite_climb_under;}else
-			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
+			image_xscale = +1;
+			if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+			if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
-			or(double_tap_right=3)
+			or (double_tap_right = 3)
 			{
-				x+=5;
-				image_speed=0.5;
+				hspeed += 0.5;
+				speed_max = speed_max_run;
+				image_speed = speed / 10 + 0.1;
 			}
 			else
 			{
-				x+=3;
-				image_speed=0.3;
+				hspeed += 0.5;
+				speed_max = speed_max_walk;
+				image_speed = speed / 10 + 0.1;
 			}
-			if (asset_get_type("snd_move_ivy")==asset_sound)
-			and(!audio_is_playing(snd_move_ivy))
+			if (asset_get_type("snd_move_ivy") == asset_sound)
+			and (!audio_is_playing(snd_move_ivy))
 			{
-				audio_play_sound(snd_move_ivy,0,0);
-				audio_sound_gain(snd_move_ivy,global.sfx_volume,0);
+				audio_play_sound(snd_move_ivy, 0, 0);
+				audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
 			}
 		}
 		#endregion /*Climb right on horizontal rope END*/
 		
 		else
 		
-		#region /*Bump into wall on left side when climbing horizontal rope*/
-		if (key_right)
-		and(!key_left)
-		and(place_meeting(bbox_right+1,y,obj_wall))
-		and(takendamage<=takendamage_freezetime)
-		{
-			image_xscale=+1;
-			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
-			{sprite_index = sprite_stand;}
-			image_speed=0;
-			if (asset_get_type("snd_bump")==asset_sound)
-			and!audio_is_playing(snd_bump)
-			{
-				audio_play_sound(snd_bump,0,0);
-				audio_sound_gain(snd_bump,global.sfx_volume,0);
-			}
-		}
-		#endregion /*Bump into wall on left side when climbing horizontal rope END*/
-		
-		else
-		
 		#region /*Look up when on horizontal rope*/
 		if (key_up)
 		{
-			if (sprite_climb_under_look_up>noone){sprite_index = sprite_climb_under_look_up;}else
-			if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
-			{sprite_index = sprite_stand;}
+			if (speed > 0)
+			{
+				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				{sprite_index = sprite_stand;}
+			}
+			else
+			{
+				if (sprite_climb_under_look_up>noone){sprite_index = sprite_climb_under_look_up;}else
+				if (sprite_climb_under_still>noone){sprite_index = sprite_climb_under_still;}else
+				{sprite_index = sprite_stand;}
+			}
 			image_speed=0.5;
 		}
 		#endregion /*Look up when on horizontal rope END*/
 
 		else
 		{
+			if (speed > 0)
+			{
+				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				{sprite_index = sprite_stand;}
+			}
+			else
 			if (sprite_climb_under_still>noone)
 			{
 				sprite_index = sprite_climb_under_still;
@@ -8796,6 +8856,55 @@ and (in_water = false)
 			horizontal_rope_climb = false;
 			stomp_spin = false;
 		}
+		
+		#region /*Bump into wall on left side when climbing horizontal rope*/
+		if (place_meeting(bbox_left - 1, y, obj_wall))
+		or (!place_meeting(bbox_left - 1, y, obj_horizontal_rope))
+		{
+			if (hspeed < 0)
+			{
+				hspeed = 0;
+			}
+			if (key_left)
+			and (!key_right)
+			and (takendamage <= takendamage_freezetime)
+			{
+				image_xscale = -1;
+				if (asset_get_type("snd_bump") == asset_sound)
+				and (!audio_is_playing(snd_bump))
+				{
+					audio_play_sound(snd_bump, 0, 0);
+					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+				}
+			}
+		}
+		#endregion /*Bump into wall on left side when climbing horizontal rope END*/
+		
+		else
+		
+		#region /*Bump into wall on right side when climbing horizontal rope*/
+		if (place_meeting(bbox_right + 1, y, obj_wall))
+		or (!place_meeting(bbox_right + 1, y, obj_horizontal_rope))
+		{
+			if (hspeed > 0)
+			{
+				hspeed = 0;
+			}
+			if (key_right)
+			and (!key_left)
+			and (takendamage <= takendamage_freezetime)
+			{
+				image_xscale = +1;
+				if (asset_get_type("snd_bump") == asset_sound)
+				and (!audio_is_playing(snd_bump))
+				{
+					audio_play_sound(snd_bump, 0, 0);
+					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+				}
+			}
+		}
+		#endregion /*Bump into wall on right side when climbing horizontal rope END*/
+		
 	}
 }
 #endregion /*Climb Horizontal Rope END*/
@@ -8804,11 +8913,11 @@ else
 
 #region /*Climb Vine*/
 if (asset_get_type("obj_vine")==asset_object)
-and(place_meeting(x,y,obj_vine))
+and (place_meeting(x,y,obj_vine))
 {
 	if (key_up)
-	and(vspeed>=0)
-	or(key_up_pressed)
+	and (vspeed>=0)
+	or (key_up_pressed)
 	{
 		if (climb=false)
 		{
@@ -8833,7 +8942,7 @@ and(place_meeting(x,y,obj_vine))
 	}
 	if (climb=true)
 	{
-		gravity=0;
+		gravity = 0;
 		hspeed=0;
 		vspeed =0;
 		laststandingx=x;
@@ -8849,9 +8958,9 @@ and(place_meeting(x,y,obj_vine))
 		spring=false;
 		chain_reaction=0;
 		if (key_up)
-		and(!key_down)
-		and(place_meeting(x,bbox_top-1,obj_vine))
-		and(takendamage<=takendamage_freezetime)
+		and (!key_down)
+		and (place_meeting(x,bbox_top-1,obj_vine))
+		and (takendamage<=takendamage_freezetime)
 		{
 			if (x<instance_nearest(x,y,obj_vine).x)
 			{
@@ -8894,8 +9003,8 @@ and(place_meeting(x,y,obj_vine))
 		}
 		else
 		if (key_down)
-		and(!key_up)
-		and(takendamage<=takendamage_freezetime)
+		and (!key_up)
+		and (takendamage<=takendamage_freezetime)
 		{
 			if (x<instance_nearest(x,y,obj_vine).x)
 			{
@@ -8936,11 +9045,11 @@ and(place_meeting(x,y,obj_vine))
 		}
 		else
 		if (key_left)
-		and(!key_right)
-		and(!key_up)
-		and(!key_down)
-		and(!position_meeting(bbox_left-1,y,obj_wall))
-		and(takendamage<=takendamage_freezetime)
+		and (!key_right)
+		and (!key_up)
+		and (!key_down)
+		and (!position_meeting(bbox_left-1,y,obj_wall))
+		and (takendamage<=takendamage_freezetime)
 		{
 			image_xscale=-1;
 			if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
@@ -8967,11 +9076,11 @@ and(place_meeting(x,y,obj_vine))
 		}
 		else
 		if (key_left)
-		and(!key_right)
-		and(!key_up)
-		and(!key_down)
-		and(position_meeting(bbox_left-1,y,obj_wall))
-		and(takendamage<=takendamage_freezetime)
+		and (!key_right)
+		and (!key_up)
+		and (!key_down)
+		and (position_meeting(bbox_left-1,y,obj_wall))
+		and (takendamage<=takendamage_freezetime)
 		{
 			if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
 			{sprite_index = sprite_stand;}
@@ -8988,11 +9097,11 @@ and(place_meeting(x,y,obj_vine))
 		}
 		else
 		if (key_right)
-		and(!key_left)
-		and(!key_up)
-		and(!key_down)
-		and(!position_meeting(bbox_right+1,y,obj_wall))
-		and(takendamage<=takendamage_freezetime)
+		and (!key_left)
+		and (!key_up)
+		and (!key_down)
+		and (!position_meeting(bbox_right+1,y,obj_wall))
+		and (takendamage<=takendamage_freezetime)
 		{
 			image_xscale=+1;
 			if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
@@ -9019,11 +9128,11 @@ and(place_meeting(x,y,obj_vine))
 		}
 		else
 		if (key_right)
-		and(!key_left)
-		and(!key_up)
-		and(!key_down)
-		and(position_meeting(bbox_right+1,y,obj_wall))
-		and(takendamage<=takendamage_freezetime)
+		and (!key_left)
+		and (!key_up)
+		and (!key_down)
+		and (position_meeting(bbox_right+1,y,obj_wall))
+		and (takendamage<=takendamage_freezetime)
 		{
 			if (sprite_vine_stay>noone){sprite_index = sprite_vine_stay;}else
 			{sprite_index = sprite_stand;}
@@ -9054,7 +9163,7 @@ and(place_meeting(x,y,obj_vine))
 			climb=false;
 			stomp_spin=false;
 			if (hp=1)
-			and(max_hp>=2)
+			and (max_hp>=2)
 			{
 				if (asset_get_type("snd_jumpsmall")==asset_sound)
 				{
@@ -9090,10 +9199,10 @@ and (climb = false)
 if (key_crouch)
 {
 	if (crouch=false)
-	and(can_move=true)
+	and (can_move=true)
 	{
 		if (ground_pound=false)
-		and(dive=false)
+		and (dive=false)
 		{
 			if (place_meeting(x,y+1,obj_wall))
 			or (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
@@ -9127,8 +9236,8 @@ else
 
 /*Don't Crouch Underwater*/
 if (!key_crouch)
-and(!place_meeting(x,y-8,obj_wall))
-and(crouch=true)
+and (!place_meeting(x,y-8,obj_wall))
+and (crouch=true)
 {
 	if (vspeed>=0)
 	{
@@ -9181,7 +9290,7 @@ if (crouch = true)
 		}
 	}
 	if (abs(hspeed)>=2.5)
-	and(place_meeting(x,y+1,obj_wall))
+	and (place_meeting(x,y+1,obj_wall))
 	or (abs(hspeed)>=2.5)
 	and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
 	or (abs(hspeed)>=2.5)
@@ -9231,8 +9340,8 @@ if (crouch = true)
 		
 		#region /*Crouch Stand*/
 		if (speed=0)
-		and(!key_left)
-		and(!key_right)
+		and (!key_left)
+		and (!key_right)
 		{
 			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
 			{sprite_index = sprite_stand;}
@@ -9250,7 +9359,7 @@ if (crouch = true)
 		#region /*Crouch Crawl*/
 		else
 		if (key_left)
-		or(key_right)
+		or (key_right)
 		{
 			if (sprite_crouch_crawl>noone){sprite_index = sprite_crouch_crawl;}else
 			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
@@ -9296,8 +9405,8 @@ if (crouch = true)
 
 else
 if (asset_get_type("obj_wall")==asset_object)
-and(place_meeting(x,y+1,obj_wall))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
+and (place_meeting(x,y+1,obj_wall))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
 and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
 and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
 and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
@@ -9305,9 +9414,9 @@ and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 
 #region /*Skidding*/
 if (hspeed<0)
-and(key_right)
-or(hspeed>0)
-and(key_left)
+and (key_right)
+or (hspeed>0)
+and (key_left)
 {
 	if (asset_get_type("snd_skidding")==asset_sound)
 	{
@@ -9357,8 +9466,8 @@ if (hspeed <+ 0.1)
 or (hspeed >- 0.1)
 {
 	if (can_move=true)
-	and(goal=false)
-	or(goal = true)
+	and (goal=false)
+	or (goal = true)
 	{
 		if (speeddash=true)
 		{
@@ -9398,7 +9507,7 @@ or (hspeed >- 0.1)
 	}
 }
 if (image_index<1)
-or(image_index=4)
+or (image_index=4)
 {
 	if abs(hspeed)>0
 	{
@@ -9428,9 +9537,9 @@ or (!position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 
 #region /*Skidding*/
 if (hspeed<-0.2)
-and(image_xscale>0)
-or(hspeed>+0.2)
-and(image_xscale<0)
+and (image_xscale>0)
+or (hspeed>+0.2)
+and (image_xscale<0)
 {
 	if (asset_get_type("snd_skidding")==asset_sound)
 	{
@@ -9508,9 +9617,9 @@ if (key_crouch)
 and (allow_crouch = true)
 {
 	if (crouch=false)
-	and(can_move=true)
-	and(ground_pound=false)
-	and(dive=false)
+	and (can_move=true)
+	and (ground_pound=false)
+	and (dive=false)
 	{
 		if (place_meeting(x,y+1,obj_wall))
 		or (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
@@ -9552,8 +9661,8 @@ else
 
 #region /*Don't crouch*/
 if (!key_down)
-and(!place_meeting(x,y-8,obj_wall))
-and(crouch=true)
+and (!place_meeting(x,y-8,obj_wall))
+and (crouch=true)
 {
 	if (vspeed>=0)
 	{
@@ -9580,7 +9689,7 @@ and(crouch=true)
 
 /*Roll*/
 if (allow_roll=true)
-and(roll=true)
+and (roll=true)
 {
 	if (asset_get_type("spr_player_roll")==asset_sprite)
 	{
@@ -9634,9 +9743,9 @@ if (crouch = true)
 	#endregion /*Destroy blocks above you when you jump while crouching END*/
 	
 	if (place_meeting(x,y+1,obj_wall))
-	or(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-	or(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
-	or(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
 		if (abs(hspeed)>3)
 		{
@@ -9660,13 +9769,13 @@ if (crouch = true)
 		}
 	}
 	if (abs(hspeed)>=2.5)
-	and(place_meeting(x,y+1,obj_wall))
-	or(abs(hspeed)>=2.5)
-	and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-	or(abs(hspeed)>=2.5)
-	and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
-	or(abs(hspeed)>=2.5)
-	and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+	and (place_meeting(x,y+1,obj_wall))
+	or (abs(hspeed)>=2.5)
+	and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+	or (abs(hspeed)>=2.5)
+	and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+	or (abs(hspeed)>=2.5)
+	and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
 		if (sprite_mask_crouch > 0)
 		{
@@ -9690,15 +9799,15 @@ if (crouch = true)
 	}
 	else
 	if (place_meeting(x,y+1,obj_wall))
-	or(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-	or(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
-	or(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+	or (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
 
 	#region /*Crouch Still*/
 	if (speed=0)
-	and(!key_left)
-	and(!key_right)
+	and (!key_left)
+	and (!key_right)
 	{
 		sprite_index = sprite_crouch;
 		if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
@@ -9718,7 +9827,7 @@ if (crouch = true)
 	
 	#region /*Crouch Crawl*/
 	if (key_left)
-	or(key_right)
+	or (key_right)
 	{
 		if (sprite_crouch_crawl>noone){sprite_index = sprite_crouch_crawl;}else
 		if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
@@ -9730,9 +9839,9 @@ if (crouch = true)
 
 	else
 	if (!place_meeting(x,y+1,obj_wall))
-	and(!position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-	and(!position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
-	and(!position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+	and (!position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+	and (!position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+	and (!position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
 	{
 		
 		#region /*Crouch Jump*/
@@ -9740,9 +9849,9 @@ if (crouch = true)
 		{
 			if (sprite_crouch_jump>noone){sprite_index = sprite_crouch_jump;}else
 			if (sprite_crouch_fall>noone){sprite_index = sprite_crouch_fall;}else
-			if (sprite_jump>noone)and(vspeed<=0){sprite_index = sprite_jump;}else
-			if (sprite_fall_slower>noone)and(vspeed>0)and(key_a_hold){sprite_index = sprite_fall_slower;}else
-			if (sprite_fall>noone)and(vspeed>0){sprite_index = sprite_fall;}else
+			if (sprite_jump>noone)and (vspeed<=0){sprite_index = sprite_jump;}else
+			if (sprite_fall_slower>noone)and (vspeed>0)and (key_a_hold){sprite_index = sprite_fall_slower;}else
+			if (sprite_fall>noone)and (vspeed>0){sprite_index = sprite_fall;}else
 			if (sprite_jump>noone){sprite_index = sprite_jump;}else
 			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
 			if (sprite_fall>noone){sprite_index = sprite_fall;}else
@@ -9760,13 +9869,13 @@ if (crouch = true)
 		
 		else
 		if (vspeed>0)
-		and(stick_to_wall=false)
+		and (stick_to_wall=false)
 		{
 			if (sprite_crouch_fall>noone){sprite_index = sprite_crouch_fall;}else
 			if (sprite_crouch_jump>noone){sprite_index = sprite_crouch_jump;}else
-			if (sprite_jump>noone)and(vspeed<=0){sprite_index = sprite_jump;}else
-			if (sprite_fall_slower>noone)and(vspeed>0)and(key_a_hold){sprite_index = sprite_fall_slower;}else
-			if (sprite_fall>noone)and(vspeed>0){sprite_index = sprite_fall;}else
+			if (sprite_jump>noone)and (vspeed<=0){sprite_index = sprite_jump;}else
+			if (sprite_fall_slower>noone)and (vspeed>0)and (key_a_hold){sprite_index = sprite_fall_slower;}else
+			if (sprite_fall>noone)and (vspeed>0){sprite_index = sprite_fall;}else
 			if (sprite_jump>noone){sprite_index = sprite_jump;}else
 			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
 			if (sprite_fall>noone){sprite_index = sprite_fall;}else
@@ -9856,28 +9965,28 @@ if (ground_pound=3)
 }
 else
 if (asset_get_type("obj_wall")==asset_object)
-and(place_meeting(x,y+1,obj_wall))
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
-and(vspeed =0)
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
-and(vspeed =0)
-or(asset_get_type("obj_semisolid_platform")==asset_object)
-and(position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
-and(vspeed =0)
+and (place_meeting(x,y+1,obj_wall))
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(x,bbox_bottom+1,obj_semisolid_platform))
+and (vspeed =0)
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(bbox_left,bbox_bottom+1,obj_semisolid_platform))
+and (vspeed =0)
+or (asset_get_type("obj_semisolid_platform")==asset_object)
+and (position_meeting(bbox_right,bbox_bottom+1,obj_semisolid_platform))
+and (vspeed =0)
 {
 
 #region /*Skidding*/
 if (hspeed<0)
-and(key_right)
-or(hspeed>0)
-and(key_left)
+and (key_right)
+or (hspeed>0)
+and (key_left)
 {
 	if (can_move=true)
 	{
 		if (asset_get_type("obj_ice_block")==asset_object)
-		and(place_meeting(x,y+1,obj_ice_block))
+		and (place_meeting(x,y+1,obj_ice_block))
 		{
 			if (asset_get_type("snd_skidding_ice")==asset_sound)
 			{
@@ -9898,23 +10007,23 @@ and(key_left)
 			}
 		}
 		if (asset_get_type("obj_ice_block")==asset_object)
-		and(place_meeting(x,y+1,obj_ice_block))
+		and (place_meeting(x,y+1,obj_ice_block))
 		{
 			if (sprite_skidding_ice>noone){sprite_index = sprite_skidding_ice;image_speed=0.5;}else
 			if (sprite_skidding>noone){sprite_index = sprite_skidding;image_speed=0.5;}else
 			if (sprite_run>noone){sprite_index = sprite_run;}else
-			if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
+			if (sprite_walk>noone)and (hspeed<>0){sprite_index = sprite_walk;}else
 			{sprite_index = sprite_stand;}
 		}
 		else
 		{
 			if (sprite_skidding>noone){sprite_index = sprite_skidding;image_speed=0.5;}else
-			if (abs(hspeed)>20)and(sprite_run4>noone){sprite_index = sprite_run4;}else
-			if (abs(hspeed)>15)and(sprite_run3>noone){sprite_index = sprite_run3;}else
-			if (abs(hspeed)>10)and(sprite_run2>noone){sprite_index = sprite_run2;}else
-			if (abs(hspeed)>5)and(sprite_run>noone){sprite_index = sprite_run;}else
-			if (sprite_walk>noone)and(hspeed<>0){sprite_index = sprite_walk;}else
-			if (sprite_run>noone)and(hspeed<>0){sprite_index = sprite_run;}else
+			if (abs(hspeed)>20)and (sprite_run4>noone){sprite_index = sprite_run4;}else
+			if (abs(hspeed)>15)and (sprite_run3>noone){sprite_index = sprite_run3;}else
+			if (abs(hspeed)>10)and (sprite_run2>noone){sprite_index = sprite_run2;}else
+			if (abs(hspeed)>5)and (sprite_run>noone){sprite_index = sprite_run;}else
+			if (sprite_walk>noone)and (hspeed<>0){sprite_index = sprite_walk;}else
+			if (sprite_run>noone)and (hspeed<>0){sprite_index = sprite_run;}else
 			{sprite_index = sprite_stand;}
 		}
 		effect_create_above(ef_smoke,x,bbox_bottom,0,c_white);
@@ -9931,12 +10040,12 @@ or (hspeed > 0)
 and (!key_right)
 {
 	if (sprite_skidding_stop>noone){sprite_index = sprite_skidding_stop;image_speed=0.5;}else
-	if (abs(hspeed)>20)and(sprite_run4>noone){sprite_index = sprite_run4;image_speed=speed/10+0.1;}else
-	if (abs(hspeed)>15)and(sprite_run3>noone){sprite_index = sprite_run3;image_speed=speed/10+0.1;}else
-	if (abs(hspeed)>10)and(sprite_run2>noone){sprite_index = sprite_run2;image_speed=speed/10+0.1;}else
-	if (abs(hspeed)>5)and(sprite_run>noone){sprite_index = sprite_run;image_speed=speed/10+0.1;}else
-	if (sprite_walk>noone)and(hspeed <> 0){sprite_index = sprite_walk;image_speed=speed/10+0.1;}else
-	if (sprite_run>noone)and(hspeed <> 0){sprite_index = sprite_run;image_speed=speed/10+0.1;}else
+	if (abs(hspeed)>20)and (sprite_run4>noone){sprite_index = sprite_run4;image_speed=speed/10+0.1;}else
+	if (abs(hspeed)>15)and (sprite_run3>noone){sprite_index = sprite_run3;image_speed=speed/10+0.1;}else
+	if (abs(hspeed)>10)and (sprite_run2>noone){sprite_index = sprite_run2;image_speed=speed/10+0.1;}else
+	if (abs(hspeed)>5)and (sprite_run>noone){sprite_index = sprite_run;image_speed=speed/10+0.1;}else
+	if (sprite_walk>noone)and (hspeed <> 0){sprite_index = sprite_walk;image_speed=speed/10+0.1;}else
+	if (sprite_run>noone)and (hspeed <> 0){sprite_index = sprite_run;image_speed=speed/10+0.1;}else
 	{sprite_index = sprite_stand;image_speed=0.5;}
 }
 #endregion /*Skidding Stop END*/
@@ -10043,7 +10152,7 @@ and (!key_right)
 {
 	look_up_start_animation = true;
 	if (asset_get_type("obj_bump_in_ground") == asset_object)
-	and(place_meeting(x, y + 1, obj_bump_in_ground))
+	and (place_meeting(x, y + 1, obj_bump_in_ground))
 	{
 		if (sprite_standing_on_something>noone){sprite_index = sprite_standing_on_something;}else
 		{sprite_index = sprite_stand;}
@@ -10133,9 +10242,9 @@ if (!place_meeting(x,y+1,obj_wall))
 	{
 		if (sprite_burnt>noone){sprite_index = sprite_burnt;}else
 		if (sprite_die>noone){sprite_index = sprite_die;}else
-		if (sprite_jump>noone)and(vspeed<=0){sprite_index = sprite_jump;}else
-		if (sprite_fall_slower>noone)and(vspeed>0)and(key_a_hold){sprite_index = sprite_fall_slower;}else
-		if (sprite_fall>noone)and(vspeed>0){sprite_index = sprite_fall;}else
+		if (sprite_jump>noone)and (vspeed<=0){sprite_index = sprite_jump;}else
+		if (sprite_fall_slower>noone)and (vspeed>0)and (key_a_hold){sprite_index = sprite_fall_slower;}else
+		if (sprite_fall>noone)and (vspeed>0){sprite_index = sprite_fall;}else
 		if (sprite_jump>noone){sprite_index = sprite_jump;}else
 		if (sprite_fall>noone){sprite_index = sprite_fall;}else
 		{sprite_index = sprite_stand;}
@@ -10144,9 +10253,9 @@ if (!place_meeting(x,y+1,obj_wall))
 	if (dive=true)
 	{
 		if (sprite_dive>noone){sprite_index = sprite_dive;}else
-		if (sprite_jump>noone)and(vspeed<=0){sprite_index = sprite_jump;}else
-		if (sprite_fall_slower>noone)and(vspeed>0)and(key_a_hold){sprite_index = sprite_fall_slower;}else
-		if (sprite_fall>noone)and(vspeed>0){sprite_index = sprite_fall;}else
+		if (sprite_jump>noone)and (vspeed<=0){sprite_index = sprite_jump;}else
+		if (sprite_fall_slower>noone)and (vspeed>0)and (key_a_hold){sprite_index = sprite_fall_slower;}else
+		if (sprite_fall>noone)and (vspeed>0){sprite_index = sprite_fall;}else
 		if (sprite_jump>noone){sprite_index = sprite_jump;}else
 		if (sprite_fall>noone){sprite_index = sprite_fall;}else
 		{sprite_index = sprite_stand;}
@@ -10160,13 +10269,13 @@ if (!place_meeting(x,y+1,obj_wall))
 		}
 	}
 else
-/*wall_slide down*/
+/*wall slide down*/
 if (stick_to_wall = true)
-and(vspeed>=0)
+and (vspeed>=0)
 {
 	if (crouch=false)
-	and(ground_pound=false)
-	and(ledge_grab=false)
+	and (ground_pound=false)
+	and (ledge_grab=false)
 	{
 		if (vspeed>0)
 		{
@@ -10226,8 +10335,8 @@ if (vspeed<0)
 	if (stick_to_wall = true)
 	{
 		if (crouch=false)
-		and(ground_pound=false)
-		and(ledge_grab=false)
+		and (ground_pound=false)
+		and (ledge_grab=false)
 		{
 			if(sprite_wall_slide_up>noone){sprite_index = sprite_wall_slide_up;}else
 			if(sprite_wall_slide>noone){sprite_index = sprite_wall_slide;}else
@@ -10237,7 +10346,7 @@ if (vspeed<0)
 	}
 	else
 	if (invincible>30)
-	and(asset_get_type("spr_player_invincible_jump")==asset_sprite)
+	and (asset_get_type("spr_player_invincible_jump")==asset_sprite)
 	{
 		sprite_index=spr_player_invincible_jump;
 		image_speed=1;
@@ -10246,7 +10355,7 @@ if (vspeed<0)
 	else
 	{
 		if (wall_jump >= 0)
-		and(asset_get_type("spr_player_wall_jump")==asset_sprite)
+		and (asset_get_type("spr_player_wall_jump")==asset_sprite)
 		{
 			sprite_index=spr_player_wall_jump;
 			if (image_index>image_number-1)
@@ -10271,11 +10380,11 @@ if (vspeed<0)
 				}
 				else
 				if (asset_get_type("spr_player_jump2")==asset_sprite)
-				and(asset_get_type("spr_player_jump3")==asset_sprite)
+				and (asset_get_type("spr_player_jump3")==asset_sprite)
 				{
 					if (sprite_index!=sprite_jump)
-					and(sprite_index!=spr_player_jump2)
-					and(sprite_index!=spr_player_jump3)
+					and (sprite_index!=spr_player_jump2)
+					and (sprite_index!=spr_player_jump3)
 					{
 						sprite_index=choose(sprite_jump,spr_player_jump2,spr_player_jump3);
 					}
@@ -10290,11 +10399,11 @@ if (vspeed<0)
 			}
 			else
 			if (asset_get_type("spr_player_jump2")==asset_sprite)
-			and(asset_get_type("spr_player_jump3")==asset_sprite)
+			and (asset_get_type("spr_player_jump3")==asset_sprite)
 			{
 				if (sprite_index!=sprite_jump)
-				and(sprite_index!=spr_player_jump2)
-				and(sprite_index!=spr_player_jump3)
+				and (sprite_index!=spr_player_jump2)
+				and (sprite_index!=spr_player_jump3)
 				{
 					sprite_index=choose(sprite_jump,spr_player_jump2,spr_player_jump3);
 				}
@@ -10343,11 +10452,11 @@ if (vspeed<0)
 }
 else
 if (vspeed>0)
-and(stick_to_wall=false)
-and(spring=false)
+and (stick_to_wall=false)
+and (spring=false)
 {
 	if (invincible>30)
-	and(asset_get_type("spr_player_invincible_jump")==asset_sprite)
+	and (asset_get_type("spr_player_invincible_jump")==asset_sprite)
 	{
 		sprite_index=spr_player_invincible_jump;
 		image_speed=1;
@@ -10492,9 +10601,9 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	and (crouch=false)
 	{
 		if (hspeed<0)
-		and(!key_right)
-		or(hspeed>0)
-		and(!key_left)
+		and (!key_right)
+		or (hspeed>0)
+		and (!key_left)
 		{
 			if (image_index<1)
 			{
@@ -10503,8 +10612,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Dirt Footstep Left*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
 				{
 					if (asset_get_type("snd_footstep_dirt_left")==asset_sound)
 					{
@@ -10521,8 +10630,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Glass Footstep Left*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
 				{
 					if (asset_get_type("snd_footstep_glass_left")==asset_sound)
 					{
@@ -10539,8 +10648,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Grass Footstep Left*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
 				{
 					if (asset_get_type("snd_footstep_grass_left")==asset_sound)
 					{
@@ -10557,8 +10666,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Gravel Footstep Left*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
 				{
 					if (asset_get_type("snd_footstep_gravel_left")==asset_sound)
 					{
@@ -10576,7 +10685,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				#region /*Metal Footstep Left*/
 				if (asset_get_type("obj_ground")==asset_object)
 				and (place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
 				{
 					if (asset_get_type("snd_footstep_metal_left")==asset_sound)
 					{
@@ -10593,8 +10702,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Stone Footstep Left*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
 				{
 					if (asset_get_type("snd_footstep_stone_left")==asset_sound)
 					{
@@ -10611,8 +10720,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Wood Footstep Left*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
 				{
 					if (asset_get_type("snd_footstep_wood_left")==asset_sound)
 					{
@@ -10645,15 +10754,15 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			}
 			else
 			if (image_index>image_number/2-1)
-			and(image_index<image_number/2+1)
+			and (image_index<image_number/2+1)
 			{
 				
 				#region /*Right Footstep Sounds*/
 				
 				#region /*Dirt Footstep Right*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
 				{
 					if (asset_get_type("snd_footstep_dirt_right")==asset_sound)
 					{
@@ -10670,8 +10779,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Glass Footstep Right*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
 				{
 					if (asset_get_type("snd_footstep_glass_right")==asset_sound)
 					{
@@ -10688,8 +10797,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Grass Footstep Right*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
 				{
 					if (asset_get_type("snd_footstep_grass_right")==asset_sound)
 					{
@@ -10706,8 +10815,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Gravel Footstep Right*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
 				{
 					if (asset_get_type("snd_footstep_gravel_right")==asset_sound)
 					{
@@ -10725,7 +10834,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				#region /*Metal Footstep Right*/
 				if (asset_get_type("obj_ground")==asset_object)
 				and (place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
 				{
 					if (asset_get_type("snd_footstep_metal_right")==asset_sound)
 					{
@@ -10742,8 +10851,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Stone Footstep Right*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
 				{
 					if (asset_get_type("snd_footstep_stone_right")==asset_sound)
 					{
@@ -10760,8 +10869,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 				#region /*Wood Footstep Right*/
 				if (asset_get_type("obj_ground")==asset_object)
-				and(place_meeting(x,y+1,obj_ground))
-				and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
+				and (place_meeting(x,y+1,obj_ground))
+				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
 				{
 					if (asset_get_type("snd_footstep_wood_right")==asset_sound)
 					{
@@ -10810,8 +10919,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			if (abs(hspeed)<7)
 			{
 				if (key_sprint)
-				and(stick_to_wall=false)
-				and(wall_jump = 0)
+				and (stick_to_wall=false)
+				and (wall_jump = 0)
 				{
 					audio_stop_sound(voice);
 					voice=audio_play_sound(voice_startdash,0,0);
@@ -10834,8 +10943,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			if (abs(hspeed)<7.5)
 			{
 				if (key_sprint)
-				and(stick_to_wall=false)
-				and(wall_jump = 0)
+				and (stick_to_wall=false)
+				and (wall_jump = 0)
 				{
 					if (asset_get_type("snd_speeddash")==asset_sound)
 					{
@@ -10865,9 +10974,9 @@ else
 
 #region /*Speedlines Effect*/
 if (vspeed<0)
-or(vspeed>0)
-and(invincible<1)
-or(invincible>0)
+or (vspeed>0)
+and (invincible<1)
+or (invincible>0)
 {
 	if (asset_get_type("obj_speedline")==asset_object)
 	{

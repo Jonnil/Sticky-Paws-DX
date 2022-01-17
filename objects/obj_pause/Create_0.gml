@@ -39,7 +39,7 @@ can_remap_key = false;
 #endregion /*Remapping options variables END*/
 
 open_dropdown = false;
-menu_joystick_delay=0;
+menu_joystick_delay = 0;
 can_navigate=true;
 remap_y_pos=0;
 menu_cursor_index=0;

@@ -118,7 +118,7 @@ if (file_exists(working_directory+"custom_levels/*.zip"))
 
 view_hview_lerp = 0;
 view_wview_lerp = 0;
-window_set_cursor(cr_none);
+window_set_cursor (cr_none);
 global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 ds_list_add(global.all_loaded_custom_levels, "");
 global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
@@ -184,6 +184,7 @@ global.custom_background3=noone;
 global.custom_background4=noone;
 global.custom_foreground1=noone;
 global.custom_foreground2=noone;
+global.custom_foreground_secret=noone;
 global.custom_tileset=noone;
 global.sprite_select_player_1 = noone;
 global.sprite_select_player_2 = noone;
@@ -192,7 +193,7 @@ global.sprite_select_player_4 = noone;
 global.selected_resourcepack = 0; /*0 = default*/
 global.selected_title_background = 0; /*0 = default*/
 //global.spot_x=0;
-//global.spot_y=0;
+//global.spot_y = 0;
 
 switch(os_get_language())
 {
@@ -211,6 +212,7 @@ global.enable_background_layer3=true;
 global.enable_background_layer4=true;
 global.enable_foreground_layer1=true;
 global.enable_foreground_layer2=true;
+global.enable_foreground_layer_secret=true;
 global.players_can_collide=false;
 global.player_has_entered_goal=false;
 global.pause_room=noone;
@@ -259,7 +261,7 @@ global.win=false;
 global.enemy_counter=0;
 global.file=1;
 global.controls_layout=1;
-global.background_brightness_gameplay=0; /*Background brightness in gameplay. full_black=-1, normal=0 (default), full_white=+1*/
+global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black=-1, normal=0 (default), full_white=+1*/
 global.background_brightness_menu=0; /*Background brightness in menus. full_black=-1, normal=0 (default), full_white=+1*/
 
 #region /*Music and Sound Volume*/

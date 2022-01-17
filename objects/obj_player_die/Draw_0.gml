@@ -2,8 +2,8 @@ count += 1;
 
 #region /*Check if the last player just died*/
 if (count=1)
-and(asset_get_type("obj_player")==asset_object)
-and(!instance_exists(obj_player))
+and (asset_get_type("obj_player")==asset_object)
+and (!instance_exists(obj_player))
 {
 	last_player=true;
 }
@@ -13,11 +13,11 @@ and(!instance_exists(obj_player))
 if (count=50)
 {
 	gravity_direction=270;
-	gravity=0.5;
+	gravity = 0.5;
 	vspeed=-10;
 	image_speed=0.3;
 	if (asset_get_type("obj_lava")==asset_object)
-	and(place_meeting(x,y,obj_lava))
+	and (place_meeting(x,y,obj_lava))
 	{
 		if (asset_get_type("spr_player_burnt")==asset_sprite)
 		{
@@ -38,7 +38,7 @@ if (count=50)
 
 #region /*If the player is burned, have black smoke coming out*/
 if (asset_get_type("spr_player_burnt")==asset_sprite)
-and(sprite_index=spr_player_burnt)
+and (sprite_index=spr_player_burnt)
 {
 	effect_create_above(ef_smoke,x,bbox_bottom,0,c_black);
 }
@@ -46,8 +46,8 @@ and(sprite_index=spr_player_burnt)
 
 #region /*Play death melody*/
 if (!instance_exists(obj_player))
-and(count=50)
-and(last_player=true)
+and (count=50)
+and (last_player=true)
 {
 	if (asset_get_type("snd_die_melody")==asset_sound)
 	{
@@ -65,16 +65,16 @@ if (vspeed>+32)
 #endregion /*Limit the vertical speed END*/
 
 if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
-and(!instance_exists(obj_player))
-and(iris_xscale<=0.001)
+and (!instance_exists(obj_player))
+and (iris_xscale<=0.001)
 {
 	global.time_countdown = noone; /*Reset countdown back to default value*/
 	global.time_countdown_bonus = 500; /*Reset countdown bonus back to default value*/
 	sprite_index=noone;
-	gravity=0;
+	gravity = 0;
 	speed=0;
 	if (asset_get_type("snd_die_melody")==asset_sound)
-	and(!audio_is_playing(snd_die_melody))
+	and (!audio_is_playing(snd_die_melody))
 	{
 		if (lives >= 1)
 		{
@@ -87,7 +87,7 @@ and(iris_xscale<=0.001)
 			
 			#region /*Go to level editor if you die in level editor*/
 			if (asset_get_type("room_leveleditor")==asset_room)
-			and(room=room_leveleditor)
+			and (room=room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();
@@ -109,7 +109,7 @@ and(iris_xscale<=0.001)
 		
 			#region /*Go to level editor if you die in level editor*/
 			if (asset_get_type("room_leveleditor")==asset_room)
-			and(room=room_leveleditor)
+			and (room=room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();
@@ -181,8 +181,8 @@ if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_c
 }
 
 if (!instance_exists(obj_player))
-and(count>49)
-and(last_player=true)
+and (count>49)
+and (last_player=true)
 {
 	if (iris_zoom=0)
 	{
@@ -199,10 +199,10 @@ and(last_player=true)
 		iris_zoom=1;
 	}
 	if (asset_get_type("obj_player_die")==asset_object)
-	and(instance_exists(obj_player_die))
+	and (instance_exists(obj_player_die))
 	{
 		if (iris_xscale < 16)
-		and(global.enable_transitions = true)
+		and (global.enable_transitions = true)
 		{
 			if (asset_get_type("spr_iris_dead") == asset_sprite)
 			{
@@ -213,10 +213,10 @@ and(last_player=true)
 			{
 				draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 			}
-			draw_rectangle_color(0, 0, room_width*3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(0, 0, xx - iris_xscale * 128, room_height*3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(xx + iris_xscale * 128, 0, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(0, yy + iris_yscale * 128, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color (0, 0, room_width*3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color (0, 0, xx - iris_xscale * 128, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color (xx + iris_xscale * 128, 0, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color (0, yy + iris_yscale * 128, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
 		}
 	}
 }
@@ -261,43 +261,43 @@ if (bubble=true)
 	if (player<=1)
 	{
 	gamepad_set_axis_deadzone(0,0.25);
-	key_up=(keyboard_check(vk_up))and(!keyboard_check(vk_down))or(keyboard_check(vk_numpad8))and(!keyboard_check(vk_numpad2))or(keyboard_check(ord("W")))and(!keyboard_check(ord("S")))or(gamepad_button_check(0,gp_padu))and(!gamepad_button_check(0,gp_padd))or(gamepad_axis_value(0,gp_axislv)<0);
-	key_left=(keyboard_check(vk_left))and(!keyboard_check(vk_right))or(keyboard_check(vk_numpad4))and(!keyboard_check(vk_numpad6))or(keyboard_check(ord("A")))and(!keyboard_check(ord("D")))or(gamepad_button_check(0,gp_padl))and(!gamepad_button_check(0,gp_padr))or(gamepad_axis_value(0,gp_axislh)<0);
-	key_right=(keyboard_check(vk_right))and(!keyboard_check(vk_left))or(keyboard_check(vk_numpad6))and(!keyboard_check(vk_numpad4))or(keyboard_check(ord("D")))and(!keyboard_check(ord("A")))or(gamepad_button_check(0,gp_padr))and(!gamepad_button_check(0,gp_padl))or(gamepad_axis_value(0,gp_axislh)>0);
-	key_down=(keyboard_check(vk_down))and(!keyboard_check(vk_up))or(keyboard_check(vk_numpad2))and(!keyboard_check(vk_numpad8))or(keyboard_check(ord("S")))and(!keyboard_check(ord("W")))or(gamepad_button_check(0,gp_padd))and(!gamepad_button_check(0,gp_padu))or(gamepad_axis_value(0,gp_axislv)>0);
-	key_a=(global.controls_layout=1)and(gamepad_button_check_pressed(0,gp_face1))or(gamepad_button_check_pressed(0,gp_face2))or(global.controls_layout=2)and(gamepad_button_check_pressed(0,gp_face3))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
+	key_up=(keyboard_check(vk_up))and (!keyboard_check(vk_down))or (keyboard_check(vk_numpad8))and (!keyboard_check(vk_numpad2))or (keyboard_check(ord("W")))and (!keyboard_check(ord("S")))or (gamepad_button_check(0,gp_padu))and (!gamepad_button_check(0,gp_padd))or (gamepad_axis_value(0,gp_axislv)<0);
+	key_left=(keyboard_check(vk_left))and (!keyboard_check(vk_right))or (keyboard_check(vk_numpad4))and (!keyboard_check(vk_numpad6))or (keyboard_check(ord("A")))and (!keyboard_check(ord("D")))or (gamepad_button_check(0,gp_padl))and (!gamepad_button_check(0,gp_padr))or (gamepad_axis_value(0,gp_axislh)<0);
+	key_right=(keyboard_check(vk_right))and (!keyboard_check(vk_left))or (keyboard_check(vk_numpad6))and (!keyboard_check(vk_numpad4))or (keyboard_check(ord("D")))and (!keyboard_check(ord("A")))or (gamepad_button_check(0,gp_padr))and (!gamepad_button_check(0,gp_padl))or (gamepad_axis_value(0,gp_axislh)>0);
+	key_down=(keyboard_check(vk_down))and (!keyboard_check(vk_up))or (keyboard_check(vk_numpad2))and (!keyboard_check(vk_numpad8))or (keyboard_check(ord("S")))and (!keyboard_check(ord("W")))or (gamepad_button_check(0,gp_padd))and (!gamepad_button_check(0,gp_padu))or (gamepad_axis_value(0,gp_axislv)>0);
+	key_a=(global.controls_layout=1)and (gamepad_button_check_pressed(0,gp_face1))or (gamepad_button_check_pressed(0,gp_face2))or (global.controls_layout=2)and (gamepad_button_check_pressed(0,gp_face3))or (keyboard_check_pressed(ord("Z")))or (keyboard_check_pressed(vk_enter))or (keyboard_check_pressed(vk_space));
 	}
 	if (player=2)
 	{
 	gamepad_set_axis_deadzone(1,0.25);
-	key_up=(gamepad_button_check(1,gp_padu))and(!gamepad_button_check(1,gp_padd))or(gamepad_axis_value(1,gp_axislv)<0);
-	key_left=(gamepad_button_check(1,gp_padl))and(!gamepad_button_check(1,gp_padr))or(gamepad_axis_value(1,gp_axislh)<0);
-	key_right=(gamepad_button_check(1,gp_padr))and(!gamepad_button_check(1,gp_padl))or(gamepad_axis_value(1,gp_axislh)>0);
-	key_down=(gamepad_button_check(1,gp_padd))and(!gamepad_button_check(1,gp_padu))or(gamepad_axis_value(1,gp_axislv)>0);
-	key_a=(global.controls_layout=1)and(gamepad_button_check_pressed(1,gp_face1))or(gamepad_button_check_pressed(1,gp_face2))or(global.controls_layout=2)and(gamepad_button_check_pressed(1,gp_face3));
+	key_up=(gamepad_button_check(1,gp_padu))and (!gamepad_button_check(1,gp_padd))or (gamepad_axis_value(1,gp_axislv)<0);
+	key_left=(gamepad_button_check(1,gp_padl))and (!gamepad_button_check(1,gp_padr))or (gamepad_axis_value(1,gp_axislh)<0);
+	key_right=(gamepad_button_check(1,gp_padr))and (!gamepad_button_check(1,gp_padl))or (gamepad_axis_value(1,gp_axislh)>0);
+	key_down=(gamepad_button_check(1,gp_padd))and (!gamepad_button_check(1,gp_padu))or (gamepad_axis_value(1,gp_axislv)>0);
+	key_a=(global.controls_layout=1)and (gamepad_button_check_pressed(1,gp_face1))or (gamepad_button_check_pressed(1,gp_face2))or (global.controls_layout=2)and (gamepad_button_check_pressed(1,gp_face3));
 	}
 	if (player=3)
 	{
 	gamepad_set_axis_deadzone(2,0.25);
-	key_up=(gamepad_button_check(2,gp_padu))and(!gamepad_button_check(2,gp_padd))or(gamepad_axis_value(2,gp_axislv)<0);
-	key_left=(gamepad_button_check(2,gp_padl))and(!gamepad_button_check(2,gp_padr))or(gamepad_axis_value(2,gp_axislh)<0);
-	key_right=(gamepad_button_check(2,gp_padr))and(!gamepad_button_check(2,gp_padl))or(gamepad_axis_value(2,gp_axislh)>0);
-	key_down=(gamepad_button_check(2,gp_padd))and(!gamepad_button_check(2,gp_padu))or(gamepad_axis_value(2,gp_axislv)>0);
-	key_a=(global.controls_layout=1)and(gamepad_button_check_pressed(2,gp_face1))or (gamepad_button_check_pressed(2,gp_face2))or(global.controls_layout=2)and(gamepad_button_check_pressed(2,gp_face3));
+	key_up=(gamepad_button_check(2,gp_padu))and (!gamepad_button_check(2,gp_padd))or (gamepad_axis_value(2,gp_axislv)<0);
+	key_left=(gamepad_button_check(2,gp_padl))and (!gamepad_button_check(2,gp_padr))or (gamepad_axis_value(2,gp_axislh)<0);
+	key_right=(gamepad_button_check(2,gp_padr))and (!gamepad_button_check(2,gp_padl))or (gamepad_axis_value(2,gp_axislh)>0);
+	key_down=(gamepad_button_check(2,gp_padd))and (!gamepad_button_check(2,gp_padu))or (gamepad_axis_value(2,gp_axislv)>0);
+	key_a=(global.controls_layout=1)and (gamepad_button_check_pressed(2,gp_face1))or (gamepad_button_check_pressed(2,gp_face2))or (global.controls_layout=2)and (gamepad_button_check_pressed(2,gp_face3));
 	}
 	if (player=4)
 	{
 	gamepad_set_axis_deadzone(3,0.25);
-	key_up=(gamepad_button_check(3,gp_padu))and(!gamepad_button_check(3,gp_padd))or(gamepad_axis_value(3,gp_axislv)<0);
-	key_left=(gamepad_button_check(3,gp_padl))and(!gamepad_button_check(3,gp_padr))or(gamepad_axis_value(3,gp_axislh)<0);
-	key_right=(gamepad_button_check(3,gp_padr))and(!gamepad_button_check(3,gp_padl))or(gamepad_axis_value(3,gp_axislh)>0);
-	key_down=(gamepad_button_check(3,gp_padd))and(!gamepad_button_check(3,gp_padu))or(gamepad_axis_value(3,gp_axislv)>0);
-	key_a=(global.controls_layout=1)and(gamepad_button_check_pressed(3,gp_face1))or(gamepad_button_check_pressed(3,gp_face2))or(global.controls_layout=2)and(gamepad_button_check_pressed(3,gp_face3));
+	key_up=(gamepad_button_check(3,gp_padu))and (!gamepad_button_check(3,gp_padd))or (gamepad_axis_value(3,gp_axislv)<0);
+	key_left=(gamepad_button_check(3,gp_padl))and (!gamepad_button_check(3,gp_padr))or (gamepad_axis_value(3,gp_axislh)<0);
+	key_right=(gamepad_button_check(3,gp_padr))and (!gamepad_button_check(3,gp_padl))or (gamepad_axis_value(3,gp_axislh)>0);
+	key_down=(gamepad_button_check(3,gp_padd))and (!gamepad_button_check(3,gp_padu))or (gamepad_axis_value(3,gp_axislv)>0);
+	key_a=(global.controls_layout=1)and (gamepad_button_check_pressed(3,gp_face1))or (gamepad_button_check_pressed(3,gp_face2))or (global.controls_layout=2)and (gamepad_button_check_pressed(3,gp_face3));
 	}
 	#endregion /*Customisable keyboard array END*/
 
 	image_speed=0.5;
-	gravity=0;
+	gravity = 0;
 	if (key_up)
 	{
 		vspeed-=0.4;
@@ -321,7 +321,7 @@ if (bubble=true)
 		move_towards_point(instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,128);
 	}
 	if (!position_meeting(x,y,obj_wall))
-	and(place_meeting(x,y,obj_player))
+	and (place_meeting(x,y,obj_player))
 	{
 		vspeed=-11.5;
 		bubble=false;
@@ -346,11 +346,11 @@ if (bubble=true)
 
 	#region /*Bubble*/
 	draw_self();
-	draw_circle_color(x,y,52,c_black,c_black,true);
-	draw_circle_color(x,y,53,c_white,c_white,true);
-	draw_circle_color(x,y,54,c_white,c_white,true);
-	draw_circle_color(x,y,55,c_white,c_white,true);
-	draw_circle_color(x,y,56,c_black,c_black,true);
+	draw_circle_color (x,y,52,c_black,c_black,true);
+	draw_circle_color (x,y,53,c_white,c_white,true);
+	draw_circle_color (x,y,54,c_white,c_white,true);
+	draw_circle_color (x,y,55,c_white,c_white,true);
+	draw_circle_color (x,y,56,c_black,c_black,true);
 	#endregion /*Bubble END*/
 
 	#region /*If there are no more players in the room*/

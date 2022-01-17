@@ -35,7 +35,7 @@ function draw_circular_bar(x ,y ,value, max, colour, radius, transparency, width
 	        draw_primitive_begin(pr_trianglefan);
 	        draw_vertex(argument5, argument5);
         
-	        for(i=0; i<=val; i++)
+	        for (i=0; i<=val; i++)
 			{
 	            len = (i*sizeofsection)+90; // the 90 here is the starting angle
 	            tx = lengthdir_x(argument5, len);

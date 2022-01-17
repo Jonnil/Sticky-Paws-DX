@@ -55,6 +55,10 @@ if (asset_get_type("obj_foreground2") == asset_object)
 {
 	instance_activate_object(obj_foreground2);
 }
+if (asset_get_type("obj_foreground_secret") == asset_object)
+{
+	instance_activate_object(obj_foreground_secret);
+}
 if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
 {
 	instance_activate_object(obj_background_brightness_gameplay);

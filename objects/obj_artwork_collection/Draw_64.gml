@@ -251,11 +251,11 @@ and (os_type != os_android)
 	if (gamepad_is_connected(0))
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
-		draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()-180, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
+		draw_sprite_ext(spr_xbox_buttons, 0, window_get_width() - 180, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
 	}
 	else
 	{
-		draw_sprite_ext(spr_keyboard_keys, ord("Z"), window_get_width()-180, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
+		draw_sprite_ext(spr_keyboard_keys, ord("Z"), window_get_width() - 180, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
 	}
 	#endregion /*Draw Show Comments Key END*/
 	

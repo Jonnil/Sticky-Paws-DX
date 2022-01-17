@@ -8,6 +8,7 @@ function scr_update_all_backgrounds()
 	sprite_delete(global.custom_background4);
 	sprite_delete(global.custom_foreground1);
 	sprite_delete(global.custom_foreground2);
+	sprite_delete(global.custom_foreground_secret);
 	
 	#region /*Load Main Game Levels*/
 	if (global.character_select_in_this_menu = "main_game")
@@ -140,9 +141,9 @@ function scr_update_all_backgrounds()
 	}
 			
 	#endregion /*Update Foreround1 END*/
-			
+	
 	#region /*Update Foreground2*/
-			
+	
 	#region /*BMP small letter File*/
 	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground2.bmp")
 	{
@@ -150,7 +151,7 @@ function scr_update_all_backgrounds()
 	}
 	else
 	#endregion /*BMP small letter File END*/
-			
+	
 	#region /*BMP big letter File*/
 	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground2.bmp")
 	{
@@ -158,7 +159,7 @@ function scr_update_all_backgrounds()
 	}
 	else
 	#endregion /*BMP big letter File END*/
-			
+	
 	#region /*PNG small letter File*/
 	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground2.png")
 	{
@@ -166,7 +167,7 @@ function scr_update_all_backgrounds()
 	}
 	else
 	#endregion /*PNG small letter File END*/
-			
+	
 	#region /*PNG big letter File*/
 	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground2.png")
 	{
@@ -174,7 +175,7 @@ function scr_update_all_backgrounds()
 	}
 	else
 	#endregion /*PNG big letter File END*/
-			
+	
 	#region /*GIF small letter File*/
 	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground2.gif")
 	{
@@ -182,7 +183,7 @@ function scr_update_all_backgrounds()
 	}
 	else
 	#endregion /*GIF small letter File END*/
-			
+	
 	#region /*GIF big letter File*/
 	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground2.gif")
 	{
@@ -190,7 +191,7 @@ function scr_update_all_backgrounds()
 	}
 	else
 	#endregion /*GIF big letter File END*/
-			
+	
 	#region /*JPG small letter File*/
 	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground2.jpg")
 	{
@@ -198,7 +199,7 @@ function scr_update_all_backgrounds()
 	}
 	else
 	#endregion /*JPG small letter File END*/
-			
+	
 	#region /*JPG big letter File*/
 	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground2.jpg")
 	{
@@ -206,13 +207,85 @@ function scr_update_all_backgrounds()
 	}
 	else
 	#endregion /*JPG big letter File END*/
-			
+	
 	{
 		global.custom_foreground2 = noone;
 	}
-			
+	
 	#endregion /*Update Foreround2 END*/
-			
+	
+	#region /*Update Foreground secret*/
+	
+	#region /*BMP small letter File*/
+	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground_secret.bmp")
+	{
+		global.custom_foreground_secret = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground_secret.bmp", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*BMP small letter File END*/
+	
+	#region /*BMP big letter File*/
+	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.bmp")
+	{
+		global.custom_foreground_secret = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.bmp", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*BMP big letter File END*/
+	
+	#region /*PNG small letter File*/
+	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground_secret.png")
+	{
+		global.custom_foreground_secret = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground_secret.png", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*PNG small letter File END*/
+	
+	#region /*PNG big letter File*/
+	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.png")
+	{
+		global.custom_foreground_secret = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.png", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*PNG big letter File END*/
+	
+	#region /*GIF small letter File*/
+	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground_secret.gif")
+	{
+		global.custom_foreground_secret = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground_secret.gif", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*GIF small letter File END*/
+	
+	#region /*GIF big letter File*/
+	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.gif")
+	{
+		global.custom_foreground_secret = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.gif", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*GIF big letter File END*/
+	
+	#region /*JPG small letter File*/
+	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground_secret.jpg")
+	{
+		global.custom_foreground_secret = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/foreground_secret.jpg", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*JPG small letter File END*/
+	
+	#region /*JPG big letter File*/
+	if file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.jpg")
+	{
+		global.custom_foreground_secret = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.jpg", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*JPG big letter File END*/
+	
+	{
+		global.custom_foreground_secret = noone;
+	}
+	
+	#endregion /*Update Foreround secret END*/
+	
 	}
 	
 	#endregion /*Load Main Game Levels END*/
@@ -424,6 +497,78 @@ function scr_update_all_backgrounds()
 	
 	#endregion /*Update Foreround2 END*/
 	
+	#region /*Update Foreground secret*/
+	
+	#region /*BMP small letter File*/
+	if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/foreground_secret.bmp")
+	{
+		global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/foreground_secret.bmp", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*BMP small letter File END*/
+	
+	#region /*BMP big letter File*/
+	if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.bmp")
+	{
+		global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.bmp", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*BMP big letter File END*/
+	
+	#region /*PNG small letter File*/
+	if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/foreground_secret.png")
+	{
+		global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/foreground_secret.png", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*PNG small letter File END*/
+	
+	#region /*PNG big letter File*/
+	if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.png")
+	{
+		global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.png", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*PNG big letter File END*/
+	
+	#region /*GIF small letter File*/
+	if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/foreground_secret.gif")
+	{
+		global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/foreground_secret.gif", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*GIF small letter File END*/
+	
+	#region /*GIF big letter File*/
+	if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.gif")
+	{
+		global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.gif", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*GIF big letter File END*/
+	
+	#region /*JPG small letter File*/
+	if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/foreground_secret.jpg")
+	{
+		global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/foreground_secret.jpg", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*JPG small letter File END*/
+	
+	#region /*JPG big letter File*/
+	if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.jpg")
+	{
+		global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds/Foreground_secret.jpg", image_speed, false, false, 0, 0);
+	}
+	else
+	#endregion /*JPG big letter File END*/
+	
+	{
+		global.custom_foreground_secret = noone;
+	}
+	
+	#endregion /*Update Foreround secret END*/
+	
 	}
 	#endregion /*Load Custom Levels END*/
 	
@@ -433,20 +578,20 @@ function scr_update_all_backgrounds()
 	sprite_delete(global.custom_tileset);
 		
 	if (global.character_select_in_this_menu = "main_game")
-	and(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/tilesets/ground_tileset.png"))
+	and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/tilesets/ground_tileset.png"))
 	{
 		global.custom_tileset = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/tilesets/ground_tileset.png",0,false,false,0,0);
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
 	and (global.create_level_from_template >= true)
-	and(file_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
+	and (file_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
 	{
 		global.custom_tileset = sprite_add(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png",0,false,false,0,0);
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
-	and(file_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/tilesets/ground_tileset.png"))
+	and (file_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/tilesets/ground_tileset.png"))
 	{
 		global.custom_tileset = sprite_add(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/tilesets/ground_tileset.png",0,false,false,0,0);
 	}

@@ -22,7 +22,7 @@ function draw_text_outlined()
 	
 	#region /*Arabic text offset, only used if you have arabic text*/
 	if (asset_get_type("font_other_languages")==asset_font)
-	and(global.language_localization=localization.ar_sa)
+	and (global.language_localization=localization.ar_sa)
 	{
 		y_offset=5;
 	}
@@ -50,10 +50,10 @@ function draw_text_outlined()
 	]; 
 
 	var i;
-	for(i = 0; i < array_height_2d(vector) - 1; i+=1)
+	for (i = 0; i < array_height_2d(vector) - 1; i+=1)
 	{
-		draw_text_transformed_color(x_position+vector[i][0],y_position+vector[i][1]+y_offset,string_text,text_size,text_size,0,outline_color,outline_color,outline_color,outline_color,img_alpha);
+		draw_text_transformed_color (x_position+vector[i][0],y_position+vector[i][1]+y_offset,string_text,text_size,text_size,0,outline_color,outline_color,outline_color,outline_color,img_alpha);
 	}
 
-/*Text*/ draw_text_transformed_color(x_position,y_position+y_offset,string_text,text_size,text_size,0,text_color,text_color,text_color,text_color,img_alpha);
+/*Text*/ draw_text_transformed_color (x_position,y_position+y_offset,string_text,text_size,text_size,0,text_color,text_color,text_color,text_color,img_alpha);
 }

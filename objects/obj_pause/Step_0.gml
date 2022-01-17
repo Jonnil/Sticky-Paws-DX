@@ -3,7 +3,7 @@ camera_set_view_border(view_camera[view_current], 1920, 1080); /*View Border*/
 camera_set_view_size(view_camera[view_current], 1920, 1080);
 
 if (asset_get_type("obj_leveleditor")==asset_object)
-and(!instance_exists(obj_leveleditor))
+and (!instance_exists(obj_leveleditor))
 {
 	camera_set_view_target(view_camera[view_current], self);
 }
@@ -12,8 +12,8 @@ display_set_gui_size(window_get_width(), window_get_height());
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
 if (asset_get_type("obj_camera")==asset_object)
-and(!instance_exists(obj_camera))
-and(keyboard_check_pressed(global.fullscreen_key))
+and (!instance_exists(obj_camera))
+and (keyboard_check_pressed(global.fullscreen_key))
 {
 	if (window_get_fullscreen())
 	{

@@ -1,7 +1,7 @@
 #region /*Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden*/
 if (iris_xscale <= 0.001)
 {
-	draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color (0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 }
 #endregion /*Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden END*/
 
@@ -155,7 +155,7 @@ if (lives <= 0)
 				
 			#region /*Go to level editor if you die in level editor*/
 			if (asset_get_type("room_leveleditor")==asset_room)
-			and(room=room_leveleditor)
+			and (room=room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();

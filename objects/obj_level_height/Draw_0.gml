@@ -1,18 +1,18 @@
 x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2;
 
-key_a = (gamepad_button_check(0, gp_face1)) or(keyboard_check(global.player1_key_jump));
+key_a = (gamepad_button_check(0, gp_face1)) or (keyboard_check(global.player1_key_jump));
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))
-or(keyboard_check_pressed(global.player1_key_jump));
+or (keyboard_check_pressed(global.player1_key_jump));
 key_a_released = (gamepad_button_check_released(0, gp_face1))
-or(keyboard_check_released(global.player1_key_jump));
+or (keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
-or(keyboard_check(global.player1_key_sprint));
+or (keyboard_check(global.player1_key_sprint));
 
 if (global.actually_play_edited_level = false)
 and (global.play_edited_level = false)
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(0, y-16, obj_level_width.x-16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color (0, y-16, obj_level_width.x-16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 	if (asset_get_type("spr_level_height") == asset_sprite)
 	{
@@ -22,14 +22,14 @@ and (global.play_edited_level = false)
 
 #region /*Drag Object*/
 if (asset_get_type("obj_leveleditor") == asset_object)
-and(instance_exists(obj_leveleditor))
-and(obj_leveleditor.pause = false)
+and (instance_exists(obj_leveleditor))
+and (obj_leveleditor.pause = false)
 {
 	if (!keyboard_check(vk_space))
-	and(!mouse_check_button(mb_middle))
+	and (!mouse_check_button(mb_middle))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or(key_a_pressed)
+		or (key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -50,7 +50,7 @@ and(obj_leveleditor.pause = false)
 	
 	#region /*Release the object*/
 	if (mouse_check_button_released(mb_left))
-	or(key_a_released)
+	or (key_a_released)
 	{
 		if (drag_object = true)
 		{
@@ -102,7 +102,7 @@ if (y > room_height)
 #endregion /*Make sure the level end isn't outside of the level, this code has to be after the drag object code END*/
 
 if (global.play_edited_level = true)
-or(global.actually_play_edited_level = true)
+or (global.actually_play_edited_level = true)
 {
 	if (global.actually_play_edited_level = true)
 	{

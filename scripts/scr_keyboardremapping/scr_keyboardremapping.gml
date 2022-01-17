@@ -2,7 +2,7 @@
 function scr_keyboardremapping()
 {
 	if (!keyboard_check_pressed(vk_escape))
-	and(keyboard_check_pressed(vk_anykey))
+	and (keyboard_check_pressed(vk_anykey))
 	{
 		lastkey = keyboard_lastkey;
 		can_remap_key = true;
@@ -16,7 +16,7 @@ function scr_keyboardremapping()
 	
 	#region /*Remapping 1*/
 	if (remapping_player = 0)
-	and(can_remap_key = true)
+	and (can_remap_key = true)
 	{
 		if (menu_remap_key_number = 0)
 		{
@@ -146,7 +146,7 @@ function scr_keyboardremapping()
 	
 	#region /*Remapping 2*/
 	if (remapping_player = 1)
-	and(can_remap_key = true)
+	and (can_remap_key = true)
 	{
 		if (menu_remap_key_number = 0)
 		{
@@ -276,7 +276,7 @@ function scr_keyboardremapping()
 	
 	#region /*Remapping 3*/
 	if (remapping_player = 2)
-	and(can_remap_key = true)
+	and (can_remap_key = true)
 	{
 		if (menu_remap_key_number = 0)
 		{
@@ -406,7 +406,7 @@ function scr_keyboardremapping()
 	
 	#region /*Remapping 4*/
 	if (remapping_player = 3)
-	and(can_remap_key = true)
+	and (can_remap_key = true)
 	{
 		if (menu_remap_key_number = 0)
 		{

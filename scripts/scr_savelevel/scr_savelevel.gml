@@ -7,7 +7,7 @@ function scr_savelevel()
 		ini_open("file" + string(global.file) + ".ini");
 		
 		if (global.level_clear_rate = "clear")
-		and(ini_read_string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"clear_rate","closed")!="clear")
+		and (ini_read_string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"clear_rate","closed")!="clear")
 		{
 			ini_write_string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"clear_rate","clear");
 			if (global.increase_number_of_levels_cleared = true)
@@ -51,7 +51,7 @@ function scr_savelevel()
 		
 		#region /*Save Fastest Time*/
 		if (!ini_key_exists(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"timeattack_realmillisecond"))
-		or(global.timeattack_realmillisecond<ini_read_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"timeattack_realmillisecond",global.timeattack_realmillisecond))
+		or (global.timeattack_realmillisecond<ini_read_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"timeattack_realmillisecond",global.timeattack_realmillisecond))
 		{
 			ini_write_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"timeattack_millisecond",global.timeattack_millisecond);
 			ini_write_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"timeattack_second",global.timeattack_second);

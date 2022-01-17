@@ -50,7 +50,7 @@ and (instance_exists(obj_camera))
 }
 global.hud_show_deaths = true;
 if (asset_get_type("obj_camera") == asset_object)
-and(instance_exists(obj_camera))
+and (instance_exists(obj_camera))
 {
 	with(obj_camera)
 	{

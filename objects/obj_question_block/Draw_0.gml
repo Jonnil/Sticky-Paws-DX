@@ -2,16 +2,16 @@
 if (bounceup=false)
 {
 	if (place_meeting(x,y-4,obj_player))
-	and(!place_meeting(x,y-1,obj_wall))
-	and(obj_player.ground_pound=true)
-	or(place_meeting(x,y+1,obj_player))
-	and(!place_meeting(x,y+1,obj_wall))
-	or(place_meeting(bbox_left-4,y,obj_player))
-	and(!place_meeting(x-4,y,obj_wall))
-	and(obj_player.dive=true)
-	or(place_meeting(bbox_right+4,y,obj_player))
-	and(!place_meeting(x+4,y,obj_wall))
-	and(obj_player.dive=true)
+	and (!place_meeting(x,y-1,obj_wall))
+	and (obj_player.ground_pound=true)
+	or (place_meeting(x,y+1,obj_player))
+	and (!place_meeting(x,y+1,obj_wall))
+	or (place_meeting(bbox_left-4,y,obj_player))
+	and (!place_meeting(x-4,y,obj_wall))
+	and (obj_player.dive=true)
+	or (place_meeting(bbox_right+4,y,obj_player))
+	and (!place_meeting(x+4,y,obj_wall))
+	and (obj_player.dive=true)
 	{
 		if (empty=false)
 		{
@@ -26,7 +26,7 @@ if (bounceup=false)
 			{
 				empty=true;
 				if (brick_block = false)
-				and(asset_get_type("obj_basic_collectible")==asset_object)
+				and (asset_get_type("obj_basic_collectible")==asset_object)
 				{
 					if (asset_get_type("snd_basic_collectible")==asset_sound)
 					{
@@ -46,7 +46,7 @@ if (bounceup=false)
 					with(instance_nearest(x, y, obj_player))
 					{
 						if (key_crouch)
-						and(ground_pound = true)
+						and (ground_pound = true)
 						{
 							ground_pound = true;
 						}
@@ -174,7 +174,7 @@ if (bounceup=false)
 			{
 				empty=true;
 				if (asset_get_type("obj_heart_balloon")==asset_object)
-				and(!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;
 					obj=instance_create_depth(x,bbox_top-16,0,obj_heart_balloon);
@@ -193,7 +193,7 @@ if (bounceup=false)
 			{
 				empty=true;
 				if (asset_get_type("obj_extra_life_pickup")==asset_object)
-				and(!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;
 					obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
@@ -213,7 +213,7 @@ if (bounceup=false)
 			{
 				empty=true;
 				if (asset_get_type("obj_extra_life_pickup")==asset_object)
-				and(!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;
 					obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
@@ -233,7 +233,7 @@ if (bounceup=false)
 			{
 				empty=true;
 				if (asset_get_type("obj_extra_life_pickup")==asset_object)
-				and(!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;
 					obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
@@ -253,7 +253,7 @@ if (bounceup=false)
 			{
 				empty=true;
 				if (asset_get_type("obj_invincibility_powerup")==asset_object)
-				and(!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;
 					obj=instance_create_depth(x,bbox_top-32,0,obj_invincibility_powerup);
@@ -274,7 +274,7 @@ if (bounceup=false)
 #endregion /*Collision Event with player END*/
 
 if (brick_block=true)
-and(empty=false)
+and (empty=false)
 {
 	if (asset_get_type("spr_brick_block") == asset_sprite)
 	{
@@ -283,7 +283,7 @@ and(empty=false)
 }
 else
 if (brick_block=false)
-and(empty=false)
+and (empty=false)
 {
 	if (asset_get_type("spr_question_block") == asset_sprite)
 	{
@@ -319,13 +319,13 @@ if (bounceup = true)
 		if (empty=true)
 		{
 			if (brick_block = false)
-			and(asset_get_type("spr_question_block_empty") == asset_sprite)
+			and (asset_get_type("spr_question_block_empty") == asset_sprite)
 			{
 				sprite_index = spr_question_block_empty;
 			}
 			else
 			if (brick_block = true)
-			and(asset_get_type("spr_brick_block_empty") == asset_sprite)
+			and (asset_get_type("spr_brick_block_empty") == asset_sprite)
 			{
 				sprite_index = spr_brick_block_empty;
 			}

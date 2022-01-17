@@ -9,9 +9,9 @@ if (brick_particle = true)
 	
 	#region /*Destroy outside view*/
 	if (x < camera_get_view_x(view_camera[view_current]))
-	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	or(y < camera_get_view_y(view_camera[view_current]))
-	or(y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	or (y < camera_get_view_y(view_camera[view_current]))
+	or (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 	{
 		instance_destroy();
 	}
@@ -27,16 +27,16 @@ if (brick_particle = true)
 	}
 }
 if (brick_particle = false)
-	and(asset_get_type("obj_player") == asset_object)
+	and (asset_get_type("obj_player") == asset_object)
 	{
 		if (position_meeting(bbox_left + 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
-		or(position_meeting(bbox_right - 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
-		or(place_meeting(x, y - 16, instance_nearest(x, y, obj_player)))
-		and(instance_nearest(x, y, obj_player).ground_pound = true)
-		or(place_meeting(bbox_left - 4, y, instance_nearest(x, y, obj_player)))
-		and(instance_nearest(x, y, obj_player).dive = true)
-		or(place_meeting(bbox_right + 4, y, instance_nearest(x, y, obj_player)))
-		and(instance_nearest(x, y, obj_player).dive = true)
+		or (position_meeting(bbox_right - 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
+		or (place_meeting(x, y - 16, instance_nearest(x, y, obj_player)))
+		and (instance_nearest(x, y, obj_player).ground_pound = true)
+		or (place_meeting(bbox_left - 4, y, instance_nearest(x, y, obj_player)))
+		and (instance_nearest(x, y, obj_player).dive = true)
+		or (place_meeting(bbox_right + 4, y, instance_nearest(x, y, obj_player)))
+		and (instance_nearest(x, y, obj_player).dive = true)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{

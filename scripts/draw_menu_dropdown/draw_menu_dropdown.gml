@@ -58,9 +58,9 @@ function draw_menu_dropdown()
 	else
 	{
 		if (menu=menu_index)
-		and(global.controls_used_for_menu_navigation = "keyboard")
+		and (global.controls_used_for_menu_navigation = "keyboard")
 		or (menu=menu_index)
-		and(global.controls_used_for_menu_navigation = "controller")
+		and (global.controls_used_for_menu_navigation = "controller")
 		{
 			draw_sprite_ext(spr_menu_dropdown,0,x_position+32,y_position+21,1,1,0,c_gray,1);
 		}
@@ -72,7 +72,7 @@ function draw_menu_dropdown()
 	
 	#region /*Show a menu cursor when the option is highlighted*/
 	if (menu = menu_index)
-	and(open_dropdown = false)
+	and (open_dropdown = false)
 	{
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position+16, y_position+24, 1, 1, 0, c_white, 1);
 	}

@@ -10,7 +10,7 @@ if (die=false)
 
 	#region /*Landing on solid object*/
 	if (place_meeting(x, y+1, other))
-	and(vspeed >= 0)
+	and (vspeed >= 0)
 	{
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
@@ -24,7 +24,7 @@ if (die=false)
 			effect_create_above(ef_smoke,x+16+8,bbox_bottom-8,0,c_white);
 		}
 		vspeed=0;
-		gravity=0;
+		gravity = 0;
 		draw_xscale=1.25;
 		draw_yscale=0.75;
 	}

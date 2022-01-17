@@ -7,7 +7,7 @@ function scr_quit_to_desktop_menu(argument0)
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
 	if (menu = "quit_game_no")
-	or(menu = "quit_game_yes")
+	or (menu = "quit_game_yes")
 	{
 		draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 1.9, c_white, c_black, 1);
 	
@@ -28,9 +28,9 @@ function scr_quit_to_desktop_menu(argument0)
 		else
 		{
 			if (menu = "quit_game_no")
-			and(global.controls_used_for_menu_navigation = "keyboard")
+			and (global.controls_used_for_menu_navigation = "keyboard")
 			or (menu = "quit_game_no")
-			and(global.controls_used_for_menu_navigation = "controller")
+			and (global.controls_used_for_menu_navigation = "controller")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2, 1, 1, 180, c_white, 1);
@@ -75,7 +75,7 @@ function scr_quit_to_desktop_menu(argument0)
 		and (global.controls_used_for_menu_navigation = "mouse")
 		{
 			if (mouse_check_button(mb_left))
-			and(menu_delay = 0)
+			and (menu_delay = 0)
 			{
 				menu = "quit_game_yes";
 			}
@@ -87,9 +87,9 @@ function scr_quit_to_desktop_menu(argument0)
 		else
 		{
 			if (menu = "quit_game_yes")
-			and(global.controls_used_for_menu_navigation = "keyboard")
+			and (global.controls_used_for_menu_navigation = "keyboard")
 			or (menu = "quit_game_yes")
-			and(global.controls_used_for_menu_navigation = "controller")
+			and (global.controls_used_for_menu_navigation = "controller")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2 + 84, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2 + 84, 1, 1, 180, c_white, 1);

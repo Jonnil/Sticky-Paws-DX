@@ -4,19 +4,19 @@ if (bounceup = false)
 {
 	visible = true;
 	if (asset_get_type("obj_camera") == asset_object)
-	and(instance_exists(obj_camera))
+	and (instance_exists(obj_camera))
 	{
 		image_index = obj_camera.image_index;
 	}
 	if (asset_get_type("obj_player") == asset_object)
 	{
 		if (place_meeting(bbox_left, y, obj_player))
-		or(place_meeting(bbox_right, y, obj_player))
-		or(place_meeting(x, bbox_top, obj_player))
-		or(place_meeting(x, bbox_bottom, obj_player))
+		or (place_meeting(bbox_right, y, obj_player))
+		or (place_meeting(x, bbox_top, obj_player))
+		or (place_meeting(x, bbox_bottom, obj_player))
 		{
 			if (asset_get_type("obj_wall") == asset_object)
-				and(!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+				and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 				{
 					effect_create_above(ef_ring, x, y, 0, c_white);
 					score += 200;
@@ -36,7 +36,7 @@ if (bounceup = false)
 					global.basic_collectibles += 1;
 					global.hud_show_basic_collectibles = true;
 					if (asset_get_type("obj_camera") == asset_object)
-						and(instance_exists(obj_camera))
+						and (instance_exists(obj_camera))
 						{
 							with(obj_camera)
 							{
@@ -74,13 +74,13 @@ if (bounceup = true)
 		gravity = 0.5; /*The gravity*/
 		#endregion /*Set the gravity END*/
 		if (vspeed > 0)
-		and(y > ystart - 32)
+		and (y > ystart - 32)
 		or (delay >= delay_time + 60)
 		{
 			score += 200;
 			global.hud_show_score = true;
 			if (asset_get_type("obj_camera") == asset_object)
-				and(instance_exists(obj_camera))
+				and (instance_exists(obj_camera))
 				{
 					with(obj_camera)
 					{
@@ -97,7 +97,7 @@ if (bounceup = true)
 			global.basic_collectibles += 1;
 			global.hud_show_basic_collectibles = true;
 			if (asset_get_type("obj_camera") == asset_object)
-			and(instance_exists(obj_camera))
+			and (instance_exists(obj_camera))
 			{
 				with(obj_camera)
 				{

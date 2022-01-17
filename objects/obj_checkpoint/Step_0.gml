@@ -1,19 +1,19 @@
 if (global.x_checkpoint = x)
-and(global.y_checkpoint = y)
+and (global.y_checkpoint = y)
 {
 	image_index = 1;
 	image_speed = 0;
 }
 if (asset_get_type("obj_player")==asset_object)
-and(instance_exists(obj_player))
+and (instance_exists(obj_player))
 {
 	if (instance_nearest(x,y,obj_player).x>x-32)
-	and(instance_nearest(x,y,obj_player).x<x+32)
-	and(instance_nearest(x,y,obj_player).y<y)
-	or(place_meeting(x,y,instance_nearest(x,y,obj_player)))
+	and (instance_nearest(x,y,obj_player).x<x+32)
+	and (instance_nearest(x,y,obj_player).y<y)
+	or (place_meeting(x,y,instance_nearest(x,y,obj_player)))
 	{
 		if (asset_get_type("obj_wall")==asset_object)
-		and(!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,obj_wall,false,true))
+		and (!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,obj_wall,false,true))
 		{
 			if (image_index=0)
 			{

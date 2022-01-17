@@ -9,9 +9,9 @@ if (other.vspeed>=0)
 }
 
 if (other.invincible>0)
-or(other.takendamage>0)
-or(other.dive=true)
-or(other.can_tongue_after_dive_on_ground>0)
+or (other.takendamage>0)
+or (other.dive=true)
+or (other.can_tongue_after_dive_on_ground>0)
 {
 	if (other.key_jump_hold)
 	{
@@ -55,8 +55,8 @@ or(other.can_tongue_after_dive_on_ground>0)
 
 #region /*Rewards*/
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction<=1)
-or(other.chain_reaction<=1)
+and (instance_nearest(x,y,obj_player).chain_reaction<=1)
+or (other.chain_reaction<=1)
 {
 	#region /*1 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -114,8 +114,8 @@ or(other.chain_reaction<=1)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=2)
-or(other.chain_reaction=2)
+and (instance_nearest(x,y,obj_player).chain_reaction=2)
+or (other.chain_reaction=2)
 {
 	#region /*2 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -181,8 +181,8 @@ or(other.chain_reaction=2)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=3)
-or(other.chain_reaction=3)
+and (instance_nearest(x,y,obj_player).chain_reaction=3)
+or (other.chain_reaction=3)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -264,8 +264,8 @@ or(other.chain_reaction=3)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=4)
-or(other.chain_reaction=4)
+and (instance_nearest(x,y,obj_player).chain_reaction=4)
+or (other.chain_reaction=4)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -347,8 +347,8 @@ or(other.chain_reaction=4)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=5)
-or(other.chain_reaction=5)
+and (instance_nearest(x,y,obj_player).chain_reaction=5)
+or (other.chain_reaction=5)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -430,8 +430,8 @@ or(other.chain_reaction=5)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=6)
-or(other.chain_reaction=6)
+and (instance_nearest(x,y,obj_player).chain_reaction=6)
+or (other.chain_reaction=6)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -513,8 +513,8 @@ or(other.chain_reaction=6)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=7)
-or(other.chain_reaction=7)
+and (instance_nearest(x,y,obj_player).chain_reaction=7)
+or (other.chain_reaction=7)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -596,8 +596,8 @@ or(other.chain_reaction=7)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction>=8)
-or(other.chain_reaction>=8)
+and (instance_nearest(x,y,obj_player).chain_reaction>=8)
+or (other.chain_reaction>=8)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -684,12 +684,12 @@ or(other.chain_reaction>=8)
 if (die_volting=false)
 {
 	if (other.vspeed>0)
-	or(other.climb=false)
-	and(other.vspeed<0)
-	or(other.bbox_bottom<y)
+	or (other.climb=false)
+	and (other.vspeed<0)
+	or (other.bbox_bottom<y)
 	{
 		if (other.ground_pound=false)
-		and(flat=false)
+		and (flat=false)
 		{
 			if (abs(other.hspeed)>7)
 			{
@@ -726,8 +726,8 @@ if (die_volting=false)
 
 #region /*Rewards*/
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction<=1)
-or(other.chain_reaction<=1)
+and (instance_nearest(x,y,obj_player).chain_reaction<=1)
+or (other.chain_reaction<=1)
 {
 	#region /*1 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -785,8 +785,8 @@ or(other.chain_reaction<=1)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=2)
-or(other.chain_reaction=2)
+and (instance_nearest(x,y,obj_player).chain_reaction=2)
+or (other.chain_reaction=2)
 {
 	#region /*2 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -852,8 +852,8 @@ or(other.chain_reaction=2)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=3)
-or(other.chain_reaction=3)
+and (instance_nearest(x,y,obj_player).chain_reaction=3)
+or (other.chain_reaction=3)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -935,8 +935,8 @@ or(other.chain_reaction=3)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=4)
-or(other.chain_reaction=4)
+and (instance_nearest(x,y,obj_player).chain_reaction=4)
+or (other.chain_reaction=4)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1018,8 +1018,8 @@ or(other.chain_reaction=4)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=5)
-or(other.chain_reaction=5)
+and (instance_nearest(x,y,obj_player).chain_reaction=5)
+or (other.chain_reaction=5)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1101,8 +1101,8 @@ or(other.chain_reaction=5)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=6)
-or(other.chain_reaction=6)
+and (instance_nearest(x,y,obj_player).chain_reaction=6)
+or (other.chain_reaction=6)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1184,8 +1184,8 @@ or(other.chain_reaction=6)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=7)
-or(other.chain_reaction=7)
+and (instance_nearest(x,y,obj_player).chain_reaction=7)
+or (other.chain_reaction=7)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1267,8 +1267,8 @@ or(other.chain_reaction=7)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction>=8)
-or(other.chain_reaction>=8)
+and (instance_nearest(x,y,obj_player).chain_reaction>=8)
+or (other.chain_reaction>=8)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1373,7 +1373,7 @@ image_index=0;
 }
 else
 if (other.ground_pound=true)
-and(flat=false)
+and (flat=false)
 {
 	die=true;
 	global.enemy_counter+=1;
@@ -1395,8 +1395,8 @@ and(flat=false)
 
 #region /*Rewards*/
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction<=1)
-or(other.chain_reaction<=1)
+and (instance_nearest(x,y,obj_player).chain_reaction<=1)
+or (other.chain_reaction<=1)
 {
 	#region /*1 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1454,8 +1454,8 @@ or(other.chain_reaction<=1)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=2)
-or(other.chain_reaction=2)
+and (instance_nearest(x,y,obj_player).chain_reaction=2)
+or (other.chain_reaction=2)
 {
 	#region /*2 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1521,8 +1521,8 @@ or(other.chain_reaction=2)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=3)
-or(other.chain_reaction=3)
+and (instance_nearest(x,y,obj_player).chain_reaction=3)
+or (other.chain_reaction=3)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1604,8 +1604,8 @@ or(other.chain_reaction=3)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=4)
-or(other.chain_reaction=4)
+and (instance_nearest(x,y,obj_player).chain_reaction=4)
+or (other.chain_reaction=4)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1687,8 +1687,8 @@ or(other.chain_reaction=4)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=5)
-or(other.chain_reaction=5)
+and (instance_nearest(x,y,obj_player).chain_reaction=5)
+or (other.chain_reaction=5)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1770,8 +1770,8 @@ or(other.chain_reaction=5)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=6)
-or(other.chain_reaction=6)
+and (instance_nearest(x,y,obj_player).chain_reaction=6)
+or (other.chain_reaction=6)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1853,8 +1853,8 @@ or(other.chain_reaction=6)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction=7)
-or(other.chain_reaction=7)
+and (instance_nearest(x,y,obj_player).chain_reaction=7)
+or (other.chain_reaction=7)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -1936,8 +1936,8 @@ or(other.chain_reaction=7)
 }
 else
 if (instance_exists(obj_player))
-and(instance_nearest(x,y,obj_player).chain_reaction>=8)
-or(other.chain_reaction>=8)
+and (instance_nearest(x,y,obj_player).chain_reaction>=8)
+or (other.chain_reaction>=8)
 {
 	#region /*4 Coin*/
 	if (asset_get_type("obj_basic_collectible")==asset_object)
@@ -2025,7 +2025,7 @@ else
 
 else
 if (other.takendamage<=0)
-and(other.assist_invincible=false)
+and (other.assist_invincible=false)
 {
 	if (other.have_heart_balloon=true)
 	{

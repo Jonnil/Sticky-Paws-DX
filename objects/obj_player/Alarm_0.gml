@@ -4,7 +4,7 @@
 
 #region /*Allow abilities*/
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
-or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
+or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
 	{
@@ -137,14 +137,14 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	#endregion /*Allow run*/
 
 	#region /*Allow homing attack*/
-	if (ini_key_exists("allow abilities", "allow_homing_tongue"))
+	if (ini_key_exists("allow abilities", "allow_homing_attack"))
 	{
-		allow_homing_tongue = ini_read_real("allow abilities", "allow_homing_tongue", false);
+		allow_homing_attack = ini_read_real("allow abilities", "allow_homing_attack", false);
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_homing_tongue", false);
-		allow_homing_tongue = false;
+		//ini_write_real("allow abilities", "allow_homing_attack", false);
+		allow_homing_attack = false;
 	}
 	#endregion /*Allow homing attack*/
 	
@@ -212,7 +212,7 @@ else
 	allow_dive_ground_boost = true;
 	allow_survive_lava = true;
 	allow_run = true;
-	allow_homing_tongue = false;
+	allow_homing_attack = false;
 	allow_crawl = true;
 	allow_crouch = true;
 	allow_tongue = false; /*A tongue that extends*/
@@ -225,7 +225,7 @@ else
 	//if(!ini_key_exists("allow abilities", "allow_run")){ini_write_real("allow abilities", "allow_run", true);}
 	//if(!ini_key_exists("allow abilities", "allow_roll")){ini_write_real("allow abilities", "allow_roll", false);}
 	//if(!ini_key_exists("allow abilities", "allow_ledge_grab")){ini_write_real("allow abilities", "allow_ledge_grab", false);}
-	//if(!ini_key_exists("allow abilities", "allow_homing_tongue")){ini_write_real("allow abilities", "allow_homing_tongue", false);}
+	//if(!ini_key_exists("allow abilities", "allow_homing_attack")){ini_write_real("allow abilities", "allow_homing_attack", false);}
 	//if(!ini_key_exists("allow abilities", "allow_ground_pound_jump")){ini_write_real("allow abilities", "allow_ground_pound_jump", true);}
 	//if(!ini_key_exists("allow abilities", "allow_ground_pound")){ini_write_real("allow abilities", "allow_ground_pound", true);}
 	//if(!ini_key_exists("allow abilities", "allow_dive_ground_boost")){ini_write_real("allow abilities", "allow_dive_ground_boost", true);}
@@ -249,7 +249,7 @@ stop_screen_from_scrolling_left = false; /*Stop the screen from being able to sc
 
 #region /*Sprite origin point variables*/
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini"))
-or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini"))
+or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini"))
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/sprite_origin_point.ini"))
 	{
@@ -7338,7 +7338,7 @@ voice_burned = noone;
 
 #region /*Character Values Handeling*/
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
-or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
+or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player-1])) + "/data/character_config.ini"))
 	{

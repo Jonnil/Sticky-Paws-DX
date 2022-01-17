@@ -4,11 +4,11 @@ sprite_index = global.resourcepack_sprite_hp_pickup;
 gravity_direction=270;/*Direction of the gravity*/
 if (!place_meeting(x,y+1,obj_wall))
 {
-	gravity=0.5;/*The gravity*/
+	gravity = 0.5;/*The gravity*/
 }
 else
 {
-	gravity=0;
+	gravity = 0;
 }
 #endregion /*Set the gravity END*/
 
@@ -20,14 +20,14 @@ if (position_meeting(x, y, obj_wall))
 #endregion /*If inside wall, destroy yourself END*/
 
 if (asset_get_type("obj_player")==asset_object)
-and(instance_exists(obj_player))
+and (instance_exists(obj_player))
 {
 	if (allow_move=true)
 	{
 		if (dir=+1)
 		{
 			if (instance_nearest(x,y,obj_player).x>x)
-			and(instance_nearest(x,y,obj_player).hspeed>+2)
+			and (instance_nearest(x,y,obj_player).hspeed>+2)
 			{
 				hspeed=instance_nearest(x,y,obj_player).hspeed;
 				if (hspeed>+8)
@@ -43,7 +43,7 @@ and(instance_exists(obj_player))
 		else
 		{
 			if (instance_nearest(x,y,obj_player).x<x)
-			and(instance_nearest(x,y,obj_player).hspeed<-2)
+			and (instance_nearest(x,y,obj_player).hspeed<-2)
 			{
 				hspeed=instance_nearest(x,y,obj_player).hspeed;
 				if (hspeed<-8)
@@ -62,7 +62,7 @@ and(instance_exists(obj_player))
 		hspeed=0;
 	}
 	if (place_meeting(x,y,obj_player))
-	and(bounceup=false)
+	and (bounceup=false)
 	{
 		with(instance_nearest(x,y,obj_player))
 		{

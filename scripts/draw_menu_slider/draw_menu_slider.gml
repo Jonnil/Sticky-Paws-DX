@@ -35,7 +35,7 @@ function draw_menu_slider()
 	#region /*Draw Bar*/
 	if (menu = menu_index)
 	{
-		draw_rectangle_color(x_position-2,y_position-16-2,x_position+320+2,y_position+16+2,c_black,c_black,c_black,c_black,false);
+		draw_rectangle_color (x_position-2,y_position-16-2,x_position+320+2,y_position+16+2,c_black,c_black,c_black,c_black,false);
 		
 		#region /*Click to change value*/
 		if (global.controls_used_for_menu_navigation = "mouse")
@@ -71,28 +71,28 @@ function draw_menu_slider()
 	if (menu_index = "background_brightness_gameplay")
 	or (menu_index = "background_brightness_menu")
 	{
-		draw_rectangle_color(x_position,y_position-16,x_position+320,y_position+16,c_black,c_white,c_white,c_black,false);
+		draw_rectangle_color (x_position,y_position-16,x_position+320,y_position+16,c_black,c_white,c_white,c_black,false);
 		if (menu_index = "background_brightness_gameplay")
 		{
 			if (variable_to_change < 0)
 			{
-				draw_rectangle_color(x_position+(variable_to_change-(-1))/(1-(-1))*320-2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320+2,y_position+16,c_white,c_white,c_white,c_white,false);
+				draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320-2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320+2,y_position+16,c_white,c_white,c_white,c_white,false);
 			}
 			else
 			{
-				draw_rectangle_color(x_position+(variable_to_change-(-1))/(1-(-1))*320-2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320+2,y_position+16,c_black,c_black,c_black,c_black,false);
+				draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320-2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320+2,y_position+16,c_black,c_black,c_black,c_black,false);
 			}
 		}
 		else
 		if (menu_index = "background_brightness_menu")
 		{
-			draw_rectangle_color(x_position+(variable_to_change-(-1))/(1-(-1))*320-2,y_position-16,x_position+(variable_to_change - (-1))/(1-(-1))*320+2,y_position+16,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);
+			draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320-2,y_position-16,x_position+(variable_to_change - (-1))/(1-(-1))*320+2,y_position+16,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);
 		}
 	}
 	else
 	{
-		draw_rectangle_color(x_position,y_position-16,x_position+320,y_position+16,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);
-		draw_rectangle_color(x_position,y_position-16,x_position+variable_to_change*320,y_position+16,bar_color,bar_color,bar_color,bar_color,false);
+		draw_rectangle_color (x_position,y_position-16,x_position+320,y_position+16,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);
+		draw_rectangle_color (x_position,y_position-16,x_position+variable_to_change*320,y_position+16,bar_color,bar_color,bar_color,bar_color,false);
 	}
 	#endregion /*Draw Bar END*/
 	

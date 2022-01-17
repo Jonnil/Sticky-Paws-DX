@@ -1,10 +1,10 @@
-key_a = (gamepad_button_check(0, gp_face1)) or(keyboard_check(global.player1_key_jump));
+key_a = (gamepad_button_check(0, gp_face1)) or (keyboard_check(global.player1_key_jump));
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))
-or(keyboard_check_pressed(global.player1_key_jump));
+or (keyboard_check_pressed(global.player1_key_jump));
 key_a_released = (gamepad_button_check_released(0, gp_face1))
-or(keyboard_check_released(global.player1_key_jump));
+or (keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
-or(keyboard_check(global.player1_key_sprint));
+or (keyboard_check(global.player1_key_sprint));
 
 if (asset_get_type("spr_goal") == asset_sprite)
 {
@@ -17,15 +17,15 @@ if (asset_get_type("spr_level_end") == asset_sprite)
 
 #region /*Drag Object*/
 if (asset_get_type("obj_leveleditor") == asset_object)
-and(instance_number(obj_leveleditor) > 0)
-and(obj_leveleditor.pause = false)
+and (instance_number(obj_leveleditor) > 0)
+and (obj_leveleditor.pause = false)
 {
 	if (!keyboard_check(vk_space))
-	and(!mouse_check_button(mb_middle))
-	and(!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+	and (!mouse_check_button(mb_middle))
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or(key_a_pressed)
+		or (key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -47,7 +47,7 @@ and(obj_leveleditor.pause = false)
 	
 	#region /*Release the object*/
 	if (mouse_check_button_released(mb_left))
-	or(key_a_released)
+	or (key_a_released)
 	{
 		if (drag_object = true)
 		{
@@ -98,7 +98,7 @@ if (y > room_height)
 #endregion /*Make sure the level end isn't outside of the level, this code has to be after the drag object code END*/
 
 if (global.play_edited_level = true)
-or(global.actually_play_edited_level = true)
+or (global.actually_play_edited_level = true)
 {
 	if (asset_get_type("obj_goal") == asset_object)
 	{

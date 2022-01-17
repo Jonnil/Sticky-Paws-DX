@@ -1,8 +1,8 @@
 var xx = x,
 	yy = y;
 if (asset_get_type("obj_player") == asset_object)
-and(place_meeting(x, y - 1, obj_player))
-and(fall < 100)
+and (place_meeting(x, y - 1, obj_player))
+and (fall < 100)
 {
 	fall += 1;
 	image_blend = c_red;
@@ -73,7 +73,7 @@ if (image_alpha < 1)
 	gravity = 0;
 	respawn_timer -= 1;
 	if (respawn_timer <= 0)
-	and(!place_meeting(xstart, ystart, obj_player))
+	and (!place_meeting(xstart, ystart, obj_player))
 	{
 		x = xstart;
 		y = ystart;

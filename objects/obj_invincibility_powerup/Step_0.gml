@@ -40,8 +40,8 @@ if (asset_get_type("obj_wall") == asset_object)
 	}
 	
 	if (place_meeting(x, y + 1, obj_wall))
-	or(asset_get_type("obj_semisolid_platforms") == asset_object)
-	and(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or (asset_get_type("obj_semisolid_platforms") == asset_object)
+	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (asset_get_type("snd_star_bound") == asset_sound)
 		{

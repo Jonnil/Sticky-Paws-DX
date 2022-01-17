@@ -37,7 +37,7 @@ function InitTranslations(){
 if (file_exists("localization.csv")){global.language_local_data=load_csv("localization.csv");
 var hh=ds_grid_height(global.language_local_data);
 var translations=ds_map_create();
-for(var i=0;i<hh;i++)
+for (var i=0;i<hh;i++)
 {
 	ds_map_add(translations,global.language_local_data[# 0,i],i);
 }

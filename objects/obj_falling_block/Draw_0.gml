@@ -1,14 +1,14 @@
 var xx = x,
 var yy = y;
 if (asset_get_type("obj_player") == asset_object)
-and(position_meeting(x, bbox_top - 1, obj_player))
-and(fall < 100)
+and (position_meeting(x, bbox_top - 1, obj_player))
+and (fall < 100)
 or (asset_get_type("obj_player") == asset_object)
-and(position_meeting(bbox_left, bbox_top - 1, obj_player))
-and(fall < 100)
+and (position_meeting(bbox_left, bbox_top - 1, obj_player))
+and (fall < 100)
 or (asset_get_type("obj_player") == asset_object)
-and(position_meeting(bbox_right, bbox_top - 1, obj_player))
-and(fall < 100)
+and (position_meeting(bbox_right, bbox_top - 1, obj_player))
+and (fall < 100)
 {
 	fall += 1;
 	image_blend = c_red;

@@ -9,8 +9,8 @@ while (place_meeting(x, y, other))
 
 #region /*Landing on solid object*/
 if (place_meeting(x, y + 1, other))
-and(vspeed >= 0)
-and(stick_to_wall = false)
+and (vspeed >= 0)
+and (stick_to_wall = false)
 {
 	
 	#region /*Smoke Landing Effect*/
@@ -59,7 +59,7 @@ and(stick_to_wall = false)
 
 #region /*Hitting your head on ceiling*/
 if (position_meeting(x, bbox_top - 1, other))
-and(stick_to_wall = false)
+and (stick_to_wall = false)
 {
 	vspeed += 4;
 	can_ground_pound = false;
@@ -74,9 +74,9 @@ and(stick_to_wall = false)
 
 #region /*Hitting wall to your left*/
 if (position_meeting(bbox_left - 1, bbox_bottom - 8, other))
-or(position_meeting(bbox_left - 1, bbox_top + 8, other))
-or(position_meeting(bbox_left - 1, y, other))
-//or(place_meeting(x - 1, y, other))
+or (position_meeting(bbox_left - 1, bbox_top + 8, other))
+or (position_meeting(bbox_left - 1, y, other))
+//or (place_meeting(x - 1, y, other))
 {
 	if (hspeed <= 0)
 	{
@@ -87,9 +87,9 @@ or(position_meeting(bbox_left - 1, y, other))
 
 #region /*Hitting wall to your right*/
 if (position_meeting(bbox_right + 1, bbox_bottom - 8, other))
-or(position_meeting(bbox_right + 1, bbox_top + 8, other))
-or(position_meeting(bbox_right + 1, y, other))
-//or(place_meeting(x + 1, y, other))
+or (position_meeting(bbox_right + 1, bbox_top + 8, other))
+or (position_meeting(bbox_right + 1, y, other))
+//or (place_meeting(x + 1, y, other))
 {
 	if (hspeed >= 0)
 	{
@@ -115,8 +115,8 @@ or(position_meeting(bbox_right + 1, y, other))
 if (place_meeting(x, y + 1, other))
 {
 	if (asset_get_type("obj_ground") == asset_object)
-	and(place_meeting(x, y + 1, obj_ground))
-	and(asset_get_type("snd_land_dirt") == asset_sound)
+	and (place_meeting(x, y + 1, obj_ground))
+	and (asset_get_type("snd_land_dirt") == asset_sound)
 	{
 		audio_play_sound(snd_land_dirt, 0, 0);
 		audio_sound_gain(snd_land_dirt, global.sfx_volume, 0);
@@ -132,7 +132,7 @@ if (place_meeting(x, y + 1, other))
 
 #region /*Hitting ceiling sound effect*/
 if (position_meeting(x, bbox_top - 1, other))
-and(asset_get_type("snd_hitblockbound") == asset_sound)
+and (asset_get_type("snd_hitblockbound") == asset_sound)
 {
 	audio_stop_sound(snd_hitblockbound);
 	audio_play_sound(snd_hitblockbound, 0, 0);
@@ -144,11 +144,11 @@ and(asset_get_type("snd_hitblockbound") == asset_sound)
 
 #region /*Dirt Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
-and(place_meeting(x, y + 1, obj_ground))
-and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
+and (place_meeting(x, y + 1, obj_ground))
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
 {
 	if (asset_get_type("snd_footstep_dirt_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_dirt_right))
+	and (!audio_is_playing(snd_footstep_dirt_right))
 	{
 		audio_play_sound(snd_footstep_dirt_right, 0, 0);
 		audio_sound_gain(snd_footstep_dirt_right, global.sfx_volume, 0);
@@ -160,11 +160,11 @@ else
 
 #region /*Glass Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
-and(place_meeting(x, y + 1, obj_ground))
-and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
+and (place_meeting(x, y + 1, obj_ground))
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
 {
 	if (asset_get_type("snd_footstep_glass_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_glass_right))
+	and (!audio_is_playing(snd_footstep_glass_right))
 	{
 		audio_play_sound(snd_footstep_glass_right, 0, 0);
 		audio_sound_gain(snd_footstep_glass_right, global.sfx_volume, 0);
@@ -176,11 +176,11 @@ else
 
 #region /*Grass Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
-and(place_meeting(x, y + 1, obj_ground))
-and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
+and (place_meeting(x, y + 1, obj_ground))
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
 {
 	if (asset_get_type("snd_footstep_grass_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_grass_right))
+	and (!audio_is_playing(snd_footstep_grass_right))
 	{
 		audio_play_sound(snd_footstep_grass_right, 0, 0);
 		audio_sound_gain(snd_footstep_grass_right, global.sfx_volume, 0);
@@ -192,11 +192,11 @@ else
 
 #region /*Gravel Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
-and(place_meeting(x, y + 1, obj_ground))
-and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
+and (place_meeting(x, y + 1, obj_ground))
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
 {
 	if (asset_get_type("snd_footstep_gravel_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_gravel_right))
+	and (!audio_is_playing(snd_footstep_gravel_right))
 	{
 		audio_play_sound(snd_footstep_gravel_right, 0, 0);
 		audio_sound_gain(snd_footstep_gravel_right, global.sfx_volume, 0);
@@ -208,11 +208,11 @@ else
 
 #region /*Metal Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
-and(place_meeting(x, y + 1, obj_ground))
-and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
+and (place_meeting(x, y + 1, obj_ground))
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
 {
 	if (asset_get_type("snd_footstep_metal_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_metal_right))
+	and (!audio_is_playing(snd_footstep_metal_right))
 	{
 		audio_play_sound(snd_footstep_metal_right, 0, 0);
 		audio_sound_gain(snd_footstep_metal_right, global.sfx_volume, 0);
@@ -224,11 +224,11 @@ else
 
 #region /*Stone Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
-and(place_meeting(x, y + 1, obj_ground))
-and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
+and (place_meeting(x, y + 1, obj_ground))
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
 {
 	if (asset_get_type("snd_footstep_stone_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_stone_right))
+	and (!audio_is_playing(snd_footstep_stone_right))
 	{
 		audio_play_sound(snd_footstep_stone_right, 0, 0);
 		audio_sound_gain(snd_footstep_stone_right, global.sfx_volume, 0);
@@ -240,11 +240,11 @@ else
 
 #region /*Wood Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
-and(place_meeting(x, y + 1, obj_ground))
-and(instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
+and (place_meeting(x, y + 1, obj_ground))
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
 {
 	if (asset_get_type("snd_footstep_wood_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_wood_right))
+	and (!audio_is_playing(snd_footstep_wood_right))
 	{
 		audio_play_sound(snd_footstep_wood_right, 0, 0);
 		audio_sound_gain(snd_footstep_wood_right, global.sfx_volume, 0);

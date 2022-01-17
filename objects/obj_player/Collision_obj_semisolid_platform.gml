@@ -3,19 +3,19 @@
 if (in_water = false)
 {
 	if (position_meeting(x,bbox_bottom+1,other))
-	or(position_meeting(x,bbox_bottom+2,other))
-	or(position_meeting(x,bbox_bottom+3,other))
-	or(position_meeting(x,bbox_bottom+4,other))
+	or (position_meeting(x,bbox_bottom+2,other))
+	or (position_meeting(x,bbox_bottom+3,other))
+	or (position_meeting(x,bbox_bottom+4,other))
 
-	or(position_meeting(bbox_left,bbox_bottom+1,other))
-	or(position_meeting(bbox_left,bbox_bottom+2,other))
-	or(position_meeting(bbox_left,bbox_bottom+3,other))
-	or(position_meeting(bbox_left,bbox_bottom+4,other))
+	or (position_meeting(bbox_left,bbox_bottom+1,other))
+	or (position_meeting(bbox_left,bbox_bottom+2,other))
+	or (position_meeting(bbox_left,bbox_bottom+3,other))
+	or (position_meeting(bbox_left,bbox_bottom+4,other))
 
-	or(position_meeting(bbox_right,bbox_bottom+1,other))
-	or(position_meeting(bbox_right,bbox_bottom+2,other))
-	or(position_meeting(bbox_right,bbox_bottom+3,other))
-	or(position_meeting(bbox_right,bbox_bottom+4,other))
+	or (position_meeting(bbox_right,bbox_bottom+1,other))
+	or (position_meeting(bbox_right,bbox_bottom+2,other))
+	or (position_meeting(bbox_right,bbox_bottom+3,other))
+	or (position_meeting(bbox_right,bbox_bottom+4,other))
 	{
 		y-=1;
 	}
@@ -23,11 +23,11 @@ if (in_water = false)
 
 #region /*Landing on solid object*/
 if (position_meeting(x, bbox_bottom + 1, other))
-and(stick_to_wall = false)
+and (stick_to_wall = false)
 or (position_meeting(bbox_left, bbox_bottom + 1, other))
-and(stick_to_wall = false)
+and (stick_to_wall = false)
 or (position_meeting(bbox_right, bbox_bottom + 1, other))
-and(stick_to_wall = false)
+and (stick_to_wall = false)
 {
 	
 	#region /*Smoke Landing Effect*/
@@ -102,8 +102,8 @@ if (position_meeting(x, bbox_bottom + 1, other))
 if (position_meeting(x, bbox_bottom + 1, other))
 {
 	if (asset_get_type("obj_ground") == asset_object)
-	and(place_meeting(x, y + 1, obj_ground))
-	and(asset_get_type("snd_land_dirt") == asset_sound)
+	and (place_meeting(x, y + 1, obj_ground))
+	and (asset_get_type("snd_land_dirt") == asset_sound)
 	{
 		audio_play_sound(snd_land_dirt, 0, 0);
 		audio_sound_gain(snd_land_dirt, global.sfx_volume, 0);
@@ -121,10 +121,10 @@ if (position_meeting(x, bbox_bottom + 1, other))
 
 #region /*Metal Footstep Right*/
 if (asset_get_type("obj_ground_metal") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_metal))
+and (place_meeting(x, y + 1, obj_ground_metal))
 {
 	if (asset_get_type("snd_footstep_metal_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_metal_right))
+	and (!audio_is_playing(snd_footstep_metal_right))
 	{
 		audio_play_sound(snd_footstep_metal_right, 0, 0);
 		audio_sound_gain(snd_footstep_metal_right, global.sfx_volume, 0);
@@ -135,10 +135,10 @@ and(place_meeting(x, y + 1, obj_ground_metal))
 #region /*Stone Footstep Right*/
 else
 if (asset_get_type("obj_ground_stone") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_stone))
+and (place_meeting(x, y + 1, obj_ground_stone))
 {
 	if (asset_get_type("snd_footstep_stone_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_stone_right))
+	and (!audio_is_playing(snd_footstep_stone_right))
 	{
 		audio_play_sound(snd_footstep_stone_right, 0, 0);
 		audio_sound_gain(snd_footstep_stone_right, global.sfx_volume, 0);
@@ -148,10 +148,10 @@ else #endregion /*Stone Footstep Right END*/
 
 #region /*Wood Footstep Right*/
 if (asset_get_type("obj_ground_wood") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_wood))
+and (place_meeting(x, y + 1, obj_ground_wood))
 {
 	if (asset_get_type("snd_footstep_wood_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_wood_right))
+	and (!audio_is_playing(snd_footstep_wood_right))
 	{
 		audio_play_sound(snd_footstep_wood_right, 0, 0);
 		audio_sound_gain(snd_footstep_wood_right, global.sfx_volume, 0);
@@ -162,10 +162,10 @@ and(place_meeting(x, y + 1, obj_ground_wood))
 #region /*Dirt Footstep Right*/
 else
 if (asset_get_type("obj_ground_dirt") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_dirt))
+and (place_meeting(x, y + 1, obj_ground_dirt))
 {
 	if (asset_get_type("snd_footstep_dirt_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_dirt_right))
+	and (!audio_is_playing(snd_footstep_dirt_right))
 	{
 		audio_play_sound(snd_footstep_dirt_right, 0, 0);
 		audio_sound_gain(snd_footstep_dirt_right, global.sfx_volume, 0);
@@ -175,10 +175,10 @@ else #endregion /*Dirt Footstep Right END*/
 
 #region /*Gravel Footstep Right*/
 if (asset_get_type("obj_ground_gravel") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_gravel))
+and (place_meeting(x, y + 1, obj_ground_gravel))
 {
 	if (asset_get_type("snd_footstep_gravel_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_gravel_right))
+	and (!audio_is_playing(snd_footstep_gravel_right))
 	{
 		audio_play_sound(snd_footstep_gravel_right, 0, 0);
 		audio_sound_gain(snd_footstep_gravel_right, global.sfx_volume, 0);
@@ -189,10 +189,10 @@ and(place_meeting(x, y + 1, obj_ground_gravel))
 #region /*Grass Footstep Right*/
 else
 if (asset_get_type("obj_ground_grass") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_grass))
+and (place_meeting(x, y + 1, obj_ground_grass))
 {
 	if (asset_get_type("snd_footstep_grass_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_grass_right))
+	and (!audio_is_playing(snd_footstep_grass_right))
 	{
 		audio_play_sound(snd_footstep_grass_right, 0, 0);
 		audio_sound_gain(snd_footstep_grass_right, global.sfx_volume, 0);
@@ -203,10 +203,10 @@ and(place_meeting(x, y + 1, obj_ground_grass))
 #region /*Glass Footstep Right*/
 else
 if (asset_get_type("obj_ground_glass") == asset_object)
-and(place_meeting(x, y + 1, obj_ground_glass))
+and (place_meeting(x, y + 1, obj_ground_glass))
 {
 	if (asset_get_type("snd_footstep_glass_right") == asset_sound)
-	and(!audio_is_playing(snd_footstep_glass_right))
+	and (!audio_is_playing(snd_footstep_glass_right))
 	{
 		audio_play_sound(snd_footstep_glass_right, 0, 0);
 		audio_sound_gain(snd_footstep_glass_right, global.sfx_volume, 0);

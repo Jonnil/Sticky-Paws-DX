@@ -1,5 +1,5 @@
 if (!place_meeting(x, y + 1, obj_wall))
-and(bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	gravity = 0.5;
 }

@@ -3,7 +3,7 @@ sprite_index = global.resourcepack_sprite_big_collectible;
 if (bounceup = false)
 {
 	if (asset_get_type("obj_camera") == asset_object)
-	and(instance_exists(obj_camera))
+	and (instance_exists(obj_camera))
 	{
 		image_index = obj_camera.image_index;
 	}
@@ -11,24 +11,24 @@ if (bounceup = false)
 if (bounceup = false)
 {
 	if (place_meeting(bbox_left, y, obj_player))
-	or(place_meeting(bbox_right, y, obj_player))
-	or(place_meeting(x, bbox_top, obj_player))
-	or(place_meeting(x, bbox_bottom, obj_player))
+	or (place_meeting(bbox_right, y, obj_player))
+	or (place_meeting(x, bbox_top, obj_player))
+	or (place_meeting(x, bbox_bottom, obj_player))
 	{
 		if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		{
 			follow_player = true;
 			if (follow_player = true)
-			and(place_meeting(x, y, obj_player))
+			and (place_meeting(x, y, obj_player))
 			{
 				if (asset_get_type("obj_wall") == asset_object)
-				and(place_meeting(x, y + 16, obj_wall))
-				or(asset_get_type("obj_semisolid_platform") == asset_object)
-				and(place_meeting(x, y + 16, obj_semisolid_platform))
-				or(asset_get_type("obj_horizontal_rope") == asset_object)
-				and(place_meeting(x, y - 16, obj_horizontal_rope))
-				or(instance_nearest(x, y, obj_player).climb = true)
-				or(instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
+				and (place_meeting(x, y + 16, obj_wall))
+				or (asset_get_type("obj_semisolid_platform") == asset_object)
+				and (place_meeting(x, y + 16, obj_semisolid_platform))
+				or (asset_get_type("obj_horizontal_rope") == asset_object)
+				and (place_meeting(x, y - 16, obj_horizontal_rope))
+				or (instance_nearest(x, y, obj_player).climb = true)
+				or (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
 				{
 					effect_create_above(ef_ring, x, y, 2, c_white);
 					#region /*3 Basic Collectibles*/
@@ -112,7 +112,7 @@ if (bounceup = false)
 if (follow_player = true)
 {
 	if (instance_exists(obj_player))
-	and(distance_to_object(obj_player) < sprite_height + sprite_width)
+	and (distance_to_object(obj_player) < sprite_height + sprite_width)
 	{
 		
 		#region /*Show Big Collectible HUD*/
@@ -134,7 +134,7 @@ if (follow_player = true)
 		x = lerp(x, xstart, 0.5);
 		y = lerp(y, ystart, 0.5);
 		if (x = xstart)
-		and(y = ystart)
+		and (y = ystart)
 		{
 			follow_player = false;
 		}
@@ -266,31 +266,31 @@ if bounceup = true
 }
 
 if (big_collectible = 1)
-and(global.big_collectible1 = true)
+and (global.big_collectible1 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;
 }
 if (big_collectible = 2)
-and(global.big_collectible2 = true)
+and (global.big_collectible2 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;
 }
 if (big_collectible = 3)
-and(global.big_collectible3 = true)
+and (global.big_collectible3 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;
 }
 if (big_collectible = 4)
-and(global.big_collectible4 = true)
+and (global.big_collectible4 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;
 }
 if (big_collectible = 5)
-and(global.big_collectible5 = true)
+and (global.big_collectible5 = true)
 {
 	image_alpha = 0.5;
 	image_blend = c_gray;

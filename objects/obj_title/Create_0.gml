@@ -173,7 +173,7 @@ global.always_show_level_editor_buttons=true; /*If level editor buttons should a
 
 #region /*Player 1 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
-or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 {
 	if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 	{
@@ -271,7 +271,7 @@ else
 
 #region /*Player 2 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
-or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
+or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 {
 	if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 	{
@@ -369,7 +369,7 @@ else
 
 #region /*Player 3 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
-or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
+or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 {
 	if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 	{
@@ -467,7 +467,7 @@ else
 
 #region /*Player 4 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
-or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
+or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 {
 	if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 	{

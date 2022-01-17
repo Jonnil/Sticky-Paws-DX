@@ -1,5 +1,5 @@
 if (other.invincible>0)
-and(assist_invincible=false)
+and (assist_invincible=false)
 {
 	invincible=other.invincible;
 }
@@ -7,7 +7,7 @@ and(assist_invincible=false)
 if (global.players_can_collide=true)
 {
 	if (hspeed<0)
-	and(other.hspeed>0)
+	and (other.hspeed>0)
 	{
 		hspeed=0;
 		x+=1;
@@ -16,7 +16,7 @@ if (global.players_can_collide=true)
 	}
 	else
 	if (hspeed>0)
-	and(other.hspeed<0)
+	and (other.hspeed<0)
 	{
 		hspeed=0;
 		x-=1;
@@ -25,9 +25,9 @@ if (global.players_can_collide=true)
 	}
 	else
 	if (other.hspeed<>0)
-	and(hspeed=0)
-	and(!place_meeting(x-1,y,obj_wall))
-	and(!place_meeting(x+1,y,obj_wall))
+	and (hspeed=0)
+	and (!place_meeting(x-1,y,obj_wall))
+	and (!place_meeting(x+1,y,obj_wall))
 	{
 		hspeed=0;
 		x+=other.hspeed;

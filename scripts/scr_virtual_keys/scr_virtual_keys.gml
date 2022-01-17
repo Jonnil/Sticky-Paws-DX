@@ -3,19 +3,19 @@ function scr_virtual_keys()
 	
 	#region /*Virtual Key, iOS and Android*/
 	if (os_type == os_ios)
-	or(os_type == os_android)
+	or (os_type == os_android)
 	{
 		if (iris_xscale > 0.25)
-		and(iris_yscale > 0.25)
-		and(asset_get_type("obj_title") == asset_object)
-		and(!instance_exists(obj_title))
+		and (iris_yscale > 0.25)
+		and (asset_get_type("obj_title") == asset_object)
+		and (!instance_exists(obj_title))
 		{
 			if (asset_get_type("obj_player") == asset_object)
-			and(instance_exists(obj_player))
-			and(obj_player.can_move = true)
-			or(asset_get_type("obj_player_map") == asset_object)
-			and(instance_exists(obj_player_map))
-			and(obj_player_map.can_move = true)
+			and (instance_exists(obj_player))
+			and (obj_player.can_move = true)
+			or (asset_get_type("obj_player_map") == asset_object)
+			and (instance_exists(obj_player_map))
+			and (obj_player_map.can_move = true)
 			{
 				
 				#region /*Virtual key add up*/

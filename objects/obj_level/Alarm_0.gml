@@ -97,7 +97,7 @@ and (clear_rate != "clear")
 }
 
 if (global.demo = true)
-and(level > global.demo_max_levels)
+and (level > global.demo_max_levels)
 {
 	instance_destroy();
 }

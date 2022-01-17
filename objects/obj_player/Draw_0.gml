@@ -8,9 +8,10 @@
 //draw_text_outlined(x,y-64,"Overflow HP: " + string(overflow_hp) + "/" + string(max_overflow_hp),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x,y-64,string(global.character_select_in_this_menu),global.default_text_size,c_white,c_black,1);
 //draw_text_outlined(x-32,y-64,"Crouch Toggle: " + string(global.player1_crouch_toggle),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x-32,y-128,"Sprint Toggle: " + string(global.player1_sprint_toggle),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x-32,y-128,"homing_attack_x: " + string(homing_attack_x),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x-32,y-64,"homing_attack_y: " + string(homing_attack_y),global.default_text_size,c_white,c_black,1);
 
-if (direction >= 90-10)
+/*if (direction >= 90-10)
 and (direction <= 90+10)
 {
 	draw_text_outlined(x,y-128,string(direction),global.default_text_size,c_lime,c_black,1);
@@ -18,7 +19,7 @@ and (direction <= 90+10)
 else
 {
 	draw_text_outlined(x,y-128,string(direction),global.default_text_size,c_red,c_black,1);
-}
+}*/
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)
@@ -39,8 +40,8 @@ and (have_heart_balloon = true)
 	}
 	if (takendamage %2 == 0)
 	{
-		draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
-		draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
+		draw_line_width_color (xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
+		draw_line_width_color (xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
 		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, 1);
 	}
 	else
@@ -67,15 +68,15 @@ else
 #region /*Draw arrow when player is outside top view*/
 if (y<camera_get_view_y(view_camera[view_current]))
 {
-	draw_set_color(c_black);
+	draw_set_color (c_black);
 	draw_arrow(x,camera_get_view_y(view_camera[view_current])+16,x,camera_get_view_y(view_camera[view_current])-2,30);
-	draw_set_color(c_white);
+	draw_set_color (c_white);
 	draw_arrow(x,camera_get_view_y(view_camera[view_current])+16,x,camera_get_view_y(view_camera[view_current]),20);
-	draw_circle_color(x,camera_get_view_y(view_camera[view_current])+32,24,c_black,c_black,true);
-	draw_circle_color(x,camera_get_view_y(view_camera[view_current])+32,22,c_white,c_white,true);
+	draw_circle_color (x,camera_get_view_y(view_camera[view_current])+32,24,c_black,c_black,true);
+	draw_circle_color (x,camera_get_view_y(view_camera[view_current])+32,22,c_white,c_white,true);
 	
 	if (assist_invincible = false)
-	and(invincible>60)
+	and (invincible>60)
 	{
 		if (invincible<240)
 		{
@@ -102,17 +103,17 @@ if (y<camera_get_view_y(view_camera[view_current]))
 
 #region /*Draw arrow when player is outside bottom view*/
 if (y>camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
-and(y<room_height)
+and (y<room_height)
 {
-	draw_set_color(c_black);
-	draw_arrow(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-16,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+2,30);
-	draw_set_color(c_white);
-	draw_arrow(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-16,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),20);
-	draw_circle_color(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,24,c_black,c_black,true);
-	draw_circle_color(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,22,c_white,c_white,true);
+	draw_set_color (c_black);
+	draw_arrow(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]) - 16,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+2,30);
+	draw_set_color (c_white);
+	draw_arrow(x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]) - 16,x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]),20);
+	draw_circle_color (x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,24,c_black,c_black,true);
+	draw_circle_color (x,camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])-32,22,c_white,c_white,true);
 	
 	if (assist_invincible = false)
-	and(invincible>60)
+	and (invincible>60)
 	{
 		if (invincible<240)
 		{
@@ -204,8 +205,8 @@ if (takendamage >= takendamage_freezetime)
 	}
 }
 if (takendamage >= 100)
-and(die = false)
-and(hp > 0)
+and (die = false)
+and (hp > 0)
 {
 	audio_play_sound(voice_damage, 0, 0);
 	audio_sound_gain(voice_damage, global.voices_volume, 0);
@@ -234,22 +235,22 @@ else
 
 #region /*Blink red when only having 1 HP left and no heart balloon*/
 if (redblinktimer>25)
-and(have_heart_balloon=false)
-and(hp<=1)
-and(max_hp>=2)
-and(sprite_index > 0)
+and (have_heart_balloon=false)
+and (hp<=1)
+and (max_hp>=2)
+and (sprite_index > 0)
 and (intro_animation = "")
 {
 	draw_sprite_ext(sprite_index,image_index,xx+random_range(-8,+8),yy+random_range(-8,+8),draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,c_red,image_alpha);
 }
 else
 if (takendamage%2==0)
-and(sprite_index > 0)
+and (sprite_index > 0)
 and (intro_animation = "")
 {
 	draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,image_blend,image_alpha);
 	if (hp<=1)
-	and(max_hp>=2)
+	and (max_hp>=2)
 	{
 		draw_sprite_ext(sprite_index,image_index,xx,yy,draw_xscale*default_xscale*sign(image_xscale),draw_yscale*default_yscale,angle,c_red,0.1);
 	}
@@ -275,8 +276,8 @@ if (global.show_collision_mask = true)
 	{
 		draw_sprite_ext(sprite_mask, 0, x, y, 1, 1, 0, c_white, 1);
 	}
-	draw_rectangle_color(x-2, y, x+2, y, c_red, c_red, c_red, c_red, false);
-	draw_rectangle_color(x, y-2, x, y+2, c_red, c_red, c_red, c_red, false);
+	draw_rectangle_color (x-2, y, x+2, y, c_red, c_red, c_red, c_red, false);
+	draw_rectangle_color (x, y-2, x, y+2, c_red, c_red, c_red, c_red, false);
 	image_alpha = 0.5;
 }
 else
@@ -323,7 +324,7 @@ if (assist_invincible = false)
 		invincible-=1;
 	}
 	if (invincible>60)
-	and(sprite_index>0)
+	and (sprite_index>0)
 	{
 		if (invincible<240)
 		{
@@ -361,7 +362,7 @@ if (smooth_teleport<1)
 }
 else
 if (stomp_spin=true)
-or(spring=true)
+or (spring=true)
 {
 	xx=lerp(xx,x,0.4);
 	yy=lerp(yy,y,0.4);
@@ -374,63 +375,71 @@ else
 #endregion /*Don't make it look like the player is teleporting when the plyaer teleports END*/
 
 #region /*Homing Attack*/
-if (allow_homing_tongue=true)
+if (allow_homing_attack = true)
 {
-
+	
 	#region /*Homing Enemy*/
-	if (asset_get_type("obj_wall")==asset_object)
-	and(!place_meeting(x,y+1,obj_wall))
-	and(stick_to_wall=false)
-	and(climb=false)
-	and(horizontal_rope_climb=false)
-	and(asset_get_type("obj_enemy")==asset_object)
-	and(instance_exists(obj_enemy))
-	and(!collision_line(x,y,instance_nearest(x,y,obj_enemy).x,instance_nearest(x,y,obj_enemy).y,obj_wall,false,true))
-	and(distance_to_object(obj_enemy)<hoverstomp_distance)
-	and(instance_nearest(x,y,obj_enemy).bbox_bottom>y)
-	and(instance_nearest(x,y,obj_enemy).die=false)
+	if (asset_get_type("obj_wall") == asset_object)
+	and (!place_meeting(x, y + 1, obj_wall))
+	and (asset_get_type("obj_semisolid_platform") == asset_object)
+	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	and (stick_to_wall = false)
+	and (climb = false)
+	and (horizontal_rope_climb = false)
+	and (asset_get_type("obj_enemy") == asset_object)
+	and (instance_exists(obj_enemy))
+	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
+	and (distance_to_object(obj_enemy) < hoverstomp_distance)
+	and (instance_nearest(x, y, obj_enemy).bbox_bottom>y)
+	and (instance_nearest(x, y, obj_enemy).die = false)
 	{
-		aim_image_index+=1;
-		if (asset_get_type("spr_aim")==asset_sprite)
+		aim_image_index += 1;
+		if (asset_get_type("spr_aim") == asset_sprite)
 		{
-			draw_sprite_ext(spr_aim,aim_image_index,instance_nearest(x,y,obj_enemy).x,instance_nearest(x,y,obj_enemy).y,1,1,0,c_white,1);
+			draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_circle_color(instance_nearest(x,y,obj_enemy).x,instance_nearest(x,y,obj_enemy).y,32,c_lime,c_lime,true);
+			draw_circle_color (instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 32, c_lime, c_lime, true);
 		}
 	}
 	#endregion /*Homing Enemy END*/
-
-	#region /*Homing Spring*/
+	
 	else
-	if (asset_get_type("obj_wall")==asset_object)
-	and(!place_meeting(x,y+1,obj_wall))
-	and(spring=false)
-	and(stick_to_wall=false)
-	and(climb=false)
-	and(horizontal_rope_climb=false)
-	and(asset_get_type("obj_spring")==asset_object)
-	and(instance_exists(obj_spring))
-	and(!collision_line(x,y,instance_nearest(x,y,obj_spring).x,instance_nearest(x,y,obj_spring).y,obj_wall,false,true))
-	and(distance_to_object(obj_spring)<hoverstomp_distance)
-	and(instance_nearest(x,y,obj_spring).bbox_bottom>y)
+	
+	#region /*Homing Spring*/
+	if (asset_get_type("obj_wall") == asset_object)
+	and (asset_get_type("obj_semisolid_platform") == asset_object)
+	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	and (!place_meeting(x, y + 1, obj_wall))
+	and (stick_to_wall = false)
+	and (climb = false)
+	and (horizontal_rope_climb = false)
+	and (asset_get_type("obj_spring") == asset_object)
+	and (instance_exists(obj_spring))
+	and (!collision_line(x, y, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, obj_wall, false, true))
+	and (distance_to_object(obj_spring) < hoverstomp_distance)
+	and (instance_nearest(x, y, obj_spring).bbox_bottom > y)
 	{
-		aim_image_index+=1;
-		if (asset_get_type("spr_aim")==asset_sprite)
+		aim_image_index += 1;
+		if (asset_get_type("spr_aim") == asset_sprite)
 		{
-			draw_sprite_ext(spr_aim,aim_image_index,instance_nearest(x,y,obj_spring).x,instance_nearest(x,y,obj_spring).y,1,1,0,c_white,1);
+			draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_circle_color(instance_nearest(x,y,obj_spring).x,instance_nearest(x,y,obj_spring).y,32,c_lime,c_lime,true);
+			draw_circle_color (instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 32, c_lime, c_lime, true);
 		}
 	}
 	#endregion /*Homing Spring END*/
 
 	else
 	{
-		aim_image_index=0;
+		aim_image_index = 0;
 	}
 }
 #endregion /*Homing Attack END*/
@@ -490,11 +499,11 @@ or (instance_number(obj_player_die)>=1) /*If there is any other player die objec
 
 #region /*If player has more hp, show that*/
 if (hp > 0)
-and(max_hp > 1)
+and (max_hp > 1)
 and (global.assist_enable = true)
 and (global.assist_invincible = false)
 or (hp > 0)
-and(max_hp > 1)
+and (max_hp > 1)
 and (global.assist_enable = false)
 {
 	draw_set_halign(fa_center);

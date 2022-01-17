@@ -15,8 +15,8 @@ draw_yscale = lerp(draw_yscale, 1, 0.1);
 
 #region /*Kill enemy if it's inside the wall*/
 if (position_meeting(x, y, obj_wall))
-and(die = false)
-and(draw_xscale>=0.8)
+and (die = false)
+and (draw_xscale>=0.8)
 {
 	flat = false;
 	die = true;
