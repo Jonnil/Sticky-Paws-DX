@@ -591,7 +591,6 @@ else
 }
 #endregion /*If title screen should start at the level editor menu or the main menu END*/
 
-/*Level code copied to clipboard*/copy_to_clipboard_message=0;paste_from_clipboard_message=0;
 lastkey=noone;
 
 #region /*Remapping options variables*/

@@ -1,8 +1,7 @@
 /*Save Level Information like if you have cleared the level or if you have a checkpoint*/
 function scr_savelevel()
 {
-	if (global.file >= 1)
-	and (global.character_select_in_this_menu = "main_game")
+	if (global.character_select_in_this_menu = "main_game")
 	{
 		ini_open("file" + string(global.file) + ".ini");
 		

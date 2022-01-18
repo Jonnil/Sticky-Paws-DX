@@ -23,8 +23,7 @@ default_xscale=1;
 default_yscale=1;
 
 #region /*Save how many times you have died*/
-if (global.file >= 1)
-and (global.character_select_in_this_menu = "main_game")
+if (global.character_select_in_this_menu = "main_game")
 {
 	ini_open("file" + string(global.file) + ".ini");
 	ini_write_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"number_of_deaths",ini_read_real(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index),"number_of_deaths",0)+1);

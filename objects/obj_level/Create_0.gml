@@ -12,8 +12,7 @@ increase_number_of_levels_cleared = true;
 
 alarm[0] = 1;
 
-if (global.file >= 1)
-and (file_exists("file" + string(global.file) + ".ini"))
+if (file_exists("file" + string(global.file) + ".ini"))
 {
 	ini_open("file" + string(global.file) + ".ini");
 	#region /*Level Load*/
@@ -69,7 +68,6 @@ and (file_exists("file" + string(global.file) + ".ini"))
 	
 }
 else
-if (global.file >= 1)
 {
 	ini_open("file" + string(global.file) + ".ini");
 	ini_write_string(ds_list_find_value(global.all_loaded_main_levels,level), "clear_rate", "closed");
@@ -94,27 +92,4 @@ if (global.file >= 1)
 	timeattack_realmillisecond = 999999999;
 	level_score = 0;
 	ini_close();
-}
-else
-{
-	clear_rate = "closed";
-	number_of_deaths = 0;
-	number_of_clears = 0;
-	big_collectible1 = false;
-	big_collectible2 = false;
-	big_collectible3 = false;
-	big_collectible4 = false;
-	big_collectible5 = false;
-	lives_until_assist = 0;
-	x_checkpoint = false;
-	y_checkpoint = false;
-	checkpoint_millisecond = 0;
-	checkpoint_second = 0;
-	checkpoint_minute = 0;
-	checkpoint_realmillisecond = 0;
-	timeattack_millisecond = 0;
-	timeattack_second = 0;
-	timeattack_minute = 0;
-	timeattack_realmillisecond = 999999999;
-	level_score = 0;
 }

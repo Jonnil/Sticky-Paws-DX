@@ -747,7 +747,7 @@ and (stop_at_level = false)
 	stop_at_level = true;
 	x = instance_nearest(x, y, obj_level).x;
 	y = instance_nearest(x, y, obj_level).y;
-	global.current_level_clear_rate = instance_nearest(x,y,obj_level).clear_rate; /*Copy the level clear rate to global current clear rate variable for use inside levels, like if a into animation should play or not. Put this code as the last step before closing bracket*/
+	global.current_level_clear_rate = instance_nearest(x,y,obj_level).clear_rate; /*Set the level clear rate to global current clear rate variable for use inside levels, like if a into animation should play or not. Put this code as the last step before closing bracket*/
 }
 if (instance_exists(obj_level))
 and (!place_meeting(x,y,obj_level))

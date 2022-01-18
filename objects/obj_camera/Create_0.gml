@@ -351,6 +351,9 @@ and (room != room_title)
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music.ogg"))
 	and (global.character_select_in_this_menu = "main_game")
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music.ogg"))
+	and (global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template = true)
 	{
 		global.music = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music.ogg");
 	}
@@ -371,6 +374,9 @@ and (room != room_title)
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music_underwater.ogg"))
 	and (global.character_select_in_this_menu = "main_game")
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music_underwater.ogg"))
+	and (global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template = true)
 	{
 		global.music_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music_underwater.ogg");
 	}
@@ -391,6 +397,9 @@ and (room != room_title)
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience.ogg"))
 	and (global.character_select_in_this_menu = "main_game")
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience.ogg"))
+	and (global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template = true)
 	{
 		global.ambience = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience.ogg");
 	}
@@ -411,6 +420,9 @@ and (room != room_title)
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience_underwater.ogg"))
 	and (global.character_select_in_this_menu = "main_game")
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience_underwater.ogg"))
+	and (global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template = true)
 	{
 		global.ambience_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience_underwater.ogg");
 	}

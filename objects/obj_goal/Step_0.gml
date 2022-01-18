@@ -33,7 +33,6 @@ and (!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y
 	if (asset_get_type("room_leveleditor")==asset_room)
 	and (room = room_leveleditor)
 	and (global.character_select_in_this_menu = "main_game")
-	and (global.file >= 1)
 	{
 		global.x_checkpoint = 0;
 		global.y_checkpoint = 0;
