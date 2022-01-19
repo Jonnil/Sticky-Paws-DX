@@ -101,7 +101,7 @@ if (quit_level_editor = false)
 					quit_level_editor=false;
 					can_input_level_name=false;
 					pause=false;
-					can_navigate=false;
+					can_navigate = false;
 				}
 			}
 			#endregion /*If menu is on continue END*/
@@ -171,7 +171,7 @@ if (quit_level_editor = false)
 					quit_level_editor=false;
 					can_input_level_name=false;
 					pause=false;
-					can_navigate=false;
+					can_navigate = false;
 				}
 			}
 			#endregion /*If menu is on options END*/
@@ -231,7 +231,7 @@ if (quit_level_editor = false)
 					quit_level_editor=false;
 					can_input_level_name=false;
 					pause=false;
-					can_navigate=false;
+					can_navigate = false;
 				}
 			}
 			#endregion /*If menu is on quit END*/

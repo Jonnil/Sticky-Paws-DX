@@ -9,7 +9,7 @@ or (!file_exists("file" + string(current_file) + ".ini"))
 }
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
-if (asset_get_type("obj_camera")==asset_object)
+if (asset_get_type("obj_camera") == asset_object)
 and (!instance_exists(obj_camera))
 and (keyboard_check_pressed(global.fullscreen_key))
 {
@@ -236,7 +236,7 @@ or (gamepad_button_check_pressed(0, gp_start))
 or (!window_has_focus())
 and (global.automatically_pause_when_window_is_unfocused = true)
 {
-	if (asset_get_type("room_pause")==asset_room)
+	if (asset_get_type("room_pause") == asset_room)
 	{
 		global.pause_player = 0;
 		global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
@@ -248,7 +248,7 @@ and (global.automatically_pause_when_window_is_unfocused = true)
 }
 else
 if (gamepad_button_check_pressed(1, gp_start))
-and (asset_get_type("room_pause")==asset_room)
+and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 1;
 	global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
@@ -259,7 +259,7 @@ and (asset_get_type("room_pause")==asset_room)
 }
 else
 if (gamepad_button_check_pressed(2, gp_start))
-and (asset_get_type("room_pause")==asset_room)
+and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 2;
 	global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
@@ -270,7 +270,7 @@ and (asset_get_type("room_pause")==asset_room)
 }
 else
 if (gamepad_button_check_pressed(3, gp_start))
-and (asset_get_type("room_pause")==asset_room)
+and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 3;
 	global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);

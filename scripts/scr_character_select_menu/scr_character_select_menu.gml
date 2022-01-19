@@ -556,7 +556,7 @@ function scr_character_select_menu()
 	max_number_of_colors = 15;/*Update this whenever you add more colors!*/
 	
 	#region /*Give feedback that you have selected a character*/
-	if (asset_get_type("spr_select_character_background")==asset_sprite)
+	if (asset_get_type("spr_select_character_background") == asset_sprite)
 	{
 		if (player1_accept_selection = true)
 		{
@@ -614,14 +614,14 @@ function scr_character_select_menu()
 		
 			#region /*Key A*/
 			if (gamepad_is_connected(0))
-			and (asset_get_type("spr_xbox_buttons")==asset_sprite)
+			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 			and (global.controls_used_for_menu_navigation = "controller")
 			{
 				draw_sprite_ext(spr_xbox_buttons,0,window_get_width()/2 + player1_display_x + 70,window_get_height()/2,0.5,0.5,0,c_white,1);
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player1_key_jump > noone)
 					{
@@ -669,13 +669,13 @@ function scr_character_select_menu()
 		
 			#region /*Key A*/
 			if (gamepad_is_connected(1))
-			and (asset_get_type("spr_xbox_buttons")==asset_sprite)
+			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_sprite_ext(spr_xbox_buttons,1,window_get_width()/2 + player1_display_x + 70,window_get_height()/2,0.5,0.5,0,c_white,1);
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player2_key_jump > noone)
 					{
@@ -723,13 +723,13 @@ function scr_character_select_menu()
 		
 			#region /*Key A*/
 			if (gamepad_is_connected(2))
-			and (asset_get_type("spr_xbox_buttons")==asset_sprite)
+			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_sprite_ext(spr_xbox_buttons,2,window_get_width()/2 + player1_display_x + 70,window_get_height()/2,0.5,0.5,0,c_white,1);
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player3_key_jump > noone)
 					{
@@ -777,13 +777,13 @@ function scr_character_select_menu()
 		
 			#region /*Key A*/
 			if (gamepad_is_connected(3))
-			and (asset_get_type("spr_xbox_buttons")==asset_sprite)
+			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 			{
 				draw_sprite_ext(spr_xbox_buttons,3,window_get_width()/2 + player4_display_x + 70,window_get_height()/2,0.5,0.5,0,c_white,1);
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player4_key_jump > noone)
 					{
@@ -1208,7 +1208,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player1_display_x - arrow_offset,window_get_height()/2 + skin_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player1_key_left > noone)
 							{
@@ -1245,7 +1245,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player1_display_x + arrow_offset,window_get_height()/2 + skin_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player1_key_right > noone)
 							{
@@ -1606,7 +1606,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player2_display_x - arrow_offset,window_get_height()/2 + skin_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player2_key_left > noone)
 							{
@@ -1643,7 +1643,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player2_display_x + arrow_offset,window_get_height()/2 + skin_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player2_key_right > noone)
 							{
@@ -2004,7 +2004,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player3_display_x - arrow_offset,window_get_height()/2 + skin_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player3_key_left > noone)
 							{
@@ -2041,7 +2041,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player3_display_x + arrow_offset,window_get_height()/2 + skin_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player3_key_right > noone)
 							{
@@ -2402,7 +2402,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player4_display_x - arrow_offset,window_get_height()/2 + skin_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player4_key_left > noone)
 							{
@@ -2439,7 +2439,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player4_display_x + arrow_offset,window_get_height()/2 + skin_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player4_key_right > noone)
 							{
@@ -2603,7 +2603,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player1_display_x - arrow_offset,window_get_height()/2 + voicepack_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player1_key_left > noone)
 							{
@@ -2640,7 +2640,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player1_display_x + arrow_offset,window_get_height()/2 + voicepack_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player1_key_right > noone)
 							{
@@ -2791,7 +2791,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player2_display_x - arrow_offset,window_get_height()/2 + voicepack_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player2_key_left > noone)
 							{
@@ -2828,7 +2828,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player2_display_x + arrow_offset,window_get_height()/2 + voicepack_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player2_key_right > noone)
 							{
@@ -2979,7 +2979,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player3_display_x - arrow_offset,window_get_height()/2 + voicepack_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player3_key_left > noone)
 							{
@@ -3016,7 +3016,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player3_display_x + arrow_offset,window_get_height()/2 + voicepack_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player3_key_right > noone)
 							{
@@ -3167,7 +3167,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player4_display_x - arrow_offset,window_get_height()/2 + voicepack_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player4_key_left > noone)
 							{
@@ -3204,7 +3204,7 @@ function scr_character_select_menu()
 							draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player4_display_x + arrow_offset,window_get_height()/2 + voicepack_y,0.5,0.5,0,c_white,1);
 						}
 						else
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player4_key_right > noone)
 							{
@@ -3280,7 +3280,7 @@ function scr_character_select_menu()
 						draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player1_display_x - arrow_offset,window_get_height()/2,0.5,0.5,0,c_white,1);
 					}
 					else
-					if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 					{
 						if (global.player1_key_left > noone)
 						{
@@ -3318,7 +3318,7 @@ function scr_character_select_menu()
 						draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player1_display_x + arrow_offset,window_get_height()/2,0.5,0.5,0,c_white,1);
 					}
 					else
-					if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 					{
 						if (global.player1_key_right > noone)
 						{
@@ -3377,7 +3377,7 @@ function scr_character_select_menu()
 						draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player2_display_x - arrow_offset,window_get_height()/2,0.5,0.5,0,c_white,1);
 					}
 					else
-					if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 					{
 						if (global.player2_key_left > noone)
 						{
@@ -3414,7 +3414,7 @@ function scr_character_select_menu()
 						draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player2_display_x + arrow_offset,window_get_height()/2,0.5,0.5,0,c_white,1);
 					}
 					else
-					if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 					{
 						if (global.player2_key_right > noone)
 						{
@@ -3473,7 +3473,7 @@ function scr_character_select_menu()
 						draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player3_display_x - arrow_offset,window_get_height()/2,0.5,0.5,0,c_white,1);
 					}
 					else
-					if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 					{
 						if (global.player3_key_left > noone)
 						{
@@ -3510,7 +3510,7 @@ function scr_character_select_menu()
 						draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player3_display_x + arrow_offset,window_get_height()/2,0.5,0.5,0,c_white,1);
 					}
 					else
-					if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 					{
 						if (global.player3_key_right > noone)
 						{
@@ -3569,7 +3569,7 @@ function scr_character_select_menu()
 						draw_sprite_ext(spr_xbox_buttons,4,window_get_width()/2 + player4_display_x - arrow_offset,window_get_height()/2,0.5,0.5,0,c_white,1);
 					}
 					else
-					if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 					{
 						if (global.player4_key_left > noone)
 						{
@@ -3606,7 +3606,7 @@ function scr_character_select_menu()
 						draw_sprite_ext(spr_xbox_buttons,6,window_get_width()/2 + player4_display_x + arrow_offset,window_get_height()/2,0.5,0.5,0,c_white,1);
 					}
 					else
-					if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 					{
 						if (global.player4_key_right > noone)
 						{
@@ -3678,14 +3678,14 @@ function scr_character_select_menu()
 	
 			#region /*Key A*/
 			if (gamepad_is_connected(0))
-			and (asset_get_type("spr_xbox_buttons")==asset_sprite)
+			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 			and (global.controls_used_for_menu_navigation = "controller")
 			{
 				draw_sprite_ext(spr_xbox_buttons,0,window_get_width()/2 + player1_display_x + 40,window_get_height()/2+150,0.5,0.5,0,c_white,1);
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player1_key_jump > noone)
 					{
@@ -3733,7 +3733,7 @@ function scr_character_select_menu()
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player1_key_dive > noone)
 					{
@@ -3801,7 +3801,7 @@ function scr_character_select_menu()
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player2_key_jump > noone)
 					{
@@ -3848,7 +3848,7 @@ function scr_character_select_menu()
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player2_key_dive > noone)
 					{
@@ -3916,7 +3916,7 @@ function scr_character_select_menu()
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player3_key_jump > noone)
 					{
@@ -3963,7 +3963,7 @@ function scr_character_select_menu()
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player3_key_dive > noone)
 					{
@@ -4031,7 +4031,7 @@ function scr_character_select_menu()
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player4_key_jump > noone)
 					{
@@ -4092,7 +4092,7 @@ function scr_character_select_menu()
 			}
 			else
 			{
-				if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					if (global.player4_key_dive > noone)
 					{
@@ -4150,7 +4150,7 @@ function scr_character_select_menu()
 		}
 		else
 		{
-			if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
 				if (global.player1_key_jump > noone)
 				{
@@ -4196,7 +4196,7 @@ function scr_character_select_menu()
 		}
 		else
 		{
-			if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
 				if (global.player2_key_jump > noone)
 				{
@@ -4242,7 +4242,7 @@ function scr_character_select_menu()
 		}
 		else
 		{
-			if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
 				if (global.player3_key_jump > noone)
 				{
@@ -4288,7 +4288,7 @@ function scr_character_select_menu()
 		}
 		else
 		{
-			if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
 				if (global.player4_key_jump > noone)
 				{
@@ -6801,10 +6801,18 @@ and (player4_accept_selection >= 0)
 		and (menu_delay = 0)
 		{
 			ini_open("config.ini"); /*Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame*/
-			ini_write_string("config","character_for_player_1",global.character_for_player_1);
-			ini_write_string("config","character_for_player_2",global.character_for_player_2);
-			ini_write_string("config","character_for_player_3",global.character_for_player_3);
-			ini_write_string("config","character_for_player_4",global.character_for_player_4);
+			ini_write_real("config","character_index_player_1",global.character_index[0]);
+			ini_write_real("config","character_index_player_2",global.character_index[1]);
+			ini_write_real("config","character_index_player_3",global.character_index[2]);
+			ini_write_real("config","character_index_player_4",global.character_index[3]);
+			ini_write_real("config","skin_for_player_1",global.skin_for_player_1);
+			ini_write_real("config","skin_for_player_2",global.skin_for_player_2);
+			ini_write_real("config","skin_for_player_3",global.skin_for_player_3);
+			ini_write_real("config","skin_for_player_4",global.skin_for_player_4);
+			ini_write_string("config","player1_name",global.player1_name);
+			ini_write_string("config","player2_name",global.player2_name);
+			ini_write_string("config","player3_name",global.player3_name);
+			ini_write_string("config","player4_name",global.player4_name);
 			ini_close();
 			if (global.character_select_in_this_menu = "main_game")
 			{
@@ -7117,7 +7125,7 @@ and (player4_accept_selection >= 0)
 		and (can_input_player2_name = false)
 		and (can_input_player3_name = false)
 		and (can_input_player4_name = false)
-		and (asset_get_type("obj_camera")==asset_object)
+		and (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{
 			if (obj_camera.iris_xscale>=1)
@@ -7169,7 +7177,7 @@ and (player4_accept_selection >= 0)
 					}
 					else
 					{
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player1_key_jump > noone)
 							{
@@ -7205,7 +7213,7 @@ and (player4_accept_selection >= 0)
 					}
 					else
 					{
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player2_key_jump > noone)
 							{
@@ -7241,7 +7249,7 @@ and (player4_accept_selection >= 0)
 					}
 					else
 					{
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player3_key_jump > noone)
 							{
@@ -7277,7 +7285,7 @@ and (player4_accept_selection >= 0)
 					}
 					else
 					{
-						if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
 							if (global.player4_key_jump > noone)
 							{

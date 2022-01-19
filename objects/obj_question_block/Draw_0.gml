@@ -16,7 +16,7 @@ if (bounceup=false)
 		if (empty=false)
 		{
 			bounceup=true;
-			if (asset_get_type("obj_blockbreak")==asset_object)
+			if (asset_get_type("obj_blockbreak") == asset_object)
 			{
 				instance_create_depth(x,y-32,0,obj_blockbreak);
 			}
@@ -26,9 +26,9 @@ if (bounceup=false)
 			{
 				empty=true;
 				if (brick_block = false)
-				and (asset_get_type("obj_basic_collectible")==asset_object)
+				and (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					if (asset_get_type("snd_basic_collectible")==asset_sound)
+					if (asset_get_type("snd_basic_collectible") == asset_sound)
 					{
 						audio_play_sound(snd_basic_collectible,0,0);
 					}
@@ -173,7 +173,7 @@ if (bounceup=false)
 			if (item_inside = "heart_balloon")
 			{
 				empty=true;
-				if (asset_get_type("obj_heart_balloon")==asset_object)
+				if (asset_get_type("obj_heart_balloon") == asset_object)
 				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;
@@ -192,7 +192,7 @@ if (bounceup=false)
 			if (item_inside = "1-up")
 			{
 				empty=true;
-				if (asset_get_type("obj_extra_life_pickup")==asset_object)
+				if (asset_get_type("obj_extra_life_pickup") == asset_object)
 				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;
@@ -212,7 +212,7 @@ if (bounceup=false)
 			if (item_inside = "2-up")
 			{
 				empty=true;
-				if (asset_get_type("obj_extra_life_pickup")==asset_object)
+				if (asset_get_type("obj_extra_life_pickup") == asset_object)
 				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;
@@ -232,7 +232,7 @@ if (bounceup=false)
 			if (item_inside = "3-up")
 			{
 				empty=true;
-				if (asset_get_type("obj_extra_life_pickup")==asset_object)
+				if (asset_get_type("obj_extra_life_pickup") == asset_object)
 				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;
@@ -252,7 +252,7 @@ if (bounceup=false)
 			if (item_inside = "invincibility_powerup")
 			{
 				empty=true;
-				if (asset_get_type("obj_invincibility_powerup")==asset_object)
+				if (asset_get_type("obj_invincibility_powerup") == asset_object)
 				and (!place_meeting(x,y-1,obj_wall))
 				{
 					var obj;

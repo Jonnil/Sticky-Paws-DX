@@ -630,13 +630,13 @@ function scr_options_menu()
 	{
 
 	#region /*Set a default font*/
-	if (asset_get_type("font_other_languages")==asset_font)
+	if (asset_get_type("font_other_languages") == asset_font)
 	and (global.language_localization=localization.ar_sa)
 	{
 		draw_set_font(font_other_languages);
 	}
 	else
-	if (asset_get_type("font_default")==asset_font)
+	if (asset_get_type("font_default") == asset_font)
 	{
 		draw_set_font(font_default);
 	}
@@ -1582,7 +1582,7 @@ function scr_options_menu()
 	menu_y_show_controls = 64*21+32;
 	
 	#region /*Show what key is used*/
-	if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	{
 		image_speed = 0;
 		key1_x = 800;
@@ -6100,332 +6100,46 @@ function scr_options_menu()
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-
-	/*Language y positions*/
-	var pos_ar_sa=1;
-	var pos_id_id=2;
-	var pos_da_dk=3;
-	var pos_de_de=4;
-	var pos_en_gb=5;
-	var pos_en_us=6;
-	var pos_es_es=7;
-	var pos_es_mx=8;
-	var pos_fr_ca=9;
-	var pos_fr_fr=10;
-	var pos_it_it=11;
-	var pos_hu_hu=12;
-	var pos_nl_nl=13;
-	var pos_nb_no=14;
-	var pos_pl_pl=15;
-	var pos_pt_br=16;
-	var pos_pt_pt=17;
-	var pos_sk_sk=18;
-	var pos_fi_fi=19;
-	var pos_sv_se=20;
-	var pos_th_th=21;
-	var pos_tr_tr=22;
-	var pos_cs_cz=23;
-	var pos_el_gr=24;
-	var pos_bg_bg=25;
-	var pos_ru_ru=26;
-	var pos_uk_ua=27;
-	var pos_ja_jp=28;
-	var pos_zh_cn=29;
-	var pos_zh_tw=30;
-	var pos_ko_kr=31;
-	
-	var i;
-	for (i= 0;i<array_length_1d(languages);i+=1;)
-	{
-		draw_menu_button(500,42*i+42,languages[i],noone,noone);
-	}
-	
-	#region /*Arabic*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_ar_sa) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_ar_sa)+19)){
-	//menu = "language_ar_sa";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.ar_sa;menu_delay = 3;}}
-	//if (global.language_localization=localization.ar_sa){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_ar_sa) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_ar_sa)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_ar_sa"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_ar_sa) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_ar_sa)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.ar_sa){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_ar_sa),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_ar_sa),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_ar_sa"){if (key_down)and (menu_delay= 0){menu = "language_id_id";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.ar_sa;}
-	///*Text*/if (asset_get_type("font_other_languages")==asset_font){draw_set_font(font_other_languages);}draw_text_outlined(450,20+(40*pos_ar_sa),"اللغة العربية",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_other_languages")==asset_font){draw_set_font(font_other_languages);}draw_text_outlined(450,20+(40*pos_ar_sa),"اللغة العربية",global.default_text_size*1,c_black,c_white,1);}
-	#endregion /*Arabic END*/
-
-	#region /*Indonesian*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_id_id) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_id_id)+19)){
-	//menu = "language_id_id";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.id_id;menu_delay = 3;}}
-	//if (global.language_localization=localization.id_id){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_id_id) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_id_id)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_id_id"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_id_id) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_id_id)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.id_id){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_id_id),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_id_id),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_id_id"){if (key_up)and (menu_delay= 0){menu = "language_ar_sa";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_da_dk";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.id_id;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_id_id),"Bahasa Indonesia (Indonesia)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_id_id),"Bahasa Indonesia (Indonesia)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Indonesian END*/
-	
-	#region /*Danish*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_da_dk) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_da_dk)+19)){
-	//menu = "language_da_dk";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.da_dk;menu_delay = 3;}}
-	//if (global.language_localization=localization.da_dk){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_da_dk) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_da_dk)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_da_dk"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_da_dk) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_da_dk)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.da_dk){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_da_dk),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_da_dk),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_da_dk"){if (key_up)and (menu_delay= 0){menu = "language_id_id";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_de_de";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.da_dk;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_da_dk),"Dansk (DA)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_da_dk),"Dansk (DA)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Danish END*/
-	
-	#region /*German*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_de_de) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_de_de)+19)){
-	//menu = "language_de_de";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.de_de;menu_delay = 3;}}
-	//if (global.language_localization=localization.de_de){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_de_de) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_de_de)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_de_de"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_de_de) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_de_de)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.de_de){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_de_de),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_de_de),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_de_de"){if (key_up)and (menu_delay= 0){menu = "language_da_dk";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_en_gb";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.de_de;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_de_de),"Deutsch (Deutschland)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_de_de),"Deutsch (Deutschland)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*German END*/
-	
-	#region /*British English*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_en_gb) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_en_gb)+19)){
-	//menu = "language_en_gb";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.en_gb;menu_delay = 3;}}
-	//if (global.language_localization=localization.en_gb){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_en_gb) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_en_gb)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_en_gb"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_en_gb) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_en_gb)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.en_gb){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_en_gb),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_en_gb),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_en_gb"){if (key_up)and (menu_delay= 0){menu = "language_de_de";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_en_us";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.en_gb;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_en_gb),"English (UK)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_en_gb),"English (UK)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*British English END*/
-	
-	#region /*American English*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_en_us) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_en_us)+19)){
-	//menu = "language_en_us";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.en_us;menu_delay = 3;}}
-	//if (global.language_localization=localization.en_us){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_en_us) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_en_us)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_en_us"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_en_us) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_en_us)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.en_us){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_en_us),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_en_us),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_en_us"){if (key_up)and (menu_delay= 0){menu = "language_en_gb";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_es_es";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.en_us;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_en_us),"English (US)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_en_us),"English (US)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*American English END*/
-
-	#region /*Spanish*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_es_es) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_es_es)+19)){
-	//menu = "language_es_es";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.es_es;menu_delay = 3;}}
-	//if (global.language_localization=localization.es_es){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_es_es) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_es_es)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_es_es"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_es_es) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_es_es)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.es_es){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_es_es),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_es_es),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_es_es"){if (key_up)and (menu_delay= 0){menu = "language_en_us";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_es_mx";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.es_es;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_es_es),"Español (España)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_es_es),"Español (España)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Spanish END*/
-	
-	#region /*Mexican Spanish*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_es_mx) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_es_mx)+19)){
-	//menu = "language_es_mx";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.es_mx;menu_delay = 3;}}
-	//if (global.language_localization=localization.es_mx){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_es_mx) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_es_mx)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_es_mx"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_es_mx) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_es_mx)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.es_mx){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_es_mx),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_es_mx),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_es_mx"){if (key_up)and (menu_delay= 0){menu = "language_es_es";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_fr_ca";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.es_mx;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_es_mx),"Español (México)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_es_mx),"Español (México)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Mexican Spanish END*/
-	
-	#region /*Canadian French*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_fr_ca) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_fr_ca)+19)){
-	//menu = "language_fr_ca";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.fr_ca;menu_delay = 3;}}
-	//if (global.language_localization=localization.fr_ca){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_fr_ca) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_fr_ca)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_fr_ca"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_fr_ca) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_fr_ca)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.fr_ca){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_fr_ca),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_fr_ca),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_fr_ca"){if (key_up)and (menu_delay= 0){menu = "language_es_mx";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_fr_fr";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.fr_ca;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_fr_ca),"Français (Canada)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_fr_ca),"Français (Canada)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Canadian French END*/
-
-	#region /*French*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_fr_fr) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_fr_fr)+19)){
-	//menu = "language_fr_fr";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.fr_fr;menu_delay = 3;}}
-	//if (global.language_localization=localization.fr_fr){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_fr_fr) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_fr_fr)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_fr_fr"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_fr_fr) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_fr_fr)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.fr_fr){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_fr_fr),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_fr_fr),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_fr_fr"){if (key_up)and (menu_delay= 0){menu = "language_fr_ca";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_it_it";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.fr_fr;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_fr_fr),"Français (France)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_fr_fr),"Français (France)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*French END*/
-	
-	#region /*Italian*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_it_it) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_it_it)+19)){
-	//menu = "language_it_it";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.it_it;menu_delay = 3;}}
-	//if (global.language_localization=localization.it_it){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_it_it) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_it_it)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_it_it"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_it_it) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_it_it)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.it_it){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_it_it),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_it_it),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_it_it"){if (key_up)and (menu_delay= 0){menu = "language_fr_fr";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_hu_hu";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.it_it;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_it_it),"Italiano (Italia)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_it_it),"Italiano (Italia)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Italian END*/
-	
-	#region /*Hungarian*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_hu_hu) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_hu_hu)+19)){
-	//menu = "language_hu_hu";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.hu_hu;menu_delay = 3;}}
-	//if (global.language_localization=localization.hu_hu){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_hu_hu) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_hu_hu)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_hu_hu"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_hu_hu) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_hu_hu)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.hu_hu){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_hu_hu),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_hu_hu),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_hu_hu"){if (key_up)and (menu_delay= 0){menu = "language_it_it";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_nl_nl";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.hu_hu;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_hu_hu),"Magyar (HU)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_hu_hu),"Magyar (HU)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Hungarian END*/
-	
-	#region /*Dutch*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_nl_nl) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_nl_nl)+19)){
-	//menu = "language_nl_nl";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.nl_nl;menu_delay = 3;}}
-	//if (global.language_localization=localization.nl_nl){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_nl_nl) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_nl_nl)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_nl_nl"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_nl_nl) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_nl_nl)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.nl_nl){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_nl_nl),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_nl_nl),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_nl_nl"){if (key_up)and (menu_delay= 0){menu = "language_hu_hu";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_nb_no";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.nl_nl;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_nl_nl),"Nederlands (Nederland)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_nl_nl),"Nederlands (Nederland)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Dutch END*/
-	
-	#region /*Norwegian Bokmål*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_nb_no) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_nb_no)+19)){
-	//menu = "language_nb_no";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.nb_no;menu_delay = 3;}}
-	//if (global.language_localization=localization.nb_no){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_nb_no) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_nb_no)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_nb_no"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_nb_no) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_nb_no)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.nb_no){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_nb_no),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_nb_no),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_nb_no"){if (key_up)and (menu_delay= 0){menu = "language_nl_nl";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_pl_pl";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.nb_no;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_nb_no),"Norsk bokmål (Norge)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_nb_no),"Norsk bokmål (Norge)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Norwegian Bokmål END*/
-
-	#region /*Polish*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_pl_pl) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_pl_pl)+19)){
-	//menu = "language_pl_pl";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.pl_pl;menu_delay = 3;}}
-	//if (global.language_localization=localization.pl_pl){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_pl_pl) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_pl_pl)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_pl_pl"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_pl_pl) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_pl_pl)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.pl_pl){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_pl_pl),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_pl_pl),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_pl_pl"){if (key_up)and (menu_delay= 0){menu = "language_nb_no";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_pt_br";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.pl_pl;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_pl_pl),"Polski",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_pl_pl),"Polski",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Polish END*/
-	
-	#region /*Brazilian Portuguese*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_pt_br) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_pt_br)+19)){
-	//menu = "language_pt_br";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.pt_br;menu_delay = 3;}}
-	//if (global.language_localization=localization.pt_br){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_pt_br) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_pt_br)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_pt_br"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_pt_br) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_pt_br)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.pt_br){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_pt_br),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_pt_br),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_pt_br"){if (key_up)and (menu_delay= 0){menu = "language_pl_pl";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_pt_pt";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.pt_br;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_pt_br),"Português (Brasil)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_pt_br),"Português (Brasil)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Brazilian Portuguese END*/
-	
-	#region /*Portuguese*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_pt_pt) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_pt_pt)+19)){
-	//menu = "language_pt_pt";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.pt_pt;menu_delay = 3;}}
-	//if (global.language_localization=localization.pt_pt){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_pt_pt) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_pt_pt)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_pt_pt"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_pt_pt) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_pt_pt)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.pt_pt){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_pt_pt),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_pt_pt),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_pt_pt"){if (key_up)and (menu_delay= 0){menu = "language_pt_br";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_sk_sk";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.pt_pt;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_pt_pt),"Português (Portugal)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_pt_pt),"Português (Portugal)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Portuguese END*/
-	
-	#region /*Slovak*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_sk_sk) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_sk_sk)+19)){
-	//menu = "language_sk_sk";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.sk_sk;menu_delay = 3;}}
-	//if (global.language_localization=localization.sk_sk){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_sk_sk) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_sk_sk)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_sk_sk"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_sk_sk) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_sk_sk)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.sk_sk){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_sk_sk),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_sk_sk),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_sk_sk"){if (key_up)and (menu_delay= 0){menu = "language_pt_pt";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_fi_fi";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.sk_sk;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_sk_sk),"Slovenčina",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_sk_sk),"Slovenčina",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Slovak END*/
-	
-	#region /*Finnish*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_fi_fi) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_fi_fi)+19)){
-	//menu = "language_fi_fi";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.fi_fi;menu_delay = 3;}}
-	//if (global.language_localization=localization.fi_fi){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_fi_fi) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_fi_fi)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_fi_fi"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_fi_fi) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_fi_fi)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.fi_fi){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_fi_fi),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_fi_fi),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_fi_fi"){if (key_up)and (menu_delay= 0){menu = "language_sk_sk";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_sv_se";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.fi_fi;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_fi_fi),"Suomi",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_fi_fi),"Suomi",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Finnish END*/
-	
-	#region /*Swedish*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_sv_se) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_sv_se)+19)){
-	//menu = "language_sv_se";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.sv_se;menu_delay = 3;}}
-	//if (global.language_localization=localization.sv_se){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_sv_se) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_sv_se)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_sv_se"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_sv_se) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_sv_se)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.sv_se){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_sv_se),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_sv_se),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_sv_se"){if (key_up)and (menu_delay= 0){menu = "language_fi_fi";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_th_th";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.sv_se;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_sv_se),"Svenska (Sverige)",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_sv_se),"Svenska (Sverige)",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Swedish END*/
-	
-	#region /*Thai*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_th_th) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_th_th)+19)){
-	//menu = "language_th_th";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.th_th;menu_delay = 3;}}
-	//if (global.language_localization=localization.th_th){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_th_th) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_th_th)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_th_th"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_th_th) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_th_th)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.th_th){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_th_th),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_th_th),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_th_th"){if (key_up)and (menu_delay= 0){menu = "language_sv_se";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_tr_tr";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.th_th;}
-	///*Text*/if (asset_get_type("font_other_languages")==asset_font){draw_set_font(font_other_languages);}draw_text_outlined(450,20+(40*pos_th_th),"ภาษาไทย",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_other_languages")==asset_font){draw_set_font(font_other_languages);}draw_text_outlined(450,20+(40*pos_th_th),"ภาษาไทย",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Thai END*/
-	
-	#region /*Turkish*/
-	//if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),400,20+(40*pos_tr_tr) - 19,camera_get_view_width(view_camera[view_current]),20+(40*pos_tr_tr)+19)){
-	//menu = "language_tr_tr";can_navigate_settings_sidebar=false;if (mouse_check_button_released(mb_left))and (menu_delay= 0){global.language_localization=localization.tr_tr;menu_delay = 3;}}
-	//if (global.language_localization=localization.tr_tr){/*Rectangle Selected*/draw_rectangle_color (400,20+(40*pos_tr_tr) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_tr_tr)+15,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);}
-	//if (menu = "language_tr_tr"){/*Rectangle Hover*/draw_rectangle_color (400,20+(40*pos_tr_tr) - 15,camera_get_view_width(view_camera[view_current]),20+(40*pos_tr_tr)+15,c_green,c_green,c_green,c_green,false);}
-	//if (global.language_localization=localization.tr_tr){/*Checkbox true*/draw_sprite_ext(spr_checkbox,true,410,20+(40*pos_tr_tr),0.5,0.5,0,c_white,1);}
-	//else{/*Checkbox false*/draw_sprite_ext(spr_checkbox,false,410,20+(40*pos_tr_tr),0.5,0.5,0,c_white,1);}
-	//if (menu = "language_tr_tr"){if (key_up)and (menu_delay= 0){menu = "language_th_th";menu_delay = 3;}if (key_down)and (menu_delay= 0){menu = "language_tr_tr";menu_delay = 3;}
-	///*Select Language*/if (key_a_pressed)and (menu_delay= 0){global.language_localization=localization.tr_tr;}
-	///*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_tr_tr),"Türkçe",global.default_text_size*1.1,c_black,c_white,1);
-	//}else{/*Text*/if (asset_get_type("font_default")==asset_font){draw_set_font(font_default);}draw_text_outlined(450,20+(40*pos_tr_tr),"Türkçe",global.default_text_size,c_black,c_white,1);}
-	#endregion /*Turkish END*/
-
+		
+		/*Language y positions*/
+		var pos_ar_sa = 1;
+		var pos_id_id = 2;
+		var pos_da_dk = 3;
+		var pos_de_de = 4;
+		var pos_en_gb = 5;
+		var pos_en_us = 6;
+		var pos_es_es = 7;
+		var pos_es_mx = 8;
+		var pos_fr_ca = 9;
+		var pos_fr_fr = 10;
+		var pos_it_it = 11;
+		var pos_hu_hu = 12;
+		var pos_nl_nl = 13;
+		var pos_nb_no = 14;
+		var pos_pl_pl = 15;
+		var pos_pt_br = 16;
+		var pos_pt_pt = 17;
+		var pos_sk_sk = 18;
+		var pos_fi_fi = 19;
+		var pos_sv_se = 20;
+		var pos_th_th = 21;
+		var pos_tr_tr = 22;
+		var pos_cs_cz = 23;
+		var pos_el_gr = 24;
+		var pos_bg_bg = 25;
+		var pos_ru_ru = 26;
+		var pos_uk_ua = 27;
+		var pos_ja_jp = 28;
+		var pos_zh_cn = 29;
+		var pos_zh_tw = 30;
+		var pos_ko_kr = 31;
+		var i;
+		for (i = 0;
+		i < array_length_1d(languages);
+		i += 1;)
+		{
+			draw_menu_button(500, 42 * i + 42, languages[i], noone, noone);
+		}
 	}
 	#endregion /*Language Options END*/
 	

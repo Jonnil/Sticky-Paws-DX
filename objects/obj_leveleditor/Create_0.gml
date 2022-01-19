@@ -15,17 +15,17 @@ sprite_enemy1 = global.resourcepack_sprite_basic_enemy;
 sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
 
 #region /*Create Foreground*/
-if (asset_get_type("obj_foreground1")==asset_object)
+if (asset_get_type("obj_foreground1") == asset_object)
 and (!instance_exists(obj_foreground1))
 {
 	instance_create_depth(0,0,0,obj_foreground1);
 }
-if (asset_get_type("obj_foreground2")==asset_object)
+if (asset_get_type("obj_foreground2") == asset_object)
 and (!instance_exists(obj_foreground2))
 {
 	instance_create_depth(0,0,0,obj_foreground2);
 }
-if (asset_get_type("obj_foreground_secret")==asset_object)
+if (asset_get_type("obj_foreground_secret") == asset_object)
 and (!instance_exists(obj_foreground_secret))
 {
 	instance_create_depth(0,0,0,obj_foreground_secret);
@@ -33,12 +33,12 @@ and (!instance_exists(obj_foreground_secret))
 #endregion /*Create Foreground END*/
 
 #region /*Create level height and level width objects*/
-if (asset_get_type("obj_level_height")==asset_object)
+if (asset_get_type("obj_level_height") == asset_object)
 and (!instance_exists(obj_level_height))
 {
 	instance_create_depth(0,1104,0,obj_level_height);
 }
-if (asset_get_type("obj_level_width")==asset_object)
+if (asset_get_type("obj_level_width") == asset_object)
 and (!instance_exists(obj_level_width))
 {
 	instance_create_depth(2720,0,0,obj_level_width);

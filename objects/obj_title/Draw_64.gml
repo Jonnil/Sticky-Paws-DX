@@ -284,7 +284,7 @@ and (menu_delay = 0)
 
 /*Draw Event*/
 #region /*Set a default font*/
-if (asset_get_type("font_default")==asset_font)
+if (asset_get_type("font_default") == asset_font)
 {
 	draw_set_font(font_default);
 }
@@ -297,7 +297,7 @@ and (global.controls_used_for_menu_navigation!="controller")
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	if (asset_get_type("spr_keyboard_keys")==asset_sprite)
+	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	{
 		draw_sprite_ext(spr_keyboard_keys,global.fullscreen_key,0+26-2,window_get_height()-64+version_y_pos,0.5,0.5,0,c_white,1);
 	}
@@ -314,7 +314,7 @@ and (global.controls_used_for_menu_navigation!="controller")
 #endregion /*Fullscreen and Change Window Size Text END*/
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
-if (asset_get_type("obj_camera")==asset_object)
+if (asset_get_type("obj_camera") == asset_object)
 and (!instance_exists(obj_camera))
 and (keyboard_check_pressed(global.fullscreen_key))
 {
@@ -407,7 +407,7 @@ else
 #endregion /*Draw Title Screen END*/
 
 #region /*Create Camera*/
-if (asset_get_type("obj_camera")==asset_object)
+if (asset_get_type("obj_camera") == asset_object)
 {
 	if (!instance_exists(obj_camera))
 	{
@@ -504,7 +504,7 @@ or (menu = "quit")
 		in_settings = false;
 		
 		#region /*Select Level Editor*/
-		if (asset_get_type("room_leveleditor")==asset_room)
+		if (asset_get_type("room_leveleditor") == asset_room)
 		and (menu = "leveleditor")
 		and (menu_delay = 0)
 		and (global.demo=false)
@@ -722,7 +722,7 @@ or (menu = "quit")
 		global.character_select_in_this_menu = "main_game";
 	}
 
-	if (asset_get_type("room_leveleditor")==asset_room)
+	if (asset_get_type("room_leveleditor") == asset_room)
 	and (menu = "leveleditor")
 	{
 		if (global.level_editor_level>0)
@@ -800,7 +800,7 @@ or (menu = "4player")
 	if (menu = "1player")
 	{
 		global.playergame = 0;
-		if (asset_get_type("spr_menu_button_1player")==asset_sprite)
+		if (asset_get_type("spr_menu_button_1player") == asset_sprite)
 		{
 			draw_sprite_ext(spr_menu_button_1player,0,window_get_width()/2-256,window_get_height()/2+menu_y_offset+128,1,1,0,c_white,1);
 		}
@@ -811,7 +811,7 @@ or (menu = "4player")
 	}
 	else
 	{
-		if (asset_get_type("spr_menu_button_1player")==asset_sprite)
+		if (asset_get_type("spr_menu_button_1player") == asset_sprite)
 		{
 			draw_sprite_ext(spr_menu_button_1player,0,window_get_width()/2-256,window_get_height()/2+menu_y_offset+128,0.9,0.9,0,c_gray,0.9);
 		}
@@ -826,7 +826,7 @@ or (menu = "4player")
 	if (menu = "2player")
 	{
 		global.playergame=1;
-		if (asset_get_type("spr_menu_button_2player")==asset_sprite)
+		if (asset_get_type("spr_menu_button_2player") == asset_sprite)
 		{
 			draw_sprite_ext(spr_menu_button_2player,0,window_get_width()/2-84,window_get_height()/2+menu_y_offset+128,1,1,0,c_white,1);
 		}
@@ -858,7 +858,7 @@ or (menu = "4player")
 				menu = "2player";
 				menu_delay = 3;
 			}
-			if (asset_get_type("spr_menu_button_2player")==asset_sprite)
+			if (asset_get_type("spr_menu_button_2player") == asset_sprite)
 			{
 				draw_sprite_ext(spr_menu_button_2player,0,window_get_width()/2-84,window_get_height()/2+menu_y_offset+128,0.9,0.9,0,c_gray,0.9);
 			}
@@ -869,7 +869,7 @@ or (menu = "4player")
 		}
 		else
 		{
-			if (asset_get_type("spr_menu_button_2player")==asset_sprite)
+			if (asset_get_type("spr_menu_button_2player") == asset_sprite)
 			{
 				draw_sprite_ext(spr_menu_button_2player,0,window_get_width()/2-84,window_get_height()/2+menu_y_offset+128,0.8,0.8,0,c_dkgray,0.8);
 				draw_text_outlined(window_get_width()/2-84,window_get_height()/2+menu_y_offset+128,"Need",global.default_text_size,c_menu_outline,c_menu_fill,1);
@@ -888,7 +888,7 @@ or (menu = "4player")
 	if (menu = "3player")
 	{
 		global.playergame=2;
-		if (asset_get_type("spr_menu_button_3player")==asset_sprite)
+		if (asset_get_type("spr_menu_button_3player") == asset_sprite)
 		{
 			draw_sprite_ext(spr_menu_button_3player,0,window_get_width()/2+84,window_get_height()/2+menu_y_offset+128,1,1,0,c_white,1);}else{draw_text_outlined(window_get_width()/2+84,window_get_height()/2+menu_y_offset+128,"> 3 Player",global.default_text_size*1.3,c_menu_outline,c_menu_fill,1);
 		}
@@ -932,7 +932,7 @@ or (menu = "4player")
 				menu = "3player";
 				menu_delay = 3;
 			}
-			if (asset_get_type("spr_menu_button_3player")==asset_sprite)
+			if (asset_get_type("spr_menu_button_3player") == asset_sprite)
 			{
 				draw_sprite_ext(spr_menu_button_3player,0,window_get_width()/2+84,window_get_height()/2+menu_y_offset+128,0.9,0.9,0,c_gray,0.9);
 			}
@@ -943,7 +943,7 @@ or (menu = "4player")
 		}
 		else
 		{
-			if (asset_get_type("spr_menu_button_3player")==asset_sprite)
+			if (asset_get_type("spr_menu_button_3player") == asset_sprite)
 			{
 				draw_sprite_ext(spr_menu_button_3player,0,window_get_width()/2+84,window_get_height()/2+menu_y_offset+128,0.8,0.8,0,c_dkgray,0.8);
 				draw_text_outlined(window_get_width()/2+84,window_get_height()/2+menu_y_offset+128,"Need",global.default_text_size,c_menu_outline,c_menu_fill,1);
@@ -962,7 +962,7 @@ or (menu = "4player")
 	if (menu = "4player")
 	{
 		global.playergame=3;
-		if (asset_get_type("spr_menu_button_4player")==asset_sprite)
+		if (asset_get_type("spr_menu_button_4player") == asset_sprite)
 		{
 			draw_sprite_ext(spr_menu_button_4player,0,window_get_width()/2+256,window_get_height()/2+menu_y_offset+128,1,1,0,c_white,1);
 		}
@@ -1025,7 +1025,7 @@ or (menu = "4player")
 				menu = "4player";
 				menu_delay = 3;
 			}
-			if (asset_get_type("spr_menu_button_4player")==asset_sprite)
+			if (asset_get_type("spr_menu_button_4player") == asset_sprite)
 			{
 				draw_sprite_ext(spr_menu_button_4player,0,window_get_width()/2+256,window_get_height()/2+menu_y_offset+128,0.9,0.9,0,c_gray,0.9);
 			}
@@ -1036,7 +1036,7 @@ or (menu = "4player")
 		}
 		else
 		{
-			if (asset_get_type("spr_menu_button_4player")==asset_sprite)
+			if (asset_get_type("spr_menu_button_4player") == asset_sprite)
 			{
 				draw_sprite_ext(spr_menu_button_4player,0,window_get_width()/2+256,window_get_height()/2+menu_y_offset+128,0.8,0.8,0,c_dkgray,0.8);
 				draw_text_outlined(window_get_width()/2+256,window_get_height()/2+menu_y_offset+128,"Need",global.default_text_size,c_menu_outline,c_menu_fill,1);
@@ -1095,6 +1095,7 @@ if (level_editor_template_select = true)
 	C = clamp(floor(global.select_level_index/R), 0, floor(ds_list_size(global.all_loaded_main_levels)))
 	if (global.controls_used_for_menu_navigation = "mouse")
 	and (can_input_level_name = false)
+	and (can_navigate = true)
 	{
 		for (i = 0;
 		i < ds_list_size(global.thumbnail_sprite);
@@ -1179,7 +1180,7 @@ and (can_navigate=true)
 		else
 		if (key_up)
 		{
-			if (asset_get_type("room_leveleditor")==asset_room)
+			if (asset_get_type("room_leveleditor") == asset_room)
 			{
 				menu = "leveleditor";
 			}
@@ -1291,7 +1292,7 @@ or (menu = "4player")
 		{
 			if (global.character_select_in_this_menu = "main_game")
 			{
-				can_navigate=false;
+				can_navigate = false;
 				menu_delay=999;
 			}
 			else
@@ -1332,7 +1333,7 @@ or (menu = "4player")
 		{
 			if (global.character_select_in_this_menu = "main_game")
 			{
-				can_navigate=false;
+				can_navigate = false;
 				menu_delay=999;
 			}
 			else
@@ -1373,7 +1374,7 @@ or (menu = "4player")
 		{
 			if (global.character_select_in_this_menu = "main_game")
 			{
-				can_navigate=false;
+				can_navigate = false;
 				menu_delay=999;
 			}
 			else
@@ -1414,7 +1415,7 @@ or (menu = "4player")
 		{
 			if (global.character_select_in_this_menu = "main_game")
 			{
-				can_navigate=false;
+				can_navigate = false;
 				menu_delay=999;
 			}
 			else
@@ -1436,7 +1437,7 @@ or (menu = "4player")
 	and (menu_delay = 0)
 	and (global.demo=true)
 	{
-		if (asset_get_type("snd_incorrect")==asset_sound)
+		if (asset_get_type("snd_incorrect") == asset_sound)
 		{
 			audio_play_sound(snd_incorrect,0,0);
 			audio_sound_gain(snd_incorrect,global.sfx_volume,0);
@@ -1506,7 +1507,7 @@ and (menu_delay = 0)
 #endregion /*Accept END*/
 
 #region /*Start Game*/
-if (asset_get_type("obj_camera")==asset_object)
+if (asset_get_type("obj_camera") == asset_object)
 and (instance_exists(obj_camera))
 and (iris_xscale <= 0.001)
 {
@@ -1523,7 +1524,7 @@ and (iris_xscale <= 0.001)
 				audio_stop_sound(title_music);
 			}
 		}
-		if (asset_get_type("room_leveleditor")==asset_room)
+		if (asset_get_type("room_leveleditor") == asset_room)
 		{
 			sprite_delete(title_screen_background);
 			
@@ -1851,7 +1852,7 @@ and (iris_xscale <= 0.001)
 				audio_stop_sound(title_music);
 			}
 		}
-		if (asset_get_type("room_leveleditor")==asset_room)
+		if (asset_get_type("room_leveleditor") == asset_room)
 		{
 			sprite_delete(title_screen_background);
 			
@@ -2106,7 +2107,7 @@ and (iris_xscale <= 0.001)
 				audio_stop_sound(title_music);
 			}
 		}
-		if (asset_get_type("room_world_map")==asset_room)
+		if (asset_get_type("room_world_map") == asset_room)
 		{
 			sprite_delete(title_screen_background);
 			scr_config_save();

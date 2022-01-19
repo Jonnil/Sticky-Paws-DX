@@ -57,22 +57,22 @@ alarm[0] = 1; /*Initialize custom character timer. This code needs to be initial
 #endregion /*Lives Icon END*/
 
 #region /*Create Foreground and Background Brightness Layer*/
-if (asset_get_type("obj_background_brightness_gameplay")==asset_object)
+if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
 and (!instance_exists(obj_background_brightness_gameplay))
 {
 	instance_create_depth(0,0,0,obj_background_brightness_gameplay);
 }
-if (asset_get_type("obj_foreground1")==asset_object)
+if (asset_get_type("obj_foreground1") == asset_object)
 and (!instance_exists(obj_foreground1))
 {
 	instance_create_depth(0,0,0,obj_foreground1);
 }
-if (asset_get_type("obj_foreground2")==asset_object)
+if (asset_get_type("obj_foreground2") == asset_object)
 and (!instance_exists(obj_foreground2))
 {
 	instance_create_depth(0,0,0,obj_foreground2);
 }
-if (asset_get_type("obj_foreground_secret")==asset_object)
+if (asset_get_type("obj_foreground_secret") == asset_object)
 and (!instance_exists(obj_foreground_secret))
 {
 	instance_create_depth(0,0,0,obj_foreground_secret);
@@ -123,7 +123,7 @@ and (global.play_edited_level = true)
 	or (global.y_checkpoint > 0)
 	{
 		camera_set_view_pos(view_camera[view_current],global.x_checkpoint,global.y_checkpoint)
-		if (asset_get_type("obj_player")==asset_object)
+		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		{
 			obj_player.x = global.x_checkpoint;
@@ -353,7 +353,7 @@ and (room != room_title)
 	and (global.character_select_in_this_menu = "main_game")
 	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music.ogg"))
 	and (global.character_select_in_this_menu = "level_editor")
-	and (global.create_level_from_template = true)
+	and (global.create_level_from_template >= true)
 	{
 		global.music = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music.ogg");
 	}
@@ -376,7 +376,7 @@ and (room != room_title)
 	and (global.character_select_in_this_menu = "main_game")
 	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music_underwater.ogg"))
 	and (global.character_select_in_this_menu = "level_editor")
-	and (global.create_level_from_template = true)
+	and (global.create_level_from_template >= true)
 	{
 		global.music_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/music/music_underwater.ogg");
 	}
@@ -399,7 +399,7 @@ and (room != room_title)
 	and (global.character_select_in_this_menu = "main_game")
 	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience.ogg"))
 	and (global.character_select_in_this_menu = "level_editor")
-	and (global.create_level_from_template = true)
+	and (global.create_level_from_template >= true)
 	{
 		global.ambience = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience.ogg");
 	}
@@ -422,7 +422,7 @@ and (room != room_title)
 	and (global.character_select_in_this_menu = "main_game")
 	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience_underwater.ogg"))
 	and (global.character_select_in_this_menu = "level_editor")
-	and (global.create_level_from_template = true)
+	and (global.create_level_from_template >= true)
 	{
 		global.ambience_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/ambience/ambience_underwater.ogg");
 	}
@@ -454,8 +454,8 @@ shake=false;
 scrolling_left=0;
 
 #region /*Assist Item*/
-if (asset_get_type("obj_assist_item")==asset_object)
-and (asset_get_type("obj_player")==asset_object)
+if (asset_get_type("obj_assist_item") == asset_object)
+and (asset_get_type("obj_player") == asset_object)
 and (global.assist_enable = true)
 {
 	if (global.assist_item_appear<10)
@@ -479,7 +479,7 @@ and (global.assist_enable = true)
 #region /*Start Timer*/
 time_second=0;
 if (instance_exists(obj_player))
-and (asset_get_type("obj_player_map")==asset_object)
+and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 {
 	if (global.trigger_ending=false)

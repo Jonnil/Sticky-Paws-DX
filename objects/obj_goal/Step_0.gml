@@ -1,9 +1,9 @@
 if (goal=false)
-and (asset_get_type("obj_player")==asset_object)
+and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (place_meeting(x,y,obj_player))
 or (goal=false)
-and (asset_get_type("obj_player")==asset_object)
+and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (instance_nearest(x,y,obj_player).x>bbox_right)
 and (instance_nearest(x,y,obj_player).x<bbox_right+16)
@@ -23,14 +23,14 @@ and (!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y
 	#region /*Stop Music*/
 	audio_stop_sound(global.music);
 	audio_stop_sound(global.music_underwater);
-	global.music=noone;
-	global.music_underwater=noone;
+	global.music = noone;
+	global.music_underwater = noone;
 	#endregion /*Stop Music END*/
 	
 	global.player_has_entered_goal = true;
 	
 	#region /*Save Checkpoint*/
-	if (asset_get_type("room_leveleditor")==asset_room)
+	if (asset_get_type("room_leveleditor") == asset_room)
 	and (room = room_leveleditor)
 	and (global.character_select_in_this_menu = "main_game")
 	{
@@ -51,7 +51,7 @@ and (!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y
 		ini_close();
 	}
 	else
-	if (asset_get_type("room_leveleditor")==asset_room)
+	if (asset_get_type("room_leveleditor") == asset_room)
 	and (room = room_leveleditor)
 	and (global.character_select_in_this_menu = "level_editor")
 	{

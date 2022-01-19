@@ -6,7 +6,7 @@ if (place_meeting(x,y-8,other))
 		#region /*1 Basic Collectible*/
 		if (type_of_bump="noone")
 		{
-			if (asset_get_type("obj_basic_collectible")==asset_object)
+			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);
@@ -23,7 +23,7 @@ if (place_meeting(x,y-8,other))
 		#region /*8 Basic Collectibles*/
 		if (type_of_bump="8_basic_collectibles")
 		{
-			if (asset_get_type("obj_basic_collectible")==asset_object)
+			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x-32,bbox_top,0,obj_basic_collectible);
@@ -103,7 +103,7 @@ if (place_meeting(x,y-8,other))
 		#region /*Heart Balloon*/
 		if (type_of_bump="heart_balloon")
 		{
-			if (asset_get_type("obj_heart_balloon")==asset_object)
+			if (asset_get_type("obj_heart_balloon") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_heart_balloon);
@@ -119,7 +119,7 @@ if (place_meeting(x,y-8,other))
 		#region /*1-up*/
 		if (type_of_bump="1-up")
 		{
-			if (asset_get_type("obj_extra_life_pickup")==asset_object)
+			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
@@ -136,7 +136,7 @@ if (place_meeting(x,y-8,other))
 		#region /*2-up*/
 		if (type_of_bump="2-up")
 		{
-			if (asset_get_type("obj_extra_life_pickup")==asset_object)
+			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
@@ -153,7 +153,7 @@ if (place_meeting(x,y-8,other))
 		#region /*3-up*/
 		if (type_of_bump="3-up")
 		{
-			if (asset_get_type("obj_extra_life_pickup")==asset_object)
+			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
@@ -170,7 +170,7 @@ if (place_meeting(x,y-8,other))
 		#region /*Big Collectible 1*/
 		if (type_of_bump="big_collectible_1")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -188,7 +188,7 @@ if (place_meeting(x,y-8,other))
 		#region /*Big Collectible 2*/
 		if (type_of_bump="big_collectible_2")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -206,7 +206,7 @@ if (place_meeting(x,y-8,other))
 		#region /*Big Collectible 3*/
 		if (type_of_bump="big_collectible_3")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -224,7 +224,7 @@ if (place_meeting(x,y-8,other))
 		#region /*Big Collectible 4*/
 		if (type_of_bump="big_collectible_4")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -242,7 +242,7 @@ if (place_meeting(x,y-8,other))
 		#region /*Big Collectible 5*/
 		if (type_of_bump="big_collectible_5")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -260,7 +260,7 @@ if (place_meeting(x,y-8,other))
 		#region /*Invincibility Powerup*/
 		if (type_of_bump="invincibility_powerup")
 		{
-			if (asset_get_type("obj_invincibility_powerup")==asset_object)
+			if (asset_get_type("obj_invincibility_powerup") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_invincibility_powerup);

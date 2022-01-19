@@ -273,9 +273,9 @@ global.verbosity_slider=1;
 global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
 
-global.music=noone;
-global.music_underwater=noone;
-global.ambience=noone;
+global.music = noone;
+global.music_underwater = noone;
+global.ambience = noone;
 global.ambience_underwater=noone;
 global.trigger_ending=false;
 global.spikes_emerge_time=0;
@@ -484,7 +484,7 @@ global.mobile_key_sprint_y = 984-16;
 #endregion /*Mobile Controls Settings END*/
 
 #region /*Load Config*/
-if (asset_get_type("scr_config_load")==asset_script)
+if (asset_get_type("scr_config_load") == asset_script)
 {
 	scr_config_load();
 }

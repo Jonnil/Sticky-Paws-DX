@@ -17,7 +17,7 @@ with(other)
 			}
 		}
 		#region /*1 Coin*/
-		if (asset_get_type("obj_basic_collectible")==asset_object)
+		if (asset_get_type("obj_basic_collectible") == asset_object)
 		{
 			var obj;
 			obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);
@@ -32,7 +32,7 @@ with(other)
 		
 		#region /*200 Score*/
 		score+=200;
-		if (asset_get_type("obj_scoreup")==asset_object)
+		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			obj=instance_create_depth(x, y, 0, obj_scoreup);
 			with(obj)

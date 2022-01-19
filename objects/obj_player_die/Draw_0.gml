@@ -2,7 +2,7 @@ count += 1;
 
 #region /*Check if the last player just died*/
 if (count=1)
-and (asset_get_type("obj_player")==asset_object)
+and (asset_get_type("obj_player") == asset_object)
 and (!instance_exists(obj_player))
 {
 	last_player=true;
@@ -16,10 +16,10 @@ if (count=50)
 	gravity = 0.5;
 	vspeed=-10;
 	image_speed=0.3;
-	if (asset_get_type("obj_lava")==asset_object)
+	if (asset_get_type("obj_lava") == asset_object)
 	and (place_meeting(x,y,obj_lava))
 	{
-		if (asset_get_type("spr_player_burnt")==asset_sprite)
+		if (asset_get_type("spr_player_burnt") == asset_sprite)
 		{
 			sprite_index=spr_player_burnt;
 		}
@@ -37,7 +37,7 @@ if (count=50)
 #endregion /*Start death animation, falling off screen END*/
 
 #region /*If the player is burned, have black smoke coming out*/
-if (asset_get_type("spr_player_burnt")==asset_sprite)
+if (asset_get_type("spr_player_burnt") == asset_sprite)
 and (sprite_index=spr_player_burnt)
 {
 	effect_create_above(ef_smoke,x,bbox_bottom,0,c_black);
@@ -49,7 +49,7 @@ if (!instance_exists(obj_player))
 and (count=50)
 and (last_player=true)
 {
-	if (asset_get_type("snd_die_melody")==asset_sound)
+	if (asset_get_type("snd_die_melody") == asset_sound)
 	{
 		audio_play_sound(snd_die_melody,0,0);
 		audio_sound_gain(snd_die_melody,global.music_volume,0);
@@ -73,7 +73,7 @@ and (iris_xscale<=0.001)
 	sprite_index=noone;
 	gravity = 0;
 	speed=0;
-	if (asset_get_type("snd_die_melody")==asset_sound)
+	if (asset_get_type("snd_die_melody") == asset_sound)
 	and (!audio_is_playing(snd_die_melody))
 	{
 		if (lives >= 1)
@@ -86,7 +86,7 @@ and (iris_xscale<=0.001)
 			audio_stop_all();
 			
 			#region /*Go to level editor if you die in level editor*/
-			if (asset_get_type("room_leveleditor")==asset_room)
+			if (asset_get_type("room_leveleditor") == asset_room)
 			and (room=room_leveleditor)
 			{
 				global.play_edited_level = false;
@@ -108,7 +108,7 @@ and (iris_xscale<=0.001)
 			audio_stop_all();
 		
 			#region /*Go to level editor if you die in level editor*/
-			if (asset_get_type("room_leveleditor")==asset_room)
+			if (asset_get_type("room_leveleditor") == asset_room)
 			and (room=room_leveleditor)
 			{
 				global.play_edited_level = false;
@@ -198,7 +198,7 @@ and (last_player=true)
 	{
 		iris_zoom=1;
 	}
-	if (asset_get_type("obj_player_die")==asset_object)
+	if (asset_get_type("obj_player_die") == asset_object)
 	and (instance_exists(obj_player_die))
 	{
 		if (iris_xscale < 16)

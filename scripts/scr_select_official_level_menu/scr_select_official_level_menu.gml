@@ -332,6 +332,35 @@ function scr_select_official_level_menu()
 			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, string(string_length(global.level_name)) + "/120", global.default_text_size, c_black, c_ltgray, 1);
 		}
 		
+		#region /*OK and Cancel buttons under name input*/
+		if (keyboard_string != "")
+		{
+			draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 32, "OK", "level_editor_enter_name_ok", "level_editor_enter_name_ok");
+			if (gamepad_is_connected(0))
+			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+			and (global.controls_used_for_menu_navigation = "controller")
+			{
+				draw_sprite_ext(spr_xbox_buttons, 0, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 21 + 32, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+			{
+				draw_sprite_ext(spr_keyboard_keys, vk_enter, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 21 + 32, 0.5, 0.5, 0, c_white, 1);
+			}
+		}
+		draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 74, "Cancel", "level_editor_enter_name_cancel", "level_editor_enter_name_cancel");
+		if (gamepad_is_connected(0))
+		and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+		and (global.controls_used_for_menu_navigation = "controller")
+		{
+			draw_sprite_ext(spr_xbox_buttons, 1, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 74 + 22, 0.5, 0.5, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_keyboard_keys, vk_escape, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 74 + 22, 0.5, 0.5, 0, c_white, 1);
+		}
+		#endregion /*OK and Cancel buttons under name input END*/
+		
 		if (string_length(global.level_name) > 120)
 		{
 			global.level_name = string_copy(global.level_name, 1, 120);
@@ -354,11 +383,16 @@ function scr_select_official_level_menu()
 	and (can_input_level_name = true)
 	and (menu_delay = 0)
 	and (keyboard_string != "")
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 32, 394 * (global.select_level_index - C * R) + 100 + 370, 226 * (C - scroll) + 606 + 32 + 42))
+	and (mouse_check_button_pressed(mb_left))
+	and (can_input_level_name = true)
+	and (menu_delay = 0)
+	and (keyboard_string != "")
 	{
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 		global.create_level_from_template = true;
-		can_navigate=false;
+		can_navigate = false;
 		menu_delay=999;
 		
 		#region /*Create directories*/
@@ -469,7 +503,7 @@ function scr_select_official_level_menu()
 		}
 		#endregion /*Copy files from official levels to level editor END*/
 		
-		if (asset_get_type("obj_camera")==asset_object)
+		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
@@ -485,9 +519,16 @@ function scr_select_official_level_menu()
 	if (keyboard_check_pressed(vk_escape))
 	and (can_input_level_name = true)
 	and (menu_delay = 0)
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 74, 394 * (global.select_level_index - C * R) + 100 + 370, 226 * (C - scroll) + 606 + 74 + 42))
+	and (mouse_check_button_pressed(mb_left))
+	and (can_input_level_name = true)
+	and (menu_delay = 0)
+	or (mouse_check_button_pressed(mb_right))
+	and (can_input_level_name = true)
+	and (menu_delay = 0)
 	{
 		menu_delay = 3;
-		if (asset_get_type("obj_camera")==asset_object)
+		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{
 			with(obj_camera)
@@ -496,6 +537,7 @@ function scr_select_official_level_menu()
 			}
 		}
 		can_input_level_name = false;
+		menu = "level_editor_play";
 	}
 	#endregion /*Press Escape to back out from level from scratch menu END*/
 	
@@ -505,14 +547,14 @@ function scr_select_official_level_menu()
 	if (iris_xscale <= 0.001)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
-		if (asset_get_type("snd_music_titlescreen")==asset_sound)
+		if (asset_get_type("snd_music_titlescreen") == asset_sound)
 		{
 			if (audio_is_playing(snd_music_titlescreen))
 			{
 				audio_stop_sound(snd_music_titlescreen);
 			}
 		}
-		if (asset_get_type("room_leveleditor")==asset_room)
+		if (asset_get_type("room_leveleditor") == asset_room)
 		{
 			sprite_delete(title_screen_background);
 			

@@ -11,12 +11,12 @@ show_scoreup = false;
 
 xx = x;
 yy = y;
-if (asset_get_type("spr_question_block")==asset_sprite)
+if (asset_get_type("spr_question_block") == asset_sprite)
 {
 	sprite_index=spr_question_block;
 }
 #region /*Mask*/
-if (asset_get_type("spr_wall")==asset_sprite)
+if (asset_get_type("spr_wall") == asset_sprite)
 {
 	mask_index=spr_wall;
 }

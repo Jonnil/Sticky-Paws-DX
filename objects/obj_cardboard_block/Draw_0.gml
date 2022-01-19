@@ -5,7 +5,7 @@ if (brick_particle=false)
 else
 if (brick_particle=true)
 {
-	if (asset_get_type("obj_cardboard_box_particle")==asset_object)
+	if (asset_get_type("obj_cardboard_box_particle") == asset_object)
 	{
 		instance_change(obj_cardboard_box_particle,true);
 	}
@@ -36,11 +36,11 @@ if (brick_particle=true)
 	draw_sprite_ext(sprite_index,image_index,x,y,1,1,image_angle,image_blend,image_alpha);
 	mask_index=noone;
 }
-if (asset_get_type("spr_cardboard_block")==asset_sprite)
+if (asset_get_type("spr_cardboard_block") == asset_sprite)
 {
 	draw_sprite_ext(spr_cardboard_block,image_index,x,y,draw_xscale,draw_yscale,image_angle,image_blend,image_alpha);
 }
-if (asset_get_type("obj_player")==asset_object)
+if (asset_get_type("obj_player") == asset_object)
 and (place_meeting(x,y-1,obj_player))
 {
 	draw_xscale=lerp(draw_xscale,1.1,0.3);
@@ -54,7 +54,7 @@ else
 
 if (brick_particle=false)
 {
-	if (asset_get_type("obj_player")==asset_object)
+	if (asset_get_type("obj_player") == asset_object)
 	and (instance_exists(obj_player))
 	{
 		if (place_meeting(x,bbox_bottom,obj_player))
@@ -98,18 +98,18 @@ if (brick_particle=false)
 		and (bbox_bottom<camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+outside_view_offset)
 		and (y>camera_get_view_y(view_camera[view_current])-outside_view_offset)
 		
-		or (asset_get_type("obj_blockbreak")==asset_object)
+		or (asset_get_type("obj_blockbreak") == asset_object)
 		and (place_meeting(x,y,obj_blockbreak))
 		{
 			if (position_meeting(bbox_left+3,bbox_bottom+1,instance_nearest(x,y,obj_player)))
 			or (position_meeting(bbox_right-3,bbox_bottom+1,instance_nearest(x,y,obj_player)))
 			{
-				if (asset_get_type("obj_blockbreak")==asset_object)
+				if (asset_get_type("obj_blockbreak") == asset_object)
 				{
 					instance_create_depth(x,y-32,0,obj_blockbreak);
 				}
 			}
-			if (asset_get_type("obj_cardboard_block")==asset_object)
+			if (asset_get_type("obj_cardboard_block") == asset_object)
 			{
 				if (instance_nearest(x,y,obj_player).x<x)
 				{
@@ -134,7 +134,7 @@ if (brick_particle=false)
 			}
 			score+=50;
 			global.hud_show_score=true;
-			if (asset_get_type("obj_camera")==asset_object)
+			if (asset_get_type("obj_camera") == asset_object)
 			and (instance_exists(obj_camera))
 			{
 				with(obj_camera)
@@ -150,7 +150,7 @@ if (brick_particle=false)
 			and (y>camera_get_view_y(view_camera[view_current]))
 			{
 				effect_create_above(ef_smoke,x,y,1,c_dkgray);
-				if (asset_get_type("snd_blockbreak")==asset_sound)
+				if (asset_get_type("snd_blockbreak") == asset_sound)
 				{
 					audio_play_sound(snd_blockbreak,0,0);
 					audio_sound_gain(snd_blockbreak,global.sfx_volume,0);
@@ -163,7 +163,7 @@ if (brick_particle=false)
 	}
 	
 	#region /*Collision with bullet*/
-	if (asset_get_type("obj_bullet")==asset_object)
+	if (asset_get_type("obj_bullet") == asset_object)
 	and (instance_exists(obj_bullet))
 	and (distance_to_object(obj_bullet)<32)
 	and (instance_nearest(x,y,obj_bullet).die=false)
@@ -174,7 +174,7 @@ if (brick_particle=false)
 		{
 			
 			#region /*Turn into cardboard particle*/
-			if (asset_get_type("obj_cardboard_block")==asset_object)
+			if (asset_get_type("obj_cardboard_block") == asset_object)
 			{
 				if (instance_nearest(x,y,obj_bullet).x<x)
 				{
@@ -203,13 +203,13 @@ if (brick_particle=false)
 			{
 				instance_destroy();
 			}
-			if (asset_get_type("obj_blockbreak")==asset_object)
+			if (asset_get_type("obj_blockbreak") == asset_object)
 			{
 				instance_create_depth(x,y-32,0,obj_blockbreak);
 			}
 			score+=50;
 			global.hud_show_score=true;
-			if (asset_get_type("obj_camera")==asset_object)
+			if (asset_get_type("obj_camera") == asset_object)
 			and (instance_exists(obj_camera))
 			{
 				with(obj_camera)
@@ -225,7 +225,7 @@ if (brick_particle=false)
 			and (y>camera_get_view_y(view_camera[view_current]))
 			{
 				effect_create_above(ef_smoke,x,y,1,c_dkgray);
-				if (asset_get_type("snd_blockbreak")==asset_sound)
+				if (asset_get_type("snd_blockbreak") == asset_sound)
 				{
 					audio_play_sound(snd_blockbreak,0,0);
 					audio_sound_gain(snd_blockbreak,global.sfx_volume,0);

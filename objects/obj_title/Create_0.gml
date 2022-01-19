@@ -664,11 +664,11 @@ c_menu_fill=c_black;
 
 #region /*Stop certain sounds from playing on the title screen*/
 audio_stop_all();
-if (asset_get_type("snd_menuvoice_companysplash")==asset_sound)
+if (asset_get_type("snd_menuvoice_companysplash") == asset_sound)
 {
 	audio_stop_sound(snd_menuvoice_companysplash);
 }
-if (asset_get_type("snd_menuvoice_controllersplash")==asset_sound)
+if (asset_get_type("snd_menuvoice_controllersplash") == asset_sound)
 {
 	audio_stop_sound(snd_menuvoice_controllersplash);
 }
@@ -683,7 +683,7 @@ if (asset_get_type("snd_slip_ice") == asset_sound)
 #endregion /*Stop certain sounds from playing on the title screen END*/
 
 #region /*Say the games title*/
-if (asset_get_type("menuvoice_titlesplash")==asset_sound)
+if (asset_get_type("menuvoice_titlesplash") == asset_sound)
 {
 	audio_play_sound(menuvoice_titlesplash,0,0);
 	audio_sound_gain(menuvoice_titlesplash,global.voices_volume,0);

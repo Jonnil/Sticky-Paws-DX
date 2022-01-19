@@ -1,5 +1,5 @@
 #region /*Gravity*/
-if (asset_get_type("obj_wall")==asset_object)
+if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x,bbox_bottom+1,obj_wall))
 and (x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
 and (x>camera_get_view_x(view_camera[view_current]))
@@ -29,8 +29,8 @@ and (global.enable_enemies = false)
 }
 #endregion /*Stop firing if enemies are disabled END*/
 
-if (asset_get_type("obj_player")==asset_object)
-and (asset_get_type("obj_wall")==asset_object)
+if (asset_get_type("obj_player") == asset_object)
+and (asset_get_type("obj_wall") == asset_object)
 and (instance_exists(obj_player))
 {
 	if (x<instance_nearest(x,y,obj_player).x-64)

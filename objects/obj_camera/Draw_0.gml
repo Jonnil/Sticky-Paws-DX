@@ -128,7 +128,7 @@ if (instance_exists(obj_player))
 and (global.pause = false)
 and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
-and (asset_get_type("obj_title")==asset_object)
+and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 {
 	with(obj_player)

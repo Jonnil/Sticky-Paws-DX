@@ -151,12 +151,12 @@ if (global.basic_collectibles>99)
 			hud_show_lives_timer = global.hud_hide_time*60;
 		}
 	}
-	if (asset_get_type("snd_1up")==asset_sound)
+	if (asset_get_type("snd_1up") == asset_sound)
 	{
 		audio_play_sound(snd_1up,0,0);
 		audio_sound_gain(snd_1up,global.sfx_volume,0);
 	}
-	if (asset_get_type("obj_scoreup")==asset_object)
+	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y-16, 0, obj_scoreup);
 		with(obj)

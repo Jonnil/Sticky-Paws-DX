@@ -17,7 +17,7 @@ if (position_meeting(x, y, obj_wall))
 }
 #endregion /*If inside wall, destroy yourself END*/
 
-if (asset_get_type("obj_player")==asset_object)
+if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 {
 	if (allow_move=true)
@@ -74,9 +74,9 @@ and (instance_exists(obj_player))
 		else
 		{
 			#region /*10 Basic Collectibles*/
-			if (asset_get_type("obj_basic_collectible")==asset_object)
+			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
-				if (asset_get_type("snd_basic_collectible")==asset_sound)
+				if (asset_get_type("snd_basic_collectible") == asset_sound)
 				{
 					audio_play_sound(snd_basic_collectible,0,0);
 				}
@@ -165,7 +165,7 @@ and (instance_exists(obj_player))
 		}
 		#region /*1000 Score*/
 		score+=1000;
-		if (asset_get_type("obj_scoreup")==asset_object)
+		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			obj=instance_create_depth(x, y, 0, obj_scoreup);
 			with(obj)
@@ -186,7 +186,7 @@ if (vspeed>=0)
 }
 #endregion /*When falling, it's not bouncing up anymore END*/
 
-if (asset_get_type("obj_wall")==asset_object)
+if (asset_get_type("obj_wall") == asset_object)
 {
 	if (place_meeting(x-1,y,obj_wall))
 	{

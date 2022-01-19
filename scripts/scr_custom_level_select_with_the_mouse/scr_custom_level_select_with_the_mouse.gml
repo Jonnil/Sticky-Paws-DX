@@ -4,6 +4,8 @@ function scr_custom_level_select_with_the_mouse()
 	C = clamp(floor(global.select_level_index/R), 0, floor(ds_list_size(global.all_loaded_custom_levels)))
 	if (global.controls_used_for_menu_navigation = "mouse")
 	and (open_sub_menu = false)
+	and (can_input_level_name = false)
+	and (can_navigate = true)
 	{
 		for (i = 0;
 		i < ds_list_size(global.thumbnail_sprite);

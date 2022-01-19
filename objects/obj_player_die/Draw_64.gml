@@ -154,7 +154,7 @@ if (lives <= 0)
 			audio_stop_all();
 				
 			#region /*Go to level editor if you die in level editor*/
-			if (asset_get_type("room_leveleditor")==asset_room)
+			if (asset_get_type("room_leveleditor") == asset_room)
 			and (room=room_leveleditor)
 			{
 				global.play_edited_level = false;

@@ -19,7 +19,7 @@ if (position_meeting(x, y, obj_wall))
 }
 #endregion /*If inside wall, destroy yourself END*/
 
-if (asset_get_type("obj_player")==asset_object)
+if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 {
 	if (allow_move=true)
@@ -80,7 +80,7 @@ if (vspeed>=0)
 }
 #endregion /*When falling, it's not bouncing up anymore END*/
 
-if (asset_get_type("obj_wall")==asset_object)
+if (asset_get_type("obj_wall") == asset_object)
 {
 	if (place_meeting(x-1,y,obj_wall))
 	{

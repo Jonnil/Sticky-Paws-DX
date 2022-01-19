@@ -1,5 +1,5 @@
-if asset_get_type("obj_player")==asset_object and instance_number(obj_player)>0{
-if asset_get_type("spr_wall")==asset_sprite{mask_index=spr_wall;}
+if asset_get_type("obj_player") == asset_object and instance_number(obj_player)>0{
+if asset_get_type("spr_wall") == asset_sprite{mask_index=spr_wall;}
 timer+=1;
 //if timer<3{if place_meeting(x,y,obj_wall){with(instance_nearest(x,y,obj_player)){can_tongue=true;}instance_destroy();}}
 if timer>10{if place_meeting(x,y,obj_player)and instance_nearest(x,y,obj_player).rope_swing=false{with(instance_nearest(x,y,obj_player)){can_tongue=true;}instance_destroy();}}
@@ -17,14 +17,14 @@ if obj_player.rope_swing=false{hspeed+=obj_player.hspeed/8;vspeed+=obj_player.vs
 /*Stick to wall*/
 
 if timer<25{
-/*Can't interact with black wall*/if asset_get_type("obj_black_wall")==asset_object and position_meeting(x,y,obj_black_wall){if timer<15{timer=15;speed=0;}timer+=1;}/*Can't interact with black wall END*/
+/*Can't interact with black wall*/if asset_get_type("obj_black_wall") == asset_object and position_meeting(x,y,obj_black_wall){if timer<15{timer=15;speed=0;}timer+=1;}/*Can't interact with black wall END*/
 else
 /*rope_swing on things*/
 if position_meeting(x,y,obj_wall)
 or position_meeting(x,y,obj_ring)
 {speed=0;timer=15;with(instance_nearest(x,y,obj_player)){rope_swing=true;}}/*rope_swing on things END*/
 else
-/*Fly toward object*/if asset_get_type("obj_enemy")==asset_object and instance_number(obj_enemy)>0 and place_meeting(x,y,obj_enemy){if!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,obj_wall,false,true)and timer<35{speed=0;}
+/*Fly toward object*/if asset_get_type("obj_enemy") == asset_object and instance_number(obj_enemy)>0 and place_meeting(x,y,obj_enemy){if!collision_line(x,y,instance_nearest(x,y,obj_player).x,instance_nearest(x,y,obj_player).y,obj_wall,false,true)and timer<35{speed=0;}
 move_towards_point(instance_nearest(x,y,obj_enemy).x,instance_nearest(x,y,obj_enemy).y,8)
 with(instance_nearest(x,y,obj_player)){move_towards_point(instance_nearest(x,y,obj_tongue).x,instance_nearest(x,y,obj_tongue).y,16)}
 with(instance_nearest(x,y,obj_enemy)){hspeed=0;vspeed=0;speed=0;}

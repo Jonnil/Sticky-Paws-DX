@@ -114,7 +114,7 @@ and (instance_nearest(x, y, obj_player).intro_animation = "")
 		audio_sound_gain(enemyvoice_defeated3,global.voices_volume,0);
 		#endregion /*Enemy Voice Defeated End*/
 		
-		if (asset_get_type("snd_stomp")==asset_sound)
+		if (asset_get_type("snd_stomp") == asset_sound)
 		{
 			audio_play_sound(snd_stomp,0,0);
 			audio_sound_gain(snd_stomp,global.sfx_volume,0);

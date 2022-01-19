@@ -9,7 +9,7 @@ or (keyboard_check_pressed(vk_escape))
 or (window_has_focus())
 and (mouse_check_button_pressed(mb_left))
 {
-	if (asset_get_type("room_title")==asset_room)
+	if (asset_get_type("room_title") == asset_room)
 	{
 		room_goto(room_title);
 	}
@@ -62,7 +62,7 @@ and (sprite_index=spr_company_logo)
 		}
 		else
 		{
-			if (asset_get_type("room_title")==asset_room)
+			if (asset_get_type("room_title") == asset_room)
 			{
 				room_goto(room_title);
 			}
@@ -74,7 +74,7 @@ and (sprite_index=spr_company_logo)
 		}
 	}
 	else
-	if (asset_get_type("room_title")==asset_room)
+	if (asset_get_type("room_title") == asset_room)
 	{
 		room_goto(room_title);
 	}
@@ -91,7 +91,7 @@ and (sprite_index = sprite_splash_controller)
 	time+=1;
 	if (time>100)
 	{
-		if (asset_get_type("room_title")==asset_room)
+		if (asset_get_type("room_title") == asset_room)
 		{
 			room_goto(room_title);
 		}
@@ -104,7 +104,7 @@ and (sprite_index = sprite_splash_controller)
 }
 
 if (image_index=20)
-and (asset_get_type("menuvoice_companysplash")==asset_sound)
+and (asset_get_type("menuvoice_companysplash") == asset_sound)
 {
 	if (!audio_is_playing(menuvoice_companysplash))
 	{
@@ -114,7 +114,7 @@ and (asset_get_type("menuvoice_companysplash")==asset_sound)
 }
 
 if (time=10)
-and (asset_get_type("menuvoice_controllersplash")==asset_sound)
+and (asset_get_type("menuvoice_controllersplash") == asset_sound)
 {
 	if (!audio_is_playing(menuvoice_controllersplash))
 	{
@@ -124,7 +124,7 @@ and (asset_get_type("menuvoice_controllersplash")==asset_sound)
 }
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
-if (asset_get_type("obj_camera")==asset_object)
+if (asset_get_type("obj_camera") == asset_object)
 and (!instance_exists(obj_camera))
 and (keyboard_check_pressed(global.fullscreen_key))
 {

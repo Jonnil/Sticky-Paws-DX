@@ -1,14 +1,14 @@
-if (asset_get_type("spr_bucket")==asset_sprite)
+if (asset_get_type("spr_bucket") == asset_sprite)
 and (sprite_index=spr_bucket)
 {
-	if (asset_get_type("spr_bucket_clothes")==asset_sprite)
+	if (asset_get_type("spr_bucket_clothes") == asset_sprite)
 	{
 		sprite_index=spr_bucket_clothes;
 	}
 	#region /*1 Basic Collectible*/
 	if (item_inside = "noone")
 	{
-		if (asset_get_type("obj_coin")==asset_object)
+		if (asset_get_type("obj_coin") == asset_object)
 		{
 			var obj;obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);
 			with(obj)
@@ -24,7 +24,7 @@ and (sprite_index=spr_bucket)
 	#region /*8 Basic Collectibles*/
 	if (item_inside="8_basic_collectibles")
 	{
-		if (asset_get_type("obj_basic_collectible")==asset_object)
+		if (asset_get_type("obj_basic_collectible") == asset_object)
 		{
 			var obj;
 			obj=instance_create_depth(x-32,bbox_top,0,obj_basic_collectible);
@@ -104,7 +104,7 @@ and (sprite_index=spr_bucket)
 		#region /*Heart Balloon*/
 		if (item_inside="heart_balloon")
 		{
-			if (asset_get_type("obj_heart_balloon")==asset_object)
+			if (asset_get_type("obj_heart_balloon") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_heart_balloon);
@@ -120,7 +120,7 @@ and (sprite_index=spr_bucket)
 		#region /*1-up*/
 		if (item_inside="1-up")
 		{
-			if (asset_get_type("obj_extra_life_pickup")==asset_object)
+			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
@@ -137,7 +137,7 @@ and (sprite_index=spr_bucket)
 		#region /*2-up*/
 		if (item_inside="2-up")
 		{
-			if (asset_get_type("obj_extra_life_pickup")==asset_object)
+			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
@@ -154,7 +154,7 @@ and (sprite_index=spr_bucket)
 		#region /*3-up*/
 		if (item_inside="3-up")
 		{
-			if (asset_get_type("obj_extra_life_pickup")==asset_object)
+			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
@@ -171,7 +171,7 @@ and (sprite_index=spr_bucket)
 		#region /*Big Collectible 1*/
 		if (item_inside="big_collectible_1")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -189,7 +189,7 @@ and (sprite_index=spr_bucket)
 		#region /*Big Collectible 2*/
 		if (item_inside="big_collectible_2")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -207,7 +207,7 @@ and (sprite_index=spr_bucket)
 		#region /*Big Collectible 3*/
 		if (item_inside="big_collectible_3")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -225,7 +225,7 @@ and (sprite_index=spr_bucket)
 		#region /*Big Collectible 4*/
 		if (item_inside="big_collectible_4")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -243,7 +243,7 @@ and (sprite_index=spr_bucket)
 		#region /*Big Collectible 5*/
 		if (item_inside="big_collectible_5")
 		{
-			if (asset_get_type("obj_big_collectible")==asset_object)
+			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top,0,obj_big_collectible);
@@ -261,7 +261,7 @@ and (sprite_index=spr_bucket)
 		#region /*Invincibility Powerup*/
 		if (item_inside="invincibility_powerup")
 		{
-			if (asset_get_type("obj_invincibility_powerup")==asset_object)
+			if (asset_get_type("obj_invincibility_powerup") == asset_object)
 			{
 				var obj;
 				obj=instance_create_depth(x,bbox_top-16,0,obj_invincibility_powerup);

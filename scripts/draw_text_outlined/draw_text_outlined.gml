@@ -21,7 +21,7 @@ function draw_text_outlined()
 	var img_alpha = argument6;
 	
 	#region /*Arabic text offset, only used if you have arabic text*/
-	if (asset_get_type("font_other_languages")==asset_font)
+	if (asset_get_type("font_other_languages") == asset_font)
 	and (global.language_localization=localization.ar_sa)
 	{
 		y_offset=5;

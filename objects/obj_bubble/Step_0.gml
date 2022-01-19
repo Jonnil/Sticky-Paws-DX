@@ -6,7 +6,7 @@ if (hspeed < -5)
 {
 	hspeed = -5;
 }
-if (asset_get_type("obj_water")==asset_object)
+if (asset_get_type("obj_water") == asset_object)
 {
 	if (!position_meeting(x,bbox_top,obj_water))
 	{

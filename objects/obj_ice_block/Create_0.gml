@@ -1,6 +1,6 @@
 depth = 12;
 
-if (asset_get_type("obj_wall")==asset_object)
+if (asset_get_type("obj_wall") == asset_object)
 {
 	
 	#region /*Add walls up outide view*/
@@ -41,7 +41,7 @@ if (asset_get_type("obj_wall")==asset_object)
 	
 }
 
-if (asset_get_type("spr_wall")==asset_sprite)
+if (asset_get_type("spr_wall") == asset_sprite)
 {
 	mask_index=spr_wall;
 }

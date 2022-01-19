@@ -1,4 +1,4 @@
-if (asset_get_type("obj_wall")==asset_object)
+if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x,bbox_bottom+1,obj_wall))
 {
 	gravity = 0.5;

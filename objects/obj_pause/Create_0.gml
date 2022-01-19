@@ -85,7 +85,7 @@ c_menu_fill = c_white;
 audio_pause_all(); /*Pause sound effects and music*/
 
 #region /*Save Level Editor Checkpoint*/
-if (asset_get_type("room_leveleditor")==asset_room)
+if (asset_get_type("room_leveleditor") == asset_room)
 and (room = room_leveleditor)
 and (global.character_select_in_this_menu = "main_game")
 {
@@ -101,7 +101,7 @@ and (global.character_select_in_this_menu = "main_game")
 	ini_close();
 }
 else
-if (asset_get_type("room_leveleditor")==asset_room)
+if (asset_get_type("room_leveleditor") == asset_room)
 and (room = room_leveleditor)
 and (global.character_select_in_this_menu = "level_editor")
 {
