@@ -1,4 +1,4 @@
-/// @desc draw_text_outlined(x,y,string,text_size,outline_color,text_color,image_alpha);
+/// @desc draw_text_outlined(x, y,string,text_size,outline_color,text_color,image_alpha);
 /// @arg x
 /// @arg y
 /// @arg string
@@ -22,13 +22,13 @@ function draw_text_outlined()
 	
 	#region /*Arabic text offset, only used if you have arabic text*/
 	if (asset_get_type("font_other_languages") == asset_font)
-	and (global.language_localization=localization.ar_sa)
+	and (global.language_localization =localization.ar_sa)
 	{
-		y_offset=5;
+		y_offset =5;
 	}
 	else
 	{
-		y_offset=0;
+		y_offset = 0;
 	}
 	#endregion /*Arabic text offset, only used if you have arabic text END*/
 	
@@ -41,10 +41,10 @@ function draw_text_outlined()
 	var vector = [ 
 	[1,1],
 	[-1,-1],
-	[0,1],
-	[1,0],
+	[0, 1],
+	[1, 0],
 	[0,-1],
-	[-1,0],
+	[-1, 0],
 	[-1,1],
 	[1,-1]
 	]; 

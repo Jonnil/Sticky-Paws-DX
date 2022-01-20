@@ -6,10 +6,10 @@ and (x > camera_get_view_x(view_camera[view_current])+64)
 and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 and (y > camera_get_view_y(view_camera[view_current]))
 {
-	if (!place_meeting(x, y-1, obj_boss_barrier))
+	if (!place_meeting(x, y - 1, obj_boss_barrier))
 	{
 		time+=1;
-		if (time>5)
+		if (time >5)
 		{
 			if (asset_get_type("obj_brick_particle") == asset_object)
 			{
@@ -48,30 +48,30 @@ and (y > camera_get_view_y(view_camera[view_current]))
 			}
 			effect_create_above(ef_smoke, x, y, 1, c_white);
 			
-			if (place_meeting(x-1, y, obj_spikes_emerge))
+			if (place_meeting(x - 1, y, obj_spikes_emerge))
 			{
-				with(instance_nearest(x-1, y, obj_spikes_emerge))
+				with(instance_nearest(x - 1, y, obj_spikes_emerge))
 				{
 					instance_destroy();
 				}
 			}
-			if (place_meeting(x+1, y, obj_spikes_emerge))
+			if (place_meeting(x + 1, y, obj_spikes_emerge))
 			{
-				with(instance_nearest(x+1, y, obj_spikes_emerge))
+				with(instance_nearest(x + 1, y, obj_spikes_emerge))
 				{
 					instance_destroy();
 				}
 			}
-			if (place_meeting(x, y-1, obj_spikes_emerge))
+			if (place_meeting(x, y - 1, obj_spikes_emerge))
 			{
-				with(instance_nearest(x, y-1, obj_spikes_emerge))
+				with(instance_nearest(x, y - 1, obj_spikes_emerge))
 				{
 					instance_destroy();
 				}
 			}
-			if (place_meeting(x, y+1, obj_spikes_emerge))
+			if (place_meeting(x, y + 1, obj_spikes_emerge))
 			{
-				with(instance_nearest(x, y+1, obj_spikes_emerge))
+				with(instance_nearest(x, y + 1, obj_spikes_emerge))
 				{
 					instance_destroy();
 				}

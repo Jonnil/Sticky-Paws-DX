@@ -12,24 +12,24 @@ if (can_bounce > 0)
 
 #region /*Make player spring*/
 if (asset_get_type("obj_player") == asset_object)
-and (place_meeting(x,y,instance_nearest(x,y,obj_player)))
+and (place_meeting(x, y,instance_nearest(x, y, obj_player)))
 and (instance_exists(obj_player))
-and (can_bounce=0)
+and (can_bounce = 0)
 {
 	if (asset_get_type("snd_spring") == asset_sound)
 	{
-		audio_play_sound(snd_spring,0,0);
+		audio_play_sound(snd_spring, 0, 0);
 		audio_sound_pitch(snd_spring,1);
-		audio_sound_gain(snd_spring,global.sfx_volume,0);
+		audio_sound_gain(snd_spring, global.sfx_volume, 0);
 	}
-	if (instance_nearest(x,y,obj_player).horizontal_rope_climb=false)
+	if (instance_nearest(x, y, obj_player).horizontal_rope_climb = false)
 	{
-		image_index=1;
-		image_speed=1;
-		with(instance_nearest(x,y,obj_player))
+		image_index = 1;
+		image_speed = 1;
+		with(instance_nearest(x, y, obj_player))
 		{
 			can_climb_horizontal_rope_cooldown = 10;
-			midair_jumps_left=number_of_jumps;
+			midair_jumps_left = number_of_jumps;
 			can_ground_pound = false;
 			chain_reaction = 0;
 			dive = false;
@@ -47,9 +47,9 @@ and (can_bounce=0)
 #endregion /*Make player spring END*/
 
 #region /*Stop animation when animation is finished, don't loop*/
-if (image_index>image_number-1)
+if (image_index > image_number - 1)
 {
-	image_index=0;
-	image_speed=0;
+	image_index= 0;
+	image_speed = 0;
 }
 #endregion /*Stop animation when animation is finished, don't loop END*/

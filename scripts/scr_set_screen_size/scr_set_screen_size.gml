@@ -4,29 +4,29 @@ function scr_set_screen_size()
 	#region /*Set screen size*/
 	camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current])); /*View Border*/
 	
-	if (window_get_width()<=global.default_view_width)
-	and (window_get_height()<=global.default_view_height)
+	if (window_get_width()<= global.default_view_width)
+	and (window_get_height()<= global.default_view_height)
 	{
 		camera_set_view_size(view_camera[view_current], window_get_width()+view_wview_lerp, window_get_height()+view_hview_lerp);
 		//camera_set_view_size(view_camera[view_current], window_get_width(), window_get_height());
 	}
 	else
 	if (window_get_width()>global.default_view_width)
-	and (window_get_height()<=global.default_view_height)
+	and (window_get_height()<= global.default_view_height)
 	{
 		camera_set_view_size(view_camera[view_current], global.default_view_width+view_wview_lerp, window_get_height()+view_hview_lerp);
 		//camera_set_view_size(view_camera[view_current], global.default_view_width, window_get_height());
 	}
 	else
-	if (window_get_width()<=global.default_view_width)
+	if (window_get_width()<= global.default_view_width)
 	and (window_get_height()>global.default_view_height)
 	{
-		camera_set_view_size(view_camera[view_current], window_get_width()+view_wview_lerp, global.default_view_height+view_hview_lerp);
+		camera_set_view_size(view_camera[view_current], window_get_width()+view_wview_lerp, global.default_view_height + view_hview_lerp);
 		//camera_set_view_size(view_camera[view_current], window_get_width(), global.default_view_height);
 	}
 	else
 	{
-		camera_set_view_size(view_camera[view_current], global.default_view_width+view_wview_lerp, global.default_view_height+view_hview_lerp);
+		camera_set_view_size(view_camera[view_current], global.default_view_width+view_wview_lerp, global.default_view_height + view_hview_lerp);
 		//camera_set_view_size(view_camera[view_current], global.default_view_width, global.default_view_height);
 	}
 	

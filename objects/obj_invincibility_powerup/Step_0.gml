@@ -12,13 +12,13 @@ if (position_meeting(x, y, obj_wall))
 #endregion /*If inside wall, destroy yourself END*/
 
 #region /*When falling, it's not bouncing up anymore*/
-if (vspeed>=0)
+if (vspeed >= 0)
 {
-	bounceup=false;
+	bounceup = false;
 }
 #endregion /*When falling, it's not bouncing up anymore END*/
 
-if (hspeed<0)
+if (hspeed < 0)
 {
 	hspeed = -2;
 }
@@ -67,4 +67,4 @@ if (effect_time > 60)
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);
 }
-#endregion /*Expanding Ring Effect End*/
+#endregion /*Expanding Ring Effect END*/

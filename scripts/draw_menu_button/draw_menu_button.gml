@@ -1,5 +1,5 @@
 /// @function draw_menu_button(x, y, string, menu_index, menu_takes_you_to)
-/// @description draw_menu_button(x,y,string,menu_index,menu_takes_you_to)
+/// @description draw_menu_button(x, y,string,menu_index, menu_takes_you_to)
 /// @param x
 /// @param y
 /// @param string

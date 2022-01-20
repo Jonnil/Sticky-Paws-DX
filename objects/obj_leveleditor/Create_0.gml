@@ -18,17 +18,17 @@ sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
 if (asset_get_type("obj_foreground1") == asset_object)
 and (!instance_exists(obj_foreground1))
 {
-	instance_create_depth(0,0,0,obj_foreground1);
+	instance_create_depth(0, 0,0,obj_foreground1);
 }
 if (asset_get_type("obj_foreground2") == asset_object)
 and (!instance_exists(obj_foreground2))
 {
-	instance_create_depth(0,0,0,obj_foreground2);
+	instance_create_depth(0, 0,0,obj_foreground2);
 }
 if (asset_get_type("obj_foreground_secret") == asset_object)
 and (!instance_exists(obj_foreground_secret))
 {
-	instance_create_depth(0,0,0,obj_foreground_secret);
+	instance_create_depth(0, 0,0,obj_foreground_secret);
 }
 #endregion /*Create Foreground END*/
 
@@ -36,12 +36,12 @@ and (!instance_exists(obj_foreground_secret))
 if (asset_get_type("obj_level_height") == asset_object)
 and (!instance_exists(obj_level_height))
 {
-	instance_create_depth(0,1104,0,obj_level_height);
+	instance_create_depth(0, 1104,0,obj_level_height);
 }
 if (asset_get_type("obj_level_width") == asset_object)
 and (!instance_exists(obj_level_width))
 {
-	instance_create_depth(2720,0,0,obj_level_width);
+	instance_create_depth(2720, 0,0,obj_level_width);
 }
 #endregion /*Create level height and level width objects END*/
 
@@ -53,64 +53,64 @@ if (global.actually_play_edited_level = true)
 }
 room_speed = global.max_fps; /*Set correct fps*/
 x=mouse_x;
-y=mouse_y;
+y =mouse_y;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
 controller_x=mouse_x;
-controller_y=mouse_y;
+controller_y =mouse_y;
 drag_x=mouse_x;
-drag_y=mouse_y;
-cursor_x=x;
-cursor_y=y;
-place_brush_size=0;/*The size of the brush when placeing objects*/
-erase_brush_size=0;/*The size of the brush when erasing*/
-can_make_place_brush_size_bigger=true;/*If you can make the brush size bigger for certain objects*/
+drag_y =mouse_y;
+cursor_x= x;
+cursor_y = y;
+place_brush_size = 0;/*The size of the brush when placeing objects*/
+erase_brush_size = 0;/*The size of the brush when erasing*/
+can_make_place_brush_size_bigger= true;/*If you can make the brush size bigger for certain objects*/
 can_put_objects_above_other_objects = false; /*If you can put objects above other objects*/
-mouse_sprite=spr_cursor;/*Sets what cursor sprite to use*/
+mouse_sprite =spr_cursor;/*Sets what cursor sprite to use*/
 undo_and_redo_buttons_enabled = false;/*If undo and redo buttons should appear or not*/
-tooltip="";
-show_tooltip=0;
-show_grid=false;/*Grid should be false when you start level editor*/
-grid_alpha=0;
-zoom_in=false;/*When this is true, zoom in*/
-zoom_reset=false;/*When this is true, reset zoom*/
-zoom_out=false;/*When this is true, zoom out*/
-difficulty_layer=0;/*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
-set_difficulty_mode=false;/*Toggle so you get a pen that can select what object appear in what difficulty*/
-place_object=noone;
+tooltip ="";
+show_tooltip = 0;
+show_grid = false;/*Grid should be false when you start level editor*/
+grid_alpha= 0;
+zoom_in = false;/*When this is true, zoom in*/
+zoom_reset = false;/*When this is true, reset zoom*/
+zoom_out = false;/*When this is true, zoom out*/
+difficulty_layer= 0;/*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
+set_difficulty_mode = false;/*Toggle so you get a pen that can select what object appear in what difficulty*/
+place_object = noone;
 wall_surface_selected = 0; /*What kind of wall you're putting down*/
 show_icons_at_bottom=false;
-show_icons_at_top=false;
-icons_at_bottom_y=+100;
-erase_icons_at_top_y=-100;
+show_icons_at_top = false;
+icons_at_bottom_y = +100;
+erase_icons_at_top_y =-100;
 show_undo_redo_icons=false;/*If the undo and redo buttons should show*/
-undo_redo_icons_y=+200;/*Undo and redo buttons y postition*/
-current_undo_value=0;/*Every time you place down items, this value increases. When you undo, this value decreases.*/
-icons_at_top_y=-100;
+undo_redo_icons_y = +200;/*Undo and redo buttons y postition*/
+current_undo_value = 0;/*Every time you place down items, this value increases. When you undo, this value decreases.*/
+icons_at_top_y =-100;
 icons_at_top_alpha=1;
 icons_at_left_x=-64;
-selected_object=0;
-selected_object_menu_x=0;
-selected_menu_alpha=0;
-total_number_of_objects=0;
+selected_object = 0;
+selected_object_menu_x= 0;
+selected_menu_alpha= 0;
+total_number_of_objects= 0;
 use_controller=false;
-drag_object=false;
-erase_mode=false;/*When erasing, this turns true*/
-fill_mode=false;/*When filling, this turns true*/
-can_input_level_name=false;
+drag_object = false;
+erase_mode = false;/*When erasing, this turns true*/
+fill_mode = false;/*When filling, this turns true*/
+can_input_level_name = false;
 quit_level_editor=false;
 menu_joystick_delay = 0;
-pause=false;
-menu_cursor_index=0;
+pause = false;
+menu_cursor_index= 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
-can_navigate_settings_sidebar=true;
+can_navigate_settings_sidebar= true;
 navigate_slider=false;
 menu = "continue";
 open_dropdown = false;
-name_enter_blink=0;
-menu_delay=10;
-startup_loading_timer=0;
+name_enter_blink= 0;
+menu_delay =10;
+startup_loading_timer= 0;
 background_brightness_lerp = 0;
 background_brightness_menu_lerp = 0;
 
@@ -139,9 +139,9 @@ place_brush_icon_x = 32;
 erase_icon_x = 96;
 fill_icon_x = 160;
 
-screenie_x=0;
+screenie_x= 0;
 screenie_y = 0;
-total_objects=0;
+total_objects= 0;
 
 #region /*Options*/
 remapping_player = 0;
@@ -153,8 +153,8 @@ menu_cursor_y_position = 0;
 menu_remap_key_number = 0;
 
 #region /*Customize look of Options Menu*/
-menu_y_offset=-100;
-c_menu_outline=c_black;
+menu_y_offset =-100;
+c_menu_outline =c_black;
 c_menu_fill=c_white;
 #endregion /*Customize look of Options Menu END*/
 
@@ -162,16 +162,16 @@ c_menu_fill=c_white;
 
 room_speed = global.max_fps; /*Room Speed is Max FPS*/
 
-image_speed=0;
-image_index=0;
+image_speed = 0;
+image_index= 0;
 
 #region /*Initialize level_information.ini*/
 if (global.character_select_in_this_menu = "main_game")
-and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/level_information.ini"))
+and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
 or (global.character_select_in_this_menu = "level_editor")
 and (global.create_level_from_template = true)
-and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/level_information.ini"))
+and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
 or (global.character_select_in_this_menu = "level_editor")
 and (global.select_level_index <= 0)
@@ -182,12 +182,12 @@ and (global.create_level_from_template >= 2)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 
 or (global.character_select_in_this_menu = "level_editor")
-and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini"))
+and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu = "main_game")
 	or (global.create_level_from_template = true)
 	{
-		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/level_information.ini");
+		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
@@ -200,7 +200,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	if (global.character_select_in_this_menu = "level_editor")
 	{
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini");
+		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 	}
 	
 	#region /*Custom Backgrounds*/
@@ -463,19 +463,19 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	
 	#endregion /*Custom Backgrounds END*/
 	
-	if (ini_key_exists("info","level_name"))
+	if (ini_key_exists("info", "level_name"))
 	{
-		level_name = ini_read_string("info","level_name",0);
+		level_name = ini_read_string("info", "level_name",0);
 	}
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_write_string("info","level_name",0);
+			ini_write_string("info", "level_name",0);
 		}
 		level_name = "";
 	}
-	if (ini_key_exists("info","time_countdown"))
+	if (ini_key_exists("info", "time_countdown"))
 	{
 		global.time_countdown = ini_read_real("info", "time_countdown", noone); /*Set the countdown to whatever is stored in the level_information.ini file*/
 	}
@@ -483,28 +483,28 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	{
 		if (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_write_string("info","time_countdown",noone);
+			ini_write_string("info", "time_countdown",noone);
 		}
 		global.time_countdown = noone;
 	}
 	if(global.play_edited_level = false)
 	and (global.actually_play_edited_level = false)
 	{
-		if (ini_key_exists("info","view_xview"))
-		and (ini_key_exists("info","view_yview"))
+		if (ini_key_exists("info", "view_xview"))
+		and (ini_key_exists("info", "view_yview"))
 		{
 			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0));
 			x = ini_read_real("info", "view_xview", 0);
 			y = ini_read_real("info", "view_yview", 0);
 		}
 		else
-		if (ini_key_exists("info","view_xview"))
+		if (ini_key_exists("info", "view_xview"))
 		{
 			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), 0);
 			x = ini_read_real("info", "view_xview", 0);
 		}
 		else
-		if (ini_key_exists("info","view_yview"))
+		if (ini_key_exists("info", "view_yview"))
 		{
 			camera_set_view_pos(view_camera[view_current], 0, ini_read_real("info", "view_yview", 0));
 			y = ini_read_real("info", "view_yview", 0);
@@ -531,7 +531,7 @@ else
 	custom_background_3_y_parallax = 7;
 	custom_background_4_x_parallax = 9;
 	custom_background_4_y_parallax = 9;
-	level_name="";
+	level_name ="";
 	global.time_countdown = noone;
 	global.time_countdown_bonus = 500;
 }
@@ -541,21 +541,21 @@ else
 if (global.character_select_in_this_menu = "level_editor")
 and (global.select_level_index >= 1)
 and (global.create_level_from_template = false)
-and (!file_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/tilesets/ground_tileset.png"))
+and (!file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets/ground_tileset.png"))
 {
 	#region /*Save sprite in directory*/
 	sprite_variable = sprite_duplicate(spr_ground_tileset);
-	sprite_save(sprite_variable, 0, working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/tilesets/ground_tileset.png");
+	sprite_save(sprite_variable, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets/ground_tileset.png");
 	#endregion /*Save sprite in directory END*/
 }
 else
 if (global.character_select_in_this_menu = "level_editor")
 and (global.level_name != "")
-and (!file_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
+and (!file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
 {
 	#region /*Save sprite in directory*/
 	sprite_variable = sprite_duplicate(spr_ground_tileset);
-	sprite_save(sprite_variable, 0, working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png");
+	sprite_save(sprite_variable, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png");
 	#endregion /*Save sprite in directory END*/
 }
 #endregion /*Create Ground Tileset PNG if there is none END*/
@@ -564,25 +564,25 @@ and (!file_exists(working_directory+"/custom_levels/" + string(global.level_name
 view_wview = 1392;
 view_hview = 736;
 /*Default Views:   set_view_wview = 1024+400-32   set_view_hview = 768-32   */
-#endregion /*View Size End*/
+#endregion /*View Size END*/
 
 set_view_wview=1392;
 set_view_hview=736;
 
 #region /*Initialize Background*/
-background_x_offset[0]=0;background_x[0]=0;background_y_offset[0]=0;background_y[0]=0;
-background_x_offset[0]=0;background_x[0]=0;background_y_offset[0]=0;background_y[0]=0;
-background_x_offset[0]=0;background_x[0]=0;background_y_offset[0]=0;background_y[0]=0;
-background_x_offset[0]=0;background_x[0]=0;background_y_offset[0]=0;background_y[0]=0;
-background_x_offset[0]=0;background_x[0]=0;background_y_offset[0]=0;background_y[0]=0;
-background_x_offset[0]=0;background_x[0]=0;background_y_offset[0]=0;background_y[0]=0;
-background_x_offset[0]=0;background_x[0]=0;background_y_offset[0]=0;background_y[0]=0;
-background_x_offset[0]=0;background_x[0]=0;background_y_offset[0]=0;background_y[0]=0;
-#endregion /*Initialize Background End*/
+background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
+background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
+background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
+background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
+background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
+background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
+background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
+background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
+#endregion /*Initialize Background END*/
 
 /*HUD Show Controls keys that have been pressed*/
-player1_show_controls_timer=0;
-player1_show_controls_alpha=0;
+player1_show_controls_timer= 0;
+player1_show_controls_alpha= 0;
 
 #region /*Load Level*/
 
@@ -600,9 +600,9 @@ or (global.create_level_from_template = true)
 	
 	#region /*Object Placement*/
 	var file, str, str_pos, str_temp, val, num;
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/object_placement.txt"))
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement.txt"))
 	{
-		file = file_text_open_read("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/object_placement.txt");
+		file = file_text_open_read("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement.txt");
 	}
 	else
 	{
@@ -639,10 +639,10 @@ or (global.create_level_from_template = true)
 				num = 0;
 				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
 				{
-					object=val[2];
-					easy=val[3];
+					object =val[2];
+					easy =val[3];
 					normal=val[4];
-					hard=val[5];
+					hard =val[5];
 				}
 			}
 		}
@@ -652,9 +652,9 @@ or (global.create_level_from_template = true)
 	
 	#region /*Object With Rotation Placement*/
 	var file, str, str_pos, str_temp, val, num;
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/object_rotation_placement.txt"))
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"))
 	{
-		file = file_text_open_read("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/data/object_rotation_placement.txt");
+		file = file_text_open_read("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_rotation_placement.txt");
 	}
 	else
 	{
@@ -693,12 +693,12 @@ or (global.create_level_from_template = true)
 				num = 0;
 				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
 				{
-					object=val[2];
-					easy=val[3];
+					object =val[2];
+					easy =val[3];
 					normal=val[4];
-					hard=val[5];
+					hard =val[5];
 					second_x=val[6];
-					second_y=val[7];
+					second_y =val[7];
 				}
 			}
 		}
@@ -720,135 +720,135 @@ if (global.character_select_in_this_menu = "level_editor")
 	#region /*Create directory for saving custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)));
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(global.level_name));
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name));
 	}
 	#endregion /*Create directory for saving custom levels END*/
 	
 	#region /*Create directory for backgrouns in custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/backgrounds");
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds");
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/backgrounds"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/backgrounds"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(global.level_name) + "/backgrounds");
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/backgrounds");
 	}
 	#endregion /*Create directory for backgrounds in custom levels END*/
 	
 	#region /*Create directory for data in custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data");
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data");
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/data"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(global.level_name) + "/data");
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/data");
 	}
 	#endregion /*Create directory for data in custom levels END*/
 	
 	#region /*Create directory for sounds in custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds");
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds");
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds");
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds");
 	}
 	#endregion /*Create directory for sounds in custom levels END*/
 	
 	#region /*Create directory for melody in custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/melody"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody");
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/melody");
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds/melody"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/melody"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds/melody");
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/melody");
 	}
 	#endregion /*Create directory for melody in custom levels END*/
 	
 	#region /*Create directory for music in custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/music"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/music"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/music");
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/music");
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds/music"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/music"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds/music");
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/music");
 	}
 	#endregion /*Create directory for music in custom levels END*/
 	
 	#region /*Create directory for sound effects in custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/sound_effect"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/sound_effect"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/sound_effect");
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/sound_effect");
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds/sound_effect"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/sound_effect"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds/sound_effect");
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/sound_effect");
 	}
 	#endregion /*Create directory for sound effects in custom levels END*/
 	
 	#region /*Create directory for ambience in custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/ambience"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/ambience"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/ambience");
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/ambience");
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds/ambience"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/ambience"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(global.level_name) + "/sounds/ambience");
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/ambience");
 	}
 	#endregion /*Create directory for ambience in custom levels END*/
 	
 	#region /*Create directory for tilesets in custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/tilesets"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/tilesets");
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets");
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets"))
 	{
-		directory_create(working_directory+"/custom_levels/" + string(global.level_name) + "/tilesets");
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets");
 	}
 	#endregion /*Create directory for tilesets in custom levels END*/
 	
@@ -858,15 +858,15 @@ if (global.character_select_in_this_menu = "level_editor")
 		var file, str, str_pos, str_temp, val, num;
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template = false)
-		and (file_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/object_placement.txt"))
+		and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt"))
 		{
-			file = file_text_open_read(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/object_placement.txt");
+			file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt");
 		}
 		else
 		if (global.level_name != "")
-		and (file_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"))
+		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"))
 		{
-			file = file_text_open_read(working_directory+"/custom_levels/" + string(global.level_name) + "/data/object_placement.txt");
+			file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt");
 		}
 		else
 		{
@@ -903,10 +903,10 @@ if (global.character_select_in_this_menu = "level_editor")
 					num = 0;
 					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
 					{
-						object=val[2];
-						easy=val[3];
+						object =val[2];
+						easy =val[3];
 						normal=val[4];
-						hard=val[5];
+						hard =val[5];
 					}
 				}
 			}
@@ -918,15 +918,15 @@ if (global.character_select_in_this_menu = "level_editor")
 		var file, str, str_pos, str_temp, val, num;
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template = false)
-		and (file_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/object_rotation_placement.txt"))
+		and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"))
 		{
-			file = file_text_open_read(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/object_rotation_placement.txt");
+			file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt");
 		}
 		else
 		if (global.level_name != "")
-		and (file_exists(working_directory+"/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"))
+		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"))
 		{
-			file = file_text_open_read(working_directory+"/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt");
+			file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt");
 		}
 		else
 		{
@@ -965,12 +965,12 @@ if (global.character_select_in_this_menu = "level_editor")
 					num = 0;
 					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
 					{
-						object=val[2];
-						easy=val[3];
+						object =val[2];
+						easy =val[3];
 						normal=val[4];
-						hard=val[5];
+						hard =val[5];
 						second_x=val[6];
-						second_y=val[7];
+						second_y =val[7];
 					}
 				}
 			}

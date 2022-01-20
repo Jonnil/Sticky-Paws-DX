@@ -22,7 +22,7 @@ and (keyboard_check_pressed(global.fullscreen_key))
 		window_set_fullscreen(true);
 	}
 	ini_open("config.ini");
-	ini_write_real("config","fullscreen_mode",window_get_fullscreen());
+	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
 	ini_close();
 }
 #endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
@@ -51,26 +51,26 @@ or (mouse_moving)
 	global.controls_used_for_menu_navigation = "mouse";
 }
 else
-if (gamepad_button_check(0,gp_face1))
-or (gamepad_button_check(0,gp_face2))
-or (gamepad_button_check(0,gp_face3))
-or (gamepad_button_check(0,gp_face4))
-or (gamepad_button_check(0,gp_padd))
-or (gamepad_button_check(0,gp_padl))
-or (gamepad_button_check(0,gp_padr))
-or (gamepad_button_check(0,gp_padu))
-or (gamepad_button_check(0,gp_select))
-or (gamepad_button_check(0,gp_shoulderl))
-or (gamepad_button_check(0,gp_shoulderlb))
-or (gamepad_button_check(0,gp_shoulderr))
-or (gamepad_button_check(0,gp_shoulderrb))
-or (gamepad_button_check(0,gp_start))
-or (gamepad_button_check(0,gp_stickl))
-or (gamepad_button_check(0,gp_stickr))
-or (gamepad_axis_value(0,gp_axislh)<>0)
-or (gamepad_axis_value(0,gp_axislv)<>0)
-or (gamepad_axis_value(0,gp_axisrh)<>0)
-or (gamepad_axis_value(0,gp_axisrv)<>0)
+if (gamepad_button_check(0, gp_face1))
+or (gamepad_button_check(0, gp_face2))
+or (gamepad_button_check(0, gp_face3))
+or (gamepad_button_check(0, gp_face4))
+or (gamepad_button_check(0, gp_padd))
+or (gamepad_button_check(0, gp_padl))
+or (gamepad_button_check(0, gp_padr))
+or (gamepad_button_check(0, gp_padu))
+or (gamepad_button_check(0, gp_select))
+or (gamepad_button_check(0, gp_shoulderl))
+or (gamepad_button_check(0, gp_shoulderlb))
+or (gamepad_button_check(0, gp_shoulderr))
+or (gamepad_button_check(0, gp_shoulderrb))
+or (gamepad_button_check(0, gp_start))
+or (gamepad_button_check(0, gp_stickl))
+or (gamepad_button_check(0, gp_stickr))
+or (gamepad_axis_value(0, gp_axislh)<>0)
+or (gamepad_axis_value(0, gp_axislv)<>0)
+or (gamepad_axis_value(0, gp_axisrh)<>0)
+or (gamepad_axis_value(0, gp_axisrv)<>0)
 {
 	global.controls_used_for_menu_navigation = "controller";
 }
@@ -130,7 +130,7 @@ global.music = noone;
 global.music_underwater = noone;
 global.ambience = noone;
 global.ambience_underwater = noone;
-#endregion /*Make sure level music stops playing End*/
+#endregion /*Make sure level music stops playing END*/
 
 #region /*Keep the game at 60 FPS*/
 room_speed = global.max_fps;
@@ -225,9 +225,22 @@ xx = lerp(xx, x, 0.1);
 yy = lerp(yy, y, 0.1);
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
+
+#region /*Heart above head*/
+if (asset_get_type("spr_heart") == asset_sprite)
+and (have_heart_balloon = true)
+{
+	xx_heart = lerp(xx_heart, x, 0.05);
+	yy_heart = lerp(yy_heart, y - 64, 0.05);
+	draw_line_width_color (xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
+	draw_line_width_color (xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
+	draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, 1);
+}
+#region /*Heart above head END*/
+
 if (sprite_index >= 0)
 {
-	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale*default_xscale, draw_yscale*default_yscale, 0, image_blend, 1);
+	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 0, image_blend, 1);
 }
 
 #region /*Pause*/
@@ -239,7 +252,7 @@ and (global.automatically_pause_when_window_is_unfocused = true)
 	if (asset_get_type("room_pause") == asset_room)
 	{
 		global.pause_player = 0;
-		global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+		global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
 		room_persistent = true;
 		global.pause_room = room;
 		audio_pause_all();
@@ -251,7 +264,7 @@ if (gamepad_button_check_pressed(1, gp_start))
 and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 1;
-	global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+	global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();
@@ -262,7 +275,7 @@ if (gamepad_button_check_pressed(2, gp_start))
 and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 2;
-	global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+	global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();
@@ -273,7 +286,7 @@ if (gamepad_button_check_pressed(3, gp_start))
 and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 3;
-	global.pause_screenshot = sprite_create_from_surface(application_surface,0,0,surface_get_width(application_surface),surface_get_height(application_surface),0,1,0,0);
+	global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();
@@ -282,7 +295,7 @@ and (asset_get_type("room_pause") == asset_room)
 #endregion /*Pause END*/
 
 if (can_move = true)
-and (global.pause=false)
+and (global.pause = false)
 and (global.quit_level = false)
 {
 	if (allow_free_movement = true)
@@ -738,7 +751,7 @@ and (global.quit_level = false)
 
 #region /*Stop player when touching level*/
 if (instance_exists(obj_level))
-and (place_meeting(x,y,obj_level))
+and (place_meeting(x, y, obj_level))
 and (stop_at_level = false)
 {
 	hspeed = 0;
@@ -747,10 +760,10 @@ and (stop_at_level = false)
 	stop_at_level = true;
 	x = instance_nearest(x, y, obj_level).x;
 	y = instance_nearest(x, y, obj_level).y;
-	global.current_level_clear_rate = instance_nearest(x,y,obj_level).clear_rate; /*Set the level clear rate to global current clear rate variable for use inside levels, like if a into animation should play or not. Put this code as the last step before closing bracket*/
+	global.current_level_clear_rate = instance_nearest(x, y, obj_level).clear_rate; /*Set the level clear rate to global current clear rate variable for use inside levels, like if a into animation should play or not. Put this code as the last step before closing bracket*/
 }
 if (instance_exists(obj_level))
-and (!place_meeting(x,y,obj_level))
+and (!place_meeting(x, y, obj_level))
 {
 	stop_at_level = false;
 }
@@ -768,7 +781,7 @@ left down = 3
 #region /*Touch Map Turn Right Down*/
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn=0) /*Right Down = 0*/
+and (instance_nearest(x, y, obj_map_path_turn).turn = 0) /*Right Down = 0*/
 {
 	if (abs(hspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
@@ -803,7 +816,7 @@ else
 #region /*Touch Map Turn Up Right*/
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn=1) /*Up Right = 1*/
+and (instance_nearest(x, y, obj_map_path_turn).turn =1) /*Up Right = 1*/
 {
 	if (abs(hspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
@@ -844,7 +857,7 @@ else
 #region /*Touch Map Turn Up Left*/
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn=2) /*Up Left = 2*/
+and (instance_nearest(x, y, obj_map_path_turn).turn =2) /*Up Left = 2*/
 {
 	if (abs(hspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
@@ -885,7 +898,7 @@ else
 #region /*Touch Map Turn Left Down*/
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn=3) /*Left Down = 3*/
+and (instance_nearest(x, y, obj_map_path_turn).turn =3) /*Left Down = 3*/
 {
 	if (abs(hspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
@@ -998,7 +1011,7 @@ and (global.quit_level = false)
 	global.trigger_demo_ending = 0;
 	entering_level = false;
 	can_move = true;
-	global.pause=false;
+	global.pause = false;
 	global.quit_level = false;
 	
 	scr_update_all_backgrounds();
@@ -1258,7 +1271,7 @@ if (entering_level = true)
 		}
 	}
 }
-#endregion /*Zoom In End*/
+#endregion /*Zoom In END*/
 
 else
 
@@ -1281,7 +1294,7 @@ else
 		iris_zoom = 1;
 	}
 }
-#endregion /*Zoom Out End*/
+#endregion /*Zoom Out END*/
 
 #endregion /*Zoom In and Out END*/
 

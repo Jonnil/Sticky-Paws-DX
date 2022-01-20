@@ -5,24 +5,24 @@ if (asset_get_type("spr_wall") == asset_sprite)
 	mask_index=spr_wall;
 }
 
-image_speed=0.3;
+image_speed = 0.3;
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 {
-	if (instance_nearest(x,y,obj_player).x<x)
+	if (instance_nearest(x, y, obj_player).x < x)
 	{
-		image_xscale=-1;
+		image_xscale = -1;
 	}
 	else
 	{
-		image_xscale=+1;
+		image_xscale = +1;
 	}
 }
-draw_xscale=0;
-draw_yscale=1;
-flat=false;
-die=false;
-die_volting=false;
+draw_xscale = 0;
+draw_yscale =1;
+flat = false;
+die = false;
+die_volting = false;
 give_rewards = true;
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {

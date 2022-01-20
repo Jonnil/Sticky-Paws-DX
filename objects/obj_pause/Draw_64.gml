@@ -3,12 +3,12 @@ instance_activate_object(obj_pause);
 
 if (global.background_brightness_menu>-0.001)
 {
-	c_menu_outline=c_white;
+	c_menu_outline =c_white;
 	c_menu_fill=c_black;
 }
 else
 {
-	c_menu_outline=c_black;
+	c_menu_outline =c_black;
 	c_menu_fill=c_white;
 }
 
@@ -36,26 +36,26 @@ or (mouse_moving)
 	global.controls_used_for_menu_navigation = "mouse";
 }
 else
-if (gamepad_button_check(0,gp_face1))
-or (gamepad_button_check(0,gp_face2))
-or (gamepad_button_check(0,gp_face3))
-or (gamepad_button_check(0,gp_face4))
-or (gamepad_button_check(0,gp_padd))
-or (gamepad_button_check(0,gp_padl))
-or (gamepad_button_check(0,gp_padr))
-or (gamepad_button_check(0,gp_padu))
-or (gamepad_button_check(0,gp_select))
-or (gamepad_button_check(0,gp_shoulderl))
-or (gamepad_button_check(0,gp_shoulderlb))
-or (gamepad_button_check(0,gp_shoulderr))
-or (gamepad_button_check(0,gp_shoulderrb))
-or (gamepad_button_check(0,gp_start))
-or (gamepad_button_check(0,gp_stickl))
-or (gamepad_button_check(0,gp_stickr))
-or (gamepad_axis_value(0,gp_axislh)<>0)
-or (gamepad_axis_value(0,gp_axislv)<>0)
-or (gamepad_axis_value(0,gp_axisrh)<>0)
-or (gamepad_axis_value(0,gp_axisrv)<>0)
+if (gamepad_button_check(0, gp_face1))
+or (gamepad_button_check(0, gp_face2))
+or (gamepad_button_check(0, gp_face3))
+or (gamepad_button_check(0, gp_face4))
+or (gamepad_button_check(0, gp_padd))
+or (gamepad_button_check(0, gp_padl))
+or (gamepad_button_check(0, gp_padr))
+or (gamepad_button_check(0, gp_padu))
+or (gamepad_button_check(0, gp_select))
+or (gamepad_button_check(0, gp_shoulderl))
+or (gamepad_button_check(0, gp_shoulderlb))
+or (gamepad_button_check(0, gp_shoulderr))
+or (gamepad_button_check(0, gp_shoulderrb))
+or (gamepad_button_check(0, gp_start))
+or (gamepad_button_check(0, gp_stickl))
+or (gamepad_button_check(0, gp_stickr))
+or (gamepad_axis_value(0, gp_axislh)<>0)
+or (gamepad_axis_value(0, gp_axislv)<>0)
+or (gamepad_axis_value(0, gp_axisrh)<>0)
+or (gamepad_axis_value(0, gp_axisrv)<>0)
 {
 	global.controls_used_for_menu_navigation = "controller";
 }
@@ -158,7 +158,7 @@ if (global.pause_player = 3)
 }
 #endregion /*Player 4 END*/
 
-#endregion /*Keyboard Controls End*/
+#endregion /*Keyboard Controls END*/
 
 scr_quit_to_desktop_menu("quit_to_desktop");
 
@@ -171,7 +171,7 @@ if (asset_get_type("font_default") == asset_font)
 {
 	draw_set_font(font_default);
 }
-#endregion /*Set a default font End*/
+#endregion /*Set a default font END*/
 
 #region /*Hide menu for clean screenshots text*/
 if (hide_menu_for_clean_screenshots_timer < 60*3)
@@ -325,7 +325,7 @@ if (asset_get_type("font_default") == asset_font)
 {
 	draw_set_font(font_default);
 }
-#endregion /*Set a default font End*/
+#endregion /*Set a default font END*/
 
 if (in_settings = false)
 and (menu != "quit_game_no")
@@ -340,7 +340,7 @@ and (menu != "quit_game_yes")
 		draw_text_transformed_color (window_get_width() / 2, 200, "PAUSE", global.default_text_size * 2, global.default_text_size * 2, 0, c_white, c_white, c_white, c_white, pause_text_alpha);
 	}
 }
-#endregion /*Pause Text End*/
+#endregion /*Pause Text END*/
 
 
 
@@ -359,7 +359,7 @@ and (global.pause_room = room_leveleditor)
 	or (menu = "restart")
 	or (menu = "quit")
 	{
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Continue","continue","continue");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Continue", "continue", "continue");
 		
 		if(asset_get_type("room_leveleditor") == asset_room)
 		and (room = room_leveleditor)
@@ -368,26 +368,26 @@ and (global.pause_room = room_leveleditor)
 		{
 			if (global.convention_mode = false)
 			{
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Settings","options","options");
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Restart","restart","restart");
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42+42,"Quit","quit","quit_to_map");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Settings", "options", "options");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Restart", "restart", "restart");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42+42,"Quit", "quit", "quit_to_map");
 			}
 			else
 			{
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Restart","restart","restart");
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit","quit","quit_to_map");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Restart", "restart", "restart");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit", "quit", "quit_to_map");
 			}
 		}
 		else
 		{
 			if (global.convention_mode = false)
 			{
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Settings","options","options");
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit","quit","quit");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Settings", "options", "options");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit", "quit", "quit");
 			}
 			else
 			{
-				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit","quit","quit");
+				draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit", "quit", "quit");
 			}
 		}
 	}
@@ -396,9 +396,9 @@ and (global.pause_room = room_leveleditor)
 	or (menu = "reset_from_start")
 	or (menu = "restart_nevermind")
 	{
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Reset from Checkpoint","reset_from_checkpoint","reset_from_checkpoint");
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Reset from Start","reset_from_start","reset_from_start");
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Nevermind","restart_nevermind","restart_nevermind");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Reset from Checkpoint", "reset_from_checkpoint", "reset_from_checkpoint");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Reset from Start", "reset_from_start", "reset_from_start");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Nevermind", "restart_nevermind", "restart_nevermind");
 	}
 	else
 	if(global.pause_room = room_leveleditor)
@@ -414,10 +414,10 @@ and (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu = "main_game")
 	and (menu = "quit_nevermind")
 	{
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Map","quit_to_map","quit_to_map");
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit to Title","quit_to_title","quit_to_title");
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit to Desktop","quit_to_desktop","quit_to_desktop");
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42+42,"Nevermind","quit_nevermind","quit_nevermind");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Map", "quit_to_map", "quit_to_map");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit to Title", "quit_to_title", "quit_to_title");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Quit to Desktop", "quit_to_desktop", "quit_to_desktop");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42+42,"Nevermind", "quit_nevermind", "quit_nevermind");
 	}
 	else
 	if(global.pause_room = room_leveleditor)
@@ -430,9 +430,9 @@ and (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu = "level_editor")
 	and (menu = "quit_nevermind")
 	{
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Title","quit_to_title","quit_to_title");
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit to Desktop","quit_to_desktop","quit_to_desktop");
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Nevermind","quit_nevermind","quit_nevermind");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Title", "quit_to_title", "quit_to_title");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit to Desktop", "quit_to_desktop", "quit_to_desktop");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Nevermind", "quit_nevermind", "quit_nevermind");
 	}
 	else
 	if(global.pause_room = room_world_map)
@@ -442,9 +442,9 @@ and (global.pause_room = room_leveleditor)
 	or (global.pause_room = room_world_map)
 	and (menu = "quit_nevermind")
 	{
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Title","quit_to_title","quit_to_title");
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit to Desktop","quit_to_desktop","quit_to_desktop");
-		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Nevermind","quit_nevermind","quit_nevermind");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2,"Quit to Title", "quit_to_title", "quit_to_title");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42,"Quit to Desktop", "quit_to_desktop", "quit_to_desktop");
+		draw_menu_button(window_get_width()/2-185,window_get_height()/2+42+42,"Nevermind", "quit_nevermind", "quit_nevermind");
 	}
 	
 	#region /*Continue*/
@@ -459,11 +459,11 @@ and (global.pause_room = room_leveleditor)
 			
 			#region /*Return to game*/
 			audio_resume_all();
-			audio_sound_gain(global.music,global.music_volume,0);
-			audio_sound_gain(global.music_underwater,0,0);
-			audio_sound_gain(global.ambience,global.ambient_volume,0);
-			audio_sound_gain(global.ambience_underwater,0,0);
-			global.pause=false;
+			audio_sound_gain(global.music, global.music_volume, 0);
+			audio_sound_gain(global.music_underwater, 0, 0);
+			audio_sound_gain(global.ambience, global.ambient_volume, 0);
+			audio_sound_gain(global.ambience_underwater, 0, 0);
+			global.pause = false;
 			instance_activate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, window_get_width() + 32, window_get_height() + 32, true);
 			if (instance_exists(obj_player))
 			{
@@ -587,7 +587,7 @@ and (global.pause_room = room_leveleditor)
 				global.restart_level = true;
 				audio_stop_all();
 				global.theme = noone;
-				global.pause=false;
+				global.pause = false;
 				instance_activate_region(
 				camera_get_view_x(view_camera[view_current]) - 32,
 				camera_get_view_y(view_camera[view_current]) - 32,
@@ -657,7 +657,7 @@ and (global.pause_room = room_leveleditor)
 			global.restart_level = true;
 			audio_stop_all();
 			global.theme = noone;
-			global.pause=false;
+			global.pause = false;
 			instance_activate_region(
 			camera_get_view_x(view_camera[view_current]) - 32,
 			camera_get_view_y(view_camera[view_current]) - 32,
@@ -735,7 +735,7 @@ and (global.pause_room = room_leveleditor)
 			else
 			if (global.character_select_in_this_menu = "level_editor")
 			{
-				ini_open(working_directory+"/custom_level_save.ini");
+				ini_open(working_directory + "/custom_level_save.ini");
 				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint", 0);
 				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "y_checkpoint", 0);
 				ini_close();
@@ -747,7 +747,7 @@ and (global.pause_room = room_leveleditor)
 			global.restart_level = true;
 			audio_stop_all();
 			global.theme = noone;
-			global.pause=false;
+			global.pause = false;
 			instance_activate_region(
 			camera_get_view_x(view_camera[view_current]) - 32,
 			camera_get_view_y(view_camera[view_current]) - 32,
@@ -914,7 +914,7 @@ and (global.pause_room = room_leveleditor)
 			global.quit_to_map = true;
 			audio_stop_all();
 			global.theme = noone;
-			global.pause=false;
+			global.pause = false;
 			if (asset_get_type("room_pause") == asset_room)
 			{
 				room = global.pause_room;
@@ -977,7 +977,7 @@ and (global.pause_room = room_leveleditor)
 			global.quit_to_title = true;
 			audio_stop_all();
 			global.theme = noone;
-			global.pause=false;
+			global.pause = false;
 			instance_activate_region(
 			camera_get_view_x(view_camera[view_current]) - 32,
 			camera_get_view_y(view_camera[view_current]) - 32,
@@ -1139,11 +1139,11 @@ and (global.pause_room = room_leveleditor)
 		{
 			scr_config_save(); /*Save Config*/
 			audio_resume_all();
-			audio_sound_gain(global.music,global.music_volume,0);
-			audio_sound_gain(global.music_underwater,0,0);
-			audio_sound_gain(global.ambience,global.ambient_volume,0);
-			audio_sound_gain(global.ambience_underwater,0,0);
-			global.pause=false;
+			audio_sound_gain(global.music, global.music_volume, 0);
+			audio_sound_gain(global.music_underwater, 0, 0);
+			audio_sound_gain(global.ambience, global.ambient_volume, 0);
+			audio_sound_gain(global.ambience_underwater, 0, 0);
+			global.pause = false;
 			if (instance_exists(obj_player))
 			{
 				with(obj_player)
@@ -1201,11 +1201,11 @@ or (gamepad_button_check_pressed(3, gp_select))
 	{
 		scr_config_save(); /*Save Config*/
 		audio_resume_all();
-		audio_sound_gain(global.music,global.music_volume,0);
-		audio_sound_gain(global.music_underwater,0,0);
-		audio_sound_gain(global.ambience,global.ambient_volume,0);
-		audio_sound_gain(global.ambience_underwater,0,0);
-		global.pause=false;
+		audio_sound_gain(global.music, global.music_volume, 0);
+		audio_sound_gain(global.music_underwater, 0, 0);
+		audio_sound_gain(global.ambience, global.ambient_volume, 0);
+		audio_sound_gain(global.ambience_underwater, 0, 0);
+		global.pause = false;
 		if (instance_exists(obj_player))
 		{
 			with(obj_player)
@@ -1229,42 +1229,42 @@ or (gamepad_button_check_pressed(3, gp_select))
 scr_options_menu(); /*Options*/
 
 #region /*Menu navigation with joystick*/
-if (gamepad_axis_value(0,gp_axislv)<0)
-or (gamepad_axis_value(0,gp_axislv)>0)
-or (gamepad_axis_value(0,gp_axislh)<0)
-or (gamepad_axis_value(0,gp_axislh)>0)
-or (gamepad_axis_value(1,gp_axislv)<0)
-or (gamepad_axis_value(1,gp_axislv)>0)
-or (gamepad_axis_value(1,gp_axislh)<0)
-or (gamepad_axis_value(1,gp_axislh)>0)
-or (gamepad_axis_value(2,gp_axislv)<0)
-or (gamepad_axis_value(2,gp_axislv)>0)
-or (gamepad_axis_value(2,gp_axislh)<0)
-or (gamepad_axis_value(2,gp_axislh)>0)
-or (gamepad_axis_value(3,gp_axislv)<0)
-or (gamepad_axis_value(3,gp_axislv)>0)
-or (gamepad_axis_value(3,gp_axislh)<0)
-or (gamepad_axis_value(3,gp_axislh)>0)
+if (gamepad_axis_value(0, gp_axislv)<0)
+or (gamepad_axis_value(0, gp_axislv) > 0)
+or (gamepad_axis_value(0, gp_axislh)<0)
+or (gamepad_axis_value(0, gp_axislh) > 0)
+or (gamepad_axis_value(1, gp_axislv)<0)
+or (gamepad_axis_value(1, gp_axislv) > 0)
+or (gamepad_axis_value(1, gp_axislh)<0)
+or (gamepad_axis_value(1, gp_axislh) > 0)
+or (gamepad_axis_value(2, gp_axislv)<0)
+or (gamepad_axis_value(2, gp_axislv) > 0)
+or (gamepad_axis_value(2, gp_axislh)<0)
+or (gamepad_axis_value(2, gp_axislh) > 0)
+or (gamepad_axis_value(3, gp_axislv)<0)
+or (gamepad_axis_value(3, gp_axislv) > 0)
+or (gamepad_axis_value(3, gp_axislh)<0)
+or (gamepad_axis_value(3, gp_axislh) > 0)
 {
 	if (menu_joystick_delay = 0)
 	{
 		menu_joystick_delay = 15;
 	}
 }
-if (gamepad_axis_value(0,gp_axislv)= 0)
-and (gamepad_axis_value(0,gp_axislh)= 0)
-and (gamepad_axis_value(1,gp_axislv)= 0)
-and (gamepad_axis_value(1,gp_axislh)= 0)
-and (gamepad_axis_value(2,gp_axislv)= 0)
-and (gamepad_axis_value(2,gp_axislh)= 0)
-and (gamepad_axis_value(3,gp_axislv)= 0)
-and (gamepad_axis_value(3,gp_axislh)= 0)
+if (gamepad_axis_value(0, gp_axislv)= 0)
+and (gamepad_axis_value(0, gp_axislh)= 0)
+and (gamepad_axis_value(1, gp_axislv)= 0)
+and (gamepad_axis_value(1, gp_axislh)= 0)
+and (gamepad_axis_value(2, gp_axislv)= 0)
+and (gamepad_axis_value(2, gp_axislh)= 0)
+and (gamepad_axis_value(3, gp_axislv)= 0)
+and (gamepad_axis_value(3, gp_axislh)= 0)
 {
-	menu_joystick_delay= 0;
+	menu_joystick_delay = 0;
 }
-if (menu_joystick_delay>0)
+if (menu_joystick_delay > 0)
 {
-	menu_joystick_delay-=1;
+	menu_joystick_delay -= 1;
 }
 #endregion /*Menu navigation with joystick END*/
 
@@ -1285,6 +1285,6 @@ if (global.controls_used_for_menu_navigation = "mouse")
 and (os_type!=os_ios)
 and (os_type!=os_android)
 {
-	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
+	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(), 1,1, 0, c_white,1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/

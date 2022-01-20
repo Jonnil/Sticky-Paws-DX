@@ -5,6 +5,42 @@
 /*Player 1 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or (keyboard_check_pressed(global.player1_key_jump)) or (keyboard_check_pressed(global.player1_key2_jump)) or (keyboard_check_pressed(vk_space)) or (keyboard_check_pressed(vk_enter)) or (keyboard_check_pressed(ord("Z")));
 /*Player 1 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or (keyboard_check_pressed(global.player1_key_dive)) or (keyboard_check_pressed(global.player1_key2_dive)) or (keyboard_check_pressed(global.player1_key_sprint)) or (keyboard_check_pressed(global.player1_key2_sprint)) or (keyboard_check_pressed(vk_backspace)) or (keyboard_check_pressed(vk_escape)) or (keyboard_check_pressed(ord("X")));
 
+#region /*Play as custom character*/
+initialize_custom_character_timer = 0;
+if (global.player1_can_play = true)
+{
+	player = 1;
+	selected_voice_pack = global.voicepack_for_player_1;
+	selected_skin = global.skin_for_player_1;
+}
+else
+if (global.player2_can_play = true)
+{
+	player = 2;
+	selected_voice_pack = global.voicepack_for_player_2;
+	selected_skin = global.skin_for_player_2;
+}
+else
+if (global.player3_can_play = true)
+{
+	player = 3;
+	selected_voice_pack = global.voicepack_for_player_3;
+	selected_skin = global.skin_for_player_3;
+}
+else
+if (global.player4_can_play = true)
+{
+	player = 4;
+	selected_voice_pack = global.voicepack_for_player_4;
+	selected_skin = global.skin_for_player_4;
+}
+else
+{
+	player = 1;
+	selected_voice_pack = global.voicepack_for_player_1;
+	selected_skin = global.skin_for_player_1;
+}
+
 alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
 
 #region /*Allow moves on world map*/
@@ -74,6 +110,60 @@ if (file_exists("file" + string(global.file) + ".ini"))
 	}
 	#endregion /*Load Player Position END*/
 	
+	xx_heart = x;
+	yy_heart = y - 64;
+	
+	#region /*Have Heart Balloon*/
+	if (player = 1)
+	{
+		if (ini_key_exists("Player", "player_1_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_1_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_1_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	if (player = 2)
+	{
+		if (ini_key_exists("Player", "player_2_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_2_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_2_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	if (player = 3)
+	{
+		if (ini_key_exists("Player", "player_3_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_3_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_3_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	if (player = 4)
+	{
+		if (ini_key_exists("Player", "player_4_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_4_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_4_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	#endregion /*Have Heart Balloon END*/
+	
 	ini_close();
 	move_snap(32, 32);
 }
@@ -83,6 +173,9 @@ else
 	ini_write_real("Player", "brand_new_file", true);
 	ini_close();
 	brand_new_file = true;
+	xx_heart = x;
+	yy_heart = y - 64;
+	have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
 }
 #endregion /*Load Game END*/
 
@@ -92,42 +185,6 @@ yy = y;
 iris_xscale = 0;
 iris_yscale = 0;
 iris_zoom = 0;
-
-#region /*Play as custom character*/
-initialize_custom_character_timer = 0;
-if (global.player1_can_play = true)
-{
-	player = 1;
-	selected_voice_pack = global.voicepack_for_player_1;
-	selected_skin = global.skin_for_player_1;
-}
-else
-if (global.player2_can_play = true)
-{
-	player = 2;
-	selected_voice_pack = global.voicepack_for_player_2;
-	selected_skin = global.skin_for_player_2;
-}
-else
-if (global.player3_can_play = true)
-{
-	player = 3;
-	selected_voice_pack = global.voicepack_for_player_3;
-	selected_skin = global.skin_for_player_3;
-}
-else
-if (global.player4_can_play = true)
-{
-	player = 4;
-	selected_voice_pack = global.voicepack_for_player_4;
-	selected_skin = global.skin_for_player_4;
-}
-else
-{
-	player = 1;
-	selected_voice_pack = global.voicepack_for_player_1;
-	selected_skin = global.skin_for_player_1;
-}
 
 sprite_map_xorig = 0;
 sprite_map_yorig = 0;
@@ -146,8 +203,8 @@ scr_config_load(); /*Load Config only once in create event, or it will mess up t
 
 /*Make number of level cleared 1 because of the level intro*/
 ini_open("file" + string(global.file) + ".ini");
-if (ini_read_real("Player","number_of_levels_cleared",0) < 1)
+if (ini_read_real("Player", "number_of_levels_cleared",0) < 1)
 {
-	ini_write_real("Player","number_of_levels_cleared",1)
+	ini_write_real("Player", "number_of_levels_cleared",1)
 }
 ini_close();

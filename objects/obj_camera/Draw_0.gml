@@ -1,7 +1,7 @@
 scr_set_screen_size();
 
-//draw_text_outlined(x,y-228,"P1: "+string(player1),global.default_text_size,c_white,c_black,1);
-//draw_text_outlined(x,y-128,"P2: "+string(player2),global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x, y-228,"P1: "+ string(player1), global.default_text_size,c_white,c_black,1);
+//draw_text_outlined(x, y - 128,"P2: "+ string(player2), global.default_text_size,c_white,c_black,1);
 
 #region /*Set what controls are used to navigate the menus*/
 
@@ -40,26 +40,26 @@ or (mouse_moving)
 	global.controls_used_for_menu_navigation = "mouse";
 }
 
-if (gamepad_button_check(0,gp_face1))
-or (gamepad_button_check(0,gp_face2))
-or (gamepad_button_check(0,gp_face3))
-or (gamepad_button_check(0,gp_face4))
-or (gamepad_button_check(0,gp_padd))
-or (gamepad_button_check(0,gp_padl))
-or (gamepad_button_check(0,gp_padr))
-or (gamepad_button_check(0,gp_padu))
-or (gamepad_button_check(0,gp_select))
-or (gamepad_button_check(0,gp_shoulderl))
-or (gamepad_button_check(0,gp_shoulderlb))
-or (gamepad_button_check(0,gp_shoulderr))
-or (gamepad_button_check(0,gp_shoulderrb))
-or (gamepad_button_check(0,gp_start))
-or (gamepad_button_check(0,gp_stickl))
-or (gamepad_button_check(0,gp_stickr))
-or (gamepad_axis_value(0,gp_axislh)<>0)
-or (gamepad_axis_value(0,gp_axislv)<>0)
-or (gamepad_axis_value(0,gp_axisrh)<>0)
-or (gamepad_axis_value(0,gp_axisrv)<>0)
+if (gamepad_button_check(0, gp_face1))
+or (gamepad_button_check(0, gp_face2))
+or (gamepad_button_check(0, gp_face3))
+or (gamepad_button_check(0, gp_face4))
+or (gamepad_button_check(0, gp_padd))
+or (gamepad_button_check(0, gp_padl))
+or (gamepad_button_check(0, gp_padr))
+or (gamepad_button_check(0, gp_padu))
+or (gamepad_button_check(0, gp_select))
+or (gamepad_button_check(0, gp_shoulderl))
+or (gamepad_button_check(0, gp_shoulderlb))
+or (gamepad_button_check(0, gp_shoulderr))
+or (gamepad_button_check(0, gp_shoulderrb))
+or (gamepad_button_check(0, gp_start))
+or (gamepad_button_check(0, gp_stickl))
+or (gamepad_button_check(0, gp_stickr))
+or (gamepad_axis_value(0, gp_axislh)<>0)
+or (gamepad_axis_value(0, gp_axislv)<>0)
+or (gamepad_axis_value(0, gp_axisrh)<>0)
+or (gamepad_axis_value(0, gp_axisrv)<>0)
 {
 	show_keyboard_and_mouse_input_change_prompt = 0;
 	if (global.controls_used_for_menu_navigation != "controller")
@@ -82,7 +82,7 @@ if (room = room_leveleditor)
 if (room = room_leveleditor)
 {
 	if (global.custom_background1>noone)
-	and (global.enable_background_layer1=true)
+	and (global.enable_background_layer1= true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background")),true)
 	}
@@ -92,7 +92,7 @@ if (room = room_leveleditor)
 	}
 
 	if (global.custom_background2>noone)
-	and (global.enable_background_layer2=true)
+	and (global.enable_background_layer2= true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_2")),true)
 	}
@@ -102,7 +102,7 @@ if (room = room_leveleditor)
 	}
 
 	if (global.custom_background3>noone)
-	and (global.enable_background_layer3=true)
+	and (global.enable_background_layer3= true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_3")),true)
 	}
@@ -112,7 +112,7 @@ if (room = room_leveleditor)
 	}
 
 	if (global.custom_background4>noone)
-	and (global.enable_background_layer4=true)
+	and (global.enable_background_layer4= true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_4")),true)
 	}
@@ -172,7 +172,7 @@ and (!instance_exists(obj_title))
 		if (lives <= 0)
 		{
 			global.hud_show_lives = true;
-			hud_show_lives_timer = global.hud_hide_time*60;
+			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
 	if (gamepad_button_check_pressed(1, gp_face1))
@@ -204,7 +204,7 @@ and (!instance_exists(obj_title))
 		if (lives <= 0)
 		{
 			global.hud_show_lives = true;
-			hud_show_lives_timer = global.hud_hide_time*60;
+			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
 	if (gamepad_button_check_pressed(2, gp_face1))
@@ -236,7 +236,7 @@ and (!instance_exists(obj_title))
 		if (lives <= 0)
 		{
 			global.hud_show_lives = true;
-			hud_show_lives_timer = global.hud_hide_time*60;
+			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
 	if (gamepad_button_check_pressed(3, gp_face1))
@@ -268,7 +268,7 @@ and (!instance_exists(obj_title))
 		if (lives <= 0)
 		{
 			global.hud_show_lives = true;
-			hud_show_lives_timer = global.hud_hide_time*60;
+			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
 }
@@ -403,8 +403,8 @@ if (save_level_as_png = false)
 {
 	if (shake > 0)
 	{
-		x = x + random_range(-shake, +shake);
-		y = y + random_range(-shake, +shake);
+		x = x + random_range(-shake, + shake);
+		y = y + random_range(-shake, + shake);
 		shake = lerp(shake, 0, 0.1);
 	}
 
@@ -783,7 +783,7 @@ if (save_level_as_png = false)
 				}
 			}
 		}
-		#endregion /*Zoom In Player Goal End*/
+		#endregion /*Zoom In Player Goal END*/
 
 		#region /*Zoom In Player Map*/
 		else
@@ -810,7 +810,7 @@ if (save_level_as_png = false)
 				}
 			}
 		}
-		#endregion /*Zoom In Player Map End*/
+		#endregion /*Zoom In Player Map END*/
 		
 		else
 		
@@ -833,7 +833,7 @@ if (save_level_as_png = false)
 				iris_zoom = 1;
 			}
 		}
-		#endregion /*Zoom Out End*/
+		#endregion /*Zoom Out END*/
 
 	}
 }
@@ -924,7 +924,7 @@ and (!instance_exists(obj_player_map))
 		effect_create_above(ef_rain, x, y, 2, c_white);
 	}
 }
-#endregion /*Rain Effect End*/
+#endregion /*Rain Effect END*/
 
 ///Multiplayer - Has pressed keys
 
@@ -1238,7 +1238,7 @@ else
 #endregion /*Player 4 Show Controls HUD timer*/
 
 #region /*Sprint Toggling*/
-if(keyboard_check_pressed(global.player1_key_sprint_toggle))
+if (keyboard_check_pressed(global.player1_key_sprint_toggle))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -1257,7 +1257,7 @@ and (!instance_exists(obj_pause))
 		global.player1_sprint_toggle = false;
 	}
 }
-if(keyboard_check_pressed(global.player2_key_sprint_toggle))
+if (keyboard_check_pressed(global.player2_key_sprint_toggle))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -1276,7 +1276,7 @@ and (!instance_exists(obj_pause))
 		global.player2_sprint_toggle = false;
 	}
 }
-if(keyboard_check_pressed(global.player3_key_sprint_toggle))
+if (keyboard_check_pressed(global.player3_key_sprint_toggle))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -1295,7 +1295,7 @@ and (!instance_exists(obj_pause))
 		global.player3_sprint_toggle = false;
 	}
 }
-if(keyboard_check_pressed(global.player4_key_sprint_toggle))
+if (keyboard_check_pressed(global.player4_key_sprint_toggle))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -1330,22 +1330,22 @@ and (!instance_exists(obj_pause))
 	{
 		if (global.player1_sprint_toggle = true)
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Always Run: True",global.default_text_size,c_white,c_black,1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Always Run: True", global.default_text_size,c_white,c_black,1);
 		}
 		else
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Always Run: False",global.default_text_size,c_white,c_black,1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Always Run: False", global.default_text_size,c_white,c_black,1);
 		}
 	}
 	else
 	{
 		if (global.player1_sprint_toggle = true)
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 1 Always Run: True",global.default_text_size,c_white,c_black,1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Player 1 Always Run: True", global.default_text_size,c_white,c_black,1);
 		}
 		else
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 1 Always Run: False",global.default_text_size,c_white,c_black,1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Player 1 Always Run: False", global.default_text_size,c_white,c_black,1);
 		}
 	}
 }
@@ -1361,11 +1361,11 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player4 = 0;
 	if (global.player2_sprint_toggle = true)
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 2 Always Run: True",global.default_text_size,c_white,c_black,1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Player 2 Always Run: True", global.default_text_size,c_white,c_black,1);
 	}
 	else
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 2 Always Run: False",global.default_text_size,c_white,c_black,1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Player 2 Always Run: False", global.default_text_size,c_white,c_black,1);
 	}
 }
 if (show_sprint_toggle_for_player3>0)
@@ -1380,11 +1380,11 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player4 = 0;
 	if (global.player3_sprint_toggle = true)
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 3 Always Run: True",global.default_text_size,c_white,c_black,1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Player 3 Always Run: True", global.default_text_size,c_white,c_black,1);
 	}
 	else
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 3 Always Run: False",global.default_text_size,c_white,c_black,1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Player 3 Always Run: False", global.default_text_size,c_white,c_black,1);
 	}
 }
 if (show_sprint_toggle_for_player4>0)
@@ -1399,11 +1399,11 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player4 -= 1;
 	if (global.player4_sprint_toggle = true)
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 4 Always Run: True",global.default_text_size,c_white,c_black,1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Player 4 Always Run: True", global.default_text_size,c_white,c_black,1);
 	}
 	else
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200,camera_get_view_y(view_camera[view_current])+32,"Player 4 Always Run: False",global.default_text_size,c_white,c_black,1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current])+200, camera_get_view_y(view_camera[view_current])+32,"Player 4 Always Run: False", global.default_text_size,c_white,c_black,1);
 	}
 }
 #endregion /*Sprint Toggling END*/

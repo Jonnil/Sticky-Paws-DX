@@ -33,7 +33,7 @@ acceleration_on_ground = 0.3; /*How much acceleration the character has on groun
 acceleration_in_air = 0.3; /*How much acceleration the character has in air*/
 acceleration_on_ice = 0.05; /*How much acceleration the character has on ice*/
 seconds_until_drowning = 10; /*How many seconds you can breathe underwater*/
-frames_until_drowning = seconds_until_drowning*60+1;
+frames_until_drowning = seconds_until_drowning*60 + 1;
 drawn_frames_until_drowning = frames_until_drowning;
 if (global.assist_enable = false)
 {
@@ -190,9 +190,6 @@ sprite_skidding_stop = noone;
 sprite_spring_up = noone;
 sprite_spring_transition = noone;
 sprite_spring_down = noone;
-sprite_player_spring_up = noone;
-sprite_player_spring_transition = noone;
-sprite_player_spring_down = noone;
 sprite_swim_stand = noone;
 sprite_swim = noone;
 sprite_swim_fall = noone;
@@ -530,10 +527,71 @@ rope_length = point_distance(grapple_x, grapple_y, x, y);
 #endregion /*Rope Swing Variables END*/
 
 speed_max = 4; /*Default max speed is 4, this value is what changes and determines the max speed*/
-have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
 double_tap_run_timer = 0;
 double_tap_left = false;
 double_tap_right = false;
+
+#region /*Have Heart Balloon*/
+if (global.character_select_in_this_menu = "main_game")
+and (file_exists("file" + string(global.file) + ".ini"))
+{
+	ini_open("file" + string(global.file) + ".ini");
+	
+	if (player = 1)
+	{
+		if (ini_key_exists("Player", "player_1_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_1_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_1_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	if (player = 2)
+	{
+		if (ini_key_exists("Player", "player_2_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_2_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_2_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	if (player = 3)
+	{
+		if (ini_key_exists("Player", "player_3_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_3_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_3_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	if (player = 4)
+	{
+		if (ini_key_exists("Player", "player_4_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_4_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_4_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	ini_close();
+}
+else
+{
+	have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+}
+#endregion /*Have Heart Balloon END*/
 
 #region /*Custom Music*/
 if (asset_get_type("room_title") == asset_room)
@@ -542,37 +600,37 @@ and (room != room_title)
 	
 	#region /*Update Level Clear Melody*/
 	/*OGG small letter File*/
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/clear_melody.ogg"))
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/melody/clear_melody.ogg"))
 	and (global.character_select_in_this_menu = "main_game")
-	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/clear_melody.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/melody/clear_melody.ogg"))
 	and (global.character_select_in_this_menu = "level_editor")
 	and (global.create_level_from_template = true)
 	{
-		level_clear_melody = audio_create_stream("/levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/clear_melody.ogg");
+		level_clear_melody = audio_create_stream("/levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/melody/clear_melody.ogg");
 	}
 	else
 	/*OGG big letter File*/
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg"))
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg"))
 	and (global.character_select_in_this_menu = "main_game")
-	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg"))
 	and (global.character_select_in_this_menu = "level_editor")
 	and (global.create_level_from_template = true)
 	{
-		level_clear_melody = audio_create_stream("/levels/" + string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg");
+		level_clear_melody = audio_create_stream("/levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg");
 	}
 	else
 	/*OGG small letter File*/
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody/clear_melody.ogg"))
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/melody/clear_melody.ogg"))
 	and (global.character_select_in_this_menu = "level_editor")
 	{
-		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody/clear_melody.ogg");
+		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/melody/clear_melody.ogg");
 	}
 	else
 	/*OGG big letter File*/
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg"))
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg"))
 	and (global.character_select_in_this_menu = "level_editor")
 	{
-		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg");
+		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/melody/Clear_Melody.ogg");
 	}
 	else
 	{

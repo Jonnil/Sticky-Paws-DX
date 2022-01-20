@@ -7,4 +7,4 @@ image_speed = 0.1;
 second_x = 0;
 second_y = 0;
 
-alarm_set(0,1)
+alarm_set(0, 1)

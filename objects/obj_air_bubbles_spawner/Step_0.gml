@@ -21,7 +21,7 @@ and (fps_real >= 210)
 		hspeed = random_range(-1, +1);
 	}
 }
-if (!position_meeting(x, bbox_bottom+1, obj_wall))
+if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 {
 	y += 1;
 }

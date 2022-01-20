@@ -7,21 +7,21 @@ and (global.enable_enemies = false)
 #endregion /*If enemies are disabled, destroy this object END*/
 
 if (die_volting=-1)
-or (die_volting=+1)
+or (die_volting= +1)
 {
 	depth = -900;
 	if (die_volting=-1)
 	{
 		image_angle-=20;
-		hspeed=+4;
+		hspeed =+4;
 	}
 	else
 	{
 		image_angle+=20;
-		hspeed=-4;
+		hspeed =-4;
 	}
 	#region /*Set the gravity*/
-	gravity_direction=270;/*Direction of the gravity*/
+	gravity_direction =270;/*Direction of the gravity*/
 	gravity = 0.5;/*The gravity*/
 	#endregion /*Set the gravity END*/
 	
@@ -30,7 +30,7 @@ else
 {
 	
 	#region /*Set the gravity*/
-	gravity_direction=270;/*Direction of the gravity*/
+	gravity_direction =270;/*Direction of the gravity*/
 	if (asset_get_type("obj_wall") == asset_object)
 	and (!place_meeting(x, y + 1, obj_wall))
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -52,23 +52,23 @@ else
 	}
 	#endregion /*Set the gravity END*/
 	
-	if (image_xscale<0)
+	if (image_xscale < 0)
 	{
-		hspeed=-1;
+		hspeed =-1;
 	}
 	else
 	{
-		hspeed=+1;
+		hspeed = +1;
 	}
-	if (flat=true)
+	if (flat = true)
 	{
-		speed=0;
-		image_speed=0.5;
+		speed = 0;
+		image_speed = 0.5;
 		sprite_used = "flattened";
 		sprite_index = global.resourcepack_sprite_basic_enemy_flattened;
-		if (image_index>image_number-1)
+		if (image_index > image_number - 1)
 		{
-		effect_create_above(ef_smoke,x,y,2,c_white);
+		effect_create_above(ef_smoke, x, y,2, c_white);
 		instance_destroy();
 		}
 	}
@@ -88,20 +88,20 @@ if (flat = false)
 }
 
 #region /*Turn around*/
-if (position_meeting(bbox_left-1,y,obj_wall))
+if (position_meeting(bbox_left - 1, y, obj_wall))
 {
-	image_xscale=+1;
+	image_xscale = +1;
 }
-if (position_meeting(bbox_right+1,y,obj_wall))
+if (position_meeting(bbox_right + 1, y, obj_wall))
 {
-	image_xscale=-1;
+	image_xscale = -1;
 }
 #endregion /*Turn around END*/
 
 #region /*Kill enemy if it's inside the wall*/
-if (position_meeting(x,y,obj_wall))
+if (position_meeting(x, y, obj_wall))
 and (die = false)
-and (draw_xscale>=0.8)
+and (draw_xscale >= 0.8)
 {
 	flat = false;
 	die = true;

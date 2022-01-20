@@ -42,7 +42,7 @@ else
 	}
 	if flat = true
 	{
-		/*image_yscale=lerp(image_yscale,0.1,0.2);*/
+		/*image_yscale =lerp(image_yscale,0.1, 0.2);*/
 		speed = 0;
 		image_speed = 0.5;
 		if image_xscale = -1
@@ -95,9 +95,9 @@ if image_xscale = -1 and x < camera_get_view_x(view_camera[view_current]) or ima
 }
 
 #region /*Kill enemy if it's inside the wall*/
-if (position_meeting(x,y,obj_wall))
+if (position_meeting(x, y, obj_wall))
 and (die = false)
-and (draw_xscale>=0.8)
+and (draw_xscale >= 0.8)
 {
 	flat = false;
 	die = true;

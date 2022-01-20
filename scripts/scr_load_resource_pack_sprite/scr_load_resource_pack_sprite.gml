@@ -68,7 +68,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -121,7 +121,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -174,7 +174,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(100)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -227,7 +227,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -280,7 +280,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -333,7 +333,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -386,7 +386,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -439,7 +439,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -492,7 +492,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -545,7 +545,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -598,7 +598,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -651,7 +651,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -704,7 +704,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -757,7 +757,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -767,7 +767,7 @@ function scr_load_resource_pack_sprite()
 			else
 			if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
 			{
-				global.resourcepack_sprite_hp_pickup= sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
+				global.resourcepack_sprite_hp_pickup = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 			}
 			index+=1
 		}
@@ -810,7 +810,7 @@ function scr_load_resource_pack_sprite()
 		#endregion /*y origin point END*/
 		
 		#region /*Sprite Add*/
-		index=0
+		index= 0
 		repeat(50)
 		{
 			if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))

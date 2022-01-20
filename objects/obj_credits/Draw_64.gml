@@ -81,7 +81,7 @@ else
 	}
 }
 
-if (image_index >= image_number-1)
+if (image_index >= image_number - 1)
 and (sprite_index = spr_credits)
 {
 	end_credits = true;
@@ -205,7 +205,7 @@ else
 		iris_zoom = 1;
 	}
 }
-#endregion /*Zoom Out End*/
+#endregion /*Zoom Out END*/
 
 #endregion /*Iris Zooming END*/
 

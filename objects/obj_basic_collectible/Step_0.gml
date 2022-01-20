@@ -26,7 +26,7 @@ if (bounceup = false)
 						{
 							with(obj_camera)
 							{
-								hud_show_score_timer = global.hud_hide_time*60;
+								hud_show_score_timer = global.hud_hide_time * 60;
 							}
 						}
 					with(instance_nearest(x, y, obj_player))
@@ -40,7 +40,7 @@ if (bounceup = false)
 						{
 							with(obj_camera)
 							{
-								hud_show_basic_collectibles_timer = global.hud_hide_time*60;
+								hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 							}
 						}
 					if (asset_get_type("snd_coin") == asset_sound)
@@ -84,7 +84,7 @@ if (bounceup = true)
 				{
 					with(obj_camera)
 					{
-						hud_show_score_timer = global.hud_hide_time*60;
+						hud_show_score_timer = global.hud_hide_time * 60;
 					}
 				}
 			if (asset_get_type("obj_player") == asset_object)
@@ -101,7 +101,7 @@ if (bounceup = true)
 			{
 				with(obj_camera)
 				{
-					hud_show_basic_collectibles_timer = global.hud_hide_time*60;
+					hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 				}
 			}
 			effect_create_above(ef_ring, x, y, 0, c_white);

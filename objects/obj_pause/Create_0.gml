@@ -12,21 +12,21 @@ scr_set_arrays();
 ///No Narrator
 if (global.narrator >= 0)
 {
-	menuvoice_titlesplash=noone;
+	menuvoice_titlesplash =noone;
 	menuvoice_1player=noone;
 	menuvoice_2player=noone;
 	menuvoice_3player=noone;
 	menuvoice_4player=noone;
 	menuvoice_leveleditor=noone;
-	menuvoice_leveleditor_denied=noone;
+	menuvoice_leveleditor_denied =noone;
 	menuvoice_options=noone;
 }
 
-pause_text_alpha=0;
-pause_text_lerp=1;
+pause_text_alpha= 0;
+pause_text_lerp =1;
 menu = "continue";
-menu_delay=10;
-lastkey=noone;
+menu_delay =10;
+lastkey =noone;
 
 #region /*Remapping options variables*/
 remapping_player = 0;
@@ -40,17 +40,17 @@ can_remap_key = false;
 
 open_dropdown = false;
 menu_joystick_delay = 0;
-can_navigate=true;
-remap_y_pos=0;
-menu_cursor_index=0;
+can_navigate = true;
+remap_y_pos= 0;
+menu_cursor_index= 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
-can_navigate_settings_sidebar=true;
+can_navigate_settings_sidebar= true;
 navigate_slider=false;
-menu_remap_key_number=0;
-menu_y_offset=0;/*This is the y offset that will have lerping to make the menu scrolling smooth*/
-menu_y_offset_real=0;/*This is the real y offset for the menu, used for menu scrolling*/
-menu_cursor_y_position=0;
+menu_remap_key_number= 0;
+menu_y_offset = 0;/*This is the y offset that will have lerping to make the menu scrolling smooth*/
+menu_y_offset_real= 0;/*This is the real y offset for the menu, used for menu scrolling*/
+menu_cursor_y_position = 0;
 background_brightness_menu_lerp = 0;
 
 darken_settings_alpha = 0;
@@ -89,14 +89,14 @@ if (asset_get_type("room_leveleditor") == asset_room)
 and (room = room_leveleditor)
 and (global.character_select_in_this_menu = "main_game")
 {
-	ini_open(working_directory+"/File" + string(global.file) + ".ini");
+	ini_open(working_directory + "/File" + string(global.file) + ".ini");
 	
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"x_checkpoint",global.x_checkpoint);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"y_checkpoint",global.y_checkpoint);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"checkpoint_millisecond",global.timeattack_millisecond);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"checkpoint_second",global.timeattack_second);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"checkpoint_minute",global.timeattack_minute);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)),"checkpoint_realmillisecond",global.timeattack_realmillisecond);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"x_checkpoint", global.x_checkpoint);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"y_checkpoint", global.y_checkpoint);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_millisecond", global.timeattack_millisecond);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_second", global.timeattack_second);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_minute", global.timeattack_minute);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_realmillisecond", global.timeattack_realmillisecond);
 	
 	ini_close();
 }
@@ -105,13 +105,13 @@ if (asset_get_type("room_leveleditor") == asset_room)
 and (room = room_leveleditor)
 and (global.character_select_in_this_menu = "level_editor")
 {
-	ini_open(working_directory+"/custom_level_save.ini");
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"x_checkpoint",global.x_checkpoint);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"y_checkpoint",global.y_checkpoint);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_millisecond",global.timeattack_millisecond);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_second",global.timeattack_second);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_minute",global.timeattack_minute);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)),"checkpoint_realmillisecond",global.timeattack_realmillisecond);
+	ini_open(working_directory + "/custom_level_save.ini");
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"x_checkpoint", global.x_checkpoint);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"y_checkpoint", global.y_checkpoint);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_millisecond", global.timeattack_millisecond);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_second", global.timeattack_second);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_minute", global.timeattack_minute);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_realmillisecond", global.timeattack_realmillisecond);
 	ini_close();
 }
 #endregion /*Save Level Editor Checkpoint END*/

@@ -8,15 +8,15 @@ function scr_save_custom_level()
 		#region /*Create directory for saving custom levels*/
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template = false)
-		and (!directory_exists(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index))))
+		and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))))
 		{
-			directory_create(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)));
+			directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
 		}
 		else
 		if (global.level_name != "")
-		and (!directory_exists(working_directory+"/custom_levels/" + string(global.level_name)))
+		and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))
 		{
-			directory_create(working_directory+"/custom_levels/" + string(global.level_name));
+			directory_create(working_directory + "/custom_levels/" + string(global.level_name));
 		}
 		#endregion /*Create directory for saving custom levels END*/
 	
@@ -26,12 +26,12 @@ function scr_save_custom_level()
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template = false)
 		{
-			file = file_text_open_write(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/object_placement.txt"); /*Open file for writing*/
+			file = file_text_open_write(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt"); /*Open file for writing*/
 		}
 		else
 		if (global.level_name != "")
 		{
-			file = file_text_open_write(working_directory+"/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"); /*Open file for writing*/
+			file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"); /*Open file for writing*/
 		}
 		str=""; /*Reset string var*/
 		
@@ -64,64 +64,64 @@ function scr_save_custom_level()
 			if (global.select_level_index >= 1)
 			and (global.create_level_from_template = false)
 			{
-				ini_open(working_directory+"/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)) + "/data/level_information.ini");
+				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 			}
 			else
 			if (global.level_name != "")
 			{
-				ini_open(working_directory+"/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			}
-			ini_write_string("info","level_name",level_name);
+			ini_write_string("info", "level_name",level_name);
 			if (instance_exists(obj_level_player_1_start))
 			{
-				ini_write_real("info","level_player_1_start_x",obj_level_player_1_start.x);
+				ini_write_real("info", "level_player_1_start_x",obj_level_player_1_start.x);
 			}
 			if (instance_exists(obj_level_player_1_start))
 			{
-				ini_write_real("info","level_player_1_start_y",obj_level_player_1_start.y);
+				ini_write_real("info", "level_player_1_start_y",obj_level_player_1_start.y);
 			}
 			if (instance_exists(obj_level_player_2_start))
 			{
-				ini_write_real("info","level_player_2_start_x",obj_level_player_2_start.x);
+				ini_write_real("info", "level_player_2_start_x",obj_level_player_2_start.x);
 			}
 			if (instance_exists(obj_level_player_2_start))
 			{
-				ini_write_real("info","level_player_2_start_y",obj_level_player_2_start.y);
+				ini_write_real("info", "level_player_2_start_y",obj_level_player_2_start.y);
 			}
 			if (instance_exists(obj_level_player_3_start))
 			{
-				ini_write_real("info","level_player_3_start_x",obj_level_player_3_start.x);
+				ini_write_real("info", "level_player_3_start_x",obj_level_player_3_start.x);
 			}
 			if (instance_exists(obj_level_player_3_start))
 			{
-				ini_write_real("info","level_player_3_start_y",obj_level_player_3_start.y);
+				ini_write_real("info", "level_player_3_start_y",obj_level_player_3_start.y);
 			}
 			if (instance_exists(obj_level_player_4_start))
 			{
-				ini_write_real("info","level_player_4_start_x",obj_level_player_4_start.x);
+				ini_write_real("info", "level_player_4_start_x",obj_level_player_4_start.x);
 			}
 			if (instance_exists(obj_level_player_4_start))
 			{
-				ini_write_real("info","level_player_4_start_y",obj_level_player_4_start.y);
+				ini_write_real("info", "level_player_4_start_y",obj_level_player_4_start.y);
 			}
 			if (instance_exists(obj_level_end))
 			{
-				ini_write_real("info","level_end_x",obj_level_end.x);
+				ini_write_real("info", "level_end_x",obj_level_end.x);
 			}
 			if (instance_exists(obj_level_end))
 			{
-				ini_write_real("info","level_end_y",obj_level_end.y);
+				ini_write_real("info", "level_end_y",obj_level_end.y);
 			}
 			if (instance_exists(obj_level_height))
 			{
-				ini_write_real("info","level_height",obj_level_height.y);
+				ini_write_real("info", "level_height",obj_level_height.y);
 			}
 			if (instance_exists(obj_level_width))
 			{
-				ini_write_real("info","level_width",obj_level_width.x);
+				ini_write_real("info", "level_width",obj_level_width.x);
 			}
-			ini_write_real("info","view_xview",camera_get_view_x(view_camera[view_current]));
-			ini_write_real("info","view_yview",camera_get_view_y(view_camera[view_current]));
+			ini_write_real("info", "view_xview",camera_get_view_x(view_camera[view_current]));
+			ini_write_real("info", "view_yview",camera_get_view_y(view_camera[view_current]));
 			ini_close();
 		}
 		#endregion /*Save Level Information END*/

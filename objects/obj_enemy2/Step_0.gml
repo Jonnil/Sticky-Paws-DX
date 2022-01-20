@@ -103,9 +103,9 @@ if (asset_get_type("obj_player") == asset_object)
 }
 
 #region /*Kill enemy if it's inside the wall*/
-if (position_meeting(x,y,obj_wall))
+if (position_meeting(x, y, obj_wall))
 and (die = false)
-and (draw_xscale>=0.8)
+and (draw_xscale >= 0.8)
 {
 	flat = false;
 	die = true;

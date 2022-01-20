@@ -1,5 +1,5 @@
 /// @function draw_menu_slider(x, y, string, menu_index, menu_takes_you_to, variable_to_change)
-/// @description draw_menu_button(x,y,string,menu_index, variable_to_change)
+/// @description draw_menu_button(x, y,string,menu_index, variable_to_change)
 /// @param x
 /// @param y
 /// @param string
@@ -12,8 +12,8 @@ function draw_menu_slider()
 {
 	
 	#region /*Initialize variables*/
-	var x_position=argument0;/*The buttons x origin position*/
-	var y_position=argument1;/*The buttons y origin position*/
+	var x_position =argument0;/*The buttons x origin position*/
+	var y_position =argument1;/*The buttons y origin position*/
 
 	var string_text = argument2;
 	var menu_index = argument3;
@@ -35,7 +35,7 @@ function draw_menu_slider()
 	#region /*Draw Bar*/
 	if (menu = menu_index)
 	{
-		draw_rectangle_color (x_position-2,y_position-16-2,x_position+320+2,y_position+16+2,c_black,c_black,c_black,c_black,false);
+		draw_rectangle_color (x_position-2,y_position-16-2,x_position+320+2,y_position+16+2, c_black,c_black,c_black,c_black,false);
 		
 		#region /*Click to change value*/
 		if (global.controls_used_for_menu_navigation = "mouse")
@@ -126,7 +126,7 @@ function draw_menu_slider()
 	#region /*Text above the menu button*/
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x_position,y_position-32,string(string_text) + ": " + string(variable_to_change * 100) + "%",global.default_text_size*0.75,c_menu_outline,c_menu_fill,1);
+	draw_text_outlined(x_position,y_position-32,string(string_text) + ": " + string(variable_to_change * 100) + "%", global.default_text_size*0.75,c_menu_outline,c_menu_fill,1);
 	#endregion /*Text above the menu button END*/
 	
 }

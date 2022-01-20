@@ -79,9 +79,9 @@ scr_show_fps();
 scr_virtual_keys();
 
 #region /*Have a black screen at the first frame so transitions look natural*/
-if (black_screen_at_start_delay<1)
+if (black_screen_at_start_delay < 1)
 {
-	draw_rectangle_color (0,0,window_get_width()*3,window_get_height()*3,c_black,c_black,c_black,c_black,false);
+	draw_rectangle_color (0, 0,window_get_width()*3,window_get_height()*3,c_black,c_black,c_black,c_black,false);
 	black_screen_at_start_delay += 1;
 }
 #endregion /*Have a black screen at the first frame so transitions look natural END*/
@@ -92,6 +92,6 @@ and (os_type!=os_ios)
 and (os_type!=os_android)
 and (global.pause = false)
 {
-	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
+	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(), 1,1, 0, c_white,1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/

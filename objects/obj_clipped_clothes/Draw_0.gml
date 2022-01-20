@@ -1,9 +1,9 @@
 draw_self();
-image_speed=0.1;
-if (place_meeting(x,y,obj_player))
-and (fall=false)
+image_speed = 0.1;
+if (place_meeting(x, y, obj_player))
+and (fall = false)
 {
-	fall=true;
+	fall = true;
 	
 	#region /*If it's a clipped shirt, turn into the shirt falling*/
 	if (asset_get_type("spr_clipped_shirt") == asset_sprite)
@@ -36,12 +36,12 @@ and (fall=false)
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
-		obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);
+		obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
 		with(obj)
 		{
-			image_speed=1;
-			motion_set(90,10);
-			bounceup=true;
+			image_speed = 1;
+			motion_set(90, 10);
+			bounceup = true;
 		}
 	}
 	#endregion /*1 Basic Collectible END*/
@@ -52,55 +52,55 @@ and (fall=false)
 		if (asset_get_type("spr_sock") == asset_sprite)
 		and (sprite_index=spr_sock)
 		{
-			obj=instance_create_depth(x,y-16,0,obj_clipper);
+			obj = instance_create_depth(x, y - 16,0,obj_clipper);
 			with(obj)
 			{
-				motion_set(90+random_range(-10,+10),random_range(5,10));
+				motion_set(90+random_range(-10,+10),random_range(5, 10));
 			}
 		}
 		else
 		{
-			obj=instance_create_depth(x+16,y-16,0,obj_clipper);
+			obj = instance_create_depth(x + 16,y - 16,0,obj_clipper);
 			with(obj)
 			{
-				motion_set(45,random_range(5,10));
+				motion_set(45,random_range(5, 10));
 			}
-			obj=instance_create_depth(x-16,y-16,0,obj_clipper);
+			obj = instance_create_depth(x - 16,y - 16,0,obj_clipper);
 			with(obj)
 			{
-				motion_set(135,random_range(5,10));
+				motion_set(135,random_range(5, 10));
 			}
 		}
 	}
 	#endregion /*Make clippers fly out END*/
 }
-if (fall=true)
+if (fall = true)
 {
-	if (!position_meeting(x,bbox_bottom+1,obj_wall))
-	and (x>camera_get_view_x(view_camera[view_current]))
+	if (!position_meeting(x, bbox_bottom + 1, obj_wall))
+	and (x >camera_get_view_x(view_camera[view_current]))
 	and (x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
 	{
 		gravity = 0.5;
 		if (vspeed<+1)
 		{
-			vspeed=+1;
+			vspeed = +1;
 		}
-		image_yscale=1;
+		image_yscale =1;
 	}
 	else
 	{
 		gravity = 0;
-		vspeed=0;
-		if (position_meeting(x,bbox_bottom+1,obj_wall))
+		vspeed = 0;
+		if (position_meeting(x, bbox_bottom + 1, obj_wall))
 		{
-			image_yscale=0.5;
+			image_yscale = 0.5;
 		}
 	}
 }
 
 #region /*Limit vertical falling speed*/
-if (vspeed>20)
+if (vspeed > 20)
 {
-	vspeed=+20;
+	vspeed = +20;
 }
 #endregion /*Limit vertical falling speed END*/

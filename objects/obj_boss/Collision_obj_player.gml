@@ -124,18 +124,46 @@ else
 	if (hp > 0)
 	and (takendamage = 0)
 	{
-		if (other.takendamage<=0)
-		and (other.assist_invincible=false)
+		if (other.takendamage<= 0)
+		and (other.assist_invincible = false)
 		{
-			if (other.have_heart_balloon=true)
+			if (other.have_heart_balloon = true)
 			{
-				other.have_heart_balloon=false;
+				other.have_heart_balloon = false;
+				
+				#region /*Save heart balloon to be false*/
+				if (other.player = 1)
+				{
+					ini_open("file" + string(global.file) + ".ini");
+					ini_write_real("Player", "player_1_have_heart_balloon", false);
+					ini_close();
+				}
+				if (other.player = 2)
+				{
+					ini_open("file" + string(global.file) + ".ini");
+					ini_write_real("Player", "player_2_have_heart_balloon", false);
+					ini_close();
+				}
+				if (other.player = 3)
+				{
+					ini_open("file" + string(global.file) + ".ini");
+					ini_write_real("Player", "player_3_have_heart_balloon", false);
+					ini_close();
+				}
+				if (other.player = 4)
+				{
+					ini_open("file" + string(global.file) + ".ini");
+					ini_write_real("Player", "player_4_have_heart_balloon", false);
+					ini_close();
+				}
+				#endregion /*Save heart balloon to be false END*/
+				
 			}
 			else
 			{
-				other.hp-=1;
+				other.hp -= 1;
 			}
-			other.takendamage=100;
+			other.takendamage = 100;
 		}
 	}
 }

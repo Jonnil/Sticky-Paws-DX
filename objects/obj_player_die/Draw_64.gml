@@ -10,12 +10,12 @@ if (lives <= 0)
 {
 	
 	#region /*When you get a game over, reset checkpoints*/
-	global.x_checkpoint=0;
-	global.y_checkpoint=0;
-	global.checkpoint_millisecond=0;
-	global.checkpoint_second=0;
-	global.checkpoint_minute=0;
-	global.checkpoint_realmillisecond=0;
+	global.x_checkpoint = 0;
+	global.y_checkpoint = 0;
+	global.checkpoint_millisecond = 0;
+	global.checkpoint_second = 0;
+	global.checkpoint_minute = 0;
+	global.checkpoint_realmillisecond = 0;
 	#endregion /*When you get a game over, reset checkpoints END*/
 	
 	window_get_height()
@@ -146,8 +146,8 @@ if (lives <= 0)
 			}
 				
 			#region /*Reset Level*/
-			global.timeattack_realmillisecond=0;
-			global.theme="ground";
+			global.timeattack_realmillisecond = 0;
+			global.theme ="ground";
 			global.level_clear_rate = "enter";
 			score = 0;
 			scr_savelevel();

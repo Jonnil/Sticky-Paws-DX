@@ -35,19 +35,19 @@ InitTranslations();
 
 function InitTranslations(){
 if (file_exists("localization.csv")){global.language_local_data=load_csv("localization.csv");
-var hh=ds_grid_height(global.language_local_data);
+var hh =ds_grid_height(global.language_local_data);
 var translations=ds_map_create();
-for (var i=0;i<hh;i++)
+for (var i= 0;i<hh;i++)
 {
-	ds_map_add(translations,global.language_local_data[# 0,i],i);
+	ds_map_add(translations, global.language_local_data[# 0,i],i);
 }
-global.translations=translations;
-}else{global.language_local_data=0;global.translations=0;}}
+global.translations= translations;
+}else{global.language_local_data= 0;global.translations= 0;}}
 
 function Text(key){
-var text="";
+var text ="";
 if (global.translations[?key]!=undefined){
-var text=global.language_local_data[# 1+global.language_localization,global.translations[?key]];
+var text = global.language_local_data[# 1+global.language_localization, global.translations[?key]];
 var a=argument_count>1?argument[1]:"";
-text=string_replace_all(text,"{a}",a);}else{var text=key;}return text;
+text =string_replace_all(text,"{a}",a);}else{var text =key;}return text;
 }

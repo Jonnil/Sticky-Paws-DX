@@ -121,29 +121,29 @@ or (global.actually_play_edited_level = true)
 				if (global.character_select_in_this_menu = "main_game")
 				{
 					ini_open(working_directory + "\File" + string(global.file) + ".ini");
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "x_checkpoint"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "x_checkpoint"))
 					{
-						global.x_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "x_checkpoint", 0);
+						global.x_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "x_checkpoint", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "y_checkpoint"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "y_checkpoint"))
 					{
-						global.y_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "y_checkpoint", 0);
+						global.y_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "y_checkpoint", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "checkpoint_millisecond"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_millisecond"))
 					{
-						global.checkpoint_millisecond = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "checkpoint_millisecond", 0);
+						global.checkpoint_millisecond = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_millisecond", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "checkpoint_second"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_second"))
 					{
-						global.checkpoint_second = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "checkpoint_second", 0);
+						global.checkpoint_second = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_second", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "checkpoint_minute"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_minute"))
 					{
-						global.checkpoint_minute = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "checkpoint_minute", 0);
+						global.checkpoint_minute = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_minute", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "checkpoint_realmillisecond"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_realmillisecond"))
 					{
-						global.checkpoint_realmillisecond = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels,global.select_level_index)), "checkpoint_realmillisecond", 0);
+						global.checkpoint_realmillisecond = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
 					}
 					ini_close();
 				}
@@ -151,29 +151,29 @@ or (global.actually_play_edited_level = true)
 				if (global.character_select_in_this_menu = "level_editor")
 				{
 					ini_open(working_directory + "\custom_level_save.ini");
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "x_checkpoint"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint"))
 					{
-						global.x_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "x_checkpoint", 0);
+						global.x_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "y_checkpoint"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "y_checkpoint"))
 					{
-						global.y_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "y_checkpoint", 0);
+						global.y_checkpoint = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "y_checkpoint", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "checkpoint_millisecond"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond"))
 					{
-						global.checkpoint_millisecond = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "checkpoint_millisecond", 0);
+						global.checkpoint_millisecond = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "checkpoint_second"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second"))
 					{
-						global.checkpoint_second = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "checkpoint_second", 0);
+						global.checkpoint_second = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "checkpoint_minute"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute"))
 					{
-						global.checkpoint_minute = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "checkpoint_minute", 0);
+						global.checkpoint_minute = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", 0);
 					}
-					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "checkpoint_realmillisecond"))
+					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond"))
 					{
-						global.checkpoint_realmillisecond = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels,global.select_level_index)), "checkpoint_realmillisecond", 0);
+						global.checkpoint_realmillisecond = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
 					}
 					ini_close();
 				}

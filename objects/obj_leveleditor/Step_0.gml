@@ -10,7 +10,7 @@ if (keyboard_check_pressed(global.fullscreen_key))
 		window_set_fullscreen(true);
 	}
 	ini_open("config.ini");
-	ini_write_real("config","fullscreen_mode",window_get_fullscreen());
+	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
 	ini_close();
 }
 #endregion /*Fullscreen Toggle if camera doesn't exist. Default: F11 END*/
@@ -20,15 +20,15 @@ scr_parallax_scrolling_background();
 #region /*Deactivate instances outside view*/
 if (startup_loading_timer<=3)
 {
-	startup_loading_timer+=1;
+	startup_loading_timer += 1;
 }
 
-if (quit_level_editor=0)
+if (quit_level_editor= 0)
 and (global.play_edited_level = false)
 and (startup_loading_timer>=3)
 {
 	instance_activate_all();
-	if (global.deactivate_objects_outsiede_view=true)
+	if (global.deactivate_objects_outsiede_view= true)
 	{
 		instance_deactivate_region(
 		camera_get_view_x(view_camera[0]) - 32,
@@ -97,21 +97,21 @@ if (asset_get_type("obj_level_width") == asset_object)
 #endregion /*Deactivate instances outside view END*/
 
 #region /*Always keep the brush size within these values*/
-if (place_brush_size<0)
+if (place_brush_size < 0)
 {
-	place_brush_size=0;
+	place_brush_size = 0;
 }
-if (place_brush_size>5)
+if (place_brush_size >5)
 {
-	place_brush_size=5;
+	place_brush_size =5;
 }
-if (erase_brush_size<0)
+if (erase_brush_size < 0)
 {
-	erase_brush_size=0;
+	erase_brush_size = 0;
 }
-if (erase_brush_size>5)
+if (erase_brush_size >5)
 {
-	erase_brush_size=5;
+	erase_brush_size =5;
 }
 #endregion /*Always keep the brush size within these values END*/
 

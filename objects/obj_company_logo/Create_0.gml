@@ -5,19 +5,19 @@
 leveleditor_readme = noone; /*Readme textfile for how to use the level editor*/
 
 /*Change how menus look and function*/
-global.can_select_number_of_players=true; /*If this is true, there will be a number of players select screen before you start the game*/
-global.character_select_screen=true; /*If this is true, there will be a character select screen before you start the game*/
-global.character_clothes_customization=false; /*If this is true, you can costumize the character's clothes in the menu*/
-global.character_color_select=false; /*If this is true, you can choose the character's color in the menu*/
+global.can_select_number_of_players= true; /*If this is true, there will be a number of players select screen before you start the game*/
+global.character_select_screen = true; /*If this is true, there will be a character select screen before you start the game*/
+global.character_clothes_customization = false; /*If this is true, you can costumize the character's clothes in the menu*/
+global.character_color_select = false; /*If this is true, you can choose the character's color in the menu*/
 global.select_number_of_players_before_selecting_characters=false; /*If you should select how many players are going to play before you select what character to play as*/
 global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters! 1 = default*/
 global.max_number_of_official_resourcepacks = 1; /*Update this whenever you add more official resource packs! 1 = default*/
 global.max_number_of_official_title_backgrounds = 2; /*Update this whenever you add more official title backgrounds! 1 = default, but more title backgrounds can be added, for example: 1 = light theme, 2 = dark theme*/
 
 #region /*What settings tabs to show up*/
-global.show_language_shortcut=false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
-global.show_accessibility_shortcut=false; /*If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu*/
-global.show_profile_shortcut=false; /*If a shortcut for the profile options should appear in the main menu to the right of the settings menu*/
+global.show_language_shortcut = false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
+global.show_accessibility_shortcut = false; /*If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu*/
+global.show_profile_shortcut = false; /*If a shortcut for the profile options should appear in the main menu to the right of the settings menu*/
 global.enable_multiplayer_settings = false; /*Enable Multiplayer settings*/
 global.enable_controller_settings = false; /*Enable Controller settings*/
 global.enable_touch_settings = false; /*Enable Touch settings*/
@@ -59,17 +59,17 @@ global.number_of_chain_kills_for_1up = 8; /*How many chain reaction kills you ne
 #region /*Things you shouldn't change, warning, don't change any of these options or you might break the game!*/
 
 /*Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu*/
-global.equipped_upgrade_double_jump=true;/*If you have equipped the Double Jump Upgrade*/
+global.equipped_upgrade_double_jump = true;/*If you have equipped the Double Jump Upgrade*/
 
 #region /*View Border and Port Size*/
 if (!os_browser)
 {
-	view_hborder=1920;
-	view_vborder=1080;
+	view_hborder = 1920;
+	view_vborder = 1080;
 }
 #endregion /*View Border and Port Size END*/
 
-global.convention_mode=false;/*When showing the game on a convention, turn this to true*/
+global.convention_mode = false;/*When showing the game on a convention, turn this to true*/
 global.custom_level_load_delay = 0; /*How many frames each custom level takes to load. Having this number be too low can crash the game on weaker devices, so have an option in the game where you can change this number*/
 
 #region /*Show HUD Global Variables*/
@@ -86,33 +86,33 @@ global.hud_show_score = false;
 /*File Handeling*/
 
 #region /*Create directory for saving custom levels*/
-if (!directory_exists(working_directory+"\custom_levels"))
+if (!directory_exists(working_directory + "\custom_levels"))
 {
-	directory_create(working_directory+"\custom_levels");
+	directory_create(working_directory + "\custom_levels");
 }
 #endregion /*Create directory for saving custom levels END*/
 
 #region /*Create a readme file in custom levels folder explaining how to use the level editor*/
 if (leveleditor_readme > noone)
 {
-	leveleditor_readme_file = file_text_open_write(working_directory+"\custom_levels\readme.txt");
+	leveleditor_readme_file = file_text_open_write(working_directory + "\custom_levels\readme.txt");
 	file_text_write_string(leveleditor_readme_file, leveleditor_readme); /*Write readme textfile*/
 	file_text_close(leveleditor_readme_file);
 }
 #endregion /*Create a readme file in custom levels folder explaining how to use the level editor END*/
 
 #region /*Create directory for saving custom characters*/
-if (!directory_exists(working_directory+"\custom_characters"))
+if (!directory_exists(working_directory + "\custom_characters"))
 {
-	directory_create(working_directory+"\custom_characters");
+	directory_create(working_directory + "\custom_characters");
 }
 #endregion /*Create directory for saving custom characters END*/
 
 #region /*Unzip custom level files*/
-if (file_exists(working_directory+"custom_levels/*.zip"))
+if (file_exists(working_directory + "custom_levels/*.zip"))
 {
-	zip_unzip(working_directory+"custom_levels/*.zip",working_directory+"custom_levels/");
-	file_delete(working_directory+"custom_levels/*.zip"); /*Delete the zip file after it's been unzip*/
+	zip_unzip(working_directory + "custom_levels/*.zip", working_directory + "custom_levels/");
+	file_delete(working_directory + "custom_levels/*.zip"); /*Delete the zip file after it's been unzip*/
 }
 #endregion /*Unzip custom level files END*/
 
@@ -124,7 +124,7 @@ ds_list_add(global.all_loaded_custom_levels, "");
 global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
 ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Ending", "Level9");
 global.all_loaded_characters = ds_list_create();
-global.select_level_index=0;/*What level is selected in the custom level editor*/
+global.select_level_index= 0;/*What level is selected in the custom level editor*/
 
 max_players = 4; /*How many players you want to be able to play*/
 var i = max_players-1;
@@ -136,9 +136,9 @@ repeat(max_players)
 }
 
 global.thumbnail_sprite = ds_list_create();
-global.grid_hsnap=32;/*Horizontal grid snapping*/
-global.grid_vsnap=32;/*Vertical grid snapping*/
-global.narrator=1;/*Select Narrator*/
+global.grid_hsnap = 32;/*Horizontal grid snapping*/
+global.grid_vsnap = 32;/*Vertical grid snapping*/
+global.narrator = 1;/*Select Narrator*/
 global.character_for_player_1 = "Sticky"; /*Player 1 Select Character 1*/
 global.character_for_player_2 = "Catlyn"; /*Player 2 Select Character 2*/
 global.character_for_player_3 = "Sticky"; /*Player 3 Select Character 3*/
@@ -159,10 +159,10 @@ global.player1_can_play = false; /*Player 1 needs to join the game to be able to
 global.player2_can_play = false; /*Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player3_can_play = false; /*Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player4_can_play = false; /*Player 4 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
-global.color_for_player_1=0;/*Player 1 Select Color 1*/
-global.color_for_player_2=0;/*Player 2 Select Color 2*/
-global.color_for_player_3=0;/*Player 3 Select Color 3*/
-global.color_for_player_4=0;/*Player 4 Select Color 4*/
+global.color_for_player_1= 0;/*Player 1 Select Color 1*/
+global.color_for_player_2= 0;/*Player 2 Select Color 2*/
+global.color_for_player_3= 0;/*Player 3 Select Color 3*/
+global.color_for_player_4= 0;/*Player 4 Select Color 4*/
 global.hex_color_for_player_1=c_white;/*Player 1 Hex Value Color*/
 global.hex_color_for_player_2=c_white;/*Player 1 Hex Value Color*/
 global.hex_color_for_player_3=c_white;/*Player 1 Hex Value Color*/
@@ -177,51 +177,51 @@ global.automatically_pause_when_window_is_unfocused = true; /*Whenever you unfoc
 global.show_timer = false; /*Show a countup timer or not*/
 global.show_deaths_counter = false; /*Show a deaths counter or not*/
 global.controls_used_for_menu_navigation = "keyboard";/*keyboard, mouse, or controller*/
-global.pause=false;/*If game is paused or not*/
+global.pause = false;/*If game is paused or not*/
 global.custom_background1=noone;
 global.custom_background2=noone;
 global.custom_background3=noone;
 global.custom_background4=noone;
 global.custom_foreground1=noone;
 global.custom_foreground2=noone;
-global.custom_foreground_secret=noone;
-global.custom_tileset=noone;
+global.custom_foreground_secret = noone;
+global.custom_tileset = noone;
 global.sprite_select_player_1 = noone;
 global.sprite_select_player_2 = noone;
 global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
 global.selected_resourcepack = 0; /*0 = default*/
 global.selected_title_background = 0; /*0 = default*/
-//global.spot_x=0;
+//global.spot_x= 0;
 //global.spot_y = 0;
 
 switch(os_get_language())
 {
-	case "es": global.language_localization=localization.es_es;break;
-	case "fr": global.language_localization=localization.fr_fr;break;
-	case "it": global.language_localization=localization.it_it;break;
-	default: global.language_localization=localization.en_us;break;/*Set the default language to American English*/
+	case "es": global.language_localization =localization.es_es;break;
+	case "fr": global.language_localization =localization.fr_fr;break;
+	case "it": global.language_localization =localization.it_it;break;
+	default: global.language_localization =localization.en_us;break;/*Set the default language to American English*/
 }
 
 global.settings_sidebar_menu = "settings_back";/*Settings sidebar*/
-global.show_tutorial_signs=true;
-global.enable_transitions=true;
-global.enable_background_layer1=true;
-global.enable_background_layer2=true;
-global.enable_background_layer3=true;
-global.enable_background_layer4=true;
-global.enable_foreground_layer1=true;
-global.enable_foreground_layer2=true;
-global.enable_foreground_layer_secret=true;
-global.players_can_collide=false;
-global.player_has_entered_goal=false;
+global.show_tutorial_signs= true;
+global.enable_transitions= true;
+global.enable_background_layer1= true;
+global.enable_background_layer2= true;
+global.enable_background_layer3= true;
+global.enable_background_layer4= true;
+global.enable_foreground_layer1= true;
+global.enable_foreground_layer2= true;
+global.enable_foreground_layer_secret = true;
+global.players_can_collide = false;
+global.player_has_entered_goal = false;
 global.pause_room=noone;
-global.pause_player=0;
-global.key_used="";
-global.playergame=0;
-global.theme="ground";
-global.basic_collectibles=0;
-global.level_clear_rate=noone;
+global.pause_player= 0;
+global.key_used ="";
+global.playergame = 0;
+global.theme ="ground";
+global.basic_collectibles= 0;
+global.level_clear_rate =noone;
 global.current_level_clear_rate = noone;
 global.increase_number_of_levels_cleared = true; /*Some levels shouldn't increase the number of levels cleared, so switch this true or false for certain levels*/
 global.big_collectible1=false;/*If you have Big Collectible 1 or not*/
@@ -229,7 +229,7 @@ global.big_collectible2=false;/*If you have Big Collectible 2 or not*/
 global.big_collectible3=false;/*If you have Big Collectible 3 or not*/
 global.big_collectible4=false;/*If you have Big Collectible 4 or not*/
 global.big_collectible5=false;/*If you have Big Collectible 5 or not*/
-global.lives_until_assist=0;
+global.lives_until_assist = 0;
 
 #region /*Assist Settings*/
 global.assist_enable = false;
@@ -246,30 +246,30 @@ global.x_checkpoint = false;
 global.y_checkpoint = false;
 global.time_countdown = noone; /*Countdown timer before you get a Time Over, default should be "noone" so most levels don't have a countdown*/
 global.time_countdown_bonus = 500; /*Bonus countdown timer that gives extra points if you finish a level quickly, default should be "500" so you get bonus points if you win a level less than 8 minutes*/
-global.timeattack_millisecond=0;
-global.timeattack_second=0;
-global.timeattack_minute=0;
-global.timeattack_realmillisecond=0;
-global.timeattack_realmillisecond_real=0;
+global.timeattack_millisecond = 0;
+global.timeattack_second = 0;
+global.timeattack_minute = 0;
+global.timeattack_realmillisecond = 0;
+global.timeattack_realmillisecond_real= 0;
 #region /*Checkpoint Timer*/
-global.checkpoint_millisecond=0;
-global.checkpoint_second=0;
-global.checkpoint_minute=0;
-global.checkpoint_realmillisecond=0;
-#endregion /*Checkpoint Timer End*/
-global.win=false;
-global.enemy_counter=0;
-global.file=1;
-global.controls_layout=1;
-global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black=-1, normal=0 (default), full_white=+1*/
-global.background_brightness_menu=0; /*Background brightness in menus. full_black=-1, normal=0 (default), full_white=+1*/
+global.checkpoint_millisecond = 0;
+global.checkpoint_second = 0;
+global.checkpoint_minute = 0;
+global.checkpoint_realmillisecond = 0;
+#endregion /*Checkpoint Timer END*/
+global.win = false;
+global.enemy_counter= 0;
+global.file =1;
+global.controls_layout =1;
+global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black=-1, normal= 0 (default), full_white = +1*/
+global.background_brightness_menu= 0; /*Background brightness in menus. full_black=-1, normal= 0 (default), full_white = +1*/
 
 #region /*Music and Sound Volume*/
 global.music_volume = 0.7; /*Make the volumes set to 0.7 by default, so the volume of the game is not too loud when one start the game for the first time*/
 global.sfx_volume = 0.7;
 global.ambient_volume = 0.7;
 global.voices_volume = 0.7;
-global.verbosity_slider=1;
+global.verbosity_slider = 1;
 global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
 
@@ -277,15 +277,15 @@ global.music = noone;
 global.music_underwater = noone;
 global.ambience = noone;
 global.ambience_underwater=noone;
-global.trigger_ending=false;
-global.spikes_emerge_time=0;
-global.goal_active=false;
-global.interpolate=true
+global.trigger_ending = false;
+global.spikes_emerge_time = 0;
+global.goal_active = false;
+global.interpolate = true
 global.show_fps=false;
-global.show_fps_real=false;
-global.show_instance_count=false;
+global.show_fps_real = false;
+global.show_instance_count = false;
 global.show_collision_mask=false;
-global.pause_screenshot=noone;
+global.pause_screenshot = noone;
 global.restart_level = false;
 global.quit_level = false;
 global.quit_to_map = false;
@@ -317,13 +317,13 @@ global.player3_cancel_dive_by_pressing_opposite_direction = false;
 global.player4_cancel_dive_by_pressing_opposite_direction = false;
 
 #region /*Universal Keyboard Remapping*/
-global.fullscreen_key=vk_f11;
+global.fullscreen_key =vk_f11;
 #endregion /*Universal Keyboard Remapping*/
 
-global.level_name=""; /*In the level editor, the name of the currently selected level will be stored here*/
+global.level_name =""; /*In the level editor, the name of the currently selected level will be stored here*/
 
 #region /*Player 1 Keyboard Remapping*/
-global.player1_name="";
+global.player1_name ="";
 
 #region /*Player 1 Key 1 defaults*/
 global.player1_key_dive = ord("X");
@@ -353,15 +353,15 @@ global.player1_key2_up = ord("W");
 global.player1_key2_tongue = noone;
 #endregion /*Player 1 Key 2 defaults END*/
 
-global.player1_up_key_is_jump_key=false;
-global.player1_double_tap_to_run=true;
-global.player1_wall_jump_setting=1;
-global.player1_drop_from_rope=1;
+global.player1_up_key_is_jump_key =false;
+global.player1_double_tap_to_run = true;
+global.player1_wall_jump_setting = 1;
+global.player1_drop_from_rope =1;
 global.player1_show_controls=1;
 #endregion /*Player 1 Keyboard Remapping END*/
 
 #region /*Player 2 Keyboard Remapping (everything should be set to noone)*/
-global.player2_name="";
+global.player2_name ="";
 
 #region /*Player 2 Key 1 defaults*/
 global.player2_key_dive = noone;
@@ -391,15 +391,15 @@ global.player2_key2_up = noone;
 global.player2_key2_tongue = noone;
 #endregion /*Player 2 Key 2 defaults END*/
 
-global.player2_up_key_is_jump_key=false;
-global.player2_double_tap_to_run=true;
-global.player2_wall_jump_setting=1;
-global.player2_drop_from_rope=1;
+global.player2_up_key_is_jump_key =false;
+global.player2_double_tap_to_run = true;
+global.player2_wall_jump_setting = 1;
+global.player2_drop_from_rope =1;
 global.player2_show_controls=1;
 #endregion /*Player 2 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 3 Keyboard Remapping (everything should be set to noone)*/
-global.player3_name="";
+global.player3_name ="";
 
 #region /*Player 3 Key 1 defaults*/
 global.player3_key_dive = noone;
@@ -429,15 +429,15 @@ global.player3_key2_up = noone;
 global.player3_key2_tongue = noone;
 #endregion /*Player 3 Key 2 defaults END*/
 
-global.player3_up_key_is_jump_key=false;
-global.player3_double_tap_to_run=true;
-global.player3_wall_jump_setting=1;
-global.player3_drop_from_rope=1;
+global.player3_up_key_is_jump_key =false;
+global.player3_double_tap_to_run = true;
+global.player3_wall_jump_setting = 1;
+global.player3_drop_from_rope =1;
 global.player3_show_controls=1;
 #endregion /*Player 3 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 4 Keyboard Remapping (everything should be set to noone)*/
-global.player4_name="";
+global.player4_name ="";
 
 #region /*Player 4 Key 1 defaults*/
 global.player4_key_dive = noone;
@@ -467,10 +467,10 @@ global.player4_key2_up = noone;
 global.player4_key2_tongue = noone;
 #endregion /*Player 4 Key 2 defaults END*/
 
-global.player4_up_key_is_jump_key=false;
-global.player4_double_tap_to_run=true;
-global.player4_wall_jump_setting=1;
-global.player4_drop_from_rope=1;
+global.player4_up_key_is_jump_key =false;
+global.player4_double_tap_to_run = true;
+global.player4_wall_jump_setting = 1;
+global.player4_drop_from_rope =1;
 global.player4_show_controls=1;
 #endregion /*Player 4 Keyboard Remapping (everything should be set to noone) END*/
 
@@ -515,29 +515,29 @@ scr_load_resource_pack_sprite();
 #region /*No Narrator*/
 if (global.narrator=false)
 {
-	menuvoice_companysplash=noone;
-	menuvoice_controllersplash=noone;
+	menuvoice_companysplash =noone;
+	menuvoice_controllersplash =noone;
 }
 #endregion /*No Narrator END*/
 
 #region /*Character1 as Narrator*/
-if (global.narrator=1)
+if (global.narrator = 1)
 {
-	menuvoice_companysplash=noone;
-	menuvoice_controllersplash=noone;
+	menuvoice_companysplash =noone;
+	menuvoice_controllersplash =noone;
 }
 #endregion /*Character1 as Narrator END*/
 
 #endregion /*Narrator Voice variable handeling END*/
 
 #region /*Interpolation*/
-if (global.interpolate=true)
+if (global.interpolate = true)
 {
 	gpu_set_texfilter(true);
 }
 else
 {
-	global.interpolate=false;
+	global.interpolate = false;
 	gpu_set_texfilter(false);
 }
 #endregion /*Interpolation END*/
@@ -585,7 +585,7 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 	
 	#region /*Sprite Add*/
 	sprite_splash_controller = noone;
-	index=0
+	index= 0
 	repeat(50)
 	{
 		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -649,7 +649,7 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 	
 	#region /*Sprite Add*/
 	sprite_splash_easteregg = noone;
-	index=0
+	index= 0
 	repeat(50)
 	{
 		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+"_strip" + string(index) + ".png"))
@@ -700,7 +700,7 @@ or (directory_exists(working_directory + "/custom_resourcepacks/resourcepack" + 
 	
 }
 
-time=0;
+time = 0;
 sprite_index = spr_company_logo;
 
 #endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/

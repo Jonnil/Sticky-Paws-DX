@@ -28,7 +28,7 @@ and (global.enable_enemies = false)
 #endregion /*If enemies are disabled, destroy this object END*/
 
 #region /*Set the gravity*/
-gravity_direction=270;/*Direction of the gravity*/
+gravity_direction =270;/*Direction of the gravity*/
 if (asset_get_type("obj_wall") == asset_object)
 and (!place_meeting(x, y + 1, obj_wall))
 and (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -687,9 +687,9 @@ if (takendamage = 50)
 }
 
 #region /*Kill enemy if it's inside the wall*/
-if (position_meeting(x,y,obj_wall))
+if (position_meeting(x, y, obj_wall))
 and (die = false)
-and (draw_xscale>=0.8)
+and (draw_xscale >= 0.8)
 and (has_seen_player = true)
 {
 	flat = false;

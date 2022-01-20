@@ -121,7 +121,7 @@ if (follow_player = true)
 		{
 			with(obj_camera)
 			{
-				hud_show_big_collectibles_timer = global.hud_hide_time*60;
+				hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 			}
 		}
 		#endregion /*Show Big Collectible HUD END*/
@@ -140,7 +140,7 @@ if (follow_player = true)
 		}
 	}
 }
-#endregion /*Follow Player End*/
+#endregion /*Follow Player END*/
 
 if bounceup = true
 {
@@ -151,7 +151,7 @@ if bounceup = true
 	{
 		with(obj_camera)
 		{
-			hud_show_big_collectibles_timer = global.hud_hide_time*60;
+			hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 		}
 	}
 	#endregion /*Show Big Collectible HUD END*/
@@ -310,4 +310,4 @@ if (effect_time > 60)
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);
 }
-#endregion /*Expanding Ring Effect End*/
+#endregion /*Expanding Ring Effect END*/

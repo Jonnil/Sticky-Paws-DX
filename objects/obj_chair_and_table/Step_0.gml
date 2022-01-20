@@ -32,7 +32,7 @@ if (asset_get_type("obj_semisolid_platform") == asset_object)
 }
 #endregion /*Set the gravity END*/
 
-if (!place_meeting(x, y+1, obj_wall))
+if (!place_meeting(x, y + 1, obj_wall))
 {
 	y += 1;
 }

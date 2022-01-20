@@ -10,7 +10,7 @@ level_index = 0;
 file_found = "";
 file_load_timer = 0;
 level_find_pos = 0;
-first_level = string(file_find_first(working_directory+"/custom_levels/*", fa_directory));
+first_level = string(file_find_first(working_directory + "/custom_levels/*", fa_directory));
 open_sub_menu = false;
 select_custom_level_menu_open = false;
 loading_spinning_angle = 0;
@@ -22,62 +22,62 @@ lerp_on = false;
 level_editor_template_select = false;
 
 /*Narrator Voice variable handeling*/
-narrator_name=noone;
+narrator_name =noone;
 global.narrator_max_characters=1;
 
 /*No Narrator*/
-if (global.narrator=0)
+if (global.narrator= 0)
 {
-	menuvoice_titlesplash=noone;
+	menuvoice_titlesplash =noone;
 	menuvoice_1player=noone;
 	menuvoice_2player=noone;
 	menuvoice_3player=noone;
 	menuvoice_4player=noone;
 	menuvoice_leveleditor=noone;
-	menuvoice_leveleditor_denied=noone;
+	menuvoice_leveleditor_denied =noone;
 	menuvoice_options=noone;
 }
 
 /*Character1 as narrator*/
-if (global.narrator=1)
+if (global.narrator = 1)
 {
-	menuvoice_titlesplash=noone;
+	menuvoice_titlesplash =noone;
 	menuvoice_1player=noone;
 	menuvoice_2player=noone;
 	menuvoice_3player=noone;
 	menuvoice_4player=noone;
 	menuvoice_leveleditor=noone;
-	menuvoice_leveleditor_denied=noone;
+	menuvoice_leveleditor_denied =noone;
 	menuvoice_options=noone;
 }
 
 #region /*Create directories*/
 
 #region /*Create directory for saving custom characters*/
-if (!directory_exists(working_directory+"/custom_characters"))
+if (!directory_exists(working_directory + "/custom_characters"))
 {
-	directory_create(working_directory+"/custom_characters");
+	directory_create(working_directory + "/custom_characters");
 }
 #endregion /*Create directory for saving custom characters END*/
 
 #region /*Create directory for saving custom levels*/
-if (!directory_exists(working_directory+"/custom_levels"))
+if (!directory_exists(working_directory + "/custom_levels"))
 {
-	directory_create(working_directory+"/custom_levels");
+	directory_create(working_directory + "/custom_levels");
 }
 #endregion /*Create directory for saving custom levels END*/
 
 #region /*Create directory for saving custom resourcepacks*/
-if (!directory_exists(working_directory+"/custom_resourcepacks"))
+if (!directory_exists(working_directory + "/custom_resourcepacks"))
 {
-	directory_create(working_directory+"/custom_resourcepacks");
+	directory_create(working_directory + "/custom_resourcepacks");
 }
 #endregion /*Create directory for saving custom resourcepacks END*/
 
 #region /*Create directory for saving custom title backgrounds*/
-if (!directory_exists(working_directory+"/custom_title_backgrounds"))
+if (!directory_exists(working_directory + "/custom_title_backgrounds"))
 {
-	directory_create(working_directory+"/custom_title_backgrounds");
+	directory_create(working_directory + "/custom_title_backgrounds");
 }
 #endregion /*Create directory for saving custom title backgrounds END*/
 
@@ -105,11 +105,11 @@ if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background
 #endregion /*Custom Title Screen Background*/
 
 #region /*Character select Accept Selection*/
-player1_accept_selection=-1;
-player2_accept_selection=-1;
-player3_accept_selection=-1;
-player4_accept_selection=-1;
-player_start_game=false;
+player1_accept_selection =-1;
+player2_accept_selection =-1;
+player3_accept_selection =-1;
+player4_accept_selection =-1;
+player_start_game = false;
 #endregion /*Character select Accept Selection END*/
 
 #region /*Color Select for CharacterSelect*/
@@ -120,56 +120,56 @@ player4_menu = "select_character";
 #endregion /*Color Select for CharacterSelect END*/
 
 #region /*What player can enter a name*/
-can_input_player1_name=false;
-can_input_player2_name=false;
-can_input_player3_name=false;
-can_input_player4_name=false;
+can_input_player1_name = false;
+can_input_player2_name = false;
+can_input_player3_name = false;
+can_input_player4_name = false;
 can_input_level_name = false;
 #endregion /*What player can enter a name END*/
 
 #region /*Hide certain HUD elements*/
-global.hud_show_lives=true;
+global.hud_show_lives= true;
 global.hud_show_deaths=false;
 global.hud_show_basic_collectibles=false;
 global.hud_show_big_collectibles=false;
-global.hud_show_score=false;
+global.hud_show_score = false;
 #endregion /*Hide certain HUD elements END*/
 
-global.playergame=0;/*Make the game singleplayer at the start of the game*/
-global.player_has_entered_goal=false;
+global.playergame = 0;/*Make the game singleplayer at the start of the game*/
+global.player_has_entered_goal = false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;
-global.theme="ground";
-global.coins=0;
-global.level_clear_rate=noone;
+global.theme ="ground";
+global.coins= 0;
+global.level_clear_rate =noone;
 global.big_collectible1=false;
 global.big_collectible2=false;
 global.big_collectible3=false;
 global.big_collectible4=false;
 global.big_collectible5=false;
-global.lives_until_assist=0;
-global.x_checkpoint=false;
-global.y_checkpoint=false;
-global.timeattack_millisecond=0;
-global.timeattack_second=0;
-global.timeattack_minute=0;
-global.timeattack_realmillisecond=0;
-global.timeattack_realmillisecond_real=0;
+global.lives_until_assist = 0;
+global.x_checkpoint = false;
+global.y_checkpoint = false;
+global.timeattack_millisecond = 0;
+global.timeattack_second = 0;
+global.timeattack_minute = 0;
+global.timeattack_realmillisecond = 0;
+global.timeattack_realmillisecond_real= 0;
 /*Checkpoint Timer*/
-global.checkpoint_millisecond=0;
-global.checkpoint_second=0;
-global.checkpoint_minute=0;
-global.checkpoint_realmillisecond=0; /*Checkpoint Timer End*/
-global.win=false;
-global.enemy_counter=0;
+global.checkpoint_millisecond = 0;
+global.checkpoint_second = 0;
+global.checkpoint_minute = 0;
+global.checkpoint_realmillisecond = 0; /*Checkpoint Timer END*/
+global.win = false;
+global.enemy_counter= 0;
 global.file = 1;
-global.controls_layout=1;
-global.trigger_ending=false;
-global.spikes_emerge_time=0;
-global.goal_active=false;
-global.PauseScreen=noone;
+global.controls_layout =1;
+global.trigger_ending = false;
+global.spikes_emerge_time = 0;
+global.goal_active = false;
+global.PauseScreen =noone;
 global.quit_level = false;
-global.always_show_level_editor_buttons=true; /*If level editor buttons should always show or not. Should be true by default*/
+global.always_show_level_editor_buttons= true; /*If level editor buttons should always show or not. Should be true by default*/
 
 #region /*Player 1 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
@@ -566,7 +566,7 @@ else
 scr_config_load(); /*Load Config*/
 
 lives = 5; /*Starting lives*/
-level_name="";
+level_name ="";
 
 #region /*If title screen should start at the level editor menu or the main menu*/
 if (global.character_select_in_this_menu = "level_editor")
@@ -591,7 +591,7 @@ else
 }
 #endregion /*If title screen should start at the level editor menu or the main menu END*/
 
-lastkey=noone;
+lastkey =noone;
 
 #region /*Remapping options variables*/
 remapping_player = 0;
@@ -605,29 +605,29 @@ can_remap_key = false;
 
 open_dropdown = false;
 menu_delay = 3;
-menu_joystick_delay=3;
-menu_joystick1_delay=3;
-menu_joystick2_delay=3;
-menu_joystick3_delay=3;
-menu_joystick4_delay=3;
+menu_joystick_delay =3;
+menu_joystick1_delay =3;
+menu_joystick2_delay =3;
+menu_joystick3_delay =3;
+menu_joystick4_delay =3;
 black_screen_at_start_delay = 0;
-player1_display_x=0;xx1=0;
-player2_display_x=0;xx2=0;
-player3_display_x=0;xx3=0;
-player4_display_x=0;xx4=0;
-remap_y_pos=0;
-version_y_pos=0;
-menu_cursor_index=0;
+player1_display_x= 0;xx1= 0;
+player2_display_x= 0;xx2= 0;
+player3_display_x= 0;xx3= 0;
+player4_display_x= 0;xx4= 0;
+remap_y_pos= 0;
+version_y_pos= 0;
+menu_cursor_index= 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
-can_navigate_settings_sidebar=true;
+can_navigate_settings_sidebar= true;
 navigate_slider=false;
-menu_remap_key_number=0;
-name_enter_blink=0;
-can_navigate=true;
-menu_y_offset=0;/*This is the y offset that will have lerping to make the menu scrolling smooth*/
-menu_y_offset_real=0;/*This is the real y offset for the menu, used for menu scrolling*/
-menu_cursor_y_position=0;
+menu_remap_key_number= 0;
+name_enter_blink= 0;
+can_navigate = true;
+menu_y_offset = 0;/*This is the y offset that will have lerping to make the menu scrolling smooth*/
+menu_y_offset_real= 0;/*This is the real y offset for the menu, used for menu scrolling*/
+menu_cursor_y_position = 0;
 background_brightness_menu_lerp = 0;
 title_y = -800;
 title_alpha = 0;
@@ -658,7 +658,7 @@ iris_xscale = 0;
 iris_yscale = 0;
 iris_zoom = 0;
 #region /*Customize look of Options Menu*/
-c_menu_outline=c_white;
+c_menu_outline =c_white;
 c_menu_fill=c_black;
 #endregion /*Customize look of Options Menu END*/
 
@@ -685,8 +685,8 @@ if (asset_get_type("snd_slip_ice") == asset_sound)
 #region /*Say the games title*/
 if (asset_get_type("menuvoice_titlesplash") == asset_sound)
 {
-	audio_play_sound(menuvoice_titlesplash,0,0);
-	audio_sound_gain(menuvoice_titlesplash,global.voices_volume,0);
+	audio_play_sound(menuvoice_titlesplash, 0, 0);
+	audio_sound_gain(menuvoice_titlesplash, global.voices_volume, 0);
 }
 #endregion /*Say the games title END*/
 
@@ -712,4 +712,4 @@ if (title_music > noone)
 	audio_play_sound(title_music, 0, true);
 	audio_sound_gain(title_music, global.music_volume, 0);
 }
-#endregion /*Play title screen music End*/
+#endregion /*Play title screen music END*/

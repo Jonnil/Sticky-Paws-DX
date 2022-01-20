@@ -14,9 +14,9 @@ if (position_meeting(x, y, obj_wall))
 #endregion /*If inside wall, destroy yourself END*/
 
 #region /*When falling, it's not bouncing up anymore*/
-if (vspeed>=0)
+if (vspeed >= 0)
 {
-	bounceup=false;
+	bounceup = false;
 }
 #endregion /*When falling, it's not bouncing up anymore END*/
 
@@ -26,14 +26,14 @@ and (obj_camera.sprite_lives_icon > noone)
 	sprite_index = obj_camera.sprite_lives_icon;
 }
 
-text_alpha = lerp(text_alpha, Wave(0,1,3,0), 0.1);
+text_alpha = lerp(text_alpha, Wave(0, 1,3,0), 0.1);
 
 #region /*Color the extra live pickup differently if it grants you different amounts of lives*/
 if (number_of_extra_lives = 3)
 {
 	if (sprite_index > 0)
 	{
-		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_blue,1);
+		draw_sprite_ext(sprite_index,image_index,x, y,1,1, 0, c_blue,1);
 	}
 	draw_text_outlined(x, y, "3-up", global.default_text_size*0.75, c_white, c_black, text_alpha);
 }
@@ -42,7 +42,7 @@ if (number_of_extra_lives = 2)
 {
 	if (sprite_index > 0)
 	{
-		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_lime,1);
+		draw_sprite_ext(sprite_index,image_index,x, y,1,1, 0, c_lime,1);
 	}
 	draw_text_outlined(x, y, "2-up", global.default_text_size*0.75, c_white, c_black, text_alpha);
 }
@@ -50,7 +50,7 @@ else
 {
 	if (sprite_index > 0)
 	{
-		draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_white,1);
+		draw_sprite_ext(sprite_index,image_index,x, y,1,1, 0, c_white,1);
 	}
 	draw_text_outlined(x, y, "1-up", global.default_text_size*0.75, c_white, c_black, text_alpha);
 }
@@ -159,7 +159,7 @@ and (instance_exists(obj_player))
 		{
 			with(obj_camera)
 			{
-				hud_show_lives_timer = global.hud_hide_time*60;
+				hud_show_lives_timer = global.hud_hide_time * 60;
 			}
 		}
 		if (asset_get_type("snd_1up") == asset_sound)
@@ -200,4 +200,4 @@ and (global.pause = false)
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);
 }
-#endregion /*Expanding Ring Effect End*/
+#endregion /*Expanding Ring Effect END*/

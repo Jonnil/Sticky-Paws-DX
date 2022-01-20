@@ -13,7 +13,7 @@ function scr_initialize_custom_character_select_sprite(argument0, argument1, arg
 	/*argument1. Sprite variable. The name of the variable*/
 	/*argument2. Sprite xorig. x origin point variable*/
 	/*argument3. Sprite yorig. x origin point variable*/
-	/*argument4. Player variable, ususally type "player-1"*/
+	/*argument4. Player variable, ususally type "player - 1"*/
 	/*argument5. Selected skin variable, ususally type "selected_skin"*/
 	
 	#region /*Add sprite*/

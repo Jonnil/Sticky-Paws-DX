@@ -1,7 +1,7 @@
 scr_set_screen_size();
 
 /*Draw Event*/
-if(gamepad_button_check_pressed(0,gp_face1))
+if(gamepad_button_check_pressed(0, gp_face1))
 or (keyboard_check_pressed(ord("Z")))
 or (keyboard_check_pressed(vk_enter))
 or (keyboard_check_pressed(vk_space))
@@ -30,10 +30,10 @@ draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_he
 
 if (sprite_splash_easteregg > noone)
 {
-	draw_sprite_ext(sprite_splash_easteregg, image_index, +128, window_get_height()+sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(sprite_splash_easteregg, image_index, +128, window_get_height()+ sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
 }
 
-if (gamepad_button_check_pressed(0,gp_face4))
+if (gamepad_button_check_pressed(0, gp_face4))
 or (keyboard_check_pressed(ord("Y")))
 and (sprite_splash_easteregg_yoffset = 128)
 {
@@ -48,7 +48,7 @@ if (sprite_splash_easteregg_yoffset <= 127)
 	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, -128, 0.1);
 }
 
-if (image_index>image_number-2)
+if (image_index > image_number-2)
 and (sprite_index=spr_company_logo)
 {
 	if (!gamepad_is_connected(0))
@@ -89,7 +89,7 @@ if (sprite_splash_controller > noone)
 and (sprite_index = sprite_splash_controller)
 {
 	time+=1;
-	if (time>100)
+	if (time >100)
 	{
 		if (asset_get_type("room_title") == asset_room)
 		{
@@ -108,18 +108,18 @@ and (asset_get_type("menuvoice_companysplash") == asset_sound)
 {
 	if (!audio_is_playing(menuvoice_companysplash))
 	{
-		audio_play_sound(menuvoice_companysplash,0,0);
-		audio_sound_gain(menuvoice_companysplash,global.voices_volume,0);
+		audio_play_sound(menuvoice_companysplash, 0, 0);
+		audio_sound_gain(menuvoice_companysplash, global.voices_volume, 0);
 	}
 }
 
-if (time=10)
+if (time =10)
 and (asset_get_type("menuvoice_controllersplash") == asset_sound)
 {
 	if (!audio_is_playing(menuvoice_controllersplash))
 	{
-		audio_play_sound(menuvoice_controllersplash,0,0);
-		audio_sound_gain(menuvoice_controllersplash,global.voices_volume,0);
+		audio_play_sound(menuvoice_controllersplash, 0, 0);
+		audio_sound_gain(menuvoice_controllersplash, global.voices_volume, 0);
 	}
 }
 
@@ -137,7 +137,7 @@ and (keyboard_check_pressed(global.fullscreen_key))
 		window_set_fullscreen(true);
 	}
 	ini_open("config.ini");
-	ini_write_real("config","fullscreen_mode",window_get_fullscreen());
+	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
 	ini_close();
 }
 #endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
@@ -152,11 +152,11 @@ if (!window_has_focus())
 #endregion /*If Window is unfocused, make the screen darker END*/
 
 #region /*Draw mouse cursor for menu navigation*/
-if (window_mouse_get_x()>0)
-and (window_mouse_get_y()>0)
+if (window_mouse_get_x() > 0)
+and (window_mouse_get_y() > 0)
 and (os_type!=os_ios)
 and (os_type!=os_android)
 {
-	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(),1,1,0,c_white,1);
+	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(), 1,1, 0, c_white,1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/

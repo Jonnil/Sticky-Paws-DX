@@ -1,44 +1,44 @@
 #region /*Collision Event with player*/
-if (bounceup=false)
+if (bounceup = false)
 {
-	if (place_meeting(x,y-4,obj_player))
-	and (!place_meeting(x,y-1,obj_wall))
-	and (obj_player.ground_pound=true)
-	or (place_meeting(x,y+1,obj_player))
-	and (!place_meeting(x,y+1,obj_wall))
-	or (place_meeting(bbox_left-4,y,obj_player))
-	and (!place_meeting(x-4,y,obj_wall))
-	and (obj_player.dive=true)
-	or (place_meeting(bbox_right+4,y,obj_player))
-	and (!place_meeting(x+4,y,obj_wall))
-	and (obj_player.dive=true)
+	if (place_meeting(x, y - 4, obj_player))
+	and (!place_meeting(x, y - 1, obj_wall))
+	and (obj_player.ground_pound = true)
+	or (place_meeting(x, y + 1, obj_player))
+	and (!place_meeting(x, y + 1, obj_wall))
+	or (place_meeting(bbox_left-4, y, obj_player))
+	and (!place_meeting(x - 4, y, obj_wall))
+	and (obj_player.dive = true)
+	or (place_meeting(bbox_right +4, y, obj_player))
+	and (!place_meeting(x + 4, y, obj_wall))
+	and (obj_player.dive = true)
 	{
-		if (empty=false)
+		if (empty =false)
 		{
-			bounceup=true;
+			bounceup = true;
 			if (asset_get_type("obj_blockbreak") == asset_object)
 			{
-				instance_create_depth(x,y-32,0,obj_blockbreak);
+				instance_create_depth(x, y - 32,0,obj_blockbreak);
 			}
 			
 			#region /*1 Basic Collectible*/
 			if (item_inside = "noone")
 			{
-				empty=true;
+				empty = true;
 				if (brick_block = false)
 				and (asset_get_type("obj_basic_collectible") == asset_object)
 				{
 					if (asset_get_type("snd_basic_collectible") == asset_sound)
 					{
-						audio_play_sound(snd_basic_collectible,0,0);
+						audio_play_sound(snd_basic_collectible,0, 0);
 					}
 					var obj;
-					obj=instance_create_depth(x,bbox_top,0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
 					with(obj)
 					{
-						image_speed=1;
-						motion_set(90,10);
-						bounceup=true;
+						image_speed = 1;
+						motion_set(90, 10);
+						bounceup = true;
 					}
 				}
 				else
@@ -99,7 +99,7 @@ if (bounceup=false)
 					{
 						with(obj_camera)
 						{
-							hud_show_score_timer = global.hud_hide_time*60;
+							hud_show_score_timer = global.hud_hide_time * 60;
 						}
 					}
 					if (show_scoreup = true)
@@ -128,9 +128,9 @@ if (bounceup=false)
 			if (item_inside = "10_basic_collectibles")
 			{
 				if (hit <= 4)
-				and (empty=false)
+				and (empty =false)
 				{
-					bounceup=true;
+					bounceup = true;
 					hit += 1;
 					if asset_get_type("obj_blockbreak") == asset_object
 					{
@@ -172,17 +172,17 @@ if (bounceup=false)
 			#region /*Heart Balloon*/
 			if (item_inside = "heart_balloon")
 			{
-				empty=true;
+				empty = true;
 				if (asset_get_type("obj_heart_balloon") == asset_object)
-				and (!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj=instance_create_depth(x,bbox_top-16,0,obj_heart_balloon);
+					obj = instance_create_depth(x, bbox_top-16,0,obj_heart_balloon);
 					with(obj)
 					{
-						image_speed=1;
-						motion_set(90,10);
-						bounceup=true;
+						image_speed = 1;
+						motion_set(90, 10);
+						bounceup = true;
 					}
 				}
 			}
@@ -191,17 +191,17 @@ if (bounceup=false)
 			#region /*1-up*/
 			if (item_inside = "1-up")
 			{
-				empty=true;
+				empty = true;
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
-				and (!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
+					obj = instance_create_depth(x, bbox_top-16,0,obj_extra_life_pickup);
 					with(obj)
 					{
-						image_speed=1;
-						motion_set(90,10);
-						bounceup=true;
+						image_speed = 1;
+						motion_set(90, 10);
+						bounceup = true;
 						number_of_extra_lives = 1;
 					}
 				}
@@ -211,17 +211,17 @@ if (bounceup=false)
 			#region /*2-up*/
 			if (item_inside = "2-up")
 			{
-				empty=true;
+				empty = true;
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
-				and (!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
+					obj = instance_create_depth(x, bbox_top-16,0,obj_extra_life_pickup);
 					with(obj)
 					{
-						image_speed=1;
-						motion_set(90,10);
-						bounceup=true;
+						image_speed = 1;
+						motion_set(90, 10);
+						bounceup = true;
 						number_of_extra_lives = 2;
 					}
 				}
@@ -231,17 +231,17 @@ if (bounceup=false)
 			#region /*3-up*/
 			if (item_inside = "3-up")
 			{
-				empty=true;
+				empty = true;
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
-				and (!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj=instance_create_depth(x,bbox_top-16,0,obj_extra_life_pickup);
+					obj = instance_create_depth(x, bbox_top-16,0,obj_extra_life_pickup);
 					with(obj)
 					{
-						image_speed=1;
-						motion_set(90,10);
-						bounceup=true;
+						image_speed = 1;
+						motion_set(90, 10);
+						bounceup = true;
 						number_of_extra_lives = 3;
 					}
 				}
@@ -251,18 +251,18 @@ if (bounceup=false)
 			#region /*Invincibility Powerup*/
 			if (item_inside = "invincibility_powerup")
 			{
-				empty=true;
+				empty = true;
 				if (asset_get_type("obj_invincibility_powerup") == asset_object)
-				and (!place_meeting(x,y-1,obj_wall))
+				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj=instance_create_depth(x,bbox_top-32,0,obj_invincibility_powerup);
+					obj = instance_create_depth(x, bbox_top-32,0,obj_invincibility_powerup);
 					with(obj)
 					{
 						hspeed = +2;
-						image_speed=1;
-						motion_set(90,10);
-						bounceup=true;
+						image_speed = 1;
+						motion_set(90, 10);
+						bounceup = true;
 					}
 				}
 			}
@@ -273,8 +273,8 @@ if (bounceup=false)
 }
 #endregion /*Collision Event with player END*/
 
-if (brick_block=true)
-and (empty=false)
+if (brick_block= true)
+and (empty =false)
 {
 	if (asset_get_type("spr_brick_block") == asset_sprite)
 	{
@@ -283,7 +283,7 @@ and (empty=false)
 }
 else
 if (brick_block=false)
-and (empty=false)
+and (empty =false)
 {
 	if (asset_get_type("spr_question_block") == asset_sprite)
 	{
@@ -316,7 +316,7 @@ if (bounceup = true)
 	yy -= 4;
 	if (draw_xscale > 1.5)
 	{
-		if (empty=true)
+		if (empty = true)
 		{
 			if (brick_block = false)
 			and (asset_get_type("spr_question_block_empty") == asset_sprite)
