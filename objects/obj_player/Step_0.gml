@@ -1,7 +1,7 @@
 ///Platformer Player Part 1
 
 if (current_file != global.file)
-or (!file_exists("file" + string(current_file) + ".ini"))
+or (!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false;
@@ -2723,7 +2723,7 @@ if (global.quit_level = true)
 	
 	score = 0;
 	
-	global.level_clear_rate = "enter";
+	global.level_clear_rate = noone;
 	if (asset_get_type("scr_savelevel") == asset_script)
 	{
 		scr_savelevel();
@@ -2751,23 +2751,23 @@ if (global.quit_level = true)
 #region /*Invincible Music*/
 if (asset_get_type("snd_music_invincible") == asset_sound)
 {
-	if (invincible<room_speed*10)
+	if (invincible <room_speed*10)
 	and (assist_invincible = false)
 	{
-		invincible_pitch+= 0.001;
-		audio_sound_pitch(snd_music_invincible,invincible_pitch);
+		invincible_pitch += 0.001;
+		audio_sound_pitch(snd_music_invincible, invincible_pitch);
 	}
 	else
 	{
 		invincible_pitch =1;
-		audio_sound_pitch(snd_music_invincible,1);
+		audio_sound_pitch(snd_music_invincible, 1);
 	}
 	if (invincible = 180)
 	and (assist_invincible = false)
 	{
 		if (asset_get_type("snd_running_out") == asset_sound)
 		{
-			audio_play_sound(snd_running_out,0, 0);
+			audio_play_sound(snd_running_out, 0, 0);
 			audio_sound_gain(snd_running_out, global.sfx_volume, 0);
 		}
 	}
@@ -2838,7 +2838,7 @@ else
 #region /*Play Ambience*/
 if (!audio_is_playing(global.ambience))
 {
-	audio_play_sound(global.ambience,0, true);
+	audio_play_sound(global.ambience, 0, true);
 	audio_sound_gain(global.ambience, global.ambient_volume, 0);
 }
 #endregion /*Play Ambience END*/
@@ -2856,17 +2856,17 @@ if (global.time_countdown < 100)
 and (global.time_countdown > noone)
 and (allow_timeup = true)
 {
-	audio_sound_pitch(global.music,music_pitch+0.3);
-	audio_sound_pitch(global.music_underwater,music_pitch+0.3);
+	audio_sound_pitch(global.music,music_pitch +0.3);
+	audio_sound_pitch(global.music_underwater,music_pitch +0.3);
 	if (crouch = true)
 	or (ground_pound = true)
 	and (place_meeting(x, y+ sprite_height,obj_wall))
 	{
-		music_pitch =lerp(music_pitch, 0.95,0.001);
+		music_pitch =lerp(music_pitch, 0.95, 0.001);
 	}
 	else
 	{
-		music_pitch =lerp(music_pitch,1, 0.01);
+		music_pitch =lerp(music_pitch, 1, 0.01);
 	}
 }
 else
@@ -2877,11 +2877,11 @@ else
 	or (ground_pound = true)
 	and (place_meeting(x, y+ sprite_height,obj_wall))
 	{
-		music_pitch =lerp(music_pitch, 0.95,0.001);
+		music_pitch =lerp(music_pitch, 0.95, 0.001);
 	}
 	else
 	{
-		music_pitch =lerp(music_pitch,1, 0.01);
+		music_pitch =lerp(music_pitch, 1, 0.01);
 	}
 }
 #endregion /*Music Pitch END*/
@@ -2917,88 +2917,66 @@ and (obj_camera.iris_xscale < 3)
 	if (goal = true)
 	and (global.time_countdown_bonus <= 0)
 	{
+		global.level_clear_rate = "clear"; /*Set the level_clear_rate to clear as soon as you get the goal*/
 		if (instance_exists(obj_camera))
-		and (obj_camera.iris_xscale<= 0.01)
+		and (obj_camera.iris_xscale <= 0.01)
 		{
 			if (asset_get_type("snd_level_clear") == asset_sound)
 			and (audio_is_playing(snd_level_clear))
 			{
 				audio_stop_sound(snd_level_clear);
 			}
-			if (room_next(room)<>-1)
+			if (obj_camera.iris_yscale <= 0.001)
 			{
-				if (obj_camera.iris_yscale<= 0.001)
+				audio_stop_all();
+				global.x_checkpoint = 0;
+				global.y_checkpoint = 0;
+				global.checkpoint_millisecond = 0;
+				global.checkpoint_second = 0;
+				global.checkpoint_minute = 0;
+				global.checkpoint_realmillisecond = 0;
+				global.lives_until_assist = 0;
+				global.theme = "ground";
+				scr_savelevel(); /*Important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear*/
+				if (global.actually_play_edited_level = false)
+				and (global.play_edited_level = true)
+				and (global.character_select_in_this_menu = "level_editor")
 				{
-					audio_stop_all();
-					global.level_clear_rate = "clear";
-					global.x_checkpoint = 0;
-					global.y_checkpoint = 0;
-					global.checkpoint_millisecond = 0;
-					global.checkpoint_second = 0;
-					global.checkpoint_minute = 0;
-					global.checkpoint_realmillisecond = 0;
-					global.lives_until_assist = 0;
-					global.theme ="ground";
-					if (global.actually_play_edited_level = false)
-					and (global.play_edited_level = true)
-					and (global.character_select_in_this_menu = "level_editor")
-					{
-						global.actually_play_edited_level = false;
-						global.play_edited_level = false;
-						room_restart();
-					}
-					else
-					if (global.actually_play_edited_level = true)
-					and (global.play_edited_level = true)
-					and (global.character_select_in_this_menu = "level_editor")
-					and (asset_get_type("room_title") == asset_room)
-					{						
-						global.actually_play_edited_level = false;
-						global.play_edited_level = false;
-						room_goto(room_title);
-					}
-					else
-					if (obj_camera.after_goal_go_to_this_level >= 0)
-					and (asset_get_type("room_leveleditor") == asset_room)
-					{
-						scr_savelevel();
-						global.select_level_index = obj_camera.after_goal_go_to_this_level;
-						scr_update_all_backgrounds();
-						room_goto(room_leveleditor);
-					}
-					else
-					if (asset_get_type("room_world_map") == asset_room)
-					{
-						scr_savelevel();
-						room_goto(room_world_map);
-					}
+					global.actually_play_edited_level = false;
+					global.play_edited_level = false;
+					room_restart();
 				}
 				else
+				if (global.actually_play_edited_level = true)
+				and (global.play_edited_level = true)
+				and (global.character_select_in_this_menu = "level_editor")
+				and (asset_get_type("room_title") == asset_room)
+				{						
+					global.actually_play_edited_level = false;
+					global.play_edited_level = false;
+					room_goto(room_title);
+				}
+				else
+				if (obj_camera.after_goal_go_to_this_level >= 0)
+				and (asset_get_type("room_leveleditor") == asset_room)
 				{
-					if (x >room_width+ sprite_width/2)
-					{
-						x = room_width+ sprite_width/2;
-						hspeed = 0;
-						vspeed = 0;
-					}
+					global.select_level_index = obj_camera.after_goal_go_to_this_level;
+					scr_update_all_backgrounds();
+					room_goto(room_leveleditor);
+				}
+				else
+				if (asset_get_type("room_world_map") == asset_room)
+				{
+					room_goto(room_world_map);
 				}
 			}
 			else
 			{
-				#region /*Restart Level Editor when finishing level*/
-				if (asset_get_type("room_world_map") == asset_room)
-				and (room = room_leveleditor)
-				and (global.character_select_in_this_menu = "level_editor")
+				if (x > room_width + sprite_width / 2)
 				{
-					global.play_edited_level = false;
-					global.actually_play_edited_level = false;
-					score = 0;
-					room_restart();
-				}
-				#endregion /*Restart Level Editor when finishing level END*/
-				else
-				{
-					game_restart();
+					x = room_width + sprite_width / 2;
+					hspeed = 0;
+					vspeed = 0;
 				}
 			}
 		}
@@ -3034,7 +3012,7 @@ and (obj_camera.iris_xscale < 3)
 			{
 				x = room_width;
 			}
-			if (y < -64)
+			if (y < - 64)
 			{
 				y = -64;
 			}
@@ -3052,7 +3030,7 @@ else
 	{
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
-		and (obj_camera.iris_xscale<= 0.01)
+		and (obj_camera.iris_xscale <= 0.01)
 		{
 			if (asset_get_type("snd_level_clear") == asset_sound)
 			and (audio_is_playing(snd_level_clear))
@@ -3062,7 +3040,7 @@ else
 			if (room_next(room)<>-1)
 			{
 				if (asset_get_type("room_world_map") == asset_room)
-				and (obj_camera.iris_yscale<= 0.001)
+				and (obj_camera.iris_yscale <= 0.001)
 				{
 					audio_stop_all();
 					global.level_clear_rate = "clear";
@@ -3073,9 +3051,9 @@ else
 					global.checkpoint_minute = 0;
 					global.checkpoint_realmillisecond = 0;
 					global.lives_until_assist = 0;
-					global.theme ="ground";
+					global.theme = "ground";
 					if (asset_get_type("room_world_map") == asset_room)
-					and (obj_camera.iris_yscale<= 0.001)
+					and (obj_camera.iris_yscale <= 0.001)
 					{
 						if (asset_get_type("scr_savelevel") == asset_script)
 						{
@@ -3086,9 +3064,9 @@ else
 				}
 				else
 				{
-					if (x >room_width+ sprite_width/2)
+					if (x > room_width + sprite_width / 2)
 					{
-						x=room_width+ sprite_width/2;
+						x=room_width + sprite_width / 2;
 						hspeed = 0;
 						vspeed = 0;
 					}
@@ -3144,7 +3122,7 @@ else
 			{
 				x = room_width;
 			}
-			if (y < -64)
+			if (y < - 64)
 			{
 				y = -64;
 			}
@@ -3166,21 +3144,21 @@ if (goal = true)
 			hspeed = 0;
 		}
 	}
-	if (x >camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])+32)
+	if (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
 	{
-		x=camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])+32;
+		x=camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32;
 		if (hspeed > 0)
 		{
 			hspeed = 0;
 		}
 	}
-	if (y<-64)
+	if (y<- 64)
 	{
-		y =-64;
+		y =- 64;
 	}
-	if (y >camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+32)
+	if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32)
 	{
-		y =camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current])+32;
+		y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32;
 		if (vspeed > 0)
 		{
 			vspeed = 0;
@@ -3367,7 +3345,7 @@ if (assist_invincible = true)
 		and (crouch = false)
 		and (vspeed > 1)
 		{
-			vspeed =+ 1;
+			vspeed = +1;
 			crouch = false;
 			can_ground_pound = false;
 		}
@@ -4372,7 +4350,7 @@ and (global.pause = false)
 			{
 				if (asset_get_type("room_pause") == asset_room)
 				{
-					global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
+					global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0,surface_get_width(application_surface),surface_get_height(application_surface), 0, 1, 0, 0);
 					room_persistent = true;
 					global.pause_room = room;
 					audio_pause_all();
@@ -4453,7 +4431,7 @@ and (global.pause = false)
 			{
 				if (asset_get_type("room_pause") == asset_room)
 				{
-					global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
+					global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0,surface_get_width(application_surface),surface_get_height(application_surface), 0, 1, 0, 0);
 					room_persistent = true;
 					global.pause_room = room;
 					audio_pause_all();
@@ -4534,7 +4512,7 @@ and (global.pause = false)
 			{
 				if (asset_get_type("room_pause") == asset_room)
 				{
-					global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
+					global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0,surface_get_width(application_surface),surface_get_height(application_surface), 0, 1, 0, 0);
 					room_persistent = true;
 					global.pause_room = room;
 					audio_pause_all();
@@ -4615,7 +4593,7 @@ and (global.pause = false)
 			{
 				if (asset_get_type("room_pause") == asset_room)
 				{
-					global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
+					global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0,surface_get_width(application_surface),surface_get_height(application_surface), 0, 1, 0, 0);
 					room_persistent = true;
 					global.pause_room = room;
 					audio_pause_all();
@@ -5248,7 +5226,7 @@ and (in_water = false)
 and (can_mid_air_jump = 0)
 {
 	if (spring = true)
-	and (vspeed > -20)
+	and (vspeed > - 20)
 	or (spring = false)
 	{
 		if (global.has_upgrade_double_jump = true)
@@ -5278,9 +5256,9 @@ and (can_mid_air_jump = 0)
 			voice = audio_play_sound(voice_jump, 0, 0);
 			audio_sound_gain(voice_jump, global.voices_volume, 0);
 			audio_sound_pitch(voice_jump, default_voice_pitch);
-			effect_create_above(ef_smoke, x - 16,bbox_bottom,0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom,0, c_white);
-			effect_create_above(ef_smoke, x + 16,bbox_bottom,0, c_white);
+			effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
+			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+			effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
 			image_index = 0;
 		
 			if (number_of_jumps > -1)
@@ -6178,7 +6156,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 				}
 				can_ground_pound = false;
 				ledge_grab_jump = false;
-				vspeed =+4;
+				vspeed = +4;
 			}
 			else
 			if (key_up)
@@ -6298,18 +6276,18 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 				if (place_meeting(x + 1, y, obj_wall))
 				{
 					image_xscale = -1;
-					if (!place_meeting(x-6,y, obj_wall))
+					if (!place_meeting(x- 6,y, obj_wall))
 					{
-						hspeed =-6;
+						hspeed =- 6;
 					}
 				}
 				else
 				if (place_meeting(x - 1, y, obj_wall))
 				{
 					image_xscale = +1;
-					if (!place_meeting(x+6,y, obj_wall))
+					if (!place_meeting(x +6,y, obj_wall))
 					{
-						hspeed =+6;
+						hspeed = +6;
 					}
 				}
 				jump =1;
@@ -6322,8 +6300,8 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 				vspeed = -normal_jump_height;
 				midair_jumps_left = number_of_jumps-1;
 				image_index = 0;
-				effect_create_above(ef_smoke, x, bbox_bottom-8,0, c_white);
-				effect_create_above(ef_smoke, x, bbox_top+8,0, c_white);
+				effect_create_above(ef_smoke, x, bbox_bottom-8, 0, c_white);
+				effect_create_above(ef_smoke, x, bbox_top+8, 0, c_white);
 				if (asset_get_type("obj_wall_jumpspark") == asset_object)
 				{
 					instance_create_depth(x, y, 0, obj_wall_jumpspark);
@@ -6388,7 +6366,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 	{
 		if (place_meeting(x - 1, y, obj_wall))
 		{
-			x+=1;
+			x +=1;
 		}
 		if (place_meeting(x + 1, y, obj_wall))
 		{
@@ -6453,7 +6431,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 		{
 			spring = false;
 			audio_stop_sound(voice);
-			voice = audio_play_sound(choose(voice_wallkick,voice_jump),0, 0);
+			voice = audio_play_sound(choose(voice_wallkick,voice_jump), 0, 0);
 			audio_sound_gain(voice_wallkick, global.voices_volume, 0);
 			audio_sound_pitch(voice_wallkick, default_voice_pitch);
 			audio_sound_gain(voice_jump, global.voices_volume, 0);
@@ -6469,18 +6447,18 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			if (place_meeting(x + 1, y, obj_wall))
 			{
 				image_xscale = -1;
-				if (!place_meeting(x-6,y, obj_wall))
+				if (!place_meeting(x- 6,y, obj_wall))
 				{
-					hspeed =-6;
+					hspeed =- 6;
 				}
 			}
 			else
 			if (place_meeting(x - 1, y, obj_wall))
 			{
 				image_xscale = +1;
-				if (!place_meeting(x+6,y, obj_wall))
+				if (!place_meeting(x +6,y, obj_wall))
 				{
-					hspeed =+6;
+					hspeed = +6;
 				}
 			}
 			jump =1;
@@ -6492,8 +6470,8 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			speed_max=8;
 			vspeed = -normal_jump_height;
 			image_index = 0;
-			effect_create_above(ef_smoke, x, bbox_bottom-8,0, c_white);
-			effect_create_above(ef_smoke, x, bbox_top+8,0, c_white);
+			effect_create_above(ef_smoke, x, bbox_bottom-8, 0, c_white);
+			effect_create_above(ef_smoke, x, bbox_top+8, 0, c_white);
 			if (asset_get_type("obj_wall_jumpspark") == asset_object)
 			{
 				instance_create_depth(x, y, 0, obj_wall_jumpspark);
@@ -6817,7 +6795,7 @@ and (global.pause = false)
 					and (!key_left)
 					or (image_xscale > 0)
 					{
-						if (hspeed<+10)
+						if (hspeed<+ 10)
 						{
 							if (asset_get_type("obj_wall") == asset_object)
 							and (!place_meeting(x + 4, y, obj_wall))
@@ -6833,11 +6811,11 @@ and (global.pause = false)
 					can_ground_pound = false;
 					if (asset_get_type("snd_dive") == asset_sound)
 					{
-						audio_play_sound(snd_dive,0, 0);
+						audio_play_sound(snd_dive, 0, 0);
 						audio_sound_gain(snd_dive, global.sfx_volume, 0);
 					}
 					audio_stop_sound(voice);
-					voice = audio_play_sound(voice_dive,0, 0);
+					voice = audio_play_sound(voice_dive, 0, 0);
 					audio_sound_gain(voice_dive, global.voices_volume, 0);
 					audio_sound_pitch(voice_dive, default_voice_pitch);
 					dive = true;
@@ -6893,12 +6871,12 @@ and (global.pause = false)
 			else
 			if (image_xscale > 0)
 			{
-				if (hspeed<+4)
+				if (hspeed<+ 4)
 				{
 					if (asset_get_type("obj_wall") == asset_object)
 					and (!place_meeting(x + 4, y, obj_wall))
 					{
-						hspeed =+4;
+						hspeed = +4;
 					}
 					else
 					if (asset_get_type("obj_wall") == asset_object)
@@ -7013,7 +6991,7 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	if (key_jump)
 	{
 		dive_on_ground = false;
-		effect_create_above(ef_smoke, x, bbox_bottom,1,c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom, 1,c_white);
 		if (speed_max<10)
 		{
 			speed_max = 10;
@@ -7040,7 +7018,7 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			if (hspeed >+7)
 			{
-				if (hspeed<+10)
+				if (hspeed<+ 10)
 				{
 					if (!place_meeting(x + 1, y, obj_wall))
 					and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -7061,8 +7039,8 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 if (allow_ledge_grab= true)
 {
 	if (in_water = true)
-	or (x<camera_get_view_x(view_camera[view_current])+25)
-	or (x >camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current])-25)
+	or (x<camera_get_view_x(view_camera[view_current]) + 25)
+	or (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])- 25)
 	{
 		can_ledge_grab = false;
 	}
@@ -7079,8 +7057,8 @@ if (allow_ledge_grab= true)
 		if (ground_pound<1)
 		and (burnt<1)
 		{
-			if (!position_meeting(x+37*hspeed_dir,bbox_top-16, obj_wall))
-			and (position_meeting(x+37*hspeed_dir,bbox_top+8, obj_wall))
+			if (!position_meeting(x + 37*hspeed_dir,bbox_top-16, obj_wall))
+			and (position_meeting(x + 37*hspeed_dir,bbox_top+8, obj_wall))
 			and (yprevious-16<y)
 			and (vspeed > 0)
 			and (!place_meeting(x, y+ sprite_height/3,obj_wall))
@@ -7088,7 +7066,7 @@ if (allow_ledge_grab= true)
 			{
 				if (asset_get_type("snd_grabledge") == asset_sound)
 				{
-					audio_play_sound(snd_grabledge,0, 0);
+					audio_play_sound(snd_grabledge, 0, 0);
 					audio_sound_gain(snd_grabledge, global.sfx_volume, 0);
 				}
 				gravity = 0;
@@ -7096,14 +7074,14 @@ if (allow_ledge_grab= true)
 				vspeed = 0;
 				
 				#region /*Move against the ledge*/
-				while(!place_meeting(x+hspeed_dir,y, obj_wall))
+				while(!place_meeting(x +hspeed_dir,y, obj_wall))
 				{
-					x+=hspeed_dir;
+					x +=hspeed_dir;
 				}
 				#endregion /*Move against the ledge*/
 				
 				#region /*Make sure we are the right height*/
-				while(position_meeting(x+(17*hspeed_dir),y-5,obj_wall))
+				while(position_meeting(x +(17*hspeed_dir),y- 5,obj_wall))
 				{
 					y -= 1;
 				}
@@ -7184,7 +7162,7 @@ if (allow_ledge_grab= true)
 				}
 				if (asset_get_type("snd_pullupfast") == asset_sound)
 				{
-					audio_play_sound(snd_pullupfast,0, 0);
+					audio_play_sound(snd_pullupfast, 0, 0);
 					audio_sound_gain(snd_pullupfast, global.sfx_volume, 0);
 				}
 				vspeed = -normal_jump_height;
@@ -7201,7 +7179,7 @@ if (allow_ledge_grab= true)
 			{
 				if (ledge_grab>10)
 				{
-					hspeed =+0.1*-hspeed_dir;
+					hspeed = +0.1*-hspeed_dir;
 					ledge_grab = false;
 					ledge_grab_jump = true;
 					stick_to_wall = false;
@@ -7241,19 +7219,19 @@ and (stick_to_wall = false)
 #endregion /*ledge_grab_jump / Get up over ledge END*/
 
 #region /*Put sprite angle at right angle*/
-if (angle<-360)
+if (angle <-360)
 {
 	angle+=16;
 }
 else
-if (angle >+360)
+if (angle >+ 360)
 {
 	angle-=16;
 }
 else
 if (ground_pound = true)
 {
-	angle =lerp(angle,0, 0.2);
+	angle =lerp(angle, 0, 0.2);
 }
 else
 {
@@ -7263,22 +7241,22 @@ else
 		if (key_left)
 		and (!key_right)
 		{
-			angle =lerp(angle,0 + 10, 0.1);
+			angle =lerp(angle, 0 + 10, 0.1);
 		}
 		else
 		if (key_right)
 		and (!key_left)
 		{
-			angle =lerp(angle,0 - 10, 0.1);
+			angle =lerp(angle, 0 - 10, 0.1);
 		}
 		else
 		{
-			angle =lerp(angle,0, 0.1);
+			angle =lerp(angle, 0, 0.1);
 		}
 	}
 	else
 	{
-		angle =lerp(angle,0, 0.1);
+		angle =lerp(angle, 0, 0.1);
 	}
 }
 #endregion /*Put sprite angle at right angle*/
@@ -7298,7 +7276,7 @@ else
 if (in_water = true)
 and (global.ambience_underwater > 0)
 {
-	audio_sound_gain(global.ambience,0, 0);
+	audio_sound_gain(global.ambience, 0, 0);
 	audio_sound_gain(global.ambience_underwater, global.ambient_volume, 0);
 }
 else
@@ -7404,7 +7382,7 @@ if (asset_get_type("obj_water") == asset_object)
 				}
 				if (asset_get_type("snd_swim") == asset_sound)
 				{
-					audio_play_sound(snd_swim,0, 0);
+					audio_play_sound(snd_swim, 0, 0);
 					audio_sound_gain(snd_swim, global.sfx_volume, 0);
 				}
 				if (asset_get_type("obj_bubble") == asset_object)
@@ -7437,11 +7415,11 @@ if (asset_get_type("obj_water") == asset_object)
 		or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 		or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
-			if (hspeed<-2)
+			if (hspeed<- 2)
 			{
-				hspeed =-2;
+				hspeed =- 2;
 			}
-			if (hspeed >+2)
+			if (hspeed >+ 2)
 			{
 				hspeed = +2;
 			}
@@ -7523,7 +7501,7 @@ if (in_water != old_in_water)
 		}
 		if (asset_get_type("snd_swim") == asset_sound)
 		{
-			audio_play_sound(snd_swim,0, 0);
+			audio_play_sound(snd_swim, 0, 0);
 			audio_sound_gain(snd_swim, global.sfx_volume, 0);
 		}
 		#endregion /*Jump sound effect END*/
@@ -7677,7 +7655,7 @@ if (asset_get_type("obj_lava") == asset_object)
 			if (invincible < 1)
 			{
 				audio_stop_sound(voice);
-				voice = audio_play_sound(voice_burned,0, 0);
+				voice = audio_play_sound(voice_burned, 0, 0);
 				audio_sound_gain(voice_burned, global.voices_volume, 0);
 				audio_sound_pitch(voice_burned, default_voice_pitch);
 				hp -= 1;
@@ -7685,7 +7663,7 @@ if (asset_get_type("obj_lava") == asset_object)
 			if (invincible > 0)
 			{
 				audio_stop_sound(voice);
-				voice = audio_play_sound(voice_burned,0, 0);
+				voice = audio_play_sound(voice_burned, 0, 0);
 				audio_sound_gain(voice_burned, global.voices_volume, 0);
 				audio_sound_pitch(voice_burned, default_voice_pitch);
 			}
@@ -7702,7 +7680,7 @@ if (asset_get_type("obj_lava") == asset_object)
 }
 if (burnt = true)
 {
-	effect_create_above(ef_smoke, x, bbox_bottom,0, c_black);
+	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 	if (place_meeting(x, y + 1, obj_wall))
 	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
@@ -7722,7 +7700,7 @@ if (burnt = true)
 else
 if (burnt =2)
 {
-	effect_create_above(ef_smoke, x, bbox_bottom,0, c_black);
+	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 	if (place_meeting(x, y + 1, obj_wall))
 	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
@@ -7746,15 +7724,15 @@ if (die = true)
 	
 	#region /*Update Level Editor Checkpoint Time*/
 	if (asset_get_type("room_leveleditor") == asset_room)
-	and (room=room_leveleditor)
+	and (room =room_leveleditor)
 	and (global.actually_play_edited_level = true)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
 		ini_open(working_directory + "/custom_level_save.ini");
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_millisecond", global.timeattack_millisecond);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_second", global.timeattack_second);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_minute", global.timeattack_minute);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_realmillisecond", global.timeattack_realmillisecond);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", global.timeattack_millisecond);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", global.timeattack_second);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", global.timeattack_minute);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 		ini_close();
 	}
 	#endregion /*Update Level Editor Checkpoint Time END*/
@@ -7948,25 +7926,25 @@ and (instance_exists(obj_spikes))
 				#region /*Save heart balloon to be false*/
 				if (player = 1)
 				{
-					ini_open("file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_1_have_heart_balloon", false);
 					ini_close();
 				}
 				if (player = 2)
 				{
-					ini_open("file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_2_have_heart_balloon", false);
 					ini_close();
 				}
 				if (player = 3)
 				{
-					ini_open("file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_3_have_heart_balloon", false);
 					ini_close();
 				}
 				if (player = 4)
 				{
-					ini_open("file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_4_have_heart_balloon", false);
 					ini_close();
 				}
@@ -8120,7 +8098,7 @@ and (instance_exists(obj_goal))
 		and (y < instance_nearest(x, y, obj_goal).bbox_bottom)
 		and (goal = false)
 		{
-			if (!collision_line(x, y,instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
+			if (!collision_line(x, y, instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
 			{
 				goal = true;
 			}
@@ -8676,7 +8654,7 @@ and (in_water = false)
 				{
 					vspeed = -triple_jump_height*1.25;
 					audio_stop_sound(voice);
-					voice = audio_play_sound(voice_jump_rope,0, 0);
+					voice = audio_play_sound(voice_jump_rope, 0, 0);
 					audio_sound_gain(voice_jump_rope, global.voices_volume, 0);
 					audio_sound_pitch(voice_jump_rope, default_voice_pitch);
 				}
@@ -8989,7 +8967,7 @@ and (place_meeting(x, y, obj_vine))
 		{
 			if (x < instance_nearest(x, y, obj_vine).x)
 			{
-				x+=4;
+				x +=4;
 			}
 			if (x > instance_nearest(x, y, obj_vine).x)
 			{
@@ -9033,7 +9011,7 @@ and (place_meeting(x, y, obj_vine))
 		{
 			if (x < instance_nearest(x, y, obj_vine).x)
 			{
-				x+=4;
+				x +=4;
 			}
 			if (x > instance_nearest(x, y, obj_vine).x)
 			{
@@ -9134,12 +9112,12 @@ and (place_meeting(x, y, obj_vine))
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			{
-				x+=4;
+				x +=4;
 				image_speed = 0.4;
 			}
 			else
 			{
-				x+=2;
+				x +=2;
 				image_speed = 0.2;
 			}
 			if (asset_get_type("snd_move_ivy") == asset_sound)
@@ -9199,7 +9177,7 @@ and (place_meeting(x, y, obj_vine))
 				{
 					audio_play_sound(snd_jump, 0, 0);
 					audio_sound_gain(snd_jump, global.sfx_volume, 0);
-					audio_sound_pitch(snd_jump,1.5);
+					audio_sound_pitch(snd_jump, 1.5);
 				}
 			}
 			else
@@ -9280,7 +9258,7 @@ and (crouch = true)
 		}
 		if (asset_get_type("snd_rise") == asset_sound)
 		{
-			audio_play_sound(snd_rise,0, 0);
+			audio_play_sound(snd_rise, 0, 0);
 			audio_sound_gain(snd_rise, global.sfx_volume, 0);
 		}
 	}
@@ -9303,7 +9281,7 @@ if (crouch = true)
 					audio_sound_gain(snd_skidding, global.sfx_volume, 0);
 				}
 			}
-			effect_create_above(ef_smoke, x, bbox_bottom,0, c_white);
+			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 		}
 		else
 		if (asset_get_type("snd_skidding") == asset_sound)
@@ -9461,7 +9439,7 @@ and (key_left)
 		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
 		if (sprite_stand > noone){sprite_index = sprite_stand;}
 	}
-	effect_create_above(ef_smoke, x, bbox_bottom,1,c_white);
+	effect_create_above(ef_smoke, x, bbox_bottom, 1,c_white);
 	if (image_index > image_number - 1)
 	{
 		image_speed = 0;
@@ -9536,7 +9514,7 @@ or (image_index = 4)
 {
 	if abs(hspeed) > 0
 	{
-		effect_create_above(ef_smoke, x, bbox_bottom,0, c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 	}
 }
 /*Stand*/
@@ -9705,7 +9683,7 @@ and (crouch = true)
 		}
 		if (asset_get_type("snd_rise") == asset_sound)
 		{
-			audio_play_sound(snd_rise,0, 0);
+			audio_play_sound(snd_rise, 0, 0);
 			audio_sound_gain(snd_rise, global.sfx_volume, 0);
 		}
 	}
@@ -9782,7 +9760,7 @@ if (crouch = true)
 					audio_sound_gain(snd_skidding, global.sfx_volume, 0);
 				}
 			}
-			effect_create_above(ef_smoke, x, bbox_bottom,0, c_white);
+			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 		}
 		else
 		if (asset_get_type("snd_skidding") == asset_sound)
@@ -10017,7 +9995,7 @@ and (key_left)
 			{
 				if (!audio_is_playing(snd_skidding_ice))
 				{
-					audio_play_sound(snd_skidding_ice,0, 0);
+					audio_play_sound(snd_skidding_ice, 0, 0);
 					audio_sound_gain(snd_skidding_ice, global.sfx_volume, 0);
 				}
 			}
@@ -10051,7 +10029,7 @@ and (key_left)
 			if (sprite_run > noone) and (hspeed<>0){sprite_index = sprite_run;}else
 			{sprite_index = sprite_stand;}
 		}
-		effect_create_above(ef_smoke, x, bbox_bottom,0, c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 	}
 }
 #endregion /*Skidding END*/
@@ -10065,12 +10043,12 @@ or (hspeed > 0)
 and (!key_right)
 {
 	if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop;image_speed = 0.5;}else
-	if (abs(hspeed)>20) and (sprite_run4>noone){sprite_index = sprite_run4;image_speed =speed/10+0.1;}else
-	if (abs(hspeed)>15) and (sprite_run3>noone){sprite_index = sprite_run3;image_speed =speed/10+0.1;}else
-	if (abs(hspeed)>10) and (sprite_run2>noone){sprite_index = sprite_run2;image_speed =speed/10+0.1;}else
-	if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;image_speed =speed/10+0.1;}else
-	if (sprite_walk>noone) and (hspeed <> 0){sprite_index = sprite_walk;image_speed =speed/10+0.1;}else
-	if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run;image_speed =speed/10+0.1;}else
+	if (abs(hspeed)>20) and (sprite_run4>noone){sprite_index = sprite_run4;image_speed =speed/10 +0.1;}else
+	if (abs(hspeed)>15) and (sprite_run3>noone){sprite_index = sprite_run3;image_speed =speed/10 +0.1;}else
+	if (abs(hspeed)>10) and (sprite_run2>noone){sprite_index = sprite_run2;image_speed =speed/10 +0.1;}else
+	if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;image_speed =speed/10 +0.1;}else
+	if (sprite_walk>noone) and (hspeed <> 0){sprite_index = sprite_walk;image_speed =speed/10 +0.1;}else
+	if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run;image_speed =speed/10 +0.1;}else
 	{sprite_index = sprite_stand;image_speed = 0.5;}
 }
 #endregion /*Skidding Stop END*/
@@ -10644,7 +10622,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_dirt_left))
 						{
-							audio_play_sound(snd_footstep_dirt_left,0, 0);
+							audio_play_sound(snd_footstep_dirt_left, 0, 0);
 							audio_sound_gain(snd_footstep_dirt_left, global.sfx_volume, 0);
 						}
 					}
@@ -10662,7 +10640,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_glass_left))
 						{
-							audio_play_sound(snd_footstep_glass_left,0, 0);
+							audio_play_sound(snd_footstep_glass_left, 0, 0);
 							audio_sound_gain(snd_footstep_glass_left, global.sfx_volume, 0);
 						}
 					}
@@ -10680,7 +10658,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_grass_left))
 						{
-							audio_play_sound(snd_footstep_grass_left,0, 0);
+							audio_play_sound(snd_footstep_grass_left, 0, 0);
 							audio_sound_gain(snd_footstep_grass_left, global.sfx_volume, 0);
 						}
 					}
@@ -10698,7 +10676,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_gravel_left))
 						{
-							audio_play_sound(snd_footstep_gravel_left,0, 0);
+							audio_play_sound(snd_footstep_gravel_left, 0, 0);
 							audio_sound_gain(snd_footstep_gravel_left, global.sfx_volume, 0);
 						}
 					}
@@ -10716,7 +10694,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_metal_left))
 						{
-							audio_play_sound(snd_footstep_metal_left,0, 0);
+							audio_play_sound(snd_footstep_metal_left, 0, 0);
 							audio_sound_gain(snd_footstep_metal_left, global.sfx_volume, 0);
 						}
 					}
@@ -10734,7 +10712,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_stone_left))
 						{
-							audio_play_sound(snd_footstep_stone_left,0, 0);
+							audio_play_sound(snd_footstep_stone_left, 0, 0);
 							audio_sound_gain(snd_footstep_stone_left, global.sfx_volume, 0);
 						}
 					}
@@ -10752,7 +10730,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_wood_left))
 						{
-							audio_play_sound(snd_footstep_wood_left,0, 0);
+							audio_play_sound(snd_footstep_wood_left, 0, 0);
 							audio_sound_gain(snd_footstep_wood_left, global.sfx_volume, 0);
 						}
 					}
@@ -10767,7 +10745,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_default_left))
 						{
-							audio_play_sound(snd_footstep_default_left,0, 0);
+							audio_play_sound(snd_footstep_default_left, 0, 0);
 							audio_sound_gain(snd_footstep_default_left, global.sfx_volume, 0);
 						}
 					}
@@ -10778,8 +10756,8 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 			}
 			else
-			if (image_index > image_number/2-1)
-			and (image_index<image_number/2+1)
+			if (image_index > image_number/ 2-1)
+			and (image_index<image_number/ 2+ 1)
 			{
 				
 				#region /*Right Footstep Sounds*/
@@ -10793,7 +10771,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_dirt_right))
 						{
-							audio_play_sound(snd_footstep_dirt_right,0, 0);
+							audio_play_sound(snd_footstep_dirt_right, 0, 0);
 							audio_sound_gain(snd_footstep_dirt_right, global.sfx_volume, 0);
 						}
 					}
@@ -10811,7 +10789,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_glass_right))
 						{
-							audio_play_sound(snd_footstep_glass_right,0, 0);
+							audio_play_sound(snd_footstep_glass_right, 0, 0);
 							audio_sound_gain(snd_footstep_glass_right, global.sfx_volume, 0);
 						}
 					}
@@ -10829,7 +10807,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_grass_right))
 						{
-							audio_play_sound(snd_footstep_grass_right,0, 0);
+							audio_play_sound(snd_footstep_grass_right, 0, 0);
 							audio_sound_gain(snd_footstep_grass_right, global.sfx_volume, 0);
 						}
 					}
@@ -10847,7 +10825,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_gravel_right))
 						{
-							audio_play_sound(snd_footstep_gravel_right,0, 0);
+							audio_play_sound(snd_footstep_gravel_right, 0, 0);
 							audio_sound_gain(snd_footstep_gravel_right, global.sfx_volume, 0);
 						}
 					}
@@ -10865,7 +10843,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_metal_right))
 						{
-							audio_play_sound(snd_footstep_metal_right,0, 0);
+							audio_play_sound(snd_footstep_metal_right, 0, 0);
 							audio_sound_gain(snd_footstep_metal_right, global.sfx_volume, 0);
 						}
 					}
@@ -10883,7 +10861,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_stone_right))
 						{
-							audio_play_sound(snd_footstep_stone_right,0, 0);
+							audio_play_sound(snd_footstep_stone_right, 0, 0);
 							audio_sound_gain(snd_footstep_stone_right, global.sfx_volume, 0);
 						}
 					}
@@ -10901,7 +10879,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_wood_right))
 						{
-							audio_play_sound(snd_footstep_wood_right,0, 0);
+							audio_play_sound(snd_footstep_wood_right, 0, 0);
 							audio_sound_gain(snd_footstep_wood_right, global.sfx_volume, 0);
 						}
 					}
@@ -10916,7 +10894,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						if (!audio_is_playing(snd_footstep_default_right))
 						{
-							audio_play_sound(snd_footstep_default_right,0, 0);
+							audio_play_sound(snd_footstep_default_right, 0, 0);
 							audio_sound_gain(snd_footstep_default_right, global.sfx_volume, 0);
 						}
 					}

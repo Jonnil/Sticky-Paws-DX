@@ -12,7 +12,7 @@ function scr_custom_level_select_with_the_mouse()
 		i += 1)
 		{
 			C = floor(i / R);
-			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),394*(i-C*R)+100-3, 226*(C-scroll)+250-3, 394*(i-C*R)+100+384+3, 226*(C-scroll)+250+216+3))
+			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), 394*(i-C*R) + 100 -3, 226*(C-scroll) + 250 -3, 394*(i-C*R) + 100 + 384+ 3, 226*(C-scroll) + 250 + 216+ 3))
 			{
 				if (menu != "level_editor_play")
 				and (menu_delay = 0)

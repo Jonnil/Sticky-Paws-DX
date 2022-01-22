@@ -26,7 +26,7 @@ or (gamepad_is_connected(3))
 and (global.player4_can_play = true)
 and (global.controls_used_for_menu_navigation = "controller")
 {
-	draw_text_outlined(window_get_width() - 16, +16, "Skip: Hold Start", global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() - 16, + 16, "Skip: Hold Start", global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*If gamepad is connected END*/
 
@@ -36,7 +36,7 @@ else
 if (os_type == os_ios)
 or (os_type == os_android)
 {
-	draw_text_outlined(window_get_width() - 16, +16, "Skip: Press and Hold Screen", global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() - 16, + 16, "Skip: Press and Hold Screen", global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*If playing on mobile END*/
 
@@ -46,7 +46,7 @@ else
 if (global.controls_used_for_menu_navigation = "keyboard")
 or (global.controls_used_for_menu_navigation = "mouse")
 {
-	draw_text_outlined(window_get_width() - 16, +16, "Skip: Hold Escape", global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() - 16, + 16, "Skip: Hold Escape", global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*If playing on Keyboard*/
 
@@ -54,7 +54,7 @@ or (global.controls_used_for_menu_navigation = "mouse")
 
 if (sprite_index > 0)
 {
-	draw_sprite_ext(sprite_index, image_index, window_get_width()/2, y, 1, 1, 0, c_white, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, window_get_width()/ 2, y, 1, 1, 0, c_white, image_alpha);
 }
 
 if (keyboard_check(vk_escape))
@@ -126,19 +126,19 @@ else
 }
 
 if (time >= room_speed*1-10)
-if (time <= room_speed*1+10)
+if (time <= room_speed*1+ 10)
 {
-	yy = window_get_height()/2;
+	yy = window_get_height()/ 2;
 	alpha = 1;
 }
 if (time >= room_speed*4-10)
-if (time <= room_speed*4+10)
+if (time <= room_speed*4+ 10)
 {
 	yy = 0;
 	alpha = 0;
 }
 if (time >= room_speed*5-10)
-if (time <= room_speed*5+10)
+if (time <= room_speed*5+ 10)
 {
 	y = window_get_height();
 	yy = window_get_height();
@@ -215,12 +215,12 @@ if (global.enable_transitions = true)
 	{
 		if (asset_get_type("spr_iris") == asset_sprite)
 		{
-			draw_sprite_ext(spr_iris, 0, window_get_width()/2, window_get_height()/2, iris_xscale, iris_yscale, 0, c_black, 1);
+			draw_sprite_ext(spr_iris, 0, window_get_width()/ 2, window_get_height()/ 2, iris_xscale, iris_yscale, 0, c_black, 1);
 		}
-		draw_rectangle_color (0, 0, window_get_width()*2, window_get_height()/2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color (0, 0, window_get_width()/2 - iris_xscale * 128, window_get_height()*2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color (window_get_width()/2 + iris_xscale * 128 - 1, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color (0, window_get_height()/2 + iris_yscale * 128, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color (0, 0, window_get_width()*2, window_get_height()/ 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color (0, 0, window_get_width()/ 2 - iris_xscale * 128, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color (window_get_width()/ 2 + iris_xscale * 128 - 1, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color (0, window_get_height()/ 2 + iris_yscale * 128, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
 	}
 }
 #endregion /*Draw Iris Transitions END*/

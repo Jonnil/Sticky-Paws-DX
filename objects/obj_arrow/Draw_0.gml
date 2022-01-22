@@ -42,7 +42,7 @@ else
 	}
 	if flat = true
 	{
-		/*image_yscale =lerp(image_yscale,0.1, 0.2);*/
+		/*image_yscale =lerp(image_yscale, 0.1, 0.2);*/
 		speed = 0;
 		image_speed = 0.5;
 		if image_xscale = -1

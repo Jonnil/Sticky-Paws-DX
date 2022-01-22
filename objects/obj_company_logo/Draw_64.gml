@@ -30,7 +30,7 @@ draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_he
 
 if (sprite_splash_easteregg > noone)
 {
-	draw_sprite_ext(sprite_splash_easteregg, image_index, +128, window_get_height()+ sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(sprite_splash_easteregg, image_index, + 128, window_get_height() + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
 }
 
 if (gamepad_button_check_pressed(0, gp_face4))
@@ -48,7 +48,7 @@ if (sprite_splash_easteregg_yoffset <= 127)
 	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, -128, 0.1);
 }
 
-if (image_index > image_number-2)
+if (image_index > image_number- 2)
 and (sprite_index=spr_company_logo)
 {
 	if (!gamepad_is_connected(0))
@@ -157,6 +157,6 @@ and (window_mouse_get_y() > 0)
 and (os_type!=os_ios)
 and (os_type!=os_android)
 {
-	draw_sprite_ext(spr_cursor,0,window_mouse_get_x(),window_mouse_get_y(), 1,1, 0, c_white,1);
+	draw_sprite_ext(spr_cursor, 0,window_mouse_get_x(),window_mouse_get_y(), 1, 1, 0, c_white, 1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/

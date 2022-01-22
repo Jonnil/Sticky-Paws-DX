@@ -4,6 +4,6 @@ if (other.bounceup = false)
 	{
 		bounceup = true;
 		image_speed = 1;
-		motion_set(90,5);
+		motion_set(90, 5);
 	}
 }

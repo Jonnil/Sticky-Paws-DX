@@ -78,7 +78,7 @@ if (image_alpha < 1)
 		x = xstart;
 		y = ystart;
 		image_alpha = 1;
-		effect_create_above(ef_smoke, x + 8, y,2, c_white);
+		effect_create_above(ef_smoke, x + 8, y, 2, c_white);
 	}
 }
 #endregion /*Falling Block falling outside of view END*/

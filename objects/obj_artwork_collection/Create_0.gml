@@ -12,9 +12,9 @@ if (global.demo = true)
 }
 gamepad_stick = false;
 
-if (file_exists("file" + string(global.file) + ".ini"))
+if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 {
-	ini_open("file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
 	level1_big_collectible1 = ini_read_real(ds_list_find_value(global.all_loaded_main_levels, 1), "big_collectible1", 0);
 	level1_big_collectible2 = ini_read_real(ds_list_find_value(global.all_loaded_main_levels, 1), "big_collectible2", 0);

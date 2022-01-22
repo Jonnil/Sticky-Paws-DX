@@ -52,20 +52,20 @@ and (fall = false)
 		if (asset_get_type("spr_sock") == asset_sprite)
 		and (sprite_index=spr_sock)
 		{
-			obj = instance_create_depth(x, y - 16,0,obj_clipper);
+			obj = instance_create_depth(x, y - 16, 0,obj_clipper);
 			with(obj)
 			{
-				motion_set(90+random_range(-10,+10),random_range(5, 10));
+				motion_set(90 +random_range(-10,+ 10),random_range(5, 10));
 			}
 		}
 		else
 		{
-			obj = instance_create_depth(x + 16,y - 16,0,obj_clipper);
+			obj = instance_create_depth(x + 16,y - 16, 0,obj_clipper);
 			with(obj)
 			{
 				motion_set(45,random_range(5, 10));
 			}
-			obj = instance_create_depth(x - 16,y - 16,0,obj_clipper);
+			obj = instance_create_depth(x - 16,y - 16, 0,obj_clipper);
 			with(obj)
 			{
 				motion_set(135,random_range(5, 10));
@@ -78,10 +78,10 @@ if (fall = true)
 {
 	if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 	and (x >camera_get_view_x(view_camera[view_current]))
-	and (x<camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
+	and (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{
 		gravity = 0.5;
-		if (vspeed<+1)
+		if (vspeed<+ 1)
 		{
 			vspeed = +1;
 		}

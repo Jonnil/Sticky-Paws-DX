@@ -8,7 +8,7 @@ or (keyboard_check(global.player1_key_sprint));
 
 if (asset_get_type("spr_goal") == asset_sprite)
 {
-	draw_sprite_ext(spr_goal, 0, x, y-256, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_goal, 0, x, y- 256, 1, 1, 0, c_white, 1);
 }
 if (asset_get_type("spr_level_end") == asset_sprite)
 {

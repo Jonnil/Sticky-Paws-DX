@@ -34,7 +34,7 @@ function scr_show_fps()
 			}
 			else
 			{
-				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, make_color_hsv(50/200*fps_real, 255, 255), 1);
+				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, make_color_hsv(50/ 200*fps_real, 255, 255), 1);
 			}
 		}
 		#endregion /*FPS Real END*/

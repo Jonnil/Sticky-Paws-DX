@@ -12,7 +12,7 @@ with(other)
 			}
 			else
 			{
-				die_volting= +1;
+				die_volting= + 1;
 				vspeed =-8;
 			}
 		}

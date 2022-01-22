@@ -8,12 +8,12 @@ if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 {
 	if (instance_nearest(x, y, obj_player).x > x-32)
-	and (instance_nearest(x, y, obj_player).x < x+32)
+	and (instance_nearest(x, y, obj_player).x < x + 32)
 	and (instance_nearest(x, y, obj_player).y < y)
-	or (place_meeting(x, y,instance_nearest(x, y, obj_player)))
+	or (place_meeting(x, y, instance_nearest(x, y, obj_player)))
 	{
 		if (asset_get_type("obj_wall") == asset_object)
-		and (!collision_line(x, y,instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		{
 			if (image_index= 0)
 			{
@@ -23,14 +23,14 @@ and (instance_exists(obj_player))
 				{
 					hp+=1;
 				}
-				effect_create_below(ef_ring,x, y,2, c_white);
+				effect_create_below(ef_ring,x, y, 2, c_white);
 				
 				#region /*Collect 10 basic collectibles*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
 					if (asset_get_type("snd_basic_collectible") == asset_sound)
 					{
-						audio_play_sound(snd_basic_collectible,0, 0);
+						audio_play_sound(snd_basic_collectible, 0, 0);
 					}
 					var obj;
 					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
@@ -110,7 +110,7 @@ and (instance_exists(obj_player))
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
-						delay_time =90;
+						delay_time = 90;
 					}
 					
 					#region /*2000 Score*/
@@ -128,10 +128,10 @@ and (instance_exists(obj_player))
 					#region /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint. Make sure it gets translated into other languages too*/
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y-20, 0,obj_scoreup);
+						obj = instance_create_depth(x, y- 20, 0,obj_scoreup);
 						with(obj)
 						{
-							scoreup ="CHECKPOINT";
+							scoreup = "CHECKPOINT";
 						}
 					}
 					#endregion /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint. Make sure it gets translated into other languages too END*/
@@ -151,13 +151,13 @@ and (instance_exists(obj_player))
 				and (global.character_select_in_this_menu = "main_game")
 				and (global.actually_play_edited_level = true)
 				{
-					ini_open(working_directory + "/File" + string(global.file) + ".ini");
-					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index),"x_checkpoint",x);
-					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index),"y_checkpoint",y);
-					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index),"checkpoint_millisecond", global.timeattack_millisecond);
-					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index),"checkpoint_second", global.timeattack_second);
-					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index),"checkpoint_minute", global.timeattack_minute);
-					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index),"checkpoint_realmillisecond", global.timeattack_realmillisecond);
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "x_checkpoint",x);
+					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "y_checkpoint",y);
+					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "checkpoint_millisecond", global.timeattack_millisecond);
+					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "checkpoint_second", global.timeattack_second);
+					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "checkpoint_minute", global.timeattack_minute);
+					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 					ini_close();
 				}
 				else
@@ -167,12 +167,12 @@ and (instance_exists(obj_player))
 				and (global.actually_play_edited_level = true)
 				{
 					ini_open(working_directory + "/custom_level_save.ini");
-					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"x_checkpoint",x);
-					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"y_checkpoint",y);
-					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"checkpoint_millisecond", global.timeattack_millisecond);
-					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"checkpoint_second", global.timeattack_second);
-					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"checkpoint_minute", global.timeattack_minute);
-					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"checkpoint_realmillisecond", global.timeattack_realmillisecond);
+					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint",x);
+					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint",y);
+					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond", global.timeattack_millisecond);
+					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_second", global.timeattack_second);
+					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_minute", global.timeattack_minute);
+					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 					ini_close();
 				}
 				#endregion /*Save Level Editor Checkpoint END*/

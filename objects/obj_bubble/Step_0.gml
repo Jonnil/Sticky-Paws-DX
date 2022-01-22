@@ -2,7 +2,7 @@ depth = +10;
 friction = 0.05;
 gravity = random_range(0.01, 0.1);
 gravity_direction = 90;
-if (hspeed < -5)
+if (hspeed < - 5)
 {
 	hspeed = -5;
 }

@@ -26,14 +26,14 @@ and (obj_camera.sprite_lives_icon > noone)
 	sprite_index = obj_camera.sprite_lives_icon;
 }
 
-text_alpha = lerp(text_alpha, Wave(0, 1,3,0), 0.1);
+text_alpha = lerp(text_alpha, Wave(0, 1, 3, 0), 0.1);
 
 #region /*Color the extra live pickup differently if it grants you different amounts of lives*/
 if (number_of_extra_lives = 3)
 {
 	if (sprite_index > 0)
 	{
-		draw_sprite_ext(sprite_index,image_index,x, y,1,1, 0, c_blue,1);
+		draw_sprite_ext(sprite_index, image_index,x, y, 1, 1, 0, c_blue, 1);
 	}
 	draw_text_outlined(x, y, "3-up", global.default_text_size*0.75, c_white, c_black, text_alpha);
 }
@@ -42,7 +42,7 @@ if (number_of_extra_lives = 2)
 {
 	if (sprite_index > 0)
 	{
-		draw_sprite_ext(sprite_index,image_index,x, y,1,1, 0, c_lime,1);
+		draw_sprite_ext(sprite_index, image_index,x, y, 1, 1, 0, c_lime, 1);
 	}
 	draw_text_outlined(x, y, "2-up", global.default_text_size*0.75, c_white, c_black, text_alpha);
 }
@@ -50,7 +50,7 @@ else
 {
 	if (sprite_index > 0)
 	{
-		draw_sprite_ext(sprite_index,image_index,x, y,1,1, 0, c_white,1);
+		draw_sprite_ext(sprite_index, image_index,x, y, 1, 1, 0, c_white, 1);
 	}
 	draw_text_outlined(x, y, "1-up", global.default_text_size*0.75, c_white, c_black, text_alpha);
 }
@@ -77,7 +77,7 @@ and (instance_exists(obj_player))
 		if (dir = +1)
 		{
 			if (instance_nearest(x, y, obj_player).x > x)
-			and (instance_nearest(x, y, obj_player).hspeed > +2)
+			and (instance_nearest(x, y, obj_player).hspeed > + 2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed > +8)
@@ -93,7 +93,7 @@ and (instance_exists(obj_player))
 		else
 		{
 			if (instance_nearest(x, y, obj_player).x < x)
-			and (instance_nearest(x, y, obj_player).hspeed < -2)
+			and (instance_nearest(x, y, obj_player).hspeed < - 2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed < -8)

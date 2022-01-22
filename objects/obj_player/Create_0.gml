@@ -533,9 +533,9 @@ double_tap_right = false;
 
 #region /*Have Heart Balloon*/
 if (global.character_select_in_this_menu = "main_game")
-and (file_exists("file" + string(global.file) + ".ini"))
+and (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 {
-	ini_open("file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
 	if (player = 1)
 	{

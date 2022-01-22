@@ -50,6 +50,9 @@ global.deactivate_objects_outsiede_view = true; /*This global variable is for de
 
 global.number_of_chain_kills_for_1up = 8; /*How many chain reaction kills you need to get 1-ups. Default is 8*/
 
+global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
+ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Ending", "Level9");
+
 #endregion /*Things you could change END*/
 
 
@@ -121,8 +124,6 @@ view_wview_lerp = 0;
 window_set_cursor (cr_none);
 global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 ds_list_add(global.all_loaded_custom_levels, "");
-global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
-ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Ending", "Level9");
 global.all_loaded_characters = ds_list_create();
 global.select_level_index= 0;/*What level is selected in the custom level editor*/
 
@@ -215,11 +216,11 @@ global.enable_foreground_layer2= true;
 global.enable_foreground_layer_secret = true;
 global.players_can_collide = false;
 global.player_has_entered_goal = false;
-global.pause_room=noone;
+global.pause_room =noone;
 global.pause_player= 0;
-global.key_used ="";
+global.key_used = "";
 global.playergame = 0;
-global.theme ="ground";
+global.theme = "ground";
 global.basic_collectibles= 0;
 global.level_clear_rate =noone;
 global.current_level_clear_rate = noone;
@@ -320,10 +321,10 @@ global.player4_cancel_dive_by_pressing_opposite_direction = false;
 global.fullscreen_key =vk_f11;
 #endregion /*Universal Keyboard Remapping*/
 
-global.level_name =""; /*In the level editor, the name of the currently selected level will be stored here*/
+global.level_name = ""; /*In the level editor, the name of the currently selected level will be stored here*/
 
 #region /*Player 1 Keyboard Remapping*/
-global.player1_name ="";
+global.player1_name = "";
 
 #region /*Player 1 Key 1 defaults*/
 global.player1_key_dive = ord("X");
@@ -361,7 +362,7 @@ global.player1_show_controls=1;
 #endregion /*Player 1 Keyboard Remapping END*/
 
 #region /*Player 2 Keyboard Remapping (everything should be set to noone)*/
-global.player2_name ="";
+global.player2_name = "";
 
 #region /*Player 2 Key 1 defaults*/
 global.player2_key_dive = noone;
@@ -399,7 +400,7 @@ global.player2_show_controls=1;
 #endregion /*Player 2 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 3 Keyboard Remapping (everything should be set to noone)*/
-global.player3_name ="";
+global.player3_name = "";
 
 #region /*Player 3 Key 1 defaults*/
 global.player3_key_dive = noone;
@@ -437,7 +438,7 @@ global.player3_show_controls=1;
 #endregion /*Player 3 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 4 Keyboard Remapping (everything should be set to noone)*/
-global.player4_name ="";
+global.player4_name = "";
 
 #region /*Player 4 Key 1 defaults*/
 global.player4_key_dive = noone;
@@ -597,7 +598,7 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 		{
 			sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
-		index+=1
+		index +=1
 	}
 	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+".png"))
 	{
@@ -661,7 +662,7 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 		{
 			sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name+"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
-		index+=1
+		index +=1
 	}
 	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name+".png"))
 	{

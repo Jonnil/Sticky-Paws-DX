@@ -3,7 +3,7 @@ if (die = false)
 	#region /*Push the enemy out of the solid object*/
 	while(place_meeting(x, y,other))
 	{
-		x+=lengthdir_x(0.5,point_direction(other.x, other.y, x, y));
+		x +=lengthdir_x(0.5,point_direction(other.x, other.y, x, y));
 		y+=lengthdir_y(0.5,point_direction(other.x, other.y, x, y));
 	}
 	#endregion /*Push the enemy out of the solid object END*/
@@ -16,12 +16,12 @@ if (die = false)
 		and (instance_exists(obj_camera))
 		and (obj_camera.iris_xscale > 1)
 		{
-			effect_create_above(ef_smoke, x - 16,bbox_bottom,0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom,0, c_white);
-			effect_create_above(ef_smoke, x + 16,bbox_bottom,0, c_white);
-			effect_create_above(ef_smoke, x - 16-8,bbox_bottom-8,0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom-8,0, c_white);
-			effect_create_above(ef_smoke, x + 16+8,bbox_bottom-8,0, c_white);
+			effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
+			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+			effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
+			effect_create_above(ef_smoke, x - 16-8,bbox_bottom-8, 0, c_white);
+			effect_create_above(ef_smoke, x, bbox_bottom-8, 0, c_white);
+			effect_create_above(ef_smoke, x + 16+8,bbox_bottom-8, 0, c_white);
 		}
 		vspeed = 0;
 		gravity = 0;

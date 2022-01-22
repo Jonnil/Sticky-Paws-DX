@@ -36,9 +36,9 @@ and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
-	if (x < camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
+	if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	and (x > camera_get_view_x(view_camera[view_current]))
-	and (y < camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
+	and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 	and (y > camera_get_view_y(view_camera[view_current]))
 	{
 		gravity = 0.5; /*The gravity*/
@@ -56,7 +56,7 @@ if (angle < -360)
 	angle += 16;
 }
 else
-if (angle > +360)
+if (angle > + 360)
 {
 	angle -= 16;
 }

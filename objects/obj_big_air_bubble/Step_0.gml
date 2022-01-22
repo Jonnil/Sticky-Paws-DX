@@ -1,4 +1,4 @@
-depth =+ 9;
+depth = +9;
 friction = 0.05;
 if (used = false)
 {
@@ -18,7 +18,7 @@ if (used = true)
 }
 gravity = 0.1;
 gravity_direction = 90;
-if (hspeed < -2)
+if (hspeed < - 2)
 {
 	hspeed = -2;
 }

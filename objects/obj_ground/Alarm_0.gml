@@ -122,7 +122,7 @@ if (position_meeting(x + look_outward,y,same_object))
    if (position_meeting(x-look_outward,y + look_outward,same_object)){tile =20;}
   }
   else
-  if (position_meeting(x + look_outward,y + look_outward,same_object)){tile =9;}
+  if (position_meeting(x + look_outward,y + look_outward,same_object)){tile = 9;}
  }
  else
  if (position_meeting(x-look_outward,y,same_object))

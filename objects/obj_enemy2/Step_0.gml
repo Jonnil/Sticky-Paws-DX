@@ -1,4 +1,4 @@
-depth =+ 9;
+depth = +9;
 
 #region /*If enemies are disabled, destroy this object*/
 if (global.activate_cheats = true)

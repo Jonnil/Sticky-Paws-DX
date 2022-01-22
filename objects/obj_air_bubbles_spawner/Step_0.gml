@@ -18,7 +18,7 @@ and (fps_real >= 210)
 {
 	with(instance_create_depth(x, bbox_top, 0, obj_bubble))
 	{
-		hspeed = random_range(-1, +1);
+		hspeed = random_range(-1, + 1);
 	}
 }
 if (!position_meeting(x, bbox_bottom + 1, obj_wall))

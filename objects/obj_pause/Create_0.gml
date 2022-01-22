@@ -89,14 +89,14 @@ if (asset_get_type("room_leveleditor") == asset_room)
 and (room = room_leveleditor)
 and (global.character_select_in_this_menu = "main_game")
 {
-	ini_open(working_directory + "/File" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"x_checkpoint", global.x_checkpoint);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"y_checkpoint", global.y_checkpoint);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_millisecond", global.timeattack_millisecond);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_second", global.timeattack_second);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_minute", global.timeattack_minute);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_realmillisecond", global.timeattack_realmillisecond);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "x_checkpoint", global.x_checkpoint);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "y_checkpoint", global.y_checkpoint);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_millisecond", global.timeattack_millisecond);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_second", global.timeattack_second);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_minute", global.timeattack_minute);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 	
 	ini_close();
 }
@@ -106,12 +106,12 @@ and (room = room_leveleditor)
 and (global.character_select_in_this_menu = "level_editor")
 {
 	ini_open(working_directory + "/custom_level_save.ini");
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"x_checkpoint", global.x_checkpoint);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"y_checkpoint", global.y_checkpoint);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_millisecond", global.timeattack_millisecond);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_second", global.timeattack_second);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_minute", global.timeattack_minute);
-	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_realmillisecond", global.timeattack_realmillisecond);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint", global.x_checkpoint);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "y_checkpoint", global.y_checkpoint);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", global.timeattack_millisecond);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", global.timeattack_second);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", global.timeattack_minute);
+	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 	ini_close();
 }
 #endregion /*Save Level Editor Checkpoint END*/

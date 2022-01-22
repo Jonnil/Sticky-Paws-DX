@@ -1,4 +1,4 @@
-depth =+ 9;
+depth = +9;
 
 if (asset_get_type("spr_wall") == asset_sprite)
 {

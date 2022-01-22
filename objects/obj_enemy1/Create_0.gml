@@ -1,4 +1,4 @@
-depth =+ 9;
+depth = +9;
 
 image_speed = 0.3;
 image_xscale = -1;

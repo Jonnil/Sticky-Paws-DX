@@ -8,7 +8,7 @@ and (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).x >bbox_right)
 and (instance_nearest(x, y, obj_player).x<bbox_right + 16)
 and (instance_nearest(x, y, obj_player).y<bbox_bottom)
-and (!collision_line(x, y,instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 {
 	global.quit_level = false;
 	global.quit_to_map = false;
@@ -41,13 +41,13 @@ and (!collision_line(x, y,instance_nearest(x, y, obj_player).x, instance_nearest
 		global.checkpoint_minute = 0;
 		global.checkpoint_realmillisecond = 0;
 		
-		ini_open(working_directory + "/File" + string(global.file) + ".ini");
-		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"x_checkpoint",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"y_checkpoint",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_millisecond",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_second",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_minute",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)),"checkpoint_realmillisecond",0);
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "x_checkpoint", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "y_checkpoint", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_millisecond", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_second", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_minute", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
 		ini_close();
 	}
 	else
@@ -63,12 +63,12 @@ and (!collision_line(x, y,instance_nearest(x, y, obj_player).x, instance_nearest
 		global.checkpoint_realmillisecond = 0;
 		
 		ini_open(working_directory + "/custom_level_save.ini");
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"x_checkpoint",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"y_checkpoint",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_millisecond",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_second",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_minute",0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),"checkpoint_realmillisecond",0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "y_checkpoint", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", 0);
+		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
 		ini_close();
 	}
 	#endregion /*Save Checkpoint END*/

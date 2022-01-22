@@ -18,17 +18,17 @@ sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
 if (asset_get_type("obj_foreground1") == asset_object)
 and (!instance_exists(obj_foreground1))
 {
-	instance_create_depth(0, 0,0,obj_foreground1);
+	instance_create_depth(0, 0, 0,obj_foreground1);
 }
 if (asset_get_type("obj_foreground2") == asset_object)
 and (!instance_exists(obj_foreground2))
 {
-	instance_create_depth(0, 0,0,obj_foreground2);
+	instance_create_depth(0, 0, 0,obj_foreground2);
 }
 if (asset_get_type("obj_foreground_secret") == asset_object)
 and (!instance_exists(obj_foreground_secret))
 {
-	instance_create_depth(0, 0,0,obj_foreground_secret);
+	instance_create_depth(0, 0, 0,obj_foreground_secret);
 }
 #endregion /*Create Foreground END*/
 
@@ -36,12 +36,12 @@ and (!instance_exists(obj_foreground_secret))
 if (asset_get_type("obj_level_height") == asset_object)
 and (!instance_exists(obj_level_height))
 {
-	instance_create_depth(0, 1104,0,obj_level_height);
+	instance_create_depth(0, 1104, 0,obj_level_height);
 }
 if (asset_get_type("obj_level_width") == asset_object)
 and (!instance_exists(obj_level_width))
 {
-	instance_create_depth(2720, 0,0,obj_level_width);
+	instance_create_depth(2720, 0, 0,obj_level_width);
 }
 #endregion /*Create level height and level width objects END*/
 
@@ -68,7 +68,7 @@ can_make_place_brush_size_bigger= true;/*If you can make the brush size bigger f
 can_put_objects_above_other_objects = false; /*If you can put objects above other objects*/
 mouse_sprite =spr_cursor;/*Sets what cursor sprite to use*/
 undo_and_redo_buttons_enabled = false;/*If undo and redo buttons should appear or not*/
-tooltip ="";
+tooltip = "";
 show_tooltip = 0;
 show_grid = false;/*Grid should be false when you start level editor*/
 grid_alpha= 0;
@@ -79,7 +79,7 @@ difficulty_layer= 0;/*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
 set_difficulty_mode = false;/*Toggle so you get a pen that can select what object appear in what difficulty*/
 place_object = noone;
 wall_surface_selected = 0; /*What kind of wall you're putting down*/
-show_icons_at_bottom=false;
+show_icons_at_bottom =false;
 show_icons_at_top = false;
 icons_at_bottom_y = +100;
 erase_icons_at_top_y =-100;
@@ -88,7 +88,7 @@ undo_redo_icons_y = +200;/*Undo and redo buttons y postition*/
 current_undo_value = 0;/*Every time you place down items, this value increases. When you undo, this value decreases.*/
 icons_at_top_y =-100;
 icons_at_top_alpha=1;
-icons_at_left_x=-64;
+icons_at_left_x=- 64;
 selected_object = 0;
 selected_object_menu_x= 0;
 selected_menu_alpha= 0;
@@ -465,13 +465,13 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	
 	if (ini_key_exists("info", "level_name"))
 	{
-		level_name = ini_read_string("info", "level_name",0);
+		level_name = ini_read_string("info", "level_name", 0);
 	}
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_write_string("info", "level_name",0);
+			ini_write_string("info", "level_name", 0);
 		}
 		level_name = "";
 	}
@@ -531,7 +531,7 @@ else
 	custom_background_3_y_parallax = 7;
 	custom_background_4_x_parallax = 9;
 	custom_background_4_y_parallax = 9;
-	level_name ="";
+	level_name = "";
 	global.time_countdown = noone;
 	global.time_countdown_bonus = 500;
 }
@@ -563,7 +563,7 @@ and (!file_exists(working_directory + "/custom_levels/" + string(global.level_na
 #region /*View Size*/
 view_wview = 1392;
 view_hview = 736;
-/*Default Views:   set_view_wview = 1024+400-32   set_view_hview = 768-32   */
+/*Default Views:   set_view_wview = 1024+ 400 -32   set_view_hview = 768-32   */
 #endregion /*View Size END*/
 
 set_view_wview=1392;

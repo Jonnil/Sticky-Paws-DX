@@ -1,4 +1,4 @@
-/// @desc draw_text_outlined(x, y,string,text_size,outline_color,text_color,image_alpha);
+/// @desc draw_text_outlined(x, y,string, text_size,outline_color, text_color, image_alpha);
 /// @arg x
 /// @arg y
 /// @arg string
@@ -39,21 +39,21 @@ function draw_text_outlined()
 	vector[0][0] gives us 1
 	*/
 	var vector = [ 
-	[1,1],
+	[1, 1],
 	[-1,-1],
 	[0, 1],
 	[1, 0],
 	[0,-1],
 	[-1, 0],
-	[-1,1],
+	[-1, 1],
 	[1,-1]
 	]; 
 
 	var i;
 	for (i = 0; i < array_height_2d(vector) - 1; i+=1)
 	{
-		draw_text_transformed_color (x_position+vector[i][0],y_position+vector[i][1]+y_offset,string_text,text_size,text_size,0,outline_color,outline_color,outline_color,outline_color,img_alpha);
+		draw_text_transformed_color (x_position+vector[i][0],y_position+vector[i][1]+y_offset,string_text, text_size, text_size, 0,outline_color,outline_color,outline_color,outline_color, img_alpha);
 	}
 
-/*Text*/ draw_text_transformed_color (x_position,y_position+y_offset,string_text,text_size,text_size,0,text_color,text_color,text_color,text_color,img_alpha);
+/*Text*/ draw_text_transformed_color (x_position,y_position+y_offset,string_text, text_size, text_size, 0, text_color, text_color, text_color, text_color, img_alpha);
 }

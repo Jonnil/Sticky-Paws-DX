@@ -9,7 +9,7 @@ if (bounceup = false)
 	or (place_meeting(bbox_left-4, y, obj_player))
 	and (!place_meeting(x - 4, y, obj_wall))
 	and (obj_player.dive = true)
-	or (place_meeting(bbox_right +4, y, obj_player))
+	or (place_meeting(bbox_right + 4, y, obj_player))
 	and (!place_meeting(x + 4, y, obj_wall))
 	and (obj_player.dive = true)
 	{
@@ -18,7 +18,7 @@ if (bounceup = false)
 			bounceup = true;
 			if (asset_get_type("obj_blockbreak") == asset_object)
 			{
-				instance_create_depth(x, y - 32,0,obj_blockbreak);
+				instance_create_depth(x, y - 32, 0,obj_blockbreak);
 			}
 			
 			#region /*1 Basic Collectible*/
@@ -30,7 +30,7 @@ if (bounceup = false)
 				{
 					if (asset_get_type("snd_basic_collectible") == asset_sound)
 					{
-						audio_play_sound(snd_basic_collectible,0, 0);
+						audio_play_sound(snd_basic_collectible, 0, 0);
 					}
 					var obj;
 					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
@@ -177,7 +177,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-16,0,obj_heart_balloon);
+					obj = instance_create_depth(x, bbox_top-16, 0,obj_heart_balloon);
 					with(obj)
 					{
 						image_speed = 1;
@@ -196,7 +196,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-16,0,obj_extra_life_pickup);
+					obj = instance_create_depth(x, bbox_top-16, 0,obj_extra_life_pickup);
 					with(obj)
 					{
 						image_speed = 1;
@@ -216,7 +216,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-16,0,obj_extra_life_pickup);
+					obj = instance_create_depth(x, bbox_top-16, 0,obj_extra_life_pickup);
 					with(obj)
 					{
 						image_speed = 1;
@@ -236,7 +236,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-16,0,obj_extra_life_pickup);
+					obj = instance_create_depth(x, bbox_top-16, 0,obj_extra_life_pickup);
 					with(obj)
 					{
 						image_speed = 1;
@@ -256,7 +256,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-32,0,obj_invincibility_powerup);
+					obj = instance_create_depth(x, bbox_top-32, 0,obj_invincibility_powerup);
 					with(obj)
 					{
 						hspeed = +2;

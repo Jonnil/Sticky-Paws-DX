@@ -94,7 +94,7 @@ if (cutscene = 2)
 	}
 }
 
-if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +16)
+if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 16)
 {
 	instance_destroy();
 }
@@ -108,7 +108,7 @@ and (instance_nearest(x, y, obj_player).intro_animation = "")
 		image_xscale = -1;
 		
 		#region /*Enemy Voice Defeated*/
-		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3),0, 0);
+		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
 		audio_sound_gain(enemyvoice_defeated1, global.voices_volume, 0);
 		audio_sound_gain(enemyvoice_defeated2, global.voices_volume, 0);
 		audio_sound_gain(enemyvoice_defeated3, global.voices_volume, 0);
@@ -118,7 +118,7 @@ and (instance_nearest(x, y, obj_player).intro_animation = "")
 		{
 			audio_play_sound(snd_stomp, 0, 0);
 			audio_sound_gain(snd_stomp, global.sfx_volume, 0);
-			audio_sound_pitch(snd_stomp,1);
+			audio_sound_pitch(snd_stomp, 1);
 		}
 		
 		flat = true;

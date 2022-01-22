@@ -81,7 +81,30 @@ if (!directory_exists(working_directory + "/custom_title_backgrounds"))
 }
 #endregion /*Create directory for saving custom title backgrounds END*/
 
+#region /*Create directory for saving files*/
+if (!directory_exists(working_directory + "/save_files"))
+{
+	directory_create(working_directory + "/save_files");
+}
+#endregion /*Create directory for saving files END*/
+
 #endregion /*Create directories END*/
+
+#region /*Any save file outside the save_files folder should copy over to that folder and then delete the save file outside the folder*/
+index_file_copy = 0;
+repeat(50)
+{
+	if (file_exists(working_directory + "file" + string(index_file_copy) + ".ini"))
+	{
+		if (!file_exists(working_directory + "/save_files/file" + string(index_file_copy) + ".ini"))
+		{
+			file_copy(working_directory + "file" + string(index_file_copy) + ".ini", working_directory + "/save_files/file" + string(index_file_copy) + ".ini");
+		}
+		file_delete(working_directory + "file" + string(index_file_copy) + ".ini");
+	}
+	index_file_copy += 1;
+}
+#endregion /*Any save file outside the save_files folder should copy over to that folder and then delete the save file outside the folder END*/
 
 #region /*Custom Title Screen Background*/
 if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background) + ".png"))
@@ -139,7 +162,7 @@ global.playergame = 0;/*Make the game singleplayer at the start of the game*/
 global.player_has_entered_goal = false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;
-global.theme ="ground";
+global.theme = "ground";
 global.coins= 0;
 global.level_clear_rate =noone;
 global.big_collectible1=false;
@@ -566,7 +589,7 @@ else
 scr_config_load(); /*Load Config*/
 
 lives = 5; /*Starting lives*/
-level_name ="";
+level_name = "";
 
 #region /*If title screen should start at the level editor menu or the main menu*/
 if (global.character_select_in_this_menu = "level_editor")

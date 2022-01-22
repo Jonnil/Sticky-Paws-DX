@@ -1,7 +1,7 @@
 scr_set_screen_size();
 
 if (current_file != global.file)
-or (!file_exists("file" + string(current_file) + ".ini"))
+or (!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false;
@@ -79,19 +79,18 @@ or (gamepad_axis_value(0, gp_axisrv)<>0)
 #region /*Quit Game*/
 if (global.quit_level = true)
 {
-	global.level_clear_rate = "enter";
+	global.level_clear_rate = noone;
 	
 	#region /*Save Player Position*/
 	if (speed = 0)
 	{
-		ini_open("file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_close();
 	}
 	#endregion /*Save Player Position END*/
 	
-	scr_savelevel();
 	global.quit_level = false;
 	room_persistent = false;
 	if (asset_get_type("room_title") == asset_room)
@@ -252,7 +251,7 @@ and (global.automatically_pause_when_window_is_unfocused = true)
 	if (asset_get_type("room_pause") == asset_room)
 	{
 		global.pause_player = 0;
-		global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
+		global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0,surface_get_width(application_surface),surface_get_height(application_surface), 0, 1, 0, 0);
 		room_persistent = true;
 		global.pause_room = room;
 		audio_pause_all();
@@ -264,7 +263,7 @@ if (gamepad_button_check_pressed(1, gp_start))
 and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 1;
-	global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
+	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0,surface_get_width(application_surface),surface_get_height(application_surface), 0, 1, 0, 0);
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();
@@ -275,7 +274,7 @@ if (gamepad_button_check_pressed(2, gp_start))
 and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 2;
-	global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
+	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0,surface_get_width(application_surface),surface_get_height(application_surface), 0, 1, 0, 0);
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();
@@ -286,7 +285,7 @@ if (gamepad_button_check_pressed(3, gp_start))
 and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 3;
-	global.pause_screenshot = sprite_create_from_surface(application_surface,0, 0,surface_get_width(application_surface),surface_get_height(application_surface),0, 1, 0, 0);
+	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0,surface_get_width(application_surface),surface_get_height(application_surface), 0, 1, 0, 0);
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();
@@ -943,7 +942,7 @@ if (delay < 100)
 }
 
 #region /*Enter Level*/
-if (file_exists("file" + string(global.file) + ".ini"))
+if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 and (brand_new_file = true)
 and (can_move = true)
 or (key_a_pressed)
@@ -960,7 +959,7 @@ and (speed = 0)
 		#region /*Save Player Position*/
 		x = instance_nearest(x, y, obj_level).x;
 		y = instance_nearest(x, y, obj_level).y;
-		ini_open("file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_write_real("Player", "brand_new_file", false)
@@ -1066,6 +1065,7 @@ if (can_enter_level < 30)
 
 if (asset_get_type("obj_level") == asset_object)
 and (distance_to_object(instance_nearest(xx, yy, obj_level)) > 32)
+if (iris_xscale >= 1)
 {
 	global.level_clear_rate = noone;
 	global.x_checkpoint = 0;

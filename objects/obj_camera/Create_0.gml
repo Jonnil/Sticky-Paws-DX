@@ -60,22 +60,22 @@ alarm[0] = 1; /*Initialize custom character timer. This code needs to be initial
 if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
 and (!instance_exists(obj_background_brightness_gameplay))
 {
-	instance_create_depth(0, 0,0,obj_background_brightness_gameplay);
+	instance_create_depth(0, 0, 0,obj_background_brightness_gameplay);
 }
 if (asset_get_type("obj_foreground1") == asset_object)
 and (!instance_exists(obj_foreground1))
 {
-	instance_create_depth(0, 0,0,obj_foreground1);
+	instance_create_depth(0, 0, 0,obj_foreground1);
 }
 if (asset_get_type("obj_foreground2") == asset_object)
 and (!instance_exists(obj_foreground2))
 {
-	instance_create_depth(0, 0,0,obj_foreground2);
+	instance_create_depth(0, 0, 0,obj_foreground2);
 }
 if (asset_get_type("obj_foreground_secret") == asset_object)
 and (!instance_exists(obj_foreground_secret))
 {
-	instance_create_depth(0, 0,0,obj_foreground_secret);
+	instance_create_depth(0, 0, 0,obj_foreground_secret);
 }
 #endregion /*Create Foreground and Background Brightness Layer END*/
 
@@ -327,14 +327,14 @@ timer_blinking_alpha = 0;
 #region /*Initialize View*/
 
 /*View Size*/
-view_wview=1024+400-32;
+view_wview=1024+ 400 -32;
 view_hview=768-32;
 /*View Size END*/
 
 #region /*View Size*/
 if (os_type ==os_ios)or (os_type ==os_android){
-if (view_wport>1920){view_wport =1920;}if (view_wview>1920-64){view_wview=1920-64;}if (view_hport>1080){view_hport =1080;}if (view_hview>1080-64){view_hview=1080-64;}
-if (view_wport<640-320){view_wport =640;}if (view_wview<640){view_wview=640;}if (view_hport<480){view_hport =480;}if (view_hview<480){view_hview=480;}
+if (view_wport>1920){view_wport =1920;}if (view_wview>1920 - 64){view_wview=1920 - 64;}if (view_hport>1080){view_hport =1080;}if (view_hview>1080 - 64){view_hview=1080 - 64;}
+if (view_wport<640 -320){view_wport =640;}if (view_wview<640){view_wview=640;}if (view_hport<480){view_hport =480;}if (view_hview<480){view_hview=480;}
 }else{
 if (view_wport>1920){view_wport =1920;}if (view_wview>1920){view_wview=1920;}if (view_hport>1080){view_hport =1080;}if (view_hview>1080){view_hview=1080;}
 if (view_wport<640){view_wport =640;}if (view_wview<640){view_wview=640;}if (view_hport<480){view_hport =480;}if (view_hview<480){view_hview=480;}}

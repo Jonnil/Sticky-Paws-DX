@@ -1,4 +1,4 @@
-//draw_text(320, 320, string(global.character_for_player_1));
+//draw_text_outlined(320, 320, string(global.level_clear_rate), global.default_text_size, c_black, c_white, 1);
 
 ///HUD
 if (asset_get_type("obj_title") == asset_object)
@@ -257,8 +257,8 @@ and (!instance_exists(obj_title))
 			{
 				draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
 			}
-			draw_line_width_color (32-16, hud_show_deaths-16, 32+16, hud_show_deaths+16, 3, c_red, c_red);
-			draw_line_width_color (32-16, hud_show_deaths+16, 32+16, hud_show_deaths-16, 3, c_red, c_red);
+			draw_line_width_color (32-16, hud_show_deaths-16, 32+ 16, hud_show_deaths+ 16, 3, c_red, c_red);
+			draw_line_width_color (32-16, hud_show_deaths+ 16, 32+ 16, hud_show_deaths-16, 3, c_red, c_red);
 			draw_text_outlined(64, hud_show_deaths, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Death Counter END*/
@@ -392,11 +392,11 @@ and (!instance_exists(obj_title))
 					}
 					if (global.timeattack_millisecond < room_speed / 2)
 					{
-						timer_blinking_alpha = lerp(timer_blinking_alpha,1, 0.2);
+						timer_blinking_alpha = lerp(timer_blinking_alpha, 1, 0.2);
 					}
 					else
 					{
-						timer_blinking_alpha = lerp(timer_blinking_alpha,0, 0.2);
+						timer_blinking_alpha = lerp(timer_blinking_alpha, 0, 0.2);
 					}
 				}
 				else
@@ -479,9 +479,9 @@ and (!instance_exists(obj_pause))
 		and (player4_show_controls_alpha <= 0)
 		{
 			show_player1_controls_y = lerp(show_player1_controls_y, 32, 0.1);
-			show_player2_controls_y = lerp(show_player2_controls_y, +32, 0.1); /*+32 = don't show*/
-			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1); /*+32 = don't show*/
-			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
 		}
 		else
 		if (player1_show_controls_alpha <= 0)
@@ -489,10 +489,10 @@ and (!instance_exists(obj_pause))
 		and (player3_show_controls_alpha <= 0)
 		and (player4_show_controls_alpha <= 0)
 		{
-			show_player1_controls_y = lerp(show_player1_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /*+ 32 = don't show*/
 			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1); /*+32 = don't show*/
-			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
 		}
 		else
 		if (player1_show_controls_alpha <= 0)
@@ -500,10 +500,10 @@ and (!instance_exists(obj_pause))
 		and (player3_show_controls_alpha > 0)
 		and (player4_show_controls_alpha <= 0)
 		{
-			show_player1_controls_y = lerp(show_player1_controls_y, +32, 0.1); /*+32 = don't show*/
-			show_player2_controls_y = lerp(show_player2_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /*+ 32 = don't show*/
 			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
 		}
 		else
 		if (player1_show_controls_alpha <= 0)
@@ -511,9 +511,9 @@ and (!instance_exists(obj_pause))
 		and (player3_show_controls_alpha <= 0)
 		and (player4_show_controls_alpha > 0)
 		{
-			show_player1_controls_y = lerp(show_player1_controls_y, +32, 0.1); /*+32 = don't show*/
-			show_player2_controls_y = lerp(show_player2_controls_y, +32, 0.1); /*+32 = don't show*/
-			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /*+ 32 = don't show*/
 			show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
 		}
 		else
@@ -524,8 +524,8 @@ and (!instance_exists(obj_pause))
 		{
 			show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
 			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1); /*+32 = don't show*/
-			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
 		}
 		else
 		if (player1_show_controls_alpha > 0)
@@ -536,7 +536,7 @@ and (!instance_exists(obj_pause))
 			show_player1_controls_y = lerp(show_player1_controls_y, 116, 0.1);
 			show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
 			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
 		}
 		else
 		if (player1_show_controls_alpha <= 0)
@@ -544,10 +544,10 @@ and (!instance_exists(obj_pause))
 		and (player3_show_controls_alpha <= 0)
 		and (player4_show_controls_alpha <= 0)
 		{
-			show_player1_controls_y = lerp(show_player1_controls_y, +32, 0.1);
-			show_player2_controls_y = lerp(show_player2_controls_y, +32, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, +32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, +32, 0.1); /*+32 = don't show*/
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
 		}
 		else
 		{
@@ -569,23 +569,23 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			show_dive_key_x = 32;
-			show_jump_key_x = 32+150;
-			show_crouch_key_x = 32+150 + 150;
+			show_jump_key_x = 32+ 150;
+			show_crouch_key_x = 32+ 150 + 150;
 			if (global.player1_sprint_toggle = false)
 			{
-				show_sprint_key_x = 32+150 + 150 + 150;
-				show_left_key_x = 32+150 + 150 + 150 + 150;
-				show_right_key_x = 32+150 + 150 + 150 + 150 + 150;
-				show_down_key_x = 32+150 + 150 + 150 + 150 + 150 + 150;
-				show_up_key_x = 32+150 + 150 + 150 + 150 + 150 + 150 + 150;
+				show_sprint_key_x = 32+ 150 + 150 + 150;
+				show_left_key_x = 32+ 150 + 150 + 150 + 150;
+				show_right_key_x = 32+ 150 + 150 + 150 + 150 + 150;
+				show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
+				show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			else
 			{
 				show_sprint_key_x = -999;
-				show_left_key_x = 32+150 + 150 + 150;
-				show_right_key_x = 32+150 + 150 + 150 + 150;
-				show_down_key_x = 32+150 + 150 + 150 + 150 + 150;
-				show_up_key_x = 32+150 + 150 + 150 + 150 + 150 + 150;
+				show_left_key_x = 32+ 150 + 150 + 150;
+				show_right_key_x = 32+ 150 + 150 + 150 + 150;
+				show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150;
+				show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			
 			#region /*Show Dive Key*/
@@ -857,23 +857,23 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			player2_show_dive_key_x = 32;
-			player2_show_jump_key_x = 32+150;
-			player2_show_crouch_key_x = 32+150 + 150;
+			player2_show_jump_key_x = 32+ 150;
+			player2_show_crouch_key_x = 32+ 150 + 150;
 			if (global.player2_sprint_toggle = false)
 			{
-				player2_show_sprint_key_x = 32+150 + 150 + 150;
-				player2_show_left_key_x = 32+150 + 150 + 150 + 150;
-				player2_show_right_key_x = 32+150 + 150 + 150 + 150 + 150;
-				player2_show_down_key_x = 32+150 + 150 + 150 + 150 + 150 + 150;
-				player2_show_up_key_x = 32+150 + 150 + 150 + 150 + 150 + 150 + 150;
+				player2_show_sprint_key_x = 32+ 150 + 150 + 150;
+				player2_show_left_key_x = 32+ 150 + 150 + 150 + 150;
+				player2_show_right_key_x = 32+ 150 + 150 + 150 + 150 + 150;
+				player2_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
+				player2_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			else
 			{
 				player2_show_sprint_key_x = -999;
-				player2_show_left_key_x = 32+150 + 150 + 150;
-				player2_show_right_key_x = 32+150 + 150 + 150 + 150;
-				player2_show_down_key_x = 32+150 + 150 + 150 + 150 + 150;
-				player2_show_up_key_x = 32+150 + 150 + 150 + 150 + 150 + 150;
+				player2_show_left_key_x = 32+ 150 + 150 + 150;
+				player2_show_right_key_x = 32+ 150 + 150 + 150 + 150;
+				player2_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150;
+				player2_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			
 			#region /*Show Dive Key*/
@@ -1137,23 +1137,23 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			player3_show_dive_key_x = 32;
-			player3_show_jump_key_x = 32+150;
-			player3_show_crouch_key_x = 32+150 + 150;
+			player3_show_jump_key_x = 32+ 150;
+			player3_show_crouch_key_x = 32+ 150 + 150;
 			if (global.player3_sprint_toggle = false)
 			{
-				player3_show_sprint_key_x = 32+150 + 150 + 150;
-				player3_show_left_key_x = 32+150 + 150 + 150 + 150;
-				player3_show_right_key_x = 32+150 + 150 + 150 + 150 + 150;
-				player3_show_down_key_x = 32+150 + 150 + 150 + 150 + 150 + 150;
-				player3_show_up_key_x = 32+150 + 150 + 150 + 150 + 150 + 150 + 150;
+				player3_show_sprint_key_x = 32+ 150 + 150 + 150;
+				player3_show_left_key_x = 32+ 150 + 150 + 150 + 150;
+				player3_show_right_key_x = 32+ 150 + 150 + 150 + 150 + 150;
+				player3_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
+				player3_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			else
 			{
 				player3_show_sprint_key_x = -999;
-				player3_show_left_key_x = 32+150 + 150 + 150;
-				player3_show_right_key_x = 32+150 + 150 + 150 + 150;
-				player3_show_down_key_x = 32+150 + 150 + 150 + 150 + 150;
-				player3_show_up_key_x = 32+150 + 150 + 150 + 150 + 150 + 150;
+				player3_show_left_key_x = 32+ 150 + 150 + 150;
+				player3_show_right_key_x = 32+ 150 + 150 + 150 + 150;
+				player3_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150;
+				player3_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			
 			#region /*Show Dive Key*/
@@ -1417,23 +1417,23 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			player4_show_dive_key_x = 32;
-			player4_show_jump_key_x = 32+150;
-			player4_show_crouch_key_x = 32+150 + 150;
+			player4_show_jump_key_x = 32+ 150;
+			player4_show_crouch_key_x = 32+ 150 + 150;
 			if (global.player4_sprint_toggle = false)
 			{
-				player4_show_sprint_key_x = 32+150 + 150 + 150;
-				player4_show_left_key_x = 32+150 + 150 + 150 + 150;
-				player4_show_right_key_x = 32+150 + 150 + 150 + 150 + 150;
-				player4_show_down_key_x = 32+150 + 150 + 150 + 150 + 150 + 150;
-				player4_show_up_key_x = 32+150 + 150 + 150 + 150 + 150 + 150 + 150;
+				player4_show_sprint_key_x = 32+ 150 + 150 + 150;
+				player4_show_left_key_x = 32+ 150 + 150 + 150 + 150;
+				player4_show_right_key_x = 32+ 150 + 150 + 150 + 150 + 150;
+				player4_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
+				player4_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			else
 			{
 				player4_show_sprint_key_x = -999;
-				player4_show_left_key_x = 32+150 + 150 + 150;
-				player4_show_right_key_x = 32+150 + 150 + 150 + 150;
-				player4_show_down_key_x = 32+150 + 150 + 150 + 150 + 150;
-				player4_show_up_key_x = 32+150 + 150 + 150 + 150 + 150 + 150;
+				player4_show_left_key_x = 32+ 150 + 150 + 150;
+				player4_show_right_key_x = 32+ 150 + 150 + 150 + 150;
+				player4_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150;
+				player4_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			
 			#region /*Show Dive Key*/
@@ -1732,8 +1732,8 @@ and (global.player2_can_play <= 0)
 and (global.player3_can_play <= 0)
 and (global.player4_can_play >= 1)
 {
-	draw_sprite_ext(spr_change_input_to_controller, 0, 110, window_get_height()+300+ show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
-	draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_get_height()+300+ show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_change_input_to_controller, 0, 110, window_get_height() + 300 + show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_get_height() + 300 + show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
 }
 #endregion /*Show what input is used END*/
 

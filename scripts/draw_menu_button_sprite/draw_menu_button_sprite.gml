@@ -26,7 +26,7 @@ function draw_menu_button_sprite()
 	var clicked_on = false;
 	#endregion /*Initialize variables END*/
 	
-	if (point_in_rectangle(mouse_x, mouse_y, x_position,y_position+1,x_position+ spr_width,y_position+ spr_height))
+	if (point_in_rectangle(mouse_x, mouse_y, x_position,y_position+ 1,x_position+ spr_width,y_position+ spr_height))
 	and (global.controls_used_for_menu_navigation = "mouse")
 	{
 		if (menu = menu_index)
@@ -34,11 +34,11 @@ function draw_menu_button_sprite()
 		or (menu = menu_index)
 		and (global.controls_used_for_menu_navigation = "controller")
 		{
-			draw_sprite_ext(spr_index,0,x_position,y_position,1,1, 0, c_green,1);
+			draw_sprite_ext(spr_index, 0,x_position,y_position, 1, 1, 0, c_green, 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_index,0,x_position,y_position,1,1, 0, c_lime,1);
+			draw_sprite_ext(spr_index, 0,x_position,y_position, 1, 1, 0, c_lime, 1);
 		}
 	}
 	else
@@ -48,11 +48,11 @@ function draw_menu_button_sprite()
 		or (menu = menu_index)
 		and (global.controls_used_for_menu_navigation = "controller")
 		{
-			draw_sprite_ext(spr_index,0,x_position,y_position,1,1, 0, c_gray,1);
+			draw_sprite_ext(spr_index, 0,x_position,y_position, 1, 1, 0, c_gray, 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_index,0,x_position,y_position,1,1, 0, c_white,1);
+			draw_sprite_ext(spr_index, 0,x_position,y_position, 1, 1, 0, c_white, 1);
 		}
 	}
 
@@ -61,7 +61,7 @@ function draw_menu_button_sprite()
 	{
 		if (menu_takes_you_to=false)
 		or (menu_takes_you_to=noone)
-		or (menu_takes_you_to="")
+		or (menu_takes_you_to= "")
 		or (menu_takes_you_to=menu_index)
 		{
 			if (mouse_check_button(mb_left))
@@ -85,7 +85,7 @@ function draw_menu_button_sprite()
 	draw_set_valign(fa_center);
 	if (string_text>noone)
 	{
-		draw_text_outlined(x_position+185,y_position+21,string(string_text), global.default_text_size,c_white,c_black,1);
+		draw_text_outlined(x_position+ 185,y_position+ 21,string(string_text), global.default_text_size,c_white,c_black, 1);
 	}
 	#endregion /*Text inside the menu button END*/
 	

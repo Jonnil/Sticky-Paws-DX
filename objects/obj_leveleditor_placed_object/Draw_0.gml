@@ -87,7 +87,7 @@ and (undo_value >obj_leveleditor.current_undo_value)
 }
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
-and (undo_value<=obj_leveleditor.current_undo_value)
+and (undo_value <=obj_leveleditor.current_undo_value)
 {
 	undo_value_visible = true;
 }
@@ -105,7 +105,7 @@ and (global.character_select_in_this_menu = "level_editor")
 	and (normal = true)
 	and (sprite_index > 0)
 	{
-		draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,1);
+		draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 1);
 		image_alpha = 1;
 		image_blend = c_white;
 	}
@@ -123,7 +123,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = false)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_lime,0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_lime;
 		}
@@ -133,7 +133,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = false)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_white;
 		}
@@ -143,7 +143,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = false)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_yellow,0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_yellow;
 		}
@@ -153,7 +153,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_white;
 		}
@@ -163,7 +163,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_red,0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_red;
 		}
@@ -173,7 +173,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_white;
 		}
@@ -185,7 +185,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 1);
 			image_alpha = 1;
 			image_blend = c_white;
 		}
@@ -200,7 +200,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		if (easy = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_lime,1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 1);
 			image_alpha = 1;
 			image_blend = c_lime;
 		}
@@ -212,7 +212,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_lime,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_lime;
 			}
@@ -222,7 +222,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -232,7 +232,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_yellow,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_yellow;
 			}
@@ -242,7 +242,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -252,7 +252,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_red,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_red;
 			}
@@ -262,7 +262,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -278,7 +278,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		if (normal = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_yellow,1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 1);
 			image_alpha = 1;
 			image_blend = c_yellow;
 		}
@@ -290,7 +290,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_lime,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_lime;
 			}
@@ -300,7 +300,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -310,7 +310,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_yellow,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_yellow;
 			}
@@ -320,7 +320,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -330,7 +330,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_red,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_red;
 			}
@@ -340,7 +340,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -356,7 +356,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		if (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_red,1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 1);
 			image_alpha = 1;
 			image_blend = c_red;
 		}
@@ -368,7 +368,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_lime,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_lime;
 			}
@@ -378,7 +378,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -388,7 +388,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_yellow,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_yellow;
 			}
@@ -398,7 +398,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -408,7 +408,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_red,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_red;
 			}
@@ -418,7 +418,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -432,7 +432,7 @@ else
 if (sprite_index > 0)
 and (global.character_select_in_this_menu = "level_editor")
 {
-	draw_sprite_ext(sprite_index,image_index,x, y,1,draw_yscale,draw_angle,c_white,1);
+	draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 1);
 	image_alpha = 1;
 	image_blend = c_white;
 }
@@ -453,8 +453,8 @@ and (instance_exists(obj_leveleditor))
 and (obj_leveleditor.difficulty_layer > 0)
 and (obj_leveleditor.drag_object = false)
 and (obj_leveleditor.pause = false)
-and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
-and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
+and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 and (!keyboard_check(vk_space))
 and (!mouse_check_button(mb_middle))
 {
@@ -462,56 +462,56 @@ and (!mouse_check_button(mb_middle))
 	and (mouse_check_button(mb_left))
 	or (mouse_check_button(mb_right))
 	{
-		if (position_meeting(obj_leveleditor.x, obj_leveleditor.y,id))
+		if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
 		/*Erase brush size 1*/
-		or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y,id))
-		or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y + 32,id))
-		or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32,id))
+		or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
+		or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
+		or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
 		/*Erase brush size 1 END*/
 		
 		/*Erase brush size 2*/
-		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y - 32,id))
-		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32,id))
-		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32,id))
-		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y,id))
-		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32,id))
+		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
+		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
+		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
+		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
+		or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
 		/*Erase brush size 2 END*/
 		
 		/*Erase brush size 3*/
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y - 32,id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y,id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y + 32,id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y+64,id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y+64,id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64,id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64,id))
+		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 32, id))
+		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y, id))
+		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y + 32, id))
+		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+64, id))
+		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
+		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
+		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
 		/*Erase brush size 3 END*/
 		
 		/*Erase brush size 4*/
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y - 64,id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y - 64,id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64,id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64,id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y - 64,id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y - 32,id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y,id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y + 32,id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y+64,id))
+		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 64, id))
+		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
+		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
+		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
+		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
+		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
+		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
+		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
+		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
 		/*Erase brush size 4 END*/
 		
 		/*Erase brush size 5*/
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y - 64,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y - 32,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y + 32,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y+64,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y+96,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y+96,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y+96,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96,id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y+96,id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+96, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
+		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
 		/*Erase brush size 5 END*/
 		
 		{
@@ -585,16 +585,16 @@ and (delay =3)
 		
 		#region /*Reset Level Editor Checkpoint*/
 		if (asset_get_type("room_leveleditor") == asset_room)
-		and (room=room_leveleditor)
+		and (room =room_leveleditor)
 		and (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_open(working_directory + "/custom_level_save.ini");
-			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"x_checkpoint");
-			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"y_checkpoint");
-			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"checkpoint_millisecond");
-			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"checkpoint_second");
-			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"checkpoint_minute");
-			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index),"checkpoint_realmillisecond");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_second");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_minute");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_realmillisecond");
 			ini_close();			
 		}
 		#endregion /*Reset Level Editor Checkpoint END*/
@@ -616,7 +616,7 @@ and (delay >1)
 		if (asset_get_type("obj_leveleditor") == asset_object)
 		and (instance_exists(obj_leveleditor))
 		{
-			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y,id))
+			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			and (obj_leveleditor.pause = false)
 			{
 				if (asset_get_type("obj_leveleditor") == asset_object)
@@ -857,10 +857,10 @@ and (delay >1)
 				else
 				if (object =8)
 				{
-					object =9;
+					object = 9;
 				}
 				else
-				if (object =9)
+				if (object = 9)
 				{
 					object = 10;
 				}
@@ -1069,29 +1069,29 @@ and (delay >1)
 				
 				#region /*Change Moveset Signs*/
 				else
-				if (object =90)
+				if (object = 90)
 				{
-					object =91;
+					object = 91;
 				}
 				else
-				if (object =91)
+				if (object = 91)
 				{
-					object =92;
+					object = 92;
 				}
 				else
-				if (object =92)
+				if (object = 92)
 				{
-					object =93;
+					object = 93;
 				}
 				else
-				if (object =93)
+				if (object = 93)
 				{
-					object =94;
+					object = 94;
 				}
 				else
-				if (object =94)
+				if (object = 94)
 				{
-					object =90;
+					object = 90;
 				}
 				#endregion /*Change Moveset Signs END*/
 			}
@@ -1107,7 +1107,7 @@ and (delay >1)
 			if (asset_get_type("obj_leveleditor") == asset_object)
 			and (instance_exists(obj_leveleditor))
 			{
-				if (position_meeting(obj_leveleditor.x, obj_leveleditor.y,id))
+				if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 				and (obj_leveleditor.pause = false)
 				{
 					if (obj_leveleditor.place_object =27)
@@ -1309,8 +1309,8 @@ and (delay >1)
 /*Spring*/
 if (object = 62)
 {
-	draw_line_width_color (x, y,second_x,second_y,4,c_black,c_black);
-	draw_line_width_color (x, y,second_x,second_y,2, c_white,c_white);
+	draw_line_width_color (x, y,second_x,second_y, 4,c_black,c_black);
+	draw_line_width_color (x, y,second_x,second_y, 2, c_white,c_white);
 	draw_angle = point_direction(x, y, second_x, second_y)-90;
 }
 
@@ -1321,8 +1321,8 @@ if (object = 732)
 or (object = 733)
 or (object = 734)
 {
-	draw_line_width_color (x, y, x,second_y,4,c_black,c_black);
-	draw_line_width_color (x, y, x,second_y,2, c_white,c_white);
+	draw_line_width_color (x, y, x,second_y, 4,c_black,c_black);
+	draw_line_width_color (x, y, x,second_y, 2, c_white,c_white);
 	draw_angle = point_direction(x, y, x, second_y)-90;
 }
 
@@ -1366,76 +1366,76 @@ and (obj_leveleditor.difficulty_layer= 0)
 and (obj_leveleditor.drag_object = false)
 and (obj_leveleditor.erase_mode = true)
 and (obj_leveleditor.pause = false)
-and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
-and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64))
+and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
+and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), +64))
 and (!keyboard_check(vk_space))
 and (!mouse_check_button(mb_middle))
 {
 	if (obj_leveleditor.set_difficulty_mode = true)
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 	or (obj_leveleditor.set_difficulty_mode = false)
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 	{
 		if (mouse_check_button(mb_right))
 		or (mouse_check_button(mb_left))
 		{
-			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y,id))
+			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
 			/*Erase brush size 1*/
-			or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y,id))
-			or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y + 32,id))
-			or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32,id))
+			or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
+			or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
+			or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
 			/*Erase brush size 1 END*/
 		
 			/*Erase brush size 2*/
-			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y - 32,id))
-			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32,id))
-			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32,id))
-			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y,id))
-			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32,id))
+			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
+			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
+			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
+			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
+			or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
 			/*Erase brush size 2 END*/
 		
 			/*Erase brush size 3*/
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y - 32,id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y,id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y + 32,id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y+64,id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y+64,id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64,id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64,id))
+			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 32, id))
+			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y, id))
+			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y + 32, id))
+			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+64, id))
+			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
+			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
+			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
 			/*Erase brush size 3 END*/
 		
 			/*Erase brush size 4*/
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y - 64,id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y - 64,id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64,id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64,id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y - 64,id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y - 32,id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y,id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y + 32,id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y+64,id))
+			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 64, id))
+			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
+			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
+			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
+			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
+			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
+			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
+			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
+			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
 			/*Erase brush size 4 END*/
 		
 			/*Erase brush size 5*/
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y - 64,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y - 32,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y + 32,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y+64,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y+96,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y+96,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y+96,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96,id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y+96,id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+96, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
+			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
 			/*Erase brush size 5 END*/
 		
 			{
 				if (asset_get_type("snd_leveleditor_erase_object") == asset_sound)
 				{
-					audio_sound_pitch(snd_leveleditor_erase_object,random_range(0.9,1.1));
-					audio_play_sound(snd_leveleditor_erase_object,0, 0);
+					audio_sound_pitch(snd_leveleditor_erase_object,random_range(0.9, 1.1));
+					audio_play_sound(snd_leveleditor_erase_object, 0, 0);
 					audio_sound_gain(snd_leveleditor_erase_object, global.sfx_volume, 0);
 				}
 				with(obj_leveleditor)
@@ -1462,17 +1462,17 @@ and (delay >1)
 		if (mouse_check_button_pressed(mb_left))
 		or (key_a_pressed)
 		{
-			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y,id))
+			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
 				if (drag_object<true)
 				and (obj_leveleditor.pause = false)
-				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
-				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, -64, display_get_gui_width(), +64))
+				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
+				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), +64))
 				{
 					if (obj_leveleditor.set_difficulty_mode = true)
-					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 					or (obj_leveleditor.set_difficulty_mode = false)
-					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 					{
 						drag_object = true;
 						obj_leveleditor.drag_object = true;
@@ -1563,7 +1563,7 @@ if (global.play_edited_level = true)
 		if (object =6) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "heart_balloon";}instance_destroy();}
 		if (object =7) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "1-up";}instance_destroy();}
 		if (object =8) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "2-up";}instance_destroy();}
-		if (object =9) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "3-up";}instance_destroy();}
+		if (object = 9) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "3-up";}instance_destroy();}
 		if (object = 10) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Brick Block END*/
 		
@@ -1594,17 +1594,17 @@ if (global.play_edited_level = true)
 		
 		#region /*Bump in ground*/
 		if (object =28) and (asset_get_type("obj_bump_in_ground") == asset_object){instance_create_depth(x, y, 0, obj_bump_in_ground);instance_destroy();}
-		if (object =29) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="8_basic_collectibles";}instance_destroy();}
-		if (object =30) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="heart_balloon";}instance_destroy();}
-		if (object =31) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="1-up";}instance_destroy();}
-		if (object =32) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="2-up";}instance_destroy();}
-		if (object =33) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="3-up";}instance_destroy();}
-		if (object =34) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="big_collectible_1";}instance_destroy();}
-		if (object =35) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="big_collectible_2";}instance_destroy();}
-		if (object =36) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="big_collectible_3";}instance_destroy();}
-		if (object =37) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="big_collectible_4";}instance_destroy();}
-		if (object =38) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="big_collectible_5";}instance_destroy();}
-		if (object =39) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump ="invincibility_powerup";}instance_destroy();}
+		if (object =29) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "8_basic_collectibles";}instance_destroy();}
+		if (object =30) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "heart_balloon";}instance_destroy();}
+		if (object =31) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "1-up";}instance_destroy();}
+		if (object =32) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "2-up";}instance_destroy();}
+		if (object =33) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "3-up";}instance_destroy();}
+		if (object =34) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_1";}instance_destroy();}
+		if (object =35) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_2";}instance_destroy();}
+		if (object =36) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_3";}instance_destroy();}
+		if (object =37) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_4";}instance_destroy();}
+		if (object =38) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_5";}instance_destroy();}
+		if (object =39) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Bump in ground END*/
 		
 		#region /*Basic Collectible*/
@@ -1614,7 +1614,7 @@ if (global.play_edited_level = true)
 		if (object =43) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle =225;image_yscale = -1;}instance_destroy();}
 		if (object =44) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle =180;image_yscale = -1;}instance_destroy();}
 		if (object =45) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle =135;image_yscale = -1;}instance_destroy();}
-		if (object =46) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle =90;}instance_destroy();}
+		if (object =46) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 90;}instance_destroy();}
 		if (object =47) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 45;}instance_destroy();}
 		#endregion /*Basic Collectible END*/
 		
@@ -1640,12 +1640,12 @@ if (global.play_edited_level = true)
 		if (object =64) and (asset_get_type("obj_arrow_sign") == asset_object){with(instance_create_depth(x, y, 0, obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
 		if (object =65) and (asset_get_type("obj_arrow_sign_small") == asset_object){with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
 		if (object =66) and (asset_get_type("obj_checkpoint") == asset_object){instance_create_depth(x, y, 0, obj_checkpoint);instance_destroy();}
-		if (object =67){if(asset_get_type("obj_spikes_emerge") == asset_object){instance_create_depth(x, y + 16,0,obj_spikes_emerge);instance_destroy();}}
-		if (object =671){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16,0,obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}instance_destroy();}}
-		if (object =672){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16,0,obj_spikes_emerge)){image_angle = 180; y -= 30;}instance_destroy();}}
-		if (object =673){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16,0,obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15;}instance_destroy();}}
+		if (object =67){if(asset_get_type("obj_spikes_emerge") == asset_object){instance_create_depth(x, y + 16, 0,obj_spikes_emerge);instance_destroy();}}
+		if (object =671){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16, 0,obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}instance_destroy();}}
+		if (object =672){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16, 0,obj_spikes_emerge)){image_angle = 180; y -= 30;}instance_destroy();}}
+		if (object =673){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16, 0,obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15;}instance_destroy();}}
 		if (object =68) and (asset_get_type("obj_oneway") == asset_object){instance_create_depth(x, y, 0, obj_oneway);instance_destroy();}
-		if (object =69) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle =90;}instance_destroy();}
+		if (object =69) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 90;}instance_destroy();}
 		if (object =70) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle =180;}instance_destroy();}
 		if (object =71) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle =270;}instance_destroy();}
 		if (object =72) and (asset_get_type("obj_horizontal_rope") == asset_object){instance_create_depth(x, y, 0, obj_horizontal_rope);instance_destroy();}
@@ -1704,28 +1704,28 @@ if (global.play_edited_level = true)
 		
 		#region /*Bucket*/
 		if (object =77) and (asset_get_type("obj_bucket") == asset_object){instance_create_depth(x, y, 0, obj_bucket);instance_destroy();}
-		if (object =78) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="8_basic_collectibles";}instance_destroy();}
-		if (object =79) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="heart_balloon";}instance_destroy();}
-		if (object =80) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="1-up";}instance_destroy();}
-		if (object =81) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="2-up";}instance_destroy();}
-		if (object =82) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="3-up";}instance_destroy();}
-		if (object =83) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="big_collectible_1";}instance_destroy();}
-		if (object =84) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="big_collectible_2";}instance_destroy();}
-		if (object =85) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="big_collectible_3";}instance_destroy();}
-		if (object =86) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="big_collectible_4";}instance_destroy();}
-		if (object =87) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="big_collectible_5";}instance_destroy();}
-		if (object =88) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside ="invincibility_powerup";}instance_destroy();}
+		if (object =78) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "8_basic_collectibles";}instance_destroy();}
+		if (object =79) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "heart_balloon";}instance_destroy();}
+		if (object =80) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "1-up";}instance_destroy();}
+		if (object =81) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "2-up";}instance_destroy();}
+		if (object =82) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "3-up";}instance_destroy();}
+		if (object =83) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_1";}instance_destroy();}
+		if (object =84) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_2";}instance_destroy();}
+		if (object =85) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_3";}instance_destroy();}
+		if (object =86) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_4";}instance_destroy();}
+		if (object =87) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_5";}instance_destroy();}
+		if (object =88) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Bucket END*/
 		
 		if (object =89) and (asset_get_type("obj_bird") == asset_object){instance_create_depth(x, y, 0, obj_bird);instance_destroy();}
-		if (object =90) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}instance_destroy();}
-		if (object =91) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}instance_destroy();}
-		if (object =92) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_ground_pound; sprite_sign = spr_sign_ground_pound;}instance_destroy();}
-		if (object =93) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}instance_destroy();}
-		if (object =94) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_walljump; sprite_sign = spr_sign_walljump;}instance_destroy();}
-		if (object =95) and (asset_get_type("obj_boss") == asset_object){instance_create_depth(x, y, 0, obj_boss);instance_destroy();}
-		if (object =96) and (asset_get_type("obj_boss_barrier") == asset_object){instance_create_depth(x, y, 0, obj_boss_barrier);instance_destroy();}
-		if (object =97) and (asset_get_type("obj_artwork_collection") == asset_object){instance_create_depth(x, y, 0, obj_artwork_collection);instance_destroy();}
+		if (object = 90) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}instance_destroy();}
+		if (object = 91) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}instance_destroy();}
+		if (object = 92) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_ground_pound; sprite_sign = spr_sign_ground_pound;}instance_destroy();}
+		if (object = 93) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}instance_destroy();}
+		if (object = 94) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_walljump; sprite_sign = spr_sign_walljump;}instance_destroy();}
+		if (object = 95) and (asset_get_type("obj_boss") == asset_object){instance_create_depth(x, y, 0, obj_boss);instance_destroy();}
+		if (object = 96) and (asset_get_type("obj_boss_barrier") == asset_object){instance_create_depth(x, y, 0, obj_boss_barrier);instance_destroy();}
+		if (object = 97) and (asset_get_type("obj_artwork_collection") == asset_object){instance_create_depth(x, y, 0, obj_artwork_collection);instance_destroy();}
 	}
 	#endregion /*Delete objects according to difficulty settings END*/
 	
@@ -1755,22 +1755,22 @@ if (object =3) and (asset_get_type("spr_semisolid_platform") == asset_sprite){sp
 
 #region /*Brick Block*/
 if (object =4) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;mask_index=spr_wall;}
-if (object =5) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible,0,x, y, 0.5,0.5,0, c_white,image_alpha);mask_index=spr_wall;}
-if (object =6) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart,0,x, y, 0.5,0.5,0, c_white,image_alpha);}mask_index=spr_wall;}
-if (object =7) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"1-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =8) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"2-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =9) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"3-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object = 10) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5,0.5,0, c_white,image_alpha);mask_index=spr_wall;}
+if (object =5) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
+if (object =6) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
+if (object =7) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =8) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object = 9) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object = 10) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 #endregion /*Brick Block END*/
 
 #region /*Question Block*/
 if (object = 11) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;mask_index=spr_wall;}
-if (object = 12) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible,0,x, y, 0.5,0.5,0, c_white,image_alpha);mask_index=spr_wall;}
-if (object = 13) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart,0,x, y, 0.5,0.5,0, c_white,image_alpha);}mask_index=spr_wall;}
-if (object = 14) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"1-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object = 15) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"2-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object = 16) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"3-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object = 17) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5,0.5,0, c_white,image_alpha);mask_index=spr_wall;}
+if (object = 12) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
+if (object = 13) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
+if (object = 14) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object = 15) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object = 16) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object = 17) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 #endregion /*Question Block END*/
 
 if (object = 18) and (asset_get_type("spr_hard_block") == asset_sprite){sprite_index=spr_hard_block;mask_index=spr_wall;}
@@ -1790,17 +1790,17 @@ if (object =27) and (asset_get_type("spr_cardboard_long") == asset_sprite){sprit
 
 #region /*Bump in ground*/
 if (object =28) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;mask_index=spr_wall;}
-if (object =29) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_basic_collectible,0,x, y, 0.5,0.5,0, c_white,image_alpha);mask_index=spr_wall;}
-if (object =30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart,0,x, y, 0.5,0.5,0, c_white,image_alpha);}mask_index=spr_wall;}
-if (object =31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"1-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"2-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"3-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"1", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"2", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"3", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =37) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"4", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =38) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"5", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =39) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5,0.5,0, c_white,image_alpha);mask_index=spr_wall;}
+if (object =29) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
+if (object =30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
+if (object =31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =37) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =38) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =39) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 #endregion /*Bump in ground END*/
 
 #region /*Basic Collectible*/
@@ -1815,19 +1815,19 @@ if (object =47){sprite_index= global.resourcepack_sprite_basic_collectible;draw_
 #endregion /*Basic Collectible END*/
 
 #region /*Big Collectibles*/
-if (object =48){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"1", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
-if (object =49){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"2", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
-if (object =50){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"3", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
-if (object =51){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"4", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
-if (object =52){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"5", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_2x2_block;}
+if (object =48){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
+if (object =49){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
+if (object =50){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
+if (object =51){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
+if (object =52){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
 #endregion /*Big Collectibles END*/
 
 if (object =53) and (asset_get_type("spr_heart") == asset_sprite){sprite_index=spr_heart;mask_index=spr_wall;}
 if (object =54){sprite_index= global.resourcepack_sprite_hp_pickup;mask_index=spr_wall;}
 if (object =55){sprite_index= global.resourcepack_sprite_invincibility_powerup;mask_index=spr_wall;}
-if (object =56) and (asset_get_type("spr_1up") == asset_sprite){sprite_index = spr_1up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"1-up", global.default_text_size/2,image_blend,c_black,image_alpha);mask_index=spr_wall;}
-if (object =57) and (asset_get_type("spr_2up") == asset_sprite){sprite_index = spr_2up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"2-up", global.default_text_size/2,image_blend,c_black,image_alpha);mask_index=spr_wall;}
-if (object =58) and (asset_get_type("spr_3up") == asset_sprite){sprite_index = spr_3up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"3-up", global.default_text_size/2,image_blend,c_black,image_alpha);mask_index=spr_wall;}
+if (object =56) and (asset_get_type("spr_1up") == asset_sprite){sprite_index = spr_1up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, image_blend,c_black, image_alpha);mask_index=spr_wall;}
+if (object =57) and (asset_get_type("spr_2up") == asset_sprite){sprite_index = spr_2up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, image_blend,c_black, image_alpha);mask_index=spr_wall;}
+if (object =58) and (asset_get_type("spr_3up") == asset_sprite){sprite_index = spr_3up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, image_blend,c_black, image_alpha);mask_index=spr_wall;}
 if (object =59){sprite_index = sprite_enemy1;mask_index=spr_wall;}
 if (object =60){sprite_index = sprite_enemy2;mask_index=spr_wall;}
 if (object =61){sprite_index= global.resourcepack_sprite_blaster;mask_index=spr_wall;}
@@ -1870,34 +1870,34 @@ if (object =76) and (asset_get_type("spr_clipped_sock") == asset_sprite){sprite_
 
 #region /*Bucket*/
 if (object =77) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;mask_index=spr_wall;}
-if (object =78) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_basic_collectible,0,x, y, 0.5,0.5,0, c_white,image_alpha);mask_index=spr_wall;}
-if (object =79) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart,0,x, y, 0.5,0.5,0, c_white,image_alpha);}mask_index=spr_wall;}
-if (object =80) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"1-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =81) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"2-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =82) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5,0.5,0, c_white,image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"3-up", global.default_text_size/2, c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =83) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"1", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =84) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"2", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =85) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"3", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =86) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"4", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =87) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible,0,x, y, 0.4,0.4,0, c_white,image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y,"5", global.default_text_size,c_white,c_black,image_alpha);mask_index=spr_wall;}
-if (object =88) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5,0.5,0, c_white,image_alpha);mask_index=spr_wall;}
+if (object =78) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
+if (object =79) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
+if (object =80) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =81) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =82) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =83) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =84) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =85) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =86) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =87) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =88) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 #endregion /*Bucket END*/
 
 if (object =89) and (asset_get_type("spr_bird") == asset_sprite){sprite_index=spr_bird;mask_index=spr_wall;}
-if (object =90) and (asset_get_type("spr_sign_crouch") == asset_sprite){sprite_index=spr_sign_crouch;mask_index=spr_wall;}
-if (object =91) and (asset_get_type("spr_sign_dive") == asset_sprite){sprite_index=spr_sign_dive;mask_index=spr_wall;}
-if (object =92) and (asset_get_type("spr_sign_ground_pound") == asset_sprite){sprite_index=spr_sign_ground_pound;mask_index=spr_wall;}
-if (object =93) and (asset_get_type("spr_sign_rope_spin") == asset_sprite){sprite_index=spr_sign_rope_spin;mask_index=spr_wall;}
-if (object =94) and (asset_get_type("spr_sign_walljump") == asset_sprite){sprite_index=spr_sign_walljump;mask_index=spr_wall;}
-if (object =95) and (asset_get_type("spr_boss_stand") == asset_sprite){sprite_index=spr_boss_stand;mask_index=spr_wall;}
-if (object =96) and (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index=spr_boss_barrier;mask_index=spr_wall;}
-if (object =97) and (asset_get_type("spr_artwork_collection") == asset_sprite){sprite_index=spr_artwork_collection;mask_index=spr_wall;}
+if (object = 90) and (asset_get_type("spr_sign_crouch") == asset_sprite){sprite_index=spr_sign_crouch;mask_index=spr_wall;}
+if (object = 91) and (asset_get_type("spr_sign_dive") == asset_sprite){sprite_index=spr_sign_dive;mask_index=spr_wall;}
+if (object = 92) and (asset_get_type("spr_sign_ground_pound") == asset_sprite){sprite_index=spr_sign_ground_pound;mask_index=spr_wall;}
+if (object = 93) and (asset_get_type("spr_sign_rope_spin") == asset_sprite){sprite_index=spr_sign_rope_spin;mask_index=spr_wall;}
+if (object = 94) and (asset_get_type("spr_sign_walljump") == asset_sprite){sprite_index=spr_sign_walljump;mask_index=spr_wall;}
+if (object = 95) and (asset_get_type("spr_boss_stand") == asset_sprite){sprite_index=spr_boss_stand;mask_index=spr_wall;}
+if (object = 96) and (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index=spr_boss_barrier;mask_index=spr_wall;}
+if (object = 97) and (asset_get_type("spr_artwork_collection") == asset_sprite){sprite_index=spr_artwork_collection;mask_index=spr_wall;}
 #endregion /*Initialize Object END*/
 
 #region /*Difficulty settings per object*/
 if (instance_exists(obj_leveleditor))
-and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, +192, room_height * 2))
-and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()-256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
+and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 {
 
 #region /*Set to appear on difficulty level*/
@@ -1906,56 +1906,56 @@ and (!mouse_check_button(mb_right))
 and (obj_leveleditor.erase_mode = false)
 and (obj_leveleditor.drag_object = false)
 {
-	if (position_meeting(obj_leveleditor.x, obj_leveleditor.y,id))
+	if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 	
 	/*Place Brush Size 1*/
-	or (obj_leveleditor.place_brush_size >=1) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y,id))
-	or (obj_leveleditor.place_brush_size >=1) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y + 32,id))
-	or (obj_leveleditor.place_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32,id))
+	or (obj_leveleditor.place_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
+	or (obj_leveleditor.place_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
+	or (obj_leveleditor.place_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
 	/*Place Brush Size 1 END*/
 	
 	/*Place Brush Size 2*/
-	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y,id))
-	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32,id))
+	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
+	or (obj_leveleditor.place_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
 	/*Place Brush Size 2 END*/
 	
 	/*Place Brush Size 3*/
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y,id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y + 32,id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y+64,id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y+64,id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64,id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64,id))
+	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y, id))
+	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y + 32, id))
+	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+64, id))
+	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
+	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
+	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
 	/*Place Brush Size 3 END*/
 	
 	/*Place Brush Size 4*/
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y,id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y + 32,id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y+64,id))
+	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
+	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
+	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
 	/*Place Brush Size 4 END*/
 	
 	/*Place Brush Size 5*/
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y + 32,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y+64,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y+96,id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
 	/*Place Brush Size 5 END*/
 	
 	{
@@ -1993,46 +1993,46 @@ and (obj_leveleditor.drag_object = false)
 if (mouse_check_button(mb_right))
 and (!mouse_check_button(mb_left))
 {
-	if (position_meeting(obj_leveleditor.x, obj_leveleditor.y,id))
-	or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y,id))
-	or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y + 32,id))
-	or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32,id))
+	if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
+	or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
+	or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
+	or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
 
-	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y,id))
-	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32,id))
+	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
+	or (obj_leveleditor.erase_brush_size >=2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
 
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y,id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y + 32,id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y+64,id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y+64,id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64,id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64,id))
+	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y, id))
+	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y + 32, id))
+	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+64, id))
+	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
+	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
+	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
 
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y,id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y + 32,id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y+64,id))
+	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
+	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
+	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
 
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y - 64,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y - 32,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y + 32,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y+64,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+96, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+64, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x+32, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96,id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-64, obj_leveleditor.y+96,id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
+	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
 	{
 		if (obj_leveleditor.difficulty_layer= 0)
 		{

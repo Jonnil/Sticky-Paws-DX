@@ -57,7 +57,7 @@ if (asset_get_type("obj_wall") == asset_object)
 }
 if (floor(random(10 - 1)) = 0)
 {
-	effect_create_below(ef_star, x + random_range(-16, +16), y + random_range(-16, +16), 0, c_white);
+	effect_create_below(ef_star, x + random_range(-16, + 16), y + random_range(-16, + 16), 0, c_white);
 }
 
 #region /*Expanding Ring Effect*/

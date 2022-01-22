@@ -7,13 +7,13 @@ and (global.enable_enemies = false)
 #endregion /*If enemies are disabled, destroy this object END*/
 
 if (die_volting=-1)
-or (die_volting= +1)
+or (die_volting= + 1)
 {
 	depth = -900;
 	if (die_volting=-1)
 	{
 		image_angle-=20;
-		hspeed =+4;
+		hspeed = +4;
 	}
 	else
 	{
@@ -38,9 +38,9 @@ else
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
-		if (x < camera_get_view_x(view_camera[view_current])+camera_get_view_width(view_camera[view_current]))
+		if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 		and (x > camera_get_view_x(view_camera[view_current]))
-		and (y < camera_get_view_y(view_camera[view_current])+camera_get_view_height(view_camera[view_current]))
+		and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 		and (y > camera_get_view_y(view_camera[view_current]))
 		{
 			gravity = 0.5; /*The gravity*/
@@ -68,7 +68,7 @@ else
 		sprite_index = global.resourcepack_sprite_basic_enemy_flattened;
 		if (image_index > image_number - 1)
 		{
-		effect_create_above(ef_smoke, x, y,2, c_white);
+		effect_create_above(ef_smoke, x, y, 2, c_white);
 		instance_destroy();
 		}
 	}

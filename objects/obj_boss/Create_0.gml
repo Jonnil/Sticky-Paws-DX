@@ -1,5 +1,5 @@
 angle = 0;
-depth = + 10;
+depth = +10;
 time = 0;
 image_xscale = -1;
 die_volting = false;
