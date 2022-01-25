@@ -1,10 +1,10 @@
 ///scr_config_save()
 function scr_config_save()
 {
-	if (file_exists("config.ini"))
-	{
-		file_delete("config.ini");
-	}
+	//if (file_exists("config.ini"))
+	//{
+	//	file_delete("config.ini");
+	//}
 	ini_open("config.ini");
 	
 	ini_write_real("config", "current_file", global.file);
@@ -54,6 +54,7 @@ function scr_config_save()
 	ini_write_real("config", "enable_transitions", global.enable_transitions);
 	ini_write_real("config", "selected_resourcepack", global.selected_resourcepack);
 	ini_write_real("config", "selected_title_background", global.selected_title_background);
+	ini_write_real("config", "zoom", global.zoom);
 	
 	#region /*Save Player 1 Keyboard Remapping*/
 	ini_write_real("config", "character_index_player_1", global.character_index[0]);

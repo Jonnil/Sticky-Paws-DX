@@ -12,21 +12,21 @@ scr_set_arrays();
 ///No Narrator
 if (global.narrator >= 0)
 {
-	menuvoice_titlesplash =noone;
-	menuvoice_1player=noone;
-	menuvoice_2player=noone;
-	menuvoice_3player=noone;
-	menuvoice_4player=noone;
-	menuvoice_leveleditor=noone;
-	menuvoice_leveleditor_denied =noone;
-	menuvoice_options=noone;
+	menuvoice_titlesplash = noone;
+	menuvoice_1player= noone;
+	menuvoice_2player= noone;
+	menuvoice_3player= noone;
+	menuvoice_4player= noone;
+	menuvoice_leveleditor= noone;
+	menuvoice_leveleditor_denied = noone;
+	menuvoice_options= noone;
 }
 
 pause_text_alpha= 0;
 pause_text_lerp =1;
 menu = "continue";
 menu_delay =10;
-lastkey =noone;
+lastkey = noone;
 
 #region /*Remapping options variables*/
 remapping_player = 0;
@@ -46,10 +46,10 @@ menu_cursor_index= 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
 can_navigate_settings_sidebar= true;
-navigate_slider=false;
+navigate_slider= false;
 menu_remap_key_number= 0;
 menu_y_offset = 0;/*This is the y offset that will have lerping to make the menu scrolling smooth*/
-menu_y_offset_real= 0;/*This is the real y offset for the menu, used for menu scrolling*/
+menu_y_offset_real = 0;/*This is the real y offset for the menu, used for menu scrolling*/
 menu_cursor_y_position = 0;
 background_brightness_menu_lerp = 0;
 

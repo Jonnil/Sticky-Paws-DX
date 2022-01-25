@@ -4,12 +4,12 @@ instance_activate_object(obj_pause);
 if (global.background_brightness_menu>-0.001)
 {
 	c_menu_outline =c_white;
-	c_menu_fill=c_black;
+	c_menu_fill =c_black;
 }
 else
 {
 	c_menu_outline =c_black;
-	c_menu_fill=c_white;
+	c_menu_fill =c_white;
 }
 
 #region /*Set what controls are used to navigate the menus*/

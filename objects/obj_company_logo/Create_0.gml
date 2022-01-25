@@ -9,7 +9,7 @@ global.can_select_number_of_players= true; /*If this is true, there will be a nu
 global.character_select_screen = true; /*If this is true, there will be a character select screen before you start the game*/
 global.character_clothes_customization = false; /*If this is true, you can costumize the character's clothes in the menu*/
 global.character_color_select = false; /*If this is true, you can choose the character's color in the menu*/
-global.select_number_of_players_before_selecting_characters=false; /*If you should select how many players are going to play before you select what character to play as*/
+global.select_number_of_players_before_selecting_characters= false; /*If you should select how many players are going to play before you select what character to play as*/
 global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters! 1 = default*/
 global.max_number_of_official_resourcepacks = 1; /*Update this whenever you add more official resource packs! 1 = default*/
 global.max_number_of_official_title_backgrounds = 2; /*Update this whenever you add more official title backgrounds! 1 = default, but more title backgrounds can be added, for example: 1 = light theme, 2 = dark theme*/
@@ -160,14 +160,14 @@ global.player1_can_play = false; /*Player 1 needs to join the game to be able to
 global.player2_can_play = false; /*Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player3_can_play = false; /*Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player4_can_play = false; /*Player 4 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
-global.color_for_player_1= 0;/*Player 1 Select Color 1*/
-global.color_for_player_2= 0;/*Player 2 Select Color 2*/
-global.color_for_player_3= 0;/*Player 3 Select Color 3*/
-global.color_for_player_4= 0;/*Player 4 Select Color 4*/
-global.hex_color_for_player_1=c_white;/*Player 1 Hex Value Color*/
-global.hex_color_for_player_2=c_white;/*Player 1 Hex Value Color*/
-global.hex_color_for_player_3=c_white;/*Player 1 Hex Value Color*/
-global.hex_color_for_player_4=c_white;/*Player 1 Hex Value Color*/
+global.color_for_player_1 = 0;/*Player 1 Select Color 1*/
+global.color_for_player_2 = 0;/*Player 2 Select Color 2*/
+global.color_for_player_3 = 0;/*Player 3 Select Color 3*/
+global.color_for_player_4 = 0;/*Player 4 Select Color 4*/
+global.hex_color_for_player_1 =c_white;/*Player 1 Hex Value Color*/
+global.hex_color_for_player_2 =c_white;/*Player 1 Hex Value Color*/
+global.hex_color_for_player_3 =c_white;/*Player 1 Hex Value Color*/
+global.hex_color_for_player_4 =c_white;/*Player 1 Hex Value Color*/
 global.level_editor_level = 0;/*What level is selected in the custom level editor*/
 global.play_edited_level = false;/*Playtest edited level*/
 global.actually_play_edited_level = false;/*Actually playing finished edited level*/
@@ -179,12 +179,13 @@ global.show_timer = false; /*Show a countup timer or not*/
 global.show_deaths_counter = false; /*Show a deaths counter or not*/
 global.controls_used_for_menu_navigation = "keyboard";/*keyboard, mouse, or controller*/
 global.pause = false;/*If game is paused or not*/
-global.custom_background1=noone;
-global.custom_background2=noone;
-global.custom_background3=noone;
-global.custom_background4=noone;
-global.custom_foreground1=noone;
-global.custom_foreground2=noone;
+global.custom_background1 = noone;
+global.custom_background2 = noone;
+global.custom_background3 = noone;
+global.custom_background4 = noone;
+global.custom_foreground1 = noone;
+global.custom_foreground_above_static_objects = noone;
+global.custom_foreground2 = noone;
 global.custom_foreground_secret = noone;
 global.custom_tileset = noone;
 global.sprite_select_player_1 = noone;
@@ -193,43 +194,44 @@ global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
 global.selected_resourcepack = 0; /*0 = default*/
 global.selected_title_background = 0; /*0 = default*/
+global.zoom = 1; /*Zooming the view in and out, by default it's set to 1*/
 //global.spot_x= 0;
 //global.spot_y = 0;
 
 switch(os_get_language())
 {
-	case "es": global.language_localization =localization.es_es;break;
-	case "fr": global.language_localization =localization.fr_fr;break;
-	case "it": global.language_localization =localization.it_it;break;
-	default: global.language_localization =localization.en_us;break;/*Set the default language to American English*/
+	case "es": global.language_localization = localization.es_es;break;
+	case "fr": global.language_localization = localization.fr_fr;break;
+	case "it": global.language_localization = localization.it_it;break;
+	default: global.language_localization = localization.en_us;break;/*Set the default language to American English*/
 }
 
 global.settings_sidebar_menu = "settings_back";/*Settings sidebar*/
-global.show_tutorial_signs= true;
-global.enable_transitions= true;
-global.enable_background_layer1= true;
-global.enable_background_layer2= true;
-global.enable_background_layer3= true;
-global.enable_background_layer4= true;
-global.enable_foreground_layer1= true;
-global.enable_foreground_layer2= true;
+global.show_tutorial_signs = true;
+global.enable_transitions = true;
+global.enable_background_layer1 = true;
+global.enable_background_layer2 = true;
+global.enable_background_layer3 = true;
+global.enable_background_layer4 = true;
+global.enable_foreground_layer1 = true;
+global.enable_foreground_layer2 = true;
 global.enable_foreground_layer_secret = true;
 global.players_can_collide = false;
 global.player_has_entered_goal = false;
-global.pause_room =noone;
-global.pause_player= 0;
+global.pause_room = noone;
+global.pause_player = 0;
 global.key_used = "";
 global.playergame = 0;
 global.theme = "ground";
-global.basic_collectibles= 0;
-global.level_clear_rate =noone;
+global.basic_collectibles = 0;
+global.level_clear_rate = noone;
 global.current_level_clear_rate = noone;
 global.increase_number_of_levels_cleared = true; /*Some levels shouldn't increase the number of levels cleared, so switch this true or false for certain levels*/
-global.big_collectible1=false;/*If you have Big Collectible 1 or not*/
-global.big_collectible2=false;/*If you have Big Collectible 2 or not*/
-global.big_collectible3=false;/*If you have Big Collectible 3 or not*/
-global.big_collectible4=false;/*If you have Big Collectible 4 or not*/
-global.big_collectible5=false;/*If you have Big Collectible 5 or not*/
+global.big_collectible1 = false;/*If you have Big Collectible 1 or not*/
+global.big_collectible2 = false;/*If you have Big Collectible 2 or not*/
+global.big_collectible3 = false;/*If you have Big Collectible 3 or not*/
+global.big_collectible4 = false;/*If you have Big Collectible 4 or not*/
+global.big_collectible5 = false;/*If you have Big Collectible 5 or not*/
 global.lives_until_assist = 0;
 
 #region /*Assist Settings*/
@@ -251,7 +253,7 @@ global.timeattack_millisecond = 0;
 global.timeattack_second = 0;
 global.timeattack_minute = 0;
 global.timeattack_realmillisecond = 0;
-global.timeattack_realmillisecond_real= 0;
+global.timeattack_realmillisecond_real = 0;
 #region /*Checkpoint Timer*/
 global.checkpoint_millisecond = 0;
 global.checkpoint_second = 0;
@@ -262,8 +264,8 @@ global.win = false;
 global.enemy_counter= 0;
 global.file =1;
 global.controls_layout =1;
-global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black=-1, normal= 0 (default), full_white = +1*/
-global.background_brightness_menu= 0; /*Background brightness in menus. full_black=-1, normal= 0 (default), full_white = +1*/
+global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black=-1, normal = 0 (default), full_white = +1*/
+global.background_brightness_menu= 0; /*Background brightness in menus. full_black=-1, normal = 0 (default), full_white = +1*/
 
 #region /*Music and Sound Volume*/
 global.music_volume = 0.7; /*Make the volumes set to 0.7 by default, so the volume of the game is not too loud when one start the game for the first time*/
@@ -277,15 +279,15 @@ global.number_of_audio_channels = 3; /*How many audio channels there should be. 
 global.music = noone;
 global.music_underwater = noone;
 global.ambience = noone;
-global.ambience_underwater=noone;
+global.ambience_underwater= noone;
 global.trigger_ending = false;
 global.spikes_emerge_time = 0;
 global.goal_active = false;
 global.interpolate = true
-global.show_fps=false;
+global.show_fps= false;
 global.show_fps_real = false;
 global.show_instance_count = false;
-global.show_collision_mask=false;
+global.show_collision_mask= false;
 global.pause_screenshot = noone;
 global.restart_level = false;
 global.quit_level = false;
@@ -354,7 +356,7 @@ global.player1_key2_up = ord("W");
 global.player1_key2_tongue = noone;
 #endregion /*Player 1 Key 2 defaults END*/
 
-global.player1_up_key_is_jump_key =false;
+global.player1_up_key_is_jump_key = false;
 global.player1_double_tap_to_run = true;
 global.player1_wall_jump_setting = 1;
 global.player1_drop_from_rope =1;
@@ -392,7 +394,7 @@ global.player2_key2_up = noone;
 global.player2_key2_tongue = noone;
 #endregion /*Player 2 Key 2 defaults END*/
 
-global.player2_up_key_is_jump_key =false;
+global.player2_up_key_is_jump_key = false;
 global.player2_double_tap_to_run = true;
 global.player2_wall_jump_setting = 1;
 global.player2_drop_from_rope =1;
@@ -430,7 +432,7 @@ global.player3_key2_up = noone;
 global.player3_key2_tongue = noone;
 #endregion /*Player 3 Key 2 defaults END*/
 
-global.player3_up_key_is_jump_key =false;
+global.player3_up_key_is_jump_key = false;
 global.player3_double_tap_to_run = true;
 global.player3_wall_jump_setting = 1;
 global.player3_drop_from_rope =1;
@@ -468,7 +470,7 @@ global.player4_key2_up = noone;
 global.player4_key2_tongue = noone;
 #endregion /*Player 4 Key 2 defaults END*/
 
-global.player4_up_key_is_jump_key =false;
+global.player4_up_key_is_jump_key = false;
 global.player4_double_tap_to_run = true;
 global.player4_wall_jump_setting = 1;
 global.player4_drop_from_rope =1;
@@ -514,18 +516,18 @@ scr_load_resource_pack_sprite();
 #region /*Narrator Voice variable handeling*/
 
 #region /*No Narrator*/
-if (global.narrator=false)
+if (global.narrator= false)
 {
-	menuvoice_companysplash =noone;
-	menuvoice_controllersplash =noone;
+	menuvoice_companysplash = noone;
+	menuvoice_controllersplash = noone;
 }
 #endregion /*No Narrator END*/
 
 #region /*Character1 as Narrator*/
 if (global.narrator = 1)
 {
-	menuvoice_companysplash =noone;
-	menuvoice_controllersplash =noone;
+	menuvoice_companysplash = noone;
+	menuvoice_controllersplash = noone;
 }
 #endregion /*Character1 as Narrator END*/
 

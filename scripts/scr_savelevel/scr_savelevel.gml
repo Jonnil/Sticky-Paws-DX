@@ -15,23 +15,23 @@ function scr_savelevel()
 			}
 			ini_write_string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "clear_rate", "clear"); /*Make the level clear after checking number_of_levels_cleared*/
 		}
-		if (global.big_collectible1= true)
+		if (global.big_collectible1 = true)
 		{
 			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible1", true);
 		}
-		if (global.big_collectible2= true)
+		if (global.big_collectible2 = true)
 		{
 			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible2", true);
 		}
-		if (global.big_collectible3= true)
+		if (global.big_collectible3 = true)
 		{
 			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible3", true);
 		}
-		if (global.big_collectible4= true)
+		if (global.big_collectible4 = true)
 		{
 			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible4", true);
 		}
-		if (global.big_collectible5= true)
+		if (global.big_collectible5 = true)
 		{
 			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible5", true);
 		}

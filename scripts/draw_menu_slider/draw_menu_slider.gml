@@ -86,7 +86,14 @@ function draw_menu_slider()
 		else
 		if (menu_index = "background_brightness_menu")
 		{
-			draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320 - 2,y_position-16,x_position+(variable_to_change - (-1))/(1-(-1))*320 + 2,y_position+ 16,c_menu_fill,c_menu_fill,c_menu_fill,c_menu_fill,false);
+			if (variable_to_change < 0)
+			{
+				draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320 - 2,y_position-16,x_position+(variable_to_change - (-1))/(1-(-1))*320 + 2,y_position+ 16,c_white,c_white,c_white,c_white,false);
+			}
+			else
+			{
+				draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320 - 2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320 + 2,y_position+ 16,c_black,c_black,c_black,c_black,false);
+			}
 		}
 	}
 	else

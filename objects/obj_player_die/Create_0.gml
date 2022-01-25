@@ -1,6 +1,6 @@
 depth = -9999;
 count = 0;
-last_player=false;
+last_player= false;
 iris_xscale =16;
 iris_yscale =16;
 iris_zoom = 0;
@@ -57,8 +57,8 @@ and (instance_exists(obj_camera))
 	}
 }
 
-voice_damage =noone;
-voice_burned_die =noone;
+voice_damage = noone;
+voice_burned_die = noone;
 
 #region /*Disable the players for the camera*/
 

@@ -18,7 +18,7 @@ or (other.can_tongue_after_dive_on_ground > 0)
 		other.dive = false;
 		with(other)
 		{
-			if (simple_controls=false)
+			if (simple_controls= false)
 			{
 				vspeed =-triple_jump_height;
 			}
@@ -1384,7 +1384,7 @@ if (other.key_jump_hold)
 			vspeed =-4;
 		}
 		else
-		if (simple_controls=false)
+		if (simple_controls= false)
 		{
 			vspeed =-triple_jump_height;
 		}

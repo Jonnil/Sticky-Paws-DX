@@ -312,7 +312,33 @@ or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_
 	}
 	#endregion /*Mask crouch x origin point END*/
 	#endregion /*Mask crouch x and y origin points END*/
+	
+	#region /*Sprite panting x and y origin points*/
+	#region /*Sprite panting x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_panting_xorig"))
+	{
+		sprite_panting_xorig = ini_read_real("sprite origin points", "sprite_panting_xorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_panting_xorig", 0);
+		sprite_panting_xorig = 0;
+	}
+	#endregion /*Sprite panting x origin point END*/
 
+	#region /*Sprite panting y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_panting_yorig"))
+	{
+		sprite_panting_yorig = ini_read_real("sprite origin points", "sprite_panting_yorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_panting_yorig", 0);
+		sprite_panting_yorig = 0;
+	}
+	#endregion /*Sprite panting y origin point END*/
+	#endregion /*Sprite panting x and y origin points END*/
+	
 	#region /*Sprite stand x and y origin points*/
 	#region /*Sprite stand x origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_stand_xorig"))
@@ -1671,6 +1697,8 @@ else
 	sprite_look_up_yorig = 0;
 	sprite_look_up_start_xorig = 0;
 	sprite_look_up_start_yorig = 0;
+	sprite_panting_xorig = 0;
+	sprite_panting_yorig = 0;
 	sprite_run_xorig = 0;
 	sprite_run_yorig = 0;
 	sprite_run2_xorig = 0;
@@ -1731,6 +1759,7 @@ sprite_mask_crouch = scr_initialize_custom_character_sprite("mask_crouch", sprit
 
 #region /*Sprite variables*/
 
+sprite_panting = scr_initialize_custom_character_sprite("panting", sprite_panting, sprite_panting_xorig, sprite_panting_yorig);
 sprite_stand = scr_initialize_custom_character_sprite("stand", sprite_stand, sprite_stand_xorig, sprite_stand_yorig);
 sprite_stand_cold = scr_initialize_custom_character_sprite("stand_cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 sprite_stand_cold = scr_initialize_custom_character_sprite("cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);

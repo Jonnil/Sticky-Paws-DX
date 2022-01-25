@@ -13,7 +13,7 @@ if (bounceup = false)
 	and (!place_meeting(x + 4, y, obj_wall))
 	and (obj_player.dive = true)
 	{
-		if (empty =false)
+		if (empty = false)
 		{
 			bounceup = true;
 			if (asset_get_type("obj_blockbreak") == asset_object)
@@ -128,7 +128,7 @@ if (bounceup = false)
 			if (item_inside = "10_basic_collectibles")
 			{
 				if (hit <= 4)
-				and (empty =false)
+				and (empty = false)
 				{
 					bounceup = true;
 					hit += 1;
@@ -274,7 +274,7 @@ if (bounceup = false)
 #endregion /*Collision Event with player END*/
 
 if (brick_block= true)
-and (empty =false)
+and (empty = false)
 {
 	if (asset_get_type("spr_brick_block") == asset_sprite)
 	{
@@ -282,8 +282,8 @@ and (empty =false)
 	}
 }
 else
-if (brick_block=false)
-and (empty =false)
+if (brick_block= false)
+and (empty = false)
 {
 	if (asset_get_type("spr_question_block") == asset_sprite)
 	{

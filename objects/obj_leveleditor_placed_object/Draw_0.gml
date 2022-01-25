@@ -115,7 +115,7 @@ and (global.character_select_in_this_menu = "level_editor")
 	
 	#region /*All layer*/
 	if (obj_leveleditor.difficulty_layer= 0)
-	and (obj_leveleditor.quit_level_editor=false)
+	and (obj_leveleditor.quit_level_editor= false)
 	{
 		#region /*Transparent Object*/
 		if (easy = true)
@@ -138,7 +138,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			image_blend = c_white;
 		}
 		else
-		if (easy =false)
+		if (easy = false)
 		and (normal = true)
 		and (hard = false)
 		and (sprite_index > 0)
@@ -148,7 +148,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			image_blend = c_yellow;
 		}
 		else
-		if (easy =false)
+		if (easy = false)
 		and (normal = true)
 		and (hard = true)
 		and (sprite_index > 0)
@@ -158,7 +158,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			image_blend = c_white;
 		}
 		else
-		if (easy =false)
+		if (easy = false)
 		and (normal = false)
 		and (hard = true)
 		and (sprite_index > 0)
@@ -195,7 +195,7 @@ and (global.character_select_in_this_menu = "level_editor")
 
 	#region /*Easy layer*/
 	if (obj_leveleditor.difficulty_layer = 1)
-	and (obj_leveleditor.quit_level_editor=false)
+	and (obj_leveleditor.quit_level_editor= false)
 	{
 		if (easy = true)
 		and (sprite_index > 0)
@@ -227,7 +227,7 @@ and (global.character_select_in_this_menu = "level_editor")
 				image_blend = c_white;
 			}
 			else
-			if (easy =false)
+			if (easy = false)
 			and (normal = true)
 			and (hard = false)
 			and (sprite_index > 0)
@@ -237,7 +237,7 @@ and (global.character_select_in_this_menu = "level_editor")
 				image_blend = c_yellow;
 			}
 			else
-			if (easy =false)
+			if (easy = false)
 			and (normal = true)
 			and (hard = true)
 			and (sprite_index > 0)
@@ -247,7 +247,7 @@ and (global.character_select_in_this_menu = "level_editor")
 				image_blend = c_white;
 			}
 			else
-			if (easy =false)
+			if (easy = false)
 			and (normal = false)
 			and (hard = true)
 			and (sprite_index > 0)
@@ -273,7 +273,7 @@ and (global.character_select_in_this_menu = "level_editor")
 
 	#region /*Normal layer*/
 	if (obj_leveleditor.difficulty_layer = 2)
-	and (obj_leveleditor.quit_level_editor=false)
+	and (obj_leveleditor.quit_level_editor= false)
 	{
 		if (normal = true)
 		and (sprite_index > 0)
@@ -305,7 +305,7 @@ and (global.character_select_in_this_menu = "level_editor")
 				image_blend = c_white;
 			}
 			else
-			if (easy =false)
+			if (easy = false)
 			and (normal = true)
 			and (hard = false)
 			and (sprite_index > 0)
@@ -315,7 +315,7 @@ and (global.character_select_in_this_menu = "level_editor")
 				image_blend = c_yellow;
 			}
 			else
-			if (easy =false)
+			if (easy = false)
 			and (normal = true)
 			and (hard = true)
 			and (sprite_index > 0)
@@ -325,7 +325,7 @@ and (global.character_select_in_this_menu = "level_editor")
 				image_blend = c_white;
 			}
 			else
-			if (easy =false)
+			if (easy = false)
 			and (normal = false)
 			and (hard = true)
 			and (sprite_index > 0)
@@ -351,7 +351,7 @@ and (global.character_select_in_this_menu = "level_editor")
 
 	#region /*Hard layer*/
 	if (obj_leveleditor.difficulty_layer = 3)
-	and (obj_leveleditor.quit_level_editor=false)
+	and (obj_leveleditor.quit_level_editor= false)
 	{
 		if (hard = true)
 		and (sprite_index > 0)
@@ -383,7 +383,7 @@ and (global.character_select_in_this_menu = "level_editor")
 				image_blend = c_white;
 			}
 			else
-			if (easy =false)
+			if (easy = false)
 			and (normal = true)
 			and (hard = false)
 			and (sprite_index > 0)
@@ -393,7 +393,7 @@ and (global.character_select_in_this_menu = "level_editor")
 				image_blend = c_yellow;
 			}
 			else
-			if (easy =false)
+			if (easy = false)
 			and (normal = true)
 			and (hard = true)
 			and (sprite_index > 0)
@@ -403,7 +403,7 @@ and (global.character_select_in_this_menu = "level_editor")
 				image_blend = c_white;
 			}
 			else
-			if (easy =false)
+			if (easy = false)
 			and (normal = false)
 			and (hard = true)
 			and (sprite_index > 0)
@@ -519,7 +519,7 @@ and (!mouse_check_button(mb_middle))
 			{
 				if (easy = true)
 				{
-					easy =false;
+					easy = false;
 				}
 			}
 			else
@@ -1453,7 +1453,7 @@ and (!mouse_check_button(mb_middle))
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (obj_leveleditor.set_difficulty_mode = false)
-and (obj_leveleditor.can_put_objects_above_other_objects=false)
+and (obj_leveleditor.can_put_objects_above_other_objects= false)
 and (delay >1)
 {
 	if (!keyboard_check(vk_space))
@@ -1962,7 +1962,7 @@ and (obj_leveleditor.drag_object = false)
 		if (obj_leveleditor.difficulty_layer = 1)
 		and (obj_leveleditor.set_difficulty_mode = true)
 		{
-			if (easy =false)
+			if (easy = false)
 			{
 				easy = true;
 			}
@@ -2038,7 +2038,7 @@ and (!mouse_check_button(mb_left))
 		{
 			if (easy = true)
 			{
-				easy =false;
+				easy = false;
 			}
 			if (normal = true)
 			{
@@ -2055,7 +2055,7 @@ and (!mouse_check_button(mb_left))
 		{
 			if (easy = true)
 			{
-				easy =false;
+				easy = false;
 			}
 		}
 		else

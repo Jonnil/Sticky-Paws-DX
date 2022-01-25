@@ -281,10 +281,10 @@ player2_show_controls_alpha = 0;
 player3_show_controls_alpha = 0;
 player4_show_controls_alpha = 0;
 
-show_sprint_toggle_for_player1= 0;
-show_sprint_toggle_for_player2= 0;
-show_sprint_toggle_for_player3= 0;
-show_sprint_toggle_for_player4= 0;
+show_sprint_toggle_for_player1 = 0;
+show_sprint_toggle_for_player2 = 0;
+show_sprint_toggle_for_player3 = 0;
+show_sprint_toggle_for_player4 = 0;
 
 /*Player 1*/player1_has_pressed_key_up = false;
 player1_has_pressed_key_left = false;
@@ -548,3 +548,5 @@ if (global.number_of_audio_channels = 7)
 	audio_channel_num(256);
 }
 #endregion /*Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default END*/
+
+zoom_lerp = global.zoom;

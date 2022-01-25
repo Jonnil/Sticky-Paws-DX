@@ -1,5 +1,7 @@
 scr_set_screen_size();
 
+scr_zoom_camera_controls();
+
 if (current_file != global.file)
 or (!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
 {

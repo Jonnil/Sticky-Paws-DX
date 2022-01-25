@@ -60,7 +60,7 @@ if (quit_level_editor = false)
 			and (mouse_check_button_pressed(mb_left))
 			{
 				menu_delay =10;
-				quit_level_editor=false;
+				quit_level_editor= false;
 				can_input_level_name = false;
 				pause = false;
 			}
@@ -89,7 +89,7 @@ if (quit_level_editor = false)
 					if (menu_delay = 0)
 					{
 						menu_delay =10;
-						quit_level_editor=false;
+						quit_level_editor= false;
 						can_input_level_name = false;
 						pause = false;
 					}
@@ -98,7 +98,7 @@ if (quit_level_editor = false)
 				and (menu_delay = 0)
 				{
 					menu_delay =10;
-					quit_level_editor=false;
+					quit_level_editor= false;
 					can_input_level_name = false;
 					pause = false;
 					can_navigate = false;
@@ -119,7 +119,7 @@ if (quit_level_editor = false)
 			window_get_height()/ 2))
 			and (mouse_check_button_pressed(mb_left))
 			{
-				quit_level_editor=false;
+				quit_level_editor= false;
 				can_input_level_name = false;
 				pause = true;
 				can_navigate = true;
@@ -153,7 +153,7 @@ if (quit_level_editor = false)
 				{
 					if (menu_delay = 0)
 					{
-						quit_level_editor=false;
+						quit_level_editor= false;
 						can_input_level_name = false;
 						pause = true;
 						can_navigate = true;
@@ -168,7 +168,7 @@ if (quit_level_editor = false)
 				and (menu_delay = 0)
 				{
 					menu_delay =10;
-					quit_level_editor=false;
+					quit_level_editor= false;
 					can_input_level_name = false;
 					pause = false;
 					can_navigate = false;
@@ -228,7 +228,7 @@ if (quit_level_editor = false)
 				and (menu_delay = 0)
 				{
 					menu_delay =10;
-					quit_level_editor=false;
+					quit_level_editor= false;
 					can_input_level_name = false;
 					pause = false;
 					can_navigate = false;
@@ -252,7 +252,7 @@ if (quit_level_editor = false)
 			{
 				menu_delay =10;
 				can_input_level_name = false;
-				quit_level_editor=false;
+				quit_level_editor= false;
 				pause = true;
 				menu = "enter_level_name";
 			}

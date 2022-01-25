@@ -59,13 +59,13 @@ function draw_menu_button_sprite()
 	#region /*Clicking the menu button*/
 	if (point_in_rectangle(mouse_x, mouse_y, x_position,y_position,x_position+ spr_width,y_position+ spr_height))
 	{
-		if (menu_takes_you_to=false)
-		or (menu_takes_you_to=noone)
+		if (menu_takes_you_to= false)
+		or (menu_takes_you_to= noone)
 		or (menu_takes_you_to= "")
 		or (menu_takes_you_to=menu_index)
 		{
 			if (mouse_check_button(mb_left))
-			and (menu_index >noone)
+			and (menu_index > noone)
 			{
 				menu=menu_index;
 			}
@@ -83,7 +83,7 @@ function draw_menu_button_sprite()
 	#region /*Text inside the menu button*/
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	if (string_text>noone)
+	if (string_text> noone)
 	{
 		draw_text_outlined(x_position+ 185,y_position+ 21,string(string_text), global.default_text_size,c_white,c_black, 1);
 	}

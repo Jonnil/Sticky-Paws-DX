@@ -108,6 +108,8 @@ sprite_triple_jump_xorig = 0;
 sprite_triple_jump_yorig = 0;
 sprite_look_up_xorig = 0;
 sprite_look_up_yorig = 0;
+sprite_panting_xorig = 0;
+sprite_panting_yorig = 0;
 sprite_run_xorig = 0;
 sprite_run_yorig = 0;
 sprite_run2_xorig = 0;
@@ -175,6 +177,7 @@ sprite_mask_crouch = sprite_index;
 #endregion /*Mask Crouch Index END*/
 
 #region /*Sprite variables*/
+sprite_panting = noone;
 sprite_stand = spr_player_stand;
 sprite_stand_cold = noone;
 sprite_standing_on_something = noone;

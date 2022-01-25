@@ -70,7 +70,7 @@ and (iris_xscale <= 0.001)
 {
 	global.time_countdown = noone; /*Reset countdown back to default value*/
 	global.time_countdown_bonus = 500; /*Reset countdown bonus back to default value*/
-	sprite_index=noone;
+	sprite_index= noone;
 	gravity = 0;
 	speed = 0;
 	if (asset_get_type("snd_die_melody") == asset_sound)
@@ -177,7 +177,7 @@ if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vie
 if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 1;
-	sprite_index=noone;
+	sprite_index= noone;
 }
 
 if (!instance_exists(obj_player))

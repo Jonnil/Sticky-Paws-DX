@@ -79,11 +79,11 @@ difficulty_layer= 0;/*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
 set_difficulty_mode = false;/*Toggle so you get a pen that can select what object appear in what difficulty*/
 place_object = noone;
 wall_surface_selected = 0; /*What kind of wall you're putting down*/
-show_icons_at_bottom =false;
+show_icons_at_bottom = false;
 show_icons_at_top = false;
 icons_at_bottom_y = +100;
 erase_icons_at_top_y =-100;
-show_undo_redo_icons=false;/*If the undo and redo buttons should show*/
+show_undo_redo_icons= false;/*If the undo and redo buttons should show*/
 undo_redo_icons_y = +200;/*Undo and redo buttons y postition*/
 current_undo_value = 0;/*Every time you place down items, this value increases. When you undo, this value decreases.*/
 icons_at_top_y =-100;
@@ -93,19 +93,19 @@ selected_object = 0;
 selected_object_menu_x= 0;
 selected_menu_alpha= 0;
 total_number_of_objects= 0;
-use_controller=false;
+use_controller= false;
 drag_object = false;
 erase_mode = false;/*When erasing, this turns true*/
 fill_mode = false;/*When filling, this turns true*/
 can_input_level_name = false;
-quit_level_editor=false;
+quit_level_editor= false;
 menu_joystick_delay = 0;
 pause = false;
 menu_cursor_index= 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
 can_navigate_settings_sidebar= true;
-navigate_slider=false;
+navigate_slider= false;
 menu = "continue";
 open_dropdown = false;
 name_enter_blink= 0;
@@ -155,7 +155,7 @@ menu_remap_key_number = 0;
 #region /*Customize look of Options Menu*/
 menu_y_offset =-100;
 c_menu_outline =c_black;
-c_menu_fill=c_white;
+c_menu_fill =c_white;
 #endregion /*Customize look of Options Menu END*/
 
 #endregion /*Options END*/
@@ -641,7 +641,7 @@ or (global.create_level_from_template = true)
 				{
 					object =val[2];
 					easy =val[3];
-					normal=val[4];
+					normal =val[4];
 					hard =val[5];
 				}
 			}
@@ -695,7 +695,7 @@ or (global.create_level_from_template = true)
 				{
 					object =val[2];
 					easy =val[3];
-					normal=val[4];
+					normal =val[4];
 					hard =val[5];
 					second_x=val[6];
 					second_y =val[7];
@@ -905,7 +905,7 @@ if (global.character_select_in_this_menu = "level_editor")
 					{
 						object =val[2];
 						easy =val[3];
-						normal=val[4];
+						normal =val[4];
 						hard =val[5];
 					}
 				}
@@ -967,7 +967,7 @@ if (global.character_select_in_this_menu = "level_editor")
 					{
 						object =val[2];
 						easy =val[3];
-						normal=val[4];
+						normal =val[4];
 						hard =val[5];
 						second_x=val[6];
 						second_y =val[7];

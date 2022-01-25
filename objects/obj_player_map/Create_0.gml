@@ -208,3 +208,5 @@ if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 	ini_write_real("Player", "number_of_levels_cleared", 1)
 }
 ini_close();
+
+zoom_lerp = global.zoom;

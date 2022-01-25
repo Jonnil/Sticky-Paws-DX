@@ -26,25 +26,25 @@ die_volting = false;
 give_rewards = true;
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {
-	enemyvoice_defeated1=snd_enemyvoice_defeated;
+	enemyvoice_defeated1 =snd_enemyvoice_defeated;
 }
 else
 {
-	enemyvoice_defeated1=noone;
+	enemyvoice_defeated1 = noone;
 }
 if (asset_get_type("snd_enemyvoice_defeated2") == asset_sound)
 {
-	enemyvoice_defeated2=snd_enemyvoice_defeated2;
+	enemyvoice_defeated2 =snd_enemyvoice_defeated2;
 }
 else
 {
-	enemyvoice_defeated2=noone;
+	enemyvoice_defeated2 = noone;
 }
 if (asset_get_type("snd_enemyvoice_defeated3") == asset_sound)
 {
-	enemyvoice_defeated3=snd_enemyvoice_defeated3;
+	enemyvoice_defeated3 =snd_enemyvoice_defeated3;
 }
 else
 {
-	enemyvoice_defeated3=noone;
+	enemyvoice_defeated3 = noone;
 }

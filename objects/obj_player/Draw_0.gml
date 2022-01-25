@@ -80,7 +80,7 @@ if (y<camera_get_view_y(view_camera[view_current]))
 	{
 		if (invincible <240)
 		{
-			if (invincible%2== 0)
+			if (invincible%2 == 0)
 			{
 				draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle,random(9999), image_alpha);
 			}
@@ -117,7 +117,7 @@ and (y<room_height)
 	{
 		if (invincible <240)
 		{
-			if (invincible%2== 0)
+			if (invincible%2 == 0)
 			{
 				draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle,random(9999), image_alpha);
 			}
@@ -206,7 +206,7 @@ if (takendamage >= takendamage_freezetime)
 }
 if (takendamage >= 100)
 and (die = false)
-and (hp > 0)
+and (hp >= 1)
 {
 	audio_play_sound(voice_damage, 0, 0);
 	audio_sound_gain(voice_damage, global.voices_volume, 0);
@@ -244,7 +244,7 @@ and (intro_animation = "")
 	draw_sprite_ext(sprite_index, image_index,xx +random_range(-8,+8),yy+random_range(-8,+8),draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle,c_red, image_alpha);
 }
 else
-if (takendamage%2== 0)
+if (takendamage%2 == 0)
 and (sprite_index > 0)
 and (intro_animation = "")
 {
@@ -328,7 +328,7 @@ if (assist_invincible = false)
 	{
 		if (invincible <240)
 		{
-			if (invincible%2== 0)
+			if (invincible%2 == 0)
 			{
 				draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle,random(9999), image_alpha);
 			}

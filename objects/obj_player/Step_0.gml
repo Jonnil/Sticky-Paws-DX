@@ -63,61 +63,61 @@ if (full_level_map_screenshot_timer = 10)
 #region /*Choose to play voice clips randomly*/
 
 #region /*Wall jump sound variation*/
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2=noone)
-and (voice_wall_jump_3=noone)
-and (voice_wall_jump_4=noone)
-and (voice_wall_jump_5=noone)
-and (voice_wall_jump_6=noone)
-and (voice_wall_jump_7=noone)
-and (voice_wall_jump_8=noone)
-and (voice_wall_jump_9=noone)
-and (voice_wall_jump_10=noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2 = noone)
+and (voice_wall_jump_3 = noone)
+and (voice_wall_jump_4 = noone)
+and (voice_wall_jump_5 = noone)
+and (voice_wall_jump_6= noone)
+and (voice_wall_jump_7= noone)
+and (voice_wall_jump_8= noone)
+and (voice_wall_jump_9= noone)
+and (voice_wall_jump_10= noone)
 {
 	voice_wallkick=voice_wall_jump_1;
 }
 else
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2>noone)
-and (voice_wall_jump_3=noone)
-and (voice_wall_jump_4=noone)
-and (voice_wall_jump_5=noone)
-and (voice_wall_jump_6=noone)
-and (voice_wall_jump_7=noone)
-and (voice_wall_jump_8=noone)
-and (voice_wall_jump_9=noone)
-and (voice_wall_jump_10=noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3 = noone)
+and (voice_wall_jump_4 = noone)
+and (voice_wall_jump_5 = noone)
+and (voice_wall_jump_6= noone)
+and (voice_wall_jump_7= noone)
+and (voice_wall_jump_8= noone)
+and (voice_wall_jump_9= noone)
+and (voice_wall_jump_10= noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2);
 }
 else
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2>noone)
-and (voice_wall_jump_3>noone)
-and (voice_wall_jump_4=noone)
-and (voice_wall_jump_5=noone)
-and (voice_wall_jump_6=noone)
-and (voice_wall_jump_7=noone)
-and (voice_wall_jump_8=noone)
-and (voice_wall_jump_9=noone)
-and (voice_wall_jump_10=noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4 = noone)
+and (voice_wall_jump_5 = noone)
+and (voice_wall_jump_6= noone)
+and (voice_wall_jump_7= noone)
+and (voice_wall_jump_8= noone)
+and (voice_wall_jump_9= noone)
+and (voice_wall_jump_10= noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3);
 }
 else
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2>noone)
-and (voice_wall_jump_3>noone)
-and (voice_wall_jump_4>noone)
-and (voice_wall_jump_5=noone)
-and (voice_wall_jump_6=noone)
-and (voice_wall_jump_7=noone)
-and (voice_wall_jump_8=noone)
-and (voice_wall_jump_9=noone)
-and (voice_wall_jump_10=noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5 = noone)
+and (voice_wall_jump_6= noone)
+and (voice_wall_jump_7= noone)
+and (voice_wall_jump_8= noone)
+and (voice_wall_jump_9= noone)
+and (voice_wall_jump_10= noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -125,16 +125,16 @@ and (voice_wall_jump_10=noone)
 						voice_wall_jump_4);
 }
 else
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2>noone)
-and (voice_wall_jump_3>noone)
-and (voice_wall_jump_4>noone)
-and (voice_wall_jump_5>noone)
-and (voice_wall_jump_6=noone)
-and (voice_wall_jump_7=noone)
-and (voice_wall_jump_8=noone)
-and (voice_wall_jump_9=noone)
-and (voice_wall_jump_10=noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6= noone)
+and (voice_wall_jump_7= noone)
+and (voice_wall_jump_8= noone)
+and (voice_wall_jump_9= noone)
+and (voice_wall_jump_10= noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -143,16 +143,16 @@ and (voice_wall_jump_10=noone)
 						voice_wall_jump_5);
 }
 else
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2>noone)
-and (voice_wall_jump_3>noone)
-and (voice_wall_jump_4>noone)
-and (voice_wall_jump_5>noone)
-and (voice_wall_jump_6>noone)
-and (voice_wall_jump_7=noone)
-and (voice_wall_jump_8=noone)
-and (voice_wall_jump_9=noone)
-and (voice_wall_jump_10=noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7= noone)
+and (voice_wall_jump_8= noone)
+and (voice_wall_jump_9= noone)
+and (voice_wall_jump_10= noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -162,16 +162,16 @@ and (voice_wall_jump_10=noone)
 						voice_wall_jump_6);
 }
 else
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2>noone)
-and (voice_wall_jump_3>noone)
-and (voice_wall_jump_4>noone)
-and (voice_wall_jump_5>noone)
-and (voice_wall_jump_6>noone)
-and (voice_wall_jump_7>noone)
-and (voice_wall_jump_8=noone)
-and (voice_wall_jump_9=noone)
-and (voice_wall_jump_10=noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8= noone)
+and (voice_wall_jump_9= noone)
+and (voice_wall_jump_10= noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -182,16 +182,16 @@ and (voice_wall_jump_10=noone)
 						voice_wall_jump_7);
 }
 else
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2>noone)
-and (voice_wall_jump_3>noone)
-and (voice_wall_jump_4>noone)
-and (voice_wall_jump_5>noone)
-and (voice_wall_jump_6>noone)
-and (voice_wall_jump_7>noone)
-and (voice_wall_jump_8>noone)
-and (voice_wall_jump_9=noone)
-and (voice_wall_jump_10=noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9= noone)
+and (voice_wall_jump_10= noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -203,16 +203,16 @@ and (voice_wall_jump_10=noone)
 						voice_wall_jump_8);
 }
 else
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2>noone)
-and (voice_wall_jump_3>noone)
-and (voice_wall_jump_4>noone)
-and (voice_wall_jump_5>noone)
-and (voice_wall_jump_6>noone)
-and (voice_wall_jump_7>noone)
-and (voice_wall_jump_8>noone)
-and (voice_wall_jump_9>noone)
-and (voice_wall_jump_10=noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10= noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -225,16 +225,16 @@ and (voice_wall_jump_10=noone)
 						voice_wall_jump_9);
 }
 else
-if (voice_wall_jump_1>noone)
-and (voice_wall_jump_2>noone)
-and (voice_wall_jump_3>noone)
-and (voice_wall_jump_4>noone)
-and (voice_wall_jump_5>noone)
-and (voice_wall_jump_6>noone)
-and (voice_wall_jump_7>noone)
-and (voice_wall_jump_8>noone)
-and (voice_wall_jump_9>noone)
-and (voice_wall_jump_10>noone)
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10> noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -250,61 +250,61 @@ and (voice_wall_jump_10>noone)
 #endregion /*Wall jump sound variation END*/
 
 #region /*Start running sound variation*/
-if (voice_start_running_1>noone)
-and (voice_start_running_2=noone)
-and (voice_start_running_3=noone)
-and (voice_start_running_4=noone)
-and (voice_start_running_5=noone)
-and (voice_start_running_6=noone)
-and (voice_start_running_7=noone)
-and (voice_start_running_8=noone)
-and (voice_start_running_9=noone)
-and (voice_start_running_10=noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2 = noone)
+and (voice_start_running_3 = noone)
+and (voice_start_running_4 = noone)
+and (voice_start_running_5 = noone)
+and (voice_start_running_6= noone)
+and (voice_start_running_7= noone)
+and (voice_start_running_8= noone)
+and (voice_start_running_9= noone)
+and (voice_start_running_10= noone)
 {
 	voice_startdash =voice_start_running_1;
 }
 else
-if (voice_start_running_1>noone)
-and (voice_start_running_2>noone)
-and (voice_start_running_3=noone)
-and (voice_start_running_4=noone)
-and (voice_start_running_5=noone)
-and (voice_start_running_6=noone)
-and (voice_start_running_7=noone)
-and (voice_start_running_8=noone)
-and (voice_start_running_9=noone)
-and (voice_start_running_10=noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2> noone)
+and (voice_start_running_3 = noone)
+and (voice_start_running_4 = noone)
+and (voice_start_running_5 = noone)
+and (voice_start_running_6= noone)
+and (voice_start_running_7= noone)
+and (voice_start_running_8= noone)
+and (voice_start_running_9= noone)
+and (voice_start_running_10= noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2);
 }
 else
-if (voice_start_running_1>noone)
-and (voice_start_running_2>noone)
-and (voice_start_running_3>noone)
-and (voice_start_running_4=noone)
-and (voice_start_running_5=noone)
-and (voice_start_running_6=noone)
-and (voice_start_running_7=noone)
-and (voice_start_running_8=noone)
-and (voice_start_running_9=noone)
-and (voice_start_running_10=noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2> noone)
+and (voice_start_running_3> noone)
+and (voice_start_running_4 = noone)
+and (voice_start_running_5 = noone)
+and (voice_start_running_6= noone)
+and (voice_start_running_7= noone)
+and (voice_start_running_8= noone)
+and (voice_start_running_9= noone)
+and (voice_start_running_10= noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
 						voice_start_running_3);
 }
 else
-if (voice_start_running_1>noone)
-and (voice_start_running_2>noone)
-and (voice_start_running_3>noone)
-and (voice_start_running_4>noone)
-and (voice_start_running_5=noone)
-and (voice_start_running_6=noone)
-and (voice_start_running_7=noone)
-and (voice_start_running_8=noone)
-and (voice_start_running_9=noone)
-and (voice_start_running_10=noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2> noone)
+and (voice_start_running_3> noone)
+and (voice_start_running_4> noone)
+and (voice_start_running_5 = noone)
+and (voice_start_running_6= noone)
+and (voice_start_running_7= noone)
+and (voice_start_running_8= noone)
+and (voice_start_running_9= noone)
+and (voice_start_running_10= noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -312,16 +312,16 @@ and (voice_start_running_10=noone)
 						voice_start_running_4);
 }
 else
-if (voice_start_running_1>noone)
-and (voice_start_running_2>noone)
-and (voice_start_running_3>noone)
-and (voice_start_running_4>noone)
-and (voice_start_running_5>noone)
-and (voice_start_running_6=noone)
-and (voice_start_running_7=noone)
-and (voice_start_running_8=noone)
-and (voice_start_running_9=noone)
-and (voice_start_running_10=noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2> noone)
+and (voice_start_running_3> noone)
+and (voice_start_running_4> noone)
+and (voice_start_running_5> noone)
+and (voice_start_running_6= noone)
+and (voice_start_running_7= noone)
+and (voice_start_running_8= noone)
+and (voice_start_running_9= noone)
+and (voice_start_running_10= noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -330,16 +330,16 @@ and (voice_start_running_10=noone)
 						voice_start_running_5);
 }
 else
-if (voice_start_running_1>noone)
-and (voice_start_running_2>noone)
-and (voice_start_running_3>noone)
-and (voice_start_running_4>noone)
-and (voice_start_running_5>noone)
-and (voice_start_running_6>noone)
-and (voice_start_running_7=noone)
-and (voice_start_running_8=noone)
-and (voice_start_running_9=noone)
-and (voice_start_running_10=noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2> noone)
+and (voice_start_running_3> noone)
+and (voice_start_running_4> noone)
+and (voice_start_running_5> noone)
+and (voice_start_running_6> noone)
+and (voice_start_running_7= noone)
+and (voice_start_running_8= noone)
+and (voice_start_running_9= noone)
+and (voice_start_running_10= noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -349,16 +349,16 @@ and (voice_start_running_10=noone)
 						voice_start_running_6);
 }
 else
-if (voice_start_running_1>noone)
-and (voice_start_running_2>noone)
-and (voice_start_running_3>noone)
-and (voice_start_running_4>noone)
-and (voice_start_running_5>noone)
-and (voice_start_running_6>noone)
-and (voice_start_running_7>noone)
-and (voice_start_running_8=noone)
-and (voice_start_running_9=noone)
-and (voice_start_running_10=noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2> noone)
+and (voice_start_running_3> noone)
+and (voice_start_running_4> noone)
+and (voice_start_running_5> noone)
+and (voice_start_running_6> noone)
+and (voice_start_running_7> noone)
+and (voice_start_running_8= noone)
+and (voice_start_running_9= noone)
+and (voice_start_running_10= noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -369,16 +369,16 @@ and (voice_start_running_10=noone)
 						voice_start_running_7);
 }
 else
-if (voice_start_running_1>noone)
-and (voice_start_running_2>noone)
-and (voice_start_running_3>noone)
-and (voice_start_running_4>noone)
-and (voice_start_running_5>noone)
-and (voice_start_running_6>noone)
-and (voice_start_running_7>noone)
-and (voice_start_running_8>noone)
-and (voice_start_running_9=noone)
-and (voice_start_running_10=noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2> noone)
+and (voice_start_running_3> noone)
+and (voice_start_running_4> noone)
+and (voice_start_running_5> noone)
+and (voice_start_running_6> noone)
+and (voice_start_running_7> noone)
+and (voice_start_running_8> noone)
+and (voice_start_running_9= noone)
+and (voice_start_running_10= noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -390,16 +390,16 @@ and (voice_start_running_10=noone)
 						voice_start_running_8);
 }
 else
-if (voice_start_running_1>noone)
-and (voice_start_running_2>noone)
-and (voice_start_running_3>noone)
-and (voice_start_running_4>noone)
-and (voice_start_running_5>noone)
-and (voice_start_running_6>noone)
-and (voice_start_running_7>noone)
-and (voice_start_running_8>noone)
-and (voice_start_running_9>noone)
-and (voice_start_running_10=noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2> noone)
+and (voice_start_running_3> noone)
+and (voice_start_running_4> noone)
+and (voice_start_running_5> noone)
+and (voice_start_running_6> noone)
+and (voice_start_running_7> noone)
+and (voice_start_running_8> noone)
+and (voice_start_running_9> noone)
+and (voice_start_running_10= noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -412,16 +412,16 @@ and (voice_start_running_10=noone)
 						voice_start_running_9);
 }
 else
-if (voice_start_running_1>noone)
-and (voice_start_running_2>noone)
-and (voice_start_running_3>noone)
-and (voice_start_running_4>noone)
-and (voice_start_running_5>noone)
-and (voice_start_running_6>noone)
-and (voice_start_running_7>noone)
-and (voice_start_running_8>noone)
-and (voice_start_running_9>noone)
-and (voice_start_running_10>noone)
+if (voice_start_running_1> noone)
+and (voice_start_running_2> noone)
+and (voice_start_running_3> noone)
+and (voice_start_running_4> noone)
+and (voice_start_running_5> noone)
+and (voice_start_running_6> noone)
+and (voice_start_running_7> noone)
+and (voice_start_running_8> noone)
+and (voice_start_running_9> noone)
+and (voice_start_running_10> noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -437,61 +437,61 @@ and (voice_start_running_10>noone)
 #endregion /*Start running sound variation END*/
 
 #region /*Rope catch sound variation*/
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2=noone)
-and (voice_rope_catch_3=noone)
-and (voice_rope_catch_4=noone)
-and (voice_rope_catch_5=noone)
-and (voice_rope_catch_6=noone)
-and (voice_rope_catch_7=noone)
-and (voice_rope_catch_8=noone)
-and (voice_rope_catch_9=noone)
-and (voice_rope_catch_10=noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2 = noone)
+and (voice_rope_catch_3 = noone)
+and (voice_rope_catch_4 = noone)
+and (voice_rope_catch_5 = noone)
+and (voice_rope_catch_6= noone)
+and (voice_rope_catch_7= noone)
+and (voice_rope_catch_8= noone)
+and (voice_rope_catch_9= noone)
+and (voice_rope_catch_10= noone)
 {
 	voice_rope_catch =voice_rope_catch_1;
 }
 else
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2>noone)
-and (voice_rope_catch_3=noone)
-and (voice_rope_catch_4=noone)
-and (voice_rope_catch_5=noone)
-and (voice_rope_catch_6=noone)
-and (voice_rope_catch_7=noone)
-and (voice_rope_catch_8=noone)
-and (voice_rope_catch_9=noone)
-and (voice_rope_catch_10=noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2> noone)
+and (voice_rope_catch_3 = noone)
+and (voice_rope_catch_4 = noone)
+and (voice_rope_catch_5 = noone)
+and (voice_rope_catch_6= noone)
+and (voice_rope_catch_7= noone)
+and (voice_rope_catch_8= noone)
+and (voice_rope_catch_9= noone)
+and (voice_rope_catch_10= noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2);
 }
 else
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2>noone)
-and (voice_rope_catch_3>noone)
-and (voice_rope_catch_4=noone)
-and (voice_rope_catch_5=noone)
-and (voice_rope_catch_6=noone)
-and (voice_rope_catch_7=noone)
-and (voice_rope_catch_8=noone)
-and (voice_rope_catch_9=noone)
-and (voice_rope_catch_10=noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2> noone)
+and (voice_rope_catch_3> noone)
+and (voice_rope_catch_4 = noone)
+and (voice_rope_catch_5 = noone)
+and (voice_rope_catch_6= noone)
+and (voice_rope_catch_7= noone)
+and (voice_rope_catch_8= noone)
+and (voice_rope_catch_9= noone)
+and (voice_rope_catch_10= noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
 						voice_rope_catch_3);
 }
 else
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2>noone)
-and (voice_rope_catch_3>noone)
-and (voice_rope_catch_4>noone)
-and (voice_rope_catch_5=noone)
-and (voice_rope_catch_6=noone)
-and (voice_rope_catch_7=noone)
-and (voice_rope_catch_8=noone)
-and (voice_rope_catch_9=noone)
-and (voice_rope_catch_10=noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2> noone)
+and (voice_rope_catch_3> noone)
+and (voice_rope_catch_4> noone)
+and (voice_rope_catch_5 = noone)
+and (voice_rope_catch_6= noone)
+and (voice_rope_catch_7= noone)
+and (voice_rope_catch_8= noone)
+and (voice_rope_catch_9= noone)
+and (voice_rope_catch_10= noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -499,16 +499,16 @@ and (voice_rope_catch_10=noone)
 						voice_rope_catch_4);
 }
 else
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2>noone)
-and (voice_rope_catch_3>noone)
-and (voice_rope_catch_4>noone)
-and (voice_rope_catch_5>noone)
-and (voice_rope_catch_6=noone)
-and (voice_rope_catch_7=noone)
-and (voice_rope_catch_8=noone)
-and (voice_rope_catch_9=noone)
-and (voice_rope_catch_10=noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2> noone)
+and (voice_rope_catch_3> noone)
+and (voice_rope_catch_4> noone)
+and (voice_rope_catch_5> noone)
+and (voice_rope_catch_6= noone)
+and (voice_rope_catch_7= noone)
+and (voice_rope_catch_8= noone)
+and (voice_rope_catch_9= noone)
+and (voice_rope_catch_10= noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -517,16 +517,16 @@ and (voice_rope_catch_10=noone)
 						voice_rope_catch_5);
 }
 else
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2>noone)
-and (voice_rope_catch_3>noone)
-and (voice_rope_catch_4>noone)
-and (voice_rope_catch_5>noone)
-and (voice_rope_catch_6>noone)
-and (voice_rope_catch_7=noone)
-and (voice_rope_catch_8=noone)
-and (voice_rope_catch_9=noone)
-and (voice_rope_catch_10=noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2> noone)
+and (voice_rope_catch_3> noone)
+and (voice_rope_catch_4> noone)
+and (voice_rope_catch_5> noone)
+and (voice_rope_catch_6> noone)
+and (voice_rope_catch_7= noone)
+and (voice_rope_catch_8= noone)
+and (voice_rope_catch_9= noone)
+and (voice_rope_catch_10= noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -536,16 +536,16 @@ and (voice_rope_catch_10=noone)
 						voice_rope_catch_6);
 }
 else
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2>noone)
-and (voice_rope_catch_3>noone)
-and (voice_rope_catch_4>noone)
-and (voice_rope_catch_5>noone)
-and (voice_rope_catch_6>noone)
-and (voice_rope_catch_7>noone)
-and (voice_rope_catch_8=noone)
-and (voice_rope_catch_9=noone)
-and (voice_rope_catch_10=noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2> noone)
+and (voice_rope_catch_3> noone)
+and (voice_rope_catch_4> noone)
+and (voice_rope_catch_5> noone)
+and (voice_rope_catch_6> noone)
+and (voice_rope_catch_7> noone)
+and (voice_rope_catch_8= noone)
+and (voice_rope_catch_9= noone)
+and (voice_rope_catch_10= noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -556,16 +556,16 @@ and (voice_rope_catch_10=noone)
 						voice_rope_catch_7);
 }
 else
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2>noone)
-and (voice_rope_catch_3>noone)
-and (voice_rope_catch_4>noone)
-and (voice_rope_catch_5>noone)
-and (voice_rope_catch_6>noone)
-and (voice_rope_catch_7>noone)
-and (voice_rope_catch_8>noone)
-and (voice_rope_catch_9=noone)
-and (voice_rope_catch_10=noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2> noone)
+and (voice_rope_catch_3> noone)
+and (voice_rope_catch_4> noone)
+and (voice_rope_catch_5> noone)
+and (voice_rope_catch_6> noone)
+and (voice_rope_catch_7> noone)
+and (voice_rope_catch_8> noone)
+and (voice_rope_catch_9= noone)
+and (voice_rope_catch_10= noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -577,16 +577,16 @@ and (voice_rope_catch_10=noone)
 						voice_rope_catch_8);
 }
 else
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2>noone)
-and (voice_rope_catch_3>noone)
-and (voice_rope_catch_4>noone)
-and (voice_rope_catch_5>noone)
-and (voice_rope_catch_6>noone)
-and (voice_rope_catch_7>noone)
-and (voice_rope_catch_8>noone)
-and (voice_rope_catch_9>noone)
-and (voice_rope_catch_10=noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2> noone)
+and (voice_rope_catch_3> noone)
+and (voice_rope_catch_4> noone)
+and (voice_rope_catch_5> noone)
+and (voice_rope_catch_6> noone)
+and (voice_rope_catch_7> noone)
+and (voice_rope_catch_8> noone)
+and (voice_rope_catch_9> noone)
+and (voice_rope_catch_10= noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -599,16 +599,16 @@ and (voice_rope_catch_10=noone)
 						voice_rope_catch_9);
 }
 else
-if (voice_rope_catch_1>noone)
-and (voice_rope_catch_2>noone)
-and (voice_rope_catch_3>noone)
-and (voice_rope_catch_4>noone)
-and (voice_rope_catch_5>noone)
-and (voice_rope_catch_6>noone)
-and (voice_rope_catch_7>noone)
-and (voice_rope_catch_8>noone)
-and (voice_rope_catch_9>noone)
-and (voice_rope_catch_10>noone)
+if (voice_rope_catch_1> noone)
+and (voice_rope_catch_2> noone)
+and (voice_rope_catch_3> noone)
+and (voice_rope_catch_4> noone)
+and (voice_rope_catch_5> noone)
+and (voice_rope_catch_6> noone)
+and (voice_rope_catch_7> noone)
+and (voice_rope_catch_8> noone)
+and (voice_rope_catch_9> noone)
+and (voice_rope_catch_10> noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -624,61 +624,61 @@ and (voice_rope_catch_10>noone)
 #endregion /*Rope catch sound variation END*/
 
 #region /*Jump spring sound variation*/
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2=noone)
-and (voice_jump_spring_3=noone)
-and (voice_jump_spring_4=noone)
-and (voice_jump_spring_5=noone)
-and (voice_jump_spring_6=noone)
-and (voice_jump_spring_7=noone)
-and (voice_jump_spring_8=noone)
-and (voice_jump_spring_9=noone)
-and (voice_jump_spring_10=noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2 = noone)
+and (voice_jump_spring_3 = noone)
+and (voice_jump_spring_4 = noone)
+and (voice_jump_spring_5 = noone)
+and (voice_jump_spring_6= noone)
+and (voice_jump_spring_7= noone)
+and (voice_jump_spring_8= noone)
+and (voice_jump_spring_9= noone)
+and (voice_jump_spring_10= noone)
 {
 	voice_jump_spring=voice_jump_spring_1;
 }
 else
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2>noone)
-and (voice_jump_spring_3=noone)
-and (voice_jump_spring_4=noone)
-and (voice_jump_spring_5=noone)
-and (voice_jump_spring_6=noone)
-and (voice_jump_spring_7=noone)
-and (voice_jump_spring_8=noone)
-and (voice_jump_spring_9=noone)
-and (voice_jump_spring_10=noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2> noone)
+and (voice_jump_spring_3 = noone)
+and (voice_jump_spring_4 = noone)
+and (voice_jump_spring_5 = noone)
+and (voice_jump_spring_6= noone)
+and (voice_jump_spring_7= noone)
+and (voice_jump_spring_8= noone)
+and (voice_jump_spring_9= noone)
+and (voice_jump_spring_10= noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2);
 }
 else
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2>noone)
-and (voice_jump_spring_3>noone)
-and (voice_jump_spring_4=noone)
-and (voice_jump_spring_5=noone)
-and (voice_jump_spring_6=noone)
-and (voice_jump_spring_7=noone)
-and (voice_jump_spring_8=noone)
-and (voice_jump_spring_9=noone)
-and (voice_jump_spring_10=noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2> noone)
+and (voice_jump_spring_3> noone)
+and (voice_jump_spring_4 = noone)
+and (voice_jump_spring_5 = noone)
+and (voice_jump_spring_6= noone)
+and (voice_jump_spring_7= noone)
+and (voice_jump_spring_8= noone)
+and (voice_jump_spring_9= noone)
+and (voice_jump_spring_10= noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3);
 }
 else
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2>noone)
-and (voice_jump_spring_3>noone)
-and (voice_jump_spring_4>noone)
-and (voice_jump_spring_5=noone)
-and (voice_jump_spring_6=noone)
-and (voice_jump_spring_7=noone)
-and (voice_jump_spring_8=noone)
-and (voice_jump_spring_9=noone)
-and (voice_jump_spring_10=noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2> noone)
+and (voice_jump_spring_3> noone)
+and (voice_jump_spring_4> noone)
+and (voice_jump_spring_5 = noone)
+and (voice_jump_spring_6= noone)
+and (voice_jump_spring_7= noone)
+and (voice_jump_spring_8= noone)
+and (voice_jump_spring_9= noone)
+and (voice_jump_spring_10= noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -686,16 +686,16 @@ and (voice_jump_spring_10=noone)
 						voice_jump_spring_4);
 }
 else
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2>noone)
-and (voice_jump_spring_3>noone)
-and (voice_jump_spring_4>noone)
-and (voice_jump_spring_5>noone)
-and (voice_jump_spring_6=noone)
-and (voice_jump_spring_7=noone)
-and (voice_jump_spring_8=noone)
-and (voice_jump_spring_9=noone)
-and (voice_jump_spring_10=noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2> noone)
+and (voice_jump_spring_3> noone)
+and (voice_jump_spring_4> noone)
+and (voice_jump_spring_5> noone)
+and (voice_jump_spring_6= noone)
+and (voice_jump_spring_7= noone)
+and (voice_jump_spring_8= noone)
+and (voice_jump_spring_9= noone)
+and (voice_jump_spring_10= noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -704,16 +704,16 @@ and (voice_jump_spring_10=noone)
 						voice_jump_spring_5);
 }
 else
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2>noone)
-and (voice_jump_spring_3>noone)
-and (voice_jump_spring_4>noone)
-and (voice_jump_spring_5>noone)
-and (voice_jump_spring_6>noone)
-and (voice_jump_spring_7=noone)
-and (voice_jump_spring_8=noone)
-and (voice_jump_spring_9=noone)
-and (voice_jump_spring_10=noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2> noone)
+and (voice_jump_spring_3> noone)
+and (voice_jump_spring_4> noone)
+and (voice_jump_spring_5> noone)
+and (voice_jump_spring_6> noone)
+and (voice_jump_spring_7= noone)
+and (voice_jump_spring_8= noone)
+and (voice_jump_spring_9= noone)
+and (voice_jump_spring_10= noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -723,16 +723,16 @@ and (voice_jump_spring_10=noone)
 						voice_jump_spring_6);
 }
 else
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2>noone)
-and (voice_jump_spring_3>noone)
-and (voice_jump_spring_4>noone)
-and (voice_jump_spring_5>noone)
-and (voice_jump_spring_6>noone)
-and (voice_jump_spring_7>noone)
-and (voice_jump_spring_8=noone)
-and (voice_jump_spring_9=noone)
-and (voice_jump_spring_10=noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2> noone)
+and (voice_jump_spring_3> noone)
+and (voice_jump_spring_4> noone)
+and (voice_jump_spring_5> noone)
+and (voice_jump_spring_6> noone)
+and (voice_jump_spring_7> noone)
+and (voice_jump_spring_8= noone)
+and (voice_jump_spring_9= noone)
+and (voice_jump_spring_10= noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -743,16 +743,16 @@ and (voice_jump_spring_10=noone)
 						voice_jump_spring_7);
 }
 else
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2>noone)
-and (voice_jump_spring_3>noone)
-and (voice_jump_spring_4>noone)
-and (voice_jump_spring_5>noone)
-and (voice_jump_spring_6>noone)
-and (voice_jump_spring_7>noone)
-and (voice_jump_spring_8>noone)
-and (voice_jump_spring_9=noone)
-and (voice_jump_spring_10=noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2> noone)
+and (voice_jump_spring_3> noone)
+and (voice_jump_spring_4> noone)
+and (voice_jump_spring_5> noone)
+and (voice_jump_spring_6> noone)
+and (voice_jump_spring_7> noone)
+and (voice_jump_spring_8> noone)
+and (voice_jump_spring_9= noone)
+and (voice_jump_spring_10= noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -764,16 +764,16 @@ and (voice_jump_spring_10=noone)
 						voice_jump_spring_8);
 }
 else
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2>noone)
-and (voice_jump_spring_3>noone)
-and (voice_jump_spring_4>noone)
-and (voice_jump_spring_5>noone)
-and (voice_jump_spring_6>noone)
-and (voice_jump_spring_7>noone)
-and (voice_jump_spring_8>noone)
-and (voice_jump_spring_9>noone)
-and (voice_jump_spring_10=noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2> noone)
+and (voice_jump_spring_3> noone)
+and (voice_jump_spring_4> noone)
+and (voice_jump_spring_5> noone)
+and (voice_jump_spring_6> noone)
+and (voice_jump_spring_7> noone)
+and (voice_jump_spring_8> noone)
+and (voice_jump_spring_9> noone)
+and (voice_jump_spring_10= noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -786,16 +786,16 @@ and (voice_jump_spring_10=noone)
 						voice_jump_spring_9);
 }
 else
-if (voice_jump_spring_1>noone)
-and (voice_jump_spring_2>noone)
-and (voice_jump_spring_3>noone)
-and (voice_jump_spring_4>noone)
-and (voice_jump_spring_5>noone)
-and (voice_jump_spring_6>noone)
-and (voice_jump_spring_7>noone)
-and (voice_jump_spring_8>noone)
-and (voice_jump_spring_9>noone)
-and (voice_jump_spring_10>noone)
+if (voice_jump_spring_1> noone)
+and (voice_jump_spring_2> noone)
+and (voice_jump_spring_3> noone)
+and (voice_jump_spring_4> noone)
+and (voice_jump_spring_5> noone)
+and (voice_jump_spring_6> noone)
+and (voice_jump_spring_7> noone)
+and (voice_jump_spring_8> noone)
+and (voice_jump_spring_9> noone)
+and (voice_jump_spring_10> noone)
 {
 	voice_jump_spring=choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -811,61 +811,61 @@ and (voice_jump_spring_10>noone)
 #endregion /*Jump spring sound variation END*/
 
 #region /*Jump rope sound variation*/
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2=noone)
-and (voice_jump_rope_3=noone)
-and (voice_jump_rope_4=noone)
-and (voice_jump_rope_5=noone)
-and (voice_jump_rope_6=noone)
-and (voice_jump_rope_7=noone)
-and (voice_jump_rope_8=noone)
-and (voice_jump_rope_9=noone)
-and (voice_jump_rope_10=noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2 = noone)
+and (voice_jump_rope_3 = noone)
+and (voice_jump_rope_4 = noone)
+and (voice_jump_rope_5 = noone)
+and (voice_jump_rope_6= noone)
+and (voice_jump_rope_7= noone)
+and (voice_jump_rope_8= noone)
+and (voice_jump_rope_9= noone)
+and (voice_jump_rope_10= noone)
 {
 	voice_jump_rope =voice_jump_rope_1;
 }
 else
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2>noone)
-and (voice_jump_rope_3=noone)
-and (voice_jump_rope_4=noone)
-and (voice_jump_rope_5=noone)
-and (voice_jump_rope_6=noone)
-and (voice_jump_rope_7=noone)
-and (voice_jump_rope_8=noone)
-and (voice_jump_rope_9=noone)
-and (voice_jump_rope_10=noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2> noone)
+and (voice_jump_rope_3 = noone)
+and (voice_jump_rope_4 = noone)
+and (voice_jump_rope_5 = noone)
+and (voice_jump_rope_6= noone)
+and (voice_jump_rope_7= noone)
+and (voice_jump_rope_8= noone)
+and (voice_jump_rope_9= noone)
+and (voice_jump_rope_10= noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2);
 }
 else
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2>noone)
-and (voice_jump_rope_3>noone)
-and (voice_jump_rope_4=noone)
-and (voice_jump_rope_5=noone)
-and (voice_jump_rope_6=noone)
-and (voice_jump_rope_7=noone)
-and (voice_jump_rope_8=noone)
-and (voice_jump_rope_9=noone)
-and (voice_jump_rope_10=noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2> noone)
+and (voice_jump_rope_3> noone)
+and (voice_jump_rope_4 = noone)
+and (voice_jump_rope_5 = noone)
+and (voice_jump_rope_6= noone)
+and (voice_jump_rope_7= noone)
+and (voice_jump_rope_8= noone)
+and (voice_jump_rope_9= noone)
+and (voice_jump_rope_10= noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
 						voice_jump_rope_3);
 }
 else
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2>noone)
-and (voice_jump_rope_3>noone)
-and (voice_jump_rope_4>noone)
-and (voice_jump_rope_5=noone)
-and (voice_jump_rope_6=noone)
-and (voice_jump_rope_7=noone)
-and (voice_jump_rope_8=noone)
-and (voice_jump_rope_9=noone)
-and (voice_jump_rope_10=noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2> noone)
+and (voice_jump_rope_3> noone)
+and (voice_jump_rope_4> noone)
+and (voice_jump_rope_5 = noone)
+and (voice_jump_rope_6= noone)
+and (voice_jump_rope_7= noone)
+and (voice_jump_rope_8= noone)
+and (voice_jump_rope_9= noone)
+and (voice_jump_rope_10= noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -873,16 +873,16 @@ and (voice_jump_rope_10=noone)
 						voice_jump_rope_4);
 }
 else
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2>noone)
-and (voice_jump_rope_3>noone)
-and (voice_jump_rope_4>noone)
-and (voice_jump_rope_5>noone)
-and (voice_jump_rope_6=noone)
-and (voice_jump_rope_7=noone)
-and (voice_jump_rope_8=noone)
-and (voice_jump_rope_9=noone)
-and (voice_jump_rope_10=noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2> noone)
+and (voice_jump_rope_3> noone)
+and (voice_jump_rope_4> noone)
+and (voice_jump_rope_5> noone)
+and (voice_jump_rope_6= noone)
+and (voice_jump_rope_7= noone)
+and (voice_jump_rope_8= noone)
+and (voice_jump_rope_9= noone)
+and (voice_jump_rope_10= noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -891,16 +891,16 @@ and (voice_jump_rope_10=noone)
 						voice_jump_rope_5);
 }
 else
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2>noone)
-and (voice_jump_rope_3>noone)
-and (voice_jump_rope_4>noone)
-and (voice_jump_rope_5>noone)
-and (voice_jump_rope_6>noone)
-and (voice_jump_rope_7=noone)
-and (voice_jump_rope_8=noone)
-and (voice_jump_rope_9=noone)
-and (voice_jump_rope_10=noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2> noone)
+and (voice_jump_rope_3> noone)
+and (voice_jump_rope_4> noone)
+and (voice_jump_rope_5> noone)
+and (voice_jump_rope_6> noone)
+and (voice_jump_rope_7= noone)
+and (voice_jump_rope_8= noone)
+and (voice_jump_rope_9= noone)
+and (voice_jump_rope_10= noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -910,16 +910,16 @@ and (voice_jump_rope_10=noone)
 						voice_jump_rope_6);
 }
 else
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2>noone)
-and (voice_jump_rope_3>noone)
-and (voice_jump_rope_4>noone)
-and (voice_jump_rope_5>noone)
-and (voice_jump_rope_6>noone)
-and (voice_jump_rope_7>noone)
-and (voice_jump_rope_8=noone)
-and (voice_jump_rope_9=noone)
-and (voice_jump_rope_10=noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2> noone)
+and (voice_jump_rope_3> noone)
+and (voice_jump_rope_4> noone)
+and (voice_jump_rope_5> noone)
+and (voice_jump_rope_6> noone)
+and (voice_jump_rope_7> noone)
+and (voice_jump_rope_8= noone)
+and (voice_jump_rope_9= noone)
+and (voice_jump_rope_10= noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -930,16 +930,16 @@ and (voice_jump_rope_10=noone)
 						voice_jump_rope_7);
 }
 else
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2>noone)
-and (voice_jump_rope_3>noone)
-and (voice_jump_rope_4>noone)
-and (voice_jump_rope_5>noone)
-and (voice_jump_rope_6>noone)
-and (voice_jump_rope_7>noone)
-and (voice_jump_rope_8>noone)
-and (voice_jump_rope_9=noone)
-and (voice_jump_rope_10=noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2> noone)
+and (voice_jump_rope_3> noone)
+and (voice_jump_rope_4> noone)
+and (voice_jump_rope_5> noone)
+and (voice_jump_rope_6> noone)
+and (voice_jump_rope_7> noone)
+and (voice_jump_rope_8> noone)
+and (voice_jump_rope_9= noone)
+and (voice_jump_rope_10= noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -951,16 +951,16 @@ and (voice_jump_rope_10=noone)
 						voice_jump_rope_8);
 }
 else
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2>noone)
-and (voice_jump_rope_3>noone)
-and (voice_jump_rope_4>noone)
-and (voice_jump_rope_5>noone)
-and (voice_jump_rope_6>noone)
-and (voice_jump_rope_7>noone)
-and (voice_jump_rope_8>noone)
-and (voice_jump_rope_9>noone)
-and (voice_jump_rope_10=noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2> noone)
+and (voice_jump_rope_3> noone)
+and (voice_jump_rope_4> noone)
+and (voice_jump_rope_5> noone)
+and (voice_jump_rope_6> noone)
+and (voice_jump_rope_7> noone)
+and (voice_jump_rope_8> noone)
+and (voice_jump_rope_9> noone)
+and (voice_jump_rope_10= noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -973,16 +973,16 @@ and (voice_jump_rope_10=noone)
 						voice_jump_rope_9);
 }
 else
-if (voice_jump_rope_1>noone)
-and (voice_jump_rope_2>noone)
-and (voice_jump_rope_3>noone)
-and (voice_jump_rope_4>noone)
-and (voice_jump_rope_5>noone)
-and (voice_jump_rope_6>noone)
-and (voice_jump_rope_7>noone)
-and (voice_jump_rope_8>noone)
-and (voice_jump_rope_9>noone)
-and (voice_jump_rope_10>noone)
+if (voice_jump_rope_1> noone)
+and (voice_jump_rope_2> noone)
+and (voice_jump_rope_3> noone)
+and (voice_jump_rope_4> noone)
+and (voice_jump_rope_5> noone)
+and (voice_jump_rope_6> noone)
+and (voice_jump_rope_7> noone)
+and (voice_jump_rope_8> noone)
+and (voice_jump_rope_9> noone)
+and (voice_jump_rope_10> noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -998,61 +998,61 @@ and (voice_jump_rope_10>noone)
 #endregion /*Jump rope sound variation END*/
 
 #region /*Jump sound variation*/
-if (voice_jump_1>noone)
-and (voice_jump_2=noone)
-and (voice_jump_3=noone)
-and (voice_jump_4=noone)
-and (voice_jump_5=noone)
-and (voice_jump_6=noone)
-and (voice_jump_7=noone)
-and (voice_jump_8=noone)
-and (voice_jump_9=noone)
-and (voice_jump_10=noone)
+if (voice_jump_1> noone)
+and (voice_jump_2 = noone)
+and (voice_jump_3 = noone)
+and (voice_jump_4 = noone)
+and (voice_jump_5 = noone)
+and (voice_jump_6= noone)
+and (voice_jump_7= noone)
+and (voice_jump_8= noone)
+and (voice_jump_9= noone)
+and (voice_jump_10= noone)
 {
 	voice_jump =voice_jump_1;
 }
 else
-if (voice_jump_1>noone)
-and (voice_jump_2>noone)
-and (voice_jump_3=noone)
-and (voice_jump_4=noone)
-and (voice_jump_5=noone)
-and (voice_jump_6=noone)
-and (voice_jump_7=noone)
-and (voice_jump_8=noone)
-and (voice_jump_9=noone)
-and (voice_jump_10=noone)
+if (voice_jump_1> noone)
+and (voice_jump_2> noone)
+and (voice_jump_3 = noone)
+and (voice_jump_4 = noone)
+and (voice_jump_5 = noone)
+and (voice_jump_6= noone)
+and (voice_jump_7= noone)
+and (voice_jump_8= noone)
+and (voice_jump_9= noone)
+and (voice_jump_10= noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2);
 }
 else
-if (voice_jump_1>noone)
-and (voice_jump_2>noone)
-and (voice_jump_3>noone)
-and (voice_jump_4=noone)
-and (voice_jump_5=noone)
-and (voice_jump_6=noone)
-and (voice_jump_7=noone)
-and (voice_jump_8=noone)
-and (voice_jump_9=noone)
-and (voice_jump_10=noone)
+if (voice_jump_1> noone)
+and (voice_jump_2> noone)
+and (voice_jump_3> noone)
+and (voice_jump_4 = noone)
+and (voice_jump_5 = noone)
+and (voice_jump_6= noone)
+and (voice_jump_7= noone)
+and (voice_jump_8= noone)
+and (voice_jump_9= noone)
+and (voice_jump_10= noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
 						voice_jump_3);
 }
 else
-if (voice_jump_1>noone)
-and (voice_jump_2>noone)
-and (voice_jump_3>noone)
-and (voice_jump_4>noone)
-and (voice_jump_5=noone)
-and (voice_jump_6=noone)
-and (voice_jump_7=noone)
-and (voice_jump_8=noone)
-and (voice_jump_9=noone)
-and (voice_jump_10=noone)
+if (voice_jump_1> noone)
+and (voice_jump_2> noone)
+and (voice_jump_3> noone)
+and (voice_jump_4> noone)
+and (voice_jump_5 = noone)
+and (voice_jump_6= noone)
+and (voice_jump_7= noone)
+and (voice_jump_8= noone)
+and (voice_jump_9= noone)
+and (voice_jump_10= noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1060,16 +1060,16 @@ and (voice_jump_10=noone)
 						voice_jump_4);
 }
 else
-if (voice_jump_1>noone)
-and (voice_jump_2>noone)
-and (voice_jump_3>noone)
-and (voice_jump_4>noone)
-and (voice_jump_5>noone)
-and (voice_jump_6=noone)
-and (voice_jump_7=noone)
-and (voice_jump_8=noone)
-and (voice_jump_9=noone)
-and (voice_jump_10=noone)
+if (voice_jump_1> noone)
+and (voice_jump_2> noone)
+and (voice_jump_3> noone)
+and (voice_jump_4> noone)
+and (voice_jump_5> noone)
+and (voice_jump_6= noone)
+and (voice_jump_7= noone)
+and (voice_jump_8= noone)
+and (voice_jump_9= noone)
+and (voice_jump_10= noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1078,16 +1078,16 @@ and (voice_jump_10=noone)
 						voice_jump_5);
 }
 else
-if (voice_jump_1>noone)
-and (voice_jump_2>noone)
-and (voice_jump_3>noone)
-and (voice_jump_4>noone)
-and (voice_jump_5>noone)
-and (voice_jump_6>noone)
-and (voice_jump_7=noone)
-and (voice_jump_8=noone)
-and (voice_jump_9=noone)
-and (voice_jump_10=noone)
+if (voice_jump_1> noone)
+and (voice_jump_2> noone)
+and (voice_jump_3> noone)
+and (voice_jump_4> noone)
+and (voice_jump_5> noone)
+and (voice_jump_6> noone)
+and (voice_jump_7= noone)
+and (voice_jump_8= noone)
+and (voice_jump_9= noone)
+and (voice_jump_10= noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1097,16 +1097,16 @@ and (voice_jump_10=noone)
 						voice_jump_6);
 }
 else
-if (voice_jump_1>noone)
-and (voice_jump_2>noone)
-and (voice_jump_3>noone)
-and (voice_jump_4>noone)
-and (voice_jump_5>noone)
-and (voice_jump_6>noone)
-and (voice_jump_7>noone)
-and (voice_jump_8=noone)
-and (voice_jump_9=noone)
-and (voice_jump_10=noone)
+if (voice_jump_1> noone)
+and (voice_jump_2> noone)
+and (voice_jump_3> noone)
+and (voice_jump_4> noone)
+and (voice_jump_5> noone)
+and (voice_jump_6> noone)
+and (voice_jump_7> noone)
+and (voice_jump_8= noone)
+and (voice_jump_9= noone)
+and (voice_jump_10= noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1117,16 +1117,16 @@ and (voice_jump_10=noone)
 						voice_jump_7);
 }
 else
-if (voice_jump_1>noone)
-and (voice_jump_2>noone)
-and (voice_jump_3>noone)
-and (voice_jump_4>noone)
-and (voice_jump_5>noone)
-and (voice_jump_6>noone)
-and (voice_jump_7>noone)
-and (voice_jump_8>noone)
-and (voice_jump_9=noone)
-and (voice_jump_10=noone)
+if (voice_jump_1> noone)
+and (voice_jump_2> noone)
+and (voice_jump_3> noone)
+and (voice_jump_4> noone)
+and (voice_jump_5> noone)
+and (voice_jump_6> noone)
+and (voice_jump_7> noone)
+and (voice_jump_8> noone)
+and (voice_jump_9= noone)
+and (voice_jump_10= noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1138,16 +1138,16 @@ and (voice_jump_10=noone)
 						voice_jump_8);
 }
 else
-if (voice_jump_1>noone)
-and (voice_jump_2>noone)
-and (voice_jump_3>noone)
-and (voice_jump_4>noone)
-and (voice_jump_5>noone)
-and (voice_jump_6>noone)
-and (voice_jump_7>noone)
-and (voice_jump_8>noone)
-and (voice_jump_9>noone)
-and (voice_jump_10=noone)
+if (voice_jump_1> noone)
+and (voice_jump_2> noone)
+and (voice_jump_3> noone)
+and (voice_jump_4> noone)
+and (voice_jump_5> noone)
+and (voice_jump_6> noone)
+and (voice_jump_7> noone)
+and (voice_jump_8> noone)
+and (voice_jump_9> noone)
+and (voice_jump_10= noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1160,16 +1160,16 @@ and (voice_jump_10=noone)
 						voice_jump_9);
 }
 else
-if (voice_jump_1>noone)
-and (voice_jump_2>noone)
-and (voice_jump_3>noone)
-and (voice_jump_4>noone)
-and (voice_jump_5>noone)
-and (voice_jump_6>noone)
-and (voice_jump_7>noone)
-and (voice_jump_8>noone)
-and (voice_jump_9>noone)
-and (voice_jump_10>noone)
+if (voice_jump_1> noone)
+and (voice_jump_2> noone)
+and (voice_jump_3> noone)
+and (voice_jump_4> noone)
+and (voice_jump_5> noone)
+and (voice_jump_6> noone)
+and (voice_jump_7> noone)
+and (voice_jump_8> noone)
+and (voice_jump_9> noone)
+and (voice_jump_10> noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1185,61 +1185,61 @@ and (voice_jump_10>noone)
 #endregion /*Jump sound variation END*/
 
 #region /*Jump 3rd sound variation*/
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2=noone)
-and (voice_jump_3rd_3=noone)
-and (voice_jump_3rd_4=noone)
-and (voice_jump_3rd_5=noone)
-and (voice_jump_3rd_6=noone)
-and (voice_jump_3rd_7=noone)
-and (voice_jump_3rd_8=noone)
-and (voice_jump_3rd_9=noone)
-and (voice_jump_3rd_10=noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2 = noone)
+and (voice_jump_3rd_3 = noone)
+and (voice_jump_3rd_4 = noone)
+and (voice_jump_3rd_5 = noone)
+and (voice_jump_3rd_6= noone)
+and (voice_jump_3rd_7= noone)
+and (voice_jump_3rd_8= noone)
+and (voice_jump_3rd_9= noone)
+and (voice_jump_3rd_10= noone)
 {
 	voice_jump3rd =voice_jump_3rd_1;
 }
 else
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2>noone)
-and (voice_jump_3rd_3=noone)
-and (voice_jump_3rd_4=noone)
-and (voice_jump_3rd_5=noone)
-and (voice_jump_3rd_6=noone)
-and (voice_jump_3rd_7=noone)
-and (voice_jump_3rd_8=noone)
-and (voice_jump_3rd_9=noone)
-and (voice_jump_3rd_10=noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2> noone)
+and (voice_jump_3rd_3 = noone)
+and (voice_jump_3rd_4 = noone)
+and (voice_jump_3rd_5 = noone)
+and (voice_jump_3rd_6= noone)
+and (voice_jump_3rd_7= noone)
+and (voice_jump_3rd_8= noone)
+and (voice_jump_3rd_9= noone)
+and (voice_jump_3rd_10= noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2);
 }
 else
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2>noone)
-and (voice_jump_3rd_3>noone)
-and (voice_jump_3rd_4=noone)
-and (voice_jump_3rd_5=noone)
-and (voice_jump_3rd_6=noone)
-and (voice_jump_3rd_7=noone)
-and (voice_jump_3rd_8=noone)
-and (voice_jump_3rd_9=noone)
-and (voice_jump_3rd_10=noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2> noone)
+and (voice_jump_3rd_3> noone)
+and (voice_jump_3rd_4 = noone)
+and (voice_jump_3rd_5 = noone)
+and (voice_jump_3rd_6= noone)
+and (voice_jump_3rd_7= noone)
+and (voice_jump_3rd_8= noone)
+and (voice_jump_3rd_9= noone)
+and (voice_jump_3rd_10= noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
 						voice_jump_3rd_3);
 }
 else
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2>noone)
-and (voice_jump_3rd_3>noone)
-and (voice_jump_3rd_4>noone)
-and (voice_jump_3rd_5=noone)
-and (voice_jump_3rd_6=noone)
-and (voice_jump_3rd_7=noone)
-and (voice_jump_3rd_8=noone)
-and (voice_jump_3rd_9=noone)
-and (voice_jump_3rd_10=noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2> noone)
+and (voice_jump_3rd_3> noone)
+and (voice_jump_3rd_4> noone)
+and (voice_jump_3rd_5 = noone)
+and (voice_jump_3rd_6= noone)
+and (voice_jump_3rd_7= noone)
+and (voice_jump_3rd_8= noone)
+and (voice_jump_3rd_9= noone)
+and (voice_jump_3rd_10= noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1247,16 +1247,16 @@ and (voice_jump_3rd_10=noone)
 						voice_jump_3rd_4);
 }
 else
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2>noone)
-and (voice_jump_3rd_3>noone)
-and (voice_jump_3rd_4>noone)
-and (voice_jump_3rd_5>noone)
-and (voice_jump_3rd_6=noone)
-and (voice_jump_3rd_7=noone)
-and (voice_jump_3rd_8=noone)
-and (voice_jump_3rd_9=noone)
-and (voice_jump_3rd_10=noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2> noone)
+and (voice_jump_3rd_3> noone)
+and (voice_jump_3rd_4> noone)
+and (voice_jump_3rd_5> noone)
+and (voice_jump_3rd_6= noone)
+and (voice_jump_3rd_7= noone)
+and (voice_jump_3rd_8= noone)
+and (voice_jump_3rd_9= noone)
+and (voice_jump_3rd_10= noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1265,16 +1265,16 @@ and (voice_jump_3rd_10=noone)
 						voice_jump_3rd_5);
 }
 else
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2>noone)
-and (voice_jump_3rd_3>noone)
-and (voice_jump_3rd_4>noone)
-and (voice_jump_3rd_5>noone)
-and (voice_jump_3rd_6>noone)
-and (voice_jump_3rd_7=noone)
-and (voice_jump_3rd_8=noone)
-and (voice_jump_3rd_9=noone)
-and (voice_jump_3rd_10=noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2> noone)
+and (voice_jump_3rd_3> noone)
+and (voice_jump_3rd_4> noone)
+and (voice_jump_3rd_5> noone)
+and (voice_jump_3rd_6> noone)
+and (voice_jump_3rd_7= noone)
+and (voice_jump_3rd_8= noone)
+and (voice_jump_3rd_9= noone)
+and (voice_jump_3rd_10= noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1284,16 +1284,16 @@ and (voice_jump_3rd_10=noone)
 						voice_jump_3rd_6);
 }
 else
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2>noone)
-and (voice_jump_3rd_3>noone)
-and (voice_jump_3rd_4>noone)
-and (voice_jump_3rd_5>noone)
-and (voice_jump_3rd_6>noone)
-and (voice_jump_3rd_7>noone)
-and (voice_jump_3rd_8=noone)
-and (voice_jump_3rd_9=noone)
-and (voice_jump_3rd_10=noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2> noone)
+and (voice_jump_3rd_3> noone)
+and (voice_jump_3rd_4> noone)
+and (voice_jump_3rd_5> noone)
+and (voice_jump_3rd_6> noone)
+and (voice_jump_3rd_7> noone)
+and (voice_jump_3rd_8= noone)
+and (voice_jump_3rd_9= noone)
+and (voice_jump_3rd_10= noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1304,16 +1304,16 @@ and (voice_jump_3rd_10=noone)
 						voice_jump_3rd_7);
 }
 else
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2>noone)
-and (voice_jump_3rd_3>noone)
-and (voice_jump_3rd_4>noone)
-and (voice_jump_3rd_5>noone)
-and (voice_jump_3rd_6>noone)
-and (voice_jump_3rd_7>noone)
-and (voice_jump_3rd_8>noone)
-and (voice_jump_3rd_9=noone)
-and (voice_jump_3rd_10=noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2> noone)
+and (voice_jump_3rd_3> noone)
+and (voice_jump_3rd_4> noone)
+and (voice_jump_3rd_5> noone)
+and (voice_jump_3rd_6> noone)
+and (voice_jump_3rd_7> noone)
+and (voice_jump_3rd_8> noone)
+and (voice_jump_3rd_9= noone)
+and (voice_jump_3rd_10= noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1325,16 +1325,16 @@ and (voice_jump_3rd_10=noone)
 						voice_jump_3rd_8);
 }
 else
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2>noone)
-and (voice_jump_3rd_3>noone)
-and (voice_jump_3rd_4>noone)
-and (voice_jump_3rd_5>noone)
-and (voice_jump_3rd_6>noone)
-and (voice_jump_3rd_7>noone)
-and (voice_jump_3rd_8>noone)
-and (voice_jump_3rd_9>noone)
-and (voice_jump_3rd_10=noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2> noone)
+and (voice_jump_3rd_3> noone)
+and (voice_jump_3rd_4> noone)
+and (voice_jump_3rd_5> noone)
+and (voice_jump_3rd_6> noone)
+and (voice_jump_3rd_7> noone)
+and (voice_jump_3rd_8> noone)
+and (voice_jump_3rd_9> noone)
+and (voice_jump_3rd_10= noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1347,16 +1347,16 @@ and (voice_jump_3rd_10=noone)
 						voice_jump_3rd_9);
 }
 else
-if (voice_jump_3rd_1>noone)
-and (voice_jump_3rd_2>noone)
-and (voice_jump_3rd_3>noone)
-and (voice_jump_3rd_4>noone)
-and (voice_jump_3rd_5>noone)
-and (voice_jump_3rd_6>noone)
-and (voice_jump_3rd_7>noone)
-and (voice_jump_3rd_8>noone)
-and (voice_jump_3rd_9>noone)
-and (voice_jump_3rd_10>noone)
+if (voice_jump_3rd_1> noone)
+and (voice_jump_3rd_2> noone)
+and (voice_jump_3rd_3> noone)
+and (voice_jump_3rd_4> noone)
+and (voice_jump_3rd_5> noone)
+and (voice_jump_3rd_6> noone)
+and (voice_jump_3rd_7> noone)
+and (voice_jump_3rd_8> noone)
+and (voice_jump_3rd_9> noone)
+and (voice_jump_3rd_10> noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1372,61 +1372,61 @@ and (voice_jump_3rd_10>noone)
 #endregion /*Jump 3rd sound variation END*/
 
 #region /*Jump 2nd sound variation*/
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2=noone)
-and (voice_jump_2nd_3=noone)
-and (voice_jump_2nd_4=noone)
-and (voice_jump_2nd_5=noone)
-and (voice_jump_2nd_6=noone)
-and (voice_jump_2nd_7=noone)
-and (voice_jump_2nd_8=noone)
-and (voice_jump_2nd_9=noone)
-and (voice_jump_2nd_10=noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2 = noone)
+and (voice_jump_2nd_3 = noone)
+and (voice_jump_2nd_4 = noone)
+and (voice_jump_2nd_5 = noone)
+and (voice_jump_2nd_6= noone)
+and (voice_jump_2nd_7= noone)
+and (voice_jump_2nd_8= noone)
+and (voice_jump_2nd_9= noone)
+and (voice_jump_2nd_10= noone)
 {
 	voice_jump2nd =voice_jump_2nd_1;
 }
 else
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2>noone)
-and (voice_jump_2nd_3=noone)
-and (voice_jump_2nd_4=noone)
-and (voice_jump_2nd_5=noone)
-and (voice_jump_2nd_6=noone)
-and (voice_jump_2nd_7=noone)
-and (voice_jump_2nd_8=noone)
-and (voice_jump_2nd_9=noone)
-and (voice_jump_2nd_10=noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2> noone)
+and (voice_jump_2nd_3 = noone)
+and (voice_jump_2nd_4 = noone)
+and (voice_jump_2nd_5 = noone)
+and (voice_jump_2nd_6= noone)
+and (voice_jump_2nd_7= noone)
+and (voice_jump_2nd_8= noone)
+and (voice_jump_2nd_9= noone)
+and (voice_jump_2nd_10= noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2);
 }
 else
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2>noone)
-and (voice_jump_2nd_3>noone)
-and (voice_jump_2nd_4=noone)
-and (voice_jump_2nd_5=noone)
-and (voice_jump_2nd_6=noone)
-and (voice_jump_2nd_7=noone)
-and (voice_jump_2nd_8=noone)
-and (voice_jump_2nd_9=noone)
-and (voice_jump_2nd_10=noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2> noone)
+and (voice_jump_2nd_3> noone)
+and (voice_jump_2nd_4 = noone)
+and (voice_jump_2nd_5 = noone)
+and (voice_jump_2nd_6= noone)
+and (voice_jump_2nd_7= noone)
+and (voice_jump_2nd_8= noone)
+and (voice_jump_2nd_9= noone)
+and (voice_jump_2nd_10= noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
 						voice_jump_2nd_3);
 }
 else
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2>noone)
-and (voice_jump_2nd_3>noone)
-and (voice_jump_2nd_4>noone)
-and (voice_jump_2nd_5=noone)
-and (voice_jump_2nd_6=noone)
-and (voice_jump_2nd_7=noone)
-and (voice_jump_2nd_8=noone)
-and (voice_jump_2nd_9=noone)
-and (voice_jump_2nd_10=noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2> noone)
+and (voice_jump_2nd_3> noone)
+and (voice_jump_2nd_4> noone)
+and (voice_jump_2nd_5 = noone)
+and (voice_jump_2nd_6= noone)
+and (voice_jump_2nd_7= noone)
+and (voice_jump_2nd_8= noone)
+and (voice_jump_2nd_9= noone)
+and (voice_jump_2nd_10= noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1434,16 +1434,16 @@ and (voice_jump_2nd_10=noone)
 						voice_jump_2nd_4);
 }
 else
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2>noone)
-and (voice_jump_2nd_3>noone)
-and (voice_jump_2nd_4>noone)
-and (voice_jump_2nd_5>noone)
-and (voice_jump_2nd_6=noone)
-and (voice_jump_2nd_7=noone)
-and (voice_jump_2nd_8=noone)
-and (voice_jump_2nd_9=noone)
-and (voice_jump_2nd_10=noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2> noone)
+and (voice_jump_2nd_3> noone)
+and (voice_jump_2nd_4> noone)
+and (voice_jump_2nd_5> noone)
+and (voice_jump_2nd_6= noone)
+and (voice_jump_2nd_7= noone)
+and (voice_jump_2nd_8= noone)
+and (voice_jump_2nd_9= noone)
+and (voice_jump_2nd_10= noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1452,16 +1452,16 @@ and (voice_jump_2nd_10=noone)
 						voice_jump_2nd_5);
 }
 else
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2>noone)
-and (voice_jump_2nd_3>noone)
-and (voice_jump_2nd_4>noone)
-and (voice_jump_2nd_5>noone)
-and (voice_jump_2nd_6>noone)
-and (voice_jump_2nd_7=noone)
-and (voice_jump_2nd_8=noone)
-and (voice_jump_2nd_9=noone)
-and (voice_jump_2nd_10=noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2> noone)
+and (voice_jump_2nd_3> noone)
+and (voice_jump_2nd_4> noone)
+and (voice_jump_2nd_5> noone)
+and (voice_jump_2nd_6> noone)
+and (voice_jump_2nd_7= noone)
+and (voice_jump_2nd_8= noone)
+and (voice_jump_2nd_9= noone)
+and (voice_jump_2nd_10= noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1471,16 +1471,16 @@ and (voice_jump_2nd_10=noone)
 						voice_jump_2nd_6);
 }
 else
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2>noone)
-and (voice_jump_2nd_3>noone)
-and (voice_jump_2nd_4>noone)
-and (voice_jump_2nd_5>noone)
-and (voice_jump_2nd_6>noone)
-and (voice_jump_2nd_7>noone)
-and (voice_jump_2nd_8=noone)
-and (voice_jump_2nd_9=noone)
-and (voice_jump_2nd_10=noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2> noone)
+and (voice_jump_2nd_3> noone)
+and (voice_jump_2nd_4> noone)
+and (voice_jump_2nd_5> noone)
+and (voice_jump_2nd_6> noone)
+and (voice_jump_2nd_7> noone)
+and (voice_jump_2nd_8= noone)
+and (voice_jump_2nd_9= noone)
+and (voice_jump_2nd_10= noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1491,16 +1491,16 @@ and (voice_jump_2nd_10=noone)
 						voice_jump_2nd_7);
 }
 else
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2>noone)
-and (voice_jump_2nd_3>noone)
-and (voice_jump_2nd_4>noone)
-and (voice_jump_2nd_5>noone)
-and (voice_jump_2nd_6>noone)
-and (voice_jump_2nd_7>noone)
-and (voice_jump_2nd_8>noone)
-and (voice_jump_2nd_9=noone)
-and (voice_jump_2nd_10=noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2> noone)
+and (voice_jump_2nd_3> noone)
+and (voice_jump_2nd_4> noone)
+and (voice_jump_2nd_5> noone)
+and (voice_jump_2nd_6> noone)
+and (voice_jump_2nd_7> noone)
+and (voice_jump_2nd_8> noone)
+and (voice_jump_2nd_9= noone)
+and (voice_jump_2nd_10= noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1512,16 +1512,16 @@ and (voice_jump_2nd_10=noone)
 						voice_jump_2nd_8);
 }
 else
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2>noone)
-and (voice_jump_2nd_3>noone)
-and (voice_jump_2nd_4>noone)
-and (voice_jump_2nd_5>noone)
-and (voice_jump_2nd_6>noone)
-and (voice_jump_2nd_7>noone)
-and (voice_jump_2nd_8>noone)
-and (voice_jump_2nd_9>noone)
-and (voice_jump_2nd_10=noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2> noone)
+and (voice_jump_2nd_3> noone)
+and (voice_jump_2nd_4> noone)
+and (voice_jump_2nd_5> noone)
+and (voice_jump_2nd_6> noone)
+and (voice_jump_2nd_7> noone)
+and (voice_jump_2nd_8> noone)
+and (voice_jump_2nd_9> noone)
+and (voice_jump_2nd_10= noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1534,16 +1534,16 @@ and (voice_jump_2nd_10=noone)
 						voice_jump_2nd_9);
 }
 else
-if (voice_jump_2nd_1>noone)
-and (voice_jump_2nd_2>noone)
-and (voice_jump_2nd_3>noone)
-and (voice_jump_2nd_4>noone)
-and (voice_jump_2nd_5>noone)
-and (voice_jump_2nd_6>noone)
-and (voice_jump_2nd_7>noone)
-and (voice_jump_2nd_8>noone)
-and (voice_jump_2nd_9>noone)
-and (voice_jump_2nd_10>noone)
+if (voice_jump_2nd_1> noone)
+and (voice_jump_2nd_2> noone)
+and (voice_jump_2nd_3> noone)
+and (voice_jump_2nd_4> noone)
+and (voice_jump_2nd_5> noone)
+and (voice_jump_2nd_6> noone)
+and (voice_jump_2nd_7> noone)
+and (voice_jump_2nd_8> noone)
+and (voice_jump_2nd_9> noone)
+and (voice_jump_2nd_10> noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1559,61 +1559,61 @@ and (voice_jump_2nd_10>noone)
 #endregion /*Jump 2nd sound variation END*/
 
 #region /*Get invincibility sound variation*/
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2=noone)
-and (voice_get_invincibility_3=noone)
-and (voice_get_invincibility_4=noone)
-and (voice_get_invincibility_5=noone)
-and (voice_get_invincibility_6=noone)
-and (voice_get_invincibility_7=noone)
-and (voice_get_invincibility_8=noone)
-and (voice_get_invincibility_9=noone)
-and (voice_get_invincibility_10=noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2 = noone)
+and (voice_get_invincibility_3 = noone)
+and (voice_get_invincibility_4 = noone)
+and (voice_get_invincibility_5 = noone)
+and (voice_get_invincibility_6= noone)
+and (voice_get_invincibility_7= noone)
+and (voice_get_invincibility_8= noone)
+and (voice_get_invincibility_9= noone)
+and (voice_get_invincibility_10= noone)
 {
 	voice_get_star=voice_get_invincibility_1;
 }
 else
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2>noone)
-and (voice_get_invincibility_3=noone)
-and (voice_get_invincibility_4=noone)
-and (voice_get_invincibility_5=noone)
-and (voice_get_invincibility_6=noone)
-and (voice_get_invincibility_7=noone)
-and (voice_get_invincibility_8=noone)
-and (voice_get_invincibility_9=noone)
-and (voice_get_invincibility_10=noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2> noone)
+and (voice_get_invincibility_3 = noone)
+and (voice_get_invincibility_4 = noone)
+and (voice_get_invincibility_5 = noone)
+and (voice_get_invincibility_6= noone)
+and (voice_get_invincibility_7= noone)
+and (voice_get_invincibility_8= noone)
+and (voice_get_invincibility_9= noone)
+and (voice_get_invincibility_10= noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2);
 }
 else
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2>noone)
-and (voice_get_invincibility_3>noone)
-and (voice_get_invincibility_4=noone)
-and (voice_get_invincibility_5=noone)
-and (voice_get_invincibility_6=noone)
-and (voice_get_invincibility_7=noone)
-and (voice_get_invincibility_8=noone)
-and (voice_get_invincibility_9=noone)
-and (voice_get_invincibility_10=noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2> noone)
+and (voice_get_invincibility_3> noone)
+and (voice_get_invincibility_4 = noone)
+and (voice_get_invincibility_5 = noone)
+and (voice_get_invincibility_6= noone)
+and (voice_get_invincibility_7= noone)
+and (voice_get_invincibility_8= noone)
+and (voice_get_invincibility_9= noone)
+and (voice_get_invincibility_10= noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3);
 }
 else
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2>noone)
-and (voice_get_invincibility_3>noone)
-and (voice_get_invincibility_4>noone)
-and (voice_get_invincibility_5=noone)
-and (voice_get_invincibility_6=noone)
-and (voice_get_invincibility_7=noone)
-and (voice_get_invincibility_8=noone)
-and (voice_get_invincibility_9=noone)
-and (voice_get_invincibility_10=noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2> noone)
+and (voice_get_invincibility_3> noone)
+and (voice_get_invincibility_4> noone)
+and (voice_get_invincibility_5 = noone)
+and (voice_get_invincibility_6= noone)
+and (voice_get_invincibility_7= noone)
+and (voice_get_invincibility_8= noone)
+and (voice_get_invincibility_9= noone)
+and (voice_get_invincibility_10= noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1621,16 +1621,16 @@ and (voice_get_invincibility_10=noone)
 						voice_get_invincibility_4);
 }
 else
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2>noone)
-and (voice_get_invincibility_3>noone)
-and (voice_get_invincibility_4>noone)
-and (voice_get_invincibility_5>noone)
-and (voice_get_invincibility_6=noone)
-and (voice_get_invincibility_7=noone)
-and (voice_get_invincibility_8=noone)
-and (voice_get_invincibility_9=noone)
-and (voice_get_invincibility_10=noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2> noone)
+and (voice_get_invincibility_3> noone)
+and (voice_get_invincibility_4> noone)
+and (voice_get_invincibility_5> noone)
+and (voice_get_invincibility_6= noone)
+and (voice_get_invincibility_7= noone)
+and (voice_get_invincibility_8= noone)
+and (voice_get_invincibility_9= noone)
+and (voice_get_invincibility_10= noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1639,16 +1639,16 @@ and (voice_get_invincibility_10=noone)
 						voice_get_invincibility_5);
 }
 else
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2>noone)
-and (voice_get_invincibility_3>noone)
-and (voice_get_invincibility_4>noone)
-and (voice_get_invincibility_5>noone)
-and (voice_get_invincibility_6>noone)
-and (voice_get_invincibility_7=noone)
-and (voice_get_invincibility_8=noone)
-and (voice_get_invincibility_9=noone)
-and (voice_get_invincibility_10=noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2> noone)
+and (voice_get_invincibility_3> noone)
+and (voice_get_invincibility_4> noone)
+and (voice_get_invincibility_5> noone)
+and (voice_get_invincibility_6> noone)
+and (voice_get_invincibility_7= noone)
+and (voice_get_invincibility_8= noone)
+and (voice_get_invincibility_9= noone)
+and (voice_get_invincibility_10= noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1658,16 +1658,16 @@ and (voice_get_invincibility_10=noone)
 						voice_get_invincibility_6);
 }
 else
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2>noone)
-and (voice_get_invincibility_3>noone)
-and (voice_get_invincibility_4>noone)
-and (voice_get_invincibility_5>noone)
-and (voice_get_invincibility_6>noone)
-and (voice_get_invincibility_7>noone)
-and (voice_get_invincibility_8=noone)
-and (voice_get_invincibility_9=noone)
-and (voice_get_invincibility_10=noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2> noone)
+and (voice_get_invincibility_3> noone)
+and (voice_get_invincibility_4> noone)
+and (voice_get_invincibility_5> noone)
+and (voice_get_invincibility_6> noone)
+and (voice_get_invincibility_7> noone)
+and (voice_get_invincibility_8= noone)
+and (voice_get_invincibility_9= noone)
+and (voice_get_invincibility_10= noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1678,16 +1678,16 @@ and (voice_get_invincibility_10=noone)
 						voice_get_invincibility_7);
 }
 else
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2>noone)
-and (voice_get_invincibility_3>noone)
-and (voice_get_invincibility_4>noone)
-and (voice_get_invincibility_5>noone)
-and (voice_get_invincibility_6>noone)
-and (voice_get_invincibility_7>noone)
-and (voice_get_invincibility_8>noone)
-and (voice_get_invincibility_9=noone)
-and (voice_get_invincibility_10=noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2> noone)
+and (voice_get_invincibility_3> noone)
+and (voice_get_invincibility_4> noone)
+and (voice_get_invincibility_5> noone)
+and (voice_get_invincibility_6> noone)
+and (voice_get_invincibility_7> noone)
+and (voice_get_invincibility_8> noone)
+and (voice_get_invincibility_9= noone)
+and (voice_get_invincibility_10= noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1699,16 +1699,16 @@ and (voice_get_invincibility_10=noone)
 						voice_get_invincibility_8);
 }
 else
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2>noone)
-and (voice_get_invincibility_3>noone)
-and (voice_get_invincibility_4>noone)
-and (voice_get_invincibility_5>noone)
-and (voice_get_invincibility_6>noone)
-and (voice_get_invincibility_7>noone)
-and (voice_get_invincibility_8>noone)
-and (voice_get_invincibility_9>noone)
-and (voice_get_invincibility_10=noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2> noone)
+and (voice_get_invincibility_3> noone)
+and (voice_get_invincibility_4> noone)
+and (voice_get_invincibility_5> noone)
+and (voice_get_invincibility_6> noone)
+and (voice_get_invincibility_7> noone)
+and (voice_get_invincibility_8> noone)
+and (voice_get_invincibility_9> noone)
+and (voice_get_invincibility_10= noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1721,16 +1721,16 @@ and (voice_get_invincibility_10=noone)
 						voice_get_invincibility_9);
 }
 else
-if (voice_get_invincibility_1>noone)
-and (voice_get_invincibility_2>noone)
-and (voice_get_invincibility_3>noone)
-and (voice_get_invincibility_4>noone)
-and (voice_get_invincibility_5>noone)
-and (voice_get_invincibility_6>noone)
-and (voice_get_invincibility_7>noone)
-and (voice_get_invincibility_8>noone)
-and (voice_get_invincibility_9>noone)
-and (voice_get_invincibility_10>noone)
+if (voice_get_invincibility_1> noone)
+and (voice_get_invincibility_2> noone)
+and (voice_get_invincibility_3> noone)
+and (voice_get_invincibility_4> noone)
+and (voice_get_invincibility_5> noone)
+and (voice_get_invincibility_6> noone)
+and (voice_get_invincibility_7> noone)
+and (voice_get_invincibility_8> noone)
+and (voice_get_invincibility_9> noone)
+and (voice_get_invincibility_10> noone)
 {
 	voice_get_star=choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
@@ -1746,98 +1746,98 @@ and (voice_get_invincibility_10>noone)
 #endregion /*Get invincibility sound variation END*/
 
 #region /*Enter goal sound variation*/
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2=noone)
-and (voice_enter_goal_3=noone)
-and (voice_enter_goal_4=noone)
-and (voice_enter_goal_5=noone)
-and (voice_enter_goal_6=noone)
-and (voice_enter_goal_7=noone)
-and (voice_enter_goal_8=noone)
-and (voice_enter_goal_9=noone)
-and (voice_enter_goal_10=noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2 = noone)
+and (voice_enter_goal_3 = noone)
+and (voice_enter_goal_4 = noone)
+and (voice_enter_goal_5 = noone)
+and (voice_enter_goal_6= noone)
+and (voice_enter_goal_7= noone)
+and (voice_enter_goal_8= noone)
+and (voice_enter_goal_9= noone)
+and (voice_enter_goal_10= noone)
 {
-	voice_enter_goal=voice_enter_goal_1;
+	voice_enter_goal =voice_enter_goal_1;
 }
 else
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2>noone)
-and (voice_enter_goal_3=noone)
-and (voice_enter_goal_4=noone)
-and (voice_enter_goal_5=noone)
-and (voice_enter_goal_6=noone)
-and (voice_enter_goal_7=noone)
-and (voice_enter_goal_8=noone)
-and (voice_enter_goal_9=noone)
-and (voice_enter_goal_10=noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2> noone)
+and (voice_enter_goal_3 = noone)
+and (voice_enter_goal_4 = noone)
+and (voice_enter_goal_5 = noone)
+and (voice_enter_goal_6= noone)
+and (voice_enter_goal_7= noone)
+and (voice_enter_goal_8= noone)
+and (voice_enter_goal_9= noone)
+and (voice_enter_goal_10= noone)
 {
-	voice_enter_goal=choose(voice_enter_goal_1,
+	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2);
 }
 else
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2>noone)
-and (voice_enter_goal_3>noone)
-and (voice_enter_goal_4=noone)
-and (voice_enter_goal_5=noone)
-and (voice_enter_goal_6=noone)
-and (voice_enter_goal_7=noone)
-and (voice_enter_goal_8=noone)
-and (voice_enter_goal_9=noone)
-and (voice_enter_goal_10=noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2> noone)
+and (voice_enter_goal_3> noone)
+and (voice_enter_goal_4 = noone)
+and (voice_enter_goal_5 = noone)
+and (voice_enter_goal_6= noone)
+and (voice_enter_goal_7= noone)
+and (voice_enter_goal_8= noone)
+and (voice_enter_goal_9= noone)
+and (voice_enter_goal_10= noone)
 {
-	voice_enter_goal=choose(voice_enter_goal_1,
+	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3);
 }
 else
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2>noone)
-and (voice_enter_goal_3>noone)
-and (voice_enter_goal_4>noone)
-and (voice_enter_goal_5=noone)
-and (voice_enter_goal_6=noone)
-and (voice_enter_goal_7=noone)
-and (voice_enter_goal_8=noone)
-and (voice_enter_goal_9=noone)
-and (voice_enter_goal_10=noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2> noone)
+and (voice_enter_goal_3> noone)
+and (voice_enter_goal_4> noone)
+and (voice_enter_goal_5 = noone)
+and (voice_enter_goal_6= noone)
+and (voice_enter_goal_7= noone)
+and (voice_enter_goal_8= noone)
+and (voice_enter_goal_9= noone)
+and (voice_enter_goal_10= noone)
 {
-	voice_enter_goal=choose(voice_enter_goal_1,
+	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4);
 }
 else
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2>noone)
-and (voice_enter_goal_3>noone)
-and (voice_enter_goal_4>noone)
-and (voice_enter_goal_5>noone)
-and (voice_enter_goal_6=noone)
-and (voice_enter_goal_7=noone)
-and (voice_enter_goal_8=noone)
-and (voice_enter_goal_9=noone)
-and (voice_enter_goal_10=noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2> noone)
+and (voice_enter_goal_3> noone)
+and (voice_enter_goal_4> noone)
+and (voice_enter_goal_5> noone)
+and (voice_enter_goal_6= noone)
+and (voice_enter_goal_7= noone)
+and (voice_enter_goal_8= noone)
+and (voice_enter_goal_9= noone)
+and (voice_enter_goal_10= noone)
 {
-	voice_enter_goal=choose(voice_enter_goal_1,
+	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
 						voice_enter_goal_5);
 }
 else
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2>noone)
-and (voice_enter_goal_3>noone)
-and (voice_enter_goal_4>noone)
-and (voice_enter_goal_5>noone)
-and (voice_enter_goal_6>noone)
-and (voice_enter_goal_7=noone)
-and (voice_enter_goal_8=noone)
-and (voice_enter_goal_9=noone)
-and (voice_enter_goal_10=noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2> noone)
+and (voice_enter_goal_3> noone)
+and (voice_enter_goal_4> noone)
+and (voice_enter_goal_5> noone)
+and (voice_enter_goal_6> noone)
+and (voice_enter_goal_7= noone)
+and (voice_enter_goal_8= noone)
+and (voice_enter_goal_9= noone)
+and (voice_enter_goal_10= noone)
 {
-	voice_enter_goal=choose(voice_enter_goal_1,
+	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1845,18 +1845,18 @@ and (voice_enter_goal_10=noone)
 						voice_enter_goal_6);
 }
 else
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2>noone)
-and (voice_enter_goal_3>noone)
-and (voice_enter_goal_4>noone)
-and (voice_enter_goal_5>noone)
-and (voice_enter_goal_6>noone)
-and (voice_enter_goal_7>noone)
-and (voice_enter_goal_8=noone)
-and (voice_enter_goal_9=noone)
-and (voice_enter_goal_10=noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2> noone)
+and (voice_enter_goal_3> noone)
+and (voice_enter_goal_4> noone)
+and (voice_enter_goal_5> noone)
+and (voice_enter_goal_6> noone)
+and (voice_enter_goal_7> noone)
+and (voice_enter_goal_8= noone)
+and (voice_enter_goal_9= noone)
+and (voice_enter_goal_10= noone)
 {
-	voice_enter_goal=choose(voice_enter_goal_1,
+	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1865,18 +1865,18 @@ and (voice_enter_goal_10=noone)
 						voice_enter_goal_7);
 }
 else
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2>noone)
-and (voice_enter_goal_3>noone)
-and (voice_enter_goal_4>noone)
-and (voice_enter_goal_5>noone)
-and (voice_enter_goal_6>noone)
-and (voice_enter_goal_7>noone)
-and (voice_enter_goal_8>noone)
-and (voice_enter_goal_9=noone)
-and (voice_enter_goal_10=noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2> noone)
+and (voice_enter_goal_3> noone)
+and (voice_enter_goal_4> noone)
+and (voice_enter_goal_5> noone)
+and (voice_enter_goal_6> noone)
+and (voice_enter_goal_7> noone)
+and (voice_enter_goal_8> noone)
+and (voice_enter_goal_9= noone)
+and (voice_enter_goal_10= noone)
 {
-	voice_enter_goal=choose(voice_enter_goal_1,
+	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1886,18 +1886,18 @@ and (voice_enter_goal_10=noone)
 						voice_enter_goal_8);
 }
 else
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2>noone)
-and (voice_enter_goal_3>noone)
-and (voice_enter_goal_4>noone)
-and (voice_enter_goal_5>noone)
-and (voice_enter_goal_6>noone)
-and (voice_enter_goal_7>noone)
-and (voice_enter_goal_8>noone)
-and (voice_enter_goal_9>noone)
-and (voice_enter_goal_10=noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2> noone)
+and (voice_enter_goal_3> noone)
+and (voice_enter_goal_4> noone)
+and (voice_enter_goal_5> noone)
+and (voice_enter_goal_6> noone)
+and (voice_enter_goal_7> noone)
+and (voice_enter_goal_8> noone)
+and (voice_enter_goal_9> noone)
+and (voice_enter_goal_10= noone)
 {
-	voice_enter_goal=choose(voice_enter_goal_1,
+	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1908,18 +1908,18 @@ and (voice_enter_goal_10=noone)
 						voice_enter_goal_9);
 }
 else
-if (voice_enter_goal_1>noone)
-and (voice_enter_goal_2>noone)
-and (voice_enter_goal_3>noone)
-and (voice_enter_goal_4>noone)
-and (voice_enter_goal_5>noone)
-and (voice_enter_goal_6>noone)
-and (voice_enter_goal_7>noone)
-and (voice_enter_goal_8>noone)
-and (voice_enter_goal_9>noone)
-and (voice_enter_goal_10>noone)
+if (voice_enter_goal_1> noone)
+and (voice_enter_goal_2> noone)
+and (voice_enter_goal_3> noone)
+and (voice_enter_goal_4> noone)
+and (voice_enter_goal_5> noone)
+and (voice_enter_goal_6> noone)
+and (voice_enter_goal_7> noone)
+and (voice_enter_goal_8> noone)
+and (voice_enter_goal_9> noone)
+and (voice_enter_goal_10> noone)
 {
-	voice_enter_goal=choose(voice_enter_goal_1,
+	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1933,61 +1933,61 @@ and (voice_enter_goal_10>noone)
 #endregion /*Enter goal sound variation END*/
 
 #region /*Dive sound variation*/
-if (voice_dive_1>noone)
-and (voice_dive_2=noone)
-and (voice_dive_3=noone)
-and (voice_dive_4=noone)
-and (voice_dive_5=noone)
-and (voice_dive_6=noone)
-and (voice_dive_7=noone)
-and (voice_dive_8=noone)
-and (voice_dive_9=noone)
-and (voice_dive_10=noone)
+if (voice_dive_1> noone)
+and (voice_dive_2 = noone)
+and (voice_dive_3 = noone)
+and (voice_dive_4 = noone)
+and (voice_dive_5 = noone)
+and (voice_dive_6= noone)
+and (voice_dive_7= noone)
+and (voice_dive_8= noone)
+and (voice_dive_9= noone)
+and (voice_dive_10= noone)
 {
 	voice_dive =voice_dive_1;
 }
 else
-if (voice_dive_1>noone)
-and (voice_dive_2>noone)
-and (voice_dive_3=noone)
-and (voice_dive_4=noone)
-and (voice_dive_5=noone)
-and (voice_dive_6=noone)
-and (voice_dive_7=noone)
-and (voice_dive_8=noone)
-and (voice_dive_9=noone)
-and (voice_dive_10=noone)
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3 = noone)
+and (voice_dive_4 = noone)
+and (voice_dive_5 = noone)
+and (voice_dive_6= noone)
+and (voice_dive_7= noone)
+and (voice_dive_8= noone)
+and (voice_dive_9= noone)
+and (voice_dive_10= noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2);
 }
 else
-if (voice_dive_1>noone)
-and (voice_dive_2>noone)
-and (voice_dive_3>noone)
-and (voice_dive_4=noone)
-and (voice_dive_5=noone)
-and (voice_dive_6=noone)
-and (voice_dive_7=noone)
-and (voice_dive_8=noone)
-and (voice_dive_9=noone)
-and (voice_dive_10=noone)
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4 = noone)
+and (voice_dive_5 = noone)
+and (voice_dive_6= noone)
+and (voice_dive_7= noone)
+and (voice_dive_8= noone)
+and (voice_dive_9= noone)
+and (voice_dive_10= noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
 						voice_dive_3);
 }
 else
-if (voice_dive_1>noone)
-and (voice_dive_2>noone)
-and (voice_dive_3>noone)
-and (voice_dive_4>noone)
-and (voice_dive_5=noone)
-and (voice_dive_6=noone)
-and (voice_dive_7=noone)
-and (voice_dive_8=noone)
-and (voice_dive_9=noone)
-and (voice_dive_10=noone)
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5 = noone)
+and (voice_dive_6= noone)
+and (voice_dive_7= noone)
+and (voice_dive_8= noone)
+and (voice_dive_9= noone)
+and (voice_dive_10= noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -1995,16 +1995,16 @@ and (voice_dive_10=noone)
 						voice_dive_4);
 }
 else
-if (voice_dive_1>noone)
-and (voice_dive_2>noone)
-and (voice_dive_3>noone)
-and (voice_dive_4>noone)
-and (voice_dive_5>noone)
-and (voice_dive_6=noone)
-and (voice_dive_7=noone)
-and (voice_dive_8=noone)
-and (voice_dive_9=noone)
-and (voice_dive_10=noone)
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6= noone)
+and (voice_dive_7= noone)
+and (voice_dive_8= noone)
+and (voice_dive_9= noone)
+and (voice_dive_10= noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2013,16 +2013,16 @@ and (voice_dive_10=noone)
 						voice_dive_5);
 }
 else
-if (voice_dive_1>noone)
-and (voice_dive_2>noone)
-and (voice_dive_3>noone)
-and (voice_dive_4>noone)
-and (voice_dive_5>noone)
-and (voice_dive_6>noone)
-and (voice_dive_7=noone)
-and (voice_dive_8=noone)
-and (voice_dive_9=noone)
-and (voice_dive_10=noone)
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7= noone)
+and (voice_dive_8= noone)
+and (voice_dive_9= noone)
+and (voice_dive_10= noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2032,16 +2032,16 @@ and (voice_dive_10=noone)
 						voice_dive_6);
 }
 else
-if (voice_dive_1>noone)
-and (voice_dive_2>noone)
-and (voice_dive_3>noone)
-and (voice_dive_4>noone)
-and (voice_dive_5>noone)
-and (voice_dive_6>noone)
-and (voice_dive_7>noone)
-and (voice_dive_8=noone)
-and (voice_dive_9=noone)
-and (voice_dive_10=noone)
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8= noone)
+and (voice_dive_9= noone)
+and (voice_dive_10= noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2052,16 +2052,16 @@ and (voice_dive_10=noone)
 						voice_dive_7);
 }
 else
-if (voice_dive_1>noone)
-and (voice_dive_2>noone)
-and (voice_dive_3>noone)
-and (voice_dive_4>noone)
-and (voice_dive_5>noone)
-and (voice_dive_6>noone)
-and (voice_dive_7>noone)
-and (voice_dive_8>noone)
-and (voice_dive_9=noone)
-and (voice_dive_10=noone)
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9= noone)
+and (voice_dive_10= noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2073,16 +2073,16 @@ and (voice_dive_10=noone)
 						voice_dive_8);
 }
 else
-if (voice_dive_1>noone)
-and (voice_dive_2>noone)
-and (voice_dive_3>noone)
-and (voice_dive_4>noone)
-and (voice_dive_5>noone)
-and (voice_dive_6>noone)
-and (voice_dive_7>noone)
-and (voice_dive_8>noone)
-and (voice_dive_9>noone)
-and (voice_dive_10=noone)
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10= noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2095,16 +2095,16 @@ and (voice_dive_10=noone)
 						voice_dive_9);
 }
 else
-if (voice_dive_1>noone)
-and (voice_dive_2>noone)
-and (voice_dive_3>noone)
-and (voice_dive_4>noone)
-and (voice_dive_5>noone)
-and (voice_dive_6>noone)
-and (voice_dive_7>noone)
-and (voice_dive_8>noone)
-and (voice_dive_9>noone)
-and (voice_dive_10>noone)
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10> noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2120,61 +2120,61 @@ and (voice_dive_10>noone)
 #endregion /*Dive sound variation END*/
 
 #region /*Damage sound variation*/
-if (voice_damage_1>noone)
-and (voice_damage_2=noone)
-and (voice_damage_3=noone)
-and (voice_damage_4=noone)
-and (voice_damage_5=noone)
-and (voice_damage_6=noone)
-and (voice_damage_7=noone)
-and (voice_damage_8=noone)
-and (voice_damage_9=noone)
-and (voice_damage_10=noone)
+if (voice_damage_1> noone)
+and (voice_damage_2 = noone)
+and (voice_damage_3 = noone)
+and (voice_damage_4 = noone)
+and (voice_damage_5 = noone)
+and (voice_damage_6= noone)
+and (voice_damage_7= noone)
+and (voice_damage_8= noone)
+and (voice_damage_9= noone)
+and (voice_damage_10= noone)
 {
 	voice_damage =voice_damage_1;
 }
 else
-if (voice_damage_1>noone)
-and (voice_damage_2>noone)
-and (voice_damage_3=noone)
-and (voice_damage_4=noone)
-and (voice_damage_5=noone)
-and (voice_damage_6=noone)
-and (voice_damage_7=noone)
-and (voice_damage_8=noone)
-and (voice_damage_9=noone)
-and (voice_damage_10=noone)
+if (voice_damage_1> noone)
+and (voice_damage_2> noone)
+and (voice_damage_3 = noone)
+and (voice_damage_4 = noone)
+and (voice_damage_5 = noone)
+and (voice_damage_6= noone)
+and (voice_damage_7= noone)
+and (voice_damage_8= noone)
+and (voice_damage_9= noone)
+and (voice_damage_10= noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2);
 }
 else
-if (voice_damage_1>noone)
-and (voice_damage_2>noone)
-and (voice_damage_3>noone)
-and (voice_damage_4=noone)
-and (voice_damage_5=noone)
-and (voice_damage_6=noone)
-and (voice_damage_7=noone)
-and (voice_damage_8=noone)
-and (voice_damage_9=noone)
-and (voice_damage_10=noone)
+if (voice_damage_1> noone)
+and (voice_damage_2> noone)
+and (voice_damage_3> noone)
+and (voice_damage_4 = noone)
+and (voice_damage_5 = noone)
+and (voice_damage_6= noone)
+and (voice_damage_7= noone)
+and (voice_damage_8= noone)
+and (voice_damage_9= noone)
+and (voice_damage_10= noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
 						voice_damage_3);
 }
 else
-if (voice_damage_1>noone)
-and (voice_damage_2>noone)
-and (voice_damage_3>noone)
-and (voice_damage_4>noone)
-and (voice_damage_5=noone)
-and (voice_damage_6=noone)
-and (voice_damage_7=noone)
-and (voice_damage_8=noone)
-and (voice_damage_9=noone)
-and (voice_damage_10=noone)
+if (voice_damage_1> noone)
+and (voice_damage_2> noone)
+and (voice_damage_3> noone)
+and (voice_damage_4> noone)
+and (voice_damage_5 = noone)
+and (voice_damage_6= noone)
+and (voice_damage_7= noone)
+and (voice_damage_8= noone)
+and (voice_damage_9= noone)
+and (voice_damage_10= noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2182,16 +2182,16 @@ and (voice_damage_10=noone)
 						voice_damage_4);
 }
 else
-if (voice_damage_1>noone)
-and (voice_damage_2>noone)
-and (voice_damage_3>noone)
-and (voice_damage_4>noone)
-and (voice_damage_5>noone)
-and (voice_damage_6=noone)
-and (voice_damage_7=noone)
-and (voice_damage_8=noone)
-and (voice_damage_9=noone)
-and (voice_damage_10=noone)
+if (voice_damage_1> noone)
+and (voice_damage_2> noone)
+and (voice_damage_3> noone)
+and (voice_damage_4> noone)
+and (voice_damage_5> noone)
+and (voice_damage_6= noone)
+and (voice_damage_7= noone)
+and (voice_damage_8= noone)
+and (voice_damage_9= noone)
+and (voice_damage_10= noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2200,16 +2200,16 @@ and (voice_damage_10=noone)
 						voice_damage_5);
 }
 else
-if (voice_damage_1>noone)
-and (voice_damage_2>noone)
-and (voice_damage_3>noone)
-and (voice_damage_4>noone)
-and (voice_damage_5>noone)
-and (voice_damage_6>noone)
-and (voice_damage_7=noone)
-and (voice_damage_8=noone)
-and (voice_damage_9=noone)
-and (voice_damage_10=noone)
+if (voice_damage_1> noone)
+and (voice_damage_2> noone)
+and (voice_damage_3> noone)
+and (voice_damage_4> noone)
+and (voice_damage_5> noone)
+and (voice_damage_6> noone)
+and (voice_damage_7= noone)
+and (voice_damage_8= noone)
+and (voice_damage_9= noone)
+and (voice_damage_10= noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2219,16 +2219,16 @@ and (voice_damage_10=noone)
 						voice_damage_6);
 }
 else
-if (voice_damage_1>noone)
-and (voice_damage_2>noone)
-and (voice_damage_3>noone)
-and (voice_damage_4>noone)
-and (voice_damage_5>noone)
-and (voice_damage_6>noone)
-and (voice_damage_7>noone)
-and (voice_damage_8=noone)
-and (voice_damage_9=noone)
-and (voice_damage_10=noone)
+if (voice_damage_1> noone)
+and (voice_damage_2> noone)
+and (voice_damage_3> noone)
+and (voice_damage_4> noone)
+and (voice_damage_5> noone)
+and (voice_damage_6> noone)
+and (voice_damage_7> noone)
+and (voice_damage_8= noone)
+and (voice_damage_9= noone)
+and (voice_damage_10= noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2239,16 +2239,16 @@ and (voice_damage_10=noone)
 						voice_damage_7);
 }
 else
-if (voice_damage_1>noone)
-and (voice_damage_2>noone)
-and (voice_damage_3>noone)
-and (voice_damage_4>noone)
-and (voice_damage_5>noone)
-and (voice_damage_6>noone)
-and (voice_damage_7>noone)
-and (voice_damage_8>noone)
-and (voice_damage_9=noone)
-and (voice_damage_10=noone)
+if (voice_damage_1> noone)
+and (voice_damage_2> noone)
+and (voice_damage_3> noone)
+and (voice_damage_4> noone)
+and (voice_damage_5> noone)
+and (voice_damage_6> noone)
+and (voice_damage_7> noone)
+and (voice_damage_8> noone)
+and (voice_damage_9= noone)
+and (voice_damage_10= noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2260,16 +2260,16 @@ and (voice_damage_10=noone)
 						voice_damage_8);
 }
 else
-if (voice_damage_1>noone)
-and (voice_damage_2>noone)
-and (voice_damage_3>noone)
-and (voice_damage_4>noone)
-and (voice_damage_5>noone)
-and (voice_damage_6>noone)
-and (voice_damage_7>noone)
-and (voice_damage_8>noone)
-and (voice_damage_9>noone)
-and (voice_damage_10=noone)
+if (voice_damage_1> noone)
+and (voice_damage_2> noone)
+and (voice_damage_3> noone)
+and (voice_damage_4> noone)
+and (voice_damage_5> noone)
+and (voice_damage_6> noone)
+and (voice_damage_7> noone)
+and (voice_damage_8> noone)
+and (voice_damage_9> noone)
+and (voice_damage_10= noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2282,16 +2282,16 @@ and (voice_damage_10=noone)
 						voice_damage_9);
 }
 else
-if (voice_damage_1>noone)
-and (voice_damage_2>noone)
-and (voice_damage_3>noone)
-and (voice_damage_4>noone)
-and (voice_damage_5>noone)
-and (voice_damage_6>noone)
-and (voice_damage_7>noone)
-and (voice_damage_8>noone)
-and (voice_damage_9>noone)
-and (voice_damage_10>noone)
+if (voice_damage_1> noone)
+and (voice_damage_2> noone)
+and (voice_damage_3> noone)
+and (voice_damage_4> noone)
+and (voice_damage_5> noone)
+and (voice_damage_6> noone)
+and (voice_damage_7> noone)
+and (voice_damage_8> noone)
+and (voice_damage_9> noone)
+and (voice_damage_10> noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2307,61 +2307,61 @@ and (voice_damage_10>noone)
 #endregion /*Damage sound variation END*/
 
 #region /*Burned running sound variation*/
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2=noone)
-and (voice_burned_running_3=noone)
-and (voice_burned_running_4=noone)
-and (voice_burned_running_5=noone)
-and (voice_burned_running_6=noone)
-and (voice_burned_running_7=noone)
-and (voice_burned_running_8=noone)
-and (voice_burned_running_9=noone)
-and (voice_burned_running_10=noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2 = noone)
+and (voice_burned_running_3 = noone)
+and (voice_burned_running_4 = noone)
+and (voice_burned_running_5 = noone)
+and (voice_burned_running_6= noone)
+and (voice_burned_running_7= noone)
+and (voice_burned_running_8= noone)
+and (voice_burned_running_9= noone)
+and (voice_burned_running_10= noone)
 {
 	voice_burned_running=voice_burned_running_1;
 }
 else
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2>noone)
-and (voice_burned_running_3=noone)
-and (voice_burned_running_4=noone)
-and (voice_burned_running_5=noone)
-and (voice_burned_running_6=noone)
-and (voice_burned_running_7=noone)
-and (voice_burned_running_8=noone)
-and (voice_burned_running_9=noone)
-and (voice_burned_running_10=noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2> noone)
+and (voice_burned_running_3 = noone)
+and (voice_burned_running_4 = noone)
+and (voice_burned_running_5 = noone)
+and (voice_burned_running_6= noone)
+and (voice_burned_running_7= noone)
+and (voice_burned_running_8= noone)
+and (voice_burned_running_9= noone)
+and (voice_burned_running_10= noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2);
 }
 else
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2>noone)
-and (voice_burned_running_3>noone)
-and (voice_burned_running_4=noone)
-and (voice_burned_running_5=noone)
-and (voice_burned_running_6=noone)
-and (voice_burned_running_7=noone)
-and (voice_burned_running_8=noone)
-and (voice_burned_running_9=noone)
-and (voice_burned_running_10=noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2> noone)
+and (voice_burned_running_3> noone)
+and (voice_burned_running_4 = noone)
+and (voice_burned_running_5 = noone)
+and (voice_burned_running_6= noone)
+and (voice_burned_running_7= noone)
+and (voice_burned_running_8= noone)
+and (voice_burned_running_9= noone)
+and (voice_burned_running_10= noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3);
 }
 else
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2>noone)
-and (voice_burned_running_3>noone)
-and (voice_burned_running_4>noone)
-and (voice_burned_running_5=noone)
-and (voice_burned_running_6=noone)
-and (voice_burned_running_7=noone)
-and (voice_burned_running_8=noone)
-and (voice_burned_running_9=noone)
-and (voice_burned_running_10=noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2> noone)
+and (voice_burned_running_3> noone)
+and (voice_burned_running_4> noone)
+and (voice_burned_running_5 = noone)
+and (voice_burned_running_6= noone)
+and (voice_burned_running_7= noone)
+and (voice_burned_running_8= noone)
+and (voice_burned_running_9= noone)
+and (voice_burned_running_10= noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2369,16 +2369,16 @@ and (voice_burned_running_10=noone)
 						voice_burned_running_4);
 }
 else
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2>noone)
-and (voice_burned_running_3>noone)
-and (voice_burned_running_4>noone)
-and (voice_burned_running_5>noone)
-and (voice_burned_running_6=noone)
-and (voice_burned_running_7=noone)
-and (voice_burned_running_8=noone)
-and (voice_burned_running_9=noone)
-and (voice_burned_running_10=noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2> noone)
+and (voice_burned_running_3> noone)
+and (voice_burned_running_4> noone)
+and (voice_burned_running_5> noone)
+and (voice_burned_running_6= noone)
+and (voice_burned_running_7= noone)
+and (voice_burned_running_8= noone)
+and (voice_burned_running_9= noone)
+and (voice_burned_running_10= noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2387,16 +2387,16 @@ and (voice_burned_running_10=noone)
 						voice_burned_running_5);
 }
 else
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2>noone)
-and (voice_burned_running_3>noone)
-and (voice_burned_running_4>noone)
-and (voice_burned_running_5>noone)
-and (voice_burned_running_6>noone)
-and (voice_burned_running_7=noone)
-and (voice_burned_running_8=noone)
-and (voice_burned_running_9=noone)
-and (voice_burned_running_10=noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2> noone)
+and (voice_burned_running_3> noone)
+and (voice_burned_running_4> noone)
+and (voice_burned_running_5> noone)
+and (voice_burned_running_6> noone)
+and (voice_burned_running_7= noone)
+and (voice_burned_running_8= noone)
+and (voice_burned_running_9= noone)
+and (voice_burned_running_10= noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2406,16 +2406,16 @@ and (voice_burned_running_10=noone)
 						voice_burned_running_6);
 }
 else
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2>noone)
-and (voice_burned_running_3>noone)
-and (voice_burned_running_4>noone)
-and (voice_burned_running_5>noone)
-and (voice_burned_running_6>noone)
-and (voice_burned_running_7>noone)
-and (voice_burned_running_8=noone)
-and (voice_burned_running_9=noone)
-and (voice_burned_running_10=noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2> noone)
+and (voice_burned_running_3> noone)
+and (voice_burned_running_4> noone)
+and (voice_burned_running_5> noone)
+and (voice_burned_running_6> noone)
+and (voice_burned_running_7> noone)
+and (voice_burned_running_8= noone)
+and (voice_burned_running_9= noone)
+and (voice_burned_running_10= noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2426,16 +2426,16 @@ and (voice_burned_running_10=noone)
 						voice_burned_running_7);
 }
 else
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2>noone)
-and (voice_burned_running_3>noone)
-and (voice_burned_running_4>noone)
-and (voice_burned_running_5>noone)
-and (voice_burned_running_6>noone)
-and (voice_burned_running_7>noone)
-and (voice_burned_running_8>noone)
-and (voice_burned_running_9=noone)
-and (voice_burned_running_10=noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2> noone)
+and (voice_burned_running_3> noone)
+and (voice_burned_running_4> noone)
+and (voice_burned_running_5> noone)
+and (voice_burned_running_6> noone)
+and (voice_burned_running_7> noone)
+and (voice_burned_running_8> noone)
+and (voice_burned_running_9= noone)
+and (voice_burned_running_10= noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2447,16 +2447,16 @@ and (voice_burned_running_10=noone)
 						voice_burned_running_8);
 }
 else
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2>noone)
-and (voice_burned_running_3>noone)
-and (voice_burned_running_4>noone)
-and (voice_burned_running_5>noone)
-and (voice_burned_running_6>noone)
-and (voice_burned_running_7>noone)
-and (voice_burned_running_8>noone)
-and (voice_burned_running_9>noone)
-and (voice_burned_running_10=noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2> noone)
+and (voice_burned_running_3> noone)
+and (voice_burned_running_4> noone)
+and (voice_burned_running_5> noone)
+and (voice_burned_running_6> noone)
+and (voice_burned_running_7> noone)
+and (voice_burned_running_8> noone)
+and (voice_burned_running_9> noone)
+and (voice_burned_running_10= noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2469,16 +2469,16 @@ and (voice_burned_running_10=noone)
 						voice_burned_running_9);
 }
 else
-if (voice_burned_running_1>noone)
-and (voice_burned_running_2>noone)
-and (voice_burned_running_3>noone)
-and (voice_burned_running_4>noone)
-and (voice_burned_running_5>noone)
-and (voice_burned_running_6>noone)
-and (voice_burned_running_7>noone)
-and (voice_burned_running_8>noone)
-and (voice_burned_running_9>noone)
-and (voice_burned_running_10>noone)
+if (voice_burned_running_1> noone)
+and (voice_burned_running_2> noone)
+and (voice_burned_running_3> noone)
+and (voice_burned_running_4> noone)
+and (voice_burned_running_5> noone)
+and (voice_burned_running_6> noone)
+and (voice_burned_running_7> noone)
+and (voice_burned_running_8> noone)
+and (voice_burned_running_9> noone)
+and (voice_burned_running_10> noone)
 {
 	voice_burned_running=choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2494,61 +2494,61 @@ and (voice_burned_running_10>noone)
 #endregion /*Burned running sound variation END*/
 
 #region /*Burned sound variation*/
-if (voice_burned_1>noone)
-and (voice_burned_2=noone)
-and (voice_burned_3=noone)
-and (voice_burned_4=noone)
-and (voice_burned_5=noone)
-and (voice_burned_6=noone)
-and (voice_burned_7=noone)
-and (voice_burned_8=noone)
-and (voice_burned_9=noone)
-and (voice_burned_10=noone)
+if (voice_burned_1> noone)
+and (voice_burned_2 = noone)
+and (voice_burned_3 = noone)
+and (voice_burned_4 = noone)
+and (voice_burned_5 = noone)
+and (voice_burned_6= noone)
+and (voice_burned_7= noone)
+and (voice_burned_8= noone)
+and (voice_burned_9= noone)
+and (voice_burned_10= noone)
 {
 	voice_burned =voice_burned_1;
 }
 else
-if (voice_burned_1>noone)
-and (voice_burned_2>noone)
-and (voice_burned_3=noone)
-and (voice_burned_4=noone)
-and (voice_burned_5=noone)
-and (voice_burned_6=noone)
-and (voice_burned_7=noone)
-and (voice_burned_8=noone)
-and (voice_burned_9=noone)
-and (voice_burned_10=noone)
+if (voice_burned_1> noone)
+and (voice_burned_2> noone)
+and (voice_burned_3 = noone)
+and (voice_burned_4 = noone)
+and (voice_burned_5 = noone)
+and (voice_burned_6= noone)
+and (voice_burned_7= noone)
+and (voice_burned_8= noone)
+and (voice_burned_9= noone)
+and (voice_burned_10= noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2);
 }
 else
-if (voice_burned_1>noone)
-and (voice_burned_2>noone)
-and (voice_burned_3>noone)
-and (voice_burned_4=noone)
-and (voice_burned_5=noone)
-and (voice_burned_6=noone)
-and (voice_burned_7=noone)
-and (voice_burned_8=noone)
-and (voice_burned_9=noone)
-and (voice_burned_10=noone)
+if (voice_burned_1> noone)
+and (voice_burned_2> noone)
+and (voice_burned_3> noone)
+and (voice_burned_4 = noone)
+and (voice_burned_5 = noone)
+and (voice_burned_6= noone)
+and (voice_burned_7= noone)
+and (voice_burned_8= noone)
+and (voice_burned_9= noone)
+and (voice_burned_10= noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
 						voice_burned_3);
 }
 else
-if (voice_burned_1>noone)
-and (voice_burned_2>noone)
-and (voice_burned_3>noone)
-and (voice_burned_4>noone)
-and (voice_burned_5=noone)
-and (voice_burned_6=noone)
-and (voice_burned_7=noone)
-and (voice_burned_8=noone)
-and (voice_burned_9=noone)
-and (voice_burned_10=noone)
+if (voice_burned_1> noone)
+and (voice_burned_2> noone)
+and (voice_burned_3> noone)
+and (voice_burned_4> noone)
+and (voice_burned_5 = noone)
+and (voice_burned_6= noone)
+and (voice_burned_7= noone)
+and (voice_burned_8= noone)
+and (voice_burned_9= noone)
+and (voice_burned_10= noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2556,16 +2556,16 @@ and (voice_burned_10=noone)
 						voice_burned_4);
 }
 else
-if (voice_burned_1>noone)
-and (voice_burned_2>noone)
-and (voice_burned_3>noone)
-and (voice_burned_4>noone)
-and (voice_burned_5>noone)
-and (voice_burned_6=noone)
-and (voice_burned_7=noone)
-and (voice_burned_8=noone)
-and (voice_burned_9=noone)
-and (voice_burned_10=noone)
+if (voice_burned_1> noone)
+and (voice_burned_2> noone)
+and (voice_burned_3> noone)
+and (voice_burned_4> noone)
+and (voice_burned_5> noone)
+and (voice_burned_6= noone)
+and (voice_burned_7= noone)
+and (voice_burned_8= noone)
+and (voice_burned_9= noone)
+and (voice_burned_10= noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2574,16 +2574,16 @@ and (voice_burned_10=noone)
 						voice_burned_5);
 }
 else
-if (voice_burned_1>noone)
-and (voice_burned_2>noone)
-and (voice_burned_3>noone)
-and (voice_burned_4>noone)
-and (voice_burned_5>noone)
-and (voice_burned_6>noone)
-and (voice_burned_7=noone)
-and (voice_burned_8=noone)
-and (voice_burned_9=noone)
-and (voice_burned_10=noone)
+if (voice_burned_1> noone)
+and (voice_burned_2> noone)
+and (voice_burned_3> noone)
+and (voice_burned_4> noone)
+and (voice_burned_5> noone)
+and (voice_burned_6> noone)
+and (voice_burned_7= noone)
+and (voice_burned_8= noone)
+and (voice_burned_9= noone)
+and (voice_burned_10= noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2593,16 +2593,16 @@ and (voice_burned_10=noone)
 						voice_burned_6);
 }
 else
-if (voice_burned_1>noone)
-and (voice_burned_2>noone)
-and (voice_burned_3>noone)
-and (voice_burned_4>noone)
-and (voice_burned_5>noone)
-and (voice_burned_6>noone)
-and (voice_burned_7>noone)
-and (voice_burned_8=noone)
-and (voice_burned_9=noone)
-and (voice_burned_10=noone)
+if (voice_burned_1> noone)
+and (voice_burned_2> noone)
+and (voice_burned_3> noone)
+and (voice_burned_4> noone)
+and (voice_burned_5> noone)
+and (voice_burned_6> noone)
+and (voice_burned_7> noone)
+and (voice_burned_8= noone)
+and (voice_burned_9= noone)
+and (voice_burned_10= noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2613,16 +2613,16 @@ and (voice_burned_10=noone)
 						voice_burned_7);
 }
 else
-if (voice_burned_1>noone)
-and (voice_burned_2>noone)
-and (voice_burned_3>noone)
-and (voice_burned_4>noone)
-and (voice_burned_5>noone)
-and (voice_burned_6>noone)
-and (voice_burned_7>noone)
-and (voice_burned_8>noone)
-and (voice_burned_9=noone)
-and (voice_burned_10=noone)
+if (voice_burned_1> noone)
+and (voice_burned_2> noone)
+and (voice_burned_3> noone)
+and (voice_burned_4> noone)
+and (voice_burned_5> noone)
+and (voice_burned_6> noone)
+and (voice_burned_7> noone)
+and (voice_burned_8> noone)
+and (voice_burned_9= noone)
+and (voice_burned_10= noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2634,16 +2634,16 @@ and (voice_burned_10=noone)
 						voice_burned_8);
 }
 else
-if (voice_burned_1>noone)
-and (voice_burned_2>noone)
-and (voice_burned_3>noone)
-and (voice_burned_4>noone)
-and (voice_burned_5>noone)
-and (voice_burned_6>noone)
-and (voice_burned_7>noone)
-and (voice_burned_8>noone)
-and (voice_burned_9>noone)
-and (voice_burned_10=noone)
+if (voice_burned_1> noone)
+and (voice_burned_2> noone)
+and (voice_burned_3> noone)
+and (voice_burned_4> noone)
+and (voice_burned_5> noone)
+and (voice_burned_6> noone)
+and (voice_burned_7> noone)
+and (voice_burned_8> noone)
+and (voice_burned_9> noone)
+and (voice_burned_10= noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2656,16 +2656,16 @@ and (voice_burned_10=noone)
 						voice_burned_9);
 }
 else
-if (voice_burned_1>noone)
-and (voice_burned_2>noone)
-and (voice_burned_3>noone)
-and (voice_burned_4>noone)
-and (voice_burned_5>noone)
-and (voice_burned_6>noone)
-and (voice_burned_7>noone)
-and (voice_burned_8>noone)
-and (voice_burned_9>noone)
-and (voice_burned_10>noone)
+if (voice_burned_1> noone)
+and (voice_burned_2> noone)
+and (voice_burned_3> noone)
+and (voice_burned_4> noone)
+and (voice_burned_5> noone)
+and (voice_burned_6> noone)
+and (voice_burned_7> noone)
+and (voice_burned_8> noone)
+and (voice_burned_9> noone)
+and (voice_burned_10> noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -7615,7 +7615,7 @@ if (takendamage > 0)
 if (hp<= 0)
 {
 	die = true;
-	invincibility =false;
+	invincibility = false;
 }
 #endregion /*Make the player die if you have 0 HP END*/
 
@@ -8609,7 +8609,7 @@ and (in_water = false)
 			}
 			else
 			{
-				if (sprite_climb_under_spin_fast>noone){sprite_index = sprite_climb_under_spin_fast;}else
+				if (sprite_climb_under_spin_fast> noone){sprite_index = sprite_climb_under_spin_fast;}else
 				if (sprite_climb_under_spin > noone){sprite_index = sprite_climb_under_spin;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				{sprite_index = sprite_stand;}
@@ -8975,8 +8975,8 @@ and (place_meeting(x, y, obj_vine))
 			}
 			if (!position_meeting(x, bbox_top-1, obj_wall))
 			{
-				if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
-				if (sprite_vine_stay >noone){sprite_index = sprite_vine_stay;}else
+				if (sprite_vine_climb> noone){sprite_index = sprite_vine_climb;}else
+				if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 				{sprite_index = sprite_stand;}
 				
 				if (key_sprint)
@@ -9000,7 +9000,7 @@ and (place_meeting(x, y, obj_vine))
 			}
 			else
 			{
-				if (sprite_vine_stay >noone){sprite_index = sprite_vine_stay;}else
+				if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 				{sprite_index = sprite_stand;}
 			}
 		}
@@ -9017,8 +9017,8 @@ and (place_meeting(x, y, obj_vine))
 			{
 				x-=4;
 			}
-			if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
-			if (sprite_vine_stay >noone){sprite_index = sprite_vine_stay;}else
+			if (sprite_vine_climb> noone){sprite_index = sprite_vine_climb;}else
+			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			{
@@ -9055,8 +9055,8 @@ and (place_meeting(x, y, obj_vine))
 		and (takendamage <= takendamage_freezetime)
 		{
 			image_xscale = -1;
-			if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
-			if (sprite_vine_stay >noone){sprite_index = sprite_vine_stay;}else
+			if (sprite_vine_climb> noone){sprite_index = sprite_vine_climb;}else
+			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			{
@@ -9085,7 +9085,7 @@ and (place_meeting(x, y, obj_vine))
 		and (position_meeting(bbox_left - 1, y, obj_wall))
 		and (takendamage <= takendamage_freezetime)
 		{
-			if (sprite_vine_stay >noone){sprite_index = sprite_vine_stay;}else
+			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			{sprite_index = sprite_stand;}
 			image_speed = 0;
 			image_xscale = -1;
@@ -9107,8 +9107,8 @@ and (place_meeting(x, y, obj_vine))
 		and (takendamage <= takendamage_freezetime)
 		{
 			image_xscale = +1;
-			if (sprite_vine_climb>noone){sprite_index = sprite_vine_climb;}else
-			if (sprite_vine_stay >noone){sprite_index = sprite_vine_stay;}else
+			if (sprite_vine_climb> noone){sprite_index = sprite_vine_climb;}else
+			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			{
@@ -9137,7 +9137,7 @@ and (place_meeting(x, y, obj_vine))
 		and (position_meeting(bbox_right + 1, y, obj_wall))
 		and (takendamage <= takendamage_freezetime)
 		{
-			if (sprite_vine_stay >noone){sprite_index = sprite_vine_stay;}else
+			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			{sprite_index = sprite_stand;}
 			image_speed = 0;
 			image_xscale = +1;
@@ -9152,7 +9152,7 @@ and (place_meeting(x, y, obj_vine))
 		}
 		else
 		{
-			if (sprite_vine_stay >noone){sprite_index = sprite_vine_stay;}else
+			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			{sprite_index = sprite_stand;}
 			image_speed = 0.2;
 		}
@@ -9215,7 +9215,7 @@ if (key_crouch)
 				crouch = true;
 				stick_to_wall = false;
 				y+=16;
-				if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+				if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 				{sprite_index = sprite_stand;}
 				if (sprite_mask_crouch > 0)
 				{
@@ -9346,7 +9346,7 @@ if (crouch = true)
 		and (!key_left)
 		and (!key_right)
 		{
-			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 			{sprite_index = sprite_stand;}
 			if (image_index > image_number - 1)
 			{
@@ -9365,7 +9365,7 @@ if (crouch = true)
 		or (key_right)
 		{
 			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 			{sprite_index = sprite_stand;}
 			image_speed = 0.5;
 		}
@@ -9632,7 +9632,7 @@ and (allow_crouch = true)
 			crouch = true;
 			draw_xscale =1.5;
 			draw_yscale = 0.5;
-			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 			{image_index=sprite_stand;}
 			
 			if (sprite_mask_crouch > 0)
@@ -9789,7 +9789,7 @@ if (crouch = true)
 			mask_index = sprite_index;
 		}
 		if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-		if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+		if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 		{sprite_index = sprite_stand;}
 		if (image_index > image_number - 1)
 		{
@@ -9813,7 +9813,7 @@ if (crouch = true)
 	and (!key_right)
 	{
 		sprite_index = sprite_crouch;
-		if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+		if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 		{sprite_index = sprite_stand;}
 		if (image_index > image_number - 1)
 		{
@@ -9833,7 +9833,7 @@ if (crouch = true)
 	or (key_right)
 	{
 		if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-		if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+		if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 		{sprite_index = sprite_stand;}
 		image_speed = 0.5;
 	}
@@ -9856,7 +9856,7 @@ if (crouch = true)
 			if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
 			if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall;}else
 			if (sprite_jump > noone){sprite_index = sprite_jump;}else
-			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 			if (sprite_fall > noone){sprite_index = sprite_fall;}else
 			{sprite_index = sprite_stand;}
 			if (image_index > image_number - 1)
@@ -9880,7 +9880,7 @@ if (crouch = true)
 			if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
 			if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall;}else
 			if (sprite_jump > noone){sprite_index = sprite_jump;}else
-			if (sprite_crouch>noone){sprite_index = sprite_crouch;}else
+			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 			if (sprite_fall > noone){sprite_index = sprite_fall;}else
 			{sprite_index = sprite_stand;}
 			
@@ -9915,7 +9915,7 @@ if (crouch = true)
 else
 if (ground_pound = true)
 {
-	if (sprite_ground_pound >noone){sprite_index = sprite_ground_pound;}else
+	if (sprite_ground_pound > noone){sprite_index = sprite_ground_pound;}else
 	if (sprite_fall > noone){sprite_index = sprite_fall;}else
 	if (sprite_jump > noone){sprite_index = sprite_jump;}else
 	{sprite_index = sprite_stand;}
@@ -10012,20 +10012,20 @@ and (key_left)
 		if (asset_get_type("obj_ice_block") == asset_object)
 		and (place_meeting(x, y + 1, obj_ice_block))
 		{
-			if (sprite_skidding_ice >noone){sprite_index = sprite_skidding_ice;image_speed = 0.5;}else
-			if (sprite_skidding>noone){sprite_index = sprite_skidding;image_speed = 0.5;}else
+			if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice;image_speed = 0.5;}else
+			if (sprite_skidding> noone){sprite_index = sprite_skidding;image_speed = 0.5;}else
 			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_walk>noone) and (hspeed<>0){sprite_index = sprite_walk;}else
+			if (sprite_walk> noone) and (hspeed<>0){sprite_index = sprite_walk;}else
 			{sprite_index = sprite_stand;}
 		}
 		else
 		{
-			if (sprite_skidding>noone){sprite_index = sprite_skidding;image_speed = 0.5;}else
-			if (abs(hspeed)>20) and (sprite_run4>noone){sprite_index = sprite_run4;}else
-			if (abs(hspeed)>15) and (sprite_run3>noone){sprite_index = sprite_run3;}else
-			if (abs(hspeed)>10) and (sprite_run2>noone){sprite_index = sprite_run2;}else
+			if (sprite_skidding> noone){sprite_index = sprite_skidding;image_speed = 0.5;}else
+			if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4;}else
+			if (abs(hspeed)>15) and (sprite_run3> noone){sprite_index = sprite_run3;}else
+			if (abs(hspeed)>10) and (sprite_run2> noone){sprite_index = sprite_run2;}else
 			if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_walk>noone) and (hspeed<>0){sprite_index = sprite_walk;}else
+			if (sprite_walk> noone) and (hspeed<>0){sprite_index = sprite_walk;}else
 			if (sprite_run > noone) and (hspeed<>0){sprite_index = sprite_run;}else
 			{sprite_index = sprite_stand;}
 		}
@@ -10043,11 +10043,11 @@ or (hspeed > 0)
 and (!key_right)
 {
 	if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop;image_speed = 0.5;}else
-	if (abs(hspeed)>20) and (sprite_run4>noone){sprite_index = sprite_run4;image_speed =speed/10 +0.1;}else
-	if (abs(hspeed)>15) and (sprite_run3>noone){sprite_index = sprite_run3;image_speed =speed/10 +0.1;}else
-	if (abs(hspeed)>10) and (sprite_run2>noone){sprite_index = sprite_run2;image_speed =speed/10 +0.1;}else
+	if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4;image_speed =speed/10 +0.1;}else
+	if (abs(hspeed)>15) and (sprite_run3> noone){sprite_index = sprite_run3;image_speed =speed/10 +0.1;}else
+	if (abs(hspeed)>10) and (sprite_run2> noone){sprite_index = sprite_run2;image_speed =speed/10 +0.1;}else
 	if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;image_speed =speed/10 +0.1;}else
-	if (sprite_walk>noone) and (hspeed <> 0){sprite_index = sprite_walk;image_speed =speed/10 +0.1;}else
+	if (sprite_walk> noone) and (hspeed <> 0){sprite_index = sprite_walk;image_speed =speed/10 +0.1;}else
 	if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run;image_speed =speed/10 +0.1;}else
 	{sprite_index = sprite_stand;image_speed = 0.5;}
 }
@@ -10063,7 +10063,7 @@ and (can_move = true)
 {
 	if (look_up_start_animation = true)
 	{
-		if (sprite_look_up_start>noone){sprite_index = sprite_look_up_start;}else
+		if (sprite_look_up_start> noone){sprite_index = sprite_look_up_start;}else
 		if (sprite_look_up > noone){sprite_index = sprite_look_up;}else
 		{sprite_index = sprite_stand;}
 	}
@@ -10097,40 +10097,40 @@ if (abs(hspeed) > 0)
 {
 	if (abs(hspeed) >= 20)
 	{
-		if (sprite_run4>noone){sprite_index = sprite_run4;}else
-		if (sprite_run3>noone){sprite_index = sprite_run3;}else
-		if (sprite_run2>noone){sprite_index = sprite_run2;}else
+		if (sprite_run4> noone){sprite_index = sprite_run4;}else
+		if (sprite_run3> noone){sprite_index = sprite_run3;}else
+		if (sprite_run2> noone){sprite_index = sprite_run2;}else
 		if (sprite_run > noone){sprite_index = sprite_run;}else
-		if (sprite_walk>noone){sprite_index = sprite_walk;}else
+		if (sprite_walk> noone){sprite_index = sprite_walk;}else
 		{sprite_index = sprite_stand;}
 	}
 	else
 	if (abs(hspeed) >= 15)
 	{
-		if (sprite_run3>noone){sprite_index = sprite_run3;}else
-		if (sprite_run2>noone){sprite_index = sprite_run2;}else
+		if (sprite_run3> noone){sprite_index = sprite_run3;}else
+		if (sprite_run2> noone){sprite_index = sprite_run2;}else
 		if (sprite_run > noone){sprite_index = sprite_run;}else
-		if (sprite_walk>noone){sprite_index = sprite_walk;}else
+		if (sprite_walk> noone){sprite_index = sprite_walk;}else
 		{sprite_index = sprite_stand;}
 	}
 	else
 	if (abs(hspeed) >= 10)
 	{
-		if (sprite_run2>noone){sprite_index = sprite_run2;}else
+		if (sprite_run2> noone){sprite_index = sprite_run2;}else
 		if (sprite_run > noone){sprite_index = sprite_run;}else
-		if (sprite_walk>noone){sprite_index = sprite_walk;}else
+		if (sprite_walk> noone){sprite_index = sprite_walk;}else
 		{sprite_index = sprite_stand;}
 	}
 	else
 	if (abs(hspeed) >= 5)
 	{
 		if (sprite_run > noone){sprite_index = sprite_run;}else
-		if (sprite_walk>noone){sprite_index = sprite_walk;}else
+		if (sprite_walk> noone){sprite_index = sprite_walk;}else
 		{sprite_index = sprite_stand;}
 	}
 	else
 	{
-		if (sprite_walk>noone){sprite_index = sprite_walk;} /*Walk*/ else
+		if (sprite_walk> noone){sprite_index = sprite_walk;} /*Walk*/ else
 		if (sprite_run > noone){sprite_index = sprite_run;} /*If no walk sprite, use run sprite*/ else
 		{sprite_index = sprite_stand;}
 	}
@@ -10157,16 +10157,24 @@ and (!key_right)
 	if (asset_get_type("obj_bump_in_ground") == asset_object)
 	and (place_meeting(x, y + 1, obj_bump_in_ground))
 	{
-		if (sprite_standing_on_something>noone){sprite_index = sprite_standing_on_something;}else
+		if (sprite_standing_on_something> noone){sprite_index = sprite_standing_on_something;}else
 		{sprite_index = sprite_stand;}
 		image_speed = 0.3;
 	}
 	else
+	if (have_heart_balloon = false)
+	and (hp <= 1)
+	and (max_hp >= 2)
+	and (sprite_panting > noone)
+	{
+		sprite_index = sprite_panting;
+		image_speed = 0.3;
+	}
 	if (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_camera))
 	and (obj_camera.rain = true)
 	{
-		if (sprite_stand_cold >noone){sprite_index = sprite_stand_cold;}else
+		if (sprite_stand_cold > noone){sprite_index = sprite_stand_cold;}else
 		{sprite_index = sprite_stand;}
 		image_speed = 1;
 	}
@@ -10243,8 +10251,8 @@ if (!place_meeting(x, y + 1, obj_wall))
 {
 	if (burnt>0)
 	{
-		if (sprite_burnt>noone){sprite_index = sprite_burnt;}else
-		if (sprite_die >noone){sprite_index = sprite_die;}else
+		if (sprite_burnt> noone){sprite_index = sprite_burnt;}else
+		if (sprite_die > noone){sprite_index = sprite_die;}else
 		if (sprite_jump > noone) and (vspeed<= 0){sprite_index = sprite_jump;}else
 		if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
 		if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall;}else
@@ -10255,7 +10263,7 @@ if (!place_meeting(x, y + 1, obj_wall))
 	else
 	if (dive = true)
 	{
-		if (sprite_dive >noone){sprite_index = sprite_dive;}else
+		if (sprite_dive > noone){sprite_index = sprite_dive;}else
 		if (sprite_jump > noone) and (vspeed<= 0){sprite_index = sprite_jump;}else
 		if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
 		if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall;}else
@@ -10283,12 +10291,12 @@ and (vspeed >= 0)
 		if (vspeed > 0)
 		{
 			if (sprite_wall_slide_down > noone){sprite_index = sprite_wall_slide_down;}else
-			if (sprite_wall_slide >noone){sprite_index = sprite_wall_slide;}else
+			if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
 			{sprite_index = sprite_stand;}
 		}
 		else
 		{
-			if (sprite_wall_slide >noone){sprite_index = sprite_wall_slide;}else
+			if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
 			{sprite_index = sprite_stand;}
 		}
 		image_speed = 0.5;
@@ -10342,7 +10350,7 @@ if (vspeed < 0)
 		and (ledge_grab = false)
 		{
 			if(sprite_wall_slide_up > noone){sprite_index = sprite_wall_slide_up;}else
-			if(sprite_wall_slide >noone){sprite_index = sprite_wall_slide;}else
+			if(sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
 			{sprite_index = sprite_stand;}
 			image_speed = 0.5;
 		}

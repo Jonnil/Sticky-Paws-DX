@@ -13,17 +13,17 @@ function scr_character_select_menu()
 	
 	arrow_offset = 125;
 	
-	var voice =noone;
+	var voice = noone;
 	
 	if (menu = "select_character")
 	or (menu = "back_from_character_select")
 	{
 		image_alpha= 0;
 		
-	xx1=lerp(xx1,player1_display_x, 0.1);
-	xx2=lerp(xx2,player2_display_x, 0.1);
-	xx3=lerp(xx3,player3_display_x, 0.1);
-	xx4=lerp(xx4,player4_display_x, 0.1);
+	xx1 =lerp(xx1,player1_display_x, 0.1);
+	xx2 =lerp(xx2,player2_display_x, 0.1);
+	xx3 =lerp(xx3,player3_display_x, 0.1);
+	xx4 =lerp(xx4,player4_display_x, 0.1);
 	play_the_game_text_y = 200;
 	
 	#region /*All code before menu navigation code*/
@@ -4967,7 +4967,7 @@ function scr_character_select_menu()
 					
 				global.character_index[0] = clamp(global.character_index[0]+ 1, 0, ds_list_size(global.all_loaded_characters) - 1);
 				global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
-				xx1=player1_display_x + 32;
+				xx1 =player1_display_x + 32;
 					
 				#region /*Character select portrait x and y origin points*/
 				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
@@ -5234,7 +5234,7 @@ function scr_character_select_menu()
 					{
 						global.character_index[1]-=1;
 						global.character_for_player_2 = ds_list_find_value(global.all_loaded_characters, global.character_index[1])
-						xx2=player2_display_x-32;
+						xx2 =player2_display_x-32;
 					}
 					else
 					{
@@ -5374,7 +5374,7 @@ function scr_character_select_menu()
 					
 					global.character_index[1] = clamp(global.character_index[1]+ 1, 0, ds_list_size(global.all_loaded_characters) - 1);
 					global.character_for_player_2 = ds_list_find_value(global.all_loaded_characters, global.character_index[1])
-					xx2=player2_display_x + 32;
+					xx2 =player2_display_x + 32;
 					
 					
 					#region /*Character select portrait x and y origin points*/
@@ -5623,7 +5623,7 @@ function scr_character_select_menu()
 					{
 						global.character_index[2] -= 1;
 						global.character_for_player_3 = ds_list_find_value(global.all_loaded_characters, global.character_index[2])
-						xx3=player3_display_x-32;
+						xx3 =player3_display_x-32;
 					}
 					else
 					{
@@ -5763,7 +5763,7 @@ function scr_character_select_menu()
 					
 					global.character_index[2] = clamp(global.character_index[2]+ 1, 0, ds_list_size(global.all_loaded_characters) - 1);
 					global.character_for_player_3 = ds_list_find_value(global.all_loaded_characters, global.character_index[2])
-					xx3=player3_display_x + 32;
+					xx3 =player3_display_x + 32;
 					
 					#region /*Character select portrait x and y origin points*/
 					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
@@ -6034,7 +6034,7 @@ function scr_character_select_menu()
 					{
 						global.character_index[3]-=1;
 						global.character_for_player_4 = ds_list_find_value(global.all_loaded_characters, global.character_index[3])
-						xx4=player4_display_x-32;
+						xx4 =player4_display_x-32;
 					}
 					else
 					{
@@ -6198,7 +6198,7 @@ function scr_character_select_menu()
 					
 					global.character_index[3] = clamp(global.character_index[3]+ 1, 0, ds_list_size(global.all_loaded_characters) - 1);
 					global.character_for_player_4 = ds_list_find_value(global.all_loaded_characters, global.character_index[3])
-					xx4=player4_display_x + 32;
+					xx4 =player4_display_x + 32;
 					
 					#region /*Character select portrait x and y origin points*/
 					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
@@ -6572,7 +6572,7 @@ and (player4_accept_selection >= 0)
 						audio_sound_gain(menuvoice_select_character0, global.voices_volume, 0);
 					}
 					else
-					if (global.character_for_player_2=1)
+					if (global.character_for_player_2 =1)
 					{
 						audio_stop_sound(voice);
 						voice = audio_play_sound(menuvoice_select_character1, 0, 0);
@@ -6612,7 +6612,7 @@ and (player4_accept_selection >= 0)
 						audio_sound_gain(menuvoice_select_character0, global.voices_volume, 0);
 					}
 					else
-					if (global.character_for_player_3=1)
+					if (global.character_for_player_3 =1)
 					{
 						audio_stop_sound(voice);
 						voice = audio_play_sound(menuvoice_select_character1, 0, 0);
@@ -6652,7 +6652,7 @@ and (player4_accept_selection >= 0)
 						audio_sound_gain(menuvoice_select_character0, global.voices_volume, 0);
 					}
 					else
-					if (global.character_for_player_4=1)
+					if (global.character_for_player_4 =1)
 					{
 						audio_stop_sound(voice);
 						voice = audio_play_sound(menuvoice_select_character1, 0, 0);

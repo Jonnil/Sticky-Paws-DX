@@ -129,7 +129,7 @@ and (instance_nearest(x, y, obj_player).intro_animation = "")
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
-			if (simple_controls=false)
+			if (simple_controls= false)
 			{
 				vspeed =-triple_jump_height;
 			}

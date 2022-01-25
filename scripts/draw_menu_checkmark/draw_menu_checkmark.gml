@@ -24,7 +24,7 @@ function draw_menu_checkmark()
 	var width_of_button = 670;
 	#endregion /*Initialize variables END*/
 	
-	if (variable_to_check=false)
+	if (variable_to_check= false)
 	{
 		if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position,y_position-widen_button_offset,x_position+width_of_button,y_position+ 32+widen_button_offset))
 		and (global.controls_used_for_menu_navigation = "mouse")
@@ -106,7 +106,7 @@ function draw_menu_checkmark()
 	and (open_dropdown = false)
 	{
 		menu = menu_index;
-		can_navigate_settings_sidebar=false;
+		can_navigate_settings_sidebar= false;
 	}
 	#endregion /*Clicking the menu button END*/
 
@@ -118,7 +118,7 @@ function draw_menu_checkmark()
 	
 	#region /*Bottom Text*/
 	if (menu=menu_index)
-	and (bottom_text>noone)
+	and (bottom_text> noone)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);

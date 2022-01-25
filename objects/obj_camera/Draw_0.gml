@@ -1,5 +1,7 @@
 scr_set_screen_size();
 
+scr_zoom_camera_controls();
+
 //draw_text_outlined(x, y- 228, "P1: "+ string(player1), global.default_text_size,c_white,c_black, 1);
 //draw_text_outlined(x, y - 128, "P2: "+ string(player2), global.default_text_size,c_white,c_black, 1);
 
@@ -81,8 +83,8 @@ if (room = room_leveleditor)
 #region /*Make background visible*/
 if (room = room_leveleditor)
 {
-	if (global.custom_background1>noone)
-	and (global.enable_background_layer1= true)
+	if (global.custom_background1> noone)
+	and (global.enable_background_layer1 = true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background")), true)
 	}
@@ -91,8 +93,8 @@ if (room = room_leveleditor)
 		layer_background_visible(layer_background_get_id(layer_get_id("Background")),false)
 	}
 
-	if (global.custom_background2>noone)
-	and (global.enable_background_layer2= true)
+	if (global.custom_background2> noone)
+	and (global.enable_background_layer2 = true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), true)
 	}
@@ -101,8 +103,8 @@ if (room = room_leveleditor)
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_2")),false)
 	}
 
-	if (global.custom_background3>noone)
-	and (global.enable_background_layer3= true)
+	if (global.custom_background3> noone)
+	and (global.enable_background_layer3 = true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), true)
 	}
@@ -111,8 +113,8 @@ if (room = room_leveleditor)
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_3")),false)
 	}
 
-	if (global.custom_background4>noone)
-	and (global.enable_background_layer4= true)
+	if (global.custom_background4> noone)
+	and (global.enable_background_layer4 = true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_4")), true)
 	}

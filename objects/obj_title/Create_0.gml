@@ -22,33 +22,33 @@ lerp_on = false;
 level_editor_template_select = false;
 
 /*Narrator Voice variable handeling*/
-narrator_name =noone;
+narrator_name = noone;
 global.narrator_max_characters=1;
 
 /*No Narrator*/
 if (global.narrator= 0)
 {
-	menuvoice_titlesplash =noone;
-	menuvoice_1player=noone;
-	menuvoice_2player=noone;
-	menuvoice_3player=noone;
-	menuvoice_4player=noone;
-	menuvoice_leveleditor=noone;
-	menuvoice_leveleditor_denied =noone;
-	menuvoice_options=noone;
+	menuvoice_titlesplash = noone;
+	menuvoice_1player= noone;
+	menuvoice_2player= noone;
+	menuvoice_3player= noone;
+	menuvoice_4player= noone;
+	menuvoice_leveleditor= noone;
+	menuvoice_leveleditor_denied = noone;
+	menuvoice_options= noone;
 }
 
 /*Character1 as narrator*/
 if (global.narrator = 1)
 {
-	menuvoice_titlesplash =noone;
-	menuvoice_1player=noone;
-	menuvoice_2player=noone;
-	menuvoice_3player=noone;
-	menuvoice_4player=noone;
-	menuvoice_leveleditor=noone;
-	menuvoice_leveleditor_denied =noone;
-	menuvoice_options=noone;
+	menuvoice_titlesplash = noone;
+	menuvoice_1player= noone;
+	menuvoice_2player= noone;
+	menuvoice_3player= noone;
+	menuvoice_4player= noone;
+	menuvoice_leveleditor= noone;
+	menuvoice_leveleditor_denied = noone;
+	menuvoice_options= noone;
 }
 
 #region /*Create directories*/
@@ -152,9 +152,9 @@ can_input_level_name = false;
 
 #region /*Hide certain HUD elements*/
 global.hud_show_lives= true;
-global.hud_show_deaths=false;
-global.hud_show_basic_collectibles=false;
-global.hud_show_big_collectibles=false;
+global.hud_show_deaths= false;
+global.hud_show_basic_collectibles= false;
+global.hud_show_big_collectibles= false;
 global.hud_show_score = false;
 #endregion /*Hide certain HUD elements END*/
 
@@ -164,12 +164,12 @@ global.actually_play_edited_level = false;
 global.play_edited_level = false;
 global.theme = "ground";
 global.coins= 0;
-global.level_clear_rate =noone;
-global.big_collectible1=false;
-global.big_collectible2=false;
-global.big_collectible3=false;
-global.big_collectible4=false;
-global.big_collectible5=false;
+global.level_clear_rate = noone;
+global.big_collectible1 = false;
+global.big_collectible2 = false;
+global.big_collectible3 = false;
+global.big_collectible4 = false;
+global.big_collectible5 = false;
 global.lives_until_assist = 0;
 global.x_checkpoint = false;
 global.y_checkpoint = false;
@@ -177,7 +177,7 @@ global.timeattack_millisecond = 0;
 global.timeattack_second = 0;
 global.timeattack_minute = 0;
 global.timeattack_realmillisecond = 0;
-global.timeattack_realmillisecond_real= 0;
+global.timeattack_realmillisecond_real = 0;
 /*Checkpoint Timer*/
 global.checkpoint_millisecond = 0;
 global.checkpoint_second = 0;
@@ -190,7 +190,7 @@ global.controls_layout =1;
 global.trigger_ending = false;
 global.spikes_emerge_time = 0;
 global.goal_active = false;
-global.PauseScreen =noone;
+global.PauseScreen = noone;
 global.quit_level = false;
 global.always_show_level_editor_buttons= true; /*If level editor buttons should always show or not. Should be true by default*/
 
@@ -614,7 +614,7 @@ else
 }
 #endregion /*If title screen should start at the level editor menu or the main menu END*/
 
-lastkey =noone;
+lastkey = noone;
 
 #region /*Remapping options variables*/
 remapping_player = 0;
@@ -634,22 +634,22 @@ menu_joystick2_delay =3;
 menu_joystick3_delay =3;
 menu_joystick4_delay =3;
 black_screen_at_start_delay = 0;
-player1_display_x= 0;xx1= 0;
-player2_display_x= 0;xx2= 0;
-player3_display_x= 0;xx3= 0;
-player4_display_x= 0;xx4= 0;
+player1_display_x= 0;xx1 = 0;
+player2_display_x= 0;xx2 = 0;
+player3_display_x= 0;xx3 = 0;
+player4_display_x= 0;xx4 = 0;
 remap_y_pos= 0;
 version_y_pos= 0;
 menu_cursor_index= 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
 can_navigate_settings_sidebar= true;
-navigate_slider=false;
+navigate_slider= false;
 menu_remap_key_number= 0;
 name_enter_blink= 0;
 can_navigate = true;
 menu_y_offset = 0;/*This is the y offset that will have lerping to make the menu scrolling smooth*/
-menu_y_offset_real= 0;/*This is the real y offset for the menu, used for menu scrolling*/
+menu_y_offset_real = 0;/*This is the real y offset for the menu, used for menu scrolling*/
 menu_cursor_y_position = 0;
 background_brightness_menu_lerp = 0;
 title_y = -800;
@@ -682,7 +682,7 @@ iris_yscale = 0;
 iris_zoom = 0;
 #region /*Customize look of Options Menu*/
 c_menu_outline =c_white;
-c_menu_fill=c_black;
+c_menu_fill =c_black;
 #endregion /*Customize look of Options Menu END*/
 
 #region /*Stop certain sounds from playing on the title screen*/
