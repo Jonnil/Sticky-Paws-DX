@@ -100,8 +100,8 @@ function scr_start_intro_animations()
 						instance_destroy();
 					}
 				}
-				instance_create_depth(-16-sprite_width, y, 0, obj_cake);
-				with(instance_create_depth(-16-sprite_width, y, 0, obj_cake_stealing_enemy))
+				instance_create_depth(- 16-sprite_width, y, 0, obj_cake);
+				with(instance_create_depth(- 16-sprite_width, y, 0, obj_cake_stealing_enemy))
 				{
 					time = room_speed*2;
 				}
@@ -111,7 +111,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time >= 60*1)
+			if (cutscene_time >= 60* 1)
 			and (cutscene_time < 60*2)
 			{
 				x += 8;

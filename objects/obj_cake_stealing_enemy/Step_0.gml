@@ -131,17 +131,17 @@ and (instance_nearest(x, y, obj_player).intro_animation = "")
 		{
 			if (simple_controls= false)
 			{
-				vspeed =-triple_jump_height;
+				vspeed = -triple_jump_height;
 			}
 			else
 			{
-				vspeed =-8;
+				vspeed = -8;
 			}
 		}
 	}
 	else
 	{
-		instance_nearest(x, y, obj_player).vspeed =-8;
+		instance_nearest(x, y, obj_player).vspeed = -8;
 	}
 	
 	instance_destroy();

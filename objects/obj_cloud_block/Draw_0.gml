@@ -43,7 +43,7 @@ and (place_meeting(x + 1, y, obj_cloud_block))
 if (place_meeting(x - 1, y, obj_cloud_block))
 and (place_meeting(x + 1, y, obj_cloud_block))
 {
-	image_index=2;
+	image_index= 2;
 	image_speed = 0;
 }
 if (place_meeting(x - 1, y, obj_cloud_block))

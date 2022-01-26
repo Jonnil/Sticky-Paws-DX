@@ -18,4 +18,4 @@ second_y = y;
 draw_yscale = 1;
 draw_angle = 0;
 
-depth = +11;
+depth = -110;

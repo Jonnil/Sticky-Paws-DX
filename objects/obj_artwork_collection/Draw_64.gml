@@ -172,7 +172,7 @@ if (instance_nearest(x, y, obj_player).key_left)
 		}
 		else
 		{
-			image_index = image_number -1;
+			image_index = image_number - 1;
 		}
 		xx = window_get_width()/ 2-32;
 		gamepad_stick = false;
@@ -183,7 +183,7 @@ if (instance_nearest(x, y, obj_player).key_right)
 {
 	if (gamepad_stick = true)
 	{
-		if (image_index < image_number -1)
+		if (image_index < image_number - 1)
 		{
 			image_index += 1;
 		}

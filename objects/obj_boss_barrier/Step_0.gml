@@ -8,7 +8,7 @@ and (y > camera_get_view_y(view_camera[view_current]))
 {
 	if (!place_meeting(x, y - 1, obj_boss_barrier))
 	{
-		time+=1;
+		time +=1;
 		if (time >5)
 		{
 			if (asset_get_type("obj_brick_particle") == asset_object)

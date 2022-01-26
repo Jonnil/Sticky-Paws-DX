@@ -34,7 +34,7 @@ if (global.character_select_in_this_menu = "main_game")
 bubble = false;
 if (bubble = false)
 {
-	lives-=1;
+	lives -=1;
 	global.lives_until_assist +=1;
 }
 player = 1;

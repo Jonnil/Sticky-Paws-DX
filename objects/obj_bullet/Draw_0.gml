@@ -6,22 +6,22 @@ and (global.enable_enemies = false)
 }
 #endregion /*If enemies are disabled, destroy this object END*/
 
-if (die_volting=-1)
-or (die_volting= + 1)
+if (die_volting = - 1)
+or (die_volting = +1)
 {
-	if (die_volting=-1)
+	if (die_volting = - 1)
 	{
-		image_angle-=20;
+		image_angle-= 20;
 		hspeed = +4;
 	}
 	else
 	{
-		image_angle+=20;
-		hspeed =-4;
+		image_angle += 20;
+		hspeed = -4;
 	}
 	#region /*Set the gravity*/
-	gravity_direction =270;/*Direction of the gravity*/
-	gravity = 0.5;/*The gravity*/
+	gravity_direction = 270; /*Direction of the gravity*/
+	gravity = 0.5; /*The gravity*/
 	#endregion /*Set the gravity END*/
 	
 	sprite_index = global.resourcepack_sprite_bullet;
@@ -31,15 +31,15 @@ else
 	if (flat = false)
 	{
 		/*Set the gravity*/
-		gravity_direction =270;/*Direction of the gravity*/
-		gravity = 0;/*The gravity*/
+		gravity_direction = 270; /*Direction of the gravity*/
+		gravity = 0; /*The gravity*/
 		sprite_index = global.resourcepack_sprite_bullet;
 	}
 	else
 	if (flat = true)
 	{
-		gravity_direction =270;/*Direction of the gravity*/
-		gravity = 0.5;/*The gravity*/
+		gravity_direction = 270; /*Direction of the gravity*/
+		gravity = 0.5; /*The gravity*/
 		image_speed = 0.5;
 		sprite_index = global.resourcepack_sprite_bullet_flattened;
 		if (image_index > image_number - 1)
@@ -51,7 +51,7 @@ else
 }
 if (image_xscale < 0)
 {
-	hspeed =-4;
+	hspeed = -4;
 }
 else
 {

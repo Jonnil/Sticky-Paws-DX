@@ -5,12 +5,12 @@ and (sprite_index=spr_bucket)
 	{
 		sprite_index=spr_bucket_clothes;
 	}
-	#region /*1 Basic Collectible*/
+	#region /* 1 Basic Collectible*/
 	if (item_inside = "noone")
 	{
 		if (asset_get_type("obj_coin") == asset_object)
 		{
-			var obj;obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+			var obj;obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
@@ -19,7 +19,7 @@ and (sprite_index=spr_bucket)
 			}
 		}
 	}
-	#endregion /*1 Basic Collectible END*/
+	#endregion /* 1 Basic Collectible END*/
 	
 	#region /*8 Basic Collectibles*/
 	if (item_inside = "8_basic_collectibles")
@@ -27,14 +27,14 @@ and (sprite_index=spr_bucket)
 		if (asset_get_type("obj_basic_collectible") == asset_object)
 		{
 			var obj;
-			obj = instance_create_depth(x-32,bbox_top, 0,obj_basic_collectible);
+			obj = instance_create_depth(x-32,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
 				bounceup = true;
 			}
-			obj = instance_create_depth(x- 24,bbox_top, 0,obj_basic_collectible);
+			obj = instance_create_depth(x- 24,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
@@ -43,16 +43,16 @@ and (sprite_index=spr_bucket)
 				bounceup = true;
 				delay_time =10;
 			}
-			obj = instance_create_depth(x - 16,bbox_top, 0,obj_basic_collectible);
+			obj = instance_create_depth(x - 16,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
 				visible = false;
 				motion_set(90, 10);
 				bounceup = true;
-				delay_time =20;
+				delay_time = 20;
 			}
-			obj = instance_create_depth(x-8,bbox_top, 0,obj_basic_collectible);
+			obj = instance_create_depth(x-8,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
@@ -61,7 +61,7 @@ and (sprite_index=spr_bucket)
 				bounceup = true;
 				delay_time =30;
 			}
-			obj = instance_create_depth(x +8,bbox_top, 0,obj_basic_collectible);
+			obj = instance_create_depth(x +8,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
@@ -70,7 +70,7 @@ and (sprite_index=spr_bucket)
 				bounceup = true;
 				delay_time = 40;
 			}
-			obj = instance_create_depth(x + 16,bbox_top, 0,obj_basic_collectible);
+			obj = instance_create_depth(x + 16,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
@@ -79,7 +79,7 @@ and (sprite_index=spr_bucket)
 				bounceup = true;
 				delay_time =50;
 			}
-			obj = instance_create_depth(x + 24,bbox_top, 0,obj_basic_collectible);
+			obj = instance_create_depth(x + 24,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
@@ -88,7 +88,7 @@ and (sprite_index=spr_bucket)
 				bounceup = true;
 				delay_time =60;
 			}
-			obj = instance_create_depth(x + 32,bbox_top, 0,obj_basic_collectible);
+			obj = instance_create_depth(x + 32,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
@@ -107,7 +107,7 @@ and (sprite_index=spr_bucket)
 			if (asset_get_type("obj_heart_balloon") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top-16, 0,obj_heart_balloon);
+				obj = instance_create_depth(x, bbox_top- 16, 0, obj_heart_balloon);
 				with(obj)
 				{
 					bounceup = true;
@@ -117,13 +117,13 @@ and (sprite_index=spr_bucket)
 		}
 		#endregion /*Heart Balloon END*/
 		
-		#region /*1-up*/
+		#region /* 1-up*/
 		if (item_inside = "1-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top-16, 0,obj_extra_life_pickup);
+				obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
 				with(obj)
 				{
 					number_of_extra_lives = 1;
@@ -132,7 +132,7 @@ and (sprite_index=spr_bucket)
 				}
 			}
 		}
-		#endregion /*1-up END*/
+		#endregion /* 1-up END*/
 		
 		#region /*2-up*/
 		if (item_inside = "2-up")
@@ -140,7 +140,7 @@ and (sprite_index=spr_bucket)
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top-16, 0,obj_extra_life_pickup);
+				obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
 				with(obj)
 				{
 					number_of_extra_lives = 2;
@@ -157,7 +157,7 @@ and (sprite_index=spr_bucket)
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top-16, 0,obj_extra_life_pickup);
+				obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
 				with(obj)
 				{
 					number_of_extra_lives = 3;
@@ -174,7 +174,7 @@ and (sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top, 0,obj_big_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -192,12 +192,12 @@ and (sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top, 0,obj_big_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
 				with(obj)
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					big_collectible =2;
+					big_collectible = 2;
 					bounceup = true;
 				}
 			}
@@ -210,7 +210,7 @@ and (sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top, 0,obj_big_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -228,7 +228,7 @@ and (sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top, 0,obj_big_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -246,7 +246,7 @@ and (sprite_index=spr_bucket)
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top, 0,obj_big_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -264,7 +264,7 @@ and (sprite_index=spr_bucket)
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top-16, 0,obj_invincibility_powerup);
+				obj = instance_create_depth(x, bbox_top- 16, 0, obj_invincibility_powerup);
 				with(obj)
 				{
 					bounceup = true;

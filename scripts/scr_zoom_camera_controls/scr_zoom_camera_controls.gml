@@ -21,9 +21,9 @@ function scr_zoom_camera_controls()
 		else
 		{
 			draw_rectangle_color (0, 0, camera_get_view_x(view_camera[view_current]) +1,room_height,c_red,c_red,c_red,c_red,false);
-			draw_rectangle_color (camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])-1, 0,room_width,room_height,c_red,c_red,c_red,c_red,false);
+			draw_rectangle_color (camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])- 1, 0,room_width,room_height,c_red,c_red,c_red,c_red,false);
 			draw_rectangle_color (0, 0,room_width,camera_get_view_y(view_camera[view_current]) +1,c_red,c_red,c_red,c_red,false);
-			draw_rectangle_color (0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-1,room_width,room_height,c_red,c_red,c_red,c_red,false);
+			draw_rectangle_color (0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])- 1,room_width,room_height,c_red,c_red,c_red,c_red,false);
 		}
 	}
 	if (keyboard_check(vk_subtract))

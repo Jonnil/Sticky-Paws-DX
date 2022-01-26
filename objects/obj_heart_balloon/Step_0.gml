@@ -1,8 +1,8 @@
 #region /*Set the gravity*/
-gravity_direction =270;/*Direction of the gravity*/
+gravity_direction = 270; /*Direction of the gravity*/
 if (!place_meeting(x, y + 1, obj_wall))
 {
-	gravity = 0.5;/*The gravity*/
+	gravity = 0.5; /*The gravity*/
 }
 else
 {
@@ -22,7 +22,7 @@ and (instance_exists(obj_player))
 {
 	if (allow_move = true)
 	{
-		if (dir= + 1)
+		if (dir= +1)
 		{
 			if (instance_nearest(x, y, obj_player).x > x)
 			and (instance_nearest(x, y, obj_player).hspeed >+ 2)
@@ -46,12 +46,12 @@ and (instance_exists(obj_player))
 				hspeed =instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed<-8)
 				{
-					hspeed =-8;
+					hspeed = -8;
 				}
 			}
 			else
 			{
-				hspeed =- 2;
+				hspeed = - 2;
 			}
 		}
 	}
@@ -67,10 +67,11 @@ and (instance_exists(obj_player))
 			with(instance_nearest(x, y, obj_player))
 			{
 				have_heart_balloon = true;
+				hp = max_hp; /*Refill HP to max*/
 				xx_heart = x;
 				yy_heart = y;
 				
-				#region /*Save heart balloon to be false*/
+				#region /*Save heart balloon to be true*/
 				if (player = 1)
 				{
 					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
@@ -95,13 +96,13 @@ and (instance_exists(obj_player))
 					ini_write_real("Player", "player_4_have_heart_balloon", true);
 					ini_close();
 				}
-				#endregion /*Save heart balloon to be false END*/
+				#endregion /*Save heart balloon to be true END*/
 				
 			}
 		}
 		else
 		{
-			#region /*10 Basic Collectibles*/
+			#region /* 10 Basic Collectibles*/
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
 				if (asset_get_type("snd_basic_collectible") == asset_sound)
@@ -109,14 +110,14 @@ and (instance_exists(obj_player))
 					audio_play_sound(snd_basic_collectible, 0, 0);
 				}
 				var obj;
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
 				}
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -124,15 +125,15 @@ and (instance_exists(obj_player))
 					bounceup = true;
 					delay_time =10;
 				}
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =20;
+					delay_time = 20;
 				}
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -140,7 +141,7 @@ and (instance_exists(obj_player))
 					bounceup = true;
 					delay_time =30;
 				}
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -148,7 +149,7 @@ and (instance_exists(obj_player))
 					bounceup = true;
 					delay_time = 40;
 				}
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -156,7 +157,7 @@ and (instance_exists(obj_player))
 					bounceup = true;
 					delay_time =50;
 				}
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -164,7 +165,7 @@ and (instance_exists(obj_player))
 					bounceup = true;
 					delay_time =60;
 				}
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -172,7 +173,7 @@ and (instance_exists(obj_player))
 					bounceup = true;
 					delay_time =70;
 				}
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -180,7 +181,7 @@ and (instance_exists(obj_player))
 					bounceup = true;
 					delay_time =80;
 				}
-				obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -189,9 +190,9 @@ and (instance_exists(obj_player))
 					delay_time = 90;
 				}
 			}
-			#endregion /*10 Basic Collectibles END*/
+			#endregion /* 10 Basic Collectibles END*/
 		}
-		#region /*1000 Score*/
+		#region /* 1000 Score*/
 		score += 1000;
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -201,7 +202,7 @@ and (instance_exists(obj_player))
 				scoreup = 1000;
 			}
 		}
-		#endregion /*1000 Score END*/
+		#endregion /* 1000 Score END*/
 		effect_create_below(ef_ring,x, y, 1,c_white);
 		instance_destroy();
 	}
@@ -218,11 +219,11 @@ if (asset_get_type("obj_wall") == asset_object)
 {
 	if (place_meeting(x - 1, y, obj_wall))
 	{
-		dir= + 1;
+		dir= +1;
 	}
 	if (place_meeting(x + 1, y, obj_wall))
 	{
-		dir=-1;
+		dir=- 1;
 	}
 	if (place_meeting(x, y - 1, obj_wall))
 	{
@@ -231,7 +232,7 @@ if (asset_get_type("obj_wall") == asset_object)
 }
 
 #region /*Expanding Ring Effect*/
-effect_time+=1;
+effect_time +=1;
 if (effect_time >60)
 {
 	effect_time = 0;

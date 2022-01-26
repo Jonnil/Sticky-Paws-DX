@@ -128,10 +128,10 @@ if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background
 #endregion /*Custom Title Screen Background*/
 
 #region /*Character select Accept Selection*/
-player1_accept_selection =-1;
-player2_accept_selection =-1;
-player3_accept_selection =-1;
-player4_accept_selection =-1;
+player1_accept_selection = - 1;
+player2_accept_selection = - 1;
+player3_accept_selection = - 1;
+player4_accept_selection = - 1;
 player_start_game = false;
 #endregion /*Character select Accept Selection END*/
 
@@ -158,7 +158,7 @@ global.hud_show_big_collectibles= false;
 global.hud_show_score = false;
 #endregion /*Hide certain HUD elements END*/
 
-global.playergame = 0;/*Make the game singleplayer at the start of the game*/
+global.playergame = 0; /*Make the game singleplayer at the start of the game*/
 global.player_has_entered_goal = false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;
@@ -648,8 +648,8 @@ navigate_slider= false;
 menu_remap_key_number= 0;
 name_enter_blink= 0;
 can_navigate = true;
-menu_y_offset = 0;/*This is the y offset that will have lerping to make the menu scrolling smooth*/
-menu_y_offset_real = 0;/*This is the real y offset for the menu, used for menu scrolling*/
+menu_y_offset = 0; /*This is the y offset that will have lerping to make the menu scrolling smooth*/
+menu_y_offset_real = 0; /*This is the real y offset for the menu, used for menu scrolling*/
 menu_cursor_y_position = 0;
 background_brightness_menu_lerp = 0;
 title_y = -800;
@@ -668,14 +668,14 @@ keyboard_and_mouse_settings_y = 40*6;
 controller_settings_y = 40*7;
 touch_settings_y = 40*8;
 general_text_y = 40*9;
-profile_settings_y = 40*10;
-video_settings_y = 40*11;
-audio_settings_y = 40*12;
-global_resources_settings_y = 40*13;
-storage_settings_y = 40*14;
-language_settings_y = 40*15;
-broadcast_settings_y = 40*16;
-how_to_play_y = 40*17;
+profile_settings_y = 40* 10;
+video_settings_y = 40* 11;
+audio_settings_y = 40* 12;
+global_resources_settings_y = 40* 13;
+storage_settings_y = 40* 14;
+language_settings_y = 40* 15;
+broadcast_settings_y = 40* 16;
+how_to_play_y = 40* 17;
 left_sidebar_x = -400;
 iris_xscale = 0;
 iris_yscale = 0;

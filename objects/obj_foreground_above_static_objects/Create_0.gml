@@ -1,4 +1,4 @@
-depth = +30;
+depth = +12;
 
 #region /*Initialize Foreground*/
 if (global.character_select_in_this_menu = "main_game")

@@ -61,7 +61,7 @@ if (bounceup = false)
 					}
 					#endregion /*3 Basic Collectibles END*/
 					
-					#region /*1000 Score*/
+					#region /* 1000 Score*/
 					score += 1000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
@@ -71,7 +71,7 @@ if (bounceup = false)
 							scoreup = 1000;
 						}
 					}
-					#endregion /*1000 Score END*/
+					#endregion /* 1000 Score END*/
 					
 					#region /*What Big Collectible is this?*/
 					if (big_collectible = 1)
@@ -206,7 +206,7 @@ if bounceup = true
 			}
 			#endregion /*3 Basic Collectibles END*/
 			
-			#region /*1000 Score*/
+			#region /* 1000 Score*/
 			score += 1000;
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
@@ -216,7 +216,7 @@ if bounceup = true
 					scoreup = 1000;
 				}
 			}
-			#endregion /*1000 Score END*/
+			#endregion /* 1000 Score END*/
 			
 			#region /*What Big Collectible is this?*/
 			if (big_collectible = 1)

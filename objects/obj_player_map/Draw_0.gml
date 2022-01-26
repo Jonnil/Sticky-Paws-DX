@@ -858,7 +858,7 @@ else
 #region /*Touch Map Turn Up Left*/
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn =2) /*Up Left = 2*/
+and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /*Up Left = 2*/
 {
 	if (abs(hspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)

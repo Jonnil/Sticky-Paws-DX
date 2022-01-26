@@ -14,7 +14,7 @@ and (mouse_check_button_pressed(mb_left))
 		room_goto(room_title);
 	}
 	else
-	if (room_next(room)<>-1)
+	if (room_next(room)<>- 1)
 	{
 		room_goto_next();
 	}
@@ -45,7 +45,7 @@ and (sprite_splash_easteregg_yoffset = 128)
 
 if (sprite_splash_easteregg_yoffset <= 127)
 {
-	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, -128, 0.1);
+	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, - 128, 0.1);
 }
 
 if (image_index > image_number- 2)
@@ -67,7 +67,7 @@ and (sprite_index=spr_company_logo)
 				room_goto(room_title);
 			}
 			else
-			if (room_next(room)<>-1)
+			if (room_next(room)<>- 1)
 			{
 				room_goto_next();
 			}
@@ -79,7 +79,7 @@ and (sprite_index=spr_company_logo)
 		room_goto(room_title);
 	}
 	else
-	if (room_next(room)<>-1)
+	if (room_next(room)<>- 1)
 	{
 		room_goto_next();
 	}
@@ -88,7 +88,7 @@ and (sprite_index=spr_company_logo)
 if (sprite_splash_controller > noone)
 and (sprite_index = sprite_splash_controller)
 {
-	time+=1;
+	time +=1;
 	if (time >100)
 	{
 		if (asset_get_type("room_title") == asset_room)
@@ -96,14 +96,14 @@ and (sprite_index = sprite_splash_controller)
 			room_goto(room_title);
 		}
 		else
-		if (room_next(room)<>-1)
+		if (room_next(room)<>- 1)
 		{
 			room_goto_next();
 		}
 	}
 }
 
-if (image_index=20)
+if (image_index= 20)
 and (asset_get_type("menuvoice_companysplash") == asset_sound)
 {
 	if (!audio_is_playing(menuvoice_companysplash))

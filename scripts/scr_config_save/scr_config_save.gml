@@ -49,6 +49,7 @@ function scr_config_save()
 	ini_write_real("config", "enable_background_layer3", global.enable_background_layer3);
 	ini_write_real("config", "enable_background_layer4", global.enable_background_layer4);
 	ini_write_real("config", "enable_foreground_layer1", global.enable_foreground_layer1);
+	ini_write_real("config", "enable_foreground_layer_above_static_objects", global.enable_foreground_layer_above_static_objects);
 	ini_write_real("config", "enable_foreground_layer2", global.enable_foreground_layer2);
 	ini_write_real("config", "enable_foreground_layer_secret", global.enable_foreground_layer_secret);
 	ini_write_real("config", "enable_transitions", global.enable_transitions);

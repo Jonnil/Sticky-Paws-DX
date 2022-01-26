@@ -33,14 +33,14 @@ and (instance_exists(obj_player))
 						audio_play_sound(snd_basic_collectible, 0, 0);
 					}
 					var obj;
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 					}
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
@@ -48,15 +48,15 @@ and (instance_exists(obj_player))
 						bounceup = true;
 						delay_time =10;
 					}
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
-						delay_time =20;
+						delay_time = 20;
 					}
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
@@ -64,7 +64,7 @@ and (instance_exists(obj_player))
 						bounceup = true;
 						delay_time =30;
 					}
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
@@ -72,7 +72,7 @@ and (instance_exists(obj_player))
 						bounceup = true;
 						delay_time = 40;
 					}
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
@@ -80,7 +80,7 @@ and (instance_exists(obj_player))
 						bounceup = true;
 						delay_time =50;
 					}
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
@@ -88,7 +88,7 @@ and (instance_exists(obj_player))
 						bounceup = true;
 						delay_time =60;
 					}
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
@@ -96,7 +96,7 @@ and (instance_exists(obj_player))
 						bounceup = true;
 						delay_time =70;
 					}
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
@@ -104,7 +104,7 @@ and (instance_exists(obj_player))
 						bounceup = true;
 						delay_time =80;
 					}
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
@@ -114,13 +114,13 @@ and (instance_exists(obj_player))
 					}
 					
 					#region /*2000 Score*/
-					score+=2000;
+					score += 2000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
 						obj = instance_create_depth(x, y, 0, obj_scoreup);
 						with(obj)
 						{
-							scoreup =2000;
+							scoreup = 2000;
 						}
 					}
 					#endregion /*2000 Score END*/
@@ -128,7 +128,7 @@ and (instance_exists(obj_player))
 					#region /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint. Make sure it gets translated into other languages too*/
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y- 20, 0,obj_scoreup);
+						obj = instance_create_depth(x, y- 20, 0, obj_scoreup);
 						with(obj)
 						{
 							scoreup = "CHECKPOINT";

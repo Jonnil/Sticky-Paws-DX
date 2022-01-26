@@ -66,7 +66,10 @@ else
 {
 	hspeed = +8;
 }
-if x < camera_get_view_x(view_camera[view_current]) + sprite_width and image_xscale < 0 or x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width and image_xscale > 0
+if (x < camera_get_view_x(view_camera[view_current]) + sprite_width)
+and (image_xscale < 0)
+or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
+and (image_xscale > 0)
 {
 	instance_destroy();
 }
@@ -74,22 +77,27 @@ draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
 draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * sign(image_xscale), draw_yscale, image_angle, image_blend, image_alpha);
 
-if draw_xscale >= 0.8
+if (draw_xscale >= 0.8)
 {
-	if place_meeting(x, y, obj_wall)
+	if (place_meeting(x, y, obj_wall))
 	{
-		if image_xscale = -1
+		if (image_xscale = -1)
 		{
 			die_volting = -1;
+			instance_create_depth(bbox_left, y, 0, obj_blockbreak);
 		}
 		else
 		{
 			die_volting = +1;
+			instance_create_depth(bbox_right, y, 0, obj_blockbreak);
 		}
 	}
 }
 
-if image_xscale = -1 and x < camera_get_view_x(view_camera[view_current]) or image_xscale = +1 and x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])
+if (image_xscale = -1)
+and (x < camera_get_view_x(view_camera[view_current]))
+or (image_xscale = +1)
+and (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 {
 	instance_destroy();
 }

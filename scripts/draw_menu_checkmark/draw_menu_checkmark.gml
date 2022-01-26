@@ -11,8 +11,8 @@ function draw_menu_checkmark()
 	#region /*Checkmark*/
 	
 	#region /*Initialize variables*/
-	var x_position =argument0;/*The buttons x origin position*/
-	var y_position =argument1;/*The buttons y origin position*/
+	var x_position =argument0; /*The buttons x origin position*/
+	var y_position =argument1; /*The buttons y origin position*/
 
 	var string_text =argument2;
 	var menu_index=argument3;

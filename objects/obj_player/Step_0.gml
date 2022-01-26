@@ -635,7 +635,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10= noone)
 {
-	voice_jump_spring=voice_jump_spring_1;
+	voice_jump_spring =voice_jump_spring_1;
 }
 else
 if (voice_jump_spring_1> noone)
@@ -649,7 +649,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10= noone)
 {
-	voice_jump_spring=choose(voice_jump_spring_1,
+	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2);
 }
 else
@@ -664,7 +664,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10= noone)
 {
-	voice_jump_spring=choose(voice_jump_spring_1,
+	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3);
 }
@@ -680,7 +680,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10= noone)
 {
-	voice_jump_spring=choose(voice_jump_spring_1,
+	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4);
@@ -697,7 +697,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10= noone)
 {
-	voice_jump_spring=choose(voice_jump_spring_1,
+	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -715,7 +715,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10= noone)
 {
-	voice_jump_spring=choose(voice_jump_spring_1,
+	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -734,7 +734,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10= noone)
 {
-	voice_jump_spring=choose(voice_jump_spring_1,
+	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -754,7 +754,7 @@ and (voice_jump_spring_8> noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10= noone)
 {
-	voice_jump_spring=choose(voice_jump_spring_1,
+	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -775,7 +775,7 @@ and (voice_jump_spring_8> noone)
 and (voice_jump_spring_9> noone)
 and (voice_jump_spring_10= noone)
 {
-	voice_jump_spring=choose(voice_jump_spring_1,
+	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -797,7 +797,7 @@ and (voice_jump_spring_8> noone)
 and (voice_jump_spring_9> noone)
 and (voice_jump_spring_10> noone)
 {
-	voice_jump_spring=choose(voice_jump_spring_1,
+	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -2318,7 +2318,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10= noone)
 {
-	voice_burned_running=voice_burned_running_1;
+	voice_burned_running =voice_burned_running_1;
 }
 else
 if (voice_burned_running_1> noone)
@@ -2332,7 +2332,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10= noone)
 {
-	voice_burned_running=choose(voice_burned_running_1,
+	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2);
 }
 else
@@ -2347,7 +2347,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10= noone)
 {
-	voice_burned_running=choose(voice_burned_running_1,
+	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3);
 }
@@ -2363,7 +2363,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10= noone)
 {
-	voice_burned_running=choose(voice_burned_running_1,
+	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4);
@@ -2380,7 +2380,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10= noone)
 {
-	voice_burned_running=choose(voice_burned_running_1,
+	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2398,7 +2398,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10= noone)
 {
-	voice_burned_running=choose(voice_burned_running_1,
+	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2417,7 +2417,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10= noone)
 {
-	voice_burned_running=choose(voice_burned_running_1,
+	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2437,7 +2437,7 @@ and (voice_burned_running_8> noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10= noone)
 {
-	voice_burned_running=choose(voice_burned_running_1,
+	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2458,7 +2458,7 @@ and (voice_burned_running_8> noone)
 and (voice_burned_running_9> noone)
 and (voice_burned_running_10= noone)
 {
-	voice_burned_running=choose(voice_burned_running_1,
+	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2480,7 +2480,7 @@ and (voice_burned_running_8> noone)
 and (voice_burned_running_9> noone)
 and (voice_burned_running_10> noone)
 {
-	voice_burned_running=choose(voice_burned_running_1,
+	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2751,7 +2751,7 @@ if (global.quit_level = true)
 #region /*Invincible Music*/
 if (asset_get_type("snd_music_invincible") == asset_sound)
 {
-	if (invincible <room_speed*10)
+	if (invincible <room_speed* 10)
 	and (assist_invincible = false)
 	{
 		invincible_pitch += 0.001;
@@ -2860,7 +2860,7 @@ and (allow_timeup = true)
 	audio_sound_pitch(global.music_underwater,music_pitch +0.3);
 	if (crouch = true)
 	or (ground_pound = true)
-	and (place_meeting(x, y+ sprite_height,obj_wall))
+	and (place_meeting(x, y+ sprite_height, obj_wall))
 	{
 		music_pitch =lerp(music_pitch, 0.95, 0.001);
 	}
@@ -2875,7 +2875,7 @@ else
 	audio_sound_pitch(global.music_underwater,music_pitch);
 	if (crouch = true)
 	or (ground_pound = true)
-	and (place_meeting(x, y+ sprite_height,obj_wall))
+	and (place_meeting(x, y+ sprite_height, obj_wall))
 	{
 		music_pitch =lerp(music_pitch, 0.95, 0.001);
 	}
@@ -2988,13 +2988,13 @@ and (obj_camera.iris_xscale < 3)
 		
 		#region /*Don't go outside view*/
 		if (x < camera_get_view_x(view_camera[view_current]))
-		and (instance_number(obj_player)>=2)
+		and (instance_number(obj_player)>= 2)
 		and (intro_animation = "")
 		{
 			x = camera_get_view_x(view_camera[view_current]);
 		}
 		if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-		and (instance_number(obj_player)>=2)
+		and (instance_number(obj_player)>= 2)
 		and (intro_animation = "")
 		{
 			x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
@@ -3037,7 +3037,7 @@ else
 			{
 				audio_stop_sound(snd_level_clear);
 			}
-			if (room_next(room)<>-1)
+			if (room_next(room)<>- 1)
 			{
 				if (asset_get_type("room_world_map") == asset_room)
 				and (obj_camera.iris_yscale <= 0.001)
@@ -3098,13 +3098,13 @@ else
 		
 		#region /*Don't go outside view*/
 		if (x < camera_get_view_x(view_camera[view_current]))
-		and (instance_number(obj_player)>=2)
+		and (instance_number(obj_player)>= 2)
 		and (intro_animation = "")
 		{
 			x = camera_get_view_x(view_camera[view_current]);
 		}
 		if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-		and (instance_number(obj_player)>=2)
+		and (instance_number(obj_player)>= 2)
 		and (intro_animation = "")
 		{
 			x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
@@ -3154,7 +3154,7 @@ if (goal = true)
 	}
 	if (y<- 64)
 	{
-		y =- 64;
+		y = - 64;
 	}
 	if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32)
 	{
@@ -4909,7 +4909,7 @@ if (double_tap_to_run = true)
 				double_tap_run_timer = 15;
 			}
 			else
-			if (double_tap_left =2)
+			if (double_tap_left = 2)
 			{
 				double_tap_left =3;
 				double_tap_run_timer = 15;
@@ -4932,7 +4932,7 @@ if (double_tap_to_run = true)
 				double_tap_run_timer = 15;
 			}
 			else
-			if (double_tap_right =2)
+			if (double_tap_right = 2)
 			{
 				double_tap_right =3;
 				double_tap_run_timer = 15;
@@ -4949,15 +4949,15 @@ if (double_tap_to_run = true)
 		and (!key_right)
 		{
 			if (double_tap_left = true)
-			and (double_tap_run_timer<=28)
+			and (double_tap_run_timer<= 28)
 			{
-				double_tap_left =2;
+				double_tap_left = 2;
 			}
 			else
 			if (double_tap_right = true)
-			and (double_tap_run_timer<=28)
+			and (double_tap_run_timer<= 28)
 			{
-				double_tap_right =2;
+				double_tap_right = 2;
 			}
 			double_tap_run_timer -= 1;
 		}
@@ -5171,7 +5171,7 @@ and (key_jump_hold)
 				}
 			}
 			if (jump < 2)
-			//if (random(global.verbosity_slider*100) >= 100)
+			//if (random(global.verbosity_slider* 100) >= 100)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump, 0, 0);
@@ -5179,7 +5179,7 @@ and (key_jump_hold)
 				audio_sound_pitch(voice_jump, default_voice_pitch);
 			}
 			if (jump = 2)
-			//if (random(global.verbosity_slider*100) >= 100)
+			//if (random(global.verbosity_slider* 100) >= 100)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump2nd, 0, 0);
@@ -5187,7 +5187,7 @@ and (key_jump_hold)
 				audio_sound_pitch(voice_jump2nd, default_voice_pitch);
 			}
 			if (jump = 3)
-			//if (random(global.verbosity_slider*100) >= 100)
+			//if (random(global.verbosity_slider* 100) >= 100)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump3rd, 0, 0);
@@ -5261,7 +5261,7 @@ and (can_mid_air_jump = 0)
 			effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
 			image_index = 0;
 		
-			if (number_of_jumps > -1)
+			if (number_of_jumps > - 1)
 			and (midair_jumps_left != number_of_jumps)
 			{
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
@@ -6278,7 +6278,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 					image_xscale = -1;
 					if (!place_meeting(x- 6,y, obj_wall))
 					{
-						hspeed =- 6;
+						hspeed = - 6;
 					}
 				}
 				else
@@ -6298,7 +6298,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 				ledge_grab_jump = false;
 				speed_max=8;
 				vspeed = -normal_jump_height;
-				midair_jumps_left = number_of_jumps-1;
+				midair_jumps_left = number_of_jumps - 1;
 				image_index = 0;
 				effect_create_above(ef_smoke, x, bbox_bottom-8, 0, c_white);
 				effect_create_above(ef_smoke, x, bbox_top+8, 0, c_white);
@@ -6449,7 +6449,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 				image_xscale = -1;
 				if (!place_meeting(x- 6,y, obj_wall))
 				{
-					hspeed =- 6;
+					hspeed = - 6;
 				}
 			}
 			else
@@ -6605,7 +6605,7 @@ and (takendamage <= takendamage_freezetime)
 			{
 				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
 				image_index = 0;
-				ground_pound =2;
+				ground_pound = 2;
 				speed_max = 4;
 				if (asset_get_type("obj_camera") == asset_object)
 				{
@@ -6632,11 +6632,11 @@ and (takendamage <= takendamage_freezetime)
 				image_index = 0;
 				ground_pound = false;
 				speed_max = 4;
-				spring_animation =2;
+				spring_animation = 2;
 			}
 		}
 		else
-		if (ground_pound =2)
+		if (ground_pound = 2)
 		{
 			if (asset_get_type("obj_wall") == asset_object)
 			and (place_meeting(x, y + 1, obj_wall))
@@ -6780,12 +6780,12 @@ and (global.pause = false)
 					and (!key_right)
 					or (image_xscale < 0)
 					{
-						if (hspeed >-10)
+						if (hspeed >- 10)
 						{
 							if (asset_get_type("obj_wall") == asset_object)
 							and (!place_meeting(x - 4, y, obj_wall))
 							{
-								hspeed =-10;
+								hspeed = - 10;
 							}
 						}
 						image_xscale = -1;
@@ -6858,13 +6858,13 @@ and (global.pause = false)
 					if (asset_get_type("obj_wall") == asset_object)
 					and (!place_meeting(x - 4, y, obj_wall))
 					{
-						hspeed =-4;
+						hspeed = -4;
 					}
 					else
 					if (asset_get_type("obj_wall") == asset_object)
 					and (!place_meeting(x - 1, y, obj_wall))
 					{
-						hspeed =-1;
+						hspeed = - 1;
 					}
 				}
 			}
@@ -7000,14 +7000,14 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			if (hspeed<-7)
 			{
-				if (hspeed >-10)
+				if (hspeed >- 10)
 				{
 					if (!place_meeting(x - 1, y, obj_wall))
 					and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 					and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 					and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
-						hspeed =-10;
+						hspeed = - 10;
 					}
 				}
 				angle = -320;
@@ -7057,11 +7057,11 @@ if (allow_ledge_grab= true)
 		if (ground_pound<1)
 		and (burnt<1)
 		{
-			if (!position_meeting(x + 37*hspeed_dir,bbox_top-16, obj_wall))
+			if (!position_meeting(x + 37*hspeed_dir,bbox_top- 16, obj_wall))
 			and (position_meeting(x + 37*hspeed_dir,bbox_top+8, obj_wall))
-			and (yprevious-16<y)
+			and (yprevious - 16<y)
 			and (vspeed > 0)
-			and (!place_meeting(x, y+ sprite_height/3,obj_wall))
+			and (!place_meeting(x, y+ sprite_height/3, obj_wall))
 			and (!key_down)
 			{
 				if (asset_get_type("snd_grabledge") == asset_sound)
@@ -7081,7 +7081,7 @@ if (allow_ledge_grab= true)
 				#endregion /*Move against the ledge*/
 				
 				#region /*Make sure we are the right height*/
-				while(position_meeting(x +(17*hspeed_dir),y- 5,obj_wall))
+				while(position_meeting(x +(17*hspeed_dir),y- 5, obj_wall))
 				{
 					y -= 1;
 				}
@@ -7221,7 +7221,7 @@ and (stick_to_wall = false)
 #region /*Put sprite angle at right angle*/
 if (angle <-360)
 {
-	angle+=16;
+	angle +=16;
 }
 else
 if (angle >+ 360)
@@ -7344,7 +7344,7 @@ if (asset_get_type("obj_water") == asset_object)
 		}
 		
 		#region /*Set the gravity underwater*/
-		gravity_direction =270; /*Direction of the gravity*/
+		gravity_direction = 270; /*Direction of the gravity*/
 		if (!place_meeting(x, y + 1, obj_wall))
 		and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_wall))
@@ -7417,7 +7417,7 @@ if (asset_get_type("obj_water") == asset_object)
 		{
 			if (hspeed<- 2)
 			{
-				hspeed =- 2;
+				hspeed = - 2;
 			}
 			if (hspeed >+ 2)
 			{
@@ -7463,7 +7463,7 @@ and (global.assist_enable = false)
 	drawn_frames_until_drowning = lerp(drawn_frames_until_drowning, frames_until_drowning, 0.1);
 	if (in_water = true)
 	{
-		frames_until_drowning = clamp(frames_until_drowning-1, 0, seconds_until_drowning*60);
+		frames_until_drowning = clamp(frames_until_drowning- 1, 0, seconds_until_drowning*60);
 		if (frames_until_drowning <= 0)
 		and (goal = false)
 		{
@@ -7536,7 +7536,7 @@ if (abs(hspeed)>7)
 and (invincible > 0)
 and (power_meter_running_sound = true)
 {
-	speedunit +=2;
+	speedunit += 2;
 	if (speedunit>100)
 	{
 		speedunit =100;
@@ -7689,7 +7689,7 @@ if (burnt = true)
 		audio_play_sound(voice_burned_running, 0, 0);
 		audio_sound_gain(voice_burned_running, global.voices_volume, 0);
 		audio_sound_pitch(voice_burned_running, default_voice_pitch);
-		burnt =2;
+		burnt = 2;
 		dive = false;
 		ground_pound = false;
 		crouch = false;
@@ -7698,7 +7698,7 @@ if (burnt = true)
 	}
 }
 else
-if (burnt =2)
+if (burnt = 2)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 	if (place_meeting(x, y + 1, obj_wall))
@@ -8652,7 +8652,7 @@ and (in_water = false)
 				#region /*Do a charged upward jump depending on how fast you spin*/
 				if (image_speed >=1)
 				{
-					vspeed = -triple_jump_height*1.25;
+					vspeed = -triple_jump_height* 1.25;
 					audio_stop_sound(voice);
 					voice = audio_play_sound(voice_jump_rope, 0, 0);
 					audio_sound_gain(voice_jump_rope, global.voices_volume, 0);
@@ -8661,7 +8661,7 @@ and (in_water = false)
 				else
 				if (image_speed >= 0.9)
 				{
-					vspeed = -triple_jump_height*1.125;
+					vspeed = -triple_jump_height* 1.125;
 				}
 				else
 				if (image_speed >= 0.7)
@@ -8962,7 +8962,7 @@ and (place_meeting(x, y, obj_vine))
 		chain_reaction = 0;
 		if (key_up)
 		and (!key_down)
-		and (place_meeting(x, bbox_top-1, obj_vine))
+		and (place_meeting(x, bbox_top- 1, obj_vine))
 		and (takendamage <= takendamage_freezetime)
 		{
 			if (x < instance_nearest(x, y, obj_vine).x)
@@ -8973,7 +8973,7 @@ and (place_meeting(x, y, obj_vine))
 			{
 				x-=4;
 			}
-			if (!position_meeting(x, bbox_top-1, obj_wall))
+			if (!position_meeting(x, bbox_top- 1, obj_wall))
 			{
 				if (sprite_vine_climb> noone){sprite_index = sprite_vine_climb;}else
 				if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
@@ -8986,7 +8986,7 @@ and (place_meeting(x, y, obj_vine))
 				}
 				else
 				{
-					y-=2;
+					y-= 2;
 					image_speed = 0.2;
 				}
 				if (asset_get_type("snd_move_ivy") == asset_sound)
@@ -9065,7 +9065,7 @@ and (place_meeting(x, y, obj_vine))
 			}
 			else
 			{
-				x-=2;
+				x-= 2;
 				image_speed = 0.2;
 			}
 			if (asset_get_type("snd_move_ivy") == asset_sound)
@@ -9117,7 +9117,7 @@ and (place_meeting(x, y, obj_vine))
 			}
 			else
 			{
-				x +=2;
+				x += 2;
 				image_speed = 0.2;
 			}
 			if (asset_get_type("snd_move_ivy") == asset_sound)
@@ -9166,7 +9166,7 @@ and (place_meeting(x, y, obj_vine))
 			climb = false;
 			stomp_spin = false;
 			if (hp =1)
-			and (max_hp>=2)
+			and (max_hp>= 2)
 			{
 				if (asset_get_type("snd_jumpsmall") == asset_sound)
 				{
@@ -9292,13 +9292,13 @@ if (crouch = true)
 			}
 		}
 	}
-	if (abs(hspeed)>=2.5)
+	if (abs(hspeed)>= 2.5)
 	and (place_meeting(x, y + 1, obj_wall))
-	or (abs(hspeed)>=2.5)
+	or (abs(hspeed)>= 2.5)
 	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (abs(hspeed)>=2.5)
+	or (abs(hspeed)>= 2.5)
 	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (abs(hspeed)>=2.5)
+	or (abs(hspeed)>= 2.5)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (asset_get_type("spr_player_slide") == asset_sprite)
@@ -9578,7 +9578,7 @@ if (key_jump)
 {
 	image_index = 0;
 }
-if (image_index > image_number -1)
+if (image_index > image_number - 1)
 {
 	image_speed = 0;
 }
@@ -9771,13 +9771,13 @@ if (crouch = true)
 			}
 		}
 	}
-	if (abs(hspeed)>=2.5)
+	if (abs(hspeed)>= 2.5)
 	and (place_meeting(x, y + 1, obj_wall))
-	or (abs(hspeed)>=2.5)
+	or (abs(hspeed)>= 2.5)
 	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (abs(hspeed)>=2.5)
+	or (abs(hspeed)>= 2.5)
 	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (abs(hspeed)>=2.5)
+	or (abs(hspeed)>= 2.5)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (sprite_mask_crouch > 0)
@@ -9929,7 +9929,7 @@ if (ground_pound = true)
 	}
 }
 else
-if (ground_pound =2)
+if (ground_pound = 2)
 {
 	if (sprite_ground_pound_get_up > noone){sprite_index = sprite_ground_pound_get_up;}else
 	{
@@ -10170,6 +10170,7 @@ and (!key_right)
 		sprite_index = sprite_panting;
 		image_speed = 0.3;
 	}
+	else
 	if (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_camera))
 	and (obj_camera.rain = true)
@@ -10321,7 +10322,7 @@ if (vspeed < 0)
 		}
 	}
 	else
-	if (spring>=2)
+	if (spring>= 2)
 	{
 		if (asset_get_type("spr_player_spring_double") == asset_sprite)
 		{
@@ -10764,7 +10765,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 			}
 			else
-			if (image_index > image_number/ 2-1)
+			if (image_index > image_number/ 2- 1)
 			and (image_index<image_number/ 2+ 1)
 			{
 				
@@ -10991,7 +10992,7 @@ or (invincible > 0)
 {
 	if (asset_get_type("obj_speedline") == asset_object)
 	{
-		instance_create_depth(xx, yy, 0,obj_speedline);
+		instance_create_depth(xx, yy, 0, obj_speedline);
 	}
 }
 #endregion /*Speedlines Effect END*/

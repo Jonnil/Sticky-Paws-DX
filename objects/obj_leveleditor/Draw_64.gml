@@ -48,12 +48,12 @@ if (quit_level_editor = false)
 			
 			#region /*If menu is on continue*/
 			draw_menu_button(
-			window_get_width()/ 2-185,
+			window_get_width()/ 2- 185,
 			window_get_height()/ 2-84,
 			"Continue", "continue",noone);
 		
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
-			window_get_width()/ 2-185,
+			window_get_width()/ 2- 185,
 			window_get_height()/ 2-84,
 			window_get_width()/ 2+ 185,
 			window_get_height()/ 2-42))
@@ -108,12 +108,12 @@ if (quit_level_editor = false)
 			
 			#region /*If menu is on options*/
 			draw_menu_button(
-			window_get_width()/ 2-185,
+			window_get_width()/ 2- 185,
 			window_get_height()/ 2-42,
 			"Settings", "options",noone);
 			
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
-			window_get_width()/ 2-185,
+			window_get_width()/ 2- 185,
 			window_get_height()/ 2-42,
 			window_get_width()/ 2+ 185,
 			window_get_height()/ 2))
@@ -178,12 +178,12 @@ if (quit_level_editor = false)
 		
 			#region /*If menu is on quit*/
 			draw_menu_button(
-			window_get_width()/ 2-185,
+			window_get_width()/ 2- 185,
 			window_get_height()/ 2,
 			"Save and Quit", "quit",noone);
 			
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
-			window_get_width()/ 2-185,
+			window_get_width()/ 2- 185,
 			window_get_height()/ 2,
 			window_get_width()/ 2+ 185,
 			window_get_height()/ 2+ 42))
@@ -286,7 +286,7 @@ if (quit_level_editor = false)
 		level_name =keyboard_string;
 		if (string_length(level_name)>32)
 		{
-			keyboard_string=string_copy(level_name, 1, 32);
+			keyboard_string =string_copy(level_name, 1, 32);
 		}
 		#endregion /*Limit Name Input Length for Level Name END*/
 		
@@ -691,11 +691,11 @@ if (quit_level_editor = false)
 		if (erase_mode = true)
 		and (pause = false)
 		{
-			erase_icons_at_top_y = lerp(erase_icons_at_top_y, -1, 0.1);
+			erase_icons_at_top_y = lerp(erase_icons_at_top_y, - 1, 0.1);
 		}
 		else
 		{
-			erase_icons_at_top_y = lerp(erase_icons_at_top_y, -100, 0.1);
+			erase_icons_at_top_y = lerp(erase_icons_at_top_y, - 100, 0.1);
 		}
 		if (erase_brush_size = 5)
 		{
@@ -751,11 +751,11 @@ if (quit_level_editor = false)
 			{
 				mouse_sprite = spr_cursor;
 			}
-			icons_at_top_y = lerp(icons_at_top_y, -1, 0.1);
+			icons_at_top_y = lerp(icons_at_top_y, - 1, 0.1);
 		}
 		else
 		{
-			icons_at_top_y = lerp(icons_at_top_y, -100, 0.1);
+			icons_at_top_y = lerp(icons_at_top_y, - 100, 0.1);
 		}
 		
 		if (pause = false)

@@ -1,4 +1,4 @@
-//if (place_meeting(x, y,other))
+//if (place_meeting(x, y, other))
 //{
 //	if (drag_object = 0.5)
 //	{

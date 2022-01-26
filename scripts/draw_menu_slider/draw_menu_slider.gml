@@ -12,8 +12,8 @@ function draw_menu_slider()
 {
 	
 	#region /*Initialize variables*/
-	var x_position =argument0;/*The buttons x origin position*/
-	var y_position =argument1;/*The buttons y origin position*/
+	var x_position =argument0; /*The buttons x origin position*/
+	var y_position =argument1; /*The buttons y origin position*/
 
 	var string_text = argument2;
 	var menu_index = argument3;
@@ -23,7 +23,7 @@ function draw_menu_slider()
 	length_variable = 320;
 	#endregion /*Initialize variables END*/
 	
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position-16, x_position+ 320, y_position+ 16))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position- 16, x_position+ 320, y_position+ 16))
 	and (global.controls_used_for_menu_navigation = "mouse")
 	and (menu_delay = 0)
 	and (open_dropdown = false)
@@ -35,7 +35,7 @@ function draw_menu_slider()
 	#region /*Draw Bar*/
 	if (menu = menu_index)
 	{
-		draw_rectangle_color (x_position- 2,y_position-16- 2,x_position+ 320 + 2,y_position+ 16+ 2, c_black,c_black,c_black,c_black,false);
+		draw_rectangle_color (x_position- 2,y_position- 16- 2,x_position+ 320 + 2,y_position+ 16+ 2, c_black,c_black,c_black,c_black,false);
 		
 		#region /*Click to change value*/
 		if (global.controls_used_for_menu_navigation = "mouse")
@@ -50,14 +50,14 @@ function draw_menu_slider()
 				
 				if (menu = "background_brightness_gameplay")
 				{
-					global.background_brightness_gameplay = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(-1)) +(-1);
-					variable_to_change = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(-1)) +(-1);
+					global.background_brightness_gameplay = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(- 1)) +(- 1);
+					variable_to_change = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(- 1)) +(- 1);
 				}
 				else
 				if (menu = "background_brightness_menu")
 				{
-					global.background_brightness_menu = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(-1)) +(-1);
-					variable_to_change = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(-1)) +(-1);
+					global.background_brightness_menu = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(- 1)) +(- 1);
+					variable_to_change = clamp((window_mouse_get_x()-x_position)/(length_variable), 0, 1)*(1-(- 1)) +(- 1);
 				}
 				else
 				{
@@ -71,16 +71,16 @@ function draw_menu_slider()
 	if (menu_index = "background_brightness_gameplay")
 	or (menu_index = "background_brightness_menu")
 	{
-		draw_rectangle_color (x_position,y_position-16,x_position+ 320,y_position+ 16,c_black,c_white,c_white,c_black,false);
+		draw_rectangle_color (x_position,y_position- 16,x_position+ 320,y_position+ 16,c_black,c_white,c_white,c_black,false);
 		if (menu_index = "background_brightness_gameplay")
 		{
 			if (variable_to_change < 0)
 			{
-				draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320 - 2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320 + 2,y_position+ 16,c_white,c_white,c_white,c_white,false);
+				draw_rectangle_color (x_position+(variable_to_change-(- 1))/(1-(- 1))*320 - 2,y_position- 16,x_position+(variable_to_change-(- 1))/(1-(- 1))*320 + 2,y_position+ 16,c_white,c_white,c_white,c_white,false);
 			}
 			else
 			{
-				draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320 - 2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320 + 2,y_position+ 16,c_black,c_black,c_black,c_black,false);
+				draw_rectangle_color (x_position+(variable_to_change-(- 1))/(1-(- 1))*320 - 2,y_position- 16,x_position+(variable_to_change-(- 1))/(1-(- 1))*320 + 2,y_position+ 16,c_black,c_black,c_black,c_black,false);
 			}
 		}
 		else
@@ -88,25 +88,25 @@ function draw_menu_slider()
 		{
 			if (variable_to_change < 0)
 			{
-				draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320 - 2,y_position-16,x_position+(variable_to_change - (-1))/(1-(-1))*320 + 2,y_position+ 16,c_white,c_white,c_white,c_white,false);
+				draw_rectangle_color (x_position+(variable_to_change-(- 1))/(1-(- 1))*320 - 2,y_position- 16,x_position+(variable_to_change - (- 1))/(1-(- 1))*320 + 2,y_position+ 16,c_white,c_white,c_white,c_white,false);
 			}
 			else
 			{
-				draw_rectangle_color (x_position+(variable_to_change-(-1))/(1-(-1))*320 - 2,y_position-16,x_position+(variable_to_change-(-1))/(1-(-1))*320 + 2,y_position+ 16,c_black,c_black,c_black,c_black,false);
+				draw_rectangle_color (x_position+(variable_to_change-(- 1))/(1-(- 1))*320 - 2,y_position- 16,x_position+(variable_to_change-(- 1))/(1-(- 1))*320 + 2,y_position+ 16,c_black,c_black,c_black,c_black,false);
 			}
 		}
 	}
 	else
 	{
-		draw_rectangle_color (x_position,y_position-16,x_position+ 320,y_position+ 16,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);
-		draw_rectangle_color (x_position,y_position-16,x_position+variable_to_change*320,y_position+ 16,bar_color,bar_color,bar_color,bar_color,false);
+		draw_rectangle_color (x_position,y_position- 16,x_position+ 320,y_position+ 16,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false);
+		draw_rectangle_color (x_position,y_position- 16,x_position+variable_to_change*320,y_position+ 16,bar_color,bar_color,bar_color,bar_color,false);
 	}
 	#endregion /*Draw Bar END*/
 	
 	#region /*Show a menu cursor when the option is highlighted*/
 	if (menu = menu_index)
 	{
-		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position-16, y_position, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position- 16, y_position, 1, 1, 0, c_white, 1);
 	}
 	#endregion /*Show a menu cursor when the option is highlighted END*/
 	

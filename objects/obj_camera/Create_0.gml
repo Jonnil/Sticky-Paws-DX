@@ -60,22 +60,27 @@ alarm[0] = 1; /*Initialize custom character timer. This code needs to be initial
 if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
 and (!instance_exists(obj_background_brightness_gameplay))
 {
-	instance_create_depth(0, 0, 0,obj_background_brightness_gameplay);
+	instance_create_depth(0, 0, 0, obj_background_brightness_gameplay);
 }
 if (asset_get_type("obj_foreground1") == asset_object)
 and (!instance_exists(obj_foreground1))
 {
-	instance_create_depth(0, 0, 0,obj_foreground1);
+	instance_create_depth(0, 0, 0, obj_foreground1);
+}
+if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
+and (!instance_exists(obj_foreground_above_static_objects))
+{
+	instance_create_depth(0, 0, 0, obj_foreground_above_static_objects);
 }
 if (asset_get_type("obj_foreground2") == asset_object)
 and (!instance_exists(obj_foreground2))
 {
-	instance_create_depth(0, 0, 0,obj_foreground2);
+	instance_create_depth(0, 0, 0, obj_foreground2);
 }
 if (asset_get_type("obj_foreground_secret") == asset_object)
 and (!instance_exists(obj_foreground_secret))
 {
-	instance_create_depth(0, 0, 0,obj_foreground_secret);
+	instance_create_depth(0, 0, 0, obj_foreground_secret);
 }
 #endregion /*Create Foreground and Background Brightness Layer END*/
 
@@ -291,25 +296,25 @@ player1_has_pressed_key_left = false;
 player1_has_pressed_key_right = false;
 player1_has_pressed_key_down = false;
 player1_has_pressed_key_jump = false;
-player1_has_pressed_key_dash = false;/*Player 1 END*/
+player1_has_pressed_key_dash = false; /*Player 1 END*/
 /*Player 2*/player2_has_pressed_key_up = false;
 player2_has_pressed_key_left = false;
 player2_has_pressed_key_right = false;
 player2_has_pressed_key_down = false;
 player2_has_pressed_key_jump = false;
-player2_has_pressed_key_dash = false;/*Player 2 END*/
+player2_has_pressed_key_dash = false; /*Player 2 END*/
 /*Player 3*/player3_has_pressed_key_up = false;
 player3_has_pressed_key_left = false;
 player3_has_pressed_key_right = false;
 player3_has_pressed_key_down = false;
 player3_has_pressed_key_jump = false;
-player3_has_pressed_key_dash = false;/*Player 3 END*/
+player3_has_pressed_key_dash = false; /*Player 3 END*/
 /*Player 4*/player4_has_pressed_key_up = false;
 player4_has_pressed_key_left = false;
 player4_has_pressed_key_right = false;
 player4_has_pressed_key_down = false;
 player4_has_pressed_key_jump = false;
-player4_has_pressed_key_dash = false;/*Player 4 END*/
+player4_has_pressed_key_dash = false; /*Player 4 END*/
 /*HUD Show Controls keys that have been pressed END*/
 
 xx = x;

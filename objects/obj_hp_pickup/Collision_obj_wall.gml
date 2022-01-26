@@ -1,14 +1,14 @@
-while(place_meeting(x, y,other))
+while(place_meeting(x, y, other))
 {
 	x +=lengthdir_x(0.5,point_direction(other.x, other.y, x, y));
 	y+=lengthdir_y(0.5,point_direction(other.x, other.y, x, y));
 }
-if (place_meeting(x, bbox_bottom + 1,other))
+if (place_meeting(x, bbox_bottom + 1, other))
 {
 	vspeed = 0;
 	gravity = 0;
 }
-if (place_meeting(x, y - 1,other))
+if (place_meeting(x, y - 1, other))
 {
 	vspeed+=4;
 }

@@ -67,7 +67,7 @@ and (place_meeting(x, y, obj_player))
 		vspeed = -8;
 	}
 	
-	#region /*1 Basic Collectible*/
+	#region /* 1 Basic Collectible*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -79,7 +79,7 @@ and (place_meeting(x, y, obj_player))
 			bounceup = true;
 		}
 	}
-	#endregion /*1 Basic Collectible END*/
+	#endregion /* 1 Basic Collectible END*/
 	
 	if (vspeed > 8)
 	{

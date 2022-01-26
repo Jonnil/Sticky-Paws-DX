@@ -51,6 +51,10 @@ if (asset_get_type("obj_foreground1") == asset_object)
 {
 	instance_activate_object(obj_foreground1);
 }
+if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
+{
+	instance_activate_object(obj_foreground_above_static_objects);
+}
 if (asset_get_type("obj_foreground2") == asset_object)
 {
 	instance_activate_object(obj_foreground2);

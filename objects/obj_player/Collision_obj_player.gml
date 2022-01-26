@@ -32,9 +32,9 @@ if (global.players_can_collide = true)
 		hspeed = 0;
 		x +=other.hspeed;
 	}
-	if (hspeed<-1)
+	if (hspeed<- 1)
 	{
-		hspeed =-1;
+		hspeed = - 1;
 	}
 	else
 	if (hspeed > + 1)

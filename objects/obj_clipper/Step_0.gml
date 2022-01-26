@@ -1,4 +1,4 @@
-depth =- 100;
+depth = - 100;
 
 #region /*Set the gravity*/
 gravity_direction = 270;

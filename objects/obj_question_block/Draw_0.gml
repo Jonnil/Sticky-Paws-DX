@@ -18,10 +18,10 @@ if (bounceup = false)
 			bounceup = true;
 			if (asset_get_type("obj_blockbreak") == asset_object)
 			{
-				instance_create_depth(x, y - 32, 0,obj_blockbreak);
+				instance_create_depth(x, y - 32, 0, obj_blockbreak);
 			}
 			
-			#region /*1 Basic Collectible*/
+			#region /* 1 Basic Collectible*/
 			if (item_inside = "noone")
 			{
 				empty = true;
@@ -33,7 +33,7 @@ if (bounceup = false)
 						audio_play_sound(snd_basic_collectible, 0, 0);
 					}
 					var obj;
-					obj = instance_create_depth(x, bbox_top, 0,obj_basic_collectible);
+					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
 					{
 						image_speed = 1;
@@ -122,9 +122,9 @@ if (bounceup = false)
 					instance_destroy();
 				}
 			}
-			#endregion /*1 Basic Collectible END*/
+			#endregion /* 1 Basic Collectible END*/
 			
-			#region /*10 Basic Collectible*/
+			#region /* 10 Basic Collectible*/
 			if (item_inside = "10_basic_collectibles")
 			{
 				if (hit <= 4)
@@ -167,7 +167,7 @@ if (bounceup = false)
 					#endregion /*2 Basic Collectibles per hit END*/
 				}
 			}
-			#endregion /*10 Basic Collectible END*/
+			#endregion /* 10 Basic Collectible END*/
 			
 			#region /*Heart Balloon*/
 			if (item_inside = "heart_balloon")
@@ -177,7 +177,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-16, 0,obj_heart_balloon);
+					obj = instance_create_depth(x, bbox_top- 16, 0, obj_heart_balloon);
 					with(obj)
 					{
 						image_speed = 1;
@@ -188,7 +188,7 @@ if (bounceup = false)
 			}
 			#endregion /*Heart Balloon END*/
 			
-			#region /*1-up*/
+			#region /* 1-up*/
 			if (item_inside = "1-up")
 			{
 				empty = true;
@@ -196,7 +196,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-16, 0,obj_extra_life_pickup);
+					obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
 					with(obj)
 					{
 						image_speed = 1;
@@ -206,7 +206,7 @@ if (bounceup = false)
 					}
 				}
 			}
-			#endregion /*1-up END*/
+			#endregion /* 1-up END*/
 			
 			#region /*2-up*/
 			if (item_inside = "2-up")
@@ -216,7 +216,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-16, 0,obj_extra_life_pickup);
+					obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
 					with(obj)
 					{
 						image_speed = 1;
@@ -236,7 +236,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-16, 0,obj_extra_life_pickup);
+					obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
 					with(obj)
 					{
 						image_speed = 1;
@@ -256,7 +256,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top-32, 0,obj_invincibility_powerup);
+					obj = instance_create_depth(x, bbox_top-32, 0, obj_invincibility_powerup);
 					with(obj)
 					{
 						hspeed = +2;

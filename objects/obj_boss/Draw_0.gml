@@ -28,7 +28,7 @@ and (global.enable_enemies = false)
 #endregion /*If enemies are disabled, destroy this object END*/
 
 #region /*Set the gravity*/
-gravity_direction =270;/*Direction of the gravity*/
+gravity_direction = 270; /*Direction of the gravity*/
 if (asset_get_type("obj_wall") == asset_object)
 and (!place_meeting(x, y + 1, obj_wall))
 and (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -646,7 +646,7 @@ if (hp <= 0)
 		effect_create_above(ef_smoke, x + 42, y + 32, 2, c_white);
 		effect_create_above(ef_smoke, x + 32, y + 64, 2, c_white);
 
-		/*1 Coin*/
+		/* 1 Coin*/
 		if asset_get_type("obj_basic_collectible") == asset_object
 		{
 			var obj;

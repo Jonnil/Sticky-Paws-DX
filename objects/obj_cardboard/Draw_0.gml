@@ -10,7 +10,7 @@ if (brick_particle = true)
 	}
 	
 	#region /*Set the gravity*/
-	gravity_direction =270;
+	gravity_direction = 270;
 	gravity = 0.5;
 	#endregion /*Set the gravity END*/
 	
@@ -26,7 +26,7 @@ if (brick_particle = true)
 	
 	if (hspeed < 0)
 	{
-		image_angle+=speed;
+		image_angle +=speed;
 	}
 	if (hspeed > 0)
 	{
@@ -86,6 +86,11 @@ if (brick_particle = false)
 		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		
+		or (place_meeting(bbox_left-8,y, obj_boss))
+		and (!collision_line(x, y, instance_nearest(x, y, obj_boss).x, instance_nearest(x, y, obj_boss).y, obj_wall, false, true))
+		or (place_meeting(bbox_right-8,y, obj_boss))
+		and (!collision_line(x, y, instance_nearest(x, y, obj_boss).x, instance_nearest(x, y, obj_boss).y, obj_wall, false, true))
+		
 		or (!place_meeting(x, y + 2, obj_wall))
 		and (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +outside_view_offset)
 		and (x >camera_get_view_x(view_camera[view_current])-outside_view_offset)
@@ -105,7 +110,7 @@ if (brick_particle = false)
 			{
 				if (asset_get_type("obj_blockbreak") == asset_object)
 				{
-					instance_create_depth(x, y - 32, 0,obj_blockbreak);
+					instance_create_depth(x, y - 32, 0, obj_blockbreak);
 				}
 			}
 			if (asset_get_type("obj_cardboard") == asset_object)
@@ -204,7 +209,7 @@ if (brick_particle = false)
 			}
 			if (asset_get_type("obj_blockbreak") == asset_object)
 			{
-				instance_create_depth(x, y - 32, 0,obj_blockbreak);
+				instance_create_depth(x, y - 32, 0, obj_blockbreak);
 			}
 			score += 50;
 			global.hud_show_score = true;

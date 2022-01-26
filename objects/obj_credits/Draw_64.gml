@@ -125,19 +125,19 @@ else
 	image_alpha = lerp(image_alpha, alpha, 0.1);
 }
 
-if (time >= room_speed*1-10)
-if (time <= room_speed*1+ 10)
+if (time >= room_speed* 1- 10)
+if (time <= room_speed* 1+ 10)
 {
 	yy = window_get_height()/ 2;
 	alpha = 1;
 }
-if (time >= room_speed*4-10)
+if (time >= room_speed*4 - 10)
 if (time <= room_speed*4+ 10)
 {
 	yy = 0;
 	alpha = 0;
 }
-if (time >= room_speed*5-10)
+if (time >= room_speed*5- 10)
 if (time <= room_speed*5+ 10)
 {
 	y = window_get_height();

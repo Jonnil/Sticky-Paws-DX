@@ -43,15 +43,15 @@ and (instance_exists(obj_player))
 		draw_yscale =lerp(draw_yscale, image_yscale, 0.5);
 		if (time < 201)
 		{
-			time+=1;
+			time +=1;
 		}
 	}
 	else
 	{
 		if (place_meeting(x, y - 1, obj_player))
 		{
-			yy =lerp(yy,y+random_range(-1,+ 1), 0.5);
-			draw_xscale =lerp(draw_xscale, image_xscale+0.05, 0.5);
+			yy =lerp(yy,y+random_range(- 1,+ 1), 0.5);
+			draw_xscale =lerp(draw_xscale, image_xscale +0.05, 0.5);
 			draw_yscale =lerp(draw_yscale, image_yscale-0.05, 0.5);
 		}
 		else

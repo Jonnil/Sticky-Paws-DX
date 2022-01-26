@@ -46,7 +46,7 @@ else
 	max_hp = 1 + global.assist_extra_hp; /*Starting Max HP*/
 }
 max_overflow_hp = 4; /*Starting Max Overflow HP*/
-number_of_jumps = 1; /*How many times you can jump. -1 = infinite jumps, 0 = no jump, 1 = single jump, 2 = double jump*/
+number_of_jumps = 1; /*How many times you can jump. - 1 = infinite jumps, 0 = no jump, 1 = single jump, 2 = double jump*/
 midair_jumps_left = 1; /*How many mid-air jumps you have left to perform*/
 midair_jump_flip_animation = 2; /*How many flip animations the character do in mid-air, after you have jumped this many times, you stop doing the flip animation*/
 speed_max_walk = 4; /*Default speed_max_walk is 4. Top speed with simple walking*/
@@ -244,7 +244,7 @@ voice_wall_jump_4 = noone; /*Voice Wall Jump 4*/
 voice_wall_jump_5 = noone; /*Voice Wall Jump 5*/
 voice_wall_jump_6 = noone; /*Voice Wall Jump 6*/
 voice_wall_jump_7 = noone; /*Voice Wall Jump 7*/
-voice_wall_jump_8 = noone; /*Voice Wall Jump 8*/
+voice_wall_jump_8 = noone; /*Voice Wall Jump 8 */
 voice_wall_jump_9 = noone; /*Voice Wall Jump 9*/
 voice_wall_jump_10 = noone; /*Voice Wall Jump 10*/
 #endregion /*Voice Wall Jump END*/
@@ -257,7 +257,7 @@ voice_start_running_4 = noone; /*Voice Start Running 4*/
 voice_start_running_5 = noone; /*Voice Start Running 5*/
 voice_start_running_6 = noone; /*Voice Start Running 6*/
 voice_start_running_7 = noone; /*Voice Start Running 7*/
-voice_start_running_8 = noone; /*Voice Start Running 8*/
+voice_start_running_8 = noone; /*Voice Start Running 8 */
 voice_start_running_9 = noone; /*Voice Start Running 9*/
 voice_start_running_10 = noone; /*Voice Start Running 10*/
 #endregion /*Voice Start Running END*/
@@ -270,7 +270,7 @@ voice_rope_catch_4 = noone; /*Voice Rope Catch 4*/
 voice_rope_catch_5 = noone; /*Voice Rope Catch 5*/
 voice_rope_catch_6 = noone; /*Voice Rope Catch 6*/
 voice_rope_catch_7 = noone; /*Voice Rope Catch 7*/
-voice_rope_catch_8 = noone; /*Voice Rope Catch 8*/
+voice_rope_catch_8 = noone; /*Voice Rope Catch 8 */
 voice_rope_catch_9 = noone; /*Voice Rope Catch 9*/
 voice_rope_catch_10 = noone; /*Voice Rope Catch 10*/
 #endregion /*Voice Rope Catch END*/
@@ -283,7 +283,7 @@ voice_jump_spring_4 = noone; /*Voice Jump Spring 4*/
 voice_jump_spring_5 = noone; /*Voice Jump Spring 5*/
 voice_jump_spring_6 = noone; /*Voice Jump Spring 6*/
 voice_jump_spring_7 = noone; /*Voice Jump Spring 7*/
-voice_jump_spring_8 = noone; /*Voice Jump Spring 8*/
+voice_jump_spring_8 = noone; /*Voice Jump Spring 8 */
 voice_jump_spring_9 = noone; /*Voice Jump Spring 9*/
 voice_jump_spring_10 = noone; /*Voice Jump Spring 10*/
 #endregion /*Voice Jump Spring END*/
@@ -296,7 +296,7 @@ voice_jump_rope_4 = noone; /*Voice Jump Rope 4*/
 voice_jump_rope_5 = noone; /*Voice Jump Rope 5*/
 voice_jump_rope_6 = noone; /*Voice Jump Rope 6*/
 voice_jump_rope_7 = noone; /*Voice Jump Rope 7*/
-voice_jump_rope_8 = noone; /*Voice Jump Rope 8*/
+voice_jump_rope_8 = noone; /*Voice Jump Rope 8 */
 voice_jump_rope_9 = noone; /*Voice Jump Rope 9*/
 voice_jump_rope_10 = noone; /*Voice Jump Rope 10*/
 #endregion /*Voice Jump Rope END*/
@@ -309,7 +309,7 @@ voice_jump_4 = noone; /*Voice Jump 4*/
 voice_jump_5 = noone; /*Voice Jump 5*/
 voice_jump_6 = noone; /*Voice Jump 6*/
 voice_jump_7 = noone; /*Voice Jump 7*/
-voice_jump_8 = noone; /*Voice Jump 8*/
+voice_jump_8 = noone; /*Voice Jump 8 */
 voice_jump_9 = noone; /*Voice Jump 9*/
 voice_jump_10 = noone; /*Voice Jump 10*/
 #endregion /*Voice Jump END*/
@@ -322,7 +322,7 @@ voice_jump_3rd_4 = noone; /*Voice Jump 3rd 4*/
 voice_jump_3rd_5 = noone; /*Voice Jump 3rd 5*/
 voice_jump_3rd_6 = noone; /*Voice Jump 3rd 6*/
 voice_jump_3rd_7 = noone; /*Voice Jump 3rd 7*/
-voice_jump_3rd_8 = noone; /*Voice Jump 3rd 8*/
+voice_jump_3rd_8 = noone; /*Voice Jump 3rd 8 */
 voice_jump_3rd_9 = noone; /*Voice Jump 3rd 9*/
 voice_jump_3rd_10 = noone; /*Voice Jump 3rd 10*/
 #endregion /*Voice Jump 3rd END*/
@@ -335,7 +335,7 @@ voice_jump_2nd_4 = noone; /*Voice Jump 2nd 4*/
 voice_jump_2nd_5 = noone; /*Voice Jump 2nd 5*/
 voice_jump_2nd_6 = noone; /*Voice Jump 2nd 6*/
 voice_jump_2nd_7 = noone; /*Voice Jump 2nd 7*/
-voice_jump_2nd_8 = noone; /*Voice Jump 2nd 8*/
+voice_jump_2nd_8 = noone; /*Voice Jump 2nd 8 */
 voice_jump_2nd_9 = noone; /*Voice Jump 2nd 9*/
 voice_jump_2nd_10 = noone; /*Voice Jump 2nd 10*/
 #endregion /*Voice Jump 2nd END*/
@@ -348,7 +348,7 @@ voice_get_invincibility_4 = noone; /*Voice Get Invincibility 4*/
 voice_get_invincibility_5 = noone; /*Voice Get Invincibility 5*/
 voice_get_invincibility_6 = noone; /*Voice Get Invincibility 6*/
 voice_get_invincibility_7 = noone; /*Voice Get Invincibility 7*/
-voice_get_invincibility_8 = noone; /*Voice Get Invincibility 8*/
+voice_get_invincibility_8 = noone; /*Voice Get Invincibility 8 */
 voice_get_invincibility_9 = noone; /*Voice Get Invincibility 9*/
 voice_get_invincibility_10 = noone; /*Voice Get Invincibility 10*/
 #endregion /*Voice Get Invincibility END*/
@@ -361,7 +361,7 @@ voice_enter_goal_4 = noone; /*Voice Enter Goal 4*/
 voice_enter_goal_5 = noone; /*Voice Enter Goal 5*/
 voice_enter_goal_6 = noone; /*Voice Enter Goal 6*/
 voice_enter_goal_7 = noone; /*Voice Enter Goal 7*/
-voice_enter_goal_8 = noone; /*Voice Enter Goal 8*/
+voice_enter_goal_8 = noone; /*Voice Enter Goal 8 */
 voice_enter_goal_9 = noone; /*Voice Enter Goal 9*/
 voice_enter_goal_10 = noone; /*Voice Enter Goal 10*/
 #endregion /*Voice Enter Goal END*/
@@ -374,7 +374,7 @@ voice_dive_4 = noone; /*Voice Dive 4*/
 voice_dive_5 = noone; /*Voice Dive 5*/
 voice_dive_6 = noone; /*Voice Dive 6*/
 voice_dive_7 = noone; /*Voice Dive 7*/
-voice_dive_8 = noone; /*Voice Dive 8*/
+voice_dive_8 = noone; /*Voice Dive 8 */
 voice_dive_9 = noone; /*Voice Dive 9*/
 voice_dive_10 = noone; /*Voice Dive 10*/
 voice_dive_11 = noone; /*Voice Dive 11*/
@@ -384,7 +384,7 @@ voice_dive_14 = noone; /*Voice Dive 14*/
 voice_dive_15 = noone; /*Voice Dive 15*/
 voice_dive_16 = noone; /*Voice Dive 16*/
 voice_dive_17 = noone; /*Voice Dive 17*/
-voice_dive_18 = noone; /*Voice Dive 18*/
+voice_dive_18 = noone; /*Voice Dive 18 */
 voice_dive_19 = noone; /*Voice Dive 19*/
 voice_dive_20 = noone; /*Voice Dive 20*/
 #endregion /*Voice Dive END*/
@@ -397,7 +397,7 @@ voice_damage_4 = noone; /*Voice Damage 4*/
 voice_damage_5 = noone; /*Voice Damage 5*/
 voice_damage_6 = noone; /*Voice Damage 6*/
 voice_damage_7 = noone; /*Voice Damage 7*/
-voice_damage_8 = noone; /*Voice Damage 8*/
+voice_damage_8 = noone; /*Voice Damage 8 */
 voice_damage_9 = noone; /*Voice Damage 9*/
 voice_damage_10 = noone; /*Voice Damage 10*/
 #endregion /*Voice Damage END*/
@@ -410,7 +410,7 @@ voice_burned_running_4 = noone; /*Voice Burned Running 4*/
 voice_burned_running_5 = noone; /*Voice Burned Running 5*/
 voice_burned_running_6 = noone; /*Voice Burned Running 6*/
 voice_burned_running_7 = noone; /*Voice Burned Running 7*/
-voice_burned_running_8 = noone; /*Voice Burned Running 8*/
+voice_burned_running_8 = noone; /*Voice Burned Running 8 */
 voice_burned_running_9 = noone; /*Voice Burned Running 9*/
 voice_burned_running_10 = noone; /*Voice Burned Running 10*/
 #endregion /*Voice Burned Running END*/
@@ -423,7 +423,7 @@ voice_burned_4 = noone; /*Voice Burned 4*/
 voice_burned_5 = noone; /*Voice Burned 5*/
 voice_burned_6 = noone; /*Voice Burned 6*/
 voice_burned_7 = noone; /*Voice Burned 7*/
-voice_burned_8 = noone; /*Voice Burned 8*/
+voice_burned_8 = noone; /*Voice Burned 8 */
 voice_burned_9 = noone; /*Voice Burned 9*/
 voice_burned_10 = noone; /*Voice Burned 10*/
 #endregion /*Voice Burned END*/

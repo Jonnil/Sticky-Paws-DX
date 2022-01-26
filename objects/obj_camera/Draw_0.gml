@@ -585,7 +585,7 @@ if (save_level_as_png = false)
 		
 		#region /*Camera should follow multiple players*/
 		
-		/*1, 2, 3, 4*/
+		/* 1, 2, 3, 4*/
 		if (instance_exists(player1))
 		and (instance_exists(player2))
 		and (instance_exists(player3))
@@ -597,7 +597,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*1, 2, 3*/
+		/* 1, 2, 3*/
 		if (instance_exists(player1))
 		and (instance_exists(player2))
 		and (instance_exists(player3))
@@ -609,7 +609,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*1, 2*/
+		/* 1, 2*/
 		if (instance_exists(player1))
 		and (instance_exists(player2))
 		{
@@ -619,7 +619,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*1, 3*/
+		/* 1, 3*/
 		if (instance_exists(player1))
 		and (instance_exists(player3))
 		{
@@ -629,7 +629,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*1, 4*/
+		/* 1, 4*/
 		if (instance_exists(player1))
 		and (instance_exists(player4))
 		{
@@ -670,7 +670,7 @@ if (save_level_as_png = false)
 		else
 		
 		#region /*Just in case something goes wrong, just follow one player*/
-		/*1*/
+		/* 1*/
 		if (instance_exists(player1))
 		{
 			xx = player1.x;
@@ -748,6 +748,17 @@ if (save_level_as_png = false)
 		
 	}
 	#endregion /*MULTIPLAYER CAMERA*/
+	
+	else
+	
+	#region /*Camera when you win level*/
+	if (global.player_has_entered_goal = true)
+	and (instance_exists(obj_goal))
+	{
+		xx = mean(instance_nearest(obj_goal.x, obj_goal.y, obj_player).x, obj_goal.x);
+		yy = mean(instance_nearest(obj_goal.x, obj_goal.y, obj_player).y, obj_goal.y);
+	}
+	#endregion /*Camera when you win level END*/
 	
 	/*Iris*/
 	if (allow_iris = true)

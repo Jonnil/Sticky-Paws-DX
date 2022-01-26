@@ -1,19 +1,19 @@
 if (die = false)
 {
 	#region /*Push the enemy out of the solid object*/
-	if (position_meeting(x, bbox_bottom + 1,other))
+	if (position_meeting(x, bbox_bottom + 1, other))
 	or (position_meeting(x, bbox_bottom+ 2, other))
-	or (position_meeting(x, bbox_bottom+ 3,other))
+	or (position_meeting(x, bbox_bottom+ 3, other))
 	or (position_meeting(x, bbox_bottom+ 4, other))
 
-	or (position_meeting(bbox_left, bbox_bottom + 1,other))
+	or (position_meeting(bbox_left, bbox_bottom + 1, other))
 	or (position_meeting(bbox_left, bbox_bottom+ 2, other))
-	or (position_meeting(bbox_left, bbox_bottom+ 3,other))
+	or (position_meeting(bbox_left, bbox_bottom+ 3, other))
 	or (position_meeting(bbox_left, bbox_bottom+ 4, other))
 
-	or (position_meeting(bbox_right, bbox_bottom + 1,other))
+	or (position_meeting(bbox_right, bbox_bottom + 1, other))
 	or (position_meeting(bbox_right, bbox_bottom+ 2, other))
-	or (position_meeting(bbox_right, bbox_bottom+ 3,other))
+	or (position_meeting(bbox_right, bbox_bottom+ 3, other))
 	or (position_meeting(bbox_right, bbox_bottom+ 4, other))
 	{
 		y -= 1;
@@ -21,7 +21,7 @@ if (die = false)
 	#endregion /*Push the enemy out of the solid object END*/
 
 	#region /*Landing on solid object*/
-	if (place_meeting(x, y + 1,other))
+	if (place_meeting(x, y + 1, other))
 	and (vspeed >= 0)
 	{
 		if (asset_get_type("obj_camera") == asset_object)

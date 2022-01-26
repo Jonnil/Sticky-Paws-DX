@@ -18,30 +18,43 @@ sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
 if (asset_get_type("obj_foreground1") == asset_object)
 and (!instance_exists(obj_foreground1))
 {
-	instance_create_depth(0, 0, 0,obj_foreground1);
+	instance_create_depth(0, 0, 0, obj_foreground1);
+}
+if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
+and (!instance_exists(obj_foreground_above_static_objects))
+{
+	instance_create_depth(0, 0, 0, obj_foreground_above_static_objects);
 }
 if (asset_get_type("obj_foreground2") == asset_object)
 and (!instance_exists(obj_foreground2))
 {
-	instance_create_depth(0, 0, 0,obj_foreground2);
+	instance_create_depth(0, 0, 0, obj_foreground2);
 }
 if (asset_get_type("obj_foreground_secret") == asset_object)
 and (!instance_exists(obj_foreground_secret))
 {
-	instance_create_depth(0, 0, 0,obj_foreground_secret);
+	instance_create_depth(0, 0, 0, obj_foreground_secret);
 }
 #endregion /*Create Foreground END*/
+
+#region /*Create Background Brightness in Gameplay*/
+if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
+and (!instance_exists(obj_background_brightness_gameplay))
+{
+	instance_create_depth(x, y, 0, obj_background_brightness_gameplay);
+}
+#endregion /*Create Background Brightness in Gameplay END*/
 
 #region /*Create level height and level width objects*/
 if (asset_get_type("obj_level_height") == asset_object)
 and (!instance_exists(obj_level_height))
 {
-	instance_create_depth(0, 1104, 0,obj_level_height);
+	instance_create_depth(0, 1104, 0, obj_level_height);
 }
 if (asset_get_type("obj_level_width") == asset_object)
 and (!instance_exists(obj_level_width))
 {
-	instance_create_depth(2720, 0, 0,obj_level_width);
+	instance_create_depth(2720, 0, 0, obj_level_width);
 }
 #endregion /*Create level height and level width objects END*/
 
@@ -62,31 +75,31 @@ drag_x=mouse_x;
 drag_y =mouse_y;
 cursor_x= x;
 cursor_y = y;
-place_brush_size = 0;/*The size of the brush when placeing objects*/
-erase_brush_size = 0;/*The size of the brush when erasing*/
-can_make_place_brush_size_bigger= true;/*If you can make the brush size bigger for certain objects*/
+place_brush_size = 0; /*The size of the brush when placeing objects*/
+erase_brush_size = 0; /*The size of the brush when erasing*/
+can_make_place_brush_size_bigger= true; /*If you can make the brush size bigger for certain objects*/
 can_put_objects_above_other_objects = false; /*If you can put objects above other objects*/
-mouse_sprite =spr_cursor;/*Sets what cursor sprite to use*/
-undo_and_redo_buttons_enabled = false;/*If undo and redo buttons should appear or not*/
+mouse_sprite =spr_cursor; /*Sets what cursor sprite to use*/
+undo_and_redo_buttons_enabled = false; /*If undo and redo buttons should appear or not*/
 tooltip = "";
 show_tooltip = 0;
-show_grid = false;/*Grid should be false when you start level editor*/
+show_grid = false; /*Grid should be false when you start level editor*/
 grid_alpha= 0;
-zoom_in = false;/*When this is true, zoom in*/
-zoom_reset = false;/*When this is true, reset zoom*/
-zoom_out = false;/*When this is true, zoom out*/
-difficulty_layer= 0;/*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
-set_difficulty_mode = false;/*Toggle so you get a pen that can select what object appear in what difficulty*/
+zoom_in = false; /*When this is true, zoom in*/
+zoom_reset = false; /*When this is true, reset zoom*/
+zoom_out = false; /*When this is true, zoom out*/
+difficulty_layer= 0; /*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
+set_difficulty_mode = false; /*Toggle so you get a pen that can select what object appear in what difficulty*/
 place_object = noone;
 wall_surface_selected = 0; /*What kind of wall you're putting down*/
 show_icons_at_bottom = false;
 show_icons_at_top = false;
 icons_at_bottom_y = +100;
-erase_icons_at_top_y =-100;
-show_undo_redo_icons= false;/*If the undo and redo buttons should show*/
-undo_redo_icons_y = +200;/*Undo and redo buttons y postition*/
-current_undo_value = 0;/*Every time you place down items, this value increases. When you undo, this value decreases.*/
-icons_at_top_y =-100;
+erase_icons_at_top_y = - 100;
+show_undo_redo_icons= false; /*If the undo and redo buttons should show*/
+undo_redo_icons_y = +200; /*Undo and redo buttons y postition*/
+current_undo_value = 0; /*Every time you place down items, this value increases. When you undo, this value decreases.*/
+icons_at_top_y = - 100;
 icons_at_top_alpha=1;
 icons_at_left_x=- 64;
 selected_object = 0;
@@ -95,8 +108,8 @@ selected_menu_alpha= 0;
 total_number_of_objects= 0;
 use_controller= false;
 drag_object = false;
-erase_mode = false;/*When erasing, this turns true*/
-fill_mode = false;/*When filling, this turns true*/
+erase_mode = false; /*When erasing, this turns true*/
+fill_mode = false; /*When filling, this turns true*/
 can_input_level_name = false;
 quit_level_editor= false;
 menu_joystick_delay = 0;
@@ -125,14 +138,14 @@ keyboard_and_mouse_settings_y = 40*6;
 controller_settings_y = 40*7;
 touch_settings_y = 40*8;
 general_text_y = 40*9;
-profile_settings_y = 40*10;
-video_settings_y = 40*11;
-audio_settings_y = 40*12;
-global_resources_settings_y = 40*13;
-storage_settings_y = 40*14;
-language_settings_y = 40*15;
-broadcast_settings_y = 40*16;
-how_to_play_y = 40*17;
+profile_settings_y = 40* 10;
+video_settings_y = 40* 11;
+audio_settings_y = 40* 12;
+global_resources_settings_y = 40* 13;
+storage_settings_y = 40* 14;
+language_settings_y = 40* 15;
+broadcast_settings_y = 40* 16;
+how_to_play_y = 40* 17;
 left_sidebar_x=-400;
 
 place_brush_icon_x = 32;
@@ -153,7 +166,7 @@ menu_cursor_y_position = 0;
 menu_remap_key_number = 0;
 
 #region /*Customize look of Options Menu*/
-menu_y_offset =-100;
+menu_y_offset = - 100;
 c_menu_outline =c_black;
 c_menu_fill =c_white;
 #endregion /*Customize look of Options Menu END*/
