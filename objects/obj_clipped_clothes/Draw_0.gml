@@ -55,7 +55,7 @@ and (fall = false)
 			obj = instance_create_depth(x, y - 16, 0, obj_clipper);
 			with(obj)
 			{
-				motion_set(90 +random_range(- 10,+ 10),random_range(5, 10));
+				motion_set(90 +random_range(- 10,+ 10), random_range(5, 10));
 			}
 		}
 		else
@@ -63,12 +63,12 @@ and (fall = false)
 			obj = instance_create_depth(x + 16,y - 16, 0, obj_clipper);
 			with(obj)
 			{
-				motion_set(45,random_range(5, 10));
+				motion_set(45, random_range(5, 10));
 			}
 			obj = instance_create_depth(x - 16,y - 16, 0, obj_clipper);
 			with(obj)
 			{
-				motion_set(135,random_range(5, 10));
+				motion_set(135, random_range(5, 10));
 			}
 		}
 	}

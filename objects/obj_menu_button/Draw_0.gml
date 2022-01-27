@@ -45,7 +45,7 @@ if (kind_of_button = 0)
 	#region /*Text inside the menu button*/
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x + sprite_width / 2,y+ sprite_height/ 2,string(menu_text), global.default_text_size,c_white,c_black);
+	draw_text_outlined(x + sprite_width / 2,y+ sprite_height/ 2,string(menu_text), global.default_text_size, c_white, c_black);
 	#endregion /*Text inside the menu button END*/
 }#endregion /*Button END*/
 
@@ -91,7 +91,7 @@ if (kind_of_button =1)
 	#region /*Text to the right of the checkmark*/
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x + 42,y + 16,string(menu_text), global.default_text_size,c_white,c_black);
+	draw_text_outlined(x + 42,y + 16,string(menu_text), global.default_text_size, c_white, c_black);
 	#endregion /*Text to the right of the checkmark END*/
 }
 #endregion /*Checkmark END*/

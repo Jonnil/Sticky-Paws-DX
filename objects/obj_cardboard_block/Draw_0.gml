@@ -94,14 +94,14 @@ if (brick_particle = false)
 		
 		or (!place_meeting(x, y + 2, obj_wall))
 		and (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +outside_view_offset)
-		and (x >camera_get_view_x(view_camera[view_current])-outside_view_offset)
+		and (x >camera_get_view_x(view_camera[view_current]) -outside_view_offset)
 		and (bbox_bottom<camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) +outside_view_offset)
-		and (y >camera_get_view_y(view_camera[view_current])-outside_view_offset)
+		and (y >camera_get_view_y(view_camera[view_current]) -outside_view_offset)
 		and (!place_meeting(x, y + 2, obj_semisolid_platform))
 		and (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +outside_view_offset)
-		and (x >camera_get_view_x(view_camera[view_current])-outside_view_offset)
+		and (x >camera_get_view_x(view_camera[view_current]) -outside_view_offset)
 		and (bbox_bottom<camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) +outside_view_offset)
-		and (y >camera_get_view_y(view_camera[view_current])-outside_view_offset)
+		and (y >camera_get_view_y(view_camera[view_current]) -outside_view_offset)
 		
 		or (asset_get_type("obj_blockbreak") == asset_object)
 		and (place_meeting(x, y, obj_blockbreak))
@@ -121,7 +121,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard_block);
 					with(obj)
 					{
-						motion_set(random_range(45-32, 45+ 32),random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
+						motion_set(random_range(45-32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
 						mask_index= noone;
 						brick_particle = true;
 					}
@@ -131,7 +131,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard_block);
 					with(obj)
 					{
-						motion_set(random_range(135-32, 135+ 32),random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
+						motion_set(random_range(135-32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
 						mask_index= noone;
 						brick_particle = true;
 					}
@@ -154,7 +154,7 @@ if (brick_particle = false)
 			and (bbox_bottom<camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 			and (y >camera_get_view_y(view_camera[view_current]))
 			{
-				effect_create_above(ef_smoke, x, y, 1,c_dkgray);
+				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 				if (asset_get_type("snd_blockbreak") == asset_sound)
 				{
 					audio_play_sound(snd_blockbreak, 0, 0);
@@ -186,7 +186,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard_block);
 					with(obj)
 					{
-						motion_set(random_range(45-32, 45+ 32),random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
+						motion_set(random_range(45-32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
 						mask_index= noone;
 						brick_particle = true;
 					}
@@ -196,7 +196,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard_block);
 					with(obj)
 					{
-						motion_set(random_range(135-32, 135+ 32),random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
+						motion_set(random_range(135-32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
 						mask_index= noone;
 						brick_particle = true;
 					}
@@ -229,7 +229,7 @@ if (brick_particle = false)
 			and (bbox_bottom<camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 			and (y >camera_get_view_y(view_camera[view_current]))
 			{
-				effect_create_above(ef_smoke, x, y, 1,c_dkgray);
+				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 				if (asset_get_type("snd_blockbreak") == asset_sound)
 				{
 					audio_play_sound(snd_blockbreak, 0, 0);

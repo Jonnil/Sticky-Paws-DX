@@ -554,4 +554,5 @@ if (global.number_of_audio_channels = 7)
 }
 #endregion /*Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default END*/
 
-zoom_lerp = global.zoom;
+zoom_lerp = global.zoom_level;
+zoom_border_lerp = 0;

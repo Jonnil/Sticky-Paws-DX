@@ -194,7 +194,10 @@ global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
 global.selected_resourcepack = 0; /*0 = default*/
 global.selected_title_background = 0; /*0 = default*/
-global.zoom = 1; /*Zooming the view in and out, by default it's set to 1*/
+global.zoom_level = 1; /*Zooming the view in and out, by default it's set to 1*/
+global.zoom_world_map = 1; /*Zooming the view in and out, by default it's set to 1*/
+global.reset_level_zoom_when_going_back_to_map = false;
+global.reset_world_map_zoom_when_going_back_to_map = false;
 //global.spot_x= 0;
 //global.spot_y = 0;
 

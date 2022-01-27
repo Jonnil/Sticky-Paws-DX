@@ -103,63 +103,63 @@ function draw_menu_dropdown()
 	#region /*Text above the menu button*/
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x_position+ 277+ 32,y_position+ 21-32,string(string_text), global.default_text_size*0.75,c_menu_outline,c_menu_fill, 1);
+	draw_text_outlined(x_position+ 277+ 32,y_position+ 21-32,string(string_text), global.default_text_size*0.75, c_menu_outline, c_menu_fill, 1);
 	#endregion /*Text above the menu button END*/
 	
 	#region /*Text inside the menu button*/
 	if (variable_to_change = 0)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item1), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item1), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 1)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item2), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item2), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 2)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item3), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item3), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 3)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item4), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item4), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 4)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item5), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item5), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 5)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item6), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item6), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 6)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item7), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item7), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 7)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item8), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item8), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 8)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item9), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item9), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 9)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item10), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item10), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (variable_to_change = 10)
 	{
-		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item11), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 277+ 32,y_position+ 21,string(string_text_item11), global.default_text_size, c_white, c_black, 1);
 	}
 	#endregion /*Text inside the menu button END*/
 	

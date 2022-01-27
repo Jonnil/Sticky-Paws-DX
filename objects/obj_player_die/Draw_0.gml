@@ -243,17 +243,17 @@ if (bubble = true)
 	{
 		x=camera_get_view_x(view_camera[view_current]) + 32;
 	}
-	if (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])-32)
+	if (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32)
 	{
-		x=camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])-32;
+		x=camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32;
 	}
 	if (y<camera_get_view_y(view_camera[view_current]) + 32)
 	{
 		y =camera_get_view_y(view_camera[view_current]) + 32;
 	}
-	if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-32)
+	if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32)
 	{
-		y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-32;
+		y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32;
 	}
 	#endregion /*Don't go outside view boundary END*/
 
@@ -346,11 +346,11 @@ if (bubble = true)
 
 	#region /*Bubble*/
 	draw_self();
-	draw_circle_color (x, y, 52, c_black,c_black, true);
-	draw_circle_color (x, y, 53,c_white,c_white, true);
-	draw_circle_color (x, y, 54,c_white,c_white, true);
-	draw_circle_color (x, y, 55,c_white,c_white, true);
-	draw_circle_color (x, y, 56,c_black,c_black, true);
+	draw_circle_color (x, y, 52, c_black, c_black, true);
+	draw_circle_color (x, y, 53, c_white, c_white, true);
+	draw_circle_color (x, y, 54, c_white, c_white, true);
+	draw_circle_color (x, y, 55, c_white, c_white, true);
+	draw_circle_color (x, y, 56, c_black, c_black, true);
 	#endregion /*Bubble END*/
 
 	#region /*If there are no more players in the room*/
@@ -374,44 +374,44 @@ and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(v
 	{
 		if (global.player1_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P1", global.default_text_size,c_black, global.player1_color, 1);
+			draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player1_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player1_name), global.default_text_size,c_black, global.player1_color, 1);
+			draw_text_outlined(x, y - 64,string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
 		}
 	}
 	if (player = 2)
 	{
 		if (global.player2_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P2", global.default_text_size,c_black, global.player2_color, 1);
+			draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player2_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player2_name), global.default_text_size,c_black, global.player2_color, 1);
+			draw_text_outlined(x, y - 64,string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
 		}
 	}
 	if (player = 3)
 	{
 		if (global.player3_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P3", global.default_text_size,c_black, global.player3_color, 1);
+			draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player3_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player3_name), global.default_text_size,c_black, global.player3_color, 1);
+			draw_text_outlined(x, y - 64,string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
 		}
 	}
 	if (player = 4)
 	{
 		if (global.player4_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P4", global.default_text_size,c_black, global.player4_color, 1);
+			draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player4_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player4_name), global.default_text_size,c_black, global.player4_color, 1);
+			draw_text_outlined(x, y - 64,string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
 		}
 	}
 }

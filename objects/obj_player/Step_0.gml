@@ -3136,9 +3136,9 @@ else
 #region /*Don't let the player outside the view too much when winning*/
 if (goal = true)
 {
-	if (x<camera_get_view_x(view_camera[view_current])-32)
+	if (x<camera_get_view_x(view_camera[view_current]) -32)
 	{
-		x=camera_get_view_x(view_camera[view_current])-32;
+		x=camera_get_view_x(view_camera[view_current]) -32;
 		if (hspeed < 0)
 		{
 			hspeed = 0;
@@ -4326,8 +4326,8 @@ and (global.pause = false)
 		and (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-			ini_write_real("info", "view_xview",camera_get_view_x(view_camera[view_current]));
-			ini_write_real("info", "view_yview",camera_get_view_y(view_camera[view_current]));
+			ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
+			ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
 			ini_close();
 		}
 		else
@@ -4335,8 +4335,8 @@ and (global.pause = false)
 		and (global.level_name != "")
 		{
 			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-			ini_write_real("info", "view_xview",camera_get_view_x(view_camera[view_current]));
-			ini_write_real("info", "view_yview",camera_get_view_y(view_camera[view_current]));
+			ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
+			ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
 			ini_close();
 		}
 		#endregion /*Save Level Information when in level editor END*/
@@ -6991,7 +6991,7 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	if (key_jump)
 	{
 		dive_on_ground = false;
-		effect_create_above(ef_smoke, x, bbox_bottom, 1,c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
 		if (speed_max<10)
 		{
 			speed_max = 10;
@@ -7040,7 +7040,7 @@ if (allow_ledge_grab= true)
 {
 	if (in_water = true)
 	or (x<camera_get_view_x(view_camera[view_current]) + 25)
-	or (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])- 25)
+	or (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
 	{
 		can_ledge_grab = false;
 	}
@@ -9439,7 +9439,7 @@ and (key_left)
 		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
 		if (sprite_stand > noone){sprite_index = sprite_stand;}
 	}
-	effect_create_above(ef_smoke, x, bbox_bottom, 1,c_white);
+	effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
 	if (image_index > image_number - 1)
 	{
 		image_speed = 0;

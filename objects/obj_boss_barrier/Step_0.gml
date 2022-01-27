@@ -1,7 +1,7 @@
 depth = +20;
 mask_index = spr_wall;
 if (!instance_exists(obj_boss))
-and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])- 64)
+and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 64)
 and (x > camera_get_view_x(view_camera[view_current]) +64)
 and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 and (y > camera_get_view_y(view_camera[view_current]))

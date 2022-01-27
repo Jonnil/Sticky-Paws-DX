@@ -85,7 +85,7 @@ function draw_menu_button_sprite()
 	draw_set_valign(fa_center);
 	if (string_text> noone)
 	{
-		draw_text_outlined(x_position+ 185,y_position+ 21,string(string_text), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x_position+ 185,y_position+ 21,string(string_text), global.default_text_size, c_white, c_black, 1);
 	}
 	#endregion /*Text inside the menu button END*/
 	

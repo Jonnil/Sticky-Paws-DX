@@ -113,7 +113,7 @@ function draw_menu_checkmark()
 	#region /*Text inside the menu button*/
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x_position+82,y_position+ 16,string(string_text), global.default_text_size,c_menu_outline,c_menu_fill, 1);
+	draw_text_outlined(x_position+82,y_position+ 16,string(string_text), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	#endregion /*Text inside the menu button END*/
 	
 	#region /*Bottom Text*/
@@ -123,9 +123,9 @@ function draw_menu_checkmark()
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		draw_set_alpha(0.5);
-		draw_rectangle_color (0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 128,camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]),camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]),c_black,c_black,c_black,c_black,false);
+		draw_rectangle_color (0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 128, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])- 64,string(bottom_text), global.default_text_size,c_menu_outline,c_menu_fill, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 64,string(bottom_text), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	#endregion /*Bottom Text END*/
 	

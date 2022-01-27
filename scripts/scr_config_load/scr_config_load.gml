@@ -52,7 +52,10 @@ function scr_config_load()
 		if (ini_key_exists("config", "enable_transitions")){global.enable_transitions = ini_read_real("config", "enable_transitions", 0);}
 		if (ini_key_exists("config", "selected_resourcepack")){global.selected_resourcepack = ini_read_real("config", "selected_resourcepack", 0);}
 		if (ini_key_exists("config", "selected_title_background")){global.selected_title_background = ini_read_real("config", "selected_title_background", 0);}
-		if (ini_key_exists("config", "zoom")){global.zoom = ini_read_real("config", "zoom", 1);}
+		if (ini_key_exists("config", "zoom_level")){global.zoom_level = ini_read_real("config", "zoom_level", 1);}
+		if (ini_key_exists("config", "zoom_world_map")){global.zoom_world_map = ini_read_real("config", "zoom_world_map", 1);}
+		if (ini_key_exists("config", "reset_level_zoom_when_going_back_to_map")){global.reset_level_zoom_when_going_back_to_map = ini_read_real("config", "reset_level_zoom_when_going_back_to_map", 0);}
+		if (ini_key_exists("config", "reset_world_map_zoom_when_going_back_to_map")){global.reset_world_map_zoom_when_going_back_to_map = ini_read_real("config", "reset_world_map_zoom_when_going_back_to_map", 0);}
 		
 		#region /*Load Player 1 Keyboard Remapping*/
 		if (ini_key_exists("config", "character_index_player_1")){global.character_index[0] = ini_read_real("config", "character_index_player_1", 0);}

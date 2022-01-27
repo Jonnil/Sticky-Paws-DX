@@ -454,7 +454,7 @@ and (!instance_exists(obj_title))
 {
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_center);
-	draw_text_outlined(window_get_width()-32, window_get_height()-32, "Assist Mode", global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() -32, window_get_height() -32, "Assist Mode", global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*Show if you have Assist mode enabled or not END*/
 

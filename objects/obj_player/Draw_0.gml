@@ -1,27 +1,27 @@
 /*________________________________Draw Event________________________________*/
 
 /*Don't remove this, please, it's for debug*/
-//draw_text_outlined(x, y- 256, "Custom character: " + string(custom_character), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x, y- 200, "What player am I: " + string(player), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x, y - 128, "character for player 1: " + string(global.character_for_player_1), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x, y - 64, "character for player 2: " + string(global.character_for_player_2), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x, y - 64, "Overflow HP: " + string(overflow_hp) + "/" + string(max_overflow_hp), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x, y - 64,string(global.character_select_in_this_menu), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x-32,y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x-32,y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x-32,y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x-32,y - 128, "max_hp: " + string(max_hp), global.default_text_size,c_white,c_black, 1);
-//draw_text_outlined(x-32,y - 64, "hp: " + string(hp), global.default_text_size,c_white,c_black, 1);
+//draw_text_outlined(x, y- 256, "Custom character: " + string(custom_character), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x, y- 200, "What player am I: " + string(player), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x, y - 128, "character for player 1: " + string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x, y - 64, "character for player 2: " + string(global.character_for_player_2), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x, y - 64, "Overflow HP: " + string(overflow_hp) + "/" + string(max_overflow_hp), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x, y - 64,string(global.character_select_in_this_menu), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32,y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32,y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32,y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32,y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32,y - 64, "hp: " + string(hp), global.default_text_size, c_white, c_black, 1);
 
 
 /*if (direction >= 90 - 10)
 and (direction <= 90 + 10)
 {
-	draw_text_outlined(x, y - 128,string(direction), global.default_text_size,c_lime,c_black, 1);
+	draw_text_outlined(x, y - 128,string(direction), global.default_text_size, c_lime, c_black, 1);
 }
 else
 {
-	draw_text_outlined(x, y - 128,string(direction), global.default_text_size,c_red,c_black, 1);
+	draw_text_outlined(x, y - 128,string(direction), global.default_text_size, c_red, c_black, 1);
 }*/
 
 #region /*Heart above head*/
@@ -72,11 +72,11 @@ else
 if (y<camera_get_view_y(view_camera[view_current]))
 {
 	draw_set_color (c_black);
-	draw_arrow(x,camera_get_view_y(view_camera[view_current]) + 16,x,camera_get_view_y(view_camera[view_current])- 2, 30);
+	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + 16,x, camera_get_view_y(view_camera[view_current]) - 2, 30);
 	draw_set_color (c_white);
-	draw_arrow(x,camera_get_view_y(view_camera[view_current]) + 16,x,camera_get_view_y(view_camera[view_current]), 20);
-	draw_circle_color (x,camera_get_view_y(view_camera[view_current]) + 32, 24,c_black,c_black, true);
-	draw_circle_color (x,camera_get_view_y(view_camera[view_current]) + 32, 22, c_white,c_white, true);
+	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + 16,x, camera_get_view_y(view_camera[view_current]), 20);
+	draw_circle_color (x, camera_get_view_y(view_camera[view_current]) + 32, 24, c_black, c_black, true);
+	draw_circle_color (x, camera_get_view_y(view_camera[view_current]) + 32, 22, c_white, c_white, true);
 	
 	if (assist_invincible = false)
 	and (invincible >60)
@@ -85,21 +85,21 @@ if (y<camera_get_view_y(view_camera[view_current]))
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle,random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, random(9999), image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
 			}
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle,random(9999), image_alpha);
+			draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, random(9999), image_alpha);
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
+		draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside top view END*/
@@ -109,11 +109,11 @@ if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vie
 and (y<room_height)
 {
 	draw_set_color (c_black);
-	draw_arrow(x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16,x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 2, 30);
+	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 2, 30);
 	draw_set_color (c_white);
-	draw_arrow(x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16,x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), 20);
-	draw_circle_color (x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-32, 24,c_black,c_black, true);
-	draw_circle_color (x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-32, 22, c_white,c_white, true);
+	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), 20);
+	draw_circle_color (x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 24, c_black, c_black, true);
+	draw_circle_color (x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 22, c_white, c_white, true);
 	
 	if (assist_invincible = false)
 	and (invincible >60)
@@ -122,21 +122,21 @@ and (y<room_height)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle,random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, random(9999), image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
 			}
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle,random(9999), image_alpha);
+			draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, random(9999), image_alpha);
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index, image_index,x,camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])-32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
+		draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside bottom view END*/
@@ -244,7 +244,7 @@ and (max_hp>= 2)
 and (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index,xx +random_range(-8,+8),yy+random_range(-8,+8),draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle,c_red, image_alpha);
+	draw_sprite_ext(sprite_index, image_index,xx +random_range(-8,+8),yy+random_range(-8,+8),draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, c_red, image_alpha);
 }
 else
 if (takendamage%2 == 0)
@@ -255,7 +255,7 @@ and (intro_animation = "")
 	if (hp<=1)
 	and (max_hp>= 2)
 	{
-		draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle,c_red, 0.1);
+		draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, c_red, 0.1);
 	}
 }
 else
@@ -333,7 +333,7 @@ if (assist_invincible = false)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle,random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
 			}
 			else
 			{
@@ -342,7 +342,7 @@ if (assist_invincible = false)
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle,random(9999), image_alpha);
+			draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
 		}
 	}
 }
@@ -457,44 +457,44 @@ or (instance_number(obj_player_die)>=1) /*If there is any other player die objec
 	{
 		if (global.player1_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P1", global.default_text_size,c_black, global.player1_color, 1);
+			draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player1_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player1_name), global.default_text_size,c_black, global.player1_color, 1);
+			draw_text_outlined(x, y - 64,string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
 		}
 	}
 	if (player = 2)
 	{
 		if (global.player2_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P2", global.default_text_size,c_black, global.player2_color, 1);
+			draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player2_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player2_name), global.default_text_size,c_black, global.player2_color, 1);
+			draw_text_outlined(x, y - 64,string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
 		}
 	}
 	if (player = 3)
 	{
 		if (global.player3_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P3", global.default_text_size,c_black, global.player3_color, 1);
+			draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player3_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player3_name), global.default_text_size,c_black, global.player3_color, 1);
+			draw_text_outlined(x, y - 64,string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
 		}
 	}
 	if (player = 4)
 	{
 		if (global.player4_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P4", global.default_text_size,c_black, global.player4_color, 1);
+			draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player4_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player4_name), global.default_text_size,c_black, global.player4_color, 1);
+			draw_text_outlined(x, y - 64,string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
 		}
 	}
 }
@@ -513,7 +513,7 @@ and (global.assist_enable = false)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		draw_text_outlined(x, bbox_top-32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size,c_white,c_black, 1);
+		draw_text_outlined(x, bbox_top-32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size, c_white, c_black, 1);
 	}
 }
 #endregion /*If player has more hp, show that END*/

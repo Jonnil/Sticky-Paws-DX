@@ -146,7 +146,7 @@ and (keyboard_check_pressed(global.fullscreen_key))
 if (!window_has_focus())
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color (camera_get_view_x(view_camera[view_current]),camera_get_view_y(view_camera[view_current]),room_width,room_height,c_black,c_black,c_black,c_black,false);
+	draw_rectangle_color (camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), room_width, room_height, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
 #endregion /*If Window is unfocused, make the screen darker END*/

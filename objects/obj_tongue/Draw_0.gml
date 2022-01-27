@@ -35,5 +35,5 @@ with(instance_nearest(x, y, obj_enemy)){hspeed = 0;vspeed = 0;speed = 0;}
 
 if instance_nearest(x, y, obj_player).climb= true or instance_nearest(x, y, obj_player).horizontal_rope_climb= true{move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);obj_player.rope_swing = false;}
 
-draw_line_width_color (x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 3,c_red,c_red);
+draw_line_width_color (x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 3, c_red, c_red);
 draw_self();}

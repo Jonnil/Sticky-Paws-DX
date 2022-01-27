@@ -203,7 +203,7 @@ and (instance_exists(obj_player))
 			}
 		}
 		#endregion /* 1000 Score END*/
-		effect_create_below(ef_ring,x, y, 1,c_white);
+		effect_create_below(ef_ring,x, y, 1, c_white);
 		instance_destroy();
 	}
 }
@@ -236,6 +236,6 @@ effect_time +=1;
 if (effect_time >60)
 {
 	effect_time = 0;
-	effect_create_below(ef_ring,x, y, 1,c_white);
+	effect_create_below(ef_ring,x, y, 1, c_white);
 }
 #endregion /*Expanding Ring Effect END*/

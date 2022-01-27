@@ -100,7 +100,7 @@ or (image_index >= max_artwork)
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		draw_text_outlined(+ 32, window_get_height()-94, string(current_comment), global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(+ 32, window_get_height() -94, string(current_comment), global.default_text_size, c_black, c_white, 1);
 	}
 	#endregion /*Draw Comments END*/
 	
@@ -158,7 +158,7 @@ if (image_index = 44) and (level9_big_collectible5 < true){draw_text_outlined(wi
 #region /*Draw what artwork is selected*/
 draw_set_halign(fa_left);
 draw_set_valign(fa_center);
-draw_text_outlined(+ 32, window_get_height()-32, "< Artwork " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
+draw_text_outlined(+ 32, window_get_height() -32, "< Artwork " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
 #endregion /*Draw what artwork is selected END*/
 
 #region /*Left and Right Navigation*/
@@ -240,22 +240,22 @@ and (os_type != os_android)
 	draw_set_valign(fa_center);
 	if (show_comments = true)
 	{
-		draw_text_outlined(window_get_width()-32, window_get_height()-32, "Hide Text:          Back:     ", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(window_get_width() -32, window_get_height() -32, "Hide Text:          Back:     ", global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	{
-		draw_text_outlined(window_get_width()-32, window_get_height()-32, "Show Text:          Back:     ", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(window_get_width() -32, window_get_height() -32, "Show Text:          Back:     ", global.default_text_size, c_black, c_white, 1);
 	}
 	
 	#region /*Draw Show Comments Key*/
 	if (gamepad_is_connected(0))
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
-		draw_sprite_ext(spr_xbox_buttons, 0, window_get_width() - 180, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
+		draw_sprite_ext(spr_xbox_buttons, 0, window_get_width() - 180, window_get_height() -32, 0.5, 0.5, 0, c_white, 1);
 	}
 	else
 	{
-		draw_sprite_ext(spr_keyboard_keys, ord("Z"), window_get_width() - 180, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
+		draw_sprite_ext(spr_keyboard_keys, ord("Z"), window_get_width() - 180, window_get_height() -32, 0.5, 0.5, 0, c_white, 1);
 	}
 	#endregion /*Draw Show Comments Key END*/
 	
@@ -263,11 +263,11 @@ and (os_type != os_android)
 	if (gamepad_is_connected(0))
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
-		draw_sprite_ext(spr_xbox_buttons, 1, window_get_width()-32, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
+		draw_sprite_ext(spr_xbox_buttons, 1, window_get_width() -32, window_get_height() -32, 0.5, 0.5, 0, c_white, 1);
 	}
 	else
 	{
-		draw_sprite_ext(spr_keyboard_keys, ord("X"), window_get_width()-32, window_get_height()-32, 0.5, 0.5, 0, c_white, 1);
+		draw_sprite_ext(spr_keyboard_keys, ord("X"), window_get_width() -32, window_get_height() -32, 0.5, 0.5, 0, c_white, 1);
 	}
 	#endregion /*Draw Back key END*/
 	

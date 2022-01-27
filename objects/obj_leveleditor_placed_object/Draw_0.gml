@@ -105,7 +105,7 @@ and (global.character_select_in_this_menu = "level_editor")
 	and (normal = true)
 	and (sprite_index > 0)
 	{
-		draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 1);
+		draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 1);
 		image_alpha = 1;
 		image_blend = c_white;
 	}
@@ -123,7 +123,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = false)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_lime, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_lime;
 		}
@@ -133,7 +133,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = false)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_white;
 		}
@@ -143,7 +143,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = false)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_yellow, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_yellow;
 		}
@@ -153,7 +153,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_white;
 		}
@@ -163,7 +163,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_red, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_red;
 		}
@@ -173,7 +173,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 			image_alpha = 0.1;
 			image_blend = c_white;
 		}
@@ -185,7 +185,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 1);
 			image_alpha = 1;
 			image_blend = c_white;
 		}
@@ -200,7 +200,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		if (easy = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_lime, 1);
 			image_alpha = 1;
 			image_blend = c_lime;
 		}
@@ -212,7 +212,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_lime, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_lime;
 			}
@@ -222,7 +222,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -232,7 +232,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_yellow, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_yellow;
 			}
@@ -242,7 +242,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -252,7 +252,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_red, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_red;
 			}
@@ -262,7 +262,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -278,7 +278,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		if (normal = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_yellow, 1);
 			image_alpha = 1;
 			image_blend = c_yellow;
 		}
@@ -290,7 +290,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_lime, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_lime;
 			}
@@ -300,7 +300,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -310,7 +310,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_yellow, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_yellow;
 			}
@@ -320,7 +320,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -330,7 +330,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_red, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_red;
 			}
@@ -340,7 +340,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -356,7 +356,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		if (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 1);
+			draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_red, 1);
 			image_alpha = 1;
 			image_blend = c_red;
 		}
@@ -368,7 +368,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_lime, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_lime, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_lime;
 			}
@@ -378,7 +378,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -388,7 +388,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_yellow, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_yellow, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_yellow;
 			}
@@ -398,7 +398,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -408,7 +408,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_red, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_red, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_red;
 			}
@@ -418,7 +418,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 0.1);
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
@@ -432,7 +432,7 @@ else
 if (sprite_index > 0)
 and (global.character_select_in_this_menu = "level_editor")
 {
-	draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle,c_white, 1);
+	draw_sprite_ext(sprite_index, image_index,x, y, 1,draw_yscale,draw_angle, c_white, 1);
 	image_alpha = 1;
 	image_blend = c_white;
 }
@@ -454,7 +454,7 @@ and (obj_leveleditor.difficulty_layer > 0)
 and (obj_leveleditor.drag_object = false)
 and (obj_leveleditor.pause = false)
 and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
-and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 and (!keyboard_check(vk_space))
 and (!mouse_check_button(mb_middle))
 {
@@ -1309,9 +1309,9 @@ and (delay >1)
 /*Spring*/
 if (object = 62)
 {
-	draw_line_width_color (x, y,second_x,second_y, 4,c_black,c_black);
-	draw_line_width_color (x, y,second_x,second_y, 2, c_white,c_white);
-	draw_angle = point_direction(x, y, second_x, second_y)-90;
+	draw_line_width_color (x, y,second_x,second_y, 4, c_black, c_black);
+	draw_line_width_color (x, y,second_x,second_y, 2, c_white, c_white);
+	draw_angle = point_direction(x, y, second_x, second_y) -90;
 }
 
 else
@@ -1321,9 +1321,9 @@ if (object = 732)
 or (object = 733)
 or (object = 734)
 {
-	draw_line_width_color (x, y, x,second_y, 4,c_black,c_black);
-	draw_line_width_color (x, y, x,second_y, 2, c_white,c_white);
-	draw_angle = point_direction(x, y, x, second_y)-90;
+	draw_line_width_color (x, y, x,second_y, 4, c_black, c_black);
+	draw_line_width_color (x, y, x,second_y, 2, c_white, c_white);
+	draw_angle = point_direction(x, y, x, second_y) -90;
 }
 
 else
@@ -1372,9 +1372,9 @@ and (!keyboard_check(vk_space))
 and (!mouse_check_button(mb_middle))
 {
 	if (obj_leveleditor.set_difficulty_mode = true)
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 	or (obj_leveleditor.set_difficulty_mode = false)
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 	{
 		if (mouse_check_button(mb_right))
 		or (mouse_check_button(mb_left))
@@ -1434,7 +1434,7 @@ and (!mouse_check_button(mb_middle))
 			{
 				if (asset_get_type("snd_leveleditor_erase_object") == asset_sound)
 				{
-					audio_sound_pitch(snd_leveleditor_erase_object,random_range(0.9, 1.1));
+					audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
 					audio_play_sound(snd_leveleditor_erase_object, 0, 0);
 					audio_sound_gain(snd_leveleditor_erase_object, global.sfx_volume, 0);
 				}
@@ -1470,9 +1470,9 @@ and (delay >1)
 				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), +64))
 				{
 					if (obj_leveleditor.set_difficulty_mode = true)
-					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 					or (obj_leveleditor.set_difficulty_mode = false)
-					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 					{
 						drag_object = true;
 						obj_leveleditor.drag_object = true;
@@ -1757,9 +1757,9 @@ if (object =3) and (asset_get_type("spr_semisolid_platform") == asset_sprite){sp
 if (object =4) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;mask_index=spr_wall;}
 if (object =5) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 if (object =6) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
-if (object =7) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =8) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object = 9) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =7) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =8) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 9) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
 if (object = 10) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 #endregion /*Brick Block END*/
 
@@ -1767,9 +1767,9 @@ if (object = 10) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_
 if (object = 11) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;mask_index=spr_wall;}
 if (object = 12) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 if (object = 13) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
-if (object = 14) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object = 15) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object = 16) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object = 14) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 15) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 16) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
 if (object = 17) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 #endregion /*Question Block END*/
 
@@ -1792,14 +1792,14 @@ if (object = 27) and (asset_get_type("spr_cardboard_long") == asset_sprite){spri
 if (object = 28) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;mask_index=spr_wall;}
 if (object = 29) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 if (object =30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
-if (object =31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =37) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =38) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =37) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =38) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
 if (object =39) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 #endregion /*Bump in ground END*/
 
@@ -1815,19 +1815,19 @@ if (object =47){sprite_index= global.resourcepack_sprite_basic_collectible;draw_
 #endregion /*Basic Collectible END*/
 
 #region /*Big Collectibles*/
-if (object =48){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
-if (object =49){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
-if (object =50){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
-if (object =51){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
-if (object =52){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_2x2_block;}
+if (object =48){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_2x2_block;}
+if (object =49){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_2x2_block;}
+if (object =50){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_2x2_block;}
+if (object =51){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_2x2_block;}
+if (object =52){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_2x2_block;}
 #endregion /*Big Collectibles END*/
 
 if (object =53) and (asset_get_type("spr_heart") == asset_sprite){sprite_index=spr_heart;mask_index=spr_wall;}
 if (object =54){sprite_index= global.resourcepack_sprite_hp_pickup;mask_index=spr_wall;}
 if (object =55){sprite_index= global.resourcepack_sprite_invincibility_powerup;mask_index=spr_wall;}
-if (object =56) and (asset_get_type("spr_1up") == asset_sprite){sprite_index = spr_1up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, image_blend,c_black, image_alpha);mask_index=spr_wall;}
-if (object =57) and (asset_get_type("spr_2up") == asset_sprite){sprite_index = spr_2up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, image_blend,c_black, image_alpha);mask_index=spr_wall;}
-if (object =58) and (asset_get_type("spr_3up") == asset_sprite){sprite_index = spr_3up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, image_blend,c_black, image_alpha);mask_index=spr_wall;}
+if (object =56) and (asset_get_type("spr_1up") == asset_sprite){sprite_index = spr_1up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, image_blend, c_black, image_alpha);mask_index=spr_wall;}
+if (object =57) and (asset_get_type("spr_2up") == asset_sprite){sprite_index = spr_2up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, image_blend, c_black, image_alpha);mask_index=spr_wall;}
+if (object =58) and (asset_get_type("spr_3up") == asset_sprite){sprite_index = spr_3up;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, image_blend, c_black, image_alpha);mask_index=spr_wall;}
 if (object =59){sprite_index = sprite_enemy1;mask_index=spr_wall;}
 if (object =60){sprite_index = sprite_enemy2;mask_index=spr_wall;}
 if (object =61){sprite_index= global.resourcepack_sprite_blaster;mask_index=spr_wall;}
@@ -1872,14 +1872,14 @@ if (object =76) and (asset_get_type("spr_clipped_sock") == asset_sprite){sprite_
 if (object =77) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;mask_index=spr_wall;}
 if (object =78) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 if (object =79) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
-if (object =80) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =81) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =82) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =83) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =84) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =85) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =86) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
-if (object =87) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size,c_white,c_black, image_alpha);mask_index=spr_wall;}
+if (object =80) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =81) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =82) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =83) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =84) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =85) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =86) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object =87) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
 if (object =88) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 #endregion /*Bucket END*/
 
@@ -1897,7 +1897,7 @@ if (object = 97) and (asset_get_type("spr_artwork_collection") == asset_sprite){
 #region /*Difficulty settings per object*/
 if (instance_exists(obj_leveleditor))
 and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
-and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()- 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 {
 
 #region /*Set to appear on difficulty level*/

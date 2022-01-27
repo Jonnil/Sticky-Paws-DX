@@ -209,4 +209,30 @@ if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 }
 ini_close();
 
-zoom_lerp = global.zoom;
+#region /*Reset level zoom*/
+if (global.reset_level_zoom_when_going_back_to_map = true)
+{
+	global.zoom_level = 1;
+	ini_open("config.ini");
+	ini_write_real("config", "zoom_level", 1);
+	ini_close();
+}
+#endregion /*Reset level zoom END*/
+
+#region /*Reset world map zoom*/
+if (global.reset_world_map_zoom_when_going_back_to_map = true)
+{
+	global.zoom_world_map = 1;
+	zoom_lerp = 1;
+	zoom_border_lerp = 0;
+	ini_open("config.ini");
+	ini_write_real("config", "zoom_world_map", 1);
+	ini_close();
+}
+#endregion /*Reset world map zoom END*/
+
+else
+{
+	zoom_lerp = global.zoom_world_map;
+	zoom_border_lerp = 0;
+}
