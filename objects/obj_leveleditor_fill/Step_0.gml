@@ -2,17 +2,17 @@ delay += 1;
 if (delay > 1)
 {
 	if (place_meeting(x, y, obj_level_player_1_start))
-	or (x < camera_get_view_x(view_camera[view_current]))
-	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	or (place_meeting(x, y, obj_level_player_2_start))
-	or (x < camera_get_view_x(view_camera[view_current]))
-	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	or (place_meeting(x, y, obj_level_player_3_start))
-	or (x < camera_get_view_x(view_camera[view_current]))
-	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	or (place_meeting(x, y, obj_level_player_4_start))
-	or (x < camera_get_view_x(view_camera[view_current]))
-	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	or(x < camera_get_view_x(view_camera[view_current]))
+	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	or(place_meeting(x, y, obj_level_player_2_start))
+	or(x < camera_get_view_x(view_camera[view_current]))
+	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	or(place_meeting(x, y, obj_level_player_3_start))
+	or(x < camera_get_view_x(view_camera[view_current]))
+	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	or(place_meeting(x, y, obj_level_player_4_start))
+	or(x < camera_get_view_x(view_camera[view_current]))
+	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{
 		instance_destroy();
 	}

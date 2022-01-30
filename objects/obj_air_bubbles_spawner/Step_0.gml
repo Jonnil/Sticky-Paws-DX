@@ -7,7 +7,7 @@ if (time > 180)
 	{
 		with(instance_create_depth(x, bbox_top, 0, obj_big_air_bubble))
 		{
-			hspeed = random_range(-0.1, +0.1);
+			hspeed = random_range(-0.1, + 0.1);
 		}
 	}
 	time = 0;

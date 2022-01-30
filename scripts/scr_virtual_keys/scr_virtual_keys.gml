@@ -3,7 +3,7 @@ function scr_virtual_keys()
 	
 	#region /*Virtual Key, iOS and Android*/
 	if (os_type == os_ios)
-	or (os_type == os_android)
+	or(os_type == os_android)
 	{
 		if (iris_xscale > 0.25)
 		and (iris_yscale > 0.25)
@@ -13,7 +13,7 @@ function scr_virtual_keys()
 			if (asset_get_type("obj_player") == asset_object)
 			and (instance_exists(obj_player))
 			and (obj_player.can_move = true)
-			or (asset_get_type("obj_player_map") == asset_object)
+			or(asset_get_type("obj_player_map") == asset_object)
 			and (instance_exists(obj_player_map))
 			and (obj_player_map.can_move = true)
 			{
@@ -114,7 +114,7 @@ function scr_virtual_keys()
 				virtual_key_add(1100 - 128, 0, 400, 128, vk_escape); /*Virtual key add pause*/
 				
 				if (keyboard_check(global.player1_key_up))
-				or (keyboard_check(global.player1_key2_up))
+				or(keyboard_check(global.player1_key2_up))
 				{
 					draw_sprite_ext(spr_virtual_key_up, 0, global.mobile_joystick_x + 120 + 30, global.mobile_joystick_y + 450 + 250 - 100, 0.9, 0.9, 0, c_gray, 0.5);
 				}
@@ -123,7 +123,7 @@ function scr_virtual_keys()
 					draw_sprite_ext(spr_virtual_key_up, 0, global.mobile_joystick_x + 120 + 30, global.mobile_joystick_y + 450 + 250 - 100, 1, 1, 0, c_white, 0.5);
 				}
 				if (keyboard_check(global.player1_key_left))
-				or (keyboard_check(global.player1_key2_left))
+				or(keyboard_check(global.player1_key2_left))
 				{
 					draw_sprite_ext(spr_virtual_key_left, 0, global.mobile_joystick_x + 120 + 30, global.mobile_joystick_y + 450 + 250 - 100, 0.9, 0.9, 0, c_gray, 0.5);
 				}
@@ -132,7 +132,7 @@ function scr_virtual_keys()
 					draw_sprite_ext(spr_virtual_key_left, 0, global.mobile_joystick_x + 120 + 30, global.mobile_joystick_y + 450 + 250 - 100, 1, 1, 0, c_white, 0.5);
 				}
 				if (keyboard_check(global.player1_key_right))
-				or (keyboard_check(global.player1_key2_right))
+				or(keyboard_check(global.player1_key2_right))
 				{
 					draw_sprite_ext(spr_virtual_key_right, 0, global.mobile_joystick_x + 120 + 30, global.mobile_joystick_y + 450 + 250 - 100, 0.9, 0.9, 0, c_gray, 0.5);
 				}
@@ -141,7 +141,7 @@ function scr_virtual_keys()
 					draw_sprite_ext(spr_virtual_key_right, 0, global.mobile_joystick_x + 120 + 30, global.mobile_joystick_y + 450 + 250 - 100, 1, 1, 0, c_white, 0.5);
 				}
 				if (keyboard_check(global.player1_key_down))
-				or (keyboard_check(global.player1_key2_down))
+				or(keyboard_check(global.player1_key2_down))
 				{
 					draw_sprite_ext(spr_virtual_key_down, 0, global.mobile_joystick_x + 120 + 30, global.mobile_joystick_y + 450 + 250 - 100, 0.9, 0.9, 0, c_gray, 0.5);
 				}
@@ -151,7 +151,7 @@ function scr_virtual_keys()
 				}
 
 				if (keyboard_check(global.player1_key_jump))
-				or (keyboard_check(global.player1_key2_jump))
+				or(keyboard_check(global.player1_key2_jump))
 				{
 					draw_sprite_ext(spr_virtual_key_jump, 0, global.mobile_key_jump_x, global.mobile_key_jump_y, 0.9, 0.9, 0, c_gray, 0.5);
 				}
@@ -160,7 +160,7 @@ function scr_virtual_keys()
 					draw_sprite_ext(spr_virtual_key_jump, 0, global.mobile_key_jump_x, global.mobile_key_jump_y, 1, 1, 0, c_white, 0.5);
 				}
 				if (keyboard_check(global.player1_key_sprint))
-				or (keyboard_check(global.player1_key2_sprint))
+				or(keyboard_check(global.player1_key2_sprint))
 				{
 					draw_sprite_ext(spr_virtual_key_sprint, 0, global.mobile_key_sprint_x, global.mobile_key_sprint_y, 0.9, 0.9, 0, c_gray, 0.5);
 				}

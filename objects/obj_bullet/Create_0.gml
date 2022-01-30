@@ -19,7 +19,7 @@ and (instance_exists(obj_player))
 	}
 }
 draw_xscale = 0;
-draw_yscale =1;
+draw_yscale = 1;
 flat = false;
 die = false;
 die_volting = false;

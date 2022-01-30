@@ -42,7 +42,7 @@ else
 	}
 	if flat = true
 	{
-		/*image_yscale =lerp(image_yscale, 0.1, 0.2);*/
+		/*image_yscale = lerp(image_yscale, 0.1, 0.2);*/
 		speed = 0;
 		image_speed = 0.5;
 		if image_xscale = -1
@@ -68,7 +68,7 @@ else
 }
 if (x < camera_get_view_x(view_camera[view_current]) + sprite_width)
 and (image_xscale < 0)
-or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
+or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
 and (image_xscale > 0)
 {
 	instance_destroy();
@@ -96,7 +96,7 @@ if (draw_xscale >= 0.8)
 
 if (image_xscale = -1)
 and (x < camera_get_view_x(view_camera[view_current]))
-or (image_xscale = +1)
+or(image_xscale = +1)
 and (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 {
 	instance_destroy();

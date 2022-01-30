@@ -10,7 +10,7 @@ function scr_start_intro_animations()
 		if (intro_animation = "cake_stolen")
 		and (instance_exists(obj_camera))
 		and (obj_camera.intro_animation_play_only_once = false)
-		or (intro_animation = "cake_stolen")
+		or(intro_animation = "cake_stolen")
 		and (instance_exists(obj_camera))
 		and (obj_camera.intro_animation_play_only_once = true)
 		and (global.current_level_clear_rate = "enter")
@@ -29,7 +29,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time = 60*2)
+			if (cutscene_time = 60 *2)
 			{
 				audio_play_sound(voice_open_mouth, 0, 0);
 				audio_sound_gain(voice_open_mouth, global.voices_volume, 0);
@@ -39,7 +39,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time = 60*3.5)
+			if (cutscene_time = 60 *3.5)
 			{
 				audio_play_sound(voice_notice, 0, 0);
 				audio_sound_gain(voice_notice, global.voices_volume, 0);
@@ -49,7 +49,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time = 60*4.2)
+			if (cutscene_time = 60 *4.2)
 			{
 				audio_play_sound(voice_scream, 0, 0);
 				audio_sound_gain(voice_scream, global.voices_volume, 0);
@@ -60,7 +60,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time > 60*5.2)
+			if (cutscene_time > 60 *5.2)
 			{
 				hspeed = +8;
 				vspeed = -8;
@@ -76,7 +76,7 @@ function scr_start_intro_animations()
 		if (intro_animation = "ending")
 		and (instance_exists(obj_camera))
 		and (obj_camera.intro_animation_play_only_once = false)
-		or (intro_animation = "ending")
+		or(intro_animation = "ending")
 		and (instance_exists(obj_camera))
 		and (obj_camera.intro_animation_play_only_once = true)
 		and (global.current_level_clear_rate = "enter")
@@ -111,8 +111,8 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time >= 60* 1)
-			and (cutscene_time < 60*2)
+			if (cutscene_time >= 60 * 1)
+			and (cutscene_time < 60 *2)
 			{
 				x += 8;
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_run;}else
@@ -121,7 +121,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time > 60*2)
+			if (cutscene_time > 60 *2)
 			{
 				intro_animation_image_index = 0;
 				cutscene_time = 0;

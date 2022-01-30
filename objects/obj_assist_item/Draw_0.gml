@@ -14,7 +14,7 @@ if (effect_time > 60)
 }
 #endregion /*Expanding Ring Effect END*/
 
-if (instance_number(obj_player)=1)
+if (instance_number(obj_player)= 1)
 {
 	if (obj_player.assist_invincible = true)
 	{

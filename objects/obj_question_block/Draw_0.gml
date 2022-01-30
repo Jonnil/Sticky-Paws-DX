@@ -4,12 +4,12 @@ if (bounceup = false)
 	if (place_meeting(x, y - 4, obj_player))
 	and (!place_meeting(x, y - 1, obj_wall))
 	and (obj_player.ground_pound = true)
-	or (place_meeting(x, y + 1, obj_player))
+	or(place_meeting(x, y + 1, obj_player))
 	and (!place_meeting(x, y + 1, obj_wall))
-	or (place_meeting(bbox_left-4, y, obj_player))
+	or(place_meeting(bbox_left-4, y, obj_player))
 	and (!place_meeting(x - 4, y, obj_wall))
 	and (obj_player.dive = true)
-	or (place_meeting(bbox_right + 4, y, obj_player))
+	or(place_meeting(bbox_right + 4, y, obj_player))
 	and (!place_meeting(x + 4, y, obj_wall))
 	and (obj_player.dive = true)
 	{
@@ -305,7 +305,7 @@ if (bounceup = false)
 	{
 		draw_xscale = 1;
 		draw_yscale = 1;
-		vspeed = +0;
+		vspeed = + 0;
 		yy = ystart;
 	}
 }

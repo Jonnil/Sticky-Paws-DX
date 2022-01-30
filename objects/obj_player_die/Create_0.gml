@@ -1,8 +1,8 @@
 depth = -9999;
 count = 0;
-last_player= false;
-iris_xscale =16;
-iris_yscale =16;
+last_player = false;
+iris_xscale = 16;
+iris_yscale = 16;
 iris_zoom = 0;
 xx= x;
 yy = y;
@@ -18,9 +18,9 @@ game_over_text_y = -300;
 sprite_game_over_character_portrait = noone;
 #endregion /*Game Over variables END*/
 
-default_voice_pitch =1;
-default_xscale =1;
-default_yscale =1;
+default_voice_pitch = 1;
+default_xscale = 1;
+default_yscale = 1;
 
 #region /*Save how many times you have died*/
 if (global.character_select_in_this_menu = "main_game")
@@ -34,8 +34,8 @@ if (global.character_select_in_this_menu = "main_game")
 bubble = false;
 if (bubble = false)
 {
-	lives -=1;
-	global.lives_until_assist +=1;
+	lives -= 1;
+	global.lives_until_assist += 1;
 }
 player = 1;
 global.hud_show_lives = true;

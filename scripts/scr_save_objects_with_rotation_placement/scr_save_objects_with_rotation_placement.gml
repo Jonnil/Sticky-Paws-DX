@@ -14,18 +14,18 @@ if (global.level_name != "")
 {
 	file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"); /*Open file for writing*/
 }
-str= ""; /*Reset string var*/
+str = ""; /*Reset string var*/
 	
 #region /*Write all objects to file*/
 with(obj_leveleditor_placed_object)
 {
 	if (object = 62)
-	or (object = 64)
-	or (object = 65)
-	or (object = 732)
-	or (object = 733)
-	or (object = 734)
-	or (object = 73)
+	or(object = 64)
+	or(object = 65)
+	or(object = 732)
+	or(object = 733)
+	or(object = 734)
+	or(object = 73)
 	{
 		str+=string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "|" + string(second_x) + "|" + string(second_y) + "|";
 	}

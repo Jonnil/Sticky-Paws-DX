@@ -7,7 +7,7 @@ draw_set_alpha(1);
 #region /*Draw Skip Text*/
 if (skip > 0)
 {
-	draw_rectangle_colour(0, +64 - skip, window_get_width(), +64, c_red, c_red, c_red, c_red, false);
+	draw_rectangle_colour(0, + 64 - skip, window_get_width(), + 64, c_red, c_red, c_red, c_red, false);
 }
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
@@ -16,13 +16,13 @@ draw_set_valign(fa_top);
 if (gamepad_is_connected(0))
 and (global.player1_can_play = true)
 and (global.controls_used_for_menu_navigation = "controller")
-or (gamepad_is_connected(1))
+or(gamepad_is_connected(1))
 and (global.player2_can_play = true)
 and (global.controls_used_for_menu_navigation = "controller")
-or (gamepad_is_connected(2))
+or(gamepad_is_connected(2))
 and (global.player3_can_play = true)
 and (global.controls_used_for_menu_navigation = "controller")
-or (gamepad_is_connected(3))
+or(gamepad_is_connected(3))
 and (global.player4_can_play = true)
 and (global.controls_used_for_menu_navigation = "controller")
 {
@@ -34,7 +34,7 @@ else
 
 #region /*If playing on mobile*/
 if (os_type == os_ios)
-or (os_type == os_android)
+or(os_type == os_android)
 {
 	draw_text_outlined(window_get_width() - 16, + 16, "Skip: Press and Hold Screen", global.default_text_size, c_black, c_white, 1);
 }
@@ -44,9 +44,10 @@ else
 
 #region /*If playing on Keyboard*/
 if (global.controls_used_for_menu_navigation = "keyboard")
-or (global.controls_used_for_menu_navigation = "mouse")
+or(global.controls_used_for_menu_navigation = "mouse")
 {
-	draw_text_outlined(window_get_width() - 16, + 16, "Skip: Hold Escape", global.default_text_size, c_black, c_white, 1);
+	draw_menu_button(window_get_width() - 370, 21, "Skip: Hold", "skip", "skip")
+	draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() - 32, 21, 0.75, 0.75, 0, c_white, 1);
 }
 #endregion /*If playing on Keyboard*/
 
@@ -58,13 +59,13 @@ if (sprite_index > 0)
 }
 
 if (keyboard_check(vk_escape))
-or (gamepad_button_check(0, gp_start))
-or (gamepad_button_check(1, gp_start))
-or (gamepad_button_check(2, gp_start))
-or (gamepad_button_check(3, gp_start))
-or (os_type == os_ios)
+or(gamepad_button_check(0, gp_start))
+or(gamepad_button_check(1, gp_start))
+or(gamepad_button_check(2, gp_start))
+or(gamepad_button_check(3, gp_start))
+or(os_type == os_ios)
 and (mouse_check_button(mb_left))
-or (os_type == os_android)
+or(os_type == os_android)
 and (mouse_check_button(mb_left))
 {
 	skip += 1;
@@ -109,10 +110,10 @@ if (iris_xscale <= 0.01)
 }
 
 if (keyboard_check(vk_space))
-or (gamepad_button_check(0, gp_face1))
-or (gamepad_button_check(1, gp_face1))
-or (gamepad_button_check(2, gp_face1))
-or (gamepad_button_check(3, gp_face1))
+or(gamepad_button_check(0, gp_face1))
+or(gamepad_button_check(1, gp_face1))
+or(gamepad_button_check(2, gp_face1))
+or(gamepad_button_check(3, gp_face1))
 {
 	time += 10;
 	y = lerp(y, yy, 0.75);
@@ -152,7 +153,7 @@ if (time >= room_speed*5)
 	}
 	image_index += 1;
 	if (sprite_index = global.resourcepack_sprite_title_logo_christmas)
-	or (sprite_index = global.resourcepack_sprite_title_logo)
+	or(sprite_index = global.resourcepack_sprite_title_logo)
 	{
 		sprite_index = spr_credits;
 		image_index = 0;
@@ -217,10 +218,10 @@ if (global.enable_transitions = true)
 		{
 			draw_sprite_ext(spr_iris, 0, window_get_width()/ 2, window_get_height()/ 2, iris_xscale, iris_yscale, 0, c_black, 1);
 		}
-		draw_rectangle_color (0, 0, window_get_width()*2, window_get_height()/ 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color (0, 0, window_get_width()/ 2 - iris_xscale * 128, window_get_height()*2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color (window_get_width()/ 2 + iris_xscale * 128 - 1, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color (0, window_get_height()/ 2 + iris_yscale * 128, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, window_get_width()*2, window_get_height()/ 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, window_get_width()/ 2 - iris_xscale * 128, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(window_get_width()/ 2 + iris_xscale * 128 - 1, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, window_get_height()/ 2 + iris_yscale * 128, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
 	}
 }
 #endregion /*Draw Iris Transitions END*/

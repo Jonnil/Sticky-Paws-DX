@@ -42,7 +42,7 @@ function InitTranslations()
 		global.language_local_data = load_csv("localization.csv");
 		var hh = ds_grid_height(global.language_local_data);
 		var translations = ds_map_create();
-		for (var i = 0;
+		for(var i = 0;
 		i < hh;
 		i++)
 		{

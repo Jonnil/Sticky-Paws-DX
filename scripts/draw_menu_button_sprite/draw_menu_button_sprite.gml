@@ -1,5 +1,5 @@
 /// @function draw_menu_button_sprite(sprite_index, x, y, width, height, string, menu_index, menu_takes_you_to)
-/// @description draw_menu_button_sprite(sprite_index,x, y,width,height,string,menu_index, menu_takes_you_to)
+/// @description draw_menu_button_sprite(sprite_index,x, y,width,height,string, menu_index, menu_takes_you_to)
 /// @param sprite_index
 /// @param x
 /// @param y
@@ -31,7 +31,7 @@ function draw_menu_button_sprite()
 	{
 		if (menu = menu_index)
 		and (global.controls_used_for_menu_navigation = "keyboard")
-		or (menu = menu_index)
+		or(menu = menu_index)
 		and (global.controls_used_for_menu_navigation = "controller")
 		{
 			draw_sprite_ext(spr_index, 0,x_position,y_position, 1, 1, 0, c_green, 1);
@@ -45,7 +45,7 @@ function draw_menu_button_sprite()
 	{
 		if (menu = menu_index)
 		and (global.controls_used_for_menu_navigation = "keyboard")
-		or (menu = menu_index)
+		or(menu = menu_index)
 		and (global.controls_used_for_menu_navigation = "controller")
 		{
 			draw_sprite_ext(spr_index, 0,x_position,y_position, 1, 1, 0, c_gray, 1);
@@ -60,9 +60,9 @@ function draw_menu_button_sprite()
 	if (point_in_rectangle(mouse_x, mouse_y, x_position,y_position,x_position+ spr_width,y_position+ spr_height))
 	{
 		if (menu_takes_you_to= false)
-		or (menu_takes_you_to= noone)
-		or (menu_takes_you_to= "")
-		or (menu_takes_you_to=menu_index)
+		or(menu_takes_you_to= noone)
+		or(menu_takes_you_to= "")
+		or(menu_takes_you_to=menu_index)
 		{
 			if (mouse_check_button(mb_left))
 			and (menu_index > noone)

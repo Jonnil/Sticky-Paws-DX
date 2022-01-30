@@ -1,6 +1,6 @@
 if (other.vspeed > 0)
-or (other.bbox_bottom < y)
-or (other.dive = true)
+or(other.bbox_bottom < y)
+or(other.dive = true)
 {
 	if (can_jump_on_head = true)
 	{

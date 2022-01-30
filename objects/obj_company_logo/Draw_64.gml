@@ -2,21 +2,24 @@ scr_set_screen_size();
 
 /*Draw Event*/
 if(gamepad_button_check_pressed(0, gp_face1))
-or (keyboard_check_pressed(ord("Z")))
-or (keyboard_check_pressed(vk_enter))
-or (keyboard_check_pressed(vk_space))
-or (keyboard_check_pressed(vk_escape))
-or (window_has_focus())
+or(keyboard_check_pressed(ord("Z")))
+or(keyboard_check_pressed(vk_enter))
+or(keyboard_check_pressed(vk_space))
+or(keyboard_check_pressed(vk_escape))
+or(window_has_focus())
 and (mouse_check_button_pressed(mb_left))
 {
-	if (asset_get_type("room_title") == asset_room)
+	if (can_navigate = true)
 	{
-		room_goto(room_title);
-	}
-	else
-	if (room_next(room)<>- 1)
-	{
-		room_goto_next();
+		if (asset_get_type("room_title") == asset_room)
+		{
+			room_goto(room_title);
+		}
+		else
+		if (room_next(room)<>- 1)
+		{
+			room_goto_next();
+		}
 	}
 }
 
@@ -34,7 +37,7 @@ if (sprite_splash_easteregg > noone)
 }
 
 if (gamepad_button_check_pressed(0, gp_face4))
-or (keyboard_check_pressed(ord("Y")))
+or(keyboard_check_pressed(ord("Y")))
 and (sprite_splash_easteregg_yoffset = 128)
 {
 	sprite_splash_easteregg_yoffset = +127;
@@ -88,7 +91,7 @@ and (sprite_index=spr_company_logo)
 if (sprite_splash_controller > noone)
 and (sprite_index = sprite_splash_controller)
 {
-	time +=1;
+	time += 1;
 	if (time >100)
 	{
 		if (asset_get_type("room_title") == asset_room)
@@ -113,7 +116,7 @@ and (asset_get_type("menuvoice_companysplash") == asset_sound)
 	}
 }
 
-if (time =10)
+if (time = 10)
 and (asset_get_type("menuvoice_controllersplash") == asset_sound)
 {
 	if (!audio_is_playing(menuvoice_controllersplash))
@@ -146,7 +149,7 @@ and (keyboard_check_pressed(global.fullscreen_key))
 if (!window_has_focus())
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color (camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), room_width, room_height, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), room_width, room_height, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
 #endregion /*If Window is unfocused, make the screen darker END*/

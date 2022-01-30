@@ -39,7 +39,7 @@ if (quit_level_editor >= true)
 		menu_delay = 999; /*Disable all menu control*/
 		scr_save_custom_level();
 		if (camera_get_view_width(view_camera[view_current]) < 1920)
-		or (camera_get_view_height(view_camera[view_current]) < 1080)
+		or(camera_get_view_height(view_camera[view_current]) < 1080)
 		{
 			camera_set_view_size(view_camera[view_current], 1920, 1080);
 		}

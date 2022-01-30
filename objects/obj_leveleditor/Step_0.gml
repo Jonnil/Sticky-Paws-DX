@@ -18,14 +18,14 @@ if (keyboard_check_pressed(global.fullscreen_key))
 scr_parallax_scrolling_background();
 
 #region /*Deactivate instances outside view*/
-if (startup_loading_timer<=3)
+if (startup_loading_timer <= 3)
 {
 	startup_loading_timer += 1;
 }
 
-if (quit_level_editor= 0)
+if (quit_level_editor = 0)
 and (global.play_edited_level = false)
-and (startup_loading_timer>=3)
+and (startup_loading_timer >= 3)
 {
 	instance_activate_all();
 	if (global.deactivate_objects_outsiede_view= true)
@@ -124,7 +124,7 @@ if (erase_brush_size >5)
 #endregion /*Always keep the brush size within these values END*/
 
 if (window_get_height() != old_window_get_height)
-or (window_get_width() != old_window_get_width)
+or(window_get_width() != old_window_get_width)
 {
 	scr_set_screen_size();
 	old_window_get_height = window_get_height();

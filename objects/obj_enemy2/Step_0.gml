@@ -9,7 +9,7 @@ and (global.enable_enemies = false)
 #endregion /*If enemies are disabled, destroy this object END*/
 
 if (die_volting = -1)
-or (die_volting = +1)
+or(die_volting = +1)
 {
 	depth = -900;
 	if (die_volting = -1)

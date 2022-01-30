@@ -17,9 +17,9 @@ if (brick_particle = true)
 	
 	#region /*Destroy outside view*/
 	if (x<camera_get_view_x(view_camera[view_current]) + sprite_width)
-	or (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
-	or (y<camera_get_view_y(view_camera[view_current]) + sprite_width)
-	or (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + sprite_width)
+	or(x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
+	or(y <camera_get_view_y(view_camera[view_current]) + sprite_width)
+	or(y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + sprite_width)
 	{
 		instance_destroy();
 	}
@@ -43,13 +43,13 @@ if (asset_get_type("spr_cardboard_block") == asset_sprite)
 if (asset_get_type("obj_player") == asset_object)
 and (place_meeting(x, y - 1, obj_player))
 {
-	draw_xscale =lerp(draw_xscale, 1.1, 0.3);
-	draw_yscale =lerp(draw_yscale, 0.9, 0.3);
+	draw_xscale = lerp(draw_xscale, 1.1, 0.3);
+	draw_yscale = lerp(draw_yscale, 0.9, 0.3);
 }
 else
 {
-	draw_xscale =lerp(draw_xscale, 1, 0.3);
-	draw_yscale =lerp(draw_yscale, 1, 0.3);
+	draw_xscale = lerp(draw_xscale, 1, 0.3);
+	draw_yscale = lerp(draw_yscale, 1, 0.3);
 }
 
 if (brick_particle = false)
@@ -59,40 +59,40 @@ if (brick_particle = false)
 	{
 		if (place_meeting(x, bbox_bottom, obj_player))
 		and (instance_nearest(x, y, obj_player).vspeed < 0)
-		or (place_meeting(x, y - 16, obj_player))
+		or(place_meeting(x, y - 16, obj_player))
 		and (instance_nearest(x, y, obj_player).ground_pound = true)
-		or (place_meeting(bbox_left-8,y, obj_player))
+		or(place_meeting(bbox_left-8,y, obj_player))
 		and (instance_nearest(x, y, obj_player).dive = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		or (place_meeting(bbox_right +8,y, obj_player))
+		or(place_meeting(bbox_right +8,y, obj_player))
 		and (instance_nearest(x, y, obj_player).dive = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		or (place_meeting(bbox_left - 1, y, obj_player))
+		or(place_meeting(bbox_left - 1, y, obj_player))
 		and (instance_nearest(x, y, obj_player).wall_jump > 0)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		or (place_meeting(bbox_right + 1, y, obj_player))
+		or(place_meeting(bbox_right + 1, y, obj_player))
 		and (instance_nearest(x, y, obj_player).wall_jump > 0)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		
-		or (place_meeting(bbox_left-8,y, obj_player))
+		or(place_meeting(bbox_left-8,y, obj_player))
 		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		or (place_meeting(bbox_right-8,y, obj_player))
+		or(place_meeting(bbox_right-8,y, obj_player))
 		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		or (place_meeting(x, bbox_top-8, obj_player))
+		or(place_meeting(x, bbox_top-8, obj_player))
 		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		or (place_meeting(x, bbox_bottom+8, obj_player))
+		or(place_meeting(x, bbox_bottom+8, obj_player))
 		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		
-		or (place_meeting(bbox_left-8,y, obj_boss))
+		or(place_meeting(bbox_left-8,y, obj_boss))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_boss).x, instance_nearest(x, y, obj_boss).y, obj_wall, false, true))
-		or (place_meeting(bbox_right-8,y, obj_boss))
+		or(place_meeting(bbox_right-8,y, obj_boss))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_boss).x, instance_nearest(x, y, obj_boss).y, obj_wall, false, true))
 		
-		or (!place_meeting(x, y + 2, obj_wall))
+		or(!place_meeting(x, y + 2, obj_wall))
 		and (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +outside_view_offset)
 		and (x >camera_get_view_x(view_camera[view_current]) -outside_view_offset)
 		and (bbox_bottom<camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) +outside_view_offset)
@@ -103,11 +103,11 @@ if (brick_particle = false)
 		and (bbox_bottom<camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) +outside_view_offset)
 		and (y >camera_get_view_y(view_camera[view_current]) -outside_view_offset)
 		
-		or (asset_get_type("obj_blockbreak") == asset_object)
+		or(asset_get_type("obj_blockbreak") == asset_object)
 		and (place_meeting(x, y, obj_blockbreak))
 		{
 			if (position_meeting(bbox_left + 3,bbox_bottom + 1, instance_nearest(x, y, obj_player)))
-			or (position_meeting(bbox_right-3,bbox_bottom + 1, instance_nearest(x, y, obj_player)))
+			or(position_meeting(bbox_right-3,bbox_bottom + 1, instance_nearest(x, y, obj_player)))
 			{
 				if (asset_get_type("obj_blockbreak") == asset_object)
 				{
@@ -174,8 +174,8 @@ if (brick_particle = false)
 	and (instance_nearest(x, y, obj_bullet).die = false)
 	{
 		if (place_meeting(x, y, obj_bullet))
-		or (place_meeting(x- 5,y, obj_bullet))
-		or (place_meeting(x +5,y, obj_bullet))
+		or(place_meeting(x- 5,y, obj_bullet))
+		or(place_meeting(x +5,y, obj_bullet))
 		{
 			
 			#region /*Turn into cardboard particle*/

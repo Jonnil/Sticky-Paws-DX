@@ -2,8 +2,8 @@ depth = +9;
 
 image_speed = 0.3;
 image_xscale = -1;
-draw_xscale =1;
-draw_yscale =1;
+draw_xscale = 1;
+draw_yscale = 1;
 flat = false;
 die = false;
 die_volting = false;

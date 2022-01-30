@@ -3,8 +3,8 @@ if (die = false)
 	#region /*Push the enemy out of the solid object*/
 	while(place_meeting(x, y, other))
 	{
-		x +=lengthdir_x(0.5,point_direction(other.x, other.y, x, y));
-		y+=lengthdir_y(0.5,point_direction(other.x, other.y, x, y));
+		x += lengthdir_x(0.5,point_direction(other.x, other.y, x, y));
+		y+= lengthdir_y(0.5,point_direction(other.x, other.y, x, y));
 	}
 	#endregion /*Push the enemy out of the solid object END*/
 
@@ -25,7 +25,7 @@ if (die = false)
 		}
 		vspeed = 0;
 		gravity = 0;
-		draw_xscale =1.25;
+		draw_xscale = 1.25;
 		draw_yscale = 0.75;
 	}
 }

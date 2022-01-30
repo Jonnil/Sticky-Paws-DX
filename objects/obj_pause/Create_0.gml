@@ -13,19 +13,19 @@ scr_set_arrays();
 if (global.narrator >= 0)
 {
 	menuvoice_titlesplash = noone;
-	menuvoice_1player= noone;
-	menuvoice_2player= noone;
-	menuvoice_3player= noone;
-	menuvoice_4player= noone;
-	menuvoice_leveleditor= noone;
+	menuvoice_1player = noone;
+	menuvoice_2player = noone;
+	menuvoice_3player = noone;
+	menuvoice_4player = noone;
+	menuvoice_leveleditor = noone;
 	menuvoice_leveleditor_denied = noone;
 	menuvoice_options= noone;
 }
 
 pause_text_alpha= 0;
-pause_text_lerp =1;
+pause_text_lerp = 1;
 menu = "continue";
-menu_delay =10;
+menu_delay = 10;
 lastkey = noone;
 
 #region /*Remapping options variables*/
@@ -45,9 +45,9 @@ remap_y_pos= 0;
 menu_cursor_index= 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
-can_navigate_settings_sidebar= true;
-navigate_slider= false;
-menu_remap_key_number= 0;
+can_navigate_settings_sidebar = true;
+navigate_slider = false;
+menu_remap_key_number = 0;
 menu_y_offset = 0; /*This is the y offset that will have lerping to make the menu scrolling smooth*/
 menu_y_offset_real = 0; /*This is the real y offset for the menu, used for menu scrolling*/
 menu_cursor_y_position = 0;
@@ -56,26 +56,58 @@ background_brightness_menu_lerp = 0;
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
 accessibility_settings_y = 40;
-game_text_y = 40*2;
-game_settings_y = 40*3;
-multiplayer_settings_y = 40*4;
-controls_text_y = 40*5;
-keyboard_and_mouse_settings_y = 40*6;
-controller_settings_y = 40*7;
-touch_settings_y = 40*8;
-general_text_y = 40*9;
-profile_settings_y = 40* 10;
-video_settings_y = 40* 11;
-audio_settings_y = 40* 12;
-global_resources_settings_y = 40* 13;
-storage_settings_y = 40* 14;
-language_settings_y = 40* 15;
-broadcast_settings_y = 40* 16;
-how_to_play_y = 40* 17;
+game_text_y = 40 *2;
+game_settings_y = 40 *3;
+multiplayer_settings_y = 40 *4;
+controls_text_y = 40 *5;
+keyboard_and_mouse_settings_y = 40 *6;
+controller_settings_y = 40 *7;
+touch_settings_y = 40 *8;
+general_text_y = 40 * 9;
+profile_settings_y = 40 * 10;
+video_settings_y = 40 * 11;
+audio_settings_y = 40 * 12;
+global_resources_settings_y = 40 * 13;
+storage_settings_y = 40 * 14;
+language_settings_y = 40 * 15;
+broadcast_settings_y = 40 * 16;
+how_to_play_y = 40 * 17;
 left_sidebar_x=-400;
 hide_menu_for_clean_screenshots = false;
 hide_menu_for_clean_screenshots_alpha = 0;
 hide_menu_for_clean_screenshots_timer = 0;
+
+#region /*Character Name*/
+if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+{
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+	{
+		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+	}
+	else
+	{
+		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+	}
+						
+	#region /*Character Name*/
+	if (ini_key_exists("values", "character_name"))
+	{
+		narrator_name = ini_read_string("values", "character_name", "");
+	}
+	else
+	{
+		narrator_name = string(global.narrator + 1);
+	}
+	#endregion /*Character Name END*/
+						
+	ini_close();
+}
+else
+{
+	narrator_name = string(global.narrator + 1);
+}
+#endregion /*Character Name END*/
 
 #region /*Customize look of Options Menu*/
 c_menu_outline = c_black;

@@ -7,7 +7,7 @@ function scr_custom_level_select_with_the_mouse()
 	and (can_input_level_name = false)
 	and (can_navigate = true)
 	{
-		for (i = 0;
+		for(i = 0;
 		i < ds_list_size(global.thumbnail_sprite);
 		i += 1)
 		{

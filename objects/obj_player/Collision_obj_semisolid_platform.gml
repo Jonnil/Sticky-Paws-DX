@@ -3,19 +3,19 @@
 if (in_water = false)
 {
 	if (position_meeting(x, bbox_bottom + 1, other))
-	or (position_meeting(x, bbox_bottom+ 2, other))
-	or (position_meeting(x, bbox_bottom+ 3, other))
-	or (position_meeting(x, bbox_bottom+ 4, other))
+	or(position_meeting(x, bbox_bottom+ 2, other))
+	or(position_meeting(x, bbox_bottom+ 3, other))
+	or(position_meeting(x, bbox_bottom+ 4, other))
 
-	or (position_meeting(bbox_left, bbox_bottom + 1, other))
-	or (position_meeting(bbox_left, bbox_bottom+ 2, other))
-	or (position_meeting(bbox_left, bbox_bottom+ 3, other))
-	or (position_meeting(bbox_left, bbox_bottom+ 4, other))
+	or(position_meeting(bbox_left, bbox_bottom + 1, other))
+	or(position_meeting(bbox_left, bbox_bottom+ 2, other))
+	or(position_meeting(bbox_left, bbox_bottom+ 3, other))
+	or(position_meeting(bbox_left, bbox_bottom+ 4, other))
 
-	or (position_meeting(bbox_right, bbox_bottom + 1, other))
-	or (position_meeting(bbox_right, bbox_bottom+ 2, other))
-	or (position_meeting(bbox_right, bbox_bottom+ 3, other))
-	or (position_meeting(bbox_right, bbox_bottom+ 4, other))
+	or(position_meeting(bbox_right, bbox_bottom + 1, other))
+	or(position_meeting(bbox_right, bbox_bottom+ 2, other))
+	or(position_meeting(bbox_right, bbox_bottom+ 3, other))
+	or(position_meeting(bbox_right, bbox_bottom+ 4, other))
 	{
 		y -= 1;
 	}
@@ -24,9 +24,9 @@ if (in_water = false)
 #region /*Landing on solid object*/
 if (position_meeting(x, bbox_bottom + 1, other))
 and (stick_to_wall = false)
-or (position_meeting(bbox_left, bbox_bottom + 1, other))
+or(position_meeting(bbox_left, bbox_bottom + 1, other))
 and (stick_to_wall = false)
-or (position_meeting(bbox_right, bbox_bottom + 1, other))
+or(position_meeting(bbox_right, bbox_bottom + 1, other))
 and (stick_to_wall = false)
 {
 	

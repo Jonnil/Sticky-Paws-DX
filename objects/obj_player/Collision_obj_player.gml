@@ -10,21 +10,21 @@ if (global.players_can_collide = true)
 	and (other.hspeed > 0)
 	{
 		hspeed = 0;
-		x +=1;
+		x += 1;
 		other.hspeed = 0;
-		other.x-=1;
+		other.x-= 1;
 	}
 	else
 	if (hspeed > 0)
 	and (other.hspeed < 0)
 	{
 		hspeed = 0;
-		x-=1;
+		x-= 1;
 		other.hspeed = 0;
-		other.x +=1;
+		other.x += 1;
 	}
 	else
-	if (other.hspeed<>0)
+	if (other.hspeed<> 0)
 	and (hspeed = 0)
 	and (!place_meeting(x - 1, y, obj_wall))
 	and (!place_meeting(x + 1, y, obj_wall))

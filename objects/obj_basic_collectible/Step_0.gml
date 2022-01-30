@@ -11,9 +11,9 @@ if (bounceup = false)
 	if (asset_get_type("obj_player") == asset_object)
 	{
 		if (place_meeting(bbox_left, y, obj_player))
-		or (place_meeting(bbox_right, y, obj_player))
-		or (place_meeting(x, bbox_top, obj_player))
-		or (place_meeting(x, bbox_bottom, obj_player))
+		or(place_meeting(bbox_right, y, obj_player))
+		or(place_meeting(x, bbox_top, obj_player))
+		or(place_meeting(x, bbox_bottom, obj_player))
 		{
 			if (asset_get_type("obj_wall") == asset_object)
 				and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
@@ -75,7 +75,7 @@ if (bounceup = true)
 		#endregion /*Set the gravity END*/
 		if (vspeed > 0)
 		and (y > ystart - 32)
-		or (delay >= delay_time + 60)
+		or(delay >= delay_time + 60)
 		{
 			score += 200;
 			global.hud_show_score = true;

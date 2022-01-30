@@ -162,8 +162,8 @@ and (has_seen_player = true)
 		sprite_index = spr_boss_stand;
 	}
 	if (time = room_speed * 4)
-	or (time = room_speed * 5)
-	or (time = room_speed * 6)
+	or(time = room_speed * 5)
+	or(time = room_speed * 6)
 	{
 		if (can_jump_on_head = true)
 		{
@@ -179,7 +179,7 @@ and (has_seen_player = true)
 		sprite_index = spr_boss_throw;
 		if (asset_get_type("obj_arrow") == asset_object)
 		{
-			instance_create_depth(x, y + random_range(0, +64), 0, obj_arrow);
+			instance_create_depth(x, y + random_range(0, + 64), 0, obj_arrow);
 		}
 	}
 	if (time = room_speed * 7)
@@ -314,9 +314,9 @@ and (has_seen_player = true)
 		sprite_index = spr_boss_stand;
 	}
 	if (time = room_speed * 4)
-	or (time = room_speed * 5)
-	or (time = room_speed * 6)
-	or (time = room_speed * 7)
+	or(time = room_speed * 5)
+	or(time = room_speed * 6)
+	or(time = room_speed * 7)
 	{
 		if (can_jump_on_head = true)
 		{
@@ -332,7 +332,7 @@ and (has_seen_player = true)
 		sprite_index = spr_boss_throw;
 		if (asset_get_type("obj_arrow") == asset_object)
 		{
-			instance_create_depth(x, y + random_range(0, +64), 0, obj_arrow);
+			instance_create_depth(x, y + random_range(0, + 64), 0, obj_arrow);
 		}
 	}
 	if (time = room_speed * 8)
@@ -468,10 +468,10 @@ if (has_seen_player = true)
 		sprite_index = spr_boss_stand;
 	}
 	if (time = room_speed * 4)
-	or (time = room_speed * 5)
-	or (time = room_speed * 6)
-	or (time = room_speed * 7)
-	or (time = room_speed * 8)
+	or(time = room_speed * 5)
+	or(time = room_speed * 6)
+	or(time = room_speed * 7)
+	or(time = room_speed * 8)
 	{
 		if (can_jump_on_head = true)
 		{
@@ -487,7 +487,7 @@ if (has_seen_player = true)
 		sprite_index = spr_boss_throw;
 		if (asset_get_type("obj_arrow") == asset_object)
 		{
-			instance_create_depth(x, y + random_range(0, +64), 0, obj_arrow);
+			instance_create_depth(x, y + random_range(0, + 64), 0, obj_arrow);
 		}
 	}
 	if (time = room_speed * 9)
@@ -632,7 +632,7 @@ and (can_jump_on_head = true)
 if (hp <= 0)
 {
 	if (time = room_speed * 3 - 1)
-	or (takendamage = 0)
+	or(takendamage = 0)
 	{
 		effect_create_above(ef_smoke, x - 32, y, 2, c_white);
 		effect_create_above(ef_smoke, x - 42, y + 32, 2, c_white);

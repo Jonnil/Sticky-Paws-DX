@@ -2,13 +2,13 @@ depth = +20;
 mask_index = spr_wall;
 if (!instance_exists(obj_boss))
 and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 64)
-and (x > camera_get_view_x(view_camera[view_current]) +64)
+and (x > camera_get_view_x(view_camera[view_current]) + 64)
 and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 and (y > camera_get_view_y(view_camera[view_current]))
 {
 	if (!place_meeting(x, y - 1, obj_boss_barrier))
 	{
-		time +=1;
+		time += 1;
 		if (time >5)
 		{
 			if (asset_get_type("obj_brick_particle") == asset_object)

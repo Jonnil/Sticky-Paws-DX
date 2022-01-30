@@ -17,7 +17,7 @@ iris_zoom = 0;
 menu_delay = 0;
 
 #region /*Change the logo to different designs during specific times and dates*/
-if (current_month =12)
+if (current_month = 12)
 {
 	if (global.resourcepack_sprite_title_logo_christmas > noone)
 	{

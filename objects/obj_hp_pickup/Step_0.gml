@@ -24,7 +24,7 @@ and (instance_exists(obj_player))
 {
 	if (allow_move = true)
 	{
-		if (dir= +1)
+		if (dir = +1)
 		{
 			if (instance_nearest(x, y, obj_player).x > x)
 			and (instance_nearest(x, y, obj_player).hspeed >+ 2)
@@ -66,7 +66,7 @@ and (instance_exists(obj_player))
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
-			hp+=1;
+			hp += 1;
 		}
 	effect_create_below(ef_ring,x, y, 1, c_white);
 	instance_destroy();
@@ -84,11 +84,11 @@ if (asset_get_type("obj_wall") == asset_object)
 {
 	if (place_meeting(x - 1, y, obj_wall))
 	{
-		dir= +1;
+		dir = +1;
 	}
 	if (place_meeting(x + 1, y, obj_wall))
 	{
-		dir=- 1;
+		dir =- 1;
 	}
 	if (place_meeting(x, y - 1, obj_wall))
 	{
@@ -97,7 +97,7 @@ if (asset_get_type("obj_wall") == asset_object)
 }
 
 #region /*Expanding Ring Effect*/
-effect_time +=1;
+effect_time += 1;
 if (effect_time >60)
 {
 	effect_time = 0;

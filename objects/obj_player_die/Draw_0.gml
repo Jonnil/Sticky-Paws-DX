@@ -1,11 +1,11 @@
 count += 1;
 
 #region /*Check if the last player just died*/
-if (count =1)
+if (count = 1)
 and (asset_get_type("obj_player") == asset_object)
 and (!instance_exists(obj_player))
 {
-	last_player= true;
+	last_player = true;
 }
 #endregion /*Check if the last player just died END*/
 
@@ -47,7 +47,7 @@ and (sprite_index=spr_player_burnt)
 #region /*Play death melody*/
 if (!instance_exists(obj_player))
 and (count =50)
-and (last_player= true)
+and (last_player = true)
 {
 	if (asset_get_type("snd_die_melody") == asset_sound)
 	{
@@ -182,21 +182,21 @@ if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vie
 
 if (!instance_exists(obj_player))
 and (count>49)
-and (last_player= true)
+and (last_player = true)
 {
 	if (iris_zoom = 0)
 	{
-		iris_xscale =lerp(iris_xscale, 1, 0.1);
-		iris_yscale =lerp(iris_yscale, 1, 0.1);
+		iris_xscale = lerp(iris_xscale, 1, 0.1);
+		iris_yscale = lerp(iris_yscale, 1, 0.1);
 	}
 	else
 	{
-		iris_xscale =lerp(iris_xscale, 0, 0.1);
-		iris_yscale =lerp(iris_yscale, 0, 0.1);
+		iris_xscale = lerp(iris_xscale, 0, 0.1);
+		iris_yscale = lerp(iris_yscale, 0, 0.1);
 	}
-	if (iris_xscale <=1.1)
+	if (iris_xscale <= 1.1)
 	{
-		iris_zoom =1;
+		iris_zoom = 1;
 	}
 	if (asset_get_type("obj_player_die") == asset_object)
 	and (instance_exists(obj_player_die))
@@ -213,10 +213,10 @@ and (last_player= true)
 			{
 				draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 			}
-			draw_rectangle_color (0, 0, room_width*3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color (0, 0, xx - iris_xscale * 128, room_height*3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color (xx + iris_xscale * 128, 0, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color (0, yy + iris_yscale * 128, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, 0, room_width*3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, 0, xx - iris_xscale * 128, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(xx + iris_xscale * 128, 0, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, yy + iris_yscale * 128, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
 		}
 	}
 }
@@ -247,7 +247,7 @@ if (bubble = true)
 	{
 		x=camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32;
 	}
-	if (y<camera_get_view_y(view_camera[view_current]) + 32)
+	if (y <camera_get_view_y(view_camera[view_current]) + 32)
 	{
 		y =camera_get_view_y(view_camera[view_current]) + 32;
 	}
@@ -261,38 +261,38 @@ if (bubble = true)
 	if (player <= 1)
 	{
 	gamepad_set_axis_deadzone(0, 0.25);
-	key_up =(keyboard_check(vk_up)) and (!keyboard_check(vk_down))or (keyboard_check(vk_numpad8)) and (!keyboard_check(vk_numpad2))or (keyboard_check(ord("W"))) and (!keyboard_check(ord("S")))or (gamepad_button_check(0, gp_padu)) and (!gamepad_button_check(0, gp_padd))or (gamepad_axis_value(0, gp_axislv)<0);
-	key_left =(keyboard_check(vk_left)) and (!keyboard_check(vk_right))or (keyboard_check(vk_numpad4)) and (!keyboard_check(vk_numpad6))or (keyboard_check(ord("A"))) and (!keyboard_check(ord("D")))or (gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr))or (gamepad_axis_value(0, gp_axislh)<0);
-	key_right =(keyboard_check(vk_right)) and (!keyboard_check(vk_left))or (keyboard_check(vk_numpad6)) and (!keyboard_check(vk_numpad4))or (keyboard_check(ord("D"))) and (!keyboard_check(ord("A")))or (gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
-	key_down =(keyboard_check(vk_down)) and (!keyboard_check(vk_up))or (keyboard_check(vk_numpad2)) and (!keyboard_check(vk_numpad8))or (keyboard_check(ord("S"))) and (!keyboard_check(ord("W")))or (gamepad_button_check(0, gp_padd)) and (!gamepad_button_check(0, gp_padu))or (gamepad_axis_value(0, gp_axislv) > 0);
-	key_a=(global.controls_layout =1) and (gamepad_button_check_pressed(0, gp_face1))or (gamepad_button_check_pressed(0, gp_face2))or (global.controls_layout = 2) and (gamepad_button_check_pressed(0, gp_face3))or (keyboard_check_pressed(ord("Z")))or (keyboard_check_pressed(vk_enter))or (keyboard_check_pressed(vk_space));
+	key_up =(keyboard_check(vk_up)) and (!keyboard_check(vk_down))or(keyboard_check(vk_numpad8)) and (!keyboard_check(vk_numpad2))or(keyboard_check(ord("W"))) and (!keyboard_check(ord("S")))or(gamepad_button_check(0, gp_padu)) and (!gamepad_button_check(0, gp_padd))or(gamepad_axis_value(0, gp_axislv)<0);
+	key_left =(keyboard_check(vk_left)) and (!keyboard_check(vk_right))or(keyboard_check(vk_numpad4)) and (!keyboard_check(vk_numpad6))or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D")))or(gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr))or(gamepad_axis_value(0, gp_axislh)<0);
+	key_right =(keyboard_check(vk_right)) and (!keyboard_check(vk_left))or(keyboard_check(vk_numpad6)) and (!keyboard_check(vk_numpad4))or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A")))or(gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
+	key_down =(keyboard_check(vk_down)) and (!keyboard_check(vk_up))or(keyboard_check(vk_numpad2)) and (!keyboard_check(vk_numpad8))or(keyboard_check(ord("S"))) and (!keyboard_check(ord("W")))or(gamepad_button_check(0, gp_padd)) and (!gamepad_button_check(0, gp_padu))or(gamepad_axis_value(0, gp_axislv) > 0);
+	key_a=(global.controls_layout = 1) and (gamepad_button_check_pressed(0, gp_face1))or(gamepad_button_check_pressed(0, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(0, gp_face3))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
 	}
 	if (player = 2)
 	{
 	gamepad_set_axis_deadzone(1, 0.25);
-	key_up =(gamepad_button_check(1, gp_padu)) and (!gamepad_button_check(1, gp_padd))or (gamepad_axis_value(1, gp_axislv)<0);
-	key_left =(gamepad_button_check(1, gp_padl)) and (!gamepad_button_check(1, gp_padr))or (gamepad_axis_value(1, gp_axislh)<0);
-	key_right =(gamepad_button_check(1, gp_padr)) and (!gamepad_button_check(1, gp_padl))or (gamepad_axis_value(1, gp_axislh) > 0);
-	key_down =(gamepad_button_check(1, gp_padd)) and (!gamepad_button_check(1, gp_padu))or (gamepad_axis_value(1, gp_axislv) > 0);
-	key_a=(global.controls_layout =1) and (gamepad_button_check_pressed(1, gp_face1))or (gamepad_button_check_pressed(1, gp_face2))or (global.controls_layout = 2) and (gamepad_button_check_pressed(1, gp_face3));
+	key_up =(gamepad_button_check(1, gp_padu)) and (!gamepad_button_check(1, gp_padd))or(gamepad_axis_value(1, gp_axislv)<0);
+	key_left =(gamepad_button_check(1, gp_padl)) and (!gamepad_button_check(1, gp_padr))or(gamepad_axis_value(1, gp_axislh)<0);
+	key_right =(gamepad_button_check(1, gp_padr)) and (!gamepad_button_check(1, gp_padl))or(gamepad_axis_value(1, gp_axislh) > 0);
+	key_down =(gamepad_button_check(1, gp_padd)) and (!gamepad_button_check(1, gp_padu))or(gamepad_axis_value(1, gp_axislv) > 0);
+	key_a=(global.controls_layout = 1) and (gamepad_button_check_pressed(1, gp_face1))or(gamepad_button_check_pressed(1, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(1, gp_face3));
 	}
 	if (player = 3)
 	{
 	gamepad_set_axis_deadzone(2, 0.25);
-	key_up =(gamepad_button_check(2, gp_padu)) and (!gamepad_button_check(2, gp_padd))or (gamepad_axis_value(2, gp_axislv)<0);
-	key_left =(gamepad_button_check(2, gp_padl)) and (!gamepad_button_check(2, gp_padr))or (gamepad_axis_value(2, gp_axislh)<0);
-	key_right =(gamepad_button_check(2, gp_padr)) and (!gamepad_button_check(2, gp_padl))or (gamepad_axis_value(2, gp_axislh) > 0);
-	key_down =(gamepad_button_check(2, gp_padd)) and (!gamepad_button_check(2, gp_padu))or (gamepad_axis_value(2, gp_axislv) > 0);
-	key_a=(global.controls_layout =1) and (gamepad_button_check_pressed(2, gp_face1))or (gamepad_button_check_pressed(2, gp_face2))or (global.controls_layout = 2) and (gamepad_button_check_pressed(2, gp_face3));
+	key_up =(gamepad_button_check(2, gp_padu)) and (!gamepad_button_check(2, gp_padd))or(gamepad_axis_value(2, gp_axislv)<0);
+	key_left =(gamepad_button_check(2, gp_padl)) and (!gamepad_button_check(2, gp_padr))or(gamepad_axis_value(2, gp_axislh)<0);
+	key_right =(gamepad_button_check(2, gp_padr)) and (!gamepad_button_check(2, gp_padl))or(gamepad_axis_value(2, gp_axislh) > 0);
+	key_down =(gamepad_button_check(2, gp_padd)) and (!gamepad_button_check(2, gp_padu))or(gamepad_axis_value(2, gp_axislv) > 0);
+	key_a=(global.controls_layout = 1) and (gamepad_button_check_pressed(2, gp_face1))or(gamepad_button_check_pressed(2, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(2, gp_face3));
 	}
 	if (player = 4)
 	{
 	gamepad_set_axis_deadzone(3, 0.25);
-	key_up =(gamepad_button_check(3, gp_padu)) and (!gamepad_button_check(3, gp_padd))or (gamepad_axis_value(3, gp_axislv)<0);
-	key_left =(gamepad_button_check(3, gp_padl)) and (!gamepad_button_check(3, gp_padr))or (gamepad_axis_value(3, gp_axislh)<0);
-	key_right =(gamepad_button_check(3, gp_padr)) and (!gamepad_button_check(3, gp_padl))or (gamepad_axis_value(3, gp_axislh) > 0);
-	key_down =(gamepad_button_check(3, gp_padd)) and (!gamepad_button_check(3, gp_padu))or (gamepad_axis_value(3, gp_axislv) > 0);
-	key_a=(global.controls_layout =1) and (gamepad_button_check_pressed(3, gp_face1))or (gamepad_button_check_pressed(3, gp_face2))or (global.controls_layout = 2) and (gamepad_button_check_pressed(3, gp_face3));
+	key_up =(gamepad_button_check(3, gp_padu)) and (!gamepad_button_check(3, gp_padd))or(gamepad_axis_value(3, gp_axislv)<0);
+	key_left =(gamepad_button_check(3, gp_padl)) and (!gamepad_button_check(3, gp_padr))or(gamepad_axis_value(3, gp_axislh)<0);
+	key_right =(gamepad_button_check(3, gp_padr)) and (!gamepad_button_check(3, gp_padl))or(gamepad_axis_value(3, gp_axislh) > 0);
+	key_down =(gamepad_button_check(3, gp_padd)) and (!gamepad_button_check(3, gp_padu))or(gamepad_axis_value(3, gp_axislv) > 0);
+	key_a=(global.controls_layout = 1) and (gamepad_button_check_pressed(3, gp_face1))or(gamepad_button_check_pressed(3, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(3, gp_face3));
 	}
 	#endregion /*Customisable keyboard array END*/
 
@@ -346,11 +346,11 @@ if (bubble = true)
 
 	#region /*Bubble*/
 	draw_self();
-	draw_circle_color (x, y, 52, c_black, c_black, true);
-	draw_circle_color (x, y, 53, c_white, c_white, true);
-	draw_circle_color (x, y, 54, c_white, c_white, true);
-	draw_circle_color (x, y, 55, c_white, c_white, true);
-	draw_circle_color (x, y, 56, c_black, c_black, true);
+	draw_circle_color(x, y, 52, c_black, c_black, true);
+	draw_circle_color(x, y, 53, c_white, c_white, true);
+	draw_circle_color(x, y, 54, c_white, c_white, true);
+	draw_circle_color(x, y, 55, c_white, c_white, true);
+	draw_circle_color(x, y, 56, c_black, c_black, true);
 	#endregion /*Bubble END*/
 
 	#region /*If there are no more players in the room*/

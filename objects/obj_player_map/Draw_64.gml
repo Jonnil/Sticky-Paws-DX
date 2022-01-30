@@ -81,7 +81,7 @@ scr_virtual_keys();
 #region /*Have a black screen at the first frame so transitions look natural*/
 if (black_screen_at_start_delay < 1)
 {
-	draw_rectangle_color (0, 0,window_get_width()*3,window_get_height()*3, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0,window_get_width()*3,window_get_height()*3, c_black, c_black, c_black, c_black, false);
 	black_screen_at_start_delay += 1;
 }
 #endregion /*Have a black screen at the first frame so transitions look natural END*/

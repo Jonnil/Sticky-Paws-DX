@@ -11,9 +11,9 @@ if (bounceup = false)
 if (bounceup = false)
 {
 	if (place_meeting(bbox_left, y, obj_player))
-	or (place_meeting(bbox_right, y, obj_player))
-	or (place_meeting(x, bbox_top, obj_player))
-	or (place_meeting(x, bbox_bottom, obj_player))
+	or(place_meeting(bbox_right, y, obj_player))
+	or(place_meeting(x, bbox_top, obj_player))
+	or(place_meeting(x, bbox_bottom, obj_player))
 	{
 		if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		{
@@ -23,12 +23,12 @@ if (bounceup = false)
 			{
 				if (asset_get_type("obj_wall") == asset_object)
 				and (place_meeting(x, y + 16, obj_wall))
-				or (asset_get_type("obj_semisolid_platform") == asset_object)
+				or(asset_get_type("obj_semisolid_platform") == asset_object)
 				and (place_meeting(x, y + 16, obj_semisolid_platform))
-				or (asset_get_type("obj_horizontal_rope") == asset_object)
+				or(asset_get_type("obj_horizontal_rope") == asset_object)
 				and (place_meeting(x, y - 16, obj_horizontal_rope))
-				or (instance_nearest(x, y, obj_player).climb = true)
-				or (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
+				or(instance_nearest(x, y, obj_player).climb = true)
+				or(instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
 				{
 					effect_create_above(ef_ring, x, y, 2, c_white);
 					#region /*3 Basic Collectibles*/

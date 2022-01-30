@@ -25,7 +25,7 @@ function draw_pie(x ,y ,value, max, colour, radius, transparency)
 	        draw_primitive_begin(pr_trianglefan);
 	        draw_vertex(argument0, argument1);
         
-	        for (i= 0; i<=val; i++) {
+	        for(i= 0; i<=val; i++) {
 	            len = (i*sizeofsection) +90; // the 90 here is the starting angle
 	            tx = lengthdir_x(argument5, len);
 	            ty = lengthdir_y(argument5, len);

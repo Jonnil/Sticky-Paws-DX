@@ -1,5 +1,5 @@
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[camera_player])) + "/data/sprite_origin_point.ini"))
-or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[camera_player])) + "/data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[camera_player])) + "/data/sprite_origin_point.ini"))
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[camera_player])) + "/data/sprite_origin_point.ini"))
 	{

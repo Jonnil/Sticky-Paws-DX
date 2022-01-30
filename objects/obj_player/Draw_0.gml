@@ -43,8 +43,8 @@ and (have_heart_balloon = true)
 	}
 	if (takendamage %2 == 0)
 	{
-		draw_line_width_color (xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
-		draw_line_width_color (xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
+		draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
+		draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
 		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, 1);
 	}
 	else
@@ -69,14 +69,14 @@ else
 #endregion /*Heart above head END*/
 
 #region /*Draw arrow when player is outside top view*/
-if (y<camera_get_view_y(view_camera[view_current]))
+if (y <camera_get_view_y(view_camera[view_current]))
 {
-	draw_set_color (c_black);
+	draw_set_color(c_black);
 	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + 16,x, camera_get_view_y(view_camera[view_current]) - 2, 30);
-	draw_set_color (c_white);
+	draw_set_color(c_white);
 	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + 16,x, camera_get_view_y(view_camera[view_current]), 20);
-	draw_circle_color (x, camera_get_view_y(view_camera[view_current]) + 32, 24, c_black, c_black, true);
-	draw_circle_color (x, camera_get_view_y(view_camera[view_current]) + 32, 22, c_white, c_white, true);
+	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + 32, 24, c_black, c_black, true);
+	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + 32, 22, c_white, c_white, true);
 	
 	if (assist_invincible = false)
 	and (invincible >60)
@@ -106,14 +106,14 @@ if (y<camera_get_view_y(view_camera[view_current]))
 
 #region /*Draw arrow when player is outside bottom view*/
 if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (y<room_height)
+and (y <room_height)
 {
-	draw_set_color (c_black);
+	draw_set_color(c_black);
 	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 2, 30);
-	draw_set_color (c_white);
+	draw_set_color(c_white);
 	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), 20);
-	draw_circle_color (x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 24, c_black, c_black, true);
-	draw_circle_color (x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 22, c_white, c_white, true);
+	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 24, c_black, c_black, true);
+	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 22, c_white, c_white, true);
 	
 	if (assist_invincible = false)
 	and (invincible >60)
@@ -145,7 +145,7 @@ and (y<room_height)
 if (global.basic_collectibles>99)
 {
 	global.basic_collectibles= 0;
-	lives+=1; /* 1-UP*/
+	lives+= 1; /* 1-UP*/
 	global.hud_show_lives= true;
 	if (instance_exists(obj_camera))
 	{
@@ -176,7 +176,7 @@ if (global.basic_collectibles>99)
 if (intro_animation != "")
 and (intro_animation_sprite > noone)
 {
-	draw_sprite_ext(intro_animation_sprite, intro_animation_image_index, xx, yy, draw_xscale * default_xscale*sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 1);
+	draw_sprite_ext(intro_animation_sprite, intro_animation_image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 1);
 }
 #endregion /*Draw intro animation sprites (cutscene) if intro is playing END*/
 
@@ -237,32 +237,32 @@ else
 }
 
 #region /*Blink red when only having 1 HP left and no heart balloon*/
-if (redblinktimer>25)
+if (redblinktimer >25)
 and (have_heart_balloon = false)
-and (hp<=1)
-and (max_hp>= 2)
+and (hp <= 1)
+and (max_hp >= 2)
 and (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index,xx +random_range(-8,+8),yy+random_range(-8,+8),draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, c_red, image_alpha);
+	draw_sprite_ext(sprite_index, image_index,xx +random_range(-8,+8),yy+random_range(-8,+8),draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, image_alpha);
 }
 else
 if (takendamage%2 == 0)
 and (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
-	if (hp<=1)
-	and (max_hp>= 2)
+	draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
+	if (hp <= 1)
+	and (max_hp >= 2)
 	{
-		draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, c_red, 0.1);
+		draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, 0.1);
 	}
 }
 else
 if (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, 0.5);
+	draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, 0.5);
 }
 #endregion /*Blink red when only having 1 HP left and no heart balloon END*/
 
@@ -279,8 +279,8 @@ if (global.show_collision_mask = true)
 	{
 		draw_sprite_ext(sprite_mask, 0, x, y, 1, 1, 0, c_white, 1);
 	}
-	draw_rectangle_color (x- 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
-	draw_rectangle_color (x, y- 2, x, y + 2, c_red, c_red, c_red, c_red, false);
+	draw_rectangle_color(x- 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
+	draw_rectangle_color(x, y- 2, x, y + 2, c_red, c_red, c_red, c_red, false);
 	image_alpha = 0.5;
 }
 else
@@ -306,7 +306,7 @@ if (effect_turnaround_subimg < 10)
 if (effect_speedspark_subimg < 4)
 {
 	if (place_meeting(x, y + 1, obj_wall))
-	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (climb = false)
 		and (horizontal_rope_climb = false)
@@ -324,7 +324,7 @@ if (assist_invincible = false)
 {
 	if (invincible > 0)
 	{
-		invincible-=1;
+		invincible-= 1;
 	}
 	if (invincible >60)
 	and (sprite_index > 0)
@@ -333,16 +333,16 @@ if (assist_invincible = false)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
 			}
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale*sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
+			draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
 		}
 	}
 }
@@ -357,23 +357,23 @@ if (invincible >60)
 #endregion /*Invinsible END*/
 
 #region /*Don't make it look like the player is teleporting when the player teleports*/
-if (smooth_teleport<1)
+if (smooth_teleport< 1)
 {
-	xx=lerp(xx,x,smooth_teleport);
-	yy =lerp(yy,y,smooth_teleport);
+	xx= lerp(xx,x,smooth_teleport);
+	yy = lerp(yy,y,smooth_teleport);
 	smooth_teleport += 0.1;
 }
 else
 if (stomp_spin = true)
-or (spring = true)
+or(spring = true)
 {
-	xx=lerp(xx,x, 0.4);
-	yy =lerp(yy,y, 0.4);
+	xx= lerp(xx,x, 0.4);
+	yy = lerp(yy,y, 0.4);
 }
 else
 {
-	xx=lerp(xx,x, 1);
-	yy =lerp(yy,y, 1);
+	xx= lerp(xx,x, 1);
+	yy = lerp(yy,y, 1);
 }
 #endregion /*Don't make it look like the player is teleporting when the player teleports END*/
 
@@ -405,7 +405,7 @@ if (allow_homing_attack = true)
 		}
 		else
 		{
-			draw_circle_color (instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 32, c_lime, c_lime, true);
+			draw_circle_color(instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 32, c_lime, c_lime, true);
 		}
 	}
 	#endregion /*Homing Enemy END*/
@@ -435,7 +435,7 @@ if (allow_homing_attack = true)
 		}
 		else
 		{
-			draw_circle_color (instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 32, c_lime, c_lime, true);
+			draw_circle_color(instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 32, c_lime, c_lime, true);
 		}
 	}
 	#endregion /*Homing Spring END*/
@@ -449,7 +449,7 @@ if (allow_homing_attack = true)
 
 #region /*Display Player Number and Name*/
 if (instance_number(obj_player)>= 2) /*If there is more than 1 player*/
-or (instance_number(obj_player_die)>=1) /*If there is any other player die object*/
+or(instance_number(obj_player_die)>= 1) /*If there is any other player die object*/
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
@@ -504,12 +504,12 @@ or (instance_number(obj_player_die)>=1) /*If there is any other player die objec
 if (hp > 0)
 and (global.assist_enable = true)
 and (global.assist_invincible = false)
-or (hp > 0)
+or(hp > 0)
 and (global.assist_enable = false)
 {
 	if (max_hp = 2) /*If there is only max 2 hp and there is no panting sprite, display HP*/
 	and (sprite_panting = noone)
-	or (max_hp >= 3) /*If there is more than max 3 hp, always display HP*/
+	or(max_hp >= 3) /*If there is more than max 3 hp, always display HP*/
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);

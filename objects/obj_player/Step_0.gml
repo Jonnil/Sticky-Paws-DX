@@ -1,7 +1,7 @@
 ///Platformer Player Part 1
 
 if (current_file != global.file)
-or (!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
+or(!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false;
@@ -72,7 +72,7 @@ and (voice_wall_jump_6= noone)
 and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
-and (voice_wall_jump_10= noone)
+and (voice_wall_jump_10 = noone)
 {
 	voice_wallkick=voice_wall_jump_1;
 }
@@ -86,7 +86,7 @@ and (voice_wall_jump_6= noone)
 and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
-and (voice_wall_jump_10= noone)
+and (voice_wall_jump_10 = noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2);
@@ -101,7 +101,7 @@ and (voice_wall_jump_6= noone)
 and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
-and (voice_wall_jump_10= noone)
+and (voice_wall_jump_10 = noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -117,7 +117,7 @@ and (voice_wall_jump_6= noone)
 and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
-and (voice_wall_jump_10= noone)
+and (voice_wall_jump_10 = noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -134,7 +134,7 @@ and (voice_wall_jump_6= noone)
 and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
-and (voice_wall_jump_10= noone)
+and (voice_wall_jump_10 = noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -152,7 +152,7 @@ and (voice_wall_jump_6> noone)
 and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
-and (voice_wall_jump_10= noone)
+and (voice_wall_jump_10 = noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -171,7 +171,7 @@ and (voice_wall_jump_6> noone)
 and (voice_wall_jump_7> noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
-and (voice_wall_jump_10= noone)
+and (voice_wall_jump_10 = noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -191,7 +191,7 @@ and (voice_wall_jump_6> noone)
 and (voice_wall_jump_7> noone)
 and (voice_wall_jump_8> noone)
 and (voice_wall_jump_9= noone)
-and (voice_wall_jump_10= noone)
+and (voice_wall_jump_10 = noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -212,7 +212,7 @@ and (voice_wall_jump_6> noone)
 and (voice_wall_jump_7> noone)
 and (voice_wall_jump_8> noone)
 and (voice_wall_jump_9> noone)
-and (voice_wall_jump_10= noone)
+and (voice_wall_jump_10 = noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -234,7 +234,7 @@ and (voice_wall_jump_6> noone)
 and (voice_wall_jump_7> noone)
 and (voice_wall_jump_8> noone)
 and (voice_wall_jump_9> noone)
-and (voice_wall_jump_10> noone)
+and (voice_wall_jump_10 > noone)
 {
 	voice_wallkick=choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -259,7 +259,7 @@ and (voice_start_running_6= noone)
 and (voice_start_running_7= noone)
 and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
-and (voice_start_running_10= noone)
+and (voice_start_running_10 = noone)
 {
 	voice_startdash =voice_start_running_1;
 }
@@ -273,7 +273,7 @@ and (voice_start_running_6= noone)
 and (voice_start_running_7= noone)
 and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
-and (voice_start_running_10= noone)
+and (voice_start_running_10 = noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2);
@@ -288,7 +288,7 @@ and (voice_start_running_6= noone)
 and (voice_start_running_7= noone)
 and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
-and (voice_start_running_10= noone)
+and (voice_start_running_10 = noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -304,7 +304,7 @@ and (voice_start_running_6= noone)
 and (voice_start_running_7= noone)
 and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
-and (voice_start_running_10= noone)
+and (voice_start_running_10 = noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -321,7 +321,7 @@ and (voice_start_running_6= noone)
 and (voice_start_running_7= noone)
 and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
-and (voice_start_running_10= noone)
+and (voice_start_running_10 = noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -339,7 +339,7 @@ and (voice_start_running_6> noone)
 and (voice_start_running_7= noone)
 and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
-and (voice_start_running_10= noone)
+and (voice_start_running_10 = noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -358,7 +358,7 @@ and (voice_start_running_6> noone)
 and (voice_start_running_7> noone)
 and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
-and (voice_start_running_10= noone)
+and (voice_start_running_10 = noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -378,7 +378,7 @@ and (voice_start_running_6> noone)
 and (voice_start_running_7> noone)
 and (voice_start_running_8> noone)
 and (voice_start_running_9= noone)
-and (voice_start_running_10= noone)
+and (voice_start_running_10 = noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -399,7 +399,7 @@ and (voice_start_running_6> noone)
 and (voice_start_running_7> noone)
 and (voice_start_running_8> noone)
 and (voice_start_running_9> noone)
-and (voice_start_running_10= noone)
+and (voice_start_running_10 = noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -421,7 +421,7 @@ and (voice_start_running_6> noone)
 and (voice_start_running_7> noone)
 and (voice_start_running_8> noone)
 and (voice_start_running_9> noone)
-and (voice_start_running_10> noone)
+and (voice_start_running_10 > noone)
 {
 	voice_startdash =choose(voice_start_running_1,
 						voice_start_running_2,
@@ -446,7 +446,7 @@ and (voice_rope_catch_6= noone)
 and (voice_rope_catch_7= noone)
 and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
-and (voice_rope_catch_10= noone)
+and (voice_rope_catch_10 = noone)
 {
 	voice_rope_catch =voice_rope_catch_1;
 }
@@ -460,7 +460,7 @@ and (voice_rope_catch_6= noone)
 and (voice_rope_catch_7= noone)
 and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
-and (voice_rope_catch_10= noone)
+and (voice_rope_catch_10 = noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2);
@@ -475,7 +475,7 @@ and (voice_rope_catch_6= noone)
 and (voice_rope_catch_7= noone)
 and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
-and (voice_rope_catch_10= noone)
+and (voice_rope_catch_10 = noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -491,7 +491,7 @@ and (voice_rope_catch_6= noone)
 and (voice_rope_catch_7= noone)
 and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
-and (voice_rope_catch_10= noone)
+and (voice_rope_catch_10 = noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -508,7 +508,7 @@ and (voice_rope_catch_6= noone)
 and (voice_rope_catch_7= noone)
 and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
-and (voice_rope_catch_10= noone)
+and (voice_rope_catch_10 = noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -526,7 +526,7 @@ and (voice_rope_catch_6> noone)
 and (voice_rope_catch_7= noone)
 and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
-and (voice_rope_catch_10= noone)
+and (voice_rope_catch_10 = noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -545,7 +545,7 @@ and (voice_rope_catch_6> noone)
 and (voice_rope_catch_7> noone)
 and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
-and (voice_rope_catch_10= noone)
+and (voice_rope_catch_10 = noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -565,7 +565,7 @@ and (voice_rope_catch_6> noone)
 and (voice_rope_catch_7> noone)
 and (voice_rope_catch_8> noone)
 and (voice_rope_catch_9= noone)
-and (voice_rope_catch_10= noone)
+and (voice_rope_catch_10 = noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -586,7 +586,7 @@ and (voice_rope_catch_6> noone)
 and (voice_rope_catch_7> noone)
 and (voice_rope_catch_8> noone)
 and (voice_rope_catch_9> noone)
-and (voice_rope_catch_10= noone)
+and (voice_rope_catch_10 = noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -608,7 +608,7 @@ and (voice_rope_catch_6> noone)
 and (voice_rope_catch_7> noone)
 and (voice_rope_catch_8> noone)
 and (voice_rope_catch_9> noone)
-and (voice_rope_catch_10> noone)
+and (voice_rope_catch_10 > noone)
 {
 	voice_rope_catch =choose(voice_rope_catch_1,
 						voice_rope_catch_2,
@@ -633,7 +633,7 @@ and (voice_jump_spring_6= noone)
 and (voice_jump_spring_7= noone)
 and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
-and (voice_jump_spring_10= noone)
+and (voice_jump_spring_10 = noone)
 {
 	voice_jump_spring =voice_jump_spring_1;
 }
@@ -647,7 +647,7 @@ and (voice_jump_spring_6= noone)
 and (voice_jump_spring_7= noone)
 and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
-and (voice_jump_spring_10= noone)
+and (voice_jump_spring_10 = noone)
 {
 	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2);
@@ -662,7 +662,7 @@ and (voice_jump_spring_6= noone)
 and (voice_jump_spring_7= noone)
 and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
-and (voice_jump_spring_10= noone)
+and (voice_jump_spring_10 = noone)
 {
 	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -678,7 +678,7 @@ and (voice_jump_spring_6= noone)
 and (voice_jump_spring_7= noone)
 and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
-and (voice_jump_spring_10= noone)
+and (voice_jump_spring_10 = noone)
 {
 	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -695,7 +695,7 @@ and (voice_jump_spring_6= noone)
 and (voice_jump_spring_7= noone)
 and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
-and (voice_jump_spring_10= noone)
+and (voice_jump_spring_10 = noone)
 {
 	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -713,7 +713,7 @@ and (voice_jump_spring_6> noone)
 and (voice_jump_spring_7= noone)
 and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
-and (voice_jump_spring_10= noone)
+and (voice_jump_spring_10 = noone)
 {
 	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -732,7 +732,7 @@ and (voice_jump_spring_6> noone)
 and (voice_jump_spring_7> noone)
 and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
-and (voice_jump_spring_10= noone)
+and (voice_jump_spring_10 = noone)
 {
 	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -752,7 +752,7 @@ and (voice_jump_spring_6> noone)
 and (voice_jump_spring_7> noone)
 and (voice_jump_spring_8> noone)
 and (voice_jump_spring_9= noone)
-and (voice_jump_spring_10= noone)
+and (voice_jump_spring_10 = noone)
 {
 	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -773,7 +773,7 @@ and (voice_jump_spring_6> noone)
 and (voice_jump_spring_7> noone)
 and (voice_jump_spring_8> noone)
 and (voice_jump_spring_9> noone)
-and (voice_jump_spring_10= noone)
+and (voice_jump_spring_10 = noone)
 {
 	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -795,7 +795,7 @@ and (voice_jump_spring_6> noone)
 and (voice_jump_spring_7> noone)
 and (voice_jump_spring_8> noone)
 and (voice_jump_spring_9> noone)
-and (voice_jump_spring_10> noone)
+and (voice_jump_spring_10 > noone)
 {
 	voice_jump_spring =choose(voice_jump_spring_1,
 						voice_jump_spring_2,
@@ -820,7 +820,7 @@ and (voice_jump_rope_6= noone)
 and (voice_jump_rope_7= noone)
 and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
-and (voice_jump_rope_10= noone)
+and (voice_jump_rope_10 = noone)
 {
 	voice_jump_rope =voice_jump_rope_1;
 }
@@ -834,7 +834,7 @@ and (voice_jump_rope_6= noone)
 and (voice_jump_rope_7= noone)
 and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
-and (voice_jump_rope_10= noone)
+and (voice_jump_rope_10 = noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2);
@@ -849,7 +849,7 @@ and (voice_jump_rope_6= noone)
 and (voice_jump_rope_7= noone)
 and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
-and (voice_jump_rope_10= noone)
+and (voice_jump_rope_10 = noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -865,7 +865,7 @@ and (voice_jump_rope_6= noone)
 and (voice_jump_rope_7= noone)
 and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
-and (voice_jump_rope_10= noone)
+and (voice_jump_rope_10 = noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -882,7 +882,7 @@ and (voice_jump_rope_6= noone)
 and (voice_jump_rope_7= noone)
 and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
-and (voice_jump_rope_10= noone)
+and (voice_jump_rope_10 = noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -900,7 +900,7 @@ and (voice_jump_rope_6> noone)
 and (voice_jump_rope_7= noone)
 and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
-and (voice_jump_rope_10= noone)
+and (voice_jump_rope_10 = noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -919,7 +919,7 @@ and (voice_jump_rope_6> noone)
 and (voice_jump_rope_7> noone)
 and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
-and (voice_jump_rope_10= noone)
+and (voice_jump_rope_10 = noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -939,7 +939,7 @@ and (voice_jump_rope_6> noone)
 and (voice_jump_rope_7> noone)
 and (voice_jump_rope_8> noone)
 and (voice_jump_rope_9= noone)
-and (voice_jump_rope_10= noone)
+and (voice_jump_rope_10 = noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -960,7 +960,7 @@ and (voice_jump_rope_6> noone)
 and (voice_jump_rope_7> noone)
 and (voice_jump_rope_8> noone)
 and (voice_jump_rope_9> noone)
-and (voice_jump_rope_10= noone)
+and (voice_jump_rope_10 = noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -982,7 +982,7 @@ and (voice_jump_rope_6> noone)
 and (voice_jump_rope_7> noone)
 and (voice_jump_rope_8> noone)
 and (voice_jump_rope_9> noone)
-and (voice_jump_rope_10> noone)
+and (voice_jump_rope_10 > noone)
 {
 	voice_jump_rope =choose(voice_jump_rope_1,
 						voice_jump_rope_2,
@@ -1007,7 +1007,7 @@ and (voice_jump_6= noone)
 and (voice_jump_7= noone)
 and (voice_jump_8= noone)
 and (voice_jump_9= noone)
-and (voice_jump_10= noone)
+and (voice_jump_10 = noone)
 {
 	voice_jump =voice_jump_1;
 }
@@ -1021,7 +1021,7 @@ and (voice_jump_6= noone)
 and (voice_jump_7= noone)
 and (voice_jump_8= noone)
 and (voice_jump_9= noone)
-and (voice_jump_10= noone)
+and (voice_jump_10 = noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2);
@@ -1036,7 +1036,7 @@ and (voice_jump_6= noone)
 and (voice_jump_7= noone)
 and (voice_jump_8= noone)
 and (voice_jump_9= noone)
-and (voice_jump_10= noone)
+and (voice_jump_10 = noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1052,7 +1052,7 @@ and (voice_jump_6= noone)
 and (voice_jump_7= noone)
 and (voice_jump_8= noone)
 and (voice_jump_9= noone)
-and (voice_jump_10= noone)
+and (voice_jump_10 = noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1069,7 +1069,7 @@ and (voice_jump_6= noone)
 and (voice_jump_7= noone)
 and (voice_jump_8= noone)
 and (voice_jump_9= noone)
-and (voice_jump_10= noone)
+and (voice_jump_10 = noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1087,7 +1087,7 @@ and (voice_jump_6> noone)
 and (voice_jump_7= noone)
 and (voice_jump_8= noone)
 and (voice_jump_9= noone)
-and (voice_jump_10= noone)
+and (voice_jump_10 = noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1106,7 +1106,7 @@ and (voice_jump_6> noone)
 and (voice_jump_7> noone)
 and (voice_jump_8= noone)
 and (voice_jump_9= noone)
-and (voice_jump_10= noone)
+and (voice_jump_10 = noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1126,7 +1126,7 @@ and (voice_jump_6> noone)
 and (voice_jump_7> noone)
 and (voice_jump_8> noone)
 and (voice_jump_9= noone)
-and (voice_jump_10= noone)
+and (voice_jump_10 = noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1147,7 +1147,7 @@ and (voice_jump_6> noone)
 and (voice_jump_7> noone)
 and (voice_jump_8> noone)
 and (voice_jump_9> noone)
-and (voice_jump_10= noone)
+and (voice_jump_10 = noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1169,7 +1169,7 @@ and (voice_jump_6> noone)
 and (voice_jump_7> noone)
 and (voice_jump_8> noone)
 and (voice_jump_9> noone)
-and (voice_jump_10> noone)
+and (voice_jump_10 > noone)
 {
 	voice_jump =choose(voice_jump_1,
 						voice_jump_2,
@@ -1194,7 +1194,7 @@ and (voice_jump_3rd_6= noone)
 and (voice_jump_3rd_7= noone)
 and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
-and (voice_jump_3rd_10= noone)
+and (voice_jump_3rd_10 = noone)
 {
 	voice_jump3rd =voice_jump_3rd_1;
 }
@@ -1208,7 +1208,7 @@ and (voice_jump_3rd_6= noone)
 and (voice_jump_3rd_7= noone)
 and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
-and (voice_jump_3rd_10= noone)
+and (voice_jump_3rd_10 = noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2);
@@ -1223,7 +1223,7 @@ and (voice_jump_3rd_6= noone)
 and (voice_jump_3rd_7= noone)
 and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
-and (voice_jump_3rd_10= noone)
+and (voice_jump_3rd_10 = noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1239,7 +1239,7 @@ and (voice_jump_3rd_6= noone)
 and (voice_jump_3rd_7= noone)
 and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
-and (voice_jump_3rd_10= noone)
+and (voice_jump_3rd_10 = noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1256,7 +1256,7 @@ and (voice_jump_3rd_6= noone)
 and (voice_jump_3rd_7= noone)
 and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
-and (voice_jump_3rd_10= noone)
+and (voice_jump_3rd_10 = noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1274,7 +1274,7 @@ and (voice_jump_3rd_6> noone)
 and (voice_jump_3rd_7= noone)
 and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
-and (voice_jump_3rd_10= noone)
+and (voice_jump_3rd_10 = noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1293,7 +1293,7 @@ and (voice_jump_3rd_6> noone)
 and (voice_jump_3rd_7> noone)
 and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
-and (voice_jump_3rd_10= noone)
+and (voice_jump_3rd_10 = noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1313,7 +1313,7 @@ and (voice_jump_3rd_6> noone)
 and (voice_jump_3rd_7> noone)
 and (voice_jump_3rd_8> noone)
 and (voice_jump_3rd_9= noone)
-and (voice_jump_3rd_10= noone)
+and (voice_jump_3rd_10 = noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1334,7 +1334,7 @@ and (voice_jump_3rd_6> noone)
 and (voice_jump_3rd_7> noone)
 and (voice_jump_3rd_8> noone)
 and (voice_jump_3rd_9> noone)
-and (voice_jump_3rd_10= noone)
+and (voice_jump_3rd_10 = noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1356,7 +1356,7 @@ and (voice_jump_3rd_6> noone)
 and (voice_jump_3rd_7> noone)
 and (voice_jump_3rd_8> noone)
 and (voice_jump_3rd_9> noone)
-and (voice_jump_3rd_10> noone)
+and (voice_jump_3rd_10 > noone)
 {
 	voice_jump3rd =choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
@@ -1381,7 +1381,7 @@ and (voice_jump_2nd_6= noone)
 and (voice_jump_2nd_7= noone)
 and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
-and (voice_jump_2nd_10= noone)
+and (voice_jump_2nd_10 = noone)
 {
 	voice_jump2nd =voice_jump_2nd_1;
 }
@@ -1395,7 +1395,7 @@ and (voice_jump_2nd_6= noone)
 and (voice_jump_2nd_7= noone)
 and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
-and (voice_jump_2nd_10= noone)
+and (voice_jump_2nd_10 = noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2);
@@ -1410,7 +1410,7 @@ and (voice_jump_2nd_6= noone)
 and (voice_jump_2nd_7= noone)
 and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
-and (voice_jump_2nd_10= noone)
+and (voice_jump_2nd_10 = noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1426,7 +1426,7 @@ and (voice_jump_2nd_6= noone)
 and (voice_jump_2nd_7= noone)
 and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
-and (voice_jump_2nd_10= noone)
+and (voice_jump_2nd_10 = noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1443,7 +1443,7 @@ and (voice_jump_2nd_6= noone)
 and (voice_jump_2nd_7= noone)
 and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
-and (voice_jump_2nd_10= noone)
+and (voice_jump_2nd_10 = noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1461,7 +1461,7 @@ and (voice_jump_2nd_6> noone)
 and (voice_jump_2nd_7= noone)
 and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
-and (voice_jump_2nd_10= noone)
+and (voice_jump_2nd_10 = noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1480,7 +1480,7 @@ and (voice_jump_2nd_6> noone)
 and (voice_jump_2nd_7> noone)
 and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
-and (voice_jump_2nd_10= noone)
+and (voice_jump_2nd_10 = noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1500,7 +1500,7 @@ and (voice_jump_2nd_6> noone)
 and (voice_jump_2nd_7> noone)
 and (voice_jump_2nd_8> noone)
 and (voice_jump_2nd_9= noone)
-and (voice_jump_2nd_10= noone)
+and (voice_jump_2nd_10 = noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1521,7 +1521,7 @@ and (voice_jump_2nd_6> noone)
 and (voice_jump_2nd_7> noone)
 and (voice_jump_2nd_8> noone)
 and (voice_jump_2nd_9> noone)
-and (voice_jump_2nd_10= noone)
+and (voice_jump_2nd_10 = noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1543,7 +1543,7 @@ and (voice_jump_2nd_6> noone)
 and (voice_jump_2nd_7> noone)
 and (voice_jump_2nd_8> noone)
 and (voice_jump_2nd_9> noone)
-and (voice_jump_2nd_10> noone)
+and (voice_jump_2nd_10 > noone)
 {
 	voice_jump2nd =choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
@@ -1568,9 +1568,9 @@ and (voice_get_invincibility_6= noone)
 and (voice_get_invincibility_7= noone)
 and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
-and (voice_get_invincibility_10= noone)
+and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star=voice_get_invincibility_1;
+	voice_get_star =voice_get_invincibility_1;
 }
 else
 if (voice_get_invincibility_1> noone)
@@ -1582,9 +1582,9 @@ and (voice_get_invincibility_6= noone)
 and (voice_get_invincibility_7= noone)
 and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
-and (voice_get_invincibility_10= noone)
+and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star=choose(voice_get_invincibility_1,
+	voice_get_star =choose(voice_get_invincibility_1,
 						voice_get_invincibility_2);
 }
 else
@@ -1597,9 +1597,9 @@ and (voice_get_invincibility_6= noone)
 and (voice_get_invincibility_7= noone)
 and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
-and (voice_get_invincibility_10= noone)
+and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star=choose(voice_get_invincibility_1,
+	voice_get_star =choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3);
 }
@@ -1613,9 +1613,9 @@ and (voice_get_invincibility_6= noone)
 and (voice_get_invincibility_7= noone)
 and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
-and (voice_get_invincibility_10= noone)
+and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star=choose(voice_get_invincibility_1,
+	voice_get_star =choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4);
@@ -1630,9 +1630,9 @@ and (voice_get_invincibility_6= noone)
 and (voice_get_invincibility_7= noone)
 and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
-and (voice_get_invincibility_10= noone)
+and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star=choose(voice_get_invincibility_1,
+	voice_get_star =choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1648,9 +1648,9 @@ and (voice_get_invincibility_6> noone)
 and (voice_get_invincibility_7= noone)
 and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
-and (voice_get_invincibility_10= noone)
+and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star=choose(voice_get_invincibility_1,
+	voice_get_star =choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1667,9 +1667,9 @@ and (voice_get_invincibility_6> noone)
 and (voice_get_invincibility_7> noone)
 and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
-and (voice_get_invincibility_10= noone)
+and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star=choose(voice_get_invincibility_1,
+	voice_get_star =choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1687,9 +1687,9 @@ and (voice_get_invincibility_6> noone)
 and (voice_get_invincibility_7> noone)
 and (voice_get_invincibility_8> noone)
 and (voice_get_invincibility_9= noone)
-and (voice_get_invincibility_10= noone)
+and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star=choose(voice_get_invincibility_1,
+	voice_get_star =choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1708,9 +1708,9 @@ and (voice_get_invincibility_6> noone)
 and (voice_get_invincibility_7> noone)
 and (voice_get_invincibility_8> noone)
 and (voice_get_invincibility_9> noone)
-and (voice_get_invincibility_10= noone)
+and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star=choose(voice_get_invincibility_1,
+	voice_get_star =choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1730,9 +1730,9 @@ and (voice_get_invincibility_6> noone)
 and (voice_get_invincibility_7> noone)
 and (voice_get_invincibility_8> noone)
 and (voice_get_invincibility_9> noone)
-and (voice_get_invincibility_10> noone)
+and (voice_get_invincibility_10 > noone)
 {
-	voice_get_star=choose(voice_get_invincibility_1,
+	voice_get_star =choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1755,7 +1755,7 @@ and (voice_enter_goal_6= noone)
 and (voice_enter_goal_7= noone)
 and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
-and (voice_enter_goal_10= noone)
+and (voice_enter_goal_10 = noone)
 {
 	voice_enter_goal =voice_enter_goal_1;
 }
@@ -1769,7 +1769,7 @@ and (voice_enter_goal_6= noone)
 and (voice_enter_goal_7= noone)
 and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
-and (voice_enter_goal_10= noone)
+and (voice_enter_goal_10 = noone)
 {
 	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2);
@@ -1784,7 +1784,7 @@ and (voice_enter_goal_6= noone)
 and (voice_enter_goal_7= noone)
 and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
-and (voice_enter_goal_10= noone)
+and (voice_enter_goal_10 = noone)
 {
 	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1800,7 +1800,7 @@ and (voice_enter_goal_6= noone)
 and (voice_enter_goal_7= noone)
 and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
-and (voice_enter_goal_10= noone)
+and (voice_enter_goal_10 = noone)
 {
 	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1817,7 +1817,7 @@ and (voice_enter_goal_6= noone)
 and (voice_enter_goal_7= noone)
 and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
-and (voice_enter_goal_10= noone)
+and (voice_enter_goal_10 = noone)
 {
 	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1835,7 +1835,7 @@ and (voice_enter_goal_6> noone)
 and (voice_enter_goal_7= noone)
 and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
-and (voice_enter_goal_10= noone)
+and (voice_enter_goal_10 = noone)
 {
 	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1854,7 +1854,7 @@ and (voice_enter_goal_6> noone)
 and (voice_enter_goal_7> noone)
 and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
-and (voice_enter_goal_10= noone)
+and (voice_enter_goal_10 = noone)
 {
 	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1874,7 +1874,7 @@ and (voice_enter_goal_6> noone)
 and (voice_enter_goal_7> noone)
 and (voice_enter_goal_8> noone)
 and (voice_enter_goal_9= noone)
-and (voice_enter_goal_10= noone)
+and (voice_enter_goal_10 = noone)
 {
 	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1895,7 +1895,7 @@ and (voice_enter_goal_6> noone)
 and (voice_enter_goal_7> noone)
 and (voice_enter_goal_8> noone)
 and (voice_enter_goal_9> noone)
-and (voice_enter_goal_10= noone)
+and (voice_enter_goal_10 = noone)
 {
 	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1917,7 +1917,7 @@ and (voice_enter_goal_6> noone)
 and (voice_enter_goal_7> noone)
 and (voice_enter_goal_8> noone)
 and (voice_enter_goal_9> noone)
-and (voice_enter_goal_10> noone)
+and (voice_enter_goal_10 > noone)
 {
 	voice_enter_goal =choose(voice_enter_goal_1,
 						voice_enter_goal_2,
@@ -1942,7 +1942,7 @@ and (voice_dive_6= noone)
 and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
-and (voice_dive_10= noone)
+and (voice_dive_10 = noone)
 {
 	voice_dive =voice_dive_1;
 }
@@ -1956,7 +1956,7 @@ and (voice_dive_6= noone)
 and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
-and (voice_dive_10= noone)
+and (voice_dive_10 = noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2);
@@ -1971,7 +1971,7 @@ and (voice_dive_6= noone)
 and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
-and (voice_dive_10= noone)
+and (voice_dive_10 = noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -1987,7 +1987,7 @@ and (voice_dive_6= noone)
 and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
-and (voice_dive_10= noone)
+and (voice_dive_10 = noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2004,7 +2004,7 @@ and (voice_dive_6= noone)
 and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
-and (voice_dive_10= noone)
+and (voice_dive_10 = noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2022,7 +2022,7 @@ and (voice_dive_6> noone)
 and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
-and (voice_dive_10= noone)
+and (voice_dive_10 = noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2041,7 +2041,7 @@ and (voice_dive_6> noone)
 and (voice_dive_7> noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
-and (voice_dive_10= noone)
+and (voice_dive_10 = noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2061,7 +2061,7 @@ and (voice_dive_6> noone)
 and (voice_dive_7> noone)
 and (voice_dive_8> noone)
 and (voice_dive_9= noone)
-and (voice_dive_10= noone)
+and (voice_dive_10 = noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2082,7 +2082,7 @@ and (voice_dive_6> noone)
 and (voice_dive_7> noone)
 and (voice_dive_8> noone)
 and (voice_dive_9> noone)
-and (voice_dive_10= noone)
+and (voice_dive_10 = noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2104,7 +2104,7 @@ and (voice_dive_6> noone)
 and (voice_dive_7> noone)
 and (voice_dive_8> noone)
 and (voice_dive_9> noone)
-and (voice_dive_10> noone)
+and (voice_dive_10 > noone)
 {
 	voice_dive =choose(voice_dive_1,
 						voice_dive_2,
@@ -2129,7 +2129,7 @@ and (voice_damage_6= noone)
 and (voice_damage_7= noone)
 and (voice_damage_8= noone)
 and (voice_damage_9= noone)
-and (voice_damage_10= noone)
+and (voice_damage_10 = noone)
 {
 	voice_damage =voice_damage_1;
 }
@@ -2143,7 +2143,7 @@ and (voice_damage_6= noone)
 and (voice_damage_7= noone)
 and (voice_damage_8= noone)
 and (voice_damage_9= noone)
-and (voice_damage_10= noone)
+and (voice_damage_10 = noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2);
@@ -2158,7 +2158,7 @@ and (voice_damage_6= noone)
 and (voice_damage_7= noone)
 and (voice_damage_8= noone)
 and (voice_damage_9= noone)
-and (voice_damage_10= noone)
+and (voice_damage_10 = noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2174,7 +2174,7 @@ and (voice_damage_6= noone)
 and (voice_damage_7= noone)
 and (voice_damage_8= noone)
 and (voice_damage_9= noone)
-and (voice_damage_10= noone)
+and (voice_damage_10 = noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2191,7 +2191,7 @@ and (voice_damage_6= noone)
 and (voice_damage_7= noone)
 and (voice_damage_8= noone)
 and (voice_damage_9= noone)
-and (voice_damage_10= noone)
+and (voice_damage_10 = noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2209,7 +2209,7 @@ and (voice_damage_6> noone)
 and (voice_damage_7= noone)
 and (voice_damage_8= noone)
 and (voice_damage_9= noone)
-and (voice_damage_10= noone)
+and (voice_damage_10 = noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2228,7 +2228,7 @@ and (voice_damage_6> noone)
 and (voice_damage_7> noone)
 and (voice_damage_8= noone)
 and (voice_damage_9= noone)
-and (voice_damage_10= noone)
+and (voice_damage_10 = noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2248,7 +2248,7 @@ and (voice_damage_6> noone)
 and (voice_damage_7> noone)
 and (voice_damage_8> noone)
 and (voice_damage_9= noone)
-and (voice_damage_10= noone)
+and (voice_damage_10 = noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2269,7 +2269,7 @@ and (voice_damage_6> noone)
 and (voice_damage_7> noone)
 and (voice_damage_8> noone)
 and (voice_damage_9> noone)
-and (voice_damage_10= noone)
+and (voice_damage_10 = noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2291,7 +2291,7 @@ and (voice_damage_6> noone)
 and (voice_damage_7> noone)
 and (voice_damage_8> noone)
 and (voice_damage_9> noone)
-and (voice_damage_10> noone)
+and (voice_damage_10 > noone)
 {
 	voice_damage =choose(voice_damage_1,
 						voice_damage_2,
@@ -2316,7 +2316,7 @@ and (voice_burned_running_6= noone)
 and (voice_burned_running_7= noone)
 and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
-and (voice_burned_running_10= noone)
+and (voice_burned_running_10 = noone)
 {
 	voice_burned_running =voice_burned_running_1;
 }
@@ -2330,7 +2330,7 @@ and (voice_burned_running_6= noone)
 and (voice_burned_running_7= noone)
 and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
-and (voice_burned_running_10= noone)
+and (voice_burned_running_10 = noone)
 {
 	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2);
@@ -2345,7 +2345,7 @@ and (voice_burned_running_6= noone)
 and (voice_burned_running_7= noone)
 and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
-and (voice_burned_running_10= noone)
+and (voice_burned_running_10 = noone)
 {
 	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2361,7 +2361,7 @@ and (voice_burned_running_6= noone)
 and (voice_burned_running_7= noone)
 and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
-and (voice_burned_running_10= noone)
+and (voice_burned_running_10 = noone)
 {
 	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2378,7 +2378,7 @@ and (voice_burned_running_6= noone)
 and (voice_burned_running_7= noone)
 and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
-and (voice_burned_running_10= noone)
+and (voice_burned_running_10 = noone)
 {
 	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2396,7 +2396,7 @@ and (voice_burned_running_6> noone)
 and (voice_burned_running_7= noone)
 and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
-and (voice_burned_running_10= noone)
+and (voice_burned_running_10 = noone)
 {
 	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2415,7 +2415,7 @@ and (voice_burned_running_6> noone)
 and (voice_burned_running_7> noone)
 and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
-and (voice_burned_running_10= noone)
+and (voice_burned_running_10 = noone)
 {
 	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2435,7 +2435,7 @@ and (voice_burned_running_6> noone)
 and (voice_burned_running_7> noone)
 and (voice_burned_running_8> noone)
 and (voice_burned_running_9= noone)
-and (voice_burned_running_10= noone)
+and (voice_burned_running_10 = noone)
 {
 	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2456,7 +2456,7 @@ and (voice_burned_running_6> noone)
 and (voice_burned_running_7> noone)
 and (voice_burned_running_8> noone)
 and (voice_burned_running_9> noone)
-and (voice_burned_running_10= noone)
+and (voice_burned_running_10 = noone)
 {
 	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2478,7 +2478,7 @@ and (voice_burned_running_6> noone)
 and (voice_burned_running_7> noone)
 and (voice_burned_running_8> noone)
 and (voice_burned_running_9> noone)
-and (voice_burned_running_10> noone)
+and (voice_burned_running_10 > noone)
 {
 	voice_burned_running =choose(voice_burned_running_1,
 						voice_burned_running_2,
@@ -2503,7 +2503,7 @@ and (voice_burned_6= noone)
 and (voice_burned_7= noone)
 and (voice_burned_8= noone)
 and (voice_burned_9= noone)
-and (voice_burned_10= noone)
+and (voice_burned_10 = noone)
 {
 	voice_burned =voice_burned_1;
 }
@@ -2517,7 +2517,7 @@ and (voice_burned_6= noone)
 and (voice_burned_7= noone)
 and (voice_burned_8= noone)
 and (voice_burned_9= noone)
-and (voice_burned_10= noone)
+and (voice_burned_10 = noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2);
@@ -2532,7 +2532,7 @@ and (voice_burned_6= noone)
 and (voice_burned_7= noone)
 and (voice_burned_8= noone)
 and (voice_burned_9= noone)
-and (voice_burned_10= noone)
+and (voice_burned_10 = noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2548,7 +2548,7 @@ and (voice_burned_6= noone)
 and (voice_burned_7= noone)
 and (voice_burned_8= noone)
 and (voice_burned_9= noone)
-and (voice_burned_10= noone)
+and (voice_burned_10 = noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2565,7 +2565,7 @@ and (voice_burned_6= noone)
 and (voice_burned_7= noone)
 and (voice_burned_8= noone)
 and (voice_burned_9= noone)
-and (voice_burned_10= noone)
+and (voice_burned_10 = noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2583,7 +2583,7 @@ and (voice_burned_6> noone)
 and (voice_burned_7= noone)
 and (voice_burned_8= noone)
 and (voice_burned_9= noone)
-and (voice_burned_10= noone)
+and (voice_burned_10 = noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2602,7 +2602,7 @@ and (voice_burned_6> noone)
 and (voice_burned_7> noone)
 and (voice_burned_8= noone)
 and (voice_burned_9= noone)
-and (voice_burned_10= noone)
+and (voice_burned_10 = noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2622,7 +2622,7 @@ and (voice_burned_6> noone)
 and (voice_burned_7> noone)
 and (voice_burned_8> noone)
 and (voice_burned_9= noone)
-and (voice_burned_10= noone)
+and (voice_burned_10 = noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2643,7 +2643,7 @@ and (voice_burned_6> noone)
 and (voice_burned_7> noone)
 and (voice_burned_8> noone)
 and (voice_burned_9> noone)
-and (voice_burned_10= noone)
+and (voice_burned_10 = noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2665,7 +2665,7 @@ and (voice_burned_6> noone)
 and (voice_burned_7> noone)
 and (voice_burned_8> noone)
 and (voice_burned_9> noone)
-and (voice_burned_10> noone)
+and (voice_burned_10 > noone)
 {
 	voice_burned =choose(voice_burned_1,
 						voice_burned_2,
@@ -2759,7 +2759,7 @@ if (asset_get_type("snd_music_invincible") == asset_sound)
 	}
 	else
 	{
-		invincible_pitch =1;
+		invincible_pitch = 1;
 		audio_sound_pitch(snd_music_invincible, 1);
 	}
 	if (invincible = 180)
@@ -2856,32 +2856,32 @@ if (global.time_countdown < 100)
 and (global.time_countdown > noone)
 and (allow_timeup = true)
 {
-	audio_sound_pitch(global.music,music_pitch +0.3);
-	audio_sound_pitch(global.music_underwater,music_pitch +0.3);
+	audio_sound_pitch(global.music, music_pitch + 0.3);
+	audio_sound_pitch(global.music_underwater, music_pitch + 0.3);
 	if (crouch = true)
-	or (ground_pound = true)
+	or(ground_pound = true)
 	and (place_meeting(x, y+ sprite_height, obj_wall))
 	{
-		music_pitch =lerp(music_pitch, 0.95, 0.001);
+		music_pitch = lerp(music_pitch, 0.95, 0.001);
 	}
 	else
 	{
-		music_pitch =lerp(music_pitch, 1, 0.01);
+		music_pitch = lerp(music_pitch, 1, 0.01);
 	}
 }
 else
 {
-	audio_sound_pitch(global.music,music_pitch);
-	audio_sound_pitch(global.music_underwater,music_pitch);
+	audio_sound_pitch(global.music, music_pitch);
+	audio_sound_pitch(global.music_underwater, music_pitch);
 	if (crouch = true)
-	or (ground_pound = true)
+	or(ground_pound = true)
 	and (place_meeting(x, y+ sprite_height, obj_wall))
 	{
-		music_pitch =lerp(music_pitch, 0.95, 0.001);
+		music_pitch = lerp(music_pitch, 0.95, 0.001);
 	}
 	else
 	{
-		music_pitch =lerp(music_pitch, 1, 0.01);
+		music_pitch = lerp(music_pitch, 1, 0.01);
 	}
 }
 #endregion /*Music Pitch END*/
@@ -2896,7 +2896,7 @@ and (asset_get_type("obj_camera") == asset_object)
 	and (place_meeting(x, y, obj_camera))
 	{
 		if (obj_camera.iris_xscale < 0.3)
-		or (obj_camera.iris_yscale < 0.3)
+		or(obj_camera.iris_yscale < 0.3)
 		{
 			xx_heart = x;
 			yy_heart = y;
@@ -3152,7 +3152,7 @@ if (goal = true)
 			hspeed = 0;
 		}
 	}
-	if (y<- 64)
+	if (y <- 64)
 	{
 		y = - 64;
 	}
@@ -3385,43 +3385,43 @@ if (player <= 1)
 	#region /*Player 1 Key Attack Hold*/
 	key_tongue =
 	(keyboard_check(global.player1_key_tongue))
-	or (keyboard_check(global.player1_key2_tongue));
+	or(keyboard_check(global.player1_key2_tongue));
 	#endregion /*Player 1 Key Attack Hold END*/
 	
 	#region /*Player 1 Key Attack Pressed*/
 	key_tongue_pressed =
 	(keyboard_check_pressed(global.player1_key_tongue))
-	or (keyboard_check_pressed(global.player1_key2_tongue));
+	or(keyboard_check_pressed(global.player1_key2_tongue));
 	#endregion /*Player 1 Key Attack Pressed END*/
 	
 	#region /*Player 1 Key Attack Released*/
 	key_tongue_released =
 	(keyboard_check_released(global.player1_key_tongue))
-	or (keyboard_check_released(global.player1_key2_tongue));
+	or(keyboard_check_released(global.player1_key2_tongue));
 	#endregion /*Player 1 Key Attack Released END*/
 	
 	#region /*Player 1 Key Dive Pressed*/
 	key_dive_pressed =
 	(keyboard_check_pressed(global.player1_key_dive))
-	or (keyboard_check_pressed(global.player1_key2_dive))
-	or (gamepad_button_check_pressed(player - 1, gp_face3))
-	or (gamepad_button_check_pressed(player - 1, gp_face4));
+	or(keyboard_check_pressed(global.player1_key2_dive))
+	or(gamepad_button_check_pressed(player - 1, gp_face3))
+	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 1 Key Dive Pressed END*/
 	
 	#region /*Player 1 Key Jump Pressed*/
 	key_jump =
 	(keyboard_check_pressed(global.player1_key_jump))
-	or (keyboard_check_pressed(global.player1_key2_jump))
-	or (up_key_is_jump_key = true) and (keyboard_check_pressed(global.player1_key_up))
+	or(keyboard_check_pressed(global.player1_key2_jump))
+	or(up_key_is_jump_key = true) and (keyboard_check_pressed(global.player1_key_up))
 	and!(keyboard_check_pressed(global.player1_key_down))
 	and!(keyboard_check_pressed(global.player1_key2_down))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_pressed(global.player1_key2_up))
 	and!(keyboard_check_pressed(global.player1_key_down))
 	and!(keyboard_check_pressed(global.player1_key2_down))
-	or (gamepad_button_check_pressed(player - 1, gp_face1))
-	or (gamepad_button_check_pressed(player - 1, gp_face2))
-	or (up_key_is_jump_key = true)
+	or(gamepad_button_check_pressed(player - 1, gp_face1))
+	or(gamepad_button_check_pressed(player - 1, gp_face2))
+	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_pressed(player - 1, gp_padu))
 	and!(gamepad_button_check_pressed(player - 1, gp_padd));
 	#endregion /*Player 1 Key Jump Pressed END*/
@@ -3429,75 +3429,75 @@ if (player <= 1)
 	#region /*Player 1 Key Jump Hold*/
 	key_jump_hold =
 	(keyboard_check(global.player1_key_jump))
-	or (keyboard_check(global.player1_key2_jump))
-	or (up_key_is_jump_key = true)
+	or(keyboard_check(global.player1_key2_jump))
+	or(up_key_is_jump_key = true)
 	and (keyboard_check(global.player1_key_up))
 	and (!keyboard_check(global.player1_key_down))
 	and (!keyboard_check(global.player1_key2_down))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check(global.player1_key2_up))
 	and (!keyboard_check(global.player1_key_down))
 	and (!keyboard_check(global.player1_key2_down))
-	or (gamepad_button_check(player - 1, gp_face1))
-	or (gamepad_button_check(player - 1, gp_face2))
-	or (gamepad_button_check(player - 1, gp_padu))
+	or(gamepad_button_check(player - 1, gp_face1))
+	or(gamepad_button_check(player - 1, gp_face2))
+	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd));
 	#endregion /*Player 1 Key Jump Hold END*/
 	
 	#region /*Player 1 Key Jump Released*/
 	key_jump_released =
 	(keyboard_check_released(global.player1_key_jump))
-	or (keyboard_check_released(global.player1_key2_jump))
-	or (up_key_is_jump_key = true)
+	or(keyboard_check_released(global.player1_key2_jump))
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_released(global.player1_key_up))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_released(global.player1_key2_up))
-	or (gamepad_button_check_released(player - 1, gp_face1))
-	or (gamepad_button_check_released(player - 1, gp_face2))
-	or (up_key_is_jump_key = true)
+	or(gamepad_button_check_released(player - 1, gp_face1))
+	or(gamepad_button_check_released(player - 1, gp_face2))
+	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_released(player - 1, gp_padu));
 	#endregion /*Player 1 Key Jump Released END*/
 	
 	#region /*Player 1 Key Crouch Hold*/
 	key_crouch =
 	(keyboard_check(global.player1_key_crouch))
-	or (keyboard_check(global.player1_key2_crouch))
-	or (gamepad_button_check(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0)
-	or (global.player1_crouch_toggle = true);
+	or(keyboard_check(global.player1_key2_crouch))
+	or(gamepad_button_check(player - 1, gp_padd))
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or(global.player1_crouch_toggle = true);
 	#endregion /*Player 1 Key Crouch Hold END*/
 	
 	#region /*Player 1 Key Crouch Pressed*/
 	key_crouch_pressed =
 	(keyboard_check_pressed(global.player1_key_crouch))
-	or (keyboard_check_pressed(global.player1_key2_crouch))
-	or (gamepad_button_check_pressed(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(keyboard_check_pressed(global.player1_key2_crouch))
+	or(gamepad_button_check_pressed(player - 1, gp_padd))
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
 	#endregion /*Player 1 Key Crouch Pressed END*/
 	
 	#region /*Player 1 Key Sprint Hold*/
 	key_sprint =
 	(keyboard_check(global.player1_key_sprint))
-	or (keyboard_check(global.player1_key2_sprint))
-	or (gamepad_button_check(player - 1, gp_face3))
-	or (gamepad_button_check(player - 1, gp_face4))
-	or (global.player1_sprint_toggle = true);
+	or(keyboard_check(global.player1_key2_sprint))
+	or(gamepad_button_check(player - 1, gp_face3))
+	or(gamepad_button_check(player - 1, gp_face4))
+	or(global.player1_sprint_toggle = true);
 	#endregion /*Player 1 Key Sprint Hold END*/
 	
 	#region /*Player 1 Key Sprint Pressed*/
 	key_sprint_pressed =
 	(keyboard_check_pressed(global.player1_key_sprint))
-	or (keyboard_check_pressed(global.player1_key2_sprint))
-	or (gamepad_button_check_pressed(player - 1, gp_face3))
-	or (gamepad_button_check_pressed(player - 1, gp_face4));
+	or(keyboard_check_pressed(global.player1_key2_sprint))
+	or(gamepad_button_check_pressed(player - 1, gp_face3))
+	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 1 Key Sprint Pressed END*/
 	
 	#region /*Player 1 Key Sprint Released*/
 	key_sprint_released =
 	(keyboard_check_released(global.player1_key_sprint))
-	or (keyboard_check_released(global.player1_key2_sprint))
-	or (gamepad_button_check_released(player - 1, gp_face3))
-	or (gamepad_button_check_released(player - 1, gp_face4));
+	or(keyboard_check_released(global.player1_key2_sprint))
+	or(gamepad_button_check_released(player - 1, gp_face3))
+	or(gamepad_button_check_released(player - 1, gp_face4));
 	#endregion /*Player 1 Key Sprint Released END*/
 	
 	#region /*Player 1 Key Left Hold*/
@@ -3505,12 +3505,12 @@ if (player <= 1)
 	(keyboard_check(global.player1_key_left))
 	and (!keyboard_check(global.player1_key_right))
 	and (!keyboard_check(global.player1_key2_right))
-	or (keyboard_check(global.player1_key2_left))
+	or(keyboard_check(global.player1_key2_left))
 	and (!keyboard_check(global.player1_key_right))
 	and (!keyboard_check(global.player1_key2_right))
-	or (gamepad_button_check(player - 1, gp_padl))
+	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or (gamepad_axis_value(player - 1, gp_axislh)<0);
+	or(gamepad_axis_value(player - 1, gp_axislh)<0);
 	#endregion /*Player 1 Key Left Hold END*/
 	
 	#region /*Player 1 Key Right Hold*/
@@ -3518,12 +3518,12 @@ if (player <= 1)
 	(keyboard_check(global.player1_key_right))
 	and (!keyboard_check(global.player1_key_left))
 	and (!keyboard_check(global.player1_key2_left))
-	or (keyboard_check(global.player1_key2_right))
+	or(keyboard_check(global.player1_key2_right))
 	and (!keyboard_check(global.player1_key_left))
 	and (!keyboard_check(global.player1_key2_left))
-	or (gamepad_button_check(player - 1, gp_padr))
+	or(gamepad_button_check(player - 1, gp_padr))
 	and (!gamepad_button_check(player - 1, gp_padl))
-	or (gamepad_axis_value(player - 1, gp_axislh) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) > 0);
 	#endregion /*Player 1 Key Right Hold END*/
 	
 	#region /*Player 1 Key Down Hold*/
@@ -3531,12 +3531,12 @@ if (player <= 1)
 	(keyboard_check(global.player1_key_down))
 	and (!keyboard_check(global.player1_key_up))
 	and (!keyboard_check(global.player1_key2_up))
-	or (keyboard_check(global.player1_key2_down))
+	or(keyboard_check(global.player1_key2_down))
 	and (!keyboard_check(global.player1_key_up))
 	and (!keyboard_check(global.player1_key2_up))
-	or (gamepad_button_check(player - 1, gp_padd))
+	or(gamepad_button_check(player - 1, gp_padd))
 	and (!gamepad_button_check(player - 1, gp_padu))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
 	#endregion /*Player 1 Key Down Hold END*/
 	
 	#region /*Player 1 Key Up Hold*/
@@ -3544,37 +3544,37 @@ if (player <= 1)
 	(keyboard_check(global.player1_key_up))
 	and (!keyboard_check(global.player1_key_down))
 	and (!keyboard_check(global.player1_key2_down))
-	or (keyboard_check(global.player1_key2_up))
+	or(keyboard_check(global.player1_key2_up))
 	and (!keyboard_check(global.player1_key_down))
 	and (!keyboard_check(global.player1_key2_down))
-	or (gamepad_button_check(player - 1, gp_padu))
+	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)<0);
 	#endregion /*Player 1 Key Up Hold END*/
 	
 	#region /*Player 1 Key Up Pressed*/
 	key_up_pressed =
 	(keyboard_check_pressed(global.player1_key_up))
-	or (keyboard_check_pressed(global.player1_key2_up))
-	or (gamepad_button_check_pressed(player - 1, gp_padu))
+	or(keyboard_check_pressed(global.player1_key2_up))
+	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)<0);
 	#endregion /*Player 1 Key Up Hold END*/
 	
 	#region /*Player 1 Key Spin Hold*/
 	key_spin =
 	(gamepad_button_check(player - 1, gp_shoulderl))
-	or (gamepad_button_check(player - 1, gp_shoulderlb))
-	or (gamepad_button_check(player - 1, gp_shoulderr))
-	or (gamepad_button_check(player - 1, gp_shoulderrb));
+	or(gamepad_button_check(player - 1, gp_shoulderlb))
+	or(gamepad_button_check(player - 1, gp_shoulderr))
+	or(gamepad_button_check(player - 1, gp_shoulderrb));
 	#endregion /*Player 1 Key Spin Hold*/
 	
 	#region /*Player 1 Key Spin Pressed*/
 	key_spin_pressed =
 	(gamepad_button_check_pressed(player - 1, gp_shoulderl))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderlb))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderr))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderrb));
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderlb))
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderr))
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderrb));
 	#endregion /*Player 1 Key Spin Pressed END*/
 	
 }
@@ -3601,43 +3601,43 @@ if (player = 2)
 	#region /*Player 2 Key Attack Hold*/
 	key_tongue =
 	(keyboard_check(global.player2_key_tongue))
-	or (keyboard_check(global.player2_key2_tongue));
+	or(keyboard_check(global.player2_key2_tongue));
 	#endregion /*Player 2 Key Attack Hold END*/
 	
 	#region /*Player 2 Key Attack Pressed*/
 	key_tongue_pressed =
 	(keyboard_check_pressed(global.player2_key_tongue))
-	or (keyboard_check_pressed(global.player2_key2_tongue));
+	or(keyboard_check_pressed(global.player2_key2_tongue));
 	#endregion /*Player 2 Key Attack Pressed END*/
 	
 	#region /*Player 2 Key Attack Released*/
 	key_tongue_released =
 	(keyboard_check_released(global.player2_key_tongue))
-	or (keyboard_check_released(global.player2_key2_tongue));
+	or(keyboard_check_released(global.player2_key2_tongue));
 	#endregion /*Player 2 Key Attack Released END*/
 	
 	#region /*Player 2 Key Dive Pressed*/
 	key_dive_pressed =
 	(keyboard_check_pressed(global.player2_key_dive))
-	or (keyboard_check_pressed(global.player2_key2_dive))
-	or (gamepad_button_check_pressed(player - 1, gp_face3))
-	or (gamepad_button_check_pressed(player - 1, gp_face4));
+	or(keyboard_check_pressed(global.player2_key2_dive))
+	or(gamepad_button_check_pressed(player - 1, gp_face3))
+	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 2 Key Dive Pressed END*/
 	
 	#region /*Player 2 Key Jump Pressed*/
 	key_jump =
 	(keyboard_check_pressed(global.player2_key_jump))
-	or (keyboard_check_pressed(global.player2_key2_jump))
-	or (up_key_is_jump_key = true) and (keyboard_check_pressed(global.player2_key_up))
+	or(keyboard_check_pressed(global.player2_key2_jump))
+	or(up_key_is_jump_key = true) and (keyboard_check_pressed(global.player2_key_up))
 	and!(keyboard_check_pressed(global.player2_key_down))
 	and!(keyboard_check_pressed(global.player2_key2_down))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_pressed(global.player2_key2_up))
 	and!(keyboard_check_pressed(global.player2_key_down))
 	and!(keyboard_check_pressed(global.player2_key2_down))
-	or (gamepad_button_check_pressed(player - 1, gp_face1))
-	or (gamepad_button_check_pressed(player - 1, gp_face2))
-	or (up_key_is_jump_key = true)
+	or(gamepad_button_check_pressed(player - 1, gp_face1))
+	or(gamepad_button_check_pressed(player - 1, gp_face2))
+	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_pressed(player - 1, gp_padu))
 	and!(gamepad_button_check_pressed(player - 1, gp_padd));
 	#endregion /*Player 2 Key Jump Pressed END*/
@@ -3645,75 +3645,75 @@ if (player = 2)
 	#region /*Player 2 Key Jump Hold*/
 	key_jump_hold =
 	(keyboard_check(global.player2_key_jump))
-	or (keyboard_check(global.player2_key2_jump))
-	or (up_key_is_jump_key = true)
+	or(keyboard_check(global.player2_key2_jump))
+	or(up_key_is_jump_key = true)
 	and (keyboard_check(global.player2_key_up))
 	and (!keyboard_check(global.player2_key_down))
 	and (!keyboard_check(global.player2_key2_down))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check(global.player2_key2_up))
 	and (!keyboard_check(global.player2_key_down))
 	and (!keyboard_check(global.player2_key2_down))
-	or (gamepad_button_check(player - 1, gp_face1))
-	or (gamepad_button_check(player - 1, gp_face2))
-	or (gamepad_button_check(player - 1, gp_padu))
+	or(gamepad_button_check(player - 1, gp_face1))
+	or(gamepad_button_check(player - 1, gp_face2))
+	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd));
 	#endregion /*Player 2 Key Jump Hold END*/
 	
 	#region /*Player 2 Key Jump Released*/
 	key_jump_released =
 	(keyboard_check_released(global.player2_key_jump))
-	or (keyboard_check_released(global.player2_key2_jump))
-	or (up_key_is_jump_key = true)
+	or(keyboard_check_released(global.player2_key2_jump))
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_released(global.player2_key_up))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_released(global.player2_key2_up))
-	or (gamepad_button_check_released(player - 1, gp_face1))
-	or (gamepad_button_check_released(player - 1, gp_face2))
-	or (up_key_is_jump_key = true)
+	or(gamepad_button_check_released(player - 1, gp_face1))
+	or(gamepad_button_check_released(player - 1, gp_face2))
+	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_released(player - 1, gp_padu));
 	#endregion /*Player 2 Key Jump Released END*/
 	
 	#region /*Player 2 Key Crouch Hold*/
 	key_crouch =
 	(keyboard_check(global.player2_key_crouch))
-	or (keyboard_check(global.player2_key2_crouch))
-	or (gamepad_button_check(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0)
-	or (global.player2_crouch_toggle = true);
+	or(keyboard_check(global.player2_key2_crouch))
+	or(gamepad_button_check(player - 1, gp_padd))
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or(global.player2_crouch_toggle = true);
 	#endregion /*Player 2 Key Crouch Hold END*/
 	
 	#region /*Player 2 Key Crouch Pressed*/
 	key_crouch_pressed =
 	(keyboard_check_pressed(global.player2_key_crouch))
-	or (keyboard_check_pressed(global.player2_key2_crouch))
-	or (gamepad_button_check_pressed(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(keyboard_check_pressed(global.player2_key2_crouch))
+	or(gamepad_button_check_pressed(player - 1, gp_padd))
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
 	#endregion /*Player 2 Key Crouch Pressed END*/
 	
 	#region /*Player 2 Key Sprint Hold*/
 	key_sprint =
 	(keyboard_check(global.player2_key_sprint))
-	or (keyboard_check(global.player2_key2_sprint))
-	or (gamepad_button_check(player - 1, gp_face3))
-	or (gamepad_button_check(player - 1, gp_face4))
-	or (global.player2_sprint_toggle = true);
+	or(keyboard_check(global.player2_key2_sprint))
+	or(gamepad_button_check(player - 1, gp_face3))
+	or(gamepad_button_check(player - 1, gp_face4))
+	or(global.player2_sprint_toggle = true);
 	#endregion /*Player 2 Key Sprint Hold END*/
 	
 	#region /*Player 2 Key Sprint Pressed*/
 	key_sprint_pressed =
 	(keyboard_check_pressed(global.player2_key_sprint))
-	or (keyboard_check_pressed(global.player2_key2_sprint))
-	or (gamepad_button_check_pressed(player - 1, gp_face3))
-	or (gamepad_button_check_pressed(player - 1, gp_face4));
+	or(keyboard_check_pressed(global.player2_key2_sprint))
+	or(gamepad_button_check_pressed(player - 1, gp_face3))
+	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 2 Key Sprint Pressed END*/
 	
 	#region /*Player 2 Key Sprint Released*/
 	key_sprint_released =
 	(keyboard_check_released(global.player2_key_sprint))
-	or (keyboard_check_released(global.player2_key2_sprint))
-	or (gamepad_button_check_released(player - 1, gp_face3))
-	or (gamepad_button_check_released(player - 1, gp_face4));
+	or(keyboard_check_released(global.player2_key2_sprint))
+	or(gamepad_button_check_released(player - 1, gp_face3))
+	or(gamepad_button_check_released(player - 1, gp_face4));
 	#endregion /*Player 2 Key Sprint Released END*/
 	
 	#region /*Player 2 Key Left Hold*/
@@ -3721,12 +3721,12 @@ if (player = 2)
 	(keyboard_check(global.player2_key_left))
 	and (!keyboard_check(global.player2_key_right))
 	and (!keyboard_check(global.player2_key2_right))
-	or (keyboard_check(global.player2_key2_left))
+	or(keyboard_check(global.player2_key2_left))
 	and (!keyboard_check(global.player2_key_right))
 	and (!keyboard_check(global.player2_key2_right))
-	or (gamepad_button_check(player - 1, gp_padl))
+	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or (gamepad_axis_value(player - 1, gp_axislh)<0);
+	or(gamepad_axis_value(player - 1, gp_axislh)<0);
 	#endregion /*Player 2 Key Left Hold END*/
 	
 	#region /*Player 2 Key Right Hold*/
@@ -3734,12 +3734,12 @@ if (player = 2)
 	(keyboard_check(global.player2_key_right))
 	and (!keyboard_check(global.player2_key_left))
 	and (!keyboard_check(global.player2_key2_left))
-	or (keyboard_check(global.player2_key2_right))
+	or(keyboard_check(global.player2_key2_right))
 	and (!keyboard_check(global.player2_key_left))
 	and (!keyboard_check(global.player2_key2_left))
-	or (gamepad_button_check(player - 1, gp_padr))
+	or(gamepad_button_check(player - 1, gp_padr))
 	and (!gamepad_button_check(player - 1, gp_padl))
-	or (gamepad_axis_value(player - 1, gp_axislh) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) > 0);
 	#endregion /*Player 2 Key Right Hold END*/
 	
 	#region /*Player 2 Key Down Hold*/
@@ -3747,12 +3747,12 @@ if (player = 2)
 	(keyboard_check(global.player2_key_down))
 	and (!keyboard_check(global.player2_key_up))
 	and (!keyboard_check(global.player2_key2_up))
-	or (keyboard_check(global.player2_key2_down))
+	or(keyboard_check(global.player2_key2_down))
 	and (!keyboard_check(global.player2_key_up))
 	and (!keyboard_check(global.player2_key2_up))
-	or (gamepad_button_check(player - 1, gp_padd))
+	or(gamepad_button_check(player - 1, gp_padd))
 	and (!gamepad_button_check(player - 1, gp_padu))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
 	#endregion /*Player 2 Key Down Hold END*/
 	
 	#region /*Player 2 Key Up Hold*/
@@ -3760,37 +3760,37 @@ if (player = 2)
 	(keyboard_check(global.player2_key_up))
 	and (!keyboard_check(global.player2_key_down))
 	and (!keyboard_check(global.player2_key2_down))
-	or (keyboard_check(global.player2_key2_up))
+	or(keyboard_check(global.player2_key2_up))
 	and (!keyboard_check(global.player2_key_down))
 	and (!keyboard_check(global.player2_key2_down))
-	or (gamepad_button_check(player - 1, gp_padu))
+	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)<0);
 	#endregion /*Player 2 Key Up Hold END*/
 	
 	#region /*Player 2 Key Up Pressed*/
 	key_up_pressed =
 	(keyboard_check_pressed(global.player2_key_up))
-	or (keyboard_check_pressed(global.player2_key2_up))
-	or (gamepad_button_check_pressed(player - 1, gp_padu))
+	or(keyboard_check_pressed(global.player2_key2_up))
+	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)<0);
 	#endregion /*Player 2 Key Up Hold END*/
 	
 	#region /*Player 2 Key Spin Hold*/
 	key_spin =
 	(gamepad_button_check(player - 1, gp_shoulderl))
-	or (gamepad_button_check(player - 1, gp_shoulderlb))
-	or (gamepad_button_check(player - 1, gp_shoulderr))
-	or (gamepad_button_check(player - 1, gp_shoulderrb));
+	or(gamepad_button_check(player - 1, gp_shoulderlb))
+	or(gamepad_button_check(player - 1, gp_shoulderr))
+	or(gamepad_button_check(player - 1, gp_shoulderrb));
 	#endregion /*Player 2 Key Spin Hold*/
 	
 	#region /*Player 2 Key Spin Pressed*/
 	key_spin_pressed =
 	(gamepad_button_check_pressed(player - 1, gp_shoulderl))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderlb))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderr))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderrb));
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderlb))
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderr))
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderrb));
 	#endregion /*Player 2 Key Spin Pressed END*/
 	
 }
@@ -3817,43 +3817,43 @@ if (player = 3)
 	#region /*Player 3 Key Attack Hold*/
 	key_tongue =
 	(keyboard_check(global.player3_key_tongue))
-	or (keyboard_check(global.player3_key2_tongue));
+	or(keyboard_check(global.player3_key2_tongue));
 	#endregion /*Player 3 Key Attack Hold END*/
 	
 	#region /*Player 3 Key Attack Pressed*/
 	key_tongue_pressed =
 	(keyboard_check_pressed(global.player3_key_tongue))
-	or (keyboard_check_pressed(global.player3_key2_tongue));
+	or(keyboard_check_pressed(global.player3_key2_tongue));
 	#endregion /*Player 3 Key Attack Pressed END*/
 	
 	#region /*Player 3 Key Attack Released*/
 	key_tongue_released =
 	(keyboard_check_released(global.player3_key_tongue))
-	or (keyboard_check_released(global.player3_key2_tongue));
+	or(keyboard_check_released(global.player3_key2_tongue));
 	#endregion /*Player 3 Key Attack Released END*/
 	
 	#region /*Player 3 Key Dive Pressed*/
 	key_dive_pressed =
 	(keyboard_check_pressed(global.player3_key_dive))
-	or (keyboard_check_pressed(global.player3_key2_dive))
-	or (gamepad_button_check_pressed(player - 1, gp_face3))
-	or (gamepad_button_check_pressed(player - 1, gp_face4));
+	or(keyboard_check_pressed(global.player3_key2_dive))
+	or(gamepad_button_check_pressed(player - 1, gp_face3))
+	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 3 Key Dive Pressed END*/
 	
 	#region /*Player 3 Key Jump Pressed*/
 	key_jump =
 	(keyboard_check_pressed(global.player3_key_jump))
-	or (keyboard_check_pressed(global.player3_key2_jump))
-	or (up_key_is_jump_key = true) and (keyboard_check_pressed(global.player3_key_up))
+	or(keyboard_check_pressed(global.player3_key2_jump))
+	or(up_key_is_jump_key = true) and (keyboard_check_pressed(global.player3_key_up))
 	and!(keyboard_check_pressed(global.player3_key_down))
 	and!(keyboard_check_pressed(global.player3_key2_down))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_pressed(global.player3_key2_up))
 	and!(keyboard_check_pressed(global.player3_key_down))
 	and!(keyboard_check_pressed(global.player3_key2_down))
-	or (gamepad_button_check_pressed(player - 1, gp_face1))
-	or (gamepad_button_check_pressed(player - 1, gp_face2))
-	or (up_key_is_jump_key = true)
+	or(gamepad_button_check_pressed(player - 1, gp_face1))
+	or(gamepad_button_check_pressed(player - 1, gp_face2))
+	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_pressed(player - 1, gp_padu))
 	and!(gamepad_button_check_pressed(player - 1, gp_padd));
 	#endregion /*Player 3 Key Jump Pressed END*/
@@ -3861,75 +3861,75 @@ if (player = 3)
 	#region /*Player 3 Key Jump Hold*/
 	key_jump_hold =
 	(keyboard_check(global.player3_key_jump))
-	or (keyboard_check(global.player3_key2_jump))
-	or (up_key_is_jump_key = true)
+	or(keyboard_check(global.player3_key2_jump))
+	or(up_key_is_jump_key = true)
 	and (keyboard_check(global.player3_key_up))
 	and (!keyboard_check(global.player3_key_down))
 	and (!keyboard_check(global.player3_key2_down))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check(global.player3_key2_up))
 	and (!keyboard_check(global.player3_key_down))
 	and (!keyboard_check(global.player3_key2_down))
-	or (gamepad_button_check(player - 1, gp_face1))
-	or (gamepad_button_check(player - 1, gp_face2))
-	or (gamepad_button_check(player - 1, gp_padu))
+	or(gamepad_button_check(player - 1, gp_face1))
+	or(gamepad_button_check(player - 1, gp_face2))
+	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd));
 	#endregion /*Player 3 Key Jump Hold END*/
 	
 	#region /*Player 3 Key Jump Released*/
 	key_jump_released =
 	(keyboard_check_released(global.player3_key_jump))
-	or (keyboard_check_released(global.player3_key2_jump))
-	or (up_key_is_jump_key = true)
+	or(keyboard_check_released(global.player3_key2_jump))
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_released(global.player3_key_up))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_released(global.player3_key2_up))
-	or (gamepad_button_check_released(player - 1, gp_face1))
-	or (gamepad_button_check_released(player - 1, gp_face2))
-	or (up_key_is_jump_key = true)
+	or(gamepad_button_check_released(player - 1, gp_face1))
+	or(gamepad_button_check_released(player - 1, gp_face2))
+	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_released(player - 1, gp_padu));
 	#endregion /*Player 3 Key Jump Released END*/
 	
 	#region /*Player 3 Key Crouch Hold*/
 	key_crouch =
 	(keyboard_check(global.player3_key_crouch))
-	or (keyboard_check(global.player3_key2_crouch))
-	or (gamepad_button_check(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0)
-	or (global.player3_crouch_toggle = true);
+	or(keyboard_check(global.player3_key2_crouch))
+	or(gamepad_button_check(player - 1, gp_padd))
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or(global.player3_crouch_toggle = true);
 	#endregion /*Player 3 Key Crouch Hold END*/
 	
 	#region /*Player 3 Key Crouch Pressed*/
 	key_crouch_pressed =
 	(keyboard_check_pressed(global.player3_key_crouch))
-	or (keyboard_check_pressed(global.player3_key2_crouch))
-	or (gamepad_button_check_pressed(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(keyboard_check_pressed(global.player3_key2_crouch))
+	or(gamepad_button_check_pressed(player - 1, gp_padd))
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
 	#endregion /*Player 3 Key Crouch Pressed END*/
 	
 	#region /*Player 3 Key Sprint Hold*/
 	key_sprint =
 	(keyboard_check(global.player3_key_sprint))
-	or (keyboard_check(global.player3_key2_sprint))
-	or (gamepad_button_check(player - 1, gp_face3))
-	or (gamepad_button_check(player - 1, gp_face4))
-	or (global.player3_sprint_toggle = true);
+	or(keyboard_check(global.player3_key2_sprint))
+	or(gamepad_button_check(player - 1, gp_face3))
+	or(gamepad_button_check(player - 1, gp_face4))
+	or(global.player3_sprint_toggle = true);
 	#endregion /*Player 3 Key Sprint Hold END*/
 	
 	#region /*Player 3 Key Sprint Pressed*/
 	key_sprint_pressed =
 	(keyboard_check_pressed(global.player3_key_sprint))
-	or (keyboard_check_pressed(global.player3_key2_sprint))
-	or (gamepad_button_check_pressed(player - 1, gp_face3))
-	or (gamepad_button_check_pressed(player - 1, gp_face4));
+	or(keyboard_check_pressed(global.player3_key2_sprint))
+	or(gamepad_button_check_pressed(player - 1, gp_face3))
+	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 3 Key Sprint Pressed END*/
 	
 	#region /*Player 3 Key Sprint Released*/
 	key_sprint_released =
 	(keyboard_check_released(global.player3_key_sprint))
-	or (keyboard_check_released(global.player3_key2_sprint))
-	or (gamepad_button_check_released(player - 1, gp_face3))
-	or (gamepad_button_check_released(player - 1, gp_face4));
+	or(keyboard_check_released(global.player3_key2_sprint))
+	or(gamepad_button_check_released(player - 1, gp_face3))
+	or(gamepad_button_check_released(player - 1, gp_face4));
 	#endregion /*Player 3 Key Sprint Released END*/
 	
 	#region /*Player 3 Key Left Hold*/
@@ -3937,12 +3937,12 @@ if (player = 3)
 	(keyboard_check(global.player3_key_left))
 	and (!keyboard_check(global.player3_key_right))
 	and (!keyboard_check(global.player3_key2_right))
-	or (keyboard_check(global.player3_key2_left))
+	or(keyboard_check(global.player3_key2_left))
 	and (!keyboard_check(global.player3_key_right))
 	and (!keyboard_check(global.player3_key2_right))
-	or (gamepad_button_check(player - 1, gp_padl))
+	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or (gamepad_axis_value(player - 1, gp_axislh)<0);
+	or(gamepad_axis_value(player - 1, gp_axislh)<0);
 	#endregion /*Player 3 Key Left Hold END*/
 	
 	#region /*Player 3 Key Right Hold*/
@@ -3950,12 +3950,12 @@ if (player = 3)
 	(keyboard_check(global.player3_key_right))
 	and (!keyboard_check(global.player3_key_left))
 	and (!keyboard_check(global.player3_key2_left))
-	or (keyboard_check(global.player3_key2_right))
+	or(keyboard_check(global.player3_key2_right))
 	and (!keyboard_check(global.player3_key_left))
 	and (!keyboard_check(global.player3_key2_left))
-	or (gamepad_button_check(player - 1, gp_padr))
+	or(gamepad_button_check(player - 1, gp_padr))
 	and (!gamepad_button_check(player - 1, gp_padl))
-	or (gamepad_axis_value(player - 1, gp_axislh) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) > 0);
 	#endregion /*Player 3 Key Right Hold END*/
 	
 	#region /*Player 3 Key Down Hold*/
@@ -3963,12 +3963,12 @@ if (player = 3)
 	(keyboard_check(global.player3_key_down))
 	and (!keyboard_check(global.player3_key_up))
 	and (!keyboard_check(global.player3_key2_up))
-	or (keyboard_check(global.player3_key2_down))
+	or(keyboard_check(global.player3_key2_down))
 	and (!keyboard_check(global.player3_key_up))
 	and (!keyboard_check(global.player3_key2_up))
-	or (gamepad_button_check(player - 1, gp_padd))
+	or(gamepad_button_check(player - 1, gp_padd))
 	and (!gamepad_button_check(player - 1, gp_padu))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
 	#endregion /*Player 3 Key Down Hold END*/
 	
 	#region /*Player 3 Key Up Hold*/
@@ -3976,37 +3976,37 @@ if (player = 3)
 	(keyboard_check(global.player3_key_up))
 	and (!keyboard_check(global.player3_key_down))
 	and (!keyboard_check(global.player3_key2_down))
-	or (keyboard_check(global.player3_key2_up))
+	or(keyboard_check(global.player3_key2_up))
 	and (!keyboard_check(global.player3_key_down))
 	and (!keyboard_check(global.player3_key2_down))
-	or (gamepad_button_check(player - 1, gp_padu))
+	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)<0);
 	#endregion /*Player 3 Key Up Hold END*/
 	
 	#region /*Player 3 Key Up Pressed*/
 	key_up_pressed =
 	(keyboard_check_pressed(global.player3_key_up))
-	or (keyboard_check_pressed(global.player3_key2_up))
-	or (gamepad_button_check_pressed(player - 1, gp_padu))
+	or(keyboard_check_pressed(global.player3_key2_up))
+	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)<0);
 	#endregion /*Player 3 Key Up Hold END*/
 	
 	#region /*Player 3 Key Spin Hold*/
 	key_spin =
 	(gamepad_button_check(player - 1, gp_shoulderl))
-	or (gamepad_button_check(player - 1, gp_shoulderlb))
-	or (gamepad_button_check(player - 1, gp_shoulderr))
-	or (gamepad_button_check(player - 1, gp_shoulderrb));
+	or(gamepad_button_check(player - 1, gp_shoulderlb))
+	or(gamepad_button_check(player - 1, gp_shoulderr))
+	or(gamepad_button_check(player - 1, gp_shoulderrb));
 	#endregion /*Player 3 Key Spin Hold*/
 	
 	#region /*Player 3 Key Spin Pressed*/
 	key_spin_pressed =
 	(gamepad_button_check_pressed(player - 1, gp_shoulderl))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderlb))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderr))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderrb));
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderlb))
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderr))
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderrb));
 	#endregion /*Player 3 Key Spin Pressed END*/
 	
 }
@@ -4033,43 +4033,43 @@ if (player = 4)
 	#region /*Player 4 Key Attack Hold*/
 	key_tongue =
 	(keyboard_check(global.player4_key_tongue))
-	or (keyboard_check(global.player4_key2_tongue));
+	or(keyboard_check(global.player4_key2_tongue));
 	#endregion /*Player 4 Key Attack Hold END*/
 	
 	#region /*Player 4 Key Attack Pressed*/
 	key_tongue_pressed =
 	(keyboard_check_pressed(global.player4_key_tongue))
-	or (keyboard_check_pressed(global.player4_key2_tongue));
+	or(keyboard_check_pressed(global.player4_key2_tongue));
 	#endregion /*Player 4 Key Attack Pressed END*/
 	
 	#region /*Player 4 Key Attack Released*/
 	key_tongue_released =
 	(keyboard_check_released(global.player4_key_tongue))
-	or (keyboard_check_released(global.player4_key2_tongue));
+	or(keyboard_check_released(global.player4_key2_tongue));
 	#endregion /*Player 4 Key Attack Released END*/
 	
 	#region /*Player 4 Key Dive Pressed*/
 	key_dive_pressed =
 	(keyboard_check_pressed(global.player4_key_dive))
-	or (keyboard_check_pressed(global.player4_key2_dive))
-	or (gamepad_button_check_pressed(player - 1, gp_face3))
-	or (gamepad_button_check_pressed(player - 1, gp_face4));
+	or(keyboard_check_pressed(global.player4_key2_dive))
+	or(gamepad_button_check_pressed(player - 1, gp_face3))
+	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 4 Key Dive Pressed END*/
 	
 	#region /*Player 4 Key Jump Pressed*/
 	key_jump =
 	(keyboard_check_pressed(global.player4_key_jump))
-	or (keyboard_check_pressed(global.player4_key2_jump))
-	or (up_key_is_jump_key = true) and (keyboard_check_pressed(global.player4_key_up))
+	or(keyboard_check_pressed(global.player4_key2_jump))
+	or(up_key_is_jump_key = true) and (keyboard_check_pressed(global.player4_key_up))
 	and!(keyboard_check_pressed(global.player4_key_down))
 	and!(keyboard_check_pressed(global.player4_key2_down))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_pressed(global.player4_key2_up))
 	and!(keyboard_check_pressed(global.player4_key_down))
 	and!(keyboard_check_pressed(global.player4_key2_down))
-	or (gamepad_button_check_pressed(player - 1, gp_face1))
-	or (gamepad_button_check_pressed(player - 1, gp_face2))
-	or (up_key_is_jump_key = true)
+	or(gamepad_button_check_pressed(player - 1, gp_face1))
+	or(gamepad_button_check_pressed(player - 1, gp_face2))
+	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_pressed(player - 1, gp_padu))
 	and!(gamepad_button_check_pressed(player - 1, gp_padd));
 	#endregion /*Player 4 Key Jump Pressed END*/
@@ -4077,75 +4077,75 @@ if (player = 4)
 	#region /*Player 4 Key Jump Hold*/
 	key_jump_hold =
 	(keyboard_check(global.player4_key_jump))
-	or (keyboard_check(global.player4_key2_jump))
-	or (up_key_is_jump_key = true)
+	or(keyboard_check(global.player4_key2_jump))
+	or(up_key_is_jump_key = true)
 	and (keyboard_check(global.player4_key_up))
 	and (!keyboard_check(global.player4_key_down))
 	and (!keyboard_check(global.player4_key2_down))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check(global.player4_key2_up))
 	and (!keyboard_check(global.player4_key_down))
 	and (!keyboard_check(global.player4_key2_down))
-	or (gamepad_button_check(player - 1, gp_face1))
-	or (gamepad_button_check(player - 1, gp_face2))
-	or (gamepad_button_check(player - 1, gp_padu))
+	or(gamepad_button_check(player - 1, gp_face1))
+	or(gamepad_button_check(player - 1, gp_face2))
+	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd));
 	#endregion /*Player 4 Key Jump Hold END*/
 	
 	#region /*Player 4 Key Jump Released*/
 	key_jump_released =
 	(keyboard_check_released(global.player4_key_jump))
-	or (keyboard_check_released(global.player4_key2_jump))
-	or (up_key_is_jump_key = true)
+	or(keyboard_check_released(global.player4_key2_jump))
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_released(global.player4_key_up))
-	or (up_key_is_jump_key = true)
+	or(up_key_is_jump_key = true)
 	and (keyboard_check_released(global.player4_key2_up))
-	or (gamepad_button_check_released(player - 1, gp_face1))
-	or (gamepad_button_check_released(player - 1, gp_face2))
-	or (up_key_is_jump_key = true)
+	or(gamepad_button_check_released(player - 1, gp_face1))
+	or(gamepad_button_check_released(player - 1, gp_face2))
+	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_released(player - 1, gp_padu));
 	#endregion /*Player 4 Key Jump Released END*/
 	
 	#region /*Player 4 Key Crouch Hold*/
 	key_crouch =
 	(keyboard_check(global.player4_key_crouch))
-	or (keyboard_check(global.player4_key2_crouch))
-	or (gamepad_button_check(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0)
-	or (global.player4_crouch_toggle = true);
+	or(keyboard_check(global.player4_key2_crouch))
+	or(gamepad_button_check(player - 1, gp_padd))
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or(global.player4_crouch_toggle = true);
 	#endregion /*Player 4 Key Crouch Hold END*/
 	
 	#region /*Player 4 Key Crouch Pressed*/
 	key_crouch_pressed =
 	(keyboard_check_pressed(global.player4_key_crouch))
-	or (keyboard_check_pressed(global.player4_key2_crouch))
-	or (gamepad_button_check_pressed(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(keyboard_check_pressed(global.player4_key2_crouch))
+	or(gamepad_button_check_pressed(player - 1, gp_padd))
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
 	#endregion /*Player 4 Key Crouch Pressed END*/
 	
 	#region /*Player 4 Key Sprint Hold*/
 	key_sprint =
 	(keyboard_check(global.player4_key_sprint))
-	or (keyboard_check(global.player4_key2_sprint))
-	or (gamepad_button_check(player - 1, gp_face3))
-	or (gamepad_button_check(player - 1, gp_face4))
-	or (global.player4_sprint_toggle = true);
+	or(keyboard_check(global.player4_key2_sprint))
+	or(gamepad_button_check(player - 1, gp_face3))
+	or(gamepad_button_check(player - 1, gp_face4))
+	or(global.player4_sprint_toggle = true);
 	#endregion /*Player 4 Key Sprint Hold END*/
 	
 	#region /*Player 4 Key Sprint Pressed*/
 	key_sprint_pressed =
 	(keyboard_check_pressed(global.player4_key_sprint))
-	or (keyboard_check_pressed(global.player4_key2_sprint))
-	or (gamepad_button_check_pressed(player - 1, gp_face3))
-	or (gamepad_button_check_pressed(player - 1, gp_face4));
+	or(keyboard_check_pressed(global.player4_key2_sprint))
+	or(gamepad_button_check_pressed(player - 1, gp_face3))
+	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 4 Key Sprint Pressed END*/
 	
 	#region /*Player 4 Key Sprint Released*/
 	key_sprint_released =
 	(keyboard_check_released(global.player4_key_sprint))
-	or (keyboard_check_released(global.player4_key2_sprint))
-	or (gamepad_button_check_released(player - 1, gp_face3))
-	or (gamepad_button_check_released(player - 1, gp_face4));
+	or(keyboard_check_released(global.player4_key2_sprint))
+	or(gamepad_button_check_released(player - 1, gp_face3))
+	or(gamepad_button_check_released(player - 1, gp_face4));
 	#endregion /*Player 4 Key Sprint Released END*/
 	
 	#region /*Player 4 Key Left Hold*/
@@ -4153,12 +4153,12 @@ if (player = 4)
 	(keyboard_check(global.player4_key_left))
 	and (!keyboard_check(global.player4_key_right))
 	and (!keyboard_check(global.player4_key2_right))
-	or (keyboard_check(global.player4_key2_left))
+	or(keyboard_check(global.player4_key2_left))
 	and (!keyboard_check(global.player4_key_right))
 	and (!keyboard_check(global.player4_key2_right))
-	or (gamepad_button_check(player - 1, gp_padl))
+	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or (gamepad_axis_value(player - 1, gp_axislh)<0);
+	or(gamepad_axis_value(player - 1, gp_axislh)<0);
 	#endregion /*Player 4 Key Left Hold END*/
 	
 	#region /*Player 4 Key Right Hold*/
@@ -4166,12 +4166,12 @@ if (player = 4)
 	(keyboard_check(global.player4_key_right))
 	and (!keyboard_check(global.player4_key_left))
 	and (!keyboard_check(global.player4_key2_left))
-	or (keyboard_check(global.player4_key2_right))
+	or(keyboard_check(global.player4_key2_right))
 	and (!keyboard_check(global.player4_key_left))
 	and (!keyboard_check(global.player4_key2_left))
-	or (gamepad_button_check(player - 1, gp_padr))
+	or(gamepad_button_check(player - 1, gp_padr))
 	and (!gamepad_button_check(player - 1, gp_padl))
-	or (gamepad_axis_value(player - 1, gp_axislh) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) > 0);
 	#endregion /*Player 4 Key Right Hold END*/
 	
 	#region /*Player 4 Key Down Hold*/
@@ -4179,12 +4179,12 @@ if (player = 4)
 	(keyboard_check(global.player4_key_down))
 	and (!keyboard_check(global.player4_key_up))
 	and (!keyboard_check(global.player4_key2_up))
-	or (keyboard_check(global.player4_key2_down))
+	or(keyboard_check(global.player4_key2_down))
 	and (!keyboard_check(global.player4_key_up))
 	and (!keyboard_check(global.player4_key2_up))
-	or (gamepad_button_check(player - 1, gp_padd))
+	or(gamepad_button_check(player - 1, gp_padd))
 	and (!gamepad_button_check(player - 1, gp_padu))
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
 	#endregion /*Player 4 Key Down Hold END*/
 	
 	#region /*Player 4 Key Up Hold*/
@@ -4192,37 +4192,37 @@ if (player = 4)
 	(keyboard_check(global.player4_key_up))
 	and (!keyboard_check(global.player4_key_down))
 	and (!keyboard_check(global.player4_key2_down))
-	or (keyboard_check(global.player4_key2_up))
+	or(keyboard_check(global.player4_key2_up))
 	and (!keyboard_check(global.player4_key_down))
 	and (!keyboard_check(global.player4_key2_down))
-	or (gamepad_button_check(player - 1, gp_padu))
+	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)<0);
 	#endregion /*Player 4 Key Up Hold END*/
 	
 	#region /*Player 4 Key Up Pressed*/
 	key_up_pressed =
 	(keyboard_check_pressed(global.player4_key_up))
-	or (keyboard_check_pressed(global.player4_key2_up))
-	or (gamepad_button_check_pressed(player - 1, gp_padu))
+	or(keyboard_check_pressed(global.player4_key2_up))
+	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or (gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)<0);
 	#endregion /*Player 4 Key Up Hold END*/
 	
 	#region /*Player 4 Key Spin Hold*/
 	key_spin =
 	(gamepad_button_check(player - 1, gp_shoulderl))
-	or (gamepad_button_check(player - 1, gp_shoulderlb))
-	or (gamepad_button_check(player - 1, gp_shoulderr))
-	or (gamepad_button_check(player - 1, gp_shoulderrb));
+	or(gamepad_button_check(player - 1, gp_shoulderlb))
+	or(gamepad_button_check(player - 1, gp_shoulderr))
+	or(gamepad_button_check(player - 1, gp_shoulderrb));
 	#endregion /*Player 4 Key Spin Hold*/
 	
 	#region /*Player 4 Key Spin Pressed*/
 	key_spin_pressed =
 	(gamepad_button_check_pressed(player - 1, gp_shoulderl))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderlb))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderr))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderrb));
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderlb))
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderr))
+	or(gamepad_button_check_pressed(player - 1, gp_shoulderrb));
 	#endregion /*Player 4 Key Spin Pressed END*/
 	
 }
@@ -4233,11 +4233,11 @@ if (player = 4)
 #region /*If controller gets disconnected during gameplay, pause the game*/
 if (player = 1)
 and (gamepad_is_connected(0))
-or (player = 2)
+or(player = 2)
 and (gamepad_is_connected(1))
-or (player = 3)
+or(player = 3)
 and (gamepad_is_connected(2))
-or (player = 4)
+or(player = 4)
 and (gamepad_is_connected(3))
 {
 	controller_connected = true;
@@ -4251,23 +4251,23 @@ and (global.pause = false)
 	
 	#region /*Pause*/	
 	if (keyboard_check_pressed(vk_escape))
-	or (keyboard_check(vk_tab))
+	or(keyboard_check(vk_tab))
 	and (keyboard_check(vk_lshift))
-	or (gamepad_button_check_pressed(0, gp_start))
-	or (gamepad_button_check_pressed(0, gp_select))
-	or (player = 1)
+	or(gamepad_button_check_pressed(0, gp_start))
+	or(gamepad_button_check_pressed(0, gp_select))
+	or(player = 1)
 	and (!gamepad_is_connected(0))
 	and (controller_connected = true)
-	or (player = 2)
+	or(player = 2)
 	and (!gamepad_is_connected(1))
 	and (controller_connected = true)
-	or (player = 3)
+	or(player = 3)
 	and (!gamepad_is_connected(2))
 	and (controller_connected = true)
-	or (player = 4)
+	or(player = 4)
 	and (!gamepad_is_connected(3))
 	and (controller_connected = true)
-	or (global.actually_play_edited_level = true)
+	or(global.actually_play_edited_level = true)
 	and (!window_has_focus())
 	and (global.automatically_pause_when_window_is_unfocused = true)
 	{
@@ -4345,7 +4345,7 @@ and (global.pause = false)
 		}
 		else
 		{
-			global.pause_player= 0;
+			global.pause_player = 0;
 			if (global.goal_active = false)
 			{
 				if (asset_get_type("room_pause") == asset_room)
@@ -4373,7 +4373,7 @@ and (global.pause = false)
 	}
 	else
 	if (gamepad_button_check_pressed(1, gp_start))
-	or (gamepad_button_check_pressed(1, gp_select))
+	or(gamepad_button_check_pressed(1, gp_select))
 	{
 
 		#region /*Show all HUD elements*/
@@ -4454,7 +4454,7 @@ and (global.pause = false)
 	}
 	else
 	if (gamepad_button_check_pressed(2, gp_start))
-	or (gamepad_button_check_pressed(2, gp_select))
+	or(gamepad_button_check_pressed(2, gp_select))
 	{
 
 		#region /*Show all HUD elements*/
@@ -4535,7 +4535,7 @@ and (global.pause = false)
 	}
 	else
 	if (gamepad_button_check_pressed(3, gp_start))
-	or (gamepad_button_check_pressed(3, gp_select))
+	or(gamepad_button_check_pressed(3, gp_select))
 	{
 
 		#region /*Show all HUD elements*/
@@ -4663,11 +4663,11 @@ and (global.pause = false)
 				else
 				{
 					if (place_meeting(x, y + 1, obj_wall))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						hspeed -= acceleration_on_ground;
@@ -4684,11 +4684,11 @@ and (global.pause = false)
 				and (!place_meeting(x, y - 2, obj_wall))
 				{
 					if (place_meeting(x, y + 1, obj_wall))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						hspeed -= acceleration_on_ground;
@@ -4750,11 +4750,11 @@ and (global.pause = false)
 				else
 				{
 					if (place_meeting(x, y + 1, obj_wall))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						hspeed += acceleration_on_ground;
@@ -4771,11 +4771,11 @@ and (global.pause = false)
 				and (!place_meeting(x, y - 2, obj_wall))
 				{
 					if (place_meeting(x, y + 1, obj_wall))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
+					or(asset_get_type("obj_semisolid_platform") == asset_object)
 					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 					{
 						hspeed += acceleration_on_ground;
@@ -4821,13 +4821,13 @@ else
 	if (crouch = true)
 	and (asset_get_type("obj_wall") == asset_object)
 	and (place_meeting(x, y + 1, obj_wall))
-	or (crouch = true)
+	or(crouch = true)
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (crouch = true)
+	or(crouch = true)
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (crouch = true)
+	or(crouch = true)
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
@@ -4844,14 +4844,14 @@ else
 	else
 	if (key_sprint)
 	and (allow_run = true)
-	or (double_tap_left = 3)
+	or(double_tap_left = 3)
 	and (allow_run = true)
-	or (double_tap_right = 3)
+	or(double_tap_right = 3)
 	and (allow_run = true)
 	{
 		if (key_left)
 		and (ground_pound = false)
-		or (key_right)
+		or(key_right)
 		and (ground_pound = false)
 		{
 			if (invincible > 0)
@@ -4872,11 +4872,11 @@ else
 	{
 		if (asset_get_type("obj_wall") == asset_object)
 		and (place_meeting(x, y + 1, obj_wall))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		or(asset_get_type("obj_semisolid_platform") == asset_object)
 		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		or(asset_get_type("obj_semisolid_platform") == asset_object)
 		and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		or(asset_get_type("obj_semisolid_platform") == asset_object)
 		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			if (invincible > 0)
@@ -4911,7 +4911,7 @@ if (double_tap_to_run = true)
 			else
 			if (double_tap_left = 2)
 			{
-				double_tap_left =3;
+				double_tap_left = 3;
 				double_tap_run_timer = 15;
 			}
 			else
@@ -4934,7 +4934,7 @@ if (double_tap_to_run = true)
 			else
 			if (double_tap_right = 2)
 			{
-				double_tap_right =3;
+				double_tap_right = 3;
 				double_tap_run_timer = 15;
 			}
 			else
@@ -4949,13 +4949,13 @@ if (double_tap_to_run = true)
 		and (!key_right)
 		{
 			if (double_tap_left = true)
-			and (double_tap_run_timer<= 28)
+			and (double_tap_run_timer <= 28)
 			{
 				double_tap_left = 2;
 			}
 			else
 			if (double_tap_right = true)
-			and (double_tap_run_timer<= 28)
+			and (double_tap_run_timer <= 28)
 			{
 				double_tap_right = 2;
 			}
@@ -4966,12 +4966,12 @@ if (double_tap_to_run = true)
 	{
 		double_tap_left = false;
 		double_tap_right = false;
-		double_tap_run_timer= 0;
+		double_tap_run_timer = 0;
 	}
 }
-if (double_tap_run_timer<= 0)
+if (double_tap_run_timer <= 0)
 {
-	double_tap_run_timer= 0;
+	double_tap_run_timer = 0;
 	double_tap_left = false;
 	double_tap_right = false;
 }
@@ -4980,11 +4980,11 @@ if (double_tap_run_timer<= 0)
 #region /*Set the friction*/
 if (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (speed > 0)
@@ -4993,8 +4993,8 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		and (place_meeting(x, y + 1, obj_ice_block))
 		{
 			if (key_left)
-			or (key_right)
-			or (goal = true)
+			or(key_right)
+			or(goal = true)
 			{
 				friction = 0.01;
 			}
@@ -5006,8 +5006,8 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		else
 		{
 			if (key_left)
-			or (key_right)
-			or (goal = true)
+			or(key_right)
+			or(goal = true)
 			{
 				friction = 0.1;
 			}
@@ -5027,7 +5027,7 @@ else
 #region /*Jumping*/
 if (key_jump)
 and (number_of_jumps >= 1)
-or (key_jump)
+or(key_jump)
 and (number_of_jumps <= -1)
 {
 	buffer_jump = 10;
@@ -5059,7 +5059,7 @@ and (key_jump_hold)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (asset_get_type("obj_wall") == asset_object)
 	and (!place_meeting(x, y + 1, obj_wall))
-	or (key_down)
+	or(key_down)
 	and (ground_pound = false)
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -5080,18 +5080,18 @@ and (key_jump_hold)
 		and (place_meeting(x, y + 1, obj_wall))
 		and (crouch = false)
 		
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		or(asset_get_type("obj_semisolid_platform") == asset_object)
 		and (place_meeting(x, y + 1, obj_semisolid_platform))
 		and (crouch = false)
 		and (vspeed = 0)
 		
-		or (asset_get_type("obj_wall") == asset_object)
+		or(asset_get_type("obj_wall") == asset_object)
 		and (place_meeting(x, y + 1, obj_wall))
 		and!(place_meeting(x, y - 1, obj_wall))
 		and (crouch = true)
 		and (vspeed = 0)
 		
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		or(asset_get_type("obj_semisolid_platform") == asset_object)
 		and (place_meeting(x, y + 1, obj_semisolid_platform))
 		and!(place_meeting(x, y - 1, obj_semisolid_platform))
 		and (crouch = true)
@@ -5104,7 +5104,7 @@ and (key_jump_hold)
 			triplejumpdelay = 12;
 			if (abs(hspeed) > 3)
 			and (!place_meeting(x, y-8, obj_wall))
-			or (key_up)
+			or(key_up)
 			and (!place_meeting(x, y-8, obj_wall))
 			{
 				if (jump > 2)
@@ -5132,19 +5132,19 @@ and (key_jump_hold)
 			
 			#region /*Smoke effect under player when jumping*/
 			if (position_meeting(x - 16, bbox_bottom + 1, obj_wall))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(x - 16, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
 			}
 			if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 			}
 			if (position_meeting(x + 16, bbox_bottom + 1, obj_wall))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(x + 16, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
@@ -5227,12 +5227,12 @@ and (can_mid_air_jump = 0)
 {
 	if (spring = true)
 	and (vspeed > - 20)
-	or (spring = false)
+	or(spring = false)
 	{
 		if (global.has_upgrade_double_jump = true)
-		or (number_of_jumps >= 2)
+		or(number_of_jumps >= 2)
 		and (midair_jumps_left > 0)
-		or (number_of_jumps <= -1)
+		or(number_of_jumps <= -1)
 		{
 			buffer_jump = 0;
 			dive = false;
@@ -5293,7 +5293,7 @@ and (can_mid_air_jump = 0)
 		
 			#region /*Mid-air flip animation*/
 			if (midair_jumps_left >= midair_jump_flip_animation)
-			or (number_of_jumps = 2)
+			or(number_of_jumps = 2)
 			and (midair_jump_flip_animation >= 2)
 			{
 				if (image_xscale > 0)
@@ -5315,11 +5315,11 @@ and (can_mid_air_jump = 0)
 #region /*Recharge mid-air / double jump when landing on ground*/
 if (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (vspeed >= 0)
@@ -5368,19 +5368,19 @@ else
 if (asset_get_type("obj_semisolid_platform") == asset_object)
 {
 	if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 2, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 3, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 4, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 2, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 3, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 4, obj_semisolid_platform))
 
-	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_left, bbox_bottom + 2, obj_semisolid_platform))
-	or (position_meeting(bbox_left, bbox_bottom + 3, obj_semisolid_platform))
-	or (position_meeting(bbox_left, bbox_bottom + 4, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 2, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 3, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 4, obj_semisolid_platform))
 
-	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 2, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 3, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 4, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 2, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 3, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 4, obj_semisolid_platform))
 	{
 		gravity = 0;
 	}
@@ -5396,9 +5396,9 @@ if (abs(hspeed) > speed_max)
 
 #region /*Limits the vertical speed*/
 if (place_meeting(x, y + 32, obj_semisolid_platform))
-or (place_meeting(x, y + 16, obj_semisolid_platform))
-or (place_meeting(x, y + 8, obj_semisolid_platform))
-or (place_meeting(x, y + 1, obj_semisolid_platform))
+or(place_meeting(x, y + 16, obj_semisolid_platform))
+or(place_meeting(x, y + 8, obj_semisolid_platform))
+or(place_meeting(x, y + 1, obj_semisolid_platform))
 {
 	if (vspeed > 8)
 	{
@@ -5482,11 +5482,11 @@ and (global.pause = false)
 				
 				#region /*Key Tongue Pressed*/
 				if (key_tongue_pressed)
-				or (mouse_check_button_pressed(mb_left))
-				or (gamepad_axis_value(0, gp_axisrh) < -0.5)
-				or (gamepad_axis_value(0, gp_axisrh) > +0.5)
-				or (gamepad_axis_value(0, gp_axisrv) < -0.5)
-				or (gamepad_axis_value(0, gp_axisrv) > +0.5)
+				or(mouse_check_button_pressed(mb_left))
+				or(gamepad_axis_value(0, gp_axisrh) < -0.5)
+				or(gamepad_axis_value(0, gp_axisrh) > + 0.5)
+				or(gamepad_axis_value(0, gp_axisrv) < -0.5)
+				or(gamepad_axis_value(0, gp_axisrv) > + 0.5)
 				{
 					can_tongue = false;
 					tongue_obj = instance_create_depth(x, y, 0, obj_tongue);
@@ -5499,7 +5499,7 @@ and (global.pause = false)
 					}
 					else
 					if (gamepad_axis_value(0, gp_axisrh) != 0)
-					or (gamepad_axis_value(0, gp_axisrv) != 0)
+					or(gamepad_axis_value(0, gp_axisrv) != 0)
 					{
 						with(tongue_obj)
 						{
@@ -5508,7 +5508,7 @@ and (global.pause = false)
 					}
 					else
 					if (gamepad_axis_value(0, gp_axislh) != 0)
-					or (gamepad_axis_value(0, gp_axislv) != 0)
+					or(gamepad_axis_value(0, gp_axislv) != 0)
 					{
 						
 						#region /*Key Sprint Pressed*/
@@ -5768,7 +5768,7 @@ and (global.pause = false)
 			#region /*Key Up or Down*/
 			if (key_up)
 			and (obj_tongue.y < y)
-			or (key_down)
+			or(key_down)
 			and (obj_tongue.y > y)
 			{
 				if (rope_length > 5)
@@ -5784,7 +5784,7 @@ and (global.pause = false)
 			#region /*Key Down or Up*/
 			if (key_down)
 			and (obj_tongue.y < y)
-			or (key_up)
+			or(key_up)
 			and (obj_tongue.y > y)
 			{
 				if (rope_length < 320)
@@ -5893,11 +5893,11 @@ if (place_meeting(x, y + 4, obj_wall))
 #region /*Chain Reaction Reset*/
 if (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (invincible < 1)
@@ -5914,11 +5914,11 @@ if (assist_invincible = true)
 #region /*Triple Jump*/
 if (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (triplejumpdelay > 0)
@@ -5929,10 +5929,10 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 if (place_meeting(x, y + 1, obj_wall))
 and (speed < 7) /*Player must be running at this speed to be able to triple jump*/
 and (jump > 1)
-or (place_meeting(x, y + 1, obj_wall))
+or(place_meeting(x, y + 1, obj_wall))
 and (triplejumpdelay < 1)
-or (jump > 3)
-or (place_meeting(x, y + 1, obj_wall))
+or(jump > 3)
+or(place_meeting(x, y + 1, obj_wall))
 and (vspeed >= 0)
 and (jump = 3)
 {
@@ -5958,13 +5958,13 @@ and (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (wall_jump_setting >= 1)
-or (allow_wall_jump = false)
+or(allow_wall_jump = false)
 and (can_wall_jump = true)
 and (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (place_meeting(x, y, obj_wall_jump_panel))
-or (allow_wall_climb = false)
+or(allow_wall_climb = false)
 and (can_wall_jump = true)
 and (can_move = true)
 and (global.pause = false)
@@ -5987,12 +5987,12 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			and (!key_right)
 			and (wall_jump_setting = 2)
 			and (place_meeting(x - 1, y, obj_wall))
-			or (!key_right)
+			or(!key_right)
 			and (dive = false)
 			and (wall_jump_setting = 1)
 			and (place_meeting(x - 1, y, obj_wall))
 			and (image_xscale < 0)
-			or (dive = true)
+			or(dive = true)
 			and (wall_jump_setting = 1)
 			and (place_meeting(x - 1, y, obj_wall))
 			and (image_xscale < 0)
@@ -6022,12 +6022,12 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			and (!key_left)
 			and (wall_jump_setting = 2)
 			and (place_meeting(x + 1, y, obj_wall))
-			or (!key_left)
+			or(!key_left)
 			and (dive = false)
 			and (wall_jump_setting = 1)
 			and (place_meeting(x + 1, y, obj_wall))
 			and (image_xscale > 0)
-			or (dive = true)
+			or(dive = true)
 			and (wall_jump_setting = 1)
 			and (place_meeting(x + 1, y, obj_wall))
 			and (image_xscale > 0)
@@ -6061,7 +6061,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 		if (key_left)
 		and (!key_right)
 		and (image_xscale = +1)
-		or (key_right)
+		or(key_right)
 		and (!key_left)
 		and (image_xscale = -1)
 		{
@@ -6078,11 +6078,11 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 		#region /*If there is ground under you while trying to go down, then stop wall climbing*/
 		if (asset_get_type("obj_wall") == asset_object)
 		and (place_meeting(x, y + 1, obj_wall))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		or(asset_get_type("obj_semisolid_platform") == asset_object)
 		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		or(asset_get_type("obj_semisolid_platform") == asset_object)
 		and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
+		or(asset_get_type("obj_semisolid_platform") == asset_object)
 		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			stick_to_wall = false;
@@ -6123,9 +6123,9 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			}
 			if (!place_meeting(x - 1, y, obj_wall))
 			and (image_xscale < 0)
-			or (!place_meeting(x + 1, y, obj_wall))
+			or(!place_meeting(x + 1, y, obj_wall))
 			and (image_xscale > 0)
-			or (place_meeting(x, y + 1, obj_wall))
+			or(place_meeting(x, y + 1, obj_wall))
 			{
 				stick_to_wall = false;
 				if (asset_get_type("snd_skiddingvertical") == asset_sound)
@@ -6140,7 +6140,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 		
 		#region /*Wall Climb*/
 		if (allow_wall_climb= true)
-		or (place_meeting(x, y, obj_wall_climb_panel))
+		or(place_meeting(x, y, obj_wall_climb_panel))
 		{
 			dive = false;
 			laststandingy = y;
@@ -6162,15 +6162,15 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			if (key_up)
 			and (!key_down)
 			
-			or (image_xscale < 0)
+			or(image_xscale < 0)
 			and (key_left)
 			and (!key_right)
 			
-			or (image_xscale > 0)
+			or(image_xscale > 0)
 			and (key_right)
 			and (!key_left)
 			{
-				if (bbox_bottom>0)
+				if (bbox_bottom> 0)
 				and (takendamage <= takendamage_freezetime)
 				{
 					if (!place_meeting(x, y - 16, obj_wall))
@@ -6235,7 +6235,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		
-		or (key_jump)
+		or(key_jump)
 		and (place_meeting(x - 1, y, obj_wall))
 		and (!place_meeting(x, y + 1, obj_wall))
 		and (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -6243,13 +6243,13 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		
-		or (allow_dive = true)
+		or(allow_dive = true)
 		and (key_dive_pressed) /*Press dive to jump from wall using a dive*/
 		and (key_left)
 		and (!key_right)
 		and (place_meeting(x + 1, y, obj_wall))
 		
-		or (allow_dive = true)
+		or(allow_dive = true)
 		and (key_dive_pressed) /*Press dive to jump from wall using a dive*/
 		and (key_right)
 		and (!key_left)
@@ -6285,12 +6285,12 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 				if (place_meeting(x - 1, y, obj_wall))
 				{
 					image_xscale = +1;
-					if (!place_meeting(x +6,y, obj_wall))
+					if (!place_meeting(x + 6,y, obj_wall))
 					{
-						hspeed = +6;
+						hspeed = + 6;
 					}
 				}
-				jump =1;
+				jump = 1;
 				triplejumpdelay =50;
 				wall_jump = wall_jump_time;
 				crouch = false;
@@ -6301,7 +6301,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 				midair_jumps_left = number_of_jumps - 1;
 				image_index = 0;
 				effect_create_above(ef_smoke, x, bbox_bottom-8, 0, c_white);
-				effect_create_above(ef_smoke, x, bbox_top+8, 0, c_white);
+				effect_create_above(ef_smoke, x, bbox_top +8, 0, c_white);
 				if (asset_get_type("obj_wall_jumpspark") == asset_object)
 				{
 					instance_create_depth(x, y, 0, obj_wall_jumpspark);
@@ -6357,20 +6357,20 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 	and (!key_right)
 	and (key_sprint_pressed)
 	and (stick_to_wall = true)
-	or (key_down)
+	or(key_down)
 	and (!key_left)
 	and (!key_right)
 	and (key_dive_pressed)
 	and (stick_to_wall = true)
-	or (pressing_opposite_direction_to_drop_off_from_wall >=10)
+	or(pressing_opposite_direction_to_drop_off_from_wall >= 10)
 	{
 		if (place_meeting(x - 1, y, obj_wall))
 		{
-			x +=1;
+			x += 1;
 		}
 		if (place_meeting(x + 1, y, obj_wall))
 		{
-			x-=1;
+			x-= 1;
 		}
 		pressing_opposite_direction_to_drop_off_from_wall = 0;
 		climb = false;
@@ -6395,7 +6395,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
-	or (key_jump)
+	or(key_jump)
 	and (key_left)
 	and (!key_right)
 	and (wall_jump_setting >= 1)
@@ -6406,7 +6406,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
-	or (key_jump)
+	or(key_jump)
 	and (wall_jump_setting = 1)
 	and (place_meeting(x + 1, y, obj_wall))
 	and (!place_meeting(x, y + 16, obj_wall))
@@ -6415,7 +6415,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
-	or (key_jump)
+	or(key_jump)
 	and (wall_jump_setting = 1)
 	and (place_meeting(x - 1, y, obj_wall))
 	and (!place_meeting(x, y + 16, obj_wall))
@@ -6456,12 +6456,12 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			if (place_meeting(x - 1, y, obj_wall))
 			{
 				image_xscale = +1;
-				if (!place_meeting(x +6,y, obj_wall))
+				if (!place_meeting(x + 6,y, obj_wall))
 				{
-					hspeed = +6;
+					hspeed = + 6;
 				}
 			}
-			jump =1;
+			jump = 1;
 			triplejumpdelay =50;
 			wall_jump = wall_jump_time;
 			crouch = false;
@@ -6471,7 +6471,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			vspeed = -normal_jump_height;
 			image_index = 0;
 			effect_create_above(ef_smoke, x, bbox_bottom-8, 0, c_white);
-			effect_create_above(ef_smoke, x, bbox_top+8, 0, c_white);
+			effect_create_above(ef_smoke, x, bbox_top +8, 0, c_white);
 			if (asset_get_type("obj_wall_jumpspark") == asset_object)
 			{
 				instance_create_depth(x, y, 0, obj_wall_jumpspark);
@@ -6578,7 +6578,7 @@ and (takendamage <= takendamage_freezetime)
 				if (!position_meeting(bbox_left - 1,bbox_bottom + 1, obj_wall))
 				and (position_meeting(bbox_right + 1,bbox_bottom + 1, obj_wall))
 				{
-					x-=1;
+					x-= 1;
 				}
 				#endregion /*Move left to avoid a left corner END*/
 		
@@ -6588,7 +6588,7 @@ and (takendamage <= takendamage_freezetime)
 				if (position_meeting(bbox_left - 1,bbox_bottom + 1, obj_wall))
 				and (!position_meeting(bbox_right + 1,bbox_bottom + 1, obj_wall))
 				{
-					y+=1;
+					y+= 1;
 				}
 				#endregion /*Move right to avoid a right corner END*/
 		
@@ -6597,11 +6597,11 @@ and (takendamage <= takendamage_freezetime)
 
 			#region /*If touching the ground when doing a ground pound*/
 			if (position_meeting(bbox_left + 1,bbox_bottom + 1, obj_wall))
-			or (position_meeting(x, bbox_bottom + 1, obj_wall))
-			or (position_meeting(bbox_right - 1,bbox_bottom + 1, obj_wall))
-			or (position_meeting(bbox_left + 1,bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(bbox_right - 1,bbox_bottom + 1, obj_semisolid_platform))
+			or(position_meeting(x, bbox_bottom + 1, obj_wall))
+			or(position_meeting(bbox_right - 1,bbox_bottom + 1, obj_wall))
+			or(position_meeting(bbox_left + 1,bbox_bottom + 1, obj_semisolid_platform))
+			or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+			or(position_meeting(bbox_right - 1,bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
 				image_index = 0;
@@ -6611,7 +6611,7 @@ and (takendamage <= takendamage_freezetime)
 				{
 					with(instance_nearest(x, y, obj_camera))
 					{
-						shake =10;
+						shake = 10;
 					}
 				}
 				if (asset_get_type("snd_hipattack") == asset_sound)
@@ -6625,9 +6625,9 @@ and (takendamage <= takendamage_freezetime)
 			else
 			if (key_up)
 			and (vspeed >4)
-			or (key_dive_pressed)
+			or(key_dive_pressed)
 			and (vspeed >4)
-			or (vspeed<-4)
+			or(vspeed<-4)
 			{
 				image_index = 0;
 				ground_pound = false;
@@ -6640,11 +6640,11 @@ and (takendamage <= takendamage_freezetime)
 		{
 			if (asset_get_type("obj_wall") == asset_object)
 			and (place_meeting(x, y + 1, obj_wall))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				speed_max= 0;
@@ -6676,7 +6676,7 @@ and (takendamage <= takendamage_freezetime)
 			}
 		}
 		else
-		if (ground_pound =3)
+		if (ground_pound = 3)
 		{
 			if (key_sprint)
 			{
@@ -6687,7 +6687,7 @@ and (takendamage <= takendamage_freezetime)
 				speed_max = 4;
 			}
 			if (image_index > image_number - 1)
-			or (vspeed > 0)
+			or(vspeed > 0)
 			{
 				ground_pound = false;
 			}
@@ -6706,13 +6706,13 @@ and (!key_down)
 if (joystick_can_ground_pound = false)
 and (gamepad_axis_value(0, gp_axislv)<= 0)
 and (player <= 1)
-or (joystick_can_ground_pound = false)
+or(joystick_can_ground_pound = false)
 and (gamepad_axis_value(1, gp_axislv)<= 0)
 and (player <= 2)
-or (joystick_can_ground_pound = false)
+or(joystick_can_ground_pound = false)
 and (gamepad_axis_value(2, gp_axislv)<= 0)
 and (player <= 3)
-or (joystick_can_ground_pound = false)
+or(joystick_can_ground_pound = false)
 and (gamepad_axis_value(3, gp_axislv)<= 0)
 and (player <= 4)
 {
@@ -6724,13 +6724,13 @@ and (player <= 4)
 if (joystick_can_ground_pound = true)
 and (gamepad_axis_value(0, gp_axislv) > 0)
 and (player <= 1)
-or (joystick_can_ground_pound = true)
+or(joystick_can_ground_pound = true)
 and (gamepad_axis_value(1, gp_axislv) > 0)
 and (player <= 2)
-or (joystick_can_ground_pound = true)
+or(joystick_can_ground_pound = true)
 and (gamepad_axis_value(2, gp_axislv) > 0)
 and (player <= 3)
-or (joystick_can_ground_pound = true)
+or(joystick_can_ground_pound = true)
 and (gamepad_axis_value(3, gp_axislv) > 0)
 and (player <= 4)
 {
@@ -6778,7 +6778,7 @@ and (global.pause = false)
 					#region /*Choose direction to dive*/
 					if (key_left)
 					and (!key_right)
-					or (image_xscale < 0)
+					or(image_xscale < 0)
 					{
 						if (hspeed >- 10)
 						{
@@ -6793,7 +6793,7 @@ and (global.pause = false)
 					else
 					if (key_right)
 					and (!key_left)
-					or (image_xscale > 0)
+					or(image_xscale > 0)
 					{
 						if (hspeed<+ 10)
 						{
@@ -6843,7 +6843,7 @@ and (global.pause = false)
 			if (key_left)
 			and (asset_get_type("obj_wall") == asset_object)
 			and (place_meeting(x + 1, y, obj_wall))
-			or (key_right)
+			or(key_right)
 			and (asset_get_type("obj_wall") == asset_object)
 			and (place_meeting(x - 1, y, obj_wall))
 			{
@@ -6892,13 +6892,13 @@ and (global.pause = false)
 			if (asset_get_type("obj_wall") == asset_object)
 			and (place_meeting(x, y + 1, obj_wall))
 			and (vspeed >= 0)
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			and (vspeed >= 0)
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 			and (vspeed >= 0)
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
+			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			and (vspeed >= 0)
 			{
@@ -6923,7 +6923,7 @@ and (global.pause = false)
 			if (cancel_dive_by_pressing_jump_or_dive_button = true)
 			{
 				if (key_jump)
-				or (key_dive_pressed)
+				or(key_dive_pressed)
 				{
 					dive = false;
 					can_dive = false;
@@ -6933,7 +6933,7 @@ and (global.pause = false)
 			{
 				if (hspeed < 0)
 				and (key_right)
-				or (hspeed > 0)
+				or(hspeed > 0)
 				and (key_left)
 				{
 					dive = false;
@@ -6951,13 +6951,13 @@ and (global.pause = false)
 if (can_tongue_after_dive_on_ground > 0)
 and (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall))
-or (can_tongue_after_dive_on_ground > 0)
+or(can_tongue_after_dive_on_ground > 0)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (can_tongue_after_dive_on_ground > 0)
+or(can_tongue_after_dive_on_ground > 0)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (can_tongue_after_dive_on_ground > 0)
+or(can_tongue_after_dive_on_ground > 0)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
@@ -6974,15 +6974,15 @@ if (allow_dive_ground_boost = true)
 and (dive_on_ground > 0)
 and (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall))
-or (allow_dive_ground_boost = true)
+or(allow_dive_ground_boost = true)
 and (dive_on_ground > 0)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (allow_dive_ground_boost = true)
+or(allow_dive_ground_boost = true)
 and (dive_on_ground > 0)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (allow_dive_ground_boost = true)
+or(allow_dive_ground_boost = true)
 and (dive_on_ground > 0)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -6992,7 +6992,7 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		dive_on_ground = false;
 		effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
-		if (speed_max<10)
+		if (speed_max< 10)
 		{
 			speed_max = 10;
 		}
@@ -7039,8 +7039,8 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 if (allow_ledge_grab= true)
 {
 	if (in_water = true)
-	or (x<camera_get_view_x(view_camera[view_current]) + 25)
-	or (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
+	or(x<camera_get_view_x(view_camera[view_current]) + 25)
+	or(x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
 	{
 		can_ledge_grab = false;
 	}
@@ -7052,13 +7052,13 @@ if (allow_ledge_grab= true)
 	{
 		if (hspeed!= 0)
 		{
-			hspeed_dir=sign(hspeed);
+			hspeed_dir =sign(hspeed);
 		}
-		if (ground_pound<1)
-		and (burnt<1)
+		if (ground_pound< 1)
+		and (burnt< 1)
 		{
 			if (!position_meeting(x + 37*hspeed_dir,bbox_top- 16, obj_wall))
-			and (position_meeting(x + 37*hspeed_dir,bbox_top+8, obj_wall))
+			and (position_meeting(x + 37*hspeed_dir,bbox_top +8, obj_wall))
 			and (yprevious - 16<y)
 			and (vspeed > 0)
 			and (!place_meeting(x, y+ sprite_height/3, obj_wall))
@@ -7081,22 +7081,22 @@ if (allow_ledge_grab= true)
 				#endregion /*Move against the ledge*/
 				
 				#region /*Make sure we are the right height*/
-				while(position_meeting(x +(17*hspeed_dir),y- 5, obj_wall))
+				while(position_meeting(x + (17*hspeed_dir),y- 5, obj_wall))
 				{
 					y -= 1;
 				}
 				#endregion /*Make sure we are the right height END*/
 				
 				ledge_grab_jump = false;
-				ledge_grab+=1;
+				ledge_grab+= 1;
 				stick_to_wall = false;
 				wall_jump = 0;
 				jump = 0;
 			}
 		}
-		if (ledge_grab>0)
+		if (ledge_grab> 0)
 		{
-			ledge_grab+=1;
+			ledge_grab+= 1;
 		}
 		if (ledge_grab>false)
 		{
@@ -7123,7 +7123,7 @@ if (allow_ledge_grab= true)
 			}
 			if (key_left)
 			and (image_xscale = -1)
-			or (key_right)
+			or(key_right)
 			and (image_xscale = +1)
 			{
 				if (ledge_grab>10)
@@ -7150,7 +7150,7 @@ if (allow_ledge_grab= true)
 			}
 			else
 			if (key_jump)
-			or (key_up)
+			or(key_up)
 			{
 				if (image_xscale > 0)
 				{
@@ -7173,13 +7173,13 @@ if (allow_ledge_grab= true)
 			}
 			if (key_left)
 			and (image_xscale = +1)
-			or (key_right)
+			or(key_right)
 			and (image_xscale = -1)
-			or (key_down)
+			or(key_down)
 			{
 				if (ledge_grab>10)
 				{
-					hspeed = +0.1*-hspeed_dir;
+					hspeed = + 0.1*-hspeed_dir;
 					ledge_grab = false;
 					ledge_grab_jump = true;
 					stick_to_wall = false;
@@ -7221,17 +7221,17 @@ and (stick_to_wall = false)
 #region /*Put sprite angle at right angle*/
 if (angle <-360)
 {
-	angle +=16;
+	angle += 16;
 }
 else
 if (angle >+ 360)
 {
-	angle-=16;
+	angle-= 16;
 }
 else
 if (ground_pound = true)
 {
-	angle =lerp(angle, 0, 0.2);
+	angle = lerp(angle, 0, 0.2);
 }
 else
 {
@@ -7241,22 +7241,22 @@ else
 		if (key_left)
 		and (!key_right)
 		{
-			angle =lerp(angle, 0 + 10, 0.1);
+			angle = lerp(angle, 0 + 10, 0.1);
 		}
 		else
 		if (key_right)
 		and (!key_left)
 		{
-			angle =lerp(angle, 0 - 10, 0.1);
+			angle = lerp(angle, 0 - 10, 0.1);
 		}
 		else
 		{
-			angle =lerp(angle, 0, 0.1);
+			angle = lerp(angle, 0, 0.1);
 		}
 	}
 	else
 	{
-		angle =lerp(angle, 0, 0.1);
+		angle = lerp(angle, 0, 0.1);
 	}
 }
 #endregion /*Put sprite angle at right angle*/
@@ -7289,7 +7289,7 @@ else
 if (asset_get_type("obj_water") == asset_object)
 {
 	if (position_meeting(x, y, obj_water))
-	or (asset_get_type("obj_water_level") == asset_object)
+	or(asset_get_type("obj_water_level") == asset_object)
 	and (instance_exists(obj_water_level))
 	and (y > obj_water_level.y)
 	{
@@ -7317,7 +7317,7 @@ if (asset_get_type("obj_water") == asset_object)
 		{
 			if (key_up)
 			and (!key_down)
-			or (key_jump_hold)
+			or(key_jump_hold)
 			and (!key_down)
 			{
 				if (vspeed > 1)
@@ -7411,9 +7411,9 @@ if (asset_get_type("obj_water") == asset_object)
 			}
 		}
 		if (place_meeting(x, y + 1, obj_wall))
-		or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			if (hspeed<- 2)
 			{
@@ -7457,7 +7457,7 @@ if (asset_get_type("obj_water") == asset_object)
 if (allow_drowning = true)
 and (global.assist_enable = true)
 and (global.assist_breathe_underwater = false)
-or (allow_drowning = true)
+or(allow_drowning = true)
 and (global.assist_enable = false)
 {
 	drawn_frames_until_drowning = lerp(drawn_frames_until_drowning, frames_until_drowning, 0.1);
@@ -7539,7 +7539,7 @@ and (power_meter_running_sound = true)
 	speedunit += 2;
 	if (speedunit>100)
 	{
-		speedunit =100;
+		speedunit = 100;
 		if (asset_get_type("snd_power_meter_running") == asset_sound)
 		{
 			if (!audio_is_playing(snd_power_meter_running))
@@ -7550,9 +7550,9 @@ and (power_meter_running_sound = true)
 			}
 		}
 		if (place_meeting(x, y + 1, obj_wall))
-		or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			speeddash = true;
 		}
@@ -7560,7 +7560,7 @@ and (power_meter_running_sound = true)
 }
 else
 {
-	speedunit-=1;
+	speedunit-= 1;
 	if (speedunit<0)
 	{
 		speedunit = 0;
@@ -7585,7 +7585,7 @@ and (in_water = false)
 		dive = false;
 		midair_jumps_left = number_of_jumps;
 		draw_xscale = 0.75;
-		draw_yscale =1.5;
+		draw_yscale = 1.5;
 		if (key_jump_hold)
 		{
 			vspeed = -higher_jump_height;
@@ -7596,7 +7596,7 @@ and (in_water = false)
 		}
 		with(instance_nearest(x, bbox_bottom, obj_player))
 		{
-			draw_xscale =1.5;
+			draw_xscale = 1.5;
 			draw_yscale = 0.75;
 		}
 	}
@@ -7612,7 +7612,7 @@ if (takendamage > 0)
 }
 
 #region /*Make the player die if you have 0 HP*/
-if (hp<= 0)
+if (hp <= 0)
 {
 	die = true;
 	invincibility = false;
@@ -7620,14 +7620,14 @@ if (hp<= 0)
 #endregion /*Make the player die if you have 0 HP END*/
 
 #region /*Don't gain more HP than your max HP*/
-if (hp>max_hp)
+if (hp > max_hp)
 {
 	if (allow_overflow_hp = true)
 	{
-		overflow_hp+=1;
-		if (overflow_hp>=max_overflow_hp)
+		overflow_hp += 1;
+		if (overflow_hp >=max_overflow_hp)
 		{
-			max_hp+=1;
+			max_hp += 1;
 			overflow_hp = 0;
 		}
 	}
@@ -7643,7 +7643,7 @@ if (asset_get_type("obj_lava") == asset_object)
 	if (place_meeting(x, y, obj_lava))
 	{
 		if (allow_survive_lava= true)
-		and (hp>0)
+		and (hp > 0)
 		{
 			burnt = true;
 			dive = false;
@@ -7682,9 +7682,9 @@ if (burnt = true)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 	if (place_meeting(x, y + 1, obj_wall))
-	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		audio_play_sound(voice_burned_running, 0, 0);
 		audio_sound_gain(voice_burned_running, global.voices_volume, 0);
@@ -7702,9 +7702,9 @@ if (burnt = 2)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 	if (place_meeting(x, y + 1, obj_wall))
-	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		burnt = false;
 	}
@@ -7911,9 +7911,9 @@ if (asset_get_type("obj_spikes") == asset_object)
 and (instance_exists(obj_spikes))
 {
 	if (place_meeting(x - 1, y, obj_spikes))
-	or (place_meeting(x + 1, y, obj_spikes))
-	or (place_meeting(x, y - 1, obj_spikes))
-	or (place_meeting(x, y + 1, obj_spikes))
+	or(place_meeting(x + 1, y, obj_spikes))
+	or(place_meeting(x, y - 1, obj_spikes))
+	or(place_meeting(x, y + 1, obj_spikes))
 	{
 		if (takendamage < 1)
 		and (assist_invincible = false)
@@ -8234,7 +8234,7 @@ if (allow_homing_attack = true)
 	if (place_meeting(x, y, obj_enemy))
 	{
 		if (homing_attack_x > 0)
-		or (homing_attack_y > 0)
+		or(homing_attack_y > 0)
 		{
 			hspeed = 0;
 			vspeed = -triple_jump_height;
@@ -8303,7 +8303,7 @@ and (instance_nearest(x, y, obj_spring).can_bounce = 0)
 	chain_reaction = 0;
 	dive = false;
 	draw_xscale = 0.5;
-	draw_yscale =1.5;
+	draw_yscale = 1.5;
 	horizontal_rope_climb = false;
 	ledge_grab_jump = false;
 	speed_max = 4;
@@ -8345,11 +8345,11 @@ if (move_towards_spring_endpoint = true)
 	{
 		if (place_meeting(x - 4, y, obj_wall))
 		and (hspeed < 0)
-		or (place_meeting(x + 4, y, obj_wall))
+		or(place_meeting(x + 4, y, obj_wall))
 		and (hspeed > 0)
-		or (place_meeting(x, y - 4, obj_wall))
+		or(place_meeting(x, y - 4, obj_wall))
 		and (vspeed < 0)
-		or (place_meeting(x, y + 4, obj_wall))
+		or(place_meeting(x, y + 4, obj_wall))
 		and (vspeed > 0)
 		{
 			move_towards_spring_endpoint = false;
@@ -8416,7 +8416,7 @@ if (spring = true)
 	{
 		angle = direction - 90;
 		if (speed < 6)
-		or (direction >= 90 - 10)
+		or(direction >= 90 - 10)
 		and (direction <= 90 + 10)
 		{
 			spring_twist_sprite = false;
@@ -8539,7 +8539,7 @@ and (in_water = false)
 		stick_to_wall = false;
 		vspeed = 0;
 		if (key_left)
-		or (key_right)
+		or(key_right)
 		{
 			friction = 0.2;
 		}
@@ -8562,20 +8562,20 @@ and (in_water = false)
 				
 			#region /*Start spinning on rope*/
 			if (place_meeting(x - 1, y, obj_wall))
-			or (place_meeting(x - 4, y - 16, obj_wall))
-			or (place_meeting(x - 4, y - 32, obj_wall))
-			or (place_meeting(x - 4, y - 48, obj_wall))
-			or (place_meeting(x - 4, y - 64, obj_wall))
+			or(place_meeting(x - 4, y - 16, obj_wall))
+			or(place_meeting(x - 4, y - 32, obj_wall))
+			or(place_meeting(x - 4, y - 48, obj_wall))
+			or(place_meeting(x - 4, y - 64, obj_wall))
 			{
 				x += 1;
 				hspeed = 0;
 			}
 			else
 			if (place_meeting(x + 1, y, obj_wall))
-			or (place_meeting(x + 4, y - 16, obj_wall))
-			or (place_meeting(x + 4, y - 32, obj_wall))
-			or (place_meeting(x + 4, y - 48, obj_wall))
-			or (place_meeting(x + 4, y - 64, obj_wall))
+			or(place_meeting(x + 4, y - 16, obj_wall))
+			or(place_meeting(x + 4, y - 32, obj_wall))
+			or(place_meeting(x + 4, y - 48, obj_wall))
+			or(place_meeting(x + 4, y - 64, obj_wall))
 			{
 				x -= 1;
 				hspeed = 0;
@@ -8633,7 +8633,7 @@ and (in_water = false)
 				
 			#region /*Jump from rope spin*/
 			if (key_jump)
-			or (up_key_is_jump_key = true)
+			or(up_key_is_jump_key = true)
 			and (!key_up)
 			{
 				if (asset_get_type("snd_jump") == asset_sound)
@@ -8650,7 +8650,7 @@ and (in_water = false)
 				spring = true;
 				
 				#region /*Do a charged upward jump depending on how fast you spin*/
-				if (image_speed >=1)
+				if (image_speed >= 1)
 				{
 					vspeed = -triple_jump_height* 1.25;
 					audio_stop_sound(voice);
@@ -8685,9 +8685,9 @@ and (in_water = false)
 		#region /*Jump upward normally from rope spin if drop down from rope doesn't use jump*/
 		if (drop_from_rope = 0) /*Drop down from rope: Release Jump*/
 		and (key_jump)
-		or (drop_from_rope = 2) /*Drop down from rope: Only Down*/
+		or(drop_from_rope = 2) /*Drop down from rope: Only Down*/
 		and (key_jump)
-		or (drop_from_rope = 4) /*Drop down from rope: Down + Jump*/
+		or(drop_from_rope = 4) /*Drop down from rope: Down + Jump*/
 		and (key_jump)
 		and (!key_down)
 		{
@@ -8718,15 +8718,15 @@ and (in_water = false)
 		#region /*Drop down from rope*/
 		if (drop_from_rope = 0) /*Drop down from rope: Release Jump*/
 		and (!key_jump_hold)
-		or (drop_from_rope = 1) /*Drop down from rope: Down or Jump*/
+		or(drop_from_rope = 1) /*Drop down from rope: Down or Jump*/
 		and (key_down)
-		or (drop_from_rope = 1) /*Drop down from rope: Down or Jump*/
+		or(drop_from_rope = 1) /*Drop down from rope: Down or Jump*/
 		and (key_jump)
-		or (drop_from_rope = 2) /*Drop down from rope: Only Down*/
+		or(drop_from_rope = 2) /*Drop down from rope: Only Down*/
 		and (key_down)
-		or (drop_from_rope = 3) /*Drop down from rope: Only Jump*/
+		or(drop_from_rope = 3) /*Drop down from rope: Only Jump*/
 		and (key_jump)
-		or (drop_from_rope = 4) /*Drop down from rope: Down + Jump*/
+		or(drop_from_rope = 4) /*Drop down from rope: Down + Jump*/
 		and (key_down)
 		and (key_jump)
 		{
@@ -8756,7 +8756,7 @@ and (in_water = false)
 			if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
-			or (double_tap_left = 3)
+			or(double_tap_left = 3)
 			{
 				hspeed -= 0.5;
 				speed_max = speed_max_run;
@@ -8791,7 +8791,7 @@ and (in_water = false)
 			if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
-			or (double_tap_right = 3)
+			or(double_tap_right = 3)
 			{
 				hspeed += 0.5;
 				speed_max = speed_max_run;
@@ -8862,7 +8862,7 @@ and (in_water = false)
 		
 		#region /*Bump into wall on left side when climbing horizontal rope*/
 		if (place_meeting(bbox_left - 1, y, obj_wall))
-		or (!place_meeting(bbox_left - 1, y, obj_horizontal_rope))
+		or(!place_meeting(bbox_left - 1, y, obj_horizontal_rope))
 		{
 			if (hspeed < 0)
 			{
@@ -8887,7 +8887,7 @@ and (in_water = false)
 		
 		#region /*Bump into wall on right side when climbing horizontal rope*/
 		if (place_meeting(bbox_right + 1, y, obj_wall))
-		or (!place_meeting(bbox_right + 1, y, obj_horizontal_rope))
+		or(!place_meeting(bbox_right + 1, y, obj_horizontal_rope))
 		{
 			if (hspeed > 0)
 			{
@@ -8920,7 +8920,7 @@ and (place_meeting(x, y, obj_vine))
 {
 	if (key_up)
 	and (vspeed >= 0)
-	or (key_up_pressed)
+	or(key_up_pressed)
 	{
 		if (climb = false)
 		{
@@ -9027,7 +9027,7 @@ and (place_meeting(x, y, obj_vine))
 			}
 			else
 			{
-				y+=3;
+				y+= 3;
 				image_speed = 0.2;
 			}
 			if (asset_get_type("snd_move_ivy") == asset_sound)
@@ -9039,9 +9039,9 @@ and (place_meeting(x, y, obj_vine))
 				}
 			}
 			if (place_meeting(x, y + 1, obj_wall))
-			or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+			or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+			or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				climb = false;
 			}
@@ -9165,8 +9165,8 @@ and (place_meeting(x, y, obj_vine))
 			}
 			climb = false;
 			stomp_spin = false;
-			if (hp =1)
-			and (max_hp>= 2)
+			if (hp = 1)
+			and (max_hp >= 2)
 			{
 				if (asset_get_type("snd_jumpsmall") == asset_sound)
 				{
@@ -9208,13 +9208,13 @@ if (key_crouch)
 		and (dive = false)
 		{
 			if (place_meeting(x, y + 1, obj_wall))
-			or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+			or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+			or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				crouch = true;
 				stick_to_wall = false;
-				y+=16;
+				y+= 16;
 				if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 				{sprite_index = sprite_stand;}
 				if (sprite_mask_crouch > 0)
@@ -9247,7 +9247,7 @@ and (crouch = true)
 		crouch = false;
 		y -= 16;
 		draw_xscale = 0.75;
-		draw_yscale =1.25;
+		draw_yscale = 1.25;
 		if (sprite_mask > 0)
 		{
 			mask_index = sprite_mask;
@@ -9267,9 +9267,9 @@ if (crouch = true)
 {
 	stick_to_wall = false;
 	if (place_meeting(x, y + 1, obj_wall))
-	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (abs(hspeed)>3)
 		{
@@ -9294,11 +9294,11 @@ if (crouch = true)
 	}
 	if (abs(hspeed)>= 2.5)
 	and (place_meeting(x, y + 1, obj_wall))
-	or (abs(hspeed)>= 2.5)
+	or(abs(hspeed)>= 2.5)
 	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (abs(hspeed)>= 2.5)
+	or(abs(hspeed)>= 2.5)
 	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (abs(hspeed)>= 2.5)
+	or(abs(hspeed)>= 2.5)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (asset_get_type("spr_player_slide") == asset_sprite)
@@ -9336,9 +9336,9 @@ if (crouch = true)
 	}
 	else
 	if (place_meeting(x, y + 1, obj_wall))
-	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		
 		#region /*Crouch Stand*/
@@ -9362,7 +9362,7 @@ if (crouch = true)
 		#region /*Crouch Crawl*/
 		else
 		if (key_left)
-		or (key_right)
+		or(key_right)
 		{
 			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
@@ -9374,9 +9374,9 @@ if (crouch = true)
 	}
 	else
 	if (!place_meeting(x, y + 1, obj_wall))
-	or (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (key_jump)
 		{
@@ -9409,7 +9409,7 @@ if (crouch = true)
 else
 if (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -9418,7 +9418,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 #region /*Skidding*/
 if (hspeed < 0)
 and (key_right)
-or (hspeed > 0)
+or(hspeed > 0)
 and (key_left)
 {
 	if (asset_get_type("snd_skidding") == asset_sound)
@@ -9466,11 +9466,11 @@ and (!key_right)
 /*Run*/
 else
 if (hspeed <+ 0.1)
-or (hspeed >- 0.1)
+or(hspeed >- 0.1)
 {
 	if (can_move = true)
 	and (goal = false)
-	or (goal = true)
+	or(goal = true)
 	{
 		if (speeddash = true)
 		{
@@ -9491,7 +9491,7 @@ or (hspeed >- 0.1)
 		else
 		{
 			if (place_meeting(x - 1, y, obj_wall))
-			or (place_meeting(x + 1, y, obj_wall))
+			or(place_meeting(x + 1, y, obj_wall))
 			{
 				if (sprite_swim > noone){sprite_index = sprite_swim;}else
 				if (sprite_against_wall > noone){sprite_index = sprite_against_wall;}else
@@ -9509,8 +9509,8 @@ or (hspeed >- 0.1)
 		image_speed =speed/13.5+0.1;
 	}
 }
-if (image_index<1)
-or (image_index = 4)
+if (image_index< 1)
+or(image_index = 4)
 {
 	if abs(hspeed) > 0
 	{
@@ -9533,15 +9533,15 @@ else
 /*Swimming Sprites*/
 else
 if (!place_meeting(x, y + 1, obj_wall))
-or (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-or (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+or(!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+or(!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+or(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 
 #region /*Skidding*/
 if (hspeed<-0.2)
 and (image_xscale > 0)
-or (hspeed >+0.2)
+or(hspeed >+0.2)
 and (image_xscale < 0)
 {
 	if (asset_get_type("snd_skidding") == asset_sound)
@@ -9625,12 +9625,12 @@ and (allow_crouch = true)
 	and (dive = false)
 	{
 		if (place_meeting(x, y + 1, obj_wall))
-		or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-		or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			crouch = true;
-			draw_xscale =1.5;
+			draw_xscale = 1.5;
 			draw_yscale = 0.5;
 			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 			{image_index=sprite_stand;}
@@ -9644,11 +9644,11 @@ and (allow_crouch = true)
 				mask_index = sprite_index;
 			}
 			if (!place_meeting(x, y + 16, obj_wall))
-			or (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-			or (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+			or(!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+			or(!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			or(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			{
-			y+=32;
+			y+= 32;
 			}
 			if (asset_get_type("snd_crouch") == asset_sound)
 			{
@@ -9672,7 +9672,7 @@ and (crouch = true)
 		crouch = false;
 		y -= 16;
 		draw_xscale = 0.75;
-		draw_yscale =1.25;
+		draw_yscale = 1.25;
 		if (sprite_mask > 0)
 		{
 			mask_index = sprite_mask;
@@ -9746,9 +9746,9 @@ if (crouch = true)
 	#endregion /*Destroy blocks above you when you jump while crouching END*/
 	
 	if (place_meeting(x, y + 1, obj_wall))
-	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (abs(hspeed)>3)
 		{
@@ -9773,11 +9773,11 @@ if (crouch = true)
 	}
 	if (abs(hspeed)>= 2.5)
 	and (place_meeting(x, y + 1, obj_wall))
-	or (abs(hspeed)>= 2.5)
+	or(abs(hspeed)>= 2.5)
 	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (abs(hspeed)>= 2.5)
+	or(abs(hspeed)>= 2.5)
 	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (abs(hspeed)>= 2.5)
+	or(abs(hspeed)>= 2.5)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (sprite_mask_crouch > 0)
@@ -9802,9 +9802,9 @@ if (crouch = true)
 	}
 	else
 	if (place_meeting(x, y + 1, obj_wall))
-	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
 
 	#region /*Crouch Still*/
@@ -9830,7 +9830,7 @@ if (crouch = true)
 	
 	#region /*Crouch Crawl*/
 	if (key_left)
-	or (key_right)
+	or(key_right)
 	{
 		if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 		if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
@@ -9950,7 +9950,7 @@ if (ground_pound = 2)
 	}
 }
 else
-if (ground_pound =3)
+if (ground_pound = 3)
 {
 	if (sprite_stomp_spin > noone){sprite_index = sprite_stomp_spin;}else
 	if (sprite_jump > noone){sprite_index = sprite_jump;}else
@@ -9969,13 +9969,13 @@ if (ground_pound =3)
 else
 if (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (vspeed = 0)
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 and (vspeed = 0)
-or (asset_get_type("obj_semisolid_platform") == asset_object)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 and (vspeed = 0)
 {
@@ -9983,7 +9983,7 @@ and (vspeed = 0)
 #region /*Skidding*/
 if (hspeed < 0)
 and (key_right)
-or (hspeed > 0)
+or(hspeed > 0)
 and (key_left)
 {
 	if (can_move = true)
@@ -10015,7 +10015,7 @@ and (key_left)
 			if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice;image_speed = 0.5;}else
 			if (sprite_skidding> noone){sprite_index = sprite_skidding;image_speed = 0.5;}else
 			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_walk> noone) and (hspeed<>0){sprite_index = sprite_walk;}else
+			if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
 			{sprite_index = sprite_stand;}
 		}
 		else
@@ -10025,8 +10025,8 @@ and (key_left)
 			if (abs(hspeed)>15) and (sprite_run3> noone){sprite_index = sprite_run3;}else
 			if (abs(hspeed)>10) and (sprite_run2> noone){sprite_index = sprite_run2;}else
 			if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_walk> noone) and (hspeed<>0){sprite_index = sprite_walk;}else
-			if (sprite_run > noone) and (hspeed<>0){sprite_index = sprite_run;}else
+			if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
+			if (sprite_run > noone) and (hspeed<> 0){sprite_index = sprite_run;}else
 			{sprite_index = sprite_stand;}
 		}
 		effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
@@ -10039,16 +10039,16 @@ else
 #region /*Skidding Stop*/
 if (hspeed < 0)
 and (!key_left)
-or (hspeed > 0)
+or(hspeed > 0)
 and (!key_right)
 {
 	if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop;image_speed = 0.5;}else
-	if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4;image_speed =speed/10 +0.1;}else
-	if (abs(hspeed)>15) and (sprite_run3> noone){sprite_index = sprite_run3;image_speed =speed/10 +0.1;}else
-	if (abs(hspeed)>10) and (sprite_run2> noone){sprite_index = sprite_run2;image_speed =speed/10 +0.1;}else
-	if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;image_speed =speed/10 +0.1;}else
-	if (sprite_walk> noone) and (hspeed <> 0){sprite_index = sprite_walk;image_speed =speed/10 +0.1;}else
-	if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run;image_speed =speed/10 +0.1;}else
+	if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4;image_speed =speed/10 + 0.1;}else
+	if (abs(hspeed)>15) and (sprite_run3> noone){sprite_index = sprite_run3;image_speed =speed/10 + 0.1;}else
+	if (abs(hspeed)>10) and (sprite_run2> noone){sprite_index = sprite_run2;image_speed =speed/10 + 0.1;}else
+	if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;image_speed =speed/10 + 0.1;}else
+	if (sprite_walk> noone) and (hspeed <> 0){sprite_index = sprite_walk;image_speed =speed/10 + 0.1;}else
+	if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run;image_speed =speed/10 + 0.1;}else
 	{sprite_index = sprite_stand;image_speed = 0.5;}
 }
 #endregion /*Skidding Stop END*/
@@ -10193,13 +10193,13 @@ else
 if (place_meeting(x - 1, y, obj_wall))
 and (place_meeting(x, y + 1, obj_wall))
 and (key_left)
-or (place_meeting(x + 1, y, obj_wall))
+or(place_meeting(x + 1, y, obj_wall))
 and (place_meeting(x, y + 1, obj_wall))
 and (key_right)
-or (place_meeting(x - 1, y, obj_wall))
+or(place_meeting(x - 1, y, obj_wall))
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (key_left)
-or (place_meeting(x + 1, y, obj_wall))
+or(place_meeting(x + 1, y, obj_wall))
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (key_right)
 {
@@ -10225,7 +10225,7 @@ else
 }
 
 if (image_index = floor(1))
-or (image_index = floor(6))
+or(image_index = floor(6))
 {
 	if (abs(hspeed) > 0)
 	{
@@ -10250,7 +10250,7 @@ else
 /*Jumping Sprites*/
 if (!place_meeting(x, y + 1, obj_wall))
 {
-	if (burnt>0)
+	if (burnt> 0)
 	{
 		if (sprite_burnt> noone){sprite_index = sprite_burnt;}else
 		if (sprite_die > noone){sprite_index = sprite_die;}else
@@ -10535,13 +10535,13 @@ if (asset_get_type("obj_ice_block") == asset_object)
 		if (crouch = false)
 		{
 			if (speed < 2)
-			or (hspeed > 0)
+			or(hspeed > 0)
 			and (key_right)
-			or (hspeed < 0)
+			or(hspeed < 0)
 			and (key_left)
-			or (!key_left)
+			or(!key_left)
 			and (!key_right)
-			or (!place_meeting(x, y + 1, obj_ice_block))
+			or(!place_meeting(x, y + 1, obj_ice_block))
 			{
 				if (asset_get_type("snd_skidding_ice") == asset_sound)
 				{
@@ -10554,7 +10554,7 @@ if (asset_get_type("obj_ice_block") == asset_object)
 		}
 		else
 		if (!place_meeting(x, y + 1, obj_ice_block))
-		or (speed < 1)
+		or(speed < 1)
 		{
 			if (asset_get_type("snd_skidding_ice") == asset_sound)
 			{
@@ -10572,13 +10572,13 @@ if (asset_get_type("obj_ice_block") == asset_object)
 if (crouch = false)
 {
 	if (speed < 2)
-	or (hspeed > 0)
+	or(hspeed > 0)
 	and (key_right)
-	or (hspeed < 0)
+	or(hspeed < 0)
 	and (key_left)
-	or (!key_left)
+	or(!key_left)
 	and (!key_right)
-	or (!place_meeting(x, y + 1, obj_wall))
+	or(!place_meeting(x, y + 1, obj_wall))
 	{
 		if (asset_get_type("snd_skidding") == asset_sound)
 		{
@@ -10591,7 +10591,7 @@ if (crouch = false)
 }
 else
 if (!place_meeting(x, y + 1, obj_wall))
-or (speed < 1)
+or(speed < 1)
 {
 	if (asset_get_type("snd_skidding") == asset_sound)
 	{
@@ -10605,19 +10605,19 @@ or (speed < 1)
 
 #region /*Footstep sounds*/
 if (place_meeting(x, y + 1, obj_wall))
-or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (speed > 0)
 	and (crouch = false)
 	{
 		if (hspeed < 0)
 		and (!key_right)
-		or (hspeed > 0)
+		or(hspeed > 0)
 		and (!key_left)
 		{
-			if (image_index<1)
+			if (image_index< 1)
 			{
 				
 				#region /*Left Footstep Sounds*/
@@ -10920,9 +10920,9 @@ or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 
 #region /*Running Sparks Effect*/
 if (place_meeting(x, y + 1, obj_wall))
-or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (abs(hspeed)>speed_max_walk + 1)
 	{
@@ -10986,9 +10986,9 @@ else
 
 #region /*Speedlines Effect*/
 if (vspeed < 0)
-or (vspeed > 0)
+or(vspeed > 0)
 and (invincible < 1)
-or (invincible > 0)
+or(invincible > 0)
 {
 	if (asset_get_type("obj_speedline") == asset_object)
 	{
@@ -10998,9 +10998,9 @@ or (invincible > 0)
 #endregion /*Speedlines Effect END*/
 
 if (place_meeting(x, y + 1, obj_wall))
-or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	can_dive = true;
 }

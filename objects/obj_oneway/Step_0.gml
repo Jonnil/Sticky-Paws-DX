@@ -1,5 +1,5 @@
 if (image_angle = 0)
-or (image_angle = 360)
+or(image_angle = 360)
 {
 	if (asset_get_type("obj_player") == asset_object)
 	and (place_meeting(x - 1, y, obj_player))

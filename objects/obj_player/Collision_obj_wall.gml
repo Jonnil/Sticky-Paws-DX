@@ -74,9 +74,9 @@ and (stick_to_wall = false)
 
 #region /*Hitting wall to your left*/
 if (position_meeting(bbox_left - 1, bbox_bottom - 8, other))
-or (position_meeting(bbox_left - 1, bbox_top + 8, other))
-or (position_meeting(bbox_left - 1, y, other))
-//or (place_meeting(x - 1, y, other))
+or(position_meeting(bbox_left - 1, bbox_top + 8, other))
+or(position_meeting(bbox_left - 1, y, other))
+//or(place_meeting(x - 1, y, other))
 {
 	if (hspeed <= 0)
 	{
@@ -87,9 +87,9 @@ or (position_meeting(bbox_left - 1, y, other))
 
 #region /*Hitting wall to your right*/
 if (position_meeting(bbox_right + 1, bbox_bottom - 8, other))
-or (position_meeting(bbox_right + 1, bbox_top + 8, other))
-or (position_meeting(bbox_right + 1, y, other))
-//or (place_meeting(x + 1, y, other))
+or(position_meeting(bbox_right + 1, bbox_top + 8, other))
+or(position_meeting(bbox_right + 1, y, other))
+//or(place_meeting(x + 1, y, other))
 {
 	if (hspeed >= 0)
 	{

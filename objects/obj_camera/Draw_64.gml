@@ -9,7 +9,7 @@ and (!instance_exists(obj_title))
 	
 	#region /*If HUD show timer is set to always hide*/
 	if (global.hud_hide_time <= 0)
-	or (show_letterbox > 0)
+	or(show_letterbox > 0)
 	{
 		global.hud_show_lives = false;
 		global.hud_show_deaths = false;
@@ -146,7 +146,7 @@ and (!instance_exists(obj_title))
 			else
 			if (hud_show_lives > 0)
 			and (hud_show_deaths < 0)
-			or (hud_show_lives < 0)
+			or(hud_show_lives < 0)
 			and (hud_show_deaths > 0)
 			and (global.show_deaths_counter = true)
 			{
@@ -178,10 +178,10 @@ and (!instance_exists(obj_title))
 			and (hud_show_deaths > 0)
 			and (global.show_deaths_counter = true)
 			and (hud_show_big_collectibles > 0)
-			or (hud_show_lives > 0)
+			or(hud_show_lives > 0)
 			and (hud_show_deaths < 0)
 			and (hud_show_big_collectibles > 0)
-			or (hud_show_lives > 0)
+			or(hud_show_lives > 0)
 			and (hud_show_deaths > 0)
 			and (global.show_deaths_counter = true)
 			and (hud_show_big_collectibles < 0)
@@ -192,11 +192,11 @@ and (!instance_exists(obj_title))
 			if (hud_show_lives > 0)
 			and (hud_show_deaths < 0)
 			and (hud_show_big_collectibles < 0)
-			or (hud_show_lives < 0)
+			or(hud_show_lives < 0)
 			and (hud_show_deaths > 0)
 			and (global.show_deaths_counter = true)
 			and (hud_show_big_collectibles < 0)
-			or (hud_show_lives < 0)
+			or(hud_show_lives < 0)
 			and (hud_show_deaths < 0)
 			and (hud_show_big_collectibles > 0)
 			{
@@ -257,8 +257,8 @@ and (!instance_exists(obj_title))
 			{
 				draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
 			}
-			draw_line_width_color (32- 16, hud_show_deaths - 16, 32+ 16, hud_show_deaths+ 16, 3, c_red, c_red);
-			draw_line_width_color (32- 16, hud_show_deaths+ 16, 32+ 16, hud_show_deaths - 16, 3, c_red, c_red);
+			draw_line_width_color(32- 16, hud_show_deaths - 16, 32+ 16, hud_show_deaths+ 16, 3, c_red, c_red);
+			draw_line_width_color(32- 16, hud_show_deaths+ 16, 32+ 16, hud_show_deaths - 16, 3, c_red, c_red);
 			draw_text_outlined(64, hud_show_deaths, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Death Counter END*/
@@ -338,7 +338,7 @@ and (!instance_exists(obj_title))
 		#region /*Time Countdown*/
 		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
-		or (asset_get_type("obj_player_die") == asset_object)
+		or(asset_get_type("obj_player_die") == asset_object)
 		and (instance_exists(obj_player_die))
 		{
 
@@ -351,7 +351,7 @@ and (!instance_exists(obj_title))
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_center);
 					draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, "HURRY UP!", global.default_text_size, c_black, c_orange, 1);
-					draw_text_transformed_color (display_get_gui_width() / 2, display_get_gui_height() / 2, "HURRY UP!", global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
+					draw_text_transformed_color(display_get_gui_width() / 2, display_get_gui_height() / 2, "HURRY UP!", global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 				}
 			}
 			#endregion /*Time is running out message END*/
@@ -382,12 +382,12 @@ and (!instance_exists(obj_title))
 						if (global.time_countdown >= 100)
 						{
 							draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_yellow, 1);
-							draw_text_transformed_color (window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
+							draw_text_transformed_color(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
 						}
 						else
 						{
 							draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_orange, 1);
-							draw_text_transformed_color (window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
+							draw_text_transformed_color(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 						}
 					}
 					if (global.timeattack_millisecond < room_speed / 2)
@@ -422,7 +422,7 @@ and (!instance_exists(obj_title))
 				{
 					draw_text_outlined(window_get_width() - 60, 74, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
 				}
-				draw_text_outlined(window_get_width() - 30, 74, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size*0.75, c_black, c_white, 1);
+				draw_text_outlined(window_get_width() - 30, 74, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size *0.75, c_black, c_white, 1);
 			}
 			#endregion /*Time countup in Minutes, Seconds and Milliseconds END*/
 		
@@ -467,9 +467,9 @@ and (!instance_exists(obj_pause))
 	
 	#region /*Show Multiplayer Controls*/
 	if (global.player1_can_play = true)
-	or (global.player2_can_play = true)
-	or (global.player3_can_play = true)
-	or (global.player4_can_play = true)
+	or(global.player2_can_play = true)
+	or(global.player3_can_play = true)
+	or(global.player4_can_play = true)
 	{
 		
 		#region /*Y position of show controls for each player*/
@@ -1719,15 +1719,15 @@ if (global.player1_can_play >= 1) /*Only show controller input change if there i
 and (global.player2_can_play <= 0)
 and (global.player3_can_play <= 0)
 and (global.player4_can_play <= 0)
-or (global.player1_can_play <= 0)
+or(global.player1_can_play <= 0)
 and (global.player2_can_play >= 1)
 and (global.player3_can_play <= 0)
 and (global.player4_can_play <= 0)
-or (global.player1_can_play <= 0)
+or(global.player1_can_play <= 0)
 and (global.player2_can_play <= 0)
 and (global.player3_can_play >= 1)
 and (global.player4_can_play <= 0)
-or (global.player1_can_play <= 0)
+or(global.player1_can_play <= 0)
 and (global.player2_can_play <= 0)
 and (global.player3_can_play <= 0)
 and (global.player4_can_play >= 1)
@@ -1743,12 +1743,12 @@ scr_virtual_keys();
 if (show_letterbox > 0)
 and (global.play_edited_level = false)
 and (global.actually_play_edited_level = false)
-or (show_letterbox > 0)
+or(show_letterbox > 0)
 and (global.play_edited_level = true)
 and (global.actually_play_edited_level = true)
 {
-	draw_rectangle_color (0, 0, room_width*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color (0, letterbox_bottom_y, room_width*3, window_get_height(), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, room_width*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, letterbox_bottom_y, room_width*3, window_get_height(), c_black, c_black, c_black, c_black, false);
 }
 if (asset_get_type("obj_player") == asset_object)
 and (!instance_exists(obj_player))
@@ -1756,11 +1756,11 @@ and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
-or (asset_get_type("obj_player") == asset_object)
+or(asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (obj_player.can_move = false)
 {
-	letterbox_top_y = lerp(letterbox_top_y, +64, 0.1);
+	letterbox_top_y = lerp(letterbox_top_y, + 64, 0.1);
 	letterbox_bottom_y = lerp(letterbox_bottom_y, window_get_height() - 64, 0.1);
 	show_letterbox = 60;
 }

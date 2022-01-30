@@ -10,7 +10,7 @@ and (instance_exists(obj_player))
 	if (instance_nearest(x, y, obj_player).x > x-32)
 	and (instance_nearest(x, y, obj_player).x < x + 32)
 	and (instance_nearest(x, y, obj_player).y < y)
-	or (place_meeting(x, y, instance_nearest(x, y, obj_player)))
+	or(place_meeting(x, y, instance_nearest(x, y, obj_player)))
 	{
 		if (asset_get_type("obj_wall") == asset_object)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
@@ -21,7 +21,7 @@ and (instance_exists(obj_player))
 				image_speed = 0;
 				with(instance_nearest(x, y, obj_player))
 				{
-					hp+=1;
+					hp += 1;
 				}
 				effect_create_below(ef_ring,x, y, 2, c_white);
 				
@@ -46,7 +46,7 @@ and (instance_exists(obj_player))
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
-						delay_time =10;
+						delay_time = 10;
 					}
 					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
@@ -62,7 +62,7 @@ and (instance_exists(obj_player))
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
-						delay_time =30;
+						delay_time = 30;
 					}
 					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)

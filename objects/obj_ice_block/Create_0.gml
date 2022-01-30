@@ -5,7 +5,7 @@ if (asset_get_type("obj_wall") == asset_object)
 	
 	#region /*Add walls up outide view*/
 	if (!position_meeting(x, y-sprite_height, obj_wall))
-	and (y<= 0)
+	and (y <= 0)
 	{
 		instance_create_depth(x, y-sprite_height, 0, obj_wall);
 		instance_create_depth(x, y-sprite_height*2, 0, obj_wall);

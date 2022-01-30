@@ -1,7 +1,7 @@
-key_a=(gamepad_button_check(0, gp_face1))or (keyboard_check(global.player1_key_jump));
-key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or (keyboard_check_pressed(global.player1_key_jump));
-key_a_released =(gamepad_button_check_released(0, gp_face1))or (keyboard_check_released(global.player1_key_jump));
-key_b=(gamepad_button_check(0, gp_face2))or (keyboard_check(global.player1_key_sprint));
+key_a=(gamepad_button_check(0, gp_face1))or(keyboard_check(global.player1_key_jump));
+key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or(keyboard_check_pressed(global.player1_key_jump));
+key_a_released =(gamepad_button_check_released(0, gp_face1))or(keyboard_check_released(global.player1_key_jump));
+key_b=(gamepad_button_check(0, gp_face2))or(keyboard_check(global.player1_key_sprint));
 
 #region /*Translate object names into object ID*/
 
@@ -101,7 +101,7 @@ and (global.character_select_in_this_menu = "level_editor")
 {
 
 	#region /*Show only normal difficulty layer in regular colors when saving a thumbnail*/
-	if (obj_leveleditor.quit_level_editor>= true)
+	if (obj_leveleditor.quit_level_editor >= true)
 	and (normal = true)
 	and (sprite_index > 0)
 	{
@@ -114,8 +114,8 @@ and (global.character_select_in_this_menu = "level_editor")
 	else
 	
 	#region /*All layer*/
-	if (obj_leveleditor.difficulty_layer= 0)
-	and (obj_leveleditor.quit_level_editor= false)
+	if (obj_leveleditor.difficulty_layer = 0)
+	and (obj_leveleditor.quit_level_editor = false)
 	{
 		#region /*Transparent Object*/
 		if (easy = true)
@@ -195,7 +195,7 @@ and (global.character_select_in_this_menu = "level_editor")
 
 	#region /*Easy layer*/
 	if (obj_leveleditor.difficulty_layer = 1)
-	and (obj_leveleditor.quit_level_editor= false)
+	and (obj_leveleditor.quit_level_editor = false)
 	{
 		if (easy = true)
 		and (sprite_index > 0)
@@ -273,7 +273,7 @@ and (global.character_select_in_this_menu = "level_editor")
 
 	#region /*Normal layer*/
 	if (obj_leveleditor.difficulty_layer = 2)
-	and (obj_leveleditor.quit_level_editor= false)
+	and (obj_leveleditor.quit_level_editor = false)
 	{
 		if (normal = true)
 		and (sprite_index > 0)
@@ -351,7 +351,7 @@ and (global.character_select_in_this_menu = "level_editor")
 
 	#region /*Hard layer*/
 	if (obj_leveleditor.difficulty_layer = 3)
-	and (obj_leveleditor.quit_level_editor= false)
+	and (obj_leveleditor.quit_level_editor = false)
 	{
 		if (hard = true)
 		and (sprite_index > 0)
@@ -460,58 +460,58 @@ and (!mouse_check_button(mb_middle))
 {
 	if (obj_leveleditor.erase_mode = true)
 	and (mouse_check_button(mb_left))
-	or (mouse_check_button(mb_right))
+	or(mouse_check_button(mb_right))
 	{
 		if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
 		/*Erase brush size 1*/
-		or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
-		or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
-		or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
+		or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
+		or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
+		or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
 		/*Erase brush size 1 END*/
 		
 		/*Erase brush size 2*/
-		or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
-		or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
-		or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
-		or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
-		or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
+		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
+		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
+		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
+		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
+		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
 		/*Erase brush size 2 END*/
 		
 		/*Erase brush size 3*/
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 32, id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y, id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y + 32, id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+64, id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
-		or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
+		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
+		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
+		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y + 32, id))
+		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+64, id))
+		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
+		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
+		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
 		/*Erase brush size 3 END*/
 		
 		/*Erase brush size 4*/
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 64, id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
-		or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
+		or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
+		or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
+		or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
+		or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
+		or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
+		or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
+		or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
+		or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
+		or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
 		/*Erase brush size 4 END*/
 		
 		/*Erase brush size 5*/
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+96, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
-		or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+96, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
+		or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
 		/*Erase brush size 5 END*/
 		
 		{
@@ -552,14 +552,14 @@ image_speed = 0;
 image_index= 0;
 #endregion /*Initialize object mask END*/
 
-if (delay<3)
+if (delay <3)
 {
-	delay+=1;
+	delay+= 1;
 }
 
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
-and (delay =3)
+and (delay = 3)
 {
 	
 	#region /*Destroy if erased*/
@@ -628,51 +628,51 @@ and (delay >1)
 				}
 				
 				#region /*Change wall into it's different forms*/
-				if (object =1)
+				if (object = 1)
 				{
-					object =1001;
+					object = 1001;
 					obj_leveleditor.wall_surface_selected = 1;
 				}
 				else
-				if (object =1001)
+				if (object = 1001)
 				{
-					object =1002;
+					object = 1002;
 					obj_leveleditor.wall_surface_selected = 2;
 				}
 				else
-				if (object =1002)
+				if (object = 1002)
 				{
-					object =1003;
+					object = 1003;
 					obj_leveleditor.wall_surface_selected = 3;
 				}
 				else
-				if (object =1003)
+				if (object = 1003)
 				{
-					object =1004;
+					object = 1004;
 					obj_leveleditor.wall_surface_selected = 4;
 				}
 				else
-				if (object =1004)
+				if (object = 1004)
 				{
-					object =1005;
+					object = 1005;
 					obj_leveleditor.wall_surface_selected = 5;
 				}
 				else
-				if (object =1005)
+				if (object = 1005)
 				{
-					object =1006;
+					object = 1006;
 					obj_leveleditor.wall_surface_selected = 6;
 				}
 				else
-				if (object =1006)
+				if (object = 1006)
 				{
-					object =1007;
+					object = 1007;
 					obj_leveleditor.wall_surface_selected = 7;
 				}
 				else
-				if (object =1007)
+				if (object = 1007)
 				{
-					object =1;
+					object = 1;
 					obj_leveleditor.wall_surface_selected = 0;
 				}
 				#endregion /*Change wall into it's different forms END*/
@@ -685,55 +685,55 @@ and (delay >1)
 				else
 				if (object = 29)
 				{
-					object =30;
+					object = 30;
 				}
 				else
-				if (object =30)
+				if (object = 30)
 				{
-					object =31;
+					object = 31;
 				}
 				else
-				if (object =31)
+				if (object = 31)
 				{
-					object =32;
+					object = 32;
 				}
 				else
-				if (object =32)
+				if (object = 32)
 				{
-					object =33;
+					object = 33;
 				}
 				else
-				if (object =33)
+				if (object = 33)
 				{
-					object =34;
+					object = 34;
 				}
 				else
-				if (object =34)
+				if (object = 34)
 				{
-					object =35;
+					object = 35;
 				}
 				else
-				if (object =35)
+				if (object = 35)
 				{
-					object =36;
+					object = 36;
 				}
 				else
-				if (object =36)
+				if (object = 36)
 				{
-					object =37;
+					object = 37;
 				}
 				else
-				if (object =37)
+				if (object = 37)
 				{
-					object =38;
+					object = 38;
 				}
 				else
-				if (object =38)
+				if (object = 38)
 				{
-					object =39;
+					object = 39;
 				}
 				else
-				if (object =39)
+				if (object = 39)
 				{
 					object = 28;
 				}
@@ -1100,7 +1100,7 @@ and (delay >1)
 
 	#region /*Use objects to change other objects*/
 	if (mouse_check_button(mb_left))
-	or (key_a)
+	or(key_a)
 	{
 		if (!mouse_check_button(mb_middle))
 		{
@@ -1114,7 +1114,7 @@ and (delay >1)
 					{
 						#region /*Bump in Ground*/
 						if (object = 24)
-						or (object = 26)
+						or(object = 26)
 						{
 							object = 25;
 						}
@@ -1123,13 +1123,13 @@ and (delay >1)
 						#region /*Brick Block*/
 						if (asset_get_type("spr_brick_block") == asset_sprite)
 						and (object =spr_brick_block)
-						or (asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
+						or(asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
 						and (object =spr_basic_collectible_brick_block)
-						or (asset_get_type("spr_powerup_brick_block") == asset_sprite)
+						or(asset_get_type("spr_powerup_brick_block") == asset_sprite)
 						and (object =spr_powerup_brick_block)
-						or (asset_get_type("spr_1up_brick_block") == asset_sprite)
+						or(asset_get_type("spr_1up_brick_block") == asset_sprite)
 						and (object =spr_1up_brick_block)
-						or (asset_get_type("spr_star_brick_block") == asset_sprite)
+						or(asset_get_type("spr_star_brick_block") == asset_sprite)
 						and (object =spr_star_brick_block)
 						{
 							if (asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
@@ -1142,13 +1142,13 @@ and (delay >1)
 						#region /*Question Block*/
 						if (asset_get_type("spr_question_block") == asset_sprite)
 						and (object =spr_question_block)
-						or (asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
+						or(asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
 						and (object =spr_basic_collectible_question_block)
-						or (asset_get_type("spr_powerup_question_block") == asset_sprite)
+						or(asset_get_type("spr_powerup_question_block") == asset_sprite)
 						and (object =spr_powerup_question_block)
-						or (asset_get_type("spr_1up_question_block") == asset_sprite)
+						or(asset_get_type("spr_1up_question_block") == asset_sprite)
 						and (object =spr_1up_question_block)
-						or (asset_get_type("spr_star_question_block") == asset_sprite)
+						or(asset_get_type("spr_star_question_block") == asset_sprite)
 						and (object =spr_star_question_block)
 						{
 							if (asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
@@ -1164,7 +1164,7 @@ and (delay >1)
 						#region /*Bump in Ground*/
 						if (asset_get_type("spr_bump_in_ground") == asset_sprite)
 						and (object =spr_bump_in_ground)
-						or (asset_get_type("spr_basic_collectible_bump_in_ground") == asset_sprite)
+						or(asset_get_type("spr_basic_collectible_bump_in_ground") == asset_sprite)
 						and (object =spr_basic_collectible_bump_in_ground)
 						if (asset_get_type("spr_powerup_bump_in_ground") == asset_sprite)
 						and (object =spr_powerup_bump_in_ground)
@@ -1179,13 +1179,13 @@ and (delay >1)
 						#region /*Brick Block*/
 						if (asset_get_type("spr_brick_block") == asset_sprite)
 						and (object =spr_brick_block)
-						or (asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
+						or(asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
 						and (object =spr_basic_collectible_brick_block)
-						or (asset_get_type("spr_powerup_brick_block") == asset_sprite)
+						or(asset_get_type("spr_powerup_brick_block") == asset_sprite)
 						and (object =spr_powerup_brick_block)
-						or (asset_get_type("spr_1up_brick_block") == asset_sprite)
+						or(asset_get_type("spr_1up_brick_block") == asset_sprite)
 						and (object =spr_1up_brick_block)
-						or (asset_get_type("spr_star_brick_block") == asset_sprite)
+						or(asset_get_type("spr_star_brick_block") == asset_sprite)
 						and (object =spr_star_brick_block)
 						{
 							if (asset_get_type("spr_powerup_brick_block") == asset_sprite)
@@ -1198,13 +1198,13 @@ and (delay >1)
 						#region /*Question Block*/
 						if (asset_get_type("spr_brick_block") == asset_sprite)
 						and (object =spr_question_block)
-						or (asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
+						or(asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
 						and (object =spr_basic_collectible_question_block)
-						or (asset_get_type("spr_powerup_question_block") == asset_sprite)
+						or(asset_get_type("spr_powerup_question_block") == asset_sprite)
 						and (object =spr_powerup_question_block)
-						or (asset_get_type("spr_1up_question_block") == asset_sprite)
+						or(asset_get_type("spr_1up_question_block") == asset_sprite)
 						and (object =spr_1up_question_block)
-						or (asset_get_type("spr_star_question_block") == asset_sprite)
+						or(asset_get_type("spr_star_question_block") == asset_sprite)
 						and (object =spr_star_question_block)
 						{
 							if (asset_get_type("spr_powerup_question_block") == asset_sprite)
@@ -1220,13 +1220,13 @@ and (delay >1)
 						#region /*Brick Block*/
 						if (asset_get_type("spr_brick_block") == asset_sprite)
 						and (object =spr_brick_block)
-						or (asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
+						or(asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
 						and (object =spr_basic_collectible_brick_block)
-						or (asset_get_type("spr_powerup_brick_block") == asset_sprite)
+						or(asset_get_type("spr_powerup_brick_block") == asset_sprite)
 						and (object =spr_powerup_brick_block)
-						or (asset_get_type("spr_1up_brick_block") == asset_sprite)
+						or(asset_get_type("spr_1up_brick_block") == asset_sprite)
 						and (object =spr_1up_brick_block)
-						or (asset_get_type("spr_star_brick_block") == asset_sprite)
+						or(asset_get_type("spr_star_brick_block") == asset_sprite)
 						and (object =spr_star_brick_block)
 						{
 							if (asset_get_type("spr_1up_brick_block") == asset_sprite)
@@ -1239,13 +1239,13 @@ and (delay >1)
 						#region /*Question Block*/
 						if (asset_get_type("spr_question_block") == asset_sprite)
 						and (object =spr_question_block)
-						or (asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
+						or(asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
 						and (object =spr_basic_collectible_question_block)
-						or (asset_get_type("spr_powerup_question_block") == asset_sprite)
+						or(asset_get_type("spr_powerup_question_block") == asset_sprite)
 						and (object =spr_powerup_question_block)
-						or (asset_get_type("spr_1up_question_block") == asset_sprite)
+						or(asset_get_type("spr_1up_question_block") == asset_sprite)
 						and (object =spr_1up_question_block)
-						or (asset_get_type("spr_star_question_block") == asset_sprite)
+						or(asset_get_type("spr_star_question_block") == asset_sprite)
 						and (object =spr_star_question_block)
 						{
 							if (asset_get_type("spr_1up_question_block") == asset_sprite)
@@ -1261,13 +1261,13 @@ and (delay >1)
 						#region /*Brick Block*/
 						if (asset_get_type("spr_brick_block") == asset_sprite)
 						and (object =spr_brick_block)
-						or (asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
+						or(asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
 						and (object =spr_basic_collectible_brick_block)
-						or (asset_get_type("spr_powerup_brick_block") == asset_sprite)
+						or(asset_get_type("spr_powerup_brick_block") == asset_sprite)
 						and (object =spr_powerup_brick_block)
-						or (asset_get_type("spr_1up_brick_block") == asset_sprite)
+						or(asset_get_type("spr_1up_brick_block") == asset_sprite)
 						and (object =spr_1up_brick_block)
-						or (asset_get_type("spr_star_brick_block") == asset_sprite)
+						or(asset_get_type("spr_star_brick_block") == asset_sprite)
 						and (object =spr_star_brick_block)
 						{
 							if (asset_get_type("spr_star_brick_block") == asset_sprite)
@@ -1280,13 +1280,13 @@ and (delay >1)
 						#region /*Question Block*/
 						if (asset_get_type("spr_question_block") == asset_sprite)
 						and (object =spr_question_block)
-						or (asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
+						or(asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
 						and (object =spr_basic_collectible_question_block)
-						or (asset_get_type("spr_powerup_question_block") == asset_sprite)
+						or(asset_get_type("spr_powerup_question_block") == asset_sprite)
 						and (object =spr_powerup_question_block)
-						or (asset_get_type("spr_1up_question_block") == asset_sprite)
+						or(asset_get_type("spr_1up_question_block") == asset_sprite)
 						and (object =spr_1up_question_block)
-						or (asset_get_type("spr_star_question_block") == asset_sprite)
+						or(asset_get_type("spr_star_question_block") == asset_sprite)
 						and (object =spr_star_question_block)
 						{
 							if (asset_get_type("spr_star_question_block") == asset_sprite)
@@ -1309,8 +1309,8 @@ and (delay >1)
 /*Spring*/
 if (object = 62)
 {
-	draw_line_width_color (x, y,second_x,second_y, 4, c_black, c_black);
-	draw_line_width_color (x, y,second_x,second_y, 2, c_white, c_white);
+	draw_line_width_color(x, y,second_x,second_y, 4, c_black, c_black);
+	draw_line_width_color(x, y,second_x,second_y, 2, c_white, c_white);
 	draw_angle = point_direction(x, y, second_x, second_y) -90;
 }
 
@@ -1318,11 +1318,11 @@ else
 
 /*Water Level Change*/
 if (object = 732)
-or (object = 733)
-or (object = 734)
+or(object = 733)
+or(object = 734)
 {
-	draw_line_width_color (x, y, x,second_y, 4, c_black, c_black);
-	draw_line_width_color (x, y, x,second_y, 2, c_white, c_white);
+	draw_line_width_color(x, y, x,second_y, 4, c_black, c_black);
+	draw_line_width_color(x, y, x,second_y, 2, c_white, c_white);
 	draw_angle = point_direction(x, y, x, second_y) -90;
 }
 
@@ -1330,7 +1330,7 @@ else
 
 /*Arrows*/
 if (object = 64)
-or (object = 65)
+or(object = 65)
 {
 	draw_angle = point_direction(x, y, second_x, second_y);
 }
@@ -1341,7 +1341,7 @@ else
 if (object = 73)
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color (x - 16, y - 16, 16 + second_x, 16 + second_y, c_blue, c_blue, c_blue, c_blue, false);
+	draw_rectangle_color(x - 16, y - 16, 16 + second_x, 16 + second_y, c_blue, c_blue, c_blue, c_blue, false);
 	draw_set_alpha(1);
 }
 
@@ -1362,73 +1362,73 @@ if (place_object_angle = true)
 #region /*Delete / Erase Objects*/
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
-and (obj_leveleditor.difficulty_layer= 0)
+and (obj_leveleditor.difficulty_layer = 0)
 and (obj_leveleditor.drag_object = false)
 and (obj_leveleditor.erase_mode = true)
 and (obj_leveleditor.pause = false)
 and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
-and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), +64))
+and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64))
 and (!keyboard_check(vk_space))
 and (!mouse_check_button(mb_middle))
 {
 	if (obj_leveleditor.set_difficulty_mode = true)
 	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
-	or (obj_leveleditor.set_difficulty_mode = false)
+	or(obj_leveleditor.set_difficulty_mode = false)
 	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 	{
 		if (mouse_check_button(mb_right))
-		or (mouse_check_button(mb_left))
+		or(mouse_check_button(mb_left))
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
 			/*Erase brush size 1*/
-			or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
-			or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
-			or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
+			or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
+			or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
+			or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
 			/*Erase brush size 1 END*/
 		
 			/*Erase brush size 2*/
-			or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
-			or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
-			or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
-			or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
-			or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
+			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
+			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
+			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
+			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
+			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
 			/*Erase brush size 2 END*/
 		
 			/*Erase brush size 3*/
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 32, id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y, id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y + 32, id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+64, id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
-			or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
+			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
+			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
+			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y + 32, id))
+			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+64, id))
+			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
+			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
+			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
 			/*Erase brush size 3 END*/
 		
 			/*Erase brush size 4*/
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 64, id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
-			or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
+			or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
+			or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
+			or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
+			or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
+			or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
+			or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
+			or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
+			or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
+			or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
 			/*Erase brush size 4 END*/
 		
 			/*Erase brush size 5*/
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+96, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
-			or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+96, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
+			or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
 			/*Erase brush size 5 END*/
 		
 			{
@@ -1460,18 +1460,18 @@ and (delay >1)
 	and (!mouse_check_button(mb_middle))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or (key_a_pressed)
+		or(key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
 				if (drag_object<true)
 				and (obj_leveleditor.pause = false)
 				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
-				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), +64))
+				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64))
 				{
 					if (obj_leveleditor.set_difficulty_mode = true)
 					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
-					or (obj_leveleditor.set_difficulty_mode = false)
+					or(obj_leveleditor.set_difficulty_mode = false)
 					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 					{
 						drag_object = true;
@@ -1492,7 +1492,7 @@ and (delay >1)
 	else
 	{
 		if (object = 73)
-		or (object = 731)
+		or(object = 731)
 		{
 			depth = -20;
 		}
@@ -1505,7 +1505,7 @@ and (delay >1)
 	
 	#region /*Release the object*/
 	if (mouse_check_button_released(mb_left))
-	or (key_a_released)
+	or(key_a_released)
 	{
 		if (drag_object = true)
 		{
@@ -1536,11 +1536,11 @@ if (global.play_edited_level = true)
 {
 	
 	#region /*Delete objects according to difficulty settings*/
-	if (global.difficulty<= 0)
+	if (global.difficulty <= 0)
 	and (easy = true)
-	or (global.difficulty =1)
+	or(global.difficulty = 1)
 	and (normal = true)
-	or (global.difficulty >= 2)
+	or(global.difficulty >= 2)
 	and (hard = true)
 	{
 		if (object = 1) and (asset_get_type("obj_ground") == asset_object){instance_create_depth(x, y, 0, obj_ground);instance_destroy();}
@@ -1552,10 +1552,10 @@ if (global.play_edited_level = true)
 		if (object = 1006) and (asset_get_type("obj_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_ground)){ground_surface = 6;}instance_destroy();}
 		if (object = 1007) and (asset_get_type("obj_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_ground)){ground_surface = 7;}instance_destroy();}
 		
-		if (object =1008){if(asset_get_type("obj_wall_jump_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_jump_panel);instance_destroy();}else{if (asset_get_type("obj_wall_jump_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_jump_panel);instance_destroy();}}}
-		if (object =1009){if(asset_get_type("obj_wall_climb_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_climb_panel);instance_destroy();}else{if (asset_get_type("obj_wall_climb_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_climb_panel);instance_destroy();}}}
+		if (object = 1008){if(asset_get_type("obj_wall_jump_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_jump_panel);instance_destroy();}else{if (asset_get_type("obj_wall_jump_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_jump_panel);instance_destroy();}}}
+		if (object = 1009){if(asset_get_type("obj_wall_climb_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_climb_panel);instance_destroy();}else{if (asset_get_type("obj_wall_climb_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_climb_panel);instance_destroy();}}}
 		if (object = 2){if(asset_get_type("obj_spikes") == asset_object){instance_create_depth(x, y, 0, obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground") == asset_object){instance_create_depth(x, y, 0, obj_ground);instance_destroy();}}}
-		if (object =3) and (asset_get_type("obj_semisolid_platform") == asset_object){instance_create_depth(x, y, 0, obj_semisolid_platform);instance_destroy();}
+		if (object = 3) and (asset_get_type("obj_semisolid_platform") == asset_object){instance_create_depth(x, y, 0, obj_semisolid_platform);instance_destroy();}
 		
 		#region /*Brick Block*/
 		if (object =4) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;}instance_destroy();}
@@ -1595,25 +1595,25 @@ if (global.play_edited_level = true)
 		#region /*Bump in ground*/
 		if (object = 28) and (asset_get_type("obj_bump_in_ground") == asset_object){instance_create_depth(x, y, 0, obj_bump_in_ground);instance_destroy();}
 		if (object = 29) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "8_basic_collectibles";}instance_destroy();}
-		if (object =30) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "heart_balloon";}instance_destroy();}
-		if (object =31) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "1-up";}instance_destroy();}
-		if (object =32) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "2-up";}instance_destroy();}
-		if (object =33) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "3-up";}instance_destroy();}
-		if (object =34) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_1";}instance_destroy();}
-		if (object =35) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_2";}instance_destroy();}
-		if (object =36) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_3";}instance_destroy();}
-		if (object =37) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_4";}instance_destroy();}
-		if (object =38) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_5";}instance_destroy();}
-		if (object =39) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";}instance_destroy();}
+		if (object = 30) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "heart_balloon";}instance_destroy();}
+		if (object = 31) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "1-up";}instance_destroy();}
+		if (object = 32) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "2-up";}instance_destroy();}
+		if (object = 33) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "3-up";}instance_destroy();}
+		if (object = 34) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_1";}instance_destroy();}
+		if (object = 35) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_2";}instance_destroy();}
+		if (object = 36) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_3";}instance_destroy();}
+		if (object = 37) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_4";}instance_destroy();}
+		if (object = 38) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_5";}instance_destroy();}
+		if (object = 39) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Bump in ground END*/
 		
 		#region /*Basic Collectible*/
 		if (object =40) and (asset_get_type("obj_basic_collectible") == asset_object){instance_create_depth(x, y, 0, obj_basic_collectible);instance_destroy();}
-		if (object =41) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle =315;}instance_destroy();}
+		if (object =41) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 315;}instance_destroy();}
 		if (object =42) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 270;}instance_destroy();}
 		if (object =43) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 225;image_yscale = -1;}instance_destroy();}
-		if (object =44) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle =180;image_yscale = -1;}instance_destroy();}
-		if (object =45) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle =135;image_yscale = -1;}instance_destroy();}
+		if (object =44) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 180;image_yscale = -1;}instance_destroy();}
+		if (object =45) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 135;image_yscale = -1;}instance_destroy();}
 		if (object =46) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 90;}instance_destroy();}
 		if (object =47) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 45;}instance_destroy();}
 		#endregion /*Basic Collectible END*/
@@ -1646,7 +1646,7 @@ if (global.play_edited_level = true)
 		if (object =673){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15;}instance_destroy();}}
 		if (object =68) and (asset_get_type("obj_oneway") == asset_object){instance_create_depth(x, y, 0, obj_oneway);instance_destroy();}
 		if (object =69) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 90;}instance_destroy();}
-		if (object =70) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle =180;}instance_destroy();}
+		if (object =70) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 180;}instance_destroy();}
 		if (object =71) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 270;}instance_destroy();}
 		if (object =72) and (asset_get_type("obj_horizontal_rope") == asset_object){instance_create_depth(x, y, 0, obj_horizontal_rope);instance_destroy();}
 		
@@ -1748,10 +1748,10 @@ if (object = 1005) and (asset_get_type("spr_wall_metal") == asset_sprite){sprite
 if (object = 1006) and (asset_get_type("spr_wall_stone") == asset_sprite){sprite_index=spr_wall_stone;mask_index=spr_wall;}
 if (object = 1007) and (asset_get_type("spr_wall_wood") == asset_sprite){sprite_index=spr_wall_wood;mask_index=spr_wall;}
 
-if (object =1008) and (asset_get_type("spr_wall_jump_panel") == asset_sprite){sprite_index=spr_wall_jump_panel;mask_index=spr_wall;}
-if (object =1009) and (asset_get_type("spr_wall_climb_panel") == asset_sprite){sprite_index=spr_wall_climb_panel;mask_index=spr_wall;}
+if (object = 1008) and (asset_get_type("spr_wall_jump_panel") == asset_sprite){sprite_index=spr_wall_jump_panel;mask_index=spr_wall;}
+if (object = 1009) and (asset_get_type("spr_wall_climb_panel") == asset_sprite){sprite_index=spr_wall_climb_panel;mask_index=spr_wall;}
 if (object = 2) and (asset_get_type("spr_spikes") == asset_sprite){sprite_index=spr_spikes;mask_index=spr_wall;}
-if (object =3) and (asset_get_type("spr_semisolid_platform") == asset_sprite){sprite_index=spr_semisolid_platform;mask_index=spr_wall;}
+if (object = 3) and (asset_get_type("spr_semisolid_platform") == asset_sprite){sprite_index=spr_semisolid_platform;mask_index=spr_wall;}
 
 #region /*Brick Block*/
 if (object =4) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;mask_index=spr_wall;}
@@ -1791,27 +1791,27 @@ if (object = 27) and (asset_get_type("spr_cardboard_long") == asset_sprite){spri
 #region /*Bump in ground*/
 if (object = 28) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;mask_index=spr_wall;}
 if (object = 29) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
-if (object =30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
-if (object =31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
-if (object =32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
-if (object =33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
-if (object =34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
-if (object =35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
-if (object =36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
-if (object =37) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
-if (object =38) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
-if (object =39) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
+if (object = 30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index=spr_wall;}
+if (object = 31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size/ 2, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 37) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 38) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0,x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index=spr_wall;}
+if (object = 39) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index=spr_wall;}
 #endregion /*Bump in ground END*/
 
 #region /*Basic Collectible*/
-if (object =40){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 0;draw_yscale =1;mask_index=spr_wall;}
-if (object =41){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 315;draw_yscale =1;mask_index=spr_wall;}
-if (object =42){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 270;draw_yscale =1;mask_index=spr_wall;}
+if (object =40){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 0;draw_yscale = 1;mask_index=spr_wall;}
+if (object =41){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 315;draw_yscale = 1;mask_index=spr_wall;}
+if (object =42){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 270;draw_yscale = 1;mask_index=spr_wall;}
 if (object =43){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 225;draw_yscale = -1;mask_index=spr_wall;}
 if (object =44){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 180;draw_yscale = -1;mask_index=spr_wall;}
 if (object =45){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 135;draw_yscale = -1;mask_index=spr_wall;}
-if (object =46){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 90;draw_yscale =1;mask_index=spr_wall;}
-if (object =47){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 45;draw_yscale =1;mask_index=spr_wall;}
+if (object =46){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 90;draw_yscale = 1;mask_index=spr_wall;}
+if (object =47){sprite_index= global.resourcepack_sprite_basic_collectible;draw_angle = 45;draw_yscale = 1;mask_index=spr_wall;}
 #endregion /*Basic Collectible END*/
 
 #region /*Big Collectibles*/
@@ -1909,53 +1909,53 @@ and (obj_leveleditor.drag_object = false)
 	if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 	
 	/*Place Brush Size 1*/
-	or (obj_leveleditor.place_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
-	or (obj_leveleditor.place_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
-	or (obj_leveleditor.place_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.place_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
+	or(obj_leveleditor.place_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.place_brush_size >= 1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
 	/*Place Brush Size 1 END*/
 	
 	/*Place Brush Size 2*/
-	or (obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
-	or (obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
+	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
 	/*Place Brush Size 2 END*/
 	
 	/*Place Brush Size 3*/
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y, id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y + 32, id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+64, id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
-	or (obj_leveleditor.place_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
+	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
 	/*Place Brush Size 3 END*/
 	
 	/*Place Brush Size 4*/
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
-	or (obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
+	or(obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.place_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
 	/*Place Brush Size 4 END*/
 	
 	/*Place Brush Size 5*/
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.place_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
 	/*Place Brush Size 5 END*/
 	
 	{
@@ -1994,47 +1994,47 @@ if (mouse_check_button(mb_right))
 and (!mouse_check_button(mb_left))
 {
 	if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
-	or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
-	or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
-	or (obj_leveleditor.erase_brush_size >=1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
+	or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
 
-	or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
-	or (obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
+	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
 
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y, id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y + 32, id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+64, id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
-	or (obj_leveleditor.erase_brush_size >=3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
+	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
 
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
-	or (obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
+	or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.erase_brush_size >=4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
 
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +64, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
-	or (obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.erase_brush_size >=5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
 	{
-		if (obj_leveleditor.difficulty_layer= 0)
+		if (obj_leveleditor.difficulty_layer = 0)
 		{
 			if (easy = true)
 			{

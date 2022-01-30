@@ -22,34 +22,47 @@ lerp_on = false;
 level_editor_template_select = false;
 
 /*Narrator Voice variable handeling*/
-narrator_name = noone;
-global.narrator_max_characters=1;
-
-/*No Narrator*/
-if (global.narrator= 0)
+#region /*Character Name*/
+if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 {
-	menuvoice_titlesplash = noone;
-	menuvoice_1player= noone;
-	menuvoice_2player= noone;
-	menuvoice_3player= noone;
-	menuvoice_4player= noone;
-	menuvoice_leveleditor= noone;
-	menuvoice_leveleditor_denied = noone;
-	menuvoice_options= noone;
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+	{
+		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+	}
+	else
+	{
+		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+	}
+						
+	#region /*Character Name*/
+	if (ini_key_exists("values", "character_name"))
+	{
+		narrator_name = ini_read_string("values", "character_name", "");
+	}
+	else
+	{
+		narrator_name = string(global.narrator + 1);
+	}
+	#endregion /*Character Name END*/
+						
+	ini_close();
 }
-
-/*Character1 as narrator*/
-if (global.narrator = 1)
+else
 {
-	menuvoice_titlesplash = noone;
-	menuvoice_1player= noone;
-	menuvoice_2player= noone;
-	menuvoice_3player= noone;
-	menuvoice_4player= noone;
-	menuvoice_leveleditor= noone;
-	menuvoice_leveleditor_denied = noone;
-	menuvoice_options= noone;
+	narrator_name = string(global.narrator + 1);
 }
+#endregion /*Character Name END*/
+
+/*Narrator Voice Clips Variables*/
+menuvoice_titlesplash = noone;
+menuvoice_1player = noone;
+menuvoice_2player = noone;
+menuvoice_3player = noone;
+menuvoice_4player = noone;
+menuvoice_leveleditor = noone;
+menuvoice_leveleditor_denied = noone;
+menuvoice_options= noone;
 
 #region /*Create directories*/
 
@@ -184,9 +197,9 @@ global.checkpoint_second = 0;
 global.checkpoint_minute = 0;
 global.checkpoint_realmillisecond = 0; /*Checkpoint Timer END*/
 global.win = false;
-global.enemy_counter= 0;
+global.enemy_counter = 0;
 global.file = 1;
-global.controls_layout =1;
+global.controls_layout = 1;
 global.trigger_ending = false;
 global.spikes_emerge_time = 0;
 global.goal_active = false;
@@ -196,7 +209,7 @@ global.always_show_level_editor_buttons= true; /*If level editor buttons should 
 
 #region /*Player 1 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
-or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 {
 	if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
 	{
@@ -294,7 +307,7 @@ else
 
 #region /*Player 2 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
-or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 {
 	if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/data/sprite_origin_point.ini"))
 	{
@@ -392,7 +405,7 @@ else
 
 #region /*Player 3 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
-or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 {
 	if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/data/sprite_origin_point.ini"))
 	{
@@ -490,7 +503,7 @@ else
 
 #region /*Player 4 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
-or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 {
 	if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/data/sprite_origin_point.ini"))
 	{
@@ -628,11 +641,11 @@ can_remap_key = false;
 
 open_dropdown = false;
 menu_delay = 3;
-menu_joystick_delay =3;
-menu_joystick1_delay =3;
-menu_joystick2_delay =3;
-menu_joystick3_delay =3;
-menu_joystick4_delay =3;
+menu_joystick_delay = 3;
+menu_joystick1_delay = 3;
+menu_joystick2_delay = 3;
+menu_joystick3_delay = 3;
+menu_joystick4_delay = 3;
 black_screen_at_start_delay = 0;
 player1_display_x= 0;xx1 = 0;
 player2_display_x= 0;xx2 = 0;
@@ -643,9 +656,9 @@ version_y_pos= 0;
 menu_cursor_index= 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
-can_navigate_settings_sidebar= true;
-navigate_slider= false;
-menu_remap_key_number= 0;
+can_navigate_settings_sidebar = true;
+navigate_slider = false;
+menu_remap_key_number = 0;
 name_enter_blink= 0;
 can_navigate = true;
 menu_y_offset = 0; /*This is the y offset that will have lerping to make the menu scrolling smooth*/
@@ -660,22 +673,22 @@ show_title_logo = true;
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
 accessibility_settings_y = 40;
-game_text_y = 40*2;
-game_settings_y = 40*3;
-multiplayer_settings_y = 40*4;
-controls_text_y = 40*5;
-keyboard_and_mouse_settings_y = 40*6;
-controller_settings_y = 40*7;
-touch_settings_y = 40*8;
-general_text_y = 40*9;
-profile_settings_y = 40* 10;
-video_settings_y = 40* 11;
-audio_settings_y = 40* 12;
-global_resources_settings_y = 40* 13;
-storage_settings_y = 40* 14;
-language_settings_y = 40* 15;
-broadcast_settings_y = 40* 16;
-how_to_play_y = 40* 17;
+game_text_y = 40 *2;
+game_settings_y = 40 *3;
+multiplayer_settings_y = 40 *4;
+controls_text_y = 40 *5;
+keyboard_and_mouse_settings_y = 40 *6;
+controller_settings_y = 40 *7;
+touch_settings_y = 40 *8;
+general_text_y = 40 * 9;
+profile_settings_y = 40 * 10;
+video_settings_y = 40 * 11;
+audio_settings_y = 40 * 12;
+global_resources_settings_y = 40 * 13;
+storage_settings_y = 40 * 14;
+language_settings_y = 40 * 15;
+broadcast_settings_y = 40 * 16;
+how_to_play_y = 40 * 17;
 left_sidebar_x = -400;
 iris_xscale = 0;
 iris_yscale = 0;
@@ -736,3 +749,23 @@ if (title_music > noone)
 	audio_sound_gain(title_music, global.music_volume, 0);
 }
 #endregion /*Play title screen music END*/
+
+#region /*Reset level zoom*/
+if (global.reset_level_zoom_when_going_back_to_map = true)
+{
+	global.zoom_level = 1;
+	ini_open("config.ini");
+	ini_write_real("config", "zoom_level", 1);
+	ini_close();
+}
+#endregion /*Reset level zoom END*/
+
+#region /*Reset world map zoom*/
+if (global.reset_world_map_zoom_when_going_back_to_map = true)
+{
+	global.zoom_world_map = 1;
+	ini_open("config.ini");
+	ini_write_real("config", "zoom_world_map", 1);
+	ini_close();
+}
+#endregion /*Reset world map zoom END*/

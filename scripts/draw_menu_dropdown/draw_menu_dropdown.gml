@@ -41,7 +41,7 @@ function draw_menu_dropdown()
 	and (menu != "assist_enable")
 	and (menu_delay = 0)
 	and (open_dropdown = false)
-	or (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+ 32,y_position+ 2,x_position+555+ 32,y_position+ 41))
+	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+ 32,y_position+ 2,x_position+555+ 32,y_position+ 41))
 	and (global.controls_used_for_menu_navigation = "mouse")
 	and (global.assist_enable = true)
 	and (menu = "assist_enable")
@@ -59,7 +59,7 @@ function draw_menu_dropdown()
 	{
 		if (menu=menu_index)
 		and (global.controls_used_for_menu_navigation = "keyboard")
-		or (menu=menu_index)
+		or(menu=menu_index)
 		and (global.controls_used_for_menu_navigation = "controller")
 		{
 			draw_sprite_ext(spr_menu_dropdown, 0,x_position+ 32,y_position+ 21, 1, 1, 0, c_gray, 1);
@@ -85,7 +85,7 @@ function draw_menu_dropdown()
 	and (menu != "assist_enable")
 	and (menu_delay = 0)
 	and (open_dropdown = false)
-	or (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+ 32,y_position+ 2,x_position+555+ 32,y_position+ 41))
+	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),x_position+ 32,y_position+ 2,x_position+555+ 32,y_position+ 41))
 	and (global.controls_used_for_menu_navigation = "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	and (global.assist_enable = true)
@@ -103,7 +103,7 @@ function draw_menu_dropdown()
 	#region /*Text above the menu button*/
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x_position+ 277+ 32,y_position+ 21-32,string(string_text), global.default_text_size*0.75, c_menu_outline, c_menu_fill, 1);
+	draw_text_outlined(x_position+ 277+ 32,y_position+ 21-32,string(string_text), global.default_text_size *0.75, c_menu_outline, c_menu_fill, 1);
 	#endregion /*Text above the menu button END*/
 	
 	#region /*Text inside the menu button*/

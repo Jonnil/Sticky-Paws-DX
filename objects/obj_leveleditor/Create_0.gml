@@ -77,7 +77,7 @@ cursor_x= x;
 cursor_y = y;
 place_brush_size = 0; /*The size of the brush when placeing objects*/
 erase_brush_size = 0; /*The size of the brush when erasing*/
-can_make_place_brush_size_bigger= true; /*If you can make the brush size bigger for certain objects*/
+can_make_place_brush_size_bigger = true; /*If you can make the brush size bigger for certain objects*/
 can_put_objects_above_other_objects = false; /*If you can put objects above other objects*/
 mouse_sprite =spr_cursor; /*Sets what cursor sprite to use*/
 undo_and_redo_buttons_enabled = false; /*If undo and redo buttons should appear or not*/
@@ -88,7 +88,7 @@ grid_alpha= 0;
 zoom_in = false; /*When this is true, zoom in*/
 zoom_reset = false; /*When this is true, reset zoom*/
 zoom_out = false; /*When this is true, zoom out*/
-difficulty_layer= 0; /*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
+difficulty_layer = 0; /*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
 set_difficulty_mode = false; /*Toggle so you get a pen that can select what object appear in what difficulty*/
 place_object = noone;
 wall_surface_selected = 0; /*What kind of wall you're putting down*/
@@ -100,52 +100,52 @@ show_undo_redo_icons= false; /*If the undo and redo buttons should show*/
 undo_redo_icons_y = +200; /*Undo and redo buttons y postition*/
 current_undo_value = 0; /*Every time you place down items, this value increases. When you undo, this value decreases.*/
 icons_at_top_y = - 100;
-icons_at_top_alpha=1;
+icons_at_top_alpha= 1;
 icons_at_left_x=- 64;
 selected_object = 0;
 selected_object_menu_x= 0;
 selected_menu_alpha= 0;
 total_number_of_objects= 0;
-use_controller= false;
+use_controller = false;
 drag_object = false;
 erase_mode = false; /*When erasing, this turns true*/
 fill_mode = false; /*When filling, this turns true*/
 can_input_level_name = false;
-quit_level_editor= false;
+quit_level_editor = false;
 menu_joystick_delay = 0;
 pause = false;
 menu_cursor_index= 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
-can_navigate_settings_sidebar= true;
-navigate_slider= false;
+can_navigate_settings_sidebar = true;
+navigate_slider = false;
 menu = "continue";
 open_dropdown = false;
 name_enter_blink= 0;
-menu_delay =10;
-startup_loading_timer= 0;
+menu_delay = 10;
+startup_loading_timer = 0;
 background_brightness_lerp = 0;
 background_brightness_menu_lerp = 0;
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
 accessibility_settings_y = 40;
-game_text_y = 40*2;
-game_settings_y = 40*3;
-multiplayer_settings_y = 40*4;
-controls_text_y = 40*5;
-keyboard_and_mouse_settings_y = 40*6;
-controller_settings_y = 40*7;
-touch_settings_y = 40*8;
-general_text_y = 40*9;
-profile_settings_y = 40* 10;
-video_settings_y = 40* 11;
-audio_settings_y = 40* 12;
-global_resources_settings_y = 40* 13;
-storage_settings_y = 40* 14;
-language_settings_y = 40* 15;
-broadcast_settings_y = 40* 16;
-how_to_play_y = 40* 17;
+game_text_y = 40 *2;
+game_settings_y = 40 *3;
+multiplayer_settings_y = 40 *4;
+controls_text_y = 40 *5;
+keyboard_and_mouse_settings_y = 40 *6;
+controller_settings_y = 40 *7;
+touch_settings_y = 40 *8;
+general_text_y = 40 * 9;
+profile_settings_y = 40 * 10;
+video_settings_y = 40 * 11;
+audio_settings_y = 40 * 12;
+global_resources_settings_y = 40 * 13;
+storage_settings_y = 40 * 14;
+language_settings_y = 40 * 15;
+broadcast_settings_y = 40 * 16;
+how_to_play_y = 40 * 17;
 left_sidebar_x=-400;
 
 place_brush_icon_x = 32;
@@ -182,30 +182,30 @@ image_index= 0;
 if (global.character_select_in_this_menu = "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
-or (global.character_select_in_this_menu = "level_editor")
+or(global.character_select_in_this_menu = "level_editor")
 and (global.create_level_from_template = true)
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
-or (global.character_select_in_this_menu = "level_editor")
+or(global.character_select_in_this_menu = "level_editor")
 and (global.select_level_index <= 0)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 
-or (global.character_select_in_this_menu = "level_editor")
+or(global.character_select_in_this_menu = "level_editor")
 and (global.create_level_from_template >= 2)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 
-or (global.character_select_in_this_menu = "level_editor")
+or(global.character_select_in_this_menu = "level_editor")
 and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu = "main_game")
-	or (global.create_level_from_template = true)
+	or(global.create_level_from_template = true)
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
 	and (global.select_level_index <= 0)
-	or (global.character_select_in_this_menu = "level_editor")
+	or(global.character_select_in_this_menu = "level_editor")
 	and (global.create_level_from_template >= 2)
 	{
 		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
@@ -576,10 +576,10 @@ and (!file_exists(working_directory + "/custom_levels/" + string(global.level_na
 #region /*View Size*/
 view_wview = 1392;
 view_hview = 736;
-/*Default Views:   set_view_wview = 1024+ 400 -32   set_view_hview = 768-32   */
+/*Default Views:   set_view_wview = 1024+ 400 -32   set_view_hview = 768-32  */
 #endregion /*View Size END*/
 
-set_view_wview=1392;
+set_view_wview= 1392;
 set_view_hview=736;
 
 #region /*Initialize Background*/
@@ -594,7 +594,7 @@ background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;backgroun
 #endregion /*Initialize Background END*/
 
 /*HUD Show Controls keys that have been pressed*/
-player1_show_controls_timer= 0;
+player1_show_controls_timer = 0;
 player1_show_controls_alpha= 0;
 
 #region /*Load Level*/
@@ -608,7 +608,7 @@ with(obj_leveleditor_placed_object)
 
 #region /*Load Main Game Level*/
 if (global.character_select_in_this_menu = "main_game")
-or (global.create_level_from_template = true)
+or(global.create_level_from_template = true)
 {
 	
 	#region /*Object Placement*/

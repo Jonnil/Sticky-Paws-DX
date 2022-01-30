@@ -22,7 +22,7 @@ and (instance_exists(obj_player))
 {
 	if (allow_move = true)
 	{
-		if (dir= +1)
+		if (dir = +1)
 		{
 			if (instance_nearest(x, y, obj_player).x > x)
 			and (instance_nearest(x, y, obj_player).hspeed >+ 2)
@@ -123,7 +123,7 @@ and (instance_exists(obj_player))
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =10;
+					delay_time = 10;
 				}
 				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
@@ -139,7 +139,7 @@ and (instance_exists(obj_player))
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =30;
+					delay_time = 30;
 				}
 				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
@@ -219,11 +219,11 @@ if (asset_get_type("obj_wall") == asset_object)
 {
 	if (place_meeting(x - 1, y, obj_wall))
 	{
-		dir= +1;
+		dir = +1;
 	}
 	if (place_meeting(x + 1, y, obj_wall))
 	{
-		dir=- 1;
+		dir =- 1;
 	}
 	if (place_meeting(x, y - 1, obj_wall))
 	{
@@ -232,7 +232,7 @@ if (asset_get_type("obj_wall") == asset_object)
 }
 
 #region /*Expanding Ring Effect*/
-effect_time +=1;
+effect_time += 1;
 if (effect_time >60)
 {
 	effect_time = 0;

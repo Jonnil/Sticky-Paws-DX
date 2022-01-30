@@ -30,6 +30,6 @@ if (asset_get_type("spr_wall") == asset_sprite)
 	mask_index = spr_wall;
 }
 
-draw_xscale =1;
-draw_yscale =1;
+draw_xscale = 1;
+draw_yscale = 1;
 die = false;

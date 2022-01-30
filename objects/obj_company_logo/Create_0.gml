@@ -32,7 +32,7 @@ global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
 
 #region /*What settings can be changed*/
 global.enable_verbosity_slider = false;
-global.enable_narrator = false;
+global.enable_narrator = true;
 #endregion /*What settings can be changed END*/
 
 global.max_fps = 60; /*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
@@ -48,7 +48,7 @@ global.has_upgrade_double_jump = false; /*If you have the Double Jump Upgrade*/
 
 global.deactivate_objects_outsiede_view = true; /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
 
-global.number_of_chain_kills_for_1up = 8; /*How many chain reaction kills you need to get 1-ups. Default is 8 */
+global.number_of_chain_kills_for_1up = 8; /*How many chain reaction kills you need to get 1-ups. Default is 8*/
 
 global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
 ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Ending", "Level9");
@@ -121,7 +121,7 @@ if (file_exists(working_directory + "custom_levels/*.zip"))
 
 view_hview_lerp = 0;
 view_wview_lerp = 0;
-window_set_cursor (cr_none);
+window_set_cursor(cr_none);
 global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 ds_list_add(global.all_loaded_custom_levels, "");
 global.all_loaded_characters = ds_list_create();
@@ -139,7 +139,7 @@ repeat(max_players)
 global.thumbnail_sprite = ds_list_create();
 global.grid_hsnap = 32; /*Horizontal grid snapping*/
 global.grid_vsnap = 32; /*Vertical grid snapping*/
-global.narrator = 1; /*Select Narrator*/
+global.narrator = 0; /*Select Narrator*/
 global.character_for_player_1 = "Sticky"; /*Player 1 Select Character 1*/
 global.character_for_player_2 = "Catlyn"; /*Player 2 Select Character 2*/
 global.character_for_player_3 = "Sticky"; /*Player 3 Select Character 3*/
@@ -152,10 +152,10 @@ global.skin_for_player_1 = 0; /*Player 1 Select Skin, make default skin 1*/
 global.skin_for_player_2 = 1; /*Player 2 Select Skin, make default skin 2*/
 global.skin_for_player_3 = 2; /*Player 3 Select Skin, make default skin 3*/
 global.skin_for_player_4 = 3; /*Player 4 Select Skin, make default skin 4*/
-global.player1_color=c_aqua; /*Player 1 Color, default:aqua*/
-global.player2_color=c_red; /*Player 1 Color, default:red*/
-global.player3_color=c_lime; /*Player 1 Color, default:lime*/
-global.player4_color=c_yellow; /*Player 1 Color, default:yellow*/
+global.player1_color =c_aqua; /*Player 1 Color, default:aqua*/
+global.player2_color =c_red; /*Player 1 Color, default:red*/
+global.player3_color =c_lime; /*Player 1 Color, default:lime*/
+global.player4_color =c_yellow; /*Player 1 Color, default:yellow*/
 global.player1_can_play = false; /*Player 1 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player2_can_play = false; /*Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player3_can_play = false; /*Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
@@ -265,9 +265,9 @@ global.checkpoint_minute = 0;
 global.checkpoint_realmillisecond = 0;
 #endregion /*Checkpoint Timer END*/
 global.win = false;
-global.enemy_counter= 0;
-global.file =1;
-global.controls_layout =1;
+global.enemy_counter = 0;
+global.file = 1;
+global.controls_layout = 1;
 global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black=- 1, normal = 0 (default), full_white = +1*/
 global.background_brightness_menu= 0; /*Background brightness in menus. full_black=- 1, normal = 0 (default), full_white = +1*/
 
@@ -283,7 +283,7 @@ global.number_of_audio_channels = 3; /*How many audio channels there should be. 
 global.music = noone;
 global.music_underwater = noone;
 global.ambience = noone;
-global.ambience_underwater= noone;
+global.ambience_underwater = noone;
 global.trigger_ending = false;
 global.spikes_emerge_time = 0;
 global.goal_active = false;
@@ -363,8 +363,8 @@ global.player1_key2_tongue = noone;
 global.player1_up_key_is_jump_key = false;
 global.player1_double_tap_to_run = true;
 global.player1_wall_jump_setting = 1;
-global.player1_drop_from_rope =1;
-global.player1_show_controls=1;
+global.player1_drop_from_rope = 1;
+global.player1_show_controls= 1;
 #endregion /*Player 1 Keyboard Remapping END*/
 
 #region /*Player 2 Keyboard Remapping (everything should be set to noone)*/
@@ -401,8 +401,8 @@ global.player2_key2_tongue = noone;
 global.player2_up_key_is_jump_key = false;
 global.player2_double_tap_to_run = true;
 global.player2_wall_jump_setting = 1;
-global.player2_drop_from_rope =1;
-global.player2_show_controls=1;
+global.player2_drop_from_rope = 1;
+global.player2_show_controls= 1;
 #endregion /*Player 2 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 3 Keyboard Remapping (everything should be set to noone)*/
@@ -439,8 +439,8 @@ global.player3_key2_tongue = noone;
 global.player3_up_key_is_jump_key = false;
 global.player3_double_tap_to_run = true;
 global.player3_wall_jump_setting = 1;
-global.player3_drop_from_rope =1;
-global.player3_show_controls=1;
+global.player3_drop_from_rope = 1;
+global.player3_show_controls= 1;
 #endregion /*Player 3 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 4 Keyboard Remapping (everything should be set to noone)*/
@@ -477,8 +477,8 @@ global.player4_key2_tongue = noone;
 global.player4_up_key_is_jump_key = false;
 global.player4_double_tap_to_run = true;
 global.player4_wall_jump_setting = 1;
-global.player4_drop_from_rope =1;
-global.player4_show_controls=1;
+global.player4_drop_from_rope = 1;
+global.player4_show_controls= 1;
 #endregion /*Player 4 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Mobile Controls Settings*/
@@ -520,7 +520,7 @@ scr_load_resource_pack_sprite();
 #region /*Narrator Voice variable handeling*/
 
 #region /*No Narrator*/
-if (global.narrator= false)
+if (global.narrator = false)
 {
 	menuvoice_companysplash = noone;
 	menuvoice_controllersplash = noone;
@@ -552,7 +552,7 @@ else
 sprite_splash_easteregg_yoffset = +128;
 
 if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini"))
-or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini"))
+or(file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini"))
 {
 	
 	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini"))
@@ -595,25 +595,25 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 	index= 0
 	repeat(50)
 	{
-		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name +"_strip" + string(index) + ".png"))
+		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+ file_name +"_strip" + string(index) + ".png"))
 		{
-			sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name +"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
+			sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+ file_name +"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name +"_strip" + string(index) + ".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+ file_name +"_strip" + string(index) + ".png"))
 		{
-			sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name +"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
+			sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+ file_name +"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
-		index +=1
+		index += 1
 	}
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name +".png"))
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+ file_name +".png"))
 	{
-		sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name +".png", 1, false, false, xorig_variable, yorig_variable);
+		sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+ file_name +".png", 1, false, false, xorig_variable, yorig_variable);
 	}
 	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name +".png"))
+	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+ file_name +".png"))
 	{
-		sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name +".png", 1, false, false, xorig_variable, yorig_variable);
+		sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+ file_name +".png", 1, false, false, xorig_variable, yorig_variable);
 	}
 	#endregion /*Sprite Add END*/
 	
@@ -659,25 +659,25 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 	index= 0
 	repeat(50)
 	{
-		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name +"_strip" + string(index) + ".png"))
+		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+ file_name +"_strip" + string(index) + ".png"))
 		{
-			sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name +"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
+			sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+ file_name +"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
 		else
-		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name +"_strip" + string(index) + ".png"))
+		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+ file_name +"_strip" + string(index) + ".png"))
 		{
-			sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name +"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
+			sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+ file_name +"_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
 		}
-		index +=1
+		index += 1
 	}
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name +".png"))
+	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+ file_name +".png"))
 	{
-		sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+file_name +".png", 1, false, false, xorig_variable, yorig_variable);
+		sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/"+ file_name +".png", 1, false, false, xorig_variable, yorig_variable);
 	}
 	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name +".png"))
+	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+ file_name +".png"))
 	{
-		sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+file_name +".png", 1, false, false, xorig_variable, yorig_variable);
+		sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/"+ file_name +".png", 1, false, false, xorig_variable, yorig_variable);
 	}
 	#endregion /*Sprite Add END*/
 	
@@ -686,7 +686,7 @@ or (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + strin
 }
 
 if (directory_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sound"))
-or (directory_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sound"))
+or(directory_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sound"))
 {
 	
 	#region /*Sound Add*/
@@ -707,7 +707,11 @@ or (directory_exists(working_directory + "/custom_resourcepacks/resourcepack" + 
 	
 }
 
+can_navigate = false;
+file_load_timer = 0;
 time = 0;
 sprite_index = spr_company_logo;
+
+scr_load_character_initializing();
 
 #endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/

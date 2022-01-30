@@ -23,7 +23,7 @@ function scr_zoom_camera_controls()
 	if (keyboard_check(vk_add))
 	and (!keyboard_check(vk_subtract))
 	and (room != room_title)
-	or (mouse_wheel_up())
+	or(mouse_wheel_up())
 	and (!mouse_wheel_down())
 	and (room != room_title)
 	{
@@ -52,7 +52,7 @@ function scr_zoom_camera_controls()
 	if (keyboard_check(vk_subtract))
 	and (!keyboard_check(vk_add))
 	and (room != room_title)
-	or (mouse_wheel_down())
+	or(mouse_wheel_down())
 	and (!mouse_wheel_up())
 	and (room != room_title)
 	{
@@ -81,19 +81,19 @@ function scr_zoom_camera_controls()
 	if (zoom_lerp < 0.5)
 	{
 		draw_set_alpha(zoom_border_lerp);
-		draw_rectangle_color (0, 0, camera_get_view_x(view_camera[view_current]) + 1, room_height, c_red, c_red, c_red, c_red, false);
-		draw_rectangle_color (camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 1, 0, room_width, room_height, c_red, c_red, c_red, c_red, false);
-		draw_rectangle_color (0, 0, room_width, camera_get_view_y(view_camera[view_current]) + 1, c_red, c_red, c_red, c_red, false);
-		draw_rectangle_color (0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 1, room_width, room_height, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(0, 0, camera_get_view_x(view_camera[view_current]) + 1, room_height, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 1, 0, room_width, room_height, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(0, 0, room_width, camera_get_view_y(view_camera[view_current]) + 1, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 1, room_width, room_height, c_red, c_red, c_red, c_red, false);
 		draw_set_alpha(1);
 	}
 	else
 	{
 		draw_set_alpha(zoom_border_lerp);
-		draw_rectangle_color (0, 0, camera_get_view_x(view_camera[view_current]) + 8, room_height, c_red, c_red, c_red, c_red, false);
-		draw_rectangle_color (camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8, 0, room_width, room_height, c_red, c_red, c_red, c_red, false);
-		draw_rectangle_color (0, 0, room_width, camera_get_view_y(view_camera[view_current]) + 8, c_red, c_red, c_red, c_red, false);
-		draw_rectangle_color (0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8, room_width, room_height, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(0, 0, camera_get_view_x(view_camera[view_current]) + 8, room_height, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8, 0, room_width, room_height, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(0, 0, room_width, camera_get_view_y(view_camera[view_current]) + 8, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8, room_width, room_height, c_red, c_red, c_red, c_red, false);
 		draw_set_alpha(1);
 	}
 }

@@ -1,4 +1,4 @@
-highlight_color=c_white;
+highlight_color =c_white;
 clicked_on = false;
 checkmark= false;
 menu_text = "Hello";

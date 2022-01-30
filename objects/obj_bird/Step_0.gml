@@ -31,7 +31,7 @@ and (touch_player = false)
 }
 
 if (die_volting = -1)
-or (die_volting = +1)
+or(die_volting = +1)
 {
 	if (die_volting = -1)
 	{
@@ -85,7 +85,7 @@ and (place_meeting(x, y, obj_player))
 	{
 		touch_player = 2;
 		image_index = 1;
-		hspeed = +6;
+		hspeed = + 6;
 		vspeed = -6;
 		image_angle = 0;
 	}

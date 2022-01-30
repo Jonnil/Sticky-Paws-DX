@@ -20,14 +20,14 @@ if (die = false)
 		draw_yscale = 0.75;
 	}
 	if (position_meeting(bbox_left - 1, bbox_bottom - 8, other))
-	or (position_meeting(bbox_left - 1, bbox_top + 8, other))
+	or(position_meeting(bbox_left - 1, bbox_top + 8, other))
 	{
 		hspeed = 0;
 		draw_xscale = 0.75;
 		draw_yscale = 1.25;
 	}
 	if (position_meeting(bbox_right + 1, bbox_bottom - 8, other))
-	or (position_meeting(bbox_right + 1, bbox_top + 8, other))
+	or(position_meeting(bbox_right + 1, bbox_top + 8, other))
 	{
 		hspeed = 0;
 		draw_xscale = 0.75;
