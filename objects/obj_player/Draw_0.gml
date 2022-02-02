@@ -11,8 +11,8 @@
 //draw_text_outlined(x-32,y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x-32,y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x-32,y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32,y - 64, "hp: " + string(hp), global.default_text_size, c_white, c_black, 1);
-
+//draw_text_outlined(x-32,y - 64, string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32,y - 128, string(global.player1_can_play), global.default_text_size, c_white, c_black, 1);
 
 /*if (direction >= 90 - 10)
 and (direction <= 90 + 10)
@@ -359,7 +359,7 @@ if (invincible >60)
 #region /*Don't make it look like the player is teleporting when the player teleports*/
 if (smooth_teleport< 1)
 {
-	xx= lerp(xx,x,smooth_teleport);
+	xx = lerp(xx,x,smooth_teleport);
 	yy = lerp(yy,y,smooth_teleport);
 	smooth_teleport += 0.1;
 }
@@ -367,12 +367,12 @@ else
 if (stomp_spin = true)
 or(spring = true)
 {
-	xx= lerp(xx,x, 0.4);
+	xx = lerp(xx,x, 0.4);
 	yy = lerp(yy,y, 0.4);
 }
 else
 {
-	xx= lerp(xx,x, 1);
+	xx = lerp(xx,x, 1);
 	yy = lerp(yy,y, 1);
 }
 #endregion /*Don't make it look like the player is teleporting when the player teleports END*/

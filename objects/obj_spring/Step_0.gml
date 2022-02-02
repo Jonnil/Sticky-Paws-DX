@@ -2,7 +2,7 @@ image_angle = point_direction(x, y, second_x, second_y) -90;
 
 if (asset_get_type("spr_wall") == asset_sprite)
 {
-	mask_index=spr_wall;
+	mask_index = spr_wall;
 }
 
 if (can_bounce > 0)
@@ -49,7 +49,7 @@ and (can_bounce = 0)
 #region /*Stop animation when animation is finished, don't loop*/
 if (image_index > image_number - 1)
 {
-	image_index= 0;
+	image_index = 0;
 	image_speed = 0;
 }
 #endregion /*Stop animation when animation is finished, don't loop END*/

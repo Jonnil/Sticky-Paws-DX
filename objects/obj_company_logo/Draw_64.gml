@@ -51,8 +51,8 @@ if (sprite_splash_easteregg_yoffset <= 127)
 	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, - 128, 0.1);
 }
 
-if (image_index > image_number- 2)
-and (sprite_index=spr_company_logo)
+if (image_index > image_number - 2)
+and (sprite_index = spr_company_logo)
 {
 	if (!gamepad_is_connected(0))
 	and (!gamepad_is_connected(1))
@@ -91,8 +91,12 @@ and (sprite_index=spr_company_logo)
 if (sprite_splash_controller > noone)
 and (sprite_index = sprite_splash_controller)
 {
-	time += 1;
+	if (!audio_is_playing(controller_splash))
+	{
+		time += 1;
+	}
 	if (time >100)
+	and (!audio_is_playing(controller_splash))
 	{
 		if (asset_get_type("room_title") == asset_room)
 		{
@@ -106,24 +110,20 @@ and (sprite_index = sprite_splash_controller)
 	}
 }
 
-if (image_index= 20)
-and (asset_get_type("menuvoice_companysplash") == asset_sound)
+if (image_index = 20)
+and (company_splash > noone)
+and (!audio_is_playing(company_splash))
 {
-	if (!audio_is_playing(menuvoice_companysplash))
-	{
-		audio_play_sound(menuvoice_companysplash, 0, 0);
-		audio_sound_gain(menuvoice_companysplash, global.voices_volume, 0);
-	}
+	audio_play_sound(company_splash, 0, 0);
+	audio_sound_gain(company_splash, global.voices_volume, 0);
 }
 
 if (time = 10)
-and (asset_get_type("menuvoice_controllersplash") == asset_sound)
+and (controller_splash > noone)
+and (!audio_is_playing(controller_splash))
 {
-	if (!audio_is_playing(menuvoice_controllersplash))
-	{
-		audio_play_sound(menuvoice_controllersplash, 0, 0);
-		audio_sound_gain(menuvoice_controllersplash, global.voices_volume, 0);
-	}
+	audio_play_sound(controller_splash, 0, 0);
+	audio_sound_gain(controller_splash, global.voices_volume, 0);
 }
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/

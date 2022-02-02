@@ -4632,7 +4632,7 @@ function scr_character_select_menu()
 		
 		if (string_length(global.player1_name)>20)
 		{
-			global.player1_name =string_copy(global.player1_name, 1, 20);
+			global.player1_name = string_copy(global.player1_name, 1, 20);
 		}
 		#endregion /*Limit Name Input Length for Player 1 END*/
 		
@@ -4669,7 +4669,7 @@ function scr_character_select_menu()
 		
 		if (string_length(global.player2_name)>20)
 		{
-			global.player2_name =string_copy(global.player2_name, 1, 20);
+			global.player2_name = string_copy(global.player2_name, 1, 20);
 		}
 		#endregion /*Limit Name Input Length for Player 2 END*/
 		
@@ -4706,7 +4706,7 @@ function scr_character_select_menu()
 		
 		if (string_length(global.player3_name)>20)
 		{
-			global.player3_name =string_copy(global.player3_name, 1, 20);
+			global.player3_name = string_copy(global.player3_name, 1, 20);
 		}
 		#endregion /*Limit Name Input Length for Player 3 END*/
 		
@@ -4743,7 +4743,7 @@ function scr_character_select_menu()
 		
 		if (string_length(global.player4_name)>20)
 		{
-			global.player4_name =string_copy(global.player4_name, 1, 20);
+			global.player4_name = string_copy(global.player4_name, 1, 20);
 		}
 		#endregion /*Limit Name Input Length for Player 4 END*/
 		
@@ -4774,7 +4774,7 @@ function scr_character_select_menu()
 	#region /*Limit Name Input Length for all players*/
 	if (string_length(keyboard_string)>20)
 	{
-		keyboard_string =string_copy(keyboard_string, 1, 20);
+		keyboard_string = string_copy(keyboard_string, 1, 20);
 	}
 	#endregion /*Limit Name Input Length for all players END*/
 	

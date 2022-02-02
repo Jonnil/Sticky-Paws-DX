@@ -1369,7 +1369,7 @@ else
 		other.vspeed = -8;
 	}
 }
-image_index= 0;
+image_index = 0;
 }
 else
 if (other.ground_pound = true)
@@ -2008,7 +2008,7 @@ or(other.chain_reaction >=8)
 #endregion /*Rewards END*/
 
 speed = 0;
-image_index= 0;
+image_index = 0;
 if (other.x < x)
 {
 	die_volting = - 1;

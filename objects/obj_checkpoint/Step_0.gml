@@ -15,7 +15,7 @@ and (instance_exists(obj_player))
 		if (asset_get_type("obj_wall") == asset_object)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		{
-			if (image_index= 0)
+			if (image_index = 0)
 			{
 				image_index = 1;
 				image_speed = 0;

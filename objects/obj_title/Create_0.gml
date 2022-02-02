@@ -54,16 +54,6 @@ else
 }
 #endregion /*Character Name END*/
 
-/*Narrator Voice Clips Variables*/
-menuvoice_titlesplash = noone;
-menuvoice_1player = noone;
-menuvoice_2player = noone;
-menuvoice_3player = noone;
-menuvoice_4player = noone;
-menuvoice_leveleditor = noone;
-menuvoice_leveleditor_denied = noone;
-menuvoice_options= noone;
-
 #region /*Create directories*/
 
 #region /*Create directory for saving custom characters*/
@@ -647,13 +637,13 @@ menu_joystick2_delay = 3;
 menu_joystick3_delay = 3;
 menu_joystick4_delay = 3;
 black_screen_at_start_delay = 0;
-player1_display_x= 0;xx1 = 0;
-player2_display_x= 0;xx2 = 0;
-player3_display_x= 0;xx3 = 0;
-player4_display_x= 0;xx4 = 0;
+player1_display_x = 0;xx1 = 0;
+player2_display_x = 0;xx2 = 0;
+player3_display_x = 0;xx3 = 0;
+player4_display_x = 0;xx4 = 0;
 remap_y_pos= 0;
 version_y_pos= 0;
-menu_cursor_index= 0;
+menu_cursor_index = 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
 can_navigate_settings_sidebar = true;
@@ -700,14 +690,6 @@ c_menu_fill =c_black;
 
 #region /*Stop certain sounds from playing on the title screen*/
 audio_stop_all();
-if (asset_get_type("snd_menuvoice_companysplash") == asset_sound)
-{
-	audio_stop_sound(snd_menuvoice_companysplash);
-}
-if (asset_get_type("snd_menuvoice_controllersplash") == asset_sound)
-{
-	audio_stop_sound(snd_menuvoice_controllersplash);
-}
 if (asset_get_type("snd_slip") == asset_sound)
 {
 	audio_stop_sound(snd_skidding);
@@ -717,14 +699,6 @@ if (asset_get_type("snd_slip_ice") == asset_sound)
 	audio_stop_sound(snd_skidding_ice);
 }
 #endregion /*Stop certain sounds from playing on the title screen END*/
-
-#region /*Say the games title*/
-if (asset_get_type("menuvoice_titlesplash") == asset_sound)
-{
-	audio_play_sound(menuvoice_titlesplash, 0, 0);
-	audio_sound_gain(menuvoice_titlesplash, global.voices_volume, 0);
-}
-#endregion /*Say the games title END*/
 
 #region /*Update Music*/
 if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/music/title_screen.ogg"))
@@ -769,3 +743,65 @@ if (global.reset_world_map_zoom_when_going_back_to_map = true)
 	ini_close();
 }
 #endregion /*Reset world map zoom END*/
+
+#region /*Narrator Voice variable handeling*/
+
+menuvoice_1player = noone;
+menuvoice_2player = noone;
+menuvoice_3player = noone;
+menuvoice_4player = noone;
+menuvoice_leveleditor = noone;
+menuvoice_leveleditor_denied = noone;
+
+#region /*No Narrator*/
+if (global.narrator = -1)
+{
+	voice_game_title = noone;
+	voice_options = noone;
+}
+#endregion /*No Narrator END*/
+
+else
+
+#region /*Character as Narrator*/
+if (global.narrator >= 0)
+{
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/game_title.ogg"))
+	{
+		voice_game_title = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/game_title.ogg");
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/game_title.ogg"))
+	{
+		voice_game_title = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/game_title.ogg");
+	}
+	else
+	{
+		voice_game_title = noone;
+	}
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/options.ogg"))
+	{
+		voice_options = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/options.ogg");
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/options.ogg"))
+	{
+		voice_options = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/options.ogg");
+	}
+	else
+	{
+		voice_options = noone;
+	}
+}
+#endregion /*Character as Narrator END*/
+
+#endregion /*Narrator Voice variable handeling END*/
+
+#region /*Say the games title*/
+if (voice_game_title > noone)
+{
+	audio_stop_sound(voice_game_title);
+	audio_play_sound(voice_game_title, 0, 0);
+	audio_sound_gain(voice_game_title, global.voices_volume, 0);
+}
+#endregion /*Say the games title END*/

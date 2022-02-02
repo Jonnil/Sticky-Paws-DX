@@ -286,7 +286,7 @@ if (quit_level_editor = false)
 		level_name =keyboard_string;
 		if (string_length(level_name)>32)
 		{
-			keyboard_string =string_copy(level_name, 1, 32);
+			keyboard_string = string_copy(level_name, 1, 32);
 		}
 		#endregion /*Limit Name Input Length for Level Name END*/
 		

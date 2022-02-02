@@ -1,4 +1,5 @@
 black_background_alpha = lerp(black_background_alpha, 0.75, 0.01);
+menu_cursor_index += 0.3;
 
 draw_set_alpha(black_background_alpha);
 draw_rectangle_colour(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
@@ -26,7 +27,7 @@ or(gamepad_is_connected(3))
 and (global.player4_can_play = true)
 and (global.controls_used_for_menu_navigation = "controller")
 {
-	draw_text_outlined(window_get_width() - 16, + 16, "Skip: Hold Start", global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() - 16, 0, "Skip: Hold Start", global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*If gamepad is connected END*/
 
@@ -36,7 +37,7 @@ else
 if (os_type == os_ios)
 or(os_type == os_android)
 {
-	draw_text_outlined(window_get_width() - 16, + 16, "Skip: Press and Hold Screen", global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() - 16, 0, "Skip: Press and Hold Screen", global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*If playing on mobile END*/
 
@@ -44,12 +45,17 @@ else
 
 #region /*If playing on Keyboard*/
 if (global.controls_used_for_menu_navigation = "keyboard")
-or(global.controls_used_for_menu_navigation = "mouse")
+or (global.controls_used_for_menu_navigation = "mouse")
 {
-	draw_menu_button(window_get_width() - 370, 21, "Skip: Hold", "skip", "skip")
-	draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() - 32, 21, 0.75, 0.75, 0, c_white, 1);
+	draw_menu_button(window_get_width() - 370, 0, "Skip: Hold", "skip", "skip")
+	draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() - 96, 21, 0.5, 0.5, 0, c_white, 1);
 }
 #endregion /*If playing on Keyboard*/
+
+if (global.controls_used_for_menu_navigation = "mouse")
+{
+	menu = "";
+}
 
 #endregion /*Draw Skip Text END*/
 
@@ -80,6 +86,11 @@ else
 	{
 		skip -= 1;
 	}
+}
+if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 370, 0, window_get_width(), 41))
+and (mouse_check_button(mb_left))
+{
+	menu_delay = 9999;
 }
 
 if (image_index >= image_number - 1)

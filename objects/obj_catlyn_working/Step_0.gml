@@ -36,5 +36,9 @@ and (global.player3_can_play = true)
 or(global.character_for_player_4 = "Catlyn")
 and (global.player4_can_play = true)
 {
-	instance_destroy(); /*If anyone is playing as Catlyn, destroy this object*/
+	image_alpha = 0; /*If anyone is playing as Catlyn, make it invisible*/
+}
+else
+{
+	image_alpha = 1;
 }

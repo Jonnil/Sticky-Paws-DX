@@ -10,7 +10,7 @@ if (place_meeting(x, bbox_bottom + 1, other))
 }
 if (place_meeting(x, y - 1, other))
 {
-	vspeed+=4;
+	vspeed +=4;
 }
 if (position_meeting(bbox_left - 1,bbox_bottom-8, other))
 or(position_meeting(bbox_left - 1,bbox_top +8, other))

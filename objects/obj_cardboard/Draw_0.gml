@@ -26,14 +26,14 @@ if (brick_particle = true)
 	
 	if (hspeed < 0)
 	{
-		image_angle +=speed;
+		image_angle += speed;
 	}
 	if (hspeed > 0)
 	{
-		image_angle-=speed;
+		image_angle-= speed;
 	}
 	draw_sprite_ext(sprite_index, image_index,x, y, 1, 1, image_angle, image_blend, image_alpha);
-	mask_index= noone;
+	mask_index = noone;
 }
 if (asset_get_type("spr_cardboard") == asset_sprite)
 {
@@ -121,7 +121,7 @@ if (brick_particle = false)
 					with(obj)
 					{
 						motion_set(random_range(45-32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
-						mask_index= noone;
+						mask_index = noone;
 						brick_particle = true;
 					}
 				}
@@ -131,7 +131,7 @@ if (brick_particle = false)
 					with(obj)
 					{
 						motion_set(random_range(135-32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
-						mask_index= noone;
+						mask_index = noone;
 						brick_particle = true;
 					}
 				}
@@ -186,7 +186,7 @@ if (brick_particle = false)
 					with(obj)
 					{
 						motion_set(random_range(45-32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
-						mask_index= noone;
+						mask_index = noone;
 						brick_particle = true;
 					}
 				}
@@ -196,7 +196,7 @@ if (brick_particle = false)
 					with(obj)
 					{
 						motion_set(random_range(135-32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
-						mask_index= noone;
+						mask_index = noone;
 						brick_particle = true;
 					}
 				}

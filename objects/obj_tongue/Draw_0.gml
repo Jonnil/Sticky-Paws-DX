@@ -1,5 +1,5 @@
 if asset_get_type("obj_player") == asset_object and instance_number(obj_player) > 0{
-if asset_get_type("spr_wall") == asset_sprite{mask_index=spr_wall;}
+if asset_get_type("spr_wall") == asset_sprite{mask_index = spr_wall;}
 timer += 1;
 //if timer <3{if place_meeting(x, y, obj_wall){with(instance_nearest(x, y, obj_player)){can_tongue = true;}instance_destroy();}}
 if timer > 10{if place_meeting(x, y, obj_player) and instance_nearest(x, y, obj_player).rope_swing = false{with(instance_nearest(x, y, obj_player)){can_tongue = true;}instance_destroy();}}
@@ -12,7 +12,7 @@ if instance_exists(obj_ring){if distance_to_object(instance_nearest(mouse_x, mou
 }
 
 /*Match movement with player movement*/
-if obj_player.rope_swing = false{hspeed+=obj_player.hspeed/8;vspeed+=obj_player.vspeed/8;}
+if obj_player.rope_swing = false{hspeed +=obj_player.hspeed/8;vspeed +=obj_player.vspeed/8;}
 
 /*Stick to wall*/
 

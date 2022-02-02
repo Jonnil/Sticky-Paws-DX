@@ -46,7 +46,7 @@ function scr_save_custom_level()
 			and (object != 734)
 			and (object != 73)
 			{
-				str+=string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "|";
+				str+= string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "|";
 			}
 		}
 		#endregion /*Write all objects to file END*/

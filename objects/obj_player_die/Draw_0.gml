@@ -21,7 +21,7 @@ if (count =50)
 	{
 		if (asset_get_type("spr_player_burnt") == asset_sprite)
 		{
-			sprite_index=spr_player_burnt;
+			sprite_index = spr_player_burnt;
 		}
 		audio_play_sound(voice_burned_die, 0, 0);
 		audio_sound_gain(voice_burned_die, global.voices_volume, 0);
@@ -38,7 +38,7 @@ if (count =50)
 
 #region /*If the player is burned, have black smoke coming out*/
 if (asset_get_type("spr_player_burnt") == asset_sprite)
-and (sprite_index=spr_player_burnt)
+and (sprite_index = spr_player_burnt)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 }
@@ -70,7 +70,7 @@ and (iris_xscale <= 0.001)
 {
 	global.time_countdown = noone; /*Reset countdown back to default value*/
 	global.time_countdown_bonus = 500; /*Reset countdown bonus back to default value*/
-	sprite_index= noone;
+	sprite_index = noone;
 	gravity = 0;
 	speed = 0;
 	if (asset_get_type("snd_die_melody") == asset_sound)
@@ -177,7 +177,7 @@ if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vie
 if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 1;
-	sprite_index= noone;
+	sprite_index = noone;
 }
 
 if (!instance_exists(obj_player))
@@ -241,11 +241,11 @@ if (bubble = true)
 	#region /*Don't go outside view boundary*/
 	if (x<camera_get_view_x(view_camera[view_current]) + 32)
 	{
-		x=camera_get_view_x(view_camera[view_current]) + 32;
+		x =camera_get_view_x(view_camera[view_current]) + 32;
 	}
 	if (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32)
 	{
-		x=camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32;
+		x =camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32;
 	}
 	if (y <camera_get_view_y(view_camera[view_current]) + 32)
 	{

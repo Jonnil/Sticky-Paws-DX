@@ -65,21 +65,21 @@ if (global.actually_play_edited_level = true)
 	instance_destroy();
 }
 room_speed = global.max_fps; /*Set correct fps*/
-x=mouse_x;
+x =mouse_x;
 y =mouse_y;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
-controller_x=mouse_x;
+controller_x =mouse_x;
 controller_y =mouse_y;
-drag_x=mouse_x;
+drag_x =mouse_x;
 drag_y =mouse_y;
-cursor_x= x;
+cursor_x = x;
 cursor_y = y;
 place_brush_size = 0; /*The size of the brush when placeing objects*/
 erase_brush_size = 0; /*The size of the brush when erasing*/
 can_make_place_brush_size_bigger = true; /*If you can make the brush size bigger for certain objects*/
 can_put_objects_above_other_objects = false; /*If you can put objects above other objects*/
-mouse_sprite =spr_cursor; /*Sets what cursor sprite to use*/
+mouse_sprite = spr_cursor; /*Sets what cursor sprite to use*/
 undo_and_redo_buttons_enabled = false; /*If undo and redo buttons should appear or not*/
 tooltip = "";
 show_tooltip = 0;
@@ -101,9 +101,9 @@ undo_redo_icons_y = +200; /*Undo and redo buttons y postition*/
 current_undo_value = 0; /*Every time you place down items, this value increases. When you undo, this value decreases.*/
 icons_at_top_y = - 100;
 icons_at_top_alpha= 1;
-icons_at_left_x=- 64;
+icons_at_left_x =- 64;
 selected_object = 0;
-selected_object_menu_x= 0;
+selected_object_menu_x = 0;
 selected_menu_alpha= 0;
 total_number_of_objects= 0;
 use_controller = false;
@@ -114,7 +114,7 @@ can_input_level_name = false;
 quit_level_editor = false;
 menu_joystick_delay = 0;
 pause = false;
-menu_cursor_index= 0;
+menu_cursor_index = 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
 can_navigate_settings_sidebar = true;
@@ -146,13 +146,13 @@ storage_settings_y = 40 * 14;
 language_settings_y = 40 * 15;
 broadcast_settings_y = 40 * 16;
 how_to_play_y = 40 * 17;
-left_sidebar_x=-400;
+left_sidebar_x =-400;
 
 place_brush_icon_x = 32;
 erase_icon_x = 96;
 fill_icon_x = 160;
 
-screenie_x= 0;
+screenie_x = 0;
 screenie_y = 0;
 total_objects= 0;
 
@@ -176,7 +176,7 @@ c_menu_fill =c_white;
 room_speed = global.max_fps; /*Room Speed is Max FPS*/
 
 image_speed = 0;
-image_index= 0;
+image_index = 0;
 
 #region /*Initialize level_information.ini*/
 if (global.character_select_in_this_menu = "main_game")
@@ -710,7 +710,7 @@ or(global.create_level_from_template = true)
 					easy =val[3];
 					normal =val[4];
 					hard =val[5];
-					second_x=val[6];
+					second_x =val[6];
 					second_y =val[7];
 				}
 			}
@@ -982,7 +982,7 @@ if (global.character_select_in_this_menu = "level_editor")
 						easy =val[3];
 						normal =val[4];
 						hard =val[5];
-						second_x=val[6];
+						second_x =val[6];
 						second_y =val[7];
 					}
 				}

@@ -15,7 +15,7 @@ function draw_menu_checkmark()
 	var y_position =argument1; /*The buttons y origin position*/
 
 	var string_text =argument2;
-	var menu_index=argument3;
+	var menu_index =argument3;
 	var variable_to_check=argument4;
 	var bottom_text =argument5;
 	var clicked_on = false;

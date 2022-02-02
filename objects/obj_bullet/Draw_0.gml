@@ -62,7 +62,7 @@ and (image_xscale < 0)
 or(x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
 and (image_xscale > 0)
 {
-	x= 0;
+	x = 0;
 	y = 0;
 	instance_destroy();
 }
@@ -84,7 +84,7 @@ and (x<camera_get_view_x(view_camera[view_current]) -32)
 or(image_xscale = +1)
 and (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
 {
-	x= 0;
+	x = 0;
 	y = 0;
 	instance_destroy();
 }

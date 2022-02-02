@@ -7,28 +7,28 @@ and (fall = false)
 	
 	#region /*If it's a clipped shirt, turn into the shirt falling*/
 	if (asset_get_type("spr_clipped_shirt") == asset_sprite)
-	and (sprite_index=spr_clipped_shirt)
+	and (sprite_index = spr_clipped_shirt)
 	and (asset_get_type("spr_shirt") == asset_sprite)
 	{
-		sprite_index=spr_shirt;
+		sprite_index = spr_shirt;
 	}
 	#endregion /*If it's a clipped shirt, turn into the shirt falling END*/
 	
 	#region /*If it's clipped pants, turn into the pants falling*/
 	if (asset_get_type("spr_clipped_pants") == asset_sprite)
-	and (sprite_index=spr_clipped_pants)
+	and (sprite_index = spr_clipped_pants)
 	and (asset_get_type("spr_pants") == asset_sprite)
 	{
-		sprite_index=spr_pants;
+		sprite_index = spr_pants;
 	}
 	#endregion /*If it's clipped pants, turn into the pants falling END*/
 	
 	#region /*If it's a clipped sock, turn into the sock falling*/
 	if (asset_get_type("spr_clipped_sock") == asset_sprite)
-	and (sprite_index=spr_clipped_sock)
+	and (sprite_index = spr_clipped_sock)
 	and (asset_get_type("spr_sock") == asset_sprite)
 	{
-		sprite_index=spr_sock;
+		sprite_index = spr_sock;
 	}
 	#endregion /*If it's a clipped sock, turn into the sock falling END*/
 	
@@ -50,7 +50,7 @@ and (fall = false)
 	if (asset_get_type("obj_clipper") == asset_object)
 	{
 		if (asset_get_type("spr_sock") == asset_sprite)
-		and (sprite_index=spr_sock)
+		and (sprite_index = spr_sock)
 		{
 			obj = instance_create_depth(x, y - 16, 0, obj_clipper);
 			with(obj)

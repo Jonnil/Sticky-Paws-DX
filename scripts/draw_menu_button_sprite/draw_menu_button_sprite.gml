@@ -14,14 +14,14 @@ function draw_menu_button_sprite()
 	#region /*Button*/
 	
 	#region /*Initialize variables*/
-	var spr_index=argument0; /*Sprite index of the button (argument0)*/
+	var spr_index =argument0; /*Sprite index of the button (argument0)*/
 	var x_position =argument1; /*The buttons x origin position (argument1)*/
 	var y_position =argument2; /*The buttons y origin position (argument2)*/
 	var spr_width =argument3; /*The width of the button*/
 	var spr_height =argument4; /*The height of the button*/
 
 	var string_text =argument5; /*(argument3)*/
-	var menu_index=argument6; /*(argument4)*/
+	var menu_index =argument6; /*(argument4)*/
 	var menu_takes_you_to=argument7; /*(argument5)*/
 	var clicked_on = false;
 	#endregion /*Initialize variables END*/

@@ -2,8 +2,8 @@ scr_set_screen_size();
 
 scr_zoom_camera_controls();
 
-//draw_text_outlined(x, y- 228, "P1: "+string(player1), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x, y - 128, "P2: "+string(player2), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x, y- 228, "P1: " +string(player1), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x, y - 128, "P2: " +string(player2), global.default_text_size, c_white, c_black, 1);
 
 #region /*Set what controls are used to navigate the menus*/
 

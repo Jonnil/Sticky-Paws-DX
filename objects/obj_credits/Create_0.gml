@@ -14,7 +14,9 @@ skip = 0;
 iris_xscale = 32;
 iris_yscale = 32;
 iris_zoom = 0;
+menu = "";
 menu_delay = 0;
+menu_cursor_index = 0;
 
 #region /*Change the logo to different designs during specific times and dates*/
 if (current_month = 12)

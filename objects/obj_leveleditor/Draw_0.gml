@@ -144,62 +144,62 @@ key_b_released =(gamepad_button_check_released(0, gp_face2))or(keyboard_check_re
 
 #region /*List of Placable Objects*/
 total_number_of_objects = 47; /*This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1)*/
-if (selected_object = 0) and (wall_surface_selected = 0){place_object = "wall";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall") == asset_sprite){sprite_index=spr_wall;}mask_index=spr_wall;}
-if (selected_object = 0) and (wall_surface_selected = 1){place_object = "wall_dirt";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_dirt") == asset_sprite){sprite_index=spr_wall_dirt;}mask_index=spr_wall;}
-if (selected_object = 0) and (wall_surface_selected = 2){place_object = "wall_glass";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_glass") == asset_sprite){sprite_index=spr_wall_glass;}mask_index=spr_wall;}
-if (selected_object = 0) and (wall_surface_selected = 3){place_object = "wall_grass";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_grass") == asset_sprite){sprite_index=spr_wall_grass;}mask_index=spr_wall;}
-if (selected_object = 0) and (wall_surface_selected = 4){place_object = "wall_gravel";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_gravel") == asset_sprite){sprite_index=spr_wall_gravel;}mask_index=spr_wall;}
-if (selected_object = 0) and (wall_surface_selected = 5){place_object = "wall_metal";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_metal") == asset_sprite){sprite_index=spr_wall_metal;}mask_index=spr_wall;}
-if (selected_object = 0) and (wall_surface_selected = 6){place_object = "wall_stone";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_stone") == asset_sprite){sprite_index=spr_wall_stone;}mask_index=spr_wall;}
-if (selected_object = 0) and (wall_surface_selected = 7){place_object = "wall_wood";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_wood") == asset_sprite){sprite_index=spr_wall_wood;}mask_index=spr_wall;}
+if (selected_object = 0) and (wall_surface_selected = 0){place_object = "wall";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall") == asset_sprite){sprite_index = spr_wall;}mask_index = spr_wall;}
+if (selected_object = 0) and (wall_surface_selected = 1){place_object = "wall_dirt";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_dirt") == asset_sprite){sprite_index = spr_wall_dirt;}mask_index = spr_wall;}
+if (selected_object = 0) and (wall_surface_selected = 2){place_object = "wall_glass";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_glass") == asset_sprite){sprite_index = spr_wall_glass;}mask_index = spr_wall;}
+if (selected_object = 0) and (wall_surface_selected = 3){place_object = "wall_grass";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_grass") == asset_sprite){sprite_index = spr_wall_grass;}mask_index = spr_wall;}
+if (selected_object = 0) and (wall_surface_selected = 4){place_object = "wall_gravel";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_gravel") == asset_sprite){sprite_index = spr_wall_gravel;}mask_index = spr_wall;}
+if (selected_object = 0) and (wall_surface_selected = 5){place_object = "wall_metal";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_metal") == asset_sprite){sprite_index = spr_wall_metal;}mask_index = spr_wall;}
+if (selected_object = 0) and (wall_surface_selected = 6){place_object = "wall_stone";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_stone") == asset_sprite){sprite_index = spr_wall_stone;}mask_index = spr_wall;}
+if (selected_object = 0) and (wall_surface_selected = 7){place_object = "wall_wood";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_wood") == asset_sprite){sprite_index = spr_wall_wood;}mask_index = spr_wall;}
 
-if (selected_object = 1){place_object = "wall_jump_panel";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_jump_panel") == asset_sprite){sprite_index=spr_wall_jump_panel;}mask_index=spr_wall;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 144, "Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump", global.default_text_size *0.75, c_black, c_white, selected_menu_alpha);}
-if (selected_object = 2){place_object = "wall_climb_panel";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_climb_panel") == asset_sprite){sprite_index=spr_wall_climb_panel;}mask_index=spr_wall;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 144, "Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb", global.default_text_size *0.75, c_black, c_white, selected_menu_alpha);}
-if (selected_object = 3){place_object = "spikes";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_spikes") == asset_sprite){sprite_index=spr_spikes;}mask_index=spr_wall;}
-if (selected_object =4){place_object = "semisolid_platform";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_semisolid_platform") == asset_sprite){sprite_index=spr_semisolid_platform;}mask_index=spr_wall;}
-if (selected_object =5){place_object = "brick_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_brick_block") == asset_sprite){sprite_index=spr_brick_block;}mask_index=spr_wall;}
-if (selected_object =6){place_object = "question_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_question_block") == asset_sprite){sprite_index=spr_question_block;}mask_index=spr_wall;}
-if (selected_object =7){place_object = "hard_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_hard_block") == asset_sprite){sprite_index=spr_hard_block;}mask_index=spr_wall;}
-if (selected_object =8){place_object = "falling_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_falling_block") == asset_sprite){sprite_index=spr_falling_block;}mask_index=spr_wall;}
-if (selected_object = 9){place_object = "falling_block_long";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_falling_block_long") == asset_sprite){sprite_index=spr_falling_block_long;}if (asset_get_type("spr_cardboard") == asset_sprite){mask_index=spr_cardboard;}}
-if (selected_object = 10){place_object = "cloud_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cloud_block") == asset_sprite){sprite_index=spr_cloud_block;}mask_index=spr_wall;}
-if (selected_object = 11){place_object = "ice_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_ice_block") == asset_sprite){sprite_index=spr_ice_block;}mask_index=spr_wall;}
-if (selected_object = 12){place_object = "cardboard_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cardboard_block") == asset_sprite){sprite_index=spr_cardboard_block;}mask_index=spr_wall;}
-if (selected_object = 13){place_object = "cardboard";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cardboard") == asset_sprite){sprite_index=spr_cardboard;}if (asset_get_type("spr_cardboard") == asset_sprite){mask_index=spr_cardboard;}}
-if (selected_object = 14){place_object = "cardboard_long";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cardboard_long") == asset_sprite){sprite_index=spr_cardboard_long;}if (asset_get_type("spr_cardboard_long") == asset_sprite){mask_index=spr_cardboard_long;}}
-if (selected_object = 15){place_object = "bump_in_ground";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index=spr_bump_in_ground;}mask_index=spr_wall;}
-if (selected_object = 16){place_object = "basic_collectible";can_make_place_brush_size_bigger = true;sprite_index= global.resourcepack_sprite_basic_collectible;mask_index=spr_wall;}
-if (selected_object = 17){place_object = "big_collectible_1";can_make_place_brush_size_bigger = false;sprite_index= global.resourcepack_sprite_big_collectible;mask_index=spr_wall;}
-if (selected_object = 18){place_object = "heart";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_heart") == asset_sprite){sprite_index=spr_heart;}mask_index=spr_wall;}
-if (selected_object = 19){place_object = "hp_pickup";can_make_place_brush_size_bigger = true;sprite_index= global.resourcepack_sprite_hp_pickup;mask_index=spr_wall;}
-if (selected_object = 20){place_object = "invincibility_powerup";can_make_place_brush_size_bigger = true;sprite_index= global.resourcepack_sprite_invincibility_powerup;mask_index=spr_wall;}
-if (selected_object = 21){place_object = "one-up";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_1up") == asset_sprite){sprite_index=spr_1up;}mask_index=spr_wall;}
-if (selected_object = 22){place_object = "enemy1";can_make_place_brush_size_bigger = true;sprite_index = sprite_enemy1;mask_index=spr_wall;}
-if (selected_object = 23){place_object = "enemy2";can_make_place_brush_size_bigger = true;sprite_index = sprite_enemy2;mask_index=spr_wall;}
-if (selected_object = 24){place_object = "blaster";can_make_place_brush_size_bigger = true;sprite_index= global.resourcepack_sprite_blaster;mask_index=spr_wall;}
-if (selected_object = 25){place_object = "spring";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_spring") == asset_sprite){sprite_index=spr_spring;}mask_index=spr_wall;}
-if (selected_object = 26){place_object = "ladder";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_ladder") == asset_sprite){sprite_index=spr_ladder;}mask_index=spr_wall;}
-if (selected_object = 27){place_object = "arrow_sign";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_arrow_sign") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_arrow_sign, 0,x, y, 1, 1, 0, c_white, 0.2);}sprite_index= noone;}mask_index=spr_2x2_block;}
-if (selected_object = 28){place_object = "arrow_sign_small";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_arrow_sign_small") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_arrow_sign_small, 0,x, y, 0.5, 0.5, 0, c_white, 0.2);}sprite_index= noone;}mask_index=spr_2x2_block;}
-if (selected_object = 29){place_object = "checkpoint";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_checkpoint") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_checkpoint, 0,x, y, 1, 1, 0, c_white, 0.2);}sprite_index= noone;}mask_index=spr_2x2_block;}
-if (selected_object = 30){place_object = "spikes_emerge_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_spikes_emerge_block") == asset_sprite){sprite_index=spr_spikes_emerge_block;}mask_index=spr_wall;}
-if (selected_object = 31){place_object = "oneway";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,x, y, 1, 1, 0, c_white, 0.2);sprite_index= noone;mask_index=spr_wall;}}
-if (selected_object = 32){place_object = "oneway2";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,x, y, 1, 1,90, c_white, 0.2);sprite_index= noone;mask_index=spr_wall;}}
-if (selected_object = 33){place_object = "oneway3";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,x, y, 1, 1, 180, c_white, 0.2);sprite_index= noone;mask_index=spr_wall;}}
-if (selected_object = 34){place_object = "oneway4";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,x, y, 1, 1, 270, c_white, 0.2);sprite_index= noone;mask_index=spr_wall;}}
-if (selected_object = 35){place_object = "horizontal_rope";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_horizontal_rope") == asset_sprite){sprite_index=spr_horizontal_rope;}mask_index=spr_wall;}
-if (selected_object = 36){place_object = "water";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_surface") == asset_sprite){sprite_index=spr_water_surface;}mask_index=spr_wall;}
-if (selected_object = 37){place_object = "air_bubbles_spawner";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_air_bubbles_spawner") == asset_sprite){sprite_index=spr_air_bubbles_spawner;}else if (asset_get_type("spr_bubble") == asset_sprite){sprite_index=spr_bubble;}mask_index=spr_wall;}
-if (selected_object = 38){place_object = "water_level_change_slow";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_level_change_slow") == asset_sprite){sprite_index=spr_water_level_change_slow;}mask_index=spr_wall;}
-if (selected_object = 39){place_object = "water_level_change_fast";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_level_change_fast") == asset_sprite){sprite_index=spr_water_level_change_fast;}mask_index=spr_wall;}
-if (selected_object =40){place_object = "water_level_change_faster";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_level_change_faster") == asset_sprite){sprite_index=spr_water_level_change_faster;}mask_index=spr_wall;}
-if (selected_object =41){place_object = "clipped_shirt";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_clipped_shirt") == asset_sprite){sprite_index=spr_clipped_shirt;}mask_index=spr_wall;}
-if (selected_object =42){place_object = "bucket";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_bucket") == asset_sprite){sprite_index=spr_bucket;}mask_index=spr_wall;}
-if (selected_object =43){place_object = "bird";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_bird") == asset_sprite){sprite_index=spr_bird;}mask_index=spr_wall;}
-if (selected_object =44){place_object = "sign_crouch";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_sign_crouch") == asset_sprite){sprite_index=spr_sign_crouch;}mask_index=spr_wall;}
-if (selected_object =45){place_object = "boss";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_boss_stand") == asset_sprite){sprite_index=spr_boss_stand;}mask_index=spr_wall;}
-if (selected_object =46){place_object = "boss_barrier";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index=spr_boss_barrier;}mask_index=spr_wall;}
-if (selected_object =47){place_object = "artwork_collection";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_artwork_collection") == asset_sprite){sprite_index=spr_artwork_collection;}mask_index=spr_wall;}
+if (selected_object = 1){place_object = "wall_jump_panel";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_jump_panel") == asset_sprite){sprite_index = spr_wall_jump_panel;}mask_index = spr_wall;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 144, "Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump", global.default_text_size *0.75, c_black, c_white, selected_menu_alpha);}
+if (selected_object = 2){place_object = "wall_climb_panel";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_climb_panel") == asset_sprite){sprite_index = spr_wall_climb_panel;}mask_index = spr_wall;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 144, "Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb", global.default_text_size *0.75, c_black, c_white, selected_menu_alpha);}
+if (selected_object = 3){place_object = "spikes";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_spikes") == asset_sprite){sprite_index = spr_spikes;}mask_index = spr_wall;}
+if (selected_object =4){place_object = "semisolid_platform";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_semisolid_platform") == asset_sprite){sprite_index = spr_semisolid_platform;}mask_index = spr_wall;}
+if (selected_object =5){place_object = "brick_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;}mask_index = spr_wall;}
+if (selected_object =6){place_object = "question_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;}mask_index = spr_wall;}
+if (selected_object =7){place_object = "hard_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_hard_block") == asset_sprite){sprite_index = spr_hard_block;}mask_index = spr_wall;}
+if (selected_object =8){place_object = "falling_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_falling_block") == asset_sprite){sprite_index = spr_falling_block;}mask_index = spr_wall;}
+if (selected_object = 9){place_object = "falling_block_long";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_falling_block_long") == asset_sprite){sprite_index = spr_falling_block_long;}if (asset_get_type("spr_cardboard") == asset_sprite){mask_index = spr_cardboard;}}
+if (selected_object = 10){place_object = "cloud_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cloud_block") == asset_sprite){sprite_index = spr_cloud_block;}mask_index = spr_wall;}
+if (selected_object = 11){place_object = "ice_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_ice_block") == asset_sprite){sprite_index = spr_ice_block;}mask_index = spr_wall;}
+if (selected_object = 12){place_object = "cardboard_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cardboard_block") == asset_sprite){sprite_index = spr_cardboard_block;}mask_index = spr_wall;}
+if (selected_object = 13){place_object = "cardboard";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cardboard") == asset_sprite){sprite_index = spr_cardboard;}if (asset_get_type("spr_cardboard") == asset_sprite){mask_index = spr_cardboard;}}
+if (selected_object = 14){place_object = "cardboard_long";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cardboard_long") == asset_sprite){sprite_index = spr_cardboard_long;}if (asset_get_type("spr_cardboard_long") == asset_sprite){mask_index = spr_cardboard_long;}}
+if (selected_object = 15){place_object = "bump_in_ground";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;}mask_index = spr_wall;}
+if (selected_object = 16){place_object = "basic_collectible";can_make_place_brush_size_bigger = true;sprite_index = global.resourcepack_sprite_basic_collectible;mask_index = spr_wall;}
+if (selected_object = 17){place_object = "big_collectible_1";can_make_place_brush_size_bigger = false;sprite_index = global.resourcepack_sprite_big_collectible;mask_index = spr_wall;}
+if (selected_object = 18){place_object = "heart";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_heart") == asset_sprite){sprite_index = spr_heart;}mask_index = spr_wall;}
+if (selected_object = 19){place_object = "hp_pickup";can_make_place_brush_size_bigger = true;sprite_index = global.resourcepack_sprite_hp_pickup;mask_index = spr_wall;}
+if (selected_object = 20){place_object = "invincibility_powerup";can_make_place_brush_size_bigger = true;sprite_index = global.resourcepack_sprite_invincibility_powerup;mask_index = spr_wall;}
+if (selected_object = 21){place_object = "one-up";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_1up") == asset_sprite){sprite_index = spr_1up;}mask_index = spr_wall;}
+if (selected_object = 22){place_object = "enemy1";can_make_place_brush_size_bigger = true;sprite_index = sprite_enemy1;mask_index = spr_wall;}
+if (selected_object = 23){place_object = "enemy2";can_make_place_brush_size_bigger = true;sprite_index = sprite_enemy2;mask_index = spr_wall;}
+if (selected_object = 24){place_object = "blaster";can_make_place_brush_size_bigger = true;sprite_index = global.resourcepack_sprite_blaster;mask_index = spr_wall;}
+if (selected_object = 25){place_object = "spring";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_spring") == asset_sprite){sprite_index = spr_spring;}mask_index = spr_wall;}
+if (selected_object = 26){place_object = "ladder";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_ladder") == asset_sprite){sprite_index = spr_ladder;}mask_index = spr_wall;}
+if (selected_object = 27){place_object = "arrow_sign";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_arrow_sign") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_arrow_sign, 0,x, y, 1, 1, 0, c_white, 0.2);}sprite_index = noone;}mask_index = spr_2x2_block;}
+if (selected_object = 28){place_object = "arrow_sign_small";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_arrow_sign_small") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_arrow_sign_small, 0,x, y, 0.5, 0.5, 0, c_white, 0.2);}sprite_index = noone;}mask_index = spr_2x2_block;}
+if (selected_object = 29){place_object = "checkpoint";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_checkpoint") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_checkpoint, 0,x, y, 1, 1, 0, c_white, 0.2);}sprite_index = noone;}mask_index = spr_2x2_block;}
+if (selected_object = 30){place_object = "spikes_emerge_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_spikes_emerge_block") == asset_sprite){sprite_index = spr_spikes_emerge_block;}mask_index = spr_wall;}
+if (selected_object = 31){place_object = "oneway";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,x, y, 1, 1, 0, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
+if (selected_object = 32){place_object = "oneway2";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,x, y, 1, 1,90, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
+if (selected_object = 33){place_object = "oneway3";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,x, y, 1, 1, 180, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
+if (selected_object = 34){place_object = "oneway4";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,x, y, 1, 1, 270, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
+if (selected_object = 35){place_object = "horizontal_rope";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_horizontal_rope") == asset_sprite){sprite_index = spr_horizontal_rope;}mask_index = spr_wall;}
+if (selected_object = 36){place_object = "water";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_surface") == asset_sprite){sprite_index = spr_water_surface;}mask_index = spr_wall;}
+if (selected_object = 37){place_object = "air_bubbles_spawner";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_air_bubbles_spawner") == asset_sprite){sprite_index = spr_air_bubbles_spawner;}else if (asset_get_type("spr_bubble") == asset_sprite){sprite_index = spr_bubble;}mask_index = spr_wall;}
+if (selected_object = 38){place_object = "water_level_change_slow";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_level_change_slow") == asset_sprite){sprite_index = spr_water_level_change_slow;}mask_index = spr_wall;}
+if (selected_object = 39){place_object = "water_level_change_fast";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_level_change_fast") == asset_sprite){sprite_index = spr_water_level_change_fast;}mask_index = spr_wall;}
+if (selected_object =40){place_object = "water_level_change_faster";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_level_change_faster") == asset_sprite){sprite_index = spr_water_level_change_faster;}mask_index = spr_wall;}
+if (selected_object =41){place_object = "clipped_shirt";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_clipped_shirt") == asset_sprite){sprite_index = spr_clipped_shirt;}mask_index = spr_wall;}
+if (selected_object =42){place_object = "bucket";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;}mask_index = spr_wall;}
+if (selected_object =43){place_object = "bird";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_bird") == asset_sprite){sprite_index = spr_bird;}mask_index = spr_wall;}
+if (selected_object =44){place_object = "sign_crouch";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_sign_crouch") == asset_sprite){sprite_index = spr_sign_crouch;}mask_index = spr_wall;}
+if (selected_object =45){place_object = "boss";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_boss_stand") == asset_sprite){sprite_index = spr_boss_stand;}mask_index = spr_wall;}
+if (selected_object =46){place_object = "boss_barrier";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index = spr_boss_barrier;}mask_index = spr_wall;}
+if (selected_object =47){place_object = "artwork_collection";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_artwork_collection") == asset_sprite){sprite_index = spr_artwork_collection;}mask_index = spr_wall;}
 #endregion /*List of Placable Objects END*/
 
 #region /*Change Brush Size. Key 187 = +. key 189 = -*/
@@ -459,11 +459,11 @@ if (pause = false)
 		#region /*Limit controller x and controller y inside room*/
 		if (controller_x<camera_get_view_x(view_camera[view_current]))
 		{
-			controller_x=camera_get_view_x(view_camera[view_current]);
+			controller_x =camera_get_view_x(view_camera[view_current]);
 		}
 		if (controller_x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 		{
-			controller_x=camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			controller_x =camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
 		}
 		if (controller_y <camera_get_view_y(view_camera[view_current]))
 		{
@@ -478,11 +478,11 @@ if (pause = false)
 		#region /*Limit x and y inside room*/
 		if (x<camera_get_view_x(view_camera[view_current]))
 		{
-			x=camera_get_view_x(view_camera[view_current]);
+			x =camera_get_view_x(view_camera[view_current]);
 		}
 		if (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 		{
-			x=camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			x =camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
 		}
 		if (y <camera_get_view_y(view_camera[view_current]))
 		{
@@ -619,9 +619,9 @@ if (quit_level_editor = 0)
 #region /*Controller Input Changes*/
 if (use_controller = false)
 {
-	x=mouse_x;
+	x =mouse_x;
 	y =mouse_y;
-	cursor_x=window_mouse_get_x();
+	cursor_x =window_mouse_get_x();
 	cursor_y =window_mouse_get_y();
 	
 	#region /*Change control type to gamepad if using a gamepad*/
@@ -784,7 +784,7 @@ if (use_controller = true)
 	#endregion /*Move view with gamepad END*/
 	x = controller_x;
 	y = controller_y;
-	cursor_x=controller_x;
+	cursor_x =controller_x;
 	cursor_y =controller_y;
 }
 #endregion /*Controller Input Changes END*/
@@ -798,7 +798,7 @@ or(mouse_check_button(mb_middle))
 {
 	if (asset_get_type("spr_cursor_scroll") == asset_sprite)
 	{
-		mouse_sprite =spr_cursor_scroll;
+		mouse_sprite = spr_cursor_scroll;
 		window_set_cursor(cr_none);
 	}
 	else
@@ -811,7 +811,7 @@ if (keyboard_check(vk_space))
 {
 	if (asset_get_type("spr_cursor_scroll") == asset_sprite)
 	{
-		mouse_sprite =spr_cursor_scroll;
+		mouse_sprite = spr_cursor_scroll;
 		window_set_cursor(cr_none);
 	}
 	else
@@ -841,7 +841,7 @@ and (!place_meeting(x, y, obj_level_end))
 	draw_set_alpha(1);
 	if (asset_get_type("spr_cursor_fill") == asset_sprite)
 	{
-		mouse_sprite =spr_cursor_fill;
+		mouse_sprite = spr_cursor_fill;
 		window_set_cursor(cr_none);
 	}
 	else
@@ -890,7 +890,7 @@ if (erase_mode = true)
 	draw_set_alpha(1);
 	if (asset_get_type("spr_cursor_erase") == asset_sprite)
 	{
-		mouse_sprite =spr_cursor_erase;
+		mouse_sprite = spr_cursor_erase;
 		window_set_cursor(cr_none);
 	}
 	else
@@ -989,7 +989,7 @@ and (pause = false)
 	}
 	else
 	{
-		if (mask_index=spr_2x2_block)
+		if (mask_index = spr_2x2_block)
 		{
 			draw_rectangle_color(x- 24, y- 24,x + 24, y + 24, c_black, c_black, c_black, c_black, true);
 		}
@@ -1002,7 +1002,7 @@ and (pause = false)
 
 	if (asset_get_type("spr_cursor_brush") == asset_sprite)
 	{
-		mouse_sprite =spr_cursor_brush;
+		mouse_sprite = spr_cursor_brush;
 		window_set_cursor(cr_none);
 	}
 	else
@@ -1036,7 +1036,7 @@ and (place_meeting(x, y, obj_level_end))
 	{
 		if (asset_get_type("spr_cursor_grab") == asset_sprite)
 		{
-			mouse_sprite =spr_cursor_grab;
+			mouse_sprite = spr_cursor_grab;
 			window_set_cursor(cr_none);
 		}
 	}
@@ -1046,7 +1046,7 @@ and (place_meeting(x, y, obj_level_end))
 	{
 		if (asset_get_type("spr_cursor_grab") == asset_sprite)
 		{
-			mouse_sprite =spr_cursor_grab;
+			mouse_sprite = spr_cursor_grab;
 			window_set_cursor(cr_none);
 		}
 		else
@@ -1471,7 +1471,7 @@ and (pause = false)
 		else
 		{
 			selected_object = total_number_of_objects;
-			selected_object_menu_x=- 64*total_number_of_objects;
+			selected_object_menu_x =- 64*total_number_of_objects;
 		}
 		selected_menu_alpha= 2;
 	}
@@ -1504,7 +1504,7 @@ and (pause = false)
 		else
 		{
 			selected_object = 0;
-			selected_object_menu_x= 0;
+			selected_object_menu_x = 0;
 		}
 		selected_menu_alpha= 2;
 	}
@@ -1521,7 +1521,7 @@ or(mouse_check_button_pressed(mb_middle))
 	if (pause = false)
 	and (!instance_exists(obj_leveleditor_fill))
 	{
-		drag_x=mouse_x;
+		drag_x =mouse_x;
 		drag_y =mouse_y;
 	}
 }

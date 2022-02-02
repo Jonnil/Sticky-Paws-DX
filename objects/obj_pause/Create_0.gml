@@ -19,7 +19,7 @@ if (global.narrator >= 0)
 	menuvoice_4player = noone;
 	menuvoice_leveleditor = noone;
 	menuvoice_leveleditor_denied = noone;
-	menuvoice_options= noone;
+	voice_options= noone;
 }
 
 pause_text_alpha= 0;
@@ -42,7 +42,7 @@ open_dropdown = false;
 menu_joystick_delay = 0;
 can_navigate = true;
 remap_y_pos= 0;
-menu_cursor_index= 0;
+menu_cursor_index = 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;
 can_navigate_settings_sidebar = true;
@@ -72,7 +72,7 @@ storage_settings_y = 40 * 14;
 language_settings_y = 40 * 15;
 broadcast_settings_y = 40 * 16;
 how_to_play_y = 40 * 17;
-left_sidebar_x=-400;
+left_sidebar_x =-400;
 hide_menu_for_clean_screenshots = false;
 hide_menu_for_clean_screenshots_alpha = 0;
 hide_menu_for_clean_screenshots_timer = 0;

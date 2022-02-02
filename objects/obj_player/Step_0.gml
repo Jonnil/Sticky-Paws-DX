@@ -3066,7 +3066,7 @@ else
 				{
 					if (x > room_width + sprite_width / 2)
 					{
-						x=room_width + sprite_width / 2;
+						x =room_width + sprite_width / 2;
 						hspeed = 0;
 						vspeed = 0;
 					}
@@ -3138,7 +3138,7 @@ if (goal = true)
 {
 	if (x<camera_get_view_x(view_camera[view_current]) -32)
 	{
-		x=camera_get_view_x(view_camera[view_current]) -32;
+		x =camera_get_view_x(view_camera[view_current]) -32;
 		if (hspeed < 0)
 		{
 			hspeed = 0;
@@ -3146,7 +3146,7 @@ if (goal = true)
 	}
 	if (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
 	{
-		x=camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32;
+		x =camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32;
 		if (hspeed > 0)
 		{
 			hspeed = 0;
@@ -5803,7 +5803,7 @@ and (global.pause = false)
 			rope_angle_velocity += rope_angle_acceleration;
 			rope_angle += rope_angle_velocity;
 			rope_angle_velocity *= 0.99;
-			ropeX= grapple_x + lengthdir_x(rope_length, rope_angle);
+			ropex = grapple_x + lengthdir_x(rope_length, rope_angle);
 			ropey = grapple_y + lengthdir_y(rope_length, rope_angle);
 			hspeed = ropeX - x;
 			vspeed = ropeY - y;
@@ -6296,7 +6296,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 				crouch = false;
 				stick_to_wall = false;
 				ledge_grab_jump = false;
-				speed_max=8;
+				speed_max =8;
 				vspeed = -normal_jump_height;
 				midair_jumps_left = number_of_jumps - 1;
 				image_index = 0;
@@ -6467,7 +6467,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			crouch = false;
 			stick_to_wall = false;
 			ledge_grab_jump = false;
-			speed_max=8;
+			speed_max =8;
 			vspeed = -normal_jump_height;
 			image_index = 0;
 			effect_create_above(ef_smoke, x, bbox_bottom-8, 0, c_white);
@@ -6647,7 +6647,7 @@ and (takendamage <= takendamage_freezetime)
 			or(asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			{
-				speed_max= 0;
+				speed_max = 0;
 				hspeed = 0;
 				if (allow_ground_poundjump = true)
 				and (key_jump_hold)
@@ -6680,7 +6680,7 @@ and (takendamage <= takendamage_freezetime)
 		{
 			if (key_sprint)
 			{
-				speed_max=8;
+				speed_max =8;
 			}
 			else
 			{
@@ -6764,7 +6764,7 @@ and (global.pause = false)
 				{
 					if (speed_max<8)
 					{
-						speed_max=8;
+						speed_max =8;
 					}
 					if (!place_meeting(x, y-8, obj_wall))
 					{
@@ -7052,7 +7052,7 @@ if (allow_ledge_grab= true)
 	{
 		if (hspeed!= 0)
 		{
-			hspeed_dir =sign(hspeed);
+			hspeed_dir = sign(hspeed);
 		}
 		if (ground_pound< 1)
 		and (burnt< 1)
@@ -7114,12 +7114,12 @@ if (allow_ledge_grab= true)
 			vspeed = 0;
 			if (asset_get_type("spr_player_ledge_grab") == asset_sprite)
 			{
-				sprite_index=spr_player_ledge_grab;
+				sprite_index = spr_player_ledge_grab;
 			}
 			else
 			if (asset_get_type("spr_player_wall_slide") == asset_sprite)
 			{
-				sprite_index=spr_player_wall_slide;
+				sprite_index = spr_player_wall_slide;
 			}
 			if (key_left)
 			and (image_xscale = -1)
@@ -7650,7 +7650,7 @@ if (asset_get_type("obj_lava") == asset_object)
 			ground_pound = false;
 			stick_to_wall = false;
 			crouch = false;
-			speed_max=8;
+			speed_max =8;
 			takendamage = 100;
 			if (invincible < 1)
 			{
@@ -7693,7 +7693,7 @@ if (burnt = true)
 		dive = false;
 		ground_pound = false;
 		crouch = false;
-		speed_max=8;
+		speed_max =8;
 		vspeed = -7.5;
 	}
 }
@@ -8948,7 +8948,7 @@ and (place_meeting(x, y, obj_vine))
 		gravity = 0;
 		hspeed = 0;
 		vspeed = 0;
-		laststandingx= x;
+		laststandingx = x;
 		laststandingy = y;
 		speed_max = 4;
 		ledge_grab_jump = false;
@@ -9311,7 +9311,7 @@ if (crouch = true)
 			{
 				mask_index = sprite_index;
 			}
-			sprite_index=spr_player_slide;
+			sprite_index = spr_player_slide;
 		}
 		else
 		{
@@ -9323,7 +9323,7 @@ if (crouch = true)
 			{
 				mask_index = sprite_index;
 			}
-			sprite_index=spr_player_crouch_crawl;
+			sprite_index = spr_player_crouch_crawl;
 			if (image_index > image_number - 1)
 			{
 				image_speed = 0;
@@ -9506,7 +9506,7 @@ or(hspeed >- 0.1)
 				if (sprite_stand > noone){sprite_index = sprite_stand;}
 			}
 		}
-		image_speed =speed/13.5+0.1;
+		image_speed = speed/13.5+0.1;
 	}
 }
 if (image_index< 1)
@@ -9554,7 +9554,7 @@ and (image_xscale < 0)
 	}
 	if (asset_get_type("spr_player_swim_skidding") == asset_sprite)
 	{
-		sprite_index=spr_player_swim_skidding;
+		sprite_index = spr_player_swim_skidding;
 	}
 	else
 	{
@@ -9633,7 +9633,7 @@ and (allow_crouch = true)
 			draw_xscale = 1.5;
 			draw_yscale = 0.5;
 			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
-			{image_index=sprite_stand;}
+			{image_index = sprite_stand;}
 			
 			if (sprite_mask_crouch > 0)
 			{
@@ -9696,7 +9696,7 @@ and (roll = true)
 {
 	if (asset_get_type("spr_player_roll") == asset_sprite)
 	{
-		sprite_index=spr_player_roll;
+		sprite_index = spr_player_roll;
 	}
 	if (sprite_mask_crouch > 0)
 	{
@@ -10043,12 +10043,12 @@ or(hspeed > 0)
 and (!key_right)
 {
 	if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop;image_speed = 0.5;}else
-	if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4;image_speed =speed/10 + 0.1;}else
-	if (abs(hspeed)>15) and (sprite_run3> noone){sprite_index = sprite_run3;image_speed =speed/10 + 0.1;}else
-	if (abs(hspeed)>10) and (sprite_run2> noone){sprite_index = sprite_run2;image_speed =speed/10 + 0.1;}else
-	if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;image_speed =speed/10 + 0.1;}else
-	if (sprite_walk> noone) and (hspeed <> 0){sprite_index = sprite_walk;image_speed =speed/10 + 0.1;}else
-	if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run;image_speed =speed/10 + 0.1;}else
+	if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4;image_speed = speed/10 + 0.1;}else
+	if (abs(hspeed)>15) and (sprite_run3> noone){sprite_index = sprite_run3;image_speed = speed/10 + 0.1;}else
+	if (abs(hspeed)>10) and (sprite_run2> noone){sprite_index = sprite_run2;image_speed = speed/10 + 0.1;}else
+	if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;image_speed = speed/10 + 0.1;}else
+	if (sprite_walk> noone) and (hspeed <> 0){sprite_index = sprite_walk;image_speed = speed/10 + 0.1;}else
+	if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run;image_speed = speed/10 + 0.1;}else
 	{sprite_index = sprite_stand;image_speed = 0.5;}
 }
 #endregion /*Skidding Stop END*/
@@ -10326,7 +10326,7 @@ if (vspeed < 0)
 	{
 		if (asset_get_type("spr_player_spring_double") == asset_sprite)
 		{
-			sprite_index=spr_player_spring_double;
+			sprite_index = spr_player_spring_double;
 		}
 		else
 		{
@@ -10360,7 +10360,7 @@ if (vspeed < 0)
 	if (invincible >30)
 	and (asset_get_type("spr_player_invincible_jump") == asset_sprite)
 	{
-		sprite_index=spr_player_invincible_jump;
+		sprite_index = spr_player_invincible_jump;
 		image_speed = 1;
 	}
 	/*Walljump*/
@@ -10369,7 +10369,7 @@ if (vspeed < 0)
 		if (wall_jump >= 0)
 		and (asset_get_type("spr_player_wall_jump") == asset_sprite)
 		{
-			sprite_index=spr_player_wall_jump;
+			sprite_index = spr_player_wall_jump;
 			if (image_index > image_number - 1)
 			{
 				image_speed = 0;
@@ -10388,17 +10388,17 @@ if (vspeed < 0)
 			{
 				if (asset_get_type("spr_player_speeddashjump") == asset_sprite)
 				{
-					sprite_index=spr_player_speeddashjump;
+					sprite_index = spr_player_speeddashjump;
 				}
 				else
 				if (asset_get_type("spr_player_jump2") == asset_sprite)
 				and (asset_get_type("spr_player_jump3") == asset_sprite)
 				{
-					if (sprite_index!=sprite_jump)
-					and (sprite_index!=spr_player_jump2)
-					and (sprite_index!=spr_player_jump3)
+					if (sprite_index!= sprite_jump)
+					and (sprite_index!= spr_player_jump2)
+					and (sprite_index!= spr_player_jump3)
 					{
-						sprite_index=choose(sprite_jump,spr_player_jump2,spr_player_jump3);
+						sprite_index =choose(sprite_jump,spr_player_jump2,spr_player_jump3);
 					}
 				}
 				else
@@ -10413,11 +10413,11 @@ if (vspeed < 0)
 			if (asset_get_type("spr_player_jump2") == asset_sprite)
 			and (asset_get_type("spr_player_jump3") == asset_sprite)
 			{
-				if (sprite_index!=sprite_jump)
-				and (sprite_index!=spr_player_jump2)
-				and (sprite_index!=spr_player_jump3)
+				if (sprite_index!= sprite_jump)
+				and (sprite_index!= spr_player_jump2)
+				and (sprite_index!= spr_player_jump3)
 				{
-					sprite_index=choose(sprite_jump,spr_player_jump2,spr_player_jump3);
+					sprite_index =choose(sprite_jump,spr_player_jump2,spr_player_jump3);
 				}
 			}
 			else
@@ -10470,7 +10470,7 @@ and (spring = false)
 	if (invincible >30)
 	and (asset_get_type("spr_player_invincible_jump") == asset_sprite)
 	{
-		sprite_index=spr_player_invincible_jump;
+		sprite_index = spr_player_invincible_jump;
 		image_speed = 1;
 	}
 	else
@@ -10479,7 +10479,7 @@ and (spring = false)
 		{
 			if (asset_get_type("spr_player_speeddashjump") == asset_sprite)
 			{
-				sprite_index=spr_player_speeddashjump;
+				sprite_index = spr_player_speeddashjump;
 			}
 			else
 			{

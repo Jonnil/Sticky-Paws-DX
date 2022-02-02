@@ -2,7 +2,7 @@ depth = +9;
 
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {
-	enemyvoice_defeated1 =snd_enemyvoice_defeated;
+	enemyvoice_defeated1 = snd_enemyvoice_defeated;
 }
 else
 {
@@ -10,7 +10,7 @@ else
 }
 if (asset_get_type("snd_enemyvoice_defeated2") == asset_sound)
 {
-	enemyvoice_defeated2 =snd_enemyvoice_defeated2;
+	enemyvoice_defeated2 = snd_enemyvoice_defeated2;
 }
 else
 {
@@ -18,7 +18,7 @@ else
 }
 if (asset_get_type("snd_enemyvoice_defeated3") == asset_sound)
 {
-	enemyvoice_defeated3 =snd_enemyvoice_defeated3;
+	enemyvoice_defeated3 = snd_enemyvoice_defeated3;
 }
 else
 {

@@ -43,7 +43,7 @@ if (asset_get_type("obj_wall") == asset_object)
 
 if (asset_get_type("spr_wall") == asset_sprite)
 {
-	mask_index=spr_wall;
+	mask_index = spr_wall;
 }
 image_speed = 0;
 image_angle =choose(0,90, 180, 270);

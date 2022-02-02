@@ -98,7 +98,7 @@ if (global.narrator >= 0)
 	menuvoice_4player = noone;
 	menuvoice_leveleditor = noone;
 	menuvoice_leveleditor_denied = noone;
-	menuvoice_options = noone;
+	voice_options = noone;
 }
 
 room_speed = global.max_fps;
@@ -520,10 +520,10 @@ and (global.pause_room = room_leveleditor)
 		and (global.convention_mode = false)
 		{
 			menu_delay = 3;
-			if (!audio_is_playing(menuvoice_options))
+			if (!audio_is_playing(voice_options))
 			{
-				audio_play_sound(menuvoice_options, 0, 0);
-				audio_sound_gain(menuvoice_options, global.voices_volume, 0);
+				audio_play_sound(voice_options, 0, 0);
+				audio_sound_gain(voice_options, global.voices_volume, 0);
 			}
 			menu = noone;
 			can_navigate_settings_sidebar = true;

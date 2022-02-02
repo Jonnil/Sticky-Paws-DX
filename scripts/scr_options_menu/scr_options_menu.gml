@@ -1448,15 +1448,15 @@ function scr_options_menu()
 		#region /*Assist Extra HP*/
 		draw_menu_dropdown(450, 230 + menu_y_offset, "Extra Health Points", "assist_extra_hp", global.assist_extra_hp,
 		"None",
-		"+1",
-		"+2",
-		"+3",
-		"+4",
-		"+5",
-		"+6",
-		"+7",
-		"+8",
-		"+9",
+		" +1",
+		" +2",
+		" +3",
+		" +4",
+		" +5",
+		" +6",
+		" +7",
+		" +8",
+		" +9",
 		"");
 		#endregion /*Assist Extra HP END*/
 		
@@ -6096,6 +6096,7 @@ function scr_options_menu()
 				draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x-32, narrator_y, 0.5, 0.5, 0, c_white, 1);
 				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, narrator_y - 16, file_select_x-32+ 16, narrator_y + 16))
 				{
+					menu = "select_narrator";
 					draw_set_alpha(0.5);
 					draw_rectangle_color(file_select_x-32- 16, narrator_y - 16, file_select_x-32+ 16, narrator_y + 16, c_white, c_white, c_white, c_white, false);
 					draw_set_alpha(1);
@@ -6107,6 +6108,7 @@ function scr_options_menu()
 				draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, narrator_y, 0.5, 0.5, 0, c_white, 1);
 				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 16, narrator_y + 16))
 				{
+					menu = "select_narrator";
 					draw_set_alpha(0.5);
 					draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 16, narrator_y + 16, c_white, c_white, c_white, c_white, false);
 					draw_set_alpha(1);
@@ -6547,6 +6549,7 @@ function scr_options_menu()
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x-32, 20 + (40 *4), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 *4) - 16, resource_pack_x-32+ 16, 20 + (40 *4) + 16))
 			{
+				menu = "resourcepacks";
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x-32- 16, 20 + (40 *4) - 16, resource_pack_x-32+ 16, 20 + (40 *4) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -6558,6 +6561,7 @@ function scr_options_menu()
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 *4), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *4) + 16))
 			{
+				menu = "resourcepacks";
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *4) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -6623,18 +6627,20 @@ function scr_options_menu()
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x-32, 20 + (40 *6), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 *6) - 16, resource_pack_x-32+ 16, 20 + (40 *6) + 16))
 			{
+				menu = "title_backgrounds";
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x-32- 16, 20 + (40 *6) - 16, resource_pack_x-32+ 16, 20 + (40 *6) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
 		
-		if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background+ 1) + ".png"))
+		if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background + 1) + ".png"))
 		or(file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+ 1) + ".png"))
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 *6), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *6) + 16))
 			{
+				menu = "title_backgrounds";
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *6) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -6685,7 +6691,7 @@ function scr_options_menu()
 			menu = "title_backgrounds";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
-			and (file_exists("title_backgrounds/title_background" + string(global.selected_title_background+ 1) + ".png"))
+			and (file_exists("title_backgrounds/title_background" + string(global.selected_title_background + 1) + ".png"))
 			or(menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
 			and (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+ 1) + ".png"))
@@ -6744,7 +6750,7 @@ function scr_options_menu()
 			draw_set_alpha(0.1);
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_center);
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2- 100, "Are you sure you want to delete file "+string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2- 100, "Are you sure you want to delete file " +string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
 			draw_menu_button(window_get_width()/ 2-370 -32, window_get_height()/ 2, "Yes", "file_delete_yes", "file_delete_yes");
 			draw_menu_button(window_get_width()/ 2+ 32, window_get_height()/ 2, "No", "file_delete_no", "file_delete");
 			
@@ -6772,22 +6778,29 @@ function scr_options_menu()
 		}
 		
 		if (global.file > 1)
+		and (menu != "file_delete_no")
+		and (menu != "file_delete_yes")
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x-32, 20 + (40 *4), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, 20 + (40 *4) - 16, file_select_x-32+ 16, 20 + (40 *4) + 16))
 			{
+				menu = "file_delete";
 				draw_set_alpha(0.5);
 				draw_rectangle_color(file_select_x-32- 16, 20 + (40 *4) - 16, file_select_x-32+ 16, 20 + (40 *4) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
-		
-		draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, 20 + (40 *4), 0.5, 0.5, 0, c_white, 1);
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, 20 + (40 *4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 *4) + 16))
+		if (menu != "file_delete_no")
+		and (menu != "file_delete_yes")
 		{
-			draw_set_alpha(0.5);
-			draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, 20 + (40 *4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 *4) + 16, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
+			draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, 20 + (40 *4), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, 20 + (40 *4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 *4) + 16))
+			{
+				menu = "file_delete";
+				draw_set_alpha(0.5);
+				draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, 20 + (40 *4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 *4) + 16, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
 		}
 		
 		if (menu = "file_delete")
@@ -6860,6 +6873,8 @@ function scr_options_menu()
 		and (can_navigate_settings_sidebar = false)
 		or(mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, 20 + (40 *4) - 16, file_select_x-32+ 16, 20 + (40 *4) + 16))
+		and (menu != "file_delete_no")
+		and (menu != "file_delete_yes")
 		{
 			can_navigate_settings_sidebar = false;
 			menu = "file_select";
@@ -6878,6 +6893,8 @@ function scr_options_menu()
 		and (can_navigate_settings_sidebar = false)
 		or(mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, 20 + (40 *4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 *4) + 16))
+		and (menu != "file_delete_no")
+		and (menu != "file_delete_yes")
 		{
 			can_navigate_settings_sidebar = false;
 			menu = "file_select";
