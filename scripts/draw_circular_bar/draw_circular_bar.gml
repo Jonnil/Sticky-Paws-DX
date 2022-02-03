@@ -22,7 +22,7 @@ function draw_circular_bar(x ,y ,value, max, colour, radius, transparency, width
 	    if (val > 1)
 		{ // HTML5 version doesnt like triangle with only 2 sides 
     
-	        piesurface = surface_create(argument5*2,argument5*2)
+	        piesurface = surface_create(argument5* 2,argument5* 2)
             
 	        draw_set_colour(argument4);
 	        draw_set_alpha(argument6);

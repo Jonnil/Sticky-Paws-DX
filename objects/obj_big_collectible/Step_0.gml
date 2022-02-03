@@ -31,7 +31,7 @@ if (bounceup = false)
 				or(instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
 				{
 					effect_create_above(ef_ring, x, y, 2, c_white);
-					#region /*3 Basic Collectibles*/
+					#region /* 3 Basic Collectibles*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
 						var obj;
@@ -59,7 +59,7 @@ if (bounceup = false)
 							delay_time = 20;
 						}
 					}
-					#endregion /*3 Basic Collectibles END*/
+					#endregion /* 3 Basic Collectibles END*/
 					
 					#region /* 1000 Score*/
 					score += 1000;
@@ -176,7 +176,7 @@ if bounceup = true
 		if (vspeed > 0)
 		and (y > ystart - 32)
 		{
-			#region /*3 Basic Collectibles*/
+			#region /* 3 Basic Collectibles*/
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
 				var obj;
@@ -204,7 +204,7 @@ if bounceup = true
 					delay_time = 20;
 				}
 			}
-			#endregion /*3 Basic Collectibles END*/
+			#endregion /* 3 Basic Collectibles END*/
 			
 			#region /* 1000 Score*/
 			score += 1000;

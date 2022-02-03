@@ -1,4 +1,4 @@
-depth = -8000;
+depth = - 8000;
 scoreup = 100;
 not_score = false;
 show_remaining_jumps = false;

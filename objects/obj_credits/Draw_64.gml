@@ -143,20 +143,20 @@ if (time <= room_speed* 1+ 10)
 	yy = window_get_height()/ 2;
 	alpha = 1;
 }
-if (time >= room_speed*4 - 10)
-if (time <= room_speed*4+ 10)
+if (time >= room_speed* 4 - 10)
+if (time <= room_speed* 4 + 10)
 {
 	yy = 0;
 	alpha = 0;
 }
-if (time >= room_speed*5- 10)
-if (time <= room_speed*5+ 10)
+if (time >= room_speed* 5- 10)
+if (time <= room_speed* 5+ 10)
 {
 	y = window_get_height();
 	yy = window_get_height();
 	alpha = 0;
 }
-if (time >= room_speed*5)
+if (time >= room_speed* 5)
 {
 	if (end_credits = false)
 	{
@@ -229,10 +229,10 @@ if (global.enable_transitions = true)
 		{
 			draw_sprite_ext(spr_iris, 0, window_get_width()/ 2, window_get_height()/ 2, iris_xscale, iris_yscale, 0, c_black, 1);
 		}
-		draw_rectangle_color(0, 0, window_get_width()*2, window_get_height()/ 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color(0, 0, window_get_width()/ 2 - iris_xscale * 128, window_get_height()*2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color(window_get_width()/ 2 + iris_xscale * 128 - 1, 0, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color(0, window_get_height()/ 2 + iris_yscale * 128, window_get_width()*2, window_get_height()*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, window_get_width()* 2, window_get_height()/ 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, window_get_width()/ 2 - iris_xscale * 128, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(window_get_width()/ 2 + iris_xscale * 128 - 1, 0, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, window_get_height()/ 2 + iris_yscale * 128, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
 	}
 }
 #endregion /*Draw Iris Transitions END*/

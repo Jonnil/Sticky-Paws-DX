@@ -68,7 +68,7 @@ and (image_xscale > 0)
 }
 draw_xscale = lerp(draw_xscale, 1, 0.075);
 draw_yscale = lerp(draw_yscale, 1, 0.075);
-draw_sprite_ext(sprite_index, image_index,x, y,draw_xscale *sign(image_xscale),draw_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y,draw_xscale *sign(image_xscale),draw_yscale, image_angle, image_blend, image_alpha);
 if (draw_xscale >= 0.8)
 and (asset_get_type("obj_wall") == asset_object)
 {

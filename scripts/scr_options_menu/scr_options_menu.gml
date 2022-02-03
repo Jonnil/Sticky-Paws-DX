@@ -6,14 +6,14 @@ function scr_options_menu()
 	if (background_brightness_menu_lerp < 0)
 	{
 		draw_set_alpha(abs(background_brightness_menu_lerp));
-		draw_rectangle_color(-32,-32, room_width*2, room_height*2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(-32,-32, room_width* 2, room_height* 2, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 	}
 	else
 	if (background_brightness_menu_lerp > 0)
 	{
 		draw_set_alpha(abs(background_brightness_menu_lerp));
-		draw_rectangle_color(-32,-32, room_width*2, room_height*2, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(-32,-32, room_width* 2, room_height* 2, c_white, c_white, c_white, c_white, false);
 		draw_set_alpha(1);
 	}
 	#endregion /*Background Brightness in Menus Options END*/
@@ -42,13 +42,13 @@ function scr_options_menu()
 	
 	#region /*Menu navigation tabs y positions*/
 	accessibility_settings_y = 40;
-	game_text_y = 40 *2;
-	game_settings_y = 40 *3;
-	multiplayer_settings_y = 40 *4;
-	controls_text_y = 40 *5;
-	keyboard_and_mouse_settings_y = 40 *6;
-	controller_settings_y = 40 *7;
-	touch_settings_y = 40 *8;
+	game_text_y = 40 * 2;
+	game_settings_y = 40 * 3;
+	multiplayer_settings_y = 40 * 4;
+	controls_text_y = 40 * 5;
+	keyboard_and_mouse_settings_y = 40 * 6;
+	controller_settings_y = 40 * 7;
+	touch_settings_y = 40 * 8;
 	general_text_y = 40 * 9;
 	profile_settings_y = 40 * 10;
 	video_settings_y = 40 * 11;
@@ -69,13 +69,13 @@ function scr_options_menu()
 	and (global.enable_add_ons_settings = false)
 	{
 		accessibility_settings_y = 40;
-		game_text_y = 40 *2;
-		game_settings_y = 40 *3;
-		controls_text_y = 40 *4;
-		keyboard_and_mouse_settings_y = 40 *5;
-		general_text_y = 40 *6;
-		video_settings_y = 40 *7;
-		audio_settings_y = 40 *8;
+		game_text_y = 40 * 2;
+		game_settings_y = 40 * 3;
+		controls_text_y = 40 * 4;
+		keyboard_and_mouse_settings_y = 40 * 5;
+		general_text_y = 40 * 6;
+		video_settings_y = 40 * 7;
+		audio_settings_y = 40 * 8;
 		global_resources_settings_y = 40 * 9;
 		storage_settings_y = 40 * 10;
 	}
@@ -574,12 +574,12 @@ function scr_options_menu()
 		draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + (40 * 19), Text("Resource Packs"), global.default_text_size, c_white, c_black, 1);}
 
 		if (global.settings_sidebar_menu = "behavior_packs_settings")
-		{draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 + (40 *20), 1, 1, 0, c_gray, 1); /*Button Hightlighted*/
-		draw_sprite_ext(spr_settings_icons, 16, left_sidebar_x + 20 + icon_x_offset, 20 + (40 *20), 1, 1, 0, c_white, 1); /*Settings Icon*/
-		draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + (40 *20), Text("Behavior Packs"), global.default_text_size * 1.1, c_black, c_white, 1);
-		}else{draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 + (40 *20), 1, 1, 0, c_white, 1); /*Button Not Selected*/
-		draw_sprite_ext(spr_settings_icons, 16, left_sidebar_x + 20 + icon_x_offset, 20 + (40 *20), 0.9, 0.9, 0, c_white, 1); /*Settings Icon*/
-		draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + (40 *20), Text("Behavior Packs"), global.default_text_size, c_white, c_black, 1);}
+		{draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 + (40 * 20), 1, 1, 0, c_gray, 1); /*Button Hightlighted*/
+		draw_sprite_ext(spr_settings_icons, 16, left_sidebar_x + 20 + icon_x_offset, 20 + (40 * 20), 1, 1, 0, c_white, 1); /*Settings Icon*/
+		draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + (40 * 20), Text("Behavior Packs"), global.default_text_size * 1.1, c_black, c_white, 1);
+		}else{draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 + (40 * 20), 1, 1, 0, c_white, 1); /*Button Not Selected*/
+		draw_sprite_ext(spr_settings_icons, 16, left_sidebar_x + 20 + icon_x_offset, 20 + (40 * 20), 0.9, 0.9, 0, c_white, 1); /*Settings Icon*/
+		draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + (40 * 20), Text("Behavior Packs"), global.default_text_size, c_white, c_black, 1);}
 	}
 	#endregion /*Add-Ons Settings END*/
 
@@ -1502,14 +1502,14 @@ function scr_options_menu()
 	{
 		difficulty_settings_y = 98;
 		automatically_pause_when_window_is_unfocused_settings_y = 164;
-		show_timer_settings_y = 164+ (48);
-		show_deaths_counter_settings_y = 164+ (48 *2);
-		show_tutorial_signs_y = 164+ (48 *3);
-		hud_hide_time_y = 164+ (48 *5) - 16;
-		custom_level_load_delay_settings_y = 164+ (48 *7) - 16;
-		activate_cheats_y = 164+ (48 *8);
-		enable_enemies_y = 164+ (48 * 10);
-		enable_spikes_y = 164+ (48 * 11);
+		show_timer_settings_y = 164 + (48);
+		show_deaths_counter_settings_y = 164 + (48 * 2);
+		show_tutorial_signs_y = 164 + (48 * 3);
+		hud_hide_time_y = 164 + (48 * 5) - 16;
+		custom_level_load_delay_settings_y = 164 + (48 * 7) - 16;
+		activate_cheats_y = 164 + (48 * 8);
+		enable_enemies_y = 164 + (48 * 10);
+		enable_spikes_y = 164 + (48 * 11);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
@@ -1544,7 +1544,7 @@ function scr_options_menu()
 	if (global.settings_sidebar_menu = "multiplayer_settings")
 	{
 		draw_set_halign(fa_left);draw_set_valign(fa_center);
-		draw_text_outlined(410, 20 + (40 *3), "Change how multiplayer works here", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, 20 + (40 * 3), "Change how multiplayer works here", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 	}
 	#endregion /*Multiplayer Settings END*/
 	
@@ -1558,27 +1558,27 @@ function scr_options_menu()
 		
 		#region /*Remap Keyboard and Mouse*/
 		
-		menu_y_remap_key_dive = 64*2;
-		menu_y_remap_key_jump = 64*3;
-		menu_y_remap_key_crouch = 64*4;
-		menu_y_remap_key_crouch_toggle = 64*5;
-		menu_y_remap_key_sprint = 64*6;
-		menu_y_remap_key_sprint_toggle = 64*7;
-		menu_y_remap_key_left = 64*8;
-		menu_y_remap_key_right = 64* 9;
-		menu_y_remap_key_down = 64* 10;
-		menu_y_remap_key_up = 64* 11;
-		menu_y_remap_key_tongue = 64* 12;
+		menu_y_remap_key_dive = 64 * 2;
+		menu_y_remap_key_jump = 64 * 3;
+		menu_y_remap_key_crouch = 64 * 4;
+		menu_y_remap_key_crouch_toggle = 64 * 5;
+		menu_y_remap_key_sprint = 64 * 6;
+		menu_y_remap_key_sprint_toggle = 64 * 7;
+		menu_y_remap_key_left = 64 * 8;
+		menu_y_remap_key_right = 64 * 9;
+		menu_y_remap_key_down = 64 * 10;
+		menu_y_remap_key_up = 64 * 11;
+		menu_y_remap_key_tongue = 64 * 12;
 		
-		menu_y_remap_reset = 64* 13- 16;
-		menu_y_up_key_is_jump_key = 64* 14;
-		menu_y_double_tap_direction_to_run = 64* 15;
-		menu_y_always_run = 64* 16;
-		menu_y_cancel_dive_by_pressing_jump_or_dive_button = 64* 17;
-		menu_y_cancel_dive_by_pressing_opposite_direction = 64* 18;
-		menu_y_wall_jump_setting = 64* 19;
-		menu_y_drop_down_from_rope = 64*20 + 16;
-		menu_y_show_controls = 64*21+ 32;
+		menu_y_remap_reset = 64 * 13 - 16;
+		menu_y_up_key_is_jump_key = 64 * 14;
+		menu_y_double_tap_direction_to_run = 64 * 15;
+		menu_y_always_run = 64 * 16;
+		menu_y_cancel_dive_by_pressing_jump_or_dive_button = 64 * 17;
+		menu_y_cancel_dive_by_pressing_opposite_direction = 64 * 18;
+		menu_y_wall_jump_setting = 64 * 19;
+		menu_y_drop_down_from_rope = 64 * 20 + 16;
+		menu_y_show_controls = 64 * 21+ 32;
 		
 		#region /*Show what key is used*/
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -5828,7 +5828,7 @@ function scr_options_menu()
 		if (input_key = true)
 		{
 			draw_set_alpha(0.75);
-			draw_rectangle_color(window_get_width()/ 2- 232, 32- 20, window_get_width()/ 2+ 232, 64+ 20, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(window_get_width()/ 2- 232, 32- 20, window_get_width()/ 2 + 232, 64 + 20, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 		
 			#region /*Text saying input key now for player 1*/
@@ -5858,7 +5858,7 @@ function scr_options_menu()
 			}
 			#endregion /*Text saying input key now for player 3 END*/
 		
-			#region /*Text saying input key now for player 4*/
+			#region /*Text saying input key now for player 4 */
 			if (remapping_player = 3)
 			{
 				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 4/nButtons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
@@ -5882,48 +5882,48 @@ function scr_options_menu()
 	{
 		if (menu = "show_tutorial_signs"){
 		if (global.show_tutorial_signs= true)
-		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset +50, "> Show Tutorial Signs: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
-		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset +50, "> Show Tutorial Signs: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}else
+		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset +50, "> Show Tutorial Signs: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset +50, "> Show Tutorial Signs: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}else
 		if (global.show_tutorial_signs= true)
-		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset +50, "Show Tutorial Signs: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
-		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset +50, "Show Tutorial Signs: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset +50, "Show Tutorial Signs: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset +50, "Show Tutorial Signs: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 		if (menu = "players_can_collide"){
 		if (global.players_can_collide = true)
-		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 110, "> Players can collide with each other: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
-		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 110, "> Players can collide with each other: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}
+		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 110, "> Players can collide with each other: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 110, "> Players can collide with each other: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}
 		else
 		if (global.players_can_collide = true)
-		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 110, "Players can collide with each other: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
-		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 110, "Players can collide with each other: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 110, "Players can collide with each other: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 110, "Players can collide with each other: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 		if (menu = "assist_settings")
-		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 140, "> Assist Settings <", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
-		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 140, "Assist Settings", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 140, "> Assist Settings <", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+		else{draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 140, "Assist Settings", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 		if (menu = "convention_mode")
 		{
 			if (global.convention_mode = true)
 			{
-				draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 170, "> Convention Mode: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size *0.5, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 170, "> Convention Mode: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size *0.5, c_menu_outline, c_menu_fill, 1);
 			}
 			else
 			{
-				draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 170, "> Convention Mode: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size *0.5, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 170, "> Convention Mode: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size *0.5, c_menu_outline, c_menu_fill, 1);
 			}
 		}
 		else
 		if (global.convention_mode = true)
 		{
-			draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 170, "Convention Mode: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size *0.5, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 170, "Convention Mode: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size *0.5, c_menu_outline, c_menu_fill, 1);
 		}
 		else
 		{
-			draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 170, "Convention Mode: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2+menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size *0.5, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 170, "Convention Mode: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(window_get_width()/ 2, camera_get_view_height(view_camera[view_current])/ 2 +menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size *0.5, c_menu_outline, c_menu_fill, 1);
 		}
 	}
 	#endregion /*Gameplay Settings END*/
@@ -5933,7 +5933,7 @@ function scr_options_menu()
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		draw_text_outlined(410, 20 + (40 *3), "Setup your profile here. \n Enter name here.", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, 20 + (40 * 3), "Setup your profile here. \n Enter name here.", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 	}
 	#endregion /*Profile Settings END*/
 	
@@ -5957,19 +5957,19 @@ function scr_options_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		draw_menu_checkmark(386, 48 *2, "Interpolation", "interpolate", global.interpolate);
+		draw_menu_checkmark(386, 48 * 2, "Interpolation", "interpolate", global.interpolate);
 		
-		draw_menu_checkmark(386, 48 *3, "Show FPS", "show_fps", global.show_fps);
+		draw_menu_checkmark(386, 48 * 3, "Show FPS", "show_fps", global.show_fps);
 		
-		draw_menu_checkmark(386, 48 *4, "Show FPS Real", "show_fps_real", global.show_fps_real);
+		draw_menu_checkmark(386, 48 * 4, "Show FPS Real", "show_fps_real", global.show_fps_real);
 		
-		draw_menu_checkmark(386, 48 *5, "Show Instance Count", "show_instance_count", global.show_instance_count);
+		draw_menu_checkmark(386, 48 * 5, "Show Instance Count", "show_instance_count", global.show_instance_count);
 		
-		draw_menu_checkmark(386, 48 *6, "Show Collision Mask", "show_collision_mask", global.show_collision_mask);
+		draw_menu_checkmark(386, 48 * 6, "Show Collision Mask", "show_collision_mask", global.show_collision_mask);
 		
-		draw_menu_checkmark(386, 48 *7, "Enable Transitions", "enable_transitions", global.enable_transitions);
+		draw_menu_checkmark(386, 48 * 7, "Enable Transitions", "enable_transitions", global.enable_transitions);
 		
-		draw_menu_checkmark(386, 48 *8, "Enable Background Layer 1", "enable_background_layer1", global.enable_background_layer1);
+		draw_menu_checkmark(386, 48 * 8, "Enable Background Layer 1", "enable_background_layer1", global.enable_background_layer1);
 		
 		draw_menu_checkmark(386, 48 * 9, "Enable Background Layer 2", "enable_background_layer2", global.enable_background_layer2);
 		
@@ -6024,36 +6024,35 @@ function scr_options_menu()
 		draw_menu_slider(410, 164, "SFX Volume", "sfx_volume", global.sfx_volume, c_lime);
 		draw_menu_slider(410, 228, "Ambient Volume", "ambient_volume", global.ambient_volume, c_lime);
 		draw_menu_slider(410, 292, "Voices Volume", "voices_volume", global.voices_volume, c_aqua);
-		draw_menu_dropdown(410, 356, "Number of Audio Channels", "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256");
 		
 		#region /*Verbosity Bar*/
 		if (global.enable_verbosity_slider = true)
 		{
 			if (menu = "verbosity_slider")
 			{
-				draw_rectangle_color(410 - 2, 20 + (40 *8) - 5- 2, 410 + 320 + 2, 20 + (40 *8) +5+ 2, c_black, c_black, c_black, c_black, false);
+				draw_rectangle_color(410 - 2, 20 + (40 * 8) - 5- 2, 410 + 320 + 2, 20 + (40 * 8) +5+ 2, c_black, c_black, c_black, c_black, false);
 			}
-			draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 320, 20 + (40 *8) +5, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
-			if (global.verbosity_slider = 1){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 320, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.95){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 304, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.9){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 288, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.85){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 272, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.8){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 256, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.75){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 240, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.7){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 224, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.65){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 208, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.6){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 192, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.55){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 176, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.5){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 160, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.45){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 144, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.4){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 128, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.35){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 112, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.3){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 +96, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.25){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 +80, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.2){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 64, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.15){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 48, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.1){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 32, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
-			if (global.verbosity_slider = 0.05){draw_rectangle_color(410, 20 + (40 *8) - 5, 410 + 16, 20 + (40 *8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 320, 20 + (40 * 8) +5, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
+			if (global.verbosity_slider = 1){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 320, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.95){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 304, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.9){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 288, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.85){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 272, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.8){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 256, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.75){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 240, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.7){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 224, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.65){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 208, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.6){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 192, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.55){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 176, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.5){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 160, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.45){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 144, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.4){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 128, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.35){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 112, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.3){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 +96, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.25){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 +80, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.2){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 64, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.15){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 48, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.1){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 32, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
+			if (global.verbosity_slider = 0.05){draw_rectangle_color(410, 20 + (40 * 8) - 5, 410 + 16, 20 + (40 * 8) +5, c_aqua, c_aqua, c_aqua, c_aqua, false);}
 		}
 		#endregion /*Verbosity Bar END*/
 		
@@ -6094,11 +6093,14 @@ function scr_options_menu()
 			if (global.narrator >= 0)
 			{
 				draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x-32, narrator_y, 0.5, 0.5, 0, c_white, 1);
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, narrator_y - 16, file_select_x-32+ 16, narrator_y + 16))
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, narrator_y - 16, file_select_x-32 + 16, narrator_y + 16))
 				{
-					menu = "select_narrator";
+					if (open_dropdown = false)
+					{
+						menu = "select_narrator";
+					}
 					draw_set_alpha(0.5);
-					draw_rectangle_color(file_select_x-32- 16, narrator_y - 16, file_select_x-32+ 16, narrator_y + 16, c_white, c_white, c_white, c_white, false);
+					draw_rectangle_color(file_select_x-32- 16, narrator_y - 16, file_select_x-32 + 16, narrator_y + 16, c_white, c_white, c_white, c_white, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -6108,7 +6110,10 @@ function scr_options_menu()
 				draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, narrator_y, 0.5, 0.5, 0, c_white, 1);
 				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 16, narrator_y + 16))
 				{
-					menu = "select_narrator";
+					if (open_dropdown = false)
+					{
+						menu = "select_narrator";
+					}
 					draw_set_alpha(0.5);
 					draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 16, narrator_y + 16, c_white, c_white, c_white, c_white, false);
 					draw_set_alpha(1);
@@ -6131,11 +6136,12 @@ function scr_options_menu()
 			and (menu_joystick1_delay <= 0)
 			and (menu = "select_narrator")
 			or(mouse_check_button_pressed(mb_left))
-			and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, narrator_y - 16, file_select_x-32+ 16, narrator_y + 16))
+			and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, narrator_y - 16, file_select_x-32 + 16, narrator_y + 16))
 			{
 				menu = "select_narrator";
 				if (menu_delay = 0)
 				and (global.narrator > -1)
+				and (open_dropdown = false)
 				{
 					menu_delay = 3;
 					menu_joystick1_delay = 30;
@@ -6285,6 +6291,7 @@ function scr_options_menu()
 					#endregion /*Player 1 character select portrait sprite END*/
 						
 				}
+				open_dropdown = false;
 			}
 			#endregion /*Player 1 Key Left (change portrait sprites) END*/
 			
@@ -6306,6 +6313,7 @@ function scr_options_menu()
 			{
 				menu = "select_narrator";
 				if (menu_delay = 0)
+				and (open_dropdown = false)
 				{
 					menu_delay = 3;
 					menu_joystick1_delay = 30;
@@ -6448,6 +6456,7 @@ function scr_options_menu()
 					#endregion /*Player 1 character select portrait sprite END*/
 						
 				}
+				open_dropdown = false;
 			}
 			#endregion /*Player 1 Key Right (change portrait sprites) END*/
 			
@@ -6461,16 +6470,17 @@ function scr_options_menu()
 		{
 			if (menu = "verbosity_slider")
 			{
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, 20 + (40 *7), 1, 1, 0, c_white, 1);
-				draw_text_outlined(410, 20 + (40 *7), "Verbosity: " + string(round(global.verbosity_slider* 100)) + "%", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, 20 + (40 * 7), 1, 1, 0, c_white, 1);
+				draw_text_outlined(410, 20 + (40 * 7), "Verbosity: " + string(round(global.verbosity_slider* 100)) + "%", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			}
 			else
 			{
-				draw_text_outlined(410, 20 + (40 *7), "Verbosity: " + string(round(global.verbosity_slider* 100)) + "%", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(410, 20 + (40 * 7), "Verbosity: " + string(round(global.verbosity_slider* 100)) + "%", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 		}
 		#endregion /*Verbosity Slider END*/
 		
+		draw_menu_dropdown(410, 356, "Number of Audio Channels", "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256"); /*Dropdown menus should be drawn last so they are above everything else when you open them*/
 	}
 	#endregion /*Audio Settings END*/
 	
@@ -6532,38 +6542,38 @@ function scr_options_menu()
 		draw_set_valign(fa_center);
 		if (!file_exists(working_directory + "/custom_resourcepacks/resourcepack0/data/sprite_origin_point.ini"))
 		{
-			draw_text_outlined(resource_pack_x, 20 + (40 *3), "Add Custom Resourcepacks in Local Appdata and it will appear here!", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(resource_pack_x, 20 + (40 * 3), "Add Custom Resourcepacks in Local Appdata and it will appear here!", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		}
 		
 		if (global.selected_resourcepack = 0)
 		{
-			draw_text_outlined(resource_pack_x, 20 + (40 *4), "Resource Pack: Official", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(resource_pack_x, 20 + (40 * 4), "Resource Pack: Official", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		}
 		else
 		{
-			draw_text_outlined(resource_pack_x, 20 + (40 *4), "Resource Pack: Custom " + string(global.selected_resourcepack), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(resource_pack_x, 20 + (40 * 4), "Resource Pack: Custom " + string(global.selected_resourcepack), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		}
 		
 		if (global.selected_resourcepack > 0)
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x-32, 20 + (40 *4), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 *4) - 16, resource_pack_x-32+ 16, 20 + (40 *4) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x-32, 20 + (40 * 4), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 * 4) - 16, resource_pack_x-32 + 16, 20 + (40 * 4) + 16))
 			{
 				menu = "resourcepacks";
 				draw_set_alpha(0.5);
-				draw_rectangle_color(resource_pack_x-32- 16, 20 + (40 *4) - 16, resource_pack_x-32+ 16, 20 + (40 *4) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(resource_pack_x-32- 16, 20 + (40 * 4) - 16, resource_pack_x-32 + 16, 20 + (40 * 4) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
 		
 		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks+ 1) + "/data/sprite_origin_point.ini"))
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 *4), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *4) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 * 4), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 4) + 16))
 			{
 				menu = "resourcepacks";
 				draw_set_alpha(0.5);
-				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *4) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 4) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
@@ -6582,14 +6592,14 @@ function scr_options_menu()
 		
 		if (menu = "resourcepacks")
 		{
-			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x-32-32, 20 + (40 *4));
+			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x-32-32, 20 + (40 * 4));
 		}
 		
 		if (key_left)
 		and (can_navigate_settings_sidebar = false)
 		and (menu = "resourcepacks")
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 *4) - 16, resource_pack_x-32+ 16, 20 + (40 *4) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 * 4) - 16, resource_pack_x-32 + 16, 20 + (40 * 4) + 16))
 		{
 			menu = "resourcepacks";
 			if (menu_delay = 0)
@@ -6606,7 +6616,7 @@ function scr_options_menu()
 		and (can_navigate_settings_sidebar = false)
 		and (menu = "resourcepacks")
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *4) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 4) + 16))
 		{
 			menu = "resourcepacks";
 			if (menu_delay = 0)
@@ -6620,16 +6630,16 @@ function scr_options_menu()
 		}
 		
 		#region /*Custom Title Background*/
-		draw_text_outlined(resource_pack_x, 20 + (40 *6), "Title Background: " + string(global.selected_title_background), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(resource_pack_x, 20 + (40 * 6), "Title Background: " + string(global.selected_title_background), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 		if (global.selected_title_background > 0)
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x-32, 20 + (40 *6), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 *6) - 16, resource_pack_x-32+ 16, 20 + (40 *6) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x-32, 20 + (40 * 6), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 * 6) - 16, resource_pack_x-32 + 16, 20 + (40 * 6) + 16))
 			{
 				menu = "title_backgrounds";
 				draw_set_alpha(0.5);
-				draw_rectangle_color(resource_pack_x-32- 16, 20 + (40 *6) - 16, resource_pack_x-32+ 16, 20 + (40 *6) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(resource_pack_x-32- 16, 20 + (40 * 6) - 16, resource_pack_x-32 + 16, 20 + (40 * 6) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
@@ -6637,25 +6647,25 @@ function scr_options_menu()
 		if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background + 1) + ".png"))
 		or(file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+ 1) + ".png"))
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 *6), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *6) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 * 6), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 6) + 16))
 			{
 				menu = "title_backgrounds";
 				draw_set_alpha(0.5);
-				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *6) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 6) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
 		
 		if (menu = "title_backgrounds")
 		{
-			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x-32-32, 20 + (40 *6));
+			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x-32-32, 20 + (40 * 6));
 		}
 		
 		if (key_left)
 		and (menu = "title_backgrounds")
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 *6) - 16, resource_pack_x-32+ 16, 20 + (40 *6) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x-32- 16, 20 + (40 * 6) - 16, resource_pack_x-32 + 16, 20 + (40 * 6) + 16))
 		{
 			menu = "title_backgrounds";
 			if (menu_delay = 0)
@@ -6686,7 +6696,7 @@ function scr_options_menu()
 		if (key_right)
 		and (menu = "title_backgrounds")
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 *6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 *6) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 6) + 16))
 		{
 			menu = "title_backgrounds";
 			if (menu_delay = 0)
@@ -6730,14 +6740,14 @@ function scr_options_menu()
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		draw_text_outlined(file_select_x, 20 + (40 *4), "File: " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(file_select_x, 20 + (40 * 4), "File: " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 		if (menu != "file_delete_yes")
 		and (menu != "file_delete_no")
 		{
 			if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 			{
-				draw_menu_button(450, 20 + (40 *5), "Delete File", "file_delete", "file_delete_no");
+				draw_menu_button(450, 20 + (40 * 5), "Delete File", "file_delete", "file_delete_no");
 			}
 		}
 		else
@@ -6746,13 +6756,13 @@ function scr_options_menu()
 		{
 			can_navigate_settings_sidebar = false;
 			draw_set_alpha(0.5);
-			draw_rectangle_color(0, 0, window_get_width()*3, window_get_height()*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, 0, window_get_width()* 3, window_get_height()* 3, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(0.1);
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_center);
 			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2- 100, "Are you sure you want to delete file " +string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
 			draw_menu_button(window_get_width()/ 2-370 -32, window_get_height()/ 2, "Yes", "file_delete_yes", "file_delete_yes");
-			draw_menu_button(window_get_width()/ 2+ 32, window_get_height()/ 2, "No", "file_delete_no", "file_delete");
+			draw_menu_button(window_get_width()/ 2 + 32, window_get_height()/ 2, "No", "file_delete_no", "file_delete");
 			
 			if (key_left)
 			and (menu_joystick_delay = 0)
@@ -6781,24 +6791,24 @@ function scr_options_menu()
 		and (menu != "file_delete_no")
 		and (menu != "file_delete_yes")
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x-32, 20 + (40 *4), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, 20 + (40 *4) - 16, file_select_x-32+ 16, 20 + (40 *4) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x-32, 20 + (40 * 4), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, 20 + (40 * 4) - 16, file_select_x-32 + 16, 20 + (40 * 4) + 16))
 			{
 				menu = "file_delete";
 				draw_set_alpha(0.5);
-				draw_rectangle_color(file_select_x-32- 16, 20 + (40 *4) - 16, file_select_x-32+ 16, 20 + (40 *4) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(file_select_x-32- 16, 20 + (40 * 4) - 16, file_select_x-32 + 16, 20 + (40 * 4) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
 		if (menu != "file_delete_no")
 		and (menu != "file_delete_yes")
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, 20 + (40 *4), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, 20 + (40 *4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 *4) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, 20 + (40 * 4), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, 20 + (40 * 4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 * 4) + 16))
 			{
 				menu = "file_delete";
 				draw_set_alpha(0.5);
-				draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, 20 + (40 *4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 *4) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, 20 + (40 * 4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 * 4) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
@@ -6832,7 +6842,7 @@ function scr_options_menu()
 		and (key_a_pressed)
 		and (menu_delay = 0)
 		or(menu = "file_delete_yes")
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2-370 -32, window_get_height()/ 2- 21, window_get_width()/ 2-370 -32+ 370, window_get_height()/ 2+ 42))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2-370 -32, window_get_height()/ 2- 21, window_get_width()/ 2-370 -32 + 370, window_get_height()/ 2 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		{
@@ -6865,14 +6875,14 @@ function scr_options_menu()
 		
 		if (menu = "file_select")
 		{
-			draw_sprite(spr_menu_cursor, menu_cursor_index, file_select_x-32-32, 20 + (40 *4));
+			draw_sprite(spr_menu_cursor, menu_cursor_index, file_select_x-32-32, 20 + (40 * 4));
 		}
 		
 		if (key_left)
 		and (menu = "file_select")
 		and (can_navigate_settings_sidebar = false)
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, 20 + (40 *4) - 16, file_select_x-32+ 16, 20 + (40 *4) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x-32- 16, 20 + (40 * 4) - 16, file_select_x-32 + 16, 20 + (40 * 4) + 16))
 		and (menu != "file_delete_no")
 		and (menu != "file_delete_yes")
 		{
@@ -6892,7 +6902,7 @@ function scr_options_menu()
 		and (menu = "file_select")
 		and (can_navigate_settings_sidebar = false)
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, 20 + (40 *4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 *4) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, 20 + (40 * 4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 * 4) + 16))
 		and (menu != "file_delete_no")
 		and (menu != "file_delete_yes")
 		{
@@ -6911,12 +6921,12 @@ function scr_options_menu()
 	
 	#region /*Broadcast Settings*/
 	if (global.settings_sidebar_menu = "broadcast_settings")
-	{draw_set_halign(fa_left);draw_set_valign(fa_center);draw_text_outlined(410, 20 + (40 *3), "Connect your Twitch account \n and earn in-game rewards \n as you stream the game :)", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+	{draw_set_halign(fa_left);draw_set_valign(fa_center);draw_text_outlined(410, 20 + (40 * 3), "Connect your Twitch account \n and earn in-game rewards \n as you stream the game :)", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
 	#endregion /*Broadcast Settings END*/
 	
 	#region /*How to Play*/
 	if (global.settings_sidebar_menu = "how_to_play")
-	{draw_set_halign(fa_left);draw_set_valign(fa_center);draw_text_outlined(410, 20 + (40 *3), "Control frog. \n Frog jump. \n Frog tongue. \n Frog happy.", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+	{draw_set_halign(fa_left);draw_set_valign(fa_center);draw_text_outlined(410, 20 + (40 * 3), "Control frog. \n Frog jump. \n Frog tongue. \n Frog happy.", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
 	#endregion /*How to Play END*/
 	
 	#endregion /*General Settings END*/

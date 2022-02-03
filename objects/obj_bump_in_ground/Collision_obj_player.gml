@@ -1,4 +1,4 @@
-if (place_meeting(x, y-8, other))
+if (place_meeting(x, y- 8, other))
 {
 	if (other.ground_pound = true)
 	{
@@ -20,7 +20,7 @@ if (place_meeting(x, y-8, other))
 		}
 		#endregion /* 1 Basic Collectible END*/
 		
-		#region /*8 Basic Collectibles*/
+		#region /* 8 Basic Collectibles*/
 		if (type_of_bump = "8_basic_collectibles")
 		{
 			if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -51,7 +51,7 @@ if (place_meeting(x, y-8, other))
 					bounceup = true;
 					delay_time = 20;
 				}
-				obj = instance_create_depth(x-8,bbox_top, 0, obj_basic_collectible);
+				obj = instance_create_depth(x- 8,bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -76,7 +76,7 @@ if (place_meeting(x, y-8, other))
 					visible = false;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =50;
+					delay_time = 50;
 				}
 				obj = instance_create_depth(x + 24,bbox_top, 0, obj_basic_collectible);
 				with(obj)
@@ -85,7 +85,7 @@ if (place_meeting(x, y-8, other))
 					visible = false;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =60;
+					delay_time = 60;
 				}
 				obj = instance_create_depth(x + 32,bbox_top, 0, obj_basic_collectible);
 				with(obj)
@@ -94,11 +94,11 @@ if (place_meeting(x, y-8, other))
 					visible = false;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =70;
+					delay_time = 70;
 				}
 			}
 		}
-		#endregion /*8 Basic Collectibles END*/
+		#endregion /* 8 Basic Collectibles END*/
 		
 		#region /*Heart Balloon*/
 		if (type_of_bump = "heart_balloon")
@@ -133,7 +133,7 @@ if (place_meeting(x, y-8, other))
 		}
 		#endregion /* 1-up END*/
 		
-		#region /*2-up*/
+		#region /* 2-up*/
 		if (type_of_bump = "2-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -148,10 +148,10 @@ if (place_meeting(x, y-8, other))
 				}
 			}
 		}
-		#endregion /*2-up END*/
+		#endregion /* 2-up END*/
 		
-		#region /*3-up*/
-		if (type_of_bump = "3-up")
+		#region /* 3 -up*/
+		if (type_of_bump = "3 -up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
@@ -165,7 +165,7 @@ if (place_meeting(x, y-8, other))
 				}
 			}
 		}
-		#endregion /*3-up END*/
+		#endregion /* 3 -up END*/
 		
 		#region /*Big Collectible 1*/
 		if (type_of_bump = "big_collectible_1")
@@ -221,7 +221,7 @@ if (place_meeting(x, y-8, other))
 		}
 		#endregion /*Big Collectible 3 END*/
 		
-		#region /*Big Collectible 4*/
+		#region /*Big Collectible 4 */
 		if (type_of_bump = "big_collectible_4")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -250,7 +250,7 @@ if (place_meeting(x, y-8, other))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					big_collectible =5;
+					big_collectible = 5;
 					bounceup = true;
 				}
 			}

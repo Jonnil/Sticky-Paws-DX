@@ -21,7 +21,7 @@ and (sprite_index = spr_bucket)
 	}
 	#endregion /* 1 Basic Collectible END*/
 	
-	#region /*8 Basic Collectibles*/
+	#region /* 8 Basic Collectibles*/
 	if (item_inside = "8_basic_collectibles")
 	{
 		if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -52,7 +52,7 @@ and (sprite_index = spr_bucket)
 				bounceup = true;
 				delay_time = 20;
 			}
-			obj = instance_create_depth(x-8,bbox_top, 0, obj_basic_collectible);
+			obj = instance_create_depth(x- 8,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;
@@ -77,7 +77,7 @@ and (sprite_index = spr_bucket)
 				visible = false;
 				motion_set(90, 10);
 				bounceup = true;
-				delay_time =50;
+				delay_time = 50;
 			}
 			obj = instance_create_depth(x + 24,bbox_top, 0, obj_basic_collectible);
 			with(obj)
@@ -86,7 +86,7 @@ and (sprite_index = spr_bucket)
 				visible = false;
 				motion_set(90, 10);
 				bounceup = true;
-				delay_time =60;
+				delay_time = 60;
 			}
 			obj = instance_create_depth(x + 32,bbox_top, 0, obj_basic_collectible);
 			with(obj)
@@ -95,11 +95,11 @@ and (sprite_index = spr_bucket)
 				visible = false;
 				motion_set(90, 10);
 				bounceup = true;
-				delay_time =70;
+				delay_time = 70;
 			}
 		}
 	}
-	#endregion /*8 Basic Collectibles END*/
+	#endregion /* 8 Basic Collectibles END*/
 		
 		#region /*Heart Balloon*/
 		if (item_inside = "heart_balloon")
@@ -134,7 +134,7 @@ and (sprite_index = spr_bucket)
 		}
 		#endregion /* 1-up END*/
 		
-		#region /*2-up*/
+		#region /* 2-up*/
 		if (item_inside = "2-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -149,10 +149,10 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*2-up END*/
+		#endregion /* 2-up END*/
 		
-		#region /*3-up*/
-		if (item_inside = "3-up")
+		#region /* 3 -up*/
+		if (item_inside = "3 -up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
@@ -166,7 +166,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*3-up END*/
+		#endregion /* 3 -up END*/
 		
 		#region /*Big Collectible 1*/
 		if (item_inside = "big_collectible_1")
@@ -222,7 +222,7 @@ and (sprite_index = spr_bucket)
 		}
 		#region /*Big Collectible 3 END*/
 		
-		#region /*Big Collectible 4*/
+		#region /*Big Collectible 4 */
 		if (item_inside = "big_collectible_4")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -251,7 +251,7 @@ and (sprite_index = spr_bucket)
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					big_collectible =5;
+					big_collectible = 5;
 					bounceup = true;
 				}
 			}

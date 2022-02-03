@@ -72,9 +72,9 @@ else
 if (y <camera_get_view_y(view_camera[view_current]))
 {
 	draw_set_color(c_black);
-	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + 16,x, camera_get_view_y(view_camera[view_current]) - 2, 30);
+	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + 16, x, camera_get_view_y(view_camera[view_current]) - 2, 30);
 	draw_set_color(c_white);
-	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + 16,x, camera_get_view_y(view_camera[view_current]), 20);
+	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + 16, x, camera_get_view_y(view_camera[view_current]), 20);
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + 32, 24, c_black, c_black, true);
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + 32, 22, c_white, c_white, true);
 	
@@ -85,21 +85,21 @@ if (y <camera_get_view_y(view_camera[view_current]))
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, random(9999), image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 			}
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, random(9999), image_alpha);
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, random(9999), image_alpha);
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
+		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside top view END*/
@@ -109,9 +109,9 @@ if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vie
 and (y <room_height)
 {
 	draw_set_color(c_black);
-	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 2, 30);
+	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 2, 30);
 	draw_set_color(c_white);
-	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), 20);
+	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), 20);
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 24, c_black, c_black, true);
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 22, c_white, c_white, true);
 	
@@ -122,21 +122,21 @@ and (y <room_height)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, random(9999), image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 			}
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, random(9999), image_alpha);
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, random(9999), image_alpha);
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index, image_index,x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale/ 2*sign(image_xscale),draw_yscale * default_yscale/ 2,angle, image_blend, image_alpha);
+		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside bottom view END*/
@@ -244,25 +244,25 @@ and (max_hp >= 2)
 and (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index,xx +random_range(-8,+8),yy+random_range(-8,+8),draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8,+8),yy+random_range(- 8,+8),draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, image_alpha);
 }
 else
 if (takendamage%2 == 0)
 and (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
 	if (hp <= 1)
 	and (max_hp >= 2)
 	{
-		draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, 0.1);
+		draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, 0.1);
 	}
 }
 else
 if (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, 0.5);
+	draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, 0.5);
 }
 #endregion /*Blink red when only having 1 HP left and no heart balloon END*/
 
@@ -333,16 +333,16 @@ if (assist_invincible = false)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
 			}
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index,xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
+			draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
 		}
 	}
 }
@@ -351,7 +351,7 @@ if (invincible >60)
 {
 	if (floor(random(10 - 1))= 0)
 	{
-		effect_create_above(ef_star,x +random_range(- 50,+50),y+random_range(- 50,+50), 0, c_white);
+		effect_create_above(ef_star, x +random_range(- 50,+50),y+random_range(- 50,+50), 0, c_white);
 	}
 }
 #endregion /*Invinsible END*/
@@ -359,7 +359,7 @@ if (invincible >60)
 #region /*Don't make it look like the player is teleporting when the player teleports*/
 if (smooth_teleport< 1)
 {
-	xx = lerp(xx,x,smooth_teleport);
+	xx = lerp(xx, x,smooth_teleport);
 	yy = lerp(yy,y,smooth_teleport);
 	smooth_teleport += 0.1;
 }
@@ -367,12 +367,12 @@ else
 if (stomp_spin = true)
 or(spring = true)
 {
-	xx = lerp(xx,x, 0.4);
+	xx = lerp(xx, x, 0.4);
 	yy = lerp(yy,y, 0.4);
 }
 else
 {
-	xx = lerp(xx,x, 1);
+	xx = lerp(xx, x, 1);
 	yy = lerp(yy,y, 1);
 }
 #endregion /*Don't make it look like the player is teleporting when the player teleports END*/

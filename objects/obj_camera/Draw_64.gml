@@ -257,8 +257,8 @@ and (!instance_exists(obj_title))
 			{
 				draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
 			}
-			draw_line_width_color(32- 16, hud_show_deaths - 16, 32+ 16, hud_show_deaths+ 16, 3, c_red, c_red);
-			draw_line_width_color(32- 16, hud_show_deaths+ 16, 32+ 16, hud_show_deaths - 16, 3, c_red, c_red);
+			draw_line_width_color(32- 16, hud_show_deaths - 16, 32 + 16, hud_show_deaths+ 16, 3, c_red, c_red);
+			draw_line_width_color(32- 16, hud_show_deaths+ 16, 32 + 16, hud_show_deaths - 16, 3, c_red, c_red);
 			draw_text_outlined(64, hud_show_deaths, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Death Counter END*/
@@ -298,7 +298,7 @@ and (!instance_exists(obj_title))
 		}
 		#endregion /*Big Collectible 3 END*/
 	
-		#region /*Big Collectible 4*/
+		#region /*Big Collectible 4 */
 		if (global.big_collectible4 = false)
 		{
 			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
@@ -569,23 +569,23 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			show_dive_key_x = 32;
-			show_jump_key_x = 32+ 150;
-			show_crouch_key_x = 32+ 150 + 150;
+			show_jump_key_x = 32 + 150;
+			show_crouch_key_x = 32 + 150 + 150;
 			if (global.player1_sprint_toggle = false)
 			{
-				show_sprint_key_x = 32+ 150 + 150 + 150;
-				show_left_key_x = 32+ 150 + 150 + 150 + 150;
-				show_right_key_x = 32+ 150 + 150 + 150 + 150 + 150;
-				show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
-				show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150 + 150;
+				show_sprint_key_x = 32 + 150 + 150 + 150;
+				show_left_key_x = 32 + 150 + 150 + 150 + 150;
+				show_right_key_x = 32 + 150 + 150 + 150 + 150 + 150;
+				show_down_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150;
+				show_up_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			else
 			{
 				show_sprint_key_x = -999;
-				show_left_key_x = 32+ 150 + 150 + 150;
-				show_right_key_x = 32+ 150 + 150 + 150 + 150;
-				show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150;
-				show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
+				show_left_key_x = 32 + 150 + 150 + 150;
+				show_right_key_x = 32 + 150 + 150 + 150 + 150;
+				show_down_key_x = 32 + 150 + 150 + 150 + 150 + 150;
+				show_up_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			
 			#region /*Show Dive Key*/
@@ -857,23 +857,23 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			player2_show_dive_key_x = 32;
-			player2_show_jump_key_x = 32+ 150;
-			player2_show_crouch_key_x = 32+ 150 + 150;
+			player2_show_jump_key_x = 32 + 150;
+			player2_show_crouch_key_x = 32 + 150 + 150;
 			if (global.player2_sprint_toggle = false)
 			{
-				player2_show_sprint_key_x = 32+ 150 + 150 + 150;
-				player2_show_left_key_x = 32+ 150 + 150 + 150 + 150;
-				player2_show_right_key_x = 32+ 150 + 150 + 150 + 150 + 150;
-				player2_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
-				player2_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150 + 150;
+				player2_show_sprint_key_x = 32 + 150 + 150 + 150;
+				player2_show_left_key_x = 32 + 150 + 150 + 150 + 150;
+				player2_show_right_key_x = 32 + 150 + 150 + 150 + 150 + 150;
+				player2_show_down_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150;
+				player2_show_up_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			else
 			{
 				player2_show_sprint_key_x = -999;
-				player2_show_left_key_x = 32+ 150 + 150 + 150;
-				player2_show_right_key_x = 32+ 150 + 150 + 150 + 150;
-				player2_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150;
-				player2_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
+				player2_show_left_key_x = 32 + 150 + 150 + 150;
+				player2_show_right_key_x = 32 + 150 + 150 + 150 + 150;
+				player2_show_down_key_x = 32 + 150 + 150 + 150 + 150 + 150;
+				player2_show_up_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			
 			#region /*Show Dive Key*/
@@ -1137,23 +1137,23 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			player3_show_dive_key_x = 32;
-			player3_show_jump_key_x = 32+ 150;
-			player3_show_crouch_key_x = 32+ 150 + 150;
+			player3_show_jump_key_x = 32 + 150;
+			player3_show_crouch_key_x = 32 + 150 + 150;
 			if (global.player3_sprint_toggle = false)
 			{
-				player3_show_sprint_key_x = 32+ 150 + 150 + 150;
-				player3_show_left_key_x = 32+ 150 + 150 + 150 + 150;
-				player3_show_right_key_x = 32+ 150 + 150 + 150 + 150 + 150;
-				player3_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
-				player3_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150 + 150;
+				player3_show_sprint_key_x = 32 + 150 + 150 + 150;
+				player3_show_left_key_x = 32 + 150 + 150 + 150 + 150;
+				player3_show_right_key_x = 32 + 150 + 150 + 150 + 150 + 150;
+				player3_show_down_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150;
+				player3_show_up_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			else
 			{
 				player3_show_sprint_key_x = -999;
-				player3_show_left_key_x = 32+ 150 + 150 + 150;
-				player3_show_right_key_x = 32+ 150 + 150 + 150 + 150;
-				player3_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150;
-				player3_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
+				player3_show_left_key_x = 32 + 150 + 150 + 150;
+				player3_show_right_key_x = 32 + 150 + 150 + 150 + 150;
+				player3_show_down_key_x = 32 + 150 + 150 + 150 + 150 + 150;
+				player3_show_up_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			
 			#region /*Show Dive Key*/
@@ -1407,7 +1407,7 @@ and (!instance_exists(obj_pause))
 		}
 		#endregion /*MULTIPLAYER PLAYER 3 END*/
 		
-		#region /*MULTIPLAYER PLAYER 4*/
+		#region /*MULTIPLAYER PLAYER 4 */
 		if (player4 >= 1)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
@@ -1417,23 +1417,23 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			player4_show_dive_key_x = 32;
-			player4_show_jump_key_x = 32+ 150;
-			player4_show_crouch_key_x = 32+ 150 + 150;
+			player4_show_jump_key_x = 32 + 150;
+			player4_show_crouch_key_x = 32 + 150 + 150;
 			if (global.player4_sprint_toggle = false)
 			{
-				player4_show_sprint_key_x = 32+ 150 + 150 + 150;
-				player4_show_left_key_x = 32+ 150 + 150 + 150 + 150;
-				player4_show_right_key_x = 32+ 150 + 150 + 150 + 150 + 150;
-				player4_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
-				player4_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150 + 150;
+				player4_show_sprint_key_x = 32 + 150 + 150 + 150;
+				player4_show_left_key_x = 32 + 150 + 150 + 150 + 150;
+				player4_show_right_key_x = 32 + 150 + 150 + 150 + 150 + 150;
+				player4_show_down_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150;
+				player4_show_up_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			else
 			{
 				player4_show_sprint_key_x = -999;
-				player4_show_left_key_x = 32+ 150 + 150 + 150;
-				player4_show_right_key_x = 32+ 150 + 150 + 150 + 150;
-				player4_show_down_key_x = 32+ 150 + 150 + 150 + 150 + 150;
-				player4_show_up_key_x = 32+ 150 + 150 + 150 + 150 + 150 + 150;
+				player4_show_left_key_x = 32 + 150 + 150 + 150;
+				player4_show_right_key_x = 32 + 150 + 150 + 150 + 150;
+				player4_show_down_key_x = 32 + 150 + 150 + 150 + 150 + 150;
+				player4_show_up_key_x = 32 + 150 + 150 + 150 + 150 + 150 + 150;
 			}
 			
 			#region /*Show Dive Key*/
@@ -1747,8 +1747,8 @@ or(show_letterbox > 0)
 and (global.play_edited_level = true)
 and (global.actually_play_edited_level = true)
 {
-	draw_rectangle_color(0, 0, room_width*3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(0, letterbox_bottom_y, room_width*3, window_get_height(), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, room_width* 3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, letterbox_bottom_y, room_width* 3, window_get_height(), c_black, c_black, c_black, c_black, false);
 }
 if (asset_get_type("obj_player") == asset_object)
 and (!instance_exists(obj_player))

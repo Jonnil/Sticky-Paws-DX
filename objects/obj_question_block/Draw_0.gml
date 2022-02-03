@@ -136,7 +136,7 @@ if (bounceup = false)
 					{
 						instance_create_depth(x, y - 32, 0, obj_blockbreak);
 					}
-					#region /*2 Basic Collectibles per hit*/
+					#region /* 2 Basic Collectibles per hit*/
 					if asset_get_type("obj_basic_collectible") == asset_object
 					{
 						if asset_get_type("snd_basic_collectible") == asset_sound
@@ -164,7 +164,7 @@ if (bounceup = false)
 					{
 						empty = true;
 					}
-					#endregion /*2 Basic Collectibles per hit END*/
+					#endregion /* 2 Basic Collectibles per hit END*/
 				}
 			}
 			#endregion /* 10 Basic Collectible END*/
@@ -208,7 +208,7 @@ if (bounceup = false)
 			}
 			#endregion /* 1-up END*/
 			
-			#region /*2-up*/
+			#region /* 2-up*/
 			if (item_inside = "2-up")
 			{
 				empty = true;
@@ -226,10 +226,10 @@ if (bounceup = false)
 					}
 				}
 			}
-			#endregion /*2-up END*/
+			#endregion /* 2-up END*/
 			
-			#region /*3-up*/
-			if (item_inside = "3-up")
+			#region /* 3 -up*/
+			if (item_inside = "3 -up")
 			{
 				empty = true;
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -246,7 +246,7 @@ if (bounceup = false)
 					}
 				}
 			}
-			#endregion /*3-up END*/
+			#endregion /* 3 -up END*/
 			
 			#region /*Invincibility Powerup*/
 			if (item_inside = "invincibility_powerup")
@@ -338,7 +338,7 @@ if (bounceup = true)
 	}
 }
 draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
-if (hit>=4)
+if (hit>= 4)
 {
 	draw_sprite_ext(spr_cracks, image_index, xx, yy, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
 }

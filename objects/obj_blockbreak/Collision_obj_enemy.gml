@@ -8,12 +8,12 @@ with(other)
 			if (other.x < x)
 			{
 				die_volting = - 1;
-				vspeed = -8;
+				vspeed = - 8;
 			}
 			else
 			{
 				die_volting = +1;
-				vspeed = -8;
+				vspeed = - 8;
 			}
 		}
 	}

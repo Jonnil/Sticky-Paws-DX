@@ -92,7 +92,7 @@ if (player = 3)
 }
 #endregion /*Disable player 3 END*/
 
-#region /*Disable player 4*/
+#region /*Disable player 4 */
 if (player = 4)
 {
 	with(obj_camera)

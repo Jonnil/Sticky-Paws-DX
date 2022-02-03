@@ -60,7 +60,7 @@ mask_index = spr_wall;
 
 if image_xscale < 0
 {
-	hspeed = -8;
+	hspeed = - 8;
 }
 else
 {

@@ -59,12 +59,12 @@ and (place_meeting(x, y, obj_player))
 	if (instance_nearest(x, y, obj_player).x < x)
 	{
 		die_volting = -1;
-		vspeed = -8;
+		vspeed = - 8;
 	}
 	else
 	{
 		die_volting = +1;
-		vspeed = -8;
+		vspeed = - 8;
 	}
 	
 	#region /* 1 Basic Collectible*/

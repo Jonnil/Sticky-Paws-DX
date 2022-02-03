@@ -14,6 +14,47 @@ my = mouse_y;
 sprite_enemy1 = global.resourcepack_sprite_basic_enemy;
 sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
 
+#region /*Lives Icon*/
+if (global.player1_can_play = true)
+{
+	camera_player = 0;
+	camera_selected_skin = global.skin_for_player_1;
+}
+else
+if (global.player2_can_play = true)
+{
+	camera_player = 1;
+	camera_selected_skin = global.skin_for_player_2;
+}
+else
+if (global.player3_can_play = true)
+{
+	camera_player = 2;
+	camera_selected_skin = global.skin_for_player_3;
+}
+else
+if (global.player4_can_play = true)
+{
+	camera_player = 3;
+	camera_selected_skin = global.skin_for_player_4;
+}
+else
+{
+	camera_player = 0;
+	camera_selected_skin = global.skin_for_player_1;
+}
+
+if (asset_get_type("spr_1up") == asset_sprite)
+{
+	sprite_lives_icon = spr_1up;
+}
+else
+{
+	sprite_lives_icon = noone;
+}
+alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
+#endregion /*Lives Icon END*/
+
 #region /*Create Foreground*/
 if (asset_get_type("obj_foreground1") == asset_object)
 and (!instance_exists(obj_foreground1))
@@ -130,13 +171,13 @@ background_brightness_menu_lerp = 0;
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
 accessibility_settings_y = 40;
-game_text_y = 40 *2;
-game_settings_y = 40 *3;
-multiplayer_settings_y = 40 *4;
-controls_text_y = 40 *5;
-keyboard_and_mouse_settings_y = 40 *6;
-controller_settings_y = 40 *7;
-touch_settings_y = 40 *8;
+game_text_y = 40 * 2;
+game_settings_y = 40 * 3;
+multiplayer_settings_y = 40 * 4;
+controls_text_y = 40 * 5;
+keyboard_and_mouse_settings_y = 40 * 6;
+controller_settings_y = 40 * 7;
+touch_settings_y = 40 * 8;
 general_text_y = 40 * 9;
 profile_settings_y = 40 * 10;
 video_settings_y = 40 * 11;
@@ -576,11 +617,11 @@ and (!file_exists(working_directory + "/custom_levels/" + string(global.level_na
 #region /*View Size*/
 view_wview = 1392;
 view_hview = 736;
-/*Default Views:   set_view_wview = 1024+ 400 -32   set_view_hview = 768-32  */
+/*Default Views:   set_view_wview = 1024 + 400 -32   set_view_hview = 768-32  */
 #endregion /*View Size END*/
 
 set_view_wview= 1392;
-set_view_hview=736;
+set_view_hview= 736;
 
 #region /*Initialize Background*/
 background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;

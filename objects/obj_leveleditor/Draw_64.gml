@@ -49,13 +49,13 @@ if (quit_level_editor = false)
 			#region /*If menu is on continue*/
 			draw_menu_button(
 			window_get_width()/ 2- 185,
-			window_get_height()/ 2-84,
+			window_get_height()/ 2- 84,
 			"Continue", "continue",noone);
 		
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 			window_get_width()/ 2- 185,
-			window_get_height()/ 2-84,
-			window_get_width()/ 2+ 185,
+			window_get_height()/ 2- 84,
+			window_get_width()/ 2 + 185,
 			window_get_height()/ 2-42))
 			and (mouse_check_button_pressed(mb_left))
 			{
@@ -115,7 +115,7 @@ if (quit_level_editor = false)
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 			window_get_width()/ 2- 185,
 			window_get_height()/ 2-42,
-			window_get_width()/ 2+ 185,
+			window_get_width()/ 2 + 185,
 			window_get_height()/ 2))
 			and (mouse_check_button_pressed(mb_left))
 			{
@@ -185,8 +185,8 @@ if (quit_level_editor = false)
 			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
 			window_get_width()/ 2- 185,
 			window_get_height()/ 2,
-			window_get_width()/ 2+ 185,
-			window_get_height()/ 2+ 42))
+			window_get_width()/ 2 + 185,
+			window_get_height()/ 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			{
 				menu_delay = 10;
@@ -282,7 +282,7 @@ if (quit_level_editor = false)
 		#region /*Limit Name Input Length for Level Name*/
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2- 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2+ 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2- 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
 		level_name =keyboard_string;
 		if (string_length(level_name)>32)
 		{
@@ -1165,7 +1165,7 @@ if (quit_level_editor = false)
 	}
 	#endregion /*Erase 6 END*/
 
-	#region /*Erase 4*/
+	#region /*Erase 4 */
 	else
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 128, - 64, + 192, + 64))
 	and (erase_mode = true)

@@ -4,9 +4,9 @@
 //	{
 //		
 //		#region /*Objects that doesn't delete any underlying object*/
-//		if (object!=74)
-//		and (object!=75)
-//		and (object!=76)
+//		if (object!= 74)
+//		and (object!= 75)
+//		and (object!= 76)
 //		#endregion /*Objects that doesn't delete any underlying object END*/
 //		
 //		{

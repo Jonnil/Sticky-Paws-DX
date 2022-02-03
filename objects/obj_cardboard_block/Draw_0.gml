@@ -33,12 +33,12 @@ if (brick_particle = true)
 	{
 		image_angle-= speed;
 	}
-	draw_sprite_ext(sprite_index, image_index,x, y, 1, 1, image_angle, image_blend, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, image_blend, image_alpha);
 	mask_index = noone;
 }
 if (asset_get_type("spr_cardboard_block") == asset_sprite)
 {
-	draw_sprite_ext(spr_cardboard_block, image_index,x, y,draw_xscale,draw_yscale, image_angle, image_blend, image_alpha);
+	draw_sprite_ext(spr_cardboard_block, image_index, x, y,draw_xscale,draw_yscale, image_angle, image_blend, image_alpha);
 }
 if (asset_get_type("obj_player") == asset_object)
 and (place_meeting(x, y - 1, obj_player))
@@ -61,7 +61,7 @@ if (brick_particle = false)
 		and (instance_nearest(x, y, obj_player).vspeed < 0)
 		or(place_meeting(x, y - 16, obj_player))
 		and (instance_nearest(x, y, obj_player).ground_pound = true)
-		or(place_meeting(bbox_left-8,y, obj_player))
+		or(place_meeting(bbox_left- 8,y, obj_player))
 		and (instance_nearest(x, y, obj_player).dive = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		or(place_meeting(bbox_right +8,y, obj_player))
@@ -74,22 +74,22 @@ if (brick_particle = false)
 		and (instance_nearest(x, y, obj_player).wall_jump > 0)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		
-		or(place_meeting(bbox_left-8,y, obj_player))
+		or(place_meeting(bbox_left- 8,y, obj_player))
 		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		or(place_meeting(bbox_right-8,y, obj_player))
+		or(place_meeting(bbox_right- 8,y, obj_player))
 		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		or(place_meeting(x, bbox_top-8, obj_player))
+		or(place_meeting(x, bbox_top- 8, obj_player))
 		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		or(place_meeting(x, bbox_bottom+8, obj_player))
 		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint = true)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		
-		or(place_meeting(bbox_left-8,y, obj_boss))
+		or(place_meeting(bbox_left- 8,y, obj_boss))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_boss).x, instance_nearest(x, y, obj_boss).y, obj_wall, false, true))
-		or(place_meeting(bbox_right-8,y, obj_boss))
+		or(place_meeting(bbox_right- 8,y, obj_boss))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_boss).x, instance_nearest(x, y, obj_boss).y, obj_wall, false, true))
 		
 		or(!place_meeting(x, y + 2, obj_wall))

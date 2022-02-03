@@ -78,7 +78,7 @@ if (position_meeting(x, y-look_outward,same_object))
    if (position_meeting(x-look_outward,y-look_outward,same_object)){tile = 26;}
   }
   else
-  if (position_meeting(x + look_outward,y-look_outward,same_object)){tile =8;}
+  if (position_meeting(x + look_outward,y-look_outward,same_object)){tile = 8;}
  }
  else
  if (position_meeting(x, y + look_outward,same_object))
@@ -99,7 +99,7 @@ if (position_meeting(x, y-look_outward,same_object))
  else
  if (position_meeting(x-look_outward,y,same_object))
  {
-  tile =7;
+  tile = 7;
   if (position_meeting(x-look_outward,y-look_outward,same_object)){tile = 11;}
  }
 }
@@ -109,7 +109,7 @@ if (position_meeting(x + look_outward,y,same_object))
  tile = 1;
  if (position_meeting(x, y + look_outward,same_object))
  {
-  tile =5;
+  tile = 5;
   if (position_meeting(x-look_outward,y,same_object))
   {
    tile = 13;
@@ -136,7 +136,7 @@ if (position_meeting(x, y + look_outward,same_object))
  tile = 2;
  if (position_meeting(x-look_outward,y,same_object))
  {
-  tile =6;
+  tile = 6;
   if (position_meeting(x-look_outward,y + look_outward,same_object)){tile = 10;}
  }
 }

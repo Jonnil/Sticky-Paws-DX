@@ -29,7 +29,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time = 60 *2)
+			if (cutscene_time = 60 * 2)
 			{
 				audio_play_sound(voice_open_mouth, 0, 0);
 				audio_sound_gain(voice_open_mouth, global.voices_volume, 0);
@@ -39,7 +39,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time = 60 *3.5)
+			if (cutscene_time = 60 * 3.5)
 			{
 				audio_play_sound(voice_notice, 0, 0);
 				audio_sound_gain(voice_notice, global.voices_volume, 0);
@@ -49,7 +49,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time = 60 *4.2)
+			if (cutscene_time = 60 * 4.2)
 			{
 				audio_play_sound(voice_scream, 0, 0);
 				audio_sound_gain(voice_scream, global.voices_volume, 0);
@@ -60,10 +60,10 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time > 60 *5.2)
+			if (cutscene_time > 60 * 5.2)
 			{
 				hspeed = +8;
-				vspeed = -8;
+				vspeed = - 8;
 				can_move = true;
 				intro_animation = "";
 			}
@@ -103,7 +103,7 @@ function scr_start_intro_animations()
 				instance_create_depth(- 16-sprite_width, y, 0, obj_cake);
 				with(instance_create_depth(- 16-sprite_width, y, 0, obj_cake_stealing_enemy))
 				{
-					time = room_speed*2;
+					time = room_speed* 2;
 				}
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_run;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
@@ -112,7 +112,7 @@ function scr_start_intro_animations()
 			}
 			else
 			if (cutscene_time >= 60 * 1)
-			and (cutscene_time < 60 *2)
+			and (cutscene_time < 60 * 2)
 			{
 				x += 8;
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_run;}else
@@ -121,7 +121,7 @@ function scr_start_intro_animations()
 				image_speed = 1;
 			}
 			else
-			if (cutscene_time > 60 *2)
+			if (cutscene_time > 60 * 2)
 			{
 				intro_animation_image_index = 0;
 				cutscene_time = 0;

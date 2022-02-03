@@ -1,4 +1,4 @@
-function scr_unlock_next_level() /*Make next level enterable/unlock if you have cleared this level*/
+function scr_unlock_next_level() /*Make next level enterable /unlock if you have cleared this level*/
 {
 	if (clear_rate != "enter")
 	or(clear_rate != "clear")

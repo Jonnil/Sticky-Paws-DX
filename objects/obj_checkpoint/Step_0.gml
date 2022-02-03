@@ -23,7 +23,7 @@ and (instance_exists(obj_player))
 				{
 					hp += 1;
 				}
-				effect_create_below(ef_ring,x, y, 2, c_white);
+				effect_create_below(ef_ring, x, y, 2, c_white);
 				
 				#region /*Collect 10 basic collectibles*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -78,7 +78,7 @@ and (instance_exists(obj_player))
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
-						delay_time =50;
+						delay_time = 50;
 					}
 					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
@@ -86,7 +86,7 @@ and (instance_exists(obj_player))
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
-						delay_time =60;
+						delay_time = 60;
 					}
 					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
@@ -94,7 +94,7 @@ and (instance_exists(obj_player))
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
-						delay_time =70;
+						delay_time = 70;
 					}
 					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
@@ -102,7 +102,7 @@ and (instance_exists(obj_player))
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
-						delay_time =80;
+						delay_time = 80;
 					}
 					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 					with(obj)
@@ -113,7 +113,7 @@ and (instance_exists(obj_player))
 						delay_time = 90;
 					}
 					
-					#region /*2000 Score*/
+					#region /* 2000 Score*/
 					score += 2000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
@@ -123,7 +123,7 @@ and (instance_exists(obj_player))
 							scoreup = 2000;
 						}
 					}
-					#endregion /*2000 Score END*/
+					#endregion /* 2000 Score END*/
 					
 					#region /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint. Make sure it gets translated into other languages too*/
 					if (asset_get_type("obj_scoreup") == asset_object)
@@ -152,7 +152,7 @@ and (instance_exists(obj_player))
 				and (global.actually_play_edited_level = true)
 				{
 					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "x_checkpoint",x);
+					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "x_checkpoint", x);
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "y_checkpoint",y);
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "checkpoint_millisecond", global.timeattack_millisecond);
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "checkpoint_second", global.timeattack_second);
@@ -167,7 +167,7 @@ and (instance_exists(obj_player))
 				and (global.actually_play_edited_level = true)
 				{
 					ini_open(working_directory + "/custom_level_save.ini");
-					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint",x);
+					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint", x);
 					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint",y);
 					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond", global.timeattack_millisecond);
 					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_second", global.timeattack_second);

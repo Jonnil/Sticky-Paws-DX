@@ -39,13 +39,13 @@ or(other.dive = true)
 				}
 				else
 				{
-					vspeed = -8;
+					vspeed = - 8;
 				}
 			}
 		}
 		else
 		{
-			other.vspeed = -8;
+			other.vspeed = - 8;
 		}
 		image_index = 0;
 		effect_create_below(ef_ring, other.x, other.bbox_bottom, 0, c_white);
@@ -76,13 +76,13 @@ or(other.dive = true)
 				}
 				else
 				{
-					vspeed = -8;
+					vspeed = - 8;
 				}
 			}
 		}
 		else
 		{
-			other.vspeed = -8;
+			other.vspeed = - 8;
 		}
 	}
 }
@@ -110,13 +110,13 @@ if (can_jump_on_head = true)
 			}
 			else
 			{
-				vspeed = -8;
+				vspeed = - 8;
 			}
 		}
 	}
 	else
 	{
-		other.vspeed = -8;
+		other.vspeed = - 8;
 	}
 }
 else

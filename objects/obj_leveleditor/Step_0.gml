@@ -111,7 +111,7 @@ if (place_brush_size < 0)
 }
 if (place_brush_size >5)
 {
-	place_brush_size =5;
+	place_brush_size = 5;
 }
 if (erase_brush_size < 0)
 {
@@ -119,7 +119,7 @@ if (erase_brush_size < 0)
 }
 if (erase_brush_size >5)
 {
-	erase_brush_size =5;
+	erase_brush_size = 5;
 }
 #endregion /*Always keep the brush size within these values END*/
 

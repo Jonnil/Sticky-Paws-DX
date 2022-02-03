@@ -23,12 +23,12 @@ if (die = false)
 		if (other.x < x)
 		{
 			die_volting = - 1;
-			vspeed = -8;
+			vspeed = - 8;
 		}
 		else
 		{
 			die_volting = +1;
-			vspeed = -8;
+			vspeed = - 8;
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 
@@ -55,7 +55,7 @@ if (die = false)
 		}
 		#endregion /* 1 Coin END*/
 		
-		#region /*200 Score*/
+		#region /* 200 Score*/
 		score += 200;
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -65,7 +65,7 @@ if (die = false)
 				scoreup = 200;
 			}
 		}
-		#endregion /*200 Score END*/
+		#endregion /* 200 Score END*/
 		
 		#endregion /*Rewards END*/
 		

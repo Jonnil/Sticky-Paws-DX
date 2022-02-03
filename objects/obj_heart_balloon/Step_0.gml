@@ -44,9 +44,9 @@ and (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).hspeed<- 2)
 			{
 				hspeed =instance_nearest(x, y, obj_player).hspeed;
-				if (hspeed<-8)
+				if (hspeed<- 8)
 				{
-					hspeed = -8;
+					hspeed = - 8;
 				}
 			}
 			else
@@ -155,7 +155,7 @@ and (instance_exists(obj_player))
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =50;
+					delay_time = 50;
 				}
 				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
@@ -163,7 +163,7 @@ and (instance_exists(obj_player))
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =60;
+					delay_time = 60;
 				}
 				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
@@ -171,7 +171,7 @@ and (instance_exists(obj_player))
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =70;
+					delay_time = 70;
 				}
 				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
@@ -179,7 +179,7 @@ and (instance_exists(obj_player))
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
-					delay_time =80;
+					delay_time = 80;
 				}
 				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 				with(obj)
@@ -203,7 +203,7 @@ and (instance_exists(obj_player))
 			}
 		}
 		#endregion /* 1000 Score END*/
-		effect_create_below(ef_ring,x, y, 1, c_white);
+		effect_create_below(ef_ring, x, y, 1, c_white);
 		instance_destroy();
 	}
 }
@@ -236,6 +236,6 @@ effect_time += 1;
 if (effect_time >60)
 {
 	effect_time = 0;
-	effect_create_below(ef_ring,x, y, 1, c_white);
+	effect_create_below(ef_ring, x, y, 1, c_white);
 }
 #endregion /*Expanding Ring Effect END*/

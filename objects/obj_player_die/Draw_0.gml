@@ -10,7 +10,7 @@ and (!instance_exists(obj_player))
 #endregion /*Check if the last player just died END*/
 
 #region /*Start death animation, falling off screen*/
-if (count =50)
+if (count = 50)
 {
 	gravity_direction = 270;
 	gravity = 0.5;
@@ -46,7 +46,7 @@ and (sprite_index = spr_player_burnt)
 
 #region /*Play death melody*/
 if (!instance_exists(obj_player))
-and (count =50)
+and (count = 50)
 and (last_player = true)
 {
 	if (asset_get_type("snd_die_melody") == asset_sound)
@@ -158,7 +158,7 @@ if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vie
 		}
 		#endregion /*Disable player 3 END*/
 		
-		#region /*Disable player 4*/
+		#region /*Disable player 4 */
 		if (player = 4)
 		{
 			with(obj_camera)
@@ -213,10 +213,10 @@ and (last_player = true)
 			{
 				draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 			}
-			draw_rectangle_color(0, 0, room_width*3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(0, 0, xx - iris_xscale * 128, room_height*3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(xx + iris_xscale * 128, 0, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(0, yy + iris_yscale * 128, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, 0, room_width* 3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, 0, xx - iris_xscale * 128, room_height* 3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(xx + iris_xscale * 128, 0, room_width* 3, room_height* 3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, yy + iris_yscale * 128, room_width* 3, room_height* 3, c_black, c_black, c_black, c_black, false);
 		}
 	}
 }
@@ -230,7 +230,7 @@ else
 }
 if (sprite_index > 0)
 {
-	draw_sprite_ext(sprite_index, image_index,x, y, image_xscale * default_xscale, image_yscale * default_yscale, image_angle, image_blend, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale * default_xscale, image_yscale * default_yscale, image_angle, image_blend, image_alpha);
 }
 
 #region /*Bubble*/

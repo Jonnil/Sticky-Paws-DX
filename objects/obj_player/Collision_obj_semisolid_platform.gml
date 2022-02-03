@@ -87,17 +87,6 @@ and (stick_to_wall = false)
 
 #region /*Sound Effect Handeling*/
 
-#region /*Stop the jumping voice clips when landing on ground*/
-if (position_meeting(x, bbox_bottom + 1, other))
-{
-	audio_stop_sound(voice_jump);
-	audio_stop_sound(voice_jump2nd);
-	audio_stop_sound(voice_jump3rd);
-	audio_stop_sound(voice_jump_rope);
-	audio_stop_sound(voice_jump_spring);
-}
-#endregion /*Stop the jumping voice clips when landing on ground END*/
-
 #region /*Landing on different surfaces sound effects*/
 if (position_meeting(x, bbox_bottom + 1, other))
 {

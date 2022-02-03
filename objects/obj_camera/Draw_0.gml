@@ -585,7 +585,7 @@ if (save_level_as_png = false)
 		
 		#region /*Camera should follow multiple players*/
 		
-		/* 1, 2, 3, 4*/
+		/* 1, 2, 3, 4 */
 		if (instance_exists(player1))
 		and (instance_exists(player2))
 		and (instance_exists(player3))
@@ -629,7 +629,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/* 1, 4*/
+		/* 1, 4 */
 		if (instance_exists(player1))
 		and (instance_exists(player4))
 		{
@@ -639,7 +639,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*2, 3*/
+		/* 2, 3*/
 		if (instance_exists(player2))
 		and (instance_exists(player3))
 		{
@@ -649,7 +649,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*2, 4*/
+		/* 2, 4 */
 		if (instance_exists(player2))
 		and (instance_exists(player4))
 		{
@@ -659,7 +659,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*3, 4*/
+		/* 3, 4 */
 		if (instance_exists(player3))
 		and (instance_exists(player4))
 		{
@@ -679,7 +679,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*2*/
+		/* 2*/
 		if (instance_exists(player2))
 		{
 			xx = player2.x;
@@ -688,7 +688,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*3*/
+		/* 3*/
 		if (instance_exists(player3))
 		{
 			xx = player3.x;
@@ -697,7 +697,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/*4*/
+		/* 4 */
 		if (instance_exists(player4))
 		{
 			xx = player4.x;
@@ -766,7 +766,7 @@ if (save_level_as_png = false)
 		if (delay <= 1)
 		{
 			/*Makes the screen black when starting a level so you don't see the level loading in. Also make sure this black rectangle is bigger than the level, in case the level is smaller than the view size*/
-			draw_rectangle_color(0, 0, room_width*3, room_height*3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, 0, room_width* 3, room_height* 3, c_black, c_black, c_black, c_black, false);
 		}
 
 		#region /*Zoom In Player Goal*/
@@ -1427,10 +1427,10 @@ and (!instance_exists(obj_pause))
 if (player1 > 0)
 {
 	if (player1.allow_drowning == true)
-	&& (player1.drawn_frames_until_drowning <= player1.seconds_until_drowning*60)
+	&& (player1.drawn_frames_until_drowning <= player1.seconds_until_drowning* 60)
 	{
-		draw_circular_bar(player1.x + 2, player1.bbox_top - 54, player1.drawn_frames_until_drowning, player1.seconds_until_drowning*60, c_black, 20, 0.8, 6);
-		draw_circular_bar(player1.x, player1.bbox_top - 56, player1.drawn_frames_until_drowning, player1.seconds_until_drowning*60, make_color_hsv_transition(player1.drawn_frames_until_drowning, player1.seconds_until_drowning*60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
+		draw_circular_bar(player1.x + 2, player1.bbox_top - 54, player1.drawn_frames_until_drowning, player1.seconds_until_drowning* 60, c_black, 20, 0.8, 6);
+		draw_circular_bar(player1.x, player1.bbox_top - 56, player1.drawn_frames_until_drowning, player1.seconds_until_drowning* 60, make_color_hsv_transition(player1.drawn_frames_until_drowning, player1.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 	}
 }
 #endregion /*Show Drowning for Player 1 END*/
@@ -1439,10 +1439,10 @@ if (player1 > 0)
 if (player2 > 0)
 {
 	if (player2.allow_drowning == true)
-	&& (player2.drawn_frames_until_drowning <= player2.seconds_until_drowning*60)
+	&& (player2.drawn_frames_until_drowning <= player2.seconds_until_drowning* 60)
 	{
-		draw_circular_bar(player2.x + 2, player2.bbox_top - 54, player2.drawn_frames_until_drowning, player2.seconds_until_drowning*60, c_black, 20, 0.8, 6);
-		draw_circular_bar(player2.x, player2.bbox_top - 56, player2.drawn_frames_until_drowning, player2.seconds_until_drowning*60, make_color_hsv_transition(player2.drawn_frames_until_drowning, player2.seconds_until_drowning*60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
+		draw_circular_bar(player2.x + 2, player2.bbox_top - 54, player2.drawn_frames_until_drowning, player2.seconds_until_drowning* 60, c_black, 20, 0.8, 6);
+		draw_circular_bar(player2.x, player2.bbox_top - 56, player2.drawn_frames_until_drowning, player2.seconds_until_drowning* 60, make_color_hsv_transition(player2.drawn_frames_until_drowning, player2.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 	}
 }
 #endregion /*Show Drowning for Player 2 END*/
@@ -1451,22 +1451,22 @@ if (player2 > 0)
 if (player3 > 0)
 {
 	if (player3.allow_drowning == true)
-	&& (player3.drawn_frames_until_drowning <= player3.seconds_until_drowning*60)
+	&& (player3.drawn_frames_until_drowning <= player3.seconds_until_drowning* 60)
 	{
-		draw_circular_bar(player3.x + 2, player3.bbox_top - 54, player3.drawn_frames_until_drowning, player3.seconds_until_drowning*60, c_black, 20, 0.8, 6);
-		draw_circular_bar(player3.x, player3.bbox_top - 56, player3.drawn_frames_until_drowning, player3.seconds_until_drowning*60, make_color_hsv_transition(player3.drawn_frames_until_drowning, player3.seconds_until_drowning*60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
+		draw_circular_bar(player3.x + 2, player3.bbox_top - 54, player3.drawn_frames_until_drowning, player3.seconds_until_drowning* 60, c_black, 20, 0.8, 6);
+		draw_circular_bar(player3.x, player3.bbox_top - 56, player3.drawn_frames_until_drowning, player3.seconds_until_drowning* 60, make_color_hsv_transition(player3.drawn_frames_until_drowning, player3.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 	}
 }
 #endregion /*Show Drowning for Player 3 END*/
 
-#region /*Show Drowning for Player 4*/
+#region /*Show Drowning for Player 4 */
 if (player4 > 0)
 {
 	if (player4.allow_drowning == true)
-	&& (player4.drawn_frames_until_drowning <= player4.seconds_until_drowning*60)
+	&& (player4.drawn_frames_until_drowning <= player4.seconds_until_drowning* 60)
 	{
-		draw_circular_bar(player4.x + 2, player4.bbox_top - 54, player4.drawn_frames_until_drowning, player4.seconds_until_drowning*60, c_black, 20, 0.8, 6);
-		draw_circular_bar(player4.x, player4.bbox_top - 56, player4.drawn_frames_until_drowning, player4.seconds_until_drowning*60, make_color_hsv_transition(player4.drawn_frames_until_drowning, player4.seconds_until_drowning*60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
+		draw_circular_bar(player4.x + 2, player4.bbox_top - 54, player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, c_black, 20, 0.8, 6);
+		draw_circular_bar(player4.x, player4.bbox_top - 56, player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, make_color_hsv_transition(player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 	}
 }
 #endregion /*Show Drowning for Player 4 END*/

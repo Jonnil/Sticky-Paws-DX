@@ -9,6 +9,7 @@ undo_value = 0;
 undo_value_visible = true;
 sprite_enemy1 = global.resourcepack_sprite_basic_enemy;
 sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
+sprite_lives_icon = noone;
 
 place_object_angle = false;
 

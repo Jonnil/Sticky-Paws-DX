@@ -20,6 +20,7 @@ if (room = room_world_map)
 
 if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 16)
 and (attatch_player = false)
+and (cutscene != 1)
 {
 	instance_destroy();
 }

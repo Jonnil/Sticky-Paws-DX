@@ -46,9 +46,9 @@ and (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).hspeed<- 2)
 			{
 				hspeed =instance_nearest(x, y, obj_player).hspeed;
-				if (hspeed<-8)
+				if (hspeed<- 8)
 				{
-					hspeed = -8;
+					hspeed = - 8;
 				}
 			}
 			else
@@ -68,7 +68,7 @@ and (instance_exists(obj_player))
 		{
 			hp += 1;
 		}
-	effect_create_below(ef_ring,x, y, 1, c_white);
+	effect_create_below(ef_ring, x, y, 1, c_white);
 	instance_destroy();
 	}
 }
@@ -101,6 +101,6 @@ effect_time += 1;
 if (effect_time >60)
 {
 	effect_time = 0;
-	effect_create_below(ef_ring,x, y, 1, c_white);
+	effect_create_below(ef_ring, x, y, 1, c_white);
 }
 #endregion /*Expanding Ring Effect END*/

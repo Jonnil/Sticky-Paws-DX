@@ -3,11 +3,11 @@ if (kind_of_button = 0)
 {
 	for(i= 0;i<image_xscale;i++)
 	{
-		draw_sprite_ext(spr_menu_button_center, 0,x + (i*32),y, 1, 1, 0,highlight_color, 1);
+		draw_sprite_ext(spr_menu_button_center, 0, x + (i* 32),y, 1, 1, 0,highlight_color, 1);
 	}
 
-	draw_sprite_ext(spr_menu_button_edge, 0,x, y, 1, 1, 0,highlight_color, 1);
-	draw_sprite_ext(spr_menu_button_edge, 0,x + sprite_width,y,- 1, 1, 0,highlight_color, 1);
+	draw_sprite_ext(spr_menu_button_edge, 0, x, y, 1, 1, 0,highlight_color, 1);
+	draw_sprite_ext(spr_menu_button_edge, 0, x + sprite_width,y,- 1, 1, 0,highlight_color, 1);
 
 	#region /*Clicking the menu button*/
 	if (point_in_rectangle(mouse_x, mouse_y, x, y, x + sprite_width,y+ sprite_height)) and (mouse_check_button_pressed(mb_left))
@@ -54,11 +54,11 @@ if (kind_of_button = 1)
 {
 	if (checkmark= false)
 	{
-		draw_sprite_ext(spr_checkbox, 0,x + 16,y + 16, 0.5, 0.5, 0,highlight_color, 1);
+		draw_sprite_ext(spr_checkbox, 0, x + 16,y + 16, 0.5, 0.5, 0,highlight_color, 1);
 	}
 	else
 	{
-		draw_sprite_ext(spr_checkbox, 1,x + 16,y + 16, 0.5, 0.5, 0,highlight_color, 1);
+		draw_sprite_ext(spr_checkbox, 1, x + 16,y + 16, 0.5, 0.5, 0,highlight_color, 1);
 	}
 	
 	#region /*Clicking the menu button*/

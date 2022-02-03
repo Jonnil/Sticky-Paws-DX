@@ -404,7 +404,7 @@ function scr_keyboardremapping()
 	
 	else
 	
-	#region /*Remapping 4*/
+	#region /*Remapping 4 */
 	if (remapping_player = 3)
 	and (can_remap_key = true)
 	{

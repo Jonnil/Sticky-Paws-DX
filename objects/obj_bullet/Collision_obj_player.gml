@@ -52,12 +52,12 @@ or(other.can_tongue_after_dive_on_ground > 0)
 		if (other.x < x)
 		{
 			die_volting = - 1;
-			vspeed = -8;
+			vspeed = - 8;
 		}
 		else
 		{
 			die_volting = +1;
-			vspeed = -8;
+			vspeed = - 8;
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 
@@ -89,7 +89,7 @@ or(other.chain_reaction<= 1)
 	}
 	#endregion /* 1 Coin END*/
 	
-	#region /*200 Score*/
+	#region /* 200 Score*/
 	score += 200;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
@@ -99,7 +99,7 @@ or(other.chain_reaction<= 1)
 			scoreup = 200;
 		}
 	}
-	#endregion /*200 Score END*/
+	#endregion /* 200 Score END*/
 	
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 1)
@@ -134,7 +134,7 @@ if (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).chain_reaction = 2)
 or(other.chain_reaction = 2)
 {
-	#region /*2 Coin*/
+	#region /* 2 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -154,19 +154,19 @@ or(other.chain_reaction = 2)
 			delay_time = 10;
 		}
 	}
-	#endregion /*2 Coin END*/
+	#endregion /* 2 Coin END*/
 	
-	#region /*400 Score*/
-	score +=400;
+	#region /* 400 Score*/
+	score += 400;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =400;
+			scoreup = 400;
 		}
 	}
-	#endregion /*400 Score END*/
+	#endregion /* 400 Score END*/
 	
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 2)
@@ -201,7 +201,7 @@ if (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).chain_reaction = 3)
 or(other.chain_reaction = 3)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -237,19 +237,19 @@ or(other.chain_reaction = 3)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*800 Score*/
-	score +=800;
+	#region /* 800 Score*/
+	score += 800;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =800;
+			scoreup = 800;
 		}
 	}
-	#endregion /*800 Score END*/
+	#endregion /* 800 Score END*/
 	
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 3)
@@ -281,10 +281,10 @@ or(other.chain_reaction = 3)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =4)
-or(other.chain_reaction =4)
+and (instance_nearest(x, y, obj_player).chain_reaction = 4)
+or(other.chain_reaction = 4)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -320,7 +320,7 @@ or(other.chain_reaction =4)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
 	#region /* 1000 Score*/
 	score += 1000;
@@ -335,7 +335,7 @@ or(other.chain_reaction =4)
 	#endregion /* 1000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=4)
+	if (global.number_of_chain_kills_for_1up <= 4)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -364,10 +364,10 @@ or(other.chain_reaction =4)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =5)
-or(other.chain_reaction =5)
+and (instance_nearest(x, y, obj_player).chain_reaction = 5)
+or(other.chain_reaction = 5)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -403,9 +403,9 @@ or(other.chain_reaction =5)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*2000 Score*/
+	#region /* 2000 Score*/
 	score += 2000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
@@ -415,10 +415,10 @@ or(other.chain_reaction =5)
 			scoreup = 2000;
 		}
 	}
-	#endregion /*2000 Score END*/
+	#endregion /* 2000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=5)
+	if (global.number_of_chain_kills_for_1up <= 5)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -447,10 +447,10 @@ or(other.chain_reaction =5)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =6)
-or(other.chain_reaction =6)
+and (instance_nearest(x, y, obj_player).chain_reaction = 6)
+or(other.chain_reaction = 6)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -486,22 +486,22 @@ or(other.chain_reaction =6)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*4000 Score*/
-	score +=4000;
+	#region /* 4000 Score*/
+	score += 4000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =4000;
+			scoreup = 4000;
 		}
 	}
-	#endregion /*4000 Score END*/
+	#endregion /* 4000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=6)
+	if (global.number_of_chain_kills_for_1up <= 6)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -530,10 +530,10 @@ or(other.chain_reaction =6)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =7)
-or(other.chain_reaction =7)
+and (instance_nearest(x, y, obj_player).chain_reaction = 7)
+or(other.chain_reaction = 7)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -569,22 +569,22 @@ or(other.chain_reaction =7)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*8000 Score*/
-	score +=8000;
+	#region /* 8000 Score*/
+	score += 8000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =8000;
+			scoreup = 8000;
 		}
 	}
-	#endregion /*8000 Score END*/
+	#endregion /* 8000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=7)
+	if (global.number_of_chain_kills_for_1up <= 7)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -613,10 +613,10 @@ or(other.chain_reaction =7)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction >=8)
-or(other.chain_reaction >=8)
+and (instance_nearest(x, y, obj_player).chain_reaction >= 8)
+or(other.chain_reaction >= 8)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -652,10 +652,10 @@ or(other.chain_reaction >=8)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=8)
+	if (global.number_of_chain_kills_for_1up <= 8)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -748,7 +748,7 @@ if (die_volting = false)
 				can_dive = true;
 			}
 			flat = true;
-			effect_create_below(ef_ring,x, y, 0, c_white);
+			effect_create_below(ef_ring, x, y, 0, c_white);
 
 			#region /*Enemy Voice Defeated*/
 			audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
@@ -778,7 +778,7 @@ or(other.chain_reaction<= 1)
 	}
 	#endregion /* 1 Coin END*/
 	
-	#region /*200 Score*/
+	#region /* 200 Score*/
 	score += 200;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
@@ -788,7 +788,7 @@ or(other.chain_reaction<= 1)
 			scoreup = 200;
 		}
 	}
-	#endregion /*200 Score END*/
+	#endregion /* 200 Score END*/
 	
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 1)
@@ -823,7 +823,7 @@ if (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).chain_reaction = 2)
 or(other.chain_reaction = 2)
 {
-	#region /*2 Coin*/
+	#region /* 2 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -843,19 +843,19 @@ or(other.chain_reaction = 2)
 			delay_time = 10;
 		}
 	}
-	#endregion /*2 Coin END*/
+	#endregion /* 2 Coin END*/
 	
-	#region /*400 Score*/
-	score +=400;
+	#region /* 400 Score*/
+	score += 400;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =400;
+			scoreup = 400;
 		}
 	}
-	#endregion /*400 Score END*/
+	#endregion /* 400 Score END*/
 	
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 2)
@@ -890,7 +890,7 @@ if (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).chain_reaction = 3)
 or(other.chain_reaction = 3)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -926,19 +926,19 @@ or(other.chain_reaction = 3)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*800 Score*/
-	score +=800;
+	#region /* 800 Score*/
+	score += 800;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =800;
+			scoreup = 800;
 		}
 	}
-	#endregion /*800 Score END*/
+	#endregion /* 800 Score END*/
 	
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 3)
@@ -970,10 +970,10 @@ or(other.chain_reaction = 3)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =4)
-or(other.chain_reaction =4)
+and (instance_nearest(x, y, obj_player).chain_reaction = 4)
+or(other.chain_reaction = 4)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1009,7 +1009,7 @@ or(other.chain_reaction =4)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
 	#region /* 1000 Score*/
 	score += 1000;
@@ -1024,7 +1024,7 @@ or(other.chain_reaction =4)
 	#endregion /* 1000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=4)
+	if (global.number_of_chain_kills_for_1up <= 4)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -1053,10 +1053,10 @@ or(other.chain_reaction =4)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =5)
-or(other.chain_reaction =5)
+and (instance_nearest(x, y, obj_player).chain_reaction = 5)
+or(other.chain_reaction = 5)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1092,9 +1092,9 @@ or(other.chain_reaction =5)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*2000 Score*/
+	#region /* 2000 Score*/
 	score += 2000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
@@ -1104,10 +1104,10 @@ or(other.chain_reaction =5)
 			scoreup = 2000;
 		}
 	}
-	#endregion /*2000 Score END*/
+	#endregion /* 2000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=5)
+	if (global.number_of_chain_kills_for_1up <= 5)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -1136,10 +1136,10 @@ or(other.chain_reaction =5)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =6)
-or(other.chain_reaction =6)
+and (instance_nearest(x, y, obj_player).chain_reaction = 6)
+or(other.chain_reaction = 6)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1175,22 +1175,22 @@ or(other.chain_reaction =6)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*4000 Score*/
-	score +=4000;
+	#region /* 4000 Score*/
+	score += 4000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =4000;
+			scoreup = 4000;
 		}
 	}
-	#endregion /*4000 Score END*/
+	#endregion /* 4000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=6)
+	if (global.number_of_chain_kills_for_1up <= 6)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -1219,10 +1219,10 @@ or(other.chain_reaction =6)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =7)
-or(other.chain_reaction =7)
+and (instance_nearest(x, y, obj_player).chain_reaction = 7)
+or(other.chain_reaction = 7)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1258,22 +1258,22 @@ or(other.chain_reaction =7)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*8000 Score*/
-	score +=8000;
+	#region /* 8000 Score*/
+	score += 8000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =8000;
+			scoreup = 8000;
 		}
 	}
-	#endregion /*8000 Score END*/
+	#endregion /* 8000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=7)
+	if (global.number_of_chain_kills_for_1up <= 7)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -1302,10 +1302,10 @@ or(other.chain_reaction =7)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction >=8)
-or(other.chain_reaction >=8)
+and (instance_nearest(x, y, obj_player).chain_reaction >= 8)
+or(other.chain_reaction >= 8)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1341,10 +1341,10 @@ or(other.chain_reaction >=8)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=8)
+	if (global.number_of_chain_kills_for_1up <= 8)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -1390,7 +1390,7 @@ if (other.key_jump_hold)
 		}
 		else
 		{
-			vspeed = -8;
+			vspeed = - 8;
 		}
 	}
 }
@@ -1402,7 +1402,7 @@ else
 	}
 	else
 	{
-		other.vspeed = -8;
+		other.vspeed = - 8;
 	}
 }
 image_index = 0;
@@ -1435,7 +1435,7 @@ and (flat = false)
 		can_dive = true;
 	}
 	flat = true;
-	effect_create_below(ef_ring,x, y, 0, c_white);
+	effect_create_below(ef_ring, x, y, 0, c_white);
 
 	#region /*Enemy Voice Defeated*/
 	audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
@@ -1465,7 +1465,7 @@ or(other.chain_reaction<= 1)
 	}
 	#endregion /* 1 Coin END*/
 	
-	#region /*200 Score*/
+	#region /* 200 Score*/
 	score += 200;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
@@ -1475,7 +1475,7 @@ or(other.chain_reaction<= 1)
 			scoreup = 200;
 		}
 	}
-	#endregion /*200 Score END*/
+	#endregion /* 200 Score END*/
 	
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 1)
@@ -1510,7 +1510,7 @@ if (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).chain_reaction = 2)
 or(other.chain_reaction = 2)
 {
-	#region /*2 Coin*/
+	#region /* 2 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1530,19 +1530,19 @@ or(other.chain_reaction = 2)
 			delay_time = 10;
 		}
 	}
-	#endregion /*2 Coin END*/
+	#endregion /* 2 Coin END*/
 	
-	#region /*400 Score*/
-	score +=400;
+	#region /* 400 Score*/
+	score += 400;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =400;
+			scoreup = 400;
 		}
 	}
-	#endregion /*400 Score END*/
+	#endregion /* 400 Score END*/
 	
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 2)
@@ -1577,7 +1577,7 @@ if (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).chain_reaction = 3)
 or(other.chain_reaction = 3)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1613,19 +1613,19 @@ or(other.chain_reaction = 3)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*800 Score*/
-	score +=800;
+	#region /* 800 Score*/
+	score += 800;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =800;
+			scoreup = 800;
 		}
 	}
-	#endregion /*800 Score END*/
+	#endregion /* 800 Score END*/
 	
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 3)
@@ -1657,10 +1657,10 @@ or(other.chain_reaction = 3)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =4)
-or(other.chain_reaction =4)
+and (instance_nearest(x, y, obj_player).chain_reaction = 4)
+or(other.chain_reaction = 4)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1696,7 +1696,7 @@ or(other.chain_reaction =4)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
 	#region /* 1000 Score*/
 	score += 1000;
@@ -1711,7 +1711,7 @@ or(other.chain_reaction =4)
 	#endregion /* 1000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=4)
+	if (global.number_of_chain_kills_for_1up <= 4)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -1740,10 +1740,10 @@ or(other.chain_reaction =4)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =5)
-or(other.chain_reaction =5)
+and (instance_nearest(x, y, obj_player).chain_reaction = 5)
+or(other.chain_reaction = 5)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1779,9 +1779,9 @@ or(other.chain_reaction =5)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*2000 Score*/
+	#region /* 2000 Score*/
 	score += 2000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
@@ -1791,10 +1791,10 @@ or(other.chain_reaction =5)
 			scoreup = 2000;
 		}
 	}
-	#endregion /*2000 Score END*/
+	#endregion /* 2000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=5)
+	if (global.number_of_chain_kills_for_1up <= 5)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -1823,10 +1823,10 @@ or(other.chain_reaction =5)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =6)
-or(other.chain_reaction =6)
+and (instance_nearest(x, y, obj_player).chain_reaction = 6)
+or(other.chain_reaction = 6)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1862,22 +1862,22 @@ or(other.chain_reaction =6)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*4000 Score*/
-	score +=4000;
+	#region /* 4000 Score*/
+	score += 4000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =4000;
+			scoreup = 4000;
 		}
 	}
-	#endregion /*4000 Score END*/
+	#endregion /* 4000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=6)
+	if (global.number_of_chain_kills_for_1up <= 6)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -1906,10 +1906,10 @@ or(other.chain_reaction =6)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction =7)
-or(other.chain_reaction =7)
+and (instance_nearest(x, y, obj_player).chain_reaction = 7)
+or(other.chain_reaction = 7)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -1945,22 +1945,22 @@ or(other.chain_reaction =7)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
-	#region /*8000 Score*/
-	score +=8000;
+	#region /* 8000 Score*/
+	score += 8000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
 		obj = instance_create_depth(x, y, 0, obj_scoreup);
 		with(obj)
 		{
-			scoreup =8000;
+			scoreup = 8000;
 		}
 	}
-	#endregion /*8000 Score END*/
+	#endregion /* 8000 Score END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=7)
+	if (global.number_of_chain_kills_for_1up <= 7)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -1989,10 +1989,10 @@ or(other.chain_reaction =7)
 }
 else
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).chain_reaction >=8)
-or(other.chain_reaction >=8)
+and (instance_nearest(x, y, obj_player).chain_reaction >= 8)
+or(other.chain_reaction >= 8)
 {
-	#region /*4 Coin*/
+	#region /* 4 Coin*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		var obj;
@@ -2028,10 +2028,10 @@ or(other.chain_reaction >=8)
 			delay_time = 30;
 		}
 	}
-	#endregion /*4 Coin END*/
+	#endregion /* 4 Coin END*/
 	
 	#region /* 1-UP*/
-	if (global.number_of_chain_kills_for_1up <=8)
+	if (global.number_of_chain_kills_for_1up <= 8)
 	{
 		lives+= 1;
 		global.hud_show_lives= true;
@@ -2066,12 +2066,12 @@ image_index = 0;
 if (other.x < x)
 {
 	die_volting = - 1;
-	vspeed = -8;
+	vspeed = - 8;
 }
 else
 {
 	die_volting = +1;
-	vspeed = -8;
+	vspeed = - 8;
 }
 }
 }

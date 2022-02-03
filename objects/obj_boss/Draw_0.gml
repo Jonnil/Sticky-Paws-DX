@@ -587,7 +587,7 @@ if (redblinktimer > 60)
 if (redblinktimer > 55)
 and (hp <= 1)
 {
-	draw_sprite_ext(sprite_index, image_index, x + random_range(-8, +8), y + random_range(-8, +8), draw_xscale * sign(image_xscale), draw_yscale, angle, c_red, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, x + random_range(- 8, +8), y + random_range(- 8, +8), draw_xscale * sign(image_xscale), draw_yscale, angle, c_red, image_alpha);
 }
 else
 {
@@ -658,7 +658,7 @@ if (hp <= 0)
 				bounceup = true;
 			}
 		}
-		/*200 Score*/
+		/* 200 Score*/
 		score += 200;
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{

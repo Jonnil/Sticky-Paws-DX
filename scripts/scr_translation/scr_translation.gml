@@ -3,7 +3,7 @@ enum localization
 	ar_sa/*Arabic*/
 	,id_id/*Indonesian*/
 	,da_dk/*Danish*/
-	,de_de/*German*/
+	,de_de /*German*/
 	,en_gb/*British English*/
 	,en_us/*American English*/
 	,es_es/*Spanish*/
@@ -19,7 +19,7 @@ enum localization
 	,pt_pt/*Portuguese*/
 	,sk_sk/*Slovak*/
 	, fi_fi/*Finnish*/
-	,sv_se/*Swedish*/
+	,sv_se /*Swedish*/
 	,th_th /*Thai*/
 	,tr_tr/*Turkish*/
 	, cs_cz/*Czech*/

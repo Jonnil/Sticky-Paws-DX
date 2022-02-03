@@ -24,7 +24,7 @@ function draw_text_outlined()
 	if (asset_get_type("font_other_languages") == asset_font)
 	and (global.language_localization = localization.ar_sa)
 	{
-		y_offset =5;
+		y_offset = 5;
 	}
 	else
 	{

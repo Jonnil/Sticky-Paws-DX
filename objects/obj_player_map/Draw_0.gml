@@ -823,7 +823,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 1) /*Up Right = 1*/
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
 	{
 		hspeed = 0;
-		vspeed = -8;
+		vspeed = - 8;
 		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
 		{
 			x = instance_nearest(x, y, obj_map_path_turn).x;
@@ -864,7 +864,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /*Up Left = 2*/
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
 	{
 		hspeed = 0;
-		vspeed = -8;
+		vspeed = - 8;
 		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
 		{
 			x = instance_nearest(x, y, obj_map_path_turn).x;
@@ -879,7 +879,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /*Up Left = 2*/
 	if (abs(vspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
 	{
-		hspeed = -8;
+		hspeed = - 8;
 		vspeed = 0;
 		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
 		{
@@ -920,7 +920,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 3) /*Left Down = 3*/
 	if (abs(vspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
 	{
-		hspeed = -8;
+		hspeed = - 8;
 		vspeed = 0;
 		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
 		{
