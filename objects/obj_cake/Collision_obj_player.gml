@@ -1,5 +1,6 @@
 if (visible = true)
 and (other.intro_animation = "")
+and (instance_exists(obj_cake_stealing_enemy))
 and (instance_nearest(x, y, obj_cake_stealing_enemy).cutscene != 1)
 {
 	x = other.x;

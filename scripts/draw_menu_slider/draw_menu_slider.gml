@@ -41,7 +41,7 @@ function draw_menu_slider()
 		if (global.controls_used_for_menu_navigation = "mouse")
 		and (mouse_check_button(mb_left))
 		{
-			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), x_position-32,y_position-32, x_position+ 352,y_position+ 32)) /*Within the length of the slider*/
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position-32,y_position-32, x_position+ 352,y_position+ 32)) /*Within the length of the slider*/
 			{
 				if (menu = "music_volume"){global.music_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
 				if (menu = "sfx_volume"){global.sfx_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
@@ -111,12 +111,12 @@ function draw_menu_slider()
 	#endregion /*Show a menu cursor when the option is highlighted END*/
 	
 	#region /*Clicking the menu button*/
-	if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), x_position+ 32,y_position+ 2, x_position+ 320,y_position+ 41))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position+ 32,y_position+ 2, x_position+ 320,y_position+ 41))
 	and (global.controls_used_for_menu_navigation = "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	and (menu != "assist_enable")
 	and (menu_delay = 0)
-	or(point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(), x_position+ 32,y_position+ 2, x_position+ 320,y_position+ 41))
+	or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position+ 32,y_position+ 2, x_position+ 320,y_position+ 41))
 	and (global.controls_used_for_menu_navigation = "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	and (global.assist_enable = true)

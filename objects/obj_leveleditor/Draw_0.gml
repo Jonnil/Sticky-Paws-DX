@@ -131,8 +131,8 @@ and (!instance_exists(obj_foreground_secret))
 
 #region /*Controls for level editor*/
 gamepad_set_axis_deadzone(0, 0.5);
-key_up =(keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or(keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv)<0);
-key_left =(keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right))or(keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh)<0);
+key_up =(keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or(keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv)< 0);
+key_left =(keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right))or(keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh)< 0);
 key_right =(keyboard_check_pressed(global.player1_key_right)) and (!keyboard_check_pressed(global.player1_key_left))or(keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
 key_down =(keyboard_check_pressed(global.player1_key_down)) and (!keyboard_check_pressed(global.player1_key_up))or(keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or(gamepad_axis_value(0, gp_axislv) > 0);
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or(keyboard_check_pressed(global.player1_key_jump))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_space))or(keyboard_check_pressed(vk_enter));
@@ -389,11 +389,11 @@ and (pause = false)
 #region /*Fade grid in and out when toggeling*/
 if (show_grid = true)
 {
-	grid_alpha= lerp(grid_alpha, 0.25, 0.1);
+	grid_alpha = lerp(grid_alpha, 0.25, 0.1);
 }
 else
 {
-	grid_alpha= lerp(grid_alpha, 0, 0.1);
+	grid_alpha = lerp(grid_alpha, 0, 0.1);
 }
 #endregion /*Fade grid in and out when toggeling END*/
 
@@ -517,7 +517,7 @@ if (pause = false)
 	#region /*Zoom In*/
 	if (zoom_in = true)
 	{
-		if (camera_get_view_width(view_camera[view_current])>696)
+		if (camera_get_view_width(view_camera[view_current])> 696)
 		and (camera_get_view_height(view_camera[view_current])>368)
 		{
 			camera_set_view_size((view_camera[view_current]), camera_get_view_width(view_camera[view_current]) - 8, camera_get_view_height(view_camera[view_current]) -4.5);
@@ -541,11 +541,11 @@ if (mouse_check_button(mb_any))
 or(keyboard_check(vk_anykey))
 or(key_a_hold)
 {
-	selected_menu_alpha= lerp(selected_menu_alpha, 0, 0.1);
+	selected_menu_alpha = lerp(selected_menu_alpha, 0, 0.1);
 }
 else
 {
-	selected_menu_alpha= lerp(selected_menu_alpha, 0, 0.01);
+	selected_menu_alpha = lerp(selected_menu_alpha, 0, 0.01);
 }
 if (quit_level_editor = 0)
 {
@@ -584,7 +584,7 @@ if (quit_level_editor = 0)
 	draw_sprite_ext(global.resourcepack_sprite_hp_pickup, 0,																camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 30, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);
 	draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0,													camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 31, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);
 	if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0,													camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 32, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 32, camera_get_view_y(view_camera[view_current]) + 64, "1-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);}
-	if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0,													camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 33, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_lime,selected_menu_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 33, camera_get_view_y(view_camera[view_current]) + 64, "2-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);}
+	if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0,													camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 33, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_lime,selected_menu_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 33, camera_get_view_y(view_camera[view_current]) + 64, "2 -up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);}
 	if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0,													camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 34, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_blue,selected_menu_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 34, camera_get_view_y(view_camera[view_current]) + 64, "3-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);}
 	if (sprite_enemy1 > noone){draw_sprite_ext(sprite_enemy1, 0,															camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 35, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);}
 	if (sprite_enemy2 > noone){draw_sprite_ext(sprite_enemy2, 0,															camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 36, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);}
@@ -714,7 +714,7 @@ if (use_controller = true)
 	}
 	
 	#region /*Move view with gamepad*/
-	if (gamepad_axis_value(0, gp_axisrv)<0)
+	if (gamepad_axis_value(0, gp_axisrv)< 0)
 	{
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
@@ -754,7 +754,7 @@ if (use_controller = true)
 			}
 		}
 	}
-	if (gamepad_axis_value(0, gp_axisrh)<0)
+	if (gamepad_axis_value(0, gp_axisrh)< 0)
 	{
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
@@ -1486,7 +1486,7 @@ and (pause = false)
 			selected_object = total_number_of_objects;
 			selected_object_menu_x =- 64 *total_number_of_objects;
 		}
-		selected_menu_alpha= 2;
+		selected_menu_alpha = 2;
 	}
 }
 #endregion /*Scroll Objects Left END*/
@@ -1519,7 +1519,7 @@ and (pause = false)
 			selected_object = 0;
 			selected_object_menu_x = 0;
 		}
-		selected_menu_alpha= 2;
+		selected_menu_alpha = 2;
 	}
 }
 #endregion /*Scroll Objects Right END*/
@@ -1581,5 +1581,5 @@ or(os_type == os_android)
 	
 }
 
-//draw_text_transformed_color(weighted_x,weighted_y, "TEST", global.default_text_size, global.default_text_size, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1);
+//draw_text_transformed_color(weighted_x, weighted_y, "TEST", global.default_text_size, global.default_text_size, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1);
 //draw_text_transformed_color(x + 64, y+64,string(weighted_x) + ", " + string(weighted_y) + ", " + string(total_objects), global.default_text_size, global.default_text_size, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1);

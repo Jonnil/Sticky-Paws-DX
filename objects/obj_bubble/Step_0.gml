@@ -15,7 +15,7 @@ if (asset_get_type("obj_water") == asset_object)
 		vspeed = 0;
 	}
 }
-if (image_alpha<= 0)
+if (image_alpha <= 0)
 {
 	instance_destroy();
 }

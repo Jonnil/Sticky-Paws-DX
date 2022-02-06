@@ -208,8 +208,8 @@ if (bounceup = false)
 			}
 			#endregion /* 1-up END*/
 			
-			#region /* 2-up*/
-			if (item_inside = "2-up")
+			#region /* 2 -up*/
+			if (item_inside = "2 -up")
 			{
 				empty = true;
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -226,7 +226,7 @@ if (bounceup = false)
 					}
 				}
 			}
-			#endregion /* 2-up END*/
+			#endregion /* 2 -up END*/
 			
 			#region /* 3 -up*/
 			if (item_inside = "3 -up")

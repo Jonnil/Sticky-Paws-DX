@@ -32,7 +32,7 @@ else
 draw_set_halign(fa_center);
 if (scoreup = "1-UP")
 and (show_remaining_jumps = false)
-or(scoreup = "2-UP")
+or(scoreup = "2 -UP")
 and (show_remaining_jumps = false)
 or(scoreup = "3 -UP")
 and (show_remaining_jumps = false)

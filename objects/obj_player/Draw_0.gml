@@ -14,16 +14,6 @@
 //draw_text_outlined(x-32,y - 64, string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x-32,y - 128, string(global.player1_can_play), global.default_text_size, c_white, c_black, 1);
 
-/*if (direction >= 90 - 10)
-and (direction <= 90 + 10)
-{
-	draw_text_outlined(x, y - 128,string(direction), global.default_text_size, c_lime, c_black, 1);
-}
-else
-{
-	draw_text_outlined(x, y - 128,string(direction), global.default_text_size, c_red, c_black, 1);
-}*/
-
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)
 and (have_heart_balloon = true)
@@ -79,13 +69,13 @@ if (y <camera_get_view_y(view_camera[view_current]))
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + 32, 22, c_white, c_white, true);
 	
 	if (assist_invincible = false)
-	and (invincible >60)
+	and (invincible > 60)
 	{
 		if (invincible <240)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
 			}
 			else
 			{
@@ -94,7 +84,14 @@ if (y <camera_get_view_y(view_camera[view_current]))
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, random(9999), image_alpha);
+			if (invincible%20 == 0)
+			{
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
+			}
+			else
+			{
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
+			}
 		}
 	}
 	else
@@ -116,13 +113,13 @@ and (y <room_height)
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 22, c_white, c_white, true);
 	
 	if (assist_invincible = false)
-	and (invincible >60)
+	and (invincible > 60)
 	{
 		if (invincible <240)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
 			}
 			else
 			{
@@ -131,7 +128,14 @@ and (y <room_height)
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, random(9999), image_alpha);
+			if (invincible%20 == 0)
+			{
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
+			}
+			else
+			{
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
+			}
 		}
 	}
 	else
@@ -243,6 +247,7 @@ and (hp <= 1)
 and (max_hp >= 2)
 and (sprite_index > 0)
 and (intro_animation = "")
+and (invincible < 60)
 {
 	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8,+8),yy+random_range(- 8,+8),draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, image_alpha);
 }
@@ -254,6 +259,7 @@ and (intro_animation = "")
 	draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
 	if (hp <= 1)
 	and (max_hp >= 2)
+	and (invincible < 60)
 	{
 		draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, 0.1);
 	}
@@ -326,14 +332,14 @@ if (assist_invincible = false)
 	{
 		invincible-= 1;
 	}
-	if (invincible >60)
+	if (invincible > 60)
 	and (sprite_index > 0)
 	{
 		if (invincible <240)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
+				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_black, image_alpha);
 			}
 			else
 			{
@@ -342,12 +348,19 @@ if (assist_invincible = false)
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, random(9999), image_alpha);
+			if (invincible%20 == 0)
+			{
+				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_black, image_alpha);
+			}
+			else
+			{
+				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
+			}
 		}
 	}
 }
 
-if (invincible >60)
+if (invincible > 60)
 {
 	if (floor(random(10 - 1))= 0)
 	{

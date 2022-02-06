@@ -10,11 +10,9 @@ or(!file_exists(working_directory + "save_files/file" + string(current_file) + "
 }
 
 #region /*Save whole level as screenshot png file*/
-if (keyboard_check(vk_control))
-and (keyboard_check_pressed(ord("P")))
+if (global.full_level_map_screenshot = true)
 {
 	instance_activate_all();
-	global.full_level_map_screenshot = true;
 	
 	#region /*Delete some objects so it doesn't show up in the screenshot*/
 	if (asset_get_type("obj_camera") == asset_object)
@@ -38,15 +36,15 @@ if (full_level_map_screenshot_timer >= 1)
 	full_level_map_screenshot_timer += 1;
 }
 
-if (full_level_map_screenshot_timer = 5)
+if (full_level_map_screenshot_timer = 10)
 {
 	var custom_level_map_sprite;
 	custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
-	sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/Full Level Map.png");
+	sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
 	sprite_delete(custom_level_map_sprite);
 }
 
-if (full_level_map_screenshot_timer = 10)
+if (full_level_map_screenshot_timer = 15)
 {
 	camera_set_view_border(view_camera[view_current], 1920, 1080); /*View Border*/
 	camera_set_view_pos(view_camera[view_current], x, y);
@@ -55,8 +53,10 @@ if (full_level_map_screenshot_timer = 10)
 	surface_resize(application_surface, 1920, 1080);
 	window_set_rectangle(0, 0, 1920, 1080);
 	scr_set_screen_size();
+	instance_create_depth(x, y, 0, obj_camera);
 	global.full_level_map_screenshot = false;
 	full_level_map_screenshot_timer = 0;
+	room_restart();
 }
 #endregion /*Save whole level as screenshot png file END*/
 
@@ -3510,7 +3510,7 @@ if (player <= 1)
 	and (!keyboard_check(global.player1_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh)<0);
+	or(gamepad_axis_value(player - 1, gp_axislh)< 0);
 	#endregion /*Player 1 Key Left Hold END*/
 	
 	#region /*Player 1 Key Right Hold*/
@@ -3549,7 +3549,7 @@ if (player <= 1)
 	and (!keyboard_check(global.player1_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
 	#endregion /*Player 1 Key Up Hold END*/
 	
 	#region /*Player 1 Key Up Pressed*/
@@ -3558,7 +3558,7 @@ if (player <= 1)
 	or(keyboard_check_pressed(global.player1_key2_up))
 	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
 	#endregion /*Player 1 Key Up Hold END*/
 	
 	#region /*Player 1 Key Spin Hold*/
@@ -3726,7 +3726,7 @@ if (player = 2)
 	and (!keyboard_check(global.player2_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh)<0);
+	or(gamepad_axis_value(player - 1, gp_axislh)< 0);
 	#endregion /*Player 2 Key Left Hold END*/
 	
 	#region /*Player 2 Key Right Hold*/
@@ -3765,7 +3765,7 @@ if (player = 2)
 	and (!keyboard_check(global.player2_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
 	#endregion /*Player 2 Key Up Hold END*/
 	
 	#region /*Player 2 Key Up Pressed*/
@@ -3774,7 +3774,7 @@ if (player = 2)
 	or(keyboard_check_pressed(global.player2_key2_up))
 	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
 	#endregion /*Player 2 Key Up Hold END*/
 	
 	#region /*Player 2 Key Spin Hold*/
@@ -3942,7 +3942,7 @@ if (player = 3)
 	and (!keyboard_check(global.player3_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh)<0);
+	or(gamepad_axis_value(player - 1, gp_axislh)< 0);
 	#endregion /*Player 3 Key Left Hold END*/
 	
 	#region /*Player 3 Key Right Hold*/
@@ -3981,7 +3981,7 @@ if (player = 3)
 	and (!keyboard_check(global.player3_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
 	#endregion /*Player 3 Key Up Hold END*/
 	
 	#region /*Player 3 Key Up Pressed*/
@@ -3990,7 +3990,7 @@ if (player = 3)
 	or(keyboard_check_pressed(global.player3_key2_up))
 	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
 	#endregion /*Player 3 Key Up Hold END*/
 	
 	#region /*Player 3 Key Spin Hold*/
@@ -4158,7 +4158,7 @@ if (player = 4)
 	and (!keyboard_check(global.player4_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh)<0);
+	or(gamepad_axis_value(player - 1, gp_axislh)< 0);
 	#endregion /*Player 4 Key Left Hold END*/
 	
 	#region /*Player 4 Key Right Hold*/
@@ -4197,7 +4197,7 @@ if (player = 4)
 	and (!keyboard_check(global.player4_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
 	#endregion /*Player 4 Key Up Hold END*/
 	
 	#region /*Player 4 Key Up Pressed*/
@@ -4206,7 +4206,7 @@ if (player = 4)
 	or(keyboard_check_pressed(global.player4_key2_up))
 	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)<0);
+	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
 	#endregion /*Player 4 Key Up Hold END*/
 	
 	#region /*Player 4 Key Spin Hold*/
@@ -6344,10 +6344,6 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 			#endregion /*Change direction when diving END*/
 		
 			crouch = false;
-			if (asset_get_type("obj_speedline") == asset_object)
-			{
-				instance_create_depth(x, y, 0, obj_speedline);
-			}
 		}
 	}
 
@@ -6561,10 +6557,6 @@ and (takendamage <= takendamage_freezetime)
 		}
 		if (ground_pound = true)
 		{
-			if (asset_get_type("obj_speedline") == asset_object)
-			{
-				instance_create_depth(x, y, 0, obj_speedline);
-			}
 			if (vspeed > 8)
 			{
 				vspeed = +24;
@@ -7561,7 +7553,7 @@ and (power_meter_running_sound = true)
 else
 {
 	speedunit-= 1;
-	if (speedunit<0)
+	if (speedunit< 0)
 	{
 		speedunit = 0;
 	}
@@ -7642,7 +7634,7 @@ if (asset_get_type("obj_lava") == asset_object)
 {
 	if (place_meeting(x, y, obj_lava))
 	{
-		if (allow_survive_lava= true)
+		if (allow_survive_lava = true)
 		and (hp > 0)
 		{
 			burnt = true;
@@ -10171,6 +10163,7 @@ and (!key_right)
 	if (have_heart_balloon = false)
 	and (hp <= 1)
 	and (max_hp >= 2)
+	and (invincible < 60)
 	and (sprite_panting > noone)
 	{
 		sprite_index = sprite_panting;
@@ -10771,7 +10764,7 @@ or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 				
 			}
 			else
-			if (image_index > image_number/ 2- 1)
+			if (image_index > image_number/ 2 - 1)
 			and (image_index<image_number/ 2 + 1)
 			{
 				
@@ -10991,14 +10984,30 @@ else
 #endregion /*Running Sparks Effect END*/
 
 #region /*Speedlines Effect*/
-if (vspeed < 0)
-or(vspeed > 0)
-and (invincible < 1)
-or(invincible > 0)
+if (asset_get_type("obj_speedline") == asset_object)
 {
-	if (asset_get_type("obj_speedline") == asset_object)
+	if (vspeed < 0)
+	or(vspeed > 0)
+	and (invincible < 1)
+	or(invincible > 0)
 	{
-		instance_create_depth(xx, yy, 0, obj_speedline);
+		if (invincible > 60)
+		and (assist_invincible = false)
+		{
+			with(instance_create_depth(xx, yy, 0, obj_speedline))
+			{
+				image_angle = instance_nearest(x, y, obj_player).angle;
+				image_blend = instance_nearest(x, y, obj_player).image_blend;
+				image_index = instance_nearest(x, y, obj_player).image_index;
+				image_speed = instance_nearest(x, y, obj_player).image_speed;
+				sprite_index = instance_nearest(x, y, obj_player).sprite_index;
+				image_xscale = instance_nearest(x, y, obj_player).image_xscale;
+			}
+		}
+		else
+		{
+			instance_create_depth(xx, yy, 0, obj_speedline);
+		}
 	}
 }
 #endregion /*Speedlines Effect END*/

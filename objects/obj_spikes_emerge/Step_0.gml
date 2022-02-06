@@ -1,5 +1,3 @@
-depth = +10;
-
 #region /*If spikes are disabled, destroy this object*/
 if (global.activate_cheats = true)
 and (global.enable_spikes = false)
@@ -76,9 +74,44 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
-			if invincible = false
+			if (invincible = false)
 			{
-				hp -= 1;
+				if (have_heart_balloon = true)
+				{
+					have_heart_balloon = false;
+					
+					#region /*Save heart balloon to be false*/
+					if (player = 1)
+					{
+						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_write_real("Player", "player_1_have_heart_balloon", false);
+						ini_close();
+					}
+					if (player = 2)
+					{
+						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_write_real("Player", "player_2_have_heart_balloon", false);
+						ini_close();
+					}
+					if (player = 3)
+					{
+						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_write_real("Player", "player_3_have_heart_balloon", false);
+						ini_close();
+					}
+					if (player = 4)
+					{
+						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_write_real("Player", "player_4_have_heart_balloon", false);
+						ini_close();
+					}
+					#endregion /*Save heart balloon to be false END*/
+					
+				}
+				else
+				{
+					hp -= 1;
+				}
 				takendamage = 100;
 			}
 		}

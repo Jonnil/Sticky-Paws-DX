@@ -1,4 +1,4 @@
-key_a=(gamepad_button_check(0, gp_face1))or(keyboard_check(global.player1_key_jump));
+key_a =(gamepad_button_check(0, gp_face1))or(keyboard_check(global.player1_key_jump));
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or(keyboard_check_pressed(global.player1_key_jump));
 key_a_released =(gamepad_button_check_released(0, gp_face1))or(keyboard_check_released(global.player1_key_jump));
 key_b=(gamepad_button_check(0, gp_face2))or(keyboard_check(global.player1_key_sprint));
@@ -1573,7 +1573,7 @@ if (global.play_edited_level = true)
 		if (object = 5) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "10_basic_collectibles";}instance_destroy();}
 		if (object = 6) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "heart_balloon";}instance_destroy();}
 		if (object = 7) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "1-up";}instance_destroy();}
-		if (object = 8) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "2-up";}instance_destroy();}
+		if (object = 8) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "2 -up";}instance_destroy();}
 		if (object = 9) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "3 -up";}instance_destroy();}
 		if (object = 10) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Brick Block END*/
@@ -1583,7 +1583,7 @@ if (global.play_edited_level = true)
 		if (object = 12) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "10_basic_collectibles";}instance_destroy();}
 		if (object = 13) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "heart_balloon";}instance_destroy();}
 		if (object = 14) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "1-up";}instance_destroy();}
-		if (object = 15) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "2-up";}instance_destroy();}
+		if (object = 15) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "2 -up";}instance_destroy();}
 		if (object = 16) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "3 -up";}instance_destroy();}
 		if (object = 17) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Question Block END*/
@@ -1608,7 +1608,7 @@ if (global.play_edited_level = true)
 		if (object = 29) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "8_basic_collectibles";}instance_destroy();}
 		if (object = 30) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "heart_balloon";}instance_destroy();}
 		if (object = 31) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "1-up";}instance_destroy();}
-		if (object = 32) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "2-up";}instance_destroy();}
+		if (object = 32) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "2 -up";}instance_destroy();}
 		if (object = 33) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "3 -up";}instance_destroy();}
 		if (object = 34) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_1";}instance_destroy();}
 		if (object = 35) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_2";}instance_destroy();}
@@ -1718,7 +1718,7 @@ if (global.play_edited_level = true)
 		if (object = 78) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "8_basic_collectibles";}instance_destroy();}
 		if (object = 79) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "heart_balloon";}instance_destroy();}
 		if (object = 80) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "1-up";}instance_destroy();}
-		if (object = 81) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "2-up";}instance_destroy();}
+		if (object = 81) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "2 -up";}instance_destroy();}
 		if (object = 82) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "3 -up";}instance_destroy();}
 		if (object = 83) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_1";}instance_destroy();}
 		if (object = 84) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_2";}instance_destroy();}
@@ -1736,7 +1736,27 @@ if (global.play_edited_level = true)
 		if (object = 94) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_walljump; sprite_sign = spr_sign_walljump;}instance_destroy();}
 		if (object = 95) and (asset_get_type("obj_boss") == asset_object){instance_create_depth(x, y, 0, obj_boss);instance_destroy();}
 		if (object = 96) and (asset_get_type("obj_boss_barrier") == asset_object){instance_create_depth(x, y, 0, obj_boss_barrier);instance_destroy();}
-		if (object = 961) and (asset_get_type("obj_cake_stealing_enemy") == asset_object){with(instance_create_depth(x, y, 0, obj_cake_stealing_enemy)){cutscene = 1;image_xscale = -1;visible = true;}with(instance_create_depth(x, y, 0, obj_cake)){cutscene = 1;}instance_destroy();}
+		if (object = 961)
+		and (asset_get_type("obj_cake_stealing_enemy") == asset_object)
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			if (global.character_select_in_this_menu = "main_game")
+			and (ini_read_string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "clear_rate", "closed") != "clear")
+			{
+				with(instance_create_depth(x, y, 0, obj_cake_stealing_enemy))
+				{
+					cutscene = 1;
+					image_xscale = -1;
+					visible = true;
+				}
+				with(instance_create_depth(x, y, 0, obj_cake))
+				{
+					cutscene = 1;
+				}
+			}
+			ini_close();
+			instance_destroy();
+		}
 		if (object = 97) and (asset_get_type("obj_artwork_collection") == asset_object){instance_create_depth(x, y, 0, obj_artwork_collection);instance_destroy();}
 	}
 	#endregion /*Delete objects according to difficulty settings END*/
@@ -1770,7 +1790,7 @@ if (object = 4) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_i
 if (object = 5) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 if (object = 6) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
 if (object = 7) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 8) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 8) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 9) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 10) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 #endregion /*Brick Block END*/
@@ -1780,7 +1800,7 @@ if (object = 11) and (asset_get_type("spr_question_block") == asset_sprite){spri
 if (object = 12) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 if (object = 13) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
 if (object = 14) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 15) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 15) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 16) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 17) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 #endregion /*Question Block END*/
@@ -1805,7 +1825,7 @@ if (object = 28) and (asset_get_type("spr_bump_in_ground") == asset_sprite){spri
 if (object = 29) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 if (object = 30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
 if (object = 31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
@@ -1838,7 +1858,7 @@ if (object = 53) and (asset_get_type("spr_heart") == asset_sprite){sprite_index 
 if (object = 54){sprite_index = global.resourcepack_sprite_hp_pickup;mask_index = spr_wall;}
 if (object = 55){sprite_index = global.resourcepack_sprite_invincibility_powerup;mask_index = spr_wall;}
 if (object = 56) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_white, image_alpha);sprite_index = sprite_lives_icon;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 57) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_lime, image_alpha);sprite_index = sprite_lives_icon;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 57) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_lime, image_alpha);sprite_index = sprite_lives_icon;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 58) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_blue, image_alpha);sprite_index = sprite_lives_icon;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 59){sprite_index = sprite_enemy1;mask_index = spr_wall;}
 if (object = 60){sprite_index = sprite_enemy2;mask_index = spr_wall;}
@@ -1885,7 +1905,7 @@ if (object = 77) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index
 if (object = 78) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 if (object = 79) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
 if (object = 80) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 81) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 81) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 82) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 83) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 84) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}

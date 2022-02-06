@@ -43,20 +43,14 @@ if (quit_level_editor = false)
 		#region /*Make the menu invisible when entering the options menu*/
 		if (menu = "continue")
 		or(menu = "options")
+		or(menu = "generate_level_map")
 		or(menu = "quit")
 		{
 			
 			#region /*If menu is on continue*/
-			draw_menu_button(
-			window_get_width()/ 2- 185,
-			window_get_height()/ 2- 84,
-			"Continue", "continue",noone);
-		
-			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
-			window_get_width()/ 2- 185,
-			window_get_height()/ 2- 84,
-			window_get_width()/ 2 + 185,
-			window_get_height()/ 2-42))
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, "Continue", "continue", noone);
+			
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, window_get_width()/ 2 + 185, window_get_height()/ 2 -42))
 			and (mouse_check_button_pressed(mb_left))
 			{
 				menu_delay = 10;
@@ -64,7 +58,6 @@ if (quit_level_editor = false)
 				can_input_level_name = false;
 				pause = false;
 			}
-		
 			if (menu = "continue")
 			and (can_input_level_name = false)
 			{
@@ -107,16 +100,9 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on continue END*/
 			
 			#region /*If menu is on options*/
-			draw_menu_button(
-			window_get_width()/ 2- 185,
-			window_get_height()/ 2-42,
-			"Settings", "options",noone);
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -42, "Settings", "options", noone);
 			
-			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
-			window_get_width()/ 2- 185,
-			window_get_height()/ 2-42,
-			window_get_width()/ 2 + 185,
-			window_get_height()/ 2))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 -42, window_get_width()/ 2 + 185, window_get_height()/ 2))
 			and (mouse_check_button_pressed(mb_left))
 			{
 				quit_level_editor = false;
@@ -175,18 +161,65 @@ if (quit_level_editor = false)
 				}
 			}
 			#endregion /*If menu is on options END*/
-		
-			#region /*If menu is on quit*/
-			draw_menu_button(
-			window_get_width()/ 2- 185,
-			window_get_height()/ 2,
-			"Save and Quit", "quit",noone);
 			
-			if (point_in_rectangle(window_mouse_get_x(),window_mouse_get_y(),
-			window_get_width()/ 2- 185,
-			window_get_height()/ 2,
-			window_get_width()/ 2 + 185,
-			window_get_height()/ 2 + 42))
+			#region /*If menu is on generate level map*/
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Generate Level Map", "generate_level_map", "generate_level_map_yes");
+			
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			{
+				menu_delay = 10;
+				quit_level_editor = false;
+				can_input_level_name = false;
+				pause = true;
+				menu = "generate_level_map_yes";
+			}
+			if (menu = "continue")
+			and (can_input_level_name = false)
+			{
+				if (key_up)
+				and (menu_joystick_delay = 0)
+				and (menu_delay = 0)
+				{
+					menu_delay = 1;
+					menu = "quit";
+				}
+				else
+				if (key_down)
+				and (menu_joystick_delay = 0)
+				and (menu_delay = 0)
+				{
+					menu_delay = 1;
+					menu = "options";
+				}
+				if (key_a_pressed)
+				or(keyboard_check_pressed(vk_enter))
+				{
+					if (menu_delay = 0)
+					{
+						menu_delay = 10;
+						quit_level_editor = false;
+						can_input_level_name = false;
+						pause = true;
+						menu = "generate_level_map_yes";
+					}
+				}
+				if (key_b_pressed)
+				and (menu_delay = 0)
+				{
+					menu_delay = 10;
+					quit_level_editor = false;
+					can_input_level_name = false;
+					pause = false;
+					can_navigate = false;
+				}
+			}
+			#endregion /*If menu is on generate level map END*/
+			
+			#region /*If menu is on quit*/
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Save and Quit", "quit", noone);
+			
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			{
 				menu_delay = 10;
@@ -237,6 +270,120 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on quit END*/
 			
 		}
+		
+		if (menu = "generate_level_map_yes")
+		or (menu = "generate_level_map_no")
+		{
+			
+			#region /*If menu is on generate level map yes*/
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Yes", "generate_level_map_yes", "generate_level_map_yes");
+			
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			{
+				menu_delay = 10;
+				quit_level_editor = false;
+				can_input_level_name = false;
+				pause = false;
+				global.full_level_map_screenshot = true;
+			}
+			if (menu = "generate_level_map_yes")
+			and (can_input_level_name = false)
+			{
+				if (key_up)
+				and (menu_joystick_delay = 0)
+				and (menu_delay = 0)
+				{
+					menu_delay = 1;
+					menu = "generate_level_map_no";
+				}
+				else
+				if (key_down)
+				and (menu_joystick_delay = 0)
+				and (menu_delay = 0)
+				{
+					menu_delay = 1;
+					menu = "generate_level_map_no";
+				}
+				if (key_a_pressed)
+				or(keyboard_check_pressed(vk_enter))
+				{
+					if (menu_delay = 0)
+					{
+						menu_delay = 10;
+						quit_level_editor = false;
+						can_input_level_name = false;
+						pause = false;
+						global.full_level_map_screenshot = true;
+					}
+				}
+				if (key_b_pressed)
+				and (menu_delay = 0)
+				{
+					menu_delay = 10;
+					quit_level_editor = false;
+					can_input_level_name = false;
+					pause = false;
+					menu = "generate_level_map";
+				}
+			}
+			#endregion /*If menu is on generate level map yes END*/
+			
+			#region /*If menu is on generate level map no*/
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "No", "generate_level_map_no", "generate_level_map");
+			
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			{
+				menu_delay = 10;
+				quit_level_editor = false;
+				can_input_level_name = false;
+				pause = true;
+				menu = "generate_level_map";
+			}
+			if (menu = "generate_level_map_no")
+			and (can_input_level_name = false)
+			{
+				if (key_up)
+				and (menu_joystick_delay = 0)
+				and (menu_delay = 0)
+				{
+					menu_delay = 1;
+					menu = "generate_level_map_yes";
+				}
+				else
+				if (key_down)
+				and (menu_joystick_delay = 0)
+				and (menu_delay = 0)
+				{
+					menu_delay = 1;
+					menu = "generate_level_map_yes";
+				}
+				if (key_a_pressed)
+				or(keyboard_check_pressed(vk_enter))
+				{
+					if (menu_delay = 0)
+					{
+						menu_delay = 10;
+						quit_level_editor = false;
+						can_input_level_name = false;
+						pause = true;
+						menu = "generate_level_map";
+					}
+				}
+				if (key_b_pressed)
+				and (menu_delay = 0)
+				{
+					menu_delay = 10;
+					quit_level_editor = false;
+					can_input_level_name = false;
+					pause = true;
+					menu = "generate_level_map";
+				}
+			}
+			#endregion /*If menu is on generate level map no END*/
+			
+		}
 		#endregion /*Make the menu invisible when entering the options menu END*/
 	
 	#region /*PLAYER 1 INPUT LEVEL NAME NOW*/
@@ -271,18 +418,18 @@ if (quit_level_editor = false)
 		#region /*Inputed Name Text*/
 		if (name_enter_blink< 1)
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2-400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2-400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Inputed Name Text END*/
 		
 		#region /*Limit Name Input Length for Level Name*/
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2- 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
 		level_name =keyboard_string;
 		if (string_length(level_name)>32)
 		{
@@ -1296,100 +1443,24 @@ if (quit_level_editor = false)
 	}
 	#endregion /*Play Level Button END*/
 	
-	#region /*Play Level when pressing Enter Key*/
-	if (keyboard_check_pressed(vk_enter))
-	or(gamepad_button_check_pressed(0, gp_select))
-	or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32))
-	and (mouse_check_button_pressed(mb_left))
-	{
-		if (pause = false)
-		and (menu_delay = 0)
-		and (global.character_select_in_this_menu = "level_editor")
-		and (asset_get_type("obj_level_player_1_start") == asset_object)
-		and (asset_get_type("obj_level_player_2_start") == asset_object)
-		and (asset_get_type("obj_level_player_3_start") == asset_object)
-		and (asset_get_type("obj_level_player_4_start") == asset_object)
-		{
-			if (asset_get_type("obj_camera") == asset_object)
-			and (!instance_exists(obj_camera))
-			and (asset_get_type("obj_leveleditor_placed_object") == asset_object)
-			and (!place_meeting(x, y, obj_leveleditor_placed_object))
-			or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32))
-			and (asset_get_type("obj_camera") == asset_object)
-			and (!instance_exists(obj_camera))
-			{
-			
-				#region /*Save Thumbnail*/
-				if (global.select_level_index >= 1)
-				and (global.create_level_from_template = false)
-				{
-					file_delete(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png")
-				}
-				else
-				if (global.level_name != "")
-				{
-					file_delete(working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png")
-				}
-				var thumbnail_sprite;
-				thumbnail_sprite = sprite_create_from_surface(application_surface, camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
-				if (global.select_level_index >= 1)
-				and (global.create_level_from_template = false)
-				{
-					sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png");
-				}
-				else
-				if (global.level_name != "")
-				{
-					sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
-				}
-				sprite_delete(thumbnail_sprite);
-				#endregion /*Save Thumbnail END*/
-			
-				menu_delay = 999; /*Disable all menu control*/
-				instance_activate_all(); /*Activate all instances before saving the custom level*/
-				scr_save_custom_level();
-				if (camera_get_view_width(view_camera[view_current]) < 1920)
-				or(camera_get_view_height(view_camera[view_current]) < 1080)
-				{
-					camera_set_view_size(view_camera[view_current], 1920, 1080);
-				}
-				lives = 5;
-				global.lives_until_assist = 0;
-				global.actually_play_edited_level = false;
-				global.play_edited_level = true;
-				global.character_select_in_this_menu = "level_editor";
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32))
-				{
-					instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_camera);
-				}
-				else
-				{
-					instance_create_depth(x, y, 0, obj_camera);
-				}
-				instance_destroy();
-			}
-		}
-	}
-	#endregion /*Play Level when pressing Enter Key END*/
-	
 	scr_show_fps();
 	
 	#region /*Menu navigation with joystick (This code must come after all menu navigation code)*/
-	if (gamepad_axis_value(0, gp_axislv)<0)
+	if (gamepad_axis_value(0, gp_axislv)< 0)
 	or(gamepad_axis_value(0, gp_axislv) > 0)
-	or(gamepad_axis_value(0, gp_axislh)<0)
+	or(gamepad_axis_value(0, gp_axislh)< 0)
 	or(gamepad_axis_value(0, gp_axislh) > 0)
-	or(gamepad_axis_value(1, gp_axislv)<0)
+	or(gamepad_axis_value(1, gp_axislv)< 0)
 	or(gamepad_axis_value(1, gp_axislv) > 0)
-	or(gamepad_axis_value(1, gp_axislh)<0)
+	or(gamepad_axis_value(1, gp_axislh)< 0)
 	or(gamepad_axis_value(1, gp_axislh) > 0)
-	or(gamepad_axis_value(2, gp_axislv)<0)
+	or(gamepad_axis_value(2, gp_axislv)< 0)
 	or(gamepad_axis_value(2, gp_axislv) > 0)
-	or(gamepad_axis_value(2, gp_axislh)<0)
+	or(gamepad_axis_value(2, gp_axislh)< 0)
 	or(gamepad_axis_value(2, gp_axislh) > 0)
-	or(gamepad_axis_value(3, gp_axislv)<0)
+	or(gamepad_axis_value(3, gp_axislv)< 0)
 	or(gamepad_axis_value(3, gp_axislv) > 0)
-	or(gamepad_axis_value(3, gp_axislh)<0)
+	or(gamepad_axis_value(3, gp_axislh)< 0)
 	or(gamepad_axis_value(3, gp_axislh) > 0)
 	{
 		if (menu_joystick_delay = 0)

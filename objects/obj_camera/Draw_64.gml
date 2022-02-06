@@ -257,8 +257,8 @@ and (!instance_exists(obj_title))
 			{
 				draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
 			}
-			draw_line_width_color(32- 16, hud_show_deaths - 16, 32 + 16, hud_show_deaths+ 16, 3, c_red, c_red);
-			draw_line_width_color(32- 16, hud_show_deaths+ 16, 32 + 16, hud_show_deaths - 16, 3, c_red, c_red);
+			draw_line_width_color(32 - 16, hud_show_deaths - 16, 32 + 16, hud_show_deaths+ 16, 3, c_red, c_red);
+			draw_line_width_color(32 - 16, hud_show_deaths+ 16, 32 + 16, hud_show_deaths - 16, 3, c_red, c_red);
 			draw_text_outlined(64, hud_show_deaths, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Death Counter END*/

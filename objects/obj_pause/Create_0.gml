@@ -22,7 +22,7 @@ if (global.narrator >= 0)
 	voice_options= noone;
 }
 
-pause_text_alpha= 0;
+pause_text_alpha = 0;
 pause_text_lerp = 1;
 menu = "continue";
 menu_delay = 10;

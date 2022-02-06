@@ -27,7 +27,7 @@ and (instance_exists(obj_player))
 			if (instance_nearest(x, y, obj_player).x > x)
 			and (instance_nearest(x, y, obj_player).hspeed >+ 2)
 			{
-				hspeed =instance_nearest(x, y, obj_player).hspeed;
+				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed >+8)
 				{
 					hspeed = +8;
@@ -43,7 +43,7 @@ and (instance_exists(obj_player))
 			if (instance_nearest(x, y, obj_player).x < x)
 			and (instance_nearest(x, y, obj_player).hspeed<- 2)
 			{
-				hspeed =instance_nearest(x, y, obj_player).hspeed;
+				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed<- 8)
 				{
 					hspeed = - 8;
@@ -233,7 +233,7 @@ if (asset_get_type("obj_wall") == asset_object)
 
 #region /*Expanding Ring Effect*/
 effect_time += 1;
-if (effect_time >60)
+if (effect_time > 60)
 {
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);

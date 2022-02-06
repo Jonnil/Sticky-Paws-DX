@@ -12,8 +12,8 @@ enum localization
 	, fr_fr/*French*/
 	,it_it/*Italian*/
 	,hu_hu/*Hungarian*/
-	,nl_nl/*Dutch*/
-	,nb_no/*Norwegian Bokmål*/
+	, nl_nl/*Dutch*/
+	, nb_no/*Norwegian Bokmål*/
 	,pl_pl/*Polish*/
 	,pt_br/*Brazilian Portuguese*/
 	,pt_pt/*Portuguese*/

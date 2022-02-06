@@ -29,7 +29,7 @@ if (asset_get_type("obj_water") == asset_object)
 		image_alpha = lerp(image_alpha, 0, 0.3);
 		gravity = 0;
 		vspeed = 0;
-		if (image_alpha<= 0)
+		if (image_alpha <= 0)
 		{
 			instance_destroy();
 		}

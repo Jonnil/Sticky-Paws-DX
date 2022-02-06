@@ -125,7 +125,7 @@ undo_and_redo_buttons_enabled = false; /*If undo and redo buttons should appear 
 tooltip = "";
 show_tooltip = 0;
 show_grid = false; /*Grid should be false when you start level editor*/
-grid_alpha= 0;
+grid_alpha = 0;
 zoom_in = false; /*When this is true, zoom in*/
 zoom_reset = false; /*When this is true, reset zoom*/
 zoom_out = false; /*When this is true, zoom out*/
@@ -141,11 +141,11 @@ show_undo_redo_icons= false; /*If the undo and redo buttons should show*/
 undo_redo_icons_y = +200; /*Undo and redo buttons y postition*/
 current_undo_value = 0; /*Every time you place down items, this value increases. When you undo, this value decreases.*/
 icons_at_top_y = - 100;
-icons_at_top_alpha= 1;
+icons_at_top_alpha = 1;
 icons_at_left_x =- 64;
 selected_object = 0;
 selected_object_menu_x = 0;
-selected_menu_alpha= 0;
+selected_menu_alpha = 0;
 total_number_of_objects= 0;
 use_controller = false;
 drag_object = false;
@@ -537,7 +537,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	{
 		if (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_write_string("info", "time_countdown",noone);
+			ini_write_string("info", "time_countdown", noone);
 		}
 		global.time_countdown = noone;
 	}
@@ -636,7 +636,7 @@ background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;backgroun
 
 /*HUD Show Controls keys that have been pressed*/
 player1_show_controls_timer = 0;
-player1_show_controls_alpha= 0;
+player1_show_controls_alpha = 0;
 
 #region /*Load Level*/
 

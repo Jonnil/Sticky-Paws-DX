@@ -1,5 +1,5 @@
 /// @function draw_menu_button_sprite(sprite_index, x, y, width, height, string, menu_index, menu_takes_you_to)
-/// @description draw_menu_button_sprite(sprite_index, x, y,width,height,string, menu_index, menu_takes_you_to)
+/// @description draw_menu_button_sprite(sprite_index, x, y, width,height,string, menu_index, menu_takes_you_to)
 /// @param sprite_index
 /// @param x
 /// @param y

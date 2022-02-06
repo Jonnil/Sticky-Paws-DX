@@ -133,8 +133,8 @@ if (place_meeting(x, y- 8, other))
 		}
 		#endregion /* 1-up END*/
 		
-		#region /* 2-up*/
-		if (type_of_bump = "2-up")
+		#region /* 2 -up*/
+		if (type_of_bump = "2 -up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
@@ -148,7 +148,7 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /* 2-up END*/
+		#endregion /* 2 -up END*/
 		
 		#region /* 3 -up*/
 		if (type_of_bump = "3 -up")

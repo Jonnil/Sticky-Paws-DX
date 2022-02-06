@@ -261,38 +261,38 @@ if (bubble = true)
 	if (player <= 1)
 	{
 	gamepad_set_axis_deadzone(0, 0.25);
-	key_up =(keyboard_check(vk_up)) and (!keyboard_check(vk_down))or(keyboard_check(vk_numpad8)) and (!keyboard_check(vk_numpad2))or(keyboard_check(ord("W"))) and (!keyboard_check(ord("S")))or(gamepad_button_check(0, gp_padu)) and (!gamepad_button_check(0, gp_padd))or(gamepad_axis_value(0, gp_axislv)<0);
-	key_left =(keyboard_check(vk_left)) and (!keyboard_check(vk_right))or(keyboard_check(vk_numpad4)) and (!keyboard_check(vk_numpad6))or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D")))or(gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr))or(gamepad_axis_value(0, gp_axislh)<0);
+	key_up =(keyboard_check(vk_up)) and (!keyboard_check(vk_down))or(keyboard_check(vk_numpad8)) and (!keyboard_check(vk_numpad2))or(keyboard_check(ord("W"))) and (!keyboard_check(ord("S")))or(gamepad_button_check(0, gp_padu)) and (!gamepad_button_check(0, gp_padd))or(gamepad_axis_value(0, gp_axislv)< 0);
+	key_left =(keyboard_check(vk_left)) and (!keyboard_check(vk_right))or(keyboard_check(vk_numpad4)) and (!keyboard_check(vk_numpad6))or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D")))or(gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr))or(gamepad_axis_value(0, gp_axislh)< 0);
 	key_right =(keyboard_check(vk_right)) and (!keyboard_check(vk_left))or(keyboard_check(vk_numpad6)) and (!keyboard_check(vk_numpad4))or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A")))or(gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
 	key_down =(keyboard_check(vk_down)) and (!keyboard_check(vk_up))or(keyboard_check(vk_numpad2)) and (!keyboard_check(vk_numpad8))or(keyboard_check(ord("S"))) and (!keyboard_check(ord("W")))or(gamepad_button_check(0, gp_padd)) and (!gamepad_button_check(0, gp_padu))or(gamepad_axis_value(0, gp_axislv) > 0);
-	key_a=(global.controls_layout = 1) and (gamepad_button_check_pressed(0, gp_face1))or(gamepad_button_check_pressed(0, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(0, gp_face3))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
+	key_a =(global.controls_layout = 1) and (gamepad_button_check_pressed(0, gp_face1))or(gamepad_button_check_pressed(0, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(0, gp_face3))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
 	}
 	if (player = 2)
 	{
 	gamepad_set_axis_deadzone(1, 0.25);
-	key_up =(gamepad_button_check(1, gp_padu)) and (!gamepad_button_check(1, gp_padd))or(gamepad_axis_value(1, gp_axislv)<0);
-	key_left =(gamepad_button_check(1, gp_padl)) and (!gamepad_button_check(1, gp_padr))or(gamepad_axis_value(1, gp_axislh)<0);
+	key_up =(gamepad_button_check(1, gp_padu)) and (!gamepad_button_check(1, gp_padd))or(gamepad_axis_value(1, gp_axislv)< 0);
+	key_left =(gamepad_button_check(1, gp_padl)) and (!gamepad_button_check(1, gp_padr))or(gamepad_axis_value(1, gp_axislh)< 0);
 	key_right =(gamepad_button_check(1, gp_padr)) and (!gamepad_button_check(1, gp_padl))or(gamepad_axis_value(1, gp_axislh) > 0);
 	key_down =(gamepad_button_check(1, gp_padd)) and (!gamepad_button_check(1, gp_padu))or(gamepad_axis_value(1, gp_axislv) > 0);
-	key_a=(global.controls_layout = 1) and (gamepad_button_check_pressed(1, gp_face1))or(gamepad_button_check_pressed(1, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(1, gp_face3));
+	key_a =(global.controls_layout = 1) and (gamepad_button_check_pressed(1, gp_face1))or(gamepad_button_check_pressed(1, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(1, gp_face3));
 	}
 	if (player = 3)
 	{
 	gamepad_set_axis_deadzone(2, 0.25);
-	key_up =(gamepad_button_check(2, gp_padu)) and (!gamepad_button_check(2, gp_padd))or(gamepad_axis_value(2, gp_axislv)<0);
-	key_left =(gamepad_button_check(2, gp_padl)) and (!gamepad_button_check(2, gp_padr))or(gamepad_axis_value(2, gp_axislh)<0);
+	key_up =(gamepad_button_check(2, gp_padu)) and (!gamepad_button_check(2, gp_padd))or(gamepad_axis_value(2, gp_axislv)< 0);
+	key_left =(gamepad_button_check(2, gp_padl)) and (!gamepad_button_check(2, gp_padr))or(gamepad_axis_value(2, gp_axislh)< 0);
 	key_right =(gamepad_button_check(2, gp_padr)) and (!gamepad_button_check(2, gp_padl))or(gamepad_axis_value(2, gp_axislh) > 0);
 	key_down =(gamepad_button_check(2, gp_padd)) and (!gamepad_button_check(2, gp_padu))or(gamepad_axis_value(2, gp_axislv) > 0);
-	key_a=(global.controls_layout = 1) and (gamepad_button_check_pressed(2, gp_face1))or(gamepad_button_check_pressed(2, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(2, gp_face3));
+	key_a =(global.controls_layout = 1) and (gamepad_button_check_pressed(2, gp_face1))or(gamepad_button_check_pressed(2, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(2, gp_face3));
 	}
 	if (player = 4)
 	{
 	gamepad_set_axis_deadzone(3, 0.25);
-	key_up =(gamepad_button_check(3, gp_padu)) and (!gamepad_button_check(3, gp_padd))or(gamepad_axis_value(3, gp_axislv)<0);
-	key_left =(gamepad_button_check(3, gp_padl)) and (!gamepad_button_check(3, gp_padr))or(gamepad_axis_value(3, gp_axislh)<0);
+	key_up =(gamepad_button_check(3, gp_padu)) and (!gamepad_button_check(3, gp_padd))or(gamepad_axis_value(3, gp_axislv)< 0);
+	key_left =(gamepad_button_check(3, gp_padl)) and (!gamepad_button_check(3, gp_padr))or(gamepad_axis_value(3, gp_axislh)< 0);
 	key_right =(gamepad_button_check(3, gp_padr)) and (!gamepad_button_check(3, gp_padl))or(gamepad_axis_value(3, gp_axislh) > 0);
 	key_down =(gamepad_button_check(3, gp_padd)) and (!gamepad_button_check(3, gp_padu))or(gamepad_axis_value(3, gp_axislv) > 0);
-	key_a=(global.controls_layout = 1) and (gamepad_button_check_pressed(3, gp_face1))or(gamepad_button_check_pressed(3, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(3, gp_face3));
+	key_a =(global.controls_layout = 1) and (gamepad_button_check_pressed(3, gp_face1))or(gamepad_button_check_pressed(3, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(3, gp_face3));
 	}
 	#endregion /*Customisable keyboard array END*/
 

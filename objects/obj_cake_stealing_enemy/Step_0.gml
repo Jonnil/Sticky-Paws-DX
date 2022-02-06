@@ -9,7 +9,6 @@ else
 {
 	gravity = 0;
 }
-
 if (asset_get_type("obj_semisolid_platform") == asset_object)
 {
 	if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -55,6 +54,15 @@ if (cutscene = 0)
 else
 if (cutscene = 1) /*When placed in level, use this cutscene value*/
 {
+	if (global.character_select_in_this_menu = "main_game")
+	{
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		if (ini_read_real("Player", "beat_last_level", false) = true)
+		{
+			instance_destroy();
+		}
+		ini_close();
+	}
 	if (instance_exists(obj_player))
 	and (distance_to_object(obj_player) < 256)
 	or (instance_exists(obj_player))

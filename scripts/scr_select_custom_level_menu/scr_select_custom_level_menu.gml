@@ -411,7 +411,7 @@ function scr_select_custom_level_menu()
 		#region /*Pressing the Make button*/
 		if (menu = "level_editor_make")
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522-3, 394 *(global.select_level_index-C*R) + 110 -3+ 370, 226*(C-scroll) +522-3+ 42))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522 -3, 394 *(global.select_level_index-C*R) + 110 -3+ 370, 226*(C-scroll) +522 -3+ 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			or(key_a_pressed)
@@ -463,7 +463,7 @@ function scr_select_custom_level_menu()
 		if (key_a_pressed)
 		and (can_input_level_name = false)
 		and (menu_delay = 0)
-		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522-3, 394 *(global.select_level_index-C*R) + 110 -3+ 320, 226*(C-scroll) +522-3+ 42))
+		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522 -3, 394 *(global.select_level_index-C*R) + 110 -3+ 320, 226*(C-scroll) +522 -3+ 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		and (can_input_level_name = false)
@@ -525,7 +525,7 @@ function scr_select_custom_level_menu()
 			{
 				draw_rectangle_color(394 *(global.select_level_index-C*R) + 100 -3, 226*(C-scroll) + 455-3, 394 *(global.select_level_index-C*R) + 100 + 384 + 3, 226*(C-scroll) + 408+ 216+ 47+ 3, c_white, c_white, c_white, c_white, false);
 				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) + 475-3, "Play", "level_editor_play", "level_editor_play");
-				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522-3, "Make", "level_editor_make", "level_editor_make"); /*+ 47 on y*/
+				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522 -3, "Make", "level_editor_make", "level_editor_make"); /*+ 47 on y*/
 				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +569 -3, "Delete", "level_editor_delete", "level_editor_delete_no");
 				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) + 616-3, "Back", "level_editor_selected_back", "level_editor_selected_back");
 			}
@@ -536,7 +536,7 @@ function scr_select_custom_level_menu()
 			{
 				draw_rectangle_color(394 *(global.select_level_index-C*R) + 100 -3, 226*(C-scroll) + 455-3, 394 *(global.select_level_index-C*R) + 100 + 384 + 3, 226*(C-scroll) + 408+ 216+ 3, c_white, c_white, c_white, c_white, false);
 				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) + 475-3, "Create from Scratch", "level_editor_create_from_scratch", "level_editor_create_from_scratch");
-				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522-3, "Create from Template", "level_editor_create_from_template", "level_editor_create_from_template"); /*+ 47 on y*/
+				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522 -3, "Create from Template", "level_editor_create_from_template", "level_editor_create_from_template"); /*+ 47 on y*/
 				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +569 -3, "Back", "level_editor_create_from_back", "level_editor_create_from_back");
 			}
 			else
@@ -547,7 +547,7 @@ function scr_select_custom_level_menu()
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_center);
 				draw_text_outlined(394 *(global.select_level_index-C*R) + 300 -3, 226*(C-scroll) + 485-3, "Delete Level?", global.default_text_size * 1.2, c_white, c_black, 1);
-				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522-3, "No", "level_editor_delete_no", "level_editor_delete"); /*+ 47 on y*/
+				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +522 -3, "No", "level_editor_delete_no", "level_editor_delete"); /*+ 47 on y*/
 				draw_menu_button(394 *(global.select_level_index-C*R) + 110 -3, 226*(C-scroll) +569 -3, "Yes", "level_editor_delete_yes", "level_editor_delete_yes");
 			}
 		}
