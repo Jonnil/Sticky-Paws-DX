@@ -11,6 +11,7 @@ or(!file_exists(working_directory + "save_files/file" + string(current_file) + "
 
 #region /*Save whole level as screenshot png file*/
 if (global.full_level_map_screenshot = true)
+and (full_level_map_screenshot_timer <= 0)
 {
 	instance_activate_all();
 	
@@ -30,12 +31,10 @@ if (global.full_level_map_screenshot = true)
 	window_set_rectangle(0, 0, room_width, room_height);
 	full_level_map_screenshot_timer = 1;
 }
-
 if (full_level_map_screenshot_timer >= 1)
 {
 	full_level_map_screenshot_timer += 1;
 }
-
 if (full_level_map_screenshot_timer = 10)
 {
 	var custom_level_map_sprite;
@@ -43,7 +42,6 @@ if (full_level_map_screenshot_timer = 10)
 	sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
 	sprite_delete(custom_level_map_sprite);
 }
-
 if (full_level_map_screenshot_timer = 15)
 {
 	camera_set_view_border(view_camera[view_current], 1920, 1080); /*View Border*/
@@ -55,6 +53,8 @@ if (full_level_map_screenshot_timer = 15)
 	scr_set_screen_size();
 	instance_create_depth(x, y, 0, obj_camera);
 	global.full_level_map_screenshot = false;
+	global.actually_play_edited_level = false;
+	global.play_edited_level = false;
 	full_level_map_screenshot_timer = 0;
 	room_restart();
 }

@@ -12,12 +12,24 @@ draw_line_width_color(camera_get_view_x(view_camera[0]), 0, camera_get_view_x(vi
 draw_line_width_color(camera_get_view_x(view_camera[0]), 0, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), 0, 2, c_black, c_black);
 
 /*Level Height Line*/
-draw_line_width_color(camera_get_view_x(view_camera[0]), obj_level_height.y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), obj_level_height.y - 16, 4, c_white, c_white);
-draw_line_width_color(camera_get_view_x(view_camera[0]), obj_level_height.y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), obj_level_height.y - 16, 2, c_black, c_black);
+if (instance_exists(obj_level_height))
+{
+	draw_line_width_color(camera_get_view_x(view_camera[0]), obj_level_height.y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), obj_level_height.y - 16, 4, c_white, c_white);
+}
+if (instance_exists(obj_level_height))
+{
+	draw_line_width_color(camera_get_view_x(view_camera[0]), obj_level_height.y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), obj_level_height.y - 16, 2, c_black, c_black);
+}
 
 /*Level Width Line*/
-draw_line_width_color(obj_level_width.x - 16, camera_get_view_y(view_camera[0]), obj_level_width.x - 16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), 4, c_white, c_white);
-draw_line_width_color(obj_level_width.x - 16, camera_get_view_y(view_camera[0]), obj_level_width.x - 16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), 2, c_black, c_black);
+if (instance_exists(obj_level_width))
+{
+	draw_line_width_color(obj_level_width.x - 16, camera_get_view_y(view_camera[0]), obj_level_width.x - 16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), 4, c_white, c_white);
+}
+if (instance_exists(obj_level_width))
+{
+	draw_line_width_color(obj_level_width.x - 16, camera_get_view_y(view_camera[0]), obj_level_width.x - 16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), 2, c_black, c_black);
+}
 
 #region /*Set what controls are used to navigate the menus*/
 
@@ -424,8 +436,14 @@ if (quit_level_editor <= 0)
 	}
 	#endregion /*Draw Vertical Line in the Grid END*/
 	
-	draw_line_width_color(0, obj_level_height.y/ 2, room_width, obj_level_height.y/ 2, grid_width + 1, c_purple, c_purple); /*Draw Horizontal Line in the middle of the level*/
-	draw_line_width_color(obj_level_width.x/ 2, 0, obj_level_width.x/ 2, room_height, grid_width + 1, c_purple, c_purple); /*Draw Vertical Line in the middle of the level*/
+	if (instance_exists(obj_level_height))
+	{
+		draw_line_width_color(0, obj_level_height.y/ 2, room_width, obj_level_height.y/ 2, grid_width + 1, c_purple, c_purple); /*Draw Horizontal Line in the middle of the level*/
+	}
+	if (instance_exists(obj_level_width))
+	{
+		draw_line_width_color(obj_level_width.x/ 2, 0, obj_level_width.x/ 2, room_height, grid_width + 1, c_purple, c_purple); /*Draw Vertical Line in the middle of the level*/
+	}
 }
 
 draw_set_alpha(1);

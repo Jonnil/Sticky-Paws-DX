@@ -52,6 +52,7 @@ if (quit_level_editor = false)
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, window_get_width()/ 2 + 185, window_get_height()/ 2 -42))
 			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay = 0)
 			{
 				menu_delay = 10;
 				quit_level_editor = false;
@@ -104,6 +105,7 @@ if (quit_level_editor = false)
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 -42, window_get_width()/ 2 + 185, window_get_height()/ 2))
 			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay = 0)
 			{
 				quit_level_editor = false;
 				can_input_level_name = false;
@@ -132,7 +134,7 @@ if (quit_level_editor = false)
 				and (menu_delay = 0)
 				{
 					menu_delay = 1;
-					menu = "quit";
+					menu = "generate_level_map";
 				}
 				if (key_a_pressed)
 				or(keyboard_check_pressed(vk_enter))
@@ -167,6 +169,7 @@ if (quit_level_editor = false)
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay = 0)
 			{
 				menu_delay = 10;
 				quit_level_editor = false;
@@ -174,7 +177,7 @@ if (quit_level_editor = false)
 				pause = true;
 				menu = "generate_level_map_yes";
 			}
-			if (menu = "continue")
+			if (menu = "generate_level_map")
 			and (can_input_level_name = false)
 			{
 				if (key_up)
@@ -182,7 +185,7 @@ if (quit_level_editor = false)
 				and (menu_delay = 0)
 				{
 					menu_delay = 1;
-					menu = "quit";
+					menu = "options";
 				}
 				else
 				if (key_down)
@@ -190,7 +193,7 @@ if (quit_level_editor = false)
 				and (menu_delay = 0)
 				{
 					menu_delay = 1;
-					menu = "options";
+					menu = "quit";
 				}
 				if (key_a_pressed)
 				or(keyboard_check_pressed(vk_enter))
@@ -221,6 +224,7 @@ if (quit_level_editor = false)
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay = 0)
 			{
 				menu_delay = 10;
 				quit_level_editor = true;
@@ -236,7 +240,7 @@ if (quit_level_editor = false)
 				and (menu_delay = 0)
 				{
 					menu_delay = 1;
-					menu = "options";
+					menu = "generate_level_map";
 				}
 				else
 				if (key_down)
@@ -270,16 +274,18 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on quit END*/
 			
 		}
-		
+		else
 		if (menu = "generate_level_map_yes")
 		or (menu = "generate_level_map_no")
 		{
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 128, "A map of the whole level will be generated and saved in\nAppData/Local/Sticky_Paws_DX/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png\nWith this map, you can then use it in a drawing program, as the base to make the background and foreground layers.\n\nDo you want to generate level map?", global.default_text_size, c_black, c_white, 1);
 			
 			#region /*If menu is on generate level map yes*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Yes", "generate_level_map_yes", "generate_level_map_yes");
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay = 0)
 			{
 				menu_delay = 10;
 				quit_level_editor = false;
@@ -323,17 +329,18 @@ if (quit_level_editor = false)
 					menu_delay = 10;
 					quit_level_editor = false;
 					can_input_level_name = false;
-					pause = false;
+					pause = true;
 					menu = "generate_level_map";
 				}
 			}
 			#endregion /*If menu is on generate level map yes END*/
 			
 			#region /*If menu is on generate level map no*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "No", "generate_level_map_no", "generate_level_map");
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "No", "generate_level_map_no", "generate_level_map");
 			
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay = 0)
 			{
 				menu_delay = 10;
 				quit_level_editor = false;
@@ -1297,6 +1304,7 @@ if (quit_level_editor = false)
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, - 64, + 64, + 64))
 	and (erase_mode = true)
 	and (mouse_check_button_pressed(mb_left))
+	and (menu_delay = 0)
 	{
 		erase_brush_size = 5;
 	}
@@ -1307,6 +1315,7 @@ if (quit_level_editor = false)
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 64, - 64, + 128, + 64))
 	and (erase_mode = true)
 	and (mouse_check_button_pressed(mb_left))
+	and (menu_delay = 0)
 	{
 		erase_brush_size = 4;
 	}
@@ -1317,6 +1326,7 @@ if (quit_level_editor = false)
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 128, - 64, + 192, + 64))
 	and (erase_mode = true)
 	and (mouse_check_button_pressed(mb_left))
+	and (menu_delay = 0)
 	{
 		erase_brush_size = 3;
 	}
@@ -1327,6 +1337,7 @@ if (quit_level_editor = false)
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 192, - 64, + 256, + 64))
 	and (erase_mode = true)
 	and (mouse_check_button_pressed(mb_left))
+	and (menu_delay = 0)
 	{
 		erase_brush_size = 2;
 	}
@@ -1337,6 +1348,7 @@ if (quit_level_editor = false)
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 256, - 64, + 320, + 64))
 	and (erase_mode = true)
 	and (mouse_check_button_pressed(mb_left))
+	and (menu_delay = 0)
 	{
 		erase_brush_size = 1;
 	}
@@ -1344,7 +1356,10 @@ if (quit_level_editor = false)
 
 	#region /*Erase 1*/
 	else
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 320, - 64, + 384, + 64)) and (erase_mode = true) and (mouse_check_button_pressed(mb_left))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 320, - 64, + 384, + 64))
+	and (erase_mode = true)
+	and (mouse_check_button_pressed(mb_left))
+	and (menu_delay = 0)
 	{
 		erase_brush_size = 0;
 	}
