@@ -7,7 +7,7 @@ and (!instance_exists(obj_title))
 	
 	#region /*Show HUD timers*/
 	
-	#region /*If HUD show timer is set to always hide*/
+	#region /* if HUD show timer is set to always hide*/
 	if (global.hud_hide_time <= 0)
 	or(show_letterbox > 0)
 	{
@@ -17,9 +17,9 @@ and (!instance_exists(obj_title))
 		global.hud_show_basic_collectibles = false;
 		global.hud_show_score = false;
 	}
-	#endregion /*If HUD show timer is set to always hide*/
+	#endregion /* if HUD show timer is set to always hide*/
 	
-	#region /*If HUD show timer is set to never hide*/
+	#region /* if HUD show timer is set to never hide*/
 	if (global.hud_hide_time >= 10)
 	{
 		global.hud_show_lives = true;
@@ -31,7 +31,7 @@ and (!instance_exists(obj_title))
 		global.hud_show_basic_collectibles = true;
 		global.hud_show_score = true;
 	}
-	#endregion /*If HUD show timer is set to never hide*/
+	#endregion /* if HUD show timer is set to never hide*/
 	
 	if (global.hud_hide_time >= 10)
 	{

@@ -3,6 +3,7 @@ image_xscale = -1;
 draw_xscale = 1;
 draw_yscale = 1;
 flat = false;
+stomped_delay = 0;
 die = false;
 die_volting = false;
 mask = spr_big_stationary_enemy;

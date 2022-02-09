@@ -13,7 +13,7 @@ if (skip > 0)
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
 
-#region /*If gamepad is connected*/
+#region /* if gamepad is connected*/
 if (gamepad_is_connected(0))
 and (global.player1_can_play = true)
 and (global.controls_used_for_menu_navigation = "controller")
@@ -29,28 +29,28 @@ and (global.controls_used_for_menu_navigation = "controller")
 {
 	draw_text_outlined(window_get_width() - 16, 0, "Skip: Hold Start", global.default_text_size, c_black, c_white, 1);
 }
-#endregion /*If gamepad is connected END*/
+#endregion /* if gamepad is connected END*/
 
 else
 
-#region /*If playing on mobile*/
+#region /* if playing on mobile*/
 if (os_type == os_ios)
 or(os_type == os_android)
 {
 	draw_text_outlined(window_get_width() - 16, 0, "Skip: Press and Hold Screen", global.default_text_size, c_black, c_white, 1);
 }
-#endregion /*If playing on mobile END*/
+#endregion /* if playing on mobile END*/
 
 else
 
-#region /*If playing on Keyboard*/
+#region /* if playing on Keyboard*/
 if (global.controls_used_for_menu_navigation = "keyboard")
 or (global.controls_used_for_menu_navigation = "mouse")
 {
 	draw_menu_button(window_get_width() - 370, 0, "Skip: Hold", "skip", "skip")
 	draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() - 96, 21, 0.5, 0.5, 0, c_white, 1);
 }
-#endregion /*If playing on Keyboard*/
+#endregion /* if playing on Keyboard*/
 
 if (global.controls_used_for_menu_navigation = "mouse")
 {
@@ -173,7 +173,7 @@ if (time >= room_speed* 5)
 
 #region /*Draw Iris Transitions*/
 
-#region /*Iris Zooming*/
+#region /* iris Zooming*/
 if (menu_delay > 10)
 {
 	if (iris_zoom = 1)
@@ -219,7 +219,7 @@ else
 }
 #endregion /*Zoom Out END*/
 
-#endregion /*Iris Zooming END*/
+#endregion /* iris Zooming END*/
 
 if (global.enable_transitions = true)
 {
@@ -239,7 +239,7 @@ if (global.enable_transitions = true)
 
 if (instance_number(obj_credits) > 1)
 {
-	instance_destroy(); /*If there is more than 1 credits, destroy itself*/
+	instance_destroy(); /* if there is more than 1 credits, destroy itself*/
 }
 
 #region /*Draw mouse cursor for menu navigation*/

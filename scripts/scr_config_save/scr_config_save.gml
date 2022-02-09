@@ -13,9 +13,9 @@ function scr_config_save()
 	ini_write_real("config", "show_timer", global.show_timer);
 	ini_write_real("config", "show_deaths_counter", global.show_deaths_counter);
 	ini_write_real("config", "custom_level_load_delay", global.custom_level_load_delay);
-	ini_write_real("config", "activate_cheats", global.activate_cheats);
-	ini_write_real("config", "enable_enemies", global.enable_enemies);
-	ini_write_real("config", "enable_spikes", global.enable_spikes);
+	ini_write_real("config", "assist_enable", global.assist_enable);
+	ini_write_real("config", "assist_enable_enemies", global.assist_enable_enemies);
+	ini_write_real("config", "assist_enable_spikes", global.assist_enable_spikes);
 	ini_write_real("config", "narrator", global.narrator);
 	ini_write_real("config", "show_tutorial_signs", global.show_tutorial_signs);
 	ini_write_real("config", "hud_hide_time", global.hud_hide_time);

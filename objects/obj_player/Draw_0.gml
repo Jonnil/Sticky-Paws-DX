@@ -7,12 +7,12 @@
 //draw_text_outlined(x, y - 64, "character for player 2: " + string(global.character_for_player_2), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x, y - 64, "Overflow HP: " + string(overflow_hp) + "/" + string(max_overflow_hp), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x, y - 64,string(global.character_select_in_this_menu), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32,y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32,y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32,y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32,y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32,y - 64, string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32,y - 128, string(global.player1_can_play), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32, y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32, y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32, y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32, y - 64, string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x-32, y - 128, string(global.player1_can_play), global.default_text_size, c_white, c_black, 1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)
@@ -75,28 +75,28 @@ if (y <camera_get_view_y(view_camera[view_current]))
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 			}
 		}
 		else
 		{
 			if (invincible%20 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 			}
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
+		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside top view END*/
@@ -119,28 +119,28 @@ and (y <room_height)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 			}
 		}
 		else
 		{
 			if (invincible%20 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, c_black, image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 			}
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32,draw_xscale * default_xscale / 2*sign(image_xscale),draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
+		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2,angle, image_blend, image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside bottom view END*/
@@ -148,9 +148,9 @@ and (y <room_height)
 #region /*Get 1-up if you get 100 basic collectibles*/
 if (global.basic_collectibles>99)
 {
-	global.basic_collectibles= 0;
+	global.basic_collectibles = 0;
 	lives+= 1; /* 1-UP*/
-	global.hud_show_lives= true;
+	global.hud_show_lives = true;
 	if (instance_exists(obj_camera))
 	{
 		with(obj_camera)
@@ -249,26 +249,26 @@ and (sprite_index > 0)
 and (intro_animation = "")
 and (invincible < 60)
 {
-	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8,+8),yy+random_range(- 8,+8),draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8,+8), yy+random_range(- 8,+8), draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale,angle, c_red, image_alpha);
 }
 else
 if (takendamage%2 == 0)
 and (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale,angle, image_blend, image_alpha);
 	if (hp <= 1)
 	and (max_hp >= 2)
 	and (invincible < 60)
 	{
-		draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_red, 0.1);
+		draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale,angle, c_red, 0.1);
 	}
 }
 else
 if (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, 0.5);
+	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale,angle, image_blend, 0.5);
 }
 #endregion /*Blink red when only having 1 HP left and no heart balloon END*/
 
@@ -325,12 +325,12 @@ if (effect_speedspark_subimg < 4)
 }
 #endregion /*Running Sparks Effect END*/
 
-#region /*Invinsible*/
+#region /* invinsible*/
 if (assist_invincible = false)
 {
 	if (invincible > 0)
 	{
-		invincible-= 1;
+		invincible -= 1;
 	}
 	if (invincible > 60)
 	and (sprite_index > 0)
@@ -339,22 +339,22 @@ if (assist_invincible = false)
 		{
 			if (invincible%2 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_black, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale,angle, c_black, image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale,angle, image_blend, image_alpha);
 			}
 		}
 		else
 		{
 			if (invincible%20 == 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, c_black, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale,angle, c_black, image_alpha);
 			}
 			else
 			{
-				draw_sprite_ext(sprite_index, image_index, xx, yy,draw_xscale * default_xscale *sign(image_xscale),draw_yscale * default_yscale,angle, image_blend, image_alpha);
+				draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale,angle, image_blend, image_alpha);
 			}
 		}
 	}
@@ -364,16 +364,16 @@ if (invincible > 60)
 {
 	if (floor(random(10 - 1))= 0)
 	{
-		effect_create_above(ef_star, x +random_range(- 50,+50),y+random_range(- 50,+50), 0, c_white);
+		effect_create_above(ef_star, x +random_range(- 50,+50), y+random_range(- 50,+50), 0, c_white);
 	}
 }
-#endregion /*Invinsible END*/
+#endregion /* invinsible END*/
 
 #region /*Don't make it look like the player is teleporting when the player teleports*/
 if (smooth_teleport< 1)
 {
 	xx = lerp(xx, x,smooth_teleport);
-	yy = lerp(yy,y,smooth_teleport);
+	yy = lerp(yy, y,smooth_teleport);
 	smooth_teleport += 0.1;
 }
 else
@@ -381,12 +381,12 @@ if (stomp_spin = true)
 or(spring = true)
 {
 	xx = lerp(xx, x, 0.4);
-	yy = lerp(yy,y, 0.4);
+	yy = lerp(yy, y, 0.4);
 }
 else
 {
 	xx = lerp(xx, x, 1);
-	yy = lerp(yy,y, 1);
+	yy = lerp(yy, y, 1);
 }
 #endregion /*Don't make it look like the player is teleporting when the player teleports END*/
 
@@ -461,8 +461,8 @@ if (allow_homing_attack = true)
 #endregion /*Homing Attack END*/
 
 #region /*Display Player Number and Name*/
-if (instance_number(obj_player)>= 2) /*If there is more than 1 player*/
-or(instance_number(obj_player_die)>= 1) /*If there is any other player die object*/
+if (instance_number(obj_player)>= 2) /* if there is more than 1 player*/
+or(instance_number(obj_player_die)>= 1) /* if there is any other player die object*/
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
@@ -513,20 +513,20 @@ or(instance_number(obj_player_die)>= 1) /*If there is any other player die objec
 }
 #endregion /*Display Player Number and Name END*/
 
-#region /*If player has more hp, show that*/
+#region /* if player has more hp, show that*/
 if (hp > 0)
 and (global.assist_enable = true)
 and (global.assist_invincible = false)
 or(hp > 0)
 and (global.assist_enable = false)
 {
-	if (max_hp = 2) /*If there is only max 2 hp and there is no panting sprite, display HP*/
+	if (max_hp = 2) /* if there is only max 2 hp and there is no panting sprite, display HP*/
 	and (sprite_panting = noone)
-	or(max_hp >= 3) /*If there is more than max 3 hp, always display HP*/
+	or(max_hp >= 3) /* if there is more than max 3 hp, always display HP*/
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		draw_text_outlined(x, bbox_top-32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(x, bbox_top -32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size, c_white, c_black, 1);
 	}
 }
-#endregion /*If player has more hp, show that END*/
+#endregion /* if player has more hp, show that END*/

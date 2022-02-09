@@ -1,39 +1,34 @@
-depth = +9;
-
-#region /*If enemies are disabled, destroy this object*/
-if (global.activate_cheats = true)
-and (global.enable_enemies = false)
+#region /* if enemies are disabled, destroy this object*/
+if (global.assist_enable = true)
+and (global.assist_enable_enemies = false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object END*/
+#endregion /* if enemies are disabled, destroy this object END*/
 
 if (die_volting = -1)
 or(die_volting = +1)
 {
 	depth = -900;
-	if (die_volting = -1)
+	if (die_volting = - 1)
 	{
-		image_angle -= 20;
+		draw_angle -= 20;
 		hspeed = +4;
 	}
 	else
 	{
-		image_angle += 20;
+		draw_angle += 20;
 		hspeed = -4;
 	}
-	
 	#region /*Set the gravity*/
 	gravity_direction = 270; /*Direction of the gravity*/
 	gravity = 0.5; /*The gravity*/
 	#endregion /*Set the gravity END*/
 	
-	sprite_used = "stand";
-	sprite_index = global.resourcepack_sprite_big_stationary_enemy;
 }
 else
 {
-
+	
 	#region /*Set the gravity*/
 	gravity_direction = 270; /*Direction of the gravity*/
 	if (asset_get_type("obj_wall") == asset_object)
@@ -59,47 +54,73 @@ else
 	
 	if (flat = true)
 	{
-		speed = 0;
-		if (image_index > image_number - 1)
-		{
-			image_speed = 0;
-		}
-		else
-		{
-			image_speed = 0.5;
-		}
+		image_speed = 0.5;
 		sprite_used = "flattened";
-		sprite_index = global.resourcepack_sprite_big_stationary_enemy_flattened;
-		if (image_index > image_number - 1)
+		sprite_index = global.resourcepack_sprite_enemy_bowlingball_stomped;
+		
+		if (stomped_delay > 0)
 		{
-			effect_create_above(ef_smoke, x, y, 2, c_white);
-			instance_destroy();
+			stomped_delay -= 1;
 		}
+	}
+}
+if (flat = false)
+{
+	if (image_xscale < 0)
+	{
+		hspeed = - 1;
 	}
 	else
 	{
-		sprite_used = "stand";
-		sprite_index = global.resourcepack_sprite_big_stationary_enemy;
+		hspeed = +1;
+	}
+	
+	#region /*Turn around*/
+	if (position_meeting(bbox_left - 1, y, obj_wall))
+	and (flat = false)
+	{
+		image_xscale = +1;
+	}
+	if (position_meeting(bbox_right + 1, y, obj_wall))
+	and (flat = false)
+	{
+		image_xscale = -1;
+	}
+	#endregion /*Turn around END*/
+	
+	sprite_index = global.resourcepack_sprite_enemy_bowlingball_walk;
+	image_speed = 0.3;
+}
+
+if (sliding_along_ground = -1)
+and (flat = true)
+and (die = false)
+{
+	hspeed = -sliding_along_ground_speed;
+	draw_angle += 10;
+	if (position_meeting(bbox_left - 1, y, obj_wall))
+	{
+		sliding_along_ground = +1;
 	}
 }
-mask_index = mask;
-
-if (asset_get_type("obj_player") == asset_object)
+else
+if (sliding_along_ground = +1)
+and (flat = true)
+and (die = false)
 {
-	if (instance_number(obj_player) > 0)
+	hspeed = +sliding_along_ground_speed;
+	draw_angle -= 10;
+	if (position_meeting(bbox_right + 1, y, obj_wall))
 	{
-		if (die = false)
-		{
-			if (instance_nearest(x, y, obj_player).x < x)
-			{
-				image_xscale = -1;
-			}
-			else
-			{
-				image_xscale = +1;
-			}
-		}
+		sliding_along_ground = -1;
 	}
+}
+else
+if (sliding_along_ground = 0)
+and (flat = true)
+and (die = false)
+{
+	hspeed = 0;
 }
 
 #region /*Kill enemy if it's inside the wall*/

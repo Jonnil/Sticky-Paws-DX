@@ -22,20 +22,20 @@ if (asset_get_type("obj_wall") == asset_object)
 	#endregion /*Add walls down outide view END*/
 
 	#region /*Add walls left outide view*/
-	if (!position_meeting(x-sprite_width,y, obj_wall))
+	if (!position_meeting(x-sprite_width, y, obj_wall))
 	and (x<= 0)
 	{
-		instance_create_depth(x-sprite_width,y, 0, obj_wall);
-		instance_create_depth(x-sprite_width* 2,y, 0, obj_wall);
+		instance_create_depth(x-sprite_width, y, 0, obj_wall);
+		instance_create_depth(x-sprite_width* 2, y, 0, obj_wall);
 	}
 	#endregion /*Add walls left outide view END*/
 
 	#region /*Add walls right outide view*/
-	if (!position_meeting(x + sprite_width,y, obj_wall))
+	if (!position_meeting(x + sprite_width, y, obj_wall))
 	and (x >=room_width)
 	{
-		instance_create_depth(x + sprite_width,y, 0, obj_wall);
-		instance_create_depth(x + sprite_width* 2,y, 0, obj_wall);
+		instance_create_depth(x + sprite_width, y, 0, obj_wall);
+		instance_create_depth(x + sprite_width* 2, y, 0, obj_wall);
 	}
 	#endregion /*Add walls right outide view END*/
 	

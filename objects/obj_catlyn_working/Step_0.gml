@@ -36,7 +36,7 @@ and (global.player3_can_play = true)
 or(global.character_for_player_4 = "Catlyn")
 and (global.player4_can_play = true)
 {
-	image_alpha = 0; /*If anyone is playing as Catlyn, make it invisible*/
+	image_alpha = 0; /* if anyone is playing as Catlyn, make it invisible*/
 }
 else
 {

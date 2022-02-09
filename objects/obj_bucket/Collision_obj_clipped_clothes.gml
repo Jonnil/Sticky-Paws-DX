@@ -107,7 +107,7 @@ and (sprite_index = spr_bucket)
 			if (asset_get_type("obj_heart_balloon") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_heart_balloon);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_heart_balloon);
 				with(obj)
 				{
 					bounceup = true;
@@ -123,7 +123,7 @@ and (sprite_index = spr_bucket)
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup);
 				with(obj)
 				{
 					number_of_extra_lives = 1;
@@ -140,7 +140,7 @@ and (sprite_index = spr_bucket)
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup);
 				with(obj)
 				{
 					number_of_extra_lives = 2;
@@ -157,7 +157,7 @@ and (sprite_index = spr_bucket)
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup);
 				with(obj)
 				{
 					number_of_extra_lives = 3;
@@ -258,13 +258,13 @@ and (sprite_index = spr_bucket)
 		}
 		#region /*Big Collectible 5 END*/
 		
-		#region /*Invincibility Powerup*/
+		#region /* invincibility Powerup*/
 		if (item_inside = "invincibility_powerup")
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_invincibility_powerup);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_invincibility_powerup);
 				with(obj)
 				{
 					bounceup = true;
@@ -272,7 +272,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*Invincibility Powerup END*/
+		#endregion /* invincibility Powerup END*/
 	
 }
 with(other)

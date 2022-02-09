@@ -1044,7 +1044,7 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /*Load Level Name END*/
 	
-	#region /*Input Level Name*/
+	#region /* input Level Name*/
 	
 	draw_set_halign(fa_middle);
 	draw_set_valign(fa_middle);
@@ -1069,7 +1069,7 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /*Box where name is written on END*/
 	
-	#region /*Inputed Name Text*/
+	#region /* inputed Name Text*/
 	if (can_input_level_name = true)
 	{
 		if (name_enter_blink< 1)
@@ -1081,9 +1081,9 @@ function scr_select_custom_level_menu()
 			draw_text_outlined(394 *(global.select_level_index-C*R) + 300, 226*(C-scroll) +569 -3, string(global.level_name), global.default_text_size, c_black, c_white, 1);
 		}
 	}
-	#endregion /*Inputed Name Text END*/
+	#endregion /* inputed Name Text END*/
 	
-	#region /*INPUT LEVEL NAME NOW*/
+	#region /* iNPUT LEVEL NAME NOW*/
 	if (can_input_level_name = true)
 	{
 		keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_words, true); /*Show virtual keyboard on mobile devices*/
@@ -1164,7 +1164,7 @@ function scr_select_custom_level_menu()
 		#endregion /*Limit Name Input Length for Name END*/
 		
 	}
-	#endregion /*INPUT LEVEL NAME NOW END*/
+	#endregion /* iNPUT LEVEL NAME NOW END*/
 	
 	#region /*Name Enter Blinking*/
 	name_enter_blink+= 0.05;
@@ -1255,6 +1255,6 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /*Press Escape to back out from level from scratch menu END*/
 	
-	#endregion /*Input Level Name END*/
+	#endregion /* input Level Name END*/
 	
 }

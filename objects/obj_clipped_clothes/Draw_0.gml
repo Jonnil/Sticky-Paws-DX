@@ -5,32 +5,32 @@ and (fall = false)
 {
 	fall = true;
 	
-	#region /*If it's a clipped shirt, turn into the shirt falling*/
+	#region /* if it's a clipped shirt, turn into the shirt falling*/
 	if (asset_get_type("spr_clipped_shirt") == asset_sprite)
 	and (sprite_index = spr_clipped_shirt)
 	and (asset_get_type("spr_shirt") == asset_sprite)
 	{
 		sprite_index = spr_shirt;
 	}
-	#endregion /*If it's a clipped shirt, turn into the shirt falling END*/
+	#endregion /* if it's a clipped shirt, turn into the shirt falling END*/
 	
-	#region /*If it's clipped pants, turn into the pants falling*/
+	#region /* if it's clipped pants, turn into the pants falling*/
 	if (asset_get_type("spr_clipped_pants") == asset_sprite)
 	and (sprite_index = spr_clipped_pants)
 	and (asset_get_type("spr_pants") == asset_sprite)
 	{
 		sprite_index = spr_pants;
 	}
-	#endregion /*If it's clipped pants, turn into the pants falling END*/
+	#endregion /* if it's clipped pants, turn into the pants falling END*/
 	
-	#region /*If it's a clipped sock, turn into the sock falling*/
+	#region /* if it's a clipped sock, turn into the sock falling*/
 	if (asset_get_type("spr_clipped_sock") == asset_sprite)
 	and (sprite_index = spr_clipped_sock)
 	and (asset_get_type("spr_sock") == asset_sprite)
 	{
 		sprite_index = spr_sock;
 	}
-	#endregion /*If it's a clipped sock, turn into the sock falling END*/
+	#endregion /* if it's a clipped sock, turn into the sock falling END*/
 	
 	#region /* 1 Basic Collectible*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -60,12 +60,12 @@ and (fall = false)
 		}
 		else
 		{
-			obj = instance_create_depth(x + 16,y - 16, 0, obj_clipper);
+			obj = instance_create_depth(x + 16, y - 16, 0, obj_clipper);
 			with(obj)
 			{
 				motion_set(45, random_range(5, 10));
 			}
-			obj = instance_create_depth(x - 16,y - 16, 0, obj_clipper);
+			obj = instance_create_depth(x - 16, y - 16, 0, obj_clipper);
 			with(obj)
 			{
 				motion_set(135, random_range(5, 10));

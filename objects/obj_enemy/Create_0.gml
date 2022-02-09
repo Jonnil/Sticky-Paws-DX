@@ -33,3 +33,4 @@ if (asset_get_type("spr_wall") == asset_sprite)
 draw_xscale = 1;
 draw_yscale = 1;
 die = false;
+stomped_delay = 0;

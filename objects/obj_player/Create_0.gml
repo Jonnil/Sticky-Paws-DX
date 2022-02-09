@@ -5,19 +5,19 @@ player = 1;
 custom_character = global.character_for_player_1;
 selected_voice_pack = global.voicepack_for_player_1;
 selected_skin = global.skin_for_player_1;
-alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
+alarm[0] = 1; /* initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
 #endregion /*What custom character to use. Change the character sprites and voice END*/
 
-#region /*Initialize Custom character*/
+#region /* initialize Custom character*/
 
 #region /*Allow*/
 allow_drowning = true;
 allow_roll = false;
 allow_ledge_grab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
-allow_ground_pound = true; /*If you can ground pound or not*/
+allow_ground_pound = true; /* if you can ground pound or not*/
 allow_ground_poundjump = true;
-allow_wall_jump = true; /*If you can wall jump or not*/
-allow_wall_climb = false; /*If you can wall climb or not*/
+allow_wall_jump = true; /* if you can wall jump or not*/
+allow_wall_climb = false; /* if you can wall climb or not*/
 allow_dive = true; /*Dive when you have speed or during a ground pound*/
 allow_dive_ground_boost = true;
 allow_survive_lava = true;
@@ -470,7 +470,7 @@ voice_scream = noone;
 
 #endregion /*Play as Custom Character END*/
 
-#endregion /*Initialize Custom Character END*/
+#endregion /* initialize Custom Character END*/
 
 /*________________________________*/
 
@@ -483,12 +483,12 @@ simple_controls = false; /*Simple Controls, used for testing if a level can be c
 stop_screen_from_scrolling_left = false; /*Stop the screen from being able to screoll left*/
 full_level_map_screenshot_timer = 0;
 
-#region /*Intro Animation Variables*/
+#region /* intro Animation Variables*/
 intro_animation = ""; /*This determines the intro animation to play when you first enter a level*/
 cutscene_time = 0; /*Timer that determines what will happen in the intro animation*/
 intro_animation_sprite = noone; /*When there is a intro animation, the sprites for the into animation gets stored here, and the normal sprites for gameplay are hidden so the into sprites can play out correctly*/
-intro_animation_image_index = 0; /*Image index of intro animation*/
-#endregion /*Intro Animation Variables END*/
+intro_animation_image_index = 0; /* image index of intro animation*/
+#endregion /* intro Animation Variables END*/
 
 current_file = global.file;
 assist_invincible = false;
@@ -545,55 +545,55 @@ and (file_exists(working_directory + "save_files/file" + string(global.file) + "
 	{
 		if (ini_key_exists("Player", "player_1_have_heart_balloon"))
 		{
-			have_heart_balloon = ini_read_real("Player", "player_1_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+			have_heart_balloon = ini_read_real("Player", "player_1_have_heart_balloon", false); /* if you have the heart balloon upgrade or not*/
 		}
 		else
 		{
 			ini_write_real("Player", "player_1_have_heart_balloon", false);
-			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+			have_heart_balloon = false; /* if you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
 	if (player = 2)
 	{
 		if (ini_key_exists("Player", "player_2_have_heart_balloon"))
 		{
-			have_heart_balloon = ini_read_real("Player", "player_2_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+			have_heart_balloon = ini_read_real("Player", "player_2_have_heart_balloon", false); /* if you have the heart balloon upgrade or not*/
 		}
 		else
 		{
 			ini_write_real("Player", "player_2_have_heart_balloon", false);
-			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+			have_heart_balloon = false; /* if you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
 	if (player = 3)
 	{
 		if (ini_key_exists("Player", "player_3_have_heart_balloon"))
 		{
-			have_heart_balloon = ini_read_real("Player", "player_3_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+			have_heart_balloon = ini_read_real("Player", "player_3_have_heart_balloon", false); /* if you have the heart balloon upgrade or not*/
 		}
 		else
 		{
 			ini_write_real("Player", "player_3_have_heart_balloon", false);
-			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+			have_heart_balloon = false; /* if you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
 	if (player = 4)
 	{
 		if (ini_key_exists("Player", "player_4_have_heart_balloon"))
 		{
-			have_heart_balloon = ini_read_real("Player", "player_4_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+			have_heart_balloon = ini_read_real("Player", "player_4_have_heart_balloon", false); /* if you have the heart balloon upgrade or not*/
 		}
 		else
 		{
 			ini_write_real("Player", "player_4_have_heart_balloon", false);
-			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+			have_heart_balloon = false; /* if you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
 	ini_close();
 }
 else
 {
-	have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+	have_heart_balloon = false; /* if you have the heart balloon upgrade or not. You start without it*/
 }
 #endregion /*Have Heart Balloon END*/
 
@@ -685,7 +685,7 @@ drop_off_wall_climb = 0;
 
 homing_attack_x = 0;
 homing_attack_y = 0;
-in_water = false; /*If the player is in water or not, instead of checking for the actual obj_water, check for this variable instead*/
+in_water = false; /* if the player is in water or not, instead of checking for the actual obj_water, check for this variable instead*/
 old_in_water = false; /*This just checks if water splash effect should be done or not, by checking if the actual in_water is different from the old_in_water*/
 jump = 0;
 triplejumpdelay = 0;
@@ -746,7 +746,7 @@ spark2_effect = false;
 xspd = 0;
 yspd = 0;
 
-#region /*Initialize the controls*/
+#region /* initialize the controls*/
 key_dive_pressed = noone;
 key_jump = noone;
 key_jump_hold = noone;
@@ -766,4 +766,4 @@ key_tongue_pressed = noone;
 key_tongue_released = noone;
 key_spin = noone;
 key_spin_pressed = noone;
-#endregion /*Initialize the controls END*/
+#endregion /* initialize the controls END*/

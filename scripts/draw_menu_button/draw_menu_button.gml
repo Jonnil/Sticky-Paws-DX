@@ -11,7 +11,7 @@ function draw_menu_button()
 	
 	#region /*Button*/
 	
-	#region /*Initialize variables*/
+	#region /* initialize variables*/
 	var x_position = argument0; /*The buttons x origin position*/
 	var y_position = argument1; /*The buttons y origin position*/
 
@@ -19,7 +19,7 @@ function draw_menu_button()
 	var menu_index = argument3;
 	var menu_takes_you_to = argument4;
 	var clicked_on = false;
-	#endregion /*Initialize variables END*/
+	#endregion /* initialize variables END*/
 	
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position+ 2, x_position+ 370, y_position+ 41))
 	and (global.controls_used_for_menu_navigation = "mouse")

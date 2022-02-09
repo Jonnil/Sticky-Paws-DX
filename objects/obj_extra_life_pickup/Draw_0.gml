@@ -6,12 +6,12 @@ if (asset_get_type("spr_wall") == asset_sprite)
 	mask_index = spr_wall;
 }
 
-#region /*If inside wall, destroy yourself*/
+#region /* if inside wall, destroy yourself*/
 if (position_meeting(x, y, obj_wall))
 {
 	instance_destroy();
 }
-#endregion /*If inside wall, destroy yourself END*/
+#endregion /* if inside wall, destroy yourself END*/
 
 #region /*When falling, it's not bouncing up anymore*/
 if (vspeed >= 0)

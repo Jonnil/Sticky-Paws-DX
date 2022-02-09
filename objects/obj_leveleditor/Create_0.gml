@@ -11,8 +11,9 @@ mx = mouse_x;
 my = mouse_y;
 #endregion /*Mouse x and mouse y initializing END*/
 
-sprite_enemy1 = global.resourcepack_sprite_basic_enemy;
-sprite_enemy2 = global.resourcepack_sprite_big_stationary_enemy;
+sprite_basic_enemy = global.resourcepack_sprite_basic_enemy;
+sprite_enemy_bowlingball = global.resourcepack_sprite_enemy_bowlingball_walk;
+sprite_big_stationary_enemy = global.resourcepack_sprite_big_stationary_enemy;
 
 #region /*Lives Icon*/
 if (global.player1_can_play = true)
@@ -52,7 +53,7 @@ else
 {
 	sprite_lives_icon = noone;
 }
-alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
+alarm[0] = 1; /* initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
 #endregion /*Lives Icon END*/
 
 #region /*Create Foreground*/
@@ -118,10 +119,10 @@ cursor_x = x;
 cursor_y = y;
 place_brush_size = 0; /*The size of the brush when placeing objects*/
 erase_brush_size = 0; /*The size of the brush when erasing*/
-can_make_place_brush_size_bigger = true; /*If you can make the brush size bigger for certain objects*/
-can_put_objects_above_other_objects = false; /*If you can put objects above other objects*/
+can_make_place_brush_size_bigger = true; /* if you can make the brush size bigger for certain objects*/
+can_put_objects_above_other_objects = false; /* if you can put objects above other objects*/
 mouse_sprite = spr_cursor; /*Sets what cursor sprite to use*/
-undo_and_redo_buttons_enabled = false; /*If undo and redo buttons should appear or not*/
+undo_and_redo_buttons_enabled = false; /* if undo and redo buttons should appear or not*/
 tooltip = "";
 show_tooltip = 0;
 show_grid = false; /*Grid should be false when you start level editor*/
@@ -137,7 +138,7 @@ show_icons_at_bottom = false;
 show_icons_at_top = false;
 icons_at_bottom_y = +100;
 erase_icons_at_top_y = - 100;
-show_undo_redo_icons= false; /*If the undo and redo buttons should show*/
+show_undo_redo_icons = false; /* if the undo and redo buttons should show*/
 undo_redo_icons_y = +200; /*Undo and redo buttons y postition*/
 current_undo_value = 0; /*Every time you place down items, this value increases. When you undo, this value decreases.*/
 icons_at_top_y = - 100;
@@ -146,7 +147,7 @@ icons_at_left_x =- 64;
 selected_object = 0;
 selected_object_menu_x = 0;
 selected_menu_alpha = 0;
-total_number_of_objects= 0;
+total_number_of_objects = 0;
 use_controller = false;
 drag_object = false;
 erase_mode = false; /*When erasing, this turns true*/
@@ -195,7 +196,7 @@ fill_icon_x = 160;
 
 screenie_x = 0;
 screenie_y = 0;
-total_objects= 0;
+total_objects = 0;
 
 #region /*Options*/
 remapping_player = 0;
@@ -205,6 +206,38 @@ can_navigate = false;
 menu_y_offset_real = 0;
 menu_cursor_y_position = 0;
 menu_remap_key_number = 0;
+
+#region /*Character Name*/
+if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+{
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+	{
+		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+	}
+	else
+	{
+		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+	}
+						
+	#region /*Character Name*/
+	if (ini_key_exists("values", "character_name"))
+	{
+		narrator_name = ini_read_string("values", "character_name", "");
+	}
+	else
+	{
+		narrator_name = string(global.narrator + 1);
+	}
+	#endregion /*Character Name END*/
+						
+	ini_close();
+}
+else
+{
+	narrator_name = string(global.narrator + 1);
+}
+#endregion /*Character Name END*/
 
 #region /*Customize look of Options Menu*/
 menu_y_offset = - 100;
@@ -219,7 +252,7 @@ room_speed = global.max_fps; /*Room Speed is Max FPS*/
 image_speed = 0;
 image_index = 0;
 
-#region /*Initialize level_information.ini*/
+#region /* initialize level_information.ini*/
 if (global.character_select_in_this_menu = "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
@@ -589,7 +622,7 @@ else
 	global.time_countdown = noone;
 	global.time_countdown_bonus = 500;
 }
-#endregion /*Initialize level_information.ini END*/
+#endregion /* initialize level_information.ini END*/
 
 #region /*Create Ground Tileset PNG if there is none*/
 if (global.character_select_in_this_menu = "level_editor")
@@ -623,7 +656,7 @@ view_hview = 736;
 set_view_wview= 1392;
 set_view_hview= 736;
 
-#region /*Initialize Background*/
+#region /* initialize Background*/
 background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
 background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
 background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
@@ -632,7 +665,7 @@ background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;backgroun
 background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
 background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
 background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
-#endregion /*Initialize Background END*/
+#endregion /* initialize Background END*/
 
 /*HUD Show Controls keys that have been pressed*/
 player1_show_controls_timer = 0;

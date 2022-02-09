@@ -153,7 +153,7 @@ and (instance_exists(obj_player))
 				{
 					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "x_checkpoint", x);
-					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "y_checkpoint",y);
+					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "y_checkpoint", y);
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "checkpoint_millisecond", global.timeattack_millisecond);
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "checkpoint_second", global.timeattack_second);
 					ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "checkpoint_minute", global.timeattack_minute);
@@ -168,7 +168,7 @@ and (instance_exists(obj_player))
 				{
 					ini_open(working_directory + "/custom_level_save.ini");
 					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint", x);
-					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint",y);
+					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint", y);
 					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond", global.timeattack_millisecond);
 					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_second", global.timeattack_second);
 					ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_minute", global.timeattack_minute);

@@ -53,7 +53,7 @@ else
 {
 	sprite_lives_icon = noone;
 }
-alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
+alarm[0] = 1; /* initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
 #endregion /*Lives Icon END*/
 
 #region /*Create Foreground and Background Brightness Layer*/
@@ -328,8 +328,8 @@ allow_iris = true;
 iris_zoom = 0;
 timer_blinking_alpha = 0;
 
-/*Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen*/
-#region /*Initialize View*/
+/* initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen*/
+#region /* initialize View*/
 
 /*View Size*/
 view_wview= 1024 + 400 -32;
@@ -345,7 +345,7 @@ if (view_wport>1920){view_wport = 1920;}if (view_wview>1920){view_wview= 1920;}i
 if (view_wport<640){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport<480){view_hport = 480;}if (view_hview<480){view_hview= 480;}}
 #endregion /*View Size END*/
 
-#endregion /*Initialize View END*/
+#endregion /* initialize View END*/
 
 #region /*Custom Music*/
 if (asset_get_type("room_title") == asset_room)

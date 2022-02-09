@@ -1,4 +1,4 @@
-/// @desc draw_pie(x ,y ,value, max, colour, radius, transparency)
+/// @desc draw_pie(x , y ,value, max, colour, radius, transparency)
 /// @arg x
 /// @arg y
 /// @arg value
@@ -7,7 +7,7 @@
 /// @arg radius
 /// @arg transparency
 
-function draw_pie(x ,y ,value, max, colour, radius, transparency)
+function draw_pie(x , y ,value, max, colour, radius, transparency)
 {
 	if (argument2 > 0) { // no point even running if there is nothing to display (also stops /0
 	    var i, len, tx, ty, val;

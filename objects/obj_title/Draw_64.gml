@@ -339,12 +339,12 @@ or(menu = "quit")
 	#endregion /*What player can enter a name END*/
 	
 	show_title_logo = true;
-	version_y_pos= lerp(version_y_pos, 0, 0.1);
+	version_y_pos = lerp(version_y_pos, 0, 0.1);
 }
 else
 {
 	show_title_logo = false;
-	version_y_pos= lerp(version_y_pos, 128, 0.1);
+	version_y_pos = lerp(version_y_pos, 128, 0.1);
 }
 #endregion /*Hide Fullscreen and Version text / Set certain variables to default value END*/
 
@@ -437,9 +437,9 @@ or(menu = "quit")
 		in_settings = false;
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
-		if (global.can_select_number_of_players= true)
+		if (global.can_select_number_of_players = true)
 		{
-			if (global.select_number_of_players_before_selecting_characters= true)
+			if (global.select_number_of_players_before_selecting_characters = true)
 			{
 				menu = "1player";
 				menu_delay = 3;
@@ -490,9 +490,9 @@ or(menu = "quit")
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			global.character_select_in_this_menu = "level_editor";
-			if (global.can_select_number_of_players= true)
+			if (global.can_select_number_of_players = true)
 			{
-				if (global.select_number_of_players_before_selecting_characters= true)
+				if (global.select_number_of_players_before_selecting_characters = true)
 				{
 					menu = "1player";
 					menu_delay = 3;
@@ -539,7 +539,7 @@ or(menu = "quit")
 		}
 		#endregion /*Play Options Voice END*/
 		
-		in_settings= true;
+		in_settings = true;
 		can_navigate_settings_sidebar = true;
 		menu = noone;
 		menu_delay = 3;
@@ -565,7 +565,7 @@ or(menu = "quit")
 	and (global.show_language_shortcut = true)
 	{
 		menu_delay = 3;
-		in_settings= true;
+		in_settings = true;
 		can_navigate_settings_sidebar = false;
 		global.settings_sidebar_menu = "language_settings";
 		menu = "language_id_id";
@@ -606,7 +606,7 @@ or(menu = "quit")
 	and (global.show_accessibility_shortcut = true)
 	{
 		menu_delay = 3;
-		in_settings= true;
+		in_settings = true;
 		can_navigate_settings_sidebar = false;
 		global.settings_sidebar_menu = "accessibility_settings";
 		menu = noone;
@@ -647,7 +647,7 @@ or(menu = "quit")
 	and (global.show_profile_shortcut = true)
 	{
 		menu_delay = 3;
-		in_settings= true;
+		in_settings = true;
 		can_navigate_settings_sidebar = false;
 		global.settings_sidebar_menu = "profile_settings";
 		menu = noone;
@@ -771,7 +771,7 @@ or(menu = "2player")
 or(menu = "3player")
 or(menu = "4player")
 {
-	if (global.select_number_of_players_before_selecting_characters= false)
+	if (global.select_number_of_players_before_selecting_characters = false)
 	{
 		scr_load_character_initializing();
 		menu = "load_characters";
@@ -2343,7 +2343,7 @@ if (menu_delay < 0)
 }
 #endregion /*Menu Navigation Delay END*/
 
-#region /*If player object is present, destroy the player object*/
+#region /* if player object is present, destroy the player object*/
 if (instance_exists(obj_player))
 {
 	with(obj_player)
@@ -2351,7 +2351,7 @@ if (instance_exists(obj_player))
 		instance_destroy();
 	}
 }
-#endregion /*If player object is present, destroy the player object END*/
+#endregion /* if player object is present, destroy the player object END*/
 
 #region /*Menu navigation with joystick (This code must come after all menu navigation code)*/
 if (gamepad_axis_value(0, gp_axislv)< 0)
@@ -2402,18 +2402,18 @@ if (black_screen_at_start_delay < 1)
 }
 #endregion /*Have a black screen at the first frame so transitions look natural END*/
 
-#region /*If Window is unfocused, darken the screen*/
+#region /* if Window is unfocused, darken the screen*/
 if (!window_has_focus())
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, 0, window_get_width()* 3, window_get_height()* 3, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
-#endregion /*If Window is unfocused, darken the screen END*/
+#endregion /* if Window is unfocused, darken the screen END*/
 
 #region /*Draw Iris Transitions*/
 
-#region /*Iris Zooming*/
+#region /* iris Zooming*/
 if (menu_delay > 10)
 {
 	if (iris_zoom = 1)
@@ -2459,7 +2459,7 @@ else
 }
 #endregion /*Zoom Out END*/
 
-#endregion /*Iris Zooming END*/
+#endregion /* iris Zooming END*/
 
 if (global.enable_transitions = true)
 {

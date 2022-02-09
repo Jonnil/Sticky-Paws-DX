@@ -4,7 +4,7 @@ function scr_set_arrays()
 	#region /*Languages Arrays*/
 	languages = array_create(30, 0);
 	languages[0]= "ar_sa"/*Arabic*/
-	languages[1]= "id_id"/*Indonesian*/
+	languages[1]= "id_id"/* indonesian*/
 	languages[2]= "da_dk"/*Danish*/
 	languages[3]= "de_de"/*German*/
 	languages[4]= "en_gb"/*British English*/
@@ -13,7 +13,7 @@ function scr_set_arrays()
 	languages[7]= "es_mx"/*Mexican Spanish*/
 	languages[8]= "fr_ca"/*Canadian French*/
 	languages[9]= "fr_fr"/*French*/
-	languages[10]= "it_it"/*Italian*/
+	languages[10]= "it_it"/* italian*/
 	languages[11]= "hu_hu"/*Hungarian*/
 	languages[12]= "nl_nl"/*Dutch*/
 	languages[13]= "nb_no"/*Norwegian Bokmål*/

@@ -1,4 +1,4 @@
-/// @desc draw_circular_bar(x ,y ,value, max, colour, radius, transparency, width)
+/// @desc draw_circular_bar(x , y ,value, max, colour, radius, transparency, width)
 /// @arg x
 /// @arg y
 /// @arg value
@@ -8,7 +8,7 @@
 /// @arg transparency
 /// @arg width
 
-function draw_circular_bar(x ,y ,value, max, colour, radius, transparency, width)
+function draw_circular_bar(x , y ,value, max, colour, radius, transparency, width)
 {
 	if (argument2 > 0)
 	{ // no point even running if there is nothing to display (also stops /0

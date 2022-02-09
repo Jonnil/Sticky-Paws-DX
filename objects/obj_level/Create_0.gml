@@ -7,7 +7,7 @@ level_color = c_black;
 level_perfect = false;
 enter_blink = 0;
 initialize_level_timer = 0;
-always_open = false; /*If a level should always be open or not*/
+always_open = false; /* if a level should always be open or not*/
 increase_number_of_levels_cleared = true;
 
 alarm[0] = 1;

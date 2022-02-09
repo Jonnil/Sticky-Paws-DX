@@ -117,7 +117,7 @@ and (place_meeting(x, y, obj_player))
 and (instance_nearest(x, y, obj_player).intro_animation = "")
 and (cutscene != 1)
 {
-	with (instance_create_depth(x, y, 0, obj_enemy1))
+	with (instance_create_depth(x, y, 0, obj_basic_enemy))
 	{
 		image_xscale = -1;
 		
@@ -143,7 +143,7 @@ and (cutscene != 1)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
-			if (simple_controls= false)
+			if (simple_controls = false)
 			{
 				vspeed = -triple_jump_height;
 			}

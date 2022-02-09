@@ -10,9 +10,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_timer")){global.show_timer = ini_read_real("config", "show_timer", 0);}
 		if (ini_key_exists("config", "show_deaths_counter")){global.show_deaths_counter = ini_read_real("config", "show_deaths_counter", 0);}
 		if (ini_key_exists("config", "custom_level_load_delay")){global.custom_level_load_delay = ini_read_real("config", "custom_level_load_delay", 0);}
-		if (ini_key_exists("config", "activate_cheats")){global.activate_cheats = ini_read_real("config", "activate_cheats", 0);}
-		if (ini_key_exists("config", "enable_enemies")){global.enable_enemies = ini_read_real("config", "enable_enemies", 0);}
-		if (ini_key_exists("config", "enable_spikes")){global.enable_spikes = ini_read_real("config", "enable_spikes", 0);}
+		if (ini_key_exists("config", "assist_enable")){global.assist_enable = ini_read_real("config", "assist_enable", 0);}
+		if (ini_key_exists("config", "assist_enable_enemies")){global.assist_enable_enemies = ini_read_real("config", "assist_enable_enemies", 0);}
+		if (ini_key_exists("config", "assist_enable_spikes")){global.assist_enable_spikes = ini_read_real("config", "assist_enable_spikes", 0);}
 		if (ini_key_exists("config", "narrator")){global.narrator = ini_read_real("config", "narrator", 0);}
 		if (ini_key_exists("config", "show_tutorial_signs")){global.show_tutorial_signs = ini_read_real("config", "show_tutorial_signs", 0);}
 		if (ini_key_exists("config", "hud_hide_time")){global.hud_hide_time = ini_read_real("config", "hud_hide_time", 0);}

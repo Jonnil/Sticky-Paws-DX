@@ -39,7 +39,7 @@ if (water_level_change_speed = 2)
 	}
 }
 
-water_level_change_new_y_lerp = lerp(Wave(water_level_change_new_y_lerp, water_level_change_new_y_lerp-water_bob_distance, water_bob_speed, 0), y, 0.1);
+water_level_change_new_y_lerp = lerp(Wave(water_level_change_new_y_lerp, water_level_change_new_y_lerp -water_bob_distance, water_bob_speed, 0), y, 0.1);
 
 image_xscale = room_width;
 image_yscale = room_height;

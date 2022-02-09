@@ -412,7 +412,7 @@ if (image_index = 28){current_comment = "Artist: William Karlsson - Sticky I am 
 if (image_index = 29){current_comment = "Artist: TheOneTrueEgg08 - Just a cat...";}
 if (image_index = 30){current_comment = "Artist: FarexBoi - Sticky Peace";}
 if (image_index = 31){current_comment = "Artist: Sayo - Sticky Vibe Check";}
-if (image_index = 32){current_comment = "Artist: Lil Wild Card Banny - Sticky upside-down OK sign";}
+if (image_index = 32){current_comment = "Artist: Lil Wild Card Banny - Sticky upside -down OK sign";}
 if (image_index = 33){current_comment = "Artist: Sayo - More Normal Sticky";}
 if (image_index = 34){current_comment = "Artist: Sayo - Crazy Sticky";}
 if (image_index = 35){current_comment = "Artist: SSgt Myers - Sticky Ball";}
@@ -434,7 +434,7 @@ if (image_index = 50){current_comment = "Artist: huntertron - This art isn't bad
 if (image_index = 51){current_comment = "Artist: shiibeh - Catlyn tiny sketch";}
 if (image_index = 52){current_comment = "Artist: shiibeh - Catlyn is very cute";}
 if (image_index = 53){current_comment = "Artist: shiibeh - Winter Sticky";}
-if (image_index = 54){current_comment = "Artist: ThePast - Half T-posing Sticky";}
+if (image_index = 54){current_comment = "Artist: ThePast - Half t -posing Sticky";}
 if (image_index = 55){current_comment = "Artist: Meidres Yoksank [MK] @MeidresYIK - Catlyn angry (sketch)";}
 if (image_index = 56){current_comment = "Artist: Meidres Yoksank [MK] @MeidresYIK - Catlyn angry";}
 if (image_index = 57){current_comment = "Artist: Meidres Yoksank [MK] @MeidresYIK - Catlyn angry (easter egg hidden in picture)";}

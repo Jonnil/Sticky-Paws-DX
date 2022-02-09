@@ -154,10 +154,10 @@ can_input_level_name = false;
 #endregion /*What player can enter a name END*/
 
 #region /*Hide certain HUD elements*/
-global.hud_show_lives= true;
-global.hud_show_deaths= false;
-global.hud_show_basic_collectibles= false;
-global.hud_show_big_collectibles= false;
+global.hud_show_lives = true;
+global.hud_show_deaths = false;
+global.hud_show_basic_collectibles = false;
+global.hud_show_big_collectibles = false;
 global.hud_show_score = false;
 #endregion /*Hide certain HUD elements END*/
 
@@ -166,7 +166,7 @@ global.player_has_entered_goal = false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;
 global.theme = "ground";
-global.coins= 0;
+global.coins = 0;
 global.level_clear_rate = noone;
 global.big_collectible1 = false;
 global.big_collectible2 = false;
@@ -195,7 +195,7 @@ global.spikes_emerge_time = 0;
 global.goal_active = false;
 global.PauseScreen = noone;
 global.quit_level = false;
-global.always_show_level_editor_buttons= true; /*If level editor buttons should always show or not. Should be true by default*/
+global.always_show_level_editor_buttons = true; /* if level editor buttons should always show or not. Should be true by default*/
 
 #region /*Player 1 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
@@ -594,7 +594,7 @@ scr_config_load(); /*Load Config*/
 lives = 5; /*Starting lives*/
 level_name = "";
 
-#region /*If title screen should start at the level editor menu or the main menu*/
+#region /* if title screen should start at the level editor menu or the main menu*/
 if (global.character_select_in_this_menu = "level_editor")
 {
 	scr_load_custom_level_initializing();
@@ -615,7 +615,7 @@ else
 {
 	menu = "main_game";
 }
-#endregion /*If title screen should start at the level editor menu or the main menu END*/
+#endregion /* if title screen should start at the level editor menu or the main menu END*/
 
 lastkey = noone;
 
@@ -641,8 +641,8 @@ player1_display_x = 0;xx1 = 0;
 player2_display_x = 0;xx2 = 0;
 player3_display_x = 0;xx3 = 0;
 player4_display_x = 0;xx4 = 0;
-remap_y_pos= 0;
-version_y_pos= 0;
+remap_y_pos = 0;
+version_y_pos = 0;
 menu_cursor_index = 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;

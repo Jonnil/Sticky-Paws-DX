@@ -1,4 +1,4 @@
-#region /*Initialize Custom Character*/
+#region /* initialize Custom Character*/
 
 /*The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y*/
 
@@ -137,7 +137,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	ini_close();
 }
 
-#region /*If there is no config.ini file, then make every xorig and yorig variable zero*/
+#region /* if there is no config.ini file, then make every xorig and yorig variable zero*/
 else
 {
 	sprite_map_xorig = 0;
@@ -147,7 +147,7 @@ else
 	sprite_stand_xorig = 0;
 	sprite_stand_yorig = 0;
 }
-#endregion /*If there is no config.ini file, then make every xorig and yorig variable zero END*/
+#endregion /* if there is no config.ini file, then make every xorig and yorig variable zero END*/
 
 #endregion /*Sprite origin point variables END*/
 
@@ -171,4 +171,4 @@ if (sprite_stand > noone)
 {
 	sprite_index = sprite_stand;
 }
-#endregion /*Initialize Custom Character END*/
+#endregion /* initialize Custom Character END*/

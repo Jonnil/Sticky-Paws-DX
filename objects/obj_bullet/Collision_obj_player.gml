@@ -18,7 +18,7 @@ or(other.can_tongue_after_dive_on_ground > 0)
 		other.dive = false;
 		with(other)
 		{
-			if (simple_controls= false)
+			if (simple_controls = false)
 			{
 				vspeed = -triple_jump_height;
 			}
@@ -105,7 +105,7 @@ or(other.chain_reaction<= 1)
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -172,7 +172,7 @@ or(other.chain_reaction = 2)
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -255,7 +255,7 @@ or(other.chain_reaction = 3)
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -338,7 +338,7 @@ or(other.chain_reaction = 4)
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -421,7 +421,7 @@ or(other.chain_reaction = 5)
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -504,7 +504,7 @@ or(other.chain_reaction = 6)
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -587,7 +587,7 @@ or(other.chain_reaction = 7)
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -658,7 +658,7 @@ or(other.chain_reaction >= 8)
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -704,7 +704,7 @@ if (die_volting = false)
 	if (other.vspeed > 0)
 	or(other.climb = false)
 	and (other.vspeed < 0)
-	or(other.bbox_bottom<y)
+	or(other.bbox_bottom < y)
 	{
 		if (other.ground_pound = false)
 		and (flat = false)
@@ -794,7 +794,7 @@ or(other.chain_reaction<= 1)
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -861,7 +861,7 @@ or(other.chain_reaction = 2)
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -944,7 +944,7 @@ or(other.chain_reaction = 3)
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1027,7 +1027,7 @@ or(other.chain_reaction = 4)
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1110,7 +1110,7 @@ or(other.chain_reaction = 5)
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1193,7 +1193,7 @@ or(other.chain_reaction = 6)
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1276,7 +1276,7 @@ or(other.chain_reaction = 7)
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1347,7 +1347,7 @@ or(other.chain_reaction >= 8)
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1384,7 +1384,7 @@ if (other.key_jump_hold)
 			vspeed = -4;
 		}
 		else
-		if (simple_controls= false)
+		if (simple_controls = false)
 		{
 			vspeed = -triple_jump_height;
 		}
@@ -1481,7 +1481,7 @@ or(other.chain_reaction<= 1)
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1548,7 +1548,7 @@ or(other.chain_reaction = 2)
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1631,7 +1631,7 @@ or(other.chain_reaction = 3)
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1714,7 +1714,7 @@ or(other.chain_reaction = 4)
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1797,7 +1797,7 @@ or(other.chain_reaction = 5)
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1880,7 +1880,7 @@ or(other.chain_reaction = 6)
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -1963,7 +1963,7 @@ or(other.chain_reaction = 7)
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
@@ -2034,7 +2034,7 @@ or(other.chain_reaction >= 8)
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
 		lives+= 1;
-		global.hud_show_lives= true;
+		global.hud_show_lives = true;
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);

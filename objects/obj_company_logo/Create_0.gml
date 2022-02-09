@@ -5,19 +5,19 @@
 leveleditor_readme = noone; /*Readme textfile for how to use the level editor*/
 
 /*Change how menus look and function*/
-global.can_select_number_of_players= true; /*If this is true, there will be a number of players select screen before you start the game*/
-global.character_select_screen = true; /*If this is true, there will be a character select screen before you start the game*/
-global.character_clothes_customization = false; /*If this is true, you can costumize the character's clothes in the menu*/
-global.character_color_select = false; /*If this is true, you can choose the character's color in the menu*/
-global.select_number_of_players_before_selecting_characters= false; /*If you should select how many players are going to play before you select what character to play as*/
+global.can_select_number_of_players = true; /* if this is true, there will be a number of players select screen before you start the game*/
+global.character_select_screen = true; /* if this is true, there will be a character select screen before you start the game*/
+global.character_clothes_customization = false; /* if this is true, you can costumize the character's clothes in the menu*/
+global.character_color_select = false; /* if this is true, you can choose the character's color in the menu*/
+global.select_number_of_players_before_selecting_characters = false; /* if you should select how many players are going to play before you select what character to play as*/
 global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters! 1 = default*/
 global.max_number_of_official_resourcepacks = 1; /*Update this whenever you add more official resource packs! 1 = default*/
 global.max_number_of_official_title_backgrounds = 2; /*Update this whenever you add more official title backgrounds! 1 = default, but more title backgrounds can be added, for example: 1 = light theme, 2 = dark theme*/
 
 #region /*What settings tabs to show up*/
-global.show_language_shortcut = false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
-global.show_accessibility_shortcut = false; /*If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu*/
-global.show_profile_shortcut = false; /*If a shortcut for the profile options should appear in the main menu to the right of the settings menu*/
+global.show_language_shortcut = false; /* if a shortcut for the language options should appear in the main menu to the left of the settings menu*/
+global.show_accessibility_shortcut = false; /* if a shortcut for the accessibility options should appear in the main menu to the right of the settings menu*/
+global.show_profile_shortcut = false; /* if a shortcut for the profile options should appear in the main menu to the right of the settings menu*/
 global.enable_multiplayer_settings = false; /*Enable Multiplayer settings*/
 global.enable_controller_settings = false; /*Enable Controller settings*/
 global.enable_touch_settings = false; /*Enable Touch settings*/
@@ -44,7 +44,7 @@ global.demo = false; /*When making a demo version of the game, turn this to true
 global.demo_max_levels = 3; /*Set how many levels the demo version have unlocked*/
 
 /*Upgrades. Choose what abilities the player character have when they start the game*/
-global.has_upgrade_double_jump = false; /*If you have the Double Jump Upgrade*/
+global.has_upgrade_double_jump = false; /* if you have the Double Jump Upgrade*/
 
 global.deactivate_objects_outsiede_view = true; /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
 
@@ -62,7 +62,7 @@ ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3"
 #region /*Things you shouldn't change, warning, don't change any of these options or you might break the game!*/
 
 /*Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu*/
-global.equipped_upgrade_double_jump = true; /*If you have equipped the Double Jump Upgrade*/
+global.equipped_upgrade_double_jump = true; /* if you have equipped the Double Jump Upgrade*/
 
 #region /*View Border and Port Size*/
 if (!os_browser)
@@ -171,14 +171,14 @@ global.hex_color_for_player_4 =c_white; /*Player 1 Hex Value Color*/
 global.level_editor_level = 0; /*What level is selected in the custom level editor*/
 global.play_edited_level = false; /*Playtest edited level*/
 global.actually_play_edited_level = false; /*Actually playing finished edited level*/
-global.create_level_from_template = false; /*If you're currently creating a level from template or not*/
-global.character_select_in_this_menu = "main_game"; /*In what menu character select is going to appear in*/
+global.create_level_from_template = false; /* if you're currently creating a level from template or not*/
+global.character_select_in_this_menu = "main_game"; /* in what menu character select is going to appear in*/
 global.difficulty = 1; /*Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard*/
 global.automatically_pause_when_window_is_unfocused = true; /*Whenever you unfocus the window by clicking off the window, the game pauses by itself*/
 global.show_timer = false; /*Show a countup timer or not*/
 global.show_deaths_counter = false; /*Show a deaths counter or not*/
 global.controls_used_for_menu_navigation = "keyboard"; /*keyboard, mouse, or controller*/
-global.pause = false; /*If game is paused or not*/
+global.pause = false; /* if game is paused or not*/
 global.custom_background1 = noone;
 global.custom_background2 = noone;
 global.custom_background3 = noone;
@@ -231,11 +231,11 @@ global.basic_collectibles = 0;
 global.level_clear_rate = noone;
 global.current_level_clear_rate = noone;
 global.increase_number_of_levels_cleared = true; /*Some levels shouldn't increase the number of levels cleared, so switch this true or false for certain levels*/
-global.big_collectible1 = false; /*If you have Big Collectible 1 or not*/
-global.big_collectible2 = false; /*If you have Big Collectible 2 or not*/
-global.big_collectible3 = false; /*If you have Big Collectible 3 or not*/
-global.big_collectible4 = false; /*If you have Big Collectible 4 or not*/
-global.big_collectible5 = false; /*If you have Big Collectible 5 or not*/
+global.big_collectible1 = false; /* if you have Big Collectible 1 or not*/
+global.big_collectible2 = false; /* if you have Big Collectible 2 or not*/
+global.big_collectible3 = false; /* if you have Big Collectible 3 or not*/
+global.big_collectible4 = false; /* if you have Big Collectible 4 or not*/
+global.big_collectible5 = false; /* if you have Big Collectible 5 or not*/
 global.lives_until_assist = 0;
 
 #region /*Assist Settings*/
@@ -246,6 +246,8 @@ global.assist_invincible = false;
 global.assist_breathe_underwater = false;
 global.assist_guiding_arrows = false;
 global.assist_normal_arrows = true;
+global.assist_enable_enemies = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in assist settings. Default: true*/
+global.assist_enable_spikes = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in assist settings. Default: true*/
 global.assist_show_assist_mode_text = true;
 #endregion /*Assist Settings END*/
 
@@ -288,7 +290,7 @@ global.trigger_ending = false;
 global.spikes_emerge_time = 0;
 global.goal_active = false;
 global.interpolate = true
-global.show_fps= false;
+global.show_fps = false;
 global.show_fps_real = false;
 global.show_instance_count = false;
 global.show_collision_mask= false;
@@ -298,20 +300,17 @@ global.quit_level = false;
 global.quit_to_map = false;
 global.quit_to_title = false;
 global.trigger_demo_ending = 0;
-global.activate_cheats = false;
-global.enable_enemies = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default: true*/
-global.enable_spikes = true; /*Option to enable or disable all enemies in the game, the player can change this themselves in gameplay settings. Default: true*/
 global.full_level_map_screenshot = false;
 
-global.player1_crouch_toggle = false; /*If crouch toggle for player 1 is true or false (false by default)*/
-global.player2_crouch_toggle = false; /*If crouch toggle for player 2 is true or false (false by default)*/
-global.player3_crouch_toggle = false; /*If crouch toggle for player 3 is true or false (false by default)*/
-global.player4_crouch_toggle = false; /*If crouch toggle for player 4 is true or false (false by default)*/
+global.player1_crouch_toggle = false; /* if crouch toggle for player 1 is true or false (false by default)*/
+global.player2_crouch_toggle = false; /* if crouch toggle for player 2 is true or false (false by default)*/
+global.player3_crouch_toggle = false; /* if crouch toggle for player 3 is true or false (false by default)*/
+global.player4_crouch_toggle = false; /* if crouch toggle for player 4 is true or false (false by default)*/
 
-global.player1_sprint_toggle = false; /*If sprint toggle for player 1 is true or false (false by default)*/
-global.player2_sprint_toggle = false; /*If sprint toggle for player 2 is true or false (false by default)*/
-global.player3_sprint_toggle = false; /*If sprint toggle for player 3 is true or false (false by default)*/
-global.player4_sprint_toggle = false; /*If sprint toggle for player 4 is true or false (false by default)*/
+global.player1_sprint_toggle = false; /* if sprint toggle for player 1 is true or false (false by default)*/
+global.player2_sprint_toggle = false; /* if sprint toggle for player 2 is true or false (false by default)*/
+global.player3_sprint_toggle = false; /* if sprint toggle for player 3 is true or false (false by default)*/
+global.player4_sprint_toggle = false; /* if sprint toggle for player 4 is true or false (false by default)*/
 
 global.player1_cancel_dive_by_pressing_jump_or_dive_button = false;
 global.player2_cancel_dive_by_pressing_jump_or_dive_button = false;
@@ -327,7 +326,7 @@ global.player4_cancel_dive_by_pressing_opposite_direction = false;
 global.fullscreen_key =vk_f11;
 #endregion /*Universal Keyboard Remapping*/
 
-global.level_name = ""; /*In the level editor, the name of the currently selected level will be stored here*/
+global.level_name = ""; /* in the level editor, the name of the currently selected level will be stored here*/
 
 #region /*Player 1 Keyboard Remapping*/
 global.player1_name = "";
@@ -364,7 +363,7 @@ global.player1_up_key_is_jump_key = false;
 global.player1_double_tap_to_run = true;
 global.player1_wall_jump_setting = 1;
 global.player1_drop_from_rope = 1;
-global.player1_show_controls= 1;
+global.player1_show_controls = 1;
 #endregion /*Player 1 Keyboard Remapping END*/
 
 #region /*Player 2 Keyboard Remapping (everything should be set to noone)*/
@@ -402,7 +401,7 @@ global.player2_up_key_is_jump_key = false;
 global.player2_double_tap_to_run = true;
 global.player2_wall_jump_setting = 1;
 global.player2_drop_from_rope = 1;
-global.player2_show_controls= 1;
+global.player2_show_controls = 1;
 #endregion /*Player 2 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 3 Keyboard Remapping (everything should be set to noone)*/
@@ -440,7 +439,7 @@ global.player3_up_key_is_jump_key = false;
 global.player3_double_tap_to_run = true;
 global.player3_wall_jump_setting = 1;
 global.player3_drop_from_rope = 1;
-global.player3_show_controls= 1;
+global.player3_show_controls = 1;
 #endregion /*Player 3 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Player 4 Keyboard Remapping (everything should be set to noone)*/
@@ -478,7 +477,7 @@ global.player4_up_key_is_jump_key = false;
 global.player4_double_tap_to_run = true;
 global.player4_wall_jump_setting = 1;
 global.player4_drop_from_rope = 1;
-global.player4_show_controls= 1;
+global.player4_show_controls = 1;
 #endregion /*Player 4 Keyboard Remapping (everything should be set to noone) END*/
 
 #region /*Mobile Controls Settings*/
@@ -509,6 +508,11 @@ global.resourcepack_sprite_blaster = spr_wall;
 global.resourcepack_sprite_basic_enemy = spr_wall;
 global.resourcepack_sprite_basic_enemy_angry = spr_wall;
 global.resourcepack_sprite_basic_enemy_flattened = spr_wall;
+global.resourcepack_sprite_enemy_bowlingball_walk = spr_wall;
+global.resourcepack_sprite_enemy_bowlingball_stomped = spr_wall;
+global.resourcepack_sprite_enemy_bowlingball_revive = spr_wall;
+global.resourcepack_sprite_bowlingball = spr_wall;
+global.resourcepack_sprite_bowlingball_shine = spr_wall;
 global.resourcepack_sprite_big_stationary_enemy = spr_wall;
 global.resourcepack_sprite_big_stationary_enemy_flattened = spr_wall;
 global.resourcepack_sprite_hp_pickup = spr_wall;
@@ -520,7 +524,7 @@ scr_load_resource_pack_sprite();
 company_splash = noone;
 controller_splash = noone;
 
-#region /*Interpolation*/
+#region /* interpolation*/
 if (global.interpolate = true)
 {
 	gpu_set_texfilter(true);
@@ -530,7 +534,7 @@ else
 	global.interpolate = false;
 	gpu_set_texfilter(false);
 }
-#endregion /*Interpolation END*/
+#endregion /* interpolation END*/
 
 sprite_splash_easteregg_yoffset = +128;
 

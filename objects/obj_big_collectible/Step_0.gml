@@ -296,12 +296,12 @@ and (global.big_collectible5 = true)
 	image_blend = c_gray;
 }
 
-#region /*If big collectible value is 0, destroy the big collectible*/
+#region /* if big collectible value is 0, destroy the big collectible*/
 if (big_collectible = 0)
 {
 	instance_destroy();
 }
-#endregion /*If big collectible value is 0, destroy the big collectible END*/
+#endregion /* if big collectible value is 0, destroy the big collectible END*/
 
 #region /*Expanding Ring Effect*/
 effect_time += 1;

@@ -22,8 +22,8 @@ if (vspeed >= 16)
 #endregion /*Gravity END*/
 
 #region /*Stop firing if enemies are disabled*/
-if (global.activate_cheats = true)
-and (global.enable_enemies = false)
+if (global.assist_enable = true)
+and (global.assist_enable_enemies = false)
 {
 	time = 0;
 }
@@ -34,11 +34,11 @@ and (asset_get_type("obj_wall") == asset_object)
 and (instance_exists(obj_player))
 {
 	if (x < instance_nearest(x, y, obj_player).x- 64)
-	and (!position_meeting(x + 32,y, obj_wall))
+	and (!position_meeting(x + 32, y, obj_wall))
 	or(x > instance_nearest(x, y, obj_player).x + 64)
-	and (!position_meeting(x-32,y, obj_wall))
+	and (!position_meeting(x-32, y, obj_wall))
 	{
-		yy = lerp(yy,y, 0.5);
+		yy = lerp(yy, y, 0.5);
 		draw_xscale = lerp(draw_xscale, image_xscale, 0.5);
 		draw_yscale = lerp(draw_yscale, image_yscale, 0.5);
 		if (time < 201)
@@ -50,13 +50,13 @@ and (instance_exists(obj_player))
 	{
 		if (place_meeting(x, y - 1, obj_player))
 		{
-			yy = lerp(yy,y+random_range(- 1,+ 1), 0.5);
+			yy = lerp(yy, y+random_range(- 1,+ 1), 0.5);
 			draw_xscale = lerp(draw_xscale, image_xscale + 0.05, 0.5);
-			draw_yscale = lerp(draw_yscale, image_yscale-0.05, 0.5);
+			draw_yscale = lerp(draw_yscale, image_yscale -0.05, 0.5);
 		}
 		else
 		{
-			yy = lerp(yy,y, 0.5);
+			yy = lerp(yy, y, 0.5);
 			draw_xscale = lerp(draw_xscale, image_xscale, 0.5);
 			draw_yscale = lerp(draw_yscale, image_yscale, 0.5);
 		}

@@ -1,4 +1,4 @@
-if (quit_level_editor = false)
+ if (quit_level_editor = false)
 {
 	scr_set_screen_size();
 	
@@ -47,7 +47,7 @@ if (quit_level_editor = false)
 		or(menu = "quit")
 		{
 			
-			#region /*If menu is on continue*/
+			#region /* if menu is on continue*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, "Continue", "continue", noone);
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, window_get_width()/ 2 + 185, window_get_height()/ 2 -42))
@@ -98,9 +98,9 @@ if (quit_level_editor = false)
 					can_navigate = false;
 				}
 			}
-			#endregion /*If menu is on continue END*/
+			#endregion /* if menu is on continue END*/
 			
-			#region /*If menu is on options*/
+			#region /* if menu is on options*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -42, "Settings", "options", noone);
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 -42, window_get_width()/ 2 + 185, window_get_height()/ 2))
@@ -111,7 +111,7 @@ if (quit_level_editor = false)
 				can_input_level_name = false;
 				pause = true;
 				can_navigate = true;
-				in_settings= true;
+				in_settings = true;
 				can_navigate_settings_sidebar = true;
 				global.settings_sidebar_menu = "game_settings";
 				menu = noone;
@@ -145,7 +145,7 @@ if (quit_level_editor = false)
 						can_input_level_name = false;
 						pause = true;
 						can_navigate = true;
-						in_settings= true;
+						in_settings = true;
 						can_navigate_settings_sidebar = true;
 						global.settings_sidebar_menu = "game_settings";
 						menu = noone;
@@ -162,9 +162,9 @@ if (quit_level_editor = false)
 					can_navigate = false;
 				}
 			}
-			#endregion /*If menu is on options END*/
+			#endregion /* if menu is on options END*/
 			
-			#region /*If menu is on generate level map*/
+			#region /* if menu is on generate level map*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Generate Level Map", "generate_level_map", "generate_level_map_yes");
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
@@ -217,9 +217,9 @@ if (quit_level_editor = false)
 					can_navigate = false;
 				}
 			}
-			#endregion /*If menu is on generate level map END*/
+			#endregion /* if menu is on generate level map END*/
 			
-			#region /*If menu is on quit*/
+			#region /* if menu is on quit*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Save and Quit", "quit", noone);
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
@@ -271,7 +271,7 @@ if (quit_level_editor = false)
 					can_navigate = false;
 				}
 			}
-			#endregion /*If menu is on quit END*/
+			#endregion /* if menu is on quit END*/
 			
 		}
 		else
@@ -280,7 +280,7 @@ if (quit_level_editor = false)
 		{
 			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 128, "A map of the whole level will be generated and saved in\nAppData/Local/Sticky_Paws_DX/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png\nWith this map, you can then use it in a drawing program, as the base to make the background and foreground layers.\n\nDo you want to generate level map?", global.default_text_size, c_black, c_white, 1);
 			
-			#region /*If menu is on generate level map yes*/
+			#region /* if menu is on generate level map yes*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Yes", "generate_level_map_yes", "generate_level_map_yes");
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
@@ -333,9 +333,9 @@ if (quit_level_editor = false)
 					menu = "generate_level_map";
 				}
 			}
-			#endregion /*If menu is on generate level map yes END*/
+			#endregion /* if menu is on generate level map yes END*/
 			
-			#region /*If menu is on generate level map no*/
+			#region /* if menu is on generate level map no*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "No", "generate_level_map_no", "generate_level_map");
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
@@ -388,7 +388,7 @@ if (quit_level_editor = false)
 					menu = "generate_level_map";
 				}
 			}
-			#endregion /*If menu is on generate level map no END*/
+			#endregion /* if menu is on generate level map no END*/
 			
 		}
 		#endregion /*Make the menu invisible when entering the options menu END*/
@@ -422,7 +422,7 @@ if (quit_level_editor = false)
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		#region /*Inputed Name Text*/
+		#region /* inputed Name Text*/
 		if (name_enter_blink< 1)
 		{
 			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
@@ -431,7 +431,7 @@ if (quit_level_editor = false)
 		{
 			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name), global.default_text_size, c_black, c_white, 1);
 		}
-		#endregion /*Inputed Name Text END*/
+		#endregion /* inputed Name Text END*/
 		
 		#region /*Limit Name Input Length for Level Name*/
 		draw_set_halign(fa_center);
@@ -583,7 +583,7 @@ if (quit_level_editor = false)
 	if (show_icons_at_bottom = true)
 	and (drag_object = false)
 	and (pause = false)
-	or(global.always_show_level_editor_buttons= true)
+	or(global.always_show_level_editor_buttons = true)
 	and (drag_object = false)
 	and (pause = false)
 	{

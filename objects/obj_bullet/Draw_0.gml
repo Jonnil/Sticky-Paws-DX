@@ -1,17 +1,17 @@
-#region /*If enemies are disabled, destroy this object*/
-if (global.activate_cheats = true)
-and (global.enable_enemies = false)
+#region /* if enemies are disabled, destroy this object*/
+if (global.assist_enable = true)
+and (global.assist_enable_enemies = false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object END*/
+#endregion /* if enemies are disabled, destroy this object END*/
 
 if (die_volting = - 1)
 or(die_volting = +1)
 {
 	if (die_volting = - 1)
 	{
-		image_angle-= 20;
+		image_angle -= 20;
 		hspeed = +4;
 	}
 	else
@@ -68,7 +68,7 @@ and (image_xscale > 0)
 }
 draw_xscale = lerp(draw_xscale, 1, 0.075);
 draw_yscale = lerp(draw_yscale, 1, 0.075);
-draw_sprite_ext(sprite_index, image_index, x, y,draw_xscale *sign(image_xscale),draw_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale *sign(image_xscale), draw_yscale, image_angle, image_blend, image_alpha);
 if (draw_xscale >= 0.8)
 and (asset_get_type("obj_wall") == asset_object)
 {

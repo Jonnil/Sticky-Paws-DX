@@ -19,13 +19,13 @@ and (has_seen_player = false)
 	has_seen_player = true; /*Only see player if player is close and in line of sight*/
 }
 
-#region /*If enemies are disabled, destroy this object*/
-if (global.activate_cheats = true)
-and (global.enable_enemies = false)
+#region /* if enemies are disabled, destroy this object*/
+if (global.assist_enable = true)
+and (global.assist_enable_enemies = false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object END*/
+#endregion /* if enemies are disabled, destroy this object END*/
 
 #region /*Set the gravity*/
 gravity_direction = 270; /*Direction of the gravity*/

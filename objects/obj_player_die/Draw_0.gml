@@ -36,13 +36,13 @@ if (count = 50)
 }
 #endregion /*Start death animation, falling off screen END*/
 
-#region /*If the player is burned, have black smoke coming out*/
+#region /* if the player is burned, have black smoke coming out*/
 if (asset_get_type("spr_player_burnt") == asset_sprite)
 and (sprite_index = spr_player_burnt)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 }
-#endregion /*If the player is burned, have black smoke coming out END*/
+#endregion /* if the player is burned, have black smoke coming out END*/
 
 #region /*Play death melody*/
 if (!instance_exists(obj_player))
@@ -353,13 +353,13 @@ if (bubble = true)
 	draw_circle_color(x, y, 56, c_black, c_black, true);
 	#endregion /*Bubble END*/
 
-	#region /*If there are no more players in the room*/
+	#region /* if there are no more players in the room*/
 	if (!instance_exists(obj_player))
 	{
 		bubble = false;
 		count = 0;
 	}
-	#endregion /*If there are no more players in the room END*/
+	#endregion /* if there are no more players in the room END*/
 }
 #endregion /*Bubble END*/
 

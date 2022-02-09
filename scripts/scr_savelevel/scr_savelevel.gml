@@ -7,11 +7,11 @@ function scr_savelevel()
 		
 		if (global.level_clear_rate = "clear")
 		{
-			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "number_of_clears", ini_read_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "number_of_clears", 0) + 1); /*Increase how many times you've played this specific level*/
+			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "number_of_clears", ini_read_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "number_of_clears", 0) + 1); /* increase how many times you've played this specific level*/
 			if (global.increase_number_of_levels_cleared = true)
 			and (ini_read_string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "clear_rate", "closed") != "clear")
 			{
-				ini_write_real("Player", "number_of_levels_cleared", ini_read_real("Player", "number_of_levels_cleared", 1) + 1); /*Increase how many levels in total you have cleared*/
+				ini_write_real("Player", "number_of_levels_cleared", ini_read_real("Player", "number_of_levels_cleared", 1) + 1); /* increase how many levels in total you have cleared*/
 			}
 			ini_write_string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "clear_rate", "clear"); /*Make the level clear after checking number_of_levels_cleared*/
 		}

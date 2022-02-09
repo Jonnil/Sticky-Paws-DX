@@ -37,6 +37,7 @@ else
 draw_xscale = 0;
 draw_yscale = 1;
 flat = false;
+stomped_delay = 0;
 die = false;
 die_volting = false;
 if asset_get_type("snd_enemyvoice_defeated") == asset_sound

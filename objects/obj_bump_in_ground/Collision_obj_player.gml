@@ -106,7 +106,7 @@ if (place_meeting(x, y- 8, other))
 			if (asset_get_type("obj_heart_balloon") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_heart_balloon);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_heart_balloon);
 				with(obj)
 				{
 					bounceup = true;
@@ -122,7 +122,7 @@ if (place_meeting(x, y- 8, other))
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup);
 				with(obj)
 				{
 					number_of_extra_lives = 1;
@@ -139,7 +139,7 @@ if (place_meeting(x, y- 8, other))
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup);
 				with(obj)
 				{
 					number_of_extra_lives = 2;
@@ -156,7 +156,7 @@ if (place_meeting(x, y- 8, other))
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_extra_life_pickup);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup);
 				with(obj)
 				{
 					number_of_extra_lives = 3;
@@ -257,13 +257,13 @@ if (place_meeting(x, y- 8, other))
 		}
 		#endregion /*Big Collectible 5 END*/
 		
-		#region /*Invincibility Powerup*/
+		#region /* invincibility Powerup*/
 		if (type_of_bump = "invincibility_powerup")
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x, bbox_top- 16, 0, obj_invincibility_powerup);
+				obj = instance_create_depth(x, bbox_top - 16, 0, obj_invincibility_powerup);
 				with(obj)
 				{
 					bounceup = true;
@@ -271,7 +271,7 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /*Invincibility Powerup END*/
+		#endregion /* invincibility Powerup END*/
 		
 		instance_destroy();
 	}

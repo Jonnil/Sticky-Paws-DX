@@ -19,7 +19,7 @@ if (global.narrator >= 0)
 	menuvoice_4player = noone;
 	menuvoice_leveleditor = noone;
 	menuvoice_leveleditor_denied = noone;
-	voice_options= noone;
+	voice_options = noone;
 }
 
 pause_text_alpha = 0;
@@ -41,7 +41,7 @@ can_remap_key = false;
 open_dropdown = false;
 menu_joystick_delay = 0;
 can_navigate = true;
-remap_y_pos= 0;
+remap_y_pos = 0;
 menu_cursor_index = 0;
 in_settings = false;
 old_selected_resource_pack = global.selected_resourcepack;

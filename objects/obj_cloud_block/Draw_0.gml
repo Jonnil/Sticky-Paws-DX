@@ -26,7 +26,7 @@ if (asset_get_type("spr_wall") == asset_sprite)
 
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
-draw_sprite_ext(sprite_index, image_index, x, y,draw_xscale *sign(image_xscale),draw_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale *sign(image_xscale), draw_yscale, image_angle, image_blend, image_alpha);
 
 if (!place_meeting(x - 1, y, obj_cloud_block))
 and (!place_meeting(x + 1, y, obj_cloud_block))

@@ -1,18 +1,20 @@
-#region /*If enemies are disabled, destroy this object*/
-if (global.activate_cheats = true)
-and (global.enable_enemies = false)
+depth = +9;
+
+#region /* if enemies are disabled, destroy this object*/
+if (global.assist_enable = true)
+and (global.assist_enable_enemies = false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object END*/
+#endregion /* if enemies are disabled, destroy this object END*/
 
-if (die_volting = - 1)
+if (die_volting = -1)
 or(die_volting = +1)
 {
 	depth = -900;
-	if (die_volting = - 1)
+	if (die_volting = -1)
 	{
-		image_angle-= 20;
+		image_angle -= 20;
 		hspeed = +4;
 	}
 	else
@@ -20,15 +22,18 @@ or(die_volting = +1)
 		image_angle += 20;
 		hspeed = -4;
 	}
+	
 	#region /*Set the gravity*/
 	gravity_direction = 270; /*Direction of the gravity*/
 	gravity = 0.5; /*The gravity*/
 	#endregion /*Set the gravity END*/
 	
+	sprite_used = "stand";
+	sprite_index = global.resourcepack_sprite_big_stationary_enemy;
 }
 else
 {
-	
+
 	#region /*Set the gravity*/
 	gravity_direction = 270; /*Direction of the gravity*/
 	if (asset_get_type("obj_wall") == asset_object)
@@ -52,51 +57,50 @@ else
 	}
 	#endregion /*Set the gravity END*/
 	
-	if (image_xscale < 0)
-	{
-		hspeed = - 1;
-	}
-	else
-	{
-		hspeed = +1;
-	}
 	if (flat = true)
 	{
 		speed = 0;
-		image_speed = 0.5;
-		sprite_used = "flattened";
-		sprite_index = global.resourcepack_sprite_basic_enemy_flattened;
 		if (image_index > image_number - 1)
 		{
-		effect_create_above(ef_smoke, x, y, 2, c_white);
-		instance_destroy();
+			image_speed = 0;
 		}
-	}
-}
-if (flat = false)
-{
-	if (distance_to_object(obj_player)<256)
-	{
-		sprite_used = "angry";
-		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
+		else
+		{
+			image_speed = 0.5;
+		}
+		sprite_used = "flattened";
+		sprite_index = global.resourcepack_sprite_big_stationary_enemy_flattened;
+		if (image_index > image_number - 1)
+		{
+			effect_create_above(ef_smoke, x, y, 2, c_white);
+			instance_destroy();
+		}
 	}
 	else
 	{
 		sprite_used = "stand";
-		sprite_index = global.resourcepack_sprite_basic_enemy;
+		sprite_index = global.resourcepack_sprite_big_stationary_enemy;
 	}
 }
+mask_index = mask;
 
-#region /*Turn around*/
-if (position_meeting(bbox_left - 1, y, obj_wall))
+if (asset_get_type("obj_player") == asset_object)
 {
-	image_xscale = +1;
+	if (instance_number(obj_player) > 0)
+	{
+		if (die = false)
+		{
+			if (instance_nearest(x, y, obj_player).x < x)
+			{
+				image_xscale = -1;
+			}
+			else
+			{
+				image_xscale = +1;
+			}
+		}
+	}
 }
-if (position_meeting(bbox_right + 1, y, obj_wall))
-{
-	image_xscale = -1;
-}
-#endregion /*Turn around END*/
 
 #region /*Kill enemy if it's inside the wall*/
 if (position_meeting(x, y, obj_wall))
