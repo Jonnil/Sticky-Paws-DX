@@ -54,6 +54,21 @@ else
 	
 	if (flat = true)
 	{
+		if (instance_exists(obj_player))
+		and (sliding_along_ground = 0)
+		and (stomped_delay = 0)
+		and (instance_nearest(x, y, obj_player).hold_item_in_hands = 0)
+		and (instance_nearest(x, y, obj_player).key_dive_hold)
+		{
+			if (place_meeting(x - 4, y, obj_player))
+			or (place_meeting(x + 4, y, obj_player))
+			or (place_meeting(x, y + 4, obj_player))
+			{
+				instance_nearest(x, y, obj_player).hold_item_in_hands = "enemy_bowlingball";
+				instance_destroy();
+			}
+		}
+		
 		image_speed = 0.5;
 		sprite_used = "flattened";
 		sprite_index = global.resourcepack_sprite_enemy_bowlingball_stomped;
@@ -61,6 +76,294 @@ else
 		if (stomped_delay > 0)
 		{
 			stomped_delay -= 1;
+		}
+		
+		if (stomped_delay = 0)
+		{
+			if (instance_exists(obj_player))
+			and (position_meeting(bbox_left - 1, y, obj_player))
+			and (instance_nearest(x, y, obj_player).hspeed >= +8)
+			and (instance_nearest(x, y, obj_player).x < x)
+			and (sliding_along_ground = 0)
+			and (flat = true)
+			{
+				instance_nearest(x, y, obj_player).dive = false;
+				sliding_along_ground = +1;
+				sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
+				stomped_delay = 10;
+				
+				if (number_of_times_stomped < 10)
+				{
+					number_of_times_stomped += 1;
+					
+					#region /* 1 Coin*/
+					if (asset_get_type("obj_basic_collectible") == asset_object)
+					{
+						var obj;
+						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+						with(obj)
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounceup = true;
+						}
+					}
+					#endregion /* 1 Coin END*/
+				
+					#region /* 200 Score*/
+					score += 200;
+					if (asset_get_type("obj_scoreup") == asset_object)
+					{
+						obj = instance_create_depth(x, y, 0, obj_scoreup);
+						with(obj)
+						{
+							scoreup = 200;
+						}
+					}
+					#endregion /* 200 Score END*/
+				
+					#region /* 1-UP*/
+					if (global.number_of_chain_kills_for_1up <= 1)
+					{
+						lives+= 1;
+						global.hud_show_lives = true;
+						if (asset_get_type("snd_1up") == asset_sound)
+						{
+							audio_play_sound(snd_1up, 0, 0);
+							audio_sound_gain(snd_1up, global.sfx_volume, 0);
+						}
+						if (asset_get_type("obj_scoreup") == asset_object)
+						{
+							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
+							with(obj)
+							{
+								scoreup = "1-UP";
+							}
+						}
+					}
+					#endregion /* 1-UP END*/
+					
+				}
+				
+				if (asset_get_type("snd_stomp") == asset_sound)
+				{
+					audio_play_sound(snd_stomp, 0, 0);
+					audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+					audio_sound_pitch(snd_stomp, 1);
+				}
+			}
+			else
+			if (instance_exists(obj_player))
+			and (position_meeting(bbox_right + 1, y, obj_player))
+			and (instance_nearest(x, y, obj_player).hspeed <= -8)
+			and (sliding_along_ground = 0)
+			and (flat = true)
+			{
+				sliding_along_ground = -1;
+				sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
+				stomped_delay = 10;
+				
+				if (number_of_times_stomped < 10)
+				{
+					number_of_times_stomped += 1;
+					
+					#region /* 1 Coin*/
+					if (asset_get_type("obj_basic_collectible") == asset_object)
+					{
+						var obj;
+						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+						with(obj)
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounceup = true;
+						}
+					}
+					#endregion /* 1 Coin END*/
+				
+					#region /* 200 Score*/
+					score += 200;
+					if (asset_get_type("obj_scoreup") == asset_object)
+					{
+						obj = instance_create_depth(x, y, 0, obj_scoreup);
+						with(obj)
+						{
+							scoreup = 200;
+						}
+					}
+					#endregion /* 200 Score END*/
+				
+					#region /* 1-UP*/
+					if (global.number_of_chain_kills_for_1up <= 1)
+					{
+						lives+= 1;
+						global.hud_show_lives = true;
+						if (asset_get_type("snd_1up") == asset_sound)
+						{
+							audio_play_sound(snd_1up, 0, 0);
+							audio_sound_gain(snd_1up, global.sfx_volume, 0);
+						}
+						if (asset_get_type("obj_scoreup") == asset_object)
+						{
+							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
+							with(obj)
+							{
+								scoreup = "1-UP";
+							}
+						}
+					}
+					#endregion /* 1-UP END*/
+					
+				}
+				
+				if (asset_get_type("snd_stomp") == asset_sound)
+				{
+					audio_play_sound(snd_stomp, 0, 0);
+					audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+					audio_sound_pitch(snd_stomp, 1);
+				}
+			}
+			else
+			if (instance_exists(obj_player))
+			and (position_meeting(bbox_left - 1, y, obj_player))
+			and (instance_nearest(x, y, obj_player).x < x)
+			and (sliding_along_ground = 0)
+			and (flat = true)
+			{
+				sliding_along_ground = +1;
+				sliding_along_ground_speed = 8;
+				stomped_delay = 10;
+				
+				if (number_of_times_stomped < 10)
+				{
+					number_of_times_stomped += 1;
+					
+					#region /* 1 Coin*/
+					if (asset_get_type("obj_basic_collectible") == asset_object)
+					{
+						var obj;
+						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+						with(obj)
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounceup = true;
+						}
+					}
+					#endregion /* 1 Coin END*/
+				
+					#region /* 200 Score*/
+					score += 200;
+					if (asset_get_type("obj_scoreup") == asset_object)
+					{
+						obj = instance_create_depth(x, y, 0, obj_scoreup);
+						with(obj)
+						{
+							scoreup = 200;
+						}
+					}
+					#endregion /* 200 Score END*/
+				
+					#region /* 1-UP*/
+					if (global.number_of_chain_kills_for_1up <= 1)
+					{
+						lives+= 1;
+						global.hud_show_lives = true;
+						if (asset_get_type("snd_1up") == asset_sound)
+						{
+							audio_play_sound(snd_1up, 0, 0);
+							audio_sound_gain(snd_1up, global.sfx_volume, 0);
+						}
+						if (asset_get_type("obj_scoreup") == asset_object)
+						{
+							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
+							with(obj)
+							{
+								scoreup = "1-UP";
+							}
+						}
+					}
+					#endregion /* 1-UP END*/
+					
+				}
+				
+				if (asset_get_type("snd_stomp") == asset_sound)
+				{
+					audio_play_sound(snd_stomp, 0, 0);
+					audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+					audio_sound_pitch(snd_stomp, 1);
+				}
+			}
+			else
+			if (instance_exists(obj_player))
+			and (position_meeting(bbox_right + 1, y, obj_player))
+			and (sliding_along_ground = 0)
+			and (flat = true)
+			{
+				sliding_along_ground = -1;
+				sliding_along_ground_speed = 8;
+				stomped_delay = 10;
+				
+				if (number_of_times_stomped < 10)
+				{
+					number_of_times_stomped += 1;
+					
+					#region /* 1 Coin*/
+					if (asset_get_type("obj_basic_collectible") == asset_object)
+					{
+						var obj;
+						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+						with(obj)
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounceup = true;
+						}
+					}
+					#endregion /* 1 Coin END*/
+				
+					#region /* 200 Score*/
+					score += 200;
+					if (asset_get_type("obj_scoreup") == asset_object)
+					{
+						obj = instance_create_depth(x, y, 0, obj_scoreup);
+						with(obj)
+						{
+							scoreup = 200;
+						}
+					}
+					#endregion /* 200 Score END*/
+				
+					#region /* 1-UP*/
+					if (global.number_of_chain_kills_for_1up <= 1)
+					{
+						lives+= 1;
+						global.hud_show_lives = true;
+						if (asset_get_type("snd_1up") == asset_sound)
+						{
+							audio_play_sound(snd_1up, 0, 0);
+							audio_sound_gain(snd_1up, global.sfx_volume, 0);
+						}
+						if (asset_get_type("obj_scoreup") == asset_object)
+						{
+							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
+							with(obj)
+							{
+								scoreup = "1-UP";
+							}
+						}
+					}
+					#endregion /* 1-UP END*/
+					
+				}
+				
+				if (asset_get_type("snd_stomp") == asset_sound)
+				{
+					audio_play_sound(snd_stomp, 0, 0);
+					audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+					audio_sound_pitch(snd_stomp, 1);
+				}
+			}
 		}
 	}
 }
@@ -123,13 +426,30 @@ and (die = false)
 	hspeed = 0;
 }
 
+if (place_meeting(x, y - 1, obj_wall))
+and (die = false)
+{
+	vspeed = 0;
+}
+
 #region /*Kill enemy if it's inside the wall*/
 if (position_meeting(x, y, obj_wall))
 and (die = false)
 and (draw_xscale >= 0.8)
 {
-	flat = false;
-	die = true;
-	die_volting = true;
+	stuck_in_wall_counter += 1;
+	if (stuck_in_wall_counter >= 10)
+	{
+		flat = false;
+		die = true;
+		die_volting = true;
+	}
+}
+else
+{
+	if (stuck_in_wall_counter > 0)
+	{
+		stuck_in_wall_counter -= 1;
+	}
 }
 #endregion /*Kill enemy if it's inside the wall END*/

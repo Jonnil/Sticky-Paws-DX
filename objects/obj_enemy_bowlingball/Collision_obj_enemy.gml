@@ -1,6 +1,7 @@
 #region /*Turn around*/
 if (die = false)
 and (sliding_along_ground = 0)
+and (other.die = false)
 {
 	while(place_meeting(x, y, other))
 	{
@@ -8,12 +9,10 @@ and (sliding_along_ground = 0)
 		y += lengthdir_y(0.5, point_direction(other.x, other.y, x, y));
 	}
 	if (position_meeting(bbox_left - 1, y, other))
-	and (other.die = false)
 	{
 		image_xscale = +1;
 	}
 	if (position_meeting(bbox_right + 1, y, other))
-	and (other.die = false)
 	{
 		image_xscale = -1;
 	}
@@ -21,7 +20,9 @@ and (sliding_along_ground = 0)
 #endregion /*Turn around END*/
 
 if (sliding_along_ground = +1)
+and (other.die = false)
 or (sliding_along_ground = -1)
+and (other.die = false)
 {
 	with(other)
 	{

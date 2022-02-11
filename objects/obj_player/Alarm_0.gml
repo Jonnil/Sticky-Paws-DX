@@ -8045,14 +8045,14 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	#endregion /*Acceleration on ice END*/
 	
 	#region /*Can Attack After Dive On Ground Max Value*/
-	if (ini_key_exists("values", "can_tongue_after_dive_on_ground_max_value"))
+	if (ini_key_exists("values", "can_attack_after_dive_on_ground_max_value"))
 	{
-		can_tongue_after_dive_on_ground_max_value = ini_read_real("values", "can_tongue_after_dive_on_ground_max_value", 20);
+		can_attack_after_dive_on_ground_max_value = ini_read_real("values", "can_attack_after_dive_on_ground_max_value", 20);
 	}
 	else
 	{
 		//ini_write_real("values", "number_of_jumps", 1);
-		can_tongue_after_dive_on_ground_max_value = 20;
+		can_attack_after_dive_on_ground_max_value = 20;
 	}
 	#endregion /*Can Attack After Dive On Ground Max Value END*/
 	

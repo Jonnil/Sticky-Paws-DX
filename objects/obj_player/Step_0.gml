@@ -3408,6 +3408,14 @@ if (player <= 1)
 	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 1 Key Dive Pressed END*/
 	
+	#region /*Player 1 Key Dive Hold*/
+	key_dive_hold =
+	(keyboard_check(global.player1_key_dive))
+	or(keyboard_check(global.player1_key2_dive))
+	or(gamepad_button_check(player - 1, gp_face3))
+	or(gamepad_button_check(player - 1, gp_face4));
+	#endregion /*Player 1 Key Dive Hold END*/
+	
 	#region /*Player 1 Key Jump Pressed*/
 	key_jump =
 	(keyboard_check_pressed(global.player1_key_jump))
@@ -3623,6 +3631,14 @@ if (player = 2)
 	or(gamepad_button_check_pressed(player - 1, gp_face3))
 	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 2 Key Dive Pressed END*/
+	
+	#region /*Player 2 Key Dive Hold*/
+	key_dive_hold =
+	(keyboard_check(global.player2_key_dive))
+	or(keyboard_check(global.player2_key2_dive))
+	or(gamepad_button_check(player - 1, gp_face3))
+	or(gamepad_button_check(player - 1, gp_face4));
+	#endregion /*Player 2 Key Dive Hold END*/
 	
 	#region /*Player 2 Key Jump Pressed*/
 	key_jump =
@@ -3840,6 +3856,14 @@ if (player = 3)
 	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 3 Key Dive Pressed END*/
 	
+	#region /*Player 3 Key Dive Hold*/
+	key_dive_hold =
+	(keyboard_check(global.player3_key_dive))
+	or(keyboard_check(global.player3_key2_dive))
+	or(gamepad_button_check(player - 1, gp_face3))
+	or(gamepad_button_check(player - 1, gp_face4));
+	#endregion /*Player 3 Key Dive Hold END*/
+	
 	#region /*Player 3 Key Jump Pressed*/
 	key_jump =
 	(keyboard_check_pressed(global.player3_key_jump))
@@ -4055,6 +4079,14 @@ if (player = 4)
 	or(gamepad_button_check_pressed(player - 1, gp_face3))
 	or(gamepad_button_check_pressed(player - 1, gp_face4));
 	#endregion /*Player 4 Key Dive Pressed END*/
+	
+	#region /*Player 4 Key Dive Hold*/
+	key_dive_hold =
+	(keyboard_check(global.player4_key_dive))
+	or(keyboard_check(global.player4_key2_dive))
+	or(gamepad_button_check(player - 1, gp_face3))
+	or(gamepad_button_check(player - 1, gp_face4));
+	#endregion /*Player 4 Key Dive Hold END*/
 	
 	#region /*Player 4 Key Jump Pressed*/
 	key_jump =
@@ -6737,6 +6769,7 @@ and (player <= 4)
 #region /*Dive*/
 if (allow_dive = true)
 and (can_move = true)
+and (hold_item_in_hands = 0)
 and (global.pause = false)
 {
 	if (can_dive = true)
@@ -6896,7 +6929,7 @@ and (global.pause = false)
 			{
 				dive = false;
 				dive_on_ground = 10;
-				can_tongue_after_dive_on_ground = can_tongue_after_dive_on_ground_max_value;
+				can_attack_after_dive_on_ground = can_attack_after_dive_on_ground_max_value;
 				ground_pound = false;
 				can_ground_pound = false;
 			}
@@ -6939,24 +6972,162 @@ and (global.pause = false)
 }
 #endregion /*Dive END*/
 
+#region /*Throw items in hands*/
+if (hold_item_in_hands != 0)
+{
+	if (key_dive_pressed)
+	{
+		if (key_up)
+		{
+			if (image_xscale < 0)
+			{
+				if (hold_item_in_hands = "enemy_bowlingball")
+				{
+					with(instance_create_depth(bbox_left - 16, bbox_top, 0, obj_enemy_bowlingball))
+					{
+						flat = true;
+						sliding_along_ground = 0;
+						stomped_delay = 10;
+						vspeed = -20;
+						image_xscale = -1;
+					}
+				}
+			}
+			else
+			if (image_xscale > 0)
+			{
+				if (hold_item_in_hands = "enemy_bowlingball")
+				{
+					with(instance_create_depth(bbox_right + 16, bbox_top, 0, obj_enemy_bowlingball))
+					{
+						flat = true;
+						sliding_along_ground = 0;
+						stomped_delay = 10;
+						vspeed = -20;
+						image_xscale = +1;
+					}
+				}
+			}
+		}
+		else
+		if (key_down)
+		{
+			if (image_xscale < 0)
+			{
+				if (hold_item_in_hands = "enemy_bowlingball")
+				{
+					if (!position_meeting(bbox_left - 32, y, obj_wall))
+					{
+						with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
+						{
+							flat = true;
+							sliding_along_ground = 0;
+							stomped_delay = 10;
+							hspeed = -1;
+							vspeed = 0;
+							image_xscale = -1;
+						}
+					}
+					else
+					{
+						with(instance_create_depth(x, y, 0, obj_enemy_bowlingball))
+						{
+							flat = true;
+							sliding_along_ground = 0;
+							stomped_delay = 10;
+							hspeed = -1;
+							vspeed = 0;
+							image_xscale = -1;
+						}
+					}
+				}
+			}
+			else
+			if (image_xscale > 0)
+			{
+				if (hold_item_in_hands = "enemy_bowlingball")
+				{
+					if (!position_meeting(bbox_right + 32, y, obj_wall))
+					{
+						with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
+						{
+							flat = true;
+							sliding_along_ground = 0;
+							stomped_delay = 10;
+							hspeed = +1;
+							vspeed = 0;
+							image_xscale = +1;
+						}
+					}
+					else
+					{
+						with(instance_create_depth(x, y, 0, obj_enemy_bowlingball))
+						{
+							flat = true;
+							sliding_along_ground = 0;
+							stomped_delay = 10;
+							hspeed = +1;
+							vspeed = 0;
+							image_xscale = +1;
+						}
+					}
+				}
+			}
+		}
+		else
+		if (key_left)
+		or (image_xscale < 0)
+		{
+			if (hold_item_in_hands = "enemy_bowlingball")
+			{
+				with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
+				{
+					flat = true;
+					sliding_along_ground = -1;
+					stomped_delay = 10;
+					image_xscale = -1;
+				}
+			}
+		}
+		else
+		if (key_right)
+		or (image_xscale > 0)
+		{
+			if (hold_item_in_hands = "enemy_bowlingball")
+			{
+				with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
+				{
+					flat = true;
+					sliding_along_ground = +1;
+					stomped_delay = 10;
+					image_xscale = +1;
+				}
+			}
+		}
+		hold_item_in_hands = 0;
+		dive = false;
+	}
+}
+#endregion /*Throw items in hands END*/
+
 #region /*Can Attack After Dive On Ground*/
-if (can_tongue_after_dive_on_ground > 0)
+if (can_attack_after_dive_on_ground > 0)
 and (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall))
-or(can_tongue_after_dive_on_ground > 0)
+or(can_attack_after_dive_on_ground > 0)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or(can_tongue_after_dive_on_ground > 0)
+or(can_attack_after_dive_on_ground > 0)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or(can_tongue_after_dive_on_ground > 0)
+or(can_attack_after_dive_on_ground > 0)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
-	can_tongue_after_dive_on_ground -= 1;
+	can_attack_after_dive_on_ground -= 1;
 	if (key_jump)
 	{
-		can_tongue_after_dive_on_ground = false;
+		can_attack_after_dive_on_ground = false;
 	}
 }
 #endregion /*Can Attack After Dive On Ground END*/
@@ -8497,6 +8668,7 @@ and (place_meeting(x, y, obj_horizontal_rope))
 and (instance_nearest(x, y, obj_horizontal_rope).active = true)
 and (!place_meeting(x, y + 1, obj_wall))
 and (in_water = false)
+and (hold_item_in_hands = 0)
 {
 	if (horizontal_rope_climb = false)
 	and (can_climb_horizontal_rope_cooldown <= 0)

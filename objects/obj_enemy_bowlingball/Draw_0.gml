@@ -9,11 +9,10 @@ else
 	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, image_index, x, y, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
 }
 if (sprite_index > noone)
+and (sprite_index != spr_block_black)
 {
 	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * image_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
 }
-
-draw_text(x, y-32, string(number_of_times_stomped))
 
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);

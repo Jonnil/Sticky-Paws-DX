@@ -12,7 +12,36 @@ if (bounceup = false)
 	or(place_meeting(bbox_right + 4, y, obj_player))
 	and (!place_meeting(x + 4, y, obj_wall))
 	and (obj_player.dive = true)
+	
+	or(position_meeting(bbox_left - 8, y, obj_enemy_bowlingball))
+	and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
+	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
+	or(position_meeting(bbox_right + 8, y, obj_enemy_bowlingball))
+	and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
+	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
+	or(place_meeting(x, bbox_bottom + 8, obj_enemy_bowlingball))
+	and (instance_nearest(x, y, obj_enemy_bowlingball).vspeed < 0)
+	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 	{
+		if (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <= 1)
+		and (position_meeting(bbox_right + 8, y, obj_enemy_bowlingball))
+		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
+		{
+			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = +1;
+		}
+		else
+		if (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground >= 1)
+		and (position_meeting(bbox_left - 8, y, obj_enemy_bowlingball))
+		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
+		{
+			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = -1;
+		}
+		else
+		if (instance_nearest(x, y, obj_enemy_bowlingball).vspeed < 0)
+		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
+		{
+			instance_nearest(x, y, obj_enemy_bowlingball).vspeed = 0;
+		}
 		if (empty = false)
 		{
 			bounceup = true;

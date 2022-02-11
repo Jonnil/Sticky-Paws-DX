@@ -7,15 +7,16 @@ if (die = false)
 		other.spring_animation = 0;
 	}
 	if (other.invincible > 0)
-	or(other.takendamage > 0)
-	or(other.dive = true)
-	or(other.can_tongue_after_dive_on_ground > 0)
+	//or(other.takendamage > 0)
+	//or(other.dive = true)
+	//or(other.can_attack_after_dive_on_ground > 0)
 	{
 		if (other.key_jump_hold)
 		{
 			other.dive = false;
 			with(other)
 			{
+				dive = false;
 				if (simple_controls = false)
 				{
 					vspeed = -triple_jump_height;
@@ -26,6 +27,7 @@ if (die = false)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{
+				dive = false;
 				chain_reaction += 1;
 				midair_jumps_left = number_of_jumps - 1;
 				can_dive = true;
@@ -52,10 +54,11 @@ if (die = false)
 			#region /*Rewards*/
 			if (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).chain_reaction<= 1)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			or(other.chain_reaction<= 1)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			{
+				number_of_times_stomped += 1;
 				#region /* 1 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
@@ -69,7 +72,7 @@ if (die = false)
 					}
 				}
 				#endregion /* 1 Coin END*/
-	
+				
 				#region /* 200 Score*/
 				score += 200;
 				if (asset_get_type("obj_scoreup") == asset_object)
@@ -81,7 +84,7 @@ if (die = false)
 					}
 				}
 				#endregion /* 200 Score END*/
-	
+				
 				#region /* 1-UP*/
 				if (global.number_of_chain_kills_for_1up <= 1)
 				{
@@ -102,7 +105,7 @@ if (die = false)
 					}
 				}
 				#endregion /* 1-UP END*/
-	
+				
 				if (asset_get_type("snd_stomp") == asset_sound)
 				{
 					audio_play_sound(snd_stomp, 0, 0);
@@ -113,10 +116,11 @@ if (die = false)
 			else
 			if (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).chain_reaction = 2)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			or(other.chain_reaction = 2)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			{
+				number_of_times_stomped += 1;
 				#region /* 2 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
@@ -182,10 +186,11 @@ if (die = false)
 			else
 			if (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).chain_reaction = 3)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			or(other.chain_reaction = 3)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			{
+				number_of_times_stomped += 1;
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
@@ -267,10 +272,11 @@ if (die = false)
 			else
 			if (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).chain_reaction = 4)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			or(other.chain_reaction = 4)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			{
+				number_of_times_stomped += 1;
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
@@ -352,10 +358,11 @@ if (die = false)
 			else
 			if (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).chain_reaction = 5)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			or(other.chain_reaction = 5)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			{
+				number_of_times_stomped += 1;
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
@@ -437,10 +444,11 @@ if (die = false)
 			else
 			if (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).chain_reaction = 6)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			or(other.chain_reaction = 6)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			{
+				number_of_times_stomped += 1;
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
@@ -522,10 +530,11 @@ if (die = false)
 			else
 			if (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).chain_reaction = 7)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			or(other.chain_reaction = 7)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			{
+				number_of_times_stomped += 1;
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
@@ -607,10 +616,11 @@ if (die = false)
 			else
 			if (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).chain_reaction >= 8)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			or(other.chain_reaction >= 8)
-			/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+			and (number_of_times_stomped < 10) and (stomped_delay = 0)
 			{
+				number_of_times_stomped += 1;
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
@@ -681,59 +691,6 @@ if (die = false)
 
 		}
 	}
-	if (stomped_delay = 0)
-	{
-		if (instance_exists(obj_player))
-		and (place_meeting(x, y, obj_player))
-		and (instance_nearest(x, y, obj_player).hspeed >= +8)
-		and (instance_nearest(x, y, obj_player).x < x)
-		and (sliding_along_ground = 0)
-		and (flat = true)
-		{
-			sliding_along_ground = +1;
-			sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
-			stomped_delay = 10;
-		}
-		else
-		if (instance_exists(obj_player))
-		and (place_meeting(x, y, obj_player))
-		and (instance_nearest(x, y, obj_player).hspeed <= -8)
-		and (sliding_along_ground = 0)
-		and (flat = true)
-		{
-			sliding_along_ground = -1;
-			sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
-			stomped_delay = 10;
-		}
-		else
-		if (instance_exists(obj_player))
-		and (place_meeting(x, y, obj_player))
-		and (instance_nearest(x, y, obj_player).x < x)
-		and (sliding_along_ground = 0)
-		and (flat = true)
-		{
-			sliding_along_ground = +1;
-			sliding_along_ground_speed = 8;
-			stomped_delay = 10;
-		}
-		else
-		if (instance_exists(obj_player))
-		and (place_meeting(x, y, obj_player))
-		and (sliding_along_ground = 0)
-		and (flat = true)
-		{
-			sliding_along_ground = -1;
-			sliding_along_ground_speed = 8;
-			stomped_delay = 10;
-		}
-		else
-		if (sliding_along_ground < 0)
-		or (sliding_along_ground > 0)
-		{
-			sliding_along_ground = 0;
-			stomped_delay = 10;
-		}
-	}
 	if (die_volting = false)
 	{
 		if (other.vspeed > 0)
@@ -760,6 +717,7 @@ if (die = false)
 				}
 				with(instance_nearest(x, y, obj_player))
 				{
+					dive = false;
 					chain_reaction += 1;
 					midair_jumps_left = number_of_jumps - 1;
 					can_dive = true;
@@ -776,10 +734,11 @@ if (die = false)
 				#region /*Rewards*/
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction<= 1)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction<= 1)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 1 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -837,10 +796,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 2)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 2)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 2 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -906,10 +866,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 3)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 3)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -991,10 +952,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 4)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 4)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1076,10 +1038,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 5)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 5)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1161,10 +1124,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 6)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 6)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1246,10 +1210,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 7)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 7)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1331,10 +1296,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction >= 8)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction >= 8)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1551,6 +1517,7 @@ if (die = false)
 				global.enemy_counter += 1;
 				with(instance_nearest(x, y, obj_player))
 				{
+					dive = false;
 					chain_reaction += 1;
 					midair_jumps_left = number_of_jumps - 1;
 					can_dive = true;
@@ -1567,10 +1534,11 @@ if (die = false)
 				#region /*Rewards*/
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction<= 1)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction<= 1)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 1 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1628,10 +1596,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 2)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 2)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 2 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1697,10 +1666,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 3)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 3)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1782,10 +1752,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 4)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 4)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1867,10 +1838,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 5)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 5)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -1952,10 +1924,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 6)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 6)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -2037,10 +2010,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction = 7)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction = 7)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
@@ -2122,10 +2096,11 @@ if (die = false)
 				else
 				if (instance_exists(obj_player))
 				and (instance_nearest(x, y, obj_player).chain_reaction >= 8)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				or(other.chain_reaction >= 8)
-				/*and (number_of_times_stomped < 3) and (stomped_delay = 0)*/
+				and (number_of_times_stomped < 10) and (stomped_delay = 0)
 				{
+					number_of_times_stomped += 1;
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{

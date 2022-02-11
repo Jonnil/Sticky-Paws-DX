@@ -11,7 +11,7 @@ if (other.vspeed >= 0)
 if (other.invincible > 0)
 or(other.takendamage > 0)
 or(other.dive = true)
-or(other.can_tongue_after_dive_on_ground > 0)
+or(other.can_attack_after_dive_on_ground > 0)
 {
 	if (other.key_jump_hold)
 	{

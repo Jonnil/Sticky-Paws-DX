@@ -1,4 +1,5 @@
-if (die_volting = 0)
+if (die_volting = false)
+or (die = false)
 {
 	#region /*Push the enemy out of the solid object*/
 	if (position_meeting(x, bbox_bottom + 1, other))

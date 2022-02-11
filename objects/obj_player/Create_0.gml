@@ -490,6 +490,7 @@ intro_animation_sprite = noone; /*When there is a intro animation, the sprites f
 intro_animation_image_index = 0; /* image index of intro animation*/
 #endregion /* intro Animation Variables END*/
 
+hold_item_in_hands = false; /*If the character is holding any items in their hands or not*/
 current_file = global.file;
 assist_invincible = false;
 buffer_jump = 0; /*Jump buffer timer, set to 0*/
@@ -502,8 +503,8 @@ can_ledge_grab = true;
 can_tongue = true;
 dive = false;
 dive_on_ground = 0;
-can_tongue_after_dive_on_ground = 0; /*When landing on ground after dive, you should be able to still kill enemies for some frames, otherwise it feels unfair if you miss your dive a pixel away*/
-can_tongue_after_dive_on_ground_max_value = 20; /*This is the value that the can_tongue_after_dive_on_ground variable gets set to when landing on ground*/
+can_attack_after_dive_on_ground = 0; /*When landing on ground after dive, you should be able to still kill enemies for some frames, otherwise it feels unfair if you miss your dive a pixel away*/
+can_attack_after_dive_on_ground_max_value = 20; /*This is the value that the can_attack_after_dive_on_ground variable gets set to when landing on ground*/
 double_jump_depleted_blink = 0;
 ground_pound = false;
 hspeed_dir = 1;

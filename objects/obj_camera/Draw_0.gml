@@ -764,6 +764,7 @@ if (save_level_as_png = false)
 	if (allow_iris = true)
 	{
 		if (delay <= 1)
+		and (global.actually_play_edited_level = true)
 		{
 			/*Makes the screen black when starting a level so you don't see the level loading in. Also make sure this black rectangle is bigger than the level, in case the level is smaller than the view size*/
 			draw_rectangle_color(0, 0, room_width* 3, room_height* 3, c_black, c_black, c_black, c_black, false);
