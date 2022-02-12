@@ -7,9 +7,6 @@ if (die = false)
 		other.spring_animation = 0;
 	}
 	if (other.invincible > 0)
-	//or(other.takendamage > 0)
-	//or(other.dive = true)
-	//or(other.can_attack_after_dive_on_ground > 0)
 	{
 		if (other.key_jump_hold)
 		{
@@ -34,11 +31,13 @@ if (die = false)
 			}
 			if (other.x < x)
 			{
+				die = true;
 				die_volting = - 1;
 				vspeed = - 8;
 			}
 			else
 			{
+				die = true;
 				die_volting = +1;
 				vspeed = - 8;
 			}
@@ -1506,8 +1505,15 @@ if (die = false)
 						}
 					}
 				}
+				if (coil_spring = true)
+				{
+					coil_spring = false;
+				}
+				else
+				{
+					flat = true;
+				}
 				stomped_delay = 10;
-				flat = true;
 				image_index = 0;
 			}
 			else

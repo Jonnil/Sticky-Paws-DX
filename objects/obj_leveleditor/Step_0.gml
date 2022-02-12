@@ -156,16 +156,6 @@ or (global.full_level_map_screenshot = true)
 		{
 			
 			#region /*Save Thumbnail*/
-			if (global.select_level_index >= 1)
-			and (global.create_level_from_template = false)
-			{
-				file_delete(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png")
-			}
-			else
-			if (global.level_name != "")
-			{
-				file_delete(working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png")
-			}
 			var thumbnail_sprite;
 			thumbnail_sprite = sprite_create_from_surface(application_surface, camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
 			if (global.select_level_index >= 1)

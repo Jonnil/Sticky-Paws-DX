@@ -14,42 +14,47 @@ if (bounceup = false)
 		or(place_meeting(bbox_right, y, obj_player))
 		or(place_meeting(x, bbox_top, obj_player))
 		or(place_meeting(x, bbox_bottom, obj_player))
+		or(asset_get_type("obj_enemy_bowlingball") == asset_object)
+		and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
+		and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
 		{
 			if (asset_get_type("obj_wall") == asset_object)
-				and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+			and (instance_exists(obj_player))
+			and (instance_exists(obj_wall))
+			and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+			{
+				effect_create_above(ef_ring, x, y, 0, c_white);
+				score += 200;
+				global.hud_show_score = true;
+				if (asset_get_type("obj_camera") == asset_object)
+					if (instance_exists(obj_camera))
+					{
+						with(obj_camera)
+						{
+							hud_show_score_timer = global.hud_hide_time * 60;
+						}
+					}
+				with(instance_nearest(x, y, obj_player))
 				{
-					effect_create_above(ef_ring, x, y, 0, c_white);
-					score += 200;
-					global.hud_show_score = true;
-					if (asset_get_type("obj_camera") == asset_object)
-						if (instance_exists(obj_camera))
-						{
-							with(obj_camera)
-							{
-								hud_show_score_timer = global.hud_hide_time * 60;
-							}
-						}
-					with(instance_nearest(x, y, obj_player))
-					{
-						basic_collectibles += 1;
-					}
-					global.basic_collectibles += 1;
-					global.hud_show_basic_collectibles = true;
-					if (asset_get_type("obj_camera") == asset_object)
-						and (instance_exists(obj_camera))
-						{
-							with(obj_camera)
-							{
-								hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
-							}
-						}
-					if (asset_get_type("snd_coin") == asset_sound)
-					{
-						audio_play_sound(snd_coin, 0, 0);
-						audio_sound_gain(snd_coin, global.sfx_volume, 0);
-					}
-					instance_destroy();
+					basic_collectibles += 1;
 				}
+				global.basic_collectibles += 1;
+				global.hud_show_basic_collectibles = true;
+				if (asset_get_type("obj_camera") == asset_object)
+					and (instance_exists(obj_camera))
+					{
+						with(obj_camera)
+						{
+							hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
+						}
+					}
+				if (asset_get_type("snd_coin") == asset_sound)
+				{
+					audio_play_sound(snd_coin, 0, 0);
+					audio_sound_gain(snd_coin, global.sfx_volume, 0);
+				}
+				instance_destroy();
+			}
 		}
 	}
 }
@@ -80,13 +85,13 @@ if (bounceup = true)
 			score += 200;
 			global.hud_show_score = true;
 			if (asset_get_type("obj_camera") == asset_object)
-				and (instance_exists(obj_camera))
+			and (instance_exists(obj_camera))
+			{
+				with(obj_camera)
 				{
-					with(obj_camera)
-					{
-						hud_show_score_timer = global.hud_hide_time * 60;
-					}
+					hud_show_score_timer = global.hud_hide_time * 60;
 				}
+			}
 			if (asset_get_type("obj_player") == asset_object)
 			{
 				with(instance_nearest(x, y, obj_player))

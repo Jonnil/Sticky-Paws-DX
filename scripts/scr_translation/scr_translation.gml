@@ -1,7 +1,7 @@
 enum localization
 {
 	ar_sa/*Arabic*/
-	,id_id/* indonesian*/
+	,id_id/*Indonesian*/
 	, da_dk/*Danish*/
 	, de_de /*German*/
 	,en_gb/*British English*/
@@ -10,7 +10,7 @@ enum localization
 	,es_mx/*Mexican Spanish*/
 	, fr_ca/*Canadian French*/
 	, fr_fr/*French*/
-	,it_it/* italian*/
+	,it_it/*Italian*/
 	,hu_hu/*Hungarian*/
 	, nl_nl/*Dutch*/
 	, nb_no/*Norwegian Bokmål*/

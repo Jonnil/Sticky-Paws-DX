@@ -82,7 +82,7 @@ if (object = "artwork_collection"){object = 97;}
 
 #region /*All code before initializing the object*/
 
-#region /* if current undo value is less than this objects undo value, then delete this object*/
+#region /*If current undo value is less than this objects undo value, then delete this object*/
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (undo_value >obj_leveleditor.current_undo_value)
@@ -102,7 +102,7 @@ and (undo_value <=obj_leveleditor.current_undo_value)
 {
 	undo_value_visible = true;
 }
-#endregion /* if current undo value is less than this objects undo value, then delete this object END*/
+#endregion /*If current undo value is less than this objects undo value, then delete this object END*/
 
 #region /*Make sprite transparent if you're setting difficulty levels*/
 if (asset_get_type("obj_leveleditor") == asset_object)
@@ -449,14 +449,14 @@ and (global.character_select_in_this_menu = "level_editor")
 }
 #endregion /*Make sprite transparent if you're setting difficulty levels END*/
 
-#region /* if all dificulty variables are false, then delete the object*/
+#region /*If all dificulty variables are false, then delete the object*/
 if (easy = false)
 and (normal = false)
 and (hard = false)
 {
 	instance_destroy();
 }
-#endregion /* if all dificulty variables are false, then delete the object END*/
+#endregion /*If all dificulty variables are false, then delete the object END*/
 
 #region /*Make object change difficulty layer depending on what difficulty layer is selected*/
 if (asset_get_type("obj_leveleditor") == asset_object)
@@ -554,14 +554,14 @@ and (!mouse_check_button(mb_middle))
 }
 #endregion /*Make object change difficulty layer depending on what difficulty layer is selected END*/
 
-#region /* initialize object mask*/
+#region /*Initialize object mask*/
 if (asset_get_type("spr_wall") == asset_sprite)
 {
 	mask_index = spr_wall;
 }
 image_speed = 0;
 image_index = 0;
-#endregion /* initialize object mask END*/
+#endregion /*Initialize object mask END*/
 
 if (delay <3)
 {
@@ -938,6 +938,20 @@ and (delay >1)
 					object = 56;
 				}
 				#endregion /*Extra Lives Pickup END*/
+				
+				else
+				
+				#region /*Bowling ball enemy*/
+				if (object = 591)
+				{
+					object = 592;
+				}
+				else
+				if (object = 592)
+				{
+					object = 591;
+				}
+				#endregion /*Bowling ball enemy END*/
 				
 				else
 				
@@ -1645,6 +1659,7 @@ if (global.play_edited_level = true)
 		if (object = 58) and (asset_get_type("obj_extra_life_pickup") == asset_object){with(instance_create_depth(x, y, 0, obj_extra_life_pickup)){number_of_extra_lives = 3;}instance_destroy();}
 		if (object = 59){if(asset_get_type("obj_basic_enemy") == asset_object){instance_create_depth(x, y, 0, obj_basic_enemy);instance_destroy();}else{instance_destroy();}}
 		if (object = 591){if(asset_get_type("obj_enemy_bowlingball") == asset_object){instance_create_depth(x, y, 0, obj_enemy_bowlingball);instance_destroy();}else{instance_destroy();}}
+		if (object = 592){if(asset_get_type("obj_enemy_bowlingball") == asset_object){with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){coil_spring = true;}instance_destroy();}else{instance_destroy();}}
 		if (object = 60){if(asset_get_type("obj_big_stationary_enemy") == asset_object){instance_create_depth(x, y, 0, obj_big_stationary_enemy);instance_destroy();}else{instance_destroy();}}
 		if (object = 61){if(asset_get_type("obj_blaster") == asset_object){instance_create_depth(x, y, 0, obj_blaster);instance_destroy();}else{instance_destroy();}}
 		if (object = 62) and (asset_get_type("obj_spring") == asset_object){with(instance_create_depth(x, y, 0, obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
@@ -1771,7 +1786,7 @@ if (global.play_edited_level = true)
 
 #endregion /*All code before initializing the object*/
 
-#region /* initialize Object*/
+#region /*Initialize Object*/
 if (object = 1) and (asset_get_type("spr_wall") == asset_sprite){sprite_index = spr_wall;mask_index = spr_wall;}
 if (object = 1001) and (asset_get_type("spr_wall_dirt") == asset_sprite){sprite_index = spr_wall_dirt;mask_index = spr_wall;}
 if (object = 1002) and (asset_get_type("spr_wall_glass") == asset_sprite){sprite_index = spr_wall_glass;mask_index = spr_wall;}
@@ -1863,6 +1878,7 @@ if (object = 57) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_ic
 if (object = 58) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_blue, image_alpha);sprite_index = sprite_lives_icon;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 59){sprite_index = sprite_basic_enemy;mask_index = spr_wall;}
 if (object = 591){sprite_index = sprite_enemy_bowlingball;mask_index = spr_wall;}
+if (object = 592){sprite_index = sprite_enemy_bowlingball;if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
 if (object = 60){sprite_index = sprite_big_stationary_enemy;mask_index = spr_wall;}
 if (object = 61){sprite_index = global.resourcepack_sprite_blaster;mask_index = spr_wall;}
 if (object = 62) and (asset_get_type("spr_spring") == asset_sprite){sprite_index = spr_spring;mask_index = spr_wall;}
@@ -1927,7 +1943,7 @@ if (object = 95) and (asset_get_type("spr_boss_stand") == asset_sprite){sprite_i
 if (object = 96) and (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index = spr_boss_barrier;mask_index = spr_wall;}
 if (object = 961) and (asset_get_type("spr_cake") == asset_sprite){sprite_index = sprite_basic_enemy;draw_sprite_ext(spr_cake, 0, x, y - 16, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}
 if (object = 97) and (asset_get_type("spr_artwork_collection") == asset_sprite){sprite_index = spr_artwork_collection;mask_index = spr_wall;}
-#endregion /* initialize Object END*/
+#endregion /*Initialize Object END*/
 
 #region /*Difficulty settings per object*/
 if (instance_exists(obj_leveleditor))

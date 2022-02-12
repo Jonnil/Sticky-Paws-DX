@@ -333,28 +333,28 @@ function scr_options_menu()
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 -room_width,video_settings_y, 370,video_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		{
-			draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +video_settings_y, 1, 1, 0, c_green, 1);
+			draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 + video_settings_y, 1, 1, 0, c_green, 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +video_settings_y, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 + video_settings_y, 1, 1, 0, c_gray, 1);
 		}
-		draw_sprite_ext(spr_settings_icons, 8, left_sidebar_x + 20 + icon_x_offset, 20 +video_settings_y, 1, 1, 0, c_white, 1); /*Settings Icon*/
-		draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +video_settings_y, Text("Video"), global.default_text_size * 1.1, c_black, c_white, 1);
+		draw_sprite_ext(spr_settings_icons, 8, left_sidebar_x + 20 + icon_x_offset, 20 + video_settings_y, 1, 1, 0, c_white, 1); /*Settings Icon*/
+		draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + video_settings_y, Text("Video"), global.default_text_size * 1.1, c_black, c_white, 1);
 	}
 	else
 	{
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 -room_width,video_settings_y, 370,video_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		{
-			draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +video_settings_y, 1, 1, 0, c_lime, 1);
+			draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 + video_settings_y, 1, 1, 0, c_lime, 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +video_settings_y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 + video_settings_y, 1, 1, 0, c_white, 1);
 		}
-		draw_sprite_ext(spr_settings_icons, 8, left_sidebar_x + 20 + icon_x_offset, 20 +video_settings_y, 0.9, 0.9, 0, c_white, 1); /*Settings Icon*/
-		draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +video_settings_y, Text("Video"), global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_settings_icons, 8, left_sidebar_x + 20 + icon_x_offset, 20 + video_settings_y, 0.9, 0.9, 0, c_white, 1); /*Settings Icon*/
+		draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + video_settings_y, Text("Video"), global.default_text_size, c_white, c_black, 1);
 	}
 	#endregion /*Video Settings END*/
 	
@@ -5935,13 +5935,21 @@ function scr_options_menu()
 		if (window_get_fullscreen())
 		{
 			draw_menu_checkmark(386, 48, "Fullscreen", "fullscreen_mode", true);
+			if (global.controls_used_for_menu_navigation != "controller")
+			and (asset_get_type("spr_keyboard_keys") == asset_sprite)
+			{
+				draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 386 + 57, 48 + 16, 0.5, 0.5, 0, c_white, 1);
+			}
 		}
 		else
 		{
 			draw_menu_checkmark(386, 48, "Fullscreen", "fullscreen_mode", false);
+			if (global.controls_used_for_menu_navigation != "controller")
+			and (asset_get_type("spr_keyboard_keys") == asset_sprite)
+			{
+				draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 386 + 57, 48 + 16, 0.5, 0.5, 0, c_white, 1);
+			}
 		}
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
 		#endregion /*Fullscreen toggle END*/
 		
 		draw_set_halign(fa_left);

@@ -716,7 +716,7 @@ if (save_level_as_png = false)
 		#endregion /*Camera should follow multiple players END*/
 		
 		#region /*Zoom out the view when players are going outside view*/
-		/* if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
+		/*If (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
 		and (fps_real >= global.max_fps)
 		or(instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
 		and (fps_real >= global.max_fps)
@@ -760,7 +760,7 @@ if (save_level_as_png = false)
 	}
 	#endregion /*Camera when you win level END*/
 	
-	/* iris*/
+	/*Iris*/
 	if (allow_iris = true)
 	{
 		if (delay <= 1)
@@ -889,7 +889,7 @@ and (global.actually_play_edited_level = true)
 	}
 }
 #endregion /*Draw Iris Transitions END*/
-/* iris END*/
+/*Iris END*/
 
 scr_parallax_scrolling_background();
 

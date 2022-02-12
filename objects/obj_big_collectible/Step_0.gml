@@ -18,94 +18,97 @@ if (bounceup = false)
 		if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		{
 			follow_player = true;
-			if (follow_player = true)
-			and (place_meeting(x, y, obj_player))
-			{
-				if (asset_get_type("obj_wall") == asset_object)
-				and (place_meeting(x, y + 16, obj_wall))
-				or(asset_get_type("obj_semisolid_platform") == asset_object)
-				and (place_meeting(x, y + 16, obj_semisolid_platform))
-				or(asset_get_type("obj_horizontal_rope") == asset_object)
-				and (place_meeting(x, y - 16, obj_horizontal_rope))
-				or(instance_nearest(x, y, obj_player).climb = true)
-				or(instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
-				{
-					effect_create_above(ef_ring, x, y, 2, c_white);
-					#region /* 3 Basic Collectibles*/
-					if (asset_get_type("obj_basic_collectible") == asset_object)
-					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 10;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 20;
-						}
-					}
-					#endregion /* 3 Basic Collectibles END*/
-					
-					#region /* 1000 Score*/
-					score += 1000;
-					if (asset_get_type("obj_scoreup") == asset_object)
-					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
-						{
-							scoreup = 1000;
-						}
-					}
-					#endregion /* 1000 Score END*/
-					
-					#region /*What Big Collectible is this?*/
-					if (big_collectible = 1)
-					{
-						global.big_collectible1 = true;
-					}
-					if (big_collectible = 2)
-					{
-						global.big_collectible2 = true;
-					}
-					if (big_collectible = 3)
-					{
-						global.big_collectible3 = true;
-					}
-					if (big_collectible = 4)
-					{
-						global.big_collectible4 = true;
-					}
-					if (big_collectible = 5)
-					{
-						global.big_collectible5 = true;
-					}
-					#endregion /*What Big Collectible is this? END*/
-					
-					if asset_get_type("snd_basic_collectible") == asset_sound
-					{
-						audio_play_sound(snd_basic_collectible, 0, 0);
-						audio_sound_gain(snd_basic_collectible, global.sfx_volume, 0);
-					}
-					instance_destroy();
-				}
-			}
 		}
 	}
+}
+if (follow_player = true)
+and (asset_get_type("obj_wall") == asset_object)
+and (place_meeting(x, y + 16, obj_wall))
+or (follow_player = true)
+and (asset_get_type("obj_semisolid_platform") == asset_object)
+and (place_meeting(x, y + 16, obj_semisolid_platform))
+or (follow_player = true)
+and (instance_nearest(x, y, obj_player).horizontal_rope_climb = true)
+or (follow_player = true)
+and (instance_nearest(x, y, obj_player).climb = true)
+or (follow_player = true)
+and (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
+or(asset_get_type("obj_enemy_bowlingball") == asset_object)
+and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
+and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
+{
+	effect_create_above(ef_ring, x, y, 2, c_white);
+	#region /* 3 Basic Collectibles*/
+	if (asset_get_type("obj_basic_collectible") == asset_object)
+	{
+		var obj;
+		obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+		with(obj)
+		{
+			image_speed = 1;
+			motion_set(90, 10);
+			bounceup = true;
+		}
+		obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+		with(obj)
+		{
+			image_speed = 1;
+			motion_set(90, 10);
+			bounceup = true;
+			delay_time = 10;
+		}
+		obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+		with(obj)
+		{
+			image_speed = 1;
+			motion_set(90, 10);
+			bounceup = true;
+			delay_time = 20;
+		}
+	}
+	#endregion /* 3 Basic Collectibles END*/
+	
+	#region /* 1000 Score*/
+	score += 1000;
+	if (asset_get_type("obj_scoreup") == asset_object)
+	{
+		obj = instance_create_depth(x, y, 0, obj_scoreup);
+		with(obj)
+		{
+			scoreup = 1000;
+		}
+	}
+	#endregion /* 1000 Score END*/
+	
+	#region /*What Big Collectible is this?*/
+	if (big_collectible = 1)
+	{
+		global.big_collectible1 = true;
+	}
+	if (big_collectible = 2)
+	{
+		global.big_collectible2 = true;
+	}
+	if (big_collectible = 3)
+	{
+		global.big_collectible3 = true;
+	}
+	if (big_collectible = 4)
+	{
+		global.big_collectible4 = true;
+	}
+	if (big_collectible = 5)
+	{
+		global.big_collectible5 = true;
+	}
+	#endregion /*What Big Collectible is this? END*/
+	
+	if asset_get_type("snd_basic_collectible") == asset_sound
+	{
+		audio_play_sound(snd_basic_collectible, 0, 0);
+		audio_sound_gain(snd_basic_collectible, global.sfx_volume, 0);
+	}
+	instance_destroy();
 }
 
 #region /*Follow Player*/
@@ -296,12 +299,12 @@ and (global.big_collectible5 = true)
 	image_blend = c_gray;
 }
 
-#region /* if big collectible value is 0, destroy the big collectible*/
+#region /*If big collectible value is 0, destroy the big collectible*/
 if (big_collectible = 0)
 {
 	instance_destroy();
 }
-#endregion /* if big collectible value is 0, destroy the big collectible END*/
+#endregion /*If big collectible value is 0, destroy the big collectible END*/
 
 #region /*Expanding Ring Effect*/
 effect_time += 1;

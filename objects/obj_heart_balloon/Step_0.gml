@@ -10,12 +10,12 @@ else
 }
 #endregion /*Set the gravity END*/
 
-#region /* if inside wall, destroy yourself*/
+#region /*If inside wall, destroy yourself*/
 if (position_meeting(x, y, obj_wall))
 {
 	instance_destroy();
 }
-#endregion /* if inside wall, destroy yourself END*/
+#endregion /*If inside wall, destroy yourself END*/
 
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))

@@ -257,7 +257,7 @@ if (place_meeting(x, y- 8, other))
 		}
 		#endregion /*Big Collectible 5 END*/
 		
-		#region /* invincibility Powerup*/
+		#region /*Invincibility Powerup*/
 		if (type_of_bump = "invincibility_powerup")
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
@@ -271,7 +271,7 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /* invincibility Powerup END*/
+		#endregion /*Invincibility Powerup END*/
 		
 		instance_destroy();
 	}

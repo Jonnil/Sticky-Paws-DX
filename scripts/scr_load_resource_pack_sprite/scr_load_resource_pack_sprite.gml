@@ -22,6 +22,7 @@ function scr_load_resource_pack_sprite()
 		if (global.resourcepack_sprite_enemy_bowlingball_revive > 0){sprite_delete(global.resourcepack_sprite_enemy_bowlingball_revive);}
 		if (global.resourcepack_sprite_bowlingball > 0){sprite_delete(global.resourcepack_sprite_bowlingball);}
 		if (global.resourcepack_sprite_bowlingball_shine > 0){sprite_delete(global.resourcepack_sprite_bowlingball_shine);}
+		if (global.resourcepack_sprite_coil_spring > 0){sprite_delete(global.resourcepack_sprite_coil_spring);}
 		if (global.resourcepack_sprite_big_collectible > 0){sprite_delete(global.resourcepack_sprite_big_collectible);}
 		if (global.resourcepack_sprite_big_stationary_enemy > 0){sprite_delete(global.resourcepack_sprite_big_stationary_enemy);}
 		if (global.resourcepack_sprite_big_stationary_enemy_flattened > 0){sprite_delete(global.resourcepack_sprite_big_stationary_enemy_flattened);}
@@ -63,6 +64,7 @@ function scr_load_resource_pack_sprite()
 		global.resourcepack_sprite_enemy_bowlingball_revive = scr_initialize_resource_pack_sprite("enemy_bowlingball_revive", global.resourcepack_sprite_enemy_bowlingball_revive);
 		global.resourcepack_sprite_bowlingball = scr_initialize_resource_pack_sprite("bowlingball", global.resourcepack_sprite_bowlingball);
 		global.resourcepack_sprite_bowlingball_shine = scr_initialize_resource_pack_sprite("bowlingball_shine", global.resourcepack_sprite_bowlingball_shine);
+		global.resourcepack_sprite_coil_spring = scr_initialize_resource_pack_sprite("coil_spring", global.resourcepack_sprite_coil_spring);
 		global.resourcepack_sprite_big_stationary_enemy = scr_initialize_resource_pack_sprite("big_stationary_enemy", global.resourcepack_sprite_big_stationary_enemy);
 		global.resourcepack_sprite_big_stationary_enemy_flattened = scr_initialize_resource_pack_sprite("big_stationary_enemy_flattened", global.resourcepack_sprite_big_stationary_enemy_flattened);
 		global.resourcepack_sprite_hp_pickup = scr_initialize_resource_pack_sprite("hp_pickup", global.resourcepack_sprite_hp_pickup);

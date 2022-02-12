@@ -13,31 +13,37 @@ if (bounceup = false)
 	and (!place_meeting(x + 4, y, obj_wall))
 	and (obj_player.dive = true)
 	
-	or(position_meeting(bbox_left - 8, y, obj_enemy_bowlingball))
+	or (instance_exists(obj_enemy_bowlingball))
+	and (position_meeting(bbox_left - 8, y, obj_enemy_bowlingball))
 	and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
-	or(position_meeting(bbox_right + 8, y, obj_enemy_bowlingball))
+	or (instance_exists(obj_enemy_bowlingball))
+	and (position_meeting(bbox_right + 8, y, obj_enemy_bowlingball))
 	and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
-	or(place_meeting(x, bbox_bottom + 8, obj_enemy_bowlingball))
+	or (instance_exists(obj_enemy_bowlingball))
+	and (place_meeting(x, bbox_bottom + 8, obj_enemy_bowlingball))
 	and (instance_nearest(x, y, obj_enemy_bowlingball).vspeed < 0)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 	{
-		if (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <= 1)
+		if (instance_exists(obj_enemy_bowlingball))
+		and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <= 1)
 		and (position_meeting(bbox_right + 8, y, obj_enemy_bowlingball))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = +1;
 		}
 		else
-		if (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground >= 1)
+		if (instance_exists(obj_enemy_bowlingball))
+		and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground >= 1)
 		and (position_meeting(bbox_left - 8, y, obj_enemy_bowlingball))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = -1;
 		}
 		else
-		if (instance_nearest(x, y, obj_enemy_bowlingball).vspeed < 0)
+		if (instance_exists(obj_enemy_bowlingball))
+		and (instance_nearest(x, y, obj_enemy_bowlingball).vspeed < 0)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).vspeed = 0;
@@ -277,7 +283,7 @@ if (bounceup = false)
 			}
 			#endregion /* 3 -up END*/
 			
-			#region /* invincibility Powerup*/
+			#region /*Invincibility Powerup*/
 			if (item_inside = "invincibility_powerup")
 			{
 				empty = true;
@@ -295,7 +301,7 @@ if (bounceup = false)
 					}
 				}
 			}
-			#endregion /* invincibility Powerup END*/
+			#endregion /*Invincibility Powerup END*/
 			
 		}
 	}

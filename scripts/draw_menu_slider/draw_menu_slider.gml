@@ -11,7 +11,7 @@
 function draw_menu_slider()
 {
 	
-	#region /* initialize variables*/
+	#region /*Initialize variables*/
 	var x_position =argument0; /*The buttons x origin position*/
 	var y_position =argument1; /*The buttons y origin position*/
 
@@ -21,7 +21,7 @@ function draw_menu_slider()
 	var bar_color = argument5;
 	
 	length_variable = 320;
-	#endregion /* initialize variables END*/
+	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position- 16, x_position+ 320, y_position+ 16))
 	and (global.controls_used_for_menu_navigation = "mouse")
@@ -35,7 +35,7 @@ function draw_menu_slider()
 	#region /*Draw Bar*/
 	if (menu = menu_index)
 	{
-		draw_rectangle_color(x_position- 2, y_position- 16- 2, x_position+ 320 + 2, y_position+ 16+ 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(x_position- 2, y_position- 16- 2, x_position+ 320 + 2, y_position+ 16 + 2, c_black, c_black, c_black, c_black, false);
 		
 		#region /*Click to change value*/
 		if (global.controls_used_for_menu_navigation = "mouse")
@@ -99,7 +99,7 @@ function draw_menu_slider()
 	else
 	{
 		draw_rectangle_color(x_position, y_position- 16, x_position+ 320, y_position+ 16, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
-		draw_rectangle_color(x_position, y_position- 16, x_position+variable_to_change * 320, y_position+ 16,bar_color,bar_color,bar_color,bar_color, false);
+		draw_rectangle_color(x_position, y_position- 16, x_position+ variable_to_change * 320, y_position+ 16,bar_color,bar_color,bar_color,bar_color, false);
 	}
 	#endregion /*Draw Bar END*/
 	

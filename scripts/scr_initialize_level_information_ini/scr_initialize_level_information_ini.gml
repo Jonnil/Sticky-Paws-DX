@@ -1,7 +1,7 @@
 function scr_initialize_level_information_ini()
 {
 	
-	#region /* initialize level_information.ini*/
+	#region /*Initialize level_information.ini*/
 	if (global.character_select_in_this_menu = "main_game")
 	and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
@@ -39,7 +39,7 @@ function scr_initialize_level_information_ini()
 			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 		}
 		
-		#region /* intro Animation*/
+		#region /*Intro Animation*/
 		if (ini_key_exists("info", "intro_animation"))
 		{
 			intro_animation = ini_read_string("info", "intro_animation", "");
@@ -53,9 +53,9 @@ function scr_initialize_level_information_ini()
 			}
 			intro_animation = "";
 		}
-		#endregion /* intro Animation END*/
+		#endregion /*Intro Animation END*/
 	
-		#region /* intro Animation Play Only Once*/
+		#region /*Intro Animation Play Only Once*/
 		if (ini_key_exists("info", "intro_animation_play_only_once"))
 		{
 			intro_animation_play_only_once = ini_read_string("info", "intro_animation_play_only_once", false);
@@ -69,7 +69,7 @@ function scr_initialize_level_information_ini()
 			}
 			intro_animation_play_only_once = false;
 		}
-		#endregion /* intro Animation Play Only Once END*/
+		#endregion /*Intro Animation Play Only Once END*/
 	
 		#region /*After goal go to this level*/
 		if (ini_key_exists("info", "after_goal_go_to_this_level"))
@@ -395,7 +395,7 @@ function scr_initialize_level_information_ini()
 		}
 		#endregion /*Default View Height END*/
 		
-		#region /* initialize Weather*/
+		#region /*Initialize Weather*/
 		
 		#region /*Rain*/
 		if (ini_key_exists("info", "rain"))
@@ -413,7 +413,7 @@ function scr_initialize_level_information_ini()
 		}
 		#endregion /*Rain END*/
 		
-		#endregion /* initialize Weather END*/
+		#endregion /*Initialize Weather END*/
 		
 		ini_close();
 	}
@@ -441,7 +441,7 @@ function scr_initialize_level_information_ini()
 		global.default_view_height = 1080;
 		global.default_view_width = 1920;
 	}
-	#endregion /* initialize level_information.ini END*/
+	#endregion /*Initialize level_information.ini END*/
 	
 	if (global.create_level_from_template = true)
 	{

@@ -10,7 +10,7 @@ or (die = false)
 	#endregion /*Push the enemy out of the solid object END*/
 
 	#region /*Landing on solid object*/
-	if (place_meeting(x, y + 1, other))
+	if (position_meeting(x, bbox_bottom + 1, other))
 	and (vspeed >= 0)
 	{
 		if (asset_get_type("obj_camera") == asset_object)

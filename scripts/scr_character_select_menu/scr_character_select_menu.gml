@@ -28,7 +28,7 @@ function scr_character_select_menu()
 	
 	#region /*All code before menu navigation code*/
 	
-	#region /* if a unavailable skin is selected, then go to the last selectable skin for each player*/
+	#region /*If a unavailable skin is selected, then go to the last selectable skin for each player*/
 	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player_1)))
 	and (global.skin_for_player_1 > 0)
 	{
@@ -472,9 +472,9 @@ function scr_character_select_menu()
 		#endregion /*Player 4 character select portrait sprite END*/
 		
 	}
-	#endregion /* if a unavailable skin is selected, then go to the last selectable skin for each player END*/
+	#endregion /*If a unavailable skin is selected, then go to the last selectable skin for each player END*/
 	
-	#region /* if a unavailable voice pack is selected, then go to the last selectable voice pack for each player*/
+	#region /*If a unavailable voice pack is selected, then go to the last selectable voice pack for each player*/
 	if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1)))
 	and (global.voicepack_for_player_1> 0)
 	{
@@ -498,7 +498,7 @@ function scr_character_select_menu()
 	{
 		global.voicepack_for_player_4 -= 1;
 	}
-	#endregion /* if a unavailable voice pack is selected, then go to the last selectable voice pack for each player END*/
+	#endregion /*If a unavailable voice pack is selected, then go to the last selectable voice pack for each player END*/
 	
 	#region /*Select your character text*/
 	draw_set_halign(fa_center);
@@ -577,7 +577,7 @@ function scr_character_select_menu()
 	}
 	#endregion /*Give feedback that you have selected a character END*/
 	
-	#region /* if players haven't joined the game*/
+	#region /*If players haven't joined the game*/
 	if (can_input_player1_name = false)
 	and (can_input_player2_name = false)
 	and (can_input_player3_name = false)
@@ -804,7 +804,7 @@ function scr_character_select_menu()
 		
 		}
 	}
-	#endregion /* if players haven't joined the game END*/
+	#endregion /*If players haven't joined the game END*/
 	
 	#region /*Display Selected Characters*/
 	
@@ -4358,7 +4358,7 @@ function scr_character_select_menu()
 		draw_rectangle_color(window_get_width()/ 2 + player1_display_x - 150, window_get_height()/ 2 + name_y - 16, window_get_width()/ 2 + player1_display_x + 150, window_get_height()/ 2 + name_y + 16, c_black, c_black, c_black, c_black, true);
 		#endregion /*Box where name is written on END*/
 		
-		#region /* inputed Name Text*/
+		#region /*Inputed Name Text*/
 		if (can_input_player1_name = true)
 		{
 			if (name_enter_blink< 1)
@@ -4381,7 +4381,7 @@ function scr_character_select_menu()
 				draw_text_outlined(window_get_width()/ 2 + player1_display_x, window_get_height()/ 2 + name_y, string(global.player1_name), global.default_text_size, c_white, c_black, 1);
 			}
 		}
-		#endregion /* inputed Name Text END*/
+		#endregion /*Inputed Name Text END*/
 		
 	}
 	#endregion /*Player 1 Input Name END*/
@@ -4426,7 +4426,7 @@ function scr_character_select_menu()
 		draw_rectangle_color(window_get_width()/ 2 + player2_display_x - 150, window_get_height()/ 2 + name_y - 16, window_get_width()/ 2 + player2_display_x + 150, window_get_height()/ 2 + name_y + 16, c_black, c_black, c_black, c_black, true);
 		#endregion /*Box where name is written on END*/
 		
-		#region /* inputed Name Text*/
+		#region /*Inputed Name Text*/
 		if (can_input_player2_name = true)
 		{
 			if (name_enter_blink< 1)
@@ -4449,7 +4449,7 @@ function scr_character_select_menu()
 				draw_text_outlined(window_get_width()/ 2 + player2_display_x, window_get_height()/ 2 + name_y, string(global.player2_name), global.default_text_size, c_white, c_black, 1);
 			}
 		}
-		#endregion /* inputed Name Text END*/
+		#endregion /*Inputed Name Text END*/
 		
 	}
 	#endregion /*Player 2 Input Name END*/
@@ -4494,7 +4494,7 @@ function scr_character_select_menu()
 		draw_rectangle_color(window_get_width()/ 2 + player3_display_x - 150, window_get_height()/ 2 + name_y - 16, window_get_width()/ 2 + player3_display_x + 150, window_get_height()/ 2 + name_y + 16, c_black, c_black, c_black, c_black, true);
 		#endregion /*Box where name is written on END*/
 		
-		#region /* inputed Name Text*/
+		#region /*Inputed Name Text*/
 		if (can_input_player3_name = true)
 		{
 			if (name_enter_blink< 1)
@@ -4517,7 +4517,7 @@ function scr_character_select_menu()
 				draw_text_outlined(window_get_width()/ 2 + player3_display_x, window_get_height()/ 2 + name_y, string(global.player3_name), global.default_text_size, c_white, c_black, 1);
 			}
 		}
-		#endregion /* inputed Name Text END*/
+		#endregion /*Inputed Name Text END*/
 		
 	}
 	#endregion /*Player 3 Input Name END*/
@@ -4562,7 +4562,7 @@ function scr_character_select_menu()
 		draw_rectangle_color(window_get_width()/ 2 + player4_display_x - 150, window_get_height()/ 2 + name_y - 16, window_get_width()/ 2 + player4_display_x + 150, window_get_height()/ 2 + name_y + 16, c_black, c_black, c_black, c_black, true);
 		#endregion /*Box where name is written on END*/
 		
-		#region /* inputed Name Text*/
+		#region /*Inputed Name Text*/
 		if (can_input_player4_name = true)
 		{
 			if (name_enter_blink< 1)
@@ -4585,7 +4585,7 @@ function scr_character_select_menu()
 				draw_text_outlined(window_get_width()/ 2 + player4_display_x, window_get_height()/ 2 + name_y, string(global.player4_name), global.default_text_size, c_white, c_black, 1);
 			}
 		}
-		#endregion /* inputed Name Text END*/
+		#endregion /*Inputed Name Text END*/
 		
 	}
 	#endregion /*Player 4 END*/
@@ -6816,7 +6816,7 @@ and (player4_accept_selection >= 0)
 	
 	#region /*Start Game*/
 	
-	#region /* if player 1 has selected a character, be able to start game*/
+	#region /*If player 1 has selected a character, be able to start game*/
 	if (player1_accept_selection = true)
 	and (player2_accept_selection != 0)
 	and (player3_accept_selection != 0)
@@ -6852,7 +6852,7 @@ and (player4_accept_selection >= 0)
 	{
 		player_start_game = false;
 	}
-	#endregion /* if player 1 has selected a character, be able to start game END*/
+	#endregion /*If player 1 has selected a character, be able to start game END*/
 	
 	#endregion /*Start Game END*/
 	
@@ -7066,7 +7066,7 @@ and (player4_accept_selection >= 0)
 	}
 	#endregion /*Player 4 Back / Cancel Selection END*/
 	
-	#region /* if player 1 has selected a character, be able to start game*/
+	#region /*If player 1 has selected a character, be able to start game*/
 	if (player1_accept_selection = true)
 	and (player2_accept_selection != 0)
 	and (player3_accept_selection != 0)
@@ -7118,7 +7118,7 @@ and (player4_accept_selection >= 0)
 	{
 		player_start_game = false;
 	}
-	#endregion /* if player 1 has selected a character, be able to start game END*/
+	#endregion /*If player 1 has selected a character, be able to start game END*/
 	
 	if (key_b_pressed)
 	and (player1_accept_selection <= -1)

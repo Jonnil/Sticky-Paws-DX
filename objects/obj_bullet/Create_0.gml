@@ -25,6 +25,7 @@ stomped_delay = 0;
 die = false;
 die_volting = false;
 give_rewards = true;
+stuck_in_wall_counter = 0;
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {
 	enemyvoice_defeated1 = snd_enemyvoice_defeated;

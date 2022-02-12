@@ -10,7 +10,7 @@ function draw_menu_checkmark()
 {
 	#region /*Checkmark*/
 	
-	#region /* initialize variables*/
+	#region /*Initialize variables*/
 	var x_position =argument0; /*The buttons x origin position*/
 	var y_position =argument1; /*The buttons y origin position*/
 
@@ -22,7 +22,7 @@ function draw_menu_checkmark()
 	var hover_over_button = false;
 	var widen_button_offset = 7;
 	var width_of_button = 670;
-	#endregion /* initialize variables END*/
+	#endregion /*Initialize variables END*/
 	
 	if (variable_to_check= false)
 	{

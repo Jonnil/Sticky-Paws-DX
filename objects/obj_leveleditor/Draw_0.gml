@@ -411,7 +411,7 @@ else
 #endregion /*Fade grid in and out when toggeling END*/
 
 var grid_width = 1,
-grid_offset = 16; /* if the grid should have an offset from the top_left corner of the screen, normally this should be 16*/
+grid_offset = 16; /*If the grid should have an offset from the top_left corner of the screen, normally this should be 16*/
 draw_set_alpha(grid_alpha);
 
 if (quit_level_editor <= 0)
@@ -631,7 +631,7 @@ if (quit_level_editor = 0)
 	if (asset_get_type("spr_sign_crouch") == asset_sprite){draw_sprite_ext(spr_sign_crouch, 0,								camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 58, camera_get_view_y(view_camera[view_current]) + 64, 0.4, 0.4, 0, c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_boss_stand") == asset_sprite){draw_sprite_ext(spr_boss_stand, 0,								camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 59, camera_get_view_y(view_camera[view_current]) + 64, 0.4, 0.4, 0, c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_boss_barrier") == asset_sprite){draw_sprite_ext(spr_boss_barrier, 0,							camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 60, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);}
-	draw_sprite_ext(sprite_basic_enemy, 0,																					camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 61, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);if (asset_get_type("spr_cake") == asset_sprite){draw_sprite_ext(spr_cake, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 60, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white,selected_menu_alpha);}
+	draw_sprite_ext(sprite_basic_enemy, 0,																					camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 61, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);if (asset_get_type("spr_cake") == asset_sprite){draw_sprite_ext(spr_cake, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 61, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_artwork_collection") == asset_sprite){draw_sprite_ext(spr_artwork_collection, 0,				camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 62, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);}
 	draw_set_color(c_black);
 	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16- 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16+8, 40);

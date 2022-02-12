@@ -2748,7 +2748,7 @@ if (global.quit_level = true)
 }
 #endregion /*Quit Level END*/
 
-#region /* invincible Music*/
+#region /*Invincible Music*/
 if (asset_get_type("snd_music_invincible") == asset_sound)
 {
 	if (invincible <room_speed* 10)
@@ -2820,7 +2820,7 @@ if (asset_get_type("snd_music_invincible") == asset_sound)
 		
 	}
 }
-#endregion /* invincible Music END*/
+#endregion /*Invincible Music END*/
 
 else
 {
@@ -2937,7 +2937,7 @@ and (obj_camera.iris_xscale < 3)
 				global.checkpoint_realmillisecond = 0;
 				global.lives_until_assist = 0;
 				global.theme = "ground";
-				scr_savelevel(); /* important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear*/
+				scr_savelevel(); /*Important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear*/
 				if (global.actually_play_edited_level = false)
 				and (global.play_edited_level = true)
 				and (global.character_select_in_this_menu = "level_editor")
@@ -3353,14 +3353,14 @@ if (assist_invincible = true)
 }
 #endregion /*Assist Invincible END*/
 
-#region /* if Assist delault hp is invincible, stay invincible*/
+#region /*If Assist delault hp is invincible, stay invincible*/
 if (global.assist_enable = true)
 and (global.assist_invincible = true)
 and (hp < max_hp)
 {
 	hp = max_hp;
 }
-#endregion /* if Assist delault hp is invincible, stay invincible END*/
+#endregion /*If Assist delault hp is invincible, stay invincible END*/
 
 #region /*Customisable Keyboard Array*/
 if (player <= 1)
@@ -4262,7 +4262,7 @@ if (player = 4)
 
 /*Sets up what the buttons do*/
 
-#region /* if controller gets disconnected during gameplay, pause the game*/
+#region /*If controller gets disconnected during gameplay, pause the game*/
 if (player = 1)
 and (gamepad_is_connected(0))
 or(player = 2)
@@ -4274,9 +4274,9 @@ and (gamepad_is_connected(3))
 {
 	controller_connected = true;
 }
-#endregion /* if controller gets disconnected during gameplay, pause the game END*/
+#endregion /*If controller gets disconnected during gameplay, pause the game END*/
 
-#region /* if player is allowed to move*/
+#region /*If player is allowed to move*/
 if (can_move = true)
 and (global.pause = false)
 {
@@ -4827,9 +4827,9 @@ and (global.pause = false)
 #endregion /*Go Right END*/
 
 }
-#endregion /* if player is allowed to move END*/
+#endregion /*If player is allowed to move END*/
 
-#region /* if player has finished the level, make the player run off to the right off screen, and disable player control*/
+#region /*If player has finished the level, make the player run off to the right off screen, and disable player control*/
 if (goal = true)
 and (global.time_countdown_bonus <= 0)
 {
@@ -4840,7 +4840,7 @@ and (global.time_countdown_bonus <= 0)
 		image_xscale = +1;
 	}
 }
-#endregion /* if player has finished the level, make the player run off to the right off screen, and disable player control END*/
+#endregion /*If player has finished the level, make the player run off to the right off screen, and disable player control END*/
 
 #region /*Sprint*/
 if (goal = true)
@@ -5070,13 +5070,13 @@ if (buffer_jump > 0)
 	buffer_jump -= 1;
 }
 
-#region /* if you're falling from a triple jump, reset the jump variable to 0*/
+#region /*If you're falling from a triple jump, reset the jump variable to 0*/
 if (jump >= 3)
 and (vspeed >= 0)
 {
 	jump = 0;
 }
-#endregion /* if you're falling from a triple jump, reset the jump variable to 0 END*/
+#endregion /*If you're falling from a triple jump, reset the jump variable to 0 END*/
 
 if (buffer_jump > 0)
 and (can_move = true)
@@ -5302,7 +5302,7 @@ and (can_mid_air_jump = 0)
 				{
 					with(instance_create_depth(x, bbox_bottom, 0, obj_scoreup))
 					{
-						scoreup = instance_nearest(x, y, obj_player).midair_jumps_left; /* if the player can do 3 jumps, show that*/
+						scoreup = instance_nearest(x, y, obj_player).midair_jumps_left; /*If the player can do 3 jumps, show that*/
 						not_score = true;
 						show_remaining_jumps = true;
 					}
@@ -5316,7 +5316,7 @@ and (can_mid_air_jump = 0)
 				{
 					with(instance_create_depth(x, bbox_bottom, 0, obj_scoreup))
 					{
-						scoreup = instance_nearest(x, y, obj_player).midair_jumps_left; /* if the player can do 3 jumps, show that*/
+						scoreup = instance_nearest(x, y, obj_player).midair_jumps_left; /*If the player can do 3 jumps, show that*/
 						not_score = true;
 						show_remaining_jumps = true;
 					}
@@ -5961,16 +5961,61 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 if (place_meeting(x, y + 1, obj_wall))
 and (speed < 7) /*Player must be running at this speed to be able to triple jump*/
 and (jump > 1)
+
 or(place_meeting(x, y + 1, obj_wall))
 and (triplejumpdelay < 1)
+
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+and (triplejumpdelay < 1)
+
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+and (triplejumpdelay < 1)
+
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+and (triplejumpdelay < 1)
+
 or(jump > 3)
+
 or(place_meeting(x, y + 1, obj_wall))
+and (vspeed >= 0)
+and (jump = 3)
+
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+and (vspeed >= 0)
+and (jump = 3)
+
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+and (vspeed >= 0)
+and (jump = 3)
+
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 and (vspeed >= 0)
 and (jump = 3)
 {
 	jump = 0;
 }
 if (place_meeting(x, y + 2, obj_wall))
+and (jump > 2)
+and (vspeed >= 0)
+
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(x, bbox_bottom + 2, obj_semisolid_platform))
+and (jump > 2)
+and (vspeed >= 0)
+
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(bbox_left, bbox_bottom + 2, obj_semisolid_platform))
+and (jump > 2)
+and (vspeed >= 0)
+
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(bbox_right, bbox_bottom + 2, obj_semisolid_platform))
 and (jump > 2)
 and (vspeed >= 0)
 {
@@ -5990,18 +6035,21 @@ and (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (wall_jump_setting >= 1)
+and (hold_item_in_hands = 0)
 or(allow_wall_jump = false)
 and (can_wall_jump = true)
 and (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (place_meeting(x, y, obj_wall_jump_panel))
+and (hold_item_in_hands = 0)
 or(allow_wall_climb = false)
 and (can_wall_jump = true)
 and (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (place_meeting(x, y, obj_wall_climb_panel))
+and (hold_item_in_hands = 0)
 {
 	if (asset_get_type("obj_wall") == asset_object)
 	and (!place_meeting(x, y + 1, obj_wall))
@@ -6107,7 +6155,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 		}
 		#endregion /*Pressing opposite direction to drop off from wall END*/
 		
-		#region /* if there is ground under you while trying to go down, then stop wall climbing*/
+		#region /*If there is ground under you while trying to go down, then stop wall climbing*/
 		if (asset_get_type("obj_wall") == asset_object)
 		and (place_meeting(x, y + 1, obj_wall))
 		or(asset_get_type("obj_semisolid_platform") == asset_object)
@@ -6119,7 +6167,7 @@ and (place_meeting(x, y, obj_wall_climb_panel))
 		{
 			stick_to_wall = false;
 		}
-		#endregion /* if there is ground under you while trying to go down, then stop wall climbing END*/
+		#endregion /*If there is ground under you while trying to go down, then stop wall climbing END*/
 		
 		if (crouch = false)
 		and (ground_pound = false)
@@ -6594,7 +6642,7 @@ and (takendamage <= takendamage_freezetime)
 				vspeed = +24;
 			}
 	
-			#region /* if hitting a corner of a wall, move the player either left or right*/
+			#region /*If hitting a corner of a wall, move the player either left or right*/
 			if (place_meeting(x, y + 1, obj_wall))
 			{
 		
@@ -6617,9 +6665,9 @@ and (takendamage <= takendamage_freezetime)
 				#endregion /*Move right to avoid a right corner END*/
 		
 			}
-			#endregion /* if hitting a corner of a wall, move the player either left or right END*/
+			#endregion /*If hitting a corner of a wall, move the player either left or right END*/
 
-			#region /* if touching the ground when doing a ground pound*/
+			#region /*If touching the ground when doing a ground pound*/
 			if (position_meeting(bbox_left + 1,bbox_bottom + 1, obj_wall))
 			or(position_meeting(x, bbox_bottom + 1, obj_wall))
 			or(position_meeting(bbox_right - 1,bbox_bottom + 1, obj_wall))
@@ -6644,7 +6692,7 @@ and (takendamage <= takendamage_freezetime)
 					audio_sound_gain(snd_hipattack, global.sfx_volume, 0);
 				}
 			}
-			#endregion /* if touching the ground when doing a ground pound END*/
+			#endregion /*If touching the ground when doing a ground pound END*/
 	
 			else
 			if (key_up)
@@ -6913,7 +6961,7 @@ and (global.pause = false)
 			}
 			#endregion /*Propel the player forward in the direction the player is facing END*/
 			
-			#region /* if player lands on ground when diving, stop diving*/
+			#region /*If player lands on ground when diving, stop diving*/
 			if (asset_get_type("obj_wall") == asset_object)
 			and (place_meeting(x, y + 1, obj_wall))
 			and (vspeed >= 0)
@@ -6933,16 +6981,16 @@ and (global.pause = false)
 				ground_pound = false;
 				can_ground_pound = false;
 			}
-			#endregion /* if player lands on ground when diving, stop diving END*/
+			#endregion /*If player lands on ground when diving, stop diving END*/
 
-			#region /* if player lands in water when diving, stop diving*/
+			#region /*If player lands in water when diving, stop diving*/
 			if (in_water = true)
 			{
 				dive = false;
 				can_dive = true;
 				crouch = false;
 			}
-			#endregion /* if player lands in water when diving, stop diving END*/
+			#endregion /*If player lands in water when diving, stop diving END*/
 			
 			#region /*Cancel dive (only when you have enabled dive canceling in settings)*/
 			if (cancel_dive_by_pressing_jump_or_dive_button = true)
@@ -6983,13 +7031,27 @@ if (hold_item_in_hands != 0)
 			{
 				if (hold_item_in_hands = "enemy_bowlingball")
 				{
-					with(instance_create_depth(bbox_left - 16, bbox_top, 0, obj_enemy_bowlingball))
+					if (!position_meeting(bbox_left - 32, y, obj_wall))
 					{
-						flat = true;
-						sliding_along_ground = 0;
-						stomped_delay = 10;
-						vspeed = -20;
-						image_xscale = -1;
+						with(instance_create_depth(bbox_left - 16, bbox_top, 0, obj_enemy_bowlingball))
+						{
+							flat = true;
+							sliding_along_ground = 0;
+							stomped_delay = 20;
+							vspeed = -20;
+							image_xscale = -1;
+						}
+					}
+					else
+					{
+						with(instance_create_depth(x, bbox_top, 0, obj_enemy_bowlingball))
+						{
+							flat = true;
+							sliding_along_ground = 0;
+							stomped_delay = 20;
+							vspeed = -20;
+							image_xscale = -1;
+						}
 					}
 				}
 			}
@@ -6998,13 +7060,27 @@ if (hold_item_in_hands != 0)
 			{
 				if (hold_item_in_hands = "enemy_bowlingball")
 				{
-					with(instance_create_depth(bbox_right + 16, bbox_top, 0, obj_enemy_bowlingball))
+					if (!position_meeting(bbox_right + 32, y, obj_wall))
 					{
-						flat = true;
-						sliding_along_ground = 0;
-						stomped_delay = 10;
-						vspeed = -20;
-						image_xscale = +1;
+						with(instance_create_depth(bbox_right + 16, bbox_top, 0, obj_enemy_bowlingball))
+						{
+							flat = true;
+							sliding_along_ground = 0;
+							stomped_delay = 20;
+							vspeed = -20;
+							image_xscale = +1;
+						}
+					}
+					else
+					{
+						with(instance_create_depth(x, bbox_top, 0, obj_enemy_bowlingball))
+						{
+							flat = true;
+							sliding_along_ground = 0;
+							stomped_delay = 20;
+							vspeed = -20;
+							image_xscale = +1;
+						}
 					}
 				}
 			}
@@ -7022,7 +7098,7 @@ if (hold_item_in_hands != 0)
 						{
 							flat = true;
 							sliding_along_ground = 0;
-							stomped_delay = 10;
+							stomped_delay = 20;
 							hspeed = -1;
 							vspeed = 0;
 							image_xscale = -1;
@@ -7034,7 +7110,7 @@ if (hold_item_in_hands != 0)
 						{
 							flat = true;
 							sliding_along_ground = 0;
-							stomped_delay = 10;
+							stomped_delay = 20;
 							hspeed = -1;
 							vspeed = 0;
 							image_xscale = -1;
@@ -7053,7 +7129,7 @@ if (hold_item_in_hands != 0)
 						{
 							flat = true;
 							sliding_along_ground = 0;
-							stomped_delay = 10;
+							stomped_delay = 20;
 							hspeed = +1;
 							vspeed = 0;
 							image_xscale = +1;
@@ -7065,7 +7141,7 @@ if (hold_item_in_hands != 0)
 						{
 							flat = true;
 							sliding_along_ground = 0;
-							stomped_delay = 10;
+							stomped_delay = 20;
 							hspeed = +1;
 							vspeed = 0;
 							image_xscale = +1;
@@ -7084,7 +7160,7 @@ if (hold_item_in_hands != 0)
 				{
 					flat = true;
 					sliding_along_ground = -1;
-					stomped_delay = 10;
+					stomped_delay = 20;
 					image_xscale = -1;
 				}
 			}
@@ -7099,7 +7175,7 @@ if (hold_item_in_hands != 0)
 				{
 					flat = true;
 					sliding_along_ground = +1;
-					stomped_delay = 10;
+					stomped_delay = 20;
 					image_xscale = +1;
 				}
 			}
@@ -7732,7 +7808,7 @@ else
 }
 #endregion /*Speedup to Dashspeed END*/
 
-#region /* interaction with other players*/
+#region /*Interaction with other players*/
 if (asset_get_type("obj_player") == asset_object)
 and (in_water = false)
 {
@@ -7766,7 +7842,7 @@ and (in_water = false)
 	#endregion /*Jump on other players heads END*/
 	
 }
-#endregion /* interaction with other players END*/
+#endregion /*Interaction with other players END*/
 
 #region /*Health Handeling*/
 if (takendamage > 0)
@@ -8069,7 +8145,7 @@ if (die = true)
 }
 #endregion /*Die END*/
 
-#region /* if you touch spikes, take damage*/
+#region /*If you touch spikes, take damage*/
 if (asset_get_type("obj_spikes") == asset_object)
 and (instance_exists(obj_spikes))
 {
@@ -8122,9 +8198,9 @@ and (instance_exists(obj_spikes))
 		}
 	}
 }
-#endregion /* if you touch spikes, take damage END*/
+#endregion /*If you touch spikes, take damage END*/
 
-#region /* invincibility*/
+#region /*Invincibility*/
 if (asset_get_type("obj_invincibility_powerup") == asset_object)
 {
 	if (place_meeting(x, y, obj_invincibility_powerup))
@@ -8170,7 +8246,7 @@ if (asset_get_type("obj_invincibility_powerup") == asset_object)
 		}
 	}
 }
-#endregion /* invincibility END*/
+#endregion /*Invincibility END*/
 
 #region /*Time*/
 if (goal = false)
@@ -9361,7 +9437,7 @@ and (place_meeting(x, y, obj_vine))
 }
 #endregion /*Climb Vine END*/
 
-#region /* in Water Animations*/
+#region /*In Water Animations*/
 if (in_water = true)
 and (climb = false)
 {
@@ -9780,7 +9856,7 @@ else
 }
 
 }
-#endregion /* in Water Animations END*/
+#endregion /*In Water Animations END*/
 
 else
 {
@@ -10301,7 +10377,7 @@ if (abs(hspeed) > 0)
 	else
 	{
 		if (sprite_walk> noone){sprite_index = sprite_walk;} /*Walk*/ else
-		if (sprite_run > noone){sprite_index = sprite_run;} /* if no walk sprite, use run sprite*/ else
+		if (sprite_run > noone){sprite_index = sprite_run;} /*If no walk sprite, use run sprite*/ else
 		{sprite_index = sprite_stand;}
 	}
 	if (asset_get_type("obj_ice_block") == asset_object)
@@ -10513,7 +10589,7 @@ if (vspeed < 0)
 		}
 	}
 	else
-	/*Make it look natural when climbing wall*//* iMPORTANT*/
+	/*Make it look natural when climbing wall*//*IMPORTANT*/
 	/*Run up wall / wall_slide up*/
 	if (stick_to_wall = true)
 	{

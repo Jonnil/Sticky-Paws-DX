@@ -258,7 +258,7 @@ and (sprite_index = spr_bucket)
 		}
 		#region /*Big Collectible 5 END*/
 		
-		#region /* invincibility Powerup*/
+		#region /*Invincibility Powerup*/
 		if (item_inside = "invincibility_powerup")
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
@@ -272,7 +272,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /* invincibility Powerup END*/
+		#endregion /*Invincibility Powerup END*/
 	
 }
 with(other)

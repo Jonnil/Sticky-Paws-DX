@@ -1,10 +1,10 @@
-#region /* if enemies are disabled, destroy this object*/
+#region /*If enemies are disabled, destroy this object*/
 if (global.assist_enable = true)
 and (global.assist_enable_enemies = false)
 {
 	instance_destroy();
 }
-#endregion /* if enemies are disabled, destroy this object END*/
+#endregion /*If enemies are disabled, destroy this object END*/
 
 if (die_volting = -1)
 or(die_volting = +1)
@@ -54,21 +54,6 @@ else
 	
 	if (flat = true)
 	{
-		if (instance_exists(obj_player))
-		and (sliding_along_ground = 0)
-		and (stomped_delay = 0)
-		and (instance_nearest(x, y, obj_player).hold_item_in_hands = 0)
-		and (instance_nearest(x, y, obj_player).key_dive_hold)
-		{
-			if (place_meeting(x - 4, y, obj_player))
-			or (place_meeting(x + 4, y, obj_player))
-			or (place_meeting(x, y + 4, obj_player))
-			{
-				instance_nearest(x, y, obj_player).hold_item_in_hands = "enemy_bowlingball";
-				instance_destroy();
-			}
-		}
-		
 		image_speed = 0.5;
 		sprite_used = "flattened";
 		sprite_index = global.resourcepack_sprite_enemy_bowlingball_stomped;
@@ -80,6 +65,22 @@ else
 		
 		if (stomped_delay = 0)
 		{
+			if (instance_exists(obj_player))
+			and (sliding_along_ground = 0)
+			and (instance_nearest(x, y, obj_player).hold_item_in_hands = 0)
+			and (instance_nearest(x, y, obj_player).key_dive_hold)
+			and (instance_nearest(x, y, obj_player).horizontal_rope_climb = false)
+			{
+				if (place_meeting(x - 4, y, obj_player))
+				or (place_meeting(x + 4, y, obj_player))
+				or (place_meeting(x, y + 4, obj_player))
+				{
+					instance_nearest(x, y, obj_player).hold_item_in_hands = "enemy_bowlingball";
+					instance_nearest(x, y, obj_player).dive = false;
+					instance_destroy();
+				}
+			}
+			else
 			if (instance_exists(obj_player))
 			and (position_meeting(bbox_left - 1, y, obj_player))
 			and (instance_nearest(x, y, obj_player).hspeed >= +8)
@@ -395,15 +396,32 @@ if (flat = false)
 	image_speed = 0.3;
 }
 
+if (coil_spring = true)
+and (die = false)
+and (place_meeting(x, y + 1, obj_wall))
+{
+	vspeed = -15;
+}
+
 if (sliding_along_ground = -1)
 and (flat = true)
 and (die = false)
 {
-	hspeed = -sliding_along_ground_speed;
 	draw_angle += 10;
-	if (position_meeting(bbox_left - 1, y, obj_wall))
+	if (place_meeting(x - 1, y, obj_wall))
 	{
 		sliding_along_ground = +1;
+	}
+	if (position_meeting(x - 32, y + 32, obj_wall))
+	and (position_meeting(x + 32, y + 32, obj_wall))
+	and (!position_meeting(x, y + 32, obj_wall))
+	{
+		hspeed = -1;
+		y += 1;
+	}
+	else
+	{
+		hspeed = -sliding_along_ground_speed;
 	}
 }
 else
@@ -411,11 +429,21 @@ if (sliding_along_ground = +1)
 and (flat = true)
 and (die = false)
 {
-	hspeed = +sliding_along_ground_speed;
 	draw_angle -= 10;
-	if (position_meeting(bbox_right + 1, y, obj_wall))
+	if (place_meeting(x + 1, y, obj_wall))
 	{
 		sliding_along_ground = -1;
+	}
+	if (position_meeting(x - 32, y + 32, obj_wall))
+	and (position_meeting(x + 32, y + 32, obj_wall))
+	and (!position_meeting(x, y + 32, obj_wall))
+	{
+		hspeed = +1;
+		y += 1;
+	}
+	else
+	{
+		hspeed = +sliding_along_ground_speed;
 	}
 }
 else
@@ -423,7 +451,7 @@ if (sliding_along_ground = 0)
 and (flat = true)
 and (die = false)
 {
-	hspeed = 0;
+	friction = 0.05;
 }
 
 if (place_meeting(x, y - 1, obj_wall))
@@ -431,6 +459,24 @@ and (die = false)
 {
 	vspeed = 0;
 }
+
+#region /*Don't move outside view*/
+if (bbox_right < camera_get_view_x(view_camera[view_current]))
+and (instance_number(obj_player)>= 2)
+and (intro_animation = "")
+{
+	hspeed = 0;
+	vspeed = 0;
+	speed = 0;
+	
+}
+if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+and (instance_number(obj_player)>= 2)
+and (intro_animation = "")
+{
+	x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+}
+#endregion /*Don't move outside view END*/
 
 #region /*Kill enemy if it's inside the wall*/
 if (position_meeting(x, y, obj_wall))

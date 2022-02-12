@@ -21,23 +21,36 @@ and (other.die = false)
 
 if (sliding_along_ground = +1)
 and (other.die = false)
+and (die = false)
 or (sliding_along_ground = -1)
 and (other.die = false)
+and (die = false)
 {
-	with(other)
+	if (other.x < x)
 	{
-		if (instance_nearest(x, y, obj_enemy_bowlingball).x < x)
-		{
-			die = true;
-			die_volting = +1;
-			hspeed = +4;
-			vspeed = -4;
-		}
-		else
+		other.die = true;
+		other.die_volting = +1;
+		other.hspeed = +4;
+		other.vspeed = -4;
+		if (other.sliding_along_ground <> 0)
 		{
 			die = true;
 			die_volting = -1;
 			hspeed = -4;
+			vspeed = -4;
+		}
+	}
+	else
+	{
+		other.die = true;
+		other.die_volting = -1;
+		other.hspeed = -4;
+		other.vspeed = -4;
+		if (other.sliding_along_ground <> 0)
+		{
+			die = true;
+			die_volting = +1;
+			hspeed = +4;
 			vspeed = -4;
 		}
 	}

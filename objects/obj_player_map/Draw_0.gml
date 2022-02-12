@@ -1207,7 +1207,7 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 }
 #endregion /*Show Level Info END*/
 
-#region /* if player object is present, destroy the player object*/
+#region /*If player object is present, destroy the player object*/
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 {
@@ -1216,7 +1216,7 @@ and (instance_exists(obj_player))
 		instance_destroy()
 	}
 }
-#endregion /* if player object is present, destroy the player object END*/
+#endregion /*If player object is present, destroy the player object END*/
 
 if (global.trigger_ending = true)
 and (asset_get_type("room_ending_cutscene") == asset_room)

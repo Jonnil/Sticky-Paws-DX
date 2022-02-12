@@ -23,10 +23,10 @@ and (mouse_check_button_pressed(mb_left))
 	}
 }
 
-#region /* initialize Font*/
+#region /*Initialize Font*/
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-#endregion /* initialize Font*/
+#endregion /*Initialize Font*/
 
 /*Sprite*/
 draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_height() / 2, 1, 1, 0, c_white, 1);
@@ -145,14 +145,14 @@ and (keyboard_check_pressed(global.fullscreen_key))
 }
 #endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
 
-#region /* if Window is unfocused, make the screen darker*/
+#region /*If Window is unfocused, make the screen darker*/
 if (!window_has_focus())
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), room_width, room_height, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
-#endregion /* if Window is unfocused, make the screen darker END*/
+#endregion /*If Window is unfocused, make the screen darker END*/
 
 #region /*Draw mouse cursor for menu navigation*/
 if (window_mouse_get_x() > 0)

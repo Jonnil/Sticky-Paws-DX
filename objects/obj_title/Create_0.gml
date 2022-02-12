@@ -195,7 +195,7 @@ global.spikes_emerge_time = 0;
 global.goal_active = false;
 global.PauseScreen = noone;
 global.quit_level = false;
-global.always_show_level_editor_buttons = true; /* if level editor buttons should always show or not. Should be true by default*/
+global.always_show_level_editor_buttons = true; /*If level editor buttons should always show or not. Should be true by default*/
 
 #region /*Player 1 Characterselect portrait x and y origin points*/
 if(file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
@@ -594,7 +594,7 @@ scr_config_load(); /*Load Config*/
 lives = 5; /*Starting lives*/
 level_name = "";
 
-#region /* if title screen should start at the level editor menu or the main menu*/
+#region /*If title screen should start at the level editor menu or the main menu*/
 if (global.character_select_in_this_menu = "level_editor")
 {
 	scr_load_custom_level_initializing();
@@ -615,7 +615,7 @@ else
 {
 	menu = "main_game";
 }
-#endregion /* if title screen should start at the level editor menu or the main menu END*/
+#endregion /*If title screen should start at the level editor menu or the main menu END*/
 
 lastkey = noone;
 

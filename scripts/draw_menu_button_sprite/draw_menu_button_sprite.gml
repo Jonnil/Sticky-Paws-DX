@@ -13,7 +13,7 @@ function draw_menu_button_sprite()
 {
 	#region /*Button*/
 	
-	#region /* initialize variables*/
+	#region /*Initialize variables*/
 	var spr_index =argument0; /*Sprite index of the button (argument0)*/
 	var x_position =argument1; /*The buttons x origin position (argument1)*/
 	var y_position =argument2; /*The buttons y origin position (argument2)*/
@@ -24,7 +24,7 @@ function draw_menu_button_sprite()
 	var menu_index =argument6; /*(argument4)*/
 	var menu_takes_you_to=argument7; /*(argument5)*/
 	var clicked_on = false;
-	#endregion /* initialize variables END*/
+	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(mouse_x, mouse_y, x_position, y_position+ 1, x_position+ spr_width, y_position+ spr_height))
 	and (global.controls_used_for_menu_navigation = "mouse")

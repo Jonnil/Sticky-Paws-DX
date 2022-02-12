@@ -41,3 +41,4 @@ if (asset_get_type("spr_wall") == asset_sprite)
 #endregion /*Mask END*/
 
 sprite_used = "stand";
+stuck_in_wall_counter = 0;

@@ -325,7 +325,7 @@ if (effect_speedspark_subimg < 4)
 }
 #endregion /*Running Sparks Effect END*/
 
-#region /* invinsible*/
+#region /*Invinsible*/
 if (assist_invincible = false)
 {
 	if (invincible > 0)
@@ -384,7 +384,7 @@ if (invincible > 60)
 		effect_create_above(ef_star, x +random_range(- 50,+50), y+random_range(- 50,+50), 0, c_white);
 	}
 }
-#endregion /* invinsible END*/
+#endregion /*Invinsible END*/
 
 #region /*Don't make it look like the player is teleporting when the player teleports*/
 if (smooth_teleport< 1)
@@ -478,8 +478,8 @@ if (allow_homing_attack = true)
 #endregion /*Homing Attack END*/
 
 #region /*Display Player Number and Name*/
-if (instance_number(obj_player)>= 2) /* if there is more than 1 player*/
-or(instance_number(obj_player_die)>= 1) /* if there is any other player die object*/
+if (instance_number(obj_player)>= 2) /*If there is more than 1 player*/
+or(instance_number(obj_player_die)>= 1) /*If there is any other player die object*/
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
@@ -530,20 +530,20 @@ or(instance_number(obj_player_die)>= 1) /* if there is any other player die obje
 }
 #endregion /*Display Player Number and Name END*/
 
-#region /* if player has more hp, show that*/
+#region /*If player has more hp, show that*/
 if (hp > 0)
 and (global.assist_enable = true)
 and (global.assist_invincible = false)
 or(hp > 0)
 and (global.assist_enable = false)
 {
-	if (max_hp = 2) /* if there is only max 2 hp and there is no panting sprite, display HP*/
+	if (max_hp = 2) /*If there is only max 2 hp and there is no panting sprite, display HP*/
 	and (sprite_panting = noone)
-	or(max_hp >= 3) /* if there is more than max 3 hp, always display HP*/
+	or(max_hp >= 3) /*If there is more than max 3 hp, always display HP*/
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		draw_text_outlined(x, bbox_top -32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size, c_white, c_black, 1);
 	}
 }
-#endregion /* if player has more hp, show that END*/
+#endregion /*If player has more hp, show that END*/

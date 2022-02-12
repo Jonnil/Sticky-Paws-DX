@@ -1,10 +1,10 @@
-#region /* if spikes are disabled, destroy this object*/
+#region /*If spikes are disabled, destroy this object*/
 if (global.assist_enable = true)
 and (global.assist_enable_spikes = false)
 {
 	instance_destroy();
 }
-#endregion /* if spikes are disabled, destroy this object*/
+#endregion /*If spikes are disabled, destroy this object*/
 
 if (global.spikes_emerge_time < room_speed * 1)
 {

@@ -5,7 +5,7 @@ if (global.custom_foreground_secret > noone)
 	mask_index = global.custom_foreground_secret;
 }
 
-#region /* initialize Foreground*/
+#region /*Initialize Foreground*/
 if (global.character_select_in_this_menu = "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 or(global.character_select_in_this_menu = "level_editor")
@@ -60,4 +60,4 @@ else
 	x_offset = 0;
 	y_offset = 0;
 }
-#endregion /* initialize Foreground END*/
+#endregion /*Initialize Foreground END*/

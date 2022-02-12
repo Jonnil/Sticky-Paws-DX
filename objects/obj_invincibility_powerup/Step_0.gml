@@ -4,12 +4,12 @@ image_speed = 0.1;
 gravity_direction = 270;
 gravity = 0.5;
 
-#region /* if inside wall, destroy yourself*/
+#region /*If inside wall, destroy yourself*/
 if (position_meeting(x, y, obj_wall))
 {
 	instance_destroy();
 }
-#endregion /* if inside wall, destroy yourself END*/
+#endregion /*If inside wall, destroy yourself END*/
 
 #region /*When falling, it's not bouncing up anymore*/
 if (vspeed >= 0)

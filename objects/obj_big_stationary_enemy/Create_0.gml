@@ -33,3 +33,5 @@ else
 }
 
 sprite_used = "stand";
+stuck_in_wall_counter = 0;
+sliding_along_ground = 0;

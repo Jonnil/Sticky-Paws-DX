@@ -15,7 +15,7 @@ function draw_menu_dropdown()
 	
 	#region /*Button*/
 	
-	#region /* initialize variables*/
+	#region /*Initialize variables*/
 	var x_position =argument0; /*The buttons x origin position*/
 	var y_position =argument1; /*The buttons y origin position*/
 
@@ -34,7 +34,7 @@ function draw_menu_dropdown()
 	var string_text_item10 = argument14;
 	var string_text_item11 = argument15;
 	var clicked_on = false;
-	#endregion /* initialize variables END*/
+	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position+ 32, y_position+ 2, x_position+555+ 32, y_position+ 41))
 	and (global.controls_used_for_menu_navigation = "mouse")

@@ -264,27 +264,68 @@ if (asset_get_type("font_default") == asset_font)
 #endregion /*Set a default font END*/
 
 #region /*Fullscreen and Change Window Size Text*/
-if (os_type!=os_ios)
+/*if (os_type!=os_ios)
 and (os_type!=os_android)
-and (global.controls_used_for_menu_navigation!= "controller")
+and (global.controls_used_for_menu_navigation != "controller")
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
 	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	{
-		draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 0 + 26- 2, window_get_height() - 64 +version_y_pos, 0.5, 0.5, 0, c_white, 1);
+		draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 0 + 26- 2, window_get_height() - 64 + version_y_pos, 0.5, 0.5, 0, c_white, 1);
 	}
 	if (window_get_fullscreen())
 	{
-		draw_text_outlined(0 + 42, window_get_height() - 64 +version_y_pos, ": Windowed", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(42, window_get_height() - 64 + version_y_pos, ": Windowed", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	else
 	if (!window_get_fullscreen())
 	{
-		draw_text_outlined(0 + 42, window_get_height() - 64 +version_y_pos, ": Fullscreen", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(42, window_get_height() - 64 + version_y_pos, ": Fullscreen", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+	}
+}*/
+#endregion /*Fullscreen and Change Window Size Text END*/
+
+#region /*Fullscreen toggle*/
+if (os_type!=os_ios)
+and (os_type!=os_android)
+and (global.controls_used_for_menu_navigation != "controller")
+{
+	if (window_get_fullscreen())
+	{
+		draw_menu_checkmark(-32, window_get_height() - 74 + version_y_pos, "Fullscreen", menu, true);
+		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+		{
+			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, window_get_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
+		}
+	}
+	else
+	{
+		draw_menu_checkmark(-32, window_get_height() - 74 + version_y_pos, "Fullscreen", menu, false);
+		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+		{
+			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, window_get_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
+		}
 	}
 }
-#endregion /*Fullscreen and Change Window Size Text END*/
+if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, window_get_height() + version_y_pos - 75, 670, window_get_height() + version_y_pos - 75 + 42))
+and (mouse_check_button_pressed(mb_left))
+and (global.controls_used_for_menu_navigation = "mouse")
+and (menu != "quit_game_no")
+and (menu != "quit_game_yes")
+and (can_navigate_settings_sidebar = false)
+{
+	if (window_get_fullscreen())
+	{
+		window_set_fullscreen(false);
+	}
+	else
+	{
+		window_set_fullscreen(true);
+	}
+	menu_delay = 3;
+}
+#endregion /*Fullscreen toggle END*/
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
 if (asset_get_type("obj_camera") == asset_object)
@@ -308,7 +349,7 @@ and (keyboard_check_pressed(global.fullscreen_key))
 #region /*Build Date and Version*/
 draw_set_halign(fa_left);
 draw_set_valign(fa_center);
-draw_text_outlined(0 + 16, window_get_height() - 16+version_y_pos, "v" +GM_version, global.default_text_size, c_menu_outline, c_menu_fill, 1);
+draw_text_outlined(0 + 16, window_get_height() - 16 + version_y_pos, "v" +GM_version, global.default_text_size, c_menu_outline, c_menu_fill, 1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 #endregion /*Build Date and Version END*/
@@ -1113,6 +1154,7 @@ scr_character_select_menu(); /*Character select*/
 if (menu_joystick_delay <= 0)
 and (input_key = false)
 and (can_navigate = true)
+and (menu_delay = 0)
 {
 
 	/*Level Editor Menu*/
@@ -1126,11 +1168,13 @@ and (can_navigate = true)
 	{
 		if (key_up)
 		{
+			menu_delay = 3;
 			menu = "quit";
 		}
 		else
 		if (key_down)
 		{
+			menu_delay = 3;
 			menu = "leveleditor";
 		}
 	}
@@ -1139,11 +1183,13 @@ and (can_navigate = true)
 	{
 		if (key_up)
 		{
+			menu_delay = 3;
 			menu = "main_game";
 		}
 		if (key_down)
 		and (global.convention_mode = false)
 		{
+			menu_delay = 3;
 			menu = "options"
 		}
 	}
@@ -1153,12 +1199,14 @@ and (can_navigate = true)
 		if (key_left)
 		and (global.show_language_shortcut = true)
 		{
+			menu_delay = 3;
 			menu = "language_shortcut";
 		}
 		else
 		if (key_right)
 		and (global.show_accessibility_shortcut = true)
 		{
+			menu_delay = 3;
 			menu = "accessibility_shortcut";
 		}
 		else
@@ -1166,10 +1214,12 @@ and (can_navigate = true)
 		{
 			if (asset_get_type("room_leveleditor") == asset_room)
 			{
+				menu_delay = 3;
 				menu = "leveleditor";
 			}
 			else
 			{
+				menu_delay = 3;
 				menu = "main_game";
 			}
 		}
@@ -1177,6 +1227,7 @@ and (can_navigate = true)
 		if (key_down)
 		and (global.convention_mode = false)
 		{
+			menu_delay = 3;
 			menu = "credits";
 		}
 	}
@@ -1185,6 +1236,7 @@ and (can_navigate = true)
 	{
 		if (key_right)
 		{
+			menu_delay = 3;
 			menu = "options";
 		}
 	}
@@ -1193,12 +1245,14 @@ and (can_navigate = true)
 	{
 		if (key_left)
 		{
+			menu_delay = 3;
 			menu = "options";
 		}
 		else
 		if (key_right)
 		and (global.show_profile_shortcut = true)
 		{
+			menu_delay = 3;
 			menu = "profile_shortcut";
 		}
 	}
@@ -1207,6 +1261,7 @@ and (can_navigate = true)
 	{
 		if (key_left)
 		{
+			menu_delay = 3;
 			menu = "accessibility_shortcut";
 		}
 	}
@@ -1215,11 +1270,13 @@ and (can_navigate = true)
 	{
 		if (key_up)
 		{
+			menu_delay = 3;
 			menu = "options";
 		}
 		else
 		if (key_down)
 		{
+			menu_delay = 3;
 			menu = "quit";
 		}
 	}
@@ -1228,11 +1285,13 @@ and (can_navigate = true)
 	{
 		if (key_up)
 		{
+			menu_delay = 3;
 			menu = "credits";
 		}
 		else
 		if (key_down)
 		{
+			menu_delay = 3;
 			menu = "main_game";
 		}
 	}
@@ -2343,7 +2402,7 @@ if (menu_delay < 0)
 }
 #endregion /*Menu Navigation Delay END*/
 
-#region /* if player object is present, destroy the player object*/
+#region /*If player object is present, destroy the player object*/
 if (instance_exists(obj_player))
 {
 	with(obj_player)
@@ -2351,7 +2410,7 @@ if (instance_exists(obj_player))
 		instance_destroy();
 	}
 }
-#endregion /* if player object is present, destroy the player object END*/
+#endregion /*If player object is present, destroy the player object END*/
 
 #region /*Menu navigation with joystick (This code must come after all menu navigation code)*/
 if (gamepad_axis_value(0, gp_axislv)< 0)
@@ -2402,18 +2461,18 @@ if (black_screen_at_start_delay < 1)
 }
 #endregion /*Have a black screen at the first frame so transitions look natural END*/
 
-#region /* if Window is unfocused, darken the screen*/
+#region /*If Window is unfocused, darken the screen*/
 if (!window_has_focus())
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, 0, window_get_width()* 3, window_get_height()* 3, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
-#endregion /* if Window is unfocused, darken the screen END*/
+#endregion /*If Window is unfocused, darken the screen END*/
 
 #region /*Draw Iris Transitions*/
 
-#region /* iris Zooming*/
+#region /*Iris Zooming*/
 if (menu_delay > 10)
 {
 	if (iris_zoom = 1)
@@ -2459,7 +2518,7 @@ else
 }
 #endregion /*Zoom Out END*/
 
-#endregion /* iris Zooming END*/
+#endregion /*Iris Zooming END*/
 
 if (global.enable_transitions = true)
 {

@@ -1588,6 +1588,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"enemy_bowlingball_walk.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"bowlingball.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"bowlingball_shine.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"coil_spring_strip2.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.1.1.610",
