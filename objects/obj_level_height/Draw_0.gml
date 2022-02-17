@@ -85,7 +85,7 @@ and (global.play_edited_level = false)
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
 	draw_text_outlined(x, y + 32, "Height: " + string(bbox_top), global.default_text_size, c_black, c_red, 1);
-	draw_text_outlined(x, y+64, "Warning! Level height shorter than normal", global.default_text_size *0.75, c_black, c_red, 1);
+	draw_text_outlined(x, y+64, "Warning! Level height shorter than normal", global.default_text_size * 0.75, c_black, c_red, 1);
 }
 else
 if (global.actually_play_edited_level = false)

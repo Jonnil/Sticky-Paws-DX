@@ -6,14 +6,14 @@ and (!instance_exists(obj_title))
 	if (background_brightness_lerp < 0)
 	{
 		draw_set_alpha(abs(background_brightness_lerp));
-		draw_rectangle_color(-32,-32, room_width* 2, room_height* 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(-32, -32, room_width* 2, room_height* 2, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 	}
 	else
 	if (background_brightness_lerp > 0)
 	{
 		draw_set_alpha(abs(background_brightness_lerp));
-		draw_rectangle_color(-32,-32, room_width* 2, room_height* 2, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(-32, -32, room_width* 2, room_height* 2, c_white, c_white, c_white, c_white, false);
 		draw_set_alpha(1);
 	}
 }

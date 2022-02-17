@@ -16,10 +16,10 @@ if (brick_particle = true)
 	#endregion /*Set the gravity END*/
 	
 	#region /*Destroy outside view*/
-	if (x<camera_get_view_x(view_camera[view_current]) + sprite_width)
-	or(x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
-	or(y <camera_get_view_y(view_camera[view_current]) + sprite_width)
-	or(y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + sprite_width)
+	if (x < camera_get_view_x(view_camera[view_current]) + sprite_width)
+	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
+	or(y < camera_get_view_y(view_camera[view_current]) + sprite_width)
+	or(y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + sprite_width)
 	{
 		instance_destroy();
 	}
@@ -103,15 +103,15 @@ if (brick_particle = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_boss).x, instance_nearest(x, y, obj_boss).y, obj_wall, false, true))
 		
 		or(!place_meeting(x, y + 2, obj_wall))
-		and (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +outside_view_offset)
-		and (x >camera_get_view_x(view_camera[view_current]) -outside_view_offset)
-		and (bbox_bottom <camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) +outside_view_offset)
-		and (y >camera_get_view_y(view_camera[view_current]) -outside_view_offset)
+		and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +outside_view_offset)
+		and (x > camera_get_view_x(view_camera[view_current]) -outside_view_offset)
+		and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) +outside_view_offset)
+		and (y > camera_get_view_y(view_camera[view_current]) -outside_view_offset)
 		and (!place_meeting(x, y + 2, obj_semisolid_platform))
-		and (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +outside_view_offset)
-		and (x >camera_get_view_x(view_camera[view_current]) -outside_view_offset)
-		and (bbox_bottom <camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) +outside_view_offset)
-		and (y >camera_get_view_y(view_camera[view_current]) -outside_view_offset)
+		and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) +outside_view_offset)
+		and (x > camera_get_view_x(view_camera[view_current]) -outside_view_offset)
+		and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) +outside_view_offset)
+		and (y > camera_get_view_y(view_camera[view_current]) -outside_view_offset)
 		
 		or(asset_get_type("obj_blockbreak") == asset_object)
 		and (place_meeting(x, y, obj_blockbreak))
@@ -159,10 +159,10 @@ if (brick_particle = false)
 			}
 			
 			#region /*Only do the breaking smoke effect and sound effect if it's inside the view*/
-			if (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-			and (x >camera_get_view_x(view_camera[view_current]))
-			and (bbox_bottom <camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-			and (y >camera_get_view_y(view_camera[view_current]))
+			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			and (x > camera_get_view_x(view_camera[view_current]))
+			and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			and (y > camera_get_view_y(view_camera[view_current]))
 			{
 				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 				if (asset_get_type("snd_blockbreak") == asset_sound)
@@ -234,10 +234,10 @@ if (brick_particle = false)
 			}
 			
 			#region /*Only do the breaking smoke effect and sound effect if it's inside the view*/
-			if (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-			and (x >camera_get_view_x(view_camera[view_current]))
-			and (bbox_bottom <camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-			and (y >camera_get_view_y(view_camera[view_current]))
+			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			and (x > camera_get_view_x(view_camera[view_current]))
+			and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			and (y > camera_get_view_y(view_camera[view_current]))
 			{
 				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 				if (asset_get_type("snd_blockbreak") == asset_sound)

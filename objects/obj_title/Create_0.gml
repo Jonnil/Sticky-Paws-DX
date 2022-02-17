@@ -685,8 +685,8 @@ iris_xscale = 0;
 iris_yscale = 0;
 iris_zoom = 0;
 #region /*Customize look of Options Menu*/
-c_menu_outline =c_white;
-c_menu_fill =c_black;
+c_menu_outline = c_white;
+c_menu_fill = c_black;
 #endregion /*Customize look of Options Menu END*/
 
 #region /*Stop certain sounds from playing on the title screen*/

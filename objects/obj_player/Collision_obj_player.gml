@@ -1,7 +1,7 @@
 if (other.invincible > 0)
 and (assist_invincible = false)
 {
-	invincible =other.invincible;
+	invincible = other.invincible;
 }
 
 if (global.players_can_collide = true)
@@ -30,7 +30,7 @@ if (global.players_can_collide = true)
 	and (!place_meeting(x + 1, y, obj_wall))
 	{
 		hspeed = 0;
-		x +=other.hspeed;
+		x += other.hspeed;
 	}
 	if (hspeed<- 1)
 	{

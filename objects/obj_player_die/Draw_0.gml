@@ -64,7 +64,7 @@ if (vspeed >+ 32)
 }
 #endregion /*Limit the vertical speed END*/
 
-if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 and (!instance_exists(obj_player))
 and (iris_xscale <= 0.001)
 {
@@ -120,7 +120,7 @@ and (iris_xscale <= 0.001)
 	}
 }
 else
-if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	if (lives >= 1)
 	and (instance_exists(obj_player))
@@ -174,9 +174,9 @@ if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vie
 	}
 }
 
-if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
-	y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 1;
+	y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 1;
 	sprite_index = noone;
 }
 
@@ -239,21 +239,21 @@ if (bubble = true)
 	sprite_index = spr_player_bubble; /*Get bubble sprite*/
 	
 	#region /*Don't go outside view boundary*/
-	if (x<camera_get_view_x(view_camera[view_current]) + 32)
+	if (x < camera_get_view_x(view_camera[view_current]) + 32)
 	{
-		x =camera_get_view_x(view_camera[view_current]) + 32;
+		x = camera_get_view_x(view_camera[view_current]) + 32;
 	}
-	if (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32)
+	if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32)
 	{
-		x =camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32;
+		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32;
 	}
-	if (y <camera_get_view_y(view_camera[view_current]) + 32)
+	if (y < camera_get_view_y(view_camera[view_current]) + 32)
 	{
-		y =camera_get_view_y(view_camera[view_current]) + 32;
+		y = camera_get_view_y(view_camera[view_current]) + 32;
 	}
-	if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32)
+	if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32)
 	{
-		y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32;
+		y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32;
 	}
 	#endregion /*Don't go outside view boundary END*/
 

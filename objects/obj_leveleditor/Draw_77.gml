@@ -10,6 +10,55 @@ if (quit_level_editor >= true)
 	if (quit_level_editor = 3)
 	{
 		
+		#region /*Limit so cursor and view can't go outside room*/
+		scr_set_screen_size();
+		
+		#region /*Limit controller x and controller y inside room*/
+		if (controller_x < camera_get_view_x(view_camera[view_current]))
+		{
+			controller_x = camera_get_view_x(view_camera[view_current]);
+		}
+		if (controller_x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+		{
+			controller_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+		}
+		if (controller_y < camera_get_view_y(view_camera[view_current]))
+		{
+			controller_y = camera_get_view_y(view_camera[view_current]);
+		}
+		if (controller_y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+		{
+			controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+		}
+		#endregion /*Limit controller x and controller y inside room END*/
+		
+		#region /*Limit x and y inside room*/
+		if (x < camera_get_view_x(view_camera[view_current]))
+		{
+			x = camera_get_view_x(view_camera[view_current]);
+		}
+		if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+		{
+			x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+		}
+		if (y < camera_get_view_y(view_camera[view_current]))
+		{
+			y = camera_get_view_y(view_camera[view_current]);
+		}
+		if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+		{
+			y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+		}
+		#endregion /*Limit x and y inside room END*/
+		
+		#region /*Limit view inside room*/
+		camera_set_view_pos(view_camera[view_current],
+		max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
+		max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
+		#endregion /*Limit view inside room END*/
+		
+		#endregion /*Limit so view and cursor can't go outside room END*/
+		
 		#region /*Save Thumbnail*/
 		var thumbnail_sprite;
 		thumbnail_sprite = sprite_create_from_surface(application_surface, camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);

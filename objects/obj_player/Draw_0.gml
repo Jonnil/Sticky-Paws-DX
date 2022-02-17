@@ -59,7 +59,7 @@ else
 #endregion /*Heart above head END*/
 
 #region /*Draw arrow when player is outside top view*/
-if (y <camera_get_view_y(view_camera[view_current]))
+if (y < camera_get_view_y(view_camera[view_current]))
 {
 	draw_set_color(c_black);
 	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + 16, x, camera_get_view_y(view_camera[view_current]) - 2, 30);
@@ -102,8 +102,8 @@ if (y <camera_get_view_y(view_camera[view_current]))
 #endregion /*Draw arrow when player is outside top view END*/
 
 #region /*Draw arrow when player is outside bottom view*/
-if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (y <room_height)
+if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+and (y < room_height)
 {
 	draw_set_color(c_black);
 	draw_arrow(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 16, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 2, 30);
@@ -249,7 +249,7 @@ and (sprite_index > 0)
 and (intro_animation = "")
 and (invincible < 60)
 {
-	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8,+8), yy+random_range(- 8,+8), draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8, +8), yy+random_range(- 8, +8), draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha);
 }
 else
 if (takendamage%2 == 0)
@@ -381,7 +381,7 @@ if (invincible > 60)
 {
 	if (floor(random(10 - 1))= 0)
 	{
-		effect_create_above(ef_star, x +random_range(- 50,+50), y+random_range(- 50,+50), 0, c_white);
+		effect_create_above(ef_star, x +random_range(- 50, +50), y+random_range(- 50, +50), 0, c_white);
 	}
 }
 #endregion /*Invinsible END*/

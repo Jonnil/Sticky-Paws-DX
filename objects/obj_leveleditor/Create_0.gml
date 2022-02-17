@@ -130,7 +130,7 @@ grid_alpha = 0;
 zoom_in = false; /*When this is true, zoom in*/
 zoom_reset = false; /*When this is true, reset zoom*/
 zoom_out = false; /*When this is true, zoom out*/
-difficulty_layer = 0; /*0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
+difficulty_layer = 0; /* 0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
 set_difficulty_mode = false; /*Toggle so you get a pen that can select what object appear in what difficulty*/
 place_object = noone;
 wall_surface_selected = 0; /*What kind of wall you're putting down*/
@@ -241,8 +241,8 @@ else
 
 #region /*Customize look of Options Menu*/
 menu_y_offset = - 100;
-c_menu_outline =c_black;
-c_menu_fill =c_white;
+c_menu_outline = c_black;
+c_menu_fill = c_white;
 #endregion /*Customize look of Options Menu END*/
 
 #endregion /*Options END*/

@@ -133,7 +133,7 @@ function draw_menu_slider()
 	#region /*Text above the menu button*/
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x_position, y_position-32,string(string_text) + ": " + string(variable_to_change * 100) + "%", global.default_text_size *0.75, c_menu_outline, c_menu_fill, 1);
+	draw_text_outlined(x_position, y_position-32,string(string_text) + ": " + string(variable_to_change * 100) + "%", global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 	#endregion /*Text above the menu button END*/
 	
 }

@@ -106,13 +106,13 @@ if (global.player4_key2_tongue = 0){global.player4_key2_tongue = noone;}
 
 if (global.background_brightness_menu>-0.001)
 {
-	c_menu_outline =c_white;
-	c_menu_fill =c_black;
+	c_menu_outline = c_white;
+	c_menu_fill = c_black;
 }
 else
 {
-	c_menu_outline =c_black;
-	c_menu_fill =c_white;
+	c_menu_outline = c_black;
+	c_menu_fill = c_white;
 }
 
 /*Voice clips for when you select a character*/
@@ -264,8 +264,8 @@ if (asset_get_type("font_default") == asset_font)
 #endregion /*Set a default font END*/
 
 #region /*Fullscreen and Change Window Size Text*/
-/*if (os_type!=os_ios)
-and (os_type!=os_android)
+/*if (os_type!= os_ios)
+and (os_type!= os_android)
 and (global.controls_used_for_menu_navigation != "controller")
 {
 	draw_set_halign(fa_left);
@@ -287,8 +287,8 @@ and (global.controls_used_for_menu_navigation != "controller")
 #endregion /*Fullscreen and Change Window Size Text END*/
 
 #region /*Fullscreen toggle*/
-if (os_type!=os_ios)
-and (os_type!=os_android)
+if (os_type!= os_ios)
+and (os_type!= os_android)
 and (global.controls_used_for_menu_navigation != "controller")
 {
 	if (window_get_fullscreen())
@@ -349,7 +349,7 @@ and (keyboard_check_pressed(global.fullscreen_key))
 #region /*Build Date and Version*/
 draw_set_halign(fa_left);
 draw_set_valign(fa_center);
-draw_text_outlined(0 + 16, window_get_height() - 16 + version_y_pos, "v" +GM_version, global.default_text_size, c_menu_outline, c_menu_fill, 1);
+draw_text_outlined(0 + 16, window_get_height() - 16 + version_y_pos, "v" + GM_version, global.default_text_size, c_menu_outline, c_menu_fill, 1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 #endregion /*Build Date and Version END*/
@@ -429,8 +429,8 @@ if (asset_get_type("obj_camera") == asset_object)
 	}
 	if (instance_exists(obj_camera))
 	{
-		x =obj_camera.x;
-		y =obj_camera.y;
+		x = obj_camera.x;
+		y = obj_camera.y;
 	}
 }
 #endregion /*Create Camera END*/
@@ -903,7 +903,7 @@ or(menu = "4player")
 			else
 			{
 				draw_text_outlined(window_get_width()/ 2 - 84, window_get_height()/ 2 +menu_y_offset + 128, "2 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(window_get_width()/ 2 - 84, window_get_height()/ 2 +menu_y_offset + 128+ 32, "(Need 2 controllers)", global.default_text_size *0.9, global.default_text_size *0.9, 0, c_black, c_black, c_black, c_black, 1);
+				draw_text_outlined(window_get_width()/ 2 - 84, window_get_height()/ 2 +menu_y_offset + 128+ 32, "(Need 2 controllers)", global.default_text_size * 0.9, global.default_text_size * 0.9, 0, c_black, c_black, c_black, c_black, 1);
 			}
 		}
 	}
@@ -977,7 +977,7 @@ or(menu = "4player")
 			else
 			{
 				draw_text_outlined(window_get_width()/ 2 +84, window_get_height()/ 2 +menu_y_offset + 128, "3 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(window_get_width()/ 2 +84, window_get_height()/ 2 +menu_y_offset + 128+ 32, "(Need 3 controllers)", global.default_text_size *0.9, global.default_text_size *0.9, 0, c_black, c_black, c_black, c_black, 1);
+				draw_text_outlined(window_get_width()/ 2 +84, window_get_height()/ 2 +menu_y_offset + 128+ 32, "(Need 3 controllers)", global.default_text_size * 0.9, global.default_text_size * 0.9, 0, c_black, c_black, c_black, c_black, 1);
 			}
 		}
 	}
@@ -1070,7 +1070,7 @@ or(menu = "4player")
 			else
 			{
 				draw_text_outlined(window_get_width()/ 2 + 256, window_get_height()/ 2 +menu_y_offset + 128, "4 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(window_get_width()/ 2 + 256, window_get_height()/ 2 +menu_y_offset + 128+ 32, "(Need 4 controllers)", global.default_text_size *0.9, global.default_text_size *0.9, 0, c_black, c_black, c_black, c_black, 1);
+				draw_text_outlined(window_get_width()/ 2 + 256, window_get_height()/ 2 +menu_y_offset + 128+ 32, "(Need 4 controllers)", global.default_text_size * 0.9, global.default_text_size * 0.9, 0, c_black, c_black, c_black, c_black, 1);
 			}
 		}
 	}
@@ -1127,7 +1127,7 @@ if (level_editor_template_select = true)
 		i += 1)
 		{
 			C = floor(i / R);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(i-C*R) + 100 -3, 226*(C-scroll) + 250 -3, 394 *(i-C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216+ 3))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(i-C*R) + 100 -3, 226*(C-scroll) + 250 -3, 394 *(i-C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3))
 			{
 				if (menu != "level_editor_play")
 				and (menu_delay = 0)

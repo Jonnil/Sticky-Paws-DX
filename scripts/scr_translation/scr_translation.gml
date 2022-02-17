@@ -44,7 +44,7 @@ function InitTranslations()
 		var translations = ds_map_create();
 		for(var i = 0;
 		i < hh;
-		i++)
+		i ++)
 		{
 			ds_map_add(translations, global.language_local_data[# 0, i], i);
 		}

@@ -1,4 +1,4 @@
-time = 1;
+time = 2;
 visible = false; /*Make this mask invisible*/
 
 #region /*Mask*/

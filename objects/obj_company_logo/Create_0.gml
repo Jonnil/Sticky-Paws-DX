@@ -140,10 +140,10 @@ global.thumbnail_sprite = ds_list_create();
 global.grid_hsnap = 32; /*Horizontal grid snapping*/
 global.grid_vsnap = 32; /*Vertical grid snapping*/
 global.narrator = 0; /*Select Narrator*/
-global.character_for_player_1 = "Sticky"; /*Player 1 Select Character 1*/
-global.character_for_player_2 = "Catlyn"; /*Player 2 Select Character 2*/
-global.character_for_player_3 = "Sticky"; /*Player 3 Select Character 3*/
-global.character_for_player_4 = "Catlyn"; /*Player 4 Select Character 4 */
+global.character_for_player_1 = "sticky"; /*Player 1 Select Character 1*/
+global.character_for_player_2 = "catlyn"; /*Player 2 Select Character 2*/
+global.character_for_player_3 = "sticky"; /*Player 3 Select Character 3*/
+global.character_for_player_4 = "catlyn"; /*Player 4 Select Character 4 */
 global.voicepack_for_player_1 = 0; /*Player 1 Select Voicepack*/
 global.voicepack_for_player_2 = 0; /*Player 2 Select Voicepack*/
 global.voicepack_for_player_3 = 0; /*Player 3 Select Voicepack*/
@@ -152,10 +152,10 @@ global.skin_for_player_1 = 0; /*Player 1 Select Skin, make default skin 1*/
 global.skin_for_player_2 = 1; /*Player 2 Select Skin, make default skin 2*/
 global.skin_for_player_3 = 2; /*Player 3 Select Skin, make default skin 3*/
 global.skin_for_player_4 = 3; /*Player 4 Select Skin, make default skin 4 */
-global.player1_color =c_aqua; /*Player 1 Color, default:aqua*/
-global.player2_color =c_red; /*Player 1 Color, default:red*/
-global.player3_color =c_lime; /*Player 1 Color, default:lime*/
-global.player4_color =c_yellow; /*Player 1 Color, default:yellow*/
+global.player1_color = c_aqua; /*Player 1 Color, default:aqua*/
+global.player2_color = c_red; /*Player 1 Color, default:red*/
+global.player3_color = c_lime; /*Player 1 Color, default:lime*/
+global.player4_color = c_yellow; /*Player 1 Color, default:yellow*/
 global.player1_can_play = false; /*Player 1 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player2_can_play = false; /*Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player3_can_play = false; /*Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
@@ -164,10 +164,10 @@ global.color_for_player_1 = 0; /*Player 1 Select Color 1*/
 global.color_for_player_2 = 0; /*Player 2 Select Color 2*/
 global.color_for_player_3 = 0; /*Player 3 Select Color 3*/
 global.color_for_player_4 = 0; /*Player 4 Select Color 4 */
-global.hex_color_for_player_1 =c_white; /*Player 1 Hex Value Color*/
-global.hex_color_for_player_2 =c_white; /*Player 1 Hex Value Color*/
-global.hex_color_for_player_3 =c_white; /*Player 1 Hex Value Color*/
-global.hex_color_for_player_4 =c_white; /*Player 1 Hex Value Color*/
+global.hex_color_for_player_1 = c_white; /*Player 1 Hex Value Color*/
+global.hex_color_for_player_2 = c_white; /*Player 1 Hex Value Color*/
+global.hex_color_for_player_3 = c_white; /*Player 1 Hex Value Color*/
+global.hex_color_for_player_4 = c_white; /*Player 1 Hex Value Color*/
 global.level_editor_level = 0; /*What level is selected in the custom level editor*/
 global.play_edited_level = false; /*Playtest edited level*/
 global.actually_play_edited_level = false; /*Actually playing finished edited level*/
@@ -192,8 +192,8 @@ global.sprite_select_player_1 = noone;
 global.sprite_select_player_2 = noone;
 global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
-global.selected_resourcepack = 0; /*0 = default*/
-global.selected_title_background = 0; /*0 = default*/
+global.selected_resourcepack = 0; /* 0 = default*/
+global.selected_title_background = 0; /* 0 = default*/
 global.zoom_level = 1; /*Zooming the view in and out, by default it's set to 1*/
 global.zoom_world_map = 1; /*Zooming the view in and out, by default it's set to 1*/
 global.reset_level_zoom_when_going_back_to_map = false;
@@ -274,11 +274,11 @@ global.background_brightness_gameplay = 0; /*Background brightness in gameplay. 
 global.background_brightness_menu= 0; /*Background brightness in menus. full_black=- 1, normal = 0 (default), full_white = +1*/
 
 #region /*Music and Sound Volume*/
-global.music_volume = 0.7; /*Make the volumes set to 0.7 by default, so the volume of the game is not too loud when one start the game for the first time*/
-global.sfx_volume = 0.7;
-global.ambient_volume = 0.7;
-global.voices_volume = 0.7;
-global.verbosity_slider = 1;
+global.music_volume = 7000; /*Make the volumes set to 7000 by default*/
+global.sfx_volume = 7000; /*This number is then *0.0001 so it becomes 0.7, because Linux can't load decimal numbers from .ini files*/
+global.ambient_volume = 7000; /*By default volume is 70% so it's a little lower than usual and doesn't hurt players ears*/
+global.voices_volume = 7000;
+global.verbosity_slider = 7000;
 global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
 

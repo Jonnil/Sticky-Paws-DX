@@ -12,7 +12,7 @@ if instance_exists(obj_ring){if distance_to_object(instance_nearest(mouse_x, mou
 }
 
 /*Match movement with player movement*/
-if obj_player.rope_swing = false{hspeed +=obj_player.hspeed/8;vspeed +=obj_player.vspeed/8;}
+if obj_player.rope_swing = false{hspeed += obj_player.hspeed/8;vspeed += obj_player.vspeed/8;}
 
 /*Stick to wall*/
 

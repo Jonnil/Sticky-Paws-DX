@@ -156,70 +156,70 @@ key_b_released =(gamepad_button_check_released(0, gp_face2))or(keyboard_check_re
 
 #region /*List of Placable Objects*/
 total_number_of_objects = 62; /*This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1)*/
-if (selected_object = 0){place_object = "wall";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall") == asset_sprite){sprite_index = spr_wall;}mask_index = spr_wall;}
-if (selected_object = 1){place_object = "wall_dirt";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_dirt") == asset_sprite){sprite_index = spr_wall_dirt;}mask_index = spr_wall;}
-if (selected_object = 2){place_object = "wall_glass";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_glass") == asset_sprite){sprite_index = spr_wall_glass;}mask_index = spr_wall;}
-if (selected_object = 3){place_object = "wall_grass";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_grass") == asset_sprite){sprite_index = spr_wall_grass;}mask_index = spr_wall;}
-if (selected_object = 4){place_object = "wall_gravel";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_gravel") == asset_sprite){sprite_index = spr_wall_gravel;}mask_index = spr_wall;}
-if (selected_object = 5){place_object = "wall_metal";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_metal") == asset_sprite){sprite_index = spr_wall_metal;}mask_index = spr_wall;}
-if (selected_object = 6){place_object = "wall_stone";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_stone") == asset_sprite){sprite_index = spr_wall_stone;}mask_index = spr_wall;}
-if (selected_object = 7){place_object = "wall_wood";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_wood") == asset_sprite){sprite_index = spr_wall_wood;}mask_index = spr_wall;}
+if (selected_object = 0){place_object = "wall";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall") == asset_sprite){sprite_index = spr_wall;}mask_index = spr_wall;}
+if (selected_object = 1){place_object = "wall_dirt";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall_dirt") == asset_sprite){sprite_index = spr_wall_dirt;}mask_index = spr_wall;}
+if (selected_object = 2){place_object = "wall_glass";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall_glass") == asset_sprite){sprite_index = spr_wall_glass;}mask_index = spr_wall;}
+if (selected_object = 3){place_object = "wall_grass";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall_grass") == asset_sprite){sprite_index = spr_wall_grass;}mask_index = spr_wall;}
+if (selected_object = 4){place_object = "wall_gravel";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall_gravel") == asset_sprite){sprite_index = spr_wall_gravel;}mask_index = spr_wall;}
+if (selected_object = 5){place_object = "wall_metal";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall_metal") == asset_sprite){sprite_index = spr_wall_metal;}mask_index = spr_wall;}
+if (selected_object = 6){place_object = "wall_stone";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall_stone") == asset_sprite){sprite_index = spr_wall_stone;}mask_index = spr_wall;}
+if (selected_object = 7){place_object = "wall_wood";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall_wood") == asset_sprite){sprite_index = spr_wall_wood;}mask_index = spr_wall;}
 
-if (selected_object = 8){place_object = "wall_jump_panel";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_jump_panel") == asset_sprite){sprite_index = spr_wall_jump_panel;}mask_index = spr_wall;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 144, "Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump", global.default_text_size *0.75, c_black, c_white, selected_menu_alpha);}
-if (selected_object = 9){place_object = "wall_climb_panel";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_wall_climb_panel") == asset_sprite){sprite_index = spr_wall_climb_panel;}mask_index = spr_wall;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 144, "Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb", global.default_text_size *0.75, c_black, c_white, selected_menu_alpha);}
-if (selected_object = 10){place_object = "spikes";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_spikes") == asset_sprite){sprite_index = spr_spikes;}mask_index = spr_wall;}
-if (selected_object = 11){place_object = "semisolid_platform";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_semisolid_platform") == asset_sprite){sprite_index = spr_semisolid_platform;}mask_index = spr_wall;}
-if (selected_object = 12){place_object = "brick_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;}mask_index = spr_wall;}
-if (selected_object = 13){place_object = "question_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;}mask_index = spr_wall;}
-if (selected_object = 14){place_object = "hard_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_hard_block") == asset_sprite){sprite_index = spr_hard_block;}mask_index = spr_wall;}
-if (selected_object = 15){place_object = "falling_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_falling_block") == asset_sprite){sprite_index = spr_falling_block;}mask_index = spr_wall;}
-if (selected_object = 16){place_object = "falling_block_long";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_falling_block_long") == asset_sprite){sprite_index = spr_falling_block_long;}if (asset_get_type("spr_cardboard") == asset_sprite){mask_index = spr_cardboard;}}
-if (selected_object = 17){place_object = "cloud_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cloud_block") == asset_sprite){sprite_index = spr_cloud_block;}mask_index = spr_wall;}
-if (selected_object = 18){place_object = "ice_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_ice_block") == asset_sprite){sprite_index = spr_ice_block;}mask_index = spr_wall;}
-if (selected_object = 19){place_object = "cardboard_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cardboard_block") == asset_sprite){sprite_index = spr_cardboard_block;}mask_index = spr_wall;}
-if (selected_object = 20){place_object = "cardboard";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cardboard") == asset_sprite){sprite_index = spr_cardboard;}if (asset_get_type("spr_cardboard") == asset_sprite){mask_index = spr_cardboard;}}
-if (selected_object = 21){place_object = "cardboard_long";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_cardboard_long") == asset_sprite){sprite_index = spr_cardboard_long;}if (asset_get_type("spr_cardboard_long") == asset_sprite){mask_index = spr_cardboard_long;}}
-if (selected_object = 22){place_object = "bump_in_ground";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;}mask_index = spr_wall;}
+if (selected_object = 8){place_object = "wall_jump_panel";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall_jump_panel") == asset_sprite){sprite_index = spr_wall_jump_panel;}mask_index = spr_wall;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 144, "Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump", global.default_text_size * 0.75, c_black, c_white, selected_menu_alpha);}
+if (selected_object = 9){place_object = "wall_climb_panel";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall_climb_panel") == asset_sprite){sprite_index = spr_wall_climb_panel;}mask_index = spr_wall;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 144, "Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb", global.default_text_size * 0.75, c_black, c_white, selected_menu_alpha);}
+if (selected_object = 10){place_object = "spikes";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_spikes") == asset_sprite){sprite_index = spr_spikes;}mask_index = spr_wall;}
+if (selected_object = 11){place_object = "semisolid_platform";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_semisolid_platform") == asset_sprite){sprite_index = spr_semisolid_platform;}mask_index = spr_wall;}
+if (selected_object = 12){place_object = "brick_block";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;}mask_index = spr_wall;}
+if (selected_object = 13){place_object = "question_block";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;}mask_index = spr_wall;}
+if (selected_object = 14){place_object = "hard_block";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_hard_block") == asset_sprite){sprite_index = spr_hard_block;}mask_index = spr_wall;}
+if (selected_object = 15){place_object = "falling_block";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_falling_block") == asset_sprite){sprite_index = spr_falling_block;}mask_index = spr_wall;}
+if (selected_object = 16){place_object = "falling_block_long";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_falling_block_long") == asset_sprite){sprite_index = spr_falling_block_long;}if (asset_get_type("spr_cardboard") == asset_sprite){mask_index = spr_cardboard;}}
+if (selected_object = 17){place_object = "cloud_block";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_cloud_block") == asset_sprite){sprite_index = spr_cloud_block;}mask_index = spr_wall;}
+if (selected_object = 18){place_object = "ice_block";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_ice_block") == asset_sprite){sprite_index = spr_ice_block;}mask_index = spr_wall;}
+if (selected_object = 19){place_object = "cardboard_block";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_cardboard_block") == asset_sprite){sprite_index = spr_cardboard_block;}mask_index = spr_wall;}
+if (selected_object = 20){place_object = "cardboard";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_cardboard") == asset_sprite){sprite_index = spr_cardboard;}if (asset_get_type("spr_cardboard") == asset_sprite){mask_index = spr_cardboard;}}
+if (selected_object = 21){place_object = "cardboard_long";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_cardboard_long") == asset_sprite){sprite_index = spr_cardboard_long;}if (asset_get_type("spr_cardboard_long") == asset_sprite){mask_index = spr_cardboard_long;}}
+if (selected_object = 22){place_object = "bump_in_ground";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;}mask_index = spr_wall;}
 if (selected_object = 23){place_object = "basic_collectible";can_make_place_brush_size_bigger = true;sprite_index = global.resourcepack_sprite_basic_collectible;mask_index = spr_wall;}
 if (selected_object = 24){place_object = "big_collectible_1";can_make_place_brush_size_bigger = false;sprite_index = global.resourcepack_sprite_big_collectible;mask_index = spr_wall;}
 if (selected_object = 25){place_object = "big_collectible_2";can_make_place_brush_size_bigger = false;sprite_index = global.resourcepack_sprite_big_collectible;mask_index = spr_wall;}
 if (selected_object = 26){place_object = "big_collectible_3";can_make_place_brush_size_bigger = false;sprite_index = global.resourcepack_sprite_big_collectible;mask_index = spr_wall;}
 if (selected_object = 27){place_object = "big_collectible_4";can_make_place_brush_size_bigger = false;sprite_index = global.resourcepack_sprite_big_collectible;mask_index = spr_wall;}
 if (selected_object = 28){place_object = "big_collectible_5";can_make_place_brush_size_bigger = false;sprite_index = global.resourcepack_sprite_big_collectible;mask_index = spr_wall;}
-if (selected_object = 29){place_object = "heart";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_heart") == asset_sprite){sprite_index = spr_heart;}mask_index = spr_wall;}
+if (selected_object = 29){place_object = "heart";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_heart") == asset_sprite){sprite_index = spr_heart;}mask_index = spr_wall;}
 if (selected_object = 30){place_object = "hp_pickup";can_make_place_brush_size_bigger = true;sprite_index = global.resourcepack_sprite_hp_pickup;mask_index = spr_wall;}
 if (selected_object = 31){place_object = "invincibility_powerup";can_make_place_brush_size_bigger = true;sprite_index = global.resourcepack_sprite_invincibility_powerup;mask_index = spr_wall;}
-if (selected_object = 32){place_object = "one -up";can_make_place_brush_size_bigger = true;if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_white, 0.5);}sprite_index = noone;mask_index = spr_wall;}
-if (selected_object = 33){place_object = "two-up";can_make_place_brush_size_bigger = true;if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_lime, 0.5);}sprite_index = noone;mask_index = spr_wall;}
-if (selected_object = 34){place_object = "three -up";can_make_place_brush_size_bigger = true;if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_blue, 0.5);}sprite_index = noone;mask_index = spr_wall;}
+if (selected_object = 32){place_object = "one -up";can_make_place_brush_size_bigger = true; if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_white, 0.5);}sprite_index = noone;mask_index = spr_wall;}
+if (selected_object = 33){place_object = "two-up";can_make_place_brush_size_bigger = true; if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_lime, 0.5);}sprite_index = noone;mask_index = spr_wall;}
+if (selected_object = 34){place_object = "three -up";can_make_place_brush_size_bigger = true; if (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_blue, 0.5);}sprite_index = noone;mask_index = spr_wall;}
 if (selected_object = 35){place_object = "basic_enemy";can_make_place_brush_size_bigger = true;sprite_index = sprite_basic_enemy;mask_index = spr_wall;}
 if (selected_object = 36){place_object = "enemy_bowlingball";can_make_place_brush_size_bigger = true;sprite_index = sprite_enemy_bowlingball;mask_index = spr_wall;}
 if (selected_object = 37){place_object = "big_stationary_enemy";can_make_place_brush_size_bigger = true;sprite_index = sprite_big_stationary_enemy;mask_index = spr_wall;}
 if (selected_object = 38){place_object = "blaster";can_make_place_brush_size_bigger = true;sprite_index = global.resourcepack_sprite_blaster;mask_index = spr_wall;}
-if (selected_object = 39){place_object = "spring";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_spring") == asset_sprite){sprite_index = spr_spring;}mask_index = spr_wall;}
-if (selected_object = 40){place_object = "ladder";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_ladder") == asset_sprite){sprite_index = spr_ladder;}mask_index = spr_wall;}
-if (selected_object = 41){place_object = "arrow_sign";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_arrow_sign") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_arrow_sign, 0, x, y, 1, 1, 0, c_white, 0.2);}sprite_index = noone;}mask_index = spr_2x2_block;}
-if (selected_object = 42){place_object = "arrow_sign_small";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_arrow_sign_small") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_arrow_sign_small, 0, x, y, 0.5, 0.5, 0, c_white, 0.2);}sprite_index = noone;}mask_index = spr_2x2_block;}
-if (selected_object = 43){place_object = "checkpoint";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_checkpoint") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_checkpoint, 0, x, y, 1, 1, 0, c_white, 0.2);}sprite_index = noone;}mask_index = spr_2x2_block;}
-if (selected_object = 44){place_object = "spikes_emerge_block";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_spikes_emerge_block") == asset_sprite){sprite_index = spr_spikes_emerge_block;}mask_index = spr_wall;}
-if (selected_object = 45){place_object = "oneway";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1, 0, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
-if (selected_object = 46){place_object = "oneway2";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1,90, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
-if (selected_object = 47){place_object = "oneway3";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1, 180, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
-if (selected_object = 48){place_object = "oneway4";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1, 270, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
-if (selected_object = 49){place_object = "horizontal_rope";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_horizontal_rope") == asset_sprite){sprite_index = spr_horizontal_rope;}mask_index = spr_wall;}
-if (selected_object = 50){place_object = "water";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_surface") == asset_sprite){sprite_index = spr_water_surface;}mask_index = spr_wall;}
-if (selected_object = 51){place_object = "air_bubbles_spawner";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_air_bubbles_spawner") == asset_sprite){sprite_index = spr_air_bubbles_spawner;}else if (asset_get_type("spr_bubble") == asset_sprite){sprite_index = spr_bubble;}mask_index = spr_wall;}
-if (selected_object = 52){place_object = "water_level_change_slow";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_level_change_slow") == asset_sprite){sprite_index = spr_water_level_change_slow;}mask_index = spr_wall;}
-if (selected_object = 53){place_object = "water_level_change_fast";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_level_change_fast") == asset_sprite){sprite_index = spr_water_level_change_fast;}mask_index = spr_wall;}
-if (selected_object = 54){place_object = "water_level_change_faster";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_water_level_change_faster") == asset_sprite){sprite_index = spr_water_level_change_faster;}mask_index = spr_wall;}
-if (selected_object = 55){place_object = "clipped_shirt";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_clipped_shirt") == asset_sprite){sprite_index = spr_clipped_shirt;}mask_index = spr_wall;}
-if (selected_object = 56){place_object = "bucket";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;}mask_index = spr_wall;}
-if (selected_object = 57){place_object = "bird";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_bird") == asset_sprite){sprite_index = spr_bird;}mask_index = spr_wall;}
-if (selected_object = 58){place_object = "sign_crouch";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_sign_crouch") == asset_sprite){sprite_index = spr_sign_crouch;}mask_index = spr_wall;}
-if (selected_object = 59){place_object = "boss";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_boss_stand") == asset_sprite){sprite_index = spr_boss_stand;}mask_index = spr_wall;}
-if (selected_object = 60){place_object = "boss_barrier";can_make_place_brush_size_bigger = true;if (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index = spr_boss_barrier;}mask_index = spr_wall;}
-if (selected_object = 61){place_object = "cake_stealing_enemy";can_make_place_brush_size_bigger = false;sprite_index = sprite_basic_enemy;if (asset_get_type("spr_cake") == asset_sprite){draw_sprite_ext(spr_cake, 0, x, y - 16, 1, 1, 0, c_white, 0.5);}mask_index = spr_wall;}
-if (selected_object = 62){place_object = "artwork_collection";can_make_place_brush_size_bigger = false;if (asset_get_type("spr_artwork_collection") == asset_sprite){sprite_index = spr_artwork_collection;}mask_index = spr_wall;}
+if (selected_object = 39){place_object = "spring";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_spring") == asset_sprite){sprite_index = spr_spring;}mask_index = spr_wall;}
+if (selected_object = 40){place_object = "ladder";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_ladder") == asset_sprite){sprite_index = spr_ladder;}mask_index = spr_wall;}
+if (selected_object = 41){place_object = "arrow_sign";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_arrow_sign") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_arrow_sign, 0, x, y, 1, 1, 0, c_white, 0.2);}sprite_index = noone;}mask_index = spr_2x2_block;}
+if (selected_object = 42){place_object = "arrow_sign_small";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_arrow_sign_small") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_arrow_sign_small, 0, x, y, 0.5, 0.5, 0, c_white, 0.2);}sprite_index = noone;}mask_index = spr_2x2_block;}
+if (selected_object = 43){place_object = "checkpoint";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_checkpoint") == asset_sprite){if (!place_meeting(x, y, obj_leveleditor_placed_object)) and (erase_mode = false){draw_sprite_ext(spr_checkpoint, 0, x, y, 1, 1, 0, c_white, 0.2);}sprite_index = noone;}mask_index = spr_2x2_block;}
+if (selected_object = 44){place_object = "spikes_emerge_block";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_spikes_emerge_block") == asset_sprite){sprite_index = spr_spikes_emerge_block;}mask_index = spr_wall;}
+if (selected_object = 45){place_object = "oneway";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1, 0, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
+if (selected_object = 46){place_object = "oneway2";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1,90, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
+if (selected_object = 47){place_object = "oneway3";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1, 180, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
+if (selected_object = 48){place_object = "oneway4";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, x, y, 1, 1, 270, c_white, 0.2);sprite_index = noone;mask_index = spr_wall;}}
+if (selected_object = 49){place_object = "horizontal_rope";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_horizontal_rope") == asset_sprite){sprite_index = spr_horizontal_rope;}mask_index = spr_wall;}
+if (selected_object = 50){place_object = "water";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_water_surface") == asset_sprite){sprite_index = spr_water_surface;}mask_index = spr_wall;}
+if (selected_object = 51){place_object = "air_bubbles_spawner";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_air_bubbles_spawner") == asset_sprite){sprite_index = spr_air_bubbles_spawner;}else if (asset_get_type("spr_bubble") == asset_sprite){sprite_index = spr_bubble;}mask_index = spr_wall;}
+if (selected_object = 52){place_object = "water_level_change_slow";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_water_level_change_slow") == asset_sprite){sprite_index = spr_water_level_change_slow;}mask_index = spr_wall;}
+if (selected_object = 53){place_object = "water_level_change_fast";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_water_level_change_fast") == asset_sprite){sprite_index = spr_water_level_change_fast;}mask_index = spr_wall;}
+if (selected_object = 54){place_object = "water_level_change_faster";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_water_level_change_faster") == asset_sprite){sprite_index = spr_water_level_change_faster;}mask_index = spr_wall;}
+if (selected_object = 55){place_object = "clipped_shirt";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_clipped_shirt") == asset_sprite){sprite_index = spr_clipped_shirt;}mask_index = spr_wall;}
+if (selected_object = 56){place_object = "bucket";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;}mask_index = spr_wall;}
+if (selected_object = 57){place_object = "bird";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_bird") == asset_sprite){sprite_index = spr_bird;}mask_index = spr_wall;}
+if (selected_object = 58){place_object = "sign_crouch";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_sign_crouch") == asset_sprite){sprite_index = spr_sign_crouch;}mask_index = spr_wall;}
+if (selected_object = 59){place_object = "boss";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_boss_stand") == asset_sprite){sprite_index = spr_boss_stand;}mask_index = spr_wall;}
+if (selected_object = 60){place_object = "boss_barrier";can_make_place_brush_size_bigger = true; if (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index = spr_boss_barrier;}mask_index = spr_wall;}
+if (selected_object = 61){place_object = "cake_stealing_enemy";can_make_place_brush_size_bigger = false;sprite_index = sprite_basic_enemy; if (asset_get_type("spr_cake") == asset_sprite){draw_sprite_ext(spr_cake, 0, x, y - 16, 1, 1, 0, c_white, 0.5);}mask_index = spr_wall;}
+if (selected_object = 62){place_object = "artwork_collection";can_make_place_brush_size_bigger = false; if (asset_get_type("spr_artwork_collection") == asset_sprite){sprite_index = spr_artwork_collection;}mask_index = spr_wall;}
 #endregion /*List of Placable Objects END*/
 
 #region /*Change Brush Size. Key 187 = +. key 189 = -*/
@@ -418,24 +418,44 @@ if (quit_level_editor <= 0)
 {
 	
 	#region /*Draw Horizontal Line in the Grid*/
-	for(var i= 0;i<room_width;i+= global.grid_hsnap)
+	for(var i = 0; i < room_width; i += global.grid_hsnap)
 	{
 		if (global.grid_hsnap > 1)
 		{
-			draw_line_width_color(i+grid_offset,- 16+grid_offset, i+grid_offset, room_height + 16+grid_offset, grid_width, c_white, c_white);
+			draw_line_width_color(i + grid_offset, - 16 + grid_offset, i + grid_offset, room_height + 16 + grid_offset, grid_width, c_white, c_white);
 		}
 	}
 	#endregion /*Draw Horizontal Line in the Grid END*/
 	
 	#region /*Draw Vertical Line in the Grid*/
-	for(var i= 0;i<room_height;i+= global.grid_vsnap)
+	for(var i = 0; i < room_height; i += global.grid_vsnap)
 	{
 		if (global.grid_vsnap > 1)
 		{
-			draw_line_width_color(- 16+grid_offset, i+grid_offset, room_width + 16+grid_offset, i+grid_offset, grid_width, c_white, c_white);
+			draw_line_width_color(- 16 + grid_offset, i + grid_offset, room_width + 16 + grid_offset, i + grid_offset, grid_width, c_white, c_white);
 		}
 	}
 	#endregion /*Draw Vertical Line in the Grid END*/
+	
+	#region /*Draw Horizontal Line in the Grid for indicating rooms*/
+	for(var i = 0; i < room_width; i += global.grid_hsnap * 24)
+	{
+		if (global.grid_hsnap > 1)
+		{
+			draw_line_width_color(i + grid_offset, - 16 + grid_offset, i + grid_offset, room_height + 16 + grid_offset, grid_width * 3, c_white, c_white);
+		}
+	}
+	#endregion /*Draw Horizontal Line in the Grid for indicating rooms END*/
+	
+	#region /*Draw Vertical Line in the Grid for indicating rooms*/
+	for(var i = 0; i < room_height; i += global.grid_vsnap * 13)
+	{
+		if (global.grid_vsnap > 1)
+		{
+			draw_line_width_color(- 16 + grid_offset, i + grid_offset, room_width + 16 + grid_offset, i + grid_offset, grid_width * 3, c_white, c_white);
+		}
+	}
+	#endregion /*Draw Vertical Line in the Grid for indicating rooms END*/
 	
 	if (instance_exists(obj_level_height))
 	{
@@ -457,8 +477,8 @@ if (pause = false)
 	#region /*Zoom Out*/
 	if (zoom_out = true)
 	{
-		if (camera_get_view_width(view_camera[view_current])<room_width)
-		and (camera_get_view_height(view_camera[view_current])<room_height)
+		if (camera_get_view_width(view_camera[view_current])< room_width)
+		and (camera_get_view_height(view_camera[view_current])< room_height)
 		{
 			camera_set_view_size((view_camera[view_current]), camera_get_view_width(view_camera[view_current]) +8, camera_get_view_height(view_camera[view_current]) + 4.5);
 			camera_set_view_pos((view_camera[view_current]), camera_get_view_x(view_camera[view_current]) -4, camera_get_view_y(view_camera[view_current]) - 2.5);
@@ -478,54 +498,54 @@ if (pause = false)
 	#region /*Reset Zoom*/
 	if (zoom_reset = true)
 	{
-		scr_set_screen_size();
 		
 		#region /*Limit so cursor and view can't go outside room*/
-
+		scr_set_screen_size();
+		
 		#region /*Limit controller x and controller y inside room*/
-		if (controller_x<camera_get_view_x(view_camera[view_current]))
+		if (controller_x < camera_get_view_x(view_camera[view_current]))
 		{
-			controller_x =camera_get_view_x(view_camera[view_current]);
+			controller_x = camera_get_view_x(view_camera[view_current]);
 		}
-		if (controller_x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+		if (controller_x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 		{
-			controller_x =camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			controller_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
 		}
-		if (controller_y <camera_get_view_y(view_camera[view_current]))
+		if (controller_y < camera_get_view_y(view_camera[view_current]))
 		{
-			controller_y =camera_get_view_y(view_camera[view_current]);
+			controller_y = camera_get_view_y(view_camera[view_current]);
 		}
-		if (controller_y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+		if (controller_y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 		{
-			controller_y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+			controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
 		}
 		#endregion /*Limit controller x and controller y inside room END*/
-
+		
 		#region /*Limit x and y inside room*/
-		if (x<camera_get_view_x(view_camera[view_current]))
+		if (x < camera_get_view_x(view_camera[view_current]))
 		{
-			x =camera_get_view_x(view_camera[view_current]);
+			x = camera_get_view_x(view_camera[view_current]);
 		}
-		if (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+		if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 		{
-			x =camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
 		}
-		if (y <camera_get_view_y(view_camera[view_current]))
+		if (y < camera_get_view_y(view_camera[view_current]))
 		{
-			y =camera_get_view_y(view_camera[view_current]);
+			y = camera_get_view_y(view_camera[view_current]);
 		}
-		if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+		if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 		{
-			y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+			y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
 		}
 		#endregion /*Limit x and y inside room END*/
-
+		
 		#region /*Limit view inside room*/
 		camera_set_view_pos(view_camera[view_current],
 		max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
 		max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
 		#endregion /*Limit view inside room END*/
-
+		
 		#endregion /*Limit so view and cursor can't go outside room END*/
 		
 	}
@@ -631,16 +651,16 @@ if (quit_level_editor = 0)
 	if (asset_get_type("spr_sign_crouch") == asset_sprite){draw_sprite_ext(spr_sign_crouch, 0,								camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 58, camera_get_view_y(view_camera[view_current]) + 64, 0.4, 0.4, 0, c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_boss_stand") == asset_sprite){draw_sprite_ext(spr_boss_stand, 0,								camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 59, camera_get_view_y(view_camera[view_current]) + 64, 0.4, 0.4, 0, c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_boss_barrier") == asset_sprite){draw_sprite_ext(spr_boss_barrier, 0,							camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 60, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);}
-	draw_sprite_ext(sprite_basic_enemy, 0,																					camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 61, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);if (asset_get_type("spr_cake") == asset_sprite){draw_sprite_ext(spr_cake, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 61, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white,selected_menu_alpha);}
+	draw_sprite_ext(sprite_basic_enemy, 0,																					camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 61, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha); if (asset_get_type("spr_cake") == asset_sprite){draw_sprite_ext(spr_cake, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 61, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_artwork_collection") == asset_sprite){draw_sprite_ext(spr_artwork_collection, 0,				camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 62, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);}
 	draw_set_color(c_black);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16- 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16+8, 40);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16- 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 40);
 	draw_set_color(c_white);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16- 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16+8, 30);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16- 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 30);
 	draw_set_color(c_black);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16+8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16- 8, 40);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16 +8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16- 8, 40);
 	draw_set_color(c_white);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16+8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16- 8, 30);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16 +8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16- 8, 30);
 	draw_set_alpha(1);
 }
 #endregion /*Select Object Menu END*/
@@ -681,7 +701,7 @@ if (use_controller = true)
 	#endregion /*Change control type to keyboard and mouse if using a keyboard or mouse END*/
 	
 	if (key_up)
-	and (controller_y >camera_get_view_y(view_camera[view_current]))
+	and (controller_y > camera_get_view_y(view_camera[view_current]))
 	{
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
@@ -694,7 +714,7 @@ if (use_controller = true)
 		}
 	}
 	if (key_down)
-	and (controller_y <camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+	and (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 	{
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
@@ -707,7 +727,7 @@ if (use_controller = true)
 		}
 	}
 	if (key_left)
-	and (controller_x >camera_get_view_x(view_camera[view_current]))
+	and (controller_x > camera_get_view_x(view_camera[view_current]))
 	{
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
@@ -720,7 +740,7 @@ if (use_controller = true)
 		}
 	}
 	if (key_right)
-	and (controller_x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	and (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
@@ -739,16 +759,16 @@ if (use_controller = true)
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
 		{
-			camera_set_view_pos(view_camera[view_current], 0,- 16);
-			if (controller_y >camera_get_view_y(view_camera[view_current]))
+			camera_set_view_pos(view_camera[view_current], 0, - 16);
+			if (controller_y > camera_get_view_y(view_camera[view_current]))
 			{
 				controller_y -= 16;
 			}
 		}
 		else
 		{
-			camera_set_view_pos(view_camera[view_current], 0,- 8);
-			if (controller_y >camera_get_view_y(view_camera[view_current]))
+			camera_set_view_pos(view_camera[view_current], 0, - 8);
+			if (controller_y > camera_get_view_y(view_camera[view_current]))
 			{
 				controller_y-= 8;
 			}
@@ -759,16 +779,16 @@ if (use_controller = true)
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
 		{
-			camera_set_view_pos(view_camera[view_current], 0,+ 16);
-			if (controller_y <camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			camera_set_view_pos(view_camera[view_current], 0, + 16);
+			if (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 			{
 				controller_y += 16;
 			}
 		}
 		else
 		{
-			camera_set_view_pos(view_camera[view_current], 0,+8);
-			if (controller_y <camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			camera_set_view_pos(view_camera[view_current], 0, +8);
+			if (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 			{
 				controller_y += 8;
 			}
@@ -779,16 +799,16 @@ if (use_controller = true)
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
 		{
-			camera_set_view_pos(view_camera[view_current],- 16, 0);
-			if (controller_x >camera_get_view_x(view_camera[view_current]))
+			camera_set_view_pos(view_camera[view_current], - 16, 0);
+			if (controller_x > camera_get_view_x(view_camera[view_current]))
 			{
 				controller_x-= 16;
 			}
 		}
 		else
 		{
-			camera_set_view_pos(view_camera[view_current],- 8, 0);
-			if (controller_x >camera_get_view_x(view_camera[view_current]))
+			camera_set_view_pos(view_camera[view_current], - 8, 0);
+			if (controller_x > camera_get_view_x(view_camera[view_current]))
 			{
 				controller_x-= 8;
 			}
@@ -799,16 +819,16 @@ if (use_controller = true)
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
 		{
-			camera_set_view_pos(view_camera[view_current],+ 16, 0);
-			if (controller_x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			camera_set_view_pos(view_camera[view_current], + 16, 0);
+			if (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 			{
 				controller_x += 16;
 			}
 		}
 		else
 		{
-			camera_set_view_pos(view_camera[view_current],+8, 0);
-			if (controller_x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			camera_set_view_pos(view_camera[view_current], +8, 0);
+			if (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 			{
 				controller_x += 8;
 			}
@@ -817,8 +837,8 @@ if (use_controller = true)
 	#endregion /*Move view with gamepad END*/
 	x = controller_x;
 	y = controller_y;
-	cursor_x =controller_x;
-	cursor_y =controller_y;
+	cursor_x = controller_x;
+	cursor_y = controller_y;
 }
 #endregion /*Controller Input Changes END*/
 
@@ -1174,280 +1194,285 @@ if (quit_level_editor = 0)
 		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /*Can't place objects when clicking the top buttons*/
 		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32)) /*Can't place objects when clicking the play button*/
 		{
-			if (set_difficulty_mode = true)
-			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
-			or(set_difficulty_mode = false)
-			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+			if (show_grid = true)
+			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() - 32 + 32, 80 + icons_at_top_y + 16 + 32))
+			or (show_grid = false)
 			{
-				
-				drag_object = false;
-				
-				#region /*Brush size 1*/
-				if (!place_meeting(x, y, obj_leveleditor_placed_object))
-				and (can_put_objects_above_other_objects = false)
-				or(can_put_objects_above_other_objects = true)
-				and (mouse_check_button_pressed(mb_left))
+				if (set_difficulty_mode = true)
+				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+				or(set_difficulty_mode = false)
+				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 				{
-					obj = instance_create_depth(x, y, 0, obj_leveleditor_placed_object);
-					obj.object =obj_leveleditor.place_object;
-					obj.place_object_angle = true;
-					obj.undo_value =obj_leveleditor.current_undo_value; /*Undo and Redo handeling*/
 					
-					#region /*When placing on difficulty layer*/
-					if (obj_leveleditor.set_difficulty_mode = true)
+					drag_object = false;
+					
+					#region /*Brush size 1*/
+					if (!place_meeting(x, y, obj_leveleditor_placed_object))
+					and (can_put_objects_above_other_objects = false)
+					or(can_put_objects_above_other_objects = true)
+					and (mouse_check_button_pressed(mb_left))
 					{
-						if (obj_leveleditor.difficulty_layer = 1)
+						obj = instance_create_depth(x, y, 0, obj_leveleditor_placed_object);
+						obj.object = obj_leveleditor.place_object;
+						obj.place_object_angle = true;
+						obj.undo_value = obj_leveleditor.current_undo_value; /*Undo and Redo handeling*/
+					
+						#region /*When placing on difficulty layer*/
+						if (obj_leveleditor.set_difficulty_mode = true)
 						{
-							obj.easy = true;
-							obj.normal = false;
-							obj.hard = false;
+							if (obj_leveleditor.difficulty_layer = 1)
+							{
+								obj.easy = true;
+								obj.normal = false;
+								obj.hard = false;
+							}
+							else
+							if (obj_leveleditor.difficulty_layer = 2)
+							{
+								obj.easy = false;
+								obj.normal = true;
+								obj.hard = false;
+							}
+							else
+							if (obj_leveleditor.difficulty_layer >= 3)
+							{
+								obj.easy = false;
+								obj.normal = false;
+								obj.hard = true;
+							}
 						}
-						else
-						if (obj_leveleditor.difficulty_layer = 2)
+						#endregion /*When placing on difficulty layer END*/
+					
+						if (asset_get_type("snd_leveleditor_place_object") == asset_sound)
 						{
-							obj.easy = false;
-							obj.normal = true;
-							obj.hard = false;
-						}
-						else
-						if (obj_leveleditor.difficulty_layer >= 3)
-						{
-							obj.easy = false;
-							obj.normal = false;
-							obj.hard = true;
+							audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));
+							audio_play_sound(snd_leveleditor_place_object, 0, 0);
+							audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);
 						}
 					}
-					#endregion /*When placing on difficulty layer END*/
+					#endregion /*Brush size 1 END*/
 					
-					if (asset_get_type("snd_leveleditor_place_object") == asset_sound)
+					#region /*Brush size 2*/
+					if (!place_meeting(x + 32, y, obj_leveleditor_placed_object))
+					and (obj_leveleditor.place_brush_size >= 1)
+					and (can_put_objects_above_other_objects = false)
+					or(obj_leveleditor.place_brush_size >= 1)
+					and (can_put_objects_above_other_objects = true)
+					and (mouse_check_button_pressed(mb_left))
 					{
-						audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));
-						audio_play_sound(snd_leveleditor_place_object, 0, 0);
-						audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);
-					}
-				}
-				#endregion /*Brush size 1 END*/
-				
-				#region /*Brush size 2*/
-				if (!place_meeting(x + 32, y, obj_leveleditor_placed_object))
-				and (obj_leveleditor.place_brush_size >= 1)
-				and (can_put_objects_above_other_objects = false)
-				or(obj_leveleditor.place_brush_size >= 1)
-				and (can_put_objects_above_other_objects = true)
-				and (mouse_check_button_pressed(mb_left))
-				{
-					obj = instance_create_depth(x + 32, y, 0, obj_leveleditor_placed_object);
-					obj.object =obj_leveleditor.place_object;
-					obj.undo_value =obj_leveleditor.current_undo_value; /*Undo and Redo handeling*/
+						obj = instance_create_depth(x + 32, y, 0, obj_leveleditor_placed_object);
+						obj.object = obj_leveleditor.place_object;
+						obj.undo_value = obj_leveleditor.current_undo_value; /*Undo and Redo handeling*/
 					
-					#region /*When placing on difficulty layer*/
-					if (obj_leveleditor.set_difficulty_mode = true)
-					{
-						if (obj_leveleditor.difficulty_layer = 1)
+						#region /*When placing on difficulty layer*/
+						if (obj_leveleditor.set_difficulty_mode = true)
 						{
-							obj.easy = true;
-							obj.normal = false;
-							obj.hard = false;
+							if (obj_leveleditor.difficulty_layer = 1)
+							{
+								obj.easy = true;
+								obj.normal = false;
+								obj.hard = false;
+							}
+							else
+							if (obj_leveleditor.difficulty_layer = 2)
+							{
+								obj.easy = false;
+								obj.normal = true;
+								obj.hard = false;
+							}
+							else
+							if (obj_leveleditor.difficulty_layer >= 3)
+							{
+								obj.easy = false;
+								obj.normal = false;
+								obj.hard = true;
+							}
 						}
-						else
-						if (obj_leveleditor.difficulty_layer = 2)
-						{
-							obj.easy = false;
-							obj.normal = true;
-							obj.hard = false;
-						}
-						else
-						if (obj_leveleditor.difficulty_layer >= 3)
-						{
-							obj.easy = false;
-							obj.normal = false;
-							obj.hard = true;
-						}
-					}
-					#endregion /*When placing on difficulty layer END*/
+						#endregion /*When placing on difficulty layer END*/
 			
-					if (asset_get_type("snd_leveleditor_place_object") == asset_sound)
-					{
-						audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));
-						audio_play_sound(snd_leveleditor_place_object, 0, 0);
-						audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);
+						if (asset_get_type("snd_leveleditor_place_object") == asset_sound)
+						{
+							audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));
+							audio_play_sound(snd_leveleditor_place_object, 0, 0);
+							audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);
+						}
 					}
-				}
-				if (!place_meeting(x + 32, y + 32, obj_leveleditor_placed_object))
-				and (obj_leveleditor.place_brush_size >= 1)
-				and (can_put_objects_above_other_objects = false)
-				or(obj_leveleditor.place_brush_size >= 1)
-				and (can_put_objects_above_other_objects = true)
-				and (mouse_check_button_pressed(mb_left))
+					if (!place_meeting(x + 32, y + 32, obj_leveleditor_placed_object))
+					and (obj_leveleditor.place_brush_size >= 1)
+					and (can_put_objects_above_other_objects = false)
+					or(obj_leveleditor.place_brush_size >= 1)
+					and (can_put_objects_above_other_objects = true)
+					and (mouse_check_button_pressed(mb_left))
 				
-				{
-					obj = instance_create_depth(x + 32, y + 32, 0, obj_leveleditor_placed_object);
-					obj.object =obj_leveleditor.place_object;
-					obj.undo_value =obj_leveleditor.current_undo_value; /*Undo and Redo handeling*/
+					{
+						obj = instance_create_depth(x + 32, y + 32, 0, obj_leveleditor_placed_object);
+						obj.object = obj_leveleditor.place_object;
+						obj.undo_value = obj_leveleditor.current_undo_value; /*Undo and Redo handeling*/
 					
-					#region /*When placing on difficulty layer*/
-					if (obj_leveleditor.set_difficulty_mode = true)
-					{
-						if (obj_leveleditor.difficulty_layer = 1)
+						#region /*When placing on difficulty layer*/
+						if (obj_leveleditor.set_difficulty_mode = true)
 						{
-							obj.easy = true;
-							obj.normal = false;
-							obj.hard = false;
+							if (obj_leveleditor.difficulty_layer = 1)
+							{
+								obj.easy = true;
+								obj.normal = false;
+								obj.hard = false;
+							}
+							else
+							if (obj_leveleditor.difficulty_layer = 2)
+							{
+								obj.easy = false;
+								obj.normal = true;
+								obj.hard = false;
+							}
+							else
+							if (obj_leveleditor.difficulty_layer >= 3)
+							{
+								obj.easy = false;
+								obj.normal = false;
+								obj.hard = true;
+							}
 						}
-						else
-						if (obj_leveleditor.difficulty_layer = 2)
-						{
-							obj.easy = false;
-							obj.normal = true;
-							obj.hard = false;
-						}
-						else
-						if (obj_leveleditor.difficulty_layer >= 3)
-						{
-							obj.easy = false;
-							obj.normal = false;
-							obj.hard = true;
-						}
-					}
-					#endregion /*When placing on difficulty layer END*/
+						#endregion /*When placing on difficulty layer END*/
 					
-					if (asset_get_type("snd_leveleditor_place_object") == asset_sound)
-					{
-						audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));
-						audio_play_sound(snd_leveleditor_place_object, 0, 0);
-						audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);
+						if (asset_get_type("snd_leveleditor_place_object") == asset_sound)
+						{
+							audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));
+							audio_play_sound(snd_leveleditor_place_object, 0, 0);
+							audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);
+						}
 					}
+					if!place_meeting(x, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 1) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y + 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					#endregion /*Brush size 2 END*/
+					
+					#region /*Brush size 3*/
+					if (!place_meeting(x + 32, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 32, y - 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if (!place_meeting(x, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y - 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if (!place_meeting(x-32, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y - 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if (!place_meeting(x-32, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if (!place_meeting(x-32, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y + 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					#endregion /*Brush size 3 END*/
+					
+					#region /*Brush size 4 */
+					if!place_meeting(x + 64, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y - 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x + 64, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x + 64, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y + 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x + 64, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y+64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x + 32, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 32, y+64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y+64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x-32, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y+64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					#endregion /*Brush size 4 END*/
+					
+					#region /*Brush size 5*/
+					if!place_meeting(x + 64, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y - 64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x + 32, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 32, y - 64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y - 64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x-32, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y - 64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x- 64, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y - 64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x- 64, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y - 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x- 64, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x- 64, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y + 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x- 64, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y+64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					#endregion /*Brush size 5 END*/
+					
+					#region /*Brush size 6*/
+					if!place_meeting(x +96, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y - 64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x +96, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y - 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x +96, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x +96, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y + 32, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x +96, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y+64, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x +96, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y+96, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x + 64, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y+96, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x + 32, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 32, y+96, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y+96, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x-32, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y+96, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					if!place_meeting(x- 64, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y+96, 0, obj_leveleditor_placed_object);obj.object = obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value = obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
+					if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
+					#endregion /*Brush size 6 END*/
+					
+					#region /*Reset Level Editor Checkpoint*/
+					if (asset_get_type("room_leveleditor") == asset_room)
+					and (room =room_leveleditor)
+					and (global.character_select_in_this_menu = "level_editor")
+					and (global.create_level_from_template = false)
+					{
+						ini_open(working_directory + "/custom_level_save.ini");
+						ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint");
+						ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint");
+						ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond");
+						ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_second");
+						ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_minute");
+						ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_realmillisecond");
+						ini_close();
+					}
+					#endregion /*Reset Level Editor Checkpoint END*/
+					
 				}
-				if!place_meeting(x, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 1) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y + 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				#endregion /*Brush size 2 END*/
-				
-				#region /*Brush size 3*/
-				if (!place_meeting(x + 32, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 32, y - 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if (!place_meeting(x, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y - 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if (!place_meeting(x-32, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y - 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if (!place_meeting(x-32, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if (!place_meeting(x-32, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y + 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				#endregion /*Brush size 3 END*/
-				
-				#region /*Brush size 4 */
-				if!place_meeting(x + 64, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y - 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x + 64, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x + 64, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y + 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x + 64, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y+64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x + 32, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 32, y+64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y+64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x-32, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y+64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				#endregion /*Brush size 4 END*/
-				
-				#region /*Brush size 5*/
-				if!place_meeting(x + 64, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y - 64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x + 32, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 32, y - 64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y - 64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x-32, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y - 64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x- 64, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y - 64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x- 64, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y - 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x- 64, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x- 64, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y + 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x- 64, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y+64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				#endregion /*Brush size 5 END*/
-				
-				#region /*Brush size 6*/
-				if!place_meeting(x +96, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y - 64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x +96, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y - 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x +96, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x +96, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y + 32, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x +96, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y+64, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x +96, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x +96, y+96, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x + 64, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 64, y+96, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x + 32, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x + 32, y+96, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x, y+96, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x-32, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x-32, y+96, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				if!place_meeting(x- 64, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5) and (can_make_place_brush_size_bigger = true){obj = instance_create_depth(x- 64, y+96, 0, obj_leveleditor_placed_object);obj.object =obj_leveleditor.place_object; /*Undo and Redo handeling*/obj.undo_value =obj_leveleditor.current_undo_value; /*When placing on difficulty layer*/if (obj_leveleditor.set_difficulty_mode = true){if (obj_leveleditor.difficulty_layer = 1){obj.easy = true;obj.normal = false;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer = 2){obj.easy = false;obj.normal = true;obj.hard = false;}else
-				if (obj_leveleditor.difficulty_layer >= 3){obj.easy = false;obj.normal = false;obj.hard = true;}}/*When placing on difficulty layer END*/if asset_get_type("snd_leveleditor_place_object") == asset_sound{audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));audio_play_sound(snd_leveleditor_place_object, 0, 0);audio_sound_gain(snd_leveleditor_place_object, global.sfx_volume, 0);}}
-				#endregion /*Brush size 6 END*/
-				
-				#region /*Reset Level Editor Checkpoint*/
-				if (asset_get_type("room_leveleditor") == asset_room)
-				and (room =room_leveleditor)
-				and (global.character_select_in_this_menu = "level_editor")
-				and (global.create_level_from_template = false)
-				{
-					ini_open(working_directory + "/custom_level_save.ini");
-					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint");
-					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint");
-					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond");
-					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_second");
-					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_minute");
-					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_realmillisecond");
-					ini_close();
-				}
-				#endregion /*Reset Level Editor Checkpoint END*/
-				
 			}
 		}
 	}

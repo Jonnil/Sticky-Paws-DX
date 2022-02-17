@@ -57,9 +57,9 @@ else
 {
 	hspeed = +4;
 }
-if (x<camera_get_view_x(view_camera[view_current]) -32)
+if (x < camera_get_view_x(view_camera[view_current]) -32)
 and (image_xscale < 0)
-or(x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
+or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
 and (image_xscale > 0)
 {
 	x = 0;
@@ -80,9 +80,9 @@ and (asset_get_type("obj_wall") == asset_object)
 	}
 }
 if (image_xscale = -1)
-and (x<camera_get_view_x(view_camera[view_current]) -32)
+and (x < camera_get_view_x(view_camera[view_current]) -32)
 or(image_xscale = +1)
-and (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
+and (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
 {
 	x = 0;
 	y = 0;

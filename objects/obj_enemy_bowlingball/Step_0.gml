@@ -408,16 +408,29 @@ and (flat = true)
 and (die = false)
 {
 	draw_angle += 10;
-	if (place_meeting(x - 1, y, obj_wall))
+	if (position_meeting(bbox_left - 1, y, obj_wall))
 	{
 		sliding_along_ground = +1;
 	}
-	if (position_meeting(x - 32, y + 32, obj_wall))
-	and (position_meeting(x + 32, y + 32, obj_wall))
-	and (!position_meeting(x, y + 32, obj_wall))
+	if (position_meeting(x - 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(x + 32, bbox_bottom + 1, obj_wall))
+	or (position_meeting(x - 32, bbox_bottom + 1, obj_semisolid_platform))
+	and (position_meeting(x + 32, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(x - 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(x + 32, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(x + 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(x - 32, bbox_bottom + 1, obj_semisolid_platform))
 	{
-		hspeed = -1;
-		y += 1;
+		if (!position_meeting(x, bbox_bottom + 1, obj_wall))
+		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		{
+			hspeed = -1;
+			y += 1;
+		}
+		else
+		{
+			hspeed = -sliding_along_ground_speed;
+		}
 	}
 	else
 	{
@@ -430,16 +443,29 @@ and (flat = true)
 and (die = false)
 {
 	draw_angle -= 10;
-	if (place_meeting(x + 1, y, obj_wall))
+	if (position_meeting(bbox_right + 1, y, obj_wall))
 	{
 		sliding_along_ground = -1;
 	}
-	if (position_meeting(x - 32, y + 32, obj_wall))
-	and (position_meeting(x + 32, y + 32, obj_wall))
-	and (!position_meeting(x, y + 32, obj_wall))
+	if (position_meeting(x - 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(x + 32, bbox_bottom + 1, obj_wall))
+	or (position_meeting(x - 32, bbox_bottom + 1, obj_semisolid_platform))
+	and (position_meeting(x + 32, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(x - 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(x + 32, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(x + 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(x - 32, bbox_bottom + 1, obj_semisolid_platform))
 	{
-		hspeed = +1;
-		y += 1;
+		if (!position_meeting(x, bbox_bottom + 1, obj_wall))
+		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		{
+			hspeed = +1;
+			y += 1;
+		}
+		else
+		{
+			hspeed = +sliding_along_ground_speed;
+		}
 	}
 	else
 	{

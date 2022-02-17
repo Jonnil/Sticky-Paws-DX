@@ -1,5 +1,5 @@
 /*Step Event*/
-depth = -bbox_bottom*0.1;
+depth = -bbox_bottom* 0.1;
 
 #region /*If enemies are disabled, destroy this object*/
 if (global.assist_enable = true)

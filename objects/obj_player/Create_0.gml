@@ -490,6 +490,7 @@ intro_animation_sprite = noone; /*When there is a intro animation, the sprites f
 intro_animation_image_index = 0; /*Image index of intro animation*/
 #endregion /*Intro Animation Variables END*/
 
+can_save_to_character_config = false; /*Only turn true when playing as custom character*/
 hold_item_in_hands = false; /*If the character is holding any items in their hands or not*/
 current_file = global.file;
 assist_invincible = false;
@@ -709,6 +710,7 @@ power_meter_running_sound = false;
 takendamage = 0;
 takendamage_freezetime = 80;
 music_pitch = 1;
+music_fade_in = 0;
 climb = false;
 horizontal_rope_climb = false;
 burnt = false;

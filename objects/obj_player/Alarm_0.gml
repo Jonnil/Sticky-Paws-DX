@@ -23,7 +23,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_roll", false);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_roll", false);}
 		allow_roll = false;
 	}
 	#endregion /*Allow roll*/
@@ -35,7 +35,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_ledge_grab", false);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_ledge_grab", false);}
 		allow_ledge_grab = false;
 	}
 	#endregion /*Allow ledge grab*/
@@ -47,7 +47,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_ground_pound", true);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_ground_pound", true);}
 		allow_ground_pound = true;
 	}
 	#endregion /*Allow ground pound*/
@@ -59,7 +59,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_ground_pound_jump", true);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_ground_pound_jump", true);}
 		allow_ground_poundjump = true;
 	}
 	#endregion /*Allow ground pound jump*/
@@ -71,7 +71,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_wall_jump", true);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_wall_jump", true);}
 		allow_wall_jump = true;
 	}
 	#endregion /*Allow wall jump*/
@@ -79,12 +79,12 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	#region /*Allow wall climb*/
 	if (ini_key_exists("allow abilities", "allow_wall_climb"))
 	{
-		allow_wall_climb = ini_read_real("allow abilities", "allow_wall_climb", false);
+		allow_wall_climb = ini_read_real("allow abilities", "allow_wall_climb", true);
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_wall_climb", false);
-		allow_wall_climb = false;
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_wall_climb", true);}
+		allow_wall_climb = true;
 	}
 	#endregion /*Allow wall climb*/
 
@@ -95,7 +95,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_dive", true);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_dive", true);}
 		allow_dive = true;
 	}
 	#endregion /*Allow dive*/
@@ -107,7 +107,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_dive_ground_boost", true);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_dive_ground_boost", true);}
 		allow_dive_ground_boost = true;
 	}
 	#endregion /*Allow dive ground boost*/
@@ -119,7 +119,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_survive_lava", true);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_survive_lava", true);}
 		allow_survive_lava = true;
 	}
 	#endregion /*Allow survive lava*/
@@ -131,7 +131,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_run", true);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_run", true);}
 		allow_run = true;
 	}
 	#endregion /*Allow run*/
@@ -143,7 +143,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_homing_attack", false);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_homing_attack", false);}
 		allow_homing_attack = false;
 	}
 	#endregion /*Allow homing attack*/
@@ -155,7 +155,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_crawl", true);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_crawl", true);}
 		allow_crawl = true;
 	}
 	#endregion /*Allow crawl*/
@@ -167,7 +167,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_crouch", true);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_crouch", true);}
 		allow_crouch = true;
 	}
 	#endregion /*Allow crouch*/
@@ -179,7 +179,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_tongue", false);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_tongue", false);}
 		allow_tongue = false;
 	}
 	#endregion /*Allow tongue*/
@@ -191,7 +191,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("allow abilities", "allow_overflow_hp", false);
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_overflow_hp", false);}
 		allow_overflow_hp = false;
 	}
 	#endregion /*Allow tongue*/
@@ -207,7 +207,7 @@ else
 	allow_ground_pound = true; /*Allow Ground Pound*/
 	allow_ground_poundjump = true;
 	allow_wall_jump = true; /*Allow Wall Jump*/
-	allow_wall_climb = false; /*Allow Wall Climb*/
+	allow_wall_climb = true; /*Allow Wall Climb*/
 	allow_dive = true; /*Dive when you have speed or during a ground_pound*/
 	allow_dive_ground_boost = true;
 	allow_survive_lava = true;
@@ -217,24 +217,6 @@ else
 	allow_crouch = true;
 	allow_tongue = false; /*A tongue that extends*/
 	allow_overflow_hp = false;
-	//ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini");
-	//if(!ini_key_exists("allow abilities", "allow_wall_jump")){ini_write_real("allow abilities", "allow_wall_jump", true);}
-	//if(!ini_key_exists("allow abilities", "allow_wall_climb")){ini_write_real("allow abilities", "allow_wall_climb", false);}
-	//if(!ini_key_exists("allow abilities", "allow_tongue")){ini_write_real("allow abilities", "allow_tongue", true);}
-	//if(!ini_key_exists("allow abilities", "allow_survive_lava")){ini_write_real("allow abilities", "allow_survive_lava", true);}
-	//if(!ini_key_exists("allow abilities", "allow_run")){ini_write_real("allow abilities", "allow_run", true);}
-	//if(!ini_key_exists("allow abilities", "allow_roll")){ini_write_real("allow abilities", "allow_roll", false);}
-	//if(!ini_key_exists("allow abilities", "allow_ledge_grab")){ini_write_real("allow abilities", "allow_ledge_grab", false);}
-	//if(!ini_key_exists("allow abilities", "allow_homing_attack")){ini_write_real("allow abilities", "allow_homing_attack", false);}
-	//if(!ini_key_exists("allow abilities", "allow_ground_pound_jump")){ini_write_real("allow abilities", "allow_ground_pound_jump", true);}
-	//if(!ini_key_exists("allow abilities", "allow_ground_pound")){ini_write_real("allow abilities", "allow_ground_pound", true);}
-	//if(!ini_key_exists("allow abilities", "allow_dive_ground_boost")){ini_write_real("allow abilities", "allow_dive_ground_boost", true);}
-	//if(!ini_key_exists("allow abilities", "allow_dive")){ini_write_real("allow abilities", "allow_dive", true);}
-	//if(!ini_key_exists("allow abilities", "allow_crawl")){ini_write_real("allow abilities", "allow_crawl", true);}
-	//if(!ini_key_exists("allow abilities", "allow_crouch")){ini_write_real("allow abilities", "allow_crouch", true);}
-	//if(!ini_key_exists("allow abilities", "allow_tongue")){ini_write_real("allow abilities", "allow_tongue", false);}
-	//if(!ini_key_exists("allow abilities", "allow_overflow_hp")){ini_write_real("allow abilities", "allow_overflow_hp", false);}
-	//ini_close();
 	#endregion /*Default abilities values END*/
 	
 }
@@ -259,6 +241,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/sprite_origin_point.ini"))
 	{
 		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/sprite_origin_point.ini");
+		can_save_to_character_config = true;
 	}
 	
 	#region /*Mask x and y origin points*/
@@ -269,7 +252,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("mask origin points", "mask_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("mask origin points", "mask_yorig", 0);}
 		mask_yorig = 0;
 	}
 	#endregion /*Mask y origin point END*/
@@ -281,7 +264,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("mask origin points", "mask_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("mask origin points", "mask_xorig", 0);}
 		mask_xorig = 0;
 	}
 	#endregion /*Mask x origin point END*/
@@ -295,7 +278,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("mask origin points", "mask_crouch_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("mask origin points", "mask_crouch_yorig", 0);}
 		mask_crouch_yorig = 0;
 	}
 	#endregion /*Mask crouch y origin point END*/
@@ -307,7 +290,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("mask origin points", "mask_crouch_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("mask origin points", "mask_crouch_xorig", 0);}
 		mask_crouch_xorig = 0;
 	}
 	#endregion /*Mask crouch x origin point END*/
@@ -321,7 +304,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_panting_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_panting_xorig", 0);}
 		sprite_panting_xorig = 0;
 	}
 	#endregion /*Sprite panting x origin point END*/
@@ -333,7 +316,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_panting_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_panting_yorig", 0);}
 		sprite_panting_yorig = 0;
 	}
 	#endregion /*Sprite panting y origin point END*/
@@ -347,7 +330,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_stand_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_stand_xorig", 0);}
 		sprite_stand_xorig = 0;
 	}
 	#endregion /*Sprite stand x origin point END*/
@@ -359,7 +342,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_stand_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_stand_yorig", 0);}
 		sprite_stand_yorig = 0;
 	}
 	#endregion /*Sprite stand y origin point END*/
@@ -373,7 +356,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_stand_cold_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_stand_cold_xorig", 0);}
 		sprite_stand_cold_xorig = 0;
 	}
 	#endregion /*Sprite stand cold x origin point END*/
@@ -385,7 +368,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_stand_cold_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_stand_cold_yorig", 0);}
 		sprite_stand_cold_yorig = 0;
 	}
 	#endregion /*Sprite stand cold y origin point END*/
@@ -399,7 +382,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_standing_on_something_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_standing_on_something_xorig", 0);}
 		sprite_standing_on_something_xorig = 0;
 	}
 	#endregion /*Sprite stand x origin point END*/
@@ -411,7 +394,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_standing_on_something_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_standing_on_something_yorig", 0);}
 		sprite_standing_on_something_yorig = 0;
 	}
 	#endregion /*Sprite standing on something y origin point END*/
@@ -425,7 +408,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_look_up_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_look_up_xorig", 0);}
 		sprite_look_up_xorig = 0;
 	}
 	#endregion /*Sprite look up x origin point END*/
@@ -437,7 +420,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_look_up_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_look_up_yorig", 0);}
 		sprite_look_up_yorig = 0;
 	}
 	#endregion /*Sprite look up y origin point END*/
@@ -451,7 +434,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_look_up_start_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_look_up_start_xorig", 0);}
 		sprite_look_up_start_xorig = 0;
 	}
 	#endregion /*Sprite look up start x origin point END*/
@@ -463,7 +446,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_look_up_start_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_look_up_start_yorig", 0);}
 		sprite_look_up_start_yorig = 0;
 	}
 	#endregion /*Sprite look up start y origin point END*/
@@ -477,7 +460,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_crouch_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_crouch_xorig", 0);}
 		sprite_crouch_xorig = 0;
 	}
 	#endregion /*Sprite crouch x origin point END*/
@@ -489,7 +472,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_crouch_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_crouch_yorig", 0);}
 		sprite_crouch_yorig = 0;
 	}
 	#endregion /*Sprite crouch y origin point END*/
@@ -503,7 +486,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_crawl_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_crawl_xorig", 0);}
 		sprite_crawl_xorig = 0;
 	}
 	#endregion /*Sprite crawl x origin point END*/
@@ -515,7 +498,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_crawl_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_crawl_yorig", 0);}
 		sprite_crawl_yorig = 0;
 	}
 	#endregion /*Sprite crawl y origin point END*/
@@ -529,7 +512,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_crouch_jump_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_crouch_jump_xorig", 0);}
 		sprite_crouch_jump_xorig = 0;
 	}
 	#endregion /*Sprite crouch jump x origin point END*/
@@ -541,7 +524,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_crouch_jump_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_crouch_jump_yorig", 0);}
 		sprite_crouch_jump_yorig = 0;
 	}
 	#endregion /*Sprite crouch jump y origin point END*/
@@ -555,7 +538,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_crouch_fall_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_crouch_fall_xorig", 0);}
 		sprite_crouch_fall_xorig = 0;
 	}
 	#endregion /*Sprite crouch fall x origin point END*/
@@ -567,7 +550,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_crouch_fall_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_crouch_fall_yorig", 0);}
 		sprite_crouch_fall_yorig = 0;
 	}
 	#endregion /*Sprite crouch fall y origin point END*/
@@ -581,7 +564,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_skidding_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_skidding_xorig", 0);}
 		sprite_skidding_xorig = 0;
 	}
 	#endregion /*Sprite skidding x origin point END*/
@@ -593,7 +576,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_skidding_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_skidding_yorig", 0);}
 		sprite_skidding_yorig = 0;
 	}
 	#endregion /*Sprite skidding y origin point END*/
@@ -607,7 +590,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_skidding_ice_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_skidding_ice_xorig", 0);}
 		sprite_skidding_ice_xorig = 0;
 	}
 	#endregion /*Sprite skidding ice x origin point END*/
@@ -619,7 +602,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_skidding_ice_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_skidding_ice_yorig", 0);}
 		sprite_skidding_ice_yorig = 0;
 	}
 	#endregion /*Sprite skidding ice y origin point END*/
@@ -633,7 +616,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_swim_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_swim_xorig", 0);}
 		sprite_swim_xorig = 0;
 	}
 	#endregion /*Sprite swim x origin point END*/
@@ -645,7 +628,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_swim_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_swim_yorig", 0);}
 		sprite_swim_yorig = 0;
 	}
 	#endregion /*Sprite swim y origin point END*/
@@ -659,7 +642,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_swim_stand_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_swim_stand_xorig", 0);}
 		sprite_swim_stand_xorig = 0;
 	}
 	#endregion /*Sprite swim stand x origin point END*/
@@ -671,7 +654,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_swim_stand_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_swim_stand_yorig", 0);}
 		sprite_swim_stand_yorig = 0;
 	}
 	#endregion /*Sprite swim stand y origin point END*/
@@ -685,7 +668,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_swim_fall_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_swim_fall_xorig", 0);}
 		sprite_swim_fall_xorig = 0;
 	}
 	#endregion /*Sprite swim fall x origin point END*/
@@ -697,7 +680,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_swim_fall_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_swim_fall_yorig", 0);}
 		sprite_swim_fall_yorig = 0;
 	}
 	#endregion /*Sprite swim_fall y origin point END*/
@@ -711,7 +694,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_against_wall_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_against_wall_xorig", 0);}
 		sprite_against_wall_xorig = 0;
 	}
 	#endregion /*Sprite against wall x origin point END*/
@@ -723,7 +706,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_against_wall_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_against_wall_yorig", 0);}
 		sprite_against_wall_yorig = 0;
 	}
 	#endregion /*Sprite against wall y origin point END*/
@@ -737,7 +720,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_walk_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_walk_xorig", 0);}
 		sprite_walk_xorig = 0;
 	}
 	#endregion /*Sprite walk x origin point END*/
@@ -749,7 +732,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_walk_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_walk_yorig", 0);}
 		sprite_walk_yorig = 0;
 	}
 	#endregion /*Sprite walk y origin point END*/
@@ -763,7 +746,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_run_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_run_xorig", 0);}
 		sprite_run_xorig = 0;
 	}
 	#endregion /*Sprite run x origin point END*/
@@ -775,7 +758,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_run_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_run_yorig", 0);}
 		sprite_run_yorig = 0;
 	}
 	#endregion /*Sprite run y origin point END*/
@@ -789,7 +772,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_run2_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_run2_xorig", 0);}
 		sprite_run2_xorig = 0;
 	}
 	#endregion /*Sprite run 2 x origin point END*/
@@ -801,7 +784,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_run2_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_run2_yorig", 0);}
 		sprite_run2_yorig = 0;
 	}
 	#endregion /*Sprite run 2 y origin point END*/
@@ -815,7 +798,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_run3_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_run3_xorig", 0);}
 		sprite_run3_xorig = 0;
 	}
 	#endregion /*Sprite run 3 x origin point END*/
@@ -827,7 +810,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_run3_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_run3_yorig", 0);}
 		sprite_run3_yorig = 0;
 	}
 	#endregion /*Sprite run 3 y origin point END*/
@@ -841,7 +824,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_run4_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_run4_xorig", 0);}
 		sprite_run4_xorig = 0;
 	}
 	#endregion /*Sprite run 4 x origin point END*/
@@ -853,7 +836,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_run4_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_run4_yorig", 0);}
 		sprite_run4_yorig = 0;
 	}
 	#endregion /*Sprite run 4 y origin point END*/
@@ -867,7 +850,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_jump_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_jump_xorig", 0);}
 		sprite_jump_xorig = 0;
 	}
 	#endregion /*Sprite jump x origin point END*/
@@ -879,7 +862,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_jump_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_jump_yorig", 0);}
 		sprite_jump_yorig = 0;
 	}
 	#endregion /*Sprite jump y origin point END*/
@@ -893,7 +876,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_double_jump_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_double_jump_xorig", 0);}
 		sprite_double_jump_xorig = 0;
 	}
 	#endregion /*Sprite double jump x origin point END*/
@@ -905,7 +888,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_double_jump_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_double_jump_yorig", 0);}
 		sprite_double_jump_yorig = 0;
 	}
 	#endregion /*Sprite double jump y origin point END*/
@@ -919,7 +902,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_triple_jump_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_triple_jump_xorig", 0);}
 		sprite_triple_jump_xorig = 0;
 	}
 	#endregion /*Sprite triple jump x origin point END*/
@@ -931,7 +914,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_triple_jump_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_triple_jump_yorig", 0);}
 		sprite_triple_jump_yorig = 0;
 	}
 	#endregion /*Sprite triple jump y origin point END*/
@@ -945,7 +928,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_fall_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_fall_xorig", 0);}
 		sprite_fall_xorig = 0;
 	}
 	#endregion /*Sprite fall x origin point END*/
@@ -957,7 +940,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_fall_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_fall_yorig", 0);}
 		sprite_fall_yorig = 0;
 	}
 	#endregion /*Sprite fall y origin point END*/
@@ -971,7 +954,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_fall_slower_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_fall_slower_xorig", 0);}
 		sprite_fall_slower_xorig = 0;
 	}
 	#endregion /*Sprite fall slower x origin point END*/
@@ -983,7 +966,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_fall_slower_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_fall_slower_yorig", 0);}
 		sprite_fall_slower_yorig = 0;
 	}
 	#endregion /*Sprite fall slower y origin point END*/
@@ -1008,7 +991,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_still_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_still_xorig", 0);}
 		sprite_climb_under_still_xorig = 0;
 	}
 	#endregion /*Sprite climb under still x origin point END*/
@@ -1020,7 +1003,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_still_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_still_yorig", 0);}
 		sprite_climb_under_still_yorig = 0;
 	}
 	#endregion /*Sprite climb under still y origin point END*/
@@ -1034,7 +1017,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_xorig", 0);}
 		sprite_climb_under_xorig = 0;
 	}
 	#endregion /*Sprite climb under x origin point END*/
@@ -1046,7 +1029,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_yorig", 0);}
 		sprite_climb_under_yorig = 0;
 	}
 	#endregion /*Sprite climb under y origin point END*/
@@ -1060,7 +1043,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_look_up_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_look_up_xorig", 0);}
 		sprite_climb_under_look_up_xorig = 0;
 	}
 	#endregion /*Sprite climb under look up x origin point END*/
@@ -1072,7 +1055,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_look_up_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_look_up_yorig", 0);}
 		sprite_climb_under_look_up_yorig = 0;
 	}
 	#endregion /*Sprite climb under look up y origin point END*/
@@ -1086,7 +1069,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_spin_xorigrite_stand_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_spin_xorigrite_stand_xorig", 0);}
 		sprite_climb_under_spin_xorig = 0;
 	}
 	#endregion /*Sprite climb under spin x origin point END*/
@@ -1098,7 +1081,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_spin_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_spin_yorig", 0);}
 		sprite_climb_under_spin_yorig = 0;
 	}
 	#endregion /*Sprite climb under spin y origin point END*/
@@ -1112,7 +1095,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_spin_fast_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_spin_fast_xorig", 0);}
 		sprite_climb_under_spin_fast_xorig = 0;
 	}
 	#endregion /*Sprite climb under spin fast x origin point END*/
@@ -1124,7 +1107,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_climb_under_spin_fast_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_spin_fast_yorig", 0);}
 		sprite_climb_under_spin_fast_yorig = 0;
 	}
 	#endregion /*Sprite climb under spin fast y origin point END*/
@@ -1138,7 +1121,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_ground_pound_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_ground_pound_xorig", 0);}
 		sprite_ground_pound_xorig = 0;
 	}
 	#endregion /*Sprite ground pound x origin point END*/
@@ -1150,7 +1133,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_ground_pound_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_ground_pound_yorig", 0);}
 		sprite_ground_pound_yorig = 0;
 	}
 	#endregion /*Sprite ground pound y origin point END*/
@@ -1164,7 +1147,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_ground_pound_get_up_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_ground_pound_get_up_xorig", 0);}
 		sprite_ground_pound_get_up_xorig = 0;
 	}
 	#endregion /*Sprite ground pound get up x origin point END*/
@@ -1176,7 +1159,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_ground_pound_get_up_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_ground_pound_get_up_yorig", 0);}
 		sprite_ground_pound_get_up_yorig = 0;
 	}
 	#endregion /*Sprite ground pound get up y origin point END*/
@@ -1190,7 +1173,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_stomp_spin_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_stomp_spin_xorig", 0);}
 		sprite_stomp_spin_xorig = 0;
 	}
 	#endregion /*Sprite stomp spin x origin point END*/
@@ -1202,7 +1185,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_stomp_spin_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_stomp_spin_yorig", 0);}
 		sprite_stomp_spin_yorig = 0;
 	}
 	#endregion /*Sprite stomp spin y origin point END*/
@@ -1216,7 +1199,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_spring_up_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_spring_up_xorig", 0);}
 		sprite_spring_up_xorig = 0;
 	}
 	#endregion /*Sprite spring up x origin point END*/
@@ -1228,7 +1211,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_spring_up_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_spring_up_yorig", 0);}
 		sprite_spring_up_yorig = 0;
 	}
 	#endregion /*Sprite spring up y origin point END*/
@@ -1242,7 +1225,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_spring_transition_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_spring_transition_xorig", 0);}
 		sprite_spring_transition_xorig = 0;
 	}
 	#endregion /*Sprite spring transition x origin point END*/
@@ -1254,7 +1237,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_spring_transition_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_spring_transition_yorig", 0);}
 		sprite_spring_transition_yorig = 0;
 	}
 	#endregion /*Sprite spring transition y origin point END*/
@@ -1268,7 +1251,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_spring_down_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_spring_down_xorig", 0);}
 		sprite_spring_down_xorig = 0;
 	}
 	#endregion /*Sprite spring down x origin point END*/
@@ -1280,7 +1263,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_spring_down_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_spring_down_yorig", 0);}
 		sprite_spring_down_yorig = 0;
 	}
 	#endregion /*Sprite spring down y origin point END*/
@@ -1294,7 +1277,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_wall_slide_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_wall_slide_xorig", 0);}
 		sprite_wall_slide_xorig = 0;
 	}
 	#endregion /*Sprite wall slide x origin point END*/
@@ -1306,7 +1289,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_wall_slide_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_wall_slide_yorig", 0);}
 		sprite_wall_slide_yorig = 0;
 	}
 	#endregion /*Sprite wall slide y origin point END*/
@@ -1320,7 +1303,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_wall_slide_up_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_wall_slide_up_xorig", 0);}
 		sprite_wall_slide_up_xorig = 0;
 	}
 	#endregion /*Sprite wall slide up x origin point END*/
@@ -1332,7 +1315,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_wall_slide_up_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_wall_slide_up_yorig", 0);}
 		sprite_wall_slide_up_yorig = 0;
 	}
 	#endregion /*Sprite wall slide up y origin point END*/
@@ -1346,7 +1329,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_wall_slide_down_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_wall_slide_down_xorig", 0);}
 		sprite_wall_slide_down_xorig = 0;
 	}
 	#endregion /*Sprite wall slide down x origin point END*/
@@ -1358,7 +1341,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_wall_slide_down_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_wall_slide_down_yorig", 0);}
 		sprite_wall_slide_down_yorig = 0;
 	}
 	#endregion /*Sprite wall slide down y origin point END*/
@@ -1372,7 +1355,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_dive_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_dive_xorig", 0);}
 		sprite_dive_xorig = 0;
 	}
 	#endregion /*Sprite dive x origin point END*/
@@ -1384,7 +1367,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_dive_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_dive_yorig", 0);}
 		sprite_dive_yorig = 0;
 	}
 	#endregion /*Sprite dive y origin point END*/
@@ -1398,7 +1381,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_die_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_die_xorig", 0);}
 		sprite_die_xorig = 0;
 	}
 	#endregion /*Sprite die x origin point END*/
@@ -1410,7 +1393,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_die_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_die_yorig", 0);}
 		sprite_die_yorig = 0;
 	}
 	#endregion /*Sprite die y origin point END*/
@@ -1424,7 +1407,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_game_over_character_portrait_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_game_over_character_portrait_xorig", 0);}
 		sprite_game_over_character_portrait_xorig = 0;
 	}
 	#endregion /*Sprite game over character portrait x origin point END*/
@@ -1436,7 +1419,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_game_over_character_portrait_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_game_over_character_portrait_yorig", 0);}
 		sprite_game_over_character_portrait_yorig = 0;
 	}
 	#endregion /*Sprite game over character portrait y origin point END*/
@@ -1450,7 +1433,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_vine_climb_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_vine_climb_xorig", 0);}
 		sprite_vine_climb_xorig = 0;
 	}
 	#endregion /*Sprite vine climb x origin point END*/
@@ -1462,7 +1445,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_vine_climb_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_vine_climb_yorig", 0);}
 		sprite_vine_climb_yorig = 0;
 	}
 	#endregion /*Sprite vine climb y origin point END*/
@@ -1476,7 +1459,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_vine_stay_xorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_vine_stay_xorig", 0);}
 		sprite_vine_stay_xorig = 0;
 	}
 	#endregion /*Sprite vine stay x origin point END*/
@@ -1488,13 +1471,13 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("sprite origin points", "sprite_vine_stay_yorig", 0);
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_vine_stay_yorig", 0);}
 		sprite_vine_stay_yorig = 0;
 	}
 	#endregion /*Sprite vine stay y origin point END*/
 	#endregion /*Sprite vine stay x and y origin points END*/
 	
-	#region /*Cutscene specific origin points*/
+	#region /*Cutscene specific origin points!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 	
 	#region /*Sprite sitting down to eat x and y origin points*/
 	#region /*Sprite sitting down to eat x origin point*/
@@ -1504,6 +1487,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_down_to_eat_xorig", 0);}
 		sprite_sitting_down_to_eat_xorig = 0;
 	}
 	#endregion /*Sprite sitting down to eat x origin point END*/
@@ -1515,6 +1499,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_down_to_eat_yorig", 0);}
 		sprite_sitting_down_to_eat_yorig = 0;
 	}
 	#endregion /*Sprite sitting down to eat y origin point END*/
@@ -1528,6 +1513,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eat_closed_mouth_xorig", 0);}
 		sprite_sitting_eat_closed_mouth_xorig = 0;
 	}
 	#endregion /*Sprite sitting eat closed mouth x origin point END*/
@@ -1539,6 +1525,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eat_closed_mouth_yorig", 0);}
 		sprite_sitting_eat_closed_mouth_yorig = 0;
 	}
 	#endregion /*Sprite sitting eat closed mouth y origin point END*/
@@ -1552,6 +1539,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eat_open_mouth_xorig", 0);}
 		sprite_sitting_eat_open_mouth_xorig = 0;
 	}
 	#endregion /*Sprite sitting eat open mouth x origin point END*/
@@ -1563,6 +1551,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eat_open_mouth_yorig", 0);}
 		sprite_sitting_eat_open_mouth_yorig = 0;
 	}
 	#endregion /*Sprite sitting eat open mouth y origin point END*/
@@ -1576,6 +1565,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eat_open_mouth_open_eye_xorig", 0);}
 		sprite_sitting_eat_open_mouth_open_eye_xorig = 0;
 	}
 	#endregion /*Sprite sitting eat open mouth open eye x origin point END*/
@@ -1587,6 +1577,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eat_open_mouth_open_eye_yorig", 0);}
 		sprite_sitting_eat_open_mouth_open_eye_yorig = 0;
 	}
 	#endregion /*Sprite sitting eat open mouth open eye y origin point END*/
@@ -1600,6 +1591,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eat_surprised_xorig", 0);}
 		sprite_sitting_eat_surprised_xorig = 0;
 	}
 	#endregion /*Sprite sitting eat surprised x origin point END*/
@@ -1611,6 +1603,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eat_surprised_yorig", 0);}
 		sprite_sitting_eat_surprised_yorig = 0;
 	}
 	#endregion /*Sprite sitting eat surprised y origin point END*/
@@ -1624,6 +1617,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eating_xorig", 0);}
 		sprite_sitting_eating_xorig = 0;
 	}
 	#endregion /*Sprite sitting eating x origin point END*/
@@ -1635,6 +1629,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_sitting_eating_yorig", 0);}
 		sprite_sitting_eating_yorig = 0;
 	}
 	#endregion /*Sprite sitting eating y origin point END*/
@@ -8006,40 +8001,65 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	if(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
 	{
 		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini");
+		can_save_to_character_config = true;
 	}
-
+	
 	#region /*Acceleration on ground*/
 	if (ini_key_exists("values", "acceleration_on_ground"))
 	{
-		acceleration_on_ground = ini_read_real("values", "acceleration_on_ground", 0.3);
+		//if (os_type = os_linux)
+		//{
+		//	if (ini_read_real("values", "acceleration_on_ground", 0.3) < 1){acceleration_on_ground = 0.3;}else
+		//	{acceleration_on_ground = ini_read_real("values", "acceleration_on_ground", 0.3);}
+		//}
+		//else
+		//{
+			acceleration_on_ground = ini_read_real("values", "acceleration_on_ground", 30) * 0.01;
+		//}
 	}
 	else
 	{
-		//ini_write_real("values", "acceleration_on_ground", 0.3);
+		if (can_save_to_character_config = true){ini_write_real("values", "acceleration_on_ground", 30);}
 		acceleration_on_ground = 0.3;
 	}
 	#endregion /*Acceleration on ground END*/
-
+	
 	#region /*Acceleration in air*/
 	if (ini_key_exists("values", "acceleration_in_air"))
 	{
-		acceleration_in_air = ini_read_real("values", "acceleration_in_air", 0.3);
+		//if (os_type = os_linux)
+		//{
+		//	if (ini_read_real("values", "acceleration_in_air", 0.3) < 1){acceleration_in_air = 0.3;}else
+		//	{acceleration_in_air = ini_read_real("values", "acceleration_in_air", 0.3);}
+		//}
+		//else
+		//{
+			acceleration_in_air = ini_read_real("values", "acceleration_in_air", 30) * 0.01;
+		//}
 	}
 	else
 	{
-		//ini_write_real("values", "acceleration_in_air", 0.3);
+		if (can_save_to_character_config = true){ini_write_real("values", "acceleration_in_air", 30);}
 		acceleration_in_air = 0.3;
 	}
 	#endregion /*Acceleration in air END*/
-
+	
 	#region /*Acceleration on ice*/
 	if (ini_key_exists("values", "acceleration_on_ice"))
 	{
-		acceleration_on_ice = ini_read_real("values", "acceleration_on_ice", 0.05);
+		//if (os_type = os_linux)
+		//{
+		//	if (ini_read_real("values", "acceleration_on_ice", 0.3) < 1){acceleration_on_ice = 0.3;}else
+		//	{acceleration_on_ice = ini_read_real("values", "acceleration_on_ice", 0.3);}
+		//}
+		//else
+		//{
+			acceleration_on_ice = ini_read_real("values", "acceleration_on_ice", 5) * 0.01;
+		//}
 	}
 	else
 	{
-		//ini_write_real("values", "acceleration_on_ice", 0.05);
+		if (can_save_to_character_config = true){ini_write_real("values", "acceleration_on_ice", 5);}
 		acceleration_on_ice = 0.05;
 	}
 	#endregion /*Acceleration on ice END*/
@@ -8051,7 +8071,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "number_of_jumps", 1);
+		if (can_save_to_character_config = true){ini_write_real("values", "number_of_jumps", 1);}
 		can_attack_after_dive_on_ground_max_value = 20;
 	}
 	#endregion /*Can Attack After Dive On Ground Max Value END*/
@@ -8063,7 +8083,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "number_of_jumps", 1);
+		if (can_save_to_character_config = true){ini_write_real("values", "number_of_jumps", 1);}
 		number_of_jumps = 1;
 	}
 	#endregion /*Number of jumps END*/
@@ -8075,7 +8095,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "number_of_jumps", 1);
+		if (can_save_to_character_config = true){ini_write_real("values", "number_of_jumps", 1);}
 		midair_jumps_left = 1;
 	}
 	#endregion /*Mid-air jumps left END*/
@@ -8087,6 +8107,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("values", "midair_jump_flip_animation", 2);}
 		midair_jump_flip_animation = 2;
 	}
 	#endregion /*Mid-air Flip Animation counter END*/
@@ -8101,6 +8122,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 		}
 		else
 		{
+			if (can_save_to_character_config = true){ini_write_real("values", "hp", 1);}
 			hp = 1;
 		}
 		#endregion /*Starting HP END*/
@@ -8112,6 +8134,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 		}
 		else
 		{
+			if (can_save_to_character_config = true){ini_write_real("values", "max_hp", 1);}
 			max_hp = 1;
 		}
 		#endregion /*Starting Max HP END*/
@@ -8127,6 +8150,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 		}
 		else
 		{
+			if (can_save_to_character_config = true){ini_write_real("values", "hp", 1);}
 			hp = 1 + global.assist_extra_hp;
 		}
 		#endregion /*Starting HP + Extra Assist HP END*/
@@ -8138,6 +8162,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 		}
 		else
 		{
+			if (can_save_to_character_config = true){ini_write_real("values", "max_hp", 1);}
 			max_hp = 1 + global.assist_extra_hp;
 		}
 		#endregion /*Starting Max HP + Extra Assist HP END*/
@@ -8151,7 +8176,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "max_overflow_hp", 4);
+		if (can_save_to_character_config = true){ini_write_real("values", "max_overflow_hp", 4);}
 		max_overflow_hp = 4;
 	}
 	#endregion /*Starting Max Overflow HP END*/
@@ -8163,7 +8188,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "speed_max_walk", 4);
+		if (can_save_to_character_config = true){ini_write_real("values", "speed_max_walk", 4);}
 		speed_max_walk = 4;
 	}
 	#endregion /*Speed max walk END*/
@@ -8175,7 +8200,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "speed_max_run", 8);
+		if (can_save_to_character_config = true){ini_write_real("values", "speed_max_run", 8);}
 		speed_max_run = 8;
 	}
 	#endregion /*Speed max run END*/
@@ -8189,7 +8214,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "triple_jump_height", 14.5);
+		if (can_save_to_character_config = true){ini_write_real("values", "triple_jump_height", 14.5);}
 		triple_jump_height = 14.5;
 	}
 	#endregion /*Triple jump height END*/
@@ -8201,7 +8226,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "normal_jump_height", 11.5);
+		if (can_save_to_character_config = true){ini_write_real("values", "normal_jump_height", 11.5);}
 		normal_jump_height = 11.5;
 	}
 	#endregion /*Normal jump height END*/
@@ -8213,7 +8238,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "higher_jump_height", 13);
+		if (can_save_to_character_config = true){ini_write_real("values", "higher_jump_height", 13);}
 		higher_jump_height = 13;
 	}
 	#endregion /*Higher jump height END*/
@@ -8225,7 +8250,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "double_jump_height", 11.5);
+		if (can_save_to_character_config = true){ini_write_real("values", "double_jump_height", 11.5);}
 		double_jump_height = 11.5;
 	}
 	#endregion /*Double jump height END*/
@@ -8239,7 +8264,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		//ini_write_real("values", "homing_tongue_distance", 500);
+		if (can_save_to_character_config = true){ini_write_real("values", "homing_tongue_distance", 500);}
 		hoverstomp_distance = 500;
 	}
 	#endregion /*Homing attack distance END*/
@@ -8251,6 +8276,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("values", "wall_jump_time", 10);}
 		wall_jump_time = 10;
 	}
 	#endregion /*Wall Jump Time END*/
@@ -8262,6 +8288,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("values", "default_xscale", 1);}
 		default_xscale = 1;
 	}
 	#endregion /*Default Xscale END*/
@@ -8273,6 +8300,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("values", "default_yscale", 1);}
 		default_yscale = 1;
 	}
 	#endregion /*Default Yscale END*/
@@ -8284,6 +8312,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("values", "default_voice_pitch", 1);}
 		default_voice_pitch = 1;
 	}
 	#endregion /*Default Voice Pitch END*/
@@ -8306,22 +8335,6 @@ else
 	higher_jump_height = 13;
 	double_jump_height = 11.5;
 	hoverstomp_distance = 500;
-	//ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini");
-	//if (!ini_key_exists("values", "acceleration_on_ground")){ini_write_real("values", "acceleration_on_ground", 0.3);}
-	//if (!ini_key_exists("values", "acceleration_in_air")){ini_write_real("values", "acceleration_in_air", 0.3);}
-	//if (!ini_key_exists("values", "acceleration_on_ice")){ini_write_real("values", "acceleration_on_ice", 0.05);}
-	//if (!ini_key_exists("values", "hp")){ini_write_real("values", "hp", 1);}
-	//if (!ini_key_exists("values", "max_hp")){ini_write_real("values", "max_hp", 1);}
-	//if (!ini_key_exists("values", "max_overflow_hp")){ini_write_real("values", "max_overflow_hp", 4);}
-	//if (!ini_key_exists("values", "number_of_jumps")){ini_write_real("values", "number_of_jumps", 1);}
-	//if (!ini_key_exists("values", "speed_max_walk")){ini_write_real("values", "speed_max_walk", 4);}
-	//if (!ini_key_exists("values", "speed_max_run")){ini_write_real("values", "speed_max_run", 8);}
-	//if (!ini_key_exists("values", "double_jump_height")){ini_write_real("values", "double_jump_height", 11.5);}
-	//if (!ini_key_exists("values", "triple_jump_height")){ini_write_real("values", "triple_jump_height", 14.5);}
-	//if (!ini_key_exists("values", "normal_jump_height")){ini_write_real("values", "normal_jump_height", 11.5);}
-	//if (!ini_key_exists("values", "higher_jump_height")){ini_write_real("values", "higher_jump_height", 13);}
-	//if (!ini_key_exists("values", "homing_tongue_distance")){ini_write_real("values", "homing_tongue_distance", 500);}
-	//ini_close();
 }
 #endregion /*Character Values Handeling END*/
 

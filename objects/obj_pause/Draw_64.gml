@@ -3,13 +3,13 @@ instance_activate_object(obj_pause);
 
 if (global.background_brightness_menu>-0.001)
 {
-	c_menu_outline =c_white;
-	c_menu_fill =c_black;
+	c_menu_outline = c_white;
+	c_menu_fill = c_black;
 }
 else
 {
-	c_menu_outline =c_black;
-	c_menu_fill =c_white;
+	c_menu_outline = c_black;
+	c_menu_fill = c_white;
 }
 
 #region /*Set what controls are used to navigate the menus*/
@@ -1282,8 +1282,8 @@ and (hide_menu_for_clean_screenshots = false)
 
 #region /*Draw mouse cursor for menu navigation*/
 if (global.controls_used_for_menu_navigation = "mouse")
-and (os_type!=os_ios)
-and (os_type!=os_android)
+and (os_type!= os_ios)
+and (os_type!= os_android)
 {
 	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
 }

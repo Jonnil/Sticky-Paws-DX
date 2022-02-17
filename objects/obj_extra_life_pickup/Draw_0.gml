@@ -35,7 +35,7 @@ if (number_of_extra_lives = 3)
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_blue, 1);
 	}
-	draw_text_outlined(x, y, "3 -up", global.default_text_size *0.75, c_white, c_black, text_alpha);
+	draw_text_outlined(x, y, "3 -up", global.default_text_size * 0.75, c_white, c_black, text_alpha);
 }
 else
 if (number_of_extra_lives = 2)
@@ -44,7 +44,7 @@ if (number_of_extra_lives = 2)
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_lime, 1);
 	}
-	draw_text_outlined(x, y, "2 -up", global.default_text_size *0.75, c_white, c_black, text_alpha);
+	draw_text_outlined(x, y, "2 -up", global.default_text_size * 0.75, c_white, c_black, text_alpha);
 }
 else
 {
@@ -52,7 +52,7 @@ else
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 1);
 	}
-	draw_text_outlined(x, y, "1-up", global.default_text_size *0.75, c_white, c_black, text_alpha);
+	draw_text_outlined(x, y, "1-up", global.default_text_size * 0.75, c_white, c_black, text_alpha);
 }
 #endregion /*Color the extra live pickup differently if it grants you different amounts of lives END*/
 

@@ -445,7 +445,7 @@
 		#endregion /*Limit Name Input Length for Level Name END*/
 		
 		name_enter_blink+= 0.05;
-		if (name_enter_blink>1.5)
+		if (name_enter_blink> 1.5)
 		{
 			name_enter_blink= 0;
 		}
@@ -926,12 +926,36 @@
 			if (show_grid = true)
 			{
 				draw_sprite_ext(spr_leveleditor_icons, 13, display_get_gui_width() - 224, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
-				draw_set_halign(fa_left);
+				draw_set_halign(fa_right);
 				draw_set_valign(fa_center);
-				draw_text_outlined(display_get_gui_width() - 300, 80 + icons_at_top_y, "Grid X: " + string(global.grid_hsnap) + " Grid Y: " + string(global.grid_vsnap), global.default_text_size, c_black, c_white, 1);
-				draw_text_outlined(display_get_gui_width() - 300, 32 + 80 + icons_at_top_y, "X: " + string(x) + " Y: " + string(y), global.default_text_size, c_black, c_white, 1);
-				draw_text_outlined(display_get_gui_width() - 300, 32 + 110 + icons_at_top_y, "View X: " + string(camera_get_view_x(view_camera[0])) + " View Y: " + string(camera_get_view_y(view_camera[0])), global.default_text_size *0.5, c_black, c_white, 1);
-				draw_text_outlined(display_get_gui_width() - 300, 32 + 130 + icons_at_top_y, "View Width: " + string(camera_get_view_width(view_camera[0])) + " View Height: " + string(camera_get_view_height(view_camera[0])), global.default_text_size *0.5, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 80, 80 + icons_at_top_y, "Grid X: " + string(global.grid_hsnap), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 80, 110 + icons_at_top_y, "Grid Y: " + string(global.grid_vsnap), global.default_text_size, c_black, c_white, 1);
+				if (global.grid_hsnap = 32)
+				and (global.grid_hsnap = 32)
+				{
+					draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, "Default Grid Size!", global.default_text_size * 0.5, c_black, c_white, 1);
+				}
+				draw_sprite_ext(spr_menu_button_up_down, 0, display_get_gui_width() - 32, 80 + icons_at_top_y + 16, 1, 1, 0, c_white, 1);
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() - 32 + 16, 80 + icons_at_top_y + 16))
+				and (mouse_check_button_pressed(mb_left))
+				{
+					global.grid_hsnap += 1;
+					global.grid_vsnap += 1;
+				}
+				else
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16, display_get_gui_width() - 32 + 16, 80 + icons_at_top_y + 16 + 32))
+				and (mouse_check_button_pressed(mb_left))
+				{
+					if (global.grid_hsnap > 1)
+					or(global.grid_vsnap > 1)
+					{
+						global.grid_hsnap -= 1;
+						global.grid_vsnap -= 1;
+					}
+				}
+				draw_text_outlined(display_get_gui_width() - 16, 32 + 140 + icons_at_top_y, "X: " + string(x) + " Y: " + string(y), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 16, 32 + 170 + icons_at_top_y, "View X: " + string(camera_get_view_x(view_camera[0])) + " View Y: " + string(camera_get_view_y(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icons_at_top_y, "View Width: " + string(camera_get_view_width(view_camera[0])) + " View Height: " + string(camera_get_view_height(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
 			}
 			else
 			{

@@ -55,7 +55,7 @@ and (fall = false)
 			obj = instance_create_depth(x, y - 16, 0, obj_clipper);
 			with(obj)
 			{
-				motion_set(90 +random_range(- 10,+ 10), random_range(5, 10));
+				motion_set(90 +random_range(- 10, + 10), random_range(5, 10));
 			}
 		}
 		else
@@ -77,8 +77,8 @@ and (fall = false)
 if (fall = true)
 {
 	if (!position_meeting(x, bbox_bottom + 1, obj_wall))
-	and (x >camera_get_view_x(view_camera[view_current]))
-	and (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	and (x > camera_get_view_x(view_camera[view_current]))
+	and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{
 		gravity = 0.5;
 		if (vspeed<+ 1)

@@ -1,10 +1,10 @@
 ///scr_character_select_menu()
 function scr_character_select_menu()
 {
-	//i= 0
+	//i = 0
 	//repeat(ds_list_size(global.all_loaded_characters))
 	//{draw_text_outlined(100, 200 + i* 32, string(ds_list_find_value(global.all_loaded_characters, i)), global.default_text_size, c_black, c_white, 1)
-	//i++}
+	//i ++}
 	
 	//if (directory_exists("characters"))
 	//{
@@ -4594,7 +4594,7 @@ function scr_character_select_menu()
 	
 	#region /*Name Enter Blinking*/
 	name_enter_blink+= 0.05;
-	if (name_enter_blink>1.5)
+	if (name_enter_blink> 1.5)
 	{
 		name_enter_blink= 0;
 	}

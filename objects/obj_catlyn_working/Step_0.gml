@@ -27,13 +27,13 @@ and (image_index <= 3)
 	image_speed = 0;
 }
 
-if (global.character_for_player_1 = "Catlyn")
+if (global.character_for_player_1 = "catlyn")
 and (global.player1_can_play = true)
-or(global.character_for_player_2 = "Catlyn")
+or(global.character_for_player_2 = "catlyn")
 and (global.player2_can_play = true)
-or(global.character_for_player_3 = "Catlyn")
+or(global.character_for_player_3 = "catlyn")
 and (global.player3_can_play = true)
-or(global.character_for_player_4 = "Catlyn")
+or(global.character_for_player_4 = "catlyn")
 and (global.player4_can_play = true)
 {
 	image_alpha = 0; /*If anyone is playing as Catlyn, make it invisible*/

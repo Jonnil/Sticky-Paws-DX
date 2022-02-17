@@ -98,7 +98,7 @@ and (undo_value >obj_leveleditor.current_undo_value)
 }
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
-and (undo_value <=obj_leveleditor.current_undo_value)
+and (undo_value <= obj_leveleditor.current_undo_value)
 {
 	undo_value_visible = true;
 }
@@ -620,7 +620,7 @@ and (delay = 3)
 if (!keyboard_check(vk_space))
 and (!mouse_check_button(mb_middle))
 and (!mouse_check_button(mb_right))
-and (delay >1)
+and (delay > 1)
 {
 	if (keyboard_check_pressed(ord("Q")))
 	{
@@ -1479,7 +1479,7 @@ if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (obj_leveleditor.set_difficulty_mode = false)
 and (obj_leveleditor.can_put_objects_above_other_objects = false)
-and (delay >1)
+and (delay > 1)
 {
 	if (!keyboard_check(vk_space))
 	and (!mouse_check_button(mb_middle))
@@ -1511,8 +1511,8 @@ and (delay >1)
 	if (drag_object = true)
 	{
 		depth = -300;
-		x =obj_leveleditor.x;
-		y =obj_leveleditor.y;
+		x = obj_leveleditor.x;
+		y = obj_leveleditor.y;
 	}
 	else
 	{
@@ -1568,7 +1568,7 @@ if (global.play_edited_level = true)
 	or(global.difficulty >= 2)
 	and (hard = true)
 	{
-		if (object = 1) and (asset_get_type("obj_ground") == asset_object){instance_create_depth(x, y, 0, obj_ground);instance_destroy();}
+		if (object = 1) and (asset_get_type("obj_ground") == asset_object){instance_create_depth(x, y, 0, obj_ground); instance_destroy();}
 		if (object = 1001) and (asset_get_type("obj_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_ground)){ground_surface = 1;}instance_destroy();}
 		if (object = 1002) and (asset_get_type("obj_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_ground)){ground_surface = 2;}instance_destroy();}
 		if (object = 1003) and (asset_get_type("obj_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_ground)){ground_surface = 3;}instance_destroy();}
@@ -1577,23 +1577,23 @@ if (global.play_edited_level = true)
 		if (object = 1006) and (asset_get_type("obj_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_ground)){ground_surface = 6;}instance_destroy();}
 		if (object = 1007) and (asset_get_type("obj_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_ground)){ground_surface = 7;}instance_destroy();}
 		
-		if (object = 1008){if(asset_get_type("obj_wall_jump_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_jump_panel);instance_destroy();}else{if (asset_get_type("obj_wall_jump_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_jump_panel);instance_destroy();}}}
-		if (object = 1009){if(asset_get_type("obj_wall_climb_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_climb_panel);instance_destroy();}else{if (asset_get_type("obj_wall_climb_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_climb_panel);instance_destroy();}}}
-		if (object = 2){if(asset_get_type("obj_spikes") == asset_object){instance_create_depth(x, y, 0, obj_spikes);instance_destroy();}else{if (asset_get_type("obj_ground") == asset_object){instance_create_depth(x, y, 0, obj_ground);instance_destroy();}}}
-		if (object = 3) and (asset_get_type("obj_semisolid_platform") == asset_object){instance_create_depth(x, y, 0, obj_semisolid_platform);instance_destroy();}
+		if (object = 1008){if(asset_get_type("obj_wall_jump_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_jump_panel); instance_destroy();}else{if (asset_get_type("obj_wall_jump_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_jump_panel); instance_destroy();}}}
+		if (object = 1009){if(asset_get_type("obj_wall_climb_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_climb_panel); instance_destroy();}else{if (asset_get_type("obj_wall_climb_panel") == asset_object){instance_create_depth(x, y, 0, obj_wall_climb_panel); instance_destroy();}}}
+		if (object = 2){if(asset_get_type("obj_spikes") == asset_object){instance_create_depth(x, y, 0, obj_spikes); instance_destroy();}else{if (asset_get_type("obj_ground") == asset_object){instance_create_depth(x, y, 0, obj_ground); instance_destroy();}}}
+		if (object = 3) and (asset_get_type("obj_semisolid_platform") == asset_object){instance_create_depth(x, y, 0, obj_semisolid_platform); instance_destroy();}
 		
 		#region /*Brick Block*/
 		if (object = 4) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;}instance_destroy();}
-		if (object = 5) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "10_basic_collectibles";}instance_destroy();}
-		if (object = 6) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "heart_balloon";}instance_destroy();}
-		if (object = 7) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "1-up";}instance_destroy();}
-		if (object = 8) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "2 -up";}instance_destroy();}
-		if (object = 9) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "3 -up";}instance_destroy();}
-		if (object = 10) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true;item_inside = "invincibility_powerup";}instance_destroy();}
+		if (object = 5) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true; item_inside = "10_basic_collectibles";}instance_destroy();}
+		if (object = 6) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true; item_inside = "heart_balloon";}instance_destroy();}
+		if (object = 7) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true; item_inside = "1-up";}instance_destroy();}
+		if (object = 8) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true; item_inside = "2 -up";}instance_destroy();}
+		if (object = 9) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true; item_inside = "3 -up";}instance_destroy();}
+		if (object = 10) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){brick_block = true; item_inside = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Brick Block END*/
 		
 		#region /*Question Block*/
-		if (object = 11) and (asset_get_type("obj_question_block") == asset_object){instance_create_depth(x, y, 0, obj_question_block);instance_destroy();}
+		if (object = 11) and (asset_get_type("obj_question_block") == asset_object){instance_create_depth(x, y, 0, obj_question_block); instance_destroy();}
 		if (object = 12) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "10_basic_collectibles";}instance_destroy();}
 		if (object = 13) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "heart_balloon";}instance_destroy();}
 		if (object = 14) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "1-up";}instance_destroy();}
@@ -1602,23 +1602,23 @@ if (global.play_edited_level = true)
 		if (object = 17) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Question Block END*/
 		
-		if (object = 18) and (asset_get_type("obj_hard_block") == asset_object){instance_create_depth(x, y, 0, obj_hard_block);instance_destroy();}
+		if (object = 18) and (asset_get_type("obj_hard_block") == asset_object){instance_create_depth(x, y, 0, obj_hard_block); instance_destroy();}
 		
 		#region /*Falling Block*/
-		if (object = 19) and (asset_get_type("obj_falling_block") == asset_object){instance_create_depth(x, y, 0, obj_falling_block);instance_destroy();}
-		if (object = 20) and (asset_get_type("obj_falling_block_solid") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_solid);instance_destroy();}
-		if (object = 21) and (asset_get_type("obj_falling_block_long") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_long);instance_destroy();}
-		if (object = 22) and (asset_get_type("obj_falling_block_long_solid") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_long_solid);instance_destroy();}
+		if (object = 19) and (asset_get_type("obj_falling_block") == asset_object){instance_create_depth(x, y, 0, obj_falling_block); instance_destroy();}
+		if (object = 20) and (asset_get_type("obj_falling_block_solid") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_solid); instance_destroy();}
+		if (object = 21) and (asset_get_type("obj_falling_block_long") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_long); instance_destroy();}
+		if (object = 22) and (asset_get_type("obj_falling_block_long_solid") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_long_solid); instance_destroy();}
 		#endregion /*Falling Block END*/
 		
-		if (object = 23) and (asset_get_type("obj_cloud_block") == asset_object){instance_create_depth(x, y, 0, obj_cloud_block);instance_destroy();}
-		if (object = 24) and (asset_get_type("obj_ice_block") == asset_object){instance_create_depth(x, y, 0, obj_ice_block);instance_destroy();}
-		if (object = 25) and (asset_get_type("obj_cardboard_block") == asset_object){instance_create_depth(x, y, 0, obj_cardboard_block);instance_destroy();}
-		if (object = 26) and (asset_get_type("obj_cardboard") == asset_object){instance_create_depth(x, y, 0, obj_cardboard);instance_destroy();}
-		if (object = 27) and (asset_get_type("obj_cardboard_long") == asset_object){instance_create_depth(x, y, 0, obj_cardboard_long);instance_destroy();}
+		if (object = 23) and (asset_get_type("obj_cloud_block") == asset_object){instance_create_depth(x, y, 0, obj_cloud_block); instance_destroy();}
+		if (object = 24) and (asset_get_type("obj_ice_block") == asset_object){instance_create_depth(x, y, 0, obj_ice_block); instance_destroy();}
+		if (object = 25) and (asset_get_type("obj_cardboard_block") == asset_object){instance_create_depth(x, y, 0, obj_cardboard_block); instance_destroy();}
+		if (object = 26) and (asset_get_type("obj_cardboard") == asset_object){instance_create_depth(x, y, 0, obj_cardboard); instance_destroy();}
+		if (object = 27) and (asset_get_type("obj_cardboard_long") == asset_object){instance_create_depth(x, y, 0, obj_cardboard_long); instance_destroy();}
 		
 		#region /*Bump in ground*/
-		if (object = 28) and (asset_get_type("obj_bump_in_ground") == asset_object){instance_create_depth(x, y, 0, obj_bump_in_ground);instance_destroy();}
+		if (object = 28) and (asset_get_type("obj_bump_in_ground") == asset_object){instance_create_depth(x, y, 0, obj_bump_in_ground); instance_destroy();}
 		if (object = 29) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "8_basic_collectibles";}instance_destroy();}
 		if (object = 30) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "heart_balloon";}instance_destroy();}
 		if (object = 31) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "1-up";}instance_destroy();}
@@ -1633,12 +1633,12 @@ if (global.play_edited_level = true)
 		#endregion /*Bump in ground END*/
 		
 		#region /*Basic Collectible*/
-		if (object = 40) and (asset_get_type("obj_basic_collectible") == asset_object){instance_create_depth(x, y, 0, obj_basic_collectible);instance_destroy();}
+		if (object = 40) and (asset_get_type("obj_basic_collectible") == asset_object){instance_create_depth(x, y, 0, obj_basic_collectible); instance_destroy();}
 		if (object = 41) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 315;}instance_destroy();}
 		if (object = 42) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 270;}instance_destroy();}
-		if (object = 43) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 225;image_yscale = -1;}instance_destroy();}
-		if (object = 44) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 180;image_yscale = -1;}instance_destroy();}
-		if (object = 45) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 135;image_yscale = -1;}instance_destroy();}
+		if (object = 43) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 225; image_yscale = -1;}instance_destroy();}
+		if (object = 44) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 180; image_yscale = -1;}instance_destroy();}
+		if (object = 45) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 135; image_yscale = -1;}instance_destroy();}
 		if (object = 46) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 90;}instance_destroy();}
 		if (object = 47) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 45;}instance_destroy();}
 		#endregion /*Basic Collectible END*/
@@ -1651,31 +1651,31 @@ if (global.play_edited_level = true)
 		if (object = 52) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 5;}instance_destroy();}
 		#endregion /*Big Collectibles END*/
 		
-		if (object = 53) and (asset_get_type("obj_heart_balloon") == asset_object){instance_create_depth(x, y, 0, obj_heart_balloon);instance_destroy();}
-		if (object = 54) and (asset_get_type("obj_hp_pickup") == asset_object){instance_create_depth(x, y, 0, obj_hp_pickup);instance_destroy();}
-		if (object = 55) and (asset_get_type("obj_invincibility_powerup") == asset_object){instance_create_depth(x, y, 0, obj_invincibility_powerup);instance_destroy();}
-		if (object = 56) and (asset_get_type("obj_extra_life_pickup") == asset_object){instance_create_depth(x, y, 0, obj_extra_life_pickup);instance_destroy();}
+		if (object = 53) and (asset_get_type("obj_heart_balloon") == asset_object){instance_create_depth(x, y, 0, obj_heart_balloon); instance_destroy();}
+		if (object = 54) and (asset_get_type("obj_hp_pickup") == asset_object){instance_create_depth(x, y, 0, obj_hp_pickup); instance_destroy();}
+		if (object = 55) and (asset_get_type("obj_invincibility_powerup") == asset_object){instance_create_depth(x, y, 0, obj_invincibility_powerup); instance_destroy();}
+		if (object = 56) and (asset_get_type("obj_extra_life_pickup") == asset_object){instance_create_depth(x, y, 0, obj_extra_life_pickup); instance_destroy();}
 		if (object = 57) and (asset_get_type("obj_extra_life_pickup") == asset_object){with(instance_create_depth(x, y, 0, obj_extra_life_pickup)){number_of_extra_lives = 2;}instance_destroy();}
 		if (object = 58) and (asset_get_type("obj_extra_life_pickup") == asset_object){with(instance_create_depth(x, y, 0, obj_extra_life_pickup)){number_of_extra_lives = 3;}instance_destroy();}
-		if (object = 59){if(asset_get_type("obj_basic_enemy") == asset_object){instance_create_depth(x, y, 0, obj_basic_enemy);instance_destroy();}else{instance_destroy();}}
-		if (object = 591){if(asset_get_type("obj_enemy_bowlingball") == asset_object){instance_create_depth(x, y, 0, obj_enemy_bowlingball);instance_destroy();}else{instance_destroy();}}
+		if (object = 59){if(asset_get_type("obj_basic_enemy") == asset_object){instance_create_depth(x, y, 0, obj_basic_enemy); instance_destroy();}else{instance_destroy();}}
+		if (object = 591){if(asset_get_type("obj_enemy_bowlingball") == asset_object){instance_create_depth(x, y, 0, obj_enemy_bowlingball); instance_destroy();}else{instance_destroy();}}
 		if (object = 592){if(asset_get_type("obj_enemy_bowlingball") == asset_object){with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){coil_spring = true;}instance_destroy();}else{instance_destroy();}}
-		if (object = 60){if(asset_get_type("obj_big_stationary_enemy") == asset_object){instance_create_depth(x, y, 0, obj_big_stationary_enemy);instance_destroy();}else{instance_destroy();}}
-		if (object = 61){if(asset_get_type("obj_blaster") == asset_object){instance_create_depth(x, y, 0, obj_blaster);instance_destroy();}else{instance_destroy();}}
+		if (object = 60){if(asset_get_type("obj_big_stationary_enemy") == asset_object){instance_create_depth(x, y, 0, obj_big_stationary_enemy); instance_destroy();}else{instance_destroy();}}
+		if (object = 61){if(asset_get_type("obj_blaster") == asset_object){instance_create_depth(x, y, 0, obj_blaster); instance_destroy();}else{instance_destroy();}}
 		if (object = 62) and (asset_get_type("obj_spring") == asset_object){with(instance_create_depth(x, y, 0, obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
-		if (object = 63) and (asset_get_type("obj_vine") == asset_object){instance_create_depth(x, y, 0, obj_vine);instance_destroy();}
+		if (object = 63) and (asset_get_type("obj_vine") == asset_object){instance_create_depth(x, y, 0, obj_vine); instance_destroy();}
 		if (object = 64) and (asset_get_type("obj_arrow_sign") == asset_object){with(instance_create_depth(x, y, 0, obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
 		if (object = 65) and (asset_get_type("obj_arrow_sign_small") == asset_object){with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
-		if (object = 66) and (asset_get_type("obj_checkpoint") == asset_object){instance_create_depth(x, y, 0, obj_checkpoint);instance_destroy();}
-		if (object = 67){if(asset_get_type("obj_spikes_emerge") == asset_object){instance_create_depth(x, y + 16, 0, obj_spikes_emerge);instance_destroy();}}
+		if (object = 66) and (asset_get_type("obj_checkpoint") == asset_object){instance_create_depth(x, y, 0, obj_checkpoint); instance_destroy();}
+		if (object = 67){if(asset_get_type("obj_spikes_emerge") == asset_object){instance_create_depth(x, y + 16, 0, obj_spikes_emerge); instance_destroy();}}
 		if (object = 671){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}instance_destroy();}}
 		if (object = 672){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 180; y -= 30;}instance_destroy();}}
 		if (object = 673){if(asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15;}instance_destroy();}}
-		if (object = 68) and (asset_get_type("obj_oneway") == asset_object){instance_create_depth(x, y, 0, obj_oneway);instance_destroy();}
+		if (object = 68) and (asset_get_type("obj_oneway") == asset_object){instance_create_depth(x, y, 0, obj_oneway); instance_destroy();}
 		if (object = 69) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 90;}instance_destroy();}
 		if (object = 70) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 180;}instance_destroy();}
 		if (object = 71) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 270;}instance_destroy();}
-		if (object = 72) and (asset_get_type("obj_horizontal_rope") == asset_object){instance_create_depth(x, y, 0, obj_horizontal_rope);instance_destroy();}
+		if (object = 72) and (asset_get_type("obj_horizontal_rope") == asset_object){instance_create_depth(x, y, 0, obj_horizontal_rope); instance_destroy();}
 		
 		#region /*Create Water*/
 		if (object = 73)
@@ -1720,7 +1720,7 @@ if (global.play_edited_level = true)
 		}
 		#endregion /*Create Water Surface END*/
 		
-		if (object = 735) and (asset_get_type("obj_air_bubbles_spawner") == asset_object){instance_create_depth(x, y, 0, obj_air_bubbles_spawner);instance_destroy();}
+		if (object = 735) and (asset_get_type("obj_air_bubbles_spawner") == asset_object){instance_create_depth(x, y, 0, obj_air_bubbles_spawner); instance_destroy();}
 		if (object = 732) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
 		if (object = 733) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 1; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
 		if (object = 734) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 2; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
@@ -1730,7 +1730,7 @@ if (global.play_edited_level = true)
 		if (object = 76) and (asset_get_type("obj_clipped_clothes") == asset_object){with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_sock;}instance_destroy();}
 		
 		#region /*Bucket*/
-		if (object = 77) and (asset_get_type("obj_bucket") == asset_object){instance_create_depth(x, y, 0, obj_bucket);instance_destroy();}
+		if (object = 77) and (asset_get_type("obj_bucket") == asset_object){instance_create_depth(x, y, 0, obj_bucket); instance_destroy();}
 		if (object = 78) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "8_basic_collectibles";}instance_destroy();}
 		if (object = 79) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "heart_balloon";}instance_destroy();}
 		if (object = 80) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "1-up";}instance_destroy();}
@@ -1744,14 +1744,14 @@ if (global.play_edited_level = true)
 		if (object = 88) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup";}instance_destroy();}
 		#endregion /*Bucket END*/
 		
-		if (object = 89) and (asset_get_type("obj_bird") == asset_object){instance_create_depth(x, y, 0, obj_bird);instance_destroy();}
+		if (object = 89) and (asset_get_type("obj_bird") == asset_object){instance_create_depth(x, y, 0, obj_bird); instance_destroy();}
 		if (object = 90) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}instance_destroy();}
 		if (object = 91) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}instance_destroy();}
 		if (object = 92) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_ground_pound; sprite_sign = spr_sign_ground_pound;}instance_destroy();}
 		if (object = 93) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}instance_destroy();}
 		if (object = 94) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_walljump; sprite_sign = spr_sign_walljump;}instance_destroy();}
-		if (object = 95) and (asset_get_type("obj_boss") == asset_object){instance_create_depth(x, y, 0, obj_boss);instance_destroy();}
-		if (object = 96) and (asset_get_type("obj_boss_barrier") == asset_object){instance_create_depth(x, y, 0, obj_boss_barrier);instance_destroy();}
+		if (object = 95) and (asset_get_type("obj_boss") == asset_object){instance_create_depth(x, y, 0, obj_boss); instance_destroy();}
+		if (object = 96) and (asset_get_type("obj_boss_barrier") == asset_object){instance_create_depth(x, y, 0, obj_boss_barrier); instance_destroy();}
 		if (object = 961)
 		and (asset_get_type("obj_cake_stealing_enemy") == asset_object)
 		{
@@ -1773,7 +1773,7 @@ if (global.play_edited_level = true)
 			ini_close();
 			instance_destroy();
 		}
-		if (object = 97) and (asset_get_type("obj_artwork_collection") == asset_object){instance_create_depth(x, y, 0, obj_artwork_collection);instance_destroy();}
+		if (object = 97) and (asset_get_type("obj_artwork_collection") == asset_object){instance_create_depth(x, y, 0, obj_artwork_collection); instance_destroy();}
 	}
 	#endregion /*Delete objects according to difficulty settings END*/
 	
@@ -1804,20 +1804,20 @@ if (object = 3) and (asset_get_type("spr_semisolid_platform") == asset_sprite){s
 #region /*Brick Block*/
 if (object = 4) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;mask_index = spr_wall;}
 if (object = 5) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
-if (object = 6) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
-if (object = 7) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 8) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 9) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 6) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block; if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
+if (object = 7) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block; if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 8) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block; if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 9) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block; if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 10) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 #endregion /*Brick Block END*/
 
 #region /*Question Block*/
 if (object = 11) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;mask_index = spr_wall;}
 if (object = 12) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
-if (object = 13) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
-if (object = 14) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 15) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 16) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 13) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block; if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
+if (object = 14) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block; if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 15) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block; if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 16) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block; if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 17) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 #endregion /*Question Block END*/
 
@@ -1839,10 +1839,10 @@ if (object = 27) and (asset_get_type("spr_cardboard_long") == asset_sprite){spri
 #region /*Bump in ground*/
 if (object = 28) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
 if (object = 29) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
-if (object = 30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
-if (object = 31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground; if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
+if (object = 31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground; if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground; if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground; if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
@@ -1878,7 +1878,7 @@ if (object = 57) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_ic
 if (object = 58) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_blue, image_alpha);sprite_index = sprite_lives_icon;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 59){sprite_index = sprite_basic_enemy;mask_index = spr_wall;}
 if (object = 591){sprite_index = sprite_enemy_bowlingball;mask_index = spr_wall;}
-if (object = 592){sprite_index = sprite_enemy_bowlingball;if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
+if (object = 592){sprite_index = sprite_enemy_bowlingball; if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
 if (object = 60){sprite_index = sprite_big_stationary_enemy;mask_index = spr_wall;}
 if (object = 61){sprite_index = global.resourcepack_sprite_blaster;mask_index = spr_wall;}
 if (object = 62) and (asset_get_type("spr_spring") == asset_sprite){sprite_index = spr_spring;mask_index = spr_wall;}
@@ -1921,10 +1921,10 @@ if (object = 76) and (asset_get_type("spr_clipped_sock") == asset_sprite){sprite
 #region /*Bucket*/
 if (object = 77) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;mask_index = spr_wall;}
 if (object = 78) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
-if (object = 79) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
-if (object = 80) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 81) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 82) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 79) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket; if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
+if (object = 80) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket; if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 81) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket; if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 82) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket; if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3 -up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 83) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 84) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 85) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}

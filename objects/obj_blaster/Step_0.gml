@@ -1,10 +1,10 @@
 #region /*Gravity*/
 if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-and (x<camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-and (x >camera_get_view_x(view_camera[view_current]))
-and (y <camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (y >camera_get_view_y(view_camera[view_current]))
+and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+and (x > camera_get_view_x(view_camera[view_current]))
+and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+and (y > camera_get_view_y(view_camera[view_current]))
 {
 	gravity = 0.5;
 }
@@ -50,7 +50,7 @@ and (instance_exists(obj_player))
 	{
 		if (place_meeting(x, y - 1, obj_player))
 		{
-			yy = lerp(yy, y+random_range(- 1,+ 1), 0.5);
+			yy = lerp(yy, y+random_range(- 1, + 1), 0.5);
 			draw_xscale = lerp(draw_xscale, image_xscale + 0.05, 0.5);
 			draw_yscale = lerp(draw_yscale, image_yscale -0.05, 0.5);
 		}

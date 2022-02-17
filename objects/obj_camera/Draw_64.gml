@@ -422,7 +422,7 @@ and (!instance_exists(obj_title))
 				{
 					draw_text_outlined(window_get_width() - 60, 74, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
 				}
-				draw_text_outlined(window_get_width() - 30, 74, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size *0.75, c_black, c_white, 1);
+				draw_text_outlined(window_get_width() - 30, 74, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			#endregion /*Time countup in Minutes, Seconds and Milliseconds END*/
 		

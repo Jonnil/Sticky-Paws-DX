@@ -88,7 +88,7 @@ and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
 {
-	voice_wallkick=choose(voice_wall_jump_1,
+	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2);
 }
 else
@@ -103,7 +103,7 @@ and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
 {
-	voice_wallkick=choose(voice_wall_jump_1,
+	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3);
 }
@@ -119,7 +119,7 @@ and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
 {
-	voice_wallkick=choose(voice_wall_jump_1,
+	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4);
@@ -136,7 +136,7 @@ and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
 {
-	voice_wallkick=choose(voice_wall_jump_1,
+	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -154,7 +154,7 @@ and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
 {
-	voice_wallkick=choose(voice_wall_jump_1,
+	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -173,7 +173,7 @@ and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
 {
-	voice_wallkick=choose(voice_wall_jump_1,
+	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -193,7 +193,7 @@ and (voice_wall_jump_8> noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
 {
-	voice_wallkick=choose(voice_wall_jump_1,
+	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -214,7 +214,7 @@ and (voice_wall_jump_8> noone)
 and (voice_wall_jump_9> noone)
 and (voice_wall_jump_10 = noone)
 {
-	voice_wallkick=choose(voice_wall_jump_1,
+	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -236,7 +236,7 @@ and (voice_wall_jump_8> noone)
 and (voice_wall_jump_9> noone)
 and (voice_wall_jump_10 > noone)
 {
-	voice_wallkick=choose(voice_wall_jump_1,
+	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -275,7 +275,7 @@ and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
 and (voice_start_running_10 = noone)
 {
-	voice_startdash =choose(voice_start_running_1,
+	voice_startdash = choose(voice_start_running_1,
 						voice_start_running_2);
 }
 else
@@ -290,7 +290,7 @@ and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
 and (voice_start_running_10 = noone)
 {
-	voice_startdash =choose(voice_start_running_1,
+	voice_startdash = choose(voice_start_running_1,
 						voice_start_running_2,
 						voice_start_running_3);
 }
@@ -306,7 +306,7 @@ and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
 and (voice_start_running_10 = noone)
 {
-	voice_startdash =choose(voice_start_running_1,
+	voice_startdash = choose(voice_start_running_1,
 						voice_start_running_2,
 						voice_start_running_3,
 						voice_start_running_4);
@@ -323,7 +323,7 @@ and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
 and (voice_start_running_10 = noone)
 {
-	voice_startdash =choose(voice_start_running_1,
+	voice_startdash = choose(voice_start_running_1,
 						voice_start_running_2,
 						voice_start_running_3,
 						voice_start_running_4,
@@ -341,7 +341,7 @@ and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
 and (voice_start_running_10 = noone)
 {
-	voice_startdash =choose(voice_start_running_1,
+	voice_startdash = choose(voice_start_running_1,
 						voice_start_running_2,
 						voice_start_running_3,
 						voice_start_running_4,
@@ -360,7 +360,7 @@ and (voice_start_running_8= noone)
 and (voice_start_running_9= noone)
 and (voice_start_running_10 = noone)
 {
-	voice_startdash =choose(voice_start_running_1,
+	voice_startdash = choose(voice_start_running_1,
 						voice_start_running_2,
 						voice_start_running_3,
 						voice_start_running_4,
@@ -380,7 +380,7 @@ and (voice_start_running_8> noone)
 and (voice_start_running_9= noone)
 and (voice_start_running_10 = noone)
 {
-	voice_startdash =choose(voice_start_running_1,
+	voice_startdash = choose(voice_start_running_1,
 						voice_start_running_2,
 						voice_start_running_3,
 						voice_start_running_4,
@@ -401,7 +401,7 @@ and (voice_start_running_8> noone)
 and (voice_start_running_9> noone)
 and (voice_start_running_10 = noone)
 {
-	voice_startdash =choose(voice_start_running_1,
+	voice_startdash = choose(voice_start_running_1,
 						voice_start_running_2,
 						voice_start_running_3,
 						voice_start_running_4,
@@ -423,7 +423,7 @@ and (voice_start_running_8> noone)
 and (voice_start_running_9> noone)
 and (voice_start_running_10 > noone)
 {
-	voice_startdash =choose(voice_start_running_1,
+	voice_startdash = choose(voice_start_running_1,
 						voice_start_running_2,
 						voice_start_running_3,
 						voice_start_running_4,
@@ -462,7 +462,7 @@ and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
 and (voice_rope_catch_10 = noone)
 {
-	voice_rope_catch =choose(voice_rope_catch_1,
+	voice_rope_catch = choose(voice_rope_catch_1,
 						voice_rope_catch_2);
 }
 else
@@ -477,7 +477,7 @@ and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
 and (voice_rope_catch_10 = noone)
 {
-	voice_rope_catch =choose(voice_rope_catch_1,
+	voice_rope_catch = choose(voice_rope_catch_1,
 						voice_rope_catch_2,
 						voice_rope_catch_3);
 }
@@ -493,7 +493,7 @@ and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
 and (voice_rope_catch_10 = noone)
 {
-	voice_rope_catch =choose(voice_rope_catch_1,
+	voice_rope_catch = choose(voice_rope_catch_1,
 						voice_rope_catch_2,
 						voice_rope_catch_3,
 						voice_rope_catch_4);
@@ -510,7 +510,7 @@ and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
 and (voice_rope_catch_10 = noone)
 {
-	voice_rope_catch =choose(voice_rope_catch_1,
+	voice_rope_catch = choose(voice_rope_catch_1,
 						voice_rope_catch_2,
 						voice_rope_catch_3,
 						voice_rope_catch_4,
@@ -528,7 +528,7 @@ and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
 and (voice_rope_catch_10 = noone)
 {
-	voice_rope_catch =choose(voice_rope_catch_1,
+	voice_rope_catch = choose(voice_rope_catch_1,
 						voice_rope_catch_2,
 						voice_rope_catch_3,
 						voice_rope_catch_4,
@@ -547,7 +547,7 @@ and (voice_rope_catch_8= noone)
 and (voice_rope_catch_9= noone)
 and (voice_rope_catch_10 = noone)
 {
-	voice_rope_catch =choose(voice_rope_catch_1,
+	voice_rope_catch = choose(voice_rope_catch_1,
 						voice_rope_catch_2,
 						voice_rope_catch_3,
 						voice_rope_catch_4,
@@ -567,7 +567,7 @@ and (voice_rope_catch_8> noone)
 and (voice_rope_catch_9= noone)
 and (voice_rope_catch_10 = noone)
 {
-	voice_rope_catch =choose(voice_rope_catch_1,
+	voice_rope_catch = choose(voice_rope_catch_1,
 						voice_rope_catch_2,
 						voice_rope_catch_3,
 						voice_rope_catch_4,
@@ -588,7 +588,7 @@ and (voice_rope_catch_8> noone)
 and (voice_rope_catch_9> noone)
 and (voice_rope_catch_10 = noone)
 {
-	voice_rope_catch =choose(voice_rope_catch_1,
+	voice_rope_catch = choose(voice_rope_catch_1,
 						voice_rope_catch_2,
 						voice_rope_catch_3,
 						voice_rope_catch_4,
@@ -610,7 +610,7 @@ and (voice_rope_catch_8> noone)
 and (voice_rope_catch_9> noone)
 and (voice_rope_catch_10 > noone)
 {
-	voice_rope_catch =choose(voice_rope_catch_1,
+	voice_rope_catch = choose(voice_rope_catch_1,
 						voice_rope_catch_2,
 						voice_rope_catch_3,
 						voice_rope_catch_4,
@@ -649,7 +649,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10 = noone)
 {
-	voice_jump_spring =choose(voice_jump_spring_1,
+	voice_jump_spring = choose(voice_jump_spring_1,
 						voice_jump_spring_2);
 }
 else
@@ -664,7 +664,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10 = noone)
 {
-	voice_jump_spring =choose(voice_jump_spring_1,
+	voice_jump_spring = choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3);
 }
@@ -680,7 +680,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10 = noone)
 {
-	voice_jump_spring =choose(voice_jump_spring_1,
+	voice_jump_spring = choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4);
@@ -697,7 +697,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10 = noone)
 {
-	voice_jump_spring =choose(voice_jump_spring_1,
+	voice_jump_spring = choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -715,7 +715,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10 = noone)
 {
-	voice_jump_spring =choose(voice_jump_spring_1,
+	voice_jump_spring = choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -734,7 +734,7 @@ and (voice_jump_spring_8= noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10 = noone)
 {
-	voice_jump_spring =choose(voice_jump_spring_1,
+	voice_jump_spring = choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -754,7 +754,7 @@ and (voice_jump_spring_8> noone)
 and (voice_jump_spring_9= noone)
 and (voice_jump_spring_10 = noone)
 {
-	voice_jump_spring =choose(voice_jump_spring_1,
+	voice_jump_spring = choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -775,7 +775,7 @@ and (voice_jump_spring_8> noone)
 and (voice_jump_spring_9> noone)
 and (voice_jump_spring_10 = noone)
 {
-	voice_jump_spring =choose(voice_jump_spring_1,
+	voice_jump_spring = choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -797,7 +797,7 @@ and (voice_jump_spring_8> noone)
 and (voice_jump_spring_9> noone)
 and (voice_jump_spring_10 > noone)
 {
-	voice_jump_spring =choose(voice_jump_spring_1,
+	voice_jump_spring = choose(voice_jump_spring_1,
 						voice_jump_spring_2,
 						voice_jump_spring_3,
 						voice_jump_spring_4,
@@ -836,7 +836,7 @@ and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
 and (voice_jump_rope_10 = noone)
 {
-	voice_jump_rope =choose(voice_jump_rope_1,
+	voice_jump_rope = choose(voice_jump_rope_1,
 						voice_jump_rope_2);
 }
 else
@@ -851,7 +851,7 @@ and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
 and (voice_jump_rope_10 = noone)
 {
-	voice_jump_rope =choose(voice_jump_rope_1,
+	voice_jump_rope = choose(voice_jump_rope_1,
 						voice_jump_rope_2,
 						voice_jump_rope_3);
 }
@@ -867,7 +867,7 @@ and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
 and (voice_jump_rope_10 = noone)
 {
-	voice_jump_rope =choose(voice_jump_rope_1,
+	voice_jump_rope = choose(voice_jump_rope_1,
 						voice_jump_rope_2,
 						voice_jump_rope_3,
 						voice_jump_rope_4);
@@ -884,7 +884,7 @@ and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
 and (voice_jump_rope_10 = noone)
 {
-	voice_jump_rope =choose(voice_jump_rope_1,
+	voice_jump_rope = choose(voice_jump_rope_1,
 						voice_jump_rope_2,
 						voice_jump_rope_3,
 						voice_jump_rope_4,
@@ -902,7 +902,7 @@ and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
 and (voice_jump_rope_10 = noone)
 {
-	voice_jump_rope =choose(voice_jump_rope_1,
+	voice_jump_rope = choose(voice_jump_rope_1,
 						voice_jump_rope_2,
 						voice_jump_rope_3,
 						voice_jump_rope_4,
@@ -921,7 +921,7 @@ and (voice_jump_rope_8= noone)
 and (voice_jump_rope_9= noone)
 and (voice_jump_rope_10 = noone)
 {
-	voice_jump_rope =choose(voice_jump_rope_1,
+	voice_jump_rope = choose(voice_jump_rope_1,
 						voice_jump_rope_2,
 						voice_jump_rope_3,
 						voice_jump_rope_4,
@@ -941,7 +941,7 @@ and (voice_jump_rope_8> noone)
 and (voice_jump_rope_9= noone)
 and (voice_jump_rope_10 = noone)
 {
-	voice_jump_rope =choose(voice_jump_rope_1,
+	voice_jump_rope = choose(voice_jump_rope_1,
 						voice_jump_rope_2,
 						voice_jump_rope_3,
 						voice_jump_rope_4,
@@ -962,7 +962,7 @@ and (voice_jump_rope_8> noone)
 and (voice_jump_rope_9> noone)
 and (voice_jump_rope_10 = noone)
 {
-	voice_jump_rope =choose(voice_jump_rope_1,
+	voice_jump_rope = choose(voice_jump_rope_1,
 						voice_jump_rope_2,
 						voice_jump_rope_3,
 						voice_jump_rope_4,
@@ -984,7 +984,7 @@ and (voice_jump_rope_8> noone)
 and (voice_jump_rope_9> noone)
 and (voice_jump_rope_10 > noone)
 {
-	voice_jump_rope =choose(voice_jump_rope_1,
+	voice_jump_rope = choose(voice_jump_rope_1,
 						voice_jump_rope_2,
 						voice_jump_rope_3,
 						voice_jump_rope_4,
@@ -1023,7 +1023,7 @@ and (voice_jump_8= noone)
 and (voice_jump_9= noone)
 and (voice_jump_10 = noone)
 {
-	voice_jump =choose(voice_jump_1,
+	voice_jump = choose(voice_jump_1,
 						voice_jump_2);
 }
 else
@@ -1038,7 +1038,7 @@ and (voice_jump_8= noone)
 and (voice_jump_9= noone)
 and (voice_jump_10 = noone)
 {
-	voice_jump =choose(voice_jump_1,
+	voice_jump = choose(voice_jump_1,
 						voice_jump_2,
 						voice_jump_3);
 }
@@ -1054,7 +1054,7 @@ and (voice_jump_8= noone)
 and (voice_jump_9= noone)
 and (voice_jump_10 = noone)
 {
-	voice_jump =choose(voice_jump_1,
+	voice_jump = choose(voice_jump_1,
 						voice_jump_2,
 						voice_jump_3,
 						voice_jump_4);
@@ -1071,7 +1071,7 @@ and (voice_jump_8= noone)
 and (voice_jump_9= noone)
 and (voice_jump_10 = noone)
 {
-	voice_jump =choose(voice_jump_1,
+	voice_jump = choose(voice_jump_1,
 						voice_jump_2,
 						voice_jump_3,
 						voice_jump_4,
@@ -1089,7 +1089,7 @@ and (voice_jump_8= noone)
 and (voice_jump_9= noone)
 and (voice_jump_10 = noone)
 {
-	voice_jump =choose(voice_jump_1,
+	voice_jump = choose(voice_jump_1,
 						voice_jump_2,
 						voice_jump_3,
 						voice_jump_4,
@@ -1108,7 +1108,7 @@ and (voice_jump_8= noone)
 and (voice_jump_9= noone)
 and (voice_jump_10 = noone)
 {
-	voice_jump =choose(voice_jump_1,
+	voice_jump = choose(voice_jump_1,
 						voice_jump_2,
 						voice_jump_3,
 						voice_jump_4,
@@ -1128,7 +1128,7 @@ and (voice_jump_8> noone)
 and (voice_jump_9= noone)
 and (voice_jump_10 = noone)
 {
-	voice_jump =choose(voice_jump_1,
+	voice_jump = choose(voice_jump_1,
 						voice_jump_2,
 						voice_jump_3,
 						voice_jump_4,
@@ -1149,7 +1149,7 @@ and (voice_jump_8> noone)
 and (voice_jump_9> noone)
 and (voice_jump_10 = noone)
 {
-	voice_jump =choose(voice_jump_1,
+	voice_jump = choose(voice_jump_1,
 						voice_jump_2,
 						voice_jump_3,
 						voice_jump_4,
@@ -1171,7 +1171,7 @@ and (voice_jump_8> noone)
 and (voice_jump_9> noone)
 and (voice_jump_10 > noone)
 {
-	voice_jump =choose(voice_jump_1,
+	voice_jump = choose(voice_jump_1,
 						voice_jump_2,
 						voice_jump_3,
 						voice_jump_4,
@@ -1210,7 +1210,7 @@ and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
 and (voice_jump_3rd_10 = noone)
 {
-	voice_jump3rd =choose(voice_jump_3rd_1,
+	voice_jump3rd = choose(voice_jump_3rd_1,
 						voice_jump_3rd_2);
 }
 else
@@ -1225,7 +1225,7 @@ and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
 and (voice_jump_3rd_10 = noone)
 {
-	voice_jump3rd =choose(voice_jump_3rd_1,
+	voice_jump3rd = choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
 						voice_jump_3rd_3);
 }
@@ -1241,7 +1241,7 @@ and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
 and (voice_jump_3rd_10 = noone)
 {
-	voice_jump3rd =choose(voice_jump_3rd_1,
+	voice_jump3rd = choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
 						voice_jump_3rd_3,
 						voice_jump_3rd_4);
@@ -1258,7 +1258,7 @@ and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
 and (voice_jump_3rd_10 = noone)
 {
-	voice_jump3rd =choose(voice_jump_3rd_1,
+	voice_jump3rd = choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
 						voice_jump_3rd_3,
 						voice_jump_3rd_4,
@@ -1276,7 +1276,7 @@ and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
 and (voice_jump_3rd_10 = noone)
 {
-	voice_jump3rd =choose(voice_jump_3rd_1,
+	voice_jump3rd = choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
 						voice_jump_3rd_3,
 						voice_jump_3rd_4,
@@ -1295,7 +1295,7 @@ and (voice_jump_3rd_8= noone)
 and (voice_jump_3rd_9= noone)
 and (voice_jump_3rd_10 = noone)
 {
-	voice_jump3rd =choose(voice_jump_3rd_1,
+	voice_jump3rd = choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
 						voice_jump_3rd_3,
 						voice_jump_3rd_4,
@@ -1315,7 +1315,7 @@ and (voice_jump_3rd_8> noone)
 and (voice_jump_3rd_9= noone)
 and (voice_jump_3rd_10 = noone)
 {
-	voice_jump3rd =choose(voice_jump_3rd_1,
+	voice_jump3rd = choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
 						voice_jump_3rd_3,
 						voice_jump_3rd_4,
@@ -1336,7 +1336,7 @@ and (voice_jump_3rd_8> noone)
 and (voice_jump_3rd_9> noone)
 and (voice_jump_3rd_10 = noone)
 {
-	voice_jump3rd =choose(voice_jump_3rd_1,
+	voice_jump3rd = choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
 						voice_jump_3rd_3,
 						voice_jump_3rd_4,
@@ -1358,7 +1358,7 @@ and (voice_jump_3rd_8> noone)
 and (voice_jump_3rd_9> noone)
 and (voice_jump_3rd_10 > noone)
 {
-	voice_jump3rd =choose(voice_jump_3rd_1,
+	voice_jump3rd = choose(voice_jump_3rd_1,
 						voice_jump_3rd_2,
 						voice_jump_3rd_3,
 						voice_jump_3rd_4,
@@ -1397,7 +1397,7 @@ and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
 and (voice_jump_2nd_10 = noone)
 {
-	voice_jump2nd =choose(voice_jump_2nd_1,
+	voice_jump2nd = choose(voice_jump_2nd_1,
 						voice_jump_2nd_2);
 }
 else
@@ -1412,7 +1412,7 @@ and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
 and (voice_jump_2nd_10 = noone)
 {
-	voice_jump2nd =choose(voice_jump_2nd_1,
+	voice_jump2nd = choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
 						voice_jump_2nd_3);
 }
@@ -1428,7 +1428,7 @@ and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
 and (voice_jump_2nd_10 = noone)
 {
-	voice_jump2nd =choose(voice_jump_2nd_1,
+	voice_jump2nd = choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
 						voice_jump_2nd_3,
 						voice_jump_2nd_4);
@@ -1445,7 +1445,7 @@ and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
 and (voice_jump_2nd_10 = noone)
 {
-	voice_jump2nd =choose(voice_jump_2nd_1,
+	voice_jump2nd = choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
 						voice_jump_2nd_3,
 						voice_jump_2nd_4,
@@ -1463,7 +1463,7 @@ and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
 and (voice_jump_2nd_10 = noone)
 {
-	voice_jump2nd =choose(voice_jump_2nd_1,
+	voice_jump2nd = choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
 						voice_jump_2nd_3,
 						voice_jump_2nd_4,
@@ -1482,7 +1482,7 @@ and (voice_jump_2nd_8= noone)
 and (voice_jump_2nd_9= noone)
 and (voice_jump_2nd_10 = noone)
 {
-	voice_jump2nd =choose(voice_jump_2nd_1,
+	voice_jump2nd = choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
 						voice_jump_2nd_3,
 						voice_jump_2nd_4,
@@ -1502,7 +1502,7 @@ and (voice_jump_2nd_8> noone)
 and (voice_jump_2nd_9= noone)
 and (voice_jump_2nd_10 = noone)
 {
-	voice_jump2nd =choose(voice_jump_2nd_1,
+	voice_jump2nd = choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
 						voice_jump_2nd_3,
 						voice_jump_2nd_4,
@@ -1523,7 +1523,7 @@ and (voice_jump_2nd_8> noone)
 and (voice_jump_2nd_9> noone)
 and (voice_jump_2nd_10 = noone)
 {
-	voice_jump2nd =choose(voice_jump_2nd_1,
+	voice_jump2nd = choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
 						voice_jump_2nd_3,
 						voice_jump_2nd_4,
@@ -1545,7 +1545,7 @@ and (voice_jump_2nd_8> noone)
 and (voice_jump_2nd_9> noone)
 and (voice_jump_2nd_10 > noone)
 {
-	voice_jump2nd =choose(voice_jump_2nd_1,
+	voice_jump2nd = choose(voice_jump_2nd_1,
 						voice_jump_2nd_2,
 						voice_jump_2nd_3,
 						voice_jump_2nd_4,
@@ -1584,7 +1584,7 @@ and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
 and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star =choose(voice_get_invincibility_1,
+	voice_get_star = choose(voice_get_invincibility_1,
 						voice_get_invincibility_2);
 }
 else
@@ -1599,7 +1599,7 @@ and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
 and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star =choose(voice_get_invincibility_1,
+	voice_get_star = choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3);
 }
@@ -1615,7 +1615,7 @@ and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
 and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star =choose(voice_get_invincibility_1,
+	voice_get_star = choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4);
@@ -1632,7 +1632,7 @@ and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
 and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star =choose(voice_get_invincibility_1,
+	voice_get_star = choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1650,7 +1650,7 @@ and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
 and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star =choose(voice_get_invincibility_1,
+	voice_get_star = choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1669,7 +1669,7 @@ and (voice_get_invincibility_8= noone)
 and (voice_get_invincibility_9= noone)
 and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star =choose(voice_get_invincibility_1,
+	voice_get_star = choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1689,7 +1689,7 @@ and (voice_get_invincibility_8> noone)
 and (voice_get_invincibility_9= noone)
 and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star =choose(voice_get_invincibility_1,
+	voice_get_star = choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1710,7 +1710,7 @@ and (voice_get_invincibility_8> noone)
 and (voice_get_invincibility_9> noone)
 and (voice_get_invincibility_10 = noone)
 {
-	voice_get_star =choose(voice_get_invincibility_1,
+	voice_get_star = choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1732,7 +1732,7 @@ and (voice_get_invincibility_8> noone)
 and (voice_get_invincibility_9> noone)
 and (voice_get_invincibility_10 > noone)
 {
-	voice_get_star =choose(voice_get_invincibility_1,
+	voice_get_star = choose(voice_get_invincibility_1,
 						voice_get_invincibility_2,
 						voice_get_invincibility_3,
 						voice_get_invincibility_4,
@@ -1771,7 +1771,7 @@ and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
 and (voice_enter_goal_10 = noone)
 {
-	voice_enter_goal =choose(voice_enter_goal_1,
+	voice_enter_goal = choose(voice_enter_goal_1,
 						voice_enter_goal_2);
 }
 else
@@ -1786,7 +1786,7 @@ and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
 and (voice_enter_goal_10 = noone)
 {
-	voice_enter_goal =choose(voice_enter_goal_1,
+	voice_enter_goal = choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3);
 }
@@ -1802,7 +1802,7 @@ and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
 and (voice_enter_goal_10 = noone)
 {
-	voice_enter_goal =choose(voice_enter_goal_1,
+	voice_enter_goal = choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4);
@@ -1819,7 +1819,7 @@ and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
 and (voice_enter_goal_10 = noone)
 {
-	voice_enter_goal =choose(voice_enter_goal_1,
+	voice_enter_goal = choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1837,7 +1837,7 @@ and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
 and (voice_enter_goal_10 = noone)
 {
-	voice_enter_goal =choose(voice_enter_goal_1,
+	voice_enter_goal = choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1856,7 +1856,7 @@ and (voice_enter_goal_8= noone)
 and (voice_enter_goal_9= noone)
 and (voice_enter_goal_10 = noone)
 {
-	voice_enter_goal =choose(voice_enter_goal_1,
+	voice_enter_goal = choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1876,7 +1876,7 @@ and (voice_enter_goal_8> noone)
 and (voice_enter_goal_9= noone)
 and (voice_enter_goal_10 = noone)
 {
-	voice_enter_goal =choose(voice_enter_goal_1,
+	voice_enter_goal = choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1897,7 +1897,7 @@ and (voice_enter_goal_8> noone)
 and (voice_enter_goal_9> noone)
 and (voice_enter_goal_10 = noone)
 {
-	voice_enter_goal =choose(voice_enter_goal_1,
+	voice_enter_goal = choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1919,7 +1919,7 @@ and (voice_enter_goal_8> noone)
 and (voice_enter_goal_9> noone)
 and (voice_enter_goal_10 > noone)
 {
-	voice_enter_goal =choose(voice_enter_goal_1,
+	voice_enter_goal = choose(voice_enter_goal_1,
 						voice_enter_goal_2,
 						voice_enter_goal_3,
 						voice_enter_goal_4,
@@ -1958,7 +1958,7 @@ and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
 {
-	voice_dive =choose(voice_dive_1,
+	voice_dive = choose(voice_dive_1,
 						voice_dive_2);
 }
 else
@@ -1973,7 +1973,7 @@ and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
 {
-	voice_dive =choose(voice_dive_1,
+	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
 						voice_dive_3);
 }
@@ -1989,7 +1989,7 @@ and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
 {
-	voice_dive =choose(voice_dive_1,
+	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
 						voice_dive_3,
 						voice_dive_4);
@@ -2006,7 +2006,7 @@ and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
 {
-	voice_dive =choose(voice_dive_1,
+	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
 						voice_dive_3,
 						voice_dive_4,
@@ -2024,7 +2024,7 @@ and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
 {
-	voice_dive =choose(voice_dive_1,
+	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
 						voice_dive_3,
 						voice_dive_4,
@@ -2043,7 +2043,7 @@ and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
 {
-	voice_dive =choose(voice_dive_1,
+	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
 						voice_dive_3,
 						voice_dive_4,
@@ -2063,7 +2063,7 @@ and (voice_dive_8> noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
 {
-	voice_dive =choose(voice_dive_1,
+	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
 						voice_dive_3,
 						voice_dive_4,
@@ -2084,7 +2084,7 @@ and (voice_dive_8> noone)
 and (voice_dive_9> noone)
 and (voice_dive_10 = noone)
 {
-	voice_dive =choose(voice_dive_1,
+	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
 						voice_dive_3,
 						voice_dive_4,
@@ -2106,7 +2106,7 @@ and (voice_dive_8> noone)
 and (voice_dive_9> noone)
 and (voice_dive_10 > noone)
 {
-	voice_dive =choose(voice_dive_1,
+	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
 						voice_dive_3,
 						voice_dive_4,
@@ -2145,7 +2145,7 @@ and (voice_damage_8= noone)
 and (voice_damage_9= noone)
 and (voice_damage_10 = noone)
 {
-	voice_damage =choose(voice_damage_1,
+	voice_damage = choose(voice_damage_1,
 						voice_damage_2);
 }
 else
@@ -2160,7 +2160,7 @@ and (voice_damage_8= noone)
 and (voice_damage_9= noone)
 and (voice_damage_10 = noone)
 {
-	voice_damage =choose(voice_damage_1,
+	voice_damage = choose(voice_damage_1,
 						voice_damage_2,
 						voice_damage_3);
 }
@@ -2176,7 +2176,7 @@ and (voice_damage_8= noone)
 and (voice_damage_9= noone)
 and (voice_damage_10 = noone)
 {
-	voice_damage =choose(voice_damage_1,
+	voice_damage = choose(voice_damage_1,
 						voice_damage_2,
 						voice_damage_3,
 						voice_damage_4);
@@ -2193,7 +2193,7 @@ and (voice_damage_8= noone)
 and (voice_damage_9= noone)
 and (voice_damage_10 = noone)
 {
-	voice_damage =choose(voice_damage_1,
+	voice_damage = choose(voice_damage_1,
 						voice_damage_2,
 						voice_damage_3,
 						voice_damage_4,
@@ -2211,7 +2211,7 @@ and (voice_damage_8= noone)
 and (voice_damage_9= noone)
 and (voice_damage_10 = noone)
 {
-	voice_damage =choose(voice_damage_1,
+	voice_damage = choose(voice_damage_1,
 						voice_damage_2,
 						voice_damage_3,
 						voice_damage_4,
@@ -2230,7 +2230,7 @@ and (voice_damage_8= noone)
 and (voice_damage_9= noone)
 and (voice_damage_10 = noone)
 {
-	voice_damage =choose(voice_damage_1,
+	voice_damage = choose(voice_damage_1,
 						voice_damage_2,
 						voice_damage_3,
 						voice_damage_4,
@@ -2250,7 +2250,7 @@ and (voice_damage_8> noone)
 and (voice_damage_9= noone)
 and (voice_damage_10 = noone)
 {
-	voice_damage =choose(voice_damage_1,
+	voice_damage = choose(voice_damage_1,
 						voice_damage_2,
 						voice_damage_3,
 						voice_damage_4,
@@ -2271,7 +2271,7 @@ and (voice_damage_8> noone)
 and (voice_damage_9> noone)
 and (voice_damage_10 = noone)
 {
-	voice_damage =choose(voice_damage_1,
+	voice_damage = choose(voice_damage_1,
 						voice_damage_2,
 						voice_damage_3,
 						voice_damage_4,
@@ -2293,7 +2293,7 @@ and (voice_damage_8> noone)
 and (voice_damage_9> noone)
 and (voice_damage_10 > noone)
 {
-	voice_damage =choose(voice_damage_1,
+	voice_damage = choose(voice_damage_1,
 						voice_damage_2,
 						voice_damage_3,
 						voice_damage_4,
@@ -2332,7 +2332,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10 = noone)
 {
-	voice_burned_running =choose(voice_burned_running_1,
+	voice_burned_running = choose(voice_burned_running_1,
 						voice_burned_running_2);
 }
 else
@@ -2347,7 +2347,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10 = noone)
 {
-	voice_burned_running =choose(voice_burned_running_1,
+	voice_burned_running = choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3);
 }
@@ -2363,7 +2363,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10 = noone)
 {
-	voice_burned_running =choose(voice_burned_running_1,
+	voice_burned_running = choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4);
@@ -2380,7 +2380,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10 = noone)
 {
-	voice_burned_running =choose(voice_burned_running_1,
+	voice_burned_running = choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2398,7 +2398,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10 = noone)
 {
-	voice_burned_running =choose(voice_burned_running_1,
+	voice_burned_running = choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2417,7 +2417,7 @@ and (voice_burned_running_8= noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10 = noone)
 {
-	voice_burned_running =choose(voice_burned_running_1,
+	voice_burned_running = choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2437,7 +2437,7 @@ and (voice_burned_running_8> noone)
 and (voice_burned_running_9= noone)
 and (voice_burned_running_10 = noone)
 {
-	voice_burned_running =choose(voice_burned_running_1,
+	voice_burned_running = choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2458,7 +2458,7 @@ and (voice_burned_running_8> noone)
 and (voice_burned_running_9> noone)
 and (voice_burned_running_10 = noone)
 {
-	voice_burned_running =choose(voice_burned_running_1,
+	voice_burned_running = choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2480,7 +2480,7 @@ and (voice_burned_running_8> noone)
 and (voice_burned_running_9> noone)
 and (voice_burned_running_10 > noone)
 {
-	voice_burned_running =choose(voice_burned_running_1,
+	voice_burned_running = choose(voice_burned_running_1,
 						voice_burned_running_2,
 						voice_burned_running_3,
 						voice_burned_running_4,
@@ -2519,7 +2519,7 @@ and (voice_burned_8= noone)
 and (voice_burned_9= noone)
 and (voice_burned_10 = noone)
 {
-	voice_burned =choose(voice_burned_1,
+	voice_burned = choose(voice_burned_1,
 						voice_burned_2);
 }
 else
@@ -2534,7 +2534,7 @@ and (voice_burned_8= noone)
 and (voice_burned_9= noone)
 and (voice_burned_10 = noone)
 {
-	voice_burned =choose(voice_burned_1,
+	voice_burned = choose(voice_burned_1,
 						voice_burned_2,
 						voice_burned_3);
 }
@@ -2550,7 +2550,7 @@ and (voice_burned_8= noone)
 and (voice_burned_9= noone)
 and (voice_burned_10 = noone)
 {
-	voice_burned =choose(voice_burned_1,
+	voice_burned = choose(voice_burned_1,
 						voice_burned_2,
 						voice_burned_3,
 						voice_burned_4);
@@ -2567,7 +2567,7 @@ and (voice_burned_8= noone)
 and (voice_burned_9= noone)
 and (voice_burned_10 = noone)
 {
-	voice_burned =choose(voice_burned_1,
+	voice_burned = choose(voice_burned_1,
 						voice_burned_2,
 						voice_burned_3,
 						voice_burned_4,
@@ -2585,7 +2585,7 @@ and (voice_burned_8= noone)
 and (voice_burned_9= noone)
 and (voice_burned_10 = noone)
 {
-	voice_burned =choose(voice_burned_1,
+	voice_burned = choose(voice_burned_1,
 						voice_burned_2,
 						voice_burned_3,
 						voice_burned_4,
@@ -2604,7 +2604,7 @@ and (voice_burned_8= noone)
 and (voice_burned_9= noone)
 and (voice_burned_10 = noone)
 {
-	voice_burned =choose(voice_burned_1,
+	voice_burned = choose(voice_burned_1,
 						voice_burned_2,
 						voice_burned_3,
 						voice_burned_4,
@@ -2624,7 +2624,7 @@ and (voice_burned_8> noone)
 and (voice_burned_9= noone)
 and (voice_burned_10 = noone)
 {
-	voice_burned =choose(voice_burned_1,
+	voice_burned = choose(voice_burned_1,
 						voice_burned_2,
 						voice_burned_3,
 						voice_burned_4,
@@ -2645,7 +2645,7 @@ and (voice_burned_8> noone)
 and (voice_burned_9> noone)
 and (voice_burned_10 = noone)
 {
-	voice_burned =choose(voice_burned_1,
+	voice_burned = choose(voice_burned_1,
 						voice_burned_2,
 						voice_burned_3,
 						voice_burned_4,
@@ -2667,7 +2667,7 @@ and (voice_burned_8> noone)
 and (voice_burned_9> noone)
 and (voice_burned_10 > noone)
 {
-	voice_burned =choose(voice_burned_1,
+	voice_burned = choose(voice_burned_1,
 						voice_burned_2,
 						voice_burned_3,
 						voice_burned_4,
@@ -2751,7 +2751,7 @@ if (global.quit_level = true)
 #region /*Invincible Music*/
 if (asset_get_type("snd_music_invincible") == asset_sound)
 {
-	if (invincible <room_speed* 10)
+	if (invincible < room_speed* 10)
 	and (assist_invincible = false)
 	{
 		invincible_pitch += 0.001;
@@ -2791,12 +2791,12 @@ if (asset_get_type("snd_music_invincible") == asset_sound)
 			and (!audio_is_playing(snd_hurry_up))
 			{
 				audio_play_sound(global.music, 0, true);
-				audio_sound_gain(global.music, global.music_volume, 0);
+				audio_sound_gain(global.music, 0, 0);
 			}
 			else
 			{
 				audio_play_sound(global.music, 0, true);
-				audio_sound_gain(global.music, global.music_volume, 0);
+				audio_sound_gain(global.music, 0, 0);
 			}
 		}
 		#endregion /*Play Music END*/
@@ -2829,7 +2829,7 @@ else
 	if (!audio_is_playing(global.music))
 	{
 		audio_play_sound(global.music, 0, true);
-		audio_sound_gain(global.music, global.music_volume, 0);
+		audio_sound_gain(global.music, 0, 0);
 	}
 	#endregion /*Play Music END*/
 
@@ -2839,7 +2839,7 @@ else
 if (!audio_is_playing(global.ambience))
 {
 	audio_play_sound(global.ambience, 0, true);
-	audio_sound_gain(global.ambience, global.ambient_volume, 0);
+	audio_sound_gain(global.ambience, global.ambient_volume * music_fade_in, 0);
 }
 #endregion /*Play Ambience END*/
 
@@ -3136,17 +3136,17 @@ else
 #region /*Don't let the player outside the view too much when winning*/
 if (goal = true)
 {
-	if (x<camera_get_view_x(view_camera[view_current]) -32)
+	if (x < camera_get_view_x(view_camera[view_current]) -32)
 	{
-		x =camera_get_view_x(view_camera[view_current]) -32;
+		x = camera_get_view_x(view_camera[view_current]) -32;
 		if (hspeed < 0)
 		{
 			hspeed = 0;
 		}
 	}
-	if (x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
+	if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
 	{
-		x =camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32;
+		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32;
 		if (hspeed > 0)
 		{
 			hspeed = 0;
@@ -3156,9 +3156,9 @@ if (goal = true)
 	{
 		y = - 64;
 	}
-	if (y >camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32)
+	if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32)
 	{
-		y =camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32;
+		y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32;
 		if (vspeed > 0)
 		{
 			vspeed = 0;
@@ -6835,7 +6835,7 @@ and (global.pause = false)
 			{
 				if (allow_tongue = false)
 				{
-					if (speed_max<8)
+					if (speed_max <8)
 					{
 						speed_max = 8;
 					}
@@ -7231,7 +7231,7 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		dive_on_ground = false;
 		effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
-		if (speed_max< 10)
+		if (speed_max < 10)
 		{
 			speed_max = 10;
 		}
@@ -7278,8 +7278,8 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 if (allow_ledge_grab= true)
 {
 	if (in_water = true)
-	or(x<camera_get_view_x(view_camera[view_current]) + 25)
-	or(x >camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
+	or(x < camera_get_view_x(view_camera[view_current]) + 25)
+	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
 	{
 		can_ledge_grab = false;
 	}
@@ -7365,7 +7365,7 @@ if (allow_ledge_grab= true)
 			or(key_right)
 			and (image_xscale = +1)
 			{
-				if (ledge_grab>10)
+				if (ledge_grab> 10)
 				{
 					if (image_xscale > 0)
 					{
@@ -7416,7 +7416,7 @@ if (allow_ledge_grab= true)
 			and (image_xscale = -1)
 			or(key_down)
 			{
-				if (ledge_grab>10)
+				if (ledge_grab> 10)
 				{
 					hspeed = + 0.1*-hspeed_dir;
 					ledge_grab = false;
@@ -7500,28 +7500,48 @@ else
 }
 #endregion /*Put sprite angle at right angle*/
 
-if (in_water = true)
-and (global.music_underwater > 0)
+if (music_fade_in < 1)
 {
-	audio_sound_gain(global.music, 0, 0);
-	audio_sound_gain(global.music_underwater, global.music_volume, 0);
-}
-else
-{
-	audio_sound_gain(global.music, global.music_volume, 0);
-	audio_sound_gain(global.music_underwater, 0, 0);
+	music_fade_in = lerp(music_fade_in, 1, 0.01);
 }
 
 if (in_water = true)
-and (global.ambience_underwater > 0)
 {
-	audio_sound_gain(global.ambience, 0, 0);
-	audio_sound_gain(global.ambience_underwater, global.ambient_volume, 0);
+	if (global.music_underwater > 0)
+	{
+		audio_sound_gain(global.music, 0, 0);
+		audio_sound_gain(global.music_underwater, global.music_volume * music_fade_in, 0);
+	}
+	else
+	if (global.music > 0)
+	{
+		audio_sound_gain(global.music, global.music_volume * music_fade_in, 0);
+		audio_sound_gain(global.music_underwater, 0, 0);
+	}
+	if (global.ambience_underwater > 0)
+	{
+		audio_sound_gain(global.ambience, 0, 0);
+		audio_sound_gain(global.ambience_underwater, global.ambient_volume * music_fade_in, 0);
+	}
+	else
+	if (global.ambience > 0)
+	{
+		audio_sound_gain(global.ambience, global.ambient_volume * music_fade_in, 0);
+		audio_sound_gain(global.ambience_underwater, 0, 0);
+	}
 }
 else
 {
-	audio_sound_gain(global.ambience, global.ambient_volume, 0);
-	audio_sound_gain(global.ambience_underwater, 0, 0);
+	if (global.music > 0)
+	{
+		audio_sound_gain(global.music, global.music_volume * music_fade_in, 0);
+		audio_sound_gain(global.music_underwater, 0, 0);
+	}
+	if (global.ambience > 0)
+	{
+		audio_sound_gain(global.ambience, global.ambient_volume * music_fade_in, 0);
+		audio_sound_gain(global.ambience_underwater, 0, 0);
+	}
 }
 
 #region /*Swimming In Water*/
@@ -7776,7 +7796,7 @@ and (invincible > 0)
 and (power_meter_running_sound = true)
 {
 	speedunit += 2;
-	if (speedunit>100)
+	if (speedunit> 100)
 	{
 		speedunit = 100;
 		if (asset_get_type("snd_power_meter_running") == asset_sound)
@@ -9755,7 +9775,7 @@ or(hspeed >- 0.1)
 		image_speed = speed/13.5+0.1;
 	}
 }
-if (image_index< 1)
+if (image_index < 1)
 or(image_index = 4)
 {
 	if abs(hspeed) > 0
@@ -10258,18 +10278,18 @@ and (key_left)
 		if (asset_get_type("obj_ice_block") == asset_object)
 		and (place_meeting(x, y + 1, obj_ice_block))
 		{
-			if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice;image_speed = 0.5;}else
-			if (sprite_skidding> noone){sprite_index = sprite_skidding;image_speed = 0.5;}else
+			if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice; image_speed = 0.5;}else
+			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
 			if (sprite_run > noone){sprite_index = sprite_run;}else
 			if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
 			{sprite_index = sprite_stand;}
 		}
 		else
 		{
-			if (sprite_skidding> noone){sprite_index = sprite_skidding;image_speed = 0.5;}else
+			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
 			if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4;}else
-			if (abs(hspeed)>15) and (sprite_run3> noone){sprite_index = sprite_run3;}else
-			if (abs(hspeed)>10) and (sprite_run2> noone){sprite_index = sprite_run2;}else
+			if (abs(hspeed)> 15) and (sprite_run3> noone){sprite_index = sprite_run3;}else
+			if (abs(hspeed)> 10) and (sprite_run2> noone){sprite_index = sprite_run2;}else
 			if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;}else
 			if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
 			if (sprite_run > noone) and (hspeed<> 0){sprite_index = sprite_run;}else
@@ -10288,14 +10308,14 @@ and (!key_left)
 or(hspeed > 0)
 and (!key_right)
 {
-	if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop;image_speed = 0.5;}else
-	if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4;image_speed = speed/10 + 0.1;}else
-	if (abs(hspeed)>15) and (sprite_run3> noone){sprite_index = sprite_run3;image_speed = speed/10 + 0.1;}else
-	if (abs(hspeed)>10) and (sprite_run2> noone){sprite_index = sprite_run2;image_speed = speed/10 + 0.1;}else
-	if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run;image_speed = speed/10 + 0.1;}else
-	if (sprite_walk> noone) and (hspeed <> 0){sprite_index = sprite_walk;image_speed = speed/10 + 0.1;}else
-	if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run;image_speed = speed/10 + 0.1;}else
-	{sprite_index = sprite_stand;image_speed = 0.5;}
+	if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop; image_speed = 0.5;}else
+	if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4; image_speed = speed/10 + 0.1;}else
+	if (abs(hspeed)> 15) and (sprite_run3> noone){sprite_index = sprite_run3; image_speed = speed/10 + 0.1;}else
+	if (abs(hspeed)> 10) and (sprite_run2> noone){sprite_index = sprite_run2; image_speed = speed/10 + 0.1;}else
+	if (abs(hspeed)>5) and (sprite_run > noone){sprite_index = sprite_run; image_speed = speed/10 + 0.1;}else
+	if (sprite_walk> noone) and (hspeed <> 0){sprite_index = sprite_walk; image_speed = speed/10 + 0.1;}else
+	if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run; image_speed = speed/10 + 0.1;}else
+	{sprite_index = sprite_stand; image_speed = 0.5;}
 }
 #endregion /*Skidding Stop END*/
 
@@ -10452,8 +10472,8 @@ and (key_right)
 {
 	if (crouch = false)
 	{
-		if (sprite_against_wall > noone){sprite_index = sprite_against_wall;image_speed = 0.5;}else
-		{sprite_index = sprite_stand;image_speed = 0.3;}
+		if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
+		{sprite_index = sprite_stand; image_speed = 0.3;}
 	}
 	if (asset_get_type("snd_bump") == asset_sound)
 	{
@@ -10645,7 +10665,7 @@ if (vspeed < 0)
 					and (sprite_index!= spr_player_jump2)
 					and (sprite_index!= spr_player_jump3)
 					{
-						sprite_index =choose(sprite_jump,spr_player_jump2,spr_player_jump3);
+						sprite_index = choose(sprite_jump,spr_player_jump2,spr_player_jump3);
 					}
 				}
 				else
@@ -10664,7 +10684,7 @@ if (vspeed < 0)
 				and (sprite_index!= spr_player_jump2)
 				and (sprite_index!= spr_player_jump3)
 				{
-					sprite_index =choose(sprite_jump,spr_player_jump2,spr_player_jump3);
+					sprite_index = choose(sprite_jump,spr_player_jump2,spr_player_jump3);
 				}
 			}
 			else
@@ -10864,7 +10884,7 @@ or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		or(hspeed > 0)
 		and (!key_left)
 		{
-			if (image_index< 1)
+			if (image_index < 1)
 			{
 				
 				#region /*Left Footstep Sounds*/
@@ -11013,7 +11033,7 @@ or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			}
 			else
 			if (image_index > image_number/ 2 - 1)
-			and (image_index<image_number/ 2 + 1)
+			and (image_index <image_number/ 2 + 1)
 			{
 				
 				#region /*Right Footstep Sounds*/

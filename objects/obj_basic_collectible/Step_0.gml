@@ -22,6 +22,11 @@ if (bounceup = false)
 			and (instance_exists(obj_player))
 			and (instance_exists(obj_wall))
 			and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+			or (asset_get_type("obj_wall") == asset_object)
+			and (asset_get_type("obj_enemy_bowlingball") == asset_object)
+			and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
+			and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
+			and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 			{
 				effect_create_above(ef_ring, x, y, 0, c_white);
 				score += 200;

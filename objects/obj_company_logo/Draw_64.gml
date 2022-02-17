@@ -95,7 +95,7 @@ and (sprite_index = sprite_splash_controller)
 	{
 		time += 1;
 	}
-	if (time >100)
+	if (time > 100)
 	and (!audio_is_playing(controller_splash))
 	{
 		if (asset_get_type("room_title") == asset_room)
@@ -157,8 +157,8 @@ if (!window_has_focus())
 #region /*Draw mouse cursor for menu navigation*/
 if (window_mouse_get_x() > 0)
 and (window_mouse_get_y() > 0)
-and (os_type!=os_ios)
-and (os_type!=os_android)
+and (os_type!= os_ios)
+and (os_type!= os_android)
 {
 	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
 }
