@@ -45,11 +45,13 @@ if (object = "big_collectible_5"){object = 52;}else
 if (object = "heart"){object = 53;}else
 if (object = "hp_pickup"){object = 54;}else
 if (object = "invincibility_powerup"){object = 55;}else
-if (object = "one -up"){object = 56;}else
+if (object = "one-up"){object = 56;}else
 if (object = "two-up"){object = 57;}else
-if (object = "three -up"){object = 58;}else
+if (object = "three-up"){object = 58;}else
 if (object = "basic_enemy"){object = 59;}else
+if (object = "basic_enemy_blind"){object = 5902;}else
 if (object = "enemy_bowlingball"){object = 591;}else
+if (object = "enemy_bowlingball_blind"){object = 5911;}else
 if (object = "big_stationary_enemy"){object = 60;}else
 if (object = "blaster"){object = 61;}else
 if (object = "spring"){object = 62;}else
@@ -484,9 +486,9 @@ and (!mouse_check_button(mb_middle))
 		/*Erase brush size 2*/
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
-		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
-		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
-		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
+		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y - 32, id))
+		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y, id))
+		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y + 32, id))
 		/*Erase brush size 2 END*/
 		
 		/*Erase brush size 3*/
@@ -496,19 +498,19 @@ and (!mouse_check_button(mb_middle))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+64, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
-		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
+		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y+64, id))
 		/*Erase brush size 3 END*/
 		
 		/*Erase brush size 4 */
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
-		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
-		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
-		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
-		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
-		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
-		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
+		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y - 64, id))
+		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y - 64, id))
+		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y - 32, id))
+		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y, id))
+		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 32, id))
+		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+64, id))
 		/*Erase brush size 4 END*/
 		
 		/*Erase brush size 5*/
@@ -521,8 +523,8 @@ and (!mouse_check_button(mb_middle))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+96, id))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
-		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
-		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
+		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y+96, id))
+		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+96, id))
 		/*Erase brush size 5 END*/
 		
 		{
@@ -941,6 +943,30 @@ and (delay > 1)
 				
 				else
 				
+				#region /*Basic enemy*/
+				if (object = 59)
+				{
+					object = 5901;
+				}
+				else
+				if (object = 5901)
+				{
+					object = 5902;
+				}
+				else
+				if (object = 5902)
+				{
+					object = 5903;
+				}
+				else
+				if (object = 5903)
+				{
+					object = 59;
+				}
+				#endregion /*Basic enemy END*/
+				
+				else
+				
 				#region /*Bowling ball enemy*/
 				if (object = 591)
 				{
@@ -948,6 +974,16 @@ and (delay > 1)
 				}
 				else
 				if (object = 592)
+				{
+					object = 5911;
+				}
+				else
+				if (object = 5911)
+				{
+					object = 5912;
+				}
+				else
+				if (object = 5912)
 				{
 					object = 591;
 				}
@@ -1415,9 +1451,9 @@ and (!mouse_check_button(mb_middle))
 			/*Erase brush size 2*/
 			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
 			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
-			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
-			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
-			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
+			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y - 32, id))
+			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y, id))
+			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y + 32, id))
 			/*Erase brush size 2 END*/
 		
 			/*Erase brush size 3*/
@@ -1427,19 +1463,19 @@ and (!mouse_check_button(mb_middle))
 			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+64, id))
 			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
 			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
-			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
+			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y+64, id))
 			/*Erase brush size 3 END*/
 		
 			/*Erase brush size 4 */
 			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
 			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
 			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
-			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
-			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
-			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
-			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
-			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
-			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
+			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y - 64, id))
+			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y - 64, id))
+			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y - 32, id))
+			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y, id))
+			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 32, id))
+			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+64, id))
 			/*Erase brush size 4 END*/
 		
 			/*Erase brush size 5*/
@@ -1452,8 +1488,8 @@ and (!mouse_check_button(mb_middle))
 			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+96, id))
 			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
 			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
-			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
-			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
+			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y+96, id))
+			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+96, id))
 			/*Erase brush size 5 END*/
 		
 			{
@@ -1657,9 +1693,16 @@ if (global.play_edited_level = true)
 		if (object = 56) and (asset_get_type("obj_extra_life_pickup") == asset_object){instance_create_depth(x, y, 0, obj_extra_life_pickup); instance_destroy();}
 		if (object = 57) and (asset_get_type("obj_extra_life_pickup") == asset_object){with(instance_create_depth(x, y, 0, obj_extra_life_pickup)){number_of_extra_lives = 2;}instance_destroy();}
 		if (object = 58) and (asset_get_type("obj_extra_life_pickup") == asset_object){with(instance_create_depth(x, y, 0, obj_extra_life_pickup)){number_of_extra_lives = 3;}instance_destroy();}
-		if (object = 59){if(asset_get_type("obj_basic_enemy") == asset_object){instance_create_depth(x, y, 0, obj_basic_enemy); instance_destroy();}else{instance_destroy();}}
-		if (object = 591){if(asset_get_type("obj_enemy_bowlingball") == asset_object){instance_create_depth(x, y, 0, obj_enemy_bowlingball); instance_destroy();}else{instance_destroy();}}
-		if (object = 592){if(asset_get_type("obj_enemy_bowlingball") == asset_object){with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){coil_spring = true;}instance_destroy();}else{instance_destroy();}}
+		
+		if (object = 59){if(asset_get_type("obj_basic_enemy") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_enemy)){blind = false;}instance_destroy();}else{instance_destroy();}}
+		if (object = 5901){if(asset_get_type("obj_basic_enemy") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_enemy)){blind = false;coil_spring = true;}instance_destroy();}else{instance_destroy();}}
+		if (object = 5902){if(asset_get_type("obj_basic_enemy") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_enemy)){blind = true;}instance_destroy();}else{instance_destroy();}}
+		if (object = 5903){if(asset_get_type("obj_basic_enemy") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_enemy)){blind = true;coil_spring = true;}instance_destroy();}else{instance_destroy();}}
+		
+		if (object = 591){if(asset_get_type("obj_enemy_bowlingball") == asset_object){with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){blind = false;}instance_destroy();}else{instance_destroy();}}
+		if (object = 592){if(asset_get_type("obj_enemy_bowlingball") == asset_object){with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){blind = false;coil_spring = true;}instance_destroy();}else{instance_destroy();}}
+		if (object = 5911){if(asset_get_type("obj_enemy_bowlingball") == asset_object){with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){blind = true;}instance_destroy();}else{instance_destroy();}}
+		if (object = 5912){if(asset_get_type("obj_enemy_bowlingball") == asset_object){with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){blind = true;coil_spring = true;}instance_destroy();}else{instance_destroy();}}
 		if (object = 60){if(asset_get_type("obj_big_stationary_enemy") == asset_object){instance_create_depth(x, y, 0, obj_big_stationary_enemy); instance_destroy();}else{instance_destroy();}}
 		if (object = 61){if(asset_get_type("obj_blaster") == asset_object){instance_create_depth(x, y, 0, obj_blaster); instance_destroy();}else{instance_destroy();}}
 		if (object = 62) and (asset_get_type("obj_spring") == asset_object){with(instance_create_depth(x, y, 0, obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
@@ -1877,8 +1920,13 @@ if (object = 56) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_ic
 if (object = 57) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_lime, image_alpha);sprite_index = sprite_lives_icon;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2 -up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 58) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_blue, image_alpha);sprite_index = sprite_lives_icon;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 59){sprite_index = sprite_basic_enemy;mask_index = spr_wall;}
+if (object = 5901){sprite_index = sprite_basic_enemy; if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
+if (object = 5902){sprite_index = sprite_basic_enemy_blind;mask_index = spr_wall;}
+if (object = 5903){sprite_index = sprite_basic_enemy_blind; if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
 if (object = 591){sprite_index = sprite_enemy_bowlingball;mask_index = spr_wall;}
 if (object = 592){sprite_index = sprite_enemy_bowlingball; if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
+if (object = 5911){sprite_index = sprite_enemy_bowlingball_blind;mask_index = spr_wall;}
+if (object = 5912){sprite_index = sprite_enemy_bowlingball_blind; if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
 if (object = 60){sprite_index = sprite_big_stationary_enemy;mask_index = spr_wall;}
 if (object = 61){sprite_index = global.resourcepack_sprite_blaster;mask_index = spr_wall;}
 if (object = 62) and (asset_get_type("spr_spring") == asset_sprite){sprite_index = spr_spring;mask_index = spr_wall;}
@@ -1968,9 +2016,9 @@ and (obj_leveleditor.drag_object = false)
 	/*Place Brush Size 2*/
 	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
 	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
-	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
-	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
-	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y, id))
+	or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y + 32, id))
 	/*Place Brush Size 2 END*/
 	
 	/*Place Brush Size 3*/
@@ -1980,19 +2028,19 @@ and (obj_leveleditor.drag_object = false)
 	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+64, id))
 	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
 	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
-	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y+64, id))
 	/*Place Brush Size 3 END*/
 	
 	/*Place Brush Size 4 */
 	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
 	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
 	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
-	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
-	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
-	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
-	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
-	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
-	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y, id))
+	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+64, id))
 	/*Place Brush Size 4 END*/
 	
 	/*Place Brush Size 5*/
@@ -2005,8 +2053,8 @@ and (obj_leveleditor.drag_object = false)
 	or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+96, id))
 	or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
 	or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
-	or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
-	or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+96, id))
 	/*Place Brush Size 5 END*/
 	
 	{
@@ -2051,9 +2099,9 @@ and (!mouse_check_button(mb_left))
 
 	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
 	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
-	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 32, id))
-	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y, id))
-	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y, id))
+	or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y + 32, id))
 
 	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
 	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
@@ -2061,17 +2109,17 @@ and (!mouse_check_button(mb_left))
 	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+64, id))
 	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
 	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
-	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y+64, id))
 
 	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
 	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
 	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
-	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y - 64, id))
-	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 64, id))
-	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y - 32, id))
-	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y, id))
-	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y + 32, id))
-	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+64, id))
+	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y - 64, id))
+	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y - 32, id))
+	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y, id))
+	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 32, id))
+	or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+64, id))
 
 	or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
 	or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
@@ -2082,8 +2130,8 @@ and (!mouse_check_button(mb_left))
 	or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y+96, id))
 	or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+96, id))
 	or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
-	or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x-32, obj_leveleditor.y+96, id))
-	or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x- 64, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x -32, obj_leveleditor.y+96, id))
+	or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+96, id))
 	{
 		if (obj_leveleditor.difficulty_layer = 0)
 		{

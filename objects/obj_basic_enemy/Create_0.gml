@@ -9,6 +9,8 @@ stomped_delay = 0;
 die = false;
 die_volting = false;
 sliding_along_ground = 0;
+blind = false;
+coil_spring = false;
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {
 	enemyvoice_defeated1 = snd_enemyvoice_defeated;
@@ -35,9 +37,9 @@ else
 }
 
 #region /*Mask*/
-if (asset_get_type("spr_wall") == asset_sprite)
+if (asset_get_type("spr_small_mask") == asset_sprite)
 {
-	mask_index = spr_wall;
+	mask_index = spr_small_mask;
 }
 #endregion /*Mask END*/
 

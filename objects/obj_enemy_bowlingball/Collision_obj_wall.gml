@@ -14,6 +14,12 @@ or (die = false)
 		sliding_along_ground = -1;
 	}
 	
+	if (place_meeting(x, y - 1, obj_wall))
+	and (die = false)
+	{
+		vspeed = 0;
+	}
+	
 	#region /*Push the enemy out of the solid object*/
 	while(place_meeting(x, y, other))
 	{

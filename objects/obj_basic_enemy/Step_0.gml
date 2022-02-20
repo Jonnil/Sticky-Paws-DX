@@ -65,7 +65,7 @@ else
 		speed = 0;
 		image_speed = 0.5;
 		sprite_used = "flattened";
-		sprite_index = global.resourcepack_sprite_basic_enemy_flattened;
+		if (global.resourcepack_sprite_basic_enemy_flattened > noone){sprite_index = global.resourcepack_sprite_basic_enemy_flattened;}
 		if (image_index > image_number - 1)
 		{
 		effect_create_above(ef_smoke, x, y, 2, c_white);
@@ -79,11 +79,30 @@ if (flat = false)
 	{
 		sprite_used = "angry";
 		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
+		if (blind = true)
+		{
+			if (global.resourcepack_sprite_basic_enemy_blind > noone){sprite_index = global.resourcepack_sprite_basic_enemy_blind;}else
+			if (global.resourcepack_sprite_basic_enemy_angry > noone){sprite_index = global.resourcepack_sprite_basic_enemy_angry;}
+		}
+		else
+		{
+			if (global.resourcepack_sprite_basic_enemy_angry > noone){sprite_index = global.resourcepack_sprite_basic_enemy_angry;}else
+			if (global.resourcepack_sprite_basic_enemy_blind > noone){sprite_index = global.resourcepack_sprite_basic_enemy_blind;}
+		}
 	}
 	else
 	{
 		sprite_used = "stand";
-		sprite_index = global.resourcepack_sprite_basic_enemy;
+		if (blind = true)
+		{
+			if (global.resourcepack_sprite_basic_enemy_blind > noone){sprite_index = global.resourcepack_sprite_basic_enemy_blind;}else
+			if (global.resourcepack_sprite_basic_enemy > noone){sprite_index = global.resourcepack_sprite_basic_enemy;}
+		}
+		else
+		{
+			if (global.resourcepack_sprite_basic_enemy > noone){sprite_index = global.resourcepack_sprite_basic_enemy;}else
+			if (global.resourcepack_sprite_basic_enemy_blind > noone){sprite_index = global.resourcepack_sprite_basic_enemy_blind;}
+		}
 	}
 }
 
@@ -97,6 +116,48 @@ if (position_meeting(bbox_right + 1, y, obj_wall))
 	image_xscale = -1;
 }
 #endregion /*Turn around END*/
+
+if (blind = false)
+and (place_meeting(x, y + 1, obj_wall))
+or (blind = false)
+and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+{
+	if (!place_meeting(x + 5, y + 1, obj_wall))
+	and (!position_meeting(x + 5, bbox_bottom + 1, obj_semisolid_platform))
+	{
+		image_xscale = -1;
+	}
+	else
+	if (!place_meeting(x - 5, y + 1, obj_wall))
+	and (!position_meeting(x - 5, bbox_bottom + 1, obj_semisolid_platform))
+	{
+		image_xscale = +1;
+	}
+}
+
+if (coil_spring = true)
+and (die = false)
+and (place_meeting(x, y + 1, obj_wall))
+or (coil_spring = true)
+and (die = false)
+and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+{
+	if (asset_get_type("obj_camera") == asset_object)
+	and (instance_exists(obj_camera))
+	and (obj_camera.iris_xscale > 1)
+	{
+		effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+		effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
+		effect_create_above(ef_smoke, x - 16- 8,bbox_bottom- 8, 0, c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
+		effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
+	}
+	vspeed = -15;
+	gravity = 0;
+	draw_xscale = 1.25;
+	draw_yscale = 0.75;
+}
 
 #region /*Kill enemy if it's inside the wall*/
 if (position_meeting(x, y, obj_wall))

@@ -1,10 +1,10 @@
 #region /*Gravity*/
 if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-and (x > camera_get_view_x(view_camera[view_current]))
-and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (y > camera_get_view_y(view_camera[view_current]))
+and (bbox_left < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+and (bbox_right > camera_get_view_x(view_camera[view_current]))
+and (bbox_top < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+and (bbox_bottom > camera_get_view_y(view_camera[view_current]))
 {
 	gravity = 0.5;
 }
@@ -33,10 +33,10 @@ if (asset_get_type("obj_player") == asset_object)
 and (asset_get_type("obj_wall") == asset_object)
 and (instance_exists(obj_player))
 {
-	if (x < instance_nearest(x, y, obj_player).x- 64)
+	if (x < instance_nearest(x, y, obj_player).x - 64)
 	and (!position_meeting(x + 32, y, obj_wall))
 	or(x > instance_nearest(x, y, obj_player).x + 64)
-	and (!position_meeting(x-32, y, obj_wall))
+	and (!position_meeting(x -32, y, obj_wall))
 	{
 		yy = lerp(yy, y, 0.5);
 		draw_xscale = lerp(draw_xscale, image_xscale, 0.5);
@@ -69,14 +69,32 @@ if (time > 200)
 	if (asset_get_type("obj_bullet") == asset_object)
 	{
 		if (give_rewards > 0)
+		and (x < instance_nearest(x, y, obj_player).x - 64)
 		{
-			instance_create_depth(x, y, 0, obj_bullet);
+			instance_create_depth(x + 8, y, 0, obj_bullet);
+		}
+		else
+		if (give_rewards > 0)
+		and (x > instance_nearest(x, y, obj_player).x + 64)
+		{
+			instance_create_depth(x - 8, y, 0, obj_bullet);
 		}
 		else
 		{
-			with(instance_create_depth(x, y, 0, obj_bullet))
+			if (x < instance_nearest(x, y, obj_player).x - 64)
 			{
-				give_rewards = false;
+				with(instance_create_depth(x + 8, y, 0, obj_bullet))
+				{
+					give_rewards = false;
+				}
+			}
+			else
+			if (x > instance_nearest(x, y, obj_player).x + 64)
+			{
+				with(instance_create_depth(x - 8, y, 0, obj_bullet))
+				{
+					give_rewards = false;
+				}
 			}
 		}
 	}

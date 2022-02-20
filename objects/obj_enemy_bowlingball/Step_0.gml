@@ -22,7 +22,7 @@ or(die_volting = +1)
 	}
 	#region /*Set the gravity*/
 	gravity_direction = 270; /*Direction of the gravity*/
-	gravity = 0.5; /*The gravity*/
+	gravity = 0.7; /*The gravity*/
 	#endregion /*Set the gravity END*/
 	
 }
@@ -43,7 +43,7 @@ else
 		and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 		and (y > camera_get_view_y(view_camera[view_current]))
 		{
-			gravity = 0.5; /*The gravity*/
+			gravity = 0.7; /*The gravity*/
 		}
 	}
 	else
@@ -56,7 +56,16 @@ else
 	{
 		image_speed = 0.5;
 		sprite_used = "flattened";
-		sprite_index = global.resourcepack_sprite_enemy_bowlingball_stomped;
+		if (blind = true)
+		{
+			if (global.resourcepack_sprite_enemy_bowlingball_blind_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_stomped;}else
+			if (global.resourcepack_sprite_enemy_bowlingball_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_stomped;}
+		}
+		else
+		{
+			if (global.resourcepack_sprite_enemy_bowlingball_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_stomped;}else
+			if (global.resourcepack_sprite_enemy_bowlingball_blind_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_stomped;}
+		}
 		
 		if (stomped_delay > 0)
 		{
@@ -380,27 +389,72 @@ if (flat = false)
 	}
 	
 	#region /*Turn around*/
-	if (position_meeting(bbox_left - 1, y, obj_wall))
+	if (place_meeting(x - 1, y, obj_wall))
 	and (flat = false)
 	{
 		image_xscale = +1;
 	}
-	if (position_meeting(bbox_right + 1, y, obj_wall))
+	if (place_meeting(x + 1, y, obj_wall))
 	and (flat = false)
 	{
 		image_xscale = -1;
 	}
 	#endregion /*Turn around END*/
 	
-	sprite_index = global.resourcepack_sprite_enemy_bowlingball_walk;
+	if (blind = true)
+	{
+		if (global.resourcepack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_walk;}else
+		if (global.resourcepack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_walk;}
+	}
+	else
+	{
+		if (global.resourcepack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_walk;}else
+		if (global.resourcepack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_walk;}
+	}
+	
 	image_speed = 0.3;
+}
+
+if (blind = false)
+and (place_meeting(x, y + 1, obj_wall))
+or (blind = false)
+and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+{
+	if (!place_meeting(x + 5, y + 1, obj_wall))
+	and (!position_meeting(x + 5, bbox_bottom + 1, obj_semisolid_platform))
+	{
+		image_xscale = -1;
+	}
+	else
+	if (!place_meeting(x - 5, y + 1, obj_wall))
+	and (!position_meeting(x - 5, bbox_bottom + 1, obj_semisolid_platform))
+	{
+		image_xscale = +1;
+	}
 }
 
 if (coil_spring = true)
 and (die = false)
 and (place_meeting(x, y + 1, obj_wall))
+or (coil_spring = true)
+and (die = false)
+and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
+	if (asset_get_type("obj_camera") == asset_object)
+	and (instance_exists(obj_camera))
+	and (obj_camera.iris_xscale > 1)
+	{
+		effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+		effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
+		effect_create_above(ef_smoke, x - 16- 8,bbox_bottom- 8, 0, c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
+		effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
+	}
 	vspeed = -15;
+	gravity = 0;
+	draw_xscale = 1.25;
+	draw_yscale = 0.75;
 }
 
 if (sliding_along_ground = -1)
@@ -412,20 +466,21 @@ and (die = false)
 	{
 		sliding_along_ground = +1;
 	}
-	if (position_meeting(x - 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(x + 32, bbox_bottom + 1, obj_wall))
-	or (position_meeting(x - 32, bbox_bottom + 1, obj_semisolid_platform))
-	and (position_meeting(x + 32, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x - 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(x + 32, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x + 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(x - 32, bbox_bottom + 1, obj_semisolid_platform))
+	if (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
+	or (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
+	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			hspeed = -1;
-			y += 1;
+			y += 5;
+			gravity = 0.7;
 		}
 		else
 		{
@@ -447,20 +502,21 @@ and (die = false)
 	{
 		sliding_along_ground = -1;
 	}
-	if (position_meeting(x - 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(x + 32, bbox_bottom + 1, obj_wall))
-	or (position_meeting(x - 32, bbox_bottom + 1, obj_semisolid_platform))
-	and (position_meeting(x + 32, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x - 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(x + 32, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x + 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(x - 32, bbox_bottom + 1, obj_semisolid_platform))
+	if (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
+	or (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
+	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
+	and (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			hspeed = +1;
-			y += 1;
+			y += 5;
+			gravity = 0.7;
 		}
 		else
 		{
@@ -478,12 +534,6 @@ and (flat = true)
 and (die = false)
 {
 	friction = 0.05;
-}
-
-if (place_meeting(x, y - 1, obj_wall))
-and (die = false)
-{
-	vspeed = 0;
 }
 
 #region /*Don't move outside view*/

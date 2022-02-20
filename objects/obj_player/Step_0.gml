@@ -6356,7 +6356,7 @@ and (hold_item_in_hands = 0)
 				if (place_meeting(x + 1, y, obj_wall))
 				{
 					image_xscale = -1;
-					if (!place_meeting(x- 6, y, obj_wall))
+					if (!place_meeting(x - 6, y, obj_wall))
 					{
 						hspeed = - 6;
 					}
@@ -6446,7 +6446,7 @@ and (hold_item_in_hands = 0)
 		}
 		if (place_meeting(x + 1, y, obj_wall))
 		{
-			x-= 1;
+			x -= 1;
 		}
 		pressing_opposite_direction_to_drop_off_from_wall = 0;
 		climb = false;
@@ -6523,7 +6523,7 @@ and (hold_item_in_hands = 0)
 			if (place_meeting(x + 1, y, obj_wall))
 			{
 				image_xscale = -1;
-				if (!place_meeting(x- 6, y, obj_wall))
+				if (!place_meeting(x - 6, y, obj_wall))
 				{
 					hspeed = - 6;
 				}
@@ -6650,7 +6650,7 @@ and (takendamage <= takendamage_freezetime)
 				if (!position_meeting(bbox_left - 1,bbox_bottom + 1, obj_wall))
 				and (position_meeting(bbox_right + 1,bbox_bottom + 1, obj_wall))
 				{
-					x-= 1;
+					x -= 1;
 				}
 				#endregion /*Move left to avoid a left corner END*/
 		
@@ -9237,7 +9237,7 @@ and (place_meeting(x, y, obj_vine))
 			}
 			if (x > instance_nearest(x, y, obj_vine).x)
 			{
-				x-= 4;
+				x -= 4;
 			}
 			if (!position_meeting(x, bbox_top - 1, obj_wall))
 			{
@@ -9281,7 +9281,7 @@ and (place_meeting(x, y, obj_vine))
 			}
 			if (x > instance_nearest(x, y, obj_vine).x)
 			{
-				x-= 4;
+				x -= 4;
 			}
 			if (sprite_vine_climb> noone){sprite_index = sprite_vine_climb;}else
 			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
@@ -9326,12 +9326,12 @@ and (place_meeting(x, y, obj_vine))
 			{sprite_index = sprite_stand;}
 			if (key_sprint)
 			{
-				x-= 4;
+				x -= 4;
 				image_speed = 0.4;
 			}
 			else
 			{
-				x-= 2;
+				x -= 2;
 				image_speed = 0.2;
 			}
 			if (asset_get_type("snd_move_ivy") == asset_sound)

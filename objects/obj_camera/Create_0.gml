@@ -473,7 +473,7 @@ and (global.assist_enable = true)
 			{
 				with(instance_nearest(x, y, obj_player))
 				{
-					instance_create_depth(x-32, y - 128, 0, obj_assist_item);
+					instance_create_depth(x -32, y - 128, 0, obj_assist_item);
 				}
 			}
 		}

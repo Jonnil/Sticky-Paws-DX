@@ -1,4 +1,4 @@
-depth = +10;
+depth = +12;
 tile = 0;
 
 look_outward = 17;

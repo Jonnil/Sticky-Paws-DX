@@ -14,11 +14,11 @@ if (bounceup = false)
 	and (obj_player.dive = true)
 	
 	or (instance_exists(obj_enemy_bowlingball))
-	and (position_meeting(bbox_left - 8, y, obj_enemy_bowlingball))
+	and (position_meeting(bbox_left - 10, y, obj_enemy_bowlingball))
 	and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 	or (instance_exists(obj_enemy_bowlingball))
-	and (position_meeting(bbox_right + 8, y, obj_enemy_bowlingball))
+	and (position_meeting(bbox_right + 10, y, obj_enemy_bowlingball))
 	and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 	or (instance_exists(obj_enemy_bowlingball))
@@ -28,7 +28,7 @@ if (bounceup = false)
 	{
 		if (instance_exists(obj_enemy_bowlingball))
 		and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <= 1)
-		and (position_meeting(bbox_right + 8, y, obj_enemy_bowlingball))
+		and (position_meeting(bbox_right + 10, y, obj_enemy_bowlingball))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = +1;
@@ -36,7 +36,7 @@ if (bounceup = false)
 		else
 		if (instance_exists(obj_enemy_bowlingball))
 		and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground >= 1)
-		and (position_meeting(bbox_left - 8, y, obj_enemy_bowlingball))
+		and (position_meeting(bbox_left - 10, y, obj_enemy_bowlingball))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = -1;

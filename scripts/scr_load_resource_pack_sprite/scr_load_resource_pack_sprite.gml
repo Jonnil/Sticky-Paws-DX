@@ -15,11 +15,15 @@ function scr_load_resource_pack_sprite()
 		if (global.resourcepack_sprite_artwork_collection > 0){sprite_delete(global.resourcepack_sprite_artwork_collection);}
 		if (global.resourcepack_sprite_basic_collectible > 0){sprite_delete(global.resourcepack_sprite_basic_collectible);}
 		if (global.resourcepack_sprite_basic_enemy > 0){sprite_delete(global.resourcepack_sprite_basic_enemy);}
+		if (global.resourcepack_sprite_basic_enemy_blind > 0){sprite_delete(global.resourcepack_sprite_basic_enemy_blind);}
 		if (global.resourcepack_sprite_basic_enemy_angry > 0){sprite_delete(global.resourcepack_sprite_basic_enemy_angry);}
 		if (global.resourcepack_sprite_basic_enemy_flattened > 0){sprite_delete(global.resourcepack_sprite_basic_enemy_flattened);}
 		if (global.resourcepack_sprite_enemy_bowlingball_walk > 0){sprite_delete(global.resourcepack_sprite_enemy_bowlingball_walk);}
 		if (global.resourcepack_sprite_enemy_bowlingball_stomped > 0){sprite_delete(global.resourcepack_sprite_enemy_bowlingball_stomped);}
 		if (global.resourcepack_sprite_enemy_bowlingball_revive > 0){sprite_delete(global.resourcepack_sprite_enemy_bowlingball_revive);}
+		if (global.resourcepack_sprite_enemy_bowlingball_blind_walk > 0){sprite_delete(global.resourcepack_sprite_enemy_bowlingball_blind_walk);}
+		if (global.resourcepack_sprite_enemy_bowlingball_blind_stomped > 0){sprite_delete(global.resourcepack_sprite_enemy_bowlingball_blind_stomped);}
+		if (global.resourcepack_sprite_enemy_bowlingball_blind_revive > 0){sprite_delete(global.resourcepack_sprite_enemy_bowlingball_blind_revive);}
 		if (global.resourcepack_sprite_bowlingball > 0){sprite_delete(global.resourcepack_sprite_bowlingball);}
 		if (global.resourcepack_sprite_bowlingball_shine > 0){sprite_delete(global.resourcepack_sprite_bowlingball_shine);}
 		if (global.resourcepack_sprite_coil_spring > 0){sprite_delete(global.resourcepack_sprite_coil_spring);}
@@ -57,11 +61,15 @@ function scr_load_resource_pack_sprite()
 		global.resourcepack_sprite_bullet_flattened = scr_initialize_resource_pack_sprite("bullet_flattened", global.resourcepack_sprite_bullet_flattened);
 		global.resourcepack_sprite_blaster = scr_initialize_resource_pack_sprite("blaster", global.resourcepack_sprite_blaster);
 		global.resourcepack_sprite_basic_enemy = scr_initialize_resource_pack_sprite("basic_enemy", global.resourcepack_sprite_basic_enemy);
+		global.resourcepack_sprite_basic_enemy_blind = scr_initialize_resource_pack_sprite("basic_enemy_blind", global.resourcepack_sprite_basic_enemy_blind);
 		global.resourcepack_sprite_basic_enemy_angry = scr_initialize_resource_pack_sprite("basic_enemy_angry", global.resourcepack_sprite_basic_enemy_angry);
 		global.resourcepack_sprite_basic_enemy_flattened = scr_initialize_resource_pack_sprite("basic_enemy_flattened", global.resourcepack_sprite_basic_enemy_flattened);
 		global.resourcepack_sprite_enemy_bowlingball_walk = scr_initialize_resource_pack_sprite("enemy_bowlingball_walk", global.resourcepack_sprite_enemy_bowlingball_walk);
 		global.resourcepack_sprite_enemy_bowlingball_stomped = scr_initialize_resource_pack_sprite("enemy_bowlingball_stomped", global.resourcepack_sprite_enemy_bowlingball_stomped);
 		global.resourcepack_sprite_enemy_bowlingball_revive = scr_initialize_resource_pack_sprite("enemy_bowlingball_revive", global.resourcepack_sprite_enemy_bowlingball_revive);
+		global.resourcepack_sprite_enemy_bowlingball_blind_walk = scr_initialize_resource_pack_sprite("enemy_bowlingball_blind_walk", global.resourcepack_sprite_enemy_bowlingball_blind_walk);
+		global.resourcepack_sprite_enemy_bowlingball_blind_stomped = scr_initialize_resource_pack_sprite("enemy_bowlingball_blind_stomped", global.resourcepack_sprite_enemy_bowlingball_blind_stomped);
+		global.resourcepack_sprite_enemy_bowlingball_blind_revive = scr_initialize_resource_pack_sprite("enemy_bowlingball_blind_revive", global.resourcepack_sprite_enemy_bowlingball_blind_revive);
 		global.resourcepack_sprite_bowlingball = scr_initialize_resource_pack_sprite("bowlingball", global.resourcepack_sprite_bowlingball);
 		global.resourcepack_sprite_bowlingball_shine = scr_initialize_resource_pack_sprite("bowlingball_shine", global.resourcepack_sprite_bowlingball_shine);
 		global.resourcepack_sprite_coil_spring = scr_initialize_resource_pack_sprite("coil_spring", global.resourcepack_sprite_coil_spring);

@@ -9,6 +9,7 @@ if (bounceup = false)
 	}
 }
 if (bounceup = false)
+and (instance_exists(obj_player))
 {
 	if (place_meeting(bbox_left, y, obj_player))
 	or(place_meeting(bbox_right, y, obj_player))
@@ -28,16 +29,20 @@ or (follow_player = true)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (place_meeting(x, y + 16, obj_semisolid_platform))
 or (follow_player = true)
+and (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).horizontal_rope_climb = true)
 or (follow_player = true)
+and (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).climb = true)
 or (follow_player = true)
+and (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
 or(asset_get_type("obj_enemy_bowlingball") == asset_object)
 and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
 and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
 {
 	effect_create_above(ef_ring, x, y, 2, c_white);
+	
 	#region /* 3 Basic Collectibles*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
@@ -170,15 +175,12 @@ if bounceup = true
 			coinsound = true;
 		}
 		visible = true;
-		
-		#region /*Set the gravity*/
 		gravity_direction = 270; /*Direction of the gravity*/
 		gravity = 0.5; /*The gravity*/
-		#endregion /*Set the gravity END*/
-		
 		if (vspeed > 0)
 		and (y > ystart - 32)
 		{
+			
 			#region /* 3 Basic Collectibles*/
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{

@@ -25,9 +25,9 @@ else
 	enemyvoice_defeated3 = noone;
 }
 
-if (asset_get_type("spr_wall") == asset_sprite)
+if (asset_get_type("spr_small_mask") == asset_sprite)
 {
-	mask_index = spr_wall;
+	mask_index = spr_small_mask;
 }
 
 draw_xscale = 1;

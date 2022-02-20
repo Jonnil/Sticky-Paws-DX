@@ -3671,7 +3671,7 @@ function scr_character_select_menu()
 		
 			#region /*Accept Text*/
 			draw_text_outlined(
-			window_get_width()/ 2 + player1_display_x-30,
+			window_get_width()/ 2 + player1_display_x -30,
 			window_get_height()/ 2 + 150,
 			"Accept:", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Accept Text END*/
@@ -3721,7 +3721,7 @@ function scr_character_select_menu()
 			}
 		
 			#region /*Cancel Text*/
-			draw_text_outlined(window_get_width()/ 2 + player1_display_x-30, window_get_height()/ 2 + 150, "Cancel:", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2 + player1_display_x -30, window_get_height()/ 2 + 150, "Cancel:", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Cancel Text END*/
 		
 			#region /*Key B*/
@@ -3790,7 +3790,7 @@ function scr_character_select_menu()
 			}
 		
 			#region /*Accept Text*/
-			draw_text_outlined(window_get_width()/ 2 + player2_display_x-30, window_get_height()/ 2 + 150, "Accept:", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2 + player2_display_x -30, window_get_height()/ 2 + 150, "Accept:", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Accept Text END*/
 		
 			#region /*Key A*/
@@ -3837,7 +3837,7 @@ function scr_character_select_menu()
 			}
 		
 			#region /*Cancel Text*/
-			draw_text_outlined(window_get_width()/ 2 + player2_display_x-30, window_get_height()/ 2 + 150, "Cancel:", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2 + player2_display_x -30, window_get_height()/ 2 + 150, "Cancel:", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Cancel Text END*/
 		
 			#region /*Key B*/
@@ -3905,7 +3905,7 @@ function scr_character_select_menu()
 			}
 		
 			#region /*Accept Text*/
-			draw_text_outlined(window_get_width()/ 2 + player3_display_x-30, window_get_height()/ 2 + 150, "Accept:", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2 + player3_display_x -30, window_get_height()/ 2 + 150, "Accept:", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Accept Text END*/
 	
 			#region /*Key A*/
@@ -3952,7 +3952,7 @@ function scr_character_select_menu()
 			}
 		
 			#region /*Cancel Text*/
-			draw_text_outlined(window_get_width()/ 2 + player3_display_x-30, window_get_height()/ 2 + 150, "Cancel:", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2 + player3_display_x -30, window_get_height()/ 2 + 150, "Cancel:", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Cancel Text END*/
 	
 			#region /*Key B*/
@@ -4020,7 +4020,7 @@ function scr_character_select_menu()
 			}
 		
 			#region /*Accept Text*/
-			draw_text_outlined(window_get_width()/ 2 + player4_display_x-30, window_get_height()/ 2 + 150, "Accept:", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2 + player4_display_x -30, window_get_height()/ 2 + 150, "Accept:", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Accept Text END*/
 	
 			#region /*Key A*/
@@ -4081,7 +4081,7 @@ function scr_character_select_menu()
 			}
 		
 			#region /*Cancel Text*/
-			draw_text_outlined(window_get_width()/ 2 + player4_display_x-30, window_get_height()/ 2 + 150, "Cancel:", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2 + player4_display_x -30, window_get_height()/ 2 + 150, "Cancel:", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Cancel Text END*/
 	
 			#region /*Key B*/
@@ -4138,7 +4138,7 @@ function scr_character_select_menu()
 	{
 	
 		#region /*Accept Text*/
-		draw_text_outlined(window_get_width()/ 2 + player1_display_x-30, window_get_height()/ 2 + name_y + 42, "Enter Name:", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(window_get_width()/ 2 + player1_display_x -30, window_get_height()/ 2 + name_y + 42, "Enter Name:", global.default_text_size, c_black, c_white, 1);
 		#endregion /*Accept Text END*/
 	
 		#region /*Key A*/
@@ -4185,7 +4185,7 @@ function scr_character_select_menu()
 	{
 	
 		#region /*Accept Text*/
-		draw_text_outlined(window_get_width()/ 2 + player2_display_x-30, window_get_height()/ 2 + name_y + 42, "Enter Name:", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(window_get_width()/ 2 + player2_display_x -30, window_get_height()/ 2 + name_y + 42, "Enter Name:", global.default_text_size, c_black, c_white, 1);
 		#endregion /*Accept Text END*/
 	
 		#region /*Key A*/
@@ -4231,7 +4231,7 @@ function scr_character_select_menu()
 	{
 	
 		#region /*Accept Text*/
-		draw_text_outlined(window_get_width()/ 2 + player3_display_x-30, window_get_height()/ 2 + name_y + 42, "Enter Name:", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(window_get_width()/ 2 + player3_display_x -30, window_get_height()/ 2 + name_y + 42, "Enter Name:", global.default_text_size, c_black, c_white, 1);
 		#endregion /*Accept Text END*/
 	
 		#region /*Key A*/
@@ -4277,7 +4277,7 @@ function scr_character_select_menu()
 	{
 	
 		#region /*Accept Text*/
-		draw_text_outlined(window_get_width()/ 2 + player4_display_x-30, window_get_height()/ 2 + name_y + 42, "Enter Name:", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(window_get_width()/ 2 + player4_display_x -30, window_get_height()/ 2 + name_y + 42, "Enter Name:", global.default_text_size, c_black, c_white, 1);
 		#endregion /*Accept Text END*/
 	
 		#region /*Key A*/
@@ -5234,7 +5234,7 @@ function scr_character_select_menu()
 					{
 						global.character_index[1]-= 1;
 						global.character_for_player_2 = ds_list_find_value(global.all_loaded_characters, global.character_index[1])
-						xx2 = player2_display_x-32;
+						xx2 = player2_display_x -32;
 					}
 					else
 					{
@@ -5623,7 +5623,7 @@ function scr_character_select_menu()
 					{
 						global.character_index[2] -= 1;
 						global.character_for_player_3 = ds_list_find_value(global.all_loaded_characters, global.character_index[2])
-						xx3 = player3_display_x-32;
+						xx3 = player3_display_x -32;
 					}
 					else
 					{
@@ -6034,7 +6034,7 @@ function scr_character_select_menu()
 					{
 						global.character_index[3]-= 1;
 						global.character_for_player_4 = ds_list_find_value(global.all_loaded_characters, global.character_index[3])
-						xx4 = player4_display_x-32;
+						xx4 = player4_display_x -32;
 					}
 					else
 					{

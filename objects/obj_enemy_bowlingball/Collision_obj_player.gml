@@ -1508,12 +1508,13 @@ if (die = false)
 				if (coil_spring = true)
 				{
 					coil_spring = false;
+					stomped_delay = 20;
 				}
 				else
 				{
 					flat = true;
+					stomped_delay = 10;
 				}
-				stomped_delay = 10;
 				image_index = 0;
 			}
 			else

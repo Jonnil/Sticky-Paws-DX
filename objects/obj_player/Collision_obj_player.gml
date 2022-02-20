@@ -12,14 +12,14 @@ if (global.players_can_collide = true)
 		hspeed = 0;
 		x += 1;
 		other.hspeed = 0;
-		other.x-= 1;
+		other.x -= 1;
 	}
 	else
 	if (hspeed > 0)
 	and (other.hspeed < 0)
 	{
 		hspeed = 0;
-		x-= 1;
+		x -= 1;
 		other.hspeed = 0;
 		other.x += 1;
 	}

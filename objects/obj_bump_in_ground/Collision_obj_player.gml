@@ -26,14 +26,14 @@ if (place_meeting(x, y- 8, other))
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
 				var obj;
-				obj = instance_create_depth(x-32,bbox_top, 0, obj_basic_collectible);
+				obj = instance_create_depth(x -32,bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
 				}
-				obj = instance_create_depth(x- 24,bbox_top, 0, obj_basic_collectible);
+				obj = instance_create_depth(x - 24,bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;
@@ -51,7 +51,7 @@ if (place_meeting(x, y- 8, other))
 					bounceup = true;
 					delay_time = 20;
 				}
-				obj = instance_create_depth(x- 8,bbox_top, 0, obj_basic_collectible);
+				obj = instance_create_depth(x - 8,bbox_top, 0, obj_basic_collectible);
 				with(obj)
 				{
 					image_speed = 1;

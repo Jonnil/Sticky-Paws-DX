@@ -1066,7 +1066,7 @@
 	{
 	
 		#region /*Pen*/
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), place_brush_icon_x-32, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), place_brush_icon_x -32, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64))
 		{
 			tooltip = "Paintbrush tool (D)";
 			show_tooltip += 2;
@@ -1168,7 +1168,7 @@
 		else
 
 	#region /*Erase (and more)*/
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), erase_icon_x-32, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), erase_icon_x -32, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64))
 	{
 		tooltip = "Erase tool (E)";
 		show_tooltip += 2;
@@ -1228,7 +1228,7 @@
 	else
 	
 	#region /*Fill*/
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), fill_icon_x-32, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), fill_icon_x -32, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64))
 	{
 		tooltip = "Fill tool (F)";
 		show_tooltip += 2;

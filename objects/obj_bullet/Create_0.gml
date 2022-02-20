@@ -1,8 +1,8 @@
 depth = +9;
 
-if (asset_get_type("spr_wall") == asset_sprite)
+if (asset_get_type("spr_small_mask") == asset_sprite)
 {
-	mask_index = spr_wall;
+	mask_index = spr_small_mask;
 }
 
 image_speed = 0.3;
@@ -26,6 +26,7 @@ die = false;
 die_volting = false;
 give_rewards = true;
 stuck_in_wall_counter = 0;
+sliding_along_ground = 0;
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {
 	enemyvoice_defeated1 = snd_enemyvoice_defeated;

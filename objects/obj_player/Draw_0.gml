@@ -7,12 +7,12 @@
 //draw_text_outlined(x, y - 64, "character for player 2: " + string(global.character_for_player_2), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x, y - 64, "Overflow HP: " + string(overflow_hp) + "/" + string(max_overflow_hp), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x, y - 64,string(global.character_select_in_this_menu), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32, y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32, y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32, y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32, y - 64, string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x-32, y - 128, string(global.player1_can_play), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 64, string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 128, string(global.player1_can_play), global.default_text_size, c_white, c_black, 1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)
@@ -285,7 +285,7 @@ if (global.show_collision_mask = true)
 	{
 		draw_sprite_ext(sprite_mask, 0, x, y, 1, 1, 0, c_white, 1);
 	}
-	draw_rectangle_color(x- 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
+	draw_rectangle_color(x - 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
 	draw_rectangle_color(x, y- 2, x, y + 2, c_red, c_red, c_red, c_red, false);
 	image_alpha = 0.5;
 }

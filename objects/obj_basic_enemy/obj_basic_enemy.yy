@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_block_black",
+    "path": "sprites/spr_block_black/spr_block_black.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
