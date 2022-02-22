@@ -243,8 +243,8 @@ if (bounceup = false)
 			}
 			#endregion /* 1-up END*/
 			
-			#region /* 2 -up*/
-			if (item_inside = "2 -up")
+			#region /* 2-up*/
+			if (item_inside = "2-up")
 			{
 				empty = true;
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -261,10 +261,10 @@ if (bounceup = false)
 					}
 				}
 			}
-			#endregion /* 2 -up END*/
+			#endregion /* 2-up END*/
 			
-			#region /* 3 -up*/
-			if (item_inside = "3 -up")
+			#region /* 3-up*/
+			if (item_inside = "3-up")
 			{
 				empty = true;
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -281,7 +281,7 @@ if (bounceup = false)
 					}
 				}
 			}
-			#endregion /* 3 -up END*/
+			#endregion /* 3-up END*/
 			
 			#region /*Invincibility Powerup*/
 			if (item_inside = "invincibility_powerup")
@@ -298,6 +298,28 @@ if (bounceup = false)
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
+						coil_spring = false;
+					}
+				}
+			}
+			#endregion /*Invincibility Powerup END*/
+			
+			#region /*Invincibility Powerup Coil Spring*/
+			if (item_inside = "invincibility_powerup_coil_spring")
+			{
+				empty = true;
+				if (asset_get_type("obj_invincibility_powerup") == asset_object)
+				and (!place_meeting(x, y - 1, obj_wall))
+				{
+					var obj;
+					obj = instance_create_depth(x, bbox_top -32, 0, obj_invincibility_powerup);
+					with(obj)
+					{
+						hspeed = +2;
+						image_speed = 1;
+						motion_set(90, 10);
+						bounceup = true;
+						coil_spring = true;
 					}
 				}
 			}

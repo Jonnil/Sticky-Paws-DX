@@ -1,6 +1,6 @@
 if (die = false)
 {
-	#region /*Push the enemy out of the solid object*/
+	#region /*Push out of the solid object*/
 	if (position_meeting(x, bbox_bottom + 1, other))
 	or(position_meeting(x, bbox_bottom + 2, other))
 	or(position_meeting(x, bbox_bottom + 3, other))
@@ -18,7 +18,7 @@ if (die = false)
 	{
 		y -= 1;
 	}
-	#endregion /*Push the enemy out of the solid object END*/
+	#endregion /*Push out of the solid object END*/
 
 	#region /*Landing on solid object*/
 	if (place_meeting(x, y + 1, other))

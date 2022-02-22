@@ -69,29 +69,15 @@ if (y < camera_get_view_y(view_camera[view_current]))
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + 32, 22, c_white, c_white, true);
 	
 	if (assist_invincible = false)
-	and (invincible > 60)
+	and (invincible >= true)
 	{
-		if (invincible <240)
+		if (invincible_blinking%20 == 0)
 		{
-			if (invincible%2 == 0)
-			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
-			}
-			else
-			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
-			}
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
 		}
 		else
 		{
-			if (invincible%20 == 0)
-			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
-			}
-			else
-			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
-			}
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 		}
 	}
 	else
@@ -113,29 +99,15 @@ and (y < room_height)
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, 22, c_white, c_white, true);
 	
 	if (assist_invincible = false)
-	and (invincible > 60)
+	and (invincible >= true)
 	{
-		if (invincible <240)
+		if (invincible_blinking%20 == 0)
 		{
-			if (invincible%2 == 0)
-			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
-			}
-			else
-			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
-			}
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
 		}
 		else
 		{
-			if (invincible%20 == 0)
-			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
-			}
-			else
-			{
-				draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
-			}
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 		}
 	}
 	else
@@ -247,7 +219,7 @@ and (hp <= 1)
 and (max_hp >= 2)
 and (sprite_index > 0)
 and (intro_animation = "")
-and (invincible < 60)
+and (invincible <= false)
 {
 	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8, +8), yy+random_range(- 8, +8), draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha);
 }
@@ -259,7 +231,7 @@ and (intro_animation = "")
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha);
 	if (hp <= 1)
 	and (max_hp >= 2)
-	and (invincible < 60)
+	and (invincible <= false)
 	{
 		draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, 0.1);
 	}
@@ -328,34 +300,21 @@ if (effect_speedspark_subimg < 4)
 #region /*Invinsible*/
 if (assist_invincible = false)
 {
-	if (invincible > 0)
-	{
-		invincible -= 1;
-	}
-	if (invincible > 60)
+	if (invincible >= true)
 	and (sprite_index > 0)
 	{
-		if (invincible <240)
+		invincible_blinking += 1;
+		if (invincible_blinking > 21)
 		{
-			if (invincible%2 == 0)
-			{
-				draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_black, image_alpha);
-			}
-			else
-			{
-				draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha);
-			}
+			invincible_blinking = 0;
+		}
+		if (invincible_blinking%20 == 0)
+		{
+			draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_black, image_alpha);
 		}
 		else
 		{
-			if (invincible%20 == 0)
-			{
-				draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_black, image_alpha);
-			}
-			else
-			{
-				draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha);
-			}
+			draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha);
 		}
 	}
 }
@@ -377,7 +336,7 @@ and (image_xscale > 0)
 	draw_sprite_ext(global.resourcepack_sprite_enemy_bowlingball_stomped, 0, xx + 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
 }
 
-if (invincible > 60)
+if (invincible >= true)
 {
 	if (floor(random(10 - 1))= 0)
 	{

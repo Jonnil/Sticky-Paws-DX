@@ -134,8 +134,8 @@ and (sprite_index = spr_bucket)
 		}
 		#endregion /* 1-up END*/
 		
-		#region /* 2 -up*/
-		if (item_inside = "2 -up")
+		#region /* 2-up*/
+		if (item_inside = "2-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
@@ -149,10 +149,10 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /* 2 -up END*/
+		#endregion /* 2-up END*/
 		
-		#region /* 3 -up*/
-		if (item_inside = "3 -up")
+		#region /* 3-up*/
+		if (item_inside = "3-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
@@ -166,7 +166,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /* 3 -up END*/
+		#endregion /* 3-up END*/
 		
 		#region /*Big Collectible 1*/
 		if (item_inside = "big_collectible_1")

@@ -523,6 +523,7 @@ look_up_start_animation = true;
 pause_hspeed = 0;
 pause_vspeed = 0;
 star_image_index = 0;
+invincible_blinking = 0;
 #endregion /*Don't change these variables END*/
 
 #region /*Rope Swing Variables*/

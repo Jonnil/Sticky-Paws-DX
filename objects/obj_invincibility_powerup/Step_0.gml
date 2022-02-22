@@ -1,8 +1,28 @@
 sprite_index = global.resourcepack_sprite_invincibility_powerup;
 
 image_speed = 0.1;
-gravity_direction = 270;
-gravity = 0.5;
+
+#region /*Set the gravity*/
+gravity_direction = 270; /*Direction of the gravity*/
+if (asset_get_type("obj_wall") == asset_object)
+and (!place_meeting(x, y + 1, obj_wall))
+and (asset_get_type("obj_semisolid_platform") == asset_object)
+and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+and (x > camera_get_view_x(view_camera[view_current]))
+and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+and (y > camera_get_view_y(view_camera[view_current]))
+{
+	gravity = 0.5; /*The gravity*/
+}
+else
+{
+	gravity = 0;
+	vspeed = 0;
+}
+#endregion /*Set the gravity END*/
 
 #region /*If inside wall, destroy yourself*/
 if (position_meeting(x, y, obj_wall))
@@ -18,43 +38,52 @@ if (vspeed >= 0)
 }
 #endregion /*When falling, it's not bouncing up anymore END*/
 
-if (hspeed < 0)
+if (coil_spring = true)
 {
-	hspeed = -2;
-}
-else
-{
-	hspeed = +2;
-}
-
-if (asset_get_type("obj_wall") == asset_object)
-{
-	
-	if (place_meeting(x - 1, y, obj_wall))
+	if (hspeed >= 0)
 	{
 		hspeed = +2;
 	}
-	if (place_meeting(x + 1, y, obj_wall))
+	else
 	{
 		hspeed = -2;
 	}
-	
-	if (place_meeting(x, y + 1, obj_wall))
+	if (asset_get_type("obj_wall") == asset_object)
+	and (place_meeting(x - 1, y, obj_wall))
+	{
+		hspeed = +2;
+	}
+	else
+	if (asset_get_type("obj_wall") == asset_object)
+	and (place_meeting(x + 1, y, obj_wall))
+	{
+		hspeed = -2;
+	}
+	if (asset_get_type("obj_wall") == asset_object)
+	and (place_meeting(x, y + 1, obj_wall))
 	or(asset_get_type("obj_semisolid_platforms") == asset_object)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(asset_get_type("obj_semisolid_platforms") == asset_object)
+	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(asset_get_type("obj_semisolid_platforms") == asset_object)
+	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (asset_get_type("snd_star_bound") == asset_sound)
 		{
+			audio_stop_sound(snd_star_bound);
 			audio_play_sound(snd_star_bound, 0, 0);
 			audio_sound_gain(snd_star_bound, global.sfx_volume, 0);
 		}
 		vspeed = -10;
-	}
-	if (place_meeting(x, y - 1, obj_wall))
-	{
-		vspeed = +1;
+		draw_xscale = 1.25;
+		draw_yscale = 0.75;
 	}
 }
+if (place_meeting(x, y - 1, obj_wall))
+{
+	vspeed = +1;
+}
+
 if (floor(random(10 - 1)) = 0)
 {
 	effect_create_below(ef_star, x + random_range(- 16, + 16), y + random_range(- 16, + 16), 0, c_white);

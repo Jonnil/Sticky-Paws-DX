@@ -1,19 +1,3 @@
-if (flat = false)
-{
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball, image_index, x, y - 16, 1, draw_xscale, draw_angle, image_blend, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, image_index, x, y - 16, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
-}
-else
-{
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, image_index, x, y, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
-}
-if (sprite_index > noone)
-and (sprite_index != spr_block_black)
-{
-	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * image_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
-}
-
 if (coil_spring = true)
 {
 	if (place_meeting(x, y + 1, obj_wall))
@@ -30,6 +14,22 @@ if (coil_spring = true)
 	{
 		draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
 	}
+}
+
+if (flat = false)
+{
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball, image_index, x, y - 16, 1, draw_xscale, draw_angle, image_blend, image_alpha);
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, image_index, x, y - 16, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
+}
+else
+{
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, image_index, x, y, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
+}
+if (sprite_index > noone)
+and (sprite_index != spr_block_black)
+{
+	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * image_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
 }
 
 draw_xscale = lerp(draw_xscale, 1, 0.1);

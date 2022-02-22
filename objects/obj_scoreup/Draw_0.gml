@@ -32,9 +32,9 @@ else
 draw_set_halign(fa_center);
 if (scoreup = "1-UP")
 and (show_remaining_jumps = false)
-or(scoreup = "2 -UP")
+or(scoreup = "2-up")
 and (show_remaining_jumps = false)
-or(scoreup = "3 -UP")
+or(scoreup = "3-up")
 and (show_remaining_jumps = false)
 {
 	draw_text_outlined(x, y,string(scoreup), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);

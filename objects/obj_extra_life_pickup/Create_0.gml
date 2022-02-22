@@ -20,5 +20,5 @@ else
 }
 allow_move = false;
 effect_time = 0;
-number_of_extra_lives = 1; /*Different extra lives pickups. 1-up, 2 -up or 3 -up*/
+number_of_extra_lives = 1; /*Different extra lives pickups. 1-up, 2-up or 3-up*/
 text_alpha = 0;

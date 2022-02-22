@@ -22,7 +22,7 @@ or(die_volting = +1)
 	}
 	#region /*Set the gravity*/
 	gravity_direction = 270; /*Direction of the gravity*/
-	gravity = 0.7; /*The gravity*/
+	gravity = 0.5; /*The gravity*/
 	#endregion /*Set the gravity END*/
 	
 }
@@ -37,14 +37,12 @@ else
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	and (x > camera_get_view_x(view_camera[view_current]))
+	and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+	and (y > camera_get_view_y(view_camera[view_current]))
 	{
-		if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-		and (x > camera_get_view_x(view_camera[view_current]))
-		and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-		and (y > camera_get_view_y(view_camera[view_current]))
-		{
-			gravity = 0.7; /*The gravity*/
-		}
+		gravity = 0.5; /*The gravity*/
 	}
 	else
 	{
@@ -478,9 +476,9 @@ and (die = false)
 		if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		{
-			hspeed = -1;
-			y += 5;
-			gravity = 0.7;
+			hspeed = -0.5;
+			y += 10;
+			gravity = 1;
 		}
 		else
 		{
@@ -514,9 +512,9 @@ and (die = false)
 		if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		{
-			hspeed = +1;
-			y += 5;
-			gravity = 0.7;
+			hspeed = +0.5;
+			y += 10;
+			gravity = 1;
 		}
 		else
 		{

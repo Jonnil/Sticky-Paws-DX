@@ -2749,91 +2749,55 @@ if (global.quit_level = true)
 #endregion /*Quit Level END*/
 
 #region /*Invincible Music*/
-if (asset_get_type("snd_music_invincible") == asset_sound)
+if (invincible >= true)
+and (assist_invincible = false)
+and (asset_get_type("snd_music_invincible") == asset_sound)
+and (audio_is_playing(snd_music_invincible))
 {
-	if (invincible < room_speed* 10)
-	and (assist_invincible = false)
+	audio_sound_gain(global.music, 0, 0);
+	audio_sound_gain(global.music_underwater, 0, 0);
+}
+else
+{
+	if (!audio_is_playing(snd_music_invincible))
 	{
-		invincible_pitch += 0.001;
-		audio_sound_pitch(snd_music_invincible, invincible_pitch);
+		invincible = false;
 	}
-	else
+	
+	/*audio_stop_sound(snd_music_invincible);
+	
+	if (!audio_is_playing(global.music))
 	{
-		invincible_pitch = 1;
-		audio_sound_pitch(snd_music_invincible, 1);
-	}
-	if (invincible = 180)
-	and (assist_invincible = false)
-	{
-		if (asset_get_type("snd_running_out") == asset_sound)
+		if (asset_get_type("snd_hurry_up") == asset_sound)
+		and (!audio_is_playing(snd_hurry_up))
 		{
-			audio_play_sound(snd_running_out, 0, 0);
-			audio_sound_gain(snd_running_out, global.sfx_volume, 0);
+			audio_play_sound(global.music, 0, true);
+			audio_sound_gain(global.music, 0, 0);
+		}
+		else
+		{
+			audio_play_sound(global.music, 0, true);
+			audio_sound_gain(global.music, 0, 0);
 		}
 	}
-	if (invincible > 120)
-	and (assist_invincible = false)
+	if (!audio_is_playing(global.music_underwater))
 	{
-		if (audio_is_playing(snd_music_invincible))
+		if (asset_get_type("snd_hurry_up") == asset_sound)
+		and (!audio_is_playing(snd_hurry_up))
 		{
-			audio_sound_gain(global.music, 0, 0);
+			audio_play_sound(global.music_underwater, 0, true);
+			audio_sound_gain(global.music_underwater, 0, 0);
+		}
+		else
+		{
+			audio_play_sound(global.music_underwater, 0, true);
 			audio_sound_gain(global.music_underwater, 0, 0);
 		}
 	}
-	else
-	{
-		audio_stop_sound(snd_music_invincible);
-		
-		#region /*Play Music*/
-		if (!audio_is_playing(global.music))
-		{
-			if (asset_get_type("snd_hurry_up") == asset_sound)
-			and (!audio_is_playing(snd_hurry_up))
-			{
-				audio_play_sound(global.music, 0, true);
-				audio_sound_gain(global.music, 0, 0);
-			}
-			else
-			{
-				audio_play_sound(global.music, 0, true);
-				audio_sound_gain(global.music, 0, 0);
-			}
-		}
-		#endregion /*Play Music END*/
-
-		#region /*Play Underwater Music*/
-		if (!audio_is_playing(global.music_underwater))
-		{
-			if (asset_get_type("snd_hurry_up") == asset_sound)
-			and (!audio_is_playing(snd_hurry_up))
-			{
-				audio_play_sound(global.music_underwater, 0, true);
-				audio_sound_gain(global.music_underwater, 0, 0);
-			}
-			else
-			{
-				audio_play_sound(global.music_underwater, 0, true);
-				audio_sound_gain(global.music_underwater, 0, 0);
-			}
-		}
-		#endregion /*Play Underwater Music END*/
-		
-	}
+	*/
+	
 }
 #endregion /*Invincible Music END*/
-
-else
-{
-	
-	#region /*Play Music*/
-	if (!audio_is_playing(global.music))
-	{
-		audio_play_sound(global.music, 0, true);
-		audio_sound_gain(global.music, 0, 0);
-	}
-	#endregion /*Play Music END*/
-
-}
 
 #region /*Play Ambience*/
 if (!audio_is_playing(global.ambience))
@@ -3335,7 +3299,7 @@ if (assist_invincible = true)
 	{
 		hp = 1;
 	}
-	invincible = 1000;
+	invincible = true;
 	audio_stop_sound(snd_music_invincible);
 	if (key_jump_hold)
 	{
@@ -4886,7 +4850,7 @@ else
 		or(key_right)
 		and (ground_pound = false)
 		{
-			if (invincible > 0)
+			if (invincible >= true)
 			and (assist_invincible = false)
 			{
 				speed_max = lerp(speed_max, 10, 0.1);
@@ -4911,7 +4875,7 @@ else
 		or(asset_get_type("obj_semisolid_platform") == asset_object)
 		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
-			if (invincible > 0)
+			if (invincible >= true)
 			and (assist_invincible = false)
 			{
 				speed_max = lerp(speed_max, 6, 0.05);
@@ -5932,7 +5896,7 @@ and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 or(asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
-	if (invincible < 1)
+	if (invincible <= false)
 	{
 		chain_reaction = 0;
 	}
@@ -7792,7 +7756,7 @@ if (in_water != old_in_water)
 
 #region /*Speedup to Dashspeed*/
 if (abs(hspeed)>7)
-and (invincible > 0)
+and (invincible >= true)
 and (power_meter_running_sound = true)
 {
 	speedunit += 2;
@@ -8222,48 +8186,44 @@ and (instance_exists(obj_spikes))
 
 #region /*Invincibility*/
 if (asset_get_type("obj_invincibility_powerup") == asset_object)
+and (place_meeting(x, y, obj_invincibility_powerup))
+and (instance_nearest(x, y, obj_invincibility_powerup).bounceup = false)
 {
-	if (place_meeting(x, y, obj_invincibility_powerup))
-	and (instance_nearest(x, y, obj_invincibility_powerup).bounceup = false)
+	chain_reaction = 0;
+	invincible = true;
+	audio_sound_gain(global.music, 0, 100);
+	audio_sound_gain(global.music_underwater, 0, 100);
+	if (asset_get_type("snd_music_invincible") == asset_sound)
+	and (!audio_is_playing(snd_music_invincible))
 	{
-		chain_reaction = 0;
-		invincible = room_speed * 20;
-		audio_sound_gain(global.music, 0, 100);
-		audio_sound_gain(global.music_underwater, 0, 100);
-		if (asset_get_type("snd_music_invincible") == asset_sound)
+		audio_play_sound(snd_music_invincible, 0, 0);
+		audio_sound_gain(snd_music_invincible, global.music_volume, 0);
+	}
+	audio_stop_sound(voice);
+	voice = audio_play_sound(voice_get_star, 0, 0);
+	audio_sound_gain(voice_get_star, global.voices_volume, 0);
+	audio_sound_pitch(voice_get_star, default_voice_pitch);
+	score += 1000;
+	global.hud_show_score = true;
+	if (asset_get_type("obj_camera") == asset_object)
+	and (instance_exists(obj_camera))
+	{
+		with(obj_camera)
 		{
-			if (!audio_is_playing(snd_music_invincible))
-			{
-				audio_play_sound(snd_music_invincible, 0, 0);
-				audio_sound_gain(snd_music_invincible, global.music_volume, 0);
-			}
+			hud_show_score_timer = global.hud_hide_time * 60;
 		}
-		audio_stop_sound(voice);
-		voice = audio_play_sound(voice_get_star, 0, 0);
-		audio_sound_gain(voice_get_star, global.voices_volume, 0);
-		audio_sound_pitch(voice_get_star, default_voice_pitch);
-		score += 1000;
-		global.hud_show_score = true;
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+	}
+	if (asset_get_type("obj_scoreup") == asset_object)
+	{
+		obj = instance_create_depth(x, y, 0, obj_scoreup);
+		with(obj)
 		{
-			with(obj_camera)
-			{
-				hud_show_score_timer = global.hud_hide_time * 60;
-			}
+			scoreup = 1000;
 		}
-		if (asset_get_type("obj_scoreup") == asset_object)
-		{
-			obj = instance_create_depth(x, y, 0, obj_scoreup);
-			with(obj)
-			{
-				scoreup = 1000;
-			}
-		}
-		with(instance_nearest(x, y, obj_invincibility_powerup))
-		{
-			instance_destroy();
-		}
+	}
+	with(instance_nearest(x, y, obj_invincibility_powerup))
+	{
+		instance_destroy();
 	}
 }
 #endregion /*Invincibility END*/
@@ -10431,7 +10391,7 @@ and (!key_right)
 	if (have_heart_balloon = false)
 	and (hp <= 1)
 	and (max_hp >= 2)
-	and (invincible < 60)
+	and (invincible <= false)
 	and (sprite_panting > noone)
 	{
 		sprite_index = sprite_panting;
@@ -10624,7 +10584,7 @@ if (vspeed < 0)
 		}
 	}
 	else
-	if (invincible >30)
+	if (invincible >= true)
 	and (asset_get_type("spr_player_invincible_jump") == asset_sprite)
 	{
 		sprite_index = spr_player_invincible_jump;
@@ -10734,7 +10694,7 @@ if (vspeed > 0)
 and (stick_to_wall = false)
 and (spring = false)
 {
-	if (invincible >30)
+	if (invincible >= true)
 	and (asset_get_type("spr_player_invincible_jump") == asset_sprite)
 	{
 		sprite_index = spr_player_invincible_jump;
@@ -11254,28 +11214,25 @@ else
 #region /*Speedlines Effect*/
 if (asset_get_type("obj_speedline") == asset_object)
 {
+	if (invincible >= true)
+	and (assist_invincible = false)
+	and (instance_exists(obj_player))
+	{
+		with(instance_create_depth(xx, yy, 0, obj_speedline))
+		{
+			image_angle = instance_nearest(x, y, obj_player).angle;
+			image_blend = instance_nearest(x, y, obj_player).image_blend;
+			image_index = instance_nearest(x, y, obj_player).image_index;
+			image_speed = instance_nearest(x, y, obj_player).image_speed;
+			sprite_index = instance_nearest(x, y, obj_player).sprite_index;
+			image_xscale = instance_nearest(x, y, obj_player).image_xscale;
+		}
+	}
+	else
 	if (vspeed < 0)
 	or(vspeed > 0)
-	and (invincible < 1)
-	or(invincible > 0)
 	{
-		if (invincible > 60)
-		and (assist_invincible = false)
-		{
-			with(instance_create_depth(xx, yy, 0, obj_speedline))
-			{
-				image_angle = instance_nearest(x, y, obj_player).angle;
-				image_blend = instance_nearest(x, y, obj_player).image_blend;
-				image_index = instance_nearest(x, y, obj_player).image_index;
-				image_speed = instance_nearest(x, y, obj_player).image_speed;
-				sprite_index = instance_nearest(x, y, obj_player).sprite_index;
-				image_xscale = instance_nearest(x, y, obj_player).image_xscale;
-			}
-		}
-		else
-		{
-			instance_create_depth(xx, yy, 0, obj_speedline);
-		}
+		instance_create_depth(xx, yy, 0, obj_speedline);
 	}
 }
 #endregion /*Speedlines Effect END*/
