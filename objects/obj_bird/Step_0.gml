@@ -58,13 +58,13 @@ and (place_meeting(x, y, obj_player))
 	touch_player = true;
 	if (instance_nearest(x, y, obj_player).x < x)
 	{
-		die_volting = -1;
 		vspeed = - 8;
+		die_volting = -1;
 	}
 	else
 	{
-		die_volting = +1;
 		vspeed = - 8;
+		die_volting = +1;
 	}
 	
 	#region /* 1 Basic Collectible*/
@@ -116,3 +116,11 @@ and (touch_player = false)
 	}
 }
 #endregion /*Change direction when hitting a wall END*/
+
+#region /*If it's inside the wall, destroy itself*/
+if (position_meeting(x, y, obj_wall))
+and (touch_player = false)
+{
+	instance_destroy();
+}
+#endregion /*If it's inside the wall, destroy itself END*/

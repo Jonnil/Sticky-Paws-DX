@@ -373,7 +373,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	#endregion /*Sprite stand cold y origin point END*/
 	#endregion /*Sprite stand cold x and y origin points END*/
-
+	
 	#region /*Sprite standing on something x and y origin points*/
 	#region /*Sprite standing on something x origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_standing_on_something_xorig"))
@@ -385,9 +385,9 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_standing_on_something_xorig", 0);}
 		sprite_standing_on_something_xorig = 0;
 	}
-	#endregion /*Sprite stand x origin point END*/
-
-	#region /*Sprite stand y origin point*/
+	#endregion /*Sprite standing on something x origin point END*/
+	
+	#region /*Sprite standing on something y origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_standing_on_something_yorig"))
 	{
 		sprite_standing_on_something_yorig = ini_read_real("sprite origin points", "sprite_standing_on_something_yorig", 0);
@@ -399,7 +399,59 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	#endregion /*Sprite standing on something y origin point END*/
 	#endregion /*Sprite standing on something x and y origin points END*/
-
+	
+	#region /*Sprite standing with item in front x and y origin points*/
+	#region /*Sprite standing with item in front x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_standing_with_item_in_front_xorig"))
+	{
+		sprite_standing_with_item_in_front_xorig = ini_read_real("sprite origin points", "sprite_standing_with_item_in_front_xorig", 0);
+	}
+	else
+	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_standing_with_item_in_front_xorig", 0);}
+		sprite_standing_with_item_in_front_xorig = 0;
+	}
+	#endregion /*Sprite standing with item in front x origin point END*/
+	
+	#region /*Sprite standing with item in front y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_standing_with_item_in_front_yorig"))
+	{
+		sprite_standing_with_item_in_front_yorig = ini_read_real("sprite origin points", "sprite_standing_with_item_in_front_yorig", 0);
+	}
+	else
+	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_standing_with_item_in_front_yorig", 0);}
+		sprite_standing_with_item_in_front_yorig = 0;
+	}
+	#endregion /*Sprite standing with item in front y origin point END*/
+	#endregion /*Sprite standing with item in front x and y origin points END*/
+	
+	#region /*Sprite walking with item in front x and y origin points*/
+	#region /*Sprite walking with item in front x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walking_with_item_in_front_xorig"))
+	{
+		sprite_walking_with_item_in_front_xorig = ini_read_real("sprite origin points", "sprite_walking_with_item_in_front_xorig", 0);
+	}
+	else
+	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_walking_with_item_in_front_xorig", 0);}
+		sprite_walking_with_item_in_front_xorig = 0;
+	}
+	#endregion /*Sprite walking with item in front x origin point END*/
+	
+	#region /*Sprite walking with item in front y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walking_with_item_in_front_yorig"))
+	{
+		sprite_walking_with_item_in_front_yorig = ini_read_real("sprite origin points", "sprite_walking_with_item_in_front_yorig", 0);
+	}
+	else
+	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_walking_with_item_in_front_yorig", 0);}
+		sprite_walking_with_item_in_front_yorig = 0;
+	}
+	#endregion /*Sprite walking with item in front y origin point END*/
+	#endregion /*Sprite walking with item in front x and y origin points END*/
+	
 	#region /*Sprite look up x and y origin points*/
 	#region /*Sprite look up x origin point*/
 	if (ini_key_exists("sprite origin points", "sprite_look_up_xorig"))
@@ -1753,53 +1805,8 @@ sprite_mask = scr_initialize_custom_character_sprite("mask", sprite_mask, mask_x
 sprite_mask_crouch = scr_initialize_custom_character_sprite("mask_crouch", sprite_mask, mask_crouch_xorig, mask_crouch_yorig);
 
 #region /*Sprite variables*/
-sprite_panting = scr_initialize_custom_character_sprite("panting", sprite_panting, sprite_panting_xorig, sprite_panting_yorig);
-sprite_stand = scr_initialize_custom_character_sprite("stand", sprite_stand, sprite_stand_xorig, sprite_stand_yorig);
-sprite_stand_cold = scr_initialize_custom_character_sprite("stand_cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-sprite_stand_cold = scr_initialize_custom_character_sprite("cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
-sprite_standing_on_something = scr_initialize_custom_character_sprite("standing_on_something", sprite_standing_on_something, sprite_standing_on_something_xorig, sprite_standing_on_something_yorig);
-sprite_look_up = scr_initialize_custom_character_sprite("look_up", sprite_look_up, sprite_look_up_xorig, sprite_look_up_yorig);
-sprite_look_up = scr_initialize_custom_character_sprite("lookup", sprite_look_up, sprite_look_up_xorig, sprite_look_up_yorig);
-sprite_look_up_start = scr_initialize_custom_character_sprite("look_up_start", sprite_look_up_start, sprite_look_up_start_xorig, sprite_look_up_start_yorig);
-sprite_crouch = scr_initialize_custom_character_sprite("crouch", sprite_crouch, sprite_crouch_xorig, sprite_crouch_yorig);
-sprite_crouch = scr_initialize_custom_character_sprite("squat", sprite_crouch, sprite_crouch_xorig, sprite_crouch_yorig);
-sprite_crouch_crawl = scr_initialize_custom_character_sprite("crawl", sprite_crouch_crawl, sprite_crawl_xorig, sprite_crawl_yorig);
-sprite_crouch_crawl = scr_initialize_custom_character_sprite("crouch_crawl", sprite_crouch_crawl, sprite_crawl_xorig, sprite_crawl_yorig);
-sprite_crouch_crawl = scr_initialize_custom_character_sprite("squat_crawl", sprite_crouch_crawl, sprite_crawl_xorig, sprite_crawl_yorig);
-sprite_crouch_jump = scr_initialize_custom_character_sprite("crouch_jump", sprite_crouch_jump, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
-sprite_crouch_jump = scr_initialize_custom_character_sprite("squat_jump", sprite_crouch_jump, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
-sprite_crouch_fall = scr_initialize_custom_character_sprite("crouch_fall", sprite_crouch_fall, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
-sprite_crouch_fall = scr_initialize_custom_character_sprite("squat_fall", sprite_crouch_fall, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
-sprite_skidding = scr_initialize_custom_character_sprite("skidding", sprite_skidding, sprite_skidding_xorig, sprite_skidding_yorig);
-sprite_skidding = scr_initialize_custom_character_sprite("slip", sprite_skidding, sprite_skidding_xorig, sprite_skidding_yorig);
-sprite_skidding = scr_initialize_custom_character_sprite("slip", sprite_skidding, sprite_skidding_xorig, sprite_skidding_yorig);
-sprite_skidding_ice = scr_initialize_custom_character_sprite("skidding_ice", sprite_skidding_ice, sprite_skidding_ice_xorig, sprite_skidding_ice_yorig);
-sprite_swim_stand = scr_initialize_custom_character_sprite("swim_stand", sprite_swim_stand, sprite_swim_stand_xorig, sprite_swim_stand_yorig);
-sprite_swim_stand = scr_initialize_custom_character_sprite("swim_stand", sprite_swim_stand, sprite_swim_stand_xorig, sprite_swim_stand_yorig);
-sprite_swim = scr_initialize_custom_character_sprite("swim", sprite_swim, sprite_swim_xorig, sprite_swim_yorig);
-sprite_swim_fall = scr_initialize_custom_character_sprite("swim_fall", sprite_swim_fall, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
-sprite_swim_fall = scr_initialize_custom_character_sprite("swim_falling", sprite_swim_fall, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
 sprite_against_wall = scr_initialize_custom_character_sprite("against_wall", sprite_against_wall, sprite_against_wall_xorig, sprite_against_wall_yorig);
 sprite_against_wall = scr_initialize_custom_character_sprite("againstwall", sprite_against_wall, sprite_against_wall_xorig, sprite_against_wall_yorig);
-sprite_walk = scr_initialize_custom_character_sprite("walk", sprite_walk, sprite_walk_xorig, sprite_walk_yorig);
-sprite_run = scr_initialize_custom_character_sprite("run", sprite_run, sprite_run_xorig, sprite_run_yorig);
-sprite_run = scr_initialize_custom_character_sprite("dash", sprite_run, sprite_run_xorig, sprite_run_yorig);
-sprite_run2 = scr_initialize_custom_character_sprite("run2", sprite_run2, sprite_run2_xorig, sprite_run2_yorig);
-sprite_run2 = scr_initialize_custom_character_sprite("dash2", sprite_run2, sprite_run2_xorig, sprite_run2_yorig);
-sprite_run3 = scr_initialize_custom_character_sprite("run3", sprite_run3, sprite_run3_xorig, sprite_run3_yorig);
-sprite_run3 = scr_initialize_custom_character_sprite("dash3", sprite_run3, sprite_run3_xorig, sprite_run3_yorig);
-sprite_run4 = scr_initialize_custom_character_sprite("run4", sprite_run4, sprite_run4_xorig, sprite_run4_yorig);
-sprite_run4 = scr_initialize_custom_character_sprite("dash4", sprite_run4, sprite_run4_xorig, sprite_run4_yorig);
-sprite_jump = scr_initialize_custom_character_sprite("jump", sprite_jump, sprite_jump_xorig, sprite_jump_yorig);
-sprite_double_jump = scr_initialize_custom_character_sprite("double_jump", sprite_double_jump, sprite_double_jump_xorig, sprite_double_jump_yorig);
-sprite_double_jump = scr_initialize_custom_character_sprite("doublejump", sprite_double_jump, sprite_double_jump_xorig, sprite_double_jump_yorig);
-sprite_triple_jump = scr_initialize_custom_character_sprite("triple_jump", sprite_triple_jump, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
-sprite_triple_jump = scr_initialize_custom_character_sprite("triplejump", sprite_triple_jump, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
-sprite_fall = scr_initialize_custom_character_sprite("fall", sprite_fall, sprite_fall_xorig, sprite_fall_yorig);
-sprite_fall_slower = scr_initialize_custom_character_sprite("fall_slower", sprite_fall_slower, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
-sprite_fall_slower = scr_initialize_custom_character_sprite("fallslower", sprite_fall_slower, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
-sprite_climb_under_still = scr_initialize_custom_character_sprite("climb_under_still", sprite_climb_under_still, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
-sprite_climb_under_still = scr_initialize_custom_character_sprite("climbunder_still", sprite_climb_under_still, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
 sprite_climb_under = scr_initialize_custom_character_sprite("climb_under", sprite_climb_under, sprite_climb_under_xorig, sprite_climb_under_yorig);
 sprite_climb_under = scr_initialize_custom_character_sprite("climbunder", sprite_climb_under, sprite_climb_under_xorig, sprite_climb_under_yorig);
 sprite_climb_under_look_up = scr_initialize_custom_character_sprite("climb_under_look_up", sprite_climb_under_look_up, sprite_climb_under_look_up_xorig, sprite_climb_under_look_up_yorig);
@@ -1808,36 +1815,77 @@ sprite_climb_under_spin = scr_initialize_custom_character_sprite("climb_under_sp
 sprite_climb_under_spin = scr_initialize_custom_character_sprite("climbunder_spin", sprite_climb_under_spin, sprite_climb_under_spin_xorig, sprite_climb_under_spin_yorig);
 sprite_climb_under_spin_fast = scr_initialize_custom_character_sprite("climb_under_spin_fast", sprite_climb_under_spin_fast, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
 sprite_climb_under_spin_fast = scr_initialize_custom_character_sprite("climbunder_spin_fast", sprite_climb_under_spin_fast, sprite_climb_under_spin_fast_xorig, sprite_climb_under_spin_fast_yorig);
+sprite_climb_under_still = scr_initialize_custom_character_sprite("climb_under_still", sprite_climb_under_still, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
+sprite_climb_under_still = scr_initialize_custom_character_sprite("climbunder_still", sprite_climb_under_still, sprite_climb_under_still_xorig, sprite_climb_under_still_yorig);
+sprite_crouch = scr_initialize_custom_character_sprite("crouch", sprite_crouch, sprite_crouch_xorig, sprite_crouch_yorig);
+sprite_crouch = scr_initialize_custom_character_sprite("squat", sprite_crouch, sprite_crouch_xorig, sprite_crouch_yorig);
+sprite_crouch_crawl = scr_initialize_custom_character_sprite("crawl", sprite_crouch_crawl, sprite_crawl_xorig, sprite_crawl_yorig);
+sprite_crouch_crawl = scr_initialize_custom_character_sprite("crouch_crawl", sprite_crouch_crawl, sprite_crawl_xorig, sprite_crawl_yorig);
+sprite_crouch_crawl = scr_initialize_custom_character_sprite("squat_crawl", sprite_crouch_crawl, sprite_crawl_xorig, sprite_crawl_yorig);
+sprite_crouch_fall = scr_initialize_custom_character_sprite("crouch_fall", sprite_crouch_fall, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
+sprite_crouch_fall = scr_initialize_custom_character_sprite("squat_fall", sprite_crouch_fall, sprite_crouch_fall_xorig, sprite_crouch_fall_yorig);
+sprite_crouch_jump = scr_initialize_custom_character_sprite("crouch_jump", sprite_crouch_jump, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
+sprite_crouch_jump = scr_initialize_custom_character_sprite("squat_jump", sprite_crouch_jump, sprite_crouch_jump_xorig, sprite_crouch_jump_yorig);
+sprite_die = scr_initialize_custom_character_sprite("die", sprite_die, sprite_die_xorig, sprite_die_yorig);
+sprite_dive = scr_initialize_custom_character_sprite("dive", sprite_dive, sprite_dive_xorig, sprite_dive_yorig);
+sprite_double_jump = scr_initialize_custom_character_sprite("double_jump", sprite_double_jump, sprite_double_jump_xorig, sprite_double_jump_yorig);
+sprite_double_jump = scr_initialize_custom_character_sprite("doublejump", sprite_double_jump, sprite_double_jump_xorig, sprite_double_jump_yorig);
+sprite_fall = scr_initialize_custom_character_sprite("fall", sprite_fall, sprite_fall_xorig, sprite_fall_yorig);
+sprite_fall_slower = scr_initialize_custom_character_sprite("fall_slower", sprite_fall_slower, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
+sprite_fall_slower = scr_initialize_custom_character_sprite("fallslower", sprite_fall_slower, sprite_fall_slower_xorig, sprite_fall_slower_yorig);
+sprite_game_over_character_portrait = scr_initialize_custom_character_sprite("game_over_character_portrait", sprite_game_over_character_portrait, sprite_game_over_character_portrait_xorig, sprite_game_over_character_portrait_yorig);
 sprite_ground_pound = scr_initialize_custom_character_sprite("ground_pound", sprite_ground_pound, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
 sprite_ground_pound = scr_initialize_custom_character_sprite("groundpound", sprite_ground_pound, sprite_ground_pound_xorig, sprite_ground_pound_yorig);
 sprite_ground_pound_get_up = scr_initialize_custom_character_sprite("ground_pound_get_up", sprite_ground_pound_get_up, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
 sprite_ground_pound_get_up = scr_initialize_custom_character_sprite("groundpound_getup", sprite_ground_pound_get_up, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
+sprite_jump = scr_initialize_custom_character_sprite("jump", sprite_jump, sprite_jump_xorig, sprite_jump_yorig);
+sprite_look_up = scr_initialize_custom_character_sprite("look_up", sprite_look_up, sprite_look_up_xorig, sprite_look_up_yorig);
+sprite_look_up = scr_initialize_custom_character_sprite("lookup", sprite_look_up, sprite_look_up_xorig, sprite_look_up_yorig);
+sprite_look_up_start = scr_initialize_custom_character_sprite("look_up_start", sprite_look_up_start, sprite_look_up_start_xorig, sprite_look_up_start_yorig);
+sprite_panting = scr_initialize_custom_character_sprite("panting", sprite_panting, sprite_panting_xorig, sprite_panting_yorig);
+sprite_run2 = scr_initialize_custom_character_sprite("dash2", sprite_run2, sprite_run2_xorig, sprite_run2_yorig);
+sprite_run2 = scr_initialize_custom_character_sprite("run2", sprite_run2, sprite_run2_xorig, sprite_run2_yorig);
+sprite_run3 = scr_initialize_custom_character_sprite("dash3", sprite_run3, sprite_run3_xorig, sprite_run3_yorig);
+sprite_run3 = scr_initialize_custom_character_sprite("run3", sprite_run3, sprite_run3_xorig, sprite_run3_yorig);
+sprite_run4 = scr_initialize_custom_character_sprite("dash4", sprite_run4, sprite_run4_xorig, sprite_run4_yorig);
+sprite_run4 = scr_initialize_custom_character_sprite("run4", sprite_run4, sprite_run4_xorig, sprite_run4_yorig);
+sprite_run = scr_initialize_custom_character_sprite("dash", sprite_run, sprite_run_xorig, sprite_run_yorig);
+sprite_run = scr_initialize_custom_character_sprite("run", sprite_run, sprite_run_xorig, sprite_run_yorig);
+sprite_sitting_down_to_eat = scr_initialize_custom_character_sprite("sitting_down_to_eat", sprite_sitting_down_to_eat, sprite_sitting_down_to_eat_xorig, sprite_sitting_down_to_eat_yorig); /*Cutscene Specific Sprite*/
+sprite_sitting_eat_closed_mouth = scr_initialize_custom_character_sprite("sitting_eat_closed_mouth", sprite_sitting_eat_closed_mouth, sprite_sitting_eat_closed_mouth_xorig, sprite_sitting_eat_closed_mouth_yorig); /*Cutscene Specific Sprite*/
+sprite_sitting_eat_open_mouth = scr_initialize_custom_character_sprite("sitting_eat_open_mouth", sprite_sitting_eat_open_mouth, sprite_sitting_eat_open_mouth_xorig, sprite_sitting_eat_open_mouth_yorig); /*Cutscene Specific Sprite*/
+sprite_sitting_eat_open_mouth_open_eye = scr_initialize_custom_character_sprite("sitting_eat_open_mouth_open_eye", sprite_sitting_eat_open_mouth_open_eye, sprite_sitting_eat_open_mouth_open_eye_xorig, sprite_sitting_eat_open_mouth_open_eye_yorig); /*Cutscene Specific Sprite*/
+sprite_sitting_eat_surprised = scr_initialize_custom_character_sprite("sitting_eat_surprised", sprite_sitting_eat_surprised, sprite_sitting_eat_surprised_xorig, sprite_sitting_eat_surprised_yorig); /*Cutscene Specific Sprite*/
+sprite_sitting_eating = scr_initialize_custom_character_sprite("sitting_eating", sprite_sitting_eating, sprite_sitting_eating_xorig, sprite_sitting_eating_yorig); /*Cutscene Specific Sprite*/
+sprite_skidding = scr_initialize_custom_character_sprite("skidding", sprite_skidding, sprite_skidding_xorig, sprite_skidding_yorig);
+sprite_skidding = scr_initialize_custom_character_sprite("slip", sprite_skidding, sprite_skidding_xorig, sprite_skidding_yorig);
+sprite_skidding_ice = scr_initialize_custom_character_sprite("skidding_ice", sprite_skidding_ice, sprite_skidding_ice_xorig, sprite_skidding_ice_yorig);
+sprite_spring_down = scr_initialize_custom_character_sprite("spring_down", sprite_spring_down, sprite_spring_down_xorig, sprite_spring_down_yorig);
+sprite_spring_transition = scr_initialize_custom_character_sprite("spring_transition", sprite_spring_transition, sprite_spring_transition_xorig, sprite_spring_transition_yorig);
+sprite_spring_up = scr_initialize_custom_character_sprite("spring_up", sprite_spring_up, sprite_spring_up_xorig, sprite_spring_up_yorig);
+sprite_stand = scr_initialize_custom_character_sprite("stand", sprite_stand, sprite_stand_xorig, sprite_stand_yorig);
+sprite_stand_cold = scr_initialize_custom_character_sprite("cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
+sprite_stand_cold = scr_initialize_custom_character_sprite("stand_cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
+sprite_standing_on_something = scr_initialize_custom_character_sprite("standing_on_something", sprite_standing_on_something, sprite_standing_on_something_xorig, sprite_standing_on_something_yorig);
+sprite_standing_with_item_in_front = scr_initialize_custom_character_sprite("standing_with_item_in_front", sprite_standing_with_item_in_front, sprite_standing_with_item_in_front_xorig, sprite_standing_with_item_in_front_yorig);
 sprite_stomp_spin = scr_initialize_custom_character_sprite("stomp_spin", sprite_stomp_spin, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
 sprite_stomp_spin = scr_initialize_custom_character_sprite("stompspin", sprite_stomp_spin, sprite_stomp_spin_xorig, sprite_stomp_spin_yorig);
-sprite_spring_up = scr_initialize_custom_character_sprite("spring_up", sprite_spring_up, sprite_spring_up_xorig, sprite_spring_up_yorig);
-sprite_spring_transition = scr_initialize_custom_character_sprite("spring_transition", sprite_spring_transition, sprite_spring_transition_xorig, sprite_spring_transition_yorig);
-sprite_spring_down = scr_initialize_custom_character_sprite("spring_down", sprite_spring_down, sprite_spring_down_xorig, sprite_spring_down_yorig);
-sprite_wall_slide = scr_initialize_custom_character_sprite("wall_slide", sprite_wall_slide, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
-sprite_wall_slide = scr_initialize_custom_character_sprite("wallslide", sprite_wall_slide, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
-sprite_wall_slide_up = scr_initialize_custom_character_sprite("wall_slide_up", sprite_wall_slide_up, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
-sprite_wall_slide_up = scr_initialize_custom_character_sprite("wallslide_up", sprite_wall_slide_up, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
-sprite_wall_slide_down = scr_initialize_custom_character_sprite("wall_slide_down", sprite_wall_slide_down, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
-sprite_wall_slide_down = scr_initialize_custom_character_sprite("wallslide_down", sprite_wall_slide_down, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
-sprite_dive = scr_initialize_custom_character_sprite("dive", sprite_dive, sprite_dive_xorig, sprite_dive_yorig);
-sprite_die = scr_initialize_custom_character_sprite("die", sprite_die, sprite_die_xorig, sprite_die_yorig);
-sprite_game_over_character_portrait = scr_initialize_custom_character_sprite("game_over_character_portrait", sprite_game_over_character_portrait, sprite_game_over_character_portrait_xorig, sprite_game_over_character_portrait_yorig);
+sprite_swim = scr_initialize_custom_character_sprite("swim", sprite_swim, sprite_swim_xorig, sprite_swim_yorig);
+sprite_swim_fall = scr_initialize_custom_character_sprite("swim_fall", sprite_swim_fall, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+sprite_swim_fall = scr_initialize_custom_character_sprite("swim_falling", sprite_swim_fall, sprite_swim_fall_xorig, sprite_swim_fall_yorig);
+sprite_swim_stand = scr_initialize_custom_character_sprite("swim_stand", sprite_swim_stand, sprite_swim_stand_xorig, sprite_swim_stand_yorig);
+sprite_triple_jump = scr_initialize_custom_character_sprite("triple_jump", sprite_triple_jump, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
+sprite_triple_jump = scr_initialize_custom_character_sprite("triplejump", sprite_triple_jump, sprite_triple_jump_xorig, sprite_triple_jump_yorig);
 sprite_vine_climb = scr_initialize_custom_character_sprite("vine_climb", sprite_vine_climb, sprite_vine_climb_xorig, sprite_vine_climb_yorig);
 sprite_vine_stay = scr_initialize_custom_character_sprite("vine_stay", sprite_vine_stay, sprite_vine_stay_xorig, sprite_vine_stay_yorig);
-
-#region /*Cutscene Specific Sprites*/
-sprite_sitting_down_to_eat = scr_initialize_custom_character_sprite("sitting_down_to_eat", sprite_sitting_down_to_eat, sprite_sitting_down_to_eat_xorig, sprite_sitting_down_to_eat_yorig);
-sprite_sitting_eat_closed_mouth = scr_initialize_custom_character_sprite("sitting_eat_closed_mouth", sprite_sitting_eat_closed_mouth, sprite_sitting_eat_closed_mouth_xorig, sprite_sitting_eat_closed_mouth_yorig);
-sprite_sitting_eat_open_mouth = scr_initialize_custom_character_sprite("sitting_eat_open_mouth", sprite_sitting_eat_open_mouth, sprite_sitting_eat_open_mouth_xorig, sprite_sitting_eat_open_mouth_yorig);
-sprite_sitting_eat_open_mouth_open_eye = scr_initialize_custom_character_sprite("sitting_eat_open_mouth_open_eye", sprite_sitting_eat_open_mouth_open_eye, sprite_sitting_eat_open_mouth_open_eye_xorig, sprite_sitting_eat_open_mouth_open_eye_yorig);
-sprite_sitting_eat_surprised = scr_initialize_custom_character_sprite("sitting_eat_surprised", sprite_sitting_eat_surprised, sprite_sitting_eat_surprised_xorig, sprite_sitting_eat_surprised_yorig);
-sprite_sitting_eating = scr_initialize_custom_character_sprite("sitting_eating", sprite_sitting_eating, sprite_sitting_eating_xorig, sprite_sitting_eating_yorig);
-#region /*Cutscene Specific Sprites*/
-
+sprite_walk = scr_initialize_custom_character_sprite("walk", sprite_walk, sprite_walk_xorig, sprite_walk_yorig);
+sprite_walking_with_item_in_front = scr_initialize_custom_character_sprite("walking_with_item_in_front", sprite_walking_with_item_in_front, sprite_walking_with_item_in_front_xorig, sprite_walking_with_item_in_front_yorig);
+sprite_wall_slide = scr_initialize_custom_character_sprite("wall_slide", sprite_wall_slide, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
+sprite_wall_slide = scr_initialize_custom_character_sprite("wallslide", sprite_wall_slide, sprite_wall_slide_xorig, sprite_wall_slide_yorig);
+sprite_wall_slide_down = scr_initialize_custom_character_sprite("wall_slide_down", sprite_wall_slide_down, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
+sprite_wall_slide_down = scr_initialize_custom_character_sprite("wallslide_down", sprite_wall_slide_down, sprite_wall_slide_down_xorig, sprite_wall_slide_down_yorig);
+sprite_wall_slide_up = scr_initialize_custom_character_sprite("wall_slide_up", sprite_wall_slide_up, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
+sprite_wall_slide_up = scr_initialize_custom_character_sprite("wallslide_up", sprite_wall_slide_up, sprite_wall_slide_up_xorig, sprite_wall_slide_up_yorig);
 #endregion /*Sprite variables END*/
 
 #region /*Sound variables*/

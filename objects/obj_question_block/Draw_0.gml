@@ -21,10 +21,10 @@ if (bounceup = false)
 	and (position_meeting(bbox_right + 10, y, obj_enemy_bowlingball))
 	and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
-	or (instance_exists(obj_enemy_bowlingball))
-	and (place_meeting(x, bbox_bottom + 8, obj_enemy_bowlingball))
-	and (instance_nearest(x, y, obj_enemy_bowlingball).vspeed < 0)
-	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
+	or (instance_exists(obj_enemy))
+	and (place_meeting(x, bbox_bottom + 8, obj_enemy))
+	and (instance_nearest(x, y, obj_enemy).vspeed < 0)
+	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
 	{
 		if (instance_exists(obj_enemy_bowlingball))
 		and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <= 1)
@@ -42,11 +42,11 @@ if (bounceup = false)
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = -1;
 		}
 		else
-		if (instance_exists(obj_enemy_bowlingball))
-		and (instance_nearest(x, y, obj_enemy_bowlingball).vspeed < 0)
-		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
+		if (instance_exists(obj_enemy))
+		and (instance_nearest(x, y, obj_enemy).vspeed < 0)
+		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
 		{
-			instance_nearest(x, y, obj_enemy_bowlingball).vspeed = 0;
+			instance_nearest(x, y, obj_enemy).vspeed = 0;
 		}
 		if (empty = false)
 		{
@@ -395,7 +395,7 @@ if (bounceup = true)
 	}
 }
 draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
-if (hit>= 4)
+if (hit >= 4)
 {
 	draw_sprite_ext(spr_cracks, image_index, xx, yy, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
 }

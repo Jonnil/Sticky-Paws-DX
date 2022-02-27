@@ -2,7 +2,10 @@ sprite_index = global.resourcepack_sprite_hp_pickup;
 
 #region /*Set the gravity*/
 gravity_direction = 270; /*Direction of the gravity*/
-if (!place_meeting(x, y + 1, obj_wall))
+if (asset_get_type("obj_wall") == asset_object)
+and (!place_meeting(x, y + 1, obj_wall))
+and (asset_get_type("obj_semisolid_platform") == asset_object)
+and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	gravity = 0.5; /*The gravity*/
 }

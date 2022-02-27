@@ -107,8 +107,19 @@ if (position_meeting(x, y, obj_wall))
 and (die = false)
 and (draw_xscale >= 0.8)
 {
-	flat = false;
-	die = true;
-	die_volting = true;
+	stuck_in_wall_counter += 1;
+	if (stuck_in_wall_counter >= 3)
+	{
+		flat = false;
+		die = true;
+		die_volting = true;
+	}
+}
+else
+{
+	if (stuck_in_wall_counter > 0)
+	{
+		stuck_in_wall_counter -= 1;
+	}
 }
 #endregion /*Kill enemy if it's inside the wall END*/

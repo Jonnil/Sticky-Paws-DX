@@ -22,13 +22,13 @@ if (die = false)
 		global.enemy_counter += 1;
 		if (other.x < x)
 		{
-			die_volting = - 1;
 			vspeed = - 8;
+			die_volting = - 1;
 		}
 		else
 		{
-			die_volting = +1;
 			vspeed = - 8;
+			die_volting = +1;
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 

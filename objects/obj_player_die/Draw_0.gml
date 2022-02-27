@@ -181,7 +181,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 }
 
 if (!instance_exists(obj_player))
-and (count>49)
+and (count >49)
 and (last_player = true)
 {
 	if (iris_zoom = 0)

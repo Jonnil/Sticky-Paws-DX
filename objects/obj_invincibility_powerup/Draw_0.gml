@@ -1,6 +1,7 @@
 if (coil_spring = true)
 {
-	if (place_meeting(x, y + 1, obj_wall))
+	if (asset_get_type("obj_wall") == asset_object)
+	and (place_meeting(x, y + 1, obj_wall))
 	or(asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	or(asset_get_type("obj_semisolid_platform") == asset_object)

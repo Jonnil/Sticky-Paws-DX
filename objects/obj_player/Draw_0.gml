@@ -58,6 +58,23 @@ else
 }
 #endregion /*Heart above head END*/
 
+if (hold_item_in_hands = "enemy_bowlingball")
+and (image_xscale < 0)
+{
+	angle = 0;
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball, 0, xx - 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, 0, xx - 32, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
+	draw_sprite_ext(global.resourcepack_sprite_enemy_bowlingball_stomped, 0, xx - 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+}
+if (hold_item_in_hands = "enemy_bowlingball")
+and (image_xscale > 0)
+{
+	angle = 0;
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball, 0, xx + 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, 0, xx + 32, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
+	draw_sprite_ext(global.resourcepack_sprite_enemy_bowlingball_stomped, 0, xx + 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+}
+
 #region /*Draw arrow when player is outside top view*/
 if (y < camera_get_view_y(view_camera[view_current]))
 {
@@ -282,6 +299,7 @@ if (effect_turnaround_subimg < 10)
 
 #region /*Running Sparks Effect*/
 if (effect_speedspark_subimg < 4)
+and (hold_item_in_hands = "")
 {
 	if (place_meeting(x, y + 1, obj_wall))
 	or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -290,7 +308,7 @@ if (effect_speedspark_subimg < 4)
 		and (horizontal_rope_climb = false)
 		and (asset_get_type("spr_speedspark") == asset_sprite)
 		{
-			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, angle, c_white, 1);
+			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 1);
 		}
 	}
 	effect_speedspark_subimg += 1;
@@ -317,23 +335,6 @@ if (assist_invincible = false)
 			draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha);
 		}
 	}
-}
-
-if (hold_item_in_hands = "enemy_bowlingball")
-and (image_xscale < 0)
-{
-	angle = 0;
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball, 0, xx - 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, 0, xx - 32, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_enemy_bowlingball_stomped, 0, xx - 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
-}
-if (hold_item_in_hands = "enemy_bowlingball")
-and (image_xscale > 0)
-{
-	angle = 0;
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball, 0, xx + 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, 0, xx + 32, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_enemy_bowlingball_stomped, 0, xx + 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
 }
 
 if (invincible >= true)

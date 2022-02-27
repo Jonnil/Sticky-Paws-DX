@@ -6,6 +6,11 @@ and (global.assist_enable_enemies = false)
 }
 #endregion /*If enemies are disabled, destroy this object END*/
 
+if (stomped_delay > 0)
+{
+	stomped_delay -= 1;
+}
+
 if (die_volting = -1)
 or(die_volting = +1)
 {
@@ -37,10 +42,8 @@ else
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	and (x > camera_get_view_x(view_camera[view_current]))
-	and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-	and (y > camera_get_view_y(view_camera[view_current]))
+	and (x - 32 < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	and (x + 32 > camera_get_view_x(view_camera[view_current]))
 	{
 		gravity = 0.5; /*The gravity*/
 	}
@@ -64,25 +67,19 @@ else
 			if (global.resourcepack_sprite_enemy_bowlingball_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_stomped;}else
 			if (global.resourcepack_sprite_enemy_bowlingball_blind_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_stomped;}
 		}
-		
-		if (stomped_delay > 0)
-		{
-			stomped_delay -= 1;
-		}
-		
 		if (stomped_delay = 0)
 		{
 			if (instance_exists(obj_player))
 			and (sliding_along_ground = 0)
-			and (instance_nearest(x, y, obj_player).hold_item_in_hands = 0)
+			and (instance_nearest(x, y, obj_player).hold_item_in_hands = "")
 			and (instance_nearest(x, y, obj_player).key_dive_hold)
 			and (instance_nearest(x, y, obj_player).horizontal_rope_climb = false)
+			and (instance_nearest(x, y, obj_player).ground_pound = false)
 			{
-				if (place_meeting(x - 4, y, obj_player))
-				or (place_meeting(x + 4, y, obj_player))
-				or (place_meeting(x, y + 4, obj_player))
+				if (distance_to_object(instance_nearest(x, y, obj_player)) < 16)
 				{
 					instance_nearest(x, y, obj_player).hold_item_in_hands = "enemy_bowlingball";
+					instance_nearest(x, y, obj_player).hold_item_number_of_times_stomped = number_of_times_stomped;
 					instance_nearest(x, y, obj_player).dive = false;
 					instance_destroy();
 				}
@@ -535,20 +532,21 @@ and (die = false)
 }
 
 #region /*Don't move outside view*/
-if (bbox_right < camera_get_view_x(view_camera[view_current]))
-and (instance_number(obj_player)>= 2)
-and (intro_animation = "")
+if (x - 42 > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+or (x + 42 < camera_get_view_x(view_camera[view_current]))
 {
 	hspeed = 0;
 	vspeed = 0;
 	speed = 0;
-	
+	gravity = 0;
 }
-if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-and (instance_number(obj_player)>= 2)
-and (intro_animation = "")
+if (y + 16 < camera_get_view_y(view_camera[view_current]))
+and (!place_meeting(x, y + 1, obj_wall))
+and (!place_meeting(x, y + 1, obj_semisolid_platform))
+and (flat = true)
+and (vspeed < 0)
 {
-	x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+	vspeed = +1;
 }
 #endregion /*Don't move outside view END*/
 
@@ -558,7 +556,7 @@ and (die = false)
 and (draw_xscale >= 0.8)
 {
 	stuck_in_wall_counter += 1;
-	if (stuck_in_wall_counter >= 10)
+	if (stuck_in_wall_counter >= 3)
 	{
 		flat = false;
 		die = true;

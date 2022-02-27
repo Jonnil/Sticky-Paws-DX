@@ -118,7 +118,7 @@ function draw_menu_checkmark()
 	
 	#region /*Bottom Text*/
 	if (menu=menu_index)
-	and (bottom_text> noone)
+	and (bottom_text > noone)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);

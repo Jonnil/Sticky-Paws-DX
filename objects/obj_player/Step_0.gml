@@ -5999,21 +5999,21 @@ and (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (wall_jump_setting >= 1)
-and (hold_item_in_hands = 0)
+and (hold_item_in_hands = "")
 or(allow_wall_jump = false)
 and (can_wall_jump = true)
 and (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (place_meeting(x, y, obj_wall_jump_panel))
-and (hold_item_in_hands = 0)
+and (hold_item_in_hands = "")
 or(allow_wall_climb = false)
 and (can_wall_jump = true)
 and (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (place_meeting(x, y, obj_wall_climb_panel))
-and (hold_item_in_hands = 0)
+and (hold_item_in_hands = "")
 {
 	if (asset_get_type("obj_wall") == asset_object)
 	and (!place_meeting(x, y + 1, obj_wall))
@@ -6781,7 +6781,7 @@ and (player <= 4)
 #region /*Dive*/
 if (allow_dive = true)
 and (can_move = true)
-and (hold_item_in_hands = 0)
+and (hold_item_in_hands = "")
 and (global.pause = false)
 {
 	if (can_dive = true)
@@ -6984,171 +6984,7 @@ and (global.pause = false)
 }
 #endregion /*Dive END*/
 
-#region /*Throw items in hands*/
-if (hold_item_in_hands != 0)
-{
-	if (key_dive_pressed)
-	{
-		if (key_up)
-		{
-			if (image_xscale < 0)
-			{
-				if (hold_item_in_hands = "enemy_bowlingball")
-				{
-					if (!position_meeting(bbox_left - 32, y, obj_wall))
-					{
-						with(instance_create_depth(bbox_left - 16, bbox_top, 0, obj_enemy_bowlingball))
-						{
-							flat = true;
-							sliding_along_ground = 0;
-							stomped_delay = 20;
-							vspeed = -20;
-							image_xscale = -1;
-						}
-					}
-					else
-					{
-						with(instance_create_depth(x, bbox_top, 0, obj_enemy_bowlingball))
-						{
-							flat = true;
-							sliding_along_ground = 0;
-							stomped_delay = 20;
-							vspeed = -20;
-							image_xscale = -1;
-						}
-					}
-				}
-			}
-			else
-			if (image_xscale > 0)
-			{
-				if (hold_item_in_hands = "enemy_bowlingball")
-				{
-					if (!position_meeting(bbox_right + 32, y, obj_wall))
-					{
-						with(instance_create_depth(bbox_right + 16, bbox_top, 0, obj_enemy_bowlingball))
-						{
-							flat = true;
-							sliding_along_ground = 0;
-							stomped_delay = 20;
-							vspeed = -20;
-							image_xscale = +1;
-						}
-					}
-					else
-					{
-						with(instance_create_depth(x, bbox_top, 0, obj_enemy_bowlingball))
-						{
-							flat = true;
-							sliding_along_ground = 0;
-							stomped_delay = 20;
-							vspeed = -20;
-							image_xscale = +1;
-						}
-					}
-				}
-			}
-		}
-		else
-		if (key_down)
-		{
-			if (image_xscale < 0)
-			{
-				if (hold_item_in_hands = "enemy_bowlingball")
-				{
-					if (!position_meeting(bbox_left - 32, y, obj_wall))
-					{
-						with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
-						{
-							flat = true;
-							sliding_along_ground = 0;
-							stomped_delay = 20;
-							hspeed = -1;
-							vspeed = 0;
-							image_xscale = -1;
-						}
-					}
-					else
-					{
-						with(instance_create_depth(x, y, 0, obj_enemy_bowlingball))
-						{
-							flat = true;
-							sliding_along_ground = 0;
-							stomped_delay = 20;
-							hspeed = -1;
-							vspeed = 0;
-							image_xscale = -1;
-						}
-					}
-				}
-			}
-			else
-			if (image_xscale > 0)
-			{
-				if (hold_item_in_hands = "enemy_bowlingball")
-				{
-					if (!position_meeting(bbox_right + 32, y, obj_wall))
-					{
-						with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
-						{
-							flat = true;
-							sliding_along_ground = 0;
-							stomped_delay = 20;
-							hspeed = +1;
-							vspeed = 0;
-							image_xscale = +1;
-						}
-					}
-					else
-					{
-						with(instance_create_depth(x, y, 0, obj_enemy_bowlingball))
-						{
-							flat = true;
-							sliding_along_ground = 0;
-							stomped_delay = 20;
-							hspeed = +1;
-							vspeed = 0;
-							image_xscale = +1;
-						}
-					}
-				}
-			}
-		}
-		else
-		if (key_left)
-		or (image_xscale < 0)
-		{
-			if (hold_item_in_hands = "enemy_bowlingball")
-			{
-				with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
-				{
-					flat = true;
-					sliding_along_ground = -1;
-					stomped_delay = 20;
-					image_xscale = -1;
-				}
-			}
-		}
-		else
-		if (key_right)
-		or (image_xscale > 0)
-		{
-			if (hold_item_in_hands = "enemy_bowlingball")
-			{
-				with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
-				{
-					flat = true;
-					sliding_along_ground = +1;
-					stomped_delay = 20;
-					image_xscale = +1;
-				}
-			}
-		}
-		hold_item_in_hands = 0;
-		dive = false;
-	}
-}
-#endregion /*Throw items in hands END*/
+scr_throw_items_in_hands();
 
 #region /*Can Attack After Dive On Ground*/
 if (can_attack_after_dive_on_ground > 0)
@@ -7951,7 +7787,7 @@ if (die = true)
 	and (global.actually_play_edited_level = true)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
-		ini_open(working_directory + "/custom_level_save.ini");
+		ini_open(working_directory + "/save_files/custom_level_save.ini");
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", global.timeattack_millisecond);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", global.timeattack_second);
 		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", global.timeattack_minute);
@@ -8724,7 +8560,7 @@ and (place_meeting(x, y, obj_horizontal_rope))
 and (instance_nearest(x, y, obj_horizontal_rope).active = true)
 and (!place_meeting(x, y + 1, obj_wall))
 and (in_water = false)
-and (hold_item_in_hands = 0)
+and (hold_item_in_hands = "")
 {
 	if (horizontal_rope_climb = false)
 	and (can_climb_horizontal_rope_cooldown <= 0)
@@ -9698,6 +9534,14 @@ or(hspeed >- 0.1)
 	and (goal = false)
 	or(goal = true)
 	{
+		if (hold_item_in_hands != "")
+		{
+			if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
+			if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+			if (sprite_walk > noone){sprite_index = sprite_walk;}else
+			{sprite_index = sprite_stand;}
+		}
+		else
 		if (speeddash = true)
 		{
 			if (sprite_swim > noone){sprite_index = sprite_swim;}else
@@ -10238,6 +10082,14 @@ and (key_left)
 		if (asset_get_type("obj_ice_block") == asset_object)
 		and (place_meeting(x, y + 1, obj_ice_block))
 		{
+			if (hold_item_in_hands != "")
+			{
+				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
+				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk;}else
+				{sprite_index = sprite_stand;}
+			}
+			else
 			if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice; image_speed = 0.5;}else
 			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
 			if (sprite_run > noone){sprite_index = sprite_run;}else
@@ -10246,6 +10098,14 @@ and (key_left)
 		}
 		else
 		{
+			if (hold_item_in_hands != "")
+			{
+				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
+				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk;}else
+				{sprite_index = sprite_stand;}
+			}
+			else
 			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
 			if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4;}else
 			if (abs(hspeed)> 15) and (sprite_run3> noone){sprite_index = sprite_run3;}else
@@ -10268,6 +10128,14 @@ and (!key_left)
 or(hspeed > 0)
 and (!key_right)
 {
+	if (hold_item_in_hands != "")
+	{
+		if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
+		if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+		if (sprite_walk > noone){sprite_index = sprite_walk;}else
+		{sprite_index = sprite_stand;}
+	}
+	else
 	if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop; image_speed = 0.5;}else
 	if (abs(hspeed)>20) and (sprite_run4> noone){sprite_index = sprite_run4; image_speed = speed/10 + 0.1;}else
 	if (abs(hspeed)> 15) and (sprite_run3> noone){sprite_index = sprite_run3; image_speed = speed/10 + 0.1;}else
@@ -10321,6 +10189,14 @@ else
 #region /*Run*/
 if (abs(hspeed) > 0)
 {
+	if (hold_item_in_hands != "")
+	{
+		if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
+		if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+		if (sprite_walk > noone){sprite_index = sprite_walk;}else
+		{sprite_index = sprite_stand;}
+	}
+	else
 	if (abs(hspeed) >= 20)
 	{
 		if (sprite_run4> noone){sprite_index = sprite_run4;}else
@@ -11244,5 +11120,24 @@ or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	can_dive = true;
 }
+
+#region /*Sprite standing with item in front*/
+if (hold_item_in_hands != "")
+and (speed > 0)
+and (crouch = false)
+{
+	if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
+	if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+	if (sprite_walk > noone){sprite_index = sprite_walk;}else
+	{sprite_index = sprite_stand;}
+}
+else
+if (hold_item_in_hands != "")
+and (crouch = false)
+{
+	if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+	{sprite_index = sprite_stand;}
+}
+#endregion /*Sprite standing with item in front END*/
 
 #endregion /*________________________________Handling the sprites and sounds in the step event________________________________END*/

@@ -77,6 +77,7 @@ and (fall = false)
 if (fall = true)
 {
 	if (!position_meeting(x, bbox_bottom + 1, obj_wall))
+	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (x > camera_get_view_x(view_camera[view_current]))
 	and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{

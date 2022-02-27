@@ -1,4 +1,4 @@
-depth = 10;
+depth = 11;
 if (asset_get_type("spr_bucket") == asset_sprite)
 {
 	sprite_index = spr_bucket;

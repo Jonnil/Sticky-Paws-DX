@@ -137,7 +137,7 @@ if (asset_get_type("room_leveleditor") == asset_room)
 and (room = room_leveleditor)
 and (global.character_select_in_this_menu = "level_editor")
 {
-	ini_open(working_directory + "/custom_level_save.ini");
+	ini_open(working_directory + "/save_files/custom_level_save.ini");
 	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint", global.x_checkpoint);
 	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "y_checkpoint", global.y_checkpoint);
 	ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", global.timeattack_millisecond);

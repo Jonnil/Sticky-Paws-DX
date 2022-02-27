@@ -36,13 +36,13 @@ or(other.can_attack_after_dive_on_ground > 0)
 		}
 		if (other.x < x)
 		{
-			die_volting = - 1;
 			vspeed = - 8;
+			die_volting = - 1;
 		}
 		else
 		{
-			die_volting = +1;
 			vspeed = - 8;
+			die_volting = +1;
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 
@@ -2013,13 +2013,13 @@ speed = 0;
 image_index = 0;
 if (other.x < x)
 {
-	die_volting = - 1;
 	vspeed = - 8;
+	die_volting = - 1;
 }
 else
 {
-	die_volting = +1;
 	vspeed = - 8;
+	die_volting = +1;
 }
 }
 }

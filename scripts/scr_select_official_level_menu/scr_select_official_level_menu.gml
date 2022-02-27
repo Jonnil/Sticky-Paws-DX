@@ -372,7 +372,7 @@ function scr_select_official_level_menu()
 	
 	#region /*Name Enter Blinking*/
 	name_enter_blink+= 0.05;
-	if (name_enter_blink> 1.5)
+	if (name_enter_blink > 1.5)
 	{
 		name_enter_blink= 0;
 	}

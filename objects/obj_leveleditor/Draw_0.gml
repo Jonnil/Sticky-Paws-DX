@@ -589,10 +589,10 @@ else
 {
 	selected_menu_alpha = lerp(selected_menu_alpha, 0, 0.01);
 }
-if (quit_level_editor = 0)
+if (quit_level_editor <= 0)
 {
 	draw_set_alpha(selected_menu_alpha);
-	draw_rectangle_color(0, 0, room_width, camera_get_view_y(view_camera[view_current]) + 128, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + 128, c_black, c_black, c_black, c_black, false);
 	if (asset_get_type("spr_wall") == asset_sprite){draw_sprite_ext(spr_wall, 0,											camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_wall_dirt") == asset_sprite){draw_sprite_ext(spr_wall_dirt, 0,									camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);}
 	if (asset_get_type("spr_wall_glass") == asset_sprite){draw_sprite_ext(spr_wall_glass, 0,								camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 2, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white,selected_menu_alpha);}
@@ -672,7 +672,7 @@ if (quit_level_editor = 0)
 #endregion /*Select Object Menu END*/
 
 #region /*Position the Cursor*/
-if (quit_level_editor = 0)
+if (quit_level_editor <= 0)
 {
 
 #region /*Controller Input Changes*/
@@ -1138,7 +1138,7 @@ if (mouse_check_button_released(mb_right))
 }
 #endregion /*Change modes END*/
 
-if (quit_level_editor = 0)
+if (quit_level_editor <= 0)
 {
 	
 	#region /*When pressing left click, increase current undo value*/
@@ -1467,7 +1467,7 @@ if (quit_level_editor = 0)
 					and (global.character_select_in_this_menu = "level_editor")
 					and (global.create_level_from_template = false)
 					{
-						ini_open(working_directory + "/custom_level_save.ini");
+						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint");
 						ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint");
 						ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond");
@@ -1527,7 +1527,7 @@ and (pause = false)
 			audio_play_sound(snd_leveleditor_cycle_item_left, 0, 0);
 			audio_sound_gain(snd_leveleditor_cycle_item_left, global.sfx_volume, 0);
 		}
-		if (selected_object> 0)
+		if (selected_object > 0)
 		{
 			selected_object -= 1;
 			selected_object_menu_x += 64;
@@ -1631,6 +1631,3 @@ or(os_type == os_android)
 	#endregion /*Pause virtual key END*/
 	
 }
-
-//draw_text_transformed_color(weighted_x, weighted_y, "TEST", global.default_text_size, global.default_text_size, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1);
-//draw_text_transformed_color(x + 64, y+64,string(weighted_x) + ", " + string(weighted_y) + ", " + string(total_objects), global.default_text_size, global.default_text_size, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1);

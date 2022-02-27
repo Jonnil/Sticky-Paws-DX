@@ -3,17 +3,18 @@ if (die = false)
 {
 	if (die_volting = false)
 	{
-		die = true;
 		global.enemy_counter += 1;
 		if (other.x < x)
 		{
-			die_volting = - 1;
 			vspeed = - 8;
+			die_volting = -1;
+			die = true;
 		}
 		else
 		{
-			die_volting = +1;
 			vspeed = - 8;
+			die_volting = +1;
+			die = true;
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 

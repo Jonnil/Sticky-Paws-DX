@@ -602,7 +602,7 @@ and (delay = 3)
 		and (room =room_leveleditor)
 		and (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_open(working_directory + "/custom_level_save.ini");
+			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond");

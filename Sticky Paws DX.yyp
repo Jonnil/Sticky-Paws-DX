@@ -359,6 +359,7 @@
     {"id":{"name":"spr_boss_vulnerable","path":"sprites/spr_boss_vulnerable/spr_boss_vulnerable.yy",},"order":14,},
     {"id":{"name":"obj_water_splash","path":"objects/obj_water_splash/obj_water_splash.yy",},"order":26,},
     {"id":{"name":"spr_settings_icons","path":"sprites/spr_settings_icons/spr_settings_icons.yy",},"order":12,},
+    {"id":{"name":"scr_throw_items_in_hands","path":"scripts/scr_throw_items_in_hands/scr_throw_items_in_hands.yy",},"order":32,},
     {"id":{"name":"obj_basic_collectible","path":"objects/obj_basic_collectible/obj_basic_collectible.yy",},"order":3,},
     {"id":{"name":"Wave","path":"scripts/Wave/Wave.yy",},"order":17,},
     {"id":{"name":"snd_footstep_metal_right","path":"sounds/snd_footstep_metal_right/snd_footstep_metal_right.yy",},"order":49,},
@@ -2430,6 +2431,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"enemy_bowlingball_blind_walk.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"enemy_bowlingball_blind_revive_strip2.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"basic_enemy_blind.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sprites/skin0","resourceVersion":"1.0","name":"walking_with_item_in_front_strip18.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sprites/skin0","resourceVersion":"1.0","name":"standing_with_item_in_front.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.1.1.610",
