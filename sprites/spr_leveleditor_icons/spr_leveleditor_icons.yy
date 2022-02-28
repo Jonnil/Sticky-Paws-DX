@@ -155,7 +155,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_leveleditor_icons","path":"sprites/spr_leveleditor_icons/spr_leveleditor_icons.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_leveleditor_icons",
     "tags": [],
     "resourceType": "GMSequence",

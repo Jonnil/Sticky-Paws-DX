@@ -5151,22 +5151,19 @@ and (key_jump_hold)
 			
 			#region /*Jump sound sfx*/
 			if (jump = 3)
+			and (hold_item_in_hands = "")
+			and (asset_get_type("snd_3rdjump") == asset_sound)
 			{
-				if (asset_get_type("snd_3rdjump") == asset_sound)
-				{
-					audio_play_sound(snd_3rdjump, 0, 0);
-					audio_sound_gain(snd_3rdjump, global.sfx_volume, 0);
-				}
+				audio_play_sound(snd_3rdjump, 0, 0);
+				audio_sound_gain(snd_3rdjump, global.sfx_volume, 0);
 			}
 			else
+			if (asset_get_type("snd_jump") == asset_sound)
 			{
-				if (asset_get_type("snd_jump") == asset_sound)
-				{
-					audio_play_sound(snd_jump, 0, 0);
-					audio_sound_gain(snd_jump, global.sfx_volume, 0);
-				}
+				audio_play_sound(snd_jump, 0, 0);
+				audio_sound_gain(snd_jump, global.sfx_volume, 0);
 			}
-			if (jump < 2)
+			if (jump <= 1)
 			//if (random(global.verbosity_slider* 100) >= 100)
 			{
 				audio_stop_sound(voice);
@@ -5182,7 +5179,7 @@ and (key_jump_hold)
 				audio_sound_gain(voice_jump2nd, global.voices_volume, 0);
 				audio_sound_pitch(voice_jump2nd, default_voice_pitch);
 			}
-			if (jump = 3)
+			if (jump >= 3)
 			//if (random(global.verbosity_slider* 100) >= 100)
 			{
 				audio_stop_sound(voice);
@@ -6183,7 +6180,7 @@ and (hold_item_in_hands = "")
 		}
 		
 		#region /*Wall Climb*/
-		if (allow_wall_climb= true)
+		if (allow_wall_climb = true)
 		or(place_meeting(x, y, obj_wall_climb_panel))
 		{
 			dive = false;
@@ -8976,17 +8973,19 @@ and (hold_item_in_hands = "")
 
 else
 
-#region /*Climb Vine*/
+#region /*Climb Vine / Ladder*/
 if (asset_get_type("obj_vine") == asset_object)
 and (place_meeting(x, y, obj_vine))
 {
 	if (key_up)
 	and (vspeed >= 0)
+	and (hold_item_in_hands = "")
 	or(key_up_pressed)
+	and (hold_item_in_hands = "")
 	{
 		if (climb = false)
 		{
-			climb= true;
+			climb = true;
 			horizontal_rope_climb = false;
 			jump = 0;
 			stick_to_wall = false;
@@ -9005,7 +9004,7 @@ and (place_meeting(x, y, obj_vine))
 			
 		}
 	}
-	if (climb= true)
+	if (climb = true)
 	{
 		gravity = 0;
 		hspeed = 0;
@@ -9251,7 +9250,7 @@ and (place_meeting(x, y, obj_vine))
 		}
 	}
 }
-#endregion /*Climb Vine END*/
+#endregion /*Climb Vine / Ladder END*/
 
 #region /*In Water Animations*/
 if (in_water = true)

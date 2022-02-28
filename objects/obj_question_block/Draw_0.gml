@@ -32,6 +32,11 @@ if (bounceup = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = +1;
+			if (asset_get_type("snd_bump") == asset_sound)
+			{
+				audio_play_sound(snd_bump, 0, 0);
+				audio_sound_gain(snd_bump, global.sfx_volume * 0.1, 0);
+			}
 		}
 		else
 		if (instance_exists(obj_enemy_bowlingball))
@@ -40,6 +45,11 @@ if (bounceup = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = -1;
+			if (asset_get_type("snd_bump") == asset_sound)
+			{
+				audio_play_sound(snd_bump, 0, 0);
+				audio_sound_gain(snd_bump, global.sfx_volume * 0.1, 0);
+			}
 		}
 		else
 		if (instance_exists(obj_enemy))
@@ -78,19 +88,32 @@ if (bounceup = false)
 				}
 				else
 				{
-					with(instance_nearest(x, y, obj_player))
+					if (place_meeting(x, y - 4, obj_player))
+					and (!place_meeting(x, y - 1, obj_wall))
+					and (obj_player.ground_pound = true)
+					or(place_meeting(x, y + 1, obj_player))
+					and (!place_meeting(x, y + 1, obj_wall))
+					or(place_meeting(bbox_left -4, y, obj_player))
+					and (!place_meeting(x - 4, y, obj_wall))
+					and (obj_player.dive = true)
+					or(place_meeting(bbox_right + 4, y, obj_player))
+					and (!place_meeting(x + 4, y, obj_wall))
+					and (obj_player.dive = true)
 					{
-						if (key_crouch)
-						and (ground_pound = true)
+						with(instance_nearest(x, y, obj_player))
 						{
-							ground_pound = true;
+							if (key_crouch)
+							and (ground_pound = true)
+							{
+								ground_pound = true;
+							}
+							else
+							{
+								ground_pound = false;
+							}
+							dive = false;
+							vspeed = +4;
 						}
-						else
-						{
-							ground_pound = false;
-						}
-						dive = false;
-						vspeed = +4;
 					}
 					if (asset_get_type("obj_blockbreak") == asset_object)
 					{

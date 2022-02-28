@@ -35,3 +35,5 @@ draw_yscale = 1;
 die = false;
 stomped_delay = 0;
 stuck_in_wall_counter = 0;
+sliding_along_ground = 0;
+sliding_along_ground_speed = 8;

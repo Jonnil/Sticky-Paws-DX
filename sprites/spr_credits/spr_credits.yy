@@ -95,7 +95,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_credits","path":"sprites/spr_credits/spr_credits.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_credits",
     "tags": [],
     "resourceType": "GMSequence",

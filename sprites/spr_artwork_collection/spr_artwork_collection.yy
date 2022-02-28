@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_artwork_collection","path":"sprites/spr_artwork_collection/spr_artwork_collection.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_artwork_collection",
     "tags": [],
     "resourceType": "GMSequence",

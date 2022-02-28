@@ -87,7 +87,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_cake","path":"sprites/spr_cake/spr_cake.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_cake",
     "tags": [],
     "resourceType": "GMSequence",

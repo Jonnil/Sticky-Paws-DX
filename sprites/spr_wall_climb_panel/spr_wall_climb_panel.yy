@@ -87,7 +87,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_wall_climb_panel","path":"sprites/spr_wall_climb_panel/spr_wall_climb_panel.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_wall_climb_panel",
     "tags": [],
     "resourceType": "GMSequence",

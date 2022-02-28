@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_level_player_3_start","path":"sprites/spr_level_player_3_start/spr_level_player_3_start.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_level_player_3_start",
     "tags": [],
     "resourceType": "GMSequence",

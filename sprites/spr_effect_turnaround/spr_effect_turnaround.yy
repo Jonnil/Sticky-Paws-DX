@@ -99,7 +99,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_effect_turnaround","path":"sprites/spr_effect_turnaround/spr_effect_turnaround.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_effect_turnaround",
     "tags": [],
     "resourceType": "GMSequence",

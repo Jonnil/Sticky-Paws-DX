@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_thumbnail_missing","path":"sprites/spr_thumbnail_missing/spr_thumbnail_missing.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_thumbnail_missing",
     "tags": [],
     "resourceType": "GMSequence",

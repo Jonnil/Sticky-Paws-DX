@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_change_input_to_controller","path":"sprites/spr_change_input_to_controller/spr_change_input_to_controller.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_change_input_to_controller",
     "tags": [],
     "resourceType": "GMSequence",

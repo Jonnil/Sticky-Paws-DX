@@ -71,7 +71,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_speedspark","path":"sprites/spr_speedspark/spr_speedspark.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_speedspark",
     "tags": [],
     "resourceType": "GMSequence",

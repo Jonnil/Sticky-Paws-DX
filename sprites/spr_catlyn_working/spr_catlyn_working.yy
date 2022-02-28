@@ -87,7 +87,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_catlyn_working","path":"sprites/spr_catlyn_working/spr_catlyn_working.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_catlyn_working",
     "tags": [],
     "resourceType": "GMSequence",

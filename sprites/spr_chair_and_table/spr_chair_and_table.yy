@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_chair_and_table","path":"sprites/spr_chair_and_table/spr_chair_and_table.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_chair_and_table",
     "tags": [],
     "resourceType": "GMSequence",
