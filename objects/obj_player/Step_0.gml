@@ -7091,7 +7091,7 @@ if (allow_ledge_grab= true)
 			hspeed_dir = sign(hspeed);
 		}
 		if (ground_pound< 1)
-		and (burnt< 1)
+		and (burnt < 1)
 		{
 			if (!position_meeting(x + 37*hspeed_dir,bbox_top - 16, obj_wall))
 			and (position_meeting(x + 37*hspeed_dir,bbox_top +8, obj_wall))
@@ -7617,7 +7617,7 @@ and (power_meter_running_sound = true)
 else
 {
 	speedunit -= 1;
-	if (speedunit< 0)
+	if (speedunit < 0)
 	{
 		speedunit = 0;
 	}
@@ -7681,13 +7681,13 @@ if (hp > max_hp)
 	if (allow_overflow_hp = true)
 	{
 		overflow_hp += 1;
-		if (overflow_hp >=max_overflow_hp)
+		if (overflow_hp >= max_overflow_hp)
 		{
 			max_hp += 1;
 			overflow_hp = 0;
 		}
 	}
-	hp =max_hp;
+	hp = max_hp;
 }
 #endregion /*Don't gain more HP than your max HP END*/
 
@@ -10083,10 +10083,10 @@ and (key_left)
 		{
 			if (hold_item_in_hands != "")
 			{
-				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
-				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}else
-				{sprite_index = sprite_stand;}
+				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed/10 + 0.1;}else
+				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed/10 + 0.1;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed/10 + 0.1;}else
+				{sprite_index = sprite_stand; image_speed = 0.5;}
 			}
 			else
 			if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice; image_speed = 0.5;}else
@@ -10099,10 +10099,10 @@ and (key_left)
 		{
 			if (hold_item_in_hands != "")
 			{
-				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
-				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}else
-				{sprite_index = sprite_stand;}
+				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed/10 + 0.1;}else
+				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed/10 + 0.1;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed/10 + 0.1;}else
+				{sprite_index = sprite_stand; image_speed = 0.5;}
 			}
 			else
 			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
@@ -10129,10 +10129,10 @@ and (!key_right)
 {
 	if (hold_item_in_hands != "")
 	{
-		if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
-		if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
-		if (sprite_walk > noone){sprite_index = sprite_walk;}else
-		{sprite_index = sprite_stand;}
+		if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed/10 + 0.1;}else
+		if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed/10 + 0.1;}else
+		if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed/10 + 0.1;}else
+		{sprite_index = sprite_stand; image_speed = 0.5;}
 	}
 	else
 	if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop; image_speed = 0.5;}else
@@ -11124,6 +11124,8 @@ or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 if (hold_item_in_hands != "")
 and (speed > 0)
 and (crouch = false)
+and (sprite_index != sprite_vine_climb)
+and (sprite_index != sprite_vine_stay)
 {
 	if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
 	if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
@@ -11133,6 +11135,8 @@ and (crouch = false)
 else
 if (hold_item_in_hands != "")
 and (crouch = false)
+and (sprite_index != sprite_vine_climb)
+and (sprite_index != sprite_vine_stay)
 {
 	if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
 	{sprite_index = sprite_stand;}

@@ -14,80 +14,65 @@ function draw_menu_button_sprite()
 	#region /*Button*/
 	
 	#region /*Initialize variables*/
-	var spr_index =argument0; /*Sprite index of the button (argument0)*/
-	var x_position =argument1; /*The buttons x origin position (argument1)*/
-	var y_position =argument2; /*The buttons y origin position (argument2)*/
-	var spr_width =argument3; /*The width of the button*/
-	var spr_height =argument4; /*The height of the button*/
+	var spr_index = argument0; /*Sprite index of the button (argument0)*/
+	var x_position = argument1; /*The buttons x origin position (argument1)*/
+	var y_position = argument2; /*The buttons y origin position (argument2)*/
+	var spr_width = argument3; /*The width of the button*/
+	var spr_height = argument4; /*The height of the button*/
 
-	var string_text =argument5; /*(argument3)*/
-	var menu_index =argument6; /*(argument4)*/
-	var menu_takes_you_to=argument7; /*(argument5)*/
+	var string_text = argument5; /*(argument3)*/
+	var menu_index = argument6; /*(argument4)*/
+	var menu_takes_you_to= argument7; /*(argument5)*/
 	var clicked_on = false;
 	#endregion /*Initialize variables END*/
 	
-	if (point_in_rectangle(mouse_x, mouse_y, x_position, y_position+ 1, x_position+ spr_width, y_position+ spr_height))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
 	and (global.controls_used_for_menu_navigation = "mouse")
+	and (menu_delay = 0)
+	or(menu = menu_index)
+	and (global.controls_used_for_menu_navigation = "keyboard")
+	or(menu = menu_index)
+	and (global.controls_used_for_menu_navigation = "controller")
 	{
-		if (menu = menu_index)
-		and (global.controls_used_for_menu_navigation = "keyboard")
-		or(menu = menu_index)
-		and (global.controls_used_for_menu_navigation = "controller")
-		{
-			draw_sprite_ext(spr_index, 0, x_position, y_position, 1, 1, 0, c_green, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_index, 0, x_position, y_position, 1, 1, 0, c_lime, 1);
-		}
+		menu = menu_index;
+		draw_sprite_ext(spr_index, 0, x_position, y_position + 21, 1, 1, 0, c_lime, 1);
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		draw_text_outlined(x_position + (spr_width / 2), y_position + (spr_height / 2), string(string_text), global.default_text_size, c_black, c_white, 1); /*White text inside the menu button*/
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position - 24, y_position + (spr_height / 2), 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + spr_width + 24, y_position + (spr_height / 2), 1, 1, 180, c_white, 1);
 	}
 	else
 	{
-		if (menu = menu_index)
-		and (global.controls_used_for_menu_navigation = "keyboard")
-		or(menu = menu_index)
-		and (global.controls_used_for_menu_navigation = "controller")
-		{
-			draw_sprite_ext(spr_index, 0, x_position, y_position, 1, 1, 0, c_gray, 1);
-		}
-		else
-		{
-			draw_sprite_ext(spr_index, 0, x_position, y_position, 1, 1, 0, c_white, 1);
-		}
+		draw_sprite_ext(spr_index, 0, x_position, y_position + 21, 1, 1, 0, c_white, 1);
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		draw_text_outlined(x_position + (spr_width / 2), y_position + (spr_height / 2), string(string_text), global.default_text_size, c_white, c_black, 1); /*Black text inside the menu button*/
 	}
 
 	#region /*Clicking the menu button*/
-	if (point_in_rectangle(mouse_x, mouse_y, x_position, y_position, x_position+ spr_width, y_position+ spr_height))
+	if (point_in_rectangle(mouse_x, mouse_y, x_position, y_position, x_position + spr_width, y_position + spr_height))
 	{
 		if (menu_takes_you_to= false)
 		or(menu_takes_you_to= noone)
 		or(menu_takes_you_to= "")
-		or(menu_takes_you_to=menu_index)
+		or(menu_takes_you_to= menu_index)
 		{
 			if (mouse_check_button(mb_left))
-			and (menu_index > noone)
 			{
-				menu=menu_index;
+				menu = menu_index;
 			}
 		}
 		else
 		{
 			if (mouse_check_button_released(mb_left))
 			{
-				menu=menu_takes_you_to;
+				menu = menu_takes_you_to;
 			}
 		}
 	}
 	#endregion /*Clicking the menu button END*/
-
-	#region /*Text inside the menu button*/
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	if (string_text > noone)
-	{
-		draw_text_outlined(x_position+ 185, y_position+ 21,string(string_text), global.default_text_size, c_white, c_black, 1);
-	}
-	#endregion /*Text inside the menu button END*/
 	
 	#endregion /*Button END*/
+	
 }

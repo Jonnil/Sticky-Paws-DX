@@ -1550,7 +1550,7 @@ and (delay > 1)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
-				if (drag_object<true)
+				if (drag_object <true)
 				and (obj_leveleditor.pause = false)
 				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
 				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64))

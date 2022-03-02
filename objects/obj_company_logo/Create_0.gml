@@ -1,6 +1,7 @@
 /*Create Event*/
 
 #region /*Things you could change*/
+global.company_name = "Jonnil"; /*String of what the company is called*/
 
 leveleditor_readme = noone; /*Readme textfile for how to use the level editor*/
 
@@ -271,7 +272,7 @@ global.enemy_counter = 0;
 global.file = 1;
 global.controls_layout = 1;
 global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black=- 1, normal = 0 (default), full_white = +1*/
-global.background_brightness_menu= 0; /*Background brightness in menus. full_black=- 1, normal = 0 (default), full_white = +1*/
+global.background_brightness_menu = 0; /*Background brightness in menus. full_black=- 1, normal = 0 (default), full_white = +1*/
 
 #region /*Music and Sound Volume*/
 global.music_volume = 7000; /*Make the volumes set to 7000 by default*/

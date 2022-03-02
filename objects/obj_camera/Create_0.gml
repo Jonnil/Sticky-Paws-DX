@@ -339,10 +339,10 @@ view_hview= 768-32;
 #region /*View Size*/
 if (os_type == os_ios)or(os_type == os_android){
 if (view_wport > 1920){view_wport = 1920;}if (view_wview> 1920 - 64){view_wview= 1920 - 64;}if (view_hport > 1080){view_hport = 1080;}if (view_hview> 1080 - 64){view_hview= 1080 - 64;}
-if (view_wport<640 -320){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport<480){view_hport = 480;}if (view_hview<480){view_hview= 480;}
+if (view_wport <640 -320){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport <480){view_hport = 480;}if (view_hview<480){view_hview= 480;}
 }else{
 if (view_wport > 1920){view_wport = 1920;}if (view_wview> 1920){view_wview= 1920;}if (view_hport > 1080){view_hport = 1080;}if (view_hview> 1080){view_hview= 1080;}
-if (view_wport<640){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport<480){view_hport = 480;}if (view_hview<480){view_hview= 480;}}
+if (view_wport <640){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport <480){view_hport = 480;}if (view_hview<480){view_hview= 480;}}
 #endregion /*View Size END*/
 
 #endregion /*Initialize View END*/

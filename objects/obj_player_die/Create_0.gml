@@ -8,7 +8,7 @@ xx = x;
 yy = y;
 menu = "continue";
 menu_cursor_index = 0;
-game_over_menu_y = 370;
+game_over_menu_y = 64;
 game_over_menu_seperation_distance = 64;
 menu_delay = 0;
 

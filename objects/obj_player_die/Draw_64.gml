@@ -37,8 +37,8 @@ if (lives <= 0)
 	#region /*Continue / Quit from Game Over*/
 	if (game_over_text_y >= window_get_height() / 2 - 190)
 	{
-		draw_menu_button(window_get_width() / 2 - 370 - game_over_menu_seperation_distance, window_get_height() / 2 + game_over_menu_y, "Continue", "continue", "continue");
-		draw_menu_button(window_get_width() / 2 + game_over_menu_seperation_distance, window_get_height() / 2 + game_over_menu_y, "Quit", "quit", "quit");
+		draw_menu_button(window_get_width() / 2 - 370 - game_over_menu_seperation_distance, window_get_height() - game_over_menu_y, "Continue", "continue", "continue");
+		draw_menu_button(window_get_width() / 2 + game_over_menu_seperation_distance, window_get_height() - game_over_menu_y, "Quit", "quit", "quit");
 		
 		if (keyboard_check_pressed(global.player1_key_left))
 		or(keyboard_check_pressed(global.player2_key_left))
@@ -107,18 +107,18 @@ if (lives <= 0)
 		window_mouse_get_x(),
 		window_mouse_get_y(),
 		window_get_width() / 2 - 370 - game_over_menu_seperation_distance,
-		window_get_height() / 2 + game_over_menu_y + 2,
+		window_get_height() - game_over_menu_y + 2,
 		window_get_width() / 2 - 370 + 370 - game_over_menu_seperation_distance,
-		window_get_height() / 2 + game_over_menu_y + 41))
+		window_get_height() - game_over_menu_y + 41))
 		and (mouse_check_button_pressed(mb_left))
 		or(menu = "quit")
 		and (point_in_rectangle(
 		window_mouse_get_x(),
 		window_mouse_get_y(),
 		window_get_width() / 2 + game_over_menu_seperation_distance,
-		window_get_height() / 2 + game_over_menu_y + 2,
+		window_get_height() - game_over_menu_y + 2,
 		window_get_width() / 2 + 370 + game_over_menu_seperation_distance,
-		window_get_height() / 2 + game_over_menu_y + 41))
+		window_get_height() - game_over_menu_y + 41))
 		and (mouse_check_button_pressed(mb_left))
 		{
 			

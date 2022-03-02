@@ -678,8 +678,8 @@ if (quit_level_editor <= 0)
 #region /*Controller Input Changes*/
 if (use_controller = false)
 {
-	x =mouse_x;
-	y =mouse_y;
+	x = mouse_x;
+	y = mouse_y;
 	cursor_x =window_mouse_get_x();
 	cursor_y =window_mouse_get_y();
 	
@@ -1560,7 +1560,7 @@ and (pause = false)
 			audio_play_sound(snd_leveleditor_cycle_item_right, 0, 0);
 			audio_sound_gain(snd_leveleditor_cycle_item_right, global.sfx_volume, 0);
 		}
-		if (selected_object<total_number_of_objects)
+		if (selected_object <total_number_of_objects)
 		{
 			selected_object += 1;
 			selected_object_menu_x -= 64;
@@ -1585,8 +1585,8 @@ or(mouse_check_button_pressed(mb_middle))
 	if (pause = false)
 	and (!instance_exists(obj_leveleditor_fill))
 	{
-		drag_x =mouse_x;
-		drag_y =mouse_y;
+		drag_x = mouse_x;
+		drag_y = mouse_y;
 	}
 }
 if (mouse_check_button(mb_left))

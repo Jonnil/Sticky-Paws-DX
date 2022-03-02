@@ -109,14 +109,14 @@ if (global.actually_play_edited_level = true)
 	instance_destroy();
 }
 room_speed = global.max_fps; /*Set correct fps*/
-x =mouse_x;
-y =mouse_y;
+x = mouse_x;
+y = mouse_y;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
-controller_x =mouse_x;
-controller_y =mouse_y;
-drag_x =mouse_x;
-drag_y =mouse_y;
+controller_x = mouse_x;
+controller_y = mouse_y;
+drag_x = mouse_x;
+drag_y = mouse_y;
 cursor_x = x;
 cursor_y = y;
 place_brush_size = 0; /*The size of the brush when placeing objects*/

@@ -59,20 +59,37 @@ else
 #endregion /*Heart above head END*/
 
 if (hold_item_in_hands = "enemy_bowlingball")
-and (image_xscale < 0)
 {
-	angle = 0;
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball, 0, xx - 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, 0, xx - 32, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_enemy_bowlingball_stomped, 0, xx - 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
-}
-if (hold_item_in_hands = "enemy_bowlingball")
-and (image_xscale > 0)
-{
-	angle = 0;
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball, 0, xx + 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, 0, xx + 32, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_enemy_bowlingball_stomped, 0, xx + 32, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
+	draw_sprite_ext(global.resourcepack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+	if (image_xscale < 0)
+	{
+		angle = 0;
+		if (sprite_index != sprite_vine_climb)
+		and (sprite_index != sprite_vine_stay)
+		{
+			hold_item_in_hands_x = -32;
+		}
+		else
+		{
+			hold_item_in_hands_x = 0;
+		}
+	}
+	else
+	if (image_xscale > 0)
+	{
+		angle = 0;
+		if (sprite_index != sprite_vine_climb)
+		and (sprite_index != sprite_vine_stay)
+		{
+			hold_item_in_hands_x = +32;
+		}
+		else
+		{
+			hold_item_in_hands_x = 0;
+		}
+	}
 }
 
 #region /*Draw arrow when player is outside top view*/
@@ -347,7 +364,7 @@ if (invincible >= true)
 #endregion /*Invinsible END*/
 
 #region /*Don't make it look like the player is teleporting when the player teleports*/
-if (smooth_teleport< 1)
+if (smooth_teleport < 1)
 {
 	xx = lerp(xx, x,smooth_teleport);
 	yy = lerp(yy, y,smooth_teleport);

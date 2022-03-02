@@ -49,3 +49,14 @@ if (asset_get_type("spr_small_mask") == asset_sprite)
 #endregion /*Mask END*/
 
 sprite_used = "stand";
+
+if (blind = true)
+{
+	if (global.resourcepack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_walk;}else
+	if (global.resourcepack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_walk;}
+}
+else
+{
+	if (global.resourcepack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_walk;}else
+	if (global.resourcepack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_walk;}
+}

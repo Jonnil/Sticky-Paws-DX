@@ -497,6 +497,7 @@ intro_animation_image_index = 0; /*Image index of intro animation*/
 
 can_save_to_character_config = false; /*Only turn true when playing as custom character*/
 hold_item_in_hands = ""; /*If the character is holding any items in their hands or not*/
+hold_item_in_hands_x = 0; /*Held item x position*/
 hold_item_number_of_times_stomped = 0; /*Save how many times the held item / held enemy have been stomped, so you don't reset that number when throwing the item*/
 current_file = global.file;
 assist_invincible = false;
