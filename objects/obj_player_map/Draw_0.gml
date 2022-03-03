@@ -1166,7 +1166,7 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible2 = true)
 			{
@@ -1174,7 +1174,7 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible3 = true)
 			{
@@ -1182,7 +1182,7 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible4 = true)
 			{
@@ -1190,7 +1190,7 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible5 = true)
 			{
@@ -1198,7 +1198,7 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 			}
 			else
 			{
-				draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x + 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_gray, 0.5);
+				draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, x + 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 		}
 		#endregion /*Show Big Collectible END*/

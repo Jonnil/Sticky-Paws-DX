@@ -316,6 +316,7 @@
     {"id":{"name":"obj_extra_life_pickup","path":"objects/obj_extra_life_pickup/obj_extra_life_pickup.yy",},"order":15,},
     {"id":{"name":"obj_ice_block","path":"objects/obj_ice_block/obj_ice_block.yy",},"order":3,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":1,},
+    {"id":{"name":"obj_big_collectible_outline","path":"objects/obj_big_collectible_outline/obj_big_collectible_outline.yy",},"order":28,},
     {"id":{"name":"obj_blaster_reward_decrease_mask","path":"objects/obj_blaster_reward_decrease_mask/obj_blaster_reward_decrease_mask.yy",},"order":32,},
     {"id":{"name":"spr_game_over_text","path":"sprites/spr_game_over_text/spr_game_over_text.yy",},"order":133,},
     {"id":{"name":"snd_wallkick","path":"sounds/snd_wallkick/snd_wallkick.yy",},"order":139,},
@@ -2435,6 +2436,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sprites/skin0","resourceVersion":"1.0","name":"standing_with_item_in_front.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/catlyn/sprites/skin0","resourceVersion":"1.0","name":"walking_with_item_in_front_strip11.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/catlyn/sprites/skin0","resourceVersion":"1.0","name":"standing_with_item_in_front.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resourcepacks/resourcepack0/sprites","resourceVersion":"1.0","name":"big_collectible_outline.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.2.0.614",

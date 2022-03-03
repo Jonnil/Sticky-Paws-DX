@@ -40,6 +40,8 @@ flat = false;
 stomped_delay = 0;
 die = false;
 die_volting = false;
+stuck_in_wall_counter = 0;
+sliding_along_ground = 0;
 if asset_get_type("snd_enemyvoice_defeated") == asset_sound
 {
 	enemyvoice_defeated1 = noone;

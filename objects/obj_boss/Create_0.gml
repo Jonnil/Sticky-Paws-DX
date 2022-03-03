@@ -16,3 +16,4 @@ redblinktimer = 0;
 has_seen_player = false; /*If boss hasn't seen player, then don't activate the fight yet.*/
 arrow_xscale = 0;
 stuck_in_wall_counter = 0;
+sliding_along_ground = 0;

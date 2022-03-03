@@ -503,6 +503,7 @@ global.resourcepack_sprite_title_logo_christmas = noone;
 global.resourcepack_sprite_artwork_collection = spr_wall;
 global.resourcepack_sprite_basic_collectible = spr_wall;
 global.resourcepack_sprite_big_collectible = spr_wall;
+global.resourcepack_sprite_big_collectible_outline = spr_wall;
 global.resourcepack_sprite_bullet = spr_wall;
 global.resourcepack_sprite_bullet_flattened = spr_wall;
 global.resourcepack_sprite_blaster = spr_wall;

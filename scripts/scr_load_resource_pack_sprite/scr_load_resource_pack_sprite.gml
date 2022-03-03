@@ -28,6 +28,7 @@ function scr_load_resource_pack_sprite()
 		if (global.resourcepack_sprite_bowlingball_shine > 0){sprite_delete(global.resourcepack_sprite_bowlingball_shine);}
 		if (global.resourcepack_sprite_coil_spring > 0){sprite_delete(global.resourcepack_sprite_coil_spring);}
 		if (global.resourcepack_sprite_big_collectible > 0){sprite_delete(global.resourcepack_sprite_big_collectible);}
+		if (global.resourcepack_sprite_big_collectible_outline > 0){sprite_delete(global.resourcepack_sprite_big_collectible_outline);}
 		if (global.resourcepack_sprite_big_stationary_enemy > 0){sprite_delete(global.resourcepack_sprite_big_stationary_enemy);}
 		if (global.resourcepack_sprite_big_stationary_enemy_flattened > 0){sprite_delete(global.resourcepack_sprite_big_stationary_enemy_flattened);}
 		if (global.resourcepack_sprite_blaster > 0){sprite_delete(global.resourcepack_sprite_blaster);}
@@ -57,6 +58,7 @@ function scr_load_resource_pack_sprite()
 		global.resourcepack_sprite_artwork_collection = scr_initialize_resource_pack_sprite("artwork_collection", global.resourcepack_sprite_artwork_collection);
 		global.resourcepack_sprite_basic_collectible = scr_initialize_resource_pack_sprite("basic_collectible", global.resourcepack_sprite_basic_collectible);
 		global.resourcepack_sprite_big_collectible = scr_initialize_resource_pack_sprite("big_collectible", global.resourcepack_sprite_big_collectible);
+		global.resourcepack_sprite_big_collectible_outline = scr_initialize_resource_pack_sprite("big_collectible_outline", global.resourcepack_sprite_big_collectible_outline);
 		global.resourcepack_sprite_bullet = scr_initialize_resource_pack_sprite("bullet", global.resourcepack_sprite_bullet);
 		global.resourcepack_sprite_bullet_flattened = scr_initialize_resource_pack_sprite("bullet_flattened", global.resourcepack_sprite_bullet_flattened);
 		global.resourcepack_sprite_blaster = scr_initialize_resource_pack_sprite("blaster", global.resourcepack_sprite_blaster);

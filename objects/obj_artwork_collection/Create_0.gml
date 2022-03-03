@@ -1,9 +1,12 @@
+menu = "";
+menu_cursor_index = 0;
+menu_delay = 0;
 artwork = 1;
 image_alpha = 0;
+sprite_index = global.resourcepack_sprite_artwork_collection;
 max_artwork = 45; /*The number of artworks corresponds with the total amount of big collectibles in the game*/
 can_navigate = false;
-show_comments = true;
-current_comment = "Test";
+current_comment = "";
 xx = window_get_width() / 2;
 yy = y;
 if (global.demo = true)

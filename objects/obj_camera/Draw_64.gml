@@ -268,60 +268,90 @@ and (!instance_exists(obj_title))
 		#region /*Big Collectible 1*/
 		if (global.big_collectible1 = false)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+		}
+		else
+		if (global.big_collectible1 = true)
+		and (big_collectible1_already_collected = false)
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
 			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /*Big Collectible 1 END*/
-	
+		
 		#region /*Big Collectible 2*/
 		if (global.big_collectible2 = false)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+		}
+		else
+		if (global.big_collectible2 = true)
+		and (big_collectible2_already_collected = false)
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
 			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /*Big Collectible 2 END*/
-	
+		
 		#region /*Big Collectible 3*/
 		if (global.big_collectible3 = false)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+		}
+		else
+		if (global.big_collectible3 = true)
+		and (big_collectible3_already_collected = false)
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
 			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /*Big Collectible 3 END*/
-	
+		
 		#region /*Big Collectible 4 */
 		if (global.big_collectible4 = false)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+		}
+		else
+		if (global.big_collectible4 = true)
+		and (big_collectible4_already_collected = false)
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
 			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /*Big Collectible 4 END*/
-	
+		
 		#region /*Big Collectible 5*/
 		if (global.big_collectible5 = false)
 		{
-			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_gray, 0.5);
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible_outline, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+		}
+		else
+		if (global.big_collectible5 = true)
+		and (big_collectible5_already_collected = false)
+		{
+			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
 			draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /*Big Collectible 5 END*/
-	
+		
 		#endregion /*Big Collectibles*/
-	
+		
 		#region /*Basic Collectible*/
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);

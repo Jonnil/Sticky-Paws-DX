@@ -57,11 +57,13 @@ and (die = false)
 }
 
 if (die = false)
+and (other.die = false)
 and (other.speed > speed)
 and (other.flat = true)
 and (other.sliding_along_ground = 0)
 {
 	if (die_volting = false)
+	and (other.die_volting = false)
 	{
 		global.enemy_counter += 1;
 		if (other.x < x)

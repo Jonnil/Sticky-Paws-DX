@@ -1,5 +1,3 @@
-sprite_index = global.resourcepack_sprite_big_collectible;
-
 if (bounceup = false)
 {
 	if (asset_get_type("obj_camera") == asset_object)
@@ -89,22 +87,122 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
 	if (big_collectible = 1)
 	{
 		global.big_collectible1 = true;
+		if (instance_exists(obj_camera))
+		{
+			with(instance_nearest(x, y, obj_camera))
+			{
+				big_collectible1_already_collected = true;
+			}
+		}
+		if (global.character_select_in_this_menu = "main_game")
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible1", true);
+			ini_close();
+		}
+		else
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible1", true);
+			ini_close();
+		}
 	}
 	if (big_collectible = 2)
 	{
 		global.big_collectible2 = true;
+		if (instance_exists(obj_camera))
+		{
+			with(instance_nearest(x, y, obj_camera))
+			{
+				big_collectible2_already_collected = true;
+			}
+		}
+		if (global.character_select_in_this_menu = "main_game")
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible2", true);
+			ini_close();
+		}
+		else
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible2", true);
+			ini_close();
+		}
 	}
 	if (big_collectible = 3)
 	{
 		global.big_collectible3 = true;
+		if (instance_exists(obj_camera))
+		{
+			with(instance_nearest(x, y, obj_camera))
+			{
+				big_collectible3_already_collected = true;
+			}
+		}
+		if (global.character_select_in_this_menu = "main_game")
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible3", true);
+			ini_close();
+		}
+		else
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible3", true);
+			ini_close();
+		}
 	}
 	if (big_collectible = 4)
 	{
 		global.big_collectible4 = true;
+		if (instance_exists(obj_camera))
+		{
+			with(instance_nearest(x, y, obj_camera))
+			{
+				big_collectible4_already_collected = true;
+			}
+		}
+		if (global.character_select_in_this_menu = "main_game")
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible4", true);
+			ini_close();
+		}
+		else
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible4", true);
+			ini_close();
+		}
 	}
 	if (big_collectible = 5)
 	{
 		global.big_collectible5 = true;
+		if (instance_exists(obj_camera))
+		{
+			with(instance_nearest(x, y, obj_camera))
+			{
+				big_collectible5_already_collected = true;
+			}
+		}
+		if (global.character_select_in_this_menu = "main_game")
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible5", true);
+			ini_close();
+		}
+		else
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible5", true);
+			ini_close();
+		}
 	}
 	#endregion /*What Big Collectible is this? END*/
 	
@@ -113,6 +211,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
 		audio_play_sound(snd_basic_collectible, 0, 0);
 		audio_sound_gain(snd_basic_collectible, global.sfx_volume, 0);
 	}
+	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
 	instance_destroy();
 }
 
@@ -227,26 +326,127 @@ if bounceup = true
 			if (big_collectible = 1)
 			{
 				global.big_collectible1 = true;
+				if (instance_exists(obj_camera))
+				{
+					with(instance_nearest(x, y, obj_camera))
+					{
+						big_collectible1_already_collected = true;
+					}
+					if (global.character_select_in_this_menu = "main_game")
+					{
+						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible1", true);
+						ini_close();
+					}
+					else
+					if (global.character_select_in_this_menu = "level_editor")
+					{
+						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible1", true);
+						ini_close();
+					}
+				}
 			}
 			if (big_collectible = 2)
 			{
 				global.big_collectible2 = true;
+				if (instance_exists(obj_camera))
+				{
+					with(instance_nearest(x, y, obj_camera))
+					{
+						big_collectible2_already_collected = true;
+					}
+					if (global.character_select_in_this_menu = "main_game")
+					{
+						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible2", true);
+						ini_close();
+					}
+					else
+					if (global.character_select_in_this_menu = "level_editor")
+					{
+						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible2", true);
+						ini_close();
+					}
+				}
 			}
 			if (big_collectible = 3)
 			{
 				global.big_collectible3 = true;
+				if (instance_exists(obj_camera))
+				{
+					with(instance_nearest(x, y, obj_camera))
+					{
+						big_collectible3_already_collected = true;
+					}
+					if (global.character_select_in_this_menu = "main_game")
+					{
+						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible3", true);
+						ini_close();
+					}
+					else
+					if (global.character_select_in_this_menu = "level_editor")
+					{
+						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible3", true);
+						ini_close();
+					}
+				}
 			}
 			if (big_collectible = 4)
 			{
 				global.big_collectible4 = true;
+				if (instance_exists(obj_camera))
+				{
+					with(instance_nearest(x, y, obj_camera))
+					{
+						big_collectible4_already_collected = true;
+					}
+					if (global.character_select_in_this_menu = "main_game")
+					{
+						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible4", true);
+						ini_close();
+					}
+					else
+					if (global.character_select_in_this_menu = "level_editor")
+					{
+						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible4", true);
+						ini_close();
+					}
+				}
 			}
 			if (big_collectible = 5)
 			{
 				global.big_collectible5 = true;
+				if (instance_exists(obj_camera))
+				{
+					with(instance_nearest(x, y, obj_camera))
+					{
+						big_collectible5_already_collected = true;
+					}
+					if (global.character_select_in_this_menu = "main_game")
+					{
+						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "big_collectible5", true);
+						ini_close();
+					}
+					else
+					if (global.character_select_in_this_menu = "level_editor")
+					{
+						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_write_real(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "big_collectible5", true);
+						ini_close();
+					}
+				}
 			}
 			#endregion /*What Big Collectible is this? END*/
 			
 			effect_create_above(ef_ring, x, y, 2, c_white);
+			instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
 			instance_destroy();
 		}
 	}
@@ -304,6 +504,7 @@ and (global.big_collectible5 = true)
 #region /*If big collectible value is 0, destroy the big collectible*/
 if (big_collectible = 0)
 {
+	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
 	instance_destroy();
 }
 #endregion /*If big collectible value is 0, destroy the big collectible END*/

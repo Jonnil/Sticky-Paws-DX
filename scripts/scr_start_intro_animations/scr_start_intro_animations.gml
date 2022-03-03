@@ -22,7 +22,7 @@ function scr_start_intro_animations()
 			{
 				instance_create_depth(x + 10, y, 0, obj_chair_and_table);
 				instance_create_depth(x + 40, y + 10, 0, obj_cake);
-				instance_create_depth(-30.795226, y, 0, obj_cake_stealing_enemy);
+				instance_create_depth(-27.795226, y, 0, obj_cake_stealing_enemy);
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_sitting_eat_closed_mouth;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
 				image_index = 0;

@@ -179,7 +179,7 @@ and (has_seen_player = true)
 		sprite_index = spr_boss_throw;
 		if (asset_get_type("obj_arrow") == asset_object)
 		{
-			instance_create_depth(x, y + random_range(0, + 64), 0, obj_arrow);
+			instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
 		}
 	}
 	if (time = room_speed * 7)
@@ -332,7 +332,7 @@ and (has_seen_player = true)
 		sprite_index = spr_boss_throw;
 		if (asset_get_type("obj_arrow") == asset_object)
 		{
-			instance_create_depth(x, y + random_range(0, + 64), 0, obj_arrow);
+			instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
 		}
 	}
 	if (time = room_speed * 8)
@@ -487,7 +487,7 @@ if (has_seen_player = true)
 		sprite_index = spr_boss_throw;
 		if (asset_get_type("obj_arrow") == asset_object)
 		{
-			instance_create_depth(x, y + random_range(0, + 64), 0, obj_arrow);
+			instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
 		}
 	}
 	if (time = room_speed * 9)

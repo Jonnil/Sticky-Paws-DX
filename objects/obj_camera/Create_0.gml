@@ -15,6 +15,12 @@ delay = 0;
 mouse_x_position = window_mouse_get_x(); /*Mouse x initializing*/
 mouse_y_position = window_mouse_get_y(); /*Mouse y initializing*/
 
+big_collectible1_already_collected = false;
+big_collectible2_already_collected = false;
+big_collectible3_already_collected = false;
+big_collectible4_already_collected = false;
+big_collectible5_already_collected = false;
+
 #region /*Lives Icon*/
 if (global.player1_can_play = true)
 {
