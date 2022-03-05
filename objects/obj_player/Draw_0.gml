@@ -14,6 +14,11 @@
 //draw_text_outlined(x -32, y - 64, string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 128, string(global.player1_can_play), global.default_text_size, c_white, c_black, 1);
 
+if (bruh = true)
+{
+	draw_sprite(spr_big_stationary_enemy, image_index, x, y);
+}
+
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)
 and (have_heart_balloon = true)
@@ -455,8 +460,8 @@ if (allow_homing_attack = true)
 #endregion /*Homing Attack END*/
 
 #region /*Display Player Number and Name*/
-if (instance_number(obj_player)>= 2) /*If there is more than 1 player*/
-or(instance_number(obj_player_die)>= 1) /*If there is any other player die object*/
+if (instance_number(obj_player) >= 2) /*If there is more than 1 player*/
+or(instance_number(obj_player_die) >= 1) /*If there is any other player die object*/
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);

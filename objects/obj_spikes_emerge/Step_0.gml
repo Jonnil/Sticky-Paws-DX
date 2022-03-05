@@ -46,6 +46,7 @@ else
 	mask_index = noone;
 }
 
+#region /*Touching player*/
 if (image_angle = 0)
 and (place_meeting(x, y - 2, instance_nearest(x, y, obj_player)))
 and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_player)))
@@ -117,6 +118,50 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 		}
 	}
 }
+#endregion /*Touching player END*/
+
+#region /*Touching enemy*/
+if (image_angle = 0)
+and (place_meeting(x, y - 2, instance_nearest(x, y, obj_enemy)))
+and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_enemy)))
+and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_enemy)))
+and (instance_nearest(x, y, obj_enemy).vspeed >= 0)
+or(image_angle = 90)
+and (place_meeting(x - 2, y, instance_nearest(x, y, obj_enemy)))
+and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_enemy)))
+and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_enemy)))
+and (instance_nearest(x, y, obj_enemy).hspeed >= 0)
+or(image_angle = 180)
+and (place_meeting(x, y + 2, instance_nearest(x, y, obj_enemy)))
+and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_enemy)))
+and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_enemy)))
+and (instance_nearest(x, y, obj_enemy).vspeed <= 0)
+or(image_angle = 270)
+and (place_meeting(x + 2, y, instance_nearest(x, y, obj_enemy)))
+and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_enemy)))
+and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_enemy)))
+and (instance_nearest(x, y, obj_enemy).hspeed <= 0)
+{
+	if (asset_get_type("spr_spikes_emerge") == asset_sprite)
+	and (sprite_index = spr_spikes_emerge)
+	{
+		if (instance_nearest(x, y, obj_enemy).x < x)
+		and (instance_nearest(x, y, obj_enemy).die = false)
+		{
+			instance_nearest(x, y, obj_enemy).vspeed = - 8;
+			instance_nearest(x, y, obj_enemy).die_volting = -1;
+			instance_nearest(x, y, obj_enemy).die = true;
+		}
+		else
+		if (instance_nearest(x, y, obj_enemy).die = false)
+		{
+			instance_nearest(x, y, obj_enemy).vspeed = - 8;
+			instance_nearest(x, y, obj_enemy).die_volting = +1;
+			instance_nearest(x, y, obj_enemy).die = true;
+		}
+	}
+}
+#endregion /*Touching enemy END*/
 
 if (image_angle = 0)
 {
@@ -182,6 +227,8 @@ if (image_angle = 270)
 }
 
 if (image_angle = 0)
+and (asset_get_type("spr_spikes_emerge") == asset_sprite)
+and (sprite_index = spr_spikes_emerge)
 {
 	if (position_meeting(x, y - 4, instance_nearest(x, y, obj_player)))
 	and (instance_nearest(x, y, obj_player).dive = true)
@@ -195,6 +242,8 @@ if (image_angle = 0)
 	}
 }
 if (image_angle = 90)
+and (asset_get_type("spr_spikes_emerge") == asset_sprite)
+and (sprite_index = spr_spikes_emerge)
 {
 	if (position_meeting(x - 4, y, instance_nearest(x, y, obj_player)))
 	and (instance_nearest(x, y, obj_player).dive = true)
@@ -209,6 +258,8 @@ if (image_angle = 90)
 	}
 }
 if (image_angle = 180)
+and (asset_get_type("spr_spikes_emerge") == asset_sprite)
+and (sprite_index = spr_spikes_emerge)
 {
 	if (position_meeting(x, y + 4, instance_nearest(x, y, obj_player)))
 	and (instance_nearest(x, y, obj_player).dive = true)
@@ -222,6 +273,8 @@ if (image_angle = 180)
 	}
 }
 if (image_angle = 270)
+and (asset_get_type("spr_spikes_emerge") == asset_sprite)
+and (sprite_index = spr_spikes_emerge)
 {
 	if (position_meeting(x + 4, y, instance_nearest(x, y, obj_player)))
 	and (instance_nearest(x, y, obj_player).dive = true)

@@ -1,5 +1,7 @@
 /*________________________________Create Event________________________________*/
 
+bruh = false;
+
 #region /*What custom character to use. Change the character sprites and voice*/
 player = 1;
 custom_character = global.character_for_player_1;

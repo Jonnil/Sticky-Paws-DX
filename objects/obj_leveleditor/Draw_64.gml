@@ -438,7 +438,7 @@
 		draw_set_valign(fa_center);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
 		level_name =keyboard_string;
-		if (string_length(level_name)>32)
+		if (string_length(level_name) > 32)
 		{
 			keyboard_string = string_copy(level_name, 1, 32);
 		}

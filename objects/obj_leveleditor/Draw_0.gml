@@ -559,8 +559,8 @@ if (pause = false)
 	#region /*Zoom In*/
 	if (zoom_in = true)
 	{
-		if (camera_get_view_width(view_camera[view_current])> 696)
-		and (camera_get_view_height(view_camera[view_current])>368)
+		if (camera_get_view_width(view_camera[view_current]) > 696)
+		and (camera_get_view_height(view_camera[view_current]) > 368)
 		{
 			camera_set_view_size((view_camera[view_current]), camera_get_view_width(view_camera[view_current]) - 8, camera_get_view_height(view_camera[view_current]) -4.5);
 			camera_set_view_pos((view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + 4, camera_get_view_y(view_camera[view_current]) + 2.5);

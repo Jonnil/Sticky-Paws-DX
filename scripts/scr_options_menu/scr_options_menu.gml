@@ -6108,7 +6108,7 @@ function scr_options_menu()
 			and (!gamepad_button_check_pressed(0, gp_padr))
 			and (menu = "select_narrator")
 			or(gamepad_axis_value(0, gp_axislh)< 0)
-			and (menu_joystick1_delay <= 0)
+			and (menu_joystick_delay <= 0)
 			and (menu = "select_narrator")
 			or(mouse_check_button_pressed(mb_left))
 			and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x -32 - 16, narrator_y - 16, file_select_x -32 + 16, narrator_y + 16))
@@ -6119,7 +6119,7 @@ function scr_options_menu()
 				and (open_dropdown = false)
 				{
 					menu_delay = 3;
-					menu_joystick1_delay = 30;
+					menu_joystick_delay = 30;
 					if (global.narrator > -1)
 					{
 						global.narrator -= 1;
@@ -6281,7 +6281,7 @@ function scr_options_menu()
 			and (!gamepad_button_check_pressed(0, gp_padl))
 			and (menu = "select_narrator")
 			or(gamepad_axis_value(0, gp_axislh) > 0)
-			and (menu_joystick1_delay <= 0)
+			and (menu_joystick_delay <= 0)
 			and (menu = "select_narrator")
 			or(mouse_check_button_pressed(mb_left))
 			and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 16, narrator_y + 16))
@@ -6291,7 +6291,7 @@ function scr_options_menu()
 				and (open_dropdown = false)
 				{
 					menu_delay = 3;
-					menu_joystick1_delay = 30;
+					menu_joystick_delay = 30;
 					global.narrator = clamp(global.narrator + 1, -1, ds_list_size(global.all_loaded_characters) - 1);
 						
 					#region /*Character Name*/

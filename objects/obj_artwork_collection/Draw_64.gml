@@ -8,7 +8,7 @@ xx = lerp(xx, window_get_width() / 2, 0.1);
 yy = lerp(yy, Wave(y- 8, y + 8, 4.5, 0), 0.1);
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
-and (place_meeting(x, y, obj_player))
+and (point_distance(x, y, obj_player.x, obj_player.y) < 64)
 and (can_navigate = false)
 and (instance_nearest(x, y, obj_player).key_up)
 and (instance_nearest(x, y, obj_player).vspeed = 0)
@@ -335,3 +335,12 @@ if (image_index = 72){current_comment = "Artist: red_luigi - Sticky Pixel Art";}
 if (image_index = 73){current_comment = "Artist: Andrea Colunga - Catlyn and her prey";}
 if (image_index = 74){current_comment = "Artist: Furret76 - Sticcy pau and cetlun";}
 #endregion /*Comments END*/
+
+#region /*Draw mouse cursor for menu navigation*/
+if (global.controls_used_for_menu_navigation = "mouse")
+and (os_type!= os_ios)
+and (os_type!= os_android)
+{
+	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
+}
+#endregion /*Draw mouse cursor for menu navigation END*/

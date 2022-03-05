@@ -29,17 +29,17 @@ menu_delay = 10;
 lastkey = noone;
 
 #region /*Remapping options variables*/
-remapping_player = 0;
-/*remapping_player 0 = player 1.
-remapping_player 1 = player 2.
-remapping_player 2 = player 3.
-remapping_player 3 = player 4 */
+remapping_player = 0; /*remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
 input_key = false;
 can_remap_key = false;
 #endregion /*Remapping options variables END*/
 
 open_dropdown = false;
 menu_joystick_delay = 0;
+menu_joystick1_delay = 0; /*These variables shouldn't be used unless specific player input is needed, but they are here still as failsafe*/
+menu_joystick2_delay = 0;
+menu_joystick3_delay = 0;
+menu_joystick4_delay = 0;
 can_navigate = true;
 remap_y_pos = 0;
 menu_cursor_index = 0;

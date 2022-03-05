@@ -691,7 +691,7 @@ if (die_volting = false)
 		if (other.ground_pound = false)
 		and (flat = false)
 		{
-			if (abs(other.hspeed)>7)
+			if (abs(other.hspeed) >7)
 			{
 				other.jump += 1;
 				if (other.jump > 2)

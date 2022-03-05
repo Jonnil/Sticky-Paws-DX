@@ -30,7 +30,7 @@ function scr_initialize_resource_pack_sprite(argument0, argument1)
 	
 	#region /*Sprite Add*/
 	index = 0;
-	repeat(50)
+	repeat(100) /*Must repeat enough times, if sprite_strip is too high for the repeat, then the sprite can't load at all*/
 	{
 		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/" + file_name + "_strip" + string(index) + ".png"))
 		{

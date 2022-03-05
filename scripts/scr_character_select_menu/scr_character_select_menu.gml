@@ -4615,7 +4615,7 @@ function scr_character_select_menu()
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		
-		if (string_length(global.player1_name)>= 20)
+		if (string_length(global.player1_name) >= 20)
 		{
 			draw_text_outlined(
 			window_get_width()/ 2 + player1_display_x + 100,
@@ -4630,7 +4630,7 @@ function scr_character_select_menu()
 			string(string_length(global.player1_name)) + "/ 20", global.default_text_size, c_black, c_ltgray, 1);
 		}
 		
-		if (string_length(global.player1_name)>20)
+		if (string_length(global.player1_name) >20)
 		{
 			global.player1_name = string_copy(global.player1_name, 1, 20);
 		}
@@ -4652,7 +4652,7 @@ function scr_character_select_menu()
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		
-		if (string_length(global.player2_name)>= 20)
+		if (string_length(global.player2_name) >= 20)
 		{
 			draw_text_outlined(
 			window_get_width()/ 2 + player2_display_x + 100,
@@ -4667,7 +4667,7 @@ function scr_character_select_menu()
 			string(string_length(global.player2_name)) + "/ 20", global.default_text_size, c_black, c_ltgray, 1);
 		}
 		
-		if (string_length(global.player2_name)>20)
+		if (string_length(global.player2_name) >20)
 		{
 			global.player2_name = string_copy(global.player2_name, 1, 20);
 		}
@@ -4689,7 +4689,7 @@ function scr_character_select_menu()
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		
-		if (string_length(global.player3_name)>= 20)
+		if (string_length(global.player3_name) >= 20)
 		{
 			draw_text_outlined(
 			window_get_width()/ 2 + player3_display_x + 100,
@@ -4704,7 +4704,7 @@ function scr_character_select_menu()
 			string(string_length(global.player3_name)) + "/ 20", global.default_text_size, c_black, c_ltgray, 1);
 		}
 		
-		if (string_length(global.player3_name)>20)
+		if (string_length(global.player3_name) >20)
 		{
 			global.player3_name = string_copy(global.player3_name, 1, 20);
 		}
@@ -4726,7 +4726,7 @@ function scr_character_select_menu()
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		
-		if (string_length(global.player4_name)>= 20)
+		if (string_length(global.player4_name) >= 20)
 		{
 			draw_text_outlined(
 			window_get_width()/ 2 + player4_display_x + 100,
@@ -4741,7 +4741,7 @@ function scr_character_select_menu()
 			string(string_length(global.player4_name)) + "/ 20", global.default_text_size, c_black, c_ltgray, 1);
 		}
 		
-		if (string_length(global.player4_name)>20)
+		if (string_length(global.player4_name) >20)
 		{
 			global.player4_name = string_copy(global.player4_name, 1, 20);
 		}
@@ -4772,7 +4772,7 @@ function scr_character_select_menu()
 	#endregion /*Press enter when done typing END*/
 	
 	#region /*Limit Name Input Length for all players*/
-	if (string_length(keyboard_string)>20)
+	if (string_length(keyboard_string) >20)
 	{
 		keyboard_string = string_copy(keyboard_string, 1, 20);
 	}
