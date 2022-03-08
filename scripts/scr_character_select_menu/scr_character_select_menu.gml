@@ -1,16 +1,6 @@
 ///scr_character_select_menu()
 function scr_character_select_menu()
 {
-	//i = 0
-	//repeat(ds_list_size(global.all_loaded_characters))
-	//{draw_text_outlined(100, 200 + i* 32, string(ds_list_find_value(global.all_loaded_characters, i)), global.default_text_size, c_black, c_white, 1)
-	//i ++}
-	
-	//if (directory_exists("characters"))
-	//{
-	//	draw_sprite(spr_boss_laugh, 0, 32, 32);
-	//}
-	
 	arrow_offset = 125;
 	
 	var voice = noone;
@@ -24,7 +14,7 @@ function scr_character_select_menu()
 	xx2 = lerp(xx2, player2_display_x, 0.1);
 	xx3 = lerp(xx3, player3_display_x, 0.1);
 	xx4 = lerp(xx4, player4_display_x, 0.1);
-	play_the_game_text_y = 200;
+	play_the_game_text_y = 125;
 	
 	#region /*All code before menu navigation code*/
 	
@@ -5113,7 +5103,7 @@ function scr_character_select_menu()
 	and (menu_joystick1_delay <= 0)
 	{
 		if (menu_delay = 0)
-		and (player1_accept_selection >= 0)
+		and (player1_accept_selection = 0)
 		{
 			menu_delay = 3;
 			menu_joystick1_delay = 30;

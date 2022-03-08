@@ -5810,7 +5810,7 @@ function scr_options_menu()
 			#region /*Text saying input key now for player 2*/
 			if (remapping_player = 1)
 			{
-				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 2/nButtons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 2", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_text_outlined(window_get_width()/ 2 - 10, 64, "Buttons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 			}
@@ -5819,7 +5819,7 @@ function scr_options_menu()
 			#region /*Text saying input key now for player 3*/
 			if (remapping_player = 2)
 			{
-				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 3/nButtons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 3", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_text_outlined(window_get_width()/ 2 - 10, 64, "Buttons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 			}
@@ -5828,7 +5828,7 @@ function scr_options_menu()
 			#region /*Text saying input key now for player 4 */
 			if (remapping_player = 3)
 			{
-				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 4/nButtons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 4", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_text_outlined(window_get_width()/ 2 - 10, 64, "Buttons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 			}
@@ -6517,7 +6517,8 @@ function scr_options_menu()
 		draw_set_valign(fa_center);
 		if (!file_exists(working_directory + "/custom_resourcepacks/resourcepack0/data/sprite_origin_point.ini"))
 		{
-			draw_text_outlined(resource_pack_x, 20 + (40 * 3), "Add Custom Resourcepacks in Local Appdata and it will appear here!", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(resource_pack_x, 20 + (40 * 1), "Add Custom Resourcepacks in Local Appdata", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(resource_pack_x, 20 + (40 * 2), "and it will appear here!", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		}
 		
 		if (global.selected_resourcepack = 0)
@@ -6717,6 +6718,18 @@ function scr_options_menu()
 		draw_set_valign(fa_center);
 		draw_text_outlined(file_select_x, 20 + (40 * 4), "File: " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
+		#region /*Display save file data*/
+		if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			if (ini_key_exists("Player", "number_of_levels_cleared"))
+			{
+				draw_text_outlined(file_select_x, 20 + (40 * 7), "Number of levels cleared: " + string(ini_read_real("Player", "number_of_levels_cleared", false)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			}
+			ini_close();
+		}
+		#endregion /*Display save file data END*/
+		
 		if (menu != "file_delete_yes")
 		and (menu != "file_delete_no")
 		{
@@ -6730,7 +6743,7 @@ function scr_options_menu()
 		or(menu = "file_delete_no")
 		{
 			can_navigate_settings_sidebar = false;
-			draw_set_alpha(0.5);
+			draw_set_alpha(0.9);
 			draw_rectangle_color(0, 0, window_get_width()* 3, window_get_height()* 3, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(0.1);
 			draw_set_halign(fa_center);
