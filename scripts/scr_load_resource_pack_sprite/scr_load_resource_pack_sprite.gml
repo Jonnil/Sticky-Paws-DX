@@ -10,6 +10,7 @@ function scr_load_resource_pack_sprite()
 	#region /*Delete sprites before loading new sprites*/
 	if (room != room_splash_screen)
 	{
+		if (global.resourcepack_sprite_ground_tileset > 0){sprite_delete(global.resourcepack_sprite_ground_tileset);}
 		if (global.resourcepack_sprite_title_logo > 0){sprite_delete(global.resourcepack_sprite_title_logo);}
 		if (global.resourcepack_sprite_title_logo_christmas > 0){sprite_delete(global.resourcepack_sprite_title_logo_christmas);}
 		if (global.resourcepack_sprite_artwork_collection > 0){sprite_delete(global.resourcepack_sprite_artwork_collection);}
@@ -53,6 +54,7 @@ function scr_load_resource_pack_sprite()
 			ini_open(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini");
 		}
 		
+		global.resourcepack_sprite_ground_tileset = scr_initialize_resource_pack_sprite("ground_tileset", global.resourcepack_sprite_ground_tileset);
 		global.resourcepack_sprite_title_logo = scr_initialize_resource_pack_sprite("title_logo", global.resourcepack_sprite_title_logo);
 		global.resourcepack_sprite_title_logo_christmas = scr_initialize_resource_pack_sprite("title_logo_christmas", global.resourcepack_sprite_title_logo_christmas);
 		global.resourcepack_sprite_artwork_collection = scr_initialize_resource_pack_sprite("artwork_collection", global.resourcepack_sprite_artwork_collection);

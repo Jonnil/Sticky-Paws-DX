@@ -34,6 +34,10 @@ or (die = false)
 			audio_play_sound(snd_bump, 0, 0);
 			audio_sound_gain(snd_bump, global.sfx_volume * 0.1, 0);
 		}
+		if (asset_get_type("obj_blockbreak") == asset_object)
+		{
+			instance_create_depth(x, bbox_top - 15, 0, obj_blockbreak)
+		}
 	}
 	
 	#region /*Push out of the solid object*/

@@ -290,6 +290,13 @@ and (menu != "remap_save")
 #endregion /*Which player is controling the pause menu? END*/
 
 #region /*Games Logo in top left corner*/
+
+if (current_month = 12)
+and (global.resourcepack_sprite_title_logo_christmas > noone)
+{
+	draw_sprite_ext(global.resourcepack_sprite_title_logo_christmas, 0, 160, 100, 0.3, 0.3, 0, c_white, 1);
+}
+else
 if (global.resourcepack_sprite_title_logo > noone)
 {
 	draw_sprite_ext(global.resourcepack_sprite_title_logo, 0, 160, 100, 0.3, 0.3, 0, c_white, 1);

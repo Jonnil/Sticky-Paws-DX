@@ -17,6 +17,8 @@ if (bounceup = false)
 		or(asset_get_type("obj_enemy_bowlingball") == asset_object)
 		and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
 		and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
+		and (instance_nearest(x, y, obj_enemy_bowlingball).die = false)
+		and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 		{
 			if (asset_get_type("obj_wall") == asset_object)
 			and (instance_exists(obj_player))

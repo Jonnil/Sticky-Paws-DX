@@ -11,6 +11,7 @@ or(image_angle = 360)
 		with(instance_nearest(bbox_left, y, obj_player))
 		{
 			x += 64;
+			y = instance_nearest(x, y, obj_oneway).y;
 			smooth_teleport = 0;
 		}
 	}
@@ -42,6 +43,7 @@ and (!position_meeting(bbox_left - 8, instance_nearest(bbox_left, y, obj_player)
 	with(instance_nearest(bbox_right, y, obj_player))
 	{
 		x -= 64;
+		y = instance_nearest(x, y, obj_oneway).y;
 		smooth_teleport = 0;
 	}
 }

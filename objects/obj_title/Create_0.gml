@@ -592,7 +592,6 @@ else
 scr_config_load(); /*Load Config*/
 
 lives = 5; /*Starting lives*/
-level_name = "";
 
 #region /*If title screen should start at the level editor menu or the main menu*/
 if (global.character_select_in_this_menu = "level_editor")

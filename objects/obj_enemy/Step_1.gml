@@ -1,10 +1,10 @@
 #region /*Don't move outside view*/
 if (x - 42 > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 and (instance_exists(obj_camera))
-and (x - 42 > obj_camera.view_x_center + 1000)
+and (x - 42 > obj_camera.view_x_center + 950)
 or (x + 42 < camera_get_view_x(view_camera[view_current]))
 and (instance_exists(obj_camera))
-and (x - 42 < obj_camera.view_x_center - 1000)
+and (x - 42 < obj_camera.view_x_center - 950)
 {
 	hspeed = 0;
 	vspeed = 0;

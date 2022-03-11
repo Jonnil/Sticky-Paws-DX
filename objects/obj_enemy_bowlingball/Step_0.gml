@@ -384,12 +384,12 @@ if (flat = false)
 	}
 	
 	#region /*Turn around*/
-	if (place_meeting(x - 1, y, obj_wall))
+	if (place_meeting(x - 2, y, obj_wall))
 	and (flat = false)
 	{
 		image_xscale = +1;
 	}
-	if (place_meeting(x + 1, y, obj_wall))
+	if (place_meeting(x + 2, y, obj_wall))
 	and (flat = false)
 	{
 		image_xscale = -1;
@@ -406,7 +406,6 @@ if (flat = false)
 		if (global.resourcepack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_walk;}else
 		if (global.resourcepack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_walk;}
 	}
-	
 	image_speed = 0.3;
 }
 

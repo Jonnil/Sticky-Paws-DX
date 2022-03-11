@@ -38,6 +38,8 @@ and (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x,
 or(asset_get_type("obj_enemy_bowlingball") == asset_object)
 and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
 and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
+and (instance_nearest(x, y, obj_enemy_bowlingball).die = false)
+and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 {
 	effect_create_above(ef_ring, x, y, 2, c_white);
 	

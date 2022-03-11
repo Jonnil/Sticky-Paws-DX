@@ -12,6 +12,8 @@ if (bounceup = false)
 	or(place_meeting(bbox_right + 4, y, obj_player))
 	and (!place_meeting(x + 4, y, obj_wall))
 	and (obj_player.dive = true)
+	or (place_meeting(x, y, obj_blockbreak))
+	and (instance_nearest(x, y, obj_blockbreak).can_break_other_blocks = true)
 	
 	or (instance_exists(obj_enemy_bowlingball))
 	and (position_meeting(bbox_left - 10, y, obj_enemy_bowlingball))
@@ -22,7 +24,7 @@ if (bounceup = false)
 	and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 	or (instance_exists(obj_enemy))
-	and (place_meeting(x, bbox_bottom + 8, obj_enemy))
+	and (place_meeting(x, bbox_bottom, obj_enemy))
 	and (instance_nearest(x, y, obj_enemy).vspeed < 0)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
 	{
@@ -57,6 +59,13 @@ if (bounceup = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy).vspeed = 0;
+			if (asset_get_type("obj_blockbreak") == asset_object)
+			{
+				with(instance_create_depth(instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).bbox_top - 15, 0, obj_blockbreak))
+				{
+					can_break_other_blocks = true;
+				}
+			}
 		}
 		if (empty = false)
 		{

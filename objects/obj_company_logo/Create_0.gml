@@ -498,8 +498,9 @@ if (asset_get_type("scr_config_load") == asset_script)
 #endregion /*Load Config END*/
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
-global.resourcepack_sprite_title_logo = noone;
-global.resourcepack_sprite_title_logo_christmas = noone;
+global.resourcepack_sprite_ground_tileset = spr_wall;
+global.resourcepack_sprite_title_logo = spr_wall;
+global.resourcepack_sprite_title_logo_christmas = spr_wall;
 global.resourcepack_sprite_artwork_collection = spr_wall;
 global.resourcepack_sprite_basic_collectible = spr_wall;
 global.resourcepack_sprite_big_collectible = spr_wall;

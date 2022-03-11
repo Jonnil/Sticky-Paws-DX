@@ -278,7 +278,11 @@
 		if (menu = "generate_level_map_yes")
 		or (menu = "generate_level_map_no")
 		{
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 128, "A map of the whole level will be generated and saved in\nAppData/Local/Sticky_Paws_DX/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png\nWith this map, you can then use it in a drawing program, as the base to make the background and foreground layers.\n\nDo you want to generate level map?", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192, "A map of the whole level will be generated and saved in", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 32, "AppData/Local/Sticky_Paws_DX/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 64, "With this map, you can then use it in a drawing program,", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 96, "as the base to make the background and foreground layers.", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 160, "Do you want to generate level map?", global.default_text_size, c_black, c_white, 1);
 			
 			#region /*If menu is on generate level map yes*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Yes", "generate_level_map_yes", "generate_level_map_yes");

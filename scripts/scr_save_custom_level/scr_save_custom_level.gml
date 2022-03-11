@@ -71,7 +71,6 @@ function scr_save_custom_level()
 			{
 				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			}
-			ini_write_string("info", "level_name", level_name);
 			if (instance_exists(obj_level_player_1_start))
 			{
 				ini_write_real("info", "level_player_1_start_x", obj_level_player_1_start.x);

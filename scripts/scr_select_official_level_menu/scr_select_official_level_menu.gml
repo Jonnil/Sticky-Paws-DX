@@ -233,26 +233,6 @@ function scr_select_official_level_menu()
 	}
 	#endregion /*Back Button END*/
 	
-	#region /*Load Level Name*/
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
-	{
-		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
-		if (ini_key_exists("info", "level_name"))
-		{
-			level_name = ini_read_string("info", "level_name", 0);
-		}
-		else
-		{
-			level_name = "";
-		}
-		ini_close();
-	}
-	else
-	{
-		level_name = "";
-	}
-	#endregion /*Load Level Name END*/
-	
 	#region /*Input Level Name*/
 	
 	draw_set_halign(fa_middle);
@@ -948,18 +928,6 @@ function scr_select_official_level_menu()
 			#endregion /*Update Foreround secret END*/
 			
 			#endregion /*Update All Backgrounds END*/
-			
-			#region /*Create Ground Tileset PNG if there is none*/
-			if (global.character_select_in_this_menu = "level_editor")
-			and (global.level_name != "")
-			and (!file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
-			{
-				#region /*Save sprite in directory*/
-				sprite_variable = sprite_duplicate(spr_ground_tileset);
-				sprite_save(sprite_variable, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png");
-				#endregion /*Save sprite in directory END*/
-			}
-			#endregion /*Create Ground Tileset PNG if there is none END*/
 			
 			#region /*Level Tileset File*/
 			sprite_delete(global.custom_tileset);

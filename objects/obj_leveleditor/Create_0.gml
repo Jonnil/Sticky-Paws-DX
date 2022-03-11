@@ -552,18 +552,6 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	
 	#endregion /*Custom Backgrounds END*/
 	
-	if (ini_key_exists("info", "level_name"))
-	{
-		level_name = ini_read_string("info", "level_name", 0);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu = "level_editor")
-		{
-			ini_write_string("info", "level_name", 0);
-		}
-		level_name = "";
-	}
 	if (ini_key_exists("info", "time_countdown"))
 	{
 		global.time_countdown = ini_read_real("info", "time_countdown", noone); /*Set the countdown to whatever is stored in the level_information.ini file*/
@@ -620,34 +608,10 @@ else
 	custom_background_3_y_parallax = 7;
 	custom_background_4_x_parallax = 9;
 	custom_background_4_y_parallax = 9;
-	level_name = "";
 	global.time_countdown = noone;
 	global.time_countdown_bonus = 500;
 }
 #endregion /*Initialize level_information.ini END*/
-
-#region /*Create Ground Tileset PNG if there is none*/
-if (global.character_select_in_this_menu = "level_editor")
-and (global.select_level_index >= 1)
-and (global.create_level_from_template = false)
-and (!file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets/ground_tileset.png"))
-{
-	#region /*Save sprite in directory*/
-	sprite_variable = sprite_duplicate(spr_ground_tileset);
-	sprite_save(sprite_variable, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets/ground_tileset.png");
-	#endregion /*Save sprite in directory END*/
-}
-else
-if (global.character_select_in_this_menu = "level_editor")
-and (global.level_name != "")
-and (!file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
-{
-	#region /*Save sprite in directory*/
-	sprite_variable = sprite_duplicate(spr_ground_tileset);
-	sprite_save(sprite_variable, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png");
-	#endregion /*Save sprite in directory END*/
-}
-#endregion /*Create Ground Tileset PNG if there is none END*/
 
 #region /*View Size*/
 view_wview = 1392;
