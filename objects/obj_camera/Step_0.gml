@@ -1,3 +1,6 @@
+view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) / 2);
+view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) / 2);
+
 #region /*Deactivate instances outside view*/
 if (delay = 2)
 {
@@ -5,11 +8,18 @@ if (delay = 2)
 	if (global.deactivate_objects_outsiede_view = true) /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
 	{
 		instance_deactivate_region(
-		camera_get_view_x(view_camera[view_current]) - 64,
-		camera_get_view_y(view_camera[view_current]) - 64,
-		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64 + view_wview_lerp,
-		camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 128 + view_hview_lerp,
+		view_x_center - 1000,
+		view_y_center - 1000,
+		2000,
+		2000,
 		false, true);
+		
+		instance_activate_region(
+		camera_get_view_x(view_camera[view_current]) - 128,
+		camera_get_view_y(view_camera[view_current]) - 128,
+		camera_get_view_width(view_camera[view_current]) + 128,
+		camera_get_view_height(view_camera[view_current]) + 128,
+		true);
 	}
 }
 else
@@ -82,6 +92,10 @@ if (asset_get_type("obj_level_width") == asset_object)
 if (asset_get_type("obj_credits") == asset_object)
 {
 	instance_activate_object(obj_credits);
+}
+if (asset_get_type("obj_title") == asset_object)
+{
+	instance_activate_object(obj_title);
 }
 #endregion /*Activate objects that always should be active END*/
 

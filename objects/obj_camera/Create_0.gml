@@ -107,6 +107,9 @@ view_wview_lerp = 0;
 view_hview_lerp = 0;
 #endregion /*Smooth the camera out even more END*/
 
+view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) / 2);
+view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) / 2);
+
 #region /*Hud Variables*/
 global.hud_show_lives = true;
 global.hud_show_deaths = true;

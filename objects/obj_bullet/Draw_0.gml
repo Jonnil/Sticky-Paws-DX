@@ -57,14 +57,16 @@ else
 {
 	hspeed = +4;
 }
-if (x < camera_get_view_x(view_camera[view_current]) -32)
+if (x < camera_get_view_x(view_camera[view_current]) - 32)
 and (image_xscale < 0)
+and (draw_xscale >= 0.8)
 or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
 and (image_xscale > 0)
+and (draw_xscale >= 0.8)
 {
+	instance_destroy();
 	x = 0;
 	y = 0;
-	instance_destroy();
 }
 draw_xscale = lerp(draw_xscale, 1, 0.075);
 draw_yscale = lerp(draw_yscale, 1, 0.075);
@@ -78,15 +80,6 @@ and (asset_get_type("obj_wall") == asset_object)
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 		instance_destroy();
 	}
-}
-if (image_xscale = -1)
-and (x < camera_get_view_x(view_camera[view_current]) -32)
-or(image_xscale = +1)
-and (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
-{
-	x = 0;
-	y = 0;
-	instance_destroy();
 }
 
 #region /*Kill enemy if it's inside the wall*/
