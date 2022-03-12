@@ -722,7 +722,6 @@ function scr_update_all_backgrounds()
 	
 	#region /*Level Tileset File*/
 	sprite_delete(global.custom_tileset);
-		
 	if (global.character_select_in_this_menu = "main_game")
 	and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/ground_tileset.png"))
 	{

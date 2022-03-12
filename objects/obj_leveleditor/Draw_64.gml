@@ -469,6 +469,8 @@
 	}
 	#endregion /*Options END*/
 	
+	#region /*Hover over icons reveals the icons*/
+	
 	#region /*Make bottom row of icons appear if mouse is hovering at bottom screen*/
 	if (drag_object = false)
 	and (asset_get_type("obj_level_player_1_start") == asset_object)
@@ -487,8 +489,8 @@
 	and (instance_exists(obj_level_end))
 	and (obj_level_end.drag_object = false)
 	{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height()))
+		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height()))
 		or(global.always_show_level_editor_buttons = true)
 		{
 			if (show_icons_at_bottom = false)
@@ -497,8 +499,8 @@
 			}
 		}
 		else
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, + 192, room_height * 2))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+		if (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height()))
+		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height()))
 		and (global.always_show_level_editor_buttons = false)
 		{
 			if (show_icons_at_bottom = true)
@@ -583,6 +585,8 @@
 	}
 	#endregion /*Make top row of icons appear if mouse is hovering at top screen END*/
 	
+	#endregion /*Hover over icons reveals the icons END*/
+	
 	#region /*Show icons at bottom of screen*/
 	if (show_icons_at_bottom = true)
 	and (drag_object = false)
@@ -623,6 +627,7 @@
 	#region /*Level Editor Icons*/
 	if (asset_get_type("spr_leveleditor_icons") == asset_sprite)
 	{
+		
 		#region /*Place brush icons*/
 		if (place_brush_size <= 0)
 		{
@@ -651,7 +656,6 @@
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 5, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 		}
-		
 		if (place_brush_size = 0)
 		and (erase_mode = false)
 		and (fill_mode = false)
@@ -693,6 +697,112 @@
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 5, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
+		
+		#region /*Click Pen*/
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), place_brush_icon_x -32, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64))
+		and (show_icons_at_bottom = true)
+		and (pause = false)
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(place_brush_icon_x -32, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			tooltip = "Paintbrush tool (D)";
+			show_tooltip += 2;
+			if (mouse_check_button_pressed(mb_left))
+			{
+				if (place_brush_size = 0)
+				and (fill_mode = false)
+				and (erase_mode = false)
+				{
+					place_brush_size = 1;
+				}
+				else
+				if (place_brush_size = 1)
+				and (fill_mode = false)
+				and (erase_mode = false)
+				{
+					place_brush_size = 2;
+				}
+				else
+				if (place_brush_size = 2)
+				and (fill_mode = false)
+				and (erase_mode = false)
+				{
+					place_brush_size = 3;
+				}
+				else
+				if (place_brush_size = 3)
+				and (fill_mode = false)
+				and (erase_mode = false)
+				{
+					place_brush_size = 4;
+				}
+				else
+				if (place_brush_size = 4)
+				and (fill_mode = false)
+				and (erase_mode = false)
+				{
+					place_brush_size = 5;
+				}
+				else
+				if (place_brush_size = 5)
+				and (fill_mode = false)
+				and (erase_mode = false)
+				{
+					place_brush_size = 0;
+				}
+				else
+				if (place_brush_size = 0)
+				{
+					place_brush_size = 0;
+					fill_mode = false;
+					erase_mode = false;
+				}
+				else
+				if (place_brush_size = 1)
+				{
+					place_brush_size = 1;
+					fill_mode = false;
+					erase_mode = false;
+				}
+				else
+				if (place_brush_size = 2)
+				{
+					place_brush_size = 2;
+					fill_mode = false;
+					erase_mode = false;
+				}
+				else
+				if (place_brush_size = 3)
+				{
+					place_brush_size = 3;
+					fill_mode = false;
+					erase_mode = false;
+				}
+				else
+				if (place_brush_size = 4)
+				{
+					place_brush_size = 4;
+					fill_mode = false;
+					erase_mode = false;
+				}
+				else
+				if (place_brush_size = 5)
+				{
+					place_brush_size = 5;
+					fill_mode = false;
+					erase_mode = false;
+				}
+				else
+				{
+					place_brush_size = 0;
+					fill_mode = false;
+					erase_mode = false;
+				}
+			}
+		}
+		#endregion /*Click Pen END*/
+		
 		#endregion /*Place brush icons END*/
 		
 		#region /*Erase icons*/
@@ -760,6 +870,70 @@
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 11, erase_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
+		
+		#region /*Click Erase*/
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), erase_icon_x -32, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64))
+		and (show_icons_at_bottom = true)
+		and (pause = false)
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(erase_icon_x -32, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			tooltip = "Erase tool (E)";
+			show_tooltip += 2;
+			if (mouse_check_button_pressed(mb_left))
+			{
+				if (erase_mode = false)
+				{
+					erase_mode = true;
+					fill_mode = false;
+				}
+				else
+				if (erase_brush_size = 0)
+				{
+					erase_brush_size = 1;
+					fill_mode = false;
+					erase_mode = true;
+				}
+				else
+				if (erase_brush_size = 1)
+				{
+					erase_brush_size = 2;
+					fill_mode = false;
+					erase_mode = true;
+				}
+				else
+				if (erase_brush_size = 2)
+				{
+					erase_brush_size = 3;
+					fill_mode = false;
+					erase_mode = true;
+				}
+				else
+				if (erase_brush_size = 3)
+				{
+					erase_brush_size = 4;
+					fill_mode = false;
+					erase_mode = true;
+				}
+				else
+				if (erase_brush_size = 4)
+				{
+					erase_brush_size = 5;
+					fill_mode = false;
+					erase_mode = true;
+				}
+				else
+				if (erase_brush_size = 5)
+				{
+					erase_brush_size = 0;
+					fill_mode = false;
+					erase_mode = true;
+				}
+			}
+		}
+		#endregion /*Click Erase END*/
+		
 		#endregion /*Erase icons END*/
 		
 		#region /*Fill icon*/
@@ -773,7 +947,65 @@
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 12, fill_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 		}
+		
+		#region /*Click Fill*/
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), fill_icon_x -32, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64))
+		and (show_icons_at_bottom = true)
+		and (pause = false)
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(fill_icon_x -32, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			tooltip = "Fill tool (F)";
+			show_tooltip += 2;
+			if (mouse_check_button_pressed(mb_left))
+			{
+				fill_mode = true;
+				erase_mode = false;
+			}
+		}
+		#endregion /*Click Fill END*/
+		
 		#endregion /*Fill icon END*/
+		
+		#region /*Always show level editor buttons toggle*/
+		if (global.always_show_level_editor_buttons = false)
+		{
+			draw_sprite_ext(spr_menu_cursor, 0, always_show_level_editor_buttons_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 270, c_white, 1);
+		}
+		else
+		if (global.always_show_level_editor_buttons = true)
+		{
+			draw_sprite_ext(spr_menu_cursor, 0, always_show_level_editor_buttons_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 90, c_white, 1);
+		}
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), always_show_level_editor_buttons_x -32, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64))
+		and (show_icons_at_bottom = true)
+		and (pause = false)
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(always_show_level_editor_buttons_x -32, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			tooltip = "Hide Buttons";
+			show_tooltip += 2;
+			if (mouse_check_button_pressed(mb_left))
+			and (global.always_show_level_editor_buttons = false)
+			{
+				global.always_show_level_editor_buttons = true;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "always_show_level_editor_buttons", true);
+				ini_close();
+			}
+			else
+			if (mouse_check_button_pressed(mb_left))
+			and (global.always_show_level_editor_buttons = true)
+			{
+				global.always_show_level_editor_buttons = false;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "always_show_level_editor_buttons", false);
+				ini_close();
+			}
+		}
+		#endregion /*Always show level editor buttons toggle END*/
 		
 		#region /*Show Undo icon*/
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
@@ -1009,7 +1241,6 @@
 	
 	#region /*Show Tooltip when hovering over icon, this code needs to be after the show icons code so it appears above the icons*/
 	if (show_tooltip >= 100)
-	//and (!tooltip = "")
 	{
 		draw_rectangle_color(window_mouse_get_x() + 16, window_mouse_get_y() - 16, window_mouse_get_x() + 240, window_mouse_get_y() + 16, c_white, c_white, c_white, c_white, false);
 		draw_set_halign(fa_left);
@@ -1063,193 +1294,18 @@
 		
 	}
 	#endregion /*Undo and Redo icons END*/
-
-	#region /*Click icons at bottom of screen*/
-	if (show_icons_at_bottom = true)
-	and (pause = false)
-	{
 	
-		#region /*Pen*/
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), place_brush_icon_x -32, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64))
-		{
-			tooltip = "Paintbrush tool (D)";
-			show_tooltip += 2;
-			if (mouse_check_button_pressed(mb_left))
-			{
-				if (place_brush_size = 0)
-				and (fill_mode = false)
-				and (erase_mode = false)
-				{
-					place_brush_size = 1;
-				}
-				else
-				if (place_brush_size = 1)
-				and (fill_mode = false)
-				and (erase_mode = false)
-				{
-					place_brush_size = 2;
-				}
-				else
-				if (place_brush_size = 2)
-				and (fill_mode = false)
-				and (erase_mode = false)
-				{
-					place_brush_size = 3;
-				}
-				else
-				if (place_brush_size = 3)
-				and (fill_mode = false)
-				and (erase_mode = false)
-				{
-					place_brush_size = 4;
-				}
-				else
-				if (place_brush_size = 4)
-				and (fill_mode = false)
-				and (erase_mode = false)
-				{
-					place_brush_size = 5;
-				}
-				else
-				if (place_brush_size = 5)
-				and (fill_mode = false)
-				and (erase_mode = false)
-				{
-					place_brush_size = 0;
-				}
-				else
-				if (place_brush_size = 0)
-				{
-					place_brush_size = 0;
-					fill_mode = false;
-					erase_mode = false;
-				}
-				else
-				if (place_brush_size = 1)
-				{
-					place_brush_size = 1;
-					fill_mode = false;
-					erase_mode = false;
-				}
-				else
-				if (place_brush_size = 2)
-				{
-					place_brush_size = 2;
-					fill_mode = false;
-					erase_mode = false;
-				}
-				else
-				if (place_brush_size = 3)
-				{
-					place_brush_size = 3;
-					fill_mode = false;
-					erase_mode = false;
-				}
-				else
-				if (place_brush_size = 4)
-				{
-					place_brush_size = 4;
-					fill_mode = false;
-					erase_mode = false;
-				}
-				else
-				if (place_brush_size = 5)
-				{
-					place_brush_size = 5;
-					fill_mode = false;
-					erase_mode = false;
-				}
-				else
-				{
-					place_brush_size = 0;
-					fill_mode = false;
-					erase_mode = false;
-				}
-			}
-		}
-		#endregion /*Pen END*/
-	
-		else
-
-	#region /*Erase (and more)*/
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), erase_icon_x -32, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64))
-	{
-		tooltip = "Erase tool (E)";
-		show_tooltip += 2;
-		if (mouse_check_button_pressed(mb_left))
-		{
-			if (erase_mode = false)
-			{
-				erase_mode = true;
-				fill_mode = false;
-			}
-			else
-			if (erase_brush_size = 0)
-			{
-				erase_brush_size = 1;
-				fill_mode = false;
-				erase_mode = true;
-			}
-			else
-			if (erase_brush_size = 1)
-			{
-				erase_brush_size = 2;
-				fill_mode = false;
-				erase_mode = true;
-			}
-			else
-			if (erase_brush_size = 2)
-			{
-				erase_brush_size = 3;
-				fill_mode = false;
-				erase_mode = true;
-			}
-			else
-			if (erase_brush_size = 3)
-			{
-				erase_brush_size = 4;
-				fill_mode = false;
-				erase_mode = true;
-			}
-			else
-			if (erase_brush_size = 4)
-			{
-				erase_brush_size = 5;
-				fill_mode = false;
-				erase_mode = true;
-			}
-			else
-			if (erase_brush_size = 5)
-			{
-				erase_brush_size = 0;
-				fill_mode = false;
-				erase_mode = true;
-			}
-		}
-	}
-	#endregion /*Erase (and more) END*/
-	
-	else
-	
-	#region /*Fill*/
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), fill_icon_x -32, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64))
-	{
-		tooltip = "Fill tool (F)";
-		show_tooltip += 2;
-		if (mouse_check_button_pressed(mb_left))
-		{
-			fill_mode = true;
-			erase_mode = false;
-		}
-	}
-	#endregion /*Fill END*/
-	
-	else
+	if (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
 	{
 		show_tooltip = 0;
 	}
 	
-	#region /*Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
+	#region /*Click icons at bottom of screen*/
+	if (show_icons_at_bottom = true)
+	and (pause = false)
+	{
+		
+		#region /*Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
 	
 	#region /*Easy*/
 	if (set_difficulty_mode = true)
@@ -1322,7 +1378,7 @@
 	#endregion /*Set Difficulty Mode / Back*/
 
 	#endregion /*Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard END*/
-
+		
 	}
 	#endregion /*Click icons at bottom of screen END*/
 

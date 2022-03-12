@@ -195,6 +195,7 @@ left_sidebar_x =-400;
 place_brush_icon_x = 32;
 erase_icon_x = 96;
 fill_icon_x = 160;
+always_show_level_editor_buttons_x = 224;
 
 screenie_x = 0;
 screenie_y = 0;

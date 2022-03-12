@@ -3,7 +3,8 @@ function scr_config_load()
 {
 	if (file_exists("config.ini"))
 	{
-		ini_open("config.ini");
+		ini_open(working_directory + "config.ini");
+		if (ini_key_exists("config", "always_show_level_editor_buttons")){global.always_show_level_editor_buttons = ini_read_real("config", "always_show_level_editor_buttons", true);}
 		if (ini_key_exists("config", "current_file")){global.file = ini_read_real("config", "current_file", 0);}
 		if (ini_key_exists("config", "difficulty")){global.difficulty = ini_read_real("config", "difficulty", 0);}
 		if (ini_key_exists("config", "automatically_pause_when_window_is_unfocused")){global.automatically_pause_when_window_is_unfocused = ini_read_real("config", "automatically_pause_when_window_is_unfocused", 0);}
