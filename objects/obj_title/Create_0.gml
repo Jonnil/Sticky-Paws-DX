@@ -257,7 +257,31 @@ or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_va
 	}
 	#endregion /*Sprite stand x origin point END*/
 	#endregion /*Sprite stand x and y origin points END*/
-						
+	
+	#region /*Sprite walk x and y origin points*/
+	#region /*Sprite walk y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_yorig"))
+	{
+		sprite_walk_yorig = ini_read_real("sprite origin points", "sprite_walk_yorig", 0);
+	}
+	else
+	{
+		sprite_walk_yorig = 0;
+	}
+	#endregion /*Sprite walk y origin point END*/
+	
+	#region /*Sprite walk x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_xorig"))
+	{
+		sprite_walk_xorig = ini_read_real("sprite origin points", "sprite_walk_xorig", 0);
+	}
+	else
+	{
+		sprite_walk_xorig = 0;
+	}
+	#endregion /*Sprite walk x origin point END*/
+	#endregion /*Sprite walk x and y origin points END*/
+	
 	#region /*Character select portrait x_scale and y_scale origin points*/
 	#region /*Character select portrait y_scale origin point*/
 	if (ini_key_exists("sprite origin points", "player_select_portrait_yscale"))
@@ -290,6 +314,8 @@ else
 	character_select_portrait_yorig = 0;
 	sprite_stand_xorig = 0;
 	sprite_stand_yorig = 0;
+	sprite_walk_xorig = 0;
+	sprite_walk_yorig = 0;
 	player1_select_portrait_xscale = 1;
 	player1_select_portrait_yscale = 1;
 }
@@ -356,6 +382,30 @@ or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_va
 	#endregion /*Sprite stand x origin point END*/
 	#endregion /*Sprite stand x and y origin points END*/
 	
+	#region /*Sprite walk x and y origin points*/
+	#region /*Sprite walk y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_yorig"))
+	{
+		sprite_walk_yorig = ini_read_real("sprite origin points", "sprite_walk_yorig", 0);
+	}
+	else
+	{
+		sprite_walk_yorig = 0;
+	}
+	#endregion /*Sprite walk y origin point END*/
+	
+	#region /*Sprite walk x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_xorig"))
+	{
+		sprite_walk_xorig = ini_read_real("sprite origin points", "sprite_walk_xorig", 0);
+	}
+	else
+	{
+		sprite_walk_xorig = 0;
+	}
+	#endregion /*Sprite walk x origin point END*/
+	#endregion /*Sprite walk x and y origin points END*/
+	
 	#region /*Character select portrait x_scale and y_scale origin points*/
 	#region /*Character select portrait y_scale origin point*/
 	if (ini_key_exists("sprite origin points", "player_select_portrait_yscale"))
@@ -388,6 +438,8 @@ else
 	character_select_portrait_yorig = 0;
 	sprite_stand_xorig = 0;
 	sprite_stand_yorig = 0;
+	sprite_walk_xorig = 0;
+	sprite_walk_yorig = 0;
 	player2_select_portrait_xscale = 1;
 	player2_select_portrait_yscale = 1;
 }
@@ -454,6 +506,30 @@ or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_va
 	#endregion /*Sprite stand x origin point END*/
 	#endregion /*Sprite stand x and y origin points END*/
 	
+	#region /*Sprite walk x and y origin points*/
+	#region /*Sprite walk y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_yorig"))
+	{
+		sprite_walk_yorig = ini_read_real("sprite origin points", "sprite_walk_yorig", 0);
+	}
+	else
+	{
+		sprite_walk_yorig = 0;
+	}
+	#endregion /*Sprite walk y origin point END*/
+	
+	#region /*Sprite walk x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_xorig"))
+	{
+		sprite_walk_xorig = ini_read_real("sprite origin points", "sprite_walk_xorig", 0);
+	}
+	else
+	{
+		sprite_walk_xorig = 0;
+	}
+	#endregion /*Sprite walk x origin point END*/
+	#endregion /*Sprite walk x and y origin points END*/
+	
 	#region /*Character select portrait x_scale and y_scale origin points*/
 	#region /*Character select portrait y_scale origin point*/
 	if (ini_key_exists("sprite origin points", "player_select_portrait_yscale"))
@@ -486,6 +562,8 @@ else
 	character_select_portrait_yorig = 0;
 	sprite_stand_xorig = 0;
 	sprite_stand_yorig = 0;
+	sprite_walk_xorig = 0;
+	sprite_walk_yorig = 0;
 	player3_select_portrait_xscale = 1;
 	player3_select_portrait_yscale = 1;
 }
@@ -552,6 +630,30 @@ or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_va
 	#endregion /*Sprite stand x origin point END*/
 	#endregion /*Sprite stand x and y origin points END*/
 	
+	#region /*Sprite walk x and y origin points*/
+	#region /*Sprite walk y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_yorig"))
+	{
+		sprite_walk_yorig = ini_read_real("sprite origin points", "sprite_walk_yorig", 0);
+	}
+	else
+	{
+		sprite_walk_yorig = 0;
+	}
+	#endregion /*Sprite walk y origin point END*/
+	
+	#region /*Sprite walk x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_xorig"))
+	{
+		sprite_walk_xorig = ini_read_real("sprite origin points", "sprite_walk_xorig", 0);
+	}
+	else
+	{
+		sprite_walk_xorig = 0;
+	}
+	#endregion /*Sprite walk x origin point END*/
+	#endregion /*Sprite walk x and y origin points END*/
+	
 	#region /*Character select portrait x_scale and y_scale origin points*/
 	#region /*Character select portrait y_scale origin point*/
 	if (ini_key_exists("sprite origin points", "player_select_portrait_yscale"))
@@ -584,6 +686,8 @@ else
 	character_select_portrait_yorig = 0;
 	sprite_stand_xorig = 0;
 	sprite_stand_yorig = 0;
+	sprite_walk_xorig = 0;
+	sprite_walk_yorig = 0;
 	player4_select_portrait_xscale = 1;
 	player4_select_portrait_yscale = 1;
 }
@@ -620,10 +724,6 @@ lastkey = noone;
 
 #region /*Remapping options variables*/
 remapping_player = 0;
-/*remapping_player 0 = player 1.
-remapping_player 1 = player 2.
-remapping_player 2 = player 3.
-remapping_player 3 = player 4 */
 input_key = false;
 can_remap_key = false;
 #endregion /*Remapping options variables END*/

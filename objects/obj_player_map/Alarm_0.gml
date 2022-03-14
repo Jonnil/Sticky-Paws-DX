@@ -134,6 +134,32 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	#endregion /*Sprite stand y origin point END*/
 	#endregion /*Sprite stand x and y origin points END*/
 	
+	#region /*Sprite walk x and y origin points*/
+	#region /*Sprite walk x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_xorig"))
+	{
+		sprite_walk_xorig = ini_read_real("sprite origin points", "sprite_walk_xorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_walk_xorig", 0);
+		sprite_walk_xorig = 0;
+	}
+	#endregion /*Sprite walk x origin point END*/
+
+	#region /*Sprite walk y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_walk_yorig"))
+	{
+		sprite_walk_yorig = ini_read_real("sprite origin points", "sprite_walk_yorig", 0);
+	}
+	else
+	{
+		//ini_write_real("sprite origin points", "sprite_walk_yorig", 0);
+		sprite_walk_yorig = 0;
+	}
+	#endregion /*Sprite walk y origin point END*/
+	#endregion /*Sprite walk x and y origin points END*/
+	
 	ini_close();
 }
 
@@ -146,6 +172,8 @@ else
 	sprite_map_enter_level_yorig = 0;
 	sprite_stand_xorig = 0;
 	sprite_stand_yorig = 0;
+	sprite_walk_xorig = 0;
+	sprite_walk_yorig = 0;
 }
 #endregion /*If there is no config.ini file, then make every xorig and yorig variable zero END*/
 
@@ -156,7 +184,9 @@ else
 sprite_map = scr_initialize_custom_character_sprite("map", sprite_map, sprite_map_xorig, sprite_map_yorig);
 sprite_map_enter_level = scr_initialize_custom_character_sprite("map_enter_level", sprite_map_enter_level, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
 sprite_map_enter_level = scr_initialize_custom_character_sprite("map_enter", sprite_map_enter_level, sprite_map_enter_level_xorig, sprite_map_enter_level_yorig);
+sprite_stand = scr_initialize_custom_character_sprite("idle", sprite_stand, sprite_stand_xorig, sprite_stand_yorig);
 sprite_stand = scr_initialize_custom_character_sprite("stand", sprite_stand, sprite_stand_xorig, sprite_stand_yorig);
+sprite_walk = scr_initialize_custom_character_sprite("walk", sprite_walk, sprite_walk_xorig, sprite_walk_yorig);
 
 #endregion /*Sprite variables END*/
 
@@ -170,5 +200,10 @@ else
 if (sprite_stand > noone)
 {
 	sprite_index = sprite_stand;
+}
+else
+if (sprite_walk > noone)
+{
+	sprite_index = sprite_walk;
 }
 #endregion /*Initialize Custom Character END*/

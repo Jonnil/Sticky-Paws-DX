@@ -1,23 +1,23 @@
 function scr_zoom_camera_controls()
 {
-	/*This script uses draw functions so only use it in draw events*/
+	/*This script uses normal draw functions so only use it in normal draw event (Not draw GUI)*/
 	var zoom_speed = 0.015;
 	if (room = room_title)
 	{
-		zoom_lerp = 1;
+		zoom_lerp = 1; /*In create event, have this: zoom_lerp = 1;*/
 	}
 	else
 	if (room = room_world_map)
 	{
-		zoom_lerp = lerp(zoom_lerp, global.zoom_world_map, 0.1);
+		zoom_lerp = lerp(zoom_lerp, global.zoom_world_map, 0.1); /*In create event, have this: zoom_lerp = global.zoom_world_map;*/
 		global.zoom_world_map = clamp(global.zoom_world_map, 0.2, 1);
 	}
 	else
 	{
-		zoom_lerp = lerp(zoom_lerp, global.zoom_level, 0.1);
+		zoom_lerp = lerp(zoom_lerp, global.zoom_level, 0.1); /*In create event, have this: zoom_lerp = global.zoom_level;*/
 		global.zoom_level = clamp(global.zoom_level, 0.2, 1);
 	}
-	zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1);
+	zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1); /*In create event, have this: zoom_border_lerp = 0;*/
 	camera_set_view_size(view_camera[view_current], camera_get_view_width(view_camera[view_current]) * zoom_lerp, camera_get_view_height(view_camera[view_current]) * zoom_lerp);
 	
 	if (keyboard_check(vk_add))

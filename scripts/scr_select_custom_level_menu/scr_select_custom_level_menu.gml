@@ -995,9 +995,9 @@ function scr_select_custom_level_menu()
 			
 			if (global.character_select_in_this_menu = "level_editor")
 			and (global.level_name != "")
-			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
+			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png"))
 			{
-				global.custom_tileset = sprite_add(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png", 0, false, false, 0, 0);
+				global.custom_tileset = sprite_add(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
 			}
 			else
 			{

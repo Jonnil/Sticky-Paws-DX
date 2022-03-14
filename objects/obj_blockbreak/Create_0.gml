@@ -1,6 +1,6 @@
 time = 2;
 can_break_other_blocks = false;
-visible = true; /*Make this mask invisible*/
+visible = false; /*Make this mask invisible*/
 
 #region /*Mask*/
 if (asset_get_type("spr_wall") == asset_sprite)

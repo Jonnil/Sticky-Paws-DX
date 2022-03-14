@@ -498,7 +498,14 @@ if (asset_get_type("scr_config_load") == asset_script)
 #endregion /*Load Config END*/
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
-global.resourcepack_sprite_ground_tileset = spr_wall;
+global.resourcepack_sprite_tileset_default = spr_wall;
+global.resourcepack_sprite_tileset_dirt = spr_wall;
+global.resourcepack_sprite_tileset_glass = spr_wall;
+global.resourcepack_sprite_tileset_grass = spr_wall;
+global.resourcepack_sprite_tileset_gravel = spr_wall;
+global.resourcepack_sprite_tileset_metal = spr_wall;
+global.resourcepack_sprite_tileset_stone = spr_wall;
+global.resourcepack_sprite_tileset_wood = spr_wall;
 global.resourcepack_sprite_title_logo = spr_wall;
 global.resourcepack_sprite_title_logo_christmas = spr_wall;
 global.resourcepack_sprite_artwork_collection = spr_wall;

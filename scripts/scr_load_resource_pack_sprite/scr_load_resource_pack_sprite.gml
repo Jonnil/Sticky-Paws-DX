@@ -10,7 +10,14 @@ function scr_load_resource_pack_sprite()
 	#region /*Delete sprites before loading new sprites*/
 	if (room != room_splash_screen)
 	{
-		if (global.resourcepack_sprite_ground_tileset > 0){sprite_delete(global.resourcepack_sprite_ground_tileset);}
+		if (global.resourcepack_sprite_tileset_default > 0){sprite_delete(global.resourcepack_sprite_tileset_default);}
+		if (global.resourcepack_sprite_tileset_dirt > 0){sprite_delete(global.resourcepack_sprite_tileset_dirt);}
+		if (global.resourcepack_sprite_tileset_glass > 0){sprite_delete(global.resourcepack_sprite_tileset_glass);}
+		if (global.resourcepack_sprite_tileset_grass > 0){sprite_delete(global.resourcepack_sprite_tileset_grass);}
+		if (global.resourcepack_sprite_tileset_gravel > 0){sprite_delete(global.resourcepack_sprite_tileset_gravel);}
+		if (global.resourcepack_sprite_tileset_metal > 0){sprite_delete(global.resourcepack_sprite_tileset_metal);}
+		if (global.resourcepack_sprite_tileset_stone > 0){sprite_delete(global.resourcepack_sprite_tileset_stone);}
+		if (global.resourcepack_sprite_tileset_wood > 0){sprite_delete(global.resourcepack_sprite_tileset_wood);}
 		if (global.resourcepack_sprite_title_logo > 0){sprite_delete(global.resourcepack_sprite_title_logo);}
 		if (global.resourcepack_sprite_title_logo_christmas > 0){sprite_delete(global.resourcepack_sprite_title_logo_christmas);}
 		if (global.resourcepack_sprite_artwork_collection > 0){sprite_delete(global.resourcepack_sprite_artwork_collection);}
@@ -54,7 +61,14 @@ function scr_load_resource_pack_sprite()
 			ini_open(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini");
 		}
 		
-		global.resourcepack_sprite_ground_tileset = scr_initialize_resource_pack_sprite("ground_tileset", global.resourcepack_sprite_ground_tileset);
+		global.resourcepack_sprite_tileset_default = scr_initialize_resource_pack_sprite("tileset_default", global.resourcepack_sprite_tileset_default);
+		global.resourcepack_sprite_tileset_dirt = scr_initialize_resource_pack_sprite("tileset_dirt", global.resourcepack_sprite_tileset_dirt);
+		global.resourcepack_sprite_tileset_glass = scr_initialize_resource_pack_sprite("tileset_glass", global.resourcepack_sprite_tileset_glass);
+		global.resourcepack_sprite_tileset_grass = scr_initialize_resource_pack_sprite("tileset_grass", global.resourcepack_sprite_tileset_grass);
+		global.resourcepack_sprite_tileset_gravel = scr_initialize_resource_pack_sprite("tileset_gravel", global.resourcepack_sprite_tileset_gravel);
+		global.resourcepack_sprite_tileset_metal = scr_initialize_resource_pack_sprite("tileset_metal", global.resourcepack_sprite_tileset_metal);
+		global.resourcepack_sprite_tileset_stone = scr_initialize_resource_pack_sprite("tileset_stone", global.resourcepack_sprite_tileset_stone);
+		global.resourcepack_sprite_tileset_wood = scr_initialize_resource_pack_sprite("tileset_wood", global.resourcepack_sprite_tileset_wood);
 		global.resourcepack_sprite_title_logo = scr_initialize_resource_pack_sprite("title_logo", global.resourcepack_sprite_title_logo);
 		global.resourcepack_sprite_title_logo_christmas = scr_initialize_resource_pack_sprite("title_logo_christmas", global.resourcepack_sprite_title_logo_christmas);
 		global.resourcepack_sprite_artwork_collection = scr_initialize_resource_pack_sprite("artwork_collection", global.resourcepack_sprite_artwork_collection);

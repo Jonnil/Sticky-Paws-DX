@@ -12,7 +12,7 @@
 //draw_text_outlined(x -32, y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 64, string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x -32, y - 128, string(global.player1_can_play), global.default_text_size, c_white, c_black, 1);
+draw_text_outlined(x -32, y - 128, string(jump_transition_to_fall_animation), global.default_text_size, c_white, c_black, 1);
 
 if (bruh = true)
 {
@@ -211,7 +211,8 @@ if (takendamage >= takendamage_freezetime)
 	else
 	if (intro_animation = "")
 	{
-		sprite_index = sprite_stand;
+		if (sprite_stand > noone){sprite_index = sprite_stand;}else
+		{sprite_index = sprite_walk;}
 	}
 	if (image_index > image_number - 1)
 	{

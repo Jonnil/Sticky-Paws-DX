@@ -919,6 +919,32 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	#endregion /*Sprite jump y origin point END*/
 	#endregion /*Sprite jump x and y origin points END*/
+	
+	#region /*Sprite jump transition to fall x and y origin points*/
+	#region /*Sprite jump transition to fall x origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_jump_transition_to_fall_xorig"))
+	{
+		sprite_jump_transition_to_fall_xorig = ini_read_real("sprite origin points", "sprite_jump_transition_to_fall_xorig", 0);
+	}
+	else
+	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_jump_transition_to_fall_xorig", 0);}
+		sprite_jump_transition_to_fall_xorig = 0;
+	}
+	#endregion /*Sprite jump transition to fall x origin point END*/
+
+	#region /*Sprite jump transition to fall y origin point*/
+	if (ini_key_exists("sprite origin points", "sprite_jump_transition_to_fall_yorig"))
+	{
+		sprite_jump_transition_to_fall_yorig = ini_read_real("sprite origin points", "sprite_jump_transition_to_fall_yorig", 0);
+	}
+	else
+	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_jump_transition_to_fall_yorig", 0);}
+		sprite_jump_transition_to_fall_yorig = 0;
+	}
+	#endregion /*Sprite jump transition to fall y origin point END*/
+	#endregion /*Sprite jump transition to fall x and y origin points END*/
 
 	#region /*Sprite double jump x and y origin points*/
 	#region /*Sprite double jump x origin point*/
@@ -1031,6 +1057,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "climb_under_y_offset", 0);}
 		climb_under_y_offset = 0;
 	}
 	#endregion /*Climb under y offset END*/
@@ -1121,7 +1148,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	}
 	else
 	{
-		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_spin_xorigrite_stand_xorig", 0);}
+		if (can_save_to_character_config = true){ini_write_real("sprite origin points", "sprite_climb_under_spin_xorig", 0);}
 		sprite_climb_under_spin_xorig = 0;
 	}
 	#endregion /*Sprite climb under spin x origin point END*/
@@ -1740,6 +1767,8 @@ else
 	sprite_ground_pound_yorig = 0;
 	sprite_jump_xorig = 0;
 	sprite_jump_yorig = 0;
+	sprite_jump_transition_to_fall_xorig = 0;
+	sprite_jump_transition_to_fall_yorig = 0;
 	sprite_look_up_xorig = 0;
 	sprite_look_up_yorig = 0;
 	sprite_look_up_start_xorig = 0;
@@ -1839,6 +1868,7 @@ sprite_ground_pound = scr_initialize_custom_character_sprite("groundpound", spri
 sprite_ground_pound_get_up = scr_initialize_custom_character_sprite("ground_pound_get_up", sprite_ground_pound_get_up, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
 sprite_ground_pound_get_up = scr_initialize_custom_character_sprite("groundpound_getup", sprite_ground_pound_get_up, sprite_ground_pound_get_up_xorig, sprite_ground_pound_get_up_yorig);
 sprite_jump = scr_initialize_custom_character_sprite("jump", sprite_jump, sprite_jump_xorig, sprite_jump_yorig);
+sprite_jump_transition_to_fall = scr_initialize_custom_character_sprite("jump_transition_to_fall", sprite_jump_transition_to_fall, sprite_jump_transition_to_fall_xorig, sprite_jump_transition_to_fall_yorig);
 sprite_look_up = scr_initialize_custom_character_sprite("look_up", sprite_look_up, sprite_look_up_xorig, sprite_look_up_yorig);
 sprite_look_up = scr_initialize_custom_character_sprite("lookup", sprite_look_up, sprite_look_up_xorig, sprite_look_up_yorig);
 sprite_look_up_start = scr_initialize_custom_character_sprite("look_up_start", sprite_look_up_start, sprite_look_up_start_xorig, sprite_look_up_start_yorig);
@@ -1863,6 +1893,7 @@ sprite_skidding_ice = scr_initialize_custom_character_sprite("skidding_ice", spr
 sprite_spring_down = scr_initialize_custom_character_sprite("spring_down", sprite_spring_down, sprite_spring_down_xorig, sprite_spring_down_yorig);
 sprite_spring_transition = scr_initialize_custom_character_sprite("spring_transition", sprite_spring_transition, sprite_spring_transition_xorig, sprite_spring_transition_yorig);
 sprite_spring_up = scr_initialize_custom_character_sprite("spring_up", sprite_spring_up, sprite_spring_up_xorig, sprite_spring_up_yorig);
+sprite_stand = scr_initialize_custom_character_sprite("idle", sprite_stand, sprite_stand_xorig, sprite_stand_yorig);
 sprite_stand = scr_initialize_custom_character_sprite("stand", sprite_stand, sprite_stand_xorig, sprite_stand_yorig);
 sprite_stand_cold = scr_initialize_custom_character_sprite("cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
 sprite_stand_cold = scr_initialize_custom_character_sprite("stand_cold", sprite_stand_cold, sprite_stand_cold_xorig, sprite_stand_cold_yorig);
@@ -8055,15 +8086,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	#region /*Acceleration on ground*/
 	if (ini_key_exists("values", "acceleration_on_ground"))
 	{
-		//if (os_type = os_linux)
-		//{
-		//	if (ini_read_real("values", "acceleration_on_ground", 0.3) < 1){acceleration_on_ground = 0.3;}else
-		//	{acceleration_on_ground = ini_read_real("values", "acceleration_on_ground", 0.3);}
-		//}
-		//else
-		//{
-			acceleration_on_ground = ini_read_real("values", "acceleration_on_ground", 30) * 0.01;
-		//}
+		acceleration_on_ground = ini_read_real("values", "acceleration_on_ground", 30) * 0.01;
 	}
 	else
 	{
@@ -8075,15 +8098,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	#region /*Acceleration in air*/
 	if (ini_key_exists("values", "acceleration_in_air"))
 	{
-		//if (os_type = os_linux)
-		//{
-		//	if (ini_read_real("values", "acceleration_in_air", 0.3) < 1){acceleration_in_air = 0.3;}else
-		//	{acceleration_in_air = ini_read_real("values", "acceleration_in_air", 0.3);}
-		//}
-		//else
-		//{
-			acceleration_in_air = ini_read_real("values", "acceleration_in_air", 30) * 0.01;
-		//}
+		acceleration_in_air = ini_read_real("values", "acceleration_in_air", 30) * 0.01;
 	}
 	else
 	{
@@ -8095,15 +8110,7 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	#region /*Acceleration on ice*/
 	if (ini_key_exists("values", "acceleration_on_ice"))
 	{
-		//if (os_type = os_linux)
-		//{
-		//	if (ini_read_real("values", "acceleration_on_ice", 0.3) < 1){acceleration_on_ice = 0.3;}else
-		//	{acceleration_on_ice = ini_read_real("values", "acceleration_on_ice", 0.3);}
-		//}
-		//else
-		//{
-			acceleration_on_ice = ini_read_real("values", "acceleration_on_ice", 5) * 0.01;
-		//}
+		acceleration_on_ice = ini_read_real("values", "acceleration_on_ice", 5) * 0.01;
 	}
 	else
 	{

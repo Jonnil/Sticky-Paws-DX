@@ -6197,7 +6197,7 @@ function scr_options_menu()
 						}
 						#endregion /*Character select portrait x origin point END*/
 						#endregion /*Character select portrait x and y origin points END*/
-					
+						
 						#region /*Sprite stand x and y origin points*/
 						#region /*Sprite stand y origin point*/
 						if (ini_key_exists("sprite origin points", "sprite_stand_yorig"))
@@ -6209,7 +6209,7 @@ function scr_options_menu()
 							sprite_stand_yorig = 0;
 						}
 						#endregion /*Sprite stand y origin point END*/
-					
+						
 						#region /*Sprite stand x origin point*/
 						if (ini_key_exists("sprite origin points", "sprite_stand_xorig"))
 						{
@@ -6221,6 +6221,30 @@ function scr_options_menu()
 						}
 						#endregion /*Sprite stand x origin point END*/
 						#endregion /*Sprite stand x and y origin points END*/
+						
+						#region /*Sprite walk x and y origin points*/
+						#region /*Sprite walk y origin point*/
+						if (ini_key_exists("sprite origin points", "sprite_walk_yorig"))
+						{
+							sprite_walk_yorig = ini_read_real("sprite origin points", "sprite_walk_yorig", 0);
+						}
+						else
+						{
+							sprite_walk_yorig = 0;
+						}
+						#endregion /*Sprite walk y origin point END*/
+						
+						#region /*Sprite walk x origin point*/
+						if (ini_key_exists("sprite origin points", "sprite_walk_xorig"))
+						{
+							sprite_walk_xorig = ini_read_real("sprite origin points", "sprite_walk_xorig", 0);
+						}
+						else
+						{
+							sprite_walk_xorig = 0;
+						}
+						#endregion /*Sprite walk x origin point END*/
+						#endregion /*Sprite walk x and y origin points END*/
 						
 						#region /*Character select portrait x_scale and y_scale origin points*/
 						#region /*Character select portrait y_scale origin point*/
@@ -6254,6 +6278,8 @@ function scr_options_menu()
 						character_select_portrait_yorig = 0;
 						sprite_stand_xorig = 0;
 						sprite_stand_yorig = 0;
+						sprite_walk_xorig = 0;
+						sprite_walk_yorig = 0;
 						player1_select_portrait_xscale = 1;
 						player1_select_portrait_yscale = 1;
 					}
@@ -6261,6 +6287,8 @@ function scr_options_menu()
 						
 					#region /*Player 1 character select portrait sprite*/
 					global.sprite_select_player_1 = spr_noone;
+					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, sprite_walk_xorig, sprite_walk_yorig, 0, global.skin_for_player_1);
+					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, sprite_stand_xorig, sprite_stand_yorig, 0, global.skin_for_player_1);
 					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, sprite_stand_xorig, sprite_stand_yorig, 0, global.skin_for_player_1);
 					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, character_select_portrait_xorig, character_select_portrait_yorig, 0, global.skin_for_player_1);
 					#endregion /*Player 1 character select portrait sprite END*/
@@ -6387,6 +6415,30 @@ function scr_options_menu()
 						#endregion /*Sprite stand x origin point END*/
 						#endregion /*Sprite stand x and y origin points END*/
 						
+						#region /*Sprite walk x and y origin points*/
+						#region /*Sprite walk y origin point*/
+						if (ini_key_exists("sprite origin points", "sprite_walk_yorig"))
+						{
+							sprite_walk_yorig = ini_read_real("sprite origin points", "sprite_walk_yorig", 0);
+						}
+						else
+						{
+							sprite_walk_yorig = 0;
+						}
+						#endregion /*Sprite walk y origin point END*/
+						
+						#region /*Sprite walk x origin point*/
+						if (ini_key_exists("sprite origin points", "sprite_walk_xorig"))
+						{
+							sprite_walk_xorig = ini_read_real("sprite origin points", "sprite_walk_xorig", 0);
+						}
+						else
+						{
+							sprite_walk_xorig = 0;
+						}
+						#endregion /*Sprite walk x origin point END*/
+						#endregion /*Sprite walk x and y origin points END*/
+						
 						#region /*Character select portrait x_scale and y_scale origin points*/
 						#region /*Character select portrait y_scale origin point*/
 						if (ini_key_exists("sprite origin points", "player_select_portrait_yscale"))
@@ -6419,6 +6471,8 @@ function scr_options_menu()
 						character_select_portrait_yorig = 0;
 						sprite_stand_xorig = 0;
 						sprite_stand_yorig = 0;
+						sprite_walk_xorig = 0;
+						sprite_walk_yorig = 0;
 						player1_select_portrait_xscale = 1;
 						player1_select_portrait_yscale = 1;
 					}
@@ -6426,6 +6480,8 @@ function scr_options_menu()
 						
 					#region /*Player 1 character select portrait sprite*/
 					global.sprite_select_player_1 = spr_noone;
+					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, sprite_walk_xorig, sprite_walk_yorig, 0, global.skin_for_player_1);
+					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, sprite_stand_xorig, sprite_stand_yorig, 0, global.skin_for_player_1);
 					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, sprite_stand_xorig, sprite_stand_yorig, 0, global.skin_for_player_1);
 					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, character_select_portrait_xorig, character_select_portrait_yorig, 0, global.skin_for_player_1);
 					#endregion /*Player 1 character select portrait sprite END*/

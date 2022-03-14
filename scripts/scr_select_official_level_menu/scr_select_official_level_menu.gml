@@ -497,11 +497,11 @@ function scr_select_official_level_menu()
 			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/music/music.ogg",
 			working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/music/music.ogg");
 		}
-		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/ground_tileset.png"))
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
 		{
 			file_copy(
-			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/ground_tileset.png",
-			working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png");
+			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png",
+			working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png");
 		}
 		#endregion /*Copy files from official levels to level editor END*/
 		
@@ -935,9 +935,9 @@ function scr_select_official_level_menu()
 			if (global.character_select_in_this_menu = "level_editor")
 			and (global.create_level_from_template >= true)
 			and (global.level_name != "")
-			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png"))
+			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png"))
 			{
-				global.custom_tileset = sprite_add(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/ground_tileset.png", 0, false, false, 0, 0);
+				global.custom_tileset = sprite_add(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
 			}
 			else
 			{

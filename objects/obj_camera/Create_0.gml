@@ -21,6 +21,56 @@ big_collectible3_already_collected = false;
 big_collectible4_already_collected = false;
 big_collectible5_already_collected = false;
 
+make_every_tileset_into_default_tileset = false;
+
+if (global.character_select_in_this_menu = "main_game")
+and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
+
+or(global.character_select_in_this_menu = "level_editor")
+and (global.create_level_from_template = true)
+and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
+
+or(global.character_select_in_this_menu = "level_editor")
+and (global.select_level_index <= 0)
+and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+
+or(global.character_select_in_this_menu = "level_editor")
+and (global.create_level_from_template >= 2)
+and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+
+or(global.character_select_in_this_menu = "level_editor")
+and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
+{
+	if (global.character_select_in_this_menu = "main_game")
+	or(global.create_level_from_template = true)
+	{
+		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
+	}
+	else
+	if (global.character_select_in_this_menu = "level_editor")
+	and (global.select_level_index <= 0)
+	or(global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template >= 2)
+	{
+		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+	}
+	else
+	if (global.character_select_in_this_menu = "level_editor")
+	{
+		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+	}
+	
+	if (ini_key_exists("info", "make_every_tileset_into_default_tileset"))
+	{
+		make_every_tileset_into_default_tileset = ini_read_real("info", "make_every_tileset_into_default_tileset", false);
+	}
+	ini_close();
+}
+else
+{
+	make_every_tileset_into_default_tileset = false;
+}
+
 #region /*Lives Icon*/
 if (global.player1_can_play = true)
 {

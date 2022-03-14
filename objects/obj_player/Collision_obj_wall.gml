@@ -45,8 +45,8 @@ and (stick_to_wall = false)
 	
 	vspeed = 0;
 	gravity = 0;
-	laststandingx = x;
-	laststandingy = y + sprite_height / 2;
+	last_standing_x = x;
+	last_standing_y = y + sprite_height / 2;
 	draw_xscale = 1.25;
 	draw_yscale = 0.75;
 	can_ground_pound = true;

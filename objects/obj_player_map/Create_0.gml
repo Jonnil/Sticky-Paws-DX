@@ -192,11 +192,14 @@ sprite_map_enter_level_xorig = 0;
 sprite_map_enter_level_yorig = 0;
 sprite_stand_xorig = 0;
 sprite_stand_yorig = 0;
+sprite_walk_xorig = 0;
+sprite_walk_yorig = 0;
 
 index = 0;
 sprite_map = noone;
 sprite_map_enter_level = noone;
 sprite_stand = noone;
+sprite_walk = noone;
 #endregion /*Play as custom character END*/
 
 scr_config_load(); /*Load Config only once in create event, or it will mess up the options menu navigation*/

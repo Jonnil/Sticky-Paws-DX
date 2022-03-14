@@ -1042,6 +1042,11 @@ if (entering_level = true)
 	{
 		sprite_index = sprite_stand;
 	}
+	else
+	if (sprite_walk > noone)
+	{
+		sprite_index = sprite_walk;
+	}
 }
 else
 {
@@ -1050,9 +1055,20 @@ else
 		sprite_index = sprite_map;
 	}
 	else
+	if (sprite_walk > noone)
+	and (point_distance(xx, yy, x, y) > 2)
+	{
+		sprite_index = sprite_walk;
+	}
+	else
 	if (sprite_stand > noone)
 	{
 		sprite_index = sprite_stand;
+	}
+	else
+	if (sprite_walk > noone)
+	{
+		sprite_index = sprite_walk;
 	}
 }
 
