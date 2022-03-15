@@ -1,6 +1,6 @@
 if (asset_get_type("obj_camera") == asset_object)
 and (instance_exists(obj_camera))
-and (distance_to_object(obj_camera)<500)
+and (distance_to_object(obj_camera) <500)
 and (asset_get_type("snd_music_boss") == asset_sound)
 and (global.music != snd_music_boss)
 and (has_seen_player = true)

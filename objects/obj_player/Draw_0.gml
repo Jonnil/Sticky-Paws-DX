@@ -11,8 +11,8 @@
 //draw_text_outlined(x -32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x -32, y - 64, string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
-draw_text_outlined(x -32, y - 128, string(jump_transition_to_fall_animation), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 64, string(global.music_volume), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 128, string(jump_transition_to_fall_animation), global.default_text_size, c_white, c_black, 1);
 
 if (bruh = true)
 {

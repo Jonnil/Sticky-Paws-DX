@@ -195,6 +195,10 @@ global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
 global.selected_resourcepack = 0; /* 0 = default*/
 global.selected_title_background = 0; /* 0 = default*/
+
+global.default_zoom_level = 1; /*if reset_level_zoom_when_going_back_to_map = true, then set zoom to this number*/
+global.default_zoom_world_map = 1; /*if reset_world_map_zoom_when_going_back_to_map = true, then set zoom to this number*/
+
 global.zoom_level = 1; /*Zooming the view in and out, by default it's set to 1*/
 global.zoom_world_map = 1; /*Zooming the view in and out, by default it's set to 1*/
 global.reset_level_zoom_when_going_back_to_map = false;
@@ -480,15 +484,6 @@ global.player4_wall_jump_setting = 1;
 global.player4_drop_from_rope = 1;
 global.player4_show_controls = 1;
 #endregion /*Player 4 Keyboard Remapping (everything should be set to noone) END*/
-
-#region /*Mobile Controls Settings*/
-global.mobile_joystick_x = 0;
-global.mobile_joystick_y = 300;
-global.mobile_key_jump_x = 1824;
-global.mobile_key_jump_y = 984 - 16;
-global.mobile_key_sprint_x = 1568;
-global.mobile_key_sprint_y = 984 - 16;
-#endregion /*Mobile Controls Settings END*/
 
 #region /*Load Config*/
 if (asset_get_type("scr_config_load") == asset_script)

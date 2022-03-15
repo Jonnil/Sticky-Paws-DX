@@ -71,10 +71,10 @@ or(gamepad_button_check(0, gp_shoulderrb))
 or(gamepad_button_check(0, gp_start))
 or(gamepad_button_check(0, gp_stickl))
 or(gamepad_button_check(0, gp_stickr))
-or(gamepad_axis_value(0, gp_axislh)<> 0)
-or(gamepad_axis_value(0, gp_axislv)<> 0)
-or(gamepad_axis_value(0, gp_axisrh)<> 0)
-or(gamepad_axis_value(0, gp_axisrv)<> 0)
+or(gamepad_axis_value(0, gp_axislh) <> 0)
+or(gamepad_axis_value(0, gp_axislv) <> 0)
+or(gamepad_axis_value(0, gp_axisrh) <> 0)
+or(gamepad_axis_value(0, gp_axisrv) <> 0)
 {
 	global.controls_used_for_menu_navigation = "controller";
 }
@@ -143,8 +143,8 @@ and (!instance_exists(obj_foreground_secret))
 
 #region /*Controls for level editor*/
 gamepad_set_axis_deadzone(0, 0.5);
-key_up =(keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or(keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv)< 0);
-key_left =(keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right))or(keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh)< 0);
+key_up =(keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or(keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv) < 0);
+key_left =(keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right))or(keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh) < 0);
 key_right =(keyboard_check_pressed(global.player1_key_right)) and (!keyboard_check_pressed(global.player1_key_left))or(keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
 key_down =(keyboard_check_pressed(global.player1_key_down)) and (!keyboard_check_pressed(global.player1_key_up))or(keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or(gamepad_axis_value(0, gp_axislv) > 0);
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or(keyboard_check_pressed(global.player1_key_jump))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_space))or(keyboard_check_pressed(vk_enter));
@@ -480,8 +480,8 @@ if (pause = false)
 	#region /*Zoom Out*/
 	if (zoom_out = true)
 	{
-		if (camera_get_view_width(view_camera[view_current])< room_width)
-		and (camera_get_view_height(view_camera[view_current])< room_height)
+		if (camera_get_view_width(view_camera[view_current]) < room_width)
+		and (camera_get_view_height(view_camera[view_current]) < room_height)
 		{
 			camera_set_view_size((view_camera[view_current]), camera_get_view_width(view_camera[view_current]) +8, camera_get_view_height(view_camera[view_current]) + 4.5);
 			camera_set_view_pos((view_camera[view_current]), camera_get_view_x(view_camera[view_current]) -4, camera_get_view_y(view_camera[view_current]) - 2.5);
@@ -760,7 +760,7 @@ if (use_controller = true)
 	}
 	
 	#region /*Move view with gamepad*/
-	if (gamepad_axis_value(0, gp_axisrv)< 0)
+	if (gamepad_axis_value(0, gp_axisrv) < 0)
 	{
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))
@@ -800,7 +800,7 @@ if (use_controller = true)
 			}
 		}
 	}
-	if (gamepad_axis_value(0, gp_axisrh)< 0)
+	if (gamepad_axis_value(0, gp_axisrh) < 0)
 	{
 		if (gamepad_button_check(0, gp_face3))
 		or(gamepad_button_check(0, gp_face4))

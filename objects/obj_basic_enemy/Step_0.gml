@@ -73,7 +73,7 @@ else
 }
 if (flat = false)
 {
-	if (distance_to_object(obj_player)<256)
+	if (distance_to_object(obj_player) <256)
 	{
 		sprite_used = "angry";
 		sprite_index = global.resourcepack_sprite_basic_enemy_angry;

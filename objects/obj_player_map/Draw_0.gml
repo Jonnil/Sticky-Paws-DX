@@ -69,10 +69,10 @@ or(gamepad_button_check(0, gp_shoulderrb))
 or(gamepad_button_check(0, gp_start))
 or(gamepad_button_check(0, gp_stickl))
 or(gamepad_button_check(0, gp_stickr))
-or(gamepad_axis_value(0, gp_axislh)<> 0)
-or(gamepad_axis_value(0, gp_axislv)<> 0)
-or(gamepad_axis_value(0, gp_axisrh)<> 0)
-or(gamepad_axis_value(0, gp_axisrv)<> 0)
+or(gamepad_axis_value(0, gp_axislh) <> 0)
+or(gamepad_axis_value(0, gp_axislv) <> 0)
+or(gamepad_axis_value(0, gp_axisrh) <> 0)
+or(gamepad_axis_value(0, gp_axisrv) <> 0)
 {
 	global.controls_used_for_menu_navigation = "controller";
 }

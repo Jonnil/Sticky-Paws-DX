@@ -16,7 +16,7 @@ and (mouse_check_button_pressed(mb_left))
 			room_goto(room_title);
 		}
 		else
-		if (room_next(room)<>- 1)
+		if (room_next(room) <>- 1)
 		{
 			room_goto_next();
 		}
@@ -70,7 +70,7 @@ and (sprite_index = spr_company_logo)
 				room_goto(room_title);
 			}
 			else
-			if (room_next(room)<>- 1)
+			if (room_next(room) <>- 1)
 			{
 				room_goto_next();
 			}
@@ -82,7 +82,7 @@ and (sprite_index = spr_company_logo)
 		room_goto(room_title);
 	}
 	else
-	if (room_next(room)<>- 1)
+	if (room_next(room) <>- 1)
 	{
 		room_goto_next();
 	}
@@ -103,7 +103,7 @@ and (sprite_index = sprite_splash_controller)
 			room_goto(room_title);
 		}
 		else
-		if (room_next(room)<>- 1)
+		if (room_next(room) <>- 1)
 		{
 			room_goto_next();
 		}

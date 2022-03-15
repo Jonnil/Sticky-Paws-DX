@@ -827,9 +827,9 @@ if (title_music > noone)
 #region /*Reset level zoom*/
 if (global.reset_level_zoom_when_going_back_to_map = true)
 {
-	global.zoom_level = 1;
+	global.zoom_level = global.default_zoom_level;
 	ini_open("config.ini");
-	ini_write_real("config", "zoom_level", 1);
+	ini_write_real("config", "zoom_level", global.default_zoom_level);
 	ini_close();
 }
 #endregion /*Reset level zoom END*/
@@ -837,9 +837,9 @@ if (global.reset_level_zoom_when_going_back_to_map = true)
 #region /*Reset world map zoom*/
 if (global.reset_world_map_zoom_when_going_back_to_map = true)
 {
-	global.zoom_world_map = 1;
+	global.zoom_world_map = global.default_zoom_world_map;
 	ini_open("config.ini");
-	ini_write_real("config", "zoom_world_map", 1);
+	ini_write_real("config", "zoom_world_map", global.default_zoom_world_map);
 	ini_close();
 }
 #endregion /*Reset world map zoom END*/

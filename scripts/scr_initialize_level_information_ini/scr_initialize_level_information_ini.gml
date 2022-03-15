@@ -375,7 +375,6 @@ function scr_initialize_level_information_ini()
 			{
 				ini_write_real("info", "default_view_width", 1920);
 			}
-			global.default_view_width = 1920;
 		}
 		#endregion /*Default View Width END*/
 		
@@ -391,7 +390,6 @@ function scr_initialize_level_information_ini()
 			{
 				ini_write_real("info", "default_view_height", 1080);
 			}
-			global.default_view_height = 1080;
 		}
 		#endregion /*Default View Height END*/
 		
@@ -438,8 +436,6 @@ function scr_initialize_level_information_ini()
 		custom_background_4_x_parallax = 9;
 		custom_background_4_y_parallax = 9;
 		rain = false;
-		global.default_view_height = 1080;
-		global.default_view_width = 1920;
 	}
 	#endregion /*Initialize level_information.ini END*/
 	

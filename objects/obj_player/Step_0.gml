@@ -2764,7 +2764,7 @@ else
 		invincible = false;
 	}
 	
-	/*audio_stop_sound(snd_music_invincible);
+	audio_stop_sound(snd_music_invincible);
 	
 	if (!audio_is_playing(global.music))
 	{
@@ -2794,8 +2794,6 @@ else
 			audio_sound_gain(global.music_underwater, 0, 0);
 		}
 	}
-	*/
-	
 }
 #endregion /*Invincible Music END*/
 
@@ -3001,7 +2999,7 @@ else
 			{
 				audio_stop_sound(snd_level_clear);
 			}
-			if (room_next(room)<>- 1)
+			if (room_next(room) <>- 1)
 			{
 				if (asset_get_type("room_world_map") == asset_room)
 				and (obj_camera.iris_yscale <= 0.001)
@@ -3487,7 +3485,7 @@ if (player <= 1)
 	and (!keyboard_check(global.player1_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) < 0);
 	#endregion /*Player 1 Key Left Hold END*/
 	
 	#region /*Player 1 Key Right Hold*/
@@ -3526,7 +3524,7 @@ if (player <= 1)
 	and (!keyboard_check(global.player1_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
 	#endregion /*Player 1 Key Up Hold END*/
 	
 	#region /*Player 1 Key Up Pressed*/
@@ -3535,7 +3533,7 @@ if (player <= 1)
 	or(keyboard_check_pressed(global.player1_key2_up))
 	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
 	#endregion /*Player 1 Key Up Hold END*/
 	
 	#region /*Player 1 Key Spin Hold*/
@@ -3711,7 +3709,7 @@ if (player = 2)
 	and (!keyboard_check(global.player2_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) < 0);
 	#endregion /*Player 2 Key Left Hold END*/
 	
 	#region /*Player 2 Key Right Hold*/
@@ -3750,7 +3748,7 @@ if (player = 2)
 	and (!keyboard_check(global.player2_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
 	#endregion /*Player 2 Key Up Hold END*/
 	
 	#region /*Player 2 Key Up Pressed*/
@@ -3759,7 +3757,7 @@ if (player = 2)
 	or(keyboard_check_pressed(global.player2_key2_up))
 	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
 	#endregion /*Player 2 Key Up Hold END*/
 	
 	#region /*Player 2 Key Spin Hold*/
@@ -3935,7 +3933,7 @@ if (player = 3)
 	and (!keyboard_check(global.player3_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) < 0);
 	#endregion /*Player 3 Key Left Hold END*/
 	
 	#region /*Player 3 Key Right Hold*/
@@ -3974,7 +3972,7 @@ if (player = 3)
 	and (!keyboard_check(global.player3_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
 	#endregion /*Player 3 Key Up Hold END*/
 	
 	#region /*Player 3 Key Up Pressed*/
@@ -3983,7 +3981,7 @@ if (player = 3)
 	or(keyboard_check_pressed(global.player3_key2_up))
 	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
 	#endregion /*Player 3 Key Up Hold END*/
 	
 	#region /*Player 3 Key Spin Hold*/
@@ -4159,7 +4157,7 @@ if (player = 4)
 	and (!keyboard_check(global.player4_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) < 0);
 	#endregion /*Player 4 Key Left Hold END*/
 	
 	#region /*Player 4 Key Right Hold*/
@@ -4198,7 +4196,7 @@ if (player = 4)
 	and (!keyboard_check(global.player4_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
 	#endregion /*Player 4 Key Up Hold END*/
 	
 	#region /*Player 4 Key Up Pressed*/
@@ -4207,7 +4205,7 @@ if (player = 4)
 	or(keyboard_check_pressed(global.player4_key2_up))
 	or(gamepad_button_check_pressed(player - 1, gp_padu))
 	and (!gamepad_button_check_pressed(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv)< 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
 	#endregion /*Player 4 Key Up Hold END*/
 	
 	#region /*Player 4 Key Spin Hold*/
@@ -6699,16 +6697,16 @@ and (!key_down)
 
 #region /*You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true*/
 if (joystick_can_ground_pound = false)
-and (gamepad_axis_value(0, gp_axislv)<= 0)
+and (gamepad_axis_value(0, gp_axislv) <= 0)
 and (player <= 1)
 or(joystick_can_ground_pound = false)
-and (gamepad_axis_value(1, gp_axislv)<= 0)
+and (gamepad_axis_value(1, gp_axislv) <= 0)
 and (player <= 2)
 or(joystick_can_ground_pound = false)
-and (gamepad_axis_value(2, gp_axislv)<= 0)
+and (gamepad_axis_value(2, gp_axislv) <= 0)
 and (player <= 3)
 or(joystick_can_ground_pound = false)
-and (gamepad_axis_value(3, gp_axislv)<= 0)
+and (gamepad_axis_value(3, gp_axislv) <= 0)
 and (player <= 4)
 {
 	joystick_can_ground_pound = true;
@@ -8365,6 +8363,7 @@ and (instance_nearest(x, y, obj_spring).can_bounce = 0)
 		}
 	}
 	spring_animation = 0;
+	jump_transition_to_fall_animation = 0;
 	spring_twist_sprite = true;
 	move_towards_point(instance_nearest(x, y, obj_spring).second_x, instance_nearest(x, y, obj_spring).second_y, instance_nearest(x, y, obj_spring).bounce_height);
 	if (hspeed < 0)
@@ -8626,6 +8625,7 @@ and (hold_item_in_hands = "")
 	{
 		midair_jumps_left = number_of_jumps;
 		horizontal_rope_climb = true;
+		jump_transition_to_fall_animation = 0;
 		climb = false;
 		jump = 0;
 		
@@ -11196,7 +11196,7 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (spark1_effect = false)
 		{
-			if (abs(hspeed)<7)
+			if (abs(hspeed) <7)
 			{
 				if (key_sprint)
 				and (stick_to_wall = false)
@@ -11220,7 +11220,7 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (spark2_effect = false)
 		{
-			if (abs(hspeed)<7.5)
+			if (abs(hspeed) <7.5)
 			{
 				if (key_sprint)
 				and (stick_to_wall = false)

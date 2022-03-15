@@ -1,6 +1,6 @@
 /*Keyboard Controls*/
 gamepad_set_axis_deadzone(0, 0.50);
-key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh)< 0);
+key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh) < 0);
 key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
 /*Keyboard Controls END*/
 
@@ -155,8 +155,39 @@ draw_set_valign(fa_center);
 draw_text_outlined(+ 32, window_get_height() -32, "< Artwork " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
 #endregion /*Draw what artwork is selected END*/
 
+if (gamepad_is_connected(0))
+and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+and (global.controls_used_for_menu_navigation = "controller")
+{
+	draw_sprite_ext(spr_xbox_buttons, 4, 128, window_get_height()/ 2, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_xbox_buttons, 6, window_get_width() - 128, window_get_height()/ 2, 1, 1, 0, c_white, 1);
+}
+else
+if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+{
+	draw_sprite_ext(spr_keyboard_keys, vk_left, 128, window_get_height()/ 2, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_keyboard_keys, vk_right, window_get_width() - 128, window_get_height()/ 2, 1, 1, 0, c_white, 1);
+}
+if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, window_get_width()/ 2 - 100, window_get_height() - 42))
+and (global.controls_used_for_menu_navigation = "mouse")
+{
+	draw_set_alpha(0.5);
+	draw_rectangle_color(128 - 32, window_get_height()/ 2 - 32, 128 + 32, window_get_height()/ 2 + 32, c_white, c_white, c_white, c_white, false);
+	draw_set_alpha(1);
+}
+else
+if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 + 100, 0, window_get_width(), window_get_height() - 42))
+and (global.controls_used_for_menu_navigation = "mouse")
+{
+	draw_set_alpha(0.5);
+	draw_rectangle_color(window_get_width() - 128 - 32, window_get_height()/ 2 - 32, window_get_width() - 128 + 32, window_get_height()/ 2 + 32, c_white, c_white, c_white, c_white, false);
+	draw_set_alpha(1);
+}
+
 #region /*Left and Right Navigation*/
 if (key_left)
+or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, window_get_width()/ 2 - 100, window_get_height() - 42))
+and (mouse_check_button_pressed(mb_left))
 {
 	if (gamepad_stick = true)
 	{
@@ -174,6 +205,8 @@ if (key_left)
 }
 else
 if (key_right)
+or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 + 100, 0, window_get_width(), window_get_height() - 42))
+and (mouse_check_button_pressed(mb_left))
 {
 	if (gamepad_stick = true)
 	{

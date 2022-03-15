@@ -8,7 +8,7 @@ if timer >25{move_towards_point(instance_nearest(x, y, obj_player).x, instance_n
 
 /*Make tongue homing toward closest object*/
 if timer <25{
-if instance_exists(obj_ring){if distance_to_object(instance_nearest(mouse_x, mouse_y, obj_ring))<64{move_towards_point(instance_nearest(x, y, obj_ring).x, instance_nearest(x, y, obj_ring).y,speed);}}
+if instance_exists(obj_ring){if distance_to_object(instance_nearest(mouse_x, mouse_y, obj_ring)) <64{move_towards_point(instance_nearest(x, y, obj_ring).x, instance_nearest(x, y, obj_ring).y,speed);}}
 }
 
 /*Match movement with player movement*/

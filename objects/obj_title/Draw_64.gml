@@ -218,8 +218,8 @@ if (global.voices_volume > 1)
 
 /*Keyboard Controls*/
 gamepad_set_axis_deadzone(0, 0.50);
-key_up = (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv)< 0) or mouse_wheel_up();
-key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh)< 0);
+key_up = (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv) < 0) or mouse_wheel_up();
+key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh) < 0);
 key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
 key_down = (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or(gamepad_axis_value(0, gp_axislv) > 0) or mouse_wheel_down();
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
@@ -2429,21 +2429,21 @@ if (instance_exists(obj_player))
 #endregion /*If player object is present, destroy the player object END*/
 
 #region /*Menu navigation with joystick (This code must come after all menu navigation code)*/
-if (gamepad_axis_value(0, gp_axislv)< 0)
+if (gamepad_axis_value(0, gp_axislv) < 0)
 or(gamepad_axis_value(0, gp_axislv) > 0)
-or(gamepad_axis_value(0, gp_axislh)< 0)
+or(gamepad_axis_value(0, gp_axislh) < 0)
 or(gamepad_axis_value(0, gp_axislh) > 0)
-or(gamepad_axis_value(1, gp_axislv)< 0)
+or(gamepad_axis_value(1, gp_axislv) < 0)
 or(gamepad_axis_value(1, gp_axislv) > 0)
-or(gamepad_axis_value(1, gp_axislh)< 0)
+or(gamepad_axis_value(1, gp_axislh) < 0)
 or(gamepad_axis_value(1, gp_axislh) > 0)
-or(gamepad_axis_value(2, gp_axislv)< 0)
+or(gamepad_axis_value(2, gp_axislv) < 0)
 or(gamepad_axis_value(2, gp_axislv) > 0)
-or(gamepad_axis_value(2, gp_axislh)< 0)
+or(gamepad_axis_value(2, gp_axislh) < 0)
 or(gamepad_axis_value(2, gp_axislh) > 0)
-or(gamepad_axis_value(3, gp_axislv)< 0)
+or(gamepad_axis_value(3, gp_axislv) < 0)
 or(gamepad_axis_value(3, gp_axislv) > 0)
-or(gamepad_axis_value(3, gp_axislh)< 0)
+or(gamepad_axis_value(3, gp_axislh) < 0)
 or(gamepad_axis_value(3, gp_axislh) > 0)
 {
 	if (menu_joystick_delay = 0)
