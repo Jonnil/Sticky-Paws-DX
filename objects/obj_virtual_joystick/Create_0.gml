@@ -14,7 +14,9 @@ stick_size = base_size / 2;
 base_size_gui = 150
 stick_size_gui = base_size_gui / 2;
 
-xx = (base_size_gui * 1.5);
-yy = window_get_height() - (base_size_gui * 1.5);
+xx = (base_size_gui * 2);
+yy = window_get_height() - (base_size_gui * 2);
+
+temp_joystick = 0;
 
 depth = -99999;

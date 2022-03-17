@@ -14,6 +14,7 @@ function scr_virtual_keys()
 	var mobile_key_zoom_out_y = + 100;
 	var mobile_key_zoom_in_x = window_get_width() /2 + 400;
 	var mobile_key_zoom_in_y = + 100;
+	var mobile_key_extra_deadzone = 50;
 	
 	#region /*Virtual Key, iOS and Android*/
 	if (os_type != os_ios)
@@ -38,6 +39,7 @@ function scr_virtual_keys()
 				
 				if (instance_exists(obj_virtual_joystick))
 				{
+					draw_sprite_ext(spr_virtual_joystick_base, 0, obj_virtual_joystick.xx, obj_virtual_joystick.yy, obj_virtual_joystick.var_screen_size, obj_virtual_joystick.var_screen_size, 0, c_white, 0.5);
 					if (instance_exists(obj_player))
 					{
 						if (obj_player.active_right = true)
@@ -77,7 +79,6 @@ function scr_virtual_keys()
 							draw_sprite_ext(spr_virtual_joystick_direction, 0, obj_virtual_joystick.xx, obj_virtual_joystick.yy, obj_virtual_joystick.var_screen_size, obj_virtual_joystick.var_screen_size, 270, c_white, 0.5);
 						}
 					}
-					draw_sprite_ext(spr_virtual_joystick_base, 0, obj_virtual_joystick.xx, obj_virtual_joystick.yy, obj_virtual_joystick.var_screen_size, obj_virtual_joystick.var_screen_size, 0, c_white, 0.5);
 					draw_sprite_ext(spr_virtual_joystick_stick, 0, obj_virtual_joystick.xx + obj_virtual_joystick.var_x_dir_gui, obj_virtual_joystick.yy + obj_virtual_joystick.var_y_dir_gui, obj_virtual_joystick.var_screen_size, obj_virtual_joystick.var_screen_size, 0, c_white, 0.5);
 				}
 				
@@ -86,48 +87,48 @@ function scr_virtual_keys()
 				#region /*Virtual key add jump*/
 				if (global.player1_key_jump > noone)
 				{
-					virtual_key_add(mobile_key_jump_x - 128, mobile_key_jump_y - 128, 256, 256, global.player1_key_jump);
+					virtual_key_add(mobile_key_jump_x - 128 - mobile_key_extra_deadzone, mobile_key_jump_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key_jump);
 				}
 				else
 				if (global.player1_key2_jump > noone)
 				{
-					virtual_key_add(mobile_key_jump_x - 128, mobile_key_jump_y - 128, 256, 256, global.player1_key2_jump);
+					virtual_key_add(mobile_key_jump_x - 128 - mobile_key_extra_deadzone, mobile_key_jump_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key2_jump);
 				}
 				#endregion /*Virtual key add jump END*/
 				
 				#region /*Virtual key add crouch*/
 				if (global.player1_key_crouch > noone)
 				{
-					virtual_key_add(mobile_key_crouch_x - 128, mobile_key_crouch_y - 128, 256, 256, global.player1_key_crouch);
+					virtual_key_add(mobile_key_crouch_x - 128 - mobile_key_extra_deadzone, mobile_key_crouch_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key_crouch);
 				}
 				else
 				if (global.player1_key2_crouch > noone)
 				{
-					virtual_key_add(mobile_key_crouch_x - 128, mobile_key_crouch_x - 128, 256, 256, global.player1_key2_crouch);
+					virtual_key_add(mobile_key_crouch_x - 128 - mobile_key_extra_deadzone, mobile_key_crouch_x - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key2_crouch);
 				}
 				#endregion /*Virtual key add crouch END*/
 				
 				#region /*Virtual key add sprint*/
 				if (global.player1_key_sprint > noone)
 				{
-					virtual_key_add(mobile_key_sprint_x - 128, mobile_key_sprint_y - 128, 256, 256, global.player1_key_sprint);
+					virtual_key_add(mobile_key_sprint_x - 128 - mobile_key_extra_deadzone, mobile_key_sprint_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key_sprint);
 				}
 				else
 				if (global.player1_key2_sprint > noone)
 				{
-					virtual_key_add(mobile_key_sprint_x - 128, mobile_key_sprint_y - 128, 256, 256, global.player1_key2_sprint);
+					virtual_key_add(mobile_key_sprint_x - 128 - mobile_key_extra_deadzone, mobile_key_sprint_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key2_sprint);
 				}
 				#endregion /*Virtual key add sprint END*/
 				
 				#region /*Virtual key add dive*/
 				if (global.player1_key_dive > noone)
 				{
-					virtual_key_add(mobile_key_sprint_x - 128, mobile_key_sprint_y - 128, 256, 256, global.player1_key_dive);
+					virtual_key_add(mobile_key_sprint_x - 128 - mobile_key_extra_deadzone, mobile_key_sprint_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key_dive);
 				}
 				else
 				if (global.player1_key2_dive > noone)
 				{
-					virtual_key_add(mobile_key_sprint_x - 128, mobile_key_sprint_y - 128, 256, 256, global.player1_key2_dive);
+					virtual_key_add(mobile_key_sprint_x - 128 - mobile_key_extra_deadzone, mobile_key_sprint_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key2_dive);
 				}
 				#endregion /*Virtual key add dive END*/
 				

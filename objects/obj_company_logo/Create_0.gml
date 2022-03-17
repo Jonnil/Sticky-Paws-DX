@@ -62,6 +62,8 @@ ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3"
 
 #region /*Things you shouldn't change, warning, don't change any of these options or you might break the game!*/
 
+device_mouse_dbclick_enable(false); /*Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled*/
+
 /*Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu*/
 global.equipped_upgrade_double_jump = true; /*If you have equipped the Double Jump Upgrade*/
 

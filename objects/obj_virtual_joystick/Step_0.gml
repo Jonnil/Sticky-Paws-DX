@@ -1,12 +1,10 @@
-var temp_joystick;
-
 temp_joystick = 0;
 
 base_size = 150 * (camera_get_view_width(view_camera[view_current]) / global.default_view_width);
 stick_size = base_size / 2;
 
-x = camera_get_view_x(view_camera[view_current]) + (base_size * 1.5);
-y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - (base_size * 1.5);
+x = camera_get_view_x(view_camera[view_current]) + (base_size * 2);
+y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - (base_size * 2);
 
 if (mouse_check_button(mb_left))
 {
@@ -14,7 +12,7 @@ if (mouse_check_button(mb_left))
 	var_direction = temp_dir;
 	
 	#region /*Direction*/
-	if (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) < base_size * var_screen_size)
+	if (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) < (base_size * 2) * var_screen_size)
 	{
 		var_joystick_active = true;
 		var_direction = temp_dir;
@@ -25,12 +23,14 @@ if (mouse_check_button(mb_left))
 	}
 	#endregion /*Direction END*/
 	
-	#region /*Speed Level*/
+	#region /*Move in Level*/
 	if (var_joystick_active = true)
-	and (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > stick_size * var_screen_size)
+	and (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > 10)
 	and (instance_exists(obj_player))
 	{
-		if (device_mouse_x(temp_joystick) < x - stick_size)
+		
+		#region /*Left*/
+		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y - 9000, x - 9000, y + 9000))
 		{
 			obj_player.active_left = true;
 		}
@@ -38,7 +38,10 @@ if (mouse_check_button(mb_left))
 		{
 			obj_player.active_left = false;
 		}
-		if (device_mouse_x(temp_joystick) > x + stick_size)
+		#endregion /*Left END*/
+		
+		#region /*Right*/
+		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x + 9000, y - 9000, x + 9000, y + 9000))
 		{
 			obj_player.active_right = true;
 		}
@@ -46,7 +49,10 @@ if (mouse_check_button(mb_left))
 		{
 			obj_player.active_right = false;
 		}
-		if (device_mouse_y(temp_joystick) < y - stick_size)
+		#endregion /*Right END*/
+		
+		#region /*Up*/
+		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y - 9000, x + 9000, y - 9000))
 		{
 			obj_player.active_up = true;
 		}
@@ -54,7 +60,10 @@ if (mouse_check_button(mb_left))
 		{
 			obj_player.active_up = false;
 		}
-		if (device_mouse_y(temp_joystick) > y + stick_size)
+		#endregion /*Up END*/
+		
+		#region /*Down*/
+		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y + 9000, x + 9000, y + 9000))
 		{
 			obj_player.active_down = true;
 		}
@@ -62,6 +71,8 @@ if (mouse_check_button(mb_left))
 		{
 			obj_player.active_down = false;
 		}
+		#endregion /*Down END*/
+		
 	}
 	else
 	if (instance_exists(obj_player))
@@ -71,14 +82,16 @@ if (mouse_check_button(mb_left))
 		obj_player.active_up = false;
 		obj_player.active_down = false;
 	}
-	#endregion /*Speed Level END*/
+	#endregion /*Move in Level END*/
 	
-	#region /*Speed Map*/
+	#region /*Move in Map*/
 	if (var_joystick_active = true)
-	and (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > stick_size * var_screen_size)
+	and (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > 10)
 	and (instance_exists(obj_player_map))
 	{
-		if (device_mouse_x(temp_joystick) < x - stick_size)
+		
+		#region /*Left*/
+		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y - 9000, x - 9000, y + 9000))
 		{
 			obj_player_map.active_left = true;
 		}
@@ -86,7 +99,10 @@ if (mouse_check_button(mb_left))
 		{
 			obj_player_map.active_left = false;
 		}
-		if (device_mouse_x(temp_joystick) > x + stick_size)
+		#endregion /*Left END*/
+		
+		#region /*Right*/
+		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x + 9000, y - 9000, x + 9000, y + 9000))
 		{
 			obj_player_map.active_right = true;
 		}
@@ -94,7 +110,10 @@ if (mouse_check_button(mb_left))
 		{
 			obj_player_map.active_right = false;
 		}
-		if (device_mouse_y(temp_joystick) < y - stick_size)
+		#endregion /*Right END*/
+		
+		#region /*Up*/
+		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y - 9000, x + 9000, y - 9000))
 		{
 			obj_player_map.active_up = true;
 		}
@@ -102,7 +121,10 @@ if (mouse_check_button(mb_left))
 		{
 			obj_player_map.active_up = false;
 		}
-		if (device_mouse_y(temp_joystick) > y + stick_size)
+		#endregion /*Up END*/
+		
+		#region /*Down*/
+		if (point_in_triangle(device_mouse_x(temp_joystick), device_mouse_y(temp_joystick), x, y, x - 9000, y + 9000, x + 9000, y + 9000))
 		{
 			obj_player_map.active_down = true;
 		}
@@ -110,6 +132,8 @@ if (mouse_check_button(mb_left))
 		{
 			obj_player_map.active_down = false;
 		}
+		#endregion /*Down END*/
+		
 	}
 	else
 	if (instance_exists(obj_player_map))
@@ -119,7 +143,7 @@ if (mouse_check_button(mb_left))
 		obj_player_map.active_up = false;
 		obj_player_map.active_down = false;
 	}
-	#endregion /*Speed Map END*/
+	#endregion /*Move in Map END*/
 	
 	if (var_joystick_active = true)
 	and (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > base_size * var_screen_size)
