@@ -14,11 +14,6 @@
 //draw_text_outlined(x -32, y - 64, string(global.music_volume), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 128, string(jump_transition_to_fall_animation), global.default_text_size, c_white, c_black, 1);
 
-if (bruh = true)
-{
-	draw_sprite(spr_big_stationary_enemy, image_index, x, y);
-}
-
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)
 and (have_heart_balloon = true)

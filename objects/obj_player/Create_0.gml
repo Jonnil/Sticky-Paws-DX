@@ -1,7 +1,5 @@
 /*________________________________Create Event________________________________*/
 
-bruh = false;
-
 #region /*What custom character to use. Change the character sprites and voice*/
 player = 1;
 custom_character = global.character_for_player_1;
@@ -516,6 +514,7 @@ can_ledge_grab = true;
 can_tongue = true;
 dive = false;
 dive_on_ground = 0;
+on_ground = false;
 can_attack_after_dive_on_ground = 0; /*When landing on ground after dive, you should be able to still kill enemies for some frames, otherwise it feels unfair if you miss your dive a pixel away*/
 can_attack_after_dive_on_ground_max_value = 20; /*This is the value that the can_attack_after_dive_on_ground variable gets set to when landing on ground*/
 double_jump_depleted_blink = 0;
@@ -783,4 +782,9 @@ key_tongue_pressed = noone;
 key_tongue_released = noone;
 key_spin = noone;
 key_spin_pressed = noone;
+
+active_left = false;
+active_right = false;
+active_up = false;
+active_down = false;
 #endregion /*Initialize the controls END*/

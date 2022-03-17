@@ -1,5 +1,3 @@
-//draw_text_outlined(320, 320, string(global.level_clear_rate), global.default_text_size, c_black, c_white, 1);
-
 ///HUD
 if (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))

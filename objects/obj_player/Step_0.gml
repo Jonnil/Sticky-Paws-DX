@@ -3485,7 +3485,8 @@ if (player <= 1)
 	and (!keyboard_check(global.player1_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh) < 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) < 0)
+	or (active_left = true);
 	#endregion /*Player 1 Key Left Hold END*/
 	
 	#region /*Player 1 Key Right Hold*/
@@ -3498,7 +3499,8 @@ if (player <= 1)
 	and (!keyboard_check(global.player1_key2_left))
 	or(gamepad_button_check(player - 1, gp_padr))
 	and (!gamepad_button_check(player - 1, gp_padl))
-	or(gamepad_axis_value(player - 1, gp_axislh) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) > 0)
+	or (active_right = true);
 	#endregion /*Player 1 Key Right Hold END*/
 	
 	#region /*Player 1 Key Down Hold*/
@@ -3511,7 +3513,8 @@ if (player <= 1)
 	and (!keyboard_check(global.player1_key2_up))
 	or(gamepad_button_check(player - 1, gp_padd))
 	and (!gamepad_button_check(player - 1, gp_padu))
-	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or (active_down = true);
 	#endregion /*Player 1 Key Down Hold END*/
 	
 	#region /*Player 1 Key Up Hold*/
@@ -3524,7 +3527,8 @@ if (player <= 1)
 	and (!keyboard_check(global.player1_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0)
+	or (active_up = true);
 	#endregion /*Player 1 Key Up Hold END*/
 	
 	#region /*Player 1 Key Up Pressed*/
@@ -3709,7 +3713,8 @@ if (player = 2)
 	and (!keyboard_check(global.player2_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh) < 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) < 0)
+	or (active_left = true);
 	#endregion /*Player 2 Key Left Hold END*/
 	
 	#region /*Player 2 Key Right Hold*/
@@ -3722,7 +3727,8 @@ if (player = 2)
 	and (!keyboard_check(global.player2_key2_left))
 	or(gamepad_button_check(player - 1, gp_padr))
 	and (!gamepad_button_check(player - 1, gp_padl))
-	or(gamepad_axis_value(player - 1, gp_axislh) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) > 0)
+	or (active_right = true);
 	#endregion /*Player 2 Key Right Hold END*/
 	
 	#region /*Player 2 Key Down Hold*/
@@ -3735,7 +3741,8 @@ if (player = 2)
 	and (!keyboard_check(global.player2_key2_up))
 	or(gamepad_button_check(player - 1, gp_padd))
 	and (!gamepad_button_check(player - 1, gp_padu))
-	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or (active_down = true);
 	#endregion /*Player 2 Key Down Hold END*/
 	
 	#region /*Player 2 Key Up Hold*/
@@ -3748,7 +3755,8 @@ if (player = 2)
 	and (!keyboard_check(global.player2_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0)
+	or (active_up = true);
 	#endregion /*Player 2 Key Up Hold END*/
 	
 	#region /*Player 2 Key Up Pressed*/
@@ -3933,7 +3941,8 @@ if (player = 3)
 	and (!keyboard_check(global.player3_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh) < 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) < 0)
+	or (active_left = true);
 	#endregion /*Player 3 Key Left Hold END*/
 	
 	#region /*Player 3 Key Right Hold*/
@@ -3946,7 +3955,8 @@ if (player = 3)
 	and (!keyboard_check(global.player3_key2_left))
 	or(gamepad_button_check(player - 1, gp_padr))
 	and (!gamepad_button_check(player - 1, gp_padl))
-	or(gamepad_axis_value(player - 1, gp_axislh) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) > 0)
+	or (active_right = true);
 	#endregion /*Player 3 Key Right Hold END*/
 	
 	#region /*Player 3 Key Down Hold*/
@@ -3959,7 +3969,8 @@ if (player = 3)
 	and (!keyboard_check(global.player3_key2_up))
 	or(gamepad_button_check(player - 1, gp_padd))
 	and (!gamepad_button_check(player - 1, gp_padu))
-	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or (active_down = true);
 	#endregion /*Player 3 Key Down Hold END*/
 	
 	#region /*Player 3 Key Up Hold*/
@@ -3972,7 +3983,8 @@ if (player = 3)
 	and (!keyboard_check(global.player3_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0)
+	or (active_up = true);
 	#endregion /*Player 3 Key Up Hold END*/
 	
 	#region /*Player 3 Key Up Pressed*/
@@ -4157,7 +4169,8 @@ if (player = 4)
 	and (!keyboard_check(global.player4_key2_right))
 	or(gamepad_button_check(player - 1, gp_padl))
 	and (!gamepad_button_check(player - 1, gp_padr))
-	or(gamepad_axis_value(player - 1, gp_axislh) < 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) < 0)
+	or (active_left = true);
 	#endregion /*Player 4 Key Left Hold END*/
 	
 	#region /*Player 4 Key Right Hold*/
@@ -4170,7 +4183,8 @@ if (player = 4)
 	and (!keyboard_check(global.player4_key2_left))
 	or(gamepad_button_check(player - 1, gp_padr))
 	and (!gamepad_button_check(player - 1, gp_padl))
-	or(gamepad_axis_value(player - 1, gp_axislh) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislh) > 0)
+	or (active_right = true);
 	#endregion /*Player 4 Key Right Hold END*/
 	
 	#region /*Player 4 Key Down Hold*/
@@ -4183,7 +4197,8 @@ if (player = 4)
 	and (!keyboard_check(global.player4_key2_up))
 	or(gamepad_button_check(player - 1, gp_padd))
 	and (!gamepad_button_check(player - 1, gp_padu))
-	or(gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or (active_down = true);
 	#endregion /*Player 4 Key Down Hold END*/
 	
 	#region /*Player 4 Key Up Hold*/
@@ -4196,7 +4211,8 @@ if (player = 4)
 	and (!keyboard_check(global.player4_key2_down))
 	or(gamepad_button_check(player - 1, gp_padu))
 	and (!gamepad_button_check(player - 1, gp_padd))
-	or(gamepad_axis_value(player - 1, gp_axislv) < 0);
+	or(gamepad_axis_value(player - 1, gp_axislv) < 0)
+	or (active_up = true);
 	#endregion /*Player 4 Key Up Hold END*/
 	
 	#region /*Player 4 Key Up Pressed*/
@@ -4619,6 +4635,24 @@ and (global.pause = false)
 	}
 	#endregion /*Pause END*/
 
+#region /*Save to variable when on ground*/
+if (asset_get_type("obj_wall") == asset_object)
+and (place_meeting(x, y + 1, obj_wall)/*If there is wall underneath*/)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform)/*If there is semisolid platform underneath*/)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform)/*If there is semisolid platform underneath*/)
+or(asset_get_type("obj_semisolid_platform") == asset_object)
+and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform)/*If there is semisolid platform underneath*/)
+{
+	on_ground = true;
+}
+else
+{
+	on_ground = false;
+}
+#endregion /*Save to variable when on ground*/
+
 #region /*Go Left*/
 if (key_left)
 and (!key_right)
@@ -4663,14 +4697,7 @@ and (global.pause = false)
 				}
 				else
 				{
-					if (asset_get_type("obj_wall") == asset_object)
-					and (place_meeting(x, y + 1, obj_wall))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+					if (on_ground = true)
 					{
 						hspeed -= acceleration_on_ground;
 					}
@@ -4685,14 +4712,7 @@ and (global.pause = false)
 				if (!place_meeting(x - 2, y, obj_wall))
 				and (!place_meeting(x, y - 2, obj_wall))
 				{
-					if (asset_get_type("obj_wall") == asset_object)
-					and (place_meeting(x, y + 1, obj_wall))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+					if (on_ground = true)
 					{
 						hspeed -= acceleration_on_ground;
 					}
@@ -4754,14 +4774,7 @@ and (global.pause = false)
 				}
 				else
 				{
-					if (asset_get_type("obj_wall") == asset_object)
-					and (place_meeting(x, y + 1, obj_wall))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+					if (on_ground = true)
 					{
 						hspeed += acceleration_on_ground;
 					}
@@ -4776,14 +4789,7 @@ and (global.pause = false)
 				if (!place_meeting(x + 2, y, obj_wall))
 				and (!place_meeting(x, y - 2, obj_wall))
 				{
-					if (asset_get_type("obj_wall") == asset_object)
-					and (place_meeting(x, y + 1, obj_wall))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					or (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+					if (on_ground = true)
 					{
 						hspeed += acceleration_on_ground;
 					}
@@ -4826,17 +4832,7 @@ and (global.time_countdown_bonus <= 0)
 else
 {
 	if (crouch = true)
-	and (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or(crouch = true)
-	and (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or(crouch = true)
-	and (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or(crouch = true)
-	and (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	and (on_ground = true)
 	{
 		if (allow_crawl = true)
 		{
@@ -4877,14 +4873,7 @@ else
 	}
 	else
 	{
-		if (asset_get_type("obj_wall") == asset_object)
-		and (place_meeting(x, y + 1, obj_wall))
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (on_ground = true)
 		{
 			if (invincible >= true)
 			and (assist_invincible = false)
@@ -4985,14 +4974,7 @@ if (double_tap_run_timer <= 0)
 #endregion /*Double tap direction to run END*/
 
 #region /*Set the friction*/
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 {
 	if (speed > 0)
 	{
@@ -5317,14 +5299,7 @@ and (can_mid_air_jump = 0)
 #endregion /*Mid-Air / Double Jumping END*/
 
 #region /*Recharge mid-air / double jump when landing on ground*/
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 {
 	if (vspeed >= 0)
 	{
@@ -5883,14 +5858,7 @@ if (place_meeting(x, y + 4, obj_wall))
 #endregion /*Go with Platform END*/
 
 #region /*Chain Reaction Reset*/
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 {
 	if (invincible <= false)
 	{
@@ -5904,14 +5872,7 @@ if (assist_invincible = true)
 #endregion /*Chain Reaction Reset END*/
 
 #region /*Triple Jump*/
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 {
 	if (triplejumpdelay > 0)
 	{
@@ -6069,14 +6030,7 @@ and (hold_item_in_hands = "")
 		#endregion /*Pressing opposite direction to drop off from wall END*/
 		
 		#region /*If there is ground under you while trying to go down, then stop wall climbing*/
-		if (asset_get_type("obj_wall") == asset_object)
-		and (place_meeting(x, y + 1, obj_wall))
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (on_ground = true)
 		{
 			stick_to_wall = false;
 		}
@@ -6557,14 +6511,7 @@ and (takendamage <= takendamage_freezetime)
 			}
 	
 			#region /*If hitting a corner of a wall, move the player either left or right*/
-			if (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x, y + 1, obj_wall))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			if (on_ground = true)
 			{
 		
 				#region /*Move left to avoid a left corner*/
@@ -6631,14 +6578,7 @@ and (takendamage <= takendamage_freezetime)
 		else
 		if (ground_pound = 2)
 		{
-			if (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x, y + 1, obj_wall))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			if (on_ground = true)
 			{
 				speed_max = 0;
 				hspeed = 0;
@@ -6883,14 +6823,7 @@ and (global.pause = false)
 			#endregion /*Propel the player forward in the direction the player is facing END*/
 			
 			#region /*If player lands on ground when diving, stop diving*/
-			if (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x, y + 1, obj_wall))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			if (on_ground = true)
 			{
 				if (vspeed >= 0)
 				{
@@ -6943,14 +6876,7 @@ and (global.pause = false)
 scr_throw_items_in_hands();
 
 #region /*Can Attack After Dive On Ground*/
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 {
 	if (can_attack_after_dive_on_ground > 0)
 	{
@@ -6966,20 +6892,7 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 #region /*Dive ground boost*/
 if (allow_dive_ground_boost = true)
 and (dive_on_ground > 0)
-and (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or(allow_dive_ground_boost = true)
-and (dive_on_ground > 0)
-and (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or(allow_dive_ground_boost = true)
-and (dive_on_ground > 0)
-and (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or(allow_dive_ground_boost = true)
-and (dive_on_ground > 0)
-and (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+and (on_ground = true)
 {
 	dive_on_ground -= 1;
 	if (key_jump)
@@ -7181,14 +7094,7 @@ if (allow_ledge_grab= true)
 				}
 			}
 		}
-		if (asset_get_type("obj_wall") == asset_object)
-		and (place_meeting(x, y + 1, obj_wall))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (on_ground = true)
 		{
 			ledge_grab_jump = false;
 		}
@@ -7211,14 +7117,7 @@ and (stick_to_wall = false)
 	{
 		hspeed += 0.1;
 	}
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground = true)
 	{
 		if (vspeed >= 0)
 		{
@@ -7449,14 +7348,7 @@ if (asset_get_type("obj_water") == asset_object)
 				}
 			}
 		}
-		if (asset_get_type("obj_wall") == asset_object)
-		and (place_meeting(x, y + 1, obj_wall))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (on_ground = true)
 		{
 			if (hspeed<- 2)
 			{
@@ -7592,14 +7484,7 @@ and (power_meter_running_sound = true)
 				audio_sound_gain(snd_power_meter_running, global.sfx_volume, 0);
 			}
 		}
-		if (asset_get_type("obj_wall") == asset_object)
-		and (place_meeting(x, y + 1, obj_wall))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (on_ground = true)
 		{
 			speeddash = true;
 		}
@@ -7728,14 +7613,7 @@ if (asset_get_type("obj_lava") == asset_object)
 if (burnt = true)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground = true)
 	{
 		audio_play_sound(voice_burned_running, 0, 0);
 		audio_sound_gain(voice_burned_running, global.voices_volume, 0);
@@ -7752,14 +7630,7 @@ else
 if (burnt = 2)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground = true)
 	{
 		burnt = false;
 	}
@@ -8540,14 +8411,7 @@ and (place_meeting(bbox_left - 1, y, obj_wall))
 and (climb = false)
 and (stick_to_wall = false)
 {
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground = true)
 	{
 		if (asset_get_type("snd_bump") == asset_sound)
 		{
@@ -8568,14 +8432,7 @@ and (place_meeting(bbox_right + 1, y, obj_wall))
 and (climb = false)
 and (stick_to_wall = false)
 {
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground = true)
 	{
 		if (asset_get_type("snd_bump") == asset_sound)
 		{
@@ -9171,14 +9028,7 @@ and (place_meeting(x, y, obj_vine))
 					audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
 				}
 			}
-			if (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x, y + 1, obj_wall))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			if (on_ground = true)
 			{
 				climb = false;
 			}
@@ -9349,14 +9199,7 @@ if (key_crouch)
 		if (ground_pound = false)
 		and (dive = false)
 		{
-			if (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x, y + 1, obj_wall))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			if (on_ground = true)
 			{
 				crouch = true;
 				stick_to_wall = false;
@@ -9416,14 +9259,7 @@ and (crouch = true)
 if (crouch = true)
 {
 	stick_to_wall = false;
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground = true)
 	{
 		if (abs(hspeed) > 3)
 		{
@@ -9447,13 +9283,7 @@ if (crouch = true)
 		}
 	}
 	if (abs(hspeed) >= 2.5)
-	and (place_meeting(x, y + 1, obj_wall))
-	or(abs(hspeed) >= 2.5)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or(abs(hspeed) >= 2.5)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or(abs(hspeed) >= 2.5)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (on_ground = true)
 	{
 		if (asset_get_type("spr_player_slide") == asset_sprite)
 		{
@@ -9491,14 +9321,7 @@ if (crouch = true)
 		}
 	}
 	else
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground = true)
 	{
 		
 		#region /*Crouch Stand*/
@@ -9571,14 +9394,7 @@ if (crouch = true)
 	}
 }
 else
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 {
 	
 	#region /*Skidding*/
@@ -9802,14 +9618,7 @@ and (allow_crouch = true)
 	and (ground_pound = false)
 	and (dive = false)
 	{
-		if (asset_get_type("obj_wall") == asset_object)
-		and (place_meeting(x, y + 1, obj_wall))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		or (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (on_ground = true)
 		{
 			crouch = true;
 			draw_xscale = 1.5;
@@ -9933,14 +9742,7 @@ if (crouch = true)
 	}
 	#endregion /*Destroy blocks above you when you jump while crouching END*/
 	
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground = true)
 	{
 		if (abs(hspeed) > 3)
 		{
@@ -9964,13 +9766,7 @@ if (crouch = true)
 		}
 	}
 	if (abs(hspeed) >= 2.5)
-	and (place_meeting(x, y + 1, obj_wall))
-	or(abs(hspeed) >= 2.5)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or(abs(hspeed) >= 2.5)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or(abs(hspeed) >= 2.5)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (on_ground = true)
 	{
 		if (sprite_mask_crouch > 0)
 		{
@@ -9994,14 +9790,7 @@ if (crouch = true)
 		}
 	}
 	else
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground = true)
 	{
 		
 		#region /*Crouch Still*/
@@ -10172,16 +9961,7 @@ if (ground_pound = 3)
 	}
 }
 else
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-and (vspeed = 0)
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-and (vspeed = 0)
-or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 and (vspeed = 0)
 {
 	
@@ -10389,16 +10169,10 @@ and (vspeed = 0)
 	
 	#region /*Against Wall*/
 	if (place_meeting(x - 1, y, obj_wall))
-	and (place_meeting(x, y + 1, obj_wall))
+	and (on_ground = true)
 	and (key_left)
 	or(place_meeting(x + 1, y, obj_wall))
-	and (place_meeting(x, y + 1, obj_wall))
-	and (key_right)
-	or(place_meeting(x - 1, y, obj_wall))
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	and (key_left)
-	or(place_meeting(x + 1, y, obj_wall))
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	and (on_ground = true)
 	and (key_right)
 	{
 		if (crouch = false)
@@ -10864,14 +10638,7 @@ or(speed < 1)
 #endregion /*Stop skidding sound END*/
 
 #region /*Footstep sounds*/
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 {
 	if (speed > 0)
 	and (crouch = false)
@@ -11183,14 +10950,7 @@ and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 #endregion /*Footstep sounds END*/
 
 #region /*Running Sparks Effect*/
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 {
 	if (abs(hspeed) >speed_max_walk + 1)
 	{
@@ -11278,14 +11038,7 @@ if (asset_get_type("obj_speedline") == asset_object)
 }
 #endregion /*Speedlines Effect END*/
 
-if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-or (asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (on_ground = true)
 {
 	can_dive = true;
 }
