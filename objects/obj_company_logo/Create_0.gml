@@ -1,5 +1,10 @@
 /*Create Event*/
 
+display_xscale = 1.5
+display_yscale = 1.5
+display_xoffset = 0
+display_yoffset = 0
+
 #region /*Things you could change*/
 global.company_name = "Jonnil"; /*String of what the company is called*/
 
@@ -25,7 +30,7 @@ global.enable_touch_settings = false; /*Enable Touch settings*/
 global.enable_profile_settings = false; /*Enable Profile settings*/
 global.enable_global_resources_settings = true; /*Enable Global Resources settings*/
 global.enable_storage_settings = true; /*Enable Storage settings*/
-global.enable_language_settings = false; /*Enable Language settings*/
+global.enable_language_settings = true; /*Enable Language settings*/
 global.enable_broadcast_settings = false; /*Enable Broadcast settings*/
 global.enable_how_to_play_settings = false; /*Enable How to play settings*/
 global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
@@ -197,6 +202,7 @@ global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
 global.selected_resourcepack = 0; /* 0 = default*/
 global.selected_title_background = 0; /* 0 = default*/
+global.show_virtual_controls = false; /*Show virtual controls on desktop or not, false by default*/
 
 global.default_zoom_level = 1; /*if reset_level_zoom_when_going_back_to_map = true, then set zoom to this number*/
 global.default_zoom_world_map = 1; /*if reset_world_map_zoom_when_going_back_to_map = true, then set zoom to this number*/
@@ -267,12 +273,14 @@ global.timeattack_second = 0;
 global.timeattack_minute = 0;
 global.timeattack_realmillisecond = 0;
 global.timeattack_realmillisecond_real = 0;
+
 #region /*Checkpoint Timer*/
 global.checkpoint_millisecond = 0;
 global.checkpoint_second = 0;
 global.checkpoint_minute = 0;
 global.checkpoint_realmillisecond = 0;
 #endregion /*Checkpoint Timer END*/
+
 global.win = false;
 global.enemy_counter = 0;
 global.file = 1;
@@ -281,11 +289,13 @@ global.background_brightness_gameplay = 0; /*Background brightness in gameplay. 
 global.background_brightness_menu = 0; /*Background brightness in menus. full_black=- 1, normal = 0 (default), full_white = +1*/
 
 #region /*Music and Sound Volume*/
-global.music_volume = 7000; /*Make the volumes set to 7000 by default*/
-global.sfx_volume = 7000; /*This number is then *0.0001 so it becomes 0.7, because Linux can't load decimal numbers from .ini files*/
-global.ambient_volume = 7000; /*By default volume is 70% so it's a little lower than usual and doesn't hurt players ears*/
-global.voices_volume = 7000;
-global.verbosity_slider = 7000;
+global.main_volume = 10000; /*Make the volumes set to 10000 by default. This number is then *0.0001 so it becomes 1, because Linux can't load decimal numbers from .ini files. By default volumes are 100%*/
+global.music_volume = 10000;
+global.sound_volume = 10000;
+global.ambient_volume = 10000;
+global.footstep_volume = 10000;
+global.voices_volume = 10000;
+global.verbosity_slider = 10000;
 global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
 
@@ -328,6 +338,11 @@ global.player1_cancel_dive_by_pressing_opposite_direction = false;
 global.player2_cancel_dive_by_pressing_opposite_direction = false;
 global.player3_cancel_dive_by_pressing_opposite_direction = false;
 global.player4_cancel_dive_by_pressing_opposite_direction = false;
+
+global.player1_down_and_jump_to_groundpound = false;
+global.player2_down_and_jump_to_groundpound = false;
+global.player3_down_and_jump_to_groundpound = false;
+global.player4_down_and_jump_to_groundpound = false;
 
 #region /*Universal Keyboard Remapping*/
 global.fullscreen_key =vk_f11;

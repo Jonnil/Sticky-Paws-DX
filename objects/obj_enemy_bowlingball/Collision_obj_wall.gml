@@ -9,7 +9,7 @@ or (die = false)
 		if (asset_get_type("snd_bump") == asset_sound)
 		{
 			audio_play_sound(snd_bump, 0, 0);
-			audio_sound_gain(snd_bump, global.sfx_volume * 0.1, 0);
+			audio_sound_gain(snd_bump, global.sound_volume * 0.1, 0);
 		}
 	}
 	if (sliding_along_ground = +1)
@@ -20,7 +20,7 @@ or (die = false)
 		if (asset_get_type("snd_bump") == asset_sound)
 		{
 			audio_play_sound(snd_bump, 0, 0);
-			audio_sound_gain(snd_bump, global.sfx_volume * 0.1, 0);
+			audio_sound_gain(snd_bump, global.sound_volume * 0.1, 0);
 		}
 	}
 	
@@ -32,7 +32,7 @@ or (die = false)
 		if (asset_get_type("snd_bump") == asset_sound)
 		{
 			audio_play_sound(snd_bump, 0, 0);
-			audio_sound_gain(snd_bump, global.sfx_volume * 0.1, 0);
+			audio_sound_gain(snd_bump, global.sound_volume * 0.1, 0);
 		}
 		if (asset_get_type("obj_blockbreak") == asset_object)
 		{

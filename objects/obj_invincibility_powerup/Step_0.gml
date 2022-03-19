@@ -83,7 +83,7 @@ if (coil_spring = true)
 		{
 			audio_stop_sound(snd_star_bound);
 			audio_play_sound(snd_star_bound, 0, 0);
-			audio_sound_gain(snd_star_bound, global.sfx_volume, 0);
+			audio_sound_gain(snd_star_bound, global.sound_volume * global.main_volume, 0);
 		}
 		vspeed = -10;
 		draw_xscale = 1.25;

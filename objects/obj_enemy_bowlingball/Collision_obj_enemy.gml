@@ -3,16 +3,24 @@ if (die = false)
 and (sliding_along_ground = 0)
 and (other.die = false)
 {
-	while(place_meeting(x, y, other))
+	if (!place_meeting(x, y, obj_bullet))
+	and (!place_meeting(x, y, obj_arrow))
 	{
-		x += lengthdir_x(0.5, point_direction(other.x, other.y, x, y));
-		y += lengthdir_y(0.5, point_direction(other.x, other.y, x, y));
+		while(place_meeting(x, y, other))
+		{
+			x += lengthdir_x(0.5, point_direction(other.x, other.y, x, y));
+			y += lengthdir_y(0.5, point_direction(other.x, other.y, x, y));
+		}
 	}
 	if (position_meeting(bbox_left - 1, y, other))
+	and (!position_meeting(bbox_left - 1, y, obj_bullet))
+	and (!position_meeting(bbox_left - 1, y, obj_arrow))
 	{
 		image_xscale = +1;
 	}
 	if (position_meeting(bbox_right + 1, y, other))
+	and (!position_meeting(bbox_right + 1, y, obj_bullet))
+	and (!position_meeting(bbox_right + 1, y, obj_arrow))
 	{
 		image_xscale = -1;
 	}
@@ -80,9 +88,9 @@ and (other.sliding_along_ground = 0)
 
 		#region /*Enemy Voice Defeated*/
 		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-		audio_sound_gain(enemyvoice_defeated1, global.voices_volume, 0);
-		audio_sound_gain(enemyvoice_defeated2, global.voices_volume, 0);
-		audio_sound_gain(enemyvoice_defeated3, global.voices_volume, 0);
+		audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
+		audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
+		audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
 		#endregion /*Enemy Voice Defeated END*/
 		
 		#region /*Rewards*/
@@ -118,7 +126,7 @@ and (other.sliding_along_ground = 0)
 		if (asset_get_type("snd_stomp") == asset_sound)
 		{
 			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 			audio_sound_pitch(snd_stomp, 1);
 		}
 	}

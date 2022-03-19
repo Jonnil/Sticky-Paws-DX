@@ -109,13 +109,13 @@ and (music_fade_in > 0.3)
 	and (asset_get_type("snd_land_dirt") == asset_sound)
 	{
 		audio_play_sound(snd_land_dirt, 0, 0);
-		audio_sound_gain(snd_land_dirt, global.sfx_volume, 0);
+		audio_sound_gain(snd_land_dirt, global.sound_volume * global.main_volume, 0);
 	}
 	else
 	if (asset_get_type("snd_land_rock") == asset_sound)
 	{
 		audio_play_sound(snd_land_rock, 0, 0);
-		audio_sound_gain(snd_land_rock, global.sfx_volume, 0);
+		audio_sound_gain(snd_land_rock, global.sound_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Landing on different surfaces sound effects END*/
@@ -127,7 +127,7 @@ and (music_fade_in > 0.3)
 {
 	audio_stop_sound(snd_hitblockbound);
 	audio_play_sound(snd_hitblockbound, 0, 0);
-	audio_sound_gain(snd_hitblockbound, global.sfx_volume, 0);
+	audio_sound_gain(snd_hitblockbound, global.sound_volume * global.main_volume, 0);
 }
 #endregion /*Hitting ceiling sound effect END*/
 
@@ -143,7 +143,7 @@ and (music_fade_in > 0.3)
 	and (!audio_is_playing(snd_footstep_dirt_right))
 	{
 		audio_play_sound(snd_footstep_dirt_right, 0, 0);
-		audio_sound_gain(snd_footstep_dirt_right, global.sfx_volume, 0);
+		audio_sound_gain(snd_footstep_dirt_right, global.footstep_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Dirt Footstep Right END*/
@@ -160,7 +160,7 @@ and (music_fade_in > 0.3)
 	and (!audio_is_playing(snd_footstep_glass_right))
 	{
 		audio_play_sound(snd_footstep_glass_right, 0, 0);
-		audio_sound_gain(snd_footstep_glass_right, global.sfx_volume, 0);
+		audio_sound_gain(snd_footstep_glass_right, global.footstep_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Glass Footstep Right END*/
@@ -177,7 +177,7 @@ and (music_fade_in > 0.3)
 	and (!audio_is_playing(snd_footstep_grass_right))
 	{
 		audio_play_sound(snd_footstep_grass_right, 0, 0);
-		audio_sound_gain(snd_footstep_grass_right, global.sfx_volume, 0);
+		audio_sound_gain(snd_footstep_grass_right, global.footstep_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Grass Footstep Right END*/
@@ -194,7 +194,7 @@ and (music_fade_in > 0.3)
 	and (!audio_is_playing(snd_footstep_gravel_right))
 	{
 		audio_play_sound(snd_footstep_gravel_right, 0, 0);
-		audio_sound_gain(snd_footstep_gravel_right, global.sfx_volume, 0);
+		audio_sound_gain(snd_footstep_gravel_right, global.footstep_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Gravel Footstep Right END*/
@@ -211,7 +211,7 @@ and (music_fade_in > 0.3)
 	and (!audio_is_playing(snd_footstep_metal_right))
 	{
 		audio_play_sound(snd_footstep_metal_right, 0, 0);
-		audio_sound_gain(snd_footstep_metal_right, global.sfx_volume, 0);
+		audio_sound_gain(snd_footstep_metal_right, global.footstep_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Metal Footstep Right END*/
@@ -228,7 +228,7 @@ and (music_fade_in > 0.3)
 	and (!audio_is_playing(snd_footstep_stone_right))
 	{
 		audio_play_sound(snd_footstep_stone_right, 0, 0);
-		audio_sound_gain(snd_footstep_stone_right, global.sfx_volume, 0);
+		audio_sound_gain(snd_footstep_stone_right, global.footstep_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Stone Footstep Right END*/
@@ -245,7 +245,7 @@ and (music_fade_in > 0.3)
 	and (!audio_is_playing(snd_footstep_wood_right))
 	{
 		audio_play_sound(snd_footstep_wood_right, 0, 0);
-		audio_sound_gain(snd_footstep_wood_right, global.sfx_volume, 0);
+		audio_sound_gain(snd_footstep_wood_right, global.footstep_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Wood Footstep Right END*/
@@ -260,7 +260,7 @@ if (music_fade_in > 0.3)
 		if (!audio_is_playing(snd_footstep_default_right))
 		{
 			audio_play_sound(snd_footstep_default_right, 0, 0);
-			audio_sound_gain(snd_footstep_default_right, global.sfx_volume, 0);
+			audio_sound_gain(snd_footstep_default_right, global.footstep_volume * global.main_volume, 0);
 		}
 	}
 }

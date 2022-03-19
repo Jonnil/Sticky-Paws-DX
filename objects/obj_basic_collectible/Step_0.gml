@@ -58,7 +58,7 @@ if (bounceup = false)
 				if (asset_get_type("snd_coin") == asset_sound)
 				{
 					audio_play_sound(snd_coin, 0, 0);
-					audio_sound_gain(snd_coin, global.sfx_volume, 0);
+					audio_sound_gain(snd_coin, global.sound_volume * global.main_volume, 0);
 				}
 				instance_destroy();
 			}
@@ -76,7 +76,7 @@ if (bounceup = true)
 			if (asset_get_type("snd_coin") == asset_sound)
 			{
 				audio_play_sound(snd_coin, 0, 0);
-				audio_sound_gain(snd_coin, global.sfx_volume, 0);
+				audio_sound_gain(snd_coin, global.sound_volume * global.main_volume, 0);
 			}
 			basic_collectible_sound = true;
 		}

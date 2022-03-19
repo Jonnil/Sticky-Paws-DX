@@ -466,9 +466,9 @@ and (global.pause_room = room_leveleditor)
 			
 			#region /*Return to game*/
 			audio_resume_all();
-			audio_sound_gain(global.music, global.music_volume, 0);
+			audio_sound_gain(global.music, global.music_volume * global.main_volume, 0);
 			audio_sound_gain(global.music_underwater, 0, 0);
-			audio_sound_gain(global.ambience, global.ambient_volume, 0);
+			audio_sound_gain(global.ambience, global.ambient_volume * global.main_volume, 0);
 			audio_sound_gain(global.ambience_underwater, 0, 0);
 			global.pause = false;
 			instance_activate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, window_get_width() + 32, window_get_height() + 32, true);
@@ -530,7 +530,7 @@ and (global.pause_room = room_leveleditor)
 			if (!audio_is_playing(voice_options))
 			{
 				audio_play_sound(voice_options, 0, 0);
-				audio_sound_gain(voice_options, global.voices_volume, 0);
+				audio_sound_gain(voice_options, global.voices_volume * global.main_volume, 0);
 			}
 			menu = noone;
 			can_navigate_settings_sidebar = true;
@@ -1146,9 +1146,9 @@ and (global.pause_room = room_leveleditor)
 		{
 			scr_config_save(); /*Save Config*/
 			audio_resume_all();
-			audio_sound_gain(global.music, global.music_volume, 0);
+			audio_sound_gain(global.music, global.music_volume * global.main_volume, 0);
 			audio_sound_gain(global.music_underwater, 0, 0);
-			audio_sound_gain(global.ambience, global.ambient_volume, 0);
+			audio_sound_gain(global.ambience, global.ambient_volume * global.main_volume, 0);
 			audio_sound_gain(global.ambience_underwater, 0, 0);
 			global.pause = false;
 			if (instance_exists(obj_player))
@@ -1208,9 +1208,9 @@ or(gamepad_button_check_pressed(3, gp_select))
 	{
 		scr_config_save(); /*Save Config*/
 		audio_resume_all();
-		audio_sound_gain(global.music, global.music_volume, 0);
+		audio_sound_gain(global.music, global.music_volume * global.main_volume, 0);
 		audio_sound_gain(global.music_underwater, 0, 0);
-		audio_sound_gain(global.ambience, global.ambient_volume, 0);
+		audio_sound_gain(global.ambience, global.ambient_volume * global.main_volume, 0);
 		audio_sound_gain(global.ambience_underwater, 0, 0);
 		global.pause = false;
 		if (instance_exists(obj_player))

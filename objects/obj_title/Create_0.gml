@@ -820,7 +820,7 @@ else
 if (title_music > noone)
 {
 	audio_play_sound(title_music, 0, true);
-	audio_sound_gain(title_music, global.music_volume, 0);
+	audio_sound_gain(title_music, global.music_volume * global.main_volume, 0);
 }
 #endregion /*Play title screen music END*/
 
@@ -902,6 +902,6 @@ if (voice_game_title > noone)
 {
 	audio_stop_sound(voice_game_title);
 	audio_play_sound(voice_game_title, 0, 0);
-	audio_sound_gain(voice_game_title, global.voices_volume, 0);
+	audio_sound_gain(voice_game_title, global.voices_volume * global.main_volume, 0);
 }
 #endregion /*Say the games title END*/

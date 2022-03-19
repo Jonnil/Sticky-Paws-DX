@@ -171,7 +171,7 @@ if (asset_get_type("snd_music_map") == asset_sound)
 	{
 		audio_play_sound(snd_music_map, 0, true);
 	}
-	audio_sound_gain(snd_music_map, global.music_volume, 0);
+	audio_sound_gain(snd_music_map, global.music_volume * global.main_volume, 0);
 }
 
 #region /*Keyboard Controls*/
@@ -326,7 +326,7 @@ and (global.quit_level = false)
 							draw_yscale = 0.5;
 							yy -= 32;
 							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+							audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -355,7 +355,7 @@ and (global.quit_level = false)
 							draw_yscale = 1.5;
 							xx -= 32;
 							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+							audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -384,7 +384,7 @@ and (global.quit_level = false)
 							draw_yscale = 1.5;
 							xx += 32;
 							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+							audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -413,7 +413,7 @@ and (global.quit_level = false)
 							draw_yscale = 0.5;
 							yy += 32;
 							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+							audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -443,7 +443,7 @@ and (global.quit_level = false)
 				and (!audio_is_playing(snd_bump))
 				{
 					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 					draw_xscale = 1.5;
 					draw_yscale = 0.5;
 					yy -= 32;
@@ -467,7 +467,7 @@ and (global.quit_level = false)
 				and (!audio_is_playing(snd_bump))
 				{
 					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 					draw_xscale = 0.5;
 					draw_yscale = 1.5;
 					xx -= 32;
@@ -491,7 +491,7 @@ and (global.quit_level = false)
 				and (!audio_is_playing(snd_bump))
 				{
 					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 					draw_xscale = 0.5;
 					draw_yscale = 1.5;
 					xx += 32;
@@ -515,7 +515,7 @@ and (global.quit_level = false)
 				and (!audio_is_playing(snd_bump))
 				{
 					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 					draw_xscale = 1.5;
 					draw_yscale = 0.5;
 					yy += 32;

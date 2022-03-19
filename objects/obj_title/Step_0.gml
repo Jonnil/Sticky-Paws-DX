@@ -280,6 +280,6 @@ if (menu = "load_official_level_template")
 #region /*Play Title Screen Music*/
 if (title_music > noone)
 {
-	audio_sound_gain(title_music, global.music_volume, 0);
+	audio_sound_gain(title_music, global.music_volume * global.main_volume, 0);
 }
 #endregion /*Play Title Screen Music END*/

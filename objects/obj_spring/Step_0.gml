@@ -20,7 +20,7 @@ and (can_bounce = 0)
 	{
 		audio_play_sound(snd_spring, 0, 0);
 		audio_sound_pitch(snd_spring, 1);
-		audio_sound_gain(snd_spring, global.sfx_volume, 0);
+		audio_sound_gain(snd_spring, global.sound_volume * global.main_volume, 0);
 	}
 	if (instance_nearest(x, y, obj_player).horizontal_rope_climb = false)
 	{

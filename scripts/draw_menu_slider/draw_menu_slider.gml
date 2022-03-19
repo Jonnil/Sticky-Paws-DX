@@ -43,9 +43,11 @@ function draw_menu_slider()
 		{
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position-32, y_position-32, x_position + 352, y_position + 32)) /*Within the length of the slider*/
 			{
+				if (menu = "main_volume"){global.main_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
 				if (menu = "music_volume"){global.music_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
-				if (menu = "sfx_volume"){global.sfx_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
+				if (menu = "sound_volume"){global.sound_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
 				if (menu = "ambient_volume"){global.ambient_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
+				if (menu = "footstep_volume"){global.footstep_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
 				if (menu = "voices_volume"){global.voices_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
 				
 				if (menu = "background_brightness_gameplay")

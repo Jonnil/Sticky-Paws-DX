@@ -123,15 +123,15 @@ and (cutscene != 1)
 		
 		#region /*Enemy Voice Defeated*/
 		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-		audio_sound_gain(enemyvoice_defeated1, global.voices_volume, 0);
-		audio_sound_gain(enemyvoice_defeated2, global.voices_volume, 0);
-		audio_sound_gain(enemyvoice_defeated3, global.voices_volume, 0);
+		audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
+		audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
+		audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
 		#endregion /*Enemy Voice Defeated END*/
 		
 		if (asset_get_type("snd_stomp") == asset_sound)
 		{
 			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 			audio_sound_pitch(snd_stomp, 1);
 		}
 		

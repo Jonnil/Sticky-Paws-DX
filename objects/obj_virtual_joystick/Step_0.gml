@@ -1,4 +1,40 @@
-temp_joystick = 0;
+/*Create an indicator for a touch*/
+for (var i = 0; i < 10; i += 1)
+{
+	if (device_mouse_check_button_pressed(i, mb_any))
+	{
+		with (instance_create_depth(device_mouse_x(i), device_mouse_y(i), 0, obj_finger_indicator))
+		{
+			my_touch = i;
+		}
+	}
+}
+
+/*if (temp_joystick == -1)
+{
+	for (var i = 0; i < 10; i += 1)
+	{
+		if (device_mouse_check_button_pressed(i, mb_any))
+		{
+			//if (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) < (base_size * 2) * var_screen_size)
+			//{
+				temp_joystick = i;
+			//}
+		}
+	}
+}
+else
+{
+	if (device_mouse_check_button_released(temp_joystick, mb_any))
+	{
+		temp_joystick = -1;
+	}
+}*/
+
+if (instance_exists(obj_finger_indicator))
+{
+	temp_joystick = instance_nearest(x, y, obj_finger_indicator).my_touch;
+}
 
 base_size = 150 * (camera_get_view_width(view_camera[view_current]) / global.default_view_width);
 stick_size = base_size / 2;
@@ -6,8 +42,9 @@ stick_size = base_size / 2;
 x = camera_get_view_x(view_camera[view_current]) + (base_size * 2);
 y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - (base_size * 2);
 
-if (mouse_check_button(mb_left))
+if (mouse_check_button(mb_any))
 {
+	
 	var temp_dir = point_direction(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick));
 	var_direction = temp_dir;
 	

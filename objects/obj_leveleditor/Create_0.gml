@@ -624,14 +624,14 @@ set_view_wview= 1392;
 set_view_hview= 736;
 
 #region /*Initialize Background*/
-background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
-background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
-background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
-background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
-background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
-background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
-background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
-background_x_offset[0]= 0;background_x[0]= 0;background_y_offset[0]= 0;background_y[0]= 0;
+background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
+background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
+background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
+background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
+background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
+background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
+background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
+background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
 #endregion /*Initialize Background END*/
 
 /*HUD Show Controls keys that have been pressed*/

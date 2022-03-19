@@ -34,9 +34,11 @@ function scr_config_save()
 	ini_write_real("config", "show_fps_real", global.show_fps_real);
 	ini_write_real("config", "show_instance_count", global.show_instance_count);
 	ini_write_real("config", "show_collision_mask", global.show_collision_mask);
+	ini_write_real("config", "main_volume", global.main_volume * 10000);
 	ini_write_real("config", "music_volume", global.music_volume * 10000);
-	ini_write_real("config", "sfx_volume", global.sfx_volume * 10000);
+	ini_write_real("config", "sound_volume", global.sound_volume * 10000);
 	ini_write_real("config", "ambient_volume", global.ambient_volume * 10000);
+	ini_write_real("config", "footstep_volume", global.footstep_volume * 10000);
 	ini_write_real("config", "voices_volume", global.voices_volume * 10000);
 	ini_write_real("config", "background_brightness_gameplay", global.background_brightness_gameplay * 10000);
 	ini_write_real("config", "background_brightness_menu", global.background_brightness_menu * 10000);
@@ -87,6 +89,7 @@ function scr_config_save()
 	ini_write_real("config", "player1_sprint_toggle", global.player1_sprint_toggle);
 	ini_write_real("config", "player1_cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("config", "player1_cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
+	ini_write_real("config", "player1_down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
 	ini_write_real("config", "player1_wall_jump_setting", global.player1_wall_jump_setting);
 	ini_write_real("config", "player1_drop_from_rope", global.player1_drop_from_rope);
 	ini_write_real("config", "player1_show_controls", global.player1_show_controls);
@@ -123,6 +126,7 @@ function scr_config_save()
 	ini_write_real("config", "player2_sprint_toggle", global.player2_sprint_toggle);
 	ini_write_real("config", "player2_cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("config", "player2_cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
+	ini_write_real("config", "player2_down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
 	ini_write_real("config", "player2_wall_jump_setting", global.player2_wall_jump_setting);
 	ini_write_real("config", "player2_drop_from_rope", global.player2_drop_from_rope);
 	ini_write_real("config", "player2_show_controls", global.player2_show_controls);
@@ -159,6 +163,7 @@ function scr_config_save()
 	ini_write_real("config", "player3_sprint_toggle", global.player3_sprint_toggle);
 	ini_write_real("config", "player3_cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("config", "player3_cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
+	ini_write_real("config", "player3_down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
 	ini_write_real("config", "player3_wall_jump_setting", global.player3_wall_jump_setting);
 	ini_write_real("config", "player3_drop_from_rope", global.player3_drop_from_rope);
 	ini_write_real("config", "player3_show_controls", global.player3_show_controls);
@@ -195,6 +200,7 @@ function scr_config_save()
 	ini_write_real("config", "player4_sprint_toggle", global.player4_sprint_toggle);
 	ini_write_real("config", "player4_cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("config", "player4_cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
+	ini_write_real("config", "player4_down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
 	ini_write_real("config", "player4_wall_jump_setting", global.player4_wall_jump_setting);
 	ini_write_real("config", "player4_drop_from_rope", global.player4_drop_from_rope);
 	ini_write_real("config", "player4_show_controls", global.player4_show_controls);

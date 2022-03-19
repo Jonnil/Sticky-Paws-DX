@@ -7,7 +7,7 @@ or(other.dive = true)
 		if (asset_get_type("snd_boss_damaged") == asset_sound)
 		{
 			audio_play_sound(snd_boss_damaged, 0, 0);
-			audio_sound_gain(snd_boss_damaged, global.sfx_volume, 0);
+			audio_sound_gain(snd_boss_damaged, global.sound_volume * global.main_volume, 0);
 		}
 		if (other.ground_pound = true)
 		{

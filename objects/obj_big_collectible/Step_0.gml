@@ -211,7 +211,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 	if asset_get_type("snd_basic_collectible") == asset_sound
 	{
 		audio_play_sound(snd_basic_collectible, 0, 0);
-		audio_sound_gain(snd_basic_collectible, global.sfx_volume, 0);
+		audio_sound_gain(snd_basic_collectible, global.sound_volume * global.main_volume, 0);
 	}
 	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
 	instance_destroy();

@@ -54,6 +54,7 @@ function InitTranslations()
 	{
 		global.language_local_data = 0;
 		global.translations = 0;
+		global.languages = 0;
 	}
 }
 

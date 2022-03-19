@@ -167,7 +167,7 @@ if (global.basic_collectibles>99)
 	if (asset_get_type("snd_1up") == asset_sound)
 	{
 		audio_play_sound(snd_1up, 0, 0);
-		audio_sound_gain(snd_1up, global.sfx_volume, 0);
+		audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 	}
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
@@ -223,7 +223,7 @@ and (die = false)
 and (hp >= 1)
 {
 	audio_play_sound(voice_damage, 0, 0);
-	audio_sound_gain(voice_damage, global.voices_volume, 0);
+	audio_sound_gain(voice_damage, global.voices_volume * global.main_volume, 0);
 	audio_sound_pitch(voice_damage, default_voice_pitch);
 }
 #endregion /*Make it obvious if you take damage END*/

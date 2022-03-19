@@ -125,7 +125,7 @@ and (instance_exists(obj_player))
 					}
 					#endregion /* 2000 Score END*/
 					
-					#region /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint. Make sure it gets translated into other languages too*/
+					#region /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint*/
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
 						obj = instance_create_depth(x, y- 20, 0, obj_scoreup);
@@ -134,7 +134,7 @@ and (instance_exists(obj_player))
 							scoreup = "CHECKPOINT";
 						}
 					}
-					#endregion /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint. Make sure it gets translated into other languages too END*/
+					#endregion /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END*/
 				}
 				#endregion /*Collect 10 basic collectibles END*/
 				

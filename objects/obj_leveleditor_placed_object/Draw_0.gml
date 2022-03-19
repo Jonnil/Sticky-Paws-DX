@@ -1522,7 +1522,7 @@ and (!mouse_check_button(mb_middle))
 				{
 					audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
 					audio_play_sound(snd_leveleditor_erase_object, 0, 0);
-					audio_sound_gain(snd_leveleditor_erase_object, global.sfx_volume, 0);
+					audio_sound_gain(snd_leveleditor_erase_object, global.sound_volume * global.main_volume, 0);
 				}
 				with(obj_leveleditor)
 				{

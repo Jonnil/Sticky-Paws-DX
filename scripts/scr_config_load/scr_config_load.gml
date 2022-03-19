@@ -36,10 +36,12 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_fps_real")){global.show_fps_real = ini_read_real("config", "show_fps_real", 0);}
 		if (ini_key_exists("config", "show_instance_count")){global.show_instance_count = ini_read_real("config", "show_instance_count", 0);}
 		if (ini_key_exists("config", "show_collision_mask")){global.show_collision_mask = ini_read_real("config", "show_collision_mask", 0);}
-		if (ini_key_exists("config", "music_volume")){global.music_volume = ini_read_real("config", "music_volume", 7000) * 0.0001;}
-		if (ini_key_exists("config", "sfx_volume")){global.sfx_volume = ini_read_real("config", "sfx_volume", 7000) * 0.0001;}
-		if (ini_key_exists("config", "ambient_volume")){global.ambient_volume = ini_read_real("config", "ambient_volume", 7000) * 0.0001;}
-		if (ini_key_exists("config", "voices_volume")){global.voices_volume = ini_read_real("config", "voices_volume", 7000) * 0.0001;}
+		if (ini_key_exists("config", "main_volume")){global.main_volume = ini_read_real("config", "main_volume", 10000) * 0.0001;}
+		if (ini_key_exists("config", "music_volume")){global.music_volume = ini_read_real("config", "music_volume", 10000) * 0.0001;}
+		if (ini_key_exists("config", "sound_volume")){global.sound_volume = ini_read_real("config", "sound_volume", 10000) * 0.0001;}
+		if (ini_key_exists("config", "ambient_volume")){global.ambient_volume = ini_read_real("config", "ambient_volume", 10000) * 0.0001;}
+		if (ini_key_exists("config", "footstep_volume")){global.footstep_volume = ini_read_real("config", "footstep_volume", 10000) * 0.0001;}
+		if (ini_key_exists("config", "voices_volume")){global.voices_volume = ini_read_real("config", "voices_volume", 10000) * 0.0001;}
 		if (ini_key_exists("config", "background_brightness_gameplay")){global.background_brightness_gameplay = ini_read_real("config", "background_brightness_gameplay", 0) * 0.0001;}
 		if (ini_key_exists("config", "background_brightness_menu")){global.background_brightness_menu = ini_read_real("config", "background_brightness_menu", 0) * 0.0001;}
 		if (ini_key_exists("config", "enable_background_layer1")){global.enable_background_layer1 = ini_read_real("config", "enable_background_layer1", 0);}
@@ -89,6 +91,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_sprint_toggle")){global.player1_sprint_toggle = ini_read_real("config", "player1_sprint_toggle", 0);}
 		if (ini_key_exists("config", "player1_cancel_dive_by_pressing_jump_or_dive_button")){global.player1_cancel_dive_by_pressing_jump_or_dive_button = ini_read_real("config", "player1_cancel_dive_by_pressing_jump_or_dive_button", 0);}
 		if (ini_key_exists("config", "player1_cancel_dive_by_pressing_opposite_direction")){global.player1_cancel_dive_by_pressing_opposite_direction = ini_read_real("config", "player1_cancel_dive_by_pressing_opposite_direction", 0);}
+		if (ini_key_exists("config", "player1_down_and_jump_to_groundpound")){global.player1_down_and_jump_to_groundpound = ini_read_real("config", "player1_down_and_jump_to_groundpound", 0);}
 		if (ini_key_exists("config", "player1_wall_jump_setting")){global.player1_wall_jump_setting = ini_read_real("config", "player1_wall_jump_setting", 0);}
 		if (ini_key_exists("config", "player1_drop_from_rope")){global.player1_drop_from_rope = ini_read_real("config", "player1_drop_from_rope", 0);}
 		if (ini_key_exists("config", "player1_show_controls")){global.player1_show_controls = ini_read_real("config", "player1_show_controls", 0);}//Load Player 1 Keyboard Remapping End
@@ -125,6 +128,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_sprint_toggle")){global.player2_sprint_toggle = ini_read_real("config", "player2_sprint_toggle", 0);}
 		if (ini_key_exists("config", "player2_cancel_dive_by_pressing_jump_or_dive_button")){global.player2_cancel_dive_by_pressing_jump_or_dive_button = ini_read_real("config", "player2_cancel_dive_by_pressing_jump_or_dive_button", 0);}
 		if (ini_key_exists("config", "player2_cancel_dive_by_pressing_opposite_direction")){global.player2_cancel_dive_by_pressing_opposite_direction = ini_read_real("config", "player2_cancel_dive_by_pressing_opposite_direction", 0);}
+		if (ini_key_exists("config", "player2_down_and_jump_to_groundpound")){global.player2_down_and_jump_to_groundpound = ini_read_real("config", "player2_down_and_jump_to_groundpound", 0);}
 		if (ini_key_exists("config", "player2_wall_jump_setting")){global.player2_wall_jump_setting = ini_read_real("config", "player2_wall_jump_setting", 0);}
 		if (ini_key_exists("config", "player2_drop_from_rope")){global.player2_drop_from_rope = ini_read_real("config", "player2_drop_from_rope", 0);}
 		if (ini_key_exists("config", "player2_show_controls")){global.player2_show_controls = ini_read_real("config", "player2_show_controls", 0);}//Load Player 2 Keyboard Remapping End
@@ -161,6 +165,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_sprint_toggle")){global.player3_sprint_toggle = ini_read_real("config", "player3_sprint_toggle", 0);}
 		if (ini_key_exists("config", "player3_cancel_dive_by_pressing_jump_or_dive_button")){global.player3_cancel_dive_by_pressing_jump_or_dive_button = ini_read_real("config", "player3_cancel_dive_by_pressing_jump_or_dive_button", 0);}
 		if (ini_key_exists("config", "player3_cancel_dive_by_pressing_opposite_direction")){global.player3_cancel_dive_by_pressing_opposite_direction = ini_read_real("config", "player3_cancel_dive_by_pressing_opposite_direction", 0);}
+		if (ini_key_exists("config", "player3_down_and_jump_to_groundpound")){global.player3_down_and_jump_to_groundpound = ini_read_real("config", "player3_down_and_jump_to_groundpound", 0);}
 		if (ini_key_exists("config", "player3_wall_jump_setting")){global.player3_wall_jump_setting = ini_read_real("config", "player3_wall_jump_setting", 0);}
 		if (ini_key_exists("config", "player3_drop_from_rope")){global.player3_drop_from_rope = ini_read_real("config", "player3_drop_from_rope", 0);}
 		if (ini_key_exists("config", "player3_show_controls")){global.player3_show_controls = ini_read_real("config", "player3_show_controls", 0);}//Load Player 3 Keyboard Remapping End
@@ -197,6 +202,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_sprint_toggle")){global.player4_sprint_toggle = ini_read_real("config", "player4_sprint_toggle", 0);}
 		if (ini_key_exists("config", "player4_cancel_dive_by_pressing_jump_or_dive_button")){global.player4_cancel_dive_by_pressing_jump_or_dive_button = ini_read_real("config", "player4_cancel_dive_by_pressing_jump_or_dive_button", 0);}
 		if (ini_key_exists("config", "player4_cancel_dive_by_pressing_opposite_direction")){global.player4_cancel_dive_by_pressing_opposite_direction = ini_read_real("config", "player4_cancel_dive_by_pressing_opposite_direction", 0);}
+		if (ini_key_exists("config", "player4_down_and_jump_to_groundpound")){global.player4_down_and_jump_to_groundpound = ini_read_real("config", "player4_down_and_jump_to_groundpound", 0);}
 		if (ini_key_exists("config", "player4_wall_jump_setting")){global.player4_wall_jump_setting = ini_read_real("config", "player4_wall_jump_setting", 0);}
 		if (ini_key_exists("config", "player4_drop_from_rope")){global.player4_drop_from_rope = ini_read_real("config", "player4_drop_from_rope", 0);}
 		if (ini_key_exists("config", "player4_show_controls")){global.player4_show_controls = ini_read_real("config", "player4_show_controls", 0);}//Load Player 4 Keyboard Remapping End

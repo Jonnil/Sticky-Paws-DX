@@ -2801,7 +2801,7 @@ else
 if (!audio_is_playing(global.ambience))
 {
 	audio_play_sound(global.ambience, 0, true);
-	audio_sound_gain(global.ambience, global.ambient_volume * music_fade_in, 0);
+	audio_sound_gain(global.ambience, global.ambient_volume * global.main_volume * music_fade_in, 0);
 }
 #endregion /*Play Ambience END*/
 
@@ -3230,19 +3230,41 @@ if (player = 1)
 else
 if (player = 2)
 {
-	cancel_dive_by_pressing_opposite_direction = global.player1_cancel_dive_by_pressing_opposite_direction;
+	cancel_dive_by_pressing_opposite_direction = global.player2_cancel_dive_by_pressing_opposite_direction;
 }
 else
 if (player = 3)
 {
-	cancel_dive_by_pressing_opposite_direction = global.player1_cancel_dive_by_pressing_opposite_direction;
+	cancel_dive_by_pressing_opposite_direction = global.player3_cancel_dive_by_pressing_opposite_direction;
 }
 else
 if (player = 4)
 {
-	cancel_dive_by_pressing_opposite_direction = global.player1_cancel_dive_by_pressing_opposite_direction;
+	cancel_dive_by_pressing_opposite_direction = global.player4_cancel_dive_by_pressing_opposite_direction;
 }
 #endregion /*Cancel dive by pressing opposite direction END*/
+
+#region /*Down + Jump to Groundpound*/
+if (player = 1)
+{
+	down_and_jump_to_groundpound = global.player1_down_and_jump_to_groundpound;
+}
+else
+if (player = 2)
+{
+	down_and_jump_to_groundpound = global.player2_down_and_jump_to_groundpound;
+}
+else
+if (player = 3)
+{
+	down_and_jump_to_groundpound = global.player3_down_and_jump_to_groundpound;
+}
+else
+if (player = 4)
+{
+	down_and_jump_to_groundpound = global.player4_down_and_jump_to_groundpound;
+}
+#endregion /*Down + Jump to Groundpound END*/
 
 #region /*Hold Direction Wall jump*/
 if (player = 1)
@@ -5148,20 +5170,20 @@ and (key_jump_hold)
 			and (asset_get_type("snd_3rdjump") == asset_sound)
 			{
 				audio_play_sound(snd_3rdjump, 0, 0);
-				audio_sound_gain(snd_3rdjump, global.sfx_volume, 0);
+				audio_sound_gain(snd_3rdjump, global.sound_volume * global.main_volume, 0);
 			}
 			else
 			if (asset_get_type("snd_jump") == asset_sound)
 			{
 				audio_play_sound(snd_jump, 0, 0);
-				audio_sound_gain(snd_jump, global.sfx_volume, 0);
+				audio_sound_gain(snd_jump, global.sound_volume * global.main_volume, 0);
 			}
 			if (jump <= 1)
 			//if (random(global.verbosity_slider* 100) >= 100)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump, 0, 0);
-				audio_sound_gain(voice_jump, global.voices_volume, 0);
+				audio_sound_gain(voice_jump, global.voices_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_jump, default_voice_pitch);
 			}
 			if (jump = 2)
@@ -5169,7 +5191,7 @@ and (key_jump_hold)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump2nd, 0, 0);
-				audio_sound_gain(voice_jump2nd, global.voices_volume, 0);
+				audio_sound_gain(voice_jump2nd, global.voices_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_jump2nd, default_voice_pitch);
 			}
 			if (jump >= 3)
@@ -5177,7 +5199,7 @@ and (key_jump_hold)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump3rd, 0, 0);
-				audio_sound_gain(voice_jump3rd, global.voices_volume, 0);
+				audio_sound_gain(voice_jump3rd, global.voices_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_jump3rd, default_voice_pitch);
 			}
 			#endregion /*Jump sound effect END*/
@@ -5240,7 +5262,7 @@ and (can_mid_air_jump = 0)
 				audio_stop_sound(voice);
 			}
 			voice = audio_play_sound(voice_jump, 0, 0);
-			audio_sound_gain(voice_jump, global.voices_volume, 0);
+			audio_sound_gain(voice_jump, global.voices_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_jump, default_voice_pitch);
 			effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
 			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
@@ -6049,7 +6071,7 @@ and (hold_item_in_hands = "")
 					if (!audio_is_playing(snd_skiddingvertical))
 					{
 						audio_play_sound(snd_skiddingvertical, 0, 0);
-						audio_sound_gain(snd_skiddingvertical, global.sfx_volume, 0);
+						audio_sound_gain(snd_skiddingvertical, global.sound_volume * global.main_volume, 0);
 					}
 				}
 				angle = 0;
@@ -6100,7 +6122,7 @@ and (hold_item_in_hands = "")
 				and (!audio_is_playing(snd_move_ivy))
 				{
 					audio_play_sound(snd_move_ivy, 0, 0);
-					audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
+					audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
 				}
 				can_ground_pound = false;
 				ledge_grab_jump = false;
@@ -6127,7 +6149,7 @@ and (hold_item_in_hands = "")
 						and (!audio_is_playing(snd_move_ivy))
 						{
 							audio_play_sound(snd_move_ivy, 0, 0);
-							audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
+							audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
 						}
 						can_ground_pound = true;
 						can_dive = true;
@@ -6142,7 +6164,7 @@ and (hold_item_in_hands = "")
 						and (!audio_is_playing(snd_bump))
 						{
 							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sfx_volume, 0);
+							audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 						}
 						#endregion /*Stop climbing up if there is a wall above you END*/
 					
@@ -6156,7 +6178,7 @@ and (hold_item_in_hands = "")
 					and (!audio_is_playing(snd_bump))
 					{
 						audio_play_sound(snd_bump, 0, 0);
-						audio_sound_gain(snd_bump, global.sfx_volume, 0);
+						audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 					}
 					#endregion /*Stop climbing up if you're above the level and there is nothing above you END*/
 					
@@ -6211,12 +6233,12 @@ and (hold_item_in_hands = "")
 				spring = false;
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_wallkick, 0, 0);
-				audio_sound_gain(voice_wallkick, global.voices_volume, 0);
+				audio_sound_gain(voice_wallkick, global.voices_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_wallkick, default_voice_pitch);
 				if (asset_get_type("snd_wallkick") == asset_sound)
 				{
 					audio_play_sound(snd_wallkick, 0, 0);
-					audio_sound_gain(snd_wallkick, global.sfx_volume, 0);
+					audio_sound_gain(snd_wallkick, global.sound_volume * global.main_volume, 0);
 				}
 				angle = 0;
 				last_standing_y = y;
@@ -6376,14 +6398,14 @@ and (hold_item_in_hands = "")
 			spring = false;
 			audio_stop_sound(voice);
 			voice = audio_play_sound(choose(voice_wallkick,voice_jump), 0, 0);
-			audio_sound_gain(voice_wallkick, global.voices_volume, 0);
+			audio_sound_gain(voice_wallkick, global.voices_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_wallkick, default_voice_pitch);
-			audio_sound_gain(voice_jump, global.voices_volume, 0);
+			audio_sound_gain(voice_jump, global.voices_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_jump, default_voice_pitch);
 			if (asset_get_type("snd_wallkick") == asset_sound)
 			{
 				audio_play_sound(snd_wallkick, 0, 0);
-				audio_sound_gain(snd_wallkick, global.sfx_volume, 0);
+				audio_sound_gain(snd_wallkick, global.sound_volume * global.main_volume, 0);
 			}
 			angle = 0;
 			last_standing_y = y;
@@ -6453,6 +6475,9 @@ and (takendamage <= takendamage_freezetime)
 	{
 		if (key_crouch_pressed)
 		and (joystick_can_ground_pound = true)
+		or (down_and_jump_to_groundpound = true)
+		and (key_down)
+		and (key_jump)
 		{
 			if (crouch = false)
 			and (climb = false)
@@ -6485,7 +6510,7 @@ and (takendamage <= takendamage_freezetime)
 						if (asset_get_type("snd_rolling") == asset_sound)
 						{
 							audio_play_sound(snd_rolling, 0, 0);
-							audio_sound_gain(snd_rolling, global.sfx_volume, 0);
+							audio_sound_gain(snd_rolling, global.sound_volume * global.main_volume, 0);
 						}
 						hspeed = 0;
 						speed_max = 1;
@@ -6557,7 +6582,7 @@ and (takendamage <= takendamage_freezetime)
 				if (asset_get_type("snd_hipattack") == asset_sound)
 				{
 					audio_play_sound(snd_hipattack, 0, 0);
-					audio_sound_gain(snd_hipattack, global.sfx_volume, 0);
+					audio_sound_gain(snd_hipattack, global.sound_volume * global.main_volume, 0);
 				}
 			}
 			#endregion /*If touching the ground when doing a ground pound END*/
@@ -6746,11 +6771,11 @@ and (global.pause = false)
 					if (asset_get_type("snd_dive") == asset_sound)
 					{
 						audio_play_sound(snd_dive, 0, 0);
-						audio_sound_gain(snd_dive, global.sfx_volume, 0);
+						audio_sound_gain(snd_dive, global.sound_volume * global.main_volume, 0);
 					}
 					audio_stop_sound(voice);
 					voice = audio_play_sound(voice_dive, 0, 0);
-					audio_sound_gain(voice_dive, global.voices_volume, 0);
+					audio_sound_gain(voice_dive, global.voices_volume * global.main_volume, 0);
 					audio_sound_pitch(voice_dive, default_voice_pitch);
 					dive = true;
 					jump = 0;
@@ -6974,7 +6999,7 @@ if (allow_ledge_grab= true)
 				if (asset_get_type("snd_grabledge") == asset_sound)
 				{
 					audio_play_sound(snd_grabledge, 0, 0);
-					audio_sound_gain(snd_grabledge, global.sfx_volume, 0);
+					audio_sound_gain(snd_grabledge, global.sound_volume * global.main_volume, 0);
 				}
 				gravity = 0;
 				hspeed = 0;
@@ -7046,7 +7071,7 @@ if (allow_ledge_grab= true)
 					if (asset_get_type("snd_pullup") == asset_sound)
 					{
 						audio_play_sound(snd_pullup, 0, 0);
-						audio_sound_gain(snd_pullup, global.sfx_volume, 0);
+						audio_sound_gain(snd_pullup, global.sound_volume * global.main_volume, 0);
 					}
 					vspeed = - 8;
 					ledge_grab = false;
@@ -7070,7 +7095,7 @@ if (allow_ledge_grab= true)
 				if (asset_get_type("snd_pullupfast") == asset_sound)
 				{
 					audio_play_sound(snd_pullupfast, 0, 0);
-					audio_sound_gain(snd_pullupfast, global.sfx_volume, 0);
+					audio_sound_gain(snd_pullupfast, global.sound_volume * global.main_volume, 0);
 				}
 				vspeed = -normal_jump_height;
 				ledge_grab = false;
@@ -7185,23 +7210,23 @@ if (in_water = true)
 	if (global.music_underwater > 0)
 	{
 		audio_sound_gain(global.music, 0, 0);
-		audio_sound_gain(global.music_underwater, global.music_volume * music_fade_in, 0);
+		audio_sound_gain(global.music_underwater, global.music_volume * global.main_volume * music_fade_in, 0);
 	}
 	else
 	if (global.music > 0)
 	{
-		audio_sound_gain(global.music, global.music_volume * music_fade_in, 0);
+		audio_sound_gain(global.music, global.music_volume * global.main_volume * music_fade_in, 0);
 		audio_sound_gain(global.music_underwater, 0, 0);
 	}
 	if (global.ambience_underwater > 0)
 	{
 		audio_sound_gain(global.ambience, 0, 0);
-		audio_sound_gain(global.ambience_underwater, global.ambient_volume * music_fade_in, 0);
+		audio_sound_gain(global.ambience_underwater, global.ambient_volume * global.main_volume * music_fade_in, 0);
 	}
 	else
 	if (global.ambience > 0)
 	{
-		audio_sound_gain(global.ambience, global.ambient_volume * music_fade_in, 0);
+		audio_sound_gain(global.ambience, global.ambient_volume * global.main_volume * music_fade_in, 0);
 		audio_sound_gain(global.ambience_underwater, 0, 0);
 	}
 }
@@ -7209,12 +7234,12 @@ else
 {
 	if (global.music > 0)
 	{
-		audio_sound_gain(global.music, global.music_volume * music_fade_in, 0);
+		audio_sound_gain(global.music, global.music_volume * global.main_volume * music_fade_in, 0);
 		audio_sound_gain(global.music_underwater, 0, 0);
 	}
 	if (global.ambience > 0)
 	{
-		audio_sound_gain(global.ambience, global.ambient_volume * music_fade_in, 0);
+		audio_sound_gain(global.ambience, global.ambient_volume * global.main_volume * music_fade_in, 0);
 		audio_sound_gain(global.ambience_underwater, 0, 0);
 	}
 }
@@ -7321,7 +7346,7 @@ if (asset_get_type("obj_water") == asset_object)
 				if (asset_get_type("snd_swim") == asset_sound)
 				{
 					audio_play_sound(snd_swim, 0, 0);
-					audio_sound_gain(snd_swim, global.sfx_volume, 0);
+					audio_sound_gain(snd_swim, global.sound_volume * global.main_volume, 0);
 				}
 				if (asset_get_type("obj_bubble") == asset_object)
 				{
@@ -7432,12 +7457,12 @@ if (in_water != old_in_water)
 		if (asset_get_type("snd_jump") == asset_sound)
 		{
 			audio_play_sound(snd_jump, 0, 0);
-			audio_sound_gain(snd_jump, global.sfx_volume, 0);
+			audio_sound_gain(snd_jump, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("snd_swim") == asset_sound)
 		{
 			audio_play_sound(snd_swim, 0, 0);
-			audio_sound_gain(snd_swim, global.sfx_volume, 0);
+			audio_sound_gain(snd_swim, global.sound_volume * global.main_volume, 0);
 		}
 		#endregion /*Jump sound effect END*/
 		
@@ -7481,7 +7506,7 @@ and (power_meter_running_sound = true)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(snd_power_meter_running, 0, 0);
-				audio_sound_gain(snd_power_meter_running, global.sfx_volume, 0);
+				audio_sound_gain(snd_power_meter_running, global.sound_volume * global.main_volume, 0);
 			}
 		}
 		if (on_ground = true)
@@ -7588,7 +7613,7 @@ if (asset_get_type("obj_lava") == asset_object)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_burned, 0, 0);
-				audio_sound_gain(voice_burned, global.voices_volume, 0);
+				audio_sound_gain(voice_burned, global.voices_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_burned, default_voice_pitch);
 				hp -= 1;
 			}
@@ -7596,7 +7621,7 @@ if (asset_get_type("obj_lava") == asset_object)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_burned, 0, 0);
-				audio_sound_gain(voice_burned, global.voices_volume, 0);
+				audio_sound_gain(voice_burned, global.voices_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_burned, default_voice_pitch);
 			}
 			if (vspeed > 0)
@@ -7616,7 +7641,7 @@ if (burnt = true)
 	if (on_ground = true)
 	{
 		audio_play_sound(voice_burned_running, 0, 0);
-		audio_sound_gain(voice_burned_running, global.voices_volume, 0);
+		audio_sound_gain(voice_burned_running, global.voices_volume * global.main_volume, 0);
 		audio_sound_pitch(voice_burned_running, default_voice_pitch);
 		burnt = 2;
 		dive = false;
@@ -7695,7 +7720,7 @@ if (die = true)
 		if (asset_get_type("snd_die") == asset_sound)
 		{
 			audio_play_sound(snd_die, 0, 0);
-			audio_sound_gain(snd_die, global.sfx_volume, 0);
+			audio_sound_gain(snd_die, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_player_die") == asset_object)
 		{
@@ -7924,11 +7949,11 @@ and (instance_nearest(x, y, obj_invincibility_powerup).bounceup = false)
 	and (!audio_is_playing(snd_music_invincible))
 	{
 		audio_play_sound(snd_music_invincible, 0, 0);
-		audio_sound_gain(snd_music_invincible, global.music_volume, 0);
+		audio_sound_gain(snd_music_invincible, global.music_volume * global.main_volume, 0);
 	}
 	audio_stop_sound(voice);
 	voice = audio_play_sound(voice_get_star, 0, 0);
-	audio_sound_gain(voice_get_star, global.voices_volume, 0);
+	audio_sound_gain(voice_get_star, global.voices_volume * global.main_volume, 0);
 	audio_sound_pitch(voice_get_star, default_voice_pitch);
 	score += 1000;
 	global.hud_show_score = true;
@@ -7971,7 +7996,7 @@ if (goal = false)
 			if (!audio_is_playing(snd_hurry_up))
 			{
 				audio_play_sound(snd_hurry_up, 0, 0);
-				audio_sound_gain(snd_hurry_up, global.sfx_volume, 0);
+				audio_sound_gain(snd_hurry_up, global.sound_volume * global.main_volume, 0);
 			}
 			if (audio_is_playing(snd_hurry_up))
 			{
@@ -8009,7 +8034,7 @@ else
 			if (!audio_is_playing(snd_beep))
 			{
 				audio_play_sound(snd_beep, 0, true);
-				audio_sound_gain(snd_beep, global.sfx_volume, 0);
+				audio_sound_gain(snd_beep, global.sound_volume * global.main_volume, 0);
 			}
 		}
 	}
@@ -8065,7 +8090,7 @@ and (instance_exists(obj_goal))
 			global.music_underwater = noone;
 			audio_stop_sound(voice);
 			voice = audio_play_sound(voice_enter_goal, 0, 0);
-			audio_sound_gain(voice_enter_goal, global.voices_volume, 0);
+			audio_sound_gain(voice_enter_goal, global.voices_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_enter_goal, default_voice_pitch);
 			goal = true;
 			global.goal_active = true;
@@ -8084,7 +8109,7 @@ and (instance_exists(obj_goal))
 				if (!audio_is_playing(level_clear_melody))
 				{
 					audio_play_sound(level_clear_melody, 0, 0);
-					audio_sound_gain(level_clear_melody, global.music_volume, 0);
+					audio_sound_gain(level_clear_melody, global.music_volume * global.main_volume, 0);
 				}
 			}
 			else
@@ -8092,7 +8117,7 @@ and (instance_exists(obj_goal))
 			and (!audio_is_playing(snd_level_clear))
 			{
 				audio_play_sound(snd_level_clear, 0, 0);
-				audio_sound_gain(snd_level_clear, global.music_volume, 0);
+				audio_sound_gain(snd_level_clear, global.music_volume * global.main_volume, 0);
 			}
 			#endregion /*Level Clear Melody END*/
 		
@@ -8210,7 +8235,7 @@ and (instance_nearest(x, y, obj_spring).can_bounce = 0)
 	#region /*Play jumping on spring voice clip*/
 	audio_stop_sound(voice);
 	voice = audio_play_sound(voice_jump_spring, 0, 0);
-	audio_sound_gain(voice_jump_spring, global.voices_volume, 0);
+	audio_sound_gain(voice_jump_spring, global.voices_volume * global.main_volume, 0);
 	audio_sound_pitch(voice_jump_spring, default_voice_pitch);
 	#endregion /*Play jumping on spring voice clip END*/
 	
@@ -8230,7 +8255,7 @@ and (instance_nearest(x, y, obj_spring).can_bounce = 0)
 		if (asset_get_type("snd_hipattack") == asset_sound)
 		{
 			audio_play_sound(snd_hipattack, 0, 0);
-			audio_sound_gain(snd_hipattack, global.sfx_volume, 0);
+			audio_sound_gain(snd_hipattack, global.sound_volume * global.main_volume, 0);
 		}
 	}
 	spring_animation = 0;
@@ -8418,7 +8443,7 @@ and (stick_to_wall = false)
 			if (!audio_is_playing(snd_bump))
 			{
 				audio_play_sound(snd_bump, 0, 0);
-				audio_sound_gain(snd_bump, global.sfx_volume, 0);
+				audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 			}
 		}
 	}
@@ -8439,7 +8464,7 @@ and (stick_to_wall = false)
 			if (!audio_is_playing(snd_bump))
 			{
 				audio_play_sound(snd_bump, 0, 0);
-				audio_sound_gain(snd_bump, global.sfx_volume, 0);
+				audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 			}
 		}
 	}
@@ -8490,11 +8515,11 @@ and (hold_item_in_hands = "")
 		if (asset_get_type("snd_catch_ivy") == asset_sound)
 		{
 			audio_play_sound(snd_catch_ivy, 0, 0);
-			audio_sound_gain(snd_catch_ivy, global.sfx_volume, 0);
+			audio_sound_gain(snd_catch_ivy, global.sound_volume * global.main_volume, 0);
 		}
 		audio_stop_sound(voice);
 		voice = audio_play_sound(voice_rope_catch, 0, 0);
-		audio_sound_gain(voice_rope_catch, global.voices_volume, 0);
+		audio_sound_gain(voice_rope_catch, global.voices_volume * global.main_volume, 0);
 		audio_sound_pitch(voice_rope_catch, default_voice_pitch);
 		#endregion /*Make a sound effect that you have started cimbing END*/
 		
@@ -8600,7 +8625,7 @@ and (hold_item_in_hands = "")
 				if (asset_get_type("snd_swing") == asset_sound)
 				{
 					audio_play_sound(snd_swing, 0, 0);
-					audio_sound_gain(snd_swing, global.sfx_volume, 0);
+					audio_sound_gain(snd_swing, global.sound_volume * global.main_volume, 0);
 				}
 				image_index = 0;
 			}
@@ -8619,7 +8644,7 @@ and (hold_item_in_hands = "")
 				if (asset_get_type("snd_jump") == asset_sound)
 				{
 					audio_play_sound(snd_jump, 0, 0);
-					audio_sound_gain(snd_jump, global.sfx_volume, 0);
+					audio_sound_gain(snd_jump, global.sound_volume * global.main_volume, 0);
 				}
 				can_climb_horizontal_rope_cooldown = sprite_height/35;
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
@@ -8635,7 +8660,7 @@ and (hold_item_in_hands = "")
 					vspeed = -triple_jump_height* 1.25;
 					audio_stop_sound(voice);
 					voice = audio_play_sound(voice_jump_rope, 0, 0);
-					audio_sound_gain(voice_jump_rope, global.voices_volume, 0);
+					audio_sound_gain(voice_jump_rope, global.voices_volume * global.main_volume, 0);
 					audio_sound_pitch(voice_jump_rope, default_voice_pitch);
 				}
 				else
@@ -8679,7 +8704,7 @@ and (hold_item_in_hands = "")
 				if (asset_get_type("snd_jump") == asset_sound)
 				{
 					audio_play_sound(snd_jump, 0, 0);
-					audio_sound_gain(snd_jump, global.sfx_volume, 0);
+					audio_sound_gain(snd_jump, global.sound_volume * global.main_volume, 0);
 				}
 				can_climb_horizontal_rope_cooldown = sprite_height/35;
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
@@ -8753,7 +8778,7 @@ and (hold_item_in_hands = "")
 			and (!audio_is_playing(snd_move_ivy))
 			{
 				audio_play_sound(snd_move_ivy, 0, 0);
-				audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
+				audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
 			}
 		}
 		#endregion /*Climb left on horizontal rope END*/
@@ -8789,7 +8814,7 @@ and (hold_item_in_hands = "")
 			and (!audio_is_playing(snd_move_ivy))
 			{
 				audio_play_sound(snd_move_ivy, 0, 0);
-				audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
+				audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
 			}
 		}
 		#endregion /*Climb right on horizontal rope END*/
@@ -8863,7 +8888,7 @@ and (hold_item_in_hands = "")
 				and (!audio_is_playing(snd_bump))
 				{
 					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 				}
 			}
 		}
@@ -8888,7 +8913,7 @@ and (hold_item_in_hands = "")
 				and (!audio_is_playing(snd_bump))
 				{
 					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 				}
 			}
 		}
@@ -8921,11 +8946,11 @@ and (place_meeting(x, y, obj_vine))
 			if (asset_get_type("snd_catch_ivy") == asset_sound)
 			{
 				audio_play_sound(snd_catch_ivy, 0, 0);
-				audio_sound_gain(snd_catch_ivy, global.sfx_volume, 0);
+				audio_sound_gain(snd_catch_ivy, global.sound_volume * global.main_volume, 0);
 			}
 			audio_stop_sound(voice);
 			voice = audio_play_sound(voice_rope_catch, 0, 0);
-			audio_sound_gain(voice_rope_catch, global.voices_volume, 0);
+			audio_sound_gain(voice_rope_catch, global.voices_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_rope_catch, default_voice_pitch);
 			#endregion /*Make a sound effect and voice clip that you have started cimbing END*/
 			
@@ -8982,7 +9007,7 @@ and (place_meeting(x, y, obj_vine))
 					if (!audio_is_playing(snd_move_ivy))
 					{
 						audio_play_sound(snd_move_ivy, 0, 0);
-						audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
+						audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
 					}
 				}
 			}
@@ -9025,7 +9050,7 @@ and (place_meeting(x, y, obj_vine))
 				if (!audio_is_playing(snd_move_ivy))
 				{
 					audio_play_sound(snd_move_ivy, 0, 0);
-					audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
+					audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
 				}
 			}
 			if (on_ground = true)
@@ -9061,7 +9086,7 @@ and (place_meeting(x, y, obj_vine))
 				if (!audio_is_playing(snd_move_ivy))
 				{
 					audio_play_sound(snd_move_ivy, 0, 0);
-					audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
+					audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
 				}
 			}
 		}
@@ -9083,7 +9108,7 @@ and (place_meeting(x, y, obj_vine))
 				if (!audio_is_playing(snd_bump))
 				{
 					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 				}
 			}
 		}
@@ -9115,7 +9140,7 @@ and (place_meeting(x, y, obj_vine))
 				if (!audio_is_playing(snd_move_ivy))
 				{
 					audio_play_sound(snd_move_ivy, 0, 0);
-					audio_sound_gain(snd_move_ivy, global.sfx_volume, 0);
+					audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
 				}
 			}
 		}
@@ -9137,7 +9162,7 @@ and (place_meeting(x, y, obj_vine))
 				if (!audio_is_playing(snd_bump))
 				{
 					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sfx_volume, 0);
+					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 				}
 			}
 		}
@@ -9163,12 +9188,12 @@ and (place_meeting(x, y, obj_vine))
 				if (asset_get_type("snd_jumpsmall") == asset_sound)
 				{
 					audio_play_sound(snd_jumpsmall, 0, 0);
-					audio_sound_gain(snd_jumpsmall, global.sfx_volume, 0);
+					audio_sound_gain(snd_jumpsmall, global.sound_volume * global.main_volume, 0);
 				}
 				if (asset_get_type("snd_jump") == asset_sound)
 				{
 					audio_play_sound(snd_jump, 0, 0);
-					audio_sound_gain(snd_jump, global.sfx_volume, 0);
+					audio_sound_gain(snd_jump, global.sound_volume * global.main_volume, 0);
 					audio_sound_pitch(snd_jump, 1.5);
 				}
 			}
@@ -9176,7 +9201,7 @@ and (place_meeting(x, y, obj_vine))
 			if (asset_get_type("snd_jump") == asset_sound)
 			{
 				audio_play_sound(snd_jump, 0, 0);
-				audio_sound_gain(snd_jump, global.sfx_volume, 0);
+				audio_sound_gain(snd_jump, global.sound_volume * global.main_volume, 0);
 			}
 		}
 	}
@@ -9218,7 +9243,7 @@ if (key_crouch)
 				if (asset_get_type("snd_crouch") == asset_sound)
 				{
 					audio_play_sound(snd_crouch, 0, 0);
-					audio_sound_gain(snd_crouch, global.sfx_volume, 0);
+					audio_sound_gain(snd_crouch, global.sound_volume * global.main_volume, 0);
 				}
 			}
 		}
@@ -9250,7 +9275,7 @@ and (crouch = true)
 		if (asset_get_type("snd_rise") == asset_sound)
 		{
 			audio_play_sound(snd_rise, 0, 0);
-			audio_sound_gain(snd_rise, global.sfx_volume, 0);
+			audio_sound_gain(snd_rise, global.sound_volume * global.main_volume, 0);
 		}
 	}
 }
@@ -9268,7 +9293,7 @@ if (crouch = true)
 				if (!audio_is_playing(snd_skidding))
 				{
 					audio_play_sound(snd_skidding, 0, 0);
-					audio_sound_gain(snd_skidding, global.sfx_volume, 0);
+					audio_sound_gain(snd_skidding, global.sound_volume * global.main_volume, 0);
 				}
 			}
 			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
@@ -9408,7 +9433,7 @@ if (on_ground = true)
 			if (!audio_is_playing(snd_skidding))
 			{
 				audio_play_sound(snd_skidding, 0, 0);
-				audio_sound_gain(snd_skidding, global.sfx_volume, 0);
+				audio_sound_gain(snd_skidding, global.sound_volume * global.main_volume, 0);
 			}
 		}
 		if (asset_get_type("spr_player_swim_skidding") == asset_sprite)
@@ -9539,7 +9564,7 @@ and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			if (!audio_is_playing(snd_skidding))
 			{
 				audio_play_sound(snd_skidding, 0, 0);
-				audio_sound_gain(snd_skidding, global.sfx_volume, 0);
+				audio_sound_gain(snd_skidding, global.sound_volume * global.main_volume, 0);
 			}
 		}
 		if (asset_get_type("spr_player_swim_skidding") == asset_sprite)
@@ -9645,7 +9670,7 @@ and (allow_crouch = true)
 			if (asset_get_type("snd_crouch") == asset_sound)
 			{
 				audio_play_sound(snd_crouch, 0, 0);
-				audio_sound_gain(snd_crouch, global.sfx_volume, 0);
+				audio_sound_gain(snd_crouch, global.sound_volume * global.main_volume, 0);
 			}
 		}
 	}
@@ -9675,7 +9700,7 @@ and (vspeed >= 0)
 	if (asset_get_type("snd_rise") == asset_sound)
 	{
 		audio_play_sound(snd_rise, 0, 0);
-		audio_sound_gain(snd_rise, global.sfx_volume, 0);
+		audio_sound_gain(snd_rise, global.sound_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Don't crouch END*/
@@ -9751,7 +9776,7 @@ if (crouch = true)
 				if (!audio_is_playing(snd_skidding))
 				{
 					audio_play_sound(snd_skidding, 0, 0);
-					audio_sound_gain(snd_skidding, global.sfx_volume, 0);
+					audio_sound_gain(snd_skidding, global.sound_volume * global.main_volume, 0);
 				}
 			}
 			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
@@ -9981,7 +10006,7 @@ and (vspeed = 0)
 					if (!audio_is_playing(snd_skidding_ice))
 					{
 						audio_play_sound(snd_skidding_ice, 0, 0);
-						audio_sound_gain(snd_skidding_ice, global.sfx_volume, 0);
+						audio_sound_gain(snd_skidding_ice, global.sound_volume * global.main_volume, 0);
 					}
 				}
 			}
@@ -9991,7 +10016,7 @@ and (vspeed = 0)
 				if (!audio_is_playing(snd_skidding))
 				{
 					audio_play_sound(snd_skidding, 0, 0);
-					audio_sound_gain(snd_skidding, global.sfx_volume, 0);
+					audio_sound_gain(snd_skidding, global.sound_volume * global.main_volume, 0);
 				}
 			}
 			if (asset_get_type("obj_ice_block") == asset_object)
@@ -10186,7 +10211,7 @@ and (vspeed = 0)
 			if (!audio_is_playing(snd_bump))
 			{
 				audio_play_sound(snd_bump, 0, 0);
-				audio_sound_gain(snd_bump, global.sfx_volume, 0);
+				audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 			}
 		}
 	}
@@ -10663,7 +10688,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_dirt_left))
 						{
 							audio_play_sound(snd_footstep_dirt_left, 0, 0);
-							audio_sound_gain(snd_footstep_dirt_left, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_dirt_left, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10681,7 +10706,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_glass_left))
 						{
 							audio_play_sound(snd_footstep_glass_left, 0, 0);
-							audio_sound_gain(snd_footstep_glass_left, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_glass_left, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10699,7 +10724,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_grass_left))
 						{
 							audio_play_sound(snd_footstep_grass_left, 0, 0);
-							audio_sound_gain(snd_footstep_grass_left, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_grass_left, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10717,7 +10742,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_gravel_left))
 						{
 							audio_play_sound(snd_footstep_gravel_left, 0, 0);
-							audio_sound_gain(snd_footstep_gravel_left, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_gravel_left, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10735,7 +10760,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_metal_left))
 						{
 							audio_play_sound(snd_footstep_metal_left, 0, 0);
-							audio_sound_gain(snd_footstep_metal_left, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_metal_left, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10753,7 +10778,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_stone_left))
 						{
 							audio_play_sound(snd_footstep_stone_left, 0, 0);
-							audio_sound_gain(snd_footstep_stone_left, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_stone_left, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10771,7 +10796,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_wood_left))
 						{
 							audio_play_sound(snd_footstep_wood_left, 0, 0);
-							audio_sound_gain(snd_footstep_wood_left, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_wood_left, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10786,7 +10811,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_default_left))
 						{
 							audio_play_sound(snd_footstep_default_left, 0, 0);
-							audio_sound_gain(snd_footstep_default_left, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_default_left, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10812,7 +10837,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_dirt_right))
 						{
 							audio_play_sound(snd_footstep_dirt_right, 0, 0);
-							audio_sound_gain(snd_footstep_dirt_right, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_dirt_right, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10830,7 +10855,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_glass_right))
 						{
 							audio_play_sound(snd_footstep_glass_right, 0, 0);
-							audio_sound_gain(snd_footstep_glass_right, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_glass_right, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10848,7 +10873,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_grass_right))
 						{
 							audio_play_sound(snd_footstep_grass_right, 0, 0);
-							audio_sound_gain(snd_footstep_grass_right, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_grass_right, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10866,7 +10891,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_gravel_right))
 						{
 							audio_play_sound(snd_footstep_gravel_right, 0, 0);
-							audio_sound_gain(snd_footstep_gravel_right, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_gravel_right, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10884,7 +10909,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_metal_right))
 						{
 							audio_play_sound(snd_footstep_metal_right, 0, 0);
-							audio_sound_gain(snd_footstep_metal_right, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_metal_right, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10902,7 +10927,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_stone_right))
 						{
 							audio_play_sound(snd_footstep_stone_right, 0, 0);
-							audio_sound_gain(snd_footstep_stone_right, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_stone_right, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10920,7 +10945,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_wood_right))
 						{
 							audio_play_sound(snd_footstep_wood_right, 0, 0);
-							audio_sound_gain(snd_footstep_wood_right, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_wood_right, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10935,7 +10960,7 @@ if (on_ground = true)
 						if (!audio_is_playing(snd_footstep_default_right))
 						{
 							audio_play_sound(snd_footstep_default_right, 0, 0);
-							audio_sound_gain(snd_footstep_default_right, global.sfx_volume, 0);
+							audio_sound_gain(snd_footstep_default_right, global.footstep_volume * global.main_volume, 0);
 						}
 					}
 				}
@@ -10964,7 +10989,7 @@ if (on_ground = true)
 				{
 					audio_stop_sound(voice);
 					voice = audio_play_sound(voice_startdash, 0, 0);
-					audio_sound_gain(voice_startdash, global.voices_volume, 0);
+					audio_sound_gain(voice_startdash, global.voices_volume * global.main_volume, 0);
 					audio_sound_pitch(voice_startdash, default_voice_pitch);
 				}
 			}
@@ -10989,7 +11014,7 @@ if (on_ground = true)
 					if (asset_get_type("snd_speeddash") == asset_sound)
 					{
 						audio_play_sound(snd_speeddash, 0, 0);
-						audio_sound_gain(snd_speeddash, global.sfx_volume, 0);
+						audio_sound_gain(snd_speeddash, global.sound_volume * global.main_volume, 0);
 					}
 				}
 			}

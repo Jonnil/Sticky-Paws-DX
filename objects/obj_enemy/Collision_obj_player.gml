@@ -48,9 +48,9 @@ or(other.can_attack_after_dive_on_ground > 0)
 
 		#region /*Enemy Voice Defeated*/
 		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-		audio_sound_gain(enemyvoice_defeated1, global.voices_volume, 0);
-		audio_sound_gain(enemyvoice_defeated2, global.voices_volume, 0);
-		audio_sound_gain(enemyvoice_defeated3, global.voices_volume, 0);
+		audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
+		audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
+		audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
 		#endregion /*Enemy Voice Defeated END*/
 
 #region /*Rewards*/
@@ -92,7 +92,7 @@ or(other.chain_reaction<= 1)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -108,7 +108,7 @@ or(other.chain_reaction<= 1)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1);
 	}
 }
@@ -159,7 +159,7 @@ or(other.chain_reaction = 2)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -175,7 +175,7 @@ or(other.chain_reaction = 2)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.1);
 	}
 }
@@ -242,7 +242,7 @@ or(other.chain_reaction = 3)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -258,7 +258,7 @@ or(other.chain_reaction = 3)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.2);
 	}
 }
@@ -325,7 +325,7 @@ or(other.chain_reaction = 4)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -341,7 +341,7 @@ or(other.chain_reaction = 4)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.3);
 	}
 }
@@ -408,7 +408,7 @@ or(other.chain_reaction = 5)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -424,7 +424,7 @@ or(other.chain_reaction = 5)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.4);
 	}
 }
@@ -491,7 +491,7 @@ or(other.chain_reaction = 6)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -507,7 +507,7 @@ or(other.chain_reaction = 6)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.5);
 	}
 }
@@ -574,7 +574,7 @@ or(other.chain_reaction = 7)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -590,7 +590,7 @@ or(other.chain_reaction = 7)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.6);
 	}
 }
@@ -645,7 +645,7 @@ or(other.chain_reaction >= 8)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -661,7 +661,7 @@ or(other.chain_reaction >= 8)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.7);
 	}
 }
@@ -720,9 +720,9 @@ if (die_volting = false)
 
 			#region /*Enemy Voice Defeated*/
 			audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-			audio_sound_gain(enemyvoice_defeated1, global.voices_volume, 0);
-			audio_sound_gain(enemyvoice_defeated2, global.voices_volume, 0);
-			audio_sound_gain(enemyvoice_defeated3, global.voices_volume, 0);
+			audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
+			audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
+			audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
 			#endregion /*Enemy Voice Defeated END*/
 
 #region /*Rewards*/
@@ -764,7 +764,7 @@ or(other.chain_reaction<= 1)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -780,7 +780,7 @@ or(other.chain_reaction<= 1)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1);
 	}
 }
@@ -831,7 +831,7 @@ or(other.chain_reaction = 2)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -847,7 +847,7 @@ or(other.chain_reaction = 2)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.1);
 	}
 }
@@ -914,7 +914,7 @@ or(other.chain_reaction = 3)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -930,7 +930,7 @@ or(other.chain_reaction = 3)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.2);
 	}
 }
@@ -997,7 +997,7 @@ or(other.chain_reaction = 4)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1013,7 +1013,7 @@ or(other.chain_reaction = 4)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.3);
 	}
 }
@@ -1080,7 +1080,7 @@ or(other.chain_reaction = 5)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1096,7 +1096,7 @@ or(other.chain_reaction = 5)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.4);
 	}
 }
@@ -1163,7 +1163,7 @@ or(other.chain_reaction = 6)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1179,7 +1179,7 @@ or(other.chain_reaction = 6)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.5);
 	}
 }
@@ -1246,7 +1246,7 @@ or(other.chain_reaction = 7)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1262,7 +1262,7 @@ or(other.chain_reaction = 7)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.6);
 	}
 }
@@ -1317,7 +1317,7 @@ or(other.chain_reaction >= 8)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1333,7 +1333,7 @@ or(other.chain_reaction >= 8)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.7);
 	}
 }
@@ -1390,9 +1390,9 @@ and (flat = false)
 
 	#region /*Enemy Voice Defeated*/
 	audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-	audio_sound_gain(enemyvoice_defeated1, global.voices_volume, 0);
-	audio_sound_gain(enemyvoice_defeated2, global.voices_volume, 0);
-	audio_sound_gain(enemyvoice_defeated3, global.voices_volume, 0);
+	audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
+	audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
+	audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
 	#endregion /*Enemy Voice Defeated END*/
 
 #region /*Rewards*/
@@ -1434,7 +1434,7 @@ or(other.chain_reaction<= 1)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1450,7 +1450,7 @@ or(other.chain_reaction<= 1)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1);
 	}
 }
@@ -1501,7 +1501,7 @@ or(other.chain_reaction = 2)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1517,7 +1517,7 @@ or(other.chain_reaction = 2)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.1);
 	}
 }
@@ -1584,7 +1584,7 @@ or(other.chain_reaction = 3)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1600,7 +1600,7 @@ or(other.chain_reaction = 3)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.2);
 	}
 }
@@ -1667,7 +1667,7 @@ or(other.chain_reaction = 4)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1683,7 +1683,7 @@ or(other.chain_reaction = 4)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.3);
 	}
 }
@@ -1750,7 +1750,7 @@ or(other.chain_reaction = 5)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1766,7 +1766,7 @@ or(other.chain_reaction = 5)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.4);
 	}
 }
@@ -1833,7 +1833,7 @@ or(other.chain_reaction = 6)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1849,7 +1849,7 @@ or(other.chain_reaction = 6)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.5);
 	}
 }
@@ -1916,7 +1916,7 @@ or(other.chain_reaction = 7)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -1932,7 +1932,7 @@ or(other.chain_reaction = 7)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.6);
 	}
 }
@@ -1987,7 +1987,7 @@ or(other.chain_reaction >= 8)
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -2003,7 +2003,7 @@ or(other.chain_reaction >= 8)
 	if (asset_get_type("snd_stomp") == asset_sound)
 	{
 		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sfx_volume, 0);
+		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
 		audio_sound_pitch(snd_stomp, 1.7);
 	}
 }

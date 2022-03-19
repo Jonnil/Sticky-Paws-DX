@@ -24,13 +24,13 @@ if (count = 50)
 			sprite_index = spr_player_burnt;
 		}
 		audio_play_sound(voice_burned_die, 0, 0);
-		audio_sound_gain(voice_burned_die, global.voices_volume, 0);
+		audio_sound_gain(voice_burned_die, global.voices_volume * global.main_volume, 0);
 		audio_sound_pitch(voice_burned_die, default_voice_pitch);
 	}
 	else
 	{
 		audio_play_sound(voice_damage, 0, 0);
-		audio_sound_gain(voice_damage, global.voices_volume, 0);
+		audio_sound_gain(voice_damage, global.voices_volume * global.main_volume, 0);
 		audio_sound_pitch(voice_damage, default_voice_pitch);
 	}
 }
@@ -52,7 +52,7 @@ and (last_player = true)
 	if (asset_get_type("snd_die_melody") == asset_sound)
 	{
 		audio_play_sound(snd_die_melody, 0, 0);
-		audio_sound_gain(snd_die_melody, global.music_volume, 0);
+		audio_sound_gain(snd_die_melody, global.music_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Play death melody END*/

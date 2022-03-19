@@ -167,7 +167,7 @@ if (brick_particle = false)
 				if (asset_get_type("snd_blockbreak") == asset_sound)
 				{
 					audio_play_sound(snd_blockbreak, 0, 0);
-					audio_sound_gain(snd_blockbreak, global.sfx_volume, 0);
+					audio_sound_gain(snd_blockbreak, global.sound_volume * global.main_volume, 0);
 				}
 			}
 			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/
@@ -242,7 +242,7 @@ if (brick_particle = false)
 				if (asset_get_type("snd_blockbreak") == asset_sound)
 				{
 					audio_play_sound(snd_blockbreak, 0, 0);
-					audio_sound_gain(snd_blockbreak, global.sfx_volume, 0);
+					audio_sound_gain(snd_blockbreak, global.sound_volume * global.main_volume, 0);
 				}
 			}
 			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/

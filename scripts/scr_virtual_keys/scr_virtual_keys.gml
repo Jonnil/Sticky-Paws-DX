@@ -17,8 +17,9 @@ function scr_virtual_keys()
 	var mobile_key_extra_deadzone = 50;
 	
 	#region /*Virtual Key, iOS and Android*/
-	if (os_type != os_ios)
-	or(os_type != os_android)
+	if (os_type = os_ios)
+	or (os_type = os_android)
+	or (global.show_virtual_controls = true)
 	{
 		if (iris_xscale > 0.25)
 		and (iris_yscale > 0.25)

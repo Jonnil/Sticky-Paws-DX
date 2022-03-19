@@ -1,3 +1,8 @@
+display_xscale = 1.5
+display_yscale = 1.5
+display_xoffset = 0
+display_yoffset = 0
+
 depth = -9000;
 
 sprite_index = global.resourcepack_sprite_basic_collectible;

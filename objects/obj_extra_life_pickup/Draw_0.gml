@@ -167,7 +167,7 @@ and (instance_exists(obj_player))
 		if (asset_get_type("snd_1up") == asset_sound)
 		{
 			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sfx_volume, 0);
+			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		#endregion /*Give Life END*/
 		
