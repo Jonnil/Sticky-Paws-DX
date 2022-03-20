@@ -724,7 +724,7 @@ function scr_options_menu()
 		if (global.settings_sidebar_menu = "audio_settings"){menu = "main_volume";}
 		if (global.settings_sidebar_menu = "global_resources_settings"){menu = "resourcepacks";}
 		if (global.settings_sidebar_menu = "storage_settings"){menu = "file_select";}
-		if (global.settings_sidebar_menu = "language_settings"){menu = "language_id_id";}
+		if (global.settings_sidebar_menu = "language_settings"){menu = global.language_localization+1; menu_cursor_y_position = language_index*50;}
 	}
 	/*When you navigate the sidebar or not*/
 	
@@ -8966,6 +8966,63 @@ function scr_options_menu()
 		#endregion /*Navigate Show Controls Settings END*/
 
 		#endregion /*Options Menu END*/
+		
+		#region /*Language Menu Navigation*/
+		if global.settings_sidebar_menu = "language_settings"
+		{
+			if global.controls_used_for_menu_navigation != "mouse"
+			{
+				if (key_up)
+				and (menu_delay = 0)
+				and (open_dropdown = false)
+					{
+					language_index = max(language_index-1,1)
+					menu = "Language"+string(language_index);
+					menu_cursor_y_position = language_index*50
+					menu_delay = 3;
+					}
+				else
+				if (key_down)
+				and (menu_delay = 0)
+				and (open_dropdown = false)
+				{
+					language_index = min(language_index+1,ds_grid_width(global.language_local_data)-1)
+					menu = "Language"+string(language_index);
+					menu_cursor_y_position = language_index*50
+					menu_delay = 3;
+				}
+				else
+				if (key_a_pressed)
+				and (menu_delay = 0)
+				and (open_dropdown = false)
+				{
+					global.language_localization = language_index-1;
+					menu_delay = 3;
+				}
+			}
+			else
+			{
+				if (key_up)
+				and (menu_delay = 0)
+				and (open_dropdown = false)
+					{
+					language_mouse_scroll = max(language_mouse_scroll-10,1)
+					menu_cursor_y_position = language_mouse_scroll*50
+					menu_delay = 3;
+					}
+				else
+				if (key_down)
+				and (menu_delay = 0)
+				and (open_dropdown = false)
+				{
+					language_mouse_scroll = min(language_mouse_scroll+10,ds_grid_width(global.language_local_data)-1)
+					menu_cursor_y_position = language_mouse_scroll*50
+					menu_delay = 3;
+				}
+			}
+		}
+		#endregion /*Language Menu Navigation*/
+		
 		
 	}
 	#endregion /*Menu Navigation END*/

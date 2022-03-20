@@ -20,6 +20,8 @@ scroll = 0;
 scroll_to = 0;
 lerp_on = false;
 level_editor_template_select = false;
+language_index = global.language_localization+1
+language_mouse_scroll = 0
 
 /*Narrator Voice variable handeling*/
 #region /*Character Name*/
