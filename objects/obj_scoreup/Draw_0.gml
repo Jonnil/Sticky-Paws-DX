@@ -37,7 +37,12 @@ and (show_remaining_jumps = false)
 or(scoreup = "3-up")
 and (show_remaining_jumps = false)
 {
+	if (asset_get_type("font_default") == asset_font)
+	{
+		draw_set_font(font_default);
+	}
 	draw_text_outlined(x, y,string(scoreup), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
+	scr_set_default_font();
 }
 else
 if (scoreup = "CHECKPOINT")
@@ -59,12 +64,22 @@ if (show_remaining_jumps = false)
 			}
 		}
 	}
+	if (asset_get_type("font_default") == asset_font)
+	{
+		draw_set_font(font_default);
+	}
 	draw_text_outlined(x, y, string(scoreup), global.default_text_size * image_xscale, c_white, c_black, image_alpha);
+	scr_set_default_font();
 }
 
 if (show_remaining_jumps = true)
 {
+	if (asset_get_type("font_default") == asset_font)
+	{
+		draw_set_font(font_default);
+	}
 	draw_text_outlined(x, y, string(scoreup), global.default_text_size * image_xscale, c_gray, c_white, image_alpha);
+	scr_set_default_font();
 }
 time += 1;
 if (time > room_speed)

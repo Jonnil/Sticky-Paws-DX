@@ -81,7 +81,6 @@ if (!os_browser)
 #endregion /*View Border and Port Size END*/
 
 global.convention_mode = false; /*When showing the game on a convention, turn this to true*/
-global.custom_level_load_delay = 0; /*How many frames each custom level takes to load. Having this number be too low can crash the game on weaker devices, so have an option in the game where you can change this number*/
 
 #region /*Show HUD Global Variables*/
 global.hud_hide_time = 3;
@@ -211,16 +210,10 @@ global.zoom_level = 1; /*Zooming the view in and out, by default it's set to 1*/
 global.zoom_world_map = 1; /*Zooming the view in and out, by default it's set to 1*/
 global.reset_level_zoom_when_going_back_to_map = false;
 global.reset_world_map_zoom_when_going_back_to_map = false;
-//global.spot_x = 0;
-//global.spot_y = 0;
 
-switch(os_get_language())
-{
-	case "es": global.language_localization = localization.es_es;break;
-	case "fr": global.language_localization = localization.fr_fr;break;
-	case "it": global.language_localization = localization.it_it;break;
-	default: global.language_localization = localization.en_us;break; /*Set the default language to American English*/
-}
+global.language_localization = 0;
+
+scr_set_default_language();
 
 global.settings_sidebar_menu = "settings_back"; /*Settings sidebar*/
 global.show_tutorial_signs = true;
@@ -508,6 +501,12 @@ if (asset_get_type("scr_config_load") == asset_script)
 	scr_config_load();
 }
 #endregion /*Load Config END*/
+
+if (global.language_localization > ds_grid_width(global.language_local_data))
+or (global.language_localization < 0)
+{
+	scr_set_default_language();
+}
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
 global.resourcepack_sprite_tileset_default = spr_wall;

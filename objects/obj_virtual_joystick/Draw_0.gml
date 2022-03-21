@@ -1,1 +1,0 @@
-draw_text_outlined(200, 200, string(temp_joystick), global.default_text_size * 4, c_white, c_black, 1);

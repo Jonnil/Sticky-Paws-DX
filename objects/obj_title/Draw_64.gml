@@ -223,7 +223,7 @@ key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_rig
 key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
 key_down = (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or(gamepad_axis_value(0, gp_axislv) > 0) or mouse_wheel_down();
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
-key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_escape))or(keyboard_check_pressed(vk_backspace))or(mouse_check_button_pressed(mb_right));
+key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_escape))or(keyboard_check_pressed(vk_backspace))or(mouse_check_button_pressed(mb_right))or(mouse_check_button_pressed(mb_side1));
 /*Keyboard Controls END*/
 
 #region /*Quit Game trough pause menu*/
@@ -257,10 +257,7 @@ and (menu_delay = 0)
 
 /*Draw Event*/
 #region /*Set a default font*/
-if (asset_get_type("font_default") == asset_font)
-{
-	draw_set_font(font_default);
-}
+scr_set_default_font();
 #endregion /*Set a default font END*/
 
 #region /*Fullscreen toggle*/
@@ -272,7 +269,7 @@ and (global.controls_used_for_menu_navigation != "controller")
 	draw_set_valign(fa_center);
 	if (window_get_fullscreen())
 	{
-		draw_text_outlined(+52, display_get_gui_height() - 55 + version_y_pos, "Fullscreen", global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(+52, display_get_gui_height() - 55 + version_y_pos, Text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
@@ -280,7 +277,7 @@ and (global.controls_used_for_menu_navigation != "controller")
 	}
 	else
 	{
-		draw_text_outlined(+52, display_get_gui_height() - 55 + version_y_pos, "Fullscreen", global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(+52, display_get_gui_height() - 55 + version_y_pos, Text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
@@ -749,25 +746,25 @@ or(menu = "quit")
 		global.character_select_in_this_menu = "level_editor"; /*No custom level is selected before you go into the level editor*/
 	}
 
-	draw_menu_button(display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 40, "Main Game", "main_game", "main_game");
+	draw_menu_button(display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 40, Text("Main Game"), "main_game", "main_game");
 
-	draw_menu_button(display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 +80, "Level Editor", "leveleditor", "leveleditor");
+	draw_menu_button(display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 +80, Text("Level Editor"), "leveleditor", "leveleditor");
 
 	if (global.convention_mode = false)
 	{
-		draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 120, 185, 42, "Options", "options", "options");
-		draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width()/ 2      , display_get_gui_height()/ 2 + 100 + 120, 185, 42, "Quit", "quit", "quit");
+		draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 120, 185, 42, Text("Options"), "options", "options");
+		draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width()/ 2      , display_get_gui_height()/ 2 + 100 + 120, 185, 42, Text("Quit"), "quit", "quit");
 		if (menu = "quit")
 		{
-			draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 120, 185, 42, "Options", "options", "options");
+			draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 120, 185, 42, Text("Options"), "options", "options");
 		}
 	}
 	else
 	{
-		draw_menu_button(display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 200, "Quit", "quit", "quit");
+		draw_menu_button(display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 200, Text("Quit"), "quit", "quit");
 	}
 	
-	draw_menu_button_sprite(spr_noone, display_get_gui_width() - 370, display_get_gui_height() - 42, 370, 42, "Made by " + (global.company_name), "credits", "play_credits");
+	draw_menu_button_sprite(spr_noone, display_get_gui_width() - 370, display_get_gui_height() - 42, 370, 42, Text("Made by") + " " + (global.company_name), "credits", "play_credits");
 	
 	if (global.show_language_shortcut = true)
 	{
@@ -1106,7 +1103,7 @@ or(menu = "load_official_level_template")
 {
 	loading_spinning_angle -= 10;
 	draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height()/ 2, 1, 1, loading_spinning_angle, c_white, 1);
-	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height()/ 2 +64, "Loading", global.default_text_size, c_white, c_black, 1);
+	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height()/ 2 +64, Text("Loading"), global.default_text_size, c_white, c_black, 1);
 }
 #endregion /*Loading Screen END*/
 

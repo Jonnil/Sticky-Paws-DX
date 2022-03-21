@@ -1000,7 +1000,7 @@ and (speed = 0)
 
 global.select_level_index = instance_nearest(x, y, obj_level).level;
 
-#region /*After pressing "Enter Level", the iris should shrink and then start the level*/
+#region /*After pressing enter level, the iris should shrink and then start the level*/
 if (can_move = false)
 and (entering_level = true)
 and (delay >= 60)
@@ -1024,7 +1024,7 @@ and (global.quit_level = false)
 		room_goto(room_leveleditor);
 	}
 }
-#endregion /*After pressing "Enter Level", the iris should shrink and then start the level END*/
+#endregion /*After pressing enter level, the iris should shrink and then start the level END*/
 
 if (entering_level = true)
 {
@@ -1141,21 +1141,21 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 		if (global.show_deaths_counter = true)
 		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
 		{
-			draw_text_outlined(x, y + total_deaths_y, "Total Deaths: " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y + total_deaths_y, Text("Total Deaths") + " : " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Total number of deaths END*/
 		
 		#region /*Number of times played*/
 		if (instance_nearest(x, y, obj_level).number_of_clears > 0)
 		{
-			draw_text_outlined(x, y + times_cleared_y, "Times Cleared: " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y + times_cleared_y, Text("Times Passed") + " : " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Number of times played END*/
 		
 		#region /*Show High Score*/
 		if (instance_nearest(x, y, obj_level).level_score > 0)
 		{
-			draw_text_outlined(x, y + best_score_y, "Best Score: " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y + best_score_y, Text("Best Score") + " : " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show High Score END*/
 		
@@ -1163,7 +1163,7 @@ and (instance_nearest(x, y, obj_level).level_number > 0)
 		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
 		and (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
 		{
-			draw_text_outlined(x, y + best_time_y, "Best Time: " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
+			draw_text_outlined(x, y + best_time_y, Text("Best Time") + " : " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_second, 2, 0), " ", "0")) + "." +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
 		}

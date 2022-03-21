@@ -1,4 +1,3 @@
-///scr_config_load()
 function scr_config_load()
 {
 	if (file_exists("config.ini"))
@@ -10,7 +9,6 @@ function scr_config_load()
 		if (ini_key_exists("config", "automatically_pause_when_window_is_unfocused")){global.automatically_pause_when_window_is_unfocused = ini_read_real("config", "automatically_pause_when_window_is_unfocused", 0);}
 		if (ini_key_exists("config", "show_timer")){global.show_timer = ini_read_real("config", "show_timer", 0);}
 		if (ini_key_exists("config", "show_deaths_counter")){global.show_deaths_counter = ini_read_real("config", "show_deaths_counter", 0);}
-		if (ini_key_exists("config", "custom_level_load_delay")){global.custom_level_load_delay = ini_read_real("config", "custom_level_load_delay", 0);}
 		if (ini_key_exists("config", "assist_enable")){global.assist_enable = ini_read_real("config", "assist_enable", 0);}
 		if (ini_key_exists("config", "assist_enable_enemies")){global.assist_enable_enemies = ini_read_real("config", "assist_enable_enemies", 0);}
 		if (ini_key_exists("config", "assist_enable_spikes")){global.assist_enable_spikes = ini_read_real("config", "assist_enable_spikes", 0);}
@@ -59,6 +57,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "zoom_world_map")){global.zoom_world_map = ini_read_real("config", "zoom_world_map", 1);}
 		if (ini_key_exists("config", "reset_level_zoom_when_going_back_to_map")){global.reset_level_zoom_when_going_back_to_map = ini_read_real("config", "reset_level_zoom_when_going_back_to_map", 0);}
 		if (ini_key_exists("config", "reset_world_map_zoom_when_going_back_to_map")){global.reset_world_map_zoom_when_going_back_to_map = ini_read_real("config", "reset_world_map_zoom_when_going_back_to_map", 0);}
+		if (ini_key_exists("config", "language_localization")){global.language_localization = ini_read_real("config", "language_localization", 0);}
 		
 		#region /*Load Player 1 Keyboard Remapping*/
 		if (ini_key_exists("config", "character_index_player_1")){global.character_index[0] = ini_read_real("config", "character_index_player_1", 0);}

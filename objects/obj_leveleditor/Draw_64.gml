@@ -48,7 +48,7 @@
 		{
 			
 			#region /*If menu is on continue*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, "Continue", "continue", noone);
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, Text("Continue"), "continue", noone);
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, window_get_width()/ 2 + 185, window_get_height()/ 2 -42))
 			and (mouse_check_button_pressed(mb_left))
@@ -101,7 +101,7 @@
 			#endregion /*If menu is on continue END*/
 			
 			#region /*If menu is on options*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -42, "Settings", "options", noone);
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -42, Text("Options"), "options", noone);
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 -42, window_get_width()/ 2 + 185, window_get_height()/ 2))
 			and (mouse_check_button_pressed(mb_left))
@@ -165,7 +165,7 @@
 			#endregion /*If menu is on options END*/
 			
 			#region /*If menu is on generate level map*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Generate Level Map", "generate_level_map", "generate_level_map_yes");
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Generate Level Map"), "generate_level_map", "generate_level_map_yes");
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
@@ -220,7 +220,7 @@
 			#endregion /*If menu is on generate level map END*/
 			
 			#region /*If menu is on quit*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Save and Quit", "quit", noone);
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Save and Quit"), "quit", noone);
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
@@ -278,14 +278,14 @@
 		if (menu = "generate_level_map_yes")
 		or (menu = "generate_level_map_no")
 		{
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192, "A map of the whole level will be generated and saved in", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192, Text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 32, "AppData/Local/Sticky_Paws_DX/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png", global.default_text_size, c_black, c_white, 1);
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 64, "With this map, you can then use it in a drawing program,", global.default_text_size, c_black, c_white, 1);
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 96, "as the base to make the background and foreground layers.", global.default_text_size, c_black, c_white, 1);
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 160, "Do you want to generate level map?", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 64, Text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 96, Text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 160, Text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
 			
 			#region /*If menu is on generate level map yes*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Yes", "generate_level_map_yes", "generate_level_map_yes");
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Yes"), "generate_level_map_yes", "generate_level_map_yes");
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
@@ -340,7 +340,7 @@
 			#endregion /*If menu is on generate level map yes END*/
 			
 			#region /*If menu is on generate level map no*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "No", "generate_level_map_no", "generate_level_map");
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("No"), "generate_level_map_no", "generate_level_map");
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
@@ -463,6 +463,7 @@
 	if (pause = true)
 	and (menu!= "continue")
 	and (menu!= "options")
+	and (menu!= "generate_level_map")
 	and (menu!= "quit")
 	{
 		scr_options_menu();
@@ -698,6 +699,11 @@
 			draw_sprite_ext(spr_leveleditor_icons, 5, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		
+		if (global.controls_used_for_menu_navigation != "controller")
+		{
+			draw_sprite_ext(spr_keyboard_keys, ord("D"), place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.25, 0.25, 0, c_white, 1);
+		}
+		
 		#region /*Click Pen*/
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), place_brush_icon_x -32, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64))
 		and (show_icons_at_bottom = true)
@@ -706,7 +712,7 @@
 			draw_set_alpha(0.5);
 			draw_rectangle_color(place_brush_icon_x -32, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			tooltip = "Paintbrush tool (D)";
+			tooltip = Text("Paintbrush tool");
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
@@ -871,6 +877,11 @@
 			draw_sprite_ext(spr_leveleditor_icons, 11, erase_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		
+		if (global.controls_used_for_menu_navigation != "controller")
+		{
+			draw_sprite_ext(spr_keyboard_keys, ord("E"), erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.25, 0.25, 0, c_white, 1);
+		}
+		
 		#region /*Click Erase*/
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), erase_icon_x -32, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64))
 		and (show_icons_at_bottom = true)
@@ -879,7 +890,7 @@
 			draw_set_alpha(0.5);
 			draw_rectangle_color(erase_icon_x -32, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			tooltip = "Erase tool (E)";
+			tooltip = Text("Erase tool");
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
@@ -948,6 +959,11 @@
 			draw_sprite_ext(spr_leveleditor_icons, 12, fill_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 		}
 		
+		if (global.controls_used_for_menu_navigation != "controller")
+		{
+			draw_sprite_ext(spr_keyboard_keys, ord("F"), fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.25, 0.25, 0, c_white, 1);
+		}
+		
 		#region /*Click Fill*/
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), fill_icon_x -32, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64))
 		and (show_icons_at_bottom = true)
@@ -956,7 +972,7 @@
 			draw_set_alpha(0.5);
 			draw_rectangle_color(fill_icon_x -32, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			tooltip = "Fill tool (F)";
+			tooltip = Text("Fill tool");
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
@@ -985,7 +1001,15 @@
 			draw_set_alpha(0.5);
 			draw_rectangle_color(always_show_level_editor_buttons_x -32, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			tooltip = "Hide Buttons";
+			if (global.always_show_level_editor_buttons = true)
+			{
+				tooltip = Text("Hide buttons");
+			}
+			else
+			if (global.always_show_level_editor_buttons = false)
+			{
+				tooltip = Text("Lock buttons");
+			}
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			and (global.always_show_level_editor_buttons = false)
@@ -1155,7 +1179,7 @@
 			{
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_center);
-				draw_text_outlined(200, 100, "Can put objects above other objects: True", global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(200, 100, Text("Can put objects above other objects: True"), global.default_text_size, c_black, c_white, 1);
 			}
 			
 			#region /*Show Grid*/
@@ -1164,12 +1188,12 @@
 				draw_sprite_ext(spr_leveleditor_icons, 13, display_get_gui_width() - 224, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 				draw_set_halign(fa_right);
 				draw_set_valign(fa_center);
-				draw_text_outlined(display_get_gui_width() - 80, 80 + icons_at_top_y, "Grid X: " + string(global.grid_hsnap), global.default_text_size, c_black, c_white, 1);
-				draw_text_outlined(display_get_gui_width() - 80, 110 + icons_at_top_y, "Grid Y: " + string(global.grid_vsnap), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 80, 80 + icons_at_top_y, Text("Grid X") + " : " + string(global.grid_hsnap), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 80, 110 + icons_at_top_y, Text("Grid Y") + " : " + string(global.grid_vsnap), global.default_text_size, c_black, c_white, 1);
 				if (global.grid_hsnap = 32)
 				and (global.grid_hsnap = 32)
 				{
-					draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, "Default Grid Size!", global.default_text_size * 0.5, c_black, c_white, 1);
+					draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, Text("Default grid size!"), global.default_text_size * 0.5, c_black, c_white, 1);
 				}
 				draw_sprite_ext(spr_menu_button_up_down, 0, display_get_gui_width() - 32, 80 + icons_at_top_y + 16, 1, 1, 0, c_white, 1);
 				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() - 32 + 16, 80 + icons_at_top_y + 16))
@@ -1189,9 +1213,9 @@
 						global.grid_vsnap -= 1;
 					}
 				}
-				draw_text_outlined(display_get_gui_width() - 16, 32 + 140 + icons_at_top_y, "X: " + string(x) + " Y: " + string(y), global.default_text_size, c_black, c_white, 1);
-				draw_text_outlined(display_get_gui_width() - 16, 32 + 170 + icons_at_top_y, "View X: " + string(camera_get_view_x(view_camera[0])) + " View Y: " + string(camera_get_view_y(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
-				draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icons_at_top_y, "View Width: " + string(camera_get_view_width(view_camera[0])) + " View Height: " + string(camera_get_view_height(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 16, 32 + 140 + icons_at_top_y, Text("X") + " : " + string(x) + " " + Text("Y") + " : " + string(y), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 16, 32 + 170 + icons_at_top_y, Text("View X") + " : " + string(camera_get_view_x(view_camera[0])) + " " + Text("View Y") + " : " + string(camera_get_view_y(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icons_at_top_y, Text("View width") + " : " + string(camera_get_view_width(view_camera[0])) + " " + Text("View height") + " : " + string(camera_get_view_height(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
 			}
 			else
 			{

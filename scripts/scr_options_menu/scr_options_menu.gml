@@ -24,20 +24,20 @@ function scr_options_menu()
 	#endregion /*Black Background behind sidebar END*/
 	
 	#region /*Set Font*/
-	if (global.language_localization = localization.ar_sa)
-	{
-		var text_x_offset = 290;
-		var icon_x_offset = 330;
-		draw_set_halign(fa_right);
-		draw_set_valign(fa_center);
-	}
-	else
-	{
+	//if (global.language_localization = localization.ar_sa)
+	//{
+	//	var text_x_offset = 290;
+	//	var icon_x_offset = 330;
+	//	draw_set_halign(fa_right);
+	//	draw_set_valign(fa_center);
+	//}
+	//else
+	//{
 		var text_x_offset = 0;
 		var icon_x_offset = 0;
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-	}
+	//}
 	#endregion /*Set Font END*/
 	
 	#region /*Menu navigation tabs y positions*/
@@ -630,16 +630,7 @@ function scr_options_menu()
 	{
 	
 	#region /*Set a default font*/
-	if (asset_get_type("font_other_languages") == asset_font)
-	and (global.language_localization = localization.ar_sa)
-	{
-		draw_set_font(font_other_languages);
-	}
-	else
-	if (asset_get_type("font_default") == asset_font)
-	{
-		draw_set_font(font_default);
-	}
+	scr_set_default_font();
 	#endregion /*Set a default font END*/
 
 	#region /*Scroll menu on right side*/
@@ -1415,20 +1406,21 @@ function scr_options_menu()
 	#region /*Assist Settings*/
 	if (global.settings_sidebar_menu = "accessibility_settings")
 	{
-		draw_menu_checkmark(450, 50, "Enable Assist Mode", "assist_enable", global.assist_enable);
-		draw_text_outlined(450, 100, "The game is meant to be played without Assist Mode. Only if you are unable to fully enjoy the game without extra help should you enable this.", global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+		draw_menu_checkmark(450, 50, Text("Enable Assist Mode"), "assist_enable", global.assist_enable);
+		draw_text_outlined(450, 100, Text("The game is meant to be played without Assist Mode."), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(450, 132, Text("Only if you are unable to enjoy the game without extra help should you enable this."), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 		
-		draw_menu_checkmark(450, 300, "Invincible", "assist_invincible", global.assist_invincible);
-		draw_menu_checkmark(450, 350, "Breathe Underwater", "assist_breathe_underwater", global.assist_breathe_underwater);
-		draw_menu_checkmark(450, 400, "Show Assist Arrows", "assist_guiding_arrows", global.assist_guiding_arrows);
-		draw_menu_checkmark(450, 450, "Show Normal Arrows", "assist_normal_arrows", global.assist_normal_arrows);
-		draw_menu_checkmark(450, 500, "Enable Enemies", "assist_enable_enemies", global.assist_enable_enemies);
-		draw_menu_checkmark(450, 550, "Enable Spikes", "assist_enable_spikes", global.assist_enable_spikes);
-		draw_menu_checkmark(450, 600, "Show Assist Mode Text", "assist_show_assist_mode_text", global.assist_show_assist_mode_text);
+		draw_menu_checkmark(450, 332, Text("Invincible"), "assist_invincible", global.assist_invincible);
+		draw_menu_checkmark(450, 382, Text("Breathe Underwater"), "assist_breathe_underwater", global.assist_breathe_underwater);
+		draw_menu_checkmark(450, 432, Text("Show Assist Arrows"), "assist_guiding_arrows", global.assist_guiding_arrows);
+		draw_menu_checkmark(450, 482, Text("Show Normal Arrows"), "assist_normal_arrows", global.assist_normal_arrows);
+		draw_menu_checkmark(450, 532, Text("Enable Enemies"), "assist_enable_enemies", global.assist_enable_enemies);
+		draw_menu_checkmark(450, 582, Text("Enable Spikes"), "assist_enable_spikes", global.assist_enable_spikes);
+		draw_menu_checkmark(450, 632, Text("Show Assist Mode Text"), "assist_show_assist_mode_text", global.assist_show_assist_mode_text);
 		
 		#region /*Assist Extra HP*/
-		draw_menu_dropdown(450, 230 + menu_y_offset, "Extra Health Points", "assist_extra_hp", global.assist_extra_hp,
-		"None",
+		draw_menu_dropdown(450, 262 + menu_y_offset, Text("Extra Health Points"), "assist_extra_hp", global.assist_extra_hp,
+		Text("None"),
 		" +1",
 		" +2",
 		" +3",
@@ -1442,18 +1434,18 @@ function scr_options_menu()
 		#endregion /*Assist Extra HP END*/
 		
 		#region /*Assist item appear*/
-		draw_menu_dropdown(450, 150 + menu_y_offset, "Assist Item", "assist_item_appear", global.assist_item_appear,
-		"Always Appear",
-		"Appear after 1 death on a level",
-		"Appear after 2 deaths on a level",
-		"Appear after 3 deaths on a level",
-		"Appear after 4 deaths on a level",
-		"Appear after 5 deaths on a level",
-		"Appear after 6 deaths on a level",
-		"Appear after 7 deaths on a level",
-		"Appear after 8 deaths on a level",
-		"Appear after 9 deaths on a level",
-		"Never Appear");
+		draw_menu_dropdown(450, 182 + menu_y_offset, Text("Assist Item"), "assist_item_appear", global.assist_item_appear,
+		Text("Always Appear"),
+		Text("Appear after 1 death on a level"),
+		Text("Appear after 2 deaths on a level"),
+		Text("Appear after 3 deaths on a level"),
+		Text("Appear after 4 deaths on a level"),
+		Text("Appear after 5 deaths on a level"),
+		Text("Appear after 6 deaths on a level"),
+		Text("Appear after 7 deaths on a level"),
+		Text("Appear after 8 deaths on a level"),
+		Text("Appear after 9 deaths on a level"),
+		Text("Never Appear"));
 		#endregion /*Assist item appear END*/
 		
 		if (global.assist_enable = false)
@@ -1470,7 +1462,7 @@ function scr_options_menu()
 			}
 			open_dropdown = false;
 			draw_set_alpha(0.5);
-			draw_rectangle_color(left_sidebar_x + 370, 125, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(left_sidebar_x + 370, 157, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 		}
 	}
@@ -1487,23 +1479,21 @@ function scr_options_menu()
 		show_deaths_counter_settings_y = 164 + (48 * 2);
 		show_tutorial_signs_y = 164 + (48 * 3);
 		hud_hide_time_y = 164 + (48 * 5) - 16;
-		custom_level_load_delay_settings_y = 164 + (48 * 7) - 16;
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, "Automatically Pause When Window Is Unfocused", "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused); /*Automatically Pause When Window Is Unfocused*/
-		draw_menu_checkmark(380, show_timer_settings_y, "Show Timer", "show_timer_settings", global.show_timer); /*Show Timer*/
-		draw_menu_checkmark(380, show_deaths_counter_settings_y, "Show Deaths Counter", "show_deaths_counter_settings", global.show_deaths_counter); /*Show Deaths Counter*/
-		draw_menu_checkmark(380, show_tutorial_signs_y, "Show Tutorial Signs", "show_tutorial_signs", global.show_tutorial_signs); /*Show Tutorial Signs*/
+		draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, Text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused); /*Automatically Pause When Window Is Unfocused*/
+		draw_menu_checkmark(380, show_timer_settings_y, Text("Show Timer"), "show_timer_settings", global.show_timer); /*Show Timer*/
+		draw_menu_checkmark(380, show_deaths_counter_settings_y, Text("Show Deaths Counter"), "show_deaths_counter_settings", global.show_deaths_counter); /*Show Deaths Counter*/
+		draw_menu_checkmark(380, show_tutorial_signs_y, Text("Show Tutorial Signs"), "show_tutorial_signs", global.show_tutorial_signs); /*Show Tutorial Signs*/
 		
 		if (global.hud_hide_time > 10)
 		{
 			global.hud_hide_time = 3;
 		}
 		
-		draw_menu_dropdown(380, custom_level_load_delay_settings_y, "Custom Level Load Delay", "custom_level_load_delay_settings", global.custom_level_load_delay, "1 Frame", "2 Frames", "4 Frames", "8 Frames", "16 Frames", "32 Frames", "64 Frames", "128 Frames", "256 Frames", "512 Frames");
-		draw_menu_dropdown(380, hud_hide_time_y, "HUD hide timer", "hud_hide_time", global.hud_hide_time, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
-		draw_menu_dropdown(380, difficulty_settings_y, "Level Layout Difficulty", "difficulty_settings", global.difficulty, "Easy", "Normal", "Hard"); /*Difficulty Settings*/
+		draw_menu_dropdown(380, hud_hide_time_y, Text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
+		draw_menu_dropdown(380, difficulty_settings_y, Text("Level Layout Difficulty"), "difficulty_settings", global.difficulty, Text("Easy"), Text("Normal"), Text("Hard")); /*Difficulty Settings*/
 		
 	}
 	#endregion /*Game Settings END*/
@@ -2253,17 +2243,17 @@ function scr_options_menu()
 			#region /*"OR" text*/
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_center);
-			draw_text_outlined(or_text_x, menu_y_remap_key_dive + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_jump + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_crouch + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_crouch_toggle + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_sprint + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_sprint_toggle + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_left + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_right + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_down + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_up + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_tongue + menu_y_offset, "OR", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_dive + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_jump + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_crouch + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_crouch_toggle + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_sprint + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_sprint_toggle + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_left + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_right + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_down + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_up + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_tongue + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			#endregion /*"OR" text END*/
 		
 			#region /*Remap Key 2 Dive*/
@@ -4996,7 +4986,7 @@ function scr_options_menu()
 		{
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_dive + menu_y_offset, 1, 1, 0, c_white, 1);
 			menu_cursor_y_position = menu_y_remap_key_dive;
-			draw_text_outlined(410, menu_y_remap_key_dive + menu_y_offset, "Dive", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(410, menu_y_remap_key_dive + menu_y_offset, Text("Dive"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			if (input_key = true)
 			and (can_remap_key = false)
 			{
@@ -5013,84 +5003,84 @@ function scr_options_menu()
 		}
 		else
 		{
-			draw_text_outlined(410, menu_y_remap_key_dive + menu_y_offset, "Dive", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(410, menu_y_remap_key_dive + menu_y_offset, Text("Dive"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		#endregion /*Remap Key Dive END*/
 	
 		#region /*Remap Key Jump*/
 		if (menu = "remap_key_jump"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_jump + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_jump ;
-		draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, "Jump", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, Text("Jump"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, "Jump", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, Text("Jump"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Jump END*/
 	
 		#region /*Remap Key Crouch*/
 		if (menu = "remap_key_crouch"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_crouch + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_crouch;
-		draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, "Crouch", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, Text("Crouch"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, "Crouch", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, Text("Crouch"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Crouch END*/
 	
 		#region /*Remap Key Crouch Toggle*/
 		if (menu = "remap_key_crouch_toggle"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_crouch_toggle + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_crouch_toggle;
-		draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, "Crouch Toggle", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, Text("Crouch Toggle"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, "Crouch Toggle", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, Text("Crouch Toggle"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Crouch Toggle END*/
 	
 		#region /*Remap Key Sprint*/
 		if (menu = "remap_key_sprint"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_sprint + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_sprint;
-		draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, "Sprint", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, Text("Sprint"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, "Sprint", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, Text("Sprint"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Sprint END*/
 	
 		#region /*Remap Key Sprint Toggle*/
 		if (menu = "remap_key_sprint_toggle"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_sprint_toggle + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_sprint_toggle;
-		draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, "Sprint Toggle", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, Text("Sprint Toggle"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, "Sprint Toggle", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, Text("Sprint Toggle"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Sprint Toggle END*/
 	
 		#region /*Remap Key Left*/
 		if (menu = "remap_key_left"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_left + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_left;
-		draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, "Left", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, Text("Left"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, "Left", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, Text("Left"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Left END*/
 	
 		#region /*Remap Key Right*/
 		if (menu = "remap_key_right"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_right + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_right;
-		draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, "Right", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, Text("Right"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, "Right", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, Text("Right"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Right END*/
 	
 		#region /*Remap Key Down*/
 		if (menu = "remap_key_down"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_down + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_down;
-		draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, "Down", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, Text("Down"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, "Down", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, Text("Down"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Down END*/
 	
 		#region /*Remap Key Up*/
 		if (menu = "remap_key_up"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_up + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_up;
-		draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, "Up", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, Text("Up"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, "Up", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, Text("Up"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Up END*/
 	
 		#region /*Remap Key Tongue*/
 		if (menu = "remap_key_tongue"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_tongue + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_tongue;
-		draw_text_outlined(410, menu_y_remap_key_tongue + menu_y_offset, "Tongue", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_tongue + menu_y_offset, Text("Tongue"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_tongue + menu_y_offset, "Tongue", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_tongue + menu_y_offset, Text("Tongue"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Up END*/
 	
 		#endregion /*All the keys you can remap END*/
 		
 		#region /*Reset to Default Settings*/
-		draw_menu_button(430, menu_y_remap_reset + menu_y_offset, "Default Settings", "remap_reset", "remap_reset");
+		draw_menu_button(430, menu_y_remap_reset + menu_y_offset, Text("Default Settings"), "remap_reset", "remap_reset");
 	
 		if (menu = "remap_reset")
 		{
@@ -5621,116 +5611,116 @@ function scr_options_menu()
 		#region /*Up Key Is Jump Key*/
 		if (remapping_player = 0)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, "Up key is jump key", "up_key_is_jump_key", global.player1_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player1_up_key_is_jump_key);
 		}
 		if (remapping_player = 1)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, "Up key is jump key", "up_key_is_jump_key", global.player2_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player2_up_key_is_jump_key);
 		}
 		if (remapping_player = 2)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, "Up key is jump key", "up_key_is_jump_key", global.player3_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player3_up_key_is_jump_key);
 		}
 		if (remapping_player = 3)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, "Up key is jump key", "up_key_is_jump_key", global.player4_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player4_up_key_is_jump_key);
 		}
 		#endregion /*Up Key Is Jump Key END*/
 		
-		#region /*Double tap direction to run*/
+		#region /*Double-tap direction to run*/
 		if (remapping_player = 0)
 		{
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, "Double tap direction to run", "double_tap_to_run", global.player1_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player1_double_tap_to_run);
 		}
 		if (remapping_player = 1)
 		{
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, "Double tap direction to run", "double_tap_to_run", global.player2_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player2_double_tap_to_run);
 		}
 		if (remapping_player = 2)
 		{
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, "Double tap direction to run", "double_tap_to_run", global.player3_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player3_double_tap_to_run);
 		}
 		if (remapping_player = 3)
 		{
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, "Double tap direction to run", "double_tap_to_run", global.player4_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player4_double_tap_to_run);
 		}
-		#endregion /*Double tap direction to run END*/
+		#endregion /*Double-tap direction to run END*/
 		
 		#region /*Always run*/
 		if (remapping_player = 0)
 		{
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, "Always run", "always_run", global.player1_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player1_sprint_toggle);
 		}
 		if (remapping_player = 1)
 		{
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, "Always run", "always_run", global.player2_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player2_sprint_toggle);
 		}
 		if (remapping_player = 2)
 		{
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, "Always run", "always_run", global.player3_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player3_sprint_toggle);
 		}
 		if (remapping_player = 3)
 		{
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, "Always run", "always_run", global.player4_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player4_sprint_toggle);
 		}
 		#endregion /*Always run END*/
 		
-		#region /*Cancel dive by pressing jump or dive button*/
+		#region /*Cancel dive by pressing the jump or dive key*/
 		if (remapping_player = 0)
 		{
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
 		}
 		if (remapping_player = 1)
 		{
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
 		}
 		if (remapping_player = 2)
 		{
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
 		}
 		if (remapping_player = 3)
 		{
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, "Cancel dive by pressing jump or dive button", "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
 		}
-		#endregion /*Cancel dive by pressing jump or dive button END*/
+		#endregion /*Cancel dive by pressing the jump or dive key END*/
 		
-		#region /*Cancel dive by pressing opposite direction*/
+		#region /*Cancel dive by pressing the opposite direction*/
 		if (remapping_player = 0)
 		{
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
 		}
 		if (remapping_player = 1)
 		{
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
 		}
 		if (remapping_player = 2)
 		{
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
 		}
 		if (remapping_player = 3)
 		{
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, "Cancel dive by pressing opposite direction", "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
 		}
-		#endregion /*Cancel dive by pressing opposite direction END*/
+		#endregion /*Cancel dive by pressing the opposite direction END*/
 		
-		#region /*Down + Jump to Groundpound*/
+		#region /*Down + Jump to Ground Pound*/
 		if (remapping_player = 0)
 		{
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, "Down + Jump to Groundpound", "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
 		}
 		if (remapping_player = 1)
 		{
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, "Down + Jump to Groundpound", "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
 		}
 		if (remapping_player = 2)
 		{
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, "Down + Jump to Groundpound", "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
 		}
 		if (remapping_player = 3)
 		{
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, "Down + Jump to Groundpound", "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
 		}
-		#endregion /*Down + Jump to Groundpound END*/
+		#endregion /*Down + Jump to Ground Pound END*/
 		
 		#region /*Show Controls*/
 		if (os_type!= os_ios)
@@ -5738,25 +5728,25 @@ function scr_options_menu()
 		{
 			if (remapping_player = 0)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, "Show Controls", "show_controls", global.player1_show_controls, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player1_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
 			}
 			if (remapping_player = 1)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, "Show Controls", "show_controls", global.player2_show_controls, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player2_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
 			}
 	
 			if (remapping_player = 2)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, "Show Controls", "show_controls", global.player3_show_controls, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player3_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
 			}
 	
 			if (remapping_player = 3)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, "Show Controls", "show_controls", global.player4_show_controls, "Never Show", "After 1 Second", "After 2 Seconds", "After 3 Seconds", "After 4 Seconds", "After 5 Seconds", "After 6 Seconds", "After 7 Seconds", "After 8 Seconds", "After 9 Seconds", "Always Show");
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player4_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
 			}
 			if (menu = "show_controls")
 			{
-				menu_cursor_y_position = menu_y_show_controls;
+				menu_cursor_y_position = menu_y_show_controls + 132;
 			}
 		}
 		#endregion /*Show Controls END*/
@@ -5764,22 +5754,22 @@ function scr_options_menu()
 		#region /*Drop down from Rope*/
 		if (remapping_player = 0)
 		{
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, "Drop down from rope", "drop_from_rope", global.player1_drop_from_rope, "Release Jump", "Down or Jump", "Only Down", "Only Jump", "Down + Jump");
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player1_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
 		}
 	
 		if (remapping_player = 1)
 		{
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, "Drop down from rope", "drop_from_rope", global.player2_drop_from_rope, "Release Jump", "Down or Jump", "Only Down", "Only Jump", "Down + Jump");
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player2_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
 		}
 	
 		if (remapping_player = 2)
 		{
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, "Drop down from rope", "drop_from_rope", global.player3_drop_from_rope, "Release Jump", "Down or Jump", "Only Down", "Only Jump", "Down + Jump");
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player3_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
 		}
 	
 		if (remapping_player = 3)
 		{
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, "Drop down from rope", "drop_from_rope", global.player4_drop_from_rope, "Release Jump", "Down or Jump", "Only Down", "Only Jump", "Down + Jump");
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player4_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
 		}
 		if (menu = "drop_from_rope")
 		{
@@ -5790,22 +5780,22 @@ function scr_options_menu()
 		#region /*Wall Jump Setting*/
 		if (remapping_player = 0)
 		{
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, "Wall Jump", "wall_jump_setting", global.player1_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player1_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
 		}
 	
 		if (remapping_player = 1)
 		{
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, "Wall Jump", "wall_jump_setting", global.player2_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player2_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
 		}
 	
 		if (remapping_player = 2)
 		{
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, "Wall Jump", "wall_jump_setting", global.player3_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player3_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
 		}
 	
 		if (remapping_player = 3)
 		{
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, "Wall Jump", "wall_jump_setting", global.player4_wall_jump_setting, "Off", "When touching wall", "When holding towards wall");
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player4_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
 		}
 		if (menu = "wall_jump_setting")
 		{
@@ -5813,7 +5803,7 @@ function scr_options_menu()
 		}
 		#endregion /*Wall Jump Settings END*/
 		
-		draw_menu_dropdown(390, 50 + menu_y_offset, "Remap This Player", "remap_select_player", remapping_player, "Player 1", "Player 2", "Player 3", "Player 4"); /*Remap Select Player - Which player do you want to remap the controls for?*/
+		draw_menu_dropdown(390, 50 + menu_y_offset, Text("Remap This Player"), "remap_select_player", remapping_player, Text("Player 1"), Text("Player 2"), Text("Player 3"), Text("Player 4")); /*Remap Select Player - Which player do you want to remap the controls for?*/
 		
 		#region /*Show the player when they can input a key to remap controls*/
 		if (input_key = true)
@@ -5825,8 +5815,8 @@ function scr_options_menu()
 			#region /*Text saying input key now for player 1*/
 			if (remapping_player = 0)
 			{
-				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 1", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(window_get_width()/ 2 - 10, 64, "Buttons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, 32, Text("INPUT KEY NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 			#endregion /*Text saying input key now for player 1 END*/
@@ -5834,8 +5824,8 @@ function scr_options_menu()
 			#region /*Text saying input key now for player 2*/
 			if (remapping_player = 1)
 			{
-				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 2", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(window_get_width()/ 2 - 10, 64, "Buttons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, 32, Text("INPUT KEY NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 			#endregion /*Text saying input key now for player 2 END*/
@@ -5843,8 +5833,8 @@ function scr_options_menu()
 			#region /*Text saying input key now for player 3*/
 			if (remapping_player = 2)
 			{
-				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 3", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(window_get_width()/ 2 - 10, 64, "Buttons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, 32, Text("INPUT KEY NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 			#endregion /*Text saying input key now for player 3 END*/
@@ -5852,8 +5842,8 @@ function scr_options_menu()
 			#region /*Text saying input key now for player 4 */
 			if (remapping_player = 3)
 			{
-				draw_text_outlined(window_get_width()/ 2, 32, "INPUT KEY NOW FOR PLAYER 4", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(window_get_width()/ 2 - 10, 64, "Buttons can be disabled using ", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2, 32, Text("INPUT KEY NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width()/ 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 			#endregion /*Text saying input key now for player 4 END*/
@@ -5935,7 +5925,7 @@ function scr_options_menu()
 		#region /*Fullscreen toggle*/
 		if (window_get_fullscreen())
 		{
-			draw_menu_checkmark(386, 48 + menu_y_offset, "Fullscreen", "fullscreen_mode", true);
+			draw_menu_checkmark(386, 48 + menu_y_offset, Text("Fullscreen"), "fullscreen_mode", true);
 			if (global.controls_used_for_menu_navigation != "controller")
 			and (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
@@ -5944,7 +5934,7 @@ function scr_options_menu()
 		}
 		else
 		{
-			draw_menu_checkmark(386, 48 + menu_y_offset, "Fullscreen", "fullscreen_mode", false);
+			draw_menu_checkmark(386, 48 + menu_y_offset, Text("Fullscreen"), "fullscreen_mode", false);
 			if (global.controls_used_for_menu_navigation != "controller")
 			and (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
@@ -5956,37 +5946,37 @@ function scr_options_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		draw_menu_checkmark(386, 48 * 2 + menu_y_offset, "Interpolation", "interpolate", global.interpolate);
+		draw_menu_checkmark(386, 48 * 2 + menu_y_offset, Text("Interpolation"), "interpolate", global.interpolate);
 		
-		draw_menu_checkmark(386, 48 * 3 + menu_y_offset, "Show FPS", "show_fps", global.show_fps);
+		draw_menu_checkmark(386, 48 * 3 + menu_y_offset, Text("Show FPS"), "show_fps", global.show_fps);
 		
-		draw_menu_checkmark(386, 48 * 4 + menu_y_offset, "Show FPS Real", "show_fps_real", global.show_fps_real);
+		draw_menu_checkmark(386, 48 * 4 + menu_y_offset, Text("Show FPS Real"), "show_fps_real", global.show_fps_real);
 		
-		draw_menu_checkmark(386, 48 * 5 + menu_y_offset, "Show Instance Count", "show_instance_count", global.show_instance_count);
+		draw_menu_checkmark(386, 48 * 5 + menu_y_offset, Text("Show Instance Count"), "show_instance_count", global.show_instance_count);
 		
-		draw_menu_checkmark(386, 48 * 6 + menu_y_offset, "Show Collision Mask", "show_collision_mask", global.show_collision_mask);
+		draw_menu_checkmark(386, 48 * 6 + menu_y_offset, Text("Show Collision Mask"), "show_collision_mask", global.show_collision_mask);
 		
-		draw_menu_checkmark(386, 48 * 7 + menu_y_offset, "Enable Transitions", "enable_transitions", global.enable_transitions);
+		draw_menu_checkmark(386, 48 * 7 + menu_y_offset, Text("Enable Transitions"), "enable_transitions", global.enable_transitions);
 		
-		draw_menu_checkmark(386, 48 * 8 + menu_y_offset, "Enable Background Layer 1", "enable_background_layer1", global.enable_background_layer1);
+		draw_menu_checkmark(386, 48 * 8 + menu_y_offset, Text("Enable Background Layer 1"), "enable_background_layer1", global.enable_background_layer1);
 		
-		draw_menu_checkmark(386, 48 * 9 + menu_y_offset, "Enable Background Layer 2", "enable_background_layer2", global.enable_background_layer2);
+		draw_menu_checkmark(386, 48 * 9 + menu_y_offset, Text("Enable Background Layer 2"), "enable_background_layer2", global.enable_background_layer2);
 		
-		draw_menu_checkmark(386, 48 * 10 + menu_y_offset, "Enable Background Layer 3", "enable_background_layer3", global.enable_background_layer3);
+		draw_menu_checkmark(386, 48 * 10 + menu_y_offset, Text("Enable Background Layer 3"), "enable_background_layer3", global.enable_background_layer3);
 		
-		draw_menu_checkmark(386, 48 * 11 + menu_y_offset, "Enable Background Layer 4", "enable_background_layer4", global.enable_background_layer4);
+		draw_menu_checkmark(386, 48 * 11 + menu_y_offset, Text("Enable Background Layer 4"), "enable_background_layer4", global.enable_background_layer4);
 		
-		draw_menu_checkmark(386, 48 * 12 + menu_y_offset, "Enable Foreground Layer 1", "enable_foreground_layer1", global.enable_foreground_layer1);
+		draw_menu_checkmark(386, 48 * 12 + menu_y_offset, Text("Enable Foreground Layer 1"), "enable_foreground_layer1", global.enable_foreground_layer1);
 		
-		draw_menu_checkmark(386, 48 * 13 + menu_y_offset, "Enable Foreground Layer Above Static Objects", "enable_foreground_layer_above_static_objects", global.enable_foreground_layer_above_static_objects);
+		draw_menu_checkmark(386, 48 * 13 + menu_y_offset, Text("Enable Foreground Layer Above Static Objects"), "enable_foreground_layer_above_static_objects", global.enable_foreground_layer_above_static_objects);
 		
-		draw_menu_checkmark(386, 48 * 14 + menu_y_offset, "Enable Foreground Layer 2", "enable_foreground_layer2", global.enable_foreground_layer2);
+		draw_menu_checkmark(386, 48 * 14 + menu_y_offset, Text("Enable Foreground Layer 2"), "enable_foreground_layer2", global.enable_foreground_layer2);
 		
-		draw_menu_checkmark(386, 48 * 15 + menu_y_offset, "Enable Foreground Layer Secret", "enable_foreground_layer_secret", global.enable_foreground_layer_secret);
+		draw_menu_checkmark(386, 48 * 15 + menu_y_offset, Text("Enable Foreground Layer Secret"), "enable_foreground_layer_secret", global.enable_foreground_layer_secret);
 		
 		#region /*Background Brightness Bars*/
-		draw_menu_slider(420, 48 * 17 + menu_y_offset, "Background Brightness in Gameplay", "background_brightness_gameplay", global.background_brightness_gameplay, c_gray);
-		draw_menu_slider(420, 48 * 17 + 64 + menu_y_offset, "Background Brightness in Menus", "background_brightness_menu", global.background_brightness_menu, c_gray);
+		draw_menu_slider(420, 48 * 17 + menu_y_offset, Text("Background Brightness in Gameplay"), "background_brightness_gameplay", global.background_brightness_gameplay, c_gray);
+		draw_menu_slider(420, 48 * 17 + 64 + menu_y_offset, Text("Background Brightness in Menus"), "background_brightness_menu", global.background_brightness_menu, c_gray);
 		
 		#region /*Draw a little arrow indicating what the default value is*/
 		draw_set_color(c_menu_fill);
@@ -5996,8 +5986,8 @@ function scr_options_menu()
 		
 		#endregion /*Background Brightness Bars END*/
 		
-		draw_menu_checkmark(386, 48 * 19 + menu_y_offset, "Reset Level Zoom When Going Back To Map", "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);
-		draw_menu_checkmark(386, 48 * 20 + menu_y_offset, "Reset World Map Zoom When Going Back To Map", "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
+		draw_menu_checkmark(386, 48 * 19 + menu_y_offset, Text("Reset Level Zoom When Going Back To Map"), "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);
+		draw_menu_checkmark(386, 48 * 20 + menu_y_offset, Text("Reset World Map Zoom When Going Back To Map"), "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
 	}
 	#endregion /*Graphics Settings END*/
 	
@@ -6023,18 +6013,18 @@ function scr_options_menu()
 		#endregion /*Make volumes stay between 0 and 1 END*/
 		
 		#region /*Draw bars that represent how much volume each channel have*/
-		draw_menu_slider(410, 100, "Main Volume", "main_volume", global.main_volume, c_red);
+		draw_menu_slider(410, 100, Text("Main Volume"), "main_volume", global.main_volume, c_red);
 		draw_line_width_color(410, 132, 820, 132, 3, c_white, c_white);
-		draw_menu_slider(410, 132 + (64), "Music Volume", "music_volume", global.music_volume, c_red);
-		draw_menu_slider(410, 132 + (64 * 2), "Sound Volume", "sound_volume", global.sound_volume, c_lime);
-		draw_menu_slider(410, 132 + (64 * 3), "Ambient Volume", "ambient_volume", global.ambient_volume, c_lime);
-		draw_menu_slider(410, 132 + (64 * 4), "Footstep Volume", "footstep_volume", global.footstep_volume, c_lime);
-		draw_menu_slider(410, 132 + (64 * 5), "Voices Volume", "voices_volume", global.voices_volume, c_aqua);
+		draw_menu_slider(410, 132 + (64), Text("Music Volume"), "music_volume", global.music_volume, c_red);
+		draw_menu_slider(410, 132 + (64 * 2), Text("Sound Volume"), "sound_volume", global.sound_volume, c_lime);
+		draw_menu_slider(410, 132 + (64 * 3), Text("Ambient Volume"), "ambient_volume", global.ambient_volume, c_lime);
+		draw_menu_slider(410, 132 + (64 * 4), Text("Footstep Volume"), "footstep_volume", global.footstep_volume, c_lime);
+		draw_menu_slider(410, 132 + (64 * 5), Text("Voices Volume"), "voices_volume", global.voices_volume, c_aqua);
 		
 		#region /*Verbosity Bar*/
 		if (global.enable_verbosity_slider = true)
 		{
-			draw_menu_slider(410, 132 + (64 * 6), "Voices Volume", "voices_volume", global.voices_volume, c_aqua);
+			draw_menu_slider(410, 132 + (64 * 6), Text("Voices Volume"), "voices_volume", global.voices_volume, c_aqua);
 		}
 		#endregion /*Verbosity Bar END*/
 		
@@ -6064,12 +6054,12 @@ function scr_options_menu()
 			}
 			if (global.narrator <= -1)
 			{
-				draw_text_outlined(file_select_x, narrator_y, "Narrator: Nobody", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(file_select_x, narrator_y, Text("Narrator") + " : " + Text("Nobody"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			}
 			else
 			if (global.narrator >= 0)
 			{
-				draw_text_outlined(file_select_x, narrator_y, "Narrator: " + string(narrator_name), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(file_select_x, narrator_y, Text("Narrator") + " : " + string(narrator_name), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			if (global.narrator >= 0)
@@ -6503,7 +6493,7 @@ function scr_options_menu()
 		}
 		#endregion /*Select Narrator END*/
 		
-		draw_menu_dropdown(390, 132 + (64 * 6), "Number of Audio Channels", "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256"); /*Dropdown menus should be drawn last so they are above everything else when you open them*/
+		draw_menu_dropdown(390, 132 + (64 * 6), Text("Number of Audio Channels"), "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256"); /*Dropdown menus should be drawn last so they are above everything else when you open them*/
 	}
 	#endregion /*Audio Settings END*/
 	
@@ -6522,19 +6512,16 @@ function scr_options_menu()
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		if (!file_exists(working_directory + "/custom_resourcepacks/resourcepack0/data/sprite_origin_point.ini"))
-		{
-			draw_text_outlined(resource_pack_x, 20 + (40 * 1), "Add Custom Resourcepacks in Local Appdata", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(resource_pack_x, 20 + (40 * 2), "and it will appear here!", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		}
+		draw_text_outlined(resource_pack_x, 20 + (40 * 1), Text("Add Custom Resource Packs in Local Appdata"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(resource_pack_x, 20 + (40 * 2), Text("and it will appear here!"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 		if (global.selected_resourcepack = 0)
 		{
-			draw_text_outlined(resource_pack_x, 20 + (40 * 4), "Resource Pack: Official", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(resource_pack_x, 20 + (40 * 4), Text("Resource Pack") + " : " + Text("Official"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		}
 		else
 		{
-			draw_text_outlined(resource_pack_x, 20 + (40 * 4), "Resource Pack: Custom " + string(global.selected_resourcepack), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(resource_pack_x, 20 + (40 * 4), Text("Resource Pack") + " : " + Text("Custom") + " " + string(global.selected_resourcepack), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		}
 		
 		if (global.selected_resourcepack > 0)
@@ -6613,7 +6600,7 @@ function scr_options_menu()
 		}
 		
 		#region /*Custom Title Background*/
-		draw_text_outlined(resource_pack_x, 20 + (40 * 6), "Title Background: " + string(global.selected_title_background), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(resource_pack_x, 20 + (40 * 6), Text("Title Background") + ": " + string(global.selected_title_background), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 		if (global.selected_title_background > 0)
 		{
@@ -6723,7 +6710,7 @@ function scr_options_menu()
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		draw_text_outlined(file_select_x, 20 + (40 * 4), "File: " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(file_select_x, 20 + (40 * 4), Text("File") + ": " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 		#region /*Display save file data*/
 		if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
@@ -6731,7 +6718,7 @@ function scr_options_menu()
 			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 			if (ini_key_exists("Player", "number_of_levels_cleared"))
 			{
-				draw_text_outlined(file_select_x, 20 + (40 * 7), "Number of levels cleared: " + string(ini_read_real("Player", "number_of_levels_cleared", false)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(file_select_x, 20 + (40 * 7), Text("Number of levels passed") + ": " + string(ini_read_real("Player", "number_of_levels_cleared", false)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			}
 			ini_close();
 		}
@@ -6742,7 +6729,7 @@ function scr_options_menu()
 		{
 			if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 			{
-				draw_menu_button(450, 20 + (40 * 5), "Delete File", "file_delete", "file_delete_no");
+				draw_menu_button(450, 20 + (40 * 5), Text("Delete File"), "file_delete", "file_delete_no");
 			}
 		}
 		else
@@ -6755,9 +6742,9 @@ function scr_options_menu()
 			draw_set_alpha(0.1);
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_center);
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 100, "Are you sure you want to delete file " +string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
-			draw_menu_button(window_get_width()/ 2 -370 -32, window_get_height()/ 2, "Yes", "file_delete_yes", "file_delete_yes");
-			draw_menu_button(window_get_width()/ 2 + 32, window_get_height()/ 2, "No", "file_delete_no", "file_delete");
+			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 100, Text("Are you sure you want to delete file") + " " + string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
+			draw_menu_button(window_get_width()/ 2 -370 -32, window_get_height()/ 2, Text("Yes"), "file_delete_yes", "file_delete_yes");
+			draw_menu_button(window_get_width()/ 2 + 32, window_get_height()/ 2, Text("No"), "file_delete_no", "file_delete");
 			
 			if (key_left)
 			and (menu_joystick_delay = 0)
@@ -6963,7 +6950,7 @@ function scr_options_menu()
 			and (menu_delay = 0)
 			{
 				menu_delay = 3;
-				menu = "custom_level_load_delay_settings";
+				menu = "hud_hide_time";
 			}
 			else
 			if (key_down)
@@ -7081,42 +7068,6 @@ function scr_options_menu()
 			{
 				menu_delay = 3;
 				menu = "show_tutorial_signs";
-			}
-			else
-			if (key_down)
-			and (open_dropdown = false)
-			and (menu_delay = 0)
-			{
-				menu_delay = 3;
-				menu = "custom_level_load_delay_settings";
-			}
-		}
-		else
-		if (menu = "custom_level_load_delay_settings")
-		{
-			if (key_up)
-			and (open_dropdown = true)
-			and (menu_delay = 0)
-			and (global.custom_level_load_delay > 0)
-			{
-				menu_delay = 3;
-				global.custom_level_load_delay -= 1;
-			}
-			else
-			if (key_down)
-			and (open_dropdown = true)
-			and (menu_delay = 0)
-			and (global.custom_level_load_delay < 9)
-			{
-				menu_delay = 3;
-				global.custom_level_load_delay += 1;
-			}
-			if (key_up)
-			and (open_dropdown = false)
-			and (menu_delay = 0)
-			{
-				menu_delay = 3;
-				menu = "hud_hide_time";
 			}
 			else
 			if (key_down)
@@ -8592,7 +8543,7 @@ function scr_options_menu()
 	
 		else
 	
-		#region /*Cancel Dive By Pressing Jump Or Dive Button Navigation*/
+		#region /*Cancel dive by pressing the jump or dive key Navigation*/
 		if (menu = "cancel_dive_by_pressing_jump_or_dive_button")
 		{
 			menu_cursor_y_position = menu_y_cancel_dive_by_pressing_jump_or_dive_button;
@@ -8610,11 +8561,11 @@ function scr_options_menu()
 				menu_delay = 3;
 			}
 		}
-		#endregion /*Cancel Dive By Pressing Jump Or Dive Button Navigation END*/
+		#endregion /*Cancel dive by pressing the jump or dive key Navigation END*/
 		
 		else
 		
-		#region /*Cancel Dive By Pressing Opposite Direction Navigation*/
+		#region /*Cancel dive by pressing the opposite direction Navigation*/
 		if (menu = "cancel_dive_by_pressing_opposite_direction")
 		{
 			menu_cursor_y_position = menu_y_cancel_dive_by_pressing_opposite_direction;
@@ -8632,11 +8583,11 @@ function scr_options_menu()
 				menu_delay = 3;
 			}
 		}
-		#endregion /*Cancel Dive By Pressing Opposite Direction Navigation END*/
+		#endregion /*Cancel dive by pressing the opposite direction Navigation END*/
 		
 		else
 		
-		#region /*Down + Jump to Groundpound Navigation*/
+		#region /*Down + Jump to Ground Pound Navigation*/
 		if (menu = "down_and_jump_to_groundpound")
 		{
 			menu_cursor_y_position = menu_y_down_and_jump_to_groundpound;
@@ -8654,7 +8605,7 @@ function scr_options_menu()
 				menu_delay = 3;
 			}
 		}
-		#endregion /*Down + Jump to Groundpound Navigation END*/
+		#endregion /*Down + Jump to Ground Pound Navigation END*/
 		
 		else
 		
@@ -9051,7 +9002,6 @@ function scr_options_menu()
 		or(menu = "assist_extra_hp")
 		or(menu = "difficulty_settings")
 		or(menu = "hud_hide_time")
-		or(menu = "custom_level_load_delay_settings")
 		or(menu = "remap_select_player")
 		or(menu = "wall_jump_setting")
 		or(menu = "drop_from_rope")

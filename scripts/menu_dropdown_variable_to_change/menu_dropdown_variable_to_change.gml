@@ -57,12 +57,6 @@ function menu_dropdown_variable_to_change()
 		global.hud_hide_time = change_to_value;
 	}
 	else
-	if (variable_to_change = global.custom_level_load_delay)
-	and (menu = "custom_level_load_delay_settings")
-	{
-		global.custom_level_load_delay = change_to_value;
-	}
-	else
 	if (variable_to_change = global.number_of_audio_channels)
 	and (menu = "number_of_audio_channels")
 	{

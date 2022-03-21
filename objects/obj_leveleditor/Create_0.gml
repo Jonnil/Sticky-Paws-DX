@@ -170,6 +170,8 @@ menu_delay = 10;
 startup_loading_timer = 0;
 background_brightness_lerp = 0;
 background_brightness_menu_lerp = 0;
+language_index = global.language_localization + 1;
+language_mouse_scroll = 0;
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;

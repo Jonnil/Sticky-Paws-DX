@@ -86,8 +86,8 @@ and (global.play_edited_level = false)
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x + 32, y, "Width: " + string(bbox_left), global.default_text_size, c_black, c_red, 1);
-	draw_text_outlined(x + 32, y + 32, "Warning! Level width shorter than normal", global.default_text_size * 0.75, c_black, c_red, 1);
+	draw_text_outlined(x + 32, y, Text("Width") + " : " + string(bbox_left), global.default_text_size, c_black, c_red, 1);
+	draw_text_outlined(x + 32, y + 32, Text("Warning! Level width shorter than normal"), global.default_text_size * 0.75, c_black, c_red, 1);
 }
 else
 if (global.actually_play_edited_level = false)
@@ -95,7 +95,7 @@ and (global.play_edited_level = false)
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x + 32, y, "Width: " + string(bbox_left), global.default_text_size, c_black, c_white, 1);	
+	draw_text_outlined(x + 32, y, Text("Width") + " : " + string(bbox_left), global.default_text_size, c_black, c_white, 1);	
 }
 if (x > room_width)
 {

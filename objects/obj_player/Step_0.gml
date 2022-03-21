@@ -3178,7 +3178,7 @@ if (player = 4)
 }
 #endregion /*Up Key Is Jump Key END*/
 
-#region /*Double tap direction to run*/
+#region /*Double-tap direction to run*/
 if (player = 1)
 {
 	double_tap_to_run = global.player1_double_tap_to_run;
@@ -3198,9 +3198,9 @@ if (player = 4)
 {
 	double_tap_to_run = global.player4_double_tap_to_run;
 }
-#endregion /*Double tap direction to run END*/
+#endregion /*Double-tap direction to run END*/
 
-#region /*Cancel dive by pressing jump or dive button*/
+#region /*Cancel dive by pressing the jump or dive key*/
 if (player = 1)
 {
 	cancel_dive_by_pressing_jump_or_dive_button = global.player1_cancel_dive_by_pressing_jump_or_dive_button;
@@ -3220,9 +3220,9 @@ if (player = 4)
 {
 	cancel_dive_by_pressing_jump_or_dive_button = global.player4_cancel_dive_by_pressing_jump_or_dive_button;
 }
-#endregion /*Cancel dive by pressing jump or dive button END*/
+#endregion /*Cancel dive by pressing the jump or dive key END*/
 
-#region /*Cancel dive by pressing opposite direction*/
+#region /*Cancel dive by pressing the opposite direction*/
 if (player = 1)
 {
 	cancel_dive_by_pressing_opposite_direction = global.player1_cancel_dive_by_pressing_opposite_direction;
@@ -3242,9 +3242,9 @@ if (player = 4)
 {
 	cancel_dive_by_pressing_opposite_direction = global.player4_cancel_dive_by_pressing_opposite_direction;
 }
-#endregion /*Cancel dive by pressing opposite direction END*/
+#endregion /*Cancel dive by pressing the opposite direction END*/
 
-#region /*Down + Jump to Groundpound*/
+#region /*Down + Jump to Ground Pound*/
 if (player = 1)
 {
 	down_and_jump_to_groundpound = global.player1_down_and_jump_to_groundpound;
@@ -3264,7 +3264,7 @@ if (player = 4)
 {
 	down_and_jump_to_groundpound = global.player4_down_and_jump_to_groundpound;
 }
-#endregion /*Down + Jump to Groundpound END*/
+#endregion /*Down + Jump to Ground Pound END*/
 
 #region /*Hold Direction Wall jump*/
 if (player = 1)
@@ -4346,6 +4346,15 @@ and (global.pause = false)
 				hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 			}
 		}
+		global.hud_show_score = true;
+		if (asset_get_type("obj_camera") == asset_object)
+		and (instance_exists(obj_camera))
+		{
+			with(obj_camera)
+			{
+				hud_show_score_timer = global.hud_hide_time * 60;
+			}
+		}
 		#endregion /*Show all HUD elements END*/
 
 		controller_connected = false;
@@ -4911,7 +4920,7 @@ else
 }
 #endregion /*Sprint END*/
 
-#region /*Double tap direction to run*/
+#region /*Double-tap direction to run*/
 if (double_tap_to_run = true)
 {
 	if (!key_sprint)
@@ -4993,7 +5002,7 @@ if (double_tap_run_timer <= 0)
 	double_tap_left = false;
 	double_tap_right = false;
 }
-#endregion /*Double tap direction to run END*/
+#endregion /*Double-tap direction to run END*/
 
 #region /*Set the friction*/
 if (on_ground = true)

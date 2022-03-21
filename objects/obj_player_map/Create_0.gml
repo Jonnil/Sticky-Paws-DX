@@ -209,6 +209,12 @@ sprite_walk = noone;
 
 scr_config_load(); /*Load Config only once in create event, or it will mess up the options menu navigation*/
 
+if (global.language_localization > ds_grid_width(global.language_local_data))
+or (global.language_localization < 0)
+{
+	scr_set_default_language();
+}
+
 /*Make number of level cleared 1 because of the level intro*/
 ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)

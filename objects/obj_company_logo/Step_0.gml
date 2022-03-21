@@ -2,26 +2,7 @@ if (can_navigate = false)
 {
 	file_load_timer += 1;
 	
-	if (global.custom_level_load_delay = 0)
-	and (file_load_timer > 1)
-	or(global.custom_level_load_delay = 1)
-	and (file_load_timer >2)
-	or(global.custom_level_load_delay = 2)
-	and (file_load_timer >4)
-	or(global.custom_level_load_delay = 3)
-	and (file_load_timer >8)
-	or(global.custom_level_load_delay = 4)
-	and (file_load_timer > 16)
-	or(global.custom_level_load_delay = 5)
-	and (file_load_timer > 32)
-	or(global.custom_level_load_delay = 6)
-	and (file_load_timer > 64)
-	or(global.custom_level_load_delay = 7)
-	and (file_load_timer > 128)
-	or(global.custom_level_load_delay = 8)
-	and (file_load_timer >256)
-	or(global.custom_level_load_delay = 9)
-	and (file_load_timer >512)
+	if (file_load_timer > 1)
 	{
 		file_found = file_find_next()
 	

@@ -118,7 +118,7 @@ if (global.pause_player = 0)
 	key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left)) or(keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A"))) or(gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl)) or(gamepad_axis_value(0, gp_axislh) > 0);
 	key_down = (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up)) or(keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W"))) or(gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu)) or(gamepad_axis_value(0, gp_axislv) > 0);
 	key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or(keyboard_check_pressed(ord("Z"))) or(keyboard_check_pressed(vk_enter)) or(keyboard_check_pressed(vk_space));
-	key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or(keyboard_check_pressed(ord("X"))) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(vk_backspace)) or(mouse_check_button_pressed(mb_right));
+	key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or(keyboard_check_pressed(ord("X"))) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(vk_backspace)) or(mouse_check_button_pressed(mb_right))or(mouse_check_button_pressed(mb_side1));
 }
 #endregion /*Player 1 END*/
 
@@ -130,7 +130,7 @@ if (global.pause_player = 1)
 	key_right = (keyboard_check_pressed(global.player2_key_right)) and (!keyboard_check_pressed(global.player2_key_left)) or(gamepad_button_check_pressed(1, gp_padr)) and (!gamepad_button_check_pressed(1, gp_padl)) or(gamepad_axis_value(1, gp_axislh) > 0);
 	key_down = (keyboard_check_pressed(global.player2_key_down)) and (!keyboard_check_pressed(global.player2_key_up)) or(gamepad_button_check_pressed(1, gp_padd)) and (!gamepad_button_check_pressed(1, gp_padu)) or(gamepad_axis_value(1, gp_axislv) > 0);
 	key_a_pressed = (gamepad_button_check_pressed(1, gp_face1)) or(keyboard_check_pressed(global.player2_key_jump));
-	key_b_pressed = (gamepad_button_check_pressed(1, gp_face2)) or(keyboard_check_pressed(global.player2_key_sprint)) or(mouse_check_button_pressed(mb_right));
+	key_b_pressed = (gamepad_button_check_pressed(1, gp_face2)) or(keyboard_check_pressed(global.player2_key_sprint)) or(mouse_check_button_pressed(mb_right))or(mouse_check_button_pressed(mb_side1));
 }
 #endregion /*Player 2 END*/
 
@@ -142,7 +142,7 @@ if (global.pause_player = 2)
 	key_right = (keyboard_check_pressed(global.player3_key_right)) and (!keyboard_check_pressed(global.player3_key_left)) or(gamepad_button_check_pressed(2, gp_padr)) and (!gamepad_button_check_pressed(2, gp_padl)) or(gamepad_axis_value(2, gp_axislh) > 0);
 	key_down = (keyboard_check_pressed(global.player3_key_down)) and (!keyboard_check_pressed(global.player3_key_up)) or(gamepad_button_check_pressed(2, gp_padd)) and (!gamepad_button_check_pressed(2, gp_padu)) or(gamepad_axis_value(2, gp_axislv) > 0);
 	key_a_pressed = (gamepad_button_check_pressed(2, gp_face1)) or(keyboard_check_pressed(global.player3_key_jump));
-	key_b_pressed = (gamepad_button_check_pressed(2, gp_face2)) or(keyboard_check_pressed(global.player3_key_sprint)) or(mouse_check_button_pressed(mb_right));
+	key_b_pressed = (gamepad_button_check_pressed(2, gp_face2)) or(keyboard_check_pressed(global.player3_key_sprint)) or(mouse_check_button_pressed(mb_right))or(mouse_check_button_pressed(mb_side1));
 }
 #endregion /*Player 3 END*/
 
@@ -154,7 +154,7 @@ if (global.pause_player = 3)
 	key_right = (keyboard_check_pressed(global.player4_key_right)) and (!keyboard_check_pressed(global.player4_key_left)) or(gamepad_button_check_pressed(3, gp_padr)) and (!gamepad_button_check_pressed(3, gp_padl)) or(gamepad_axis_value(3, gp_axislh) > 0);
 	key_down = (keyboard_check_pressed(global.player4_key_down)) and (!keyboard_check_pressed(global.player4_key_up)) or(gamepad_button_check_pressed(3, gp_padd)) and (!gamepad_button_check_pressed(3, gp_padu)) or(gamepad_axis_value(3, gp_axislv) > 0);
 	key_a_pressed = (gamepad_button_check_pressed(3, gp_face1)) or(keyboard_check_pressed(global.player4_key_jump));
-	key_b_pressed = (gamepad_button_check_pressed(3, gp_face2)) or(keyboard_check_pressed(global.player4_key_sprint)) or(mouse_check_button_pressed(mb_right));
+	key_b_pressed = (gamepad_button_check_pressed(3, gp_face2)) or(keyboard_check_pressed(global.player4_key_sprint)) or(mouse_check_button_pressed(mb_right))or(mouse_check_button_pressed(mb_side1));
 }
 #endregion /*Player 4 END*/
 
@@ -167,10 +167,7 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 
 #region /*Set a default font*/
-if (asset_get_type("font_default") == asset_font)
-{
-	draw_set_font(font_default);
-}
+scr_set_default_font();
 #endregion /*Set a default font END*/
 
 #region /*Hide menu for clean screenshots text*/
@@ -192,6 +189,8 @@ or(menu = "quit_game_no")
 
 if (hide_menu_for_clean_screenshots = false)
 and (in_settings = false)
+and (os_type!= os_ios)
+and (os_type!= os_android)
 {
 	if (global.controls_used_for_menu_navigation = "keyboard")
 	or(global.controls_used_for_menu_navigation = "mouse")
@@ -204,7 +203,7 @@ and (in_settings = false)
 	}
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(64, window_get_height() - 32, ": Hide menu for clean screenshots", global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha);
+	draw_text_outlined(64, window_get_height() - 32, ": " + Text("Hide menu for clean screenshots"), global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha);
 }
 
 if (keyboard_check_pressed(ord("Y")))
@@ -327,13 +326,6 @@ if (pause_text_lerp >= 1)
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 
-#region /*Set a default font*/
-if (asset_get_type("font_default") == asset_font)
-{
-	draw_set_font(font_default);
-}
-#endregion /*Set a default font END*/
-
 if (in_settings = false)
 and (menu != "quit_game_no")
 and (menu != "quit_game_yes")
@@ -366,7 +358,7 @@ and (global.pause_room = room_leveleditor)
 	or(menu = "restart")
 	or(menu = "quit")
 	{
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Continue", "continue", "continue");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Continue"), "continue", "continue");
 		
 		if(asset_get_type("room_leveleditor") == asset_room)
 		and (room = room_leveleditor)
@@ -375,26 +367,26 @@ and (global.pause_room = room_leveleditor)
 		{
 			if (global.convention_mode = false)
 			{
-				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Settings", "options", "options");
-				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, "Restart", "restart", "restart");
-				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42 + 42, "Quit", "quit", "quit_to_map");
+				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Options"), "options", "options");
+				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Restart"), "restart", "restart");
+				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42 + 42, Text("Quit"), "quit", "quit_to_map");
 			}
 			else
 			{
-				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Restart", "restart", "restart");
-				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, "Quit", "quit", "quit_to_map");
+				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Restart"), "restart", "restart");
+				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Quit"), "quit", "quit_to_map");
 			}
 		}
 		else
 		{
 			if (global.convention_mode = false)
 			{
-				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Settings", "options", "options");
-				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, "Quit", "quit", "quit");
+				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Options"), "options", "options");
+				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Quit"), "quit", "quit");
 			}
 			else
 			{
-				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Quit", "quit", "quit");
+				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Quit"), "quit", "quit");
 			}
 		}
 	}
@@ -403,9 +395,9 @@ and (global.pause_room = room_leveleditor)
 	or(menu = "reset_from_start")
 	or(menu = "restart_nevermind")
 	{
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Reset from Checkpoint", "reset_from_checkpoint", "reset_from_checkpoint");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Reset from Start", "reset_from_start", "reset_from_start");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, "Nevermind", "restart_nevermind", "restart_nevermind");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Reset from Checkpoint"), "reset_from_checkpoint", "reset_from_checkpoint");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Reset from Start"), "reset_from_start", "reset_from_start");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Nevermind"), "restart_nevermind", "restart_nevermind");
 	}
 	else
 	if(global.pause_room = room_leveleditor)
@@ -421,10 +413,10 @@ and (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu = "main_game")
 	and (menu = "quit_nevermind")
 	{
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Quit to Map", "quit_to_map", "quit_to_map");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Quit to Title", "quit_to_title", "quit_to_title");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, "Quit to Desktop", "quit_to_desktop", "quit_to_desktop");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42 + 42, "Nevermind", "quit_nevermind", "quit_nevermind");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Quit to Map"), "quit_to_map", "quit_to_map");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Quit to Title"), "quit_to_title", "quit_to_title");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
 	}
 	else
 	if(global.pause_room = room_leveleditor)
@@ -437,9 +429,9 @@ and (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu = "level_editor")
 	and (menu = "quit_nevermind")
 	{
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Quit to Title", "quit_to_title", "quit_to_title");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Quit to Desktop", "quit_to_desktop", "quit_to_desktop");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, "Nevermind", "quit_nevermind", "quit_nevermind");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Quit to Title"), "quit_to_title", "quit_to_title");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
 	}
 	else
 	if(global.pause_room = room_world_map)
@@ -449,9 +441,9 @@ and (global.pause_room = room_leveleditor)
 	or(global.pause_room = room_world_map)
 	and (menu = "quit_nevermind")
 	{
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, "Quit to Title", "quit_to_title", "quit_to_title");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, "Quit to Desktop", "quit_to_desktop", "quit_to_desktop");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, "Nevermind", "quit_nevermind", "quit_nevermind");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Quit to Title"), "quit_to_title", "quit_to_title");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
 	}
 	
 	#region /*Continue*/

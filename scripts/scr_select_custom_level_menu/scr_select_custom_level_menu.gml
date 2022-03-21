@@ -524,10 +524,10 @@ function scr_select_custom_level_menu()
 			or(menu = "level_editor_selected_back")
 			{
 				draw_rectangle_color(394 *(global.select_level_index -C*R) + 100 -3, 226*(C-scroll) + 455-3, 394 *(global.select_level_index -C*R) + 100 + 384 + 3, 226*(C-scroll) + 408+ 216 + 47+ 3, c_white, c_white, c_white, c_white, false);
-				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) + 475-3, "Play", "level_editor_play", "level_editor_play");
-				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +522 -3, "Make", "level_editor_make", "level_editor_make"); /*+ 47 on y*/
-				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +569 -3, "Delete", "level_editor_delete", "level_editor_delete_no");
-				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) + 616-3, "Back", "level_editor_selected_back", "level_editor_selected_back");
+				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) + 475-3, Text("Play"), "level_editor_play", "level_editor_play");
+				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +522 -3, Text("Make"), "level_editor_make", "level_editor_make"); /*+ 47 on y*/
+				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +569 -3, Text("Delete"), "level_editor_delete", "level_editor_delete_no");
+				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) + 616-3, Text("Back"), "level_editor_selected_back", "level_editor_selected_back");
 			}
 			else
 			if (menu = "level_editor_create_from_scratch")
@@ -535,9 +535,9 @@ function scr_select_custom_level_menu()
 			or(menu = "level_editor_create_from_back")
 			{
 				draw_rectangle_color(394 *(global.select_level_index -C*R) + 100 -3, 226*(C-scroll) + 455-3, 394 *(global.select_level_index -C*R) + 100 + 384 + 3, 226*(C-scroll) + 408+ 216 + 3, c_white, c_white, c_white, c_white, false);
-				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) + 475-3, "Create from Scratch", "level_editor_create_from_scratch", "level_editor_create_from_scratch");
-				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +522 -3, "Create from Template", "level_editor_create_from_template", "level_editor_create_from_template"); /*+ 47 on y*/
-				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +569 -3, "Back", "level_editor_create_from_back", "level_editor_create_from_back");
+				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) + 475-3, Text("Create from Scratch"), "level_editor_create_from_scratch", "level_editor_create_from_scratch");
+				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +522 -3, Text("Create from Template"), "level_editor_create_from_template", "level_editor_create_from_template"); /*+ 47 on y*/
+				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +569 -3, Text("Back"), "level_editor_create_from_back", "level_editor_create_from_back");
 			}
 			else
 			if (menu = "level_editor_delete_no")
@@ -546,9 +546,9 @@ function scr_select_custom_level_menu()
 				draw_rectangle_color(394 *(global.select_level_index -C*R) + 100 -3, 226*(C-scroll) + 455-3, 394 *(global.select_level_index -C*R) + 100 + 384 + 3, 226*(C-scroll) + 408+ 216 + 3, c_red, c_red, c_red, c_red, false);
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_center);
-				draw_text_outlined(394 *(global.select_level_index -C*R) + 300 -3, 226*(C-scroll) + 485-3, "Delete Level?", global.default_text_size * 1.2, c_white, c_black, 1);
-				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +522 -3, "No", "level_editor_delete_no", "level_editor_delete"); /*+ 47 on y*/
-				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +569 -3, "Yes", "level_editor_delete_yes", "level_editor_delete_yes");
+				draw_text_outlined(394 *(global.select_level_index -C*R) + 300 -3, 226*(C-scroll) + 485-3, Text("Delete Level") + "?", global.default_text_size * 1.2, c_white, c_black, 1);
+				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +522 -3, Text("No"), "level_editor_delete_no", "level_editor_delete"); /*+ 47 on y*/
+				draw_menu_button(394 *(global.select_level_index -C*R) + 110 -3, 226*(C-scroll) +569 -3, Text("Yes"), "level_editor_delete_yes", "level_editor_delete_yes");
 			}
 		}
 		#endregion /*Navigate Sub Menu END*/
@@ -557,7 +557,7 @@ function scr_select_custom_level_menu()
 	#endregion /*Draw sub menu END*/
 	
 	#region /*Back Button*/
-	draw_menu_button(0, 0, "Back", "back_from_level_editor", "back_from_level_editor");
+	draw_menu_button(0, 0, Text("Back"), "back_from_level_editor", "back_from_level_editor");
 	
 	if (menu = "back_from_level_editor")
 	and (key_a_pressed)
@@ -1094,7 +1094,7 @@ function scr_select_custom_level_menu()
 		#region /*OK and Cancel buttons under name input*/
 		if (keyboard_string != "")
 		{
-			draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 32, "OK", "level_editor_enter_name_ok", "level_editor_enter_name_ok");
+			draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 32, Text("OK"), "level_editor_enter_name_ok", "level_editor_enter_name_ok");
 			if (gamepad_is_connected(0))
 			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 			and (global.controls_used_for_menu_navigation = "controller")
@@ -1107,7 +1107,7 @@ function scr_select_custom_level_menu()
 				draw_sprite_ext(spr_keyboard_keys, vk_enter, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 21 + 32, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
-		draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 74, "Cancel", "level_editor_enter_name_cancel", "level_editor_enter_name_cancel");
+		draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 74, Text("Cancel"), "level_editor_enter_name_cancel", "level_editor_enter_name_cancel");
 		if (gamepad_is_connected(0))
 		and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 		and (global.controls_used_for_menu_navigation = "controller")

@@ -1341,25 +1341,32 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player3 = 0;
 	show_sprint_toggle_for_player4 = 0;
 	if (global.player1_can_play = true)
+	and (global.player2_can_play = false)
+	and (global.player3_can_play = false)
+	and (global.player4_can_play = false)
 	{
 		if (global.player1_sprint_toggle = true)
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Always Run: True", global.default_text_size, c_white, c_black, 1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 232, camera_get_view_y(view_camera[view_current]) + 32, Text("Always run"), global.default_text_size, c_white, c_black, 1);
+			draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Always Run: False", global.default_text_size, c_white, c_black, 1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 232, camera_get_view_y(view_camera[view_current]) + 32, Text("Always run"), global.default_text_size, c_white, c_black, 1);
+			draw_sprite_ext(spr_checkbox, false, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 		}
 	}
 	else
 	{
 		if (global.player1_sprint_toggle = true)
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Player 1 Always Run: True", global.default_text_size, c_white, c_black, 1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 232, camera_get_view_y(view_camera[view_current]) + 32, Text("Player 1 always run"), global.default_text_size, c_white, c_black, 1);
+			draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Player 1 Always Run: False", global.default_text_size, c_white, c_black, 1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 232, camera_get_view_y(view_camera[view_current]) + 32, Text("Player 1 always run"), global.default_text_size, c_white, c_black, 1);
+			draw_sprite_ext(spr_checkbox, false, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 		}
 	}
 }
@@ -1375,11 +1382,13 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player4 = 0;
 	if (global.player2_sprint_toggle = true)
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Player 2 Always Run: True", global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, Text("Player 2 always run"), global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 	}
 	else
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Player 2 Always Run: False", global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, Text("Player 2 always run"), global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_checkbox, false, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 	}
 }
 if (show_sprint_toggle_for_player3> 0)
@@ -1394,11 +1403,13 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player4 = 0;
 	if (global.player3_sprint_toggle = true)
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Player 3 Always Run: True", global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, Text("Player 3 always run"), global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 	}
 	else
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Player 3 Always Run: False", global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, Text("Player 3 always run"), global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_checkbox, false, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 	}
 }
 if (show_sprint_toggle_for_player4> 0)
@@ -1413,11 +1424,13 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player4 -= 1;
 	if (global.player4_sprint_toggle = true)
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Player 4 Always Run: True", global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, Text("Player 4 always run"), global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 	}
 	else
 	{
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, "Player 4 Always Run: False", global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, Text("Player 4 always run"), global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_checkbox, false, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 	}
 }
 #endregion /*Sprint Toggling END*/

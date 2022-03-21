@@ -15,11 +15,15 @@ function scr_show_fps()
 			
 			if (fps >= 60)
 			{
+				draw_set_font(font_default);
 				draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(global.max_fps), global.default_text_size, c_black, c_lime, 1);
+				scr_set_default_font();
 			}
 			else
 			{
+				draw_set_font(font_default);
 				draw_text_outlined(30, 100, "FPS: " + string(fps) + " / " + string(global.max_fps), global.default_text_size, c_black, make_color_hsv(50/60 *fps, 255, 255), 1);
+				scr_set_default_font();
 			}
 		
 		}
@@ -30,11 +34,15 @@ function scr_show_fps()
 		{
 			if (fps_real >= 200)
 			{
+				draw_set_font(font_default);
 				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, c_lime, 1);
+				scr_set_default_font();
 			}
 			else
 			{
+				draw_set_font(font_default);
 				draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, make_color_hsv(50/ 200 *fps_real, 255, 255), 1);
+				scr_set_default_font();
 			}
 		}
 		#endregion /*FPS Real END*/

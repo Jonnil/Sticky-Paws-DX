@@ -9,7 +9,7 @@ function scr_quit_to_desktop_menu(argument0)
 	if (menu = "quit_game_no")
 	or(menu = "quit_game_yes")
 	{
-		draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, "ARE YOU SURE YOU WANT TO QUIT?", global.default_text_size * 1.9, c_white, c_black, 1);
+		draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, Text("ARE YOU SURE YOU WANT TO QUIT?"), global.default_text_size * 1.9, c_white, c_black, 1);
 	
 		#region /*Quit No*/
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 370, window_get_height() / 2 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 42))
@@ -23,7 +23,7 @@ function scr_quit_to_desktop_menu(argument0)
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2, 1, 1, 180, c_white, 1);
 			draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2, 2, 2, 0, c_lime, 1);
-			draw_text_outlined(window_get_width() / 2, window_get_height() / 2, "NO", global.default_text_size * 2.3, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2, Text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
 		}
 		else
 		{
@@ -35,12 +35,12 @@ function scr_quit_to_desktop_menu(argument0)
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2, 1, 1, 180, c_white, 1);
 				draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2, 2, 2, 0, c_lime, 1);
-				draw_text_outlined(window_get_width() / 2, window_get_height() / 2, "NO", global.default_text_size * 2.3, c_black, c_white, 1);
+				draw_text_outlined(window_get_width() / 2, window_get_height() / 2, Text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
 			}
 			else
 			{
 				draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2, 2, 2, 0, c_white, 1);
-				draw_text_outlined(window_get_width() / 2, window_get_height() / 2, "NO", global.default_text_size * 2.3, c_white, c_black, 1);
+				draw_text_outlined(window_get_width() / 2, window_get_height() / 2, Text("NO"), global.default_text_size * 2.3, c_white, c_black, 1);
 			}
 		}
 	
@@ -82,7 +82,7 @@ function scr_quit_to_desktop_menu(argument0)
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2 + 84, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2 + 84, 1, 1, 180, c_white, 1);
 			draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2 + 84, 2, 2, 0, c_lime, 1);
-			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 84, "YES", global.default_text_size * 2.3, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 84, Text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
 		}
 		else
 		{
@@ -94,12 +94,12 @@ function scr_quit_to_desktop_menu(argument0)
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2 + 84, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2 + 84, 1, 1, 180, c_white, 1);
 				draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2 + 84, 2, 2, 0, c_lime, 1);
-				draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 84, "YES", global.default_text_size * 2.3, c_black, c_white, 1);
+				draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 84, Text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
 			}
 			else
 			{
 				draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2 + 84, 2, 2, 0, c_white, 1);
-				draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 84, "YES", global.default_text_size * 2.3, c_white, c_black, 1);
+				draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 84, Text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
 			}
 		}
 

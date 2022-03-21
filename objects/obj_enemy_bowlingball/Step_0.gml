@@ -448,7 +448,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	if (asset_get_type("snd_spring") == asset_sound)
 	{
 		audio_play_sound(snd_spring, 0, 0);
-		audio_sound_gain(snd_spring, global.sound_volume * 0.1, 0);
+		audio_sound_gain(snd_spring, global.sound_volume * global.main_volume * 0.1, 0);
 	}
 	vspeed = -15;
 	gravity = 0;

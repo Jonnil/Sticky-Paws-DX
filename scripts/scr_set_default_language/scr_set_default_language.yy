@@ -6,7 +6,7 @@
     "path": "folders/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_set_arrays",
+  "name": "scr_set_default_language",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -37,7 +37,7 @@ if (bounceup = false)
 			if (asset_get_type("snd_bump") == asset_sound)
 			{
 				audio_play_sound(snd_bump, 0, 0);
-				audio_sound_gain(snd_bump, global.sound_volume * 0.1, 0);
+				audio_sound_gain(snd_bump, global.sound_volume * global.main_volume * 0.1, 0);
 			}
 		}
 		else
@@ -50,7 +50,7 @@ if (bounceup = false)
 			if (asset_get_type("snd_bump") == asset_sound)
 			{
 				audio_play_sound(snd_bump, 0, 0);
-				audio_sound_gain(snd_bump, global.sound_volume * 0.1, 0);
+				audio_sound_gain(snd_bump, global.sound_volume * global.main_volume * 0.1, 0);
 			}
 		}
 		else

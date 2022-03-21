@@ -2,30 +2,30 @@ enum localization
 {
 	ar_sa/*Arabic*/
 	,id_id/*Indonesian*/
-	, da_dk/*Danish*/
-	, de_de /*German*/
+	,da_dk/*Danish*/
+	,de_de/*German*/
 	,en_gb/*British English*/
 	,en_us/*American English*/
 	,es_es/*Spanish*/
 	,es_mx/*Mexican Spanish*/
-	, fr_ca/*Canadian French*/
-	, fr_fr/*French*/
+	,fr_ca/*Canadian French*/
+	,fr_fr/*French*/
 	,it_it/*Italian*/
 	,hu_hu/*Hungarian*/
-	, nl_nl/*Dutch*/
-	, nb_no/*Norwegian Bokmål*/
-	, pl_pl/*Polish*/
-	, pt_br/*Brazilian Portuguese*/
-	, pt_pt/*Portuguese*/
+	,nl_nl/*Dutch*/
+	,nb_no/*Norwegian Bokmål*/
+	,pl_pl/*Polish*/
+	,pt_br/*Brazilian Portuguese*/
+	,pt_pt/*Portuguese*/
 	,sk_sk/*Slovak*/
-	, fi_fi/*Finnish*/
-	,sv_se /*Swedish*/
-	,th_th /*Thai*/
+	,fi_fi/*Finnish*/
+	,sv_se/*Swedish*/
+	,th_th/*Thai*/
 	,tr_tr/*Turkish*/
-	, cs_cz/*Czech*/
+	,cs_cz/*Czech*/
 	,el_gr/*Greek*/
 	,bg_bg/*Bulgarian*/
-	, ru_ru/*Russian*/
+	,ru_ru/*Russian*/
 	,uk_ua/*Ukrainian*/
 	,ja_jp/*Japanese*/
 	,zh_cn/*Chinese Simplified (China)*/

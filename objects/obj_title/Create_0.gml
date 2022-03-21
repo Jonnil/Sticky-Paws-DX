@@ -1,5 +1,3 @@
-scr_set_arrays();
-
 player = 1;
 selected_skin = 0;
 
@@ -20,8 +18,8 @@ scroll = 0;
 scroll_to = 0;
 lerp_on = false;
 level_editor_template_select = false;
-language_index = global.language_localization+1
-language_mouse_scroll = 0
+language_index = global.language_localization + 1;
+language_mouse_scroll = 0;
 
 /*Narrator Voice variable handeling*/
 #region /*Character Name*/
@@ -696,6 +694,12 @@ else
 #endregion /*Player 4 Characterselect portrait x and y origin points END*/
 
 scr_config_load(); /*Load Config*/
+
+if (global.language_localization > ds_grid_width(global.language_local_data))
+or (global.language_localization < 0)
+{
+	scr_set_default_language();
+}
 
 lives = 5; /*Starting lives*/
 

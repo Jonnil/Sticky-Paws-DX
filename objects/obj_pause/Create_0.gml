@@ -5,8 +5,6 @@ mx = mouse_x;
 my = mouse_y;
 #endregion /*Mouse x and mouse y initializing END*/
 
-scr_set_arrays();
-
 ///Narrator Voice variable handeling
 
 ///No Narrator
@@ -52,6 +50,8 @@ menu_y_offset = 0; /*This is the y offset that will have lerping to make the men
 menu_y_offset_real = 0; /*This is the real y offset for the menu, used for menu scrolling*/
 menu_cursor_y_position = 0;
 background_brightness_menu_lerp = 0;
+language_index = global.language_localization + 1;
+language_mouse_scroll = 0;
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;

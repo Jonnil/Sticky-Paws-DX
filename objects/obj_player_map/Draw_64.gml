@@ -7,14 +7,14 @@ and (speed = 0)
 and (instance_nearest(x, y, obj_level).clear_rate != "closed")
 and (global.pause = false)
 {
-	draw_set_halign(fa_center);
+	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	draw_text_outlined(80, window_get_height() - 28, "Enter Level", global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(64, window_get_height() - 28, Text("Enter into level"), global.default_text_size, c_black, c_white, 1);
 	if (gamepad_is_connected(0))
 	and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
-		draw_sprite_ext(spr_xbox_buttons, 0, 180, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+		draw_sprite_ext(spr_xbox_buttons, 0, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
 	}
 	else
 	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -23,12 +23,12 @@ and (global.pause = false)
 		{
 			if (global.player1_key_jump > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, 180, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 			else
 			if (global.player1_key2_jump > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, 180, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
 		else
@@ -36,12 +36,12 @@ and (global.pause = false)
 		{
 			if (global.player2_key_jump > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, 180, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 			else
 			if (global.player2_key2_jump > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, 180, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
 		else
@@ -49,12 +49,12 @@ and (global.pause = false)
 		{
 			if (global.player3_key_jump > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, 180, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 			else
 			if (global.player3_key2_jump > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, 180, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
 		else
@@ -62,12 +62,12 @@ and (global.pause = false)
 		{
 			if (global.player4_key_jump > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, 180, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 			else
 			if (global.player4_key2_jump > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, 180, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
 	}
