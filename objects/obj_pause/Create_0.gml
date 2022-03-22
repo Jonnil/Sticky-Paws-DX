@@ -5,20 +5,58 @@ mx = mouse_x;
 my = mouse_y;
 #endregion /*Mouse x and mouse y initializing END*/
 
-///Narrator Voice variable handeling
+#region /*Narrator Voice variable handeling*/
 
-///No Narrator
-if (global.narrator >= 0)
+menuvoice_1player = noone;
+menuvoice_2player = noone;
+menuvoice_3player = noone;
+menuvoice_4player = noone;
+menuvoice_leveleditor = noone;
+menuvoice_leveleditor_denied = noone;
+
+#region /*No Narrator*/
+if (global.narrator = -1)
 {
-	menuvoice_titlesplash = noone;
-	menuvoice_1player = noone;
-	menuvoice_2player = noone;
-	menuvoice_3player = noone;
-	menuvoice_4player = noone;
-	menuvoice_leveleditor = noone;
-	menuvoice_leveleditor_denied = noone;
+	voice_game_title = noone;
 	voice_options = noone;
 }
+#endregion /*No Narrator END*/
+
+else
+
+#region /*Character as Narrator*/
+if (global.narrator >= 0)
+{
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/game_title.ogg"))
+	{
+		voice_game_title = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/game_title.ogg");
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/game_title.ogg"))
+	{
+		voice_game_title = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/game_title.ogg");
+	}
+	else
+	{
+		voice_game_title = noone;
+	}
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/options.ogg"))
+	{
+		voice_options = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/options.ogg");
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/options.ogg"))
+	{
+		voice_options = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sounds/voicepack0/options.ogg");
+	}
+	else
+	{
+		voice_options = noone;
+	}
+}
+#endregion /*Character as Narrator END*/
+
+#endregion /*Narrator Voice variable handeling END*/
 
 pause_text_alpha = 0;
 pause_text_lerp = 1;

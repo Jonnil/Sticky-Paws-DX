@@ -131,7 +131,12 @@ view_wview_lerp = 0;
 window_set_cursor(cr_none);
 global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 ds_list_add(global.all_loaded_custom_levels, "");
+load_characters_ok = false;
+load_title_backgrounds_ok = false;
+initialized_characters = false;
+initialized_title_backgrounds = false;
 global.all_loaded_characters = ds_list_create();
+global.all_loaded_title_backgrounds = ds_list_create();
 global.select_level_index = 0; /*What level is selected in the custom level editor*/
 
 max_players = 4; /*How many players you want to be able to play*/
@@ -724,7 +729,5 @@ can_navigate = false;
 file_load_timer = 0;
 time = 0;
 sprite_index = spr_company_logo;
-
-scr_load_character_initializing();
 
 #endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/

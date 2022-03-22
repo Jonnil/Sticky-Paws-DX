@@ -220,6 +220,7 @@
     {"id":{"name":"snd_footstep_stone_left","path":"sounds/snd_footstep_stone_left/snd_footstep_stone_left.yy",},"order":52,},
     {"id":{"name":"spr_block_black","path":"sprites/spr_block_black/spr_block_black.yy",},"order":34,},
     {"id":{"name":"spr_map_city_building","path":"sprites/spr_map_city_building/spr_map_city_building.yy",},"order":113,},
+    {"id":{"name":"scr_load_title_background_initializing","path":"scripts/scr_load_title_background_initializing/scr_load_title_background_initializing.yy",},"order":9,},
     {"id":{"name":"snd_swing","path":"sounds/snd_swing/snd_swing.yy",},"order":137,},
     {"id":{"name":"scr_config_load","path":"scripts/scr_config_load/scr_config_load.yy",},"order":1,},
     {"id":{"name":"snd_boss_invulnerable","path":"sounds/snd_boss_invulnerable/snd_boss_invulnerable.yy",},"order":11,},

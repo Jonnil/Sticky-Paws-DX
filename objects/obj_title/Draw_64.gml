@@ -1,5 +1,3 @@
-//draw_text(320, 320, string(menu));
-
 #region /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus*/
 
 #region /*Player 1 reset keys to noone if they happen to be 0*/

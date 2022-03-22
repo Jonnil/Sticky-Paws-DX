@@ -61,14 +61,26 @@ function InitTranslations()
 function Text(key)
 {
 	var text = "";
-	if (global.translations[?key]!=undefined)
+	if (global.translations[?key] != undefined)
+	and (global.language_local_data[# 1 + global.language_localization, global.translations[?key]] != "")
 	{
+		scr_set_default_font();
 		var text = global.language_local_data[# 1 + global.language_localization, global.translations[?key]];
 		var a = argument_count > 1?argument[1]:"";
 		text = string_replace_all(text, "{a}", a);
 	}
 	else
+	if (global.translations[?key] != undefined)
+	and (global.language_local_data[# 1, global.translations[?key]] != "")
 	{
+		draw_set_font(font_default);
+		var text = global.language_local_data[# 1, global.translations[?key]];
+		var a = argument_count > 1?argument[1]:"";
+		text = string_replace_all(text, "{a}", a);
+	}
+	else
+	{
+		draw_set_font(font_default);
 		var text = key;
 	}
 	return text;

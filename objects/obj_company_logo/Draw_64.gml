@@ -1,5 +1,7 @@
 scr_set_screen_size();
 
+draw_text_outlined(320, 320, "", global.default_text_size*2, c_black, c_white, 1)
+
 /*Draw Event*/
 if(gamepad_button_check_pressed(0, gp_face1))
 or(keyboard_check_pressed(ord("Z")))
@@ -66,26 +68,31 @@ and (sprite_index = spr_company_logo)
 		else
 		{
 			if (asset_get_type("room_title") == asset_room)
+			and (can_navigate = true)
 			{
 				room_goto(room_title);
 			}
 			else
 			if (room_next(room) <>- 1)
+			and (can_navigate = true)
 			{
 				room_goto_next();
 			}
 		}
 	}
 	else
-	if (asset_get_type("room_title") == asset_room)
 	{
-		room_goto(room_title);
+		if (asset_get_type("room_title") == asset_room)
+		{
+			room_goto(room_title);
+		}
+		else
+		if (room_next(room) <>- 1)
+		{
+			room_goto_next();
+		}
 	}
-	else
-	if (room_next(room) <>- 1)
-	{
-		room_goto_next();
-	}
+	image_index = image_number - 2;
 }
 
 if (sprite_splash_controller > noone)
@@ -97,6 +104,7 @@ and (sprite_index = sprite_splash_controller)
 	}
 	if (time > 100)
 	and (!audio_is_playing(controller_splash))
+	and (can_navigate = true)
 	{
 		if (asset_get_type("room_title") == asset_room)
 		{

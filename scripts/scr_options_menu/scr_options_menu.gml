@@ -5090,6 +5090,7 @@ function scr_options_menu()
 			or(mouse_check_button_pressed(mb_left))
 			and (window_mouse_get_x() > 370)
 			and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 430, menu_y_remap_reset + menu_y_offset + 1, 430 + 370, menu_y_remap_reset + menu_y_offset + 41))
+			and (global.controls_used_for_menu_navigation = "mouse")
 			and (menu_delay = 0)
 			{
 		
@@ -6109,6 +6110,7 @@ function scr_options_menu()
 			and (menu = "select_narrator")
 			or(mouse_check_button_pressed(mb_left))
 			and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x -32 - 16, narrator_y - 16, file_select_x -32 + 16, narrator_y + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "select_narrator";
 				if (menu_delay = 0)
@@ -6310,6 +6312,7 @@ function scr_options_menu()
 			and (menu = "select_narrator")
 			or(mouse_check_button_pressed(mb_left))
 			and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 16, narrator_y + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "select_narrator";
 				if (menu_delay = 0)
@@ -6528,8 +6531,10 @@ function scr_options_menu()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x -32, 20 + (40 * 4), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 4) - 16, resource_pack_x -32 + 16, 20 + (40 * 4) + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "resourcepacks";
+				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x -32 - 16, 20 + (40 * 4) - 16, resource_pack_x -32 + 16, 20 + (40 * 4) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -6540,8 +6545,10 @@ function scr_options_menu()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 * 4), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 4) + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "resourcepacks";
+				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 4) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -6570,6 +6577,7 @@ function scr_options_menu()
 		and (menu = "resourcepacks")
 		or(mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 4) - 16, resource_pack_x -32 + 16, 20 + (40 * 4) + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
 		{
 			menu = "resourcepacks";
 			if (menu_delay = 0)
@@ -6587,6 +6595,7 @@ function scr_options_menu()
 		and (menu = "resourcepacks")
 		or(mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 4) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 4) + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
 		{
 			menu = "resourcepacks";
 			if (menu_delay = 0)
@@ -6601,26 +6610,33 @@ function scr_options_menu()
 		
 		#region /*Custom Title Background*/
 		draw_text_outlined(resource_pack_x, 20 + (40 * 6), Text("Title Background") + ": " + string(global.selected_title_background), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(resource_pack_x, 20 + (40 * 7), string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 		if (global.selected_title_background > 0)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x -32, 20 + (40 * 6), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 6) - 16, resource_pack_x -32 + 16, 20 + (40 * 6) + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "title_backgrounds";
+				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x -32 - 16, 20 + (40 * 6) - 16, resource_pack_x -32 + 16, 20 + (40 * 6) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
 		
-		if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background + 1) + ".png"))
-		or(file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+ 1) + ".png"))
+		if (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+		and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
+		or(file_exists(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+		and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 * 6), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 6) + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "title_backgrounds";
+				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 6) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -6636,6 +6652,7 @@ function scr_options_menu()
 		and (menu = "title_backgrounds")
 		or(mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 6) - 16, resource_pack_x -32 + 16, 20 + (40 * 6) + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
 		{
 			menu = "title_backgrounds";
 			if (menu_delay = 0)
@@ -6645,14 +6662,14 @@ function scr_options_menu()
 				global.selected_title_background -= 1;
 				menu_delay = 3;
 			}
-			if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background) + ".png"))
+			if (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 			{
-				title_screen_background = sprite_add("title_backgrounds/title_background" + string(global.selected_title_background) + ".png", 1, false, false, 0, 0);
+				title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
 			}
 			else
-			if (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds) + ".png"))
+			if (file_exists(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 			{
-				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds) + ".png", 1, false, false, 0, 0);
+				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
 			}
 			else
 			{
@@ -6667,26 +6684,29 @@ function scr_options_menu()
 		and (menu = "title_backgrounds")
 		or(mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 6) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 6) + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
 		{
 			menu = "title_backgrounds";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
-			and (file_exists("title_backgrounds/title_background" + string(global.selected_title_background + 1) + ".png"))
+			and (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+			and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 			or(menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
-			and (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds+ 1) + ".png"))
+			and (file_exists(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+			and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 			{
 				global.selected_title_background += 1;
 				menu_delay = 3;
 			}
-			if (file_exists("title_backgrounds/title_background" + string(global.selected_title_background) + ".png"))
+			if (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 			{
-				title_screen_background = sprite_add("title_backgrounds/title_background" + string(global.selected_title_background) + ".png", 1, false, false, 0, 0);
+				title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
 			}
 			else
-			if (file_exists(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds) + ".png"))
+			if (file_exists(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 			{
-				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/title_background" + string(global.selected_title_background-global.max_number_of_official_title_backgrounds) + ".png", 1, false, false, 0, 0);
+				title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
 			}
 			else
 			{
@@ -6825,6 +6845,7 @@ function scr_options_menu()
 		and (menu_delay = 0)
 		or(menu = "file_delete_yes")
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 -370 -32, window_get_height()/ 2 - 21, window_get_width()/ 2 -370 -32 + 370, window_get_height()/ 2 + 42))
+		and (global.controls_used_for_menu_navigation = "mouse")
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		{
@@ -6865,6 +6886,7 @@ function scr_options_menu()
 		and (can_navigate_settings_sidebar = false)
 		or(mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x -32 - 16, 20 + (40 * 4) - 16, file_select_x -32 + 16, 20 + (40 * 4) + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
 		and (menu != "file_delete_no")
 		and (menu != "file_delete_yes")
 		{
@@ -6885,6 +6907,7 @@ function scr_options_menu()
 		and (can_navigate_settings_sidebar = false)
 		or(mouse_check_button_pressed(mb_left))
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), file_select_x + file_select_right_arrow_x - 16, 20 + (40 * 4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 * 4) + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
 		and (menu != "file_delete_no")
 		and (menu != "file_delete_yes")
 		{
