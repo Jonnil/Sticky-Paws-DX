@@ -52,6 +52,7 @@ function scr_config_save()
 	ini_write_real("config", "enable_transitions", global.enable_transitions);
 	ini_write_real("config", "selected_resourcepack", global.selected_resourcepack);
 	ini_write_real("config", "selected_title_background", global.selected_title_background);
+	ini_write_real("config", "selected_title_logo", global.selected_title_logo);
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
 	ini_write_real("config", "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);

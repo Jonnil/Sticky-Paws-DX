@@ -294,6 +294,7 @@
     {"id":{"name":"obj_cake_stealing_enemy","path":"objects/obj_cake_stealing_enemy/obj_cake_stealing_enemy.yy",},"order":30,},
     {"id":{"name":"spr_sock","path":"sprites/spr_sock/spr_sock.yy",},"order":61,},
     {"id":{"name":"spr_checkpoint","path":"sprites/spr_checkpoint/spr_checkpoint.yy",},"order":41,},
+    {"id":{"name":"scr_load_title_logo_initializing","path":"scripts/scr_load_title_logo_initializing/scr_load_title_logo_initializing.yy",},"order":10,},
     {"id":{"name":"snd_bump","path":"sounds/snd_bump/snd_bump.yy",},"order":16,},
     {"id":{"name":"obj_level_player_3_start","path":"objects/obj_level_player_3_start/obj_level_player_3_start.yy",},"order":9,},
     {"id":{"name":"snd_smalljump","path":"sounds/snd_smalljump/snd_smalljump.yy",},"order":128,},
@@ -3280,6 +3281,9 @@
     {"CopyToMask":-1,"filePath":"datafiles/Resourcepacks/Resourcepack0/Sprites","resourceVersion":"1.0","name":"tileset_wood_strip47.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/Resourcepacks/Resourcepack0/Sprites","resourceVersion":"1.0","name":"tileset_stone_strip47.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"localization.csv","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/title_logos","resourceVersion":"1.0","name":"title_logo_old.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/title_logos","resourceVersion":"1.0","name":"title_logo_english.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/title_logos","resourceVersion":"1.0","name":"title_logo_japanese.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.2.1.618",

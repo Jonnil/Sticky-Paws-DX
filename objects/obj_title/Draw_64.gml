@@ -121,41 +121,26 @@ menuvoice_select_character1 = noone; /*Voice clips for when you select a charact
 sprite_select_character_0 = noone;
 sprite_select_player_1 = noone; /*Select the sprite for each character portrait END*/
 
-/*Title Screen (You must have a spr_logo for the code to work)*/
+/*Title Screen*/
 
 room_speed = global.max_fps; /*Room Speed END*/
 
 #region /*Change the logo to different designs during specific times and dates*/
-if (current_day >= 24)
-and (current_day <= 26)
-and (current_month = 12)
-{
-	effect_create_below(ef_snow, 0, 0, 2, c_white); /*Make the title screen snow when it's between 24th and 26th December*/
-	if (global.resourcepack_sprite_title_logo_christmas > noone)
-	{
-		title_logo_index = global.resourcepack_sprite_title_logo_christmas;
-	}
-	else
-	if (global.resourcepack_sprite_title_logo > noone)
-	{
-		title_logo_index = global.resourcepack_sprite_title_logo;
-	}
-	else
-	{
-		title_logo_index = spr_wall;
-	}
-}
-else
 if (current_month = 12)
 {
+	if (current_day >= 24)
+	and (current_day <= 26)
+	{
+		effect_create_below(ef_snow, 0, 0, 2, c_white); /*Make the title screen snow when it's between 24th and 26th December*/
+	}
 	if (global.resourcepack_sprite_title_logo_christmas > noone)
 	{
 		title_logo_index = global.resourcepack_sprite_title_logo_christmas;
 	}
 	else
-	if (global.resourcepack_sprite_title_logo > noone)
+	if (global.title_logo_index > noone)
 	{
-		title_logo_index = global.resourcepack_sprite_title_logo;
+		title_logo_index = global.title_logo_index;
 	}
 	else
 	{
@@ -164,9 +149,9 @@ if (current_month = 12)
 }
 else
 {
-	if (global.resourcepack_sprite_title_logo > noone)
+	if (global.title_logo_index > noone)
 	{
-		title_logo_index = global.resourcepack_sprite_title_logo;
+		title_logo_index = global.title_logo_index;
 	}
 	else
 	{
@@ -370,17 +355,21 @@ else
 #endregion /*Hide Fullscreen and Version text / Set certain variables to default value END*/
 
 #region /*Demo Version Text*/
-if (global.demo= true)
+if (global.demo = true)
 {
 	draw_text_outlined(display_get_gui_width()/ 2, 32, "Demo Version", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 }
 #endregion /*Demo Version Text END*/
 
 #region /*Draw Title Screen*/
-if (global.resourcepack_sprite_title_logo > 0)
+if (global.title_logo_index > 0)
 or(global.resourcepack_sprite_title_logo_christmas > 0)
 {
-	draw_sprite_ext(title_logo_index, image_index, display_get_gui_width()/ 2, display_get_gui_height()/ 2 - 100 + title_y, 1, 1, 0, c_white, title_alpha);
+	if (global.title_logo_index >= 0)
+	and (global.title_logo_index != undefined)
+	{
+		draw_sprite_ext(title_logo_index, image_index, display_get_gui_width()/ 2, display_get_gui_height()/ 2 - 100 + title_y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, title_alpha);
+	}
 }
 
 if (menu!= "select_custom_level")
@@ -442,9 +431,12 @@ or(menu = "quit")
 	#region /*Click Main Game*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 40, display_get_gui_width()/ 2 + 185, display_get_gui_height()/ 2 + 100 + 60 + 19))
 	and (mouse_check_button_released(mb_left))
+	and (menu_delay = 0)
+	and (in_settings = false)
 	or(menu = "main_game")
 	and (key_a_pressed)
 	and (menu_delay = 0)
+	and (in_settings = false)
 	{
 		global.player1_can_play = false;
 		global.player2_can_play = false;
@@ -484,8 +476,12 @@ or(menu = "quit")
 	#region /*Click Level Editor*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 +80 + 1, display_get_gui_width()/ 2 + 185, display_get_gui_height()/ 2 + 100 + 100 + 19))
 	and (mouse_check_button_released(mb_left))
+	and (menu_delay = 0)
+	and (in_settings = false)
 	or(menu = "leveleditor")
 	and (key_a_pressed)
+	and (menu_delay = 0)
+	and (in_settings = false)
 	{
 		global.player1_can_play = false;
 		global.player2_can_play = false;
@@ -546,8 +542,12 @@ or(menu = "quit")
 	display_get_gui_width()/ 2,
 	display_get_gui_height()/ 2 + 100 + 140 + 19))
 	and (mouse_check_button_released(mb_left))
+	and (menu_delay = 0)
+	and (in_settings = false)
 	or(menu = "options")
 	and (key_a_pressed)
+	and (menu_delay = 0)
+	and (in_settings = false)
 	{
 		
 		#region /*Play Options Voice*/
@@ -579,11 +579,12 @@ or(menu = "quit")
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay = 0)
 	and (global.show_language_shortcut = true)
-	
+	and (in_settings = false)
 	or(menu = "language_shortcut")
 	and (key_a_pressed)
 	and (menu_delay = 0)
 	and (global.show_language_shortcut = true)
+	and (in_settings = false)
 	{
 		menu_delay = 3;
 		in_settings = true;
@@ -661,11 +662,12 @@ or(menu = "quit")
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay = 0)
 	and (global.show_profile_shortcut = true)
-	
+	and (in_settings = false)
 	or(menu = "profile_shortcut")
 	and (key_a_pressed)
 	and (menu_delay = 0)
 	and (global.show_profile_shortcut = true)
+	and (in_settings = false)
 	{
 		menu_delay = 3;
 		in_settings = true;
@@ -695,9 +697,12 @@ or(menu = "quit")
 	/*Click Credits*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
 	and (mouse_check_button_released(mb_left))
+	and (menu_delay = 0)
+	and (in_settings = false)
 	or(menu = "credits")
 	and (key_a_pressed)
 	and (menu_delay = 0)
+	and (in_settings = false)
 	{
 		if (!instance_exists(obj_credits))
 		{
@@ -719,9 +724,12 @@ or(menu = "quit")
 	display_get_gui_width()/ 2 + 185,
 	display_get_gui_height()/ 2 + 100 + 140 + 19))
 	and (mouse_check_button_released(mb_left))
+	and (menu_delay = 0)
+	and (in_settings = false)
 	or(menu = "quit")
 	and (key_a_pressed)
 	and (menu_delay = 0)
+	and (in_settings = false)
 	{
 		in_settings = false;
 		menu = "quit_game_no";
@@ -799,300 +807,6 @@ or(menu = "quit")
 scr_options_menu(); /*Options*/
 
 scr_quit_to_desktop_menu("quit");
-
-#region /*Select how many players (1-4 players)*/
-if (menu = "1player")
-or(menu = "2player")
-or(menu = "3player")
-or(menu = "4player")
-{
-	if (global.select_number_of_players_before_selecting_characters = false)
-	{
-		scr_load_character_initializing();
-		menu = "load_characters";
-		menu_delay = 3;
-	}
-	
-	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height()/ 2 + menu_y_offset + 22, "Select how many players (1-4 players)", global.default_text_size * 1.3, c_menu_outline, c_menu_fill, 1);
-
-	#region /*Menu Button for 1 Player*/
-	if (menu = "1player")
-	{
-		global.playergame = 0;
-		if (asset_get_type("spr_menu_button_1player") == asset_sprite)
-		{
-			draw_sprite_ext(spr_menu_button_1player, 0, display_get_gui_width()/ 2 - 256, display_get_gui_height()/ 2 + menu_y_offset + 128, 1, 1, 0, c_white, 1);
-		}
-		else
-		{
-			draw_text_outlined(display_get_gui_width()/ 2 - 256, display_get_gui_height()/ 2 + menu_y_offset + 128, "> 1 Player", global.default_text_size * 1.3, c_menu_outline, c_menu_fill, 1);
-		}
-	}
-	else
-	{
-		if (asset_get_type("spr_menu_button_1player") == asset_sprite)
-		{
-			draw_sprite_ext(spr_menu_button_1player, 0, display_get_gui_width()/ 2 - 256, display_get_gui_height()/ 2 + menu_y_offset + 128, 0.9, 0.9, 0, c_gray, 0.9);
-		}
-		else
-		{
-			draw_text_outlined(display_get_gui_width()/ 2 - 256, display_get_gui_height()/ 2 + menu_y_offset + 128, "1 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-	}
-	#endregion /*Menu Button for 1 Player END*/
-
-	#region /*Menu Button for 2 Player*/
-	if (menu = "2player")
-	{
-		global.playergame = 1;
-		if (asset_get_type("spr_menu_button_2player") == asset_sprite)
-		{
-			draw_sprite_ext(spr_menu_button_2player, 0, display_get_gui_width()/ 2 - 84, display_get_gui_height()/ 2 + menu_y_offset + 128, 1, 1, 0, c_white, 1);
-		}
-		else
-		{
-			draw_text_outlined(display_get_gui_width()/ 2 - 84, display_get_gui_height()/ 2 + menu_y_offset + 128, "> 2 Player", global.default_text_size * 1.3, c_menu_outline, c_menu_fill, 1);
-		}
-	}
-	else
-	{
-		if (gamepad_is_connected(1))
-		or(global.player2_key_up > 0)
-		and (global.player2_key_down > 0)
-		and (global.player2_key_left > 0)
-		and (global.player2_key_right > 0)
-		and (global.player2_key_sprint > 0)
-		and (global.player2_key_jump > 0)
-		or(global.player2_key2_up > 0)
-		and (global.player2_key2_down > 0)
-		and (global.player2_key2_left > 0)
-		and (global.player2_key2_right > 0)
-		and (global.player2_key2_sprint > 0)
-		and (global.player2_key2_jump > 0)
-		{
-			if (key_right)
-			and (menu = "1player")
-			and (menu_delay = 0)
-			{
-				menu = "2player";
-				menu_delay = 3;
-			}
-			if (asset_get_type("spr_menu_button_2player") == asset_sprite)
-			{
-				draw_sprite_ext(spr_menu_button_2player, 0, display_get_gui_width()/ 2 - 84, display_get_gui_height()/ 2 + menu_y_offset + 128, 0.9, 0.9, 0, c_gray, 0.9);
-			}
-			else
-			{
-				draw_text_outlined(display_get_gui_width()/ 2 - 84, display_get_gui_height()/ 2 + menu_y_offset + 128, "2 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else
-		{
-			if (asset_get_type("spr_menu_button_2player") == asset_sprite)
-			{
-				draw_sprite_ext(spr_menu_button_2player, 0, display_get_gui_width()/ 2 - 84, display_get_gui_height()/ 2 + menu_y_offset + 128, 0.8, 0.8, 0, c_dkgray, 0.8);
-				draw_text_outlined(display_get_gui_width()/ 2 - 84, display_get_gui_height()/ 2 + menu_y_offset + 128, "Need", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(display_get_gui_width()/ 2 - 84, display_get_gui_height()/ 2 + menu_y_offset + 128+ 32, "2 controllers", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_text_outlined(display_get_gui_width()/ 2 - 84, display_get_gui_height()/ 2 + menu_y_offset + 128, "2 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(display_get_gui_width()/ 2 - 84, display_get_gui_height()/ 2 + menu_y_offset + 128+ 32, "(Need 2 controllers)", global.default_text_size * 0.9, global.default_text_size * 0.9, 0, c_black, c_black, c_black, c_black, 1);
-			}
-		}
-	}
-	#endregion /*Menu Button for 2 Player END*/
-
-	#region /*Menu Button for 3 Player*/
-	if (menu = "3player")
-	{
-		global.playergame = 2;
-		if (asset_get_type("spr_menu_button_3player") == asset_sprite)
-		{
-			draw_sprite_ext(spr_menu_button_3player, 0, display_get_gui_width()/ 2 +84, display_get_gui_height()/ 2 + menu_y_offset + 128, 1, 1, 0, c_white, 1);}else{draw_text_outlined(display_get_gui_width()/ 2 +84, display_get_gui_height()/ 2 + menu_y_offset + 128, "> 3 Player", global.default_text_size * 1.3, c_menu_outline, c_menu_fill, 1);
-		}
-	}
-	else
-	{
-		if (gamepad_is_connected(1))
-		and (gamepad_is_connected(2))
-		or(global.player2_key_up > 0)
-		and (global.player2_key_down > 0)
-		and (global.player2_key_left > 0)
-		and (global.player2_key_right > 0)
-		and (global.player2_key_sprint > 0)
-		and (global.player2_key_jump > 0)
-
-		and (global.player3_key_up > 0
-		and global.player3_key_down > 0)
-		and (global.player3_key_left > 0)
-		and (global.player3_key_right > 0)
-		and (global.player3_key_sprint > 0)
-		and (global.player3_key_jump > 0)
-		
-		or(global.player2_key2_up > 0)
-		and (global.player2_key2_down > 0)
-		and (global.player2_key2_left > 0)
-		and (global.player2_key2_right > 0)
-		and (global.player2_key2_sprint > 0)
-		and (global.player2_key2_jump > 0)
-
-		and (global.player3_key2_up > 0
-		and global.player3_key2_down > 0)
-		and (global.player3_key2_left > 0)
-		and (global.player3_key2_right > 0)
-		and (global.player3_key2_sprint > 0)
-		and (global.player3_key2_jump > 0)
-		{
-			if (key_right)
-			and (menu = "2player")
-			and (menu_delay = 0)
-			{
-				menu = "3player";
-				menu_delay = 3;
-			}
-			if (asset_get_type("spr_menu_button_3player") == asset_sprite)
-			{
-				draw_sprite_ext(spr_menu_button_3player, 0, display_get_gui_width()/ 2 +84, display_get_gui_height()/ 2 + menu_y_offset + 128, 0.9, 0.9, 0, c_gray, 0.9);
-			}
-			else
-			{
-				draw_text_outlined(display_get_gui_width()/ 2 +84, display_get_gui_height()/ 2 + menu_y_offset + 128, "3 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else
-		{
-			if (asset_get_type("spr_menu_button_3player") == asset_sprite)
-			{
-				draw_sprite_ext(spr_menu_button_3player, 0, display_get_gui_width()/ 2 +84, display_get_gui_height()/ 2 + menu_y_offset + 128, 0.8, 0.8, 0, c_dkgray, 0.8);
-				draw_text_outlined(display_get_gui_width()/ 2 +84, display_get_gui_height()/ 2 + menu_y_offset + 128, "Need", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(display_get_gui_width()/ 2 +84, display_get_gui_height()/ 2 + menu_y_offset + 128+ 32, "3 controllers", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_text_outlined(display_get_gui_width()/ 2 +84, display_get_gui_height()/ 2 + menu_y_offset + 128, "3 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(display_get_gui_width()/ 2 +84, display_get_gui_height()/ 2 + menu_y_offset + 128+ 32, "(Need 3 controllers)", global.default_text_size * 0.9, global.default_text_size * 0.9, 0, c_black, c_black, c_black, c_black, 1);
-			}
-		}
-	}
-	#endregion /*Menu Button for 3 Player END*/
-
-	#region /*Menu Button for 4 Player*/
-	if (menu = "4player")
-	{
-		global.playergame = 3;
-		if (asset_get_type("spr_menu_button_4player") == asset_sprite)
-		{
-			draw_sprite_ext(spr_menu_button_4player, 0, display_get_gui_width()/ 2 + 256, display_get_gui_height()/ 2 + menu_y_offset + 128, 1, 1, 0, c_white, 1);
-		}
-		else
-		{
-			draw_text_outlined(display_get_gui_width()/ 2 + 256, display_get_gui_height()/ 2 + menu_y_offset + 128, "> 4 Player", global.default_text_size * 1.3, c_menu_outline, c_menu_fill, 1);
-		}
-	}
-	else
-	{
-		if (gamepad_is_connected(1))
-		and (gamepad_is_connected(2))
-		and (gamepad_is_connected(3))
-		or(global.player2_key_up > 0)
-		and (global.player2_key_down > 0)
-		and (global.player2_key_left > 0)
-		and (global.player2_key_right > 0)
-		and (global.player2_key_sprint > 0)
-		and (global.player2_key_jump > 0)
-	
-		and (global.player3_key_up > 0)
-		and (global.player3_key_down > 0)
-		and (global.player3_key_left > 0)
-		and (global.player3_key_right > 0)
-		and (global.player3_key_sprint > 0)
-		and (global.player3_key_jump > 0)
-	
-		and (global.player4_key_up > 0)
-		and (global.player4_key_down > 0)
-		and (global.player4_key_left > 0)
-		and (global.player4_key_right > 0)
-		and (global.player4_key_sprint > 0)
-		and (global.player4_key_jump > 0)
-		
-		or(global.player2_key2_up > 0)
-		and (global.player2_key2_down > 0)
-		and (global.player2_key2_left > 0)
-		and (global.player2_key2_right > 0)
-		and (global.player2_key2_sprint > 0)
-		and (global.player2_key2_jump > 0)
-	
-		and (global.player3_key2_up > 0)
-		and (global.player3_key2_down > 0)
-		and (global.player3_key2_left > 0)
-		and (global.player3_key2_right > 0)
-		and (global.player3_key2_sprint > 0)
-		and (global.player3_key2_jump > 0)
-	
-		and (global.player4_key2_up > 0)
-		and (global.player4_key2_down > 0)
-		and (global.player4_key2_left > 0)
-		and (global.player4_key2_right > 0)
-		and (global.player4_key2_sprint > 0)
-		and (global.player4_key2_jump > 0)
-		{
-			if (key_right)
-			and (menu = "3player")
-			and (menu_delay = 0)
-			{
-				menu = "4player";
-				menu_delay = 3;
-			}
-			if (asset_get_type("spr_menu_button_4player") == asset_sprite)
-			{
-				draw_sprite_ext(spr_menu_button_4player, 0, display_get_gui_width()/ 2 + 256, display_get_gui_height()/ 2 + menu_y_offset + 128, 0.9, 0.9, 0, c_gray, 0.9);
-			}
-			else
-			{
-				draw_text_outlined(display_get_gui_width()/ 2 + 256, display_get_gui_height()/ 2 + menu_y_offset + 128, "4 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			}
-		}
-		else
-		{
-			if (asset_get_type("spr_menu_button_4player") == asset_sprite)
-			{
-				draw_sprite_ext(spr_menu_button_4player, 0, display_get_gui_width()/ 2 + 256, display_get_gui_height()/ 2 + menu_y_offset + 128, 0.8, 0.8, 0, c_dkgray, 0.8);
-				draw_text_outlined(display_get_gui_width()/ 2 + 256, display_get_gui_height()/ 2 + menu_y_offset + 128, "Need", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(display_get_gui_width()/ 2 + 256, display_get_gui_height()/ 2 + menu_y_offset + 128+ 32, "4 controllers", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				draw_text_outlined(display_get_gui_width()/ 2 + 256, display_get_gui_height()/ 2 + menu_y_offset + 128, "4 Player", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(display_get_gui_width()/ 2 + 256, display_get_gui_height()/ 2 + menu_y_offset + 128+ 32, "(Need 4 controllers)", global.default_text_size * 0.9, global.default_text_size * 0.9, 0, c_black, c_black, c_black, c_black, 1);
-			}
-		}
-	}
-	#endregion /*Menu Button for 4 Player END*/
-
-	if (key_left)
-	and (menu = "4player")
-	and (menu_delay = 0)
-	{
-		menu = "3player";
-		menu_delay = 3;
-	}
-	if (key_left)
-	and (menu = "3player")
-	and (menu_delay = 0)
-	{
-		menu = "2player";
-		menu_delay = 3;
-	}
-	if (key_left)
-	and (menu = "2player")
-	and (menu_delay = 0)
-	{
-		menu = "1player";
-		menu_delay = 3;
-	}
-}
-#endregion /*Select how many players (1-4 players) END*/
 
 #region /*Loading Screen*/
 if (menu = "load_custom_level")
@@ -1315,178 +1029,6 @@ and (menu_delay = 0)
 #endregion /*Menu Navigation END*/
 
 #region /*Accept*/
-
-#region /*Select Number of Players*/
-if (menu = "1player")
-or(menu = "2player")
-or(menu = "3player")
-or(menu = "4player")
-{
-	
-	#region /*Select 1 Player Game*/
-	if (key_a_pressed)
-	and (menu = "1player")
-	and (menu_delay = 0)
-	{
-		if (!audio_is_playing(menuvoice_1player))
-		{
-			audio_play_sound(menuvoice_1player, 0, 0);
-			audio_sound_gain(menuvoice_1player, global.voices_volume * global.main_volume, 0);
-		}
-		global.playergame = 0;
-		can_navigate = true;
-		menu_delay = 3;
-		menu_joystick1_delay = 0;
-		menu_joystick2_delay = 0;
-		menu_joystick3_delay = 0;
-		menu_joystick4_delay = 0;
-		if (global.character_select_screen = true)
-		{
-			scr_load_character_initializing();
-			menu = "load_characters";
-		}
-		else
-		{
-			if (global.character_select_in_this_menu = "main_game")
-			{
-				can_navigate = false;
-				menu_delay = 999;
-			}
-			else
-			{
-				select_custom_level_menu_open = true;
-				menu = "level_editor_play";
-				menu_delay = 3;
-			}
-		}
-	}
-	#endregion /*Select 1 Player Game END*/
-	
-	else
-	
-	#region /*Select 2 Player Game*/
-	if (key_a_pressed)
-	and (menu = "2player")
-	and (menu_delay = 0)
-	{
-		if (!audio_is_playing(menuvoice_2player))
-		{
-			audio_play_sound(menuvoice_2player, 0, 0);
-			audio_sound_gain(menuvoice_2player, global.voices_volume * global.main_volume, 0);
-		}
-		global.playergame = 1;
-		can_navigate = true;
-		menu_delay = 3;
-		menu_joystick1_delay = 0;
-		menu_joystick2_delay = 0;
-		menu_joystick3_delay = 0;
-		menu_joystick4_delay = 0;
-		if (global.character_select_screen = true)
-		{
-			scr_load_character_initializing();
-			menu = "load_characters";
-		}
-		else
-		{
-			if (global.character_select_in_this_menu = "main_game")
-			{
-				can_navigate = false;
-				menu_delay = 999;
-			}
-			else
-			{
-				select_custom_level_menu_open = true;
-				menu = "level_editor_play";
-				menu_delay = 3;
-			}
-		}
-	}
-	#endregion /*Select 2 Player Game END*/
-	
-	else
-	
-	#region /*Select 3 Player Game*/
-	if (key_a_pressed)
-	and (menu = "3player")
-	and (menu_delay = 0)
-	{
-		if (!audio_is_playing(menuvoice_3player))
-		{
-			audio_play_sound(menuvoice_3player, 0, 0);
-			audio_sound_gain(menuvoice_3player, global.voices_volume * global.main_volume, 0);
-		}
-		global.playergame = 2;
-		can_navigate = true;
-		menu_delay = 3;
-		menu_joystick1_delay = 0;
-		menu_joystick2_delay = 0;
-		menu_joystick3_delay = 0;
-		menu_joystick4_delay = 0;
-		if (global.character_select_screen = true)
-		{
-			scr_load_character_initializing();
-			menu = "load_characters";
-		}
-		else
-		{
-			if (global.character_select_in_this_menu = "main_game")
-			{
-				can_navigate = false;
-				menu_delay = 999;
-			}
-			else
-			{
-				select_custom_level_menu_open = true;
-				menu = "level_editor_play";
-				menu_delay = 3;
-			}
-		}
-	}
-	#endregion /*Select 3 Player Game END*/
-	
-	else
-	
-	#region /*Select 4 Player Game*/
-	if (key_a_pressed)
-	and (menu = "4player")
-	and (menu_delay = 0)
-	{
-		if (!audio_is_playing(menuvoice_4player))
-		{
-			audio_play_sound(menuvoice_4player, 0, 0);
-			audio_sound_gain(menuvoice_4player, global.voices_volume * global.main_volume, 0);
-		}
-		global.playergame = 3;
-		can_navigate = true;
-		menu_delay = 3;
-		menu_joystick1_delay = 0;
-		menu_joystick2_delay = 0;
-		menu_joystick3_delay = 0;
-		menu_joystick4_delay = 0;
-		if (global.character_select_screen = true)
-		{
-			scr_load_character_initializing();
-			menu = "load_characters";
-		}
-		else
-		{
-			if (global.character_select_in_this_menu = "main_game")
-			{
-				can_navigate = false;
-				menu_delay = 999;
-			}
-			else
-			{
-				select_custom_level_menu_open = true;
-				menu = "level_editor_play";
-				menu_delay = 3;
-			}
-		}
-	}
-	#endregion /*Select 4 Player Game END*/
-	
-}
-#endregion /*Select Number of Players END*/
 
 #region /*Can't enter level editor in demo version*/
 {

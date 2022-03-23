@@ -296,9 +296,9 @@ and (global.resourcepack_sprite_title_logo_christmas > noone)
 	draw_sprite_ext(global.resourcepack_sprite_title_logo_christmas, 0, 160, 100, 0.3, 0.3, 0, c_white, 1);
 }
 else
-if (global.resourcepack_sprite_title_logo > noone)
+if (global.title_logo_index > noone)
 {
-	draw_sprite_ext(global.resourcepack_sprite_title_logo, 0, 160, 100, 0.3, 0.3, 0, c_white, 1);
+	draw_sprite_ext(global.title_logo_index, 0, 160, 100, 0.3, 0.3, 0, c_white, 1);
 }
 #endregion /*Games Logo in top left corner END*/
 

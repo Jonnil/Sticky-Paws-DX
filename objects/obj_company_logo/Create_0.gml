@@ -131,12 +131,14 @@ view_wview_lerp = 0;
 window_set_cursor(cr_none);
 global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 ds_list_add(global.all_loaded_custom_levels, "");
-load_characters_ok = false;
-load_title_backgrounds_ok = false;
+load_ok = 0;
 initialized_characters = false;
 initialized_title_backgrounds = false;
+initialized_title_logos = false;
 global.all_loaded_characters = ds_list_create();
 global.all_loaded_title_backgrounds = ds_list_create();
+global.all_loaded_title_logos = ds_list_create();
+global.title_logo_index = spr_noone;
 global.select_level_index = 0; /*What level is selected in the custom level editor*/
 
 max_players = 4; /*How many players you want to be able to play*/
@@ -206,6 +208,11 @@ global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
 global.selected_resourcepack = 0; /* 0 = default*/
 global.selected_title_background = 0; /* 0 = default*/
+switch (os_get_language())
+{
+    case "ja": global.selected_title_logo = 0; /* 0 = Japanese Logo*/ break;
+    default: global.selected_title_logo = 1; /* 1 = English Logo*/ break;
+}
 global.show_virtual_controls = false; /*Show virtual controls on desktop or not, false by default*/
 
 global.default_zoom_level = 1; /*if reset_level_zoom_when_going_back_to_map = true, then set zoom to this number*/
@@ -287,13 +294,13 @@ global.background_brightness_gameplay = 0; /*Background brightness in gameplay. 
 global.background_brightness_menu = 0; /*Background brightness in menus. full_black=- 1, normal = 0 (default), full_white = +1*/
 
 #region /*Music and Sound Volume*/
-global.main_volume = 10000; /*Make the volumes set to 10000 by default. This number is then *0.0001 so it becomes 1, because Linux can't load decimal numbers from .ini files. By default volumes are 100%*/
-global.music_volume = 10000;
-global.sound_volume = 10000;
-global.ambient_volume = 10000;
-global.footstep_volume = 10000;
-global.voices_volume = 10000;
-global.verbosity_slider = 10000;
+global.main_volume = 0.7; /*Make the volumes set to 7000 by default*/
+global.music_volume = 0.7; /*This number is then *0.0001 so it becomes 0.7*/
+global.sound_volume = 0.7; /*Because Linux can't load decimal numbers from .ini files*/
+global.ambient_volume = 0.7; /*By default volumes are 70% so it doesn't hurt ears*/
+global.footstep_volume = 0.7;
+global.voices_volume = 0.7;
+global.verbosity_slider = 1;
 global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
 

@@ -1235,7 +1235,24 @@ function scr_options_menu()
 				and (can_navigate_settings_sidebar = true)
 				and (menu_delay = 0)
 				{
-					global.settings_sidebar_menu = "broadcast_settings";
+					if (global.enable_broadcast_settings = true)
+					{
+						global.settings_sidebar_menu = "broadcast_settings";
+					}
+					else
+					if (global.enable_how_to_play_settings = true)
+					{
+						global.settings_sidebar_menu = "how_to_play_settings";
+					}
+					else
+					if (global.enable_add_ons_settings = true)
+					{
+						global.settings_sidebar_menu = "resource_packs_settings";
+					}
+					else
+					{
+						global.settings_sidebar_menu = "settings_back";
+					}
 					menu_delay = 3;
 				}
 			}
@@ -6557,14 +6574,44 @@ function scr_options_menu()
 		
 		if (key_up)
 		and (can_navigate_settings_sidebar = false)
+		and (menu_delay = 0)
 		{
-			menu = "resourcepacks";
+			if (menu = "resourcepacks")
+			{
+				menu = "title_logos";
+			}
+			else
+			if (menu = "title_backgrounds")
+			{
+				menu = "resourcepacks";
+			}
+			else
+			if (menu = "title_logos")
+			{
+				menu = "title_backgrounds";
+			}
+			menu_delay = 0;
 		}
 		else
 		if (key_down)
 		and (can_navigate_settings_sidebar = false)
+		and (menu_delay = 0)
 		{
-			menu = "title_backgrounds";
+			if (menu = "resourcepacks")
+			{
+				menu = "title_backgrounds";
+			}
+			else
+			if (menu = "title_backgrounds")
+			{
+				menu = "title_logos";
+			}
+			else
+			if (menu = "title_logos")
+			{
+				menu = "resourcepacks";
+			}
+			menu_delay = 0;
 		}
 		
 		if (menu = "resourcepacks")
@@ -6718,6 +6765,119 @@ function scr_options_menu()
 			}
 		}
 		#endregion /*Custom Title Background END*/
+		
+		#region /*Custom Title Logo*/
+		
+		if (global.title_logo_index >= 0)
+		and (global.title_logo_index != undefined)
+		{
+			draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() - 500, display_get_gui_height() / 2 - 100, (402 / sprite_get_height(global.title_logo_index)), (402 / sprite_get_height(global.title_logo_index)), 0, c_white, 1);
+		}
+		draw_text_outlined(resource_pack_x, 20 + (40 * 8), Text("Title Logo") + ": " + string(global.selected_title_logo), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(resource_pack_x, 20 + (40 * 9), string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		
+		if (global.selected_title_logo > 0)
+		{
+			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x -32, 20 + (40 * 8), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 8) - 16, resource_pack_x -32 + 16, 20 + (40 * 8) + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			{
+				menu = "title_logos";
+				can_navigate_settings_sidebar = false;
+				draw_set_alpha(0.5);
+				draw_rectangle_color(resource_pack_x -32 - 16, 20 + (40 * 8) - 16, resource_pack_x -32 + 16, 20 + (40 * 8) + 16, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
+		}
+		
+		if (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+		and (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != undefined)
+		or(file_exists(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+		and (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != undefined)
+		{
+			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 * 8), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 8) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 8) + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			{
+				menu = "title_logos";
+				can_navigate_settings_sidebar = false;
+				draw_set_alpha(0.5);
+				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 8) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 8) + 16, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
+		}
+		
+		if (menu = "title_logos")
+		{
+			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x -32 -32, 20 + (40 * 8));
+		}
+		
+		if (key_left)
+		and (menu = "title_logos")
+		or(mouse_check_button_pressed(mb_left))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 8) - 16, resource_pack_x -32 + 16, 20 + (40 * 8) + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		{
+			menu = "title_logos";
+			if (menu_delay = 0)
+			and (can_navigate_settings_sidebar = false)
+			and (global.selected_title_logo > 0)
+			{
+				global.selected_title_logo -= 1;
+				menu_delay = 3;
+			}
+			if (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+			{
+				global.title_logo_index = sprite_add("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), 1, false, false, 0, 0);
+				sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) / 2, sprite_get_height(global.title_logo_index) / 2);
+			}
+			else
+			if (file_exists(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+			{
+				global.title_logo_index = sprite_add(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), 1, false, false, 0, 0);
+				sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) / 2, sprite_get_height(global.title_logo_index) / 2);
+			}
+			else
+			{
+				global.title_logo_index = spr_noone;
+			}
+		}
+		if (key_right)
+		and (menu = "title_logos")
+		or(mouse_check_button_pressed(mb_left))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 8) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 8) + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		{
+			menu = "title_logos";
+			if (menu_delay = 0)
+			and (can_navigate_settings_sidebar = false)
+			and (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+			and (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != undefined)
+			or(menu_delay = 0)
+			and (can_navigate_settings_sidebar = false)
+			and (file_exists(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+			and (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != undefined)
+			{
+				global.selected_title_logo += 1;
+				menu_delay = 3;
+			}
+			if (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+			{
+				global.title_logo_index = sprite_add("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), 1, false, false, 0, 0);
+				sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) / 2, sprite_get_height(global.title_logo_index) / 2);
+			}
+			else
+			if (file_exists(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+			{
+				global.title_logo_index = sprite_add(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), 1, false, false, 0, 0);
+				sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) / 2, sprite_get_height(global.title_logo_index) / 2);
+			}
+			else
+			{
+				global.title_logo_index = spr_noone;
+			}
+		}
+		#endregion /*Custom Title Logo END*/
 		
 	}
 	#endregion /*Global Resources Settings END*/

@@ -84,6 +84,13 @@ if (!directory_exists(working_directory + "/custom_title_backgrounds"))
 }
 #endregion /*Create directory for saving custom title backgrounds END*/
 
+#region /*Create directory for saving custom title logos*/
+if (!directory_exists(working_directory + "/custom_title_logos"))
+{
+	directory_create(working_directory + "/custom_title_logos");
+}
+#endregion /*Create directory for saving custom title logos END*/
+
 #region /*Create directory for saving files*/
 if (!directory_exists(working_directory + "/save_files"))
 {
