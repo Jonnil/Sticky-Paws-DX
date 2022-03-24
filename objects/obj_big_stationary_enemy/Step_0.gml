@@ -29,7 +29,7 @@ or(die_volting = +1)
 	#endregion /*Set the gravity END*/
 	
 	sprite_used = "stand";
-	sprite_index = global.resourcepack_sprite_big_stationary_enemy;
+	sprite_index = global.resource_pack_sprite_big_stationary_enemy;
 }
 else
 {
@@ -69,7 +69,7 @@ else
 			image_speed = 0.5;
 		}
 		sprite_used = "flattened";
-		sprite_index = global.resourcepack_sprite_big_stationary_enemy_flattened;
+		sprite_index = global.resource_pack_sprite_big_stationary_enemy_flattened;
 		if (image_index > image_number - 1)
 		{
 			effect_create_above(ef_smoke, x, y, 2, c_white);
@@ -79,7 +79,7 @@ else
 	else
 	{
 		sprite_used = "stand";
-		sprite_index = global.resourcepack_sprite_big_stationary_enemy;
+		sprite_index = global.resource_pack_sprite_big_stationary_enemy;
 	}
 }
 mask_index = mask;

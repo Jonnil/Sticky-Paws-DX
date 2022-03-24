@@ -1,4 +1,4 @@
-sprite_index = global.resourcepack_sprite_hp_pickup;
+sprite_index = global.resource_pack_sprite_hp_pickup;
 
 #region /*Set the gravity*/
 gravity_direction = 270; /*Direction of the gravity*/

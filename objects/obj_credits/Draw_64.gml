@@ -163,8 +163,8 @@ if (time >= room_speed* 5)
 		time = 0;
 	}
 	image_index += 1;
-	if (sprite_index = global.resourcepack_sprite_title_logo_christmas)
-	or(sprite_index = global.resourcepack_sprite_title_logo)
+	if (sprite_index = global.resource_pack_sprite_title_logo_christmas)
+	or(sprite_index = global.title_logo_index)
 	{
 		sprite_index = spr_credits;
 		image_index = 0;

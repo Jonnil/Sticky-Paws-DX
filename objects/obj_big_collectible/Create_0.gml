@@ -1,5 +1,5 @@
 depth = +10;
-sprite_index = global.resourcepack_sprite_big_collectible;
+sprite_index = global.resource_pack_sprite_big_collectible;
 bounceup = false;
 delay = 0;
 delay_time = 0;

@@ -51,7 +51,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "enable_foreground_layer2")){global.enable_foreground_layer2 = ini_read_real("config", "enable_foreground_layer2", 0);}
 		if (ini_key_exists("config", "enable_foreground_layer_secret")){global.enable_foreground_layer_secret = ini_read_real("config", "enable_foreground_layer_secret", 0);}
 		if (ini_key_exists("config", "enable_transitions")){global.enable_transitions = ini_read_real("config", "enable_transitions", 0);}
-		if (ini_key_exists("config", "selected_resourcepack")){global.selected_resourcepack = ini_read_real("config", "selected_resourcepack", 0);}
+		if (ini_key_exists("config", "selected_resource_pack")){global.selected_resource_pack = ini_read_real("config", "selected_resource_pack", 0);}
 		if (ini_key_exists("config", "selected_title_background")){global.selected_title_background = ini_read_real("config", "selected_title_background", 0);}
 		if (ini_key_exists("config", "selected_title_logo")){global.selected_title_logo = ini_read_real("config", "selected_title_logo", 0);}
 		if (ini_key_exists("config", "zoom_level")){global.zoom_level = ini_read_real("config", "zoom_level", 1);}

@@ -59,13 +59,13 @@ else
 		sprite_used = "flattened";
 		if (blind = true)
 		{
-			if (global.resourcepack_sprite_enemy_bowlingball_blind_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_stomped;}else
-			if (global.resourcepack_sprite_enemy_bowlingball_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_stomped;}
+			if (global.resource_pack_sprite_enemy_bowlingball_blind_stomped > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_stomped;}else
+			if (global.resource_pack_sprite_enemy_bowlingball_stomped > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_stomped;}
 		}
 		else
 		{
-			if (global.resourcepack_sprite_enemy_bowlingball_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_stomped;}else
-			if (global.resourcepack_sprite_enemy_bowlingball_blind_stomped > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_stomped;}
+			if (global.resource_pack_sprite_enemy_bowlingball_stomped > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_stomped;}else
+			if (global.resource_pack_sprite_enemy_bowlingball_blind_stomped > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_stomped;}
 		}
 		if (stomped_delay = 0)
 		{
@@ -398,13 +398,13 @@ if (flat = false)
 	
 	if (blind = true)
 	{
-		if (global.resourcepack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_walk;}else
-		if (global.resourcepack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_walk;}
+		if (global.resource_pack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_walk;}else
+		if (global.resource_pack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_walk;}
 	}
 	else
 	{
-		if (global.resourcepack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_walk;}else
-		if (global.resourcepack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resourcepack_sprite_enemy_bowlingball_blind_walk;}
+		if (global.resource_pack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_walk;}else
+		if (global.resource_pack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_walk;}
 	}
 	image_speed = 0.3;
 }

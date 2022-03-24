@@ -21,29 +21,29 @@ menu_cursor_index = 0;
 #region /*Change the logo to different designs during specific times and dates*/
 if (current_month = 12)
 {
-	if (global.resourcepack_sprite_title_logo_christmas > noone)
+	if (global.resource_pack_sprite_title_logo_christmas > noone)
 	{
-		sprite_index = global.resourcepack_sprite_title_logo_christmas;
+		sprite_index = global.resource_pack_sprite_title_logo_christmas;
 	}
 	else
-	if (global.resourcepack_sprite_title_logo > noone)
+	if (global.title_logo_index > noone)
 	{
-		sprite_index = global.resourcepack_sprite_title_logo;
+		sprite_index = global.title_logo_index;
 	}
 	else
 	{
-		sprite_index = spr_wall;
+		sprite_index = spr_noone;
 	}
 }
 else
 {
-	if (global.resourcepack_sprite_title_logo > noone)
+	if (global.title_logo_index > noone)
 	{
-		sprite_index = global.resourcepack_sprite_title_logo;
+		sprite_index = global.title_logo_index;
 	}
 	else
 	{
-		sprite_index = spr_wall;
+		sprite_index = spr_noone;
 	}
 }
 #endregion /*Change the logo to different designs during specific times and dates END*/

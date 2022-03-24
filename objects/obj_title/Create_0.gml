@@ -70,12 +70,12 @@ if (!directory_exists(working_directory + "/custom_levels"))
 }
 #endregion /*Create directory for saving custom levels END*/
 
-#region /*Create directory for saving custom resourcepacks*/
-if (!directory_exists(working_directory + "/custom_resourcepacks"))
+#region /*Create directory for saving custom resource_pack*/
+if (!directory_exists(working_directory + "/custom_resource_pack"))
 {
-	directory_create(working_directory + "/custom_resourcepacks");
+	directory_create(working_directory + "/custom_resource_pack");
 }
-#endregion /*Create directory for saving custom resourcepacks END*/
+#endregion /*Create directory for saving custom resource_pack END*/
 
 #region /*Create directory for saving custom title backgrounds*/
 if (!directory_exists(working_directory + "/custom_title_backgrounds"))
@@ -757,7 +757,7 @@ remap_y_pos = 0;
 version_y_pos = 0;
 menu_cursor_index = 0;
 in_settings = false;
-old_selected_resource_pack = global.selected_resourcepack;
+old_selected_resource_pack = global.selected_resource_pack;
 can_navigate_settings_sidebar = true;
 navigate_slider = false;
 menu_remap_key_number = 0;
@@ -814,14 +814,14 @@ if (asset_get_type("snd_slip_ice") == asset_sound)
 #endregion /*Stop certain sounds from playing on the title screen END*/
 
 #region /*Update Music*/
-if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/music/title_screen.ogg"))
+if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/music/title_screen.ogg"))
 {
-	title_music = audio_create_stream("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/music/title_screen.ogg");
+	title_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/music/title_screen.ogg");
 }
 else
-if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/music/title_screen.ogg"))
+if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/music/title_screen.ogg"))
 {
-	title_music = audio_create_stream(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/music/title_screen.ogg");
+	title_music = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/music/title_screen.ogg");
 }
 else
 {

@@ -17,7 +17,7 @@ global.character_clothes_customization = false; /*If this is true, you can costu
 global.character_color_select = false; /*If this is true, you can choose the character's color in the menu*/
 global.select_number_of_players_before_selecting_characters = false; /*If you should select how many players are going to play before you select what character to play as*/
 global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters! 1 = default*/
-global.max_number_of_official_resourcepacks = 1; /*Update this whenever you add more official resource packs! 1 = default*/
+global.max_number_of_official_resource_pack = 1; /*Update this whenever you add more official resource packs! 1 = default*/
 global.max_number_of_official_title_backgrounds = 2; /*Update this whenever you add more official title backgrounds! 1 = default, but more title backgrounds can be added, for example: 1 = light theme, 2 = dark theme*/
 
 #region /*What settings tabs to show up*/
@@ -128,14 +128,17 @@ if (file_exists(working_directory + "custom_levels/*.zip"))
 
 view_hview_lerp = 0;
 view_wview_lerp = 0;
+sprite_splash_easteregg_yoffset = +128;
 window_set_cursor(cr_none);
 global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 ds_list_add(global.all_loaded_custom_levels, "");
 load_ok = 0;
 initialized_characters = false;
+initialized_resource_pack = false;
 initialized_title_backgrounds = false;
 initialized_title_logos = false;
 global.all_loaded_characters = ds_list_create();
+global.all_loaded_resource_pack = ds_list_create();
 global.all_loaded_title_backgrounds = ds_list_create();
 global.all_loaded_title_logos = ds_list_create();
 global.title_logo_index = spr_noone;
@@ -206,7 +209,7 @@ global.sprite_select_player_1 = noone;
 global.sprite_select_player_2 = noone;
 global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
-global.selected_resourcepack = 0; /* 0 = default*/
+global.selected_resource_pack = 0; /* 0 = default*/
 global.selected_title_background = 0; /* 0 = default*/
 switch (os_get_language())
 {
@@ -521,46 +524,45 @@ or (global.language_localization < 0)
 }
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
-global.resourcepack_sprite_tileset_default = spr_wall;
-global.resourcepack_sprite_tileset_dirt = spr_wall;
-global.resourcepack_sprite_tileset_glass = spr_wall;
-global.resourcepack_sprite_tileset_grass = spr_wall;
-global.resourcepack_sprite_tileset_gravel = spr_wall;
-global.resourcepack_sprite_tileset_metal = spr_wall;
-global.resourcepack_sprite_tileset_stone = spr_wall;
-global.resourcepack_sprite_tileset_wood = spr_wall;
-global.resourcepack_sprite_title_logo = spr_wall;
-global.resourcepack_sprite_title_logo_christmas = spr_wall;
-global.resourcepack_sprite_artwork_collection = spr_wall;
-global.resourcepack_sprite_basic_collectible = spr_wall;
-global.resourcepack_sprite_big_collectible = spr_wall;
-global.resourcepack_sprite_big_collectible_outline = spr_wall;
-global.resourcepack_sprite_bullet = spr_wall;
-global.resourcepack_sprite_bullet_flattened = spr_wall;
-global.resourcepack_sprite_blaster = spr_wall;
-global.resourcepack_sprite_basic_enemy = spr_wall;
-global.resourcepack_sprite_basic_enemy_blind = spr_wall;
-global.resourcepack_sprite_basic_enemy_angry = spr_wall;
-global.resourcepack_sprite_basic_enemy_flattened = spr_wall;
-global.resourcepack_sprite_enemy_bowlingball_walk = spr_wall;
-global.resourcepack_sprite_enemy_bowlingball_stomped = spr_wall;
-global.resourcepack_sprite_enemy_bowlingball_revive = spr_wall;
-global.resourcepack_sprite_enemy_bowlingball_blind_walk = spr_wall;
-global.resourcepack_sprite_enemy_bowlingball_blind_stomped = spr_wall;
-global.resourcepack_sprite_enemy_bowlingball_blind_revive = spr_wall;
-global.resourcepack_sprite_bowlingball = spr_wall;
-global.resourcepack_sprite_bowlingball_shine = spr_wall;
-global.resourcepack_sprite_coil_spring = spr_wall;
-global.resourcepack_sprite_big_stationary_enemy = spr_wall;
-global.resourcepack_sprite_big_stationary_enemy_flattened = spr_wall;
-global.resourcepack_sprite_hp_pickup = spr_wall;
-global.resourcepack_sprite_invincibility_powerup = spr_wall;
-
-scr_load_resource_pack_sprite();
+global.resource_pack_sprite_splash_controller = spr_noone;
+global.resource_pack_sprite_splash_easteregg = spr_noone;
+global.resource_pack_sprite_tileset_default = spr_noone;
+global.resource_pack_sprite_tileset_dirt = spr_noone;
+global.resource_pack_sprite_tileset_glass = spr_noone;
+global.resource_pack_sprite_tileset_grass = spr_noone;
+global.resource_pack_sprite_tileset_gravel = spr_noone;
+global.resource_pack_sprite_tileset_metal = spr_noone;
+global.resource_pack_sprite_tileset_stone = spr_noone;
+global.resource_pack_sprite_tileset_wood = spr_noone;
+global.resource_pack_sprite_title_logo_christmas = spr_noone;
+global.resource_pack_sprite_artwork_collection = spr_noone;
+global.resource_pack_sprite_basic_collectible = spr_noone;
+global.resource_pack_sprite_big_collectible = spr_noone;
+global.resource_pack_sprite_big_collectible_outline = spr_noone;
+global.resource_pack_sprite_bullet = spr_noone;
+global.resource_pack_sprite_bullet_flattened = spr_noone;
+global.resource_pack_sprite_blaster = spr_noone;
+global.resource_pack_sprite_basic_enemy = spr_noone;
+global.resource_pack_sprite_basic_enemy_blind = spr_noone;
+global.resource_pack_sprite_basic_enemy_angry = spr_noone;
+global.resource_pack_sprite_basic_enemy_flattened = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_walk = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_stomped = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_revive = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_blind_walk = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_blind_stomped = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_blind_revive = spr_noone;
+global.resource_pack_sprite_bowlingball = spr_noone;
+global.resource_pack_sprite_bowlingball_shine = spr_noone;
+global.resource_pack_sprite_coil_spring = spr_noone;
+global.resource_pack_sprite_big_stationary_enemy = spr_noone;
+global.resource_pack_sprite_big_stationary_enemy_flattened = spr_noone;
+global.resource_pack_sprite_hp_pickup = spr_noone;
+global.resource_pack_sprite_invincibility_powerup = spr_noone;
 #endregion /*Resource Packs END*/
 
-company_splash = noone;
-controller_splash = noone;
+company_splash = spr_noone;
+controller_splash = spr_noone;
 
 #region /*Interpolation*/
 if (global.interpolate = true)
@@ -573,164 +575,6 @@ else
 	gpu_set_texfilter(false);
 }
 #endregion /*Interpolation END*/
-
-sprite_splash_easteregg_yoffset = +128;
-
-if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini"))
-or(file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini"))
-{
-	
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini"))
-	{
-		ini_open("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini");
-	}
-	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini"))
-	{
-		ini_open(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini");
-	}
-	
-	#region /*Splash Controller*/
-	file_name = "splash_controller";
-	
-	#region /*x origin point*/
-	if (ini_key_exists("sprite origin points", file_name + "_xorig"))
-	{
-		xorig_variable = ini_read_real("sprite origin points", file_name + "_xorig", 0);
-	}
-	else
-	{
-		xorig_variable = 0;
-	}
-	#endregion /*x origin point END*/
-	
-	#region /*y origin point*/
-	if (ini_key_exists("sprite origin points", file_name + "_yorig"))
-	{
-		yorig_variable = ini_read_real("sprite origin points", file_name + "_yorig", 0);
-	}
-	else
-	{
-		yorig_variable = 0;
-	}
-	#endregion /*y origin point END*/
-	
-	#region /*Sprite Add*/
-	sprite_splash_controller = noone;
-	index = 0
-	repeat(50)
-	{
-		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/" + file_name + "_strip" + string(index) + ".png"))
-		{
-			sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/" + file_name + "_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
-		}
-		else
-		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/" + file_name + "_strip" + string(index) + ".png"))
-		{
-			sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/" + file_name + "_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
-		}
-		index += 1
-	}
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/" + file_name + ".png"))
-	{
-		sprite_splash_controller = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/" + file_name + ".png", 1, false, false, xorig_variable, yorig_variable);
-	}
-	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/" + file_name + ".png"))
-	{
-		sprite_splash_controller = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/" + file_name + ".png", 1, false, false, xorig_variable, yorig_variable);
-	}
-	#endregion /*Sprite Add END*/
-	
-	#endregion /*Splash Controller END*/
-	
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini"))
-	{
-		ini_open("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/data/sprite_origin_point.ini");
-	}
-	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini"))
-	{
-		ini_open(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/data/sprite_origin_point.ini");
-	}
-	
-	#region /*Splash Easteregg*/
-	file_name = "splash_easteregg";
-	
-	#region /*x origin point*/
-	if (ini_key_exists("sprite origin points", file_name + "_xorig"))
-	{
-		xorig_variable = ini_read_real("sprite origin points", file_name + "_xorig", 0);
-	}
-	else
-	{
-		xorig_variable = 0;
-	}
-	#endregion /*x origin point END*/
-	
-	#region /*y origin point*/
-	if (ini_key_exists("sprite origin points", file_name + "_yorig"))
-	{
-		yorig_variable = ini_read_real("sprite origin points", file_name + "_yorig", 0);
-	}
-	else
-	{
-		yorig_variable = 0;
-	}
-	#endregion /*y origin point END*/
-	
-	#region /*Sprite Add*/
-	sprite_splash_easteregg = noone;
-	index = 0
-	repeat(50)
-	{
-		if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/" + file_name + "_strip" + string(index) + ".png"))
-		{
-			sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/" + file_name + "_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
-		}
-		else
-		if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/" + file_name + "_strip" + string(index) + ".png"))
-		{
-			sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/" + file_name + "_strip" + string(index) + ".png", index, false, false, xorig_variable, yorig_variable);
-		}
-		index += 1
-	}
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/" + file_name + ".png"))
-	{
-		sprite_splash_easteregg = sprite_add("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sprites/" + file_name + ".png", 1, false, false, xorig_variable, yorig_variable);
-	}
-	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/" + file_name + ".png"))
-	{
-		sprite_splash_easteregg = sprite_add(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sprites/" + file_name + ".png", 1, false, false, xorig_variable, yorig_variable);
-	}
-	#endregion /*Sprite Add END*/
-	
-	#endregion /*Splash Easteregg END*/
-	
-}
-
-if (directory_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sound"))
-or(directory_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sound"))
-{
-	
-	#region /*Sound Add*/
-	if (file_exists("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sound/splash_easteregg.ogg"))
-	{
-		audio_splash_easteregg = audio_create_stream("resourcepacks/resourcepack" + string(global.selected_resourcepack) + "/sound/splash_easteregg.ogg");
-	}
-	else
-	if (file_exists(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sound/splash_easteregg.ogg"))
-	{
-		audio_splash_easteregg = audio_create_stream(working_directory + "/custom_resourcepacks/resourcepack" + string(global.selected_resourcepack-global.max_number_of_official_resourcepacks) + "/sound/splash_easteregg.ogg");
-	}
-	else
-	{
-		sprite_splash_easteregg = noone;
-	}
-	#endregion /*Sound Add END*/
-	
-}
 
 can_navigate = false;
 file_load_timer = 0;

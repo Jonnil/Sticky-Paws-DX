@@ -1,4 +1,4 @@
-sprite_index = global.resourcepack_sprite_basic_collectible;
+sprite_index = global.resource_pack_sprite_basic_collectible;
 
 if (bounceup = false)
 {

@@ -60,9 +60,9 @@ else
 
 if (hold_item_in_hands = "enemy_bowlingball")
 {
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
-	draw_sprite_ext(global.resourcepack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
 	if (image_xscale < 0)
 	{
 		angle = 0;

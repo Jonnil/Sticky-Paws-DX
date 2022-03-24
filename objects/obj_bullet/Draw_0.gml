@@ -24,7 +24,7 @@ or(die_volting = +1)
 	gravity = 0.5; /*The gravity*/
 	#endregion /*Set the gravity END*/
 	
-	sprite_index = global.resourcepack_sprite_bullet;
+	sprite_index = global.resource_pack_sprite_bullet;
 }
 else
 {
@@ -33,7 +33,7 @@ else
 		/*Set the gravity*/
 		gravity_direction = 270; /*Direction of the gravity*/
 		gravity = 0; /*The gravity*/
-		sprite_index = global.resourcepack_sprite_bullet;
+		sprite_index = global.resource_pack_sprite_bullet;
 	}
 	else
 	if (flat = true)
@@ -41,7 +41,7 @@ else
 		gravity_direction = 270; /*Direction of the gravity*/
 		gravity = 0.5; /*The gravity*/
 		image_speed = 0.5;
-		sprite_index = global.resourcepack_sprite_bullet_flattened;
+		sprite_index = global.resource_pack_sprite_bullet_flattened;
 		if (image_index > image_number - 1)
 		{
 			effect_create_above(ef_smoke, x, y, 2, c_white);

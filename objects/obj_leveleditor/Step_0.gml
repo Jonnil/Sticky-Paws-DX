@@ -134,7 +134,7 @@ or(window_get_width() != old_window_get_width)
 #region /*Play Level when pressing Enter Key*/
 if (keyboard_check_pressed(vk_enter))
 or(gamepad_button_check_pressed(0, gp_select))
-or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32))
+or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x -32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 and (mouse_check_button_pressed(mb_left))
 or (global.full_level_map_screenshot = true)
 {
@@ -258,7 +258,7 @@ or (global.full_level_map_screenshot = true)
 			global.actually_play_edited_level = false;
 			global.play_edited_level = true;
 			global.character_select_in_this_menu = "level_editor";
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x -32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 			or (global.full_level_map_screenshot = true)
 			{
 				instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_camera);

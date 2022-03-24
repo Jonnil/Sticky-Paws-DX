@@ -33,9 +33,9 @@ draw_set_valign(fa_center);
 /*Sprite*/
 draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_height() / 2, 1, 1, 0, c_white, 1);
 
-if (sprite_splash_easteregg > noone)
+if (global.resource_pack_sprite_splash_easteregg >= 0)
 {
-	draw_sprite_ext(sprite_splash_easteregg, image_index, + 128, window_get_height() + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(global.resource_pack_sprite_splash_easteregg, image_index, + 128, window_get_height() + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
 }
 
 if (gamepad_button_check_pressed(0, gp_face4))
@@ -61,9 +61,9 @@ and (sprite_index = spr_company_logo)
 	and (!gamepad_is_connected(2))
 	and (!gamepad_is_connected(3))
 	{
-		if (sprite_splash_controller > noone)
+		if (global.resource_pack_sprite_splash_controller >= 0)
 		{
-			sprite_index = sprite_splash_controller;
+			sprite_index = global.resource_pack_sprite_splash_controller;
 		}
 		else
 		{
@@ -95,8 +95,8 @@ and (sprite_index = spr_company_logo)
 	image_index = image_number - 2;
 }
 
-if (sprite_splash_controller > noone)
-and (sprite_index = sprite_splash_controller)
+if (global.resource_pack_sprite_splash_controller > noone)
+and (sprite_index = global.resource_pack_sprite_splash_controller)
 {
 	if (!audio_is_playing(controller_splash))
 	{

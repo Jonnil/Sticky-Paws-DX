@@ -626,6 +626,21 @@
 	#endregion /*Show undo and redo icons to the right of screen END*/
 	
 	#region /*Level Editor Icons*/
+	
+	#region /*Play Level Button*/
+	draw_sprite_ext(spr_menu_button_play, 0, play_level_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x -32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+	and (show_icons_at_bottom = true)
+	and (pause = false)
+	{
+		tooltip = Text("Play level");
+		show_tooltip += 2;
+		draw_set_alpha(0.5);
+		draw_rectangle_color(play_level_icon_x -32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64, c_white, c_white, c_white, c_white, false);
+		draw_set_alpha(1);
+	}
+	#endregion /*Play Level Button END*/
+	
 	if (asset_get_type("spr_leveleditor_icons") == asset_sprite)
 	{
 		
@@ -1102,63 +1117,6 @@
 		#endregion /*Set difficulty layer END*/
 		
 		#region /*Show icons at top of screen*/
-		if (erase_mode = true)
-		and (pause = false)
-		{
-			erase_icons_at_top_y = lerp(erase_icons_at_top_y, - 1, 0.1);
-		}
-		else
-		{
-			erase_icons_at_top_y = lerp(erase_icons_at_top_y, - 100, 0.1);
-		}
-		if (erase_brush_size = 5)
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 11, + 32, + 32 + erase_icons_at_top_y, 1, 1, 0, c_white, icons_at_top_alpha);
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 11, + 32, + 32 + erase_icons_at_top_y, 1, 1, 0, c_dkgray, icons_at_top_alpha);
-		}
-		if (erase_brush_size = 4)
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 10, +96, + 32 + erase_icons_at_top_y, 1, 1, 0, c_white, icons_at_top_alpha);
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 10, +96, + 32 + erase_icons_at_top_y, 1, 1, 0, c_dkgray, icons_at_top_alpha);
-		}
-		if (erase_brush_size = 3)
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 9, + 160, + 32 + erase_icons_at_top_y, 1, 1, 0, c_white, icons_at_top_alpha);
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 9, + 160, + 32 + erase_icons_at_top_y, 1, 1, 0, c_dkgray, icons_at_top_alpha);
-		}
-		if (erase_brush_size = 2)
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 8, + 224, + 32 + erase_icons_at_top_y, 1, 1, 0, c_white, icons_at_top_alpha);
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 8, + 224, + 32 + erase_icons_at_top_y, 1, 1, 0, c_dkgray, icons_at_top_alpha);
-		}
-		if (erase_brush_size = 1)
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 7, + 288, + 32 + erase_icons_at_top_y, 1, 1, 0, c_white, icons_at_top_alpha);
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 7, + 288, + 32 + erase_icons_at_top_y, 1, 1, 0, c_dkgray, icons_at_top_alpha);
-		}
-		if (erase_brush_size = 0)
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 6, + 352, + 32 + erase_icons_at_top_y, 1, 1, 0, c_white, icons_at_top_alpha);
-		}
-		else
-		{
-			draw_sprite_ext(spr_leveleditor_icons, 6, + 352, + 32 + erase_icons_at_top_y, 1, 1, 0, c_dkgray, icons_at_top_alpha);
-		}
 		if (show_icons_at_top = true)
 		{
 			if (asset_get_type("spr_cursor") == asset_sprite)
@@ -1196,14 +1154,14 @@
 					draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, Text("Default grid size!"), global.default_text_size * 0.5, c_black, c_white, 1);
 				}
 				draw_sprite_ext(spr_menu_button_up_down, 0, display_get_gui_width() - 32, 80 + icons_at_top_y + 16, 1, 1, 0, c_white, 1);
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() - 32 + 16, 80 + icons_at_top_y + 16))
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32 + 2, display_get_gui_width() + 64, 80 + icons_at_top_y + 16))
 				and (mouse_check_button_pressed(mb_left))
 				{
 					global.grid_hsnap += 1;
 					global.grid_vsnap += 1;
 				}
 				else
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16, display_get_gui_width() - 32 + 16, 80 + icons_at_top_y + 16 + 32))
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32))
 				and (mouse_check_button_pressed(mb_left))
 				{
 					if (global.grid_hsnap > 1)
@@ -1407,72 +1365,7 @@
 	#endregion /*Click icons at bottom of screen END*/
 
 	#region /*Click icons at top of screen*/
-
-	#region /*Erase 6*/
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, - 64, + 64, + 64))
-	and (erase_mode = true)
-	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
-	{
-		erase_brush_size = 5;
-	}
-	#endregion /*Erase 6 END*/
-
-	#region /*Erase 5*/
-	else
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 64, - 64, + 128, + 64))
-	and (erase_mode = true)
-	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
-	{
-		erase_brush_size = 4;
-	}
-	#endregion /*Erase 6 END*/
-
-	#region /*Erase 4 */
-	else
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 128, - 64, + 192, + 64))
-	and (erase_mode = true)
-	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
-	{
-		erase_brush_size = 3;
-	}
-	#endregion /*Erase 4 END*/
-
-	#region /*Erase 3*/
-	else
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 192, - 64, + 256, + 64))
-	and (erase_mode = true)
-	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
-	{
-		erase_brush_size = 2;
-	}
-	#endregion /*Erase 3 END*/
-
-	#region /*Erase 2*/
-	else
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 256, - 64, + 320, + 64))
-	and (erase_mode = true)
-	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
-	{
-		erase_brush_size = 1;
-	}
-	#endregion /*Erase 2 END*/
-
-	#region /*Erase 1*/
-	else
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), + 320, - 64, + 384, + 64))
-	and (erase_mode = true)
-	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
-	{
-		erase_brush_size = 0;
-	}
-	#endregion /*Erase 1 END*/
-
+	
 	#region /*Toggle Grid*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width() - 192, + 64))
 	and (show_icons_at_top = true)
@@ -1552,19 +1445,6 @@
 	#endregion /*Zoom In END*/
 
 	#endregion /*Click icons at top of screen END*/
-	
-	#region /*Play Level Button*/
-	if (pause = false)
-	{
-		draw_sprite_ext(spr_menu_button_play, 0, window_get_width() -32, window_get_height()/ 2, 1, 1, 0, c_white, 1);
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32))
-		{
-			draw_set_alpha(0.5);
-			draw_rectangle_color(window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
-		}
-	}
-	#endregion /*Play Level Button END*/
 	
 	scr_show_fps();
 	

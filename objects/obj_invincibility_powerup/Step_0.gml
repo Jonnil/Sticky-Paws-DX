@@ -1,4 +1,4 @@
-sprite_index = global.resourcepack_sprite_invincibility_powerup;
+sprite_index = global.resource_pack_sprite_invincibility_powerup;
 
 image_speed = 0.1;
 

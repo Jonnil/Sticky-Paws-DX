@@ -291,14 +291,14 @@ and (menu != "remap_save")
 #region /*Games Logo in top left corner*/
 
 if (current_month = 12)
-and (global.resourcepack_sprite_title_logo_christmas > noone)
+and (global.resource_pack_sprite_title_logo_christmas >= 0)
 {
-	draw_sprite_ext(global.resourcepack_sprite_title_logo_christmas, 0, 160, 100, 0.3, 0.3, 0, c_white, 1);
+	draw_sprite_ext(global.resource_pack_sprite_title_logo_christmas, 0, 160, 100, (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
 }
 else
-if (global.title_logo_index > noone)
+if (global.title_logo_index >= 0)
 {
-	draw_sprite_ext(global.title_logo_index, 0, 160, 100, 0.3, 0.3, 0, c_white, 1);
+	draw_sprite_ext(global.title_logo_index, 0, 160, 100, (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
 }
 #endregion /*Games Logo in top left corner END*/
 

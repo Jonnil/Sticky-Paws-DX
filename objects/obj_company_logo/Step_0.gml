@@ -77,9 +77,55 @@ if (can_navigate = false)
 	
 	else
 	
-	#region /*Load Title Backgrounds*/
+	#region /*Load Resource Packs*/
 	if (file_load_timer > 1)
 	and (load_ok = 1)
+	{
+		if (initialized_resource_pack = false)
+		{
+			scr_load_resource_pack_initializing();
+			initialized_resource_pack = true;
+		}
+		file_found = file_find_next()
+		if (file_found == "")
+		{
+			file_find_close();
+			
+			if (directory_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound"))
+			or(directory_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound"))
+			{
+				#region /*Sound Add*/
+				if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/splash_easteregg.ogg"))
+				{
+					audio_splash_easteregg = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/splash_easteregg.ogg");
+				}
+				else
+				if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/splash_easteregg.ogg"))
+				{
+					audio_splash_easteregg = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/splash_easteregg.ogg");
+				}
+				#endregion /*Sound Add END*/
+			}
+			scr_load_resource_pack_sprite();
+			load_ok = 2;
+		}
+		else
+		{
+			if (file_exists(working_directory + "custom_resource_pack/" + file_found + "data/sprite_origin_point.ini"))
+			{
+				ds_list_add(global.all_loaded_resource_pack, file_found)
+			}
+			
+			file_load_timer = 0; /* 1 not 0. So it doesn't do the file_find_first code which it does at 0*/
+		}
+	}
+	#endregion /*Load Resource Packs END*/
+	
+	else
+	
+	#region /*Load Title Backgrounds*/
+	if (file_load_timer > 1)
+	and (load_ok = 2)
 	{
 		if (initialized_title_backgrounds = false)
 		{
@@ -90,7 +136,7 @@ if (can_navigate = false)
 		if (file_found == "")
 		{
 			file_find_close();
-			load_ok = 2;
+			load_ok = 3;
 		}
 		else
 		{
@@ -108,7 +154,7 @@ if (can_navigate = false)
 	
 	#region /*Load Title Logo*/
 	if (file_load_timer > 1)
-	and (load_ok = 2)
+	and (load_ok = 3)
 	{
 		if (initialized_title_logos = false)
 		{
@@ -134,7 +180,7 @@ if (can_navigate = false)
 			{
 				global.title_logo_index = spr_noone;
 			}
-			load_ok = 3;
+			load_ok = 4;
 		}
 		else
 		{
@@ -150,7 +196,7 @@ if (can_navigate = false)
 	
 }
 
-if (load_ok = 3)
+if (load_ok >= 4)
 {
 	can_navigate = true;
 }

@@ -133,9 +133,9 @@ if (current_month = 12)
 	{
 		effect_create_below(ef_snow, 0, 0, 2, c_white); /*Make the title screen snow when it's between 24th and 26th December*/
 	}
-	if (global.resourcepack_sprite_title_logo_christmas > noone)
+	if (global.resource_pack_sprite_title_logo_christmas > noone)
 	{
-		title_logo_index = global.resourcepack_sprite_title_logo_christmas;
+		title_logo_index = global.resource_pack_sprite_title_logo_christmas;
 	}
 	else
 	if (global.title_logo_index > noone)
@@ -363,7 +363,7 @@ if (global.demo = true)
 
 #region /*Draw Title Screen*/
 if (global.title_logo_index > 0)
-or(global.resourcepack_sprite_title_logo_christmas > 0)
+or(global.resource_pack_sprite_title_logo_christmas > 0)
 {
 	if (global.title_logo_index >= 0)
 	and (global.title_logo_index != undefined)

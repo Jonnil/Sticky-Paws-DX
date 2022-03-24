@@ -1560,8 +1560,15 @@ and (delay > 1)
 					or(obj_leveleditor.set_difficulty_mode = false)
 					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 					{
-						drag_object = true;
-						obj_leveleditor.drag_object = true;
+						if (instance_exists(obj_leveleditor))
+						and (obj_leveleditor.show_grid = true)
+						and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + 32 + 16 - 32, display_get_gui_width() + 64, 80 + 32 + 16 + 32)) /*Up and down buttons when grid is on*/
+						or (instance_exists(obj_leveleditor))
+						and (obj_leveleditor.show_grid = false)
+						{
+							drag_object = true;
+							obj_leveleditor.drag_object = true;
+						}
 					}
 				}
 			}
@@ -1876,7 +1883,7 @@ if (object = 3) and (asset_get_type("spr_semisolid_platform") == asset_sprite){s
 
 #region /*Brick Block*/
 if (object = 4) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;mask_index = spr_wall;}
-if (object = 5) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 5) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 if (object = 6) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block; if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
 draw_set_font(font_default);
 if (object = 7) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block; if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);
@@ -1886,19 +1893,19 @@ draw_text_outlined(x, y, "2-up", global.default_text_size / 2, c_white, c_black,
 if (object = 9) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block; if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);
 draw_text_outlined(x, y, "3-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 scr_set_default_font();
-if (object = 10) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
-if (object = 10001) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 10) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 10001) and (asset_get_type("spr_brick_block") == asset_sprite){sprite_index = spr_brick_block;draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 #endregion /*Brick Block END*/
 
 #region /*Question Block*/
 if (object = 11) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;mask_index = spr_wall;}
-if (object = 12) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 12) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 if (object = 13) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block; if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
 if (object = 14) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block; if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 15) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block; if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 16) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block; if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 17) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
-if (object = 17001) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 17) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 17001) and (asset_get_type("spr_question_block") == asset_sprite){sprite_index = spr_question_block;draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 #endregion /*Question Block END*/
 
 if (object = 18) and (asset_get_type("spr_hard_block") == asset_sprite){sprite_index = spr_hard_block;mask_index = spr_wall;}
@@ -1918,7 +1925,7 @@ if (object = 27) and (asset_get_type("spr_cardboard_long") == asset_sprite){spri
 
 #region /*Bump in ground*/
 if (object = 28) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
-if (object = 29) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 29) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 if (object = 30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground; if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
 draw_set_font(font_default);
 if (object = 31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground; if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);
@@ -1928,40 +1935,40 @@ draw_text_outlined(x, y, "2-up", global.default_text_size / 2, c_white, c_black,
 if (object = 33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground; if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);
 draw_text_outlined(x, y, "3-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 scr_set_default_font();
-if (object = 34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 37) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 38) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 39) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
-if (object = 39001) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 37) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 38) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 39) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 39001) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 #endregion /*Bump in ground END*/
 
 #region /*Basic Collectible*/
-if (object = 40){sprite_index = global.resourcepack_sprite_basic_collectible;draw_angle = 0;draw_yscale = 1;mask_index = spr_wall;}
-if (object = 41){sprite_index = global.resourcepack_sprite_basic_collectible;draw_angle = 315;draw_yscale = 1;mask_index = spr_wall;}
-if (object = 42){sprite_index = global.resourcepack_sprite_basic_collectible;draw_angle = 270;draw_yscale = 1;mask_index = spr_wall;}
-if (object = 43){sprite_index = global.resourcepack_sprite_basic_collectible;draw_angle = 225;draw_yscale = -1;mask_index = spr_wall;}
-if (object = 44){sprite_index = global.resourcepack_sprite_basic_collectible;draw_angle = 180;draw_yscale = -1;mask_index = spr_wall;}
-if (object = 45){sprite_index = global.resourcepack_sprite_basic_collectible;draw_angle = 135;draw_yscale = -1;mask_index = spr_wall;}
-if (object = 46){sprite_index = global.resourcepack_sprite_basic_collectible;draw_angle = 90;draw_yscale = 1;mask_index = spr_wall;}
-if (object = 47){sprite_index = global.resourcepack_sprite_basic_collectible;draw_angle = 45;draw_yscale = 1;mask_index = spr_wall;}
+if (object = 40){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 0;draw_yscale = 1;mask_index = spr_wall;}
+if (object = 41){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 315;draw_yscale = 1;mask_index = spr_wall;}
+if (object = 42){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 270;draw_yscale = 1;mask_index = spr_wall;}
+if (object = 43){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 225;draw_yscale = -1;mask_index = spr_wall;}
+if (object = 44){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 180;draw_yscale = -1;mask_index = spr_wall;}
+if (object = 45){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 135;draw_yscale = -1;mask_index = spr_wall;}
+if (object = 46){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 90;draw_yscale = 1;mask_index = spr_wall;}
+if (object = 47){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 45;draw_yscale = 1;mask_index = spr_wall;}
 #endregion /*Basic Collectible END*/
 
 #region /*Big Collectibles*/
 draw_set_font(font_default);
-if (object = 48){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
-if (object = 49){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
-if (object = 50){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
-if (object = 51){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
-if (object = 52){sprite_index = global.resourcepack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
+if (object = 48){sprite_index = global.resource_pack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
+if (object = 49){sprite_index = global.resource_pack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
+if (object = 50){sprite_index = global.resource_pack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
+if (object = 51){sprite_index = global.resource_pack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
+if (object = 52){sprite_index = global.resource_pack_sprite_big_collectible;draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_2x2_block;}
 scr_set_default_font();
 #endregion /*Big Collectibles END*/
 
 if (object = 53) and (asset_get_type("spr_heart") == asset_sprite){sprite_index = spr_heart;mask_index = spr_wall;}
-if (object = 54){sprite_index = global.resourcepack_sprite_hp_pickup;mask_index = spr_wall;}
-if (object = 55){draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 1, 1, 0, c_white, image_alpha);sprite_index = noone;mask_index = spr_wall;}
-if (object = 55001){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 16, 1, 1, 0, c_white, image_alpha);draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 1, 1, 0, c_white, image_alpha);sprite_index = noone;mask_index = spr_wall;}
+if (object = 54){sprite_index = global.resource_pack_sprite_hp_pickup;mask_index = spr_wall;}
+if (object = 55){draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 1, 1, 0, c_white, image_alpha);sprite_index = noone;mask_index = spr_wall;}
+if (object = 55001){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 1, 1, 0, c_white, image_alpha);draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 1, 1, 0, c_white, image_alpha);sprite_index = noone;mask_index = spr_wall;}
 if (object = 56) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_white, image_alpha);sprite_index = sprite_lives_icon;draw_set_halign(fa_center);draw_set_valign(fa_center);
 draw_set_font(font_default);
 draw_text_outlined(x, y, "1-up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
@@ -1971,15 +1978,15 @@ if (object = 58) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_ic
 draw_text_outlined(x, y, "3-up", global.default_text_size / 2, image_blend, c_black, image_alpha);mask_index = spr_wall;}
 scr_set_default_font();
 if (object = 59){sprite_index = sprite_basic_enemy;mask_index = spr_wall;}
-if (object = 5901){sprite_index = sprite_basic_enemy; if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
+if (object = 5901){sprite_index = sprite_basic_enemy; if (global.resource_pack_sprite_coil_spring > noone){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
 if (object = 5902){sprite_index = sprite_basic_enemy_blind;mask_index = spr_wall;}
-if (object = 5903){sprite_index = sprite_basic_enemy_blind; if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
+if (object = 5903){sprite_index = sprite_basic_enemy_blind; if (global.resource_pack_sprite_coil_spring > noone){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
 if (object = 591){sprite_index = sprite_enemy_bowlingball;mask_index = spr_wall;}
-if (object = 592){sprite_index = sprite_enemy_bowlingball; if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
+if (object = 592){sprite_index = sprite_enemy_bowlingball; if (global.resource_pack_sprite_coil_spring > noone){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
 if (object = 5911){sprite_index = sprite_enemy_bowlingball_blind;mask_index = spr_wall;}
-if (object = 5912){sprite_index = sprite_enemy_bowlingball_blind; if (global.resourcepack_sprite_coil_spring > noone){draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
+if (object = 5912){sprite_index = sprite_enemy_bowlingball_blind; if (global.resource_pack_sprite_coil_spring > noone){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);mask_index = spr_wall;}}
 if (object = 60){sprite_index = sprite_big_stationary_enemy;mask_index = spr_wall;}
-if (object = 61){sprite_index = global.resourcepack_sprite_blaster;mask_index = spr_wall;}
+if (object = 61){sprite_index = global.resource_pack_sprite_blaster;mask_index = spr_wall;}
 if (object = 62) and (asset_get_type("spr_spring") == asset_sprite){sprite_index = spr_spring;mask_index = spr_wall;}
 if (object = 63) and (asset_get_type("spr_ladder") == asset_sprite){sprite_index = spr_ladder;mask_index = spr_wall;}
 
@@ -2019,18 +2026,18 @@ if (object = 76) and (asset_get_type("spr_clipped_sock") == asset_sprite){sprite
 
 #region /*Bucket*/
 if (object = 77) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;mask_index = spr_wall;}
-if (object = 78) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 78) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 if (object = 79) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket; if (asset_get_type("spr_heart") == asset_sprite){draw_sprite_ext(spr_heart, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}mask_index = spr_wall;}
 if (object = 80) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket; if (asset_get_type("spr_1up") == asset_sprite){draw_sprite_ext(spr_1up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 81) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket; if (asset_get_type("spr_2up") == asset_sprite){draw_sprite_ext(spr_2up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
 if (object = 82) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket; if (asset_get_type("spr_3up") == asset_sprite){draw_sprite_ext(spr_3up, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3-up", global.default_text_size / 2, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 83) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 84) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 85) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 86) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 87) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
-if (object = 88) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
-if (object = 88001) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resourcepack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resourcepack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 83) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "1", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 84) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "2", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 85) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "3", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 86) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 87) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y, 0.4, 0.4, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);mask_index = spr_wall;}
+if (object = 88) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
+if (object = 88001) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);mask_index = spr_wall;}
 #endregion /*Bucket END*/
 
 if (object = 89) and (asset_get_type("spr_bird") == asset_sprite){sprite_index = spr_bird;mask_index = spr_wall;}

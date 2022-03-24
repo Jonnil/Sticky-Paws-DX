@@ -11,11 +11,11 @@ mx = mouse_x;
 my = mouse_y;
 #endregion /*Mouse x and mouse y initializing END*/
 
-sprite_basic_enemy = global.resourcepack_sprite_basic_enemy;
-sprite_basic_enemy_blind = global.resourcepack_sprite_basic_enemy_blind;
-sprite_enemy_bowlingball = global.resourcepack_sprite_enemy_bowlingball_walk;
-sprite_enemy_bowlingball_blind = global.resourcepack_sprite_enemy_bowlingball_blind_walk;
-sprite_big_stationary_enemy = global.resourcepack_sprite_big_stationary_enemy;
+sprite_basic_enemy = global.resource_pack_sprite_basic_enemy;
+sprite_basic_enemy_blind = global.resource_pack_sprite_basic_enemy_blind;
+sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
+sprite_enemy_bowlingball_blind = global.resource_pack_sprite_enemy_bowlingball_blind_walk;
+sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
 
 #region /*Lives Icon*/
 if (global.player1_can_play = true)
@@ -160,7 +160,7 @@ menu_joystick_delay = 0;
 pause = false;
 menu_cursor_index = 0;
 in_settings = false;
-old_selected_resource_pack = global.selected_resourcepack;
+old_selected_resource_pack = global.selected_resource_pack;
 can_navigate_settings_sidebar = true;
 navigate_slider = false;
 menu = "continue";
@@ -194,10 +194,11 @@ broadcast_settings_y = 40 * 16;
 how_to_play_y = 40 * 17;
 left_sidebar_x =-400;
 
-place_brush_icon_x = 32;
-erase_icon_x = 96;
-fill_icon_x = 160;
-always_show_level_editor_buttons_x = 224;
+play_level_icon_x = 32;
+place_brush_icon_x = 96;
+erase_icon_x = 160;
+fill_icon_x = 224;
+always_show_level_editor_buttons_x = 288;
 
 screenie_x = 0;
 screenie_y = 0;

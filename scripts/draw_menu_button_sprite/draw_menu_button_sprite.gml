@@ -35,7 +35,10 @@ function draw_menu_button_sprite()
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
 		menu = menu_index;
-		draw_sprite_ext(spr_index, 0, x_position, y_position + 21, 1, 1, 0, c_lime, 1);
+		if (spr_index >= 0)
+		{
+			draw_sprite_ext(spr_index, 0, x_position, y_position + 21, 1, 1, 0, c_lime, 1);
+		}
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		draw_text_outlined(x_position + (spr_width / 2), y_position + (spr_height / 2), string(string_text), global.default_text_size, c_black, c_white, 1); /*White text inside the menu button*/
@@ -44,7 +47,10 @@ function draw_menu_button_sprite()
 	}
 	else
 	{
-		draw_sprite_ext(spr_index, 0, x_position, y_position + 21, 1, 1, 0, c_white, 1);
+		if (spr_index >= 0)
+		{
+			draw_sprite_ext(spr_index, 0, x_position, y_position + 21, 1, 1, 0, c_white, 1);
+		}
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		draw_text_outlined(x_position + (spr_width / 2), y_position + (spr_height / 2), string(string_text), global.default_text_size, c_white, c_black, 1); /*Black text inside the menu button*/

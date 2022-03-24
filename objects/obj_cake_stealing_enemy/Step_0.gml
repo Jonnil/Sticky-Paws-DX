@@ -38,13 +38,13 @@ if (cutscene = 0)
 	{
 		if (place_meeting(x + 1, y, obj_wall))
 		{
-			sprite_index = global.resourcepack_sprite_basic_enemy;
+			sprite_index = global.resource_pack_sprite_basic_enemy;
 			hspeed = 0;
 			image_xscale = -1;
 		}
 		else
 		{
-			sprite_index = global.resourcepack_sprite_basic_enemy_angry;
+			sprite_index = global.resource_pack_sprite_basic_enemy_angry;
 			hspeed = +7;
 			image_xscale = +1;
 			visible = true;
@@ -73,7 +73,7 @@ if (cutscene = 1) /*When placed in level, use this cutscene value*/
 	}
 	if (place_meeting(x + 1, y, obj_wall))
 	{
-		sprite_index = global.resourcepack_sprite_basic_enemy;
+		sprite_index = global.resource_pack_sprite_basic_enemy;
 		hspeed = 0;
 		image_xscale = -1;
 	}
@@ -81,7 +81,7 @@ if (cutscene = 1) /*When placed in level, use this cutscene value*/
 	if (time >= 1)
 	and (!place_meeting(x + 1, y, obj_wall))
 	{
-		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
+		sprite_index = global.resource_pack_sprite_basic_enemy_angry;
 		hspeed = +12;
 		image_xscale = +1;
 	}
@@ -92,7 +92,7 @@ if (cutscene = 2)
 	time += 1;
 	if (place_meeting(x + 1, y, obj_wall))
 	{
-		sprite_index = global.resourcepack_sprite_basic_enemy;
+		sprite_index = global.resource_pack_sprite_basic_enemy;
 		hspeed = 0;
 		image_xscale = -1;
 	}
@@ -100,7 +100,7 @@ if (cutscene = 2)
 	if (time >= room_speed* 2)
 	and (!place_meeting(x + 1, y, obj_wall))
 	{
-		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
+		sprite_index = global.resource_pack_sprite_basic_enemy_angry;
 		hspeed = +7;
 		image_xscale = +1;
 	}

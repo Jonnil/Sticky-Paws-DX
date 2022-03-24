@@ -63,7 +63,7 @@ else
 		speed = 0;
 		image_speed = 0.5;
 		sprite_used = "flattened";
-		if (global.resourcepack_sprite_basic_enemy_flattened > noone){sprite_index = global.resourcepack_sprite_basic_enemy_flattened;}
+		if (global.resource_pack_sprite_basic_enemy_flattened > noone){sprite_index = global.resource_pack_sprite_basic_enemy_flattened;}
 		if (image_index > image_number - 1)
 		{
 		effect_create_above(ef_smoke, x, y, 2, c_white);
@@ -76,16 +76,16 @@ if (flat = false)
 	if (distance_to_object(obj_player) <256)
 	{
 		sprite_used = "angry";
-		sprite_index = global.resourcepack_sprite_basic_enemy_angry;
+		sprite_index = global.resource_pack_sprite_basic_enemy_angry;
 		if (blind = true)
 		{
-			if (global.resourcepack_sprite_basic_enemy_blind > noone){sprite_index = global.resourcepack_sprite_basic_enemy_blind;}else
-			if (global.resourcepack_sprite_basic_enemy_angry > noone){sprite_index = global.resourcepack_sprite_basic_enemy_angry;}
+			if (global.resource_pack_sprite_basic_enemy_blind > noone){sprite_index = global.resource_pack_sprite_basic_enemy_blind;}else
+			if (global.resource_pack_sprite_basic_enemy_angry > noone){sprite_index = global.resource_pack_sprite_basic_enemy_angry;}
 		}
 		else
 		{
-			if (global.resourcepack_sprite_basic_enemy_angry > noone){sprite_index = global.resourcepack_sprite_basic_enemy_angry;}else
-			if (global.resourcepack_sprite_basic_enemy_blind > noone){sprite_index = global.resourcepack_sprite_basic_enemy_blind;}
+			if (global.resource_pack_sprite_basic_enemy_angry > noone){sprite_index = global.resource_pack_sprite_basic_enemy_angry;}else
+			if (global.resource_pack_sprite_basic_enemy_blind > noone){sprite_index = global.resource_pack_sprite_basic_enemy_blind;}
 		}
 	}
 	else
@@ -93,13 +93,13 @@ if (flat = false)
 		sprite_used = "stand";
 		if (blind = true)
 		{
-			if (global.resourcepack_sprite_basic_enemy_blind > noone){sprite_index = global.resourcepack_sprite_basic_enemy_blind;}else
-			if (global.resourcepack_sprite_basic_enemy > noone){sprite_index = global.resourcepack_sprite_basic_enemy;}
+			if (global.resource_pack_sprite_basic_enemy_blind > noone){sprite_index = global.resource_pack_sprite_basic_enemy_blind;}else
+			if (global.resource_pack_sprite_basic_enemy > noone){sprite_index = global.resource_pack_sprite_basic_enemy;}
 		}
 		else
 		{
-			if (global.resourcepack_sprite_basic_enemy > noone){sprite_index = global.resourcepack_sprite_basic_enemy;}else
-			if (global.resourcepack_sprite_basic_enemy_blind > noone){sprite_index = global.resourcepack_sprite_basic_enemy_blind;}
+			if (global.resource_pack_sprite_basic_enemy > noone){sprite_index = global.resource_pack_sprite_basic_enemy;}else
+			if (global.resource_pack_sprite_basic_enemy_blind > noone){sprite_index = global.resource_pack_sprite_basic_enemy_blind;}
 		}
 	}
 }
