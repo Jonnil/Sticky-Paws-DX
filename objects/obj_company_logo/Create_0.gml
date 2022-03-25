@@ -32,7 +32,7 @@ global.enable_global_resources_settings = true; /*Enable Global Resources settin
 global.enable_storage_settings = true; /*Enable Storage settings*/
 global.enable_language_settings = true; /*Enable Language settings*/
 global.enable_broadcast_settings = false; /*Enable Broadcast settings*/
-global.enable_how_to_play_settings = false; /*Enable How to play settings*/
+global.enable_how_to_play_settings = true; /*Enable How to play settings*/
 global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
 #endregion /*What settings tabs to show up END*/
 
@@ -577,6 +577,7 @@ else
 #endregion /*Interpolation END*/
 
 can_navigate = false;
+loading_spinning_angle = 0;
 file_load_timer = 0;
 time = 0;
 sprite_index = spr_company_logo;

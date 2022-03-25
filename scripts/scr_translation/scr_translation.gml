@@ -64,7 +64,15 @@ function Text(key)
 	if (global.translations[?key] != undefined)
 	and (global.language_local_data[# 1 + global.language_localization, global.translations[?key]] != "")
 	{
-		scr_set_default_font();
+		if (global.translations[?key] = 2)
+		{
+			draw_set_font(font_default); /*Make "Translator name" always English*/
+		}
+		else
+		{
+			scr_set_default_font();
+		}
+		
 		var text = global.language_local_data[# 1 + global.language_localization, global.translations[?key]];
 		var a = argument_count > 1?argument[1]:"";
 		text = string_replace_all(text, "{a}", a);
@@ -73,7 +81,7 @@ function Text(key)
 	if (global.translations[?key] != undefined)
 	and (global.language_local_data[# 1, global.translations[?key]] != "")
 	{
-		draw_set_font(font_default);
+		draw_set_font(font_default); /*If there wasn't any word in that language, set the word to English, with default font*/
 		var text = global.language_local_data[# 1, global.translations[?key]];
 		var a = argument_count > 1?argument[1]:"";
 		text = string_replace_all(text, "{a}", a);

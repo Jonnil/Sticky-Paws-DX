@@ -38,6 +38,43 @@ if (global.resource_pack_sprite_splash_easteregg >= 0)
 	draw_sprite_ext(global.resource_pack_sprite_splash_easteregg, image_index, + 128, window_get_height() + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
 }
 
+if (can_navigate = false)
+{
+	loading_spinning_angle -= 10;
+	draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height() - 80, 1, 1, loading_spinning_angle, c_white, 1);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32, Text("Loading"), global.default_text_size, c_white, c_black, 1);
+}
+else
+{
+	if (os_type = os_ios)
+	or (os_type = os_android)
+	{
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32, Text("Press and Hold Screen"), global.default_text_size, c_white, c_black, 1);
+	}
+	else
+	if (gamepad_is_connected(0))
+	and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+	and (global.controls_used_for_menu_navigation = "controller")
+	{
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_center);
+		draw_text_outlined(display_get_gui_width()/ 2 + 32, display_get_gui_height() -32, Text("Skip") + ":", global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_xbox_buttons, 0, display_get_gui_width()/ 2 + 64, display_get_gui_height() -32, 0.5, 0.5, 0, c_white, 1);
+	}
+	else
+	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+	{
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_center);
+		draw_text_outlined(display_get_gui_width()/ 2 + 32, display_get_gui_height() -32, Text("Skip") + ":", global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_keyboard_keys, vk_enter, display_get_gui_width()/ 2 + 64, display_get_gui_height() -32, 0.5, 0.5, 0, c_white, 1);
+	}
+}
+
 if (gamepad_button_check_pressed(0, gp_face4))
 or(keyboard_check_pressed(ord("Y")))
 and (sprite_splash_easteregg_yoffset = 128)

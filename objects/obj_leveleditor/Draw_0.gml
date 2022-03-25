@@ -328,8 +328,32 @@ else
 #region /*Press F key to change to fill tool in level editor*/
 if (keyboard_check_pressed(ord("F")))
 {
-	erase_mode = false;
-	fill_mode = true;
+	if (fill_mode = false)
+	{
+		erase_mode = false;
+		fill_mode = true;
+	}
+	else
+	if (fill_mode_type = "fill")
+	{
+		erase_mode = false;
+		fill_mode_type = "horizontal";
+		fill_mode = true;
+	}
+	else
+	if (fill_mode_type = "horizontal")
+	{
+		erase_mode = false;
+		fill_mode_type = "vertical";
+		fill_mode = true;
+	}
+	else
+	if (fill_mode_type = "vertical")
+	{
+		erase_mode = false;
+		fill_mode_type = "fill";
+		fill_mode = true;
+	}
 }
 #endregion /*Press F key to change to fill tool in level editor*/
 
@@ -890,6 +914,7 @@ else
 #region /*Fill Cursor*/
 if (fill_mode = true)
 and (erase_mode = false)
+and (scroll_view = false)
 and (!place_meeting(x, y, obj_level_player_1_start))
 and (!place_meeting(x, y, obj_level_player_2_start))
 and (!place_meeting(x, y, obj_level_player_3_start))
@@ -919,6 +944,7 @@ else
 
 #region /*Erase Cursor*/
 if (erase_mode = true)
+and (scroll_view = false)
 {
 	draw_set_alpha(0.5);
 	{
@@ -968,6 +994,7 @@ else
 
 #region /*Default Cursor*/
 if (asset_get_type("obj_leveleditor_placed_object") == asset_object)
+and (scroll_view = false)
 and (drag_object = false)
 and (fill_mode = false)
 and (pause = false)
@@ -1177,8 +1204,10 @@ if (quit_level_editor <= 0)
 	#region /*Place Object*/
 	if (can_make_place_brush_size_bigger = false)
 	and (mouse_check_button_pressed(mb_left))
+	and (scroll_view = false)
 	or(can_make_place_brush_size_bigger = true)
 	and (mouse_check_button(mb_left))
+	and (scroll_view = false)
 	{
 		if (!keyboard_check(vk_space))
 		and (!mouse_check_button(mb_middle))
@@ -1495,6 +1524,7 @@ and (!keyboard_check(vk_space))
 and (!mouse_check_button(mb_middle))
 and (!mouse_check_button(mb_right))
 and (!key_b)
+and (scroll_view = false)
 and (drag_object = false)
 and (fill_mode = true)
 and (erase_mode = false)
@@ -1507,7 +1537,29 @@ and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get
 	if (!place_meeting(x, y, obj_leveleditor_placed_object))
 	and (!place_meeting(x, y, obj_leveleditor_fill))
 	{
-		instance_create_depth(x, y, 0, obj_leveleditor_fill);
+		if (fill_mode_type = "fill")
+		{
+			with (instance_create_depth(x, y, 0, obj_leveleditor_fill))
+			{
+				fill_mode_type = "fill";
+			}
+		}
+		else
+		if (fill_mode_type = "horizontal")
+		{
+			with (instance_create_depth(x, y, 0, obj_leveleditor_fill))
+			{
+				fill_mode_type = "horizontal";
+			}
+		}
+		else
+		if (fill_mode_type = "vertical")
+		{
+			with (instance_create_depth(x, y, 0, obj_leveleditor_fill))
+			{
+				fill_mode_type = "vertical";
+			}
+		}
 	}
 }
 #endregion /*Fill with Objects END*/
@@ -1581,30 +1633,6 @@ and (pause = false)
 #endregion /*Scroll Objects Right END*/
 
 #endregion /*SELECT WHAT OBJECT TO PLACE END*/
-
-#region /*Scroll View*/
-if (mouse_check_button_pressed(mb_left))
-and (keyboard_check(vk_space))
-or(mouse_check_button_pressed(mb_middle))
-{
-	if (pause = false)
-	and (!instance_exists(obj_leveleditor_fill))
-	{
-		drag_x = mouse_x;
-		drag_y = mouse_y;
-	}
-}
-if (mouse_check_button(mb_left))
-and (keyboard_check(vk_space))
-or(mouse_check_button(mb_middle))
-{
-	if (pause = false)
-	and (!instance_exists(obj_leveleditor_fill))
-	{
-		camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -camera_get_view_x(view_camera[view_current])), drag_y-(mouse_y-camera_get_view_y(view_camera[view_current])));
-	}
-}
-#endregion /*Scroll View END*/
 
 }
 

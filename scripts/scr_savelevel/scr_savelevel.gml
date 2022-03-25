@@ -16,6 +16,12 @@ function scr_savelevel()
 			}
 			ini_write_string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "clear_rate", "clear"); /*Make the level clear after checking number_of_levels_cleared*/
 		}
+		ini_write_real("Player", "current_month", current_month);
+		ini_write_real("Player", "current_day", current_day);
+		ini_write_real("Player", "current_year", current_year);
+		ini_write_real("Player", "current_hour", current_hour);
+		ini_write_real("Player", "current_minute", current_minute);
+		ini_write_real("Player", "current_second", current_second);
 		ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "lives_until_assist", global.lives_until_assist);
 		ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "x_checkpoint", global.x_checkpoint);
 		ini_write_real(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index), "y_checkpoint", global.y_checkpoint);

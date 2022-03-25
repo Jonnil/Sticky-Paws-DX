@@ -154,6 +154,7 @@ use_controller = false;
 drag_object = false;
 erase_mode = false; /*When erasing, this turns true*/
 fill_mode = false; /*When filling, this turns true*/
+fill_mode_type = "fill"; /*What type of filling you will do. Fill, Horizontal, Vertical*/
 can_input_level_name = false;
 quit_level_editor = false;
 menu_joystick_delay = 0;
@@ -172,6 +173,8 @@ background_brightness_lerp = 0;
 background_brightness_menu_lerp = 0;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;
+scroll_view = false; /*If you can scroll the view or not*/
+create_level_from_template_save_delay = 0; /*Save the level before starting to edit the template level*/
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
@@ -199,6 +202,7 @@ place_brush_icon_x = 96;
 erase_icon_x = 160;
 fill_icon_x = 224;
 always_show_level_editor_buttons_x = 288;
+grid_button_x = display_get_gui_width() - 224;
 
 screenie_x = 0;
 screenie_y = 0;

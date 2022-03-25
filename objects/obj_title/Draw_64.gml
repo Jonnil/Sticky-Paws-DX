@@ -362,11 +362,10 @@ if (global.demo = true)
 #endregion /*Demo Version Text END*/
 
 #region /*Draw Title Screen*/
-if (global.title_logo_index > 0)
+if (global.title_logo_index >= 0)
 or(global.resource_pack_sprite_title_logo_christmas > 0)
 {
-	if (global.title_logo_index >= 0)
-	and (global.title_logo_index != undefined)
+	if (global.title_logo_index != undefined)
 	{
 		draw_sprite_ext(title_logo_index, image_index, display_get_gui_width()/ 2, display_get_gui_height()/ 2 - 100 + title_y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, title_alpha);
 	}
@@ -590,7 +589,7 @@ or(menu = "quit")
 		in_settings = true;
 		can_navigate_settings_sidebar = false;
 		global.settings_sidebar_menu = "language_settings";
-		menu = "language_id_id";
+		menu = "Language" + string(global.language_localization);
 	}
 	#endregion /*Click Language Shortcut END*/
 	
@@ -807,17 +806,6 @@ or(menu = "quit")
 scr_options_menu(); /*Options*/
 
 scr_quit_to_desktop_menu("quit");
-
-#region /*Loading Screen*/
-if (menu = "load_custom_level")
-or(menu = "load_characters")
-or(menu = "load_official_level_template")
-{
-	loading_spinning_angle -= 10;
-	draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height()/ 2, 1, 1, loading_spinning_angle, c_white, 1);
-	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height()/ 2 +64, Text("Loading"), global.default_text_size, c_white, c_black, 1);
-}
-#endregion /*Loading Screen END*/
 
 #region /*Select Custom Level Menu*/
 if (level_editor_template_select = true)
@@ -2049,6 +2037,17 @@ else
 #endregion /*Zoom Out END*/
 
 #endregion /*Iris Zooming END*/
+
+#region /*Loading Screen*/
+if (menu = "load_custom_level")
+or(menu = "load_characters")
+or(menu = "load_official_level_template")
+{
+	loading_spinning_angle -= 10;
+	draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height()/ 2, 1, 1, loading_spinning_angle, c_white, 1);
+	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height()/ 2 +64, Text("Loading"), global.default_text_size, c_white, c_black, 1);
+}
+#endregion /*Loading Screen END*/
 
 if (global.enable_transitions = true)
 {

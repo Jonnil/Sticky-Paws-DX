@@ -59,6 +59,14 @@ if (global.controls_used_for_menu_navigation = "mouse")
 
 #endregion /*Draw Skip Text END*/
 
+if (sprite_index = global.title_logo_index)
+and (global.title_logo_index >= 0)
+or (sprite_index = global.resource_pack_sprite_title_logo_christmas)
+and (global.resource_pack_sprite_title_logo_christmas >= 0)
+{
+	draw_sprite_ext(sprite_index, image_index, display_get_gui_width()/ 2, y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, image_alpha);
+}
+else
 if (sprite_index > 0)
 {
 	draw_sprite_ext(sprite_index, image_index, window_get_width()/ 2, y, 1, 1, 0, c_white, image_alpha);

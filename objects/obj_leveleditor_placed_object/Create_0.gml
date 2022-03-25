@@ -23,3 +23,6 @@ draw_yscale = 1;
 draw_angle = 0;
 
 depth = -110;
+mask_index = spr_wall;
+
+alarm[0] = 1;
