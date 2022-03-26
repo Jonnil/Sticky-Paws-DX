@@ -64,21 +64,20 @@ function scr_options_menu()
 	and (global.enable_touch_settings = false)
 	and (global.enable_profile_settings = false)
 	and (global.enable_broadcast_settings = false)
-	//and (global.enable_how_to_play_settings = false)
+	and (global.enable_how_to_play_settings = false)
 	and (global.enable_add_ons_settings = false)
 	{
 		accessibility_settings_y = 40;
-		how_to_play_y = 40 * 2;
-		game_text_y = 40 * 3;
-		game_settings_y = 40 * 4;
-		controls_text_y = 40 * 5;
-		keyboard_and_mouse_settings_y = 40 * 6;
-		general_text_y = 40 * 7;
-		video_settings_y = 40 * 8;
-		audio_settings_y = 40 * 9;
-		global_resources_settings_y = 40 * 10;
-		storage_settings_y = 40 * 11;
-		language_settings_y = 40 * 12;
+		game_text_y = 40 * 2;
+		game_settings_y = 40 * 3;
+		controls_text_y = 40 * 4;
+		keyboard_and_mouse_settings_y = 40 * 5;
+		general_text_y = 40 * 6;
+		video_settings_y = 40 * 7;
+		audio_settings_y = 40 * 8;
+		global_resources_settings_y = 40 * 9;
+		storage_settings_y = 40 * 10;
+		language_settings_y = 40 * 11;
 	}
 	#endregion /*Menu navigation tabs y positions END*/
 	
@@ -860,7 +859,14 @@ function scr_options_menu()
 			and (can_navigate_settings_sidebar = true)
 			and (menu_delay = 0)
 			{
-				global.settings_sidebar_menu = "how_to_play";
+				if (global.enable_how_to_play_settings = true)
+				{
+					global.settings_sidebar_menu = "how_to_play";
+				}
+				else
+				{
+					global.settings_sidebar_menu = "game_settings";
+				}
 				menu_delay = 3;
 			}
 			/*Sidebar Navigation*/
@@ -901,7 +907,14 @@ function scr_options_menu()
 			and (can_navigate_settings_sidebar = true)
 			and (menu_delay = 0)
 			{
-				global.settings_sidebar_menu = "how_to_play";
+				if (global.enable_how_to_play_settings = true)
+				{
+					global.settings_sidebar_menu = "how_to_play";
+				}
+				else
+				{
+					global.settings_sidebar_menu = "accessibility_settings";
+				}
 				menu_delay = 3;
 			}
 			else
@@ -6668,50 +6681,50 @@ function scr_options_menu()
 		}
 		#endregion /*Custom Resource Packs END*/
 		
-		#region /*Custom Title Background*/
-		draw_text_outlined(resource_pack_x, 20 + (40 * 7), Text("Title Background") + ": " + string(global.selected_title_background), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(resource_pack_x, 20 + (40 * 8), string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_menu_button(resource_pack_x, 20 + (40 * 6), Text("Open Resource Pack Folder"), "open_resource_pack_folder", "open_resource_pack_folder");
 		
+		#region /*Custom Title Background*/
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_center);
+		draw_text_outlined(resource_pack_x, 20 + (40 * 8), Text("Title Background") + ": " + string(global.selected_title_background), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(resource_pack_x, 20 + (40 * 9), string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (global.selected_title_background > 0)
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x -32, 20 + (40 * 7), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 7) - 16, resource_pack_x -32 + 16, 20 + (40 * 7) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x -32, 20 + (40 * 8), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 8) - 16, resource_pack_x -32 + 16, 20 + (40 * 8) + 16))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "title_backgrounds";
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
-				draw_rectangle_color(resource_pack_x -32 - 16, 20 + (40 * 7) - 16, resource_pack_x -32 + 16, 20 + (40 * 7) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(resource_pack_x -32 - 16, 20 + (40 * 8) - 16, resource_pack_x -32 + 16, 20 + (40 * 8) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
-		
 		if (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 		and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 		or(file_exists(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 		and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 * 7), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 7) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 7) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 * 8), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 8) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 8) + 16))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "title_backgrounds";
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
-				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 7) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 7) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 8) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 8) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
-		
 		if (menu = "title_backgrounds")
 		{
-			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x -32 -32, 20 + (40 * 7));
+			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x -32 -32, 20 + (40 * 8));
 		}
-		
 		if (key_left)
 		and (menu = "title_backgrounds")
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 7) - 16, resource_pack_x -32 + 16, 20 + (40 * 7) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 8) - 16, resource_pack_x -32 + 16, 20 + (40 * 8) + 16))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		{
 			menu = "title_backgrounds";
@@ -6743,7 +6756,7 @@ function scr_options_menu()
 		if (key_right)
 		and (menu = "title_backgrounds")
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 7) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 7) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 8) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 8) + 16))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		{
 			menu = "title_backgrounds";
@@ -6779,26 +6792,29 @@ function scr_options_menu()
 		}
 		#endregion /*Custom Title Background END*/
 		
-		#region /*Custom Title Logo*/
+		draw_menu_button(resource_pack_x, 20 + (40 * 10), Text("Open Background Folder"), "open_title_background_folder", "open_title_background_folder");
 		
+		#region /*Custom Title Logo*/
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_center);
 		if (global.title_logo_index >= 0)
 		and (global.title_logo_index != undefined)
 		{
 			draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() - 500, display_get_gui_height() / 2 - 100, (402 / sprite_get_height(global.title_logo_index)), (402 / sprite_get_height(global.title_logo_index)), 0, c_white, 1);
 		}
-		draw_text_outlined(resource_pack_x, 20 + (40 * 10), Text("Title Logo") + ": " + string(global.selected_title_logo), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(resource_pack_x, 20 + (40 * 11), string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(resource_pack_x, 20 + (40 * 12), Text("Title Logo") + ": " + string(global.selected_title_logo), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(resource_pack_x, 20 + (40 * 13), string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 		if (global.selected_title_logo > 0)
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x -32, 20 + (40 * 10), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 10) - 16, resource_pack_x -32 + 16, 20 + (40 * 10) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x -32, 20 + (40 * 12), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 12) - 16, resource_pack_x -32 + 16, 20 + (40 * 12) + 16))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "title_logos";
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
-				draw_rectangle_color(resource_pack_x -32 - 16, 20 + (40 * 10) - 16, resource_pack_x -32 + 16, 20 + (40 * 10) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(resource_pack_x -32 - 16, 20 + (40 * 12) - 16, resource_pack_x -32 + 16, 20 + (40 * 12) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
@@ -6808,27 +6824,27 @@ function scr_options_menu()
 		or(file_exists(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
 		and (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != undefined)
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 * 10), 0.5, 0.5, 0, c_white, 1);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 10) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 10) + 16))
+			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (40 * 12), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 12) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 12) + 16))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			{
 				menu = "title_logos";
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
-				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 10) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 10) + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 12) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 12) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
 		
 		if (menu = "title_logos")
 		{
-			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x -32 -32, 20 + (40 * 10));
+			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x -32 -32, 20 + (40 * 12));
 		}
 		
 		if (key_left)
 		and (menu = "title_logos")
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 10) - 16, resource_pack_x -32 + 16, 20 + (40 * 10) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (40 * 12) - 16, resource_pack_x -32 + 16, 20 + (40 * 12) + 16))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		{
 			menu = "title_logos";
@@ -6858,7 +6874,7 @@ function scr_options_menu()
 		if (key_right)
 		and (menu = "title_logos")
 		or(mouse_check_button_pressed(mb_left))
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 10) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 10) + 16))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (40 * 12) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (40 * 12) + 16))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		{
 			menu = "title_logos";
@@ -6891,6 +6907,44 @@ function scr_options_menu()
 			}
 		}
 		#endregion /*Custom Title Logo END*/
+		
+		draw_menu_button(resource_pack_x, 20 + (40 * 14), Text("Open Title Logo Folder"), "open_title_logo_folder", "open_title_logo_folder");
+		
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x, 20 + (40 * 6) + 2, resource_pack_x + 371, 20 + (40 * 6) + 41))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or (menu = "open_resource_pack_folder")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		{
+			scr_open_folder(game_save_id + "\custom_resource_pack")
+			menu_delay = 60 * 5;
+		}
+		else
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x, 20 + (40 * 10) + 2, resource_pack_x + 371, 20 + (40 * 10) + 41))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or (menu = "open_title_background_folder")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		{
+			scr_open_folder(game_save_id + "\custom_title_backgrounds")
+			menu_delay = 60 * 5;
+		}
+		else
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x, 20 + (40 * 14) + 2, resource_pack_x + 371, 20 + (40 * 14) + 41))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or (menu = "open_title_logo_folder")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		{
+			scr_open_folder(game_save_id + "\custom_title_logos")
+			menu_delay = 60 * 5;
+		}
 		
 	}
 	#endregion /*Global Resources Settings END*/

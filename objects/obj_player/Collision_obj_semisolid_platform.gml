@@ -1,21 +1,19 @@
 /*Collision Event with a solid object*/
 
-if (in_water = false)
+if (position_meeting(x, bbox_bottom + 1, other))
+or(position_meeting(x, bbox_bottom + 2, other))
+or(position_meeting(x, bbox_bottom + 3, other))
+or(position_meeting(x, bbox_bottom + 4, other))
+or(position_meeting(bbox_left, bbox_bottom + 1, other))
+or(position_meeting(bbox_left, bbox_bottom + 2, other))
+or(position_meeting(bbox_left, bbox_bottom + 3, other))
+or(position_meeting(bbox_left, bbox_bottom + 4, other))
+or(position_meeting(bbox_right, bbox_bottom + 1, other))
+or(position_meeting(bbox_right, bbox_bottom + 2, other))
+or(position_meeting(bbox_right, bbox_bottom + 3, other))
+or(position_meeting(bbox_right, bbox_bottom + 4, other))
 {
-	if (position_meeting(x, bbox_bottom + 1, other))
-	or(position_meeting(x, bbox_bottom + 2, other))
-	or(position_meeting(x, bbox_bottom + 3, other))
-	or(position_meeting(x, bbox_bottom + 4, other))
-
-	or(position_meeting(bbox_left, bbox_bottom + 1, other))
-	or(position_meeting(bbox_left, bbox_bottom + 2, other))
-	or(position_meeting(bbox_left, bbox_bottom + 3, other))
-	or(position_meeting(bbox_left, bbox_bottom + 4, other))
-
-	or(position_meeting(bbox_right, bbox_bottom + 1, other))
-	or(position_meeting(bbox_right, bbox_bottom + 2, other))
-	or(position_meeting(bbox_right, bbox_bottom + 3, other))
-	or(position_meeting(bbox_right, bbox_bottom + 4, other))
+	if (vspeed >= 0)
 	{
 		y -= 1;
 	}
@@ -64,7 +62,7 @@ and (stick_to_wall = false)
 	#endregion /*Smoke Landing Effect END*/
 	
 	if (vspeed > 0)
-	and (in_water = false)
+	//and (in_water = false)
 	{
 		draw_xscale = 1.25;
 		draw_yscale = 0.75;

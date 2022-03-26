@@ -15,6 +15,7 @@ and (instance_exists(obj_player))
 	or(place_meeting(x, bbox_bottom, obj_player))
 	{
 		if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_semisolid_platform, false, true))
 		{
 			follow_player = true;
 		}
@@ -251,7 +252,7 @@ if (follow_player = true)
 }
 #endregion /*Follow Player END*/
 
-if bounceup = true
+if (bounceup = true)
 {
 	
 	#region /*Show Big Collectible HUD*/

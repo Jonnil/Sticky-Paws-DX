@@ -1,7 +1,5 @@
 scr_set_screen_size();
 
-draw_text_outlined(320, 320, "", global.default_text_size*2, c_black, c_white, 1)
-
 /*Draw Event*/
 if(gamepad_button_check_pressed(0, gp_face1))
 or(keyboard_check_pressed(ord("Z")))

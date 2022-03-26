@@ -6,13 +6,13 @@
 //draw_text_outlined(x, y - 128, "character for player 1: " + string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x, y - 64, "character for player 2: " + string(global.character_for_player_2), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x, y - 64, "Overflow HP: " + string(overflow_hp) + "/" + string(max_overflow_hp), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x, y - 64,string(global.character_select_in_this_menu), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x, y - 64, string(global.character_select_in_this_menu), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 64, string(global.music_volume), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x -32, y - 128, string(jump_transition_to_fall_animation), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 128, string(jump), global.default_text_size, c_white, c_black, 1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)

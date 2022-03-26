@@ -1991,7 +1991,7 @@ if (!window_has_focus())
 #region /*Draw Iris Transitions*/
 
 #region /*Iris Zooming*/
-if (menu_delay > 10)
+if (menu_delay > 500)
 {
 	if (iris_zoom = 1)
 	{

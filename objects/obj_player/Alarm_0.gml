@@ -15,7 +15,19 @@ or(file_exists(working_directory + "/custom_characters/" + string(ds_list_find_v
 	{
 		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini");
 	}
-
+	
+	#region /*Allow stop after landing triple jump*/
+	if (ini_key_exists("allow abilities", "allow_stop_after_landing_triple_jump"))
+	{
+		allow_stop_after_landing_triple_jump = ini_read_real("allow abilities", "allow_stop_after_landing_triple_jump", false);
+	}
+	else
+	{
+		if (can_save_to_character_config = true){ini_write_real("allow abilities", "allow_stop_after_landing_triple_jump", false);}
+		allow_stop_after_landing_triple_jump = false;
+	}
+	#endregion /*Allow stop after landing triple jump*/
+	
 	#region /*Allow roll*/
 	if (ini_key_exists("allow abilities", "allow_roll"))
 	{

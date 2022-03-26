@@ -23,6 +23,7 @@ global.max_number_of_official_title_backgrounds = 2; /*Update this whenever you 
 #region /*What settings tabs to show up*/
 global.show_language_shortcut = false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
 global.show_accessibility_shortcut = false; /*If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu*/
+global.enable_how_to_play_settings = false; /*Enable How to play settings*/
 global.show_profile_shortcut = false; /*If a shortcut for the profile options should appear in the main menu to the right of the settings menu*/
 global.enable_multiplayer_settings = false; /*Enable Multiplayer settings*/
 global.enable_controller_settings = false; /*Enable Controller settings*/
@@ -32,7 +33,6 @@ global.enable_global_resources_settings = true; /*Enable Global Resources settin
 global.enable_storage_settings = true; /*Enable Storage settings*/
 global.enable_language_settings = true; /*Enable Language settings*/
 global.enable_broadcast_settings = false; /*Enable Broadcast settings*/
-global.enable_how_to_play_settings = true; /*Enable How to play settings*/
 global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
 #endregion /*What settings tabs to show up END*/
 

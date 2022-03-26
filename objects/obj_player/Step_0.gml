@@ -5058,14 +5058,6 @@ if (buffer_jump > 0)
 	buffer_jump -= 1;
 }
 
-#region /*If you're falling from a triple jump, reset the jump variable to 0*/
-if (jump >= 3)
-and (vspeed >= 0)
-{
-	jump = 0;
-}
-#endregion /*If you're falling from a triple jump, reset the jump variable to 0 END*/
-
 if (buffer_jump > 0)
 and (can_move = true)
 and (global.pause = false)
@@ -5117,17 +5109,31 @@ and (key_jump_hold)
 		and (crouch = true)
 		and (vspeed = 0)
 		{
-			jump += 1;
+			if (abs(hspeed) > (speed_max_run -1))
+			and (jump = 2)
+			{
+				jump = 3; /*If running, and doing 2nd jump, do triple jump*/
+			}
+			else
+			if (jump <= 1)
+			{
+				jump = clamp(jump + 1, 0, 3); /*Increase jump if doing 1st jump*/
+			}
+			else
+			{
+				jump = 1; /*If done triple jump and jump again, or done 2nd jump with not enough speed, go back to 1st jump*/
+			}
 			midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 			buffer_jump = 0; /*Reset jump buffer timer back to 0 when jumping*/
 			dive = false;
 			triplejumpdelay = 12;
-			if (abs(hspeed) > 3)
+			if (abs(hspeed) > (speed_max_walk - 1))
 			and (!place_meeting(x, y- 8, obj_wall))
 			or(key_up)
 			and (!place_meeting(x, y- 8, obj_wall))
 			{
-				if (jump > 2)
+				if (abs(hspeed) > (speed_max_run - 1))
+				and (jump >= 3)
 				{
 					vspeed = -triple_jump_height;
 					if (image_xscale > 0)
@@ -5174,8 +5180,9 @@ and (key_jump_hold)
 			image_index = 0;
 			
 			#region /*Jump sound sfx*/
-			if (jump = 3)
+			if (jump >= 3)
 			and (hold_item_in_hands = "")
+			and (abs(hspeed) > (speed_max_run -1))
 			and (asset_get_type("snd_3rdjump") == asset_sound)
 			{
 				audio_play_sound(snd_3rdjump, 0, 0);
@@ -5187,29 +5194,28 @@ and (key_jump_hold)
 				audio_play_sound(snd_jump, 0, 0);
 				audio_sound_gain(snd_jump, global.sound_volume * global.main_volume, 0);
 			}
-			if (jump <= 1)
-			//if (random(global.verbosity_slider* 100) >= 100)
+			if (jump >= 3)
+			and (abs(hspeed) > (speed_max_run - 1))
 			{
 				audio_stop_sound(voice);
-				voice = audio_play_sound(voice_jump, 0, 0);
-				audio_sound_gain(voice_jump, global.voices_volume * global.main_volume, 0);
-				audio_sound_pitch(voice_jump, default_voice_pitch);
+				voice = audio_play_sound(voice_jump3rd, 0, 0);
+				audio_sound_gain(voice_jump3rd, global.voices_volume * global.main_volume, 0);
+				audio_sound_pitch(voice_jump3rd, default_voice_pitch);
 			}
+			else
 			if (jump = 2)
-			//if (random(global.verbosity_slider* 100) >= 100)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump2nd, 0, 0);
 				audio_sound_gain(voice_jump2nd, global.voices_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_jump2nd, default_voice_pitch);
 			}
-			if (jump >= 3)
-			//if (random(global.verbosity_slider* 100) >= 100)
+			else
 			{
 				audio_stop_sound(voice);
-				voice = audio_play_sound(voice_jump3rd, 0, 0);
-				audio_sound_gain(voice_jump3rd, global.voices_volume * global.main_volume, 0);
-				audio_sound_pitch(voice_jump3rd, default_voice_pitch);
+				voice = audio_play_sound(voice_jump, 0, 0);
+				audio_sound_gain(voice_jump, global.voices_volume * global.main_volume, 0);
+				audio_sound_pitch(voice_jump, default_voice_pitch);
 			}
 			#endregion /*Jump sound effect END*/
 			draw_xscale = 0.75;
@@ -5218,6 +5224,37 @@ and (key_jump_hold)
 	}
 }
 #endregion /*Jumping END*/
+
+#region /*Triple Jump*/
+if (on_ground = true)
+{
+	if (triplejumpdelay > 0)
+	{
+		triplejumpdelay -= 1;
+	}
+	//if (abs(hspeed) < (speed_max_run - 1)) /*Player must be running at this speed to be able to triple jump*/
+	if (triplejumpdelay < 1)
+	and (vspeed >= 0)
+	{
+		jump = 0;
+	}
+	
+	#region /*Stop horizontal speed if you land after triple jump without holding direction*/
+	if (jump >= 3)
+	and (vspeed >= 0)
+	and(allow_stop_after_landing_triple_jump)
+	{
+		jump = 0;
+		if (!key_left)
+		and (!key_right)
+		{
+			hspeed = 0;
+		}
+	}
+	#endregion /*Stop horizontal speed if you land after triple jump without holding direction END*/
+	
+}
+#endregion /*Triple Jump END*/
 
 #region /*Mid-Air / Double Jumping*/
 if (can_mid_air_jump > 0)
@@ -5901,37 +5938,6 @@ if (assist_invincible = true)
 	chain_reaction = 0;
 }
 #endregion /*Chain Reaction Reset END*/
-
-#region /*Triple Jump*/
-if (on_ground = true)
-{
-	if (triplejumpdelay > 0)
-	{
-		triplejumpdelay -= 1;
-	}
-	if (speed < 7) /*Player must be running at this speed to be able to triple jump*/
-	and (jump > 1)
-	and (triplejumpdelay < 1)
-	and (vspeed >= 0)
-	{
-		jump = 0;
-	}
-	
-	#region /*Stop horizontal speed if you land after triple jump without holding direction*/
-	if (jump > 2)
-	and (vspeed >= 0)
-	{
-		jump = 0;
-		if (!key_left)
-		and (!key_right)
-		{
-			hspeed = 0;
-		}
-	}
-	#endregion /*Stop horizontal speed if you land after triple jump without holding direction END*/
-	
-}
-#endregion /*Triple Jump END*/
 
 #region /*Wall Jump and Wall Climb*/
 if (allow_wall_jump = true)
@@ -10501,7 +10507,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			else
 
 			#region /*Triple Jump*/
-			if (jump > 2)
+			if (jump >= 3)
 			{
 				if (sprite_triple_jump > noone){sprite_index = sprite_triple_jump;}else
 				if (sprite_jump > noone){sprite_index = sprite_jump;}else

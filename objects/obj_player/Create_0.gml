@@ -12,6 +12,7 @@ alarm[0] = 1; /*Initialize custom character timer. This code needs to be initial
 
 #region /*Allow*/
 allow_drowning = true;
+allow_stop_after_landing_triple_jump = false;
 allow_roll = false;
 allow_ledge_grab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
 allow_ground_pound = true; /*If you can ground pound or not*/

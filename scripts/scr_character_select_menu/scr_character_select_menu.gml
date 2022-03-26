@@ -5018,7 +5018,7 @@ function scr_character_select_menu()
 		
 		global.player3_name =keyboard_string;
 		
-		#region /*Limit Name Input Length for Player 1*/
+		#region /*Limit Name Input Length for Player 3*/
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		
