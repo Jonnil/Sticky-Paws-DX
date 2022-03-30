@@ -3241,7 +3241,6 @@
     {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"title_logo_christmas.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"enemy_bowlingball_blind_walk.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"artwork_collection_strip75.png","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"localization.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sprites/skin1","resourceVersion":"1.0","name":"walking_with_item_in_front_strip18.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sprites/skin2","resourceVersion":"1.0","name":"walking_with_item_in_front_strip18.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sprites/skin3","resourceVersion":"1.0","name":"walking_with_item_in_front_strip18.png","resourceType":"GMIncludedFile",},
@@ -3253,6 +3252,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sprites/skin4","resourceVersion":"1.0","name":"standing_with_item_in_front.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sprites/skin5","resourceVersion":"1.0","name":"standing_with_item_in_front.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"gamefont.ttc","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"localization.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.2.1.618",

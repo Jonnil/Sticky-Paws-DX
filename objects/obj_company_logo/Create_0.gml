@@ -36,7 +36,7 @@ global.enable_narrator = true;
 #endregion /*Change how menus look and function END*/
 
 global.max_fps = 60; /*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
-global.default_text_size = 0.2 //0.1125;
+global.default_text_size = 0.8 //0.1125;
 global.default_view_width = 1920;
 global.default_view_height = 1080;
 
@@ -114,7 +114,8 @@ if (file_exists(working_directory + "custom_levels/*.zip"))
 
 #endregion /*File Handeling END*/
 
-global.default_font = font_add("gamefont.ttc", 100, true, false, 32, 128);
+font_add_enable_aa(false);
+global.default_font = font_add("gamefont.ttc", 24, true, false, 32, 128);
 draw_set_font(global.default_font);
 can_save_to_character_config = false;
 view_hview_lerp = 0;

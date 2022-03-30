@@ -1,7 +1,7 @@
 Code,English,Svenska,日本語,Español,,Polski
 Translator,Translator,Översättare,翻訳者,,,
 Translator name,Jonathan Nilsson,Jonathan Nilsson,Benjamin Tröjer,chillmanmax,,DoruDoLasu
-Language translations may not be 100% accurate,Language translations may not be 100% accurate,Språköversättningar kanske inte är 100% korrekta,,Traducciones no son 100% preciso,,Tłumaczenia mogą nie być w stu procentach dokładne
+Language translations may not be 100% accurate,Language translations may not be 100% accurate,Språköversättningar kanske inte är 100% korrekta,ほんとうにすみませんでした。まだベギナーから、翻訳は100%完璧じゃないかもしれません。,Traducciones no son 100% preciso,,Tłumaczenia mogą nie być w stu procentach dokładne
 Back,Back,Tillbaka,戻る,Anterior,,Wstecz
 Accessibility,Accessibility,Tillgänglighet,アクセシビリティ,Accesibilidad,,Dostępność
 Game,Game,Spel,ゲーム,Juego,,Gra
@@ -26,10 +26,10 @@ Checkpoint,CHECKPOINT,ÅTERVÄNDSPUNKT,チェックポイント,,,
 Main Game,Main Game,Huvudspel,,,,
 Level Editor,Level Editor,Nivåredigerare,,,,Edytor poziomów
 Options,Options,Alternativ,設定,,,
-Quit,Quit,Avsluta,,,,
-Fullscreen,Fullscreen,Fullskärm,,,,
+Quit,Quit,Avsluta,終了,,,
+Fullscreen,Fullscreen,Fullskärm,フルスクリーン,,,
 Made by,Made by,Tillverkad av,,,,Pełny ekran
-Loading,Loading,Läser in,,,,Wczytywanie
+Loading,Loading,Läser in,ローディング中,,,Wczytywanie
 Select your character!,Select your character!,Välj din karaktär!,,,,
 Player 1 Join,Player 1 Join,Spelare 1 Gå med,,,,
 Player 2 Join,Player 2 Join,Spelare 2 Gå med,,,,
@@ -229,8 +229,8 @@ View X,View X,Vy X,,,,
 View Y,View Y,Vy Y,,,,
 View width,View width,Vy bredd,,,,
 View height,View height,Vy höjd,,,,
-Warning! Level height shorter than normal,Warning! Level height shorter than normal,Varning! Nivåhöjd kortare än normalt,,,,
-Warning! Level width shorter than normal,Warning! Level width shorter than normal,Varning! Nivåbredd kortare än normalt,,,,
+Warning! Level height shorter than normal,Warning! Level height shorter than normal,Varning! Nivåhöjd kortare än normalt,注意、レベルは普通より高い,,,
+Warning! Level width shorter than normal,Warning! Level width shorter than normal,Varning! Nivåbredd kortare än normalt,注意、レベルは普通より広い,,,
 Can put objects above other objects: True,Can put objects above other objects: True,Kan sätta objekt över andra objekt: Sant,,,,
 Artwork,Artwork,Konstverk,,,,
 Artist,Artist,Konstnär,,,,
@@ -241,7 +241,7 @@ Pounce,Pounce,Dyka,,,,Sus
 Join Game,Join Game,Gå med i spel,,,,
 Date modified,Date modified,Datum ändrat,,,,
 Last played today!,Last played today!,Spelades senast idag!,,,,
-Open Resource Pack Folder,Open Resource Pack Folder,Öppna resurspaketmappen,,,,
-Open Background Folder,Open Background Folder,Öppna bakgrundsmappen,,,,
-Open Title Logo Folder,Open Title Logo Folder,Öppna titellogotyp mappen,,,,
-Open Character Folder,Open Character Folder,Öppna karaktär mappen,,,,
+Open Resource Pack Folder,Open Resource Pack Folder,Öppna resurspaketmappen,リソースパックフォルダを開く,,,
+Open Background Folder,Open Background Folder,Öppna bakgrundsmappen,背景フォルダを開く,,,
+Open Title Logo Folder,Open Title Logo Folder,Öppna titellogotyp mappen,タイトルロゴフォルダを開く,,,
+Open Character Folder,Open Character Folder,Öppna karaktär mappen,キャラクターフォルダを開く,,,
