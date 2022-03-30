@@ -286,11 +286,11 @@ if (global.show_collision_mask = true)
 {
 	if (crouch = true)
 	{
-		draw_sprite_ext(sprite_mask_crouch, 0, x, y, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_mask_crouch, 0, x, y, image_xscale, 1, 0, c_white, 1);
 	}
 	else
 	{
-		draw_sprite_ext(sprite_mask, 0, x, y, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_mask, 0, x, y, image_xscale, 1, 0, c_white, 1);
 	}
 	draw_rectangle_color(x - 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
 	draw_rectangle_color(x, y- 2, x, y + 2, c_red, c_red, c_red, c_red, false);
@@ -402,7 +402,7 @@ if (allow_homing_attack = true)
 	and (asset_get_type("obj_enemy") == asset_object)
 	and (instance_exists(obj_enemy))
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
-	and (distance_to_object(obj_enemy) < hoverstomp_distance)
+	and (distance_to_object(obj_enemy) < homing_attack_distance)
 	and (instance_nearest(x, y, obj_enemy).bbox_bottom > y)
 	and (instance_nearest(x, y, obj_enemy).die = false)
 	{
@@ -433,7 +433,7 @@ if (allow_homing_attack = true)
 	and (asset_get_type("obj_spring") == asset_object)
 	and (instance_exists(obj_spring))
 	and (!collision_line(x, y, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, obj_wall, false, true))
-	and (distance_to_object(obj_spring) < hoverstomp_distance)
+	and (distance_to_object(obj_spring) < homing_attack_distance)
 	and (instance_nearest(x, y, obj_spring).bbox_bottom > y)
 	{
 		aim_image_index += 1;

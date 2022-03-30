@@ -239,9 +239,6 @@ and (menu_delay = 0)
 #endregion /*Quit Game trough pause menu END*/
 
 /*Draw Event*/
-#region /*Set a default font*/
-scr_set_default_font();
-#endregion /*Set a default font END*/
 
 #region /*Fullscreen toggle*/
 if (os_type!= os_ios)
@@ -449,24 +446,9 @@ or(menu = "quit")
 		in_settings = false;
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
-		if (global.can_select_number_of_players = true)
-		{
-			if (global.select_number_of_players_before_selecting_characters = true)
-			{
-				menu = "1player";
-				menu_delay = 3;
-			}
-			else
-			{
-				scr_load_character_initializing();
-				menu = "load_characters";
-				menu_delay = 3;
-			}
-		}
-		else
-		{
-			room_goto(room_world_map);
-		}
+		scr_load_character_initializing();
+		menu = "load_characters";
+		menu_delay = 3;
 	}
 	#endregion /*Click Main Game END*/
 	
@@ -506,25 +488,9 @@ or(menu = "quit")
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			global.character_select_in_this_menu = "level_editor";
-			if (global.can_select_number_of_players = true)
-			{
-				if (global.select_number_of_players_before_selecting_characters = true)
-				{
-					menu = "1player";
-					menu_delay = 3;
-				}
-				else
-				{
-					scr_load_character_initializing();
-					menu = "load_characters";
-					menu_delay = 3;
-				}
-			}
-			else
-			{
-				menu = "select_custom_level";
-				menu_delay = 3;
-			}
+			scr_load_character_initializing();
+			menu = "load_characters";
+			menu_delay = 3;
 			global.level_editor_level = 1;
 		}
 		#endregion /*Select Level Editor END*/
@@ -1991,7 +1957,7 @@ if (!window_has_focus())
 #region /*Draw Iris Transitions*/
 
 #region /*Iris Zooming*/
-if (menu_delay > 500)
+if (menu_delay > 999)
 {
 	if (iris_zoom = 1)
 	{

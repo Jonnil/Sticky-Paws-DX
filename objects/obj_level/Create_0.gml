@@ -6,7 +6,6 @@ ring_color = c_yellow;
 level_color = c_black;
 level_perfect = false;
 enter_blink = 0;
-initialize_level_timer = 0;
 always_open = false; /*If a level should always be open or not*/
 increase_number_of_levels_cleared = true;
 

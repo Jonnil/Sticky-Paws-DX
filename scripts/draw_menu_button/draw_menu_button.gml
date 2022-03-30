@@ -6,19 +6,18 @@
 /// @param menu_index
 /// @param menu_takes_you_to
 
-function draw_menu_button()
+function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to)
 {
 	
 	#region /*Button*/
 	
 	#region /*Initialize variables*/
-	var x_position = argument0; /*The buttons x origin position*/
-	var y_position = argument1; /*The buttons y origin position*/
-
-	var string_text = argument2;
-	var menu_index = argument3;
-	var menu_takes_you_to = argument4;
-	var clicked_on = false;
+	x_position = argument0; /*The buttons x origin position*/
+	y_position = argument1; /*The buttons y origin position*/
+	
+	string_text = argument2;
+	menu_index = argument3;
+	menu_takes_you_to = argument4;
 	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 2, x_position + 370, y_position + 41))

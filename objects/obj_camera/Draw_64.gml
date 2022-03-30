@@ -361,9 +361,7 @@ and (!instance_exists(obj_title))
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_center);
 		draw_text_outlined(window_get_width() - 200, hud_show_score, Text("Score"), global.default_text_size, c_white, c_black, 1);
-		draw_set_font(font_default);
 		draw_text_outlined(window_get_width() - 200, hud_show_score + 32, string(score), global.default_text_size, c_white, c_black, 1);
-		scr_set_default_font();
 		#endregion /*Score END*/
 		
 		#region /*Time Countdown*/

@@ -23,10 +23,8 @@ and (mouse_check_button_pressed(mb_left))
 	}
 }
 
-#region /*Initialize Font*/
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-#endregion /*Initialize Font*/
 
 /*Sprite*/
 draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_height() / 2, 1, 1, 0, c_white, 1);

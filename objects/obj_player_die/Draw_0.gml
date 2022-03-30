@@ -79,7 +79,6 @@ and (iris_xscale <= 0.001)
 		if (lives >= 1)
 		{
 			global.timeattack_realmillisecond = 0;
-			global.theme = "ground";
 			global.level_clear_rate = noone;
 			score = 0;
 			scr_savelevel();
@@ -101,7 +100,6 @@ and (iris_xscale <= 0.001)
 		if (lives >= 1)
 		{
 			global.timeattack_realmillisecond = 0;
-			global.theme = "ground";
 			global.level_clear_rate = noone;
 			score = 0;
 			scr_savelevel();

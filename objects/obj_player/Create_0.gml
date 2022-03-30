@@ -11,22 +11,23 @@ alarm[0] = 1; /*Initialize custom character timer. This code needs to be initial
 #region /*Initialize Custom character*/
 
 #region /*Allow*/
-allow_drowning = true;
-allow_stop_after_landing_triple_jump = false;
-allow_roll = false;
-allow_ledge_grab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
-allow_ground_pound = true; /*If you can ground pound or not*/
-allow_ground_poundjump = true;
-allow_wall_jump = true; /*If you can wall jump or not*/
-allow_wall_climb = false; /*If you can wall climb or not*/
+allow_crawl = true;
+allow_crouch = true;
 allow_dive = true; /*Dive when you have speed or during a ground pound*/
 allow_dive_ground_boost = true;
-allow_survive_lava = true;
-allow_run = true;
+allow_drowning = true;
+allow_ground_pound = true; /*If you can ground pound or not*/
+allow_ground_pound_jump = true;
 allow_homing_attack = false;
-allow_crawl = true;
-allow_tongue = false; /*A tongue that extends*/
+allow_ledge_grab = false; /*Needs fixing, the player should stick to the wall more, if there isn't a wall you should fall, if the wall moves you should move with it*/
 allow_overflow_hp = false;
+allow_roll = false;
+allow_run = true;
+allow_stop_after_landing_triple_jump = false;
+allow_survive_lava = true;
+allow_tongue = false; /*A tongue that extends*/
+allow_wall_climb = true; /*If you can wall climb or not*/
+allow_wall_jump = true; /*If you can wall jump or not*/
 #endregion /*Allow END*/
 
 #region /*Character Values Handeling*/
@@ -56,134 +57,16 @@ triple_jump_height = 14.5;
 normal_jump_height = 11.5;
 higher_jump_height = 13;
 double_jump_height = 11.5;
-hoverstomp_distance = 500;
+homing_attack_distance = 500;
 #endregion /*Character Values Handeling END*/
 
 #region /*Play as Custom character*/
 
-#region /*Sprite origin point variables. If there is no config.ini file, then make every xorig and yorig variable zero*/
-climb_under_y_offset = 0;
-mask_crouch_xorig = 0;
-mask_crouch_yorig = 0;
-mask_xorig = 0;
-mask_yorig = 0;
-sprite_against_wall_xorig = 0;
-sprite_against_wall_yorig = 0;
-sprite_climb_under_look_up_xorig = 0;
-sprite_climb_under_look_up_yorig = 0;
-sprite_climb_under_spin_fast_xorig = 0;
-sprite_climb_under_spin_fast_yorig = 0;
-sprite_climb_under_spin_xorig = 0;
-sprite_climb_under_spin_yorig = 0;
-sprite_climb_under_still_xorig = 0;
-sprite_climb_under_still_yorig = 0;
-sprite_climb_under_xorig = 0;
-sprite_climb_under_yorig = 0;
-sprite_crawl_xorig = 0;
-sprite_crawl_yorig = 0;
-sprite_crouch_fall_xorig = 0;
-sprite_crouch_fall_yorig = 0;
-sprite_crouch_jump_xorig = 0;
-sprite_crouch_jump_yorig = 0;
-sprite_crouch_xorig = 0;
-sprite_crouch_yorig = 0;
-sprite_die_xorig = 0;
-sprite_die_yorig = 0;
-sprite_dive_xorig = 0;
-sprite_dive_yorig = 0;
-sprite_double_jump_xorig = 0;
-sprite_double_jump_yorig = 0;
-sprite_fall_slower_xorig = 0;
-sprite_fall_slower_yorig = 0;
-sprite_fall_xorig = 0;
-sprite_fall_yorig = 0;
-sprite_game_over_character_portrait_xorig = 0;
-sprite_game_over_character_portrait_yorig = 0;
-sprite_ground_pound_get_up_xorig = 0;
-sprite_ground_pound_get_up_yorig = 0;
-sprite_ground_pound_xorig = 0;
-sprite_ground_pound_yorig = 0;
-sprite_jump_xorig = 0;
-sprite_jump_yorig = 0;
-sprite_jump_transition_to_fall_xorig = 0;
-sprite_jump_transition_to_fall_yorig = 0;
-sprite_look_up_xorig = 0;
-sprite_look_up_yorig = 0;
-sprite_panting_xorig = 0;
-sprite_panting_yorig = 0;
-sprite_run2_xorig = 0;
-sprite_run2_yorig = 0;
-sprite_run3_xorig = 0;
-sprite_run3_yorig = 0;
-sprite_run4_xorig = 0;
-sprite_run4_yorig = 0;
-sprite_run_xorig = 0;
-sprite_run_yorig = 0;
-sprite_sitting_down_to_eat_xorig = 0;
-sprite_sitting_down_to_eat_yorig = 0;
-sprite_sitting_eat_closed_mouth_xorig = 0;
-sprite_sitting_eat_closed_mouth_yorig = 0;
-sprite_sitting_eat_open_mouth_open_eye_xorig = 0;
-sprite_sitting_eat_open_mouth_open_eye_yorig = 0;
-sprite_sitting_eat_open_mouth_xorig = 0;
-sprite_sitting_eat_open_mouth_yorig = 0;
-sprite_sitting_eat_surprised_xorig = 0;
-sprite_sitting_eat_surprised_yorig = 0;
-sprite_sitting_eating_xorig = 0;
-sprite_sitting_eating_yorig = 0;
-sprite_skidding_ice_xorig = 0;
-sprite_skidding_ice_yorig = 0;
-sprite_skidding_xorig = 0;
-sprite_skidding_yorig = 0;
-sprite_spring_down_xorig = 0;
-sprite_spring_down_yorig = 0;
-sprite_spring_transition_xorig = 0;
-sprite_spring_transition_yorig = 0;
-sprite_spring_up_xorig = 0;
-sprite_spring_up_yorig = 0;
-sprite_stand_cold_xorig = 0;
-sprite_stand_cold_yorig = 0;
-sprite_stand_xorig = 0;
-sprite_stand_yorig = 0;
-sprite_standing_on_something_xorig = 0;
-sprite_standing_on_something_yorig = 0;
-sprite_standing_with_item_in_front_xorig = 0;
-sprite_standing_with_item_in_front_yorig = 0;
-sprite_stomp_spin_xorig = 0;
-sprite_stomp_spin_yorig = 0;
-sprite_swim_fall_xorig = 0;
-sprite_swim_fall_yorig = 0;
-sprite_swim_stand_xorig = 0;
-sprite_swim_stand_yorig = 0;
-sprite_swim_xorig = 0;
-sprite_swim_yorig = 0;
-sprite_triple_jump_xorig = 0;
-sprite_triple_jump_yorig = 0;
-sprite_vine_climb_xorig = 0;
-sprite_vine_climb_yorig = 0;
-sprite_vine_stay_xorig = 0;
-sprite_vine_stay_yorig = 0;
-sprite_walk_xorig = 0;
-sprite_walk_yorig = 0;
-sprite_walking_with_item_in_front_xorig = 0;
-sprite_walking_with_item_in_front_yorig = 0;
-sprite_wall_slide_down_xorig = 0;
-sprite_wall_slide_down_yorig = 0;
-sprite_wall_slide_up_xorig = 0;
-sprite_wall_slide_up_yorig = 0;
-sprite_wall_slide_xorig = 0;
-sprite_wall_slide_yorig = 0;
-#endregion /*Sprite origin point variables. If there is no config.ini file, then make every xorig and yorig variable zero. END*/
-
-#region /*Mask Index*/
-sprite_mask = sprite_index;
-#endregion /*Mask Index END*/
-
-#region /*Mask Crouch Index*/
-sprite_mask_crouch = sprite_index;
-#endregion /*Mask Crouch Index END*/
+climb_under_y_offset = 10;
 
 #region /*Sprite variables*/
+sprite_mask = spr_player_stand; /*Mask Index END*/
+sprite_mask_crouch = spr_player_stand; /*Mask Crouch Index END*/
 sprite_against_wall = noone;
 sprite_climb_under = noone;
 sprite_climb_under_look_up = noone;
@@ -439,23 +322,6 @@ voice_burned_10 = noone; /*Voice Burned 10*/
 
 #endregion /*Voices END*/
 
-#region /*Voices Variation Number*/
-voice_wall_jump_sndnumb = 1;
-voice_start_running_sndnumb = 1;
-voice_rope_catch_sndnumb = 1;
-voice_jump_spring_sndnumb = 1;
-voice_jump_rope_sndnumb = 1;
-voice_jump_sndnumb = 1;
-voice_jump_3rd_sndnumb = 1;
-voice_jump_2nd_sndnumb = 1;
-voice_get_invincibility_sndnumb = 1;
-voice_enter_goal_sndnumb = 1;
-voice_dive_sndnumb = 1;
-voice_damage_sndnumb = 1;
-voice_burned_running_sndnumb = 1;
-voice_burned_sndnumb = 1;
-#endregion /*Voices Variation Number*/
-
 voice_wallkick = noone;
 voice_startdash = noone;
 voice_rope_catch = noone;
@@ -499,56 +365,59 @@ intro_animation_sprite = noone; /*When there is a intro animation, the sprites f
 intro_animation_image_index = 0; /*Image index of intro animation*/
 #endregion /*Intro Animation Variables END*/
 
-can_save_to_character_config = false; /*Only turn true when playing as custom character*/
-hold_item_in_hands = ""; /*If the character is holding any items in their hands or not*/
-hold_item_in_hands_x = 0; /*Held item x position*/
-hold_item_number_of_times_stomped = 0; /*Save how many times the held item / held enemy have been stomped, so you don't reset that number when throwing the item*/
-current_file = global.file;
 assist_invincible = false;
 buffer_jump = 0; /*Jump buffer timer, set to 0*/
-can_mid_air_jump = 0; /*When 0, you can mid air jump. Counts down when above 0*/
+can_attack_after_dive_on_ground = 0; /*When landing on ground after dive, you should be able to still kill enemies for some frames, otherwise it feels unfair if you miss your dive a pixel away*/
+can_attack_after_dive_on_ground_max_value = 20; /*This is the value that the can_attack_after_dive_on_ground variable gets set to when landing on ground*/
 can_climb_horizontal_rope_cooldown = 0;
 can_dive = true;
 can_ground_pound = true;
-joystick_can_ground_pound = true;
 can_ledge_grab = true;
+can_mid_air_jump = 0; /*When 0, you can mid air jump. Counts down when above 0*/
+can_save_to_character_config = false; /*Only turn true when playing as custom character*/
 can_tongue = true;
+can_wall_jump = true;
+current_file = global.file;
 dive = false;
 dive_on_ground = 0;
-on_ground = false;
-can_attack_after_dive_on_ground = 0; /*When landing on ground after dive, you should be able to still kill enemies for some frames, otherwise it feels unfair if you miss your dive a pixel away*/
-can_attack_after_dive_on_ground_max_value = 20; /*This is the value that the can_attack_after_dive_on_ground variable gets set to when landing on ground*/
 double_jump_depleted_blink = 0;
 ground_pound = false;
+hold_item_in_hands = ""; /*If the character is holding any items in their hands or not*/
+hold_item_in_hands_x = 0; /*Held item x position*/
+hold_item_number_of_times_stomped = 0; /*Save how many times the held item / held enemy have been stomped, so you don't reset that number when throwing the item*/
 hspeed_dir = 1;
+invincible_blinking = 0;
+joystick_can_ground_pound = true;
 ledge_grab = false;
 ledge_grab_jump = false;
-roll = false;
-rope_angle_velocity = 0;
-rope_swing = false;
-stick_to_wall = false;
-wall_jump = false;
-can_wall_jump = true;
-wall_jump_time = 10;
-pressing_opposite_direction_to_drop_off_from_wall = 0;
 look_up_start_animation = true;
+on_ground = false;
 pause_hspeed = 0;
 pause_vspeed = 0;
+pressing_opposite_direction_to_drop_off_from_wall = 0;
+roll = false;
 star_image_index = 0;
-invincible_blinking = 0;
+stick_to_wall = false;
+wall_jump = false;
+wall_jump_setting = 1;
+wall_jump_time = 10;
 #endregion /*Don't change these variables END*/
 
 #region /*Rope Swing Variables*/
 grapple_x = x;
 grapple_y = y;
 rope_angle = point_direction(grapple_x, grapple_y, x, y);
+rope_angle_velocity = 0;
 rope_length = point_distance(grapple_x, grapple_y, x, y);
+rope_swing = false;
+rope_x = 0;
+rope_y = 0;
 #endregion /*Rope Swing Variables END*/
 
 speed_max = 4; /*Default max speed is 4, this value is what changes and determines the max speed*/
-double_tap_run_timer = 0;
 double_tap_left = false;
 double_tap_right = false;
+double_tap_run_timer = 0;
 
 #region /*Have Heart Balloon*/
 if (global.character_select_in_this_menu = "main_game")
@@ -684,84 +553,61 @@ if (asset_get_type("snd_music_map") == asset_sound)
 }
 #endregion /*Stop any world map music when playing a level END*/
 
-overflow_hp = 0; /*Starting Overflow HP. Should be 0 by default*/
-controller_connected = false;
-stuck_in_wall_counter = 0;
-effect_turnaround_subimg = 11
-effect_speedspark_subimg = 11;
-redblinktimer = 0;
-die = false;
-time = 600;
-time_second = 0;
 aim_image_index = 0;
-invincible = false;
-invincible_pitch = 1;
-drop_off_wall_climb = 0;
-
-homing_attack_x = 0;
-homing_attack_y = 0;
-in_water = false; /*If the player is in water or not, instead of checking for the actual obj_water, check for this variable instead*/
-old_in_water = false; /*This just checks if water splash effect should be done or not, by checking if the actual in_water is different from the old_in_water*/
-jump = 0;
-triplejumpdelay = 0;
-crouch = false;
 angle = 0;
-speeddash = false;
-speedunit = 0;
-last_standing_x = x;
-last_standing_y = y;
+basic_collectibles = 0;
+burnt = false;
+can_move = true;
+chain_reaction = 0;
+climb = false;
+controller_connected = false;
+crouch = false;
 default_voice_pitch = 1; /*Set the default pitch for the characters voice, by default it's 1*/
 default_xscale = 1; /*Sprite default horizontal stretching, set to 1*/
 default_yscale = 1; /*Sprite default vertical stretching, set to 1*/
+die = false;
 draw_xscale = 1; /*Sprite horizontal stretching, set to 1*/
 draw_yscale = 1; /*Sprite vertical stretching, set to 1*/
-xx = x;
-yy = y;
-smooth_teleport = true;
-powerup = noone;
-power_meter_running_sound = false;
-takendamage = 0;
-takendamage_freezetime = 80;
-music_pitch = 1;
-music_fade_in = 0;
-climb = false;
-horizontal_rope_climb = false;
-burnt = false;
-basic_collectibles = 0;
-stomp_spin = false;
-chain_reaction = 0;
+drop_off_wall_climb = 0;
+effect_speedspark_subimg = 11;
+effect_turnaround_subimg = 11
 goal = false;
-spring = false;
-spring_twist_sprite = false;
+homing_attack_x = 0;
+homing_attack_y = 0;
+horizontal_rope_climb = false;
+in_water = false; /*If the player is in water or not, instead of checking for the actual obj_water, check for this variable instead*/
+invincible = false;
+jump = 0;
+jump_transition_to_fall_animation = 0;
+last_standing_x = x;
+last_standing_y = y;
 move_towards_spring_endpoint = false;
+music_fade_in = 0;
+music_pitch = 1;
+old_in_water = false; /*This just checks if water splash effect should be done or not, by checking if the actual in_water is different from the old_in_water*/
+overflow_hp = 0; /*Starting Overflow HP. Should be 0 by default*/
+power_meter_running_sound = false;
+redblinktimer = 0;
+smooth_teleport = true;
+speeddash = false;
+speedunit = 0;
+spring = false;
+spring_animation = 0;
 spring_endpoint_x = 0;
 spring_endpoint_y = 0;
-spring_animation = 0;
-jump_transition_to_fall_animation = 0;
-can_move = true;
+spring_twist_sprite = false;
+stomp_spin = false;
+stuck_in_wall_counter = 0;
+takendamage = 0;
+takendamage_freezetime = 80;
+time = 600;
+time_second = 0;
+triplejumpdelay = 0;
 voice = noone;
-
-/*Multiplayer END*/
-
-/*Mobile Version*/
-mobile_controls = false;
-mobile_direction = +1;
-mobile_always_right = false;
-mobile_swipe_x = x;
-mobile_swipe_y = y;
-mobile_swipe_x2 = x;
-mobile_swipe_y2 = y;
-/*Test*/
-mobile_swipe_xprevious = x;
-mobile_swipe_yprevious = y;
-mobile_swipe = noone;
-mobile_swipe_timer = 0;
-/*Effects handler*/
-spark1_effect = false;
-spark2_effect = false;
-
-xspd = 0;
-yspd = 0;
+xx = x;
+yy = y;
+spark1_effect = false; /*Running spark effect 1 handler*/
+spark2_effect = false; /*Running spark effect 2 handler*/
 
 #region /*Initialize the controls*/
 key_dive_pressed = noone;

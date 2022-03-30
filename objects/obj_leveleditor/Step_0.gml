@@ -251,7 +251,7 @@ or (global.full_level_map_screenshot = true)
 			sprite_delete(thumbnail_sprite);
 			#endregion /*Save Thumbnail END*/
 			
-			menu_delay = 999; /*Disable all menu control*/
+			menu_delay = 9999; /*Disable all menu control*/
 			scr_save_custom_level();
 			lives = 5;
 			global.lives_until_assist = 0;
@@ -403,7 +403,7 @@ and (create_level_from_template_save_delay = 10)
 	sprite_delete(thumbnail_sprite);
 	#endregion /*Save Thumbnail END*/
 	
-	menu_delay = 999; /*Disable all menu control*/
+	menu_delay = 9999; /*Disable all menu control*/
 	scr_save_custom_level();
 	lives = 5;
 	global.lives_until_assist = 0;

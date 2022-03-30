@@ -10,15 +10,7 @@ global.company_name = "Jonnil"; /*String of what the company is called*/
 
 leveleditor_readme = noone; /*Readme textfile for how to use the level editor*/
 
-/*Change how menus look and function*/
-global.can_select_number_of_players = true; /*If this is true, there will be a number of players select screen before you start the game*/
-global.character_select_screen = true; /*If this is true, there will be a character select screen before you start the game*/
-global.character_clothes_customization = false; /*If this is true, you can costumize the character's clothes in the menu*/
-global.character_color_select = false; /*If this is true, you can choose the character's color in the menu*/
-global.select_number_of_players_before_selecting_characters = false; /*If you should select how many players are going to play before you select what character to play as*/
-global.max_number_of_official_characters = 2; /*Update this whenever you add more official playable characters! 1 = default*/
-global.max_number_of_official_resource_pack = 1; /*Update this whenever you add more official resource packs! 1 = default*/
-global.max_number_of_official_title_backgrounds = 2; /*Update this whenever you add more official title backgrounds! 1 = default, but more title backgrounds can be added, for example: 1 = light theme, 2 = dark theme*/
+#region /*Change how menus look and function*/
 
 #region /*What settings tabs to show up*/
 global.show_language_shortcut = false; /*If a shortcut for the language options should appear in the main menu to the left of the settings menu*/
@@ -41,8 +33,10 @@ global.enable_verbosity_slider = false;
 global.enable_narrator = true;
 #endregion /*What settings can be changed END*/
 
+#endregion /*Change how menus look and function END*/
+
 global.max_fps = 60; /*Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60*/
-global.default_text_size = 0.2 //0.1125;
+global.default_text_size = 2 //0.1125;
 global.default_view_width = 1920;
 global.default_view_height = 1080;
 
@@ -72,14 +66,6 @@ device_mouse_dbclick_enable(false); /*Game should be playable on mobile without 
 /*Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu*/
 global.equipped_upgrade_double_jump = true; /*If you have equipped the Double Jump Upgrade*/
 
-#region /*View Border and Port Size*/
-if (!os_browser)
-{
-	view_hborder = 1920;
-	view_vborder = 1080;
-}
-#endregion /*View Border and Port Size END*/
-
 global.convention_mode = false; /*When showing the game on a convention, turn this to true*/
 
 #region /*Show HUD Global Variables*/
@@ -93,7 +79,7 @@ global.hud_show_score = false;
 
 /*Game Start Event*/
 
-/*File Handeling*/
+#region /*File Handeling*/
 
 #region /*Create directory for saving custom levels*/
 if (!directory_exists(working_directory + "\custom_levels"))
@@ -126,6 +112,11 @@ if (file_exists(working_directory + "custom_levels/*.zip"))
 }
 #endregion /*Unzip custom level files END*/
 
+#endregion /*File Handeling END*/
+
+global.default_font = font_add("gamefont.ttc", 1000, true, false, 32, 34);
+draw_set_font(global.default_font);
+can_save_to_character_config = false;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
 sprite_splash_easteregg_yoffset = +128;
@@ -177,10 +168,6 @@ global.player1_can_play = false; /*Player 1 needs to join the game to be able to
 global.player2_can_play = false; /*Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player3_can_play = false; /*Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
 global.player4_can_play = false; /*Player 4 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
-global.color_for_player_1 = 0; /*Player 1 Select Color 1*/
-global.color_for_player_2 = 0; /*Player 2 Select Color 2*/
-global.color_for_player_3 = 0; /*Player 3 Select Color 3*/
-global.color_for_player_4 = 0; /*Player 4 Select Color 4 */
 global.hex_color_for_player_1 = c_white; /*Player 1 Hex Value Color*/
 global.hex_color_for_player_2 = c_white; /*Player 1 Hex Value Color*/
 global.hex_color_for_player_3 = c_white; /*Player 1 Hex Value Color*/
@@ -245,9 +232,7 @@ global.players_can_collide = false;
 global.player_has_entered_goal = false;
 global.pause_room = noone;
 global.pause_player = 0;
-global.key_used = "";
 global.playergame = 0;
-global.theme = "ground";
 global.basic_collectibles = 0;
 global.level_clear_rate = noone;
 global.current_level_clear_rate = noone;

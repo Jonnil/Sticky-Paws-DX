@@ -8,18 +8,16 @@
 /// @param bar_color
 /// @param variable_to_change
 
-function draw_menu_slider()
+function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color)
 {
 	
 	#region /*Initialize variables*/
-	var x_position = argument0; /*The buttons x origin position*/
-	var y_position = argument1; /*The buttons y origin position*/
-
-	var string_text = argument2;
-	var menu_index = argument3;
-	var variable_to_change = argument4;
-	var bar_color = argument5;
-	
+	x_position = argument0; /*The buttons x origin position*/
+	y_position = argument1; /*The buttons y origin position*/
+	string_text = argument2;
+	menu_index = argument3;
+	variable_to_change = argument4;
+	bar_color = argument5;
 	length_variable = 320;
 	#endregion /*Initialize variables END*/
 	

@@ -237,7 +237,7 @@ and (have_heart_balloon = true)
 	draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
 	draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, 1);
 }
-#region /*Heart above head END*/
+#endregion /*Heart above head END*/
 
 if (sprite_index >= 0)
 {
@@ -1243,12 +1243,6 @@ and (instance_exists(obj_player))
 	}
 }
 #endregion /*If player object is present, destroy the player object END*/
-
-if (global.trigger_ending = true)
-and (asset_get_type("room_ending_cutscene") == asset_room)
-{
-	room_goto(room_ending_cutscene);
-}
 
 #region /*Give the player lives if they get a game over*/
 if (lives <= 0)

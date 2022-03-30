@@ -6,7 +6,6 @@ normal = 1;
 hard = 1;
 delay = 0;
 undo_value = 0;
-undo_value_visible = true;
 sprite_basic_enemy = global.resource_pack_sprite_basic_enemy;
 sprite_basic_enemy_blind = global.resource_pack_sprite_basic_enemy_blind;
 sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;

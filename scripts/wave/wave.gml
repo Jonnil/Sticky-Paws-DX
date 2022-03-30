@@ -15,6 +15,6 @@
 
 function Wave(from, to, duration, offset)
 {
-	var _wave = (argument1 - argument0) * 0.5;
-	return argument0 + _wave + sin((((current_time * 0.001) + argument2 * argument3) / argument2) * (pi* 2)) * _wave;
+	var _wave = (to - from) * 0.5;
+	return from + _wave + sin((((current_time * 0.001) + duration * offset) / duration) * (pi* 2)) * _wave;
 }

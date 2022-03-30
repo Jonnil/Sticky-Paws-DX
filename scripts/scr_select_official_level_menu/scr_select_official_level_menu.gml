@@ -176,9 +176,7 @@ function scr_select_official_level_menu()
 		and (menu != "load_characters")
 		and (menu != "load_official_level_template")
 		{
-			draw_set_font(font_default);
 			draw_text_outlined(394 *(i-C*R) + 100 + 192, 226*(C-scroll) + 250 + 184, string(ds_list_find_value(global.all_loaded_main_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
-			scr_set_default_font();
 		}
 	}
 	#endregion /*Draw Thumbnail END*/
@@ -397,7 +395,7 @@ function scr_select_official_level_menu()
 		global.play_edited_level = false;
 		global.create_level_from_template = true;
 		can_navigate = false;
-		menu_delay = 999;
+		menu_delay = 9999;
 		
 		#region /*Create directories*/
 		if (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))

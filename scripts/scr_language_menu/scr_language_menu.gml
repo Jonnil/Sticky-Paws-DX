@@ -9,7 +9,7 @@ function scr_language_menu()
 	i < ds_grid_width(global.language_local_data);
 	i ++;)
 	{
-		draw_language_checkmark(400, 52 * (i-1) + 42 + menu_y_offset, global.language_local_data[# i, 0], "Language"+string(i), noone);
+		draw_language_checkmark(400, 52 * (i-1) + 42 + menu_y_offset, global.language_local_data[# i, 0], "Language" + string(i));
 	}
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_center);

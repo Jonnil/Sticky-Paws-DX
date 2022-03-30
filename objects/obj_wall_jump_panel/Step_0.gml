@@ -9,12 +9,17 @@ if (instance_exists(obj_camera))
 	and (obj_camera.player3.allow_wall_jump = false)
 	or(obj_camera.player4 > 0)
 	and (obj_camera.player4.allow_wall_jump = false)
+	
+	or (obj_camera.player1 > 0)
+	and (obj_camera.player1.wall_jump_setting <= 0)
+	or (obj_camera.player2 > 0)
+	and (obj_camera.player2.wall_jump_setting <= 0)
+	or (obj_camera.player3 > 0)
+	and (obj_camera.player3.wall_jump_setting <= 0)
+	or (obj_camera.player4 > 0)
+	and (obj_camera.player4.wall_jump_setting <= 0)
 	{
 		visible = true;
-	}
-	else
-	{
-		visible = false;
 	}
 }
 #endregion /*Make wall jump panel invisible if there are only players that have wall jump ability END*/

@@ -1,7 +1,5 @@
 function scr_virtual_keys()
 {
-	var mobile_joystick_x = 100;
-	var mobile_joystick_y = window_get_height() - 750;
 	var mobile_key_jump_x = window_get_width() - 200;
 	var mobile_key_jump_y = window_get_height() - 200;
 	var mobile_key_crouch_x = window_get_width() - 200;

@@ -1,25 +1,19 @@
-/// @description draw_menu_checkmark(x, y,string, menu_index,variable_to_check,bottom_text);
+/// @description draw_menu_checkmark(x, y, string, menu_index);
 /// @param x
 /// @param y
 /// @param string
 /// @param menu_index
-/// @param variable_to_check
-/// @param bottom_text
 
-function draw_language_checkmark()
+function draw_language_checkmark(x_position, y_position, string_text, menu_index)
 {
 	#region /*Checkmark*/
 	
 	#region /*Initialize variables*/
-	var x_position = argument0; /*The buttons x origin position*/
-	var y_position = argument1; /*The buttons y origin position*/
-
-	var string_text = argument2;
-	var menu_index = argument3;
-	var variable_to_check= argument4;
-	var bottom_text = argument5;
-	var clicked_on = false;
-	var hover_over_button = false;
+	x_position = argument0; /*The buttons x origin position*/
+	y_position = argument1; /*The buttons y origin position*/
+	
+	string_text = argument2;
+	menu_index = argument3;
 	var widen_button_offset = 7;
 	var width_of_button = 670;
 	#endregion /*Initialize variables END*/
@@ -117,32 +111,8 @@ function draw_language_checkmark()
 	#region /*Text inside the menu button*/
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
-	if (string_text = "日本語")
-	and (asset_get_type("font_japanese") == asset_font)
-	{
-		draw_set_font(font_japanese);
-	}
-	else
-	if (asset_get_type("font_default") == asset_font)
-	{
-		draw_set_font(font_default);
-	}
 	draw_text_outlined(x_position +82, y_position + 16,string(string_text), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-	scr_set_default_font();
 	#endregion /*Text inside the menu button END*/
-	
-	#region /*Bottom Text*/
-	if (menu = menu_index)
-	and (bottom_text > noone)
-	{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
-		draw_set_alpha(0.5);
-		draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 128, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 64,string(bottom_text), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-	}
-	#endregion /*Bottom Text END*/
 	
 	#endregion /*Checkmark END*/
 }

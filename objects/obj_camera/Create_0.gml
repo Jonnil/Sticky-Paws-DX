@@ -178,7 +178,6 @@ hud_show_big_collectibles = -32;
 hud_show_big_collectibles_timer = 0;
 hud_show_score = -64;
 hud_show_score_timer = 0;
-hud_show_time = -32;
 hud_show_time_timer = 0;
 #endregion /*Hud Variables END*/
 

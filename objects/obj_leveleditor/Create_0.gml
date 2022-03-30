@@ -139,12 +139,10 @@ wall_surface_selected = 0; /*What kind of wall you're putting down*/
 show_icons_at_bottom = false;
 show_icons_at_top = false;
 icons_at_bottom_y = +100;
-erase_icons_at_top_y = - 100;
 show_undo_redo_icons = false; /*If the undo and redo buttons should show*/
 undo_redo_icons_y = +200; /*Undo and redo buttons y postition*/
 current_undo_value = 0; /*Every time you place down items, this value increases. When you undo, this value decreases.*/
 icons_at_top_y = - 100;
-icons_at_top_alpha = 1;
 icons_at_left_x =- 64;
 selected_object = 0;
 selected_object_menu_x = 0;
@@ -627,8 +625,7 @@ view_hview = 736;
 /*Default Views:   set_view_wview = 1024 + 400 -32   set_view_hview = 768-32  */
 #endregion /*View Size END*/
 
-set_view_wview= 1392;
-set_view_hview= 736;
+set_view_wview = 1392;
 
 #region /*Initialize Background*/
 background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;

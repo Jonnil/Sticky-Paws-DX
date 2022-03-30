@@ -10,7 +10,6 @@ stomped_delay = 0;
 die = false;
 die_volting = false;
 sliding_along_ground = 0;
-can_make_slide = false;
 sliding_along_ground_speed = 8;
 number_of_times_stomped = 0;
 stuck_in_wall_counter = 0;

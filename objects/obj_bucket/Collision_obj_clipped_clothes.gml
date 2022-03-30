@@ -184,7 +184,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#region /*Big Collectible 1 END*/
+		#endregion /*Big Collectible 1 END*/
 		
 		#region /*Big Collectible 2*/
 		if (item_inside = "big_collectible_2")
@@ -202,7 +202,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#region /*Big Collectible 2 END*/
+		#endregion /*Big Collectible 2 END*/
 		
 		#region /*Big Collectible 3*/
 		if (item_inside = "big_collectible_3")
@@ -220,7 +220,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#region /*Big Collectible 3 END*/
+		#endregion /*Big Collectible 3 END*/
 		
 		#region /*Big Collectible 4 */
 		if (item_inside = "big_collectible_4")
@@ -238,7 +238,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#region /*Big Collectible 4 END*/
+		#endregion /*Big Collectible 4 END*/
 		
 		#region /*Big Collectible 5*/
 		if (item_inside = "big_collectible_5")
@@ -256,7 +256,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#region /*Big Collectible 5 END*/
+		#endregion /*Big Collectible 5 END*/
 		
 		#region /*Invincibility Powerup*/
 		if (item_inside = "invincibility_powerup")

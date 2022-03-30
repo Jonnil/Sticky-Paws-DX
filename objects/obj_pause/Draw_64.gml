@@ -83,7 +83,6 @@ image_speed = 0;
 ///No Narrator
 if (global.narrator >= 0)
 {
-	menuvoice_titlesplash = noone;
 	menuvoice_1player = noone;
 	menuvoice_2player = noone;
 	menuvoice_3player = noone;
@@ -157,10 +156,6 @@ scr_quit_to_desktop_menu("quit_to_desktop");
 #region /*Which player is controling the pause menu?*/
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-
-#region /*Set a default font*/
-scr_set_default_font();
-#endregion /*Set a default font END*/
 
 #region /*Hide menu for clean screenshots text*/
 if (hide_menu_for_clean_screenshots_timer < 60 * 3)
@@ -577,7 +572,6 @@ and (global.pause_room = room_leveleditor)
 				
 				global.restart_level = true;
 				audio_stop_all();
-				global.theme = noone;
 				global.pause = false;
 				instance_activate_region(
 				camera_get_view_x(view_camera[view_current]) - 32,
@@ -647,7 +641,6 @@ and (global.pause_room = room_leveleditor)
 			
 			global.restart_level = true;
 			audio_stop_all();
-			global.theme = noone;
 			global.pause = false;
 			instance_activate_region(
 			camera_get_view_x(view_camera[view_current]) - 32,
@@ -737,7 +730,6 @@ and (global.pause_room = room_leveleditor)
 			
 			global.restart_level = true;
 			audio_stop_all();
-			global.theme = noone;
 			global.pause = false;
 			instance_activate_region(
 			camera_get_view_x(view_camera[view_current]) - 32,
@@ -904,7 +896,6 @@ and (global.pause_room = room_leveleditor)
 			global.quit_level = true;
 			global.quit_to_map = true;
 			audio_stop_all();
-			global.theme = noone;
 			global.pause = false;
 			if (asset_get_type("room_pause") == asset_room)
 			{
@@ -967,7 +958,6 @@ and (global.pause_room = room_leveleditor)
 			global.quit_level = true;
 			global.quit_to_title = true;
 			audio_stop_all();
-			global.theme = noone;
 			global.pause = false;
 			instance_activate_region(
 			camera_get_view_x(view_camera[view_current]) - 32,

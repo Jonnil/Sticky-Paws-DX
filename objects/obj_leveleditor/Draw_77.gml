@@ -96,7 +96,7 @@ if (quit_level_editor >= true)
 		sprite_delete(thumbnail_sprite);
 		#endregion /*Save Thumbnail END*/
 		
-		menu_delay = 999; /*Disable all menu control*/
+		menu_delay = 9999; /*Disable all menu control*/
 		scr_save_custom_level();
 		lives = 5;
 		global.lives_until_assist = 0;

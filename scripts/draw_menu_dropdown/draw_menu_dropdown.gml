@@ -10,30 +10,28 @@
 /// @param string_item3
 /// @param ...
 
-function draw_menu_dropdown()
+function draw_menu_dropdown(x_position, y_position, string_text, menu_index, variable_to_change, string_text_item1, string_text_item2, string_text_item3, string_text_item4, string_text_item5, string_text_item6, string_text_item7, string_text_item8, string_text_item9, string_text_item10, string_text_item11)
 {
 	
 	#region /*Button*/
 	
 	#region /*Initialize variables*/
-	var x_position = argument0; /*The buttons x origin position*/
-	var y_position = argument1; /*The buttons y origin position*/
-
-	var string_text = argument2;
-	var menu_index = argument3;
-	var variable_to_change = argument4;
-	var string_text_item1 = argument5;
-	var string_text_item2 = argument6;
-	var string_text_item3 = argument7;
-	var string_text_item4 = argument8;
-	var string_text_item5 = argument9;
-	var string_text_item6 = argument10;
-	var string_text_item7 = argument11;
-	var string_text_item8 = argument12;
-	var string_text_item9 = argument13;
-	var string_text_item10 = argument14;
-	var string_text_item11 = argument15;
-	var clicked_on = false;
+	x_position = argument0; /*The buttons x origin position*/
+	y_position = argument1; /*The buttons y origin position*/
+	string_text = argument2;
+	menu_index = argument3;
+	variable_to_change = argument4;
+	string_text_item1 = argument5;
+	string_text_item2 = argument6;
+	string_text_item3 = argument7;
+	string_text_item4 = argument8;
+	string_text_item5 = argument9;
+	string_text_item6 = argument10;
+	string_text_item7 = argument11;
+	string_text_item8 = argument12;
+	string_text_item9 = argument13;
+	string_text_item10 = argument14;
+	string_text_item11 = argument15;
 	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position + 32, y_position + 2, x_position +555+ 32, y_position + 41))

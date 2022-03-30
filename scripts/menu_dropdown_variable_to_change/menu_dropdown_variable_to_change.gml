@@ -1,7 +1,7 @@
-function menu_dropdown_variable_to_change()
+function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 {
-	var variable_to_change = argument0;
-	var change_to_value = argument1;
+	variable_to_change = argument0;
+	change_to_value = argument1;
 	
 	if (variable_to_change = global.assist_item_appear)
 	and (menu = "assist_item_appear")

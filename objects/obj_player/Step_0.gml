@@ -2898,7 +2898,6 @@ and (obj_camera.iris_xscale < 3)
 				global.checkpoint_minute = 0;
 				global.checkpoint_realmillisecond = 0;
 				global.lives_until_assist = 0;
-				global.theme = "ground";
 				scr_savelevel(); /*Important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear*/
 				if (global.actually_play_edited_level = false)
 				and (global.play_edited_level = true)
@@ -3013,7 +3012,6 @@ else
 					global.checkpoint_minute = 0;
 					global.checkpoint_realmillisecond = 0;
 					global.lives_until_assist = 0;
-					global.theme = "ground";
 					if (asset_get_type("room_world_map") == asset_room)
 					and (obj_camera.iris_yscale <= 0.001)
 					{
@@ -5232,7 +5230,6 @@ if (on_ground = true)
 	{
 		triplejumpdelay -= 1;
 	}
-	//if (abs(hspeed) < (speed_max_run - 1)) /*Player must be running at this speed to be able to triple jump*/
 	if (triplejumpdelay < 1)
 	and (vspeed >= 0)
 	{
@@ -5830,10 +5827,10 @@ and (global.pause = false)
 			rope_angle_velocity += rope_angle_acceleration;
 			rope_angle += rope_angle_velocity;
 			rope_angle_velocity *= 0.99;
-			ropex = grapple_x + lengthdir_x(rope_length, rope_angle);
-			ropey = grapple_y + lengthdir_y(rope_length, rope_angle);
-			hspeed = ropeX - x;
-			vspeed = ropeY - y;
+			rope_x = grapple_x + lengthdir_x(rope_length, rope_angle);
+			rope_y = grapple_y + lengthdir_y(rope_length, rope_angle);
+			hspeed = rope_x - x;
+			vspeed = rope_y - y;
 		}
 
 		if (instance_number(instance_nearest(x, y, obj_tongue)) < 1)
@@ -5947,16 +5944,14 @@ and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (wall_jump_setting >= 1)
 and (hold_item_in_hands = "")
-or(allow_wall_jump = false)
-and (can_wall_jump = true)
-and (can_move = true)
+
+or (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (place_meeting(x, y, obj_wall_jump_panel))
 and (hold_item_in_hands = "")
-or(allow_wall_climb = false)
-and (can_wall_jump = true)
-and (can_move = true)
+
+or (can_move = true)
 and (global.pause = false)
 and (takendamage <= takendamage_freezetime)
 and (place_meeting(x, y, obj_wall_climb_panel))
@@ -6622,7 +6617,7 @@ and (takendamage <= takendamage_freezetime)
 			{
 				speed_max = 0;
 				hspeed = 0;
-				if (allow_ground_poundjump = true)
+				if (allow_ground_pound_jump = true)
 				and (key_jump_hold)
 				{
 					can_ground_pound = false;
@@ -7587,7 +7582,6 @@ if (takendamage > 0)
 if (hp <= 0)
 {
 	die = true;
-	invincibility = false;
 }
 #endregion /*Make the player die if you have 0 HP END*/
 
@@ -8167,7 +8161,7 @@ if (allow_homing_attack = true)
 	and (asset_get_type("obj_enemy") == asset_object)
 	and (instance_exists(obj_enemy))
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
-	and (distance_to_object(obj_enemy) < hoverstomp_distance)
+	and (distance_to_object(obj_enemy) < homing_attack_distance)
 	and (instance_nearest(x, y, obj_enemy).bbox_bottom > y)
 	and (instance_nearest(x, y, obj_enemy).die = false)
 	and (homing_attack_x = 0)
@@ -8200,7 +8194,7 @@ if (allow_homing_attack = true)
 	and (asset_get_type("obj_spring") == asset_object)
 	and (instance_exists(obj_spring))
 	and (!collision_line(x, y, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, obj_wall, false, true))
-	and (distance_to_object(obj_spring) < hoverstomp_distance)
+	and (distance_to_object(obj_spring) < homing_attack_distance)
 	and (instance_nearest(x, y, obj_spring).bbox_bottom > y)
 	and (instance_nearest(x, y, obj_spring).can_bounce = 0)
 	and (homing_attack_x = 0)
@@ -8447,7 +8441,7 @@ or (sprite_index = sprite_run4)
 #region /*Left*/
 if (key_left)
 and (!key_right)
-and (place_meeting(bbox_left - 1, y, obj_wall))
+and (place_meeting(x - 1, y, obj_wall))
 and (climb = false)
 and (stick_to_wall = false)
 {
@@ -8468,7 +8462,7 @@ and (stick_to_wall = false)
 #region /*Right*/
 if (key_right)
 and (!key_left)
-and (place_meeting(bbox_right + 1, y, obj_wall))
+and (place_meeting(x + 1, y, obj_wall))
 and (climb = false)
 and (stick_to_wall = false)
 {
@@ -8767,8 +8761,9 @@ and (hold_item_in_hands = "")
 		#region /*Climb left on horizontal rope*/
 		if (key_left)
 		and (!key_right)
-		and (!place_meeting(bbox_left - 1, y, obj_wall))
-		and (place_meeting(bbox_left - 1, y, obj_horizontal_rope))
+		and (!place_meeting(x - 1, y, obj_wall))
+		and (!place_meeting(x - 10, y, obj_spikes))
+		and (place_meeting(x - 1, y, obj_horizontal_rope))
 		and (takendamage <= takendamage_freezetime)
 		{
 			image_xscale = -1;
@@ -8803,8 +8798,9 @@ and (hold_item_in_hands = "")
 		#region /*Climb right on horizontal rope*/
 		if (key_right)
 		and (!key_left)
-		and (!place_meeting(bbox_right + 1, y, obj_wall))
-		and (place_meeting(bbox_right + 1, y, obj_horizontal_rope))
+		and (!place_meeting(x + 1, y, obj_wall))
+		and (!place_meeting(x + 10, y, obj_spikes))
+		and (place_meeting(x + 1, y, obj_horizontal_rope))
 		and (takendamage <= takendamage_freezetime)
 		{
 			image_xscale = +1;
@@ -8887,8 +8883,9 @@ and (hold_item_in_hands = "")
 		}
 		
 		#region /*Bump into wall on left side when climbing horizontal rope*/
-		if (place_meeting(bbox_left - 1, y, obj_wall))
-		or(!place_meeting(bbox_left - 1, y, obj_horizontal_rope))
+		if (place_meeting(x - 1, y, obj_wall))
+		or (place_meeting(x - 10, y, obj_spikes))
+		or(!place_meeting(x - 1, y, obj_horizontal_rope))
 		{
 			if (hspeed < 0)
 			{
@@ -8912,8 +8909,9 @@ and (hold_item_in_hands = "")
 		else
 		
 		#region /*Bump into wall on right side when climbing horizontal rope*/
-		if (place_meeting(bbox_right + 1, y, obj_wall))
-		or(!place_meeting(bbox_right + 1, y, obj_horizontal_rope))
+		if (place_meeting(x + 1, y, obj_wall))
+		or (place_meeting(x + 10, y, obj_spikes))
+		or(!place_meeting(x + 1, y, obj_horizontal_rope))
 		{
 			if (hspeed > 0)
 			{
@@ -9247,13 +9245,13 @@ if (key_crouch)
 				if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
 				if (sprite_stand > noone){sprite_index = sprite_stand;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (sprite_mask_crouch > 0)
+				if (sprite_mask_crouch >= 0)
 				{
 					mask_index = sprite_mask_crouch;
 				}
 				else
 				{
-					mask_index = sprite_index;
+					mask_index = spr_player_stand;
 				}
 				if (asset_get_type("snd_crouch") == asset_sound)
 				{
@@ -9279,13 +9277,13 @@ and (crouch = true)
 		y -= 16;
 		draw_xscale = 0.75;
 		draw_yscale = 1.25;
-		if (sprite_mask > 0)
+		if (sprite_mask >= 0)
 		{
 			mask_index = sprite_mask;
 		}
 		else
 		{
-			mask_index = sprite_index;
+			mask_index = spr_player_stand;
 		}
 		if (asset_get_type("snd_rise") == asset_sound)
 		{
@@ -9327,25 +9325,25 @@ if (crouch = true)
 	{
 		if (asset_get_type("spr_player_slide") == asset_sprite)
 		{
-			if (sprite_mask_crouch > 0)
+			if (sprite_mask_crouch >= 0)
 			{
 				mask_index = sprite_mask_crouch;
 			}
 			else
 			{
-				mask_index = sprite_index;
+				mask_index = spr_player_stand;
 			}
 			sprite_index = spr_player_slide;
 		}
 		else
 		{
-			if (sprite_mask_crouch > 0)
+			if (sprite_mask_crouch >= 0)
 			{
 				mask_index = sprite_mask_crouch;
 			}
 			else
 			{
-				mask_index = sprite_index;
+				mask_index = spr_player_stand;
 			}
 			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}else
@@ -9548,13 +9546,13 @@ if (on_ground = true)
 	#endregion /*Stand END*/
 	
 	#region /*Mask*/
-	if (sprite_mask > 0)
+	if (sprite_mask >= 0)
 	{
 		mask_index = sprite_mask;
 	}
 	else
 	{
-		mask_index = sprite_index;
+		mask_index = spr_player_stand;
 	}
 	#endregion /*Mask END*/
 	
@@ -9632,13 +9630,13 @@ and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		if (sprite_stand > noone){sprite_index = sprite_stand;}else
 		if (sprite_walk > noone){sprite_index = sprite_walk;}
 	}
-	if (sprite_mask > 0)
+	if (sprite_mask >= 0)
 	{
 		mask_index = sprite_mask;
 	}
 	else
 	{
-		mask_index = sprite_index;
+		mask_index = spr_player_stand;
 	}
 }
 #endregion /*Swimming Sprites END*/
@@ -9667,13 +9665,13 @@ and (allow_crouch = true)
 			if (sprite_stand > noone){sprite_index = sprite_stand;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
 			
-			if (sprite_mask_crouch > 0)
+			if (sprite_mask_crouch >= 0)
 			{
 				mask_index = sprite_mask_crouch;
 			}
 			else
 			{
-				mask_index = sprite_index;
+				mask_index = spr_player_stand;
 			}
 			if (!place_meeting(x, y + 16, obj_wall))
 			or(!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
@@ -9704,13 +9702,13 @@ and (vspeed >= 0)
 	y -= 16;
 	draw_xscale = 0.75;
 	draw_yscale = 1.25;
-	if (sprite_mask > 0)
+	if (sprite_mask >= 0)
 	{
 		mask_index = sprite_mask;
 	}
 	else
 	{
-		mask_index = sprite_index;
+		mask_index = spr_player_stand;
 	}
 	if (asset_get_type("snd_rise") == asset_sound)
 	{
@@ -9728,13 +9726,13 @@ and (roll = true)
 	{
 		sprite_index = spr_player_roll;
 	}
-	if (sprite_mask_crouch > 0)
+	if (sprite_mask_crouch >= 0)
 	{
 		mask_index = sprite_mask_crouch;
 	}
 	else
 	{
-		mask_index = sprite_index;
+		mask_index = spr_player_stand;
 	}
 	if (asset_get_type("obj_wall") == asset_object)
 	and (!place_meeting(x, y + 1, obj_wall))
@@ -9808,13 +9806,13 @@ if (crouch = true)
 	if (abs(hspeed) >= 2.5)
 	and (on_ground = true)
 	{
-		if (sprite_mask_crouch > 0)
+		if (sprite_mask_crouch >= 0)
 		{
 			mask_index = sprite_mask_crouch;
 		}
 		else
 		{
-			mask_index = sprite_index;
+			mask_index = spr_player_stand;
 		}
 		if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 		if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
@@ -9935,13 +9933,13 @@ if (crouch = true)
 		}
 	}
 	jump = 0;
-	if (sprite_mask_crouch > 0)
+	if (sprite_mask_crouch >= 0)
 	{
 		mask_index = sprite_mask_crouch;
 	}
 	else
 	{
-		mask_index = sprite_index;
+		mask_index = spr_player_stand;
 	}
 }
 else
@@ -10130,13 +10128,13 @@ and (vspeed = 0)
 			look_up_start_animation = false;
 		}
 		image_speed = 0.3;
-		if (sprite_mask > 0)
+		if (sprite_mask >= 0)
 		{
 			mask_index = sprite_mask;
 		}
 		else
 		{
-			mask_index = sprite_index;
+			mask_index = spr_player_stand;
 		}
 	}
 	#endregion /*Look Up END*/
@@ -10278,13 +10276,13 @@ and (vspeed = 0)
 	#endregion /*Stand END*/
 	
 	#region /*Mask*/
-	if (sprite_mask > 0)
+	if (sprite_mask >= 0)
 	{
 		mask_index = sprite_mask;
 	}
 	else
 	{
-		mask_index = sprite_index;
+		mask_index = spr_player_stand;
 	}
 	#endregion /*Maske END*/
 	
@@ -10588,13 +10586,13 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			}
 		}
 	}
-	if (sprite_mask > 0)
+	if (sprite_mask >= 0)
 	{
 		mask_index = sprite_mask;
 	}
 	else
 	{
-		mask_index = sprite_index;
+		mask_index = spr_player_stand;
 	}
 }
 #endregion /*Jumping Sprites END*/
@@ -11102,6 +11100,7 @@ and (sprite_index != sprite_vine_climb)
 and (sprite_index != sprite_vine_stay)
 {
 	if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+	if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_index = 0; image_speed = 0;}else
 	if (sprite_stand > noone){sprite_index = sprite_stand;}else
 	if (sprite_walk > noone){sprite_index = sprite_walk;}
 }
