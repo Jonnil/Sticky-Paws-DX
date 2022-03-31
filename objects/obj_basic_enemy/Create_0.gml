@@ -1,5 +1,6 @@
 depth = +9;
 
+sprite_index = spr_noone;
 image_speed = 0.3;
 image_xscale = -1;
 draw_xscale = 1;

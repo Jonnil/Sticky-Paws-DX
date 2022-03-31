@@ -1,4 +1,8 @@
 drag_object = false;
+dragged_from_original_place = false;
+placed_for_the_first_time = true;
+drag_xstart = x;
+drag_ystart = y;
 drag_release_timer = 0;
 object = 0;
 easy = 1;

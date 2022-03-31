@@ -371,8 +371,9 @@ if (image_index = 74){current_comment = Text("Artist") + ": Furret76 - Sticcy pa
 
 #region /*Draw mouse cursor for menu navigation*/
 if (global.controls_used_for_menu_navigation = "mouse")
-and (os_type!= os_ios)
+and (global.full_level_map_screenshot = false)
 and (os_type!= os_android)
+and (os_type!= os_ios)
 {
 	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
 }

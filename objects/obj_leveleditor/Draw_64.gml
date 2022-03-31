@@ -44,6 +44,7 @@
 		if (menu = "continue")
 		or(menu = "options")
 		or(menu = "generate_level_map")
+		or(menu = "open_custom_levels_folder")
 		or(menu = "quit")
 		{
 			
@@ -193,7 +194,7 @@
 				and (menu_delay = 0)
 				{
 					menu_delay = 1;
-					menu = "quit";
+					menu = "open_custom_levels_folder";
 				}
 				if (key_a_pressed)
 				or(keyboard_check_pressed(vk_enter))
@@ -219,10 +220,42 @@
 			}
 			#endregion /*If menu is on generate level map END*/
 			
-			#region /*If menu is on quit*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Save and Quit"), "quit", noone);
+			#region /*Open Custom Levels Folder*/
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, window_get_width()/ 2 - 185 + 371, window_get_height()/ 2 + 42 + 41))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay = 0)
+			or (menu = "open_custom_levels_folder")
+			and (key_a_pressed)
+			and (menu_delay = 0)
+			{
+				scr_open_folder(game_save_id + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)))
+				menu_delay = 60 * 5;
+			}
+			if (menu = "open_custom_levels_folder")
+			and (key_up)
+			and (menu_delay = 0)
+			and (menu_joystick_delay <= 0)
+			{
+				menu_delay = 3;
+				can_navigate = true;
+				menu = "generate_level_map";
+			}
+			if (menu = "open_custom_levels_folder")
+			and (key_down)
+			and (menu_delay = 0)
+			and (menu_joystick_delay <= 0)
+			{
+				menu_delay = 3;
+				can_navigate = true;
+				menu = "quit";
+			}
+			#endregion /*Open Custom Levels Folder END*/
 			
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
+			#region /*If menu is on quit*/
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Save and Quit"), "quit", noone);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -240,7 +273,7 @@
 				and (menu_delay = 0)
 				{
 					menu_delay = 1;
-					menu = "generate_level_map";
+					menu = "open_custom_levels_folder";
 				}
 				else
 				if (key_down)

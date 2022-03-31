@@ -36,7 +36,10 @@ or (die = false)
 		}
 		if (asset_get_type("obj_blockbreak") == asset_object)
 		{
-			instance_create_depth(x, bbox_top - 15, 0, obj_blockbreak)
+			with(instance_create_depth(x, bbox_top - 18, 0, obj_blockbreak))
+			{
+				image_yscale = 0.1;
+			}
 		}
 	}
 	

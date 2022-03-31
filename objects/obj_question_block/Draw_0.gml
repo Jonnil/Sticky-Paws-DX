@@ -61,8 +61,9 @@ if (bounceup = false)
 			instance_nearest(x, y, obj_enemy).vspeed = 0;
 			if (asset_get_type("obj_blockbreak") == asset_object)
 			{
-				with(instance_create_depth(instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).bbox_top - 15, 0, obj_blockbreak))
+				with(instance_create_depth(instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).bbox_top - 18, 0, obj_blockbreak))
 				{
+					image_yscale = 0.1;
 					can_break_other_blocks = true;
 				}
 			}
@@ -72,7 +73,10 @@ if (bounceup = false)
 			bounceup = true;
 			if (asset_get_type("obj_blockbreak") == asset_object)
 			{
-				instance_create_depth(x, y - 32, 0, obj_blockbreak);
+				with(instance_create_depth(x, y - 32, 0, obj_blockbreak))
+				{
+					image_yscale = 0.1;
+				}
 			}
 			
 			#region /* 1 Basic Collectible*/
@@ -126,7 +130,10 @@ if (bounceup = false)
 					}
 					if (asset_get_type("obj_blockbreak") == asset_object)
 					{
-						instance_create_depth(x, y - 32, 0, obj_blockbreak);
+						with(instance_create_depth(x, y - 32, 0, obj_blockbreak))
+						{
+							image_yscale = 0.1;
+						}
 					}
 
 					if (asset_get_type("obj_brick_particle") == asset_object)
@@ -199,9 +206,12 @@ if (bounceup = false)
 				{
 					bounceup = true;
 					hit += 1;
-					if asset_get_type("obj_blockbreak") == asset_object
+					if (asset_get_type("obj_blockbreak") == asset_object)
 					{
-						instance_create_depth(x, y - 32, 0, obj_blockbreak);
+						with(instance_create_depth(x, y - 32, 0, obj_blockbreak))
+						{
+							image_yscale = 0.1;
+						}
 					}
 					#region /* 2 Basic Collectibles per hit*/
 					if asset_get_type("obj_basic_collectible") == asset_object

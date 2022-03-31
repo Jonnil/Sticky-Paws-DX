@@ -13,6 +13,7 @@ or(!file_exists(working_directory + "save_files/file" + string(current_file) + "
 if (global.full_level_map_screenshot = true)
 and (full_level_map_screenshot_timer <= 0)
 {
+	can_move = false;
 	instance_activate_all();
 	
 	#region /*Delete some objects so it doesn't show up in the screenshot*/
@@ -35,14 +36,14 @@ if (full_level_map_screenshot_timer >= 1)
 {
 	full_level_map_screenshot_timer += 1;
 }
-if (full_level_map_screenshot_timer = 10)
+if (full_level_map_screenshot_timer = 15)
 {
 	var custom_level_map_sprite;
 	custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
 	sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
 	sprite_delete(custom_level_map_sprite);
 }
-if (full_level_map_screenshot_timer = 15)
+if (full_level_map_screenshot_timer = 20)
 {
 	camera_set_view_border(view_camera[view_current], 1920, 1080); /*View Border*/
 	camera_set_view_pos(view_camera[view_current], x, y);
@@ -56,6 +57,7 @@ if (full_level_map_screenshot_timer = 15)
 	global.actually_play_edited_level = false;
 	global.play_edited_level = false;
 	full_level_map_screenshot_timer = 0;
+	can_move = true;
 	room_restart();
 }
 #endregion /*Save whole level as screenshot png file END*/
@@ -7212,7 +7214,7 @@ else
 
 if (music_fade_in < 1)
 {
-	music_fade_in = lerp(music_fade_in, 1, 0.01);
+	music_fade_in = lerp(music_fade_in, 1, 0.02); /*Make the music fade in, so music can't start off starteling, but fade in fast enough to be able to hear the beginning of the song*/
 }
 
 if (in_water = true)

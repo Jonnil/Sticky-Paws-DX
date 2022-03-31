@@ -57,10 +57,13 @@ else
 {
 	hspeed = +4;
 }
-if (x < camera_get_view_x(view_camera[view_current]) - 32)
+
+if (instance_exists(obj_camera))
+and (x < obj_camera.view_x_center - 980)
 and (image_xscale < 0)
 and (draw_xscale >= 0.8)
-or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
+or (instance_exists(obj_camera))
+and (x > obj_camera.view_x_center + 980)
 and (image_xscale > 0)
 and (draw_xscale >= 0.8)
 {

@@ -1186,7 +1186,7 @@ if (quit_level_editor <= 0)
 	#endregion /*Minimum undo value END*/
 	
 	#region /*Can put objects above other objects toggle*/
-	if (keyboard_check_pressed(ord("W")))
+	if (keyboard_check_pressed(ord("S")))
 	{
 		if (can_put_objects_above_other_objects = false)
 		{
@@ -1194,7 +1194,7 @@ if (quit_level_editor <= 0)
 		}
 		else
 		{
-			can_put_objects_above_other_objects = false
+			can_put_objects_above_other_objects = false;
 		}
 	}
 	#endregion /*Can put objects above other objects toggle END*/
@@ -1571,7 +1571,14 @@ and (!key_a_pressed)
 and (!mouse_check_button(mb_left))
 and (erase_mode = false)
 and (pause = false)
+or (keyboard_check_pressed(ord("Q")))
+and (!mouse_check_button(mb_middle))
+and (!key_a_pressed)
+and (!mouse_check_button(mb_left))
+and (erase_mode = false)
+and (pause = false)
 or(gamepad_button_check_pressed(0, gp_shoulderl))
+and (erase_mode = false)
 and (pause = false)
 {
 	if (asset_get_type("obj_leveleditor_fill") == asset_object)
@@ -1604,7 +1611,14 @@ and (!key_a_pressed)
 and (!mouse_check_button(mb_left))
 and (erase_mode = false)
 and (pause = false)
+or (keyboard_check_pressed(ord("W")))
+and (!mouse_check_button(mb_middle))
+and (!key_a_pressed)
+and (!mouse_check_button(mb_left))
+and (erase_mode = false)
+and (pause = false)
 or(gamepad_button_check_pressed(0, gp_shoulderr))
+and (erase_mode = false)
 and (pause = false)
 {
 	if (asset_get_type("obj_leveleditor_fill") == asset_object)

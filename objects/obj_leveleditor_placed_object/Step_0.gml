@@ -483,7 +483,10 @@ and (!mouse_check_button(mb_middle))
 and (!mouse_check_button(mb_right))
 and (delay > 1)
 {
-	if (keyboard_check_pressed(ord("Q")))
+	if (keyboard_check_pressed(ord("A")))
+	or (mouse_check_button_released(mb_left))
+	and (dragged_from_original_place = false)
+	and (placed_for_the_first_time = false)
 	{
 		if (asset_get_type("obj_leveleditor") == asset_object)
 		and (instance_exists(obj_leveleditor))
@@ -682,8 +685,9 @@ and (delay > 1)
 				}
 				#endregion /*Change Big Collectible*/
 				
-				#region /*Falling Block*/
 				else
+				
+				#region /*Falling Block*/
 				if (object = 19)
 				{
 					object = 20;
@@ -705,8 +709,9 @@ and (delay > 1)
 				}
 				#endregion /*Falling Block END*/
 				
-				#region /*Brick Block*/
 				else
+				
+				#region /*Brick Block*/
 				if (object = 4)
 				{
 					object = 5;
@@ -1038,6 +1043,8 @@ and (delay > 1)
 					object = 90;
 				}
 				#endregion /*Change Moveset Signs END*/
+				
+				alarm[0] = 1; /*Update sprite initializing. That code is in alarm event, so it's not running every frame in step event*/
 			}
 		}
 	}
@@ -1369,7 +1376,7 @@ and (delay > 1)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
-				if (drag_object <true)
+				if (drag_object <= false)
 				and (obj_leveleditor.pause = false)
 				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
 				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64))
@@ -1386,6 +1393,8 @@ and (delay > 1)
 						and (obj_leveleditor.show_grid = false)
 						{
 							drag_object = true;
+							drag_xstart = x;
+							drag_ystart = y;
 							obj_leveleditor.drag_object = true;
 						}
 					}
@@ -1424,6 +1433,7 @@ and (delay > 1)
 			drag_release_timer = 3;
 			drag_object = 0.5;
 			obj_leveleditor.drag_object = false;
+			dragged_from_original_place = false;
 		}
 	}
 	#endregion /*Release the object END*/
@@ -1438,10 +1448,22 @@ else
 	if (drag_object = 0.5)
 	{
 		drag_object = false;
+		dragged_from_original_place = false;
 	}
 }
 
+if (drag_xstart != x)
+or (drag_ystart != y)
+{
+	dragged_from_original_place = true;
+}
 #endregion /*Drag Object END*/
+
+if (mouse_check_button_released(mb_left))
+or(key_a_released)
+{
+	placed_for_the_first_time = false;
+}
 
 #region /*Spawn objects when starting room*/
 if (global.play_edited_level = true)
