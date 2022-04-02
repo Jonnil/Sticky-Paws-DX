@@ -10,7 +10,7 @@ if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (point_distance(x, y, obj_player.x, obj_player.y) < 64)
 and (can_navigate = false)
-and (instance_nearest(x, y, obj_player).key_up)
+and (instance_nearest(x, y, obj_player).key_up_pressed)
 and (instance_nearest(x, y, obj_player).vspeed = 0)
 {
 	instance_nearest(x, y, obj_player).hspeed = 0;

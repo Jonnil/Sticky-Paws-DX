@@ -218,7 +218,7 @@ global.language_localization = 0;
 
 scr_set_default_language();
 
-global.settings_sidebar_menu = "settings_back"; /*Settings sidebar*/
+global.settings_sidebar_menu = "accessibility_settings"; /*Settings sidebar*/
 global.show_tutorial_signs = true;
 global.enable_transitions = true;
 global.enable_background_layer1 = true;

@@ -4,6 +4,8 @@ time += 1;
 if (time > 180)
 {
 	if (place_meeting(x, y, obj_water))
+	or (instance_exists(obj_water_level))
+	and (y > obj_water_level.y)
 	{
 		with(instance_create_depth(x, bbox_top, 0, obj_big_air_bubble))
 		{
@@ -13,6 +15,10 @@ if (time > 180)
 	time = 0;
 }
 if (place_meeting(x, y, obj_water))
+and (random(10) >= 9)
+and (fps_real >= 210)
+or (instance_exists(obj_water_level))
+and (y > obj_water_level.y)
 and (random(10) >= 9)
 and (fps_real >= 210)
 {
@@ -27,6 +33,8 @@ if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 }
 
 if (place_meeting(x, y, obj_water))
+or (instance_exists(obj_water_level))
+and (y > obj_water_level.y)
 {
 	image_alpha = lerp(image_alpha, 1, 0.1);
 }

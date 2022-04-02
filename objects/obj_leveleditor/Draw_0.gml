@@ -31,6 +31,16 @@ if (instance_exists(obj_level_width))
 	draw_line_width_color(obj_level_width.x - 16, camera_get_view_y(view_camera[0]), obj_level_width.x - 16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), 2, c_black, c_black);
 }
 
+/*Water Level Height Line*/
+if (instance_exists(obj_water_level_height))
+{
+	draw_line_width_color(camera_get_view_x(view_camera[0]), obj_water_level_height.y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), obj_water_level_height.y - 16, 4, c_white, c_white);
+}
+if (instance_exists(obj_water_level_height))
+{
+	draw_line_width_color(camera_get_view_x(view_camera[0]), obj_water_level_height.y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), obj_water_level_height.y - 16, 2, c_black, c_black);
+}
+
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/
@@ -1228,6 +1238,8 @@ if (quit_level_editor <= 0)
 		and (!position_meeting(x, y, obj_level_height))
 		and (asset_get_type("obj_level_width") == asset_object)
 		and (!position_meeting(x, y, obj_level_width))
+		and (asset_get_type("obj_water_level_height") == asset_object)
+		and (!position_meeting(x, y, obj_water_level_height))
 		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
 		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /*Can't place objects when clicking the top buttons*/
 		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32)) /*Can't place objects when clicking the play button*/

@@ -114,7 +114,6 @@
 				can_navigate = true;
 				in_settings = true;
 				can_navigate_settings_sidebar = true;
-				global.settings_sidebar_menu = "game_settings";
 				menu = noone;
 				menu_delay = 10;
 			}
@@ -148,7 +147,6 @@
 						can_navigate = true;
 						in_settings = true;
 						can_navigate_settings_sidebar = true;
-						global.settings_sidebar_menu = "game_settings";
 						menu = noone;
 						menu_delay = 10;
 					}
@@ -492,16 +490,7 @@
 	}
 	#endregion /*Pause Menu END*/
 	
-	#region /*Options*/
-	if (pause = true)
-	and (menu!= "continue")
-	and (menu!= "options")
-	and (menu!= "generate_level_map")
-	and (menu!= "quit")
-	{
-		scr_options_menu();
-	}
-	#endregion /*Options END*/
+	scr_options_menu(); /*Options*/
 	
 	#region /*Hover over icons reveals the icons*/
 	

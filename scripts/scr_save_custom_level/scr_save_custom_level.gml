@@ -123,6 +123,10 @@ function scr_save_custom_level()
 			{
 				ini_write_real("info", "level_width", obj_level_width.x);
 			}
+			if (instance_exists(obj_water_level_height))
+			{
+				ini_write_real("info", "water_level_height", obj_water_level_height.y);
+			}
 			ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
 			ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
 			ini_close();

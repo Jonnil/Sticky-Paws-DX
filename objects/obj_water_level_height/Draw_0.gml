@@ -12,11 +12,11 @@ if (global.actually_play_edited_level = false)
 and (global.play_edited_level = false)
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(0, y - 16, obj_level_width.x - 16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(camera_get_view_x(view_camera[0]), y - 16, room_width, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_blue, c_blue, c_blue, c_blue, false);
 	draw_set_alpha(1);
 	if (asset_get_type("spr_level_height") == asset_sprite)
 	{
-		draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_blue, 1);
 	}
 }
 
@@ -73,27 +73,16 @@ else
 	if drag_object = 0.5
 	{
 		drag_object = false;
-		//move_snap(32, 32);
 	}
 }
 
 #region /*Make sure the level end isn't outside of the level, this code has to be after the drag object code*/
-if (y < 1080 + 16)
-and (global.actually_play_edited_level = false)
-and (global.play_edited_level = false)
-{
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	draw_text_outlined(x, y + 32, Text("Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_red, 1);
-	draw_text_outlined(x, y+64, Text("Warning! Level height shorter than normal"), global.default_text_size * 0.75, c_black, c_red, 1);
-}
-else
 if (global.actually_play_edited_level = false)
 and (global.play_edited_level = false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	draw_text_outlined(x, y + 32, Text("Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(x, y + 32, Text("Water Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_white, 1);
 }
 if (y > room_height)
 {
@@ -108,6 +97,17 @@ or(global.actually_play_edited_level = true)
 	{
 		global.play_edited_level = true;
 	}
-	room_height = bbox_top;
+	if (asset_get_type("obj_water_level") == asset_object)
+	{
+		instance_create_depth(x, y, 0, obj_water_level);
+	}
 	instance_destroy();
+}
+
+if (instance_exists(obj_level_height))
+and (drag_object = false)
+and (obj_level_height.drag_object = false)
+and (obj_level_height.y = y)
+{
+	y += 32;
 }

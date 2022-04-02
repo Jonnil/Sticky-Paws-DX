@@ -7263,6 +7263,7 @@ if (asset_get_type("obj_water") == asset_object)
 	or(asset_get_type("obj_water_level") == asset_object)
 	and (instance_exists(obj_water_level))
 	and (y > obj_water_level.y)
+	and (obj_water_level.y < room_height)
 	{
 		dive = false;
 		if (in_water = false)
@@ -7427,9 +7428,13 @@ if (asset_get_type("obj_water") == asset_object)
 
 #region /*Drowning*/
 if (allow_drowning = true)
+and (can_move = true)
+and (goal = false)
 and (global.assist_enable = true)
 and (global.assist_breathe_underwater = false)
-or(allow_drowning = true)
+or (allow_drowning = true)
+and (can_move = true)
+and (goal = false)
 and (global.assist_enable = false)
 {
 	drawn_frames_until_drowning = lerp(drawn_frames_until_drowning, frames_until_drowning, 0.1);

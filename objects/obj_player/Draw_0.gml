@@ -107,16 +107,16 @@ if (y < camera_get_view_y(view_camera[view_current]))
 	{
 		if (invincible_blinking%20 == 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
+		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside top view END*/
@@ -137,16 +137,16 @@ and (y < room_height)
 	{
 		if (invincible_blinking%20 == 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
+			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 		}
 	}
 	else
 	{
-		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2*sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
+		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 	}
 }
 #endregion /*Draw arrow when player is outside bottom view END*/

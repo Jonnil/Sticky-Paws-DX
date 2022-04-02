@@ -87,6 +87,7 @@
     {"id":{"name":"obj_horizontal_rope","path":"objects/obj_horizontal_rope/obj_horizontal_rope.yy",},"order":5,},
     {"id":{"name":"spr_clipper","path":"sprites/spr_clipper/spr_clipper.yy",},"order":58,},
     {"id":{"name":"draw_menu_slider","path":"scripts/draw_menu_slider/draw_menu_slider.yy",},"order":6,},
+    {"id":{"name":"obj_water_level_height","path":"objects/obj_water_level_height/obj_water_level_height.yy",},"order":11,},
     {"id":{"name":"spr_cracks","path":"sprites/spr_cracks/spr_cracks.yy",},"order":102,},
     {"id":{"name":"spr_noone","path":"sprites/spr_noone/spr_noone.yy",},"order":142,},
     {"id":{"name":"snd_die_melody","path":"sounds/snd_die_melody/snd_die_melody.yy",},"order":25,},
@@ -164,7 +165,6 @@
     {"id":{"name":"spr_player_leg_stand","path":"sprites/spr_player_leg_stand/spr_player_leg_stand.yy",},"order":15,},
     {"id":{"name":"spr_player_hand_stand","path":"sprites/spr_player_hand_stand/spr_player_hand_stand.yy",},"order":16,},
     {"id":{"name":"spr_level_player_1_start","path":"sprites/spr_level_player_1_start/spr_level_player_1_start.yy",},"order":17,},
-    {"id":{"name":"font_default","path":"fonts/font_default/font_default.yy",},"order":2,},
     {"id":{"name":"snd_squat","path":"sounds/snd_squat/snd_squat.yy",},"order":131,},
     {"id":{"name":"snd_enemyvoice_big_defeated3","path":"sounds/snd_enemyvoice_big_defeated3/snd_enemyvoice_big_defeated3.yy",},"order":30,},
     {"id":{"name":"spr_spring","path":"sprites/spr_spring/spr_spring.yy",},"order":43,},
@@ -209,7 +209,6 @@
     {"id":{"name":"spr_aim","path":"sprites/spr_aim/spr_aim.yy",},"order":136,},
     {"id":{"name":"obj_basic_enemy","path":"objects/obj_basic_enemy/obj_basic_enemy.yy",},"order":2,},
     {"id":{"name":"snd_footstep_grass_right","path":"sounds/snd_footstep_grass_right/snd_footstep_grass_right.yy",},"order":45,},
-    {"id":{"name":"font_japanese","path":"fonts/font_japanese/font_japanese.yy",},"order":3,},
     {"id":{"name":"spr_xbox_buttons","path":"sprites/spr_xbox_buttons/spr_xbox_buttons.yy",},"order":15,},
     {"id":{"name":"snd_dive","path":"sounds/snd_dive/snd_dive.yy",},"order":26,},
     {"id":{"name":"obj_catlyn_working","path":"objects/obj_catlyn_working/obj_catlyn_working.yy",},"order":34,},
@@ -437,7 +436,7 @@
     {"name":"tvOS","path":"options/tvos/options_tvos.yy",},
     {"name":"operagx","path":"options/operagx/options_operagx.yy",},
   ],
-  "isDnDProject": false,
+  "defaultScriptType": 1,
   "isEcma": false,
   "configs": {
     "name": "Default",
@@ -481,7 +480,7 @@
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
   ],
   "TextureGroups": [
-    {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
+    {"isScaled":true,"compressFormat":"bz2","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
   "IncludedFiles": [
     {"CopyToMask":-1,"filePath":"datafiles/Levels/Level1/Backgrounds","resourceVersion":"1.0","name":"background1.png","resourceType":"GMIncludedFile",},
@@ -3255,7 +3254,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"localization.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.2.1.618",
+    "IDEVersion": "2022.3.0.624",
   },
   "resourceVersion": "1.5",
   "name": "Sticky Paws DX",

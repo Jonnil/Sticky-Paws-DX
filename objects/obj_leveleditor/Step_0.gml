@@ -96,6 +96,10 @@ if (asset_get_type("obj_level_width") == asset_object)
 {
 	instance_activate_object(obj_level_width);
 }
+if (asset_get_type("obj_water_level_height") == asset_object)
+{
+	instance_activate_object(obj_water_level_height);
+}
 if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
 {
 	instance_activate_object(obj_background_brightness_gameplay);
@@ -295,8 +299,9 @@ and (!instance_exists(obj_leveleditor_fill))
 {
 	camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -camera_get_view_x(view_camera[view_current])), drag_y-(mouse_y-camera_get_view_y(view_camera[view_current])));
 }
-if (!mouse_check_button(mb_left))
-and (!mouse_check_button(mb_middle))
+if (mouse_check_button_released(mb_left))
+and (scroll_view = true)
+or (mouse_check_button_released(mb_middle))
 and (scroll_view = true)
 {
 	scroll_view = false;

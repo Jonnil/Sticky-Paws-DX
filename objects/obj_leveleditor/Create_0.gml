@@ -100,6 +100,12 @@ and (!instance_exists(obj_level_width))
 {
 	instance_create_depth(2720, 0, 0, obj_level_width);
 }
+if (asset_get_type("obj_water_level_height") == asset_object)
+and (instance_exists(obj_level_height))
+and (!instance_exists(obj_water_level_height))
+{
+	instance_create_depth(0, obj_level_height.y + 32, 0, obj_water_level_height);
+}
 #endregion /*Create level height and level width objects END*/
 
 
