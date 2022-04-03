@@ -121,7 +121,7 @@ After 9 Seconds,After 9 Seconds,Efter 9 sekunder,９秒の後で,,,Po 9 sekundac
 Always Show,Always Show,Visa alltid,,,,Zawsze pokazuj
 Never Show,Never Show,Visa aldrig,,,,Zawsze chowaj
 Remap This Player,Remap This Player,Mappa om denna spelare,,,,
-Dive,Dive,Dyka,,,,Sus
+Dive,Pounce,Dyka,,,,Sus
 Jump,Jump,Hoppa,,,,Skok
 Crouch,Crouch,Huka,,,,Przykuc
 Crouch Toggle,Crouch Toggle,Huka växling,,,,
@@ -140,8 +140,8 @@ Player 1 always run,Player 1 always run,Spelare 1 alltid springa,,,,
 Player 2 always run,Player 2 always run,Spelare 2 alltid springa,,,,
 Player 3 always run,Player 3 always run,Spelare 3 alltid springa,,,,
 Player 4 always run,Player 4 always run,Spelare 4 alltid springa,,,,
-Cancel dive by pressing the jump or dive key,Cancel dive by pressing the jump or dive key,Avbryt dyket genom att trycka på hopp- eller dykknappen,,,,
-Cancel dive by pressing the opposite direction,Cancel dive by pressing the opposite direction,Avbryt dyket genom att trycka i motsatt riktning,,,,
+Cancel dive by pressing the jump or dive key,Cancel pounce by pressing the jump or pounce key,Avbryt dyket genom att trycka på hopp- eller dykknappen,,,,
+Cancel dive by pressing the opposite direction,Cancel pounce by pressing the opposite direction,Avbryt dyket genom att trycka i motsatt riktning,,,,
 Down + Jump to Ground Pound,Down + Jump to Ground Pound,Ner + Hoppa för att Ground Pound,,,,
 Wall Jump,Wall Jump,Vägghopp,,,,Walljump
 Off,Off,Av,,,,
@@ -245,3 +245,5 @@ Open Resource Pack Folder,Open Resource Pack Folder,Öppna resurspaketmappen,リ
 Open Background Folder,Open Background Folder,Öppna bakgrundsmappen,背景フォルダを開く,,,
 Open Title Logo Folder,Open Title Logo Folder,Öppna titellogotyp mappen,タイトルロゴフォルダを開く,,,
 Open Character Folder,Open Character Folder,Öppna karaktär mappen,キャラクターフォルダを開く,,,
+Demo,Demo,Demo,,,,
+Play Demo,Play Demo,Spela demo,,,,

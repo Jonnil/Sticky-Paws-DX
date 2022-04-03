@@ -296,6 +296,7 @@ and (asset_get_type("room_pause") == asset_room)
 #endregion /*Pause END*/
 
 if (can_move = true)
+and (show_demo_over_message = false)
 and (global.pause = false)
 and (global.quit_level = false)
 {
@@ -947,8 +948,20 @@ if (delay < 100)
 if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 and (brand_new_file = true)
 and (can_move = true)
+and (show_demo_over_message = false)
 or(key_a_pressed)
+if (global.demo = false)
 and (can_move = true)
+and (show_demo_over_message = false)
+and (can_enter_level >= 30)
+and (asset_get_type("obj_level") == asset_object)
+and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+and (speed = 0)
+or(key_a_pressed)
+if (global.demo = true)
+and (instance_nearest(x, y, obj_level).level <= global.demo_max_levels)
+and (can_move = true)
+and (show_demo_over_message = false)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
@@ -973,7 +986,6 @@ and (speed = 0)
 		delay = 0;
 		score = 0;
 		global.spikes_emerge_time = 0;
-		global.timeattack_transfer = true;
 		global.x_checkpoint = instance_nearest(x, y, obj_level).x_checkpoint;
 		global.y_checkpoint = instance_nearest(x, y, obj_level).y_checkpoint;
 		with(instance_nearest(x, y, obj_level))
@@ -995,6 +1007,23 @@ and (speed = 0)
 		global.lives_until_assist = instance_nearest(x, y, obj_level).lives_until_assist;
 		global.increase_number_of_levels_cleared = instance_nearest(x, y, obj_level).increase_number_of_levels_cleared;
 	}
+}
+else
+if (global.demo = true)
+and (instance_nearest(x, y, obj_level).level > global.demo_max_levels)
+and (key_a_pressed)
+and (can_move = true)
+and (show_demo_over_message = false)
+and (menu_delay = 0)
+and (can_enter_level >= 30)
+and (asset_get_type("obj_level") == asset_object)
+and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+and (speed = 0)
+and (show_demo_over_message = false)
+{
+	menu_delay = 3;
+	menu = "purchase_now";
+	show_demo_over_message = true;
 }
 #endregion /*Enter Level END*/
 
@@ -1111,6 +1140,7 @@ if (asset_get_type("obj_level") == asset_object)
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (move_delay > 10)
 and (instance_nearest(x, y, obj_level).level_number > 0)
+and (point_distance(xx, yy, x, y) < 40)
 {
 	if (instance_nearest(x, y, obj_level).clear_rate = "enter")
 	or(instance_nearest(x, y, obj_level).clear_rate = "clear")

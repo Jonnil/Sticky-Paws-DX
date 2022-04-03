@@ -7,6 +7,12 @@ display_yoffset = 0
 
 #region /*Things you could change*/
 global.company_name = "Jonnil"; /*String of what the company is called*/
+global.game_name = "Sticky Paws"; /*String of what the game is called*/
+global.character_for_player_1 = "sticky"; /*Player 1 Select Character 1*/
+global.character_for_player_2 = "catlyn"; /*Player 2 Select Character 2*/
+global.character_for_player_3 = "sticky"; /*Player 3 Select Character 3*/
+global.character_for_player_4 = "catlyn"; /*Player 4 Select Character 4 */
+global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws/";
 
 leveleditor_readme = noone; /*Readme textfile for how to use the level editor*/
 
@@ -149,10 +155,6 @@ global.thumbnail_sprite = ds_list_create();
 global.grid_hsnap = 32; /*Horizontal grid snapping*/
 global.grid_vsnap = 32; /*Vertical grid snapping*/
 global.narrator = 0; /*Select Narrator*/
-global.character_for_player_1 = "sticky"; /*Player 1 Select Character 1*/
-global.character_for_player_2 = "catlyn"; /*Player 2 Select Character 2*/
-global.character_for_player_3 = "sticky"; /*Player 3 Select Character 3*/
-global.character_for_player_4 = "catlyn"; /*Player 4 Select Character 4 */
 global.voicepack_for_player_1 = 0; /*Player 1 Select Voicepack*/
 global.voicepack_for_player_2 = 0; /*Player 2 Select Voicepack*/
 global.voicepack_for_player_3 = 0; /*Player 3 Select Voicepack*/

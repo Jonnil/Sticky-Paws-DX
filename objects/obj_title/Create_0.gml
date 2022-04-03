@@ -4,6 +4,7 @@ selected_skin = 0;
 background_layer_x = 0;
 background_layer_y = 0;
 
+options_and_quit_y = display_get_gui_height()/ 2 + 100 + 120;
 level_index = 0;
 file_found = "";
 file_load_timer = 0;

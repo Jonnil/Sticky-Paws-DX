@@ -475,6 +475,15 @@ and (!instance_exists(obj_title))
 	draw_text_outlined( 32, 164, Text("Instance Count") + " : " + string(instance_count), global.default_text_size, c_black, c_white, 1);
 }
 
+#region /*Show if you are playing the demo version or not*/
+if (global.demo = true)
+{
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + Text("Demo"), global.default_text_size, c_black, c_white, 1);
+}
+#endregion /*Show if you are playing the demo version or not END*/
+
 #region /*Show if you have Assist mode enabled or not*/
 if (global.assist_enable = true)
 and (global.assist_show_assist_mode_text = true)

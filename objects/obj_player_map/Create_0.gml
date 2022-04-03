@@ -91,6 +91,10 @@ draw_xscale = 1;
 draw_yscale = 1;
 default_xscale = 1;
 default_yscale = 1;
+show_demo_over_message = false;
+menu = noone;
+menu_cursor_index = 0;
+menu_delay = 0;
 
 #region /*Load Game*/
 if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))

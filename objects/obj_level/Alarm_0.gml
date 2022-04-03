@@ -92,9 +92,3 @@ and (clear_rate = "closed")
 {
 	clear_rate = "enter";
 }
-
-if (global.demo = true)
-and (level > global.demo_max_levels)
-{
-	instance_destroy();
-}
