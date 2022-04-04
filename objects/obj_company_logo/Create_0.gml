@@ -1,9 +1,9 @@
 /*Create Event*/
 
-display_xscale = 1.5
-display_yscale = 1.5
-display_xoffset = 0
-display_yoffset = 0
+display_xscale = 1.5;
+display_yscale = 1.5;
+display_xoffset = 0;
+display_yoffset = 0;
 
 #region /*Things you could change*/
 global.company_name = "Jonnil"; /*String of what the company is called*/

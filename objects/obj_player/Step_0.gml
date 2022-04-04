@@ -6980,7 +6980,7 @@ and (on_ground = true)
 #endregion /*Dive ground boost END*/
 
 #region /*Ledge Grab*/
-if (allow_ledge_grab= true)
+if (allow_ledge_grab = true)
 {
 	if (in_water = true)
 	or(x < camera_get_view_x(view_camera[view_current]) + 25)
@@ -6990,9 +6990,9 @@ if (allow_ledge_grab= true)
 	}
 	else
 	{
-		can_ledge_grab= true;
+		can_ledge_grab = true;
 	}
-	if (can_ledge_grab= true)
+	if (can_ledge_grab = true)
 	{
 		if (hspeed!= 0)
 		{

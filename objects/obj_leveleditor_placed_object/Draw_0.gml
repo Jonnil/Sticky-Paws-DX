@@ -1,5 +1,4 @@
 #region /*All code before initializing the object*/
-
 #region /*Make sprite transparent if you're setting difficulty levels*/
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))

@@ -1,7 +1,7 @@
-key_a =(gamepad_button_check(0, gp_face1))or(keyboard_check(global.player1_key_jump));
+key_a = (gamepad_button_check(0, gp_face1))or(keyboard_check(global.player1_key_jump));
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or(keyboard_check_pressed(global.player1_key_jump));
-key_a_released =(gamepad_button_check_released(0, gp_face1))or(keyboard_check_released(global.player1_key_jump));
-key_b=(gamepad_button_check(0, gp_face2))or(keyboard_check(global.player1_key_sprint));
+key_a_released = (gamepad_button_check_released(0, gp_face1))or(keyboard_check_released(global.player1_key_jump));
+key_b = (gamepad_button_check(0, gp_face2))or(keyboard_check(global.player1_key_sprint));
 
 #region /*All code before initializing the object*/
 
@@ -343,6 +343,11 @@ and (!mouse_check_button(mb_middle))
 	if (obj_leveleditor.erase_mode = true)
 	and (mouse_check_button(mb_left))
 	or(mouse_check_button(mb_right))
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.erase_mode = true)
+	and (obj_leveleditor.key_a_hold)
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_b_hold)
 	{
 		if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
@@ -485,6 +490,10 @@ and (delay > 1)
 {
 	if (keyboard_check_pressed(ord("A")))
 	or (mouse_check_button_released(mb_left))
+	and (dragged_from_original_place = false)
+	and (placed_for_the_first_time = false)
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_a_released)
 	and (dragged_from_original_place = false)
 	and (placed_for_the_first_time = false)
 	{
@@ -1051,7 +1060,8 @@ and (delay > 1)
 
 	#region /*Use objects to change other objects*/
 	if (mouse_check_button(mb_left))
-	or(key_a)
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_a_hold)
 	{
 		if (!mouse_check_button(mb_middle))
 		{
@@ -1264,6 +1274,8 @@ if (place_object_angle = true)
 		second_y = obj_leveleditor.y;
 	}
 	if (mouse_check_button_released(mb_left))
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_a_released)
 	{
 		place_object_angle = false;
 	}
@@ -1289,7 +1301,11 @@ and (!mouse_check_button(mb_middle))
 	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
 	{
 		if (mouse_check_button(mb_right))
-		or(mouse_check_button(mb_left))
+		or (mouse_check_button(mb_left))
+		or (instance_exists(obj_leveleditor))
+		and (obj_leveleditor.key_a_hold)
+		or (instance_exists(obj_leveleditor))
+		and (obj_leveleditor.key_b_hold)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
@@ -1372,7 +1388,8 @@ and (delay > 1)
 	and (!mouse_check_button(mb_middle))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or(key_a_pressed)
+		or (instance_exists(obj_leveleditor))
+		and (obj_leveleditor.key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -1426,7 +1443,8 @@ and (delay > 1)
 	
 	#region /*Release the object*/
 	if (mouse_check_button_released(mb_left))
-	or(key_a_released)
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_a_released)
 	{
 		if (drag_object = true)
 		{
@@ -1460,7 +1478,8 @@ or (drag_ystart != y)
 #endregion /*Drag Object END*/
 
 if (mouse_check_button_released(mb_left))
-or(key_a_released)
+or (instance_exists(obj_leveleditor))
+and (obj_leveleditor.key_a_released)
 {
 	placed_for_the_first_time = false;
 }
@@ -1718,6 +1737,11 @@ and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get
 	and (!mouse_check_button(mb_right))
 	and (obj_leveleditor.erase_mode = false)
 	and (obj_leveleditor.drag_object = false)
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_a_hold)
+	and (!obj_leveleditor.key_b_hold)
+	and (obj_leveleditor.erase_mode = false)
+	and (obj_leveleditor.drag_object = false)
 	{
 		if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
@@ -1805,6 +1829,9 @@ and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get
 	#region /*Set to dissapear on difficulty level*/
 	if (mouse_check_button(mb_right))
 	and (!mouse_check_button(mb_left))
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_b_hold)
+	and (!obj_leveleditor.key_a_hold)
 	{
 		if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		/*erase_brush_size >= 1*/
