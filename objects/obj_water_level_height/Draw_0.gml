@@ -12,7 +12,7 @@ if (global.actually_play_edited_level = false)
 and (global.play_edited_level = false)
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(camera_get_view_x(view_camera[0]), y - 16, room_width, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_blue, c_blue, c_blue, c_blue, false);
+	draw_rectangle_color(camera_get_view_x(view_camera[0]), y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_blue, c_blue, c_blue, c_blue, false);
 	draw_set_alpha(1);
 	if (asset_get_type("spr_level_height") == asset_sprite)
 	{

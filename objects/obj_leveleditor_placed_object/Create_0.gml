@@ -1,6 +1,6 @@
 drag_object = false;
 dragged_from_original_place = false;
-placed_for_the_first_time = true;
+placed_for_the_first_time = false;
 drag_xstart = x;
 drag_ystart = y;
 drag_release_timer = 0;

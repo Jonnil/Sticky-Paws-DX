@@ -1,8 +1,10 @@
-depth = -10;
+depth = -20;x = 0;
+y = 0;
 
-if (global.custom_foreground_secret > noone)
+if (global.custom_foreground_secret >= 0)
 {
 	mask_index = global.custom_foreground_secret;
+	sprite_index = global.custom_foreground_secret;
 }
 
 #region /*Initialize Foreground*/

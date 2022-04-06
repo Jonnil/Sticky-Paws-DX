@@ -712,124 +712,6 @@ if (quit_level_editor <= 0)
 if (quit_level_editor <= 0)
 {
 
-#region /*Controller Input Changes*/
-if (global.controls_used_for_menu_navigation != "controller")
-{
-	x = mouse_x;
-	y = mouse_y;
-	cursor_x = window_mouse_get_x();
-	cursor_y = window_mouse_get_y();
-	
-}
-else
-if (global.controls_used_for_menu_navigation = "controller")
-{
-	if (key_up)
-	and (controller_y > camera_get_view_y(view_camera[view_current]))
-	{
-		if (gamepad_button_check(0, gp_face3))
-		or(gamepad_button_check(0, gp_face4))
-		{
-			controller_y-= 8;
-		}
-		else
-		{
-			controller_y-= 4;
-		}
-	}
-	if (key_down)
-	and (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-	{
-		if (gamepad_button_check(0, gp_face3))
-		or(gamepad_button_check(0, gp_face4))
-		{
-			controller_y += 8;
-		}
-		else
-		{
-			controller_y += 4;
-		}
-	}
-	if (key_left)
-	and (controller_x > camera_get_view_x(view_camera[view_current]))
-	{
-		if (gamepad_button_check(0, gp_face3))
-		or(gamepad_button_check(0, gp_face4))
-		{
-			controller_x -= 8;
-		}
-		else
-		{
-			controller_x -= 4;
-		}
-	}
-	if (key_right)
-	and (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	{
-		if (gamepad_button_check(0, gp_face3))
-		or(gamepad_button_check(0, gp_face4))
-		{
-			controller_x += 8;
-		}
-		else
-		{
-			controller_x += 4;
-		}
-	}
-	
-	#region /*Move view with gamepad*/
-	if (gamepad_button_check(0, gp_face3))
-	or(gamepad_button_check(0, gp_face4))
-	{
-		controller_view_speed = 16;
-	}
-	else
-	{
-		controller_view_speed = 8;
-	}
-	
-	if (gamepad_axis_value(0, gp_axisrv) < 0)
-	{
-		camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - controller_view_speed);
-		if (controller_y > camera_get_view_y(view_camera[view_current]))
-		{
-			controller_y -= controller_view_speed;
-		}
-	}
-	if (gamepad_axis_value(0, gp_axisrv) > 0)
-	{
-		camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + controller_view_speed);
-		if (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-		{
-			controller_y += controller_view_speed;
-		}
-	}
-	if (gamepad_axis_value(0, gp_axisrh) < 0)
-	{
-		camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) - controller_view_speed, camera_get_view_y(view_camera[view_current]));
-		if (controller_x > camera_get_view_x(view_camera[view_current]))
-		{
-			controller_x -= controller_view_speed;
-		}
-	}
-	if (gamepad_axis_value(0, gp_axisrh) > 0)
-	{
-		camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) + controller_view_speed, camera_get_view_y(view_camera[view_current]));
-		if (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-		{
-			controller_x += controller_view_speed;
-		}
-	}
-	#endregion /*Move view with gamepad END*/
-	x = controller_x;
-	y = controller_y;
-	cursor_x = controller_x;
-	cursor_y = controller_y;
-}
-#endregion /*Controller Input Changes END*/
-
-move_snap(global.grid_hsnap, global.grid_vsnap); /*Make sure to always move snap*/
-
 #region /*Scroll Cursor*/
 if (keyboard_check(vk_space))
 and (mouse_check_button(mb_left))
@@ -1140,6 +1022,7 @@ if (quit_level_editor <= 0)
 	
 	#region /*Can put objects above other objects toggle*/
 	if (keyboard_check_pressed(ord("S")))
+	and (!keyboard_check(vk_control))
 	{
 		if (can_put_objects_above_other_objects = false)
 		{

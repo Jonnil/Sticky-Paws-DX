@@ -341,7 +341,7 @@ global.player3_down_and_jump_to_groundpound = false;
 global.player4_down_and_jump_to_groundpound = false;
 
 #region /*Universal Keyboard Remapping*/
-global.fullscreen_key =vk_f11;
+global.fullscreen_key = vk_f11;
 #endregion /*Universal Keyboard Remapping*/
 
 global.level_name = ""; /*In the level editor, the name of the currently selected level will be stored here*/

@@ -90,6 +90,7 @@ if (delay > 1)
 		with(instance_create_depth(x, y, 0, obj_leveleditor_placed_object))
 		{
 			object = obj_leveleditor.place_object;
+			obj.placed_for_the_first_time = false;
 		}
 		if (fill_mode_type = "fill")
 		and (delay >= 5)

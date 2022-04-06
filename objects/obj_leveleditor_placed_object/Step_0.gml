@@ -488,572 +488,606 @@ and (!mouse_check_button(mb_middle))
 and (!mouse_check_button(mb_right))
 and (delay > 1)
 {
-	if (keyboard_check_pressed(ord("A")))
-	or (mouse_check_button_released(mb_left))
-	and (dragged_from_original_place = false)
-	and (placed_for_the_first_time = false)
-	or (instance_exists(obj_leveleditor))
-	and (obj_leveleditor.key_a_released)
-	and (dragged_from_original_place = false)
-	and (placed_for_the_first_time = false)
+	if (instance_exists(obj_leveleditor))
+	and (!keyboard_check(vk_space))
+	and (!mouse_check_button(mb_middle))
+	and (!mouse_check_button(mb_right))
+	and (obj_leveleditor.fill_mode = false)
+	and (obj_leveleditor.erase_mode = false)
+	and (obj_leveleditor.pause = false)
+	and (obj_leveleditor.menu_delay = 0)
+	and (asset_get_type("obj_leveleditor_placed_object") == asset_object)
+	and (asset_get_type("obj_level_player_1_start") == asset_object)
+	and (!place_meeting(x, y, obj_level_player_1_start))
+	and (asset_get_type("obj_level_player_2_start") == asset_object)
+	and (!place_meeting(x, y, obj_level_player_2_start))
+	and (asset_get_type("obj_level_player_3_start") == asset_object)
+	and (!place_meeting(x, y, obj_level_player_3_start))
+	and (asset_get_type("obj_level_player_4_start") == asset_object)
+	and (!place_meeting(x, y, obj_level_player_4_start))
+	and (asset_get_type("obj_level_height") == asset_object)
+	and (!position_meeting(x, y, obj_level_height))
+	and (asset_get_type("obj_level_width") == asset_object)
+	and (!position_meeting(x, y, obj_level_width))
+	and (asset_get_type("obj_water_level_height") == asset_object)
+	and (!position_meeting(x, y, obj_water_level_height))
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /*Can't place objects when clicking the top buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32)) /*Can't place objects when clicking the play button*/
 	{
-		if (asset_get_type("obj_leveleditor") == asset_object)
-		and (instance_exists(obj_leveleditor))
+		if (obj_leveleditor.show_grid = true)
+		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32 - 32, 80 + obj_leveleditor.icons_at_top_y + 16 - 32 -32, display_get_gui_width() + 64 + 32, 80 + obj_leveleditor.icons_at_top_y + 16 + 32 + 32)) /*Up and down buttons when grid is on*/
+		or (obj_leveleditor.show_grid = false)
 		{
-			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
-			and (obj_leveleditor.pause = false)
+			if (keyboard_check_pressed(ord("A")))
+			and (!keyboard_check(vk_control))
+			or (mouse_check_button_released(mb_left))
+			and (dragged_from_original_place = false)
+			and (placed_for_the_first_time = false)
+			or (instance_exists(obj_leveleditor))
+			and (obj_leveleditor.key_a_released)
+			and (dragged_from_original_place = false)
+			and (placed_for_the_first_time = false)
 			{
 				if (asset_get_type("obj_leveleditor") == asset_object)
+				and (instance_exists(obj_leveleditor))
 				{
-					with(obj_leveleditor)
+					if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
+					and (obj_leveleditor.pause = false)
 					{
-						move_snap(global.grid_hsnap, global.grid_vsnap); /*Make sure to always move snap*/
+						if (asset_get_type("obj_leveleditor") == asset_object)
+						{
+							with(obj_leveleditor)
+							{
+								move_snap(global.grid_hsnap, global.grid_vsnap); /*Make sure to always move snap*/
+							}
+						}
+				
+						#region /*Change wall into it's different forms*/
+						if (object = 1)
+						{
+							object = 1001;
+							obj_leveleditor.wall_surface_selected = 1;
+						}
+						else
+						if (object = 1001)
+						{
+							object = 1002;
+							obj_leveleditor.wall_surface_selected = 2;
+						}
+						else
+						if (object = 1002)
+						{
+							object = 1003;
+							obj_leveleditor.wall_surface_selected = 3;
+						}
+						else
+						if (object = 1003)
+						{
+							object = 1004;
+							obj_leveleditor.wall_surface_selected = 4;
+						}
+						else
+						if (object = 1004)
+						{
+							object = 1005;
+							obj_leveleditor.wall_surface_selected = 5;
+						}
+						else
+						if (object = 1005)
+						{
+							object = 1006;
+							obj_leveleditor.wall_surface_selected = 6;
+						}
+						else
+						if (object = 1006)
+						{
+							object = 1007;
+							obj_leveleditor.wall_surface_selected = 7;
+						}
+						else
+						if (object = 1007)
+						{
+							object = 1;
+							obj_leveleditor.wall_surface_selected = 0;
+						}
+						#endregion /*Change wall into it's different forms END*/
+				
+						#region /*Change bump in ground to it's different forms*/
+						if (object = 28)
+						{
+							object = 29;
+						}
+						else
+						if (object = 29)
+						{
+							object = 30;
+						}
+						else
+						if (object = 30)
+						{
+							object = 31;
+						}
+						else
+						if (object = 31)
+						{
+							object = 32;
+						}
+						else
+						if (object = 32)
+						{
+							object = 33;
+						}
+						else
+						if (object = 33)
+						{
+							object = 34;
+						}
+						else
+						if (object = 34)
+						{
+							object = 35;
+						}
+						else
+						if (object = 35)
+						{
+							object = 36;
+						}
+						else
+						if (object = 36)
+						{
+							object = 37;
+						}
+						else
+						if (object = 37)
+						{
+							object = 38;
+						}
+						else
+						if (object = 38)
+						{
+							object = 39;
+						}
+						else
+						if (object = 39)
+						{
+							object = 28;
+						}
+						#endregion /*Change bump in ground to it's different forms END*/				
+				
+						#region /*Change Basic Collectible Direction*/
+						else
+						if (object = 40)
+						{
+							object = 41;
+						}
+						else
+						if (object = 41)
+						{
+							object = 42;
+						}
+						else
+						if (object = 42)
+						{
+							object = 43;
+						}
+						else
+						if (object = 43)
+						{
+							object = 44;
+						}
+						else
+						if (object = 44)
+						{
+							object = 45;
+						}
+						else
+						if (object = 45)
+						{
+							object = 46;
+						}
+						else
+						if (object = 46)
+						{
+							object = 47;
+						}
+						else
+						if (object = 47)
+						{
+							object = 40;
+						}
+						#endregion /*Change Basic Collectible Direction*/
+				
+						#region /*Change Big Collectible*/
+						else
+						if (object = 48)
+						{
+							object = 49;
+						}
+						else
+						if (object = 49)
+						{
+							object = 50;
+						}
+						else
+						if (object = 50)
+						{
+							object = 51;
+						}
+						else
+						if (object = 51)
+						{
+							object = 52;
+						}
+						else
+						if (object = 52)
+						{
+							object = 48;
+						}
+						#endregion /*Change Big Collectible*/
+				
+						else
+				
+						#region /*Falling Block*/
+						if (object = 19)
+						{
+							object = 20;
+						}
+						else
+						if (object = 20)
+						{
+							object = 19;
+						}
+						else
+						if (object = 21)
+						{
+							object = 22;
+						}
+						else
+						if (object = 22)
+						{
+							object = 21;
+						}
+						#endregion /*Falling Block END*/
+				
+						else
+				
+						#region /*Brick Block*/
+						if (object = 4)
+						{
+							object = 5;
+						}
+						else
+						if (object = 5)
+						{
+							object = 6;
+						}
+						else
+						if (object = 6)
+						{
+							object = 7;
+						}
+						else
+						if (object = 7)
+						{
+							object = 8;
+						}
+						else
+						if (object = 8)
+						{
+							object = 9;
+						}
+						else
+						if (object = 9)
+						{
+							object = 10;
+						}
+						else
+						if (object = 10)
+						{
+							object = 10001;
+						}
+						else
+						if (object = 10001)
+						{
+							object = 4;
+						}
+						#endregion /*Brick Block*/
+				
+						#region /*Question Block*/
+						else
+						if (object = 11)
+						{
+							object = 12;
+						}
+						else
+						if (object = 12)
+						{
+							object = 13;
+						}
+						else
+						if (object = 13)
+						{
+							object = 14;
+						}
+						else
+						if (object = 14)
+						{
+							object = 15;
+						}
+						else
+						if (object = 15)
+						{
+							object = 16;
+						}
+						else
+						if (object = 16)
+						{
+							object = 17;
+						}
+						else
+						if (object = 17)
+						{
+							object = 17001;
+						}
+						else
+						if (object = 17001)
+						{
+							object = 11;
+						}
+						#endregion /*Question Block*/
+				
+						else
+				
+						#region /*Invincibility Powerup*/
+						if (object = 55)
+						{
+							object = 55001;
+						}
+						else
+						if (object = 55001)
+						{
+							object = 55;
+						}
+						#endregion /*Invincibility Powerup END*/
+				
+						else
+				
+						#region /*Extra Lives Pickup*/
+						if (object = 56)
+						{
+							object = 57;
+						}
+						else
+						if (object = 57)
+						{
+							object = 58;
+						}
+						else
+						if (object = 58)
+						{
+							object = 56;
+						}
+						#endregion /*Extra Lives Pickup END*/
+				
+						else
+				
+						#region /*Basic enemy*/
+						if (object = 59)
+						{
+							object = 5901;
+						}
+						else
+						if (object = 5901)
+						{
+							object = 5902;
+						}
+						else
+						if (object = 5902)
+						{
+							object = 5903;
+						}
+						else
+						if (object = 5903)
+						{
+							object = 59;
+						}
+						#endregion /*Basic enemy END*/
+				
+						else
+				
+						#region /*Bowling ball enemy*/
+						if (object = 591)
+						{
+							object = 592;
+						}
+						else
+						if (object = 592)
+						{
+							object = 5911;
+						}
+						else
+						if (object = 5911)
+						{
+							object = 5912;
+						}
+						else
+						if (object = 5912)
+						{
+							object = 591;
+						}
+						#endregion /*Bowling ball enemy END*/
+				
+						else
+				
+						#region /*Spikes Emerge Direction*/
+						if (object = 67)
+						{
+							object = 671;
+						}
+						else
+						if (object = 671)
+						{
+							object = 672;
+						}
+						else
+						if (object = 672)
+						{
+							object = 673;
+						}
+						else
+						if (object = 673)
+						{
+							object = 67;
+						}
+						#endregion /*Spikes Emerge Direction END*/
+				
+						#region /*Change Oneway Direction*/
+						if (object = 68)
+						{
+							object = 69;
+						}
+						else
+						if (object = 69)
+						{
+							object = 70;
+						}
+						else
+						if (object = 70)
+						{
+							object = 71;
+						}
+						else
+						if (object = 71)
+						{
+							object = 68;
+						}
+						#endregion /*Change Oneway Direction END*/
+				
+						#region /*Change Water Rope*/
+						if (object = 73)
+						{
+							object = 731;
+						}
+						else
+						if (object = 731)
+						{
+							object = 73;
+						}
+						#endregion /*Change Water END*/
+				
+						else
+				
+						#region /*Change Clipped Clothing on Rope*/
+						if (object = 74)
+						{
+							object = 75;
+						}
+						else
+						if (object = 75)
+						{
+							object = 76;
+						}
+						else
+						if (object = 76)
+						{
+							object = 74;
+						}
+						#endregion /*Change Clipped Clothing on Rope END*/
+				
+						#region /*Change bucket to it's different forms*/
+						if (object = 77)
+						{
+							object = 78;
+						}
+						else
+						if (object = 78)
+						{
+							object = 79;
+						}
+						else
+						if (object = 79)
+						{
+							object = 80;
+						}
+						else
+						if (object = 80)
+						{
+							object = 81;
+						}
+						else
+						if (object = 81)
+						{
+							object = 82;
+						}
+						else
+						if (object = 82)
+						{
+							object = 83;
+						}
+						else
+						if (object = 83)
+						{
+							object = 84;
+						}
+						else
+						if (object = 84)
+						{
+							object = 85;
+						}
+						else
+						if (object = 85)
+						{
+							object = 86;
+						}
+						else
+						if (object = 86)
+						{
+							object = 87;
+						}
+						else
+						if (object = 87)
+						{
+							object = 88;
+						}
+						else
+						if (object = 88)
+						{
+							object = 77;
+						}
+						#endregion /*Change bucket to it's different forms END*/
+				
+						#region /*Change Moveset Signs*/
+						else
+						if (object = 90)
+						{
+							object = 91;
+						}
+						else
+						if (object = 91)
+						{
+							object = 92;
+						}
+						else
+						if (object = 92)
+						{
+							object = 93;
+						}
+						else
+						if (object = 93)
+						{
+							object = 94;
+						}
+						else
+						if (object = 94)
+						{
+							object = 90;
+						}
+						#endregion /*Change Moveset Signs END*/
+				
+						alarm[0] = 1; /*Update sprite initializing. That code is in alarm event, so it's not running every frame in step event*/
 					}
 				}
-				
-				#region /*Change wall into it's different forms*/
-				if (object = 1)
-				{
-					object = 1001;
-					obj_leveleditor.wall_surface_selected = 1;
-				}
-				else
-				if (object = 1001)
-				{
-					object = 1002;
-					obj_leveleditor.wall_surface_selected = 2;
-				}
-				else
-				if (object = 1002)
-				{
-					object = 1003;
-					obj_leveleditor.wall_surface_selected = 3;
-				}
-				else
-				if (object = 1003)
-				{
-					object = 1004;
-					obj_leveleditor.wall_surface_selected = 4;
-				}
-				else
-				if (object = 1004)
-				{
-					object = 1005;
-					obj_leveleditor.wall_surface_selected = 5;
-				}
-				else
-				if (object = 1005)
-				{
-					object = 1006;
-					obj_leveleditor.wall_surface_selected = 6;
-				}
-				else
-				if (object = 1006)
-				{
-					object = 1007;
-					obj_leveleditor.wall_surface_selected = 7;
-				}
-				else
-				if (object = 1007)
-				{
-					object = 1;
-					obj_leveleditor.wall_surface_selected = 0;
-				}
-				#endregion /*Change wall into it's different forms END*/
-				
-				#region /*Change bump in ground to it's different forms*/
-				if (object = 28)
-				{
-					object = 29;
-				}
-				else
-				if (object = 29)
-				{
-					object = 30;
-				}
-				else
-				if (object = 30)
-				{
-					object = 31;
-				}
-				else
-				if (object = 31)
-				{
-					object = 32;
-				}
-				else
-				if (object = 32)
-				{
-					object = 33;
-				}
-				else
-				if (object = 33)
-				{
-					object = 34;
-				}
-				else
-				if (object = 34)
-				{
-					object = 35;
-				}
-				else
-				if (object = 35)
-				{
-					object = 36;
-				}
-				else
-				if (object = 36)
-				{
-					object = 37;
-				}
-				else
-				if (object = 37)
-				{
-					object = 38;
-				}
-				else
-				if (object = 38)
-				{
-					object = 39;
-				}
-				else
-				if (object = 39)
-				{
-					object = 28;
-				}
-				#endregion /*Change bump in ground to it's different forms END*/				
-				
-				#region /*Change Basic Collectible Direction*/
-				else
-				if (object = 40)
-				{
-					object = 41;
-				}
-				else
-				if (object = 41)
-				{
-					object = 42;
-				}
-				else
-				if (object = 42)
-				{
-					object = 43;
-				}
-				else
-				if (object = 43)
-				{
-					object = 44;
-				}
-				else
-				if (object = 44)
-				{
-					object = 45;
-				}
-				else
-				if (object = 45)
-				{
-					object = 46;
-				}
-				else
-				if (object = 46)
-				{
-					object = 47;
-				}
-				else
-				if (object = 47)
-				{
-					object = 40;
-				}
-				#endregion /*Change Basic Collectible Direction*/
-				
-				#region /*Change Big Collectible*/
-				else
-				if (object = 48)
-				{
-					object = 49;
-				}
-				else
-				if (object = 49)
-				{
-					object = 50;
-				}
-				else
-				if (object = 50)
-				{
-					object = 51;
-				}
-				else
-				if (object = 51)
-				{
-					object = 52;
-				}
-				else
-				if (object = 52)
-				{
-					object = 48;
-				}
-				#endregion /*Change Big Collectible*/
-				
-				else
-				
-				#region /*Falling Block*/
-				if (object = 19)
-				{
-					object = 20;
-				}
-				else
-				if (object = 20)
-				{
-					object = 19;
-				}
-				else
-				if (object = 21)
-				{
-					object = 22;
-				}
-				else
-				if (object = 22)
-				{
-					object = 21;
-				}
-				#endregion /*Falling Block END*/
-				
-				else
-				
-				#region /*Brick Block*/
-				if (object = 4)
-				{
-					object = 5;
-				}
-				else
-				if (object = 5)
-				{
-					object = 6;
-				}
-				else
-				if (object = 6)
-				{
-					object = 7;
-				}
-				else
-				if (object = 7)
-				{
-					object = 8;
-				}
-				else
-				if (object = 8)
-				{
-					object = 9;
-				}
-				else
-				if (object = 9)
-				{
-					object = 10;
-				}
-				else
-				if (object = 10)
-				{
-					object = 10001;
-				}
-				else
-				if (object = 10001)
-				{
-					object = 4;
-				}
-				#endregion /*Brick Block*/
-				
-				#region /*Question Block*/
-				else
-				if (object = 11)
-				{
-					object = 12;
-				}
-				else
-				if (object = 12)
-				{
-					object = 13;
-				}
-				else
-				if (object = 13)
-				{
-					object = 14;
-				}
-				else
-				if (object = 14)
-				{
-					object = 15;
-				}
-				else
-				if (object = 15)
-				{
-					object = 16;
-				}
-				else
-				if (object = 16)
-				{
-					object = 17;
-				}
-				else
-				if (object = 17)
-				{
-					object = 17001;
-				}
-				else
-				if (object = 17001)
-				{
-					object = 11;
-				}
-				#endregion /*Question Block*/
-				
-				else
-				
-				#region /*Invincibility Powerup*/
-				if (object = 55)
-				{
-					object = 55001;
-				}
-				else
-				if (object = 55001)
-				{
-					object = 55;
-				}
-				#endregion /*Invincibility Powerup END*/
-				
-				else
-				
-				#region /*Extra Lives Pickup*/
-				if (object = 56)
-				{
-					object = 57;
-				}
-				else
-				if (object = 57)
-				{
-					object = 58;
-				}
-				else
-				if (object = 58)
-				{
-					object = 56;
-				}
-				#endregion /*Extra Lives Pickup END*/
-				
-				else
-				
-				#region /*Basic enemy*/
-				if (object = 59)
-				{
-					object = 5901;
-				}
-				else
-				if (object = 5901)
-				{
-					object = 5902;
-				}
-				else
-				if (object = 5902)
-				{
-					object = 5903;
-				}
-				else
-				if (object = 5903)
-				{
-					object = 59;
-				}
-				#endregion /*Basic enemy END*/
-				
-				else
-				
-				#region /*Bowling ball enemy*/
-				if (object = 591)
-				{
-					object = 592;
-				}
-				else
-				if (object = 592)
-				{
-					object = 5911;
-				}
-				else
-				if (object = 5911)
-				{
-					object = 5912;
-				}
-				else
-				if (object = 5912)
-				{
-					object = 591;
-				}
-				#endregion /*Bowling ball enemy END*/
-				
-				else
-				
-				#region /*Spikes Emerge Direction*/
-				if (object = 67)
-				{
-					object = 671;
-				}
-				else
-				if (object = 671)
-				{
-					object = 672;
-				}
-				else
-				if (object = 672)
-				{
-					object = 673;
-				}
-				else
-				if (object = 673)
-				{
-					object = 67;
-				}
-				#endregion /*Spikes Emerge Direction END*/
-				
-				#region /*Change Oneway Direction*/
-				if (object = 68)
-				{
-					object = 69;
-				}
-				else
-				if (object = 69)
-				{
-					object = 70;
-				}
-				else
-				if (object = 70)
-				{
-					object = 71;
-				}
-				else
-				if (object = 71)
-				{
-					object = 68;
-				}
-				#endregion /*Change Oneway Direction END*/
-				
-				#region /*Change Water Rope*/
-				if (object = 73)
-				{
-					object = 731;
-				}
-				else
-				if (object = 731)
-				{
-					object = 73;
-				}
-				#endregion /*Change Water END*/
-				
-				else
-				
-				#region /*Change Clipped Clothing on Rope*/
-				if (object = 74)
-				{
-					object = 75;
-				}
-				else
-				if (object = 75)
-				{
-					object = 76;
-				}
-				else
-				if (object = 76)
-				{
-					object = 74;
-				}
-				#endregion /*Change Clipped Clothing on Rope END*/
-				
-				#region /*Change bucket to it's different forms*/
-				if (object = 77)
-				{
-					object = 78;
-				}
-				else
-				if (object = 78)
-				{
-					object = 79;
-				}
-				else
-				if (object = 79)
-				{
-					object = 80;
-				}
-				else
-				if (object = 80)
-				{
-					object = 81;
-				}
-				else
-				if (object = 81)
-				{
-					object = 82;
-				}
-				else
-				if (object = 82)
-				{
-					object = 83;
-				}
-				else
-				if (object = 83)
-				{
-					object = 84;
-				}
-				else
-				if (object = 84)
-				{
-					object = 85;
-				}
-				else
-				if (object = 85)
-				{
-					object = 86;
-				}
-				else
-				if (object = 86)
-				{
-					object = 87;
-				}
-				else
-				if (object = 87)
-				{
-					object = 88;
-				}
-				else
-				if (object = 88)
-				{
-					object = 77;
-				}
-				#endregion /*Change bucket to it's different forms END*/
-				
-				#region /*Change Moveset Signs*/
-				else
-				if (object = 90)
-				{
-					object = 91;
-				}
-				else
-				if (object = 91)
-				{
-					object = 92;
-				}
-				else
-				if (object = 92)
-				{
-					object = 93;
-				}
-				else
-				if (object = 93)
-				{
-					object = 94;
-				}
-				else
-				if (object = 94)
-				{
-					object = 90;
-				}
-				#endregion /*Change Moveset Signs END*/
-				
-				alarm[0] = 1; /*Update sprite initializing. That code is in alarm event, so it's not running every frame in step event*/
 			}
 		}
 	}
@@ -1384,35 +1418,69 @@ and (obj_leveleditor.set_difficulty_mode = false)
 and (obj_leveleditor.can_put_objects_above_other_objects = false)
 and (delay > 1)
 {
-	if (!keyboard_check(vk_space))
+	if (instance_exists(obj_leveleditor))
+	and (!keyboard_check(vk_space))
 	and (!mouse_check_button(mb_middle))
+	and (!mouse_check_button(mb_right))
+	and (obj_leveleditor.drag_object = false)
+	and (obj_leveleditor.fill_mode = false)
+	and (obj_leveleditor.erase_mode = false)
+	and (obj_leveleditor.pause = false)
+	and (obj_leveleditor.menu_delay = 0)
+	and (asset_get_type("obj_leveleditor_placed_object") == asset_object)
+	and (asset_get_type("obj_level_player_1_start") == asset_object)
+	and (!place_meeting(x, y, obj_level_player_1_start))
+	and (asset_get_type("obj_level_player_2_start") == asset_object)
+	and (!place_meeting(x, y, obj_level_player_2_start))
+	and (asset_get_type("obj_level_player_3_start") == asset_object)
+	and (!place_meeting(x, y, obj_level_player_3_start))
+	and (asset_get_type("obj_level_player_4_start") == asset_object)
+	and (!place_meeting(x, y, obj_level_player_4_start))
+	and (asset_get_type("obj_level_height") == asset_object)
+	and (!position_meeting(x, y, obj_level_height))
+	and (asset_get_type("obj_level_width") == asset_object)
+	and (!position_meeting(x, y, obj_level_width))
+	and (asset_get_type("obj_water_level_height") == asset_object)
+	and (!position_meeting(x, y, obj_water_level_height))
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /*Can't place objects when clicking the top buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32)) /*Can't place objects when clicking the play button*/
 	{
-		if (mouse_check_button_pressed(mb_left))
-		or (instance_exists(obj_leveleditor))
-		and (obj_leveleditor.key_a_pressed)
+		if (obj_leveleditor.show_grid = true)
+		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32 - 32, 80 + obj_leveleditor.icons_at_top_y + 16 - 32 -32, display_get_gui_width() + 64 + 32, 80 + obj_leveleditor.icons_at_top_y + 16 + 32 + 32)) /*Up and down buttons when grid is on*/
+		or (obj_leveleditor.show_grid = false)
 		{
-			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
+			if (!keyboard_check(vk_space))
+			and (!mouse_check_button(mb_middle))
 			{
-				if (drag_object <= false)
-				and (obj_leveleditor.pause = false)
-				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
-				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64))
+				if (mouse_check_button_pressed(mb_left))
+				or (instance_exists(obj_leveleditor))
+				and (obj_leveleditor.key_a_pressed)
 				{
-					if (obj_leveleditor.set_difficulty_mode = true)
-					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
-					or(obj_leveleditor.set_difficulty_mode = false)
-					and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+					if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 					{
-						if (instance_exists(obj_leveleditor))
-						and (obj_leveleditor.show_grid = true)
-						and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + 32 + 16 - 32, display_get_gui_width() + 64, 80 + 32 + 16 + 32)) /*Up and down buttons when grid is on*/
-						or (instance_exists(obj_leveleditor))
-						and (obj_leveleditor.show_grid = false)
+						if (drag_object <= false)
+						and (obj_leveleditor.pause = false)
+						and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
+						and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64))
 						{
-							drag_object = true;
-							drag_xstart = x;
-							drag_ystart = y;
-							obj_leveleditor.drag_object = true;
+							if (obj_leveleditor.set_difficulty_mode = true)
+							and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+							or(obj_leveleditor.set_difficulty_mode = false)
+							and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+							{
+								if (instance_exists(obj_leveleditor))
+								and (obj_leveleditor.show_grid = true)
+								and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + 32 + 16 - 32, display_get_gui_width() + 64, 80 + 32 + 16 + 32)) /*Up and down buttons when grid is on*/
+								or (instance_exists(obj_leveleditor))
+								and (obj_leveleditor.show_grid = false)
+								{
+									drag_object = true;
+									drag_xstart = x;
+									drag_ystart = y;
+									obj_leveleditor.drag_object = true;
+								}
+							}
 						}
 					}
 				}

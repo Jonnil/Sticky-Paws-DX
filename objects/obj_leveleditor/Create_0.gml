@@ -718,10 +718,11 @@ or(global.create_level_from_template = true)
 				num = 0;
 				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
 				{
-					object =val[2];
-					easy =val[3];
-					normal =val[4];
-					hard =val[5];
+					object = val[2];
+					easy = val[3];
+					normal = val[4];
+					hard = val[5];
+					placed_for_the_first_time = false;
 				}
 			}
 		}
@@ -772,12 +773,13 @@ or(global.create_level_from_template = true)
 				num = 0;
 				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
 				{
-					object =val[2];
-					easy =val[3];
-					normal =val[4];
-					hard =val[5];
-					second_x =val[6];
-					second_y =val[7];
+					object = val[2];
+					easy = val[3];
+					normal = val[4];
+					hard = val[5];
+					second_x = val[6];
+					second_y = val[7];
+					placed_for_the_first_time = false;
 				}
 			}
 		}
@@ -982,10 +984,11 @@ if (global.character_select_in_this_menu = "level_editor")
 					num = 0;
 					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
 					{
-						object =val[2];
-						easy =val[3];
-						normal =val[4];
-						hard =val[5];
+						object = val[2];
+						easy = val[3];
+						normal = val[4];
+						hard = val[5];
+						placed_for_the_first_time = false;
 					}
 				}
 			}
@@ -1044,12 +1047,13 @@ if (global.character_select_in_this_menu = "level_editor")
 					num = 0;
 					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
 					{
-						object =val[2];
-						easy =val[3];
-						normal =val[4];
-						hard =val[5];
-						second_x =val[6];
-						second_y =val[7];
+						object = val[2];
+						easy = val[3];
+						normal = val[4];
+						hard = val[5];
+						second_x = val[6];
+						second_y = val[7];
+						placed_for_the_first_time = false;
 					}
 				}
 			}

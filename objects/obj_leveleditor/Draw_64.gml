@@ -47,11 +47,12 @@
 		or(menu = "open_custom_levels_folder")
 		or(menu = "quit")
 		{
+			in_settings = false;
 			
 			#region /*If menu is on continue*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, Text("Continue"), "continue", noone);
 			
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, window_get_width()/ 2 + 185, window_get_height()/ 2 -42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, window_get_width()/ 2 + 185, window_get_height()/ 2 -42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -104,7 +105,7 @@
 			#region /*If menu is on options*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -42, Text("Options"), "options", noone);
 			
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 -42, window_get_width()/ 2 + 185, window_get_height()/ 2))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 -42, window_get_width()/ 2 + 185, window_get_height()/ 2))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -137,7 +138,7 @@
 					menu = "generate_level_map";
 				}
 				if (key_a_pressed)
-				or(keyboard_check_pressed(vk_enter))
+				or (keyboard_check_pressed(vk_enter))
 				{
 					if (menu_delay = 0)
 					{
@@ -166,7 +167,7 @@
 			#region /*If menu is on generate level map*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Generate Level Map"), "generate_level_map", "generate_level_map_yes");
 			
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -195,7 +196,7 @@
 					menu = "open_custom_levels_folder";
 				}
 				if (key_a_pressed)
-				or(keyboard_check_pressed(vk_enter))
+				or (keyboard_check_pressed(vk_enter))
 				{
 					if (menu_delay = 0)
 					{
@@ -220,7 +221,7 @@
 			
 			#region /*Open Custom Levels Folder*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, window_get_width()/ 2 - 185 + 371, window_get_height()/ 2 + 42 + 41))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, window_get_width()/ 2 - 185 + 371, window_get_height()/ 2 + 42 + 41))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
@@ -253,7 +254,7 @@
 			
 			#region /*If menu is on quit*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Save and Quit"), "quit", noone);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42 + 42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -318,7 +319,7 @@
 			#region /*If menu is on generate level map yes*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Yes"), "generate_level_map_yes", "generate_level_map_yes");
 			
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -373,7 +374,7 @@
 			#region /*If menu is on generate level map no*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("No"), "generate_level_map_no", "generate_level_map");
 			
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -512,8 +513,8 @@
 	and (instance_exists(obj_level_end))
 	and (obj_level_end.drag_object = false)
 	{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height()))
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height()))
+		if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height()))
+		or (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height()))
 		or(global.always_show_level_editor_buttons = true)
 		{
 			if (show_icons_at_bottom = false)
@@ -522,8 +523,8 @@
 			}
 		}
 		else
-		if (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height()))
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height()))
+		if (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height()))
+		and (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height()))
 		and (global.always_show_level_editor_buttons = false)
 		{
 			if (show_icons_at_bottom = true)
@@ -553,7 +554,7 @@
 	and (instance_exists(obj_level_end))
 	and (obj_level_end.drag_object = false)
 	{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 8, 0, room_width * 2, display_get_gui_height()))
+		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 8, 0, room_width * 2, display_get_gui_height()))
 		{
 			if (show_undo_redo_icons = false)
 			{
@@ -561,7 +562,7 @@
 			}
 		}
 		else
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, display_get_gui_width() - 128, display_get_gui_height()))
+		if (point_in_rectangle(cursor_x, cursor_y, 0, 0, display_get_gui_width() - 128, display_get_gui_height()))
 		{
 			if (show_undo_redo_icons = true)
 			{
@@ -589,7 +590,7 @@
 	and (instance_exists(obj_level_end))
 	and (obj_level_end.drag_object = false)
 	{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), -32, -32, display_get_gui_width() + 32, +8))
+		if (point_in_rectangle(cursor_x, cursor_y, -32, -32, display_get_gui_width() + 32, +8))
 		or(global.always_show_level_editor_buttons = true)
 		{
 			if (show_icons_at_top = false)
@@ -598,7 +599,7 @@
 			}
 		}
 		else
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), -32, + 64, display_get_gui_width() + 32, display_get_gui_height() + 32))
+		if (point_in_rectangle(cursor_x, cursor_y, -32, + 64, display_get_gui_width() + 32, display_get_gui_height() + 32))
 		{
 			if (show_icons_at_top = true)
 			{
@@ -645,7 +646,7 @@
 	{
 		draw_sprite_ext(spr_keyboard_keys, vk_enter, play_level_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
 	}
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x -32 + 1, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64 - 1))
+	if (point_in_rectangle(cursor_x, cursor_y, play_level_icon_x -32 + 1, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64 - 1))
 	and (show_icons_at_bottom = true)
 	and (pause = false)
 	{
@@ -736,7 +737,7 @@
 		}
 		
 		#region /*Click Pen*/
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), place_brush_icon_x -32 + 1, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64 - 1))
+		if (point_in_rectangle(cursor_x, cursor_y, place_brush_icon_x -32 + 1, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64 - 1))
 		and (show_icons_at_bottom = true)
 		and (pause = false)
 		{
@@ -914,7 +915,7 @@
 		}
 		
 		#region /*Click Erase*/
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), erase_icon_x -32 + 1, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64 - 1))
+		if (point_in_rectangle(cursor_x, cursor_y, erase_icon_x -32 + 1, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64 - 1))
 		and (show_icons_at_bottom = true)
 		and (pause = false)
 		{
@@ -1021,7 +1022,7 @@
 		}
 		
 		#region /*Click Fill*/
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), fill_icon_x -32 + 1, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64 - 1))
+		if (point_in_rectangle(cursor_x, cursor_y, fill_icon_x -32 + 1, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64 - 1))
 		and (show_icons_at_bottom = true)
 		and (pause = false)
 		{
@@ -1074,7 +1075,7 @@
 		{
 			draw_sprite_ext(spr_menu_cursor, 0, always_show_level_editor_buttons_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 90, c_white, 1);
 		}
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), always_show_level_editor_buttons_x -32 + 1, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64 - 1))
+		if (point_in_rectangle(cursor_x, cursor_y, always_show_level_editor_buttons_x -32 + 1, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64 - 1))
 		and (show_icons_at_bottom = true)
 		and (pause = false)
 		{
@@ -1112,7 +1113,7 @@
 		#endregion /*Always show level editor buttons toggle END*/
 		
 		#region /*Show Undo icon*/
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
+		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
 		and (mouse_check_button(mb_left))
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 17, display_get_gui_width() - 96 + undo_redo_icons_y, display_get_gui_height() - 96, 1, 1, 0, c_white, 1);
@@ -1124,7 +1125,7 @@
 		#endregion /*Show Undo icon END*/
 		
 		#region /*Show Redo icon*/
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
+		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
 		and (mouse_check_button(mb_left))
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 18, display_get_gui_width() - 32 + undo_redo_icons_y, display_get_gui_height() - 96, 1, 1, 0, c_white, 1);
@@ -1215,14 +1216,14 @@
 					draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, Text("Default grid size!"), global.default_text_size * 0.5, c_black, c_white, 1);
 				}
 				draw_sprite_ext(spr_menu_button_up_down, 0, display_get_gui_width() - 32, 80 + icons_at_top_y + 16, 1, 1, 0, c_white, 1);
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32 + 2, display_get_gui_width() + 64, 80 + icons_at_top_y + 16))
+				if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32 + 2, display_get_gui_width() + 64, 80 + icons_at_top_y + 16))
 				and (mouse_check_button_pressed(mb_left))
 				{
 					global.grid_hsnap += 1;
 					global.grid_vsnap += 1;
 				}
 				else
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32))
+				if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32))
 				and (mouse_check_button_pressed(mb_left))
 				{
 					if (global.grid_hsnap > 1)
@@ -1285,14 +1286,10 @@
 	#region /*Show Tooltip when hovering over icon, this code needs to be after the show icons code so it appears above the icons*/
 	if (show_tooltip >= 100)
 	{
-		draw_rectangle_color(window_mouse_get_x() + 16, window_mouse_get_y() - 16, window_mouse_get_x() + 240, window_mouse_get_y() + 16, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(cursor_x + 16, cursor_y - 16, cursor_x + 240, cursor_y + 16, c_white, c_white, c_white, c_white, false);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		draw_text_transformed_color(window_mouse_get_x() + 24 - 2, window_mouse_get_y(), string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-		draw_text_transformed_color(window_mouse_get_x() + 24 + 2, window_mouse_get_y(), string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-		draw_text_transformed_color(window_mouse_get_x() + 24, window_mouse_get_y() - 2, string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-		draw_text_transformed_color(window_mouse_get_x() + 24, window_mouse_get_y() + 2, string(tooltip), global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
-		draw_text_transformed_color(window_mouse_get_x() + 24, window_mouse_get_y(), string(tooltip), global.default_text_size, global.default_text_size, 0, c_black, c_black, c_black, c_black, 1);
+		draw_text_outlined(cursor_x + 24, cursor_y, string(tooltip), global.default_text_size, c_white, c_black, 1);
 	}
 	if (show_tooltip > 100)
 	{
@@ -1311,7 +1308,7 @@
 	{
 		
 		#region /*Click Undo icon*/
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
+		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
 		{
 			tooltip = "Undo (CTRl +Z)";
 			show_tooltip += 2;
@@ -1324,7 +1321,7 @@
 	
 		#region /*Click Redo icon*/
 		else
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
+		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
 		{
 			tooltip = "Redo (CTRl +Y)";
 			show_tooltip += 2;
@@ -1338,7 +1335,7 @@
 	}
 	#endregion /*Undo and Redo icons END*/
 	
-	if (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
+	if (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
 	{
 		show_tooltip = 0;
 	}
@@ -1352,7 +1349,7 @@
 	
 	#region /*Easy*/
 	if (set_difficulty_mode = true)
-	and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width() - 192, display_get_gui_height() + 64))
+	and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width() - 192, display_get_gui_height() + 64))
 	{
 		tooltip = "Show only objects in easy";
 		show_tooltip += 2;
@@ -1368,7 +1365,7 @@
 	
 	#region /*Normal*/
 	if (set_difficulty_mode = true)
-	and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 192, display_get_gui_height() - 64, display_get_gui_width() - 128, display_get_gui_height() + 64))
+	and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192, display_get_gui_height() - 64, display_get_gui_width() - 128, display_get_gui_height() + 64))
 	{
 		tooltip = "Show only objects in normal";
 		show_tooltip += 2;
@@ -1384,7 +1381,7 @@
 	
 	#region /*Hard*/
 	if (set_difficulty_mode = true)
-	and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
+	and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
 	{
 		tooltip = "Show only objects in hard";
 		show_tooltip += 2;
@@ -1399,7 +1396,7 @@
 	#endregion /*Hard END*/
 	
 	#region /*Set Difficulty Mode / Back*/
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
+	if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
 	{
 		tooltip = "Set what objects should appear on what difficulty";
 		show_tooltip += 2;
@@ -1428,7 +1425,7 @@
 	#region /*Click icons at top of screen*/
 	
 	#region /*Toggle Grid*/
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width() - 192, + 64))
+	if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, - 64, display_get_gui_width() - 192, + 64))
 	and (show_icons_at_top = true)
 	and (pause = false)
 	{
@@ -1453,7 +1450,7 @@
 	and (keyboard_check(189))
 	and (!keyboard_check(187))
 	and (!keyboard_check(vk_enter))
-	or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 192, - 64, display_get_gui_width() - 128, + 64))
+	or(point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192, - 64, display_get_gui_width() - 128, + 64))
 	and (show_icons_at_top = true)
 	and (mouse_check_button(mb_left))
 	{
@@ -1472,7 +1469,7 @@
 	and (keyboard_check(vk_enter))
 	and (!keyboard_check(187))
 	and (!keyboard_check(189))
-	or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 128, - 64, display_get_gui_width() - 64, + 64))
+	or(point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, - 64, display_get_gui_width() - 64, + 64))
 	and (show_icons_at_top = true)
 	and (mouse_check_button(mb_left))
 	{
@@ -1491,7 +1488,7 @@
 	and (keyboard_check(187))
 	and (!keyboard_check(189))
 	and (!keyboard_check(vk_enter))
-	or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, - 64, display_get_gui_width(), + 64))
+	or(point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, - 64, display_get_gui_width(), + 64))
 	and (show_icons_at_top = true)
 	and (mouse_check_button(mb_left))
 	{
@@ -1596,9 +1593,9 @@
 		and (erase_mode = false)
 		and (set_difficulty_mode = false)
 		and (pause = false)
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), grid_button_x - 32, 0, display_get_gui_width(), 64))
+		and (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
+		and (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+		and (!point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
 		{
 			draw_sprite_ext(spr_cursor_grab, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 		}
@@ -1624,9 +1621,9 @@
 		and (instance_exists(obj_level_end))
 		and (obj_level_end.drag_object = true)
 		and (pause = false)
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), grid_button_x - 32, 0, display_get_gui_width(), 64))
+		and (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
+		and (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+		and (!point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
 		{
 			draw_sprite_ext(spr_cursor_grab, 1, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 		}
@@ -1635,11 +1632,11 @@
 		else
 		
 		#region /*Default mouse cursor*/
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
+		if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
 		and (asset_get_type("spr_cursor") == asset_sprite)
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+		or (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 		and (asset_get_type("spr_cursor") == asset_sprite)
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), grid_button_x - 32, 0, display_get_gui_width(), 64))
+		or (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
 		and (asset_get_type("spr_cursor") == asset_sprite)
 		or(pause = true)
 		and (asset_get_type("spr_cursor") == asset_sprite)
