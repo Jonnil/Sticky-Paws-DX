@@ -7,7 +7,7 @@ enum localization
 	,en_gb/*British English*/
 	,en_us/*American English*/
 	,es_es/*Spanish*/
-	,es_mx/*Mexican Spanish*/
+	,es_mx /*Mexican Spanish*/
 	,fr_ca/*Canadian French*/
 	,fr_fr/*French*/
 	,it_it/*Italian*/

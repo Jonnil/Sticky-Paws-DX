@@ -408,7 +408,7 @@ and (create_level_from_template_save_delay = 10)
 	sprite_delete(thumbnail_sprite);
 	#endregion /*Save Thumbnail END*/
 	
-	menu_delay = 9999; /*Disable all menu control*/
+	menu_delay = 10; /*Disable all menu control*/
 	scr_save_custom_level();
 	lives = 5;
 	global.lives_until_assist = 0;
@@ -587,12 +587,14 @@ if (quit_level_editor <= 0)
 	or(can_make_place_brush_size_bigger = true)
 	and (mouse_check_button(mb_left))
 	and (scroll_view = false)
-	
 	or (can_make_place_brush_size_bigger = false)
 	and (key_a_released)
 	and (scroll_view = false)
-	or(can_make_place_brush_size_bigger = true)
-	and (key_a_hold)
+	or (can_make_place_brush_size_bigger = true)
+	and (gamepad_button_check(0, gp_face1))
+	and (scroll_view = false)
+	or (can_make_place_brush_size_bigger = true)
+	and (keyboard_check(ord("Z")))
 	and (scroll_view = false)
 	{
 		if (!keyboard_check(vk_space))

@@ -535,14 +535,10 @@ and (delay > 1)
 					if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 					and (obj_leveleditor.pause = false)
 					{
-						if (asset_get_type("obj_leveleditor") == asset_object)
-						{
-							with(obj_leveleditor)
-							{
-								move_snap(global.grid_hsnap, global.grid_vsnap); /*Make sure to always move snap*/
-							}
-						}
-				
+						/*Don't put a move_snap here! We don't want the object to change position when modifying it*/
+						
+						#region /*Object ID's to modify*/
+						
 						#region /*Change wall into it's different forms*/
 						if (object = 1)
 						{
@@ -1086,216 +1082,14 @@ and (delay > 1)
 						#endregion /*Change Moveset Signs END*/
 				
 						alarm[0] = 1; /*Update sprite initializing. That code is in alarm event, so it's not running every frame in step event*/
+						
+						#endregion /*Object ID's to modify END*/
+						
 					}
 				}
 			}
 		}
 	}
-
-	#region /*Use objects to change other objects*/
-	if (mouse_check_button(mb_left))
-	or (instance_exists(obj_leveleditor))
-	and (obj_leveleditor.key_a_hold)
-	{
-		if (!mouse_check_button(mb_middle))
-		{
-			if (asset_get_type("obj_leveleditor") == asset_object)
-			and (instance_exists(obj_leveleditor))
-			{
-				if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
-				and (obj_leveleditor.pause = false)
-				{
-					if (obj_leveleditor.place_object = 27)
-					{
-						#region /*Bump in Ground*/
-						if (object = 24)
-						or(object = 26)
-						{
-							object = 25;
-						}
-						#endregion /*Bump in Ground END*/
-
-						#region /*Brick Block*/
-						if (asset_get_type("spr_brick_block") == asset_sprite)
-						and (object = spr_brick_block)
-						or(asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
-						and (object = spr_basic_collectible_brick_block)
-						or(asset_get_type("spr_powerup_brick_block") == asset_sprite)
-						and (object = spr_powerup_brick_block)
-						or(asset_get_type("spr_1up_brick_block") == asset_sprite)
-						and (object = spr_1up_brick_block)
-						or(asset_get_type("spr_star_brick_block") == asset_sprite)
-						and (object = spr_star_brick_block)
-						{
-							if (asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
-							{
-								object = spr_basic_collectible_brick_block;
-							}
-						}
-						#endregion /*Brick Block END*/
-	
-						#region /*Question Block*/
-						if (asset_get_type("spr_question_block") == asset_sprite)
-						and (object = spr_question_block)
-						or(asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
-						and (object = spr_basic_collectible_question_block)
-						or(asset_get_type("spr_powerup_question_block") == asset_sprite)
-						and (object = spr_powerup_question_block)
-						or(asset_get_type("spr_1up_question_block") == asset_sprite)
-						and (object = spr_1up_question_block)
-						or(asset_get_type("spr_star_question_block") == asset_sprite)
-						and (object = spr_star_question_block)
-						{
-							if (asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
-							{
-								object = spr_basic_collectible_question_block;
-							}
-						}
-						#endregion /*Question Block END*/
-					}
-
-					if (obj_leveleditor.place_object = 27)
-					{
-						#region /*Bump in Ground*/
-						if (asset_get_type("spr_bump_in_ground") == asset_sprite)
-						and (object = spr_bump_in_ground)
-						or(asset_get_type("spr_basic_collectible_bump_in_ground") == asset_sprite)
-						and (object = spr_basic_collectible_bump_in_ground)
-						if (asset_get_type("spr_powerup_bump_in_ground") == asset_sprite)
-						and (object = spr_powerup_bump_in_ground)
-						{
-							if (asset_get_type("spr_powerup_bump_in_ground") == asset_sprite)
-							{
-								object = spr_powerup_bump_in_ground;
-							}
-						}
-						#endregion /*Bump in Ground END*/
-	
-						#region /*Brick Block*/
-						if (asset_get_type("spr_brick_block") == asset_sprite)
-						and (object = spr_brick_block)
-						or(asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
-						and (object = spr_basic_collectible_brick_block)
-						or(asset_get_type("spr_powerup_brick_block") == asset_sprite)
-						and (object = spr_powerup_brick_block)
-						or(asset_get_type("spr_1up_brick_block") == asset_sprite)
-						and (object = spr_1up_brick_block)
-						or(asset_get_type("spr_star_brick_block") == asset_sprite)
-						and (object = spr_star_brick_block)
-						{
-							if (asset_get_type("spr_powerup_brick_block") == asset_sprite)
-							{
-							object = spr_powerup_brick_block;
-							}
-						}
-						#endregion /*Brick Block END*/
-	
-						#region /*Question Block*/
-						if (asset_get_type("spr_brick_block") == asset_sprite)
-						and (object = spr_question_block)
-						or(asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
-						and (object = spr_basic_collectible_question_block)
-						or(asset_get_type("spr_powerup_question_block") == asset_sprite)
-						and (object = spr_powerup_question_block)
-						or(asset_get_type("spr_1up_question_block") == asset_sprite)
-						and (object = spr_1up_question_block)
-						or(asset_get_type("spr_star_question_block") == asset_sprite)
-						and (object = spr_star_question_block)
-						{
-							if (asset_get_type("spr_powerup_question_block") == asset_sprite)
-							{
-								object = spr_powerup_question_block;
-							}
-						}
-						#endregion /*Question Block END*/
-					}
-
-					if (obj_leveleditor.place_object = 29)
-					{
-						#region /*Brick Block*/
-						if (asset_get_type("spr_brick_block") == asset_sprite)
-						and (object = spr_brick_block)
-						or(asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
-						and (object = spr_basic_collectible_brick_block)
-						or(asset_get_type("spr_powerup_brick_block") == asset_sprite)
-						and (object = spr_powerup_brick_block)
-						or(asset_get_type("spr_1up_brick_block") == asset_sprite)
-						and (object = spr_1up_brick_block)
-						or(asset_get_type("spr_star_brick_block") == asset_sprite)
-						and (object = spr_star_brick_block)
-						{
-							if (asset_get_type("spr_1up_brick_block") == asset_sprite)
-							{
-								object = spr_1up_brick_block;
-							}
-						}
-						#endregion /*Brick Block END*/
-	
-						#region /*Question Block*/
-						if (asset_get_type("spr_question_block") == asset_sprite)
-						and (object = spr_question_block)
-						or(asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
-						and (object = spr_basic_collectible_question_block)
-						or(asset_get_type("spr_powerup_question_block") == asset_sprite)
-						and (object = spr_powerup_question_block)
-						or(asset_get_type("spr_1up_question_block") == asset_sprite)
-						and (object = spr_1up_question_block)
-						or(asset_get_type("spr_star_question_block") == asset_sprite)
-						and (object = spr_star_question_block)
-						{
-							if (asset_get_type("spr_1up_question_block") == asset_sprite)
-							{
-								object = spr_1up_question_block;
-							}
-						}
-						#endregion /*Question Block END*/
-					}
-
-					if (obj_leveleditor.place_object = 28)
-					{
-						#region /*Brick Block*/
-						if (asset_get_type("spr_brick_block") == asset_sprite)
-						and (object = spr_brick_block)
-						or(asset_get_type("spr_basic_collectible_brick_block") == asset_sprite)
-						and (object = spr_basic_collectible_brick_block)
-						or(asset_get_type("spr_powerup_brick_block") == asset_sprite)
-						and (object = spr_powerup_brick_block)
-						or(asset_get_type("spr_1up_brick_block") == asset_sprite)
-						and (object = spr_1up_brick_block)
-						or(asset_get_type("spr_star_brick_block") == asset_sprite)
-						and (object = spr_star_brick_block)
-						{
-							if (asset_get_type("spr_star_brick_block") == asset_sprite)
-							{
-								object = spr_star_brick_block;
-							}
-						}
-						#endregion /*Brick Block END*/
-	
-						#region /*Question Block*/
-						if (asset_get_type("spr_question_block") == asset_sprite)
-						and (object = spr_question_block)
-						or(asset_get_type("spr_basic_collectible_question_block") == asset_sprite)
-						and (object = spr_basic_collectible_question_block)
-						or(asset_get_type("spr_powerup_question_block") == asset_sprite)
-						and (object = spr_powerup_question_block)
-						or(asset_get_type("spr_1up_question_block") == asset_sprite)
-						and (object = spr_1up_question_block)
-						or(asset_get_type("spr_star_question_block") == asset_sprite)
-						and (object = spr_star_question_block)
-						{
-							if (asset_get_type("spr_star_question_block") == asset_sprite)
-							{
-								object = spr_star_question_block;
-							}
-						}
-						#endregion /*Question Block END*/
-					}
-				}
-			}
-		}
-	}
-	#endregion /*Use objects to change other objects END*/
 }
 #endregion /*Modify Objects END*/
 

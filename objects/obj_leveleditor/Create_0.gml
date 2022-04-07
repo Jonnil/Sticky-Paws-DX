@@ -223,10 +223,6 @@ fill_icon_x = 224;
 always_show_level_editor_buttons_x = 288;
 grid_button_x = display_get_gui_width() - 224;
 
-screenie_x = 0;
-screenie_y = 0;
-total_objects = 0;
-
 #region /*Options*/
 remapping_player = 0;
 input_key = false;
@@ -579,6 +575,18 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	
 	#endregion /*Custom Backgrounds END*/
 	
+	if (ini_key_exists("info", "make_every_tileset_into_default_tileset"))
+	{
+		global.make_every_tileset_into_default_tileset = ini_read_real("info", "make_every_tileset_into_default_tileset", false);
+	}
+	else
+	{
+		if (global.make_every_tileset_into_default_tileset = "level_editor")
+		{
+			ini_write_string("info", "make_every_tileset_into_default_tileset", false);
+		}
+		global.make_every_tileset_into_default_tileset = false;
+	}
 	if (ini_key_exists("info", "time_countdown"))
 	{
 		global.time_countdown = ini_read_real("info", "time_countdown", noone); /*Set the countdown to whatever is stored in the level_information.ini file*/
@@ -637,6 +645,7 @@ else
 	custom_background_4_y_parallax = 9;
 	global.time_countdown = noone;
 	global.time_countdown_bonus = 500;
+	global.make_every_tileset_into_default_tileset = false;
 }
 #endregion /*Initialize level_information.ini END*/
 
@@ -645,8 +654,6 @@ view_wview = 1392;
 view_hview = 736;
 /*Default Views:   set_view_wview = 1024 + 400 -32   set_view_hview = 768-32  */
 #endregion /*View Size END*/
-
-set_view_wview = 1392;
 
 #region /*Initialize Background*/
 background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;

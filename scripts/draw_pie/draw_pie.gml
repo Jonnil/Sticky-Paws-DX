@@ -15,7 +15,7 @@ function draw_pie(x , y ,value, max, colour, radius, transparency)
 	    var numberofsections = 60 // there is no draw_get_circle_precision() else I would use that here
 	    var sizeofsection = 360/numberofsections
     
-	    val = (argument2/argument3) * numberofsections 
+	    val = (argument2 /argument3) * numberofsections 
     
 	    if (val > 1) { // HTML5 version doesnt like triangle with only 2 sides 
     

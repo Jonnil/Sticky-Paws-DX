@@ -201,6 +201,9 @@ global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
 global.selected_resource_pack = 0; /* 0 = default*/
 global.selected_title_background = 0; /* 0 = default*/
+global.title_background_scale = 1;
+global.background_layer_x_scroll = 1;
+global.background_layer_y_scroll = 1;
 switch (os_get_language())
 {
     case "ja": global.selected_title_logo = 0; /* 0 = Japanese Logo*/ break;
@@ -264,6 +267,7 @@ global.x_checkpoint = false;
 global.y_checkpoint = false;
 global.time_countdown = noone; /*Countdown timer before you get a Time Over, default should be "noone" so most levels don't have a countdown*/
 global.time_countdown_bonus = 500; /*Bonus countdown timer that gives extra points if you finish a level quickly, default should be "500" so you get bonus points if you win a level less than 8 minutes*/
+global.make_every_tileset_into_default_tileset = false;
 global.timeattack_millisecond = 0;
 global.timeattack_second = 0;
 global.timeattack_minute = 0;

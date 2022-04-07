@@ -6,8 +6,7 @@ if (global.custom_tileset >= 0)
 else
 if (global.resource_pack_sprite_tileset_default >= 0)
 and (ground_surface = 0)
-or (instance_exists(obj_camera))
-and (instance_nearest(x, y, obj_camera).make_every_tileset_into_default_tileset = true)
+or (global.make_every_tileset_into_default_tileset = true)
 and (global.resource_pack_sprite_tileset_default >= 0)
 {
 	draw_sprite_ext(global.resource_pack_sprite_tileset_default, tile, x, y, 1, 1, 0, c_white, 1);

@@ -5,7 +5,6 @@ background_layer_x = 0;
 background_layer_y = 0;
 
 options_and_quit_y = display_get_gui_height()/ 2 + 100 + 120;
-level_index = 0;
 file_found = "";
 file_load_timer = 0;
 level_find_pos = 0;
@@ -21,6 +20,7 @@ lerp_on = false;
 level_editor_template_select = false;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;
+title_background_scale_lerp = global.title_background_scale;
 
 #region /*Character Name*/
 var uppercase_narrator_name;

@@ -500,7 +500,7 @@ if (quit_level_editor <= 0)
 	}
 	if (instance_exists(obj_level_width))
 	{
-		draw_line_width_color(obj_level_width.x/ 2, 0, obj_level_width.x/ 2, room_height, grid_width + 1, c_purple, c_purple); /*Draw Vertical Line in the middle of the level*/
+		draw_line_width_color(obj_level_width.x / 2, 0, obj_level_width.x / 2, room_height, grid_width + 1, c_purple, c_purple); /*Draw Vertical Line in the middle of the level*/
 	}
 }
 

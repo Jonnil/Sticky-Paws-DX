@@ -22,7 +22,7 @@ if (die = false)
 
 	#region /*Landing on solid object*/
 	if (place_meeting(x, y + 1, other))
-	and (vspeed >= 0)
+	and (vspeed > 0)
 	{
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))

@@ -53,6 +53,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "enable_transitions")){global.enable_transitions = ini_read_real("config", "enable_transitions", 0);}
 		if (ini_key_exists("config", "selected_resource_pack")){global.selected_resource_pack = ini_read_real("config", "selected_resource_pack", 0);}
 		if (ini_key_exists("config", "selected_title_background")){global.selected_title_background = ini_read_real("config", "selected_title_background", 0);}
+		if (ini_key_exists("config", "title_background_scale")){global.title_background_scale = ini_read_real("config", "title_background_scale", 1);}
+		if (ini_key_exists("config", "background_layer_x_scroll")){global.background_layer_x_scroll = ini_read_real("config", "background_layer_x_scroll", 1);}
+		if (ini_key_exists("config", "background_layer_y_scroll")){global.background_layer_y_scroll = ini_read_real("config", "background_layer_y_scroll", 1);}
 		if (ini_key_exists("config", "selected_title_logo")){global.selected_title_logo = ini_read_real("config", "selected_title_logo", 0);}
 		if (ini_key_exists("config", "zoom_level")){global.zoom_level = ini_read_real("config", "zoom_level", 1);}
 		if (ini_key_exists("config", "zoom_world_map")){global.zoom_world_map = ini_read_real("config", "zoom_world_map", 1);}

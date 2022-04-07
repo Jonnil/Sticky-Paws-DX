@@ -1,7 +1,10 @@
-background_layer_x += 1;
-background_layer_y += 1;
+background_layer_x += global.background_layer_x_scroll;
+background_layer_y += global.background_layer_y_scroll;
 layer_x(layer_get_id("Background"),background_layer_x);
 layer_y(layer_get_id("Background"),background_layer_y);
+title_background_scale_lerp = lerp(title_background_scale_lerp, global.title_background_scale, 0.1);
+layer_background_xscale(layer_background_get_id(layer_get_id("Background")), title_background_scale_lerp);
+layer_background_yscale(layer_background_get_id(layer_get_id("Background")), title_background_scale_lerp);
 
 if (global.file < 1)
 {

@@ -1,8 +1,3 @@
-if (instance_exists(obj_player))
-{
-	draw_text_outlined(obj_player.x, obj_player.y, string(x) + "-" + string(y), global.default_text_size, c_white, c_black, 1);
-}
-
 #region /*When editing a level, make the foreground transparent*/
 if (global.play_edited_level = false)
 {

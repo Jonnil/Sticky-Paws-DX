@@ -1,5 +1,5 @@
 Code,English,Svenska,日本語,Español,,Polski
-Translator,Translator,Översättare,翻訳者,,,
+Translator,Translator,Översättare,翻訳者,,,Tłumacz
 Translator name,Jonathan Nilsson,Jonathan Nilsson,Benjamin Tröjer,chillmanmax,,DoruDoLasu
 Language translations may not be 100% accurate,Language translations may not be 100% accurate,Språköversättningar kanske inte är 100% korrekta,ほんとうにすみませんでした。まだベギナーから、翻訳は100%完璧じゃないかもしれません。,Traducciones no son 100% preciso,,Tłumaczenia mogą nie być w stu procentach dokładne
 Back,Back,Tillbaka,戻る,Anterior,,Wstecz
@@ -10,59 +10,59 @@ Controls,Controls,Kontroller,操作,Control,,Sterowanie
 Keyboard & Mouse,Keyboard & Mouse,Tangentbord och mus,キーボード ＆ マウス,Teclado y Ratón,,Klawiatura i mysz
 Controller,Controller,Kontroller,コントローラー,Controlador,,Kontroler
 Touch,Touch,Rör,タッチ,Control táctil,,Dotyk
-General,General,Allmän,一般設定,General,,
-Profile,Profile,Profil,プロフィール,Perfíl ,,
+General,General,Allmän,一般設定,General,,Generalne
+Profile,Profile,Profil,プロフィール,Perfíl ,,Profile
 Video,Video,Video,ビデオ,Video,,Grafika
 Audio,Audio,Ljud,オーディオ,Audio,,Dźwięk
-Custom Resources,Custom Resources,Anpassade resurser,カスタムリーソース,Paquetes Customizado,,
-Storage,Storage,Lagring,ストレージ,Almacenamiento,,
+Custom Resources,Custom Resources,Anpassade resurser,カスタムリーソース,Paquetes Customizado,,Modyfikacje
+Storage,Storage,Lagring,ストレージ,Almacenamiento,,Przechowywanie
 Language,Language,Språk,言語,Lenguaje,,Język
-Broadcast,Broadcast,Utsända,ブロードキャスト,Transmisión ,,
+Broadcast,Broadcast,Utsända,ブロードキャスト,Transmisión ,,Transmisja
 How to Play,How to Play,Hur man spelar,遊び方,Como Jugar,,Jak grać
 Add-Ons,Add-Ons,Tillägg,アドオン,Modificaciones,,Dodatki
-Resource Packs,Resource Packs,Resurspaket,リソースパック,,,
-Behavior Packs,Behavior Packs,Beteendepaket,ビヘイビアパック,,,
+Resource Packs,Resource Packs,Resurspaket,リソースパック,,,Paczki rozszerzeń
+Behavior Packs,Behavior Packs,Beteendepaket,ビヘイビアパック,,,Paczki zachowań
 Checkpoint,CHECKPOINT,ÅTERVÄNDSPUNKT,チェックポイント,,,Punkt kontrolny
-Main Game,Main Game,Huvudspel,,,,Gra główna
-Level Editor,Level Editor,Nivåredigerare,,Ed,,Edytor poziomów
+Main Game,Main Game,Huvudspel,アドベンチャー,,,Gra główna
+Level Editor,Level Editor,Nivåredigerare,レベル作り,Ed,,Edytor poziomów
 Options,Options,Alternativ,設定,,,Opcje
 Quit,Quit,Avsluta,終了,,,Wyjdź
 Fullscreen,Fullscreen,Fullskärm,フルスクリーン,,,Pełny ekran
 Made by,Made by,Tillverkad av,,,,Zrobione przez
 Loading,Loading,Läser in,ローディング中,,,Wczytywanie
 Select your character!,Select your character!,Välj din karaktär!,,,,Wybierz postać!
-Player 1 Join,Player 1 Join,Spelare 1 Gå med,,,,
-Player 2 Join,Player 2 Join,Spelare 2 Gå med,,,,
-Player 3 Join,Player 3 Join,Spelare 3 Gå med,,,,
-Player 4 Join,Player 4 Join,Spelare 4 Gå med,,,,
+Player 1 Join,Player 1 Join,Spelare 1 Gå med,,,,Dołącz jako gracz 1
+Player 2 Join,Player 2 Join,Spelare 2 Gå med,,,,Dołącz jako gracz 2
+Player 3 Join,Player 3 Join,Spelare 3 Gå med,,,,Dołącz jako gracz 3
+Player 4 Join,Player 4 Join,Spelare 4 Gå med,,,,Dołącz jako gracz 4
 Accept,Accept,Acceptera,,,,Akceptuj
 Cancel,Cancel,Avbryt,,,,Anuluj
-Skin,Skin,Utseende,,,,
-Voice Pack,Voice Pack,Röstpaket,,,,
+Skin,Skin,Utseende,,,,Skórka
+Voice Pack,Voice Pack,Röstpaket,,,,Głos
 Player 1,Player 1,Spelare 1,,,,Gracz 1
 Player 2,Player 2,Spelare 2,,,,Gracz 2
 Player 3,Player 3,Spelare 3,,,,Gracz 3
 Player 4,Player 4,Spelare 4,,,,Gracz 4
-Play the game!,Play the game!,Spela spelet!,,,,
-Play level,Play level,Spela nivå,,,,
-Player 1 starts the game,Player 1 starts the game,Spelare 1 startar spelet,,,,
-Player 2 starts the game,Player 2 starts the game,Spelare 2 startar spelet,,,,
-Player 3 starts the game,Player 3 starts the game,Spelare 3 startar spelet,,,,
-Player 4 starts the game,Player 4 starts the game,Spelare 4 startar spelet,,,,
-Create from Scratch,Create from Scratch,Skapa från grunden,,,,
-Create from Template,Create from Template,Skapa från mall,,,,
+Play the game!,Play the game!,Spela spelet!,,,,Zagraj
+Play level,Play level,Spela nivå,,,,Zagraj poziom
+Player 1 starts the game,Player 1 starts the game,Spelare 1 startar spelet,,,,Gracz 1 dołącza do gry
+Player 2 starts the game,Player 2 starts the game,Spelare 2 startar spelet,,,,Gracz 2 dołącza do gry
+Player 3 starts the game,Player 3 starts the game,Spelare 3 startar spelet,,,,Gracz 3 dołąćza do gry
+Player 4 starts the game,Player 4 starts the game,Spelare 4 startar spelet,,,,Gracz 4 dołącza do gry
+Create from Scratch,Create from Scratch,Skapa från grunden,,,,Stwórz samemu
+Create from Template,Create from Template,Skapa från mall,,,,Stwórz z szablonu
 OK,OK,OK,,,,OK
 Select Template Level,Select Template Level,Välj Mallnivå,,,,Wybierz szablon poziomu
-These are official levels from the game. Learn how these levels were made!,These are official levels from the game. Learn how these levels were made!,Det här är officiella nivåer från spelet. Lär dig hur dessa nivåer gjordes!,,,,
+These are official levels from the game. Learn how these levels were made!,These are official levels from the game. Learn how these levels were made!,Det här är officiella nivåer från spelet. Lär dig hur dessa nivåer gjordes!,,,,"Oficjalne poziomy z gry - dowiedz się, jak zostały zbudowane!"
 Play,Play,Spela,プレー,,,Graj
 Make,Make,Skapa,作る,,,Twórz
-Delete,Delete,Radera,,,,Usuń
+Delete,Delete,Radera,デリート,,,Usuń
 Paintbrush tool,Paintbrush tool,Penselverktyg,,,,Pędzel
-Erase tool,Erase tool,Radera verktyg,,,,
+Erase tool,Erase tool,Radera verktyg,,,,Gumka
 Fill tool,Fill tool,Fyllningsverktyg,,,,Wypełnienie
 Hide buttons,Hide buttons,Dölj knappar,,,,Ukryj przyciski
 Lock buttons,Lock buttons,Lås knappar,,,,Zablokuj przyciski
-"Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - När en karaktär inte har förmågan att hoppa från väggar, låter även dessa karaktärer vägghoppa",,,,
+"Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - När en karaktär inte har förmågan att hoppa från väggar, låter även dessa karaktärer vägghoppa",カベキックパネル　キャラがカベキックできないなら、,,,
 "Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb","Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb","Wall Climb Panel - När en karaktär inte har förmågan att klättra på väggar, låter även dessa karaktärer klättra på väggar",,,,
 Continue,Continue,Fortsätt,,,,Kontynuuj
 Generate Level Map,Generate Level Map,Generera nivåkarta,,,,Generuj mapę poziomu
@@ -127,19 +127,19 @@ Crouch,Crouch,Huka,,,,Przykuc
 Crouch Toggle,Crouch Toggle,Huka växling,,,,
 Sprint,Sprint,Sprinta,,,,TODO: Find a good word for this later
 Sprint Toggle,Sprint Toggle,Sprint växling,,,,"and for ""toggle"" too"
-Left,Left,Vänster,,,,Lewo
-Right,Right,Höger,,,,Prawo
-Down,Down,Ner,,,,Dół
-Up,Up,Upp,,,,Góra
-Tongue,Tongue,Tunga,,,,Język
+Left,Left,Vänster,左,,,Lewo
+Right,Right,Höger,右,,,Prawo
+Down,Down,Ner,下,,,Dół
+Up,Up,Upp,上,,,Góra
+Tongue,Tongue,Tunga,舌,,,Język
 Default Settings,Default Settings,Standardinställningar,,,,Ustawienia domyślne
-Up key is jump key,Up key is jump key,Upp-tangenten är hoppnyckeln,,,,Góra jako klawisz skoku
+Up key is jump key,Up key is jump key,Upp-tangenten är hopp-knappen,,,,Góra jako klawisz skoku
 Double-tap direction to run,Double-tap direction to run,Dubbeltryck i riktning för att springa,,,,
-Always run,Always run,Alltid springa,,,,Zawsze biegnij
-Player 1 always run,Player 1 always run,Spelare 1 alltid springa,,,,
-Player 2 always run,Player 2 always run,Spelare 2 alltid springa,,,,
-Player 3 always run,Player 3 always run,Spelare 3 alltid springa,,,,
-Player 4 always run,Player 4 always run,Spelare 4 alltid springa,,,,
+Always run,Always run,Spring alltid,,,,Zawsze biegnij
+Player 1 always run,Player 1 always run,Spelare 1 spring alltid,,,,
+Player 2 always run,Player 2 always run,Spelare 2 spring alltid,,,,
+Player 3 always run,Player 3 always run,Spelare 3 spring alltid,,,,
+Player 4 always run,Player 4 always run,Spelare 4 spring alltid,,,,
 Cancel dive by pressing the jump or dive key,Cancel pounce by pressing the jump or pounce key,Avbryt dyket genom att trycka på hopp- eller dykknappen,,,,
 Cancel dive by pressing the opposite direction,Cancel pounce by pressing the opposite direction,Avbryt dyket genom att trycka i motsatt riktning,,,,
 Down + Jump to Ground Pound,Down + Jump to Ground Pound,Ner + Hoppa för att Ground Pound,,,,
@@ -162,9 +162,9 @@ Restart,Restart,Omstart,,,,Restart
 Reset from Checkpoint,Reset from Checkpoint,Återställ från återvändspunkt,,,,Rozpocznij od punktu kontrolnego
 Reset from Start,Reset from Start,Återställ från start,,,,Rozpocznij od początku
 Nevermind,Nevermind,Glöm det,,,,
-Quit to Map,Quit to Map,Avsluta till kartan,,,,Wyjdź do mapy
-Quit to Title,Quit to Title,Avsluta till titel,,,,Wyjdź do menu głównego
-Quit to Desktop,Quit to Desktop,Avsluta till skrivbordet,,,,Wyjdź do pulpitu
+Quit to Map,Quit to Map,Avsluta till kartan,終了してマップへ,,,Wyjdź do mapy
+Quit to Title,Quit to Title,Avsluta till titel,終了してタイトルへ,,,Wyjdź do menu głównego
+Quit to Desktop,Quit to Desktop,Avsluta till skrivbordet,終了してデスクトップへ,,,Wyjdź do pulpitu
 Score,Score,Poäng,,,,Wynik
 Enter into level,Enter into level,Gå in på nivå,,,,
 Best Time,Best Time,Bästa tid,,,,Najlepszy czas
@@ -192,58 +192,65 @@ Ambient Volume,Ambient Volume,Omgivande volym,,,,
 Footstep Volume,Footstep Volume,Fotstegvolym,,,,Głośność chodzenia
 Voices Volume,Voices Volume,Röster volym,,,,Głośność głosów
 Number of Audio Channels,Number of Audio Channels,Antal ljudkanaler,,,,Ilość kanałów audio
-Narrator,Narrator,Berättare,,,,
-Nobody,Nobody,Ingen,,,,
-Resource Pack,Resource Pack,Resurspaket,,,,
-Official,Official,Officiell,,,,
-Custom,Custom,Egen,,,,
-Title Background,Title Background,Titel bakgrund,,,,
-Title Logo,Title Logo,Titellogotyp,,,,
-File,File,Fil,,,,
-Delete File,Delete File,Radera fil,,,,
-Are you sure you want to delete the file,Are you sure you want to delete the file,Är du säker på att du vill ta bort fil,,,,
-Number of levels passed,Number of levels passed,Antal klarade nivåer,,,,
-Skip,Skip,Hoppa över,,,,
-Hold,Hold,Håll,,,,
-Or,Or,Eller,,,,
+Narrator,Narrator,Berättare,,,,Narrator
+Nobody,Nobody,Ingen,,,,Nikt
+Resource Pack,Resource Pack,Resurspaket,,,,Pakiet rozszerzeń
+Official,Official,Officiell,,,,Oficjalne
+Custom,Custom,Egen,,,,Własne
+Title Background,Title Background,Titel bakgrund,,,,Tło tytułowe
+Title Logo,Title Logo,Titellogotyp,,,,Logo tytułowe
+File,File,Fil,,,,Plik
+Delete File,Delete File,Radera fil,,,,Usuń plik
+Are you sure you want to delete the file,Are you sure you want to delete the file,Är du säker på att du vill ta bort fil,,,,"Czy jesteś pewien, że chcesz usunąć plik"
+Number of levels passed,Number of levels passed,Antal klarade nivåer,,,,Liczba poziomów wygranych
+Skip,Skip,Hoppa över,,,,Pomiń
+Hold,Hold,Håll,,,,Przytrzymaj
+Or,Or,Eller,,,,Lub
 INPUT KEY NOW FOR PLAYER 1,INPUT KEY NOW FOR PLAYER 1,INMATA KNAPP NU FÖR SPELARE 1,,,,
 INPUT KEY NOW FOR PLAYER 2,INPUT KEY NOW FOR PLAYER 2,INMATA KNAPP NU FÖR SPELARE 2,,,,
 INPUT KEY NOW FOR PLAYER 3,INPUT KEY NOW FOR PLAYER 3,INMATA KNAPP NU FÖR SPELARE 3,,,,
 INPUT KEY NOW FOR PLAYER 4,INPUT KEY NOW FOR PLAYER 4,INMATA KNAPP NU FÖR SPELARE 4,,,,
-Buttons can be disabled using,Buttons can be disabled using,Knappar kan inaktiveras med,,,,
-Add Custom Resource Packs in Local Appdata,Add Custom Resource Packs in Local Appdata,Lägg till anpassade resurspaket i lokal appdata,,,,
-and it will appear here!,and it will appear here!,och det kommer att dyka upp här!,,,,
-Enter name,Enter name,Skriv namn,,,,
-Assist Mode,Assist Mode,Assist läge,,,,
-Hold Start,Hold Start,Håll Start,,,,
-Press and Hold Screen,Press and Hold Screen,Tryck och håll ned skärmen,,,,
-Delete Level,Delete Level,Ta bort nivå,,,,
+Buttons can be disabled using,Buttons can be disabled using,Knappar kan inaktiveras med,,,,Przyciski mogą być wyłączone za pomocą
+Add Custom Resource Packs in Local Appdata,Add Custom Resource Packs in Local Appdata,Lägg till anpassade resurspaket i lokal appdata,,,,Dodaj paczki rozszerzeń w folderze konfiguracyjnym gry
+and it will appear here!,and it will appear here!,och det kommer att dyka upp här!,,,,ia pojawią się tutaj
+Enter name,Enter name,Skriv namn,,,,Podaj imię
+Assist Mode,Assist Mode,Assist läge,,,,Tryb asysty
+Hold Start,Hold Start,Håll Start,,,,Przytrzymaj start
+Press and Hold Screen,Press and Hold Screen,Tryck och håll ned skärmen,,,,Dotknij i przytrzymaj ekran
+Delete Level,Delete Level,Ta bort nivå,,,,Usuń poziom
 Height,Height,Höjd,高さ,,,
 Width,Width,Bredd,幅,,,
 Grid X,Grid X,Rutnät X,,,,
 Grid Y,Grid Y,Rutnät Y,,,,
-Default grid size!,Default grid size!,Standard rutnätsstorlek!,,,,
-X,X,X,X,,,
-Y,Y,Y,Y,,,
-View X,View X,Vy X,,,,
-View Y,View Y,Vy Y,,,,
-View width,View width,Vy bredd,,,,
-View height,View height,Vy höjd,,,,
+Default grid size!,Default grid size!,Standard rutnätsstorlek!,,,,Domyślny rozmiar !
+X,X,X,X,,,X
+Y,Y,Y,Y,,,Y
+View X,View X,Vy X,,,,Pokaż X
+View Y,View Y,Vy Y,,,,Pokaż Y
+View width,View width,Vy bredd,,,,Pokaż 
+View height,View height,Vy höjd,,,,Pokaż
 Warning! Level height shorter than normal,Warning! Level height shorter than normal,Varning! Nivåhöjd kortare än normalt,注意、レベルは普通より高い,,,
 Warning! Level width shorter than normal,Warning! Level width shorter than normal,Varning! Nivåbredd kortare än normalt,注意、レベルは普通より広い,,,
 Can put objects above other objects: True,Can put objects above other objects: True,Kan sätta objekt över andra objekt: Sant,,,,
-Artwork,Artwork,Konstverk,,,,
-Artist,Artist,Konstnär,,,,
-To unlock this artwork,To unlock this artwork,För att låsa upp det här konstverket,,,,
-Get big fish,Get big fish,Skaffa stor fisk,,,,
-in level,in level,i nivå,,,,
+Artwork,Artwork,Konstverk,,,,Ilustracja
+Artist,Artist,Konstnär,,,,Artysta
+To unlock this artwork,To unlock this artwork,För att låsa upp det här konstverket,,,,Aby odblokować tą ilustrację
+Get big fish,Get big fish,Skaffa stor fisk,,,,zdobądź wielką rybę
+in level,in level,i nivå,,,,w poziomie
 Pounce,Pounce,Dyka,,,,Sus
-Join Game,Join Game,Gå med i spel,,,,
-Date modified,Date modified,Datum ändrat,,,,
-Last played today!,Last played today!,Spelades senast idag!,,,,
-Open Resource Pack Folder,Open Resource Pack Folder,Öppna resurspaketmappen,リソースパックフォルダを開く,,,
-Open Background Folder,Open Background Folder,Öppna bakgrundsmappen,背景フォルダを開く,,,
-Open Title Logo Folder,Open Title Logo Folder,Öppna titellogotyp mappen,タイトルロゴフォルダを開く,,,
-Open Character Folder,Open Character Folder,Öppna karaktär mappen,キャラクターフォルダを開く,,,
-Demo,Demo,Demo,,,,
-Play Demo,Play Demo,Spela demo,,,,
+Join Game,Join Game,Gå med i spel,,,,Rozpocznij grę
+Date modified,Date modified,Datum ändrat,,,,Data modyfikacji
+Last played today!,Last played today!,Spelades senast idag!,,,,Ostatnio grano dzisiaj!
+Open Resource Pack Folder,Open Resource Pack Folder,Öppna resurspaketmappen,リソースパックフォルダを開く,,,Otwórz folder z paczkami rozszerzeń
+Open Background Folder,Open Background Folder,Öppna bakgrundsmappen,背景フォルダを開く,,,Otwórz folder z tłami
+Open Title Logo Folder,Open Title Logo Folder,Öppna titellogotyp mappen,タイトルロゴフォルダを開く,,,Otwórz folder logo tytułowego
+Open Character Folder,Open Character Folder,Öppna karaktär mappen,キャラクターフォルダを開く,,,Otwórz folder postaci
+Demo,Demo,Demo,,,,Demo
+Play Demo,Play Demo,Spela demo,,,,Zagraj w demo
+The demo is over,The demo is over,Demot är över,,,,Wersja demo dobiegła końca
+Buy the full version of,Buy the full version of,Köp den fullständiga versionen av,,,,Kup pełną wersję
+Purchase now!,Purchase now!,Köp nu!,,,,Kup Teraz!
+Continue playing!,Continue playing!,Fortsätt spela!,,,,Kontynuuj grę!
+Background Scale,Background Scale,Bakgrundsskala,,,,
+Background Scroll X,Background Scroll X,Bakgrund Scroll X,,,,
+Background Scroll Y,Background Scroll Y,Bakgrund Scroll Y,,,,

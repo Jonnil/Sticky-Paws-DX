@@ -26,8 +26,6 @@ big_collectible3_already_collected = false;
 big_collectible4_already_collected = false;
 big_collectible5_already_collected = false;
 
-make_every_tileset_into_default_tileset = false;
-
 if (global.character_select_in_this_menu = "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
@@ -67,13 +65,17 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	
 	if (ini_key_exists("info", "make_every_tileset_into_default_tileset"))
 	{
-		make_every_tileset_into_default_tileset = ini_read_real("info", "make_every_tileset_into_default_tileset", false);
+		global.make_every_tileset_into_default_tileset = ini_read_real("info", "make_every_tileset_into_default_tileset", false);
+	}
+	else
+	{
+		global.make_every_tileset_into_default_tileset = false;
 	}
 	ini_close();
 }
 else
 {
-	make_every_tileset_into_default_tileset = false;
+	global.make_every_tileset_into_default_tileset = false;
 }
 
 #region /*Lives Icon*/

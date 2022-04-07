@@ -792,7 +792,7 @@ if (level_editor_template_select = true)
 	select_custom_level_menu_open = false;
 	scr_select_official_level_menu();
 	R = 4;
-	C = clamp(floor(global.select_level_index/R), 0, floor(ds_list_size(global.all_loaded_main_levels)))
+	C = clamp(floor(global.select_level_index / R), 0, floor(ds_list_size(global.all_loaded_main_levels)))
 	if (global.controls_used_for_menu_navigation = "mouse")
 	and (can_input_level_name = false)
 	and (can_navigate = true)

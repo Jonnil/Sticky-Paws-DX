@@ -15,8 +15,6 @@ ground_surface = 0;
 6 = stone
 7 = wood*/
 
-make_every_tileset_into_default_tileset = false;
-
 image_speed = 0;
 
 if (y <= 0)
