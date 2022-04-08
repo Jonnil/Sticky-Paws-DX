@@ -2817,7 +2817,7 @@ if (!audio_is_playing(global.ambience_underwater))
 
 #region /*Music Pitch*/
 if (global.time_countdown < 100)
-and (global.time_countdown > noone)
+and (global.enable_time_countdown = true)
 and (allow_timeup = true)
 {
 	audio_sound_pitch(global.music, music_pitch + 0.3);
@@ -8000,12 +8000,14 @@ and (instance_nearest(x, y, obj_invincibility_powerup).bounceup = false)
 if (goal = false)
 {
 	if (global.time_countdown = 0)
+	and (global.enable_time_countdown = true)
 	and (allow_timeup = true)
 	and (global.player_has_entered_goal = false)
 	{
 		die = true;
 	}
 	if (global.time_countdown = 99)
+	and (global.enable_time_countdown = true)
 	{
 		if (asset_get_type("snd_hurry_up") == asset_sound)
 		{
@@ -10261,7 +10263,7 @@ and (vspeed = 0)
 		else
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
-		and (obj_camera.rain = true)
+		and (global.rain = true)
 		{
 			if (sprite_stand_cold > noone){sprite_index = sprite_stand_cold;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}else

@@ -43,6 +43,7 @@ if (quit_level_editor = false)
 		#region /*Make the menu invisible when entering the options menu*/
 		if (menu = "continue")
 		or(menu = "options")
+		or(menu = "level_editor_options")
 		or(menu = "generate_level_map")
 		or(menu = "open_custom_levels_folder")
 		or(menu = "quit")
@@ -50,9 +51,9 @@ if (quit_level_editor = false)
 			in_settings = false;
 			
 			#region /*If menu is on continue*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, Text("Continue"), "continue", noone);
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 - 126, Text("Continue"), "continue", noone);
 			
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 - 84, window_get_width()/ 2 + 185, window_get_height()/ 2 -42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 - 126, window_get_width()/ 2 + 185, window_get_height()/ 2 -84))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -103,9 +104,9 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on continue END*/
 			
 			#region /*If menu is on options*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -42, Text("Options"), "options", noone);
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -84, Text("Options"), "options", noone);
 			
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 -42, window_get_width()/ 2 + 185, window_get_height()/ 2))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 -84, window_get_width()/ 2 + 185, window_get_height()/ 2 - 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -135,7 +136,7 @@ if (quit_level_editor = false)
 				and (menu_delay = 0)
 				{
 					menu_delay = 1;
-					menu = "generate_level_map";
+					menu = "level_editor_options";
 				}
 				if (key_a_pressed)
 				or (keyboard_check_pressed(vk_enter))
@@ -164,6 +165,68 @@ if (quit_level_editor = false)
 			}
 			#endregion /*If menu is on options END*/
 			
+			#region /*If menu is on level editor options*/
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -42, Text("Level Editor Options"), "level_editor_options", "custom_background_1_x_offset");
+			
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 -42, window_get_width()/ 2 + 185, window_get_height()/ 2))
+			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay = 0)
+			{
+				quit_level_editor = false;
+				can_input_level_name = false;
+				pause = true;
+				can_navigate = true;
+				in_settings = false;
+				can_navigate_settings_sidebar = false;
+				menu = "back_level_editor_options";
+				menu_delay = 10;
+			}
+			
+			if (menu = "level_editor_options")
+			and (can_input_level_name = false)
+			{
+				if (key_up)
+				and (menu_joystick_delay = 0)
+				and (menu_delay = 0)
+				{
+					menu_delay = 1;
+					menu = "options";
+				}
+				else
+				if (key_down)
+				and (menu_joystick_delay = 0)
+				and (menu_delay = 0)
+				{
+					menu_delay = 1;
+					menu = "generate_level_map";
+				}
+				if (key_a_pressed)
+				or (keyboard_check_pressed(vk_enter))
+				{
+					if (menu_delay = 0)
+					{
+						quit_level_editor = false;
+						can_input_level_name = false;
+						pause = true;
+						can_navigate = true;
+						in_settings = false;
+						can_navigate_settings_sidebar = false;
+						menu = "back_level_editor_options";
+						menu_delay = 10;
+					}
+				}
+				if (key_b_pressed)
+				and (menu_delay = 0)
+				{
+					menu_delay = 10;
+					quit_level_editor = false;
+					can_input_level_name = false;
+					pause = false;
+					can_navigate = false;
+				}
+			}
+			#endregion /*If menu is on level editor options END*/
+			
 			#region /*If menu is on generate level map*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Generate Level Map"), "generate_level_map", "generate_level_map_yes");
 			
@@ -185,7 +248,7 @@ if (quit_level_editor = false)
 				and (menu_delay = 0)
 				{
 					menu_delay = 1;
-					menu = "options";
+					menu = "level_editor_options";
 				}
 				else
 				if (key_down)
@@ -492,6 +555,7 @@ if (quit_level_editor = false)
 	#endregion /*Pause Menu END*/
 	
 	scr_options_menu(); /*Options*/
+	scr_options_level_editor(); /*Level Editor Options*/
 	
 	#region /*Hover over icons reveals the icons*/
 	

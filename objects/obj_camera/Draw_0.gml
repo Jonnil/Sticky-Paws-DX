@@ -353,6 +353,7 @@ and (global.pause = false)
 				time_second = 0;
 				global.time_countdown_bonus -= 1;
 				if (obj_player.allow_timeup = true)
+				and (global.enable_time_countdown = true)
 				{
 					global.time_countdown -= 1;
 				}
@@ -927,7 +928,7 @@ and (can_spawn_player1 = true)
 #endregion /*Tongue aim should always be above everything, it represents the mouse cursor END*/
 
 #region /*Rain Effect*/
-if (rain = true)
+if (global.rain = true)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_player_map") == asset_object)

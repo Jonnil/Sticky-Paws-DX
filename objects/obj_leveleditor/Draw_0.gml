@@ -236,12 +236,89 @@ if (selected_object = 65){place_object = "artwork_collection";can_make_place_bru
 #endregion /*List of Placable Objects END*/
 
 #region /*Change Brush Size. Key 187 = +. key 189 = -*/
-if (key_a_pressed)or(mouse_check_button(mb_left)){if (mouse_wheel_up()) and!(mouse_check_button(mb_middle))or(keyboard_check_pressed(vk_add))or(keyboard_check_pressed(187)) and!(keyboard_check(vk_control)){if (place_brush_size <5){place_brush_size += 1;}}}
-if (key_a_pressed)or(mouse_check_button(mb_left)){if (mouse_wheel_down()) and!(mouse_check_button(mb_middle))or(keyboard_check_pressed(vk_subtract))or(keyboard_check_pressed(189)) and!(keyboard_check(vk_control)){if (place_brush_size > 0){place_brush_size -= 1;}}}
-if (erase_mode = false){if (keyboard_check_pressed(vk_add))or(keyboard_check_pressed(187)) and!(keyboard_check(vk_control)){if (place_brush_size <5){place_brush_size += 1;}}
-if (keyboard_check_pressed(vk_subtract))or(keyboard_check_pressed(189)) and!(keyboard_check(vk_control)){if (place_brush_size > 0){place_brush_size -= 1;}}}
-if (erase_mode = true){if (mouse_wheel_up()) and!(mouse_check_button(mb_middle))or(keyboard_check_pressed(vk_add))or(keyboard_check_pressed(187)) and!(keyboard_check(vk_control)){if (erase_brush_size <5){erase_brush_size += 1;}}
-if (mouse_wheel_down()) and!(mouse_check_button(mb_middle))or(keyboard_check_pressed(vk_subtract))or(keyboard_check_pressed(189)) and!(keyboard_check(vk_control)){if (erase_brush_size > 0){erase_brush_size -= 1;}}}#endregion /*Change Brush Size. Key 187 = +. key 189 = -END*/
+if (key_a_pressed)
+and (pause = false)
+or (mouse_check_button(mb_left))
+and (pause = false)
+{
+	if (mouse_wheel_up())
+	and (!mouse_check_button(mb_middle))
+	or (keyboard_check_pressed(vk_add))
+	or (keyboard_check_pressed(187))
+	and(!keyboard_check(vk_control))
+	{
+		if (place_brush_size < 5)
+		{
+			place_brush_size += 1;
+		}
+	}
+}
+if (key_a_pressed)
+and (pause = false)
+or (mouse_check_button(mb_left))
+and (pause = false)
+{
+	if (mouse_wheel_down())
+	and (!mouse_check_button(mb_middle))
+	or (keyboard_check_pressed(vk_subtract))
+	or (keyboard_check_pressed(189))
+	and (!keyboard_check(vk_control))
+	{
+		if (place_brush_size > 0)
+		{
+			place_brush_size -= 1;
+		}
+	}
+}
+if (erase_mode = false)
+and (pause = false)
+{
+	if (keyboard_check_pressed(vk_add))
+	or (keyboard_check_pressed(187))
+	and (!keyboard_check(vk_control))
+	{
+		if (place_brush_size < 5)
+		{
+			place_brush_size += 1;
+		}
+	}
+	if (keyboard_check_pressed(vk_subtract))
+	or (keyboard_check_pressed(189))
+	and (!keyboard_check(vk_control))
+	{
+		if (place_brush_size > 0)
+		{
+			place_brush_size -= 1;
+		}
+	}
+}
+if (erase_mode = true)
+and (pause = false)
+{
+	if (mouse_wheel_up())
+	and (!mouse_check_button(mb_middle))
+	or (keyboard_check_pressed(vk_add))
+	or (keyboard_check_pressed(187))
+	and (!keyboard_check(vk_control))
+	{
+		if (erase_brush_size < 5)
+		{
+			erase_brush_size += 1;
+		}
+	}
+	if (mouse_wheel_down())
+	and (!mouse_check_button(mb_middle))
+	or (keyboard_check_pressed(vk_subtract))
+	or (keyboard_check_pressed(189))
+	and (!keyboard_check(vk_control))
+	{
+		if (erase_brush_size > 0)
+		{
+			erase_brush_size -= 1;
+		}
+	}
+}
+#endregion /*Change Brush Size. Key 187 = +. key 189 = - END*/
 
 #region /*Keyboard Shortcuts*/
 
@@ -292,6 +369,7 @@ else
 
 #region /*Press E key to change to erase tool in level editor*/
 if (keyboard_check_pressed(ord("E")))
+and (pause = false)
 {
 	if (erase_mode = false)
 	{
@@ -778,6 +856,7 @@ else
 #region /*Erase Cursor*/
 if (erase_mode = true)
 and (scroll_view = false)
+and (pause = false)
 {
 	draw_set_alpha(0.5);
 	{

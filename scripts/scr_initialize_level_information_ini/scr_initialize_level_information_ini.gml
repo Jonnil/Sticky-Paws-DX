@@ -398,7 +398,7 @@ function scr_initialize_level_information_ini()
 		#region /*Rain*/
 		if (ini_key_exists("info", "rain"))
 		{
-			rain = ini_read_real("info", "rain", false);
+			global.rain = ini_read_real("info", "rain", false);
 		}
 		else
 		{
@@ -407,7 +407,7 @@ function scr_initialize_level_information_ini()
 			{
 				ini_write_real("info", "rain", false);
 			}
-			rain = false;
+			global.rain = false;
 		}
 		#endregion /*Rain END*/
 		
@@ -435,7 +435,7 @@ function scr_initialize_level_information_ini()
 		custom_background_3_y_parallax = 7;
 		custom_background_4_x_parallax = 9;
 		custom_background_4_y_parallax = 9;
-		rain = false;
+		global.rain = false;
 	}
 	#endregion /*Initialize level_information.ini END*/
 	
@@ -463,7 +463,7 @@ function scr_initialize_level_information_ini()
 		ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", custom_background_1_x_offset);
 		ini_write_real("info", "default_view_width", global.default_view_width);
 		ini_write_real("info", "default_view_height", global.default_view_height);
-		ini_write_real("info", "rain", rain);
+		ini_write_real("info", "rain", global.rain);
 		ini_close();
 	}
 }

@@ -121,11 +121,11 @@ After 9 Seconds,After 9 Seconds,Efter 9 sekunder,９秒の後で,,,Po 9 sekundac
 Always Show,Always Show,Visa alltid,,,,Zawsze pokazuj
 Never Show,Never Show,Visa aldrig,,,,Zawsze chowaj
 Remap This Player,Remap This Player,Mappa om denna spelare,,,,
-Dive,Pounce,Dyka,,,,Sus
-Jump,Jump,Hoppa,,,,Skok
+Dive,Pounce,Dyka,ボディーアタック,,,Sus
+Jump,Jump,Hoppa,ジャンプ,,,Skok
 Crouch,Crouch,Huka,,,,Przykuc
 Crouch Toggle,Crouch Toggle,Huka växling,,,,
-Sprint,Sprint,Sprinta,,,,TODO: Find a good word for this later
+Sprint,Sprint,Sprinta,走る,,,TODO: Find a good word for this later
 Sprint Toggle,Sprint Toggle,Sprint växling,,,,"and for ""toggle"" too"
 Left,Left,Vänster,左,,,Lewo
 Right,Right,Höger,右,,,Prawo
@@ -143,7 +143,7 @@ Player 4 always run,Player 4 always run,Spelare 4 spring alltid,,,,
 Cancel dive by pressing the jump or dive key,Cancel pounce by pressing the jump or pounce key,Avbryt dyket genom att trycka på hopp- eller dykknappen,,,,
 Cancel dive by pressing the opposite direction,Cancel pounce by pressing the opposite direction,Avbryt dyket genom att trycka i motsatt riktning,,,,
 Down + Jump to Ground Pound,Down + Jump to Ground Pound,Ner + Hoppa för att Ground Pound,,,,
-Wall Jump,Wall Jump,Vägghopp,,,,Walljump
+Wall Jump,Wall Jump,Vägghopp,カベキック,,,Walljump
 Off,Off,Av,,,,
 When touching wall,When touching wall,Vid beröring av vägg,,,,
 When holding towards the wall,When holding towards the wall,När man håller mot väggen,,,,
@@ -254,3 +254,5 @@ Continue playing!,Continue playing!,Fortsätt spela!,,,,Kontynuuj grę!
 Background Scale,Background Scale,Bakgrundsskala,,,,
 Background Scroll X,Background Scroll X,Bakgrund Scroll X,,,,
 Background Scroll Y,Background Scroll Y,Bakgrund Scroll Y,,,,
+Hold down to change the value faster,Hold down to change the value faster,Håll intryckt för att ändra värdet snabbare,,,,
+BG Offset and Parallax,BG Offset and Parallax,BG Offset och Parallax,,,,

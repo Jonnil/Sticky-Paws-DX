@@ -625,9 +625,6 @@ function scr_options_menu()
 	
 	#endregion /*Tabs Graphics END*/
 	
-	if (in_settings = true)
-	{
-	
 	#region /*Scroll menu on right side*/
 	menu_y_offset = lerp(menu_y_offset, menu_y_offset_real, 0.5);
 	if (menu_y_offset_real >= 0)
@@ -651,6 +648,9 @@ function scr_options_menu()
 		menu_y_offset_real += 100;
 	}
 	#endregion /*Scroll menu on right side END*/
+	
+	if (in_settings = true)
+	{
 	
 	#region /*Go back out of setting menu*/
 	if (key_a_pressed)
@@ -5906,7 +5906,7 @@ function scr_options_menu()
 			{
 				draw_text_outlined(window_get_width()/ 2, 32, Text("INPUT KEY NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_text_outlined(window_get_width()/ 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 220, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 			#endregion /*Text saying input key now for player 1 END*/
 		
@@ -5915,7 +5915,7 @@ function scr_options_menu()
 			{
 				draw_text_outlined(window_get_width()/ 2, 32, Text("INPUT KEY NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_text_outlined(window_get_width()/ 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 220, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 			#endregion /*Text saying input key now for player 2 END*/
 		
@@ -5924,7 +5924,7 @@ function scr_options_menu()
 			{
 				draw_text_outlined(window_get_width()/ 2, 32, Text("INPUT KEY NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_text_outlined(window_get_width()/ 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 220, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 			#endregion /*Text saying input key now for player 3 END*/
 		
@@ -5933,7 +5933,7 @@ function scr_options_menu()
 			{
 				draw_text_outlined(window_get_width()/ 2, 32, Text("INPUT KEY NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				draw_text_outlined(window_get_width()/ 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 200, 64, 0.50, 0.50, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width()/ 2 + 220, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 			#endregion /*Text saying input key now for player 4 END*/
 		
@@ -6661,7 +6661,7 @@ function scr_options_menu()
 		#endregion /*Custom Title Background END*/
 		
 		#region /*Custom Title Background Scale*/
-		var scale_increment = 0.05;
+		var scale_increment = 0.01;
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		draw_text_outlined(resource_pack_x, 20 + (custom_title_background_scale_y), Text("Background Scale") + ": " + string(global.title_background_scale), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
@@ -6703,7 +6703,14 @@ function scr_options_menu()
 			and (can_navigate_settings_sidebar = false)
 			and (global.title_background_scale > scale_increment)
 			{
-				global.title_background_scale -= scale_increment;
+				if (keyboard_check(vk_control))
+				{
+					global.title_background_scale -= (scale_increment * 10);
+				}
+				else
+				{
+					global.title_background_scale -= scale_increment;
+				}
 				menu_delay = 3;
 			}
 		}
@@ -6717,7 +6724,14 @@ function scr_options_menu()
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
 			{
-				global.title_background_scale += scale_increment;
+				if (keyboard_check(vk_control))
+				{
+					global.title_background_scale += (scale_increment * 10);
+				}
+				else
+				{
+					global.title_background_scale += scale_increment;
+				}
 				menu_delay = 3;
 			}
 		}

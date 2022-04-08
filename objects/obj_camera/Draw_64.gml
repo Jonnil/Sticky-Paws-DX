@@ -367,10 +367,12 @@ and (!instance_exists(obj_title))
 		#region /*Time Countdown*/
 		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
+		and (global.enable_time_countdown = true)
 		or(asset_get_type("obj_player_die") == asset_object)
 		and (instance_exists(obj_player_die))
+		and (global.enable_time_countdown = true)
 		{
-
+			
 			#region /*Time is running out message*/
 			if (global.player_has_entered_goal = false)
 			{
@@ -384,7 +386,7 @@ and (!instance_exists(obj_title))
 				}
 			}
 			#endregion /*Time is running out message END*/
-
+			
 			#region /*Time Over Message*/
 			if (global.time_countdown = 0)
 			and (global.player_has_entered_goal = false)
@@ -394,7 +396,7 @@ and (!instance_exists(obj_title))
 				draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, "TIME OVER", global.default_text_size * 5, c_black, c_white, 1);
 			}
 			#endregion /*Time Over Message END*/
-
+			
 			if (global.hud_hide_time > 0)
 			if (global.time_countdown >= 0)
 			{
@@ -433,7 +435,7 @@ and (!instance_exists(obj_title))
 					draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
 				}
 			}
-		
+			
 			#region /*Time countup in Minutes, Seconds and Milliseconds*/
 			if (global.show_timer = true)
 			{
@@ -454,7 +456,7 @@ and (!instance_exists(obj_title))
 				draw_text_outlined(window_get_width() - 30, 74, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			#endregion /*Time countup in Minutes, Seconds and Milliseconds END*/
-		
+			
 		}
 		#endregion /*Time Countdown END*/
 		

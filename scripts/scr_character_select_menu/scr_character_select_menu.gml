@@ -5398,7 +5398,7 @@ and (player4_accept_selection >= 0)
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 					and (global.controls_used_for_menu_navigation = "controller")
 					{
-						draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
@@ -5406,16 +5406,16 @@ and (player4_accept_selection >= 0)
 						{
 							if (global.player1_key_jump > noone)
 							{
-								draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 							else
 							if (global.player1_key2_jump > noone)
 							{
-								draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 							else
 							{
-								draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 						}
 					}
@@ -5434,7 +5434,7 @@ and (player4_accept_selection >= 0)
 					if (gamepad_is_connected(1))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 					{
-						draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
@@ -5442,16 +5442,16 @@ and (player4_accept_selection >= 0)
 						{
 							if (global.player2_key_jump > noone)
 							{
-								draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 							else
 							if (global.player2_key2_jump > noone)
 							{
-								draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 							else
 							{
-								draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 						}
 					}
@@ -5470,7 +5470,7 @@ and (player4_accept_selection >= 0)
 					if (gamepad_is_connected(2))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 					{
-						draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
@@ -5478,16 +5478,16 @@ and (player4_accept_selection >= 0)
 						{
 							if (global.player3_key_jump > noone)
 							{
-								draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 							else
 							if (global.player3_key2_jump > noone)
 							{
-								draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 							else
 							{
-								draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 						}
 					}
@@ -5506,7 +5506,7 @@ and (player4_accept_selection >= 0)
 					if (gamepad_is_connected(3))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 					{
-						draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
@@ -5514,16 +5514,16 @@ and (player4_accept_selection >= 0)
 						{
 							if (global.player4_key_jump > noone)
 							{
-								draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 							else
 							if (global.player4_key2_jump > noone)
 							{
-								draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 							else
 							{
-								draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + 170, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
+								draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + 180, play_the_game_text_y, 0.5, 0.5, 0, c_white, 1);
 							}
 						}
 					}

@@ -587,17 +587,29 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		global.make_every_tileset_into_default_tileset = false;
 	}
-	if (ini_key_exists("info", "time_countdown"))
+	if (ini_key_exists("info", "enable_time_countdown"))
 	{
-		global.time_countdown = ini_read_real("info", "time_countdown", noone); /*Set the countdown to whatever is stored in the level_information.ini file*/
+		global.time_countdown = ini_read_real("info", "enable_time_countdown", false);
 	}
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
 		{
-			ini_write_string("info", "time_countdown", noone);
+			ini_write_string("info", "enable_time_countdown", false);
 		}
-		global.time_countdown = noone;
+		global.enable_time_countdown = false;
+	}
+	if (ini_key_exists("info", "time_countdown"))
+	{
+		global.time_countdown = ini_read_real("info", "time_countdown", 500); /*Set the countdown to whatever is stored in the level_information.ini file*/
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_string("info", "time_countdown", 500);
+		}
+		global.time_countdown = 500;
 	}
 	if(global.play_edited_level = false)
 	and (global.actually_play_edited_level = false)
@@ -643,7 +655,8 @@ else
 	custom_background_3_y_parallax = 7;
 	custom_background_4_x_parallax = 9;
 	custom_background_4_y_parallax = 9;
-	global.time_countdown = noone;
+	global.enable_time_countdown = false;
+	global.time_countdown = 500;
 	global.time_countdown_bonus = 500;
 	global.make_every_tileset_into_default_tileset = false;
 }
