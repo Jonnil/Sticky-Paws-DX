@@ -5,7 +5,7 @@ key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_l
 /*Keyboard Controls END*/
 
 xx = lerp(xx, window_get_width() / 2, 0.1);
-yy = lerp(yy, Wave(y- 8, y + 8, 4.5, 0), 0.1);
+yy = lerp(yy, scr_wave(y- 8, y + 8, 4.5, 0), 0.1);
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (point_distance(x, y, obj_player.x, obj_player.y) < 64)
