@@ -9205,22 +9205,6 @@ and (place_meeting(x, y, obj_vine))
 			}
 			climb = false;
 			stomp_spin = false;
-			if (hp = 1)
-			and (max_hp >= 2)
-			{
-				if (asset_get_type("snd_jumpsmall") == asset_sound)
-				{
-					audio_play_sound(snd_jumpsmall, 0, 0);
-					audio_sound_gain(snd_jumpsmall, global.sound_volume * global.main_volume, 0);
-				}
-				if (asset_get_type("snd_jump") == asset_sound)
-				{
-					audio_play_sound(snd_jump, 0, 0);
-					audio_sound_gain(snd_jump, global.sound_volume * global.main_volume, 0);
-					audio_sound_pitch(snd_jump, 1.5);
-				}
-			}
-			else
 			if (asset_get_type("snd_jump") == asset_sound)
 			{
 				audio_play_sound(snd_jump, 0, 0);

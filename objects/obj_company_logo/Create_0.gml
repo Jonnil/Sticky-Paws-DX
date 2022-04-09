@@ -206,8 +206,8 @@ global.background_layer_x_scroll = 1;
 global.background_layer_y_scroll = 1;
 switch (os_get_language())
 {
-    case "ja": global.selected_title_logo = 0; /* 0 = Japanese Logo*/ break;
-    default: global.selected_title_logo = 1; /* 1 = English Logo*/ break;
+    case "ja": global.selected_title_logo = 1; /* 1 = Japanese Logo*/ break;
+    default: global.selected_title_logo = 0; /* 0 = English Logo*/ break;
 }
 global.show_virtual_controls = false; /*Show virtual controls on desktop or not, false by default*/
 
