@@ -7066,6 +7066,9 @@ function scr_options_menu()
 		#region /*Display save file data*/
 		if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 		{
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_center);
+			draw_text_outlined(450, 20 + (40 * 7), string_replace_all(string(game_save_id) + "\save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			
 			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 			
@@ -7076,8 +7079,8 @@ function scr_options_menu()
 			and (ini_key_exists("Player", "current_minute"))
 			and (ini_key_exists("Player", "current_second"))
 			{
-				draw_text_outlined(file_select_x, 20 + (40 * 7), Text("Date modified") + ":", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-				draw_text_outlined(file_select_x, 20 + (40 * 8),
+				draw_text_outlined(file_select_x, 20 + (40 * 9), Text("Date modified") + ":", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(file_select_x, 20 + (40 * 10),
 				string(ini_read_real("Player", "current_month", 0)) + "/" +
 				string(ini_read_real("Player", "current_day", 0)) + "/" +
 				string(ini_read_real("Player", "current_year", 0)) + " " +
@@ -7090,14 +7093,14 @@ function scr_options_menu()
 				and (ini_read_real("Player", "current_day", 0) = current_day)
 				and (ini_read_real("Player", "current_year", 0) = current_year)
 				{
-					draw_text_outlined(file_select_x, 20 + (40 * 9), Text("Last played today!"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+					draw_text_outlined(file_select_x, 20 + (40 * 11), Text("Last played today!"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				}
 				
 			}
 			
 			if (ini_key_exists("Player", "number_of_levels_cleared"))
 			{
-				draw_text_outlined(file_select_x, 20 + (40 * 11), Text("Number of levels passed") + ": " + string(ini_read_real("Player", "number_of_levels_cleared", false)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(file_select_x, 20 + (40 * 12), Text("Number of levels passed") + ": " + string(ini_read_real("Player", "number_of_levels_cleared", false)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			ini_close();
@@ -7110,6 +7113,20 @@ function scr_options_menu()
 			if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 			{
 				draw_menu_button(450, 20 + (40 * 5), Text("Delete File"), "file_delete", "file_delete_no");
+			}
+			
+			draw_menu_button(450, 20 + (40 * 6), Text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder");
+			
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 450, 20 + (40 * 6) + 2, 450 + 371, 20 + (40 * 6) + 41))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay = 0)
+			or (menu = "open_save_file_folder")
+			and (key_a_pressed)
+			and (menu_delay = 0)
+			{
+				scr_open_folder(game_save_id + "\save_files")
+				menu_delay = 60 * 5;
 			}
 		}
 		else
@@ -7224,7 +7241,27 @@ function scr_options_menu()
 		and (menu_joystick_delay = 0)
 		{
 			menu_joystick_delay = 10;
-			menu = "file_select";
+			if (menu = "file_select")
+			{
+				menu = "open_save_file_folder";
+			}
+			else
+			if (menu = "file_delete")
+			{
+				menu = "file_select";
+			}
+			else
+			if (menu = "open_save_file_folder")
+			{
+				if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+				{
+					menu = "file_delete";
+				}
+				else
+				{
+					menu = "file_select";
+				}
+			}
 		}
 		else
 		if (key_down)
@@ -7232,10 +7269,29 @@ function scr_options_menu()
 		and (menu != "file_delete_no")
 		and (can_navigate_settings_sidebar = false)
 		and (menu_joystick_delay = 0)
-		and (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 		{
 			menu_joystick_delay = 10;
-			menu = "file_delete";
+			if (menu = "file_select")
+			{
+				if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+				{
+					menu = "file_delete";
+				}
+				else
+				{
+					menu = "open_save_file_folder";
+				}
+			}
+			else
+			if (menu = "file_delete")
+			{
+				menu = "open_save_file_folder";
+			}
+			else
+			if (menu = "open_save_file_folder")
+			{
+				menu = "file_select";
+			}
 		}
 		
 		if (menu = "file_select")
