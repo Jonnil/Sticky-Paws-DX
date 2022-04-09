@@ -26,7 +26,7 @@ and (obj_camera.sprite_lives_icon > noone)
 	sprite_index = obj_camera.sprite_lives_icon;
 }
 
-text_alpha = lerp(text_alpha, Wave(0, 1, 3, 0), 0.1);
+text_alpha = lerp(text_alpha, scr_wave(0, 1, 3, 0), 0.1);
 
 #region /*Color the extra live pickup differently if it grants you different amounts of lives*/
 if (number_of_extra_lives = 3)
