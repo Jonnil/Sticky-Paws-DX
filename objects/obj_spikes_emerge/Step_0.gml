@@ -144,6 +144,11 @@ and (instance_nearest(x, y, obj_enemy).hspeed <= 0)
 {
 	if (asset_get_type("spr_spikes_emerge") == asset_sprite)
 	and (sprite_index = spr_spikes_emerge)
+	and (asset_get_type("obj_boss") == asset_object)
+	and (!place_meeting(x - 1, y, obj_boss))
+	and (!place_meeting(x + 1, y, obj_boss))
+	and (!place_meeting(x, y - 1, obj_boss))
+	and (!place_meeting(x, y + 1, obj_boss))
 	{
 		if (instance_nearest(x, y, obj_enemy).x < x)
 		and (instance_nearest(x, y, obj_enemy).die = false)

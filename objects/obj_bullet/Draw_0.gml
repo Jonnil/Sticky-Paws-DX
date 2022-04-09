@@ -44,7 +44,14 @@ else
 		sprite_index = global.resource_pack_sprite_bullet_flattened;
 		if (image_index > image_number - 1)
 		{
-			effect_create_above(ef_smoke, x, y, 2, c_white);
+			if (instance_exists(obj_foreground_secret))
+			and (place_meeting(x, y, obj_foreground_secret))
+			and (obj_foreground_secret.image_alpha < 0.5)
+			or (instance_exists(obj_foreground_secret))
+			and (!place_meeting(x, y, obj_foreground_secret))
+			{
+				effect_create_above(ef_smoke, x, y, 2, c_white);
+			}
 			instance_destroy();
 		}
 	}
@@ -80,7 +87,14 @@ and (asset_get_type("obj_wall") == asset_object)
 	if (place_meeting(x - 1, y, obj_wall))
 	or(place_meeting(x + 1, y, obj_wall))
 	{
-		effect_create_above(ef_smoke, x, y, 2, c_white);
+		if (instance_exists(obj_foreground_secret))
+		and (place_meeting(x, y, obj_foreground_secret))
+		and (obj_foreground_secret.image_alpha < 0.5)
+		or (instance_exists(obj_foreground_secret))
+		and (!place_meeting(x, y, obj_foreground_secret))
+		{
+			effect_create_above(ef_smoke, x, y, 2, c_white);
+		}
 		instance_destroy();
 	}
 }

@@ -3,6 +3,12 @@ active_right = false;
 active_up = false;
 active_down = false;
 
+if (asset_get_type("obj_camera") == asset_object)
+and (!instance_exists(obj_camera))
+{
+	instance_create_depth(x, y, 0, obj_camera);
+}
+
 /*Player 1 Key Left Hold*/ key_left = (keyboard_check(global.player1_key_left)) and (!keyboard_check(global.player1_key_right)) or(keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or(gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr)) or(gamepad_axis_value(0, gp_axislh) < 0);
 /*Player 1 Key Right Hold*/ key_right = (keyboard_check(global.player1_key_right)) and (!keyboard_check(global.player1_key_left)) or(keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or(gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl)) or(gamepad_axis_value(0, gp_axislh) > 0);
 /*Player 1 Key Down Hold*/ key_down = (keyboard_check(global.player1_key_down)) and (!keyboard_check(global.player1_key_up)) or(keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or(keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or(gamepad_button_check(0, gp_padd)) and (!gamepad_button_check(0, gp_padu)) or(gamepad_axis_value(0, gp_axislv) > 0);
@@ -11,7 +17,6 @@ active_down = false;
 /*Player 1 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or(keyboard_check_pressed(global.player1_key_dive)) or(keyboard_check_pressed(global.player1_key2_dive)) or(keyboard_check_pressed(global.player1_key_sprint)) or(keyboard_check_pressed(global.player1_key2_sprint)) or(keyboard_check_pressed(vk_backspace)) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(ord("X")));
 
 #region /*Play as custom character*/
-initialize_custom_character_timer = 0;
 if (global.player1_can_play = true)
 {
 	player = 1;

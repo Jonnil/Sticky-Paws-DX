@@ -81,6 +81,7 @@ if (bounceup = true)
 			}
 			basic_collectible_sound = true;
 		}
+		depth = - 100;
 		visible = true;
 		#region /*Set the gravity*/
 		gravity_direction = 270; /*Direction of the gravity*/

@@ -1,6 +1,4 @@
-scr_set_screen_size();
-
-scr_zoom_camera_controls();
+//scr_zoom_camera_controls();
 
 if (current_file != global.file)
 or(!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
@@ -162,6 +160,22 @@ global.hud_show_score = false;
 
 if (global.goal_active = true)
 {
+	with(instance_create_depth(x - 50, y, 0, obj_unlock_next_level))
+	{
+		hspeed -= 16;
+	}
+	with(instance_create_depth(x + 50, y, 0, obj_unlock_next_level))
+	{
+		hspeed += 16;
+	}
+	with(instance_create_depth(x, y - 50, 0, obj_unlock_next_level))
+	{
+		vspeed -= 16;
+	}
+	with(instance_create_depth(x, y + 50, 0, obj_unlock_next_level))
+	{
+		vspeed += 16;
+	}
 	global.goal_active = false;
 }
 
@@ -1139,7 +1153,7 @@ mask_index = spr_wall;
 if (asset_get_type("obj_level") == asset_object)
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (move_delay > 10)
-and (instance_nearest(x, y, obj_level).level_number > 0)
+and (instance_nearest(x, y, obj_level).level_number != 0)
 and (point_distance(xx, yy, x, y) < 40)
 {
 	if (instance_nearest(x, y, obj_level).clear_rate = "enter")

@@ -180,7 +180,6 @@ hud_show_big_collectibles = -32;
 hud_show_big_collectibles_timer = 0;
 hud_show_score = -64;
 hud_show_score_timer = 0;
-hud_show_time_timer = 0;
 #endregion /*Hud Variables END*/
 
 player_has_spawned = false;
@@ -382,8 +381,19 @@ player4_has_pressed_key_jump = false;
 player4_has_pressed_key_dash = false; /*Player 4 END*/
 /*HUD Show Controls keys that have been pressed END*/
 
-xx = x;
-yy = y;
+if (asset_get_type("obj_player_map") == asset_object)
+and (instance_exists(obj_player_map))
+{
+	x = obj_player_map.x;
+	y = obj_player_map.y;
+	xx = obj_player_map.x;
+	yy = obj_player_map.y;
+}
+else
+{
+	xx = x;
+	yy = y;
+}
 letterbox_top_y = 0;
 letterbox_bottom_y = room_height;
 show_letterbox = 0;
@@ -519,7 +529,6 @@ else
 }
 #endregion /*Custom Music END*/
 
-big_collectible_count = 1;
 shake = false;
 scrolling_left = 0;
 

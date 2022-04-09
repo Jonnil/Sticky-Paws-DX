@@ -4704,12 +4704,7 @@ and (global.pause = false)
 				image_xscale = -1;
 				
 				#region /*Turnaround Effect*/
-				if (asset_get_type("obj_wall") == asset_object)
-				and (!place_meeting(x, y + 1, obj_wall))
-				and (asset_get_type("obj_semisolid_platform") == asset_object)
-				and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-				and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-				and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+				if (on_ground = false)
 				{
 					effect_turnaround_subimg = 0;
 				}
@@ -4781,12 +4776,7 @@ and (global.pause = false)
 				image_xscale = +1;
 				
 				#region /*Turnaround Effect*/
-				if (asset_get_type("obj_wall") == asset_object)
-				and (!place_meeting(x, y + 1, obj_wall))
-				and (asset_get_type("obj_semisolid_platform") == asset_object)
-				and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-				and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-				and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+				if (on_ground = false)
 				{
 					effect_turnaround_subimg = 0;
 				}
@@ -5081,7 +5071,7 @@ and (key_jump_hold)
 		can_ground_pound = false;
 		can_mid_air_jump = 10;
 		vspeed = 0;
-		y += 18;
+		y += 7;
 	}
 	#endregion /*Drop down below semisolid platform END*/
 	
@@ -7440,11 +7430,13 @@ and (global.assist_enable = false)
 	drawn_frames_until_drowning = lerp(drawn_frames_until_drowning, frames_until_drowning, 0.1);
 	if (in_water = true)
 	{
-		frames_until_drowning = clamp(frames_until_drowning- 1, 0, seconds_until_drowning* 60);
-		if (frames_until_drowning <= 0)
+		frames_until_drowning = clamp(frames_until_drowning- 1, -60, seconds_until_drowning* 60);
+		if (frames_until_drowning <= -60)
 		and (goal = false)
+		and (takendamage = 0)
 		{
 			hp -= 1;
+			takendamage = 100;
 		}
 	}
 	else
@@ -8755,6 +8747,15 @@ and (hold_item_in_hands = "")
 		{
 			if (!key_up)
 			{
+				if (place_meeting(x - 1, y, obj_wall))
+				{
+					x += 1;
+				}
+				else
+				if (place_meeting(x + 1, y, obj_wall))
+				{
+					x -= 1;
+				}
 				can_climb_horizontal_rope_cooldown = sprite_height/9; /*Cooldown timer before you can start climbing again. The deviding number should be high enough so you grab a rope below you but not grabbing the same rope you were just on*/
 				can_ground_pound = false;
 				climb = false;

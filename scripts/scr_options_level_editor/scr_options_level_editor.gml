@@ -307,13 +307,13 @@ function scr_options_level_editor()
 			global.time_countdown = 0;
 		}
 		
-		draw_menu_button(level_editor_options_x, 46 * 2 + menu_y_offset, Text("Back"), "back_level_editor_options", "level_editor_options");
-		draw_menu_button(level_editor_options_x, 46 * 3 + menu_y_offset, Text("BG Offset and Parallax"), "background_offset_and_parallax", "back_background_offset_and_parallax");
-		global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, 46 * 4 + menu_y_offset, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
-		global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, 46 * 5 + menu_y_offset, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
-		draw_menu_checkmark(level_editor_options_x - 90, 46 * 6 + menu_y_offset, "Make every tileset into default tileset", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
-		draw_menu_checkmark(level_editor_options_x - 90, 46 * 7 + menu_y_offset, "Rain", "rain", global.rain);
-		draw_menu_checkmark(level_editor_options_x - 90, 46 * 8 + menu_y_offset, "Enable Time Countdown", "enable_time_countdown", global.enable_time_countdown);
+		draw_menu_button(level_editor_options_x, 47 * 2 + menu_y_offset, Text("Back"), "back_level_editor_options", "level_editor_options");
+		draw_menu_button(level_editor_options_x, 47 * 3 + menu_y_offset, Text("BG Offset and Parallax"), "background_offset_and_parallax", "back_background_offset_and_parallax");
+		global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, 47 * 4 + menu_y_offset, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
+		global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, 47 * 5 + menu_y_offset, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
+		draw_menu_checkmark(level_editor_options_x - 90, 47 * 6 + menu_y_offset, "Make every tileset into default tileset", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
+		draw_menu_checkmark(level_editor_options_x - 90, 47 * 7 + menu_y_offset, "Rain", "rain", global.rain);
+		draw_menu_checkmark(level_editor_options_x - 90, 47 * 8 + menu_y_offset, "Enable Time Countdown", "enable_time_countdown", global.enable_time_countdown);
 		global.time_countdown = draw_menu_left_right_buttons(level_editor_options_x, 46 * 9 + menu_y_offset, options_level_editor_right_arrow_x, "Time Countdown", global.time_countdown, "time_countdown", 1, false);
 	}
 	else

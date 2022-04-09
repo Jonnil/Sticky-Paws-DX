@@ -129,6 +129,8 @@ function scr_select_official_level_menu()
 		and (can_input_level_name = false)
 		and (menu_delay = 0)
 		{
+			scroll_to = floor(global.select_level_index / R);
+			lerp_on = true;
 			menu_delay = 3;
 			global.level_name = "";
 			keyboard_string = "";

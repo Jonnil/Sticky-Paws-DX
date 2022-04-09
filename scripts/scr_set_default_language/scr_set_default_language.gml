@@ -16,6 +16,20 @@ function scr_set_default_language()
 			break;
 		}
 		else
+		if (os_get_language() = "pl")
+		and (global.language_local_data[# 1, 0] == "Polski")
+		{
+			global.language_localization = i;
+			break;
+		}
+		else
+		if (os_get_language() = "es")
+		and (global.language_local_data[# 1, 0] == "Español")
+		{
+			global.language_localization = i;
+			break;
+		}
+		else
 		if (os_get_language() = "sv")
 		and (global.language_local_data[# 1, 0] == "Svenska")
 		{

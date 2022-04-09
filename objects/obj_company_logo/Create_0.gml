@@ -57,7 +57,7 @@ global.deactivate_objects_outsiede_view = true; /*This global variable is for de
 global.number_of_chain_kills_for_1up = 8; /*How many chain reaction kills you need to get 1-ups. Default is 8*/
 
 global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
-ds_list_add(global.all_loaded_main_levels, "Intro", "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Ending", "Level9");
+ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "ending", "level9", "levelA");
 
 #endregion /*Things you could change END*/
 

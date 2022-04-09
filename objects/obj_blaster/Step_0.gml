@@ -1,10 +1,11 @@
 #region /*Gravity*/
 if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-and (bbox_left < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-and (bbox_right > camera_get_view_x(view_camera[view_current]))
-and (bbox_top < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (bbox_bottom > camera_get_view_y(view_camera[view_current]))
+and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+and (x < obj_camera.view_x_center + 980)
+and (x > obj_camera.view_x_center - 980)
+and (y < obj_camera.view_y_center + 980)
+and (y > obj_camera.view_y_center - 980)
 {
 	gravity = 0.5;
 }

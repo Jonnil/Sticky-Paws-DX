@@ -6253,7 +6253,7 @@ function scr_options_menu()
 					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
 					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
 					#endregion /*Player 1 character select portrait sprite END*/
-						
+					
 				}
 				open_dropdown = false;
 			}
@@ -6778,7 +6778,14 @@ function scr_options_menu()
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
 			{
-				global.background_layer_x_scroll -= scale_increment;
+				if (keyboard_check(vk_control))
+				{
+					global.background_layer_x_scroll -= (scale_increment * 10);
+				}
+				else
+				{
+					global.background_layer_x_scroll -= scale_increment;
+				}
 				menu_delay = 3;
 			}
 		}
@@ -6792,7 +6799,14 @@ function scr_options_menu()
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
 			{
-				global.background_layer_x_scroll += scale_increment;
+				if (keyboard_check(vk_control))
+				{
+					global.background_layer_x_scroll += (scale_increment * 10);
+				}
+				else
+				{
+					global.background_layer_x_scroll += scale_increment;
+				}
 				menu_delay = 3;
 			}
 		}
@@ -6839,7 +6853,14 @@ function scr_options_menu()
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
 			{
-				global.background_layer_y_scroll -= scale_increment;
+				if (keyboard_check(vk_control))
+				{
+					global.background_layer_y_scroll -= (scale_increment * 10);
+				}
+				else
+				{
+					global.background_layer_y_scroll -= scale_increment;
+				}
 				menu_delay = 3;
 			}
 		}
@@ -6853,7 +6874,14 @@ function scr_options_menu()
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
 			{
-				global.background_layer_y_scroll += scale_increment;
+				if (keyboard_check(vk_control))
+				{
+					global.background_layer_y_scroll += (scale_increment * 10);
+				}
+				else
+				{
+					global.background_layer_y_scroll += scale_increment;
+				}
 				menu_delay = 3;
 			}
 		}
@@ -7038,6 +7066,7 @@ function scr_options_menu()
 		#region /*Display save file data*/
 		if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 		{
+			
 			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 			
 			if (ini_key_exists("Player", "current_month"))
@@ -7997,7 +8026,7 @@ function scr_options_menu()
 			if (key_up)
 			and (menu_delay = 0)
 			{
-				menu = "enable_foreground_layer1";
+				menu = "enable_foreground_layer_above_static_objects";
 				menu_delay = 3;
 			}
 			else
