@@ -14,6 +14,6 @@ function scr_open_folder(dname)
 	else
 	if (os_type = os_linux)
 	{
-		execute_shell("xdg-open", "\"" + escapedfolder + "\"");
+		execute_shell("xdg-mime", "\"" + escapedfolder + "\"");
 	}
 }

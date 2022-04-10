@@ -7063,13 +7063,13 @@ function scr_options_menu()
 		draw_set_valign(fa_center);
 		draw_text_outlined(file_select_x, 20 + (40 * 4), Text("File") + ": " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_center);
+		draw_text_outlined(450, 20 + (40 * 8), string_replace_all(string(game_save_id) + "\save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		
 		#region /*Display save file data*/
 		if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 		{
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_center);
-			draw_text_outlined(450, 20 + (40 * 7), string_replace_all(string(game_save_id) + "\save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			
 			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 			
 			if (ini_key_exists("Player", "current_month"))

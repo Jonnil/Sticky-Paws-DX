@@ -381,8 +381,8 @@ and (!instance_exists(obj_title))
 				{
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_center);
-					draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, "HURRY UP!", global.default_text_size, c_black, c_orange, 1);
-					draw_text_transformed_color(display_get_gui_width() / 2, display_get_gui_height() / 2, "HURRY UP!", global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
+					draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, Text("HURRY UP!"), global.default_text_size, c_black, c_orange, 1);
+					draw_text_transformed_color(display_get_gui_width() / 2, display_get_gui_height() / 2, Text("HURRY UP!"), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 				}
 			}
 			#endregion /*Time is running out message END*/
@@ -393,7 +393,7 @@ and (!instance_exists(obj_title))
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_center);
-				draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, "TIME OVER", global.default_text_size * 5, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, Text("TIME OVER"), global.default_text_size * 5, c_black, c_white, 1);
 			}
 			#endregion /*Time Over Message END*/
 			
@@ -406,19 +406,19 @@ and (!instance_exists(obj_title))
 				{
 					if (global.time_countdown = 0)
 					{
-						draw_text_outlined(window_get_width() - 32, 32, "TIME\n0", global.default_text_size, c_black, c_red, 1);
+						draw_text_outlined(window_get_width() - 32, 42, "TIME\n0", global.default_text_size, c_black, c_red, 1);
 					}
 					else
 					{
 						if (global.time_countdown >= 100)
 						{
-							draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_yellow, 1);
-							draw_text_transformed_color(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
+							draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_yellow, 1);
+							draw_text_transformed_color(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
 						}
 						else
 						{
-							draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_orange, 1);
-							draw_text_transformed_color(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
+							draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_orange, 1);
+							draw_text_transformed_color(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 						}
 					}
 					if (global.timeattack_millisecond < room_speed / 2)
@@ -432,7 +432,7 @@ and (!instance_exists(obj_title))
 				}
 				else
 				{
-					draw_text_outlined(window_get_width() - 32, 32, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
+					draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
 				}
 			}
 			

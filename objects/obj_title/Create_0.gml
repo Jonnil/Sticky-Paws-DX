@@ -174,16 +174,18 @@ global.controls_layout = 1;
 global.trigger_ending = false;
 global.spikes_emerge_time = 0;
 global.goal_active = false;
-global.PauseScreen = noone;
 global.quit_level = false;
 global.always_show_level_editor_buttons = true; /*If level editor buttons should always show or not. Should be true by default*/
 
 scr_config_load(); /*Load Config*/
 
-if (global.language_localization > ds_grid_width(global.language_local_data))
-or (global.language_localization < 0)
+if (file_exists("localization.csv"))
 {
-	scr_set_default_language();
+	if (global.language_localization > ds_grid_width(global.language_local_data))
+	or (global.language_localization < 0)
+	{
+		scr_set_default_language();
+	}
 }
 
 lives = 5; /*Starting lives*/

@@ -7046,14 +7046,13 @@ if (allow_ledge_grab = true)
 				image_xscale = +1;
 			}
 			vspeed = 0;
-			if (asset_get_type("spr_player_ledge_grab") == asset_sprite)
+			if (sprite_ledge_grab > noone)
 			{
-				sprite_index = spr_player_ledge_grab;
+				sprite_index = sprite_ledge_grab;
 			}
 			else
-			if (asset_get_type("spr_player_wall_slide") == asset_sprite)
 			{
-				sprite_index = spr_player_wall_slide;
+				sprite_index = sprite_wall_slide;
 			}
 			if (key_left)
 			and (image_xscale = -1)

@@ -54,14 +54,14 @@ function InitTranslations()
 	{
 		global.language_local_data = 0;
 		global.translations = 0;
-		global.languages = 0;
 	}
 }
 
 function Text(key)
 {
 	var text = "";
-	if (global.translations[?key] != undefined)
+	if (file_exists("localization.csv"))
+	and (global.translations[?key] != undefined)
 	and (global.language_local_data[# 1 + global.language_localization, global.translations[?key]] != "")
 	{
 		var text = global.language_local_data[# 1 + global.language_localization, global.translations[?key]];
@@ -69,7 +69,8 @@ function Text(key)
 		text = string_replace_all(text, "{a}", a);
 	}
 	else
-	if (global.translations[?key] != undefined)
+	if (file_exists("localization.csv"))
+	and (global.translations[?key] != undefined)
 	and (global.language_local_data[# 1, global.translations[?key]] != "")
 	{
 		var text = global.language_local_data[# 1, global.translations[?key]];

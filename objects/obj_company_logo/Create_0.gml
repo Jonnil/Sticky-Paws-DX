@@ -511,10 +511,13 @@ if (asset_get_type("scr_config_load") == asset_script)
 }
 #endregion /*Load Config END*/
 
-if (global.language_localization > ds_grid_width(global.language_local_data))
-or (global.language_localization < 0)
+if (file_exists("localization.csv"))
 {
-	scr_set_default_language();
+	if (global.language_localization > ds_grid_width(global.language_local_data))
+	or (global.language_localization < 0)
+	{
+		scr_set_default_language();
+	}
 }
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/

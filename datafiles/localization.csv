@@ -39,12 +39,12 @@ Accept,Accept,Acceptera,,,Akceptuj
 Cancel,Cancel,Avbryt,,,Anuluj
 Skin,Skin,Utseende,,,Skórka
 Voice Pack,Voice Pack,Röstpaket,,,Głos
-Player 1,Player 1,Spelare 1,,,Gracz 1
-Player 2,Player 2,Spelare 2,,,Gracz 2
-Player 3,Player 3,Spelare 3,,,Gracz 3
-Player 4,Player 4,Spelare 4,,,Gracz 4
-Play the game!,Play the game!,Spela spelet!,,,Zagraj
-Play level,Play level,Spela nivå,,,Zagraj poziom
+Player 1,Player 1,Spelare 1,プレイヤー１,,Gracz 1
+Player 2,Player 2,Spelare 2,プレイヤー２,,Gracz 2
+Player 3,Player 3,Spelare 3,プレイヤー３,,Gracz 3
+Player 4,Player 4,Spelare 4,プレイヤー４,,Gracz 4
+Play the game!,Play the game!,Spela spelet!,プレー,,Zagraj
+Play level,Play level,Spela nivå,レベルスタート,,Zagraj poziom
 Player 1 starts the game,Player 1 starts the game,Spelare 1 startar spelet,,,Gracz 1 dołącza do gry
 Player 2 starts the game,Player 2 starts the game,Spelare 2 startar spelet,,,Gracz 2 dołącza do gry
 Player 3 starts the game,Player 3 starts the game,Spelare 3 startar spelet,,,Gracz 3 dołąćza do gry
@@ -57,23 +57,23 @@ These are official levels from the game. Learn how these levels were made!,These
 Play,Play,Spela,プレー,,Graj
 Make,Make,Skapa,作る,,Twórz
 Delete,Delete,Radera,デリート,,Usuń
-Paintbrush tool,Paintbrush tool,Penselverktyg,,,Pędzel
-Erase tool,Erase tool,Radera verktyg,,,Gumka
-Fill tool,Fill tool,Fyllningsverktyg,,,Wypełnienie
-Hide buttons,Hide buttons,Dölj knappar,,,Ukryj przyciski
-Lock buttons,Lock buttons,Lås knappar,,,Zablokuj przyciski
-"Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - När en karaktär inte har förmågan att hoppa från väggar, låter även dessa karaktärer vägghoppa",カベキックパネル　キャラがカベキックできないなら、,,
+Paintbrush tool,Paintbrush tool,Penselverktyg,絵筆,,Pędzel
+Erase tool,Erase tool,Radera verktyg,消しごみ,,Gumka
+Fill tool,Fill tool,Fyllningsverktyg,塗りつぶしツール,,Wypełnienie
+Hide buttons,Hide buttons,Dölj knappar,ボタンを見せない,,Ukryj przyciski
+Lock buttons,Lock buttons,Lås knappar,ロックボタン,,Zablokuj przyciski
+"Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - När en karaktär inte har förmågan att hoppa från väggar, låter även dessa karaktärer vägghoppa",,,
 "Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb","Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb","Wall Climb Panel - När en karaktär inte har förmågan att klättra på väggar, låter även dessa karaktärer klättra på väggar",,,
-Continue,Continue,Fortsätt,,,Kontynuuj
+Continue,Continue,Fortsätt,続く,,Kontynuuj
 Generate Level Map,Generate Level Map,Generera nivåkarta,,,Generuj mapę poziomu
-Save and Quit,Save and Quit,Spara och avsluta,,,Zapisz i wyjdź
+Save and Quit,Save and Quit,Spara och avsluta,セーブと終了,,Zapisz i wyjdź
 A map of the whole level will be generated and saved in,A map of the whole level will be generated and saved in,En karta över hela nivån kommer att genereras och sparas i,,,
 "With this map, you can then use it in a drawing program,","With this map, you can then use it in a drawing program,","Med denna karta kan du sedan använda den i ett ritprogram,",,,
 as the base to make the background and foreground layers.,as the base to make the background and foreground layers.,som bas för att göra bakgrunds- och förgrundslagren.,,,
 Do you want to generate a level map?,Do you want to generate a level map?,Vill du skapa en nivåkarta?,,,
 Yes,Yes,Ja,はい,,Tak
 No,No,Nej,いいえ,,Nie
-ARE YOU SURE YOU WANT TO QUIT?,ARE YOU SURE YOU WANT TO QUIT?,ÄR DU SÄKER PÅ ATT DU VILL SLUTA?,,,CZY JESTEŚ PEWIEN ŻE CHCESZ WYJŚĆ Z GRY
+ARE YOU SURE YOU WANT TO QUIT?,ARE YOU SURE YOU WANT TO QUIT?,ÄR DU SÄKER PÅ ATT DU VILL SLUTA?,終了したいですか,,CZY JESTEŚ PEWIEN ŻE CHCESZ WYJŚĆ Z GRY
 YES,YES,JA,はい,,TAK
 NO,NO,NEJ,いいえ,,NIE
 Enable Assist Mode,Enable Assist Mode,Aktivera hjälpläge,,,
@@ -93,7 +93,7 @@ Appear after 9 deaths on a level,Appear after 2 deaths on a level,Visas efter 9 
 Never Appear,Never Appear,Visas aldrig,,,Nigdy nie pokazuj
 Extra Health Points,Extra Health Points,Extra hälsopoäng,,,Dodatkowe punkty zdrowia
 None,None,Ingen,無し,,
-Invincible,Invincible,Oövervinnerlig,,,Niezniszczalność
+Invincible,Invincible,Oövervinnerlig,無敵,,Niezniszczalność
 Breathe Underwater,Breathe Underwater,Andas under vatten,,,Oddychanie pod wodą
 Show Assist Arrows,Show Assist Arrows,Visa hjälppilar,,,Pokazuj strzałki asysty
 Show Normal Arrows,Show Normal Arrows,Visa normala pilar,,,Pokazuj normalne strzałki
@@ -101,14 +101,14 @@ Enable Enemies,Enable Enemies,Aktivera fiender,,,
 Enable Spikes,Enable Spikes,Aktivera spikar,,,
 Show Assist Mode Text,Show Assist Mode Text,Visa hjälplägestext,,,Pokazuj tekst trybu asysty
 Level Layout Difficulty,Level Layout Difficulty,Nivå Layout Svårighetsgrad,,,
-Easy,Easy,Lätt,,,Łatwy
-Normal,Normal,Vanligt,,,Normalny
-Hard,Hard,Svår,,,Trudny
+Easy,Easy,Lätt,イージー,,Łatwy
+Normal,Normal,Vanligt,ノーマル,,Normalny
+Hard,Hard,Svår,ハード,,Trudny
 Automatically pause when the game is unfocused,Automatically pause when the game is unfocused,Pausa automatiskt när spelet är ofokuserat,,,
 Show Timer,Show Timer,Visa timer,タイマーを見せる,,Pokaż stoper
 Show Deaths Counter,Show Deaths Counter,Visa dödsräknare,デスカウンターを見せる,,Pokaż licznik przegranych
-Show Tutorial Signs,Show Tutorial Signs,Visa handledningsskyltar,,,Pokaż znaki samouczka
-HUD hide timer,HUD hide timer,HUD dölj timer,,,Automatyczne chowanie stopera
+Show Tutorial Signs,Show Tutorial Signs,Visa handledningsskyltar,チュートリアルサインを見せる,,Pokaż znaki samouczka
+HUD hide timer,HUD hide timer,HUD dölj timer,HUDタイマーを見せない,,Automatyczne chowanie stopera
 After 1 Second,After 1 Second,Efter 1 sekund,１秒の後で,,Po 1 sekundzie
 After 2 Seconds,After 2 Seconds,Efter 2 sekunder,２秒の後で,,Po 2 sekundach
 After 3 Seconds,After 3 Seconds,Efter 3 sekunder,３秒の後で,,Po 3 sekundach
@@ -118,15 +118,15 @@ After 6 Seconds,After 6 Seconds,Efter 6 sekunder,６秒の後で,,Po 6 sekundach
 After 7 Seconds,After 7 Seconds,Efter 7 sekunder,７秒の後で,,Po 7 sekundach
 After 8 Seconds,After 8 Seconds,Efter 8 sekunder,８秒の後で,,Po 8 sekundach
 After 9 Seconds,After 9 Seconds,Efter 9 sekunder,９秒の後で,,Po 9 sekundach
-Always Show,Always Show,Visa alltid,,,Zawsze pokazuj
-Never Show,Never Show,Visa aldrig,,,Zawsze chowaj
+Always Show,Always Show,Visa alltid,いつも見せる,,Zawsze pokazuj
+Never Show,Never Show,Visa aldrig,見せない,,Zawsze chowaj
 Remap This Player,Remap This Player,Mappa om denna spelare,,,
 Dive,Pounce,Dyka,ボディーアタック,,Sus
 Jump,Jump,Hoppa,ジャンプ,,Skok
-Crouch,Crouch,Huka,,,Przykuc
-Crouch Toggle,Crouch Toggle,Huka växling,,,
+Crouch,Crouch,Huka,しゃがむ,,Przykuc
+Crouch Toggle,Crouch Toggle,Huka växling,しゃがむトグル,,
 Sprint,Sprint,Sprinta,走る,,TODO: Find a good word for this later
-Sprint Toggle,Sprint Toggle,Sprint växling,,,"and for ""toggle"" too"
+Sprint Toggle,Sprint Toggle,Sprint växling,走るトグル,,"and for ""toggle"" too"
 Left,Left,Vänster,左,,Lewo
 Right,Right,Höger,右,,Prawo
 Down,Down,Ner,下,,Dół
@@ -217,18 +217,18 @@ Enter name,Enter name,Skriv namn,,,Podaj imię
 Assist Mode,Assist Mode,Assist läge,,,Tryb asysty
 Hold Start,Hold Start,Håll Start,,,Przytrzymaj start
 Press and Hold Screen,Press and Hold Screen,Tryck och håll ned skärmen,,,Dotknij i przytrzymaj ekran
-Delete Level,Delete Level,Ta bort nivå,,,Usuń poziom
+Delete Level,Delete Level,Ta bort nivå,レベルデリート,,Usuń poziom
 Height,Height,Höjd,高さ,,
 Width,Width,Bredd,幅,,
-Grid X,Grid X,Rutnät X,,,
-Grid Y,Grid Y,Rutnät Y,,,
-Default grid size!,Default grid size!,Standard rutnätsstorlek!,,,Domyślny rozmiar !
+Grid X,Grid X,Rutnät X,グリッドX,,
+Grid Y,Grid Y,Rutnät Y,グリッドY,,
+Default grid size!,Default grid size!,Standard rutnätsstorlek!,規定グリッドサイズ,,Domyślny rozmiar !
 X,X,X,X,,X
 Y,Y,Y,Y,,Y
-View X,View X,Vy X,,,Pokaż X
-View Y,View Y,Vy Y,,,Pokaż Y
-View width,View width,Vy bredd,,,Pokaż 
-View height,View height,Vy höjd,,,Pokaż
+View X,View X,Vy X,ビューX,,Pokaż X
+View Y,View Y,Vy Y,ビューY,,Pokaż Y
+View width,View width,Vy bredd,ビュー幅,,Pokaż 
+View height,View height,Vy höjd,ビュー高さ,,Pokaż
 Warning! Level height shorter than normal,Warning! Level height shorter than normal,Varning! Nivåhöjd kortare än normalt,注意、レベルは普通より高い,,
 Warning! Level width shorter than normal,Warning! Level width shorter than normal,Varning! Nivåbredd kortare än normalt,注意、レベルは普通より広い,,
 Can put objects above other objects: True,Can put objects above other objects: True,Kan sätta objekt över andra objekt: Sant,,,
@@ -237,7 +237,7 @@ Artist,Artist,Konstnär,,,Artysta
 To unlock this artwork,To unlock this artwork,För att låsa upp det här konstverket,,,Aby odblokować tą ilustrację
 Get big fish,Get big fish,Skaffa stor fisk,,,zdobądź wielką rybę
 in level,in level,i nivå,,,w poziomie
-Pounce,Pounce,Dyka,,,Sus
+Pounce,Pounce,Dyka,ボディーアタック,,Sus
 Join Game,Join Game,Gå med i spel,,,Rozpocznij grę
 Date modified,Date modified,Datum ändrat,,,Data modyfikacji
 Last played today!,Last played today!,Spelades senast idag!,,,Ostatnio grano dzisiaj!
@@ -256,3 +256,6 @@ Background Scroll X,Background Scroll X,Bakgrund Scroll X,,,
 Background Scroll Y,Background Scroll Y,Bakgrund Scroll Y,,,
 Hold down to change the value faster,Hold down to change the value faster,Håll intryckt för att ändra värdet snabbare,,,
 BG Offset and Parallax,BG Offset and Parallax,BG Offset och Parallax,,,
+Open Custom Levels Folder,Open Custom Levels Folder,Öppna egna nivåer,カスタムレベルフォルダを開く,,
+TIME OVER,TIME OVER,TID ÖVER,,,
+HURRY UP!,HURRY UP!,SKYNDA DIG!,,,

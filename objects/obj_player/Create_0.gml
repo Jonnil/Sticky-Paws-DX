@@ -87,6 +87,7 @@ sprite_ground_pound = noone;
 sprite_ground_pound_get_up = noone;
 sprite_jump = noone;
 sprite_jump_transition_to_fall = noone;
+sprite_ledge_grab = noone;
 sprite_look_up = noone;
 sprite_look_up_start = noone;
 sprite_panting = noone;
