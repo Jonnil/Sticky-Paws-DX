@@ -48,6 +48,16 @@ if (quit_level_editor = false)
 		or(menu = "open_custom_levels_folder")
 		or(menu = "quit")
 		{
+			if (key_b_pressed)
+			and (menu_delay = 0)
+			{
+				menu_delay = 10;
+				quit_level_editor = false;
+				can_input_level_name = false;
+				pause = false;
+				can_navigate = false;
+			}
+			
 			in_settings = false;
 			
 			#region /*If menu is on continue*/
@@ -90,15 +100,6 @@ if (quit_level_editor = false)
 						can_input_level_name = false;
 						pause = false;
 					}
-				}
-				if (key_b_pressed)
-				and (menu_delay = 0)
-				{
-					menu_delay = 10;
-					quit_level_editor = false;
-					can_input_level_name = false;
-					pause = false;
-					can_navigate = false;
 				}
 			}
 			#endregion /*If menu is on continue END*/
@@ -292,7 +293,18 @@ if (quit_level_editor = false)
 			and (key_a_pressed)
 			and (menu_delay = 0)
 			{
-				scr_open_folder(game_save_id + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)))
+				
+				if (global.select_level_index >= 1)
+				and (global.create_level_from_template = false)
+				{
+					scr_open_folder(game_save_id + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)))
+				}
+				else
+				if (global.level_name != "")
+				{
+					scr_open_folder(game_save_id + "\custom_levels\\" + string(global.level_name))
+				}
+				
 				menu_delay = 60 * 5;
 			}
 			if (menu = "open_custom_levels_folder")

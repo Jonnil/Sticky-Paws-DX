@@ -156,7 +156,6 @@ zoom_out = false; /*When this is true, zoom out*/
 difficulty_layer = 0; /* 0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
 set_difficulty_mode = false; /*Toggle so you get a pen that can select what object appear in what difficulty*/
 place_object = noone;
-wall_surface_selected = 0; /*What kind of wall you're putting down*/
 show_icons_at_bottom = false;
 show_icons_at_top = false;
 icons_at_bottom_y = +100;
@@ -581,7 +580,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.make_every_tileset_into_default_tileset = "level_editor")
+		if (global.character_select_in_this_menu = "level_editor")
 		{
 			ini_write_string("info", "make_every_tileset_into_default_tileset", false);
 		}
@@ -610,6 +609,18 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 			ini_write_string("info", "time_countdown", 500);
 		}
 		global.time_countdown = 500;
+	}
+	if (ini_key_exists("info", "rain"))
+	{
+		global.rain = ini_read_real("info", "rain", false);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_write_string("info", "rain", false);
+		}
+		global.rain = false;
 	}
 	if(global.play_edited_level = false)
 	and (global.actually_play_edited_level = false)
@@ -866,77 +877,17 @@ if (global.character_select_in_this_menu = "level_editor")
 	#region /*Create directory for sounds in custom levels*/
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound"))
 	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds");
+		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound");
 	}
 	else
 	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds"))
+	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound"))
 	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds");
+		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sound");
 	}
 	#endregion /*Create directory for sounds in custom levels END*/
-	
-	#region /*Create directory for melody in custom levels*/
-	if (global.select_level_index >= 1)
-	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/melody"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/melody");
-	}
-	else
-	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/melody"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/melody");
-	}
-	#endregion /*Create directory for melody in custom levels END*/
-	
-	#region /*Create directory for music in custom levels*/
-	if (global.select_level_index >= 1)
-	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/music"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/music");
-	}
-	else
-	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/music"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/music");
-	}
-	#endregion /*Create directory for music in custom levels END*/
-	
-	#region /*Create directory for sound effects in custom levels*/
-	if (global.select_level_index >= 1)
-	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/sound_effect"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/sound_effect");
-	}
-	else
-	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/sound_effect"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/sound_effect");
-	}
-	#endregion /*Create directory for sound effects in custom levels END*/
-	
-	#region /*Create directory for ambience in custom levels*/
-	if (global.select_level_index >= 1)
-	and (global.create_level_from_template = false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/ambience"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sounds/ambience");
-	}
-	else
-	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/ambience"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/ambience");
-	}
-	#endregion /*Create directory for ambience in custom levels END*/
 	
 	#region /*Create directory for tilesets in custom levels*/
 	if (global.select_level_index >= 1)

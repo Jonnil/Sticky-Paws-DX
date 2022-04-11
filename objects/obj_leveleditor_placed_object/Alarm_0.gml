@@ -70,6 +70,7 @@ if (object = "boss"){object = 95;}
 if (object = "boss_barrier"){object = 96;}
 if (object = "cake_stealing_enemy"){object = 961;}
 if (object = "artwork_collection"){object = 97;}
+if (object = "block_only_when_player_is_near"){object = 98;}
 #endregion /*Translate object names into object ID*/
 
 if (instance_exists(obj_leveleditor))
@@ -264,4 +265,5 @@ if (object = 95) and (asset_get_type("spr_boss_stand") == asset_sprite){sprite_i
 if (object = 96) and (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index = spr_boss_barrier;mask_index = spr_wall;}
 if (object = 961) and (asset_get_type("spr_cake") == asset_sprite){sprite_index = sprite_basic_enemy;mask_index = spr_wall;}
 if (object = 97) and (asset_get_type("spr_artwork_collection") == asset_sprite){sprite_index = spr_artwork_collection;mask_index = spr_wall;}
+if (object = 98) and (global.resource_pack_sprite_block_only_when_player_is_near >= 0){sprite_index = global.resource_pack_sprite_block_only_when_player_is_near;mask_index = spr_wall;}
 #endregion /*Initialize Object END*/

@@ -195,12 +195,59 @@ if (!window_has_focus())
 }
 #endregion /*If Window is unfocused, make the screen darker END*/
 
+#region /*Set what controls are used to navigate the menus*/
+
+#region /*Get distance from fake mouse to real mouse*/
+var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y());
+#endregion /*Get distance from fake mouse to real mouse END*/
+
+#region /*update positions of fake mouse*/
+mouse_x_position = window_mouse_get_x();
+mouse_y_position = window_mouse_get_y();
+#endregion /*update positions of fake mouse*/
+
+if (keyboard_check(vk_anykey))
+{
+	global.controls_used_for_menu_navigation = "keyboard";
+}
+else
+if (mouse_check_button(mb_any))
+or(mouse_wheel_down())
+or(mouse_wheel_up())
+or(mouse_moving)
+{
+	global.controls_used_for_menu_navigation = "mouse";
+}
+else
+if (gamepad_button_check(0, gp_face1))
+or(gamepad_button_check(0, gp_face2))
+or(gamepad_button_check(0, gp_face3))
+or(gamepad_button_check(0, gp_face4))
+or(gamepad_button_check(0, gp_padd))
+or(gamepad_button_check(0, gp_padl))
+or(gamepad_button_check(0, gp_padr))
+or(gamepad_button_check(0, gp_padu))
+or(gamepad_button_check(0, gp_select))
+or(gamepad_button_check(0, gp_shoulderl))
+or(gamepad_button_check(0, gp_shoulderlb))
+or(gamepad_button_check(0, gp_shoulderr))
+or(gamepad_button_check(0, gp_shoulderrb))
+or(gamepad_button_check(0, gp_start))
+or(gamepad_button_check(0, gp_stickl))
+or(gamepad_button_check(0, gp_stickr))
+or(gamepad_axis_value(0, gp_axislh) <> 0)
+or(gamepad_axis_value(0, gp_axislv) <> 0)
+or(gamepad_axis_value(0, gp_axisrh) <> 0)
+or(gamepad_axis_value(0, gp_axisrv) <> 0)
+{
+	global.controls_used_for_menu_navigation = "controller";
+}
+#endregion /*Set what controls are used to navigate the menus END*/
+
 #region /*Draw mouse cursor for menu navigation*/
 if (global.controls_used_for_menu_navigation = "mouse")
 and (os_type!= os_android)
 and (os_type!= os_ios)
-and (window_mouse_get_x() > 0)
-and (window_mouse_get_y() > 0)
 {
 	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
 }

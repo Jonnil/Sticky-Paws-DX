@@ -7,19 +7,7 @@ if (delay = 2)
 	instance_activate_all();
 	if (global.deactivate_objects_outsiede_view = true) /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
 	{
-		instance_deactivate_region(
-		view_x_center - 1000,
-		view_y_center - 1000,
-		2000,
-		2000,
-		false, true);
-		
-		instance_activate_region(
-		camera_get_view_x(view_camera[view_current]) - 128,
-		camera_get_view_y(view_camera[view_current]) - 128,
-		camera_get_view_width(view_camera[view_current]) + 128,
-		camera_get_view_height(view_camera[view_current]) + 128,
-		true);
+		instance_deactivate_region(view_x_center - 1000, view_y_center - 1000, 2000, 2000, false, true);
 	}
 }
 else

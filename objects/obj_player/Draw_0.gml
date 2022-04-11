@@ -326,7 +326,7 @@ and (hold_item_in_hands = "")
 		and (horizontal_rope_climb = false)
 		and (asset_get_type("spr_speedspark") == asset_sprite)
 		{
-			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 0.5);
 		}
 	}
 	effect_speedspark_subimg += 1;

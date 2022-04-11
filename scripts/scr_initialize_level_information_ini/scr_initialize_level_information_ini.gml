@@ -413,6 +413,54 @@ function scr_initialize_level_information_ini()
 		
 		#endregion /*Initialize Weather END*/
 		
+		#region /*Time Countdown*/
+		if (ini_key_exists("info", "time_countdown"))
+		{
+			global.time_countdown = ini_read_real("info", "time_countdown", 500);
+		}
+		else
+		{
+			if (global.character_select_in_this_menu = "level_editor")
+			and (global.create_level_from_template = false)
+			{
+				ini_write_real("info", "time_countdown", 500);
+			}
+			global.time_countdown = 500;
+		}
+		#endregion /*Time Countdown END*/
+		
+		#region /*Enable Time Countdown*/
+		if (ini_key_exists("info", "enable_time_countdown"))
+		{
+			global.enable_time_countdown = ini_read_real("info", "enable_time_countdown", false);
+		}
+		else
+		{
+			if (global.character_select_in_this_menu = "level_editor")
+			and (global.create_level_from_template = false)
+			{
+				ini_write_real("info", "enable_time_countdown", false);
+			}
+			global.enable_time_countdown = false;
+		}
+		#endregion /*Enable Time Countdown END*/
+		
+		#region /*Make every tileset into default tileset*/
+		if (ini_key_exists("info", "make_every_tileset_into_default_tileset"))
+		{
+			global.make_every_tileset_into_default_tileset = ini_read_real("info", "make_every_tileset_into_default_tileset", false);
+		}
+		else
+		{
+			if (global.character_select_in_this_menu = "level_editor")
+			and (global.create_level_from_template = false)
+			{
+				ini_write_real("info", "make_every_tileset_into_default_tileset", false);
+			}
+			global.make_every_tileset_into_default_tileset = false;
+		}
+		#endregion /*Make every tileset into default tileset END*/
+		
 		ini_close();
 	}
 	else
@@ -436,6 +484,9 @@ function scr_initialize_level_information_ini()
 		custom_background_4_x_parallax = 9;
 		custom_background_4_y_parallax = 9;
 		global.rain = false;
+		global.time_countdown = 500;
+		global.enable_time_countdown = false;
+		global.make_every_tileset_into_default_tileset = false;
 	}
 	#endregion /*Initialize level_information.ini END*/
 	
@@ -464,6 +515,9 @@ function scr_initialize_level_information_ini()
 		ini_write_real("info", "default_view_width", global.default_view_width);
 		ini_write_real("info", "default_view_height", global.default_view_height);
 		ini_write_real("info", "rain", global.rain);
+		ini_write_real("info", "time_countdown", global.time_countdown);
+		ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
+		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 		ini_close();
 	}
 }

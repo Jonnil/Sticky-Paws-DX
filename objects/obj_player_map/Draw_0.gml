@@ -158,27 +158,6 @@ global.hud_show_big_collectibles = false;
 global.hud_show_score = false;
 #endregion /*Hide all HUD elements END*/
 
-if (global.goal_active = true)
-{
-	with(instance_create_depth(x - 50, y, 0, obj_unlock_next_level))
-	{
-		hspeed -= 16;
-	}
-	with(instance_create_depth(x + 50, y, 0, obj_unlock_next_level))
-	{
-		hspeed += 16;
-	}
-	with(instance_create_depth(x, y - 50, 0, obj_unlock_next_level))
-	{
-		vspeed -= 16;
-	}
-	with(instance_create_depth(x, y + 50, 0, obj_unlock_next_level))
-	{
-		vspeed += 16;
-	}
-	global.goal_active = false;
-}
-
 if (asset_get_type("snd_music_map") == asset_sound)
 {
 	if (!audio_is_playing(snd_music_map))
@@ -187,6 +166,10 @@ if (asset_get_type("snd_music_map") == asset_sound)
 	}
 	audio_sound_gain(snd_music_map, global.music_volume * global.main_volume, 0);
 }
+audio_stop_sound(global.ambience);
+audio_stop_sound(global.ambience_underwater);
+audio_stop_sound(global.music);
+audio_stop_sound(global.music_underwater);
 
 #region /*Keyboard Controls*/
 gamepad_set_axis_deadzone(0, 0.50);
@@ -449,7 +432,7 @@ and (global.quit_level = false)
 			{
 				if (!position_meeting(x, y - 32, obj_wall))
 				{
-					vspeed -= 8;
+					vspeed -= move_speed;
 					move_delay = 0;
 					transfer_data = false;
 				}
@@ -473,7 +456,7 @@ and (global.quit_level = false)
 			{
 				if (!position_meeting(x - 32, y, obj_wall))
 				{
-					hspeed -= 8;
+					hspeed -= move_speed;
 					move_delay = 0;
 					transfer_data = false;
 				}
@@ -497,7 +480,7 @@ and (global.quit_level = false)
 			{
 				if (!position_meeting(x + 32, y, obj_wall))
 				{
-					hspeed += 8;
+					hspeed += move_speed;
 					move_delay = 0;
 					transfer_data = false;
 				}
@@ -521,7 +504,7 @@ and (global.quit_level = false)
 			{
 				if (!position_meeting(x, y + 32, obj_wall))
 				{
-					vspeed += 8;
+					vspeed += move_speed;
 					move_delay = 0;
 					transfer_data = false;
 				}
@@ -784,173 +767,6 @@ and (!place_meeting(x, y, obj_level))
 	stop_at_level = false;
 }
 #endregion /*Stop player when touching level END*/
-
-#region /*Path Turning*/
-
-/*
-right down = 0
-up right = 1
-up left = 2
-left down = 3
-*/
-
-#region /*Touch Map Turn Right Down*/
-if (asset_get_type("obj_map_path_turn") == asset_object)
-and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 0) /*Right Down = 0*/
-{
-	if (abs(hspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-	{
-		hspeed = 0;
-		vspeed = +8;
-		x = instance_nearest(x, y, obj_map_path_turn).x;
-		y = instance_nearest(x, y, obj_map_path_turn).y;
-		with(instance_nearest(x, y, obj_map_path_turn))
-		{
-			delay = 10;
-		}
-	}
-	else
-	if (abs(vspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-	{
-		hspeed = +8;
-		vspeed = 0;
-		x = instance_nearest(x, y, obj_map_path_turn).x;
-		y = instance_nearest(x, y, obj_map_path_turn).y;
-		with(instance_nearest(x, y, obj_map_path_turn))
-		{
-			delay = 10;
-		}
-	}
-}
-#endregion /*Touch Map Turn Right Down END*/
-
-else
-
-#region /*Touch Map Turn Up Right*/
-if (asset_get_type("obj_map_path_turn") == asset_object)
-and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 1) /*Up Right = 1*/
-{
-	if (abs(hspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-	{
-		hspeed = 0;
-		vspeed = - 8;
-		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-		{
-			x = instance_nearest(x, y, obj_map_path_turn).x;
-			y = instance_nearest(x, y, obj_map_path_turn).y;
-			with(instance_nearest(x, y, obj_map_path_turn))
-			{
-				delay = 10;
-			}
-		}
-	}
-	else
-	if (abs(vspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-	{
-		hspeed = +8;
-		vspeed = 0;
-		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-		{
-			x = instance_nearest(x, y, obj_map_path_turn).x;
-			y = instance_nearest(x, y, obj_map_path_turn).y;
-			with(instance_nearest(x, y, obj_map_path_turn))
-			{
-				delay = 10;
-			}
-		}
-	}
-}
-#endregion /*Touch Map Turn Up Right END*/
-
-else
-
-#region /*Touch Map Turn Up Left*/
-if (asset_get_type("obj_map_path_turn") == asset_object)
-and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /*Up Left = 2*/
-{
-	if (abs(hspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-	{
-		hspeed = 0;
-		vspeed = - 8;
-		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-		{
-			x = instance_nearest(x, y, obj_map_path_turn).x;
-			y = instance_nearest(x, y, obj_map_path_turn).y;
-			with(instance_nearest(x, y, obj_map_path_turn))
-			{
-				delay = 10;
-			}
-		}
-	}
-	else
-	if (abs(vspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-	{
-		hspeed = - 8;
-		vspeed = 0;
-		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-		{
-			x = instance_nearest(x, y, obj_map_path_turn).x;
-			y = instance_nearest(x, y, obj_map_path_turn).y;
-			with(instance_nearest(x, y, obj_map_path_turn))
-			{
-				delay = 10;
-			}
-		}
-	}
-}
-#endregion /*Touch Map Turn Up Left END*/
-
-else
-
-#region /*Touch Map Turn Left Down*/
-if (asset_get_type("obj_map_path_turn") == asset_object)
-and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 3) /*Left Down = 3*/
-{
-	if (abs(hspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-	{
-		hspeed = 0;
-		vspeed = +8;
-		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-		{
-			x = instance_nearest(x, y, obj_map_path_turn).x;
-			y = instance_nearest(x, y, obj_map_path_turn).y;
-			with(instance_nearest(x, y, obj_map_path_turn))
-			{
-				delay = 10;
-			}
-		}
-	}
-	else
-	if (abs(vspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-	{
-		hspeed = - 8;
-		vspeed = 0;
-		if (instance_nearest(x, y, obj_map_path_turn).delay = 0)
-		{
-			x = instance_nearest(x, y, obj_map_path_turn).x;
-			y = instance_nearest(x, y, obj_map_path_turn).y;
-			with(instance_nearest(x, y, obj_map_path_turn))
-			{
-				delay = 10;
-			}
-		}
-	}
-}
-#endregion /*Touch Map Turn Left Down END*/
-
-#endregion /*Path Turning END*/
 
 if (can_move = false)
 if (delay < 100)

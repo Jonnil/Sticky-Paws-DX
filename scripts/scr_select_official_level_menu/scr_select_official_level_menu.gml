@@ -1,5 +1,13 @@
 function scr_select_official_level_menu()
 {
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_set_alpha(0.5);
+	draw_rectangle_color(0, 16, window_get_width(), 116, c_black, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+	draw_text_outlined(window_get_width()/ 2, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+	draw_text_outlined(window_get_width()/ 2, 100, Text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
+	
 	R = 4;
 	C = clamp(floor(global.select_level_index / R), 0, floor(ds_list_size(global.all_loaded_main_levels)))
 	
@@ -412,25 +420,9 @@ function scr_select_official_level_menu()
 		{
 			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/data");
 		}
-		if (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds"))
+		if (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound"))
 		{
-			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds");
-		}
-		if (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/melody"))
-		{
-			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/melody");
-		}
-		if (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/music"))
-		{
-			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/music");
-		}
-		if (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/sound_effect"))
-		{
-			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/sound_effect");
-		}
-		if (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/ambience"))
-		{
-			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/ambience");
+			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sound");
 		}
 		if (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets"))
 		{
@@ -487,23 +479,23 @@ function scr_select_official_level_menu()
 			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/backgrounds/foreground_secret.png",
 			working_directory + "/custom_levels/" + string(global.level_name) + "/backgrounds/foreground_secret.png");
 		}
-		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/ambience/ambience.ogg"))
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
 		{
 			file_copy(
-			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/ambience/ambience.ogg",
-			working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/ambience/ambience.ogg");
+			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg",
+			working_directory + "/custom_levels/" + string(global.level_name) + "/sound/ambience.ogg");
 		}
-		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/melody/clear_melody.ogg"))
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
 		{
 			file_copy(
-			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/melody/clear_melody.ogg",
-			working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/melody/clear_melody.ogg");
+			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg",
+			working_directory + "/custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
 		}
-		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/music/music.ogg"))
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
 		{
 			file_copy(
-			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sounds/music/music.ogg",
-			working_directory + "/custom_levels/" + string(global.level_name) + "/sounds/music/music.ogg");
+			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg",
+			working_directory + "/custom_levels/" + string(global.level_name) + "/sound/music.ogg");
 		}
 		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
 		{
@@ -968,11 +960,4 @@ function scr_select_official_level_menu()
 	}
 	#endregion /*Enter Template Level END*/
 	
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	draw_set_alpha(0.5);
-	draw_rectangle_color(400, 16, window_get_width() -400, 116, c_black, c_black, c_black, c_black, false);
-	draw_set_alpha(1);
-	draw_text_outlined(window_get_width()/ 2, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
-	draw_text_outlined(window_get_width()/ 2, 100, Text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
 }

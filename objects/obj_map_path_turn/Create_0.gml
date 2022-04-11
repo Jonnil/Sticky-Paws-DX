@@ -1,6 +1,5 @@
 delay = 0;
 turn = 0;
-visible = false;
 /*
 right down = 0
 up right = 1

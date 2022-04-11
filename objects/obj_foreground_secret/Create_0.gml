@@ -1,5 +1,4 @@
-depth = -20;x = 0;
-y = 0;
+depth = -20;
 
 if (global.custom_foreground_secret >= 0)
 {
@@ -27,7 +26,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	#region /*Custom Foreground secret y offset point*/
 	if (ini_key_exists("Custom Backgrounds", "custom_foreground_secret_y_offset"))
 	{
-		y_offset = ini_read_real("Custom Backgrounds", "custom_foreground_secret_y_offset", 0);
+		y = ini_read_real("Custom Backgrounds", "custom_foreground_secret_y_offset", 0);
 	}
 	else
 	{
@@ -35,14 +34,14 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		{
 			ini_write_real("Custom Backgrounds", "custom_foreground_secret_y_offset", 0);
 		}
-		y_offset = 0;
+		y = 0;
 	}
 	#endregion /*Custom Foreground secret y offset point END*/
 	
 	#region /*Custom Foreground secret x offset point*/
 	if (ini_key_exists("Custom Backgrounds", "custom_foreground_secret_x_offset"))
 	{
-		x_offset = ini_read_real("Custom Backgrounds", "custom_foreground_secret_x_offset", 0);
+		x = ini_read_real("Custom Backgrounds", "custom_foreground_secret_x_offset", 0);
 	}
 	else
 	{
@@ -50,7 +49,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		{
 			ini_write_real("Custom Backgrounds", "custom_foreground_secret_x_offset", 0);
 		}
-		x_offset = 0;
+		x = 0;
 	}
 	#endregion /*Custom Foreground secret x offset point END*/
 	#endregion /*Custom Foreground secret x and y offset points END*/
@@ -59,7 +58,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 }
 else
 {
-	x_offset = 0;
-	y_offset = 0;
+	x = 0;
+	y = 0;
 }
 #endregion /*Initialize Foreground END*/

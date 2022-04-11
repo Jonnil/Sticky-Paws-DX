@@ -1,4 +1,6 @@
 /*Create Event*/
+mouse_x_position = window_mouse_get_x();
+mouse_y_position = window_mouse_get_y();
 
 display_xscale = 1.5;
 display_yscale = 1.5;
@@ -556,6 +558,7 @@ global.resource_pack_sprite_big_stationary_enemy = spr_noone;
 global.resource_pack_sprite_big_stationary_enemy_flattened = spr_noone;
 global.resource_pack_sprite_hp_pickup = spr_noone;
 global.resource_pack_sprite_invincibility_powerup = spr_noone;
+global.resource_pack_sprite_block_only_when_player_is_near = spr_noone;
 #endregion /*Resource Packs END*/
 
 company_splash = spr_noone;

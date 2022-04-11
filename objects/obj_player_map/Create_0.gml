@@ -3,11 +3,7 @@ active_right = false;
 active_up = false;
 active_down = false;
 
-if (asset_get_type("obj_camera") == asset_object)
-and (!instance_exists(obj_camera))
-{
-	instance_create_depth(x, y, 0, obj_camera);
-}
+move_speed = 8;
 
 /*Player 1 Key Left Hold*/ key_left = (keyboard_check(global.player1_key_left)) and (!keyboard_check(global.player1_key_right)) or(keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or(gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr)) or(gamepad_axis_value(0, gp_axislh) < 0);
 /*Player 1 Key Right Hold*/ key_right = (keyboard_check(global.player1_key_right)) and (!keyboard_check(global.player1_key_left)) or(keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or(gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl)) or(gamepad_axis_value(0, gp_axislh) > 0);
@@ -193,6 +189,13 @@ else
 
 xx = x;
 yy = y;
+
+/*Create the camera map after setting x and y positions*/
+if (asset_get_type("obj_camera_map") == asset_object)
+and (!instance_exists(obj_camera_map))
+{
+	instance_create_depth(x, y, 0, obj_camera_map);
+}
 
 iris_xscale = 0;
 iris_yscale = 0;

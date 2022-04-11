@@ -80,25 +80,25 @@ function scr_character_select_menu()
 		#endregion /*If a unavailable skin is selected, then go to the last selectable skin for each player END*/
 		
 		#region /*If a unavailable voice pack is selected, then go to the last selectable voice pack for each player*/
-		if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1)))
+		if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1)))
 		and (global.voicepack_for_player_1> 0)
 		{
 			global.voicepack_for_player_1 -= 1;
 		}
 		
-		if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2)))
+		if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2)))
 		and (global.voicepack_for_player_2 > 0)
 		{
 			global.voicepack_for_player_2 -= 1;
 		}
 		
-		if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3)))
+		if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3)))
 		and (global.voicepack_for_player_3 > 0)
 		{
 			global.voicepack_for_player_3 -= 1;
 		}
 		
-		if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4)))
+		if !(directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4)))
 		and (global.voicepack_for_player_4 > 0)
 		{
 			global.voicepack_for_player_4 -= 1;
@@ -661,8 +661,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick1_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack1"))
 							{
 								player1_menu = "select_voicepack";
 							}
@@ -867,8 +867,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick2_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack1"))
 							{
 								player2_menu = "select_voicepack";
 							}
@@ -1073,8 +1073,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick3_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack1"))
 							{
 								player3_menu = "select_voicepack";
 							}
@@ -1279,8 +1279,8 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick4_delay = 30;
-							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack0"))
-							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack1"))
+							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack0"))
+							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack1"))
 							{
 								player4_menu = "select_voicepack";
 							}
@@ -1384,8 +1384,8 @@ function scr_character_select_menu()
 		voicepack_y = 234;
 		
 		#region /*Player 1 Select Voice Pack*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack1"))
 		and (player1_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -1436,7 +1436,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick1_delay = 30;
@@ -1531,7 +1531,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character voicepack select END*/
 					
 					#region /*Show right key for character voicepack select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1 + 1)))
 					{
 						if (gamepad_is_connected(0))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -1573,8 +1573,8 @@ function scr_character_select_menu()
 		#endregion /*Player 1 Select Voice Pack END*/
 		
 		#region /*Player 2 Select Voice Pack*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack1"))
 		and (player2_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -1625,7 +1625,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick2_delay = 30;
@@ -1719,7 +1719,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character voicepack select END*/
 					
 					#region /*Show right key for character voicepack select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2 + 1)))
 					{
 						if (gamepad_is_connected(1))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -1761,8 +1761,8 @@ function scr_character_select_menu()
 		#endregion /*Player 2 Select Voice Pack END*/
 		
 		#region /*Player 3 Select Voice Pack*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack1"))
 		and (player3_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -1813,7 +1813,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick3_delay = 30;
@@ -1907,7 +1907,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character voicepack select END*/
 					
 					#region /*Show right key for character voicepack select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3 + 1)))
 					{
 						if (gamepad_is_connected(2))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -1949,8 +1949,8 @@ function scr_character_select_menu()
 		#endregion /*Player 3 Select Voice Pack END*/
 		
 		#region /*Player 4 Select Voice Pack*/
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack0"))
-		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack1"))
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack0"))
+		and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack1"))
 		and (player4_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
@@ -2001,7 +2001,7 @@ function scr_character_select_menu()
 					and (global.controls_used_for_menu_navigation = "mouse")
 					{
 						if (menu_delay = 0)
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4 + 1)))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4 + 1)))
 						{
 							menu_delay = 3;
 							menu_joystick4_delay = 30;
@@ -2095,7 +2095,7 @@ function scr_character_select_menu()
 					#endregion /*Show left key for character voicepack select END*/
 					
 					#region /*Show right key for character voicepack select*/
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4 + 1)))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4 + 1)))
 					{
 						if (gamepad_is_connected(2))
 						and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -3849,8 +3849,8 @@ function scr_character_select_menu()
 							player1_menu = "select_skin";
 						}
 						else
-						if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack0"))
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack1"))
+						if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0"))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack1"))
 						{
 							player1_menu = "select_voicepack";
 						}
@@ -3880,8 +3880,8 @@ function scr_character_select_menu()
 				{
 					menu_delay = 3;
 					menu_joystick1_delay = 30;
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack0"))
-					and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack1"))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0"))
+					and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack1"))
 					{
 						player1_menu = "select_voicepack";
 					}
@@ -4043,8 +4043,8 @@ function scr_character_select_menu()
 						player2_menu = "select_skin";
 					}
 					else
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack0"))
-					and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack1"))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack0"))
+					and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack1"))
 					{
 						player2_menu = "select_voicepack";
 					}
@@ -4073,8 +4073,8 @@ function scr_character_select_menu()
 					{
 						menu_delay = 3;
 						menu_joystick2_delay = 30;
-						if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack0"))
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack1"))
+						if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack0"))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack1"))
 						{
 							player2_menu = "select_voicepack";
 						}
@@ -4238,8 +4238,8 @@ function scr_character_select_menu()
 						player3_menu = "select_skin";
 					}
 					else
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack0"))
-					and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack1"))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack0"))
+					and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack1"))
 					{
 						player3_menu = "select_voicepack";
 					}
@@ -4268,8 +4268,8 @@ function scr_character_select_menu()
 					{
 						menu_delay = 3;
 						menu_joystick3_delay = 30;
-						if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack0"))
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack1"))
+						if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack0"))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack1"))
 						{
 							player3_menu = "select_voicepack";
 						}
@@ -4432,8 +4432,8 @@ function scr_character_select_menu()
 						player4_menu = "select_skin";
 					}
 					else
-					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack0"))
-					and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack1"))
+					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack0"))
+					and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack1"))
 					{
 						player4_menu = "select_voicepack";
 					}
@@ -4462,8 +4462,8 @@ function scr_character_select_menu()
 					{
 						menu_delay = 3;
 						menu_joystick4_delay = 30;
-						if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack0"))
-						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack1"))
+						if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack0"))
+						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack1"))
 						{
 							player4_menu = "select_voicepack";
 						}
@@ -4602,48 +4602,48 @@ and (player4_accept_selection >= 0)
 					
 						#region /*When selecting character, make the character say their own name*/
 						audio_stop_sound(voice_select_character);
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_3.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_3.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_3.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_3.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_2.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_2.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_2.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_2.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_1.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_1.ogg"))
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_1.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_1.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name.ogg"))
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_3.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_3.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_3.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_3.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_2.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_2.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_2.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_2.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_1.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_1.ogg"))
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name_1.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name_1.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name.ogg"))
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sounds/voicepack" + string(global.voicepack_for_player_1) + "/name.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player_1) + "/name.ogg");
 						}
 						else
 						{
@@ -4679,48 +4679,48 @@ and (player4_accept_selection >= 0)
 					
 						#region /*When selecting character, make the character say their own name*/
 						audio_stop_sound(voice_select_character);
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_3.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_3.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_3.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_3.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_2.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_2.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_2.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_2.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_1.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_1.ogg"))
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_1.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_1.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name.ogg"))
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_3.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_3.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_3.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_3.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_2.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_2.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_2.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_2.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_1.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_1.ogg"))
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name_1.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name_1.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name.ogg"))
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sounds/voicepack" + string(global.voicepack_for_player_2) + "/name.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player_2) + "/name.ogg");
 						}
 						else
 						{
@@ -4756,48 +4756,48 @@ and (player4_accept_selection >= 0)
 					
 						#region /*When selecting character, make the character say their own name*/
 						audio_stop_sound(voice_select_character);
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_3.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_3.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_3.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_3.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_2.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_2.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_2.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_2.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_1.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_1.ogg"))
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_1.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_1.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name.ogg"))
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_3.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_3.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_3.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_3.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_2.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_2.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_2.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_2.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_1.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_1.ogg"))
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name_1.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name_1.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name.ogg"))
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sounds/voicepack" + string(global.voicepack_for_player_3) + "/name.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player_3) + "/name.ogg");
 						}
 						else
 						{
@@ -4833,48 +4833,48 @@ and (player4_accept_selection >= 0)
 					
 						#region /*When selecting character, make the character say their own name*/
 						audio_stop_sound(voice_select_character);
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_3.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_3.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_3.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_3.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_2.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_2.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_2.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_2.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_1.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_1.ogg"))
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_1.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_1.ogg");
 						}
 						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name.ogg"))
+						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name.ogg"))
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name.ogg");
+							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_3.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_3.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_3.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_3.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_2.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_2.ogg"))
 						and (floor(random(3 - 1)) = 0)
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_2.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_2.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_1.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_1.ogg"))
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name_1.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name_1.ogg");
 						}
 						else
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name.ogg"))
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name.ogg"))
 						{
-							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sounds/voicepack" + string(global.voicepack_for_player_4) + "/name.ogg");
+							voice_select_character = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player_4) + "/name.ogg");
 						}
 						else
 						{
@@ -5345,13 +5345,13 @@ and (player4_accept_selection >= 0)
 	
 	#region /*Play the game text*/
 	if (player_start_game = true)
+	and (asset_get_type("obj_camera") == asset_object)
+	and (instance_exists(obj_camera))
 	{
 		if (can_input_player1_name = false)
 		and (can_input_player2_name = false)
 		and (can_input_player3_name = false)
 		and (can_input_player4_name = false)
-		and (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
 		{
 			if (obj_camera.iris_xscale >= 1)
 			and (obj_camera.iris_yscale >= 1)

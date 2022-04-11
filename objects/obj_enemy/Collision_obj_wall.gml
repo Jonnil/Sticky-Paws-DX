@@ -47,5 +47,28 @@ if (die = false)
 		draw_xscale = 1.25;
 		draw_yscale = 0.75;
 	}
+	
+	#region /*Kill enemy if it's inside the wall*/
+	if (position_meeting(x, y, other))
+	and (die = false)
+	and (draw_xscale >= 0.8)
+	{
+		stuck_in_wall_counter += 1;
+		if (stuck_in_wall_counter >= 3)
+		{
+			flat = false;
+			die = true;
+			die_volting = true;
+		}
+	}
+	else
+	{
+		if (stuck_in_wall_counter > 0)
+		{
+			stuck_in_wall_counter -= 1;
+		}
+	}
+	#endregion /*Kill enemy if it's inside the wall END*/
+	
 }
 #endregion /*Landing on solid object END*/

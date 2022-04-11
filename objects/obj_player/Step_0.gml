@@ -2885,11 +2885,6 @@ and (obj_camera.iris_xscale < 3)
 		if (instance_exists(obj_camera))
 		and (obj_camera.iris_xscale <= 0.01)
 		{
-			if (asset_get_type("snd_level_clear") == asset_sound)
-			and (audio_is_playing(snd_level_clear))
-			{
-				audio_stop_sound(snd_level_clear);
-			}
 			if (obj_camera.iris_yscale <= 0.001)
 			{
 				audio_stop_all();
@@ -2995,11 +2990,6 @@ else
 		and (instance_exists(obj_camera))
 		and (obj_camera.iris_xscale <= 0.01)
 		{
-			if (asset_get_type("snd_level_clear") == asset_sound)
-			and (audio_is_playing(snd_level_clear))
-			{
-				audio_stop_sound(snd_level_clear);
-			}
 			if (room_next(room) <>- 1)
 			{
 				if (asset_get_type("room_world_map") == asset_room)
@@ -8073,44 +8063,114 @@ and (instance_exists(obj_goal))
 {
 	if (distance_to_object(obj_goal) < 1920)
 	{
+		
+		#region /*Touching goal*/
 		if (x > instance_nearest(x, y, obj_goal).bbox_right)
 		and (x < instance_nearest(x, y, obj_goal).bbox_right + 16)
 		and (y < instance_nearest(x, y, obj_goal).bbox_bottom)
 		and (goal = false)
+		and (!collision_line(x, y, instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
 		{
-			if (!collision_line(x, y, instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
-			{
-				goal = true;
-			}
+			just_hit_goal = true;
 		}
+		#endregion /*Touching goal END*/
+		
 		else
+		
+		#region /*Can't walk back when touched goal*/
 		if (x < instance_nearest(x, y, obj_goal).bbox_left + 4)
 		and (goal = true)
 		{
 			x = instance_nearest(x, y, obj_goal).bbox_left + 4;
 		}
-		if (place_meeting(x, y, obj_goal))
-		and (instance_exists(obj_goal))
+		#endregion /*Can't walk back when touched goal END*/
+		
+		if (just_hit_goal = true)
 		and (goal = false)
 		{
+			global.goal_active = true;
+			global.player_has_entered_goal = true;
+			global.quit_level = false;
+			global.quit_to_map = false;
+			global.quit_to_title = false;
+			global.restart_level = false;
+			instance_nearest(x, y, obj_goal).image_index = 1;
+			invincible = false;
+			
+			if (instance_nearest(x, y, obj_goal).trigger_ending = true)
+			{
+				global.trigger_ending = true;
+			}
+			
+			#region /*Stop Music*/
 			audio_stop_sound(global.music);
 			audio_stop_sound(global.music_underwater);
 			global.music = noone;
 			global.music_underwater = noone;
+			music = noone;
+			music_underwater = noone;
+			#endregion /*Stop Music END*/
+			
+			#region /*Save Checkpoint*/
+			if (asset_get_type("room_leveleditor") == asset_room)
+			and (room = room_leveleditor)
+			and (global.character_select_in_this_menu = "main_game")
+			{
+				global.x_checkpoint = 0;
+				global.y_checkpoint = 0;
+				global.checkpoint_millisecond = 0;
+				global.checkpoint_second = 0;
+				global.checkpoint_minute = 0;
+				global.checkpoint_realmillisecond = 0;
+		
+				var uppercase_level_name;
+				uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
+				uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
+				var level_name = string(uppercase_level_name);
+		
+				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+				ini_write_real(level_name, "x_checkpoint", 0);
+				ini_write_real(level_name, "y_checkpoint", 0);
+				ini_write_real(level_name, "checkpoint_millisecond", 0);
+				ini_write_real(level_name, "checkpoint_second", 0);
+				ini_write_real(level_name, "checkpoint_minute", 0);
+				ini_write_real(level_name, "checkpoint_realmillisecond", 0);
+				ini_close();
+			}
+			else
+			if (asset_get_type("room_leveleditor") == asset_room)
+			and (room = room_leveleditor)
+			and (global.character_select_in_this_menu = "level_editor")
+			{
+				global.x_checkpoint = 0;
+				global.y_checkpoint = 0;
+				global.checkpoint_millisecond = 0;
+				global.checkpoint_second = 0;
+				global.checkpoint_minute = 0;
+				global.checkpoint_realmillisecond = 0;
+		
+				var uppercase_level_name;
+				uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
+				uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
+				var level_name = string(uppercase_level_name);
+		
+				ini_open(working_directory + "/save_files/custom_level_save.ini");
+				ini_write_real(level_name, "x_checkpoint", 0);
+				ini_write_real(level_name, "y_checkpoint", 0);
+				ini_write_real(level_name, "checkpoint_millisecond", 0);
+				ini_write_real(level_name, "checkpoint_second", 0);
+				ini_write_real(level_name, "checkpoint_minute", 0);
+				ini_write_real(level_name, "checkpoint_realmillisecond", 0);
+				ini_close();
+			}
+			#endregion /*Save Checkpoint END*/
+			
+			#region /*Enter goal voice*/
 			audio_stop_sound(voice);
 			voice = audio_play_sound(voice_enter_goal, 0, 0);
 			audio_sound_gain(voice_enter_goal, global.voices_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_enter_goal, default_voice_pitch);
-			goal = true;
-			global.goal_active = true;
-			if (invincible > 100)
-			{
-				invincible = 100;
-			}
-			audio_stop_sound(global.music);
-			audio_stop_sound(global.music_underwater);
-			music = noone;
-			music_underwater = noone;
+			#endregion /*Enter goal voice END*/
 			
 			#region /*Level Clear Melody*/
 			if (level_clear_melody > noone)
@@ -8121,15 +8181,10 @@ and (instance_exists(obj_goal))
 					audio_sound_gain(level_clear_melody, global.music_volume * global.main_volume, 0);
 				}
 			}
-			else
-			if (asset_get_type("snd_level_clear") == asset_sound)
-			and (!audio_is_playing(snd_level_clear))
-			{
-				audio_play_sound(snd_level_clear, 0, 0);
-				audio_sound_gain(snd_level_clear, global.music_volume * global.main_volume, 0);
-			}
 			#endregion /*Level Clear Melody END*/
-		
+			
+			goal = true; /*Set goal to true on last*/
+			
 		}
 	}
 }
@@ -10977,6 +11032,7 @@ if (on_ground = true)
 
 #region /*Running Sparks Effect*/
 if (on_ground = true)
+and (abs(hspeed) >= speed_max_walk)
 {
 	if (abs(hspeed) >speed_max_walk + 1)
 	{

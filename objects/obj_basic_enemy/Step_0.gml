@@ -37,10 +37,8 @@ else
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	and (x > camera_get_view_x(view_camera[view_current]))
-	and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-	and (y > camera_get_view_y(view_camera[view_current]))
+	and (x - 32 < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	and (x + 32 > camera_get_view_x(view_camera[view_current]))
 	{
 		gravity = 0.5; /*The gravity*/
 	}

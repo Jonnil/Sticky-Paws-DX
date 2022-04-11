@@ -2,9 +2,6 @@ scr_set_screen_size();
 
 scr_zoom_camera_controls();
 
-//draw_text_outlined(x, y- 228, "P1: " +string(player1), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x, y - 128, "P2: " +string(player2), global.default_text_size, c_white, c_black, 1);
-
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/
@@ -419,8 +416,8 @@ if (save_level_as_png = false)
 	and (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_player_map))
 	{
-		obj_camera.xx = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).x;
-		obj_camera.yy = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).y;
+		xx = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).x;
+		yy = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).y;
 	}
 	#endregion /*World Map Camera END*/
 	

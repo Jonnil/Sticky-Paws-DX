@@ -1,7 +1,7 @@
 {
   "option_windows_display_name": "Sticky Paws",
   "option_windows_executable_name": "Sticky Paws",
-  "option_windows_version": "1.0.0.13",
+  "option_windows_version": "1.0.0.14",
   "option_windows_company_info": "Jonathan Nilsson (Jonnil)",
   "option_windows_product_info": "Sticky Paws",
   "option_windows_copyright_info": "",

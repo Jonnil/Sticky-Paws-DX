@@ -16,4 +16,19 @@ function scr_open_folder(dname)
 	{
 		execute_shell("xdg-mime", "\"" + escapedfolder + "\"");
 	}
+	if (instance_exists(obj_open_folder_text))
+	{
+		with(obj_open_folder_text)
+		{
+			open_folder_string = string(escapedfolder);
+			obj_open_folder_text.close = false;
+		}
+	}
+	else
+	{
+		with(instance_create_depth(x, y, 0, obj_open_folder_text))
+		{
+			open_folder_string = string(escapedfolder);
+		}
+	}
 }

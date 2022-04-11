@@ -15,6 +15,7 @@ if (y + 16 < camera_get_view_y(view_camera[view_current]))
 and (!place_meeting(x, y + 1, obj_wall))
 and (!place_meeting(x, y + 1, obj_semisolid_platform))
 and (flat = true)
+and (coil_spring = false)
 and (vspeed < 0)
 {
 	vspeed = +1;

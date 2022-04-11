@@ -4,14 +4,11 @@ uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_
 var level_name = string(uppercase_level_name);
 
 if (other.clear_rate != "clear")
+and (delay = 0)
 {
 	other.clear_rate = "enter";
-	if (global.character_select_in_this_menu = "main_game")
-	and (global.actually_play_edited_level)
-	{
-		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-		ini_write_string(level_name, "clear_rate", "enter");
-		ini_close();
-	}
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_write_string(level_name, "clear_rate", "enter");
+	ini_close();
 }
 instance_destroy();

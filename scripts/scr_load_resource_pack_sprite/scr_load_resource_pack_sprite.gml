@@ -42,6 +42,7 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_bullet_flattened > 0){global.resource_pack_sprite_bullet_flattened = spr_noone;}
 		if (global.resource_pack_sprite_hp_pickup > 0){global.resource_pack_sprite_hp_pickup = spr_noone;}
 		if (global.resource_pack_sprite_invincibility_powerup > 0){global.resource_pack_sprite_invincibility_powerup = spr_noone;}
+		if (global.resource_pack_sprite_block_only_when_player_is_near > 0){global.resource_pack_sprite_block_only_when_player_is_near = spr_noone;}
 	}
 	#endregion /*Delete sprites before loading new sprites END*/
 	
@@ -92,6 +93,7 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_big_stationary_enemy_flattened = scr_initialize_resource_pack_sprite("big_stationary_enemy_flattened", global.resource_pack_sprite_big_stationary_enemy_flattened);
 		global.resource_pack_sprite_hp_pickup = scr_initialize_resource_pack_sprite("hp_pickup", global.resource_pack_sprite_hp_pickup);
 		global.resource_pack_sprite_invincibility_powerup = scr_initialize_resource_pack_sprite("invincibility_powerup", global.resource_pack_sprite_invincibility_powerup);
+		global.resource_pack_sprite_block_only_when_player_is_near = scr_initialize_resource_pack_sprite("block_only_when_player_is_near", global.resource_pack_sprite_block_only_when_player_is_near);
 		ini_close();
 	}
 }

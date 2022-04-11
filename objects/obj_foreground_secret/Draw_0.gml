@@ -36,6 +36,6 @@ and (global.full_level_map_screenshot = false)
 and (asset_get_type("room_leveleditor") == asset_room)
 and (room = room_leveleditor)
 {
-	draw_sprite_ext(global.custom_foreground_secret, image_index, x_offset, y_offset, 1, 1, 0, c_white, image_alpha);
+	draw_sprite_ext(global.custom_foreground_secret, image_index, x, y, 1, 1, 0, c_white, image_alpha);
 }
 #endregion /*Update Foreground secret END*/

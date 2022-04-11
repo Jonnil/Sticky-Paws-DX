@@ -6344,6 +6344,12 @@ function scr_options_menu()
 	#region /*Global Resources Settings*/
 	if (global.settings_sidebar_menu = "global_resources_settings")
 	{
+		if (global.title_logo_index >= 0)
+		and (global.title_logo_index != undefined)
+		{
+			draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() - 350, display_get_gui_height() - 250, (402 / sprite_get_height(global.title_logo_index)), (402 / sprite_get_height(global.title_logo_index)), 0, c_white, 1);
+		}
+		
 		var resource_pack_y = 40 * 4;
 		var open_resource_pack_y = 40 * 6;
 		var custom_title_background_y = 40 * 8;
@@ -6742,6 +6748,8 @@ function scr_options_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		draw_text_outlined(resource_pack_x, 20 + (background_layer_x_scroll_y), Text("Background Scroll X") + ": " + string(global.background_layer_x_scroll), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		
+		if (global.background_layer_x_scroll > - 10)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x -32, 20 + (background_layer_x_scroll_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x -32 + 16, 20 + (background_layer_x_scroll_y) + 16))
@@ -6754,16 +6762,21 @@ function scr_options_menu()
 				draw_set_alpha(1);
 			}
 		}
-		draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (background_layer_x_scroll_y), 0.5, 0.5, 0, c_white, 1);
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_x_scroll_y) + 16))
-		and (global.controls_used_for_menu_navigation = "mouse")
+		
+		if (global.background_layer_x_scroll < + 10)
 		{
-			menu = "background_layer_x_scroll";
-			can_navigate_settings_sidebar = false;
-			draw_set_alpha(0.5);
-			draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_x_scroll_y) + 16, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
+			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (background_layer_x_scroll_y), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_x_scroll_y) + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			{
+				menu = "background_layer_x_scroll";
+				can_navigate_settings_sidebar = false;
+				draw_set_alpha(0.5);
+				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_x_scroll_y) + 16, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
 		}
+		
 		if (menu = "background_layer_x_scroll")
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x -32 -32, 20 + (background_layer_x_scroll_y));
@@ -6777,6 +6790,7 @@ function scr_options_menu()
 			menu = "background_layer_x_scroll";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
+			and (global.background_layer_x_scroll > - 10)
 			{
 				if (keyboard_check(vk_control))
 				{
@@ -6798,6 +6812,7 @@ function scr_options_menu()
 			menu = "background_layer_x_scroll";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
+			and (global.background_layer_x_scroll < + 10)
 			{
 				if (keyboard_check(vk_control))
 				{
@@ -6817,6 +6832,8 @@ function scr_options_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		draw_text_outlined(resource_pack_x, 20 + (background_layer_y_scroll_y), Text("Background Scroll Y") + ": " + string(global.background_layer_y_scroll), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		
+		if (global.background_layer_y_scroll > - 10)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x -32, 20 + (background_layer_y_scroll_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x -32 - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x -32 + 16, 20 + (background_layer_y_scroll_y) + 16))
@@ -6829,16 +6846,21 @@ function scr_options_menu()
 				draw_set_alpha(1);
 			}
 		}
-		draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (background_layer_y_scroll_y), 0.5, 0.5, 0, c_white, 1);
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_y_scroll_y) + 16))
-		and (global.controls_used_for_menu_navigation = "mouse")
+		
+		if (global.background_layer_y_scroll < + 10)
 		{
-			menu = "background_layer_y_scroll";
-			can_navigate_settings_sidebar = false;
-			draw_set_alpha(0.5);
-			draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_y_scroll_y) + 16, c_white, c_white, c_white, c_white, false);
-			draw_set_alpha(1);
+			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (background_layer_y_scroll_y), 0.5, 0.5, 0, c_white, 1);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_y_scroll_y) + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			{
+				menu = "background_layer_y_scroll";
+				can_navigate_settings_sidebar = false;
+				draw_set_alpha(0.5);
+				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_y_scroll_y) + 16, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
 		}
+		
 		if (menu = "background_layer_y_scroll")
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x -32 -32, 20 + (background_layer_y_scroll_y));
@@ -6852,6 +6874,7 @@ function scr_options_menu()
 			menu = "background_layer_y_scroll";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
+			and (global.background_layer_y_scroll > - 10)
 			{
 				if (keyboard_check(vk_control))
 				{
@@ -6873,6 +6896,7 @@ function scr_options_menu()
 			menu = "background_layer_y_scroll";
 			if (menu_delay = 0)
 			and (can_navigate_settings_sidebar = false)
+			and (global.background_layer_y_scroll < + 10)
 			{
 				if (keyboard_check(vk_control))
 				{
@@ -6887,16 +6911,28 @@ function scr_options_menu()
 		}
 		#endregion /*Background Layer Y Scroll END*/
 		
+		if (global.background_layer_x_scroll > + 10)
+		{
+			global.background_layer_x_scroll = + 10;
+		}
+		if (global.background_layer_x_scroll < - 10)
+		{
+			global.background_layer_x_scroll = - 10;
+		}
+		if (global.background_layer_y_scroll > + 10)
+		{
+			global.background_layer_y_scroll = + 10;
+		}
+		if (global.background_layer_y_scroll < - 10)
+		{
+			global.background_layer_y_scroll = - 10;
+		}
+		
 		draw_menu_button(resource_pack_x, 20 + (custom_title_background_open_y), Text("Open Background Folder"), "open_title_background_folder", "open_title_background_folder");
 		
 		#region /*Custom Title Logo*/
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		if (global.title_logo_index >= 0)
-		and (global.title_logo_index != undefined)
-		{
-			draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() - 500, display_get_gui_height() / 2 - 100, (402 / sprite_get_height(global.title_logo_index)), (402 / sprite_get_height(global.title_logo_index)), 0, c_white, 1);
-		}
 		if (global.selected_title_logo >= 0)
 		{
 			draw_text_outlined(resource_pack_x, 20 + (custom_title_logo_y), Text("Title Logo") + ": " + string(global.selected_title_logo), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
