@@ -1,6 +1,24 @@
 function scr_select_custom_level_menu()
 {
-	R = 4;
+	if (window_get_width() >= 1670)
+	{
+		R = 4;
+	}
+	else
+	if (window_get_width() >= 1276)
+	{
+		R = 3;
+	}
+	else
+	if (window_get_width() >= 882)
+	{
+		R = 2;
+	}
+	else
+	if (window_get_width() >= 488)
+	{
+		R = 1;
+	}
 	C = clamp(floor(global.select_level_index / R), 0, floor(ds_list_size(global.all_loaded_custom_levels)))
 	
 	#region /*Navigate Menu*/
@@ -681,12 +699,9 @@ function scr_select_custom_level_menu()
 	if (iris_xscale <= 0.001)
 	and (global.character_select_in_this_menu = "level_editor")
 	{
-		if (asset_get_type("snd_music_titlescreen") == asset_sound)
+		if (audio_is_playing(title_music))
 		{
-			if (audio_is_playing(snd_music_titlescreen))
-			{
-				audio_stop_sound(snd_music_titlescreen);
-			}
+			audio_stop_sound(title_music);
 		}
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{

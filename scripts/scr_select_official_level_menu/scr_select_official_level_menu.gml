@@ -1,14 +1,24 @@
 function scr_select_official_level_menu()
 {
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	draw_set_alpha(0.5);
-	draw_rectangle_color(0, 16, window_get_width(), 116, c_black, c_black, c_black, c_black, false);
-	draw_set_alpha(1);
-	draw_text_outlined(window_get_width()/ 2, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
-	draw_text_outlined(window_get_width()/ 2, 100, Text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
-	
-	R = 4;
+	if (window_get_width() >= 1670)
+	{
+		R = 4;
+	}
+	else
+	if (window_get_width() >= 1276)
+	{
+		R = 3;
+	}
+	else
+	if (window_get_width() >= 882)
+	{
+		R = 2;
+	}
+	else
+	if (window_get_width() >= 488)
+	{
+		R = 1;
+	}
 	C = clamp(floor(global.select_level_index / R), 0, floor(ds_list_size(global.all_loaded_main_levels)))
 	
 	#region /*Navigate Menu*/
@@ -192,6 +202,14 @@ function scr_select_official_level_menu()
 	#endregion /*Draw Thumbnail END*/
 	
 	C= floor(global.select_level_index / R); /*Do this code again here so the sub menu doesn't get misaligned*/
+	
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_set_alpha(0.5);
+	draw_rectangle_color(0, 0, window_get_width(), 116, c_black, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+	draw_text_outlined(window_get_width()/ 2, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+	draw_text_outlined(window_get_width()/ 2, 100, Text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
 	
 	#region /*Back Button*/
 	draw_menu_button(0, 0, Text("Back"), "back_from_level_editor", "back_from_level_editor");

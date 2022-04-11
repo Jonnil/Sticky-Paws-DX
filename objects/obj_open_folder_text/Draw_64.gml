@@ -7,93 +7,110 @@ draw_text_outlined(window_get_width() / 2, window_get_height() / 2,
 string_replace_all(string(open_folder_string), "\\", "/"),
 global.default_text_size, c_black, c_white, image_alpha);
 
+if (close = false)
+{
+	draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, "Copy to Clipboard", "copy_to_clipboard", "copy_to_clipboard");
+	draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, "Back", "back_open_folder_text", "back_open_folder_text");
+}
+
+#region /*Navigate menu up and down*/
+if (menu = "copy_to_clipboard")
+{
+	if (instance_exists(obj_title))
+	and (obj_title.key_up)
+	or (instance_exists(obj_pause))
+	and (obj_pause.key_up)
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_up)
+	or (instance_exists(obj_title))
+	and (obj_title.key_down)
+	or (instance_exists(obj_pause))
+	and (obj_pause.key_down)
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_down)
+	{
+		menu = "back_open_folder_text";
+	}
+}
+else
+if (menu = "back_open_folder_text")
+{
+	if (instance_exists(obj_title))
+	and (obj_title.key_up)
+	or (instance_exists(obj_pause))
+	and (obj_pause.key_up)
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_up)
+	or (instance_exists(obj_title))
+	and (obj_title.key_down)
+	or (instance_exists(obj_pause))
+	and (obj_pause.key_down)
+	or (instance_exists(obj_leveleditor))
+	and (obj_leveleditor.key_down)
+	{
+		menu = "copy_to_clipboard";
+	}
+}
+#endregion /*Navigate menu up and down END*/
+
+if (instance_exists(obj_title))
+and (obj_title.key_a_pressed)
+and (menu = "copy_to_clipboard")
+or (instance_exists(obj_pause))
+and (obj_pause.key_a_pressed)
+and (menu = "copy_to_clipboard")
+or (instance_exists(obj_leveleditor))
+and (obj_leveleditor.key_a_pressed)
+and (menu = "copy_to_clipboard")
+or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 42, window_get_width() / 2 - 185 + 370, window_get_height() / 2 + 42 + 39))
+and (global.controls_used_for_menu_navigation = "mouse")
+and (mouse_check_button_pressed(mb_left))
+or (keyboard_check(vk_control))
+and (keyboard_check_pressed(ord("C")))
+{
+	clipboard_set_text(string(open_folder_string));
+	if (instance_exists(obj_scoreup))
+	{
+		with(obj_scoreup)
+		{
+			instance_destroy();
+		}
+	}
+	with(instance_create_depth(window_get_width() / 2, window_get_height() / 2 + 42, 0, obj_scoreup))
+	{
+		scoreup = "Copied";
+	}
+}
+
 #region /*Close the open folder text by pressing any button*/
-if (keyboard_check_pressed(vk_anykey))
-or (mouse_check_button_pressed(mb_any))
+if (keyboard_check_pressed(ord("X")))
+or (keyboard_check_pressed(vk_backspace))
+or (keyboard_check_pressed(vk_escape))
+or (mouse_check_button_pressed(mb_right))
+or (mouse_check_button_pressed(mb_side1))
+or (gamepad_button_check(0, gp_face2))
+or (gamepad_button_check(1, gp_face2))
+or (gamepad_button_check(2, gp_face2))
+or (gamepad_button_check(3, gp_face2))
 
-or (gamepad_button_check(0, gp_face1))
-or(gamepad_button_check(0, gp_face2))
-or(gamepad_button_check(0, gp_face3))
-or(gamepad_button_check(0, gp_face4))
-or(gamepad_button_check(0, gp_padd))
-or(gamepad_button_check(0, gp_padl))
-or(gamepad_button_check(0, gp_padr))
-or(gamepad_button_check(0, gp_padu))
-or(gamepad_button_check(0, gp_select))
-or(gamepad_button_check(0, gp_shoulderl))
-or(gamepad_button_check(0, gp_shoulderlb))
-or(gamepad_button_check(0, gp_shoulderr))
-or(gamepad_button_check(0, gp_shoulderrb))
-or(gamepad_button_check(0, gp_start))
-or(gamepad_button_check(0, gp_stickl))
-or(gamepad_button_check(0, gp_stickr))
-or(gamepad_axis_value(0, gp_axislh) <> 0)
-or(gamepad_axis_value(0, gp_axislv) <> 0)
-or(gamepad_axis_value(0, gp_axisrh) <> 0)
-or(gamepad_axis_value(0, gp_axisrv) <> 0)
+or (menu = "back_open_folder_text")
+and (keyboard_check_pressed(ord("Z")))
+or (menu = "back_open_folder_text")
+and (keyboard_check_pressed(vk_space))
+or (menu = "back_open_folder_text")
+and (keyboard_check_pressed(vk_enter))
+or (menu = "back_open_folder_text")
+and (gamepad_button_check(0, gp_face1))
+or (menu = "back_open_folder_text")
+and (gamepad_button_check(1, gp_face1))
+or (menu = "back_open_folder_text")
+and (gamepad_button_check(2, gp_face1))
+or (menu = "back_open_folder_text")
+and (gamepad_button_check(3, gp_face1))
 
-or (gamepad_button_check(1, gp_face1))
-or(gamepad_button_check(1, gp_face2))
-or(gamepad_button_check(1, gp_face3))
-or(gamepad_button_check(1, gp_face4))
-or(gamepad_button_check(1, gp_padd))
-or(gamepad_button_check(1, gp_padl))
-or(gamepad_button_check(1, gp_padr))
-or(gamepad_button_check(1, gp_padu))
-or(gamepad_button_check(1, gp_select))
-or(gamepad_button_check(1, gp_shoulderl))
-or(gamepad_button_check(1, gp_shoulderlb))
-or(gamepad_button_check(1, gp_shoulderr))
-or(gamepad_button_check(1, gp_shoulderrb))
-or(gamepad_button_check(1, gp_start))
-or(gamepad_button_check(1, gp_stickl))
-or(gamepad_button_check(1, gp_stickr))
-or(gamepad_axis_value(1, gp_axislh) <> 0)
-or(gamepad_axis_value(1, gp_axislv) <> 0)
-or(gamepad_axis_value(1, gp_axisrh) <> 0)
-or(gamepad_axis_value(1, gp_axisrv) <> 0)
-
-or (gamepad_button_check(2, gp_face1))
-or(gamepad_button_check(2, gp_face2))
-or(gamepad_button_check(2, gp_face3))
-or(gamepad_button_check(2, gp_face4))
-or(gamepad_button_check(2, gp_padd))
-or(gamepad_button_check(2, gp_padl))
-or(gamepad_button_check(2, gp_padr))
-or(gamepad_button_check(2, gp_padu))
-or(gamepad_button_check(2, gp_select))
-or(gamepad_button_check(2, gp_shoulderl))
-or(gamepad_button_check(2, gp_shoulderlb))
-or(gamepad_button_check(2, gp_shoulderr))
-or(gamepad_button_check(2, gp_shoulderrb))
-or(gamepad_button_check(2, gp_start))
-or(gamepad_button_check(2, gp_stickl))
-or(gamepad_button_check(2, gp_stickr))
-or(gamepad_axis_value(2, gp_axislh) <> 0)
-or(gamepad_axis_value(2, gp_axislv) <> 0)
-or(gamepad_axis_value(2, gp_axisrh) <> 0)
-or(gamepad_axis_value(2, gp_axisrv) <> 0)
-
-or (gamepad_button_check(3, gp_face1))
-or(gamepad_button_check(3, gp_face2))
-or(gamepad_button_check(3, gp_face3))
-or(gamepad_button_check(3, gp_face4))
-or(gamepad_button_check(3, gp_padd))
-or(gamepad_button_check(3, gp_padl))
-or(gamepad_button_check(3, gp_padr))
-or(gamepad_button_check(3, gp_padu))
-or(gamepad_button_check(3, gp_select))
-or(gamepad_button_check(3, gp_shoulderl))
-or(gamepad_button_check(3, gp_shoulderlb))
-or(gamepad_button_check(3, gp_shoulderr))
-or(gamepad_button_check(3, gp_shoulderrb))
-or(gamepad_button_check(3, gp_start))
-or(gamepad_button_check(3, gp_stickl))
-or(gamepad_button_check(3, gp_stickr))
-or(gamepad_axis_value(3, gp_axislh) <> 0)
-or(gamepad_axis_value(3, gp_axislv) <> 0)
-or(gamepad_axis_value(3, gp_axisrh) <> 0)
-or(gamepad_axis_value(3, gp_axisrv) <> 0)
+or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, window_get_width() / 2 - 185 + 370, window_get_height() / 2 + 42 + 39 + 42))
+and (global.controls_used_for_menu_navigation = "mouse")
+and (mouse_check_button_pressed(mb_left))
 {
 	close = true;
 }
