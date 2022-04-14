@@ -12,6 +12,7 @@ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or(keyboard_check_pre
 key_b_released = (gamepad_button_check_released(0, gp_face2))or(keyboard_check_released(global.player1_key_sprint))or(keyboard_check_released(ord("X")))or(keyboard_check_released(vk_backspace));
 #endregion /*Controls for level editor END*/
 
+can_save_to_level_information = false;
 depth = -300;
 
 global.player_has_entered_goal = false;
@@ -163,12 +164,10 @@ show_undo_redo_icons = false; /*If the undo and redo buttons should show*/
 undo_redo_icons_y = +200; /*Undo and redo buttons y postition*/
 current_undo_value = 0; /*Every time you place down items, this value increases. When you undo, this value decreases.*/
 icons_at_top_y = - 100;
-icons_at_left_x =- 64;
 selected_object = 0;
 selected_object_menu_x = 0;
 selected_menu_alpha = 0;
 total_number_of_objects = 0;
-use_controller = false;
 drag_object = false;
 erase_mode = false; /*When erasing, this turns true*/
 fill_mode = false; /*When filling, this turns true*/
@@ -299,6 +298,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	or(global.create_level_from_template = true)
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
+		can_save_to_level_information = false;
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
@@ -307,11 +307,13 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	and (global.create_level_from_template >= 2)
 	{
 		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		can_save_to_level_information = true;
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
 	{
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+		can_save_to_level_information = true;
 	}
 	
 	#region /*Custom Backgrounds*/
@@ -325,6 +327,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
 		}
@@ -340,6 +343,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
 		}
@@ -357,6 +361,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
 		}
@@ -372,6 +377,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
 		}
@@ -389,6 +395,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
 		}
@@ -404,6 +411,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
 		}
@@ -421,6 +429,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
 		}
@@ -436,6 +445,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
 		}
@@ -453,6 +463,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
 		}
@@ -468,6 +479,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
 		}
@@ -485,6 +497,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
 		}
@@ -500,6 +513,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
 		}
@@ -517,6 +531,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
 		}
@@ -532,6 +547,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
 		}
@@ -549,6 +565,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
 		}
@@ -564,6 +581,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
 		}
@@ -581,6 +599,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_string("info", "make_every_tileset_into_default_tileset", false);
 		}
@@ -593,6 +612,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_string("info", "enable_time_countdown", false);
 		}
@@ -605,6 +625,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_string("info", "time_countdown", 500);
 		}
@@ -617,6 +638,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu = "level_editor")
+		and (can_save_to_level_information = true)
 		{
 			ini_write_string("info", "rain", false);
 		}
@@ -670,6 +692,7 @@ else
 	global.time_countdown = 500;
 	global.time_countdown_bonus = 500;
 	global.make_every_tileset_into_default_tileset = false;
+	global.rain = false;
 }
 #endregion /*Initialize level_information.ini END*/
 

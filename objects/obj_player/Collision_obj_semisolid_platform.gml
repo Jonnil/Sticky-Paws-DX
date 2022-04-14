@@ -68,7 +68,6 @@ and (stick_to_wall = false)
 	#endregion /*Smoke Landing Effect END*/
 	
 	if (vspeed > 0)
-	//and (in_water = false)
 	{
 		draw_xscale = 1.25;
 		draw_yscale = 0.75;

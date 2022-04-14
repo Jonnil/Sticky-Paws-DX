@@ -75,6 +75,16 @@ and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= voice_wall_jump_1;
 }
@@ -89,6 +99,16 @@ and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2);
@@ -104,6 +124,16 @@ and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -120,6 +150,16 @@ and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -137,6 +177,16 @@ and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -155,6 +205,16 @@ and (voice_wall_jump_7= noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -174,6 +234,16 @@ and (voice_wall_jump_7> noone)
 and (voice_wall_jump_8= noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -194,6 +264,16 @@ and (voice_wall_jump_7> noone)
 and (voice_wall_jump_8> noone)
 and (voice_wall_jump_9= noone)
 and (voice_wall_jump_10 = noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -215,6 +295,16 @@ and (voice_wall_jump_7> noone)
 and (voice_wall_jump_8> noone)
 and (voice_wall_jump_9> noone)
 and (voice_wall_jump_10 = noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -237,6 +327,16 @@ and (voice_wall_jump_7> noone)
 and (voice_wall_jump_8> noone)
 and (voice_wall_jump_9> noone)
 and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 = noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
 {
 	voice_wallkick= choose(voice_wall_jump_1,
 						voice_wall_jump_2,
@@ -248,6 +348,391 @@ and (voice_wall_jump_10 > noone)
 						voice_wall_jump_8,
 						voice_wall_jump_9,
 						voice_wall_jump_10);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 = noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 > noone)
+and (voice_wall_jump_13 = noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11,
+						voice_wall_jump_12);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 > noone)
+and (voice_wall_jump_13 > noone)
+and (voice_wall_jump_14 = noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11,
+						voice_wall_jump_12,
+						voice_wall_jump_13);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 > noone)
+and (voice_wall_jump_13 > noone)
+and (voice_wall_jump_14 > noone)
+and (voice_wall_jump_15 = noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11,
+						voice_wall_jump_12,
+						voice_wall_jump_13,
+						voice_wall_jump_14);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 > noone)
+and (voice_wall_jump_13 > noone)
+and (voice_wall_jump_14 > noone)
+and (voice_wall_jump_15 > noone)
+and (voice_wall_jump_16 = noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11,
+						voice_wall_jump_12,
+						voice_wall_jump_13,
+						voice_wall_jump_14,
+						voice_wall_jump_15);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 > noone)
+and (voice_wall_jump_13 > noone)
+and (voice_wall_jump_14 > noone)
+and (voice_wall_jump_15 > noone)
+and (voice_wall_jump_16 > noone)
+and (voice_wall_jump_17 = noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11,
+						voice_wall_jump_12,
+						voice_wall_jump_13,
+						voice_wall_jump_14,
+						voice_wall_jump_15,
+						voice_wall_jump_16);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 > noone)
+and (voice_wall_jump_13 > noone)
+and (voice_wall_jump_14 > noone)
+and (voice_wall_jump_15 > noone)
+and (voice_wall_jump_16 > noone)
+and (voice_wall_jump_17 > noone)
+and (voice_wall_jump_18 = noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11,
+						voice_wall_jump_12,
+						voice_wall_jump_13,
+						voice_wall_jump_14,
+						voice_wall_jump_15,
+						voice_wall_jump_16,
+						voice_wall_jump_17);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 > noone)
+and (voice_wall_jump_13 > noone)
+and (voice_wall_jump_14 > noone)
+and (voice_wall_jump_15 > noone)
+and (voice_wall_jump_16 > noone)
+and (voice_wall_jump_17 > noone)
+and (voice_wall_jump_18 > noone)
+and (voice_wall_jump_19 = noone)
+and (voice_wall_jump_20 = noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11,
+						voice_wall_jump_12,
+						voice_wall_jump_13,
+						voice_wall_jump_14,
+						voice_wall_jump_15,
+						voice_wall_jump_16,
+						voice_wall_jump_17,
+						voice_wall_jump_18);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 > noone)
+and (voice_wall_jump_13 > noone)
+and (voice_wall_jump_14 > noone)
+and (voice_wall_jump_15 > noone)
+and (voice_wall_jump_16 > noone)
+and (voice_wall_jump_17 > noone)
+and (voice_wall_jump_18 > noone)
+and (voice_wall_jump_19 > noone)
+and (voice_wall_jump_20 = noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11,
+						voice_wall_jump_12,
+						voice_wall_jump_13,
+						voice_wall_jump_14,
+						voice_wall_jump_15,
+						voice_wall_jump_16,
+						voice_wall_jump_17,
+						voice_wall_jump_18,
+						voice_wall_jump_19);
+}
+else
+if (voice_wall_jump_1> noone)
+and (voice_wall_jump_2> noone)
+and (voice_wall_jump_3> noone)
+and (voice_wall_jump_4> noone)
+and (voice_wall_jump_5> noone)
+and (voice_wall_jump_6> noone)
+and (voice_wall_jump_7> noone)
+and (voice_wall_jump_8> noone)
+and (voice_wall_jump_9> noone)
+and (voice_wall_jump_10 > noone)
+and (voice_wall_jump_11 > noone)
+and (voice_wall_jump_12 > noone)
+and (voice_wall_jump_13 > noone)
+and (voice_wall_jump_14 > noone)
+and (voice_wall_jump_15 > noone)
+and (voice_wall_jump_16 > noone)
+and (voice_wall_jump_17 > noone)
+and (voice_wall_jump_18 > noone)
+and (voice_wall_jump_19 > noone)
+and (voice_wall_jump_20 > noone)
+{
+	voice_wallkick= choose(voice_wall_jump_1,
+						voice_wall_jump_2,
+						voice_wall_jump_3,
+						voice_wall_jump_4,
+						voice_wall_jump_5,
+						voice_wall_jump_6,
+						voice_wall_jump_7,
+						voice_wall_jump_8,
+						voice_wall_jump_9,
+						voice_wall_jump_10,
+						voice_wall_jump_11,
+						voice_wall_jump_12,
+						voice_wall_jump_13,
+						voice_wall_jump_14,
+						voice_wall_jump_15,
+						voice_wall_jump_16,
+						voice_wall_jump_17,
+						voice_wall_jump_18,
+						voice_wall_jump_19,
+						voice_wall_jump_20);
 }
 #endregion /*Wall jump sound variation END*/
 
@@ -1945,6 +2430,16 @@ and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = voice_dive_1;
 }
@@ -1959,6 +2454,16 @@ and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = choose(voice_dive_1,
 						voice_dive_2);
@@ -1974,6 +2479,16 @@ and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
@@ -1990,6 +2505,16 @@ and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
@@ -2007,6 +2532,16 @@ and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
@@ -2025,6 +2560,16 @@ and (voice_dive_7= noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
@@ -2044,6 +2589,16 @@ and (voice_dive_7> noone)
 and (voice_dive_8= noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
@@ -2064,6 +2619,16 @@ and (voice_dive_7> noone)
 and (voice_dive_8> noone)
 and (voice_dive_9= noone)
 and (voice_dive_10 = noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
@@ -2085,6 +2650,16 @@ and (voice_dive_7> noone)
 and (voice_dive_8> noone)
 and (voice_dive_9> noone)
 and (voice_dive_10 = noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
@@ -2107,6 +2682,16 @@ and (voice_dive_7> noone)
 and (voice_dive_8> noone)
 and (voice_dive_9> noone)
 and (voice_dive_10 > noone)
+and (voice_dive_11 = noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
 {
 	voice_dive = choose(voice_dive_1,
 						voice_dive_2,
@@ -2118,6 +2703,391 @@ and (voice_dive_10 > noone)
 						voice_dive_8,
 						voice_dive_9,
 						voice_dive_10);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 = noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 > noone)
+and (voice_dive_13 = noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11,
+						voice_dive_12);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 > noone)
+and (voice_dive_13 > noone)
+and (voice_dive_14 = noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11,
+						voice_dive_12,
+						voice_dive_13);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 > noone)
+and (voice_dive_13 > noone)
+and (voice_dive_14 > noone)
+and (voice_dive_15 = noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11,
+						voice_dive_12,
+						voice_dive_13,
+						voice_dive_14);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 > noone)
+and (voice_dive_13 > noone)
+and (voice_dive_14 > noone)
+and (voice_dive_15 > noone)
+and (voice_dive_16 = noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11,
+						voice_dive_12,
+						voice_dive_13,
+						voice_dive_14,
+						voice_dive_15);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 > noone)
+and (voice_dive_13 > noone)
+and (voice_dive_14 > noone)
+and (voice_dive_15 > noone)
+and (voice_dive_16 > noone)
+and (voice_dive_17 = noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11,
+						voice_dive_12,
+						voice_dive_13,
+						voice_dive_14,
+						voice_dive_15,
+						voice_dive_16);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 > noone)
+and (voice_dive_13 > noone)
+and (voice_dive_14 > noone)
+and (voice_dive_15 > noone)
+and (voice_dive_16 > noone)
+and (voice_dive_17 > noone)
+and (voice_dive_18 = noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11,
+						voice_dive_12,
+						voice_dive_13,
+						voice_dive_14,
+						voice_dive_15,
+						voice_dive_16,
+						voice_dive_17);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 > noone)
+and (voice_dive_13 > noone)
+and (voice_dive_14 > noone)
+and (voice_dive_15 > noone)
+and (voice_dive_16 > noone)
+and (voice_dive_17 > noone)
+and (voice_dive_18 > noone)
+and (voice_dive_19 = noone)
+and (voice_dive_20 = noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11,
+						voice_dive_12,
+						voice_dive_13,
+						voice_dive_14,
+						voice_dive_15,
+						voice_dive_16,
+						voice_dive_17,
+						voice_dive_18);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 > noone)
+and (voice_dive_13 > noone)
+and (voice_dive_14 > noone)
+and (voice_dive_15 > noone)
+and (voice_dive_16 > noone)
+and (voice_dive_17 > noone)
+and (voice_dive_18 > noone)
+and (voice_dive_19 > noone)
+and (voice_dive_20 = noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11,
+						voice_dive_12,
+						voice_dive_13,
+						voice_dive_14,
+						voice_dive_15,
+						voice_dive_16,
+						voice_dive_17,
+						voice_dive_18,
+						voice_dive_19);
+}
+else
+if (voice_dive_1> noone)
+and (voice_dive_2> noone)
+and (voice_dive_3> noone)
+and (voice_dive_4> noone)
+and (voice_dive_5> noone)
+and (voice_dive_6> noone)
+and (voice_dive_7> noone)
+and (voice_dive_8> noone)
+and (voice_dive_9> noone)
+and (voice_dive_10 > noone)
+and (voice_dive_11 > noone)
+and (voice_dive_12 > noone)
+and (voice_dive_13 > noone)
+and (voice_dive_14 > noone)
+and (voice_dive_15 > noone)
+and (voice_dive_16 > noone)
+and (voice_dive_17 > noone)
+and (voice_dive_18 > noone)
+and (voice_dive_19 > noone)
+and (voice_dive_20 > noone)
+{
+	voice_dive = choose(voice_dive_1,
+						voice_dive_2,
+						voice_dive_3,
+						voice_dive_4,
+						voice_dive_5,
+						voice_dive_6,
+						voice_dive_7,
+						voice_dive_8,
+						voice_dive_9,
+						voice_dive_10,
+						voice_dive_11,
+						voice_dive_12,
+						voice_dive_13,
+						voice_dive_14,
+						voice_dive_15,
+						voice_dive_16,
+						voice_dive_17,
+						voice_dive_18,
+						voice_dive_19,
+						voice_dive_20);
 }
 #endregion /*Dive sound variation END*/
 
@@ -2681,6 +3651,193 @@ and (voice_burned_10 > noone)
 						voice_burned_10);
 }
 #endregion /*Burned sound variation END*/
+
+#region /*Scream sound variation*/
+if (voice_scream_1> noone)
+and (voice_scream_2 = noone)
+and (voice_scream_3 = noone)
+and (voice_scream_4 = noone)
+and (voice_scream_5 = noone)
+and (voice_scream_6= noone)
+and (voice_scream_7= noone)
+and (voice_scream_8= noone)
+and (voice_scream_9= noone)
+and (voice_scream_10 = noone)
+{
+	voice_scream = voice_scream_1;
+}
+else
+if (voice_scream_1> noone)
+and (voice_scream_2> noone)
+and (voice_scream_3 = noone)
+and (voice_scream_4 = noone)
+and (voice_scream_5 = noone)
+and (voice_scream_6= noone)
+and (voice_scream_7= noone)
+and (voice_scream_8= noone)
+and (voice_scream_9= noone)
+and (voice_scream_10 = noone)
+{
+	voice_scream = choose(voice_scream_1,
+						voice_scream_2);
+}
+else
+if (voice_scream_1> noone)
+and (voice_scream_2> noone)
+and (voice_scream_3> noone)
+and (voice_scream_4 = noone)
+and (voice_scream_5 = noone)
+and (voice_scream_6= noone)
+and (voice_scream_7= noone)
+and (voice_scream_8= noone)
+and (voice_scream_9= noone)
+and (voice_scream_10 = noone)
+{
+	voice_scream = choose(voice_scream_1,
+						voice_scream_2,
+						voice_scream_3);
+}
+else
+if (voice_scream_1> noone)
+and (voice_scream_2> noone)
+and (voice_scream_3> noone)
+and (voice_scream_4> noone)
+and (voice_scream_5 = noone)
+and (voice_scream_6= noone)
+and (voice_scream_7= noone)
+and (voice_scream_8= noone)
+and (voice_scream_9= noone)
+and (voice_scream_10 = noone)
+{
+	voice_scream = choose(voice_scream_1,
+						voice_scream_2,
+						voice_scream_3,
+						voice_scream_4);
+}
+else
+if (voice_scream_1> noone)
+and (voice_scream_2> noone)
+and (voice_scream_3> noone)
+and (voice_scream_4> noone)
+and (voice_scream_5> noone)
+and (voice_scream_6= noone)
+and (voice_scream_7= noone)
+and (voice_scream_8= noone)
+and (voice_scream_9= noone)
+and (voice_scream_10 = noone)
+{
+	voice_scream = choose(voice_scream_1,
+						voice_scream_2,
+						voice_scream_3,
+						voice_scream_4,
+						voice_scream_5);
+}
+else
+if (voice_scream_1> noone)
+and (voice_scream_2> noone)
+and (voice_scream_3> noone)
+and (voice_scream_4> noone)
+and (voice_scream_5> noone)
+and (voice_scream_6> noone)
+and (voice_scream_7= noone)
+and (voice_scream_8= noone)
+and (voice_scream_9= noone)
+and (voice_scream_10 = noone)
+{
+	voice_scream = choose(voice_scream_1,
+						voice_scream_2,
+						voice_scream_3,
+						voice_scream_4,
+						voice_scream_5,
+						voice_scream_6);
+}
+else
+if (voice_scream_1> noone)
+and (voice_scream_2> noone)
+and (voice_scream_3> noone)
+and (voice_scream_4> noone)
+and (voice_scream_5> noone)
+and (voice_scream_6> noone)
+and (voice_scream_7> noone)
+and (voice_scream_8= noone)
+and (voice_scream_9= noone)
+and (voice_scream_10 = noone)
+{
+	voice_scream = choose(voice_scream_1,
+						voice_scream_2,
+						voice_scream_3,
+						voice_scream_4,
+						voice_scream_5,
+						voice_scream_6,
+						voice_scream_7);
+}
+else
+if (voice_scream_1> noone)
+and (voice_scream_2> noone)
+and (voice_scream_3> noone)
+and (voice_scream_4> noone)
+and (voice_scream_5> noone)
+and (voice_scream_6> noone)
+and (voice_scream_7> noone)
+and (voice_scream_8> noone)
+and (voice_scream_9= noone)
+and (voice_scream_10 = noone)
+{
+	voice_scream = choose(voice_scream_1,
+						voice_scream_2,
+						voice_scream_3,
+						voice_scream_4,
+						voice_scream_5,
+						voice_scream_6,
+						voice_scream_7,
+						voice_scream_8);
+}
+else
+if (voice_scream_1> noone)
+and (voice_scream_2> noone)
+and (voice_scream_3> noone)
+and (voice_scream_4> noone)
+and (voice_scream_5> noone)
+and (voice_scream_6> noone)
+and (voice_scream_7> noone)
+and (voice_scream_8> noone)
+and (voice_scream_9> noone)
+and (voice_scream_10 = noone)
+{
+	voice_scream = choose(voice_scream_1,
+						voice_scream_2,
+						voice_scream_3,
+						voice_scream_4,
+						voice_scream_5,
+						voice_scream_6,
+						voice_scream_7,
+						voice_scream_8,
+						voice_scream_9);
+}
+else
+if (voice_scream_1> noone)
+and (voice_scream_2> noone)
+and (voice_scream_3> noone)
+and (voice_scream_4> noone)
+and (voice_scream_5> noone)
+and (voice_scream_6> noone)
+and (voice_scream_7> noone)
+and (voice_scream_8> noone)
+and (voice_scream_9> noone)
+and (voice_scream_10 > noone)
+{
+	voice_scream = choose(voice_scream_1,
+						voice_scream_2,
+						voice_scream_3,
+						voice_scream_4,
+						voice_scream_5,
+						voice_scream_6,
+						voice_scream_7,
+						voice_scream_8,
+						voice_scream_9,
+						voice_scream_10);
+}
+#endregion /*Scream sound variation END*/
 
 #endregion /*Choose to play voice clips randomly END*/
 
@@ -5262,10 +6419,9 @@ and (can_mid_air_jump = 0)
 	and (vspeed > - 20)
 	or(spring = false)
 	{
-		if (global.has_upgrade_double_jump = true)
-		or(number_of_jumps >= 2)
+		if (number_of_jumps >= 2)
 		and (midair_jumps_left > 0)
-		or(number_of_jumps <= -1)
+		or (number_of_jumps <= -1)
 		{
 			buffer_jump = 0;
 			dive = false;
@@ -8070,6 +9226,9 @@ and (instance_exists(obj_goal))
 		and (y < instance_nearest(x, y, obj_goal).bbox_bottom)
 		and (goal = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
+		or (place_meeting(x, y, obj_goal))
+		and (goal = false)
+		and (!collision_line(x, y, instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
 		{
 			just_hit_goal = true;
 		}
@@ -8590,6 +9749,13 @@ and (hold_item_in_hands = "")
 	}
 	if (horizontal_rope_climb = true)
 	{
+		if (!place_meeting(x - 32, y, obj_horizontal_rope))
+		and (hspeed < 0)
+		or (!place_meeting(x + 32, y, obj_horizontal_rope))
+		and (hspeed > 0)
+		{
+			hspeed = 0;
+		}
 		angle = 0;
 		midair_jumps_left = number_of_jumps;
 		can_ground_pound = false;
@@ -8827,32 +9993,38 @@ and (hold_item_in_hands = "")
 		and (!key_right)
 		and (!place_meeting(x - 1, y, obj_wall))
 		and (!place_meeting(x - 10, y, obj_spikes))
-		and (place_meeting(x - 1, y, obj_horizontal_rope))
 		and (takendamage <= takendamage_freezetime)
 		{
 			image_xscale = -1;
-			if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
-			if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-			if (sprite_stand > noone){sprite_index = sprite_stand;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			if (key_sprint)
-			or(double_tap_left = 3)
+			if (place_meeting(x - 32, y, obj_horizontal_rope))
 			{
-				hspeed -= 0.5;
-				speed_max = speed_max_run;
-				image_speed = speed / 10 + 0.1;
+				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				if (sprite_stand > noone){sprite_index = sprite_stand;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
+				if (key_sprint)
+				or(double_tap_left = 3)
+				{
+					hspeed -= 0.5;
+					speed_max = speed_max_run;
+					image_speed = speed / 10 + 0.1;
+				}
+				else
+				{
+					hspeed -= 0.5;
+					speed_max = speed_max_walk;
+					image_speed = speed / 10 + 0.1;
+				}
+				if (asset_get_type("snd_move_ivy") == asset_sound)
+				and (!audio_is_playing(snd_move_ivy))
+				{
+					audio_play_sound(snd_move_ivy, 0, 0);
+					audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
+				}
 			}
 			else
 			{
-				hspeed -= 0.5;
-				speed_max = speed_max_walk;
-				image_speed = speed / 10 + 0.1;
-			}
-			if (asset_get_type("snd_move_ivy") == asset_sound)
-			and (!audio_is_playing(snd_move_ivy))
-			{
-				audio_play_sound(snd_move_ivy, 0, 0);
-				audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
+				hspeed = 0;
 			}
 		}
 		#endregion /*Climb left on horizontal rope END*/
@@ -8864,32 +10036,38 @@ and (hold_item_in_hands = "")
 		and (!key_left)
 		and (!place_meeting(x + 1, y, obj_wall))
 		and (!place_meeting(x + 10, y, obj_spikes))
-		and (place_meeting(x + 1, y, obj_horizontal_rope))
 		and (takendamage <= takendamage_freezetime)
 		{
 			image_xscale = +1;
-			if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
-			if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-			if (sprite_stand > noone){sprite_index = sprite_stand;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			if (key_sprint)
-			or(double_tap_right = 3)
+			if (place_meeting(x + 32, y, obj_horizontal_rope))
 			{
-				hspeed += 0.5;
-				speed_max = speed_max_run;
-				image_speed = speed / 10 + 0.1;
+				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				if (sprite_stand > noone){sprite_index = sprite_stand;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
+				if (key_sprint)
+				or(double_tap_right = 3)
+				{
+					hspeed += 0.5;
+					speed_max = speed_max_run;
+					image_speed = speed / 10 + 0.1;
+				}
+				else
+				{
+					hspeed += 0.5;
+					speed_max = speed_max_walk;
+					image_speed = speed / 10 + 0.1;
+				}
+				if (asset_get_type("snd_move_ivy") == asset_sound)
+				and (!audio_is_playing(snd_move_ivy))
+				{
+					audio_play_sound(snd_move_ivy, 0, 0);
+					audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
+				}
 			}
 			else
 			{
-				hspeed += 0.5;
-				speed_max = speed_max_walk;
-				image_speed = speed / 10 + 0.1;
-			}
-			if (asset_get_type("snd_move_ivy") == asset_sound)
-			and (!audio_is_playing(snd_move_ivy))
-			{
-				audio_play_sound(snd_move_ivy, 0, 0);
-				audio_sound_gain(snd_move_ivy, global.sound_volume * global.main_volume, 0);
+				hspeed = 0;
 			}
 		}
 		#endregion /*Climb right on horizontal rope END*/

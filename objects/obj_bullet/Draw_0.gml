@@ -65,11 +65,13 @@ else
 	hspeed = +4;
 }
 
-if (instance_exists(obj_camera))
+if (asset_get_type("obj_camera") == asset_object)
+and (instance_exists(obj_camera))
 and (x < obj_camera.view_x_center - 980)
 and (image_xscale < 0)
 and (draw_xscale >= 0.8)
-or (instance_exists(obj_camera))
+or (asset_get_type("obj_camera") == asset_object)
+and (instance_exists(obj_camera))
 and (x > obj_camera.view_x_center + 980)
 and (image_xscale > 0)
 and (draw_xscale >= 0.8)

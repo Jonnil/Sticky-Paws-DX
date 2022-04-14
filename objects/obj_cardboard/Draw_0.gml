@@ -103,6 +103,7 @@ if (brick_particle = false)
 		
 		or(!place_meeting(x, y + 2, obj_wall))
 		and (!place_meeting(x, y + 2, obj_semisolid_platform))
+		and (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		and (x < obj_camera.view_x_center + 980 - sprite_width)
 		and (x > obj_camera.view_x_center - 980)

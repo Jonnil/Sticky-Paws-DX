@@ -749,7 +749,8 @@ and (global.quit_level = false)
 }
 
 #region /*Stop player when touching level*/
-if (instance_exists(obj_level))
+if (asset_get_type("obj_level") == asset_object)
+and (instance_exists(obj_level))
 and (place_meeting(x, y, obj_level))
 and (stop_at_level = false)
 {
@@ -785,6 +786,7 @@ and (can_move = true)
 and (show_demo_over_message = false)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
+and (instance_exists(obj_level))
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed = 0)
 or(key_a_pressed)
@@ -847,6 +849,7 @@ and (show_demo_over_message = false)
 and (menu_delay = 0)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
+and (instance_exists(obj_level))
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed = 0)
 and (show_demo_over_message = false)
@@ -857,7 +860,11 @@ and (show_demo_over_message = false)
 }
 #endregion /*Enter Level END*/
 
-global.select_level_index = instance_nearest(x, y, obj_level).level;
+if (asset_get_type("obj_level") == asset_object)
+and (instance_exists(obj_level))
+{
+	global.select_level_index = instance_nearest(x, y, obj_level).level;
+}
 
 #region /*After pressing enter level, the iris should shrink and then start the level*/
 if (can_move = false)

@@ -812,8 +812,8 @@ function scr_options_level_editor()
 			}
 			if (instance_exists(obj_foreground_secret))
 			{
-				ini_write_real("Custom Backgrounds", "custom_foreground_secret_x_offset", obj_foreground_secret.x_offset);
-				ini_write_real("Custom Backgrounds", "custom_foreground_secret_y_offset", obj_foreground_secret.y_offset);
+				ini_write_real("Custom Backgrounds", "custom_foreground_secret_x_offset", obj_foreground_secret.x);
+				ini_write_real("Custom Backgrounds", "custom_foreground_secret_y_offset", obj_foreground_secret.y);
 			}
 			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", custom_background_1_x_parallax);
 			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", custom_background_1_y_parallax);
@@ -865,8 +865,8 @@ function scr_options_level_editor()
 		}
 		if (instance_exists(obj_foreground_secret))
 		{
-			obj_foreground_secret.x_offset = draw_menu_left_right_buttons(level_editor_options_x, custom_foreground_secret_x_offset_y + menu_y_offset, options_level_editor_right_arrow_x + 10, "custom foreground secret x offset", obj_foreground_secret.x_offset, "custom_foreground_secret_x_offset", 1, true);
-			obj_foreground_secret.y_offset = draw_menu_left_right_buttons(level_editor_options_x, custom_foreground_secret_y_offset_y + menu_y_offset, options_level_editor_right_arrow_x + 10, "custom foreground secret y offset", obj_foreground_secret.y_offset, "custom_foreground_secret_y_offset", 1, true);
+			obj_foreground_secret.x = draw_menu_left_right_buttons(level_editor_options_x, custom_foreground_secret_x_offset_y + menu_y_offset, options_level_editor_right_arrow_x + 10, "custom foreground secret x offset", obj_foreground_secret.x, "custom_foreground_secret_x_offset", 1, true);
+			obj_foreground_secret.y = draw_menu_left_right_buttons(level_editor_options_x, custom_foreground_secret_y_offset_y + menu_y_offset, options_level_editor_right_arrow_x + 10, "custom foreground secret y offset", obj_foreground_secret.y, "custom_foreground_secret_y_offset", 1, true);
 		}
 		custom_background_1_x_parallax = draw_menu_left_right_buttons(level_editor_options_x, custom_background_1_x_parallax_y + menu_y_offset, options_level_editor_right_arrow_x, "custom background 1 x parallax", custom_background_1_x_parallax, "custom_background_1_x_parallax", 0.1, true);
 		custom_background_1_y_parallax = draw_menu_left_right_buttons(level_editor_options_x, custom_background_1_y_parallax_y + menu_y_offset, options_level_editor_right_arrow_x, "custom background 1 y parallax", custom_background_1_y_parallax, "custom_background_1_y_parallax", 0.1, true);

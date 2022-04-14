@@ -321,6 +321,19 @@ voice_burned_9 = noone; /*Voice Burned 9*/
 voice_burned_10 = noone; /*Voice Burned 10*/
 #endregion /*Voice Burned END*/
 
+#region /*Voice Scream*/
+voice_scream_1 = noone; /*Voice Scream 1*/
+voice_scream_2 = noone; /*Voice Scream 2*/
+voice_scream_3 = noone; /*Voice Scream 3*/
+voice_scream_4 = noone; /*Voice Scream 4 */
+voice_scream_5 = noone; /*Voice Scream 5*/
+voice_scream_6 = noone; /*Voice Scream 6*/
+voice_scream_7 = noone; /*Voice Scream 7*/
+voice_scream_8 = noone; /*Voice Scream 8*/
+voice_scream_9 = noone; /*Voice Scream 9*/
+voice_scream_10 = noone; /*Voice Scream 10*/
+#endregion /*Voice Scream END*/
+
 #endregion /*Voices END*/
 
 voice_wallkick = noone;

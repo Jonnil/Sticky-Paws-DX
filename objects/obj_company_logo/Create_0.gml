@@ -1,3 +1,5 @@
+randomize();
+
 /*Create Event*/
 mouse_x_position = window_mouse_get_x();
 mouse_y_position = window_mouse_get_y();
@@ -50,9 +52,6 @@ global.default_view_height = 1080;
 
 global.demo = false; /*When making a demo version of the game, turn this to true, otherwise turn this to false for the full version*/
 global.demo_max_levels = 3; /*Set how many levels the demo version have unlocked*/
-
-/*Upgrades. Choose what abilities the player character have when they start the game*/
-global.has_upgrade_double_jump = false; /*If you have the Double Jump Upgrade*/
 
 global.deactivate_objects_outsiede_view = true; /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
 
@@ -153,6 +152,11 @@ repeat(max_players)
 	i -= 1;
 }
 
+gamepad_set_axis_deadzone(0, 0.50);
+gamepad_set_axis_deadzone(1, 0.50);
+gamepad_set_axis_deadzone(2, 0.50);
+gamepad_set_axis_deadzone(3, 0.50);
+
 global.thumbnail_sprite = ds_list_create();
 global.grid_hsnap = 32; /*Horizontal grid snapping*/
 global.grid_vsnap = 32; /*Vertical grid snapping*/
@@ -178,6 +182,7 @@ global.hex_color_for_player_2 = c_white; /*Player 1 Hex Value Color*/
 global.hex_color_for_player_3 = c_white; /*Player 1 Hex Value Color*/
 global.hex_color_for_player_4 = c_white; /*Player 1 Hex Value Color*/
 global.level_editor_level = 0; /*What level is selected in the custom level editor*/
+global.world_editor = false; /*If you're editing world or not*/
 global.play_edited_level = false; /*Playtest edited level*/
 global.actually_play_edited_level = false; /*Actually playing finished edited level*/
 global.create_level_from_template = false; /*If you're currently creating a level from template or not*/
@@ -561,8 +566,11 @@ global.resource_pack_sprite_invincibility_powerup = spr_noone;
 global.resource_pack_sprite_block_only_when_player_is_near = spr_noone;
 #endregion /*Resource Packs END*/
 
-company_splash = spr_noone;
-controller_splash = spr_noone;
+company_splash = noone;
+company_splash_1 = noone;
+company_splash_2 = noone;
+company_splash_3 = noone;
+controller_splash = noone;
 
 #region /*Interpolation*/
 if (global.interpolate = true)

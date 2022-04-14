@@ -61,8 +61,7 @@ function scr_initialize_resource_pack_sprite(argument0, argument1)
 	#region /*Origin points*/
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 	and (found_resource_sprite = true)
-	or (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
-	and (found_resource_sprite = true)
+	or (found_resource_sprite = true)
 	{
 		if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 		{
@@ -70,8 +69,7 @@ function scr_initialize_resource_pack_sprite(argument0, argument1)
 			can_save_to_character_config = false; /*You can't save values to included files*/
 		}
 		else
-		if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
-		and (found_resource_sprite = true)
+		if (found_resource_sprite = true)
 		{
 			ini_open(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 			can_save_to_character_config = true; /*You can save values to local appdata*/

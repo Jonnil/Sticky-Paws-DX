@@ -110,10 +110,14 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	{
 		x = ini_read_real("Player", "player_x", 0);
 		y = ini_read_real("Player", "player_y", 0);
-		if (!position_meeting(x, y, obj_level))
+		if (asset_get_type("obj_level") == asset_object)
+		and (instance_exists(obj_level))
+		and (!position_meeting(x, y, obj_level))
 		{
 			x = instance_nearest(x, y, obj_level).x;
 			y = instance_nearest(x, y, obj_level).y;
+			xx = instance_nearest(x, y, obj_level).x;
+			yy = instance_nearest(x, y, obj_level).y;
 		}
 	}
 	#endregion /*Load Player Position END*/

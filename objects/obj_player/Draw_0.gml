@@ -12,7 +12,7 @@
 //draw_text_outlined(x -32, y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x -32, y - 64, string(global.music_volume), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x -32, y - 128, string(jump), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x -32, y - 128, string(number_of_jumps), global.default_text_size, c_white, c_black, 1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)

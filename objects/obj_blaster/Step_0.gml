@@ -2,6 +2,8 @@
 if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+and (asset_get_type("obj_camera") == asset_object)
+and (instance_exists(obj_camera))
 and (x < obj_camera.view_x_center + 980)
 and (x > obj_camera.view_x_center - 980)
 and (y < obj_camera.view_y_center + 980)

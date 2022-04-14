@@ -181,7 +181,11 @@ or (global.full_level_map_screenshot = true)
 			{
 				camera_set_view_size(view_camera[view_current], 1920, 1080);
 			}
-			scr_set_screen_size();
+			if (asset_get_type("scr_set_screen_size") == asset_script)
+			{
+				scr_set_screen_size();
+			}
+			
 			#region /*Limit controller x and controller y inside room*/
 			if (controller_x < camera_get_view_x(view_camera[view_current]))
 			{
@@ -200,6 +204,7 @@ or (global.full_level_map_screenshot = true)
 				controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
 			}
 			#endregion /*Limit controller x and controller y inside room END*/
+			
 			#region /*Limit x and y inside room*/
 			if (x < camera_get_view_x(view_camera[view_current]))
 			{
@@ -218,11 +223,13 @@ or (global.full_level_map_screenshot = true)
 				y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
 			}
 			#endregion /*Limit x and y inside room END*/
+			
 			#region /*Limit view inside room*/
 			camera_set_view_pos(view_camera[view_current],
 			max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
 			max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
 			#endregion /*Limit view inside room END*/
+			
 			#endregion /*Limit so view and cursor can't go outside room END*/
 			
 			global.x_checkpoint = 0;
@@ -232,58 +239,95 @@ or (global.full_level_map_screenshot = true)
 			global.checkpoint_minute = 0;
 			global.checkpoint_realmillisecond = 0;
 			
-			ini_open(working_directory + "/save_files/custom_level_save.ini");
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "y_checkpoint", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
-			ini_close();
-			
-			#region /*Save Thumbnail*/
-			var thumbnail_sprite;
-			
-			/*thumbnail_sprite = sprite_create_from_surface(application_surface,
-			camera_get_view_x(view_camera[view_current]),
-			camera_get_view_y(view_camera[view_current]),
-			camera_get_view_width(view_camera[view_current]),
-			camera_get_view_height(view_camera[view_current]), false, true, 0, 0);*/
-			
-			thumbnail_sprite = sprite_create_from_surface(application_surface,
-			0,
-			0,
-			camera_get_view_width(view_camera[view_current]),
-			camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
-			
-			if (global.select_level_index >= 1)
-			and (global.create_level_from_template = false)
-			{
-				sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png");
-			}
-			else
-			if (global.level_name != "")
-			{
-				sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
-			}
-			sprite_delete(thumbnail_sprite);
-			#endregion /*Save Thumbnail END*/
-			
 			menu_delay = 9999; /*Disable all menu control*/
-			scr_save_custom_level();
 			lives = 5;
 			global.lives_until_assist = 0;
 			global.actually_play_edited_level = false;
 			global.play_edited_level = true;
 			global.character_select_in_this_menu = "level_editor";
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x -32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
-			or (global.full_level_map_screenshot = true)
+			
+			if (global.world_editor = false)
 			{
-				instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_camera);
+				ini_open(working_directory + "/save_files/custom_level_save.ini");
+				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint", 0);
+				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "y_checkpoint", 0);
+				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", 0);
+				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", 0);
+				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", 0);
+				ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
+				ini_close();
+				
+				#region /*Save Level Thumbnail*/
+				var thumbnail_sprite;
+				thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
+				if (global.select_level_index >= 1)
+				and (global.create_level_from_template = false)
+				{
+					sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png");
+				}
+				else
+				if (global.level_name != "")
+				{
+					sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
+				}
+				sprite_delete(thumbnail_sprite);
+				#endregion /*Save Level Thumbnail END*/
+				
+				if (asset_get_type("scr_save_custom_level") == asset_script)
+				{
+					scr_save_custom_level();
+				}
+				
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x -32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+				or (global.full_level_map_screenshot = true)
+				{
+					instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_camera);
+				}
+				else
+				{
+					instance_create_depth(x, y, 0, obj_camera);
+				}
 			}
 			else
 			{
-				instance_create_depth(x, y, 0, obj_camera);
+				
+				#region /*Save World Thumbnail*/
+				var thumbnail_sprite;
+				thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
+				if (global.select_level_index >= 1)
+				and (global.create_level_from_template = false)
+				{
+					sprite_save(thumbnail_sprite, 0, working_directory + "/custom_worlds/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png");
+				}
+				else
+				if (global.level_name != "")
+				{
+					sprite_save(thumbnail_sprite, 0, working_directory + "/custom_worlds/" + string(global.level_name) + "/automatic_thumbnail.png");
+				}
+				sprite_delete(thumbnail_sprite);
+				#endregion /*Save World Thumbnail END*/
+				
+				if (asset_get_type("scr_save_custom_world") == asset_script)
+				{
+					scr_save_custom_world();
+				}
+				
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x -32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+				or (global.full_level_map_screenshot = true)
+				{
+					instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_player_map);
+				}
+				else
+				{
+					if (instance_exists(obj_level))
+					{
+						instance_create_depth(instance_nearest(x, y, obj_level).x, instance_nearest(x, y, obj_level).y, 0, obj_player_map);
+					}
+					else
+					{
+						instance_create_depth(x, y, 0, obj_player_map);
+					}
+				}
 			}
 			instance_destroy();
 		}
@@ -1023,552 +1067,580 @@ if (quit_level_editor <= 0)
 							/*Don't put a move_snap here! We don't want the object to change position when modifying it*/
 							
 							#region /*Object ID's to modify*/
+							if (global.world_editor = false)
+							{
 							
-							#region /*Change wall into it's different forms*/
-							if (object = 1)
-							{
-								object = 1001;
-							}
-							else
-							if (object = 1001)
-							{
-								object = 1002;
-							}
-							else
-							if (object = 1002)
-							{
-								object = 1003;
-							}
-							else
-							if (object = 1003)
-							{
-								object = 1004;
-							}
-							else
-							if (object = 1004)
-							{
-								object = 1005;
-							}
-							else
-							if (object = 1005)
-							{
-								object = 1006;
-							}
-							else
-							if (object = 1006)
-							{
-								object = 1007;
-							}
-							else
-							if (object = 1007)
-							{
-								object = 1;
-							}
-							#endregion /*Change wall into it's different forms END*/
+								#region /*Change wall into it's different forms*/
+								if (object = 1)
+								{
+									object = 1001;
+								}
+								else
+								if (object = 1001)
+								{
+									object = 1002;
+								}
+								else
+								if (object = 1002)
+								{
+									object = 1003;
+								}
+								else
+								if (object = 1003)
+								{
+									object = 1004;
+								}
+								else
+								if (object = 1004)
+								{
+									object = 1005;
+								}
+								else
+								if (object = 1005)
+								{
+									object = 1006;
+								}
+								else
+								if (object = 1006)
+								{
+									object = 1007;
+								}
+								else
+								if (object = 1007)
+								{
+									object = 1;
+								}
+								#endregion /*Change wall into it's different forms END*/
 							
-							else
+								else
 							
-							#region /*Change bump in ground to it's different forms*/
-							if (object = 28)
-							{
-								object = 29;
-							}
-							else
-							if (object = 29)
-							{
-								object = 30;
-							}
-							else
-							if (object = 30)
-							{
-								object = 31;
-							}
-							else
-							if (object = 31)
-							{
-								object = 32;
-							}
-							else
-							if (object = 32)
-							{
-								object = 33;
-							}
-							else
-							if (object = 33)
-							{
-								object = 34;
-							}
-							else
-							if (object = 34)
-							{
-								object = 35;
-							}
-							else
-							if (object = 35)
-							{
-								object = 36;
-							}
-							else
-							if (object = 36)
-							{
-								object = 37;
-							}
-							else
-							if (object = 37)
-							{
-								object = 38;
-							}
-							else
-							if (object = 38)
-							{
-								object = 39;
-							}
-							else
-							if (object = 39)
-							{
-								object = 28;
-							}
-							#endregion /*Change bump in ground to it's different forms END*/				
+								#region /*Change bump in ground to it's different forms*/
+								if (object = 28)
+								{
+									object = 29;
+								}
+								else
+								if (object = 29)
+								{
+									object = 30;
+								}
+								else
+								if (object = 30)
+								{
+									object = 31;
+								}
+								else
+								if (object = 31)
+								{
+									object = 32;
+								}
+								else
+								if (object = 32)
+								{
+									object = 33;
+								}
+								else
+								if (object = 33)
+								{
+									object = 34;
+								}
+								else
+								if (object = 34)
+								{
+									object = 35;
+								}
+								else
+								if (object = 35)
+								{
+									object = 36;
+								}
+								else
+								if (object = 36)
+								{
+									object = 37;
+								}
+								else
+								if (object = 37)
+								{
+									object = 38;
+								}
+								else
+								if (object = 38)
+								{
+									object = 39;
+								}
+								else
+								if (object = 39)
+								{
+									object = 28;
+								}
+								#endregion /*Change bump in ground to it's different forms END*/				
 							
-							else
+								else
 							
-							#region /*Change Basic Collectible Direction*/
-							if (object = 40)
-							{
-								object = 41;
-							}
-							else
-							if (object = 41)
-							{
-								object = 42;
-							}
-							else
-							if (object = 42)
-							{
-								object = 43;
-							}
-							else
-							if (object = 43)
-							{
-								object = 44;
-							}
-							else
-							if (object = 44)
-							{
-								object = 45;
-							}
-							else
-							if (object = 45)
-							{
-								object = 46;
-							}
-							else
-							if (object = 46)
-							{
-								object = 47;
-							}
-							else
-							if (object = 47)
-							{
-								object = 40;
-							}
-							#endregion /*Change Basic Collectible Direction*/
+								#region /*Change Basic Collectible Direction*/
+								if (object = 40)
+								{
+									object = 41;
+								}
+								else
+								if (object = 41)
+								{
+									object = 42;
+								}
+								else
+								if (object = 42)
+								{
+									object = 43;
+								}
+								else
+								if (object = 43)
+								{
+									object = 44;
+								}
+								else
+								if (object = 44)
+								{
+									object = 45;
+								}
+								else
+								if (object = 45)
+								{
+									object = 46;
+								}
+								else
+								if (object = 46)
+								{
+									object = 47;
+								}
+								else
+								if (object = 47)
+								{
+									object = 40;
+								}
+								#endregion /*Change Basic Collectible Direction*/
 							
-							else
+								else
 							
-							#region /*Change Big Collectible*/
-							if (object = 48)
-							{
-								object = 49;
-							}
-							else
-							if (object = 49)
-							{
-								object = 50;
-							}
-							else
-							if (object = 50)
-							{
-								object = 51;
-							}
-							else
-							if (object = 51)
-							{
-								object = 52;
-							}
-							else
-							if (object = 52)
-							{
-								object = 48;
-							}
-							#endregion /*Change Big Collectible*/
+								#region /*Change Big Collectible*/
+								if (object = 48)
+								{
+									object = 49;
+								}
+								else
+								if (object = 49)
+								{
+									object = 50;
+								}
+								else
+								if (object = 50)
+								{
+									object = 51;
+								}
+								else
+								if (object = 51)
+								{
+									object = 52;
+								}
+								else
+								if (object = 52)
+								{
+									object = 48;
+								}
+								#endregion /*Change Big Collectible*/
 							
-							else
+								else
 							
-							#region /*Falling Block*/
-							if (object = 19)
-							{
-								object = 20;
-							}
-							else
-							if (object = 20)
-							{
-								object = 19;
-							}
-							else
-							if (object = 21)
-							{
-								object = 22;
-							}
-							else
-							if (object = 22)
-							{
-								object = 21;
-							}
-							#endregion /*Falling Block END*/
+								#region /*Falling Block*/
+								if (object = 19)
+								{
+									object = 20;
+								}
+								else
+								if (object = 20)
+								{
+									object = 19;
+								}
+								else
+								if (object = 21)
+								{
+									object = 22;
+								}
+								else
+								if (object = 22)
+								{
+									object = 21;
+								}
+								#endregion /*Falling Block END*/
 							
-							else
+								else
 							
-							#region /*Brick Block*/
-							if (object = 4)
-							{
-								object = 5;
-							}
-							else
-							if (object = 5)
-							{
-								object = 6;
-							}
-							else
-							if (object = 6)
-							{
-								object = 7;
-							}
-							else
-							if (object = 7)
-							{
-								object = 8;
-							}
-							else
-							if (object = 8)
-							{
-								object = 9;
-							}
-							else
-							if (object = 9)
-							{
-								object = 10;
-							}
-							else
-							if (object = 10)
-							{
-								object = 10001;
-							}
-							else
-							if (object = 10001)
-							{
-								object = 4;
-							}
-							#endregion /*Brick Block*/
+								#region /*Brick Block*/
+								if (object = 4)
+								{
+									object = 5;
+								}
+								else
+								if (object = 5)
+								{
+									object = 6;
+								}
+								else
+								if (object = 6)
+								{
+									object = 7;
+								}
+								else
+								if (object = 7)
+								{
+									object = 8;
+								}
+								else
+								if (object = 8)
+								{
+									object = 9;
+								}
+								else
+								if (object = 9)
+								{
+									object = 10;
+								}
+								else
+								if (object = 10)
+								{
+									object = 10001;
+								}
+								else
+								if (object = 10001)
+								{
+									object = 4;
+								}
+								#endregion /*Brick Block*/
 							
-							else
+								else
 							
-							#region /*Question Block*/
-							if (object = 11)
-							{
-								object = 12;
-							}
-							else
-							if (object = 12)
-							{
-								object = 13;
-							}
-							else
-							if (object = 13)
-							{
-								object = 14;
-							}
-							else
-							if (object = 14)
-							{
-								object = 15;
-							}
-							else
-							if (object = 15)
-							{
-								object = 16;
-							}
-							else
-							if (object = 16)
-							{
-								object = 17;
-							}
-							else
-							if (object = 17)
-							{
-								object = 17001;
-							}
-							else
-							if (object = 17001)
-							{
-								object = 11;
-							}
-							#endregion /*Question Block*/
+								#region /*Question Block*/
+								if (object = 11)
+								{
+									object = 12;
+								}
+								else
+								if (object = 12)
+								{
+									object = 13;
+								}
+								else
+								if (object = 13)
+								{
+									object = 14;
+								}
+								else
+								if (object = 14)
+								{
+									object = 15;
+								}
+								else
+								if (object = 15)
+								{
+									object = 16;
+								}
+								else
+								if (object = 16)
+								{
+									object = 17;
+								}
+								else
+								if (object = 17)
+								{
+									object = 17001;
+								}
+								else
+								if (object = 17001)
+								{
+									object = 11;
+								}
+								#endregion /*Question Block*/
 							
-							else
+								else
 							
-							#region /*Invincibility Powerup*/
-							if (object = 55)
-							{
-								object = 55001;
-							}
-							else
-							if (object = 55001)
-							{
-								object = 55;
-							}
-							#endregion /*Invincibility Powerup END*/
+								#region /*Invincibility Powerup*/
+								if (object = 55)
+								{
+									object = 55001;
+								}
+								else
+								if (object = 55001)
+								{
+									object = 55;
+								}
+								#endregion /*Invincibility Powerup END*/
 							
-							else
+								else
 							
-							#region /*Extra Lives Pickup*/
-							if (object = 56)
-							{
-								object = 57;
-							}
-							else
-							if (object = 57)
-							{
-								object = 58;
-							}
-							else
-							if (object = 58)
-							{
-								object = 56;
-							}
-							#endregion /*Extra Lives Pickup END*/
+								#region /*Extra Lives Pickup*/
+								if (object = 56)
+								{
+									object = 57;
+								}
+								else
+								if (object = 57)
+								{
+									object = 58;
+								}
+								else
+								if (object = 58)
+								{
+									object = 56;
+								}
+								#endregion /*Extra Lives Pickup END*/
 							
-							else
+								else
 							
-							#region /*Basic enemy*/
-							if (object = 59)
-							{
-								object = 5901;
-							}
-							else
-							if (object = 5901)
-							{
-								object = 5902;
-							}
-							else
-							if (object = 5902)
-							{
-								object = 5903;
-							}
-							else
-							if (object = 5903)
-							{
-								object = 59;
-							}
-							#endregion /*Basic enemy END*/
+								#region /*Basic enemy*/
+								if (object = 59)
+								{
+									object = 5901;
+								}
+								else
+								if (object = 5901)
+								{
+									object = 5902;
+								}
+								else
+								if (object = 5902)
+								{
+									object = 5903;
+								}
+								else
+								if (object = 5903)
+								{
+									object = 59;
+								}
+								#endregion /*Basic enemy END*/
 							
-							else
+								else
 							
-							#region /*Bowling ball enemy*/
-							if (object = 591)
-							{
-								object = 592;
-							}
-							else
-							if (object = 592)
-							{
-								object = 5911;
-							}
-							else
-							if (object = 5911)
-							{
-								object = 5912;
-							}
-							else
-							if (object = 5912)
-							{
-								object = 591;
-							}
-							#endregion /*Bowling ball enemy END*/
+								#region /*Bowling ball enemy*/
+								if (object = 591)
+								{
+									object = 592;
+								}
+								else
+								if (object = 592)
+								{
+									object = 5911;
+								}
+								else
+								if (object = 5911)
+								{
+									object = 5912;
+								}
+								else
+								if (object = 5912)
+								{
+									object = 591;
+								}
+								#endregion /*Bowling ball enemy END*/
 							
-							else
+								else
 							
-							#region /*Spikes Emerge Direction*/
-							if (object = 67)
-							{
-								object = 671;
-							}
-							else
-							if (object = 671)
-							{
-								object = 672;
-							}
-							else
-							if (object = 672)
-							{
-								object = 673;
-							}
-							else
-							if (object = 673)
-							{
-								object = 67;
-							}
-							#endregion /*Spikes Emerge Direction END*/
+								#region /*Spikes Emerge Direction*/
+								if (object = 67)
+								{
+									object = 671;
+								}
+								else
+								if (object = 671)
+								{
+									object = 672;
+								}
+								else
+								if (object = 672)
+								{
+									object = 673;
+								}
+								else
+								if (object = 673)
+								{
+									object = 67;
+								}
+								#endregion /*Spikes Emerge Direction END*/
 							
-							else
+								else
 							
-							#region /*Change Oneway Direction*/
-							if (object = 68)
-							{
-								object = 69;
-							}
-							else
-							if (object = 69)
-							{
-								object = 70;
-							}
-							else
-							if (object = 70)
-							{
-								object = 71;
-							}
-							else
-							if (object = 71)
-							{
-								object = 68;
-							}
-							#endregion /*Change Oneway Direction END*/
+								#region /*Change Oneway Direction*/
+								if (object = 68)
+								{
+									object = 69;
+								}
+								else
+								if (object = 69)
+								{
+									object = 70;
+								}
+								else
+								if (object = 70)
+								{
+									object = 71;
+								}
+								else
+								if (object = 71)
+								{
+									object = 68;
+								}
+								#endregion /*Change Oneway Direction END*/
 							
-							else
+								else
 							
-							#region /*Change Water Rope*/
-							if (object = 73)
-							{
-								object = 731;
-							}
-							else
-							if (object = 731)
-							{
-								object = 73;
-							}
-							#endregion /*Change Water END*/
+								#region /*Change Water Rope*/
+								if (object = 73)
+								{
+									object = 731;
+								}
+								else
+								if (object = 731)
+								{
+									object = 73;
+								}
+								#endregion /*Change Water END*/
 							
-							else
+								else
 							
-							#region /*Change Clipped Clothing on Rope*/
-							if (object = 74)
-							{
-								object = 75;
-							}
-							else
-							if (object = 75)
-							{
-								object = 76;
-							}
-							else
-							if (object = 76)
-							{
-								object = 74;
-							}
-							#endregion /*Change Clipped Clothing on Rope END*/
+								#region /*Change Clipped Clothing on Rope*/
+								if (object = 74)
+								{
+									object = 75;
+								}
+								else
+								if (object = 75)
+								{
+									object = 76;
+								}
+								else
+								if (object = 76)
+								{
+									object = 74;
+								}
+								#endregion /*Change Clipped Clothing on Rope END*/
 							
-							else
+								else
 							
-							#region /*Change bucket to it's different forms*/
-							if (object = 77)
-							{
-								object = 78;
-							}
-							else
-							if (object = 78)
-							{
-								object = 79;
-							}
-							else
-							if (object = 79)
-							{
-								object = 80;
-							}
-							else
-							if (object = 80)
-							{
-								object = 81;
-							}
-							else
-							if (object = 81)
-							{
-								object = 82;
-							}
-							else
-							if (object = 82)
-							{
-								object = 83;
-							}
-							else
-							if (object = 83)
-							{
-								object = 84;
-							}
-							else
-							if (object = 84)
-							{
-								object = 85;
-							}
-							else
-							if (object = 85)
-							{
-								object = 86;
-							}
-							else
-							if (object = 86)
-							{
-								object = 87;
-							}
-							else
-							if (object = 87)
-							{
-								object = 88;
-							}
-							else
-							if (object = 88)
-							{
-								object = 77;
-							}
-							#endregion /*Change bucket to it's different forms END*/
+								#region /*Change bucket to it's different forms*/
+								if (object = 77)
+								{
+									object = 78;
+								}
+								else
+								if (object = 78)
+								{
+									object = 79;
+								}
+								else
+								if (object = 79)
+								{
+									object = 80;
+								}
+								else
+								if (object = 80)
+								{
+									object = 81;
+								}
+								else
+								if (object = 81)
+								{
+									object = 82;
+								}
+								else
+								if (object = 82)
+								{
+									object = 83;
+								}
+								else
+								if (object = 83)
+								{
+									object = 84;
+								}
+								else
+								if (object = 84)
+								{
+									object = 85;
+								}
+								else
+								if (object = 85)
+								{
+									object = 86;
+								}
+								else
+								if (object = 86)
+								{
+									object = 87;
+								}
+								else
+								if (object = 87)
+								{
+									object = 88;
+								}
+								else
+								if (object = 88)
+								{
+									object = 77;
+								}
+								#endregion /*Change bucket to it's different forms END*/
 							
-							else
+								else
 							
-							#region /*Change Moveset Signs*/
-							if (object = 90)
-							{
-								object = 91;
+								#region /*Change Moveset Signs*/
+								if (object = 90)
+								{
+									object = 91;
+								}
+								else
+								if (object = 91)
+								{
+									object = 92;
+								}
+								else
+								if (object = 92)
+								{
+									object = 93;
+								}
+								else
+								if (object = 93)
+								{
+									object = 94;
+								}
+								else
+								if (object = 94)
+								{
+									object = 90;
+								}
+								#endregion /*Change Moveset Signs END*/
+								
 							}
 							else
-							if (object = 91)
 							{
-								object = 92;
+								#region /*Change Turn*/
+								if (object = 4)
+								{
+									object = 5;
+								}
+								else
+								if (object = 5)
+								{
+									object = 6;
+								}
+								else
+								if (object = 6)
+								{
+									object = 7;
+								}
+								else
+								if (object = 7)
+								{
+									object = 4;
+								}
+								#endregion /*Change Turn END*/
 							}
-							else
-							if (object = 92)
-							{
-								object = 93;
-							}
-							else
-							if (object = 93)
-							{
-								object = 94;
-							}
-							else
-							if (object = 94)
-							{
-								object = 90;
-							}
-							#endregion /*Change Moveset Signs END*/
 							
 							alarm[0] = 1; /*Update sprite initializing. That code is in alarm event, so it's not running every frame in step event*/
 							

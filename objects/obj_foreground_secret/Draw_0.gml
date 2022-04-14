@@ -25,8 +25,6 @@ and (room = room_title)
 }
 #endregion /*Destroy this object if it ever appears in the wrong room END*/
 
-x = 0;
-y = 0;
 instance_activate_object(self);
 
 #region /*Update Foreground secret*/
