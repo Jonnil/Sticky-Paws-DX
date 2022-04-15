@@ -1,7 +1,7 @@
 depth = 12;
 
 brick_block = false;
-item_inside = "noone";
+item_inside = "none";
 bounceup = false;
 empty = false;
 draw_xscale = 1;

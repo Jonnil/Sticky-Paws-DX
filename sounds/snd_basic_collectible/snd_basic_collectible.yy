@@ -1,4 +1,5 @@
 {
+  "conversionMode": 0,
   "compression": 0,
   "volume": 1.0,
   "preload": false,
@@ -10,14 +11,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snd_coin.wav",
+  "soundFile": "snd_basic_collectible.wav",
   "duration": 0.209,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",
   },
   "resourceVersion": "1.0",
-  "name": "snd_coin",
+  "name": "snd_basic_collectible",
   "tags": [],
   "resourceType": "GMSound",
 }

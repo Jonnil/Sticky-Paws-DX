@@ -54,7 +54,7 @@ if (menu = "load_characters")
 			file_exists(working_directory + "custom_characters/" + file_found + "/data/character_config.ini")
 			ds_list_add(global.all_loaded_characters, file_found)
 			
-			file_load_timer = 0; /* 1 not 0. So it doesn't do the file_find_first code which it does at 0*/
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
 		}
 	}
 }
@@ -115,7 +115,7 @@ if (menu = "load_custom_level")
 			}
 			#endregion /*Update Thumbnail END*/
 			
-			file_load_timer = 0; /* 1 not 0. So it doesn't do the file_find_first code which it does at 0*/
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
 		}
 	}
 }
@@ -217,7 +217,7 @@ if (menu = "load_official_level_template")
 			}
 			#endregion /*Update Thumbnail END*/
 			
-			file_load_timer = 0; /* 1 not 0. So it doesn't do the file_find_first code which it does at 0*/
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
 		}
 	}
 }

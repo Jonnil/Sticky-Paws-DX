@@ -56,10 +56,10 @@ if (bounceup = false)
 							hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 						}
 					}
-				if (asset_get_type("snd_coin") == asset_sound)
+				if (asset_get_type("snd_basic_collectible") == asset_sound)
 				{
-					audio_play_sound(snd_coin, 0, 0);
-					audio_sound_gain(snd_coin, global.sound_volume * global.main_volume, 0);
+					audio_play_sound(snd_basic_collectible, 0, 0);
+					audio_sound_gain(snd_basic_collectible, global.sound_volume * global.main_volume, 0);
 				}
 				instance_destroy();
 			}
@@ -74,10 +74,10 @@ if (bounceup = true)
 	{
 		if (basic_collectible_sound = false)
 		{
-			if (asset_get_type("snd_coin") == asset_sound)
+			if (asset_get_type("snd_basic_collectible") == asset_sound)
 			{
-				audio_play_sound(snd_coin, 0, 0);
-				audio_sound_gain(snd_coin, global.sound_volume * global.main_volume, 0);
+				audio_play_sound(snd_basic_collectible, 0, 0);
+				audio_sound_gain(snd_basic_collectible, global.sound_volume * global.main_volume, 0);
 			}
 			basic_collectible_sound = true;
 		}

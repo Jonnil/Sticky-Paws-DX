@@ -1,3 +1,5 @@
+scr_unzip_all() /*Unzip any .zip folder found in AppData*/
+
 player = 1;
 selected_skin = 0;
 

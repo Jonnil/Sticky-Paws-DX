@@ -5,6 +5,7 @@ function scr_load_title_background_initializing()
 	
 	first_title_background = string(file_find_first(working_directory + "custom_title_backgrounds/*", 0))
 	if (file_exists(working_directory + "custom_title_backgrounds/" + first_title_background))
+	and (!file_exists(working_directory + "custom_title_backgrounds/" + ""))
 	{
 		ds_list_add(global.all_loaded_title_backgrounds, first_title_background);
 	}

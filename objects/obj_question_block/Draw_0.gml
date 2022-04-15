@@ -80,7 +80,7 @@ if (bounceup = false)
 			}
 			
 			#region /* 1 Basic Collectible*/
-			if (item_inside = "noone")
+			if (item_inside = "none")
 			{
 				empty = true;
 				if (brick_block = false)

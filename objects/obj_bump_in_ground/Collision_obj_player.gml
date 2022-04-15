@@ -4,7 +4,7 @@ if (place_meeting(x, y- 8, other))
 	{
 		
 		#region /* 1 Basic Collectible*/
-		if (type_of_bump = "noone")
+		if (type_of_bump = "none")
 		{
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{

@@ -111,14 +111,6 @@ if (!directory_exists(working_directory + "\custom_characters"))
 }
 #endregion /*Create directory for saving custom characters END*/
 
-#region /*Unzip custom level files*/
-if (file_exists(working_directory + "custom_levels/*.zip"))
-{
-	zip_unzip(working_directory + "custom_levels/*.zip", working_directory + "custom_levels/");
-	file_delete(working_directory + "custom_levels/*.zip"); /*Delete the zip file after it's been unzip*/
-}
-#endregion /*Unzip custom level files END*/
-
 #endregion /*File Handeling END*/
 
 font_add_enable_aa(false);

@@ -146,11 +146,13 @@ if (can_navigate = false)
 				}
 				
 				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg"))
+				and (!file_exists("characters/" + "" + "/sound/voicepack0/controller_splash.ogg"))
 				{
 					controller_splash = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg");
 				}
 				else
 				if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg"))
+				and (file_exists(working_directory + "/custom_characters/" + "" + "/sound/voicepack0/controller_splash.ogg"))
 				{
 					controller_splash = audio_create_stream(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg");
 				}
@@ -170,7 +172,7 @@ if (can_navigate = false)
 			file_exists(working_directory + "custom_characters/" + file_found + "/data/character_config.ini")
 			ds_list_add(global.all_loaded_characters, file_found)
 			
-			file_load_timer = 0; /* 1 not 0. So it doesn't do the file_find_first code which it does at 0*/
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
 		}
 	}
 	#endregion /*Load Characters END*/
@@ -192,15 +194,19 @@ if (can_navigate = false)
 			file_find_close();
 			
 			if (directory_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound"))
-			or(directory_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound"))
+			and (!directory_exists("resource_pack/" + "" + "/sound"))
+			or (directory_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound"))
+			and (!directory_exists(working_directory + "/custom_resource_pack/" + "" + "/sound"))
 			{
 				#region /*Sound Add*/
 				if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/splash_easteregg.ogg"))
+				and (!file_exists("resource_pack/" + "" + "/sound/splash_easteregg.ogg"))
 				{
 					audio_splash_easteregg = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/splash_easteregg.ogg");
 				}
 				else
 				if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/splash_easteregg.ogg"))
+				and (!file_exists(working_directory + "/custom_resource_pack/" + "" + "/sound/splash_easteregg.ogg"))
 				{
 					audio_splash_easteregg = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/splash_easteregg.ogg");
 				}
@@ -212,11 +218,12 @@ if (can_navigate = false)
 		else
 		{
 			if (file_exists(working_directory + "custom_resource_pack/" + file_found + "data/sprite_origin_point.ini"))
+			and (!file_exists(working_directory + "custom_resource_pack/" + "" + "data/sprite_origin_point.ini"))
 			{
 				ds_list_add(global.all_loaded_resource_pack, file_found)
 			}
 			
-			file_load_timer = 0; /* 1 not 0. So it doesn't do the file_find_first code which it does at 0*/
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
 		}
 	}
 	#endregion /*Load Resource Packs END*/
@@ -241,11 +248,12 @@ if (can_navigate = false)
 		else
 		{
 			if (file_exists(working_directory + "custom_title_backgrounds/" + file_found))
+			and (!file_exists(working_directory + "custom_title_backgrounds/" + ""))
 			{
 				ds_list_add(global.all_loaded_title_backgrounds, file_found)
 			}
 			
-			file_load_timer = 0; /* 1 not 0. So it doesn't do the file_find_first code which it does at 0*/
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
 		}
 	}
 	#endregion /*Load Title Background END*/
@@ -289,7 +297,7 @@ if (can_navigate = false)
 				ds_list_add(global.all_loaded_title_logos, file_found)
 			}
 			
-			file_load_timer = 0; /* 1 not 0. So it doesn't do the file_find_first code which it does at 0*/
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
 		}
 	}
 	#endregion /*Load Title Logo END*/
@@ -298,5 +306,30 @@ if (can_navigate = false)
 
 if (load_ok >= 4)
 {
+	
+	#region /*Set so custom assets can't go above what it finds*/
+	if (global.selected_resource_pack > ds_list_size(global.all_loaded_resource_pack) - 1)
+	{
+		global.selected_resource_pack = ds_list_size(global.all_loaded_resource_pack) - 1;
+		ini_open(working_directory + "config.ini");
+		ini_write_real("config", "selected_resource_pack", global.selected_resource_pack);
+		ini_close();
+	}
+	if (global.selected_title_background > ds_list_size(global.all_loaded_title_backgrounds) - 1)
+	{
+		global.selected_title_background = ds_list_size(global.all_loaded_title_backgrounds) - 1;
+		ini_open(working_directory + "config.ini");
+		ini_write_real("config", "selected_title_background", global.selected_title_background);
+		ini_close();
+	}
+	if (global.selected_title_logo > ds_list_size(global.all_loaded_title_logos) - 1)
+	{
+		global.selected_title_logo = ds_list_size(global.all_loaded_title_logos) - 1;
+		ini_open(working_directory + "config.ini");
+		ini_write_real("config", "selected_title_logo", global.selected_title_logo);
+		ini_close();
+	}
+	#endregion /*Set so custom assets can't go above what it finds END*/
+	
 	can_navigate = true;
 }

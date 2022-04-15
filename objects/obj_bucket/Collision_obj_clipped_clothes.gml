@@ -6,7 +6,7 @@ and (sprite_index = spr_bucket)
 		sprite_index = spr_bucket_clothes;
 	}
 	#region /* 1 Basic Collectible*/
-	if (item_inside = "noone")
+	if (item_inside = "none")
 	{
 		if (asset_get_type("obj_coin") == asset_object)
 		{

@@ -8,4 +8,4 @@ if (asset_get_type("spr_wall") == asset_sprite)
 	mask_index = spr_wall;
 }
 
-item_inside = "noone";
+item_inside = "none";
