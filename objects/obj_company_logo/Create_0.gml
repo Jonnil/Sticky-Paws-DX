@@ -579,7 +579,15 @@ else
 can_navigate = false;
 loading_spinning_angle = 0;
 file_load_timer = 0;
+file_found = "";
 time = 0;
 sprite_index = spr_company_logo;
+
+#region /*Make all the custom assets initialize in create event lastly*/
+scr_load_character_initializing();
+scr_load_resource_pack_initializing();
+scr_load_title_background_initializing();
+scr_load_title_logo_initializing();
+#endregion /*Make all the custom assets initialize in create event lastly*/
 
 #endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/

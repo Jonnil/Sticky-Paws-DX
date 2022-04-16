@@ -2070,6 +2070,7 @@ or(menu = "load_official_level_template")
 	loading_spinning_angle -= 10;
 	draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height()/ 2, 1, 1, loading_spinning_angle, c_white, 1);
 	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height()/ 2 +64, Text("Loading"), global.default_text_size, c_white, c_black, 1);
+	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height()/ 2 +64 + 32, string(file_found), global.default_text_size, c_white, c_black, 1);
 }
 #endregion /*Loading Screen END*/
 

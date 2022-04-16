@@ -86,7 +86,7 @@ and (iris_xscale <= 0.001)
 			
 			#region /*Go to level editor if you die in level editor*/
 			if (asset_get_type("room_leveleditor") == asset_room)
-			and (room =room_leveleditor)
+			and (room = room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();

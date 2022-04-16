@@ -5,7 +5,6 @@ function scr_load_title_logo_initializing()
 	
 	first_title_logo = string(file_find_first(working_directory + "custom_title_logos/*", 0))
 	if (file_exists(working_directory + "custom_title_logos/" + first_title_logo))
-	and (!file_exists(working_directory + "custom_title_logos/" + ""))
 	{
 		ds_list_add(global.all_loaded_title_logos, first_title_logo);
 	}

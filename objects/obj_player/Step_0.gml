@@ -40,7 +40,11 @@ if (full_level_map_screenshot_timer = 15)
 {
 	var custom_level_map_sprite;
 	custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
-	sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
+	if (ds_list_find_value(global.all_loaded_title_backgrounds, global.select_level_index) != undefined)
+	and (ds_list_find_value(global.all_loaded_title_backgrounds, global.select_level_index) != "")
+	{
+		sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
+	}
 	sprite_delete(custom_level_map_sprite);
 }
 if (full_level_map_screenshot_timer = 20)
@@ -4041,6 +4045,7 @@ and (obj_camera.iris_xscale < 3)
 		global.level_clear_rate = "clear"; /*Set the level_clear_rate to clear as soon as you get the goal*/
 		if (instance_exists(obj_camera))
 		and (obj_camera.iris_xscale <= 0.01)
+		and (global.level_clear_rate = "clear")
 		{
 			if (obj_camera.iris_yscale <= 0.001)
 			{
@@ -4052,7 +4057,10 @@ and (obj_camera.iris_xscale < 3)
 				global.checkpoint_minute = 0;
 				global.checkpoint_realmillisecond = 0;
 				global.lives_until_assist = 0;
-				scr_savelevel(); /*Important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear*/
+				if (asset_get_type("scr_savelevel") == asset_script)
+				{
+					scr_savelevel(); /*Important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear*/
+				}
 				if (global.actually_play_edited_level = false)
 				and (global.play_edited_level = true)
 				and (global.character_select_in_this_menu = "level_editor")
@@ -4163,6 +4171,7 @@ else
 					global.lives_until_assist = 0;
 					if (asset_get_type("room_world_map") == asset_room)
 					and (obj_camera.iris_yscale <= 0.001)
+					and (global.level_clear_rate = "clear")
 					{
 						if (asset_get_type("scr_savelevel") == asset_script)
 						{
@@ -4202,6 +4211,7 @@ else
 		}
 	}
 	#endregion /*Don't go outside view boundary END*/
+	
 	else
 	{
 		
@@ -4603,7 +4613,7 @@ if (player <= 1)
 	#endregion /*Player 1 Key Jump Released END*/
 	
 	#region /*Player 1 Key Crouch Hold*/
-	key_crouch =
+	key_crouch_hold =
 	(keyboard_check(global.player1_key_crouch))
 	or(keyboard_check(global.player1_key2_crouch))
 	or(gamepad_button_check(player - 1, gp_padd))
@@ -4831,7 +4841,7 @@ if (player = 2)
 	#endregion /*Player 2 Key Jump Released END*/
 	
 	#region /*Player 2 Key Crouch Hold*/
-	key_crouch =
+	key_crouch_hold =
 	(keyboard_check(global.player2_key_crouch))
 	or(keyboard_check(global.player2_key2_crouch))
 	or(gamepad_button_check(player - 1, gp_padd))
@@ -5059,7 +5069,7 @@ if (player = 3)
 	#endregion /*Player 3 Key Jump Released END*/
 	
 	#region /*Player 3 Key Crouch Hold*/
-	key_crouch =
+	key_crouch_hold =
 	(keyboard_check(global.player3_key_crouch))
 	or(keyboard_check(global.player3_key2_crouch))
 	or(gamepad_button_check(player - 1, gp_padd))
@@ -5287,7 +5297,7 @@ if (player = 4)
 	#endregion /*Player 4 Key Jump Released END*/
 	
 	#region /*Player 4 Key Crouch Hold*/
-	key_crouch =
+	key_crouch_hold =
 	(keyboard_check(global.player4_key_crouch))
 	or(keyboard_check(global.player4_key2_crouch))
 	or(gamepad_button_check(player - 1, gp_padd))
@@ -5455,7 +5465,7 @@ and (global.pause = false)
 	and (!window_has_focus())
 	and (global.automatically_pause_when_window_is_unfocused = true)
 	{
-	
+		
 		#region /*Show all HUD elements*/
 		global.hud_show_lives = true;
 		if (asset_get_type("obj_camera") == asset_object)
@@ -5503,7 +5513,7 @@ and (global.pause = false)
 			}
 		}
 		#endregion /*Show all HUD elements END*/
-
+		
 		controller_connected = false;
 		if (global.play_edited_level = true)
 		and (global.actually_play_edited_level = false)
@@ -5512,29 +5522,29 @@ and (global.pause = false)
 			global.play_edited_level = false;
 			global.actually_play_edited_level = false;
 			score = 0;
-
-		#region /*Save Level Information when in level editor*/
-		if (global.select_level_index >= 1)
-		and (global.create_level_from_template = false)
-		and (global.character_select_in_this_menu = "level_editor")
-		{
-			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-			ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
-			ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
-			ini_close();
-		}
-		else
-		if (global.character_select_in_this_menu = "level_editor")
-		and (global.level_name != "")
-		{
-			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-			ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
-			ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
-			ini_close();
-		}
-		#endregion /*Save Level Information when in level editor END*/
-
-		room_restart();
+			
+			#region /*Save Level Information when in level editor*/
+			if (global.select_level_index >= 1)
+			and (global.create_level_from_template = false)
+			and (global.character_select_in_this_menu = "level_editor")
+			{
+				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
+				ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
+				ini_close();
+			}
+			else
+			if (global.character_select_in_this_menu = "level_editor")
+			and (global.level_name != "")
+			{
+				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
+				ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
+				ini_close();
+			}
+			#endregion /*Save Level Information when in level editor END*/
+			
+			room_restart();
 		}
 		else
 		{
@@ -5568,7 +5578,7 @@ and (global.pause = false)
 	if (gamepad_button_check_pressed(1, gp_start))
 	or(gamepad_button_check_pressed(1, gp_select))
 	{
-
+		
 		#region /*Show all HUD elements*/
 		global.hud_show_lives = true;
 		if (asset_get_type("obj_camera") == asset_object)
@@ -5607,7 +5617,7 @@ and (global.pause = false)
 			}
 		}
 		#endregion /*Show all HUD elements END*/
-
+		
 		if (global.play_edited_level = true)
 		and (global.actually_play_edited_level = false)
 		and (global.character_select_in_this_menu = "level_editor")
@@ -5649,7 +5659,7 @@ and (global.pause = false)
 	if (gamepad_button_check_pressed(2, gp_start))
 	or(gamepad_button_check_pressed(2, gp_select))
 	{
-
+		
 		#region /*Show all HUD elements*/
 		global.hud_show_lives = true;
 		if (asset_get_type("obj_camera") == asset_object)
@@ -5730,7 +5740,7 @@ and (global.pause = false)
 	if (gamepad_button_check_pressed(3, gp_start))
 	or(gamepad_button_check_pressed(3, gp_select))
 	{
-
+		
 		#region /*Show all HUD elements*/
 		global.hud_show_lives = true;
 		if (asset_get_type("obj_camera") == asset_object)
@@ -5769,7 +5779,7 @@ and (global.pause = false)
 			}
 		}
 		#endregion /*Show all HUD elements END*/
-
+		
 		if (global.play_edited_level = true)
 		and (global.actually_play_edited_level = false)
 		and (global.character_select_in_this_menu = "level_editor")
@@ -6202,7 +6212,7 @@ and (key_jump_hold)
 {
 	
 	#region /*Drop down below semisolid platform*/
-	if (key_crouch)
+	if (key_crouch_hold)
 	and (ground_pound = false)
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -10455,37 +10465,32 @@ and (climb = false)
 	chain_reaction = 0;
 
 #region /*Crouch Underwater*/
-if (key_crouch)
+if (key_crouch_hold) /*Holding the crouch button*/
+and (allow_crouch = true) /*Can crouch*/
+and (crouch = false) /*Not currently crouching*/
+and (can_move = true)
+and (ground_pound = false)
+and (dive = false)
+and (on_ground = true)
 {
-	if (crouch = false)
-	and (can_move = true)
+	crouch = true;
+	stick_to_wall = false;
+	y += 16;
+	if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
+	if (sprite_stand > noone){sprite_index = sprite_stand;}else
+	if (sprite_walk > noone){sprite_index = sprite_walk;}
+	if (sprite_mask_crouch >= 0)
 	{
-		if (ground_pound = false)
-		and (dive = false)
-		{
-			if (on_ground = true)
-			{
-				crouch = true;
-				stick_to_wall = false;
-				y += 16;
-				if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
-				if (sprite_stand > noone){sprite_index = sprite_stand;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (sprite_mask_crouch >= 0)
-				{
-					mask_index = sprite_mask_crouch;
-				}
-				else
-				{
-					mask_index = spr_player_stand;
-				}
-				if (asset_get_type("snd_crouch") == asset_sound)
-				{
-					audio_play_sound(snd_crouch, 0, 0);
-					audio_sound_gain(snd_crouch, global.sound_volume * global.main_volume, 0);
-				}
-			}
-		}
+		mask_index = sprite_mask_crouch;
+	}
+	else
+	{
+		mask_index = spr_player_stand;
+	}
+	if (asset_get_type("snd_crouch") == asset_sound)
+	{
+		audio_play_sound(snd_crouch, 0, 0);
+		audio_sound_gain(snd_crouch, global.sound_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Crouch Underwater END*/
@@ -10493,7 +10498,7 @@ if (key_crouch)
 else
 
 #region /*Don't Crouch Underwater*/
-if (!key_crouch)
+if (!key_crouch_hold)
 and (!place_meeting(x, y- 8, obj_wall))
 and (crouch = true)
 {
@@ -10869,44 +10874,40 @@ else
 {
 
 #region /*Crouch*/
-if (key_crouch)
-and (allow_crouch = true)
+if (key_crouch_hold) /*Holding the crouch button*/
+and (allow_crouch = true) /*Can crouch*/
+and (crouch = false) /*Not currently crouching*/
+and (can_move = true)
+and (ground_pound = false)
+and (dive = false)
+and (on_ground = true)
 {
-	if (crouch = false)
-	and (can_move = true)
-	and (ground_pound = false)
-	and (dive = false)
+	crouch = true;
+	draw_xscale = 1.5;
+	draw_yscale = 0.5;
+	if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
+	if (sprite_stand > noone){sprite_index = sprite_stand;}else
+	if (sprite_walk > noone){sprite_index = sprite_walk;}
+	
+	if (sprite_mask_crouch >= 0)
 	{
-		if (on_ground = true)
-		{
-			crouch = true;
-			draw_xscale = 1.5;
-			draw_yscale = 0.5;
-			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
-			if (sprite_stand > noone){sprite_index = sprite_stand;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			
-			if (sprite_mask_crouch >= 0)
-			{
-				mask_index = sprite_mask_crouch;
-			}
-			else
-			{
-				mask_index = spr_player_stand;
-			}
-			if (!place_meeting(x, y + 16, obj_wall))
-			or(!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			or(!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-			or(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			{
-			y += 32;
-			}
-			if (asset_get_type("snd_crouch") == asset_sound)
-			{
-				audio_play_sound(snd_crouch, 0, 0);
-				audio_sound_gain(snd_crouch, global.sound_volume * global.main_volume, 0);
-			}
-		}
+		mask_index = sprite_mask_crouch;
+	}
+	else
+	{
+		mask_index = spr_player_stand;
+	}
+	if (!place_meeting(x, y + 16, obj_wall))
+	or(!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	{
+		y += 32;
+	}
+	if (asset_get_type("snd_crouch") == asset_sound)
+	{
+		audio_play_sound(snd_crouch, 0, 0);
+		audio_sound_gain(snd_crouch, global.sound_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Crouch END*/
@@ -10914,7 +10915,7 @@ and (allow_crouch = true)
 else
 
 #region /*Don't crouch*/
-if (!key_down)
+if (!key_crouch_hold)
 and (!place_meeting(x, y - 8, obj_wall))
 and (crouch = true)
 and (vspeed >= 0)

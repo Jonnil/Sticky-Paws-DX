@@ -62,5 +62,3 @@ and (clear_rate = "closed")
 {
 	clear_rate = "enter";
 }
-
-alarm[1] = 1;

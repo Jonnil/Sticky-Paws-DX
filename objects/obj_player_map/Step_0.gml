@@ -70,18 +70,22 @@ if (global.goal_active = true)
 {
 	with(instance_create_depth(x - 32, y, 0, obj_unlock_next_level))
 	{
+		delay = 3;
 		hspeed -= move_speed;
 	}
 	with(instance_create_depth(x + 32, y, 0, obj_unlock_next_level))
 	{
+		delay = 3;
 		hspeed += move_speed;
 	}
 	with(instance_create_depth(x, y - 32, 0, obj_unlock_next_level))
 	{
+		delay = 3;
 		vspeed -= move_speed;
 	}
 	with(instance_create_depth(x, y + 32, 0, obj_unlock_next_level))
 	{
+		delay = 3;
 		vspeed += move_speed;
 	}
 	global.goal_active = false;

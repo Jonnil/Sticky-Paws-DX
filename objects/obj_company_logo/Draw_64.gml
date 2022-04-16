@@ -9,7 +9,7 @@ or(keyboard_check_pressed(vk_escape))
 or(window_has_focus())
 and (mouse_check_button_pressed(mb_left))
 {
-	if (can_navigate = true)
+	if (can_navigate = true) /*Can only go to the title screen when everything is loaded*/
 	{
 		if (asset_get_type("room_title") == asset_room)
 		{
@@ -34,13 +34,46 @@ if (global.resource_pack_sprite_splash_easteregg >= 0)
 	draw_sprite_ext(global.resource_pack_sprite_splash_easteregg, image_index, + 128, window_get_height() + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
 }
 
-if (can_navigate = false)
+if (can_navigate = false) /*When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in*/
 {
 	loading_spinning_angle -= 10;
-	draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height() - 80, 1, 1, loading_spinning_angle, c_white, 1);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32, Text("Loading"), global.default_text_size, c_white, c_black, 1);
+	draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 6), 1, 1, loading_spinning_angle, c_white, 1);
+	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 5), Text("Loading"), global.default_text_size, c_white, c_black, 1);
+	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 4), string(file_found), global.default_text_size, c_white, c_black, 1);
+	if (load_ok <= 0)
+	{
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + Text("Loaded Characters"), global.default_text_size, c_white, c_black, 1);
+	}
+	else
+	{
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + Text("Loaded Characters") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
+	}
+	if (load_ok <= 1)
+	{
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + Text("Loaded Resource Packs"), global.default_text_size, c_white, c_black, 1);
+	}
+	else
+	{
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + Text("Loaded Resource Packs") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
+	}
+	if (load_ok <= 2)
+	{
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + Text("Loaded Title Backgrounds"), global.default_text_size, c_white, c_black, 1);
+	}
+	else
+	{
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + Text("Loaded Title Backgrounds") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
+	}
+	if (load_ok <= 3)
+	{
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32, string(ds_list_size(global.all_loaded_title_logos)) + " " + Text("Loaded Title Logos"), global.default_text_size, c_white, c_black, 1);
+	}
+	else
+	{
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32, string(ds_list_size(global.all_loaded_title_logos)) + " " + Text("Loaded Title Logos") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
+	}
 }
 else
 {
@@ -99,21 +132,21 @@ and (sprite_index = spr_company_logo)
 			sprite_index = global.resource_pack_sprite_splash_controller;
 		}
 		else
+		if (can_navigate = true) /*Can only go to the title screen when everything is loaded*/
 		{
 			if (asset_get_type("room_title") == asset_room)
-			and (can_navigate = true)
 			{
 				room_goto(room_title);
 			}
 			else
 			if (room_next(room) <>- 1)
-			and (can_navigate = true)
 			{
 				room_goto_next();
 			}
 		}
 	}
 	else
+	if (can_navigate = true) /*Can only go to the title screen when everything is loaded*/
 	{
 		if (asset_get_type("room_title") == asset_room)
 		{
@@ -137,7 +170,7 @@ and (sprite_index = global.resource_pack_sprite_splash_controller)
 	}
 	if (time > 100)
 	and (!audio_is_playing(controller_splash))
-	and (can_navigate = true)
+	and (can_navigate = true) /*Can only go to the title screen when everything is loaded*/
 	{
 		if (asset_get_type("room_title") == asset_room)
 		{
