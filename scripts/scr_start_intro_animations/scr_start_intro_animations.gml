@@ -86,7 +86,7 @@ function scr_start_intro_animations()
 			intro_animation_image_index += 0.4;
 			if (cutscene_time <= 1)
 			{
-				x = -16-sprite_width;
+				x = -16 -sprite_width;
 				hspeed = 0;
 				instance_create_depth(1697, 745, 0, obj_catlyn_working);
 				with(instance_create_depth(instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, 0, obj_chair_and_table))
@@ -100,8 +100,8 @@ function scr_start_intro_animations()
 						instance_destroy();
 					}
 				}
-				instance_create_depth(- 16-sprite_width, y, 0, obj_cake);
-				with(instance_create_depth(- 16-sprite_width, y, 0, obj_cake_stealing_enemy))
+				instance_create_depth(- 16 -sprite_width, y, 0, obj_cake);
+				with(instance_create_depth(- 16 -sprite_width, y, 0, obj_cake_stealing_enemy))
 				{
 					time = room_speed* 2;
 				}

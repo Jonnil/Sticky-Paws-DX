@@ -180,9 +180,9 @@ function scr_select_official_level_menu()
 		{
 			custom_level_select_blinking_old = 0;
 		}
-		draw_rectangle_color(394 *(global.select_level_index -C*R) + 100 -3, 226*(C-scroll) + 250 -3, 394 *(global.select_level_index -C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(394 *(global.select_level_index -C*R) + 100 - 3, 226*(C-scroll) + 250 - 3, 394 *(global.select_level_index -C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3, c_red, c_red, c_red, c_red, false);
 		draw_set_alpha(custom_level_select_blinking);
-		draw_rectangle_color(394 *(global.select_level_index -C*R) + 100 -3, 226*(C-scroll) + 250 -3, 394 *(global.select_level_index -C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3, c_yellow, c_yellow, c_yellow, c_yellow, false);
+		draw_rectangle_color(394 *(global.select_level_index -C*R) + 100 - 3, 226*(C-scroll) + 250 - 3, 394 *(global.select_level_index -C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3, c_yellow, c_yellow, c_yellow, c_yellow, false);
 		draw_set_alpha(1);
 	}
 	#endregion /*Red Rectangle to indicate what level you are selecting END*/
@@ -285,10 +285,10 @@ function scr_select_official_level_menu()
 	if (can_input_level_name = true)
 	{
 		draw_set_alpha(1);
-		draw_rectangle_color(394 *(global.select_level_index -C*R) + 300 -3 - 150, 226*(C-scroll) +569 -3 - 16, 394 *(global.select_level_index -C*R) + 300 -3+ 150, 226*(C-scroll) +569 -3+ 16, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(394 *(global.select_level_index -C*R) + 300 - 3 - 150, 226*(C-scroll) + 569 - 3 - 16, 394 *(global.select_level_index -C*R) + 300 - 3+ 150, 226*(C-scroll) + 569 - 3+ 16, c_white, c_white, c_white, c_white, false);
 	
 		draw_set_alpha(1);
-		draw_rectangle_color(394 *(global.select_level_index -C*R) + 300 -3 - 150, 226*(C-scroll) +569 -3 - 16, 394 *(global.select_level_index -C*R) + 300 -3+ 150, 226*(C-scroll) +569 -3+ 16, c_black, c_black, c_black, c_black, true);
+		draw_rectangle_color(394 *(global.select_level_index -C*R) + 300 - 3 - 150, 226*(C-scroll) + 569 - 3 - 16, 394 *(global.select_level_index -C*R) + 300 - 3+ 150, 226*(C-scroll) + 569 - 3+ 16, c_black, c_black, c_black, c_black, true);
 	}
 	#endregion /*Box where name is written on END*/
 	
@@ -297,11 +297,11 @@ function scr_select_official_level_menu()
 	{
 		if (name_enter_blink< 1)
 		{
-			draw_text_outlined(394 *(global.select_level_index -C*R) + 300, 226*(C-scroll) +569 -3, string(global.level_name) + "|", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(394 *(global.select_level_index -C*R) + 300, 226*(C-scroll) + 569 - 3, string(global.level_name) + "|", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(394 *(global.select_level_index -C*R) + 300, 226*(C-scroll) +569 -3, string(global.level_name), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(394 *(global.select_level_index -C*R) + 300, 226*(C-scroll) + 569 - 3, string(global.level_name), global.default_text_size, c_black, c_white, 1);
 		}
 	}
 	#endregion /*Inputed Name Text END*/

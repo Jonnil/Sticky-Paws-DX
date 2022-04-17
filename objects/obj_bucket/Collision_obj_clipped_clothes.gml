@@ -27,7 +27,7 @@ and (sprite_index = spr_bucket)
 		if (asset_get_type("obj_basic_collectible") == asset_object)
 		{
 			var obj;
-			obj = instance_create_depth(x -32,bbox_top, 0, obj_basic_collectible);
+			obj = instance_create_depth(x - 32,bbox_top, 0, obj_basic_collectible);
 			with(obj)
 			{
 				image_speed = 1;

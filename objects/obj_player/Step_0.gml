@@ -43,7 +43,16 @@ if (full_level_map_screenshot_timer = 15)
 	if (ds_list_find_value(global.all_loaded_title_backgrounds, global.select_level_index) != undefined)
 	and (ds_list_find_value(global.all_loaded_title_backgrounds, global.select_level_index) != "")
 	{
-		sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
+		if (global.character_select_in_this_menu = "level_editor")
+		and (global.create_level_from_template >= true)
+		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name)))
+		{
+			sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/full_level_map.png");
+		}
+		else
+		{
+			sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
+		}
 	}
 	sprite_delete(custom_level_map_sprite);
 }
@@ -4255,9 +4264,9 @@ else
 #region /*Don't let the player outside the view too much when winning*/
 if (goal = true)
 {
-	if (x < camera_get_view_x(view_camera[view_current]) -32)
+	if (x < camera_get_view_x(view_camera[view_current]) - 32)
 	{
-		x = camera_get_view_x(view_camera[view_current]) -32;
+		x = camera_get_view_x(view_camera[view_current]) - 32;
 		if (hspeed < 0)
 		{
 			hspeed = 0;
@@ -6501,7 +6510,7 @@ and (can_mid_air_jump = 0)
 				}
 				else
 				{
-					angle = -360;
+					angle = - 360;
 				}
 			}
 			#endregion /*Mid-air flip animation END*/
@@ -7051,7 +7060,7 @@ if (allow_roll = true)
 			else
 			if (hspeed < 0)
 			{
-				angle = -360;
+				angle = - 360;
 				roll = true;
 			}
 		}
@@ -7064,7 +7073,7 @@ if (place_meeting(x, y + 4, obj_wall))
 {
 	if (instance_nearest(x, bbox_bottom, obj_wall).vspeed > 0)
 	{
-		y = instance_nearest(x, bbox_bottom, obj_wall).bbox_top -37;
+		y = instance_nearest(x, bbox_bottom, obj_wall).bbox_top - 37;
 	}
 	hspeed += instance_nearest(x, bbox_bottom, obj_wall).hspeed;
 }
@@ -7662,7 +7671,7 @@ and (takendamage <= takendamage_freezetime)
 						}
 						else
 						{
-							angle = -360;
+							angle = - 360;
 						}
 						image_index = 0;
 						if (asset_get_type("snd_rolling") == asset_sound)
@@ -7777,7 +7786,7 @@ and (takendamage <= takendamage_freezetime)
 					vspeed = -higher_jump_height;
 					if (image_xscale > 0)
 					{
-						angle = -360;
+						angle = - 360;
 					}
 					else
 					{
@@ -8100,7 +8109,7 @@ and (on_ground = true)
 						hspeed = - 10;
 					}
 				}
-				angle = -320;
+				angle = - 320;
 			}
 		}
 		else
@@ -8223,7 +8232,7 @@ if (allow_ledge_grab = true)
 					}
 					else
 					{
-						angle = -360;
+						angle = - 360;
 					}
 					if (asset_get_type("snd_pullup") == asset_sound)
 					{
@@ -8247,7 +8256,7 @@ if (allow_ledge_grab = true)
 				}
 				else
 				{
-					angle = -360;
+					angle = - 360;
 				}
 				if (asset_get_type("snd_pullupfast") == asset_sound)
 				{
@@ -8310,7 +8319,7 @@ and (stick_to_wall = false)
 #endregion /*ledge_grab_jump / Get up over ledge END*/
 
 #region /*Put sprite angle at right angle*/
-if (angle <-360)
+if (angle <- 360)
 {
 	angle += 16;
 }

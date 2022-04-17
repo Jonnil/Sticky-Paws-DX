@@ -169,13 +169,13 @@ view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_
 #region /*Hud Variables*/
 global.hud_show_lives = true;
 global.hud_show_deaths = true;
-hud_show_lives = -32;
+hud_show_lives = - 32;
 hud_show_lives_timer = global.hud_hide_time * 60;
-hud_show_deaths = -32;
+hud_show_deaths = - 32;
 hud_show_deaths_timer = global.hud_hide_time * 60;
-hud_show_basic_collectibles = -32;
+hud_show_basic_collectibles = - 32;
 hud_show_basic_collectibles_timer = 0;
-hud_show_big_collectibles = -32;
+hud_show_big_collectibles = - 32;
 hud_show_big_collectibles_timer = 0;
 hud_show_score = -64;
 hud_show_score_timer = 0;
@@ -381,14 +381,14 @@ timer_blinking_alpha = 0;
 #region /*Initialize View*/
 
 /*View Size*/
-view_wview= 1024 + 400 -32;
-view_hview= 768-32;
+view_wview= 1024 + 400 - 32;
+view_hview= 768- 32;
 /*View Size END*/
 
 #region /*View Size*/
 if (os_type == os_ios)or(os_type == os_android){
 if (view_wport > 1920){view_wport = 1920;}if (view_wview> 1920 - 64){view_wview= 1920 - 64;}if (view_hport > 1080){view_hport = 1080;}if (view_hview> 1080 - 64){view_hview= 1080 - 64;}
-if (view_wport <640 -320){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport <480){view_hport = 480;}if (view_hview<480){view_hview= 480;}
+if (view_wport <640 - 320){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport <480){view_hport = 480;}if (view_hview<480){view_hview= 480;}
 }else{
 if (view_wport > 1920){view_wport = 1920;}if (view_wview> 1920){view_wview= 1920;}if (view_hport > 1080){view_hport = 1080;}if (view_hview> 1080){view_hview= 1080;}
 if (view_wport <640){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport <480){view_hport = 480;}if (view_hview<480){view_hview= 480;}}
@@ -521,7 +521,7 @@ and (global.assist_enable = true)
 			{
 				with(instance_nearest(x, y, obj_player))
 				{
-					instance_create_depth(x -32, y - 128, 0, obj_assist_item);
+					instance_create_depth(x - 32, y - 128, 0, obj_assist_item);
 				}
 			}
 		}

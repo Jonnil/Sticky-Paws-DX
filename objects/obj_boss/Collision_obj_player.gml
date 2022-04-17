@@ -61,7 +61,7 @@ or(other.dive = true)
 		}
 		else
 		{
-			other.hspeed = +5;
+			other.hspeed = + 5;
 		}
 		other.ground_pound = false;
 		other.can_ground_pound = false;
@@ -95,7 +95,7 @@ if (can_jump_on_head = true)
 	}
 	else
 	{
-		other.hspeed = +5;
+		other.hspeed = + 5;
 	}
 	other.ground_pound = false;
 	other.can_ground_pound = false;

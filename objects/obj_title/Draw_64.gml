@@ -249,7 +249,7 @@ and (global.controls_used_for_menu_navigation != "controller")
 	draw_set_valign(fa_center);
 	if (window_get_fullscreen())
 	{
-		draw_text_outlined(+52, display_get_gui_height() - 55 + version_y_pos, Text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, Text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
@@ -257,7 +257,7 @@ and (global.controls_used_for_menu_navigation != "controller")
 	}
 	else
 	{
-		draw_text_outlined(+52, display_get_gui_height() - 55 + version_y_pos, Text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, Text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
@@ -362,7 +362,9 @@ else
 if (global.title_logo_index >= 0)
 or(global.resource_pack_sprite_title_logo_christmas > 0)
 {
-	if (global.title_logo_index != undefined)
+	if (global.title_logo_index >= 0)
+	and (global.title_logo_index != undefined)
+	and (global.title_logo_index != "")
 	{
 		draw_sprite_ext(title_logo_index, image_index, display_get_gui_width()/ 2, display_get_gui_height()/ 2 - 100 + title_y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, title_alpha);
 	}
@@ -621,9 +623,9 @@ or(menu = "quit")
 
 	#region /*Click Profile Shortcut*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
-	display_get_gui_width()/ 2 + 208+50,
+	display_get_gui_width()/ 2 + 208+ 50,
 	display_get_gui_height()/ 2 + 100 + 140 - 20,
-	display_get_gui_width()/ 2 + 250 +50,
+	display_get_gui_width()/ 2 + 250 + 50,
 	display_get_gui_height()/ 2 + 100 + 140 + 19))
 	and (menu = "profile_shortcut")
 	and (mouse_check_button_released(mb_left))
@@ -648,9 +650,9 @@ or(menu = "quit")
 	
 	#region /*Profile Shortcut*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
-	display_get_gui_width()/ 2 + 208+50,
+	display_get_gui_width()/ 2 + 208+ 50,
 	display_get_gui_height()/ 2 + 100 + 140 - 20,
-	display_get_gui_width()/ 2 + 250 +50,
+	display_get_gui_width()/ 2 + 250 + 50,
 	display_get_gui_height()/ 2 + 100 + 140 + 19))
 	and (mouse_check_button(mb_left))
 	and (global.show_profile_shortcut = true)
@@ -774,10 +776,10 @@ or(menu = "quit")
 	{
 		if (menu = "profile_shortcut")
 		{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()/ 2 + 208+50, display_get_gui_height()/ 2 + 100 + 140 - 20, display_get_gui_width()/ 2 + 250 +50, display_get_gui_height()/ 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width()/ 2 + 208+50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width()/ 2 + 208+50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
-		draw_sprite_ext(spr_settings_icons, 7, display_get_gui_width()/ 2 + 230 +50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_white, 1);}
-		else{if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()/ 2 + 208+50, display_get_gui_height()/ 2 + 100 + 140 - 20, display_get_gui_width()/ 2 + 250 +50, display_get_gui_height()/ 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width()/ 2 + 208+50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_lime, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width()/ 2 + 208+50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_white, 1);}
-		draw_sprite_ext(spr_settings_icons, 7, display_get_gui_width()/ 2 + 230 +50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_white, 1);}
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()/ 2 + 208+ 50, display_get_gui_height()/ 2 + 100 + 140 - 20, display_get_gui_width()/ 2 + 250 + 50, display_get_gui_height()/ 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width()/ 2 + 208+ 50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width()/ 2 + 208+ 50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
+		draw_sprite_ext(spr_settings_icons, 7, display_get_gui_width()/ 2 + 230 + 50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_white, 1);}
+		else{if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()/ 2 + 208+ 50, display_get_gui_height()/ 2 + 100 + 140 - 20, display_get_gui_width()/ 2 + 250 + 50, display_get_gui_height()/ 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width()/ 2 + 208+ 50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_lime, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width()/ 2 + 208+ 50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_white, 1);}
+		draw_sprite_ext(spr_settings_icons, 7, display_get_gui_width()/ 2 + 230 + 50, display_get_gui_height()/ 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 	}
 }
 #endregion /*Main Menu END*/
@@ -822,7 +824,7 @@ if (level_editor_template_select = true)
 		i += 1)
 		{
 			C = floor(i / R);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(i-C*R) + 100 -3, 226*(C-scroll) + 250 -3, 394 *(i-C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(i-C*R) + 100 - 3, 226*(C-scroll) + 250 - 3, 394 *(i-C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3))
 			{
 				if (menu != "level_editor_play")
 				and (menu_delay = 0)

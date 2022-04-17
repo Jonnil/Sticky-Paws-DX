@@ -51,7 +51,7 @@ else
 #endregion /*Set the gravity END*/
 
 /*Put at right angle*/
-if (angle < -360)
+if (angle < - 360)
 {
 	angle += 16;
 }
@@ -219,7 +219,7 @@ and (has_seen_player = true)
 		angle = +90;
 		hspeed = 0;
 		vspeed = -10;
-		hspeed = +5;
+		hspeed = + 5;
 	}
 	else
 	if (place_meeting(x + 8, y, obj_wall))
@@ -372,7 +372,7 @@ and (has_seen_player = true)
 		angle = +90;
 		hspeed = 0;
 		vspeed = -10;
-		hspeed = +5;
+		hspeed = + 5;
 	}
 	else
 	if (place_meeting(x + 8, y, obj_wall))
@@ -529,7 +529,7 @@ if (has_seen_player = true)
 		angle = +90;
 		hspeed = 0;
 		vspeed = -10;
-		hspeed = +5;
+		hspeed = + 5;
 	}
 	else
 	if (place_meeting(x + 8, y, obj_wall))

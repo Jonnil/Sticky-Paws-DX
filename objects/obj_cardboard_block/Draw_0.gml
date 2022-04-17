@@ -115,7 +115,7 @@ if (brick_particle = false)
 		and (place_meeting(x, y, obj_blockbreak))
 		{
 			if (position_meeting(bbox_left + 3,bbox_bottom + 1, instance_nearest(x, y, obj_player)))
-			or(position_meeting(bbox_right -3,bbox_bottom + 1, instance_nearest(x, y, obj_player)))
+			or(position_meeting(bbox_right - 3,bbox_bottom + 1, instance_nearest(x, y, obj_player)))
 			{
 				if (asset_get_type("obj_blockbreak") == asset_object)
 				{
@@ -129,7 +129,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard_block);
 					with(obj)
 					{
-						motion_set(random_range(45-32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
+						motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
 						mask_index = noone;
 						brick_particle = true;
 					}
@@ -139,7 +139,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard_block);
 					with(obj)
 					{
-						motion_set(random_range(135-32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
+						motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
 						mask_index = noone;
 						brick_particle = true;
 					}
@@ -183,7 +183,7 @@ if (brick_particle = false)
 	{
 		if (place_meeting(x, y, obj_bullet))
 		or(place_meeting(x - 5, y, obj_bullet))
-		or(place_meeting(x +5, y, obj_bullet))
+		or(place_meeting(x + 5, y, obj_bullet))
 		{
 			
 			#region /*Turn into cardboard particle*/
@@ -194,7 +194,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard_block);
 					with(obj)
 					{
-						motion_set(random_range(45-32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
+						motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
 						mask_index = noone;
 						brick_particle = true;
 					}
@@ -204,7 +204,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard_block);
 					with(obj)
 					{
-						motion_set(random_range(135-32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
+						motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
 						mask_index = noone;
 						brick_particle = true;
 					}

@@ -39,7 +39,7 @@ and (instance_exists(obj_player))
 	if (x < instance_nearest(x, y, obj_player).x - 64)
 	and (!position_meeting(x + 32, y, obj_wall))
 	or(x > instance_nearest(x, y, obj_player).x + 64)
-	and (!position_meeting(x -32, y, obj_wall))
+	and (!position_meeting(x - 32, y, obj_wall))
 	{
 		yy = lerp(yy, y, 0.5);
 		draw_xscale = lerp(draw_xscale, image_xscale, 0.5);

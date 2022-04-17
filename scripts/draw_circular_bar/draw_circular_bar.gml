@@ -49,7 +49,7 @@ function draw_circular_bar(x , y ,value, max, colour, radius, transparency, widt
         
 	        gpu_set_blendmode(bm_subtract)
 	        draw_set_colour(c_black)
-	        draw_circle(argument5- 1, argument5- 1, argument5-argument7, false)
+	        draw_circle(argument5 - 1, argument5 - 1, argument5 -argument7, false)
 	        gpu_set_blendmode(bm_normal)
 
 	        surface_reset_target()

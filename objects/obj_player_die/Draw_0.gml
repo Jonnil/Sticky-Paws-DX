@@ -241,17 +241,17 @@ if (bubble = true)
 	{
 		x = camera_get_view_x(view_camera[view_current]) + 32;
 	}
-	if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32)
+	if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 32)
 	{
-		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) -32;
+		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 32;
 	}
 	if (y < camera_get_view_y(view_camera[view_current]) + 32)
 	{
 		y = camera_get_view_y(view_camera[view_current]) + 32;
 	}
-	if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32)
+	if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
 	{
-		y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) -32;
+		y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32;
 	}
 	#endregion /*Don't go outside view boundary END*/
 

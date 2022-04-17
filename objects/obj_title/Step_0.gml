@@ -51,8 +51,10 @@ if (menu = "load_characters")
 		}
 		else
 		{
-			file_exists(working_directory + "custom_characters/" + file_found + "/data/character_config.ini")
-			ds_list_add(global.all_loaded_characters, file_found)
+			if (file_exists(working_directory + "custom_characters/" + file_found + "/data/character_config.ini"))
+			{
+				ds_list_add(global.all_loaded_characters, file_found);
+			}
 			
 			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
 		}

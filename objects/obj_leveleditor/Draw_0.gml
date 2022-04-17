@@ -807,13 +807,13 @@ if (quit_level_editor <= 0)
 	
 	#region /*Draw an arrow pointing to currently selected object*/
 	draw_set_color(c_black);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16- 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 40);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16 - 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 40);
 	draw_set_color(c_white);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16- 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 30);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16 - 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 30);
 	draw_set_color(c_black);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16 +8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16- 8, 40);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16 +8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16 - 8, 40);
 	draw_set_color(c_white);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16 +8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16- 8, 30);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16 +8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2, camera_get_view_y(view_camera[view_current]) + 128- 16 - 8, 30);
 	draw_set_alpha(1);
 	#endregion /*Draw an arrow pointing to currently selected object END*/
 	
@@ -959,9 +959,9 @@ and (pause = false)
 
 		if!place_meeting(x + 32, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x + 32, y - 32, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x, y - 32, 1, 1, 0, c_white, 0.2);}
-		if!place_meeting(x -32, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x -32, y - 32, 1, 1, 0, c_white, 0.2);}
-		if!place_meeting(x -32, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x -32, y, 1, 1, 0, c_white, 0.2);}
-		if!place_meeting(x -32, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x -32, y + 32, 1, 1, 0, c_white, 0.2);}
+		if!place_meeting(x - 32, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y - 32, 1, 1, 0, c_white, 0.2);}
+		if!place_meeting(x - 32, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y, 1, 1, 0, c_white, 0.2);}
+		if!place_meeting(x - 32, y + 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y + 32, 1, 1, 0, c_white, 0.2);}
 
 		if!place_meeting(x + 64, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y - 32, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x + 64, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y, 1, 1, 0, c_white, 0.2);}
@@ -969,12 +969,12 @@ and (pause = false)
 		if!place_meeting(x + 64, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y+64, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x + 32, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 32, y+64, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x, y+64, 1, 1, 0, c_white, 0.2);}
-		if!place_meeting(x -32, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x -32, y+64, 1, 1, 0, c_white, 0.2);}
+		if!place_meeting(x - 32, y+64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x - 32, y+64, 1, 1, 0, c_white, 0.2);}
 
 		if!place_meeting(x + 64, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x + 64, y - 64, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x + 32, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x + 32, y - 64, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x, y - 64, 1, 1, 0, c_white, 0.2);}
-		if!place_meeting(x -32, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x -32, y - 64, 1, 1, 0, c_white, 0.2);}
+		if!place_meeting(x - 32, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 32, y - 64, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x - 64, y - 64, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y - 64, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x - 64, y - 32, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y - 32, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x - 64, y, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y, 1, 1, 0, c_white, 0.2);}
@@ -990,7 +990,7 @@ and (pause = false)
 		if!place_meeting(x + 64, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 64, y+96, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x + 32, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 32, y+96, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x, y+96, 1, 1, 0, c_white, 0.2);}
-		if!place_meeting(x -32, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x -32, y+96, 1, 1, 0, c_white, 0.2);}
+		if!place_meeting(x - 32, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x - 32, y+96, 1, 1, 0, c_white, 0.2);}
 		if!place_meeting(x - 64, y+96, obj_leveleditor_placed_object) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x - 64, y+96, 1, 1, 0, c_white, 0.2);}
 	}
 

@@ -163,7 +163,7 @@ if (image_index = 49) and (levela_big_collectible5 < true){draw_text_outlined(wi
 #region /*Draw what artwork is selected*/
 draw_set_halign(fa_left);
 draw_set_valign(fa_center);
-draw_text_outlined(+ 32, window_get_height() -32, "< " + Text("Artwork") + " " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
+draw_text_outlined(+ 32, window_get_height() - 32, "< " + Text("Artwork") + " " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
 #endregion /*Draw what artwork is selected END*/
 
 if (gamepad_is_connected(0))
@@ -210,7 +210,7 @@ and (mouse_check_button_pressed(mb_left))
 		{
 			image_index = image_number - 1;
 		}
-		xx = window_get_width()/ 2 -32;
+		xx = window_get_width()/ 2 - 32;
 		gamepad_stick = false;
 	}
 }
@@ -255,11 +255,11 @@ draw_menu_button(window_get_width() - 370, window_get_height() - 42, Text("Back"
 if (gamepad_is_connected(0))
 and (global.controls_used_for_menu_navigation = "controller")
 {
-	draw_sprite_ext(spr_xbox_buttons, 1, window_get_width() -32, window_get_height() -21, 0.5, 0.5, 0, c_white, 1);
+	draw_sprite_ext(spr_xbox_buttons, 1, window_get_width() - 32, window_get_height() -21, 0.5, 0.5, 0, c_white, 1);
 }
 else
 {
-	draw_sprite_ext(spr_keyboard_keys, ord("X"), window_get_width() -32, window_get_height() -21, 0.5, 0.5, 0, c_white, 1);
+	draw_sprite_ext(spr_keyboard_keys, ord("X"), window_get_width() - 32, window_get_height() -21, 0.5, 0.5, 0, c_white, 1);
 }
 #endregion /*Draw Back key END*/
 

@@ -40,39 +40,39 @@ if (can_navigate = false) /*When game is loading in assets, display a detailed l
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
 	draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 6), 1, 1, loading_spinning_angle, c_white, 1);
-	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 5), Text("Loading"), global.default_text_size, c_white, c_black, 1);
-	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 4), string(file_found), global.default_text_size, c_white, c_black, 1);
+	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 5), Text("Loading"), global.default_text_size, c_white, c_black, 1);
+	draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 4), string(file_found), global.default_text_size, c_white, c_black, 1);
 	if (load_ok <= 0)
 	{
-		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + Text("Loaded Characters"), global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + Text("Loaded Characters"), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	{
-		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + Text("Loaded Characters") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + Text("Loaded Characters") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
 	}
 	if (load_ok <= 1)
 	{
-		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + Text("Loaded Resource Packs"), global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + Text("Loaded Resource Packs"), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	{
-		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + Text("Loaded Resource Packs") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + Text("Loaded Resource Packs") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
 	}
 	if (load_ok <= 2)
 	{
-		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + Text("Loaded Title Backgrounds"), global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + Text("Loaded Title Backgrounds"), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	{
-		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + Text("Loaded Title Backgrounds") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + Text("Loaded Title Backgrounds") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
 	}
 	if (load_ok <= 3)
 	{
-		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32, string(ds_list_size(global.all_loaded_title_logos)) + " " + Text("Loaded Title Logos"), global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_logos)) + " " + Text("Loaded Title Logos"), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	{
-		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32, string(ds_list_size(global.all_loaded_title_logos)) + " " + Text("Loaded Title Logos") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_logos)) + " " + Text("Loaded Title Logos") + " " + Text("OK"), global.default_text_size, c_lime, c_black, 1);
 	}
 }
 else
@@ -82,7 +82,7 @@ else
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() -32, Text("Press and Hold Screen"), global.default_text_size, c_white, c_black, 1);
+		draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32, Text("Press and Hold Screen"), global.default_text_size, c_white, c_black, 1);
 	}
 	else
 	if (gamepad_is_connected(0))
@@ -91,16 +91,16 @@ else
 	{
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_center);
-		draw_text_outlined(display_get_gui_width()/ 2 + 32, display_get_gui_height() -32, Text("Skip") + ":", global.default_text_size, c_white, c_black, 1);
-		draw_sprite_ext(spr_xbox_buttons, 0, display_get_gui_width()/ 2 + 64, display_get_gui_height() -32, 0.5, 0.5, 0, c_white, 1);
+		draw_text_outlined(display_get_gui_width()/ 2 + 32, display_get_gui_height() - 32, Text("Skip") + ":", global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_xbox_buttons, 0, display_get_gui_width()/ 2 + 64, display_get_gui_height() - 32, 0.5, 0.5, 0, c_white, 1);
 	}
 	else
 	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	{
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_center);
-		draw_text_outlined(display_get_gui_width()/ 2 + 32, display_get_gui_height() -32, Text("Skip") + ":", global.default_text_size, c_white, c_black, 1);
-		draw_sprite_ext(spr_keyboard_keys, vk_enter, display_get_gui_width()/ 2 + 64, display_get_gui_height() -32, 0.5, 0.5, 0, c_white, 1);
+		draw_text_outlined(display_get_gui_width()/ 2 + 32, display_get_gui_height() - 32, Text("Skip") + ":", global.default_text_size, c_white, c_black, 1);
+		draw_sprite_ext(spr_keyboard_keys, vk_enter, display_get_gui_width()/ 2 + 64, display_get_gui_height() - 32, 0.5, 0.5, 0, c_white, 1);
 	}
 }
 

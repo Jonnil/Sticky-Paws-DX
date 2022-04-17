@@ -13,7 +13,7 @@ key_b_released = (gamepad_button_check_released(0, gp_face2))or(keyboard_check_r
 #endregion /*Controls for level editor END*/
 
 can_save_to_level_information = false;
-depth = -300;
+depth = - 300;
 
 global.player_has_entered_goal = false;
 global.time_countdown_bonus = 500;
@@ -699,7 +699,7 @@ else
 #region /*View Size*/
 view_wview = 1392;
 view_hview = 736;
-/*Default Views:   set_view_wview = 1024 + 400 -32   set_view_hview = 768-32  */
+/*Default Views:   set_view_wview = 1024 + 400 - 32   set_view_hview = 768- 32  */
 #endregion /*View Size END*/
 
 #region /*Initialize Background*/

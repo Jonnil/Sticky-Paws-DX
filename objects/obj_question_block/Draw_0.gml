@@ -333,7 +333,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top -32, 0, obj_invincibility_powerup);
+					obj = instance_create_depth(x, bbox_top - 32, 0, obj_invincibility_powerup);
 					with(obj)
 					{
 						hspeed = +2;
@@ -354,7 +354,7 @@ if (bounceup = false)
 				and (!place_meeting(x, y - 1, obj_wall))
 				{
 					var obj;
-					obj = instance_create_depth(x, bbox_top -32, 0, obj_invincibility_powerup);
+					obj = instance_create_depth(x, bbox_top - 32, 0, obj_invincibility_powerup);
 					with(obj)
 					{
 						hspeed = +2;

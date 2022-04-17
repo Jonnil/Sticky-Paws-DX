@@ -13,8 +13,8 @@ game_over_menu_seperation_distance = 64;
 menu_delay = 0;
 
 #region /*Game Over variables*/
-game_over_sprite_y = -300;
-game_over_text_y = -300;
+game_over_sprite_y = - 300;
+game_over_text_y = - 300;
 sprite_game_over_character_portrait = noone;
 #endregion /*Game Over variables END*/
 
