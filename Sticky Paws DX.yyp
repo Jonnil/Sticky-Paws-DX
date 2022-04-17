@@ -483,7 +483,6 @@
   "IncludedFiles": [
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"credits.txt","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"gamefont.ttc","resourceType":"GMIncludedFile",},
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"localization.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/catlyn/data","resourceVersion":"1.0","name":"character_config.ini","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/catlyn/sprites/skin0","resourceVersion":"1.0","name":"againstwall.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/catlyn/sprites/skin0","resourceVersion":"1.0","name":"character_select_portrait.png","resourceType":"GMIncludedFile",},
@@ -1464,6 +1463,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sound/voicepack0","resourceVersion":"1.0","name":"scream.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sound/voicepack0","resourceVersion":"1.0","name":"scream4.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sound/voicepack0","resourceVersion":"1.0","name":"scream3.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"localization.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.3.0.625",
