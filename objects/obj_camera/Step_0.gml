@@ -93,3 +93,138 @@ if (lives < 0)
 	lives = 0;
 }
 #endregion /*Make sure the lives counter never goes below 0 END*/
+
+#region /*Spawn Players in multiplayer*/
+if (instance_exists(obj_player))
+and (global.pause = false)
+and (asset_get_type("obj_player_map") == asset_object)
+and (!instance_exists(obj_player_map))
+and (asset_get_type("obj_title") == asset_object)
+and (!instance_exists(obj_title))
+{
+	if (gamepad_button_check_pressed(0, gp_face1))
+	or(keyboard_check_pressed(global.player1_key_jump))
+	or(keyboard_check_pressed(global.player1_key2_jump))
+	{
+		if (player1 <= 0)
+		and (can_spawn_player1 = true)
+		and (lives > 0)
+		{
+			if (global.player1_can_play = false)
+			{
+				global.player1_can_play = true;
+			}
+			if (asset_get_type("obj_player") == asset_object)
+			{
+				player1 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+				with(player1)
+				{
+					custom_character = global.character_for_player_1;
+					selected_voice_pack = global.voicepack_for_player_1;
+					selected_skin = global.skin_for_player_1;
+					player = 1;
+				}
+			}
+		}
+		else
+		if (lives <= 0)
+		{
+			global.hud_show_lives = true;
+			hud_show_lives_timer = global.hud_hide_time * 60;
+		}
+	}
+	if (gamepad_button_check_pressed(1, gp_face1))
+	or(keyboard_check_pressed(global.player2_key_jump))
+	or(keyboard_check_pressed(global.player2_key2_jump))
+	{
+		if (player2 <= 0)
+		and (can_spawn_player2 = true)
+		and (lives > 0)
+		{
+			if (global.player2_can_play = false)
+			{
+				global.player2_can_play = true;
+			}
+			if (asset_get_type("obj_player") == asset_object)
+			{
+				player2 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+				with(player2)
+				{
+					custom_character = global.character_for_player_2;
+					selected_voice_pack = global.voicepack_for_player_2;
+					selected_skin = global.skin_for_player_2;
+					player = 2;
+				}
+			}
+		}
+		else
+		if (lives <= 0)
+		{
+			global.hud_show_lives = true;
+			hud_show_lives_timer = global.hud_hide_time * 60;
+		}
+	}
+	if (gamepad_button_check_pressed(2, gp_face1))
+	or(keyboard_check_pressed(global.player3_key_jump))
+	or(keyboard_check_pressed(global.player3_key2_jump))
+	{
+		if (player3 <= 0)
+		and (can_spawn_player3 = true)
+		and (lives > 0)
+		{
+			if (global.player3_can_play = false)
+			{
+				global.player3_can_play = true;
+			}
+			if (asset_get_type("obj_player") == asset_object)
+			{
+				player3 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+				with(player3)
+				{
+					custom_character = global.character_for_player_3;
+					selected_voice_pack = global.voicepack_for_player_3;
+					selected_skin = global.skin_for_player_3;
+					player = 3;
+				}
+			}
+		}
+		else
+		if (lives <= 0)
+		{
+			global.hud_show_lives = true;
+			hud_show_lives_timer = global.hud_hide_time * 60;
+		}
+	}
+	if (gamepad_button_check_pressed(3, gp_face1))
+	or(keyboard_check_pressed(global.player4_key_jump))
+	or(keyboard_check_pressed(global.player4_key2_jump))
+	{
+		if (player4 <= 0)
+		and (can_spawn_player4 = true)
+		and (lives > 0)
+		{
+			if (global.player4_can_play = false)
+			{
+				global.player4_can_play = true;
+			}
+			if (asset_get_type("obj_player") == asset_object)
+			{
+				player4 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+				with(player4)
+				{
+					custom_character = global.character_for_player_4;
+					selected_voice_pack = global.voicepack_for_player_4;
+					selected_skin = global.skin_for_player_4;
+					player = 4;
+				}
+			}
+		}
+		else
+		if (lives <= 0)
+		{
+			global.hud_show_lives = true;
+			hud_show_lives_timer = global.hud_hide_time * 60;
+		}
+	}
+}
+#endregion /*Spawn Players in multiplayer END*/

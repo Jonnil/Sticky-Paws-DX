@@ -1,5 +1,12 @@
 #region /*Initialize Custom character*/
 
+//if (player = 2)
+//or (player = 3)
+//or (player = 4)
+//{
+//	partner_character = true;
+//}
+
 /*The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y*/
 
 #region /*Allow abilities*/
@@ -7719,5 +7726,67 @@ else
 	
 ini_close();
 #endregion /*Character Values Handeling END*/
+
+#region /*Have Heart Balloon*/
+if (global.character_select_in_this_menu = "main_game")
+and (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+{
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	
+	if (player = 1)
+	{
+		if (ini_key_exists("Player", "player_1_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_1_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_1_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	if (player = 2)
+	{
+		if (ini_key_exists("Player", "player_2_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_2_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_2_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	if (player = 3)
+	{
+		if (ini_key_exists("Player", "player_3_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_3_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_3_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	if (player = 4)
+	{
+		if (ini_key_exists("Player", "player_4_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player_4_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
+		}
+		else
+		{
+			ini_write_real("Player", "player_4_have_heart_balloon", false);
+			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+		}
+	}
+	ini_close();
+}
+else
+{
+	have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
+}
+#endregion /*Have Heart Balloon END*/
 
 #endregion /*Initialize Custom Character END*/

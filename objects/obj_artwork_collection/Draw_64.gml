@@ -367,9 +367,9 @@ if (image_index = 60){current_comment = Text("Artist") + ": DoruDoLasu - Sticky 
 if (image_index = 61){current_comment = Text("Artist") + ": DoruDoLasu - Sticky Stickyman";}
 if (image_index = 62){current_comment = Text("Artist") + ": Best Buds - Sticky suprised";}
 if (image_index = 63){current_comment = Text("Artist") + ": Denspaghetti - Sticky and Catlyn";}
-if (image_index = 64){current_comment = Text("Artist") + ": Error Bella - Sticky running";}
+if (image_index = 64){current_comment = Text("Artist") + ": Bella Cat - Sticky running";}
 if (image_index = 65){current_comment = Text("Artist") + ": huntertron - Sticky balloon";}
-if (image_index = 66){current_comment = Text("Artist") + ": Error Bella - Sticky, Catlyn and their pet mouse";}
+if (image_index = 66){current_comment = Text("Artist") + ": Bella Cat - Sticky, Catlyn and their pet mouse";}
 if (image_index = 67){current_comment = Text("Artist") + ": Voxxed_decimals - Sticky Ok";}
 if (image_index = 68){current_comment = Text("Artist") + ": Voxxed_decimals - Virtual Catlyn";}
 if (image_index = 69){current_comment = Text("Artist") + ": shadomaske - Happy Catlyn";}

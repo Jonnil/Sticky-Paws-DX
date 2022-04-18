@@ -11,8 +11,8 @@
 //draw_text_outlined(x - 32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 192, "have_heart_balloon: " + string(have_heart_balloon), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128, "max_hp: " + string(max_hp), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 64, string(global.music_volume), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 128, string(number_of_jumps), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x - 32, y - 128-64, string(distance_to_object(obj_camera.player1)), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x - 32, y - 128, string(active_jump), global.default_text_size, c_white, c_black, 1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)
@@ -456,8 +456,18 @@ if (allow_homing_attack = true)
 #endregion /*Homing Attack END*/
 
 #region /*Display Player Number and Name*/
-if (instance_number(obj_player) >= 2) /*If there is more than 1 player*/
-or(instance_number(obj_player_die) >= 1) /*If there is any other player die object*/
+if (global.player1_can_play = true)
+and (global.player2_can_play = true)
+or (global.player1_can_play = true)
+and (global.player3_can_play = true)
+or (global.player1_can_play = true)
+and (global.player4_can_play = true)
+or (global.player2_can_play = true)
+and (global.player3_can_play = true)
+or (global.player2_can_play = true)
+and (global.player4_can_play = true)
+or (global.player3_can_play = true)
+and (global.player4_can_play = true)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);

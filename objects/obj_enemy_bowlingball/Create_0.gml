@@ -15,6 +15,7 @@ number_of_times_stomped = 0;
 stuck_in_wall_counter = 0;
 coil_spring = false;
 blind = false;
+can_die_from_spikes = true;
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {
 	enemyvoice_defeated1 = snd_enemyvoice_defeated;

@@ -2,6 +2,37 @@
 
 #region /*What custom character to use. Change the character sprites and voice*/
 player = 1;
+partner_character = false;
+if (instance_exists(obj_camera))
+{
+	if (instance_exists(obj_camera.player1))
+	{
+		partner_follow_player = obj_camera.player1;
+	}
+	else
+	if (instance_exists(obj_camera.player2))
+	{
+		partner_follow_player = obj_camera.player2;
+	}
+	else
+	if (instance_exists(obj_camera.player3))
+	{
+		partner_follow_player = obj_camera.player3;
+	}
+	else
+	if (instance_exists(obj_camera.player4))
+	{
+		partner_follow_player = obj_camera.player4;
+	}
+	else
+	{
+		partner_follow_player = obj_camera;
+	}
+}
+else
+{
+	partner_follow_player = noone;
+}
 custom_character = global.character_for_player_1;
 selected_voice_pack = global.voicepack_for_player_1;
 selected_skin = global.skin_for_player_1;
@@ -433,67 +464,7 @@ double_tap_left = false;
 double_tap_right = false;
 double_tap_run_timer = 0;
 
-#region /*Have Heart Balloon*/
-if (global.character_select_in_this_menu = "main_game")
-and (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
-{
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-	
-	if (player = 1)
-	{
-		if (ini_key_exists("Player", "player_1_have_heart_balloon"))
-		{
-			have_heart_balloon = ini_read_real("Player", "player_1_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
-		}
-		else
-		{
-			ini_write_real("Player", "player_1_have_heart_balloon", false);
-			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
-		}
-	}
-	if (player = 2)
-	{
-		if (ini_key_exists("Player", "player_2_have_heart_balloon"))
-		{
-			have_heart_balloon = ini_read_real("Player", "player_2_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
-		}
-		else
-		{
-			ini_write_real("Player", "player_2_have_heart_balloon", false);
-			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
-		}
-	}
-	if (player = 3)
-	{
-		if (ini_key_exists("Player", "player_3_have_heart_balloon"))
-		{
-			have_heart_balloon = ini_read_real("Player", "player_3_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
-		}
-		else
-		{
-			ini_write_real("Player", "player_3_have_heart_balloon", false);
-			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
-		}
-	}
-	if (player = 4)
-	{
-		if (ini_key_exists("Player", "player_4_have_heart_balloon"))
-		{
-			have_heart_balloon = ini_read_real("Player", "player_4_have_heart_balloon", false); /*If you have the heart balloon upgrade or not*/
-		}
-		else
-		{
-			ini_write_real("Player", "player_4_have_heart_balloon", false);
-			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
-		}
-	}
-	ini_close();
-}
-else
-{
-	have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
-}
-#endregion /*Have Heart Balloon END*/
+have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
 
 #region /*Custom Music*/
 if (asset_get_type("room_title") == asset_room)
@@ -659,4 +630,5 @@ active_left = false;
 active_right = false;
 active_up = false;
 active_down = false;
+active_jump = false;
 #endregion /*Initialize the controls END*/

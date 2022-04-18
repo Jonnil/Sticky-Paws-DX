@@ -148,7 +148,6 @@ and (!instance_exists(obj_foreground_secret))
 #endregion /*Create Foreground and Background Brightness Layer END*/
 
 save_level_as_png = false;
-can_spawn_player = false;
 can_spawn_player1 = true;
 can_spawn_player2 = true;
 can_spawn_player3 = true;

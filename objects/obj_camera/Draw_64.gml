@@ -601,6 +601,7 @@ and (!instance_exists(obj_pause))
 		
 		#region /*MULTIPLAYER PLAYER 1*/
 		if (player1 >= 1)
+		and (player1.partner_character = false)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player1_show_controls >= true)
@@ -862,8 +863,7 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			#region /*Show Join Game Key*/
-			if (can_spawn_player = true)
-			and (can_spawn_player1 = true)
+			if (can_spawn_player1 = true)
 			and (global.player1_key_jump > noone)
 			and (lives > 0)
 			and (global.player1_show_controls >= 1)
@@ -889,6 +889,7 @@ and (!instance_exists(obj_pause))
 		
 		#region /*MULTIPLAYER PLAYER 2*/
 		if (player2 >= 1)
+		and (player2.partner_character = false)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player2_show_controls >= true)
@@ -1142,8 +1143,7 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 
 			#region /*Show Join Game Key*/
-			if (can_spawn_player = true)
-			and (can_spawn_player2 = true)
+			if (can_spawn_player2 = true)
 			and (global.player2_key_jump > noone)
 			and (lives > 0)
 			and (global.player2_show_controls >= 1)
@@ -1169,6 +1169,7 @@ and (!instance_exists(obj_pause))
 		
 		#region /*MULTIPLAYER PLAYER 3*/
 		if (player3 >= 1)
+		and (player3.partner_character = false)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player3_show_controls >= true)
@@ -1422,8 +1423,7 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			#region /*Show Join Game Key*/
-			if (can_spawn_player = true)
-			and (can_spawn_player3 = true)
+			if (can_spawn_player3 = true)
 			and (global.player3_key_jump > noone)
 			and (lives > 0)
 			and (global.player3_show_controls >= 1)
@@ -1449,6 +1449,7 @@ and (!instance_exists(obj_pause))
 		
 		#region /*MULTIPLAYER PLAYER 4 */
 		if (player4 >= 1)
+		and (player4.partner_character = false)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.player4_show_controls >= true)
@@ -1702,8 +1703,7 @@ and (!instance_exists(obj_pause))
 			draw_set_valign(fa_center);
 			
 			#region /*Show Join Game Key*/
-			if (can_spawn_player = true)
-			and (can_spawn_player4 = true)
+			if (can_spawn_player4 = true)
 			and (global.player4_key_jump > noone)
 			and (lives > 0)
 			and (global.player4_show_controls >= 1)

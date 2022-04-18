@@ -23,26 +23,58 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	else
 	if (variable_to_change = global.player1_wall_jump_setting)
 	and (menu = "wall_jump_setting")
+	and (remapping_player = 0)
 	{
 		global.player1_wall_jump_setting = change_to_value;
 	}
 	else
 	if (variable_to_change = global.player2_wall_jump_setting)
 	and (menu = "wall_jump_setting")
+	and (remapping_player = 1)
 	{
 		global.player2_wall_jump_setting = change_to_value;
 	}
 	else
 	if (variable_to_change = global.player3_wall_jump_setting)
 	and (menu = "wall_jump_setting")
+	and (remapping_player = 2)
 	{
 		global.player3_wall_jump_setting = change_to_value;
 	}
 	else
 	if (variable_to_change = global.player4_wall_jump_setting)
 	and (menu = "wall_jump_setting")
+	and (remapping_player = 3)
 	{
 		global.player4_wall_jump_setting = change_to_value;
+	}
+	else
+	if (variable_to_change = global.player1_show_controls)
+	and (menu = "show_controls")
+	and (remapping_player = 0)
+	{
+		global.player1_show_controls = change_to_value;
+	}
+	else
+	if (variable_to_change = global.player2_show_controls)
+	and (menu = "show_controls")
+	and (remapping_player = 1)
+	{
+		global.player2_show_controls = change_to_value;
+	}
+	else
+	if (variable_to_change = global.player3_show_controls)
+	and (menu = "show_controls")
+	and (remapping_player = 2)
+	{
+		global.player3_show_controls = change_to_value;
+	}
+	else
+	if (variable_to_change = global.player4_show_controls)
+	and (menu = "show_controls")
+	and (remapping_player = 3)
+	{
+		global.player4_show_controls = change_to_value;
 	}
 	else
 	if (variable_to_change = global.difficulty)

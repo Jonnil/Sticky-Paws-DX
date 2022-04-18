@@ -4,6 +4,7 @@ uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_
 var level_name = string(uppercase_level_name);
 
 if (other.clear_rate != "clear")
+and (other.level != come_from_level)
 and (delay = 0)
 {
 	other.clear_rate = "enter";

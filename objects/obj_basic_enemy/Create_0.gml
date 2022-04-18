@@ -12,6 +12,7 @@ die_volting = false;
 sliding_along_ground = 0;
 blind = false;
 coil_spring = false;
+can_die_from_spikes = true;
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {
 	enemyvoice_defeated1 = snd_enemyvoice_defeated;

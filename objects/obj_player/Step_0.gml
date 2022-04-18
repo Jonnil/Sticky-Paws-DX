@@ -4156,108 +4156,39 @@ and (obj_camera.iris_xscale < 3)
 else
 {
 	
-	#region /*Don't go outside view boundary*/
-	if (goal = true)
-	and (global.time_countdown_bonus <= 0)
+	#region /*Don't go outside view*/
+	if (x < camera_get_view_x(view_camera[view_current]))
+	and (instance_number(obj_player) >= 2)
+	and (intro_animation = "")
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
-		and (obj_camera.iris_xscale <= 0.01)
-		{
-			if (room_next(room) <>- 1)
-			{
-				if (asset_get_type("room_world_map") == asset_room)
-				and (obj_camera.iris_yscale <= 0.001)
-				{
-					audio_stop_all();
-					global.level_clear_rate = "clear";
-					global.x_checkpoint = 0;
-					global.y_checkpoint = 0;
-					global.checkpoint_millisecond = 0;
-					global.checkpoint_second = 0;
-					global.checkpoint_minute = 0;
-					global.checkpoint_realmillisecond = 0;
-					global.lives_until_assist = 0;
-					if (asset_get_type("room_world_map") == asset_room)
-					and (obj_camera.iris_yscale <= 0.001)
-					and (global.level_clear_rate = "clear")
-					{
-						if (asset_get_type("scr_savelevel") == asset_script)
-						{
-							scr_savelevel();
-						}
-						room_goto(room_world_map);
-					}
-				}
-				else
-				{
-					if (x > room_width + sprite_width / 2)
-					{
-						x =room_width + sprite_width / 2;
-						hspeed = 0;
-						vspeed = 0;
-					}
-				}
-			}
-			else
-			{
-				#region /*Restart Level Editor when finishing level*/
-				if (asset_get_type("room_world_map") == asset_room)
-				and (room = room_leveleditor)
-				and (global.character_select_in_this_menu = "level_editor")
-				{
-					global.play_edited_level = false;
-					global.actually_play_edited_level = false;
-					score = 0;
-					room_restart();
-				}
-				#endregion /*Restart Level Editor when finishing level END*/
-				else
-				{
-					game_restart();
-				}
-			}
-		}
+		x = camera_get_view_x(view_camera[view_current]);
 	}
-	#endregion /*Don't go outside view boundary END*/
+	if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	and (instance_number(obj_player) >= 2)
+	and (intro_animation = "")
+	{
+		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+	}
+	#endregion /*Don't go outside view END*/
 	
-	else
+	#region /*Don't go outside room*/
+	if (intro_animation = "")
 	{
-		
-		#region /*Don't go outside view*/
-		if (x < camera_get_view_x(view_camera[view_current]))
-		and (instance_number(obj_player) >= 2)
-		and (intro_animation = "")
+		if (x < 0)
 		{
-			x = camera_get_view_x(view_camera[view_current]);
+			x = 0;
 		}
-		if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-		and (instance_number(obj_player) >= 2)
-		and (intro_animation = "")
+		if (x > room_width)
 		{
-			x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			x = room_width;
 		}
-		#endregion /*Don't go outside view END*/
-		
-		#region /*Don't go outside room*/
-		if (intro_animation = "")
+		if (y < - 64)
 		{
-			if (x < 0)
-			{
-				x = 0;
-			}
-			if (x > room_width)
-			{
-				x = room_width;
-			}
-			if (y < - 64)
-			{
-				y = -64;
-			}
+			y = -64;
 		}
-		#endregion /*Don't go outside room END*/
-		
 	}
+	#endregion /*Don't go outside room END*/
+	
 }
 #endregion /*Winning the level and transitioning to the next area END*/
 
@@ -4586,7 +4517,8 @@ if (player <= 1)
 	or(gamepad_button_check_pressed(player - 1, gp_face2))
 	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_pressed(player - 1, gp_padu))
-	and!(gamepad_button_check_pressed(player - 1, gp_padd));
+	and!(gamepad_button_check_pressed(player - 1, gp_padd))
+	or (active_jump = true);
 	#endregion /*Player 1 Key Jump Pressed END*/
 	
 	#region /*Player 1 Key Jump Hold*/
@@ -4604,7 +4536,8 @@ if (player <= 1)
 	or(gamepad_button_check(player - 1, gp_face1))
 	or(gamepad_button_check(player - 1, gp_face2))
 	or(gamepad_button_check(player - 1, gp_padu))
-	and (!gamepad_button_check(player - 1, gp_padd));
+	and (!gamepad_button_check(player - 1, gp_padd))
+	or (active_jump = true);
 	#endregion /*Player 1 Key Jump Hold END*/
 	
 	#region /*Player 1 Key Jump Released*/
@@ -4814,7 +4747,8 @@ if (player = 2)
 	or(gamepad_button_check_pressed(player - 1, gp_face2))
 	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_pressed(player - 1, gp_padu))
-	and!(gamepad_button_check_pressed(player - 1, gp_padd));
+	and!(gamepad_button_check_pressed(player - 1, gp_padd))
+	or (active_jump = true);
 	#endregion /*Player 2 Key Jump Pressed END*/
 	
 	#region /*Player 2 Key Jump Hold*/
@@ -4832,7 +4766,8 @@ if (player = 2)
 	or(gamepad_button_check(player - 1, gp_face1))
 	or(gamepad_button_check(player - 1, gp_face2))
 	or(gamepad_button_check(player - 1, gp_padu))
-	and (!gamepad_button_check(player - 1, gp_padd));
+	and (!gamepad_button_check(player - 1, gp_padd))
+	or (active_jump = true);
 	#endregion /*Player 2 Key Jump Hold END*/
 	
 	#region /*Player 2 Key Jump Released*/
@@ -5042,7 +4977,8 @@ if (player = 3)
 	or(gamepad_button_check_pressed(player - 1, gp_face2))
 	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_pressed(player - 1, gp_padu))
-	and!(gamepad_button_check_pressed(player - 1, gp_padd));
+	and!(gamepad_button_check_pressed(player - 1, gp_padd))
+	or (active_jump = true);
 	#endregion /*Player 3 Key Jump Pressed END*/
 	
 	#region /*Player 3 Key Jump Hold*/
@@ -5060,7 +4996,8 @@ if (player = 3)
 	or(gamepad_button_check(player - 1, gp_face1))
 	or(gamepad_button_check(player - 1, gp_face2))
 	or(gamepad_button_check(player - 1, gp_padu))
-	and (!gamepad_button_check(player - 1, gp_padd));
+	and (!gamepad_button_check(player - 1, gp_padd))
+	or (active_jump = true);
 	#endregion /*Player 3 Key Jump Hold END*/
 	
 	#region /*Player 3 Key Jump Released*/
@@ -5270,7 +5207,8 @@ if (player = 4)
 	or(gamepad_button_check_pressed(player - 1, gp_face2))
 	or(up_key_is_jump_key = true)
 	and (gamepad_button_check_pressed(player - 1, gp_padu))
-	and!(gamepad_button_check_pressed(player - 1, gp_padd));
+	and!(gamepad_button_check_pressed(player - 1, gp_padd))
+	or (active_jump = true);
 	#endregion /*Player 4 Key Jump Pressed END*/
 	
 	#region /*Player 4 Key Jump Hold*/
@@ -5288,7 +5226,8 @@ if (player = 4)
 	or(gamepad_button_check(player - 1, gp_face1))
 	or(gamepad_button_check(player - 1, gp_face2))
 	or(gamepad_button_check(player - 1, gp_padu))
-	and (!gamepad_button_check(player - 1, gp_padd));
+	and (!gamepad_button_check(player - 1, gp_padd))
+	or (active_jump = true);
 	#endregion /*Player 4 Key Jump Hold END*/
 	
 	#region /*Player 4 Key Jump Released*/
@@ -9300,12 +9239,12 @@ and (instance_exists(obj_goal))
 				global.checkpoint_second = 0;
 				global.checkpoint_minute = 0;
 				global.checkpoint_realmillisecond = 0;
-		
+				
 				var uppercase_level_name;
 				uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
 				uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 				var level_name = string(uppercase_level_name);
-		
+				
 				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 				ini_write_real(level_name, "x_checkpoint", 0);
 				ini_write_real(level_name, "y_checkpoint", 0);
@@ -9326,12 +9265,12 @@ and (instance_exists(obj_goal))
 				global.checkpoint_second = 0;
 				global.checkpoint_minute = 0;
 				global.checkpoint_realmillisecond = 0;
-		
+				
 				var uppercase_level_name;
 				uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
 				uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 				var level_name = string(uppercase_level_name);
-		
+				
 				ini_open(working_directory + "/save_files/custom_level_save.ini");
 				ini_write_real(level_name, "x_checkpoint", 0);
 				ini_write_real(level_name, "y_checkpoint", 0);
@@ -10689,17 +10628,10 @@ if (on_ground = true)
 				audio_sound_gain(snd_skidding, global.sound_volume * global.main_volume, 0);
 			}
 		}
-		if (asset_get_type("spr_player_swim_skidding") == asset_sprite)
-		{
-			sprite_index = spr_player_swim_skidding;
-		}
-		else
-		{
-			if (sprite_swim > noone){sprite_index = sprite_swim;}else
-			if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
-			if (sprite_stand > noone){sprite_index = sprite_stand;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
-		}
+		if (sprite_swim > noone){sprite_index = sprite_swim;}else
+		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
+		if (sprite_stand > noone){sprite_index = sprite_stand;}else
+		if (sprite_walk > noone){sprite_index = sprite_walk;}
 		effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
 		if (image_index > image_number - 1)
 		{
@@ -12339,3 +12271,179 @@ and (sprite_index != sprite_vine_stay)
 #endregion /*Sprite standing with item in front END*/
 
 #endregion /*________________________________Handling the sprites and sounds in the step event________________________________END*/
+
+#region /*Partner Character Code*/
+if (partner_character = true)
+{
+	
+	#region /*What player to follow*/
+	if (player = 1)
+	{
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player4))
+		{
+			partner_follow_player = obj_camera.player4;
+		}
+		else
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player3))
+		{
+			partner_follow_player = obj_camera.player3;
+		}
+		else
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player2))
+		{
+			partner_follow_player = obj_camera.player2;
+		}
+	}
+	else
+	if (player = 2)
+	{
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player1))
+		{
+			partner_follow_player = obj_camera.player1;
+		}
+		else
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player4))
+		{
+			partner_follow_player = obj_camera.player4;
+		}
+		else
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player3))
+		{
+			partner_follow_player = obj_camera.player3;
+		}
+	}
+	else
+	if (player = 3)
+	{
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player2))
+		{
+			partner_follow_player = obj_camera.player2;
+		}
+		else
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player1))
+		{
+			partner_follow_player = obj_camera.player1;
+		}
+		else
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player4))
+		{
+			partner_follow_player = obj_camera.player4;
+		}
+	}
+	else
+	if (player = 4)
+	{
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player3))
+		{
+			partner_follow_player = obj_camera.player3;
+		}
+		else
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player2))
+		{
+			partner_follow_player = obj_camera.player2;
+		}
+		else
+		if (instance_exists(obj_camera))
+		and (instance_exists(obj_camera.player1))
+		{
+			partner_follow_player = obj_camera.player1;
+		}
+	}
+	#endregion /*What player to follow END*/
+	
+	if (instance_exists(obj_camera))
+	and (instance_exists(partner_follow_player))
+	and (distance_to_object(partner_follow_player) > 100)
+	and (x < partner_follow_player.x - 100)
+	{
+		active_right = true;
+		if (invincible >= true)
+		and (assist_invincible = false)
+		{
+			speed_max = lerp(speed_max, 10, 0.1);
+		}
+		else
+		{
+			if (speed_max < speed_max_run)
+			{
+				speed_max = lerp(speed_max, speed_max_run, 0.1);
+			}
+		}
+	}
+	else
+	{
+		active_right = false;
+	}
+	if (instance_exists(obj_camera))
+	and (instance_exists(partner_follow_player))
+	and (distance_to_object(partner_follow_player) > 100)
+	and (x > partner_follow_player.x + 100)
+	{
+		active_left = true;
+		if (invincible >= true)
+		and (assist_invincible = false)
+		{
+			speed_max = lerp(speed_max, 10, 0.1);
+		}
+		else
+		{
+			if (speed_max < speed_max_run)
+			{
+				speed_max = lerp(speed_max, speed_max_run, 0.1);
+			}
+		}
+	}
+	else
+	{
+		active_left = false;
+	}
+	if (instance_exists(obj_camera))
+	and (instance_exists(partner_follow_player))
+	and (distance_to_object(partner_follow_player) > 100)
+	and (y > partner_follow_player.y + 100)
+	and (on_ground = true)
+	or (instance_exists(obj_camera))
+	and (instance_exists(partner_follow_player))
+	and (distance_to_object(partner_follow_player) > 100)
+	and (place_meeting(x - 1, y, obj_wall))
+	and (x > partner_follow_player.x + 100)
+	and (on_ground = true)
+	or (instance_exists(obj_camera))
+	and (instance_exists(partner_follow_player))
+	and (distance_to_object(partner_follow_player) > 100)
+	and (place_meeting(x + 1, y, obj_wall))
+	and (x < partner_follow_player.x - 100)
+	and (on_ground = true)
+	{
+		active_jump = true;
+		active_up = true;
+	}
+	else
+	{
+		active_jump = false;
+		active_up = false;
+	}
+	if (instance_exists(obj_camera))
+	and (instance_exists(partner_follow_player))
+	and (distance_to_object(partner_follow_player) > 100)
+	and (y < partner_follow_player.y - 100)
+	{
+		active_down = true;
+	}
+	else
+	{
+		active_down = false;
+	}
+}
+#endregion /*Partner Character Code*/

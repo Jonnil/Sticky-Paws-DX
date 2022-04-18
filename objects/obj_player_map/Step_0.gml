@@ -66,30 +66,50 @@ if (menu = "continue_playing")
 	}
 }
 
-if (global.goal_active = true)
-{
-	with(instance_create_depth(x - 32, y, 0, obj_unlock_next_level))
-	{
-		delay = 3;
-		hspeed -= move_speed;
-	}
-	with(instance_create_depth(x + 32, y, 0, obj_unlock_next_level))
-	{
-		delay = 3;
-		hspeed += move_speed;
-	}
-	with(instance_create_depth(x, y - 32, 0, obj_unlock_next_level))
-	{
-		delay = 3;
-		vspeed -= move_speed;
-	}
-	with(instance_create_depth(x, y + 32, 0, obj_unlock_next_level))
-	{
-		delay = 3;
-		vspeed += move_speed;
-	}
-	global.goal_active = false;
-}
+//if (global.goal_active = true)
+//{
+//	with(instance_create_depth(x - 32, y, 0, obj_unlock_next_level))
+//	{
+//		delay = 3;
+//		if (instance_exists(obj_player_map))
+//		and (instance_exists(obj_level))
+//		{
+//			come_from_level = instance_nearest(obj_player_map.x, obj_player_map.y, obj_level).level;
+//		}
+//		hspeed -= move_speed;
+//	}
+//	with(instance_create_depth(x + 32, y, 0, obj_unlock_next_level))
+//	{
+//		delay = 3;
+//		if (instance_exists(obj_player_map))
+//		and (instance_exists(obj_level))
+//		{
+//			come_from_level = instance_nearest(obj_player_map.x, obj_player_map.y, obj_level).level;
+//		}
+//		hspeed += move_speed;
+//	}
+//	with(instance_create_depth(x, y - 32, 0, obj_unlock_next_level))
+//	{
+//		delay = 3;
+//		if (instance_exists(obj_player_map))
+//		and (instance_exists(obj_level))
+//		{
+//			come_from_level = instance_nearest(obj_player_map.x, obj_player_map.y, obj_level).level;
+//		}
+//		vspeed -= move_speed;
+//	}
+//	with(instance_create_depth(x, y + 32, 0, obj_unlock_next_level))
+//	{
+//		delay = 3;
+//		if (instance_exists(obj_player_map))
+//		and (instance_exists(obj_level))
+//		{
+//			come_from_level = instance_nearest(obj_player_map.x, obj_player_map.y, obj_level).level;
+//		}
+//		vspeed += move_speed;
+//	}
+//	global.goal_active = false;
+//}
 
 #region /*Path Turning*/
 

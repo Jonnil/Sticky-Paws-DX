@@ -1,3 +1,7 @@
+#region /*Level Load*/
+/*Loading the level data in Alarm Event works better than loading in Create Event*/
+/*Create Event isn't sure what level is set as*/
+/*So it doesn't know what level data to load there*/
 if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 {
 	var uppercase_level_name;
@@ -5,7 +9,6 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level))) - 1);
 	var level_name = string(uppercase_level_name);
 	
-	#region /*Level Load*/
 	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
 	clear_rate = ini_read_string(level_name, "clear_rate", "closed");
@@ -30,8 +33,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level_score = ini_read_real(level_name, "level_score", 0);
 	
 	ini_close();
-	#endregion /*Level Load END*/
-		
+	
 }
 else
 {
@@ -56,9 +58,57 @@ else
 	timeattack_realmillisecond = 999999999;
 	level_score = 0;
 }
+#endregion /*Level Load END*/
 
 if (always_open = true)
 and (clear_rate = "closed")
 {
 	clear_rate = "enter";
 }
+
+#region /*Unlock next level after setting own clear rate to clear*/
+/*This makes sure that if the level somehow loads as "enter" when it's supposed to load as "clear",*/
+/*when you reload the save file, it will still unlock the next level and correct itself.*/
+/*Reloading a save file always sets the clear rate correctly.*/
+/*Better to have the unlock level code in obj_level than obj_player_map*/
+if (clear_rate = "clear")
+{
+	with(instance_create_depth(x - 32, y, 0, obj_unlock_next_level))
+	{
+		delay = 3;
+		if (instance_exists(obj_level))
+		{
+			come_from_level = instance_nearest(x, y, obj_level).level;
+		}
+		hspeed -= move_speed;
+	}
+	with(instance_create_depth(x + 32, y, 0, obj_unlock_next_level))
+	{
+		delay = 3;
+		if (instance_exists(obj_level))
+		{
+			come_from_level = instance_nearest(x, y, obj_level).level;
+		}
+		hspeed += move_speed;
+	}
+	with(instance_create_depth(x, y - 32, 0, obj_unlock_next_level))
+	{
+		delay = 3;
+		if (instance_exists(obj_level))
+		{
+			come_from_level = instance_nearest(x, y, obj_level).level;
+		}
+		vspeed -= move_speed;
+	}
+	with(instance_create_depth(x, y + 32, 0, obj_unlock_next_level))
+	{
+		delay = 3;
+		if (instance_exists(obj_level))
+		{
+			come_from_level = instance_nearest(x, y, obj_level).level;
+		}
+		vspeed += move_speed;
+	}
+	global.goal_active = false;
+}
+#endregion /*Unlock next level after setting own clear rate to clear END*/

@@ -20,9 +20,18 @@ function scr_start_intro_animations()
 			intro_animation_image_index += 1;
 			if (cutscene_time <= 1)
 			{
-				instance_create_depth(x + 10, y, 0, obj_chair_and_table);
-				instance_create_depth(x + 40, y + 10, 0, obj_cake);
-				instance_create_depth(-27.795226, y, 0, obj_cake_stealing_enemy);
+				if (!instance_exists(obj_chair_and_table))
+				{
+					instance_create_depth(x + 10, y, 0, obj_chair_and_table);
+				}
+				if (!instance_exists(obj_cake))
+				{
+					instance_create_depth(x + 40, y + 10, 0, obj_cake);
+				}
+				if (!instance_exists(obj_cake_stealing_enemy))
+				{
+					instance_create_depth(-27.795226, y, 0, obj_cake_stealing_enemy);
+				}
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_sitting_eat_closed_mouth;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
 				image_index = 0;
@@ -89,21 +98,27 @@ function scr_start_intro_animations()
 				x = -16 -sprite_width;
 				hspeed = 0;
 				instance_create_depth(1697, 745, 0, obj_catlyn_working);
-				with(instance_create_depth(instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, 0, obj_chair_and_table))
-				{
-					ending = true;	
-				}
 				if (instance_exists(obj_goal))
 				{
+					with(instance_create_depth(instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, 0, obj_chair_and_table))
+					{
+						ending = true;	
+					}
 					with(instance_nearest(x, y, obj_goal))
 					{
 						instance_destroy();
 					}
 				}
-				instance_create_depth(- 16 -sprite_width, y, 0, obj_cake);
-				with(instance_create_depth(- 16 -sprite_width, y, 0, obj_cake_stealing_enemy))
+				if (!instance_exists(obj_cake))
 				{
-					time = room_speed* 2;
+					instance_create_depth(- 16 -sprite_width, y, 0, obj_cake);
+				}
+				if (!instance_exists(obj_cake_stealing_enemy))
+				{
+					with(instance_create_depth(- 16 -sprite_width, y, 0, obj_cake_stealing_enemy))
+					{
+						time = room_speed* 2;
+					}
 				}
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_run;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}

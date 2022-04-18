@@ -121,48 +121,45 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 #endregion /*Touching player END*/
 
 #region /*Touching enemy*/
-if (image_angle = 0)
-and (place_meeting(x, y - 2, instance_nearest(x, y, obj_enemy)))
-and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_enemy)))
-and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_enemy)))
-and (instance_nearest(x, y, obj_enemy).vspeed >= 0)
-or(image_angle = 90)
-and (place_meeting(x - 2, y, instance_nearest(x, y, obj_enemy)))
-and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_enemy)))
-and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_enemy)))
-and (instance_nearest(x, y, obj_enemy).hspeed >= 0)
-or(image_angle = 180)
-and (place_meeting(x, y + 2, instance_nearest(x, y, obj_enemy)))
-and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_enemy)))
-and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_enemy)))
-and (instance_nearest(x, y, obj_enemy).vspeed <= 0)
-or(image_angle = 270)
-and (place_meeting(x + 2, y, instance_nearest(x, y, obj_enemy)))
-and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_enemy)))
-and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_enemy)))
-and (instance_nearest(x, y, obj_enemy).hspeed <= 0)
+if (instance_exists(obj_enemy))
 {
-	if (asset_get_type("spr_spikes_emerge") == asset_sprite)
-	and (sprite_index = spr_spikes_emerge)
-	and (asset_get_type("obj_boss") == asset_object)
-	and (!place_meeting(x - 1, y, obj_boss))
-	and (!place_meeting(x + 1, y, obj_boss))
-	and (!place_meeting(x, y - 1, obj_boss))
-	and (!place_meeting(x, y + 1, obj_boss))
+	if (instance_nearest(x, y, obj_enemy).can_die_from_spikes = true)
 	{
-		if (instance_nearest(x, y, obj_enemy).x < x)
-		and (instance_nearest(x, y, obj_enemy).die = false)
+		if (image_angle = 0)
+		and (place_meeting(x, y - 2, instance_nearest(x, y, obj_enemy)))
+		and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_enemy)))
+		and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_enemy)))
+		and (instance_nearest(x, y, obj_enemy).vspeed >= 0)
+		or(image_angle = 90)
+		and (place_meeting(x - 2, y, instance_nearest(x, y, obj_enemy)))
+		and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_enemy)))
+		and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_enemy)))
+		and (instance_nearest(x, y, obj_enemy).hspeed >= 0)
+		or(image_angle = 180)
+		and (place_meeting(x, y + 2, instance_nearest(x, y, obj_enemy)))
+		and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_enemy)))
+		and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_enemy)))
+		and (instance_nearest(x, y, obj_enemy).vspeed <= 0)
+		or(image_angle = 270)
+		and (place_meeting(x + 2, y, instance_nearest(x, y, obj_enemy)))
+		and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_enemy)))
+		and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_enemy)))
+		and (instance_nearest(x, y, obj_enemy).hspeed <= 0)
 		{
-			instance_nearest(x, y, obj_enemy).vspeed = - 8;
-			instance_nearest(x, y, obj_enemy).die_volting = -1;
-			instance_nearest(x, y, obj_enemy).die = true;
-		}
-		else
-		if (instance_nearest(x, y, obj_enemy).die = false)
-		{
-			instance_nearest(x, y, obj_enemy).vspeed = - 8;
-			instance_nearest(x, y, obj_enemy).die_volting = +1;
-			instance_nearest(x, y, obj_enemy).die = true;
+			if (instance_nearest(x, y, obj_enemy).x < x)
+			and (instance_nearest(x, y, obj_enemy).die = false)
+			{
+				instance_nearest(x, y, obj_enemy).vspeed = - 8;
+				instance_nearest(x, y, obj_enemy).die_volting = -1;
+				instance_nearest(x, y, obj_enemy).die = true;
+			}
+			else
+			if (instance_nearest(x, y, obj_enemy).die = false)
+			{
+				instance_nearest(x, y, obj_enemy).vspeed = - 8;
+				instance_nearest(x, y, obj_enemy).die_volting = +1;
+				instance_nearest(x, y, obj_enemy).die = true;
+			}
 		}
 	}
 }
