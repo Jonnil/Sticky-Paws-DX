@@ -355,6 +355,7 @@ and (global.pause_room = room_leveleditor)
 			if (global.convention_mode = false)
 			{
 				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Options"), "options", "options");
+				draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width()/ 2 - 185 + 20, window_get_height()/ 2 + 42 + 21, 1, 1, 0, c_white, 1);
 				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Restart"), "restart", "restart");
 				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42 + 42, Text("Quit"), "quit", "quit_to_map");
 			}
@@ -369,6 +370,7 @@ and (global.pause_room = room_leveleditor)
 			if (global.convention_mode = false)
 			{
 				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Options"), "options", "options");
+				draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width()/ 2 - 185 + 20, window_get_height()/ 2 + 42 + 21, 1, 1, 0, c_white, 1);
 				draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Quit"), "quit", "quit");
 			}
 			else

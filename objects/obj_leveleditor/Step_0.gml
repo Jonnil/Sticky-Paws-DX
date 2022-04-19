@@ -173,6 +173,7 @@ or (global.full_level_map_screenshot = true)
 		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height()/ 2 - 32, window_get_width(), window_get_height()/ 2 + 32))
 		and (asset_get_type("obj_camera") == asset_object)
 		and (!instance_exists(obj_camera))
+		or (global.full_level_map_screenshot = true)
 		{
 			
 			#region /*Limit so cursor and view can't go outside room*/
@@ -496,6 +497,37 @@ if (quit_level_editor <= 0)
 		cursor_y = window_mouse_get_y();
 		controller_x = window_mouse_get_x();
 		controller_y = window_mouse_get_y();
+		
+		if (keyboard_check(vk_control))
+		{
+			controller_view_speed = 16;
+		}
+		else
+		{
+			controller_view_speed = 8;
+		}
+		
+		if (pause = false)
+		{
+			if (keyboard_check(global.player1_key_up)) and (!keyboard_check(global.player1_key_down))or(keyboard_check(vk_up)) and (!keyboard_check(vk_down))
+			{
+				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - controller_view_speed);
+			}
+			if (keyboard_check(global.player1_key_down)) and (!keyboard_check(global.player1_key_up))or(keyboard_check(vk_down)) and (!keyboard_check(vk_up))
+			{
+				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + controller_view_speed);
+			}
+			if (keyboard_check(global.player1_key_left)) and (!keyboard_check(global.player1_key_right))or(keyboard_check(vk_left)) and (!keyboard_check(vk_right))
+			{
+				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) - controller_view_speed, camera_get_view_y(view_camera[view_current]));
+			}
+			if (keyboard_check(global.player1_key_right)) and (!keyboard_check(global.player1_key_left))or(keyboard_check(vk_right)) and (!keyboard_check(vk_left))
+			{
+				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) + controller_view_speed, camera_get_view_y(view_camera[view_current]));
+			}
+		}
+		#endregion /*Move view with gamepad END*/
+		
 	}
 	else
 	if (global.controls_used_for_menu_navigation = "controller")
@@ -532,6 +564,7 @@ if (quit_level_editor <= 0)
 		{
 			if (gamepad_button_check(0, gp_face3))
 			or(gamepad_button_check(0, gp_face4))
+			or (gamepad_button_check(0, gp_stickl))
 			{
 				controller_y-= 8;
 			}
@@ -545,6 +578,7 @@ if (quit_level_editor <= 0)
 		{
 			if (gamepad_button_check(0, gp_face3))
 			or(gamepad_button_check(0, gp_face4))
+			or (gamepad_button_check(0, gp_stickl))
 			{
 				controller_y += 8;
 			}
@@ -558,6 +592,7 @@ if (quit_level_editor <= 0)
 		{
 			if (gamepad_button_check(0, gp_face3))
 			or(gamepad_button_check(0, gp_face4))
+			or (gamepad_button_check(0, gp_stickl))
 			{
 				controller_x -= 8;
 			}
@@ -571,6 +606,7 @@ if (quit_level_editor <= 0)
 		{
 			if (gamepad_button_check(0, gp_face3))
 			or(gamepad_button_check(0, gp_face4))
+			or (gamepad_button_check(0, gp_stickl))
 			{
 				controller_x += 8;
 			}
@@ -579,10 +615,11 @@ if (quit_level_editor <= 0)
 				controller_x += 4;
 			}
 		}
-	
+		
 		#region /*Move view with gamepad*/
 		if (gamepad_button_check(0, gp_face3))
-		or(gamepad_button_check(0, gp_face4))
+		or (gamepad_button_check(0, gp_face4))
+		or (gamepad_button_check(0, gp_stickl))
 		{
 			controller_view_speed = 16;
 		}
@@ -590,7 +627,7 @@ if (quit_level_editor <= 0)
 		{
 			controller_view_speed = 8;
 		}
-	
+		
 		if (gamepad_axis_value(0, gp_axisrv) < 0)
 		or (key_up)
 		and (controller_y <= camera_get_view_y(view_camera[view_current]))

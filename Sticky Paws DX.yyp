@@ -113,6 +113,7 @@
     {"id":{"name":"obj_sign_moveset","path":"objects/obj_sign_moveset/obj_sign_moveset.yy",},"order":22,},
     {"id":{"name":"snd_footstep_rock_right","path":"sounds/snd_footstep_rock_right/snd_footstep_rock_right.yy",},"order":51,},
     {"id":{"name":"obj_goal","path":"objects/obj_goal/obj_goal.yy",},"order":7,},
+    {"id":{"name":"spr_icons_cogwheel","path":"sprites/spr_icons_cogwheel/spr_icons_cogwheel.yy",},"order":24,},
     {"id":{"name":"spr_checkbox","path":"sprites/spr_checkbox/spr_checkbox.yy",},"order":35,},
     {"id":{"name":"obj_wall_climb_panel","path":"objects/obj_wall_climb_panel/obj_wall_climb_panel.yy",},"order":16,},
     {"id":{"name":"spr_menu_button_3player","path":"sprites/spr_menu_button_3player/spr_menu_button_3player.yy",},"order":8,},

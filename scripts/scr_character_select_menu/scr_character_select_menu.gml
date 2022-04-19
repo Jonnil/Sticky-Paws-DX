@@ -1,11 +1,17 @@
 ///scr_character_select_menu()
 function scr_character_select_menu()
 {
+	if (menu = "select_character")
+	{
+		player1_menu = "select_character";
+	}
+	
 	arrow_offset = 125;
 	
 	if (menu = "select_character")
 	or (menu = "back_from_character_select")
 	or (menu = "open_custom_characters_folder")
+	or (menu = "copy_character")
 	{
 		image_alpha = 0;
 		
@@ -156,8 +162,8 @@ function scr_character_select_menu()
 				if (menu_delay = 0)
 				{
 					menu_delay = 3;
-					player1_menu = "select_character";
-					menu = "select_character";
+					player1_menu = "copy_character";
+					menu = "copy_character";
 				}
 			}
 		}
@@ -196,10 +202,48 @@ function scr_character_select_menu()
 		{
 			menu_delay = 3;
 			can_navigate = true;
+			player1_menu = "copy_character";
+			menu = "copy_character";
+		}
+		#endregion /*Open Custom Levels Folder END*/
+		
+		#region /*Copy Characters*/
+		draw_menu_button(0, 42 + 42, Text("Copy Characters"), "copy_character", "click_copy_character");
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 42 + 2 + 42, 371, 42 + 41 + 42))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or (menu = "copy_character")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		or (player1_menu = "copy_character")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		{
+			menu = "click_copy_character";
+			menu_delay = 3;
+		}
+		if (menu = "copy_character")
+		and (key_up)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		{
+			menu_delay = 3;
+			can_navigate = true;
+			player1_menu = "open_custom_characters_folder";
+			menu = "open_custom_characters_folder";
+		}
+		if (menu = "copy_character")
+		and (key_down)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		{
+			menu_delay = 3;
+			can_navigate = true;
 			player1_menu = "select_character";
 			menu = "select_character";
 		}
-		#endregion /*Open Custom Levels Folder END*/
+		#endregion /*Copy Characters END*/
 		
 		#region /*Positions and Scale for each character display*/
 		
@@ -215,9 +259,6 @@ function scr_character_select_menu()
 		#endregion /*Player positions and scale for each character display END*/
 		
 		#endregion /*Positions and Scale for each character display*/
-		
-		max_number_of_characters = 1; /*Update this whenever you add more playable characters!*/
-		max_number_of_colors = 15; /*Update this whenever you add more colors!*/
 		
 		#region /*Give feedback that you have selected a character*/
 		if (asset_get_type("spr_select_character_background") == asset_sprite)
@@ -271,35 +312,49 @@ function scr_character_select_menu()
 					and (player1_menu != "back_from_character_select")
 					and (menu != "open_custom_characters_folder")
 					and (player1_menu != "open_custom_characters_folder")
+					and (menu != "copy_character")
+					and (player1_menu != "copy_character")
 					{
+						menu = "select_character";
+						player1_menu = "select_character";
 						menu_delay = 3;
 						player1_accept_selection = 0;
 					}
 				}
 				
 				#region /*Key A*/
-				if (gamepad_is_connected(0))
-				and (asset_get_type("spr_xbox_buttons") == asset_sprite)
-				and (global.controls_used_for_menu_navigation = "controller")
+				if (menu != "back_from_character_select")
+				and (player1_menu != "back_from_character_select")
+				and (menu != "open_custom_characters_folder")
+				and (player1_menu != "open_custom_characters_folder")
+				and (menu != "copy_character")
+				and (player1_menu != "copy_character")
+				and (global.controls_used_for_menu_navigation != "mouse")
+				or (global.controls_used_for_menu_navigation = "mouse")
 				{
-					draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + player1_display_x + 90, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				{
-					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+					if (gamepad_is_connected(0))
+					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+					and (global.controls_used_for_menu_navigation = "controller")
 					{
-						if (global.player1_key_jump > noone)
+						draw_sprite_ext(spr_xbox_buttons, 0, window_get_width()/ 2 + player1_display_x + 90, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					{
+						if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 						{
-							draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, window_get_width()/ 2 + player1_display_x + 90, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
-						}
-						else
-						if (global.player1_key2_jump > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, window_get_width()/ 2 + player1_display_x + 90, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
-						}
-						else
-						{
-							draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + player1_display_x + 90, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+							if (global.player1_key_jump > noone)
+							{
+								draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, window_get_width()/ 2 + player1_display_x + 90, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+							}
+							else
+							if (global.player1_key2_jump > noone)
+							{
+								draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, window_get_width()/ 2 + player1_display_x + 90, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+							}
+							else
+							{
+								draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + player1_display_x + 90, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+							}
 						}
 					}
 				}
@@ -476,7 +531,7 @@ function scr_character_select_menu()
 		
 		#region /*Display Selected Characters*/
 	
-	#region /*Player 1*/
+	#region /*Draw Character Portrait for Player 1*/
 	if (global.sprite_select_player_1 > 0)
 	and (player1_accept_selection >= 0)
 	{
@@ -489,9 +544,9 @@ function scr_character_select_menu()
 			draw_sprite_ext(global.sprite_select_player_1, 0, window_get_width()/ 2 +xx1, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, c_black, 0.5);
 		}
 	}
-	#endregion /*Player 1 END*/
+	#endregion /*Draw Character Portrait for Player 1 END*/
 	
-	#region /*Player 2*/
+	#region /*Draw Character Portrait for Player 2*/
 	if (global.sprite_select_player_2 > 0)
 	and (player2_accept_selection >= 0)
 	{
@@ -504,9 +559,9 @@ function scr_character_select_menu()
 			draw_sprite_ext(global.sprite_select_player_2, 0, window_get_width()/ 2 +xx2, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_2), 392 / sprite_get_width(global.sprite_select_player_2), 0, c_black, 0.5);
 		}
 	}
-	#endregion /*Player 2 END*/
+	#endregion /*Draw Character Portrait for Player 2 END*/
 	
-	#region /*Player 3*/
+	#region /*Draw Character Portrait for Player 3*/
 	if (global.sprite_select_player_3 > 0)
 	and (player3_accept_selection >= 0)
 	{
@@ -519,9 +574,9 @@ function scr_character_select_menu()
 			draw_sprite_ext(global.sprite_select_player_3, 0, window_get_width()/ 2 +xx3, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_3), 392 / sprite_get_width(global.sprite_select_player_3), 0, c_black, 0.5);
 		}
 	}
-	#endregion /*Player 3 END*/
+	#endregion /*Draw Character Portrait for Player 3 END*/
 	
-	#region /*Player 4 */
+	#region /*Draw Character Portrait for Player 4*/
 	if (global.sprite_select_player_4 > 0)
 	and (player4_accept_selection >= 0)
 	{
@@ -534,7 +589,7 @@ function scr_character_select_menu()
 			draw_sprite_ext(global.sprite_select_player_4, 0, window_get_width()/ 2 +xx4, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_4), 392 / sprite_get_width(global.sprite_select_player_4), 0, c_black, 0.5);
 		}
 	}
-	#endregion /*Player 4 END*/
+	#endregion /*Draw Character Portrait for Player 4 END*/
 	
 	#endregion /*Display Selected Characters END*/
 		
@@ -2554,6 +2609,7 @@ function scr_character_select_menu()
 		if (player1_menu!= "select_name")
 		and (player1_menu!= "back_from_character_select")
 		and (player1_menu!= "open_custom_characters_folder")
+		and (player1_menu!= "copy_character")
 		and (can_input_player1_name = false)
 		and (can_input_player2_name = false)
 		and (can_input_player3_name = false)
@@ -3820,8 +3876,8 @@ function scr_character_select_menu()
 						}
 						else
 						{
-							player1_menu = "open_custom_characters_folder";
-							menu = "open_custom_characters_folder";
+							player1_menu = "copy_character";
+							menu = "copy_character";
 						}
 					}
 				}
@@ -4937,6 +4993,7 @@ and (player4_accept_selection >= 0)
 			and (key_a_pressed)
 			and (player1_menu != "back_from_character_select")
 			and (player1_menu != "open_custom_characters_folder")
+			and (player1_menu != "copy_character")
 			or(player1_accept_selection = true)
 			and (player2_accept_selection != 0)
 			and (player3_accept_selection != 0)
@@ -4944,6 +5001,7 @@ and (player4_accept_selection >= 0)
 			and (keyboard_check_pressed(global.player1_key_jump))
 			and (player1_menu != "back_from_character_select")
 			and (player1_menu != "open_custom_characters_folder")
+			and (player1_menu != "copy_character")
 			or(player1_accept_selection = true)
 			and (player2_accept_selection != 0)
 			and (player3_accept_selection != 0)
@@ -4951,6 +5009,7 @@ and (player4_accept_selection >= 0)
 			and (keyboard_check_pressed(global.player1_key2_jump))
 			and (player1_menu != "back_from_character_select")
 			and (player1_menu != "open_custom_characters_folder")
+			and (player1_menu != "copy_character")
 			or(player1_accept_selection = true)
 			and (player2_accept_selection != 0)
 			and (player3_accept_selection != 0)
@@ -4958,6 +5017,7 @@ and (player4_accept_selection >= 0)
 			and (gamepad_button_check_pressed(0, gp_face1))
 			and (player1_menu != "back_from_character_select")
 			and (player1_menu != "open_custom_characters_folder")
+			and (player1_menu != "copy_character")
 			
 			or(player1_accept_selection = -1)
 			and (player2_accept_selection = true)
@@ -5340,8 +5400,6 @@ and (player4_accept_selection >= 0)
 		menu_joystick4_delay -= 1;
 	}
 	#endregion /*Menu navigation with joystick END*/
-		
-	}
 	
 	#region /*Play the game text*/
 	if (player_start_game = true)
@@ -5534,5 +5592,375 @@ and (player4_accept_selection >= 0)
 		}
 	}
 	#endregion /*Play the game text END*/
+	
+	}
+	else
+	if (menu = "click_copy_character")
+	or (menu = "open_folder_copy_character")
+	or (menu = "back_from_copy_character")
+	{
+		player1_display_x = 0;
+		xx1 = 0;
+		
+		#region /*Draw Character Portrait for Player 1*/
+		if (global.sprite_select_player_1 > 0)
+		{
+			draw_sprite_ext(global.sprite_select_player_1, 0, window_get_width()/ 2 +xx1, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, global.hex_color_for_player_1, 1);
+		}
+		#endregion /*Draw Character Portrait for Player 1 END*/
+		
+		#region /*Player 1*/
+		
+		#region /*Player 1 change portrait when clicking left or right*/
+		
+		#region /*Player 1 Key Left (change portrait sprites)*/
+		if (keyboard_check_pressed(global.player1_key_left))
+		and (!keyboard_check_pressed(global.player1_key_right))
+		or(keyboard_check_pressed(global.player1_key2_left))
+		and (!keyboard_check_pressed(global.player1_key2_right))
+		or(gamepad_button_check_pressed(0, gp_padl))
+		and (!gamepad_button_check_pressed(0, gp_padr))
+		or(gamepad_axis_value(0, gp_axislh) < 0)
+		and (menu_joystick1_delay <= 0)
+		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+		window_get_width()/ 2 + player1_display_x - arrow_offset - 16,
+		window_get_height()/ 2 - 16,
+		window_get_width()/ 2 + player1_display_x - arrow_offset + 16,
+		window_get_height()/ 2 + 16))
+		and (mouse_check_button_pressed(mb_left))
+		{
+			
+			if (menu_delay = 0)
+			and (global.character_index[0] > 0)
+			{
+				menu_delay = 3;
+				menu_joystick1_delay = 30;
+				if (global.character_index[0] > 0)
+				{
+					global.character_index[0] -= 1;
+					global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
+					xx1 = player1_display_x - 32;
+				}
+				else
+				{
+					global.character_index[0] = 0;
+					global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
+				}
+				
+				#region /*Player 1 character select portrait sprite*/
+				global.sprite_select_player_1 = spr_noone;
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				#endregion /*Player 1 character select portrait sprite END*/
+				
+			}
+		}
+		#endregion /*Player 1 Key Left (change portrait sprites) END*/
+		
+		#region /*Player 1 Key Right (change portrait sprites)*/
+		if (keyboard_check_pressed(global.player1_key_right))
+		and (!keyboard_check_pressed(global.player1_key_left))
+		or(keyboard_check_pressed(global.player1_key2_right))
+		and (!keyboard_check_pressed(global.player1_key2_left))
+		or(gamepad_button_check_pressed(0, gp_padr))
+		and (!gamepad_button_check_pressed(0, gp_padl))
+		or(gamepad_axis_value(0, gp_axislh) > 0)
+		and (menu_joystick1_delay <= 0)
+		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+		window_get_width()/ 2 + player1_display_x + arrow_offset - 16,
+		window_get_height()/ 2 - 16,
+		window_get_width()/ 2 + player1_display_x + arrow_offset + 16,
+		window_get_height()/ 2 + 16))
+		and (mouse_check_button_pressed(mb_left))
+		{
+			
+			if (menu_delay = 0)
+			{
+				menu_delay = 3;
+				menu_joystick1_delay = 30;
+				
+				global.character_index[0] = clamp(global.character_index[0] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
+				global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
+				xx1 = player1_display_x + 32;
+				
+				#region /*Player 1 character select portrait sprite*/
+				global.sprite_select_player_1 = spr_noone;
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				#endregion /*Player 1 character select portrait sprite END*/
+				
+			}
+		}
+		#endregion /*Player 1 Key Right (change portrait sprites) END*/
+		
+		#endregion /*Player 1 change portrait when clicking left or right END*/
+		
+		#region /*Key Left*/
+		if (global.character_index[0] > 0)
+		{
+			if (gamepad_is_connected(0))
+			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+			and (global.controls_used_for_menu_navigation = "controller")
+			{
+				draw_sprite_ext(spr_xbox_buttons, 4, window_get_width()/ 2 + player1_display_x - arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+			{
+				if (global.player1_key_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_left, window_get_width()/ 2 + player1_display_x - arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (global.player1_key2_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_left, window_get_width()/ 2 + player1_display_x - arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + player1_display_x - arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+				}
+			}
+					
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 + player1_display_x - arrow_offset - 16, window_get_height()/ 2 - 16, window_get_width()/ 2 + player1_display_x - arrow_offset + 16, window_get_height()/ 2 + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			{
+				player1_menu = "select_character";
+				draw_set_alpha(0.5);
+				draw_rectangle_color(window_get_width()/ 2 + player1_display_x - arrow_offset - 16, window_get_height()/ 2 - 16, window_get_width()/ 2 + player1_display_x - arrow_offset + 16, window_get_height()/ 2 + 16, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
+		}
+		#endregion /*Key Left END*/
+		
+		#region /*Key Right*/
+		if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
+		{
+			if (gamepad_is_connected(0))
+			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+			and (global.controls_used_for_menu_navigation = "controller")
+			{
+				draw_sprite_ext(spr_xbox_buttons,6, window_get_width()/ 2 + player1_display_x + arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+			{
+				if (global.player1_key_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_right, window_get_width()/ 2 + player1_display_x + arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (global.player1_key2_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_right, window_get_width()/ 2 + player1_display_x + arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_keyboard_keys, 0, window_get_width()/ 2 + player1_display_x + arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
+				}
+			}
+				
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 + player1_display_x + arrow_offset - 16, window_get_height()/ 2 - 16, window_get_width()/ 2 + player1_display_x + arrow_offset + 16, window_get_height()/ 2 + 16))
+			and (global.controls_used_for_menu_navigation = "mouse")
+			{
+				player1_menu = "select_character";
+				draw_set_alpha(0.5);
+				draw_rectangle_color(window_get_width()/ 2 + player1_display_x + arrow_offset - 16, window_get_height()/ 2 - 16, window_get_width()/ 2 + player1_display_x + arrow_offset + 16, window_get_height()/ 2 + 16, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
+		}
+		#endregion /*Key Right END*/
+		
+		#endregion /*Player 1 END*/
+		
+		draw_text_outlined(window_get_width() / 2, 128, Text("Copy character feature is not finished yet. Click 'Open Character Folder' to look in any character and copy files manually for now."), global.default_text_size, c_black, c_red, 1);
+		
+		#region /*Copy Characters*/
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42 - 42 - 42, Text("Copy Character"), "click_copy_character", "click_copy_character");
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() - 42 - 42 - 42 + 2, window_get_width() / 2 - 185 + 371, window_get_height() - 42 - 43 + 42 - 42))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or (menu = "click_copy_character")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		or (player1_menu = "click_copy_character")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		{
+			menu = "click_copy_character";
+			player1_menu = "click_copy_character";
+			
+			with(instance_create_depth(window_get_width() / 2, window_get_height() - 42 - 42 - 42, 0, obj_scoreup))
+			{
+				scoreup = "Copied";
+			}
+			
+			#region /*Copy character files to new character folder*/
+			
+			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy"))
+			{
+				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy")
+			}
+			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data"))
+			{
+				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data")
+			}
+			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound"))
+			{
+				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound")
+			}
+			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites"))
+			{
+				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites")
+			}
+			
+			#region /*Copy files from selected character to custom character copy*/
+			if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+			{
+				file_copy(
+				"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini",
+				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/character_config.ini");
+			}
+			if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+			{
+				file_copy(
+				"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini",
+				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/sprite_origin_point.ini");
+			}
+			if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+			{
+				file_copy(
+				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini",
+				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/character_config.ini");
+			}
+			if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+			{
+				file_copy(
+				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini",
+				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/sprite_origin_point.ini");
+			}
+			#endregion /*Copy files from selected character to custom character copy END*/
+			
+			#endregion /*Copy character files to new character folder END*/
+			
+			menu_delay = 3;
+		}
+		if (menu = "click_copy_character")
+		and (key_up)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		{
+			menu_delay = 3;
+			can_navigate = true;
+			player1_menu = "back_from_copy_character";
+			menu = "back_from_copy_character";
+		}
+		if (menu = "click_copy_character")
+		and (key_down)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		{
+			menu_delay = 3;
+			can_navigate = true;
+			player1_menu = "open_folder_copy_character";
+			menu = "open_folder_copy_character";
+		}
+		#endregion /*Copy Characters END*/
+		
+		#region /*Open Character Folder*/
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42 - 42, Text("Open Character Folder"), "open_folder_copy_character", "open_folder_copy_character");
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() - 42 - 42 + 2, window_get_width() / 2 - 185 + 371, window_get_height() - 42 - 41 + 42))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or (menu = "open_folder_copy_character")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		or (player1_menu = "open_folder_copy_character")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		{
+			menu = "open_folder_copy_character";
+			player1_menu = "open_folder_copy_character";
+			
+			if (directory_exists("characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
+			{
+				scr_open_folder("characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])))
+			}
+			else
+			if (directory_exists(game_save_id + "\custom_characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
+			{
+				scr_open_folder(game_save_id + "\custom_characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])))
+			}
+			
+			menu_delay = 3;
+		}
+		if (menu = "open_folder_copy_character")
+		and (key_up)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		{
+			menu_delay = 3;
+			can_navigate = true;
+			player1_menu = "click_copy_character";
+			menu = "click_copy_character";
+		}
+		if (menu = "open_folder_copy_character")
+		and (key_down)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		{
+			menu_delay = 3;
+			can_navigate = true;
+			player1_menu = "back_from_copy_character";
+			menu = "back_from_copy_character";
+		}
+		#endregion /*Open Character Folder END*/
+		
+		#region /*Back from Copy Characters*/
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42, Text("Back"), "back_from_copy_character", "copy_character");
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() - 42 + 2, window_get_width() / 2 - 185 + 371, window_get_height() - 42 - 41))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or (menu = "back_from_copy_character")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		or (player1_menu = "back_from_copy_character")
+		and (key_a_pressed)
+		and (menu_delay = 0)
+		{
+			menu = "copy_character";
+			player1_menu = "copy_character";
+			menu_delay = 3;
+		}
+		if (menu = "back_from_copy_character")
+		and (key_up)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		{
+			menu_delay = 3;
+			can_navigate = true;
+			player1_menu = "open_folder_copy_character";
+			menu = "open_folder_copy_character";
+		}
+		if (menu = "back_from_copy_character")
+		and (key_down)
+		and (menu_delay = 0)
+		and (menu_joystick_delay <= 0)
+		{
+			menu_delay = 3;
+			can_navigate = true;
+			player1_menu = "click_copy_character";
+			menu = "click_copy_character";
+		}
+		#endregion /*Back from Copy Characters END*/
+		
+	}
 	
 }

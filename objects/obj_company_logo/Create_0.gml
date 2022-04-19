@@ -116,7 +116,10 @@ if (!directory_exists(working_directory + "\custom_characters"))
 font_add_enable_aa(false);
 global.default_font = font_add("gamefont.ttc", 24, true, false, 32, 128);
 draw_set_font(global.default_font);
-can_save_to_character_config = false;
+saved_file_exists = false;
+can_save_to_character_config = false; /*Only turn true when playing as custom character*/
+unused_x_origin_point = noone;
+unused_y_origin_point = noone;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
 sprite_splash_easteregg_yoffset = +128;

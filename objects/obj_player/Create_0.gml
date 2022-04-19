@@ -1,5 +1,10 @@
 /*________________________________Create Event________________________________*/
 
+saved_file_exists = false;
+can_save_to_character_config = false; /*Only turn true when playing as custom character*/
+unused_x_origin_point = noone;
+unused_y_origin_point = noone;
+
 #region /*What custom character to use. Change the character sprites and voice*/
 player = 1;
 partner_character = false;
@@ -419,7 +424,6 @@ can_dive = true;
 can_ground_pound = true;
 can_ledge_grab = true;
 can_mid_air_jump = 0; /*When 0, you can mid air jump. Counts down when above 0*/
-can_save_to_character_config = false; /*Only turn true when playing as custom character*/
 can_tongue = true;
 can_wall_jump = true;
 current_file = global.file;

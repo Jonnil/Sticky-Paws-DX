@@ -3,6 +3,11 @@ active_right = false;
 active_up = false;
 active_down = false;
 
+saved_file_exists = false;
+can_save_to_character_config = false; /*Only turn true when playing as custom character*/
+unused_x_origin_point = noone;
+unused_y_origin_point = noone;
+
 move_speed = 8;
 
 /*Player 1 Key Left Hold*/ key_left = (keyboard_check(global.player1_key_left)) and (!keyboard_check(global.player1_key_right)) or(keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or(gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr)) or(gamepad_axis_value(0, gp_axislh) < 0);

@@ -7442,7 +7442,10 @@ if (ini_key_exists("values", "acceleration_on_ground"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "acceleration_on_ground", 30);}
+	if (can_save_to_character_config = true)
+	{
+		ini_write_real("values", "acceleration_on_ground", 30);
+	}
 	acceleration_on_ground = 0.3;
 }
 #endregion /*Acceleration on ground END*/
@@ -7454,7 +7457,10 @@ if (ini_key_exists("values", "acceleration_in_air"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "acceleration_in_air", 30);}
+	if (can_save_to_character_config = true)
+	{
+		ini_write_real("values", "acceleration_in_air", 30);
+	}
 	acceleration_in_air = 0.3;
 }
 #endregion /*Acceleration in air END*/
@@ -7466,7 +7472,10 @@ if (ini_key_exists("values", "acceleration_on_ice"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "acceleration_on_ice", 5);}
+	if (can_save_to_character_config = true)
+	{
+		ini_write_real("values", "acceleration_on_ice", 5);
+	}
 	acceleration_on_ice = 0.05;
 }
 #endregion /*Acceleration on ice END*/

@@ -694,7 +694,10 @@ if (save_level_as_png = false)
 	
 	#region /*Camera when you win level*/
 	if (global.player_has_entered_goal = true)
+	and (asset_get_type("obj_goal") == asset_object)
 	and (instance_exists(obj_goal))
+	and (asset_get_type("obj_player") == asset_object)
+	and (instance_exists(obj_player))
 	{
 		xx = mean(instance_nearest(obj_goal.x, obj_goal.y, obj_player).x, obj_goal.x);
 		yy = mean(instance_nearest(obj_goal.x, obj_goal.y, obj_player).y, obj_goal.y);

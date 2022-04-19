@@ -13,7 +13,7 @@ or(!file_exists(working_directory + "save_files/file" + string(current_file) + "
 if (global.full_level_map_screenshot = true)
 and (full_level_map_screenshot_timer <= 0)
 {
-	can_move = false;
+	can_move = false; /*Make it so you can't move while game is generating a full level map screenshot, so you can't mess with the screenshot*/
 	instance_activate_all();
 	
 	#region /*Delete some objects so it doesn't show up in the screenshot*/
@@ -40,19 +40,17 @@ if (full_level_map_screenshot_timer = 15)
 {
 	var custom_level_map_sprite;
 	custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
-	if (ds_list_find_value(global.all_loaded_title_backgrounds, global.select_level_index) != undefined)
-	and (ds_list_find_value(global.all_loaded_title_backgrounds, global.select_level_index) != "")
+	if (global.character_select_in_this_menu = "level_editor")
+	and (global.select_level_index <= 0)
+	or(global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template >= 2)
 	{
-		if (global.character_select_in_this_menu = "level_editor")
-		and (global.create_level_from_template >= true)
-		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name)))
-		{
-			sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/full_level_map.png");
-		}
-		else
-		{
-			sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
-		}
+		sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/full_level_map.png");
+	}
+	else
+	if (global.character_select_in_this_menu = "level_editor")
+	{
+		sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
 	}
 	sprite_delete(custom_level_map_sprite);
 }
@@ -5940,7 +5938,10 @@ and (global.pause = false)
 if (goal = true)
 and (global.time_countdown_bonus <= 0)
 {
-	hspeed += 0.3;
+	if (!place_meeting(x + 1, y, obj_wall))
+	{
+		hspeed += 0.3;
+	}
 	can_move = false;
 	if (hspeed > 0)
 	{
@@ -8775,6 +8776,7 @@ if (burnt = 2)
 
 #region /*Die*/
 if (die = true)
+and (goal = false)
 {
 	
 	#region /*Update Checkpoint Time*/
@@ -9465,8 +9467,12 @@ and (instance_nearest(x, y, obj_spring).can_bounce = 0)
 	speed_max = 4;
 	spring = true;
 	move_towards_spring_endpoint = true;
-	spring_endpoint_x = instance_nearest(x, y, obj_spring).second_x;
-	spring_endpoint_y = instance_nearest(x, y, obj_spring).second_y;
+	if (asset_get_type("obj_spring") == asset_object)
+	and (instance_exists(obj_spring))
+	{
+		spring_endpoint_x = instance_nearest(x, y, obj_spring).second_x;
+		spring_endpoint_y = instance_nearest(x, y, obj_spring).second_y;
+	}
 	stick_to_wall = false;
 	homing_attack_x = 0;
 	homing_attack_y = 0;
@@ -9490,7 +9496,7 @@ if (move_towards_spring_endpoint = true)
 		move_towards_spring_endpoint = true;
 	}
 	else
-	if (distance_to_point(spring_endpoint_x, spring_endpoint_y) < 340)
+	if (point_distance(x, y, spring_endpoint_x, spring_endpoint_y) < 340)
 	{
 		move_towards_spring_endpoint = false;
 		spring_endpoint_x = 0;
@@ -11172,67 +11178,64 @@ and (vspeed = 0)
 	or(hspeed > 0)
 	and (key_left)
 	{
-		if (can_move = true)
+		if (asset_get_type("obj_ice_block") == asset_object)
+		and (place_meeting(x, y + 1, obj_ice_block))
 		{
-			if (asset_get_type("obj_ice_block") == asset_object)
-			and (place_meeting(x, y + 1, obj_ice_block))
+			if (asset_get_type("snd_skidding_ice") == asset_sound)
 			{
-				if (asset_get_type("snd_skidding_ice") == asset_sound)
+				if (!audio_is_playing(snd_skidding_ice))
 				{
-					if (!audio_is_playing(snd_skidding_ice))
-					{
-						audio_play_sound(snd_skidding_ice, 0, 0);
-						audio_sound_gain(snd_skidding_ice, global.sound_volume * global.main_volume, 0);
-					}
+					audio_play_sound(snd_skidding_ice, 0, 0);
+					audio_sound_gain(snd_skidding_ice, global.sound_volume * global.main_volume, 0);
 				}
 			}
-			else
-			if (asset_get_type("snd_skidding") == asset_sound)
-			{
-				if (!audio_is_playing(snd_skidding))
-				{
-					audio_play_sound(snd_skidding, 0, 0);
-					audio_sound_gain(snd_skidding, global.sound_volume * global.main_volume, 0);
-				}
-			}
-			if (asset_get_type("obj_ice_block") == asset_object)
-			and (place_meeting(x, y + 1, obj_ice_block))
-			{
-				if (hold_item_in_hands != "")
-				{
-					if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed/10 + 0.1;}else
-					if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed/10 + 0.1;}else
-					if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed/10 + 0.1;}else
-					{sprite_index = sprite_stand; image_speed = 0.5;}
-				}
-				else
-				if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice; image_speed = 0.5;}else
-				if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
-				if (sprite_run > noone){sprite_index = sprite_run;}else
-				if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
-				{sprite_index = sprite_stand;}
-			}
-			else
-			{
-				if (hold_item_in_hands != "")
-				{
-					if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed/10 + 0.1;}else
-					if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed/10 + 0.1;}else
-					if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed/10 + 0.1;}else
-					{sprite_index = sprite_stand; image_speed = 0.5;}
-				}
-				else
-				if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
-				if (abs(hspeed) >20) and (sprite_run4> noone){sprite_index = sprite_run4;}else
-				if (abs(hspeed) > 15) and (sprite_run3> noone){sprite_index = sprite_run3;}else
-				if (abs(hspeed) > 10) and (sprite_run2> noone){sprite_index = sprite_run2;}else
-				if (abs(hspeed) >5) and (sprite_run > noone){sprite_index = sprite_run;}else
-				if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
-				if (sprite_run > noone) and (hspeed<> 0){sprite_index = sprite_run;}else
-				{sprite_index = sprite_stand;}
-			}
-			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 		}
+		else
+		if (asset_get_type("snd_skidding") == asset_sound)
+		{
+			if (!audio_is_playing(snd_skidding))
+			{
+				audio_play_sound(snd_skidding, 0, 0);
+				audio_sound_gain(snd_skidding, global.sound_volume * global.main_volume, 0);
+			}
+		}
+		if (asset_get_type("obj_ice_block") == asset_object)
+		and (place_meeting(x, y + 1, obj_ice_block))
+		{
+			if (hold_item_in_hands != "")
+			{
+				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed/10 + 0.1;}else
+				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed/10 + 0.1;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed/10 + 0.1;}else
+				{sprite_index = sprite_stand; image_speed = 0.5;}
+			}
+			else
+			if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice; image_speed = 0.5;}else
+			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
+			if (sprite_run > noone){sprite_index = sprite_run;}else
+			if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
+			{sprite_index = sprite_stand;}
+		}
+		else
+		{
+			if (hold_item_in_hands != "")
+			{
+				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed/10 + 0.1;}else
+				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed/10 + 0.1;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed/10 + 0.1;}else
+				{sprite_index = sprite_stand; image_speed = 0.5;}
+			}
+			else
+			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
+			if (abs(hspeed) >20) and (sprite_run4> noone){sprite_index = sprite_run4;}else
+			if (abs(hspeed) > 15) and (sprite_run3> noone){sprite_index = sprite_run3;}else
+			if (abs(hspeed) > 10) and (sprite_run2> noone){sprite_index = sprite_run2;}else
+			if (abs(hspeed) >5) and (sprite_run > noone){sprite_index = sprite_run;}else
+			if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
+			if (sprite_run > noone) and (hspeed<> 0){sprite_index = sprite_run;}else
+			{sprite_index = sprite_stand;}
+		}
+		effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 	}
 	#endregion /*Skidding END*/
 	

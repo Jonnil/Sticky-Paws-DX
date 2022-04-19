@@ -11,12 +11,12 @@ function scr_initialize_custom_character_abilities(argument0, argument1, argumen
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
 	{
 		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini");
-		can_save_to_character_config = false;
+		can_save_to_character_config = false; /*You can't save values to included files*/
 	}
 	else
 	{
 		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini");
-		can_save_to_character_config = true;
+		can_save_to_character_config = true; /*You can save values to local appdata*/
 	}
 	
 	#region /*Allow Ability*/

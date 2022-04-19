@@ -736,10 +736,12 @@ or(menu = "quit")
 	if (global.convention_mode = false)
 	{
 		draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width()/ 2 - 185, options_and_quit_y, 185, 42, Text("Options"), "options", "options");
+		draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width()/ 2 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width()/ 2      , options_and_quit_y, 185, 42, Text("Quit"), "quit", "quit");
 		if (menu = "quit")
 		{
 			draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width()/ 2 - 185, options_and_quit_y, 185, 42, Text("Options"), "options", "options");
+			draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width()/ 2 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		}
 	}
 	else

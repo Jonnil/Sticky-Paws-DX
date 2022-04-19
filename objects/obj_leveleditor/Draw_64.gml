@@ -8,6 +8,8 @@ if (quit_level_editor = false)
 		if (keyboard_check_pressed(vk_escape))
 		or(gamepad_button_check_pressed(0, gp_start))
 		{
+			scr_save_custom_level(); /*Save level before going to the pause menu*/
+			
 			global.pause_room = room_leveleditor;
 			quit_level_editor = false;
 			can_input_level_name = false;
@@ -106,6 +108,7 @@ if (quit_level_editor = false)
 			
 			#region /*If menu is on options*/
 			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -84, Text("Options"), "options", noone);
+			draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width()/ 2 - 185 + 20, window_get_height()/ 2 -84 + 21, 1, 1, 0, c_white, 1);
 			
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 -84, window_get_width()/ 2 + 185, window_get_height()/ 2 - 42))
 			and (mouse_check_button_pressed(mb_left))
@@ -388,20 +391,22 @@ if (quit_level_editor = false)
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_center);
 			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192, Text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
-			if (ds_list_find_value(global.all_loaded_title_backgrounds, global.select_level_index) != undefined)
-			and (ds_list_find_value(global.all_loaded_title_backgrounds, global.select_level_index) != "")
+			
+			#region /*Draw the path for saving full level map*/
+			if (global.character_select_in_this_menu = "level_editor")
+			and (global.select_level_index <= 0)
+			or(global.character_select_in_this_menu = "level_editor")
+			and (global.create_level_from_template >= 2)
 			{
-				if (global.character_select_in_this_menu = "level_editor")
-				and (global.create_level_from_template >= true)
-				and (file_exists(working_directory + "/custom_levels/" + string(global.level_name)))
-				{
-					draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
-				}
-				else
-				{
-					draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
-				}
+				draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
 			}
+			else
+			if (global.character_select_in_this_menu = "level_editor")
+			{
+				draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
+			}
+			#endregion /*Draw the path for saving full level map END*/
+			
 			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 64, Text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
 			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 96, Text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
 			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 160, Text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
