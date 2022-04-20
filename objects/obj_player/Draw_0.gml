@@ -11,8 +11,8 @@
 //draw_text_outlined(x - 32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
-draw_text_outlined(x - 32, y - 128-64, "spring_endpoint_x: " + string(spring_endpoint_x), global.default_text_size, c_white, c_black, 1);
-draw_text_outlined(x - 32, y - 128, "spring_endpoint_y: " + string(spring_endpoint_y), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x - 32, y - 128-64, "spring_endpoint_x: " + string(spring_endpoint_x), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x - 32, y - 128, "spring_endpoint_y: " + string(spring_endpoint_y), global.default_text_size, c_white, c_black, 1);
 
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)

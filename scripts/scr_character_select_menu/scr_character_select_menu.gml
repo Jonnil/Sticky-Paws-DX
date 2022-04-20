@@ -220,6 +220,8 @@ function scr_character_select_menu()
 		and (key_a_pressed)
 		and (menu_delay = 0)
 		{
+			file_load_timer = 0;
+			load_ok = 0;
 			menu = "click_copy_character";
 			menu_delay = 3;
 		}
@@ -5779,26 +5781,32 @@ and (player4_accept_selection >= 0)
 		
 		draw_text_outlined(window_get_width() / 2, 128, Text("Copy character feature is not finished yet. Click 'Open Character Folder' to look in any character and copy files manually for now."), global.default_text_size, c_black, c_red, 1);
 		
+		draw_text(320, 320, "first_copy_file: " + string(first_copy_file));
+		draw_text(320, 320 + 32, "initialized_copy: " + string(initialized_copy));
+		draw_text(320, 320 + 32 + 32, "load_ok: " + string(load_ok));
+		draw_text(320, 320 + 32 + (32 *2), "file_load_timer: " + string(file_load_timer));
+		
 		#region /*Copy Characters*/
 		draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42 - 42 - 42, Text("Copy Character"), "click_copy_character", "click_copy_character");
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() - 42 - 42 - 42 + 2, window_get_width() / 2 - 185 + 371, window_get_height() - 42 - 43 + 42 - 42))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
+		and (can_navigate = true)
 		or (menu = "click_copy_character")
 		and (key_a_pressed)
 		and (menu_delay = 0)
+		and (can_navigate = true)
 		or (player1_menu = "click_copy_character")
 		and (key_a_pressed)
 		and (menu_delay = 0)
+		and (can_navigate = true)
 		{
+			can_navigate = false;
+			load_ok = 0;
+			first_copy_file = "";
 			menu = "click_copy_character";
 			player1_menu = "click_copy_character";
-			
-			with(instance_create_depth(window_get_width() / 2, window_get_height() - 42 - 42 - 42, 0, obj_scoreup))
-			{
-				scoreup = "Copied";
-			}
 			
 			#region /*Copy character files to new character folder*/
 			
@@ -5871,6 +5879,97 @@ and (player4_accept_selection >= 0)
 			menu = "open_folder_copy_character";
 		}
 		#endregion /*Copy Characters END*/
+		
+		if (can_navigate = false)
+		{
+			file_load_timer += 1;
+			
+			if (file_load_timer > 1)
+			and (load_ok = 0)
+			{
+				if (initialized_copy = false)
+				{
+					first_copy_file = file_find_first("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*", fa_directory)
+					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(first_copy_file))
+					initialized_copy = true;
+				}
+				file_found = file_find_next()
+				if (file_found == "")
+				{
+					file_find_close();
+					initialized_copy = false;
+					load_ok = 1;
+					can_navigate = false;
+					file_load_timer = 0;
+				}
+				else
+				{
+					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(file_found))
+					
+					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
+				}
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 1)
+			{
+				if (initialized_copy = false)
+				{
+					first_copy_file = file_find_first("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*", fa_directory)
+					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(first_copy_file))
+					initialized_copy = true;
+				}
+				file_found = file_find_next()
+				if (file_found == "")
+				{
+					file_find_close();
+					initialized_copy = false;
+					load_ok = 2;
+					can_navigate = false;
+					file_load_timer = 0;
+				}
+				else
+				{
+					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(file_found))
+					
+					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
+				}
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 2)
+			{
+				if (initialized_copy = false)
+				{
+					first_copy_file = file_find_first("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0/*", 0)
+					file_copy(
+					"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0/" + string(first_copy_file),
+					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/voicepack0/" + string(first_copy_file))
+					initialized_copy = true;
+				}
+				file_found = file_find_next()
+				if (file_found == "")
+				{
+					file_find_close();
+					initialized_copy = false;
+					with(instance_create_depth(window_get_width() / 2, window_get_height() - 42 - 42 - 42, 0, obj_scoreup))
+					{
+						scoreup = "Copied";
+					}
+					load_ok = 0;
+					can_navigate = true;
+					file_load_timer = 0;
+				}
+				else
+				{
+					file_copy(
+					"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0/" + string(file_found),
+					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/voicepack0/" + string(file_found))
+					
+					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
+				}
+			}
+		}
 		
 		#region /*Open Character Folder*/
 		draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42 - 42, Text("Open Character Folder"), "open_folder_copy_character", "open_folder_copy_character");
@@ -5960,6 +6059,16 @@ and (player4_accept_selection >= 0)
 			menu = "click_copy_character";
 		}
 		#endregion /*Back from Copy Characters END*/
+		
+		if (can_navigate = false) /*When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in*/
+		{
+			loading_spinning_angle -= 10;
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_center);
+			draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 6), 1, 1, loading_spinning_angle, c_white, 1);
+			draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 5), Text("Loading"), global.default_text_size, c_white, c_black, 1);
+			draw_text_outlined(display_get_gui_width()/ 2, display_get_gui_height() - 32 - (32 * 4), string(file_found), global.default_text_size, c_white, c_black, 1);
+		}
 		
 	}
 	

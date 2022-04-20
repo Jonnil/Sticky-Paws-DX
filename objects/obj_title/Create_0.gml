@@ -5,6 +5,14 @@ can_save_to_character_config = false; /*Only turn true when playing as custom ch
 unused_x_origin_point = noone;
 unused_y_origin_point = noone;
 
+initialized_copy = false;
+first_copy_file = "";
+file_load_inside_folder_timer = 0;
+load_inside_folder_ok = 0;
+initialized_inside_folder_copy = false;
+first_inside_folder_copy_file = "";
+file_inside_folder_found = "";
+
 player = 1;
 selected_skin = 0;
 
