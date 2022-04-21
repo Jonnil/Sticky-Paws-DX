@@ -1,6 +1,10 @@
 ///scr_character_select_menu()
 function scr_character_select_menu()
 {
+	global.character_index[0] = clamp(global.character_index[0], 0, ds_list_size(global.all_loaded_characters) - 1);
+	global.character_index[1] = clamp(global.character_index[1], 0, ds_list_size(global.all_loaded_characters) - 1);
+	global.character_index[2] = clamp(global.character_index[2], 0, ds_list_size(global.all_loaded_characters) - 1);
+	global.character_index[3] = clamp(global.character_index[3], 0, ds_list_size(global.all_loaded_characters) - 1);
 	if (menu = "select_character")
 	{
 		player1_menu = "select_character";
@@ -545,6 +549,13 @@ function scr_character_select_menu()
 		{
 			draw_sprite_ext(global.sprite_select_player_1, 0, window_get_width()/ 2 +xx1, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, c_black, 0.5);
 		}
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		var uppercase_character_name;
+		uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])), 1));
+		uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))) - 1);
+		var character_name = string(uppercase_character_name);
+		draw_text_outlined(window_get_width()/ 2 +xx1, window_get_height()/ 2 + 332, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	#endregion /*Draw Character Portrait for Player 1 END*/
 	
@@ -560,6 +571,13 @@ function scr_character_select_menu()
 		{
 			draw_sprite_ext(global.sprite_select_player_2, 0, window_get_width()/ 2 +xx2, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_2), 392 / sprite_get_width(global.sprite_select_player_2), 0, c_black, 0.5);
 		}
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		var uppercase_character_name;
+		uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])), 1));
+		uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))) - 1);
+		var character_name = string(uppercase_character_name);
+		draw_text_outlined(window_get_width()/ 2 +xx2, window_get_height()/ 2 + 332, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	#endregion /*Draw Character Portrait for Player 2 END*/
 	
@@ -575,6 +593,13 @@ function scr_character_select_menu()
 		{
 			draw_sprite_ext(global.sprite_select_player_3, 0, window_get_width()/ 2 +xx3, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_3), 392 / sprite_get_width(global.sprite_select_player_3), 0, c_black, 0.5);
 		}
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		var uppercase_character_name;
+		uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])), 1));
+		uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))) - 1);
+		var character_name = string(uppercase_character_name);
+		draw_text_outlined(window_get_width()/ 2 +xx3, window_get_height()/ 2 + 332, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	#endregion /*Draw Character Portrait for Player 3 END*/
 	
@@ -590,6 +615,13 @@ function scr_character_select_menu()
 		{
 			draw_sprite_ext(global.sprite_select_player_4, 0, window_get_width()/ 2 +xx4, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_4), 392 / sprite_get_width(global.sprite_select_player_4), 0, c_black, 0.5);
 		}
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		var uppercase_character_name;
+		uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])), 1));
+		uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))) - 1);
+		var character_name = string(uppercase_character_name);
+		draw_text_outlined(window_get_width()/ 2 +xx4, window_get_height()/ 2 + 332, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	#endregion /*Draw Character Portrait for Player 4 END*/
 	
@@ -2371,6 +2403,7 @@ function scr_character_select_menu()
 				{
 					if (gamepad_is_connected(1))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+					and (global.controls_used_for_menu_navigation = "controller")
 					{
 						draw_sprite_ext(spr_xbox_buttons,6, window_get_width()/ 2 + player2_display_x + arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
 					}
@@ -2467,6 +2500,7 @@ function scr_character_select_menu()
 				{
 					if (gamepad_is_connected(2))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+					and (global.controls_used_for_menu_navigation = "controller")
 					{
 						draw_sprite_ext(spr_xbox_buttons,6, window_get_width()/ 2 + player3_display_x + arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
 					}
@@ -2563,6 +2597,7 @@ function scr_character_select_menu()
 				{
 					if (gamepad_is_connected(3))
 					and (asset_get_type("spr_xbox_buttons") == asset_sprite)
+					and (global.controls_used_for_menu_navigation = "controller")
 					{
 						draw_sprite_ext(spr_xbox_buttons,6, window_get_width()/ 2 + player4_display_x + arrow_offset, window_get_height()/ 2, 0.5, 0.5, 0, c_white, 1);
 					}
@@ -3834,11 +3869,14 @@ function scr_character_select_menu()
 						{
 							menu_delay = 3;
 							menu_joystick1_delay = 30;
-					
-							global.character_index[0] = clamp(global.character_index[0] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-							global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
-							xx1 = player1_display_x + 32;
-				
+							
+							if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
+							{
+								global.character_index[0] = clamp(global.character_index[0] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
+								global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
+								xx1 = player1_display_x + 32;
+							}
+							
 							#region /*Player 1 character select portrait sprite*/
 							global.sprite_select_player_1 = spr_noone;
 							global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
@@ -4058,11 +4096,14 @@ function scr_character_select_menu()
 						{
 							menu_delay = 10;
 							menu_joystick2_delay = 30;
-					
-							global.character_index[1] = clamp(global.character_index[1] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-							global.character_for_player_2 = ds_list_find_value(global.all_loaded_characters, global.character_index[1])
-							xx2 = player2_display_x + 32;
-					
+							
+							if (global.character_index[1] < ds_list_size(global.all_loaded_characters) - 1)
+							{
+								global.character_index[1] = clamp(global.character_index[1] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
+								global.character_for_player_2 = ds_list_find_value(global.all_loaded_characters, global.character_index[1])
+								xx2 = player2_display_x + 32;
+							}
+							
 							#region /*Player 2 character select portrait sprite*/
 							global.sprite_select_player_2 = spr_noone;
 							global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 1, global.skin_for_player_2);
@@ -4253,11 +4294,14 @@ function scr_character_select_menu()
 						{
 							menu_delay = 10;
 							menu_joystick3_delay = 30;
-					
-							global.character_index[2] = clamp(global.character_index[2] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-							global.character_for_player_3 = ds_list_find_value(global.all_loaded_characters, global.character_index[2])
-							xx3 = player3_display_x + 32;
-					
+							
+							if (global.character_index[2] < ds_list_size(global.all_loaded_characters) - 1)
+							{
+								global.character_index[2] = clamp(global.character_index[2] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
+								global.character_for_player_3 = ds_list_find_value(global.all_loaded_characters, global.character_index[2])
+								xx3 = player3_display_x + 32;
+							}
+							
 							#region /*Player 3 character select portrait sprite*/
 							global.sprite_select_player_3 = spr_noone;
 							global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 2, global.skin_for_player_3);
@@ -4272,7 +4316,7 @@ function scr_character_select_menu()
 			
 					#endregion /*Player 3 change portrait when clicking left or right END*/
 	
-				}
+			}
 			#endregion /*Player 3 END*/
 
 			#region /*Player 3 key down*/
@@ -4447,11 +4491,14 @@ function scr_character_select_menu()
 						{
 							menu_delay = 10;
 							menu_joystick4_delay = 30;
-					
-							global.character_index[3] = clamp(global.character_index[3] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-							global.character_for_player_4 = ds_list_find_value(global.all_loaded_characters, global.character_index[3])
-							xx4 = player4_display_x + 32;
-					
+							
+							if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
+							{
+								global.character_index[3] = clamp(global.character_index[3] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
+								global.character_for_player_4 = ds_list_find_value(global.all_loaded_characters, global.character_index[3])
+								xx4 = player4_display_x + 32;
+							}
+							
 							#region /*Player 4 character select portrait sprite*/
 							global.sprite_select_player_4 = spr_noone;
 							global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 3, global.skin_for_player_4);
@@ -4466,7 +4513,7 @@ function scr_character_select_menu()
 			
 					#endregion /*Player 4 change portrait when clicking left or right END*/
 			
-				}
+			}
 			#endregion /*Player 4 END*/
 
 			#region /*Player 4 key down*/
@@ -5609,6 +5656,11 @@ and (player4_accept_selection >= 0)
 		{
 			draw_sprite_ext(global.sprite_select_player_1, 0, window_get_width()/ 2 +xx1, window_get_height()/ 2, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, global.hex_color_for_player_1, 1);
 		}
+		var uppercase_character_name;
+		uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])), 1));
+		uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))) - 1);
+		var character_name = string(uppercase_character_name);
+		draw_text_outlined(window_get_width()/ 2 +xx1, window_get_height()/ 2 + 232, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		#endregion /*Draw Character Portrait for Player 1 END*/
 		
 		#region /*Player 1*/
@@ -5633,6 +5685,7 @@ and (player4_accept_selection >= 0)
 		{
 			
 			if (menu_delay = 0)
+			and (can_navigate = true)
 			and (global.character_index[0] > 0)
 			{
 				menu_delay = 3;
@@ -5679,13 +5732,17 @@ and (player4_accept_selection >= 0)
 		{
 			
 			if (menu_delay = 0)
+			and (can_navigate = true)
 			{
 				menu_delay = 3;
 				menu_joystick1_delay = 30;
 				
-				global.character_index[0] = clamp(global.character_index[0] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-				global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
-				xx1 = player1_display_x + 32;
+				if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
+				{
+					global.character_index[0] = clamp(global.character_index[0] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
+					global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
+					xx1 = player1_display_x + 32;
+				}
 				
 				#region /*Player 1 character select portrait sprite*/
 				global.sprite_select_player_1 = spr_noone;
@@ -5703,6 +5760,7 @@ and (player4_accept_selection >= 0)
 		
 		#region /*Key Left*/
 		if (global.character_index[0] > 0)
+		and (can_navigate = true)
 		{
 			if (gamepad_is_connected(0))
 			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -5741,6 +5799,7 @@ and (player4_accept_selection >= 0)
 		
 		#region /*Key Right*/
 		if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
+		and (can_navigate = true)
 		{
 			if (gamepad_is_connected(0))
 			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
@@ -5779,15 +5838,13 @@ and (player4_accept_selection >= 0)
 		
 		#endregion /*Player 1 END*/
 		
-		draw_text_outlined(window_get_width() / 2, 128, Text("Copy character feature is not finished yet. Click 'Open Character Folder' to look in any character and copy files manually for now."), global.default_text_size, c_black, c_red, 1);
-		
-		draw_text(320, 320, "first_copy_file: " + string(first_copy_file));
-		draw_text(320, 320 + 32, "initialized_copy: " + string(initialized_copy));
-		draw_text(320, 320 + 32 + 32, "load_ok: " + string(load_ok));
-		draw_text(320, 320 + 32 + (32 *2), "file_load_timer: " + string(file_load_timer));
+		draw_text_outlined(window_get_width() / 2, 128, Text("Copy Characters"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		
 		#region /*Copy Characters*/
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42 - 42 - 42, Text("Copy Character"), "click_copy_character", "click_copy_character");
+		if (can_navigate = true)
+		{
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42 - 42 - 42, Text("Copy Character"), "click_copy_character", "click_copy_character");
+		}
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() - 42 - 42 - 42 + 2, window_get_width() / 2 - 185 + 371, window_get_height() - 42 - 43 + 42 - 42))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		and (mouse_check_button_pressed(mb_left))
@@ -5804,6 +5861,7 @@ and (player4_accept_selection >= 0)
 		{
 			can_navigate = false;
 			load_ok = 0;
+			load_specific_folder = 0;
 			first_copy_file = "";
 			menu = "click_copy_character";
 			player1_menu = "click_copy_character";
@@ -5862,6 +5920,7 @@ and (player4_accept_selection >= 0)
 		and (key_up)
 		and (menu_delay = 0)
 		and (menu_joystick_delay <= 0)
+		and (can_navigate = true)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -5872,6 +5931,7 @@ and (player4_accept_selection >= 0)
 		and (key_down)
 		and (menu_delay = 0)
 		and (menu_joystick_delay <= 0)
+		and (can_navigate = true)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -5879,6 +5939,17 @@ and (player4_accept_selection >= 0)
 			menu = "open_folder_copy_character";
 		}
 		#endregion /*Copy Characters END*/
+		
+		#region /*Copy Actual Characters Code*/
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
+		{
+			load_from_where = "characters";
+		}
+		else
+		if (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
+		{
+			load_from_where = working_directory + "/custom_characters";
+		}
 		
 		if (can_navigate = false)
 		{
@@ -5889,7 +5960,81 @@ and (player4_accept_selection >= 0)
 			{
 				if (initialized_copy = false)
 				{
-					first_copy_file = file_find_first("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*", fa_directory)
+					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*.ogg", 0)
+					file_copy(
+					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/" + string(first_copy_file),
+					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(first_copy_file))
+					initialized_copy = true;
+				}
+				file_found = file_find_next()
+				if (file_found == "")
+				{
+					file_find_close();
+					file_load_timer = 0;
+					initialized_copy = false;
+					load_ok += 1;
+				}
+				else
+				{
+					file_copy(
+					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/" + string(file_found),
+					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(file_found))
+					
+					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
+				}
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 1)
+			{
+				file_load_timer = 0;
+				load_ok += 1;
+				load_specific_folder = 0;
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 2)
+			{
+				if (initialized_copy = false)
+				{
+					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*.png", 0)
+					file_copy(
+					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/" + string(first_copy_file),
+					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(first_copy_file))
+					initialized_copy = true;
+				}
+				file_found = file_find_next()
+				if (file_found == "")
+				{
+					file_find_close();
+					file_load_timer = 0;
+					initialized_copy = false;
+					load_ok += 1;
+				}
+				else
+				{
+					file_copy(
+					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/" + string(file_found),
+					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(file_found))
+					
+					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
+				}
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 3)
+			{
+				file_load_timer = 0;
+				load_ok += 1;
+				load_specific_folder = 0;
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 4)
+			{
+				if (initialized_copy = false)
+				{
+					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*", fa_directory)
 					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(first_copy_file))
 					initialized_copy = true;
 				}
@@ -5897,10 +6042,9 @@ and (player4_accept_selection >= 0)
 				if (file_found == "")
 				{
 					file_find_close();
-					initialized_copy = false;
-					load_ok = 1;
-					can_navigate = false;
 					file_load_timer = 0;
+					initialized_copy = false;
+					load_ok += 1;
 				}
 				else
 				{
@@ -5911,11 +6055,19 @@ and (player4_accept_selection >= 0)
 			}
 			else
 			if (file_load_timer > 1)
-			and (load_ok = 1)
+			and (load_ok = 5)
+			{
+				file_load_timer = 0;
+				load_ok += 1;
+				load_specific_folder = 0;
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 6)
 			{
 				if (initialized_copy = false)
 				{
-					first_copy_file = file_find_first("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*", fa_directory)
+					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*", fa_directory)
 					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(first_copy_file))
 					initialized_copy = true;
 				}
@@ -5923,10 +6075,9 @@ and (player4_accept_selection >= 0)
 				if (file_found == "")
 				{
 					file_find_close();
-					initialized_copy = false;
-					load_ok = 2;
-					can_navigate = false;
 					file_load_timer = 0;
+					initialized_copy = false;
+					load_ok += 1;
 				}
 				else
 				{
@@ -5937,52 +6088,122 @@ and (player4_accept_selection >= 0)
 			}
 			else
 			if (file_load_timer > 1)
-			and (load_ok = 2)
+			and (load_ok = 7)
+			{
+				file_load_timer = 0;
+				load_ok += 1;
+				load_specific_folder = 0;
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 8)
 			{
 				if (initialized_copy = false)
 				{
-					first_copy_file = file_find_first("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0/*", 0)
-					file_copy(
-					"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0/" + string(first_copy_file),
-					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/voicepack0/" + string(first_copy_file))
-					initialized_copy = true;
+					if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder)))
+					{
+						first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder) + "/*.ogg", 0)
+						file_copy(
+						string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder) + "/" + string(first_copy_file),
+						working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/voicepack" + string(load_specific_folder) + "/" + string(first_copy_file))
+						initialized_copy = true;
+					}
+					else
+					{
+						load_specific_folder = 0; /*Set this variable to 0 before going to the next loading code*/
+						file_load_timer = 0;
+						load_ok += 1;
+					}
 				}
 				file_found = file_find_next()
 				if (file_found == "")
 				{
 					file_find_close();
+					file_load_timer = 0;
 					initialized_copy = false;
-					with(instance_create_depth(window_get_width() / 2, window_get_height() - 42 - 42 - 42, 0, obj_scoreup))
+					load_specific_folder += 1;
+				}
+				else
+				{
+					file_copy(
+					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder) + "/" + string(file_found),
+					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/voicepack" + string(load_specific_folder) + "/" + string(file_found))
+					
+					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
+				}
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 9)
+			{
+				file_load_timer = 0;
+				load_ok += 1;
+				load_specific_folder = 0;
+			}
+			else
+			if (file_load_timer > 1)
+			and (load_ok = 10)
+			{
+				if (initialized_copy = false)
+				{
+					if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder)))
 					{
-						scoreup = "Copied";
+						first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder) + "/*.png", 0)
+						file_copy(
+						string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder) + "/" + string(first_copy_file),
+						working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/skin" + string(load_specific_folder) + "/" + string(first_copy_file))
+						initialized_copy = true;
 					}
-					load_ok = 0;
-					can_navigate = true;
+					else
+					{
+						load_specific_folder = 0; /*Set this variable to 0 before going to the next loading code*/
+						can_navigate = true;
+						file_load_timer = 0;
+						load_ok = 0;
+						with(instance_create_depth(window_get_width() / 2, window_get_height() - 42 - 42 - 42, 0, obj_scoreup))
+						{
+							scoreup = "Copied";
+						}
+					}
+				}
+				file_found = file_find_next()
+				if (file_found == "")
+				{
+					file_find_close();
+					load_specific_folder += 1;
+					initialized_copy = false;
 					file_load_timer = 0;
 				}
 				else
 				{
 					file_copy(
-					"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack0/" + string(file_found),
-					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/voicepack0/" + string(file_found))
+					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder) + "/" + string(file_found),
+					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/skin" + string(load_specific_folder) + "/" + string(file_found))
 					
 					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1*/
 				}
 			}
 		}
+		#endregion /*Copy Actual Characters Code END*/
 		
 		#region /*Open Character Folder*/
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42 - 42, Text("Open Character Folder"), "open_folder_copy_character", "open_folder_copy_character");
+		if (can_navigate = true)
+		{
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42 - 42, Text("Open Character Folder"), "open_folder_copy_character", "open_folder_copy_character");
+		}
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() - 42 - 42 + 2, window_get_width() / 2 - 185 + 371, window_get_height() - 42 - 41 + 42))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
+		and (can_navigate = true)
 		or (menu = "open_folder_copy_character")
 		and (key_a_pressed)
 		and (menu_delay = 0)
+		and (can_navigate = true)
 		or (player1_menu = "open_folder_copy_character")
 		and (key_a_pressed)
 		and (menu_delay = 0)
+		and (can_navigate = true)
 		{
 			menu = "open_folder_copy_character";
 			player1_menu = "open_folder_copy_character";
@@ -6003,6 +6224,7 @@ and (player4_accept_selection >= 0)
 		and (key_up)
 		and (menu_delay = 0)
 		and (menu_joystick_delay <= 0)
+		and (can_navigate = true)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -6013,6 +6235,7 @@ and (player4_accept_selection >= 0)
 		and (key_down)
 		and (menu_delay = 0)
 		and (menu_joystick_delay <= 0)
+		and (can_navigate = true)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -6022,26 +6245,36 @@ and (player4_accept_selection >= 0)
 		#endregion /*Open Character Folder END*/
 		
 		#region /*Back from Copy Characters*/
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42, Text("Back"), "back_from_copy_character", "copy_character");
+		if (can_navigate = true)
+		{
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() - 42, Text("Back"), "back_from_copy_character", "load_characters");
+		}
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() - 42 + 2, window_get_width() / 2 - 185 + 371, window_get_height() - 42 - 41))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
+		and (can_navigate = true)
 		or (menu = "back_from_copy_character")
 		and (key_a_pressed)
 		and (menu_delay = 0)
+		and (can_navigate = true)
 		or (player1_menu = "back_from_copy_character")
 		and (key_a_pressed)
 		and (menu_delay = 0)
+		and (can_navigate = true)
+		or (key_b_pressed)
+		and (menu_delay = 0)
+		and (can_navigate = true)
 		{
-			menu = "copy_character";
-			player1_menu = "copy_character";
+			menu = "load_characters";
+			player1_menu = "load_characters";
 			menu_delay = 3;
 		}
 		if (menu = "back_from_copy_character")
 		and (key_up)
 		and (menu_delay = 0)
 		and (menu_joystick_delay <= 0)
+		and (can_navigate = true)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -6052,6 +6285,7 @@ and (player4_accept_selection >= 0)
 		and (key_down)
 		and (menu_delay = 0)
 		and (menu_joystick_delay <= 0)
+		and (can_navigate = true)
 		{
 			menu_delay = 3;
 			can_navigate = true;

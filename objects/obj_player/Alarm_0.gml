@@ -1,12 +1,5 @@
 #region /*Initialize Custom character*/
 
-//if (player = 2)
-//or (player = 3)
-//or (player = 4)
-//{
-//	partner_character = true;
-//}
-
 /*The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y*/
 
 #region /*Allow abilities*/
@@ -56,6 +49,7 @@ if (ini_key_exists("sprite origin points", "climb_under_y_offset"))
 else
 {
 	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
 	{
 		ini_write_real("sprite origin points", "climb_under_y_offset", 10);
 	}
@@ -7443,6 +7437,7 @@ if (ini_key_exists("values", "acceleration_on_ground"))
 else
 {
 	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
 	{
 		ini_write_real("values", "acceleration_on_ground", 30);
 	}
@@ -7458,6 +7453,7 @@ if (ini_key_exists("values", "acceleration_in_air"))
 else
 {
 	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
 	{
 		ini_write_real("values", "acceleration_in_air", 30);
 	}
@@ -7473,6 +7469,7 @@ if (ini_key_exists("values", "acceleration_on_ice"))
 else
 {
 	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
 	{
 		ini_write_real("values", "acceleration_on_ice", 5);
 	}
@@ -7487,7 +7484,9 @@ if (ini_key_exists("values", "can_attack_after_dive_on_ground_max_value"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "can_attack_after_dive_on_ground_max_value", 1);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "can_attack_after_dive_on_ground_max_value", 1);}
 	can_attack_after_dive_on_ground_max_value = 20;
 }
 #endregion /*Can Attack After Dive On Ground Max Value END*/
@@ -7499,7 +7498,9 @@ if (ini_key_exists("values", "number_of_jumps"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "number_of_jumps", 1);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "number_of_jumps", 1);}
 	number_of_jumps = 1;
 }
 #endregion /*Number of jumps END*/
@@ -7511,7 +7512,9 @@ if (ini_key_exists("values", "number_of_jumps"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "number_of_jumps", 1);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "number_of_jumps", 1);}
 	midair_jumps_left = 1;
 }
 #endregion /*Mid-air jumps left END*/
@@ -7523,7 +7526,9 @@ if (ini_key_exists("values", "midair_jump_flip_animation"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "midair_jump_flip_animation", 2);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "midair_jump_flip_animation", 2);}
 	midair_jump_flip_animation = 2;
 }
 #endregion /*Mid-air Flip Animation counter END*/
@@ -7538,7 +7543,9 @@ if (global.assist_enable = false)
 	}
 	else
 	{
-		if (can_save_to_character_config = true){ini_write_real("values", "hp", 1);}
+		if (can_save_to_character_config = true)
+		and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+		{ini_write_real("values", "hp", 1);}
 		hp = 1;
 	}
 	#endregion /*Starting HP END*/
@@ -7550,7 +7557,9 @@ if (global.assist_enable = false)
 	}
 	else
 	{
-		if (can_save_to_character_config = true){ini_write_real("values", "max_hp", 1);}
+		if (can_save_to_character_config = true)
+		and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+		{ini_write_real("values", "max_hp", 1);}
 		max_hp = 1;
 	}
 	#endregion /*Starting Max HP END*/
@@ -7566,7 +7575,9 @@ else
 	}
 	else
 	{
-		if (can_save_to_character_config = true){ini_write_real("values", "hp", 1);}
+		if (can_save_to_character_config = true)
+		and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+		{ini_write_real("values", "hp", 1);}
 		hp = 1 + global.assist_extra_hp;
 	}
 	#endregion /*Starting HP + Extra Assist HP END*/
@@ -7578,7 +7589,9 @@ else
 	}
 	else
 	{
-		if (can_save_to_character_config = true){ini_write_real("values", "max_hp", 1);}
+		if (can_save_to_character_config = true)
+		and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+		{ini_write_real("values", "max_hp", 1);}
 		max_hp = 1 + global.assist_extra_hp;
 	}
 	#endregion /*Starting Max HP + Extra Assist HP END*/
@@ -7592,7 +7605,9 @@ if (ini_key_exists("values", "max_overflow_hp"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "max_overflow_hp", 4);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "max_overflow_hp", 4);}
 	max_overflow_hp = 4;
 }
 #endregion /*Starting Max Overflow HP END*/
@@ -7604,7 +7619,9 @@ if (ini_key_exists("values", "speed_max_walk"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "speed_max_walk", 4);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "speed_max_walk", 4);}
 	speed_max_walk = 4;
 }
 #endregion /*Speed max walk END*/
@@ -7616,7 +7633,9 @@ if (ini_key_exists("values", "speed_max_run"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "speed_max_run", 8);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "speed_max_run", 8);}
 	speed_max_run = 8;
 }
 #endregion /*Speed max run END*/
@@ -7630,7 +7649,9 @@ if (ini_key_exists("values", "triple_jump_height"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "triple_jump_height", 14.5);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "triple_jump_height", 14.5);}
 	triple_jump_height = 14.5;
 }
 #endregion /*Triple jump height END*/
@@ -7642,7 +7663,9 @@ if (ini_key_exists("values", "normal_jump_height"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "normal_jump_height", 11.5);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "normal_jump_height", 11.5);}
 	normal_jump_height = 11.5;
 }
 #endregion /*Normal jump height END*/
@@ -7654,7 +7677,9 @@ if (ini_key_exists("values", "higher_jump_height"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "higher_jump_height", 13);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "higher_jump_height", 13);}
 	higher_jump_height = 13;
 }
 #endregion /*Higher jump height END*/
@@ -7666,7 +7691,9 @@ if (ini_key_exists("values", "double_jump_height"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "double_jump_height", 11.5);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "double_jump_height", 11.5);}
 	double_jump_height = 11.5;
 }
 #endregion /*Double jump height END*/
@@ -7680,7 +7707,9 @@ if (ini_key_exists("values", "homing_attack_distance"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "homing_attack_distance", 500);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "homing_attack_distance", 500);}
 	homing_attack_distance = 500;
 }
 #endregion /*Homing attack distance END*/
@@ -7692,7 +7721,9 @@ if (ini_key_exists("values", "wall_jump_time"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "wall_jump_time", 10);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "wall_jump_time", 10);}
 	wall_jump_time = 10;
 }
 #endregion /*Wall Jump Time END*/
@@ -7704,7 +7735,9 @@ if (ini_key_exists("values", "default_xscale"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "default_xscale", 1);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "default_xscale", 1);}
 	default_xscale = 1;
 }
 #endregion /*Default Xscale END*/
@@ -7716,7 +7749,9 @@ if (ini_key_exists("values", "default_yscale"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "default_yscale", 1);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "default_yscale", 1);}
 	default_yscale = 1;
 }
 #endregion /*Default Yscale END*/
@@ -7728,7 +7763,9 @@ if (ini_key_exists("values", "default_voice_pitch"))
 }
 else
 {
-	if (can_save_to_character_config = true){ini_write_real("values", "default_voice_pitch", 1);}
+	if (can_save_to_character_config = true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "default_voice_pitch", 1);}
 	default_voice_pitch = 1;
 }
 #endregion /*Default Voice Pitch END*/
