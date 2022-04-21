@@ -2068,8 +2068,8 @@ else
 
 #region /*Loading Screen*/
 if (menu = "load_custom_level")
-or(menu = "load_characters")
-or(menu = "load_official_level_template")
+or (menu = "load_characters")
+or (menu = "load_official_level_template")
 {
 	loading_spinning_angle -= 10;
 	draw_sprite_ext(spr_loading, 0, display_get_gui_width()/ 2, display_get_gui_height()/ 2, 1, 1, loading_spinning_angle, c_white, 1);

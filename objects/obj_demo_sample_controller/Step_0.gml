@@ -1,5 +1,7 @@
-x = obj_player.x;
-y = obj_player.y;
+x = follow_x;
+y = follow_x;
 
-raycast_info=raycast(x,y,angle,raycast_length,raycast_per_pixel,obj_wall);
-
+if (instance_exists(obj_wall))
+{
+	raycast_info = raycast(x, y, angle, raycast_length, raycast_per_pixel, obj_wall);
+}

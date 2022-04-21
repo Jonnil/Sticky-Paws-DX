@@ -6224,14 +6224,19 @@ and (key_jump_hold)
 			dive = false;
 			triplejumpdelay = 12;
 			if (abs(hspeed) > (speed_max_walk - 1))
-			and (!place_meeting(x, y- 8, obj_wall))
 			or(key_up)
-			and (!place_meeting(x, y- 8, obj_wall))
 			{
 				if (abs(hspeed) > (speed_max_run - 1))
 				and (jump >= 3)
 				{
-					vspeed = -triple_jump_height;
+					if (!place_meeting(x, y - 8, obj_wall))
+					{
+						vspeed = -triple_jump_height;
+					}
+					else
+					{
+						vspeed = -1;
+					}
 					if (image_xscale > 0)
 					{
 						angle = +720;
@@ -6243,13 +6248,27 @@ and (key_jump_hold)
 				}
 				else
 				{
-					vspeed = -higher_jump_height;
+					if (!place_meeting(x, y - 8, obj_wall))
+					{
+						vspeed = -higher_jump_height;
+					}
+					else
+					{
+						vspeed = -1;
+					}
 				}
 			}
 			else
 			if (!place_meeting(x, y- 8, obj_wall))
 			{
-				vspeed = -normal_jump_height;
+				if (!place_meeting(x, y - 8, obj_wall))
+				{
+					vspeed = -normal_jump_height;
+				}
+				else
+				{
+					vspeed = -1;
+				}
 			}
 			
 			#region /*Smoke effect under player when jumping*/

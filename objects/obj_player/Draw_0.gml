@@ -14,6 +14,74 @@
 //draw_text_outlined(x - 32, y - 128-64, "spring_endpoint_x: " + string(spring_endpoint_x), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128, "spring_endpoint_y: " + string(spring_endpoint_y), global.default_text_size, c_white, c_black, 1);
 
+#region /*Draw Raycasts*/
+if (hold_item_in_hands = "enemy_bowlingball")
+and (key_up)
+{
+	if (instance_exists(obj_wall))
+	{
+		if (image_xscale > 0)
+		{
+			if (!position_meeting(xx + 32, yy, obj_wall))
+			{
+				raycast_info = raycast(xx + 32, yy, 90, 380, 16, obj_wall);
+			}
+			else
+			{
+				raycast_info = raycast(xx, yy, 90, 380, 16, obj_wall);
+			}
+		}
+		else
+		{
+			if (!position_meeting(xx - 32, yy, obj_wall))
+			{
+				raycast_info = raycast(xx - 32, yy, 90, 380, 16, obj_wall);
+			}
+			else
+			{
+				raycast_info = raycast(xx, yy, 90, 380, 16, obj_wall);
+			}
+		}
+	}
+	if (raycast_info == noone)
+	{
+		return;
+	}
+	if (raycast_info.type != rc_type.nothing)
+	{
+		draw_set_color(c_red);
+		draw_circle(raycast_info.x, raycast_info.y, 2, false);
+		draw_set_color(c_green);
+	}
+	else
+	{
+		draw_set_color(c_yellow);
+	}
+	if (image_xscale > 0)
+	{
+		if (!position_meeting(xx + 32, yy, obj_wall))
+		{
+			draw_line_width(xx + 32, yy, raycast_info.x, raycast_info.y, 2);
+		}
+		else
+		{
+			draw_line_width(xx, yy, raycast_info.x, raycast_info.y, 2);
+		}
+	}
+	else
+	{
+		if (!position_meeting(xx - 32, yy, obj_wall))
+		{
+			draw_line_width(xx - 32, yy, raycast_info.x, raycast_info.y, 2);
+		}
+		else
+		{
+			draw_line_width(xx, yy, raycast_info.x, raycast_info.y, 2);
+		}
+	}
+}
+#endregion /*Draw Raycasts END*/
+
 #region /*Heart above head*/
 if (asset_get_type("spr_heart") == asset_sprite)
 and (have_heart_balloon = true)

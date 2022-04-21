@@ -1,5 +1,7 @@
 /*________________________________Create Event________________________________*/
 
+raycast_info = noone;
+
 saved_file_exists = false;
 can_save_to_character_config = false; /*Only turn true when playing as custom character*/
 unused_x_origin_point = noone;
