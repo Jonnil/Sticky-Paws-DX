@@ -324,11 +324,11 @@ if (bubble = true)
 		vspeed = - 11.5;
 		bubble = false;
 	}
-	if (vspeed<-4)
+	if (vspeed <-4)
 	{
 		vspeed = -4;
 	}
-	if (hspeed<-4)
+	if (hspeed <-4)
 	{
 		hspeed = -4;
 	}

@@ -161,6 +161,7 @@ sprite_walking_with_item_in_front = noone;
 sprite_wall_slide = noone;
 sprite_wall_slide_down = noone;
 sprite_wall_slide_up = noone;
+sprite_paraglide_down = noone;
 #endregion /*Sprite variables END*/
 
 #region /*Sound variables*/

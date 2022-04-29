@@ -1,3 +1,227 @@
+#region /*Play Attract Demo*/
+if (global.play_attract_demo = false)
+and (global.enable_attract_demo = true)
+{
+	if (file_exists("video/trailer.mp4"))
+	{
+		play_attract_demo_time += 1;
+	}
+	if (menu = "main_game")
+	or (menu = "leveleditor")
+	or (menu = "options")
+	or (menu = "language_shortcut")
+	or (menu = "accessibility_shortcut")
+	or (menu = "profile_shortcut")
+	or (menu = "credits")
+	or (menu = "quit")
+	{
+		if (play_attract_demo_time >= 960)
+		and (file_exists("video/trailer.mp4"))
+		{
+			in_settings = false;
+			video_seek_to(0);
+			global.play_attract_demo = true;
+		}
+	}
+	else
+	{
+		if (play_attract_demo_time >= 3600)
+		and (file_exists("video/trailer.mp4"))
+		{
+			in_settings = false;
+			menu = "main_game";
+			video_seek_to(0);
+			global.play_attract_demo = true;
+		}
+	}
+}
+if (keyboard_check(vk_anykey))
+or (mouse_check_button(mb_any))
+or (mouse_wheel_down())
+or (mouse_wheel_up())
+or (instance_exists(obj_camera))
+and (obj_camera.mouse_moving)
+and (global.play_attract_demo = false)
+
+or (gamepad_button_check(0, gp_face1))
+or (gamepad_button_check(0, gp_face2))
+or (gamepad_button_check(0, gp_face3))
+or (gamepad_button_check(0, gp_face4))
+or (gamepad_button_check(0, gp_padd))
+or (gamepad_button_check(0, gp_padl))
+or (gamepad_button_check(0, gp_padr))
+or (gamepad_button_check(0, gp_padu))
+or (gamepad_button_check(0, gp_select))
+or (gamepad_button_check(0, gp_shoulderl))
+or (gamepad_button_check(0, gp_shoulderlb))
+or (gamepad_button_check(0, gp_shoulderr))
+or (gamepad_button_check(0, gp_shoulderrb))
+or (gamepad_button_check(0, gp_start))
+or (gamepad_button_check(0, gp_stickl))
+or (gamepad_button_check(0, gp_stickr))
+or (gamepad_axis_value(0, gp_axislh) <> 0)
+or (gamepad_axis_value(0, gp_axislv) <> 0)
+or (gamepad_axis_value(0, gp_axisrh) <> 0)
+or (gamepad_axis_value(0, gp_axisrv) <> 0)
+
+or (gamepad_button_check(1, gp_face1))
+or (gamepad_button_check(1, gp_face2))
+or (gamepad_button_check(1, gp_face3))
+or (gamepad_button_check(1, gp_face4))
+or (gamepad_button_check(1, gp_padd))
+or (gamepad_button_check(1, gp_padl))
+or (gamepad_button_check(1, gp_padr))
+or (gamepad_button_check(1, gp_padu))
+or (gamepad_button_check(1, gp_select))
+or (gamepad_button_check(1, gp_shoulderl))
+or (gamepad_button_check(1, gp_shoulderlb))
+or (gamepad_button_check(1, gp_shoulderr))
+or (gamepad_button_check(1, gp_shoulderrb))
+or (gamepad_button_check(1, gp_start))
+or (gamepad_button_check(1, gp_stickl))
+or (gamepad_button_check(1, gp_stickr))
+or (gamepad_axis_value(1, gp_axislh) <> 0)
+or (gamepad_axis_value(1, gp_axislv) <> 0)
+or (gamepad_axis_value(1, gp_axisrh) <> 0)
+or (gamepad_axis_value(1, gp_axisrv) <> 0)
+
+or (gamepad_button_check(2, gp_face1))
+or (gamepad_button_check(2, gp_face2))
+or (gamepad_button_check(2, gp_face3))
+or (gamepad_button_check(2, gp_face4))
+or (gamepad_button_check(2, gp_padd))
+or (gamepad_button_check(2, gp_padl))
+or (gamepad_button_check(2, gp_padr))
+or (gamepad_button_check(2, gp_padu))
+or (gamepad_button_check(2, gp_select))
+or (gamepad_button_check(2, gp_shoulderl))
+or (gamepad_button_check(2, gp_shoulderlb))
+or (gamepad_button_check(2, gp_shoulderr))
+or (gamepad_button_check(2, gp_shoulderrb))
+or (gamepad_button_check(2, gp_start))
+or (gamepad_button_check(2, gp_stickl))
+or (gamepad_button_check(2, gp_stickr))
+or (gamepad_axis_value(2, gp_axislh) <> 0)
+or (gamepad_axis_value(2, gp_axislv) <> 0)
+or (gamepad_axis_value(2, gp_axisrh) <> 0)
+or (gamepad_axis_value(2, gp_axisrv) <> 0)
+
+or (gamepad_button_check(3, gp_face1))
+or (gamepad_button_check(3, gp_face2))
+or (gamepad_button_check(3, gp_face3))
+or (gamepad_button_check(3, gp_face4))
+or (gamepad_button_check(3, gp_padd))
+or (gamepad_button_check(3, gp_padl))
+or (gamepad_button_check(3, gp_padr))
+or (gamepad_button_check(3, gp_padu))
+or (gamepad_button_check(3, gp_select))
+or (gamepad_button_check(3, gp_shoulderl))
+or (gamepad_button_check(3, gp_shoulderlb))
+or (gamepad_button_check(3, gp_shoulderr))
+or (gamepad_button_check(3, gp_shoulderrb))
+or (gamepad_button_check(3, gp_start))
+or (gamepad_button_check(3, gp_stickl))
+or (gamepad_button_check(3, gp_stickr))
+or (gamepad_axis_value(3, gp_axislh) <> 0)
+or (gamepad_axis_value(3, gp_axislv) <> 0)
+or (gamepad_axis_value(3, gp_axisrh) <> 0)
+or (gamepad_axis_value(3, gp_axisrv) <> 0)
+{
+	video_pause();
+	play_attract_demo_time = 0;
+	global.play_attract_demo = false;
+}
+
+if (global.play_attract_demo = true)
+{
+	video_open("video/trailer.mp4");
+	video_resume()
+	global.play_attract_demo = 2;
+}
+if (global.play_attract_demo = 2)
+{
+	menu_delay = 3;
+	video_set_volume(global.music_volume * global.main_volume);
+	var trailer_video = video_draw();
+	if (trailer_video[0] == 0)
+	{
+		draw_surface_ext(trailer_video[1], 0, 0, 1.5, 1.47, 0, c_white, 1);
+	}
+	if (video_get_position() >= video_get_duration() - 2000)
+	{
+		play_attract_demo_time = 0;
+		global.play_attract_demo = false;
+		video_pause();
+	}
+}
+#endregion /*Play Attract Demo END*/
+
+#region /*Enable convention mode via cheat code, type "conventionmode" on your keyboard*/
+if (keyboard_check_pressed(ord("C")))
+and (can_input_level_name = false)
+and (can_input_player1_name = false)
+and (can_input_player2_name = false)
+and (can_input_player3_name = false)
+and (can_input_player4_name = false)
+{
+	keyboard_string = "c";
+}
+
+if (keyboard_string = "conventionmode")
+or (keyboard_string = "convention mode")
+{
+	if (can_input_level_name = false)
+	and (can_input_player1_name = false)
+	and (can_input_player2_name = false)
+	and (can_input_player3_name = false)
+	and (can_input_player4_name = false)
+	{
+		if (global.convention_mode = false)
+		{
+			global.convention_mode = true;
+			if (menu = "options")
+			or (menu = "quit")
+			or (menu = "quit_game_no")
+			or (menu = "quit_game_yes")
+			or (in_settings = true)
+			{
+				menu = "main_game";
+				in_settings = false;
+			}
+			keyboard_string = "";
+			show_convention_mode_enable_text = 180;
+		}
+		else
+		{
+			global.convention_mode = false;
+			keyboard_string = "";
+			show_convention_mode_enable_text = 180;
+		}
+		ini_open(working_directory + "config.ini");
+		ini_write_real("config", "convention_mode", global.convention_mode);
+		ini_close();
+	}
+}
+
+draw_set_halign(fa_left);
+draw_set_valign(fa_center);
+if (global.convention_mode = true)
+and (show_convention_mode_enable_text > 0)
+{
+	show_convention_mode_enable_text -= 1;
+	draw_text_outlined(64, 32, Text("Convention mode"), global.default_text_size, c_white, c_black, 1);
+	draw_sprite_ext(spr_checkbox, true, 32, 32, 0.5, 0.5, 0, c_white, 1);
+}
+else
+if (global.convention_mode = false)
+and (show_convention_mode_enable_text > 0)
+{
+	show_convention_mode_enable_text -= 1;
+	draw_text_outlined(64, 32, Text("Convention mode"), global.default_text_size, c_white, c_black, 1);
+	draw_sprite_ext(spr_checkbox, false, 32, 32, 0.5, 0.5, 0, c_white, 1);
+}
+#endregion /*Enable convention mode via cheat code, type "conventionmode" on your keyboard END*/
+
 #region /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus*/
 
 #region /*Player 1 reset keys to noone if they happen to be 0*/
@@ -112,14 +336,6 @@ else
 	c_menu_outline = c_black;
 	c_menu_fill = c_white;
 }
-
-/*Voice clips for when you select a character*/
-menuvoice_select_character0 = noone;
-menuvoice_select_character1 = noone; /*Voice clips for when you select a character END*/
-
-/*Select the sprite for each character portrait*/
-sprite_select_character_0 = noone;
-sprite_select_player_1 = noone; /*Select the sprite for each character portrait END*/
 
 /*Title Screen*/
 
@@ -325,13 +541,21 @@ draw_set_valign(fa_center);
 
 #region /*Hide Fullscreen and Version text / Set certain variables to default value*/
 if (menu = "main_game")
-or(menu = "leveleditor")
-or(menu = "options")
-or(menu = "language_shortcut")
-or(menu = "accessibility_shortcut")
-or(menu = "profile_shortcut")
-or(menu = "credits")
-or(menu = "quit")
+and (global.play_attract_demo = false)
+or (menu = "leveleditor")
+and (global.play_attract_demo = false)
+or (menu = "options")
+and (global.play_attract_demo = false)
+or (menu = "language_shortcut")
+and (global.play_attract_demo = false)
+or (menu = "accessibility_shortcut")
+and (global.play_attract_demo = false)
+or (menu = "profile_shortcut")
+and (global.play_attract_demo = false)
+or (menu = "credits")
+and (global.play_attract_demo = false)
+or (menu = "quit")
+and (global.play_attract_demo = false)
 {
 	#region /*Character select Accept Selection*/
 	player1_accept_selection = - 1;
@@ -366,7 +590,7 @@ or(global.resource_pack_sprite_title_logo_christmas > 0)
 	and (global.title_logo_index != undefined)
 	and (global.title_logo_index != "")
 	{
-		draw_sprite_ext(title_logo_index, image_index, display_get_gui_width()/ 2, display_get_gui_height()/ 2 - 100 + title_y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, title_alpha);
+		draw_sprite_ext(title_logo_index, image_index, display_get_gui_width()/ 2 + title_x, display_get_gui_height()/ 2 - 100 + title_y, 402 / sprite_get_height(global.title_logo_index) * title_xscale, 402 / sprite_get_height(global.title_logo_index) * title_yscale, 0, c_white, title_alpha);
 	}
 }
 
@@ -377,13 +601,28 @@ and (menu!= "import_export_level")
 and (menu!= "delete_level")
 and (show_title_logo = true)
 {
+	title_x = lerp(title_x, 0, 0.1);
 	title_y = lerp(title_y, scr_wave(0, 40, 4.5, 0), 0.1);
 	title_alpha = lerp(title_alpha, 1, 0.1);
+	title_xscale = lerp(title_xscale, 1, 0.1);
+	title_yscale = lerp(title_yscale, 1, 0.1);
+}
+else
+if (global.play_attract_demo = false)
+{
+	title_x = lerp(title_x, 0, 0.1);
+	title_y = lerp(title_y, - 800, 0.1);
+	title_alpha = lerp(title_alpha, 0, 0.1);
+	title_xscale = lerp(title_xscale, 1, 0.1);
+	title_yscale = lerp(title_yscale, 1, 0.1);
 }
 else
 {
-	title_y = lerp(title_y, - 800, 0.1);
-	title_alpha = lerp(title_alpha, 0, 0.1);
+	title_x = lerp(title_x, - 800, 0.1);
+	title_y = lerp(title_y, scr_wave(-200, -240, 4.5, 0), 0.1);
+	title_alpha = lerp(title_alpha, 0.5, 0.1);
+	title_xscale = lerp(title_xscale, 0.5, 0.1);
+	title_yscale = lerp(title_yscale, 0.5, 0.1);
 }
 #endregion /*Draw Title Screen END*/
 
@@ -415,13 +654,21 @@ or(menu = "file3delete")
 
 #region /*Main Menu*/
 if (menu = "main_game")
-or(menu = "leveleditor")
-or(menu = "options")
-or(menu = "language_shortcut")
-or(menu = "accessibility_shortcut")
-or(menu = "profile_shortcut")
-or(menu = "credits")
-or(menu = "quit")
+and (global.play_attract_demo = false)
+or (menu = "leveleditor")
+and (global.play_attract_demo = false)
+or (menu = "options")
+and (global.play_attract_demo = false)
+or (menu = "language_shortcut")
+and (global.play_attract_demo = false)
+or (menu = "accessibility_shortcut")
+and (global.play_attract_demo = false)
+or (menu = "profile_shortcut")
+and (global.play_attract_demo = false)
+or (menu = "credits")
+and (global.play_attract_demo = false)
+or (menu = "quit")
+and (global.play_attract_demo = false)
 {
 	select_custom_level_menu_open = false;
 	can_input_level_name = false;
@@ -685,20 +932,16 @@ or(menu = "quit")
 	else
 	
 	/*Click Quit*/
-	if (point_in_rectangle(
-	window_mouse_get_x(),
-	window_mouse_get_y(),
-	display_get_gui_width()/ 2,
-	options_and_quit_y + 2,
-	display_get_gui_width()/ 2 + 185,
-	options_and_quit_y + 42))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width()/ 2, options_and_quit_y + 2, display_get_gui_width()/ 2 + 185, options_and_quit_y + 42))
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay = 0)
 	and (in_settings = false)
+	and (global.convention_mode = false)
 	or(menu = "quit")
 	and (key_a_pressed)
 	and (menu_delay = 0)
 	and (in_settings = false)
+	and (global.convention_mode = false)
 	{
 		in_settings = false;
 		menu = "quit_game_no";
@@ -744,10 +987,6 @@ or(menu = "quit")
 			draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width()/ 2 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		}
 	}
-	else
-	{
-		draw_menu_button(display_get_gui_width()/ 2 - 185, display_get_gui_height()/ 2 + 100 + 200, Text("Quit"), "quit", "quit");
-	}
 	
 	draw_menu_button_sprite(spr_noone, display_get_gui_width() - 370, display_get_gui_height() - 42, 370, 42, Text("Made by") + " " + (global.company_name), "credits", "play_credits");
 	
@@ -792,6 +1031,7 @@ scr_quit_to_desktop_menu("quit");
 
 #region /*Select Custom Level Menu*/
 if (level_editor_template_select = true)
+and (global.play_attract_demo = false)
 {
 	select_custom_level_menu_open = false;
 	scr_select_official_level_menu();
@@ -840,6 +1080,7 @@ if (level_editor_template_select = true)
 }
 else
 if (select_custom_level_menu_open = true)
+and (global.play_attract_demo = false)
 {
 	level_editor_template_select = false;
 	scr_select_custom_level_menu();
@@ -882,14 +1123,14 @@ and (menu_delay = 0)
 		and (global.convention_mode = false)
 		{
 			menu_delay = 3;
-			menu = "options"
+			menu = "options";
 		}
 		else
 		if (key_down)
 		and (global.convention_mode = true)
 		{
 			menu_delay = 3;
-			menu = "quit"
+			menu = "credits";
 		}
 	}
 	else
@@ -905,14 +1146,14 @@ and (menu_delay = 0)
 		and (global.convention_mode = false)
 		{
 			menu_delay = 3;
-			menu = "options"
+			menu = "options";
 		}
 		else
 		if (key_down)
 		and (global.convention_mode = true)
 		{
 			menu_delay = 3;
-			menu = "quit"
+			menu = "credits";
 		}
 	}
 	else
@@ -931,7 +1172,14 @@ and (menu_delay = 0)
 		and (global.show_language_shortcut = false)
 		{
 			menu_delay = 3;
-			menu = "quit";
+			if (global.convention_mode = false)
+			{
+				menu = "quit";
+			}
+			else
+			{
+				menu = "main_game";
+			}
 		}
 		else
 		if (key_up)
@@ -968,7 +1216,14 @@ and (menu_delay = 0)
 		if (key_left)
 		{
 			menu_delay = 3;
-			menu = "quit";
+			if (global.convention_mode = false)
+			{
+				menu = "quit";
+			}
+			else
+			{
+				menu = "main_game";
+			}
 		}
 		else
 		if (key_right)
@@ -1034,7 +1289,14 @@ and (menu_delay = 0)
 		if (key_up)
 		{
 			menu_delay = 3;
-			menu = "quit";
+			if (global.convention_mode = false)
+			{
+				menu = "quit";
+			}
+			else
+			{
+				menu = "leveleditor";
+			}
 		}
 		else
 		if (key_down)
@@ -1054,6 +1316,7 @@ and (menu_delay = 0)
 if (menu = "quit")
 and (key_a_pressed)
 and (menu_delay = 0)
+and (global.convention_mode = false)
 {
 	menu = "quit_game_no";
 	menu_delay = 3;

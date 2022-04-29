@@ -39,7 +39,7 @@ and (stick_to_wall = false)
 		or (instance_exists(obj_foreground_secret))
 		and (!place_meeting(x, y, obj_foreground_secret))
 		{
-			if (vspeed > 0)
+			if (vspeed > 2)
 			{
 				if (position_meeting(x - 24, bbox_bottom + 2, other))
 				{
@@ -67,7 +67,7 @@ and (stick_to_wall = false)
 	}
 	#endregion /*Smoke Landing Effect END*/
 	
-	if (vspeed > 0)
+	if (vspeed > 2)
 	{
 		draw_xscale = 1.25;
 		draw_yscale = 0.75;

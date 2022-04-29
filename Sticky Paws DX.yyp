@@ -303,7 +303,6 @@
     {"id":{"name":"obj_camera_map","path":"objects/obj_camera_map/obj_camera_map.yy",},"order":10,},
     {"id":{"name":"snd_footstep_wood_left","path":"sounds/snd_footstep_wood_left/snd_footstep_wood_left.yy",},"order":54,},
     {"id":{"name":"spr_3up","path":"sprites/spr_3up/spr_3up.yy",},"order":101,},
-    {"id":{"name":"obj_demo_sample_controller","path":"objects/obj_demo_sample_controller/obj_demo_sample_controller.yy",},"order":43,},
     {"id":{"name":"snd_basic_collectible","path":"sounds/snd_basic_collectible/snd_basic_collectible.yy",},"order":19,},
     {"id":{"name":"snd_running","path":"sounds/snd_running/snd_running.yy",},"order":122,},
     {"id":{"name":"spr_boss_barrier","path":"sprites/spr_boss_barrier/spr_boss_barrier.yy",},"order":97,},
@@ -1466,6 +1465,8 @@
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sound/voicepack0","resourceVersion":"1.0","name":"scream.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sound/voicepack0","resourceVersion":"1.0","name":"scream4.ogg","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/characters/sticky/sound/voicepack0","resourceVersion":"1.0","name":"scream3.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/video","resourceVersion":"1.0","name":"trailer.mp4","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"ranks_strip6.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"localization.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {

@@ -2,12 +2,16 @@ move_snap(global.grid_hsnap, global.grid_vsnap);
 delay += 1;
 if (delay > 1)
 {
-	if (place_meeting(x, y, obj_level_player_1_start))
-	or(place_meeting(x, y, obj_level_player_2_start))
-	or(place_meeting(x, y, obj_level_player_3_start))
-	or(place_meeting(x, y, obj_level_player_4_start))
-	or(x < camera_get_view_x(view_camera[view_current]))
-	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	if (instance_exists(obj_level_player_1_start))
+	and (place_meeting(x, y, obj_level_player_1_start))
+	or (instance_exists(obj_level_player_2_start))
+	and (place_meeting(x, y, obj_level_player_2_start))
+	or (instance_exists(obj_level_player_3_start))
+	and (place_meeting(x, y, obj_level_player_3_start))
+	or (instance_exists(obj_level_player_4_start))
+	and (place_meeting(x, y, obj_level_player_4_start))
+	or (x < camera_get_view_x(view_camera[view_current]))
+	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{
 		instance_destroy();
 	}
@@ -89,8 +93,11 @@ if (delay > 1)
 		}
 		with(instance_create_depth(x, y, 0, obj_leveleditor_placed_object))
 		{
-			object = obj_leveleditor.place_object;
-			obj.placed_for_the_first_time = false;
+			if (instance_exists(obj_leveleditor))
+			{
+				object = obj_leveleditor.place_object;
+				placed_for_the_first_time = false;
+			}
 		}
 		if (fill_mode_type = "fill")
 		and (delay >= 5)

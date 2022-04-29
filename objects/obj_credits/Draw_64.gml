@@ -146,7 +146,7 @@ else
 }
 
 if (time >= room_speed* 1- 10)
-if (time <= room_speed* 1+ 10)
+if (time <= room_speed* 1 + 10)
 {
 	yy = window_get_height()/ 2;
 	alpha = 1;

@@ -35,18 +35,20 @@ function scr_savelevel()
 		ini_write_real(level_name, "checkpoint_minute", global.checkpoint_minute);
 		ini_write_real(level_name, "checkpoint_realmillisecond", global.checkpoint_realmillisecond);
 		if (global.timeattack_realmillisecond > 2)
-		
-		#region /*Save Fastest Time*/
-		if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-		or(global.timeattack_realmillisecond<ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
 		{
-			ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
-			ini_write_real(level_name, "timeattack_second", global.timeattack_second);
-			ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
-			ini_write_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond);
+			
+			#region /*Save Fastest Time*/
+			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
+			or (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
+			{
+				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
+				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
+				ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
+				ini_write_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond);
+			}
+			#endregion /*Save Fastest Time END*/
+			
 		}
-		#endregion /*Save Fastest Time END*/
-		
 		if (score > ini_read_real(level_name, "level_score", false))
 		{
 			ini_write_real(level_name, "level_score", score);
@@ -62,6 +64,7 @@ function scr_savelevel()
 		uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 		var level_name = string(uppercase_level_name);
 		
+		#region /*Save to custom level save file*/
 		ini_open(working_directory + "save_files/custom_level_save.ini");
 		ini_write_real(level_name, "lives_until_assist", global.lives_until_assist);
 		ini_write_real(level_name, "x_checkpoint", global.x_checkpoint);
@@ -71,22 +74,81 @@ function scr_savelevel()
 		ini_write_real(level_name, "checkpoint_minute", global.checkpoint_minute);
 		ini_write_real(level_name, "checkpoint_realmillisecond", global.checkpoint_realmillisecond);
 		if (global.timeattack_realmillisecond > 2)
-		
-		#region /*Save Fastest Time*/
-		if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-		or(global.timeattack_realmillisecond<ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
 		{
-			ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
-			ini_write_real(level_name, "timeattack_second", global.timeattack_second);
-			ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
-			ini_write_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond);
+			
+			#region /*Save Fastest Time*/
+			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
+			or (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
+			{
+				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
+				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
+				ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
+				ini_write_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond);
+			}
+			#endregion /*Save Fastest Time END*/
+			
 		}
-		#endregion /*Save Fastest Time END*/
-		
 		if (score > ini_read_real(level_name, "level_score", false))
 		{
 			ini_write_real(level_name, "level_score", score);
 		}
 		ini_close();
+		#endregion /*Save to custom level save file END*/
+		
+		#region /*Update ranking highscore to actual custom level*/
+		if (global.character_select_in_this_menu = "level_editor")
+		and (global.select_level_index <= 0)
+		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		
+		or (global.character_select_in_this_menu = "level_editor")
+		and (global.create_level_from_template >= 2)
+		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		
+		or (global.character_select_in_this_menu = "level_editor")
+		and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
+		{
+			if (global.character_select_in_this_menu = "level_editor")
+			and (global.select_level_index <= 0)
+			or(global.character_select_in_this_menu = "level_editor")
+			and (global.create_level_from_template >= 2)
+			{
+				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			}
+			else
+			if (global.character_select_in_this_menu = "level_editor")
+			{
+				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+			}
+			
+			if (global.timeattack_realmillisecond > 2)
+			{
+				
+				#region /*Save Fastest Time Hard*/
+				if (!ini_key_exists("rank", "rank_timeattack_realmillisecond"))
+				or (global.timeattack_realmillisecond < ini_read_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond))
+				{
+					ini_write_real("rank", "rank_timeattack_millisecond", global.timeattack_millisecond);
+					ini_write_real("rank", "rank_timeattack_second", global.timeattack_second);
+					ini_write_real("rank", "rank_timeattack_minute", global.timeattack_minute);
+					ini_write_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond);
+				}
+				#endregion /*Save Fastest Time Hard END*/
+				
+			}
+			if (score > ini_read_real("rank", "rank_level_score", false))
+			{
+				ini_write_real("rank", "rank_level_score", score);
+			}
+			
+			ini_close();
+			#endregion /*Update ranking highscore to actual custom level END*/
+		
+		}
 	}
+	global.timeattack_realmillisecond = 0;
+	global.timeattack_millisecond = 0;
+	global.timeattack_second = 0;
+	global.timeattack_minute = 0;
+	global.timeattack_realmillisecond = 0;
+	score = 0;
 }

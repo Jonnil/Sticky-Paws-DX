@@ -44,10 +44,10 @@ and (instance_exists(obj_player))
 		else
 		{
 			if (instance_nearest(x, y, obj_player).x < x)
-			and (instance_nearest(x, y, obj_player).hspeed<- 2)
+			and (instance_nearest(x, y, obj_player).hspeed <- 2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
-				if (hspeed<- 8)
+				if (hspeed <- 8)
 				{
 					hspeed = - 8;
 				}

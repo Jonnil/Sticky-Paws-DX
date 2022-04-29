@@ -280,12 +280,12 @@ and (menu != "remap_save")
 if (current_month = 12)
 and (global.resource_pack_sprite_title_logo_christmas >= 0)
 {
-	draw_sprite_ext(global.resource_pack_sprite_title_logo_christmas, 0, 160, 100, (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
+	draw_sprite_ext(global.resource_pack_sprite_title_logo_christmas, 0, 160, scr_wave(100, 140, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
 }
 else
 if (global.title_logo_index >= 0)
 {
-	draw_sprite_ext(global.title_logo_index, 0, 160, 100, (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
+	draw_sprite_ext(global.title_logo_index, 0, 160, scr_wave(100, 140, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
 }
 #endregion /*Games Logo in top left corner END*/
 
@@ -341,9 +341,9 @@ or(asset_get_type("room_leveleditor") == asset_room)
 and (global.pause_room = room_leveleditor)
 {
 	if (menu = "continue")
-	or(menu = "options")
-	or(menu = "restart")
-	or(menu = "quit")
+	or (menu = "options")
+	or (menu = "restart")
+	or (menu = "quit")
 	{
 		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Continue"), "continue", "continue");
 		
@@ -404,8 +404,15 @@ and (global.pause_room = room_leveleditor)
 	{
 		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Quit to Map"), "quit_to_map", "quit_to_map");
 		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Quit to Title"), "quit_to_title", "quit_to_title");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+		if (global.convention_mode = false)
+		{
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+		}
+		else
+		{
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+		}
 	}
 	else
 	if(global.pause_room = room_leveleditor)
@@ -419,8 +426,15 @@ and (global.pause_room = room_leveleditor)
 	and (menu = "quit_nevermind")
 	{
 		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Quit to Title"), "quit_to_title", "quit_to_title");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+		if (global.convention_mode = false)
+		{
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+		}
+		else
+		{
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+		}
 	}
 	else
 	if(global.pause_room = room_world_map)
@@ -431,8 +445,15 @@ and (global.pause_room = room_leveleditor)
 	and (menu = "quit_nevermind")
 	{
 		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Quit to Title"), "quit_to_title", "quit_to_title");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
-		draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+		if (global.convention_mode = false)
+		{
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+		}
+		else
+		{
+			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+		}
 	}
 	
 	#region /*Continue*/
@@ -440,7 +461,7 @@ and (global.pause_room = room_leveleditor)
 	{
 		if (key_a_pressed)
 		and (menu_delay = 0)
-		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41))
+		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		{
@@ -487,7 +508,21 @@ and (global.pause_room = room_leveleditor)
 		and (menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
-			menu = "options";
+			if (global.convention_mode = false)
+			{
+				menu = "options";
+			}
+			else
+			{
+				if (global.pause_room = room_leveleditor)
+				{
+					menu = "restart";
+				}
+				else
+				{
+					menu = "quit";
+				}
+			}
 		}
 	}
 	#endregion /*Continue END*/
@@ -502,7 +537,7 @@ and (global.pause_room = room_leveleditor)
 		if (key_a_pressed)
 		and (menu_delay = 0)
 		and (global.convention_mode = false)
-		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42))
+		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		and (global.convention_mode = false)
@@ -554,8 +589,14 @@ and (global.pause_room = room_leveleditor)
 	{
 		if (key_a_pressed)
 		and (menu_delay = 0)
-		or(global.pause_room = room_leveleditor)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42 + 42))
+		or (global.pause_room = room_leveleditor)
+		and (global.convention_mode = false)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42))
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or (global.pause_room = room_leveleditor)
+		and (global.convention_mode = true)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		{
@@ -575,12 +616,7 @@ and (global.pause_room = room_leveleditor)
 				global.restart_level = true;
 				audio_stop_all();
 				global.pause = false;
-				instance_activate_region(
-				camera_get_view_x(view_camera[view_current]) - 32,
-				camera_get_view_y(view_camera[view_current]) - 32,
-				window_get_width() + 32,
-				window_get_height() + 32,
-				true);
+				instance_activate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, window_get_width() + 32, window_get_height() + 32, true);
 				if (instance_exists(obj_player))
 				{
 					with(obj_player)
@@ -612,7 +648,14 @@ and (global.pause_room = room_leveleditor)
 		and (menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
-			menu = "options";
+			if (global.convention_mode = false)
+			{
+				menu = "options";
+			}
+			else
+			{
+				menu = "continue";
+			}
 		}
 		else
 		if (key_down)
@@ -697,7 +740,7 @@ and (global.pause_room = room_leveleditor)
 		if (key_a_pressed)
 		and (menu_delay = 0)
 		or(global.pause_room = room_leveleditor)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		{
@@ -795,7 +838,7 @@ and (global.pause_room = room_leveleditor)
 	{
 		if (key_a_pressed)
 		and (menu_delay = 0)
-		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42 + 42))
+		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		{
@@ -830,11 +873,23 @@ and (global.pause_room = room_leveleditor)
 		if (key_a_pressed)
 		and (menu_delay = 0)
 		or(global.pause_room = room_world_map)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42 + 42))
+		and (global.convention_mode = false)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		or(global.pause_room = room_leveleditor)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42 + 42 + 42))
+		and (global.convention_mode = false)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42 + 42))
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or(global.pause_room = room_world_map)
+		and (global.convention_mode = true)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42))
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or(global.pause_room = room_leveleditor)
+		and (global.convention_mode = true)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		{
@@ -864,7 +919,14 @@ and (global.pause_room = room_leveleditor)
 			else
 			{
 				menu_delay = 3;
-				menu = "options";
+				if (global.convention_mode = false)
+				{
+					menu = "options";
+				}
+				else
+				{
+					menu = "continue";
+				}
 			}
 		}
 		else
@@ -944,7 +1006,7 @@ and (global.pause_room = room_leveleditor)
 		if (key_a_pressed)
 		and (menu_delay = 0)
 		or(global.pause_room = room_leveleditor)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		or(global.pause_room = room_world_map)
@@ -1019,7 +1081,14 @@ and (global.pause_room = room_leveleditor)
 		and (menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
-			menu = "quit_to_desktop";
+			if (global.convention_mode = false)
+			{
+				menu = "quit_to_desktop";
+			}
+			else
+			{
+				menu = "quit_nevermind";
+			}
 		}
 	}
 	#endregion /*Quit to Title END*/
@@ -1032,16 +1101,19 @@ and (global.pause_room = room_leveleditor)
 		if (key_a_pressed)
 		and (menu_delay = 0)
 		or(global.pause_room = room_leveleditor)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42 + 42))
+		and (global.convention_mode = false)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		or(global.pause_room = room_world_map)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42))
+		and (global.convention_mode = false)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		or(global.pause_room = room_leveleditor)
+		and (global.convention_mode = false)
 		and (global.character_select_in_this_menu = "level_editor")
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		{
@@ -1076,16 +1148,36 @@ and (global.pause_room = room_leveleditor)
 		if (key_a_pressed)
 		and (menu_delay = 0)
 		or(global.pause_room = room_leveleditor)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42 + 42 + 42))
+		and (global.convention_mode = false)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		or(global.pause_room = room_world_map)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42 + 42))
+		and (global.convention_mode = false)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		or(global.pause_room = room_leveleditor)
+		and (global.convention_mode = false)
 		and (global.character_select_in_this_menu = "level_editor")
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41+ 42 + 42))
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42))
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		
+		or(global.pause_room = room_leveleditor)
+		and (global.convention_mode = true)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42 + 42))
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or(global.pause_room = room_world_map)
+		and (global.convention_mode = true)
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42))
+		and (mouse_check_button_pressed(mb_left))
+		and (menu_delay = 0)
+		or(global.pause_room = room_leveleditor)
+		and (global.convention_mode = true)
+		and (global.character_select_in_this_menu = "level_editor")
+		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width()/ 2 - 185, window_get_height()/ 2 + 2 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay = 0)
 		{
@@ -1098,7 +1190,14 @@ and (global.pause_room = room_leveleditor)
 		and (menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
-			menu = "quit_to_desktop";
+			if (global.convention_mode = false)
+			{
+				menu = "quit_to_desktop";
+			}
+			else
+			{
+				menu = "quit_to_title";
+			}
 		}
 		else
 		if (key_down)

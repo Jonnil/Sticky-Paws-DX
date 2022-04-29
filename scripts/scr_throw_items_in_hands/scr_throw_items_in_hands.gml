@@ -28,6 +28,7 @@ function scr_throw_items_in_hands()
 						}
 						else
 						if (!position_meeting(bbox_left - 32, y, obj_wall))
+						and (!collision_line(x, y, bbox_left - 16, bbox_top + 16, obj_wall, false, true))
 						{
 							with(instance_create_depth(bbox_left - 16, bbox_top + 16, 0, obj_enemy_bowlingball))
 							{
@@ -74,6 +75,7 @@ function scr_throw_items_in_hands()
 						}
 						else
 						if (!position_meeting(bbox_right + 32, y, obj_wall))
+						and (!collision_line(x, y, bbox_right + 16, bbox_top + 16, obj_wall, false, true))
 						{
 							with(instance_create_depth(bbox_right + 16, bbox_top + 16, 0, obj_enemy_bowlingball))
 							{
@@ -108,6 +110,7 @@ function scr_throw_items_in_hands()
 					if (hold_item_in_hands = "enemy_bowlingball")
 					{
 						if (!position_meeting(bbox_left - 32, y, obj_wall))
+						and (!collision_line(x, y, bbox_left - 32, y, obj_wall, false, true))
 						{
 							with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
 							{
@@ -141,6 +144,7 @@ function scr_throw_items_in_hands()
 					if (hold_item_in_hands = "enemy_bowlingball")
 					{
 						if (!position_meeting(bbox_right + 32, y, obj_wall))
+						and (!collision_line(x, y, bbox_right + 32, y, obj_wall, false, true))
 						{
 							with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
 							{
@@ -174,8 +178,21 @@ function scr_throw_items_in_hands()
 			or (image_xscale < 0)
 			{
 				if (hold_item_in_hands = "enemy_bowlingball")
+				and (!collision_line(x, y, bbox_left - 32, y, obj_wall, false, true))
 				{
 					with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
+					{
+						flat = true;
+						sliding_along_ground = -1;
+						stomped_delay = 20;
+						number_of_times_stomped = instance_nearest(x, y, obj_player).hold_item_number_of_times_stomped;
+						image_xscale = -1;
+					}
+				}
+				else
+				if (hold_item_in_hands = "enemy_bowlingball")
+				{
+					with(instance_create_depth(x, y, 0, obj_enemy_bowlingball))
 					{
 						flat = true;
 						sliding_along_ground = -1;
@@ -190,8 +207,21 @@ function scr_throw_items_in_hands()
 			or (image_xscale > 0)
 			{
 				if (hold_item_in_hands = "enemy_bowlingball")
+				and (!collision_line(x, y, bbox_right + 32, y, obj_wall, false, true))
 				{
 					with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
+					{
+						flat = true;
+						sliding_along_ground = +1;
+						stomped_delay = 20;
+						number_of_times_stomped = instance_nearest(x, y, obj_player).hold_item_number_of_times_stomped;
+						image_xscale = +1;
+					}
+				}
+				else
+				if (hold_item_in_hands = "enemy_bowlingball")
+				{
+					with(instance_create_depth(x, y, 0, obj_enemy_bowlingball))
 					{
 						flat = true;
 						sliding_along_ground = +1;
@@ -221,16 +251,33 @@ function scr_throw_items_in_hands()
 					die_volting = +1;
 					die = true;
 				}
-				with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
+				if (!collision_line(x, y, bbox_left - 32, y, obj_wall, false, true))
 				{
-					flat = true;
-					sliding_along_ground = +1;
-					stomped_delay = 20;
-					number_of_times_stomped = instance_nearest(x, y, obj_player).hold_item_number_of_times_stomped;
-					image_xscale = +1;
-					vspeed = -8;
-					die_volting = -1;
-					die = true;
+					with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
+					{
+						flat = true;
+						sliding_along_ground = +1;
+						stomped_delay = 20;
+						number_of_times_stomped = instance_nearest(x, y, obj_player).hold_item_number_of_times_stomped;
+						image_xscale = +1;
+						vspeed = -8;
+						die_volting = -1;
+						die = true;
+					}
+				}
+				else
+				{
+					with(instance_create_depth(x, y, 0, obj_enemy_bowlingball))
+					{
+						flat = true;
+						sliding_along_ground = +1;
+						stomped_delay = 20;
+						number_of_times_stomped = instance_nearest(x, y, obj_player).hold_item_number_of_times_stomped;
+						image_xscale = +1;
+						vspeed = -8;
+						die_volting = -1;
+						die = true;
+					}
 				}
 				hold_item_in_hands = "";
 			}
@@ -253,7 +300,21 @@ function scr_throw_items_in_hands()
 					die_volting = -1;
 					die = true;
 				}
-				with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
+				if (!collision_line(x, y, bbox_right + 32, y, obj_wall, false, true))
+				{
+					with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
+					{
+						flat = true;
+						sliding_along_ground = -1;
+						stomped_delay = 20;
+						image_xscale = -1;
+						vspeed = -8;
+						die_volting = +1;
+						die = true;
+					}
+				}
+				else
+				with(instance_create_depth(x, y, 0, obj_enemy_bowlingball))
 				{
 					flat = true;
 					sliding_along_ground = -1;

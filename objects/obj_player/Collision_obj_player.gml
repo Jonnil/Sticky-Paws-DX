@@ -24,7 +24,7 @@ if (global.players_can_collide = true)
 		other.x += 1;
 	}
 	else
-	if (other.hspeed<> 0)
+	if (other.hspeed <> 0)
 	and (hspeed = 0)
 	and (!place_meeting(x - 1, y, obj_wall))
 	and (!place_meeting(x + 1, y, obj_wall))
@@ -32,7 +32,7 @@ if (global.players_can_collide = true)
 		hspeed = 0;
 		x += other.hspeed;
 	}
-	if (hspeed<- 1)
+	if (hspeed <- 1)
 	{
 		hspeed = - 1;
 	}

@@ -2,6 +2,10 @@
 /*Exclusively used on the world map*/
 /*So no conflicting code from the normal camera is running*/
 
+reset_game_if_no_interactivity = 0;
+reset_game_if_no_interactivity_second_countdown_timer = 0;
+reset_game_if_no_interactivity_second_countdown = 60;
+
 if (asset_get_type("obj_player_map") == asset_object)
 and (instance_exists(obj_player_map))
 {

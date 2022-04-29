@@ -36,6 +36,7 @@ global.enable_storage_settings = true; /*Enable Storage settings*/
 global.enable_language_settings = true; /*Enable Language settings*/
 global.enable_broadcast_settings = false; /*Enable Broadcast settings*/
 global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
+global.enable_ranks = false; /*Enable the option to show ranks in the game*/
 #endregion /*What settings tabs to show up END*/
 
 #region /*What settings can be changed*/
@@ -185,6 +186,7 @@ global.character_select_in_this_menu = "main_game"; /*In what menu character sel
 global.difficulty = 1; /*Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard*/
 global.automatically_pause_when_window_is_unfocused = true; /*Whenever you unfocus the window by clicking off the window, the game pauses by itself*/
 global.show_timer = false; /*Show a countup timer or not*/
+global.show_ranks = false; /*Show ranks you get at the end of the level*/
 global.show_deaths_counter = false; /*Show a deaths counter or not*/
 global.controls_used_for_menu_navigation = "keyboard"; /*keyboard, mouse, or controller*/
 global.pause = false; /*If game is paused or not*/
@@ -236,6 +238,7 @@ global.enable_foreground_layer1 = true;
 global.enable_foreground_layer_above_static_objects = true;
 global.enable_foreground_layer2 = true;
 global.enable_foreground_layer_secret = true;
+global.enable_attract_demo = true; /*If the attract demo can play or not*/
 global.players_can_collide = false;
 global.player_has_entered_goal = false;
 global.pause_room = noone;
@@ -523,6 +526,32 @@ if (file_exists("localization.csv"))
 }
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
+global.resource_pack_sprite_artwork_collection = spr_noone;
+global.resource_pack_sprite_basic_collectible = spr_noone;
+global.resource_pack_sprite_basic_enemy = spr_noone;
+global.resource_pack_sprite_basic_enemy_angry = spr_noone;
+global.resource_pack_sprite_basic_enemy_blind = spr_noone;
+global.resource_pack_sprite_basic_enemy_flattened = spr_noone;
+global.resource_pack_sprite_big_collectible = spr_noone;
+global.resource_pack_sprite_big_collectible_outline = spr_noone;
+global.resource_pack_sprite_big_stationary_enemy = spr_noone;
+global.resource_pack_sprite_big_stationary_enemy_flattened = spr_noone;
+global.resource_pack_sprite_blaster = spr_noone;
+global.resource_pack_sprite_block_only_when_player_is_near = spr_noone;
+global.resource_pack_sprite_bowlingball = spr_noone;
+global.resource_pack_sprite_bowlingball_shine = spr_noone;
+global.resource_pack_sprite_bullet = spr_noone;
+global.resource_pack_sprite_bullet_flattened = spr_noone;
+global.resource_pack_sprite_coil_spring = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_blind_revive = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_blind_stomped = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_blind_walk = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_revive = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_stomped = spr_noone;
+global.resource_pack_sprite_enemy_bowlingball_walk = spr_noone;
+global.resource_pack_sprite_hp_pickup = spr_noone;
+global.resource_pack_sprite_invincibility_powerup = spr_noone;
+global.resource_pack_sprite_ranks = spr_noone;
 global.resource_pack_sprite_splash_controller = spr_noone;
 global.resource_pack_sprite_splash_easteregg = spr_noone;
 global.resource_pack_sprite_tileset_default = spr_noone;
@@ -534,31 +563,6 @@ global.resource_pack_sprite_tileset_metal = spr_noone;
 global.resource_pack_sprite_tileset_stone = spr_noone;
 global.resource_pack_sprite_tileset_wood = spr_noone;
 global.resource_pack_sprite_title_logo_christmas = spr_noone;
-global.resource_pack_sprite_artwork_collection = spr_noone;
-global.resource_pack_sprite_basic_collectible = spr_noone;
-global.resource_pack_sprite_big_collectible = spr_noone;
-global.resource_pack_sprite_big_collectible_outline = spr_noone;
-global.resource_pack_sprite_bullet = spr_noone;
-global.resource_pack_sprite_bullet_flattened = spr_noone;
-global.resource_pack_sprite_blaster = spr_noone;
-global.resource_pack_sprite_basic_enemy = spr_noone;
-global.resource_pack_sprite_basic_enemy_blind = spr_noone;
-global.resource_pack_sprite_basic_enemy_angry = spr_noone;
-global.resource_pack_sprite_basic_enemy_flattened = spr_noone;
-global.resource_pack_sprite_enemy_bowlingball_walk = spr_noone;
-global.resource_pack_sprite_enemy_bowlingball_stomped = spr_noone;
-global.resource_pack_sprite_enemy_bowlingball_revive = spr_noone;
-global.resource_pack_sprite_enemy_bowlingball_blind_walk = spr_noone;
-global.resource_pack_sprite_enemy_bowlingball_blind_stomped = spr_noone;
-global.resource_pack_sprite_enemy_bowlingball_blind_revive = spr_noone;
-global.resource_pack_sprite_bowlingball = spr_noone;
-global.resource_pack_sprite_bowlingball_shine = spr_noone;
-global.resource_pack_sprite_coil_spring = spr_noone;
-global.resource_pack_sprite_big_stationary_enemy = spr_noone;
-global.resource_pack_sprite_big_stationary_enemy_flattened = spr_noone;
-global.resource_pack_sprite_hp_pickup = spr_noone;
-global.resource_pack_sprite_invincibility_powerup = spr_noone;
-global.resource_pack_sprite_block_only_when_player_is_near = spr_noone;
 #endregion /*Resource Packs END*/
 
 company_splash = noone;

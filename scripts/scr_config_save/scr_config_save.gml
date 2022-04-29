@@ -6,8 +6,10 @@ function scr_config_save()
 	ini_write_real("config", "current_file", global.file);
 	ini_write_real("config", "difficulty", global.difficulty);
 	ini_write_real("config", "automatically_pause_when_window_is_unfocused", global.automatically_pause_when_window_is_unfocused);
+	ini_write_real("config", "enable_attract_demo", global.enable_attract_demo);
 	ini_write_real("config", "show_timer", global.show_timer);
 	ini_write_real("config", "show_deaths_counter", global.show_deaths_counter);
+	ini_write_real("config", "show_ranks", global.show_ranks);
 	ini_write_real("config", "assist_enable", global.assist_enable);
 	ini_write_real("config", "assist_enable_enemies", global.assist_enable_enemies);
 	ini_write_real("config", "assist_enable_spikes", global.assist_enable_spikes);
@@ -61,6 +63,7 @@ function scr_config_save()
 	ini_write_real("config", "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);
 	ini_write_real("config", "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
 	ini_write_real("config", "language_localization", global.language_localization);
+	ini_write_real("config", "convention_mode", global.convention_mode);
 	
 	#region /*Save Player 1 Keyboard Remapping*/
 	ini_write_real("config", "character_index_player_1", global.character_index[0]);

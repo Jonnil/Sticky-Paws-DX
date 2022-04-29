@@ -5386,7 +5386,6 @@ and (gamepad_is_connected(3))
 
 #region /*If player is allowed to move*/
 if (can_move = true)
-and (global.pause = false)
 {
 	
 	#region /*Pause*/	
@@ -7718,7 +7717,7 @@ and (takendamage <= takendamage_freezetime)
 			and (vspeed >4)
 			or(key_dive_pressed)
 			and (vspeed >4)
-			or(vspeed<-4)
+			or(vspeed <-4)
 			{
 				image_index = 0;
 				ground_pound = false;
@@ -7845,81 +7844,96 @@ and (global.pause = false)
 		{
 			if (key_dive_pressed)
 			{
-				if (allow_tongue = false)
+				if (rope_swing = true)
 				{
-					if (speed_max <8)
+					if (instance_exists(obj_tongue))
 					{
-						speed_max = 8;
-					}
-					if (!place_meeting(x, y- 8, obj_wall))
-					{
-						vspeed = -6;
-					}
-					else
-					{
-						vspeed = 0;
-					}
-					
-					#region /*Choose direction to dive*/
-					if (key_left)
-					and (!key_right)
-					or(image_xscale < 0)
-					{
-						if (hspeed >- 10)
+						with(instance_nearest(x, y, obj_tongue))
 						{
-							if (asset_get_type("obj_wall") == asset_object)
-							and (!place_meeting(x - 4, y, obj_wall))
-							{
-								hspeed = - 10;
-							}
+							timer = 25;
+							move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
 						}
-						image_xscale = -1;
 					}
-					else
-					if (key_right)
-					and (!key_left)
-					or(image_xscale > 0)
-					{
-						if (hspeed<+ 10)
-						{
-							if (asset_get_type("obj_wall") == asset_object)
-							and (!place_meeting(x + 4, y, obj_wall))
-							{
-								hspeed = +10;
-							}
-						}
-						image_xscale = +1;
-					}
-					#endregion /*Choose direction to dive*/
-					
-					ground_pound = false;
-					can_ground_pound = false;
-					if (asset_get_type("snd_dive") == asset_sound)
-					{
-						audio_play_sound(snd_dive, 0, 0);
-						audio_sound_gain(snd_dive, global.sound_volume * global.main_volume, 0);
-					}
-					audio_stop_sound(voice);
-					voice = audio_play_sound(voice_dive, 0, 0);
-					audio_sound_gain(voice_dive, global.voices_volume * global.main_volume, 0);
-					audio_sound_pitch(voice_dive, default_voice_pitch);
-					dive = true;
-					jump = 0;
-					spring = false;
-					move_towards_spring_endpoint = false;
-					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x, y + 1, obj_wall))
-					and (asset_get_type("obj_semisolid_platform") == asset_object)
-					and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-					and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-					and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-					{
-						crouch = false;
-					}
-					image_index = 0;
-					angle = 0;
-					wall_jump = 0;
+					vspeed = -normal_jump_height + vspeed;
+					rope_angle_velocity = 0;
+					grapple_x = x;
+					grapple_y = y;
+					rope_angle = point_direction(grapple_x, grapple_y, x, y);
+					rope_length = point_distance(grapple_x, grapple_y, x, y);
+					rope_swing = false;
 				}
+				if (speed_max <8)
+				{
+					speed_max = 8;
+				}
+				if (!place_meeting(x, y- 8, obj_wall))
+				{
+					vspeed = -6;
+				}
+				else
+				{
+					vspeed = 0;
+				}
+					
+				#region /*Choose direction to dive*/
+				if (key_left)
+				and (!key_right)
+				or(image_xscale < 0)
+				{
+					if (hspeed >- 10)
+					{
+						if (asset_get_type("obj_wall") == asset_object)
+						and (!place_meeting(x - 4, y, obj_wall))
+						{
+							hspeed = - 10;
+						}
+					}
+					image_xscale = -1;
+				}
+				else
+				if (key_right)
+				and (!key_left)
+				or(image_xscale > 0)
+				{
+					if (hspeed <+ 10)
+					{
+						if (asset_get_type("obj_wall") == asset_object)
+						and (!place_meeting(x + 4, y, obj_wall))
+						{
+							hspeed = +10;
+						}
+					}
+					image_xscale = +1;
+				}
+				#endregion /*Choose direction to dive*/
+					
+				ground_pound = false;
+				can_ground_pound = false;
+				if (asset_get_type("snd_dive") == asset_sound)
+				{
+					audio_play_sound(snd_dive, 0, 0);
+					audio_sound_gain(snd_dive, global.sound_volume * global.main_volume, 0);
+				}
+				audio_stop_sound(voice);
+				voice = audio_play_sound(voice_dive, 0, 0);
+				audio_sound_gain(voice_dive, global.voices_volume * global.main_volume, 0);
+				audio_sound_pitch(voice_dive, default_voice_pitch);
+				dive = true;
+				jump = 0;
+				spring = false;
+				move_towards_spring_endpoint = false;
+				if (asset_get_type("obj_wall") == asset_object)
+				and (!place_meeting(x, y + 1, obj_wall))
+				and (asset_get_type("obj_semisolid_platform") == asset_object)
+				and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+				and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+				and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+				{
+					crouch = false;
+				}
+				image_index = 0;
+				angle = 0;
+				wall_jump = 0;
 			}
 		}
 		else
@@ -7956,7 +7970,7 @@ and (global.pause = false)
 			else
 			if (image_xscale > 0)
 			{
-				if (hspeed<+ 4)
+				if (hspeed <+ 4)
 				{
 					if (asset_get_type("obj_wall") == asset_object)
 					and (!place_meeting(x + 4, y, obj_wall))
@@ -8056,7 +8070,7 @@ and (on_ground = true)
 		}
 		if (image_xscale < 0)
 		{
-			if (hspeed<-7)
+			if (hspeed <-7)
 			{
 				if (hspeed >- 10)
 				{
@@ -8076,7 +8090,7 @@ and (on_ground = true)
 		{
 			if (hspeed >+7)
 			{
-				if (hspeed<+ 10)
+				if (hspeed <+ 10)
 				{
 					if (!place_meeting(x + 1, y, obj_wall))
 					and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -8112,7 +8126,7 @@ if (allow_ledge_grab = true)
 		{
 			hspeed_dir = sign(hspeed);
 		}
-		if (ground_pound< 1)
+		if (ground_pound < 1)
 		and (burnt < 1)
 		{
 			if (!position_meeting(x + 37*hspeed_dir,bbox_top - 16, obj_wall))
@@ -8501,7 +8515,7 @@ if (asset_get_type("obj_water") == asset_object)
 		}
 		if (on_ground = true)
 		{
-			if (hspeed<- 2)
+			if (hspeed <- 2)
 			{
 				hspeed = - 2;
 			}
@@ -9210,6 +9224,7 @@ and (instance_exists(obj_goal))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
 		{
 			just_hit_goal = true;
+			obj_goal.goal = true;
 		}
 		#endregion /*Touching goal END*/
 		
@@ -9609,7 +9624,7 @@ if (spring = true)
 	star_image_index += 1;
 	if (star_image_index = 5)
 	{
-		effect_create_above(ef_star, x + random_range(-sprite_width / 2, +sprite_width / 2), y + random_range(-sprite_height / 2, +sprite_height / 2), 0, c_white);
+		effect_create_above(ef_star, x + random_range(-32, +32), y + random_range(-32, +32), 0, c_white);
 		star_image_index = 0;
 	}
 	image_speed = 0.5;
@@ -10460,10 +10475,10 @@ and (on_ground = true)
 	{
 		mask_index = spr_player_stand;
 	}
-	if (asset_get_type("snd_crouch") == asset_sound)
+	if (asset_get_type("snd_squat") == asset_sound)
 	{
-		audio_play_sound(snd_crouch, 0, 0);
-		audio_sound_gain(snd_crouch, global.sound_volume * global.main_volume, 0);
+		audio_play_sound(snd_squat, 0, 0);
+		audio_sound_gain(snd_squat, global.sound_volume * global.main_volume, 0);
 	}
 }
 #endregion /*Crouch Underwater END*/
@@ -10759,7 +10774,7 @@ and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	
 	#region /*Skidding*/
-	if (hspeed<-0.2)
+	if (hspeed <-0.2)
 	and (image_xscale > 0)
 	or(hspeed >+0.2)
 	and (image_xscale < 0)
@@ -11069,7 +11084,7 @@ if (crouch = true)
 		{
 			if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
 			if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
-			if (sprite_jump > noone) and (vspeed<= 0){sprite_index = sprite_jump;}else
+			if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
 			if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
 			if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall;}else
 			if (sprite_jump > noone){sprite_index = sprite_jump;}else
@@ -11094,7 +11109,7 @@ if (crouch = true)
 		{
 			if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
 			if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
-			if (sprite_jump > noone) and (vspeed<= 0){sprite_index = sprite_jump;}else
+			if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
 			if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
 			if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall;}else
 			if (sprite_jump > noone){sprite_index = sprite_jump;}else
@@ -11232,7 +11247,7 @@ and (vspeed = 0)
 			if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice; image_speed = 0.5;}else
 			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
 			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
+			if (sprite_walk> noone) and (hspeed <> 0){sprite_index = sprite_walk;}else
 			{sprite_index = sprite_stand;}
 		}
 		else
@@ -11250,8 +11265,8 @@ and (vspeed = 0)
 			if (abs(hspeed) > 15) and (sprite_run3> noone){sprite_index = sprite_run3;}else
 			if (abs(hspeed) > 10) and (sprite_run2> noone){sprite_index = sprite_run2;}else
 			if (abs(hspeed) >5) and (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_walk> noone) and (hspeed<> 0){sprite_index = sprite_walk;}else
-			if (sprite_run > noone) and (hspeed<> 0){sprite_index = sprite_run;}else
+			if (sprite_walk> noone) and (hspeed <> 0){sprite_index = sprite_walk;}else
+			if (sprite_run > noone) and (hspeed <> 0){sprite_index = sprite_run;}else
 			{sprite_index = sprite_stand;}
 		}
 		effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
@@ -11486,7 +11501,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (sprite_burnt> noone){sprite_index = sprite_burnt;}else
 		if (sprite_die > noone){sprite_index = sprite_die;}else
-		if (sprite_jump > noone) and (vspeed<= 0){sprite_index = sprite_jump;}else
+		if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
 		if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
 		if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall;}else
 		if (sprite_jump > noone){sprite_index = sprite_jump;}else
@@ -11498,7 +11513,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	if (dive = true)
 	{
 		if (sprite_dive > noone){sprite_index = sprite_dive;}else
-		if (sprite_jump > noone) and (vspeed<= 0){sprite_index = sprite_jump;}else
+		if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
 		if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
 		if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall;}else
 		if (sprite_jump > noone){sprite_index = sprite_jump;}else
@@ -12020,7 +12035,7 @@ if (on_ground = true)
 			}
 			else
 			if (image_index > image_number/ 2 - 1)
-			and (image_index <image_number/ 2 + 1)
+			and (image_index < image_number/ 2 + 1)
 			{
 				
 				#region /*Right Footstep Sounds*/

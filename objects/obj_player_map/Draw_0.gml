@@ -780,6 +780,8 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 and (brand_new_file = true)
 and (can_move = true)
 and (show_demo_over_message = false)
+and (asset_get_type("obj_level") == asset_object)
+and (instance_exists(obj_level))
 or(key_a_pressed)
 and (global.demo = false)
 and (can_move = true)
@@ -796,13 +798,14 @@ and (can_move = true)
 and (show_demo_over_message = false)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
+and (instance_exists(obj_level))
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed = 0)
 {
 	if (instance_nearest(x, y, obj_level).clear_rate = "enter")
 	or(instance_nearest(x, y, obj_level).clear_rate = "clear")
 	{
-			
+		
 		#region /*Save Player Position*/
 		x = instance_nearest(x, y, obj_level).x;
 		y = instance_nearest(x, y, obj_level).y;
@@ -812,7 +815,7 @@ and (speed = 0)
 		ini_write_real("Player", "brand_new_file", false)
 		ini_close();
 		#endregion /*Save Player Position END*/
-			
+		
 		can_move = false;
 		entering_level = true;
 		delay = 0;
@@ -974,6 +977,7 @@ mask_index = spr_wall;
 
 /*Show high scores*/
 if (asset_get_type("obj_level") == asset_object)
+and (instance_exists(obj_level))
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (move_delay > 10)
 and (instance_nearest(x, y, obj_level).level_number != 0)

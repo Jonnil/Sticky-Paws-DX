@@ -100,11 +100,11 @@ Show Normal Arrows,Show Normal Arrows,Visa normala pilar,,,Pokazuj normalne strz
 Enable Enemies,Enable Enemies,Aktivera fiender,,,
 Enable Spikes,Enable Spikes,Aktivera spikar,,,
 Show Assist Mode Text,Show Assist Mode Text,Visa hjälplägestext,,,Pokazuj tekst trybu asysty
-Level Layout Difficulty,Level Layout Difficulty,Nivå Layout Svårighetsgrad,,,
+Level Layout Difficulty,Level Layout Difficulty,Nivå Layout Svårighetsgrad,,,Trudność poziomu
 Easy,Easy,Lätt,イージー,,Łatwy
 Normal,Normal,Vanligt,ノーマル,,Normalny
 Hard,Hard,Svår,ハード,,Trudny
-Automatically pause when the game is unfocused,Automatically pause when the game is unfocused,Pausa automatiskt när spelet är ofokuserat,,,
+Automatically pause when the game is unfocused,Automatically pause when the game is unfocused,Pausa automatiskt när spelet är ofokuserat,,,Pauzuj automatycznie gdy okno gry nie jest skupione
 Show Timer,Show Timer,Visa timer,タイマーを見せる,,Pokaż stoper
 Show Deaths Counter,Show Deaths Counter,Visa dödsräknare,デスカウンターを見せる,,Pokaż licznik przegranych
 Show Tutorial Signs,Show Tutorial Signs,Visa handledningsskyltar,チュートリアルサインを見せる,,Pokaż znaki samouczka
@@ -120,12 +120,12 @@ After 8 Seconds,After 8 Seconds,Efter 8 sekunder,８秒の後で,,Po 8 sekundach
 After 9 Seconds,After 9 Seconds,Efter 9 sekunder,９秒の後で,,Po 9 sekundach
 Always Show,Always Show,Visa alltid,いつも見せる,,Zawsze pokazuj
 Never Show,Never Show,Visa aldrig,見せない,,Zawsze chowaj
-Remap This Player,Remap This Player,Mappa om denna spelare,,,
+Remap This Player,Remap This Player,Mappa om denna spelare,,,Zmień sterowanie tego gracza
 Dive,Pounce,Dyka,ボディーアタック,,Sus
 Jump,Jump,Hoppa,ジャンプ,,Skok
 Crouch,Crouch,Huka,しゃがむ,,Przykuc
 Crouch Toggle,Crouch Toggle,Huka växling,しゃがむトグル,,
-Sprint,Sprint,Sprinta,走る,,
+Sprint,Sprint,Sprinta,走る,,Bieg
 Sprint Toggle,Sprint Toggle,Sprint växling,走るトグル,,
 Left,Left,Vänster,左,,Lewo
 Right,Right,Höger,右,,Prawo
@@ -134,39 +134,39 @@ Up,Up,Upp,上,,Góra
 Tongue,Tongue,Tunga,舌,,Język
 Default Settings,Default Settings,Standardinställningar,,,Ustawienia domyślne
 Up key is jump key,Up key is jump key,Upp-tangenten är hopp-knappen,,,Góra jako klawisz skoku
-Double-tap direction to run,Double-tap direction to run,Dubbeltryck i riktning för att springa,,,
-Always run,Always run,Spring alltid,,,Zawsze biegnij
-Player 1 always run,Player 1 always run,Spelare 1 spring alltid,,,
-Player 2 always run,Player 2 always run,Spelare 2 spring alltid,,,
-Player 3 always run,Player 3 always run,Spelare 3 spring alltid,,,
-Player 4 always run,Player 4 always run,Spelare 4 spring alltid,,,
-Cancel dive by pressing the jump or dive key,Cancel pounce by pressing the jump or pounce key,Avbryt dyket genom att trycka på hopp- eller dykknappen,,,
-Cancel dive by pressing the opposite direction,Cancel pounce by pressing the opposite direction,Avbryt dyket genom att trycka i motsatt riktning,,,
+Double-tap direction to run,Double-tap direction to run,Dubbeltryck i riktning för att springa,,,Podwójne naciśnięcie strzałki aktywuje bieg
+Always run,Always run,Spring alltid,,,Auto-bieg
+Player 1 always run,Player 1 always run,Spelare 1 spring alltid,,,Auto-bieg dla gracza 1
+Player 2 always run,Player 2 always run,Spelare 2 spring alltid,,,Auto-bieg dla gracza 2
+Player 3 always run,Player 3 always run,Spelare 3 spring alltid,,,Auto-bieg dla gracza 3
+Player 4 always run,Player 4 always run,Spelare 4 spring alltid,,,Auto-bieg dla gracza 4
+Cancel dive by pressing the jump or dive key,Cancel pounce by pressing the jump or pounce key,Avbryt dyket genom att trycka på hopp- eller dykknappen,,,Anuluj sus przyciskając przycisk skoku lub susa
+Cancel dive by pressing the opposite direction,Cancel pounce by pressing the opposite direction,Avbryt dyket genom att trycka i motsatt riktning,,,Anuluj sus naciskając przeciwny kierunek
 Down + Jump to Ground Pound,Down + Jump to Ground Pound,Ner + Hoppa för att Ground Pound,,,
 Wall Jump,Wall Jump,Vägghopp,カベキック,,Walljump
-Off,Off,Av,,,
+Off,Off,Av,,,Wyłączone
 When touching wall,When touching wall,Vid beröring av vägg,,,
 When holding towards the wall,When holding towards the wall,När man håller mot väggen,,,
 Drop down from the rope,Drop down from the rope,Släpp ner från repet,,,
 Release Jump,Release Jump,Släpp hopp,,,
-Down or Jump,Down or Jump,Ner eller hoppa,,,
-Only Down,Only Down,Bara ner,,,
-Only Jump,Only Jump,Bara hoppa,,,
+Down or Jump,Down or Jump,Ner eller hoppa,,,Dół lub skok
+Only Down,Only Down,Bara ner,,,Tylko dół
+Only Jump,Only Jump,Bara hoppa,,,Tylko skok
 Down + Jump,Down + Jump,Ner + Hoppa,,,Dół + skok
 Show Controls,Show Controls,Visa kontroller,,,Pokaż sterowanie
-Interpolation,Interpolation,Interpolering,,,
-Show Instance Count,Show Instance Count,Visa antal instanser,,,
-Instance Count,Instance Count,Antal instanser,,,
+Interpolation,Interpolation,Interpolering,,,Interpolacja
+Show Instance Count,Show Instance Count,Visa antal instanser,,,Pokaż licznik instancji
+Instance Count,Instance Count,Antal instanser,,,Licznik instancji
 Hide menu for clean screenshots,Hide menu for clean screenshots,Dölj menyn för rena skärmdumpar,,,
 Restart,Restart,Omstart,,,Restart
 Reset from Checkpoint,Reset from Checkpoint,Återställ från återvändspunkt,,,Rozpocznij od punktu kontrolnego
 Reset from Start,Reset from Start,Återställ från start,,,Rozpocznij od początku
-Nevermind,Nevermind,Glöm det,,,
+Nevermind,Nevermind,Glöm det,,,Jednak nie
 Quit to Map,Quit to Map,Avsluta till kartan,終了してマップへ,,Wyjdź do mapy
 Quit to Title,Quit to Title,Avsluta till titel,終了してタイトルへ,,Wyjdź do menu głównego
 Quit to Desktop,Quit to Desktop,Avsluta till skrivbordet,終了してデスクトップへ,,Wyjdź do pulpitu
 Score,Score,Poäng,,,Wynik
-Enter into level,Enter into level,Gå in på nivå,,,
+Enter into level,Enter into level,Gå in på nivå,,,Graj w poziom
 Best Time,Best Time,Bästa tid,,,Najlepszy czas
 Best Score,Best Score,Bästa poäng,,,Najlepszy wynik
 Times Passed,Times Passed,Gånger klarad,,,
@@ -182,13 +182,13 @@ Enable Foreground Layer Above Static Objects,Enable Foreground Layer Above Stati
 Enable Foreground Layer 2,Enable Foreground Layer 2,Aktivera förgrundslager 2,,,
 Enable Foreground Layer Secret,Enable Foreground Layer Secret,Aktivera förgrundslager hemlighet,,,
 Background Brightness in Gameplay,Background Brightness in Gameplay,Bakgrundsljusstyrka i spel,,,
-Background Brightness in Menus,Background Brightness in Menus,Bakgrundsljusstyrka i menyer,,,
-Reset Level Zoom When Going Back To Map,Reset Level Zoom When Going Back To Map,Återställ nivåzoom när du går tillbaka till kartan,,,
-Reset World Map Zoom When Going Back To Map,Reset World Map Zoom When Going Back To Map,Återställ världskartans zoom när du går tillbaka till kartan,,,
-Main Volume,Main Volume,Huvudvolym,,,
+Background Brightness in Menus,Background Brightness in Menus,Bakgrundsljusstyrka i menyer,,,Jasność tła w grze
+Reset Level Zoom When Going Back To Map,Reset Level Zoom When Going Back To Map,Återställ nivåzoom när du går tillbaka till kartan,,,Jasność tła w menu
+Reset World Map Zoom When Going Back To Map,Reset World Map Zoom When Going Back To Map,Återställ världskartans zoom när du går tillbaka till kartan,,,Resetuj powiększenie poziomu wracając do mapy
+Main Volume,Main Volume,Huvudvolym,,,Resetuj ppwiększenie mapy świata wracając do mapy
 Music Volume,Music Volume,Musikvolym,,,Głośność muzyki
 Sound Volume,Sound Volume,Ljudvolym,,,Głośność dźwięków
-Ambient Volume,Ambient Volume,Omgivande volym,,,
+Ambient Volume,Ambient Volume,Omgivande volym,,,Głośność tła
 Footstep Volume,Footstep Volume,Fotstegvolym,,,Głośność chodzenia
 Voices Volume,Voices Volume,Röster volym,,,Głośność głosów
 Number of Audio Channels,Number of Audio Channels,Antal ljudkanaler,,,Ilość kanałów audio
@@ -218,10 +218,10 @@ Assist Mode,Assist Mode,Assist läge,,,Tryb asysty
 Hold Start,Hold Start,Håll Start,,,Przytrzymaj start
 Press and Hold Screen,Press and Hold Screen,Tryck och håll ned skärmen,,,Dotknij i przytrzymaj ekran
 Delete Level,Delete Level,Ta bort nivå,レベルデリート,,Usuń poziom
-Height,Height,Höjd,高さ,,
-Width,Width,Bredd,幅,,
-Grid X,Grid X,Rutnät X,グリッドX,,
-Grid Y,Grid Y,Rutnät Y,グリッドY,,
+Height,Height,Höjd,高さ,,Wysokość
+Width,Width,Bredd,幅,,Szerokość
+Grid X,Grid X,Rutnät X,グリッドX,,Siatka X
+Grid Y,Grid Y,Rutnät Y,グリッドY,,Siatka Y
 Default grid size!,Default grid size!,Standard rutnätsstorlek!,規定グリッドサイズ,,Domyślny rozmiar !
 X,X,X,X,,X
 Y,Y,Y,Y,,Y
@@ -229,8 +229,8 @@ View X,View X,Vy X,ビューX,,Pokaż X
 View Y,View Y,Vy Y,ビューY,,Pokaż Y
 View width,View width,Vy bredd,ビュー幅,,Pokaż 
 View height,View height,Vy höjd,ビュー高さ,,Pokaż
-Warning! Level height shorter than normal,Warning! Level height shorter than normal,Varning! Nivåhöjd kortare än normalt,注意、レベルは普通より高い,,
-Warning! Level width shorter than normal,Warning! Level width shorter than normal,Varning! Nivåbredd kortare än normalt,注意、レベルは普通より広い,,
+Warning! Level height shorter than normal,Warning! Level height shorter than normal,Varning! Nivåhöjd kortare än normalt,注意、レベルは普通より高い,,Uwaga! Wysokość poziomu krótsza niż normalna
+Warning! Level width shorter than normal,Warning! Level width shorter than normal,Varning! Nivåbredd kortare än normalt,注意、レベルは普通より広い,,Uwaga! Szerokość poziomu krótsza niż normalna
 Can put objects above other objects: True,Can put objects above other objects: True,Kan sätta objekt över andra objekt: Sant,,,
 Artwork,Artwork,Konstverk,,,Ilustracja
 Artist,Artist,Konstnär,,,Artysta
@@ -254,8 +254,8 @@ Continue playing!,Continue playing!,Fortsätt spela!,,,Kontynuuj grę!
 Background Scale,Background Scale,Bakgrundsskala,,,Skala tła
 Background Scroll X,Background Scroll X,Bakgrund Scroll X,,,Skala przewijania X
 Background Scroll Y,Background Scroll Y,Bakgrund Scroll Y,,,Skala przewijania Y
-Hold down to change the value faster,Hold down to change the value faster,Håll intryckt för att ändra värdet snabbare,,,
-BG Offset and Parallax,BG Offset and Parallax,BG Offset och Parallax,,,
+Hold down to change the value faster,Hold down to change the value faster,Håll intryckt för att ändra värdet snabbare,,,Przytrzymaj by zmienić wartość szybciej
+BG Offset and Parallax,BG Offset and Parallax,BG Offset och Parallax,,,Offset i paralax tła
 Open Custom Levels Folder,Open Custom Levels Folder,Öppna egna nivåer,カスタムレベルフォルダを開く,,Otwórz folder z własnymi poziomami
 TIME OVER,TIME OVER,TID ÖVER,,,CZAS MINĄŁ
 HURRY UP!,HURRY UP!,SKYNDA DIG!,,,

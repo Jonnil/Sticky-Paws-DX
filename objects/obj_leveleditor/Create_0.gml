@@ -12,6 +12,7 @@ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or(keyboard_check_pre
 key_b_released = (gamepad_button_check_released(0, gp_face2))or(keyboard_check_released(global.player1_key_sprint))or(keyboard_check_released(ord("X")))or(keyboard_check_released(vk_backspace));
 #endregion /*Controls for level editor END*/
 
+saved_file_exists = false;
 can_save_to_level_information = false;
 depth = - 300;
 

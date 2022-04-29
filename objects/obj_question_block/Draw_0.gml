@@ -115,7 +115,7 @@ if (bounceup = false)
 					{
 						with(instance_nearest(x, y, obj_player))
 						{
-							if (key_crouch)
+							if (key_crouch_hold)
 							and (ground_pound = true)
 							{
 								ground_pound = true;

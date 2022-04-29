@@ -82,7 +82,7 @@ if (fall = true)
 	and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{
 		gravity = 0.5;
-		if (vspeed<+ 1)
+		if (vspeed <+ 1)
 		{
 			vspeed = +1;
 		}

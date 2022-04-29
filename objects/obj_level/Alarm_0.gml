@@ -109,6 +109,6 @@ if (clear_rate = "clear")
 		}
 		vspeed += move_speed;
 	}
-	global.goal_active = false;
 }
+global.goal_active = false;
 #endregion /*Unlock next level after setting own clear rate to clear END*/

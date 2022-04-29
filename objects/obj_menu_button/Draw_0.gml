@@ -1,7 +1,7 @@
 #region /*Button*/
 if (kind_of_button = 0)
 {
-	for(i = 0; i <image_xscale; i ++)
+	for(i = 0; i < image_xscale; i ++)
 	{
 		draw_sprite_ext(spr_menu_button_center, 0, x + (i* 32), y, 1, 1, 0,highlight_color, 1);
 	}

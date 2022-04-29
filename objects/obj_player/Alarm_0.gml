@@ -149,6 +149,7 @@ sprite_wall_slide_down = scr_initialize_custom_character_sprite("wall_slide_down
 sprite_wall_slide_down = scr_initialize_custom_character_sprite("wallslide_down", sprite_wall_slide_down);
 sprite_wall_slide_up = scr_initialize_custom_character_sprite("wall_slide_up", sprite_wall_slide_up);
 sprite_wall_slide_up = scr_initialize_custom_character_sprite("wallslide_up", sprite_wall_slide_up);
+sprite_paraglide_down = scr_initialize_custom_character_sprite("paraglide_down", sprite_paraglide_down);
 #endregion /*Sprite variables END*/
 
 #region /*Sound variables*/

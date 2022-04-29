@@ -3685,7 +3685,7 @@ function scr_character_select_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		global.player1_name =keyboard_string;
+		global.player1_name = keyboard_string;
 		
 		#region /*Limit Name Input Length for Player 1*/
 		draw_set_halign(fa_center);
@@ -3722,7 +3722,7 @@ function scr_character_select_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		global.player2_name =keyboard_string;
+		global.player2_name = keyboard_string;
 		
 		#region /*Limit Name Input Length for Player 2*/
 		draw_set_halign(fa_center);
@@ -3759,7 +3759,7 @@ function scr_character_select_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		global.player3_name =keyboard_string;
+		global.player3_name = keyboard_string;
 		
 		#region /*Limit Name Input Length for Player 3*/
 		draw_set_halign(fa_center);
@@ -3796,7 +3796,7 @@ function scr_character_select_menu()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
-		global.player4_name =keyboard_string;
+		global.player4_name = keyboard_string;
 		
 		#region /*Limit Name Input Length for Player 4 */
 		draw_set_halign(fa_center);

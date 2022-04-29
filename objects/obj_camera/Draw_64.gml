@@ -1,3 +1,130 @@
+if (global.convention_mode = true)
+and (!instance_exists(obj_title))
+{
+	reset_game_if_no_interactivity += 1;
+	reset_game_if_no_interactivity_second_countdown_timer += 1;
+	if (reset_game_if_no_interactivity_second_countdown_timer >= 60)
+	{
+		reset_game_if_no_interactivity_second_countdown_timer = 0;
+		reset_game_if_no_interactivity_second_countdown -= 1;
+	}
+	if (reset_game_if_no_interactivity >= 3600)
+	{
+		game_restart();
+	}
+}
+if (keyboard_check(vk_anykey))
+or (mouse_check_button(mb_any))
+or (mouse_wheel_down())
+or (mouse_wheel_up())
+or (instance_exists(obj_camera))
+and (mouse_moving)
+
+or (gamepad_button_check(0, gp_face1))
+or (gamepad_button_check(0, gp_face2))
+or (gamepad_button_check(0, gp_face3))
+or (gamepad_button_check(0, gp_face4))
+or (gamepad_button_check(0, gp_padd))
+or (gamepad_button_check(0, gp_padl))
+or (gamepad_button_check(0, gp_padr))
+or (gamepad_button_check(0, gp_padu))
+or (gamepad_button_check(0, gp_select))
+or (gamepad_button_check(0, gp_shoulderl))
+or (gamepad_button_check(0, gp_shoulderlb))
+or (gamepad_button_check(0, gp_shoulderr))
+or (gamepad_button_check(0, gp_shoulderrb))
+or (gamepad_button_check(0, gp_start))
+or (gamepad_button_check(0, gp_stickl))
+or (gamepad_button_check(0, gp_stickr))
+or (gamepad_axis_value(0, gp_axislh) <> 0)
+or (gamepad_axis_value(0, gp_axislv) <> 0)
+or (gamepad_axis_value(0, gp_axisrh) <> 0)
+or (gamepad_axis_value(0, gp_axisrv) <> 0)
+
+or (gamepad_button_check(1, gp_face1))
+or (gamepad_button_check(1, gp_face2))
+or (gamepad_button_check(1, gp_face3))
+or (gamepad_button_check(1, gp_face4))
+or (gamepad_button_check(1, gp_padd))
+or (gamepad_button_check(1, gp_padl))
+or (gamepad_button_check(1, gp_padr))
+or (gamepad_button_check(1, gp_padu))
+or (gamepad_button_check(1, gp_select))
+or (gamepad_button_check(1, gp_shoulderl))
+or (gamepad_button_check(1, gp_shoulderlb))
+or (gamepad_button_check(1, gp_shoulderr))
+or (gamepad_button_check(1, gp_shoulderrb))
+or (gamepad_button_check(1, gp_start))
+or (gamepad_button_check(1, gp_stickl))
+or (gamepad_button_check(1, gp_stickr))
+or (gamepad_axis_value(1, gp_axislh) <> 0)
+or (gamepad_axis_value(1, gp_axislv) <> 0)
+or (gamepad_axis_value(1, gp_axisrh) <> 0)
+or (gamepad_axis_value(1, gp_axisrv) <> 0)
+
+or (gamepad_button_check(2, gp_face1))
+or (gamepad_button_check(2, gp_face2))
+or (gamepad_button_check(2, gp_face3))
+or (gamepad_button_check(2, gp_face4))
+or (gamepad_button_check(2, gp_padd))
+or (gamepad_button_check(2, gp_padl))
+or (gamepad_button_check(2, gp_padr))
+or (gamepad_button_check(2, gp_padu))
+or (gamepad_button_check(2, gp_select))
+or (gamepad_button_check(2, gp_shoulderl))
+or (gamepad_button_check(2, gp_shoulderlb))
+or (gamepad_button_check(2, gp_shoulderr))
+or (gamepad_button_check(2, gp_shoulderrb))
+or (gamepad_button_check(2, gp_start))
+or (gamepad_button_check(2, gp_stickl))
+or (gamepad_button_check(2, gp_stickr))
+or (gamepad_axis_value(2, gp_axislh) <> 0)
+or (gamepad_axis_value(2, gp_axislv) <> 0)
+or (gamepad_axis_value(2, gp_axisrh) <> 0)
+or (gamepad_axis_value(2, gp_axisrv) <> 0)
+
+or (gamepad_button_check(3, gp_face1))
+or (gamepad_button_check(3, gp_face2))
+or (gamepad_button_check(3, gp_face3))
+or (gamepad_button_check(3, gp_face4))
+or (gamepad_button_check(3, gp_padd))
+or (gamepad_button_check(3, gp_padl))
+or (gamepad_button_check(3, gp_padr))
+or (gamepad_button_check(3, gp_padu))
+or (gamepad_button_check(3, gp_select))
+or (gamepad_button_check(3, gp_shoulderl))
+or (gamepad_button_check(3, gp_shoulderlb))
+or (gamepad_button_check(3, gp_shoulderr))
+or (gamepad_button_check(3, gp_shoulderrb))
+or (gamepad_button_check(3, gp_start))
+or (gamepad_button_check(3, gp_stickl))
+or (gamepad_button_check(3, gp_stickr))
+or (gamepad_axis_value(3, gp_axislh) <> 0)
+or (gamepad_axis_value(3, gp_axislv) <> 0)
+or (gamepad_axis_value(3, gp_axisrh) <> 0)
+or (gamepad_axis_value(3, gp_axisrv) <> 0)
+{
+	reset_game_if_no_interactivity = 0;
+	reset_game_if_no_interactivity_second_countdown_timer = 0;
+	reset_game_if_no_interactivity_second_countdown = 60;
+}
+if (global.convention_mode = true)
+and (!instance_exists(obj_title))
+and (reset_game_if_no_interactivity_second_countdown <= 30)
+{
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	if (reset_game_if_no_interactivity_second_countdown >= 2)
+	{
+		draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, Text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + Text("seconds"), global.default_text_size * 2, c_black, c_red, 1);
+	}
+	else
+	{
+		draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, Text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + Text("second"), global.default_text_size * 2, c_black, c_red, 1);
+	}
+	draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 42, Text("Start moving to continue playing"), global.default_text_size, c_black, c_red, 1);
+}
+
 ///HUD
 if (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
@@ -435,30 +562,29 @@ and (!instance_exists(obj_title))
 					draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
 				}
 			}
-			
-			#region /*Time countup in Minutes, Seconds and Milliseconds*/
-			if (global.show_timer = true)
-			{
-				draw_set_halign(fa_right)
-				if (global.timeattack_minute > 0)
-				{
-					draw_text_outlined(window_get_width() - 90, 74, string(global.timeattack_minute) + ":", global.default_text_size, c_black, c_white, 1);
-				}
-				if (global.timeattack_minute <= 0)
-				and (global.timeattack_second <= 9)
-				{
-					draw_text_outlined(window_get_width() - 60, 74, global.timeattack_second, global.default_text_size, c_black, c_white, 1);
-				}
-				else
-				{
-					draw_text_outlined(window_get_width() - 60, 74, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
-				}
-				draw_text_outlined(window_get_width() - 30, 74, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
-			}
-			#endregion /*Time countup in Minutes, Seconds and Milliseconds END*/
-			
 		}
 		#endregion /*Time Countdown END*/
+		
+		#region /*Time countup in Minutes, Seconds and Milliseconds*/
+		if (global.show_timer = true)
+		{
+			draw_set_halign(fa_right)
+			if (global.timeattack_minute > 0)
+			{
+				draw_text_outlined(window_get_width() - 90, 74, string(global.timeattack_minute) + ":", global.default_text_size, c_black, c_white, 1);
+			}
+			if (global.timeattack_minute <= 0)
+			and (global.timeattack_second <= 9)
+			{
+				draw_text_outlined(window_get_width() - 60, 74, global.timeattack_second, global.default_text_size, c_black, c_white, 1);
+			}
+			else
+			{
+				draw_text_outlined(window_get_width() - 60, 74, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
+			}
+			draw_text_outlined(window_get_width() - 30, 74, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
+		}
+		#endregion /*Time countup in Minutes, Seconds and Milliseconds END*/
 		
 	}
 	#endregion /*Lives, Deaths, Big Collectibles, Basic Collectibles, Score and Timer END*/
@@ -479,10 +605,30 @@ and (!instance_exists(obj_title))
 
 #region /*Show if you are playing the demo version or not*/
 if (global.demo = true)
+and (global.play_attract_demo = false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + Text("Demo"), global.default_text_size, c_black, c_white, 1);
+	if (global.convention_mode = true)
+	{
+		draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + Text("Demo") + " - " + Text("Convention mode"), global.default_text_size, c_black, c_white, 1);
+	}
+	else
+	{
+		draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + Text("Demo"), global.default_text_size, c_black, c_white, 1);
+	}
+}
+#endregion /*Show if you are playing the demo version or not END*/
+
+#region /*Show if you are playing the demo version or not*/
+if (global.convention_mode = true)
+and (global.demo = false)
+and (global.play_attract_demo = false)
+and (room = room_title)
+{
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_outlined(window_get_width() / 2, + 32, Text("Convention mode"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*Show if you are playing the demo version or not END*/
 
@@ -1791,6 +1937,123 @@ and (global.player4_can_play >= 1)
 #endregion /*Show what input is used END*/
 
 scr_virtual_keys();
+
+#region /*Display Rank*/
+if (global.goal_active = true)
+and (global.show_ranks = true)
+and (global.enable_ranks = true)
+{
+	if (global.character_select_in_this_menu = "main_game")
+	and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
+	
+	or (global.character_select_in_this_menu = "level_editor")
+	and (global.select_level_index <= 0)
+	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		
+	or (global.character_select_in_this_menu = "level_editor")
+	and (global.create_level_from_template >= 2)
+	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+	
+	or (global.character_select_in_this_menu = "level_editor")
+	and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
+	{
+		if (global.character_select_in_this_menu = "main_game")
+		{
+			ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
+		}
+		else
+		if (global.character_select_in_this_menu = "level_editor")
+		and (global.select_level_index <= 0)
+		or(global.character_select_in_this_menu = "level_editor")
+		and (global.create_level_from_template >= 2)
+		{
+			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		}
+		else
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+		}
+		
+		if (ini_key_exists("rank", "rank_level_score"))
+		{
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_center);
+			draw_text_outlined(window_get_width() / 2 - 128, window_get_height() / 2 - 74, Text("Score"), global.default_text_size, c_black, c_white, 1);
+			draw_set_halign(fa_right);
+			draw_text_outlined(window_get_width() / 2 - 32, window_get_height() / 2 + 74, Text("S Rank Score") + ": " + string(ini_read_real("rank", "rank_level_score", 0)), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2 - 32, window_get_height() / 2 + 74 + 32, Text("Your Score") + ": " + string(score), global.default_text_size, c_black, c_white, 1);
+			if (score >= ini_read_real("rank", "rank_level_score", 0))
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank S*/
+			}
+			else
+			if (score >= ini_read_real("rank", "rank_level_score", 0) - 10000)
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank A*/
+			}
+			else
+			if (score >= ini_read_real("rank", "rank_level_score", 0) - 50000)
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank B*/
+			}
+			else
+			if (score >= ini_read_real("rank", "rank_level_score", 0) - 80000)
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank C*/
+			}
+			else
+			if (score >= ini_read_real("rank", "rank_level_score", 0) - 100000)
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank D*/
+			}
+			else
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank E*/
+			}
+		}
+		if (ini_key_exists("rank", "rank_timeattack_realmillisecond"))
+		{
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_center);
+			draw_text_outlined(window_get_width() / 2 + 128, window_get_height() / 2 - 74, Text("Time"), global.default_text_size, c_black, c_white, 1);
+			draw_set_halign(fa_right)
+			draw_text_outlined(window_get_width() / 2 + 328, window_get_height() / 2 + 74, Text("S Rank Time") + ": " + string(ini_read_real("rank", "rank_timeattack_minute", 0)) + ":" + string(ini_read_real("rank", "rank_timeattack_second", 0)) + "." + string(string_replace_all(string_format(ini_read_real("rank", "rank_timeattack_millisecond", 0), 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2 + 328, window_get_height() / 2 + 74 + 32, Text("Your Time") + ": " + string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
+			
+			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0))
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank S*/
+			}
+			else
+			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 1000)
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank A*/
+			}
+			else
+			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 5000)
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank B*/
+			}
+			else
+			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 8000)
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank C*/
+			}
+			else
+			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 10000)
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank D*/
+			}
+			else
+			{
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank E*/
+			}
+		}
+		ini_close();
+	}
+}
+#endregion /*Display Rank END*/
 
 #region /*Letterboxing during cutscenes (when the player object is absent)*/
 if (show_letterbox > 0)

@@ -1,3 +1,7 @@
+reset_game_if_no_interactivity = 0;
+reset_game_if_no_interactivity_second_countdown_timer = 0;
+reset_game_if_no_interactivity_second_countdown = 60;
+
 saved_file_exists = false;
 can_save_to_character_config = false; /*Only turn true when playing as custom character*/
 unused_x_origin_point = noone;
@@ -24,6 +28,8 @@ delay = 0;
 
 mouse_x_position = window_mouse_get_x(); /*Mouse x initializing*/
 mouse_y_position = window_mouse_get_y(); /*Mouse y initializing*/
+
+mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y());
 
 big_collectible1_already_collected = false;
 big_collectible2_already_collected = false;

@@ -5,7 +5,7 @@ scr_zoom_camera_controls();
 #region /*Set what controls are used to navigate the menus*/
 
 #region /*Get distance from fake mouse to real mouse*/
-var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y());
+mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y());
 #endregion /*Get distance from fake mouse to real mouse END*/
 
 #region /*update positions of fake mouse*/

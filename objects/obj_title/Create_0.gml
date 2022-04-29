@@ -1,5 +1,9 @@
 scr_unzip_all() /*Unzip any .zip folder found in AppData*/
 
+global.play_attract_demo = false;
+play_attract_demo_time = 0;
+
+load_from_where = "characters";
 saved_file_exists = false;
 can_save_to_character_config = false; /*Only turn true when playing as custom character*/
 unused_x_origin_point = noone;
@@ -7,11 +11,6 @@ unused_y_origin_point = noone;
 
 initialized_copy = false;
 first_copy_file = "";
-file_load_inside_folder_timer = 0;
-load_inside_folder_ok = 0;
-initialized_inside_folder_copy = false;
-first_inside_folder_copy_file = "";
-file_inside_folder_found = "";
 
 player = 1;
 selected_skin = 0;
@@ -262,11 +261,15 @@ menu_y_offset = 0; /*This is the y offset that will have lerping to make the men
 menu_y_offset_real = 0; /*This is the real y offset for the menu, used for menu scrolling*/
 menu_cursor_y_position = 0;
 background_brightness_menu_lerp = 0;
+title_x = 0;
 title_y = - 800;
 title_alpha = 0;
 title_logo_index = spr_wall;
 show_title_logo = true;
+title_xscale = 1;
+title_yscale = 1;
 voice_select_character = noone;
+show_convention_mode_enable_text = 0;
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
@@ -328,9 +331,11 @@ else
 if (title_music > noone)
 {
 	audio_play_sound(title_music, 0, true);
-	audio_sound_gain(title_music, global.music_volume * global.main_volume, 0);
+	audio_sound_gain(title_music, 0, 0);
 }
 #endregion /*Play title screen music END*/
+
+music_fade_in = 0;
 
 #region /*Reset level zoom*/
 if (global.reset_level_zoom_when_going_back_to_map = true)
