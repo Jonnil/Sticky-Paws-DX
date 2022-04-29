@@ -20,27 +20,13 @@ and (key_up)
 {
 	if (instance_exists(obj_wall))
 	{
-		if (image_xscale > 0)
+		if (!position_meeting(xx + 32 * image_xscale, yy, obj_wall))
 		{
-			if (!position_meeting(xx + 32, yy, obj_wall))
-			{
-				raycast_info = raycast(xx + 32, yy, 90, 380, 16, obj_wall);
-			}
-			else
-			{
-				raycast_info = raycast(xx, yy, 90, 380, 16, obj_wall);
-			}
+			raycast_info = raycast(xx + 32 * image_xscale, yy, 90, 380, 16, obj_wall);
 		}
 		else
 		{
-			if (!position_meeting(xx - 32, yy, obj_wall))
-			{
-				raycast_info = raycast(xx - 32, yy, 90, 380, 16, obj_wall);
-			}
-			else
-			{
-				raycast_info = raycast(xx, yy, 90, 380, 16, obj_wall);
-			}
+			raycast_info = raycast(xx, yy, 90, 380, 16, obj_wall);
 		}
 	}
 	if (raycast_info == noone)
@@ -57,27 +43,13 @@ and (key_up)
 	{
 		draw_set_color(c_yellow);
 	}
-	if (image_xscale > 0)
+	if (!position_meeting(xx + 32 * image_xscale, yy, obj_wall))
 	{
-		if (!position_meeting(xx + 32, yy, obj_wall))
-		{
-			draw_line_width(xx + 32, yy, raycast_info.x, raycast_info.y, 2);
-		}
-		else
-		{
-			draw_line_width(xx, yy, raycast_info.x, raycast_info.y, 2);
-		}
+		draw_line_width(xx + 32 * image_xscale, yy, raycast_info.x, raycast_info.y, 2);
 	}
 	else
 	{
-		if (!position_meeting(xx - 32, yy, obj_wall))
-		{
-			draw_line_width(xx - 32, yy, raycast_info.x, raycast_info.y, 2);
-		}
-		else
-		{
-			draw_line_width(xx, yy, raycast_info.x, raycast_info.y, 2);
-		}
+		draw_line_width(xx, yy, raycast_info.x, raycast_info.y, 2);
 	}
 }
 #endregion /*Draw Raycasts END*/
