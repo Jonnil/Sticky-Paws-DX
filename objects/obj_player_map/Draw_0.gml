@@ -243,8 +243,9 @@ if (sprite_index >= 0)
 
 #region /*Pause*/
 if (keyboard_check_pressed(vk_escape))
-or(gamepad_button_check_pressed(0, gp_start))
-or(!window_has_focus())
+or (gamepad_button_check_pressed(0, gp_select))
+or (gamepad_button_check_pressed(0, gp_start))
+or (!window_has_focus())
 and (global.automatically_pause_when_window_is_unfocused = true)
 {
 	if (asset_get_type("room_pause") == asset_room)
@@ -258,7 +259,8 @@ and (global.automatically_pause_when_window_is_unfocused = true)
 	}
 }
 else
-if (gamepad_button_check_pressed(1, gp_start))
+if (gamepad_button_check_pressed(1, gp_select))
+or (gamepad_button_check_pressed(1, gp_start))
 and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 1;
@@ -269,7 +271,8 @@ and (asset_get_type("room_pause") == asset_room)
 	room_goto(room_pause);
 }
 else
-if (gamepad_button_check_pressed(2, gp_start))
+if (gamepad_button_check_pressed(2, gp_select))
+or (gamepad_button_check_pressed(2, gp_start))
 and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 2;
@@ -280,7 +283,8 @@ and (asset_get_type("room_pause") == asset_room)
 	room_goto(room_pause);
 }
 else
-if (gamepad_button_check_pressed(3, gp_start))
+if (gamepad_button_check_pressed(3, gp_select))
+or (gamepad_button_check_pressed(3, gp_start))
 and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 3;
@@ -533,10 +537,9 @@ and (global.quit_level = false)
 				
 				#region /*Key Right*/
 				if (gamepad_is_connected(0))
-				and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					draw_sprite_ext(spr_xbox_buttons, 6, x + 64, y, 0.5, 0.5, 0, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -603,10 +606,9 @@ and (global.quit_level = false)
 				
 				#region /*Key Left*/
 				if (gamepad_is_connected(0))
-				and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					draw_sprite_ext(spr_xbox_buttons, 4, x - 64, y, 0.5, 0.5, 0, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, 1);
 				}
 				else
 				
@@ -673,10 +675,9 @@ and (global.quit_level = false)
 				
 				#region /*Key Down*/
 				if (gamepad_is_connected(0))
-				and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					draw_sprite_ext(spr_xbox_buttons, 7, x, y + 64, 0.5, 0.5, 0, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -711,10 +712,9 @@ and (global.quit_level = false)
 				
 				#region /*Key Up*/
 				if (gamepad_is_connected(0))
-				and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					draw_sprite_ext(spr_xbox_buttons, 5, x, y - 64, 0.5, 0.5, 0, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)

@@ -3,23 +3,24 @@
 /*The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y*/
 
 #region /*Allow abilities*/
-allow_crawl = scr_initialize_custom_character_abilities(allow_crawl, "allow_crawl", true);
-allow_crouch = scr_initialize_custom_character_abilities(allow_crouch, "allow_crouch", true);
-allow_dive = scr_initialize_custom_character_abilities(allow_dive, "allow_dive", true);
-allow_dive_ground_boost = scr_initialize_custom_character_abilities(allow_dive_ground_boost, "allow_dive_ground_boost", true);
-allow_drowning = scr_initialize_custom_character_abilities(allow_drowning, "allow_drowning", true);
-allow_ground_pound = scr_initialize_custom_character_abilities(allow_ground_pound, "allow_ground_pound", true);
-allow_ground_pound_jump = scr_initialize_custom_character_abilities(allow_ground_pound_jump, "allow_ground_pound_jump", true);
-allow_homing_attack = scr_initialize_custom_character_abilities(allow_homing_attack, "allow_homing_attack", false);
-allow_ledge_grab = scr_initialize_custom_character_abilities(allow_ledge_grab, "allow_ledge_grab", false);
-allow_overflow_hp = scr_initialize_custom_character_abilities(allow_overflow_hp, "allow_overflow_hp", true);
-allow_roll = scr_initialize_custom_character_abilities(allow_roll, "allow_roll", false);
-allow_run = scr_initialize_custom_character_abilities(allow_run, "allow_run", true);
-allow_stop_after_landing_triple_jump = scr_initialize_custom_character_abilities(allow_stop_after_landing_triple_jump, "allow_stop_after_landing_triple_jump", false);
-allow_survive_lava = scr_initialize_custom_character_abilities(allow_survive_lava, "allow_survive_lava", true);
-allow_tongue = scr_initialize_custom_character_abilities(allow_tongue, "allow_tongue", false);
-allow_wall_climb = scr_initialize_custom_character_abilities(allow_wall_climb, "allow_wall_climb", true);
-allow_wall_jump = scr_initialize_custom_character_abilities(allow_wall_jump, "allow_wall_jump", true);
+allow_crawl = scr_initialize_custom_character_abilities(player - 1, allow_crawl, "allow_crawl", true);
+allow_crouch = scr_initialize_custom_character_abilities(player - 1, allow_crouch, "allow_crouch", true);
+allow_dive = scr_initialize_custom_character_abilities(player - 1, allow_dive, "allow_dive", true);
+allow_dive_ground_boost = scr_initialize_custom_character_abilities(player - 1, allow_dive_ground_boost, "allow_dive_ground_boost", true);
+allow_drowning = scr_initialize_custom_character_abilities(player - 1, allow_drowning, "allow_drowning", true);
+allow_ground_pound = scr_initialize_custom_character_abilities(player - 1, allow_ground_pound, "allow_ground_pound", true);
+allow_ground_pound_jump = scr_initialize_custom_character_abilities(player - 1, allow_ground_pound_jump, "allow_ground_pound_jump", true);
+allow_homing_attack = scr_initialize_custom_character_abilities(player - 1, allow_homing_attack, "allow_homing_attack", false);
+allow_ledge_grab = scr_initialize_custom_character_abilities(player - 1, allow_ledge_grab, "allow_ledge_grab", false);
+allow_overflow_hp = scr_initialize_custom_character_abilities(player - 1, allow_overflow_hp, "allow_overflow_hp", true);
+allow_roll = scr_initialize_custom_character_abilities(player - 1, allow_roll, "allow_roll", false);
+allow_run = scr_initialize_custom_character_abilities(player - 1, allow_run, "allow_run", true);
+allow_stop_after_landing_triple_jump = scr_initialize_custom_character_abilities(player - 1, allow_stop_after_landing_triple_jump, "allow_stop_after_landing_triple_jump", false);
+allow_survive_lava = scr_initialize_custom_character_abilities(player - 1, allow_survive_lava, "allow_survive_lava", true);
+allow_tongue = scr_initialize_custom_character_abilities(player - 1, allow_tongue, "allow_tongue", false);
+allow_wall_climb = scr_initialize_custom_character_abilities(player - 1, allow_wall_climb, "allow_wall_climb", true);
+allow_wall_jump = scr_initialize_custom_character_abilities(player - 1, allow_wall_jump, "allow_wall_jump", true);
+allow_glide = scr_initialize_custom_character_abilities(player - 1, allow_glide, "allow_glide", false);
 #endregion /*Allow abilities END*/
 
 allow_timeup = true;
@@ -63,6 +64,7 @@ ini_close();
 #region /*Sprite variables*/
 sprite_against_wall = scr_initialize_custom_character_sprite("against_wall", sprite_against_wall);
 sprite_against_wall = scr_initialize_custom_character_sprite("againstwall", sprite_against_wall);
+sprite_checkpoint_activated = scr_initialize_custom_character_sprite("checkpoint_activated", sprite_checkpoint_activated);
 sprite_climb_under = scr_initialize_custom_character_sprite("climb_under", sprite_climb_under);
 sprite_climb_under = scr_initialize_custom_character_sprite("climbunder", sprite_climb_under);
 sprite_climb_under_look_up = scr_initialize_custom_character_sprite("climb_under_look_up", sprite_climb_under_look_up);
@@ -133,6 +135,7 @@ sprite_standing_on_something = scr_initialize_custom_character_sprite("standing_
 sprite_standing_with_item_in_front = scr_initialize_custom_character_sprite("standing_with_item_in_front", sprite_standing_with_item_in_front);
 sprite_stomp_spin = scr_initialize_custom_character_sprite("stomp_spin", sprite_stomp_spin);
 sprite_stomp_spin = scr_initialize_custom_character_sprite("stompspin", sprite_stomp_spin);
+sprite_stomp_spin = scr_initialize_custom_character_sprite("spin", sprite_stomp_spin);
 sprite_swim = scr_initialize_custom_character_sprite("swim", sprite_swim);
 sprite_swim_fall = scr_initialize_custom_character_sprite("swim_fall", sprite_swim_fall);
 sprite_swim_fall = scr_initialize_custom_character_sprite("swim_falling", sprite_swim_fall);
@@ -149,7 +152,7 @@ sprite_wall_slide_down = scr_initialize_custom_character_sprite("wall_slide_down
 sprite_wall_slide_down = scr_initialize_custom_character_sprite("wallslide_down", sprite_wall_slide_down);
 sprite_wall_slide_up = scr_initialize_custom_character_sprite("wall_slide_up", sprite_wall_slide_up);
 sprite_wall_slide_up = scr_initialize_custom_character_sprite("wallslide_up", sprite_wall_slide_up);
-sprite_paraglide_down = scr_initialize_custom_character_sprite("paraglide_down", sprite_paraglide_down);
+sprite_glide_down = scr_initialize_custom_character_sprite("glide_down", sprite_glide_down);
 #endregion /*Sprite variables END*/
 
 #region /*Sound variables*/

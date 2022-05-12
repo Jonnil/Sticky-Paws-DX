@@ -68,6 +68,12 @@ lastkey = noone;
 remapping_player = 0; /*remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
 input_key = false;
 can_remap_key = false;
+input_gamepad_button = false;
+can_remap_gamepad_button = false;
+allow_player1_tongue = false;
+allow_player2_tongue = false;
+allow_player3_tongue = false;
+allow_player4_tongue = false;
 #endregion /*Remapping options variables END*/
 
 open_dropdown = false;
@@ -84,6 +90,7 @@ old_selected_resource_pack = global.selected_resource_pack;
 can_navigate_settings_sidebar = true;
 navigate_slider = false;
 menu_remap_key_number = 0;
+menu_remap_gamepad_button_number = 0;
 menu_y_offset = 0; /*This is the y offset that will have lerping to make the menu scrolling smooth*/
 menu_y_offset_real = 0; /*This is the real y offset for the menu, used for menu scrolling*/
 menu_cursor_y_position = 0;
@@ -117,7 +124,7 @@ hide_menu_for_clean_screenshots_timer = 0;
 
 #region /*Character Name*/
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
-or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 	{
@@ -129,14 +136,10 @@ or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_va
 	}
 						
 	#region /*Character Name*/
-	if (ini_key_exists("values", "character_name"))
-	{
-		narrator_name = ini_read_string("values", "character_name", "");
-	}
-	else
-	{
-		narrator_name = string(global.narrator + 1);
-	}
+	var uppercase_narrator_name;
+	uppercase_narrator_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 1));
+	uppercase_narrator_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.narrator))) - 1);
+	narrator_name = string(uppercase_narrator_name);
 	#endregion /*Character Name END*/
 						
 	ini_close();

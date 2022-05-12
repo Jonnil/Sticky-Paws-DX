@@ -64,6 +64,8 @@ function scr_config_save()
 	ini_write_real("config", "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
 	ini_write_real("config", "language_localization", global.language_localization);
 	ini_write_real("config", "convention_mode", global.convention_mode);
+	ini_write_real("config", "arcade_mode", global.arcade_mode);
+	ini_write_real("config", "choosen_controller_used", global.choosen_controller_used);
 	
 	#region /*Save Player 1 Keyboard Remapping*/
 	ini_write_real("config", "character_index_player_1", global.character_index[0]);
@@ -212,6 +214,106 @@ function scr_config_save()
 	ini_write_real("config", "player4_drop_from_rope", global.player4_drop_from_rope);
 	ini_write_real("config", "player4_show_controls", global.player4_show_controls);
 	#endregion /*Save Player 4 Keyboard Remapping END*/
+	
+	#region /*Save Player 1 Gamepad Remapping*/
+	ini_write_real("config", "player1_gamepad_button_dive", global.player1_gamepad_button_dive);
+	ini_write_real("config", "player1_gamepad_button_jump", global.player1_gamepad_button_jump);
+	ini_write_real("config", "player1_gamepad_button_crouch", global.player1_gamepad_button_crouch);
+	ini_write_real("config", "player1_gamepad_button_crouch_toggle", global.player1_gamepad_button_crouch_toggle);
+	ini_write_real("config", "player1_gamepad_button_sprint", global.player1_gamepad_button_sprint);
+	ini_write_real("config", "player1_gamepad_button_sprint_toggle", global.player1_gamepad_button_sprint_toggle);
+	ini_write_real("config", "player1_gamepad_button_left", global.player1_gamepad_button_left);
+	ini_write_real("config", "player1_gamepad_button_right", global.player1_gamepad_button_right);
+	ini_write_real("config", "player1_gamepad_button_down", global.player1_gamepad_button_down);
+	ini_write_real("config", "player1_gamepad_button_up", global.player1_gamepad_button_up);
+	ini_write_real("config", "player1_gamepad_button_tongue", global.player1_gamepad_button_tongue);
+	ini_write_real("config", "player1_gamepad_button2_dive", global.player1_gamepad_button2_dive);
+	ini_write_real("config", "player1_gamepad_button2_jump", global.player1_gamepad_button2_jump);
+	ini_write_real("config", "player1_gamepad_button2_crouch", global.player1_gamepad_button2_crouch);
+	ini_write_real("config", "player1_gamepad_button2_crouch_toggle", global.player1_gamepad_button2_crouch_toggle);
+	ini_write_real("config", "player1_gamepad_button2_sprint", global.player1_gamepad_button2_sprint);
+	ini_write_real("config", "player1_gamepad_button2_sprint_toggle", global.player1_gamepad_button2_sprint_toggle);
+	ini_write_real("config", "player1_gamepad_button2_left", global.player1_gamepad_button2_left);
+	ini_write_real("config", "player1_gamepad_button2_right", global.player1_gamepad_button2_right);
+	ini_write_real("config", "player1_gamepad_button2_down", global.player1_gamepad_button2_down);
+	ini_write_real("config", "player1_gamepad_button2_up", global.player1_gamepad_button2_up);
+	ini_write_real("config", "player1_gamepad_button2_tongue", global.player1_gamepad_button2_tongue);
+	#endregion /*Save Player 1 Gamepad Remapping END*/
+	
+	#region /*Save Player 2 Gamepad Remapping*/
+	ini_write_real("config", "player2_gamepad_button_dive", global.player2_gamepad_button_dive);
+	ini_write_real("config", "player2_gamepad_button_jump", global.player2_gamepad_button_jump);
+	ini_write_real("config", "player2_gamepad_button_crouch", global.player2_gamepad_button_crouch);
+	ini_write_real("config", "player2_gamepad_button_crouch_toggle", global.player2_gamepad_button_crouch_toggle);
+	ini_write_real("config", "player2_gamepad_button_sprint", global.player2_gamepad_button_sprint);
+	ini_write_real("config", "player2_gamepad_button_sprint_toggle", global.player2_gamepad_button_sprint_toggle);
+	ini_write_real("config", "player2_gamepad_button_left", global.player2_gamepad_button_left);
+	ini_write_real("config", "player2_gamepad_button_right", global.player2_gamepad_button_right);
+	ini_write_real("config", "player2_gamepad_button_down", global.player2_gamepad_button_down);
+	ini_write_real("config", "player2_gamepad_button_up", global.player2_gamepad_button_up);
+	ini_write_real("config", "player2_gamepad_button_tongue", global.player2_gamepad_button_tongue);
+	ini_write_real("config", "player2_gamepad_button2_dive", global.player2_gamepad_button2_dive);
+	ini_write_real("config", "player2_gamepad_button2_jump", global.player2_gamepad_button2_jump);
+	ini_write_real("config", "player2_gamepad_button2_crouch", global.player2_gamepad_button2_crouch);
+	ini_write_real("config", "player2_gamepad_button2_crouch_toggle", global.player2_gamepad_button2_crouch_toggle);
+	ini_write_real("config", "player2_gamepad_button2_sprint", global.player2_gamepad_button2_sprint);
+	ini_write_real("config", "player2_gamepad_button2_sprint_toggle", global.player2_gamepad_button2_sprint_toggle);
+	ini_write_real("config", "player2_gamepad_button2_left", global.player2_gamepad_button2_left);
+	ini_write_real("config", "player2_gamepad_button2_right", global.player2_gamepad_button2_right);
+	ini_write_real("config", "player2_gamepad_button2_down", global.player2_gamepad_button2_down);
+	ini_write_real("config", "player2_gamepad_button2_up", global.player2_gamepad_button2_up);
+	ini_write_real("config", "player2_gamepad_button2_tongue", global.player2_gamepad_button2_tongue);
+	#endregion /*Save Player 2 Gamepad Remapping END*/
+	
+	#region /*Save Player 3 Gamepad Remapping*/
+	ini_write_real("config", "player3_gamepad_button_dive", global.player3_gamepad_button_dive);
+	ini_write_real("config", "player3_gamepad_button_jump", global.player3_gamepad_button_jump);
+	ini_write_real("config", "player3_gamepad_button_crouch", global.player3_gamepad_button_crouch);
+	ini_write_real("config", "player3_gamepad_button_crouch_toggle", global.player3_gamepad_button_crouch_toggle);
+	ini_write_real("config", "player3_gamepad_button_sprint", global.player3_gamepad_button_sprint);
+	ini_write_real("config", "player3_gamepad_button_sprint_toggle", global.player3_gamepad_button_sprint_toggle);
+	ini_write_real("config", "player3_gamepad_button_left", global.player3_gamepad_button_left);
+	ini_write_real("config", "player3_gamepad_button_right", global.player3_gamepad_button_right);
+	ini_write_real("config", "player3_gamepad_button_down", global.player3_gamepad_button_down);
+	ini_write_real("config", "player3_gamepad_button_up", global.player3_gamepad_button_up);
+	ini_write_real("config", "player3_gamepad_button_tongue", global.player3_gamepad_button_tongue);
+	ini_write_real("config", "player3_gamepad_button2_dive", global.player3_gamepad_button2_dive);
+	ini_write_real("config", "player3_gamepad_button2_jump", global.player3_gamepad_button2_jump);
+	ini_write_real("config", "player3_gamepad_button2_crouch", global.player3_gamepad_button2_crouch);
+	ini_write_real("config", "player3_gamepad_button2_crouch_toggle", global.player3_gamepad_button2_crouch_toggle);
+	ini_write_real("config", "player3_gamepad_button2_sprint", global.player3_gamepad_button2_sprint);
+	ini_write_real("config", "player3_gamepad_button2_sprint_toggle", global.player3_gamepad_button2_sprint_toggle);
+	ini_write_real("config", "player3_gamepad_button2_left", global.player3_gamepad_button2_left);
+	ini_write_real("config", "player3_gamepad_button2_right", global.player3_gamepad_button2_right);
+	ini_write_real("config", "player3_gamepad_button2_down", global.player3_gamepad_button2_down);
+	ini_write_real("config", "player3_gamepad_button2_up", global.player3_gamepad_button2_up);
+	ini_write_real("config", "player3_gamepad_button2_tongue", global.player3_gamepad_button2_tongue);
+	#endregion /*Save Player 3 Gamepad Remapping END*/
+	
+	#region /*Save Player 4 Gamepad Remapping*/
+	ini_write_real("config", "player4_gamepad_button_dive", global.player4_gamepad_button_dive);
+	ini_write_real("config", "player4_gamepad_button_jump", global.player4_gamepad_button_jump);
+	ini_write_real("config", "player4_gamepad_button_crouch", global.player4_gamepad_button_crouch);
+	ini_write_real("config", "player4_gamepad_button_crouch_toggle", global.player4_gamepad_button_crouch_toggle);
+	ini_write_real("config", "player4_gamepad_button_sprint", global.player4_gamepad_button_sprint);
+	ini_write_real("config", "player4_gamepad_button_sprint_toggle", global.player4_gamepad_button_sprint_toggle);
+	ini_write_real("config", "player4_gamepad_button_left", global.player4_gamepad_button_left);
+	ini_write_real("config", "player4_gamepad_button_right", global.player4_gamepad_button_right);
+	ini_write_real("config", "player4_gamepad_button_down", global.player4_gamepad_button_down);
+	ini_write_real("config", "player4_gamepad_button_up", global.player4_gamepad_button_up);
+	ini_write_real("config", "player4_gamepad_button_tongue", global.player4_gamepad_button_tongue);
+	ini_write_real("config", "player4_gamepad_button2_dive", global.player4_gamepad_button2_dive);
+	ini_write_real("config", "player4_gamepad_button2_jump", global.player4_gamepad_button2_jump);
+	ini_write_real("config", "player4_gamepad_button2_crouch", global.player4_gamepad_button2_crouch);
+	ini_write_real("config", "player4_gamepad_button2_crouch_toggle", global.player4_gamepad_button2_crouch_toggle);
+	ini_write_real("config", "player4_gamepad_button2_sprint", global.player4_gamepad_button2_sprint);
+	ini_write_real("config", "player4_gamepad_button2_sprint_toggle", global.player4_gamepad_button2_sprint_toggle);
+	ini_write_real("config", "player4_gamepad_button2_left", global.player4_gamepad_button2_left);
+	ini_write_real("config", "player4_gamepad_button2_right", global.player4_gamepad_button2_right);
+	ini_write_real("config", "player4_gamepad_button2_down", global.player4_gamepad_button2_down);
+	ini_write_real("config", "player4_gamepad_button2_up", global.player4_gamepad_button2_up);
+	ini_write_real("config", "player4_gamepad_button2_tongue", global.player4_gamepad_button2_tongue);
+	#endregion /*Save Player 4 Gamepad Remapping END*/
 	
 	ini_close();
 	

@@ -11,11 +11,11 @@
 //draw_text_outlined(x - 32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 128-64, "spring_endpoint_x: " + string(spring_endpoint_x), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 128, "spring_endpoint_y: " + string(spring_endpoint_y), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x - 32, y - 128-64, "reset_level_zoom: " + string(global.reset_level_zoom_when_going_back_to_map), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x - 32, y - 128, "zoom_level: " + string(global.zoom_level), global.default_text_size, c_white, c_black, 1);
 
 #region /*Draw Raycasts*/
-if (hold_item_in_hands = "enemy_bowlingball")
+if (hold_item_in_hands != "")
 and (key_up)
 {
 	if (instance_exists(obj_wall))
@@ -100,9 +100,9 @@ else
 
 if (hold_item_in_hands = "enemy_bowlingball")
 {
-	draw_sprite_ext(global.resource_pack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
-	draw_sprite_ext(global.resource_pack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 1, c_white, image_alpha);
-	draw_sprite_ext(global.resource_pack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 *sign(image_xscale), draw_yscale * 1, angle, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1, draw_yscale * 1, 1, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 *sign(image_xscale), draw_yscale * 1, angle, c_white, image_alpha);
 	if (image_xscale < 0)
 	{
 		angle = 0;
@@ -288,7 +288,7 @@ else
 }
 
 #region /*Blink red when only having 1 HP left and no heart balloon*/
-if (redblinktimer >25)
+if (redblinktimer > 25)
 and (have_heart_balloon = false)
 and (hp <= 1)
 and (max_hp >= 2)

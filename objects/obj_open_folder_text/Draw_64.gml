@@ -24,9 +24,10 @@ if (close = false)
 {
 	if (show_copy_to_clipboard_button = true)
 	{
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, "Copy to Clipboard", "copy_to_clipboard", "copy_to_clipboard");
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Copy to Clipboard"), "copy_to_clipboard", "copy_to_clipboard");
 	}
-	draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, "Back", "back_open_folder_text", "back_open_folder_text");
+	draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Back"), "back_open_folder_text", "back_open_folder_text");
+	draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 }
 
 #region /*Navigate menu up and down*/

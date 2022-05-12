@@ -16,7 +16,7 @@ global.character_for_player_1 = "sticky"; /*Player 1 Select Character 1*/
 global.character_for_player_2 = "catlyn"; /*Player 2 Select Character 2*/
 global.character_for_player_3 = "sticky"; /*Player 3 Select Character 3*/
 global.character_for_player_4 = "catlyn"; /*Player 4 Select Character 4 */
-global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws/";
+global.link_to_steam_page = "https://store.steampowered.com/app/ 1129090/Sticky_Paws/";
 
 leveleditor_readme = noone; /*Readme textfile for how to use the level editor*/
 
@@ -28,7 +28,7 @@ global.show_accessibility_shortcut = false; /*If a shortcut for the accessibilit
 global.enable_how_to_play_settings = false; /*Enable How to play settings*/
 global.show_profile_shortcut = false; /*If a shortcut for the profile options should appear in the main menu to the right of the settings menu*/
 global.enable_multiplayer_settings = false; /*Enable Multiplayer settings*/
-global.enable_controller_settings = false; /*Enable Controller settings*/
+global.enable_controller_settings = true; /*Enable Controller settings*/
 global.enable_touch_settings = false; /*Enable Touch settings*/
 global.enable_profile_settings = false; /*Enable Profile settings*/
 global.enable_global_resources_settings = true; /*Enable Global Resources settings*/
@@ -75,6 +75,8 @@ device_mouse_dbclick_enable(false); /*Game should be playable on mobile without 
 global.equipped_upgrade_double_jump = true; /*If you have equipped the Double Jump Upgrade*/
 
 global.convention_mode = false; /*When showing the game on a convention, turn this to true*/
+global.arcade_mode = false; /*When turning the game into an arcade machine, turn this to true*/
+global.arcade_credit = 0; /*How many coins you've inserted into the arcade mode*/
 
 #region /*Show HUD Global Variables*/
 global.hud_hide_time = 3;
@@ -357,157 +359,12 @@ global.fullscreen_key = vk_f11;
 
 global.level_name = ""; /*In the level editor, the name of the currently selected level will be stored here*/
 
-#region /*Player 1 Keyboard Remapping*/
 global.player1_name = "";
-
-#region /*Player 1 Key 1 defaults*/
-global.player1_key_dive = ord("X");
-global.player1_key_jump = ord("Z");
-global.player1_key_crouch = vk_down;
-global.player1_key_crouch_toggle = noone;
-global.player1_key_sprint = vk_lcontrol;
-global.player1_key_sprint_toggle = 20;
-global.player1_key_left = vk_left;
-global.player1_key_right = vk_right;
-global.player1_key_down = vk_down;
-global.player1_key_up = vk_up;
-global.player1_key_tongue = noone;
-#endregion /*Player 1 Key 1 defaults END*/
-
-#region /*Player 1 Key 2 defaults*/
-global.player1_key2_dive = noone;
-global.player1_key2_jump = vk_space;
-global.player1_key2_crouch = vk_shift;
-global.player1_key2_crouch_toggle = noone;
-global.player1_key2_sprint = ord("X");
-global.player1_key2_sprint_toggle = noone;
-global.player1_key2_left = ord("A");
-global.player1_key2_right = ord("D");
-global.player1_key2_down = ord("S");
-global.player1_key2_up = ord("W");
-global.player1_key2_tongue = noone;
-#endregion /*Player 1 Key 2 defaults END*/
-
-global.player1_up_key_is_jump_key = false;
-global.player1_double_tap_to_run = true;
-global.player1_wall_jump_setting = 1;
-global.player1_drop_from_rope = 1;
-global.player1_show_controls = 1;
-#endregion /*Player 1 Keyboard Remapping END*/
-
-#region /*Player 2 Keyboard Remapping (everything should be set to noone)*/
 global.player2_name = "";
-
-#region /*Player 2 Key 1 defaults*/
-global.player2_key_dive = noone;
-global.player2_key_jump = noone;
-global.player2_key_crouch = noone;
-global.player2_key_crouch_toggle = noone;
-global.player2_key_sprint = noone;
-global.player2_key_sprint_toggle = noone;
-global.player2_key_left = noone;
-global.player2_key_right = noone;
-global.player2_key_down = noone;
-global.player2_key_up = noone;
-global.player2_key_tongue = noone;
-#endregion /*Player 2 Key 1 defaults END*/
-
-#region /*Player 2 Key 2 defaults*/
-global.player2_key2_dive = noone;
-global.player2_key2_jump = noone;
-global.player2_key2_crouch = noone;
-global.player2_key2_crouch_toggle = noone;
-global.player2_key2_sprint = noone;
-global.player2_key2_sprint_toggle = noone;
-global.player2_key2_left = noone;
-global.player2_key2_right = noone;
-global.player2_key2_down = noone;
-global.player2_key2_up = noone;
-global.player2_key2_tongue = noone;
-#endregion /*Player 2 Key 2 defaults END*/
-
-global.player2_up_key_is_jump_key = false;
-global.player2_double_tap_to_run = true;
-global.player2_wall_jump_setting = 1;
-global.player2_drop_from_rope = 1;
-global.player2_show_controls = 1;
-#endregion /*Player 2 Keyboard Remapping (everything should be set to noone) END*/
-
-#region /*Player 3 Keyboard Remapping (everything should be set to noone)*/
 global.player3_name = "";
-
-#region /*Player 3 Key 1 defaults*/
-global.player3_key_dive = noone;
-global.player3_key_jump = noone;
-global.player3_key_crouch = noone;
-global.player3_key_crouch_toggle = noone;
-global.player3_key_sprint = noone;
-global.player3_key_sprint_toggle = noone;
-global.player3_key_left = noone;
-global.player3_key_right = noone;
-global.player3_key_down = noone;
-global.player3_key_up = noone;
-global.player3_key_tongue = noone;
-#endregion /*Player 3 Key 1 defaults END*/
-
-#region /*Player 3 Key 2 defaults*/
-global.player3_key2_dive = noone;
-global.player3_key2_jump = noone;
-global.player3_key2_crouch = noone;
-global.player3_key2_crouch_toggle = noone;
-global.player3_key2_sprint = noone;
-global.player3_key2_sprint_toggle = noone;
-global.player3_key2_left = noone;
-global.player3_key2_right = noone;
-global.player3_key2_down = noone;
-global.player3_key2_up = noone;
-global.player3_key2_tongue = noone;
-#endregion /*Player 3 Key 2 defaults END*/
-
-global.player3_up_key_is_jump_key = false;
-global.player3_double_tap_to_run = true;
-global.player3_wall_jump_setting = 1;
-global.player3_drop_from_rope = 1;
-global.player3_show_controls = 1;
-#endregion /*Player 3 Keyboard Remapping (everything should be set to noone) END*/
-
-#region /*Player 4 Keyboard Remapping (everything should be set to noone)*/
 global.player4_name = "";
 
-#region /*Player 4 Key 1 defaults*/
-global.player4_key_dive = noone;
-global.player4_key_jump = noone;
-global.player4_key_crouch = noone;
-global.player4_key_crouch_toggle = noone;
-global.player4_key_sprint = noone;
-global.player4_key_sprint_toggle = noone;
-global.player4_key_left = noone;
-global.player4_key_right = noone;
-global.player4_key_down = noone;
-global.player4_key_up = noone;
-global.player4_key_tongue = noone;
-#endregion /*Player 4 Key 1 defaults END*/
-
-#region /*Player 4 Key 2 defaults*/
-global.player4_key2_dive = noone;
-global.player4_key2_jump = noone;
-global.player4_key2_crouch = noone;
-global.player4_key2_crouch_toggle = noone;
-global.player4_key2_sprint = noone;
-global.player4_key2_sprint_toggle = noone;
-global.player4_key2_left = noone;
-global.player4_key2_right = noone;
-global.player4_key2_down = noone;
-global.player4_key2_up = noone;
-global.player4_key2_tongue = noone;
-#endregion /*Player 4 Key 2 defaults END*/
-
-global.player4_up_key_is_jump_key = false;
-global.player4_double_tap_to_run = true;
-global.player4_wall_jump_setting = 1;
-global.player4_drop_from_rope = 1;
-global.player4_show_controls = 1;
-#endregion /*Player 4 Keyboard Remapping (everything should be set to noone) END*/
+scr_set_default_remapping();
 
 #region /*Load Config*/
 if (asset_get_type("scr_config_load") == asset_script)
@@ -542,6 +399,7 @@ global.resource_pack_sprite_bowlingball = spr_noone;
 global.resource_pack_sprite_bowlingball_shine = spr_noone;
 global.resource_pack_sprite_bullet = spr_noone;
 global.resource_pack_sprite_bullet_flattened = spr_noone;
+global.resource_pack_sprite_cake = spr_noone;
 global.resource_pack_sprite_coil_spring = spr_noone;
 global.resource_pack_sprite_enemy_bowlingball_blind_revive = spr_noone;
 global.resource_pack_sprite_enemy_bowlingball_blind_stomped = spr_noone;
@@ -563,7 +421,15 @@ global.resource_pack_sprite_tileset_metal = spr_noone;
 global.resource_pack_sprite_tileset_stone = spr_noone;
 global.resource_pack_sprite_tileset_wood = spr_noone;
 global.resource_pack_sprite_title_logo_christmas = spr_noone;
+global.resource_pack_sprite_buttons_xboxone = spr_noone;
+global.resource_pack_sprite_buttons_xboxseriesx = spr_noone;
+global.resource_pack_sprite_buttons_nintendoswitch = spr_noone;
+global.resource_pack_sprite_buttons_playstation4 = spr_noone;
+global.resource_pack_sprite_buttons_playstation5 = spr_noone;
 #endregion /*Resource Packs END*/
+
+global.choosen_controller_used = 0; /*What controller buttons to use for button prompts*/
+/*0 = xboxone, 1 = xboxseriesx, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5*/
 
 company_splash = noone;
 company_splash_1 = noone;

@@ -284,32 +284,44 @@ if (save_level_as_png = false)
 		view_wview_lerp = lerp(0, 0, 0.05);
 		view_hview_lerp = lerp(0, 0, 0.05);
 		
-		if (instance_exists(player1))
-		and (player1.partner_character = false)
+		if (player1 > 0)
+		and (instance_exists(player1))
 		{
-			xx = mean(player1.x, obj_boss.x);
-			yy = mean(player1.y, obj_boss.y);
+			if (player1.partner_character = false)
+			{
+				xx = mean(player1.x, obj_boss.x);
+				yy = mean(player1.y, obj_boss.y);
+			}
 		}
 		else
-		if (instance_exists(player2))
-		and (player2.partner_character = false)
+		if (player2 > 0)
+		and (instance_exists(player2))
 		{
-			xx = mean(player2.x, obj_boss.x);
-			yy = mean(player2.y, obj_boss.y);
+			if (player2.partner_character = false)
+			{
+				xx = mean(player2.x, obj_boss.x);
+				yy = mean(player2.y, obj_boss.y);
+			}
 		}
 		else
-		if (instance_exists(player3))
-		and (player3.partner_character = false)
+		if (player3 > 0)
+		and (instance_exists(player3))
 		{
-			xx = mean(player3.x, obj_boss.x);
-			yy = mean(player3.y, obj_boss.y);
+			if (player3.partner_character = false)
+			{
+				xx = mean(player3.x, obj_boss.x);
+				yy = mean(player3.y, obj_boss.y);
+			}
 		}
 		else
-		if (instance_exists(player4))
-		and (player4.partner_character = false)
+		if (player4 > 0)
+		and (instance_exists(player4))
 		{
-			xx = mean(player4.x, obj_boss.x);
-			yy = mean(player4.y, obj_boss.y);
+			if (player4.partner_character = false)
+			{
+				xx = mean(player4.x, obj_boss.x);
+				yy = mean(player4.y, obj_boss.y);
+			}
 		}
 	}
 	#endregion /*Boss Battle Camera END*/
@@ -326,12 +338,16 @@ if (save_level_as_png = false)
 		#region /*Camera should follow multiple players*/
 		
 		/* 1, 2, 3, 4 */
-		if (instance_exists(player1))
+		if (player1 > 0)
+		and (instance_exists(player1))
 		and (player1.partner_character = false)
+		and (player2 > 0)
 		and (instance_exists(player2))
 		and (player2.partner_character = false)
+		and (player3 > 0)
 		and (instance_exists(player3))
 		and (player3.partner_character = false)
+		and (player4 > 0)
 		and (instance_exists(player4))
 		and (player4.partner_character = false)
 		{
@@ -342,10 +358,13 @@ if (save_level_as_png = false)
 		else
 		
 		/* 1, 2, 3*/
-		if (instance_exists(player1))
+		if (player1 > 0)
+		and (instance_exists(player1))
 		and (player1.partner_character = false)
+		and (player2 > 0)
 		and (instance_exists(player2))
 		and (player2.partner_character = false)
+		and (player3 > 0)
 		and (instance_exists(player3))
 		and (player3.partner_character = false)
 		{
@@ -356,8 +375,10 @@ if (save_level_as_png = false)
 		else
 		
 		/* 1, 2*/
-		if (instance_exists(player1))
+		if (player1 > 0)
+		and (instance_exists(player1))
 		and (player1.partner_character = false)
+		and (player2 > 0)
 		and (instance_exists(player2))
 		and (player2.partner_character = false)
 		{
@@ -368,8 +389,10 @@ if (save_level_as_png = false)
 		else
 		
 		/* 1, 3*/
-		if (instance_exists(player1))
+		if (player1 > 0)
+		and (instance_exists(player1))
 		and (player1.partner_character = false)
+		and (player3 > 0)
 		and (instance_exists(player3))
 		and (player3.partner_character = false)
 		{
@@ -380,8 +403,10 @@ if (save_level_as_png = false)
 		else
 		
 		/* 1, 4 */
-		if (instance_exists(player1))
+		if (player1 > 0)
+		and (instance_exists(player1))
 		and (player1.partner_character = false)
+		and (player4 > 0)
 		and (instance_exists(player4))
 		and (player4.partner_character = false)
 		{
@@ -392,8 +417,10 @@ if (save_level_as_png = false)
 		else
 		
 		/* 2, 3*/
-		if (instance_exists(player2))
+		if (player2 > 0)
+		and (instance_exists(player2))
 		and (player2.partner_character = false)
+		and (player3 > 0)
 		and (instance_exists(player3))
 		and (player3.partner_character = false)
 		{
@@ -404,8 +431,10 @@ if (save_level_as_png = false)
 		else
 		
 		/* 2, 4 */
-		if (instance_exists(player2))
+		if (player1 > 0)
+		and (instance_exists(player2))
 		and (player2.partner_character = false)
+		and (player4 > 0)
 		and (instance_exists(player4))
 		and (player4.partner_character = false)
 		{
@@ -416,8 +445,10 @@ if (save_level_as_png = false)
 		else
 		
 		/* 3, 4 */
-		if (instance_exists(player3))
+		if (player3 > 0)
+		and (instance_exists(player3))
 		and (player3.partner_character = false)
+		and (player4 > 0)
 		and (instance_exists(player4))
 		and (player4.partner_character = false)
 		{
@@ -430,7 +461,8 @@ if (save_level_as_png = false)
 		
 		#region /*Follow one player. In case something goes wrong, camera will always follow one player*/
 		/* 1*/
-		if (instance_exists(player1))
+		if (player1 > 0)
+		and (instance_exists(player1))
 		and (player1.partner_character = false)
 		{
 			
@@ -485,7 +517,8 @@ if (save_level_as_png = false)
 		else
 		
 		/* 2*/
-		if (instance_exists(player2))
+		if (player2 > 0)
+		and (instance_exists(player2))
 		and (player2.partner_character = false)
 		{
 			
@@ -540,7 +573,8 @@ if (save_level_as_png = false)
 		else
 		
 		/* 3*/
-		if (instance_exists(player3))
+		if (player3 > 0)
+		and (instance_exists(player3))
 		and (player3.partner_character = false)
 		{
 			
@@ -595,7 +629,8 @@ if (save_level_as_png = false)
 		else
 		
 		/* 4 */
-		if (instance_exists(player4))
+		if (player4 > 0)
+		and (instance_exists(player4))
 		and (player4.partner_character = false)
 		{
 			
@@ -1393,6 +1428,7 @@ and (!instance_exists(obj_pause))
 
 #region /*Show Drowning for Player 1*/
 if (player1 > 0)
+and (instance_exists(player1))
 {
 	if (player1.allow_drowning == true)
 	&& (player1.drawn_frames_until_drowning <= player1.seconds_until_drowning* 60)
@@ -1405,6 +1441,7 @@ if (player1 > 0)
 
 #region /*Show Drowning for Player 2*/
 if (player2 > 0)
+and (instance_exists(player2))
 {
 	if (player2.allow_drowning == true)
 	&& (player2.drawn_frames_until_drowning <= player2.seconds_until_drowning* 60)
@@ -1417,6 +1454,7 @@ if (player2 > 0)
 
 #region /*Show Drowning for Player 3*/
 if (player3 > 0)
+and (instance_exists(player3))
 {
 	if (player3.allow_drowning == true)
 	&& (player3.drawn_frames_until_drowning <= player3.seconds_until_drowning* 60)
@@ -1429,6 +1467,7 @@ if (player3 > 0)
 
 #region /*Show Drowning for Player 4 */
 if (player4 > 0)
+and (instance_exists(player4))
 {
 	if (player4.allow_drowning == true)
 	&& (player4.drawn_frames_until_drowning <= player4.seconds_until_drowning* 60)

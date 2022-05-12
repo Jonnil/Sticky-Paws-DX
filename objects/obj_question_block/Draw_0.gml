@@ -70,6 +70,10 @@ if (bounceup = false)
 		}
 		if (empty = false)
 		{
+			if (instance_exists(obj_player))
+			{
+				scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
+			}
 			bounceup = true;
 			if (asset_get_type("obj_blockbreak") == asset_object)
 			{

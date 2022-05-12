@@ -60,7 +60,8 @@ or(other.can_attack_after_dive_on_ground > 0)
 			die_volting = +1;
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);
-
+		scr_gamepad_vibration(other.player, 0.5, 10);
+		
 		#region /*Enemy Voice Defeated*/
 		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
 		audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
@@ -749,7 +750,8 @@ if (die_volting = false)
 			}
 			flat = true;
 			effect_create_below(ef_ring, x, y, 0, c_white);
-
+			scr_gamepad_vibration(other.player, 0.5, 10);
+			
 			#region /*Enemy Voice Defeated*/
 			audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
 			audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
@@ -1436,7 +1438,8 @@ and (flat = false)
 	}
 	flat = true;
 	effect_create_below(ef_ring, x, y, 0, c_white);
-
+	scr_gamepad_vibration(other.player, 0.5, 10);
+	
 	#region /*Enemy Voice Defeated*/
 	audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
 	audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
@@ -2118,6 +2121,7 @@ and (other.assist_invincible = false)
 		other.hp -= 1;
 	}
 	other.takendamage = 100;
+	scr_gamepad_vibration(other.player, 1, 10);
 }
 }
 }

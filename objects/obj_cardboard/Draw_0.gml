@@ -128,7 +128,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard);
 					with(obj)
 					{
-						motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
+						motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed / 2);
 						mask_index = noone;
 						brick_particle = true;
 					}
@@ -138,7 +138,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard);
 					with(obj)
 					{
-						motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed/ 2);
+						motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed / 2);
 						mask_index = noone;
 						brick_particle = true;
 					}
@@ -170,6 +170,10 @@ if (brick_particle = false)
 			}
 			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/
 			
+			if (instance_exists(obj_player))
+			{
+				scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
+			}
 			instance_destroy();
 		}
 	}
@@ -193,7 +197,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard);
 					with(obj)
 					{
-						motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
+						motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed / 2);
 						mask_index = noone;
 						brick_particle = true;
 					}
@@ -203,7 +207,7 @@ if (brick_particle = false)
 					obj = instance_create_depth(x, y, 0, obj_cardboard);
 					with(obj)
 					{
-						motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed/ 2);
+						motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed / 2);
 						mask_index = noone;
 						brick_particle = true;
 					}
@@ -213,6 +217,10 @@ if (brick_particle = false)
 			
 			with(instance_nearest(x, y, obj_bullet))
 			{
+				if (instance_exists(obj_player))
+				{
+					scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
+				}
 				instance_destroy();
 			}
 			if (asset_get_type("obj_blockbreak") == asset_object)
@@ -245,6 +253,10 @@ if (brick_particle = false)
 			}
 			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/
 			
+			if (instance_exists(obj_player))
+			{
+				scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
+			}
 			instance_destroy();
 		}
 	}

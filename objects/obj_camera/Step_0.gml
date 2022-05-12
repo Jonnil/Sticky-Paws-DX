@@ -1,3 +1,42 @@
+#region /*Arcade Credit Increase*/
+if (mouse_wheel_up())
+{
+	global.arcade_credit += 1;
+}
+#endregion /*Arcade Credit Increase END*/
+
+#region /*Stop gamepad vibration for player 1*/
+if (player1_vibration_active = false)
+{
+	player1_motor_speed = lerp(player1_motor_speed, 0, 0.1);
+}
+gamepad_set_vibration(0, player1_motor_speed, player1_motor_speed);
+#endregion /*Stop gamepad vibration for player 1 END*/
+
+#region /*Stop gamepad vibration for player 2*/
+if (player2_vibration_active = false)
+{
+	player2_motor_speed = lerp(player2_motor_speed, 0, 0.1);
+}
+gamepad_set_vibration(1, player2_motor_speed, player2_motor_speed);
+#endregion /*Stop gamepad vibration for player 2 END*/
+
+#region /*Stop gamepad vibration for player 3*/
+if (player3_vibration_active = false)
+{
+	player3_motor_speed = lerp(player3_motor_speed, 0, 0.1);
+}
+gamepad_set_vibration(2, player3_motor_speed, player3_motor_speed);
+#endregion /*Stop gamepad vibration for player 3 END*/
+
+#region /*Stop gamepad vibration for player 4*/
+if (player4_vibration_active = false)
+{
+	player4_motor_speed = lerp(player4_motor_speed, 0, 0.1);
+}
+gamepad_set_vibration(3, player4_motor_speed, player4_motor_speed);
+#endregion /*Stop gamepad vibration for player 4 END*/
+
 view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) / 2);
 view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) / 2);
 
@@ -102,9 +141,10 @@ and (!instance_exists(obj_player_map))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 {
-	if (gamepad_button_check_pressed(0, gp_face1))
-	or(keyboard_check_pressed(global.player1_key_jump))
-	or(keyboard_check_pressed(global.player1_key2_jump))
+	if (gamepad_button_check_pressed(0, global.player1_gamepad_button_jump))
+	or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_jump))
+	or (keyboard_check_pressed(global.player1_key_jump))
+	or (keyboard_check_pressed(global.player1_key2_jump))
 	{
 		if (player1 <= 0)
 		and (can_spawn_player1 = true)
@@ -133,7 +173,8 @@ and (!instance_exists(obj_title))
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(1, gp_face1))
+	if (gamepad_button_check_pressed(1, global.player1_gamepad_button_jump))
+	or (gamepad_button_check_pressed(1, global.player1_gamepad_button2_jump))
 	or(keyboard_check_pressed(global.player2_key_jump))
 	or(keyboard_check_pressed(global.player2_key2_jump))
 	{
@@ -164,7 +205,8 @@ and (!instance_exists(obj_title))
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(2, gp_face1))
+	if (gamepad_button_check_pressed(2, global.player1_gamepad_button_jump))
+	or (gamepad_button_check_pressed(2, global.player1_gamepad_button2_jump))
 	or(keyboard_check_pressed(global.player3_key_jump))
 	or(keyboard_check_pressed(global.player3_key2_jump))
 	{
@@ -195,7 +237,8 @@ and (!instance_exists(obj_title))
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(3, gp_face1))
+	if (gamepad_button_check_pressed(3, global.player1_gamepad_button_jump))
+	or (gamepad_button_check_pressed(3, global.player1_gamepad_button2_jump))
 	or(keyboard_check_pressed(global.player4_key_jump))
 	or(keyboard_check_pressed(global.player4_key2_jump))
 	{

@@ -158,6 +158,7 @@ zoom_out = false; /*When this is true, zoom out*/
 difficulty_layer = 0; /* 0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
 set_difficulty_mode = false; /*Toggle so you get a pen that can select what object appear in what difficulty*/
 place_object = noone;
+placing_object = 0; /*If you are currently placing any object or not. This check is used for when modifying other objects, it shouldn't happen when currently placing any object*/
 show_icons_at_bottom = false;
 show_icons_at_top = false;
 icons_at_bottom_y = +100;
@@ -224,17 +225,27 @@ always_show_level_editor_buttons_x = 288;
 grid_button_x = display_get_gui_width() - 224;
 
 #region /*Options*/
-remapping_player = 0;
-input_key = false;
-can_remap_key = false;
 can_navigate = false;
 menu_y_offset_real = 0;
 menu_cursor_y_position = 0;
 menu_remap_key_number = 0;
+menu_remap_gamepad_button_number = 0;
+
+#region /*Remapping options variables*/
+remapping_player = 0; /*remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
+input_key = false;
+can_remap_key = false;
+input_gamepad_button = false;
+can_remap_gamepad_button = false;
+allow_player1_tongue = false;
+allow_player2_tongue = false;
+allow_player3_tongue = false;
+allow_player4_tongue = false;
+#endregion /*Remapping options variables END*/
 
 #region /*Character Name*/
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
-or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 	{
@@ -246,14 +257,10 @@ or(file_exists(working_directory + "custom_characters/" + string(ds_list_find_va
 	}
 						
 	#region /*Character Name*/
-	if (ini_key_exists("values", "character_name"))
-	{
-		narrator_name = ini_read_string("values", "character_name", "");
-	}
-	else
-	{
-		narrator_name = string(global.narrator + 1);
-	}
+	var uppercase_narrator_name;
+	uppercase_narrator_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 1));
+	uppercase_narrator_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.narrator))) - 1);
+	narrator_name = string(uppercase_narrator_name);
 	#endregion /*Character Name END*/
 						
 	ini_close();

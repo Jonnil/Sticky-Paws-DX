@@ -221,11 +221,11 @@ if (global.world_editor = false)
 	if (object = 63) and (asset_get_type("spr_ladder") == asset_sprite){sprite_index = spr_ladder;mask_index = spr_wall;}
 
 	#region /*Arrow Signs*/
-	if (object = 64) and (asset_get_type("spr_arrow_sign") == asset_sprite){mask_index = spr_2x2_block;sprite_index = noone;}
+	if (object = 64) and (asset_get_type("spr_arrow_sign") == asset_sprite){mask_index = spr_wall;sprite_index = noone;}
 	#endregion /*Arrow Signs END*/
 
 	#region /*Arrow Signs Small*/
-	if (object = 65) and (asset_get_type("spr_arrow_sign_small") == asset_sprite){mask_index = spr_2x2_block;sprite_index = noone;}
+	if (object = 65) and (asset_get_type("spr_arrow_sign_small") == asset_sprite){mask_index = spr_wall;sprite_index = noone;}
 	#endregion /*Arrow Signs Small END*/
 
 	if (object = 66) and (asset_get_type("spr_checkpoint") == asset_sprite){sprite_index = spr_checkpoint;mask_index = spr_2x2_block;}
@@ -278,7 +278,7 @@ if (global.world_editor = false)
 	if (object = 94) and (asset_get_type("spr_sign_walljump") == asset_sprite){sprite_index = spr_sign_walljump;mask_index = spr_wall;}
 	if (object = 95) and (asset_get_type("spr_boss_stand") == asset_sprite){sprite_index = spr_boss_stand;mask_index = spr_wall;}
 	if (object = 96) and (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index = spr_boss_barrier;mask_index = spr_wall;}
-	if (object = 961) and (asset_get_type("spr_cake") == asset_sprite){sprite_index = sprite_basic_enemy;mask_index = spr_wall;}
+	if (object = 961) and (sprite_basic_enemy > 0){sprite_index = sprite_basic_enemy;mask_index = spr_wall;}
 	if (object = 97) and (asset_get_type("spr_artwork_collection") == asset_sprite){sprite_index = spr_artwork_collection;mask_index = spr_wall;}
 	if (object = 98) and (global.resource_pack_sprite_block_only_when_player_is_near >= 0){sprite_index = global.resource_pack_sprite_block_only_when_player_is_near;mask_index = spr_wall;}
 }

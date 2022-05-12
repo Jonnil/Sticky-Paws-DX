@@ -596,6 +596,7 @@ function scr_select_custom_level_menu()
 					draw_menu_button(394 *(global.select_level_index -C*R) + 110 - 3, 226*(C-scroll) + 522 - 3, Text("Make"), "level_editor_make", "level_editor_make"); /*+ 47 on y*/
 					draw_menu_button(394 *(global.select_level_index -C*R) + 110 - 3, 226*(C-scroll) + 569 - 3, Text("Delete"), "level_editor_delete", "level_editor_delete_no");
 					draw_menu_button(394 *(global.select_level_index -C*R) + 110 - 3, 226*(C-scroll) + 616 - 3, Text("Back"), "level_editor_selected_back", "level_editor_selected_back");
+					draw_sprite_ext(spr_icons_back, 0, 394 *(global.select_level_index -C*R) + 110 - 3 + 20, 226*(C-scroll) + 616 - 3 + 21, 1, 1, 0, c_white, 1);
 				}
 				else
 				{
@@ -603,6 +604,7 @@ function scr_select_custom_level_menu()
 					draw_menu_button(394 *(global.select_level_index -C*R) + 110 - 3, 226*(C-scroll) + 475 - 3, Text("Play"), "level_editor_play", "level_editor_play");
 					draw_menu_button(394 *(global.select_level_index -C*R) + 110 - 3, 226*(C-scroll) + 522 - 3, Text("Make"), "level_editor_make", "level_editor_make"); /*+ 47 on y*/
 					draw_menu_button(394 *(global.select_level_index -C*R) + 110 - 3, 226*(C-scroll) + 569 - 3, Text("Back"), "level_editor_selected_back", "level_editor_selected_back");
+					draw_sprite_ext(spr_icons_back, 0, 394 *(global.select_level_index -C*R) + 110 - 3 + 20, 226*(C-scroll) + 569 - 3 + 21, 1, 1, 0, c_white, 1);
 				}
 			}
 			else
@@ -614,6 +616,7 @@ function scr_select_custom_level_menu()
 				draw_menu_button(394 *(global.select_level_index -C*R) + 110 - 3, 226*(C-scroll) + 475 - 3, Text("Create from Scratch"), "level_editor_create_from_scratch", "level_editor_create_from_scratch");
 				draw_menu_button(394 *(global.select_level_index -C*R) + 110 - 3, 226*(C-scroll) + 522 - 3, Text("Create from Template"), "level_editor_create_from_template", "level_editor_create_from_template"); /*+ 47 on y*/
 				draw_menu_button(394 *(global.select_level_index -C*R) + 110 - 3, 226*(C-scroll) + 569 - 3, Text("Back"), "level_editor_create_from_back", "level_editor_create_from_back");
+				draw_sprite_ext(spr_icons_back, 0, 394 *(global.select_level_index -C*R) + 110 - 3 + 20, 226*(C-scroll) + 569 - 3 + 21, 1, 1, 0, c_white, 1);
 			}
 			else
 			if (menu = "level_editor_delete_no")
@@ -640,6 +643,7 @@ function scr_select_custom_level_menu()
 		
 		#region /*Back Button*/
 		draw_menu_button(0, 0, Text("Back"), "back_from_level_editor", "back_from_level_editor");
+		draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 		if (menu = "back_from_level_editor")
 		and (key_a_pressed)
 		and (menu_delay = 0)
@@ -1219,11 +1223,11 @@ function scr_select_custom_level_menu()
 		
 		if (string_length(global.level_name) >= 120)
 		{
-			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, "120/120", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, "120/ 120", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, string(string_length(global.level_name)) + "/120", global.default_text_size, c_black, c_ltgray, 1);
+			draw_text_outlined(394 * (global.select_level_index - C * R) + 400, 226 * (C - scroll) + 606, string(string_length(global.level_name)) + "/ 120", global.default_text_size, c_black, c_ltgray, 1);
 		}
 		
 		#region /*OK and Cancel buttons under name input*/
@@ -1231,10 +1235,9 @@ function scr_select_custom_level_menu()
 		{
 			draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 32, Text("OK"), "level_editor_enter_name_ok", "level_editor_enter_name_ok");
 			if (gamepad_is_connected(0))
-			and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 			and (global.controls_used_for_menu_navigation = "controller")
 			{
-				draw_sprite_ext(spr_xbox_buttons, 0, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 21 + 32, 0.5, 0.5, 0, c_white, 1);
+				scr_draw_gamepad_buttons(gp_face1, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 21 + 32, 0.5, 1);
 			}
 			else
 			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1244,10 +1247,9 @@ function scr_select_custom_level_menu()
 		}
 		draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 74, Text("Cancel"), "level_editor_enter_name_cancel", "level_editor_enter_name_cancel");
 		if (gamepad_is_connected(0))
-		and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 		and (global.controls_used_for_menu_navigation = "controller")
 		{
-			draw_sprite_ext(spr_xbox_buttons, 1, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 74 + 22, 0.5, 0.5, 0, c_white, 1);
+			scr_draw_gamepad_buttons(gp_face2, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 74 + 22, 0.5, 1);
 		}
 		else
 		{

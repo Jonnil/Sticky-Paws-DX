@@ -1,16 +1,7 @@
 #region /*Play title screen music*/
 if (title_music > noone)
 {
-	if (music_fade_in < 1)
-	and (global.play_attract_demo = false)
-	{
-		music_fade_in = lerp(music_fade_in, 1, 0.02); /*Make the music fade in, so music can't start off starteling, but fade in fast enough to be able to hear the beginning of the song*/
-	}
-	else
-	{
-		music_fade_in = lerp(music_fade_in, 0, 0.02); /*Make the music fade out when attract demo is playing*/
-	}
-	audio_sound_gain(title_music, global.music_volume * global.main_volume * music_fade_in, 0);
+	audio_sound_gain(title_music, global.music_volume * global.main_volume, 0);
 }
 #endregion /*Play title screen music END*/
 

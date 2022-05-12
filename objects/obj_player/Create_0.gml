@@ -66,6 +66,7 @@ allow_survive_lava = true;
 allow_tongue = false; /*A tongue that extends*/
 allow_wall_climb = true; /*If you can wall climb or not*/
 allow_wall_jump = true; /*If you can wall jump or not*/
+allow_glide = false;
 #endregion /*Allow END*/
 
 #region /*Character Values Handeling*/
@@ -106,6 +107,7 @@ climb_under_y_offset = 10;
 sprite_mask = spr_player_stand; /*Mask Index END*/
 sprite_mask_crouch = spr_player_stand; /*Mask Crouch Index END*/
 sprite_against_wall = noone;
+sprite_checkpoint_activated = noone;
 sprite_climb_under = noone;
 sprite_climb_under_look_up = noone;
 sprite_climb_under_spin = noone;
@@ -161,7 +163,7 @@ sprite_walking_with_item_in_front = noone;
 sprite_wall_slide = noone;
 sprite_wall_slide_down = noone;
 sprite_wall_slide_up = noone;
-sprite_paraglide_down = noone;
+sprite_glide_down = noone;
 #endregion /*Sprite variables END*/
 
 #region /*Sound variables*/
@@ -424,7 +426,7 @@ can_attack_after_dive_on_ground = 0; /*When landing on ground after dive, you sh
 can_attack_after_dive_on_ground_max_value = 20; /*This is the value that the can_attack_after_dive_on_ground variable gets set to when landing on ground*/
 can_climb_horizontal_rope_cooldown = 0;
 can_dive = true;
-can_ground_pound = true;
+can_ground_pound = true; /*When you are able to ground pound or not*/
 can_ledge_grab = true;
 can_mid_air_jump = 0; /*When 0, you can mid air jump. Counts down when above 0*/
 can_tongue = true;
@@ -433,7 +435,8 @@ current_file = global.file;
 dive = false;
 dive_on_ground = 0;
 double_jump_depleted_blink = 0;
-ground_pound = false;
+ground_pound = false; /*If you are currently ground pounding or not*/
+ground_pound_cooldown = 0; /*Cooldown for when you are able to press ground pound button again*/
 hold_item_in_hands = ""; /*If the character is holding any items in their hands or not*/
 hold_item_in_hands_x = 0; /*Held item x position*/
 hold_item_number_of_times_stomped = 0; /*Save how many times the held item / held enemy have been stomped, so you don't reset that number when throwing the item*/
@@ -453,6 +456,8 @@ stick_to_wall = false;
 wall_jump = false;
 wall_jump_setting = 1;
 wall_jump_time = 10;
+glide = false;
+can_glide = 0;
 #endregion /*Don't change these variables END*/
 
 #region /*Rope Swing Variables*/
@@ -585,7 +590,6 @@ jump_transition_to_fall_animation = 0;
 last_standing_x = x;
 last_standing_y = y;
 move_towards_spring_endpoint = false;
-music_fade_in = 0;
 music_pitch = 1;
 old_in_water = false; /*This just checks if water splash effect should be done or not, by checking if the actual in_water is different from the old_in_water*/
 overflow_hp = 0; /*Starting Overflow HP. Should be 0 by default*/

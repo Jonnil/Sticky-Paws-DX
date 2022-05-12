@@ -1,3 +1,12 @@
+player1_motor_speed = 0;
+player2_motor_speed = 0;
+player3_motor_speed = 0;
+player4_motor_speed = 0;
+player1_vibration_active = false;
+player2_vibration_active = false;
+player3_vibration_active = false;
+player4_vibration_active = false;
+
 reset_game_if_no_interactivity = 0;
 reset_game_if_no_interactivity_second_countdown_timer = 0;
 reset_game_if_no_interactivity_second_countdown = 60;

@@ -23,6 +23,7 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_bowlingball_shine > 0){global.resource_pack_sprite_bowlingball_shine = spr_noone;}
 		if (global.resource_pack_sprite_bullet > 0){global.resource_pack_sprite_bullet = spr_noone;}
 		if (global.resource_pack_sprite_bullet_flattened > 0){global.resource_pack_sprite_bullet_flattened = spr_noone;}
+		if (global.resource_pack_sprite_cake > 0){global.resource_pack_sprite_cake = spr_noone;}
 		if (global.resource_pack_sprite_coil_spring > 0){global.resource_pack_sprite_coil_spring = spr_noone;}
 		if (global.resource_pack_sprite_enemy_bowlingball_blind_revive > 0){global.resource_pack_sprite_enemy_bowlingball_blind_revive = spr_noone;}
 		if (global.resource_pack_sprite_enemy_bowlingball_blind_stomped > 0){global.resource_pack_sprite_enemy_bowlingball_blind_stomped = spr_noone;}
@@ -44,6 +45,11 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_tileset_stone > 0){global.resource_pack_sprite_tileset_stone = spr_noone;}
 		if (global.resource_pack_sprite_tileset_wood > 0){global.resource_pack_sprite_tileset_wood = spr_noone;}
 		if (global.resource_pack_sprite_title_logo_christmas > 0){global.resource_pack_sprite_title_logo_christmas = spr_noone;}
+		if (global.resource_pack_sprite_buttons_xboxone > 0){global.resource_pack_sprite_buttons_xboxone = spr_noone;}
+		if (global.resource_pack_sprite_buttons_xboxseriesx > 0){global.resource_pack_sprite_buttons_xboxseriesx = spr_noone;}
+		if (global.resource_pack_sprite_buttons_nintendoswitch > 0){global.resource_pack_sprite_buttons_nintendoswitch = spr_noone;}
+		if (global.resource_pack_sprite_buttons_playstation4 > 0){global.resource_pack_sprite_buttons_playstation4 = spr_noone;}
+		if (global.resource_pack_sprite_buttons_playstation5 > 0){global.resource_pack_sprite_buttons_playstation5 = spr_noone;}
 	}
 	#endregion /*Delete sprites before loading new sprites END*/
 	
@@ -75,6 +81,7 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_bowlingball_shine = scr_initialize_resource_pack_sprite("bowlingball_shine", global.resource_pack_sprite_bowlingball_shine);
 		global.resource_pack_sprite_bullet = scr_initialize_resource_pack_sprite("bullet", global.resource_pack_sprite_bullet);
 		global.resource_pack_sprite_bullet_flattened = scr_initialize_resource_pack_sprite("bullet_flattened", global.resource_pack_sprite_bullet_flattened);
+		global.resource_pack_sprite_cake = scr_initialize_resource_pack_sprite("cake", global.resource_pack_sprite_cake);
 		global.resource_pack_sprite_coil_spring = scr_initialize_resource_pack_sprite("coil_spring", global.resource_pack_sprite_coil_spring);
 		global.resource_pack_sprite_enemy_bowlingball_blind_revive = scr_initialize_resource_pack_sprite("enemy_bowlingball_blind_revive", global.resource_pack_sprite_enemy_bowlingball_blind_revive);
 		global.resource_pack_sprite_enemy_bowlingball_blind_stomped = scr_initialize_resource_pack_sprite("enemy_bowlingball_blind_stomped", global.resource_pack_sprite_enemy_bowlingball_blind_stomped);
@@ -96,6 +103,11 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_tileset_stone = scr_initialize_resource_pack_sprite("tileset_stone", global.resource_pack_sprite_tileset_stone);
 		global.resource_pack_sprite_tileset_wood = scr_initialize_resource_pack_sprite("tileset_wood", global.resource_pack_sprite_tileset_wood);
 		global.resource_pack_sprite_title_logo_christmas = scr_initialize_resource_pack_sprite("title_logo_christmas", global.resource_pack_sprite_title_logo_christmas);
+		global.resource_pack_sprite_buttons_xboxone = scr_initialize_resource_pack_sprite("buttons_xboxone", global.resource_pack_sprite_buttons_xboxone);
+		global.resource_pack_sprite_buttons_xboxseriesx = scr_initialize_resource_pack_sprite("buttons_xboxseriesx", global.resource_pack_sprite_buttons_xboxseriesx);
+		global.resource_pack_sprite_buttons_nintendoswitch = scr_initialize_resource_pack_sprite("buttons_nintendoswitch", global.resource_pack_sprite_buttons_nintendoswitch);
+		global.resource_pack_sprite_buttons_playstation4 = scr_initialize_resource_pack_sprite("buttons_playstation4", global.resource_pack_sprite_buttons_playstation4);
+		global.resource_pack_sprite_buttons_playstation5 = scr_initialize_resource_pack_sprite("buttons_playstation5", global.resource_pack_sprite_buttons_playstation5);
 		ini_close();
 	}
 }

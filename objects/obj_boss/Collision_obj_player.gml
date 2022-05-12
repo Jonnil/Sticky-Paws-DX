@@ -164,6 +164,7 @@ else
 				other.hp -= 1;
 			}
 			other.takendamage = 100;
+			scr_gamepad_vibration(other.player, 1, 10);
 		}
 	}
 }

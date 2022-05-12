@@ -1,7 +1,7 @@
 enum localization
 {
 	ar_sa/*Arabic*/
-	,id_id/*Indonesian*/
+	,id_id /*Indonesian*/
 	,da_dk/*Danish*/
 	,de_de/*German*/
 	,en_gb/*British English*/

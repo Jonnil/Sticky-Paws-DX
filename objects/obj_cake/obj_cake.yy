@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_cake",
-    "path": "sprites/spr_cake/spr_cake.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

@@ -308,9 +308,9 @@ if (global.world_editor = false)
 		place_object = "cake_stealing_enemy";
 		can_make_place_brush_size_bigger = false;
 		sprite_index = sprite_basic_enemy;
-		if (asset_get_type("spr_cake") == asset_sprite)
+		if (global.resource_pack_sprite_cake > 0)
 		{
-			draw_sprite_ext(spr_cake, 0, x, y - 16, 1, 1, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_cake, 0, x, y - 16, 1, 1, 0, c_white, 0.5);
 		}
 		mask_index = spr_wall;
 	}
@@ -955,7 +955,7 @@ if (quit_level_editor <= 0)
 		if (asset_get_type("spr_boss_barrier") == asset_sprite){draw_sprite_ext(spr_boss_barrier, 0,							camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 63, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);}
 		if (sprite_basic_enemy >= 0)
 		{
-			draw_sprite_ext(sprite_basic_enemy, 0,																					camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 64, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha); if (asset_get_type("spr_cake") == asset_sprite){draw_sprite_ext(spr_cake, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 64, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white, selected_menu_alpha);}
+			draw_sprite_ext(sprite_basic_enemy, 0,																					camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 64, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha); if (global.resource_pack_sprite_cake > 0){draw_sprite_ext(global.resource_pack_sprite_cake, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 64, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white, selected_menu_alpha);}
 		}
 		if (asset_get_type("spr_artwork_collection") == asset_sprite){draw_sprite_ext(spr_artwork_collection, 0,				camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 + selected_object_menu_x + 64 * 65, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);}
 		if (global.resource_pack_sprite_block_only_when_player_is_near >= 0)

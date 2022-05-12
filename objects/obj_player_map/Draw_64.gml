@@ -11,10 +11,9 @@ and (global.pause = false)
 	draw_set_valign(fa_center);
 	draw_text_outlined(64, window_get_height() - 28, Text("Enter into level"), global.default_text_size, c_black, c_white, 1);
 	if (gamepad_is_connected(0))
-	and (asset_get_type("spr_xbox_buttons") == asset_sprite)
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
-		draw_sprite_ext(spr_xbox_buttons, 0, 32, window_get_height() - 28, 0.5, 0.5, 0, c_white, 1);
+		scr_draw_gamepad_buttons(gp_face1, 32, window_get_height() - 28, 0.5, 1);
 	}
 	else
 	if (asset_get_type("spr_keyboard_keys") == asset_sprite)

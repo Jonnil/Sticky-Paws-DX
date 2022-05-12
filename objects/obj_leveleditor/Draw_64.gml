@@ -63,9 +63,10 @@ if (quit_level_editor = false)
 			in_settings = false;
 			
 			#region /*If menu is on continue*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 - 126, Text("Continue"), "continue", noone);
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 - 126, Text("Continue"), "continue", noone);
+			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 - 126 + 21, 1, 1, 0, c_white, 1);
 			
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 - 126, window_get_width()/ 2 + 185, window_get_height()/ 2 -84))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 - 126, window_get_width() / 2 + 185, window_get_height() / 2 -84))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -107,10 +108,10 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on continue END*/
 			
 			#region /*If menu is on options*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -84, Text("Options"), "options", noone);
-			draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width()/ 2 - 185 + 20, window_get_height()/ 2 -84 + 21, 1, 1, 0, c_white, 1);
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 -84, Text("Options"), "options", noone);
+			draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 -84 + 21, 1, 1, 0, c_white, 1);
 			
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 -84, window_get_width()/ 2 + 185, window_get_height()/ 2 - 42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 -84, window_get_width() / 2 + 185, window_get_height() / 2 - 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -170,9 +171,9 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on options END*/
 			
 			#region /*If menu is on level editor options*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 -42, Text("Level Editor Options"), "level_editor_options", "custom_background_1_x_offset");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 -42, Text("Level Editor Options"), "level_editor_options", "custom_background_1_x_offset");
 			
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 -42, window_get_width()/ 2 + 185, window_get_height()/ 2))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 -42, window_get_width() / 2 + 185, window_get_height() / 2))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -232,9 +233,9 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on level editor options END*/
 			
 			#region /*If menu is on generate level map*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Generate Level Map"), "generate_level_map", "generate_level_map_yes");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, Text("Generate Level Map"), "generate_level_map", "generate_level_map_yes");
 			
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2, window_get_width() / 2 + 185, window_get_height() / 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -287,8 +288,8 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on generate level map END*/
 			
 			#region /*Open Custom Levels Folder*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, window_get_width()/ 2 - 185 + 371, window_get_height()/ 2 + 42 + 41))
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 + 42, window_get_width() / 2 - 185 + 371, window_get_height() / 2 + 42 + 41))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
@@ -331,8 +332,8 @@ if (quit_level_editor = false)
 			#endregion /*Open Custom Levels Folder END*/
 			
 			#region /*If menu is on quit*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, Text("Save and Quit"), "quit", noone);
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2 + 42 + 42, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42 + 42))
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Save and Quit"), "quit", noone);
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 42 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -390,7 +391,7 @@ if (quit_level_editor = false)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_center);
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192, Text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192, Text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 			
 			#region /*Draw the path for saving full level map*/
 			if (global.character_select_in_this_menu = "level_editor")
@@ -398,23 +399,23 @@ if (quit_level_editor = false)
 			or(global.character_select_in_this_menu = "level_editor")
 			and (global.create_level_from_template >= 2)
 			{
-				draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
 			}
 			else
 			if (global.character_select_in_this_menu = "level_editor")
 			{
-				draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
 			}
 			#endregion /*Draw the path for saving full level map END*/
 			
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 64, Text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 96, Text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
-			draw_text_outlined(window_get_width()/ 2, window_get_height()/ 2 - 192 + 160, Text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 64, Text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 96, Text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 160, Text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
 			
 			#region /*If menu is on generate level map yes*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2, Text("Yes"), "generate_level_map_yes", "generate_level_map_yes");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, Text("Yes"), "generate_level_map_yes", "generate_level_map_yes");
 			
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2, window_get_width() / 2 + 185, window_get_height() / 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{
@@ -467,9 +468,9 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on generate level map yes END*/
 			
 			#region /*If menu is on generate level map no*/
-			draw_menu_button(window_get_width()/ 2 - 185, window_get_height()/ 2 + 42, Text("No"), "generate_level_map_no", "generate_level_map");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("No"), "generate_level_map_no", "generate_level_map");
 			
-			if (point_in_rectangle(cursor_x, cursor_y, window_get_width()/ 2 - 185, window_get_height()/ 2, window_get_width()/ 2 + 185, window_get_height()/ 2 + 42 + 42))
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2, window_get_width() / 2 + 185, window_get_height() / 2 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
 			{

@@ -292,7 +292,7 @@ function scr_options_level_editor()
 		
 		if (global.controls_used_for_menu_navigation = "controller")
 		{
-			draw_sprite_ext(spr_xbox_buttons, 2, 40, 40, 0.75, 0.75, 0, c_white, 1);
+			scr_draw_gamepad_buttons(gp_face3, 40, 40, 0.75, 1);
 		}
 		else
 		{
@@ -308,6 +308,7 @@ function scr_options_level_editor()
 		}
 		
 		draw_menu_button(level_editor_options_x, 47 * 2 + menu_y_offset, Text("Back"), "back_level_editor_options", "level_editor_options");
+		draw_sprite_ext(spr_icons_back, 0, level_editor_options_x + 20, 47 * 2 + menu_y_offset + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button(level_editor_options_x, 47 * 3 + menu_y_offset, Text("BG Offset and Parallax"), "background_offset_and_parallax", "back_background_offset_and_parallax");
 		global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, 47 * 4 + menu_y_offset, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
 		global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, 47 * 5 + menu_y_offset, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
@@ -828,7 +829,7 @@ function scr_options_level_editor()
 		
 		if (global.controls_used_for_menu_navigation = "controller")
 		{
-			draw_sprite_ext(spr_xbox_buttons, 2, 40, 40, 0.75, 0.75, 0, c_white, 1);
+			scr_draw_gamepad_buttons(gp_face3, 40, 40, 0.75, 1);
 		}
 		else
 		{
@@ -839,6 +840,7 @@ function scr_options_level_editor()
 		draw_text_outlined(80, 40, Text("Hold down to change the value faster"), global.default_text_size, c_black, c_white, 1);
 		
 		draw_menu_button(level_editor_options_x, 40 * 2 + menu_y_offset, Text("Back"), "back_background_offset_and_parallax", "background_offset_and_parallax");
+		draw_sprite_ext(spr_icons_back, 0, level_editor_options_x + 20, 47 * 2 + menu_y_offset + 21, 1, 1, 0, c_white, 1);
 		
 		custom_background_1_x_offset = draw_menu_left_right_buttons(level_editor_options_x, custom_background_1_x_offset_y + menu_y_offset, options_level_editor_right_arrow_x, "custom background 1 x offset", custom_background_1_x_offset, "custom_background_1_x_offset", 1, true);
 		custom_background_1_y_offset = draw_menu_left_right_buttons(level_editor_options_x, custom_background_1_y_offset_y + menu_y_offset, options_level_editor_right_arrow_x, "custom background 1 y offset", custom_background_1_y_offset, "custom_background_1_y_offset", 1, true);

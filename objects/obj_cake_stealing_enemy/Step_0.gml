@@ -120,6 +120,10 @@ and (cutscene != 1)
 	with (instance_create_depth(x, y, 0, obj_basic_enemy))
 	{
 		image_xscale = -1;
+		if (instance_exists(obj_player))
+		{
+			scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.5, 10);
+		}
 		
 		#region /*Enemy Voice Defeated*/
 		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);

@@ -4,7 +4,7 @@ timer += 1;
 //if timer <3{if place_meeting(x, y, obj_wall){with(instance_nearest(x, y, obj_player)){can_tongue = true;}instance_destroy();}}
 if timer > 10{if place_meeting(x, y, obj_player) and instance_nearest(x, y, obj_player).rope_swing = false{with(instance_nearest(x, y, obj_player)){can_tongue = true;}instance_destroy();}}
 if timer = 15{speed = 0;}
-if timer >25{move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);obj_player.rope_swing = false}
+if timer > 25{move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);obj_player.rope_swing = false}
 
 /*Make tongue homing toward closest object*/
 if timer <25{
@@ -12,7 +12,7 @@ if instance_exists(obj_ring){if distance_to_object(instance_nearest(mouse_x, mou
 }
 
 /*Match movement with player movement*/
-if obj_player.rope_swing = false{hspeed += obj_player.hspeed/8;vspeed += obj_player.vspeed/8;}
+if obj_player.rope_swing = false{hspeed += obj_player.hspeed /8;vspeed += obj_player.vspeed /8;}
 
 /*Stick to wall*/
 

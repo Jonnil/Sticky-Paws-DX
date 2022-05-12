@@ -1,3 +1,8 @@
+gamepad_set_vibration(0, 0, 0);
+gamepad_set_vibration(1, 0, 0);
+gamepad_set_vibration(2, 0, 0);
+gamepad_set_vibration(3, 0, 0);
+
 #region /*Set screen size*/
 camera_set_view_border(view_camera[view_current], 1920, 1080); /*View Border*/
 camera_set_view_size(view_camera[view_current], 1920, 1080);

@@ -132,7 +132,7 @@ function scr_savelevel()
 					ini_write_real("rank", "rank_timeattack_minute", global.timeattack_minute);
 					ini_write_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond);
 				}
-				#endregion /*Save Fastest Time Hard END*/
+				#endregion /*Save Fastest Time END*/
 				
 			}
 			if (score > ini_read_real("rank", "rank_level_score", false))

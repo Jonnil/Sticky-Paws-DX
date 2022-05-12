@@ -18,7 +18,7 @@ selected_skin = 0;
 background_layer_x = 0;
 background_layer_y = 0;
 
-options_and_quit_y = display_get_gui_height()/ 2 + 100 + 120;
+options_and_quit_y = display_get_gui_height() / 2 + 100 + 120;
 file_found = "";
 file_load_timer = 0;
 level_find_pos = 0;
@@ -230,9 +230,15 @@ else
 lastkey = noone;
 
 #region /*Remapping options variables*/
-remapping_player = 0;
+remapping_player = 0; /*remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
 input_key = false;
 can_remap_key = false;
+input_gamepad_button = false;
+can_remap_gamepad_button = false;
+allow_player1_tongue = false;
+allow_player2_tongue = false;
+allow_player3_tongue = false;
+allow_player4_tongue = false;
 #endregion /*Remapping options variables END*/
 
 open_dropdown = false;
@@ -255,6 +261,7 @@ old_selected_resource_pack = global.selected_resource_pack;
 can_navigate_settings_sidebar = true;
 navigate_slider = false;
 menu_remap_key_number = 0;
+menu_remap_gamepad_button_number = 0;
 name_enter_blink= 0;
 can_navigate = true;
 menu_y_offset = 0; /*This is the y offset that will have lerping to make the menu scrolling smooth*/
@@ -270,6 +277,7 @@ title_xscale = 1;
 title_yscale = 1;
 voice_select_character = noone;
 show_convention_mode_enable_text = 0;
+show_arcade_mode_enable_text = 0;
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
@@ -334,8 +342,6 @@ if (title_music > noone)
 	audio_sound_gain(title_music, 0, 0);
 }
 #endregion /*Play title screen music END*/
-
-music_fade_in = 0;
 
 #region /*Reset level zoom*/
 if (global.reset_level_zoom_when_going_back_to_map = true)

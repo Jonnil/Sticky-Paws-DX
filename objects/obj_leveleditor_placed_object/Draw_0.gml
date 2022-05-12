@@ -1,11 +1,12 @@
 #region /*All code before initializing the object*/
+
 #region /*Make sprite transparent if you're setting difficulty levels*/
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (sprite_index > 0)
 and (global.character_select_in_this_menu = "level_editor")
 {
-
+	
 	#region /*Show only normal difficulty layer in regular colors when saving a thumbnail*/
 	if (obj_leveleditor.quit_level_editor >= true)
 	and (normal = true)
@@ -418,7 +419,7 @@ if (global.world_editor = false)
 	if (object = 88001) and (asset_get_type("spr_bucket") == asset_sprite){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}
 	#endregion /*Bucket END*/
 
-	if (object = 961) and (asset_get_type("spr_cake") == asset_sprite){draw_sprite_ext(spr_cake, 0, x, y - 16, 1, 1, 0, c_white, image_alpha);}
+	if (object = 961) and (global.resource_pack_sprite_cake > 0){draw_sprite_ext(global.resource_pack_sprite_cake, 0, x, y - 16, 1, 1, 0, c_white, image_alpha);}
 }
 else
 {
