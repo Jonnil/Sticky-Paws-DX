@@ -1,5 +1,7 @@
 depth = 10;
 image_speed = 0;
+mask_index = spr_checkpoint;
+get_rewards_cooldown = 10;
 if (global.x_checkpoint = x)
 and (global.y_checkpoint = y)
 {

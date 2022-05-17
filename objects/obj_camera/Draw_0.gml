@@ -936,6 +936,7 @@ if (player1 >= 1)
 and (can_spawn_player1 = true)
 and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
+and (instance_exists(player1))
 and (iris_xscale >= 10)
 {
 	if (global.player1_show_controls = 0)
@@ -953,6 +954,7 @@ and (iris_xscale >= 10)
 			player1_show_controls_timer -= 1;
 		}
 		if (player1_show_controls_timer <= 0)
+		and (player1.speed = 0)
 		{
 			player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
 		}
@@ -1013,6 +1015,7 @@ else
 if (player2 >= 1)
 and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
+and (instance_exists(player2))
 and (iris_xscale >= 10)
 {
 	if (global.player2_show_controls = 0)
@@ -1030,6 +1033,7 @@ and (iris_xscale >= 10)
 			player2_show_controls_timer -= 1;
 		}
 		if (player2_show_controls_timer <= 0)
+		and (player2.speed = 0)
 		{
 			player2_show_controls_alpha = lerp(player2_show_controls_alpha, 1, 0.1);
 		}
@@ -1090,6 +1094,7 @@ else
 if (player3 >= 1)
 and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
+and (instance_exists(player3))
 and (iris_xscale >= 10)
 {
 	if (global.player3_show_controls = 0)
@@ -1107,6 +1112,7 @@ and (iris_xscale >= 10)
 			player3_show_controls_timer -= 1;
 		}
 		if (player3_show_controls_timer <= 0)
+		and (player3.speed = 0)
 		{
 			player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.1);
 		}
@@ -1167,6 +1173,7 @@ else
 if (player4 >= 1)
 and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
+and (instance_exists(player4))
 and (iris_xscale >= 10)
 {
 	if (global.player4_show_controls = 0)
@@ -1184,6 +1191,7 @@ and (iris_xscale >= 10)
 			player4_show_controls_timer -= 1;
 		}
 		if (player4_show_controls_timer <= 0)
+		and (player4.speed = 0)
 		{
 			player4_show_controls_alpha = lerp(player4_show_controls_alpha, 1, 0.1);
 		}

@@ -46,7 +46,7 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_tileset_wood > 0){global.resource_pack_sprite_tileset_wood = spr_noone;}
 		if (global.resource_pack_sprite_title_logo_christmas > 0){global.resource_pack_sprite_title_logo_christmas = spr_noone;}
 		if (global.resource_pack_sprite_buttons_xboxone > 0){global.resource_pack_sprite_buttons_xboxone = spr_noone;}
-		if (global.resource_pack_sprite_buttons_xboxseriesx > 0){global.resource_pack_sprite_buttons_xboxseriesx = spr_noone;}
+		if (global.resource_pack_sprite_buttons_xboxseriesxs > 0){global.resource_pack_sprite_buttons_xboxseriesxs = spr_noone;}
 		if (global.resource_pack_sprite_buttons_nintendoswitch > 0){global.resource_pack_sprite_buttons_nintendoswitch = spr_noone;}
 		if (global.resource_pack_sprite_buttons_playstation4 > 0){global.resource_pack_sprite_buttons_playstation4 = spr_noone;}
 		if (global.resource_pack_sprite_buttons_playstation5 > 0){global.resource_pack_sprite_buttons_playstation5 = spr_noone;}
@@ -104,7 +104,7 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_tileset_wood = scr_initialize_resource_pack_sprite("tileset_wood", global.resource_pack_sprite_tileset_wood);
 		global.resource_pack_sprite_title_logo_christmas = scr_initialize_resource_pack_sprite("title_logo_christmas", global.resource_pack_sprite_title_logo_christmas);
 		global.resource_pack_sprite_buttons_xboxone = scr_initialize_resource_pack_sprite("buttons_xboxone", global.resource_pack_sprite_buttons_xboxone);
-		global.resource_pack_sprite_buttons_xboxseriesx = scr_initialize_resource_pack_sprite("buttons_xboxseriesx", global.resource_pack_sprite_buttons_xboxseriesx);
+		global.resource_pack_sprite_buttons_xboxseriesxs = scr_initialize_resource_pack_sprite("buttons_xboxseriesxs", global.resource_pack_sprite_buttons_xboxseriesxs);
 		global.resource_pack_sprite_buttons_nintendoswitch = scr_initialize_resource_pack_sprite("buttons_nintendoswitch", global.resource_pack_sprite_buttons_nintendoswitch);
 		global.resource_pack_sprite_buttons_playstation4 = scr_initialize_resource_pack_sprite("buttons_playstation4", global.resource_pack_sprite_buttons_playstation4);
 		global.resource_pack_sprite_buttons_playstation5 = scr_initialize_resource_pack_sprite("buttons_playstation5", global.resource_pack_sprite_buttons_playstation5);

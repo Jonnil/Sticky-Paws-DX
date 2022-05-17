@@ -410,10 +410,12 @@ and (global.pause_room = room_leveleditor)
 		{
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 	}
 	else
@@ -432,10 +434,12 @@ and (global.pause_room = room_leveleditor)
 		{
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 	}
 	else
@@ -451,10 +455,12 @@ and (global.pause_room = room_leveleditor)
 		{
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 	}
 	

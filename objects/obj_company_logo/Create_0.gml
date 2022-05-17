@@ -12,6 +12,7 @@ display_yoffset = 0;
 #region /*Things you could change*/
 global.company_name = "Jonnil"; /*String of what the company is called*/
 global.game_name = "Sticky Paws"; /*String of what the game is called*/
+global.game_name_appdata = "Sticky_Paws_DX"; /*String of what the game is called at appdata folder*/
 global.character_for_player_1 = "sticky"; /*Player 1 Select Character 1*/
 global.character_for_player_2 = "catlyn"; /*Player 2 Select Character 2*/
 global.character_for_player_3 = "sticky"; /*Player 3 Select Character 3*/
@@ -37,6 +38,16 @@ global.enable_language_settings = true; /*Enable Language settings*/
 global.enable_broadcast_settings = false; /*Enable Broadcast settings*/
 global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
 global.enable_ranks = false; /*Enable the option to show ranks in the game*/
+if (os_type = os_switch)
+{
+	global.enable_open_custom_folder = false; /*Enable the option to open custom folders in the game*/
+	global.enable_copy_characters = false; /*Enable the option to copy characters in the game*/
+}
+else
+{
+	global.enable_open_custom_folder = true; /*Enable the option to open custom folders in the game*/
+	global.enable_copy_characters = true; /*Enable the option to copy characters in the game*/
+}
 #endregion /*What settings tabs to show up END*/
 
 #region /*What settings can be changed*/
@@ -422,14 +433,14 @@ global.resource_pack_sprite_tileset_stone = spr_noone;
 global.resource_pack_sprite_tileset_wood = spr_noone;
 global.resource_pack_sprite_title_logo_christmas = spr_noone;
 global.resource_pack_sprite_buttons_xboxone = spr_noone;
-global.resource_pack_sprite_buttons_xboxseriesx = spr_noone;
+global.resource_pack_sprite_buttons_xboxseriesxs = spr_noone;
 global.resource_pack_sprite_buttons_nintendoswitch = spr_noone;
 global.resource_pack_sprite_buttons_playstation4 = spr_noone;
 global.resource_pack_sprite_buttons_playstation5 = spr_noone;
 #endregion /*Resource Packs END*/
 
 global.choosen_controller_used = 0; /*What controller buttons to use for button prompts*/
-/*0 = xboxone, 1 = xboxseriesx, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5*/
+/*0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5*/
 
 company_splash = noone;
 company_splash_1 = noone;

@@ -333,7 +333,19 @@ else
 {
 	title_music = noone;
 }
+title_music_lerp = 0;
 #endregion /*Update Music END*/
+
+#region /*Update Trailer Sound*/
+if (file_exists("video/trailer.ogg"))
+{
+	trailer_sound = audio_create_stream("video/trailer.ogg");
+}
+else
+{
+	trailer_sound = noone;
+}
+#endregion /*Update Trailer Sound END*/
 
 #region /*Play title screen music*/
 if (title_music > noone)
@@ -342,6 +354,14 @@ if (title_music > noone)
 	audio_sound_gain(title_music, 0, 0);
 }
 #endregion /*Play title screen music END*/
+
+#region /*Play trailer sound*/
+if (trailer_sound > noone)
+{
+	audio_stop_sound(trailer_sound);
+	audio_sound_gain(trailer_sound, 0, 0);
+}
+#endregion /*Play trailer sound END*/
 
 #region /*Reset level zoom*/
 if (global.reset_level_zoom_when_going_back_to_map = true)

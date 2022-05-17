@@ -2,7 +2,7 @@ Code,English,Svenska,日本語,Español,Polski
 Translator,Translator,Översättare,翻訳者,Traductor,Tłumacz
 Translator name,Jonathan Nilsson,Jonathan Nilsson,Benjamin Tröjer,chillmanmax (Marcos),DoruDoLasu
 Language translations may not be 100% accurate,Language translations may not be 100% accurate,Språköversättningar kanske inte är 100% korrekta,ほんとうにすみませんでした。まだベギナーから、翻訳は100%完璧じゃないかもしれません。,Traducciones no son 100% preciso,Tłumaczenia mogą nie być w stu procentach dokładne
-#REF!,Back,Tillbaka,戻る,Anterior,Wstecz
+Back,Back,Tillbaka,戻る,Anterior,Wstecz
 Accessibility,Accessibility,Tillgänglighet,アクセシビリティ,Accesibilidad,Dostępność
 Game,Game,Spel,ゲーム,Juego,Gra
 Multiplayer,Multiplayer,Flerspelare,マルチプレイヤー,Multijugador,Multiplayer
@@ -30,25 +30,25 @@ Quit,Quit,Avsluta,終了,Salir,Wyjdź
 Fullscreen,Fullscreen,Fullskärm,フルスクリーン,Pantalla Completa,Pełny ekran
 Made by,Made by,Tillverkad av,,Hecho por,Zrobione przez
 Loading,Loading,Läser in,ローディング中,Cargando,Wczytywanie
-Select your character!,Select your character!,Välj din karaktär!,,Escoge tu Personaje!,Wybierz postać!
-Player 1 Join,Player 1 Join,Spelare 1 Gå med,,Jugador 1 Unir,Dołącz jako gracz 1
-Player 2 Join,Player 2 Join,Spelare 2 Gå med,,Jugador 2 Unir,Dołącz jako gracz 2
-Player 3 Join,Player 3 Join,Spelare 3 Gå med,,Jugador 3 Unir,Dołącz jako gracz 3
-Player 4 Join,Player 4 Join,Spelare 4 Gå med,,Jugador 4 Unir,Dołącz jako gracz 4
-Accept,Accept,Acceptera,,Aceptar,Akceptuj
-Cancel,Cancel,Avbryt,,Cancelar,Anuluj
-Skin,Skin,Utseende,,Traje,Skórka
-Voice Pack,Voice Pack,Röstpaket,,Paquete de Voz,Głos
+Select your character!,Select your character!,Välj din karaktär!,キャラクターを選択してください!,Escoge tu Personaje!,Wybierz postać!
+Player 1 Join,Player 1 Join,Spelare 1 Gå med,プレイアー1が参加する,Jugador 1 Unir,Dołącz jako gracz 1
+Player 2 Join,Player 2 Join,Spelare 2 Gå med,プレイアー２が参加する,Jugador 2 Unir,Dołącz jako gracz 2
+Player 3 Join,Player 3 Join,Spelare 3 Gå med,プレイアー３が参加する,Jugador 3 Unir,Dołącz jako gracz 3
+Player 4 Join,Player 4 Join,Spelare 4 Gå med,プレイアー４が参加する,Jugador 4 Unir,Dołącz jako gracz 4
+Accept,Accept,Acceptera,アクセプト,Aceptar,Akceptuj
+Cancel,Cancel,Avbryt,キャンセル,Cancelar,Anuluj
+Skin,Skin,Utseende,スキン,Traje,Skórka
+Voice Pack,Voice Pack,Röstpaket,ボイスパック,Paquete de Voz,Głos
 Player 1,Player 1,Spelare 1,プレイヤー１,Jugador 1,Gracz 1
 Player 2,Player 2,Spelare 2,プレイヤー２,Jugador 2,Gracz 2
 Player 3,Player 3,Spelare 3,プレイヤー３,Jugador 3,Gracz 3
 Player 4,Player 4,Spelare 4,プレイヤー４,Jugador 4,Gracz 4
 Play the game!,Play the game!,Spela spelet!,プレー,Jugar el juego!,Zagraj
 Play level,Play level,Spela nivå,レベルスタート,Juega nivel,Zagraj poziom
-Player 1 starts the game,Player 1 starts the game,Spelare 1 startar spelet,,Jugador 1 empieza el juego,Gracz 1 dołącza do gry
-Player 2 starts the game,Player 2 starts the game,Spelare 2 startar spelet,,Jugador 2 empieza el juego,Gracz 2 dołącza do gry
-Player 3 starts the game,Player 3 starts the game,Spelare 3 startar spelet,,Jugador 3 empieza el juego,Gracz 3 dołąćza do gry
-Player 4 starts the game,Player 4 starts the game,Spelare 4 startar spelet,,Jugador 4 empieza el juego,Gracz 4 dołącza do gry
+Player 1 starts the game,Player 1 starts the game,Spelare 1 startar spelet,プレイアー１がゲームをスタートする,Jugador 1 empieza el juego,Gracz 1 dołącza do gry
+Player 2 starts the game,Player 2 starts the game,Spelare 2 startar spelet,プレイアー２がゲームをスタートする,Jugador 2 empieza el juego,Gracz 2 dołącza do gry
+Player 3 starts the game,Player 3 starts the game,Spelare 3 startar spelet,プレイアー３がゲームをスタートする,Jugador 3 empieza el juego,Gracz 3 dołąćza do gry
+Player 4 starts the game,Player 4 starts the game,Spelare 4 startar spelet,プレイアー４がゲームをスタートする,Jugador 4 empieza el juego,Gracz 4 dołącza do gry
 Create from Scratch,Create from Scratch,Skapa från grunden,,Crear de cero,Stwórz samemu
 Create from Template,Create from Template,Skapa från mall,,Crear con modelo,Stwórz z szablonu
 OK,OK,OK,,OK,OK
@@ -83,13 +83,13 @@ Assist Item,Assist Item,Assist objekt,,,
 Always Appear,Always Appear,Visas alltid,,,
 Appear after 1 death on a level,Appear after 1 death on a level,Visas efter 1 död på en nivå,,,
 Appear after 2 deaths on a level,Appear after 2 deaths on a level,Visas efter 2 dödsfall på en nivå,,,
-Appear after 3 deaths on a level,Appear after 2 deaths on a level,Visas efter 3 dödsfall på en nivå,,,
-Appear after 4 deaths on a level,Appear after 2 deaths on a level,Visas efter 4 dödsfall på en nivå,,,
-Appear after 5 deaths on a level,Appear after 2 deaths on a level,Visas efter 5 dödsfall på en nivå,,,
-Appear after 6 deaths on a level,Appear after 2 deaths on a level,Visas efter 6 dödsfall på en nivå,,,
-Appear after 7 deaths on a level,Appear after 2 deaths on a level,Visas efter 7 dödsfall på en nivå,,,
-Appear after 8 deaths on a level,Appear after 2 deaths on a level,Visas efter 8 dödsfall på en nivå,,,
-Appear after 9 deaths on a level,Appear after 2 deaths on a level,Visas efter 9 dödsfall på en nivå,,,
+Appear after 3 deaths on a level,Appear after 3 deaths on a level,Visas efter 3 dödsfall på en nivå,,,
+Appear after 4 deaths on a level,Appear after 4 deaths on a level,Visas efter 4 dödsfall på en nivå,,,
+Appear after 5 deaths on a level,Appear after 5 deaths on a level,Visas efter 5 dödsfall på en nivå,,,
+Appear after 6 deaths on a level,Appear after 6 deaths on a level,Visas efter 6 dödsfall på en nivå,,,
+Appear after 7 deaths on a level,Appear after 7 deaths on a level,Visas efter 7 dödsfall på en nivå,,,
+Appear after 8 deaths on a level,Appear after 8 deaths on a level,Visas efter 8 dödsfall på en nivå,,,
+Appear after 9 deaths on a level,Appear after 9 deaths on a level,Visas efter 9 dödsfall på en nivå,,,
 Never Appear,Never Appear,Visas aldrig,,,Nigdy nie pokazuj
 Extra Health Points,Extra Health Points,Extra hälsopoäng,,,Dodatkowe punkty zdrowia
 None,None,Ingen,無し,,
@@ -158,7 +158,7 @@ Interpolation,Interpolation,Interpolering,,,Interpolacja
 Show Instance Count,Show Instance Count,Visa antal instanser,,,Pokaż licznik instancji
 Instance Count,Instance Count,Antal instanser,,,Licznik instancji
 Hide menu for clean screenshots,Hide menu for clean screenshots,Dölj menyn för rena skärmdumpar,,,
-Restart,Restart,Omstart,,,Restart
+Restart,Restart,Omstart,リスタート,,Restart
 Reset from Checkpoint,Reset from Checkpoint,Återställ från återvändspunkt,,,Rozpocznij od punktu kontrolnego
 Reset from Start,Reset from Start,Återställ från start,,,Rozpocznij od początku
 Nevermind,Nevermind,Glöm det,,,Jednak nie
@@ -259,3 +259,5 @@ BG Offset and Parallax,BG Offset and Parallax,BG Offset och Parallax,,,Offset i 
 Open Custom Levels Folder,Open Custom Levels Folder,Öppna egna nivåer,カスタムレベルフォルダを開く,,Otwórz folder z własnymi poziomami
 TIME OVER,TIME OVER,TID ÖVER,,,CZAS MINĄŁ
 HURRY UP!,HURRY UP!,SKYNDA DIG!,,,
+Add custom things in Local Appdata,Add custom things in Local Appdata,Lägg till anpassade saker i Local Appdata,,,
+Then type,Then type,Skriv sedan,,,

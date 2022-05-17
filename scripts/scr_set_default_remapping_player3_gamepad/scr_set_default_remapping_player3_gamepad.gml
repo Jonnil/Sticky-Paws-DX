@@ -6,7 +6,7 @@ function scr_set_default_remapping_player3_gamepad()
 	#region /*Player 3 Gamepad Buttons 1 defaults*/
 	global.player3_gamepad_button_dive = gp_face3;
 	global.player3_gamepad_button_jump = gp_face1;
-	global.player3_gamepad_button_crouch = noone;
+	global.player3_gamepad_button_crouch = gp_padd;
 	global.player3_gamepad_button_crouch_toggle = noone;
 	global.player3_gamepad_button_sprint = gp_face3;
 	global.player3_gamepad_button_sprint_toggle = noone;

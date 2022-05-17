@@ -14,11 +14,34 @@ else
 draw_set_alpha(image_alpha * 0.99);
 draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
+
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_text_outlined(window_get_width() / 2, window_get_height() / 2,
-string_replace_all(string(open_folder_string), "\\", "/"),
-global.default_text_size, c_black, c_white, image_alpha);
+
+var key_open_localappdata_x = window_get_width() / 2 - 238;
+
+if (os_type = os_windows)
+{
+	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, Text("Add custom things in Local Appdata"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	draw_sprite_ext(spr_keyboard_keys, 91, key_open_localappdata_x, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
+	draw_text_outlined(key_open_localappdata_x + 38, window_get_height() / 2 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	draw_sprite_ext(spr_keyboard_keys, ord("R"), key_open_localappdata_x + 74, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
+	draw_set_halign(fa_left);
+	draw_text_outlined(key_open_localappdata_x + 110, window_get_height() / 2 - 90, Text("Then type") + " " + "%localappdata%", global.default_text_size * 1.1, c_black, c_white, image_alpha);
+}
+else
+if (os_type = os_linux)
+{
+	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, Text("Add custom things in .config"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	draw_sprite_ext(spr_keyboard_keys, vk_alt, key_open_localappdata_x, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
+	draw_text_outlined(key_open_localappdata_x + 38, window_get_height() / 2 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	draw_sprite_ext(spr_keyboard_keys, vk_f2, key_open_localappdata_x + 74, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
+	draw_set_halign(fa_left);
+	draw_text_outlined(key_open_localappdata_x + 110, window_get_height() / 2 - 90, Text("Then type") + " " + "~/.config/" + string(global.game_name_appdata), global.default_text_size * 1.1, c_black, c_white, image_alpha);
+}
+
+draw_set_halign(fa_center);
+draw_text_outlined(window_get_width() / 2, window_get_height() / 2, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size, c_black, c_white, image_alpha);
 
 if (close = false)
 {

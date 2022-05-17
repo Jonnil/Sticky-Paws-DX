@@ -128,6 +128,7 @@ or (gamepad_axis_value(3, gp_axislv) <> 0)
 or (gamepad_axis_value(3, gp_axisrh) <> 0)
 or (gamepad_axis_value(3, gp_axisrv) <> 0)
 {
+	audio_stop_sound(trailer_sound);
 	video_pause();
 	play_attract_demo_time = 0;
 	global.play_attract_demo = false;
@@ -137,12 +138,17 @@ if (global.play_attract_demo = true)
 {
 	video_open("video/trailer.mp4");
 	video_resume()
+	if (!audio_is_playing(trailer_sound))
+	{
+		audio_play_sound(trailer_sound, 0, true);
+		audio_sound_gain(trailer_sound, global.music_volume * global.main_volume, 0);
+	}
 	global.play_attract_demo = 2;
 }
 if (global.play_attract_demo = 2)
 {
 	menu_delay = 3;
-	video_set_volume(global.music_volume * global.main_volume);
+	audio_sound_gain(trailer_sound, global.music_volume * global.main_volume, 0);
 	var trailer_video = video_draw();
 	if (trailer_video[0] == 0)
 	{
@@ -152,6 +158,7 @@ if (global.play_attract_demo = 2)
 	{
 		play_attract_demo_time = 0;
 		global.play_attract_demo = false;
+		audio_stop_sound(trailer_sound);
 		video_pause();
 	}
 }

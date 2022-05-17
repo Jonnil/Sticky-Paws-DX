@@ -840,7 +840,7 @@ function scr_options_level_editor()
 		draw_text_outlined(80, 40, Text("Hold down to change the value faster"), global.default_text_size, c_black, c_white, 1);
 		
 		draw_menu_button(level_editor_options_x, 40 * 2 + menu_y_offset, Text("Back"), "back_background_offset_and_parallax", "background_offset_and_parallax");
-		draw_sprite_ext(spr_icons_back, 0, level_editor_options_x + 20, 47 * 2 + menu_y_offset + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icons_back, 0, level_editor_options_x + 20, 40 * 2 + menu_y_offset + 21, 1, 1, 0, c_white, 1);
 		
 		custom_background_1_x_offset = draw_menu_left_right_buttons(level_editor_options_x, custom_background_1_x_offset_y + menu_y_offset, options_level_editor_right_arrow_x, "custom background 1 x offset", custom_background_1_x_offset, "custom_background_1_x_offset", 1, true);
 		custom_background_1_y_offset = draw_menu_left_right_buttons(level_editor_options_x, custom_background_1_y_offset_y + menu_y_offset, options_level_editor_right_arrow_x, "custom background 1 y offset", custom_background_1_y_offset, "custom_background_1_y_offset", 1, true);

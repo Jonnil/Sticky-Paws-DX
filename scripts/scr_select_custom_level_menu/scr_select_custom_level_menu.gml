@@ -711,7 +711,6 @@ function scr_select_custom_level_menu()
 		and (menu_delay = 0)
 		{
 			scr_open_folder(game_save_id + "\custom_levels")
-			menu_delay = 60 * 5;
 		}
 		if (menu = "open_custom_levels_folder")
 		and (key_up)

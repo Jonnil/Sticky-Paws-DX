@@ -1,3 +1,8 @@
+if (get_rewards_cooldown > 0)
+{
+	get_rewards_cooldown -= 1;
+}
+
 #region /*Gravity*/
 if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_wall))
@@ -43,124 +48,129 @@ and (instance_exists(obj_player))
 				{
 					checkpoint_activated = true;
 					checkpoint_which_player = instance_nearest(x, y, obj_player).player;
-					with(instance_nearest(x, y, obj_player))
-					{
-						hp += 1;
-					}
-					effect_create_below(ef_ring, x, y, 2, c_white);
-				
-					#region /*Collect 10 basic collectibles*/
-					if (asset_get_type("obj_basic_collectible") == asset_object)
-					{
-						if (asset_get_type("snd_basic_collectible") == asset_sound)
-						{
-							audio_play_sound(snd_basic_collectible, 0, 0);
-						}
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 10;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 20;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 30;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 40;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 50;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 60;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 70;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 80;
-						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
-						{
-							image_speed = 1;
-							motion_set(90, 10);
-							bounceup = true;
-							delay_time = 90;
-						}
 					
-						#region /* 2000 Score*/
-						score += 2000;
-						if (asset_get_type("obj_scoreup") == asset_object)
+					if (get_rewards_cooldown <= 0)
+					{
+						with(instance_nearest(x, y, obj_player))
 						{
-							obj = instance_create_depth(x, y, 0, obj_scoreup);
+							hp += 1;
+						}
+						effect_create_below(ef_ring, x, y, 2, c_white);
+						
+						#region /*Collect 10 basic collectibles*/
+						if (asset_get_type("obj_basic_collectible") == asset_object)
+						{
+							if (asset_get_type("snd_basic_collectible") == asset_sound)
+							{
+								audio_play_sound(snd_basic_collectible, 0, 0);
+							}
+							var obj;
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 							with(obj)
 							{
-								scoreup = 2000;
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
 							}
-						}
-						#endregion /* 2000 Score END*/
-					
-						#region /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint*/
-						if (asset_get_type("obj_scoreup") == asset_object)
-						{
-							obj = instance_create_depth(x, y- 20, 0, obj_scoreup);
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
 							with(obj)
 							{
-								scoreup = "CHECKPOINT";
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
+								delay_time = 10;
 							}
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+							with(obj)
+							{
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
+								delay_time = 20;
+							}
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+							with(obj)
+							{
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
+								delay_time = 30;
+							}
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+							with(obj)
+							{
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
+								delay_time = 40;
+							}
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+							with(obj)
+							{
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
+								delay_time = 50;
+							}
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+							with(obj)
+							{
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
+								delay_time = 60;
+							}
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+							with(obj)
+							{
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
+								delay_time = 70;
+							}
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+							with(obj)
+							{
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
+								delay_time = 80;
+							}
+							obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
+							with(obj)
+							{
+								image_speed = 1;
+								motion_set(90, 10);
+								bounceup = true;
+								delay_time = 90;
+							}
+					
+							#region /* 2000 Score*/
+							score += 2000;
+							if (asset_get_type("obj_scoreup") == asset_object)
+							{
+								obj = instance_create_depth(x, y, 0, obj_scoreup);
+								with(obj)
+								{
+									scoreup = 2000;
+								}
+							}
+							#endregion /* 2000 Score END*/
+							
+							#region /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint*/
+							if (asset_get_type("obj_scoreup") == asset_object)
+							{
+								obj = instance_create_depth(x, y- 20, 0, obj_scoreup);
+								with(obj)
+								{
+									scoreup = "CHECKPOINT";
+								}
+							}
+							#endregion /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END*/
 						}
-						#endregion /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END*/
+						#endregion /*Collect 10 basic collectibles END*/
+						
 					}
-					#endregion /*Collect 10 basic collectibles END*/
 					
 					global.x_checkpoint = x;
 					global.y_checkpoint = y;
@@ -179,7 +189,7 @@ and (instance_exists(obj_player))
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
-					
+						
 						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "x_checkpoint", x);
 						ini_write_real(level_name, "y_checkpoint", y);
@@ -208,7 +218,7 @@ and (instance_exists(obj_player))
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
-					
+							
 						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "x_checkpoint", x);
 						ini_write_real(level_name, "y_checkpoint", y);
@@ -228,7 +238,7 @@ and (instance_exists(obj_player))
 						ini_close();
 					}
 					#endregion /*Save Level Editor Checkpoint END*/
-				
+					
 					#region /*Load correct sprite when you get the checkpoint*/
 					if (global.x_checkpoint = x)
 					and (global.y_checkpoint = y)

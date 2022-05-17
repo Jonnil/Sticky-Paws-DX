@@ -308,8 +308,6 @@ if (quit_level_editor = false)
 				{
 					scr_open_folder(game_save_id + "\custom_levels\\" + string(global.level_name))
 				}
-				
-				menu_delay = 60 * 5;
 			}
 			if (menu = "open_custom_levels_folder")
 			and (key_up)
@@ -469,6 +467,7 @@ if (quit_level_editor = false)
 			
 			#region /*If menu is on generate level map no*/
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("No"), "generate_level_map_no", "generate_level_map");
+			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
 			
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2, window_get_width() / 2 + 185, window_get_height() / 2 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))

@@ -1566,15 +1566,15 @@ function scr_options_menu()
 		#region /*Assist Extra HP*/
 		draw_menu_dropdown(450, 262 + menu_y_offset, Text("Extra Health Points"), "assist_extra_hp", global.assist_extra_hp,
 		Text("None"),
-		" +1",
-		" +2",
-		" +3",
-		" +4",
-		" + 5",
-		" +6",
-		" +7",
-		" +8",
-		" +9",
+		"+1",
+		"+2",
+		"+3",
+		"+4",
+		"+5",
+		"+6",
+		"+7",
+		"+8",
+		"+9",
 		"");
 		#endregion /*Assist Extra HP END*/
 		
@@ -8420,7 +8420,7 @@ function scr_options_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
-			draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+			draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
@@ -8438,7 +8438,7 @@ function scr_options_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
-			draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+			draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
@@ -8456,7 +8456,7 @@ function scr_options_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
-			draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+			draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
@@ -8474,7 +8474,7 @@ function scr_options_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
-			draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+			draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
@@ -8703,6 +8703,8 @@ function scr_options_menu()
 	#region /*Audio Settings*/
 	if (global.settings_sidebar_menu = "audio_settings")
 	{
+		var narrator_y = 132 - 36 + 8 + (64 * 7);
+		var default_audio_settings_y = 132 - 36 + (64 * 8) - 16;
 		
 		#region /*Make volumes stay between 0 and 1*/
 		if (global.main_volume < 0){global.main_volume = 0;}else
@@ -8722,18 +8724,18 @@ function scr_options_menu()
 		#endregion /*Make volumes stay between 0 and 1 END*/
 		
 		#region /*Draw bars that represent how much volume each channel have*/
-		draw_menu_slider(410, 100, Text("Main Volume"), "main_volume", global.main_volume, c_red);
-		draw_line_width_color(410, 132, 820, 132, 3, c_white, c_white);
-		draw_menu_slider(410, 132 + (64), Text("Music Volume"), "music_volume", global.music_volume, c_red);
-		draw_menu_slider(410, 132 + (64 * 2), Text("Sound Volume"), "sound_volume", global.sound_volume, c_lime);
-		draw_menu_slider(410, 132 + (64 * 3), Text("Ambient Volume"), "ambient_volume", global.ambient_volume, c_lime);
-		draw_menu_slider(410, 132 + (64 * 4), Text("Footstep Volume"), "footstep_volume", global.footstep_volume, c_lime);
-		draw_menu_slider(410, 132 + (64 * 5), Text("Voices Volume"), "voices_volume", global.voices_volume, c_aqua);
+		draw_menu_slider(410, 64, Text("Main Volume"), "main_volume", global.main_volume, c_red);
+		draw_line_width_color(410, 132 - 36, 820, 132 - 36, 3, c_white, c_white);
+		draw_menu_slider(410, 132 - 36 + (64), Text("Music Volume"), "music_volume", global.music_volume, c_red);
+		draw_menu_slider(410, 132 - 36 + (64 * 2), Text("Sound Volume"), "sound_volume", global.sound_volume, c_lime);
+		draw_menu_slider(410, 132 - 36 + (64 * 3), Text("Ambient Volume"), "ambient_volume", global.ambient_volume, c_lime);
+		draw_menu_slider(410, 132 - 36 + (64 * 4), Text("Footstep Volume"), "footstep_volume", global.footstep_volume, c_lime);
+		draw_menu_slider(410, 132 - 36 + (64 * 5), Text("Voices Volume"), "voices_volume", global.voices_volume, c_aqua);
 		
 		#region /*Verbosity Bar*/
 		if (global.enable_verbosity_slider = true)
 		{
-			draw_menu_slider(410, 132 + (64 * 6), Text("Voices Volume"), "voices_volume", global.voices_volume, c_aqua);
+			draw_menu_slider(410, 132 - 36 + (64 * 6), Text("Voices Volume"), "voices_volume", global.voices_volume, c_aqua);
 		}
 		#endregion /*Verbosity Bar END*/
 		
@@ -8747,7 +8749,6 @@ function scr_options_menu()
 		{
 			var file_select_x = 450;
 			var file_select_right_arrow_x = 400;
-			var narrator_y = 132 + (64 * 8);
 			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_center);
@@ -8951,7 +8952,6 @@ function scr_options_menu()
 		#endregion /*Select Narrator END*/
 		
 		#region /*Reset to Default Audio Settings*/
-		var default_audio_settings_y = 132 + (64 * 9)
 		draw_menu_button(430, default_audio_settings_y, Text("Default Settings"), "default_audio_settings", "default_audio_settings");
 		
 		if (menu = "default_audio_settings")
@@ -8980,7 +8980,7 @@ function scr_options_menu()
 		}
 		#endregion /*Reset to Default Audio Settings END*/
 		
-		draw_menu_dropdown(390, 132 + (64 * 6), Text("Number of Audio Channels"), "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256"); /*Dropdown menus should be drawn last so they are above everything else when you open them*/
+		draw_menu_dropdown(390, 132 - 36 + (64 * 6), Text("Number of Audio Channels"), "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256"); /*Dropdown menus should be drawn last so they are above everything else when you open them*/
 	}
 	#endregion /*Audio Settings END*/
 	
@@ -9001,15 +9001,15 @@ function scr_options_menu()
 			draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() - 350, display_get_gui_height() - 250, (402 / sprite_get_height(global.title_logo_index)), (402 / sprite_get_height(global.title_logo_index)), 0, c_white, 1);
 		}
 		
-		var resource_pack_y = 40 * 4;
-		var open_resource_pack_y = 40 * 6;
-		var custom_title_background_y = 40 * 8;
-		var custom_title_background_scale_y = 40 * 11;
-		var background_layer_x_scroll_y = 40 * 12;
-		var background_layer_y_scroll_y = 40 * 13;
-		var custom_title_background_open_y = 40 * 14;
-		var custom_title_logo_y = 40 * 16;
-		var custom_title_logo_open_y = 40 * 18;
+		var resource_pack_y = 40 * 1;
+		var open_resource_pack_y = 40 * 3;
+		var custom_title_background_y = 40 * 5;
+		var custom_title_background_scale_y = 40 * 7;
+		var background_layer_x_scroll_y = 40 * 8;
+		var background_layer_y_scroll_y = 40 * 9;
+		var custom_title_background_open_y = 40 * 10;
+		var custom_title_logo_y = 40 * 12;
+		var custom_title_logo_open_y = 40 * 14;
 		
 		#region /*Custom Resource Packs*/
 		if (global.selected_resource_pack > ds_list_size(global.all_loaded_resource_pack) - 1)
@@ -9025,11 +9025,9 @@ function scr_options_menu()
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
-		draw_text_outlined(resource_pack_x, 20 + (40 * 1), Text("Add Custom Resource Packs in Local Appdata"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		draw_text_outlined(resource_pack_x, 20 + (40 * 2), Text("and it will appear here!"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 		draw_text_outlined(resource_pack_x, 20 + (resource_pack_y), Text("Resource Pack") + " : " + string(global.selected_resource_pack + 1) + "/" + string(ds_list_size(global.all_loaded_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		/*Draw text of what the file is called*/draw_text_outlined(resource_pack_x, 20 + (resource_pack_y + 40), string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		/*Draw text of what the file is called*/ draw_text_outlined(resource_pack_x, 20 + (resource_pack_y + 40), string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 		if (global.selected_resource_pack > 0)
 		and (global.pause_room != room_leveleditor)
@@ -9069,7 +9067,14 @@ function scr_options_menu()
 		{
 			if (menu = "resource_pack")
 			{
-				menu = "open_title_logo_folder";
+				if (global.enable_open_custom_folder = true)
+				{
+					menu = "open_title_logo_folder";
+				}
+				else
+				{
+					menu = "title_logos";
+				}
 			}
 			else
 			if (menu = "open_resource_pack_folder")
@@ -9079,7 +9084,14 @@ function scr_options_menu()
 			else
 			if (menu = "title_backgrounds")
 			{
-				menu = "open_resource_pack_folder";
+				if (global.enable_open_custom_folder = true)
+				{
+					menu = "open_resource_pack_folder";
+				}
+				else
+				{
+					menu = "resource_pack";
+				}
 			}
 			else
 			if (menu = "title_background_scale")
@@ -9104,7 +9116,14 @@ function scr_options_menu()
 			else
 			if (menu = "title_logos")
 			{
-				menu = "open_title_background_folder";
+				if (global.enable_open_custom_folder = true)
+				{
+					menu = "open_title_background_folder";
+				}
+				else
+				{
+					menu = "background_layer_y_scroll";
+				}
 			}
 			else
 			if (menu = "open_title_logo_folder")
@@ -9120,7 +9139,14 @@ function scr_options_menu()
 		{
 			if (menu = "resource_pack")
 			{
-				menu = "open_resource_pack_folder";
+				if (global.enable_open_custom_folder = true)
+				{
+					menu = "open_resource_pack_folder";
+				}
+				else
+				{
+					menu = "title_backgrounds";
+				}
 			}
 			else
 			if (menu = "open_resource_pack_folder")
@@ -9145,7 +9171,14 @@ function scr_options_menu()
 			else
 			if (menu = "background_layer_y_scroll")
 			{
-				menu = "open_title_background_folder";
+				if (global.enable_open_custom_folder = true)
+				{
+					menu = "open_title_background_folder";
+				}
+				else
+				{
+					menu = "title_logos";
+				}
 			}
 			else
 			if (menu = "open_title_background_folder")
@@ -9155,7 +9188,14 @@ function scr_options_menu()
 			else
 			if (menu = "title_logos")
 			{
-				menu = "open_title_logo_folder";
+				if (global.enable_open_custom_folder = true)
+				{
+					menu = "open_title_logo_folder";
+				}
+				else
+				{
+					menu = "resource_pack";
+				}
 			}
 			else
 			if (menu = "open_title_logo_folder")
@@ -9213,7 +9253,10 @@ function scr_options_menu()
 		}
 		#endregion /*Custom Resource Packs END*/
 		
-		draw_menu_button(resource_pack_x, 20 + (open_resource_pack_y), Text("Open Resource Pack Folder"), "open_resource_pack_folder", "open_resource_pack_folder");
+		if (global.enable_open_custom_folder = true)
+		{
+			draw_menu_button(resource_pack_x, 20 + (open_resource_pack_y), Text("Open Resource Pack Folder"), "open_resource_pack_folder", "open_resource_pack_folder");
+		}
 		
 		#region /*Custom Title Background*/
 		
@@ -9611,7 +9654,10 @@ function scr_options_menu()
 			global.background_layer_y_scroll = - 10;
 		}
 		
-		draw_menu_button(resource_pack_x, 20 + (custom_title_background_open_y), Text("Open Background Folder"), "open_title_background_folder", "open_title_background_folder");
+		if (global.enable_open_custom_folder = true)
+		{
+			draw_menu_button(resource_pack_x, 20 + (custom_title_background_open_y), Text("Open Background Folder"), "open_title_background_folder", "open_title_background_folder");
+		}
 		#endregion /*Other Custom Title Background Options END*/
 		
 		#endregion /*Custom Title Background END*/
@@ -9752,7 +9798,10 @@ function scr_options_menu()
 		}
 		#endregion /*Custom Title Logo END*/
 		
-		draw_menu_button(resource_pack_x, 20 + (custom_title_logo_open_y), Text("Open Title Logo Folder"), "open_title_logo_folder", "open_title_logo_folder");
+		if (global.enable_open_custom_folder = true)
+		{
+			draw_menu_button(resource_pack_x, 20 + (custom_title_logo_open_y), Text("Open Title Logo Folder"), "open_title_logo_folder", "open_title_logo_folder");
+		}
 		
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x, 20 + (open_resource_pack_y) + 2, resource_pack_x + 371, 20 + (open_resource_pack_y) + 41))
 		and (global.controls_used_for_menu_navigation = "mouse")
@@ -9763,7 +9812,6 @@ function scr_options_menu()
 		and (menu_delay = 0)
 		{
 			scr_open_folder(game_save_id + "\custom_resource_pack")
-			menu_delay = 60 * 5;
 		}
 		else
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x, 20 + (custom_title_background_open_y) + 2, resource_pack_x + 371, 20 + (custom_title_background_open_y) + 41))
@@ -9775,7 +9823,6 @@ function scr_options_menu()
 		and (menu_delay = 0)
 		{
 			scr_open_folder(game_save_id + "\custom_title_backgrounds")
-			menu_delay = 60 * 5;
 		}
 		else
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), resource_pack_x, 20 + (custom_title_logo_open_y) + 2, resource_pack_x + 371, 20 + (custom_title_logo_open_y) + 41))
@@ -9787,7 +9834,6 @@ function scr_options_menu()
 		and (menu_delay = 0)
 		{
 			scr_open_folder(game_save_id + "\custom_title_logos")
-			menu_delay = 60 * 5;
 		}
 		
 	}
@@ -9855,7 +9901,10 @@ function scr_options_menu()
 				draw_menu_button(450, 20 + (40 * 5), Text("Delete File"), "file_delete", "file_delete_no");
 			}
 			
-			draw_menu_button(450, 20 + (40 * 6), Text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder");
+			if (global.enable_open_custom_folder = true)
+			{
+				draw_menu_button(450, 20 + (40 * 6), Text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder");
+			}
 			
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 450, 20 + (40 * 6) + 2, 450 + 371, 20 + (40 * 6) + 41))
 			and (global.controls_used_for_menu_navigation = "mouse")
@@ -9866,7 +9915,6 @@ function scr_options_menu()
 			and (menu_delay = 0)
 			{
 				scr_open_folder(game_save_id + "\save_files")
-				menu_delay = 60 * 5;
 			}
 		}
 		else
@@ -9983,7 +10031,14 @@ function scr_options_menu()
 			menu_joystick_delay = 10;
 			if (menu = "file_select")
 			{
-				menu = "open_save_file_folder";
+				if (global.enable_open_custom_folder = true)
+				{
+					menu = "open_save_file_folder";
+				}
+				else
+				{
+					menu = "file_delete";
+				}
 			}
 			else
 			if (menu = "file_delete")
@@ -10019,13 +10074,27 @@ function scr_options_menu()
 				}
 				else
 				{
-					menu = "open_save_file_folder";
+					if (global.enable_open_custom_folder = true)
+					{
+						menu = "open_save_file_folder";
+					}
+					else
+					{
+						menu = "file_select";
+					}
 				}
 			}
 			else
 			if (menu = "file_delete")
 			{
-				menu = "open_save_file_folder";
+				if (global.enable_open_custom_folder = true)
+				{
+					menu = "open_save_file_folder";
+				}
+				else
+				{
+					menu = "file_select";
+				}
 			}
 			else
 			if (menu = "open_save_file_folder")

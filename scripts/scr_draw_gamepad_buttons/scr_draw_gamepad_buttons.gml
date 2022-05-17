@@ -7,9 +7,9 @@ function scr_draw_gamepad_buttons(what_button, xx, yy, scale, alpha)
 	}
 	else
 	if (global.choosen_controller_used = 1)
-	and (global.resource_pack_sprite_buttons_xboxseriesx > noone)
+	and (global.resource_pack_sprite_buttons_xboxseriesxs > noone)
 	{
-		var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxseriesx;
+		var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxseriesxs;
 	}
 	else
 	if (global.choosen_controller_used = 2)
