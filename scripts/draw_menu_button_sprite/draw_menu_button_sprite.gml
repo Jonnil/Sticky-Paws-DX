@@ -1,28 +1,22 @@
-/// @function draw_menu_button_sprite(sprite_index, x, y, width, height, string, menu_index, menu_takes_you_to)
-/// @description draw_menu_button_sprite(sprite_index, x, y, width,height,string, menu_index, menu_takes_you_to)
+/// @function draw_menu_button_sprite(sprite_index, x, y, x_origin_offset, y_origin_offset, xscale, yscale, width, height, string, menu_index, menu_takes_you_to, show_arrows)
+/// @description draw_menu_button_sprite(sprite_index, x, y, x_origin_offset, y_origin_offset, xscale, yscale, width, height, string, menu_index, menu_takes_you_to, show_arrows)
 /// @param sprite_index
 /// @param x
 /// @param y
+/// @param x_origin_offset
+/// @param y_origin_offset
+/// @param xscale
+/// @param yscale
 /// @param width
 /// @param height
 /// @param string
 /// @param menu_index
 /// @param menu_takes_you_to
+/// @param show_arrows
 
-function draw_menu_button_sprite(spr_index, x_position, y_position, spr_width, spr_height, string_text, menu_index, menu_takes_you_to)
+function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_offset, y_origin_offset, xscale, yscale, spr_width, spr_height, string_text, menu_index, menu_takes_you_to, show_arrows)
 {
 	#region /*Button*/
-	
-	#region /*Initialize variables*/
-	spr_index = argument0; /*Sprite index of the button*/
-	x_position = argument1; /*The buttons x origin position*/
-	y_position = argument2; /*The buttons y origin position*/
-	spr_width = argument3; /*The width of the button*/
-	spr_height = argument4; /*The height of the button*/
-	string_text = argument5;
-	menu_index = argument6;
-	menu_takes_you_to= argument7;
-	#endregion /*Initialize variables END*/
 	
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
 	and (global.controls_used_for_menu_navigation = "mouse")
@@ -35,19 +29,22 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, spr_width, s
 		menu = menu_index;
 		if (spr_index >= 0)
 		{
-			draw_sprite_ext(spr_index, 0, x_position, y_position + 21, 1, 1, 0, c_lime, 1);
+			draw_sprite_ext(spr_index, 0, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, c_lime, 1);
 		}
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		draw_text_outlined(x_position + (spr_width / 2), y_position + (spr_height / 2), string(string_text), global.default_text_size, c_black, c_white, 1); /*White text inside the menu button*/
-		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position - 24, y_position + (spr_height / 2), 1, 1, 0, c_white, 1);
-		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + spr_width + 24, y_position + (spr_height / 2), 1, 1, 180, c_white, 1);
+		if (show_arrows = true)
+		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position - 24, y_position + (spr_height / 2), 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + spr_width + 24, y_position + (spr_height / 2), 1, 1, 180, c_white, 1);
+		}
 	}
 	else
 	{
 		if (spr_index >= 0)
 		{
-			draw_sprite_ext(spr_index, 0, x_position, y_position + 21, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_index, 0, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, c_white, 1);
 		}
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);

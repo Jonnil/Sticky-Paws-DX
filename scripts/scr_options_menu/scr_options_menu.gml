@@ -1621,25 +1621,27 @@ function scr_options_menu()
 		difficulty_settings_y = 98;
 		automatically_pause_when_window_is_unfocused_settings_y = 164;
 		enable_attract_demo_y = 164 + (48);
-		show_timer_settings_y = 164 + (48 * 2);
-		show_deaths_counter_settings_y = 164 + (48 * 3);
+		enable_links_demo_y = 164 + (48 * 2);
+		show_timer_settings_y = 164 + (48 * 3);
+		show_deaths_counter_settings_y = 164 + (48 * 4);
 		if (global.enable_ranks = true)
 		{
-			show_ranks_settings_y = 164 + (48 * 4);
-			show_tutorial_signs_y = 164 + (48 * 5);
-			hud_hide_time_y = 164 + (48 * 7) - 16;
+			show_ranks_settings_y = 164 + (48 * 5);
+			show_tutorial_signs_y = 164 + (48 * 6);
+			hud_hide_time_y = 164 + (48 * 8) - 16;
 		}
 		else
 		{
 			show_ranks_settings_y = -9999;
-			show_tutorial_signs_y = 164 + (48 * 4);
-			hud_hide_time_y = 164 + (48 * 6) - 16;
+			show_tutorial_signs_y = 164 + (48 * 5);
+			hud_hide_time_y = 164 + (48 * 7) - 16;
 		}
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_center);
 		
 		draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, Text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused); /*Automatically Pause When Window Is Unfocused*/
 		draw_menu_checkmark(380, enable_attract_demo_y, Text("Enable Attract Demo"), "enable_attract_demo", global.enable_attract_demo);
+		draw_menu_checkmark(380, enable_links_demo_y, Text("Enable Links at Title Screen"), "enable_links_at_title_screen", global.enable_links);
 		draw_menu_checkmark(380, show_timer_settings_y, Text("Show Timer"), "show_timer_settings", global.show_timer); /*Show Timer*/
 		draw_menu_checkmark(380, show_deaths_counter_settings_y, Text("Show Deaths Counter"), "show_deaths_counter_settings", global.show_deaths_counter); /*Show Deaths Counter*/
 		if (global.enable_ranks = true)
@@ -10250,6 +10252,25 @@ function scr_options_menu()
 			and (menu_delay = 0)
 			{
 				menu_delay = 3;
+				menu = "enable_links_at_title_screen";
+			}
+		}
+		else
+		if (menu = "enable_links_at_title_screen")
+		{
+			if (key_up)
+			and (open_dropdown = false)
+			and (menu_delay = 0)
+			{
+				menu_delay = 3;
+				menu = "enable_attract_demo";
+			}
+			else
+			if (key_down)
+			and (open_dropdown = false)
+			and (menu_delay = 0)
+			{
+				menu_delay = 3;
 				menu = "show_timer_settings";
 			}
 		}
@@ -12364,6 +12385,7 @@ function scr_options_menu()
 		
 		if (menu = "automatically_pause_when_window_is_unfocused_settings") and (menu_delay = 0){if (global.automatically_pause_when_window_is_unfocused = true){global.automatically_pause_when_window_is_unfocused = false;}else{global.automatically_pause_when_window_is_unfocused = true;}menu_delay = 3;}
 		if (menu = "enable_attract_demo") and (menu_delay = 0){if (global.enable_attract_demo = true){global.enable_attract_demo = false;}else{global.enable_attract_demo = true;}menu_delay = 3;}
+		if (menu = "enable_links_at_title_screen") and (menu_delay = 0){if (global.enable_links = true){global.enable_links = false;}else{global.enable_links = true;}menu_delay = 3;}
 		if (menu = "show_timer_settings") and (menu_delay = 0){if (global.show_timer = true){global.show_timer = false;}else{global.show_timer = true;}menu_delay = 3;}
 		if (menu = "show_deaths_counter_settings") and (menu_delay = 0){if (global.show_deaths_counter = true){global.show_deaths_counter = false;}else{global.show_deaths_counter = true;}menu_delay = 3;}
 		if (menu = "show_ranks_settings") and (menu_delay = 0){if (global.show_ranks = true){global.show_ranks = false;}else{global.show_ranks = true;}menu_delay = 3;}

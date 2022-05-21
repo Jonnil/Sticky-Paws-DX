@@ -17,7 +17,12 @@ global.character_for_player_1 = "sticky"; /*Player 1 Select Character 1*/
 global.character_for_player_2 = "catlyn"; /*Player 2 Select Character 2*/
 global.character_for_player_3 = "sticky"; /*Player 3 Select Character 3*/
 global.character_for_player_4 = "catlyn"; /*Player 4 Select Character 4 */
-global.link_to_steam_page = "https://store.steampowered.com/app/ 1129090/Sticky_Paws/";
+global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws/";
+global.link_to_discord = "https://discord.com/invite/fGCy36x";
+global.link_to_instagram = "https://www.instagram.com/jonnilll/";
+global.link_to_reddit = "https://www.reddit.com/r/Jonnil/";
+global.link_to_twitter = "https://twitter.com/jonnilll";
+global.link_to_wiki = "https://stickypedia.miraheze.org/wiki/Main_Page";
 
 leveleditor_readme = noone; /*Readme textfile for how to use the level editor*/
 
@@ -252,6 +257,7 @@ global.enable_foreground_layer_above_static_objects = true;
 global.enable_foreground_layer2 = true;
 global.enable_foreground_layer_secret = true;
 global.enable_attract_demo = true; /*If the attract demo can play or not*/
+global.enable_links = true; /*If links to websites should show up on the title screen or not*/
 global.players_can_collide = false;
 global.player_has_entered_goal = false;
 global.pause_room = noone;
@@ -394,6 +400,11 @@ if (file_exists("localization.csv"))
 }
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
+global.resource_pack_sprite_logo_discord = spr_noone;
+global.resource_pack_sprite_logo_instagram = spr_noone;
+global.resource_pack_sprite_logo_reddit = spr_noone;
+global.resource_pack_sprite_logo_twitter = spr_noone;
+global.resource_pack_sprite_logo_wiki = spr_noone;
 global.resource_pack_sprite_artwork_collection = spr_noone;
 global.resource_pack_sprite_basic_collectible = spr_noone;
 global.resource_pack_sprite_basic_enemy = spr_noone;

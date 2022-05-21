@@ -7,6 +7,11 @@ function scr_load_resource_pack_sprite()
 	#region /*Delete sprites before loading new sprites*/
 	if (room != room_splash_screen)
 	{
+		if (global.resource_pack_sprite_logo_discord > 0){global.resource_pack_sprite_logo_discord = spr_noone;}
+		if (global.resource_pack_sprite_logo_instagram > 0){global.resource_pack_sprite_logo_instagram = spr_noone;}
+		if (global.resource_pack_sprite_logo_reddit > 0){global.resource_pack_sprite_logo_reddit = spr_noone;}
+		if (global.resource_pack_sprite_logo_twitter > 0){global.resource_pack_sprite_logo_twitter = spr_noone;}
+		if (global.resource_pack_sprite_logo_wiki > 0){global.resource_pack_sprite_logo_wiki = spr_noone;}
 		if (global.resource_pack_sprite_artwork_collection > 0){global.resource_pack_sprite_artwork_collection = spr_noone;}
 		if (global.resource_pack_sprite_basic_collectible > 0){global.resource_pack_sprite_basic_collectible = spr_noone;}
 		if (global.resource_pack_sprite_basic_enemy > 0){global.resource_pack_sprite_basic_enemy = spr_noone;}
@@ -65,6 +70,11 @@ function scr_load_resource_pack_sprite()
 		{
 			ini_open(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 		}
+		global.resource_pack_sprite_logo_discord = scr_initialize_resource_pack_sprite("logo_discord", global.resource_pack_sprite_logo_discord);
+		global.resource_pack_sprite_logo_instagram = scr_initialize_resource_pack_sprite("logo_instagram", global.resource_pack_sprite_logo_instagram);
+		global.resource_pack_sprite_logo_reddit = scr_initialize_resource_pack_sprite("logo_reddit", global.resource_pack_sprite_logo_reddit);
+		global.resource_pack_sprite_logo_twitter = scr_initialize_resource_pack_sprite("logo_twitter", global.resource_pack_sprite_logo_twitter);
+		global.resource_pack_sprite_logo_wiki = scr_initialize_resource_pack_sprite("logo_wiki", global.resource_pack_sprite_logo_wiki);
 		global.resource_pack_sprite_artwork_collection = scr_initialize_resource_pack_sprite("artwork_collection", global.resource_pack_sprite_artwork_collection);
 		global.resource_pack_sprite_basic_collectible = scr_initialize_resource_pack_sprite("basic_collectible", global.resource_pack_sprite_basic_collectible);
 		global.resource_pack_sprite_basic_enemy = scr_initialize_resource_pack_sprite("basic_enemy", global.resource_pack_sprite_basic_enemy);

@@ -8,6 +8,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "difficulty")){global.difficulty = ini_read_real("config", "difficulty", 0);}
 		if (ini_key_exists("config", "automatically_pause_when_window_is_unfocused")){global.automatically_pause_when_window_is_unfocused = ini_read_real("config", "automatically_pause_when_window_is_unfocused", 0);}
 		if (ini_key_exists("config", "enable_attract_demo")){global.enable_attract_demo = ini_read_real("config", "enable_attract_demo", 1);}
+		if (ini_key_exists("config", "enable_links")){global.enable_links = ini_read_real("config", "enable_links", 1);}
 		if (ini_key_exists("config", "show_timer")){global.show_timer = ini_read_real("config", "show_timer", 0);}
 		if (ini_key_exists("config", "show_deaths_counter")){global.show_deaths_counter = ini_read_real("config", "show_deaths_counter", 0);}
 		if (ini_key_exists("config", "show_ranks")){global.show_ranks = ini_read_real("config", "show_ranks", 0);}

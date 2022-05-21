@@ -1500,6 +1500,11 @@
     {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"buttons_xboxseriesxs_strip16.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"localization.csv","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/video","resourceVersion":"1.0","name":"trailer.ogg","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"logo_discord.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"logo_instagram.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"logo_reddit.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"logo_wiki.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"logo_twitter.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.3.0.625",
