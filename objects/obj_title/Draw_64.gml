@@ -15,6 +15,7 @@ and (global.enable_attract_demo = true)
 	or (menu = "credits")
 	or (menu = "quit")
 	or (menu = "link_discord")
+	or (menu = "link_gamebanana")
 	or (menu = "link_instagram")
 	or (menu = "link_reddit")
 	or (menu = "link_twitter")
@@ -199,6 +200,7 @@ or (keyboard_string = "convention mode")
 			or (menu = "quit_game_no")
 			or (menu = "quit_game_yes")
 			or (menu = "link_discord")
+			or (menu = "link_gamebanana")
 			or (menu = "link_instagram")
 			or (menu = "link_reddit")
 			or (menu = "link_twitter")
@@ -273,6 +275,7 @@ or (keyboard_string = "arcade mode")
 			or (menu = "quit_game_no")
 			or (menu = "quit_game_yes")
 			or (menu = "link_discord")
+			or (menu = "link_gamebanana")
 			or (menu = "link_instagram")
 			or (menu = "link_reddit")
 			or (menu = "link_twitter")
@@ -638,16 +641,24 @@ draw_set_valign(fa_center);
 /*Put links underneath build date and version*/
 if (global.enable_links = true)
 {
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, 16, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_instagram, 56, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_instagram", "link_instagram", false);
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_reddit, 96, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_reddit", "link_reddit", false);
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_twitter, 136, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_twitter", "link_twitter", false);
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_wiki, 176, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_wiki", "link_wiki", false);
+	var link_discord_x = 16;
+	var link_gamebanana_x = 56;
+	var link_instagram_x = 96;
+	var link_reddit_x = 136;
+	var link_twitter_x = 176;
+	var link_wiki_x = 216;
+	
+	draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, link_discord_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
+	draw_menu_button_sprite(global.resource_pack_sprite_logo_gamebanana, link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_gamebanana", "link_gamebanana", false);
+	draw_menu_button_sprite(global.resource_pack_sprite_logo_instagram, link_instagram_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_instagram", "link_instagram", false);
+	draw_menu_button_sprite(global.resource_pack_sprite_logo_reddit, link_reddit_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_reddit", "link_reddit", false);
+	draw_menu_button_sprite(global.resource_pack_sprite_logo_twitter, link_twitter_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_twitter", "link_twitter", false);
+	draw_menu_button_sprite(global.resource_pack_sprite_logo_wiki, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_wiki", "link_wiki", false);
 	
 	if (key_a_pressed)
 	and (menu = "link_discord")
 	and (menu_delay = 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 16, display_get_gui_height() + 8 + version_y_pos, 16 + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_discord_x, display_get_gui_height() + 8 + version_y_pos, link_discord_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay = 0)
 	{
@@ -656,9 +667,20 @@ if (global.enable_links = true)
 	}
 	else
 	if (key_a_pressed)
+	and (menu = "link_gamebanana")
+	and (menu_delay = 0)
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, link_gamebanana_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	and (mouse_check_button_pressed(mb_left))
+	and (menu_delay = 0)
+	{
+		url_open(string(global.link_to_gamebanana));
+		menu_delay = 3;
+	}
+	else
+	if (key_a_pressed)
 	and (menu = "link_instagram")
 	and (menu_delay = 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 56, display_get_gui_height() + 8 + version_y_pos, 56 + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_instagram_x, display_get_gui_height() + 8 + version_y_pos, link_instagram_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay = 0)
 	{
@@ -669,7 +691,7 @@ if (global.enable_links = true)
 	if (key_a_pressed)
 	and (menu = "link_reddit")
 	and (menu_delay = 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 96, display_get_gui_height() + 8 + version_y_pos, 96 + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_reddit_x, display_get_gui_height() + 8 + version_y_pos, link_reddit_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay = 0)
 	{
@@ -680,7 +702,7 @@ if (global.enable_links = true)
 	if (key_a_pressed)
 	and (menu = "link_twitter")
 	and (menu_delay = 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 136, display_get_gui_height() + 8 + version_y_pos, 136 + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_twitter_x, display_get_gui_height() + 8 + version_y_pos, link_twitter_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay = 0)
 	{
@@ -691,7 +713,7 @@ if (global.enable_links = true)
 	if (key_a_pressed)
 	and (menu = "link_wiki")
 	and (menu_delay = 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 176, display_get_gui_height() + 8 + version_y_pos, 176 + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_wiki_x, display_get_gui_height() + 8 + version_y_pos, link_wiki_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay = 0)
 	{
@@ -711,6 +733,7 @@ or (menu = "profile_shortcut")
 or (menu = "credits")
 or (menu = "quit")
 or (menu = "link_discord")
+or (menu = "link_gamebanana")
 or (menu = "link_instagram")
 or (menu = "link_reddit")
 or (menu = "link_twitter")
@@ -735,7 +758,14 @@ or (menu = "link_wiki")
 		#endregion /*What player can enter a name END*/
 	
 		show_title_logo = true;
-		version_y_pos = lerp(version_y_pos, -32 - 8, 0.1);
+		if (global.enable_links = true)
+		{
+			version_y_pos = lerp(version_y_pos, -32 - 8, 0.1);
+		}
+		else
+		{
+			version_y_pos = lerp(version_y_pos, 0, 0.1);
+		}
 	}
 	else
 	{
@@ -871,6 +901,9 @@ or (menu = "quit")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
 or (menu = "link_discord")
+and (global.play_attract_demo = false)
+and (global.arcade_mode = false)
+or (menu = "link_gamebanana")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
 or (menu = "link_instagram")
@@ -1288,7 +1321,7 @@ and (global.play_attract_demo = false)
 		i += 1)
 		{
 			C = floor(i / R);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(i-C*R) + 100 - 3, 226*(C-scroll) + 250 - 3, 394 *(i-C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3))
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(i-C*R) + 100 - 3, 226*(C-scroll) + 250 - 3, 394 *(i-C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + link_wiki_x + 3))
 			{
 				if (menu != "level_editor_play")
 				and (menu_delay = 0)
@@ -1674,7 +1707,7 @@ and (menu_delay = 0)
 		and (global.enable_links = true)
 		{
 			menu_delay = 3;
-			menu = "link_discord";
+			menu = "link_gamebanana";
 		}
 		else
 		if (key_right)
@@ -1682,6 +1715,42 @@ and (menu_delay = 0)
 		{
 			menu_delay = 3;
 			menu = "link_reddit";
+		}
+	}
+	else
+	if (menu = "link_gamebanana")
+	{
+		if (key_up)
+		{
+			menu_delay = 3;
+			if (global.convention_mode = false)
+			{
+				menu = "options";
+			}
+			else
+			{
+				menu = "leveleditor";
+			}
+		}
+		else
+		if (key_down)
+		{
+			menu_delay = 3;
+			menu = "main_game";
+		}
+		else
+		if (key_left)
+		and (global.enable_links = true)
+		{
+			menu_delay = 3;
+			menu = "link_discord";
+		}
+		else
+		if (key_right)
+		and (global.enable_links = true)
+		{
+			menu_delay = 3;
+			menu = "link_instagram";
 		}
 	}
 	else
@@ -1716,7 +1785,7 @@ and (menu_delay = 0)
 		and (global.enable_links = true)
 		{
 			menu_delay = 3;
-			menu = "link_instagram";
+			menu = "link_gamebanana";
 		}
 	}
 	#endregion /*Navigate Main Menu END*/

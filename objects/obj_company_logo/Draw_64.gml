@@ -27,7 +27,10 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 
 /*Sprite*/
-draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_height() / 2, 1, 1, 0, c_white, 1);
+if (sprite_index >= 0)
+{
+	draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_height() / 2, 1, 1, 0, c_white, 1);
+}
 
 if (global.resource_pack_sprite_splash_easteregg >= 0)
 {

@@ -136,13 +136,13 @@ if (lives < 0)
 #region /*Spawn Players in multiplayer*/
 if (instance_exists(obj_player))
 and (global.pause = false)
+and (global.goal_active = false)
 and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 {
-	if (gamepad_button_check_pressed(0, global.player1_gamepad_button_jump))
-	or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_jump))
+	if (gamepad_button_check_pressed(0, gp_face1))
 	or (keyboard_check_pressed(global.player1_key_jump))
 	or (keyboard_check_pressed(global.player1_key2_jump))
 	{
@@ -173,8 +173,7 @@ and (!instance_exists(obj_title))
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(1, global.player1_gamepad_button_jump))
-	or (gamepad_button_check_pressed(1, global.player1_gamepad_button2_jump))
+	if (gamepad_button_check_pressed(1, gp_face1))
 	or(keyboard_check_pressed(global.player2_key_jump))
 	or(keyboard_check_pressed(global.player2_key2_jump))
 	{
@@ -205,8 +204,7 @@ and (!instance_exists(obj_title))
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(2, global.player1_gamepad_button_jump))
-	or (gamepad_button_check_pressed(2, global.player1_gamepad_button2_jump))
+	if (gamepad_button_check_pressed(2, gp_face1))
 	or(keyboard_check_pressed(global.player3_key_jump))
 	or(keyboard_check_pressed(global.player3_key2_jump))
 	{
@@ -237,8 +235,7 @@ and (!instance_exists(obj_title))
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(3, global.player1_gamepad_button_jump))
-	or (gamepad_button_check_pressed(3, global.player1_gamepad_button2_jump))
+	if (gamepad_button_check_pressed(3, gp_face1))
 	or(keyboard_check_pressed(global.player4_key_jump))
 	or(keyboard_check_pressed(global.player4_key2_jump))
 	{

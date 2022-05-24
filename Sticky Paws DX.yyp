@@ -1505,6 +1505,7 @@
     {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"logo_reddit.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"logo_wiki.png","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"logo_twitter.png","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites","resourceVersion":"1.0","name":"logo_gamebanana.png","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2022.3.0.625",

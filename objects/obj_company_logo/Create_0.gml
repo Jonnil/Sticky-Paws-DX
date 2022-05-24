@@ -19,6 +19,7 @@ global.character_for_player_3 = "sticky"; /*Player 3 Select Character 3*/
 global.character_for_player_4 = "catlyn"; /*Player 4 Select Character 4 */
 global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws/";
 global.link_to_discord = "https://discord.com/invite/fGCy36x";
+global.link_to_gamebanana = "https://gamebanana.com/games/7722";
 global.link_to_instagram = "https://www.instagram.com/jonnilll/";
 global.link_to_reddit = "https://www.reddit.com/r/Jonnil/";
 global.link_to_twitter = "https://twitter.com/jonnilll";
@@ -401,6 +402,7 @@ if (file_exists("localization.csv"))
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
 global.resource_pack_sprite_logo_discord = spr_noone;
+global.resource_pack_sprite_logo_gamebanana = spr_noone;
 global.resource_pack_sprite_logo_instagram = spr_noone;
 global.resource_pack_sprite_logo_reddit = spr_noone;
 global.resource_pack_sprite_logo_twitter = spr_noone;

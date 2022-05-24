@@ -3902,6 +3902,22 @@ if (global.quit_level = true)
 	and (asset_get_type("room_world_map") == asset_room)
 	{
 		global.quit_to_map = false;
+		if (!instance_exists(obj_camera.player1))
+		{
+			global.player1_can_play = false;
+		}
+		if (!instance_exists(obj_camera.player2))
+		{
+			global.player2_can_play = false;
+		}
+		if (!instance_exists(obj_camera.player3))
+		{
+			global.player3_can_play = false;
+		}
+		if (!instance_exists(obj_camera.player4))
+		{
+			global.player4_can_play = false;
+		}
 		room_goto(room_world_map);
 	}
 	else
@@ -3909,6 +3925,22 @@ if (global.quit_level = true)
 	and (asset_get_type("room_title") == asset_room)
 	{
 		global.quit_to_title = false;
+		if (!instance_exists(obj_camera.player1))
+		{
+			global.player1_can_play = false;
+		}
+		if (!instance_exists(obj_camera.player2))
+		{
+			global.player2_can_play = false;
+		}
+		if (!instance_exists(obj_camera.player3))
+		{
+			global.player3_can_play = false;
+		}
+		if (!instance_exists(obj_camera.player4))
+		{
+			global.player4_can_play = false;
+		}
 		room_goto(room_title);
 	}
 	else
@@ -4085,6 +4117,22 @@ and (obj_camera.iris_xscale < 3)
 				{						
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;
+					if (!instance_exists(obj_camera.player1))
+					{
+						global.player1_can_play = false;
+					}
+					if (!instance_exists(obj_camera.player2))
+					{
+						global.player2_can_play = false;
+					}
+					if (!instance_exists(obj_camera.player3))
+					{
+						global.player3_can_play = false;
+					}
+					if (!instance_exists(obj_camera.player4))
+					{
+						global.player4_can_play = false;
+					}
 					room_goto(room_title);
 				}
 				else
@@ -4093,11 +4141,43 @@ and (obj_camera.iris_xscale < 3)
 				{
 					global.select_level_index = obj_camera.after_goal_go_to_this_level;
 					scr_update_all_backgrounds();
+					if (!instance_exists(obj_camera.player1))
+					{
+						global.player1_can_play = false;
+					}
+					if (!instance_exists(obj_camera.player2))
+					{
+						global.player2_can_play = false;
+					}
+					if (!instance_exists(obj_camera.player3))
+					{
+						global.player3_can_play = false;
+					}
+					if (!instance_exists(obj_camera.player4))
+					{
+						global.player4_can_play = false;
+					}
 					room_goto(room_leveleditor);
 				}
 				else
 				if (asset_get_type("room_world_map") == asset_room)
 				{
+					if (!instance_exists(obj_camera.player1))
+					{
+						global.player1_can_play = false;
+					}
+					if (!instance_exists(obj_camera.player2))
+					{
+						global.player2_can_play = false;
+					}
+					if (!instance_exists(obj_camera.player3))
+					{
+						global.player3_can_play = false;
+					}
+					if (!instance_exists(obj_camera.player4))
+					{
+						global.player4_can_play = false;
+					}
 					room_goto(room_world_map);
 				}
 			}
@@ -7097,6 +7177,7 @@ and (takendamage <= takendamage_freezetime)
 			or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			or(position_meeting(bbox_right - 1,bbox_bottom + 1, obj_semisolid_platform))
 			{
+				instance_create_depth(x, bbox_bottom, 0, obj_blockbreak);
 				scr_gamepad_vibration(player, 0.5, 10);
 				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
 				image_index = 0;
@@ -8596,7 +8677,6 @@ and (goal = false)
 			#region /*Player 1 Die*/
 			if (player = 1)
 			{
-				obj_camera.player1 = noone;
 				obj = instance_create_depth(x, y, 0, obj_player_die);
 				with(obj)
 				{
@@ -8632,7 +8712,6 @@ and (goal = false)
 			#region /*Player 2 Die*/
 			if (player = 2)
 			{
-				obj_camera.player2 = noone;
 				obj = instance_create_depth(x, y, 0, obj_player_die);
 				with(obj)
 				{
@@ -8668,7 +8747,6 @@ and (goal = false)
 			#region /*Player 3 Die*/
 			if (player = 3)
 			{
-				obj_camera.player3 = noone;
 				obj = instance_create_depth(x, y, 0, obj_player_die);
 				with(obj)
 				{
@@ -8704,7 +8782,6 @@ and (goal = false)
 			#region /*Player 4 Die*/
 			if (player = 4)
 			{
-				obj_camera.player4 = noone;
 				obj = instance_create_depth(x, y, 0, obj_player_die);
 				with(obj)
 				{
@@ -8941,9 +9018,11 @@ and (instance_exists(obj_goal))
 		and (y < instance_nearest(x, y, obj_goal).bbox_bottom)
 		and (goal = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
+		and (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_goal).x + 1, instance_nearest(x, y, obj_goal).y + 1, obj_wall, false, true))
 		or (place_meeting(x, y, obj_goal))
 		and (goal = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
+		and (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_goal).x + 1, instance_nearest(x, y, obj_goal).y + 1, obj_wall, false, true))
 		{
 			just_hit_goal = true;
 			obj_goal.goal = true;
@@ -8963,6 +9042,22 @@ and (instance_exists(obj_goal))
 		if (just_hit_goal = true)
 		and (goal = false)
 		{
+			if (!instance_exists(obj_camera.player1))
+			{
+				global.player1_can_play = false;
+			}
+			if (!instance_exists(obj_camera.player2))
+			{
+				global.player2_can_play = false;
+			}
+			if (!instance_exists(obj_camera.player3))
+			{
+				global.player3_can_play = false;
+			}
+			if (!instance_exists(obj_camera.player4))
+			{
+				global.player4_can_play = false;
+			}
 			global.goal_active = true;
 			global.player_has_entered_goal = true;
 			global.quit_level = false;
@@ -9010,6 +9105,7 @@ and (instance_exists(obj_goal))
 				ini_write_real(level_name, "checkpoint_second", 0);
 				ini_write_real(level_name, "checkpoint_minute", 0);
 				ini_write_real(level_name, "checkpoint_realmillisecond", 0);
+				ini_write_real(level_name, "checkpoint_direction", +1);
 				ini_close();
 			}
 			else
@@ -9036,6 +9132,7 @@ and (instance_exists(obj_goal))
 				ini_write_real(level_name, "checkpoint_second", 0);
 				ini_write_real(level_name, "checkpoint_minute", 0);
 				ini_write_real(level_name, "checkpoint_realmillisecond", 0);
+				ini_write_real(level_name, "checkpoint_direction", +1);
 				ini_close();
 			}
 			#endregion /*Save Checkpoint END*/
@@ -9091,6 +9188,7 @@ if (allow_homing_attack = true)
 	and (asset_get_type("obj_enemy") == asset_object)
 	and (instance_exists(obj_enemy))
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
+	and (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_enemy).x + 1, instance_nearest(x, y, obj_enemy).y + 1, obj_wall, false, true))
 	and (distance_to_object(obj_enemy) < homing_attack_distance)
 	and (instance_nearest(x, y, obj_enemy).bbox_bottom > y)
 	and (instance_nearest(x, y, obj_enemy).die = false)
@@ -9124,6 +9222,7 @@ if (allow_homing_attack = true)
 	and (asset_get_type("obj_spring") == asset_object)
 	and (instance_exists(obj_spring))
 	and (!collision_line(x, y, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, obj_wall, false, true))
+	and (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_spring).x + 1, instance_nearest(x, y, obj_spring).y + 1, obj_wall, false, true))
 	and (distance_to_object(obj_spring) < homing_attack_distance)
 	and (instance_nearest(x, y, obj_spring).bbox_bottom > y)
 	and (instance_nearest(x, y, obj_spring).can_bounce = 0)

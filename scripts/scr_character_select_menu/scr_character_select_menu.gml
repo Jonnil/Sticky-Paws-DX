@@ -3044,12 +3044,12 @@ function scr_character_select_menu()
 				draw_rectangle_color(window_get_width() / 2 + player4_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player4_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
-		
+			
 			#region /*Accept Text*/
 			draw_set_halign(fa_right);
 			draw_text_outlined(window_get_width() / 2 + player4_display_x + 60, window_get_height() / 2 + 150, Text("Accept") + " : ", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Accept Text END*/
-	
+			
 			#region /*Key A*/
 			if (gamepad_is_connected(3))
 			{
@@ -3075,7 +3075,7 @@ function scr_character_select_menu()
 				}
 			}
 			#endregion /*Key A END*/
-	
+			
 		}
 		else
 		if (player4_accept_selection = true)
@@ -5633,7 +5633,7 @@ function scr_character_select_menu()
 				#region /*Key A*/
 				if (gamepad_is_connected(1))
 				{
-					scr_draw_gamepad_buttons(gp_face2, window_get_width() / 2 + player2_display_x + 90, window_get_height() / 2 + 32, 0.5, 1);
+					scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player2_display_x + 90, window_get_height() / 2 + 32, 0.5, 1);
 				}
 				else
 				{
@@ -5694,7 +5694,7 @@ function scr_character_select_menu()
 				#region /*Key A*/
 				if (gamepad_is_connected(2))
 				{
-					scr_draw_gamepad_buttons(gp_face3, window_get_width() / 2 + player3_display_x + 90, window_get_height() / 2, 0.5, 1);
+					scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player3_display_x + 90, window_get_height() / 2, 0.5, 1);
 				}
 				else
 				{
@@ -5755,7 +5755,7 @@ function scr_character_select_menu()
 				#region /*Key A*/
 				if (gamepad_is_connected(3))
 				{
-					scr_draw_gamepad_buttons(gp_face4, window_get_width() / 2 + player4_display_x + 90, window_get_height() / 2 + 32, 0.5, 1);
+					scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player4_display_x + 90, window_get_height() / 2 + 32, 0.5, 1);
 				}
 				else
 				{

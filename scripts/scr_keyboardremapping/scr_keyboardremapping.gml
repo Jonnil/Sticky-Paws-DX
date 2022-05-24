@@ -74,6 +74,16 @@ function scr_keyboardremapping()
 			{
 				global.player1_key_tongue = lastkey;
 			}
+			else
+			if (menu = "remap_key_zoom_in")
+			{
+				global.player1_key_zoom_in = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_out")
+			{
+				global.player1_key_zoom_out = lastkey;
+			}
 			can_remap_key = false;
 			input_key = false;
 			menu_delay = 10;
@@ -134,6 +144,11 @@ function scr_keyboardremapping()
 			if (menu = "remap_key_tongue")
 			{
 				global.player1_key2_tongue = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_in")
+			{
+				global.player1_key2_zoom_in = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -204,6 +219,16 @@ function scr_keyboardremapping()
 			{
 				global.player2_key_tongue = lastkey;
 			}
+			else
+			if (menu = "remap_key_zoom_in")
+			{
+				global.player2_key_zoom_in = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_out")
+			{
+				global.player2_key_zoom_out = lastkey;
+			}
 			can_remap_key = false;
 			input_key = false;
 			menu_delay = 10;
@@ -264,6 +289,16 @@ function scr_keyboardremapping()
 			if (menu = "remap_key_tongue")
 			{
 				global.player2_key2_tongue = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_in")
+			{
+				global.player2_key2_zoom_in = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_out")
+			{
+				global.player2_key2_zoom_out = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -334,6 +369,16 @@ function scr_keyboardremapping()
 			{
 				global.player3_key_tongue = lastkey;
 			}
+			else
+			if (menu = "remap_key_zoom_in")
+			{
+				global.player3_key_zoom_in = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_out")
+			{
+				global.player3_key_zoom_out = lastkey;
+			}
 			can_remap_key = false;
 			input_key = false;
 			menu_delay = 10;
@@ -394,6 +439,16 @@ function scr_keyboardremapping()
 			if (menu = "remap_key_tongue")
 			{
 				global.player3_key2_tongue = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_in")
+			{
+				global.player3_key2_zoom_in = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_out")
+			{
+				global.player3_key2_zoom_out = lastkey;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -464,6 +519,16 @@ function scr_keyboardremapping()
 			{
 				global.player4_key_tongue = lastkey;
 			}
+			else
+			if (menu = "remap_key_zoom_in")
+			{
+				global.player4_key_zoom_in = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_out")
+			{
+				global.player4_key_zoom_out = lastkey;
+			}
 			can_remap_key = false;
 			input_key = false;
 			menu_delay = 10;
@@ -524,6 +589,16 @@ function scr_keyboardremapping()
 			if (menu = "remap_key_tongue")
 			{
 				global.player4_key2_tongue = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_in")
+			{
+				global.player4_key2_zoom_in = lastkey;
+			}
+			else
+			if (menu = "remap_key_zoom_out")
+			{
+				global.player4_key2_zoom_out = lastkey;
 			}
 			menu_delay = 10;
 			can_remap_key = false;

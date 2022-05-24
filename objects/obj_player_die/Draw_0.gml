@@ -128,41 +128,37 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		
 		#region /*Disable player 1*/
 		if (player = 1)
+		and (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				can_spawn_player1 = true;
-			}
+			obj_camera.player1 = noone;
+			obj_camera.can_spawn_player1 = true;
 		}
 		#endregion /*Disable player 1 END*/
 		
 		#region /*Disable player 2*/
 		if (player = 2)
+		and (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				can_spawn_player2 = true;
-			}
+			obj_camera.player2 = noone;
+			obj_camera.can_spawn_player2 = true;
 		}
 		#endregion /*Disable player 2 END*/
 		
 		#region /*Disable player 3*/
 		if (player = 3)
+		and (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				can_spawn_player3 = true;
-			}
+			obj_camera.player3 = noone;
+			obj_camera.can_spawn_player3 = true;
 		}
 		#endregion /*Disable player 3 END*/
 		
 		#region /*Disable player 4 */
 		if (player = 4)
+		and (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				can_spawn_player4 = true;
-			}
+			obj_camera.player4 = noone;
+			obj_camera.can_spawn_player4 = true;
 		}
 		#endregion /*Disable player 4 END*/
 		

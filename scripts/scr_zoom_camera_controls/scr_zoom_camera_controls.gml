@@ -1,7 +1,33 @@
 function scr_zoom_camera_controls()
 {
 	/*This script uses normal draw functions so only use it in normal draw event (Not draw GUI)*/
-	var zoom_speed = 0.015;
+	if(gamepad_axis_value(0, gp_axisrv) < 0)
+	or(gamepad_axis_value(0, gp_axisrv) < 0)
+	{
+		var zoom_speed = abs(gamepad_axis_value(0, gp_axisrv)) * 0.015;
+	}
+	else
+	if(gamepad_axis_value(1, gp_axisrv) < 0)
+	or(gamepad_axis_value(1, gp_axisrv) < 0)
+	{
+		var zoom_speed = abs(gamepad_axis_value(1, gp_axisrv)) * 0.015;
+	}
+	else
+	if(gamepad_axis_value(2, gp_axisrv) < 0)
+	or(gamepad_axis_value(2, gp_axisrv) < 0)
+	{
+		var zoom_speed = abs(gamepad_axis_value(2, gp_axisrv)) * 0.015;
+	}
+	else
+	if(gamepad_axis_value(3, gp_axisrv) < 0)
+	or(gamepad_axis_value(3, gp_axisrv) < 0)
+	{
+		var zoom_speed = abs(gamepad_axis_value(3, gp_axisrv)) * 0.015;
+	}
+	else
+	{
+		var zoom_speed = 0.015;
+	}
 	if (room = room_title)
 	{
 		zoom_lerp = 1; /*In create event, have this: zoom_lerp = 1;*/
@@ -20,62 +46,97 @@ function scr_zoom_camera_controls()
 	zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1); /*In create event, have this: zoom_border_lerp = 0;*/
 	camera_set_view_size(view_camera[view_current], camera_get_view_width(view_camera[view_current]) * zoom_lerp, camera_get_view_height(view_camera[view_current]) * zoom_lerp);
 	
-	if (keyboard_check(vk_add))
-	and (!keyboard_check(vk_subtract))
-	and (room != room_title)
-	or(mouse_wheel_up())
-	and (!mouse_wheel_down())
-	and (room != room_title)
+	if (room != room_title)
 	{
-		if (zoom_lerp > 0.2)
+		if (keyboard_check(global.player1_key_zoom_in))
+		and (!keyboard_check(global.player1_key_zoom_out))
+		or (keyboard_check(global.player2_key_zoom_in))
+		and (!keyboard_check(global.player2_key_zoom_out))
+		or (keyboard_check(global.player3_key_zoom_in))
+		and (!keyboard_check(global.player3_key_zoom_out))
+		or (keyboard_check(global.player4_key_zoom_in))
+		and (!keyboard_check(global.player4_key_zoom_out))
+		or (keyboard_check(global.player1_key2_zoom_in))
+		and (!keyboard_check(global.player1_key2_zoom_out))
+		or (keyboard_check(global.player2_key2_zoom_in))
+		and (!keyboard_check(global.player2_key2_zoom_out))
+		or (keyboard_check(global.player3_key2_zoom_in))
+		and (!keyboard_check(global.player3_key2_zoom_out))
+		or (keyboard_check(global.player4_key2_zoom_in))
+		and (!keyboard_check(global.player4_key2_zoom_out))
+		or(mouse_wheel_up())
+		and (!mouse_wheel_down())
+		or(gamepad_axis_value(0, gp_axisrv) < 0)
+		or(gamepad_axis_value(1, gp_axisrv) < 0)
+		or(gamepad_axis_value(2, gp_axisrv) < 0)
+		or(gamepad_axis_value(3, gp_axisrv) < 0)
 		{
-			if (room = room_world_map)
+			if (zoom_lerp > 0.2)
 			{
-				global.zoom_world_map -= zoom_speed;
-				ini_open("config.ini");
-				ini_write_real("config", "zoom_world_map", global.zoom_world_map);
-				ini_close();
+				if (room = room_world_map)
+				{
+					global.zoom_world_map -= zoom_speed;
+					ini_open("config.ini");
+					ini_write_real("config", "zoom_world_map", global.zoom_world_map);
+					ini_close();
+				}
+				else
+				{
+					global.zoom_level -= zoom_speed;
+					ini_open("config.ini");
+					ini_write_real("config", "zoom_level", global.zoom_level);
+					ini_close();
+				}
 			}
 			else
 			{
-				global.zoom_level -= zoom_speed;
-				ini_open("config.ini");
-				ini_write_real("config", "zoom_level", global.zoom_level);
-				ini_close();
+				zoom_border_lerp = 1;
 			}
 		}
-		else
+		if (keyboard_check(global.player1_key_zoom_out))
+		and (!keyboard_check(global.player1_key_zoom_in))
+		or (keyboard_check(global.player2_key_zoom_out))
+		and (!keyboard_check(global.player2_key_zoom_in))
+		or (keyboard_check(global.player3_key_zoom_out))
+		and (!keyboard_check(global.player3_key_zoom_in))
+		or (keyboard_check(global.player4_key_zoom_out))
+		and (!keyboard_check(global.player4_key_zoom_in))
+		or (keyboard_check(global.player1_key2_zoom_out))
+		and (!keyboard_check(global.player1_key2_zoom_in))
+		or (keyboard_check(global.player2_key2_zoom_out))
+		and (!keyboard_check(global.player2_key2_zoom_in))
+		or (keyboard_check(global.player3_key2_zoom_out))
+		and (!keyboard_check(global.player3_key2_zoom_in))
+		or (keyboard_check(global.player4_key2_zoom_out))
+		and (!keyboard_check(global.player4_key2_zoom_in))
+		or(mouse_wheel_down())
+		and (!mouse_wheel_up())
+		or(gamepad_axis_value(0, gp_axisrv) > 0)
+		or(gamepad_axis_value(1, gp_axisrv) > 0)
+		or(gamepad_axis_value(2, gp_axisrv) > 0)
+		or(gamepad_axis_value(3, gp_axisrv) > 0)
 		{
-			zoom_border_lerp = 1;
-		}
-	}
-	if (keyboard_check(vk_subtract))
-	and (!keyboard_check(vk_add))
-	and (room != room_title)
-	or(mouse_wheel_down())
-	and (!mouse_wheel_up())
-	and (room != room_title)
-	{
-		if (zoom_lerp < 1)
-		{
-			if (room = room_world_map)
+			if (zoom_lerp < 1)
 			{
-				global.zoom_world_map += zoom_speed;
-				ini_open("config.ini");
-				ini_write_real("config", "zoom_world_map", global.zoom_world_map);
-				ini_close();
+				if (room = room_world_map)
+				{
+					global.zoom_world_map += zoom_speed;
+					ini_open("config.ini");
+					ini_write_real("config", "zoom_world_map", global.zoom_world_map);
+					ini_close();
+				}
+				else
+				{
+					global.zoom_level += zoom_speed;
+					ini_open("config.ini");
+					ini_write_real("config", "zoom_level", global.zoom_level);
+					ini_close();
+				}
 			}
 			else
 			{
-				global.zoom_level += zoom_speed;
-				ini_open("config.ini");
-				ini_write_real("config", "zoom_level", global.zoom_level);
-				ini_close();
+				zoom_border_lerp = 1;
 			}
-		}
-		else
-		{
-			zoom_border_lerp = 1;
 		}
 	}
 	if (zoom_lerp < 0.5)

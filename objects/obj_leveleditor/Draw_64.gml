@@ -1542,15 +1542,27 @@ if (quit_level_editor = false)
 	#endregion /*Toggle Grid END*/
 
 	#region /*Zoom Out*/
-	if (keyboard_check(vk_control))
-	and (keyboard_check(189))
-	and (!keyboard_check(187))
-	and (!keyboard_check(vk_enter))
+	if (keyboard_check(global.player1_key_zoom_out))
+	and (!keyboard_check(global.player1_key_zoom_in))
+	or (keyboard_check(global.player2_key_zoom_out))
+	and (!keyboard_check(global.player2_key_zoom_in))
+	or (keyboard_check(global.player3_key_zoom_out))
+	and (!keyboard_check(global.player3_key_zoom_in))
+	or (keyboard_check(global.player4_key_zoom_out))
+	and (!keyboard_check(global.player4_key_zoom_in))
+	or (keyboard_check(global.player1_key2_zoom_out))
+	and (!keyboard_check(global.player1_key2_zoom_in))
+	or (keyboard_check(global.player2_key2_zoom_out))
+	and (!keyboard_check(global.player2_key2_zoom_in))
+	or (keyboard_check(global.player3_key2_zoom_out))
+	and (!keyboard_check(global.player3_key2_zoom_in))
+	or (keyboard_check(global.player4_key2_zoom_out))
+	and (!keyboard_check(global.player4_key2_zoom_in))
 	or(point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192, - 64, display_get_gui_width() - 128, + 64))
 	and (show_icons_at_top = true)
 	and (mouse_check_button(mb_left))
 	{
-		tooltip = "Zoom Out (CTRL -)";
+		tooltip = "Zoom Out";
 		show_tooltip += 2;
 		zoom_out = true;
 	}
@@ -1569,7 +1581,7 @@ if (quit_level_editor = false)
 	and (show_icons_at_top = true)
 	and (mouse_check_button(mb_left))
 	{
-		tooltip = "Reset Zoom (CTRl +Enter)";
+		tooltip = "Reset Zoom";
 		show_tooltip += 2;
 		zoom_reset = true
 	}
@@ -1580,15 +1592,27 @@ if (quit_level_editor = false)
 	#endregion /*Reset Zoom END*/
 
 	#region /*Zoom In*/
-	if (keyboard_check(vk_control))
-	and (keyboard_check(187))
-	and (!keyboard_check(189))
-	and (!keyboard_check(vk_enter))
+	if (keyboard_check(global.player1_key_zoom_in))
+	and (!keyboard_check(global.player1_key_zoom_out))
+	or (keyboard_check(global.player2_key_zoom_in))
+	and (!keyboard_check(global.player2_key_zoom_out))
+	or (keyboard_check(global.player3_key_zoom_in))
+	and (!keyboard_check(global.player3_key_zoom_out))
+	or (keyboard_check(global.player4_key_zoom_in))
+	and (!keyboard_check(global.player4_key_zoom_out))
+	or (keyboard_check(global.player1_key2_zoom_in))
+	and (!keyboard_check(global.player1_key2_zoom_out))
+	or (keyboard_check(global.player2_key2_zoom_in))
+	and (!keyboard_check(global.player2_key2_zoom_out))
+	or (keyboard_check(global.player3_key2_zoom_in))
+	and (!keyboard_check(global.player3_key2_zoom_out))
+	or (keyboard_check(global.player4_key2_zoom_in))
+	and (!keyboard_check(global.player4_key2_zoom_out))
 	or(point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, - 64, display_get_gui_width(), + 64))
 	and (show_icons_at_top = true)
 	and (mouse_check_button(mb_left))
 	{
-		tooltip = "Zoom In (CTRL +)";
+		tooltip = "Zoom In";
 		show_tooltip += 2;
 		zoom_in = true;
 	}

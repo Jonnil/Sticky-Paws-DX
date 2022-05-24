@@ -878,7 +878,8 @@ and (!instance_exists(obj_pause))
 		#endregion /*Y position of show controls for each player END*/
 		
 		#region /*Multiplayer Player 1*/
-		if (player1 >= 1)
+		if (player1 > 0)
+		and (instance_exists(player1))
 		and (player1.partner_character = false)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
@@ -1218,7 +1219,6 @@ and (!instance_exists(obj_pause))
 			
 			#region /*Show Player 1 Join Game Key*/
 			if (can_spawn_player1 = true)
-			and (global.player1_key_jump > noone)
 			and (lives > 0)
 			and (global.player1_show_controls >= 1)
 			{
@@ -1227,16 +1227,8 @@ and (!instance_exists(obj_pause))
 				
 				if (gamepad_is_connected(0))
 				and (global.controls_used_for_menu_navigation = "controller")
-				and (global.player1_gamepad_button_jump > noone)
 				{
-					scr_draw_gamepad_buttons(global.player1_gamepad_button_jump, 252, window_get_height() - show_player1_controls_y, 0.5, player1_show_controls_alpha);
-				}
-				else
-				if (gamepad_is_connected(0))
-				and (global.controls_used_for_menu_navigation = "controller")
-				and (global.player1_gamepad_button2_jump > noone)
-				{
-					scr_draw_gamepad_buttons(global.player1_gamepad_button2_jump, 252, window_get_height() - show_player1_controls_y, 0.5, player1_show_controls_alpha);
+					scr_draw_gamepad_buttons(gp_face1, 252, window_get_height() - show_player1_controls_y, 0.5, player1_show_controls_alpha);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1257,7 +1249,8 @@ and (!instance_exists(obj_pause))
 		#endregion /*Multiplayer Player 1 END*/
 		
 		#region /*Multiplayer Player 2*/
-		if (player2 >= 1)
+		if (player2 > 0)
+		and (instance_exists(player2))
 		and (player2.partner_character = false)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
@@ -1597,7 +1590,6 @@ and (!instance_exists(obj_pause))
 			
 			#region /*Show Player 2 Join Game Key*/
 			if (can_spawn_player2 = true)
-			and (global.player2_key_jump > noone)
 			and (lives > 0)
 			and (global.player2_show_controls >= 1)
 			{
@@ -1606,16 +1598,8 @@ and (!instance_exists(obj_pause))
 				
 				if (gamepad_is_connected(1))
 				and (global.controls_used_for_menu_navigation = "controller")
-				and (global.player2_gamepad_button_jump > noone)
 				{
-					scr_draw_gamepad_buttons(global.player2_gamepad_button_jump, 252, window_get_height() - show_player2_controls_y, 0.5, player2_show_controls_alpha);
-				}
-				else
-				if (gamepad_is_connected(1))
-				and (global.controls_used_for_menu_navigation = "controller")
-				and (global.player2_gamepad_button2_jump > noone)
-				{
-					scr_draw_gamepad_buttons(global.player2_gamepad_button2_jump, 252, window_get_height() - show_player2_controls_y, 0.5, player2_show_controls_alpha);
+					scr_draw_gamepad_buttons(gp_face1, 252, window_get_height() - show_player2_controls_y, 0.5, player2_show_controls_alpha);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1636,7 +1620,8 @@ and (!instance_exists(obj_pause))
 		#endregion /*Multiplayer Player 2 END*/
 		
 		#region /*Multiplayer Player 3*/
-		if (player3 >= 1)
+		if (player3 > 0)
+		and (instance_exists(player3))
 		and (player3.partner_character = false)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
@@ -1976,7 +1961,6 @@ and (!instance_exists(obj_pause))
 			
 			#region /*Show Player 3 Join Game Key*/
 			if (can_spawn_player3 = true)
-			and (global.player3_key_jump > noone)
 			and (lives > 0)
 			and (global.player3_show_controls >= 1)
 			{
@@ -1985,16 +1969,8 @@ and (!instance_exists(obj_pause))
 				
 				if (gamepad_is_connected(2))
 				and (global.controls_used_for_menu_navigation = "controller")
-				and (global.player3_gamepad_button_jump > noone)
 				{
-					scr_draw_gamepad_buttons(global.player3_gamepad_button_jump, 252, window_get_height() - show_player3_controls_y, 0.5, player3_show_controls_alpha);
-				}
-				else
-				if (gamepad_is_connected(2))
-				and (global.controls_used_for_menu_navigation = "controller")
-				and (global.player3_gamepad_button2_jump > noone)
-				{
-					scr_draw_gamepad_buttons(global.player3_gamepad_button2_jump, 252, window_get_height() - show_player3_controls_y, 0.5, player3_show_controls_alpha);
+					scr_draw_gamepad_buttons(gp_face1, 252, window_get_height() - show_player3_controls_y, 0.5, player3_show_controls_alpha);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -2015,7 +1991,8 @@ and (!instance_exists(obj_pause))
 		#endregion /*Multiplayer Player 3 END*/
 		
 		#region /*Multiplayer Player 4*/
-		if (player4 >= 1)
+		if (player4 > 0)
+		and (instance_exists(player4))
 		and (player4.partner_character = false)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
@@ -2355,7 +2332,6 @@ and (!instance_exists(obj_pause))
 			
 			#region /*Show Player 4 Join Game Key*/
 			if (can_spawn_player4 = true)
-			and (global.player4_key_jump > noone)
 			and (lives > 0)
 			and (global.player4_show_controls >= 1)
 			{
@@ -2364,16 +2340,8 @@ and (!instance_exists(obj_pause))
 				
 				if (gamepad_is_connected(3))
 				and (global.controls_used_for_menu_navigation = "controller")
-				and (global.player4_gamepad_button_jump > noone)
 				{
-					scr_draw_gamepad_buttons(global.player4_gamepad_button_jump, 252, window_get_height() - show_player4_controls_y, 0.5, player4_show_controls_alpha);
-				}
-				else
-				if (gamepad_is_connected(3))
-				and (global.controls_used_for_menu_navigation = "controller")
-				and (global.player4_gamepad_button2_jump > noone)
-				{
-					scr_draw_gamepad_buttons(global.player4_gamepad_button2_jump, 252, window_get_height() - show_player4_controls_y, 0.5, player4_show_controls_alpha);
+					scr_draw_gamepad_buttons(gp_face1, 252, window_get_height() - show_player4_controls_y, 0.5, player4_show_controls_alpha);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)

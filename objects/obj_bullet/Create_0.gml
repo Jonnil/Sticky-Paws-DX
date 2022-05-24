@@ -6,18 +6,7 @@ if (asset_get_type("spr_small_mask") == asset_sprite)
 }
 
 image_speed = 0.3;
-if (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
-{
-	if (instance_nearest(x, y, obj_player).x < x)
-	{
-		image_xscale = -1;
-	}
-	else
-	{
-		image_xscale = +1;
-	}
-}
+
 draw_xscale = 0;
 draw_yscale = 1;
 flat = false;
