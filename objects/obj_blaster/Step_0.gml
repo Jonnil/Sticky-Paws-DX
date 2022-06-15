@@ -4,10 +4,10 @@ and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (asset_get_type("obj_camera") == asset_object)
 and (instance_exists(obj_camera))
-and (x < obj_camera.view_x_center + 970)
-and (x > obj_camera.view_x_center - 970)
-and (y < obj_camera.view_y_center + 970)
-and (y > obj_camera.view_y_center - 970)
+and (x < obj_camera.view_x_center + 960)
+and (x > obj_camera.view_x_center - 960)
+and (y < obj_camera.view_y_center + 960)
+and (y > obj_camera.view_y_center - 960)
 {
 	gravity = 0.5;
 }
@@ -36,8 +36,14 @@ if (asset_get_type("obj_player") == asset_object)
 and (asset_get_type("obj_wall") == asset_object)
 and (instance_exists(obj_player))
 {
-	if (x < instance_nearest(x, y, obj_player).x - 64)
-	or (x > instance_nearest(x, y, obj_player).x + 64)
+	if (!place_meeting(x - 64, y, obj_player))
+	and (!place_meeting(x - 32, y, obj_player))
+	and (!place_meeting(x - 16, y, obj_player))
+	and (!place_meeting(x - 8, y, obj_player))
+	and (!place_meeting(x + 64, y, obj_player))
+	and (!place_meeting(x + 32, y, obj_player))
+	and (!place_meeting(x + 16, y, obj_player))
+	and (!place_meeting(x + 8, y, obj_player))
 	{
 		yy = lerp(yy, y, 0.5);
 		draw_xscale = lerp(draw_xscale, image_xscale, 0.5);
@@ -69,7 +75,7 @@ if (time > 200)
 {
 	if (asset_get_type("obj_bullet") == asset_object)
 	{
-		if (x < instance_nearest(x, y, obj_player).x - 64)
+		if (x < instance_nearest(x, y, obj_player).x)
 		and (!position_meeting(x + 32, y, obj_wall))
 		{
 			if (give_rewards > 0)
@@ -89,7 +95,7 @@ if (time > 200)
 			}
 		}
 		else
-		if (x > instance_nearest(x, y, obj_player).x + 64)
+		if (x > instance_nearest(x, y, obj_player).x)
 		and (!position_meeting(x - 32, y, obj_wall))
 		{
 			if (give_rewards > 0)
@@ -99,6 +105,7 @@ if (time > 200)
 					image_xscale = -1;
 				}
 			}
+			else
 			with(instance_create_depth(x - 8, y, 0, obj_bullet))
 			{
 				give_rewards = false;
@@ -134,6 +141,7 @@ if (time > 200)
 					image_xscale = -1;
 				}
 			}
+			else
 			with(instance_create_depth(x - 8, y, 0, obj_bullet))
 			{
 				give_rewards = false;

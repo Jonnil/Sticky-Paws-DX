@@ -94,7 +94,7 @@ else
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_center);
 		draw_text_outlined(display_get_gui_width() / 2 + 32, display_get_gui_height() - 32, Text("Skip") + ":", global.default_text_size, c_white, c_black, 1);
-		scr_draw_gamepad_buttons(gp_face1, display_get_gui_width() / 2 + 64, display_get_gui_height() - 32, 0.5, 1);
+		scr_draw_gamepad_buttons(gp_face1, display_get_gui_width() / 2 + 64, display_get_gui_height() - 32, 0.5, c_white, 1);
 	}
 	else
 	if (asset_get_type("spr_keyboard_keys") == asset_sprite)

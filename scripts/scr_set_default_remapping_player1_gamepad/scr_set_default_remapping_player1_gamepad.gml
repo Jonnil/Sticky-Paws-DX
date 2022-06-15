@@ -15,6 +15,8 @@ function scr_set_default_remapping_player1_gamepad()
 	global.player1_gamepad_button_down = gp_padd;
 	global.player1_gamepad_button_up = gp_padu;
 	global.player1_gamepad_button_tongue = noone;
+	global.player1_gamepad_button_zoom_in = noone;
+	global.player1_gamepad_button_zoom_out = noone;
 	#endregion /*Player 1 Gamepad Buttons 1 defaults END*/
 	
 	#region /*Player 1 Gamepad Buttons 2 defaults*/
@@ -29,6 +31,8 @@ function scr_set_default_remapping_player1_gamepad()
 	global.player1_gamepad_button2_down = noone;
 	global.player1_gamepad_button2_up = noone;
 	global.player1_gamepad_button2_tongue = noone;
+	global.player1_gamepad_button2_zoom_in = noone;
+	global.player1_gamepad_button2_zoom_out = noone;
 	#endregion /*Player 1 Gamepad Buttons 2 defaults END*/
 	
 	global.player1_up_key_is_jump_key = false;

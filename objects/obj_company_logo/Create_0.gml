@@ -48,11 +48,13 @@ if (os_type = os_switch)
 {
 	global.enable_open_custom_folder = false; /*Enable the option to open custom folders in the game*/
 	global.enable_copy_characters = false; /*Enable the option to copy characters in the game*/
+	global.enable_choosen_controller_used = false; /*Enable the choosen controller used in the game*/
 }
 else
 {
 	global.enable_open_custom_folder = true; /*Enable the option to open custom folders in the game*/
 	global.enable_copy_characters = true; /*Enable the option to copy characters in the game*/
+	global.enable_choosen_controller_used = true; /*Enable the choosen controller used in the game*/
 }
 #endregion /*What settings tabs to show up END*/
 

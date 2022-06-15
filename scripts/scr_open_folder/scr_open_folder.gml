@@ -1,4 +1,3 @@
-// implementation
 function scr_open_folder(dname)
 {
 	if (global.enable_open_custom_folder = true)

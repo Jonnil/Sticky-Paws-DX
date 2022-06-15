@@ -9,8 +9,21 @@ function scr_keyboardremapping()
 	}
 	else
 	if (keyboard_check_pressed(vk_escape))
+	or (remapping_player = 0)
+	and (gamepad_button_check(0, gp_start))
+	or (remapping_player = 1)
+	and (gamepad_button_check(1, gp_start))
+	or (remapping_player = 2)
+	and (gamepad_button_check(2, gp_start))
+	or (remapping_player = 3)
+	and (gamepad_button_check(3, gp_start))
 	{
 		lastkey = noone;
+		can_remap_key = true;
+	}
+	else
+	if (mouse_check_button_pressed(mb_right))
+	{
 		can_remap_key = true;
 	}
 	

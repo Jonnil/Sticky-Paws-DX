@@ -556,18 +556,18 @@ if (quit_level_editor = false)
 		#region /*Inputed Name Text*/
 		if (name_enter_blink< 1)
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Inputed Name Text END*/
 		
 		#region /*Limit Name Input Length for Level Name*/
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])/ 2 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current])/ 2 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
 		level_name = keyboard_string;
 		if (string_length(level_name) > 32)
 		{
@@ -1626,46 +1626,7 @@ if (quit_level_editor = false)
 	
 	scr_show_fps();
 	
-	#region /*Menu navigation with joystick (This code must come after all menu navigation code)*/
-	if (gamepad_axis_value(0, gp_axislv) < 0)
-	or(gamepad_axis_value(0, gp_axislv) > 0)
-	or(gamepad_axis_value(0, gp_axislh) < 0)
-	or(gamepad_axis_value(0, gp_axislh) > 0)
-	or(gamepad_axis_value(1, gp_axislv) < 0)
-	or(gamepad_axis_value(1, gp_axislv) > 0)
-	or(gamepad_axis_value(1, gp_axislh) < 0)
-	or(gamepad_axis_value(1, gp_axislh) > 0)
-	or(gamepad_axis_value(2, gp_axislv) < 0)
-	or(gamepad_axis_value(2, gp_axislv) > 0)
-	or(gamepad_axis_value(2, gp_axislh) < 0)
-	or(gamepad_axis_value(2, gp_axislh) > 0)
-	or(gamepad_axis_value(3, gp_axislv) < 0)
-	or(gamepad_axis_value(3, gp_axislv) > 0)
-	or(gamepad_axis_value(3, gp_axislh) < 0)
-	or(gamepad_axis_value(3, gp_axislh) > 0)
-	{
-		if (menu_joystick_delay = 0)
-		{
-			menu_joystick_delay = 15;
-		}
-	}
-	
-	if (gamepad_axis_value(0, gp_axislv)= 0)
-	and (gamepad_axis_value(0, gp_axislh)= 0)
-	and (gamepad_axis_value(1, gp_axislv)= 0)
-	and (gamepad_axis_value(1, gp_axislh)= 0)
-	and (gamepad_axis_value(2, gp_axislv)= 0)
-	and (gamepad_axis_value(2, gp_axislh)= 0)
-	and (gamepad_axis_value(3, gp_axislv)= 0)
-	and (gamepad_axis_value(3, gp_axislh)= 0)
-	{
-		menu_joystick_delay = 0;
-	}
-	if (menu_joystick_delay > 0)
-	{
-		menu_joystick_delay -= 1;
-	}
-	#endregion /*Menu navigation with joystick  (This code must come after all menu navigation code) END*/
+	scr_menu_navigation_with_joystick_delay();
 	
 	#region /*Change mouse cursor. Draw mouse cursor for menu navigation*/
 	if (global.controls_used_for_menu_navigation != "controller")

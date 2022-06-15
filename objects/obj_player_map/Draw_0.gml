@@ -1,5 +1,3 @@
-//scr_zoom_camera_controls();
-
 if (current_file != global.file)
 or(!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
 {
@@ -236,7 +234,7 @@ and (have_heart_balloon = true)
 }
 #endregion /*Heart above head END*/
 
-if (sprite_index >= 0)
+if (sprite_index > 0)
 {
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 0, image_blend, 1);
 }
@@ -539,7 +537,7 @@ and (global.quit_level = false)
 				if (gamepad_is_connected(0))
 				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, 1);
+					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -608,7 +606,7 @@ and (global.quit_level = false)
 				if (gamepad_is_connected(0))
 				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, 1);
+					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, c_white, 1);
 				}
 				else
 				
@@ -677,7 +675,7 @@ and (global.quit_level = false)
 				if (gamepad_is_connected(0))
 				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, 1);
+					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -714,7 +712,7 @@ and (global.quit_level = false)
 				if (gamepad_is_connected(0))
 				and (global.controls_used_for_menu_navigation = "controller")
 				{
-					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, 1);
+					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -781,14 +779,14 @@ and (brand_new_file = true)
 and (can_move = true)
 and (show_demo_over_message = false)
 and (asset_get_type("obj_level") == asset_object)
-and (instance_exists(obj_level))
+and (instance_exists(obj_level)) /*Must check if obj_level exists or not*/
 or(key_a_pressed)
 and (global.demo = false)
 and (can_move = true)
 and (show_demo_over_message = false)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
-and (instance_exists(obj_level))
+and (instance_exists(obj_level)) /*Must check if obj_level exists or not*/
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed = 0)
 or(key_a_pressed)
@@ -798,7 +796,7 @@ and (can_move = true)
 and (show_demo_over_message = false)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
-and (instance_exists(obj_level))
+and (instance_exists(obj_level)) /*Must check if obj_level exists or not*/
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed = 0)
 {
@@ -977,14 +975,14 @@ mask_index = spr_wall;
 
 /*Show high scores*/
 if (asset_get_type("obj_level") == asset_object)
-and (instance_exists(obj_level))
+and (instance_exists(obj_level)) /*Must check if obj_level exists or not*/
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (move_delay > 10)
 and (instance_nearest(x, y, obj_level).level_number != 0)
 and (point_distance(xx, yy, x, y) < 40)
 {
 	if (instance_nearest(x, y, obj_level).clear_rate = "enter")
-	or(instance_nearest(x, y, obj_level).clear_rate = "clear")
+	or (instance_nearest(x, y, obj_level).clear_rate = "clear")
 	{
 		
 		draw_set_halign(fa_center);
@@ -1048,52 +1046,52 @@ and (point_distance(xx, yy, x, y) < 40)
 		or(instance_nearest(x, y, obj_level).big_collectible5 = true)
 		{
 			if (instance_nearest(x, y, obj_level).big_collectible1 = true)
-			and (global.resource_pack_sprite_big_collectible >= 0)
+			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
-			if (global.resource_pack_sprite_big_collectible >= 0)
+			if (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible2 = true)
-			and (global.resource_pack_sprite_big_collectible >= 0)
+			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
-			if (global.resource_pack_sprite_big_collectible >= 0)
+			if (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible3 = true)
-			and (global.resource_pack_sprite_big_collectible >= 0)
+			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
-			if (global.resource_pack_sprite_big_collectible >= 0)
+			if (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible4 = true)
-			and (global.resource_pack_sprite_big_collectible >= 0)
+			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
-			if (global.resource_pack_sprite_big_collectible >= 0)
+			if (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible5 = true)
-			and (global.resource_pack_sprite_big_collectible >= 0)
+			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x + 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			else
-			if (global.resource_pack_sprite_big_collectible >= 0)
+			if (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x + 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}

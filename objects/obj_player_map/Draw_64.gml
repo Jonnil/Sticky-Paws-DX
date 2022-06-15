@@ -13,7 +13,7 @@ and (global.pause = false)
 	if (gamepad_is_connected(0))
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
-		scr_draw_gamepad_buttons(gp_face1, 32, window_get_height() - 28, 0.5, 1);
+		scr_draw_gamepad_buttons(gp_face1, 32, window_get_height() - 28, 0.5, c_white, 1);
 	}
 	else
 	if (asset_get_type("spr_keyboard_keys") == asset_sprite)

@@ -16,6 +16,7 @@ function scr_start_intro_animations()
 		and (global.current_level_clear_rate = "enter")
 		{
 			can_move = false;
+			crouch = false;
 			cutscene_time += 1;
 			intro_animation_image_index += 1;
 			if (cutscene_time <= 1)
@@ -91,6 +92,7 @@ function scr_start_intro_animations()
 		and (global.current_level_clear_rate = "enter")
 		{
 			can_move = false;
+			crouch = false;
 			cutscene_time += 1;
 			intro_animation_image_index += 0.4;
 			if (cutscene_time <= 1)
@@ -161,6 +163,7 @@ function scr_start_intro_animations()
 			}
 			image_xscale = +1;
 			can_move = false;
+			crouch = false;
 			cutscene_time += 1;
 			intro_animation_image_index += 0.2;
 			if (instance_exists(obj_chair_and_table))
@@ -209,6 +212,7 @@ function scr_start_intro_animations()
 			}
 			image_xscale = +1;
 			can_move = false;
+			crouch = false;
 			intro_animation_image_index += 0.2;
 			if (instance_exists(obj_chair_and_table))
 			{

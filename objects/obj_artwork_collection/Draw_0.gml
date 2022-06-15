@@ -15,7 +15,7 @@ and (can_navigate = false)
 	if (gamepad_is_connected(0))
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
-		scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, 1);
+		scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
 	}
 	else
 	{

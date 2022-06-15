@@ -1,7 +1,7 @@
-if (x > camera_get_view_x(view_camera[view_current]))
-and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-and (y > camera_get_view_y(view_camera[view_current]))
-and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+if (x < obj_camera.view_x_center + 980)
+and (x > obj_camera.view_x_center - 980)
+and (y < obj_camera.view_y_center + 980)
+and (y > obj_camera.view_y_center - 980)
 {
 	if (place_meeting(x - 1, y, obj_wall))
 	and (!place_meeting(x + 1, y, obj_wall))

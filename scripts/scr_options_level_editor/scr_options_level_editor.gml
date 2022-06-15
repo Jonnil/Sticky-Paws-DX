@@ -292,7 +292,7 @@ function scr_options_level_editor()
 		
 		if (global.controls_used_for_menu_navigation = "controller")
 		{
-			scr_draw_gamepad_buttons(gp_face3, 40, 40, 0.75, 1);
+			scr_draw_gamepad_buttons(gp_face3, 40, 40, 0.75, c_white, 1);
 		}
 		else
 		{
@@ -829,7 +829,7 @@ function scr_options_level_editor()
 		
 		if (global.controls_used_for_menu_navigation = "controller")
 		{
-			scr_draw_gamepad_buttons(gp_face3, 40, 40, 0.75, 1);
+			scr_draw_gamepad_buttons(gp_face3, 40, 40, 0.75, c_white, 1);
 		}
 		else
 		{

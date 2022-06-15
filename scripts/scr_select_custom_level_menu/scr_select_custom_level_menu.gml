@@ -1236,7 +1236,7 @@ function scr_select_custom_level_menu()
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation = "controller")
 			{
-				scr_draw_gamepad_buttons(gp_face1, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 21 + 32, 0.5, 1);
+				scr_draw_gamepad_buttons(gp_face1, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 21 + 32, 0.5, c_white, 1);
 			}
 			else
 			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -1248,7 +1248,7 @@ function scr_select_custom_level_menu()
 		if (gamepad_is_connected(0))
 		and (global.controls_used_for_menu_navigation = "controller")
 		{
-			scr_draw_gamepad_buttons(gp_face2, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 74 + 22, 0.5, 1);
+			scr_draw_gamepad_buttons(gp_face2, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 74 + 22, 0.5, c_white, 1);
 		}
 		else
 		{

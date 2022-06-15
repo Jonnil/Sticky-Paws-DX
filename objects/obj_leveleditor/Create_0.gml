@@ -1,3 +1,91 @@
+#region /*Translate object names into object ID*/
+enum level_object_id
+{
+	id_wall = 1,
+	id_wall_dirt = 1001,
+	id_wall_glass = 1002,
+	id_wall_grass = 1003,
+	id_wall_gravel = 1004,
+	id_wall_metal = 1005,
+	id_wall_stone = 1006,
+	id_wall_wood = 1007,
+	id_wall_jump_panel = 1008,
+	id_wall_climb_panel = 1009,
+	id_spikes = 2,
+	id_semisolid_platform = 3,
+	id_brick_block = 4,
+	id_question_block = 11,
+	id_hard_block = 18,
+	id_falling_block = 19,
+	id_falling_block_solid = 20,
+	id_falling_block_long = 21,
+	id_falling_block_long_solid = 22,
+	id_cloud_block = 23,
+	id_ice_block = 24,
+	id_cardboard_block = 25,
+	id_cardboard = 26,
+	id_cardboard_long = 27,
+	id_bump_in_ground = 28,
+	id_basic_collectible = 40,
+	id_big_collectible_1 = 48,
+	id_big_collectible_2 = 49,
+	id_big_collectible_3 = 50,
+	id_big_collectible_4 = 51,
+	id_big_collectible_5 = 52,
+	id_heart = 53,
+	id_hp_pickup = 54,
+	id_invincibility_powerup = 55,
+	id_invincibility_powerup_coil_spring = 55001,
+	id_one_up = 56,
+	id_two_up = 57,
+	id_three_up = 58,
+	id_basic_enemy = 59,
+	id_basic_enemy_blind = 5902,
+	id_enemy_bowlingball = 591,
+	id_enemy_bowlingball_blind = 5911,
+	id_big_stationary_enemy = 60,
+	id_blaster = 61,
+	id_spring = 62,
+	id_ladder = 63,
+	id_arrow_sign = 64,
+	id_arrow_sign_small = 65,
+	id_checkpoint = 66,
+	id_spikes_emerge_block = 67,
+	id_oneway = 68,
+	id_oneway2 = 69,
+	id_oneway3 = 70,
+	id_oneway4 = 71,
+	id_horizontal_rope = 72,
+	id_water = 73,
+	id_water_surface = 731,
+	id_air_bubbles_spawner = 735,
+	id_water_level_change_slow = 732,
+	id_water_level_change_fast = 733,
+	id_water_level_change_faster = 734,
+	id_clipped_shirt = 74,
+	id_clipped_pants = 75,
+	id_clipped_sock = 76,
+	id_bucket = 77,
+	id_bird = 89,
+	id_sign_crouch = 90,
+	id_boss = 95,
+	id_boss_barrier = 96,
+	id_cake_stealing_enemy = 961,
+	id_artwork_collection = 97,
+	id_block_only_when_player_is_near = 98
+}
+enum world_object_id
+{
+	id_wall = 1,
+	id_level = 2,
+	id_exit = 3,
+	id_right_down = 4,
+	id_up_right = 5,
+	id_up_left = 6,
+	id_left_down = 7
+}
+#endregion /*Translate object names into object ID*/
+
 #region /*Controls for level editor*/
 gamepad_set_axis_deadzone(0, 0.5);
 key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or(keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv) < 0);
@@ -11,6 +99,9 @@ key_b_hold = (gamepad_button_check(0, gp_face2))or(keyboard_check(global.player1
 key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or(keyboard_check_pressed(global.player1_key_sprint))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_backspace))or(mouse_check_button_pressed(mb_right))or(mouse_check_button_pressed(mb_side1));
 key_b_released = (gamepad_button_check_released(0, gp_face2))or(keyboard_check_released(global.player1_key_sprint))or(keyboard_check_released(ord("X")))or(keyboard_check_released(vk_backspace));
 #endregion /*Controls for level editor END*/
+
+unused_x_origin_point = noone;
+unused_y_origin_point = noone;
 
 saved_file_exists = false;
 can_save_to_level_information = false;

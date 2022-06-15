@@ -186,7 +186,7 @@ and (os_type!= os_android)
 	}
 	else
 	{
-		scr_draw_gamepad_buttons(gp_face4, 32, window_get_height() - 32, 0.75, hide_menu_for_clean_screenshots_alpha);
+		scr_draw_gamepad_buttons(gp_face4, 32, window_get_height() - 32, 0.75, c_white, hide_menu_for_clean_screenshots_alpha);
 	}
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_center);
@@ -1328,45 +1328,7 @@ or(gamepad_button_check_pressed(3, gp_select))
 
 scr_options_menu(); /*Options*/
 
-#region /*Menu navigation with joystick*/
-if (gamepad_axis_value(0, gp_axislv) < 0)
-or(gamepad_axis_value(0, gp_axislv) > 0)
-or(gamepad_axis_value(0, gp_axislh) < 0)
-or(gamepad_axis_value(0, gp_axislh) > 0)
-or(gamepad_axis_value(1, gp_axislv) < 0)
-or(gamepad_axis_value(1, gp_axislv) > 0)
-or(gamepad_axis_value(1, gp_axislh) < 0)
-or(gamepad_axis_value(1, gp_axislh) > 0)
-or(gamepad_axis_value(2, gp_axislv) < 0)
-or(gamepad_axis_value(2, gp_axislv) > 0)
-or(gamepad_axis_value(2, gp_axislh) < 0)
-or(gamepad_axis_value(2, gp_axislh) > 0)
-or(gamepad_axis_value(3, gp_axislv) < 0)
-or(gamepad_axis_value(3, gp_axislv) > 0)
-or(gamepad_axis_value(3, gp_axislh) < 0)
-or(gamepad_axis_value(3, gp_axislh) > 0)
-{
-	if (menu_joystick_delay = 0)
-	{
-		menu_joystick_delay = 15;
-	}
-}
-if (gamepad_axis_value(0, gp_axislv)= 0)
-and (gamepad_axis_value(0, gp_axislh)= 0)
-and (gamepad_axis_value(1, gp_axislv)= 0)
-and (gamepad_axis_value(1, gp_axislh)= 0)
-and (gamepad_axis_value(2, gp_axislv)= 0)
-and (gamepad_axis_value(2, gp_axislh)= 0)
-and (gamepad_axis_value(3, gp_axislv)= 0)
-and (gamepad_axis_value(3, gp_axislh)= 0)
-{
-	menu_joystick_delay = 0;
-}
-if (menu_joystick_delay > 0)
-{
-	menu_joystick_delay -= 1;
-}
-#endregion /*Menu navigation with joystick END*/
+scr_menu_navigation_with_joystick_delay();
 
 }
 

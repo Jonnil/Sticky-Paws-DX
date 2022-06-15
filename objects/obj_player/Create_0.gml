@@ -148,6 +148,16 @@ sprite_spring_down = noone;
 sprite_spring_transition = noone;
 sprite_spring_up = noone;
 sprite_stand = noone;
+sprite_stand_blink = noone;
+sprite_idle_animation1 = noone;
+sprite_idle_animation2 = noone;
+sprite_idle_animation3 = noone;
+sprite_idle_animation4 = noone;
+sprite_idle_animation5 = noone;
+sprite_idle_animation6 = noone;
+sprite_idle_animation7 = noone;
+sprite_idle_animation8 = noone;
+sprite_idle_animation9 = noone;
 sprite_stand_cold = noone;
 sprite_standing_on_something = noone;
 sprite_standing_with_item_in_front = noone;
@@ -458,6 +468,7 @@ wall_jump_setting = 1;
 wall_jump_time = 10;
 glide = false;
 can_glide = 0;
+idle_animtaion = 0; /*If player should play blinking animation or not*/
 #endregion /*Don't change these variables END*/
 
 #region /*Rope Swing Variables*/

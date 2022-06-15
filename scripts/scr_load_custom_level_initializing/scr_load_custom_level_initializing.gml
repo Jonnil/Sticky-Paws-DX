@@ -40,10 +40,12 @@ function scr_load_custom_level_initializing()
 			ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + first_level + "/automatic_thumbnail.png", 0, false, true, 0, 0));
 			ds_list_add(global.all_loaded_custom_levels, first_level);
 		}
-		/*else
+		else
+		if (file_exists(working_directory + "/custom_levels/" + first_level + "/Automatic Thumbnail.png"))
 		{
-			ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing)
-		}*/
+			ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + first_level + "/Automatic Thumbnail.png", 0, false, true, 0, 0));
+			ds_list_add(global.all_loaded_custom_levels, first_level);
+		}
 		#endregion /*Update Thumbnail END*/
 		
 	}

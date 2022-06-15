@@ -418,7 +418,7 @@ if (global.world_editor = false)
 	if (object = 88) and (asset_get_type("spr_bucket") == asset_sprite){draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}
 	if (object = 88001) and (asset_get_type("spr_bucket") == asset_sprite){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 0.5, 0.5, 0, c_white, image_alpha);draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 0.5, 0.5, 0, c_white, image_alpha);}
 	#endregion /*Bucket END*/
-
+	
 	if (object = 961) and (global.resource_pack_sprite_cake > 0){draw_sprite_ext(global.resource_pack_sprite_cake, 0, x, y - 16, 1, 1, 0, c_white, image_alpha);}
 }
 else

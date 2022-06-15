@@ -12,7 +12,7 @@
 //draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64, "reset_level_zoom: " + string(global.reset_level_zoom_when_going_back_to_map), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 128, "zoom_level: " + string(global.zoom_level), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x - 32, y - 128, "idle_animtaion" + string(idle_animtaion), global.default_text_size, c_white, c_black, 1);
 
 #region /*Draw Raycasts*/
 if (hold_item_in_hands != "")
@@ -100,9 +100,9 @@ else
 
 if (hold_item_in_hands = "enemy_bowlingball")
 {
-	draw_sprite_ext(global.resource_pack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 *sign(image_xscale), draw_yscale * 1, angle, c_white, image_alpha);
-	draw_sprite_ext(global.resource_pack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1, draw_yscale * 1, 1, c_white, image_alpha);
-	draw_sprite_ext(global.resource_pack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 *sign(image_xscale), draw_yscale * 1, angle, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 *sign(image_xscale), draw_yscale * 1, 0, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1, draw_yscale * 1, 0, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 *sign(image_xscale), draw_yscale * 1, 0, c_white, image_alpha);
 	if (image_xscale < 0)
 	{
 		angle = 0;
@@ -146,15 +146,18 @@ if (y < camera_get_view_y(view_camera[view_current]))
 	and (invincible >= true)
 	{
 		if (invincible_blinking%20 == 0)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
 		}
 		else
+		if (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 		}
 	}
 	else
+	if (sprite_index > 0)
 	{
 		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 	}
@@ -176,15 +179,18 @@ and (y < room_height)
 	and (invincible >= true)
 	{
 		if (invincible_blinking%20 == 0)
+		and (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, c_black, image_alpha);
 		}
 		else
+		if (sprite_index > 0)
 		{
 			draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 		}
 	}
 	else
+	if (sprite_index > 0)
 	{
 		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, image_alpha);
 	}
@@ -224,7 +230,7 @@ if (global.basic_collectibles>99)
 
 #region /*Draw intro animation sprites (cutscene) if intro is playing*/
 if (intro_animation != "")
-and (intro_animation_sprite > noone)
+and (intro_animation_sprite > 0)
 {
 	draw_sprite_ext(intro_animation_sprite, intro_animation_image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 1);
 }
@@ -325,10 +331,12 @@ and (intro_animation = "")
 if (global.show_collision_mask = true)
 {
 	if (crouch = true)
+	and (sprite_mask_crouch > 0)
 	{
 		draw_sprite_ext(sprite_mask_crouch, 0, x, y, image_xscale, 1, 0, c_white, 1);
 	}
 	else
+	if (sprite_mask > 0)
 	{
 		draw_sprite_ext(sprite_mask, 0, x, y, image_xscale, 1, 0, c_white, 1);
 	}
