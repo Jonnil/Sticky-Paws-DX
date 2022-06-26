@@ -83,14 +83,6 @@ else
 }
 
 #region /*Make sure the level end isn't outside of the level, this code has to be after the drag object code*/
-if (asset_get_type("obj_level_end") == asset_object)
-and (instance_exists(obj_level_end))
-{
-	if (x > obj_level_end.x - 32)
-	{
-		x = obj_level_end.x - 32;
-	}
-}
 if (x < 0 + sprite_width - 32)
 {
 	x = 0 + sprite_width - 32

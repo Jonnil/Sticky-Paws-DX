@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "level editor",
-    "path": "folders/Scripts/level editor.yy",
+    "name": "Scripts",
+    "path": "folders/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_level_editor_placable_object",
+  "name": "scr_zoom_camera_draw_gui",
   "tags": [],
   "resourceType": "GMScript",
 }

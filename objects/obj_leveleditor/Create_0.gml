@@ -86,6 +86,19 @@ enum world_object_id
 }
 #endregion /*Translate object names into object ID*/
 
+sprite_basic_enemy = global.resource_pack_sprite_basic_enemy;
+sprite_basic_enemy_blind = global.resource_pack_sprite_basic_enemy_blind;
+sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
+sprite_enemy_bowlingball_blind = global.resource_pack_sprite_enemy_bowlingball_blind_walk;
+sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
+
+#region /*Grid Initialization*/
+global.object_grid = ds_grid_create(12,0);
+add_object(level_object_id.id_wall, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0)
+add_object(level_object_id.id_basic_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0)
+add_object(level_object_id.id_bucket, spr_bucket, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0)
+#endregion /*Grid Initialization END*/
+
 #region /*Controls for level editor*/
 gamepad_set_axis_deadzone(0, 0.5);
 key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or(keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv) < 0);
@@ -117,12 +130,6 @@ old_window_get_width = 0;
 mx = mouse_x;
 my = mouse_y;
 #endregion /*Mouse x and mouse y initializing END*/
-
-sprite_basic_enemy = global.resource_pack_sprite_basic_enemy;
-sprite_basic_enemy_blind = global.resource_pack_sprite_basic_enemy_blind;
-sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
-sprite_enemy_bowlingball_blind = global.resource_pack_sprite_enemy_bowlingball_blind_walk;
-sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
 
 #region /*Lives Icon*/
 if (global.player1_can_play = true)

@@ -77,10 +77,10 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		global.player4_show_controls = change_to_value;
 	}
 	else
-	if (variable_to_change = global.choosen_controller_used)
-	and (menu = "choosen_controller_used")
+	if (variable_to_change = global.chosen_controller_used)
+	and (menu = "chosen_controller_used")
 	{
-		global.choosen_controller_used = change_to_value;
+		global.chosen_controller_used = change_to_value;
 	}
 	else
 	if (variable_to_change = global.difficulty)

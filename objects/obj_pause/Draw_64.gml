@@ -319,7 +319,7 @@ and (menu != "quit_game_yes")
 {
 	if (asset_get_type("spr_pause_text") == asset_sprite)
 	{
-		draw_sprite_ext(spr_pause_text, image_index, window_get_width() / 2, 200, 1, 1, 0, c_white, pause_text_alpha);
+		draw_sprite_ext(spr_pause_text, image_index, window_get_width() / 2, 200, 1, 1, 0, c_white, scr_wave(0, 1, 4.5, 0));
 	}
 	else
 	{

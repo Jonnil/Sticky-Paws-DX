@@ -264,7 +264,7 @@ function scr_gamepadremapping()
 	or (remapping_player = 3)
 	and (gamepad_button_check(3, gp_start))
 	{
-		lastkey = noone;
+		last_key = noone;
 		can_remap_key = true;
 	}
 	else

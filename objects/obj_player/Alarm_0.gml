@@ -100,6 +100,7 @@ sprite_ground_pound_get_up = scr_initialize_custom_character_sprite("ground_poun
 sprite_ground_pound_get_up = scr_initialize_custom_character_sprite("groundpound_getup", sprite_ground_pound_get_up);
 sprite_jump = scr_initialize_custom_character_sprite("jump", sprite_jump);
 sprite_jump_transition_to_fall = scr_initialize_custom_character_sprite("jump_transition_to_fall", sprite_jump_transition_to_fall);
+sprite_crouch_jump_transition_to_fall = scr_initialize_custom_character_sprite("crouch_jump_transition_to_fall", sprite_crouch_jump_transition_to_fall);
 sprite_ledge_grab = scr_initialize_custom_character_sprite("ledge_grab", sprite_ledge_grab);
 sprite_look_up = scr_initialize_custom_character_sprite("look_up", sprite_look_up);
 sprite_look_up = scr_initialize_custom_character_sprite("lookup", sprite_look_up);

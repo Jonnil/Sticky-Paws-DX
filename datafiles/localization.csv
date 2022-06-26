@@ -99,7 +99,7 @@ Show Assist Arrows,Show Assist Arrows,Visa hjälppilar,,,Pokazuj strzałki asyst
 Show Normal Arrows,Show Normal Arrows,Visa normala pilar,,,Pokazuj normalne strzałki
 Enable Enemies,Enable Enemies,Aktivera fiender,,,
 Enable Spikes,Enable Spikes,Aktivera spikar,,,
-Show Assist Mode Text,Show Assist Mode Text,Visa hjälplägestext,,,Pokazuj tekst trybu asysty
+Show Assist Mode Text,Show Assist Mode Text,Visa Assist Mode text,,,Pokazuj tekst trybu asysty
 Level Layout Difficulty,Level Layout Difficulty,Nivå Layout Svårighetsgrad,,,Trudność poziomu
 Easy,Easy,Lätt,イージー,,Łatwy
 Normal,Normal,Vanligt,ノーマル,,Normalny
@@ -261,3 +261,22 @@ TIME OVER,TIME OVER,TID ÖVER,,,CZAS MINĄŁ
 HURRY UP!,HURRY UP!,SKYNDA DIG!,,,
 Add custom things in Local Appdata,Add custom things in Local Appdata,Lägg till anpassade saker i Local Appdata,,,
 Then type,Then type,Skriv sedan,,,
+Copy Characters,Copy Characters,Kopiera karaktärer,,,
+Copy Character,Copy Character,Kopiera karaktär,,,
+Copy to Clipboard,Copy to Clipboard,Kopiera till Urklipp,,,
+Enable Attract Demo,Enable Attract Demo,Aktivera Attract Demo,,,
+Enable Links at Title Screen,Enable Links at Title Screen,Aktivera länkar på titelskärmen,,,
+Open Save File Folder,Open Save File Folder,Öppna sparade filer mappen,,,
+INPUT BUTTON NOW FOR PLAYER 1,INPUT BUTTON NOW FOR PLAYER 1,TRYCK KNAPP NU FÖR SPELARE 1,,,
+INPUT BUTTON NOW FOR PLAYER 2,INPUT BUTTON NOW FOR PLAYER 1,TRYCK KNAPP NU FÖR SPELARE 1,,,
+INPUT BUTTON NOW FOR PLAYER 3,INPUT BUTTON NOW FOR PLAYER 1,TRYCK KNAPP NU FÖR SPELARE 1,,,
+INPUT BUTTON NOW FOR PLAYER 4,INPUT BUTTON NOW FOR PLAYER 1,TRYCK KNAPP NU FÖR SPELARE 1,,,
+Chosen Controller Used,Chosen Controller Used,Vald kontroll använd,,,
+Drop down from rope,Drop down from rope,Släpp ner från rep,,,
+Xbox One,Xbox One,Xbox One,,,
+Xbox Series X/S,Xbox Series X/S,Xbox Series X/S,,,
+Nintendo Switch,Nintendo Switch,Nintendo Switch,,,
+Playstation 4,Playstation 4,Playstation 4,,,
+Playstation 5,Playstation 5,Playstation 5,,,
+Zoom In,Zoom In,Zooma in,,,
+Zoom Out,Zoom Out,Zooma ut,,,

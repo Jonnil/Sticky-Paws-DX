@@ -6,7 +6,7 @@
     "path": "folders/Scripts/level editor.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_level_editor_placable_object",
+  "name": "scr_add_object",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -168,7 +168,12 @@ if (quit_level_editor <= 0)
 if (global.world_editor = false)
 {
 	total_number_of_objects = 63; /*This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1)*/
-	scr_level_editor_placable_object(0, level_object_id.id_wall, true, spr_wall, spr_wall, 0, 1, 0, c_white);
+	//scr_level_editor_placable_object(0, level_object_id.id_wall, true, spr_wall, spr_wall, 0, 1, 0, c_white);
+	
+	scr_level_editor_placable_object(0, ds_grid_get(global.object_grid, 0, 0), ds_grid_get(global.object_grid, 10, 0), ds_grid_get(global.object_grid, 1, 0), ds_grid_get(global.object_grid, 3, 0), 0 * 64 + ds_grid_get(global.object_grid, 11, 0), ds_grid_get(global.object_grid, 4, 0), ds_grid_get(global.object_grid, 5, 0), ds_grid_get(global.object_grid, 6, 0));
+	
+	//if object == ds_grid_get(global.object_grid, 0, 0) {sprite_index = ds_grid_get(global.object_grid, 1, 0);mask_index = ds_grid_get(global.object_grid, 3, 0);}
+	
 	scr_level_editor_placable_object(1, level_object_id.id_wall_dirt, true, spr_wall_dirt, spr_wall, + 64, 1, 0, c_white);
 	scr_level_editor_placable_object(2, level_object_id.id_wall_glass, true, spr_wall_glass, spr_wall, + 64 * 2, 1, 0, c_white);
 	scr_level_editor_placable_object(3, level_object_id.id_wall_grass, true, spr_wall_grass, spr_wall, + 64 * 3, 1, 0, c_white);
@@ -823,6 +828,7 @@ if (quit_level_editor <= 0)
 	
 	#region /*Draw an arrow pointing to currently selected object*/
 	draw_set_color(c_black);
+	draw_set_alpha(selected_menu_alpha);
 	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 - 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 40);
 	draw_set_color(c_white);
 	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 - 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 30);

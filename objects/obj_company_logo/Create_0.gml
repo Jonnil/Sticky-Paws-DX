@@ -48,13 +48,13 @@ if (os_type = os_switch)
 {
 	global.enable_open_custom_folder = false; /*Enable the option to open custom folders in the game*/
 	global.enable_copy_characters = false; /*Enable the option to copy characters in the game*/
-	global.enable_choosen_controller_used = false; /*Enable the choosen controller used in the game*/
+	global.enable_chosen_controller_used = false; /*Enable the chosen controller used in the game*/
 }
 else
 {
 	global.enable_open_custom_folder = true; /*Enable the option to open custom folders in the game*/
 	global.enable_copy_characters = true; /*Enable the option to copy characters in the game*/
-	global.enable_choosen_controller_used = true; /*Enable the choosen controller used in the game*/
+	global.enable_chosen_controller_used = true; /*Enable the chosen controller used in the game*/
 }
 #endregion /*What settings tabs to show up END*/
 
@@ -373,6 +373,9 @@ global.player2_down_and_jump_to_groundpound = false;
 global.player3_down_and_jump_to_groundpound = false;
 global.player4_down_and_jump_to_groundpound = false;
 
+global.show_prompt_when_changing_to_gamepad = true;
+global.show_prompt_when_changing_to_keyboard_and_mouse = true;
+
 #region /*Universal Keyboard Remapping*/
 global.fullscreen_key = vk_f11;
 #endregion /*Universal Keyboard Remapping*/
@@ -454,7 +457,7 @@ global.resource_pack_sprite_buttons_playstation4 = spr_noone;
 global.resource_pack_sprite_buttons_playstation5 = spr_noone;
 #endregion /*Resource Packs END*/
 
-global.choosen_controller_used = 0; /*What controller buttons to use for button prompts*/
+global.chosen_controller_used = 0; /*What controller buttons to use for button prompts*/
 /*0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5*/
 
 company_splash = noone;

@@ -227,7 +227,7 @@ else
 }
 #endregion /*If title screen should start at the level editor menu or the main menu END*/
 
-lastkey = noone;
+last_key = noone;
 
 #region /*Remapping options variables*/
 remapping_player = 0; /*remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */

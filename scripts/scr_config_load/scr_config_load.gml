@@ -67,7 +67,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "language_localization")){global.language_localization = ini_read_real("config", "language_localization", 0);}
 		if (ini_key_exists("config", "convention_mode")){global.convention_mode = ini_read_real("config", "convention_mode", 0);}
 		if (ini_key_exists("config", "arcade_mode")){global.arcade_mode = ini_read_real("config", "arcade_mode", 0);}
-		if (ini_key_exists("config", "choosen_controller_used")){global.choosen_controller_used = ini_read_real("config", "choosen_controller_used", 0);}
+		if (ini_key_exists("config", "chosen_controller_used")){global.chosen_controller_used = ini_read_real("config", "chosen_controller_used", 0);}
+		if (ini_key_exists("config", "show_prompt_when_changing_to_gamepad")){global.show_prompt_when_changing_to_gamepad = ini_read_real("config", "show_prompt_when_changing_to_gamepad", 1);}
+		if (ini_key_exists("config", "show_prompt_when_changing_to_keyboard_and_mouse")){global.show_prompt_when_changing_to_keyboard_and_mouse = ini_read_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", 1);}
 		
 		#region /*Load Player 1 Keyboard Remapping*/
 		if (ini_key_exists("config", "character_index_player_1")){global.character_index[0] = ini_read_real("config", "character_index_player_1", 0);}

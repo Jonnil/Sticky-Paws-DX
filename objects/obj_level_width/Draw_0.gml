@@ -97,10 +97,10 @@ and (global.play_edited_level = false)
 	draw_set_valign(fa_center);
 	draw_text_outlined(x + 32, y, Text("Width") + " : " + string(bbox_left), global.default_text_size, c_black, c_white, 1);	
 }
-if (x > room_width)
-{
-	x = room_width;
-}
+//if (x > room_width)
+//{
+//	x = room_width;
+//}
 #endregion /*Make sure the level end isn't outside of the level, this code has to be after the drag object code END*/
 
 if (global.play_edited_level = true)

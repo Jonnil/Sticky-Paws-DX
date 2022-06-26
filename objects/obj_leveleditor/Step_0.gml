@@ -1318,10 +1318,82 @@ if (quit_level_editor <= 0)
 								else
 								if (object = 39)
 								{
+									object = 39001;
+								}
+								else
+								if (object = 39001)
+								{
+									object = 281;
+								}
+								#endregion /*Change bump in ground to it's different forms END*/
+								
+								#region /*Change invisible bump in ground to it's different forms*/
+								if (object = 281)
+								{
+									object = 291;
+								}
+								else
+								if (object = 291)
+								{
+									object = 301;
+								}
+								else
+								if (object = 301)
+								{
+									object = 311;
+								}
+								else
+								if (object = 311)
+								{
+									object = 321;
+								}
+								else
+								if (object = 321)
+								{
+									object = 331;
+								}
+								else
+								if (object = 331)
+								{
+									object = 341;
+								}
+								else
+								if (object = 341)
+								{
+									object = 351;
+								}
+								else
+								if (object = 351)
+								{
+									object = 361;
+								}
+								else
+								if (object = 361)
+								{
+									object = 371;
+								}
+								else
+								if (object = 371)
+								{
+									object = 381;
+								}
+								else
+								if (object = 381)
+								{
+									object = 391;
+								}
+								else
+								if (object = 391)
+								{
+									object = 390011;
+								}
+								else
+								if (object = 390011)
+								{
 									object = 28;
 								}
-								#endregion /*Change bump in ground to it's different forms END*/				
-							
+								#endregion /*Change invisible bump in ground to it's different forms END*/
+								
 								else
 							
 								#region /*Change Basic Collectible Direction*/

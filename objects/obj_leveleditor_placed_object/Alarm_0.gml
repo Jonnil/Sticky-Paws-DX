@@ -16,7 +16,8 @@ image_index = 0;
 #region /*Initialize Object*/
 if (global.world_editor = false)
 {
-	if (object = 1) and (asset_get_type("spr_wall") == asset_sprite){sprite_index = spr_wall;mask_index = spr_wall;}
+	if object == ds_grid_get(global.object_grid, 0, 0) {sprite_index = ds_grid_get(global.object_grid, 1, 0);mask_index = ds_grid_get(global.object_grid, 3, 0);}
+	//if (object = 1) and (asset_get_type("spr_wall") == asset_sprite){sprite_index = spr_wall;mask_index = spr_wall;}
 	if (object = 1001) and (asset_get_type("spr_wall_dirt") == asset_sprite){sprite_index = spr_wall_dirt;mask_index = spr_wall;}
 	if (object = 1002) and (asset_get_type("spr_wall_glass") == asset_sprite){sprite_index = spr_wall_glass;mask_index = spr_wall;}
 	if (object = 1003) and (asset_get_type("spr_wall_grass") == asset_sprite){sprite_index = spr_wall_grass;mask_index = spr_wall;}
@@ -75,12 +76,9 @@ if (global.world_editor = false)
 	if (object = 28) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
 	if (object = 29) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
 	if (object = 30) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
-	if (object = 31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;
-	mask_index = spr_wall;}
-	if (object = 32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;
-	mask_index = spr_wall;}
-	if (object = 33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;
-	mask_index = spr_wall;}
+	if (object = 31) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
+	if (object = 32) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
+	if (object = 33) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
 	if (object = 34) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
 	if (object = 35) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
 	if (object = 36) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
@@ -89,7 +87,23 @@ if (global.world_editor = false)
 	if (object = 39) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
 	if (object = 39001) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = spr_bump_in_ground;mask_index = spr_wall;}
 	#endregion /*Bump in ground END*/
-
+	
+	#region /*Invisible Bump in ground*/
+	if (object = 281) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 291) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 301) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 311) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 321) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 331) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 341) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 351) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 361) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 371) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 381) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 391) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	if (object = 390011) and (asset_get_type("spr_bump_in_ground") == asset_sprite){sprite_index = noone;mask_index = spr_wall;}
+	#endregion /*Invisible Bump in ground END*/
+	
 	#region /*Basic Collectible*/
 	if (object = 40){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 0;draw_yscale = 1;mask_index = spr_wall;}
 	if (object = 41){sprite_index = global.resource_pack_sprite_basic_collectible;draw_angle = 315;draw_yscale = 1;mask_index = spr_wall;}

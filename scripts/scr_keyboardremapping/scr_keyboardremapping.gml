@@ -4,7 +4,7 @@ function scr_keyboardremapping()
 	if (!keyboard_check_pressed(vk_escape))
 	and (keyboard_check_pressed(vk_anykey))
 	{
-		lastkey = keyboard_lastkey;
+		last_key = keyboard_lastkey;
 		can_remap_key = true;
 	}
 	else
@@ -18,7 +18,7 @@ function scr_keyboardremapping()
 	or (remapping_player = 3)
 	and (gamepad_button_check(3, gp_start))
 	{
-		lastkey = noone;
+		last_key = noone;
 		can_remap_key = true;
 	}
 	else
@@ -35,67 +35,67 @@ function scr_keyboardremapping()
 		{
 			if (menu = "remap_key_dive")
 			{
-				global.player1_key_dive = lastkey;
+				global.player1_key_dive = last_key;
 			}
 			else
 			if (menu = "remap_key_jump")
 			{
-				global.player1_key_jump = lastkey;
+				global.player1_key_jump = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch")
 			{
-				global.player1_key_crouch = lastkey;
+				global.player1_key_crouch = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch_toggle")
 			{
-				global.player1_key_crouch_toggle = lastkey;
+				global.player1_key_crouch_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint")
 			{
-				global.player1_key_sprint = lastkey;
+				global.player1_key_sprint = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint_toggle")
 			{
-				global.player1_key_sprint_toggle = lastkey;
+				global.player1_key_sprint_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_left")
 			{
-				global.player1_key_left = lastkey;
+				global.player1_key_left = last_key;
 			}
 			else
 			if (menu = "remap_key_right")
 			{
-				global.player1_key_right = lastkey;
+				global.player1_key_right = last_key;
 			}
 			else
 			if (menu = "remap_key_down")
 			{
-				global.player1_key_down = lastkey;
+				global.player1_key_down = last_key;
 			}
 			else
 			if (menu = "remap_key_up")
 			{
-				global.player1_key_up = lastkey;
+				global.player1_key_up = last_key;
 			}
 			else
 			if (menu = "remap_key_tongue")
 			{
-				global.player1_key_tongue = lastkey;
+				global.player1_key_tongue = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_in")
 			{
-				global.player1_key_zoom_in = lastkey;
+				global.player1_key_zoom_in = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_out")
 			{
-				global.player1_key_zoom_out = lastkey;
+				global.player1_key_zoom_out = last_key;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -106,62 +106,62 @@ function scr_keyboardremapping()
 		{
 			if (menu = "remap_key_dive")
 			{
-				global.player1_key2_dive = lastkey;
+				global.player1_key2_dive = last_key;
 			}
 			else
 			if (menu = "remap_key_jump")
 			{
-				global.player1_key2_jump = lastkey;
+				global.player1_key2_jump = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch")
 			{
-				global.player1_key2_crouch = lastkey;
+				global.player1_key2_crouch = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch_toggle")
 			{
-				global.player1_key2_crouch_toggle = lastkey;
+				global.player1_key2_crouch_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint")
 			{
-				global.player1_key2_sprint = lastkey;
+				global.player1_key2_sprint = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint_toggle")
 			{
-				global.player1_key2_sprint_toggle = lastkey;
+				global.player1_key2_sprint_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_left")
 			{
-				global.player1_key2_left = lastkey;
+				global.player1_key2_left = last_key;
 			}
 			else
 			if (menu = "remap_key_right")
 			{
-				global.player1_key2_right = lastkey;
+				global.player1_key2_right = last_key;
 			}
 			else
 			if (menu = "remap_key_down")
 			{
-				global.player1_key2_down = lastkey;
+				global.player1_key2_down = last_key;
 			}
 			else
 			if (menu = "remap_key_up")
 			{
-				global.player1_key2_up = lastkey;
+				global.player1_key2_up = last_key;
 			}
 			else
 			if (menu = "remap_key_tongue")
 			{
-				global.player1_key2_tongue = lastkey;
+				global.player1_key2_tongue = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_in")
 			{
-				global.player1_key2_zoom_in = lastkey;
+				global.player1_key2_zoom_in = last_key;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -180,67 +180,67 @@ function scr_keyboardremapping()
 		{
 			if (menu = "remap_key_dive")
 			{
-				global.player2_key_dive = lastkey;
+				global.player2_key_dive = last_key;
 			}
 			else
 			if (menu = "remap_key_jump")
 			{
-				global.player2_key_jump = lastkey;
+				global.player2_key_jump = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch")
 			{
-				global.player2_key_crouch = lastkey;
+				global.player2_key_crouch = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch_toggle")
 			{
-				global.player2_key_crouch_toggle = lastkey;
+				global.player2_key_crouch_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint")
 			{
-				global.player2_key_sprint = lastkey;
+				global.player2_key_sprint = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint_toggle")
 			{
-				global.player2_key_sprint_toggle = lastkey;
+				global.player2_key_sprint_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_left")
 			{
-				global.player2_key_left = lastkey;
+				global.player2_key_left = last_key;
 			}
 			else
 			if (menu = "remap_key_right")
 			{
-				global.player2_key_right = lastkey;
+				global.player2_key_right = last_key;
 			}
 			else
 			if (menu = "remap_key_down")
 			{
-				global.player2_key_down = lastkey;
+				global.player2_key_down = last_key;
 			}
 			else
 			if (menu = "remap_key_up")
 			{
-				global.player2_key_up = lastkey;
+				global.player2_key_up = last_key;
 			}
 			else
 			if (menu = "remap_key_tongue")
 			{
-				global.player2_key_tongue = lastkey;
+				global.player2_key_tongue = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_in")
 			{
-				global.player2_key_zoom_in = lastkey;
+				global.player2_key_zoom_in = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_out")
 			{
-				global.player2_key_zoom_out = lastkey;
+				global.player2_key_zoom_out = last_key;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -251,67 +251,67 @@ function scr_keyboardremapping()
 		{
 			if (menu = "remap_key_dive")
 			{
-				global.player2_key2_dive = lastkey;
+				global.player2_key2_dive = last_key;
 			}
 			else
 			if (menu = "remap_key_jump")
 			{
-				global.player2_key2_jump = lastkey;
+				global.player2_key2_jump = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch")
 			{
-				global.player2_key2_crouch = lastkey;
+				global.player2_key2_crouch = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch_toggle")
 			{
-				global.player2_key2_crouch_toggle = lastkey;
+				global.player2_key2_crouch_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint")
 			{
-				global.player2_key2_sprint = lastkey;
+				global.player2_key2_sprint = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint_toggle")
 			{
-				global.player2_key2_sprint_toggle = lastkey;
+				global.player2_key2_sprint_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_left")
 			{
-				global.player2_key2_left = lastkey;
+				global.player2_key2_left = last_key;
 			}
 			else
 			if (menu = "remap_key_right")
 			{
-				global.player2_key2_right = lastkey;
+				global.player2_key2_right = last_key;
 			}
 			else
 			if (menu = "remap_key_down")
 			{
-				global.player2_key2_down = lastkey;
+				global.player2_key2_down = last_key;
 			}
 			else
 			if (menu = "remap_key_up")
 			{
-				global.player2_key2_up = lastkey;
+				global.player2_key2_up = last_key;
 			}
 			else
 			if (menu = "remap_key_tongue")
 			{
-				global.player2_key2_tongue = lastkey;
+				global.player2_key2_tongue = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_in")
 			{
-				global.player2_key2_zoom_in = lastkey;
+				global.player2_key2_zoom_in = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_out")
 			{
-				global.player2_key2_zoom_out = lastkey;
+				global.player2_key2_zoom_out = last_key;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -330,67 +330,67 @@ function scr_keyboardremapping()
 		{
 			if (menu = "remap_key_dive")
 			{
-				global.player3_key_dive = lastkey;
+				global.player3_key_dive = last_key;
 			}
 			else
 			if (menu = "remap_key_jump")
 			{
-				global.player3_key_jump = lastkey;
+				global.player3_key_jump = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch")
 			{
-				global.player3_key_crouch = lastkey;
+				global.player3_key_crouch = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch_toggle")
 			{
-				global.player3_key_crouch_toggle = lastkey;
+				global.player3_key_crouch_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint")
 			{
-				global.player3_key_sprint = lastkey;
+				global.player3_key_sprint = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint_toggle")
 			{
-				global.player3_key_sprint_toggle = lastkey;
+				global.player3_key_sprint_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_left")
 			{
-				global.player3_key_left = lastkey;
+				global.player3_key_left = last_key;
 			}
 			else
 			if (menu = "remap_key_right")
 			{
-				global.player3_key_right = lastkey;
+				global.player3_key_right = last_key;
 			}
 			else
 			if (menu = "remap_key_down")
 			{
-				global.player3_key_down = lastkey;
+				global.player3_key_down = last_key;
 			}
 			else
 			if (menu = "remap_key_up")
 			{
-				global.player3_key_up = lastkey;
+				global.player3_key_up = last_key;
 			}
 			else
 			if (menu = "remap_key_tongue")
 			{
-				global.player3_key_tongue = lastkey;
+				global.player3_key_tongue = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_in")
 			{
-				global.player3_key_zoom_in = lastkey;
+				global.player3_key_zoom_in = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_out")
 			{
-				global.player3_key_zoom_out = lastkey;
+				global.player3_key_zoom_out = last_key;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -401,67 +401,67 @@ function scr_keyboardremapping()
 		{
 			if (menu = "remap_key_dive")
 			{
-				global.player3_key2_dive = lastkey;
+				global.player3_key2_dive = last_key;
 			}
 			else
 			if (menu = "remap_key_jump")
 			{
-				global.player3_key2_jump = lastkey;
+				global.player3_key2_jump = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch")
 			{
-				global.player3_key2_crouch = lastkey;
+				global.player3_key2_crouch = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch_toggle")
 			{
-				global.player3_key2_crouch_toggle = lastkey;
+				global.player3_key2_crouch_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint")
 			{
-				global.player3_key2_sprint = lastkey;
+				global.player3_key2_sprint = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint_toggle")
 			{
-				global.player3_key2_sprint_toggle = lastkey;
+				global.player3_key2_sprint_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_left")
 			{
-				global.player3_key2_left = lastkey;
+				global.player3_key2_left = last_key;
 			}
 			else
 			if (menu = "remap_key_right")
 			{
-				global.player3_key2_right = lastkey;
+				global.player3_key2_right = last_key;
 			}
 			else
 			if (menu = "remap_key_down")
 			{
-				global.player3_key2_down = lastkey;
+				global.player3_key2_down = last_key;
 			}
 			else
 			if (menu = "remap_key_up")
 			{
-				global.player3_key2_up = lastkey;
+				global.player3_key2_up = last_key;
 			}
 			else
 			if (menu = "remap_key_tongue")
 			{
-				global.player3_key2_tongue = lastkey;
+				global.player3_key2_tongue = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_in")
 			{
-				global.player3_key2_zoom_in = lastkey;
+				global.player3_key2_zoom_in = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_out")
 			{
-				global.player3_key2_zoom_out = lastkey;
+				global.player3_key2_zoom_out = last_key;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -480,67 +480,67 @@ function scr_keyboardremapping()
 		{
 			if (menu = "remap_key_dive")
 			{
-				global.player4_key_dive = lastkey;
+				global.player4_key_dive = last_key;
 			}
 			else
 			if (menu = "remap_key_jump")
 			{
-				global.player4_key_jump = lastkey;
+				global.player4_key_jump = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch")
 			{
-				global.player4_key_crouch = lastkey;
+				global.player4_key_crouch = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch_toggle")
 			{
-				global.player4_key_crouch_toggle = lastkey;
+				global.player4_key_crouch_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint")
 			{
-				global.player4_key_sprint = lastkey;
+				global.player4_key_sprint = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint_toggle")
 			{
-				global.player4_key_sprint_toggle = lastkey;
+				global.player4_key_sprint_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_left")
 			{
-				global.player4_key_left = lastkey;
+				global.player4_key_left = last_key;
 			}
 			else
 			if (menu = "remap_key_right")
 			{
-				global.player4_key_right = lastkey;
+				global.player4_key_right = last_key;
 			}
 			else
 			if (menu = "remap_key_down")
 			{
-				global.player4_key_down = lastkey;
+				global.player4_key_down = last_key;
 			}
 			else
 			if (menu = "remap_key_up")
 			{
-				global.player4_key_up = lastkey;
+				global.player4_key_up = last_key;
 			}
 			else
 			if (menu = "remap_key_tongue")
 			{
-				global.player4_key_tongue = lastkey;
+				global.player4_key_tongue = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_in")
 			{
-				global.player4_key_zoom_in = lastkey;
+				global.player4_key_zoom_in = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_out")
 			{
-				global.player4_key_zoom_out = lastkey;
+				global.player4_key_zoom_out = last_key;
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -551,67 +551,67 @@ function scr_keyboardremapping()
 		{
 			if (menu = "remap_key_dive")
 			{
-				global.player4_key2_dive = lastkey;
+				global.player4_key2_dive = last_key;
 			}
 			else
 			if (menu = "remap_key_jump")
 			{
-				global.player4_key2_jump = lastkey;
+				global.player4_key2_jump = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch")
 			{
-				global.player4_key2_crouch = lastkey;
+				global.player4_key2_crouch = last_key;
 			}
 			else
 			if (menu = "remap_key_crouch_toggle")
 			{
-				global.player4_key2_crouch_toggle = lastkey;
+				global.player4_key2_crouch_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint")
 			{
-				global.player4_key2_sprint = lastkey;
+				global.player4_key2_sprint = last_key;
 			}
 			else
 			if (menu = "remap_key_sprint_toggle")
 			{
-				global.player4_key2_sprint_toggle = lastkey;
+				global.player4_key2_sprint_toggle = last_key;
 			}
 			else
 			if (menu = "remap_key_left")
 			{
-				global.player4_key2_left = lastkey;
+				global.player4_key2_left = last_key;
 			}
 			else
 			if (menu = "remap_key_right")
 			{
-				global.player4_key2_right = lastkey;
+				global.player4_key2_right = last_key;
 			}
 			else
 			if (menu = "remap_key_down")
 			{
-				global.player4_key2_down = lastkey;
+				global.player4_key2_down = last_key;
 			}
 			else
 			if (menu = "remap_key_up")
 			{
-				global.player4_key2_up = lastkey;
+				global.player4_key2_up = last_key;
 			}
 			else
 			if (menu = "remap_key_tongue")
 			{
-				global.player4_key2_tongue = lastkey;
+				global.player4_key2_tongue = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_in")
 			{
-				global.player4_key2_zoom_in = lastkey;
+				global.player4_key2_zoom_in = last_key;
 			}
 			else
 			if (menu = "remap_key_zoom_out")
 			{
-				global.player4_key2_zoom_out = lastkey;
+				global.player4_key2_zoom_out = last_key;
 			}
 			menu_delay = 10;
 			can_remap_key = false;

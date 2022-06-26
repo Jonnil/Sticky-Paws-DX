@@ -6044,6 +6044,10 @@ else
 
 #region /*Bottomless Pit*/
 if (bbox_top > room_height)
+{
+	hspeed = 0;
+}
+if (bbox_top > room_height + 200)
 and (goal = false)
 {
 	die = true;
@@ -10980,6 +10984,7 @@ if (crouch = true)
 		#region /*Crouch Jump*/
 		if (vspeed < 0)
 		{
+			jump_transition_to_fall_animation = 0;
 			if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
 			if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
 			if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
@@ -10990,6 +10995,14 @@ if (crouch = true)
 			if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
+			if (image_index > image_number - 1)
+			{
+				image_speed = 0;
+			}
+			else
+			{
+				image_speed = 0.5;
+			}
 		}
 		#endregion /*Crouch Jump END*/
 		
@@ -10997,16 +11010,73 @@ if (crouch = true)
 		if (vspeed > 0)
 		and (stick_to_wall = false)
 		{
-			if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
-			if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
-			if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
-			if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
-			if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
-			if (sprite_jump > noone){sprite_index = sprite_jump;}else
-			if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
-			if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-			if (sprite_stand > noone){sprite_index = sprite_stand;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
+			
+			#region /*Crouch Fall sprites*/
+			if (jump_transition_to_fall_animation = 0)
+			{
+				image_index = 0;
+				jump_transition_to_fall_animation = 1
+			}
+			if (jump_transition_to_fall_animation = 1)
+			{
+				image_speed = 0.5;
+				if (sprite_crouch_jump_transition_to_fall > noone)
+				{
+					sprite_index = sprite_crouch_jump_transition_to_fall;
+				}
+				else
+				{
+					jump_transition_to_fall_animation = 2;
+				}
+				if (image_index > image_number - 1)
+				{
+					image_index = 0;
+					jump_transition_to_fall_animation = 2;
+				}
+			}
+			if (jump_transition_to_fall_animation = 2)
+			{
+				//if (key_jump_hold)
+				//{
+				//	if (sprite_fall_slower > noone){sprite_index = sprite_fall_slower;}else
+				//	if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+				//	if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall; image_index = image_number - 1;}else
+				//	if (sprite_jump > noone){sprite_index = sprite_jump; image_index = image_number - 1;}else
+				//	if (sprite_stand > noone){sprite_index = sprite_stand;}else
+				//	if (sprite_walk > noone){sprite_index = sprite_walk;}
+				//}
+				//else
+				//{
+				//	if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+				//	if (sprite_fall_slower > noone){sprite_index = sprite_fall_slower;}else
+				//	if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall; image_index = image_number - 1;}else
+				//	if (sprite_jump > noone){sprite_index = sprite_jump; image_index = image_number - 1;}else
+				//	if (sprite_stand > noone){sprite_index = sprite_stand;}else
+				//	if (sprite_walk > noone){sprite_index = sprite_walk;}
+				//}
+				
+				if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
+				if (sprite_crouch_jump_transition_to_fall > noone){sprite_index = sprite_crouch_jump_transition_to_fall; image_index = image_number - 1;}else
+				if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
+				if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
+				if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
+				if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
+				if (sprite_jump > noone){sprite_index = sprite_jump;}else
+				if (sprite_crouch> noone){sprite_index = sprite_crouch;}else
+				if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+				if (sprite_stand > noone){sprite_index = sprite_stand;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
+				if (image_index > image_number - 1)
+				{
+					image_speed = 0;
+				}
+				else
+				{
+					image_speed = 0.5;
+				}
+			}
+			#endregion /*Crouch Fall sprites END*/
+			
 		}
 	}
 	jump = 0;

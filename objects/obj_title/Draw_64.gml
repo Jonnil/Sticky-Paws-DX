@@ -637,17 +637,17 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 #endregion /*Build Date and Version END*/
 
+var link_discord_x = 16;
+var link_gamebanana_x = 56;
+var link_instagram_x = 96;
+var link_reddit_x = 136;
+var link_twitter_x = 176;
+var link_wiki_x = 216;
+
 #region /*Links*/
 /*Put links underneath build date and version*/
 if (global.enable_links = true)
 {
-	var link_discord_x = 16;
-	var link_gamebanana_x = 56;
-	var link_instagram_x = 96;
-	var link_reddit_x = 136;
-	var link_twitter_x = 176;
-	var link_wiki_x = 216;
-	
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, link_discord_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_gamebanana, link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_gamebanana", "link_gamebanana", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_instagram, link_instagram_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_instagram", "link_instagram", false);

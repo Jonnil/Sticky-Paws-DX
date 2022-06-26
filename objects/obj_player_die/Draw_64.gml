@@ -18,8 +18,6 @@ if (lives <= 0)
 	global.checkpoint_realmillisecond = 0;
 	#endregion /*When you get a game over, reset checkpoints END*/
 	
-	window_get_height()
-	
 	draw_set_halign(fa_center);
 	if (iris_xscale <= 0.3)
 	{
@@ -154,7 +152,7 @@ if (lives <= 0)
 				
 			#region /*Go to level editor if you die in level editor*/
 			if (asset_get_type("room_leveleditor") == asset_room)
-			and (room =room_leveleditor)
+			and (room = room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();

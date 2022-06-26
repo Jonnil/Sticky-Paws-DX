@@ -1960,9 +1960,10 @@ function scr_options_controller_gamepad_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
-			if (global.enable_choosen_controller_used = true)
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
+			if (global.enable_chosen_controller_used = true)
 			{
-				draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, Text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
 			}
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
@@ -1981,9 +1982,10 @@ function scr_options_controller_gamepad_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
-			if (global.enable_choosen_controller_used = true)
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
+			if (global.enable_chosen_controller_used = true)
 			{
-				draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, Text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
 			}
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
@@ -2002,9 +2004,10 @@ function scr_options_controller_gamepad_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
-			if (global.enable_choosen_controller_used = true)
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
+			if (global.enable_chosen_controller_used = true)
 			{
-				draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, Text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
 			}
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
@@ -2023,9 +2026,10 @@ function scr_options_controller_gamepad_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
-			if (global.enable_choosen_controller_used = true)
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
+			if (global.enable_chosen_controller_used = true)
 			{
-				draw_menu_dropdown(390, menu_y_choosen_controller_used + menu_y_offset, Text("Choosen Controller Used"), "choosen_controller_used", global.choosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, Text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
 			}
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
@@ -2038,9 +2042,9 @@ function scr_options_controller_gamepad_menu()
 		#endregion /*Controls checkmarks and dropdown menu settings END*/
 		
 		#region /*Menu cursor y position*/
-		if (menu = "choosen_controller_used")
+		if (menu = "chosen_controller_used")
 		{
-			menu_cursor_y_position = menu_y_choosen_controller_used + 100;
+			menu_cursor_y_position = menu_y_chosen_controller_used + 100;
 		}
 		if (menu = "show_controls")
 		{

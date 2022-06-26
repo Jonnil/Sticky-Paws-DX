@@ -1,3 +1,5 @@
+scr_zoom_camera_draw_gui(10);
+
 if (global.convention_mode = true)
 and (!instance_exists(obj_title))
 {
@@ -2406,8 +2408,14 @@ and (global.player2_can_play <= 0)
 and (global.player3_can_play <= 0)
 and (global.player4_can_play >= 1)
 {
-	draw_sprite_ext(spr_change_input_to_controller, 0, 110, window_get_height() + 300 + show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
-	draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_get_height() + 300 + show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
+	if (global.show_prompt_when_changing_to_gamepad = true)
+	{
+		draw_sprite_ext(spr_change_input_to_controller, 0, 110, window_get_height() + 300 + show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
+	}
+	if (global.show_prompt_when_changing_to_keyboard_and_mouse = true)
+	{
+		draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_get_height() + 300 + show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
+	}
 }
 #endregion /*Show what input is used END*/
 

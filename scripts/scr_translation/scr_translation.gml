@@ -75,11 +75,25 @@ function Text(key)
 	{
 		var text = global.language_local_data[# 1, global.translations[?key]];
 		var a = argument_count > 1?argument[1]:"";
-		text = string_replace_all(text, "{a}", a);
+		if (debug_mode = true)
+		{
+			text = string(round(random(9))) + string_replace_all(text, "{a}", a) + string(round(random(9)));
+		}
+		else
+		{
+			text = string_replace_all(text, "{a}", a);
+		}
 	}
 	else
 	{
-		var text = key;
+		if (debug_mode = true)
+		{
+			var text = string(round(random(9))) + key + string(round(random(9)));
+		}
+		else
+		{
+			var text = key;
+		}
 	}
 	return text;
 }
