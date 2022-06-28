@@ -94,9 +94,34 @@ sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
 
 #region /*Grid Initialization*/
 global.object_grid = ds_grid_create(12,0);
-add_object(level_object_id.id_wall, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0)
-add_object(level_object_id.id_basic_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0)
-add_object(level_object_id.id_bucket, spr_bucket, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0)
+add_object(level_object_id.id_wall, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_wall_dirt, spr_wall_dirt, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_wall_glass, spr_wall_glass, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_wall_grass, spr_wall_grass, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_wall_gravel, spr_wall_gravel, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_wall_metal, spr_wall_metal, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_wall_stone, spr_wall_stone, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_wall_wood, spr_wall_wood, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_wall_jump_panel, spr_wall_jump_panel, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_wall_climb_panel, spr_wall_climb_panel, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_spikes, spr_spikes, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_semisolid_platform, spr_semisolid_platform, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_brick_block, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_question_block, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_hard_block, spr_hard_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_falling_block, spr_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_falling_block_solid, spr_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_falling_block_long, spr_falling_block_long, 0, spr_cardboard, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_falling_block_long_solid, spr_falling_block_long_solid, 0, spr_cardboard, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_cloud_block, spr_cloud_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_ice_block, spr_ice_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_cardboard_block, spr_cardboard_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_cardboard, spr_cardboard, 0, spr_cardboard, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_cardboard_long, spr_cardboard_long, 0, spr_cardboard_long, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+
+add_object(level_object_id.id_basic_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bucket, spr_bucket, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 #endregion /*Grid Initialization END*/
 
 #region /*Controls for level editor*/

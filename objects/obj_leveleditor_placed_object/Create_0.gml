@@ -16,6 +16,7 @@ sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
 sprite_enemy_bowlingball_blind = global.resource_pack_sprite_enemy_bowlingball_blind_walk;
 sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
 sprite_lives_icon = noone;
+i = 0;
 
 place_object_angle = false;
 
