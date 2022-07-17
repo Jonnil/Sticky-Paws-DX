@@ -102,7 +102,7 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	and (open_dropdown = false)
 	{	
 		global.language_localization = real(string_delete(menu_index, 1, 8)-1);
-		calculate_language_completion()
+		calculate_translation_completion()
 		language_index = real(string_delete(menu_index, 1, 8))
 		menu = menu_index;
 		can_navigate_settings_sidebar = false;

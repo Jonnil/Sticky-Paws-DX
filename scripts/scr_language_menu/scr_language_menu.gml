@@ -58,7 +58,7 @@ function scr_language_menu()
 			and (open_dropdown = false)
 			{
 				global.language_localization = language_index - 1;
-				calculate_language_completion()
+				calculate_translation_completion()
 				menu_delay = 3;
 			}
 		}

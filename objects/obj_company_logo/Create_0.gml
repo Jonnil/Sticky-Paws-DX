@@ -488,4 +488,4 @@ sprite_index = spr_company_logo;
 
 #endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/
 
-calculate_language_completion()
+calculate_translation_completion()

@@ -1,5 +1,5 @@
 
-function calculate_language_completion(){
+function calculate_translation_completion(){
 var EmptyCount = 0;
 
 	for (var i = 1; i < ds_grid_height(global.language_local_data); i ++;)
