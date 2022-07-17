@@ -44,4 +44,6 @@ function scr_set_default_language()
 			}
 		}
 	}
+	
+calculate_language_completion()
 }
