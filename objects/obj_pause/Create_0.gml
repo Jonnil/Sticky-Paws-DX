@@ -1,5 +1,8 @@
 depth = -20;
 
+loading_spinning_angle = 0;
+show_loading_icon = false;
+
 #region /*Mouse x and mouse y initializing*/
 mx = mouse_x;
 my = mouse_y;

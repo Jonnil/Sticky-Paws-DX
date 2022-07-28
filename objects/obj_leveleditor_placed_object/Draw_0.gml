@@ -12,7 +12,7 @@ and (global.character_select_in_this_menu = "level_editor")
 	and (normal = true)
 	and (sprite_index > 0)
 	{
-		draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 1);
+		draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 1);
 	}
 	#endregion /*Show only normal difficulty layer in regular colors when saving a thumbnail END*/
 	
@@ -28,7 +28,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = false)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_lime, 0.1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_lime, 0.1);
 		}
 		else
 		if (easy = true)
@@ -36,7 +36,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = false)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 		}
 		else
 		if (easy = false)
@@ -44,7 +44,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = false)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_yellow, 0.1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_yellow, 0.1);
 		}
 		else
 		if (easy = false)
@@ -52,7 +52,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 		}
 		else
 		if (easy = false)
@@ -60,7 +60,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_red, 0.1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_red, 0.1);
 		}
 		else
 		if (easy = true)
@@ -68,7 +68,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 		}
 		#endregion /*Transparent Object END*/
 	
@@ -78,7 +78,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		and (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 1);
 		}
 	}
 	else
@@ -91,7 +91,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		if (easy = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_lime, 1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_lime, 1);
 		}
 		else
 		{
@@ -101,7 +101,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_lime, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_lime, 0.1);
 			}
 			else
 			if (easy = true)
@@ -109,7 +109,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 			}
 			else
 			if (easy = false)
@@ -117,7 +117,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_yellow, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_yellow, 0.1);
 			}
 			else
 			if (easy = false)
@@ -125,7 +125,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 			}
 			else
 			if (easy = false)
@@ -133,7 +133,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_red, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_red, 0.1);
 			}
 			else
 			if (easy = true)
@@ -141,7 +141,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 			}
 			#endregion /*Transparent Object END*/
 		}
@@ -155,7 +155,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		if (normal = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_yellow, 1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_yellow, 1);
 		}
 		else
 		{
@@ -165,7 +165,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_lime, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_lime, 0.1);
 			}
 			else
 			if (easy = true)
@@ -173,7 +173,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 			}
 			else
 			if (easy = false)
@@ -181,7 +181,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_yellow, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_yellow, 0.1);
 			}
 			else
 			if (easy = false)
@@ -189,7 +189,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 			}
 			else
 			if (easy = false)
@@ -197,7 +197,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_red, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_red, 0.1);
 			}
 			else
 			if (easy = true)
@@ -205,7 +205,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 			}
 			#endregion /*Transparent Object END*/
 		}
@@ -219,7 +219,7 @@ and (global.character_select_in_this_menu = "level_editor")
 		if (hard = true)
 		and (sprite_index > 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_red, 1);
+			draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_red, 1);
 		}
 		else
 		{
@@ -229,7 +229,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_lime, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_lime, 0.1);
 			}
 			else
 			if (easy = true)
@@ -237,7 +237,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 			}
 			else
 			if (easy = false)
@@ -245,7 +245,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = false)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_yellow, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_yellow, 0.1);
 			}
 			else
 			if (easy = false)
@@ -253,7 +253,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 			}
 			else
 			if (easy = false)
@@ -261,7 +261,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_red, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_red, 0.1);
 			}
 			else
 			if (easy = true)
@@ -269,7 +269,7 @@ and (global.character_select_in_this_menu = "level_editor")
 			and (hard = true)
 			and (sprite_index > 0)
 			{
-				draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 0.1);
+				draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 0.1);
 			}
 			#endregion /*Transparent Object END*/
 		}
@@ -281,7 +281,7 @@ else
 if (sprite_index > 0)
 and (global.character_select_in_this_menu = "level_editor")
 {
-	draw_sprite_ext(sprite_index, image_index, x, y, 1, draw_yscale, draw_angle, c_white, 1);
+	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_white, 1);
 }
 #endregion /*Make sprite transparent if you're setting difficulty levels END*/
 
@@ -394,7 +394,7 @@ if (global.world_editor = false)
 	if (object = 51){draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "4", global.default_text_size, c_white, c_black, image_alpha);}
 	if (object = 52){draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(x, y, "5", global.default_text_size, c_white, c_black, image_alpha);}
 	#endregion /*Big Collectibles END*/
-
+	
 	if (object = 55){draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 1, 1, 0, c_white, image_alpha);}
 	if (object = 55001){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 1, 1, 0, c_white, image_alpha);draw_sprite_ext(global.resource_pack_sprite_invincibility_powerup, 0, x, y, 1, 1, 0, c_white, image_alpha);}
 	if (object = 56) and (sprite_lives_icon > noone){draw_sprite_ext(sprite_lives_icon, 0, x, y, 1, 1, 0, c_white, image_alpha);draw_set_halign(fa_center);draw_set_valign(fa_center);

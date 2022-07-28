@@ -16,14 +16,15 @@ image_index = 0;
 #region /*Initialize Object*/
 if (global.world_editor = false)
 {
-	//if object == ds_grid_get(global.object_grid, 0, 0) {sprite_index = ds_grid_get(global.object_grid, 1, 0);mask_index = ds_grid_get(global.object_grid, 3, 0);}
-	
 	for(i = 0; i < ds_grid_height(global.object_grid)-1; i += 1)
     {
 		if (object == ds_grid_get(global.object_grid, 0, i))
 		{
 			sprite_index = ds_grid_get(global.object_grid, 1, i);
 			mask_index = ds_grid_get(global.object_grid, 3, i);
+			draw_xscale = ds_grid_get(global.object_grid, 4, i);
+			draw_yscale = ds_grid_get(global.object_grid, 4, i);
+			draw_angle = ds_grid_get(global.object_grid, 5, i);
 		}
     }
 	
@@ -207,7 +208,7 @@ if (global.world_editor = false)
 	//if (object = 88) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;mask_index = spr_wall;}
 	//if (object = 88001) and (asset_get_type("spr_bucket") == asset_sprite){sprite_index = spr_bucket;mask_index = spr_wall;}
 	//#endregion /*Bucket END*/
-
+	
 	//if (object = 89) and (asset_get_type("spr_bird") == asset_sprite){sprite_index = spr_bird;mask_index = spr_wall;}
 	//if (object = 90) and (asset_get_type("spr_sign_crouch") == asset_sprite){sprite_index = spr_sign_crouch;mask_index = spr_wall;}
 	//if (object = 91) and (asset_get_type("spr_sign_dive") == asset_sprite){sprite_index = spr_sign_dive;mask_index = spr_wall;}

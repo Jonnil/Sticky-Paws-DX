@@ -328,17 +328,19 @@ and (menu != "quit_game_yes")
 }
 #endregion /*Pause Text END*/
 
-
-
 /*PAUSE LEVEL SELECT / LEVEL EDITOR MENU*/
 if (asset_get_type("room_world_map") == asset_room)
 and (room = room_world_map)
+and (show_loading_icon = false)
 or(asset_get_type("room_leveleditor") == asset_room)
 and (room = room_leveleditor)
+and (show_loading_icon = false)
 or(asset_get_type("room_world_map") == asset_room)
 and (global.pause_room = room_world_map)
+and (show_loading_icon = false)
 or(asset_get_type("room_leveleditor") == asset_room)
 and (global.pause_room = room_leveleditor)
+and (show_loading_icon = false)
 {
 	if (menu = "continue")
 	or (menu = "options")
@@ -613,34 +615,7 @@ and (global.pause_room = room_leveleditor)
 			{
 				
 				#region /*Restart Level*/
-				
-				#region /*Reset timer back to zero*/
-				global.timeattack_realmillisecond = 0;
-				global.timeattack_millisecond = 0;
-				global.timeattack_second = 0;
-				global.timeattack_minute = 0;
-				#endregion /*Reset timer back to zero END*/
-				
-				global.restart_level = true;
-				audio_stop_all();
-				global.pause = false;
-				instance_activate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, window_get_width() + 32, window_get_height() + 32, true);
-				if (instance_exists(obj_player))
-				{
-					with(obj_player)
-					{
-						hspeed = pause_hspeed;
-						vspeed = pause_vspeed;
-					}
-				}
-				if (asset_get_type("room_pause") == asset_room)
-				{
-					room = global.pause_room;
-				}
-				else
-				{
-					instance_destroy();
-				}
+				show_loading_icon = true;
 				#endregion /*Restart Level END*/
 				
 			}
@@ -691,32 +666,7 @@ and (global.pause_room = room_leveleditor)
 		{
 			
 			#region /*Restart Level*/
-			
-			global.restart_level = true;
-			audio_stop_all();
-			global.pause = false;
-			instance_activate_region(
-			camera_get_view_x(view_camera[view_current]) - 32,
-			camera_get_view_y(view_camera[view_current]) - 32,
-			window_get_width() + 32,
-			window_get_height() + 32,
-			true);
-			if (instance_exists(obj_player))
-			{
-				with(obj_player)
-				{
-					hspeed = pause_hspeed;
-					vspeed = pause_vspeed;
-				}
-			}
-			if (asset_get_type("room_pause") == asset_room)
-			{
-				room = global.pause_room;
-			}
-			else
-			{
-				instance_destroy();
-			}
+			show_loading_icon = true;
 			#endregion /*Restart Level END*/
 			
 		}
@@ -754,68 +704,7 @@ and (global.pause_room = room_leveleditor)
 		{
 			
 			#region /*Restart Level*/
-			
-			#region /*Reset timer back to zero*/
-			global.timeattack_realmillisecond = 0;
-			global.timeattack_millisecond = 0;
-			global.timeattack_second = 0;
-			global.timeattack_minute = 0;
-			#endregion /*Reset timer back to zero END*/
-			
-			if (global.character_select_in_this_menu = "main_game")
-			{
-				var uppercase_level_name;
-				uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
-				uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
-				var level_name = string(uppercase_level_name);
-				
-				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-				ini_write_real(level_name, "x_checkpoint", 0);
-				ini_write_real(level_name, "y_checkpoint", 0);
-				ini_close();
-			}
-			else
-			if (global.character_select_in_this_menu = "level_editor")
-			{
-				var uppercase_level_name;
-				uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
-				uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
-				var level_name = string(uppercase_level_name);
-				
-				ini_open(working_directory + "/save_files/custom_level_save.ini");
-				ini_write_real(level_name, "x_checkpoint", 0);
-				ini_write_real(level_name, "y_checkpoint", 0);
-				ini_close();
-			}
-			
-			global.x_checkpoint = 0;
-			global.y_checkpoint = 0;
-			
-			global.restart_level = true;
-			audio_stop_all();
-			global.pause = false;
-			instance_activate_region(
-			camera_get_view_x(view_camera[view_current]) - 32,
-			camera_get_view_y(view_camera[view_current]) - 32,
-			window_get_width() + 32,
-			window_get_height() + 32,
-			true);
-			if (instance_exists(obj_player))
-			{
-				with(obj_player)
-				{
-					hspeed = pause_hspeed;
-					vspeed = pause_vspeed;
-				}
-			}
-			if (asset_get_type("room_pause") == asset_room)
-			{
-				room = global.pause_room;
-			}
-			else
-			{
-				instance_destroy();
-			}
+			show_loading_icon = true;
 			#endregion /*Restart Level END*/
 			
 		}
@@ -1283,6 +1172,124 @@ and (global.pause_room = room_leveleditor)
 	
 }
 /*PAUSE LEVEL EDITOR MENU*/
+
+#region /*Show loading icon and reset level*/
+if (show_loading_icon = true)
+{
+	loading_spinning_angle -= 10;
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_sprite_ext(spr_loading, 0, display_get_gui_width() / 2, display_get_gui_height() / 2, 1, 1, loading_spinning_angle, c_white, 1);
+	draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 42, Text("Loading"), global.default_text_size, c_white, c_black, 1);
+		
+	if (menu = "reset_from_checkpoint")
+	and (loading_spinning_angle < -20)
+	{
+		
+		#region /*Restart Level*/
+		global.restart_level = true;
+		audio_stop_all();
+		global.pause = false;
+		instance_activate_region(
+		camera_get_view_x(view_camera[view_current]) - 32,
+		camera_get_view_y(view_camera[view_current]) - 32,
+		window_get_width() + 32,
+		window_get_height() + 32,
+		true);
+		if (instance_exists(obj_player))
+		{
+			with(obj_player)
+			{
+				hspeed = pause_hspeed;
+				vspeed = pause_vspeed;
+			}
+		}
+		if (asset_get_type("room_pause") == asset_room)
+		{
+			room = global.pause_room;
+		}
+		else
+		{
+			instance_destroy();
+		}
+		#endregion /*Restart Level END*/
+		
+	}
+		
+	if (menu = "reset_from_start")
+	and (loading_spinning_angle < -20)
+	or (menu = "restart")
+	and (loading_spinning_angle < -20)
+	{
+		
+		#region /*Restart Level*/
+		
+		#region /*Reset timer back to zero*/
+		global.timeattack_realmillisecond = 0;
+		global.timeattack_millisecond = 0;
+		global.timeattack_second = 0;
+		global.timeattack_minute = 0;
+		#endregion /*Reset timer back to zero END*/
+		
+		if (global.character_select_in_this_menu = "main_game")
+		{
+			var uppercase_level_name;
+			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
+			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
+			var level_name = string(uppercase_level_name);
+				
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real(level_name, "x_checkpoint", 0);
+			ini_write_real(level_name, "y_checkpoint", 0);
+			ini_close();
+		}
+		else
+		if (global.character_select_in_this_menu = "level_editor")
+		{
+			var uppercase_level_name;
+			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
+			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
+			var level_name = string(uppercase_level_name);
+				
+			ini_open(working_directory + "/save_files/custom_level_save.ini");
+			ini_write_real(level_name, "x_checkpoint", 0);
+			ini_write_real(level_name, "y_checkpoint", 0);
+			ini_close();
+		}
+		
+		global.x_checkpoint = 0;
+		global.y_checkpoint = 0;
+		
+		global.restart_level = true;
+		audio_stop_all();
+		global.pause = false;
+		instance_activate_region(
+		camera_get_view_x(view_camera[view_current]) - 32,
+		camera_get_view_y(view_camera[view_current]) - 32,
+		window_get_width() + 32,
+		window_get_height() + 32,
+		true);
+		if (instance_exists(obj_player))
+		{
+			with(obj_player)
+			{
+				hspeed = pause_hspeed;
+				vspeed = pause_vspeed;
+			}
+		}
+		if (asset_get_type("room_pause") == asset_room)
+		{
+			room = global.pause_room;
+		}
+		else
+		{
+			instance_destroy();
+		}
+		#endregion /*Restart Level END*/
+		
+	}
+}
+#endregion /*Show loading icon and reset level END*/
 
 #region /*Return to game*/
 if (keyboard_check_pressed(vk_escape))

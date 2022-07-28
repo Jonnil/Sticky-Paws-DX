@@ -48,21 +48,25 @@ else
 
 #region /*Touching player*/
 if (image_angle = 0)
+and (instance_exists(obj_player))
 and (place_meeting(x, y - 2, instance_nearest(x, y, obj_player)))
 and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_player)))
 and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_player)))
 and (instance_nearest(x, y, obj_player).vspeed >= 0)
 or(image_angle = 90)
+and (instance_exists(obj_player))
 and (place_meeting(x - 2, y, instance_nearest(x, y, obj_player)))
 and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_player)))
 and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_player)))
 and (instance_nearest(x, y, obj_player).hspeed >= 0)
 or(image_angle = 180)
+and (instance_exists(obj_player))
 and (place_meeting(x, y + 2, instance_nearest(x, y, obj_player)))
 and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_player)))
 and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_player)))
 and (instance_nearest(x, y, obj_player).vspeed <= 0)
 or(image_angle = 270)
+and (instance_exists(obj_player))
 and (place_meeting(x + 2, y, instance_nearest(x, y, obj_player)))
 and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_player)))
 and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_player)))
@@ -120,173 +124,111 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 }
 #endregion /*Touching player END*/
 
-#region /*Touching enemy*/
-if (instance_exists(obj_enemy))
-{
-	if (instance_nearest(x, y, obj_enemy).can_die_from_spikes = true)
-	{
-		if (image_angle = 0)
-		and (place_meeting(x, y - 2, instance_nearest(x, y, obj_enemy)))
-		and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_enemy)))
-		and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_enemy)))
-		and (instance_nearest(x, y, obj_enemy).vspeed >= 0)
-		or(image_angle = 90)
-		and (place_meeting(x - 2, y, instance_nearest(x, y, obj_enemy)))
-		and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_enemy)))
-		and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_enemy)))
-		and (instance_nearest(x, y, obj_enemy).hspeed >= 0)
-		or(image_angle = 180)
-		and (place_meeting(x, y + 2, instance_nearest(x, y, obj_enemy)))
-		and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_enemy)))
-		and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_enemy)))
-		and (instance_nearest(x, y, obj_enemy).vspeed <= 0)
-		or(image_angle = 270)
-		and (place_meeting(x + 2, y, instance_nearest(x, y, obj_enemy)))
-		and (!place_meeting(x, y - 1, instance_nearest(x, y, obj_enemy)))
-		and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_enemy)))
-		and (instance_nearest(x, y, obj_enemy).hspeed <= 0)
-		{
-			if (instance_nearest(x, y, obj_enemy).x < x)
-			and (instance_nearest(x, y, obj_enemy).die = false)
-			{
-				instance_nearest(x, y, obj_enemy).vspeed = - 8;
-				instance_nearest(x, y, obj_enemy).die_volting = -1;
-				instance_nearest(x, y, obj_enemy).die = true;
-			}
-			else
-			if (instance_nearest(x, y, obj_enemy).die = false)
-			{
-				instance_nearest(x, y, obj_enemy).vspeed = - 8;
-				instance_nearest(x, y, obj_enemy).die_volting = +1;
-				instance_nearest(x, y, obj_enemy).die = true;
-			}
-		}
-	}
-}
-#endregion /*Touching enemy END*/
-
 if (image_angle = 0)
-{
-	if (position_meeting(x, y, instance_nearest(x, y, obj_player)))
-	{
-		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
-		and (sprite_index = spr_spikes_emerge)
-		{
-			with(instance_nearest(x, y, obj_player))
-			{
-				y -= 22;
-				smooth_teleport = 0;
-			}
-		}
-	}
-}
-if (image_angle = 90)
-{
-	if (position_meeting(x, y, instance_nearest(x, y, obj_player)))
-	{
-		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
-		and (sprite_index = spr_spikes_emerge)
-		{
-			with(instance_nearest(x, y, obj_player))
-			{
-				x -= 22;
-				y += 22;
-				smooth_teleport = 0;
-			}
-		}
-	}
-}
-if (image_angle = 180)
-{
-	if (position_meeting(x, y, instance_nearest(x, y, obj_player)))
-	{
-		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
-		and (sprite_index = spr_spikes_emerge)
-		{
-			with(instance_nearest(x, y, obj_player))
-			{
-				y += 22;
-				smooth_teleport = 0;
-			}
-		}
-	}
-}
-if (image_angle = 270)
-{
-	if (position_meeting(x, y, instance_nearest(x, y, obj_player)))
-	{
-		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
-		and (sprite_index = spr_spikes_emerge)
-		{
-			with(instance_nearest(x, y, obj_player))
-			{
-				x += 22;
-				y += 22;
-				smooth_teleport = 0;
-			}
-		}
-	}
-}
-
-if (image_angle = 0)
+and (instance_exists(obj_player))
+and (position_meeting(x, y, instance_nearest(x, y, obj_player)))
 and (asset_get_type("spr_spikes_emerge") == asset_sprite)
 and (sprite_index = spr_spikes_emerge)
 {
-	if (position_meeting(x, y - 4, instance_nearest(x, y, obj_player)))
-	and (instance_nearest(x, y, obj_player).dive = true)
+	with(instance_nearest(x, y, obj_player))
 	{
-		with(instance_nearest(x, y, obj_player))
-		{
-			dive = false;
-			y -= 22;
-			smooth_teleport = 0;
-		}
+		y -= 22;
+		smooth_teleport = 0;
+	}
+}
+if (image_angle = 90)
+and (instance_exists(obj_player))
+and (position_meeting(x, y, instance_nearest(x, y, obj_player)))
+and (asset_get_type("spr_spikes_emerge") == asset_sprite)
+and (sprite_index = spr_spikes_emerge)
+{
+	with(instance_nearest(x, y, obj_player))
+	{
+		x -= 22;
+		y += 22;
+		smooth_teleport = 0;
+	}
+}
+if (image_angle = 180)
+and (instance_exists(obj_player))
+and (position_meeting(x, y, instance_nearest(x, y, obj_player)))
+and (asset_get_type("spr_spikes_emerge") == asset_sprite)
+and (sprite_index = spr_spikes_emerge)
+{
+	with(instance_nearest(x, y, obj_player))
+	{
+		y += 22;
+		smooth_teleport = 0;
+	}
+}
+if (image_angle = 270)
+and (instance_exists(obj_player))
+and (position_meeting(x, y, instance_nearest(x, y, obj_player)))
+and (asset_get_type("spr_spikes_emerge") == asset_sprite)
+and (sprite_index = spr_spikes_emerge)
+{
+	with(instance_nearest(x, y, obj_player))
+	{
+		x += 22;
+		y += 22;
+		smooth_teleport = 0;
+	}
+}
+if (image_angle = 0)
+and (asset_get_type("spr_spikes_emerge") == asset_sprite)
+and (sprite_index = spr_spikes_emerge)
+and (instance_exists(obj_player))
+and (position_meeting(x, y - 4, instance_nearest(x, y, obj_player)))
+and (instance_nearest(x, y, obj_player).dive = true)
+{
+	with(instance_nearest(x, y, obj_player))
+	{
+		dive = false;
+		y -= 22;
+		smooth_teleport = 0;
 	}
 }
 if (image_angle = 90)
 and (asset_get_type("spr_spikes_emerge") == asset_sprite)
 and (sprite_index = spr_spikes_emerge)
+and (instance_exists(obj_player))
+and (position_meeting(x - 4, y, instance_nearest(x, y, obj_player)))
+and (instance_nearest(x, y, obj_player).dive = true)
 {
-	if (position_meeting(x - 4, y, instance_nearest(x, y, obj_player)))
-	and (instance_nearest(x, y, obj_player).dive = true)
+	with(instance_nearest(x, y, obj_player))
 	{
-		with(instance_nearest(x, y, obj_player))
-		{
-			dive = false;
-			x -= 22;
-			y += 22;
-			smooth_teleport = 0;
-		}
+		dive = false;
+		x -= 22;
+		y += 22;
+		smooth_teleport = 0;
 	}
 }
 if (image_angle = 180)
 and (asset_get_type("spr_spikes_emerge") == asset_sprite)
 and (sprite_index = spr_spikes_emerge)
+and (instance_exists(obj_player))
+and (position_meeting(x, y + 4, instance_nearest(x, y, obj_player)))
+and (instance_nearest(x, y, obj_player).dive = true)
 {
-	if (position_meeting(x, y + 4, instance_nearest(x, y, obj_player)))
-	and (instance_nearest(x, y, obj_player).dive = true)
+	with(instance_nearest(x, y, obj_player))
 	{
-		with(instance_nearest(x, y, obj_player))
-		{
-			dive = false;
-			y += 22;
-			smooth_teleport = 0;
-		}
+		dive = false;
+		y += 22;
+		smooth_teleport = 0;
 	}
 }
 if (image_angle = 270)
 and (asset_get_type("spr_spikes_emerge") == asset_sprite)
 and (sprite_index = spr_spikes_emerge)
+and (instance_exists(obj_player))
+and (position_meeting(x + 4, y, instance_nearest(x, y, obj_player)))
+and (instance_nearest(x, y, obj_player).dive = true)
 {
-	if (position_meeting(x + 4, y, instance_nearest(x, y, obj_player)))
-	and (instance_nearest(x, y, obj_player).dive = true)
+	with(instance_nearest(x, y, obj_player))
 	{
-		with(instance_nearest(x, y, obj_player))
-		{
-			dive = false;
-			x += 22;
-			y += 22;
-			smooth_teleport = 0;
-		}
+		dive = false;
+		x += 22;
+		y += 22;
+		smooth_teleport = 0;
 	}
 }

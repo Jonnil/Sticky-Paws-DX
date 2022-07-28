@@ -23,6 +23,7 @@ place_object_angle = false;
 second_x = x;
 second_y = y;
 
+draw_xscale = 1;
 draw_yscale = 1;
 draw_angle = 0;
 

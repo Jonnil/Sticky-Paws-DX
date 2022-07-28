@@ -29,22 +29,6 @@ if (quit_level_editor = false)
 		draw_set_alpha(1);
 		#endregion /*Make Background Darker END*/
 		
-		if (global.select_level_index >= 1)
-		and (global.create_level_from_template = false)
-		{
-			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		}
-		else
-		if (global.level_name != "")
-		{
-			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-		}
-		if (ini_key_exists("info", "first_created_on_version"))
-		{
-			draw_text_outlined(window_get_width() / 2, window_get_height() - 32, Text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + GM_version), global.default_text_size, c_black, c_white, 1);
-		}
-		ini_close();
-		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
 		if (keyboard_check_pressed(vk_escape))
@@ -66,6 +50,29 @@ if (quit_level_editor = false)
 		or(menu = "open_custom_levels_folder")
 		or(menu = "quit")
 		{
+			
+			#region /*Show what version of the game the level was first created in*/
+			/*This should make it easier to port old levels to new game versions*/
+			/*Showing the original version number makes it easier to pinpoint what changes happened from one version to another*/
+			if (global.select_level_index >= 1)
+			and (global.create_level_from_template = false)
+			{
+				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+			}
+			else
+			if (global.level_name != "")
+			{
+				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			}
+			if (ini_key_exists("info", "first_created_on_version"))
+			{
+				draw_set_halign(fa_center);
+				draw_set_valign(fa_center);
+				draw_text_outlined(window_get_width() / 2, window_get_height() - 32, Text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + GM_version), global.default_text_size, c_black, c_white, 1);
+			}
+			ini_close();
+			#endregion /*Show what version of the game the level was first created in END*/
+			
 			if (key_b_pressed)
 			and (menu_delay = 0)
 			{
@@ -413,12 +420,26 @@ if (quit_level_editor = false)
 			or(global.character_select_in_this_menu = "level_editor")
 			and (global.create_level_from_template >= 2)
 			{
-				draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
+				if (window_get_width() <= 1350)
+				{
+					draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size * 0.75, c_black, c_white, 1);
+				}
+				else
+				{
+					draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
+				}
 			}
 			else
 			if (global.character_select_in_this_menu = "level_editor")
 			{
-				draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
+				if (window_get_width() <= 1350)
+				{
+					draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "\\full_level_map.png", "\\", "/"), global.default_text_size * 0.75, c_black, c_white, 1);
+				}
+				else
+				{
+					draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
+				}
 			}
 			#endregion /*Draw the path for saving full level map END*/
 			

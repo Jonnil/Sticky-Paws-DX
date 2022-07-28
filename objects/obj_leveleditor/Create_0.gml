@@ -27,6 +27,13 @@ enum level_object_id
 	id_cardboard_long = 27,
 	id_bump_in_ground = 28,
 	id_basic_collectible = 40,
+	id_basic_collectible_315 = 41,
+	id_basic_collectible_270 = 42,
+	id_basic_collectible_225 = 43,
+	id_basic_collectible_180 = 44,
+	id_basic_collectible_135 = 45,
+	id_basic_collectible_90 = 46,
+	id_basic_collectible_45 = 47,
 	id_big_collectible_1 = 48,
 	id_big_collectible_2 = 49,
 	id_big_collectible_3 = 50,
@@ -40,9 +47,13 @@ enum level_object_id
 	id_two_up = 57,
 	id_three_up = 58,
 	id_basic_enemy = 59,
+	id_basic_enemy_spring = 5901,
 	id_basic_enemy_blind = 5902,
+	id_basic_enemy_blind_spring = 5903,
 	id_enemy_bowlingball = 591,
+	id_enemy_bowlingball_spring = 592,
 	id_enemy_bowlingball_blind = 5911,
+	id_enemy_bowlingball_blind_spring = 5912,
 	id_big_stationary_enemy = 60,
 	id_blaster = 61,
 	id_spring = 62,
@@ -68,6 +79,10 @@ enum level_object_id
 	id_bucket = 77,
 	id_bird = 89,
 	id_sign_crouch = 90,
+	id_sign_dive = 91,
+	id_sign_ground_pound = 92,
+	id_sign_rope_spin = 93,
+	id_sign_walljump = 94,
 	id_boss = 95,
 	id_boss_barrier = 96,
 	id_cake_stealing_enemy = 961,
@@ -120,8 +135,73 @@ add_object(level_object_id.id_cardboard, spr_cardboard, 0, spr_cardboard, 1, 0, 
 add_object(level_object_id.id_cardboard_long, spr_cardboard_long, 0, spr_cardboard_long, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_bump_in_ground, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 
+add_object(level_object_id.id_basic_collectible, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_collectible_45, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 45, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_collectible_90, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_collectible_135, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 135, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_collectible_180, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 180, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_collectible_225, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 225, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_collectible_270, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 270, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_collectible_315, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 315, c_white, 1, "", noone, true, 0);
+
+add_object(level_object_id.id_big_collectible_1, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_big_collectible_2, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_big_collectible_3, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_big_collectible_4, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_big_collectible_5, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+
+add_object(level_object_id.id_heart, spr_heart, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_hp_pickup, global.resource_pack_sprite_hp_pickup, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+
+add_object(level_object_id.id_one_up, spr_1up, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_two_up, spr_1up, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_three_up, spr_1up, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+
 add_object(level_object_id.id_basic_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_enemy_spring, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_enemy_blind, sprite_basic_enemy_blind, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_enemy_blind_spring, sprite_basic_enemy_blind, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+
+add_object(level_object_id.id_enemy_bowlingball, sprite_enemy_bowlingball, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_enemy_bowlingball_spring, sprite_enemy_bowlingball, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_enemy_bowlingball_blind, sprite_enemy_bowlingball_blind, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_enemy_bowlingball_blind_spring, sprite_enemy_bowlingball_blind, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+
+add_object(level_object_id.id_big_stationary_enemy, sprite_big_stationary_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+
+add_object(level_object_id.id_blaster, global.resource_pack_sprite_blaster, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_spring, spr_spring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_ladder, spr_ladder, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_arrow_sign, spr_arrow_sign, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_arrow_sign_small, spr_arrow_sign_small, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_checkpoint, spr_checkpoint, 1, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_spikes_emerge_block, spr_spikes_emerge_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_oneway, spr_oneway, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_oneway2, spr_oneway, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_oneway3, spr_oneway, 0, spr_wall, 1, 180, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_oneway4, spr_oneway, 0, spr_wall, 1, 270, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_horizontal_rope, spr_horizontal_rope, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_water, spr_water, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_air_bubbles_spawner, spr_air_bubbles_spawner, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_water_level_change_slow, spr_water_level_change_slow, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_water_level_change_fast, spr_water_level_change_fast, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_water_level_change_faster, spr_water_level_change_faster, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_clipped_shirt, spr_clipped_shirt, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_clipped_pants, spr_clipped_pants, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_clipped_sock, spr_clipped_sock, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_bucket, spr_bucket, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bird, spr_bird, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_sign_crouch, spr_sign_crouch, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_sign_dive, spr_sign_dive, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_sign_ground_pound, spr_sign_ground_pound, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_sign_rope_spin, spr_sign_rope_spin, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_sign_walljump, spr_sign_walljump, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_boss, spr_boss_stand, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_boss_barrier, spr_boss_barrier, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_cake_stealing_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_artwork_collection, spr_artwork_collection, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_block_only_when_player_is_near, global.resource_pack_sprite_block_only_when_player_is_near, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_block_only_when_player_is_near + 999, global.resource_pack_sprite_block_only_when_player_is_near, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 #endregion /*Grid Initialization END*/
 
 #region /*Controls for level editor*/

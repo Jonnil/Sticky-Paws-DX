@@ -41,7 +41,14 @@ if (os_type = os_linux)
 }
 
 draw_set_halign(fa_center);
-draw_text_outlined(window_get_width() / 2, window_get_height() / 2, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size, c_black, c_white, image_alpha);
+if (window_get_width() <= 1350)
+{
+	draw_text_outlined(window_get_width() / 2, window_get_height() / 2, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size * 0.75, c_black, c_white, image_alpha);
+}
+else
+{
+	draw_text_outlined(window_get_width() / 2, window_get_height() / 2, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size, c_black, c_white, image_alpha);
+}
 
 if (close = false)
 {
