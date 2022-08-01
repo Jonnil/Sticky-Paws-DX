@@ -198,6 +198,8 @@ hud_show_big_collectibles = - 32;
 hud_show_big_collectibles_timer = 0;
 hud_show_score = -64;
 hud_show_score_timer = 0;
+time_countup_y = 32; /*What y position the countup timer should be at*/
+hurry_up_message_timer = 0; /*How long the hurry up message should stay on screen*/
 #endregion /*Hud Variables END*/
 
 player_has_spawned = false;

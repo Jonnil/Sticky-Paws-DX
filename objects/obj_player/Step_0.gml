@@ -4085,7 +4085,6 @@ and (obj_camera.iris_xscale < 3)
 		global.level_clear_rate = "clear"; /*Set the level_clear_rate to clear as soon as you get the goal*/
 		if (instance_exists(obj_camera))
 		and (obj_camera.iris_xscale <= 0.01)
-		and (global.level_clear_rate = "clear")
 		{
 			if (obj_camera.iris_yscale <= 0.001)
 			{
@@ -9007,7 +9006,9 @@ if (goal = false)
 	{
 		die = true;
 	}
-	if (global.time_countdown = 99)
+	if (asset_get_type("obj_camera") == asset_object)
+	and (instance_exists(obj_camera))
+	and (obj_camera.hurry_up_message_timer = 1)
 	and (global.enable_time_countdown = true)
 	{
 		if (asset_get_type("snd_hurry_up") == asset_sound)

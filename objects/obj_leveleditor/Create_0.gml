@@ -135,6 +135,7 @@ add_object(level_object_id.id_cardboard, spr_cardboard, 0, spr_cardboard, 1, 0, 
 add_object(level_object_id.id_cardboard_long, spr_cardboard_long, 0, spr_cardboard_long, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_bump_in_ground, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 
+#region /*Add object basic collectible*/
 add_object(level_object_id.id_basic_collectible, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_basic_collectible_45, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 45, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_basic_collectible_90, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
@@ -143,6 +144,7 @@ add_object(level_object_id.id_basic_collectible_180, global.resource_pack_sprite
 add_object(level_object_id.id_basic_collectible_225, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 225, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_basic_collectible_270, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 270, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_basic_collectible_315, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 315, c_white, 1, "", noone, true, 0);
+#endregion /*Add object basic collectible END*/
 
 add_object(level_object_id.id_big_collectible_1, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 add_object(level_object_id.id_big_collectible_2, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
@@ -173,7 +175,7 @@ add_object(level_object_id.id_blaster, global.resource_pack_sprite_blaster, 0, s
 add_object(level_object_id.id_spring, spr_spring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 add_object(level_object_id.id_ladder, spr_ladder, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_arrow_sign, spr_arrow_sign, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
-add_object(level_object_id.id_arrow_sign_small, spr_arrow_sign_small, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_arrow_sign_small, spr_noone, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 add_object(level_object_id.id_checkpoint, spr_checkpoint, 1, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 add_object(level_object_id.id_spikes_emerge_block, spr_spikes_emerge_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_oneway, spr_oneway, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
