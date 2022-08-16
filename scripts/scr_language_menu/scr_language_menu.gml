@@ -18,9 +18,17 @@ function scr_language_menu()
 	
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_center);
-	draw_text_outlined(window_get_width() - 32, window_get_height() - 128, Text("Translator") + ":", global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
-	draw_text_outlined(window_get_width() - 32, window_get_height() - 80, Text("Translator name"), global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
-	draw_text_outlined(window_get_width() - 32, window_get_height() - 32, Text("Language translations may not be 100% accurate"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+	draw_text_outlined(window_get_width() - 32, 64, Text("Translator") + ":", global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
+	draw_text_outlined(window_get_width() - 32, 114, Text("Translator name"), global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
+	if (global.language_completion < 100)
+	{
+		draw_text_outlined(window_get_width() - 32, 164, "(" + Text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_outline, make_color_hsv(50/100 * global.language_completion, 255, 255), 1);
+	}
+	else
+	{
+		draw_text_outlined(window_get_width() - 32, 164, "(" + Text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_outline, c_gray, 1);
+	}
+	draw_text_outlined(window_get_width() - 32, window_get_height() - 32, "(" + Text("Language translations may not be 100% accurate") + ")", global.default_text_size * 0.75, c_menu_outline, c_gray, 1);
 	
 	#region /*Language Menu Navigation*/
 	if (menu_joystick_delay <= 0)
@@ -57,6 +65,7 @@ function scr_language_menu()
 			and (open_dropdown = false)
 			{
 				global.language_localization = language_index - 1;
+				calculate_translation_completion()
 				menu_delay = 3;
 			}
 		}

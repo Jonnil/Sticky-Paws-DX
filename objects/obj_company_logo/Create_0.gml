@@ -245,6 +245,7 @@ global.reset_level_zoom_when_going_back_to_map = false;
 global.reset_world_map_zoom_when_going_back_to_map = false;
 
 global.language_localization = 0;
+global.language_completion = 0;
 
 scr_set_default_language();
 
@@ -486,3 +487,5 @@ time = 0;
 sprite_index = spr_company_logo;
 
 #endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/
+
+calculate_translation_completion()

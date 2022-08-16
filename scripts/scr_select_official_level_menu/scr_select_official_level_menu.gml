@@ -208,7 +208,17 @@ function scr_select_official_level_menu()
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, 0, window_get_width(), 116, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
-	draw_text_outlined(window_get_width() / 2, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+	
+	if (window_get_width() <= 1350)
+	{
+		draw_text_outlined(window_get_width() / 2 + 128, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+	}
+	else
+	{
+		draw_text_outlined(window_get_width() / 2, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+	}
+	
+	//draw_text_outlined(window_get_width() / 2, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
 	draw_text_outlined(window_get_width() / 2, 100, Text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
 	
 	#region /*Back Button*/

@@ -501,13 +501,15 @@ and (!instance_exists(obj_title))
 		and (instance_exists(obj_player_die))
 		and (global.enable_time_countdown = true)
 		{
+			time_countup_y = 94;
 			
 			#region /*Time is running out message*/
 			if (global.player_has_entered_goal = false)
 			{
 				if (global.time_countdown <= 99)
-				and (global.time_countdown >= 95)
+				and (hurry_up_message_timer <= 300) /*Make the hurry up message stay on screen for 5 seconds (which is 300 frames)*/
 				{
+					hurry_up_message_timer += 1;
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_center);
 					draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, Text("HURRY UP!"), global.default_text_size, c_black, c_orange, 1);
@@ -565,6 +567,10 @@ and (!instance_exists(obj_title))
 				}
 			}
 		}
+		else
+		{
+			time_countup_y = 32;
+		}
 		#endregion /*Time Countdown END*/
 		
 		#region /*Time countup in Minutes, Seconds and Milliseconds*/
@@ -573,18 +579,18 @@ and (!instance_exists(obj_title))
 			draw_set_halign(fa_right)
 			if (global.timeattack_minute > 0)
 			{
-				draw_text_outlined(window_get_width() - 100, 74, string(global.timeattack_minute) + ":", global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(window_get_width() - 100, time_countup_y, string(global.timeattack_minute) + ":", global.default_text_size, c_black, c_white, 1);
 			}
 			if (global.timeattack_minute <= 0)
 			and (global.timeattack_second <= 9)
 			{
-				draw_text_outlined(window_get_width() - 65, 74, global.timeattack_second, global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(window_get_width() - 65, time_countup_y, global.timeattack_second, global.default_text_size, c_black, c_white, 1);
 			}
 			else
 			{
-				draw_text_outlined(window_get_width() - 65, 74, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(window_get_width() - 65, time_countup_y, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
 			}
-			draw_text_outlined(window_get_width() - 30, 76, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() - 30, time_countup_y + 2, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
 		#endregion /*Time countup in Minutes, Seconds and Milliseconds END*/
 		

@@ -1,4 +1,5 @@
 alarm[0] = 2;
+alarm[1] = 4;
 always_open = false; /*If a level should always be open or not*/
 big_collectible1 = false;
 big_collectible2 = false;

@@ -866,7 +866,8 @@ function scr_options_menu()
 	
 	if(global.enable_language_settings = true)
 	{
-		/*Click Language*/if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, language_settings_y, 370, language_settings_y + 40 - 1))
+		/*Click Language*/
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, language_settings_y, 370, language_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		and (global.settings_sidebar_menu = "language_settings")
 		and (mouse_check_button_released(mb_left))

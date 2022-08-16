@@ -2,7 +2,7 @@
 function scr_savelevel()
 {
 	if (global.character_select_in_this_menu = "main_game")
-	and (global.actually_play_edited_level)
+	and (global.actually_play_edited_level = true)
 	{
 		var uppercase_level_name;
 		uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -57,7 +57,7 @@ function scr_savelevel()
 	}
 	else
 	if (global.character_select_in_this_menu = "level_editor")
-	and (global.actually_play_edited_level)
+	and (global.actually_play_edited_level = true)
 	{
 		var uppercase_level_name;
 		uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
