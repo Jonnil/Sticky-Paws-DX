@@ -142,30 +142,22 @@ if (bounceup = false)
 
 					if (asset_get_type("obj_brick_particle") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, y, 0, obj_brick_particle);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_brick_particle))
 						{
 							motion_set(45, random_range(5, 10));
 							brick_particle = true;
 						}
-						var obj;
-						obj = instance_create_depth(x, y, 0, obj_brick_particle);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_brick_particle))
 						{
 							motion_set(135, random_range(5, 10));
 							brick_particle = true;
 						}
-						var obj;
-						obj = instance_create_depth(x, y, 0, obj_brick_particle);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_brick_particle))
 						{
 							motion_set(225, random_range(5, 10));
 							brick_particle = true;
 						}
-						var obj;
-						obj = instance_create_depth(x, y, 0, obj_brick_particle);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_brick_particle))
 						{
 							motion_set(315, random_range(5, 10));
 							brick_particle = true;

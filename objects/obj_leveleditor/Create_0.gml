@@ -13,8 +13,29 @@ enum level_object_id
 	id_wall_climb_panel = 1009,
 	id_spikes = 2,
 	id_semisolid_platform = 3,
+	
+	#region /*Brick Block*/
 	id_brick_block = 4,
+	id_brick_block_10_basic_collectibles = 5,
+	id_brick_block_heart_balloon = 6,
+	id_brick_block_one_up = 7,
+	id_brick_block_two_up = 8,
+	id_brick_block_three_up = 9,
+	id_brick_block_invincibility_powerup = 10,
+	id_brick_block_invincibility_powerup_coil_spring = 10001,
+	#endregion /*Brick Block END*/
+	
+	#region /*Question Block*/
 	id_question_block = 11,
+	id_question_block_10_basic_collectibles = 12,
+	id_question_block_heart_balloon = 13,
+	id_question_block_one_up = 14,
+	id_question_block_two_up = 15,
+	id_question_block_three_up = 16,
+	id_question_block_invincibility_powerup = 17,
+	id_question_block_invincibility_powerup_coil_spring = 17001,
+	#endregion /*Question Block END*/
+	
 	id_hard_block = 18,
 	id_falling_block = 19,
 	id_falling_block_solid = 20,
@@ -25,7 +46,39 @@ enum level_object_id
 	id_cardboard_block = 25,
 	id_cardboard = 26,
 	id_cardboard_long = 27,
+	
+	#region /*Bump in Ground*/
 	id_bump_in_ground = 28,
+	id_bump_in_ground_8_basic_collectibles = 29,
+	id_bump_in_ground_heart_balloon = 30,
+	id_bump_in_ground_one_up = 31,
+	id_bump_in_ground_two_up = 32,
+	id_bump_in_ground_three_up = 33,
+	id_bump_in_ground_big_collectible_1 = 34,
+	id_bump_in_ground_big_collectible_2 = 35,
+	id_bump_in_ground_big_collectible_3 = 36,
+	id_bump_in_ground_big_collectible_4 = 37,
+	id_bump_in_ground_big_collectible_5 = 38,
+	id_bump_in_ground_invincibility_powerup = 39,
+	id_bump_in_ground_invincibility_powerup_coil_spring = 39001,
+	#endregion /*Bump in Ground END*/
+	
+	#region /*Invisible Bump in Ground*/
+	id_invisible_bump_in_ground = 281,
+	id_invisible_bump_in_ground_8_basic_collectibles = 291,
+	id_invisible_bump_in_ground_heart_balloon = 301,
+	id_invisible_bump_in_ground_one_up = 311,
+	id_invisible_bump_in_ground_two_up = 321,
+	id_invisible_bump_in_ground_three_up = 331,
+	id_invisible_bump_in_ground_big_collectible_1 = 341,
+	id_invisible_bump_in_ground_big_collectible_2 = 351,
+	id_invisible_bump_in_ground_big_collectible_3 = 361,
+	id_invisible_bump_in_ground_big_collectible_4 = 371,
+	id_invisible_bump_in_ground_big_collectible_5 = 381,
+	id_invisible_bump_in_ground_invincibility_powerup = 391,
+	id_invisible_bump_in_ground_invincibility_powerup_coil_spring = 390011,
+	#endregion /*Invisible Bump in Ground END*/
+	
 	id_basic_collectible = 40,
 	id_big_collectible_1 = 48,
 	id_big_collectible_2 = 49,
@@ -106,8 +159,29 @@ add_object(level_object_id.id_wall_jump_panel, spr_wall_jump_panel, 0, spr_wall,
 add_object(level_object_id.id_wall_climb_panel, spr_wall_climb_panel, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_spikes, spr_spikes, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_semisolid_platform, spr_semisolid_platform, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+
+#region /*Brick Block*/
 add_object(level_object_id.id_brick_block, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_brick_block_10_basic_collectibles, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_brick_block_heart_balloon, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_brick_block_one_up, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_brick_block_two_up, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_brick_block_three_up, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_brick_block_invincibility_powerup, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_brick_block_invincibility_powerup_coil_spring, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+#endregion /*Brick Block END*/
+
+#region /*Question Block*/
 add_object(level_object_id.id_question_block, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_question_block_10_basic_collectibles, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_question_block_heart_balloon, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_question_block_one_up, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_question_block_two_up, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_question_block_three_up, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_question_block_invincibility_powerup, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_question_block_invincibility_powerup_coil_spring, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+#endregion /*Question Block END*/
+
 add_object(level_object_id.id_hard_block, spr_hard_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_falling_block, spr_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_falling_block_solid, spr_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -118,9 +192,43 @@ add_object(level_object_id.id_ice_block, spr_ice_block, 0, spr_wall, 1, 0, c_whi
 add_object(level_object_id.id_cardboard_block, spr_cardboard_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_cardboard, spr_cardboard, 0, spr_cardboard, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_cardboard_long, spr_cardboard_long, 0, spr_cardboard_long, 1, 0, c_white, 1, "", noone, true, 0);
+
+#region /*Bump in Ground*/
 add_object(level_object_id.id_bump_in_ground, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_8_basic_collectibles, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_heart_balloon, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_one_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_two_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_three_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_big_collectible_1, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_big_collectible_2, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_big_collectible_3, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_big_collectible_4, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_big_collectible_5, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_invincibility_powerup, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+#endregion /*Bump in Ground END*/
+
+#region /*Invisible Bump in Ground*/
+add_object(level_object_id.id_invisible_bump_in_ground, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_8_basic_collectibles, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_heart_balloon, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_one_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_two_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_three_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_1, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_2, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_3, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_4, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_5, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+#endregion /*Invisible Bump in Ground END*/
 
 add_object(level_object_id.id_basic_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_basic_enemy_blind, sprite_basic_enemy_blind, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_enemy_bowlingball, sprite_enemy_bowlingball, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_enemy_bowlingball_blind, sprite_enemy_bowlingball_blind, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_bucket, spr_bucket, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 #endregion /*Grid Initialization END*/
 
