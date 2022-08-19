@@ -1,3 +1,23 @@
+#region /*Draw coil spring*/
+if (coil_spring = true)
+{
+	if (place_meeting(x, y + 1, obj_wall))
+	or(asset_get_type("obj_semisolid_platform") == asset_object)
+	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or(asset_get_type("obj_semisolid_platform") == asset_object)
+	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or(asset_get_type("obj_semisolid_platform") == asset_object)
+	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	{
+		draw_sprite_ext(global.resource_pack_sprite_coil_spring, 1, x, bbox_bottom, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
+	}
+	else
+	{
+		draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, bbox_bottom, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
+	}
+}
+#endregion /*Draw coil spring END*/
+
 if (sprite_used = "stand")
 and (global.resource_pack_sprite_big_stationary_enemy > 0)
 {

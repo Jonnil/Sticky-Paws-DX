@@ -84,6 +84,44 @@ else
 }
 mask_index = mask;
 
+#region /*Coil spring bouncing code*/
+if (coil_spring = true)
+and (die = false)
+and (place_meeting(x, y + 1, obj_wall))
+or (coil_spring = true)
+and (die = false)
+and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+{
+	if (instance_exists(obj_foreground_secret))
+	and (place_meeting(x, y, obj_foreground_secret))
+	and (obj_foreground_secret.image_alpha < 0.5)
+	or (instance_exists(obj_foreground_secret))
+	and (!place_meeting(x, y, obj_foreground_secret))
+	{
+		if (asset_get_type("obj_camera") == asset_object)
+		and (instance_exists(obj_camera))
+		and (obj_camera.iris_xscale > 1)
+		{
+			effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
+			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+			effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
+			effect_create_above(ef_smoke, x - 16 - 8,bbox_bottom- 8, 0, c_white);
+			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
+			effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
+		}
+		if (asset_get_type("snd_spring") == asset_sound)
+		{
+			audio_play_sound(snd_spring, 0, 0);
+			audio_sound_gain(snd_spring, global.sound_volume * global.main_volume * 0.1, 0);
+		}
+	}
+	vspeed = -15;
+	gravity = 0;
+	draw_xscale = 1.25;
+	draw_yscale = 0.75;
+}
+#endregion /*Coil spring bouncing code END*/
+
 if (asset_get_type("obj_player") == asset_object)
 {
 	if (instance_number(obj_player) > 0)

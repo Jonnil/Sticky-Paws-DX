@@ -131,6 +131,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	}
 }
 
+#region /*Coil spring bouncing code*/
 if (coil_spring = true)
 and (die = false)
 and (place_meeting(x, y + 1, obj_wall))
@@ -166,6 +167,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	draw_xscale = 1.25;
 	draw_yscale = 0.75;
 }
+#endregion /*Coil spring bouncing code END*/
 
 #region /*Kill enemy if it's inside the wall*/
 if (position_meeting(x, y, obj_wall))

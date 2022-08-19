@@ -477,6 +477,32 @@ if (keyboard_check_pressed(ord("D")))
 
 else
 
+#region /*Scroll mouse wheel to change drawing tool size in level editor*/
+if (fill_mode = false)
+and (erase_mode = false)
+and (mouse_check_button(mb_left))
+and (pause = false)
+{
+	if (mouse_wheel_down())
+	{
+		if (place_brush_size > 0)
+		{
+			place_brush_size -= 1;
+		}
+	}
+	else
+	if (mouse_wheel_up())
+	{
+		if (place_brush_size < 5)
+		{
+			place_brush_size += 1;
+		}
+	}
+}
+#endregion /*Scroll mouse wheel to change drawing tool size in level editor End*/
+
+else
+
 #region /*Press E key to change to erase tool in level editor*/
 if (keyboard_check_pressed(ord("E")))
 and (pause = false)
@@ -521,6 +547,32 @@ and (pause = false)
 	}
 }
 #endregion /*Press E key to change to erase tool in level editor*/
+
+else
+
+#region /*Scroll mouse wheel to change erase tool size in level editor*/
+if (erase_mode = true)
+and (pause = false)
+{
+	if (mouse_wheel_down())
+	{
+		fill_mode = false;
+		if (erase_brush_size > 0)
+		{
+			erase_brush_size -= 1;
+		}
+	}
+	else
+	if (mouse_wheel_up())
+	{
+		fill_mode = false;
+		if (erase_brush_size < 5)
+		{
+			erase_brush_size += 1;
+		}
+	}
+}
+#endregion /*Scroll mouse wheel to change erase tool size in level editor END*/
 
 else
 

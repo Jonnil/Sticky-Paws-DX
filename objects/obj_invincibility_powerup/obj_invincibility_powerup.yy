@@ -1,10 +1,8 @@
 {
-  "spriteId": {
-    "name": "spr_block_black",
-    "path": "sprites/spr_block_black/spr_block_black.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,

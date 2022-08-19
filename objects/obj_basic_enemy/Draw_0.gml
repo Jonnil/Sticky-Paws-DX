@@ -1,3 +1,4 @@
+#region /*Draw coil spring*/
 if (coil_spring = true)
 {
 	if (place_meeting(x, y + 1, obj_wall))
@@ -15,6 +16,7 @@ if (coil_spring = true)
 		draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 32, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
 	}
 }
+#endregion /*Draw coil spring END*/
 
 draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * image_xscale, draw_yscale, image_angle, image_blend, image_alpha);
 

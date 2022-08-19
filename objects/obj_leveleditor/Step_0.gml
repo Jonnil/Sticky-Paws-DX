@@ -1659,7 +1659,21 @@ if (quit_level_editor <= 0)
 									object = 591;
 								}
 								#endregion /*Bowling ball enemy END*/
-							
+								
+								else
+								
+								#region /*Big Stationary Enemy*/
+								if (object = level_object_id.id_big_stationary_enemy)
+								{
+									object = level_object_id.id_big_stationary_enemy_coil_spring;
+								}
+								else
+								if (object = level_object_id.id_big_stationary_enemy_coil_spring)
+								{
+									object = level_object_id.id_big_stationary_enemy;
+								}
+								#endregion /*Big Stationary Enemy END*/
+								
 								else
 							
 								#region /*Spikes Emerge Direction*/

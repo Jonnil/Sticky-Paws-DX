@@ -407,7 +407,8 @@ if (global.world_editor = false)
 	if (object = 5903){if (global.resource_pack_sprite_coil_spring > noone){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);}}
 	if (object = 592){if (global.resource_pack_sprite_coil_spring > noone){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);}}
 	if (object = 5912){if (global.resource_pack_sprite_coil_spring > noone){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 32, 1, 1, 0, c_white, image_alpha);}}
-
+	if (object = level_object_id.id_big_stationary_enemy_coil_spring){if (global.resource_pack_sprite_coil_spring > noone){draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 64, 1, 1, 0, c_white, image_alpha);}}
+	
 	#region /*Arrow Signs*/
 	if (object = 64) and (asset_get_type("spr_arrow_sign") == asset_sprite){draw_sprite_ext(spr_arrow_sign, 0, x, y, 1, 1, draw_angle, image_blend, image_alpha);}
 	#endregion /*Arrow Signs END*/

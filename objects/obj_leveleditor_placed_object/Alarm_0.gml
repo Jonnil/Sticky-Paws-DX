@@ -214,7 +214,7 @@ if (global.world_editor = false)
 	//if (object = 91) and (asset_get_type("spr_sign_dive") == asset_sprite){sprite_index = spr_sign_dive;mask_index = spr_wall;}
 	//if (object = 92) and (asset_get_type("spr_sign_ground_pound") == asset_sprite){sprite_index = spr_sign_ground_pound;mask_index = spr_wall;}
 	//if (object = 93) and (asset_get_type("spr_sign_rope_spin") == asset_sprite){sprite_index = spr_sign_rope_spin;mask_index = spr_wall;}
-	//if (object = 94) and (asset_get_type("spr_sign_walljump") == asset_sprite){sprite_index = spr_sign_walljump;mask_index = spr_wall;}
+	//if (object = 94) and (asset_get_type("spr_sign_wall_jump") == asset_sprite){sprite_index = spr_sign_wall_jump;mask_index = spr_wall;}
 	//if (object = 95) and (asset_get_type("spr_boss_stand") == asset_sprite){sprite_index = spr_boss_stand;mask_index = spr_wall;}
 	//if (object = 96) and (asset_get_type("spr_boss_barrier") == asset_sprite){sprite_index = spr_boss_barrier;mask_index = spr_wall;}
 	//if (object = 961) and (sprite_basic_enemy > 0){sprite_index = sprite_basic_enemy;mask_index = spr_wall;}
