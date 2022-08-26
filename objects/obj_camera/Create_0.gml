@@ -1,3 +1,5 @@
+black_screen_gui_alpha = 1;
+
 player1_motor_speed = 0;
 player2_motor_speed = 0;
 player3_motor_speed = 0;

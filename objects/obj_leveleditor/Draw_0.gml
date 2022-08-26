@@ -475,34 +475,6 @@ if (keyboard_check_pressed(ord("D")))
 }
 #endregion /*Press D key to change to drawing tool in level editor END*/
 
-else
-
-#region /*Scroll mouse wheel to change drawing tool size in level editor*/
-if (fill_mode = false)
-and (erase_mode = false)
-and (mouse_check_button(mb_left))
-and (pause = false)
-{
-	if (mouse_wheel_down())
-	{
-		if (place_brush_size > 0)
-		{
-			place_brush_size -= 1;
-		}
-	}
-	else
-	if (mouse_wheel_up())
-	{
-		if (place_brush_size < 5)
-		{
-			place_brush_size += 1;
-		}
-	}
-}
-#endregion /*Scroll mouse wheel to change drawing tool size in level editor End*/
-
-else
-
 #region /*Press E key to change to erase tool in level editor*/
 if (keyboard_check_pressed(ord("E")))
 and (pause = false)
@@ -510,6 +482,7 @@ and (pause = false)
 	if (erase_mode = false)
 	{
 		erase_mode = true;
+		fill_mode = false;
 	}
 	else
 	if (erase_mode = true)
@@ -548,7 +521,64 @@ and (pause = false)
 }
 #endregion /*Press E key to change to erase tool in level editor*/
 
-else
+#region /*Press F key to change to fill tool in level editor*/
+if (keyboard_check_pressed(ord("F")))
+{
+	if (fill_mode = false)
+	{
+		erase_mode = false;
+		fill_mode = true;
+	}
+	else
+	if (fill_mode_type = "fill")
+	and (erase_mode = false)
+	and (fill_mode = true)
+	{
+		erase_mode = false;
+		fill_mode_type = "horizontal";
+	}
+	else
+	if (fill_mode_type = "horizontal")
+	and (erase_mode = false)
+	and (fill_mode = true)
+	{
+		erase_mode = false;
+		fill_mode_type = "vertical";
+	}
+	else
+	if (fill_mode_type = "vertical")
+	and (erase_mode = false)
+	and (fill_mode = true)
+	{
+		erase_mode = false;
+		fill_mode_type = "fill";
+	}
+}
+#endregion /*Press F key to change to fill tool in level editor*/
+
+#region /*Scroll mouse wheel to change drawing tool size in level editor*/
+if (fill_mode = false)
+and (erase_mode = false)
+and (mouse_check_button(mb_left))
+and (pause = false)
+{
+	if (mouse_wheel_down())
+	{
+		if (place_brush_size > 0)
+		{
+			place_brush_size -= 1;
+		}
+	}
+	else
+	if (mouse_wheel_up())
+	{
+		if (place_brush_size < 5)
+		{
+			place_brush_size += 1;
+		}
+	}
+}
+#endregion /*Scroll mouse wheel to change drawing tool size in level editor End*/
 
 #region /*Scroll mouse wheel to change erase tool size in level editor*/
 if (erase_mode = true)
@@ -573,40 +603,6 @@ and (pause = false)
 	}
 }
 #endregion /*Scroll mouse wheel to change erase tool size in level editor END*/
-
-else
-
-#region /*Press F key to change to fill tool in level editor*/
-if (keyboard_check_pressed(ord("F")))
-{
-	if (fill_mode = false)
-	{
-		erase_mode = false;
-		fill_mode = true;
-	}
-	else
-	if (fill_mode_type = "fill")
-	{
-		erase_mode = false;
-		fill_mode_type = "horizontal";
-		fill_mode = true;
-	}
-	else
-	if (fill_mode_type = "horizontal")
-	{
-		erase_mode = false;
-		fill_mode_type = "vertical";
-		fill_mode = true;
-	}
-	else
-	if (fill_mode_type = "vertical")
-	{
-		erase_mode = false;
-		fill_mode_type = "fill";
-		fill_mode = true;
-	}
-}
-#endregion /*Press F key to change to fill tool in level editor*/
 
 #region /*Grid hotkeys*/
 if (keyboard_check(vk_control))

@@ -60,6 +60,7 @@ function scr_options_level_editor()
 	or (menu = "rain")
 	or (menu = "enable_time_countdown")
 	or (menu = "time_countdown")
+	or (menu = "level_editing_music")
 	{
 		
 		#region /*Menu Navigation*/
@@ -79,6 +80,13 @@ function scr_options_level_editor()
 		
 		if (menu = "back_level_editor_options")
 		{
+			if (key_up)
+			and (menu_delay = 0)
+			{
+				menu = "level_editing_music";
+				menu_delay = 3;
+			}
+			else
 			if (key_down)
 			and (menu_delay = 0)
 			{
@@ -250,7 +258,23 @@ function scr_options_level_editor()
 			if (key_down)
 			and (menu_delay = 0)
 			{
+				menu = "level_editing_music";
+				menu_delay = 3;
+			}
+		}
+		if (menu = "level_editing_music")
+		{
+			if (key_up)
+			and (menu_delay = 0)
+			{
 				menu = "time_countdown";
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			and (menu_delay = 0)
+			{
+				menu = "back_level_editor_options";
 				menu_delay = 3;
 			}
 		}
@@ -316,6 +340,7 @@ function scr_options_level_editor()
 		draw_menu_checkmark(level_editor_options_x - 90, 47 * 7 + menu_y_offset, "Rain", "rain", global.rain);
 		draw_menu_checkmark(level_editor_options_x - 90, 47 * 8 + menu_y_offset, "Enable Time Countdown", "enable_time_countdown", global.enable_time_countdown);
 		global.time_countdown = draw_menu_left_right_buttons(level_editor_options_x, 46 * 9 + menu_y_offset, options_level_editor_right_arrow_x, "Time Countdown", global.time_countdown, "time_countdown", 1, false);
+		draw_menu_dropdown(level_editor_options_x, 46 * 10 + menu_y_offset, "Level Editing Music", "level_editing_music", selected_level_editing_music, "None", "Music 1", "Music 2", "Music 3");
 	}
 	else
 	if (menu = "back_background_offset_and_parallax")

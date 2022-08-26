@@ -209,7 +209,7 @@ and (global.pause = false)
 
 room_speed = global.max_fps; /*Room Speed is max fps*/
 global.spikes_emerge_time += 1;
-if (global.spikes_emerge_time >= room_speed * 6)
+if (global.spikes_emerge_time >= room_speed * 4)
 {
 	global.spikes_emerge_time = 0;
 }
@@ -301,12 +301,6 @@ and (!instance_exists(obj_player_map))
 }
 #endregion /*Draw Iris Transitions END*/
 /*Iris END*/
-
-if (asset_get_type("obj_player_map") == asset_object)
-and (!instance_exists(obj_player_map))
-{
-	scr_parallax_scrolling_background();
-}
 
 #region /*Tongue aim should always be above everything, it represents the mouse cursor*/
 if (asset_get_type("obj_player") == asset_object)

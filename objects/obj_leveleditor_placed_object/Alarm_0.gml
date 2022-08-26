@@ -25,6 +25,8 @@ if (global.world_editor = false)
 			draw_xscale = ds_grid_get(global.object_grid, 4, i);
 			draw_yscale = ds_grid_get(global.object_grid, 4, i);
 			draw_angle = ds_grid_get(global.object_grid, 5, i);
+			image_blend = ds_grid_get(global.object_grid, 6, i);
+			image_alpha = ds_grid_get(global.object_grid, 7, i);
 		}
     }
 	

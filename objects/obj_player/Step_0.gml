@@ -3950,55 +3950,6 @@ if (global.quit_level = true)
 }
 #endregion /*Quit Level END*/
 
-#region /*Invincible Music*/
-if (invincible >= true)
-and (assist_invincible = false)
-and (asset_get_type("snd_music_invincible") == asset_sound)
-and (audio_is_playing(snd_music_invincible))
-{
-	audio_sound_gain(global.music, 0, 0);
-	audio_sound_gain(global.music_underwater, 0, 0);
-}
-else
-{
-	if (!audio_is_playing(snd_music_invincible))
-	{
-		invincible = false;
-	}
-	
-	audio_stop_sound(snd_music_invincible);
-	
-	if (!audio_is_playing(global.music))
-	{
-		if (asset_get_type("snd_hurry_up") == asset_sound)
-		and (!audio_is_playing(snd_hurry_up))
-		{
-			audio_play_sound(global.music, 0, true);
-			audio_sound_gain(global.music, 0, 0);
-		}
-		else
-		{
-			audio_play_sound(global.music, 0, true);
-			audio_sound_gain(global.music, 0, 0);
-		}
-	}
-	if (!audio_is_playing(global.music_underwater))
-	{
-		if (asset_get_type("snd_hurry_up") == asset_sound)
-		and (!audio_is_playing(snd_hurry_up))
-		{
-			audio_play_sound(global.music_underwater, 0, true);
-			audio_sound_gain(global.music_underwater, 0, 0);
-		}
-		else
-		{
-			audio_play_sound(global.music_underwater, 0, true);
-			audio_sound_gain(global.music_underwater, 0, 0);
-		}
-	}
-}
-#endregion /*Invincible Music END*/
-
 #region /*Play Ambience*/
 if (!audio_is_playing(global.ambience))
 {
@@ -8959,8 +8910,8 @@ and (instance_nearest(x, y, obj_invincibility_powerup).bounceup = false)
 {
 	chain_reaction = 0;
 	invincible = true;
-	audio_sound_gain(global.music, 0, 100);
-	audio_sound_gain(global.music_underwater, 0, 100);
+	audio_sound_gain(global.music, 0, 0);
+	audio_sound_gain(global.music_underwater, 0, 0);
 	if (asset_get_type("snd_music_invincible") == asset_sound)
 	and (!audio_is_playing(snd_music_invincible))
 	{
@@ -8995,6 +8946,55 @@ and (instance_nearest(x, y, obj_invincibility_powerup).bounceup = false)
 	}
 }
 #endregion /*Invincibility END*/
+
+#region /*Invincible Music*/
+if (invincible >= true)
+and (assist_invincible = false)
+and (asset_get_type("snd_music_invincible") == asset_sound)
+and (audio_is_playing(snd_music_invincible))
+{
+	audio_sound_gain(global.music, 0, 0);
+	audio_sound_gain(global.music_underwater, 0, 0);
+}
+else
+{
+	if (!audio_is_playing(snd_music_invincible))
+	{
+		invincible = false;
+	}
+	
+	audio_stop_sound(snd_music_invincible);
+	
+	if (!audio_is_playing(global.music))
+	{
+		if (asset_get_type("snd_hurry_up") == asset_sound)
+		and (!audio_is_playing(snd_hurry_up))
+		{
+			audio_play_sound(global.music, 0, true);
+			audio_sound_gain(global.music, 0, 0);
+		}
+		else
+		{
+			audio_play_sound(global.music, 0, true);
+			audio_sound_gain(global.music, 0, 0);
+		}
+	}
+	if (!audio_is_playing(global.music_underwater))
+	{
+		if (asset_get_type("snd_hurry_up") == asset_sound)
+		and (!audio_is_playing(snd_hurry_up))
+		{
+			audio_play_sound(global.music_underwater, 0, true);
+			audio_sound_gain(global.music_underwater, 0, 0);
+		}
+		else
+		{
+			audio_play_sound(global.music_underwater, 0, true);
+			audio_sound_gain(global.music_underwater, 0, 0);
+		}
+	}
+}
+#endregion /*Invincible Music END*/
 
 #region /*Time*/
 if (goal = false)

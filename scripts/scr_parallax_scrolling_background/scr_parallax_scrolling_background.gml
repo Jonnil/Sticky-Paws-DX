@@ -1,5 +1,6 @@
 function scr_parallax_scrolling_background()
 {
+	/*Have this script in End Step, so that the background scrolling can keep up with a moving camera*/
 	
 	#region /*Parallax Scrolling Background*/
 	layer_x(layer_get_id("Background"), camera_get_view_x(view_camera[view_current])/custom_background_1_x_parallax + custom_background_1_x_offset);

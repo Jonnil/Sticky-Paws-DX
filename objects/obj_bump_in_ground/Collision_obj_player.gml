@@ -8,9 +8,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
@@ -25,16 +23,13 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x - 32,bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x - 32,bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
 				}
-				obj = instance_create_depth(x - 24,bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x - 24,bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -42,8 +37,7 @@ if (place_meeting(x, y- 8, other))
 					bounceup = true;
 					delay_time = 10;
 				}
-				obj = instance_create_depth(x - 16,bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x - 16,bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -51,8 +45,7 @@ if (place_meeting(x, y- 8, other))
 					bounceup = true;
 					delay_time = 20;
 				}
-				obj = instance_create_depth(x - 8,bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x - 8,bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -60,8 +53,7 @@ if (place_meeting(x, y- 8, other))
 					bounceup = true;
 					delay_time = 30;
 				}
-				obj = instance_create_depth(x +8,bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x +8,bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -69,8 +61,7 @@ if (place_meeting(x, y- 8, other))
 					bounceup = true;
 					delay_time = 40;
 				}
-				obj = instance_create_depth(x + 16,bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x + 16,bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -78,8 +69,7 @@ if (place_meeting(x, y- 8, other))
 					bounceup = true;
 					delay_time = 50;
 				}
-				obj = instance_create_depth(x + 24,bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x + 24,bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -87,8 +77,7 @@ if (place_meeting(x, y- 8, other))
 					bounceup = true;
 					delay_time = 60;
 				}
-				obj = instance_create_depth(x + 32,bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x + 32,bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -105,9 +94,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_heart_balloon") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top - 16, 0, obj_heart_balloon);
-				with(obj)
+				with(instance_create_depth(x, bbox_top - 16, 0, obj_heart_balloon))
 				{
 					bounceup = true;
 					motion_set(90, 10);
@@ -121,9 +108,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup);
-				with(obj)
+				with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
 				{
 					number_of_extra_lives = 1;
 					bounceup = true;
@@ -138,9 +123,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup);
-				with(obj)
+				with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
 				{
 					number_of_extra_lives = 2;
 					bounceup = true;
@@ -155,9 +138,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup);
-				with(obj)
+				with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
 				{
 					number_of_extra_lives = 3;
 					bounceup = true;
@@ -172,9 +153,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
@@ -190,9 +169,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
@@ -208,9 +185,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
@@ -226,9 +201,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
@@ -244,9 +217,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top, 0, obj_big_collectible);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
@@ -262,11 +233,24 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top - 16, 0, obj_invincibility_powerup);
-				with(obj)
+				with(instance_create_depth(x, bbox_top - 16, 0, obj_invincibility_powerup))
 				{
 					bounceup = true;
+					motion_set(90, 10);
+				}
+			}
+		}
+		#endregion /*Invincibility Powerup END*/
+		
+		#region /*Invincibility Powerup Coil Spring*/
+		if (type_of_bump = "invincibility_powerup_coil_spring")
+		{
+			if (asset_get_type("obj_invincibility_powerup") == asset_object)
+			{
+				with(instance_create_depth(x, bbox_top - 16, 0, obj_invincibility_powerup))
+				{
+					bounceup = true;
+					coil_spring = true;
 					motion_set(90, 10);
 				}
 			}

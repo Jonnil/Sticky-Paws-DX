@@ -6,36 +6,111 @@ and (global.assist_enable_spikes = false)
 }
 #endregion /*If spikes are disabled, destroy this object*/
 
+
+
+
+
+
+#region /*Normal timing*/
 if (global.spikes_emerge_time < room_speed * 1)
 {
-	if (asset_get_type("spr_spikes_emerge_half_out") == asset_sprite)
+	if (timer_offset = false)
 	{
-		sprite_index = spr_spikes_emerge_half_out;
+		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
+		{
+			sprite_index = spr_spikes_emerge;
+			mask_index = spr_spikes_emerge;
+		}
+		image_speed = 1;
 	}
-	image_speed = 1;
-	mask_index = noone;
+	else
+	if (timer_offset = true)
+	{
+		if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)
+		{
+			sprite_index = spr_spikes_emerge_in;
+		}
+		image_speed = 1;
+		mask_index = noone;
+	}
 }
 else
 if (global.spikes_emerge_time < room_speed * 2)
 and (global.spikes_emerge_time > room_speed * 1)
 {
-	if (asset_get_type("spr_spikes_emerge") == asset_sprite)
+	if (timer_offset = false)
 	{
-		sprite_index = spr_spikes_emerge;
-		mask_index = spr_spikes_emerge;
+		if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)
+		{
+			sprite_index = spr_spikes_emerge_in;
+		}
+		image_speed = 1;
+		mask_index = noone;
 	}
-	image_speed = 1;
+	else
+	if (timer_offset = true)
+	{
+		if (asset_get_type("spr_spikes_emerge_half_out") == asset_sprite)
+		{
+			sprite_index = spr_spikes_emerge_half_out;
+		}
+		image_speed = 1;
+		mask_index = noone;
+	}
 }
 else
-if (global.spikes_emerge_time >= room_speed * 3)
+if (global.spikes_emerge_time < room_speed * 3)
+and (global.spikes_emerge_time > room_speed * 2)
 {
-	if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)
+	if (timer_offset = false)
 	{
-		sprite_index = spr_spikes_emerge_in;
+		if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)
+		{
+			sprite_index = spr_spikes_emerge_in;
+		}
+		image_speed = 1;
+		mask_index = noone;
 	}
-	image_speed = 1;
-	mask_index = noone;
+	else
+	if (timer_offset = true)
+	{
+		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
+		{
+			sprite_index = spr_spikes_emerge;
+			mask_index = spr_spikes_emerge;
+		}
+		image_speed = 1;
+	}
 }
+else
+if (global.spikes_emerge_time > room_speed * 3)
+{
+	if (timer_offset = false)
+	{
+		if (asset_get_type("spr_spikes_emerge_half_out") == asset_sprite)
+		{
+			sprite_index = spr_spikes_emerge_half_out;
+		}
+		image_speed = 1;
+		mask_index = noone;
+	}
+	else
+	if (timer_offset = true)
+	{
+		if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)
+		{
+			sprite_index = spr_spikes_emerge_in;
+		}
+		image_speed = 1;
+		mask_index = noone;
+	}
+}
+#endregion /*Normal timing END*/
+
+
+
+
+
 else
 {
 	if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)

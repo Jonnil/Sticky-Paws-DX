@@ -768,7 +768,7 @@ and (!place_meeting(x, y, obj_level))
 #endregion /*Stop player when touching level END*/
 
 if (can_move = false)
-if (delay < 100)
+and (delay < 100)
 {
 	delay += 1;
 }
@@ -875,10 +875,11 @@ and (iris_yscale <= 0.001)
 and (asset_get_type("obj_level") == asset_object)
 and (global.quit_level = false)
 {
+	/*Don't set entering_level to false, or can_move to true here*/
+	/*Create Event will take care of that when you enter the world map again*/
+	/*Doing this code here will make the iris zoom out a bit before properly entering the level*/
 	audio_stop_all();
 	global.trigger_demo_ending = 0;
-	entering_level = false;
-	can_move = true;
 	global.pause = false;
 	global.quit_level = false;
 	

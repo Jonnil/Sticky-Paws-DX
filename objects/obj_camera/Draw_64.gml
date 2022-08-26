@@ -2590,3 +2590,19 @@ and (os_type!= os_ios)
 	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/
+
+#region /*Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see*/
+if (iris_xscale <= 1)
+or (instance_exists(obj_player_die))
+and (obj_player_die.iris_xscale <= 1)
+{
+	black_screen_gui_alpha = lerp(black_screen_gui_alpha, 1, 0.1);
+}
+else
+{
+	black_screen_gui_alpha = lerp(black_screen_gui_alpha, 0, 0.1);
+}
+draw_set_alpha(black_screen_gui_alpha);
+draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+draw_set_alpha(1);
+#endregion /*Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END*/

@@ -1,3 +1,8 @@
+if (stomped_delay > 0)
+{
+	stomped_delay -= 1;
+}
+
 #region /*If enemies are disabled, destroy this object*/
 if (global.assist_enable = true)
 and (global.assist_enable_enemies = false)

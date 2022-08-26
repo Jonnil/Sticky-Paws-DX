@@ -121,3 +121,10 @@ and (os_type!= os_ios)
 	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
 }
 #endregion /*Draw mouse cursor for menu navigation END*/
+
+#region /*Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see*/
+if (iris_yscale <= 0.002)
+{
+	draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+}
+#endregion /*Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END*/

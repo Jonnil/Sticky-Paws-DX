@@ -1544,11 +1544,17 @@ and (stomped_delay = 0)
 				{
 					coil_spring = false;
 					stomped_delay = 20;
+					global.enemy_counter += 1;
+					if (vspeed < 0)
+					{
+						vspeed = +1;
+					}
 				}
 				else
 				{
 					flat = true;
 					stomped_delay = 10;
+					global.enemy_counter += 1;
 				}
 				image_index = 0;
 			}

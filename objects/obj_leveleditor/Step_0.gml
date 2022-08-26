@@ -1,3 +1,9 @@
+if (!audio_is_playing(level_editing_music))
+{
+	audio_play_sound(level_editing_music, 0, true);
+	audio_sound_gain(snd_star_bound, global.music_volume * global.main_volume, 0);
+}
+
 #region /*Controls for level editor*/
 gamepad_set_axis_deadzone(0, 0.5);
 key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or(keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv) < 0);
@@ -28,8 +34,6 @@ if (keyboard_check_pressed(global.fullscreen_key))
 	ini_close();
 }
 #endregion /*Fullscreen Toggle if camera doesn't exist. Default: F11 END*/
-
-scr_parallax_scrolling_background();
 
 #region /*Deactivate instances outside view*/
 if (startup_loading_timer <= 3)
@@ -246,6 +250,8 @@ or (global.full_level_map_screenshot = true)
 			global.actually_play_edited_level = false;
 			global.play_edited_level = true;
 			global.character_select_in_this_menu = "level_editor";
+			
+			audio_stop_sound(level_editing_music); /*Stop the background music that plays during level editing when playtesting a level*/
 			
 			if (global.world_editor = false)
 			{
@@ -1397,97 +1403,97 @@ if (quit_level_editor <= 0)
 								else
 							
 								#region /*Change Basic Collectible Direction*/
-								if (object = 40)
+								if (object = level_object_id.id_basic_collectible)
 								{
-									object = 41;
+									object = level_object_id.id_basic_collectible_2;
 								}
 								else
-								if (object = 41)
+								if (object = level_object_id.id_basic_collectible_2)
 								{
-									object = 42;
+									object = level_object_id.id_basic_collectible_3;
 								}
 								else
-								if (object = 42)
+								if (object = level_object_id.id_basic_collectible_3)
 								{
-									object = 43;
+									object = level_object_id.id_basic_collectible_4;
 								}
 								else
-								if (object = 43)
+								if (object = level_object_id.id_basic_collectible_4)
 								{
-									object = 44;
+									object = level_object_id.id_basic_collectible_5;
 								}
 								else
-								if (object = 44)
+								if (object = level_object_id.id_basic_collectible_5)
 								{
-									object = 45;
+									object = level_object_id.id_basic_collectible_6;
 								}
 								else
-								if (object = 45)
+								if (object = level_object_id.id_basic_collectible_6)
 								{
-									object = 46;
+									object = level_object_id.id_basic_collectible_7;
 								}
 								else
-								if (object = 46)
+								if (object = level_object_id.id_basic_collectible_7)
 								{
-									object = 47;
+									object = level_object_id.id_basic_collectible_8;
 								}
 								else
-								if (object = 47)
+								if (object = level_object_id.id_basic_collectible_8)
 								{
-									object = 40;
+									object = level_object_id.id_basic_collectible;
 								}
 								#endregion /*Change Basic Collectible Direction*/
 							
 								else
 							
 								#region /*Change Big Collectible*/
-								if (object = 48)
+								if (object = level_object_id.id_big_collectible_1)
 								{
-									object = 49;
+									object = level_object_id.id_big_collectible_2;
 								}
 								else
-								if (object = 49)
+								if (object = level_object_id.id_big_collectible_2)
 								{
-									object = 50;
+									object = level_object_id.id_big_collectible_3;
 								}
 								else
-								if (object = 50)
+								if (object = level_object_id.id_big_collectible_3)
 								{
-									object = 51;
+									object = level_object_id.id_big_collectible_4;
 								}
 								else
-								if (object = 51)
+								if (object = level_object_id.id_big_collectible_4)
 								{
-									object = 52;
+									object = level_object_id.id_big_collectible_5;
 								}
 								else
-								if (object = 52)
+								if (object = level_object_id.id_big_collectible_5)
 								{
-									object = 48;
+									object = level_object_id.id_big_collectible_1;
 								}
 								#endregion /*Change Big Collectible*/
 							
 								else
 							
 								#region /*Falling Block*/
-								if (object = 19)
+								if (object = level_object_id.id_falling_block)
 								{
-									object = 20;
+									object = level_object_id.id_falling_block_solid;
 								}
 								else
-								if (object = 20)
+								if (object = level_object_id.id_falling_block_solid)
 								{
-									object = 19;
+									object = level_object_id.id_falling_block;
 								}
 								else
-								if (object = 21)
+								if (object = level_object_id.id_falling_block_long)
 								{
-									object = 22;
+									object = level_object_id.id_falling_block_long_solid;
 								}
 								else
-								if (object = 22)
+								if (object = level_object_id.id_falling_block_long_solid)
 								{
-									object = 21;
+									object = level_object_id.id_falling_block_long;
 								}
 								#endregion /*Falling Block END*/
 							
@@ -1582,81 +1588,81 @@ if (quit_level_editor <= 0)
 								else
 							
 								#region /*Invincibility Powerup*/
-								if (object = 55)
+								if (object = level_object_id.id_invincibility_powerup)
 								{
-									object = 55001;
+									object = level_object_id.id_invincibility_powerup_coil_spring;
 								}
 								else
-								if (object = 55001)
+								if (object = level_object_id.id_invincibility_powerup_coil_spring)
 								{
-									object = 55;
+									object = level_object_id.id_invincibility_powerup;
 								}
 								#endregion /*Invincibility Powerup END*/
 							
 								else
 							
 								#region /*Extra Lives Pickup*/
-								if (object = 56)
+								if (object = level_object_id.id_one_up)
 								{
-									object = 57;
+									object = level_object_id.id_two_up;
 								}
 								else
-								if (object = 57)
+								if (object = level_object_id.id_two_up)
 								{
-									object = 58;
+									object = level_object_id.id_three_up;
 								}
 								else
-								if (object = 58)
+								if (object = level_object_id.id_three_up)
 								{
-									object = 56;
+									object = level_object_id.id_one_up;
 								}
 								#endregion /*Extra Lives Pickup END*/
 							
 								else
 							
 								#region /*Basic enemy*/
-								if (object = 59)
+								if (object = level_object_id.id_basic_enemy)
 								{
-									object = 5901;
+									object = level_object_id.id_basic_enemy_blind;
 								}
 								else
-								if (object = 5901)
+								if (object = level_object_id.id_basic_enemy_blind)
 								{
-									object = 5902;
+									object = level_object_id.id_basic_enemy_coil_spring;
 								}
 								else
-								if (object = 5902)
+								if (object = level_object_id.id_basic_enemy_coil_spring)
 								{
-									object = 5903;
+									object = level_object_id.id_basic_enemy_blind_coil_spring;
 								}
 								else
-								if (object = 5903)
+								if (object = level_object_id.id_basic_enemy_blind_coil_spring)
 								{
-									object = 59;
+									object = level_object_id.id_basic_enemy;
 								}
 								#endregion /*Basic enemy END*/
 							
 								else
 							
 								#region /*Bowling ball enemy*/
-								if (object = 591)
+								if (object = level_object_id.id_enemy_bowlingball)
 								{
-									object = 592;
+									object = level_object_id.id_enemy_bowlingball_blind;
 								}
 								else
-								if (object = 592)
+								if (object = level_object_id.id_enemy_bowlingball_blind)
 								{
-									object = 5911;
+									object = level_object_id.id_enemy_bowlingball_coil_spring;
 								}
 								else
-								if (object = 5911)
+								if (object = level_object_id.id_enemy_bowlingball_coil_spring)
 								{
-									object = 5912;
+									object = level_object_id.id_enemy_bowlingball_blind_coil_spring;
 								}
 								else
-								if (object = 5912)
+								if (object = level_object_id.id_enemy_bowlingball_blind_coil_spring)
 								{
-									object = 591;
+									object = level_object_id.id_enemy_bowlingball;
 								}
 								#endregion /*Bowling ball enemy END*/
 								
@@ -1677,24 +1683,44 @@ if (quit_level_editor <= 0)
 								else
 							
 								#region /*Spikes Emerge Direction*/
-								if (object = 67)
+								if (object = level_object_id.id_spikes_emerge_block)
 								{
-									object = 671;
+									object = level_object_id.id_spikes_emerge_block_left;
 								}
 								else
-								if (object = 671)
+								if (object = level_object_id.id_spikes_emerge_block_left)
 								{
-									object = 672;
+									object = level_object_id.id_spikes_emerge_block_down;
 								}
 								else
-								if (object = 672)
+								if (object = level_object_id.id_spikes_emerge_block_down)
 								{
-									object = 673;
+									object = level_object_id.id_spikes_emerge_block_right;
 								}
 								else
-								if (object = 673)
+								if (object = level_object_id.id_spikes_emerge_block_right)
 								{
-									object = 67;
+									object = level_object_id.id_spikes_emerge_block_offset_time;
+								}
+								else
+								if (object = level_object_id.id_spikes_emerge_block_offset_time)
+								{
+									object = level_object_id.id_spikes_emerge_block_left_offset_time;
+								}
+								else
+								if (object = level_object_id.id_spikes_emerge_block_left_offset_time)
+								{
+									object = level_object_id.id_spikes_emerge_block_down_offset_time;
+								}
+								else
+								if (object = level_object_id.id_spikes_emerge_block_down_offset_time)
+								{
+									object = level_object_id.id_spikes_emerge_block_right_offset_time;
+								}
+								else
+								if (object = level_object_id.id_spikes_emerge_block_right_offset_time)
+								{
+									object = level_object_id.id_spikes_emerge_block;
 								}
 								#endregion /*Spikes Emerge Direction END*/
 							
