@@ -1,3 +1,4 @@
+#region /*Loading selected level editing music*/
 if (file_exists("config.ini"))
 {
 	ini_open(working_directory + "config.ini");
@@ -42,6 +43,7 @@ else
 {
 	level_editing_music = noone;
 }
+#endregion /*Loading selected level editing music END*/
 
 #region /*Translate object names into object ID*/
 enum level_object_id
@@ -82,6 +84,8 @@ enum level_object_id
 	#endregion /*Question Block END*/
 	
 	id_hard_block = 18,
+	id_hard_block_alternate = 181,
+	id_hard_block_2x2 = 182,
 	id_falling_block = 19,
 	id_falling_block_solid = 20,
 	id_falling_block_long = 21,
@@ -257,6 +261,8 @@ add_object(level_object_id.id_question_block_invincibility_powerup_coil_spring, 
 #endregion /*Question Block END*/
 
 add_object(level_object_id.id_hard_block, spr_hard_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_hard_block_alternate, spr_hard_block_alternate, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_hard_block_2x2, spr_hard_block_2x2, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 
 #region /*Falling Block*/
 add_object(level_object_id.id_falling_block, spr_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -395,7 +401,7 @@ add_object(level_object_id.id_boss_barrier, spr_boss_barrier, 0, spr_wall, 1, 0,
 add_object(level_object_id.id_cake_stealing_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_artwork_collection, spr_artwork_collection, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_block_only_when_player_is_near, global.resource_pack_sprite_block_only_when_player_is_near, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /*This dummy object is just here so the last object actually appears*/
 #endregion /*Grid Initialization END*/
 
 #region /*Controls for level editor*/

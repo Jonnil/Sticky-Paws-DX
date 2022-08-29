@@ -6044,49 +6044,50 @@ and (global.pause = false)
 			if (asset_get_type("obj_tongue") == asset_object)
 			{
 				
-				#region /*Key Tongue Pressed*/
-				if (key_tongue_pressed)
-				or(mouse_check_button_pressed(mb_left))
-				or(gamepad_axis_value(player - 1, gp_axisrh) < -0.5)
-				or(gamepad_axis_value(player - 1, gp_axisrh) > + 0.5)
-				or(gamepad_axis_value(player - 1, gp_axisrv) < -0.5)
-				or(gamepad_axis_value(player - 1, gp_axisrv) > + 0.5)
+				#region /*Activate Tongue*/
+				if (mouse_check_button_pressed(mb_left))
 				{
 					can_tongue = false;
-					tongue_obj = instance_create_depth(x, y, 0, obj_tongue);
-					if (mouse_check_button_pressed(mb_left))
+					with(instance_create_depth(x, y, 0, obj_tongue))
 					{
-						with(tongue_obj)
+						motion_set(point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y), 16);
+					}
+				}
+				
+				else
+				
+				if (gamepad_axis_value(player - 1, gp_axisrh) != 0)
+				or(gamepad_axis_value(player - 1, gp_axisrv) != 0)
+				{
+					can_tongue = false;
+					with(instance_create_depth(x, y, 0, obj_tongue))
+					{
+						motion_set(point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrv)), 16);
+					}
+				}
+				else
+				if (gamepad_axis_value(player - 1, gp_axislh) != 0)
+				or(gamepad_axis_value(player - 1, gp_axislv) != 0)
+				{
+					
+					#region /*Key tongue pressed while moving left stick*/
+					if (key_tongue_pressed)
+					{
+						can_tongue = false;
+						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y), 16);
+							motion_set(point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislv)), 16);
 						}
 					}
-					else
-					if (gamepad_axis_value(player - 1, gp_axisrh) != 0)
-					or(gamepad_axis_value(player - 1, gp_axisrv) != 0)
-					{
-						with(tongue_obj)
-						{
-							motion_set(point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrv)), 16);
-						}
-					}
-					else
-					if (gamepad_axis_value(player - 1, gp_axislh) != 0)
-					or(gamepad_axis_value(player - 1, gp_axislv) != 0)
-					{
-						
-						#region /*Key Sprint Pressed*/
-						if (key_sprint_pressed)
-						{
-							with(tongue_obj)
-							{
-								motion_set(point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislv)), 16);
-							}
-						}
-						#endregion /*Key Sprint Pressed END*/
-						
-					}
-					else
+					#endregion /*Key tongue pressed while moving left stick END*/
+					
+				}
+				
+				else
+				
+				#region /*Press Tongue Button*/
+				if (key_tongue_pressed)
+				{
 					
 					#region /*Key Up*/
 					if (key_up)
@@ -6096,7 +6097,8 @@ and (global.pause = false)
 						if (key_left)
 						and (!place_meeting(x - 1, y, obj_wall))
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(135, 16);
 							}
@@ -6109,7 +6111,8 @@ and (global.pause = false)
 						if (key_right)
 						and (!place_meeting(x + 1, y, obj_wall))
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(45, 16);
 							}
@@ -6118,7 +6121,8 @@ and (global.pause = false)
 						
 						else
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(90, 16);
 							}
@@ -6136,7 +6140,8 @@ and (global.pause = false)
 						#region /*Key Up*/
 						if (key_up)
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(135, 16);
 							}
@@ -6148,7 +6153,8 @@ and (global.pause = false)
 						#region /*Key Down*/
 						if (key_down)
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(225, 16);
 							}
@@ -6157,7 +6163,8 @@ and (global.pause = false)
 						
 						else
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(180, 16);
 							}
@@ -6175,7 +6182,8 @@ and (global.pause = false)
 						#region /*Key Up*/
 						if (key_up)
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(85, 16);
 							}
@@ -6187,7 +6195,8 @@ and (global.pause = false)
 						#region /*Key Down*/
 						if (key_down)
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(315, 16);
 							}
@@ -6196,7 +6205,8 @@ and (global.pause = false)
 						
 						else
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(0, 16);
 							}
@@ -6215,7 +6225,8 @@ and (global.pause = false)
 						if (key_left)
 						and (!place_meeting(x - 1, y, obj_wall))
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(225, 16);
 							}
@@ -6228,7 +6239,8 @@ and (global.pause = false)
 						if (key_right)
 						and (!place_meeting(x + 1, y, obj_wall))
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(315, 16);
 							}
@@ -6237,7 +6249,8 @@ and (global.pause = false)
 						
 						else
 						{
-							with(tongue_obj)
+							can_tongue = false;
+							with(instance_create_depth(x, y, 0, obj_tongue))
 							{
 								motion_set(270, 16);
 							}
@@ -6249,7 +6262,8 @@ and (global.pause = false)
 					if (image_xscale < 0)
 					and (!place_meeting(x - 1, y, obj_wall))
 					{
-						with(tongue_obj)
+						can_tongue = false;
+						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
 							motion_set(180, 16);
 						}
@@ -6258,13 +6272,16 @@ and (global.pause = false)
 					if (image_xscale > 0)
 					and (!place_meeting(x + 1, y, obj_wall))
 					{
-						with(tongue_obj)
+						can_tongue = false;
+						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
 							motion_set(0, 16);
 						}
 					}
 				}
-				#endregion /*Key Tongue Pressed END*/
+				#endregion /*Press Tongue Button END*/
+				
+				#endregion /*Activate Tongue END*/
 				
 			}
 		}
@@ -9453,20 +9470,18 @@ if (spring = true)
 	if (spring_animation = 0)
 	{
 		if (image_index > image_number - 1)
+		and (vspeed >= 0)
 		{
-			image_index = 0;
-			if (vspeed >=-4)
-			if (vspeed >= 0)
+			if (sprite_spring_transition > noone)
+			or (sprite_jump_transition_to_fall > noone)
 			{
-				if (sprite_spring_transition > noone)
-				or (sprite_jump_transition_to_fall > noone)
-				{
-					spring_animation = 1;
-				}
-				else
-				{
-					spring_animation = 2;
-				}
+				image_index = 0;
+				spring_animation = 1;
+			}
+			else
+			{
+				image_index = 0;
+				spring_animation = 3;
 			}
 		}
 		if (sprite_spring_up > noone){sprite_index = sprite_spring_up;}else
@@ -9480,17 +9495,27 @@ if (spring = true)
 	else
 	if (spring_animation = 1)
 	{
-		if (image_index > image_number - 1)
-		{
-			image_index = 0;
-			spring_animation = 2;
-		}
+		image_index = 0;
 		if (sprite_spring_transition > noone){sprite_index = sprite_spring_transition;}else
-		if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall;}else
-		{spring_animation = 2;}
+		if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall;}
+		spring_animation = 2;
 	}
 	else
 	if (spring_animation = 2)
+	{
+		if (image_index > image_number - 1)
+		{
+			spring_animation = 3;
+		}
+		if (sprite_spring_transition > noone){sprite_index = sprite_spring_transition;}else
+		if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall;}
+		else
+		{
+			spring_animation = 3;
+		}
+	}
+	else
+	if (spring_animation = 3)
 	{
 		if (sprite_spring_down > noone){sprite_index = sprite_spring_down;}else
 		if (sprite_spring_up > noone){sprite_index = sprite_spring_up;}else
@@ -9501,7 +9526,7 @@ if (spring = true)
 		if (sprite_jump > noone){sprite_index = sprite_jump; image_index = image_number - 1;}else
 		if (sprite_stand > noone){sprite_index = sprite_stand;}else
 		if (sprite_walk > noone){sprite_index = sprite_walk;}
-		if (vspeed < 0)
+		if (vspeed <= 0)
 		{
 			spring_animation = 0;
 		}

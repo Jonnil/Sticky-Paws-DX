@@ -12,7 +12,7 @@
 //draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64, "reset_level_zoom: " + string(global.reset_level_zoom_when_going_back_to_map), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 128, "idle_animtaion" + string(idle_animtaion), global.default_text_size, c_white, c_black, 1);
+//draw_text_outlined(x - 32, y - 128, "spring_animation" + string(spring_animation), global.default_text_size, c_white, c_black, 1);
 
 #region /*Draw Raycasts*/
 if (hold_item_in_hands != "")

@@ -785,9 +785,11 @@ if (global.play_edited_level = true)
 			if (object = 17) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "invincibility_powerup";}instance_destroy();}
 			if (object = 17001) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
 			#endregion /*Question Block END*/
-		
-			if (object = 18) and (asset_get_type("obj_hard_block") == asset_object){instance_create_depth(x, y, 0, obj_hard_block); instance_destroy();}
-		
+			
+			if (object = level_object_id.id_hard_block) and (asset_get_type("obj_hard_block") == asset_object){instance_create_depth(x, y, 0, obj_hard_block); instance_destroy();}
+			if (object = level_object_id.id_hard_block_alternate) and (asset_get_type("obj_hard_block") == asset_object){with(instance_create_depth(x, y, 0, obj_hard_block)){sprite_index = spr_hard_block_alternate;}instance_destroy();}
+			if (object = level_object_id.id_hard_block_2x2) and (asset_get_type("obj_hard_block") == asset_object){with(instance_create_depth(x, y, 0, obj_hard_block)){mask_index = spr_hard_block_2x2; sprite_index = spr_hard_block_2x2;}instance_destroy();}
+			
 			#region /*Falling Block*/
 			if (object = 19) and (asset_get_type("obj_falling_block") == asset_object){instance_create_depth(x, y, 0, obj_falling_block); instance_destroy();}
 			if (object = 20) and (asset_get_type("obj_falling_block_solid") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_solid); instance_destroy();}

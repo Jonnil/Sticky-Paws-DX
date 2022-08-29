@@ -1,7 +1,7 @@
 if (!audio_is_playing(level_editing_music))
 {
 	audio_play_sound(level_editing_music, 0, true);
-	audio_sound_gain(snd_star_bound, global.music_volume * global.main_volume, 0);
+	audio_sound_gain(level_editing_music, global.music_volume * global.main_volume, 0);
 }
 
 #region /*Controls for level editor*/
@@ -1584,9 +1584,28 @@ if (quit_level_editor <= 0)
 									object = 11;
 								}
 								#endregion /*Question Block*/
-							
+								
 								else
-							
+								
+								#region /*Hard Block*/
+								if (object = level_object_id.id_hard_block)
+								{
+									object = level_object_id.id_hard_block_alternate;
+								}
+								else
+								if (object = level_object_id.id_hard_block_alternate)
+								{
+									object = level_object_id.id_hard_block_2x2;
+								}
+								else
+								if (object = level_object_id.id_hard_block_2x2)
+								{
+									object = level_object_id.id_hard_block;
+								}
+								#region /*Hard Block*/
+								
+								else
+								
 								#region /*Invincibility Powerup*/
 								if (object = level_object_id.id_invincibility_powerup)
 								{
