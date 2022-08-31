@@ -3966,7 +3966,7 @@ if (!audio_is_playing(global.ambience_underwater))
 }
 #endregion /*Play Underwater Ambience END*/
 
-#region /*Music Pitch*/
+#region /*Music Pitch */
 if (global.time_countdown < 100)
 and (global.enable_time_countdown = true)
 and (allow_timeup = true)
@@ -5191,13 +5191,13 @@ if (can_move = true)
 
 #region /*Save to variable when on ground*/
 if (asset_get_type("obj_wall") == asset_object)
-and (place_meeting(x, y + 1, obj_wall)/*If there is wall underneath*/)
+and (place_meeting(x, y + 1, obj_wall)/*If there is wall underneath */)
 or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform)/*If there is semisolid platform underneath*/)
+and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform)/*If there is semisolid platform underneath */)
 or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform)/*If there is semisolid platform underneath*/)
+and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform)/*If there is semisolid platform underneath */)
 or(asset_get_type("obj_semisolid_platform") == asset_object)
-and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform)/*If there is semisolid platform underneath*/)
+and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform)/*If there is semisolid platform underneath */)
 {
 	on_ground = true;
 }
@@ -6008,7 +6008,7 @@ and (goal = false)
 if (position_meeting(x, y, obj_wall))
 {
 	stuck_in_wall_counter += 1;
-	if (stuck_in_wall_counter >= 2)
+	if (stuck_in_wall_counter >= 3)
 	{
 		die = true;
 	}
@@ -9830,7 +9830,7 @@ and (hold_item_in_hands = "")
 				}
 				else
 				{
-					vspeed = -normal_jump_height; /*Do the normal upward jump, when you haven't spinned fast enough*/
+					vspeed = -normal_jump_height; /*Do the normal upward jump, when you haven't spinned fast enough */
 				}
 				#endregion /*Do a charged upward jump depending on how fast you spin END*/
 				
@@ -10381,7 +10381,7 @@ and (climb = false)
 
 #region /*Crouch Underwater*/
 if (key_crouch_hold) /*Holding the crouch button*/
-and (allow_crouch = true) /*Can crouch*/
+and (allow_crouch = true) /*Can crouch */
 and (crouch = false) /*Not currently crouching*/
 and (can_move = true)
 and (ground_pound = false)
@@ -10781,9 +10781,9 @@ and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 else
 {
 
-#region /*Crouch*/
+#region /*Crouch */
 if (key_crouch_hold) /*Holding the crouch button*/
-and (allow_crouch = true) /*Can crouch*/
+and (allow_crouch = true) /*Can crouch */
 and (crouch = false) /*Not currently crouching*/
 and (can_move = true)
 and (ground_pound = false)
@@ -10822,7 +10822,7 @@ and (on_ground = true)
 
 else
 
-#region /*Don't crouch*/
+#region /*Don't crouch */
 if (!key_crouch_hold)
 and (!place_meeting(x, y - 8, obj_wall))
 and (crouch = true)

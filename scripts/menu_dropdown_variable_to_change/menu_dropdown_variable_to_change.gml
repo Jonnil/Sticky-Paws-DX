@@ -1,8 +1,5 @@
 function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 {
-	variable_to_change = argument0;
-	change_to_value = argument1;
-	
 	if (variable_to_change = global.assist_item_appear)
 	and (menu = "assist_item_appear")
 	{
@@ -99,5 +96,11 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	and (menu = "number_of_audio_channels")
 	{
 		global.number_of_audio_channels = change_to_value;
+	}
+	else
+	if (variable_to_change = selected_level_editing_music)
+	and (menu = "selected_level_editing_music")
+	{
+		selected_level_editing_music = change_to_value;
 	}
 }

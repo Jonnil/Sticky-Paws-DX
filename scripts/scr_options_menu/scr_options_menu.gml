@@ -10,14 +10,14 @@ function scr_options_menu()
 	if (background_brightness_menu_lerp < 0)
 	{
 		draw_set_alpha(abs(background_brightness_menu_lerp));
-		draw_rectangle_color(- 32, - 32, room_width* 2, room_height* 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(- 32, - 32, room_width * 2, room_height* 2, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 	}
 	else
 	if (background_brightness_menu_lerp > 0)
 	{
 		draw_set_alpha(abs(background_brightness_menu_lerp));
-		draw_rectangle_color(- 32, - 32, room_width* 2, room_height* 2, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(- 32, - 32, room_width * 2, room_height* 2, c_white, c_white, c_white, c_white, false);
 		draw_set_alpha(1);
 	}
 	#endregion /*Background Brightness in Menus Options END*/
@@ -812,10 +812,10 @@ function scr_options_menu()
 	
 	if(global.enable_touch_settings = true)
 	{
-		/*Click Touch*/if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, touch_settings_y, 370, touch_settings_y + 40 - 1))
+		/*Click Touch */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, touch_settings_y, 370, touch_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		and (global.settings_sidebar_menu = "touch_settings") and (mouse_check_button_released(mb_left))and (menu_delay = 0){global.settings_sidebar_menu = "touch_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;}
-		/*Touch*/if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, touch_settings_y, 370, touch_settings_y + 40 - 1))
+		/*Touch */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, touch_settings_y, 370, touch_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation = "mouse")
 		and (mouse_check_button(mb_left))and (menu_delay = 0){global.settings_sidebar_menu = "touch_settings"; input_key = false;can_navigate_settings_sidebar = true;}
 	}

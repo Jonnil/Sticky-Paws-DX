@@ -2298,7 +2298,7 @@ else
 
 #endregion /*Voice Start Running END*/
 
-#region /*Voice Rope Catch*/
+#region /*Voice Rope Catch */
 
 #region /*Voice Rope Catch 1*/
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sound/voicepack" + string(selected_voice_pack) + "/ Rope_catch.ogg"))
@@ -7106,7 +7106,7 @@ else
 
 #endregion /*Voice Burned END*/
 
-#region /*Voice Open Mouth*/
+#region /*Voice Open Mouth */
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sound/voicepack" + string(selected_voice_pack) + "/open_mouth.ogg"))
 {
 	voice_open_mouth = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sound/voicepack" + string(selected_voice_pack) + "/open_mouth.ogg");
@@ -7771,7 +7771,7 @@ else
 }
 #endregion /*Default Yscale END*/
 	
-#region /*Default Voice Pitch*/
+#region /*Default Voice Pitch */
 if (ini_key_exists("values", "default_voice_pitch"))
 {
 	default_voice_pitch = ini_read_real("values", "default_voice_pitch", 1);

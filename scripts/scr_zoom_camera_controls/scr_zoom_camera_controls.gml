@@ -179,18 +179,18 @@ function scr_zoom_camera_controls()
 	//{
 	//	draw_set_alpha(zoom_border_lerp);
 	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + 2, camera_get_view_x(view_camera[view_current]) + 1, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 3, c_red, c_red, c_red, c_red, false); /*Left*/
-	//	draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 2, 0, room_width*2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 3, c_red, c_red, c_red, c_red, false); /*Right*/
+	//	draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 2, 0, room_width * 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 3, c_red, c_red, c_red, c_red, false); /*Right*/
 	//	draw_rectangle_color(2, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 3, camera_get_view_y(view_camera[view_current]) + 1, c_red, c_red, c_red, c_red, false); /*Top*/
-	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 2, room_width*2, room_height*2, c_red, c_red, c_red, c_red, false); /*Bottom*/
+	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 2, room_width * 2, room_height* 2, c_red, c_red, c_red, c_red, false); /*Bottom*/
 	//	draw_set_alpha(1);
 	//}
 	//else
 	//{
 	//	draw_set_alpha(zoom_border_lerp);
 	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + 9, camera_get_view_x(view_camera[view_current]) + 8, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 9, c_red, c_red, c_red, c_red, false); /*Left*/
-	//	draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8, 0, room_width*2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 9, c_red, c_red, c_red, c_red, false); /*Right*/
+	//	draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8, 0, room_width * 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 9, c_red, c_red, c_red, c_red, false); /*Right*/
 	//	draw_rectangle_color(0, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 9, camera_get_view_y(view_camera[view_current]) + 8, c_red, c_red, c_red, c_red, false); /*Top*/
-	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8, room_width*2, room_height*2, c_red, c_red, c_red, c_red, false); /*Bottom*/
+	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8, room_width * 2, room_height* 2, c_red, c_red, c_red, c_red, false); /*Bottom*/
 	//	draw_set_alpha(1);
 	//}
 }

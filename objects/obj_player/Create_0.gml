@@ -207,7 +207,7 @@ voice_start_running_9 = noone; /*Voice Start Running 9*/
 voice_start_running_10 = noone; /*Voice Start Running 10*/
 #endregion /*Voice Start Running END*/
 
-#region /*Voice Rope Catch*/
+#region /*Voice Rope Catch */
 voice_rope_catch_1 = noone; /*Voice Rope Catch 1*/
 voice_rope_catch_2 = noone; /*Voice Rope Catch 2*/
 voice_rope_catch_3 = noone; /*Voice Rope Catch 3*/

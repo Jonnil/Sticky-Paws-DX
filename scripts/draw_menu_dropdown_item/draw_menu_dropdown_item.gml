@@ -8,11 +8,6 @@
 
 function draw_menu_dropdown_item(string_text_item, x_position, y_position, variable_to_change, item_number)
 {
-	string_text_item = argument0;
-	x_position = argument1;
-	y_position = argument2;
-	variable_to_change = argument3;
-	item_number = argument4;
 	
 	#region /*Show Item*/
 	if (string_text_item > "")

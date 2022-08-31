@@ -363,7 +363,7 @@ function scr_initialize_level_information_ini()
 		
 		#endregion /*Custom Backgrounds END*/
 		
-		#region /*Default View Width*/
+		#region /*Default View Width */
 		if (ini_key_exists("info", "default_view_width"))
 		{
 			global.default_view_width = ini_read_real("info", "default_view_width", 1920);

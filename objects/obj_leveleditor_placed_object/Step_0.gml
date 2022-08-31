@@ -1002,7 +1002,7 @@ if (global.play_edited_level = true)
 		}
 		else
 		{
-			instance_destroy(); /*Destroy object if difficulty setting and difficulty on object doesn't match*/
+			instance_destroy(); /*Destroy object if difficulty setting and difficulty on object doesn't match */
 		}
 		#endregion /*Delete objects according to difficulty settings END*/
 		

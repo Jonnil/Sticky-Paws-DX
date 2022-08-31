@@ -1,5 +1,16 @@
 if (quit_level_editor = false)
 {
+	if (erase_mode = true)
+	{
+		var width = 10;
+		draw_set_alpha(0.5);
+		draw_rectangle_color(0, width + 1, width, window_get_height() - (width + 1), c_blue, c_blue, c_blue, c_blue, false); /*Left*/
+		draw_rectangle_color(window_get_width() - width, 0, room_width * 2, window_get_height() - (width + 1), c_blue, c_blue, c_blue, c_blue, false); /*Right*/
+		draw_rectangle_color(0, 0, window_get_width() - (width + 1), width, c_blue, c_blue, c_blue, c_blue, false); /*Top*/
+		draw_rectangle_color(0, window_get_height() - width, room_width * 2, room_height* 2, c_blue, c_blue, c_blue, c_blue, false); /*Bottom*/
+		draw_set_alpha(1);
+	}
+	
 	scr_set_screen_size();
 	
 	#region /*Pause Menu*/
@@ -623,8 +634,11 @@ if (quit_level_editor = false)
 	}
 	#endregion /*Pause Menu END*/
 	
-	scr_options_menu(); /*Options*/
-	scr_options_level_editor(); /*Level Editor Options*/
+	if (pause = true)
+	{
+		scr_options_menu(); /*Options*/
+		scr_options_level_editor(); /*Level Editor Options*/
+	}
 	
 	#region /*Hover over icons reveals the icons*/
 	

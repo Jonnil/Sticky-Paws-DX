@@ -4,6 +4,51 @@ if (!audio_is_playing(level_editing_music))
 	audio_sound_gain(level_editing_music, global.music_volume * global.main_volume, 0);
 }
 
+if (selected_level_editing_music != previous_selected_level_editing_music)
+{
+	if (selected_level_editing_music = 0)
+	{
+		audio_stop_sound(level_editing_music);
+		level_editing_music = noone;
+		previous_selected_level_editing_music = 0;
+	}
+	else
+	if (selected_level_editing_music = 1)
+	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
+	{
+		audio_stop_sound(level_editing_music);
+		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg");
+		previous_selected_level_editing_music = 1;
+	}
+	else
+	if (selected_level_editing_music = 2)
+	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
+	{
+		audio_stop_sound(level_editing_music);
+		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg");
+		previous_selected_level_editing_music = 2;
+	}
+	else
+	if (selected_level_editing_music = 3)
+	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
+	{
+		audio_stop_sound(level_editing_music);
+		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg");
+		previous_selected_level_editing_music = 3;
+	}
+	else
+	{
+		audio_stop_sound(level_editing_music);
+		level_editing_music = noone;
+	}
+	if (file_exists("config.ini"))
+	{
+		ini_open(working_directory + "config.ini");
+		ini_write_real("config", "selected_level_editing_music", selected_level_editing_music);
+		ini_close();
+	}
+}
+
 #region /*Controls for level editor*/
 gamepad_set_axis_deadzone(0, 0.5);
 key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or(keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv) < 0);
@@ -51,7 +96,7 @@ and (startup_loading_timer >= 3)
 		instance_deactivate_region(
 		camera_get_view_x(view_camera[0]) - 32,
 		camera_get_view_y(view_camera[0]) - 32,
-		camera_get_view_width(view_camera[0]) + 32 /*Camera Width*/,
+		camera_get_view_width(view_camera[0]) + 32 /*Camera Width */,
 		camera_get_view_height(view_camera[0]) + 32 /*Camera Height*/,
 		false, true);
 	}

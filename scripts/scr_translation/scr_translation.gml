@@ -2,27 +2,27 @@ enum localization
 {
 	ar_sa/*Arabic*/
 	,id_id /*Indonesian*/
-	,da_dk/*Danish*/
+	,da_dk/*Danish */
 	,de_de/*German*/
-	,en_gb/*British English*/
-	,en_us/*American English*/
-	,es_es/*Spanish*/
-	,es_mx /*Mexican Spanish*/
-	,fr_ca/*Canadian French*/
-	,fr_fr/*French*/
+	,en_gb/*British English */
+	,en_us/*American English */
+	,es_es/*Spanish */
+	,es_mx /*Mexican Spanish */
+	,fr_ca/*Canadian French */
+	,fr_fr/*French */
 	,it_it/*Italian*/
 	,hu_hu/*Hungarian*/
-	,nl_nl/*Dutch*/
+	,nl_nl/*Dutch */
 	,nb_no/*Norwegian Bokmål*/
-	,pl_pl/*Polish*/
+	,pl_pl/*Polish */
 	,pt_br/*Brazilian Portuguese*/
 	,pt_pt/*Portuguese*/
 	,sk_sk/*Slovak*/
-	,fi_fi/*Finnish*/
-	,sv_se/*Swedish*/
+	,fi_fi/*Finnish */
+	,sv_se/*Swedish */
 	,th_th/*Thai*/
-	,tr_tr/*Turkish*/
-	,cs_cz/*Czech*/
+	,tr_tr/*Turkish */
+	,cs_cz/*Czech */
 	,el_gr/*Greek*/
 	,bg_bg/*Bulgarian*/
 	,ru_ru/*Russian*/

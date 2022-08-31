@@ -95,7 +95,7 @@ function scr_virtual_keys()
 				}
 				#endregion /*Virtual key add jump END*/
 				
-				#region /*Virtual key add crouch*/
+				#region /*Virtual key add crouch */
 				if (global.player1_key_crouch > noone)
 				{
 					virtual_key_add(mobile_key_crouch_x - 128 - mobile_key_extra_deadzone, mobile_key_crouch_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key_crouch);

@@ -213,10 +213,10 @@ and (last_player = true)
 			{
 				draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 			}
-			draw_rectangle_color(0, 0, room_width* 3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, 0, room_width * 3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
 			draw_rectangle_color(0, 0, xx - iris_xscale * 128, room_height* 3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(xx + iris_xscale * 128, 0, room_width* 3, room_height* 3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(0, yy + iris_yscale * 128, room_width* 3, room_height* 3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(xx + iris_xscale * 128, 0, room_width * 3, room_height* 3, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(0, yy + iris_yscale * 128, room_width * 3, room_height* 3, c_black, c_black, c_black, c_black, false);
 		}
 	}
 }

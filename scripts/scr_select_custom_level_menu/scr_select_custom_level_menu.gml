@@ -1285,7 +1285,7 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /*Name Enter Blinking END*/
 	
-	#region /*Press Enter to make new level from scratch*/
+	#region /*Press Enter to make new level from scratch */
 	if (keyboard_check_pressed(vk_enter))
 	and (can_input_level_name = true)
 	and (menu_delay = 0)

@@ -3890,7 +3890,7 @@ function scr_options_keyboard_and_mouse_menu()
 			}
 			#endregion /*Remap Key Jump END*/
 			
-			#region /*Remap Key Crouch*/
+			#region /*Remap Key Crouch */
 			if (menu = "remap_key_crouch")
 			and (menu_remap_key_number = 0)
 			{
@@ -3914,7 +3914,7 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_sprite_ext(spr_keyboard_keys, 0, key1_x, menu_y_remap_key_crouch + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 				}
 			}
-			#endregion /*Remap Key Crouch*/
+			#endregion /*Remap Key Crouch */
 			
 			#region /*Remap Key Crouch Toggle*/
 			if (menu = "remap_key_crouch_toggle")
@@ -4266,7 +4266,7 @@ function scr_options_keyboard_and_mouse_menu()
 			}
 			#endregion /*Remap Key 2 Jump END*/
 			
-			#region /*Remap Key 2 Crouch*/
+			#region /*Remap Key 2 Crouch */
 			if (menu = "remap_key_crouch")
 			and (menu_remap_key_number = 2)
 			{
@@ -4784,7 +4784,7 @@ function scr_options_keyboard_and_mouse_menu()
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, Text("Jump"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Jump END*/
 		
-		#region /*Remap Key Crouch*/
+		#region /*Remap Key Crouch */
 		if (menu = "remap_key_crouch"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_crouch + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_crouch;
 		draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, Text("Crouch"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
@@ -4945,7 +4945,7 @@ function scr_options_keyboard_and_mouse_menu()
 			
 			else
 			
-			#region /*Remap key crouch*/
+			#region /*Remap key crouch */
 			if (menu = "remap_key_crouch")
 			and (can_remap_key = false)
 			and (input_key = false)
