@@ -313,6 +313,7 @@ and (can_spawn_player1 = true)
 	and (player1.climb = false)
 	and (player1.horizontal_rope_climb = false)
 	{
+		show_mouse = false;
 		#region /*Draw aim cursor with lines*/
 		draw_line_width_color(mouse_x - 10, mouse_y, mouse_x - 2, mouse_y, 2, c_red, c_red);
 		draw_line_width_color(mouse_x + 2, mouse_y, mouse_x + 10, mouse_y, 2, c_red, c_red);
@@ -323,6 +324,7 @@ and (can_spawn_player1 = true)
 	else
 	if (player1.allow_tongue = true)
 	{
+		show_mouse = false;
 		#region /*Draw aim cursor with lines but transparent*/
 		draw_set_alpha(0.5);
 		draw_line_width_color(mouse_x - 10, mouse_y, mouse_x - 2, mouse_y, 2, c_red, c_red);
@@ -331,6 +333,11 @@ and (can_spawn_player1 = true)
 		draw_line_width_color(mouse_x, mouse_y + 2, mouse_x, mouse_y + 10, 2, c_red, c_red);
 		draw_set_alpha(1);
 		#endregion /*Draw aim cursor with lines END*/
+	}
+	else
+	if (player1.allow_tongue = false)
+	{
+		show_mouse = true;
 	}
 }
 #endregion /*Tongue aim should always be above everything, it represents the mouse cursor END*/

@@ -10647,7 +10647,7 @@ if (on_ground = true)
 			or(place_meeting(x + 1, y, obj_wall))
 			{
 				if (sprite_swim > noone){sprite_index = sprite_swim;}else
-				if (sprite_against_wall > noone){sprite_index = sprite_against_wall;}else
+				if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
 				if (sprite_stand > noone){sprite_index = sprite_stand;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
@@ -11297,6 +11297,8 @@ and (vspeed = 0)
 	#region /*Run*/
 	if (abs(hspeed) > 0)
 	{
+		look_up_start_animation = true;
+		against_wall_animation = 0;
 		if (hold_item_in_hands != "")
 		{
 			if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
@@ -11368,9 +11370,34 @@ and (vspeed = 0)
 	{
 		if (crouch = false)
 		{
-			if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
-			if (sprite_stand > noone){sprite_index = sprite_stand;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
+			if (against_wall_animation = 0)
+			{
+				image_index = 0;
+				if (sprite_against_wall_start > noone){sprite_index = sprite_against_wall_start; image_speed = 0.5;}else
+				if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
+				if (sprite_stand > noone){sprite_index = sprite_stand;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
+				against_wall_animation = 1;
+			}
+			else
+			if (against_wall_animation = 1)
+			{
+				if (sprite_against_wall_start > noone){sprite_index = sprite_against_wall_start; image_speed = 0.5;}else
+				if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
+				if (sprite_stand > noone){sprite_index = sprite_stand;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
+				if (image_index >= image_number - 1)
+				{
+					against_wall_animation = 2;
+				}
+			}
+			else
+			if (against_wall_animation = 2)
+			{
+				if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
+				if (sprite_stand > noone){sprite_index = sprite_stand;}else
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
+			}
 		}
 		if (asset_get_type("snd_bump") == asset_sound)
 		{
@@ -11391,6 +11418,7 @@ and (vspeed = 0)
 	and (!key_right)
 	{
 		look_up_start_animation = true;
+		against_wall_animation = 0;
 		if (asset_get_type("obj_bump_in_ground") == asset_object)
 		and (place_meeting(x, y + 1, obj_bump_in_ground))
 		and (sprite_standing_on_something > noone)

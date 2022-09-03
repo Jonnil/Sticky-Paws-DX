@@ -658,7 +658,7 @@ and (delay > 1)
 								or (instance_exists(obj_leveleditor))
 								and (obj_leveleditor.show_grid = false)
 								{
-									effect_create_above(ef_ring, mouse_x, mouse_y, 0, c_white);
+									effect_create_above(ef_ring, x, y, 0, c_white);
 									drag_object = true;
 									drag_xstart = x;
 									drag_ystart = y;

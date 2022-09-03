@@ -107,6 +107,7 @@ climb_under_y_offset = 10;
 sprite_mask = spr_player_stand; /*Mask Index END*/
 sprite_mask_crouch = spr_player_stand; /*Mask Crouch Index END*/
 sprite_against_wall = noone;
+sprite_against_wall_start = noone;
 sprite_checkpoint_activated = noone;
 sprite_climb_under = noone;
 sprite_climb_under_look_up = noone;
@@ -470,6 +471,9 @@ wall_jump_time = 10;
 glide = false;
 can_glide = 0;
 idle_animtaion = 0; /*If player should play blinking animation or not*/
+against_wall_animation = 0; /*First play sprite_against_wall_start, then transition into sprite_against_wall*/
+draw_arrow_outside_view_up_alpha = 0;
+draw_arrow_outside_view_down_alpha = 0;
 #endregion /*Don't change these variables END*/
 
 #region /*Rope Swing Variables*/

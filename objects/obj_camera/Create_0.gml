@@ -23,6 +23,8 @@ display_yscale = 1.5
 display_xoffset = 0
 display_yoffset = 0
 
+show_mouse = true;
+
 depth = -9000;
 
 sprite_index = global.resource_pack_sprite_basic_collectible;

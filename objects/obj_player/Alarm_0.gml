@@ -64,6 +64,8 @@ ini_close();
 #region /*Sprite variables*/
 sprite_against_wall = scr_initialize_custom_character_sprite("against_wall", sprite_against_wall);
 sprite_against_wall = scr_initialize_custom_character_sprite("againstwall", sprite_against_wall);
+sprite_against_wall_start = scr_initialize_custom_character_sprite("against_wall_start", sprite_against_wall_start);
+sprite_against_wall_start = scr_initialize_custom_character_sprite("againstwall_start", sprite_against_wall_start);
 sprite_checkpoint_activated = scr_initialize_custom_character_sprite("checkpoint_activated", sprite_checkpoint_activated);
 sprite_climb_under = scr_initialize_custom_character_sprite("climb_under", sprite_climb_under);
 sprite_climb_under = scr_initialize_custom_character_sprite("climbunder", sprite_climb_under);
