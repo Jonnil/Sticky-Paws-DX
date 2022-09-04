@@ -6421,6 +6421,30 @@ and (global.pause = false)
 	}
 	#endregion /*Rope Swing END*/
 	
+	#region /*Fly toward wall when clicking tongue button again*/
+	if (asset_get_type("obj_enemy") == asset_object)
+	and (instance_number(obj_enemy) > 0)
+	and (place_meeting(x, y, obj_enemy))
+	{
+		if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+		and (timer < 35)
+		{
+			speed = 0;
+		}
+		move_towards_point(instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 8);
+		with(instance_nearest(x, y, obj_player))
+		{
+			move_towards_point(instance_nearest(x, y, obj_tongue).x, instance_nearest(x, y, obj_tongue).y, 16);
+		}
+		with(instance_nearest(x, y, obj_enemy))
+		{
+			hspeed = 0;
+			vspeed = 0;
+			speed = 0;
+		}
+	}
+	#endregion /*Fly toward wall when clicking tongue button again END*/
+	
 }
 else
 {
