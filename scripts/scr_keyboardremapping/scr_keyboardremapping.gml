@@ -8,6 +8,48 @@ function scr_keyboardremapping()
 		can_remap_key = true;
 	}
 	else
+	if (mouse_check_button_pressed(mb_left))
+	{
+		last_key = mb_left;
+		can_remap_key = true;
+	}
+	else
+	if (mouse_check_button_pressed(mb_middle))
+	{
+		last_key = mb_middle;
+		can_remap_key = true;
+	}
+	else
+	if (mouse_check_button_pressed(mb_right))
+	{
+		last_key = mb_right;
+		can_remap_key = true;
+	}
+	else
+	if (mouse_check_button_pressed(mb_side1))
+	{
+		last_key = mb_side1;
+		can_remap_key = true;
+	}
+	else
+	if (mouse_check_button_pressed(mb_side2))
+	{
+		last_key = mb_side2;
+		can_remap_key = true;
+	}
+	else
+	if (mouse_wheel_down())
+	{
+		last_key = 13234;
+		can_remap_key = true;
+	}
+	else
+	if (mouse_wheel_up())
+	{
+		last_key = 132321;
+		can_remap_key = true;
+	}
+	else
 	if (keyboard_check_pressed(vk_escape))
 	or (remapping_player = 0)
 	and (gamepad_button_check(0, gp_start))
@@ -19,11 +61,6 @@ function scr_keyboardremapping()
 	and (gamepad_button_check(3, gp_start))
 	{
 		last_key = noone;
-		can_remap_key = true;
-	}
-	else
-	if (mouse_check_button_pressed(mb_right))
-	{
 		can_remap_key = true;
 	}
 	
@@ -619,5 +656,5 @@ function scr_keyboardremapping()
 		}
 	}
 	#endregion /*Remapping 4 END*/
-
+	
 }

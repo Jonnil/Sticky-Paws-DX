@@ -19,7 +19,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	var width_of_button = 670;
 	#endregion /*Initialize variables END*/
 	
-	if (variable_to_check= false)
+	if (variable_to_check = false)
 	{
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position-widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		and (global.controls_used_for_menu_navigation = "mouse")

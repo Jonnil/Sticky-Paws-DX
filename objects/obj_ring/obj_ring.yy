@@ -1,10 +1,14 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_ring",
   "spriteId": {
     "name": "spr_ring",
     "path": "sprites/spr_ring/spr_ring.yy",
   },
   "solid": false,
   "visible": true,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
@@ -27,8 +31,4 @@
     "name": "Level Objects",
     "path": "folders/Objects/Level Objects.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_ring",
-  "tags": [],
-  "resourceType": "GMObject",
 }

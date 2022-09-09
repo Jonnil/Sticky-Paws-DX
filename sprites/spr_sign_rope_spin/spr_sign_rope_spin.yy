@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "spr_sign_rope_spin",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -24,27 +27,17 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"beb45c66-2bd3-4b5b-9ced-d0e735ed4f68","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"beb45c66-2bd3-4b5b-9ced-d0e735ed4f68","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":{"name":"39ef48db-2d2b-4f13-b2a3-4b06a0f4e755","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_sign_rope_spin","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"beb45c66-2bd3-4b5b-9ced-d0e735ed4f68","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"2e2daf1a-d442-452d-aeda-5b2edb4d469f","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"2e2daf1a-d442-452d-aeda-5b2edb4d469f","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":{"name":"39ef48db-2d2b-4f13-b2a3-4b06a0f4e755","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_sign_rope_spin","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"2e2daf1a-d442-452d-aeda-5b2edb4d469f","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"6c859069-c07b-499a-91e3-98d18498b5da","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"6c859069-c07b-499a-91e3-98d18498b5da","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":{"name":"39ef48db-2d2b-4f13-b2a3-4b06a0f4e755","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_sign_rope_spin","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"6c859069-c07b-499a-91e3-98d18498b5da","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"cc1a1317-f2f8-4e07-95a3-965409354144","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"cc1a1317-f2f8-4e07-95a3-965409354144","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":{"name":"39ef48db-2d2b-4f13-b2a3-4b06a0f4e755","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_sign_rope_spin","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"cc1a1317-f2f8-4e07-95a3-965409354144","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"7c6cecf7-6362-49d2-b1a4-b074560cedbc","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"7c6cecf7-6362-49d2-b1a4-b074560cedbc","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":{"name":"39ef48db-2d2b-4f13-b2a3-4b06a0f4e755","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_sign_rope_spin","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"7c6cecf7-6362-49d2-b1a4-b074560cedbc","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"57e53ca5-0e50-45a4-8670-0b6a6e080a44","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"57e53ca5-0e50-45a4-8670-0b6a6e080a44","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"LayerId":{"name":"39ef48db-2d2b-4f13-b2a3-4b06a0f4e755","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_sign_rope_spin","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","name":"57e53ca5-0e50-45a4-8670-0b6a6e080a44","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"beb45c66-2bd3-4b5b-9ced-d0e735ed4f68",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"2e2daf1a-d442-452d-aeda-5b2edb4d469f",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"6c859069-c07b-499a-91e3-98d18498b5da",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"cc1a1317-f2f8-4e07-95a3-965409354144",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"7c6cecf7-6362-49d2-b1a4-b074560cedbc",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"57e53ca5-0e50-45a4-8670-0b6a6e080a44",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_sign_rope_spin","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "spr_sign_rope_spin",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -55,14 +48,14 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"cb4e8527-3fc9-408f-9084-61af68acfdd6","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"beb45c66-2bd3-4b5b-9ced-d0e735ed4f68","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"535a8618-be86-4435-9049-c0735be34f8d","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"2e2daf1a-d442-452d-aeda-5b2edb4d469f","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"5e125d1c-e32d-4dd1-957a-4e75bc86d589","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"6c859069-c07b-499a-91e3-98d18498b5da","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"20c3ad03-1242-4a7e-b42c-34a4da149459","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"cc1a1317-f2f8-4e07-95a3-965409354144","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"c3662052-5327-4c37-85b4-5c4e5b64fc42","Key":4.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"7c6cecf7-6362-49d2-b1a4-b074560cedbc","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"0f5ce4f0-5043-48d2-8443-3ad1200cc85b","Key":5.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"57e53ca5-0e50-45a4-8670-0b6a6e080a44","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -78,22 +71,13 @@
     "yorigin": 69,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_sign_rope_spin","path":"sprites/spr_sign_rope_spin/spr_sign_rope_spin.yy",},
-    "resourceVersion": "1.4",
-    "name": "spr_sign_rope_spin",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"39ef48db-2d2b-4f13-b2a3-4b06a0f4e755","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"39ef48db-2d2b-4f13-b2a3-4b06a0f4e755","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "Sprites",
     "path": "folders/Sprites.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "spr_sign_rope_spin",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

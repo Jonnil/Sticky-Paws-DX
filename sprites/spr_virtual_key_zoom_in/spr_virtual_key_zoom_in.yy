@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "spr_virtual_key_zoom_in",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -24,12 +27,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"20003659-c8b0-46ad-a770-c27ce5f30167","path":"sprites/spr_virtual_key_zoom_in/spr_virtual_key_zoom_in.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"20003659-c8b0-46ad-a770-c27ce5f30167","path":"sprites/spr_virtual_key_zoom_in/spr_virtual_key_zoom_in.yy",},"LayerId":{"name":"daece7e8-84b9-41b9-9707-cf16b515f073","path":"sprites/spr_virtual_key_zoom_in/spr_virtual_key_zoom_in.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_virtual_key_zoom_in","path":"sprites/spr_virtual_key_zoom_in/spr_virtual_key_zoom_in.yy",},"resourceVersion":"1.0","name":"20003659-c8b0-46ad-a770-c27ce5f30167","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"20003659-c8b0-46ad-a770-c27ce5f30167",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_virtual_key_zoom_in","path":"sprites/spr_virtual_key_zoom_in/spr_virtual_key_zoom_in.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "spr_virtual_key_zoom_in",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -40,9 +43,9 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"5a9b4e46-f299-4aa2-9e72-ef2a2984ba7a","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"20003659-c8b0-46ad-a770-c27ce5f30167","path":"sprites/spr_virtual_key_zoom_in/spr_virtual_key_zoom_in.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+            {"id":"5a9b4e46-f299-4aa2-9e72-ef2a2984ba7a","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":null,"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,22 +61,13 @@
     "yorigin": 32,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_virtual_key_zoom_in","path":"sprites/spr_virtual_key_zoom_in/spr_virtual_key_zoom_in.yy",},
-    "resourceVersion": "1.4",
-    "name": "spr_virtual_key_zoom_in",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"daece7e8-84b9-41b9-9707-cf16b515f073","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"daece7e8-84b9-41b9-9707-cf16b515f073","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "mobile buttons",
     "path": "folders/Sprites/buttons/mobile buttons.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "spr_virtual_key_zoom_in",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

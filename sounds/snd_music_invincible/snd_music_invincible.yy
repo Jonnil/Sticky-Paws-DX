@@ -1,4 +1,8 @@
 {
+  "resourceType": "GMSound",
+  "resourceVersion": "1.0",
+  "name": "snd_music_invincible",
+  "conversionMode": 0,
   "compression": 0,
   "volume": 0.41,
   "preload": false,
@@ -16,8 +20,4 @@
     "name": "Sounds",
     "path": "folders/Sounds.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "snd_music_invincible",
-  "tags": [],
-  "resourceType": "GMSound",
 }

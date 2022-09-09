@@ -5584,7 +5584,7 @@ function scr_options_menu()
 		if (menu = "show_fps") and (menu_delay = 0){if (global.show_fps = true){global.show_fps = false;}else{global.show_fps = true;}menu_delay = 3;}
 		if (menu = "show_fps_real") and (menu_delay = 0){if (global.show_fps_real = true){global.show_fps_real = false;}else{global.show_fps_real = true;}menu_delay = 3;}
 		if (menu = "show_instance_count") and (menu_delay = 0){if (global.show_instance_count = true){global.show_instance_count = false;}else{global.show_instance_count = true;}menu_delay = 3;}
-		if (menu = "show_collision_mask") and (menu_delay = 0){if (global.show_collision_mask= true){global.show_collision_mask= false;}else{global.show_collision_mask= true;}menu_delay = 3;}
+		if (menu = "show_collision_mask") and (menu_delay = 0){if (global.show_collision_mask = true){global.show_collision_mask = false;}else{global.show_collision_mask = true;}menu_delay = 3;}
 		if (menu = "enable_transitions") and (menu_delay = 0){if (global.enable_transitions = true){global.enable_transitions = false;}else{global.enable_transitions = true;}menu_delay = 3;}
 		
 		if (menu = "enable_background_layer1") and (menu_delay = 0){if (global.enable_background_layer1 = true){global.enable_background_layer1 = false;}else{global.enable_background_layer1 = true;}menu_delay = 3;}

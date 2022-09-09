@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "spr_air_bubbles_spawner",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -24,18 +27,14 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"c82f0b93-a78d-4d14-9847-aa64e77e2d1e","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"c82f0b93-a78d-4d14-9847-aa64e77e2d1e","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"LayerId":{"name":"1d150a47-6d31-4c19-8ef4-d096c2ca847f","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_air_bubbles_spawner","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"resourceVersion":"1.0","name":"c82f0b93-a78d-4d14-9847-aa64e77e2d1e","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"b6c62cbe-6362-4f73-b9e3-9d699accd9a8","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"b6c62cbe-6362-4f73-b9e3-9d699accd9a8","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"LayerId":{"name":"1d150a47-6d31-4c19-8ef4-d096c2ca847f","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_air_bubbles_spawner","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"resourceVersion":"1.0","name":"b6c62cbe-6362-4f73-b9e3-9d699accd9a8","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"4c168adf-a83c-4ff5-be0a-f680285df1d8","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4c168adf-a83c-4ff5-be0a-f680285df1d8","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"LayerId":{"name":"1d150a47-6d31-4c19-8ef4-d096c2ca847f","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_air_bubbles_spawner","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"resourceVersion":"1.0","name":"4c168adf-a83c-4ff5-be0a-f680285df1d8","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c82f0b93-a78d-4d14-9847-aa64e77e2d1e",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"b6c62cbe-6362-4f73-b9e3-9d699accd9a8",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"4c168adf-a83c-4ff5-be0a-f680285df1d8",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_air_bubbles_spawner","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "spr_air_bubbles_spawner",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -46,11 +45,11 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"4413a920-3384-4b2c-8041-4575522c274a","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c82f0b93-a78d-4d14-9847-aa64e77e2d1e","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"f0cd83e3-1bde-4617-9725-9b8f1760b6f7","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b6c62cbe-6362-4f73-b9e3-9d699accd9a8","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"455a40fc-acf8-4b40-a451-33805345ef66","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4c168adf-a83c-4ff5-be0a-f680285df1d8","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -66,22 +65,13 @@
     "yorigin": 9,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_air_bubbles_spawner","path":"sprites/spr_air_bubbles_spawner/spr_air_bubbles_spawner.yy",},
-    "resourceVersion": "1.4",
-    "name": "spr_air_bubbles_spawner",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"1d150a47-6d31-4c19-8ef4-d096c2ca847f","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"1d150a47-6d31-4c19-8ef4-d096c2ca847f","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "Sprites",
     "path": "folders/Sprites.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "spr_air_bubbles_spawner",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

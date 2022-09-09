@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "spr_boss_laugh",
   "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
@@ -24,21 +27,15 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"59bae22b-f93a-4d01-955b-1cdbb3de3cdd","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"59bae22b-f93a-4d01-955b-1cdbb3de3cdd","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"LayerId":{"name":"640b202f-96d3-4dec-b6b5-09b47cdb838e","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_boss_laugh","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","name":"59bae22b-f93a-4d01-955b-1cdbb3de3cdd","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"adff6e81-de23-4c78-9fb0-f0a18fef1d86","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"adff6e81-de23-4c78-9fb0-f0a18fef1d86","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"LayerId":{"name":"640b202f-96d3-4dec-b6b5-09b47cdb838e","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_boss_laugh","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","name":"adff6e81-de23-4c78-9fb0-f0a18fef1d86","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"50b8a82d-9149-4a26-ab3b-a9b8e64db648","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"50b8a82d-9149-4a26-ab3b-a9b8e64db648","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"LayerId":{"name":"640b202f-96d3-4dec-b6b5-09b47cdb838e","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_boss_laugh","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","name":"50b8a82d-9149-4a26-ab3b-a9b8e64db648","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"e0e86e13-c9f8-4d82-bc42-23154e84b756","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"e0e86e13-c9f8-4d82-bc42-23154e84b756","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"LayerId":{"name":"640b202f-96d3-4dec-b6b5-09b47cdb838e","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_boss_laugh","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","name":"e0e86e13-c9f8-4d82-bc42-23154e84b756","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"59bae22b-f93a-4d01-955b-1cdbb3de3cdd",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"adff6e81-de23-4c78-9fb0-f0a18fef1d86",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"50b8a82d-9149-4a26-ab3b-a9b8e64db648",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"e0e86e13-c9f8-4d82-bc42-23154e84b756",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_boss_laugh","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "spr_boss_laugh",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -49,12 +46,12 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"82d5ca76-1bc5-4edd-b5ae-4f64e587f866","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"59bae22b-f93a-4d01-955b-1cdbb3de3cdd","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"3e68e6c5-7151-42c6-8b31-888483e3a34f","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"adff6e81-de23-4c78-9fb0-f0a18fef1d86","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"68f10896-c7e6-4c1a-882a-e7555dfb6869","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"50b8a82d-9149-4a26-ab3b-a9b8e64db648","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"2b17a518-0b35-4ad0-8ab3-cfba6c1134f8","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e0e86e13-c9f8-4d82-bc42-23154e84b756","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+            {"id":"82d5ca76-1bc5-4edd-b5ae-4f64e587f866","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":null,"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"3e68e6c5-7151-42c6-8b31-888483e3a34f","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":null,"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"68f10896-c7e6-4c1a-882a-e7555dfb6869","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":null,"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"2b17a518-0b35-4ad0-8ab3-cfba6c1134f8","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":null,"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -70,22 +67,13 @@
     "yorigin": 150,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_boss_laugh","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},
-    "resourceVersion": "1.4",
-    "name": "spr_boss_laugh",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"640b202f-96d3-4dec-b6b5-09b47cdb838e","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"640b202f-96d3-4dec-b6b5-09b47cdb838e","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "enemies",
     "path": "folders/Sprites/enemies.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "spr_boss_laugh",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

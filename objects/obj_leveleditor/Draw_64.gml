@@ -626,7 +626,7 @@ if (quit_level_editor = false)
 		name_enter_blink+= 0.05;
 		if (name_enter_blink > 1.5)
 		{
-			name_enter_blink= 0;
+			name_enter_blink = 0;
 		}
 	}
 	#endregion /*PLAYER 1 INPUT LEVEL NAME NOW END*/

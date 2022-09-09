@@ -90,6 +90,17 @@ enum level_object_id
 	id_question_block_invincibility_powerup_coil_spring = 17001,
 	#endregion /*Question Block END*/
 	
+	#region /*Melon Block*/
+	id_melon_block = 135121,
+	id_melon_block_10_basic_collectibles = 135122,
+	id_melon_block_heart_balloon = 135123,
+	id_melon_block_one_up = 135124,
+	id_melon_block_two_up = 135125,
+	id_melon_block_three_up = 135126,
+	id_melon_block_invincibility_powerup = 135127,
+	id_melon_block_invincibility_powerup_coil_spring = 135128,
+	#endregion /*Melon Block END*/
+	
 	id_hard_block = 18,
 	id_hard_block_alternate = 181,
 	id_hard_block_2x2 = 182,
@@ -266,6 +277,17 @@ add_object(level_object_id.id_question_block_three_up, spr_question_block, 0, sp
 add_object(level_object_id.id_question_block_invincibility_powerup, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_question_block_invincibility_powerup_coil_spring, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 #endregion /*Question Block END*/
+
+#region /*Melon Block*/
+add_object(level_object_id.id_melon_block, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_melon_block_10_basic_collectibles, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_melon_block_heart_balloon, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_melon_block_one_up, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_melon_block_two_up, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_melon_block_three_up, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_melon_block_invincibility_powerup, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+add_object(level_object_id.id_melon_block_invincibility_powerup_coil_spring, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+#endregion /*Melon Block END*/
 
 add_object(level_object_id.id_hard_block, spr_hard_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_hard_block_alternate, spr_hard_block_alternate, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -595,7 +617,7 @@ can_navigate_settings_sidebar = true;
 navigate_slider = false;
 menu = "continue";
 open_dropdown = false;
-name_enter_blink= 0;
+name_enter_blink = 0;
 menu_delay = 10;
 startup_loading_timer = 0;
 background_brightness_lerp = 0;

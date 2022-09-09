@@ -1,6 +1,7 @@
 depth = 12;
+image_speed = 0.1;
 
-brick_block = false;
+block_type = "question_block"; /*question_block, brick_block, melon_block*/
 item_inside = "none";
 bounceup = false;
 empty = false;
@@ -11,10 +12,9 @@ show_scoreup = false;
 
 xx = x;
 yy = y;
-if (asset_get_type("spr_question_block") == asset_sprite)
-{
-	sprite_index = spr_question_block;
-}
+
+alarm[0] = 1;
+
 #region /*Mask*/
 if (asset_get_type("spr_wall") == asset_sprite)
 {

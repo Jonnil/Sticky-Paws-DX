@@ -97,7 +97,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= voice_wall_jump_1;
+	voice_wallkick = voice_wall_jump_1;
 }
 else
 if (voice_wall_jump_1> noone)
@@ -121,7 +121,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2);
 }
 else
@@ -146,7 +146,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3);
 }
@@ -172,7 +172,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4);
@@ -199,7 +199,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -227,7 +227,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -256,7 +256,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -286,7 +286,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -317,7 +317,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -349,7 +349,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -382,7 +382,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -416,7 +416,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -451,7 +451,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -487,7 +487,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -524,7 +524,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -562,7 +562,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -601,7 +601,7 @@ and (voice_wall_jump_18 = noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -641,7 +641,7 @@ and (voice_wall_jump_18 > noone)
 and (voice_wall_jump_19 = noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -682,7 +682,7 @@ and (voice_wall_jump_18 > noone)
 and (voice_wall_jump_19 > noone)
 and (voice_wall_jump_20 = noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -724,7 +724,7 @@ and (voice_wall_jump_18 > noone)
 and (voice_wall_jump_19 > noone)
 and (voice_wall_jump_20 > noone)
 {
-	voice_wallkick= choose(voice_wall_jump_1,
+	voice_wallkick = choose(voice_wall_jump_1,
 						voice_wall_jump_2,
 						voice_wall_jump_3,
 						voice_wall_jump_4,
@@ -4749,12 +4749,49 @@ or (gamepad_button_check_released(player - 1, this_player_gamepad_button2_tongue
 #endregion /*Key Tongue Released END*/
 
 #region /*Key Dive Pressed*/
-key_dive_pressed =
+if (this_player_key_dive = mb_left)
+{
+	key_dive_pressed_mouse = mouse_check_button_pressed(mb_left);
+}
+else
+if (this_player_key_dive = mb_middle)
+{
+	key_dive_pressed_mouse = mouse_check_button_pressed(mb_middle);
+}
+else
+if (this_player_key_dive = mb_right)
+{
+	key_dive_pressed_mouse = mouse_check_button_pressed(mb_right);
+}
+else
+if (this_player_key_dive = mb_side1)
+{
+	key_dive_pressed_mouse = mouse_check_button_pressed(mb_side1);
+}
+else
+if (this_player_key_dive = mb_side2)
+{
+	key_dive_pressed_mouse = mouse_check_button_pressed(mb_side2);
+}
+else
+if (this_player_key_dive = 13234)
+{
+	key_dive_pressed_mouse = mouse_wheel_down();
+}
+else
+if (this_player_key_dive = 132321)
+{
+	key_dive_pressed_mouse = mouse_wheel_up();
+}
+
+key_dive_pressed_other =
 (keyboard_check_pressed(this_player_key_dive))
 or(keyboard_check_pressed(this_player_key2_dive))
 
 or(gamepad_button_check_pressed(player - 1, this_player_gamepad_button_dive))
 or(gamepad_button_check_pressed(player - 1, this_player_gamepad_button2_dive));
+
+key_dive_pressed = key_dive_pressed_mouse or key_dive_pressed_other
 #endregion /*Key Dive Pressed END*/
 
 #region /*Key Dive Hold*/
@@ -6403,18 +6440,24 @@ and (global.pause = false)
 		#region /*Key Jump*/
 		if (key_jump)
 		{
+			
+			#region /*Retrieve tongue*/
 			with(instance_nearest(x, y, obj_tongue))
 			{
 				timer = 25;
 				move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
 			}
-			vspeed = -normal_jump_height + vspeed;
 			rope_angle_velocity = 0;
 			grapple_x = x;
 			grapple_y = y;
 			rope_angle = point_direction(grapple_x, grapple_y, x, y);
 			rope_length = point_distance(grapple_x, grapple_y, x, y);
 			rope_swing = false;
+			#endregion /*Retrieve tongue END*/
+			
+			tongue_move_player_toward_wall = false; /*Make sure to disable player moving toward wall when you jump out of a tongue swing*/
+			tongue_move_player_toward_wall_timer = 0;
+			vspeed = -normal_jump_height + vspeed; /*Make the player jump when going out of rope swing*/
 		}
 		#endregion /*Key Jump END*/
 		
@@ -6422,27 +6465,58 @@ and (global.pause = false)
 	#endregion /*Rope Swing END*/
 	
 	#region /*Fly toward wall when clicking tongue button again*/
-	if (asset_get_type("obj_enemy") == asset_object)
-	and (instance_number(obj_enemy) > 0)
-	and (place_meeting(x, y, obj_enemy))
+	if (rope_swing = true)
+	and (mouse_check_button_pressed(mb_left))
+	or (rope_swing = true)
+	and (key_tongue_pressed)
 	{
-		if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		and (timer < 35)
-		{
-			speed = 0;
-		}
-		move_towards_point(instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 8);
-		with(instance_nearest(x, y, obj_player))
-		{
-			move_towards_point(instance_nearest(x, y, obj_tongue).x, instance_nearest(x, y, obj_tongue).y, 16);
-		}
-		with(instance_nearest(x, y, obj_enemy))
-		{
-			hspeed = 0;
-			vspeed = 0;
-			speed = 0;
-		}
+		tongue_move_player_toward_wall = true;
 	}
+	
+	if (instance_exists(obj_tongue))
+	and (tongue_move_player_toward_wall = true)
+	{
+		if (tongue_move_player_toward_wall_timer > 3)
+		{
+			if (!place_meeting(x-1, y, obj_wall))
+			or (!place_meeting(x+1, y, obj_wall))
+			or (!place_meeting(x, y-1, obj_wall))
+			or (!place_meeting(x, y+1, obj_wall))
+			{
+				move_towards_point(instance_nearest(x, y, obj_tongue).x, instance_nearest(x, y, obj_tongue).y, 16); /*This makes the player fly toward the tongue*/
+			}
+		}
+		else
+		{
+			move_towards_point(instance_nearest(x, y, obj_tongue).x, instance_nearest(x, y, obj_tongue).y, 16); /*This makes the player fly toward the tongue*/
+		}
+		tongue_move_player_toward_wall_timer += 1;
+		
+		#region /*When touching tongue when flying towards it, or when the character has stopped moving and can't move closer to tongue, then retrieve the tongue*/
+		if (distance_to_object(instance_nearest(x, y, obj_tongue)) < 32)
+		{
+			
+			#region /*Retrieve tongue*/
+			with(instance_nearest(x, y, obj_tongue))
+			{
+				timer = 25;
+				move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
+			}
+			rope_angle_velocity = 0;
+			grapple_x = x;
+			grapple_y = y;
+			rope_angle = point_direction(grapple_x, grapple_y, x, y);
+			rope_length = point_distance(grapple_x, grapple_y, x, y);
+			rope_swing = false;
+			#endregion /*Retrieve tongue END*/
+			
+			tongue_move_player_toward_wall = false;
+			tongue_move_player_toward_wall_timer = 0;
+		}
+		#endregion /*When touching tongue when flying towards it, or when the character has stopped moving and can't move closer to tongue, then retrieve the tongue END*/
+		
+	}
+	
 	#endregion /*Fly toward wall when clicking tongue button again END*/
 	
 }
@@ -6458,6 +6532,34 @@ else
 	}
 }
 #endregion /*Tongue END*/
+
+#region /*When the character has stopped moving and can't move closer to tongue, then retrieve the tongue*/
+if (instance_exists(obj_tongue))
+and (tongue_move_player_toward_wall = true)
+and (speed < +15)
+or (instance_exists(obj_tongue))
+and (tongue_move_player_toward_wall = true)
+and (tongue_move_player_toward_wall_timer > 60) /*If it's been over 1 second, cancel the move towards tongue move, as backup if the player didn't stop correctly*/
+{
+	
+	#region /*Retrieve tongue*/
+	with(instance_nearest(x, y, obj_tongue))
+	{
+		timer = 25;
+		move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
+	}
+	rope_angle_velocity = 0;
+	grapple_x = x;
+	grapple_y = y;
+	rope_angle = point_direction(grapple_x, grapple_y, x, y);
+	rope_length = point_distance(grapple_x, grapple_y, x, y);
+	rope_swing = false;
+	#endregion /*Retrieve tongue END*/
+	
+	tongue_move_player_toward_wall = false;
+	tongue_move_player_toward_wall_timer = 0;
+}
+#endregion /*When the character has stopped moving and can't move closer to tongue, then retrieve the tongue END*/
 
 #region /*Roll when landing*/
 if (allow_roll = true)

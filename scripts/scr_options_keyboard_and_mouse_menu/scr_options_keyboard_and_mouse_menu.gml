@@ -3838,31 +3838,33 @@ function scr_options_keyboard_and_mouse_menu()
 			
 			#endregion /*Make keys red if in conflict with other keys END*/
 			
-			#region /*Remap Key Dive*/
-			if (menu = "remap_key_dive")
-			and (menu_remap_key_number = 0)
-			{
-				if(remapping_player_key_dive > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, remapping_player_key_dive, key1_x, menu_y_remap_key_dive + menu_y_offset, 1, 1, 0, c_white, 1);
-				}
-				else
-				{
-					draw_sprite_ext(spr_keyboard_keys, 0, key1_x, menu_y_remap_key_dive + menu_y_offset, 1, 1, 0, c_white, 1);
-				}
-			}
-			else
-			{
-				if(remapping_player_key_dive > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, remapping_player_key_dive, key1_x, menu_y_remap_key_dive + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
-				}
-				else
-				{
-					draw_sprite_ext(spr_keyboard_keys, 0, key1_x, menu_y_remap_key_dive + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
-				}
-			}
-			#endregion /*Remap Key Dive END*/
+			scr_draw_remap_key("remap_key_dive", remapping_player_key_dive, menu_y_remap_key_dive);
+			
+			//#region /*Remap Key Dive*/
+			//if (menu = "remap_key_dive")
+			//and (menu_remap_key_number = 0)
+			//{
+			//	if(remapping_player_key_dive > noone)
+			//	{
+			//		draw_sprite_ext(spr_keyboard_keys, remapping_player_key_dive, key1_x, menu_y_remap_key_dive + menu_y_offset, 1, 1, 0, c_white, 1);
+			//	}
+			//	else
+			//	{
+			//		draw_sprite_ext(spr_keyboard_keys, 0, key1_x, menu_y_remap_key_dive + menu_y_offset, 1, 1, 0, c_white, 1);
+			//	}
+			//}
+			//else
+			//{
+			//	if(remapping_player_key_dive > noone)
+			//	{
+			//		draw_sprite_ext(spr_keyboard_keys, remapping_player_key_dive, key1_x, menu_y_remap_key_dive + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
+			//	}
+			//	else
+			//	{
+			//		draw_sprite_ext(spr_keyboard_keys, 0, key1_x, menu_y_remap_key_dive + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
+			//	}
+			//}
+			//#endregion /*Remap Key Dive END*/
 			
 			#region /*Remap Key Jump*/
 			if (menu = "remap_key_jump")
@@ -4739,16 +4741,6 @@ function scr_options_keyboard_and_mouse_menu()
 				input_key = true;
 			}
 		}
-		
-		if (mouse_check_button_pressed(mb_left))
-		and (global.controls_used_for_menu_navigation = "mouse")
-		and (menu_delay = 0)
-		and (input_key = true)
-		{
-			can_navigate_settings_sidebar = false;
-			menu_delay = 3;
-			input_key = false;
-		}
 		#endregion /*Mouse Navigation END*/
 		
 		#region /*Remap Key Dive*/
@@ -4758,7 +4750,7 @@ function scr_options_keyboard_and_mouse_menu()
 			menu_cursor_y_position = menu_y_remap_key_dive;
 			draw_text_outlined(410, menu_y_remap_key_dive + menu_y_offset, Text("Dive"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			if (input_key = true)
-			and (can_remap_key = false)
+			and (can_remap_key = false)and (menu_delay = 0)
 			{
 				menu_delay = 3;
 				scr_keyboardremapping();
@@ -4780,63 +4772,63 @@ function scr_options_keyboard_and_mouse_menu()
 		#region /*Remap Key Jump*/
 		if (menu = "remap_key_jump"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_jump + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_jump ;
 		draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, Text("Jump"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, Text("Jump"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Jump END*/
 		
 		#region /*Remap Key Crouch */
 		if (menu = "remap_key_crouch"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_crouch + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_crouch;
 		draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, Text("Crouch"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, Text("Crouch"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Crouch END*/
 		
 		#region /*Remap Key Crouch Toggle*/
 		if (menu = "remap_key_crouch_toggle"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_crouch_toggle + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_crouch_toggle;
 		draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, Text("Crouch Toggle"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, Text("Crouch Toggle"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Crouch Toggle END*/
 		
 		#region /*Remap Key Sprint*/
 		if (menu = "remap_key_sprint"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_sprint + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_sprint;
 		draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, Text("Sprint"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, Text("Sprint"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Sprint END*/
 		
 		#region /*Remap Key Sprint Toggle*/
 		if (menu = "remap_key_sprint_toggle"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_sprint_toggle + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_sprint_toggle;
 		draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, Text("Sprint Toggle"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, Text("Sprint Toggle"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Sprint Toggle END*/
 		
 		#region /*Remap Key Left*/
 		if (menu = "remap_key_left"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_left + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_left;
 		draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, Text("Left"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, Text("Left"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Left END*/
 		
 		#region /*Remap Key Right*/
 		if (menu = "remap_key_right"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_right + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_right;
 		draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, Text("Right"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, Text("Right"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Right END*/
 		
 		#region /*Remap Key Down*/
 		if (menu = "remap_key_down"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_down + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_down;
 		draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, Text("Down"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, Text("Down"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Down END*/
 		
 		#region /*Remap Key Up*/
 		if (menu = "remap_key_up"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_up + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_up;
 		draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, Text("Up"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, Text("Up"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Up END*/
 		
@@ -4856,7 +4848,7 @@ function scr_options_keyboard_and_mouse_menu()
 				menu_cursor_y_position = menu_y_remap_key_tongue;
 				draw_text_outlined(410, menu_y_remap_key_tongue + menu_y_offset, Text("Tongue"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				if (input_key = true)
-				and (can_remap_key = false)
+				and (can_remap_key = false)and (menu_delay = 0)
 				{
 					menu_delay = 3;
 					scr_keyboardremapping();
@@ -4879,14 +4871,14 @@ function scr_options_keyboard_and_mouse_menu()
 		#region /*Remap Key Zoom In*/
 		if (menu = "remap_key_zoom_in"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_zoom_in + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_zoom_in;
 		draw_text_outlined(410, menu_y_remap_key_zoom_in + menu_y_offset, Text("Zoom In"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_zoom_in + menu_y_offset, Text("Zoom In"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Zoom In END*/
 		
 		#region /*Remap Key Zoom Out*/
 		if (menu = "remap_key_zoom_out"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_zoom_out + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_zoom_out;
 		draw_text_outlined(410, menu_y_remap_key_zoom_out + menu_y_offset, Text("Zoom Out"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_keyboardremapping();}else
+		if (input_key = true) and (can_remap_key = false)and (menu_delay = 0){menu_delay = 3;scr_keyboardremapping();}else
 		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_zoom_out + menu_y_offset, Text("Zoom Out"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Zoom Out END*/
 		
@@ -5387,7 +5379,7 @@ function scr_options_keyboard_and_mouse_menu()
 		if (input_key = true)
 		{
 			draw_set_alpha(0.75);
-			draw_rectangle_color(window_get_width() / 2 - 232, 32 - 20, window_get_width() / 2 + 232, 64 + 20, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(window_get_width() / 2 - 252, 32 - 20, window_get_width() / 2 + 252, 64 + 20, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			
 			if (remapping_player = 0) /*Text saying input gamepad button now for player 1*/

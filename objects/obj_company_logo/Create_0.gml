@@ -315,8 +315,8 @@ global.win = false;
 global.enemy_counter = 0;
 global.file = 1;
 global.controls_layout = 1;
-global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black=- 1, normal = 0 (default), full_white = +1*/
-global.background_brightness_menu = 0; /*Background brightness in menus. full_black=- 1, normal = 0 (default), full_white = +1*/
+global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black =- 1, normal = 0 (default), full_white = +1*/
+global.background_brightness_menu = 0; /*Background brightness in menus. full_black =- 1, normal = 0 (default), full_white = +1*/
 
 #region /*Music and Sound Volume*/
 global.main_volume = 0.7; /*Make the volumes set to 7000 by default*/
@@ -340,7 +340,7 @@ global.interpolate = true
 global.show_fps = false;
 global.show_fps_real = false;
 global.show_instance_count = false;
-global.show_collision_mask= false;
+global.show_collision_mask = false;
 global.pause_screenshot = noone;
 global.restart_level = false;
 global.quit_level = false;

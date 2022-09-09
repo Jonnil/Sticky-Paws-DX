@@ -52,7 +52,7 @@ if (kind_of_button = 0)
 #region /*Checkmark*/
 if (kind_of_button = 1)
 {
-	if (checkmark= false)
+	if (checkmark = false)
 	{
 		draw_sprite_ext(spr_checkbox, 0, x + 16, y + 16, 0.5, 0.5, 0,highlight_color, 1);
 	}
@@ -69,13 +69,13 @@ if (kind_of_button = 1)
 			clicked_on = false;
 		}
 		clicked_on = true;
-		if (checkmark= false)
+		if (checkmark = false)
 		{
-			checkmark= true;
+			checkmark = true;
 		}
 		else
 		{
-			checkmark= false;
+			checkmark = false;
 		}
 	}#endregion /*Clicking the menu button END*/
 
