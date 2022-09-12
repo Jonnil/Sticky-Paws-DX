@@ -3,15 +3,23 @@ if (bounceup = false)
 {
 	if (place_meeting(x, y - 4, obj_player))
 	and (!place_meeting(x, y - 1, obj_wall))
-	and (obj_player.ground_pound = true)
-	or(place_meeting(x, y + 1, obj_player))
+	and (instance_nearest(x, y, obj_player).ground_pound = true)
+	
+	or(position_meeting(x, bbox_bottom + 1, obj_player)) /*Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching*/
 	and (!place_meeting(x, y + 1, obj_wall))
+	
+	or(position_meeting(bbox_left + 9, bbox_bottom + 1, obj_player)) /*Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching*/
+	and (!place_meeting(x, y + 1, obj_wall))
+	
+	or(position_meeting(bbox_right - 9, bbox_bottom + 1, obj_player)) /*Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching*/
+	and (!place_meeting(x, y + 1, obj_wall))
+	
 	or(place_meeting(bbox_left -4, y, obj_player))
 	and (!place_meeting(x - 4, y, obj_wall))
-	and (obj_player.dive = true)
+	and (instance_nearest(x, y, obj_player).dive = true)
 	or(place_meeting(bbox_right + 4, y, obj_player))
 	and (!place_meeting(x + 4, y, obj_wall))
-	and (obj_player.dive = true)
+	and (instance_nearest(x, y, obj_player).dive = true)
 	or (place_meeting(x, y, obj_blockbreak))
 	and (instance_nearest(x, y, obj_blockbreak).can_break_other_blocks = true)
 	
@@ -105,29 +113,17 @@ if (bounceup = false)
 				}
 				else
 				{
-					if (place_meeting(x, y - 4, obj_player))
-					and (!place_meeting(x, y - 1, obj_wall))
-					and (obj_player.ground_pound = true)
-					or(place_meeting(x, y + 1, obj_player))
+					if (place_meeting(x, y + 1, obj_player))
 					and (!place_meeting(x, y + 1, obj_wall))
-					or(place_meeting(bbox_left -4, y, obj_player))
+					or (place_meeting(bbox_left -4, y, obj_player))
 					and (!place_meeting(x - 4, y, obj_wall))
-					and (obj_player.dive = true)
-					or(place_meeting(bbox_right + 4, y, obj_player))
+					and (instance_nearest(x, y, obj_player).dive = true)
+					or (place_meeting(bbox_right + 4, y, obj_player))
 					and (!place_meeting(x + 4, y, obj_wall))
-					and (obj_player.dive = true)
+					and (instance_nearest(x, y, obj_player).dive = true)
 					{
 						with(instance_nearest(x, y, obj_player))
 						{
-							if (key_crouch_hold)
-							and (ground_pound = true)
-							{
-								ground_pound = true;
-							}
-							else
-							{
-								ground_pound = false;
-							}
 							dive = false;
 							vspeed = +4;
 						}

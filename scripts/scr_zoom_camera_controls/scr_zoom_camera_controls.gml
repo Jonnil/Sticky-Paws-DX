@@ -1,5 +1,15 @@
 function scr_zoom_camera_controls()
 {
+	key_player1_zoom_in_hold = scr_key_initialize(key_player1_zoom_in_hold, 0, 1, global.player1_key_zoom_in, global.player1_key2_zoom_in, global.player1_gamepad_button_zoom_in, global.player1_gamepad_button2_zoom_in);
+	key_player2_zoom_in_hold = scr_key_initialize(key_player2_zoom_in_hold, 0, 2, global.player2_key_zoom_in, global.player2_key2_zoom_in, global.player2_gamepad_button_zoom_in, global.player2_gamepad_button2_zoom_in);
+	key_player3_zoom_in_hold = scr_key_initialize(key_player3_zoom_in_hold, 0, 3, global.player3_key_zoom_in, global.player3_key2_zoom_in, global.player3_gamepad_button_zoom_in, global.player3_gamepad_button2_zoom_in);
+	key_player4_zoom_in_hold = scr_key_initialize(key_player4_zoom_in_hold, 0, 4, global.player4_key_zoom_in, global.player4_key2_zoom_in, global.player4_gamepad_button_zoom_in, global.player4_gamepad_button2_zoom_in);
+	
+	key_player1_zoom_out_hold = scr_key_initialize(key_player1_zoom_out_hold, 0, 1, global.player1_key_zoom_out, global.player1_key2_zoom_out, global.player1_gamepad_button_zoom_out, global.player1_gamepad_button2_zoom_out);
+	key_player2_zoom_out_hold = scr_key_initialize(key_player2_zoom_out_hold, 0, 2, global.player2_key_zoom_out, global.player2_key2_zoom_out, global.player2_gamepad_button_zoom_out, global.player2_gamepad_button2_zoom_out);
+	key_player3_zoom_out_hold = scr_key_initialize(key_player3_zoom_out_hold, 0, 3, global.player3_key_zoom_out, global.player3_key2_zoom_out, global.player3_gamepad_button_zoom_out, global.player3_gamepad_button2_zoom_out);
+	key_player4_zoom_out_hold = scr_key_initialize(key_player4_zoom_out_hold, 0, 4, global.player4_key_zoom_out, global.player4_key2_zoom_out, global.player4_gamepad_button_zoom_out, global.player4_gamepad_button2_zoom_out);
+	
 	/*This script uses normal draw functions so only use it in normal draw event (Not draw GUI)*/
 	if(gamepad_axis_value(0, gp_axisrv) < 0)
 	or(gamepad_axis_value(0, gp_axisrv) < 0)
@@ -48,42 +58,18 @@ function scr_zoom_camera_controls()
 	
 	if (room != room_title)
 	{
-		if (keyboard_check(global.player1_key_zoom_in))
-		and (!keyboard_check(global.player1_key_zoom_out))
-		or (keyboard_check(global.player2_key_zoom_in))
-		and (!keyboard_check(global.player2_key_zoom_out))
-		or (keyboard_check(global.player3_key_zoom_in))
-		and (!keyboard_check(global.player3_key_zoom_out))
-		or (keyboard_check(global.player4_key_zoom_in))
-		and (!keyboard_check(global.player4_key_zoom_out))
-		or (keyboard_check(global.player1_key2_zoom_in))
-		and (!keyboard_check(global.player1_key2_zoom_out))
-		or (keyboard_check(global.player2_key2_zoom_in))
-		and (!keyboard_check(global.player2_key2_zoom_out))
-		or (keyboard_check(global.player3_key2_zoom_in))
-		and (!keyboard_check(global.player3_key2_zoom_out))
-		or (keyboard_check(global.player4_key2_zoom_in))
-		and (!keyboard_check(global.player4_key2_zoom_out))
+		if (key_player1_zoom_in_hold)
+		and (!key_player1_zoom_out_hold)
 		
-		or (gamepad_button_check(0, global.player1_gamepad_button_zoom_in))
-		and (!gamepad_button_check(0, global.player1_gamepad_button_zoom_out))
-		or (gamepad_button_check(1, global.player2_gamepad_button_zoom_in))
-		and (!gamepad_button_check(1, global.player2_gamepad_button_zoom_out))
-		or (gamepad_button_check(2, global.player3_gamepad_button_zoom_in))
-		and (!gamepad_button_check(2, global.player3_gamepad_button_zoom_out))
-		or (gamepad_button_check(3, global.player4_gamepad_button_zoom_in))
-		and (!gamepad_button_check(3, global.player4_gamepad_button_zoom_out))
-		or (gamepad_button_check(0, global.player1_gamepad_button2_zoom_in))
-		and (!gamepad_button_check(0, global.player1_gamepad_button2_zoom_out))
-		or (gamepad_button_check(1, global.player2_gamepad_button2_zoom_in))
-		and (!gamepad_button_check(1, global.player2_gamepad_button2_zoom_out))
-		or (gamepad_button_check(2, global.player3_gamepad_button2_zoom_in))
-		and (!gamepad_button_check(2, global.player3_gamepad_button2_zoom_out))
-		or (gamepad_button_check(3, global.player4_gamepad_button2_zoom_in))
-		and (!gamepad_button_check(3, global.player4_gamepad_button2_zoom_out))
+		or (key_player2_zoom_in_hold)
+		and (!key_player2_zoom_out_hold)
 		
-		or(mouse_wheel_up())
-		and (!mouse_wheel_down())
+		or (key_player3_zoom_in_hold)
+		and (!key_player3_zoom_out_hold)
+		
+		or (key_player4_zoom_in_hold)
+		and (!key_player4_zoom_out_hold)
+		
 		or(gamepad_axis_value(0, gp_axisrv) < 0)
 		or(gamepad_axis_value(1, gp_axisrv) < 0)
 		or(gamepad_axis_value(2, gp_axisrv) < 0)
@@ -111,42 +97,18 @@ function scr_zoom_camera_controls()
 				zoom_border_lerp = 1;
 			}
 		}
-		if (keyboard_check(global.player1_key_zoom_out))
-		and (!keyboard_check(global.player1_key_zoom_in))
-		or (keyboard_check(global.player2_key_zoom_out))
-		and (!keyboard_check(global.player2_key_zoom_in))
-		or (keyboard_check(global.player3_key_zoom_out))
-		and (!keyboard_check(global.player3_key_zoom_in))
-		or (keyboard_check(global.player4_key_zoom_out))
-		and (!keyboard_check(global.player4_key_zoom_in))
-		or (keyboard_check(global.player1_key2_zoom_out))
-		and (!keyboard_check(global.player1_key2_zoom_in))
-		or (keyboard_check(global.player2_key2_zoom_out))
-		and (!keyboard_check(global.player2_key2_zoom_in))
-		or (keyboard_check(global.player3_key2_zoom_out))
-		and (!keyboard_check(global.player3_key2_zoom_in))
-		or (keyboard_check(global.player4_key2_zoom_out))
-		and (!keyboard_check(global.player4_key2_zoom_in))
+		if (key_player1_zoom_out_hold)
+		and (!key_player1_zoom_in_hold)
 		
-		or (gamepad_button_check(0, global.player1_gamepad_button_zoom_out))
-		and (!gamepad_button_check(0, global.player1_gamepad_button_zoom_in))
-		or (gamepad_button_check(1, global.player2_gamepad_button_zoom_out))
-		and (!gamepad_button_check(1, global.player2_gamepad_button_zoom_in))
-		or (gamepad_button_check(2, global.player3_gamepad_button_zoom_out))
-		and (!gamepad_button_check(2, global.player3_gamepad_button_zoom_in))
-		or (gamepad_button_check(3, global.player4_gamepad_button_zoom_out))
-		and (!gamepad_button_check(3, global.player4_gamepad_button_zoom_in))
-		or (gamepad_button_check(0, global.player1_gamepad_button2_zoom_out))
-		and (!gamepad_button_check(0, global.player1_gamepad_button2_zoom_in))
-		or (gamepad_button_check(1, global.player2_gamepad_button2_zoom_out))
-		and (!gamepad_button_check(1, global.player2_gamepad_button2_zoom_in))
-		or (gamepad_button_check(2, global.player3_gamepad_button2_zoom_out))
-		and (!gamepad_button_check(2, global.player3_gamepad_button2_zoom_in))
-		or (gamepad_button_check(3, global.player4_gamepad_button2_zoom_out))
-		and (!gamepad_button_check(3, global.player4_gamepad_button2_zoom_in))
+		or (key_player2_zoom_out_hold)
+		and (!key_player2_zoom_in_hold)
 		
-		or(mouse_wheel_down())
-		and (!mouse_wheel_up())
+		or (key_player3_zoom_out_hold)
+		and (!key_player3_zoom_in_hold)
+		
+		or (key_player4_zoom_out_hold)
+		and (!key_player4_zoom_in_hold)
+		
 		or(gamepad_axis_value(0, gp_axisrv) > 0)
 		or(gamepad_axis_value(1, gp_axisrv) > 0)
 		or(gamepad_axis_value(2, gp_axisrv) > 0)
@@ -175,22 +137,4 @@ function scr_zoom_camera_controls()
 			}
 		}
 	}
-	//if (zoom_lerp < 0.5)
-	//{
-	//	draw_set_alpha(zoom_border_lerp);
-	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + 2, camera_get_view_x(view_camera[view_current]) + 1, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 3, c_red, c_red, c_red, c_red, false); /*Left*/
-	//	draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 2, 0, room_width * 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 3, c_red, c_red, c_red, c_red, false); /*Right*/
-	//	draw_rectangle_color(2, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 3, camera_get_view_y(view_camera[view_current]) + 1, c_red, c_red, c_red, c_red, false); /*Top*/
-	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 2, room_width * 2, room_height* 2, c_red, c_red, c_red, c_red, false); /*Bottom*/
-	//	draw_set_alpha(1);
-	//}
-	//else
-	//{
-	//	draw_set_alpha(zoom_border_lerp);
-	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + 9, camera_get_view_x(view_camera[view_current]) + 8, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 9, c_red, c_red, c_red, c_red, false); /*Left*/
-	//	draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8, 0, room_width * 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 9, c_red, c_red, c_red, c_red, false); /*Right*/
-	//	draw_rectangle_color(0, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 9, camera_get_view_y(view_camera[view_current]) + 8, c_red, c_red, c_red, c_red, false); /*Top*/
-	//	draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8, room_width * 2, room_height* 2, c_red, c_red, c_red, c_red, false); /*Bottom*/
-	//	draw_set_alpha(1);
-	//}
 }

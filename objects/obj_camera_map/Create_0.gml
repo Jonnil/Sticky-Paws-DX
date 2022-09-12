@@ -2,6 +2,15 @@
 /*Exclusively used on the world map*/
 /*So no conflicting code from the normal camera is running*/
 
+key_player1_zoom_in_hold = noone;
+key_player2_zoom_in_hold = noone;
+key_player3_zoom_in_hold = noone;
+key_player4_zoom_in_hold = noone;
+key_player1_zoom_out_hold = noone;
+key_player2_zoom_out_hold = noone;
+key_player3_zoom_out_hold = noone;
+key_player4_zoom_out_hold = noone;
+
 reset_game_if_no_interactivity = 0;
 reset_game_if_no_interactivity_second_countdown_timer = 0;
 reset_game_if_no_interactivity_second_countdown = 60;

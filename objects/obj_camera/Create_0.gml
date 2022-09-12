@@ -1,5 +1,18 @@
 black_screen_gui_alpha = 1;
 
+key_player1_sprint_toggle_pressed = noone;
+key_player2_sprint_toggle_pressed = noone;
+key_player3_sprint_toggle_pressed = noone;
+key_player4_sprint_toggle_pressed = noone;
+key_player1_zoom_in_hold = noone;
+key_player2_zoom_in_hold = noone;
+key_player3_zoom_in_hold = noone;
+key_player4_zoom_in_hold = noone;
+key_player1_zoom_out_hold = noone;
+key_player2_zoom_out_hold = noone;
+key_player3_zoom_out_hold = noone;
+key_player4_zoom_out_hold = noone;
+
 player1_motor_speed = 0;
 player2_motor_speed = 0;
 player3_motor_speed = 0;

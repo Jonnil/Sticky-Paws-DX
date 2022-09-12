@@ -676,7 +676,12 @@ else
 #endregion /*Player 4 Show Controls HUD timer*/
 
 #region /*Sprint Toggling*/
-if (keyboard_check_pressed(global.player1_key_sprint_toggle))
+key_player1_sprint_toggle_pressed = scr_key_initialize(key_player1_sprint_toggle_pressed, 1, 1, global.player1_key_sprint_toggle, global.player1_key2_sprint_toggle, global.player1_gamepad_button_sprint_toggle, global.player1_gamepad_button2_sprint_toggle);
+key_player2_sprint_toggle_pressed = scr_key_initialize(key_player2_sprint_toggle_pressed, 1, 2, global.player2_key_sprint_toggle, global.player2_key2_sprint_toggle, global.player2_gamepad_button_sprint_toggle, global.player2_gamepad_button2_sprint_toggle);
+key_player3_sprint_toggle_pressed = scr_key_initialize(key_player3_sprint_toggle_pressed, 1, 3, global.player3_key_sprint_toggle, global.player3_key2_sprint_toggle, global.player3_gamepad_button_sprint_toggle, global.player3_gamepad_button2_sprint_toggle);
+key_player4_sprint_toggle_pressed = scr_key_initialize(key_player4_sprint_toggle_pressed, 1, 4, global.player4_key_sprint_toggle, global.player4_key2_sprint_toggle, global.player4_gamepad_button_sprint_toggle, global.player4_gamepad_button2_sprint_toggle);
+
+if (key_player1_sprint_toggle_pressed)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -695,7 +700,7 @@ and (!instance_exists(obj_pause))
 		global.player1_sprint_toggle = false;
 	}
 }
-if (keyboard_check_pressed(global.player2_key_sprint_toggle))
+if (key_player2_sprint_toggle_pressed)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -714,7 +719,7 @@ and (!instance_exists(obj_pause))
 		global.player2_sprint_toggle = false;
 	}
 }
-if (keyboard_check_pressed(global.player3_key_sprint_toggle))
+if (key_player3_sprint_toggle_pressed)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -733,7 +738,7 @@ and (!instance_exists(obj_pause))
 		global.player3_sprint_toggle = false;
 	}
 }
-if (keyboard_check_pressed(global.player4_key_sprint_toggle))
+if (key_player4_sprint_toggle_pressed)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)

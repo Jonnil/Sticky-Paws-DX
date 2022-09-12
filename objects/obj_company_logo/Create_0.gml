@@ -489,3 +489,14 @@ sprite_index = spr_company_logo;
 #endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/
 
 calculate_translation_completion()
+
+enum mouse_button_value
+{
+	mb_left = 132125620,
+	mb_middle = 13213944125,
+	mb_right = 1321897820,
+	mb_side1 = 1321994515145,
+	mb_side2 = 13219945202315,
+	mwheel_down = 13234,
+	mwheel_up = 132321
+}
