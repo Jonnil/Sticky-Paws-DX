@@ -81,3 +81,9 @@ if (time > room_speed)
 		instance_destroy();
 	}
 }
+
+if (scoreup = undefined)
+or (scoreup = "undefined")
+{
+	instance_destroy();
+}

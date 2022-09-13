@@ -86,6 +86,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_key_down")){global.player1_key_down = ini_read_real("config", "player1_key_down", 0);}
 		if (ini_key_exists("config", "player1_key_up")){global.player1_key_up = ini_read_real("config", "player1_key_up", 0);}
 		if (ini_key_exists("config", "player1_key_tongue")){global.player1_key_tongue = ini_read_real("config", "player1_key_tongue", 0);}
+		if (ini_key_exists("config", "player1_key_zoom_in")){global.player1_key_zoom_in = ini_read_real("config", "player1_key_zoom_in", 0);}
+		if (ini_key_exists("config", "player1_key_zoom_out")){global.player1_key_zoom_out = ini_read_real("config", "player1_key_zoom_out", 0);}
 		if (ini_key_exists("config", "player1_key2_dive")){global.player1_key2_dive = ini_read_real("config", "player1_key2_dive", 0);}
 		if (ini_key_exists("config", "player1_key2_jump")){global.player1_key2_jump = ini_read_real("config", "player1_key2_jump", 0);}
 		if (ini_key_exists("config", "player1_key2_crouch")){global.player1_key2_crouch = ini_read_real("config", "player1_key2_crouch", 0);}
@@ -97,6 +99,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_key2_down")){global.player1_key2_down = ini_read_real("config", "player1_key2_down", 0);}
 		if (ini_key_exists("config", "player1_key2_up")){global.player1_key2_up = ini_read_real("config", "player1_key2_up", 0);}
 		if (ini_key_exists("config", "player1_key2_tongue")){global.player1_key2_tongue = ini_read_real("config", "player1_key2_tongue", 0);}
+		if (ini_key_exists("config", "player1_key2_zoom_in")){global.player1_key2_zoom_in = ini_read_real("config", "player1_key2_zoom_in", 0);}
+		if (ini_key_exists("config", "player1_key2_zoom_out")){global.player1_key2_zoom_out = ini_read_real("config", "player1_key2_zoom_out", 0);}
 		if (ini_key_exists("config", "player1_up_key_is_jump_key")){global.player1_up_key_is_jump_key = ini_read_real("config", "player1_up_key_is_jump_key", 0);}
 		if (ini_key_exists("config", "player1_double_tap_to_run")){global.player1_double_tap_to_run = ini_read_real("config", "player1_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player1_sprint_toggle")){global.player1_sprint_toggle = ini_read_real("config", "player1_sprint_toggle", 0);}
@@ -123,6 +127,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_key_down")){global.player2_key_down = ini_read_real("config", "player2_key_down", 0);}
 		if (ini_key_exists("config", "player2_key_up")){global.player2_key_up = ini_read_real("config", "player2_key_up", 0);}
 		if (ini_key_exists("config", "player2_key_tongue")){global.player2_key_tongue = ini_read_real("config", "player2_key_tongue", 0);}
+		if (ini_key_exists("config", "player2_key_zoom_in")){global.player2_key_zoom_in = ini_read_real("config", "player2_key_zoom_in", 0);}
+		if (ini_key_exists("config", "player2_key_zoom_out")){global.player2_key_zoom_out = ini_read_real("config", "player2_key_zoom_out", 0);}
 		if (ini_key_exists("config", "player2_key2_dive")){global.player2_key2_dive = ini_read_real("config", "player2_key2_dive", 0);}
 		if (ini_key_exists("config", "player2_key2_jump")){global.player2_key2_jump = ini_read_real("config", "player2_key2_jump", 0);}
 		if (ini_key_exists("config", "player2_key2_crouch")){global.player2_key2_crouch = ini_read_real("config", "player2_key2_crouch", 0);}
@@ -134,6 +140,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_key2_down")){global.player2_key2_down = ini_read_real("config", "player2_key2_down", 0);}
 		if (ini_key_exists("config", "player2_key2_up")){global.player2_key2_up = ini_read_real("config", "player2_key2_up", 0);}
 		if (ini_key_exists("config", "player2_key2_tongue")){global.player2_key2_tongue = ini_read_real("config", "player2_key2_tongue", 0);}
+		if (ini_key_exists("config", "player2_key2_zoom_in")){global.player2_key2_zoom_in = ini_read_real("config", "player2_key2_zoom_in", 0);}
+		if (ini_key_exists("config", "player2_key2_zoom_out")){global.player2_key2_zoom_out = ini_read_real("config", "player2_key2_zoom_out", 0);}
 		if (ini_key_exists("config", "player2_up_key_is_jump_key")){global.player2_up_key_is_jump_key = ini_read_real("config", "player2_up_key_is_jump_key", 0);}
 		if (ini_key_exists("config", "player2_double_tap_to_run")){global.player2_double_tap_to_run = ini_read_real("config", "player2_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player2_sprint_toggle")){global.player2_sprint_toggle = ini_read_real("config", "player2_sprint_toggle", 0);}
@@ -160,6 +168,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_key_down")){global.player3_key_down = ini_read_real("config", "player3_key_down", 0);}
 		if (ini_key_exists("config", "player3_key_up")){global.player3_key_up = ini_read_real("config", "player3_key_up", 0);}
 		if (ini_key_exists("config", "player3_key_tongue")){global.player3_key_tongue = ini_read_real("config", "player3_key_tongue", 0);}
+		if (ini_key_exists("config", "player3_key_zoom_in")){global.player3_key_zoom_in = ini_read_real("config", "player3_key_zoom_in", 0);}
+		if (ini_key_exists("config", "player3_key_zoom_out")){global.player3_key_zoom_out = ini_read_real("config", "player3_key_zoom_out", 0);}
 		if (ini_key_exists("config", "player3_key2_dive")){global.player3_key2_dive = ini_read_real("config", "player3_key2_dive", 0);}
 		if (ini_key_exists("config", "player3_key2_jump")){global.player3_key2_jump = ini_read_real("config", "player3_key2_jump", 0);}
 		if (ini_key_exists("config", "player3_key2_crouch")){global.player3_key2_crouch = ini_read_real("config", "player3_key2_crouch", 0);}
@@ -171,6 +181,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_key2_down")){global.player3_key2_down = ini_read_real("config", "player3_key2_down", 0);}
 		if (ini_key_exists("config", "player3_key2_up")){global.player3_key2_up = ini_read_real("config", "player3_key2_up", 0);}
 		if (ini_key_exists("config", "player3_key2_tongue")){global.player3_key2_tongue = ini_read_real("config", "player3_key2_tongue", 0);}
+		if (ini_key_exists("config", "player3_key2_zoom_in")){global.player3_key2_zoom_in = ini_read_real("config", "player3_key2_zoom_in", 0);}
+		if (ini_key_exists("config", "player3_key2_zoom_out")){global.player3_key2_zoom_out = ini_read_real("config", "player3_key2_zoom_out", 0);}
 		if (ini_key_exists("config", "player3_up_key_is_jump_key")){global.player3_up_key_is_jump_key = ini_read_real("config", "player3_up_key_is_jump_key", 0);}
 		if (ini_key_exists("config", "player3_double_tap_to_run")){global.player3_double_tap_to_run = ini_read_real("config", "player3_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player3_sprint_toggle")){global.player3_sprint_toggle = ini_read_real("config", "player3_sprint_toggle", 0);}
@@ -197,6 +209,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_key_down")){global.player4_key_down = ini_read_real("config", "player4_key_down", 0);}
 		if (ini_key_exists("config", "player4_key_up")){global.player4_key_up = ini_read_real("config", "player4_key_up", 0);}
 		if (ini_key_exists("config", "player4_key_tongue")){global.player4_key_tongue = ini_read_real("config", "player4_key_tongue", 0);}
+		if (ini_key_exists("config", "player4_key_zoom_in")){global.player4_key_zoom_in = ini_read_real("config", "player4_key_zoom_in", 0);}
+		if (ini_key_exists("config", "player4_key_zoom_out")){global.player4_key_zoom_out = ini_read_real("config", "player4_key_zoom_out", 0);}
 		if (ini_key_exists("config", "player4_key2_dive")){global.player4_key2_dive = ini_read_real("config", "player4_key2_dive", 0);}
 		if (ini_key_exists("config", "player4_key2_jump")){global.player4_key2_jump = ini_read_real("config", "player4_key2_jump", 0);}
 		if (ini_key_exists("config", "player4_key2_crouch")){global.player4_key2_crouch = ini_read_real("config", "player4_key2_crouch", 0);}
@@ -208,6 +222,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_key2_down")){global.player4_key2_down = ini_read_real("config", "player4_key2_down", 0);}
 		if (ini_key_exists("config", "player4_key2_up")){global.player4_key2_up = ini_read_real("config", "player4_key2_up", 0);}
 		if (ini_key_exists("config", "player4_key2_tongue")){global.player4_key2_tongue = ini_read_real("config", "player4_key2_tongue", 0);}
+		if (ini_key_exists("config", "player4_key2_zoom_in")){global.player4_key2_zoom_in = ini_read_real("config", "player4_key2_zoom_in", 0);}
+		if (ini_key_exists("config", "player4_key2_zoom_out")){global.player4_key2_zoom_out = ini_read_real("config", "player4_key2_zoom_out", 0);}
 		if (ini_key_exists("config", "player4_up_key_is_jump_key")){global.player4_up_key_is_jump_key = ini_read_real("config", "player4_up_key_is_jump_key", 0);}
 		if (ini_key_exists("config", "player4_double_tap_to_run")){global.player4_double_tap_to_run = ini_read_real("config", "player4_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player4_sprint_toggle")){global.player4_sprint_toggle = ini_read_real("config", "player4_sprint_toggle", 0);}
@@ -231,6 +247,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_gamepad_button_down")){global.player1_gamepad_button_down = ini_read_real("config", "player1_gamepad_button_down", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button_up")){global.player1_gamepad_button_up = ini_read_real("config", "player1_gamepad_button_up", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button_tongue")){global.player1_gamepad_button_tongue = ini_read_real("config", "player1_gamepad_button_tongue", 0);}
+		if (ini_key_exists("config", "player1_gamepad_button_zoom_in")){global.player1_gamepad_button_zoom_in = ini_read_real("config", "player1_gamepad_button_zoom_in", 0);}
+		if (ini_key_exists("config", "player1_gamepad_button_zoom_out")){global.player1_gamepad_button_zoom_out = ini_read_real("config", "player1_gamepad_button_zoom_out", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_dive")){global.player1_gamepad_button2_dive = ini_read_real("config", "player1_gamepad_button2_dive", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_jump")){global.player1_gamepad_button2_jump = ini_read_real("config", "player1_gamepad_button2_jump", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_crouch")){global.player1_gamepad_button2_crouch = ini_read_real("config", "player1_gamepad_button2_crouch", 0);}
@@ -242,6 +260,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_gamepad_button2_down")){global.player1_gamepad_button2_down = ini_read_real("config", "player1_gamepad_button2_down", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_up")){global.player1_gamepad_button2_up = ini_read_real("config", "player1_gamepad_button2_up", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_tongue")){global.player1_gamepad_button2_tongue = ini_read_real("config", "player1_gamepad_button2_tongue", 0);}
+		if (ini_key_exists("config", "player1_gamepad_button2_zoom_in")){global.player1_gamepad_button2_zoom_in = ini_read_real("config", "player1_gamepad_button2_zoom_in", 0);}
+		if (ini_key_exists("config", "player1_gamepad_button2_zoom_out")){global.player1_gamepad_button2_zoom_out = ini_read_real("config", "player1_gamepad_button2_zoom_out", 0);}
 		#endregion /*Load Player 1 Gamepad Remapping END*/
 		
 		#region /*Load Player 2 Gamepad Remapping*/
@@ -256,6 +276,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_gamepad_button_down")){global.player2_gamepad_button_down = ini_read_real("config", "player2_gamepad_button_down", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button_up")){global.player2_gamepad_button_up = ini_read_real("config", "player2_gamepad_button_up", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button_tongue")){global.player2_gamepad_button_tongue = ini_read_real("config", "player2_gamepad_button_tongue", 0);}
+		if (ini_key_exists("config", "player2_gamepad_button_zoom_in")){global.player2_gamepad_button_zoom_in = ini_read_real("config", "player2_gamepad_button_zoom_in", 0);}
+		if (ini_key_exists("config", "player2_gamepad_button_zoom_out")){global.player2_gamepad_button_zoom_out = ini_read_real("config", "player2_gamepad_button_zoom_out", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_dive")){global.player2_gamepad_button2_dive = ini_read_real("config", "player2_gamepad_button2_dive", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_jump")){global.player2_gamepad_button2_jump = ini_read_real("config", "player2_gamepad_button2_jump", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_crouch")){global.player2_gamepad_button2_crouch = ini_read_real("config", "player2_gamepad_button2_crouch", 0);}
@@ -267,6 +289,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_gamepad_button2_down")){global.player2_gamepad_button2_down = ini_read_real("config", "player2_gamepad_button2_down", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_up")){global.player2_gamepad_button2_up = ini_read_real("config", "player2_gamepad_button2_up", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_tongue")){global.player2_gamepad_button2_tongue = ini_read_real("config", "player2_gamepad_button2_tongue", 0);}
+		if (ini_key_exists("config", "player2_gamepad_button2_zoom_in")){global.player2_gamepad_button2_zoom_in = ini_read_real("config", "player2_gamepad_button2_zoom_in", 0);}
+		if (ini_key_exists("config", "player2_gamepad_button2_zoom_out")){global.player2_gamepad_button2_zoom_out = ini_read_real("config", "player2_gamepad_button2_zoom_out", 0);}
 		#endregion /*Load Player 2 Gamepad Remapping END*/
 		
 		#region /*Load Player 3 Gamepad Remapping*/
@@ -281,6 +305,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_gamepad_button_down")){global.player3_gamepad_button_down = ini_read_real("config", "player3_gamepad_button_down", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button_up")){global.player3_gamepad_button_up = ini_read_real("config", "player3_gamepad_button_up", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button_tongue")){global.player3_gamepad_button_tongue = ini_read_real("config", "player3_gamepad_button_tongue", 0);}
+		if (ini_key_exists("config", "player3_gamepad_button_zoom_in")){global.player3_gamepad_button_zoom_in = ini_read_real("config", "player3_gamepad_button_zoom_in", 0);}
+		if (ini_key_exists("config", "player3_gamepad_button_zoom_out")){global.player3_gamepad_button_zoom_out = ini_read_real("config", "player3_gamepad_button_zoom_out", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_dive")){global.player3_gamepad_button2_dive = ini_read_real("config", "player3_gamepad_button2_dive", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_jump")){global.player3_gamepad_button2_jump = ini_read_real("config", "player3_gamepad_button2_jump", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_crouch")){global.player3_gamepad_button2_crouch = ini_read_real("config", "player3_gamepad_button2_crouch", 0);}
@@ -292,6 +318,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_gamepad_button2_down")){global.player3_gamepad_button2_down = ini_read_real("config", "player3_gamepad_button2_down", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_up")){global.player3_gamepad_button2_up = ini_read_real("config", "player3_gamepad_button2_up", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_tongue")){global.player3_gamepad_button2_tongue = ini_read_real("config", "player3_gamepad_button2_tongue", 0);}
+		if (ini_key_exists("config", "player3_gamepad_button2_zoom_in")){global.player3_gamepad_button2_zoom_in = ini_read_real("config", "player3_gamepad_button2_zoom_in", 0);}
+		if (ini_key_exists("config", "player3_gamepad_button2_zoom_out")){global.player3_gamepad_button2_zoom_out = ini_read_real("config", "player3_gamepad_button2_zoom_out", 0);}
 		#endregion /*Load Player 3 Gamepad Remapping END*/
 		
 		#region /*Load Player 4 Gamepad Remapping*/
@@ -306,6 +334,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_gamepad_button_down")){global.player4_gamepad_button_down = ini_read_real("config", "player4_gamepad_button_down", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button_up")){global.player4_gamepad_button_up = ini_read_real("config", "player4_gamepad_button_up", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button_tongue")){global.player4_gamepad_button_tongue = ini_read_real("config", "player4_gamepad_button_tongue", 0);}
+		if (ini_key_exists("config", "player4_gamepad_button_zoom_in")){global.player4_gamepad_button_zoom_in = ini_read_real("config", "player4_gamepad_button_zoom_in", 0);}
+		if (ini_key_exists("config", "player4_gamepad_button_zoom_out")){global.player4_gamepad_button_zoom_out = ini_read_real("config", "player4_gamepad_button_zoom_out", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_dive")){global.player4_gamepad_button2_dive = ini_read_real("config", "player4_gamepad_button2_dive", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_jump")){global.player4_gamepad_button2_jump = ini_read_real("config", "player4_gamepad_button2_jump", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_crouch")){global.player4_gamepad_button2_crouch = ini_read_real("config", "player4_gamepad_button2_crouch", 0);}
@@ -317,6 +347,8 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_gamepad_button2_down")){global.player4_gamepad_button2_down = ini_read_real("config", "player4_gamepad_button2_down", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_up")){global.player4_gamepad_button2_up = ini_read_real("config", "player4_gamepad_button2_up", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_tongue")){global.player4_gamepad_button2_tongue = ini_read_real("config", "player4_gamepad_button2_tongue", 0);}
+		if (ini_key_exists("config", "player4_gamepad_button2_zoom_in")){global.player4_gamepad_button2_zoom_in = ini_read_real("config", "player4_gamepad_button2_zoom_in", 0);}
+		if (ini_key_exists("config", "player4_gamepad_button2_zoom_out")){global.player4_gamepad_button2_zoom_out = ini_read_real("config", "player4_gamepad_button2_zoom_out", 0);}
 		#endregion /*Load Player 4 Gamepad Remapping END*/
 		
 		ini_close();

@@ -12,7 +12,7 @@
 //draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
 //draw_text_outlined(x - 32, y - 128-64, "tongue_move_player_toward_wall: " + string(tongue_move_player_toward_wall), global.default_text_size, c_white, c_black, 1);
-draw_text_outlined(x - 32, y - 128, "ground_pound" + ": " + string(ground_pound), global.default_text_size, c_white, c_red, 1);
+//draw_text_outlined(x - 32, y - 128, "ground_pound" + ": " + string(ground_pound), global.default_text_size, c_white, c_red, 1);
 
 #region /*Draw Raycasts*/
 if (hold_item_in_hands != "")

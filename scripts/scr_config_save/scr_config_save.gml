@@ -74,28 +74,6 @@ function scr_config_save()
 	ini_write_real("config", "character_index_player_1", global.character_index[0]);
 	ini_write_real("config", "skin_for_player_1", global.skin_for_player_1);
 	ini_write_string("config", "player1_name", global.player1_name);
-	ini_write_real("config", "player1_key_dive", global.player1_key_dive);
-	ini_write_real("config", "player1_key_jump", global.player1_key_jump);
-	ini_write_real("config", "player1_key_crouch", global.player1_key_crouch);
-	ini_write_real("config", "player1_key_crouch_toggle", global.player1_key_crouch_toggle);
-	ini_write_real("config", "player1_key_sprint", global.player1_key_sprint);
-	ini_write_real("config", "player1_key_sprint_toggle", global.player1_key_sprint_toggle);
-	ini_write_real("config", "player1_key_left", global.player1_key_left);
-	ini_write_real("config", "player1_key_right", global.player1_key_right);
-	ini_write_real("config", "player1_key_down", global.player1_key_down);
-	ini_write_real("config", "player1_key_up", global.player1_key_up);
-	ini_write_real("config", "player1_key_tongue", global.player1_key_tongue);
-	ini_write_real("config", "player1_key2_dive", global.player1_key2_dive);
-	ini_write_real("config", "player1_key2_jump", global.player1_key2_jump);
-	ini_write_real("config", "player1_key2_crouch", global.player1_key2_crouch);
-	ini_write_real("config", "player1_key2_crouch_toggle", global.player1_key2_crouch_toggle);
-	ini_write_real("config", "player1_key2_sprint", global.player1_key2_sprint);
-	ini_write_real("config", "player1_key2_sprint_toggle", global.player1_key2_sprint_toggle);
-	ini_write_real("config", "player1_key2_left", global.player1_key2_left);
-	ini_write_real("config", "player1_key2_right", global.player1_key2_right);
-	ini_write_real("config", "player1_key2_down", global.player1_key2_down);
-	ini_write_real("config", "player1_key2_up", global.player1_key2_up);
-	ini_write_real("config", "player1_key2_tongue", global.player1_key2_tongue);
 	ini_write_real("config", "player1_up_key_is_jump_key", global.player1_up_key_is_jump_key);
 	ini_write_real("config", "player1_double_tap_to_run", global.player1_double_tap_to_run);
 	ini_write_real("config", "player1_sprint_toggle", global.player1_sprint_toggle);
@@ -111,28 +89,6 @@ function scr_config_save()
 	ini_write_real("config", "character_index_player_2", global.character_index[1]);
 	ini_write_real("config", "skin_for_player_2", global.skin_for_player_2);
 	ini_write_string("config", "player2_name", global.player2_name);
-	ini_write_real("config", "player2_key_dive", global.player2_key_dive);
-	ini_write_real("config", "player2_key_jump", global.player2_key_jump);
-	ini_write_real("config", "player2_key_crouch", global.player2_key_crouch);
-	ini_write_real("config", "player2_key_crouch_toggle", global.player2_key_crouch_toggle);
-	ini_write_real("config", "player2_key_sprint", global.player2_key_sprint);
-	ini_write_real("config", "player2_key_sprint_toggle", global.player2_key_sprint_toggle);
-	ini_write_real("config", "player2_key_left", global.player2_key_left);
-	ini_write_real("config", "player2_key_right", global.player2_key_right);
-	ini_write_real("config", "player2_key_down", global.player2_key_down);
-	ini_write_real("config", "player2_key_up", global.player2_key_up);
-	ini_write_real("config", "player2_key_tongue", global.player2_key_tongue);
-	ini_write_real("config", "player2_key2_dive", global.player2_key2_dive);
-	ini_write_real("config", "player2_key2_jump", global.player2_key2_jump);
-	ini_write_real("config", "player2_key2_crouch", global.player2_key2_crouch);
-	ini_write_real("config", "player2_key2_crouch_toggle", global.player2_key2_crouch_toggle);
-	ini_write_real("config", "player2_key2_sprint", global.player2_key2_sprint);
-	ini_write_real("config", "player2_key2_sprint_toggle", global.player2_key2_sprint_toggle);
-	ini_write_real("config", "player2_key2_left", global.player2_key2_left);
-	ini_write_real("config", "player2_key2_right", global.player2_key2_right);
-	ini_write_real("config", "player2_key2_down", global.player2_key2_down);
-	ini_write_real("config", "player2_key2_up", global.player2_key2_up);
-	ini_write_real("config", "player2_key2_tongue", global.player2_key2_tongue);
 	ini_write_real("config", "player2_up_key_is_jump_key", global.player2_up_key_is_jump_key);
 	ini_write_real("config", "player2_double_tap_to_run", global.player2_double_tap_to_run);
 	ini_write_real("config", "player2_sprint_toggle", global.player2_sprint_toggle);
@@ -148,28 +104,6 @@ function scr_config_save()
 	ini_write_real("config", "character_index_player_3", global.character_index[2]);
 	ini_write_real("config", "skin_for_player_3", global.skin_for_player_3);
 	ini_write_string("config", "player3_name", global.player3_name);
-	ini_write_real("config", "player3_key_dive", global.player3_key_dive);
-	ini_write_real("config", "player3_key_jump", global.player3_key_jump);
-	ini_write_real("config", "player3_key_crouch", global.player3_key_crouch);
-	ini_write_real("config", "player3_key_crouch_toggle", global.player3_key_crouch_toggle);
-	ini_write_real("config", "player3_key_sprint", global.player3_key_sprint);
-	ini_write_real("config", "player3_key_sprint_toggle", global.player3_key_sprint_toggle);
-	ini_write_real("config", "player3_key_left", global.player3_key_left);
-	ini_write_real("config", "player3_key_right", global.player3_key_right);
-	ini_write_real("config", "player3_key_down", global.player3_key_down);
-	ini_write_real("config", "player3_key_up", global.player3_key_up);
-	ini_write_real("config", "player3_key_tongue", global.player3_key_tongue);
-	ini_write_real("config", "player3_key2_dive", global.player3_key2_dive);
-	ini_write_real("config", "player3_key2_jump", global.player3_key2_jump);
-	ini_write_real("config", "player3_key2_crouch", global.player3_key2_crouch);
-	ini_write_real("config", "player3_key2_crouch_toggle", global.player3_key2_crouch_toggle);
-	ini_write_real("config", "player3_key2_sprint", global.player3_key2_sprint);
-	ini_write_real("config", "player3_key2_sprint_toggle", global.player3_key2_sprint_toggle);
-	ini_write_real("config", "player3_key2_left", global.player3_key2_left);
-	ini_write_real("config", "player3_key2_right", global.player3_key2_right);
-	ini_write_real("config", "player3_key2_down", global.player3_key2_down);
-	ini_write_real("config", "player3_key2_up", global.player3_key2_up);
-	ini_write_real("config", "player3_key2_tongue", global.player3_key2_tongue);
 	ini_write_real("config", "player3_up_key_is_jump_key", global.player3_up_key_is_jump_key);
 	ini_write_real("config", "player3_double_tap_to_run", global.player3_double_tap_to_run);
 	ini_write_real("config", "player3_sprint_toggle", global.player3_sprint_toggle);
@@ -185,28 +119,6 @@ function scr_config_save()
 	ini_write_real("config", "character_index_player_4", global.character_index[3]);
 	ini_write_real("config", "skin_for_player_4", global.skin_for_player_4);
 	ini_write_string("config", "player4_name", global.player4_name);
-	ini_write_real("config", "player4_key_dive", global.player4_key_dive);
-	ini_write_real("config", "player4_key_jump", global.player4_key_jump);
-	ini_write_real("config", "player4_key_crouch", global.player4_key_crouch);
-	ini_write_real("config", "player4_key_crouch_toggle", global.player4_key_crouch_toggle);
-	ini_write_real("config", "player4_key_sprint", global.player4_key_sprint);
-	ini_write_real("config", "player4_key_sprint_toggle", global.player4_key_sprint_toggle);
-	ini_write_real("config", "player4_key_left", global.player4_key_left);
-	ini_write_real("config", "player4_key_right", global.player4_key_right);
-	ini_write_real("config", "player4_key_down", global.player4_key_down);
-	ini_write_real("config", "player4_key_up", global.player4_key_up);
-	ini_write_real("config", "player4_key_tongue", global.player4_key_tongue);
-	ini_write_real("config", "player4_key2_dive", global.player4_key2_dive);
-	ini_write_real("config", "player4_key2_jump", global.player4_key2_jump);
-	ini_write_real("config", "player4_key2_crouch", global.player4_key2_crouch);
-	ini_write_real("config", "player4_key2_crouch_toggle", global.player4_key2_crouch_toggle);
-	ini_write_real("config", "player4_key2_sprint", global.player4_key2_sprint);
-	ini_write_real("config", "player4_key2_sprint_toggle", global.player4_key2_sprint_toggle);
-	ini_write_real("config", "player4_key2_left", global.player4_key2_left);
-	ini_write_real("config", "player4_key2_right", global.player4_key2_right);
-	ini_write_real("config", "player4_key2_down", global.player4_key2_down);
-	ini_write_real("config", "player4_key2_up", global.player4_key2_up);
-	ini_write_real("config", "player4_key2_tongue", global.player4_key2_tongue);
 	ini_write_real("config", "player4_up_key_is_jump_key", global.player4_up_key_is_jump_key);
 	ini_write_real("config", "player4_double_tap_to_run", global.player4_double_tap_to_run);
 	ini_write_real("config", "player4_sprint_toggle", global.player4_sprint_toggle);
@@ -230,6 +142,8 @@ function scr_config_save()
 	ini_write_real("config", "player1_gamepad_button_down", global.player1_gamepad_button_down);
 	ini_write_real("config", "player1_gamepad_button_up", global.player1_gamepad_button_up);
 	ini_write_real("config", "player1_gamepad_button_tongue", global.player1_gamepad_button_tongue);
+	ini_write_real("config", "player1_gamepad_button_zoom_in", global.player1_gamepad_button_zoom_in);
+	ini_write_real("config", "player1_gamepad_button_zoom_out", global.player1_gamepad_button_zoom_out);
 	ini_write_real("config", "player1_gamepad_button2_dive", global.player1_gamepad_button2_dive);
 	ini_write_real("config", "player1_gamepad_button2_jump", global.player1_gamepad_button2_jump);
 	ini_write_real("config", "player1_gamepad_button2_crouch", global.player1_gamepad_button2_crouch);
@@ -241,6 +155,8 @@ function scr_config_save()
 	ini_write_real("config", "player1_gamepad_button2_down", global.player1_gamepad_button2_down);
 	ini_write_real("config", "player1_gamepad_button2_up", global.player1_gamepad_button2_up);
 	ini_write_real("config", "player1_gamepad_button2_tongue", global.player1_gamepad_button2_tongue);
+	ini_write_real("config", "player1_gamepad_button2_zoom_in", global.player1_gamepad_button2_zoom_in);
+	ini_write_real("config", "player1_gamepad_button2_zoom_out", global.player1_gamepad_button2_zoom_out);
 	#endregion /*Save Player 1 Gamepad Remapping END*/
 	
 	#region /*Save Player 2 Gamepad Remapping*/
@@ -255,6 +171,8 @@ function scr_config_save()
 	ini_write_real("config", "player2_gamepad_button_down", global.player2_gamepad_button_down);
 	ini_write_real("config", "player2_gamepad_button_up", global.player2_gamepad_button_up);
 	ini_write_real("config", "player2_gamepad_button_tongue", global.player2_gamepad_button_tongue);
+	ini_write_real("config", "player2_gamepad_button_zoom_in", global.player2_gamepad_button_zoom_in);
+	ini_write_real("config", "player2_gamepad_button_zoom_out", global.player2_gamepad_button_zoom_out);
 	ini_write_real("config", "player2_gamepad_button2_dive", global.player2_gamepad_button2_dive);
 	ini_write_real("config", "player2_gamepad_button2_jump", global.player2_gamepad_button2_jump);
 	ini_write_real("config", "player2_gamepad_button2_crouch", global.player2_gamepad_button2_crouch);
@@ -266,6 +184,8 @@ function scr_config_save()
 	ini_write_real("config", "player2_gamepad_button2_down", global.player2_gamepad_button2_down);
 	ini_write_real("config", "player2_gamepad_button2_up", global.player2_gamepad_button2_up);
 	ini_write_real("config", "player2_gamepad_button2_tongue", global.player2_gamepad_button2_tongue);
+	ini_write_real("config", "player2_gamepad_button2_zoom_in", global.player2_gamepad_button2_zoom_in);
+	ini_write_real("config", "player2_gamepad_button2_zoom_out", global.player2_gamepad_button2_zoom_out);
 	#endregion /*Save Player 2 Gamepad Remapping END*/
 	
 	#region /*Save Player 3 Gamepad Remapping*/
@@ -280,6 +200,8 @@ function scr_config_save()
 	ini_write_real("config", "player3_gamepad_button_down", global.player3_gamepad_button_down);
 	ini_write_real("config", "player3_gamepad_button_up", global.player3_gamepad_button_up);
 	ini_write_real("config", "player3_gamepad_button_tongue", global.player3_gamepad_button_tongue);
+	ini_write_real("config", "player3_gamepad_button_zoom_in", global.player3_gamepad_button_zoom_in);
+	ini_write_real("config", "player3_gamepad_button_zoom_out", global.player3_gamepad_button_zoom_out);
 	ini_write_real("config", "player3_gamepad_button2_dive", global.player3_gamepad_button2_dive);
 	ini_write_real("config", "player3_gamepad_button2_jump", global.player3_gamepad_button2_jump);
 	ini_write_real("config", "player3_gamepad_button2_crouch", global.player3_gamepad_button2_crouch);
@@ -291,6 +213,8 @@ function scr_config_save()
 	ini_write_real("config", "player3_gamepad_button2_down", global.player3_gamepad_button2_down);
 	ini_write_real("config", "player3_gamepad_button2_up", global.player3_gamepad_button2_up);
 	ini_write_real("config", "player3_gamepad_button2_tongue", global.player3_gamepad_button2_tongue);
+	ini_write_real("config", "player3_gamepad_button2_zoom_in", global.player3_gamepad_button2_zoom_in);
+	ini_write_real("config", "player3_gamepad_button2_zoom_out", global.player3_gamepad_button2_zoom_out);
 	#endregion /*Save Player 3 Gamepad Remapping END*/
 	
 	#region /*Save Player 4 Gamepad Remapping*/
@@ -305,6 +229,8 @@ function scr_config_save()
 	ini_write_real("config", "player4_gamepad_button_down", global.player4_gamepad_button_down);
 	ini_write_real("config", "player4_gamepad_button_up", global.player4_gamepad_button_up);
 	ini_write_real("config", "player4_gamepad_button_tongue", global.player4_gamepad_button_tongue);
+	ini_write_real("config", "player4_gamepad_button_zoom_in", global.player4_gamepad_button_zoom_in);
+	ini_write_real("config", "player4_gamepad_button_zoom_out", global.player4_gamepad_button_zoom_out);
 	ini_write_real("config", "player4_gamepad_button2_dive", global.player4_gamepad_button2_dive);
 	ini_write_real("config", "player4_gamepad_button2_jump", global.player4_gamepad_button2_jump);
 	ini_write_real("config", "player4_gamepad_button2_crouch", global.player4_gamepad_button2_crouch);
@@ -316,6 +242,8 @@ function scr_config_save()
 	ini_write_real("config", "player4_gamepad_button2_down", global.player4_gamepad_button2_down);
 	ini_write_real("config", "player4_gamepad_button2_up", global.player4_gamepad_button2_up);
 	ini_write_real("config", "player4_gamepad_button2_tongue", global.player4_gamepad_button2_tongue);
+	ini_write_real("config", "player4_gamepad_button2_zoom_in", global.player4_gamepad_button2_zoom_in);
+	ini_write_real("config", "player4_gamepad_button2_zoom_out", global.player4_gamepad_button2_zoom_out);
 	#endregion /*Save Player 4 Gamepad Remapping END*/
 	
 	ini_close();

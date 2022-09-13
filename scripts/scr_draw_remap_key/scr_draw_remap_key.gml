@@ -278,15 +278,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		and (menu_delay = 0)
 		{
 			menu_delay = 3;
-			if (menu_remap_key_number = 0)
-			{
-				remapping_player_key = scr_keyboardremapping(menu_string, 0, remapping_player_key);
-			}
-			else
-			if (menu_remap_key_number = 2)
-			{
-				remapping_player_key2 = scr_keyboardremapping(menu_string, 2, remapping_player_key2);
-			}
+			scr_keyboardremapping();
 		}
 		else
 		if (key_a_pressed)
