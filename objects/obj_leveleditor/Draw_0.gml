@@ -189,30 +189,35 @@ if (global.world_editor = false)
 	scr_level_editor_placable_object(11, level_object_id.id_semisolid_platform, true, spr_semisolid_platform, spr_wall, + 64 * 11, 1, 0, c_white);
 	scr_level_editor_placable_object(12, level_object_id.id_brick_block, true, spr_brick_block, spr_wall, + 64 * 12, 1, 0, c_white);
 	scr_level_editor_placable_object(13, level_object_id.id_question_block, true, spr_question_block, spr_wall, + 64 * 13, 1, 0, c_white);
-	scr_level_editor_placable_object(14, level_object_id.id_melon_block, true, spr_melon_block, spr_wall, + 64 * 13, 1, 0, c_white);
-	scr_level_editor_placable_object(15, level_object_id.id_hard_block, true, spr_hard_block, spr_wall, + 64 * 14, 1, 0, c_white);
-	scr_level_editor_placable_object(16, level_object_id.id_falling_block, true, spr_falling_block, spr_wall, + 64 * 15, 1, 0, c_white);
-	scr_level_editor_placable_object(17, level_object_id.id_falling_block_long, true, spr_falling_block_long, spr_falling_block_long, + 64 * 16 - 16, 1, 0, c_white);
-	scr_level_editor_placable_object(18, level_object_id.id_cloud_block, true, spr_cloud_block, spr_wall, + 64 * 17, 1, 0, c_white);
-	scr_level_editor_placable_object(19, level_object_id.id_ice_block, true, spr_ice_block, spr_wall, + 64 * 18, 1, 0, c_white);
-	scr_level_editor_placable_object(20, level_object_id.id_cardboard_block, true, spr_cardboard_block, spr_wall, + 64 * 19, 1, 0, c_white);
-	scr_level_editor_placable_object(21, level_object_id.id_cardboard, true, spr_cardboard, spr_cardboard, + 64 * 20 - 8, 0.5, 0, c_white);
-	scr_level_editor_placable_object(22, level_object_id.id_cardboard_long, true, spr_cardboard_long, spr_cardboard_long, + 64 * 21 - 16, 0.5, 0, c_white);
-	scr_level_editor_placable_object(23, level_object_id.id_bump_in_ground, true, spr_bump_in_ground, spr_wall, + 64 * 22, 1, 0, c_white);
-	scr_level_editor_placable_object(24, level_object_id.id_basic_collectible, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 64 * 23, 1, 0, c_white);
-	scr_level_editor_placable_object(25, level_object_id.id_big_collectible_1, false, global.resource_pack_sprite_big_collectible, spr_wall, + 64 * 24, 1, 0, c_white);
-	scr_level_editor_placable_object(26, level_object_id.id_big_collectible_2, false, global.resource_pack_sprite_big_collectible, spr_wall, + 64 * 25, 1, 0, c_white);
-	scr_level_editor_placable_object(27, level_object_id.id_big_collectible_3, false, global.resource_pack_sprite_big_collectible, spr_wall, + 64 * 26, 1, 0, c_white);
-	scr_level_editor_placable_object(28, level_object_id.id_big_collectible_4, false, global.resource_pack_sprite_big_collectible, spr_wall, + 64 * 27, 1, 0, c_white);
-	scr_level_editor_placable_object(29, level_object_id.id_big_collectible_5, false, global.resource_pack_sprite_big_collectible, spr_wall, + 64 * 28, 1, 0, c_white);
-	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 24, camera_get_view_y(view_camera[view_current]) + 64, "1", global.default_text_size, c_white, c_black,selected_menu_alpha);
-	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 25, camera_get_view_y(view_camera[view_current]) + 64, "2", global.default_text_size, c_white, c_black,selected_menu_alpha);
-	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 26, camera_get_view_y(view_camera[view_current]) + 64, "3", global.default_text_size, c_white, c_black,selected_menu_alpha);
-	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 27, camera_get_view_y(view_camera[view_current]) + 64, "4", global.default_text_size, c_white, c_black,selected_menu_alpha);
-	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 28, camera_get_view_y(view_camera[view_current]) + 64, "5", global.default_text_size, c_white, c_black,selected_menu_alpha);
-	scr_level_editor_placable_object(30, level_object_id.id_heart, true, spr_heart, spr_wall, + 64 * 29, 1, 0, c_white);
-	scr_level_editor_placable_object(31, level_object_id.id_hp_pickup, true, global.resource_pack_sprite_hp_pickup, spr_wall, + 64 * 30, 1, 0, c_white);
-	scr_level_editor_placable_object(32, level_object_id.id_invincibility_powerup, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 64 * 31, 1, 0, c_white);
+	scr_level_editor_placable_object(14, level_object_id.id_melon_block, true, spr_melon_block, spr_wall, + 64 * 14, 1, 0, c_white);
+	scr_level_editor_placable_object(15, level_object_id.id_hard_block, true, spr_hard_block, spr_wall, + 64 * 15, 1, 0, c_white);
+	scr_level_editor_placable_object(16, level_object_id.id_falling_block, true, spr_falling_block, spr_wall, + 64 * 16, 1, 0, c_white);
+	scr_level_editor_placable_object(17, level_object_id.id_falling_block_long, true, spr_falling_block_long, spr_falling_block_long, + 64 * 17 - 16, 1, 0, c_white);
+	scr_level_editor_placable_object(18, level_object_id.id_cloud_block, true, spr_cloud_block, spr_wall, + 64 * 18, 1, 0, c_white);
+	scr_level_editor_placable_object(19, level_object_id.id_ice_block, true, spr_ice_block, spr_wall, + 64 * 19, 1, 0, c_white);
+	scr_level_editor_placable_object(20, level_object_id.id_cardboard_block, true, spr_cardboard_block, spr_wall, + 64 * 20, 1, 0, c_white);
+	scr_level_editor_placable_object(21, level_object_id.id_cardboard, true, spr_cardboard, spr_cardboard, + 64 * 21 - 8, 0.5, 0, c_white);
+	scr_level_editor_placable_object(22, level_object_id.id_cardboard_long, true, spr_cardboard_long, spr_cardboard_long, + 64 * 22 - 16, 0.5, 0, c_white);
+	scr_level_editor_placable_object(23, level_object_id.id_bump_in_ground, true, spr_bump_in_ground, spr_wall, + 64 * 23, 1, 0, c_white);
+	scr_level_editor_placable_object(24, level_object_id.id_basic_collectible, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 64 * 24, 1, 0, c_white);
+	var big_collectible_1_x = 64 * 25;
+	var big_collectible_2_x = 64 * 26;
+	var big_collectible_3_x = 64 * 27;
+	var big_collectible_4_x = 64 * 28;
+	var big_collectible_5_x = 64 * 29;
+	scr_level_editor_placable_object(25, level_object_id.id_big_collectible_1, false, global.resource_pack_sprite_big_collectible, spr_wall, big_collectible_1_x, 1, 0, c_white);
+	scr_level_editor_placable_object(26, level_object_id.id_big_collectible_2, false, global.resource_pack_sprite_big_collectible, spr_wall, big_collectible_2_x, 1, 0, c_white);
+	scr_level_editor_placable_object(27, level_object_id.id_big_collectible_3, false, global.resource_pack_sprite_big_collectible, spr_wall, big_collectible_3_x, 1, 0, c_white);
+	scr_level_editor_placable_object(28, level_object_id.id_big_collectible_4, false, global.resource_pack_sprite_big_collectible, spr_wall, big_collectible_4_x, 1, 0, c_white);
+	scr_level_editor_placable_object(29, level_object_id.id_big_collectible_5, false, global.resource_pack_sprite_big_collectible, spr_wall, big_collectible_5_x, 1, 0, c_white);
+	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + big_collectible_1_x, camera_get_view_y(view_camera[view_current]) + 64, "1", global.default_text_size, c_white, c_black,selected_menu_alpha);
+	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + big_collectible_2_x, camera_get_view_y(view_camera[view_current]) + 64, "2", global.default_text_size, c_white, c_black,selected_menu_alpha);
+	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + big_collectible_3_x, camera_get_view_y(view_camera[view_current]) + 64, "3", global.default_text_size, c_white, c_black,selected_menu_alpha);
+	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + big_collectible_4_x, camera_get_view_y(view_camera[view_current]) + 64, "4", global.default_text_size, c_white, c_black,selected_menu_alpha);
+	draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + big_collectible_5_x, camera_get_view_y(view_camera[view_current]) + 64, "5", global.default_text_size, c_white, c_black,selected_menu_alpha);
+	scr_level_editor_placable_object(30, level_object_id.id_heart, true, spr_heart, spr_wall, + 64 * 30, 1, 0, c_white);
+	scr_level_editor_placable_object(31, level_object_id.id_hp_pickup, true, global.resource_pack_sprite_hp_pickup, spr_wall, + 64 * 31, 1, 0, c_white);
+	scr_level_editor_placable_object(32, level_object_id.id_invincibility_powerup, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 64 * 32, 1, 0, c_white);
 	
 	#region /*One-Ups*/
 	if (selected_object = 33)
@@ -250,37 +255,40 @@ if (global.world_editor = false)
 	}
 	if (sprite_lives_icon >= 0)
 	{
-		draw_sprite_ext(sprite_lives_icon, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 32, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);
+		var one_up_x = 64 * 33;
+		draw_sprite_ext(sprite_lives_icon, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + one_up_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 32, camera_get_view_y(view_camera[view_current]) + 64, "1-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + one_up_x, camera_get_view_y(view_camera[view_current]) + 64, "1-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);
 	}
 	if (sprite_lives_icon >= 0)
 	{
-		draw_sprite_ext(sprite_lives_icon, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 33, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_lime,selected_menu_alpha);
+		var two_up_x = 64 * 34;
+		draw_sprite_ext(sprite_lives_icon, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + two_up_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_lime,selected_menu_alpha);
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 33, camera_get_view_y(view_camera[view_current]) + 64, "2-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + two_up_x, camera_get_view_y(view_camera[view_current]) + 64, "2-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);
 	}
 	if (sprite_lives_icon >= 0)
 	{
-		draw_sprite_ext(sprite_lives_icon, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 34, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_blue,selected_menu_alpha);
+		var three_up_x = 64 * 35;
+		draw_sprite_ext(sprite_lives_icon, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + three_up_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_blue,selected_menu_alpha);
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 34, camera_get_view_y(view_camera[view_current]) + 64, "3-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);
+		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + three_up_x, camera_get_view_y(view_camera[view_current]) + 64, "3-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);
 	}
 	#endregion /*One-Ups END*/
 	
-	scr_level_editor_placable_object(36, level_object_id.id_basic_enemy, true, sprite_basic_enemy, spr_wall, + 64 * 35, 1, 0, c_white);
-	scr_level_editor_placable_object(37, level_object_id.id_enemy_bowlingball, true, sprite_enemy_bowlingball, spr_wall, + 64 * 36, 1, 0, c_white);
-	scr_level_editor_placable_object(38, level_object_id.id_big_stationary_enemy, true, sprite_big_stationary_enemy, spr_wall, + 64 * 37, 1, 0, c_white);
-	scr_level_editor_placable_object(39, level_object_id.id_blaster, true, global.resource_pack_sprite_blaster, spr_wall, + 64 * 38, 1, 0, c_white);
-	scr_level_editor_placable_object(40, level_object_id.id_spring, false, spr_spring, spr_wall, + 64 * 39, 1, 0, c_white);
-	scr_level_editor_placable_object(41, level_object_id.id_ladder, true, spr_ladder, spr_wall, + 64 * 40, 1, 0, c_white);
-	scr_level_editor_placable_object(42, level_object_id.id_arrow_sign, false, spr_arrow_sign, spr_wall, + 64 * 41, 1, 0, c_white);
-	scr_level_editor_placable_object(43, level_object_id.id_arrow_sign_small, false, spr_arrow_sign_small, spr_wall, + 64 * 42, 1, 0, c_white);
-	scr_level_editor_placable_object(44, level_object_id.id_checkpoint, false, spr_checkpoint, spr_wall, + 64 * 43, 1, 0, c_white);
-	scr_level_editor_placable_object(45, level_object_id.id_spikes_emerge_block, true, spr_spikes_emerge_block, spr_wall, + 64 * 44, 1, 0, c_white);
+	scr_level_editor_placable_object(36, level_object_id.id_basic_enemy, true, sprite_basic_enemy, spr_wall, + 64 * 36, 1, 0, c_white);
+	scr_level_editor_placable_object(37, level_object_id.id_enemy_bowlingball, true, sprite_enemy_bowlingball, spr_wall, + 64 * 37, 1, 0, c_white);
+	scr_level_editor_placable_object(38, level_object_id.id_big_stationary_enemy, true, sprite_big_stationary_enemy, spr_wall, + 64 * 38, 1, 0, c_white);
+	scr_level_editor_placable_object(39, level_object_id.id_blaster, true, global.resource_pack_sprite_blaster, spr_wall, + 64 * 39, 1, 0, c_white);
+	scr_level_editor_placable_object(40, level_object_id.id_spring, false, spr_spring, spr_wall, + 64 * 40, 1, 0, c_white);
+	scr_level_editor_placable_object(41, level_object_id.id_ladder, true, spr_ladder, spr_wall, + 64 * 41, 1, 0, c_white);
+	scr_level_editor_placable_object(42, level_object_id.id_arrow_sign, false, spr_arrow_sign, spr_wall, + 64 * 42, 1, 0, c_white);
+	scr_level_editor_placable_object(43, level_object_id.id_arrow_sign_small, false, spr_arrow_sign_small, spr_wall, + 64 * 43, 1, 0, c_white);
+	scr_level_editor_placable_object(44, level_object_id.id_checkpoint, false, spr_checkpoint, spr_wall, + 64 * 44, 1, 0, c_white);
+	scr_level_editor_placable_object(45, level_object_id.id_spikes_emerge_block, true, spr_spikes_emerge_block, spr_wall, + 64 * 45, 1, 0, c_white);
 	if (selected_object = 46)
 	{
 		place_object = level_object_id.id_oneway;
@@ -325,22 +333,22 @@ if (global.world_editor = false)
 			mask_index = spr_wall;
 		}
 	}
-	if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,										camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 45, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white, selected_menu_alpha);}
-	if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,										camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 46 - 16, camera_get_view_y(view_camera[view_current]) + 64, 1, 1,90, c_white, selected_menu_alpha);}
-	if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,										camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 47, camera_get_view_y(view_camera[view_current]) + 64 + 16, 1, 1, 180, c_white, selected_menu_alpha);}
-	if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0,										camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 48 + 16, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 270, c_white, selected_menu_alpha);}
-	scr_level_editor_placable_object(50, level_object_id.id_horizontal_rope, true, spr_horizontal_rope, spr_wall, + 64 * 49, 1, 0, c_white);
-	scr_level_editor_placable_object(51, level_object_id.id_water, false, spr_water_surface, spr_wall, + 64 * 50, 1, 0, c_white);
-	scr_level_editor_placable_object(52, level_object_id.id_air_bubbles_spawner, true, spr_air_bubbles_spawner, spr_wall, + 64 * 51, 1, 0, c_white);
-	scr_level_editor_placable_object(53, level_object_id.id_water_level_change_slow, false, spr_water_level_change_slow, spr_wall, + 64 * 52, 1, 0, c_white);
-	scr_level_editor_placable_object(54, level_object_id.id_water_level_change_fast, false, spr_water_level_change_fast, spr_wall, + 64 * 53, 1, 0, c_white);
-	scr_level_editor_placable_object(55, level_object_id.id_water_level_change_faster, false, spr_water_level_change_faster, spr_wall, + 64 * 54, 1, 0, c_white);
-	scr_level_editor_placable_object(56, level_object_id.id_clipped_shirt, true, spr_clipped_shirt, spr_wall, + 64 * 55, 1, 0, c_white);
-	scr_level_editor_placable_object(57, level_object_id.id_bucket, true, spr_bucket, spr_wall, + 64 * 56, 1, 0, c_white);
-	scr_level_editor_placable_object(58, level_object_id.id_bird, true, spr_bird, spr_wall, + 64 * 57, 1, 0, c_white);
-	scr_level_editor_placable_object(59, level_object_id.id_sign_crouch, true, spr_sign_crouch, spr_wall, + 64 * 58, 0.5, 0, c_white);
-	scr_level_editor_placable_object(60, level_object_id.id_boss, false, spr_boss_stand, spr_wall, + 64 * 59, 0.5, 0, c_white);
-	scr_level_editor_placable_object(61, level_object_id.id_boss_barrier, true, spr_boss_barrier, spr_wall, + 64 * 60, 1, 0, c_white);
+	if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 46, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white, selected_menu_alpha);}
+	if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 47 - 16, camera_get_view_y(view_camera[view_current]) + 64, 1, 1,90, c_white, selected_menu_alpha);}
+	if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 48, camera_get_view_y(view_camera[view_current]) + 64 + 16, 1, 1, 180, c_white, selected_menu_alpha);}
+	if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 49 + 16, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 270, c_white, selected_menu_alpha);}
+	scr_level_editor_placable_object(50, level_object_id.id_horizontal_rope, true, spr_horizontal_rope, spr_wall, + 64 * 50, 1, 0, c_white);
+	scr_level_editor_placable_object(51, level_object_id.id_water, false, spr_water_surface, spr_wall, + 64 * 51, 1, 0, c_white);
+	scr_level_editor_placable_object(52, level_object_id.id_air_bubbles_spawner, true, spr_air_bubbles_spawner, spr_wall, + 64 * 52, 1, 0, c_white);
+	scr_level_editor_placable_object(53, level_object_id.id_water_level_change_slow, false, spr_water_level_change_slow, spr_wall, + 64 * 53, 1, 0, c_white);
+	scr_level_editor_placable_object(54, level_object_id.id_water_level_change_fast, false, spr_water_level_change_fast, spr_wall, + 64 * 54, 1, 0, c_white);
+	scr_level_editor_placable_object(55, level_object_id.id_water_level_change_faster, false, spr_water_level_change_faster, spr_wall, + 64 * 55, 1, 0, c_white);
+	scr_level_editor_placable_object(56, level_object_id.id_clipped_shirt, true, spr_clipped_shirt, spr_wall, + 64 * 56, 1, 0, c_white);
+	scr_level_editor_placable_object(57, level_object_id.id_bucket, true, spr_bucket, spr_wall, + 64 * 57, 1, 0, c_white);
+	scr_level_editor_placable_object(58, level_object_id.id_bird, true, spr_bird, spr_wall, + 64 * 58, 1, 0, c_white);
+	scr_level_editor_placable_object(59, level_object_id.id_sign_crouch, true, spr_sign_crouch, spr_wall, + 64 * 59, 0.5, 0, c_white);
+	scr_level_editor_placable_object(60, level_object_id.id_boss, false, spr_boss_stand, spr_wall, + 64 * 60, 0.5, 0, c_white);
+	scr_level_editor_placable_object(61, level_object_id.id_boss_barrier, true, spr_boss_barrier, spr_wall, + 64 * 61, 1, 0, c_white);
 	if (selected_object = 61)
 	{
 		place_object = level_object_id.id_cake_stealing_enemy;
@@ -354,14 +362,14 @@ if (global.world_editor = false)
 	}
 	if (sprite_basic_enemy >= 0)
 	{
-		draw_sprite_ext(sprite_basic_enemy, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 61, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);
+		draw_sprite_ext(sprite_basic_enemy, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 62, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);
 	}
 	if (global.resource_pack_sprite_cake > 0)
 	{
-		draw_sprite_ext(global.resource_pack_sprite_cake, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 61, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white, selected_menu_alpha);
+		draw_sprite_ext(global.resource_pack_sprite_cake, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 62, camera_get_view_y(view_camera[view_current]) + 64 - 16, 1, 1, 0, c_white, selected_menu_alpha);
 	}
-	scr_level_editor_placable_object(63, level_object_id.id_artwork_collection, false, spr_artwork_collection, spr_wall, + 64 * 62, 1, 0, c_white);
-	scr_level_editor_placable_object(64, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64 * 63, 1, 0, c_white);
+	scr_level_editor_placable_object(63, level_object_id.id_artwork_collection, false, spr_artwork_collection, spr_wall, + 64 * 63, 1, 0, c_white);
+	scr_level_editor_placable_object(64, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64 * 64, 1, 0, c_white);
 }
 else
 {

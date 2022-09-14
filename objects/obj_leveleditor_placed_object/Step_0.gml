@@ -765,26 +765,37 @@ if (global.play_edited_level = true)
 			if (object = 3) and (asset_get_type("obj_semisolid_platform") == asset_object){instance_create_depth(x, y, 0, obj_semisolid_platform); instance_destroy();}
 		
 			#region /*Brick Block*/
-			if (object = 4) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block";}instance_destroy();}
-			if (object = 5) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "10_basic_collectibles";}instance_destroy();}
-			if (object = 6) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "heart_balloon";}instance_destroy();}
-			if (object = 7) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "1-up";}instance_destroy();}
-			if (object = 8) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "2-up";}instance_destroy();}
-			if (object = 9) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "3-up";}instance_destroy();}
-			if (object = 10) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "invincibility_powerup";}instance_destroy();}
-			if (object = 10001) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
+			if (object = level_object_id.id_brick_block) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block";}instance_destroy();}
+			if (object = level_object_id.id_brick_block_10_basic_collectibles) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "10_basic_collectibles";}instance_destroy();}
+			if (object = level_object_id.id_brick_block_heart_balloon) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "heart_balloon";}instance_destroy();}
+			if (object = level_object_id.id_brick_block_one_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "1-up";}instance_destroy();}
+			if (object = level_object_id.id_brick_block_two_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "2-up";}instance_destroy();}
+			if (object = level_object_id.id_brick_block_three_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "3-up";}instance_destroy();}
+			if (object = level_object_id.id_brick_block_invincibility_powerup) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "invincibility_powerup";}instance_destroy();}
+			if (object = level_object_id.id_brick_block_invincibility_powerup_coil_spring) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
 			#endregion /*Brick Block END*/
 		
 			#region /*Question Block*/
-			if (object = 11) and (asset_get_type("obj_question_block") == asset_object){instance_create_depth(x, y, 0, obj_question_block); instance_destroy();}
-			if (object = 12) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "10_basic_collectibles";}instance_destroy();}
-			if (object = 13) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "heart_balloon";}instance_destroy();}
-			if (object = 14) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "1-up";}instance_destroy();}
-			if (object = 15) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "2-up";}instance_destroy();}
-			if (object = 16) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "3-up";}instance_destroy();}
-			if (object = 17) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "invincibility_powerup";}instance_destroy();}
-			if (object = 17001) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
+			if (object = level_object_id.id_question_block) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";}instance_destroy();}
+			if (object = level_object_id.id_question_block_10_basic_collectibles) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "10_basic_collectibles";}instance_destroy();}
+			if (object = level_object_id.id_question_block_heart_balloon) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "heart_balloon";}instance_destroy();}
+			if (object = level_object_id.id_question_block_one_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "1-up";}instance_destroy();}
+			if (object = level_object_id.id_question_block_two_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "2-up";}instance_destroy();}
+			if (object = level_object_id.id_question_block_three_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "3-up";}instance_destroy();}
+			if (object = level_object_id.id_question_block_invincibility_powerup) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "invincibility_powerup";}instance_destroy();}
+			if (object = level_object_id.id_question_block_invincibility_powerup_coil_spring) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
 			#endregion /*Question Block END*/
+			
+			#region /*Melon Block*/
+			if (object = level_object_id.id_melon_block) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";}instance_destroy();}
+			if (object = level_object_id.id_melon_block_10_basic_collectibles) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "10_basic_collectibles";}instance_destroy();}
+			if (object = level_object_id.id_melon_block_heart_balloon) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "heart_balloon";}instance_destroy();}
+			if (object = level_object_id.id_melon_block_one_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "1-up";}instance_destroy();}
+			if (object = level_object_id.id_melon_block_two_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "2-up";}instance_destroy();}
+			if (object = level_object_id.id_melon_block_three_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "3-up";}instance_destroy();}
+			if (object = level_object_id.id_melon_block_invincibility_powerup) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "invincibility_powerup";}instance_destroy();}
+			if (object = level_object_id.id_melon_block_invincibility_powerup_coil_spring) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
+			#endregion /*Melon Block END*/
 			
 			if (object = level_object_id.id_hard_block) and (asset_get_type("obj_hard_block") == asset_object){instance_create_depth(x, y, 0, obj_hard_block); instance_destroy();}
 			if (object = level_object_id.id_hard_block_alternate) and (asset_get_type("obj_hard_block") == asset_object){with(instance_create_depth(x, y, 0, obj_hard_block)){sprite_index = spr_hard_block_alternate;}instance_destroy();}
