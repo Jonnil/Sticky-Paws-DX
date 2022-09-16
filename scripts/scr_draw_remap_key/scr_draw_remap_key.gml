@@ -277,8 +277,8 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		and (can_remap_key = false)
 		and (menu_delay = 0)
 		{
-			menu_delay = 3;
 			scr_keyboardremapping();
+			menu_delay = 3; /*Set menu delay after the keyboard remapping script*/
 		}
 		else
 		if (key_a_pressed)

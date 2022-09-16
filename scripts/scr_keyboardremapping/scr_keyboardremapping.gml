@@ -967,9 +967,9 @@ function scr_keyboardremapping()
 				ini_write_real("config", "player4_key2_zoom_out", global.player4_key2_zoom_out);
 				ini_close();
 			}
-			menu_delay = 10;
 			can_remap_key = false;
 			input_key = false;
+			menu_delay = 10;
 		}
 	}
 	#endregion /*Remapping 4 END*/

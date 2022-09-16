@@ -47,24 +47,20 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 	#region /* 3 Basic Collectibles*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
-		var obj;
-		obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-		with(obj)
+		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
 			bounceup = true;
 		}
-		obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-		with(obj)
+		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
 			bounceup = true;
 			delay_time = 10;
 		}
-		obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-		with(obj)
+		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
@@ -78,8 +74,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 	score += 1000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
-		obj = instance_create_depth(x, y, 0, obj_scoreup);
-		with(obj)
+		with(instance_create_depth(x, y, 0, obj_scoreup))
 		{
 			scoreup = 1000;
 		}
@@ -336,24 +331,20 @@ if (bounceup = true)
 			#region /* 3 Basic Collectibles*/
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
-				var obj;
-				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
 				}
-				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
 					delay_time = 10;
 				}
-				obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
@@ -367,8 +358,7 @@ if (bounceup = true)
 			score += 1000;
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
-				obj = instance_create_depth(x, y, 0, obj_scoreup);
-				with(obj)
+				with(instance_create_depth(x, y, 0, obj_scoreup))
 				{
 					scoreup = 1000;
 				}

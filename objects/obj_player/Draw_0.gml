@@ -239,8 +239,7 @@ if (global.basic_collectibles>99)
 	}
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
-		obj = instance_create_depth(x, y - 16, 0, obj_scoreup);
-		with(obj)
+		with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 		{
 			scoreup = "1-UP";
 		}

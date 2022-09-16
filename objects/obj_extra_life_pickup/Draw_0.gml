@@ -123,8 +123,7 @@ and (instance_exists(obj_player))
 			lives += 3;
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
-				obj = instance_create_depth(x, y - 16, 0, obj_scoreup);
-				with(obj)
+				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 				{
 					scoreup = "3-up";
 				}
@@ -136,8 +135,7 @@ and (instance_exists(obj_player))
 			lives += 2;
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
-				obj = instance_create_depth(x, y - 16, 0, obj_scoreup);
-				with(obj)
+				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 				{
 					scoreup = "2-up";
 				}
@@ -148,8 +146,7 @@ and (instance_exists(obj_player))
 			lives += 1;
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
-				obj = instance_create_depth(x, y - 16, 0, obj_scoreup);
-				with(obj)
+				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 				{
 					scoreup = "1-UP";
 				}

@@ -7161,15 +7161,20 @@ and (takendamage <= takendamage_freezetime)
 				with(instance_create_depth(x, bbox_bottom, 0, obj_blockbreak))
 				{
 					can_break_other_blocks = true;
-					image_xscale = 0.1;
-					image_yscale = 0.75;
+					image_xscale = 0.75; /*Make the blockbreak hitbox smaller than a block so you don't accidentally break unintended blocks around you*/
+					image_yscale = 0.75; /*But not too small so you can't hit the blocks you intend to break*/
 				}
 				scr_gamepad_vibration(player, 0.5, 10);
 				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
+				
+				#region /*Continuesly break blocks underneath you, if they are breakable*/
 				if (key_crouch_hold)
 				and (place_meeting(x, y + 1, obj_question_block))
 				and (instance_nearest(x, y + 1, obj_question_block).item_inside = "none")
 				and (instance_nearest(x, y + 1, obj_question_block).block_type = "brick_block")
+				or (key_crouch_hold)
+				and (place_meeting(x, y + 1, obj_question_block))
+				and (instance_nearest(x, y + 1, obj_question_block).can_break_this_block = true)
 				{
 					ground_pound = 1;
 					speed_max = 0;
@@ -7180,6 +7185,8 @@ and (takendamage <= takendamage_freezetime)
 					ground_pound = 2;
 					speed_max = 4;
 				}
+				#endregion /*Continuesly break blocks underneath you, if they are breakable END*/
+				
 				if (asset_get_type("obj_camera") == asset_object)
 				{
 					with(instance_nearest(x, y, obj_camera))
@@ -7970,8 +7977,7 @@ if (asset_get_type("obj_water") == asset_object)
 				}
 				if (asset_get_type("obj_bubble") == asset_object)
 				{
-					obj = instance_create_depth(x, y, 0, obj_bubble);
-					with(obj)
+					with(instance_create_depth(x, y, 0, obj_bubble))
 					{
 						direction =random(360);
 						speed =random(2);
@@ -7985,8 +7991,7 @@ if (asset_get_type("obj_water") == asset_object)
 		{
 			if (floor(random(30 - 1))= 0)
 			{
-				obj = instance_create_depth(x, y, 0, obj_bubble);
-				with(obj)
+				with(instance_create_depth(x, y, 0, obj_bubble))
 				{
 					direction =random(360);
 					speed =random(2);
@@ -8142,8 +8147,7 @@ if (in_water != old_in_water)
 		{
 			repeat(10)
 			{
-				obj = instance_create_depth(x, bbox_top, 0, obj_water_splash_particle);
-				with(obj)
+				with(instance_create_depth(x, bbox_top, 0, obj_water_splash_particle))
 				{
 					direction = random_range(0, 180);
 					speed = random_range(2, 10);
@@ -8674,8 +8678,7 @@ and (goal = false)
 			#region /*Player 1 Die*/
 			if (player = 1)
 			{
-				obj = instance_create_depth(x, y, 0, obj_player_die);
-				with(obj)
+				with(instance_create_depth(x, y, 0, obj_player_die))
 				{
 					player = 1;
 					if (instance_nearest(x, y, obj_player).sprite_die > noone)
@@ -8709,8 +8712,7 @@ and (goal = false)
 			#region /*Player 2 Die*/
 			if (player = 2)
 			{
-				obj = instance_create_depth(x, y, 0, obj_player_die);
-				with(obj)
+				with(instance_create_depth(x, y, 0, obj_player_die))
 				{
 					player = 2;
 					if (instance_nearest(x, y, obj_player).sprite_die > noone)
@@ -8744,8 +8746,7 @@ and (goal = false)
 			#region /*Player 3 Die*/
 			if (player = 3)
 			{
-				obj = instance_create_depth(x, y, 0, obj_player_die);
-				with(obj)
+				with(instance_create_depth(x, y, 0, obj_player_die))
 				{
 					player = 3;
 					if (instance_nearest(x, y, obj_player).sprite_die > noone)
@@ -8779,8 +8780,7 @@ and (goal = false)
 			#region /*Player 4 Die*/
 			if (player = 4)
 			{
-				obj = instance_create_depth(x, y, 0, obj_player_die);
-				with(obj)
+				with(instance_create_depth(x, y, 0, obj_player_die))
 				{
 					player = 4;
 					if (instance_nearest(x, y, obj_player).sprite_die > noone)
@@ -8909,8 +8909,7 @@ and (instance_nearest(x, y, obj_invincibility_powerup).bounceup = false)
 	}
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
-		obj = instance_create_depth(x, y, 0, obj_scoreup);
-		with(obj)
+		with(instance_create_depth(x, y, 0, obj_scoreup))
 		{
 			scoreup = 1000;
 		}

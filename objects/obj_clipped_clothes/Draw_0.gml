@@ -35,9 +35,7 @@ and (fall = false)
 	#region /* 1 Basic Collectible*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
-		var obj;
-		obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-		with(obj)
+		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
@@ -52,21 +50,18 @@ and (fall = false)
 		if (asset_get_type("spr_sock") == asset_sprite)
 		and (sprite_index = spr_sock)
 		{
-			obj = instance_create_depth(x, y - 16, 0, obj_clipper);
-			with(obj)
+			with(instance_create_depth(x, y - 16, 0, obj_clipper))
 			{
 				motion_set(90 +random_range(- 10, + 10), random_range(5, 10));
 			}
 		}
 		else
 		{
-			obj = instance_create_depth(x + 16, y - 16, 0, obj_clipper);
-			with(obj)
+			with(instance_create_depth(x + 16, y - 16, 0, obj_clipper))
 			{
 				motion_set(45, random_range(5, 10));
 			}
-			obj = instance_create_depth(x - 16, y - 16, 0, obj_clipper);
-			with(obj)
+			with(instance_create_depth(x - 16, y - 16, 0, obj_clipper))
 			{
 				motion_set(135, random_range(5, 10));
 			}

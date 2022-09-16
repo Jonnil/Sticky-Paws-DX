@@ -70,9 +70,7 @@ and (place_meeting(x, y, obj_player))
 	#region /* 1 Basic Collectible*/
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
-		var obj;
-		obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-		with(obj)
+		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);

@@ -67,7 +67,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "mobile buttons",
-    "path": "folders/Sprites/buttons/mobile buttons.yy",
+    "name": "Sprites",
+    "path": "folders/Sprites.yy",
   },
 }

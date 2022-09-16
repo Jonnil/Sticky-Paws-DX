@@ -779,12 +779,13 @@ function scr_modify_objects_in_level_editor()
 							#endregion /*Change Moveset Signs END*/
 								
 						}
-						#region /*Level Object ID's to modify*/
+						#endregion /*Level Object ID's to modify END*/
 						
 						else
 						
 						#region /*World Object ID's to modify*/
 						{
+							
 							#region /*Change Turn*/
 							if (object = 4)
 							{
@@ -806,6 +807,7 @@ function scr_modify_objects_in_level_editor()
 								object = 4;
 							}
 							#endregion /*Change Turn END*/
+							
 						}
 							
 						alarm[0] = 1; /*Update sprite initializing. That code is in alarm event, so it's not running every frame in step event*/

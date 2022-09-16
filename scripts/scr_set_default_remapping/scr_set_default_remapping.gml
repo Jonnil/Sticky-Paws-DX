@@ -10,4 +10,6 @@ function scr_set_default_remapping()
 	scr_set_default_remapping_player4_keyboard();
 	scr_set_default_remapping_player4_gamepad();
 	
+	scr_save_default_controls_to_config(); /*Run this script after running every other script*/
+	
 }

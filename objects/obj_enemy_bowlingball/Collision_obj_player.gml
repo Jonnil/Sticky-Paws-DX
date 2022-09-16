@@ -65,9 +65,7 @@ and (stomped_delay = 0)
 				#region /* 1 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					var obj;
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
@@ -80,8 +78,7 @@ and (stomped_delay = 0)
 				score += 200;
 				if (asset_get_type("obj_scoreup") == asset_object)
 				{
-					obj = instance_create_depth(x, y, 0, obj_scoreup);
-					with(obj)
+					with(instance_create_depth(x, y, 0, obj_scoreup))
 					{
 						scoreup = 200;
 					}
@@ -100,8 +97,7 @@ and (stomped_delay = 0)
 					}
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 						{
 							scoreup = "1-UP";
 						}
@@ -129,16 +125,13 @@ and (stomped_delay = 0)
 				#region /* 2 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					var obj;
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
@@ -152,8 +145,7 @@ and (stomped_delay = 0)
 				score += 400;
 				if (asset_get_type("obj_scoreup") == asset_object)
 				{
-					obj = instance_create_depth(x, y, 0, obj_scoreup);
-					with(obj)
+					with(instance_create_depth(x, y, 0, obj_scoreup))
 					{
 						scoreup = 400;
 					}
@@ -172,8 +164,7 @@ and (stomped_delay = 0)
 					}
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 						{
 							scoreup = "1-UP";
 						}
@@ -201,32 +192,27 @@ and (stomped_delay = 0)
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					var obj;
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 10;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 20;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
@@ -240,8 +226,7 @@ and (stomped_delay = 0)
 				score += 800;
 				if (asset_get_type("obj_scoreup") == asset_object)
 				{
-					obj = instance_create_depth(x, y, 0, obj_scoreup);
-					with(obj)
+					with(instance_create_depth(x, y, 0, obj_scoreup))
 					{
 						scoreup = 800;
 					}
@@ -260,8 +245,7 @@ and (stomped_delay = 0)
 					}
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 						{
 							scoreup = "1-UP";
 						}
@@ -289,32 +273,27 @@ and (stomped_delay = 0)
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					var obj;
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 10;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 20;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
@@ -328,8 +307,7 @@ and (stomped_delay = 0)
 				score += 1000;
 				if (asset_get_type("obj_scoreup") == asset_object)
 				{
-					obj = instance_create_depth(x, y, 0, obj_scoreup);
-					with(obj)
+					with(instance_create_depth(x, y, 0, obj_scoreup))
 					{
 						scoreup = 1000;
 					}
@@ -348,8 +326,7 @@ and (stomped_delay = 0)
 					}
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 						{
 							scoreup = "1-UP";
 						}
@@ -377,32 +354,27 @@ and (stomped_delay = 0)
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					var obj;
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 10;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 20;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
@@ -416,8 +388,7 @@ and (stomped_delay = 0)
 				score += 2000;
 				if (asset_get_type("obj_scoreup") == asset_object)
 				{
-					obj = instance_create_depth(x, y, 0, obj_scoreup);
-					with(obj)
+					with(instance_create_depth(x, y, 0, obj_scoreup))
 					{
 						scoreup = 2000;
 					}
@@ -436,8 +407,7 @@ and (stomped_delay = 0)
 					}
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y - 16, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 						{
 							scoreup = "1-UP";
 						}
@@ -465,32 +435,27 @@ and (stomped_delay = 0)
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					var obj;
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 10;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 20;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
@@ -504,8 +469,7 @@ and (stomped_delay = 0)
 				score += 4000;
 				if (asset_get_type("obj_scoreup") == asset_object)
 				{
-					obj = instance_create_depth(x, y, 0, obj_scoreup);
-					with(obj)
+					with(instance_create_depth(x, y, 0, obj_scoreup))
 					{
 						scoreup = 4000;
 					}
@@ -524,8 +488,7 @@ and (stomped_delay = 0)
 					}
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 						{
 							scoreup = "1-UP";
 						}
@@ -553,32 +516,27 @@ and (stomped_delay = 0)
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					var obj;
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 10;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 20;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
@@ -592,8 +550,7 @@ and (stomped_delay = 0)
 				score += 8000;
 				if (asset_get_type("obj_scoreup") == asset_object)
 				{
-					obj = instance_create_depth(x, y, 0, obj_scoreup);
-					with(obj)
+					with(instance_create_depth(x, y, 0, obj_scoreup))
 					{
 						scoreup = 8000;
 					}
@@ -612,8 +569,7 @@ and (stomped_delay = 0)
 					}
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 						{
 							scoreup = "1-UP";
 						}
@@ -641,32 +597,27 @@ and (stomped_delay = 0)
 				#region /* 4 Coin*/
 				if (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					var obj;
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 10;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
 						bounceup = true;
 						delay_time = 20;
 					}
-					obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-					with(obj)
+					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
 						motion_set(90, 10);
@@ -688,8 +639,7 @@ and (stomped_delay = 0)
 					}
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 						{
 							scoreup = "1-UP";
 						}
@@ -762,9 +712,7 @@ and (stomped_delay = 0)
 					#region /* 1 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -777,8 +725,7 @@ and (stomped_delay = 0)
 					score += 200;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 200;
 						}
@@ -797,8 +744,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -826,16 +772,13 @@ and (stomped_delay = 0)
 					#region /* 2 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -849,8 +792,7 @@ and (stomped_delay = 0)
 					score += 400;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 400;
 						}
@@ -869,8 +811,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -898,32 +839,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -937,8 +873,7 @@ and (stomped_delay = 0)
 					score += 800;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 800;
 						}
@@ -957,8 +892,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -986,32 +920,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1025,8 +954,7 @@ and (stomped_delay = 0)
 					score += 1000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 1000;
 						}
@@ -1045,8 +973,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1074,32 +1001,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1113,8 +1035,7 @@ and (stomped_delay = 0)
 					score += 2000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 2000;
 						}
@@ -1133,8 +1054,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 16, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1162,32 +1082,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1201,8 +1116,7 @@ and (stomped_delay = 0)
 					score += 4000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 4000;
 						}
@@ -1221,8 +1135,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1250,32 +1163,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1289,8 +1197,7 @@ and (stomped_delay = 0)
 					score += 8000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 8000;
 						}
@@ -1309,8 +1216,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1338,32 +1244,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1385,8 +1286,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1593,9 +1493,7 @@ and (stomped_delay = 0)
 					#region /* 1 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1608,8 +1506,7 @@ and (stomped_delay = 0)
 					score += 200;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 200;
 						}
@@ -1628,8 +1525,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1657,16 +1553,13 @@ and (stomped_delay = 0)
 					#region /* 2 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1680,8 +1573,7 @@ and (stomped_delay = 0)
 					score += 400;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 400;
 						}
@@ -1700,8 +1592,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1729,32 +1620,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1768,8 +1654,7 @@ and (stomped_delay = 0)
 					score += 800;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 800;
 						}
@@ -1788,8 +1673,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1817,32 +1701,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1856,8 +1735,7 @@ and (stomped_delay = 0)
 					score += 1000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 1000;
 						}
@@ -1876,8 +1754,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1905,32 +1782,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -1944,8 +1816,7 @@ and (stomped_delay = 0)
 					score += 2000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 2000;
 						}
@@ -1964,8 +1835,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 16, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -1993,32 +1863,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -2032,8 +1897,7 @@ and (stomped_delay = 0)
 					score += 4000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 4000;
 						}
@@ -2052,8 +1916,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -2081,32 +1944,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -2120,8 +1978,7 @@ and (stomped_delay = 0)
 					score += 8000;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
-						obj = instance_create_depth(x, y, 0, obj_scoreup);
-						with(obj)
+						with(instance_create_depth(x, y, 0, obj_scoreup))
 						{
 							scoreup = 8000;
 						}
@@ -2140,8 +1997,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
@@ -2169,32 +2025,27 @@ and (stomped_delay = 0)
 					#region /* 4 Coin*/
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
-						var obj;
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 10;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
 							bounceup = true;
 							delay_time = 20;
 						}
-						obj = instance_create_depth(x, bbox_top, 0, obj_basic_collectible);
-						with(obj)
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
 							motion_set(90, 10);
@@ -2216,8 +2067,7 @@ and (stomped_delay = 0)
 						}
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
-							obj = instance_create_depth(x, y - 32, 0, obj_scoreup);
-							with(obj)
+							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
 								scoreup = "1-UP";
 							}
