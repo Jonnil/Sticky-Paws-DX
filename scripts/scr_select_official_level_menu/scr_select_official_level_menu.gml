@@ -159,47 +159,7 @@ function scr_select_official_level_menu()
 	
 	#endregion /*Navigate Menu END*/
 	
-	#region /*Red Rectangle to indicate what level you are selecting*/
-	if (menu!= "back_from_level_editor")
-	{
-		if (custom_level_select_blinking_old = 0)
-		{
-			custom_level_select_blinking = lerp(custom_level_select_blinking, 1, 0.1);
-		}
-		else
-		if (custom_level_select_blinking_old = 1)
-		{
-			custom_level_select_blinking = lerp(custom_level_select_blinking, 0, 0.1);
-		}
-		if (custom_level_select_blinking >= 0.99)
-		{
-			custom_level_select_blinking_old = 1;
-		}
-		else
-		if (custom_level_select_blinking <= 0.01)
-		{
-			custom_level_select_blinking_old = 0;
-		}
-		draw_rectangle_color(394 *(global.select_level_index -C*R) + 100 - 3, 226*(C-scroll) + 250 - 3, 394 *(global.select_level_index -C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3, c_red, c_red, c_red, c_red, false);
-		draw_set_alpha(custom_level_select_blinking);
-		draw_rectangle_color(394 *(global.select_level_index -C*R) + 100 - 3, 226*(C-scroll) + 250 - 3, 394 *(global.select_level_index -C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + 216 + 3, c_yellow, c_yellow, c_yellow, c_yellow, false);
-		draw_set_alpha(1);
-	}
-	#endregion /*Red Rectangle to indicate what level you are selecting END*/
-	
-	#region /*Draw Thumbnail*/
-	for(i = 0; i <ds_list_size(global.thumbnail_sprite); i += 1)
-	{
-		C= floor(i/ R)
-		draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 *(i-C*R) + 100, 226*(C-scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
-		if (menu != "load_custom_level")
-		and (menu != "load_characters")
-		and (menu != "load_official_level_template")
-		{
-			draw_text_outlined(394 *(i-C*R) + 100 + 192, 226*(C-scroll) + 250 + 184, string(ds_list_find_value(global.all_loaded_main_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
-		}
-	}
-	#endregion /*Draw Thumbnail END*/
+	scr_draw_level_editor_thumbnail(global.all_loaded_main_levels, true);
 	
 	C= floor(global.select_level_index / R); /*Do this code again here so the sub menu doesn't get misaligned*/
 	
@@ -296,10 +256,10 @@ function scr_select_official_level_menu()
 	if (can_input_level_name = true)
 	{
 		draw_set_alpha(1);
-		draw_rectangle_color(394 *(global.select_level_index -C*R) + 300 - 3 - 150, 226*(C-scroll) + 569 - 3 - 16, 394 *(global.select_level_index -C*R) + 300 - 3+ 150, 226*(C-scroll) + 569 - 3+ 16, c_white, c_white, c_white, c_white, false);
+		draw_rectangle_color(394 *(global.select_level_index -C*R) + 300 - 3 - 150, 226*(C-scroll) + 569 - 3 - 16, 394 *(global.select_level_index -C*R) + 300 - 3 + 150, 226*(C-scroll) + 569 - 3 + 16, c_white, c_white, c_white, c_white, false);
 	
 		draw_set_alpha(1);
-		draw_rectangle_color(394 *(global.select_level_index -C*R) + 300 - 3 - 150, 226*(C-scroll) + 569 - 3 - 16, 394 *(global.select_level_index -C*R) + 300 - 3+ 150, 226*(C-scroll) + 569 - 3+ 16, c_black, c_black, c_black, c_black, true);
+		draw_rectangle_color(394 *(global.select_level_index -C*R) + 300 - 3 - 150, 226*(C-scroll) + 569 - 3 - 16, 394 *(global.select_level_index -C*R) + 300 - 3 + 150, 226*(C-scroll) + 569 - 3 + 16, c_black, c_black, c_black, c_black, true);
 	}
 	#endregion /*Box where name is written on END*/
 	

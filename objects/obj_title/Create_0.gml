@@ -18,6 +18,11 @@ selected_skin = 0;
 background_layer_x = 0;
 background_layer_y = 0;
 
+rectangle_top_left_of_thumbnail_x = 394 *(global.select_level_index) + 100 - 3;
+rectangle_top_left_of_thumbnail_y = 226 + 250 - 3;
+rectangle_bottom_right_of_thumbnail_x = 394 *(global.select_level_index) + 100 + 384 + 3;
+rectangle_bottom_right_of_thumbnail_y = 226 + 250 + 216 + 3;
+
 options_and_quit_y = display_get_gui_height() / 2 + 100 + 120;
 file_found = "";
 file_load_timer = 0;
@@ -26,8 +31,6 @@ first_level = string(file_find_first(working_directory + "/custom_levels/*", fa_
 open_sub_menu = false;
 select_custom_level_menu_open = false;
 loading_spinning_angle = 0;
-custom_level_select_blinking = 0;
-custom_level_select_blinking_old = 0;
 scroll = 0;
 scroll_to = 0;
 lerp_on = false;
