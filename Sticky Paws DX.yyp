@@ -41,6 +41,7 @@
     {"id":{"name":"spr_map_exit","path":"sprites/spr_map_exit/spr_map_exit.yy",},"order":116,},
     {"id":{"name":"snd_die","path":"sounds/snd_die/snd_die.yy",},"order":24,},
     {"id":{"name":"spr_falling_block_solid","path":"sprites/spr_falling_block_solid/spr_falling_block_solid.yy",},"order":20,},
+    {"id":{"name":"Script82","path":"scripts/Script82/Script82.yy",},"order":61,},
     {"id":{"name":"libxprocess","path":"extensions/libxprocess/libxprocess.yy",},"order":0,},
     {"id":{"name":"scr_set_default_remapping_player4_keyboard","path":"scripts/scr_set_default_remapping_player4_keyboard/scr_set_default_remapping_player4_keyboard.yy",},"order":47,},
     {"id":{"name":"obj_water_level_change","path":"objects/obj_water_level_change/obj_water_level_change.yy",},"order":26,},

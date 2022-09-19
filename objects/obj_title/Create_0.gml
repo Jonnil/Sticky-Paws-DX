@@ -23,6 +23,7 @@ rectangle_top_left_of_thumbnail_y = 226 + 250 - 3;
 rectangle_bottom_right_of_thumbnail_x = 394 *(global.select_level_index) + 100 + 384 + 3;
 rectangle_bottom_right_of_thumbnail_y = 226 + 250 + 216 + 3;
 
+level_editor_edit_name = false; /*If you are editing an already made level's name or not*/
 options_and_quit_y = display_get_gui_height() / 2 + 100 + 120;
 file_found = "";
 file_load_timer = 0;
