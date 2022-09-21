@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_set_default_remapping",
+  "name": "scr_draw_name_input_screen",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Scripts",
-    "path": "folders/Scripts.yy",
+    "name": "Menus",
+    "path": "folders/Scripts/Menus.yy",
   },
 }

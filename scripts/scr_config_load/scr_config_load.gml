@@ -1,6 +1,6 @@
 function scr_config_load()
 {
-	if (file_exists("config.ini"))
+	if (file_exists(working_directory + "config.ini"))
 	{
 		ini_open(working_directory + "config.ini");
 		if (ini_key_exists("config", "always_show_level_editor_buttons")){global.always_show_level_editor_buttons = ini_read_real("config", "always_show_level_editor_buttons", true);}

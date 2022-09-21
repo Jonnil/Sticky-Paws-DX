@@ -24,6 +24,7 @@ rectangle_bottom_right_of_thumbnail_x = 394 *(global.select_level_index) + 100 +
 rectangle_bottom_right_of_thumbnail_y = 226 + 250 + 216 + 3;
 
 level_editor_edit_name = false; /*If you are editing an already made level's name or not*/
+old_level_name = ""; /*Need to remember original name of level, so that renaming level doesn't actually happen if you haven't edited the name*/
 options_and_quit_y = display_get_gui_height() / 2 + 100 + 120;
 file_found = "";
 file_load_timer = 0;

@@ -170,60 +170,133 @@ if (global.play_attract_demo = 2)
 }
 #endregion /*Play Attract Demo END*/
 
-#region /*Enable convention mode via cheat code, type "conventionmode" on your keyboard*/
-if (keyboard_check_pressed(ord("C")))
-and (keyboard_string != "arc")
-and (can_input_level_name = false)
-and (can_input_player1_name = false)
-and (can_input_player2_name = false)
-and (can_input_player3_name = false)
-and (can_input_player4_name = false)
+if (menu = "main_game")
+or (menu = "options")
+or (menu = "quit")
+or (menu = "quit_game_no")
+or (menu = "quit_game_yes")
+or (menu = "link_discord")
+or (menu = "link_gamebanana")
+or (menu = "link_instagram")
+or (menu = "link_reddit")
+or (menu = "link_twitter")
+or (menu = "link_wiki")
 {
-	keyboard_string = "c";
-}
-
-if (keyboard_string = "conventionmode")
-or (keyboard_string = "convention mode")
-{
-	if (can_input_level_name = false)
+	
+	#region /*Enable convention mode via cheat code, type "conventionmode" on your keyboard*/
+	if (keyboard_check_pressed(ord("C")))
+	and (keyboard_string != "arc")
+	and (can_input_level_name = false)
 	and (can_input_player1_name = false)
 	and (can_input_player2_name = false)
 	and (can_input_player3_name = false)
 	and (can_input_player4_name = false)
 	{
-		if (global.convention_mode = false)
-		{
-			global.arcade_mode = false;
-			global.convention_mode = true;
-			if (menu = "options")
-			or (menu = "quit")
-			or (menu = "quit_game_no")
-			or (menu = "quit_game_yes")
-			or (menu = "link_discord")
-			or (menu = "link_gamebanana")
-			or (menu = "link_instagram")
-			or (menu = "link_reddit")
-			or (menu = "link_twitter")
-			or (menu = "link_wiki")
-			or (in_settings = true)
-			{
-				menu = "main_game";
-				in_settings = false;
-			}
-			keyboard_string = "";
-			show_convention_mode_enable_text = 180;
-		}
-		else
-		{
-			global.arcade_mode = false;
-			global.convention_mode = false;
-			keyboard_string = "";
-			show_convention_mode_enable_text = 180;
-		}
-		ini_open(working_directory + "config.ini");
-		ini_write_real("config", "convention_mode", global.convention_mode);
-		ini_close();
+		keyboard_string = "c";
 	}
+	
+	if (keyboard_string = "conventionmode")
+	or (keyboard_string = "convention mode")
+	{
+		if (can_input_level_name = false)
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		{
+			if (global.convention_mode = false)
+			{
+				global.arcade_mode = false;
+				global.convention_mode = true;
+				if (menu = "options")
+				or (menu = "quit")
+				or (menu = "quit_game_no")
+				or (menu = "quit_game_yes")
+				or (menu = "link_discord")
+				or (menu = "link_gamebanana")
+				or (menu = "link_instagram")
+				or (menu = "link_reddit")
+				or (menu = "link_twitter")
+				or (menu = "link_wiki")
+				or (in_settings = true)
+				{
+					menu = "main_game";
+					in_settings = false;
+				}
+				keyboard_string = "";
+				show_convention_mode_enable_text = 180;
+			}
+			else
+			{
+				global.arcade_mode = false;
+				global.convention_mode = false;
+				keyboard_string = "";
+				show_convention_mode_enable_text = 180;
+			}
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "convention_mode", global.convention_mode);
+			ini_close();
+		}
+	}
+	#endregion /*Enable convention mode via cheat code, type "conventionmode" on your keyboard END*/
+	
+	#region /*Enable arcade mode via cheat code, type "arcademode" on your keyboard*/
+	if (keyboard_check_pressed(ord("A")))
+	and (keyboard_string != "arca")
+	and (can_input_level_name = false)
+	and (can_input_player1_name = false)
+	and (can_input_player2_name = false)
+	and (can_input_player3_name = false)
+	and (can_input_player4_name = false)
+	{
+		keyboard_string = "a";
+	}
+	
+	if (keyboard_string = "arcademode")
+	or (keyboard_string = "arcade mode")
+	{
+		if (can_input_level_name = false)
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		{
+			if (global.arcade_mode = false)
+			{
+				global.arcade_mode = true;
+				global.convention_mode = false;
+				if (menu = "options")
+				or (menu = "quit")
+				or (menu = "quit_game_no")
+				or (menu = "quit_game_yes")
+				or (menu = "link_discord")
+				or (menu = "link_gamebanana")
+				or (menu = "link_instagram")
+				or (menu = "link_reddit")
+				or (menu = "link_twitter")
+				or (menu = "link_wiki")
+				or (in_settings = true)
+				{
+					menu = "main_game";
+					in_settings = false;
+				}
+				keyboard_string = "";
+				show_arcade_mode_enable_text = 180;
+			}
+			else
+			{
+				global.arcade_mode = false;
+				global.convention_mode = false;
+				keyboard_string = "";
+				show_arcade_mode_enable_text = 180;
+			}
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "arcade_mode", global.arcade_mode);
+			ini_close();
+		}
+	}
+	#endregion /*Enable arcade mode via cheat code, type "arcademode" on your keyboard END*/
+	
 }
 
 draw_set_halign(fa_left);
@@ -243,63 +316,6 @@ and (show_convention_mode_enable_text > 0)
 	draw_text_outlined(64, 32, Text("Convention mode"), global.default_text_size, c_white, c_black, 1);
 	draw_sprite_ext(spr_checkbox, false, 32, 32, 0.5, 0.5, 0, c_white, 1);
 }
-#endregion /*Enable convention mode via cheat code, type "conventionmode" on your keyboard END*/
-
-#region /*Enable arcade mode via cheat code, type "arcademode" on your keyboard*/
-if (keyboard_check_pressed(ord("A")))
-and (keyboard_string != "arca")
-and (can_input_level_name = false)
-and (can_input_player1_name = false)
-and (can_input_player2_name = false)
-and (can_input_player3_name = false)
-and (can_input_player4_name = false)
-{
-	keyboard_string = "a";
-}
-
-if (keyboard_string = "arcademode")
-or (keyboard_string = "arcade mode")
-{
-	if (can_input_level_name = false)
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	{
-		if (global.arcade_mode = false)
-		{
-			global.arcade_mode = true;
-			global.convention_mode = false;
-			if (menu = "options")
-			or (menu = "quit")
-			or (menu = "quit_game_no")
-			or (menu = "quit_game_yes")
-			or (menu = "link_discord")
-			or (menu = "link_gamebanana")
-			or (menu = "link_instagram")
-			or (menu = "link_reddit")
-			or (menu = "link_twitter")
-			or (menu = "link_wiki")
-			or (in_settings = true)
-			{
-				menu = "main_game";
-				in_settings = false;
-			}
-			keyboard_string = "";
-			show_arcade_mode_enable_text = 180;
-		}
-		else
-		{
-			global.arcade_mode = false;
-			global.convention_mode = false;
-			keyboard_string = "";
-			show_arcade_mode_enable_text = 180;
-		}
-		ini_open(working_directory + "config.ini");
-		ini_write_real("config", "arcade_mode", global.arcade_mode);
-		ini_close();
-	}
-}
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_center);
@@ -318,7 +334,6 @@ and (show_arcade_mode_enable_text > 0)
 	draw_text_outlined(64, 32, Text("Arcade mode"), global.default_text_size, c_white, c_black, 1);
 	draw_sprite_ext(spr_checkbox, false, 32, 32, 0.5, 0.5, 0, c_white, 1);
 }
-#endregion /*Enable arcade mode via cheat code, type "arcademode" on your keyboard END*/
 
 #region /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus*/
 

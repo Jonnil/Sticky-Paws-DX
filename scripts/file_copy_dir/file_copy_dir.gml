@@ -1,7 +1,6 @@
 function file_copy_dir(source, target, attributes)
 {
 	
-	/// file_copy_dir(source, target, attributes)
 	// Copies contents from source directory to target directory.
 	// Add fa_directory to attributes for recursive copying.
 	var fname, i, file, files, from, to;

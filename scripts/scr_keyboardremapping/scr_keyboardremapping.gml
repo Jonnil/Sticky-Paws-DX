@@ -854,7 +854,7 @@ function scr_keyboardremapping()
 			{
 				global.player4_key_zoom_out = last_key;
 				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "remap_key_zoom_out", global.remap_key_zoom_out);
+				ini_write_real("config", "player4_key_zoom_out", global.player4_key_zoom_out);
 				ini_close();
 			}
 			can_remap_key = false;

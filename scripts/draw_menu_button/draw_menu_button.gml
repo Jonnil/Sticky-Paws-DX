@@ -10,22 +10,12 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 {
 	
 	#region /*Button*/
-	
-	#region /*Initialize variables*/
-	x_position = argument0; /*The buttons x origin position*/
-	y_position = argument1; /*The buttons y origin position*/
-	
-	string_text = argument2;
-	menu_index = argument3;
-	menu_takes_you_to = argument4;
-	#endregion /*Initialize variables END*/
-	
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 2, x_position + 370, y_position + 41))
 	and (global.controls_used_for_menu_navigation = "mouse")
 	and (menu_delay = 0)
-	or(menu = menu_index)
+	or (menu = menu_index)
 	and (global.controls_used_for_menu_navigation = "keyboard")
-	or(menu = menu_index)
+	or (menu = menu_index)
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
 		menu = menu_index;
@@ -62,9 +52,9 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 2, x_position + 370, y_position + 41))
 	{
 		if (menu_takes_you_to = false)
-		or(menu_takes_you_to = noone)
-		or(menu_takes_you_to = "")
-		or(menu_takes_you_to = menu_index)
+		or (menu_takes_you_to = noone)
+		or (menu_takes_you_to = "")
+		or (menu_takes_you_to = menu_index)
 		{
 			if (mouse_check_button(mb_left))
 			{

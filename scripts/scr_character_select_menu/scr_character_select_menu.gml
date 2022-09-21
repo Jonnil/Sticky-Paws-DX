@@ -1,13 +1,14 @@
 ///scr_character_select_menu()
 function scr_character_select_menu()
 {
-	
 	arrow_offset = 125;
 	
 	if (menu = "select_character")
 	or (menu = "back_from_character_select")
 	or (menu = "open_custom_characters_folder")
 	or (menu = "copy_character")
+	or (menu = "input_name_ok")
+	or (menu = "input_name_cancel")
 	{
 		
 		#region /*Play the game text*/
@@ -2685,6 +2686,10 @@ function scr_character_select_menu()
 		and (can_input_player3_name = false)
 		and (can_input_player4_name = false)
 		or(global.controls_used_for_menu_navigation = "mouse")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
 		{
 			if (player1_accept_selection = false)
 			{
@@ -2793,37 +2798,442 @@ function scr_character_select_menu()
 		#endregion /*Player 1: Tell the player what button to push to select or cancel a selection END*/
 		
 		#region /*Player 2: Tell the player what button to push to select or cancel a selection*/
-	draw_set_halign(fa_middle);
-	draw_set_valign(fa_middle);
+		draw_set_halign(fa_middle);
+		draw_set_valign(fa_middle);
 
-	if (player2_menu!= "select_name")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	or(global.controls_used_for_menu_navigation = "mouse")
-	{
-		if (player2_accept_selection = false)
+		if (player2_menu!= "select_name")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		or(global.controls_used_for_menu_navigation = "mouse")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20))
-			and (global.controls_used_for_menu_navigation = "mouse")
+			if (player2_accept_selection = false)
 			{
-				player2_menu = "select_character";
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20))
+				and (global.controls_used_for_menu_navigation = "mouse")
+				{
+					player2_menu = "select_character";
 			
-				draw_set_alpha(0.75);
-				draw_rectangle_color(window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
-				draw_set_alpha(1);
+					draw_set_alpha(0.75);
+					draw_rectangle_color(window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
+					draw_set_alpha(1);
+				}
+		
+				#region /*Accept Text*/
+				draw_set_halign(fa_right);
+				draw_text_outlined(window_get_width() / 2 + player2_display_x + 60, window_get_height() / 2 + 150, Text("Accept") + " : ", global.default_text_size, c_black, c_white, 1);
+				#endregion /*Accept Text END*/
+		
+				#region /*Key A*/
+				if (gamepad_is_connected(1))
+				{
+					scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
+				}
+				else
+				{
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+					{
+						if (global.player2_key_jump > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player2_key2_jump > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						{
+							draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+				}
+				#endregion /*Key A END*/
+		
 			}
+			else
+			if (player2_accept_selection = true)
+			{
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20))
+				and (global.controls_used_for_menu_navigation = "mouse")
+				{
+					player2_menu = "select_character";
+			
+					draw_set_alpha(0.75);
+					draw_rectangle_color(window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
+					draw_set_alpha(0.5);
+					draw_rectangle_color(window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20, c_red, c_red, c_red, c_red, false);
+					draw_set_alpha(1);
+				}
+			
+				#region /*Cancel Text*/
+				draw_set_halign(fa_right);
+				draw_text_outlined(window_get_width() / 2 + player2_display_x + 60, window_get_height() / 2 + 150, Text("Cancel") + " : ", global.default_text_size, c_black, c_white, 1);
+				#endregion /*Cancel Text END*/
 		
+				#region /*Key B*/
+				if (gamepad_is_connected(1))
+				{
+					scr_draw_gamepad_buttons(gp_face2, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
+				}
+				else
+				{
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+					{
+						if (global.player2_key_dive > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player2_key_dive, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player2_key2_dive > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player2_key2_dive, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player2_key_sprint > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player2_key_sprint, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player2_key2_sprint > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player2_key2_sprint, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						{
+							draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+				}
+				#endregion /*Key B END*/
+		
+			}
+		}
+		#endregion /*Player 2: Tell the player what button to push to select or cancel a selection END*/
+		
+		#region /*Player 3: Tell the player what button to push to select or cancel a selection*/
+		draw_set_halign(fa_middle);
+		draw_set_valign(fa_middle);
+
+		if (player3_menu!= "select_name")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		or(global.controls_used_for_menu_navigation = "mouse")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		{
+			if (player3_accept_selection = false)
+			{
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20))
+				and (global.controls_used_for_menu_navigation = "mouse")
+				{
+					player3_menu = "select_character";
+			
+					draw_set_alpha(0.75);
+					draw_rectangle_color(window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
+					draw_set_alpha(1);
+				}
+		
+				#region /*Accept Text*/
+				draw_set_halign(fa_right);
+				draw_text_outlined(window_get_width() / 2 + player3_display_x + 60, window_get_height() / 2 + 150, Text("Accept") + " : ", global.default_text_size, c_black, c_white, 1);
+				#endregion /*Accept Text END*/
+	
+				#region /*Key A*/
+				if (gamepad_is_connected(2))
+				{
+					scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
+				}
+				else
+				{
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+					{
+						if (global.player3_key_jump > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player3_key2_jump > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						{
+							draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+				}
+				#endregion /*Key A END*/
+		
+			}
+			else
+			if (player3_accept_selection = true)
+			{
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20))
+				and (global.controls_used_for_menu_navigation = "mouse")
+				{
+					player3_menu = "select_character";
+			
+					draw_set_alpha(0.75);
+					draw_rectangle_color(window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
+					draw_set_alpha(0.5);
+					draw_rectangle_color(window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20, c_red, c_red, c_red, c_red, false);
+					draw_set_alpha(1);
+				}
+			
+				#region /*Cancel Text*/
+				draw_set_halign(fa_right);
+				draw_text_outlined(window_get_width() / 2 + player3_display_x + 60, window_get_height() / 2 + 150, Text("Cancel") + " : ", global.default_text_size, c_black, c_white, 1);
+				#endregion /*Cancel Text END*/
+	
+				#region /*Key B*/
+				if (gamepad_is_connected(2))
+				{
+					scr_draw_gamepad_buttons(gp_face2, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
+				}
+				else
+				{
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+					{
+						if (global.player3_key_dive > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player3_key_dive, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player3_key2_dive > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player3_key2_dive, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player3_key_sprint > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player3_key_sprint, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player3_key2_sprint > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player3_key2_sprint, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						{
+							draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+				}
+				#endregion /*Key B END*/
+		
+			}
+		}
+		#endregion /*Player 3: Tell the player what button to push to select or cancel a selection END*/
+		
+		#region /*Player 4: Tell the player what button to push to select or cancel a selection*/
+		draw_set_halign(fa_middle);
+		draw_set_valign(fa_middle);
+
+		if (player4_menu!= "select_name")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		or(global.controls_used_for_menu_navigation = "mouse")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		{
+			if (player4_accept_selection = false)
+			{
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player4_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player4_display_x + 100, window_get_height() / 2 + 150 + 20))
+				and (global.controls_used_for_menu_navigation = "mouse")
+				{
+					player4_menu = "select_character";
+			
+					draw_set_alpha(0.75);
+					draw_rectangle_color(window_get_width() / 2 + player4_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player4_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
+					draw_set_alpha(1);
+				}
+			
+				#region /*Accept Text*/
+				draw_set_halign(fa_right);
+				draw_text_outlined(window_get_width() / 2 + player4_display_x + 60, window_get_height() / 2 + 150, Text("Accept") + " : ", global.default_text_size, c_black, c_white, 1);
+				#endregion /*Accept Text END*/
+			
+				#region /*Key A*/
+				if (gamepad_is_connected(3))
+				{
+					scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
+				}
+				else
+				{
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+					{
+						if (global.player4_key_jump > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player4_key2_jump > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						{
+							draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+				}
+				#endregion /*Key A END*/
+			
+			}
+			else
+			if (player4_accept_selection = true)
+			{
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+				window_get_width() / 2 + player4_display_x - 100,
+				window_get_height() / 2 + 150 - 20,
+				window_get_width() / 2 + player4_display_x + 100,
+				window_get_height() / 2 + 150 + 20))
+				and (global.controls_used_for_menu_navigation = "mouse")
+				{
+					player4_menu = "select_character";
+			
+					draw_set_alpha(0.75);
+					draw_rectangle_color(
+					window_get_width() / 2 + player4_display_x - 100,
+					window_get_height() / 2 + 150 - 20,
+					window_get_width() / 2 + player4_display_x + 100,
+					window_get_height() / 2 + 150 + 20,
+					c_white, c_white, c_white, c_white, false);
+					draw_set_alpha(0.5);
+					draw_rectangle_color(
+					window_get_width() / 2 + player4_display_x - 100,
+					window_get_height() / 2 + 150 - 20,
+					window_get_width() / 2 + player4_display_x + 100,
+					window_get_height() / 2 + 150 + 20,
+					c_red, c_red, c_red, c_red, false);
+					draw_set_alpha(1);
+				}
+			
+				#region /*Cancel Text*/
+				draw_set_halign(fa_right);
+				draw_text_outlined(window_get_width() / 2 + player4_display_x + 60, window_get_height() / 2 + 150, Text("Cancel") + " : ", global.default_text_size, c_black, c_white, 1);
+				#endregion /*Cancel Text END*/
+	
+				#region /*Key B*/
+				if (gamepad_is_connected(3))
+				{
+					scr_draw_gamepad_buttons(gp_face2, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
+				}
+				else
+				{
+					if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+					{
+						if (global.player4_key_dive > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player4_key_dive, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player4_key2_dive > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player4_key2_dive, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player4_key_sprint > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player4_key_sprint, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player4_key2_sprint > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player4_key2_sprint, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						{
+							draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+				}
+				#endregion /*Key B END*/
+	
+			}
+		}
+		#endregion /*Player 4: Tell the player what button to push to select or cancel a selection END*/
+		
+		#region /*Tell player 1 what button to push to enter a name*/
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_middle);
+		
+		if (player1_menu = "select_name")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		and (global.controls_used_for_menu_navigation != "mouse")
+		{
+	
 			#region /*Accept Text*/
-			draw_set_halign(fa_right);
-			draw_text_outlined(window_get_width() / 2 + player2_display_x + 60, window_get_height() / 2 + 150, Text("Accept") + " : ", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2 + player1_display_x + 60, window_get_height() / 2 + name_y + 42, Text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Accept Text END*/
+	
+			#region /*Key A*/
+			if (gamepad_is_connected(0))
+			and (global.controls_used_for_menu_navigation = "controller")
+			{
+				scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player1_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, c_white, 1);
+			}
+			else
+			{
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					if (global.player1_key_jump > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, window_get_width() / 2 + player1_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player1_key2_jump > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, window_get_width() / 2 + player1_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					{
+						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player1_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
+					}
+				}
+			}
+			#endregion /*Key A END*/
+	
+		}
+		#endregion /*Tell player 1 what button to push to enter a name END*/
 		
+		#region /*Tell player 2 what button to push to enter a name*/
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_middle);
+
+		if (player2_menu = "select_name")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		and (global.controls_used_for_menu_navigation != "mouse")
+		{
+	
+			#region /*Accept Text*/
+			draw_text_outlined(window_get_width() / 2 + player2_display_x + 60, window_get_height() / 2 + name_y + 42, Text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1);
+			#endregion /*Accept Text END*/
+	
 			#region /*Key A*/
 			if (gamepad_is_connected(1))
 			{
-				scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player2_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, c_white, 1);
 			}
 			else
 			{
@@ -2831,114 +3241,44 @@ function scr_character_select_menu()
 				{
 					if (global.player2_key_jump > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, window_get_width() / 2 + player2_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					if (global.player2_key2_jump > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, window_get_width() / 2 + player2_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player2_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 					}
 				}
 			}
 			#endregion /*Key A END*/
-		
+	
 		}
-		else
-		if (player2_accept_selection = true)
-		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20))
-			and (global.controls_used_for_menu_navigation = "mouse")
-			{
-				player2_menu = "select_character";
-			
-				draw_set_alpha(0.75);
-				draw_rectangle_color(window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
-				draw_set_alpha(0.5);
-				draw_rectangle_color(window_get_width() / 2 + player2_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player2_display_x + 100, window_get_height() / 2 + 150 + 20, c_red, c_red, c_red, c_red, false);
-				draw_set_alpha(1);
-			}
-			
-			#region /*Cancel Text*/
-			draw_set_halign(fa_right);
-			draw_text_outlined(window_get_width() / 2 + player2_display_x + 60, window_get_height() / 2 + 150, Text("Cancel") + " : ", global.default_text_size, c_black, c_white, 1);
-			#endregion /*Cancel Text END*/
+		#endregion /*Tell player 2 what button to push to enter a name END*/
 		
-			#region /*Key B*/
-			if (gamepad_is_connected(1))
-			{
-				scr_draw_gamepad_buttons(gp_face2, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
-			}
-			else
-			{
-				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-				{
-					if (global.player2_key_dive > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player2_key_dive, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player2_key2_dive > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player2_key2_dive, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player2_key_sprint > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player2_key_sprint, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player2_key2_sprint > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player2_key2_sprint, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player2_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-			}
-			#endregion /*Key B END*/
-		
-		}
-	}
-	#endregion /*Player 2: Tell the player what button to push to select or cancel a selection END*/
-		
-		#region /*Player 3: Tell the player what button to push to select or cancel a selection*/
-	draw_set_halign(fa_middle);
-	draw_set_valign(fa_middle);
+		#region /*Tell player 3 what button to push to enter a name*/
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_middle);
 
-	if (player3_menu!= "select_name")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	or(global.controls_used_for_menu_navigation = "mouse")
-	{
-		if (player3_accept_selection = false)
+		if (player3_menu = "select_name")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		and (global.controls_used_for_menu_navigation != "mouse")
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20))
-			and (global.controls_used_for_menu_navigation = "mouse")
-			{
-				player3_menu = "select_character";
-			
-				draw_set_alpha(0.75);
-				draw_rectangle_color(window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
-				draw_set_alpha(1);
-			}
-		
+	
 			#region /*Accept Text*/
-			draw_set_halign(fa_right);
-			draw_text_outlined(window_get_width() / 2 + player3_display_x + 60, window_get_height() / 2 + 150, Text("Accept") + " : ", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2 + player3_display_x + 60, window_get_height() / 2 + name_y + 42, Text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Accept Text END*/
 	
 			#region /*Key A*/
 			if (gamepad_is_connected(2))
 			{
-				scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player3_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, c_white, 1);
 			}
 			else
 			{
@@ -2946,114 +3286,44 @@ function scr_character_select_menu()
 				{
 					if (global.player3_key_jump > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, window_get_width() / 2 + player3_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					if (global.player3_key2_jump > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, window_get_width() / 2 + player3_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player3_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 					}
 				}
 			}
 			#endregion /*Key A END*/
-		
-		}
-		else
-		if (player3_accept_selection = true)
-		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20))
-			and (global.controls_used_for_menu_navigation = "mouse")
-			{
-				player3_menu = "select_character";
-			
-				draw_set_alpha(0.75);
-				draw_rectangle_color(window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
-				draw_set_alpha(0.5);
-				draw_rectangle_color(window_get_width() / 2 + player3_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player3_display_x + 100, window_get_height() / 2 + 150 + 20, c_red, c_red, c_red, c_red, false);
-				draw_set_alpha(1);
-			}
-			
-			#region /*Cancel Text*/
-			draw_set_halign(fa_right);
-			draw_text_outlined(window_get_width() / 2 + player3_display_x + 60, window_get_height() / 2 + 150, Text("Cancel") + " : ", global.default_text_size, c_black, c_white, 1);
-			#endregion /*Cancel Text END*/
 	
-			#region /*Key B*/
-			if (gamepad_is_connected(2))
-			{
-				scr_draw_gamepad_buttons(gp_face2, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
-			}
-			else
-			{
-				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-				{
-					if (global.player3_key_dive > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player3_key_dive, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player3_key2_dive > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player3_key2_dive, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player3_key_sprint > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player3_key_sprint, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player3_key2_sprint > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player3_key2_sprint, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player3_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-			}
-			#endregion /*Key B END*/
-		
 		}
-	}
-	#endregion /*Player 3: Tell the player what button to push to select or cancel a selection END*/
+		#endregion /*Tell player 3 what button to push to enter a name END*/
 		
-		#region /*Player 4: Tell the player what button to push to select or cancel a selection*/
-	draw_set_halign(fa_middle);
-	draw_set_valign(fa_middle);
+		#region /*Tell player 4 what button to push to enter a name*/
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_middle);
 
-	if (player4_menu!= "select_name")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	or(global.controls_used_for_menu_navigation = "mouse")
-	{
-		if (player4_accept_selection = false)
+		if (player4_menu = "select_name")
+		and (can_input_player1_name = false)
+		and (can_input_player2_name = false)
+		and (can_input_player3_name = false)
+		and (can_input_player4_name = false)
+		and (global.controls_used_for_menu_navigation != "mouse")
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player4_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player4_display_x + 100, window_get_height() / 2 + 150 + 20))
-			and (global.controls_used_for_menu_navigation = "mouse")
-			{
-				player4_menu = "select_character";
-			
-				draw_set_alpha(0.75);
-				draw_rectangle_color(window_get_width() / 2 + player4_display_x - 100, window_get_height() / 2 + 150 - 20, window_get_width() / 2 + player4_display_x + 100, window_get_height() / 2 + 150 + 20, c_white, c_white, c_white, c_white, false);
-				draw_set_alpha(1);
-			}
-			
+	
 			#region /*Accept Text*/
-			draw_set_halign(fa_right);
-			draw_text_outlined(window_get_width() / 2 + player4_display_x + 60, window_get_height() / 2 + 150, Text("Accept") + " : ", global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2 + player4_display_x + 60, window_get_height() / 2 + name_y + 42, Text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1);
 			#endregion /*Accept Text END*/
-			
+	
 			#region /*Key A*/
 			if (gamepad_is_connected(3))
 			{
-				scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player4_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, c_white, 1);
 			}
 			else
 			{
@@ -3061,276 +3331,23 @@ function scr_character_select_menu()
 				{
 					if (global.player4_key_jump > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, window_get_width() / 2 + player4_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					if (global.player4_key2_jump > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, window_get_width() / 2 + player4_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player4_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 					}
 				}
 			}
 			#endregion /*Key A END*/
-			
-		}
-		else
-		if (player4_accept_selection = true)
-		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
-			window_get_width() / 2 + player4_display_x - 100,
-			window_get_height() / 2 + 150 - 20,
-			window_get_width() / 2 + player4_display_x + 100,
-			window_get_height() / 2 + 150 + 20))
-			and (global.controls_used_for_menu_navigation = "mouse")
-			{
-				player4_menu = "select_character";
-			
-				draw_set_alpha(0.75);
-				draw_rectangle_color(
-				window_get_width() / 2 + player4_display_x - 100,
-				window_get_height() / 2 + 150 - 20,
-				window_get_width() / 2 + player4_display_x + 100,
-				window_get_height() / 2 + 150 + 20,
-				c_white, c_white, c_white, c_white, false);
-				draw_set_alpha(0.5);
-				draw_rectangle_color(
-				window_get_width() / 2 + player4_display_x - 100,
-				window_get_height() / 2 + 150 - 20,
-				window_get_width() / 2 + player4_display_x + 100,
-				window_get_height() / 2 + 150 + 20,
-				c_red, c_red, c_red, c_red, false);
-				draw_set_alpha(1);
-			}
-			
-			#region /*Cancel Text*/
-			draw_set_halign(fa_right);
-			draw_text_outlined(window_get_width() / 2 + player4_display_x + 60, window_get_height() / 2 + 150, Text("Cancel") + " : ", global.default_text_size, c_black, c_white, 1);
-			#endregion /*Cancel Text END*/
-	
-			#region /*Key B*/
-			if (gamepad_is_connected(3))
-			{
-				scr_draw_gamepad_buttons(gp_face2, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, c_white, 1);
-			}
-			else
-			{
-				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-				{
-					if (global.player4_key_dive > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player4_key_dive, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player4_key2_dive > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player4_key2_dive, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player4_key_sprint > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player4_key_sprint, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player4_key2_sprint > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player4_key2_sprint, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player4_display_x + 80, window_get_height() / 2 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-			}
-			#endregion /*Key B END*/
 	
 		}
-	}
-	#endregion /*Player 4: Tell the player what button to push to select or cancel a selection END*/
-		
-		#region /*Tell player 1 what button to push to enter a name*/
-	draw_set_halign(fa_middle);
-	draw_set_valign(fa_middle);
-
-	if (player1_menu = "select_name")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	and (global.controls_used_for_menu_navigation != "mouse")
-	{
-	
-		#region /*Accept Text*/
-		draw_text_outlined(window_get_width() / 2 + player1_display_x - 30, window_get_height() / 2 + name_y + 42, Text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1);
-		#endregion /*Accept Text END*/
-	
-		#region /*Key A*/
-		if (gamepad_is_connected(0))
-		and (global.controls_used_for_menu_navigation = "controller")
-		{
-			scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player1_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, c_white, 1);
-		}
-		else
-		{
-			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-			{
-				if (global.player1_key_jump > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key_jump, window_get_width() / 2 + player1_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player1_key2_jump > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, window_get_width() / 2 + player1_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				{
-					draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player1_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-			}
-		}
-		#endregion /*Key A END*/
-	
-	}
-	#endregion /*Tell player 1 what button to push to enter a name END*/
-		
-		#region /*Tell player 2 what button to push to enter a name*/
-	draw_set_halign(fa_middle);
-	draw_set_valign(fa_middle);
-
-	if (player2_menu = "select_name")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	and (global.controls_used_for_menu_navigation != "mouse")
-	{
-	
-		#region /*Accept Text*/
-		draw_text_outlined(window_get_width() / 2 + player2_display_x - 30, window_get_height() / 2 + name_y + 42, Text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1);
-		#endregion /*Accept Text END*/
-	
-		#region /*Key A*/
-		if (gamepad_is_connected(1))
-		{
-			scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player2_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, c_white, 1);
-		}
-		else
-		{
-			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-			{
-				if (global.player2_key_jump > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key_jump, window_get_width() / 2 + player2_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player2_key2_jump > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, window_get_width() / 2 + player2_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				{
-					draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player2_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-			}
-		}
-		#endregion /*Key A END*/
-	
-	}
-	#endregion /*Tell player 2 what button to push to enter a name END*/
-		
-		#region /*Tell player 3 what button to push to enter a name*/
-	draw_set_halign(fa_middle);
-	draw_set_valign(fa_middle);
-
-	if (player3_menu = "select_name")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	and (global.controls_used_for_menu_navigation != "mouse")
-	{
-	
-		#region /*Accept Text*/
-		draw_text_outlined(window_get_width() / 2 + player3_display_x - 30, window_get_height() / 2 + name_y + 42, Text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1);
-		#endregion /*Accept Text END*/
-	
-		#region /*Key A*/
-		if (gamepad_is_connected(2))
-		{
-			scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player3_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, c_white, 1);
-		}
-		else
-		{
-			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-			{
-				if (global.player3_key_jump > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key_jump, window_get_width() / 2 + player3_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player3_key2_jump > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, window_get_width() / 2 + player3_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				{
-					draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player3_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-			}
-		}
-		#endregion /*Key A END*/
-	
-	}
-	#endregion /*Tell player 3 what button to push to enter a name END*/
-		
-		#region /*Tell player 4 what button to push to enter a name*/
-	draw_set_halign(fa_middle);
-	draw_set_valign(fa_middle);
-
-	if (player4_menu = "select_name")
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
-	and (global.controls_used_for_menu_navigation != "mouse")
-	{
-	
-		#region /*Accept Text*/
-		draw_text_outlined(window_get_width() / 2 + player4_display_x - 30, window_get_height() / 2 + name_y + 42, Text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1);
-		#endregion /*Accept Text END*/
-	
-		#region /*Key A*/
-		if (gamepad_is_connected(3))
-		{
-			scr_draw_gamepad_buttons(gp_face1, window_get_width() / 2 + player4_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, c_white, 1);
-		}
-		else
-		{
-			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-			{
-				if (global.player4_key_jump > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key_jump, window_get_width() / 2 + player4_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player4_key2_jump > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, window_get_width() / 2 + player4_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				{
-					draw_sprite_ext(spr_keyboard_keys_none, 0, window_get_width() / 2 + player4_display_x + 70, window_get_height() / 2 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
-				}
-			}
-		}
-		#endregion /*Key A END*/
-	
-	}
-	#endregion /*Tell player 4 what button to push to enter a name END*/
+		#endregion /*Tell player 4 what button to push to enter a name END*/
 		
 		#endregion /*Tell the players what buttons to push to select or cancel a selection END*/
 		
@@ -3340,465 +3357,170 @@ function scr_character_select_menu()
 		
 		name_y = 292;
 		
-		#region /*Player 1 Input Name*/
-	if (player1_accept_selection >= 0)
-	{
-		
-		#region /*Opaque transparent black box*/
-		if (can_input_player1_name = true)
-		and (can_input_player2_name = false)
-		and (can_input_player3_name = false)
-		and (can_input_player4_name = false)
-		{
-			draw_set_alpha(0.5);
-			draw_rectangle_color(window_get_width() / 2 + player1_display_x - 155, window_get_height() / 2 + 200, window_get_width() / 2 + player1_display_x + 155, window_get_height() / 2 + 310, c_black, c_black, c_black, c_black, false);
-			draw_set_alpha(1);
-		}
-		#endregion /*Opaque transparent black box END*/
-		
-		#region /*Box where name is written on*/
-		draw_set_alpha(1);
-		draw_rectangle_color(window_get_width() / 2 + player1_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player1_display_x + 150, window_get_height() / 2 + name_y + 16, global.player1_color, global.player1_color, global.player1_color, global.player1_color, false);
-	
-		if (player1_menu = "select_name")
-		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player1_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player1_display_x + 150, window_get_height() / 2 + name_y + 16))
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player1_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player1_display_x + 150, window_get_height() / 2 + name_y + 16))
 		and (global.controls_used_for_menu_navigation = "mouse")
-		and (can_input_player1_name = false)
-		and (can_input_player2_name = false)
-		and (can_input_player3_name = false)
-		and (can_input_player4_name = false)
+		and (player1_accept_selection >= 0)
+		and (menu_delay = 0)
 		{
-			draw_set_alpha(0.9);
+			player1_menu = "select_name";
 		}
-		else
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player2_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player2_display_x + 150, window_get_height() / 2 + name_y + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (player2_accept_selection >= 0)
+		and (menu_delay = 0)
 		{
-			draw_set_alpha(0.5);
+			player2_menu = "select_name";
 		}
-		draw_rectangle_color(window_get_width() / 2 + player1_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player1_display_x + 150, window_get_height() / 2 + name_y + 16, c_white, c_white, c_white, c_white, false);
-	
-		draw_set_alpha(1);
-		draw_rectangle_color(window_get_width() / 2 + player1_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player1_display_x + 150, window_get_height() / 2 + name_y + 16, c_black, c_black, c_black, c_black, true);
-		#endregion /*Box where name is written on END*/
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player3_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player3_display_x + 150, window_get_height() / 2 + name_y + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (player3_accept_selection >= 0)
+		and (menu_delay = 0)
+		{
+			player3_menu = "select_name";
+		}
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player4_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player4_display_x + 150, window_get_height() / 2 + name_y + 16))
+		and (global.controls_used_for_menu_navigation = "mouse")
+		and (player4_accept_selection >= 0)
+		and (menu_delay = 0)
+		{
+			player4_menu = "select_name";
+		}
 		
-		#region /*Inputed Name Text*/
-		if (can_input_player1_name = true)
-		{
-			if (name_enter_blink< 1)
-			{
-				draw_text_outlined(window_get_width() / 2 + player1_display_x + 4, window_get_height() / 2 + name_y, string(global.player1_name) + "|", global.default_text_size, c_black, c_white, 1);
-			}
-			else
-			{
-				draw_text_outlined(window_get_width() / 2 + player1_display_x, window_get_height() / 2 + name_y, string(global.player1_name), global.default_text_size, c_black, c_white, 1);
-			}
-		}
-		else
+		if (player1_accept_selection >= 0)
+		and (can_input_player1_name = false)
 		{
 			if (global.player1_name = "")
 			{
-				draw_text_outlined(window_get_width() / 2 + player1_display_x, window_get_height() / 2 + name_y, Text("Player 1"), global.default_text_size, c_white, c_black, 1);
+				scr_draw_name_box("Player 1", global.player1_color, 0.5, window_get_width() / 2 + player1_display_x, window_get_height() / 2 + name_y);
 			}
 			else
 			{
-				draw_text_outlined(window_get_width() / 2 + player1_display_x, window_get_height() / 2 + name_y, string(global.player1_name), global.default_text_size, c_white, c_black, 1);
+				scr_draw_name_box(global.player1_name, global.player1_color, 0.5, window_get_width() / 2 + player1_display_x, window_get_height() / 2 + name_y);
 			}
 		}
-		#endregion /*Inputed Name Text END*/
-		
-	}
-	#endregion /*Player 1 Input Name END*/
-		
-		#region /*Player 2 Input Name*/
-	if (player2_accept_selection >= 0)
-	{
-		
-		#region /*Opaque transparent black box*/
-		if (can_input_player1_name = false)
-		and (can_input_player2_name = true)
-		and (can_input_player3_name = false)
-		and (can_input_player4_name = false)
-		{
-			draw_set_alpha(0.5);
-			draw_rectangle_color(window_get_width() / 2 + player2_display_x - 155, window_get_height() / 2 + 200, window_get_width() / 2 + player2_display_x + 155, window_get_height() / 2 + 310, c_black, c_black, c_black, c_black, false);
-			draw_set_alpha(1);
-		}
-		#endregion /*Opaque transparent black box END*/
-		
-		#region /*Box where name is written on*/
-		draw_set_alpha(1);
-		draw_rectangle_color(window_get_width() / 2 + player2_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player2_display_x + 150, window_get_height() / 2 + name_y + 16, global.player2_color, global.player2_color, global.player2_color, global.player2_color, false);
-	
-		if (player2_menu = "select_name")
-		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player2_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player2_display_x + 150, window_get_height() / 2 + name_y + 16))
-		and (global.controls_used_for_menu_navigation = "mouse")
-		and (can_input_player1_name = false)
+		if (player2_accept_selection >= 0)
 		and (can_input_player2_name = false)
-		and (can_input_player3_name = false)
-		and (can_input_player4_name = false)
-		{
-			draw_set_alpha(0.9);
-		}
-		else
-		{
-			draw_set_alpha(0.5);
-		}
-		draw_rectangle_color(window_get_width() / 2 + player2_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player2_display_x + 150, window_get_height() / 2 + name_y + 16, c_white, c_white, c_white, c_white, false);
-	
-		draw_set_alpha(1);
-		draw_rectangle_color(window_get_width() / 2 + player2_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player2_display_x + 150, window_get_height() / 2 + name_y + 16, c_black, c_black, c_black, c_black, true);
-		#endregion /*Box where name is written on END*/
-		
-		#region /*Inputed Name Text*/
-		if (can_input_player2_name = true)
-		{
-			if (name_enter_blink< 1)
-			{
-				draw_text_outlined(window_get_width() / 2 + player2_display_x + 4, window_get_height() / 2 + name_y, string(global.player2_name) + "|", global.default_text_size, c_black, c_white, 1);
-			}
-			else
-			{
-				draw_text_outlined(window_get_width() / 2 + player2_display_x, window_get_height() / 2 + name_y, string(global.player2_name), global.default_text_size, c_black, c_white, 1);
-			}
-		}
-		else
 		{
 			if (global.player2_name = "")
 			{
-				draw_text_outlined(window_get_width() / 2 + player2_display_x, window_get_height() / 2 + name_y, Text("Player 2"), global.default_text_size, c_white, c_black, 1);
+				scr_draw_name_box("Player 2", global.player2_color, 0.5, window_get_width() / 2 + player2_display_x, window_get_height() / 2 + name_y);
 			}
 			else
 			{
-				draw_text_outlined(window_get_width() / 2 + player2_display_x, window_get_height() / 2 + name_y, string(global.player2_name), global.default_text_size, c_white, c_black, 1);
+				scr_draw_name_box(global.player2_name, global.player2_color, 0.5, window_get_width() / 2 + player2_display_x, window_get_height() / 2 + name_y);
 			}
 		}
-		#endregion /*Inputed Name Text END*/
-		
-	}
-	#endregion /*Player 2 Input Name END*/
-		
-		#region /*Player 3 Input Name*/
-	if (player3_accept_selection >= 0)
-	{
-		
-		#region /*Opaque transparent black box*/
-		if (can_input_player1_name = false)
-		and (can_input_player2_name = false)
-		and (can_input_player3_name = true)
-		and (can_input_player4_name = false)
-		{
-			draw_set_alpha(0.5);
-			draw_rectangle_color(window_get_width() / 2 + player3_display_x - 155, window_get_height() / 2 + 200, window_get_width() / 2 + player3_display_x + 155, window_get_height() / 2 + 310, c_black, c_black, c_black, c_black, false);
-			draw_set_alpha(1);
-		}
-		#endregion /*Opaque transparent black box END*/
-		
-		#region /*Box where name is written on*/
-		draw_set_alpha(1);
-		draw_rectangle_color(window_get_width() / 2 + player3_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player3_display_x + 150, window_get_height() / 2 + name_y + 16, global.player3_color, global.player3_color, global.player3_color, global.player3_color, false);
-	
-		if (player3_menu = "select_name")
-		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player3_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player3_display_x + 150, window_get_height() / 2 + name_y + 16))
-		and (global.controls_used_for_menu_navigation = "mouse")
-		and (can_input_player1_name = false)
-		and (can_input_player2_name = false)
+		if (player3_accept_selection >= 0)
 		and (can_input_player3_name = false)
-		and (can_input_player4_name = false)
-		{
-			draw_set_alpha(0.9);
-		}
-		else
-		{
-			draw_set_alpha(0.5);
-		}
-		draw_rectangle_color(window_get_width() / 2 + player3_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player3_display_x + 150, window_get_height() / 2 + name_y + 16, c_white, c_white, c_white, c_white, false);
-	
-		draw_set_alpha(1);
-		draw_rectangle_color(window_get_width() / 2 + player3_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player3_display_x + 150, window_get_height() / 2 + name_y + 16, c_black, c_black, c_black, c_black, true);
-		#endregion /*Box where name is written on END*/
-		
-		#region /*Inputed Name Text*/
-		if (can_input_player3_name = true)
-		{
-			if (name_enter_blink< 1)
-			{
-				draw_text_outlined(window_get_width() / 2 + player3_display_x + 4, window_get_height() / 2 + name_y, string(global.player3_name) + "|", global.default_text_size, c_black, c_white, 1);
-			}
-			else
-			{
-				draw_text_outlined(window_get_width() / 2 + player3_display_x, window_get_height() / 2 + name_y, string(global.player3_name), global.default_text_size, c_black, c_white, 1);
-			}
-		}
-		else
 		{
 			if (global.player3_name = "")
 			{
-				draw_text_outlined(window_get_width() / 2 + player3_display_x, window_get_height() / 2 + name_y, Text("Player 3"), global.default_text_size, c_white, c_black, 1);
+				scr_draw_name_box("Player 3", global.player3_color, 0.5, window_get_width() / 2 + player3_display_x, window_get_height() / 2 + name_y);
 			}
 			else
 			{
-				draw_text_outlined(window_get_width() / 2 + player3_display_x, window_get_height() / 2 + name_y, string(global.player3_name), global.default_text_size, c_white, c_black, 1);
+				scr_draw_name_box(global.player3_name, global.player3_color, 0.5, window_get_width() / 2 + player3_display_x, window_get_height() / 2 + name_y);
 			}
 		}
-		#endregion /*Inputed Name Text END*/
-		
-	}
-	#endregion /*Player 3 Input Name END*/
-		
-		#region /*Player 4 Input Name*/
-	if (player4_accept_selection >= 0)
-	{
-		
-		#region /*Opaque transparent black box*/
-		if (can_input_player1_name = false)
-		and (can_input_player2_name = false)
-		and (can_input_player3_name = false)
-		and (can_input_player4_name = true)
-		{
-			draw_set_alpha(0.5);
-			draw_rectangle_color(window_get_width() / 2 + player4_display_x - 155, window_get_height() / 2 + 200, window_get_width() / 2 + player4_display_x + 155, window_get_height() / 2 + 310, c_black, c_black, c_black, c_black, false);
-			draw_set_alpha(1);
-		}
-		#endregion /*Opaque transparent black box END*/
-		
-		#region /*Box where name is written on*/
-		draw_set_alpha(1);
-		draw_rectangle_color(window_get_width() / 2 + player4_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player4_display_x + 150, window_get_height() / 2 + name_y + 16, global.player4_color, global.player4_color, global.player4_color, global.player4_color, false);
-	
-		if (player4_menu = "select_name")
-		or(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + player4_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player4_display_x + 150, window_get_height() / 2 + name_y + 16))
-		and (global.controls_used_for_menu_navigation = "mouse")
-		and (can_input_player1_name = false)
-		and (can_input_player2_name = false)
-		and (can_input_player3_name = false)
+		if (player4_accept_selection >= 0)
 		and (can_input_player4_name = false)
-		{
-			draw_set_alpha(0.9);
-		}
-		else
-		{
-			draw_set_alpha(0.5);
-		}
-		draw_rectangle_color(window_get_width() / 2 + player4_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player4_display_x + 150, window_get_height() / 2 + name_y + 16, c_white, c_white, c_white, c_white, false);
-	
-		draw_set_alpha(1);
-		draw_rectangle_color(window_get_width() / 2 + player4_display_x - 150, window_get_height() / 2 + name_y - 16, window_get_width() / 2 + player4_display_x + 150, window_get_height() / 2 + name_y + 16, c_black, c_black, c_black, c_black, true);
-		#endregion /*Box where name is written on END*/
-		
-		#region /*Inputed Name Text*/
-		if (can_input_player4_name = true)
-		{
-			if (name_enter_blink< 1)
-			{
-				draw_text_outlined(window_get_width() / 2 + player4_display_x + 4, window_get_height() / 2 + name_y, string(global.player4_name) + "|", global.default_text_size, c_black, c_white, 1);
-			}
-			else
-			{
-				draw_text_outlined(window_get_width() / 2 + player4_display_x, window_get_height() / 2 + name_y, string(global.player4_name), global.default_text_size, c_black, c_white, 1);
-			}
-		}
-		else
 		{
 			if (global.player4_name = "")
 			{
-				draw_text_outlined(window_get_width() / 2 + player4_display_x, window_get_height() / 2 + name_y, Text("Player 4"), global.default_text_size, c_white, c_black, 1);
+				scr_draw_name_box("Player 4", global.player4_color, 0.5, window_get_width() / 2 + player4_display_x, window_get_height() / 2 + name_y);
 			}
 			else
 			{
-				draw_text_outlined(window_get_width() / 2 + player4_display_x, window_get_height() / 2 + name_y, string(global.player4_name), global.default_text_size, c_white, c_black, 1);
+				scr_draw_name_box(global.player4_name, global.player4_color, 0.5, window_get_width() / 2 + player4_display_x, window_get_height() / 2 + name_y);
 			}
 		}
-		#endregion /*Inputed Name Text END*/
 		
-	}
-	#endregion /*Player 4 END*/
+		if (player1_accept_selection >= 0)
+		and (can_input_player1_name = true)
+		{
+			global.player1_name = scr_draw_name_input_screen(global.player1_name, 32, global.player1_color, 0.5, true, window_get_width() / 2 + player1_display_x, window_get_height() / 2 + name_y, "input_name_ok", "input_name_cancel");
+		}
+		if (player2_accept_selection >= 0)
+		and (can_input_player2_name = true)
+		{
+			global.player2_name = scr_draw_name_input_screen(global.player2_name, 32, global.player2_color, 0.5, true, window_get_width() / 2 + player2_display_x, window_get_height() / 2 + name_y, "input_name_ok", "input_name_cancel");
+		}
+		if (player3_accept_selection >= 0)
+		and (can_input_player3_name = true)
+		{
+			global.player3_name = scr_draw_name_input_screen(global.player3_name, 32, global.player3_color, 0.5, true, window_get_width() / 2 + player3_display_x, window_get_height() / 2 + name_y, "input_name_ok", "input_name_cancel");
+		}
+		if (player4_accept_selection >= 0)
+		and (can_input_player4_name = true)
+		{
+			global.player4_name = scr_draw_name_input_screen(global.player4_name, 32, global.player4_color, 0.5, true, window_get_width() / 2 + player4_display_x, window_get_height() / 2 + name_y, "input_name_ok", "input_name_cancel");
+		}
 		
 		#endregion /*Tell the player the inputed name END*/
 		
-		#region /*Name Enter Blinking*/
-		name_enter_blink+= 0.05;
-		if (name_enter_blink > 1.5)
-		{
-			name_enter_blink = 0;
-		}
-		#endregion /*Name Enter Blinking END*/
-		
 		#region /*Name Input*/
 		
-		#region /*PLAYER 1 INPUT NAME NOW*/
-	if (can_input_player1_name = true)
-	{
-		draw_set_alpha(1);
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
-		
-		global.player1_name = keyboard_string;
-		
-		#region /*Limit Name Input Length for Player 1*/
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
-		
-		if (string_length(global.player1_name) >= 20)
-		{
-			draw_text_outlined(
-			window_get_width() / 2 + player1_display_x + 100,
-			window_get_height() / 2 + 290,
-			"20/ 20", global.default_text_size, c_black, c_white, 1);
-		}
-		else
-		{
-			draw_text_outlined(
-			window_get_width() / 2 + player1_display_x + 100,
-			window_get_height() / 2 + 290,
-			string(string_length(global.player1_name)) + "/ 20", global.default_text_size, c_black, c_ltgray, 1);
-		}
-		
-		if (string_length(global.player1_name) > 20)
-		{
-			global.player1_name = string_copy(global.player1_name, 1, 20);
-		}
-		#endregion /*Limit Name Input Length for Player 1 END*/
-		
-	}
-	#endregion /*PLAYER 1 INPUT NAME NOW END*/
-		
-		#region /*PLAYER 2 INPUT NAME NOW*/
-	if (can_input_player2_name = true)
-	{
-		draw_set_alpha(1);
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
-		
-		global.player2_name = keyboard_string;
-		
-		#region /*Limit Name Input Length for Player 2*/
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
-		
-		if (string_length(global.player2_name) >= 20)
-		{
-			draw_text_outlined(
-			window_get_width() / 2 + player2_display_x + 100,
-			window_get_height() / 2 + 290,
-			"20/ 20", global.default_text_size, c_black, c_white, 2);
-		}
-		else
-		{
-			draw_text_outlined(
-			window_get_width() / 2 + player2_display_x + 100,
-			window_get_height() / 2 + 290,
-			string(string_length(global.player2_name)) + "/ 20", global.default_text_size, c_black, c_ltgray, 1);
-		}
-		
-		if (string_length(global.player2_name) > 20)
-		{
-			global.player2_name = string_copy(global.player2_name, 1, 20);
-		}
-		#endregion /*Limit Name Input Length for Player 2 END*/
-		
-	}
-	#endregion /*PLAYER 2 INPUT NAME NOW END*/
-		
-		#region /*PLAYER 3 INPUT NAME NOW*/
-	if (can_input_player3_name = true)
-	{
-		draw_set_alpha(1);
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
-		
-		global.player3_name = keyboard_string;
-		
-		#region /*Limit Name Input Length for Player 3*/
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
-		
-		if (string_length(global.player3_name) >= 20)
-		{
-			draw_text_outlined(
-			window_get_width() / 2 + player3_display_x + 100,
-			window_get_height() / 2 + 290,
-			"20/ 20", global.default_text_size, c_black, c_white, 1);
-		}
-		else
-		{
-			draw_text_outlined(
-			window_get_width() / 2 + player3_display_x + 100,
-			window_get_height() / 2 + 290,
-			string(string_length(global.player3_name)) + "/ 20", global.default_text_size, c_black, c_ltgray, 1);
-		}
-		
-		if (string_length(global.player3_name) > 20)
-		{
-			global.player3_name = string_copy(global.player3_name, 1, 20);
-		}
-		#endregion /*Limit Name Input Length for Player 3 END*/
-		
-	}
-	#endregion /*PLAYER 3 INPUT NAME NOW END*/
-		
-		#region /*PLAYER 4 INPUT NAME NOW*/
-	if (can_input_player4_name = true)
-	{
-		draw_set_alpha(1);
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
-		
-		global.player4_name = keyboard_string;
-		
-		#region /*Limit Name Input Length for Player 4 */
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
-		
-		if (string_length(global.player4_name) >= 20)
-		{
-			draw_text_outlined(
-			window_get_width() / 2 + player4_display_x + 100,
-			window_get_height() / 2 + 290,
-			"20/ 20", global.default_text_size, c_black, c_white, 1);
-		}
-		else
-		{
-			draw_text_outlined(
-			window_get_width() / 2 + player4_display_x + 100,
-			window_get_height() / 2 + 290,
-			string(string_length(global.player4_name)) + "/ 20", global.default_text_size, c_black, c_ltgray, 1);
-		}
-		
-		if (string_length(global.player4_name) > 20)
-		{
-			global.player4_name = string_copy(global.player4_name, 1, 20);
-		}
-		#endregion /*Limit Name Input Length for Player 4 END*/
-		
-	}
-	#endregion /*PLAYER 4 INPUT NAME NOW END*/
-		
 		#region /*Press enter when done typing*/
-	if (can_input_player1_name = true)
-	or(can_input_player2_name = true)
-	or(can_input_player3_name = true)
-	or(can_input_player4_name = true)
-	{
-		if (keyboard_check_pressed(vk_escape))
-		or(keyboard_check_pressed(vk_enter))
+		if (can_input_player1_name = true)
+		or(can_input_player2_name = true)
+		or(can_input_player3_name = true)
+		or(can_input_player4_name = true)
 		{
-			if (menu_delay = 0)
+			if (keyboard_check_pressed(vk_enter))
+			or (keyboard_check_pressed(vk_escape))
+			
+			or (can_input_player1_name = true)
+			and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+			window_get_width() / 2 + player1_display_x - 185,
+			window_get_height() / 2 + name_y + 52,
+			window_get_width() / 2 + player1_display_x - 185 + 370,
+			window_get_height() / 2 + name_y + 52 + 42 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			
+			or (can_input_player2_name = true)
+			and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+			window_get_width() / 2 + player2_display_x - 185,
+			window_get_height() / 2 + name_y + 52,
+			window_get_width() / 2 + player2_display_x - 185 + 370,
+			window_get_height() / 2 + name_y + 52 + 42 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			
+			or (can_input_player3_name = true)
+			and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+			window_get_width() / 2 + player3_display_x - 185,
+			window_get_height() / 2 + name_y + 52,
+			window_get_width() / 2 + player3_display_x - 185 + 370,
+			window_get_height() / 2 + name_y + 52 + 42 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			
+			or (can_input_player4_name = true)
+			and(point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+			window_get_width() / 2 + player4_display_x - 185,
+			window_get_height() / 2 + name_y + 52,
+			window_get_width() / 2 + player4_display_x - 185 + 370,
+			window_get_height() / 2 + name_y + 52 + 42 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			
+			or (gamepad_button_check_pressed(0, gp_face1))
+			or (gamepad_button_check_pressed(1, gp_face1))
+			or (gamepad_button_check_pressed(2, gp_face1))
+			or (gamepad_button_check_pressed(3, gp_face1))
+			or (gamepad_button_check_pressed(0, gp_face2))
+			or (gamepad_button_check_pressed(1, gp_face2))
+			or (gamepad_button_check_pressed(2, gp_face2))
+			or (gamepad_button_check_pressed(3, gp_face2))
 			{
-				menu_delay = 3;
-				can_input_player1_name = false;
-				can_input_player2_name = false;
-				can_input_player3_name = false;
-				can_input_player4_name = false;
+				if (menu_delay = 0)
+				{
+					menu_delay = 3;
+					can_input_player1_name = false;
+					can_input_player2_name = false;
+					can_input_player3_name = false;
+					can_input_player4_name = false;
+				}
 			}
 		}
-	}
-	#endregion /*Press enter when done typing END*/
-		
-		#region /*Limit Name Input Length for all players*/
-	if (string_length(keyboard_string) > 20)
-	{
-		keyboard_string = string_copy(keyboard_string, 1, 20);
-	}
-	#endregion /*Limit Name Input Length for all players END*/
+		#endregion /*Press enter when done typing END*/
 		
 		#endregion /*Name Input END*/
 		
