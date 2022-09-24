@@ -63,10 +63,7 @@ or(other.can_attack_after_dive_on_ground > 0)
 		scr_gamepad_vibration(other.player, 0.5, 10);
 		
 		#region /*Enemy Voice Defeated*/
-		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-		audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
-		audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
-		audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
+		scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voices_volume);
 		#endregion /*Enemy Voice Defeated END*/
 
 #region /*Rewards*/
@@ -702,13 +699,8 @@ if (die_volting = false)
 			effect_create_below(ef_ring, x, y, 0, c_white);
 			scr_gamepad_vibration(other.player, 0.5, 10);
 			
-			#region /*Enemy Voice Defeated*/
-			audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-			audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
-			audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
-			audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
-			#endregion /*Enemy Voice Defeated END*/
-
+			scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voices_volume);
+			
 #region /*Rewards*/
 if (give_rewards = true)
 {

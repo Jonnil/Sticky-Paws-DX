@@ -77,12 +77,7 @@ if (coil_spring = true)
 	or(asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
-		if (asset_get_type("snd_star_bound") == asset_sound)
-		{
-			audio_stop_sound(snd_star_bound);
-			audio_play_sound(snd_star_bound, 0, 0);
-			audio_sound_gain(snd_star_bound, global.sound_volume * global.main_volume, 0);
-		}
+		scr_audio_play(snd_star_bound, global.sound_volume);
 		vspeed = -10;
 		draw_xscale = 1.25;
 		draw_yscale = 0.75;

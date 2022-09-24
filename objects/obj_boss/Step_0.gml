@@ -97,11 +97,7 @@ if (time = room_speed * 3)
 	if (can_jump_on_head = true)
 	{
 		can_jump_on_head = false;
-		if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-		{
-			audio_play_sound(snd_boss_invulnerable, 0, 0);
-			audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-		}
+		scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 	}
 	image_speed = 0.3;
 	mask_index = spr_boss_stand;
@@ -132,11 +128,7 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		{
@@ -149,31 +141,19 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_laugh;
-		if (asset_get_type("snd_boss_voice_laugh") == asset_sound)
-		{
-			audio_play_sound(snd_boss_voice_laugh, 0, 0);
-			audio_sound_gain(snd_boss_voice_laugh, global.voices_volume * global.main_volume, 0);
-		}
+		scr_audio_play(snd_boss_voice_laugh, global.voices_volume);
 	}
 	if (time = room_speed * 3)
 	{
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -186,11 +166,7 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -286,11 +262,7 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		{
@@ -303,31 +275,19 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_laugh;
-		if (asset_get_type("snd_boss_voice_laugh") == asset_sound)
-		{
-			audio_play_sound(snd_boss_voice_laugh, 0, 0);
-			audio_sound_gain(snd_boss_voice_laugh, global.voices_volume * global.main_volume, 0);
-		}
+		scr_audio_play(snd_boss_voice_laugh, global.voices_volume);
 	}
 	if (time = room_speed * 3)
 	{
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -341,11 +301,7 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -442,11 +398,7 @@ if (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		{
@@ -459,31 +411,19 @@ if (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_laugh;
-		if (asset_get_type("snd_boss_voice_laugh") == asset_sound)
-		{
-			audio_play_sound(snd_boss_voice_laugh, 0, 0);
-			audio_sound_gain(snd_boss_voice_laugh, global.voices_volume * global.main_volume, 0);
-		}
+		scr_audio_play(snd_boss_voice_laugh, global.voices_volume);
 	}
 	if (time = room_speed * 3)
 	{
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -498,11 +438,7 @@ if (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-			{
-				audio_play_sound(snd_boss_invulnerable, 0, 0);
-				audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -635,22 +571,14 @@ if (hp <= 0)
 				scoreup = 200;
 			}
 		}
-		if (asset_get_type("snd_boss_defeated") == asset_sound)
-		{
-			audio_play_sound(snd_boss_defeated, 0, 0);
-			audio_sound_gain(snd_boss_defeated, global.sound_volume * global.main_volume, 0);
-		}
+		scr_audio_play(snd_boss_defeated, global.sound_volume);
 		instance_destroy();
 	}
 }
 
 if (takendamage = 50)
 {
-	if (asset_get_type("snd_boss_invulnerable") == asset_sound)
-	{
-		audio_play_sound(snd_boss_invulnerable, 0, 0);
-		audio_sound_gain(snd_boss_invulnerable, global.sound_volume * global.main_volume, 0);
-	}
+	scr_audio_play(snd_boss_invulnerable, global.sound_volume);
 }
 
 #region /*Kill enemy if it's inside the wall*/

@@ -114,11 +114,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
 			effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
 		}
-		if (asset_get_type("snd_spring") == asset_sound)
-		{
-			audio_play_sound(snd_spring, 0, 0);
-			audio_sound_gain(snd_spring, global.sound_volume * global.main_volume * 0.1, 0);
-		}
+		scr_audio_play(snd_spring, global.sound_volume);
 	}
 	vspeed = -15;
 	gravity = 0;

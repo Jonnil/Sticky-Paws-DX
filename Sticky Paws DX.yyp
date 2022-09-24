@@ -53,6 +53,7 @@
     {"id":{"name":"spr_sign_wall_jump","path":"sprites/spr_sign_wall_jump/spr_sign_wall_jump.yy",},"order":130,},
     {"id":{"name":"snd_footstep_stone_right","path":"sounds/snd_footstep_stone_right/snd_footstep_stone_right.yy",},"order":53,},
     {"id":{"name":"spr_background","path":"sprites/spr_background/spr_background.yy",},"order":6,},
+    {"id":{"name":"scr_audio_play","path":"scripts/scr_audio_play/scr_audio_play.yy",},"order":62,},
     {"id":{"name":"spr_virtual_key_sprint","path":"sprites/spr_virtual_key_sprint/spr_virtual_key_sprint.yy",},"order":1,},
     {"id":{"name":"spr_assist_item","path":"sprites/spr_assist_item/spr_assist_item.yy",},"order":36,},
     {"id":{"name":"scr_draw_remap_key","path":"scripts/scr_draw_remap_key/scr_draw_remap_key.yy",},"order":9,},

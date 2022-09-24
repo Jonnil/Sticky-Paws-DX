@@ -21,12 +21,7 @@ and (vspeed >= 0)
 		effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
 		effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
 	}
-	if (asset_get_type("snd_star_bound") == asset_sound)
-	{
-		audio_stop_sound(snd_star_bound);
-		audio_play_sound(snd_star_bound, 0, 0);
-		audio_sound_gain(snd_star_bound, global.sound_volume * global.main_volume, 0);
-	}
+	scr_audio_play(snd_star_bound, global.sound_volume);
 	vspeed = 0;
 	gravity = 0;
 	draw_xscale = 1.25;

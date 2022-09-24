@@ -156,14 +156,7 @@ global.hud_show_big_collectibles = false;
 global.hud_show_score = false;
 #endregion /*Hide all HUD elements END*/
 
-if (asset_get_type("snd_music_map") == asset_sound)
-{
-	if (!audio_is_playing(snd_music_map))
-	{
-		audio_play_sound(snd_music_map, 0, true);
-	}
-	audio_sound_gain(snd_music_map, global.music_volume * global.main_volume, 0);
-}
+scr_audio_play(snd_music_map, global.music_volume);
 audio_stop_sound(global.ambience);
 audio_stop_sound(global.ambience_underwater);
 audio_stop_sound(global.music);
@@ -319,15 +312,12 @@ and (global.quit_level = false)
 				else
 				{
 					if (asset_get_type("snd_bump") == asset_sound)
+					and (!audio_is_playing(snd_bump))
 					{
-						if (!audio_is_playing(snd_bump))
-						{
-							draw_xscale = 1.5;
-							draw_yscale = 0.5;
-							yy -= 32;
-							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
-						}
+						draw_xscale = 1.5;
+						draw_yscale = 0.5;
+						yy -= 32;
+						scr_audio_play(snd_bump, global.sound_volume);
 					}
 				}
 			}
@@ -348,15 +338,12 @@ and (global.quit_level = false)
 				else
 				{
 					if (asset_get_type("snd_bump") == asset_sound)
+					and (!audio_is_playing(snd_bump))
 					{
-						if (!audio_is_playing(snd_bump))
-						{
-							draw_xscale = 0.5;
-							draw_yscale = 1.5;
-							xx -= 32;
-							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
-						}
+						draw_xscale = 0.5;
+						draw_yscale = 1.5;
+						xx -= 32;
+						scr_audio_play(snd_bump, global.sound_volume);
 					}
 				}
 			}
@@ -377,15 +364,12 @@ and (global.quit_level = false)
 				else
 				{
 					if (asset_get_type("snd_bump") == asset_sound)
+					and (!audio_is_playing(snd_bump))
 					{
-						if (!audio_is_playing(snd_bump))
-						{
-							draw_xscale = 0.5;
-							draw_yscale = 1.5;
-							xx += 32;
-							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
-						}
+						draw_xscale = 0.5;
+						draw_yscale = 1.5;
+						xx += 32;
+						scr_audio_play(snd_bump, global.sound_volume);
 					}
 				}
 			}
@@ -406,15 +390,12 @@ and (global.quit_level = false)
 				else
 				{
 					if (asset_get_type("snd_bump") == asset_sound)
+					and (!audio_is_playing(snd_bump))
 					{
-						if (!audio_is_playing(snd_bump))
-						{
-							draw_xscale = 1.5;
-							draw_yscale = 0.5;
-							yy += 32;
-							audio_play_sound(snd_bump, 0, 0);
-							audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
-						}
+						draw_xscale = 1.5;
+						draw_yscale = 0.5;
+						yy += 32;
+						scr_audio_play(snd_bump, global.sound_volume);
 					}
 				}
 			}
@@ -442,11 +423,10 @@ and (global.quit_level = false)
 				if (asset_get_type("snd_bump") == asset_sound)
 				and (!audio_is_playing(snd_bump))
 				{
-					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 					draw_xscale = 1.5;
 					draw_yscale = 0.5;
 					yy -= 32;
+					scr_audio_play(snd_bump, global.sound_volume);
 				}
 			}
 		}
@@ -466,11 +446,10 @@ and (global.quit_level = false)
 				if (asset_get_type("snd_bump") == asset_sound)
 				and (!audio_is_playing(snd_bump))
 				{
-					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 					draw_xscale = 0.5;
 					draw_yscale = 1.5;
 					xx -= 32;
+					scr_audio_play(snd_bump, global.sound_volume);
 				}
 			}
 		}
@@ -490,11 +469,10 @@ and (global.quit_level = false)
 				if (asset_get_type("snd_bump") == asset_sound)
 				and (!audio_is_playing(snd_bump))
 				{
-					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 					draw_xscale = 0.5;
 					draw_yscale = 1.5;
 					xx += 32;
+					scr_audio_play(snd_bump, global.sound_volume);
 				}
 			}
 		}
@@ -514,11 +492,10 @@ and (global.quit_level = false)
 				if (asset_get_type("snd_bump") == asset_sound)
 				and (!audio_is_playing(snd_bump))
 				{
-					audio_play_sound(snd_bump, 0, 0);
-					audio_sound_gain(snd_bump, global.sound_volume * global.main_volume, 0);
 					draw_xscale = 1.5;
 					draw_yscale = 0.5;
 					yy += 32;
+					scr_audio_play(snd_bump, global.sound_volume);
 				}
 			}
 		}

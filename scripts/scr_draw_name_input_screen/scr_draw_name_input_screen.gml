@@ -49,6 +49,15 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	#endregion /*A file name can't contain any of the following characters END*/
 	
+	#region /*When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that*/
+	if (keyboard_string = "\u007f") /*This is the unicode for DEL character*/
+	and (string_length(keyboard_string) <= 1)
+	{
+		keyboard_string = "";
+		what_string_to_edit = "";
+	}
+	#endregion /*When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that END*/
+	
 	#region /*Show how many characters a name has and what the max amount of characters is*/
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_center);
