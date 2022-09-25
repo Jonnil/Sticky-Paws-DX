@@ -4537,8 +4537,7 @@ function scr_character_select_menu()
 						{
 							voice_select_character = noone;
 						}
-						audio_play_sound(voice_select_character, 0, 0);
-						audio_sound_gain(voice_select_character, global.voices_volume * global.main_volume, 0);
+						scr_audio_play(voice_select_character, global.voice_volume);
 						#endregion /*When selecting character, make the character say their own name END*/
 					
 					}
@@ -4614,8 +4613,7 @@ function scr_character_select_menu()
 						{
 							voice_select_character = noone;
 						}
-						audio_play_sound(voice_select_character, 0, 0);
-						audio_sound_gain(voice_select_character, global.voices_volume * global.main_volume, 0);
+						scr_audio_play(voice_select_character, global.voice_volume);
 						#endregion /*When selecting character, make the character say their own name END*/
 					
 					}
@@ -4691,8 +4689,7 @@ function scr_character_select_menu()
 						{
 							voice_select_character = noone;
 						}
-						audio_play_sound(voice_select_character, 0, 0);
-						audio_sound_gain(voice_select_character, global.voices_volume * global.main_volume, 0);
+						scr_audio_play(voice_select_character, global.voice_volume);
 						#endregion /*When selecting character, make the character say their own name END*/
 					
 					}
@@ -4768,8 +4765,7 @@ function scr_character_select_menu()
 						{
 							voice_select_character = noone;
 						}
-						audio_play_sound(voice_select_character, 0, 0);
-						audio_sound_gain(voice_select_character, global.voices_volume * global.main_volume, 0);
+						scr_audio_play(voice_select_character, global.voice_volume);
 						#endregion /*When selecting character, make the character say their own name END*/
 					
 					}

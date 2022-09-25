@@ -125,19 +125,10 @@ and (cutscene != 1)
 			scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.5, 10);
 		}
 		
-		#region /*Enemy Voice Defeated*/
-		audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-		audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
-		audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
-		audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
-		#endregion /*Enemy Voice Defeated END*/
+		scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voice_volume);
 		
-		if (asset_get_type("snd_stomp") == asset_sound)
-		{
-			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-			audio_sound_pitch(snd_stomp, 1);
-		}
+		audio_sound_pitch(snd_stomp, 1);
+		scr_audio_play(snd_stomp, global.sound_volume);
 		
 		flat = true;
 		die = true;

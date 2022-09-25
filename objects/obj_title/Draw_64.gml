@@ -144,11 +144,7 @@ if (global.play_attract_demo = true)
 {
 	video_open("video/trailer.mp4");
 	video_resume()
-	if (!audio_is_playing(trailer_sound))
-	{
-		audio_play_sound(trailer_sound, 0, true);
-		audio_sound_gain(trailer_sound, global.music_volume * global.main_volume, 0);
-	}
+	scr_audio_play(trailer_sound, global.music_volume);
 	global.play_attract_demo = 2;
 }
 if (global.play_attract_demo = 2)
@@ -517,14 +513,14 @@ if (global.ambient_volume > 1)
 {
 	global.ambient_volume = 1;
 }
-if (global.voices_volume < 0)
+if (global.voice_volume < 0)
 {
-	global.voices_volume = 0;
+	global.voice_volume = 0;
 }
 else
-if (global.voices_volume > 1)
+if (global.voice_volume > 1)
 {
-	global.voices_volume = 1;
+	global.voice_volume = 1;
 }
 #endregion /*Volumes stay between 0 and 1 END*/
 
@@ -997,11 +993,7 @@ and (global.arcade_mode = false)
 		and (menu_delay = 0)
 		and (global.demo = false)
 		{
-			if (!audio_is_playing(menuvoice_leveleditor))
-			{
-				audio_play_sound(menuvoice_leveleditor, 0, 0);
-				audio_sound_gain(menuvoice_leveleditor, global.voices_volume * global.main_volume, 0);
-			}
+			scr_audio_play(menuvoice_leveleditor, global.voice_volume);
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			global.character_select_in_this_menu = "level_editor";
@@ -1036,9 +1028,7 @@ and (global.arcade_mode = false)
 		if (voice_options > noone)
 		{
 			audio_stop_sound(voice_game_title);
-			audio_stop_sound(voice_options);
-			audio_play_sound(voice_options, 0, 0);
-			audio_sound_gain(voice_options, global.voices_volume * global.main_volume, 0);
+			scr_audio_play(voice_options, global.voice_volume);
 		}
 		#endregion /*Play Options Voice END*/
 		

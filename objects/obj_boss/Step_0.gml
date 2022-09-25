@@ -146,7 +146,7 @@ and (has_seen_player = true)
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_laugh;
-		scr_audio_play(snd_boss_voice_laugh, global.voices_volume);
+		scr_audio_play(snd_boss_voice_laugh, global.voice_volume);
 	}
 	if (time = room_speed * 3)
 	{
@@ -280,7 +280,7 @@ and (has_seen_player = true)
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_laugh;
-		scr_audio_play(snd_boss_voice_laugh, global.voices_volume);
+		scr_audio_play(snd_boss_voice_laugh, global.voice_volume);
 	}
 	if (time = room_speed * 3)
 	{
@@ -416,7 +416,7 @@ if (has_seen_player = true)
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_laugh;
-		scr_audio_play(snd_boss_voice_laugh, global.voices_volume);
+		scr_audio_play(snd_boss_voice_laugh, global.voice_volume);
 	}
 	if (time = room_speed * 3)
 	{

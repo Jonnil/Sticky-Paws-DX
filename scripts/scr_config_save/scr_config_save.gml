@@ -41,7 +41,7 @@ function scr_config_save()
 	ini_write_real("config", "sound_volume", global.sound_volume * 10000);
 	ini_write_real("config", "ambient_volume", global.ambient_volume * 10000);
 	ini_write_real("config", "footstep_volume", global.footstep_volume * 10000);
-	ini_write_real("config", "voices_volume", global.voices_volume * 10000);
+	ini_write_real("config", "voices_volume", global.voice_volume * 10000);
 	ini_write_real("config", "background_brightness_gameplay", global.background_brightness_gameplay * 10000);
 	ini_write_real("config", "background_brightness_menu", global.background_brightness_menu * 10000);
 	ini_write_real("config", "enable_background_layer1", global.enable_background_layer1);

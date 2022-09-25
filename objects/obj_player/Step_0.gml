@@ -5587,7 +5587,7 @@ and (key_jump_hold)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump3rd, 0, 0);
-				audio_sound_gain(voice_jump3rd, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_jump3rd, global.voice_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_jump3rd, default_voice_pitch);
 			}
 			else
@@ -5595,14 +5595,14 @@ and (key_jump_hold)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump2nd, 0, 0);
-				audio_sound_gain(voice_jump2nd, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_jump2nd, global.voice_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_jump2nd, default_voice_pitch);
 			}
 			else
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_jump, 0, 0);
-				audio_sound_gain(voice_jump, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_jump, global.voice_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_jump, default_voice_pitch);
 			}
 			#endregion /*Jump sound effect END*/
@@ -5694,7 +5694,7 @@ and (can_mid_air_jump = 0)
 				audio_stop_sound(voice);
 			}
 			voice = audio_play_sound(voice_jump, 0, 0);
-			audio_sound_gain(voice_jump, global.voices_volume * global.main_volume, 0);
+			audio_sound_gain(voice_jump, global.voice_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_jump, default_voice_pitch);
 			effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
 			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
@@ -6762,7 +6762,7 @@ and (hold_item_in_hands = "")
 				spring = false;
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_wallkick, 0, 0);
-				audio_sound_gain(voice_wallkick, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_wallkick, global.voice_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_wallkick, default_voice_pitch);
 				if (asset_get_type("snd_wallkick") == asset_sound)
 				{
@@ -6975,9 +6975,9 @@ and (hold_item_in_hands = "")
 			spring = false;
 			audio_stop_sound(voice);
 			voice = audio_play_sound(choose(voice_wallkick,voice_jump), 0, 0);
-			audio_sound_gain(voice_wallkick, global.voices_volume * global.main_volume, 0);
+			audio_sound_gain(voice_wallkick, global.voice_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_wallkick, default_voice_pitch);
-			audio_sound_gain(voice_jump, global.voices_volume * global.main_volume, 0);
+			audio_sound_gain(voice_jump, global.voice_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_jump, default_voice_pitch);
 			if (asset_get_type("snd_wallkick") == asset_sound)
 			{
@@ -7406,7 +7406,7 @@ and (global.pause = false)
 				}
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_dive, 0, 0);
-				audio_sound_gain(voice_dive, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_dive, global.voice_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_dive, default_voice_pitch);
 				dive = true;
 				jump = 0;
@@ -8279,7 +8279,7 @@ if (asset_get_type("obj_lava") == asset_object)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_burned, 0, 0);
-				audio_sound_gain(voice_burned, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_burned, global.voice_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_burned, default_voice_pitch);
 				hp -= 1;
 			}
@@ -8287,7 +8287,7 @@ if (asset_get_type("obj_lava") == asset_object)
 			{
 				audio_stop_sound(voice);
 				voice = audio_play_sound(voice_burned, 0, 0);
-				audio_sound_gain(voice_burned, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_burned, global.voice_volume * global.main_volume, 0);
 				audio_sound_pitch(voice_burned, default_voice_pitch);
 			}
 			if (vspeed > 0)
@@ -8307,7 +8307,7 @@ if (burnt = true)
 	if (on_ground = true)
 	{
 		audio_play_sound(voice_burned_running, 0, 0);
-		audio_sound_gain(voice_burned_running, global.voices_volume * global.main_volume, 0);
+		audio_sound_gain(voice_burned_running, global.voice_volume * global.main_volume, 0);
 		audio_sound_pitch(voice_burned_running, default_voice_pitch);
 		burnt = 2;
 		dive = false;
@@ -8895,7 +8895,7 @@ and (instance_nearest(x, y, obj_invincibility_powerup).bounceup = false)
 	}
 	audio_stop_sound(voice);
 	voice = audio_play_sound(voice_get_star, 0, 0);
-	audio_sound_gain(voice_get_star, global.voices_volume * global.main_volume, 0);
+	audio_sound_gain(voice_get_star, global.voice_volume * global.main_volume, 0);
 	audio_sound_pitch(voice_get_star, default_voice_pitch);
 	score += 1000;
 	global.hud_show_score = true;
@@ -9185,7 +9185,7 @@ and (instance_exists(obj_goal))
 			#region /*Enter goal voice*/
 			audio_stop_sound(voice);
 			voice = audio_play_sound(voice_enter_goal, 0, 0);
-			audio_sound_gain(voice_enter_goal, global.voices_volume * global.main_volume, 0);
+			audio_sound_gain(voice_enter_goal, global.voice_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_enter_goal, default_voice_pitch);
 			#endregion /*Enter goal voice END*/
 			
@@ -9319,7 +9319,7 @@ and (instance_nearest(x, y, obj_spring).can_bounce = 0)
 	#region /*Play jumping on spring voice clip*/
 	audio_stop_sound(voice);
 	voice = audio_play_sound(voice_jump_spring, 0, 0);
-	audio_sound_gain(voice_jump_spring, global.voices_volume * global.main_volume, 0);
+	audio_sound_gain(voice_jump_spring, global.voice_volume * global.main_volume, 0);
 	audio_sound_pitch(voice_jump_spring, default_voice_pitch);
 	#endregion /*Play jumping on spring voice clip END*/
 	
@@ -9621,7 +9621,7 @@ and (hold_item_in_hands = "")
 		}
 		audio_stop_sound(voice);
 		voice = audio_play_sound(voice_rope_catch, 0, 0);
-		audio_sound_gain(voice_rope_catch, global.voices_volume * global.main_volume, 0);
+		audio_sound_gain(voice_rope_catch, global.voice_volume * global.main_volume, 0);
 		audio_sound_pitch(voice_rope_catch, default_voice_pitch);
 		#endregion /*Make a sound effect that you have started cimbing END*/
 		
@@ -9772,7 +9772,7 @@ and (hold_item_in_hands = "")
 					vspeed = -triple_jump_height* 1.25;
 					audio_stop_sound(voice);
 					voice = audio_play_sound(voice_jump_rope, 0, 0);
-					audio_sound_gain(voice_jump_rope, global.voices_volume * global.main_volume, 0);
+					audio_sound_gain(voice_jump_rope, global.voice_volume * global.main_volume, 0);
 					audio_sound_pitch(voice_jump_rope, default_voice_pitch);
 				}
 				else
@@ -10087,7 +10087,7 @@ and (place_meeting(x, y, obj_vine))
 			}
 			audio_stop_sound(voice);
 			voice = audio_play_sound(voice_rope_catch, 0, 0);
-			audio_sound_gain(voice_rope_catch, global.voices_volume * global.main_volume, 0);
+			audio_sound_gain(voice_rope_catch, global.voice_volume * global.main_volume, 0);
 			audio_sound_pitch(voice_rope_catch, default_voice_pitch);
 			#endregion /*Make a sound effect and voice clip that you have started cimbing END*/
 			
@@ -12188,7 +12188,7 @@ and (abs(hspeed) >= speed_max_walk)
 				{
 					audio_stop_sound(voice);
 					voice = audio_play_sound(voice_startdash, 0, 0);
-					audio_sound_gain(voice_startdash, global.voices_volume * global.main_volume, 0);
+					audio_sound_gain(voice_startdash, global.voice_volume * global.main_volume, 0);
 					audio_sound_pitch(voice_startdash, default_voice_pitch);
 				}
 			}

@@ -46,7 +46,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 				if (menu = "sound_volume"){global.sound_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
 				if (menu = "ambient_volume"){global.ambient_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
 				if (menu = "footstep_volume"){global.footstep_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
-				if (menu = "voices_volume"){global.voices_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
+				if (menu = "voices_volume"){global.voice_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
 				
 				if (menu = "background_brightness_gameplay")
 				{

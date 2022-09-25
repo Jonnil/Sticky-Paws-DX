@@ -6,22 +6,14 @@ or (die = false)
 	and (position_meeting(bbox_left - 1, y, obj_wall))
 	{
 		sliding_along_ground = +1;
-		if (asset_get_type("snd_bump") == asset_sound)
-		{
-			audio_play_sound(snd_bump, 0, 0);
-			audio_sound_gain(snd_bump, global.sound_volume * global.main_volume * 0.1, 0);
-		}
+		scr_audio_play(snd_bump, global.sound_volume * 0.1);
 	}
 	if (sliding_along_ground = +1)
 	and (flat = true)
 	and (position_meeting(bbox_right + 1, y, obj_wall))
 	{
 		sliding_along_ground = -1;
-		if (asset_get_type("snd_bump") == asset_sound)
-		{
-			audio_play_sound(snd_bump, 0, 0);
-			audio_sound_gain(snd_bump, global.sound_volume * global.main_volume * 0.1, 0);
-		}
+		scr_audio_play(snd_bump, global.sound_volume * 0.1);
 	}
 	
 	if (position_meeting(x, bbox_top - 1, obj_wall))
@@ -29,11 +21,7 @@ or (die = false)
 	and (vspeed < 0)
 	{
 		vspeed = 0;
-		if (asset_get_type("snd_bump") == asset_sound)
-		{
-			audio_play_sound(snd_bump, 0, 0);
-			audio_sound_gain(snd_bump, global.sound_volume * global.main_volume * 0.1, 0);
-		}
+		scr_audio_play(snd_bump, global.sound_volume * 0.1);
 		if (asset_get_type("obj_blockbreak") == asset_object)
 		{
 			with(instance_create_depth(x, bbox_top - 18, 0, obj_blockbreak))

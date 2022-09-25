@@ -42,7 +42,7 @@ function scr_start_intro_animations()
 			if (cutscene_time = 60 * 2)
 			{
 				audio_play_sound(voice_open_mouth, 0, 0);
-				audio_sound_gain(voice_open_mouth, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_open_mouth, global.voice_volume * global.main_volume, 0);
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_sitting_eat_open_mouth;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
 				image_index = 0;
@@ -52,7 +52,7 @@ function scr_start_intro_animations()
 			if (cutscene_time = 60 * 3.5)
 			{
 				audio_play_sound(voice_notice, 0, 0);
-				audio_sound_gain(voice_notice, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_notice, global.voice_volume * global.main_volume, 0);
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_sitting_eat_open_mouth_open_eye;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
 				image_index = 0;
@@ -62,7 +62,7 @@ function scr_start_intro_animations()
 			if (cutscene_time = 60 * 4.2)
 			{
 				audio_play_sound(voice_scream, 0, 0);
-				audio_sound_gain(voice_scream, global.voices_volume * global.main_volume, 0);
+				audio_sound_gain(voice_scream, global.voice_volume * global.main_volume, 0);
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_sitting_eat_surprised;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
 				image_index = 0;

@@ -220,22 +220,15 @@ if (draw_arrow_outside_view_down_alpha > 0.01)
 #endregion /*Draw arrow when player is outside bottom view END*/
 
 #region /*Get 1-up if you get 100 basic collectibles*/
-if (global.basic_collectibles>99)
+if (global.basic_collectibles > 99)
 {
 	global.basic_collectibles = 0;
-	lives+= 1; /* 1-UP*/
-	global.hud_show_lives = true;
 	if (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
-	}
-	if (asset_get_type("snd_1up") == asset_sound)
-	{
-		audio_play_sound(snd_1up, 0, 0);
-		audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 	}
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
@@ -289,9 +282,8 @@ if (takendamage >= 100)
 and (die = false)
 and (hp >= 1)
 {
-	audio_play_sound(voice_damage, 0, 0);
-	audio_sound_gain(voice_damage, global.voices_volume * global.main_volume, 0);
 	audio_sound_pitch(voice_damage, default_voice_pitch);
+	scr_audio_play(voice_damage, global.voice_volume);
 }
 #endregion /*Make it obvious if you take damage END*/
 

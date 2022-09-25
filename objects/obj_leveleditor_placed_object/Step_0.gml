@@ -577,12 +577,8 @@ and (!mouse_check_button(mb_middle))
 			/*Erase brush size 5 END*/
 		
 			{
-				if (asset_get_type("snd_leveleditor_erase_object") == asset_sound)
-				{
-					audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
-					audio_play_sound(snd_leveleditor_erase_object, 0, 0);
-					audio_sound_gain(snd_leveleditor_erase_object, global.sound_volume * global.main_volume, 0);
-				}
+				audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
+				scr_audio_play(snd_leveleditor_erase_object, global.sound_volume);
 				with(obj_leveleditor)
 				{
 					move_snap(global.grid_hsnap, global.grid_vsnap); /*Make sure to always move snap*/

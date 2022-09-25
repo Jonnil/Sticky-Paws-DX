@@ -1891,8 +1891,8 @@ function scr_options_menu()
 		if (global.ambient_volume > 1){global.ambient_volume = 1;}
 		if (global.footstep_volume < 0){global.footstep_volume = 0;}else
 		if (global.footstep_volume > 1){global.footstep_volume = 1;}
-		if (global.voices_volume < 0){global.voices_volume = 0;}else
-		if (global.voices_volume > 1){global.voices_volume = 1;}
+		if (global.voice_volume < 0){global.voice_volume = 0;}else
+		if (global.voice_volume > 1){global.voice_volume = 1;}
 		if (global.verbosity_slider < 0){global.verbosity_slider = 0;}else
 		if (global.verbosity_slider > 1){global.verbosity_slider = 1;}
 		#endregion /*Make volumes stay between 0 and 1 END*/
@@ -1904,12 +1904,12 @@ function scr_options_menu()
 		draw_menu_slider(410, 132 - 36 + (64 * 2), Text("Sound Volume"), "sound_volume", global.sound_volume, c_lime);
 		draw_menu_slider(410, 132 - 36 + (64 * 3), Text("Ambient Volume"), "ambient_volume", global.ambient_volume, c_lime);
 		draw_menu_slider(410, 132 - 36 + (64 * 4), Text("Footstep Volume"), "footstep_volume", global.footstep_volume, c_lime);
-		draw_menu_slider(410, 132 - 36 + (64 * 5), Text("Voices Volume"), "voices_volume", global.voices_volume, c_aqua);
+		draw_menu_slider(410, 132 - 36 + (64 * 5), Text("Voices Volume"), "voices_volume", global.voice_volume, c_aqua);
 		
 		#region /*Verbosity Bar*/
 		if (global.enable_verbosity_slider = true)
 		{
-			draw_menu_slider(410, 132 - 36 + (64 * 6), Text("Voices Volume"), "voices_volume", global.voices_volume, c_aqua);
+			draw_menu_slider(410, 132 - 36 + (64 * 6), Text("Voices Volume"), "voices_volume", global.voice_volume, c_aqua);
 		}
 		#endregion /*Verbosity Bar END*/
 		
@@ -2145,7 +2145,7 @@ function scr_options_menu()
 				global.sound_volume = 0.7; /*Because Linux can't load decimal numbers from .ini files*/
 				global.ambient_volume = 0.7; /*By default volumes are 70% so it doesn't hurt ears*/
 				global.footstep_volume = 0.7;
-				global.voices_volume = 0.7;
+				global.voice_volume = 0.7;
 				global.verbosity_slider = 1;
 				global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 				
@@ -4728,9 +4728,9 @@ function scr_options_menu()
 			and (menu_delay = 0)
 			and (open_dropdown = false)
 			{
-				if (global.voices_volume > 0)
+				if (global.voice_volume > 0)
 				{
-					global.voices_volume -= 0.05;
+					global.voice_volume -= 0.05;
 				}
 			}
 			else
@@ -4739,9 +4739,9 @@ function scr_options_menu()
 			and (menu_delay = 0)
 			and (open_dropdown = false)
 			{
-				if (global.voices_volume < + 1)
+				if (global.voice_volume < + 1)
 				{
-					global.voices_volume += 0.05;
+					global.voice_volume += 0.05;
 				}
 			}
 			else
@@ -4753,9 +4753,9 @@ function scr_options_menu()
 			and (menu_delay = 0)
 			and (open_dropdown = false)
 			{
-				if (global.voices_volume > 0)
+				if (global.voice_volume > 0)
 				{
-					global.voices_volume -= 0.0001;
+					global.voice_volume -= 0.0001;
 				}
 			}
 			else
@@ -4767,9 +4767,9 @@ function scr_options_menu()
 			and (menu_delay = 0)
 			and (open_dropdown = false)
 			{
-				if (global.voices_volume < + 1)
+				if (global.voice_volume < + 1)
 				{
-					global.voices_volume += 0.0001;
+					global.voice_volume += 0.0001;
 				}
 			}
 			else

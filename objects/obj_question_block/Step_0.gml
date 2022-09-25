@@ -51,11 +51,7 @@ if (bounceup = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = +1;
-			if (asset_get_type("snd_bump") == asset_sound)
-			{
-				audio_play_sound(snd_bump, 0, 0);
-				audio_sound_gain(snd_bump, global.sound_volume * global.main_volume * 0.1, 0);
-			}
+			scr_audio_play(snd_bump, global.sound_volume * 0.1);
 		}
 		else
 		if (instance_exists(obj_enemy_bowlingball))
@@ -64,11 +60,7 @@ if (bounceup = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = -1;
-			if (asset_get_type("snd_bump") == asset_sound)
-			{
-				audio_play_sound(snd_bump, 0, 0);
-				audio_sound_gain(snd_bump, global.sound_volume * global.main_volume * 0.1, 0);
-			}
+			scr_audio_play(snd_bump, global.sound_volume * 0.1);
 		}
 		else
 		if (instance_exists(obj_enemy))
@@ -109,10 +101,7 @@ if (bounceup = false)
 				if (block_type = "question_block")
 				and (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					if (asset_get_type("snd_basic_collectible") == asset_sound)
-					{
-						audio_play_sound(snd_basic_collectible, 0, 0);
-					}
+					scr_audio_play(snd_basic_collectible, global.sound_volume);
 					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
@@ -149,10 +138,7 @@ if (bounceup = false)
 					#region /* 2 Basic Collectibles per hit*/
 					if asset_get_type("obj_basic_collectible") == asset_object
 					{
-						if asset_get_type("snd_basic_collectible") == asset_sound
-						{
-							audio_play_sound(snd_basic_collectible, 0, 0);
-						}
+						scr_audio_play(snd_basic_collectible, global.sound_volume);
 						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
@@ -367,11 +353,7 @@ and (break_this_block = true)
 		}
 	}
 	effect_create_above(ef_smoke, x, y, 1, c_dkgray);
-	if (asset_get_type("snd_blockbreak") == asset_sound)
-	{
-		audio_play_sound(snd_blockbreak, 0, 0);
-		audio_sound_gain(snd_blockbreak, global.sound_volume * global.main_volume, 0);
-	}
+	scr_audio_play(snd_blockbreak, global.sound_volume);
 	instance_destroy();
 }
 #endregion /*Break this Block END*/

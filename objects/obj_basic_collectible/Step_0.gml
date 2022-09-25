@@ -49,18 +49,14 @@ if (bounceup = false)
 				global.basic_collectibles += 1;
 				global.hud_show_basic_collectibles = true;
 				if (asset_get_type("obj_camera") == asset_object)
-					and (instance_exists(obj_camera))
-					{
-						with(obj_camera)
-						{
-							hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
-						}
-					}
-				if (asset_get_type("snd_basic_collectible") == asset_sound)
+				and (instance_exists(obj_camera))
 				{
-					audio_play_sound(snd_basic_collectible, 0, 0);
-					audio_sound_gain(snd_basic_collectible, global.sound_volume * global.main_volume, 0);
+					with(obj_camera)
+					{
+						hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
+					}
 				}
+				scr_audio_play(snd_basic_collectible, global.sound_volume);
 				instance_destroy();
 			}
 		}
@@ -74,11 +70,7 @@ if (bounceup = true)
 	{
 		if (basic_collectible_sound = false)
 		{
-			if (asset_get_type("snd_basic_collectible") == asset_sound)
-			{
-				audio_play_sound(snd_basic_collectible, 0, 0);
-				audio_sound_gain(snd_basic_collectible, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_basic_collectible, global.sound_volume);
 			basic_collectible_sound = true;
 		}
 		depth = - 100;

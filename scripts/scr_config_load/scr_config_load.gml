@@ -42,7 +42,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "sound_volume")){global.sound_volume = ini_read_real("config", "sound_volume", 7000) * 0.0001;}
 		if (ini_key_exists("config", "ambient_volume")){global.ambient_volume = ini_read_real("config", "ambient_volume", 7000) * 0.0001;}
 		if (ini_key_exists("config", "footstep_volume")){global.footstep_volume = ini_read_real("config", "footstep_volume", 7000) * 0.0001;}
-		if (ini_key_exists("config", "voices_volume")){global.voices_volume = ini_read_real("config", "voices_volume", 7000) * 0.0001;}
+		if (ini_key_exists("config", "voices_volume")){global.voice_volume = ini_read_real("config", "voices_volume", 7000) * 0.0001;}
 		if (ini_key_exists("config", "background_brightness_gameplay")){global.background_brightness_gameplay = ini_read_real("config", "background_brightness_gameplay", 0) * 0.0001;}
 		if (ini_key_exists("config", "background_brightness_menu")){global.background_brightness_menu = ini_read_real("config", "background_brightness_menu", 0) * 0.0001;}
 		if (ini_key_exists("config", "enable_background_layer1")){global.enable_background_layer1 = ini_read_real("config", "enable_background_layer1", 0);}

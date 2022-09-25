@@ -5,11 +5,7 @@ if (die = false)
 	and (vspeed < 0)
 	{
 		vspeed = 0;
-		if (asset_get_type("snd_bump") == asset_sound)
-		{
-			audio_play_sound(snd_bump, 0, 0);
-			audio_sound_gain(snd_bump, global.sound_volume * global.main_volume * 0.1, 0);
-		}
+		scr_audio_play(snd_bump, global.sound_volume * 0.1);
 	}
 	
 	#region /*Push out of the solid object*/

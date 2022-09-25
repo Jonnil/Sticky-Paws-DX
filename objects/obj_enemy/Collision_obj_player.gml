@@ -64,12 +64,7 @@ if (stomped_delay <= 0)
 			effect_create_above(ef_smoke, x, y, 2, c_white);
 			scr_gamepad_vibration(other.player, 0.5, 10);
 		
-			#region /*Enemy Voice Defeated*/
-			audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-			audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
-			audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
-			audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
-			#endregion /*Enemy Voice Defeated END*/
+			scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voice_volume);
 
 	#region /*Rewards*/
 	if (instance_exists(obj_player))
@@ -102,13 +97,6 @@ if (stomped_delay <= 0)
 		#region /* 1-UP*/
 		if (global.number_of_chain_kills_for_1up <= 1)
 		{
-			lives+= 1;
-			global.hud_show_lives = true;
-			if (asset_get_type("snd_1up") == asset_sound)
-			{
-				audio_play_sound(snd_1up, 0, 0);
-				audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-			}
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -119,12 +107,8 @@ if (stomped_delay <= 0)
 		}
 		#endregion /* 1-UP END*/
 	
-		if (asset_get_type("snd_stomp") == asset_sound)
-		{
-			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-			audio_sound_pitch(snd_stomp, 1);
-		}
+		audio_sound_pitch(snd_stomp, 1);
+		scr_audio_play(snd_stomp, global.sound_volume);
 	}
 	else
 	if (instance_exists(obj_player))
@@ -164,13 +148,6 @@ if (stomped_delay <= 0)
 		#region /* 1-UP*/
 		if (global.number_of_chain_kills_for_1up <= 2)
 		{
-			lives+= 1;
-			global.hud_show_lives = true;
-			if (asset_get_type("snd_1up") == asset_sound)
-			{
-				audio_play_sound(snd_1up, 0, 0);
-				audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-			}
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -181,12 +158,8 @@ if (stomped_delay <= 0)
 		}
 		#endregion /* 1-UP END*/
 	
-		if (asset_get_type("snd_stomp") == asset_sound)
-		{
-			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-			audio_sound_pitch(snd_stomp, 1.1);
-		}
+		audio_sound_pitch(snd_stomp, 1.1);
+		scr_audio_play(snd_stomp, global.sound_volume);
 	}
 	else
 	if (instance_exists(obj_player))
@@ -240,13 +213,6 @@ if (stomped_delay <= 0)
 		#region /* 1-UP*/
 		if (global.number_of_chain_kills_for_1up <= 3)
 		{
-			lives+= 1;
-			global.hud_show_lives = true;
-			if (asset_get_type("snd_1up") == asset_sound)
-			{
-				audio_play_sound(snd_1up, 0, 0);
-				audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-			}
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -257,12 +223,8 @@ if (stomped_delay <= 0)
 		}
 		#endregion /* 1-UP END*/
 	
-		if (asset_get_type("snd_stomp") == asset_sound)
-		{
-			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-			audio_sound_pitch(snd_stomp, 1.2);
-		}
+		audio_sound_pitch(snd_stomp, 1.2);
+		scr_audio_play(snd_stomp, global.sound_volume);
 	}
 	else
 	if (instance_exists(obj_player))
@@ -316,13 +278,6 @@ if (stomped_delay <= 0)
 		#region /* 1-UP*/
 		if (global.number_of_chain_kills_for_1up <= 4)
 		{
-			lives+= 1;
-			global.hud_show_lives = true;
-			if (asset_get_type("snd_1up") == asset_sound)
-			{
-				audio_play_sound(snd_1up, 0, 0);
-				audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-			}
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -333,12 +288,8 @@ if (stomped_delay <= 0)
 		}
 		#endregion /* 1-UP END*/
 
-		if (asset_get_type("snd_stomp") == asset_sound)
-		{
-			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-			audio_sound_pitch(snd_stomp, 1.3);
-		}
+		audio_sound_pitch(snd_stomp, 1.3);
+		scr_audio_play(snd_stomp, global.sound_volume);
 	}
 	else
 	if (instance_exists(obj_player))
@@ -392,13 +343,6 @@ if (stomped_delay <= 0)
 		#region /* 1-UP*/
 		if (global.number_of_chain_kills_for_1up <= 5)
 		{
-			lives+= 1;
-			global.hud_show_lives = true;
-			if (asset_get_type("snd_1up") == asset_sound)
-			{
-				audio_play_sound(snd_1up, 0, 0);
-				audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-			}
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
@@ -409,12 +353,8 @@ if (stomped_delay <= 0)
 		}
 		#endregion /* 1-UP END*/
 	
-		if (asset_get_type("snd_stomp") == asset_sound)
-		{
-			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-			audio_sound_pitch(snd_stomp, 1.4);
-		}
+		audio_sound_pitch(snd_stomp, 1.4);
+		scr_audio_play(snd_stomp, global.sound_volume);
 	}
 	else
 	if (instance_exists(obj_player))
@@ -468,13 +408,6 @@ if (stomped_delay <= 0)
 		#region /* 1-UP*/
 		if (global.number_of_chain_kills_for_1up <= 6)
 		{
-			lives+= 1;
-			global.hud_show_lives = true;
-			if (asset_get_type("snd_1up") == asset_sound)
-			{
-				audio_play_sound(snd_1up, 0, 0);
-				audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-			}
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -485,12 +418,8 @@ if (stomped_delay <= 0)
 		}
 		#endregion /* 1-UP*/
 	
-		if (asset_get_type("snd_stomp") == asset_sound)
-		{
-			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-			audio_sound_pitch(snd_stomp, 1.5);
-		}
+		audio_sound_pitch(snd_stomp, 1.5);
+		scr_audio_play(snd_stomp, global.sound_volume);
 	}
 	else
 	if (instance_exists(obj_player))
@@ -544,13 +473,6 @@ if (stomped_delay <= 0)
 		#region /* 1-UP*/
 		if (global.number_of_chain_kills_for_1up <= 7)
 		{
-			lives+= 1;
-			global.hud_show_lives = true;
-			if (asset_get_type("snd_1up") == asset_sound)
-			{
-				audio_play_sound(snd_1up, 0, 0);
-				audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-			}
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -561,12 +483,8 @@ if (stomped_delay <= 0)
 		}
 		#endregion /* 1-UP END*/
 	
-		if (asset_get_type("snd_stomp") == asset_sound)
-		{
-			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-			audio_sound_pitch(snd_stomp, 1.6);
-		}
+		audio_sound_pitch(snd_stomp, 1.6);
+		scr_audio_play(snd_stomp, global.sound_volume);
 	}
 	else
 	if (instance_exists(obj_player))
@@ -609,13 +527,6 @@ if (stomped_delay <= 0)
 		#region /* 1-UP*/
 		if (global.number_of_chain_kills_for_1up <= 8)
 		{
-			lives+= 1;
-			global.hud_show_lives = true;
-			if (asset_get_type("snd_1up") == asset_sound)
-			{
-				audio_play_sound(snd_1up, 0, 0);
-				audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-			}
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -626,12 +537,8 @@ if (stomped_delay <= 0)
 		}
 		#endregion /* 1-UP END*/
 	
-		if (asset_get_type("snd_stomp") == asset_sound)
-		{
-			audio_play_sound(snd_stomp, 0, 0);
-			audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-			audio_sound_pitch(snd_stomp, 1.7);
-		}
+		audio_sound_pitch(snd_stomp, 1.7);
+		scr_audio_play(snd_stomp, global.sound_volume);
 	}
 	#endregion /*Rewards END*/
 
@@ -702,12 +609,7 @@ and (stomped_delay <= 0)
 			effect_create_below(ef_ring, x, y, 0, c_white);
 			scr_gamepad_vibration(other.player, 0.5, 10);
 			
-			#region /*Enemy Voice Defeated*/
-			audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-			audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
-			audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
-			audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
-			#endregion /*Enemy Voice Defeated END*/
+			scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voice_volume);
 
 #region /*Rewards*/
 if (instance_exists(obj_player))
@@ -740,13 +642,6 @@ or(other.chain_reaction<= 1)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -757,12 +652,8 @@ or(other.chain_reaction<= 1)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1);
-	}
+	audio_sound_pitch(snd_stomp, 1);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -802,13 +693,6 @@ or(other.chain_reaction = 2)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -819,12 +703,8 @@ or(other.chain_reaction = 2)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.1);
-	}
+	audio_sound_pitch(snd_stomp, 1.1);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -878,13 +758,6 @@ or(other.chain_reaction = 3)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -895,12 +768,8 @@ or(other.chain_reaction = 3)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.2);
-	}
+	audio_sound_pitch(snd_stomp, 1.2);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -954,13 +823,6 @@ or(other.chain_reaction = 4)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -971,12 +833,8 @@ or(other.chain_reaction = 4)
 	}
 	#endregion /* 1-UP END*/
 
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.3);
-	}
+	audio_sound_pitch(snd_stomp, 1.3);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1031,13 +889,6 @@ or(other.chain_reaction = 5)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 16, 0, obj_scoreup))
@@ -1048,12 +899,8 @@ or(other.chain_reaction = 5)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.4);
-	}
+	audio_sound_pitch(snd_stomp, 1.4);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1107,13 +954,6 @@ or(other.chain_reaction = 6)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1124,12 +964,8 @@ or(other.chain_reaction = 6)
 	}
 	#endregion /* 1-UP*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.5);
-	}
+	audio_sound_pitch(snd_stomp, 1.5);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1183,13 +1019,6 @@ or(other.chain_reaction = 7)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1200,12 +1029,8 @@ or(other.chain_reaction = 7)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.6);
-	}
+	audio_sound_pitch(snd_stomp, 1.6);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1248,13 +1073,6 @@ or(other.chain_reaction >= 8)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1265,12 +1083,8 @@ or(other.chain_reaction >= 8)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.7);
-	}
+	audio_sound_pitch(snd_stomp, 1.7);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 #endregion /*Rewards END*/
 
@@ -1325,12 +1139,7 @@ and (flat = false)
 	effect_create_below(ef_ring, x, y, 0, c_white);
 	scr_gamepad_vibration(other.player, 0.5, 10);
 
-	#region /*Enemy Voice Defeated*/
-	audio_play_sound(choose(enemyvoice_defeated1,enemyvoice_defeated2,enemyvoice_defeated3), 0, 0);
-	audio_sound_gain(enemyvoice_defeated1, global.voices_volume * global.main_volume, 0);
-	audio_sound_gain(enemyvoice_defeated2, global.voices_volume * global.main_volume, 0);
-	audio_sound_gain(enemyvoice_defeated3, global.voices_volume * global.main_volume, 0);
-	#endregion /*Enemy Voice Defeated END*/
+	scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voice_volume);
 
 #region /*Rewards*/
 if (instance_exists(obj_player))
@@ -1363,13 +1172,6 @@ or(other.chain_reaction<= 1)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1380,12 +1182,8 @@ or(other.chain_reaction<= 1)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1);
-	}
+	audio_sound_pitch(snd_stomp, 1);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1425,13 +1223,6 @@ or(other.chain_reaction = 2)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1442,12 +1233,8 @@ or(other.chain_reaction = 2)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.1);
-	}
+	audio_sound_pitch(snd_stomp, 1.1);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1501,13 +1288,6 @@ or(other.chain_reaction = 3)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1518,12 +1298,8 @@ or(other.chain_reaction = 3)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.2);
-	}
+	audio_sound_pitch(snd_stomp, 1.2);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1577,13 +1353,6 @@ or(other.chain_reaction = 4)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1594,12 +1363,8 @@ or(other.chain_reaction = 4)
 	}
 	#endregion /* 1-UP END*/
 
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.3);
-	}
+	audio_sound_pitch(snd_stomp, 1.3);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1653,13 +1418,6 @@ or(other.chain_reaction = 5)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 16, 0, obj_scoreup))
@@ -1670,12 +1428,8 @@ or(other.chain_reaction = 5)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.4);
-	}
+	audio_sound_pitch(snd_stomp, 1.4);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1729,13 +1483,6 @@ or(other.chain_reaction = 6)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1746,12 +1493,8 @@ or(other.chain_reaction = 6)
 	}
 	#endregion /* 1-UP*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.5);
-	}
+	audio_sound_pitch(snd_stomp, 1.5);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1805,13 +1548,6 @@ or(other.chain_reaction = 7)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1822,12 +1558,8 @@ or(other.chain_reaction = 7)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.6);
-	}
+	audio_sound_pitch(snd_stomp, 1.6);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 else
 if (instance_exists(obj_player))
@@ -1870,13 +1602,6 @@ or(other.chain_reaction >= 8)
 	#region /* 1-UP*/
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
-		lives+= 1;
-		global.hud_show_lives = true;
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
-		}
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
@@ -1887,12 +1612,8 @@ or(other.chain_reaction >= 8)
 	}
 	#endregion /* 1-UP END*/
 	
-	if (asset_get_type("snd_stomp") == asset_sound)
-	{
-		audio_play_sound(snd_stomp, 0, 0);
-		audio_sound_gain(snd_stomp, global.sound_volume * global.main_volume, 0);
-		audio_sound_pitch(snd_stomp, 1.7);
-	}
+	audio_sound_pitch(snd_stomp, 1.7);
+	scr_audio_play(snd_stomp, global.sound_volume);
 }
 #endregion /*Rewards END*/
 

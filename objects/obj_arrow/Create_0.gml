@@ -1,9 +1,5 @@
 /*obj_arrow Create Event*/
-if asset_get_type("snd_arrow") == asset_sound
-{
-	audio_play_sound(snd_arrow, 0, 0);
-	audio_sound_gain(snd_arrow, global.sound_volume * global.main_volume, 0);
-}
+scr_audio_play(snd_arrow, global.sound_volume);
 image_speed = 0.3;
 if asset_get_type("obj_player") == asset_object and instance_number(obj_player) > 0
 {

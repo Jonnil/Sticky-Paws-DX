@@ -105,16 +105,13 @@ if (place_meeting(x, y + 1, other))
 {
 	if (asset_get_type("obj_ground") == asset_object)
 	and (place_meeting(x, y + 1, obj_ground))
-	and (asset_get_type("snd_land_dirt") == asset_sound)
 	{
-		audio_play_sound(snd_land_dirt, 0, 0);
-		audio_sound_gain(snd_land_dirt, global.sound_volume * global.main_volume, 0);
+		scr_audio_play(snd_land_dirt, global.footstep_volume);
 	}
 	else
-	if (asset_get_type("snd_land_rock") == asset_sound)
 	{
 		audio_play_sound(snd_land_rock, 0, 0);
-		audio_sound_gain(snd_land_rock, global.sound_volume * global.main_volume, 0);
+		scr_audio_play(snd_land_rock, global.footstep_volume);
 	}
 }
 #endregion /*Landing on different surfaces sound effects END*/

@@ -143,7 +143,6 @@ and (instance_exists(obj_player))
 		}
 		else
 		{
-			lives += 1;
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
@@ -160,11 +159,6 @@ and (instance_exists(obj_player))
 			{
 				hud_show_lives_timer = global.hud_hide_time * 60;
 			}
-		}
-		if (asset_get_type("snd_1up") == asset_sound)
-		{
-			audio_play_sound(snd_1up, 0, 0);
-			audio_sound_gain(snd_1up, global.sound_volume * global.main_volume, 0);
 		}
 		#endregion /*Give Life END*/
 		

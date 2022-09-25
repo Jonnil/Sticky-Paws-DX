@@ -1,3 +1,4 @@
+alarm[0] = 1;
 depth = - 8000;
 scoreup = 100;
 not_score = false;

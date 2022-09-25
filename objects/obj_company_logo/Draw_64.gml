@@ -111,8 +111,7 @@ or(keyboard_check_pressed(ord("Y")))
 and (sprite_splash_easteregg_yoffset = 128)
 {
 	sprite_splash_easteregg_yoffset = +127;
-	audio_play_sound(audio_splash_easteregg, 0, false);
-	audio_sound_gain(audio_splash_easteregg, global.voices_volume * global.main_volume, 0);
+	scr_audio_play(audio_splash_easteregg, global.voice_volume);
 	
 }
 
@@ -190,16 +189,14 @@ if (image_index = 20)
 and (company_splash > noone)
 and (!audio_is_playing(company_splash))
 {
-	audio_play_sound(company_splash, 0, 0);
-	audio_sound_gain(company_splash, global.voices_volume * global.main_volume, 0);
+	scr_audio_play(company_splash, global.voice_volume);
 }
 
 if (time = 10)
 and (controller_splash > noone)
 and (!audio_is_playing(controller_splash))
 {
-	audio_play_sound(controller_splash, 0, 0);
-	audio_sound_gain(controller_splash, global.voices_volume * global.main_volume, 0);
+	scr_audio_play(controller_splash, global.voice_volume);
 }
 
 #region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/

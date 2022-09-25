@@ -553,11 +553,7 @@ and (show_loading_icon = false)
 		and (global.convention_mode = false)
 		{
 			menu_delay = 3;
-			if (!audio_is_playing(voice_options))
-			{
-				audio_play_sound(voice_options, 0, 0);
-				audio_sound_gain(voice_options, global.voices_volume * global.main_volume, 0);
-			}
+			scr_audio_play(voice_options, global.voice_volume);
 			menu = noone;
 			can_navigate_settings_sidebar = true;
 			in_settings = true;

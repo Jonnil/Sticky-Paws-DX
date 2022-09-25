@@ -1296,11 +1296,7 @@ if (quit_level_editor <= 0)
 		if (asset_get_type("obj_leveleditor_fill") == asset_object)
 		and (!instance_exists(obj_leveleditor_fill))
 		{
-			if (asset_get_type("snd_leveleditor_cycle_item_left") == asset_sound)
-			{
-				audio_play_sound(snd_leveleditor_cycle_item_left, 0, 0);
-				audio_sound_gain(snd_leveleditor_cycle_item_left, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_leveleditor_cycle_item_left, global.sound_volume);
 			if (selected_object > 0)
 			{
 				selected_object -= 1;
@@ -1336,11 +1332,7 @@ if (quit_level_editor <= 0)
 		if (asset_get_type("obj_leveleditor_fill") == asset_object)
 		and (!instance_exists(obj_leveleditor_fill))
 		{
-			if (asset_get_type("snd_leveleditor_cycle_item_right") == asset_sound)
-			{
-				audio_play_sound(snd_leveleditor_cycle_item_right, 0, 0);
-				audio_sound_gain(snd_leveleditor_cycle_item_right, global.sound_volume * global.main_volume, 0);
-			}
+			scr_audio_play(snd_leveleditor_cycle_item_right, global.sound_volume);
 			if (selected_object < total_number_of_objects)
 			{
 				selected_object += 1;

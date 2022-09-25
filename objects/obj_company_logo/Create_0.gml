@@ -324,7 +324,7 @@ global.music_volume = 0.7; /*This number is then *0.0001 so it becomes 0.7*/
 global.sound_volume = 0.7; /*Because Linux can't load decimal numbers from .ini files*/
 global.ambient_volume = 0.7; /*By default volumes are 70% so it doesn't hurt ears*/
 global.footstep_volume = 0.7;
-global.voices_volume = 0.7;
+global.voice_volume = 0.7;
 global.verbosity_slider = 1;
 global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
