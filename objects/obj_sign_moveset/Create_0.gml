@@ -1,4 +1,3 @@
-move = true;
 image_speed = 0.02;
 depth = +20;
 sprite_sign = sprite_index;

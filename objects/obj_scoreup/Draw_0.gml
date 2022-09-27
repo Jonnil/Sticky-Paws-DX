@@ -43,7 +43,7 @@ else
 if (scoreup = "CHECKPOINT")
 and (show_remaining_jumps = false)
 {
-	draw_text_outlined(x, y, Text("Checkpoint"), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
+	draw_text_outlined(x, y, l10n_text("Checkpoint"), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
 }
 else
 if (scoreup = "Copied")

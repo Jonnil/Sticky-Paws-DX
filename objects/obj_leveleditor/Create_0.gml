@@ -647,7 +647,6 @@ language_settings_y = 40 * 15;
 broadcast_settings_y = 40 * 16;
 how_to_play_y = 40 * 17;
 left_sidebar_x =-400;
-move_view_with_arrow_keys = false;
 
 play_level_icon_x = 32;
 place_brush_icon_x = 96;

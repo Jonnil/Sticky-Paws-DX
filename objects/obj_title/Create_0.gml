@@ -352,9 +352,9 @@ else
 }
 #endregion /*Update Trailer Sound END*/
 
-scr_audio_play(title_music, global.music_volume); /*Play title screen music*/
+scr_audio_play(title_music, volume_source.music); /*Play title screen music*/
 
-scr_audio_play(trailer_sound, global.music_volume); /*Play trailer sound*/
+scr_audio_play(trailer_sound, volume_source.music); /*Play trailer sound*/
 
 #region /*Reset level zoom*/
 if (global.reset_level_zoom_when_going_back_to_map = true)
@@ -429,4 +429,4 @@ if (global.narrator >= 0)
 
 #endregion /*Narrator Voice variable handeling END*/
 
-scr_audio_play(voice_game_title, global.voice_volume); /*Say the games title*/
+scr_audio_play(voice_game_title, volume_source.voice); /*Say the games title*/

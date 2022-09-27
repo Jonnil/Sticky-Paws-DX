@@ -254,7 +254,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 	}
 	#endregion /*What Big Collectible is this? END*/
 	
-	scr_audio_play(snd_basic_collectible, global.sound_volume);
+	scr_audio_play(snd_basic_collectible, volume_source.sound);
 	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
 	instance_destroy();
 }
@@ -311,7 +311,7 @@ if (bounceup = true)
 	{
 		if (coinsound = false)
 		{
-			scr_audio_play(snd_basic_collectible, global.sound_volume);
+			scr_audio_play(snd_basic_collectible, volume_source.sound);
 			coinsound = true;
 		}
 		visible = true;

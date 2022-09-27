@@ -51,7 +51,7 @@ if (bounceup = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = +1;
-			scr_audio_play(snd_bump, global.sound_volume * 0.1);
+			scr_audio_play(snd_bump, volume_source.sound);
 		}
 		else
 		if (instance_exists(obj_enemy_bowlingball))
@@ -60,7 +60,7 @@ if (bounceup = false)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 		{
 			instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground = -1;
-			scr_audio_play(snd_bump, global.sound_volume * 0.1);
+			scr_audio_play(snd_bump, volume_source.sound);
 		}
 		else
 		if (instance_exists(obj_enemy))
@@ -101,7 +101,7 @@ if (bounceup = false)
 				if (block_type = "question_block")
 				and (asset_get_type("obj_basic_collectible") == asset_object)
 				{
-					scr_audio_play(snd_basic_collectible, global.sound_volume);
+					scr_audio_play(snd_basic_collectible, volume_source.sound);
 					with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 					{
 						image_speed = 1;
@@ -138,7 +138,7 @@ if (bounceup = false)
 					#region /* 2 Basic Collectibles per hit*/
 					if asset_get_type("obj_basic_collectible") == asset_object
 					{
-						scr_audio_play(snd_basic_collectible, global.sound_volume);
+						scr_audio_play(snd_basic_collectible, volume_source.sound);
 						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
 							image_speed = 1;
@@ -353,7 +353,7 @@ and (break_this_block = true)
 		}
 	}
 	effect_create_above(ef_smoke, x, y, 1, c_dkgray);
-	scr_audio_play(snd_blockbreak, global.sound_volume);
+	scr_audio_play(snd_blockbreak, volume_source.sound);
 	instance_destroy();
 }
 #endregion /*Break this Block END*/

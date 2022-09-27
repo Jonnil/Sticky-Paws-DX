@@ -24,12 +24,12 @@ if (count = 50)
 			sprite_index = spr_player_burnt;
 		}
 		audio_sound_pitch(voice_burned_die, default_voice_pitch);
-		scr_audio_play(voice_burned_die, global.voice_volume);
+		scr_audio_play(voice_burned_die, volume_source.voice);
 	}
 	else
 	{
 		audio_sound_pitch(voice_damage, default_voice_pitch);
-		scr_audio_play(voice_damage, global.voice_volume);
+		scr_audio_play(voice_damage, volume_source.voice);
 	}
 }
 #endregion /*Start death animation, falling off screen END*/
@@ -47,7 +47,7 @@ if (!instance_exists(obj_player))
 and (count = 50)
 and (last_player = true)
 {
-	scr_audio_play(snd_die_melody, global.sound_volume);
+	scr_audio_play(snd_die_melody, volume_source.sound);
 }
 #endregion /*Play death melody END*/
 
@@ -230,7 +230,6 @@ if (sprite_index > 0)
 #region /*Bubble*/
 if (bubble = true)
 {
-	sprite_index = spr_player_bubble; /*Get bubble sprite*/
 	
 	#region /*Don't go outside view boundary*/
 	if (x < camera_get_view_x(view_camera[view_current]) + 32)
@@ -363,7 +362,7 @@ and (y < room_height)
 and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	if (player = 1)
 	{
 		if (global.player1_name = "")

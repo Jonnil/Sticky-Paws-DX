@@ -60,7 +60,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	
 	#region /*Show how many characters a name has and what the max amount of characters is*/
 	draw_set_halign(fa_right);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	if (string_length(what_string_to_edit) >= max_characters)
 	{
 		draw_text_outlined(xx + 150, yy + 32, string(max_characters) + "/" + string(max_characters), global.default_text_size, c_black, c_white, 1);
@@ -79,7 +79,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	and (keyboard_string != "")
 	or (can_press_ok_when_input_empty = true)
 	{
-		draw_menu_button(xx + buttons_x, yy + buttons_ok_y, Text("OK"), ok_menu_string, ok_menu_string);
+		draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
 		if (global.controls_used_for_menu_navigation = "mouse")
 		or (menu != ok_menu_string)
 		and (menu != cancel_menu_string)
@@ -97,7 +97,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			}
 		}
 	}
-	draw_menu_button(xx + buttons_x, yy + buttons_cancel_y, Text("Cancel"), cancel_menu_string, cancel_menu_string);
+	draw_menu_button(xx + buttons_x, yy + buttons_cancel_y, l10n_text("Cancel"), cancel_menu_string, cancel_menu_string);
 	draw_sprite_ext(spr_icons_back, 0, xx + buttons_x + 55, yy + buttons_cancel_y + 21, 1, 1, 0, c_white, 1);
 	if (global.controls_used_for_menu_navigation = "mouse")
 	or (menu != ok_menu_string)

@@ -443,17 +443,17 @@ function scr_options_level_editor()
 				draw_sprite_ext(spr_keyboard_keys, vk_lcontrol, 40, 40, 0.75, 0.75, 0, c_white, 1);
 			}
 			draw_set_halign(fa_left);
-			draw_set_valign(fa_center);
-			draw_text_outlined(80, 40, Text("Hold down to change the value faster"), global.default_text_size, c_black, c_white, 1);
+			draw_set_valign(fa_middle);
+			draw_text_outlined(80, 40, l10n_text("Hold down to change the value faster"), global.default_text_size, c_black, c_white, 1);
 		
 			if (global.time_countdown < 0)
 			{
 				global.time_countdown = 0;
 			}
 		
-			draw_menu_button(level_editor_options_x, 47 * 2 + menu_y_offset, Text("Back"), "back_level_editor_options", "level_editor_options");
+			draw_menu_button(level_editor_options_x, 47 * 2 + menu_y_offset, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icons_back, 0, level_editor_options_x + 20, 47 * 2 + menu_y_offset + 21, 1, 1, 0, c_white, 1);
-			draw_menu_button(level_editor_options_x, 47 * 3 + menu_y_offset, Text("BG Offset and Parallax"), "background_offset_and_parallax", "back_background_offset_and_parallax");
+			draw_menu_button(level_editor_options_x, 47 * 3 + menu_y_offset, l10n_text("BG Offset and Parallax"), "background_offset_and_parallax", "back_background_offset_and_parallax");
 			global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, 47 * 4 + menu_y_offset, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
 			global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, 47 * 5 + menu_y_offset, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
 			draw_menu_checkmark(level_editor_options_x - 90, 47 * 6 + menu_y_offset, "Make every tileset into default tileset", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
@@ -474,10 +474,10 @@ function scr_options_level_editor()
 			draw_rectangle_color(0, 0, window_get_width()* 3, window_get_height()* 3, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(0.1);
 			draw_set_halign(fa_center);
-			draw_set_valign(fa_center);
-			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 100, Text("Are you sure you want to delete every object in the level?"), global.default_text_size, c_black, c_red, 1);
-			draw_menu_button(window_get_width() / 2 - 370 - 32, window_get_height() / 2, Text("Yes"), "delete_all_objects_yes", "delete_all_objects_deleting");
-			draw_menu_button(window_get_width() / 2 + 32, window_get_height() / 2, Text("No"), "delete_all_objects_no", "delete_all_objects");
+			draw_set_valign(fa_middle);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 100, l10n_text("Are you sure you want to delete every object in the level?"), global.default_text_size, c_black, c_red, 1);
+			draw_menu_button(window_get_width() / 2 - 370 - 32, window_get_height() / 2, l10n_text("Yes"), "delete_all_objects_yes", "delete_all_objects_deleting");
+			draw_menu_button(window_get_width() / 2 + 32, window_get_height() / 2, l10n_text("No"), "delete_all_objects_no", "delete_all_objects");
 		
 			if (key_a_pressed)
 			and (menu_delay = 0)
@@ -1106,10 +1106,10 @@ function scr_options_level_editor()
 				draw_sprite_ext(spr_keyboard_keys, vk_lcontrol, 40, 40, 0.75, 0.75, 0, c_white, 1);
 			}
 			draw_set_halign(fa_left);
-			draw_set_valign(fa_center);
-			draw_text_outlined(80, 40, Text("Hold down to change the value faster"), global.default_text_size, c_black, c_white, 1);
+			draw_set_valign(fa_middle);
+			draw_text_outlined(80, 40, l10n_text("Hold down to change the value faster"), global.default_text_size, c_black, c_white, 1);
 		
-			draw_menu_button(level_editor_options_x, 40 * 2 + menu_y_offset, Text("Back"), "back_background_offset_and_parallax", "background_offset_and_parallax");
+			draw_menu_button(level_editor_options_x, 40 * 2 + menu_y_offset, l10n_text("Back"), "back_background_offset_and_parallax", "background_offset_and_parallax");
 			draw_sprite_ext(spr_icons_back, 0, level_editor_options_x + 20, 40 * 2 + menu_y_offset + 21, 1, 1, 0, c_white, 1);
 		
 			custom_background_1_x_offset = draw_menu_left_right_buttons(level_editor_options_x, custom_background_1_x_offset_y + menu_y_offset, options_level_editor_right_arrow_x, "custom background 1 x offset", custom_background_1_x_offset, "custom_background_1_x_offset", 1, true);

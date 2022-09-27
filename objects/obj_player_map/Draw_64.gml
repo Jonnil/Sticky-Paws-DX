@@ -8,8 +8,8 @@ and (instance_nearest(x, y, obj_level).clear_rate != "closed")
 and (global.pause = false)
 {
 	draw_set_halign(fa_left);
-	draw_set_valign(fa_center);
-	draw_text_outlined(64, window_get_height() - 28, Text("Enter into level"), global.default_text_size, c_black, c_white, 1);
+	draw_set_valign(fa_middle);
+	draw_text_outlined(64, window_get_height() - 28, l10n_text("Enter into level"), global.default_text_size, c_black, c_white, 1);
 	if (gamepad_is_connected(0))
 	and (global.controls_used_for_menu_navigation = "controller")
 	{
@@ -81,8 +81,8 @@ scr_virtual_keys();
 if (global.demo = true)
 {
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + Text("Demo"), global.default_text_size, c_black, c_white, 1);
+	draw_set_valign(fa_middle);
+	draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + l10n_text("Demo"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*Show if you are playing the demo version or not END*/
 
@@ -92,11 +92,11 @@ if (show_demo_over_message = true)
 	draw_rectangle_color(0, 0, window_get_width()* 3, window_get_height()* 3, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	draw_text_outlined(window_get_width() / 2, window_get_height() / 2, Text("The demo is over"), global.default_text_size, c_black, c_white, 1);
-	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 32, Text("Buy the full version of") + " " + string(global.game_name), global.default_text_size, c_black, c_white, 1);
-	draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 64, Text("Purchase now!"), "purchase_now", noone)
-	draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 106, Text("Continue playing!"), "continue_playing", noone)
+	draw_set_valign(fa_middle);
+	draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("The demo is over"), global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 32, l10n_text("Buy the full version of") + " " + string(global.game_name), global.default_text_size, c_black, c_white, 1);
+	draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 64, l10n_text("Purchase now!"), "purchase_now", noone)
+	draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 106, l10n_text("Continue playing!"), "continue_playing", noone)
 }
 if (menu = noone)
 {

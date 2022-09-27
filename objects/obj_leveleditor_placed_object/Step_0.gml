@@ -578,7 +578,7 @@ and (!mouse_check_button(mb_middle))
 		
 			{
 				audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
-				scr_audio_play(snd_leveleditor_erase_object, global.sound_volume);
+				scr_audio_play(snd_leveleditor_erase_object, volume_source.sound);
 				with(obj_leveleditor)
 				{
 					move_snap(global.grid_hsnap, global.grid_vsnap); /*Make sure to always move snap*/

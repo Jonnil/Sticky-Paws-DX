@@ -11,7 +11,7 @@ function scr_show_fps()
 		if (global.show_fps = true)
 		{
 			draw_set_halign(fa_left);
-			draw_set_valign(fa_center);
+			draw_set_valign(fa_middle);
 			
 			if (fps >= 60)
 			{

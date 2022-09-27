@@ -27,7 +27,7 @@ or(gamepad_is_connected(3))
 and (global.player4_can_play = true)
 and (global.controls_used_for_menu_navigation = "controller")
 {
-	draw_text_outlined(window_get_width() - 16, 0, Text("Skip") + " : " + Text("Hold Start"), global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Hold Start"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*If gamepad is connected END*/
 
@@ -37,7 +37,7 @@ else
 if (os_type == os_ios)
 or(os_type == os_android)
 {
-	draw_text_outlined(window_get_width() - 16, 0, Text("Skip") + " : " + Text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*If playing on mobile END*/
 
@@ -47,7 +47,7 @@ else
 if (global.controls_used_for_menu_navigation = "keyboard")
 or (global.controls_used_for_menu_navigation = "mouse")
 {
-	draw_menu_button(window_get_width() - 370, 0, Text("Skip") + " : " + Text("Hold"), "skip", "skip")
+	draw_menu_button(window_get_width() - 370, 0, l10n_text("Skip") + " : " + l10n_text("Hold"), "skip", "skip")
 	draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() - 32, 21, 0.5, 0.5, 0, c_white, 1);
 }
 #endregion /*If playing on Keyboard*/

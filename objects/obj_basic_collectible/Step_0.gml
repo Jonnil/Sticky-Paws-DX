@@ -56,7 +56,7 @@ if (bounceup = false)
 						hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 					}
 				}
-				scr_audio_play(snd_basic_collectible, global.sound_volume);
+				scr_audio_play(snd_basic_collectible, volume_source.sound);
 				instance_destroy();
 			}
 		}
@@ -70,7 +70,7 @@ if (bounceup = true)
 	{
 		if (basic_collectible_sound = false)
 		{
-			scr_audio_play(snd_basic_collectible, global.sound_volume);
+			scr_audio_play(snd_basic_collectible, volume_source.sound);
 			basic_collectible_sound = true;
 		}
 		depth = - 100;

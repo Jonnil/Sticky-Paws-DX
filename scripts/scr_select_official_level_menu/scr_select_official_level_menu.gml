@@ -164,25 +164,25 @@ function scr_select_official_level_menu()
 	C= floor(global.select_level_index / R); /*Do this code again here so the sub menu doesn't get misaligned*/
 	
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, 0, window_get_width(), 116, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 	
 	if (window_get_width() <= 1350)
 	{
-		draw_text_outlined(window_get_width() / 2 + 128, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+		draw_text_outlined(window_get_width() / 2 + 128, 50, l10n_text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
 	}
 	else
 	{
-		draw_text_outlined(window_get_width() / 2, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+		draw_text_outlined(window_get_width() / 2, 50, l10n_text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
 	}
 	
-	//draw_text_outlined(window_get_width() / 2, 50, Text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
-	draw_text_outlined(window_get_width() / 2, 100, Text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
+	//draw_text_outlined(window_get_width() / 2, 50, l10n_text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+	draw_text_outlined(window_get_width() / 2, 100, l10n_text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
 	
 	#region /*Back Button*/
-	draw_menu_button(0, 0, Text("Back"), "back_from_level_editor", "back_from_level_editor");
+	draw_menu_button(0, 0, l10n_text("Back"), "back_from_level_editor", "back_from_level_editor");
 	draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 	
 	if (menu = "back_from_level_editor")
@@ -284,7 +284,7 @@ function scr_select_official_level_menu()
 		
 		draw_set_alpha(1);
 		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		
 		var _key = keyboard_lastchar;
 		if (ord(_key) != ord("\\"))
@@ -306,7 +306,7 @@ function scr_select_official_level_menu()
 		
 		#region /*Limit Name Input Length for Level*/
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		
 		if (string_length(global.level_name) >= 120)
 		{
@@ -320,7 +320,7 @@ function scr_select_official_level_menu()
 		#region /*OK and Cancel buttons under name input*/
 		if (keyboard_string != "")
 		{
-			draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 32, Text("OK"), "level_editor_enter_name_ok", "level_editor_enter_name_ok");
+			draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 32, l10n_text("OK"), "level_editor_enter_name_ok", "level_editor_enter_name_ok");
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation = "controller")
 			{
@@ -332,7 +332,7 @@ function scr_select_official_level_menu()
 				draw_sprite_ext(spr_keyboard_keys, vk_enter, 394 * (global.select_level_index - C * R) + 440, 226 * (C - scroll) + 606 + 21 + 32, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
-		draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 74, Text("Cancel"), "level_editor_enter_name_cancel", "level_editor_enter_name_cancel");
+		draw_menu_button(394 * (global.select_level_index - C * R) + 100, 226 * (C - scroll) + 606 + 74, l10n_text("Cancel"), "level_editor_enter_name_cancel", "level_editor_enter_name_cancel");
 		if (gamepad_is_connected(0))
 		and (global.controls_used_for_menu_navigation = "controller")
 		{

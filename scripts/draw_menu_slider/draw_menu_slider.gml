@@ -11,15 +11,7 @@
 function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color)
 {
 	
-	#region /*Initialize variables*/
-	x_position = argument0; /*The buttons x origin position*/
-	y_position = argument1; /*The buttons y origin position*/
-	string_text = argument2;
-	menu_index = argument3;
-	variable_to_change = argument4;
-	bar_color = argument5;
-	length_variable = 320;
-	#endregion /*Initialize variables END*/
+	var length_variable = 320;
 	
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position- 16, x_position + 320, y_position + 16))
 	and (global.controls_used_for_menu_navigation = "mouse")
@@ -41,12 +33,12 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 		{
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position- 32, y_position- 32, x_position + 352, y_position + 32)) /*Within the length of the slider*/
 			{
-				if (menu = "main_volume"){global.main_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
-				if (menu = "music_volume"){global.music_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
-				if (menu = "sound_volume"){global.sound_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
-				if (menu = "ambient_volume"){global.ambient_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
-				if (menu = "footstep_volume"){global.footstep_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
-				if (menu = "voices_volume"){global.voice_volume = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
+				if (menu = "volume_main"){global.volume_main = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
+				if (menu = "volume_music"){global.volume_music = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
+				if (menu = "volume_sound"){global.volume_sound = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
+				if (menu = "volume_ambient"){global.volume_ambient = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
+				if (menu = "volume_footstep"){global.volume_footstep = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
+				if (menu = "voices_volume"){global.volume_voice = clamp((window_mouse_get_x() -x_position)/(length_variable), 0, 1);}else
 				
 				if (menu = "background_brightness_gameplay")
 				{
@@ -132,7 +124,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	
 	#region /*Text above the menu button*/
 	draw_set_halign(fa_left);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	draw_text_outlined(x_position, y_position- 32,string(string_text) + ": " + string(variable_to_change * 100) + "%", global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 	#endregion /*Text above the menu button END*/
 	

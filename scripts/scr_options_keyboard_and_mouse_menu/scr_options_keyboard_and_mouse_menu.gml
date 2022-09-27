@@ -5,7 +5,7 @@ function scr_options_keyboard_and_mouse_menu()
 	if (global.settings_sidebar_menu = "keyboard_and_mouse_settings")
 	{
 		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		
 		#region /*Remap Keyboard and Mouse*/
 		
@@ -4273,74 +4273,74 @@ function scr_options_keyboard_and_mouse_menu()
 		#region /*Controls checkmarks and dropdown menu settings*/
 		if (remapping_player = 0)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player1_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player1_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player1_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player1_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player1_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player1_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player1_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player1_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player1_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player1_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player1_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player1_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		}
 		else
 		if (remapping_player = 1)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player2_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player2_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player2_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player2_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player2_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player2_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player2_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player2_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player2_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player2_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player2_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player2_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		}
 		else
 		if (remapping_player = 2)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player3_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player3_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player3_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player3_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player3_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player3_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player3_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player3_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player3_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player3_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player3_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player3_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		}
 		else
 		if (remapping_player = 3)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player4_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player4_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player4_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player4_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player4_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player4_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player4_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player4_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player4_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player4_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player4_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player4_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		}
 		#endregion /*Controls checkmarks and dropdown menu settings END*/
 		
@@ -4359,7 +4359,7 @@ function scr_options_keyboard_and_mouse_menu()
 		}
 		#endregion /*Menu cursor y position END*/
 		
-		draw_menu_dropdown(390, 50 + menu_y_offset, Text("Remap This Player"), "remap_select_player", remapping_player, Text("Player 1"), Text("Player 2"), Text("Player 3"), Text("Player 4")); /*Remap Select Player - Which player do you want to remap the controls for?*/
+		draw_menu_dropdown(390, 50 + menu_y_offset, l10n_text("Remap This Player"), "remap_select_player", remapping_player, l10n_text("Player 1"), l10n_text("Player 2"), l10n_text("Player 3"), l10n_text("Player 4")); /*Remap Select Player - Which player do you want to remap the controls for?*/
 		
 		#region /*Show the player when they can input a gamepad button to remap controls*/
 		if (input_key = true)
@@ -4370,31 +4370,31 @@ function scr_options_keyboard_and_mouse_menu()
 			
 			if (remapping_player = 0) /*Text saying input gamepad button now for player 1*/
 			{
-				draw_text_outlined(window_get_width() / 2, 32, Text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player = 1) /*Text saying input gamepad button now for player 2*/
 			{
-				draw_text_outlined(window_get_width() / 2, 32, Text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player = 2) /*Text saying input gamepad button now for player 3*/
 			{
-				draw_text_outlined(window_get_width() / 2, 32, Text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player = 3) /*Text saying input gamepad button now for player 4 */
 			{
-				draw_text_outlined(window_get_width() / 2, 32, Text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
-			draw_text_outlined(window_get_width() / 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(window_get_width() / 2 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			if (global.controls_used_for_menu_navigation = "controller")
 			{
 				scr_draw_gamepad_buttons(gp_start, window_get_width() / 2 + 220, 64, 0.50, c_white, 1);

@@ -139,7 +139,7 @@ else
 					
 				}
 				audio_sound_pitch(snd_stomp, 1);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -194,7 +194,7 @@ else
 					
 				}
 				audio_sound_pitch(snd_stomp, 1);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -250,7 +250,7 @@ else
 				}
 				
 				audio_sound_pitch(snd_stomp, 1);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -305,7 +305,7 @@ else
 				}
 				
 				audio_sound_pitch(snd_stomp, 1);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 		}
 	}
@@ -389,7 +389,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
 			effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
 		}
-		scr_audio_play(snd_spring, global.sound_volume * 0.1);
+		scr_audio_play(snd_spring, volume_source.sound);
 	}
 	vspeed = -15;
 	gravity = 0;

@@ -5,7 +5,7 @@ function scr_options_controller_gamepad_menu()
 	if (global.settings_sidebar_menu = "controller_settings")
 	{
 		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		
 		#region /*Remap Gamepad and Mouse*/
 		
@@ -847,17 +847,17 @@ function scr_options_controller_gamepad_menu()
 			
 			#region /*"OR" text*/
 			draw_set_halign(fa_center);
-			draw_set_valign(fa_center);
-			draw_text_outlined(or_text_x, menu_y_remap_key_dive + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_jump + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_crouch + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_crouch_toggle + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_sprint + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_sprint_toggle + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_left + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_right + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_down + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_up + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_set_valign(fa_middle);
+			draw_text_outlined(or_text_x, menu_y_remap_key_dive + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_jump + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_crouch + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_crouch_toggle + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_sprint + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_sprint_toggle + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_left + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_right + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_down + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_up + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			if (remapping_player = 0)
 			and (allow_player1_tongue = true)
 			or (remapping_player = 1)
@@ -867,10 +867,10 @@ function scr_options_controller_gamepad_menu()
 			or (remapping_player = 3)
 			and (allow_player4_tongue = true)
 			{
-				draw_text_outlined(or_text_x, menu_y_remap_key_tongue + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(or_text_x, menu_y_remap_key_tongue + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
-			draw_text_outlined(or_text_x, menu_y_remap_key_zoom_in + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			draw_text_outlined(or_text_x, menu_y_remap_key_zoom_out + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_zoom_in + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(or_text_x, menu_y_remap_key_zoom_out + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			#endregion /*"OR" text END*/
 			
 			#region /*Remap Key 2 Dive*/
@@ -1228,7 +1228,7 @@ function scr_options_controller_gamepad_menu()
 		
 		#region /*All the keys you can remap*/
 		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		
 		#region /*Mouse Navigation*/
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), key1_x - 34, menu_y_remap_key_dive + menu_y_offset - 32, key1_x + 32, menu_y_remap_key_dive + menu_y_offset + 32))and (input_key = false) and (open_dropdown = false) and (global.controls_used_for_menu_navigation = "mouse")
@@ -1415,7 +1415,7 @@ function scr_options_controller_gamepad_menu()
 		{
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_dive + menu_y_offset, 1, 1, 0, c_white, 1);
 			menu_cursor_y_position = menu_y_remap_key_dive;
-			draw_text_outlined(410, menu_y_remap_key_dive + menu_y_offset, Text("Dive"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(410, menu_y_remap_key_dive + menu_y_offset, l10n_text("Dive"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			if (input_key = true)
 			and (can_remap_key = false)
 			{
@@ -1432,71 +1432,71 @@ function scr_options_controller_gamepad_menu()
 		}
 		else
 		{
-			draw_text_outlined(410, menu_y_remap_key_dive + menu_y_offset, Text("Dive"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(410, menu_y_remap_key_dive + menu_y_offset, l10n_text("Dive"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		#endregion /*Remap Key Dive END*/
 		
 		#region /*Remap Key Jump*/
 		if (menu = "remap_key_jump"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_jump + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_jump ;
-		draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, Text("Jump"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, l10n_text("Jump"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, Text("Jump"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_jump + menu_y_offset, l10n_text("Jump"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Jump END*/
 		
 		#region /*Remap Key Crouch */
 		if (menu = "remap_key_crouch"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_crouch + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_crouch;
-		draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, Text("Crouch"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, l10n_text("Crouch"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, Text("Crouch"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch + menu_y_offset, l10n_text("Crouch"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Crouch END*/
 		
 		#region /*Remap Key Crouch Toggle*/
 		if (menu = "remap_key_crouch_toggle"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_crouch_toggle + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_crouch_toggle;
-		draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, Text("Crouch Toggle"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, l10n_text("Crouch Toggle"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, Text("Crouch Toggle"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_crouch_toggle + menu_y_offset, l10n_text("Crouch Toggle"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Crouch Toggle END*/
 		
 		#region /*Remap Key Sprint*/
 		if (menu = "remap_key_sprint"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_sprint + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_sprint;
-		draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, Text("Sprint"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, l10n_text("Sprint"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, Text("Sprint"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint + menu_y_offset, l10n_text("Sprint"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Sprint END*/
 		
 		#region /*Remap Key Sprint Toggle*/
 		if (menu = "remap_key_sprint_toggle"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_sprint_toggle + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_sprint_toggle;
-		draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, Text("Sprint Toggle"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, l10n_text("Sprint Toggle"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, Text("Sprint Toggle"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_sprint_toggle + menu_y_offset, l10n_text("Sprint Toggle"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Sprint Toggle END*/
 		
 		#region /*Remap Key Left*/
 		if (menu = "remap_key_left"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_left + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_left;
-		draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, Text("Left"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, l10n_text("Left"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, Text("Left"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_left + menu_y_offset, l10n_text("Left"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Left END*/
 		
 		#region /*Remap Key Right*/
 		if (menu = "remap_key_right"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_right + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_right;
-		draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, Text("Right"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, l10n_text("Right"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, Text("Right"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_right + menu_y_offset, l10n_text("Right"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Right END*/
 		
 		#region /*Remap Key Down*/
 		if (menu = "remap_key_down"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_down + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_down;
-		draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, Text("Down"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, l10n_text("Down"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, Text("Down"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_down + menu_y_offset, l10n_text("Down"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Down END*/
 		
 		#region /*Remap Key Up*/
 		if (menu = "remap_key_up"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_up + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_up;
-		draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, Text("Up"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, l10n_text("Up"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, Text("Up"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_up + menu_y_offset, l10n_text("Up"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Up END*/
 		
 		#region /*Remap Key Tongue*/
@@ -1513,7 +1513,7 @@ function scr_options_controller_gamepad_menu()
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_tongue + menu_y_offset, 1, 1, 0, c_white, 1);
 				menu_cursor_y_position = menu_y_remap_key_tongue;
-				draw_text_outlined(410, menu_y_remap_key_tongue + menu_y_offset, Text("Tongue"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(410, menu_y_remap_key_tongue + menu_y_offset, l10n_text("Tongue"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				if (input_key = true)
 				and (can_remap_key = false)
 				{
@@ -1530,23 +1530,23 @@ function scr_options_controller_gamepad_menu()
 			}
 			else
 			{
-				draw_text_outlined(410, menu_y_remap_key_tongue + menu_y_offset, Text("Tongue"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(410, menu_y_remap_key_tongue + menu_y_offset, l10n_text("Tongue"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 		}
 		#endregion /*Remap Key Up END*/
 		
 		#region /*Remap Key Zoom In*/
 		if (menu = "remap_key_zoom_in"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_zoom_in + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_zoom_in;
-		draw_text_outlined(410, menu_y_remap_key_zoom_in + menu_y_offset, Text("Zoom In"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_zoom_in + menu_y_offset, l10n_text("Zoom In"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_zoom_in + menu_y_offset, Text("Zoom In"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_zoom_in + menu_y_offset, l10n_text("Zoom In"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Zoom In END*/
 		
 		#region /*Remap Key Zoom Out*/
 		if (menu = "remap_key_zoom_out"){draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key_zoom_out + menu_y_offset, 1, 1, 0, c_white, 1);menu_cursor_y_position = menu_y_remap_key_zoom_out;
-		draw_text_outlined(410, menu_y_remap_key_zoom_out + menu_y_offset, Text("Zoom Out"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_text_outlined(410, menu_y_remap_key_zoom_out + menu_y_offset, l10n_text("Zoom Out"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true) and (can_remap_key = false){menu_delay = 3;scr_gamepadremapping();}else
-		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_zoom_out + menu_y_offset, Text("Zoom Out"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+		if (key_a_pressed) and (menu_delay = 0){menu_delay = 3; input_key = true;}}else{draw_text_outlined(410, menu_y_remap_key_zoom_out + menu_y_offset, l10n_text("Zoom Out"), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		#endregion /*Remap Key Zoom Out END*/
 		
 		#endregion /*All the keys you can remap END*/
@@ -1954,90 +1954,90 @@ function scr_options_controller_gamepad_menu()
 		#region /*Controls checkmarks and dropdown menu settings*/
 		if (remapping_player = 0)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player1_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player1_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player1_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player1_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player1_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player1_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
 			if (global.enable_chosen_controller_used = true)
 			{
-				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, Text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
 			}
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player1_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player1_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player1_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player1_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player1_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player1_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		}
 		else
 		if (remapping_player = 1)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player2_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player2_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player2_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player2_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player2_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player2_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
 			if (global.enable_chosen_controller_used = true)
 			{
-				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, Text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
 			}
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player2_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player2_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player2_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player2_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player2_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player2_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		}
 		else
 		if (remapping_player = 2)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player3_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player3_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player3_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player3_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player3_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player3_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
 			if (global.enable_chosen_controller_used = true)
 			{
-				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, Text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
 			}
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, Text("Show Controls"), "show_controls", global.player3_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
+				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player3_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player3_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player3_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player3_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player3_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		}
 		else
 		if (remapping_player = 3)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, Text("Up key is jump key"), "up_key_is_jump_key", global.player4_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, Text("Double-tap direction to run"), "double_tap_to_run", global.player4_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, Text("Always run"), "always_run", global.player4_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, Text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, Text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, Text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, Text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
+			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player4_up_key_is_jump_key);
+			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player4_double_tap_to_run);
+			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player4_sprint_toggle);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
+			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
+			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
+			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to gamepad"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_gamepad);
 			if (global.enable_chosen_controller_used = true)
 			{
-				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, Text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, Text("Xbox One"), Text("Xbox Series X/S"), Text("Nintendo Switch"), Text("Playstation 4"), Text("Playstation 5"));
+				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
 			}
 			if (os_type!= os_ios)
 			and (os_type!= os_android)
 			{
-				draw_menu_dropdown(390, menu_y_show_controls + menu_y_offset, Text("Show Controls"), "show_controls", global.player4_show_controls, Text("Never Show"), Text("After 1 Second"), Text("After 2 Seconds"), Text("After 3 Seconds"), Text("After 4 Seconds"), Text("After 5 Seconds"), Text("After 6 Seconds"), Text("After 7 Seconds"), Text("After 8 Seconds"), Text("After 9 Seconds"), Text("Always Show"));
+				draw_menu_dropdown(390, menu_y_show_controls + menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player4_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, Text("Drop down from rope"), "drop_from_rope", global.player4_drop_from_rope, Text("Release Jump"), Text("Down or Jump"), Text("Only Down"), Text("Only Jump"), Text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, Text("Wall Jump"), "wall_jump_setting", global.player4_wall_jump_setting, Text("Off"), Text("When touching wall"), Text("When holding towards the wall"));
+			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player4_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
+			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player4_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		}
 		#endregion /*Controls checkmarks and dropdown menu settings END*/
 		
@@ -2060,7 +2060,7 @@ function scr_options_controller_gamepad_menu()
 		}
 		#endregion /*Menu cursor y position END*/
 		
-		draw_menu_dropdown(390, 50 + menu_y_offset, Text("Remap This Player"), "remap_select_player", remapping_player, Text("Player 1"), Text("Player 2"), Text("Player 3"), Text("Player 4")); /*Remap Select Player - Which player do you want to remap the controls for?*/
+		draw_menu_dropdown(390, 50 + menu_y_offset, l10n_text("Remap This Player"), "remap_select_player", remapping_player, l10n_text("Player 1"), l10n_text("Player 2"), l10n_text("Player 3"), l10n_text("Player 4")); /*Remap Select Player - Which player do you want to remap the controls for?*/
 		
 		#region /*Show the player when they can input a gamepad button to remap controls*/
 		if (input_key = true)
@@ -2071,31 +2071,31 @@ function scr_options_controller_gamepad_menu()
 			
 			if (remapping_player = 0) /*Text saying input gamepad button now for player 1*/
 			{
-				draw_text_outlined(window_get_width() / 2, 32, Text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player = 1) /*Text saying input gamepad button now for player 2*/
 			{
-				draw_text_outlined(window_get_width() / 2, 32, Text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player = 2) /*Text saying input gamepad button now for player 3*/
 			{
-				draw_text_outlined(window_get_width() / 2, 32, Text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player = 3) /*Text saying input gamepad button now for player 4 */
 			{
-				draw_text_outlined(window_get_width() / 2, 32, Text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
-			draw_text_outlined(window_get_width() / 2 - 10, 64, Text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			draw_text_outlined(window_get_width() / 2 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			if (global.controls_used_for_menu_navigation = "controller")
 			{
 				scr_draw_gamepad_buttons(gp_start, window_get_width() / 2 + 220, 64, 0.50, c_white, 1);

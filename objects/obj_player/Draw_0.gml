@@ -283,7 +283,7 @@ and (die = false)
 and (hp >= 1)
 {
 	audio_sound_pitch(voice_damage, default_voice_pitch);
-	scr_audio_play(voice_damage, global.voice_volume);
+	scr_audio_play(voice_damage, volume_source.voice);
 }
 #endregion /*Make it obvious if you take damage END*/
 
@@ -533,7 +533,7 @@ or (global.player3_can_play = true)
 and (global.player4_can_play = true)
 {
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	if (player = 1)
 	{
 		if (global.player1_name = "")
@@ -593,7 +593,7 @@ and (global.assist_enable = false)
 	or(max_hp >= 3) /*If there is more than max 3 hp, always display HP*/
 	{
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		draw_text_outlined(x, bbox_top - 32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size, c_white, c_black, 1);
 	}
 }

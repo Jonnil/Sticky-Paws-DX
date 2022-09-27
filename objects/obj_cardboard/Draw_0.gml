@@ -160,11 +160,7 @@ if (brick_particle = false)
 			and (y > camera_get_view_y(view_camera[view_current]))
 			{
 				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
-				if (asset_get_type("snd_blockbreak") == asset_sound)
-				{
-					audio_play_sound(snd_blockbreak, 0, 0);
-					audio_sound_gain(snd_blockbreak, global.sound_volume * global.main_volume, 0);
-				}
+				scr_audio_play(snd_blockbreak, volume_source.sound);
 			}
 			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/
 			
@@ -241,11 +237,7 @@ if (brick_particle = false)
 			and (y > camera_get_view_y(view_camera[view_current]))
 			{
 				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
-				if (asset_get_type("snd_blockbreak") == asset_sound)
-				{
-					audio_play_sound(snd_blockbreak, 0, 0);
-					audio_sound_gain(snd_blockbreak, global.sound_volume * global.main_volume, 0);
-				}
+				scr_audio_play(snd_blockbreak, volume_source.sound);
 			}
 			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/
 			

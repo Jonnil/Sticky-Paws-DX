@@ -41,7 +41,7 @@ if (quit_level_editor = false)
 		#endregion /*Make Background Darker END*/
 		
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		if (keyboard_check_pressed(vk_escape))
 		and (input_key = false)
 		or(gamepad_button_check_pressed(0, gp_start))
@@ -78,8 +78,8 @@ if (quit_level_editor = false)
 			if (ini_key_exists("info", "first_created_on_version"))
 			{
 				draw_set_halign(fa_center);
-				draw_set_valign(fa_center);
-				draw_text_outlined(window_get_width() / 2, window_get_height() - 32, Text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + GM_version), global.default_text_size, c_black, c_white, 1);
+				draw_set_valign(fa_middle);
+				draw_text_outlined(window_get_width() / 2, window_get_height() - 32, l10n_text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + GM_version), global.default_text_size, c_black, c_white, 1);
 			}
 			ini_close();
 			#endregion /*Show what version of the game the level was first created in END*/
@@ -97,7 +97,7 @@ if (quit_level_editor = false)
 			in_settings = false;
 			
 			#region /*If menu is on continue*/
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 - 126, Text("Continue"), "continue", noone);
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 - 126, l10n_text("Continue"), "continue", noone);
 			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 - 126 + 21, 1, 1, 0, c_white, 1);
 			
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 - 126, window_get_width() / 2 + 185, window_get_height() / 2 -84))
@@ -142,7 +142,7 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on continue END*/
 			
 			#region /*If menu is on options*/
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 -84, Text("Options"), "options", noone);
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 -84, l10n_text("Options"), "options", noone);
 			draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 -84 + 21, 1, 1, 0, c_white, 1);
 			
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 -84, window_get_width() / 2 + 185, window_get_height() / 2 - 42))
@@ -205,7 +205,7 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on options END*/
 			
 			#region /*If menu is on level editor options*/
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 -42, Text("Level Editor Options"), "level_editor_options", "custom_background_1_x_offset");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 -42, l10n_text("Level Editor Options"), "level_editor_options", "custom_background_1_x_offset");
 			
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 -42, window_get_width() / 2 + 185, window_get_height() / 2))
 			and (mouse_check_button_pressed(mb_left))
@@ -267,7 +267,7 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on level editor options END*/
 			
 			#region /*If menu is on generate level map*/
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, Text("Generate Level Map"), "generate_level_map", "generate_level_map_yes");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Generate Level Map"), "generate_level_map", "generate_level_map_yes");
 			
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2, window_get_width() / 2 + 185, window_get_height() / 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
@@ -322,7 +322,7 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on generate level map END*/
 			
 			#region /*Open Custom Levels Folder*/
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 + 42, window_get_width() / 2 - 185 + 371, window_get_height() / 2 + 42 + 41))
 			and (global.controls_used_for_menu_navigation = "mouse")
 			and (mouse_check_button_pressed(mb_left))
@@ -364,7 +364,7 @@ if (quit_level_editor = false)
 			#endregion /*Open Custom Levels Folder END*/
 			
 			#region /*If menu is on quit*/
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Save and Quit"), "quit", noone);
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Save and Quit"), "quit", noone);
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 42 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay = 0)
@@ -422,8 +422,8 @@ if (quit_level_editor = false)
 		or (menu = "generate_level_map_no")
 		{
 			draw_set_halign(fa_center);
-			draw_set_valign(fa_center);
-			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192, Text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
+			draw_set_valign(fa_middle);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 			
 			#region /*Draw the path for saving full level map*/
 			if (global.character_select_in_this_menu = "level_editor")
@@ -454,12 +454,12 @@ if (quit_level_editor = false)
 			}
 			#endregion /*Draw the path for saving full level map END*/
 			
-			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 64, Text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
-			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 96, Text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
-			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 160, Text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 64, l10n_text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 96, l10n_text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 192 + 160, l10n_text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
 			
 			#region /*If menu is on generate level map yes*/
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, Text("Yes"), "generate_level_map_yes", "generate_level_map_yes");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Yes"), "generate_level_map_yes", "generate_level_map_yes");
 			
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2, window_get_width() / 2 + 185, window_get_height() / 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
@@ -514,7 +514,7 @@ if (quit_level_editor = false)
 			#endregion /*If menu is on generate level map yes END*/
 			
 			#region /*If menu is on generate level map no*/
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("No"), "generate_level_map_no", "generate_level_map");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("No"), "generate_level_map_no", "generate_level_map");
 			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
 			
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2, window_get_width() / 2 + 185, window_get_height() / 2 + 42 + 42))
@@ -599,7 +599,7 @@ if (quit_level_editor = false)
 		#endregion /*Make Background Darker END*/
 		
 		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		
 		#region /*Inputed Name Text*/
 		if (name_enter_blink< 1)
@@ -614,7 +614,7 @@ if (quit_level_editor = false)
 		
 		#region /*Limit Name Input Length for Level Name*/
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
 		level_name = keyboard_string;
 		if (string_length(level_name) > 32)
@@ -797,7 +797,7 @@ if (quit_level_editor = false)
 	and (show_icons_at_bottom = true)
 	and (pause = false)
 	{
-		tooltip = Text("Play level");
+		tooltip = l10n_text("Play level");
 		show_tooltip += 2;
 		draw_set_alpha(0.5);
 		draw_rectangle_color(play_level_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, play_level_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
@@ -891,7 +891,7 @@ if (quit_level_editor = false)
 			draw_set_alpha(0.5);
 			draw_rectangle_color(place_brush_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, place_brush_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			tooltip = Text("Paintbrush tool");
+			tooltip = l10n_text("Paintbrush tool");
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
@@ -1069,7 +1069,7 @@ if (quit_level_editor = false)
 			draw_set_alpha(0.5);
 			draw_rectangle_color(erase_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, erase_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			tooltip = Text("Erase tool");
+			tooltip = l10n_text("Erase tool");
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
@@ -1176,7 +1176,7 @@ if (quit_level_editor = false)
 			draw_set_alpha(0.5);
 			draw_rectangle_color(fill_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, fill_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			tooltip = Text("Fill tool");
+			tooltip = l10n_text("Fill tool");
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
@@ -1231,12 +1231,12 @@ if (quit_level_editor = false)
 			draw_set_alpha(1);
 			if (global.always_show_level_editor_buttons = true)
 			{
-				tooltip = Text("Hide buttons");
+				tooltip = l10n_text("Hide buttons");
 			}
 			else
 			if (global.always_show_level_editor_buttons = false)
 			{
-				tooltip = Text("Lock buttons");
+				tooltip = l10n_text("Lock buttons");
 			}
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
@@ -1345,8 +1345,8 @@ if (quit_level_editor = false)
 			if (can_put_objects_above_other_objects = true)
 			{
 				draw_set_halign(fa_left);
-				draw_set_valign(fa_center);
-				draw_text_outlined(200, 100, Text("Can put objects above other objects: True"), global.default_text_size, c_black, c_white, 1);
+				draw_set_valign(fa_middle);
+				draw_text_outlined(200, 100, l10n_text("Can put objects above other objects: True"), global.default_text_size, c_black, c_white, 1);
 			}
 			
 			#region /*Show Grid*/
@@ -1354,13 +1354,13 @@ if (quit_level_editor = false)
 			{
 				draw_sprite_ext(spr_leveleditor_icons, 13, grid_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 				draw_set_halign(fa_right);
-				draw_set_valign(fa_center);
-				draw_text_outlined(display_get_gui_width() - 80, 80 + icons_at_top_y, Text("Grid X") + " : " + string(global.grid_hsnap), global.default_text_size, c_black, c_white, 1);
-				draw_text_outlined(display_get_gui_width() - 80, 110 + icons_at_top_y, Text("Grid Y") + " : " + string(global.grid_vsnap), global.default_text_size, c_black, c_white, 1);
+				draw_set_valign(fa_middle);
+				draw_text_outlined(display_get_gui_width() - 80, 80 + icons_at_top_y, l10n_text("Grid X") + " : " + string(global.grid_hsnap), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 80, 110 + icons_at_top_y, l10n_text("Grid Y") + " : " + string(global.grid_vsnap), global.default_text_size, c_black, c_white, 1);
 				if (global.grid_hsnap = 32)
 				and (global.grid_hsnap = 32)
 				{
-					draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, Text("Default grid size!"), global.default_text_size * 0.5, c_black, c_white, 1);
+					draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, l10n_text("Default grid size!"), global.default_text_size * 0.5, c_black, c_white, 1);
 				}
 				draw_sprite_ext(spr_menu_button_up_down, 0, display_get_gui_width() - 32, 80 + icons_at_top_y + 16, 1, 1, 0, c_white, 1);
 				if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32 + 2, display_get_gui_width() + 64, 80 + icons_at_top_y + 16))
@@ -1380,9 +1380,9 @@ if (quit_level_editor = false)
 						global.grid_vsnap -= 1;
 					}
 				}
-				draw_text_outlined(display_get_gui_width() - 16, 32 + 140 + icons_at_top_y, Text("X") + " : " + string(x) + " " + Text("Y") + " : " + string(y), global.default_text_size, c_black, c_white, 1);
-				draw_text_outlined(display_get_gui_width() - 16, 32 + 170 + icons_at_top_y, Text("View X") + " : " + string(camera_get_view_x(view_camera[0])) + " " + Text("View Y") + " : " + string(camera_get_view_y(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
-				draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icons_at_top_y, Text("View width") + " : " + string(camera_get_view_width(view_camera[0])) + " " + Text("View height") + " : " + string(camera_get_view_height(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 16, 32 + 140 + icons_at_top_y, l10n_text("X") + " : " + string(x) + " " + l10n_text("Y") + " : " + string(y), global.default_text_size, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 16, 32 + 170 + icons_at_top_y, l10n_text("View X") + " : " + string(camera_get_view_x(view_camera[0])) + " " + l10n_text("View Y") + " : " + string(camera_get_view_y(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
+				draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icons_at_top_y, l10n_text("View width") + " : " + string(camera_get_view_width(view_camera[0])) + " " + l10n_text("View height") + " : " + string(camera_get_view_height(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
 			}
 			else
 			{
@@ -1435,7 +1435,7 @@ if (quit_level_editor = false)
 	{
 		draw_rectangle_color(cursor_x + 16, cursor_y - 16, cursor_x + 240, cursor_y + 16, c_white, c_white, c_white, c_white, false);
 		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		draw_text_outlined(cursor_x + 24, cursor_y, string(tooltip), global.default_text_size, c_white, c_black, 1);
 	}
 	if (show_tooltip > 100)

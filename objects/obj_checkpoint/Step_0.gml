@@ -3,6 +3,11 @@ if (get_rewards_cooldown > 0)
 	get_rewards_cooldown -= 1;
 }
 
+if (!audio_is_playing(snd_1up))
+{
+	scr_audio_play(snd_1up, volume_source.sound);
+}
+
 #region /*Gravity*/
 if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_wall))
@@ -61,10 +66,7 @@ and (instance_exists(obj_player))
 						#region /*Collect 10 basic collectibles*/
 						if (asset_get_type("obj_basic_collectible") == asset_object)
 						{
-							if (asset_get_type("snd_basic_collectible") == asset_sound)
-							{
-								audio_play_sound(snd_basic_collectible, 0, 0);
-							}
+							scr_audio_play(snd_basic_collectible, volume_source.sound);
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;

@@ -97,7 +97,7 @@ if (time = room_speed * 3)
 	if (can_jump_on_head = true)
 	{
 		can_jump_on_head = false;
-		scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+		scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 	}
 	image_speed = 0.3;
 	mask_index = spr_boss_stand;
@@ -128,7 +128,7 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		{
@@ -141,19 +141,19 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_laugh;
-		scr_audio_play(snd_boss_voice_laugh, global.voice_volume);
+		scr_audio_play(snd_boss_voice_laugh, volume_source.voice);
 	}
 	if (time = room_speed * 3)
 	{
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -166,7 +166,7 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -262,7 +262,7 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		{
@@ -275,19 +275,19 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_laugh;
-		scr_audio_play(snd_boss_voice_laugh, global.voice_volume);
+		scr_audio_play(snd_boss_voice_laugh, volume_source.voice);
 	}
 	if (time = room_speed * 3)
 	{
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -301,7 +301,7 @@ and (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -398,7 +398,7 @@ if (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		{
@@ -411,19 +411,19 @@ if (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_laugh;
-		scr_audio_play(snd_boss_voice_laugh, global.voice_volume);
+		scr_audio_play(snd_boss_voice_laugh, volume_source.voice);
 	}
 	if (time = room_speed * 3)
 	{
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -438,7 +438,7 @@ if (has_seen_player = true)
 		if (can_jump_on_head = true)
 		{
 			can_jump_on_head = false;
-			scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 		}
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
@@ -571,14 +571,14 @@ if (hp <= 0)
 				scoreup = 200;
 			}
 		}
-		scr_audio_play(snd_boss_defeated, global.sound_volume);
+		scr_audio_play(snd_boss_defeated, volume_source.sound);
 		instance_destroy();
 	}
 }
 
 if (takendamage = 50)
 {
-	scr_audio_play(snd_boss_invulnerable, global.sound_volume);
+	scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 }
 
 #region /*Kill enemy if it's inside the wall*/

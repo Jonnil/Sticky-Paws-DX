@@ -33,9 +33,9 @@ enum localization
 	,ko_kr/*Korean*/
 }
 
-InitTranslations();
+initialize_translations();
 
-function InitTranslations()
+function initialize_translations()
 {
 	if (file_exists("localization.csv"))
 	{
@@ -57,7 +57,7 @@ function InitTranslations()
 	}
 }
 
-function Text(key)
+function l10n_text(key) /*The common abbreviation for localization is l10n, where the number 10 refers to the number of letters between the L and the N*/
 {
 	var text = "";
 	if (file_exists("localization.csv"))

@@ -17,7 +17,7 @@ if (asset_get_type("spr_level_crown") == asset_sprite)
 #endregion /*Draw level sprite END*/
 
 draw_set_halign(fa_center);
-draw_set_valign(fa_center);
+draw_set_valign(fa_middle);
 if (level_number != 0)
 {
 	draw_text_outlined(x, y, string(level_number), global.default_text_size * 2, c_black, c_white, image_alpha);

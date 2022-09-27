@@ -10,13 +10,6 @@
 
 function draw_text_outlined(x_position, y_position, string_text, text_size, outline_color, text_color, img_alpha)
 {
-	x_position = argument0; /*The texts x origin position*/
-	y_position = argument1; /*The texts y origin position*/
-	string_text = argument2;
-	text_size = argument3;
-	text_color = argument5;
-	outline_color = argument4;
-	img_alpha = argument6;
 	var y_offset = 0; /*Y origin position offset for broken fonts*/
 	
 	#region /*Arabic text offset, only used if you have arabic text*/

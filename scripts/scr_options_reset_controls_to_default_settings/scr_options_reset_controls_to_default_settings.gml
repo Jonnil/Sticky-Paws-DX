@@ -2,7 +2,7 @@ function scr_options_reset_controls_to_default_settings()
 {
 	
 	#region /*Reset to Default Settings*/
-	draw_menu_button(430, menu_y_remap_reset + menu_y_offset, Text("Default Settings"), "remap_reset", "remap_reset");
+	draw_menu_button(430, menu_y_remap_reset + menu_y_offset, l10n_text("Default Settings"), "remap_reset", "remap_reset");
 	if (menu = "remap_reset")
 	{
 		menu_cursor_y_position = menu_y_remap_reset;

@@ -118,8 +118,8 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	
 	#region /*"OR" text*/
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
-	draw_text_outlined(key_x + 100, menu_y_remap_key + menu_y_offset, Text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+	draw_set_valign(fa_middle);
+	draw_text_outlined(key_x + 100, menu_y_remap_key + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	#endregion /*"OR" text END*/
 	
 	#region /*Remap Key 2*/
@@ -271,8 +271,8 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 		menu_cursor_y_position = menu_y_remap_key;
 		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
-		draw_text_outlined(410, menu_y_remap_key + menu_y_offset, Text(name_string), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		draw_set_valign(fa_middle);
+		draw_text_outlined(410, menu_y_remap_key + menu_y_offset, l10n_text(name_string), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key = true)
 		and (can_remap_key = false)
 		and (menu_delay = 0)
@@ -291,8 +291,8 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	else
 	{
 		draw_set_halign(fa_left);
-		draw_set_valign(fa_center);
-		draw_text_outlined(410, menu_y_remap_key + menu_y_offset, Text(name_string), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		draw_set_valign(fa_middle);
+		draw_text_outlined(410, menu_y_remap_key + menu_y_offset, l10n_text(name_string), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	#endregion /*Other Remap Code END*/
 	

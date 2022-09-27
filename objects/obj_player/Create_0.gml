@@ -1,4 +1,5 @@
 /*________________________________Create Event________________________________*/
+audio_listener_position(x, y, 0);
 
 raycast_info = noone;
 

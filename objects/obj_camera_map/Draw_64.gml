@@ -115,14 +115,14 @@ and (!instance_exists(obj_title))
 and (reset_game_if_no_interactivity_second_countdown <= 30)
 {
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	if (reset_game_if_no_interactivity_second_countdown >= 2)
 	{
-		draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, Text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + Text("seconds"), global.default_text_size * 2, c_black, c_red, 1);
+		draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, l10n_text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + l10n_text("seconds"), global.default_text_size * 2, c_black, c_red, 1);
 	}
 	else
 	{
-		draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, Text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + Text("second"), global.default_text_size * 2, c_black, c_red, 1);
+		draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, l10n_text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + l10n_text("second"), global.default_text_size * 2, c_black, c_red, 1);
 	}
-	draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 42, Text("Start moving to continue playing"), global.default_text_size, c_black, c_red, 1);
+	draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 42, l10n_text("Start moving to continue playing"), global.default_text_size, c_black, c_red, 1);
 }

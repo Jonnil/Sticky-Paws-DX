@@ -45,7 +45,7 @@ and (stomped_delay = 0)
 			effect_create_above(ef_smoke, x, y, 2, c_white);
 			scr_gamepad_vibration(other.player, 0.5, 10);
 			
-			scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voice_volume);
+			scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
 
 			#region /*Rewards*/
 			if (instance_exists(obj_player))
@@ -94,7 +94,7 @@ and (stomped_delay = 0)
 				#endregion /* 1-UP END*/
 				
 				audio_sound_pitch(snd_stomp, 1);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -150,7 +150,7 @@ and (stomped_delay = 0)
 				#endregion /* 1-UP END*/
 	
 				audio_sound_pitch(snd_stomp, 1.1);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -220,7 +220,7 @@ and (stomped_delay = 0)
 				#endregion /* 1-UP END*/
 	
 				audio_sound_pitch(snd_stomp, 1.2);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -290,7 +290,7 @@ and (stomped_delay = 0)
 				#endregion /* 1-UP END*/
 
 				audio_sound_pitch(snd_stomp, 1.3);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -360,7 +360,7 @@ and (stomped_delay = 0)
 				#endregion /* 1-UP END*/
 	
 				audio_sound_pitch(snd_stomp, 1.4);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -430,7 +430,7 @@ and (stomped_delay = 0)
 				#endregion /* 1-UP*/
 	
 				audio_sound_pitch(snd_stomp, 1.5);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -500,7 +500,7 @@ and (stomped_delay = 0)
 				#endregion /* 1-UP END*/
 	
 				audio_sound_pitch(snd_stomp, 1.6);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			else
 			if (instance_exists(obj_player))
@@ -559,7 +559,7 @@ and (stomped_delay = 0)
 				#endregion /* 1-UP END*/
 	
 				audio_sound_pitch(snd_stomp, 1.7);
-				scr_audio_play(snd_stomp, global.sound_volume);
+				scr_audio_play(snd_stomp, volume_source.sound);
 			}
 			#endregion /*Rewards END*/
 
@@ -599,7 +599,7 @@ and (stomped_delay = 0)
 				effect_create_below(ef_ring, x, y, 0, c_white);
 				scr_gamepad_vibration(other.player, 0.5, 10);
 				
-				scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voice_volume);
+				scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
 				
 				#region /*Rewards*/
 				if (instance_exists(obj_player))
@@ -648,7 +648,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -704,7 +704,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.1);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -774,7 +774,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.2);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -844,7 +844,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 
 					audio_sound_pitch(snd_stomp, 1.3);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -914,7 +914,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.4);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -984,7 +984,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP*/
 	
 					audio_sound_pitch(snd_stomp, 1.5);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -1054,7 +1054,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.6);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -1113,7 +1113,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.7);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				#endregion /*Rewards END*/
 				
@@ -1287,7 +1287,7 @@ and (stomped_delay = 0)
 				effect_create_below(ef_ring, x, y, 0, c_white);
 				scr_gamepad_vibration(other.player, 0.5, 10);
 				
-				scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voice_volume);
+				scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
 				
 				#region /*Rewards*/
 				if (instance_exists(obj_player))
@@ -1336,7 +1336,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -1392,7 +1392,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.1);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -1462,7 +1462,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.2);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -1532,7 +1532,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 
 					audio_sound_pitch(snd_stomp, 1.3);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -1602,7 +1602,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.4);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -1672,7 +1672,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP*/
 	
 					audio_sound_pitch(snd_stomp, 1.5);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -1742,7 +1742,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.6);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				else
 				if (instance_exists(obj_player))
@@ -1801,7 +1801,7 @@ and (stomped_delay = 0)
 					#endregion /* 1-UP END*/
 	
 					audio_sound_pitch(snd_stomp, 1.7);
-					scr_audio_play(snd_stomp, global.sound_volume);
+					scr_audio_play(snd_stomp, volume_source.sound);
 				}
 				#endregion /*Rewards END*/
 				

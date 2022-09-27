@@ -125,10 +125,10 @@ and (cutscene != 1)
 			scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.5, 10);
 		}
 		
-		scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), global.voice_volume);
+		scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
 		
 		audio_sound_pitch(snd_stomp, 1);
-		scr_audio_play(snd_stomp, global.sound_volume);
+		scr_audio_play(snd_stomp, volume_source.sound);
 		
 		flat = true;
 		die = true;

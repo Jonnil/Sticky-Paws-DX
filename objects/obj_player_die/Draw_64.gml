@@ -35,8 +35,8 @@ if (lives <= 0)
 	#region /*Continue / Quit from Game Over*/
 	if (game_over_text_y >= window_get_height() / 2 - 190)
 	{
-		draw_menu_button(window_get_width() / 2 - 370 - game_over_menu_seperation_distance, window_get_height() - game_over_menu_y, Text("Continue"), "continue", "continue");
-		draw_menu_button(window_get_width() / 2 + game_over_menu_seperation_distance, window_get_height() - game_over_menu_y, Text("Quit"), "quit", "quit");
+		draw_menu_button(window_get_width() / 2 - 370 - game_over_menu_seperation_distance, window_get_height() - game_over_menu_y, l10n_text("Continue"), "continue", "continue");
+		draw_menu_button(window_get_width() / 2 + game_over_menu_seperation_distance, window_get_height() - game_over_menu_y, l10n_text("Quit"), "quit", "quit");
 		
 		if (keyboard_check_pressed(global.player1_key_left))
 		or(keyboard_check_pressed(global.player2_key_left))

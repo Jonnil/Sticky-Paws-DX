@@ -1,7 +1,7 @@
 #region /*Play title screen music*/
 if (title_music > noone)
 {
-	audio_sound_gain(title_music, global.music_volume * global.main_volume * title_music_lerp, 0);
+	audio_sound_gain(title_music, global.volume_music * global.volume_main * title_music_lerp, 0);
 	if (global.play_attract_demo >= true)
 	{
 		title_music_lerp = lerp(title_music_lerp, 0, 0.01);

@@ -18,7 +18,7 @@ function scr_brush_size_place_object(xx, yy, place_brush_size_number, can_place_
 		scr_when_placing_on_difficulty_layer();
 		
 		audio_sound_pitch(snd_leveleditor_place_object, random_range(0.9, 1.1));
-		scr_audio_play(snd_leveleditor_place_object, global.sound_volume);
+		scr_audio_play(snd_leveleditor_place_object, volume_source.sound);
 	}
 	
 }

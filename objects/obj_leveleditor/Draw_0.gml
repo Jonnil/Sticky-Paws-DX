@@ -183,8 +183,8 @@ if (global.world_editor = false)
 	scr_level_editor_placable_object(7, level_object_id.id_wall_wood, true, spr_wall_wood, spr_wall, + 64 * 7, 1, 0, c_white);
 	scr_level_editor_placable_object(8, level_object_id.id_wall_jump_panel, true, spr_wall_jump_panel, spr_wall, + 64 * 8 + 16, 1.5, 0, c_white);
 	scr_level_editor_placable_object(9, level_object_id.id_wall_climb_panel, true, spr_wall_climb_panel, spr_wall, + 64 * 9 + 16, 1.5, 0, c_white);
-	if (selected_object = 8){draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 144, Text("Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump"), global.default_text_size * 0.75, c_black, c_white, selected_menu_alpha);}
-	if (selected_object = 9){draw_set_halign(fa_center);draw_set_valign(fa_center);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 144, Text("Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb"), global.default_text_size * 0.75, c_black, c_white, selected_menu_alpha);}
+	if (selected_object = 8){draw_set_halign(fa_center);draw_set_valign(fa_middle);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 144, l10n_text("Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump"), global.default_text_size * 0.75, c_black, c_white, selected_menu_alpha);}
+	if (selected_object = 9){draw_set_halign(fa_center);draw_set_valign(fa_middle);draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 144, l10n_text("Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb"), global.default_text_size * 0.75, c_black, c_white, selected_menu_alpha);}
 	scr_level_editor_placable_object(10, level_object_id.id_spikes, true, spr_spikes, spr_wall, + 64 * 10, 1, 0, c_white);
 	scr_level_editor_placable_object(11, level_object_id.id_semisolid_platform, true, spr_semisolid_platform, spr_wall, + 64 * 11, 1, 0, c_white);
 	scr_level_editor_placable_object(12, level_object_id.id_brick_block, true, spr_brick_block, spr_wall, + 64 * 12, 1, 0, c_white);
@@ -258,7 +258,7 @@ if (global.world_editor = false)
 		var one_up_x = 64 * 33;
 		draw_sprite_ext(sprite_lives_icon, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + one_up_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + one_up_x, camera_get_view_y(view_camera[view_current]) + 64, "1-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);
 	}
 	if (sprite_lives_icon >= 0)
@@ -266,7 +266,7 @@ if (global.world_editor = false)
 		var two_up_x = 64 * 34;
 		draw_sprite_ext(sprite_lives_icon, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + two_up_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_lime,selected_menu_alpha);
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + two_up_x, camera_get_view_y(view_camera[view_current]) + 64, "2-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);
 	}
 	if (sprite_lives_icon >= 0)
@@ -274,7 +274,7 @@ if (global.world_editor = false)
 		var three_up_x = 64 * 35;
 		draw_sprite_ext(sprite_lives_icon, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + three_up_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_blue,selected_menu_alpha);
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + three_up_x, camera_get_view_y(view_camera[view_current]) + 64, "3-up", global.default_text_size / 2, c_white, c_black,selected_menu_alpha);
 	}
 	#endregion /*One-Ups END*/
@@ -1296,7 +1296,7 @@ if (quit_level_editor <= 0)
 		if (asset_get_type("obj_leveleditor_fill") == asset_object)
 		and (!instance_exists(obj_leveleditor_fill))
 		{
-			scr_audio_play(snd_leveleditor_cycle_item_left, global.sound_volume);
+			scr_audio_play(snd_leveleditor_cycle_item_left, volume_source.sound);
 			if (selected_object > 0)
 			{
 				selected_object -= 1;
@@ -1332,7 +1332,7 @@ if (quit_level_editor <= 0)
 		if (asset_get_type("obj_leveleditor_fill") == asset_object)
 		and (!instance_exists(obj_leveleditor_fill))
 		{
-			scr_audio_play(snd_leveleditor_cycle_item_right, global.sound_volume);
+			scr_audio_play(snd_leveleditor_cycle_item_right, volume_source.sound);
 			if (selected_object < total_number_of_objects)
 			{
 				selected_object += 1;

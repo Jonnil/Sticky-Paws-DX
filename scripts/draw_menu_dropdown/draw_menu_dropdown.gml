@@ -80,7 +80,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 	
 	#region /*Text above the menu button*/
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	draw_text_outlined(x_position + 277+ 32, y_position + 21- 32,string(string_text), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 	#endregion /*Text above the menu button END*/
 	

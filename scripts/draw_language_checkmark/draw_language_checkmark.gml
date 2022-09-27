@@ -9,11 +9,6 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	#region /*Checkmark*/
 	
 	#region /*Initialize variables*/
-	x_position = argument0; /*The buttons x origin position*/
-	y_position = argument1; /*The buttons y origin position*/
-	
-	string_text = argument2;
-	menu_index = argument3;
 	var widen_button_offset = 7;
 	var width_of_button = 670;
 	#endregion /*Initialize variables END*/
@@ -111,7 +106,7 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 
 	#region /*Text inside the menu button*/
 	draw_set_halign(fa_left);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	draw_text_outlined(x_position +82, y_position + 16,string(string_text), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	#endregion /*Text inside the menu button END*/
 	

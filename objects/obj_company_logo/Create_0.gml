@@ -319,12 +319,12 @@ global.background_brightness_gameplay = 0; /*Background brightness in gameplay. 
 global.background_brightness_menu = 0; /*Background brightness in menus. full_black =- 1, normal = 0 (default), full_white = +1*/
 
 #region /*Music and Sound Volume*/
-global.main_volume = 0.7; /*Make the volumes set to 7000 by default*/
-global.music_volume = 0.7; /*This number is then *0.0001 so it becomes 0.7*/
-global.sound_volume = 0.7; /*Because Linux can't load decimal numbers from .ini files*/
-global.ambient_volume = 0.7; /*By default volumes are 70% so it doesn't hurt ears*/
-global.footstep_volume = 0.7;
-global.voice_volume = 0.7;
+global.volume_main = 0.7; /*Make the volumes set to 7000 by default*/
+global.volume_music = 0.7; /*This number is then *0.0001 so it becomes 0.7*/
+global.volume_sound = 0.7; /*Because Linux can't load decimal numbers from .ini files*/
+global.volume_ambient = 0.7; /*By default volumes are 70% so it doesn't hurt ears*/
+global.volume_footstep = 0.7;
+global.volume_voice = 0.7;
 global.verbosity_slider = 1;
 global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
 #endregion /*Music and Sound Volume END*/
@@ -493,9 +493,7 @@ file_found = "";
 time = 0;
 sprite_index = spr_company_logo;
 
-#endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/
-
-calculate_translation_completion()
+calculate_translation_completion();
 
 enum mouse_button_value
 {
@@ -507,3 +505,13 @@ enum mouse_button_value
 	mwheel_down = 13234,
 	mwheel_up = 132321
 }
+enum volume_source
+{
+	ambient = 1,
+	footstep = 2,
+	music = 3,
+	sound = 4,
+	voice = 5,
+}
+
+#endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/

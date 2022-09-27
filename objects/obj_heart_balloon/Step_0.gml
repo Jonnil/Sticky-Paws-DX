@@ -108,10 +108,7 @@ and (instance_exists(obj_player))
 			#region /* 10 Basic Collectibles*/
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
-				if (asset_get_type("snd_basic_collectible") == asset_sound)
-				{
-					audio_play_sound(snd_basic_collectible, 0, 0);
-				}
+				scr_audio_play(snd_basic_collectible, volume_source.sound);
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;

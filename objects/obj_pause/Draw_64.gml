@@ -155,7 +155,7 @@ scr_quit_to_desktop_menu("quit_to_desktop");
 
 #region /*Which player is controling the pause menu?*/
 draw_set_halign(fa_center);
-draw_set_valign(fa_center);
+draw_set_valign(fa_middle);
 
 #region /*Hide menu for clean screenshots text*/
 if (hide_menu_for_clean_screenshots_timer < 60 * 3)
@@ -189,8 +189,8 @@ and (os_type!= os_android)
 		scr_draw_gamepad_buttons(gp_face4, 32, window_get_height() - 32, 0.75, c_white, hide_menu_for_clean_screenshots_alpha);
 	}
 	draw_set_halign(fa_left);
-	draw_set_valign(fa_center);
-	draw_text_outlined(64, window_get_height() - 32, ": " + Text("Hide menu for clean screenshots"), global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha);
+	draw_set_valign(fa_middle);
+	draw_text_outlined(64, window_get_height() - 32, ": " + l10n_text("Hide menu for clean screenshots"), global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha);
 }
 
 if (keyboard_check_pressed(ord("Y")))
@@ -311,7 +311,7 @@ if (pause_text_lerp >= 1)
 
 #region /*Pause Text*/
 draw_set_halign(fa_center);
-draw_set_valign(fa_center);
+draw_set_valign(fa_middle);
 
 if (in_settings = false)
 and (menu != "quit_game_no")
@@ -347,7 +347,7 @@ and (show_loading_icon = false)
 	or (menu = "restart")
 	or (menu = "quit")
 	{
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, Text("Continue"), "continue", "continue");
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Continue"), "continue", "continue");
 		draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 21, 1, 1, 0, c_white, 1);
 		
 		if(asset_get_type("room_leveleditor") == asset_room)
@@ -357,28 +357,28 @@ and (show_loading_icon = false)
 		{
 			if (global.convention_mode = false)
 			{
-				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Options"), "options", "options");
+				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Options"), "options", "options");
 				draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
-				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Restart"), "restart", "restart");
-				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42 + 42, Text("Quit"), "quit", "quit_to_map");
+				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Restart"), "restart", "restart");
+				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map");
 			}
 			else
 			{
-				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Restart"), "restart", "restart");
-				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Quit"), "quit", "quit_to_map");
+				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Restart"), "restart", "restart");
+				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map");
 			}
 		}
 		else
 		{
 			if (global.convention_mode = false)
 			{
-				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Options"), "options", "options");
+				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Options"), "options", "options");
 				draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
-				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Quit"), "quit", "quit");
+				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Quit"), "quit", "quit");
 			}
 			else
 			{
-				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Quit"), "quit", "quit");
+				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Quit"), "quit", "quit");
 			}
 		}
 	}
@@ -387,9 +387,9 @@ and (show_loading_icon = false)
 	or(menu = "reset_from_start")
 	or(menu = "restart_nevermind")
 	{
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, Text("Reset from Checkpoint"), "reset_from_checkpoint", "reset_from_checkpoint");
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Reset from Start"), "reset_from_start", "reset_from_start");
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Nevermind"), "restart_nevermind", "restart_nevermind");
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Reset from Checkpoint"), "reset_from_checkpoint", "reset_from_checkpoint");
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Reset from Start"), "reset_from_start", "reset_from_start");
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Nevermind"), "restart_nevermind", "restart_nevermind");
 		draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 	}
 	else
@@ -406,17 +406,17 @@ and (show_loading_icon = false)
 	and (global.character_select_in_this_menu = "main_game")
 	and (menu = "quit_nevermind")
 	{
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, Text("Quit to Map"), "quit_to_map", "quit_to_map");
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Quit to Title"), "quit_to_title", "quit_to_title");
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Quit to Map"), "quit_to_map", "quit_to_map");
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
 		if (global.convention_mode = false)
 		{
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
 			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
 			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 	}
@@ -431,16 +431,16 @@ and (show_loading_icon = false)
 	and (global.character_select_in_this_menu = "level_editor")
 	and (menu = "quit_nevermind")
 	{
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, Text("Quit to Title"), "quit_to_title", "quit_to_title");
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
 		if (global.convention_mode = false)
 		{
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
 			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
 			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 	}
@@ -452,16 +452,16 @@ and (show_loading_icon = false)
 	or(global.pause_room = room_world_map)
 	and (menu = "quit_nevermind")
 	{
-		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, Text("Quit to Title"), "quit_to_title", "quit_to_title");
+		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
 		if (global.convention_mode = false)
 		{
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
 			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, Text("Nevermind"), "quit_nevermind", "quit_nevermind");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
 			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
 		}
 	}
@@ -478,9 +478,9 @@ and (show_loading_icon = false)
 			
 			#region /*Return to game*/
 			audio_resume_all();
-			audio_sound_gain(global.music, global.music_volume * global.main_volume, 0);
+			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
 			audio_sound_gain(global.music_underwater, 0, 0);
-			audio_sound_gain(global.ambience, global.ambient_volume * global.main_volume, 0);
+			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 			audio_sound_gain(global.ambience_underwater, 0, 0);
 			global.pause = false;
 			instance_activate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, window_get_width() + 32, window_get_height() + 32, true);
@@ -553,7 +553,7 @@ and (show_loading_icon = false)
 		and (global.convention_mode = false)
 		{
 			menu_delay = 3;
-			scr_audio_play(voice_options, global.voice_volume);
+			scr_audio_play(voice_options, volume_source.voice);
 			menu = noone;
 			can_navigate_settings_sidebar = true;
 			in_settings = true;
@@ -1124,9 +1124,9 @@ and (show_loading_icon = false)
 		{
 			scr_config_save(); /*Save Config*/
 			audio_resume_all();
-			audio_sound_gain(global.music, global.music_volume * global.main_volume, 0);
+			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
 			audio_sound_gain(global.music_underwater, 0, 0);
-			audio_sound_gain(global.ambience, global.ambient_volume * global.main_volume, 0);
+			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 			audio_sound_gain(global.ambience_underwater, 0, 0);
 			global.pause = false;
 			if (instance_exists(obj_player))
@@ -1174,9 +1174,9 @@ if (show_loading_icon = true)
 {
 	loading_spinning_angle -= 10;
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	draw_sprite_ext(spr_loading, 0, display_get_gui_width() / 2, display_get_gui_height() / 2, 1, 1, loading_spinning_angle, c_white, 1);
-	draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 42, Text("Loading"), global.default_text_size, c_white, c_black, 1);
+	draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
 		
 	if (menu = "reset_from_checkpoint")
 	and (loading_spinning_angle < -20)
@@ -1304,9 +1304,9 @@ or(gamepad_button_check_pressed(3, gp_select))
 	{
 		scr_config_save(); /*Save Config*/
 		audio_resume_all();
-		audio_sound_gain(global.music, global.music_volume * global.main_volume, 0);
+		audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
 		audio_sound_gain(global.music_underwater, 0, 0);
-		audio_sound_gain(global.ambience, global.ambient_volume * global.main_volume, 0);
+		audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 		audio_sound_gain(global.ambience_underwater, 0, 0);
 		global.pause = false;
 		if (instance_exists(obj_player))

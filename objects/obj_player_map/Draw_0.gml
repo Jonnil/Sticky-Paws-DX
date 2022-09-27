@@ -156,7 +156,7 @@ global.hud_show_big_collectibles = false;
 global.hud_show_score = false;
 #endregion /*Hide all HUD elements END*/
 
-scr_audio_play(snd_music_map, global.music_volume);
+scr_audio_play(snd_music_map, volume_source.music);
 audio_stop_sound(global.ambience);
 audio_stop_sound(global.ambience_underwater);
 audio_stop_sound(global.music);
@@ -317,7 +317,7 @@ and (global.quit_level = false)
 						draw_xscale = 1.5;
 						draw_yscale = 0.5;
 						yy -= 32;
-						scr_audio_play(snd_bump, global.sound_volume);
+						scr_audio_play(snd_bump, volume_source.sound);
 					}
 				}
 			}
@@ -343,7 +343,7 @@ and (global.quit_level = false)
 						draw_xscale = 0.5;
 						draw_yscale = 1.5;
 						xx -= 32;
-						scr_audio_play(snd_bump, global.sound_volume);
+						scr_audio_play(snd_bump, volume_source.sound);
 					}
 				}
 			}
@@ -369,7 +369,7 @@ and (global.quit_level = false)
 						draw_xscale = 0.5;
 						draw_yscale = 1.5;
 						xx += 32;
-						scr_audio_play(snd_bump, global.sound_volume);
+						scr_audio_play(snd_bump, volume_source.sound);
 					}
 				}
 			}
@@ -395,7 +395,7 @@ and (global.quit_level = false)
 						draw_xscale = 1.5;
 						draw_yscale = 0.5;
 						yy += 32;
-						scr_audio_play(snd_bump, global.sound_volume);
+						scr_audio_play(snd_bump, volume_source.sound);
 					}
 				}
 			}
@@ -426,7 +426,7 @@ and (global.quit_level = false)
 					draw_xscale = 1.5;
 					draw_yscale = 0.5;
 					yy -= 32;
-					scr_audio_play(snd_bump, global.sound_volume);
+					scr_audio_play(snd_bump, volume_source.sound);
 				}
 			}
 		}
@@ -449,7 +449,7 @@ and (global.quit_level = false)
 					draw_xscale = 0.5;
 					draw_yscale = 1.5;
 					xx -= 32;
-					scr_audio_play(snd_bump, global.sound_volume);
+					scr_audio_play(snd_bump, volume_source.sound);
 				}
 			}
 		}
@@ -472,7 +472,7 @@ and (global.quit_level = false)
 					draw_xscale = 0.5;
 					draw_yscale = 1.5;
 					xx += 32;
-					scr_audio_play(snd_bump, global.sound_volume);
+					scr_audio_play(snd_bump, volume_source.sound);
 				}
 			}
 		}
@@ -495,7 +495,7 @@ and (global.quit_level = false)
 					draw_xscale = 1.5;
 					draw_yscale = 0.5;
 					yy += 32;
-					scr_audio_play(snd_bump, global.sound_volume);
+					scr_audio_play(snd_bump, volume_source.sound);
 				}
 			}
 		}
@@ -964,7 +964,7 @@ and (point_distance(xx, yy, x, y) < 40)
 	{
 		
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		
 		if (global.show_deaths_counter = true)
 		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
@@ -988,21 +988,21 @@ and (point_distance(xx, yy, x, y) < 40)
 		if (global.show_deaths_counter = true)
 		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
 		{
-			draw_text_outlined(x, y + total_deaths_y, Text("Total Deaths") + " : " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y + total_deaths_y, l10n_text("Total Deaths") + " : " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Total number of deaths END*/
 		
 		#region /*Number of times played*/
 		if (instance_nearest(x, y, obj_level).number_of_clears > 0)
 		{
-			draw_text_outlined(x, y + times_cleared_y, Text("Times Passed") + " : " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y + times_cleared_y, l10n_text("Times Passed") + " : " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Number of times played END*/
 		
 		#region /*Show High Score*/
 		if (instance_nearest(x, y, obj_level).level_score > 0)
 		{
-			draw_text_outlined(x, y + best_score_y, Text("Best Score") + " : " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
+			draw_text_outlined(x, y + best_score_y, l10n_text("Best Score") + " : " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show High Score END*/
 		
@@ -1010,7 +1010,7 @@ and (point_distance(xx, yy, x, y) < 40)
 		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
 		and (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
 		{
-			draw_text_outlined(x, y + best_time_y, Text("Best Time") + " : " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
+			draw_text_outlined(x, y + best_time_y, l10n_text("Best Time") + " : " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_second, 2, 0), " ", "0")) + "." +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
 		}

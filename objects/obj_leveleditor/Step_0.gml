@@ -1,4 +1,4 @@
-scr_audio_play(level_editing_music, global.music_volume);
+scr_audio_play(level_editing_music, volume_source.music);
 
 if (selected_level_editing_music != previous_selected_level_editing_music)
 {
