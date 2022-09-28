@@ -12,25 +12,25 @@ function scr_zoom_camera_controls()
 	
 	/*This script uses normal draw functions so only use it in normal draw event (Not draw GUI)*/
 	if(gamepad_axis_value(0, gp_axisrv) < 0)
-	or(gamepad_axis_value(0, gp_axisrv) < 0)
+	or (gamepad_axis_value(0, gp_axisrv) < 0)
 	{
 		var zoom_speed = abs(gamepad_axis_value(0, gp_axisrv)) * 0.015;
 	}
 	else
 	if(gamepad_axis_value(1, gp_axisrv) < 0)
-	or(gamepad_axis_value(1, gp_axisrv) < 0)
+	or (gamepad_axis_value(1, gp_axisrv) < 0)
 	{
 		var zoom_speed = abs(gamepad_axis_value(1, gp_axisrv)) * 0.015;
 	}
 	else
 	if(gamepad_axis_value(2, gp_axisrv) < 0)
-	or(gamepad_axis_value(2, gp_axisrv) < 0)
+	or (gamepad_axis_value(2, gp_axisrv) < 0)
 	{
 		var zoom_speed = abs(gamepad_axis_value(2, gp_axisrv)) * 0.015;
 	}
 	else
 	if(gamepad_axis_value(3, gp_axisrv) < 0)
-	or(gamepad_axis_value(3, gp_axisrv) < 0)
+	or (gamepad_axis_value(3, gp_axisrv) < 0)
 	{
 		var zoom_speed = abs(gamepad_axis_value(3, gp_axisrv)) * 0.015;
 	}
@@ -70,10 +70,10 @@ function scr_zoom_camera_controls()
 		or (key_player4_zoom_in_hold)
 		and (!key_player4_zoom_out_hold)
 		
-		or(gamepad_axis_value(0, gp_axisrv) < 0)
-		or(gamepad_axis_value(1, gp_axisrv) < 0)
-		or(gamepad_axis_value(2, gp_axisrv) < 0)
-		or(gamepad_axis_value(3, gp_axisrv) < 0)
+		or (gamepad_axis_value(0, gp_axisrv) < 0)
+		or (gamepad_axis_value(1, gp_axisrv) < 0)
+		or (gamepad_axis_value(2, gp_axisrv) < 0)
+		or (gamepad_axis_value(3, gp_axisrv) < 0)
 		{
 			if (zoom_lerp > 0.2)
 			{
@@ -109,10 +109,10 @@ function scr_zoom_camera_controls()
 		or (key_player4_zoom_out_hold)
 		and (!key_player4_zoom_in_hold)
 		
-		or(gamepad_axis_value(0, gp_axisrv) > 0)
-		or(gamepad_axis_value(1, gp_axisrv) > 0)
-		or(gamepad_axis_value(2, gp_axisrv) > 0)
-		or(gamepad_axis_value(3, gp_axisrv) > 0)
+		or (gamepad_axis_value(0, gp_axisrv) > 0)
+		or (gamepad_axis_value(1, gp_axisrv) > 0)
+		or (gamepad_axis_value(2, gp_axisrv) > 0)
+		or (gamepad_axis_value(3, gp_axisrv) > 0)
 		{
 			if (zoom_lerp < 1)
 			{

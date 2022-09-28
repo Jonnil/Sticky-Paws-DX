@@ -1,5 +1,5 @@
 #region /*If spikes are disabled, destroy this object*/
-if (global.assist_enable = true)
+if (global.assist_enable == true)
 and (global.assist_enable_spikes = false)
 {
 	instance_destroy();
@@ -156,30 +156,30 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 		{
 			if (invincible = false)
 			{
-				if (have_heart_balloon = true)
+				if (have_heart_balloon == true)
 				{
 					have_heart_balloon = false;
 					
 					#region /*Save heart balloon to be false*/
-					if (player = 1)
+					if (player == 1)
 					{
 						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 						ini_write_real("Player", "player_1_have_heart_balloon", false);
 						ini_close();
 					}
-					if (player = 2)
+					if (player == 2)
 					{
 						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 						ini_write_real("Player", "player_2_have_heart_balloon", false);
 						ini_close();
 					}
-					if (player = 3)
+					if (player == 3)
 					{
 						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 						ini_write_real("Player", "player_3_have_heart_balloon", false);
 						ini_close();
 					}
-					if (player = 4)
+					if (player == 4)
 					{
 						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 						ini_write_real("Player", "player_4_have_heart_balloon", false);

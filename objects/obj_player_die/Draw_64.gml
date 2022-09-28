@@ -39,45 +39,45 @@ if (lives <= 0)
 		draw_menu_button(window_get_width() / 2 + game_over_menu_seperation_distance, window_get_height() - game_over_menu_y, l10n_text("Quit"), "quit", "quit");
 		
 		if (keyboard_check_pressed(global.player1_key_left))
-		or(keyboard_check_pressed(global.player2_key_left))
-		or(keyboard_check_pressed(global.player3_key_left))
-		or(keyboard_check_pressed(global.player4_key_left))
-		or(keyboard_check_pressed(global.player1_key2_left))
-		or(keyboard_check_pressed(global.player2_key2_left))
-		or(keyboard_check_pressed(global.player3_key2_left))
-		or(keyboard_check_pressed(global.player4_key2_left))
-		or(keyboard_check_pressed(ord("A")))
-		or(keyboard_check_pressed(vk_left))
-		or(gamepad_button_check_pressed(0, gp_padl))
-		or(gamepad_button_check_pressed(1, gp_padl))
-		or(gamepad_button_check_pressed(2, gp_padl))
-		or(gamepad_button_check_pressed(3, gp_padl))
-		or(gamepad_axis_value(0, gp_axislh) < 0)
-		or(keyboard_check_pressed(global.player1_key_right))
-		or(keyboard_check_pressed(global.player2_key_right))
-		or(keyboard_check_pressed(global.player3_key_right))
-		or(keyboard_check_pressed(global.player4_key_right))
-		or(keyboard_check_pressed(global.player1_key2_right))
-		or(keyboard_check_pressed(global.player2_key2_right))
-		or(keyboard_check_pressed(global.player3_key2_right))
-		or(keyboard_check_pressed(global.player4_key2_right))
-		or(keyboard_check_pressed(ord("D")))
-		or(keyboard_check_pressed(vk_right))
-		or(gamepad_button_check_pressed(0, gp_padr))
-		or(gamepad_button_check_pressed(1, gp_padr))
-		or(gamepad_button_check_pressed(2, gp_padr))
-		or(gamepad_button_check_pressed(3, gp_padr))
-		or(gamepad_axis_value(0, gp_axislh) > 0)
+		or (keyboard_check_pressed(global.player2_key_left))
+		or (keyboard_check_pressed(global.player3_key_left))
+		or (keyboard_check_pressed(global.player4_key_left))
+		or (keyboard_check_pressed(global.player1_key2_left))
+		or (keyboard_check_pressed(global.player2_key2_left))
+		or (keyboard_check_pressed(global.player3_key2_left))
+		or (keyboard_check_pressed(global.player4_key2_left))
+		or (keyboard_check_pressed(ord("A")))
+		or (keyboard_check_pressed(vk_left))
+		or (gamepad_button_check_pressed(0, gp_padl))
+		or (gamepad_button_check_pressed(1, gp_padl))
+		or (gamepad_button_check_pressed(2, gp_padl))
+		or (gamepad_button_check_pressed(3, gp_padl))
+		or (gamepad_axis_value(0, gp_axislh) < 0)
+		or (keyboard_check_pressed(global.player1_key_right))
+		or (keyboard_check_pressed(global.player2_key_right))
+		or (keyboard_check_pressed(global.player3_key_right))
+		or (keyboard_check_pressed(global.player4_key_right))
+		or (keyboard_check_pressed(global.player1_key2_right))
+		or (keyboard_check_pressed(global.player2_key2_right))
+		or (keyboard_check_pressed(global.player3_key2_right))
+		or (keyboard_check_pressed(global.player4_key2_right))
+		or (keyboard_check_pressed(ord("D")))
+		or (keyboard_check_pressed(vk_right))
+		or (gamepad_button_check_pressed(0, gp_padr))
+		or (gamepad_button_check_pressed(1, gp_padr))
+		or (gamepad_button_check_pressed(2, gp_padr))
+		or (gamepad_button_check_pressed(3, gp_padr))
+		or (gamepad_axis_value(0, gp_axislh) > 0)
 		{
-			if (menu_delay = 0)
+			if (menu_delay == 0)
 			{
-				if (menu = "continue")
+				if (menu == "continue")
 				{
 					menu = "quit";
 					menu_delay = 10;
 				}
 				else
-				if (menu = "quit")
+				if (menu == "quit")
 				{
 					menu = "continue";
 					menu_delay = 10;
@@ -86,21 +86,21 @@ if (lives <= 0)
 		}
 		
 		if (keyboard_check_pressed(global.player1_key_jump))
-		or(keyboard_check_pressed(global.player2_key_jump))
-		or(keyboard_check_pressed(global.player3_key_jump))
-		or(keyboard_check_pressed(global.player4_key_jump))
-		or(keyboard_check_pressed(global.player1_key2_jump))
-		or(keyboard_check_pressed(global.player2_key2_jump))
-		or(keyboard_check_pressed(global.player3_key2_jump))
-		or(keyboard_check_pressed(global.player4_key2_jump))
-		or(keyboard_check_pressed(ord("Z")))
-		or(keyboard_check_pressed(vk_space))
-		or(keyboard_check_pressed(vk_enter))
-		or(gamepad_button_check_pressed(0, gp_face1))
-		or(gamepad_button_check_pressed(1, gp_face1))
-		or(gamepad_button_check_pressed(2, gp_face1))
-		or(gamepad_button_check_pressed(3, gp_face1))
-		or(menu = "continue")
+		or (keyboard_check_pressed(global.player2_key_jump))
+		or (keyboard_check_pressed(global.player3_key_jump))
+		or (keyboard_check_pressed(global.player4_key_jump))
+		or (keyboard_check_pressed(global.player1_key2_jump))
+		or (keyboard_check_pressed(global.player2_key2_jump))
+		or (keyboard_check_pressed(global.player3_key2_jump))
+		or (keyboard_check_pressed(global.player4_key2_jump))
+		or (keyboard_check_pressed(ord("Z")))
+		or (keyboard_check_pressed(vk_space))
+		or (keyboard_check_pressed(vk_enter))
+		or (gamepad_button_check_pressed(0, gp_face1))
+		or (gamepad_button_check_pressed(1, gp_face1))
+		or (gamepad_button_check_pressed(2, gp_face1))
+		or (gamepad_button_check_pressed(3, gp_face1))
+		or (menu == "continue")
 		and (point_in_rectangle(
 		window_mouse_get_x(),
 		window_mouse_get_y(),
@@ -109,7 +109,7 @@ if (lives <= 0)
 		window_get_width() / 2 - 370 + 370 - game_over_menu_seperation_distance,
 		window_get_height() - game_over_menu_y + 41))
 		and (mouse_check_button_pressed(mb_left))
-		or(menu = "quit")
+		or (menu == "quit")
 		and (point_in_rectangle(
 		window_mouse_get_x(),
 		window_mouse_get_y(),
@@ -121,24 +121,24 @@ if (lives <= 0)
 		{
 			
 			#region /*Click Menu*/
-			if (global.playergame = 0)
+			if (global.playergame == 0)
 			{
 				lives = 5;
 			}
-			if (global.playergame = 1)
+			if (global.playergame == 1)
 			{
 				lives = 10;
 			}
-			if (global.playergame = 2)
+			if (global.playergame == 2)
 			{
 				lives = 15;
 			}
-			if (global.playergame = 3)
+			if (global.playergame == 3)
 			{
 				lives = 20;
 			}
 				
-			if (menu = "quit")
+			if (menu == "quit")
 			{
 				global.quit_level = true; /*Quit level and go to map screen*/
 			}
@@ -147,12 +147,12 @@ if (lives <= 0)
 			global.timeattack_realmillisecond = 0;
 			global.level_clear_rate = noone;
 			score = 0;
-			scr_savelevel();
+			scr_save_level();
 			audio_stop_all();
 				
 			#region /*Go to level editor if you die in level editor*/
 			if (asset_get_type("room_leveleditor") == asset_room)
-			and (room = room_leveleditor)
+			and (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();
@@ -170,12 +170,4 @@ if (lives <= 0)
 }
 #endregion /*Game Over END*/
 
-#region /*Draw mouse cursor for menu navigation*/
-if (global.controls_used_for_menu_navigation = "mouse")
-and (global.full_level_map_screenshot = false)
-and (os_type!= os_android)
-and (os_type!= os_ios)
-{
-	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
-}
-#endregion /*Draw mouse cursor for menu navigation END*/
+scr_draw_mouse_cursor();

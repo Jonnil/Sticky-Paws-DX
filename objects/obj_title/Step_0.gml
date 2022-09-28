@@ -48,7 +48,7 @@ if (lerp_on == true)
 	}
 }
 
-if (menu = "load_characters")
+if (menu == "load_characters")
 {
 	/*Load custom level data*/
 	
@@ -77,7 +77,7 @@ if (menu = "load_characters")
 }
 
 #region /*Load Custom Level*/
-if (menu = "load_custom_level")
+if (menu == "load_custom_level")
 {
 	/*Load custom level data*/
 	
@@ -144,7 +144,7 @@ if (menu = "load_custom_level")
 #endregion /*Load Custom Level END*/
 
 #region /*Load Official Level Template*/
-if (menu = "load_official_level_template")
+if (menu == "load_official_level_template")
 {
 	/*Load official level data*/
 	

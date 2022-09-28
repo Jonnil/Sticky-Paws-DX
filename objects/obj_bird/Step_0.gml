@@ -1,4 +1,4 @@
-depth = + 5;
+depth = +5;
 image_speed = 0;
 if (speed > 0)
 {
@@ -83,7 +83,7 @@ and (place_meeting(x, y, obj_player))
 	{
 		touch_player = 2;
 		image_index = 1;
-		hspeed = + 6;
+		hspeed = +6;
 		vspeed = -6;
 		image_angle = 0;
 	}

@@ -6,20 +6,20 @@ and (global.enable_attract_demo = true)
 	{
 		play_attract_demo_time += 1;
 	}
-	if (menu = "main_game")
-	or (menu = "leveleditor")
-	or (menu = "options")
-	or (menu = "language_shortcut")
-	or (menu = "accessibility_shortcut")
-	or (menu = "profile_shortcut")
-	or (menu = "credits")
-	or (menu = "quit")
-	or (menu = "link_discord")
-	or (menu = "link_gamebanana")
-	or (menu = "link_instagram")
-	or (menu = "link_reddit")
-	or (menu = "link_twitter")
-	or (menu = "link_wiki")
+	if (menu == "main_game")
+	or (menu == "leveleditor")
+	or (menu == "options")
+	or (menu == "language_shortcut")
+	or (menu == "accessibility_shortcut")
+	or (menu == "profile_shortcut")
+	or (menu == "credits")
+	or (menu == "quit")
+	or (menu == "link_discord")
+	or (menu == "link_gamebanana")
+	or (menu == "link_instagram")
+	or (menu == "link_reddit")
+	or (menu == "link_twitter")
+	or (menu == "link_wiki")
 	{
 		if (play_attract_demo_time >= 960)
 		and (file_exists("video/trailer.mp4"))
@@ -42,12 +42,16 @@ and (global.enable_attract_demo = true)
 		}
 	}
 }
+var mouse_x_position = window_mouse_get_x(); /*Update x position of fake mouse*/
+var mouse_y_position = window_mouse_get_y(); /*Update y position of fake mouse*/
+var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /*Get distance from fake mouse to real mouse*/
+
 if (keyboard_check(vk_anykey))
 or (mouse_check_button(mb_any))
 or (mouse_wheel_down())
 or (mouse_wheel_up())
 or (instance_exists(obj_camera))
-and (obj_camera.mouse_moving)
+and (mouse_moving)
 and (global.play_attract_demo = false)
 
 or (gamepad_button_check(0, gp_face1))
@@ -166,23 +170,23 @@ if (global.play_attract_demo = 2)
 }
 #endregion /*Play Attract Demo END*/
 
-if (menu = "main_game")
-or (menu = "options")
-or (menu = "quit")
-or (menu = "quit_game_no")
-or (menu = "quit_game_yes")
-or (menu = "link_discord")
-or (menu = "link_gamebanana")
-or (menu = "link_instagram")
-or (menu = "link_reddit")
-or (menu = "link_twitter")
-or (menu = "link_wiki")
+if (menu == "main_game")
+or (menu == "options")
+or (menu == "quit")
+or (menu == "quit_game_no")
+or (menu == "quit_game_yes")
+or (menu == "link_discord")
+or (menu == "link_gamebanana")
+or (menu == "link_instagram")
+or (menu == "link_reddit")
+or (menu == "link_twitter")
+or (menu == "link_wiki")
 {
 	
 	#region /*Enable convention mode via cheat code, type "conventionmode" on your keyboard*/
 	if (keyboard_check_pressed(ord("C")))
 	and (keyboard_string != "arc")
-	and (can_input_level_name = false)
+	and (can_input_level_name == false)
 	and (can_input_player1_name = false)
 	and (can_input_player2_name = false)
 	and (can_input_player3_name = false)
@@ -204,16 +208,16 @@ or (menu = "link_wiki")
 			{
 				global.arcade_mode = false;
 				global.convention_mode = true;
-				if (menu = "options")
-				or (menu = "quit")
-				or (menu = "quit_game_no")
-				or (menu = "quit_game_yes")
-				or (menu = "link_discord")
-				or (menu = "link_gamebanana")
-				or (menu = "link_instagram")
-				or (menu = "link_reddit")
-				or (menu = "link_twitter")
-				or (menu = "link_wiki")
+				if (menu == "options")
+				or (menu == "quit")
+				or (menu == "quit_game_no")
+				or (menu == "quit_game_yes")
+				or (menu == "link_discord")
+				or (menu == "link_gamebanana")
+				or (menu == "link_instagram")
+				or (menu == "link_reddit")
+				or (menu == "link_twitter")
+				or (menu == "link_wiki")
 				or (in_settings = true)
 				{
 					menu = "main_game";
@@ -239,7 +243,7 @@ or (menu = "link_wiki")
 	#region /*Enable arcade mode via cheat code, type "arcademode" on your keyboard*/
 	if (keyboard_check_pressed(ord("A")))
 	and (keyboard_string != "arca")
-	and (can_input_level_name = false)
+	and (can_input_level_name == false)
 	and (can_input_player1_name = false)
 	and (can_input_player2_name = false)
 	and (can_input_player3_name = false)
@@ -261,16 +265,16 @@ or (menu = "link_wiki")
 			{
 				global.arcade_mode = true;
 				global.convention_mode = false;
-				if (menu = "options")
-				or (menu = "quit")
-				or (menu = "quit_game_no")
-				or (menu = "quit_game_yes")
-				or (menu = "link_discord")
-				or (menu = "link_gamebanana")
-				or (menu = "link_instagram")
-				or (menu = "link_reddit")
-				or (menu = "link_twitter")
-				or (menu = "link_wiki")
+				if (menu == "options")
+				or (menu == "quit")
+				or (menu == "quit_game_no")
+				or (menu == "quit_game_yes")
+				or (menu == "link_discord")
+				or (menu == "link_gamebanana")
+				or (menu == "link_instagram")
+				or (menu == "link_reddit")
+				or (menu == "link_twitter")
+				or (menu == "link_wiki")
 				or (in_settings = true)
 				{
 					menu = "main_game";
@@ -301,7 +305,7 @@ if (global.convention_mode = true)
 and (show_convention_mode_enable_text > 0)
 {
 	show_convention_mode_enable_text -= 1;
-	draw_text_outlined(64, 32, l10n_text("Convention mode"), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(64, 32, l10n_text("Convention mode"), global.default_text_size, c_white, c_black, 1);
 	draw_sprite_ext(spr_checkbox, true, 32, 32, 0.5, 0.5, 0, c_white, 1);
 }
 else
@@ -309,7 +313,7 @@ if (global.convention_mode = false)
 and (show_convention_mode_enable_text > 0)
 {
 	show_convention_mode_enable_text -= 1;
-	draw_text_outlined(64, 32, l10n_text("Convention mode"), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(64, 32, l10n_text("Convention mode"), global.default_text_size, c_white, c_black, 1);
 	draw_sprite_ext(spr_checkbox, false, 32, 32, 0.5, 0.5, 0, c_white, 1);
 }
 
@@ -319,7 +323,7 @@ if (global.arcade_mode = true)
 and (show_arcade_mode_enable_text > 0)
 {
 	show_arcade_mode_enable_text -= 1;
-	draw_text_outlined(64, 32, l10n_text("Arcade mode"), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(64, 32, l10n_text("Arcade mode"), global.default_text_size, c_white, c_black, 1);
 	draw_sprite_ext(spr_checkbox, true, 32, 32, 0.5, 0.5, 0, c_white, 1);
 }
 else
@@ -327,7 +331,7 @@ if (global.arcade_mode = false)
 and (show_arcade_mode_enable_text > 0)
 {
 	show_arcade_mode_enable_text -= 1;
-	draw_text_outlined(64, 32, l10n_text("Arcade mode"), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(64, 32, l10n_text("Arcade mode"), global.default_text_size, c_white, c_black, 1);
 	draw_sprite_ext(spr_checkbox, false, 32, 32, 0.5, 0.5, 0, c_white, 1);
 }
 
@@ -524,27 +528,26 @@ if (global.volume_voice > 1)
 }
 #endregion /*Volumes stay between 0 and 1 END*/
 
-/*Keyboard Controls*/
-gamepad_set_axis_deadzone(0, 0.50);
-key_up = (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv) < 0) or mouse_wheel_up();
-key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh) < 0);
-key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
-key_down = (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or(gamepad_axis_value(0, gp_axislv) > 0) or mouse_wheel_down();
-key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
-key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_escape))or(keyboard_check_pressed(vk_backspace))or(mouse_check_button_pressed(mb_right))or(mouse_check_button_pressed(mb_side1));
-/*Keyboard Controls END*/
+#region /*Keyboard Controls*/
+key_up = (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or (gamepad_axis_value(0, gp_axislv) < 0) or mouse_wheel_up();
+key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or (gamepad_axis_value(0, gp_axislh) < 0);
+key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
+key_down = (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or (keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or (gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or (gamepad_axis_value(0, gp_axislv) > 0) or mouse_wheel_down();
+key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or (keyboard_check_pressed(ord("Z")))or (keyboard_check_pressed(vk_enter))or (keyboard_check_pressed(vk_space));
+key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or (keyboard_check_pressed(ord("X")))or (keyboard_check_pressed(vk_escape))or (keyboard_check_pressed(vk_backspace))or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
+#endregion /*Keyboard Controls END*/
 
 #region /*Quit Game trough pause menu*/
 if (global.convention_mode = false)
 and (can_remap_key = false)
-and (input_key = false)
-and (menu_delay = 0)
+and (input_key == false)
+and (menu_delay == 0)
 {
-	if (menu = "main_game")
-	or(menu = "leveleditor")
-	or(menu = "options")
-	or(menu = "credits")
-	or(menu = "quit")
+	if (menu == "main_game")
+	or (menu == "leveleditor")
+	or (menu == "options")
+	or (menu == "credits")
+	or (menu == "quit")
 	{
 		if (keyboard_check_pressed(vk_escape))
 		{
@@ -555,7 +558,7 @@ and (menu_delay = 0)
 		{
 			room_persistent = false;
 		}
-		if (global.quit_level = true)
+		if (global.quit_level == true)
 		{
 			game_end();
 		}
@@ -566,15 +569,15 @@ and (menu_delay = 0)
 /*Draw Event*/
 
 #region /*Fullscreen toggle*/
-if (os_type!= os_ios)
-and (os_type!= os_android)
+if (os_type != os_ios)
+and (os_type != os_android)
 and (global.controls_used_for_menu_navigation != "controller")
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	if (window_get_fullscreen())
 	{
-		draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, l10n_text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, l10n_text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
@@ -582,7 +585,7 @@ and (global.controls_used_for_menu_navigation != "controller")
 	}
 	else
 	{
-		draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, l10n_text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, l10n_text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
@@ -590,7 +593,7 @@ and (global.controls_used_for_menu_navigation != "controller")
 	}
 }
 if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
-and (global.controls_used_for_menu_navigation = "mouse")
+and (global.controls_used_for_menu_navigation == "mouse")
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42, c_white, c_white, c_white, c_white, false);
@@ -598,7 +601,7 @@ and (global.controls_used_for_menu_navigation = "mouse")
 }
 if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
 and (mouse_check_button_pressed(mb_left))
-and (global.controls_used_for_menu_navigation = "mouse")
+and (global.controls_used_for_menu_navigation == "mouse")
 and (menu != "quit_game_no")
 and (menu != "quit_game_yes")
 {
@@ -614,35 +617,18 @@ and (menu != "quit_game_yes")
 }
 #endregion /*Fullscreen toggle END*/
 
-#region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
-if (asset_get_type("obj_camera") == asset_object)
-and (!instance_exists(obj_camera))
-and (keyboard_check_pressed(global.fullscreen_key))
-{
-	if (window_get_fullscreen())
-	{
-		window_set_fullscreen(false);
-	}
-	else
-	{
-		window_set_fullscreen(true);
-	}
-	ini_open("config.ini");
-	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
-	ini_close();
-}
-#endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
+scr_toggle_fullscreen();
 
 #region /*Build Date and Version*/
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-if (global.demo = false)
+if (global.demo == false)
 {
-	draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + GM_version, global.default_text_size, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + GM_version, global.default_text_size, c_menu_outline, c_menu_fill, 1);
 }
 else
 {
-	draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + GM_version + " " + l10n_text("Demo"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + GM_version + " " + l10n_text("Demo"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 }
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
@@ -668,10 +654,10 @@ if (global.enable_links = true)
 	
 	if (key_a_pressed)
 	and (menu = "link_discord")
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_discord_x, display_get_gui_height() + 8 + version_y_pos, link_discord_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_discord));
 		menu_delay = 3;
@@ -679,10 +665,10 @@ if (global.enable_links = true)
 	else
 	if (key_a_pressed)
 	and (menu = "link_gamebanana")
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, link_gamebanana_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_gamebanana));
 		menu_delay = 3;
@@ -690,10 +676,10 @@ if (global.enable_links = true)
 	else
 	if (key_a_pressed)
 	and (menu = "link_instagram")
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_instagram_x, display_get_gui_height() + 8 + version_y_pos, link_instagram_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_instagram));
 		menu_delay = 3;
@@ -701,10 +687,10 @@ if (global.enable_links = true)
 	else
 	if (key_a_pressed)
 	and (menu = "link_reddit")
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_reddit_x, display_get_gui_height() + 8 + version_y_pos, link_reddit_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_reddit));
 		menu_delay = 3;
@@ -712,10 +698,10 @@ if (global.enable_links = true)
 	else
 	if (key_a_pressed)
 	and (menu = "link_twitter")
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_twitter_x, display_get_gui_height() + 8 + version_y_pos, link_twitter_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_twitter));
 		menu_delay = 3;
@@ -723,10 +709,10 @@ if (global.enable_links = true)
 	else
 	if (key_a_pressed)
 	and (menu = "link_wiki")
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_wiki_x, display_get_gui_height() + 8 + version_y_pos, link_wiki_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_wiki));
 		menu_delay = 3;
@@ -735,20 +721,20 @@ if (global.enable_links = true)
 #endregion /*Links END*/
 
 #region /*Hide Fullscreen and Version text / Set certain variables to default value*/
-if (menu = "main_game")
-or (menu = "leveleditor")
-or (menu = "options")
-or (menu = "language_shortcut")
-or (menu = "accessibility_shortcut")
-or (menu = "profile_shortcut")
-or (menu = "credits")
-or (menu = "quit")
-or (menu = "link_discord")
-or (menu = "link_gamebanana")
-or (menu = "link_instagram")
-or (menu = "link_reddit")
-or (menu = "link_twitter")
-or (menu = "link_wiki")
+if (menu == "main_game")
+or (menu == "leveleditor")
+or (menu == "options")
+or (menu == "language_shortcut")
+or (menu == "accessibility_shortcut")
+or (menu == "profile_shortcut")
+or (menu == "credits")
+or (menu == "quit")
+or (menu == "link_discord")
+or (menu == "link_gamebanana")
+or (menu == "link_instagram")
+or (menu == "link_reddit")
+or (menu == "link_twitter")
+or (menu == "link_wiki")
 {
 	if (global.play_attract_demo = false)
 	{
@@ -793,7 +779,7 @@ else
 
 #region /*Draw Title Screen*/
 if (global.title_logo_index >= 0)
-or(global.resource_pack_sprite_title_logo_christmas > 0)
+or (global.resource_pack_sprite_title_logo_christmas > 0)
 {
 	if (global.title_logo_index >= 0)
 	and (global.title_logo_index != undefined)
@@ -858,11 +844,11 @@ if (global.arcade_mode = true)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 100 + 80, l10n_text("Insert Coin"), global.default_text_size * 2, c_black, c_white, scr_wave(1, 0, 1, 0));
+		scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 100 + 80, l10n_text("Insert Coin"), global.default_text_size * 2, c_black, c_white, scr_wave(1, 0, 1, 0));
 	}
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
-	draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("Credit") + " " + string(global.arcade_credit), global.default_text_size * 2, c_black, c_white, 1);
+	scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("Credit") + " " + string(global.arcade_credit), global.default_text_size * 2, c_black, c_white, 1);
 	if (global.arcade_credit >= 1)
 	and (menu != "load_characters")
 	and (menu != "select_character")
@@ -887,46 +873,46 @@ if (global.arcade_mode = true)
 #endregion /*Arcade Mode Menu END*/
 
 #region /*Main Menu*/
-if (menu = "main_game")
+if (menu == "main_game")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "leveleditor")
+or (menu == "leveleditor")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "options")
+or (menu == "options")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "language_shortcut")
+or (menu == "language_shortcut")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "accessibility_shortcut")
+or (menu == "accessibility_shortcut")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "profile_shortcut")
+or (menu == "profile_shortcut")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "credits")
+or (menu == "credits")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "quit")
+or (menu == "quit")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "link_discord")
+or (menu == "link_discord")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "link_gamebanana")
+or (menu == "link_gamebanana")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "link_instagram")
+or (menu == "link_instagram")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "link_reddit")
+or (menu == "link_reddit")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "link_twitter")
+or (menu == "link_twitter")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
-or (menu = "link_wiki")
+or (menu == "link_wiki")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
 {
@@ -938,11 +924,11 @@ and (global.arcade_mode = false)
 	#region /*Click Main Game*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 40, display_get_gui_width() / 2 + 185, display_get_gui_height() / 2 + 100 + 60 + 19))
 	and (mouse_check_button_released(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
-	or(menu = "main_game")
+	or (menu == "main_game")
 	and (key_a_pressed)
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
 	{
 		global.player1_can_play = false;
@@ -968,14 +954,14 @@ and (global.arcade_mode = false)
 	#region /*Click Level Editor*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 +80 + 1, display_get_gui_width() / 2 + 185, display_get_gui_height() / 2 + 100 + 100 + 19))
 	and (mouse_check_button_released(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
-	and (global.demo = false)
-	or(menu = "leveleditor")
+	and (global.demo == false)
+	or (menu == "leveleditor")
 	and (key_a_pressed)
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
-	and (global.demo = false)
+	and (global.demo == false)
 	{
 		global.player1_can_play = false;
 		global.player2_can_play = false;
@@ -990,8 +976,8 @@ and (global.arcade_mode = false)
 		#region /*Select Level Editor*/
 		if (asset_get_type("room_leveleditor") == asset_room)
 		and (menu = "leveleditor")
-		and (menu_delay = 0)
-		and (global.demo = false)
+		and (menu_delay == 0)
+		and (global.demo == false)
 		{
 			scr_audio_play(menuvoice_leveleditor, volume_source.voice);
 			global.actually_play_edited_level = false;
@@ -1016,11 +1002,11 @@ and (global.arcade_mode = false)
 	display_get_gui_width() / 2,
 	options_and_quit_y + 42))
 	and (mouse_check_button_released(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
-	or(menu = "options")
+	or (menu == "options")
 	and (key_a_pressed)
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
 	{
 		
@@ -1049,12 +1035,12 @@ and (global.arcade_mode = false)
 	display_get_gui_height() / 2 + 100 + 140 + 19))
 	and (menu = "language_shortcut")
 	and (mouse_check_button_released(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (global.show_language_shortcut = true)
 	and (in_settings = false)
-	or(menu = "language_shortcut")
+	or (menu == "language_shortcut")
 	and (key_a_pressed)
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (global.show_language_shortcut = true)
 	and (in_settings = false)
 	{
@@ -1091,12 +1077,12 @@ and (global.arcade_mode = false)
 	display_get_gui_height() / 2 + 100 + 140 + 19))
 	and (menu = "accessibility_shortcut")
 	and (mouse_check_button_released(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (global.show_accessibility_shortcut = true)
 	
-	or(menu = "accessibility_shortcut")
+	or (menu == "accessibility_shortcut")
 	and (key_a_pressed)
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (global.show_accessibility_shortcut = true)
 	{
 		menu_delay = 3;
@@ -1132,12 +1118,12 @@ and (global.arcade_mode = false)
 	display_get_gui_height() / 2 + 100 + 140 + 19))
 	and (menu = "profile_shortcut")
 	and (mouse_check_button_released(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (global.show_profile_shortcut = true)
 	and (in_settings = false)
-	or(menu = "profile_shortcut")
+	or (menu == "profile_shortcut")
 	and (key_a_pressed)
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (global.show_profile_shortcut = true)
 	and (in_settings = false)
 	{
@@ -1169,11 +1155,11 @@ and (global.arcade_mode = false)
 	#region /*Click Credits*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
 	and (mouse_check_button_released(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
-	or(menu = "credits")
+	or (menu == "credits")
 	and (key_a_pressed)
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
 	{
 		if (!instance_exists(obj_credits))
@@ -1192,12 +1178,12 @@ and (global.arcade_mode = false)
 	#region /*Click Quit*/
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2, options_and_quit_y + 2, display_get_gui_width() / 2 + 185, options_and_quit_y + 42))
 	and (mouse_check_button_released(mb_left))
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
 	and (global.convention_mode = false)
-	or(menu = "quit")
+	or (menu == "quit")
 	and (key_a_pressed)
-	and (menu_delay = 0)
+	and (menu_delay == 0)
 	and (in_settings = false)
 	and (global.convention_mode = false)
 	{
@@ -1209,7 +1195,7 @@ and (global.arcade_mode = false)
 	
 	#endregion /*Click on menu buttons END*/
 	
-	if (menu = "main_game")
+	if (menu == "main_game")
 	{
 		global.character_select_in_this_menu = "main_game";
 	}
@@ -1224,7 +1210,7 @@ and (global.arcade_mode = false)
 		global.character_select_in_this_menu = "level_editor"; /*No custom level is selected before you go into the level editor*/
 	}
 	
-	if (global.demo = false)
+	if (global.demo == false)
 	{
 		draw_menu_button(display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 40, l10n_text("Main Game"), "main_game", "main_game");
 		draw_menu_button(display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 +80, l10n_text("Level Editor"), "leveleditor", "leveleditor");
@@ -1241,7 +1227,7 @@ and (global.arcade_mode = false)
 		draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width() / 2 - 185, options_and_quit_y, 0, 0, 1, 1, 185, 42, l10n_text("Options"), "options", "options", true);
 		draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width() / 2 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width() / 2, options_and_quit_y, 0, 0, 1, 1, 185, 42, l10n_text("Quit"), "quit", "quit", true);
-		if (menu = "quit")
+		if (menu == "quit")
 		{
 			draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width() / 2 - 185, options_and_quit_y, 0, 0, 1, 1, 185, 42, l10n_text("Options"), "options", "options", true);
 			draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width() / 2 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
@@ -1253,7 +1239,7 @@ and (global.arcade_mode = false)
 	if (global.show_language_shortcut = true)
 	and (global.convention_mode = false)
 	{
-		if (menu = "language_shortcut")
+		if (menu == "language_shortcut")
 		{
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 - 208, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
 		draw_sprite_ext(spr_settings_icons, 12, display_get_gui_width() / 2 - 230, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
@@ -1264,7 +1250,7 @@ and (global.arcade_mode = false)
 	if (global.show_accessibility_shortcut = true)
 	and (global.convention_mode = false)
 	{
-		if (menu = "accessibility_shortcut")
+		if (menu == "accessibility_shortcut")
 		{
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
 		draw_sprite_ext(spr_settings_icons, 1, display_get_gui_width() / 2 + 230, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
@@ -1275,7 +1261,7 @@ and (global.arcade_mode = false)
 	if (global.show_profile_shortcut = true)
 	and (global.convention_mode = false)
 	{
-		if (menu = "profile_shortcut")
+		if (menu == "profile_shortcut")
 		{
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250 + 50, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
 		draw_sprite_ext(spr_settings_icons, 7, display_get_gui_width() / 2 + 230 + 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
@@ -1298,38 +1284,38 @@ and (global.play_attract_demo = false)
 	
 	if (window_get_width() >= 1670)
 	{
-		R = 4;
+		row = 4;
 	}
 	else
 	if (window_get_width() >= 1276)
 	{
-		R = 3;
+		row = 3;
 	}
 	else
 	if (window_get_width() >= 882)
 	{
-		R = 2;
+		row = 2;
 	}
 	else
 	if (window_get_width() >= 488)
 	{
-		R = 1;
+		row = 1;
 	}
 	
-	C = clamp(floor(global.select_level_index / R), 0, floor(ds_list_size(global.all_loaded_main_levels)))
-	if (global.controls_used_for_menu_navigation = "mouse")
-	and (can_input_level_name = false)
-	and (can_navigate = true)
+	column = clamp(floor (global.select_level_index / row), 0, floor(ds_list_size(global.all_loaded_main_levels)))
+	if (global.controls_used_for_menu_navigation == "mouse")
+	and (can_input_level_name == false)
+	and (can_navigate == true)
 	{
 		for(i = 0;
 		i < ds_list_size(global.thumbnail_sprite);
 		i += 1)
 		{
-			C = floor(i / R);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 *(i-C*R) + 100 - 3, 226*(C-scroll) + 250 - 3, 394 *(i-C*R) + 100 + 384 + 3, 226*(C-scroll) + 250 + link_wiki_x + 3))
+			column = floor(i / row);
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 * (i - column * row) + 100 - 3, 226 * (column - scroll) + 250 - 3, 394 * (i - column * row) + 100 + 384 + 3, 226 * (column - scroll) + 250 + link_wiki_x + 3))
 			{
 				if (menu != "level_editor_play")
-				and (menu_delay = 0)
+				and (menu_delay == 0)
 				{
 					menu = "level_editor_play";
 				}
@@ -1352,9 +1338,9 @@ scr_character_select_menu(); /*Character select*/
 
 #region /*Menu Navigation*/
 if (menu_joystick_delay <= 0)
-and (input_key = false)
-and (can_navigate = true)
-and (menu_delay = 0)
+and (input_key == false)
+and (can_navigate == true)
+and (menu_delay == 0)
 {
 
 	/*Level Editor Menu*/
@@ -1364,7 +1350,7 @@ and (menu_delay = 0)
 	}
 
 	#region /*Navigate Main Menu*/
-	if (menu = "main_game")
+	if (menu == "main_game")
 	{
 		if (key_up)
 		{
@@ -1373,7 +1359,7 @@ and (menu_delay = 0)
 		}
 		else
 		if (key_down)
-		and (global.demo = false)
+		and (global.demo == false)
 		{
 			menu_delay = 3;
 			menu = "leveleditor";
@@ -1394,7 +1380,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "leveleditor")
+	if (menu == "leveleditor")
 	{
 		if (key_up)
 		{
@@ -1417,7 +1403,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "options")
+	if (menu == "options")
 	{
 		if (key_left)
 		and (global.show_language_shortcut = true)
@@ -1443,7 +1429,7 @@ and (menu_delay = 0)
 		}
 		else
 		if (key_up)
-		and (global.demo = false)
+		and (global.demo == false)
 		{
 			menu_delay = 3;
 			menu = "leveleditor";
@@ -1462,7 +1448,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "language_shortcut")
+	if (menu == "language_shortcut")
 	{
 		if (key_right)
 		{
@@ -1471,7 +1457,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "accessibility_shortcut")
+	if (menu == "accessibility_shortcut")
 	{
 		if (key_left)
 		{
@@ -1495,7 +1481,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "profile_shortcut")
+	if (menu == "profile_shortcut")
 	{
 		if (key_left)
 		{
@@ -1504,7 +1490,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "quit")
+	if (menu == "quit")
 	{
 		if (key_left)
 		and (global.convention_mode = false)
@@ -1525,7 +1511,7 @@ and (menu_delay = 0)
 		}
 		else
 		if (key_up)
-		and (global.demo = false)
+		and (global.demo == false)
 		{
 			menu_delay = 3;
 			menu = "leveleditor";
@@ -1544,7 +1530,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "credits")
+	if (menu == "credits")
 	{
 		if (key_up)
 		{
@@ -1580,7 +1566,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "link_wiki")
+	if (menu == "link_wiki")
 	{
 		if (key_up)
 		{
@@ -1615,7 +1601,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "link_twitter")
+	if (menu == "link_twitter")
 	{
 		if (key_up)
 		{
@@ -1651,7 +1637,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "link_reddit")
+	if (menu == "link_reddit")
 	{
 		if (key_up)
 		{
@@ -1687,7 +1673,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "link_instagram")
+	if (menu == "link_instagram")
 	{
 		if (key_up)
 		{
@@ -1723,7 +1709,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "link_gamebanana")
+	if (menu == "link_gamebanana")
 	{
 		if (key_up)
 		{
@@ -1759,7 +1745,7 @@ and (menu_delay = 0)
 		}
 	}
 	else
-	if (menu = "link_discord")
+	if (menu == "link_discord")
 	{
 		if (key_up)
 		{
@@ -1801,9 +1787,9 @@ and (menu_delay = 0)
 #region /*Accept*/
 
 #region /*Select Quit*/
-if (menu = "quit")
+if (menu == "quit")
 and (key_a_pressed)
-and (menu_delay = 0)
+and (menu_delay == 0)
 and (global.convention_mode = false)
 {
 	menu = "quit_game_no";
@@ -1820,9 +1806,9 @@ and (iris_xscale <= 0.001)
 {
 	
 	#region /*Play Level Editor*/
-	if (menu = "level_editor_play")
-	and (global.character_select_in_this_menu = "level_editor")
-	and (global.create_level_from_template = false)
+	if (menu == "level_editor_play")
+	and (global.character_select_in_this_menu == "level_editor")
+	and (global.create_level_from_template == false)
 	{
 		if (title_music > noone)
 		{
@@ -2203,13 +2189,13 @@ and (iris_xscale <= 0.001)
 			#region /*Custom Level Tileset File*/
 			sprite_delete(global.custom_tileset);
 			
-			if (global.character_select_in_this_menu = "main_game")
+			if (global.character_select_in_this_menu == "main_game")
 			and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
 			{
 				global.custom_tileset = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
 			}
 			else
-			if (global.character_select_in_this_menu = "level_editor")
+			if (global.character_select_in_this_menu == "level_editor")
 			and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
 			{
 				global.custom_tileset = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
@@ -2230,8 +2216,8 @@ and (iris_xscale <= 0.001)
 	else
 	
 	#region /*Make Level Editor*/
-	if (menu = "level_editor_make")
-	and (global.character_select_in_this_menu = "level_editor")
+	if (menu == "level_editor_make")
+	and (global.character_select_in_this_menu == "level_editor")
 	{
 		if (title_music > noone)
 		{
@@ -2612,13 +2598,13 @@ and (iris_xscale <= 0.001)
 			#region /*Custom Level Tileset File*/
 			sprite_delete(global.custom_tileset);
 			
-			if (global.character_select_in_this_menu = "main_game")
+			if (global.character_select_in_this_menu == "main_game")
 			and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
 			{
 				global.custom_tileset = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
 			}
 			else
-			if (global.character_select_in_this_menu = "level_editor")
+			if (global.character_select_in_this_menu == "level_editor")
 			and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
 			{
 				global.custom_tileset = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
@@ -2639,8 +2625,8 @@ and (iris_xscale <= 0.001)
 	else
 	
 	#region /*Load File*/
-	if (menu = "select_character")
-	or(menu = "back_from_character_select")
+	if (menu == "select_character")
+	or (menu == "back_from_character_select")
 	{
 		if (title_music > noone)
 		{
@@ -2666,14 +2652,14 @@ else
 #region /*Back*/
 if (key_b_pressed)
 {
-	if (menu = "1player")
-	or(menu = "2player")
-	or(menu = "3player")
-	or(menu = "4player")
+	if (menu == "1player")
+	or (menu == "2player")
+	or (menu == "3player")
+	or (menu == "4player")
 	{
-		if (menu_delay = 0)
+		if (menu_delay == 0)
 		{
-			if (global.character_select_in_this_menu = "main_game")
+			if (global.character_select_in_this_menu == "main_game")
 			{
 				menu = "main_game";
 				menu_delay = 3;
@@ -2719,21 +2705,14 @@ if (black_screen_at_start_delay < 1)
 }
 #endregion /*Have a black screen at the first frame so transitions look natural END*/
 
-#region /*If Window is unfocused, darken the screen*/
-if (!window_has_focus())
-{
-	draw_set_alpha(0.5);
-	draw_rectangle_color(0, 0, display_get_gui_width()* 3, display_get_gui_height()* 3, c_black, c_black, c_black, c_black, false);
-	draw_set_alpha(1);
-}
-#endregion /*If Window is unfocused, darken the screen END*/
+scr_draw_darken_screen_when_window_is_unfocused();
 
 #region /*Draw Iris Transitions*/
 
 #region /*Iris Zooming*/
 if (menu_delay > 999)
 {
-	if (iris_zoom = 1)
+	if (iris_zoom == 1)
 	{
 		iris_xscale = lerp(iris_xscale, 1, 0.15);
 		iris_yscale = lerp(iris_yscale, 1, 0.15);
@@ -2756,7 +2735,7 @@ if (menu_delay > 999)
 else
 
 #region /*Zoom Out*/
-if (iris_zoom = 0)
+if (iris_zoom == 0)
 {
 	iris_xscale = lerp(iris_xscale, 1, 0.15);
 	iris_yscale = lerp(iris_yscale, 1, 0.15);
@@ -2779,18 +2758,18 @@ else
 #endregion /*Iris Zooming END*/
 
 #region /*Loading Screen*/
-if (menu = "load_custom_level")
-or (menu = "load_characters")
-or (menu = "load_official_level_template")
+if (menu == "load_custom_level")
+or (menu == "load_characters")
+or (menu == "load_official_level_template")
 {
 	loading_spinning_angle -= 10;
 	draw_sprite_ext(spr_loading, 0, display_get_gui_width() / 2, display_get_gui_height() / 2, 1, 1, loading_spinning_angle, c_white, 1);
-	draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 +64, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
-	draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 +64 + 32, string(file_found), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 +64, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 +64 + 32, string(file_found), global.default_text_size, c_white, c_black, 1);
 }
 #endregion /*Loading Screen END*/
 
-if (global.enable_transitions = true)
+if (global.enable_transitions == true)
 {
 	if (iris_xscale < 15)
 	{

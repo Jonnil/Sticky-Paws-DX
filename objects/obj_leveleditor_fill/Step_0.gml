@@ -17,7 +17,7 @@ if (delay > 1)
 	}
 	else
 	{
-		if (fill_mode_type = "fill")
+		if (fill_mode_type == "fill")
 		{
 			if (free_down = true)
 			and (delay = 2)
@@ -56,7 +56,7 @@ if (delay > 1)
 			}
 		}
 		else
-		if (fill_mode_type = "horizontal")
+		if (fill_mode_type == "horizontal")
 		{
 			if (free_left = true)
 			{
@@ -74,7 +74,7 @@ if (delay > 1)
 			}
 		}
 		else
-		if (fill_mode_type = "vertical")
+		if (fill_mode_type == "vertical")
 		{
 			if (free_up = true)
 			{
@@ -99,7 +99,7 @@ if (delay > 1)
 				placed_for_the_first_time = false;
 			}
 		}
-		if (fill_mode_type = "fill")
+		if (fill_mode_type == "fill")
 		and (delay >= 5)
 		{
 			instance_destroy();

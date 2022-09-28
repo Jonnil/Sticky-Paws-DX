@@ -137,7 +137,7 @@ if (lives < 0)
 
 #region /*Spawn Players in multiplayer*/
 if (instance_exists(obj_player))
-and (global.pause = false)
+and (global.pause == false)
 and (global.goal_active = false)
 and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
@@ -149,10 +149,10 @@ and (!instance_exists(obj_title))
 	or (keyboard_check_pressed(global.player1_key2_jump))
 	{
 		if (player1 <= 0)
-		and (can_spawn_player1 = true)
+		and (can_spawn_player1 == true)
 		and (lives > 0)
 		{
-			if (global.player1_can_play = false)
+			if (global.player1_can_play == false)
 			{
 				global.player1_can_play = true;
 			}
@@ -176,14 +176,14 @@ and (!instance_exists(obj_title))
 		}
 	}
 	if (gamepad_button_check_pressed(1, gp_face1))
-	or(keyboard_check_pressed(global.player2_key_jump))
-	or(keyboard_check_pressed(global.player2_key2_jump))
+	or (keyboard_check_pressed(global.player2_key_jump))
+	or (keyboard_check_pressed(global.player2_key2_jump))
 	{
 		if (player2 <= 0)
 		and (can_spawn_player2 = true)
 		and (lives > 0)
 		{
-			if (global.player2_can_play = false)
+			if (global.player2_can_play == false)
 			{
 				global.player2_can_play = true;
 			}
@@ -207,14 +207,14 @@ and (!instance_exists(obj_title))
 		}
 	}
 	if (gamepad_button_check_pressed(2, gp_face1))
-	or(keyboard_check_pressed(global.player3_key_jump))
-	or(keyboard_check_pressed(global.player3_key2_jump))
+	or (keyboard_check_pressed(global.player3_key_jump))
+	or (keyboard_check_pressed(global.player3_key2_jump))
 	{
 		if (player3 <= 0)
 		and (can_spawn_player3 = true)
 		and (lives > 0)
 		{
-			if (global.player3_can_play = false)
+			if (global.player3_can_play == false)
 			{
 				global.player3_can_play = true;
 			}
@@ -238,14 +238,14 @@ and (!instance_exists(obj_title))
 		}
 	}
 	if (gamepad_button_check_pressed(3, gp_face1))
-	or(keyboard_check_pressed(global.player4_key_jump))
-	or(keyboard_check_pressed(global.player4_key2_jump))
+	or (keyboard_check_pressed(global.player4_key_jump))
+	or (keyboard_check_pressed(global.player4_key2_jump))
 	{
 		if (player4 <= 0)
 		and (can_spawn_player4 = true)
 		and (lives > 0)
 		{
-			if (global.player4_can_play = false)
+			if (global.player4_can_play == false)
 			{
 				global.player4_can_play = true;
 			}
@@ -301,7 +301,7 @@ if (save_level_as_png = false)
 	and (instance_exists(obj_player))
 	and (instance_exists(obj_boss))
 	and (distance_to_object(obj_boss) < 500)
-	and (global.player_has_entered_goal = false)
+	and (global.player_has_entered_goal == false)
 	{
 		
 		view_wview_lerp = lerp(0, 0, 0.05);
@@ -355,7 +355,7 @@ if (save_level_as_png = false)
 	if (asset_get_type("obj_player") == asset_object)
 	and (asset_get_type("obj_camera") == asset_object)
 	and (instance_number(obj_player) >= 1)
-	and (global.player_has_entered_goal = false)
+	and (global.player_has_entered_goal == false)
 	{
 		
 		#region /*Camera should follow multiple players*/
@@ -504,7 +504,7 @@ if (save_level_as_png = false)
 				yy -= abs(player1.vspeed);
 			}
 			if (player1.wall_jump = true)
-			or(player1.climb = true)
+			or (player1.climb = true)
 			{
 				yy = player1.y
 			}
@@ -560,7 +560,7 @@ if (save_level_as_png = false)
 				yy -= abs(player2.vspeed);
 			}
 			if (player2.wall_jump = true)
-			or(player2.climb = true)
+			or (player2.climb = true)
 			{
 				yy = player2.y
 			}
@@ -616,7 +616,7 @@ if (save_level_as_png = false)
 				yy -= abs(player3.vspeed);
 			}
 			if (player3.wall_jump = true)
-			or(player3.climb = true)
+			or (player3.climb = true)
 			{
 				yy = player3.y
 			}
@@ -672,7 +672,7 @@ if (save_level_as_png = false)
 				yy -= abs(player4.vspeed);
 			}
 			if (player4.wall_jump = true)
-			or(player4.climb = true)
+			or (player4.climb = true)
 			{
 				yy = player4.y
 			}
@@ -717,12 +717,12 @@ if (save_level_as_png = false)
 		#region /*Zoom out the view when players are going outside view*/
 		/*if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
 		and (fps_real >= global.max_fps)
-		or(instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
+		or (instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
 		and (fps_real >= global.max_fps)
-		or(instance_nearest(0, room_height / 2, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 320)
+		or (instance_nearest(0, room_height / 2, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 320)
 		and (instance_nearest(room_width, room_height / 2, obj_player).x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 320)
 		and (fps_real >= global.max_fps)
-		or(instance_nearest(room_width / 2, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 320)
+		or (instance_nearest(room_width / 2, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 320)
 		and (instance_nearest(room_width / 2, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 320)
 		and (fps_real >= global.max_fps)
 		{
@@ -776,7 +776,7 @@ if (save_level_as_png = false)
 		and (instance_nearest(room_width, y, obj_player).goal = true)
 		and (global.time_countdown_bonus <= 0)
 		{
-			if (iris_zoom = 1)
+			if (iris_zoom == 1)
 			{
 				iris_xscale = lerp(iris_xscale, 1, 0.15);
 				iris_yscale = lerp(iris_yscale, 1, 0.15);
@@ -803,7 +803,7 @@ if (save_level_as_png = false)
 		and (instance_exists(obj_player_map))
 		and (obj_player_map.entering_level = true)
 		{
-			if (iris_zoom = 1)
+			if (iris_zoom == 1)
 			{
 				iris_xscale = lerp(iris_xscale, 1, 0.15);
 				iris_yscale = lerp(iris_yscale, 1, 0.15);
@@ -827,7 +827,7 @@ if (save_level_as_png = false)
 		else
 		
 		#region /*Zoom Out*/
-		if (iris_zoom = 0)
+		if (iris_zoom == 0)
 		{
 			iris_xscale = lerp(iris_xscale, 1, 0.15);
 			iris_yscale = lerp(iris_yscale, 1, 0.15);

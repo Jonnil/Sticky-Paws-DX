@@ -2,7 +2,7 @@ if (other.vspeed > 0)
 or(other.bbox_bottom < y)
 or(other.dive = true)
 {
-	if (can_jump_on_head = true)
+	if (can_jump_on_head == true)
 	{
 		scr_audio_play(snd_boss_damaged, volume_source.sound);
 		if (other.ground_pound = true)
@@ -57,7 +57,7 @@ or(other.dive = true)
 		}
 		else
 		{
-			other.hspeed = + 5;
+			other.hspeed = +5;
 		}
 		other.ground_pound = false;
 		other.can_ground_pound = false;
@@ -83,7 +83,7 @@ or(other.dive = true)
 	}
 }
 else
-if (can_jump_on_head = true)
+if (can_jump_on_head == true)
 {
 	if (other.x < x)
 	{
@@ -91,7 +91,7 @@ if (can_jump_on_head = true)
 	}
 	else
 	{
-		other.hspeed = + 5;
+		other.hspeed = +5;
 	}
 	other.ground_pound = false;
 	other.can_ground_pound = false;

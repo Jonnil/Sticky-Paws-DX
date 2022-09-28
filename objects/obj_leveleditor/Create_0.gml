@@ -20,27 +20,27 @@ else
 	previous_selected_level_editing_music = 1;
 }
 
-if (selected_level_editing_music = 0)
+if (selected_level_editing_music == 0)
 {
 	level_editing_music = noone;
 	previous_selected_level_editing_music = 0;
 }
 else
-if (selected_level_editing_music = 1)
+if (selected_level_editing_music == 1)
 and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
 {
 	level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg");
 	previous_selected_level_editing_music = 1;
 }
 else
-if (selected_level_editing_music = 2)
+if (selected_level_editing_music == 2)
 and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
 {
 	level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg");
 	previous_selected_level_editing_music = 2;
 }
 else
-if (selected_level_editing_music = 3)
+if (selected_level_editing_music == 3)
 and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
 {
 	level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg");
@@ -434,17 +434,16 @@ add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_
 #endregion /*Grid Initialization END*/
 
 #region /*Controls for level editor*/
-gamepad_set_axis_deadzone(0, 0.5);
-key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or(keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or(keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or(gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or(gamepad_axis_value(0, gp_axislv) < 0);
-key_left = (keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right))or(keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh) < 0);
-key_right = (keyboard_check_pressed(global.player1_key_right)) and (!keyboard_check_pressed(global.player1_key_left))or(keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
-key_down = (keyboard_check_pressed(global.player1_key_down)) and (!keyboard_check_pressed(global.player1_key_up))or(keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or(keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or(gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or(gamepad_axis_value(0, gp_axislv) > 0);
-key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or(keyboard_check_pressed(global.player1_key_jump))or(keyboard_check_pressed(ord("Z")));
-key_a_released = (gamepad_button_check_released(0, gp_face1))or(keyboard_check_released(global.player1_key_jump))or(keyboard_check_released(ord("Z")));
-key_a_hold = (gamepad_button_check(0, gp_face1))or(keyboard_check(global.player1_key_jump))or(keyboard_check(ord("Z")));
-key_b_hold = (gamepad_button_check(0, gp_face2))or(keyboard_check(global.player1_key_sprint))or(keyboard_check(ord("X")))or(keyboard_check(vk_backspace));
-key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or(keyboard_check_pressed(global.player1_key_sprint))or(keyboard_check_pressed(ord("X")))or(keyboard_check_pressed(vk_backspace))or(mouse_check_button_pressed(mb_right))or(mouse_check_button_pressed(mb_side1));
-key_b_released = (gamepad_button_check_released(0, gp_face2))or(keyboard_check_released(global.player1_key_sprint))or(keyboard_check_released(ord("X")))or(keyboard_check_released(vk_backspace));
+key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or (gamepad_axis_value(0, gp_axislv) < 0);
+key_left = (keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right))or (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or (gamepad_axis_value(0, gp_axislh) < 0);
+key_right = (keyboard_check_pressed(global.player1_key_right)) and (!keyboard_check_pressed(global.player1_key_left))or (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
+key_down = (keyboard_check_pressed(global.player1_key_down)) and (!keyboard_check_pressed(global.player1_key_up))or (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or (keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or (gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or (gamepad_axis_value(0, gp_axislv) > 0);
+key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or (keyboard_check_pressed(global.player1_key_jump))or (keyboard_check_pressed(ord("Z")));
+key_a_released = (gamepad_button_check_released(0, gp_face1))or (keyboard_check_released(global.player1_key_jump))or (keyboard_check_released(ord("Z")));
+key_a_hold = (gamepad_button_check(0, gp_face1))or (keyboard_check(global.player1_key_jump))or (keyboard_check(ord("Z")));
+key_b_hold = (gamepad_button_check(0, gp_face2))or (keyboard_check(global.player1_key_sprint))or (keyboard_check(ord("X")))or (keyboard_check(vk_backspace));
+key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or (keyboard_check_pressed(global.player1_key_sprint))or (keyboard_check_pressed(ord("X")))or (keyboard_check_pressed(vk_backspace))or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
+key_b_released = (gamepad_button_check_released(0, gp_face2))or (keyboard_check_released(global.player1_key_sprint))or (keyboard_check_released(ord("X")))or (keyboard_check_released(vk_backspace));
 #endregion /*Controls for level editor END*/
 
 unused_x_origin_point = noone;
@@ -466,25 +465,25 @@ my = mouse_y;
 #endregion /*Mouse x and mouse y initializing END*/
 
 #region /*Lives Icon*/
-if (global.player1_can_play = true)
+if (global.player1_can_play == true)
 {
 	camera_player = 0;
 	camera_selected_skin = global.skin_for_player_1;
 }
 else
-if (global.player2_can_play = true)
+if (global.player2_can_play == true)
 {
 	camera_player = 1;
 	camera_selected_skin = global.skin_for_player_2;
 }
 else
-if (global.player3_can_play = true)
+if (global.player3_can_play == true)
 {
 	camera_player = 2;
 	camera_selected_skin = global.skin_for_player_3;
 }
 else
-if (global.player4_can_play = true)
+if (global.player4_can_play == true)
 {
 	camera_player = 3;
 	camera_selected_skin = global.skin_for_player_4;
@@ -716,41 +715,41 @@ image_speed = 0;
 image_index = 0;
 
 #region /*Initialize level_information.ini*/
-if (global.character_select_in_this_menu = "main_game")
+if (global.character_select_in_this_menu == "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
-and (global.create_level_from_template = true)
+or (global.character_select_in_this_menu == "level_editor")
+and (global.create_level_from_template == true)
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
+or (global.character_select_in_this_menu == "level_editor")
 and (global.select_level_index <= 0)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
+or (global.character_select_in_this_menu == "level_editor")
 and (global.create_level_from_template >= 2)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
+or (global.character_select_in_this_menu == "level_editor")
 and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
-	if (global.character_select_in_this_menu = "main_game")
-	or(global.create_level_from_template = true)
+	if (global.character_select_in_this_menu == "main_game")
+	or (global.create_level_from_template = true)
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 		can_save_to_level_information = false;
 	}
 	else
-	if (global.character_select_in_this_menu = "level_editor")
+	if (global.character_select_in_this_menu == "level_editor")
 	and (global.select_level_index <= 0)
-	or(global.character_select_in_this_menu = "level_editor")
+	or (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= 2)
 	{
 		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		can_save_to_level_information = true;
 	}
 	else
-	if (global.character_select_in_this_menu = "level_editor")
+	if (global.character_select_in_this_menu == "level_editor")
 	{
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 		can_save_to_level_information = true;
@@ -766,7 +765,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
@@ -782,7 +781,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
@@ -800,7 +799,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
@@ -816,7 +815,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
@@ -834,7 +833,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
@@ -850,7 +849,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
@@ -868,7 +867,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
@@ -884,7 +883,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
@@ -902,7 +901,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
@@ -918,7 +917,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
@@ -936,7 +935,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
@@ -952,7 +951,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
@@ -970,7 +969,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
@@ -986,7 +985,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
@@ -1004,7 +1003,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
@@ -1020,7 +1019,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
@@ -1038,7 +1037,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_string("info", "make_every_tileset_into_default_tileset", false);
@@ -1051,7 +1050,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_string("info", "enable_time_countdown", false);
@@ -1064,7 +1063,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_string("info", "time_countdown", 500);
@@ -1077,7 +1076,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		and (can_save_to_level_information = true)
 		{
 			ini_write_string("info", "rain", false);
@@ -1167,8 +1166,8 @@ with(obj_leveleditor_placed_object)
 #endregion /*Destory all placed objects before loading the level, just in case there is leftover placed objects END*/
 
 #region /*Load Main Game Level*/
-if (global.character_select_in_this_menu = "main_game")
-or(global.create_level_from_template = true)
+if (global.character_select_in_this_menu == "main_game")
+or (global.create_level_from_template = true)
 {
 	
 	#region /*Object Placement*/
@@ -1287,14 +1286,14 @@ or(global.create_level_from_template = true)
 else
 
 #region /*Load Level Editor Level*/
-if (global.character_select_in_this_menu = "level_editor")
+if (global.character_select_in_this_menu == "level_editor")
 {
 	
 	#region /*Create directories*/
 
 	#region /*Create directory for saving custom levels*/
 	if (global.select_level_index >= 1)
-	and (global.create_level_from_template = false)
+	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))))
 	{
 		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
@@ -1309,7 +1308,7 @@ if (global.character_select_in_this_menu = "level_editor")
 	
 	#region /*Create directory for backgrouns in custom levels*/
 	if (global.select_level_index >= 1)
-	and (global.create_level_from_template = false)
+	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds"))
 	{
 		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds");
@@ -1324,7 +1323,7 @@ if (global.character_select_in_this_menu = "level_editor")
 	
 	#region /*Create directory for data in custom levels*/
 	if (global.select_level_index >= 1)
-	and (global.create_level_from_template = false)
+	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data"))
 	{
 		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data");
@@ -1339,7 +1338,7 @@ if (global.character_select_in_this_menu = "level_editor")
 	
 	#region /*Create directory for sounds in custom levels*/
 	if (global.select_level_index >= 1)
-	and (global.create_level_from_template = false)
+	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound"))
 	{
 		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound");
@@ -1354,7 +1353,7 @@ if (global.character_select_in_this_menu = "level_editor")
 	
 	#region /*Create directory for tilesets in custom levels*/
 	if (global.select_level_index >= 1)
-	and (global.create_level_from_template = false)
+	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets"))
 	{
 		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets");
@@ -1372,7 +1371,7 @@ if (global.character_select_in_this_menu = "level_editor")
 		#region /*Object Placement*/
 		var file, str, str_pos, str_temp, val, num;
 		if (global.select_level_index >= 1)
-		and (global.create_level_from_template = false)
+		and (global.create_level_from_template == false)
 		and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt"))
 		{
 			file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt");
@@ -1433,7 +1432,7 @@ if (global.character_select_in_this_menu = "level_editor")
 		#region /*Object With Rotation Placement*/
 		var file, str, str_pos, str_temp, val, num;
 		if (global.select_level_index >= 1)
-		and (global.create_level_from_template = false)
+		and (global.create_level_from_template == false)
 		and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"))
 		{
 			file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt");

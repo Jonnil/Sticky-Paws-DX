@@ -1,15 +1,13 @@
 randomize();
 
-/*Create Event*/
-mouse_x_position = window_mouse_get_x();
-mouse_y_position = window_mouse_get_y();
-
 display_xscale = 1.5;
 display_yscale = 1.5;
 display_xoffset = 0;
 display_yoffset = 0;
 
 #region /*Things you could change*/
+var max_players = 4; /*How many players you want to be able to play*/
+
 global.company_name = "Jonnil"; /*String of what the company is called*/
 global.game_name = "Sticky Paws"; /*String of what the game is called*/
 global.game_name_appdata = "Sticky_Paws_DX"; /*String of what the game is called at appdata folder*/
@@ -44,7 +42,7 @@ global.enable_language_settings = true; /*Enable Language settings*/
 global.enable_broadcast_settings = false; /*Enable Broadcast settings*/
 global.enable_add_ons_settings = false; /*Enable Add-ons settings*/
 global.enable_ranks = false; /*Enable the option to show ranks in the game*/
-if (os_type = os_switch)
+if (os_type == os_switch)
 {
 	global.enable_open_custom_folder = false; /*Enable the option to open custom folders in the game*/
 	global.enable_copy_characters = false; /*Enable the option to copy characters in the game*/
@@ -77,7 +75,7 @@ global.deactivate_objects_outsiede_view = true; /*This global variable is for de
 
 global.number_of_chain_kills_for_1up = 8; /*How many chain reaction kills you need to get 1-ups. Default is 8*/
 
-global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder*/
+global.all_loaded_main_levels = ds_list_create(); /*The main game will load every level folder. Don't change this variable, it just needs to be set before you can add more main levels*/
 ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "ending", "level9", "levelA");
 
 #endregion /*Things you could change END*/
@@ -87,8 +85,6 @@ ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3"
 
 
 #region /*Things you shouldn't change, warning, don't change any of these options or you might break the game!*/
-
-device_mouse_dbclick_enable(false); /*Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled*/
 
 /*Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu*/
 global.equipped_upgrade_double_jump = true; /*If you have equipped the Double Jump Upgrade*/
@@ -135,105 +131,109 @@ if (!directory_exists(working_directory + "\custom_characters"))
 
 #endregion /*File Handeling END*/
 
-font_add_enable_aa(false);
-global.default_font = font_add("gamefont.ttc", 24, true, false, 32, 128);
-draw_set_font(global.default_font);
-saved_file_exists = false;
 can_save_to_character_config = false; /*Only turn true when playing as custom character*/
-unused_x_origin_point = noone;
-unused_y_origin_point = noone;
-view_hview_lerp = 0;
-view_wview_lerp = 0;
-sprite_splash_easteregg_yoffset = +128;
-window_set_cursor(cr_none);
-global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
-ds_list_add(global.all_loaded_custom_levels, "");
-load_ok = 0;
 initialized_characters = false;
 initialized_resource_pack = false;
 initialized_title_backgrounds = false;
 initialized_title_logos = false;
+load_ok = 0;
+saved_file_exists = false;
+sprite_splash_easteregg_yoffset = +128;
+unused_x_origin_point = noone;
+unused_y_origin_point = noone;
+view_hview_lerp = 0;
+view_wview_lerp = 0;
+global.actually_play_edited_level = false; /*Actually playing finished edited level*/
 global.all_loaded_characters = ds_list_create();
+global.all_loaded_custom_levels = ds_list_create(); /*The level editor will load every custom level folder*/
 global.all_loaded_resource_pack = ds_list_create();
 global.all_loaded_title_backgrounds = ds_list_create();
 global.all_loaded_title_logos = ds_list_create();
-global.title_logo_index = spr_noone;
-global.select_level_index = 0; /*What level is selected in the custom level editor*/
-
-max_players = 4; /*How many players you want to be able to play*/
-var i = max_players - 1;
-
-repeat(max_players)
-{
-	global.character_index[i] = 0;
-	i -= 1;
-}
-
-gamepad_set_axis_deadzone(0, 0.50);
-gamepad_set_axis_deadzone(1, 0.50);
-gamepad_set_axis_deadzone(2, 0.50);
-gamepad_set_axis_deadzone(3, 0.50);
-
-global.thumbnail_sprite = ds_list_create();
-global.grid_hsnap = 32; /*Horizontal grid snapping*/
-global.grid_vsnap = 32; /*Vertical grid snapping*/
-global.narrator = 0; /*Select Narrator*/
-global.voicepack_for_player_1 = 0; /*Player 1 Select Voicepack*/
-global.voicepack_for_player_2 = 0; /*Player 2 Select Voicepack*/
-global.voicepack_for_player_3 = 0; /*Player 3 Select Voicepack*/
-global.voicepack_for_player_4 = 0; /*Player 4 Select Voicepack*/
-global.skin_for_player_1 = 0; /*Player 1 Select Skin, make default skin 1*/
-global.skin_for_player_2 = 1; /*Player 2 Select Skin, make default skin 2*/
-global.skin_for_player_3 = 2; /*Player 3 Select Skin, make default skin 3*/
-global.skin_for_player_4 = 3; /*Player 4 Select Skin, make default skin 4 */
-global.player1_color = c_aqua; /*Player 1 Color, default:aqua*/
-global.player2_color = c_red; /*Player 1 Color, default:red*/
-global.player3_color = c_lime; /*Player 1 Color, default:lime*/
-global.player4_color = c_yellow; /*Player 1 Color, default:yellow*/
-global.player1_can_play = false; /*Player 1 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
-global.player2_can_play = false; /*Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
-global.player3_can_play = false; /*Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
-global.player4_can_play = false; /*Player 4 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
-global.hex_color_for_player_1 = c_white; /*Player 1 Hex Value Color*/
-global.hex_color_for_player_2 = c_white; /*Player 1 Hex Value Color*/
-global.hex_color_for_player_3 = c_white; /*Player 1 Hex Value Color*/
-global.hex_color_for_player_4 = c_white; /*Player 1 Hex Value Color*/
-global.level_editor_level = 0; /*What level is selected in the custom level editor*/
-global.world_editor = false; /*If you're editing world or not*/
-global.play_edited_level = false; /*Playtest edited level*/
-global.actually_play_edited_level = false; /*Actually playing finished edited level*/
-global.create_level_from_template = false; /*If you're currently creating a level from template or not*/
-global.character_select_in_this_menu = "main_game"; /*In what menu character select is going to appear in*/
-global.difficulty = 1; /*Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard*/
 global.automatically_pause_when_window_is_unfocused = true; /*Whenever you unfocus the window by clicking off the window, the game pauses by itself*/
-global.show_timer = false; /*Show a countup timer or not*/
-global.show_ranks = false; /*Show ranks you get at the end of the level*/
-global.show_deaths_counter = false; /*Show a deaths counter or not*/
+global.background_layer_x_scroll = 1;
+global.background_layer_y_scroll = 1;
+global.character_select_in_this_menu = "main_game"; /*In what menu character select is going to appear in*/
 global.controls_used_for_menu_navigation = "keyboard"; /*keyboard, mouse, or controller*/
-global.pause = false; /*If game is paused or not*/
+global.create_level_from_template = false; /*If you're currently creating a level from template or not*/
 global.custom_background1 = noone;
 global.custom_background2 = noone;
 global.custom_background3 = noone;
 global.custom_background4 = noone;
 global.custom_foreground1 = noone;
-global.custom_foreground_above_static_objects = noone;
 global.custom_foreground2 = noone;
+global.custom_foreground_above_static_objects = noone;
 global.custom_foreground_secret = noone;
 global.custom_tileset = noone;
+global.default_font = font_add("gamefont.ttc", 24, true, false, 32, 128);
+global.difficulty = 1; /*Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard*/
+global.grid_hsnap = 32; /*Horizontal grid snapping*/
+global.grid_vsnap = 32; /*Vertical grid snapping*/
+global.hex_color_for_player_1 = c_white; /*Player 1 Hex Value Color*/
+global.hex_color_for_player_2 = c_white; /*Player 1 Hex Value Color*/
+global.hex_color_for_player_3 = c_white; /*Player 1 Hex Value Color*/
+global.hex_color_for_player_4 = c_white; /*Player 1 Hex Value Color*/
+global.level_editor_level = 0; /*What level is selected in the custom level editor*/
+global.narrator = 0; /*Select Narrator*/
+global.pause = false; /*If game is paused or not*/
+global.play_edited_level = false; /*Playtest edited level*/
+global.player1_can_play = false; /*Player 1 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
+global.player1_color = c_aqua; /*Player 1 Color, default:aqua*/
+global.player2_can_play = false; /*Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
+global.player2_color = c_red; /*Player 1 Color, default:red*/
+global.player3_can_play = false; /*Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
+global.player3_color = c_lime; /*Player 1 Color, default:lime*/
+global.player4_can_play = false; /*Player 4 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title*/
+global.player4_color = c_yellow; /*Player 1 Color, default:yellow*/
+global.select_level_index = 0; /*What level is selected in the custom level editor*/
+global.selected_resource_pack = 0; /* 0 = default*/
+global.selected_title_background = 0; /* 0 = default*/
+global.show_deaths_counter = false; /*Show a deaths counter or not*/
+global.show_ranks = false; /*Show ranks you get at the end of the level*/
+global.show_timer = false; /*Show a countup timer or not*/
+global.skin_for_player_1 = 0; /*Player 1 Select Skin, make default skin 1*/
+global.skin_for_player_2 = 1; /*Player 2 Select Skin, make default skin 2*/
+global.skin_for_player_3 = 2; /*Player 3 Select Skin, make default skin 3*/
+global.skin_for_player_4 = 3; /*Player 4 Select Skin, make default skin 4 */
 global.sprite_select_player_1 = noone;
 global.sprite_select_player_2 = noone;
 global.sprite_select_player_3 = noone;
 global.sprite_select_player_4 = noone;
-global.selected_resource_pack = 0; /* 0 = default*/
-global.selected_title_background = 0; /* 0 = default*/
+global.thumbnail_sprite = ds_list_create();
 global.title_background_scale = 1;
-global.background_layer_x_scroll = 1;
-global.background_layer_y_scroll = 1;
+global.title_logo_index = spr_noone;
+global.voicepack_for_player_1 = 0; /*Player 1 Select Voicepack*/
+global.voicepack_for_player_2 = 0; /*Player 2 Select Voicepack*/
+global.voicepack_for_player_3 = 0; /*Player 3 Select Voicepack*/
+global.voicepack_for_player_4 = 0; /*Player 4 Select Voicepack*/
+global.world_editor = false; /*If you're editing world or not*/
+device_mouse_dbclick_enable(false); /*Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled*/
+draw_set_font(global.default_font);
+ds_list_add(global.all_loaded_custom_levels, "");
+font_add_enable_aa(false);
+gamepad_set_axis_deadzone(0, 0.50);
+gamepad_set_axis_deadzone(1, 0.50);
+gamepad_set_axis_deadzone(2, 0.50);
+gamepad_set_axis_deadzone(3, 0.50);
+window_set_cursor(cr_none);
+
+#region /*Set Max Players*/
+var max_players = 4; /*How many players you want to be able to play*/
+var i = max_players - 1;
+repeat(max_players)
+{
+	global.character_index[i] = 0;
+	i -= 1;
+}
+#endregion /*Set Max Players END*/
+
+#region /*Select title logo depending on what language the OS is set to*/
 switch (os_get_language())
 {
-    case "ja": global.selected_title_logo = 1; /* 1 = Japanese Logo*/ break;
-    default: global.selected_title_logo = 0; /* 0 = English Logo*/ break;
+	case "ja": global.selected_title_logo = 1; /*1 = Japanese Logo*/ break;
+	default: global.selected_title_logo = 0; /*0 = English Logo*/ break;
 }
+#endregion /*Select title logo depending on what language the OS is set to END*/
+
 global.show_virtual_controls = false; /*Show virtual controls on desktop or not, false by default*/
 
 global.default_zoom_level = 1; /*if reset_level_zoom_when_going_back_to_map = true, then set zoom to this number*/
@@ -315,19 +315,10 @@ global.win = false;
 global.enemy_counter = 0;
 global.file = 1;
 global.controls_layout = 1;
-global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black =- 1, normal = 0 (default), full_white = +1*/
-global.background_brightness_menu = 0; /*Background brightness in menus. full_black =- 1, normal = 0 (default), full_white = +1*/
+global.background_brightness_gameplay = 0; /*Background brightness in gameplay. full_black = -1, normal = 0 (default), full_white = +1*/
+global.background_brightness_menu = 0; /*Background brightness in menus. full_black = -1, normal = 0 (default), full_white = +1*/
 
-#region /*Music and Sound Volume*/
-global.volume_main = 0.7; /*Make the volumes set to 7000 by default*/
-global.volume_music = 0.7; /*This number is then *0.0001 so it becomes 0.7*/
-global.volume_sound = 0.7; /*Because Linux can't load decimal numbers from .ini files*/
-global.volume_ambient = 0.7; /*By default volumes are 70% so it doesn't hurt ears*/
-global.volume_footstep = 0.7;
-global.volume_voice = 0.7;
-global.verbosity_slider = 1;
-global.number_of_audio_channels = 3; /*How many audio channels there should be. Default: 3 = 128 audio channels*/
-#endregion /*Music and Sound Volume END*/
+scr_set_default_audio_settings();
 
 global.music = noone;
 global.music_underwater = noone;
@@ -377,9 +368,7 @@ global.player4_down_and_jump_to_groundpound = false;
 global.show_prompt_when_changing_to_gamepad = true;
 global.show_prompt_when_changing_to_keyboard_and_mouse = true;
 
-#region /*Universal Keyboard Remapping*/
 global.fullscreen_key = vk_f11;
-#endregion /*Universal Keyboard Remapping*/
 
 global.level_name = ""; /*In the level editor, the name of the currently selected level will be stored here*/
 
@@ -404,6 +393,7 @@ if (asset_get_type("scr_config_load") == asset_script)
 }
 #endregion /*Load Config END*/
 
+#region /*Set default language*/
 if (file_exists("localization.csv"))
 {
 	if (global.language_localization > ds_grid_width(global.language_local_data))
@@ -412,6 +402,7 @@ if (file_exists("localization.csv"))
 		scr_set_default_language();
 	}
 }
+#endregion /*Set default language END*/
 
 #region /*Resource Packs (put this code after the scr_config_load so the right sprites can load)*/
 global.resource_pack_sprite_logo_discord = spr_noone;
@@ -513,5 +504,4 @@ enum volume_source
 	sound = 4,
 	voice = 5,
 }
-
 #endregion /*Things you shouldn't change, warning, don't change any of these options or you might break the game! END*/

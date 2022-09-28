@@ -1,16 +1,16 @@
 #region /*Landing on solid object*/
 if (position_meeting(x, bbox_bottom + 1, other))
-or(position_meeting(x, bbox_bottom + 2, other))
-or(position_meeting(x, bbox_bottom + 3, other))
-or(position_meeting(x, bbox_bottom + 4, other))
-or(position_meeting(bbox_left, bbox_bottom + 1, other))
-or(position_meeting(bbox_left, bbox_bottom + 2, other))
-or(position_meeting(bbox_left, bbox_bottom + 3, other))
-or(position_meeting(bbox_left, bbox_bottom + 4, other))
-or(position_meeting(bbox_right, bbox_bottom + 1, other))
-or(position_meeting(bbox_right, bbox_bottom + 2, other))
-or(position_meeting(bbox_right, bbox_bottom + 3, other))
-or(position_meeting(bbox_right, bbox_bottom + 4, other))
+or (position_meeting(x, bbox_bottom + 2, other))
+or (position_meeting(x, bbox_bottom + 3, other))
+or (position_meeting(x, bbox_bottom + 4, other))
+or (position_meeting(bbox_left, bbox_bottom + 1, other))
+or (position_meeting(bbox_left, bbox_bottom + 2, other))
+or (position_meeting(bbox_left, bbox_bottom + 3, other))
+or (position_meeting(bbox_left, bbox_bottom + 4, other))
+or (position_meeting(bbox_right, bbox_bottom + 1, other))
+or (position_meeting(bbox_right, bbox_bottom + 2, other))
+or (position_meeting(bbox_right, bbox_bottom + 3, other))
+or (position_meeting(bbox_right, bbox_bottom + 4, other))
 {
 	if (vspeed >= 0)
 	{
@@ -19,8 +19,8 @@ or(position_meeting(bbox_right, bbox_bottom + 4, other))
 }
 
 if (position_meeting(x, bbox_bottom + 1, other))
-or(position_meeting(bbox_left, bbox_bottom + 1, other))
-or(position_meeting(bbox_right, bbox_bottom + 1, other))
+or (position_meeting(bbox_left, bbox_bottom + 1, other))
+or (position_meeting(bbox_right, bbox_bottom + 1, other))
 {
 	if (vspeed >= 0)
 	{

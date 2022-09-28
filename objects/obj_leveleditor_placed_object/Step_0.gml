@@ -4,7 +4,7 @@
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (sprite_index > 0)
-and (global.character_select_in_this_menu = "level_editor")
+and (global.character_select_in_this_menu == "level_editor")
 {
 
 	#region /*Show only normal difficulty layer in regular colors when saving a thumbnail*/
@@ -308,7 +308,7 @@ and (global.character_select_in_this_menu = "level_editor")
 }
 else
 if (sprite_index > 0)
-and (global.character_select_in_this_menu = "level_editor")
+and (global.character_select_in_this_menu == "level_editor")
 {
 	image_alpha = 1;
 	image_blend = c_white;
@@ -340,7 +340,7 @@ and (!mouse_check_button(mb_middle))
 {
 	if (obj_leveleditor.erase_mode = true)
 	and (mouse_check_button(mb_left))
-	or(mouse_check_button(mb_right))
+	or (mouse_check_button(mb_right))
 	or (instance_exists(obj_leveleditor))
 	and (obj_leveleditor.erase_mode = true)
 	and (obj_leveleditor.key_a_hold)
@@ -453,16 +453,16 @@ and (obj_leveleditor.pause = false)
 	and (instance_exists(obj_level_player_4_start))
 	and (place_meeting(x, y, obj_level_player_4_start))
 	and (obj_leveleditor.drag_object = false)
-	and (obj_level_player_1_start.drag_object = false)
-	and (obj_level_player_2_start.drag_object = false)
-	and (obj_level_player_3_start.drag_object = false)
-	and (obj_level_player_4_start.drag_object = false)
+	and (obj_level_player_1_start.drag_object == false)
+	and (obj_level_player_2_start.drag_object == false)
+	and (obj_level_player_3_start.drag_object == false)
+	and (obj_level_player_4_start.drag_object == false)
 	{
 		
 		#region /*Reset Level Editor Checkpoint*/
 		if (asset_get_type("room_leveleditor") == asset_room)
 		and (room =room_leveleditor)
-		and (global.character_select_in_this_menu = "level_editor")
+		and (global.character_select_in_this_menu == "level_editor")
 		{
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint");
@@ -669,7 +669,7 @@ and (delay > 1)
 	}
 	#region /*Drag the object*/
 	
-	if (drag_object = true)
+	if (drag_object == true)
 	{
 		depth = - 300;
 		x = obj_leveleditor.x;
@@ -694,7 +694,7 @@ and (delay > 1)
 	or (instance_exists(obj_leveleditor))
 	and (obj_leveleditor.key_a_released)
 	{
-		if (drag_object = true)
+		if (drag_object == true)
 		{
 			drag_release_timer = 3;
 			drag_object = 0.5;
@@ -711,7 +711,7 @@ if (drag_release_timer > 0)
 }
 else
 {
-	if (drag_object = 0.5)
+	if (drag_object == 0.5)
 	{
 		drag_object = false;
 		dragged_from_original_place = false;
@@ -741,9 +741,9 @@ if (global.play_edited_level = true)
 		#region /*Delete objects according to difficulty settings*/
 		if (global.difficulty <= 0)
 		and (easy = true)
-		or(global.difficulty = 1)
+		or (global.difficulty = 1)
 		and (normal = true)
-		or(global.difficulty >= 2)
+		or (global.difficulty >= 2)
 		and (hard = true)
 		{
 			if (object = 1) and (asset_get_type("obj_ground") == asset_object){instance_create_depth(x, y, 0, obj_ground); instance_destroy();}
@@ -987,7 +987,7 @@ if (global.play_edited_level = true)
 				var level_name = string(uppercase_level_name);
 			
 				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-				if (global.character_select_in_this_menu = "main_game")
+				if (global.character_select_in_this_menu == "main_game")
 				and (ini_read_string(level_name, "clear_rate", "closed") != "clear")
 				{
 					with(instance_create_depth(x, y, 0, obj_cake_stealing_enemy))

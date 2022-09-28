@@ -36,8 +36,6 @@ display_yscale = 1.5
 display_xoffset = 0
 display_yoffset = 0
 
-show_mouse = true;
-
 depth = -9000;
 
 sprite_index = global.resource_pack_sprite_basic_collectible;
@@ -52,50 +50,45 @@ show_keyboard_and_mouse_input_change_prompt_y = 0;
 
 delay = 0;
 
-mouse_x_position = window_mouse_get_x(); /*Mouse x initializing*/
-mouse_y_position = window_mouse_get_y(); /*Mouse y initializing*/
-
-mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y());
-
 big_collectible1_already_collected = false;
 big_collectible2_already_collected = false;
 big_collectible3_already_collected = false;
 big_collectible4_already_collected = false;
 big_collectible5_already_collected = false;
 
-if (global.character_select_in_this_menu = "main_game")
+if (global.character_select_in_this_menu == "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
-and (global.create_level_from_template = true)
+or (global.character_select_in_this_menu == "level_editor")
+and (global.create_level_from_template == true)
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
+or (global.character_select_in_this_menu == "level_editor")
 and (global.select_level_index <= 0)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
+or (global.character_select_in_this_menu == "level_editor")
 and (global.create_level_from_template >= 2)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 
-or(global.character_select_in_this_menu = "level_editor")
+or (global.character_select_in_this_menu == "level_editor")
 and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
-	if (global.character_select_in_this_menu = "main_game")
-	or(global.create_level_from_template = true)
+	if (global.character_select_in_this_menu == "main_game")
+	or (global.create_level_from_template = true)
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 	}
 	else
-	if (global.character_select_in_this_menu = "level_editor")
+	if (global.character_select_in_this_menu == "level_editor")
 	and (global.select_level_index <= 0)
-	or(global.character_select_in_this_menu = "level_editor")
+	or (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= 2)
 	{
 		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
 	else
-	if (global.character_select_in_this_menu = "level_editor")
+	if (global.character_select_in_this_menu == "level_editor")
 	{
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 	}
@@ -116,25 +109,25 @@ else
 }
 
 #region /*Lives Icon*/
-if (global.player1_can_play = true)
+if (global.player1_can_play == true)
 {
 	camera_player = 0;
 	camera_selected_skin = global.skin_for_player_1;
 }
 else
-if (global.player2_can_play = true)
+if (global.player2_can_play == true)
 {
 	camera_player = 1;
 	camera_selected_skin = global.skin_for_player_2;
 }
 else
-if (global.player3_can_play = true)
+if (global.player3_can_play == true)
 {
 	camera_player = 2;
 	camera_selected_skin = global.skin_for_player_3;
 }
 else
-if (global.player4_can_play = true)
+if (global.player4_can_play == true)
 {
 	camera_player = 3;
 	camera_selected_skin = global.skin_for_player_4;
@@ -226,7 +219,7 @@ if (global.actually_play_edited_level = true)
 and (global.play_edited_level = true)
 {
 	if (global.x_checkpoint > 0)
-	or(global.y_checkpoint > 0)
+	or (global.y_checkpoint > 0)
 	{
 		camera_set_view_pos(view_camera[view_current], global.x_checkpoint, global.y_checkpoint)
 		if (asset_get_type("obj_player") == asset_object)
@@ -255,11 +248,11 @@ and (!instance_exists(obj_player_map))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 {
-	if (global.player1_can_play = true)
+	if (global.player1_can_play == true)
 	{
 		if (global.x_checkpoint > 0)
 		and (global.actually_play_edited_level = true)
-		or(global.y_checkpoint > 0)
+		or (global.y_checkpoint > 0)
 		and (global.actually_play_edited_level = true)
 		{
 			player1 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
@@ -283,11 +276,11 @@ and (!instance_exists(obj_title))
 			player = 1;
 		}
 	}
-	if (global.player2_can_play = true)
+	if (global.player2_can_play == true)
 	{
 		if (global.x_checkpoint > 0)
 		and (global.actually_play_edited_level = true)
-		or(global.y_checkpoint > 0)
+		or (global.y_checkpoint > 0)
 		and (global.actually_play_edited_level = true)
 		{
 			player2 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
@@ -311,11 +304,11 @@ and (!instance_exists(obj_title))
 			player = 2;
 		}
 	}
-	if (global.player3_can_play = true)
+	if (global.player3_can_play == true)
 	{
 		if (global.x_checkpoint > 0)
 		and (global.actually_play_edited_level = true)
-		or(global.y_checkpoint > 0)
+		or (global.y_checkpoint > 0)
 		and (global.actually_play_edited_level = true)
 		{
 			player3 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
@@ -339,11 +332,11 @@ and (!instance_exists(obj_title))
 			player = 3;
 		}
 	}
-	if (global.player4_can_play = true)
+	if (global.player4_can_play == true)
 	{
 		if (global.x_checkpoint > 0)
 		and (global.actually_play_edited_level = true)
-		or(global.y_checkpoint > 0)
+		or (global.y_checkpoint > 0)
 		and (global.actually_play_edited_level = true)
 		{
 			player4 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
@@ -368,7 +361,7 @@ and (!instance_exists(obj_title))
 		}
 	}
 	if (asset_get_type("room_leveleditor") == asset_room)
-	and (room = room_leveleditor)
+	and (room == room_leveleditor)
 	and (global.actually_play_edited_level = true)
 	{
 		player_has_spawned = true;
@@ -442,9 +435,9 @@ and (room != room_title)
 	#region /*Update Music*/
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
-	and (global.character_select_in_this_menu = "main_game")
+	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= true)
 	{
 		global.music = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg");
@@ -452,7 +445,7 @@ and (room != room_title)
 	else
 	/*OGG small letter File*/
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/music.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	{
 		global.music = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/music.ogg");
 	}
@@ -465,9 +458,9 @@ and (room != room_title)
 	#region /*Update Music Underwater*/
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
-	and (global.character_select_in_this_menu = "main_game")
+	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= true)
 	{
 		global.music_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg");
@@ -475,7 +468,7 @@ and (room != room_title)
 	else
 	/*OGG small letter File*/
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	{
 		global.music_underwater = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/music_underwater.ogg");
 	}
@@ -488,9 +481,9 @@ and (room != room_title)
 	#region /*Update Ambience*/
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
-	and (global.character_select_in_this_menu = "main_game")
+	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= true)
 	{
 		global.ambience = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg");
@@ -498,7 +491,7 @@ and (room != room_title)
 	else
 	/*OGG small letter File*/
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/ambience.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	{
 		global.ambience = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/ambience.ogg");
 	}
@@ -511,9 +504,9 @@ and (room != room_title)
 	#region /*Update Ambience Underwater*/
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
-	and (global.character_select_in_this_menu = "main_game")
+	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= true)
 	{
 		global.ambience_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg");
@@ -521,7 +514,7 @@ and (room != room_title)
 	else
 	/*OGG small letter File*/
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	{
 		global.ambience_underwater = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg");
 	}
@@ -552,7 +545,7 @@ and (global.assist_enable = true)
 	if (global.assist_item_appear < 10)
 	{
 		if (global.lives_until_assist >= global.assist_item_appear)
-		or(global.assist_item_appear <= 0)
+		or (global.assist_item_appear <= 0)
 		{
 			if (!instance_exists(obj_assist_item))
 			and (instance_exists(obj_player))
@@ -578,7 +571,7 @@ and (!instance_exists(obj_player_map))
 		if (global.actually_play_edited_level = true)
 		and (global.play_edited_level = true)
 		and (global.x_checkpoint > 0)
-		or(global.actually_play_edited_level = true)
+		or (global.actually_play_edited_level = true)
 		and (global.play_edited_level = true)
 		and (global.y_checkpoint > 0)
 		{

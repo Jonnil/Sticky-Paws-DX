@@ -10,36 +10,36 @@ unused_y_origin_point = noone;
 
 move_speed = 8;
 
-/*Player 1 Key Left Hold*/ key_left = (keyboard_check(global.player1_key_left)) and (!keyboard_check(global.player1_key_right)) or(keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or(gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr)) or(gamepad_axis_value(0, gp_axislh) < 0);
-/*Player 1 Key Right Hold*/ key_right = (keyboard_check(global.player1_key_right)) and (!keyboard_check(global.player1_key_left)) or(keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or(gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl)) or(gamepad_axis_value(0, gp_axislh) > 0);
-/*Player 1 Key Down Hold*/ key_down = (keyboard_check(global.player1_key_down)) and (!keyboard_check(global.player1_key_up)) or(keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or(keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or(gamepad_button_check(0, gp_padd)) and (!gamepad_button_check(0, gp_padu)) or(gamepad_axis_value(0, gp_axislv) > 0);
-/*Player 1 Key Up Hold*/ key_up = (keyboard_check(global.player1_key_up)) and (!keyboard_check(global.player1_key_down)) or(keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or(keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or(gamepad_button_check(0, gp_padu)) and (!gamepad_button_check(0, gp_padd)) or(gamepad_axis_value(0, gp_axislv) < 0);
-/*Player 1 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or(keyboard_check_pressed(global.player1_key_jump)) or(keyboard_check_pressed(global.player1_key2_jump)) or(keyboard_check_pressed(vk_space)) or(keyboard_check_pressed(vk_enter)) or(keyboard_check_pressed(ord("Z")));
-/*Player 1 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or(keyboard_check_pressed(global.player1_key_dive)) or(keyboard_check_pressed(global.player1_key2_dive)) or(keyboard_check_pressed(global.player1_key_sprint)) or(keyboard_check_pressed(global.player1_key2_sprint)) or(keyboard_check_pressed(vk_backspace)) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(ord("X")));
+/*Player 1 Key Left Hold*/ key_left = (keyboard_check(global.player1_key_left)) and (!keyboard_check(global.player1_key_right)) or (keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or (keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or (gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) < 0);
+/*Player 1 Key Right Hold*/ key_right = (keyboard_check(global.player1_key_right)) and (!keyboard_check(global.player1_key_left)) or (keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or (keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or (gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl)) or (gamepad_axis_value(0, gp_axislh) > 0);
+/*Player 1 Key Down Hold*/ key_down = (keyboard_check(global.player1_key_down)) and (!keyboard_check(global.player1_key_up)) or (keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or (keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or (gamepad_button_check(0, gp_padd)) and (!gamepad_button_check(0, gp_padu)) or (gamepad_axis_value(0, gp_axislv) > 0);
+/*Player 1 Key Up Hold*/ key_up = (keyboard_check(global.player1_key_up)) and (!keyboard_check(global.player1_key_down)) or (keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or (keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or (gamepad_button_check(0, gp_padu)) and (!gamepad_button_check(0, gp_padd)) or (gamepad_axis_value(0, gp_axislv) < 0);
+/*Player 1 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or (keyboard_check_pressed(global.player1_key_jump)) or (keyboard_check_pressed(global.player1_key2_jump)) or (keyboard_check_pressed(vk_space)) or (keyboard_check_pressed(vk_enter)) or (keyboard_check_pressed(ord("Z")));
+/*Player 1 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or (keyboard_check_pressed(global.player1_key_dive)) or (keyboard_check_pressed(global.player1_key2_dive)) or (keyboard_check_pressed(global.player1_key_sprint)) or (keyboard_check_pressed(global.player1_key2_sprint)) or (keyboard_check_pressed(vk_backspace)) or (keyboard_check_pressed(vk_escape)) or (keyboard_check_pressed(ord("X")));
 
 #region /*Play as custom character*/
-if (global.player1_can_play = true)
+if (global.player1_can_play == true)
 {
 	player = 1;
 	selected_voice_pack = global.voicepack_for_player_1;
 	selected_skin = global.skin_for_player_1;
 }
 else
-if (global.player2_can_play = true)
+if (global.player2_can_play == true)
 {
 	player = 2;
 	selected_voice_pack = global.voicepack_for_player_2;
 	selected_skin = global.skin_for_player_2;
 }
 else
-if (global.player3_can_play = true)
+if (global.player3_can_play == true)
 {
 	player = 3;
 	selected_voice_pack = global.voicepack_for_player_3;
 	selected_skin = global.skin_for_player_3;
 }
 else
-if (global.player4_can_play = true)
+if (global.player4_can_play == true)
 {
 	player = 4;
 	selected_voice_pack = global.voicepack_for_player_4;
@@ -60,11 +60,6 @@ allow_free_movement = false; /*Turn this to true to move freely on the map inste
 
 global.pause_room = noone;
 depth = -100;
-
-#region /*Mouse x and mouse y initializing*/
-mouse_x_position = window_mouse_get_x();
-mouse_y_position = window_mouse_get_y();
-#endregion /*Mouse x and mouse y initializing END*/
 
 if (asset_get_type("spr_wall") == asset_sprite)
 {
@@ -131,7 +126,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	yy_heart = y - 64;
 	
 	#region /*Have Heart Balloon*/
-	if (player = 1)
+	if (player == 1)
 	{
 		if (ini_key_exists("Player", "player_1_have_heart_balloon"))
 		{
@@ -143,7 +138,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
-	if (player = 2)
+	if (player == 2)
 	{
 		if (ini_key_exists("Player", "player_2_have_heart_balloon"))
 		{
@@ -155,7 +150,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
-	if (player = 3)
+	if (player == 3)
 	{
 		if (ini_key_exists("Player", "player_3_have_heart_balloon"))
 		{
@@ -167,7 +162,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
-	if (player = 4)
+	if (player == 4)
 	{
 		if (ini_key_exists("Player", "player_4_have_heart_balloon"))
 		{

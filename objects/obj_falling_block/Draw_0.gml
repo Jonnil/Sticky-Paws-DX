@@ -1,5 +1,3 @@
-var xx = x,
-var yy = y;
 if (asset_get_type("obj_player") == asset_object)
 and (position_meeting(x, bbox_top - 1, obj_player))
 and (fall < 100)
@@ -14,25 +12,25 @@ and (fall < 100)
 	image_blend = c_red;
 	if (fall > 75)
 	{
-		xx = random_range(x - 2.5, x + 2.5);
-		yy = random_range(y - 4, y + 4);
+		var xx = random_range(x - 2.5, x + 2.5);
+		var yy = random_range(y - 4, y + 4);
 	}
 	else
 	if (fall > 50)
 	{
-		xx = random_range(x - 2, x + 2);
-		yy = random_range(y - 3, y + 3);
+		var xx = random_range(x - 2, x + 2);
+		var yy = random_range(y - 3, y + 3);
 	}
 	else
 	if (fall > 25)
 	{
-		xx = random_range(x - 1.5, x + 1.5);
-		yy = random_range(y - 2, y + 2);
+		var xx = random_range(x - 1.5, x + 1.5);
+		var yy = random_range(y - 2, y + 2);
 	}
 	else
 	{
-		xx = random_range(x - 1, x + 1);
-		yy = random_range(y - 1, y + 1);
+		var xx = random_range(x - 1, x + 1);
+		var yy = random_range(y - 1, y + 1);
 	}
 }
 else
@@ -40,15 +38,16 @@ if (fall < 100)
 {
 	fall = false;
 	image_blend = c_white;
-	xx = x;
+	var xx = x;
+	var yy = y;
 }
 if (fall >= 100)
 {
 	gravity_direction = 270;
 	gravity = 0.5;
 	image_blend = c_red;
-	xx = random_range(x - 2.5, x + 2.5);
-	yy = random_range(y - 2.5, y + 2.5);
+	var xx = random_range(x - 2.5, x + 2.5);
+	var yy = random_range(y - 2.5, y + 2.5);
 }
 draw_sprite_ext(sprite_index, image_index, xx, yy, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 

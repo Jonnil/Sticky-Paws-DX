@@ -10,9 +10,9 @@ if (bounceup = false)
 and (instance_exists(obj_player))
 {
 	if (place_meeting(bbox_left, y, obj_player))
-	or(place_meeting(bbox_right, y, obj_player))
-	or(place_meeting(x, bbox_top, obj_player))
-	or(place_meeting(x, bbox_bottom, obj_player))
+	or (place_meeting(bbox_right, y, obj_player))
+	or (place_meeting(x, bbox_top, obj_player))
+	or (place_meeting(x, bbox_bottom, obj_player))
 	{
 		if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_semisolid_platform, false, true))
@@ -92,7 +92,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 				big_collectible1_already_collected = true;
 			}
 		}
-		if (global.character_select_in_this_menu = "main_game")
+		if (global.character_select_in_this_menu == "main_game")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -104,7 +104,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 		else
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -126,7 +126,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 				big_collectible2_already_collected = true;
 			}
 		}
-		if (global.character_select_in_this_menu = "main_game")
+		if (global.character_select_in_this_menu == "main_game")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -138,7 +138,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 		else
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -160,7 +160,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 				big_collectible3_already_collected = true;
 			}
 		}
-		if (global.character_select_in_this_menu = "main_game")
+		if (global.character_select_in_this_menu == "main_game")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -172,7 +172,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 		else
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -194,7 +194,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 				big_collectible4_already_collected = true;
 			}
 		}
-		if (global.character_select_in_this_menu = "main_game")
+		if (global.character_select_in_this_menu == "main_game")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -206,7 +206,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 		else
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -228,7 +228,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 				big_collectible5_already_collected = true;
 			}
 		}
-		if (global.character_select_in_this_menu = "main_game")
+		if (global.character_select_in_this_menu == "main_game")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -240,7 +240,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 		else
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		{
 			var uppercase_level_name;
 			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -368,7 +368,7 @@ if (bounceup = true)
 					{
 						big_collectible1_already_collected = true;
 					}
-					if (global.character_select_in_this_menu = "main_game")
+					if (global.character_select_in_this_menu == "main_game")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -380,7 +380,7 @@ if (bounceup = true)
 						ini_close();
 					}
 					else
-					if (global.character_select_in_this_menu = "level_editor")
+					if (global.character_select_in_this_menu == "level_editor")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -402,7 +402,7 @@ if (bounceup = true)
 					{
 						big_collectible2_already_collected = true;
 					}
-					if (global.character_select_in_this_menu = "main_game")
+					if (global.character_select_in_this_menu == "main_game")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -414,7 +414,7 @@ if (bounceup = true)
 						ini_close();
 					}
 					else
-					if (global.character_select_in_this_menu = "level_editor")
+					if (global.character_select_in_this_menu == "level_editor")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -436,7 +436,7 @@ if (bounceup = true)
 					{
 						big_collectible3_already_collected = true;
 					}
-					if (global.character_select_in_this_menu = "main_game")
+					if (global.character_select_in_this_menu == "main_game")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -448,7 +448,7 @@ if (bounceup = true)
 						ini_close();
 					}
 					else
-					if (global.character_select_in_this_menu = "level_editor")
+					if (global.character_select_in_this_menu == "level_editor")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -470,7 +470,7 @@ if (bounceup = true)
 					{
 						big_collectible4_already_collected = true;
 					}
-					if (global.character_select_in_this_menu = "main_game")
+					if (global.character_select_in_this_menu == "main_game")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -482,7 +482,7 @@ if (bounceup = true)
 						ini_close();
 					}
 					else
-					if (global.character_select_in_this_menu = "level_editor")
+					if (global.character_select_in_this_menu == "level_editor")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -504,7 +504,7 @@ if (bounceup = true)
 					{
 						big_collectible5_already_collected = true;
 					}
-					if (global.character_select_in_this_menu = "main_game")
+					if (global.character_select_in_this_menu == "main_game")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -516,7 +516,7 @@ if (bounceup = true)
 						ini_close();
 					}
 					else
-					if (global.character_select_in_this_menu = "level_editor")
+					if (global.character_select_in_this_menu == "level_editor")
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));

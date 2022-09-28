@@ -2,8 +2,8 @@
 depth = -bbox_bottom* 0.1;
 
 #region /*If enemies are disabled, destroy this object*/
-if (global.assist_enable = true)
-and (global.assist_enable_enemies = false)
+if (global.assist_enable == true)
+and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
@@ -81,7 +81,7 @@ if (draw_xscale >= 0.8)
 {
 	if (place_meeting(x, y, obj_wall))
 	{
-		if (image_xscale = -1)
+		if (image_xscale == -1)
 		{
 			die_volting = -1;
 			instance_create_depth(bbox_left, y, 0, obj_blockbreak);
@@ -94,7 +94,7 @@ if (draw_xscale >= 0.8)
 	}
 }
 
-if (image_xscale = -1)
+if (image_xscale == -1)
 and (x < camera_get_view_x(view_camera[view_current]))
 or(image_xscale = +1)
 and (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))

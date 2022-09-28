@@ -75,12 +75,12 @@ and (iris_xscale <= 0.001)
 			global.timeattack_realmillisecond = 0;
 			global.level_clear_rate = noone;
 			score = 0;
-			scr_savelevel();
+			scr_save_level();
 			audio_stop_all();
 			
 			#region /*Go to level editor if you die in level editor*/
 			if (asset_get_type("room_leveleditor") == asset_room)
-			and (room = room_leveleditor)
+			and (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();
@@ -96,7 +96,7 @@ and (iris_xscale <= 0.001)
 			global.timeattack_realmillisecond = 0;
 			global.level_clear_rate = noone;
 			score = 0;
-			scr_savelevel();
+			scr_save_level();
 			audio_stop_all();
 		
 			#region /*Go to level editor if you die in level editor*/
@@ -121,7 +121,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		#region /*Disable the players for the camera*/
 		
 		#region /*Disable player 1*/
-		if (player = 1)
+		if (player == 1)
 		and (instance_exists(obj_camera))
 		{
 			obj_camera.player1 = noone;
@@ -130,7 +130,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		#endregion /*Disable player 1 END*/
 		
 		#region /*Disable player 2*/
-		if (player = 2)
+		if (player == 2)
 		and (instance_exists(obj_camera))
 		{
 			obj_camera.player2 = noone;
@@ -139,7 +139,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		#endregion /*Disable player 2 END*/
 		
 		#region /*Disable player 3*/
-		if (player = 3)
+		if (player == 3)
 		and (instance_exists(obj_camera))
 		{
 			obj_camera.player3 = noone;
@@ -148,7 +148,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		#endregion /*Disable player 3 END*/
 		
 		#region /*Disable player 4 */
-		if (player = 4)
+		if (player == 4)
 		and (instance_exists(obj_camera))
 		{
 			obj_camera.player4 = noone;
@@ -178,7 +178,7 @@ if (!instance_exists(obj_player))
 and (count >49)
 and (last_player = true)
 {
-	if (iris_zoom = 0)
+	if (iris_zoom == 0)
 	{
 		iris_xscale = lerp(iris_xscale, 1, 0.1);
 		iris_yscale = lerp(iris_yscale, 1, 0.1);
@@ -249,46 +249,7 @@ if (bubble = true)
 		y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32;
 	}
 	#endregion /*Don't go outside view boundary END*/
-
-	#region /*Customisable keyboard array*/
-	if (player <= 1)
-	{
-	gamepad_set_axis_deadzone(0, 0.25);
-	key_up = (keyboard_check(vk_up)) and (!keyboard_check(vk_down))or(keyboard_check(vk_numpad8)) and (!keyboard_check(vk_numpad2))or(keyboard_check(ord("W"))) and (!keyboard_check(ord("S")))or(gamepad_button_check(0, gp_padu)) and (!gamepad_button_check(0, gp_padd))or(gamepad_axis_value(0, gp_axislv) < 0);
-	key_left = (keyboard_check(vk_left)) and (!keyboard_check(vk_right))or(keyboard_check(vk_numpad4)) and (!keyboard_check(vk_numpad6))or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D")))or(gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr))or(gamepad_axis_value(0, gp_axislh) < 0);
-	key_right = (keyboard_check(vk_right)) and (!keyboard_check(vk_left))or(keyboard_check(vk_numpad6)) and (!keyboard_check(vk_numpad4))or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A")))or(gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
-	key_down = (keyboard_check(vk_down)) and (!keyboard_check(vk_up))or(keyboard_check(vk_numpad2)) and (!keyboard_check(vk_numpad8))or(keyboard_check(ord("S"))) and (!keyboard_check(ord("W")))or(gamepad_button_check(0, gp_padd)) and (!gamepad_button_check(0, gp_padu))or(gamepad_axis_value(0, gp_axislv) > 0);
-	key_a = (global.controls_layout = 1) and (gamepad_button_check_pressed(0, gp_face1))or(gamepad_button_check_pressed(0, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(0, gp_face3))or(keyboard_check_pressed(ord("Z")))or(keyboard_check_pressed(vk_enter))or(keyboard_check_pressed(vk_space));
-	}
-	if (player = 2)
-	{
-	gamepad_set_axis_deadzone(1, 0.25);
-	key_up = (gamepad_button_check(1, gp_padu)) and (!gamepad_button_check(1, gp_padd))or(gamepad_axis_value(1, gp_axislv) < 0);
-	key_left = (gamepad_button_check(1, gp_padl)) and (!gamepad_button_check(1, gp_padr))or(gamepad_axis_value(1, gp_axislh) < 0);
-	key_right = (gamepad_button_check(1, gp_padr)) and (!gamepad_button_check(1, gp_padl))or(gamepad_axis_value(1, gp_axislh) > 0);
-	key_down = (gamepad_button_check(1, gp_padd)) and (!gamepad_button_check(1, gp_padu))or(gamepad_axis_value(1, gp_axislv) > 0);
-	key_a = (global.controls_layout = 1) and (gamepad_button_check_pressed(1, gp_face1))or(gamepad_button_check_pressed(1, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(1, gp_face3));
-	}
-	if (player = 3)
-	{
-	gamepad_set_axis_deadzone(2, 0.25);
-	key_up = (gamepad_button_check(2, gp_padu)) and (!gamepad_button_check(2, gp_padd))or(gamepad_axis_value(2, gp_axislv) < 0);
-	key_left = (gamepad_button_check(2, gp_padl)) and (!gamepad_button_check(2, gp_padr))or(gamepad_axis_value(2, gp_axislh) < 0);
-	key_right = (gamepad_button_check(2, gp_padr)) and (!gamepad_button_check(2, gp_padl))or(gamepad_axis_value(2, gp_axislh) > 0);
-	key_down = (gamepad_button_check(2, gp_padd)) and (!gamepad_button_check(2, gp_padu))or(gamepad_axis_value(2, gp_axislv) > 0);
-	key_a = (global.controls_layout = 1) and (gamepad_button_check_pressed(2, gp_face1))or(gamepad_button_check_pressed(2, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(2, gp_face3));
-	}
-	if (player = 4)
-	{
-	gamepad_set_axis_deadzone(3, 0.25);
-	key_up = (gamepad_button_check(3, gp_padu)) and (!gamepad_button_check(3, gp_padd))or(gamepad_axis_value(3, gp_axislv) < 0);
-	key_left = (gamepad_button_check(3, gp_padl)) and (!gamepad_button_check(3, gp_padr))or(gamepad_axis_value(3, gp_axislh) < 0);
-	key_right = (gamepad_button_check(3, gp_padr)) and (!gamepad_button_check(3, gp_padl))or(gamepad_axis_value(3, gp_axislh) > 0);
-	key_down = (gamepad_button_check(3, gp_padd)) and (!gamepad_button_check(3, gp_padu))or(gamepad_axis_value(3, gp_axislv) > 0);
-	key_a = (global.controls_layout = 1) and (gamepad_button_check_pressed(3, gp_face1))or(gamepad_button_check_pressed(3, gp_face2))or(global.controls_layout = 2) and (gamepad_button_check_pressed(3, gp_face3));
-	}
-	#endregion /*Customisable keyboard array END*/
-
+	
 	image_speed = 0.5;
 	gravity = 0;
 	if (key_up)
@@ -363,48 +324,48 @@ and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(v
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	if (player = 1)
+	if (player == 1)
 	{
 		if (global.player1_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player1_color, 1);
+			scr_draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player1_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
+			scr_draw_text_outlined(x, y - 64,string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
 		}
 	}
-	if (player = 2)
+	if (player == 2)
 	{
 		if (global.player2_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player2_color, 1);
+			scr_draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player2_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
+			scr_draw_text_outlined(x, y - 64,string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
 		}
 	}
-	if (player = 3)
+	if (player == 3)
 	{
 		if (global.player3_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player3_color, 1);
+			scr_draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player3_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
+			scr_draw_text_outlined(x, y - 64,string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
 		}
 	}
-	if (player = 4)
+	if (player == 4)
 	{
 		if (global.player4_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player4_color, 1);
+			scr_draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player4_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
+			scr_draw_text_outlined(x, y - 64,string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
 		}
 	}
 }

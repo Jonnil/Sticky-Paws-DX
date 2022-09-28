@@ -34,7 +34,7 @@ function scr_draw_gamepad_buttons(what_button, xx, yy, scale, color, alpha)
 		var what_sprites_to_use = spr_noone;
 	}
 	
-	if (what_button = noone)
+	if (what_button == noone)
 	and (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	{
 		draw_sprite_ext(spr_keyboard_keys_none, 0, xx, yy, scale, scale, 0, color, alpha);

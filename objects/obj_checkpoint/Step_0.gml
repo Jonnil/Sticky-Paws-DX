@@ -44,7 +44,7 @@ and (instance_exists(obj_player))
 		if (instance_nearest(x, y, obj_player).x > x - 32)
 		and (instance_nearest(x, y, obj_player).x < x + 32)
 		and (instance_nearest(x, y, obj_player).y < y)
-		or(place_meeting(x, y, instance_nearest(x, y, obj_player)))
+		or (place_meeting(x, y, instance_nearest(x, y, obj_player)))
 		{
 			if (asset_get_type("obj_wall") == asset_object)
 			and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
@@ -171,8 +171,8 @@ and (instance_exists(obj_player))
 					
 					#region /*Save Level Editor Checkpoint*/
 					if (asset_get_type("room_leveleditor") == asset_room)
-					and (room = room_leveleditor)
-					and (global.character_select_in_this_menu = "main_game")
+					and (room == room_leveleditor)
+					and (global.character_select_in_this_menu == "main_game")
 					and (global.actually_play_edited_level = true)
 					{
 						var uppercase_level_name;
@@ -200,8 +200,8 @@ and (instance_exists(obj_player))
 					}
 					else
 					if (asset_get_type("room_leveleditor") == asset_room)
-					and (room = room_leveleditor)
-					and (global.character_select_in_this_menu = "level_editor")
+					and (room == room_leveleditor)
+					and (global.character_select_in_this_menu == "level_editor")
 					and (global.actually_play_edited_level = true)
 					{
 						var uppercase_level_name;

@@ -1,11 +1,11 @@
 function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_name)
 {
 	
-	#region /*Red Rectangle behind the level thumbnail to indicate what level you are selecting*/
-	var top_left_of_thumbnail_x = 394 *(global.select_level_index -C*R) + 100 - 3;
-	var top_left_of_thumbnail_y = 226*(C-scroll) + 250 - 3;
-	var bottom_right_of_thumbnail_x = 394 *(global.select_level_index -C*R) + 100 + 384 + 3;
-	var bottom_right_of_thumbnail_y = 226*(C-scroll) + 250 + 216 + 3;
+	#region /*Red rectangle behind the level thumbnail to indicate what level you are selecting*/
+	var top_left_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 - 3;
+	var top_left_of_thumbnail_y = 226 * (column - scroll) + 250 - 3;
+	var bottom_right_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 + 384 + 3;
+	var bottom_right_of_thumbnail_y = 226 * (column - scroll) + 250 + 216 + 3;
 	
 	if (menu!= "back_from_level_editor")
 	and (menu!= "open_custom_levels_folder")
@@ -31,13 +31,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
 		draw_set_alpha(1);
 	}
-	#endregion /*Red Rectangle behind the level thumbnail to indicate what level you are selecting END*/
+	#endregion /*Red rectangle behind the level thumbnail to indicate what level you are selecting END*/
 	
 	#region /*Draw Thumbnail*/
 	for(i = 0; i < ds_list_size(global.thumbnail_sprite); i += 1)
 	{
-		C= floor(i/ R)
-		draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 *(i-C*R) + 100, 226*(C-scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
+		column= floor(i/ row)
+		draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 * (i - column * row) + 100, 226 * (column - scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
 		if (show_first_thumbnail_name = false)
 		and (i >= 1)
 		and (menu != "load_custom_level")
@@ -48,7 +48,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 		and (menu != "load_characters")
 		and (menu != "load_official_level_template")
 		{
-			draw_text_outlined(394 *(i-C*R) + 100 + 192, 226*(C-scroll) + 250 + 184, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
+			scr_draw_text_outlined(394 * (i - column * row) + 100 + 192, 226 * (column - scroll) + 250 + 184, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
 		}
 	}
 	#endregion /*Draw Thumbnail END*/

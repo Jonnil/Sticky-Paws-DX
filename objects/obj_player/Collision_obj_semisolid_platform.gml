@@ -1,17 +1,17 @@
 /*Collision Event with a solid object*/
 
 if (position_meeting(x, bbox_bottom + 1, other))
-or(position_meeting(x, bbox_bottom + 2, other))
-or(position_meeting(x, bbox_bottom + 3, other))
-or(position_meeting(x, bbox_bottom + 4, other))
-or(position_meeting(bbox_left, bbox_bottom + 1, other))
-or(position_meeting(bbox_left, bbox_bottom + 2, other))
-or(position_meeting(bbox_left, bbox_bottom + 3, other))
-or(position_meeting(bbox_left, bbox_bottom + 4, other))
-or(position_meeting(bbox_right, bbox_bottom + 1, other))
-or(position_meeting(bbox_right, bbox_bottom + 2, other))
-or(position_meeting(bbox_right, bbox_bottom + 3, other))
-or(position_meeting(bbox_right, bbox_bottom + 4, other))
+or (position_meeting(x, bbox_bottom + 2, other))
+or (position_meeting(x, bbox_bottom + 3, other))
+or (position_meeting(x, bbox_bottom + 4, other))
+or (position_meeting(bbox_left, bbox_bottom + 1, other))
+or (position_meeting(bbox_left, bbox_bottom + 2, other))
+or (position_meeting(bbox_left, bbox_bottom + 3, other))
+or (position_meeting(bbox_left, bbox_bottom + 4, other))
+or (position_meeting(bbox_right, bbox_bottom + 1, other))
+or (position_meeting(bbox_right, bbox_bottom + 2, other))
+or (position_meeting(bbox_right, bbox_bottom + 3, other))
+or (position_meeting(bbox_right, bbox_bottom + 4, other))
 {
 	if (vspeed >= 0)
 	{
@@ -21,11 +21,11 @@ or(position_meeting(bbox_right, bbox_bottom + 4, other))
 
 #region /*Landing on solid object*/
 if (position_meeting(x, bbox_bottom + 1, other))
-and (stick_to_wall = false)
-or(position_meeting(bbox_left, bbox_bottom + 1, other))
-and (stick_to_wall = false)
-or(position_meeting(bbox_right, bbox_bottom + 1, other))
-and (stick_to_wall = false)
+and (stick_to_wall == false)
+or (position_meeting(bbox_left, bbox_bottom + 1, other))
+and (stick_to_wall == false)
+or (position_meeting(bbox_right, bbox_bottom + 1, other))
+and (stick_to_wall == false)
 {
 	
 	#region /*Smoke Landing Effect*/
@@ -111,7 +111,7 @@ and (vspeed >= 0)
 #region /*Dirt Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 1)
 {
 	if (!audio_is_playing(snd_footstep_dirt_right))
 	{
@@ -125,7 +125,7 @@ else
 #region /*Glass Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 2)
 {
 	if (!audio_is_playing(snd_footstep_glass_right))
 	{
@@ -139,7 +139,7 @@ else
 #region /*Grass Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 3)
 {
 	if (!audio_is_playing(snd_footstep_grass_right))
 	{
@@ -153,7 +153,7 @@ else
 #region /*Gravel Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 4)
 {
 	if (!audio_is_playing(snd_footstep_gravel_right))
 	{
@@ -167,7 +167,7 @@ else
 #region /*Metal Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 5)
 {
 	if (!audio_is_playing(snd_footstep_metal_right))
 	{
@@ -181,7 +181,7 @@ else
 #region /*Stone Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 6)
 {
 	if (!audio_is_playing(snd_footstep_stone_right))
 	{
@@ -195,7 +195,7 @@ else
 #region /*Wood Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 7)
 {
 	if (!audio_is_playing(snd_footstep_wood_right))
 	{

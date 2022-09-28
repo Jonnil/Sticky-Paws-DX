@@ -12,19 +12,19 @@ else
 if (asset_get_type("obj_semisolid_platform") == asset_object)
 {
 	if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or(position_meeting(x, bbox_bottom + 2, obj_semisolid_platform))
-	or(position_meeting(x, bbox_bottom + 3, obj_semisolid_platform))
-	or(position_meeting(x, bbox_bottom + 4, obj_semisolid_platform))
+	or (position_meeting(x, bbox_bottom + 2, obj_semisolid_platform))
+	or (position_meeting(x, bbox_bottom + 3, obj_semisolid_platform))
+	or (position_meeting(x, bbox_bottom + 4, obj_semisolid_platform))
 
-	or(position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or(position_meeting(bbox_left, bbox_bottom + 2, obj_semisolid_platform))
-	or(position_meeting(bbox_left, bbox_bottom + 3, obj_semisolid_platform))
-	or(position_meeting(bbox_left, bbox_bottom + 4, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 2, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 3, obj_semisolid_platform))
+	or (position_meeting(bbox_left, bbox_bottom + 4, obj_semisolid_platform))
 
-	or(position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or(position_meeting(bbox_right, bbox_bottom + 2, obj_semisolid_platform))
-	or(position_meeting(bbox_right, bbox_bottom + 3, obj_semisolid_platform))
-	or(position_meeting(bbox_right, bbox_bottom + 4, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 2, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 3, obj_semisolid_platform))
+	or (position_meeting(bbox_right, bbox_bottom + 4, obj_semisolid_platform))
 	{
 		gravity = 0;
 	}
@@ -54,7 +54,7 @@ if (cutscene = 0)
 else
 if (cutscene = 1) /*When placed in level, use this cutscene value*/
 {
-	if (global.character_select_in_this_menu = "main_game")
+	if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		if (ini_read_real("Player", "beat_last_level", false) = true)

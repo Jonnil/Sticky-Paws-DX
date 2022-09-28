@@ -1,8 +1,7 @@
-/*Keyboard Controls*/
-gamepad_set_axis_deadzone(0, 0.50);
-key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or(keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or(gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or(gamepad_axis_value(0, gp_axislh) < 0);
-key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or(keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or(gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or(gamepad_axis_value(0, gp_axislh) > 0);
-/*Keyboard Controls END*/
+#region /*Keyboard Controls*/
+var key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or (gamepad_axis_value(0, gp_axislh) < 0);
+var key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
+#endregion /*Keyboard Controls END*/
 
 xx = lerp(xx, window_get_width() / 2, 0.1);
 yy = lerp(yy, scr_wave(y- 8, y + 8, 4.5, 0), 0.1);
@@ -20,7 +19,7 @@ and (instance_nearest(x, y, obj_player).vspeed = 0)
 }
 
 else
-if (can_navigate = true)
+if (can_navigate == true)
 {
 
 image_alpha = 0;
@@ -101,73 +100,73 @@ or(image_index >= max_artwork)
 	#region /*Draw Comments*/
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	draw_text_outlined(+ 32, window_get_height() -94, string(current_comment), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(+ 32, window_get_height() -94, string(current_comment), global.default_text_size, c_black, c_white, 1);
 	#endregion /*Draw Comments END*/
 	
 }
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-if (image_index = 0) and (level1_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 1) and (level1_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 2) and (level1_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 3) and (level1_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 4) and (level1_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 5) and (level2_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 6) and (level2_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 7) and (level2_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 8) and (level2_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 9) and (level2_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 10) and (level3_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 11) and (level3_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 12) and (level3_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 13) and (level3_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 14) and (level3_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 15) and (level4_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 16) and (level4_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 17) and (level4_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 18) and (level4_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 19) and (level4_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 20) and (level5_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 21) and (level5_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 22) and (level5_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 23) and (level5_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 24) and (level5_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 25) and (level6_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 26) and (level6_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 27) and (level6_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 28) and (level6_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 29) and (level6_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 30) and (level7_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 31) and (level7_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 32) and (level7_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 33) and (level7_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 34) and (level7_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 35) and (level8_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 36) and (level8_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 37) and (level8_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 38) and (level8_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 39) and (level8_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 40) and (level9_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 41) and (level9_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 42) and (level9_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 43) and (level9_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 44) and (level9_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 45) and (levela_big_collectible1 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 46) and (levela_big_collectible2 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 47) and (levela_big_collectible3 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 48) and (levela_big_collectible4 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
-if (image_index = 49) and (levela_big_collectible5 < true){draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 0) and (level1_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 1) and (level1_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 2) and (level1_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 3) and (level1_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 4) and (level1_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 1", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 5) and (level2_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 6) and (level2_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 7) and (level2_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 8) and (level2_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 9) and (level2_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 2", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 10) and (level3_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 11) and (level3_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 12) and (level3_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 13) and (level3_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 14) and (level3_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 3", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 15) and (level4_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 16) and (level4_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 17) and (level4_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 18) and (level4_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 19) and (level4_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 4", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index == 20) and (level5_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 21) and (level5_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 22) and (level5_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 23) and (level5_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 24) and (level5_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 5", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 25) and (level6_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 26) and (level6_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 27) and (level6_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 28) and (level6_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 29) and (level6_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 6", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 30) and (level7_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 31) and (level7_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 32) and (level7_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 33) and (level7_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 34) and (level7_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 7", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 35) and (level8_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 36) and (level8_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 37) and (level8_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 38) and (level8_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 39) and (level8_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 8", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 40) and (level9_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 41) and (level9_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 42) and (level9_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 43) and (level9_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 44) and (level9_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " 9", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 45) and (levela_big_collectible1 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 1 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 46) and (levela_big_collectible2 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 2 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 47) and (levela_big_collectible3 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 3 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 48) and (levela_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
+if (image_index = 49) and (levela_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
 
 #endregion /*Draw Artwork END*/
 
 #region /*Draw what artwork is selected*/
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-draw_text_outlined(+ 32, window_get_height() - 32, "< " + l10n_text("Artwork") + " " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
+scr_draw_text_outlined(+ 32, window_get_height() - 32, "< " + l10n_text("Artwork") + " " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
 #endregion /*Draw what artwork is selected END*/
 
 if (gamepad_is_connected(0))
-and (global.controls_used_for_menu_navigation = "controller")
+and (global.controls_used_for_menu_navigation == "controller")
 {
 	scr_draw_gamepad_buttons(gp_padl, 128, window_get_height() / 2, 1, c_white, 1);
 	scr_draw_gamepad_buttons(gp_padr, window_get_width() - 128, window_get_height() / 2, 1, c_white, 1);
@@ -179,7 +178,7 @@ if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	draw_sprite_ext(spr_keyboard_keys, vk_right, window_get_width() - 128, window_get_height() / 2, 1, 1, 0, c_white, 1);
 }
 if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, window_get_width() / 2 - 100, window_get_height() - 42))
-and (global.controls_used_for_menu_navigation = "mouse")
+and (global.controls_used_for_menu_navigation == "mouse")
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(128 - 32, window_get_height() / 2 - 32, 128 + 32, window_get_height() / 2 + 32, c_white, c_white, c_white, c_white, false);
@@ -187,7 +186,7 @@ and (global.controls_used_for_menu_navigation = "mouse")
 }
 else
 if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 + 100, 0, window_get_width(), window_get_height() - 42))
-and (global.controls_used_for_menu_navigation = "mouse")
+and (global.controls_used_for_menu_navigation == "mouse")
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(window_get_width() - 128 - 32, window_get_height() / 2 - 32, window_get_width() - 128 + 32, window_get_height() / 2 + 32, c_white, c_white, c_white, c_white, false);
@@ -236,12 +235,12 @@ and (mouse_check_button_pressed(mb_left))
 
 #region /*Back*/
 if (keyboard_check_pressed(ord("X")))
-or(keyboard_check_pressed(vk_backspace))
-or(keyboard_check_pressed(vk_escape))
-or(gamepad_button_check_pressed(0, gp_face2))
-or(gamepad_button_check_pressed(1, gp_face2))
-or(gamepad_button_check_pressed(2, gp_face2))
-or(gamepad_button_check_pressed(3, gp_face2))
+or (keyboard_check_pressed(vk_backspace))
+or (keyboard_check_pressed(vk_escape))
+or (gamepad_button_check_pressed(0, gp_face2))
+or (gamepad_button_check_pressed(1, gp_face2))
+or (gamepad_button_check_pressed(2, gp_face2))
+or (gamepad_button_check_pressed(3, gp_face2))
 or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 370, window_get_height() - 42, window_get_width(), window_get_height()))
 and (mouse_check_button_released(mb_left))
 {
@@ -253,7 +252,7 @@ draw_sprite_ext(spr_icons_back, 0, window_get_width() - 370 + 20, window_get_hei
 
 #region /*Draw Back Key*/
 if (gamepad_is_connected(0))
-and (global.controls_used_for_menu_navigation = "controller")
+and (global.controls_used_for_menu_navigation == "controller")
 {
 	scr_draw_gamepad_buttons(gp_face2, window_get_width() - 32, window_get_height() -21, 0.5, c_white, 1);
 }
@@ -292,7 +291,7 @@ if (gamepad_stick = false)
 	}
 }
 
-if (can_navigate = true)
+if (can_navigate == true)
 and (instance_exists(obj_player))
 {
 	instance_nearest(x, y, obj_player).can_move = false;
@@ -323,7 +322,7 @@ if (image_index = 16){current_comment = l10n_text("Artist") + ": Omemega - Dark 
 if (image_index = 17){current_comment = l10n_text("Artist") + ": Omemega - Ded Sticky";}
 if (image_index = 18){current_comment = l10n_text("Artist") + ": Omemega - Skull Sticky";}
 if (image_index = 19){current_comment = l10n_text("Artist") + ": Pixpak - Sticky Adventure";}
-if (image_index = 20){current_comment = l10n_text("Artist") + ": Omemega - Derp Fat Sticky";}
+if (image_index == 20){current_comment = l10n_text("Artist") + ": Omemega - Derp Fat Sticky";}
 if (image_index = 21){current_comment = l10n_text("Artist") + ": Foxer 262 - Sticky UwU";}
 if (image_index = 22){current_comment = l10n_text("Artist") + ": NonsensicalThings - Jonnil programming Sticky Paws";}
 if (image_index = 23){current_comment = l10n_text("Artist") + ": DynoStorm - Realistic Sticky";}
@@ -380,12 +379,4 @@ if (image_index = 73){current_comment = l10n_text("Artist") + ": Andrea Colunga 
 if (image_index = 74){current_comment = l10n_text("Artist") + ": Furret76 - Sticcy pau and cetlun";}
 #endregion /*Comments END*/
 
-#region /*Draw mouse cursor for menu navigation*/
-if (global.controls_used_for_menu_navigation = "mouse")
-and (global.full_level_map_screenshot = false)
-and (os_type!= os_android)
-and (os_type!= os_ios)
-{
-	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
-}
-#endregion /*Draw mouse cursor for menu navigation END*/
+scr_draw_mouse_cursor();

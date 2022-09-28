@@ -31,7 +31,7 @@ default_xscale = 1;
 default_yscale = 1;
 
 #region /*Save how many times you have died*/
-if (global.character_select_in_this_menu = "main_game")
+if (global.character_select_in_this_menu == "main_game")
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -43,7 +43,7 @@ if (global.character_select_in_this_menu = "main_game")
 	ini_close();
 }
 else
-if (global.character_select_in_this_menu = "level_editor")
+if (global.character_select_in_this_menu == "level_editor")
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -88,7 +88,7 @@ voice_burned_die = noone;
 #region /*Disable the players for the camera*/
 
 #region /*Disable player 1*/
-if (player = 1)
+if (player == 1)
 {
 	with(obj_camera)
 	{
@@ -98,7 +98,7 @@ if (player = 1)
 #endregion /*Disable player 1 END*/
 
 #region /*Disable player 2*/
-if (player = 2)
+if (player == 2)
 {
 	with(obj_camera)
 	{
@@ -108,7 +108,7 @@ if (player = 2)
 #endregion /*Disable player 2 END*/
 
 #region /*Disable player 3*/
-if (player = 3)
+if (player == 3)
 {
 	with(obj_camera)
 	{
@@ -118,7 +118,7 @@ if (player = 3)
 #endregion /*Disable player 3 END*/
 
 #region /*Disable player 4 */
-if (player = 4)
+if (player == 4)
 {
 	with(obj_camera)
 	{

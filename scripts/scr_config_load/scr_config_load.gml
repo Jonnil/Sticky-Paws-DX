@@ -1,6 +1,6 @@
 function scr_config_load()
 {
-	if (file_exists(working_directory + "config.ini"))
+	if (file_exists(working_directory + "config.ini")) /*Check if config.ini exists before loading any settings*/
 	{
 		ini_open(working_directory + "config.ini");
 		if (ini_key_exists("config", "always_show_level_editor_buttons")){global.always_show_level_editor_buttons = ini_read_real("config", "always_show_level_editor_buttons", true);}
@@ -352,9 +352,5 @@ function scr_config_load()
 		#endregion /*Load Player 4 Gamepad Remapping END*/
 		
 		ini_close();
-	}
-	else
-	{
-		//Do Nothing
 	}
 }

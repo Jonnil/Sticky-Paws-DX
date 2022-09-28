@@ -1,5 +1,5 @@
 if (instance_exists(obj_leveleditor))
-and (sprite_lives_icon = noone)
+and (sprite_lives_icon == noone)
 {
 	sprite_lives_icon = obj_leveleditor.sprite_lives_icon; /*Just copy lives icon from obj_leveleditor, don't make alarm event for obj_leveleditor_placed_object, it will lag the game*/
 }

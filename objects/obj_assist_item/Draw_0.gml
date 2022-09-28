@@ -1,5 +1,5 @@
 draw_set_halign(fa_center);
-draw_text_outlined(x, y - 32, "Assist Item", global.default_text_size, c_black, c_lime, 1);
+scr_draw_text_outlined(x, y - 32, "Assist Item", global.default_text_size, c_black, c_lime, 1);
 
 image_alpha = 1;
 visible = true;

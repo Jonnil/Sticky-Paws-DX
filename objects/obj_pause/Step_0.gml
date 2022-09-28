@@ -15,24 +15,7 @@ and (!instance_exists(obj_leveleditor))
 display_set_gui_size(window_get_width(), window_get_height());
 #endregion /*Set screen size END*/
 
-#region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
-if (asset_get_type("obj_camera") == asset_object)
-and (!instance_exists(obj_camera))
-and (keyboard_check_pressed(global.fullscreen_key))
-{
-	if (window_get_fullscreen())
-	{
-		window_set_fullscreen(false);
-	}
-	else
-	{
-		window_set_fullscreen(true);
-	}
-	ini_open("config.ini");
-	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
-	ini_close();
-}
-#endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
+scr_toggle_fullscreen();
 
 #region /*Menu cursor image speed*/
 menu_cursor_index += 0.3;

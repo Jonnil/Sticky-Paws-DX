@@ -1,18 +1,18 @@
 /*________________________________Draw Event________________________________*/
 
 /*Don't remove this, please, it's for debug*/
-//draw_text_outlined(x, y- 256, "Custom character: " + string(custom_character), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x, y- 200, "What player am I: " + string(player), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x, y - 128, "character for player 1: " + string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x, y - 64, "character for player 2: " + string(global.character_for_player_2), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x, y - 64, "Overflow HP: " + string(overflow_hp) + "/" + string(max_overflow_hp), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x, y - 64, string(global.character_select_in_this_menu), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 128-64, "tongue_move_player_toward_wall: " + string(tongue_move_player_toward_wall), global.default_text_size, c_white, c_black, 1);
-//draw_text_outlined(x - 32, y - 128, "ground_pound" + ": " + string(ground_pound), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x, y- 256, "Custom character: " + string(custom_character), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x, y- 200, "What player am I: " + string(player), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x, y - 128, "character for player 1: " + string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x, y - 64, "character for player 2: " + string(global.character_for_player_2), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x, y - 64, "Overflow HP: " + string(overflow_hp) + "/" + string(max_overflow_hp), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x, y - 64, string(global.character_select_in_this_menu), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x - 32, y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x - 32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x - 32, y - 128-64, "tongue_move_player_toward_wall: " + string(tongue_move_player_toward_wall), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x - 32, y - 128, "ground_pound" + ": " + string(ground_pound), global.default_text_size, c_white, c_red, 1);
 
 #region /*Draw Raycasts*/
 if (hold_item_in_hands != "")
@@ -22,11 +22,11 @@ and (key_up)
 	{
 		if (!position_meeting(xx + 32 * image_xscale, yy, obj_wall))
 		{
-			raycast_info = raycast(xx + 32 * image_xscale, yy, 90, 380, 16, obj_wall);
+			raycast_info = scr_raycast(xx + 32 * image_xscale, yy, 90, 380, 16, obj_wall);
 		}
 		else
 		{
-			raycast_info = raycast(xx, yy, 90, 380, 16, obj_wall);
+			raycast_info = scr_raycast(xx, yy, 90, 380, 16, obj_wall);
 		}
 	}
 	if (raycast_info == noone)
@@ -60,7 +60,7 @@ and (have_heart_balloon = true)
 {
 	if (asset_get_type("obj_horizontal_rope") == asset_object)
 	and (place_meeting(x, y - 1, obj_horizontal_rope))
-	and (horizontal_rope_climb = true)
+	and (horizontal_rope_climb == true)
 	and (key_up)
 	and (!key_down)
 	and (!place_meeting(x, y - 16, obj_wall))
@@ -83,7 +83,7 @@ and (have_heart_balloon = true)
 	}
 }
 
-if (have_heart_balloon = false)
+if (have_heart_balloon == false)
 and (asset_get_type("obj_heart_balloon") == asset_object)
 and (instance_exists(obj_heart_balloon))
 and (distance_to_object(obj_heart_balloon) < 32)
@@ -343,7 +343,7 @@ and (intro_animation = "")
 #region /*Draw Collision Mask*/
 if (global.show_collision_mask = true)
 {
-	if (crouch = true)
+	if (crouch == true)
 	and (sprite_mask_crouch > 0)
 	{
 		draw_sprite_ext(sprite_mask_crouch, 0, x, y, image_xscale, 1, 0, c_white, 1);
@@ -366,8 +366,8 @@ else
 #region /*Turnaround Effect*/
 if (effect_turnaround_subimg < 10)
 {
-	if (climb = false)
-	and (horizontal_rope_climb = false)
+	if (climb == false)
+	and (horizontal_rope_climb == false)
 	and (asset_get_type("spr_effect_turnaround") == asset_sprite)
 	{
 		draw_sprite_ext(spr_effect_turnaround, effect_turnaround_subimg, xx, yy, image_xscale, 1, angle, c_white, 0.5);
@@ -378,13 +378,13 @@ if (effect_turnaround_subimg < 10)
 
 #region /*Running Sparks Effect*/
 if (effect_speedspark_subimg < 4)
-and (hold_item_in_hands = "")
+and (hold_item_in_hands == "")
 {
 	if (place_meeting(x, y + 1, obj_wall))
-	or(position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	{
-		if (climb = false)
-		and (horizontal_rope_climb = false)
+		if (climb == false)
+		and (horizontal_rope_climb == false)
 		and (asset_get_type("spr_speedspark") == asset_sprite)
 		{
 			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 0.5);
@@ -447,7 +447,7 @@ else
 #endregion /*Don't make it look like the player is teleporting when the player teleports END*/
 
 #region /*Homing Attack*/
-if (allow_homing_attack = true)
+if (allow_homing_attack == true)
 {
 	
 	#region /*Homing Enemy*/
@@ -457,9 +457,9 @@ if (allow_homing_attack = true)
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	and (stick_to_wall = false)
-	and (climb = false)
-	and (horizontal_rope_climb = false)
+	and (stick_to_wall == false)
+	and (climb == false)
+	and (horizontal_rope_climb == false)
 	and (asset_get_type("obj_enemy") == asset_object)
 	and (instance_exists(obj_enemy))
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
@@ -475,7 +475,7 @@ if (allow_homing_attack = true)
 		}
 		else
 		{
-			draw_circle_color(instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 32, c_lime, c_lime, true);
+			draw_circle_color (instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 32, c_lime, c_lime, true);
 		}
 	}
 	#endregion /*Homing Enemy END*/
@@ -489,9 +489,9 @@ if (allow_homing_attack = true)
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	and (!place_meeting(x, y + 1, obj_wall))
-	and (stick_to_wall = false)
-	and (climb = false)
-	and (horizontal_rope_climb = false)
+	and (stick_to_wall == false)
+	and (climb == false)
+	and (horizontal_rope_climb == false)
 	and (asset_get_type("obj_spring") == asset_object)
 	and (instance_exists(obj_spring))
 	and (!collision_line(x, y, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, obj_wall, false, true))
@@ -506,7 +506,7 @@ if (allow_homing_attack = true)
 		}
 		else
 		{
-			draw_circle_color(instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 32, c_lime, c_lime, true);
+			draw_circle_color (instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 32, c_lime, c_lime, true);
 		}
 	}
 	#endregion /*Homing Spring END*/
@@ -519,7 +519,7 @@ if (allow_homing_attack = true)
 #endregion /*Homing Attack END*/
 
 #region /*Display Player Number and Name*/
-if (global.player1_can_play = true)
+if (global.player1_can_play == true)
 and (global.player2_can_play = true)
 or (global.player1_can_play = true)
 and (global.player3_can_play = true)
@@ -534,48 +534,48 @@ and (global.player4_can_play = true)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	if (player = 1)
+	if (player == 1)
 	{
 		if (global.player1_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player1_color, 1);
+			scr_draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player1_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
+			scr_draw_text_outlined(x, y - 64,string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
 		}
 	}
-	if (player = 2)
+	if (player == 2)
 	{
 		if (global.player2_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player2_color, 1);
+			scr_draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player2_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
+			scr_draw_text_outlined(x, y - 64,string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
 		}
 	}
-	if (player = 3)
+	if (player == 3)
 	{
 		if (global.player3_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player3_color, 1);
+			scr_draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player3_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
+			scr_draw_text_outlined(x, y - 64,string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
 		}
 	}
-	if (player = 4)
+	if (player == 4)
 	{
 		if (global.player4_name = "")
 		{
-			draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player4_color, 1);
+			scr_draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player4_color, 1);
 		}
 		else
 		{
-			draw_text_outlined(x, y - 64,string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
+			scr_draw_text_outlined(x, y - 64,string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
 		}
 	}
 }
@@ -589,12 +589,12 @@ or(hp > 0)
 and (global.assist_enable = false)
 {
 	if (max_hp = 2) /*If there is only max 2 hp and there is no panting sprite, display HP*/
-	and (sprite_panting = noone)
+	and (sprite_panting == noone)
 	or(max_hp >= 3) /*If there is more than max 3 hp, always display HP*/
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_text_outlined(x, bbox_top - 32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(x, bbox_top - 32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size, c_white, c_black, 1);
 	}
 }
 #endregion /*If player has more hp, show that END*/

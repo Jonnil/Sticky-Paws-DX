@@ -279,67 +279,67 @@ function scr_gamepadremapping()
 	{
 		if (menu_remap_key_number = 0)
 		{
-			if (menu = "remap_key_dive")
+			if (menu == "remap_key_dive")
 			{
 				global.player1_gamepad_button_dive = last_key;
 			}
 			else
-			if (menu = "remap_key_jump")
+			if (menu == "remap_key_jump")
 			{
 				global.player1_gamepad_button_jump = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch")
+			if (menu == "remap_key_crouch")
 			{
 				global.player1_gamepad_button_crouch = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch_toggle")
+			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player1_gamepad_button_crouch_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint")
+			if (menu == "remap_key_sprint")
 			{
 				global.player1_gamepad_button_sprint = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint_toggle")
+			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player1_gamepad_button_sprint_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_left")
+			if (menu == "remap_key_left")
 			{
 				global.player1_gamepad_button_left = last_key;
 			}
 			else
-			if (menu = "remap_key_right")
+			if (menu == "remap_key_right")
 			{
 				global.player1_gamepad_button_right = last_key;
 			}
 			else
-			if (menu = "remap_key_down")
+			if (menu == "remap_key_down")
 			{
 				global.player1_gamepad_button_down = last_key;
 			}
 			else
-			if (menu = "remap_key_up")
+			if (menu == "remap_key_up")
 			{
 				global.player1_gamepad_button_up = last_key;
 			}
 			else
-			if (menu = "remap_key_tongue")
+			if (menu == "remap_key_tongue")
 			{
 				global.player1_gamepad_button_tongue = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_in")
+			if (menu == "remap_key_zoom_in")
 			{
 				global.player1_gamepad_button_zoom_in = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_out")
+			if (menu == "remap_key_zoom_out")
 			{
 				global.player1_gamepad_button_zoom_out = last_key;
 			}
@@ -350,67 +350,67 @@ function scr_gamepadremapping()
 		else
 		if (menu_remap_key_number = 2)
 		{
-			if (menu = "remap_key_dive")
+			if (menu == "remap_key_dive")
 			{
 				global.player1_gamepad_button2_dive = last_key;
 			}
 			else
-			if (menu = "remap_key_jump")
+			if (menu == "remap_key_jump")
 			{
 				global.player1_gamepad_button2_jump = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch")
+			if (menu == "remap_key_crouch")
 			{
 				global.player1_gamepad_button2_crouch = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch_toggle")
+			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player1_gamepad_button2_crouch_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint")
+			if (menu == "remap_key_sprint")
 			{
 				global.player1_gamepad_button2_sprint = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint_toggle")
+			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player1_gamepad_button2_sprint_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_left")
+			if (menu == "remap_key_left")
 			{
 				global.player1_gamepad_button2_left = last_key;
 			}
 			else
-			if (menu = "remap_key_right")
+			if (menu == "remap_key_right")
 			{
 				global.player1_gamepad_button2_right = last_key;
 			}
 			else
-			if (menu = "remap_key_down")
+			if (menu == "remap_key_down")
 			{
 				global.player1_gamepad_button2_down = last_key;
 			}
 			else
-			if (menu = "remap_key_up")
+			if (menu == "remap_key_up")
 			{
 				global.player1_gamepad_button2_up = last_key;
 			}
 			else
-			if (menu = "remap_key_tongue")
+			if (menu == "remap_key_tongue")
 			{
 				global.player1_gamepad_button2_tongue = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_in")
+			if (menu == "remap_key_zoom_in")
 			{
 				global.player1_gamepad_button2_zoom_in = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_out")
+			if (menu == "remap_key_zoom_out")
 			{
 				global.player1_gamepad_button2_zoom_out = last_key;
 			}
@@ -429,67 +429,67 @@ function scr_gamepadremapping()
 	{
 		if (menu_remap_key_number = 0)
 		{
-			if (menu = "remap_key_dive")
+			if (menu == "remap_key_dive")
 			{
 				global.player2_gamepad_button_dive = last_key;
 			}
 			else
-			if (menu = "remap_key_jump")
+			if (menu == "remap_key_jump")
 			{
 				global.player2_gamepad_button_jump = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch")
+			if (menu == "remap_key_crouch")
 			{
 				global.player2_gamepad_button_crouch = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch_toggle")
+			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player2_gamepad_button_crouch_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint")
+			if (menu == "remap_key_sprint")
 			{
 				global.player2_gamepad_button_sprint = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint_toggle")
+			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player2_gamepad_button_sprint_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_left")
+			if (menu == "remap_key_left")
 			{
 				global.player2_gamepad_button_left = last_key;
 			}
 			else
-			if (menu = "remap_key_right")
+			if (menu == "remap_key_right")
 			{
 				global.player2_gamepad_button_right = last_key;
 			}
 			else
-			if (menu = "remap_key_down")
+			if (menu == "remap_key_down")
 			{
 				global.player2_gamepad_button_down = last_key;
 			}
 			else
-			if (menu = "remap_key_up")
+			if (menu == "remap_key_up")
 			{
 				global.player2_gamepad_button_up = last_key;
 			}
 			else
-			if (menu = "remap_key_tongue")
+			if (menu == "remap_key_tongue")
 			{
 				global.player2_gamepad_button_tongue = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_in")
+			if (menu == "remap_key_zoom_in")
 			{
 				global.player2_gamepad_button_zoom_in = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_out")
+			if (menu == "remap_key_zoom_out")
 			{
 				global.player2_gamepad_button_zoom_out = last_key;
 			}
@@ -500,67 +500,67 @@ function scr_gamepadremapping()
 		else
 		if (menu_remap_key_number = 2)
 		{
-			if (menu = "remap_key_dive")
+			if (menu == "remap_key_dive")
 			{
 				global.player2_gamepad_button2_dive = last_key;
 			}
 			else
-			if (menu = "remap_key_jump")
+			if (menu == "remap_key_jump")
 			{
 				global.player2_gamepad_button2_jump = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch")
+			if (menu == "remap_key_crouch")
 			{
 				global.player2_gamepad_button2_crouch = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch_toggle")
+			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player2_gamepad_button2_crouch_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint")
+			if (menu == "remap_key_sprint")
 			{
 				global.player2_gamepad_button2_sprint = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint_toggle")
+			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player2_gamepad_button2_sprint_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_left")
+			if (menu == "remap_key_left")
 			{
 				global.player2_gamepad_button2_left = last_key;
 			}
 			else
-			if (menu = "remap_key_right")
+			if (menu == "remap_key_right")
 			{
 				global.player2_gamepad_button2_right = last_key;
 			}
 			else
-			if (menu = "remap_key_down")
+			if (menu == "remap_key_down")
 			{
 				global.player2_gamepad_button2_down = last_key;
 			}
 			else
-			if (menu = "remap_key_up")
+			if (menu == "remap_key_up")
 			{
 				global.player2_gamepad_button2_up = last_key;
 			}
 			else
-			if (menu = "remap_key_tongue")
+			if (menu == "remap_key_tongue")
 			{
 				global.player2_gamepad_button2_tongue = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_in")
+			if (menu == "remap_key_zoom_in")
 			{
 				global.player2_gamepad_button2_zoom_in = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_out")
+			if (menu == "remap_key_zoom_out")
 			{
 				global.player2_gamepad_button2_zoom_out = last_key;
 			}
@@ -579,67 +579,67 @@ function scr_gamepadremapping()
 	{
 		if (menu_remap_key_number = 0)
 		{
-			if (menu = "remap_key_dive")
+			if (menu == "remap_key_dive")
 			{
 				global.player3_gamepad_button_dive = last_key;
 			}
 			else
-			if (menu = "remap_key_jump")
+			if (menu == "remap_key_jump")
 			{
 				global.player3_gamepad_button_jump = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch")
+			if (menu == "remap_key_crouch")
 			{
 				global.player3_gamepad_button_crouch = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch_toggle")
+			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player3_gamepad_button_crouch_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint")
+			if (menu == "remap_key_sprint")
 			{
 				global.player3_gamepad_button_sprint = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint_toggle")
+			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player3_gamepad_button_sprint_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_left")
+			if (menu == "remap_key_left")
 			{
 				global.player3_gamepad_button_left = last_key;
 			}
 			else
-			if (menu = "remap_key_right")
+			if (menu == "remap_key_right")
 			{
 				global.player3_gamepad_button_right = last_key;
 			}
 			else
-			if (menu = "remap_key_down")
+			if (menu == "remap_key_down")
 			{
 				global.player3_gamepad_button_down = last_key;
 			}
 			else
-			if (menu = "remap_key_up")
+			if (menu == "remap_key_up")
 			{
 				global.player3_gamepad_button_up = last_key;
 			}
 			else
-			if (menu = "remap_key_tongue")
+			if (menu == "remap_key_tongue")
 			{
 				global.player3_gamepad_button_tongue = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_in")
+			if (menu == "remap_key_zoom_in")
 			{
 				global.player3_gamepad_button_zoom_in = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_out")
+			if (menu == "remap_key_zoom_out")
 			{
 				global.player3_gamepad_button_zoom_out = last_key;
 			}
@@ -650,67 +650,67 @@ function scr_gamepadremapping()
 		else
 		if (menu_remap_key_number = 2)
 		{
-			if (menu = "remap_key_dive")
+			if (menu == "remap_key_dive")
 			{
 				global.player3_gamepad_button2_dive = last_key;
 			}
 			else
-			if (menu = "remap_key_jump")
+			if (menu == "remap_key_jump")
 			{
 				global.player3_gamepad_button2_jump = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch")
+			if (menu == "remap_key_crouch")
 			{
 				global.player3_gamepad_button2_crouch = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch_toggle")
+			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player3_gamepad_button2_crouch_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint")
+			if (menu == "remap_key_sprint")
 			{
 				global.player3_gamepad_button2_sprint = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint_toggle")
+			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player3_gamepad_button2_sprint_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_left")
+			if (menu == "remap_key_left")
 			{
 				global.player3_gamepad_button2_left = last_key;
 			}
 			else
-			if (menu = "remap_key_right")
+			if (menu == "remap_key_right")
 			{
 				global.player3_gamepad_button2_right = last_key;
 			}
 			else
-			if (menu = "remap_key_down")
+			if (menu == "remap_key_down")
 			{
 				global.player3_gamepad_button2_down = last_key;
 			}
 			else
-			if (menu = "remap_key_up")
+			if (menu == "remap_key_up")
 			{
 				global.player3_gamepad_button2_up = last_key;
 			}
 			else
-			if (menu = "remap_key_tongue")
+			if (menu == "remap_key_tongue")
 			{
 				global.player3_gamepad_button2_tongue = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_in")
+			if (menu == "remap_key_zoom_in")
 			{
 				global.player3_gamepad_button2_zoom_in = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_out")
+			if (menu == "remap_key_zoom_out")
 			{
 				global.player3_gamepad_button2_zoom_out = last_key;
 			}
@@ -729,67 +729,67 @@ function scr_gamepadremapping()
 	{
 		if (menu_remap_key_number = 0)
 		{
-			if (menu = "remap_key_dive")
+			if (menu == "remap_key_dive")
 			{
 				global.player4_gamepad_button_dive = last_key;
 			}
 			else
-			if (menu = "remap_key_jump")
+			if (menu == "remap_key_jump")
 			{
 				global.player4_gamepad_button_jump = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch")
+			if (menu == "remap_key_crouch")
 			{
 				global.player4_gamepad_button_crouch = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch_toggle")
+			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player4_gamepad_button_crouch_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint")
+			if (menu == "remap_key_sprint")
 			{
 				global.player4_gamepad_button_sprint = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint_toggle")
+			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player4_gamepad_button_sprint_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_left")
+			if (menu == "remap_key_left")
 			{
 				global.player4_gamepad_button_left = last_key;
 			}
 			else
-			if (menu = "remap_key_right")
+			if (menu == "remap_key_right")
 			{
 				global.player4_gamepad_button_right = last_key;
 			}
 			else
-			if (menu = "remap_key_down")
+			if (menu == "remap_key_down")
 			{
 				global.player4_gamepad_button_down = last_key;
 			}
 			else
-			if (menu = "remap_key_up")
+			if (menu == "remap_key_up")
 			{
 				global.player4_gamepad_button_up = last_key;
 			}
 			else
-			if (menu = "remap_key_tongue")
+			if (menu == "remap_key_tongue")
 			{
 				global.player4_gamepad_button_tongue = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_in")
+			if (menu == "remap_key_zoom_in")
 			{
 				global.player4_gamepad_button_zoom_in = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_out")
+			if (menu == "remap_key_zoom_out")
 			{
 				global.player4_gamepad_button_zoom_out = last_key;
 			}
@@ -800,67 +800,67 @@ function scr_gamepadremapping()
 		else
 		if (menu_remap_key_number = 2)
 		{
-			if (menu = "remap_key_dive")
+			if (menu == "remap_key_dive")
 			{
 				global.player4_gamepad_button2_dive = last_key;
 			}
 			else
-			if (menu = "remap_key_jump")
+			if (menu == "remap_key_jump")
 			{
 				global.player4_gamepad_button2_jump = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch")
+			if (menu == "remap_key_crouch")
 			{
 				global.player4_gamepad_button2_crouch = last_key;
 			}
 			else
-			if (menu = "remap_key_crouch_toggle")
+			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player4_gamepad_button2_crouch_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint")
+			if (menu == "remap_key_sprint")
 			{
 				global.player4_gamepad_button2_sprint = last_key;
 			}
 			else
-			if (menu = "remap_key_sprint_toggle")
+			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player4_gamepad_button2_sprint_toggle = last_key;
 			}
 			else
-			if (menu = "remap_key_left")
+			if (menu == "remap_key_left")
 			{
 				global.player4_gamepad_button2_left = last_key;
 			}
 			else
-			if (menu = "remap_key_right")
+			if (menu == "remap_key_right")
 			{
 				global.player4_gamepad_button2_right = last_key;
 			}
 			else
-			if (menu = "remap_key_down")
+			if (menu == "remap_key_down")
 			{
 				global.player4_gamepad_button2_down = last_key;
 			}
 			else
-			if (menu = "remap_key_up")
+			if (menu == "remap_key_up")
 			{
 				global.player4_gamepad_button2_up = last_key;
 			}
 			else
-			if (menu = "remap_key_tongue")
+			if (menu == "remap_key_tongue")
 			{
 				global.player4_gamepad_button2_tongue = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_in")
+			if (menu == "remap_key_zoom_in")
 			{
 				global.player4_gamepad_button2_zoom_in = last_key;
 			}
 			else
-			if (menu = "remap_key_zoom_out")
+			if (menu == "remap_key_zoom_out")
 			{
 				global.player4_gamepad_button2_zoom_out = last_key;
 			}

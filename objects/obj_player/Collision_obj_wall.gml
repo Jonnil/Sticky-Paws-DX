@@ -10,7 +10,7 @@ while (place_meeting(x, y, other))
 #region /*Landing on solid object*/
 if (place_meeting(x, y + 1, other))
 and (vspeed >= 0)
-and (stick_to_wall = false)
+and (stick_to_wall == false)
 {
 	
 	#region /*Smoke Landing Effect*/
@@ -58,7 +58,7 @@ and (stick_to_wall = false)
 
 #region /*Hitting your head on ceiling*/
 if (position_meeting(x, bbox_top - 1, other))
-and (stick_to_wall = false)
+and (stick_to_wall == false)
 {
 	scr_gamepad_vibration(player, 0.1, 10);
 	vspeed += 4;
@@ -74,9 +74,9 @@ and (stick_to_wall = false)
 
 #region /*Hitting wall to your left*/
 if (position_meeting(bbox_left - 1, bbox_bottom - 8, other))
-or(position_meeting(bbox_left - 1, bbox_top + 8, other))
-or(position_meeting(bbox_left - 1, y, other))
-//or(place_meeting(x - 1, y, other))
+or (position_meeting(bbox_left - 1, bbox_top + 8, other))
+or (position_meeting(bbox_left - 1, y, other))
+//or (place_meeting(x - 1, y, other))
 {
 	if (hspeed <= 0)
 	{
@@ -87,9 +87,9 @@ or(position_meeting(bbox_left - 1, y, other))
 
 #region /*Hitting wall to your right*/
 if (position_meeting(bbox_right + 1, bbox_bottom - 8, other))
-or(position_meeting(bbox_right + 1, bbox_top + 8, other))
-or(position_meeting(bbox_right + 1, y, other))
-//or(place_meeting(x + 1, y, other))
+or (position_meeting(bbox_right + 1, bbox_top + 8, other))
+or (position_meeting(bbox_right + 1, y, other))
+//or (place_meeting(x + 1, y, other))
 {
 	if (hspeed >= 0)
 	{
@@ -127,7 +127,7 @@ if (position_meeting(x, bbox_top - 1, other))
 #region /*Dirt Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 1)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 1)
 {
 	if (!audio_is_playing(snd_footstep_dirt_right))
 	{
@@ -141,7 +141,7 @@ else
 #region /*Glass Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 2)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 2)
 {
 	if (!audio_is_playing(snd_footstep_glass_right))
 	{
@@ -155,7 +155,7 @@ else
 #region /*Grass Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 3)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 3)
 {
 	if (!audio_is_playing(snd_footstep_grass_right))
 	{
@@ -169,7 +169,7 @@ else
 #region /*Gravel Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 4)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 4)
 {
 	if (!audio_is_playing(snd_footstep_gravel_right))
 	{
@@ -183,7 +183,7 @@ else
 #region /*Metal Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 5)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 5)
 {
 	if (!audio_is_playing(snd_footstep_metal_right))
 	{
@@ -197,7 +197,7 @@ else
 #region /*Stone Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 6)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 6)
 {
 	if (!audio_is_playing(snd_footstep_stone_right))
 	{
@@ -211,7 +211,7 @@ else
 #region /*Wood Footstep Right*/
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface = 7)
+and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 7)
 {
 	if (!audio_is_playing(snd_footstep_wood_right))
 	{

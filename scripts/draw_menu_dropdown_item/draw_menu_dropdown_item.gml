@@ -13,8 +13,8 @@ function draw_menu_dropdown_item(string_text_item, x_position, y_position, varia
 	if (string_text_item > "")
 	{
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + (28 * item_number), x_position + 555, y_position + 27+ (28 * item_number)))
-		and (global.controls_used_for_menu_navigation = "mouse")
-		and (menu_delay = 0)
+		and (global.controls_used_for_menu_navigation == "mouse")
+		and (menu_delay == 0)
 		{
 			if (variable_to_change = item_number)
 			{
@@ -45,7 +45,7 @@ function draw_menu_dropdown_item(string_text_item, x_position, y_position, varia
 		#region /*Text inside the menu button*/
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_text_outlined(x_position + 277, y_position + 13 + (28 * item_number), string(string_text_item), global.default_text_size * 0.75, c_white, c_black, 1);
+		scr_draw_text_outlined(x_position + 277, y_position + 13 + (28 * item_number), string(string_text_item), global.default_text_size * 0.75, c_white, c_black, 1);
 		#endregion /*Text inside the menu button END*/
 		
 	}

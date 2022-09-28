@@ -1,5 +1,5 @@
-//draw_text_outlined(x - 32, y- 32, string(clear_rate), global.default_text_size, c_black, c_white, 1);
-//draw_text_outlined(x - 32, y-64, string(level), global.default_text_size, c_black, c_white, 1);
+//scr_draw_text_outlined(x - 32, y- 32, string(clear_rate), global.default_text_size, c_black, c_white, 1);
+//scr_draw_text_outlined(x - 32, y-64, string(level), global.default_text_size, c_black, c_white, 1);
 
 #region /*Draw level sprite*/
 if (asset_get_type("spr_level_ring") == asset_sprite)
@@ -20,7 +20,7 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 if (level_number != 0)
 {
-	draw_text_outlined(x, y, string(level_number), global.default_text_size * 2, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(x, y, string(level_number), global.default_text_size * 2, c_black, c_white, image_alpha);
 }
 
 #region /*Show if Checkpoint is activated*/

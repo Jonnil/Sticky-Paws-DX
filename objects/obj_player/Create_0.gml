@@ -1,5 +1,6 @@
 /*________________________________Create Event________________________________*/
-audio_listener_position(x, y, 0);
+audio_listener_orientation(0, 0, 1, 0, -1, 0);
+audio_listener_position(x, y, 0); /*Audio listener should start on top of the player*/
 
 raycast_info = noone;
 
@@ -505,34 +506,34 @@ and (room != room_title)
 	#region /*Update Level Clear Melody*/
 	/*OGG small letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
-	and (global.character_select_in_this_menu = "main_game")
+	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
-	and (global.create_level_from_template = true)
+	and (global.character_select_in_this_menu == "level_editor")
+	and (global.create_level_from_template == true)
 	{
 		level_clear_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg");
 	}
 	else
 	/*OGG big letter File*/
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg"))
-	and (global.character_select_in_this_menu = "main_game")
+	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
-	and (global.create_level_from_template = true)
+	and (global.character_select_in_this_menu == "level_editor")
+	and (global.create_level_from_template == true)
 	{
 		level_clear_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg");
 	}
 	else
 	/*OGG small letter File*/
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	{
 		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/clear_melody.ogg");
 	}
 	else
 	/*OGG big letter File*/
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg"))
-	and (global.character_select_in_this_menu = "level_editor")
+	and (global.character_select_in_this_menu == "level_editor")
 	{
 		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg");
 	}
@@ -615,7 +616,7 @@ overflow_hp = 0; /*Starting Overflow HP. Should be 0 by default*/
 power_meter_running_sound = false;
 redblinktimer = 0;
 smooth_teleport = true;
-speeddash = false;
+speed_dash = false;
 speedunit = 0;
 spring = false;
 spring_animation = 0;
@@ -678,8 +679,8 @@ active_jump = false;
 
 #region /*Load Checkpoint Direction*/
 if (asset_get_type("room_leveleditor") == asset_room)
-and (room = room_leveleditor)
-and (global.character_select_in_this_menu = "main_game")
+and (room == room_leveleditor)
+and (global.character_select_in_this_menu == "main_game")
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -692,8 +693,8 @@ and (global.character_select_in_this_menu = "main_game")
 }
 else
 if (asset_get_type("room_leveleditor") == asset_room)
-and (room = room_leveleditor)
-and (global.character_select_in_this_menu = "level_editor")
+and (room == room_leveleditor)
+and (global.character_select_in_this_menu == "level_editor")
 {
 				
 	var uppercase_level_name;

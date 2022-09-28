@@ -18,9 +18,9 @@ selected_skin = 0;
 background_layer_x = 0;
 background_layer_y = 0;
 
-rectangle_top_left_of_thumbnail_x = 394 *(global.select_level_index) + 100 - 3;
+rectangle_top_left_of_thumbnail_x = 394 * (global.select_level_index) + 100 - 3;
 rectangle_top_left_of_thumbnail_y = 226 + 250 - 3;
-rectangle_bottom_right_of_thumbnail_x = 394 *(global.select_level_index) + 100 + 384 + 3;
+rectangle_bottom_right_of_thumbnail_x = 394 * (global.select_level_index) + 100 + 384 + 3;
 rectangle_bottom_right_of_thumbnail_y = 226 + 250 + 216 + 3;
 
 level_editor_edit_name = false; /*If you are editing an already made level's name or not*/
@@ -210,7 +210,7 @@ if (file_exists("localization.csv"))
 lives = 5; /*Starting lives*/
 
 #region /*If title screen should start at the level editor menu or the main menu*/
-if (global.character_select_in_this_menu = "level_editor")
+if (global.character_select_in_this_menu == "level_editor")
 {
 	scr_load_custom_level_initializing();
 	can_input_player1_name = false;

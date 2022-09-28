@@ -37,13 +37,13 @@ and (show_remaining_jumps = false)
 or(scoreup = "3-up")
 and (show_remaining_jumps = false)
 {
-	draw_text_outlined(x, y,string(scoreup), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
+	scr_draw_text_outlined(x, y,string(scoreup), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
 }
 else
 if (scoreup = "CHECKPOINT")
 and (show_remaining_jumps = false)
 {
-	draw_text_outlined(x, y, l10n_text("Checkpoint"), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
+	scr_draw_text_outlined(x, y, l10n_text("Checkpoint"), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
 }
 else
 if (scoreup = "Copied")
@@ -65,12 +65,12 @@ if (show_remaining_jumps = false)
 			}
 		}
 	}
-	draw_text_outlined(x, y, string(scoreup), global.default_text_size * image_xscale, c_white, c_black, image_alpha);
+	scr_draw_text_outlined(x, y, string(scoreup), global.default_text_size * image_xscale, c_white, c_black, image_alpha);
 }
 
 if (show_remaining_jumps = true)
 {
-	draw_text_outlined(x, y, string(scoreup), global.default_text_size * image_xscale, c_gray, c_white, image_alpha);
+	scr_draw_text_outlined(x, y, string(scoreup), global.default_text_size * image_xscale, c_gray, c_white, image_alpha);
 }
 time += 1;
 if (time > room_speed)

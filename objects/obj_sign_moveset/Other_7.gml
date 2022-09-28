@@ -1,4 +1,4 @@
-if (sprite_index = spr_sign_reset)
+if (sprite_index == spr_sign_reset)
 {
 	sprite_index = sprite_sign;
 	image_index = 0;

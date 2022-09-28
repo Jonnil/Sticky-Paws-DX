@@ -16,18 +16,18 @@ draw_set_valign(fa_top);
 #region /*If gamepad is connected*/
 if (gamepad_is_connected(0))
 and (global.player1_can_play = true)
-and (global.controls_used_for_menu_navigation = "controller")
+and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(1))
 and (global.player2_can_play = true)
-and (global.controls_used_for_menu_navigation = "controller")
+and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(2))
 and (global.player3_can_play = true)
-and (global.controls_used_for_menu_navigation = "controller")
+and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(3))
 and (global.player4_can_play = true)
-and (global.controls_used_for_menu_navigation = "controller")
+and (global.controls_used_for_menu_navigation == "controller")
 {
-	draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Hold Start"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Hold Start"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*If gamepad is connected END*/
 
@@ -37,7 +37,7 @@ else
 if (os_type == os_ios)
 or(os_type == os_android)
 {
-	draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /*If playing on mobile END*/
 
@@ -52,16 +52,16 @@ or (global.controls_used_for_menu_navigation = "mouse")
 }
 #endregion /*If playing on Keyboard*/
 
-if (global.controls_used_for_menu_navigation = "mouse")
+if (global.controls_used_for_menu_navigation == "mouse")
 {
 	menu = "";
 }
 
 #endregion /*Draw Skip Text END*/
 
-if (sprite_index = global.title_logo_index)
+if (sprite_index == global.title_logo_index)
 and (global.title_logo_index >= 0)
-or (sprite_index = global.resource_pack_sprite_title_logo_christmas)
+or (sprite_index == global.resource_pack_sprite_title_logo_christmas)
 and (global.resource_pack_sprite_title_logo_christmas >= 0)
 {
 	draw_sprite_ext(sprite_index, image_index, display_get_gui_width() / 2, y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, image_alpha);
@@ -73,10 +73,10 @@ if (sprite_index > 0)
 }
 
 if (keyboard_check(vk_escape))
-or(gamepad_button_check(0, gp_start))
-or(gamepad_button_check(1, gp_start))
-or(gamepad_button_check(2, gp_start))
-or(gamepad_button_check(3, gp_start))
+or (gamepad_button_check(0, gp_start))
+or (gamepad_button_check(1, gp_start))
+or (gamepad_button_check(2, gp_start))
+or (gamepad_button_check(3, gp_start))
 or(os_type == os_ios)
 and (mouse_check_button(mb_left))
 or(os_type == os_android)
@@ -129,10 +129,10 @@ if (iris_xscale <= 0.01)
 }
 
 if (keyboard_check(vk_space))
-or(gamepad_button_check(0, gp_face1))
-or(gamepad_button_check(1, gp_face1))
-or(gamepad_button_check(2, gp_face1))
-or(gamepad_button_check(3, gp_face1))
+or (gamepad_button_check(0, gp_face1))
+or (gamepad_button_check(1, gp_face1))
+or (gamepad_button_check(2, gp_face1))
+or (gamepad_button_check(3, gp_face1))
 {
 	time += 10;
 	y = lerp(y, yy, 0.75);
@@ -171,7 +171,7 @@ if (time >= room_speed* 5)
 		time = 0;
 	}
 	image_index += 1;
-	if (sprite_index = global.resource_pack_sprite_title_logo_christmas)
+	if (sprite_index == global.resource_pack_sprite_title_logo_christmas)
 	or(sprite_index = global.title_logo_index)
 	{
 		sprite_index = spr_credits;
@@ -184,7 +184,7 @@ if (time >= room_speed* 5)
 #region /*Iris Zooming*/
 if (menu_delay > 10)
 {
-	if (iris_zoom = 1)
+	if (iris_zoom == 1)
 	{
 		iris_xscale = lerp(iris_xscale, 1, 0.15);
 		iris_yscale = lerp(iris_yscale, 1, 0.15);
@@ -207,7 +207,7 @@ if (menu_delay > 10)
 else
 
 #region /*Zoom Out*/
-if (iris_zoom = 0)
+if (iris_zoom == 0)
 {
 	iris_xscale = lerp(iris_xscale, 1, 0.15);
 	iris_yscale = lerp(iris_yscale, 1, 0.15);
@@ -229,7 +229,7 @@ else
 
 #endregion /*Iris Zooming END*/
 
-if (global.enable_transitions = true)
+if (global.enable_transitions == true)
 {
 	if (iris_xscale < 15)
 	{
@@ -250,13 +250,4 @@ if (instance_number(obj_credits) > 1)
 	instance_destroy(); /*If there is more than 1 credits, destroy itself*/
 }
 
-#region /*Draw mouse cursor for menu navigation*/
-if (global.controls_used_for_menu_navigation = "mouse")
-and (global.full_level_map_screenshot = false)
-and (global.pause = false)
-and (os_type!= os_android)
-and (os_type!= os_ios)
-{
-	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
-}
-#endregion /*Draw mouse cursor for menu navigation END*/
+scr_draw_mouse_cursor();

@@ -1,6 +1,6 @@
 #region /*If enemies are disabled, destroy this object*/
-if (global.assist_enable = true)
-and (global.assist_enable_enemies = false)
+if (global.assist_enable == true)
+and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }

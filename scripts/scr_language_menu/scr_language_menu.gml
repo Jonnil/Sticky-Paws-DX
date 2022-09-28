@@ -18,27 +18,27 @@ function scr_language_menu()
 	
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
-	draw_text_outlined(window_get_width() - 32, 64, l10n_text("Translator") + ":", global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
-	draw_text_outlined(window_get_width() - 32, 114, l10n_text("Translator name"), global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(window_get_width() - 32, 64, l10n_text("Translator") + ":", global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(window_get_width() - 32, 114, l10n_text("Translator name"), global.default_text_size * 1.5, c_menu_outline, c_menu_fill, 1);
 	if (global.language_completion < 100)
 	{
-		draw_text_outlined(window_get_width() - 32, 164, "(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_outline, make_color_hsv(50/100 * global.language_completion, 255, 255), 1);
+		scr_draw_text_outlined(window_get_width() - 32, 164, "(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_outline, make_color_hsv(50/100 * global.language_completion, 255, 255), 1);
 	}
 	else
 	{
-		draw_text_outlined(window_get_width() - 32, 164, "(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_outline, c_gray, 1);
+		scr_draw_text_outlined(window_get_width() - 32, 164, "(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_outline, c_gray, 1);
 	}
-	draw_text_outlined(window_get_width() - 32, window_get_height() - 32, "(" + l10n_text("Language translations may not be 100% accurate") + ")", global.default_text_size * 0.75, c_menu_outline, c_gray, 1);
+	scr_draw_text_outlined(window_get_width() - 32, window_get_height() - 32, "(" + l10n_text("Language translations may not be 100% accurate") + ")", global.default_text_size * 0.75, c_menu_outline, c_gray, 1);
 	
 	#region /*Language Menu Navigation*/
 	if (menu_joystick_delay <= 0)
-	and (can_navigate = true)
+	and (can_navigate == true)
 	and global.settings_sidebar_menu = "language_settings"
 	{
 		if (global.controls_used_for_menu_navigation != "mouse")
 		{
 			if (key_up)
-			and (menu_delay = 0)
+			and (menu_delay == 0)
 			and (open_dropdown = false)
 			{
 				language_index = max(language_index - 1, 1)
@@ -48,7 +48,7 @@ function scr_language_menu()
 			}
 			else
 			if (key_down)
-			and (menu_delay = 0)
+			and (menu_delay == 0)
 			and (open_dropdown = false)
 			{
 				if (file_exists("localization.csv"))
@@ -61,7 +61,7 @@ function scr_language_menu()
 			}
 			else
 			if (key_a_pressed)
-			and (menu_delay = 0)
+			and (menu_delay == 0)
 			and (open_dropdown = false)
 			{
 				global.language_localization = language_index - 1;
@@ -72,7 +72,7 @@ function scr_language_menu()
 		else
 		{
 			if (key_up)
-			and (menu_delay = 0)
+			and (menu_delay == 0)
 			and (open_dropdown = false)
 			{
 				language_mouse_scroll = max(language_mouse_scroll - 10, 1)
@@ -81,7 +81,7 @@ function scr_language_menu()
 			}
 			else
 			if (key_down)
-			and (menu_delay = 0)
+			and (menu_delay == 0)
 			and (open_dropdown = false)
 			{
 				if (file_exists("localization.csv"))

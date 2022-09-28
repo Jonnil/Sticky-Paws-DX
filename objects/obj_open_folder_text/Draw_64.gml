@@ -1,7 +1,7 @@
 if (os_type = os_linux)
 {
 	var show_copy_to_clipboard_button = false;
-	if (menu = "copy_to_clipboard")
+	if (menu == "copy_to_clipboard")
 	{
 		menu = "back_open_folder_text";
 	}
@@ -22,32 +22,32 @@ var key_open_localappdata_x = window_get_width() / 2 - 238;
 
 if (os_type = os_windows)
 {
-	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, l10n_text("Add custom things in Local Appdata"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, l10n_text("Add custom things in Local Appdata"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
 	draw_sprite_ext(spr_keyboard_keys, 91, key_open_localappdata_x, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
-	draw_text_outlined(key_open_localappdata_x + 38, window_get_height() / 2 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(key_open_localappdata_x + 38, window_get_height() / 2 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
 	draw_sprite_ext(spr_keyboard_keys, ord("R"), key_open_localappdata_x + 74, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
 	draw_set_halign(fa_left);
-	draw_text_outlined(key_open_localappdata_x + 110, window_get_height() / 2 - 90, l10n_text("Then type") + " " + "%localappdata%", global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(key_open_localappdata_x + 110, window_get_height() / 2 - 90, l10n_text("Then type") + " " + "%localappdata%", global.default_text_size * 1.1, c_black, c_white, image_alpha);
 }
 else
 if (os_type = os_linux)
 {
-	draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, l10n_text("Add custom things in .config"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, l10n_text("Add custom things in .config"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
 	draw_sprite_ext(spr_keyboard_keys, vk_alt, key_open_localappdata_x, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
-	draw_text_outlined(key_open_localappdata_x + 38, window_get_height() / 2 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(key_open_localappdata_x + 38, window_get_height() / 2 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
 	draw_sprite_ext(spr_keyboard_keys, vk_f2, key_open_localappdata_x + 74, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
 	draw_set_halign(fa_left);
-	draw_text_outlined(key_open_localappdata_x + 110, window_get_height() / 2 - 90, l10n_text("Then type") + " " + "~/.config/" + string(global.game_name_appdata), global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(key_open_localappdata_x + 110, window_get_height() / 2 - 90, l10n_text("Then type") + " " + "~/.config/" + string(global.game_name_appdata), global.default_text_size * 1.1, c_black, c_white, image_alpha);
 }
 
 draw_set_halign(fa_center);
 if (window_get_width() <= 1350)
 {
-	draw_text_outlined(window_get_width() / 2, window_get_height() / 2, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size * 0.75, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size * 0.75, c_black, c_white, image_alpha);
 }
 else
 {
-	draw_text_outlined(window_get_width() / 2, window_get_height() / 2, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size, c_black, c_white, image_alpha);
 }
 
 if (close = false)
@@ -61,7 +61,7 @@ if (close = false)
 }
 
 #region /*Navigate menu up and down*/
-if (menu = "copy_to_clipboard")
+if (menu == "copy_to_clipboard")
 {
 	if (instance_exists(obj_title))
 	and (obj_title.key_up)
@@ -80,7 +80,7 @@ if (menu = "copy_to_clipboard")
 	}
 }
 else
-if (menu = "back_open_folder_text")
+if (menu == "back_open_folder_text")
 {
 	if (instance_exists(obj_title))
 	and (obj_title.key_up)
@@ -115,7 +115,7 @@ if (show_copy_to_clipboard_button = true)
 	and (obj_leveleditor.key_a_pressed)
 	and (menu = "copy_to_clipboard")
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 42, window_get_width() / 2 - 185 + 370, window_get_height() / 2 + 42 + 39))
-	and (global.controls_used_for_menu_navigation = "mouse")
+	and (global.controls_used_for_menu_navigation == "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	or (keyboard_check(vk_control))
 	and (keyboard_check_pressed(ord("C")))
@@ -146,23 +146,23 @@ or (gamepad_button_check(1, gp_face2))
 or (gamepad_button_check(2, gp_face2))
 or (gamepad_button_check(3, gp_face2))
 
-or (menu = "back_open_folder_text")
+or (menu == "back_open_folder_text")
 and (keyboard_check_pressed(ord("Z")))
-or (menu = "back_open_folder_text")
+or (menu == "back_open_folder_text")
 and (keyboard_check_pressed(vk_space))
-or (menu = "back_open_folder_text")
+or (menu == "back_open_folder_text")
 and (keyboard_check_pressed(vk_enter))
-or (menu = "back_open_folder_text")
+or (menu == "back_open_folder_text")
 and (gamepad_button_check(0, gp_face1))
-or (menu = "back_open_folder_text")
+or (menu == "back_open_folder_text")
 and (gamepad_button_check(1, gp_face1))
-or (menu = "back_open_folder_text")
+or (menu == "back_open_folder_text")
 and (gamepad_button_check(2, gp_face1))
-or (menu = "back_open_folder_text")
+or (menu == "back_open_folder_text")
 and (gamepad_button_check(3, gp_face1))
 
 or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, window_get_width() / 2 - 185 + 370, window_get_height() / 2 + 42 + 39 + 42))
-and (global.controls_used_for_menu_navigation = "mouse")
+and (global.controls_used_for_menu_navigation == "mouse")
 and (mouse_check_button_pressed(mb_left))
 {
 	close = true;
@@ -197,13 +197,4 @@ if (instance_exists(obj_leveleditor))
 }
 #endregion /*Make it so you can't click on any other button while open folder text exists END*/
 
-#region /*Draw mouse cursor for menu navigation*/
-if (global.controls_used_for_menu_navigation = "mouse")
-and (global.full_level_map_screenshot = false)
-and (global.pause = false)
-and (os_type!= os_android)
-and (os_type!= os_ios)
-{
-	draw_sprite_ext(spr_cursor, 0, window_mouse_get_x(), window_mouse_get_y(), 1, 1, 0, c_white, 1);
-}
-#endregion /*Draw mouse cursor for menu navigation END*/
+scr_draw_mouse_cursor();

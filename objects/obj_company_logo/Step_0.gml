@@ -1,3 +1,130 @@
+scr_set_screen_size();
+scr_toggle_fullscreen();
+scr_set_controls_used_to_navigate();
+
+#region /*Skip company logo screen when pressing skip button*/
+if (gamepad_button_check_pressed(0, gp_face1))
+or (keyboard_check_pressed(ord("Z")))
+or (keyboard_check_pressed(vk_enter))
+or (keyboard_check_pressed(vk_space))
+or (keyboard_check_pressed(vk_escape))
+or (window_has_focus())
+and (mouse_check_button_pressed(mb_left))
+{
+	if (can_navigate == true) /*Can only go to the title screen when everything is loaded*/
+	{
+		if (asset_get_type("room_title") == asset_room) /*Only go to room_title if that room exists*/
+		{
+			room_goto(room_title);
+		}
+		else
+		if (room_next(room) <>- 1) /*Otherwise, just go to the next room that exists*/
+		{
+			room_goto_next();
+		}
+	}
+}
+#endregion /*Skip company logo screen when pressing skip button END*/
+
+#region /*Go to the title screen automatically when company logos and controller prompt is done showing*/
+if (image_index > image_number - 2)
+and (sprite_index = spr_company_logo)
+{
+	if (!gamepad_is_connected(0)) /*If there are no controllers connected to the game, then show a controller prompt to let players know they can use controllers*/
+	and (!gamepad_is_connected(1))
+	and (!gamepad_is_connected(2))
+	and (!gamepad_is_connected(3))
+	{
+		if (global.resource_pack_sprite_splash_controller >= 0) /*Check if the controller splash sprite exists before trying to switch sprite to it*/
+		{
+			sprite_index = global.resource_pack_sprite_splash_controller;
+		}
+		else
+		if (can_navigate == true) /*Can only go to the title screen when everything is loaded*/
+		{
+			if (asset_get_type("room_title") == asset_room) /*Only go to room_title if that room exists*/
+			{
+				room_goto(room_title);
+			}
+			else
+			if (room_next(room) <>- 1) /*Otherwise, just go to the next room that exists*/
+			{
+				room_goto_next();
+			}
+		}
+	}
+	else
+	if (can_navigate == true) /*Can only go to the title screen when everything is loaded*/
+	{
+		if (asset_get_type("room_title") == asset_room) /*Only go to room_title if that room exists*/
+		{
+			room_goto(room_title);
+		}
+		else
+		if (room_next(room) <>- 1) /*Otherwise, just go to the next room that exists*/
+		{
+			room_goto_next();
+		}
+	}
+	image_index = image_number - 2;
+}
+#endregion /*Go to the title screen automatically when company logos and controller prompt is done showing END*/
+
+#region /*If controller splash sprite is currently used, then go to the title screen after a couple of seconds*/
+if (global.resource_pack_sprite_splash_controller > noone)
+and (sprite_index == global.resource_pack_sprite_splash_controller)
+{
+	if (!audio_is_playing(controller_splash)) /*If there is no controller splash voice playing, then advance the timer*/
+	{
+		time += 1;
+	}
+	if (time > 100) /*After a couple of seconds, go to the title screen*/
+	and (!audio_is_playing(controller_splash))
+	and (can_navigate == true) /*Can only go to the title screen when everything is loaded*/
+	{
+		if (asset_get_type("room_title") == asset_room) /*Only go to room_title if that room exists*/
+		{
+			room_goto(room_title);
+		}
+		else
+		if (room_next(room) <>- 1) /*Otherwise, just go to the next room that exists*/
+		{
+			room_goto_next();
+		}
+	}
+}
+#endregion /*If controller splash sprite is currently used, then go to the title screen after a couple of seconds END*/
+
+#region /*Play company splash voice or controller splash voice if the sounds exists*/
+if (image_index == 20) /*If company splash sound exists, and is currently not playing, then play company splash sound*/
+and (company_splash > noone)
+and (!audio_is_playing(company_splash))
+{
+	scr_audio_play(company_splash, volume_source.voice);
+}
+if (time == 10) /*If controller splash sound exists, and is currently not playing, then play controller splash sound*/
+and (controller_splash > noone)
+and (!audio_is_playing(controller_splash))
+{
+	scr_audio_play(controller_splash, volume_source.voice);
+}
+#endregion /*Play company splash voice or controller splash voice if the sounds exists END*/
+
+#region /*Show easter egg on company logo screen when pressing specific button*/
+if (gamepad_button_check_pressed(0, gp_face4))
+or (keyboard_check_pressed(ord("Y")))
+and (sprite_splash_easteregg_yoffset = 128)
+{
+	sprite_splash_easteregg_yoffset = +127;
+	scr_audio_play(audio_splash_easteregg, volume_source.voice);
+	
+}
+if (sprite_splash_easteregg_yoffset <= 127) /*Lerp the easter egg movement*/
+{
+	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, - 128, 0.1);
+}
+#endregion /*Show easter egg on company logo screen when pressing specific button END*/
+
 if (can_navigate = false)
 {
 	file_load_timer += 1;
@@ -122,27 +249,24 @@ if (can_navigate = false)
 				#endregion /*Company Splash 3 END*/
 				
 				if (company_splash_1 > noone)
-				and (company_splash_2 = noone)
-				and (company_splash_3 = noone)
+				and (company_splash_2 == noone)
+				and (company_splash_3 == noone)
 				{
 					company_splash = choose(company_splash_1);
 				}
 				else
 				if (company_splash_1 > noone)
 				and (company_splash_2 > noone)
-				and (company_splash_3 = noone)
+				and (company_splash_3 == noone)
 				{
-					company_splash = choose(company_splash_1,
-										company_splash_2);
+					company_splash = choose(company_splash_1, company_splash_2);
 				}
 				else
 				if (company_splash_1 > noone)
 				and (company_splash_2 > noone)
 				and (company_splash_3 > noone)
 				{
-					company_splash = choose(company_splash_1,
-										company_splash_2,
-										company_splash_3);
+					company_splash = choose(company_splash_1, company_splash_2, company_splash_3);
 				}
 				
 				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg"))

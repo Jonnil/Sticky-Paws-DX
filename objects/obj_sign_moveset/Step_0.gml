@@ -12,7 +12,7 @@ else
 }
 
 if (global.show_tutorial_signs = true)
-and (global.full_level_map_screenshot = false)
+and (global.full_level_map_screenshot == false)
 {
 	visible = true;
 }
@@ -21,7 +21,7 @@ else
 	visible = false;
 }
 
-if (global.full_level_map_screenshot = true)
+if (global.full_level_map_screenshot == true)
 {
 	instance_destroy();
 }

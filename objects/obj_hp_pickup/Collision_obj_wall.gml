@@ -13,12 +13,12 @@ if (place_meeting(x, y - 1, other))
 	vspeed += 4;
 }
 if (position_meeting(bbox_left - 1,bbox_bottom- 8, other))
-or(position_meeting(bbox_left - 1,bbox_top +8, other))
+or (position_meeting(bbox_left - 1,bbox_top +8, other))
 {
 	hspeed = 0;
 }
 if (position_meeting(bbox_right + 1,bbox_bottom- 8, other))
-or(position_meeting(bbox_right + 1,bbox_top +8, other))
+or (position_meeting(bbox_right + 1,bbox_top +8, other))
 {
 	hspeed = 0;
 }

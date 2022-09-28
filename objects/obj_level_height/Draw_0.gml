@@ -1,12 +1,12 @@
 x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2;
 
-key_a = (gamepad_button_check(0, gp_face1)) or(keyboard_check(global.player1_key_jump));
+key_a = (gamepad_button_check(0, gp_face1)) or (keyboard_check(global.player1_key_jump));
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))
-or(keyboard_check_pressed(global.player1_key_jump));
+or (keyboard_check_pressed(global.player1_key_jump));
 key_a_released = (gamepad_button_check_released(0, gp_face1))
-or(keyboard_check_released(global.player1_key_jump));
+or (keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
-or(keyboard_check(global.player1_key_sprint));
+or (keyboard_check(global.player1_key_sprint));
 
 if (global.actually_play_edited_level = false)
 and (global.play_edited_level = false)
@@ -29,7 +29,7 @@ and (obj_leveleditor.pause = false)
 	and (!mouse_check_button(mb_middle))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or(key_a_pressed)
+		or (key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -42,7 +42,7 @@ and (obj_leveleditor.pause = false)
 		}
 	}
 	#region /*Drag the object*/
-	if (drag_object = true)
+	if (drag_object == true)
 	{
 		y = obj_leveleditor.y;
 	}
@@ -50,9 +50,9 @@ and (obj_leveleditor.pause = false)
 	
 	#region /*Release the object*/
 	if (mouse_check_button_released(mb_left))
-	or(key_a_released)
+	or (key_a_released)
 	{
-		if (drag_object = true)
+		if (drag_object == true)
 		{
 			drag_release_timer = 3;
 			drag_object = 0.5;
@@ -84,8 +84,8 @@ and (global.play_edited_level = false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	draw_text_outlined(x, y + 32, l10n_text("Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_red, 1);
-	draw_text_outlined(x, y+64, l10n_text("Warning! Level height shorter than normal"), global.default_text_size * 0.75, c_black, c_red, 1);
+	scr_draw_text_outlined(x, y + 32, l10n_text("Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_red, 1);
+	scr_draw_text_outlined(x, y+64, l10n_text("Warning! Level height shorter than normal"), global.default_text_size * 0.75, c_black, c_red, 1);
 }
 else
 if (global.actually_play_edited_level = false)
@@ -93,7 +93,7 @@ and (global.play_edited_level = false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	draw_text_outlined(x, y + 32, l10n_text("Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(x, y + 32, l10n_text("Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_white, 1);
 }
 //if (y > room_height)
 //{
@@ -102,7 +102,7 @@ and (global.play_edited_level = false)
 #endregion /*Make sure the level end isn't outside of the level, this code has to be after the drag object code END*/
 
 if (global.play_edited_level = true)
-or(global.actually_play_edited_level = true)
+or (global.actually_play_edited_level = true)
 {
 	if (global.actually_play_edited_level = true)
 	{

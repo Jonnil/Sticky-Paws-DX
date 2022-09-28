@@ -19,7 +19,7 @@ else
 
 #region /*Destroy this object if it ever appears in the wrong room*/
 if (asset_get_type("room_title") == asset_room)
-and (room = room_title)
+and (room == room_title)
 {
 	instance_destroy();
 }
@@ -30,9 +30,9 @@ instance_activate_object(self);
 #region /*Update Foreground secret*/
 if (global.custom_foreground_secret > noone)
 and (global.enable_foreground_layer_secret = true)
-and (global.full_level_map_screenshot = false)
+and (global.full_level_map_screenshot == false)
 and (asset_get_type("room_leveleditor") == asset_room)
-and (room = room_leveleditor)
+and (room == room_leveleditor)
 {
 	draw_sprite_ext(global.custom_foreground_secret, image_index, x, y, 1, 1, 0, c_white, image_alpha);
 }

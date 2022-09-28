@@ -1,4 +1,4 @@
-if (image_xscale = +1)
+if (image_xscale == +1)
 {
 	x += 32;
 }

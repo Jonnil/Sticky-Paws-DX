@@ -1,11 +1,11 @@
 key_a = (gamepad_button_check(0, gp_face1))
-or(keyboard_check(global.player1_key_jump));
+or (keyboard_check(global.player1_key_jump));
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))
-or(keyboard_check_pressed(global.player1_key_jump));
+or (keyboard_check_pressed(global.player1_key_jump));
 key_a_released = (gamepad_button_check_released(0, gp_face1))
-or(keyboard_check_released(global.player1_key_jump));
+or (keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
-or(keyboard_check(global.player1_key_sprint));
+or (keyboard_check(global.player1_key_sprint));
 
 if (global.play_edited_level = true)
 {
@@ -22,7 +22,7 @@ and (obj_leveleditor.pause = false)
 	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or(key_a_pressed)
+		or (key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -36,7 +36,7 @@ and (obj_leveleditor.pause = false)
 	}
 	
 	#region /*Drag the object*/
-	if (drag_object = true)
+	if (drag_object == true)
 	{
 		x = obj_leveleditor.x;
 		y = obj_leveleditor.y;
@@ -45,9 +45,9 @@ and (obj_leveleditor.pause = false)
 	
 	#region /*Release the object*/
 	if (mouse_check_button_released(mb_left))
-	or(key_a_released)
+	or (key_a_released)
 	{
-		if (drag_object = true)
+		if (drag_object == true)
 		{
 			drag_release_timer = 3;
 			drag_object = 0.5;
@@ -65,7 +65,7 @@ if (drag_release_timer > 0)
 }
 else
 {
-	if (drag_object = 0.5)
+	if (drag_object == 0.5)
 	{
 		drag_object = false;
 		move_snap(32, 32);
@@ -92,7 +92,7 @@ if (y > room_height)
 #endregion /*Make sure the level end isn't outside of the level, this code has to be after the drag object code END*/
 
 if (global.play_edited_level = true)
-or(global.actually_play_edited_level = true)
+or (global.actually_play_edited_level = true)
 {
 	if (global.actually_play_edited_level = true)
 	{
@@ -106,11 +106,11 @@ or(global.actually_play_edited_level = true)
 			
 			#region /*Load Custom Level Checkpoint*/
 			if (file_exists(working_directory + "save_files\file" + string(global.file) + ".ini"))
-			and (global.character_select_in_this_menu = "main_game")
+			and (global.character_select_in_this_menu == "main_game")
 			or(file_exists(working_directory + "\custom_level_save.ini"))
-			and (global.character_select_in_this_menu = "level_editor")
+			and (global.character_select_in_this_menu == "level_editor")
 			{
-				if (global.character_select_in_this_menu = "main_game")
+				if (global.character_select_in_this_menu == "main_game")
 				{
 					ini_open(working_directory + "save_files\file" + string(global.file) + ".ini");
 					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "x_checkpoint"))
@@ -140,7 +140,7 @@ or(global.actually_play_edited_level = true)
 					ini_close();
 				}
 				else
-				if (global.character_select_in_this_menu = "level_editor")
+				if (global.character_select_in_this_menu == "level_editor")
 				{
 					ini_open(working_directory + "\custom_level_save.ini");
 					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "x_checkpoint"))
@@ -171,7 +171,7 @@ or(global.actually_play_edited_level = true)
 				}
 				
 				if (global.x_checkpoint > 0)
-				or(global.y_checkpoint > 0)
+				or (global.y_checkpoint > 0)
 				{
 					camera_set_view_pos(view_camera[view_current], global.x_checkpoint, global.y_checkpoint);
 					instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_camera);

@@ -533,7 +533,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_dive > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_dive + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_dive + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_dive + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_dive + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -624,7 +624,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_dive > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_dive + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_dive + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_dive + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_dive + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -661,7 +661,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_jump > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_jump + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_jump + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_jump + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_jump + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -752,7 +752,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_jump > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_jump + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_jump + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_jump + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_jump + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -789,7 +789,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_crouch > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_crouch + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_crouch + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_crouch + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_crouch + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -880,7 +880,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_crouch > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_crouch + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_crouch + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_crouch + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_crouch + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -917,7 +917,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_crouch_toggle > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_crouch_toggle + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_crouch_toggle + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_crouch_toggle + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_crouch_toggle + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1008,7 +1008,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_crouch_toggle > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_crouch_toggle + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_crouch_toggle + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_crouch_toggle + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_crouch_toggle + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1045,7 +1045,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_sprint > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_sprint + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_sprint + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1136,7 +1136,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_sprint > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_sprint + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_sprint + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1173,7 +1173,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_sprint_toggle > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_sprint_toggle + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_sprint_toggle + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1264,7 +1264,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_sprint_toggle > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_sprint_toggle + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_sprint_toggle + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_sprint_toggle + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_sprint_toggle + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1301,7 +1301,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_left > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_left + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_left + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_left + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_left + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1392,7 +1392,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_left > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_left + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_left + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_left + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_left + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1429,7 +1429,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_right > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_right + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_right + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_right + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_right + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1520,7 +1520,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_right > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_right + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_right + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_right + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_right + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1557,7 +1557,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_down > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_down + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_down + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_down + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_down + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1648,7 +1648,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_down > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_down + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_down + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_down + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_down + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1685,7 +1685,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_up > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_up + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_up + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_up + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_up + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1776,7 +1776,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_up > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_up + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_up + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_up + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_up + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1813,7 +1813,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_tongue > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_tongue + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_tongue + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_tongue + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_tongue + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1904,7 +1904,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_tongue > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_tongue + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_tongue + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_tongue + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_tongue + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -1941,7 +1941,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_zoom_in > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_zoom_in + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_zoom_in + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_zoom_in + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_zoom_in + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2032,7 +2032,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_zoom_in > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_zoom_in + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_zoom_in + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_zoom_in + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_zoom_in + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2069,7 +2069,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_zoom_out > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_zoom_out + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_zoom_out + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_zoom_out + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_zoom_out + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2160,7 +2160,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key_zoom_out > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key1_x - 34, menu_y_remap_key_zoom_out + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_zoom_out + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key1_x - 34, menu_y_remap_key_zoom_out + menu_y_offset - 34, key1_x + 33, menu_y_remap_key_zoom_out + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2201,7 +2201,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_dive > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_dive + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_dive + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_dive + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_dive + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2292,7 +2292,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_dive > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_dive + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_dive + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_dive + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_dive + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2329,7 +2329,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_jump > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_jump + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_jump + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_jump + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_jump + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2420,7 +2420,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_jump > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_jump + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_jump + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_jump + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_jump + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2457,7 +2457,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_crouch > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_crouch + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_crouch + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_crouch + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_crouch + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2548,7 +2548,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_crouch > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_crouch + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_crouch + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_crouch + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_crouch + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2585,7 +2585,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_crouch_toggle > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_crouch_toggle + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_crouch_toggle + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_crouch_toggle + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_crouch_toggle + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2676,7 +2676,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_crouch_toggle > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_crouch_toggle + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_crouch_toggle + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_crouch_toggle + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_crouch_toggle + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2713,7 +2713,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_sprint > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_sprint + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_sprint + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2804,7 +2804,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_sprint > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_sprint + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_sprint + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2841,7 +2841,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_sprint_toggle > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_sprint_toggle + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_sprint_toggle + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_sprint + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2932,7 +2932,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_sprint_toggle > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_sprint_toggle + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_sprint_toggle + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_sprint_toggle + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_sprint_toggle + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2969,7 +2969,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_left > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_left + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_left + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_left + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_left + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3060,7 +3060,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_left > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_left + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_left + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_left + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_left + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3097,7 +3097,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_right > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_right + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_right + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_right + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_right + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3188,7 +3188,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_right > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_right + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_right + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_right + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_right + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3225,7 +3225,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_down > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_down + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_down + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_down + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_down + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3316,7 +3316,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_down > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_down + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_down + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_down + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_down + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3353,7 +3353,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_up > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_up + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_up + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_up + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_up + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3444,7 +3444,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_up > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_up + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_up + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_up + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_up + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3481,7 +3481,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_tongue > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_tongue + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_tongue + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_tongue + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_tongue + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3572,7 +3572,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_tongue > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_tongue + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_tongue + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_tongue + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_tongue + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3609,7 +3609,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_zoom_in > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_zoom_in + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_zoom_in + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_zoom_in + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_zoom_in + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3700,7 +3700,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_zoom_in > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_zoom_in + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_zoom_in + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_zoom_in + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_zoom_in + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3737,7 +3737,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_zoom_out > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_zoom_out + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_zoom_out + menu_y_offset + 33, c_yellow, c_yellow, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_zoom_out + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_zoom_out + menu_y_offset + 33, c_yellow, c_yellow, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3828,7 +3828,7 @@ function scr_options_keyboard_and_mouse_menu()
 				if (remapping_player_key2_zoom_out > 0)
 				{
 					draw_set_alpha(1);
-					draw_roundrect_color(key2_x - 34, menu_y_remap_key_zoom_out + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_zoom_out + menu_y_offset + 33, c_red, c_red, false);
+					draw_roundrect_color (key2_x - 34, menu_y_remap_key_zoom_out + menu_y_offset - 34, key2_x + 33, menu_y_remap_key_zoom_out + menu_y_offset + 33, c_red, c_red, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -3878,11 +3878,11 @@ function scr_options_keyboard_and_mouse_menu()
 		{
 			
 			#region /*Remap key dive*/
-			if (menu = "remap_key_dive")
+			if (menu == "remap_key_dive")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3901,11 +3901,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap key jump*/
-			if (menu = "remap_key_jump")
+			if (menu == "remap_key_jump")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3924,11 +3924,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap key crouch */
-			if (menu = "remap_key_crouch")
+			if (menu == "remap_key_crouch")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3947,11 +3947,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap key crouch toggle*/
-			if (menu = "remap_key_crouch_toggle")
+			if (menu == "remap_key_crouch_toggle")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3970,11 +3970,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap key sprint*/
-			if (menu = "remap_key_sprint")
+			if (menu == "remap_key_sprint")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3993,11 +3993,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap key sprint toggle*/
-			if (menu = "remap_key_sprint_toggle")
+			if (menu == "remap_key_sprint_toggle")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4016,11 +4016,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap key left*/
-			if (menu = "remap_key_left")
+			if (menu == "remap_key_left")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4039,11 +4039,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap key right*/
-			if (menu = "remap_key_right")
+			if (menu == "remap_key_right")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4062,11 +4062,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap key down*/
-			if (menu = "remap_key_down")
+			if (menu == "remap_key_down")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4085,11 +4085,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap key up*/
-			if (menu = "remap_key_up")
+			if (menu == "remap_key_up")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4122,11 +4122,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap Key Tongue*/
-			if (menu = "remap_key_tongue")
+			if (menu == "remap_key_tongue")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4145,11 +4145,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap Key Zoom In*/
-			if (menu = "remap_key_zoom_in")
+			if (menu == "remap_key_zoom_in")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4180,11 +4180,11 @@ function scr_options_keyboard_and_mouse_menu()
 			#endregion /*Remap Key Zoom In END*/
 			
 			#region /*Remap Key Zoom Out*/
-			if (menu = "remap_key_zoom_out")
+			if (menu == "remap_key_zoom_out")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4203,11 +4203,11 @@ function scr_options_keyboard_and_mouse_menu()
 			else
 			
 			#region /*Remap reset*/
-			if (menu = "remap_reset")
+			if (menu == "remap_reset")
 			and (can_remap_key = false)
-			and (input_key = false)
-			and (menu_delay = 0)
-			and (menu_joystick_delay = 0)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4224,30 +4224,30 @@ function scr_options_keyboard_and_mouse_menu()
 			#endregion /*Remap reset END*/
 			
 			#region /*Menu remap key number*/
-			if (menu = "remap_key_dive")
-			or(menu = "remap_key_jump")
-			or(menu = "remap_key_crouch")
-			or(menu = "remap_key_crouch_toggle")
-			or(menu = "remap_key_sprint")
-			or(menu = "remap_key_sprint_toggle")
-			or(menu = "remap_key_left")
-			or(menu = "remap_key_right")
-			or(menu = "remap_key_down")
-			or(menu = "remap_key_up")
-			or(menu = "remap_key_tongue")
-			or(menu = "remap_key_zoom_in")
-			or(menu = "remap_key_zoom_out")
+			if (menu == "remap_key_dive")
+			or (menu == "remap_key_jump")
+			or (menu == "remap_key_crouch")
+			or (menu == "remap_key_crouch_toggle")
+			or (menu == "remap_key_sprint")
+			or (menu == "remap_key_sprint_toggle")
+			or (menu == "remap_key_left")
+			or (menu == "remap_key_right")
+			or (menu == "remap_key_down")
+			or (menu == "remap_key_up")
+			or (menu == "remap_key_tongue")
+			or (menu == "remap_key_zoom_in")
+			or (menu == "remap_key_zoom_out")
 			{
 				if (key_left)
 				and (can_remap_key = false)
-				and (input_key = false)
-				and (menu_delay = 0)
-				and (menu_joystick_delay = 0)
-				or(key_right)
+				and (input_key == false)
+				and (menu_delay == 0)
+				and (menu_joystick_delay == 0)
+				or (key_right)
 				and (can_remap_key = false)
-				and (input_key = false)
-				and (menu_delay = 0)
-				and (menu_joystick_delay = 0)
+				and (input_key == false)
+				and (menu_delay == 0)
+				and (menu_joystick_delay == 0)
 				{
 					if (menu_remap_key_number = 0)
 					{
@@ -4280,8 +4280,8 @@ function scr_options_keyboard_and_mouse_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
 			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
-			if (os_type!= os_ios)
-			and (os_type!= os_android)
+			if (os_type != os_ios)
+			and (os_type != os_android)
 			{
 				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player1_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
@@ -4298,8 +4298,8 @@ function scr_options_keyboard_and_mouse_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
 			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
-			if (os_type!= os_ios)
-			and (os_type!= os_android)
+			if (os_type != os_ios)
+			and (os_type != os_android)
 			{
 				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player2_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
@@ -4316,8 +4316,8 @@ function scr_options_keyboard_and_mouse_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
 			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
-			if (os_type!= os_ios)
-			and (os_type!= os_android)
+			if (os_type != os_ios)
+			and (os_type != os_android)
 			{
 				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player3_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
@@ -4334,8 +4334,8 @@ function scr_options_keyboard_and_mouse_menu()
 			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
 			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
 			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
-			if (os_type!= os_ios)
-			and (os_type!= os_android)
+			if (os_type != os_ios)
+			and (os_type != os_android)
 			{
 				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player4_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			}
@@ -4345,15 +4345,15 @@ function scr_options_keyboard_and_mouse_menu()
 		#endregion /*Controls checkmarks and dropdown menu settings END*/
 		
 		#region /*Menu cursor y position*/
-		if (menu = "show_controls")
+		if (menu == "show_controls")
 		{
 			menu_cursor_y_position = menu_y_show_controls + 100;
 		}
-		if (menu = "drop_from_rope")
+		if (menu == "drop_from_rope")
 		{
 			menu_cursor_y_position = menu_y_drop_down_from_rope;
 		}
-		if (menu = "wall_jump_setting")
+		if (menu == "wall_jump_setting")
 		{
 			menu_cursor_y_position = menu_y_wall_jump_setting;
 		}
@@ -4370,32 +4370,32 @@ function scr_options_keyboard_and_mouse_menu()
 			
 			if (remapping_player = 0) /*Text saying input gamepad button now for player 1*/
 			{
-				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player = 1) /*Text saying input gamepad button now for player 2*/
 			{
-				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player = 2) /*Text saying input gamepad button now for player 3*/
 			{
-				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player = 3) /*Text saying input gamepad button now for player 4 */
 			{
-				draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
-			draw_text_outlined(window_get_width() / 2 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			if (global.controls_used_for_menu_navigation = "controller")
+			scr_draw_text_outlined(window_get_width() / 2 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			if (global.controls_used_for_menu_navigation == "controller")
 			{
 				scr_draw_gamepad_buttons(gp_start, window_get_width() / 2 + 220, 64, 0.50, c_white, 1);
 			}

@@ -162,8 +162,8 @@ audio_pause_all(); /*Pause sound effects and music*/
 
 #region /*Save Level Editor Checkpoint*/
 if (asset_get_type("room_leveleditor") == asset_room)
-and (room = room_leveleditor)
-and (global.character_select_in_this_menu = "main_game")
+and (room == room_leveleditor)
+and (global.character_select_in_this_menu == "main_game")
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -183,8 +183,8 @@ and (global.character_select_in_this_menu = "main_game")
 }
 else
 if (asset_get_type("room_leveleditor") == asset_room)
-and (room = room_leveleditor)
-and (global.character_select_in_this_menu = "level_editor")
+and (room == room_leveleditor)
+and (global.character_select_in_this_menu == "level_editor")
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));

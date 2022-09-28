@@ -1,17 +1,17 @@
 depth = +30;
 
 #region /*Initialize Foreground*/
-if (global.character_select_in_this_menu = "main_game")
+if (global.character_select_in_this_menu == "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
-or(global.character_select_in_this_menu = "level_editor")
+or (global.character_select_in_this_menu == "level_editor")
 and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
-	if (global.character_select_in_this_menu = "main_game")
+	if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 	}
 	else
-	if (global.character_select_in_this_menu = "level_editor")
+	if (global.character_select_in_this_menu == "level_editor")
 	{
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 	}
@@ -24,7 +24,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_foreground_1_y_offset", 0);
 		}
@@ -39,7 +39,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	{
-		if (global.character_select_in_this_menu = "level_editor")
+		if (global.character_select_in_this_menu == "level_editor")
 		{
 			ini_write_real("Custom Backgrounds", "custom_foreground_1_x_offset", 0);
 		}

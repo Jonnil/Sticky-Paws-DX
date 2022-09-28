@@ -134,7 +134,7 @@ function scr_virtual_keys()
 				#endregion /*Virtual key add END*/
 				
 				if (keyboard_check(global.player1_key_jump))
-				or(keyboard_check(global.player1_key2_jump))
+				or (keyboard_check(global.player1_key2_jump))
 				{
 					draw_sprite_ext(spr_virtual_key_jump, 0, mobile_key_jump_x, mobile_key_jump_y, 0.95, 0.95, 0, c_gray, 0.5);
 				}
@@ -148,7 +148,7 @@ function scr_virtual_keys()
 					or (obj_player.crouch = true)
 					{
 						if (keyboard_check(global.player1_key_crouch))
-						or(keyboard_check(global.player1_key2_crouch))
+						or (keyboard_check(global.player1_key2_crouch))
 						{
 							draw_sprite_ext(spr_virtual_key_crouch, 0, mobile_key_crouch_x, mobile_key_crouch_y, 0.95, 0.95, 0, c_gray, 0.5);
 						}
@@ -160,7 +160,7 @@ function scr_virtual_keys()
 					else
 					{
 						if (keyboard_check(global.player1_key_crouch))
-						or(keyboard_check(global.player1_key2_crouch))
+						or (keyboard_check(global.player1_key2_crouch))
 						{
 							draw_sprite_ext(spr_virtual_key_groundpound, 0, mobile_key_crouch_x, mobile_key_crouch_y, 0.95, 0.95, 0, c_gray, 0.5);
 						}
@@ -170,7 +170,7 @@ function scr_virtual_keys()
 						}
 					}
 					if (keyboard_check(global.player1_key_sprint))
-					or(keyboard_check(global.player1_key2_sprint))
+					or (keyboard_check(global.player1_key2_sprint))
 					{
 						draw_sprite_ext(spr_virtual_key_sprint, 0, mobile_key_sprint_x, mobile_key_sprint_y, 0.95, 0.95, 0, c_gray, 0.5);
 					}

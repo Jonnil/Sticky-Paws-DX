@@ -7791,12 +7791,12 @@ ini_close();
 #endregion /*Character Values Handeling END*/
 
 #region /*Have Heart Balloon*/
-if (global.character_select_in_this_menu = "main_game")
+if (global.character_select_in_this_menu == "main_game")
 and (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 {
 	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
-	if (player = 1)
+	if (player == 1)
 	{
 		if (ini_key_exists("Player", "player_1_have_heart_balloon"))
 		{
@@ -7808,7 +7808,7 @@ and (file_exists(working_directory + "save_files/file" + string(global.file) + "
 			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
-	if (player = 2)
+	if (player == 2)
 	{
 		if (ini_key_exists("Player", "player_2_have_heart_balloon"))
 		{
@@ -7820,7 +7820,7 @@ and (file_exists(working_directory + "save_files/file" + string(global.file) + "
 			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
-	if (player = 3)
+	if (player == 3)
 	{
 		if (ini_key_exists("Player", "player_3_have_heart_balloon"))
 		{
@@ -7832,7 +7832,7 @@ and (file_exists(working_directory + "save_files/file" + string(global.file) + "
 			have_heart_balloon = false; /*If you have the heart balloon upgrade or not. You start without it*/
 		}
 	}
-	if (player = 4)
+	if (player == 4)
 	{
 		if (ini_key_exists("Player", "player_4_have_heart_balloon"))
 		{

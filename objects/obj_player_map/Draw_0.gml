@@ -1,86 +1,22 @@
 if (current_file != global.file)
-or(!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
+or (!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false;
 	room_restart();
 }
 
-#region /*Fullscreen Toggle if camera object doesn't exist. Default: F11*/
-if (asset_get_type("obj_camera") == asset_object)
-and (!instance_exists(obj_camera))
-and (keyboard_check_pressed(global.fullscreen_key))
-{
-	if (window_get_fullscreen())
-	{
-		window_set_fullscreen(false);
-	}
-	else
-	{
-		window_set_fullscreen(true);
-	}
-	ini_open("config.ini");
-	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
-	ini_close();
-}
-#endregion /*Fullscreen Toggle if camera object doesn't exist. Default: F11 END*/
+scr_toggle_fullscreen();
 
-#region /*Set what controls are used to navigate the menus*/
-
-#region /*Get distance from fake mouse to real mouse*/
-var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y());
-#endregion /*Get distance from fake mouse to real mouse END*/
-
-#region /*update positions of fake mouse*/
-mouse_x_position = window_mouse_get_x();
-mouse_y_position = window_mouse_get_y();
-#endregion /*update positions of fake mouse*/
-
-if (keyboard_check(vk_anykey))
-{
-	global.controls_used_for_menu_navigation = "keyboard";
-}
-else
-if (mouse_check_button(mb_any))
-or(mouse_wheel_down())
-or(mouse_wheel_up())
-or(mouse_moving)
-{
-	global.controls_used_for_menu_navigation = "mouse";
-}
-else
-if (gamepad_button_check(0, gp_face1))
-or(gamepad_button_check(0, gp_face2))
-or(gamepad_button_check(0, gp_face3))
-or(gamepad_button_check(0, gp_face4))
-or(gamepad_button_check(0, gp_padd))
-or(gamepad_button_check(0, gp_padl))
-or(gamepad_button_check(0, gp_padr))
-or(gamepad_button_check(0, gp_padu))
-or(gamepad_button_check(0, gp_select))
-or(gamepad_button_check(0, gp_shoulderl))
-or(gamepad_button_check(0, gp_shoulderlb))
-or(gamepad_button_check(0, gp_shoulderr))
-or(gamepad_button_check(0, gp_shoulderrb))
-or(gamepad_button_check(0, gp_start))
-or(gamepad_button_check(0, gp_stickl))
-or(gamepad_button_check(0, gp_stickr))
-or(gamepad_axis_value(0, gp_axislh) <> 0)
-or(gamepad_axis_value(0, gp_axislv) <> 0)
-or(gamepad_axis_value(0, gp_axisrh) <> 0)
-or(gamepad_axis_value(0, gp_axisrv) <> 0)
-{
-	global.controls_used_for_menu_navigation = "controller";
-}
-#endregion /*Set what controls are used to navigate the menus END*/
+scr_set_controls_used_to_navigate();
 
 #region /*Quit Game*/
-if (global.quit_level = true)
+if (global.quit_level == true)
 {
 	global.level_clear_rate = noone;
 	
 	#region /*Save Player Position*/
-	if (speed = 0)
+	if (speed == 0)
 	{
 		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
@@ -110,10 +46,6 @@ if (asset_get_type("snd_slip") == asset_sound)
 if (asset_get_type("snd_slip_ice") == asset_sound)
 {
 	audio_stop_sound(snd_skidding_ice);
-}
-if (asset_get_type("snd_music_titlescreen") == asset_sound)
-{
-	audio_stop_sound(snd_music_titlescreen);
 }
 if (asset_get_type("snd_music_boss") == asset_sound)
 {
@@ -163,49 +95,44 @@ audio_stop_sound(global.music);
 audio_stop_sound(global.music_underwater);
 
 #region /*Keyboard Controls*/
-gamepad_set_axis_deadzone(0, 0.50);
-gamepad_set_axis_deadzone(1, 0.50);
-gamepad_set_axis_deadzone(2, 0.50);
-gamepad_set_axis_deadzone(3, 0.50);
-
-if (global.player1_can_play = true)
+if (global.player1_can_play == true)
 {
-	/*Player 1 Key Left Hold*/ key_left = (keyboard_check(global.player1_key_left)) and (!keyboard_check(global.player1_key_right)) or(keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or(gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr)) or(gamepad_axis_value(0, gp_axislh) < 0) or (active_left = true);
-	/*Player 1 Key Right Hold*/ key_right = (keyboard_check(global.player1_key_right)) and (!keyboard_check(global.player1_key_left)) or(keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or(gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl)) or(gamepad_axis_value(0, gp_axislh) > 0) or (active_right = true);
-	/*Player 1 Key Down Hold*/ key_down = (keyboard_check(global.player1_key_down)) and (!keyboard_check(global.player1_key_up)) or(keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or(keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or(gamepad_button_check(0, gp_padd)) and (!gamepad_button_check(0, gp_padu)) or(gamepad_axis_value(0, gp_axislv) > 0) or (active_down = true);
-	/*Player 1 Key Up Hold*/ key_up = (keyboard_check(global.player1_key_up)) and (!keyboard_check(global.player1_key_down)) or(keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or(keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or(gamepad_button_check(0, gp_padu)) and (!gamepad_button_check(0, gp_padd)) or(gamepad_axis_value(0, gp_axislv) < 0) or (active_up = true);
-	/*Player 1 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or(keyboard_check_pressed(global.player1_key_jump)) or(keyboard_check_pressed(global.player1_key2_jump)) or(keyboard_check_pressed(vk_space)) or(keyboard_check_pressed(vk_enter)) or(keyboard_check_pressed(ord("Z")));
-	/*Player 1 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or(keyboard_check_pressed(global.player1_key_dive)) or(keyboard_check_pressed(global.player1_key2_dive)) or(keyboard_check_pressed(global.player1_key_sprint)) or(keyboard_check_pressed(global.player1_key2_sprint)) or(keyboard_check_pressed(vk_backspace)) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(ord("X")));
+	/*Player 1 Key Left Hold*/ key_left = (keyboard_check(global.player1_key_left)) and (!keyboard_check(global.player1_key_right)) or (keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or (keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or (gamepad_button_check(0, gp_padl)) and (!gamepad_button_check(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) < 0) or (active_left = true);
+	/*Player 1 Key Right Hold*/ key_right = (keyboard_check(global.player1_key_right)) and (!keyboard_check(global.player1_key_left)) or (keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or (keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or (gamepad_button_check(0, gp_padr)) and (!gamepad_button_check(0, gp_padl)) or (gamepad_axis_value(0, gp_axislh) > 0) or (active_right = true);
+	/*Player 1 Key Down Hold*/ key_down = (keyboard_check(global.player1_key_down)) and (!keyboard_check(global.player1_key_up)) or (keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or (keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or (gamepad_button_check(0, gp_padd)) and (!gamepad_button_check(0, gp_padu)) or (gamepad_axis_value(0, gp_axislv) > 0) or (active_down = true);
+	/*Player 1 Key Up Hold*/ key_up = (keyboard_check(global.player1_key_up)) and (!keyboard_check(global.player1_key_down)) or (keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or (keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or (gamepad_button_check(0, gp_padu)) and (!gamepad_button_check(0, gp_padd)) or (gamepad_axis_value(0, gp_axislv) < 0) or (active_up = true);
+	/*Player 1 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or (keyboard_check_pressed(global.player1_key_jump)) or (keyboard_check_pressed(global.player1_key2_jump)) or (keyboard_check_pressed(vk_space)) or (keyboard_check_pressed(vk_enter)) or (keyboard_check_pressed(ord("Z")));
+	/*Player 1 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or (keyboard_check_pressed(global.player1_key_dive)) or (keyboard_check_pressed(global.player1_key2_dive)) or (keyboard_check_pressed(global.player1_key_sprint)) or (keyboard_check_pressed(global.player1_key2_sprint)) or (keyboard_check_pressed(vk_backspace)) or (keyboard_check_pressed(vk_escape)) or (keyboard_check_pressed(ord("X")));
 }
 else
-if (global.player2_can_play = true)
+if (global.player2_can_play == true)
 {
-	/*Player 2 Key Left Hold*/ key_left = (keyboard_check(global.player2_key_left)) and (!keyboard_check(global.player2_key_right)) or(keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or(gamepad_button_check(1, gp_padl)) and (!gamepad_button_check(1, gp_padr)) or(gamepad_axis_value(1, gp_axislh) < 0) or (active_left = true);
-	/*Player 2 Key Right Hold*/ key_right = (keyboard_check(global.player2_key_right)) and (!keyboard_check(global.player2_key_left)) or(keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or(gamepad_button_check(1, gp_padr)) and (!gamepad_button_check(1, gp_padl)) or(gamepad_axis_value(1, gp_axislh) > 0) or (active_right = true);
-	/*Player 2 Key Down Hold*/ key_down = (keyboard_check(global.player2_key_down)) and (!keyboard_check(global.player2_key_up)) or(keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or(keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or(gamepad_button_check(1, gp_padd)) and (!gamepad_button_check(1, gp_padu)) or(gamepad_axis_value(1, gp_axislv) > 0) or (active_down = true);
-	/*Player 2 Key Up Hold*/ key_up = (keyboard_check(global.player2_key_up)) and (!keyboard_check(global.player2_key_down)) or(keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or(keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or(gamepad_button_check(1, gp_padu)) and (!gamepad_button_check(1, gp_padd)) or(gamepad_axis_value(1, gp_axislv) < 0) or (active_up = true);
-	/*Player 2 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(1, gp_face1)) or(keyboard_check_pressed(global.player2_key_jump)) or(keyboard_check_pressed(global.player2_key2_jump)) or(keyboard_check_pressed(vk_space)) or(keyboard_check_pressed(vk_enter)) or(keyboard_check_pressed(ord("Z")));
-	/*Player 2 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(1, gp_face2)) or(keyboard_check_pressed(global.player2_key_dive)) or(keyboard_check_pressed(global.player2_key2_dive)) or(keyboard_check_pressed(global.player2_key_sprint)) or(keyboard_check_pressed(global.player2_key2_sprint)) or(keyboard_check_pressed(vk_backspace)) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(ord("X")));
+	/*Player 2 Key Left Hold*/ key_left = (keyboard_check(global.player2_key_left)) and (!keyboard_check(global.player2_key_right)) or (keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or (keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or (gamepad_button_check(1, gp_padl)) and (!gamepad_button_check(1, gp_padr)) or (gamepad_axis_value(1, gp_axislh) < 0) or (active_left = true);
+	/*Player 2 Key Right Hold*/ key_right = (keyboard_check(global.player2_key_right)) and (!keyboard_check(global.player2_key_left)) or (keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or (keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or (gamepad_button_check(1, gp_padr)) and (!gamepad_button_check(1, gp_padl)) or (gamepad_axis_value(1, gp_axislh) > 0) or (active_right = true);
+	/*Player 2 Key Down Hold*/ key_down = (keyboard_check(global.player2_key_down)) and (!keyboard_check(global.player2_key_up)) or (keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or (keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or (gamepad_button_check(1, gp_padd)) and (!gamepad_button_check(1, gp_padu)) or (gamepad_axis_value(1, gp_axislv) > 0) or (active_down = true);
+	/*Player 2 Key Up Hold*/ key_up = (keyboard_check(global.player2_key_up)) and (!keyboard_check(global.player2_key_down)) or (keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or (keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or (gamepad_button_check(1, gp_padu)) and (!gamepad_button_check(1, gp_padd)) or (gamepad_axis_value(1, gp_axislv) < 0) or (active_up = true);
+	/*Player 2 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(1, gp_face1)) or (keyboard_check_pressed(global.player2_key_jump)) or (keyboard_check_pressed(global.player2_key2_jump)) or (keyboard_check_pressed(vk_space)) or (keyboard_check_pressed(vk_enter)) or (keyboard_check_pressed(ord("Z")));
+	/*Player 2 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(1, gp_face2)) or (keyboard_check_pressed(global.player2_key_dive)) or (keyboard_check_pressed(global.player2_key2_dive)) or (keyboard_check_pressed(global.player2_key_sprint)) or (keyboard_check_pressed(global.player2_key2_sprint)) or (keyboard_check_pressed(vk_backspace)) or (keyboard_check_pressed(vk_escape)) or (keyboard_check_pressed(ord("X")));
 }
 else
-if (global.player3_can_play = true)
+if (global.player3_can_play == true)
 {
-	/*Player 3 Key Left Hold*/ key_left = (keyboard_check(global.player3_key_left)) and (!keyboard_check(global.player3_key_right)) or(keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or(gamepad_button_check(2, gp_padl)) and (!gamepad_button_check(2, gp_padr)) or(gamepad_axis_value(2, gp_axislh) < 0) or (active_left = true);
-	/*Player 3 Key Right Hold*/ key_right = (keyboard_check(global.player3_key_right)) and (!keyboard_check(global.player3_key_left)) or(keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or(gamepad_button_check(2, gp_padr)) and (!gamepad_button_check(2, gp_padl)) or(gamepad_axis_value(2, gp_axislh) > 0) or (active_right = true);
-	/*Player 3 Key Down Hold*/ key_down = (keyboard_check(global.player3_key_down)) and (!keyboard_check(global.player3_key_up)) or(keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or(keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or(gamepad_button_check(2, gp_padd)) and (!gamepad_button_check(2, gp_padu)) or(gamepad_axis_value(2, gp_axislv) > 0) or (active_down = true);
-	/*Player 3 Key Up Hold*/ key_up = (keyboard_check(global.player3_key_up)) and (!keyboard_check(global.player3_key_down)) or(keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or(keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or(gamepad_button_check(2, gp_padu)) and (!gamepad_button_check(2, gp_padd)) or(gamepad_axis_value(2, gp_axislv) < 0) or (active_up = true);
-	/*Player 3 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(2, gp_face1)) or(keyboard_check_pressed(global.player3_key_jump)) or(keyboard_check_pressed(global.player3_key2_jump)) or(keyboard_check_pressed(vk_space)) or(keyboard_check_pressed(vk_enter)) or(keyboard_check_pressed(ord("Z")));
-	/*Player 3 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(2, gp_face2)) or(keyboard_check_pressed(global.player3_key_dive)) or(keyboard_check_pressed(global.player3_key2_dive)) or(keyboard_check_pressed(global.player3_key_sprint)) or(keyboard_check_pressed(global.player3_key2_sprint)) or(keyboard_check_pressed(vk_backspace)) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(ord("X")));
+	/*Player 3 Key Left Hold*/ key_left = (keyboard_check(global.player3_key_left)) and (!keyboard_check(global.player3_key_right)) or (keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or (keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or (gamepad_button_check(2, gp_padl)) and (!gamepad_button_check(2, gp_padr)) or (gamepad_axis_value(2, gp_axislh) < 0) or (active_left = true);
+	/*Player 3 Key Right Hold*/ key_right = (keyboard_check(global.player3_key_right)) and (!keyboard_check(global.player3_key_left)) or (keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or (keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or (gamepad_button_check(2, gp_padr)) and (!gamepad_button_check(2, gp_padl)) or (gamepad_axis_value(2, gp_axislh) > 0) or (active_right = true);
+	/*Player 3 Key Down Hold*/ key_down = (keyboard_check(global.player3_key_down)) and (!keyboard_check(global.player3_key_up)) or (keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or (keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or (gamepad_button_check(2, gp_padd)) and (!gamepad_button_check(2, gp_padu)) or (gamepad_axis_value(2, gp_axislv) > 0) or (active_down = true);
+	/*Player 3 Key Up Hold*/ key_up = (keyboard_check(global.player3_key_up)) and (!keyboard_check(global.player3_key_down)) or (keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or (keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or (gamepad_button_check(2, gp_padu)) and (!gamepad_button_check(2, gp_padd)) or (gamepad_axis_value(2, gp_axislv) < 0) or (active_up = true);
+	/*Player 3 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(2, gp_face1)) or (keyboard_check_pressed(global.player3_key_jump)) or (keyboard_check_pressed(global.player3_key2_jump)) or (keyboard_check_pressed(vk_space)) or (keyboard_check_pressed(vk_enter)) or (keyboard_check_pressed(ord("Z")));
+	/*Player 3 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(2, gp_face2)) or (keyboard_check_pressed(global.player3_key_dive)) or (keyboard_check_pressed(global.player3_key2_dive)) or (keyboard_check_pressed(global.player3_key_sprint)) or (keyboard_check_pressed(global.player3_key2_sprint)) or (keyboard_check_pressed(vk_backspace)) or (keyboard_check_pressed(vk_escape)) or (keyboard_check_pressed(ord("X")));
 }
 else
-if (global.player4_can_play = true)
+if (global.player4_can_play == true)
 {
-	/*Player 4 Key Left Hold*/ key_left = (keyboard_check(global.player4_key_left)) and (!keyboard_check(global.player4_key_right)) or(keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or(keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or(gamepad_button_check(3, gp_padl)) and (!gamepad_button_check(3, gp_padr)) or(gamepad_axis_value(3, gp_axislh) < 0) or (active_left = true);
-	/*Player 4 Key Right Hold*/ key_right = (keyboard_check(global.player4_key_right)) and (!keyboard_check(global.player4_key_left)) or(keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or(keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or(gamepad_button_check(3, gp_padr)) and (!gamepad_button_check(3, gp_padl)) or(gamepad_axis_value(3, gp_axislh) > 0) or (active_right = true);
-	/*Player 4 Key Down Hold*/ key_down = (keyboard_check(global.player4_key_down)) and (!keyboard_check(global.player4_key_up)) or(keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or(keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or(gamepad_button_check(3, gp_padd)) and (!gamepad_button_check(3, gp_padu)) or(gamepad_axis_value(3, gp_axislv) > 0) or (active_down = true);
-	/*Player 4 Key Up Hold*/ key_up = (keyboard_check(global.player4_key_up)) and (!keyboard_check(global.player4_key_down)) or(keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or(keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or(gamepad_button_check(3, gp_padu)) and (!gamepad_button_check(3, gp_padd)) or(gamepad_axis_value(3, gp_axislv) < 0) or (active_up = true);
-	/*Player 4 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(3, gp_face1)) or(keyboard_check_pressed(global.player4_key_jump)) or(keyboard_check_pressed(global.player4_key2_jump)) or(keyboard_check_pressed(vk_space)) or(keyboard_check_pressed(vk_enter)) or(keyboard_check_pressed(ord("Z")));
-	/*Player 4 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(3, gp_face2)) or(keyboard_check_pressed(global.player4_key_dive)) or(keyboard_check_pressed(global.player4_key2_dive)) or(keyboard_check_pressed(global.player4_key_sprint)) or(keyboard_check_pressed(global.player4_key2_sprint)) or(keyboard_check_pressed(vk_backspace)) or(keyboard_check_pressed(vk_escape)) or(keyboard_check_pressed(ord("X")));
+	/*Player 4 Key Left Hold*/ key_left = (keyboard_check(global.player4_key_left)) and (!keyboard_check(global.player4_key_right)) or (keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or (keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or (gamepad_button_check(3, gp_padl)) and (!gamepad_button_check(3, gp_padr)) or (gamepad_axis_value(3, gp_axislh) < 0) or (active_left = true);
+	/*Player 4 Key Right Hold*/ key_right = (keyboard_check(global.player4_key_right)) and (!keyboard_check(global.player4_key_left)) or (keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or (keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or (gamepad_button_check(3, gp_padr)) and (!gamepad_button_check(3, gp_padl)) or (gamepad_axis_value(3, gp_axislh) > 0) or (active_right = true);
+	/*Player 4 Key Down Hold*/ key_down = (keyboard_check(global.player4_key_down)) and (!keyboard_check(global.player4_key_up)) or (keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or (keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or (gamepad_button_check(3, gp_padd)) and (!gamepad_button_check(3, gp_padu)) or (gamepad_axis_value(3, gp_axislv) > 0) or (active_down = true);
+	/*Player 4 Key Up Hold*/ key_up = (keyboard_check(global.player4_key_up)) and (!keyboard_check(global.player4_key_down)) or (keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or (keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or (gamepad_button_check(3, gp_padu)) and (!gamepad_button_check(3, gp_padd)) or (gamepad_axis_value(3, gp_axislv) < 0) or (active_up = true);
+	/*Player 4 Key Accept Pressed*/ key_a_pressed = (gamepad_button_check_pressed(3, gp_face1)) or (keyboard_check_pressed(global.player4_key_jump)) or (keyboard_check_pressed(global.player4_key2_jump)) or (keyboard_check_pressed(vk_space)) or (keyboard_check_pressed(vk_enter)) or (keyboard_check_pressed(ord("Z")));
+	/*Player 4 Key Back Pressed*/ key_b_pressed = (gamepad_button_check_pressed(3, gp_face2)) or (keyboard_check_pressed(global.player4_key_dive)) or (keyboard_check_pressed(global.player4_key2_dive)) or (keyboard_check_pressed(global.player4_key_sprint)) or (keyboard_check_pressed(global.player4_key2_sprint)) or (keyboard_check_pressed(vk_backspace)) or (keyboard_check_pressed(vk_escape)) or (keyboard_check_pressed(ord("X")));
 }
 
 #endregion /*Keyboard Controls END*/
@@ -237,7 +164,7 @@ if (keyboard_check_pressed(vk_escape))
 or (gamepad_button_check_pressed(0, gp_select))
 or (gamepad_button_check_pressed(0, gp_start))
 or (!window_has_focus())
-and (global.automatically_pause_when_window_is_unfocused = true)
+and (global.automatically_pause_when_window_is_unfocused == true)
 {
 	if (asset_get_type("room_pause") == asset_room)
 	{
@@ -287,12 +214,12 @@ and (asset_get_type("room_pause") == asset_room)
 }
 #endregion /*Pause END*/
 
-if (can_move = true)
-and (show_demo_over_message = false)
-and (global.pause = false)
-and (global.quit_level = false)
+if (can_move == true)
+and (show_demo_over_message == false)
+and (global.pause == false)
+and (global.quit_level == false)
 {
-	if (allow_free_movement = true)
+	if (allow_free_movement == true)
 	{
 		
 		#region /*Free Movement*/
@@ -409,7 +336,7 @@ and (global.quit_level = false)
 		#region /*Movement on paths*/
 		if (key_up)
 		and (move_delay > 10)
-		and (speed = 0)
+		and (speed == 0)
 		{
 			if (y > camera_get_view_y(view_camera[view_current]) + 64)
 			{
@@ -432,7 +359,7 @@ and (global.quit_level = false)
 		}
 		if (key_left)
 		and (move_delay > 10)
-		and (speed = 0)
+		and (speed == 0)
 		{
 			if (x > camera_get_view_x(view_camera[view_current]) + 64)
 			{
@@ -455,7 +382,7 @@ and (global.quit_level = false)
 		}
 		if (key_right)
 		and (move_delay > 10)
-		and (speed = 0)
+		and (speed == 0)
 		{
 			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 64)
 			{
@@ -478,7 +405,7 @@ and (global.quit_level = false)
 		}
 		if (key_down)
 		and (move_delay > 10)
-		and (speed = 0)
+		and (speed == 0)
 		{
 			if (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 64)
 			{
@@ -503,23 +430,23 @@ and (global.quit_level = false)
 
 		#region /*Show controls for where you can go*/
 		if (move_delay > 10)
-		and (speed = 0)
+		and (speed == 0)
 		{
 			if (asset_get_type("obj_wall") == asset_object)
 			and (!place_meeting(x + 4, y, obj_wall))
-			and (speed = 0)
+			and (speed == 0)
 			{
 				
 				#region /*Key Right*/
 				if (gamepad_is_connected(0))
-				and (global.controls_used_for_menu_navigation = "controller")
+				and (global.controls_used_for_menu_navigation == "controller")
 				{
 					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					if (global.player1_can_play = true)
+					if (global.player1_can_play == true)
 					{
 						if (global.player1_key_right > noone)
 						{
@@ -532,7 +459,7 @@ and (global.quit_level = false)
 						}
 					}
 					else
-					if (global.player2_can_play = true)
+					if (global.player2_can_play == true)
 					{
 						if (global.player2_key_right > noone)
 						{
@@ -545,7 +472,7 @@ and (global.quit_level = false)
 						}
 					}
 					else
-					if (global.player3_can_play = true)
+					if (global.player3_can_play == true)
 					{
 						if (global.player3_key_right > noone)
 						{
@@ -558,7 +485,7 @@ and (global.quit_level = false)
 						}
 					}
 					else
-					if (global.player4_can_play = true)
+					if (global.player4_can_play == true)
 					{
 						if (global.player4_key_right > noone)
 						{
@@ -576,19 +503,19 @@ and (global.quit_level = false)
 			}
 			if (asset_get_type("obj_wall") == asset_object)
 			and (!place_meeting(x - 4, y, obj_wall))
-			and (speed = 0)
+			and (speed == 0)
 			{
 				
 				#region /*Key Left*/
 				if (gamepad_is_connected(0))
-				and (global.controls_used_for_menu_navigation = "controller")
+				and (global.controls_used_for_menu_navigation == "controller")
 				{
 					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, c_white, 1);
 				}
 				else
 				
 				{
-					if (global.player1_can_play = true)
+					if (global.player1_can_play == true)
 					{
 						if (global.player1_key_left > noone)
 						{
@@ -601,7 +528,7 @@ and (global.quit_level = false)
 						}
 					}
 					else
-					if (global.player2_can_play = true)
+					if (global.player2_can_play == true)
 					{
 						if (global.player2_key_left > noone)
 						{
@@ -614,7 +541,7 @@ and (global.quit_level = false)
 						}
 					}
 					else
-					if (global.player3_can_play = true)
+					if (global.player3_can_play == true)
 					{
 						if (global.player3_key_left > noone)
 						{
@@ -627,7 +554,7 @@ and (global.quit_level = false)
 						}
 					}
 					else
-					if (global.player4_can_play = true)
+					if (global.player4_can_play == true)
 					{
 						if (global.player4_key_left > noone)
 						{
@@ -645,34 +572,34 @@ and (global.quit_level = false)
 			}
 			if (asset_get_type("obj_wall") == asset_object)
 			and (!place_meeting(x, y + 4, obj_wall))
-			and (speed = 0)
+			and (speed == 0)
 			{
 				
 				#region /*Key Down*/
 				if (gamepad_is_connected(0))
-				and (global.controls_used_for_menu_navigation = "controller")
+				and (global.controls_used_for_menu_navigation == "controller")
 				{
 					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					if (global.player1_can_play = true)
+					if (global.player1_can_play == true)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player1_key_down, x, y + 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player2_can_play = true)
+					if (global.player2_can_play == true)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player2_key_down, x, y + 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player3_can_play = true)
+					if (global.player3_can_play == true)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player3_key_down, x, y + 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player4_can_play = true)
+					if (global.player4_can_play == true)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player4_key_down, x, y + 64, 0.5, 0.5, 0, c_white, 1);
 					}
@@ -682,34 +609,34 @@ and (global.quit_level = false)
 			}
 			if (asset_get_type("obj_wall") == asset_object)
 			and (!place_meeting(x, y - 4, obj_wall))
-			and (speed = 0)
+			and (speed == 0)
 			{
 				
 				#region /*Key Up*/
 				if (gamepad_is_connected(0))
-				and (global.controls_used_for_menu_navigation = "controller")
+				and (global.controls_used_for_menu_navigation == "controller")
 				{
 					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					if (global.player1_can_play = true)
+					if (global.player1_can_play == true)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player1_key_up, x, y - 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player2_can_play = true)
+					if (global.player2_can_play == true)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player2_key_up, x, y - 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player3_can_play = true)
+					if (global.player3_can_play == true)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player3_key_up, x, y - 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player4_can_play = true)
+					if (global.player4_can_play == true)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player4_key_up, x, y - 64, 0.5, 0.5, 0, c_white, 1);
 					}
@@ -727,7 +654,7 @@ and (global.quit_level = false)
 if (asset_get_type("obj_level") == asset_object)
 and (instance_exists(obj_level))
 and (place_meeting(x, y, obj_level))
-and (stop_at_level = false)
+and (stop_at_level == false)
 {
 	hspeed = 0;
 	vspeed = 0;
@@ -744,7 +671,7 @@ and (!place_meeting(x, y, obj_level))
 }
 #endregion /*Stop player when touching level END*/
 
-if (can_move = false)
+if (can_move == false)
 and (delay < 100)
 {
 	delay += 1;
@@ -752,33 +679,33 @@ and (delay < 100)
 
 #region /*Enter Level*/
 if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
-and (brand_new_file = true)
-and (can_move = true)
-and (show_demo_over_message = false)
+and (brand_new_file == true)
+and (can_move == true)
+and (show_demo_over_message == false)
 and (asset_get_type("obj_level") == asset_object)
 and (instance_exists(obj_level)) /*Must check if obj_level exists or not*/
-or(key_a_pressed)
-and (global.demo = false)
-and (can_move = true)
-and (show_demo_over_message = false)
+or (key_a_pressed)
+and (global.demo == false)
+and (can_move == true)
+and (show_demo_over_message == false)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
 and (instance_exists(obj_level)) /*Must check if obj_level exists or not*/
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-and (speed = 0)
-or(key_a_pressed)
-and (global.demo = true)
+and (speed == 0)
+or (key_a_pressed)
+and (global.demo == true)
 and (instance_nearest(x, y, obj_level).level <= global.demo_max_levels)
-and (can_move = true)
-and (show_demo_over_message = false)
+and (can_move == true)
+and (show_demo_over_message == false)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
 and (instance_exists(obj_level)) /*Must check if obj_level exists or not*/
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-and (speed = 0)
+and (speed == 0)
 {
-	if (instance_nearest(x, y, obj_level).clear_rate = "enter")
-	or(instance_nearest(x, y, obj_level).clear_rate = "clear")
+	if (instance_nearest(x, y, obj_level).clear_rate == "enter")
+	or (instance_nearest(x, y, obj_level).clear_rate == "clear")
 	{
 		
 		#region /*Save Player Position*/
@@ -819,18 +746,18 @@ and (speed = 0)
 	}
 }
 else
-if (global.demo = true)
+if (global.demo == true)
 and (instance_nearest(x, y, obj_level).level > global.demo_max_levels)
 and (key_a_pressed)
-and (can_move = true)
-and (show_demo_over_message = false)
-and (menu_delay = 0)
+and (can_move == true)
+and (show_demo_over_message == false)
+and (menu_delay == 0)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
 and (instance_exists(obj_level))
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-and (speed = 0)
-and (show_demo_over_message = false)
+and (speed == 0)
+and (show_demo_over_message == false)
 {
 	menu_delay = 3;
 	menu = "purchase_now";
@@ -845,12 +772,12 @@ and (instance_exists(obj_level))
 }
 
 #region /*After pressing enter level, the iris should shrink and then start the level*/
-if (can_move = false)
-and (entering_level = true)
+if (can_move == false)
+and (entering_level == true)
 and (delay >= 60)
 and (iris_yscale <= 0.001)
 and (asset_get_type("obj_level") == asset_object)
-and (global.quit_level = false)
+and (global.quit_level == false)
 {
 	/*Don't set entering_level to false, or can_move to true here*/
 	/*Create Event will take care of that when you enter the world map again*/
@@ -871,7 +798,7 @@ and (global.quit_level = false)
 }
 #endregion /*After pressing enter level, the iris should shrink and then start the level END*/
 
-if (entering_level = true)
+if (entering_level == true)
 {
 	if (sprite_map_enter_level > noone)
 	{
@@ -959,14 +886,14 @@ and (move_delay > 10)
 and (instance_nearest(x, y, obj_level).level_number != 0)
 and (point_distance(xx, yy, x, y) < 40)
 {
-	if (instance_nearest(x, y, obj_level).clear_rate = "enter")
-	or (instance_nearest(x, y, obj_level).clear_rate = "clear")
+	if (instance_nearest(x, y, obj_level).clear_rate == "enter")
+	or (instance_nearest(x, y, obj_level).clear_rate == "clear")
 	{
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		
-		if (global.show_deaths_counter = true)
+		if (global.show_deaths_counter == true)
 		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
 		{
 			total_deaths_y = -64;
@@ -985,24 +912,24 @@ and (point_distance(xx, yy, x, y) < 40)
 		}
 		
 		#region /*Total number of deaths*/
-		if (global.show_deaths_counter = true)
+		if (global.show_deaths_counter == true)
 		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
 		{
-			draw_text_outlined(x, y + total_deaths_y, l10n_text("Total Deaths") + " : " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(x, y + total_deaths_y, l10n_text("Total Deaths") + " : " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Total number of deaths END*/
 		
 		#region /*Number of times played*/
 		if (instance_nearest(x, y, obj_level).number_of_clears > 0)
 		{
-			draw_text_outlined(x, y + times_cleared_y, l10n_text("Times Passed") + " : " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(x, y + times_cleared_y, l10n_text("Times Passed") + " : " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Number of times played END*/
 		
 		#region /*Show High Score*/
 		if (instance_nearest(x, y, obj_level).level_score > 0)
 		{
-			draw_text_outlined(x, y + best_score_y, l10n_text("Best Score") + " : " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(x, y + best_score_y, l10n_text("Best Score") + " : " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show High Score END*/
 		
@@ -1010,20 +937,20 @@ and (point_distance(xx, yy, x, y) < 40)
 		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
 		and (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
 		{
-			draw_text_outlined(x, y + best_time_y, l10n_text("Best Time") + " : " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
+			scr_draw_text_outlined(x, y + best_time_y, l10n_text("Best Time") + " : " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_second, 2, 0), " ", "0")) + "." +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /*Show Fastest Time END*/
 		
 		#region /*Show Big Collectible*/
-		if (instance_nearest(x, y, obj_level).big_collectible1 = true)
-		or(instance_nearest(x, y, obj_level).big_collectible2 = true)
-		or(instance_nearest(x, y, obj_level).big_collectible3 = true)
-		or(instance_nearest(x, y, obj_level).big_collectible4 = true)
-		or(instance_nearest(x, y, obj_level).big_collectible5 = true)
+		if (instance_nearest(x, y, obj_level).big_collectible1 == true)
+		or (instance_nearest(x, y, obj_level).big_collectible2 == true)
+		or (instance_nearest(x, y, obj_level).big_collectible3 == true)
+		or (instance_nearest(x, y, obj_level).big_collectible4 == true)
+		or (instance_nearest(x, y, obj_level).big_collectible5 == true)
 		{
-			if (instance_nearest(x, y, obj_level).big_collectible1 = true)
+			if (instance_nearest(x, y, obj_level).big_collectible1 == true)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -1033,7 +960,7 @@ and (point_distance(xx, yy, x, y) < 40)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
-			if (instance_nearest(x, y, obj_level).big_collectible2 = true)
+			if (instance_nearest(x, y, obj_level).big_collectible2 == true)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -1043,7 +970,7 @@ and (point_distance(xx, yy, x, y) < 40)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
-			if (instance_nearest(x, y, obj_level).big_collectible3 = true)
+			if (instance_nearest(x, y, obj_level).big_collectible3 == true)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -1053,7 +980,7 @@ and (point_distance(xx, yy, x, y) < 40)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
-			if (instance_nearest(x, y, obj_level).big_collectible4 = true)
+			if (instance_nearest(x, y, obj_level).big_collectible4 == true)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -1063,7 +990,7 @@ and (point_distance(xx, yy, x, y) < 40)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
-			if (instance_nearest(x, y, obj_level).big_collectible5 = true)
+			if (instance_nearest(x, y, obj_level).big_collectible5 == true)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x + 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -1099,12 +1026,12 @@ if (lives <= 0)
 		lives = 5;
 	}
 	else
-	if (global.playergame = 1)
+	if (global.playergame == 1)
 	{
 		lives = 10;
 	}
 	else
-	if (global.playergame = 2)
+	if (global.playergame == 2)
 	{
 		lives = 15;
 	}
@@ -1119,9 +1046,9 @@ if (lives <= 0)
 #region /*Zoom In and Out*/
 
 #region /*Zoom In*/
-if (entering_level = true)
+if (entering_level == true)
 {
-	if (iris_zoom = 1)
+	if (iris_zoom == 1)
 	{
 		iris_xscale = lerp(iris_xscale, 1, 0.15);
 		iris_yscale = lerp(iris_yscale, 1, 0.15);
@@ -1145,7 +1072,7 @@ if (entering_level = true)
 else
 
 #region /*Zoom Out*/
-if (iris_zoom = 0)
+if (iris_zoom == 0)
 {
 	iris_xscale = lerp(iris_xscale, 1, 0.15);
 	iris_yscale = lerp(iris_yscale, 1, 0.15);
@@ -1168,7 +1095,7 @@ else
 #endregion /*Zoom In and Out END*/
 
 #region /*Draw Iris Transitions*/
-if (global.enable_transitions = true)
+if (global.enable_transitions == true)
 {
 	if (iris_xscale < 15)
 	{

@@ -25,8 +25,8 @@ if (vspeed >= 16)
 #endregion /*Gravity END*/
 
 #region /*Stop firing if enemies are disabled*/
-if (global.assist_enable = true)
-and (global.assist_enable_enemies = false)
+if (global.assist_enable == true)
+and (global.assist_enable_enemies == false)
 {
 	time = 0;
 }

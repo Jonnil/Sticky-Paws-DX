@@ -14,8 +14,8 @@ else
 
 #region /*Load Level Editor Checkpoint*/
 if (asset_get_type("room_leveleditor") == asset_room)
-and (room = room_leveleditor)
-and (global.character_select_in_this_menu = "main_game")
+and (room == room_leveleditor)
+and (global.character_select_in_this_menu == "main_game")
 and (global.actually_play_edited_level = true)
 {
 	var uppercase_level_name;
@@ -29,8 +29,8 @@ and (global.actually_play_edited_level = true)
 }
 else
 if (asset_get_type("room_leveleditor") == asset_room)
-and (room = room_leveleditor)
-and (global.character_select_in_this_menu = "level_editor")
+and (room == room_leveleditor)
+and (global.character_select_in_this_menu == "level_editor")
 and (global.actually_play_edited_level = true)
 {
 	var uppercase_level_name;
