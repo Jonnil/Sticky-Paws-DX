@@ -1,7 +1,7 @@
 function scr_when_placing_on_difficulty_layer()
 {
 	
-	#region /*When placing on difficulty layer*/
+	#region /* When placing on difficulty layer */
 	obj.placed_for_the_first_time = true;
 	if (obj_leveleditor.set_difficulty_mode = true)
 	{
@@ -26,6 +26,6 @@ function scr_when_placing_on_difficulty_layer()
 			obj.hard = true;
 		}
 	}
-	#endregion /*When placing on difficulty layer END*/
+	#endregion /* When placing on difficulty layer END */
 	
 }

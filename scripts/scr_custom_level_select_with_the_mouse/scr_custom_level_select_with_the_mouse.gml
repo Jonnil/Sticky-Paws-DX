@@ -19,9 +19,9 @@ function scr_custom_level_select_with_the_mouse()
 	{
 		row = 1;
 	}
-	column = clamp(floor (global.select_level_index / row), 0, floor(ds_list_size(global.all_loaded_custom_levels)))
+	column = clamp(floor(global.select_level_index / row), 0, floor(ds_list_size(global.all_loaded_custom_levels)))
 	if (global.controls_used_for_menu_navigation == "mouse")
-	and (open_sub_menu = false)
+	and (open_sub_menu == false)
 	and (can_input_level_name == false)
 	and (can_navigate == true)
 	{

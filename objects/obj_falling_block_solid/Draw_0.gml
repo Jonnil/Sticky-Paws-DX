@@ -46,14 +46,14 @@ if (fall >= 100)
 }
 draw_sprite_ext(sprite_index, image_index, xx, yy, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 
-#region /*Limit the vertical speed*/
+#region /* Limit the vertical speed */
 if (vspeed > 16)
 {
 	vspeed = 16;
 }
-#endregion /*Limit the vertical speed END*/
+#endregion /* Limit the vertical speed END */
 
-#region /*Falling Block falling outside of view*/
+#region /* Falling Block falling outside of view */
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 and (fall >= 100)
 {
@@ -81,4 +81,4 @@ if (image_alpha < 1)
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 	}
 }
-#endregion /*Falling Block falling outside of view END*/
+#endregion /* Falling Block falling outside of view END */

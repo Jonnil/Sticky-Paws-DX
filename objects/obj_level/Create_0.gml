@@ -1,6 +1,6 @@
 alarm[0] = 2;
 alarm[1] = 4;
-always_open = false; /*If a level should always be open or not*/
+always_open = false; /* If a level should always be open or not */
 big_collectible1 = false;
 big_collectible2 = false;
 big_collectible3 = false;
@@ -28,5 +28,5 @@ timeattack_millisecond = 0;
 timeattack_minute = 0;
 timeattack_realmillisecond = 999999999;
 timeattack_second = 0;
-x_checkpoint = 0;
-y_checkpoint = 0;
+checkpoint_x = 0;
+checkpoint_y = 0;

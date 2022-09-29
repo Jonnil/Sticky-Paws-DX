@@ -1,13 +1,13 @@
-/*Step Event*/
+/* Step Event */
 depth = -bbox_bottom* 0.1;
 
-#region /*If enemies are disabled, destroy this object*/
+#region /* If enemies are disabled, destroy this object */
 if (global.assist_enable == true)
 and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object END*/
+#endregion /* If enemies are disabled, destroy this object END */
 
 if die_volting = -1 or die_volting = +1
 {
@@ -21,19 +21,19 @@ if die_volting = -1 or die_volting = +1
 		image_angle += 20;
 		hspeed = -4;
 	}
-	/*Sets the gravity*/
-	gravity_direction = 270; /*Direction of the gravity*/
-	gravity = 0.5; /*The gravity*/
+	/* Sets the gravity */
+	gravity_direction = 270; /* Direction of the gravity */
+	gravity = 0.5; /* The gravity */
 }
 else
 {
-	/*Sets the gravity*/
-	gravity_direction = 270; /*Direction of the gravity*/
+	/* Sets the gravity */
+	gravity_direction = 270; /* Direction of the gravity */
 	if asset_get_type("obj_wall") == asset_object
 	{
 		if (!place_meeting(x, y + 1, obj_wall))
 		{
-			gravity = 0; /*The gravity*/
+			gravity = 0; /* The gravity */
 		}
 	}
 	else
@@ -42,7 +42,7 @@ else
 	}
 	if flat = true
 	{
-		/*Image_yscale = lerp(image_yscale, 0.1, 0.2);*/
+		/* Image_yscale = lerp(image_yscale, 0.1, 0.2); */
 		speed = 0;
 		image_speed = 0.5;
 		if image_xscale = -1
@@ -102,7 +102,7 @@ and (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(vi
 	instance_destroy();
 }
 
-#region /*Kill enemy if it's inside the wall*/
+#region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
 and (die = false)
 and (draw_xscale >= 0.8)
@@ -122,4 +122,4 @@ else
 		stuck_in_wall_counter -= 1;
 	}
 }
-#endregion /*Kill enemy if it's inside the wall END*/
+#endregion /* Kill enemy if it's inside the wall END */

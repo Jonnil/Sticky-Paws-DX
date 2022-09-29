@@ -10,34 +10,35 @@
 ///@param {string} [tilemap_layer_name]	target tilemap layer name
 ///@param {bool} [precise_mode] for the precise mask collisions(slow)
 ///@return {raycast_data}
-function scr_raycast(xx, yy, dir, length, per_pixel, object, tilemap_layer_name, precise_mode)
+
+function scr_raycast(xx = x, yy = y, dir = 90, length = 380, per_pixel = 16, object = obj_wall, tilemap_layer_name = "", precise_mode = false)
 {
 	
-	/*Precise Mode required when you use collision mask shapes except the square on the objects*/
+	/* Precise Mode required when you use collision mask shapes except the square on the objects */
 	if (precise_mode == undefined)
 	{
 		precise_mode = false;
 	}
 	
-	/*tilemap_layer_name is optional*/
+	/* tilemap_layer_name is optional */
 	if (tilemap_layer_name == undefined || tilemap_layer_name == noone)
 	{
 		tilemap_layer_name = "";
 	}
-	/*Current Positions*/
+	/* Current Positions */
 	var cx = xx;
 	var cy = yy;
 	
-	/*We will return this*/
+	/* We will return this */
 	raycast_data =
 	{
-		type : rc_type.nothing, /*all options nothing, tilemap, object*/
-		index : noone, /*instance id or tilemap index of the collision*/
-		x : -1, /*collision position x*/
-		y : -1 /*collision position y*/
+		type : rc_type.nothing, /* all options nothing, tilemap, object */
+		index : noone, /* instance id or tilemap index of the collision */
+		x : -1, /* collision position x */
+		y : -1 /* collision position y */
 	}
 
-	/*Checking tilemap_layer_name argument*/
+	/* Checking tilemap_layer_name argument */
 	var no_tilemaps = true;
 	if (tilemap_layer_name != "")
 	{
@@ -46,24 +47,24 @@ function scr_raycast(xx, yy, dir, length, per_pixel, object, tilemap_layer_name,
 		no_tilemaps = false;
 	}
 	
-	/*Playing while loop to check ray collisions*/
+	/* Playing while loop to check ray collisions */
 	while(point_distance(xx, yy, cx, cy) < length)
 	{
 		cx += lengthdir_x(per_pixel, dir);
 		cy += lengthdir_y(per_pixel, dir);
-		/*For Tilemap*/
+		/* For Tilemap */
 		if (no_tilemaps == false)
 		{
 			var col_tile = tilemap_get_at_pixel(tilemap_id, cx, cy);
 			if (col_tile > 0)
 			{
-				/*Setting true positions of collision*/
+				/* Setting true positions of collision */
 				while(tilemap_get_at_pixel(tilemap_id, cx, cy))
 				{
 					cx -= lengthdir_x(1, dir);
 					cy -= lengthdir_y(1, dir);
 				}
-				/*We finded a collision and we're setting raycast_data*/
+				/* We finded a collision and we're setting raycast_data */
 				raycast_data.type = rc_type.tilemap;
 				raycast_data.index = col_tile;
 				raycast_data.x = cx;
@@ -71,7 +72,7 @@ function scr_raycast(xx, yy, dir, length, per_pixel, object, tilemap_layer_name,
 				break;
 			}
 		}
-		/*For Objects*/
+		/* For Objects */
 		if (is_array(object))
 		{
 			var obj_finded = false;
@@ -82,13 +83,13 @@ function scr_raycast(xx, yy, dir, length, per_pixel, object, tilemap_layer_name,
 				var col_obj = collision_point(cx, cy, obj, precise_mode, true);
 				if (col_obj != noone)
 				{
-					/*Setting true positions of collision*/
+					/* Setting true positions of collision */
 					while(collision_point(cx, cy, obj, precise_mode, true) != noone)
 					{
 						cx -= lengthdir_x(1, dir);
 						cy -= lengthdir_y(1, dir);
 					}
-					/*We finded a collision and we're setting raycast_data*/
+					/* We finded a collision and we're setting raycast_data */
 					raycast_data.type = rc_type.object;
 					raycast_data.index = col_obj;
 					raycast_data.x = cx;
@@ -108,13 +109,13 @@ function scr_raycast(xx, yy, dir, length, per_pixel, object, tilemap_layer_name,
 			var col_obj = collision_point(cx, cy, object, precise_mode, true);
 			if (col_obj != noone)
 			{
-				/*Setting true positions of collision*/
+				/* Setting true positions of collision */
 				while(collision_point(cx, cy, object, precise_mode, true) != noone)
 				{
 					cx -= lengthdir_x(1, dir);
 					cy -= lengthdir_y(1, dir);
 				}
-				/*We finded a collision and we're setting raycast_data*/
+				/* We finded a collision and we're setting raycast_data */
 				raycast_data.type = rc_type.object;
 				raycast_data.index = col_obj;
 				raycast_data.x = cx;
@@ -130,7 +131,7 @@ function scr_raycast(xx, yy, dir, length, per_pixel, object, tilemap_layer_name,
 	}
 	return raycast_data;
 }
-/*Raycast Types*/
+/* Raycast Types */
 enum rc_type
 {
 	nothing,

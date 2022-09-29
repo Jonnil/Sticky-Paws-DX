@@ -1,4 +1,4 @@
-#region /*Don't go outside view boundary*/
+#region /* Don't go outside view boundary */
 if (x < camera_get_view_x(view_camera[view_current]) + 32)
 {
 	x = camera_get_view_x(view_camera[view_current]) + 32;
@@ -15,7 +15,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 {
 	y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32;
 }
-#endregion /*Don't go outside view boundary END*/
+#endregion /* Don't go outside view boundary END */
 
 if (time <5)
 {
@@ -37,7 +37,7 @@ and (show_remaining_jumps = false)
 or(scoreup = "3-up")
 and (show_remaining_jumps = false)
 {
-	scr_draw_text_outlined(x, y,string(scoreup), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
+	scr_draw_text_outlined(x, y, string(scoreup), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
 }
 else
 if (scoreup = "CHECKPOINT")
@@ -49,7 +49,7 @@ else
 if (scoreup = "Copied")
 and (show_remaining_jumps = false)
 {
-	/*Do nothing*/
+	/* Do nothing */
 }
 else
 if (show_remaining_jumps = false)

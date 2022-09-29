@@ -5,14 +5,14 @@ image_alpha = 1;
 visible = true;
 draw_self();
 
-#region /*Expanding Ring Effect*/
+#region /* Expanding Ring Effect */
 effect_time += 1;
 if (effect_time > 60)
 {
 	effect_time = 0;
 	effect_create_above(ef_ring, x, y, 1, c_white);
 }
-#endregion /*Expanding Ring Effect END*/
+#endregion /* Expanding Ring Effect END */
 
 if (instance_number(obj_player)= 1)
 {
@@ -23,7 +23,7 @@ if (instance_number(obj_player)= 1)
 	}
 }
 
-#region /*Destroy Assist Item if appearing in rooms it's not meant to be in*/
+#region /* Destroy Assist Item if appearing in rooms it's not meant to be in */
 if (asset_get_type("room_title") == asset_room)
 {
 	if (room = room_title)
@@ -39,4 +39,4 @@ if (asset_get_type("room_world_map") == asset_room)
 		instance_destroy();
 	}
 }
-#endregion /*Destroy Assist Item if appearing in rooms it's not meant to be in END*/
+#endregion /* Destroy Assist Item if appearing in rooms it's not meant to be in END */

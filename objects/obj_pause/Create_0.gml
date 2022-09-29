@@ -3,12 +3,12 @@ depth = -20;
 loading_spinning_angle = 0;
 show_loading_icon = false;
 
-#region /*Mouse x and mouse y initializing*/
+#region /* Mouse x and mouse y initializing */
 mx = mouse_x;
 my = mouse_y;
-#endregion /*Mouse x and mouse y initializing END*/
+#endregion /* Mouse x and mouse y initializing END */
 
-#region /*Narrator Voice variable handeling*/
+#region /* Narrator Voice variable handeling */
 
 menuvoice_1player = noone;
 menuvoice_2player = noone;
@@ -17,17 +17,17 @@ menuvoice_4player = noone;
 menuvoice_leveleditor = noone;
 menuvoice_leveleditor_denied = noone;
 
-#region /*No Narrator*/
+#region /* No Narrator */
 if (global.narrator = -1)
 {
 	voice_game_title = noone;
 	voice_options = noone;
 }
-#endregion /*No Narrator END*/
+#endregion /* No Narrator END */
 
 else
 
-#region /*Character as Narrator*/
+#region /* Character as Narrator */
 if (global.narrator >= 0)
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg"))
@@ -57,9 +57,9 @@ if (global.narrator >= 0)
 		voice_options = noone;
 	}
 }
-#endregion /*Character as Narrator END*/
+#endregion /* Character as Narrator END */
 
-#endregion /*Narrator Voice variable handeling END*/
+#endregion /* Narrator Voice variable handeling END */
 
 pause_text_alpha = 0;
 pause_text_lerp = 1;
@@ -67,8 +67,8 @@ menu = "continue";
 menu_delay = 10;
 last_key = noone;
 
-#region /*Remapping options variables*/
-remapping_player = 0; /*remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
+#region /* Remapping options variables */
+remapping_player = 0; /* remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
 input_key = false;
 can_remap_key = false;
 input_gamepad_button = false;
@@ -77,11 +77,11 @@ allow_player1_tongue = false;
 allow_player2_tongue = false;
 allow_player3_tongue = false;
 allow_player4_tongue = false;
-#endregion /*Remapping options variables END*/
+#endregion /* Remapping options variables END */
 
 open_dropdown = false;
 menu_joystick_delay = 0;
-menu_joystick1_delay = 0; /*These variables shouldn't be used unless specific player input is needed, but they are here still as failsafe*/
+menu_joystick1_delay = 0; /* These variables shouldn't be used unless specific player input is needed, but they are here still as failsafe */
 menu_joystick2_delay = 0;
 menu_joystick3_delay = 0;
 menu_joystick4_delay = 0;
@@ -94,8 +94,8 @@ can_navigate_settings_sidebar = true;
 navigate_slider = false;
 menu_remap_key_number = 0;
 menu_remap_gamepad_button_number = 0;
-menu_y_offset = 0; /*This is the y offset that will have lerping to make the menu scrolling smooth */
-menu_y_offset_real = 0; /*This is the real y offset for the menu, used for menu scrolling*/
+menu_y_offset = 0; /* This is the y offset that will have lerping to make the menu scrolling smooth */
+menu_y_offset_real = 0; /* This is the real y offset for the menu, used for menu scrolling */
 menu_cursor_y_position = 0;
 background_brightness_menu_lerp = 0;
 language_index = global.language_localization + 1;
@@ -125,7 +125,7 @@ hide_menu_for_clean_screenshots = false;
 hide_menu_for_clean_screenshots_alpha = 0;
 hide_menu_for_clean_screenshots_timer = 0;
 
-#region /*Character Name*/
+#region /* Character Name */
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 {
@@ -138,12 +138,12 @@ or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_v
 		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 	}
 						
-	#region /*Character Name*/
+	#region /* Character Name */
 	var uppercase_narrator_name;
 	uppercase_narrator_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 1));
 	uppercase_narrator_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.narrator))) - 1);
 	narrator_name = string(uppercase_narrator_name);
-	#endregion /*Character Name END*/
+	#endregion /* Character Name END */
 						
 	ini_close();
 }
@@ -151,16 +151,16 @@ else
 {
 	narrator_name = string(global.narrator + 1);
 }
-#endregion /*Character Name END*/
+#endregion /* Character Name END */
 
-#region /*Customize look of Options Menu*/
+#region /* Customize look of Options Menu */
 c_menu_outline = c_black;
 c_menu_fill = c_white;
-#endregion /*Customize look of Options Menu END*/
+#endregion /* Customize look of Options Menu END */
 
-audio_pause_all(); /*Pause sound effects and music*/
+audio_pause_all(); /* Pause sound effects and music */
 
-#region /*Save Level Editor Checkpoint*/
+#region /* Save Level Editor Checkpoint */
 if (asset_get_type("room_leveleditor") == asset_room)
 and (room == room_leveleditor)
 and (global.character_select_in_this_menu == "main_game")
@@ -172,8 +172,8 @@ and (global.character_select_in_this_menu == "main_game")
 	
 	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
-	ini_write_real(level_name, "x_checkpoint", global.x_checkpoint);
-	ini_write_real(level_name, "y_checkpoint", global.y_checkpoint);
+	ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
+	ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
 	ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
 	ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
@@ -193,8 +193,8 @@ and (global.character_select_in_this_menu == "level_editor")
 	
 	ini_open(working_directory + "/save_files/custom_level_save.ini");
 	
-	ini_write_real(level_name, "x_checkpoint", global.x_checkpoint);
-	ini_write_real(level_name, "y_checkpoint", global.y_checkpoint);
+	ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
+	ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
 	ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
 	ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
@@ -202,4 +202,4 @@ and (global.character_select_in_this_menu == "level_editor")
 	
 	ini_close();
 }
-#endregion /*Save Level Editor Checkpoint END*/
+#endregion /* Save Level Editor Checkpoint END */

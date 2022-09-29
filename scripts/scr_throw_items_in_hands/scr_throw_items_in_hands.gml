@@ -1,7 +1,7 @@
 function scr_throw_items_in_hands()
 {
 	
-	#region /*Throw items in hands*/
+	#region /* Throw items in hands */
 	if (hold_item_in_hands != "")
 	{
 		if (key_dive_pressed)
@@ -328,6 +328,6 @@ function scr_throw_items_in_hands()
 			}
 		}
 	}
-	#endregion /*Throw items in hands END*/
+	#endregion /* Throw items in hands END */
 	
 }

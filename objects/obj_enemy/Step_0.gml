@@ -21,7 +21,7 @@ if (stomped_delay > 0)
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
 
-#region /*Enemy touching emerging spikes*/
+#region /* Enemy touching emerging spikes */
 if (instance_exists(obj_spikes_emerge))
 and (can_die_from_spikes = true)
 {
@@ -62,4 +62,4 @@ and (can_die_from_spikes = true)
 		}
 	}
 }
-#endregion /*Enemy touching emerging spikes END*/
+#endregion /* Enemy touching emerging spikes END */

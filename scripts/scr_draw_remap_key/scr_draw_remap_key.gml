@@ -8,7 +8,7 @@
 function scr_draw_remap_key(menu_string, name_string, remapping_player_key, remapping_player_key2, key_x, menu_y_remap_key)
 {
 	
-	#region /*Remap Key 1*/
+	#region /* Remap Key 1 */
 	if (menu == menu_string)
 	and (menu_remap_key_number = 0)
 	{
@@ -43,12 +43,12 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			draw_sprite_ext(spr_mouse_buttons, 5, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 		}
 		else
-		if(remapping_player_key = mouse_button_value.mwheel_down) /*Mouse Wheel Down*/
+		if(remapping_player_key = mouse_button_value.mwheel_down) /* Mouse Wheel Down */
 		{
 			draw_sprite_ext(spr_mouse_buttons, 6, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 		}
 		else
-		if(remapping_player_key = mouse_button_value.mwheel_up) /*Mouse Wheel Up*/
+		if(remapping_player_key = mouse_button_value.mwheel_up) /* Mouse Wheel Up */
 		{
 			draw_sprite_ext(spr_mouse_buttons, 7, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 		}
@@ -95,12 +95,12 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			draw_sprite_ext(spr_mouse_buttons, 5, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 		}
 		else
-		if(remapping_player_key = mouse_button_value.mwheel_down) /*Mouse Wheel Down*/
+		if(remapping_player_key = mouse_button_value.mwheel_down) /* Mouse Wheel Down */
 		{
 			draw_sprite_ext(spr_mouse_buttons, 6, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 		}
 		else
-		if(remapping_player_key = mouse_button_value.mwheel_up) /*Mouse Wheel Up*/
+		if(remapping_player_key = mouse_button_value.mwheel_up) /* Mouse Wheel Up */
 		{
 			draw_sprite_ext(spr_mouse_buttons, 7, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 		}
@@ -114,15 +114,15 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			draw_sprite_ext(spr_keyboard_keys_none, 0, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 		}
 	}
-	#endregion /*Remap Key 1 END*/
+	#endregion /* Remap Key 1 END */
 	
-	#region /*"OR" text*/
+	#region /* "OR" text */
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(key_x + 100, menu_y_remap_key + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-	#endregion /*"OR" text END*/
+	#endregion /* "OR" text END */
 	
-	#region /*Remap Key 2*/
+	#region /* Remap Key 2 */
 	if (menu == menu_string)
 	and (menu_remap_key_number = 2)
 	{
@@ -157,12 +157,12 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			draw_sprite_ext(spr_mouse_buttons, 5, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 		}
 		else
-		if(remapping_player_key2 = mouse_button_value.mwheel_down) /*Mouse Wheel Down*/
+		if(remapping_player_key2 = mouse_button_value.mwheel_down) /* Mouse Wheel Down */
 		{
 			draw_sprite_ext(spr_mouse_buttons, 6, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 		}
 		else
-		if(remapping_player_key2 = mouse_button_value.mwheel_up) /*Mouse Wheel Up*/
+		if(remapping_player_key2 = mouse_button_value.mwheel_up) /* Mouse Wheel Up */
 		{
 			draw_sprite_ext(spr_mouse_buttons, 7, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 		}
@@ -209,12 +209,12 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			draw_sprite_ext(spr_mouse_buttons, 5, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 		}
 		else
-		if(remapping_player_key2 = mouse_button_value.mwheel_down) /*Mouse Wheel Down*/
+		if(remapping_player_key2 = mouse_button_value.mwheel_down) /* Mouse Wheel Down */
 		{
 			draw_sprite_ext(spr_mouse_buttons, 6, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 		}
 		else
-		if(remapping_player_key2 = mouse_button_value.mwheel_up) /*Mouse Wheel Up*/
+		if(remapping_player_key2 = mouse_button_value.mwheel_up) /* Mouse Wheel Up */
 		{
 			draw_sprite_ext(spr_mouse_buttons, 7, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 		}
@@ -228,12 +228,12 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			draw_sprite_ext(spr_keyboard_keys_none, 0, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 		}
 	}
-	#endregion /*Remap Key 2 END*/
+	#endregion /* Remap Key 2 END */
 	
-	#region /*Mouse Navigation*/
+	#region /* Mouse Navigation */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), key_x - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 32, menu_y_remap_key + menu_y_offset + 32))
 	and (input_key == false)
-	and (open_dropdown = false)
+	and (open_dropdown == false)
 	and (global.controls_used_for_menu_navigation == "mouse")
 	{
 		menu = menu_string;
@@ -242,7 +242,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	}
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), key_x + 200 - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 200 + 32, menu_y_remap_key + menu_y_offset + 32))
 	and (input_key == false)
-	and (open_dropdown = false)
+	and (open_dropdown == false)
 	and (global.controls_used_for_menu_navigation == "mouse")
 	{
 		menu = menu_string;
@@ -256,16 +256,16 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (menu_delay == 0)
 		and (input_key == false)
-		and (open_dropdown = false)
+		and (open_dropdown == false)
 		{
 			can_navigate_settings_sidebar = false;
 			menu_delay = 3;
 			input_key = true;
 		}
 	}
-	#endregion /*Mouse Navigation END*/
+	#endregion /* Mouse Navigation END */
 	
-	#region /*Other Remap Code*/
+	#region /* Other Remap Code */
 	if (menu == menu_string)
 	{
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, 390, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
@@ -278,7 +278,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		and (menu_delay == 0)
 		{
 			scr_keyboardremapping();
-			menu_delay = 3; /*Set menu delay after the keyboard remapping script*/
+			menu_delay = 3; /* Set menu delay after the keyboard remapping script */
 		}
 		else
 		if (key_a_pressed)
@@ -294,6 +294,6 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(410, menu_y_remap_key + menu_y_offset, l10n_text(name_string), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
-	#endregion /*Other Remap Code END*/
+	#endregion /* Other Remap Code END */
 	
 }

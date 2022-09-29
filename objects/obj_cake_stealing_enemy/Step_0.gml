@@ -1,9 +1,9 @@
-#region /*Set the gravity*/
-gravity_direction = 270; /*Direction of the gravity*/
+#region /* Set the gravity */
+gravity_direction = 270; /* Direction of the gravity */
 if (asset_get_type("obj_wall") == asset_object)
 and (!place_meeting(x, y + 1, obj_wall))
 {
-	gravity = 0.5; /*The gravity*/
+	gravity = 0.5; /* The gravity */
 }
 else
 {
@@ -29,7 +29,7 @@ if (asset_get_type("obj_semisolid_platform") == asset_object)
 		gravity = 0;
 	}
 }
-#endregion /*Set the gravity END*/
+#endregion /* Set the gravity END */
 
 if (cutscene = 0)
 {
@@ -52,7 +52,7 @@ if (cutscene = 0)
 	}
 }
 else
-if (cutscene = 1) /*When placed in level, use this cutscene value*/
+if (cutscene = 1) /* When placed in level, use this cutscene value */
 {
 	if (global.character_select_in_this_menu == "main_game")
 	{

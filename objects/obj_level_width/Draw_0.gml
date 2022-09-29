@@ -22,7 +22,7 @@ and (global.play_edited_level = false)
 	}
 }
 
-#region /*Drag Object*/
+#region /* Drag Object */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (obj_leveleditor.pause = false)
@@ -43,14 +43,14 @@ and (obj_leveleditor.pause = false)
 			}
 		}
 	}
-	#region /*Drag the object*/
+	#region /* Drag the object */
 	if (drag_object == true)
 	{
 		x = obj_leveleditor.x;
 	}
-	#endregion /*Drag the object END*/
+	#endregion /* Drag the object END */
 	
-	#region /*Release the object*/
+	#region /* Release the object */
 	if (mouse_check_button_released(mb_left))
 	or (key_a_released)
 	{
@@ -61,10 +61,10 @@ and (obj_leveleditor.pause = false)
 			obj_leveleditor.drag_object = false;
 		}
 	}
-	#endregion /*Release the object END*/
+	#endregion /* Release the object END */
 }
 
-#endregion /*Drag Object END*/
+#endregion /* Drag Object END */
 
 if drag_release_timer > 0
 {
@@ -79,9 +79,9 @@ else
 	}
 }
 
-#region /*Make sure the level end isn't outside of the level, this code has to be after the drag object code*/
+#region /* Make sure the level end isn't outside of the level, this code has to be after the drag object code */
 if (x < 1920 + 16)
-and (global.actually_play_edited_level = false)
+and (global.actually_play_edited_level == false)
 and (global.play_edited_level = false)
 {
 	draw_set_halign(fa_left);
@@ -101,7 +101,7 @@ and (global.play_edited_level = false)
 //{
 //	x = room_width;
 //}
-#endregion /*Make sure the level end isn't outside of the level, this code has to be after the drag object code END*/
+#endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 
 if (global.play_edited_level = true)
 or (global.actually_play_edited_level = true)

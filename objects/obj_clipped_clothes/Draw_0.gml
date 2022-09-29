@@ -5,34 +5,34 @@ and (fall = false)
 {
 	fall = true;
 	
-	#region /*If it's a clipped shirt, turn into the shirt falling*/
+	#region /* If it's a clipped shirt, turn into the shirt falling */
 	if (asset_get_type("spr_clipped_shirt") == asset_sprite)
 	and (sprite_index = spr_clipped_shirt)
 	and (asset_get_type("spr_shirt") == asset_sprite)
 	{
 		sprite_index = spr_shirt;
 	}
-	#endregion /*If it's a clipped shirt, turn into the shirt falling END*/
+	#endregion /* If it's a clipped shirt, turn into the shirt falling END */
 	
-	#region /*If it's clipped pants, turn into the pants falling*/
+	#region /* If it's clipped pants, turn into the pants falling */
 	if (asset_get_type("spr_clipped_pants") == asset_sprite)
 	and (sprite_index = spr_clipped_pants)
 	and (asset_get_type("spr_pants") == asset_sprite)
 	{
 		sprite_index = spr_pants;
 	}
-	#endregion /*If it's clipped pants, turn into the pants falling END*/
+	#endregion /* If it's clipped pants, turn into the pants falling END */
 	
-	#region /*If it's a clipped sock, turn into the sock falling*/
+	#region /* If it's a clipped sock, turn into the sock falling */
 	if (asset_get_type("spr_clipped_sock") == asset_sprite)
 	and (sprite_index = spr_clipped_sock)
 	and (asset_get_type("spr_sock") == asset_sprite)
 	{
 		sprite_index = spr_sock;
 	}
-	#endregion /*If it's a clipped sock, turn into the sock falling END*/
+	#endregion /* If it's a clipped sock, turn into the sock falling END */
 	
-	#region /* 1 Basic Collectible*/
+	#region /* 1 Basic Collectible */
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -42,9 +42,9 @@ and (fall = false)
 			bounceup = true;
 		}
 	}
-	#endregion /* 1 Basic Collectible END*/
+	#endregion /* 1 Basic Collectible END */
 	
-	#region /*Make clippers fly out*/
+	#region /* Make clippers fly out */
 	if (asset_get_type("obj_clipper") == asset_object)
 	{
 		if (asset_get_type("spr_sock") == asset_sprite)
@@ -67,7 +67,7 @@ and (fall = false)
 			}
 		}
 	}
-	#endregion /*Make clippers fly out END*/
+	#endregion /* Make clippers fly out END */
 }
 if (fall = true)
 {
@@ -94,9 +94,9 @@ if (fall = true)
 	}
 }
 
-#region /*Limit vertical falling speed*/
+#region /* Limit vertical falling speed */
 if (vspeed > 20)
 {
 	vspeed = +20;
 }
-#endregion /*Limit vertical falling speed END*/
+#endregion /* Limit vertical falling speed END */

@@ -2,7 +2,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 {
 	var size_of_button_offset = 299;
 	
-	#region /*Left Right Buttons*/
+	#region /* Left Right Buttons */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(left_right_buttons_x, 20 + (left_right_buttons_y), text(string(left_right_buttons_text)) + ": " + string(left_right_buttons_variable_to_change), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
@@ -47,7 +47,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 		draw_sprite(spr_menu_cursor, menu_cursor_index, left_right_buttons_x - 32 - 32, 20 + (left_right_buttons_y));
 	}
 	if (key_left)
-	and (menu = string(left_right_buttons_menu))
+	and (menu == string(left_right_buttons_menu))
 	or (mouse_check_button_pressed(mb_left))
 	and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x - 32 + 16 + size_of_button_offset, 20 + (left_right_buttons_y) + 16))
 	{
@@ -77,7 +77,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 		}
 	}
 	if (key_right)
-	and (menu = string(left_right_buttons_menu))
+	and (menu == string(left_right_buttons_menu))
 	or (mouse_check_button_pressed(mb_left))
 	and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), left_right_buttons_x + left_right_buttons_right_arrow_x - 16 - size_of_button_offset, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
 	{
@@ -101,7 +101,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 			menu_delay = 3;
 		}
 	}
-	#endregion /*Left Right Buttons END*/
+	#endregion /* Left Right Buttons END */
 	
 	return(left_right_buttons_variable_to_change);
 }

@@ -1,7 +1,7 @@
 function scr_modify_objects_in_level_editor()
 {
 	
-	#region /*Modify Objects*/
+	#region /* Modify Objects */
 	if (!keyboard_check(vk_space))
 	and (!mouse_check_button(mb_middle))
 	and (!mouse_check_button(mb_right))
@@ -31,19 +31,19 @@ function scr_modify_objects_in_level_editor()
 	and (!position_meeting(x, y, obj_level_width))
 	and (asset_get_type("obj_water_level_height") == asset_object)
 	and (!position_meeting(x, y, obj_water_level_height))
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /*Can't place objects when clicking the top buttons*/
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height() / 2 - 32, window_get_width(), window_get_height() / 2 + 32)) /*Can't place objects when clicking the play button*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height() / 2 - 32, window_get_width(), window_get_height() / 2 + 32)) /* Can't place objects when clicking the play button */
 	and (obj_leveleditor.placing_object <= 0)
 	{
 		if (obj_leveleditor.show_grid = true)
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32 - 32, 80 + obj_leveleditor.icons_at_top_y + 16 - 32 - 32, display_get_gui_width() + 64 + 32, 80 + obj_leveleditor.icons_at_top_y + 16 + 32 + 32)) /*Up and down buttons when grid is on*/
+		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32 - 32, 80 + obj_leveleditor.icons_at_top_y + 16 - 32 - 32, display_get_gui_width() + 64 + 32, 80 + obj_leveleditor.icons_at_top_y + 16 + 32 + 32)) /* Up and down buttons when grid is on */
 		or (obj_leveleditor.show_grid = false)
 		{
 			if (obj_leveleditor.set_difficulty_mode = true)
-			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 			or (obj_leveleditor.set_difficulty_mode = false)
-			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 			{
 				if (keyboard_check_pressed(ord("A")))
 				and (!keyboard_check(vk_control))
@@ -57,13 +57,13 @@ function scr_modify_objects_in_level_editor()
 				{
 					if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 					{
-						/*Don't put a move_snap here! We don't want the object to change position when modifying it*/
+						/* Don't put a move_snap here! We don't want the object to change position when modifying it */
 							
-						#region /*Object ID's to modify*/
-						if (global.world_editor = false)
+						#region /* Object ID's to modify */
+						if (global.world_editor == false)
 						{
 							
-							#region /*Change wall into it's different forms*/
+							#region /* Change wall into it's different forms */
 							if (object = 1)
 							{
 								object = 1001;
@@ -103,11 +103,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = 1;
 							}
-							#endregion /*Change wall into it's different forms END*/
+							#endregion /* Change wall into it's different forms END */
 							
 							else
 							
-							#region /*Change bump in ground to it's different forms*/
+							#region /* Change bump in ground to it's different forms */
 							if (object = 28)
 							{
 								object = 29;
@@ -172,9 +172,9 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = 281;
 							}
-							#endregion /*Change bump in ground to it's different forms END*/
+							#endregion /* Change bump in ground to it's different forms END */
 								
-							#region /*Change invisible bump in ground to it's different forms*/
+							#region /* Change invisible bump in ground to it's different forms */
 							if (object = 281)
 							{
 								object = 291;
@@ -239,11 +239,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = 28;
 							}
-							#endregion /*Change invisible bump in ground to it's different forms END*/
+							#endregion /* Change invisible bump in ground to it's different forms END */
 								
 							else
 							
-							#region /*Change Basic Collectible Direction*/
+							#region /* Change Basic Collectible Direction */
 							if (object = level_object_id.id_basic_collectible)
 							{
 								object = level_object_id.id_basic_collectible_2;
@@ -283,11 +283,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_basic_collectible;
 							}
-							#endregion /*Change Basic Collectible Direction*/
+							#endregion /* Change Basic Collectible Direction */
 							
 							else
 							
-							#region /*Change Big Collectible*/
+							#region /* Change Big Collectible */
 							if (object = level_object_id.id_big_collectible_1)
 							{
 								object = level_object_id.id_big_collectible_2;
@@ -312,11 +312,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_big_collectible_1;
 							}
-							#endregion /*Change Big Collectible*/
+							#endregion /* Change Big Collectible */
 							
 							else
 							
-							#region /*Falling Block*/
+							#region /* Falling Block */
 							if (object = level_object_id.id_falling_block)
 							{
 								object = level_object_id.id_falling_block_solid;
@@ -336,11 +336,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_falling_block_long;
 							}
-							#endregion /*Falling Block END*/
+							#endregion /* Falling Block END */
 							
 							else
 							
-							#region /*Brick Block*/
+							#region /* Brick Block */
 							if (object = level_object_id.id_brick_block)
 							{
 								object = level_object_id.id_brick_block_10_basic_collectibles;
@@ -380,11 +380,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_brick_block;
 							}
-							#endregion /*Brick Block*/
+							#endregion /* Brick Block */
 							
 							else
 							
-							#region /*Question Block*/
+							#region /* Question Block */
 							if (object = level_object_id.id_question_block)
 							{
 								object = level_object_id.id_question_block_10_basic_collectibles;
@@ -424,11 +424,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_question_block;
 							}
-							#endregion /*Question Block*/
+							#endregion /* Question Block */
 							
 							else
 							
-							#region /*Melon Block*/
+							#region /* Melon Block */
 							if (object = level_object_id.id_melon_block)
 							{
 								object = level_object_id.id_melon_block_10_basic_collectibles;
@@ -468,11 +468,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_melon_block;
 							}
-							#endregion /*Melon Block*/
+							#endregion /* Melon Block */
 							
 							else
 							
-							#region /*Hard Block*/
+							#region /* Hard Block */
 							if (object = level_object_id.id_hard_block)
 							{
 								object = level_object_id.id_hard_block_alternate;
@@ -487,11 +487,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_hard_block;
 							}
-							#endregion /*Hard Block END*/
+							#endregion /* Hard Block END */
 								
 							else
 								
-							#region /*Invincibility Powerup*/
+							#region /* Invincibility Powerup */
 							if (object = level_object_id.id_invincibility_powerup)
 							{
 								object = level_object_id.id_invincibility_powerup_coil_spring;
@@ -501,11 +501,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_invincibility_powerup;
 							}
-							#endregion /*Invincibility Powerup END*/
+							#endregion /* Invincibility Powerup END */
 							
 							else
 							
-							#region /*Extra Lives Pickup*/
+							#region /* Extra Lives Pickup */
 							if (object = level_object_id.id_one_up)
 							{
 								object = level_object_id.id_two_up;
@@ -520,11 +520,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_one_up;
 							}
-							#endregion /*Extra Lives Pickup END*/
+							#endregion /* Extra Lives Pickup END */
 							
 							else
 							
-							#region /*Basic enemy*/
+							#region /* Basic enemy */
 							if (object = level_object_id.id_basic_enemy)
 							{
 								object = level_object_id.id_basic_enemy_blind;
@@ -544,11 +544,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_basic_enemy;
 							}
-							#endregion /*Basic enemy END*/
+							#endregion /* Basic enemy END */
 							
 							else
 							
-							#region /*Bowling ball enemy*/
+							#region /* Bowling ball enemy */
 							if (object = level_object_id.id_enemy_bowlingball)
 							{
 								object = level_object_id.id_enemy_bowlingball_blind;
@@ -568,11 +568,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_enemy_bowlingball;
 							}
-							#endregion /*Bowling ball enemy END*/
+							#endregion /* Bowling ball enemy END */
 								
 							else
 								
-							#region /*Big Stationary Enemy*/
+							#region /* Big Stationary Enemy */
 							if (object = level_object_id.id_big_stationary_enemy)
 							{
 								object = level_object_id.id_big_stationary_enemy_coil_spring;
@@ -582,11 +582,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_big_stationary_enemy;
 							}
-							#endregion /*Big Stationary Enemy END*/
+							#endregion /* Big Stationary Enemy END */
 								
 							else
 							
-							#region /*Spikes Emerge Direction*/
+							#region /* Spikes Emerge Direction */
 							if (object = level_object_id.id_spikes_emerge_block)
 							{
 								object = level_object_id.id_spikes_emerge_block_left;
@@ -626,11 +626,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = level_object_id.id_spikes_emerge_block;
 							}
-							#endregion /*Spikes Emerge Direction END*/
+							#endregion /* Spikes Emerge Direction END */
 							
 							else
 							
-							#region /*Change Oneway Direction*/
+							#region /* Change Oneway Direction */
 							if (object = 68)
 							{
 								object = 69;
@@ -650,11 +650,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = 68;
 							}
-							#endregion /*Change Oneway Direction END*/
+							#endregion /* Change Oneway Direction END */
 							
 							else
 							
-							#region /*Change Water Rope*/
+							#region /* Change Water Rope */
 							if (object = 73)
 							{
 								object = 731;
@@ -664,11 +664,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = 73;
 							}
-							#endregion /*Change Water END*/
+							#endregion /* Change Water END */
 							
 							else
 							
-							#region /*Change Clipped Clothing on Rope*/
+							#region /* Change Clipped Clothing on Rope */
 							if (object = 74)
 							{
 								object = 75;
@@ -683,11 +683,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = 74;
 							}
-							#endregion /*Change Clipped Clothing on Rope END*/
+							#endregion /* Change Clipped Clothing on Rope END */
 							
 							else
 							
-							#region /*Change bucket to it's different forms*/
+							#region /* Change bucket to it's different forms */
 							if (object = 77)
 							{
 								object = 78;
@@ -747,11 +747,11 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = 77;
 							}
-							#endregion /*Change bucket to it's different forms END*/
+							#endregion /* Change bucket to it's different forms END */
 							
 							else
 							
-							#region /*Change Moveset Signs*/
+							#region /* Change Moveset Signs */
 							if (object = 90)
 							{
 								object = 91;
@@ -776,17 +776,17 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = 90;
 							}
-							#endregion /*Change Moveset Signs END*/
+							#endregion /* Change Moveset Signs END */
 								
 						}
-						#endregion /*Level Object ID's to modify END*/
+						#endregion /* Level Object ID's to modify END */
 						
 						else
 						
-						#region /*World Object ID's to modify*/
+						#region /* World Object ID's to modify */
 						{
 							
-							#region /*Change Turn*/
+							#region /* Change Turn */
 							if (object = 4)
 							{
 								object = 5;
@@ -806,19 +806,19 @@ function scr_modify_objects_in_level_editor()
 							{
 								object = 4;
 							}
-							#endregion /*Change Turn END*/
+							#endregion /* Change Turn END */
 							
 						}
 							
-						alarm[0] = 1; /*Update sprite initializing. That code is in alarm event, so it's not running every frame in step event*/
+						alarm[0] = 1; /* Update sprite initializing. That code is in alarm event, so it's not running every frame in step event */
 							
-						#endregion /*World Object ID's to modify END*/
+						#endregion /* World Object ID's to modify END */
 							
 					}
 				}
 			}
 		}
 	}
-	#endregion /*Modify Objects END*/
+	#endregion /* Modify Objects END */
 	
 }

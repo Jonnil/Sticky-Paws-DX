@@ -1,10 +1,10 @@
-#region /*Menu cursor image speed*/
+#region /* Menu cursor image speed */
 menu_cursor_index += 0.3;
 if (menu_cursor_index > 4)
 {
 	menu_cursor_index = 0;
 }
-#endregion /*Menu cursor image speed END*/
+#endregion /* Menu cursor image speed END */
 
 if (menu_delay > 0)
 {
@@ -71,19 +71,19 @@ if (global.goal_active = true)
 	global.goal_active = false;
 }
 
-#region /*Path Turning*/
+#region /* Path Turning */
 
-/*
+/* 
 right down = 0
 up right = 1
 up left = 2
 left down = 3
-*/
+ */
 
-#region /*Touch Map Turn Right Down*/
+#region /* Touch Map Turn Right Down */
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 0) /*Right Down = 0*/
+and (instance_nearest(x, y, obj_map_path_turn).turn = 0) /* Right Down = 0 */
 {
 	if (abs(hspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
@@ -111,14 +111,14 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 0) /*Right Down = 0*/
 		}
 	}
 }
-#endregion /*Touch Map Turn Right Down END*/
+#endregion /* Touch Map Turn Right Down END */
 
 else
 
-#region /*Touch Map Turn Up Right*/
+#region /* Touch Map Turn Up Right */
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 1) /*Up Right = 1*/
+and (instance_nearest(x, y, obj_map_path_turn).turn = 1) /* Up Right = 1 */
 {
 	if (abs(hspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
@@ -146,14 +146,14 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 1) /*Up Right = 1*/
 		}
 	}
 }
-#endregion /*Touch Map Turn Up Right END*/
+#endregion /* Touch Map Turn Up Right END */
 
 else
 
-#region /*Touch Map Turn Up Left*/
+#region /* Touch Map Turn Up Left */
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /*Up Left = 2*/
+and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /* Up Left = 2 */
 {
 	if (abs(hspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
@@ -181,14 +181,14 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /*Up Left = 2*/
 		}
 	}
 }
-#endregion /*Touch Map Turn Up Left END*/
+#endregion /* Touch Map Turn Up Left END */
 
 else
 
-#region /*Touch Map Turn Left Down*/
+#region /* Touch Map Turn Left Down */
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 3) /*Left Down = 3*/
+and (instance_nearest(x, y, obj_map_path_turn).turn = 3) /* Left Down = 3 */
 {
 	if (abs(hspeed) > 0)
 	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
@@ -216,6 +216,6 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 3) /*Left Down = 3*/
 		}
 	}
 }
-#endregion /*Touch Map Turn Left Down END*/
+#endregion /* Touch Map Turn Left Down END */
 
-#endregion /*Path Turning END*/
+#endregion /* Path Turning END */

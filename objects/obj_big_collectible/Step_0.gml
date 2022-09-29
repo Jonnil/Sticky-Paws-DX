@@ -44,7 +44,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 {
 	effect_create_above(ef_ring, x, y, 2, c_white);
 	
-	#region /* 3 Basic Collectibles*/
+	#region /* 3 Basic Collectibles */
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -68,9 +68,9 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			delay_time = 20;
 		}
 	}
-	#endregion /* 3 Basic Collectibles END*/
+	#endregion /* 3 Basic Collectibles END */
 	
-	#region /* 1000 Score*/
+	#region /* 1000 Score */
 	score += 1000;
 	if (asset_get_type("obj_scoreup") == asset_object)
 	{
@@ -79,9 +79,9 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			scoreup = 1000;
 		}
 	}
-	#endregion /* 1000 Score END*/
+	#endregion /* 1000 Score END */
 	
-	#region /*What Big Collectible is this?*/
+	#region /* What Big Collectible is this? */
 	if (big_collectible = 1)
 	{
 		global.big_collectible1 = true;
@@ -252,21 +252,21 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 	}
-	#endregion /*What Big Collectible is this? END*/
+	#endregion /* What Big Collectible is this? END */
 	
 	scr_audio_play(snd_basic_collectible, volume_source.sound);
 	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
 	instance_destroy();
 }
 
-#region /*Follow Player*/
+#region /* Follow Player */
 if (follow_player = true)
 {
 	if (instance_exists(obj_player))
 	and (distance_to_object(obj_player) < sprite_height + sprite_width)
 	{
 		
-		#region /*Show Big Collectible HUD*/
+		#region /* Show Big Collectible HUD */
 		global.hud_show_big_collectibles = true;
 		if (instance_exists(obj_camera))
 		{
@@ -275,7 +275,7 @@ if (follow_player = true)
 				hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 			}
 		}
-		#endregion /*Show Big Collectible HUD END*/
+		#endregion /* Show Big Collectible HUD END */
 		
 		x = lerp(x, instance_nearest(x, y, obj_player).x, 0.5);
 		y = lerp(y, instance_nearest(x, y, obj_player).y, 0.5);
@@ -291,12 +291,12 @@ if (follow_player = true)
 		}
 	}
 }
-#endregion /*Follow Player END*/
+#endregion /* Follow Player END */
 
 if (bounceup = true)
 {
 	
-	#region /*Show Big Collectible HUD*/
+	#region /* Show Big Collectible HUD */
 	global.hud_show_big_collectibles = true;
 	if (instance_exists(obj_camera))
 	{
@@ -305,7 +305,7 @@ if (bounceup = true)
 			hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 		}
 	}
-	#endregion /*Show Big Collectible HUD END*/
+	#endregion /* Show Big Collectible HUD END */
 	
 	if (delay >= delay_time)
 	{
@@ -315,13 +315,13 @@ if (bounceup = true)
 			coinsound = true;
 		}
 		visible = true;
-		gravity_direction = 270; /*Direction of the gravity*/
-		gravity = 0.5; /*The gravity*/
+		gravity_direction = 270; /* Direction of the gravity */
+		gravity = 0.5; /* The gravity */
 		if (vspeed > 0)
 		and (y > ystart - 32)
 		{
 			
-			#region /* 3 Basic Collectibles*/
+			#region /* 3 Basic Collectibles */
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -345,9 +345,9 @@ if (bounceup = true)
 					delay_time = 20;
 				}
 			}
-			#endregion /* 3 Basic Collectibles END*/
+			#endregion /* 3 Basic Collectibles END */
 			
-			#region /* 1000 Score*/
+			#region /* 1000 Score */
 			score += 1000;
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
@@ -356,9 +356,9 @@ if (bounceup = true)
 					scoreup = 1000;
 				}
 			}
-			#endregion /* 1000 Score END*/
+			#endregion /* 1000 Score END */
 			
-			#region /*What Big Collectible is this?*/
+			#region /* What Big Collectible is this? */
 			if (big_collectible = 1)
 			{
 				global.big_collectible1 = true;
@@ -529,7 +529,7 @@ if (bounceup = true)
 					}
 				}
 			}
-			#endregion /*What Big Collectible is this? END*/
+			#endregion /* What Big Collectible is this? END */
 			
 			effect_create_above(ef_ring, x, y, 2, c_white);
 			instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
@@ -543,7 +543,7 @@ if (bounceup = true)
 		y = ystart;
 	}
 	
-	#region /*Don't go outside view boundary*/
+	#region /* Don't go outside view boundary */
 	if (x < camera_get_view_x(view_camera[view_current]) + 32)
 	{
 		x = camera_get_view_x(view_camera[view_current]) + 32;
@@ -552,7 +552,7 @@ if (bounceup = true)
 	{
 		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 32;
 	}
-	#endregion /*Don't go outside view boundary END*/
+	#endregion /* Don't go outside view boundary END */
 	
 }
 
@@ -587,19 +587,19 @@ and (global.big_collectible5 = true)
 	image_blend = c_gray;
 }
 
-#region /*If big collectible value is 0, destroy the big collectible*/
+#region /* If big collectible value is 0, destroy the big collectible */
 if (big_collectible = 0)
 {
 	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
 	instance_destroy();
 }
-#endregion /*If big collectible value is 0, destroy the big collectible END*/
+#endregion /* If big collectible value is 0, destroy the big collectible END */
 
-#region /*Expanding Ring Effect*/
+#region /* Expanding Ring Effect */
 effect_time += 1;
 if (effect_time > 60)
 {
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);
 }
-#endregion /*Expanding Ring Effect END*/
+#endregion /* Expanding Ring Effect END */

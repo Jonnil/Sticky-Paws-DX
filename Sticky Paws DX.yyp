@@ -281,6 +281,7 @@
     {"id":{"name":"snd_footstep_wood_right","path":"sounds/snd_footstep_wood_right/snd_footstep_wood_right.yy",},"order":55,},
     {"id":{"name":"obj_cardboard","path":"objects/obj_cardboard/obj_cardboard.yy",},"order":0,},
     {"id":{"name":"spr_cursor_grab","path":"sprites/spr_cursor_grab/spr_cursor_grab.yy",},"order":3,},
+    {"id":{"name":"scr_file_move","path":"scripts/scr_file_move/scr_file_move.yy",},"order":69,},
     {"id":{"name":"spr_map_turn_right_down","path":"sprites/spr_map_turn_right_down/spr_map_turn_right_down.yy",},"order":76,},
     {"id":{"name":"scr_draw_level_editor_thumbnail","path":"scripts/scr_draw_level_editor_thumbnail/scr_draw_level_editor_thumbnail.yy",},"order":4,},
     {"id":{"name":"obj_speedline","path":"objects/obj_speedline/obj_speedline.yy",},"order":31,},

@@ -1,6 +1,6 @@
 function scr_config_load()
 {
-	if (file_exists(working_directory + "config.ini")) /*Check if config.ini exists before loading any settings*/
+	if (file_exists(working_directory + "config.ini")) /* Check if config.ini exists before loading any settings */
 	{
 		ini_open(working_directory + "config.ini");
 		if (ini_key_exists("config", "always_show_level_editor_buttons")){global.always_show_level_editor_buttons = ini_read_real("config", "always_show_level_editor_buttons", true);}
@@ -20,7 +20,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "hud_hide_time")){global.hud_hide_time = ini_read_real("config", "hud_hide_time", 0);}
 		if (ini_key_exists("config", "players_can_collide")){global.players_can_collide = ini_read_real("config", "players_can_collide", 0);}
 		
-		#region /*Assist Settings*/
+		#region /* Assist Settings */
 		if (ini_key_exists("config", "assist_enable")){global.assist_enable = ini_read_real("config", "assist_enable", 0);}
 		if (ini_key_exists("config", "assist_item_appear")){global.assist_item_appear = ini_read_real("config", "assist_item_appear", 0);}
 		if (ini_key_exists("config", "assist_extra_hp")){global.assist_extra_hp = ini_read_real("config", "assist_extra_hp", 0);}
@@ -29,7 +29,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "assist_guiding_arrows")){global.assist_guiding_arrows = ini_read_real("config", "assist_guiding_arrows", 0);}
 		if (ini_key_exists("config", "assist_normal_arrows")){global.assist_normal_arrows = ini_read_real("config", "assist_normal_arrows", 0);}
 		if (ini_key_exists("config", "assist_show_assist_mode_text")){global.assist_show_assist_mode_text = ini_read_real("config", "assist_show_assist_mode_text", 0);}
-		#endregion /*Assist Settings END*/
+		#endregion /* Assist Settings END */
 		
 		if (ini_key_exists("config", "fullscreen_mode")){window_set_fullscreen(ini_read_real("config", "fullscreen_mode", 0));}
 		if (ini_key_exists("config", "interpolate")){global.interpolate = ini_read_real("config", "interpolate", 0);}
@@ -71,7 +71,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_prompt_when_changing_to_gamepad")){global.show_prompt_when_changing_to_gamepad = ini_read_real("config", "show_prompt_when_changing_to_gamepad", 1);}
 		if (ini_key_exists("config", "show_prompt_when_changing_to_keyboard_and_mouse")){global.show_prompt_when_changing_to_keyboard_and_mouse = ini_read_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", 1);}
 		
-		#region /*Load Player 1 Keyboard Remapping*/
+		#region /* Load Player 1 Keyboard Remapping */
 		if (ini_key_exists("config", "character_index_player_1")){global.character_index[0] = ini_read_real("config", "character_index_player_1", 0);}
 		if (ini_key_exists("config", "skin_for_player_1")){global.skin_for_player_1 = ini_read_real("config", "skin_for_player_1", 0);}
 		if (ini_key_exists("config", "player1_name")){global.player1_name = ini_read_string("config", "player1_name", 0);}
@@ -110,9 +110,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_wall_jump_setting")){global.player1_wall_jump_setting = ini_read_real("config", "player1_wall_jump_setting", 0);}
 		if (ini_key_exists("config", "player1_drop_from_rope")){global.player1_drop_from_rope = ini_read_real("config", "player1_drop_from_rope", 0);}
 		if (ini_key_exists("config", "player1_show_controls")){global.player1_show_controls = ini_read_real("config", "player1_show_controls", 0);}//Load Player 1 Keyboard Remapping End
-		#endregion /*Load Player 1 Keyboard Remapping END*/
+		#endregion /* Load Player 1 Keyboard Remapping END */
 		
-		#region /*Load Player 2 Keyboard Remapping*/
+		#region /* Load Player 2 Keyboard Remapping */
 		if (ini_key_exists("config", "character_index_player_2")){global.character_index[1] = ini_read_real("config", "character_index_player_2", 1);}
 		if (ini_key_exists("config", "skin_for_player_2")){global.skin_for_player_2 = ini_read_real("config", "skin_for_player_2", 1);}
 		if (ini_key_exists("config", "player2_name")){global.player2_name = ini_read_string("config", "player2_name", 0);}
@@ -151,9 +151,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_wall_jump_setting")){global.player2_wall_jump_setting = ini_read_real("config", "player2_wall_jump_setting", 0);}
 		if (ini_key_exists("config", "player2_drop_from_rope")){global.player2_drop_from_rope = ini_read_real("config", "player2_drop_from_rope", 0);}
 		if (ini_key_exists("config", "player2_show_controls")){global.player2_show_controls = ini_read_real("config", "player2_show_controls", 0);}//Load Player 2 Keyboard Remapping End
-		#endregion /*Load Player 2 Keyboard Remapping END*/
+		#endregion /* Load Player 2 Keyboard Remapping END */
 		
-		#region /*Load Player 3 Keyboard Remapping*/
+		#region /* Load Player 3 Keyboard Remapping */
 		if (ini_key_exists("config", "character_index_player_3")){global.character_index[2] = ini_read_real("config", "character_index_player_3", 2);}
 		if (ini_key_exists("config", "skin_for_player_3")){global.skin_for_player_3 = ini_read_real("config", "skin_for_player_3", 2);}
 		if (ini_key_exists("config", "player3_name")){global.player3_name = ini_read_string("config", "player3_name", 0);}
@@ -192,9 +192,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_wall_jump_setting")){global.player3_wall_jump_setting = ini_read_real("config", "player3_wall_jump_setting", 0);}
 		if (ini_key_exists("config", "player3_drop_from_rope")){global.player3_drop_from_rope = ini_read_real("config", "player3_drop_from_rope", 0);}
 		if (ini_key_exists("config", "player3_show_controls")){global.player3_show_controls = ini_read_real("config", "player3_show_controls", 0);}//Load Player 3 Keyboard Remapping End
-		#endregion /*Load Player 3 Keyboard Remapping END*/
+		#endregion /* Load Player 3 Keyboard Remapping END */
 		
-		#region /*Load Player 4 Keyboard Remapping*/
+		#region /* Load Player 4 Keyboard Remapping */
 		if (ini_key_exists("config", "character_index_player_4")){global.character_index[3] = ini_read_real("config", "character_index_player_4", 3);}
 		if (ini_key_exists("config", "skin_for_player_4")){global.skin_for_player_4 = ini_read_real("config", "skin_for_player_4", 3);}
 		if (ini_key_exists("config", "player4_name")){global.player4_name = ini_read_string("config", "player4_name", 0);}
@@ -233,9 +233,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_wall_jump_setting")){global.player4_wall_jump_setting = ini_read_real("config", "player4_wall_jump_setting", 0);}
 		if (ini_key_exists("config", "player4_drop_from_rope")){global.player4_drop_from_rope = ini_read_real("config", "player4_drop_from_rope", 0);}
 		if (ini_key_exists("config", "player4_show_controls")){global.player4_show_controls = ini_read_real("config", "player4_show_controls", 0);}//Load Player 4 Keyboard Remapping End
-		#endregion /*Load Player 4 Keyboard Remapping END*/
+		#endregion /* Load Player 4 Keyboard Remapping END */
 		
-		#region /*Load Player 1 Gamepad Remapping*/
+		#region /* Load Player 1 Gamepad Remapping */
 		if (ini_key_exists("config", "player1_gamepad_button_dive")){global.player1_gamepad_button_dive = ini_read_real("config", "player1_gamepad_button_dive", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button_jump")){global.player1_gamepad_button_jump = ini_read_real("config", "player1_gamepad_button_jump", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button_crouch")){global.player1_gamepad_button_crouch = ini_read_real("config", "player1_gamepad_button_crouch", 0);}
@@ -262,9 +262,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_gamepad_button2_tongue")){global.player1_gamepad_button2_tongue = ini_read_real("config", "player1_gamepad_button2_tongue", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_zoom_in")){global.player1_gamepad_button2_zoom_in = ini_read_real("config", "player1_gamepad_button2_zoom_in", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_zoom_out")){global.player1_gamepad_button2_zoom_out = ini_read_real("config", "player1_gamepad_button2_zoom_out", 0);}
-		#endregion /*Load Player 1 Gamepad Remapping END*/
+		#endregion /* Load Player 1 Gamepad Remapping END */
 		
-		#region /*Load Player 2 Gamepad Remapping*/
+		#region /* Load Player 2 Gamepad Remapping */
 		if (ini_key_exists("config", "player2_gamepad_button_dive")){global.player2_gamepad_button_dive = ini_read_real("config", "player2_gamepad_button_dive", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button_jump")){global.player2_gamepad_button_jump = ini_read_real("config", "player2_gamepad_button_jump", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button_crouch")){global.player2_gamepad_button_crouch = ini_read_real("config", "player2_gamepad_button_crouch", 0);}
@@ -291,9 +291,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_gamepad_button2_tongue")){global.player2_gamepad_button2_tongue = ini_read_real("config", "player2_gamepad_button2_tongue", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_zoom_in")){global.player2_gamepad_button2_zoom_in = ini_read_real("config", "player2_gamepad_button2_zoom_in", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_zoom_out")){global.player2_gamepad_button2_zoom_out = ini_read_real("config", "player2_gamepad_button2_zoom_out", 0);}
-		#endregion /*Load Player 2 Gamepad Remapping END*/
+		#endregion /* Load Player 2 Gamepad Remapping END */
 		
-		#region /*Load Player 3 Gamepad Remapping*/
+		#region /* Load Player 3 Gamepad Remapping */
 		if (ini_key_exists("config", "player3_gamepad_button_dive")){global.player3_gamepad_button_dive = ini_read_real("config", "player3_gamepad_button_dive", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button_jump")){global.player3_gamepad_button_jump = ini_read_real("config", "player3_gamepad_button_jump", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button_crouch")){global.player3_gamepad_button_crouch = ini_read_real("config", "player3_gamepad_button_crouch", 0);}
@@ -320,9 +320,9 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_gamepad_button2_tongue")){global.player3_gamepad_button2_tongue = ini_read_real("config", "player3_gamepad_button2_tongue", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_zoom_in")){global.player3_gamepad_button2_zoom_in = ini_read_real("config", "player3_gamepad_button2_zoom_in", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_zoom_out")){global.player3_gamepad_button2_zoom_out = ini_read_real("config", "player3_gamepad_button2_zoom_out", 0);}
-		#endregion /*Load Player 3 Gamepad Remapping END*/
+		#endregion /* Load Player 3 Gamepad Remapping END */
 		
-		#region /*Load Player 4 Gamepad Remapping*/
+		#region /* Load Player 4 Gamepad Remapping */
 		if (ini_key_exists("config", "player4_gamepad_button_dive")){global.player4_gamepad_button_dive = ini_read_real("config", "player4_gamepad_button_dive", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button_jump")){global.player4_gamepad_button_jump = ini_read_real("config", "player4_gamepad_button_jump", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button_crouch")){global.player4_gamepad_button_crouch = ini_read_real("config", "player4_gamepad_button_crouch", 0);}
@@ -349,7 +349,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_gamepad_button2_tongue")){global.player4_gamepad_button2_tongue = ini_read_real("config", "player4_gamepad_button2_tongue", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_zoom_in")){global.player4_gamepad_button2_zoom_in = ini_read_real("config", "player4_gamepad_button2_zoom_in", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_zoom_out")){global.player4_gamepad_button2_zoom_out = ini_read_real("config", "player4_gamepad_button2_zoom_out", 0);}
-		#endregion /*Load Player 4 Gamepad Remapping END*/
+		#endregion /* Load Player 4 Gamepad Remapping END */
 		
 		ini_close();
 	}

@@ -1,11 +1,11 @@
 function scr_save_custom_level()
 {
 	
-	#region /*Save Custom Level*/
+	#region /* Save Custom Level */
 	if (global.character_select_in_this_menu == "level_editor")
 	{
 	
-		#region /*Create directory for saving custom levels*/
+		#region /* Create directory for saving custom levels */
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template == false)
 		and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))))
@@ -18,24 +18,24 @@ function scr_save_custom_level()
 		{
 			directory_create(working_directory + "/custom_levels/" + string(global.level_name));
 		}
-		#endregion /*Create directory for saving custom levels END*/
+		#endregion /* Create directory for saving custom levels END */
 	
-		#region /*Save object placement*/
+		#region /* Save object placement */
 		instance_activate_all();
-		var file,str;
+		var file, str;
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template == false)
 		{
-			file = file_text_open_write(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt"); /*Open file for writing*/
+			file = file_text_open_write(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt"); /* Open file for writing */
 		}
 		else
 		if (global.level_name != "")
 		{
-			file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"); /*Open file for writing*/
+			file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"); /* Open file for writing */
 		}
-		str = ""; /*Reset string var*/
+		str = ""; /* Reset string var */
 		
-		#region /*Write all objects to file*/
+		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
 			if (object != 62)
@@ -49,17 +49,17 @@ function scr_save_custom_level()
 				str+= string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "|";
 			}
 		}
-		#endregion /*Write all objects to file END*/
+		#endregion /* Write all objects to file END */
 	
-		file_text_write_string(file,str); /*Write string with wall information to file and start a new line*/
+		file_text_write_string(file, str); /* Write string with wall information to file and start a new line */
 		file_text_close(file);
 	
-		#endregion /*Save object placement END*/
+		#endregion /* Save object placement END */
 	
 		scr_save_objects_with_rotation_placement();
 	
-		#region /*Save Level Information*/
-		if (global.character_select_in_this_menu == "level_editor") /*Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData*/
+		#region /* Save Level Information */
+		if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
 		{
 			if (global.select_level_index >= 1)
 			and (global.create_level_from_template == false)
@@ -132,9 +132,9 @@ function scr_save_custom_level()
 			ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
 			ini_close();
 		}
-		#endregion /*Save Level Information END*/
+		#endregion /* Save Level Information END */
 	
 	}
 
-	#endregion /*Save Custom Level END*/
+	#endregion /* Save Custom Level END */
 }

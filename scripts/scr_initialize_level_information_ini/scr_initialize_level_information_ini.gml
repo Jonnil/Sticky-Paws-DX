@@ -1,7 +1,7 @@
 function scr_initialize_level_information_ini()
 {
 	
-	#region /*Initialize level_information.ini*/
+	#region /* Initialize level_information.ini */
 	if (global.character_select_in_this_menu == "main_game")
 	and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
@@ -39,7 +39,7 @@ function scr_initialize_level_information_ini()
 			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 		}
 		
-		#region /*Intro Animation*/
+		#region /* Intro Animation */
 		if (ini_key_exists("info", "intro_animation"))
 		{
 			intro_animation = ini_read_string("info", "intro_animation", "");
@@ -53,9 +53,9 @@ function scr_initialize_level_information_ini()
 			}
 			intro_animation = "";
 		}
-		#endregion /*Intro Animation END*/
+		#endregion /* Intro Animation END */
 	
-		#region /*Intro Animation Play Only Once*/
+		#region /* Intro Animation Play Only Once */
 		if (ini_key_exists("info", "intro_animation_play_only_once"))
 		{
 			intro_animation_play_only_once = ini_read_string("info", "intro_animation_play_only_once", false);
@@ -69,9 +69,9 @@ function scr_initialize_level_information_ini()
 			}
 			intro_animation_play_only_once = false;
 		}
-		#endregion /*Intro Animation Play Only Once END*/
+		#endregion /* Intro Animation Play Only Once END */
 	
-		#region /*After goal go to this level*/
+		#region /* After goal go to this level */
 		if (ini_key_exists("info", "after_goal_go_to_this_level"))
 		{
 			after_goal_go_to_this_level = ini_read_string("info", "after_goal_go_to_this_level", noone);
@@ -85,12 +85,12 @@ function scr_initialize_level_information_ini()
 			}
 			after_goal_go_to_this_level = noone;
 		}
-		#endregion /*After goal go to this level END*/
+		#endregion /* After goal go to this level END */
 		
-		#region /*Custom Backgrounds*/
+		#region /* Custom Backgrounds */
 		
-		#region /*Custom Background 4 x and y parallax points*/
-		#region /*Custom Background 4 y parallax point*/
+		#region /* Custom Background 4 x and y parallax points */
+		#region /* Custom Background 4 y parallax point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_4_y_parallax"))
 		{
 			custom_background_4_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
@@ -104,9 +104,9 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_4_y_parallax = 9;
 		}
-		#endregion /*Custom Background 4 y parallax point END*/
+		#endregion /* Custom Background 4 y parallax point END */
 	
-		#region /*Custom Background 4 x parallax point*/
+		#region /* Custom Background 4 x parallax point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_4_x_parallax"))
 		{
 			custom_background_4_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
@@ -120,11 +120,11 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_4_x_parallax = 9;
 		}
-		#endregion /*Custom Background 4 x parallax point END*/
-		#endregion /*Custom Background 4 x and y parallax points END*/
+		#endregion /* Custom Background 4 x parallax point END */
+		#endregion /* Custom Background 4 x and y parallax points END */
 		
-		#region /*Custom Background 3 x and y parallax points*/
-		#region /*Custom Background 3 y parallax point*/
+		#region /* Custom Background 3 x and y parallax points */
+		#region /* Custom Background 3 y parallax point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_3_y_parallax"))
 		{
 			custom_background_3_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
@@ -138,9 +138,9 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_3_y_parallax = 7;
 		}
-		#endregion /*Custom Background 3 y parallax point END*/
+		#endregion /* Custom Background 3 y parallax point END */
 	
-		#region /*Custom Background 3 x parallax point*/
+		#region /* Custom Background 3 x parallax point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_3_x_parallax"))
 		{
 			custom_background_3_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
@@ -154,11 +154,11 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_3_x_parallax = 7;
 		}
-		#endregion /*Custom Background 3 x parallax point END*/
-		#endregion /*Custom Background 3 x and y parallax points END*/
+		#endregion /* Custom Background 3 x parallax point END */
+		#endregion /* Custom Background 3 x and y parallax points END */
 		
-		#region /*Custom Background 2 x and y parallax points*/
-		#region /*Custom Background 2 y parallax point*/
+		#region /* Custom Background 2 x and y parallax points */
+		#region /* Custom Background 2 y parallax point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_2_y_parallax"))
 		{
 			custom_background_2_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
@@ -172,9 +172,9 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_2_y_parallax = 5;
 		}
-		#endregion /*Custom Background 2 y parallax point END*/
+		#endregion /* Custom Background 2 y parallax point END */
 	
-		#region /*Custom Background 2 x parallax point*/
+		#region /* Custom Background 2 x parallax point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_2_x_parallax"))
 		{
 			custom_background_2_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
@@ -188,11 +188,11 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_2_x_parallax = 5;
 		}
-		#endregion /*Custom Background 2 x parallax point END*/
-		#endregion /*Custom Background 2 x and y parallax points END*/
+		#endregion /* Custom Background 2 x parallax point END */
+		#endregion /* Custom Background 2 x and y parallax points END */
 		
-		#region /*Custom Background 1 x and y parallax points*/
-		#region /*Custom Background 1 y parallax point*/
+		#region /* Custom Background 1 x and y parallax points */
+		#region /* Custom Background 1 y parallax point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_1_y_parallax"))
 		{
 			custom_background_1_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
@@ -206,9 +206,9 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_1_y_parallax = 3;
 		}
-		#endregion /*Custom Background 1 y parallax point END*/
+		#endregion /* Custom Background 1 y parallax point END */
 	
-		#region /*Custom Background 1 x parallax point*/
+		#region /* Custom Background 1 x parallax point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_1_x_parallax"))
 		{
 			custom_background_1_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
@@ -222,11 +222,11 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_1_x_parallax = 3;
 		}
-		#endregion /*Custom Background 1 x parallax point END*/
-		#endregion /*Custom Background 1 x and y parallax points END*/
+		#endregion /* Custom Background 1 x parallax point END */
+		#endregion /* Custom Background 1 x and y parallax points END */
 		
-		#region /*Custom Background 4 x and y offset points*/
-		#region /*Custom Background 4 y offset point*/
+		#region /* Custom Background 4 x and y offset points */
+		#region /* Custom Background 4 y offset point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_4_y_offset"))
 		{
 			custom_background_4_y_offset = ini_read_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
@@ -240,9 +240,9 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_4_y_offset = 0;
 		}
-		#endregion /*Custom Background 4 y offset point END*/
+		#endregion /* Custom Background 4 y offset point END */
 	
-		#region /*Custom Background 4 x offset point*/
+		#region /* Custom Background 4 x offset point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_4_x_offset"))
 		{
 			custom_background_4_x_offset = ini_read_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
@@ -256,11 +256,11 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_4_x_offset = 0;
 		}
-		#endregion /*Custom Background 4 x offset point END*/
-		#endregion /*Custom Background 4 x and y offset points END*/
+		#endregion /* Custom Background 4 x offset point END */
+		#endregion /* Custom Background 4 x and y offset points END */
 		
-		#region /*Custom Background 3 x and y offset points*/
-		#region /*Custom Background 3 y offset point*/
+		#region /* Custom Background 3 x and y offset points */
+		#region /* Custom Background 3 y offset point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_3_y_offset"))
 		{
 			custom_background_3_y_offset = ini_read_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
@@ -274,9 +274,9 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_3_y_offset = 0;
 		}
-		#endregion /*Custom Background 3 y offset point END*/
+		#endregion /* Custom Background 3 y offset point END */
 	
-		#region /*Custom Background 3 x offset point*/
+		#region /* Custom Background 3 x offset point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_3_x_offset"))
 		{
 			custom_background_3_x_offset = ini_read_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
@@ -290,11 +290,11 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_3_x_offset = 0;
 		}
-		#endregion /*Custom Background 3 x offset point END*/
-		#endregion /*Custom Background 3 x and y offset points END*/
+		#endregion /* Custom Background 3 x offset point END */
+		#endregion /* Custom Background 3 x and y offset points END */
 		
-		#region /*Custom Background 2 x and y offset points*/
-		#region /*Custom Background 2 y offset point*/
+		#region /* Custom Background 2 x and y offset points */
+		#region /* Custom Background 2 y offset point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_2_y_offset"))
 		{
 			custom_background_2_y_offset = ini_read_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
@@ -308,9 +308,9 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_2_y_offset = 0;
 		}
-		#endregion /*Custom Background 2 y offset point END*/
+		#endregion /* Custom Background 2 y offset point END */
 	
-		#region /*Custom Background 2 x offset point*/
+		#region /* Custom Background 2 x offset point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_2_x_offset"))
 		{
 			custom_background_2_x_offset = ini_read_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
@@ -324,11 +324,11 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_2_x_offset = 0;
 		}
-		#endregion /*Custom Background 2 x offset point END*/
-		#endregion /*Custom Background 2 x and y offset points END*/
+		#endregion /* Custom Background 2 x offset point END */
+		#endregion /* Custom Background 2 x and y offset points END */
 		
-		#region /*Custom Background 1 x and y offset points*/
-		#region /*Custom Background 1 y offset point*/
+		#region /* Custom Background 1 x and y offset points */
+		#region /* Custom Background 1 y offset point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_1_y_offset"))
 		{
 			custom_background_1_y_offset = ini_read_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
@@ -342,9 +342,9 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_1_y_offset = 0;
 		}
-		#endregion /*Custom Background 1 y offset point END*/
+		#endregion /* Custom Background 1 y offset point END */
 	
-		#region /*Custom Background 1 x offset point*/
+		#region /* Custom Background 1 x offset point */
 		if (ini_key_exists("Custom Backgrounds", "custom_background_1_x_offset"))
 		{
 			custom_background_1_x_offset = ini_read_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
@@ -358,12 +358,12 @@ function scr_initialize_level_information_ini()
 			}
 			custom_background_1_x_offset = 0;
 		}
-		#endregion /*Custom Background 1 x offset point END*/
-		#endregion /*Custom Background 1 x and y offset points END*/
+		#endregion /* Custom Background 1 x offset point END */
+		#endregion /* Custom Background 1 x and y offset points END */
 		
-		#endregion /*Custom Backgrounds END*/
+		#endregion /* Custom Backgrounds END */
 		
-		#region /*Default View Width */
+		#region /* Default View Width */
 		if (ini_key_exists("info", "default_view_width"))
 		{
 			global.default_view_width = ini_read_real("info", "default_view_width", 1920);
@@ -376,9 +376,9 @@ function scr_initialize_level_information_ini()
 				ini_write_real("info", "default_view_width", 1920);
 			}
 		}
-		#endregion /*Default View Width END*/
+		#endregion /* Default View Width END */
 		
-		#region /*Default View Height*/
+		#region /* Default View Height */
 		if (ini_key_exists("info", "default_view_height"))
 		{
 			global.default_view_height = ini_read_real("info", "default_view_height", 1080);
@@ -391,11 +391,11 @@ function scr_initialize_level_information_ini()
 				ini_write_real("info", "default_view_height", 1080);
 			}
 		}
-		#endregion /*Default View Height END*/
+		#endregion /* Default View Height END */
 		
-		#region /*Initialize Weather*/
+		#region /* Initialize Weather */
 		
-		#region /*Rain*/
+		#region /* Rain */
 		if (ini_key_exists("info", "rain"))
 		{
 			global.rain = ini_read_real("info", "rain", false);
@@ -409,11 +409,11 @@ function scr_initialize_level_information_ini()
 			}
 			global.rain = false;
 		}
-		#endregion /*Rain END*/
+		#endregion /* Rain END */
 		
-		#endregion /*Initialize Weather END*/
+		#endregion /* Initialize Weather END */
 		
-		#region /*Time Countdown*/
+		#region /* Time Countdown */
 		if (ini_key_exists("info", "time_countdown"))
 		{
 			global.time_countdown = ini_read_real("info", "time_countdown", 500);
@@ -427,9 +427,9 @@ function scr_initialize_level_information_ini()
 			}
 			global.time_countdown = 500;
 		}
-		#endregion /*Time Countdown END*/
+		#endregion /* Time Countdown END */
 		
-		#region /*Enable Time Countdown*/
+		#region /* Enable Time Countdown */
 		if (ini_key_exists("info", "enable_time_countdown"))
 		{
 			global.enable_time_countdown = ini_read_real("info", "enable_time_countdown", false);
@@ -443,9 +443,9 @@ function scr_initialize_level_information_ini()
 			}
 			global.enable_time_countdown = false;
 		}
-		#endregion /*Enable Time Countdown END*/
+		#endregion /* Enable Time Countdown END */
 		
-		#region /*Make every tileset into default tileset*/
+		#region /* Make every tileset into default tileset */
 		if (ini_key_exists("info", "make_every_tileset_into_default_tileset"))
 		{
 			global.make_every_tileset_into_default_tileset = ini_read_real("info", "make_every_tileset_into_default_tileset", false);
@@ -459,7 +459,7 @@ function scr_initialize_level_information_ini()
 			}
 			global.make_every_tileset_into_default_tileset = false;
 		}
-		#endregion /*Make every tileset into default tileset END*/
+		#endregion /* Make every tileset into default tileset END */
 		
 		ini_close();
 	}
@@ -488,7 +488,7 @@ function scr_initialize_level_information_ini()
 		global.enable_time_countdown = false;
 		global.make_every_tileset_into_default_tileset = false;
 	}
-	#endregion /*Initialize level_information.ini END*/
+	#endregion /* Initialize level_information.ini END */
 	
 	if (global.create_level_from_template = true)
 	{

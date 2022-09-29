@@ -18,7 +18,7 @@ menu = "";
 menu_delay = 0;
 menu_cursor_index = 0;
 
-#region /*Change the logo to different designs during specific times and dates*/
+#region /* Change the logo to different designs during specific times and dates */
 if (current_month = 12)
 {
 	if (global.resource_pack_sprite_title_logo_christmas > noone)
@@ -46,4 +46,4 @@ else
 		sprite_index = spr_noone;
 	}
 }
-#endregion /*Change the logo to different designs during specific times and dates END*/
+#endregion /* Change the logo to different designs during specific times and dates END */

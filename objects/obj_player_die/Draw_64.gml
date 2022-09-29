@@ -1,22 +1,22 @@
-#region /*Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden*/
+#region /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden */
 if (iris_xscale <= 0.001)
 {
 	draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 }
-#endregion /*Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden END*/
+#endregion /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden END */
 
-#region /*Game Over*/
+#region /* Game Over */
 if (lives <= 0)
 {
 	
-	#region /*When you get a game over, reset checkpoints*/
-	global.x_checkpoint = 0;
-	global.y_checkpoint = 0;
+	#region /* When you get a game over, reset checkpoints */
+	global.checkpoint_x = 0;
+	global.checkpoint_y = 0;
 	global.checkpoint_millisecond = 0;
 	global.checkpoint_second = 0;
 	global.checkpoint_minute = 0;
 	global.checkpoint_realmillisecond = 0;
-	#endregion /*When you get a game over, reset checkpoints END*/
+	#endregion /* When you get a game over, reset checkpoints END */
 	
 	draw_set_halign(fa_center);
 	if (iris_xscale <= 0.3)
@@ -32,7 +32,7 @@ if (lives <= 0)
 	
 	draw_sprite(spr_game_over_text, image_index, window_get_width() / 2, game_over_text_y);
 	
-	#region /*Continue / Quit from Game Over*/
+	#region /* Continue / Quit from Game Over */
 	if (game_over_text_y >= window_get_height() / 2 - 190)
 	{
 		draw_menu_button(window_get_width() / 2 - 370 - game_over_menu_seperation_distance, window_get_height() - game_over_menu_y, l10n_text("Continue"), "continue", "continue");
@@ -120,7 +120,7 @@ if (lives <= 0)
 		and (mouse_check_button_pressed(mb_left))
 		{
 			
-			#region /*Click Menu*/
+			#region /* Click Menu */
 			if (global.playergame == 0)
 			{
 				lives = 5;
@@ -140,34 +140,33 @@ if (lives <= 0)
 				
 			if (menu == "quit")
 			{
-				global.quit_level = true; /*Quit level and go to map screen*/
+				global.quit_level = true; /* Quit level and go to map screen */
 			}
 				
-			#region /*Reset Level*/
+			#region /* Reset Level */
 			global.timeattack_realmillisecond = 0;
-			global.level_clear_rate = noone;
 			score = 0;
 			scr_save_level();
 			audio_stop_all();
 				
-			#region /*Go to level editor if you die in level editor*/
+			#region /* Go to level editor if you die in level editor */
 			if (asset_get_type("room_leveleditor") == asset_room)
 			and (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();
 			}
-			#endregion /*Go to level editor if you die in level editor END*/
+			#endregion /* Go to level editor if you die in level editor END */
 				
-			#endregion /*Reset Level END*/
+			#endregion /* Reset Level END */
 			
-			#endregion /*Click Menu END*/
+			#endregion /* Click Menu END */
 			
 		}
 	}
-	#endregion /*Continue / Quit from Game Over END*/
+	#endregion /* Continue / Quit from Game Over END */
 	
 }
-#endregion /*Game Over END*/
+#endregion /* Game Over END */
 
 scr_draw_mouse_cursor();

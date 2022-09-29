@@ -9,12 +9,12 @@ if (brick_particle = true)
 		instance_change(obj_cardboard_particle, true);
 	}
 	
-	#region /*Set the gravity*/
+	#region /* Set the gravity */
 	gravity_direction = 270;
 	gravity = 0.5;
-	#endregion /*Set the gravity END*/
+	#endregion /* Set the gravity END */
 	
-	#region /*Destroy outside view*/
+	#region /* Destroy outside view */
 	if (x < camera_get_view_x(view_camera[view_current]) + sprite_width)
 	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
 	or(y < camera_get_view_y(view_camera[view_current]) + sprite_width)
@@ -22,7 +22,7 @@ if (brick_particle = true)
 	{
 		instance_destroy();
 	}
-	#endregion /*Destroy outside view END*/
+	#endregion /* Destroy outside view END */
 	
 	if (hspeed < 0)
 	{
@@ -153,7 +153,7 @@ if (brick_particle = false)
 				}
 			}
 			
-			#region /*Only do the breaking smoke effect and sound effect if it's inside the view*/
+			#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
 			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 			and (x > camera_get_view_x(view_camera[view_current]))
 			and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
@@ -162,7 +162,7 @@ if (brick_particle = false)
 				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 				scr_audio_play(snd_blockbreak, volume_source.sound);
 			}
-			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/
+			#endregion /* Only do the breaking smoke effect and sound effect if it's inside the view END */
 			
 			if (instance_exists(obj_player))
 			{
@@ -172,7 +172,7 @@ if (brick_particle = false)
 		}
 	}
 	
-	#region /*Collision with bullet*/
+	#region /* Collision with bullet */
 	if (asset_get_type("obj_bullet") == asset_object)
 	and (instance_exists(obj_bullet))
 	and (distance_to_object(obj_bullet) < 32)
@@ -183,7 +183,7 @@ if (brick_particle = false)
 		or (place_meeting(x + 5, y, obj_bullet))
 		{
 			
-			#region /*Turn into cardboard particle*/
+			#region /* Turn into cardboard particle */
 			if (asset_get_type("obj_cardboard") == asset_object)
 			{
 				if (instance_nearest(x, y, obj_bullet).x < x)
@@ -205,7 +205,7 @@ if (brick_particle = false)
 					}
 				}
 			}
-			#endregion /*Turn into cardboard particle END*/
+			#endregion /* Turn into cardboard particle END */
 			
 			with(instance_nearest(x, y, obj_bullet))
 			{
@@ -230,7 +230,7 @@ if (brick_particle = false)
 				}
 			}
 			
-			#region /*Only do the breaking smoke effect and sound effect if it's inside the view*/
+			#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
 			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 			and (x > camera_get_view_x(view_camera[view_current]))
 			and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
@@ -239,7 +239,7 @@ if (brick_particle = false)
 				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 				scr_audio_play(snd_blockbreak, volume_source.sound);
 			}
-			#endregion /*Only do the breaking smoke effect and sound effect if it's inside the view END*/
+			#endregion /* Only do the breaking smoke effect and sound effect if it's inside the view END */
 			
 			if (instance_exists(obj_player))
 			{
@@ -248,5 +248,5 @@ if (brick_particle = false)
 			instance_destroy();
 		}
 	}
-	#endregion /*Collision with bullet END*/
+	#endregion /* Collision with bullet END */
 }

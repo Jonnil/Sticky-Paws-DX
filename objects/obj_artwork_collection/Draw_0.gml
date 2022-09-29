@@ -11,7 +11,7 @@ and (instance_nearest(x, y, obj_player).intro_animation = "")
 and (can_navigate = false)
 {
 	
-	#region /*Draw Enter Gallery Key*/
+	#region /* Draw Enter Gallery Key */
 	if (gamepad_is_connected(0))
 	and (global.controls_used_for_menu_navigation == "controller")
 	{
@@ -21,6 +21,6 @@ and (can_navigate = false)
 	{
 		draw_sprite_ext(spr_keyboard_keys, vk_up, x, y - 64, 0.5, 0.5, 0, c_white, 1);
 	}
-	#endregion /*Draw Enter Gallery Key END*/
+	#endregion /* Draw Enter Gallery Key END */
 	
 }

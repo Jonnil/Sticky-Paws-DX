@@ -1,1 +1,1 @@
-/*No collision with other enemies*/
+/* No collision with other enemies */

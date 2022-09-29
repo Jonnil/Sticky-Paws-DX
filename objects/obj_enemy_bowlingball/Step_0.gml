@@ -1,10 +1,10 @@
-#region /*If enemies are disabled, destroy this object*/
+#region /* If enemies are disabled, destroy this object */
 if (global.assist_enable == true)
 and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object END*/
+#endregion /* If enemies are disabled, destroy this object END */
 
 if (stomped_delay > 0)
 {
@@ -25,17 +25,17 @@ or(die_volting = +1)
 		draw_angle += 20;
 		hspeed = -4;
 	}
-	#region /*Set the gravity*/
-	gravity_direction = 270; /*Direction of the gravity*/
-	gravity = 0.5; /*The gravity*/
-	#endregion /*Set the gravity END*/
+	#region /* Set the gravity */
+	gravity_direction = 270; /* Direction of the gravity */
+	gravity = 0.5; /* The gravity */
+	#endregion /* Set the gravity END */
 	
 }
 else
 {
 	
-	#region /*Set the gravity*/
-	gravity_direction = 270; /*Direction of the gravity*/
+	#region /* Set the gravity */
+	gravity_direction = 270; /* Direction of the gravity */
 	if (asset_get_type("obj_wall") == asset_object)
 	and (!place_meeting(x, y + 1, obj_wall))
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -45,13 +45,13 @@ else
 	and (x - 32 < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	and (x + 32 > camera_get_view_x(view_camera[view_current]))
 	{
-		gravity = 0.5; /*The gravity*/
+		gravity = 0.5; /* The gravity */
 	}
 	else
 	{
 		gravity = 0;
 	}
-	#endregion /*Set the gravity END*/
+	#endregion /* Set the gravity END */
 	
 	if (flat = true)
 	{
@@ -101,7 +101,7 @@ else
 				{
 					number_of_times_stomped += 1;
 					
-					#region /* 1 Coin*/
+					#region /* 1 Coin */
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
 						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -111,9 +111,9 @@ else
 							bounceup = true;
 						}
 					}
-					#endregion /* 1 Coin END*/
+					#endregion /* 1 Coin END */
 				
-					#region /* 200 Score*/
+					#region /* 200 Score */
 					score += 200;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
@@ -122,9 +122,9 @@ else
 							scoreup = 200;
 						}
 					}
-					#endregion /* 200 Score END*/
+					#endregion /* 200 Score END */
 				
-					#region /* 1-UP*/
+					#region /* 1-UP */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
 						if (asset_get_type("obj_scoreup") == asset_object)
@@ -135,7 +135,7 @@ else
 							}
 						}
 					}
-					#endregion /* 1-UP END*/
+					#endregion /* 1-UP END */
 					
 				}
 				audio_sound_pitch(snd_stomp, 1);
@@ -156,7 +156,7 @@ else
 				{
 					number_of_times_stomped += 1;
 					
-					#region /* 1 Coin*/
+					#region /* 1 Coin */
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
 						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -166,9 +166,9 @@ else
 							bounceup = true;
 						}
 					}
-					#endregion /* 1 Coin END*/
+					#endregion /* 1 Coin END */
 				
-					#region /* 200 Score*/
+					#region /* 200 Score */
 					score += 200;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
@@ -177,9 +177,9 @@ else
 							scoreup = 200;
 						}
 					}
-					#endregion /* 200 Score END*/
+					#endregion /* 200 Score END */
 				
-					#region /* 1-UP*/
+					#region /* 1-UP */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
 						if (asset_get_type("obj_scoreup") == asset_object)
@@ -190,7 +190,7 @@ else
 							}
 						}
 					}
-					#endregion /* 1-UP END*/
+					#endregion /* 1-UP END */
 					
 				}
 				audio_sound_pitch(snd_stomp, 1);
@@ -211,7 +211,7 @@ else
 				{
 					number_of_times_stomped += 1;
 					
-					#region /* 1 Coin*/
+					#region /* 1 Coin */
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
 						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -221,9 +221,9 @@ else
 							bounceup = true;
 						}
 					}
-					#endregion /* 1 Coin END*/
+					#endregion /* 1 Coin END */
 				
-					#region /* 200 Score*/
+					#region /* 200 Score */
 					score += 200;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
@@ -232,9 +232,9 @@ else
 							scoreup = 200;
 						}
 					}
-					#endregion /* 200 Score END*/
+					#endregion /* 200 Score END */
 				
-					#region /* 1-UP*/
+					#region /* 1-UP */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
 						if (asset_get_type("obj_scoreup") == asset_object)
@@ -245,7 +245,7 @@ else
 							}
 						}
 					}
-					#endregion /* 1-UP END*/
+					#endregion /* 1-UP END */
 					
 				}
 				
@@ -266,7 +266,7 @@ else
 				{
 					number_of_times_stomped += 1;
 					
-					#region /* 1 Coin*/
+					#region /* 1 Coin */
 					if (asset_get_type("obj_basic_collectible") == asset_object)
 					{
 						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -276,9 +276,9 @@ else
 							bounceup = true;
 						}
 					}
-					#endregion /* 1 Coin END*/
+					#endregion /* 1 Coin END */
 				
-					#region /* 200 Score*/
+					#region /* 200 Score */
 					score += 200;
 					if (asset_get_type("obj_scoreup") == asset_object)
 					{
@@ -287,9 +287,9 @@ else
 							scoreup = 200;
 						}
 					}
-					#endregion /* 200 Score END*/
+					#endregion /* 200 Score END */
 				
-					#region /* 1-UP*/
+					#region /* 1-UP */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
 						if (asset_get_type("obj_scoreup") == asset_object)
@@ -300,7 +300,7 @@ else
 							}
 						}
 					}
-					#endregion /* 1-UP END*/
+					#endregion /* 1-UP END */
 					
 				}
 				
@@ -321,7 +321,7 @@ if (flat = false)
 		hspeed = +1;
 	}
 	
-	#region /*Turn around*/
+	#region /* Turn around */
 	if (place_meeting(x - 2, y, obj_wall))
 	and (flat = false)
 	{
@@ -332,7 +332,7 @@ if (flat = false)
 	{
 		image_xscale = -1;
 	}
-	#endregion /*Turn around END*/
+	#endregion /* Turn around END */
 	
 	if (blind = true)
 	{
@@ -468,7 +468,7 @@ and (die = false)
 	friction = 0.05;
 }
 
-#region /*Kill enemy if it's inside the wall*/
+#region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
 and (die = false)
 and (draw_xscale >= 0.8)
@@ -488,4 +488,4 @@ else
 		stuck_in_wall_counter -= 1;
 	}
 }
-#endregion /*Kill enemy if it's inside the wall END*/
+#endregion /* Kill enemy if it's inside the wall END */

@@ -9,10 +9,10 @@ if (room = room_leveleditor)
 	layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), global.custom_background4);
 }
 
-#region /*Make background visible*/
+#region /* Make background visible */
 if (room = room_leveleditor)
 {
-	if (global.custom_background1> noone)
+	if (global.custom_background1 > noone)
 	and (global.enable_background_layer1 = true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background")), true)
@@ -22,7 +22,7 @@ if (room = room_leveleditor)
 		layer_background_visible(layer_background_get_id(layer_get_id("Background")), false)
 	}
 
-	if (global.custom_background2> noone)
+	if (global.custom_background2 > noone)
 	and (global.enable_background_layer2 = true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), true)
@@ -32,7 +32,7 @@ if (room = room_leveleditor)
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), false)
 	}
 
-	if (global.custom_background3> noone)
+	if (global.custom_background3 > noone)
 	and (global.enable_background_layer3 = true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), true)
@@ -42,7 +42,7 @@ if (room = room_leveleditor)
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), false)
 	}
 
-	if (global.custom_background4> noone)
+	if (global.custom_background4 > noone)
 	and (global.enable_background_layer4 = true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_4")), true)
@@ -52,9 +52,9 @@ if (room = room_leveleditor)
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_4")), false)
 	}
 }
-#endregion /*Make background visible END*/
+#endregion /* Make background visible END */
 
-#region /*Timer Countup*/
+#region /* Timer Countup */
 if (asset_get_type("obj_goal") == asset_object)
 and (instance_exists(obj_goal))
 and (obj_goal.goal = false)
@@ -112,9 +112,9 @@ and (global.pause == false)
 		}
 	}
 }
-#endregion /*Timer Countup*/
+#endregion /* Timer Countup */
 
-#region /*Time Countdown*/
+#region /* Time Countdown */
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (global.pause == false)
@@ -139,16 +139,16 @@ and (global.pause == false)
 		}
 	}
 }
-#endregion /*Time Countdown END*/
+#endregion /* Time Countdown END */
 
-room_speed = global.max_fps; /*Room Speed is max fps*/
+room_speed = global.max_fps; /* Room Speed is max fps */
 global.spikes_emerge_time += 1;
 if (global.spikes_emerge_time >= room_speed * 4)
 {
 	global.spikes_emerge_time = 0;
 }
 
-/*Stop the screen from scrolling left if scrolling left isn't allowed*/
+/* Stop the screen from scrolling left if scrolling left isn't allowed */
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (obj_player.stop_screen_from_scrolling_left = true)
@@ -165,29 +165,29 @@ and (obj_player.stop_screen_from_scrolling_left = true)
 
 scr_toggle_fullscreen();
 
-#region /*Black screen when starting level*/
+#region /* Black screen when starting level */
 if (save_level_as_png = false)
 and (allow_iris = true)
 and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 and (delay <= 1)
-and (global.actually_play_edited_level = true)
+and (global.actually_play_edited_level == true)
 {
-	/*Makes the screen black when starting a level so you don't see the level loading in. Also make sure this black rectangle is bigger than the level, in case the level is smaller than the view size*/
+	/* Makes the screen black when starting a level so you don't see the level loading in. Also make sure this black rectangle is bigger than the level, in case the level is smaller than the view size */
 	draw_rectangle_color(0, 0, room_width * 3, room_height* 3, c_black, c_black, c_black, c_black, false);
 }
-#endregion /*Black screen when starting level END*/
+#endregion /* Black screen when starting level END */
 
-#region /*Draw Iris Transitions*/
+#region /* Draw Iris Transitions */
 if (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 {
 	if (global.enable_transitions == true)
 	and (global.play_edited_level = false)
-	and (global.actually_play_edited_level = false)
+	and (global.actually_play_edited_level == false)
 	or (global.enable_transitions = true)
 	and (global.play_edited_level = true)
-	and (global.actually_play_edited_level = true)
+	and (global.actually_play_edited_level == true)
 	{
 		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
@@ -218,9 +218,9 @@ and (!instance_exists(obj_player_map))
 		}
 	}
 }
-#endregion /*Draw Iris Transitions END*/
+#endregion /* Draw Iris Transitions END */
 
-#region /*Rain Effect*/
+#region /* Rain Effect */
 if (global.rain = true)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
@@ -232,11 +232,11 @@ and (!instance_exists(obj_player_map))
 		effect_create_above(ef_rain, x, y, 2, c_white);
 	}
 }
-#endregion /*Rain Effect END*/
+#endregion /* Rain Effect END */
 
 ///Multiplayer - Has pressed keys
 
-#region /*Player 1 Show Controls HUD timer*/
+#region /* Player 1 Show Controls HUD timer */
 if (player1 >= 1)
 and (can_spawn_player1 == true)
 and (asset_get_type("obj_player") == asset_object)
@@ -314,9 +314,9 @@ else
 	player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
 	player1_show_controls_timer = room_speed * global.player1_show_controls;
 }
-#endregion /*Player 1 Show Controls HUD timer*/
+#endregion /* Player 1 Show Controls HUD timer */
 
-#region /*Player 2 Show Controls HUD timer*/
+#region /* Player 2 Show Controls HUD timer */
 if (player2 >= 1)
 and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
@@ -393,9 +393,9 @@ else
 	player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
 	player2_show_controls_timer = room_speed * global.player2_show_controls;
 }
-#endregion /*Player 2 Show Controls HUD timer*/
+#endregion /* Player 2 Show Controls HUD timer */
 
-#region /*Player 3 Show Controls HUD timer*/
+#region /* Player 3 Show Controls HUD timer */
 if (player3 >= 1)
 and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
@@ -472,9 +472,9 @@ else
 	player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
 	player3_show_controls_timer = room_speed * global.player3_show_controls;
 }
-#endregion /*Player 3 Show Controls HUD timer*/
+#endregion /* Player 3 Show Controls HUD timer */
 
-#region /*Player 4 Show Controls HUD timer*/
+#region /* Player 4 Show Controls HUD timer */
 if (player4 >= 1)
 and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
@@ -551,9 +551,9 @@ else
 	player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.2);
 	player4_show_controls_timer = room_speed * global.player4_show_controls;
 }
-#endregion /*Player 4 Show Controls HUD timer*/
+#endregion /* Player 4 Show Controls HUD timer */
 
-#region /*Sprint Toggling*/
+#region /* Sprint Toggling */
 key_player1_sprint_toggle_pressed = scr_key_initialize(key_player1_sprint_toggle_pressed, 1, 1, global.player1_key_sprint_toggle, global.player1_key2_sprint_toggle, global.player1_gamepad_button_sprint_toggle, global.player1_gamepad_button2_sprint_toggle);
 key_player2_sprint_toggle_pressed = scr_key_initialize(key_player2_sprint_toggle_pressed, 1, 2, global.player2_key_sprint_toggle, global.player2_key2_sprint_toggle, global.player2_gamepad_button_sprint_toggle, global.player2_gamepad_button2_sprint_toggle);
 key_player3_sprint_toggle_pressed = scr_key_initialize(key_player3_sprint_toggle_pressed, 1, 3, global.player3_key_sprint_toggle, global.player3_key2_sprint_toggle, global.player3_gamepad_button_sprint_toggle, global.player3_gamepad_button2_sprint_toggle);
@@ -637,7 +637,7 @@ and (!instance_exists(obj_pause))
 }
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-if (show_sprint_toggle_for_player1> 0)
+if (show_sprint_toggle_for_player1 > 0)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -677,7 +677,7 @@ and (!instance_exists(obj_pause))
 		}
 	}
 }
-if (show_sprint_toggle_for_player2> 0)
+if (show_sprint_toggle_for_player2 > 0)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -698,7 +698,7 @@ and (!instance_exists(obj_pause))
 		draw_sprite_ext(spr_checkbox, false, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 	}
 }
-if (show_sprint_toggle_for_player3> 0)
+if (show_sprint_toggle_for_player3 > 0)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -719,7 +719,7 @@ and (!instance_exists(obj_pause))
 		draw_sprite_ext(spr_checkbox, false, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 	}
 }
-if (show_sprint_toggle_for_player4> 0)
+if (show_sprint_toggle_for_player4 > 0)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_pause") == asset_object)
@@ -740,11 +740,11 @@ and (!instance_exists(obj_pause))
 		draw_sprite_ext(spr_checkbox, false, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
 	}
 }
-#endregion /*Sprint Toggling END*/
+#endregion /* Sprint Toggling END */
 
-#region /*Show Drowning*/
+#region /* Show Drowning */
 
-#region /*Show Drowning for Player 1*/
+#region /* Show Drowning for Player 1 */
 if (player1 > 0)
 and (instance_exists(player1))
 {
@@ -755,9 +755,9 @@ and (instance_exists(player1))
 		scr_draw_circular_bar(player1.x, player1.bbox_top - 56, player1.drawn_frames_until_drowning, player1.seconds_until_drowning* 60, scr_make_color_hsv_transition(player1.drawn_frames_until_drowning, player1.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 	}
 }
-#endregion /*Show Drowning for Player 1 END*/
+#endregion /* Show Drowning for Player 1 END */
 
-#region /*Show Drowning for Player 2*/
+#region /* Show Drowning for Player 2 */
 if (player2 > 0)
 and (instance_exists(player2))
 {
@@ -768,9 +768,9 @@ and (instance_exists(player2))
 		scr_draw_circular_bar(player2.x, player2.bbox_top - 56, player2.drawn_frames_until_drowning, player2.seconds_until_drowning* 60, scr_make_color_hsv_transition(player2.drawn_frames_until_drowning, player2.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 	}
 }
-#endregion /*Show Drowning for Player 2 END*/
+#endregion /* Show Drowning for Player 2 END */
 
-#region /*Show Drowning for Player 3*/
+#region /* Show Drowning for Player 3 */
 if (player3 > 0)
 and (instance_exists(player3))
 {
@@ -781,9 +781,9 @@ and (instance_exists(player3))
 		scr_draw_circular_bar(player3.x, player3.bbox_top - 56, player3.drawn_frames_until_drowning, player3.seconds_until_drowning* 60, scr_make_color_hsv_transition(player3.drawn_frames_until_drowning, player3.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 	}
 }
-#endregion /*Show Drowning for Player 3 END*/
+#endregion /* Show Drowning for Player 3 END */
 
-#region /*Show Drowning for Player 4 */
+#region /* Show Drowning for Player 4 */
 if (player4 > 0)
 and (instance_exists(player4))
 {
@@ -794,6 +794,6 @@ and (instance_exists(player4))
 		scr_draw_circular_bar(player4.x, player4.bbox_top - 56, player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, scr_make_color_hsv_transition(player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 	}
 }
-#endregion /*Show Drowning for Player 4 END*/
+#endregion /* Show Drowning for Player 4 END */
 
-#endregion /*Show Drowning END*/
+#endregion /* Show Drowning END */

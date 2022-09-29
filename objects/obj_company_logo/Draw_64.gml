@@ -1,7 +1,7 @@
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
-/*Sprite*/
+/* Sprite */
 if (sprite_index >= 0)
 {
 	draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_height() / 2, 1, 1, 0, c_white, 1);
@@ -12,7 +12,7 @@ if (global.resource_pack_sprite_splash_easteregg >= 0)
 	draw_sprite_ext(global.resource_pack_sprite_splash_easteregg, image_index, + 128, window_get_height() + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
 }
 
-if (can_navigate = false) /*When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in*/
+if (can_navigate = false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 {
 	loading_spinning_angle -= 10;
 	draw_set_halign(fa_center);
@@ -55,7 +55,7 @@ if (can_navigate = false) /*When game is loading in assets, display a detailed l
 }
 else
 {
-	if (os_type = os_ios)
+	if (os_type == os_ios)
 	or (os_type = os_android)
 	{
 		draw_set_halign(fa_center);

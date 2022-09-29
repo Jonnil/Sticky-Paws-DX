@@ -1,4 +1,4 @@
-#region /*Don't move outside view*/
+#region /* Don't move outside view */
 if (x - 42 > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 and (instance_exists(obj_camera))
 and (x - 42 > obj_camera.view_x_center + 950)
@@ -22,9 +22,9 @@ and (vspeed < 0)
 {
 	vspeed = +1;
 }
-#endregion /*Don't move outside view END*/
+#endregion /* Don't move outside view END */
 
-#region /*Enemy touching emerging spikes*/
+#region /* Enemy touching emerging spikes */
 if (instance_exists(obj_spikes_emerge))
 and (can_die_from_spikes = true)
 {
@@ -65,4 +65,4 @@ and (can_die_from_spikes = true)
 		}
 	}
 }
-#endregion /*Enemy touching emerging spikes END*/
+#endregion /* Enemy touching emerging spikes END */

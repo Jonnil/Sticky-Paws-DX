@@ -30,7 +30,7 @@ function scr_language_menu()
 	}
 	scr_draw_text_outlined(window_get_width() - 32, window_get_height() - 32, "(" + l10n_text("Language translations may not be 100% accurate") + ")", global.default_text_size * 0.75, c_menu_outline, c_gray, 1);
 	
-	#region /*Language Menu Navigation*/
+	#region /* Language Menu Navigation */
 	if (menu_joystick_delay <= 0)
 	and (can_navigate == true)
 	and global.settings_sidebar_menu = "language_settings"
@@ -39,7 +39,7 @@ function scr_language_menu()
 		{
 			if (key_up)
 			and (menu_delay == 0)
-			and (open_dropdown = false)
+			and (open_dropdown == false)
 			{
 				language_index = max(language_index - 1, 1)
 				menu = "Language" + string(language_index);
@@ -49,7 +49,7 @@ function scr_language_menu()
 			else
 			if (key_down)
 			and (menu_delay == 0)
-			and (open_dropdown = false)
+			and (open_dropdown == false)
 			{
 				if (file_exists("localization.csv"))
 				{
@@ -62,7 +62,7 @@ function scr_language_menu()
 			else
 			if (key_a_pressed)
 			and (menu_delay == 0)
-			and (open_dropdown = false)
+			and (open_dropdown == false)
 			{
 				global.language_localization = language_index - 1;
 				calculate_translation_completion()
@@ -73,7 +73,7 @@ function scr_language_menu()
 		{
 			if (key_up)
 			and (menu_delay == 0)
-			and (open_dropdown = false)
+			and (open_dropdown == false)
 			{
 				language_mouse_scroll = max(language_mouse_scroll - 10, 1)
 				menu_cursor_y_position = language_mouse_scroll * 50;
@@ -82,7 +82,7 @@ function scr_language_menu()
 			else
 			if (key_down)
 			and (menu_delay == 0)
-			and (open_dropdown = false)
+			and (open_dropdown == false)
 			{
 				if (file_exists("localization.csv"))
 				{
@@ -93,6 +93,6 @@ function scr_language_menu()
 			}
 		}
 	}
-	#endregion /*Language Menu Navigation*/
+	#endregion /* Language Menu Navigation */
 	
 }

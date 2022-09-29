@@ -2,7 +2,7 @@
 function scr_gamepadremapping()
 {
 	
-	#region /*Check for player 1 button presses*/
+	#region /* Check for player 1 button presses */
 	if (remapping_player = 0)
 	and (gamepad_button_check_pressed(0, gp_face1))
 	and (!gamepad_button_check(0, gp_start))
@@ -250,7 +250,7 @@ function scr_gamepadremapping()
 		last_key = gp_padr;
 		can_remap_key = true;
 	}
-	#endregion /*Check for player 1 button presses END*/
+	#endregion /* Check for player 1 button presses END */
 	
 	else
 	
@@ -273,7 +273,7 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	
-	#region /*Remapping 1*/
+	#region /* Remapping 1 */
 	if (remapping_player = 0)
 	and (can_remap_key = true)
 	{
@@ -419,11 +419,11 @@ function scr_gamepadremapping()
 			menu_delay = 10;
 		}
 	}
-	#endregion /*Remapping 1 END*/
+	#endregion /* Remapping 1 END */
 	
 	else
 	
-	#region /*Remapping 2*/
+	#region /* Remapping 2 */
 	if (remapping_player = 1)
 	and (can_remap_key = true)
 	{
@@ -569,11 +569,11 @@ function scr_gamepadremapping()
 			menu_delay = 10;
 		}
 	}
-	#endregion /*Remapping 2 END*/
+	#endregion /* Remapping 2 END */
 	
 	else
 	
-	#region /*Remapping 3*/
+	#region /* Remapping 3 */
 	if (remapping_player = 2)
 	and (can_remap_key = true)
 	{
@@ -719,11 +719,11 @@ function scr_gamepadremapping()
 			menu_delay = 10;
 		}
 	}
-	#endregion /*Remapping 3 END*/
+	#endregion /* Remapping 3 END */
 	
 	else
 	
-	#region /*Remapping 4 */
+	#region /* Remapping 4 */
 	if (remapping_player = 3)
 	and (can_remap_key = true)
 	{
@@ -869,6 +869,6 @@ function scr_gamepadremapping()
 			input_key = false;
 		}
 	}
-	#endregion /*Remapping 4 END*/
+	#endregion /* Remapping 4 END */
 
 }

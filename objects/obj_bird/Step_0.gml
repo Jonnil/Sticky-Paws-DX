@@ -44,9 +44,9 @@ or(die_volting = +1)
 		hspeed = -4;
 	}
 	
-	#region /*Set the gravity*/
-	gravity_direction = 270; /*Direction of the gravity*/
-	#endregion /*Set the gravity END*/
+	#region /* Set the gravity */
+	gravity_direction = 270; /* Direction of the gravity */
+	#endregion /* Set the gravity END */
 	
 }
 
@@ -67,7 +67,7 @@ and (place_meeting(x, y, obj_player))
 		die_volting = +1;
 	}
 	
-	#region /* 1 Basic Collectible*/
+	#region /* 1 Basic Collectible */
 	if (asset_get_type("obj_basic_collectible") == asset_object)
 	{
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -77,7 +77,7 @@ and (place_meeting(x, y, obj_player))
 			bounceup = true;
 		}
 	}
-	#endregion /* 1 Basic Collectible END*/
+	#endregion /* 1 Basic Collectible END */
 	
 	if (vspeed > 8)
 	{
@@ -89,7 +89,7 @@ and (place_meeting(x, y, obj_player))
 	}
 }
 
-#region /*Change direction when hitting a wall*/
+#region /* Change direction when hitting a wall */
 if (asset_get_type("obj_wall") == asset_object)
 and (speed > 0)
 and (touch_player = false)
@@ -113,12 +113,12 @@ and (touch_player = false)
 		vspeed = -4;
 	}
 }
-#endregion /*Change direction when hitting a wall END*/
+#endregion /* Change direction when hitting a wall END */
 
-#region /*If it's inside the wall, destroy itself*/
+#region /* If it's inside the wall, destroy itself */
 if (position_meeting(x, y, obj_wall))
 and (touch_player = false)
 {
 	instance_destroy();
 }
-#endregion /*If it's inside the wall, destroy itself END*/
+#endregion /* If it's inside the wall, destroy itself END */

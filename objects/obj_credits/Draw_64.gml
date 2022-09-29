@@ -5,7 +5,7 @@ draw_set_alpha(black_background_alpha);
 draw_rectangle_colour(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
 
-#region /*Draw Skip Text*/
+#region /* Draw Skip Text */
 if (skip > 0)
 {
 	draw_rectangle_colour(0, + 64 - skip, window_get_width(), + 64, c_red, c_red, c_red, c_red, false);
@@ -13,7 +13,7 @@ if (skip > 0)
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
 
-#region /*If gamepad is connected*/
+#region /* If gamepad is connected */
 if (gamepad_is_connected(0))
 and (global.player1_can_play = true)
 and (global.controls_used_for_menu_navigation == "controller")
@@ -29,35 +29,35 @@ and (global.controls_used_for_menu_navigation == "controller")
 {
 	scr_draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Hold Start"), global.default_text_size, c_black, c_white, 1);
 }
-#endregion /*If gamepad is connected END*/
+#endregion /* If gamepad is connected END */
 
 else
 
-#region /*If playing on mobile*/
+#region /* If playing on mobile */
 if (os_type == os_ios)
 or(os_type == os_android)
 {
 	scr_draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
 }
-#endregion /*If playing on mobile END*/
+#endregion /* If playing on mobile END */
 
 else
 
-#region /*If playing on Keyboard*/
+#region /* If playing on Keyboard */
 if (global.controls_used_for_menu_navigation = "keyboard")
 or (global.controls_used_for_menu_navigation = "mouse")
 {
 	draw_menu_button(window_get_width() - 370, 0, l10n_text("Skip") + " : " + l10n_text("Hold"), "skip", "skip")
 	draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() - 32, 21, 0.5, 0.5, 0, c_white, 1);
 }
-#endregion /*If playing on Keyboard*/
+#endregion /* If playing on Keyboard */
 
 if (global.controls_used_for_menu_navigation == "mouse")
 {
 	menu = "";
 }
 
-#endregion /*Draw Skip Text END*/
+#endregion /* Draw Skip Text END */
 
 if (sprite_index == global.title_logo_index)
 and (global.title_logo_index >= 0)
@@ -179,9 +179,9 @@ if (time >= room_speed* 5)
 	}
 }
 
-#region /*Draw Iris Transitions*/
+#region /* Draw Iris Transitions */
 
-#region /*Iris Zooming*/
+#region /* Iris Zooming */
 if (menu_delay > 10)
 {
 	if (iris_zoom == 1)
@@ -206,7 +206,7 @@ if (menu_delay > 10)
 
 else
 
-#region /*Zoom Out*/
+#region /* Zoom Out */
 if (iris_zoom == 0)
 {
 	iris_xscale = lerp(iris_xscale, 1, 0.15);
@@ -225,9 +225,9 @@ else
 		iris_zoom = 1;
 	}
 }
-#endregion /*Zoom Out END*/
+#endregion /* Zoom Out END */
 
-#endregion /*Iris Zooming END*/
+#endregion /* Iris Zooming END */
 
 if (global.enable_transitions == true)
 {
@@ -243,11 +243,11 @@ if (global.enable_transitions == true)
 		draw_rectangle_color(0, window_get_height() / 2 + iris_yscale * 128, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
 	}
 }
-#endregion /*Draw Iris Transitions END*/
+#endregion /* Draw Iris Transitions END */
 
 if (instance_number(obj_credits) > 1)
 {
-	instance_destroy(); /*If there is more than 1 credits, destroy itself*/
+	instance_destroy(); /* If there is more than 1 credits, destroy itself */
 }
 
 scr_draw_mouse_cursor();

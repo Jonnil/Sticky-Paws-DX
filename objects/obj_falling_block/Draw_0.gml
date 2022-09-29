@@ -56,14 +56,14 @@ if (asset_get_type("spr_falling_block") == asset_sprite)
 	mask_index = spr_falling_block;
 }
 
-#region /*Limit the vertical speed*/
+#region /* Limit the vertical speed */
 if (vspeed > 16)
 {
 	vspeed = 16;
 }
-#endregion /*Limit the vertical speed END*/
+#endregion /* Limit the vertical speed END */
 
-#region /*Falling Block falling outside of view*/
+#region /* Falling Block falling outside of view */
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 and (fall >= 100)
 {
@@ -90,4 +90,4 @@ if (image_alpha < 1)
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 	}
 }
-#endregion /*Falling Block falling outside of view END*/
+#endregion /* Falling Block falling outside of view END */

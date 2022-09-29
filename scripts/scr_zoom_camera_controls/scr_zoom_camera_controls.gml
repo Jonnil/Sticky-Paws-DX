@@ -10,7 +10,7 @@ function scr_zoom_camera_controls()
 	key_player3_zoom_out_hold = scr_key_initialize(key_player3_zoom_out_hold, 0, 3, global.player3_key_zoom_out, global.player3_key2_zoom_out, global.player3_gamepad_button_zoom_out, global.player3_gamepad_button2_zoom_out);
 	key_player4_zoom_out_hold = scr_key_initialize(key_player4_zoom_out_hold, 0, 4, global.player4_key_zoom_out, global.player4_key2_zoom_out, global.player4_gamepad_button_zoom_out, global.player4_gamepad_button2_zoom_out);
 	
-	/*This script uses normal draw functions so only use it in normal draw event (Not draw GUI)*/
+	/* This script uses normal draw functions so only use it in normal draw event (Not draw GUI) */
 	if(gamepad_axis_value(0, gp_axisrv) < 0)
 	or (gamepad_axis_value(0, gp_axisrv) < 0)
 	{
@@ -40,20 +40,20 @@ function scr_zoom_camera_controls()
 	}
 	if (room = room_title)
 	{
-		zoom_lerp = 1; /*In create event, have this: zoom_lerp = 1;*/
+		zoom_lerp = 1; /* In create event, have this: zoom_lerp = 1; */
 	}
 	else
 	if (room = room_world_map)
 	{
-		zoom_lerp = lerp(zoom_lerp, global.zoom_world_map, 0.1); /*In create event, have this: zoom_lerp = global.zoom_world_map;*/
+		zoom_lerp = lerp(zoom_lerp, global.zoom_world_map, 0.1); /* In create event, have this: zoom_lerp = global.zoom_world_map; */
 		global.zoom_world_map = clamp(global.zoom_world_map, 0.2, 1);
 	}
 	else
 	{
-		zoom_lerp = lerp(zoom_lerp, global.zoom_level, 0.1); /*In create event, have this: zoom_lerp = global.zoom_level;*/
+		zoom_lerp = lerp(zoom_lerp, global.zoom_level, 0.1); /* In create event, have this: zoom_lerp = global.zoom_level; */
 		global.zoom_level = clamp(global.zoom_level, 0.2, 1);
 	}
-	zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1); /*In create event, have this: zoom_border_lerp = 0;*/
+	zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1); /* In create event, have this: zoom_border_lerp = 0; */
 	camera_set_view_size(view_camera[view_current], camera_get_view_width(view_camera[view_current]) * zoom_lerp, camera_get_view_height(view_camera[view_current]) * zoom_lerp);
 	
 	if (room != room_title)
@@ -133,7 +133,7 @@ function scr_zoom_camera_controls()
 			}
 			else
 			{
-				zoom_border_lerp = 1;
+				zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1);
 			}
 		}
 	}

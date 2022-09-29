@@ -1,4 +1,4 @@
-#region /*Gravity*/
+#region /* Gravity */
 if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -22,15 +22,15 @@ if (vspeed >= 16)
 {
 	vspeed = 16;
 }
-#endregion /*Gravity END*/
+#endregion /* Gravity END */
 
-#region /*Stop firing if enemies are disabled*/
+#region /* Stop firing if enemies are disabled */
 if (global.assist_enable == true)
 and (global.assist_enable_enemies == false)
 {
 	time = 0;
 }
-#endregion /*Stop firing if enemies are disabled END*/
+#endregion /* Stop firing if enemies are disabled END */
 
 if (asset_get_type("obj_player") == asset_object)
 and (asset_get_type("obj_wall") == asset_object)

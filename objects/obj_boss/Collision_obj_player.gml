@@ -127,7 +127,7 @@ else
 			{
 				other.have_heart_balloon = false;
 				
-				#region /*Save heart balloon to be false*/
+				#region /* Save heart balloon to be false */
 				if (other.player = 1)
 				{
 					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
@@ -152,7 +152,7 @@ else
 					ini_write_real("Player", "player_4_have_heart_balloon", false);
 					ini_close();
 				}
-				#endregion /*Save heart balloon to be false END*/
+				#endregion /* Save heart balloon to be false END */
 				
 			}
 			else

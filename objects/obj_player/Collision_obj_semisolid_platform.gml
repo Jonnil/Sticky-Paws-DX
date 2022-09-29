@@ -1,4 +1,4 @@
-/*Collision Event with a solid object*/
+/* Collision Event with a solid object */
 
 if (position_meeting(x, bbox_bottom + 1, other))
 or (position_meeting(x, bbox_bottom + 2, other))
@@ -19,7 +19,7 @@ or (position_meeting(bbox_right, bbox_bottom + 4, other))
 	}
 }
 
-#region /*Landing on solid object*/
+#region /* Landing on solid object */
 if (position_meeting(x, bbox_bottom + 1, other))
 and (stick_to_wall == false)
 or (position_meeting(bbox_left, bbox_bottom + 1, other))
@@ -28,7 +28,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, other))
 and (stick_to_wall == false)
 {
 	
-	#region /*Smoke Landing Effect*/
+	#region /* Smoke Landing Effect */
 	if (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_camera))
 	and (obj_camera.iris_xscale > 1)
@@ -65,7 +65,7 @@ and (stick_to_wall == false)
 			}
 		}
 	}
-	#endregion /*Smoke Landing Effect END*/
+	#endregion /* Smoke Landing Effect END */
 	
 	if (vspeed > 2)
 	{
@@ -86,11 +86,11 @@ and (stick_to_wall == false)
 		wall_jump = 0;
 	}
 }
-#endregion /*Landing on solid object END*/
+#endregion /* Landing on solid object END */
 
-#region /*Sound Effect Handeling*/
+#region /* Sound Effect Handeling */
 
-#region /*Landing on different surfaces sound effects*/
+#region /* Landing on different surfaces sound effects */
 if (position_meeting(x, bbox_bottom + 1, other))
 and (vspeed >= 0)
 {
@@ -104,11 +104,11 @@ and (vspeed >= 0)
 		scr_audio_play(snd_land_rock, volume_source.footstep);
 	}
 }
-#endregion /*Landing on different surfaces sound effects END*/
+#endregion /* Landing on different surfaces sound effects END */
 
-#region /*Footstep Land sounds*/
+#region /* Footstep Land sounds */
 
-#region /*Dirt Footstep Right*/
+#region /* Dirt Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
 and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 1)
@@ -118,11 +118,11 @@ and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 1)
 		scr_audio_play(snd_footstep_dirt_right, volume_source.footstep);
 	}
 }
-#endregion /*Dirt Footstep Right END*/
+#endregion /* Dirt Footstep Right END */
 
 else
 
-#region /*Glass Footstep Right*/
+#region /* Glass Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
 and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 2)
@@ -132,11 +132,11 @@ and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 2)
 		scr_audio_play(snd_footstep_glass_right, volume_source.footstep);
 	}
 }
-#endregion /*Glass Footstep Right END*/
+#endregion /* Glass Footstep Right END */
 
 else
 
-#region /*Grass Footstep Right*/
+#region /* Grass Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
 and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 3)
@@ -146,11 +146,11 @@ and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 3)
 		scr_audio_play(snd_footstep_grass_right, volume_source.footstep);
 	}
 }
-#endregion /*Grass Footstep Right END*/
+#endregion /* Grass Footstep Right END */
 
 else
 
-#region /*Gravel Footstep Right*/
+#region /* Gravel Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
 and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 4)
@@ -160,11 +160,11 @@ and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 4)
 		scr_audio_play(snd_footstep_gravel_right, volume_source.footstep);
 	}
 }
-#endregion /*Gravel Footstep Right END*/
+#endregion /* Gravel Footstep Right END */
 
 else
 
-#region /*Metal Footstep Right*/
+#region /* Metal Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
 and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 5)
@@ -174,11 +174,11 @@ and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 5)
 		scr_audio_play(snd_footstep_metal_right, volume_source.footstep);
 	}
 }
-#endregion /*Metal Footstep Right END*/
+#endregion /* Metal Footstep Right END */
 
 else
 
-#region /*Stone Footstep Right*/
+#region /* Stone Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
 and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 6)
@@ -188,11 +188,11 @@ and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 6)
 		scr_audio_play(snd_footstep_stone_right, volume_source.footstep);
 	}
 }
-#endregion /*Stone Footstep Right END*/
+#endregion /* Stone Footstep Right END */
 
 else
 
-#region /*Wood Footstep Right*/
+#region /* Wood Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
 and (place_meeting(x, y + 1, obj_ground))
 and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 7)
@@ -202,17 +202,17 @@ and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 7)
 		scr_audio_play(snd_footstep_wood_right, volume_source.footstep);
 	}
 }
-#endregion /*Wood Footstep Right END*/
+#endregion /* Wood Footstep Right END */
 
 else
 
-#region /*Default Footstep Right*/
+#region /* Default Footstep Right */
 if (!audio_is_playing(snd_footstep_default_right))
 {
 	scr_audio_play(snd_footstep_default_right, volume_source.footstep);
 }
-#endregion /*Default Footstep Right END*/
+#endregion /* Default Footstep Right END */
 
-#endregion /*Footstep Land sounds END*/
+#endregion /* Footstep Land sounds END */
 
-#endregion /*Sound Effect Handeling END*/
+#endregion /* Sound Effect Handeling END */

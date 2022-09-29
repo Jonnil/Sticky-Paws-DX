@@ -1,13 +1,13 @@
-#region /*All code before initializing the object*/
+#region /* All code before initializing the object */
 
-#region /*Make sprite transparent if you're setting difficulty levels*/
+#region /* Make sprite transparent if you're setting difficulty levels */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (sprite_index > 0)
 and (global.character_select_in_this_menu == "level_editor")
 {
 
-	#region /*Show only normal difficulty layer in regular colors when saving a thumbnail*/
+	#region /* Show only normal difficulty layer in regular colors when saving a thumbnail */
 	if (obj_leveleditor.quit_level_editor >= true)
 	and (normal = true)
 	and (sprite_index > 0)
@@ -15,15 +15,15 @@ and (global.character_select_in_this_menu == "level_editor")
 		image_alpha = 1;
 		image_blend = c_white;
 	}
-	#endregion /*Show only normal difficulty layer in regular colors when saving a thumbnail END*/
+	#endregion /* Show only normal difficulty layer in regular colors when saving a thumbnail END */
 	
 	else
 	
-	#region /*All layer*/
+	#region /* All layer */
 	if (obj_leveleditor.difficulty_layer = 0)
 	and (obj_leveleditor.quit_level_editor = false)
 	{
-		#region /*Transparent Object*/
+		#region /* Transparent Object */
 		if (easy = true)
 		and (normal = false)
 		and (hard = false)
@@ -77,7 +77,7 @@ and (global.character_select_in_this_menu == "level_editor")
 			image_alpha = 0.1;
 			image_blend = c_white;
 		}
-		#endregion /*Transparent Object END*/
+		#endregion /* Transparent Object END */
 	
 		else
 		if (easy = true)
@@ -90,9 +90,9 @@ and (global.character_select_in_this_menu == "level_editor")
 		}
 	}
 	else
-	#endregion /*All layer END*/
+	#endregion /* All layer END */
 
-	#region /*Easy layer*/
+	#region /* Easy layer */
 	if (obj_leveleditor.difficulty_layer = 1)
 	and (obj_leveleditor.quit_level_editor = false)
 	{
@@ -104,7 +104,7 @@ and (global.character_select_in_this_menu == "level_editor")
 		}
 		else
 		{
-			#region /*Transparent Object*/
+			#region /* Transparent Object */
 			if (easy = true)
 			and (normal = false)
 			and (hard = false)
@@ -158,12 +158,12 @@ and (global.character_select_in_this_menu == "level_editor")
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
-			#endregion /*Transparent Object END*/
+			#endregion /* Transparent Object END */
 		}
 	}
-	#endregion /*Easy layer END*/
+	#endregion /* Easy layer END */
 
-	#region /*Normal layer*/
+	#region /* Normal layer */
 	if (obj_leveleditor.difficulty_layer = 2)
 	and (obj_leveleditor.quit_level_editor = false)
 	{
@@ -175,7 +175,7 @@ and (global.character_select_in_this_menu == "level_editor")
 		}
 		else
 		{
-			#region /*Transparent Object*/
+			#region /* Transparent Object */
 			if (easy = true)
 			and (normal = false)
 			and (hard = false)
@@ -229,12 +229,12 @@ and (global.character_select_in_this_menu == "level_editor")
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
-			#endregion /*Transparent Object END*/
+			#endregion /* Transparent Object END */
 		}
 	}
-	#endregion /*Normal layer END*/
+	#endregion /* Normal layer END */
 
-	#region /*Hard layer*/
+	#region /* Hard layer */
 	if (obj_leveleditor.difficulty_layer = 3)
 	and (obj_leveleditor.quit_level_editor = false)
 	{
@@ -246,7 +246,7 @@ and (global.character_select_in_this_menu == "level_editor")
 		}
 		else
 		{
-			#region /*Transparent Object*/
+			#region /* Transparent Object */
 			if (easy = true)
 			and (normal = false)
 			and (hard = false)
@@ -300,10 +300,10 @@ and (global.character_select_in_this_menu == "level_editor")
 				image_alpha = 0.1;
 				image_blend = c_white;
 			}
-			#endregion /*Transparent Object END*/
+			#endregion /* Transparent Object END */
 		}
 	}
-	#endregion /*Hard layer END*/
+	#endregion /* Hard layer END */
 	
 }
 else
@@ -313,9 +313,9 @@ and (global.character_select_in_this_menu == "level_editor")
 	image_alpha = 1;
 	image_blend = c_white;
 }
-#endregion /*Make sprite transparent if you're setting difficulty levels END*/
+#endregion /* Make sprite transparent if you're setting difficulty levels END */
 
-#region /*If all dificulty variables are false, then delete the object*/
+#region /* If all dificulty variables are false, then delete the object */
 if (easy = false)
 and (normal = false)
 and (hard = false)
@@ -325,9 +325,9 @@ and (obj_leveleditor.pause = false)
 {
 	instance_destroy();
 }
-#endregion /*If all dificulty variables are false, then delete the object END*/
+#endregion /* If all dificulty variables are false, then delete the object END */
 
-#region /*Make object change difficulty layer depending on what difficulty layer is selected*/
+#region /* Make object change difficulty layer depending on what difficulty layer is selected */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (obj_leveleditor.difficulty_layer > 0)
@@ -349,21 +349,21 @@ and (!mouse_check_button(mb_middle))
 	{
 		if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
-		/*Erase brush size 1*/
+		/* Erase brush size 1 */
 		or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
 		or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
 		or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
-		/*Erase brush size 1 END*/
+		/* Erase brush size 1 END */
 		
-		/*Erase brush size 2*/
+		/* Erase brush size 2 */
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y, id))
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y + 32, id))
-		/*Erase brush size 2 END*/
+		/* Erase brush size 2 END */
 		
-		/*Erase brush size 3*/
+		/* Erase brush size 3 */
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y + 32, id))
@@ -371,9 +371,9 @@ and (!mouse_check_button(mb_middle))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y+64, id))
-		/*Erase brush size 3 END*/
+		/* Erase brush size 3 END */
 		
-		/*Erase brush size 4 */
+		/* Erase brush size 4 */
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
@@ -383,9 +383,9 @@ and (!mouse_check_button(mb_middle))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 32, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+64, id))
-		/*Erase brush size 4 END*/
+		/* Erase brush size 4 END */
 		
-		/*Erase brush size 5*/
+		/* Erase brush size 5 */
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
@@ -397,7 +397,7 @@ and (!mouse_check_button(mb_middle))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y+96, id))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+96, id))
-		/*Erase brush size 5 END*/
+		/* Erase brush size 5 END */
 		
 		{
 			if (obj_leveleditor.difficulty_layer = 1)
@@ -426,7 +426,7 @@ and (!mouse_check_button(mb_middle))
 		}
 	}
 }
-#endregion /*Make object change difficulty layer depending on what difficulty layer is selected END*/
+#endregion /* Make object change difficulty layer depending on what difficulty layer is selected END */
 
 if (delay <3)
 {
@@ -439,7 +439,7 @@ and (delay = 3)
 and (obj_leveleditor.pause = false)
 {
 	
-	#region /*Destroy if erased*/
+	#region /* Destroy if erased */
 	if (asset_get_type("obj_level_player_1_start") == asset_object)
 	and (instance_exists(obj_level_player_1_start))
 	and (place_meeting(x, y, obj_level_player_1_start))
@@ -459,14 +459,14 @@ and (obj_leveleditor.pause = false)
 	and (obj_level_player_4_start.drag_object == false)
 	{
 		
-		#region /*Reset Level Editor Checkpoint*/
+		#region /* Reset Level Editor Checkpoint */
 		if (asset_get_type("room_leveleditor") == asset_room)
 		and (room =room_leveleditor)
 		and (global.character_select_in_this_menu == "level_editor")
 		{
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
-			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "x_checkpoint");
-			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "y_checkpoint");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_x");
+			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_y");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_second");
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_minute");
@@ -474,15 +474,15 @@ and (obj_leveleditor.pause = false)
 			ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_direction");
 			ini_close();			
 		}
-		#endregion /*Reset Level Editor Checkpoint END*/
+		#endregion /* Reset Level Editor Checkpoint END */
 		
 		instance_destroy();
 	}
-	#endregion /*Destroy if erased END*/
+	#endregion /* Destroy if erased END */
 	
 }
 
-#region /*Change certain objects angle*/
+#region /* Change certain objects angle */
 if (place_object_angle = true)
 {	
 	if (instance_exists(obj_leveleditor))
@@ -497,9 +497,9 @@ if (place_object_angle = true)
 		place_object_angle = false;
 	}
 }
-#endregion /*Change certain objects angle END*/
+#endregion /* Change certain objects angle END */
 
-#region /*Delete / Erase Objects*/
+#region /* Delete / Erase Objects */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (obj_leveleditor.difficulty_layer = 0)
@@ -513,9 +513,9 @@ and (!keyboard_check(vk_space))
 and (!mouse_check_button(mb_middle))
 {
 	if (obj_leveleditor.set_difficulty_mode = true)
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 	or(obj_leveleditor.set_difficulty_mode = false)
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 	{
 		if (mouse_check_button(mb_right))
 		or (mouse_check_button(mb_left))
@@ -526,21 +526,21 @@ and (!mouse_check_button(mb_middle))
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
-			/*Erase brush size 1*/
+			/* Erase brush size 1 */
 			or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
 			or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
 			or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
-			/*Erase brush size 1 END*/
+			/* Erase brush size 1 END */
 		
-			/*Erase brush size 2*/
+			/* Erase brush size 2 */
 			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
 			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
 			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y - 32, id))
 			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y, id))
 			or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y + 32, id))
-			/*Erase brush size 2 END*/
+			/* Erase brush size 2 END */
 		
-			/*Erase brush size 3*/
+			/* Erase brush size 3 */
 			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
 			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
 			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y + 32, id))
@@ -548,9 +548,9 @@ and (!mouse_check_button(mb_middle))
 			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
 			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
 			or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y+64, id))
-			/*Erase brush size 3 END*/
+			/* Erase brush size 3 END */
 		
-			/*Erase brush size 4 */
+			/* Erase brush size 4 */
 			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
 			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
 			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
@@ -560,9 +560,9 @@ and (!mouse_check_button(mb_middle))
 			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y, id))
 			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 32, id))
 			or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+64, id))
-			/*Erase brush size 4 END*/
+			/* Erase brush size 4 END */
 		
-			/*Erase brush size 5*/
+			/* Erase brush size 5 */
 			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
 			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
 			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
@@ -574,23 +574,23 @@ and (!mouse_check_button(mb_middle))
 			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
 			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y+96, id))
 			or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+96, id))
-			/*Erase brush size 5 END*/
+			/* Erase brush size 5 END */
 		
 			{
 				audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
 				scr_audio_play(snd_leveleditor_erase_object, volume_source.sound);
 				with(obj_leveleditor)
 				{
-					move_snap(global.grid_hsnap, global.grid_vsnap); /*Make sure to always move snap*/
+					move_snap(global.grid_hsnap, global.grid_vsnap); /* Make sure to always move snap */
 				}
 				instance_destroy();
 			}
 		}
 	}
 }
-#endregion /*Delete / Erase Objects END*/
+#endregion /* Delete / Erase Objects END */
 
-#region /*Drag Object*/
+#region /* Drag Object */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
 and (obj_leveleditor.set_difficulty_mode = false)
@@ -621,12 +621,12 @@ and (delay > 1)
 	and (!position_meeting(x, y, obj_level_width))
 	and (asset_get_type("obj_water_level_height") == asset_object)
 	and (!position_meeting(x, y, obj_water_level_height))
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2)) /*Can't place objects when clicking the bottom buttons*/
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /*Can't place objects when clicking the top buttons*/
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height() / 2 - 32, window_get_width(), window_get_height() / 2 + 32)) /*Can't place objects when clicking the play button*/
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height() / 2 - 32, window_get_width(), window_get_height() / 2 + 32)) /* Can't place objects when clicking the play button */
 	{
 		if (obj_leveleditor.show_grid = true)
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32 - 32, 80 + obj_leveleditor.icons_at_top_y + 16 - 32 - 32, display_get_gui_width() + 64 + 32, 80 + obj_leveleditor.icons_at_top_y + 16 + 32 + 32)) /*Up and down buttons when grid is on*/
+		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32 - 32, 80 + obj_leveleditor.icons_at_top_y + 16 - 32 - 32, display_get_gui_width() + 64 + 32, 80 + obj_leveleditor.icons_at_top_y + 16 + 32 + 32)) /* Up and down buttons when grid is on */
 		or (obj_leveleditor.show_grid = false)
 		{
 			if (!keyboard_check(vk_space))
@@ -644,13 +644,13 @@ and (delay > 1)
 						and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64))
 						{
 							if (obj_leveleditor.set_difficulty_mode = true)
-							and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+							and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 							or(obj_leveleditor.set_difficulty_mode = false)
-							and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /*Can't place objects when clicking the bottom right buttons*/
+							and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 							{
 								if (instance_exists(obj_leveleditor))
 								and (obj_leveleditor.show_grid = true)
-								and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + 32 + 16 - 32, display_get_gui_width() + 64, 80 + 32 + 16 + 32)) /*Up and down buttons when grid is on*/
+								and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + 32 + 16 - 32, display_get_gui_width() + 64, 80 + 32 + 16 + 32)) /* Up and down buttons when grid is on */
 								or (instance_exists(obj_leveleditor))
 								and (obj_leveleditor.show_grid = false)
 								{
@@ -667,7 +667,7 @@ and (delay > 1)
 			}
 		}
 	}
-	#region /*Drag the object*/
+	#region /* Drag the object */
 	
 	if (drag_object == true)
 	{
@@ -687,9 +687,9 @@ and (delay > 1)
 			depth = -19;
 		}
 	}
-	#endregion /*Drag the object END*/
+	#endregion /* Drag the object END */
 	
-	#region /*Release the object*/
+	#region /* Release the object */
 	if (mouse_check_button_released(mb_left))
 	or (instance_exists(obj_leveleditor))
 	and (obj_leveleditor.key_a_released)
@@ -702,7 +702,7 @@ and (delay > 1)
 			dragged_from_original_place = false;
 		}
 	}
-	#endregion /*Release the object END*/
+	#endregion /* Release the object END */
 }
 
 if (drag_release_timer > 0)
@@ -723,7 +723,7 @@ or (drag_ystart != y)
 {
 	dragged_from_original_place = true;
 }
-#endregion /*Drag Object END*/
+#endregion /* Drag Object END */
 
 if (mouse_check_button_released(mb_left))
 or (instance_exists(obj_leveleditor))
@@ -732,13 +732,13 @@ and (obj_leveleditor.key_a_released)
 	placed_for_the_first_time = false;
 }
 
-#region /*Spawn objects when starting room*/
+#region /* Spawn objects when starting room */
 if (global.play_edited_level = true)
 {
-	if (global.world_editor = false)
+	if (global.world_editor == false)
 	{
 		
-		#region /*Delete objects according to difficulty settings*/
+		#region /* Delete objects according to difficulty settings */
 		if (global.difficulty <= 0)
 		and (easy = true)
 		or (global.difficulty = 1)
@@ -760,7 +760,7 @@ if (global.play_edited_level = true)
 			if (object = 2){if(asset_get_type("obj_spikes") == asset_object){instance_create_depth(x, y, 0, obj_spikes); instance_destroy();}else{if (asset_get_type("obj_ground") == asset_object){instance_create_depth(x, y, 0, obj_ground); instance_destroy();}}}
 			if (object = 3) and (asset_get_type("obj_semisolid_platform") == asset_object){instance_create_depth(x, y, 0, obj_semisolid_platform); instance_destroy();}
 		
-			#region /*Brick Block*/
+			#region /* Brick Block */
 			if (object = level_object_id.id_brick_block) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block";}instance_destroy();}
 			if (object = level_object_id.id_brick_block_10_basic_collectibles) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "10_basic_collectibles";}instance_destroy();}
 			if (object = level_object_id.id_brick_block_heart_balloon) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "heart_balloon";}instance_destroy();}
@@ -769,9 +769,9 @@ if (global.play_edited_level = true)
 			if (object = level_object_id.id_brick_block_three_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "3-up";}instance_destroy();}
 			if (object = level_object_id.id_brick_block_invincibility_powerup) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "invincibility_powerup";}instance_destroy();}
 			if (object = level_object_id.id_brick_block_invincibility_powerup_coil_spring) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "brick_block"; item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
-			#endregion /*Brick Block END*/
+			#endregion /* Brick Block END */
 		
-			#region /*Question Block*/
+			#region /* Question Block */
 			if (object = level_object_id.id_question_block) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";}instance_destroy();}
 			if (object = level_object_id.id_question_block_10_basic_collectibles) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "10_basic_collectibles";}instance_destroy();}
 			if (object = level_object_id.id_question_block_heart_balloon) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "heart_balloon";}instance_destroy();}
@@ -780,9 +780,9 @@ if (global.play_edited_level = true)
 			if (object = level_object_id.id_question_block_three_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "3-up";}instance_destroy();}
 			if (object = level_object_id.id_question_block_invincibility_powerup) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "invincibility_powerup";}instance_destroy();}
 			if (object = level_object_id.id_question_block_invincibility_powerup_coil_spring) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "question_block";item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
-			#endregion /*Question Block END*/
+			#endregion /* Question Block END */
 			
-			#region /*Melon Block*/
+			#region /* Melon Block */
 			if (object = level_object_id.id_melon_block) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";}instance_destroy();}
 			if (object = level_object_id.id_melon_block_10_basic_collectibles) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "10_basic_collectibles";}instance_destroy();}
 			if (object = level_object_id.id_melon_block_heart_balloon) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "heart_balloon";}instance_destroy();}
@@ -791,18 +791,18 @@ if (global.play_edited_level = true)
 			if (object = level_object_id.id_melon_block_three_up) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "3-up";}instance_destroy();}
 			if (object = level_object_id.id_melon_block_invincibility_powerup) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "invincibility_powerup";}instance_destroy();}
 			if (object = level_object_id.id_melon_block_invincibility_powerup_coil_spring) and (asset_get_type("obj_question_block") == asset_object){with(instance_create_depth(x, y, 0, obj_question_block)){block_type = "melon_block";item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
-			#endregion /*Melon Block END*/
+			#endregion /* Melon Block END */
 			
 			if (object = level_object_id.id_hard_block) and (asset_get_type("obj_hard_block") == asset_object){instance_create_depth(x, y, 0, obj_hard_block); instance_destroy();}
 			if (object = level_object_id.id_hard_block_alternate) and (asset_get_type("obj_hard_block") == asset_object){with(instance_create_depth(x, y, 0, obj_hard_block)){sprite_index = spr_hard_block_alternate;}instance_destroy();}
 			if (object = level_object_id.id_hard_block_2x2) and (asset_get_type("obj_hard_block") == asset_object){with(instance_create_depth(x, y, 0, obj_hard_block)){mask_index = spr_hard_block_2x2; sprite_index = spr_hard_block_2x2;}instance_destroy();}
 			
-			#region /*Falling Block*/
+			#region /* Falling Block */
 			if (object = 19) and (asset_get_type("obj_falling_block") == asset_object){instance_create_depth(x, y, 0, obj_falling_block); instance_destroy();}
 			if (object = 20) and (asset_get_type("obj_falling_block_solid") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_solid); instance_destroy();}
 			if (object = 21) and (asset_get_type("obj_falling_block_long") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_long); instance_destroy();}
 			if (object = 22) and (asset_get_type("obj_falling_block_long_solid") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_long_solid); instance_destroy();}
-			#endregion /*Falling Block END*/
+			#endregion /* Falling Block END */
 		
 			if (object = 23) and (asset_get_type("obj_cloud_block") == asset_object){instance_create_depth(x, y, 0, obj_cloud_block); instance_destroy();}
 			if (object = 24) and (asset_get_type("obj_ice_block") == asset_object){instance_create_depth(x, y, 0, obj_ice_block); instance_destroy();}
@@ -810,7 +810,7 @@ if (global.play_edited_level = true)
 			if (object = 26) and (asset_get_type("obj_cardboard") == asset_object){instance_create_depth(x, y, 0, obj_cardboard); instance_destroy();}
 			if (object = 27) and (asset_get_type("obj_cardboard_long") == asset_object){instance_create_depth(x, y, 0, obj_cardboard_long); instance_destroy();}
 			
-			#region /*Bump in ground*/
+			#region /* Bump in ground */
 			if (object = 28) and (asset_get_type("obj_bump_in_ground") == asset_object){instance_create_depth(x, y, 0, obj_bump_in_ground); instance_destroy();}
 			if (object = 29) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "8_basic_collectibles";}instance_destroy();}
 			if (object = 30) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "heart_balloon";}instance_destroy();}
@@ -824,9 +824,9 @@ if (global.play_edited_level = true)
 			if (object = 38) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_5";}instance_destroy();}
 			if (object = level_object_id.id_bump_in_ground_invincibility_powerup) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";}instance_destroy();}
 			if (object = level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup_coil_spring";}instance_destroy();}
-			#endregion /*Bump in ground END*/
+			#endregion /* Bump in ground END */
 			
-			#region /*Invisible Bump in ground*/
+			#region /* Invisible Bump in ground */
 			if (object = 281) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){visible = false;} instance_destroy();}
 			if (object = 291) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "8_basic_collectibles";visible = false;}instance_destroy();}
 			if (object = 301) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "heart_balloon";visible = false;}instance_destroy();}
@@ -840,9 +840,9 @@ if (global.play_edited_level = true)
 			if (object = 381) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_5";visible = false;}instance_destroy();}
 			if (object = level_object_id.id_invisible_bump_in_ground_invincibility_powerup) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";visible = false;}instance_destroy();}
 			if (object = level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup_coil_spring";visible = false;}instance_destroy();}
-			#endregion /*Invisible Bump in ground END*/
+			#endregion /* Invisible Bump in ground END */
 			
-			#region /*Basic Collectible*/
+			#region /* Basic Collectible */
 			if (object = 40) and (asset_get_type("obj_basic_collectible") == asset_object){instance_create_depth(x, y, 0, obj_basic_collectible); instance_destroy();}
 			if (object = 41) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 315;}instance_destroy();}
 			if (object = 42) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 270;}instance_destroy();}
@@ -851,15 +851,15 @@ if (global.play_edited_level = true)
 			if (object = 45) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 135; image_yscale = -1;}instance_destroy();}
 			if (object = 46) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 90;}instance_destroy();}
 			if (object = 47) and (asset_get_type("obj_basic_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 45;}instance_destroy();}
-			#endregion /*Basic Collectible END*/
+			#endregion /* Basic Collectible END */
 		
-			#region /*Big Collectibles*/
+			#region /* Big Collectibles */
 			if (object = 48) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 1;}instance_destroy();}
 			if (object = 49) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 2;}instance_destroy();}
 			if (object = 50) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 3;}instance_destroy();}
 			if (object = 51) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 4;}instance_destroy();}
 			if (object = 52) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 5;}instance_destroy();}
-			#endregion /*Big Collectibles END*/
+			#endregion /* Big Collectibles END */
 			
 			if (object = 53) and (asset_get_type("obj_heart_balloon") == asset_object){instance_create_depth(x, y, 0, obj_heart_balloon); instance_destroy();}
 			if (object = 54) and (asset_get_type("obj_hp_pickup") == asset_object){instance_create_depth(x, y, 0, obj_hp_pickup); instance_destroy();}
@@ -902,7 +902,7 @@ if (global.play_edited_level = true)
 			if (object = 71) and (asset_get_type("obj_oneway") == asset_object){with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 270;}instance_destroy();}
 			if (object = 72) and (asset_get_type("obj_horizontal_rope") == asset_object){instance_create_depth(x, y, 0, obj_horizontal_rope); instance_destroy();}
 			
-			#region /*Create Water*/
+			#region /* Create Water */
 			if (object = 73)
 			{
 				if (asset_get_type("obj_water") == asset_object)
@@ -919,9 +919,9 @@ if (global.play_edited_level = true)
 				}
 				instance_destroy();
 			}
-			#endregion /*Create Water END*/
+			#endregion /* Create Water END */
 			
-			#region /*Create Water Surface*/
+			#region /* Create Water Surface */
 			if (object = 731)
 			{
 				if (asset_get_type("obj_water") == asset_object)
@@ -943,7 +943,7 @@ if (global.play_edited_level = true)
 				}
 				instance_destroy();
 			}
-			#endregion /*Create Water Surface END*/
+			#endregion /* Create Water Surface END */
 			
 			if (object = 735) and (asset_get_type("obj_air_bubbles_spawner") == asset_object){instance_create_depth(x, y, 0, obj_air_bubbles_spawner); instance_destroy();}
 			if (object = 732) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}instance_destroy();}
@@ -954,7 +954,7 @@ if (global.play_edited_level = true)
 			if (object = 75) and (asset_get_type("obj_clipped_clothes") == asset_object){with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_pants;}instance_destroy();}
 			if (object = 76) and (asset_get_type("obj_clipped_clothes") == asset_object){with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_sock;}instance_destroy();}
 			
-			#region /*Bucket*/
+			#region /* Bucket */
 			if (object = 77) and (asset_get_type("obj_bucket") == asset_object){instance_create_depth(x, y, 0, obj_bucket); instance_destroy();}
 			if (object = 78) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "8_basic_collectibles";}instance_destroy();}
 			if (object = 79) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "heart_balloon";}instance_destroy();}
@@ -968,7 +968,7 @@ if (global.play_edited_level = true)
 			if (object = 87) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_5";}instance_destroy();}
 			if (object = 88) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup";}instance_destroy();}
 			if (object = 88001) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup_coil_spring";}instance_destroy();}
-			#endregion /*Bucket END*/
+			#endregion /* Bucket END */
 		
 			if (object = 89) and (asset_get_type("obj_bird") == asset_object){instance_create_depth(x, y, 0, obj_bird); instance_destroy();}
 			if (object = 90) and (asset_get_type("obj_sign_moveset") == asset_object){with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}instance_destroy();}
@@ -1009,9 +1009,9 @@ if (global.play_edited_level = true)
 		}
 		else
 		{
-			instance_destroy(); /*Destroy object if difficulty setting and difficulty on object doesn't match */
+			instance_destroy(); /* Destroy object if difficulty setting and difficulty on object doesn't match */
 		}
-		#endregion /*Delete objects according to difficulty settings END*/
+		#endregion /* Delete objects according to difficulty settings END */
 		
 	}
 	else
@@ -1025,18 +1025,18 @@ if (global.play_edited_level = true)
 		if (object = 7) and (asset_get_type("obj_map_path_turn") == asset_object){with(instance_create_depth(x, y, 0, obj_map_path_turn)){image_angle = 270;} instance_destroy();}
 	}
 }
-#endregion /*Spawn objects when starting room END*/
+#endregion /* Spawn objects when starting room END */
 
-#endregion /*All code before initializing the object*/
+#endregion /* All code before initializing the object */
 
-#region /*Difficulty settings per object*/
+#region /* Difficulty settings per object */
 if (instance_exists(obj_leveleditor))
 and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
 and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 and (obj_leveleditor.pause = false)
 {
 	
-	#region /*Set to appear on difficulty level*/
+	#region /* Set to appear on difficulty level */
 	if (mouse_check_button(mb_left))
 	and (!mouse_check_button(mb_right))
 	and (obj_leveleditor.erase_mode = false)
@@ -1049,21 +1049,21 @@ and (obj_leveleditor.pause = false)
 	{
 		if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 		
-		/*Place Brush Size 1*/
+		/* Place Brush Size 1 */
 		or(obj_leveleditor.place_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
 		or(obj_leveleditor.place_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
 		or(obj_leveleditor.place_brush_size >= 1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
-		/*Place Brush Size 1 END*/
+		/* Place Brush Size 1 END */
 		
-		/*Place Brush Size 2*/
+		/* Place Brush Size 2 */
 		or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y, id))
 		or(obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y + 32, id))
-		/*Place Brush Size 2 END*/
+		/* Place Brush Size 2 END */
 		
-		/*Place Brush Size 3*/
+		/* Place Brush Size 3 */
 		or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
 		or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y + 32, id))
@@ -1071,9 +1071,9 @@ and (obj_leveleditor.pause = false)
 		or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
 		or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
 		or(obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y+64, id))
-		/*Place Brush Size 3 END*/
+		/* Place Brush Size 3 END */
 		
-		/*Place Brush Size 4 */
+		/* Place Brush Size 4 */
 		or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
@@ -1083,9 +1083,9 @@ and (obj_leveleditor.pause = false)
 		or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y, id))
 		or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 32, id))
 		or(obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+64, id))
-		/*Place Brush Size 4 END*/
+		/* Place Brush Size 4 END */
 		
-		/*Place Brush Size 5*/
+		/* Place Brush Size 5 */
 		or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
@@ -1097,7 +1097,7 @@ and (obj_leveleditor.pause = false)
 		or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+96, id))
 		or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y+96, id))
 		or(obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+96, id))
-		/*Place Brush Size 5 END*/
+		/* Place Brush Size 5 END */
 	
 		{
 			if (obj_leveleditor.difficulty_layer = 1)
@@ -1131,9 +1131,9 @@ and (obj_leveleditor.pause = false)
 			}
 		}
 	}
-	#endregion /*Set to appear on difficulty level END*/
+	#endregion /* Set to appear on difficulty level END */
 	
-	#region /*Set to dissapear on difficulty level*/
+	#region /* Set to dissapear on difficulty level */
 	if (mouse_check_button(mb_right))
 	and (!mouse_check_button(mb_left))
 	or (instance_exists(obj_leveleditor))
@@ -1141,17 +1141,17 @@ and (obj_leveleditor.pause = false)
 	and (!obj_leveleditor.key_a_hold)
 	{
 		if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
-		/*erase_brush_size >= 1*/
+		/* erase_brush_size >= 1 */
 		or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
 		or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
 		or(obj_leveleditor.erase_brush_size >= 1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
-		/*erase_brush_size >= 2*/
+		/* erase_brush_size >= 2 */
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y, id))
 		or(obj_leveleditor.erase_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y + 32, id))
-		/*erase_brush_size >= 3*/
+		/* erase_brush_size >= 3 */
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y + 32, id))
@@ -1159,7 +1159,7 @@ and (obj_leveleditor.pause = false)
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y+64, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y+64, id))
 		or(obj_leveleditor.erase_brush_size >= 3) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y+64, id))
-		/*erase_brush_size >= 4*/
+		/* erase_brush_size >= 4 */
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 64, id))
@@ -1169,7 +1169,7 @@ and (obj_leveleditor.pause = false)
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 32, id))
 		or(obj_leveleditor.erase_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y+64, id))
-		/*erase_brush_size >= 5*/
+		/* erase_brush_size >= 5 */
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 64, id))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y - 32, id))
 		or(obj_leveleditor.erase_brush_size >= 5) and (position_meeting(obj_leveleditor.x +96, obj_leveleditor.y, id))
@@ -1225,8 +1225,8 @@ and (obj_leveleditor.pause = false)
 				}
 			}
 		}
-		#endregion /*Set to dissapear on difficulty level END*/
+		#endregion /* Set to dissapear on difficulty level END */
 		
 	}
 }
-#endregion /*Difficulty settings per object END*/
+#endregion /* Difficulty settings per object END */

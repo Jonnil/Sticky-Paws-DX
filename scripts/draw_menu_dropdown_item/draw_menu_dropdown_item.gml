@@ -9,7 +9,7 @@
 function draw_menu_dropdown_item(string_text_item, x_position, y_position, variable_to_change, item_number)
 {
 	
-	#region /*Show Item*/
+	#region /* Show Item */
 	if (string_text_item > "")
 	{
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + (28 * item_number), x_position + 555, y_position + 27+ (28 * item_number)))
@@ -42,13 +42,13 @@ function draw_menu_dropdown_item(string_text_item, x_position, y_position, varia
 				draw_sprite_ext(spr_menu_dropdown_item, 0, x_position, y_position + 13 + (28 * item_number), 1, 1, 0, c_white, 1);
 			}
 		}
-		#region /*Text inside the menu button*/
+		#region /* Text inside the menu button */
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(x_position + 277, y_position + 13 + (28 * item_number), string(string_text_item), global.default_text_size * 0.75, c_white, c_black, 1);
-		#endregion /*Text inside the menu button END*/
+		#endregion /* Text inside the menu button END */
 		
 	}
-	#endregion /*Show Item END*/
+	#endregion /* Show Item END */
 	
 }

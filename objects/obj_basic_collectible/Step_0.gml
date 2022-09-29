@@ -63,7 +63,7 @@ if (bounceup = false)
 	}
 }
 
-#region /*Bounce up*/
+#region /* Bounce up */
 if (bounceup = true)
 {
 	if (delay >= delay_time)
@@ -75,10 +75,10 @@ if (bounceup = true)
 		}
 		depth = - 100;
 		visible = true;
-		#region /*Set the gravity*/
-		gravity_direction = 270; /*Direction of the gravity*/
-		gravity = 0.5; /*The gravity*/
-		#endregion /*Set the gravity END*/
+		#region /* Set the gravity */
+		gravity_direction = 270; /* Direction of the gravity */
+		gravity = 0.5; /* The gravity */
+		#endregion /* Set the gravity END */
 		if (vspeed > 0)
 		and (y > ystart - 32)
 		or(delay >= delay_time + 60)
@@ -120,7 +120,7 @@ if (bounceup = true)
 		visible = false;
 		y = ystart;
 	}
-	#region /*Don't go outside view boundary*/
+	#region /* Don't go outside view boundary */
 	if (x < camera_get_view_x(view_camera[view_current]) + 32)
 	{
 		x = camera_get_view_x(view_camera[view_current]) + 32;
@@ -137,6 +137,6 @@ if (bounceup = true)
 	{
 		y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
 	}
-	#endregion /*Don't go outside view boundary END*/
+	#endregion /* Don't go outside view boundary END */
 }
-#endregion /*Bounce up END*/
+#endregion /* Bounce up END */

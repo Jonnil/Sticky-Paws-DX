@@ -5,13 +5,13 @@ if (stomped_delay > 0)
 	stomped_delay -= 1;
 }
 
-#region /*If enemies are disabled, destroy this object*/
+#region /* If enemies are disabled, destroy this object */
 if (global.assist_enable == true)
 and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object END*/
+#endregion /* If enemies are disabled, destroy this object END */
 
 if (die_volting = -1)
 or(die_volting = +1)
@@ -28,10 +28,10 @@ or(die_volting = +1)
 		hspeed = -4;
 	}
 	
-	#region /*Set the gravity*/
-	gravity_direction = 270; /*Direction of the gravity*/
-	gravity = 0.5; /*The gravity*/
-	#endregion /*Set the gravity END*/
+	#region /* Set the gravity */
+	gravity_direction = 270; /* Direction of the gravity */
+	gravity = 0.5; /* The gravity */
+	#endregion /* Set the gravity END */
 	
 	sprite_used = "stand";
 	sprite_index = global.resource_pack_sprite_big_stationary_enemy;
@@ -39,8 +39,8 @@ or(die_volting = +1)
 else
 {
 
-	#region /*Set the gravity*/
-	gravity_direction = 270; /*Direction of the gravity*/
+	#region /* Set the gravity */
+	gravity_direction = 270; /* Direction of the gravity */
 	if (asset_get_type("obj_wall") == asset_object)
 	and (!place_meeting(x, y + 1, obj_wall))
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -53,14 +53,14 @@ else
 		and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 		and (y > camera_get_view_y(view_camera[view_current]))
 		{
-			gravity = 0.5; /*The gravity*/
+			gravity = 0.5; /* The gravity */
 		}
 	}
 	else
 	{
 		gravity = 0;
 	}
-	#endregion /*Set the gravity END*/
+	#endregion /* Set the gravity END */
 	
 	if (flat = true)
 	{
@@ -89,7 +89,7 @@ else
 }
 mask_index = mask;
 
-#region /*Coil spring bouncing code*/
+#region /* Coil spring bouncing code */
 if (coil_spring = true)
 and (die = false)
 and (place_meeting(x, y + 1, obj_wall))
@@ -121,7 +121,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	draw_xscale = 1.25;
 	draw_yscale = 0.75;
 }
-#endregion /*Coil spring bouncing code END*/
+#endregion /* Coil spring bouncing code END */
 
 if (asset_get_type("obj_player") == asset_object)
 {
@@ -141,7 +141,7 @@ if (asset_get_type("obj_player") == asset_object)
 	}
 }
 
-#region /*Kill enemy if it's inside the wall*/
+#region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
 and (die = false)
 and (draw_xscale >= 0.8)
@@ -161,4 +161,4 @@ else
 		stuck_in_wall_counter -= 1;
 	}
 }
-#endregion /*Kill enemy if it's inside the wall END*/
+#endregion /* Kill enemy if it's inside the wall END */

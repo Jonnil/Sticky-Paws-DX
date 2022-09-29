@@ -3,7 +3,7 @@ if (place_meeting(x, y- 8, other))
 	if (other.ground_pound = true)
 	{
 		
-		#region /* 1 Basic Collectible*/
+		#region /* 1 Basic Collectible */
 		if (type_of_bump = "none")
 		{
 			if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -16,9 +16,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /* 1 Basic Collectible END*/
+		#endregion /* 1 Basic Collectible END */
 		
-		#region /* 8 Basic Collectibles*/
+		#region /* 8 Basic Collectibles */
 		if (type_of_bump = "8_basic_collectibles")
 		{
 			if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -87,9 +87,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /* 8 Basic Collectibles END*/
+		#endregion /* 8 Basic Collectibles END */
 		
-		#region /*Heart Balloon*/
+		#region /* Heart Balloon */
 		if (type_of_bump = "heart_balloon")
 		{
 			if (asset_get_type("obj_heart_balloon") == asset_object)
@@ -101,9 +101,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /*Heart Balloon END*/
+		#endregion /* Heart Balloon END */
 		
-		#region /* 1-up*/
+		#region /* 1-up */
 		if (type_of_bump = "1-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -116,9 +116,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /* 1-up END*/
+		#endregion /* 1-up END */
 		
-		#region /* 2-up*/
+		#region /* 2-up */
 		if (type_of_bump = "2-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -131,9 +131,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /* 2-up END*/
+		#endregion /* 2-up END */
 		
-		#region /* 3-up*/
+		#region /* 3-up */
 		if (type_of_bump = "3-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -146,9 +146,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /* 3-up END*/
+		#endregion /* 3-up END */
 		
-		#region /*Big Collectible 1*/
+		#region /* Big Collectible 1 */
 		if (type_of_bump = "big_collectible_1")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -162,9 +162,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /*Big Collectible 1 END*/
+		#endregion /* Big Collectible 1 END */
 		
-		#region /*Big Collectible 2*/
+		#region /* Big Collectible 2 */
 		if (type_of_bump = "big_collectible_2")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -178,9 +178,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /*Big Collectible 2 END*/
+		#endregion /* Big Collectible 2 END */
 		
-		#region /*Big Collectible 3*/
+		#region /* Big Collectible 3 */
 		if (type_of_bump = "big_collectible_3")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -194,9 +194,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /*Big Collectible 3 END*/
+		#endregion /* Big Collectible 3 END */
 		
-		#region /*Big Collectible 4 */
+		#region /* Big Collectible 4 */
 		if (type_of_bump = "big_collectible_4")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -210,9 +210,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /*Big Collectible 4 END*/
+		#endregion /* Big Collectible 4 END */
 		
-		#region /*Big Collectible 5*/
+		#region /* Big Collectible 5 */
 		if (type_of_bump = "big_collectible_5")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -226,9 +226,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /*Big Collectible 5 END*/
+		#endregion /* Big Collectible 5 END */
 		
-		#region /*Invincibility Powerup*/
+		#region /* Invincibility Powerup */
 		if (type_of_bump = "invincibility_powerup")
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
@@ -240,9 +240,9 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /*Invincibility Powerup END*/
+		#endregion /* Invincibility Powerup END */
 		
-		#region /*Invincibility Powerup Coil Spring*/
+		#region /* Invincibility Powerup Coil Spring */
 		if (type_of_bump = "invincibility_powerup_coil_spring")
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
@@ -255,7 +255,7 @@ if (place_meeting(x, y- 8, other))
 				}
 			}
 		}
-		#endregion /*Invincibility Powerup END*/
+		#endregion /* Invincibility Powerup END */
 		
 		instance_destroy();
 	}

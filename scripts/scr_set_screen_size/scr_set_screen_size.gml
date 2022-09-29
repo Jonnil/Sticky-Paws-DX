@@ -1,8 +1,8 @@
 function scr_set_screen_size()
 {
 	
-	#region /*Set screen size*/
-	camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current])); /*View Border*/
+	#region /* Set screen size */
+	camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current])); /* View Border */
 	
 	if (window_get_width() <= global.default_view_width)
 	and (window_get_height() <= global.default_view_height)
@@ -36,6 +36,6 @@ function scr_set_screen_size()
 	}
 	camera_set_view_target(view_camera[view_current], self);
 	display_set_gui_size(window_get_width(), window_get_height());
-	#endregion /*Set screen size END*/
+	#endregion /* Set screen size END */
 	
 }

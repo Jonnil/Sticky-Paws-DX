@@ -1,4 +1,4 @@
-#region /*Make wall jump panel invisible if there are only players that have wall jump ability*/
+#region /* Make wall jump panel invisible if there are only players that have wall jump ability */
 if (instance_exists(obj_camera))
 {
 	if (obj_camera.player1 > 0)
@@ -30,4 +30,4 @@ if (instance_exists(obj_camera))
 		visible = true;
 	}
 }
-#endregion /*Make wall jump panel invisible if there are only players that have wall jump ability END*/
+#endregion /* Make wall jump panel invisible if there are only players that have wall jump ability END */

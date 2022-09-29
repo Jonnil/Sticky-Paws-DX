@@ -38,12 +38,12 @@ else
 	enemyvoice_defeated3 = noone;
 }
 
-#region /*Mask*/
+#region /* Mask */
 if (asset_get_type("spr_small_mask") == asset_sprite)
 {
 	mask_index = spr_small_mask;
 }
-#endregion /*Mask END*/
+#endregion /* Mask END */
 
 sprite_used = "stand";
 stuck_in_wall_counter = 0;

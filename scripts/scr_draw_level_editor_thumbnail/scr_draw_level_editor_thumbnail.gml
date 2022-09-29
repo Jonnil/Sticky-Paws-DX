@@ -1,18 +1,18 @@
 function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_name)
 {
 	
-	#region /*Red rectangle behind the level thumbnail to indicate what level you are selecting*/
+	#region /* Red rectangle behind the level thumbnail to indicate what level you are selecting */
 	var top_left_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 - 3;
 	var top_left_of_thumbnail_y = 226 * (column - scroll) + 250 - 3;
 	var bottom_right_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 + 384 + 3;
 	var bottom_right_of_thumbnail_y = 226 * (column - scroll) + 250 + 216 + 3;
 	
 	if (menu!= "back_from_level_editor")
-	and (menu!= "open_custom_levels_folder")
+	and (menu != "open_custom_levels_folder")
 	and (menu_delay <= 0)
 	or (menu!= "back_from_level_editor")
-	and (menu!= "open_custom_levels_folder")
-	and (open_sub_menu = true)
+	and (menu != "open_custom_levels_folder")
+	and (open_sub_menu == true)
 	{
 		var custom_level_select_blinking = scr_wave(1, 0, 2, 0);
 		rectangle_top_left_of_thumbnail_x = lerp(rectangle_top_left_of_thumbnail_x, top_left_of_thumbnail_x, 0.3);
@@ -31,12 +31,12 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
 		draw_set_alpha(1);
 	}
-	#endregion /*Red rectangle behind the level thumbnail to indicate what level you are selecting END*/
+	#endregion /* Red rectangle behind the level thumbnail to indicate what level you are selecting END */
 	
-	#region /*Draw Thumbnail*/
+	#region /* Draw Thumbnail */
 	for(i = 0; i < ds_list_size(global.thumbnail_sprite); i += 1)
 	{
-		column= floor(i/ row)
+		column = floor(i/ row)
 		draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 * (i - column * row) + 100, 226 * (column - scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
 		if (show_first_thumbnail_name = false)
 		and (i >= 1)
@@ -51,110 +51,110 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 			scr_draw_text_outlined(394 * (i - column * row) + 100 + 192, 226 * (column - scroll) + 250 + 184, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
 		}
 	}
-	#endregion /*Draw Thumbnail END*/
+	#endregion /* Draw Thumbnail END */
 	
-	#region /*Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting*/
+	#region /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting */
 	if (menu!= "back_from_level_editor")
-	and (menu!= "open_custom_levels_folder")
+	and (menu != "open_custom_levels_folder")
 	and (menu_delay <= 0)
 	or (menu!= "back_from_level_editor")
-	and (menu!= "open_custom_levels_folder")
-	and (open_sub_menu = true)
+	and (menu != "open_custom_levels_folder")
+	and (open_sub_menu == true)
 	{
 		var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);
 		
-		#region /*Red Triangles*/
+		#region /* Red Triangles */
 		
-		#region /*Top Left Red Triangle*/
+		#region /* Top Left Red Triangle */
 		draw_triangle_color(
-		/*x1*/ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/*y1*/ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/*x2*/ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
-		/*y2*/ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/*x3*/ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/*y3*/ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
-		#endregion /*Top Left Red Triangle END*/
+		/* x1 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
+		/* y1 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
+		/* x2 */ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
+		/* y2 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
+		/* x3 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
+		/* y3 */ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
+		#endregion /* Top Left Red Triangle END */
 		
-		#region /*Bottom Right Red Triangle*/
+		#region /* Bottom Right Red Triangle */
 		draw_triangle_color(
-		/*x1*/ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/*y1*/ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/*x2*/ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
-		/*y2*/ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/*x3*/ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/*y3*/ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
-		#endregion /*Bottom Right Red Triangle END*/
+		/* x1 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
+		/* y1 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
+		/* x2 */ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
+		/* y2 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
+		/* x3 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
+		/* y3 */ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
+		#endregion /* Bottom Right Red Triangle END */
 		
-		#region /*Top Right Red Triangle*/
+		#region /* Top Right Red Triangle */
 		draw_triangle_color(
-		/*x1*/ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/*y1*/ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/*x2*/ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
-		/*y2*/ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/*x3*/ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/*y3*/ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
-		#endregion /*Top Right Red Triangle END*/
+		/* x1 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
+		/* y1 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
+		/* x2 */ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
+		/* y2 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
+		/* x3 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
+		/* y3 */ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
+		#endregion /* Top Right Red Triangle END */
 		
-		#region /*Bottom Left Red Triangle*/
+		#region /* Bottom Left Red Triangle */
 		draw_triangle_color(
-		/*x1*/ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/*y1*/ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/*x2*/ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
-		/*y2*/ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/*x3*/ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/*y3*/ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
-		#endregion /*Bottom Left Red Triangle END*/
+		/* x1 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
+		/* y1 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
+		/* x2 */ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
+		/* y2 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
+		/* x3 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
+		/* y3 */ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
+		#endregion /* Bottom Left Red Triangle END */
 		
-		#endregion /*Red Triangles END*/
+		#endregion /* Red Triangles END */
 		
 		draw_set_alpha(custom_level_select_blinking);
 		
-		#region /*Yellow Triangles*/
+		#region /* Yellow Triangles */
 		
-		#region /*Top Left Yellow Triangle*/
+		#region /* Top Left Yellow Triangle */
 		draw_triangle_color(
-		/*x1*/ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/*y1*/ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/*x2*/ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
-		/*y2*/ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/*x3*/ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/*y3*/ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
-		#endregion /*Top Left Yellow Triangle END*/
+		/* x1 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
+		/* y1 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
+		/* x2 */ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
+		/* y2 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
+		/* x3 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
+		/* y3 */ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
+		#endregion /* Top Left Yellow Triangle END */
 		
-		#region /*Bottom Right Yellow Triangle*/
+		#region /* Bottom Right Yellow Triangle */
 		draw_triangle_color(
-		/*x1*/ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/*y1*/ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/*x2*/ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
-		/*y2*/ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/*x3*/ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/*y3*/ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
-		#endregion /*Bottom Right Yellow Triangle END*/
+		/* x1 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
+		/* y1 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
+		/* x2 */ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
+		/* y2 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
+		/* x3 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
+		/* y3 */ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
+		#endregion /* Bottom Right Yellow Triangle END */
 		
-		#region /*Top Right Yellow Triangle*/
+		#region /* Top Right Yellow Triangle */
 		draw_triangle_color(
-		/*x1*/ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/*y1*/ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/*x2*/ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
-		/*y2*/ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/*x3*/ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/*y3*/ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
-		#endregion /*Top Right Yellow Triangle END*/
+		/* x1 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
+		/* y1 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
+		/* x2 */ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
+		/* y2 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
+		/* x3 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
+		/* y3 */ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
+		#endregion /* Top Right Yellow Triangle END */
 		
-		#region /*Bottom Left Yellow Triangle*/
+		#region /* Bottom Left Yellow Triangle */
 		draw_triangle_color(
-		/*x1*/ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/*y1*/ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/*x2*/ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
-		/*y2*/ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/*x3*/ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/*y3*/ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
-		#endregion /*Bottom Left Yellow Triangle END*/
+		/* x1 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
+		/* y1 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
+		/* x2 */ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
+		/* y2 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
+		/* x3 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
+		/* y3 */ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
+		#endregion /* Bottom Left Yellow Triangle END */
 		
-		#endregion /*Yellow Triangles END*/
+		#endregion /* Yellow Triangles END */
 		
 		draw_set_alpha(1);
 	}
-	#endregion /*Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting END*/
+	#endregion /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting END */
 	
 }

@@ -1,4 +1,4 @@
-/*________________________________Collision Event with a solid object________________________________*/
+/* ________________________________Collision Event with a solid object________________________________ */
 while (place_meeting(x, y, other))
 {
 	x += lengthdir_x(0.5, point_direction(other.x, other.y, x, y));

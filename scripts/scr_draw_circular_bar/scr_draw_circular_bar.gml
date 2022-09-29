@@ -8,16 +8,16 @@
 /// @arg transparency
 /// @arg width
 
-function scr_draw_circular_bar(xx, yy, value, max_value, colour, radius, transparency, width)
+function scr_draw_circular_bar(xx, yy, value, max_value, colour = c_black, radius = 20, transparency = 0.8, width = 6)
 {
 	if (value > 0)
-	{ /*no point even running if there is nothing to display, also stops /0*/
+	{ /* no point even running if there is nothing to display, also stops /0 */
 		var i, len, tx, ty, val;
-		var numberofsections = 60; /*there is no draw_get_circle_precision() else I would use that here*/
+		var numberofsections = 60; /* there is no draw_get_circle_precision() else I would use that here */
 		var sizeofsection = 360 / numberofsections;
 		val = (value / max_value) * numberofsections;
 		if (val > 1)
-		{ /*HTML5 version doesnt like triangle with only 2 sides*/
+		{ /* HTML5 version doesnt like triangle with only 2 sides */
 			piesurface = surface_create(radius * 2, radius * 2);
 			draw_set_colour(colour);
 			draw_set_alpha(transparency);
@@ -29,7 +29,7 @@ function scr_draw_circular_bar(xx, yy, value, max_value, colour, radius, transpa
 			
 			for(i = 0; i <= val; i ++)
 			{
-				len = (i * sizeofsection) +90; /*the 90 here is the starting angle*/
+				len = (i * sizeofsection) +90; /* the 90 here is the starting angle */
 				tx = lengthdir_x(radius, len);
 				ty = lengthdir_y(radius, len);
 				draw_vertex(radius + tx, radius + ty);

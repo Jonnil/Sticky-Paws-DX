@@ -3,12 +3,7 @@ if (get_rewards_cooldown > 0)
 	get_rewards_cooldown -= 1;
 }
 
-if (!audio_is_playing(snd_1up))
-{
-	scr_audio_play(snd_1up, volume_source.sound);
-}
-
-#region /*Gravity*/
+#region /* Gravity */
 if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -33,13 +28,13 @@ if (vspeed >= 16)
 {
 	vspeed = 16;
 }
-#endregion /*Gravity END*/
+#endregion /* Gravity END */
 
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 {
-	if (global.x_checkpoint != x)
-	or (global.y_checkpoint != y)
+	if (global.checkpoint_x != x)
+	or (global.checkpoint_y != y)
 	{
 		if (instance_nearest(x, y, obj_player).x > x - 32)
 		and (instance_nearest(x, y, obj_player).x < x + 32)
@@ -63,7 +58,7 @@ and (instance_exists(obj_player))
 						}
 						effect_create_below(ef_ring, x, y, 2, c_white);
 						
-						#region /*Collect 10 basic collectibles*/
+						#region /* Collect 10 basic collectibles */
 						if (asset_get_type("obj_basic_collectible") == asset_object)
 						{
 							scr_audio_play(snd_basic_collectible, volume_source.sound);
@@ -137,7 +132,7 @@ and (instance_exists(obj_player))
 								delay_time = 90;
 							}
 					
-							#region /* 2000 Score*/
+							#region /* 2000 Score */
 							score += 2000;
 							if (asset_get_type("obj_scoreup") == asset_object)
 							{
@@ -146,9 +141,9 @@ and (instance_exists(obj_player))
 									scoreup = 2000;
 								}
 							}
-							#endregion /* 2000 Score END*/
+							#endregion /* 2000 Score END */
 							
-							#region /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint*/
+							#region /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint */
 							if (asset_get_type("obj_scoreup") == asset_object)
 							{
 								with(instance_create_depth(x, y- 20, 0, obj_scoreup))
@@ -156,24 +151,24 @@ and (instance_exists(obj_player))
 									scoreup = "CHECKPOINT";
 								}
 							}
-							#endregion /*Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END*/
+							#endregion /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END */
 						}
-						#endregion /*Collect 10 basic collectibles END*/
+						#endregion /* Collect 10 basic collectibles END */
 						
 					}
 					
-					global.x_checkpoint = x;
-					global.y_checkpoint = y;
+					global.checkpoint_x = x;
+					global.checkpoint_y = y;
 					global.checkpoint_millisecond = global.timeattack_millisecond;
 					global.checkpoint_second = global.timeattack_second;
 					global.checkpoint_minute = global.timeattack_minute;
 					global.checkpoint_realmillisecond = global.timeattack_realmillisecond;
 					
-					#region /*Save Level Editor Checkpoint*/
+					#region /* Save Level Editor Checkpoint */
 					if (asset_get_type("room_leveleditor") == asset_room)
 					and (room == room_leveleditor)
 					and (global.character_select_in_this_menu == "main_game")
-					and (global.actually_play_edited_level = true)
+					and (global.actually_play_edited_level == true)
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -181,8 +176,8 @@ and (instance_exists(obj_player))
 						var level_name = string(uppercase_level_name);
 						
 						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-						ini_write_real(level_name, "x_checkpoint", x);
-						ini_write_real(level_name, "y_checkpoint", y);
+						ini_write_real(level_name, "checkpoint_x", x);
+						ini_write_real(level_name, "checkpoint_y", y);
 						ini_write_real(level_name, "checkpoint_which_player", instance_nearest(x, y, obj_player).player);
 						if (instance_nearest(x, y, obj_player).hspeed < 0)
 						{
@@ -202,7 +197,7 @@ and (instance_exists(obj_player))
 					if (asset_get_type("room_leveleditor") == asset_room)
 					and (room == room_leveleditor)
 					and (global.character_select_in_this_menu == "level_editor")
-					and (global.actually_play_edited_level = true)
+					and (global.actually_play_edited_level == true)
 					{
 						var uppercase_level_name;
 						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -210,8 +205,8 @@ and (instance_exists(obj_player))
 						var level_name = string(uppercase_level_name);
 							
 						ini_open(working_directory + "/save_files/custom_level_save.ini");
-						ini_write_real(level_name, "x_checkpoint", x);
-						ini_write_real(level_name, "y_checkpoint", y);
+						ini_write_real(level_name, "checkpoint_x", x);
+						ini_write_real(level_name, "checkpoint_y", y);
 						ini_write_real(level_name, "checkpoint_which_player", instance_nearest(x, y, obj_player).player);
 						if (instance_nearest(x, y, obj_player).hspeed < 0)
 						{
@@ -227,11 +222,11 @@ and (instance_exists(obj_player))
 						ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 						ini_close();
 					}
-					#endregion /*Save Level Editor Checkpoint END*/
+					#endregion /* Save Level Editor Checkpoint END */
 					
-					#region /*Load correct sprite when you get the checkpoint*/
-					if (global.x_checkpoint = x)
-					and (global.y_checkpoint = y)
+					#region /* Load correct sprite when you get the checkpoint */
+					if (global.checkpoint_x = x)
+					and (global.checkpoint_y = y)
 					{
 						if (instance_exists(obj_camera))
 						and (instance_exists(obj_player))
@@ -281,7 +276,7 @@ and (instance_exists(obj_player))
 							image_speed = 0;
 						}
 					}
-					#endregion /*Load correct sprite when you get the checkpoint END*/
+					#endregion /* Load correct sprite when you get the checkpoint END */
 				
 				}
 			}

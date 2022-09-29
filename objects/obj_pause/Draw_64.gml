@@ -1,7 +1,7 @@
 //instance_deactivate_all(true);
 instance_activate_object(obj_pause);
 
-if (global.background_brightness_menu>-0.001)
+if (global.background_brightness_menu > -0.001)
 {
 	c_menu_outline = c_white;
 	c_menu_fill = c_black;
@@ -47,9 +47,9 @@ if (global.narrator >= 0)
 
 room_speed = global.max_fps;
 
-#region /*Keyboard Controls*/
+#region /* Keyboard Controls */
 
-#region /*Player 1*/
+#region /* Player 1 */
 if (global.pause_player = 0)
 {
 	key_up = (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down)) or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S"))) or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd)) or (gamepad_axis_value(0, gp_axislv) < 0);
@@ -59,9 +59,9 @@ if (global.pause_player = 0)
 	key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or (keyboard_check_pressed(ord("Z"))) or (keyboard_check_pressed(vk_enter)) or (keyboard_check_pressed(vk_space));
 	key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or (keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_escape)) or (keyboard_check_pressed(vk_backspace)) or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
 }
-#endregion /*Player 1 END*/
+#endregion /* Player 1 END */
 
-#region /*Player 2*/
+#region /* Player 2 */
 if (global.pause_player = 1)
 {
 	key_up = (keyboard_check_pressed(global.player2_key_up)) and (!keyboard_check_pressed(global.player2_key_down)) or (gamepad_button_check_pressed(1, gp_padu)) and (!gamepad_button_check_pressed(1, gp_padd)) or (gamepad_axis_value(1, gp_axislv) < 0);
@@ -71,9 +71,9 @@ if (global.pause_player = 1)
 	key_a_pressed = (gamepad_button_check_pressed(1, gp_face1)) or (keyboard_check_pressed(global.player2_key_jump));
 	key_b_pressed = (gamepad_button_check_pressed(1, gp_face2)) or (keyboard_check_pressed(global.player2_key_sprint)) or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
 }
-#endregion /*Player 2 END*/
+#endregion /* Player 2 END */
 
-#region /*Player 3*/
+#region /* Player 3 */
 if (global.pause_player = 2)
 {
 	key_up = (keyboard_check_pressed(global.player3_key_up)) and (!keyboard_check_pressed(global.player3_key_down)) or (gamepad_button_check_pressed(2, gp_padu)) and (!gamepad_button_check_pressed(2, gp_padd)) or (gamepad_axis_value(2, gp_axislv) < 0);
@@ -83,9 +83,9 @@ if (global.pause_player = 2)
 	key_a_pressed = (gamepad_button_check_pressed(2, gp_face1)) or (keyboard_check_pressed(global.player3_key_jump));
 	key_b_pressed = (gamepad_button_check_pressed(2, gp_face2)) or (keyboard_check_pressed(global.player3_key_sprint)) or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
 }
-#endregion /*Player 3 END*/
+#endregion /* Player 3 END */
 
-#region /*Player 4 */
+#region /* Player 4 */
 if (global.pause_player = 3)
 {
 	key_up = (keyboard_check_pressed(global.player4_key_up)) and (!keyboard_check_pressed(global.player4_key_down)) or (gamepad_button_check_pressed(3, gp_padu)) and (!gamepad_button_check_pressed(3, gp_padd)) or (gamepad_axis_value(3, gp_axislv) < 0);
@@ -95,17 +95,17 @@ if (global.pause_player = 3)
 	key_a_pressed = (gamepad_button_check_pressed(3, gp_face1)) or (keyboard_check_pressed(global.player4_key_jump));
 	key_b_pressed = (gamepad_button_check_pressed(3, gp_face2)) or (keyboard_check_pressed(global.player4_key_sprint)) or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
 }
-#endregion /*Player 4 END*/
+#endregion /* Player 4 END */
 
-#endregion /*Keyboard Controls END*/
+#endregion /* Keyboard Controls END */
 
 scr_quit_to_desktop_menu("quit_to_desktop");
 
-#region /*Which player is controling the pause menu?*/
+#region /* Which player is controling the pause menu? */
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
-#region /*Hide menu for clean screenshots text*/
+#region /* Hide menu for clean screenshots text */
 if (hide_menu_for_clean_screenshots_timer < 60 * 3)
 {
 	hide_menu_for_clean_screenshots_timer += 1;
@@ -185,7 +185,7 @@ or (gamepad_button_check_pressed(3, gp_face4))
 		menu_delay = 10;
 	}
 }
-#endregion /*Hide menu for clean screenshots text END*/
+#endregion /* Hide menu for clean screenshots text END */
 
 if (hide_menu_for_clean_screenshots = false)
 {
@@ -221,9 +221,9 @@ and (menu != "remap_save")
 		scr_draw_text_outlined(window_get_width() / 2, 100, "PLAYER 4 IS CONTROLING THE MENU", global.default_text_size * 2, c_black, c_yellow, 1);
 	}
 }
-#endregion /*Which player is controling the pause menu? END*/
+#endregion /* Which player is controling the pause menu? END */
 
-#region /*Games Logo in top left corner*/
+#region /* Games Logo in top left corner */
 
 if (current_month = 12)
 and (global.resource_pack_sprite_title_logo_christmas >= 0)
@@ -235,9 +235,9 @@ if (global.title_logo_index >= 0)
 {
 	draw_sprite_ext(global.title_logo_index, 0, 160, scr_wave(100, 140, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
 }
-#endregion /*Games Logo in top left corner END*/
+#endregion /* Games Logo in top left corner END */
 
-#region /*Pause Text blink effect*/
+#region /* Pause Text blink effect */
 if (pause_text_lerp <= 0)
 {
 	pause_text_alpha = lerp(pause_text_alpha, 1, 0.1);
@@ -255,9 +255,9 @@ if (pause_text_lerp >= 1)
 		pause_text_lerp = 0;
 	}
 }
-#endregion /*Pause Text blink effect END*/
+#endregion /* Pause Text blink effect END */
 
-#region /*Pause Text*/
+#region /* Pause Text */
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
@@ -274,9 +274,9 @@ and (menu != "quit_game_yes")
 		draw_text_transformed_color(window_get_width() / 2, 200, "PAUSE", global.default_text_size * 2, global.default_text_size * 2, 0, c_white, c_white, c_white, c_white, pause_text_alpha);
 	}
 }
-#endregion /*Pause Text END*/
+#endregion /* Pause Text END */
 
-/*PAUSE LEVEL SELECT / LEVEL EDITOR MENU*/
+/* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
 if (asset_get_type("room_world_map") == asset_room)
 and (room == room_world_map)
 and (show_loading_icon = false)
@@ -343,16 +343,16 @@ and (show_loading_icon = false)
 	else
 	if(global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu == "main_game")
-	and (menu = "quit_to_map")
+	and (menu == "quit_to_map")
 	or (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu == "main_game")
-	and (menu = "quit_to_title")
+	and (menu == "quit_to_title")
 	or (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu == "main_game")
-	and (menu = "quit_to_desktop")
+	and (menu == "quit_to_desktop")
 	or (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu == "main_game")
-	and (menu = "quit_nevermind")
+	and (menu == "quit_nevermind")
 	{
 		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Quit to Map"), "quit_to_map", "quit_to_map");
 		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
@@ -371,13 +371,13 @@ and (show_loading_icon = false)
 	else
 	if(global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu == "level_editor")
-	and (menu = "quit_to_title")
+	and (menu == "quit_to_title")
 	or (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu == "level_editor")
-	and (menu = "quit_to_desktop")
+	and (menu == "quit_to_desktop")
 	or (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu == "level_editor")
-	and (menu = "quit_nevermind")
+	and (menu == "quit_nevermind")
 	{
 		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
 		if (global.convention_mode = false)
@@ -394,11 +394,11 @@ and (show_loading_icon = false)
 	}
 	else
 	if(global.pause_room = room_world_map)
-	and (menu = "quit_to_title")
+	and (menu == "quit_to_title")
 	or (global.pause_room = room_world_map)
-	and (menu = "quit_to_desktop")
+	and (menu == "quit_to_desktop")
 	or (global.pause_room = room_world_map)
-	and (menu = "quit_nevermind")
+	and (menu == "quit_nevermind")
 	{
 		draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
 		if (global.convention_mode = false)
@@ -414,7 +414,7 @@ and (show_loading_icon = false)
 		}
 	}
 	
-	#region /*Continue*/
+	#region /* Continue */
 	if (menu == "continue")
 	{
 		if (key_a_pressed)
@@ -424,7 +424,7 @@ and (show_loading_icon = false)
 		and (menu_delay == 0)
 		{
 			
-			#region /*Return to game*/
+			#region /* Return to game */
 			audio_resume_all();
 			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
 			audio_sound_gain(global.music_underwater, 0, 0);
@@ -448,7 +448,7 @@ and (show_loading_icon = false)
 			{
 				instance_destroy();
 			}
-			#endregion /*Return to game END*/
+			#endregion /* Return to game END */
 			
 		}
 		if (key_up)
@@ -483,15 +483,15 @@ and (show_loading_icon = false)
 			}
 		}
 	}
-	#endregion /*Continue END*/
+	#endregion /* Continue END */
 	
 	else
 	
-	#region /*Options*/
+	#region /* Options */
 	if (menu == "options")
 	{
 		
-		#region /*Select Options*/
+		#region /* Select Options */
 		if (key_a_pressed)
 		and (menu_delay == 0)
 		and (global.convention_mode = false)
@@ -506,7 +506,7 @@ and (show_loading_icon = false)
 			can_navigate_settings_sidebar = true;
 			in_settings = true;
 		}
-		#endregion /*Select Options END*/
+		#endregion /* Select Options END */
 
 		if (key_up)
 		and (!key_down)
@@ -534,11 +534,11 @@ and (show_loading_icon = false)
 			}
 		}
 	}
-	#endregion /*Options END*/
+	#endregion /* Options END */
 	
 	else
 	
-	#region /*Restart*/
+	#region /* Restart */
 	if (menu == "restart")
 	{
 		if (key_a_pressed)
@@ -554,13 +554,13 @@ and (show_loading_icon = false)
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
 		{
-			if (global.x_checkpoint = 0)
-			and (global.y_checkpoint = 0)
+			if (global.checkpoint_x = 0)
+			and (global.checkpoint_y = 0)
 			{
 				
-				#region /*Restart Level*/
+				#region /* Restart Level */
 				show_loading_icon = true;
-				#endregion /*Restart Level END*/
+				#endregion /* Restart Level END */
 				
 			}
 			else
@@ -594,11 +594,11 @@ and (show_loading_icon = false)
 			menu = "quit";
 		}
 	}
-	#endregion /*Restart END*/
+	#endregion /* Restart END */
 	
 	else
 	
-	#region /*Reset from Checkpoint*/
+	#region /* Reset from Checkpoint */
 	if (menu == "reset_from_checkpoint")
 	{
 		if (key_a_pressed)
@@ -609,9 +609,9 @@ and (show_loading_icon = false)
 		and (menu_delay == 0)
 		{
 			
-			#region /*Restart Level*/
+			#region /* Restart Level */
 			show_loading_icon = true;
-			#endregion /*Restart Level END*/
+			#endregion /* Restart Level END */
 			
 		}
 		if (key_up)
@@ -632,11 +632,11 @@ and (show_loading_icon = false)
 			menu = "reset_from_start";
 		}
 	}
-	#endregion /*Restart to Checkpoint END*/
+	#endregion /* Restart to Checkpoint END */
 	
 	else
 	
-	#region /*Reset from Start*/
+	#region /* Reset from Start */
 	if (menu == "reset_from_start")
 	{
 		if (key_a_pressed)
@@ -647,9 +647,9 @@ and (show_loading_icon = false)
 		and (menu_delay == 0)
 		{
 			
-			#region /*Restart Level*/
+			#region /* Restart Level */
 			show_loading_icon = true;
-			#endregion /*Restart Level END*/
+			#endregion /* Restart Level END */
 			
 		}
 		if (key_up)
@@ -670,11 +670,11 @@ and (show_loading_icon = false)
 			menu = "restart_nevermind";
 		}
 	}
-	#endregion /*Reset from Start END*/
+	#endregion /* Reset from Start END */
 	
 	else
 	
-	#region /*Restart Nevermind*/
+	#region /* Restart Nevermind */
 	if (menu == "restart_nevermind")
 	{
 		if (key_a_pressed)
@@ -704,11 +704,11 @@ and (show_loading_icon = false)
 			menu = "reset_from_checkpoint";
 		}
 	}
-	#endregion /*Restart Nevermind END*/
+	#endregion /* Restart Nevermind END */
 	
 	else
 	
-	#region /*Quit*/
+	#region /* Quit */
 	if (menu == "quit")
 	{
 		if (key_a_pressed)
@@ -780,11 +780,11 @@ and (show_loading_icon = false)
 			menu = "continue";
 		}
 	}
-	#endregion /*Quit END*/
+	#endregion /* Quit END */
 	
 	else
 	
-	#region /*Quit to Map*/
+	#region /* Quit to Map */
 	if (menu == "quit_to_map")
 	and (global.pause_room = room_leveleditor)
 	{
@@ -799,14 +799,14 @@ and (show_loading_icon = false)
 		and (menu_delay == 0)
 		{
 			
-			#region /*Return to Map*/
+			#region /* Return to Map */
 			
-			#region /*Reset timer back to zero*/
+			#region /* Reset timer back to zero */
 			global.timeattack_realmillisecond = 0;
 			global.timeattack_millisecond = 0;
 			global.timeattack_second = 0;
 			global.timeattack_minute = 0;
-			#endregion /*Reset timer back to zero END*/
+			#endregion /* Reset timer back to zero END */
 			
 			global.quit_level = true;
 			global.quit_to_map = true;
@@ -816,7 +816,7 @@ and (show_loading_icon = false)
 			{
 				room = global.pause_room;
 			}
-			#endregion /*Return to Map END*/
+			#endregion /* Return to Map END */
 			
 		}
 		if (key_up)
@@ -837,11 +837,11 @@ and (show_loading_icon = false)
 			menu = "quit_to_title";
 		}
 	}
-	#endregion /*Quit to Map END*/
+	#endregion /* Quit to Map END */
 	
 	else
 	
-	#region /*Quit to Title*/
+	#region /* Quit to Title */
 	if (menu == "quit_to_title")
 	{
 		if (key_a_pressed)
@@ -861,14 +861,14 @@ and (show_loading_icon = false)
 		and (menu_delay == 0)
 		{
 			
-			#region /*Return to Title*/
+			#region /* Return to Title */
 			
-			#region /*Reset timer back to zero*/
+			#region /* Reset timer back to zero */
 			global.timeattack_realmillisecond = 0;
 			global.timeattack_millisecond = 0;
 			global.timeattack_second = 0;
 			global.timeattack_minute = 0;
-			#endregion /*Reset timer back to zero END*/
+			#endregion /* Reset timer back to zero END */
 			
 			global.quit_level = true;
 			global.quit_to_title = true;
@@ -896,7 +896,7 @@ and (show_loading_icon = false)
 			{
 				instance_destroy();
 			}
-			#endregion /*Return to Title END*/
+			#endregion /* Return to Title END */
 			
 		}
 		if (key_up)
@@ -932,11 +932,11 @@ and (show_loading_icon = false)
 			}
 		}
 	}
-	#endregion /*Quit to Title END*/
+	#endregion /* Quit to Title END */
 	
 	else
 	
-	#region /*Quit to Desktop*/
+	#region /* Quit to Desktop */
 	if (menu == "quit_to_desktop")
 	{
 		if (key_a_pressed)
@@ -979,11 +979,11 @@ and (show_loading_icon = false)
 			menu = "quit_nevermind";
 		}
 	}
-	#endregion /*Quit to Desktop END*/
+	#endregion /* Quit to Desktop END */
 	
 	else
 	
-	#region /*Quit Nevermind*/
+	#region /* Quit Nevermind */
 	if (menu == "quit_nevermind")
 	{
 		if (key_a_pressed)
@@ -1059,9 +1059,9 @@ and (show_loading_icon = false)
 			
 		}
 	}
-	#endregion /*Quit Nevermind END*/
+	#endregion /* Quit Nevermind END */
 	
-	#region /*Return to game by pressing the back key*/
+	#region /* Return to game by pressing the back key */
 	if (key_b_pressed)
 	and (menu_delay == 0)
 	{
@@ -1070,7 +1070,7 @@ and (show_loading_icon = false)
 		or (menu == "restart")
 		or (menu == "quit")
 		{
-			scr_config_save(); /*Save Config*/
+			scr_config_save(); /* Save Config */
 			audio_resume_all();
 			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
 			audio_sound_gain(global.music_underwater, 0, 0);
@@ -1087,12 +1087,12 @@ and (show_loading_icon = false)
 			}
 			if (asset_get_type("room_pause") == asset_room)
 			{
-				room = global.pause_room; /*Return to game END*/
+				room = global.pause_room; /* Return to game END */
 			}
 		}
 		else
 	
-		#region /*Return to first menu*/
+		#region /* Return to first menu */
 		if (menu == "reset_from_checkpoint")
 		or (menu == "reset_from_start")
 		or (menu == "restart_nevermind")
@@ -1109,15 +1109,15 @@ and (show_loading_icon = false)
 			menu_delay = 3;
 			menu = "quit";
 		}
-		#endregion /*Return to first menu END*/
+		#endregion /* Return to first menu END */
 		
 	}
-	#endregion /*Return to game by pressing the back key END*/
+	#endregion /* Return to game by pressing the back key END */
 	
 }
-/*PAUSE LEVEL EDITOR MENU*/
+/* PAUSE LEVEL EDITOR MENU */
 
-#region /*Show loading icon and reset level*/
+#region /* Show loading icon and reset level */
 if (show_loading_icon = true)
 {
 	loading_spinning_angle -= 10;
@@ -1130,7 +1130,7 @@ if (show_loading_icon = true)
 	and (loading_spinning_angle < -20)
 	{
 		
-		#region /*Restart Level*/
+		#region /* Restart Level */
 		global.restart_level = true;
 		audio_stop_all();
 		global.pause = false;
@@ -1156,7 +1156,7 @@ if (show_loading_icon = true)
 		{
 			instance_destroy();
 		}
-		#endregion /*Restart Level END*/
+		#endregion /* Restart Level END */
 		
 	}
 		
@@ -1166,14 +1166,14 @@ if (show_loading_icon = true)
 	and (loading_spinning_angle < -20)
 	{
 		
-		#region /*Restart Level*/
+		#region /* Restart Level */
 		
-		#region /*Reset timer back to zero*/
+		#region /* Reset timer back to zero */
 		global.timeattack_realmillisecond = 0;
 		global.timeattack_millisecond = 0;
 		global.timeattack_second = 0;
 		global.timeattack_minute = 0;
-		#endregion /*Reset timer back to zero END*/
+		#endregion /* Reset timer back to zero END */
 		
 		if (global.character_select_in_this_menu == "main_game")
 		{
@@ -1183,8 +1183,8 @@ if (show_loading_icon = true)
 			var level_name = string(uppercase_level_name);
 				
 			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-			ini_write_real(level_name, "x_checkpoint", 0);
-			ini_write_real(level_name, "y_checkpoint", 0);
+			ini_write_real(level_name, "checkpoint_x", 0);
+			ini_write_real(level_name, "checkpoint_y", 0);
 			ini_close();
 		}
 		else
@@ -1196,13 +1196,13 @@ if (show_loading_icon = true)
 			var level_name = string(uppercase_level_name);
 				
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
-			ini_write_real(level_name, "x_checkpoint", 0);
-			ini_write_real(level_name, "y_checkpoint", 0);
+			ini_write_real(level_name, "checkpoint_x", 0);
+			ini_write_real(level_name, "checkpoint_y", 0);
 			ini_close();
 		}
 		
-		global.x_checkpoint = 0;
-		global.y_checkpoint = 0;
+		global.checkpoint_x = 0;
+		global.checkpoint_y = 0;
 		
 		global.restart_level = true;
 		audio_stop_all();
@@ -1229,13 +1229,13 @@ if (show_loading_icon = true)
 		{
 			instance_destroy();
 		}
-		#endregion /*Restart Level END*/
+		#endregion /* Restart Level END */
 		
 	}
 }
-#endregion /*Show loading icon and reset level END*/
+#endregion /* Show loading icon and reset level END */
 
-#region /*Return to game*/
+#region /* Return to game */
 if (keyboard_check_pressed(vk_escape))
 or (gamepad_button_check_pressed(0, gp_start))
 or (gamepad_button_check_pressed(1, gp_start))
@@ -1250,7 +1250,7 @@ or (gamepad_button_check_pressed(3, gp_select))
 	and (input_key == false)
 	and (menu_delay == 0)
 	{
-		scr_config_save(); /*Save Config*/
+		scr_config_save(); /* Save Config */
 		audio_resume_all();
 		audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
 		audio_sound_gain(global.music_underwater, 0, 0);
@@ -1275,9 +1275,9 @@ or (gamepad_button_check_pressed(3, gp_select))
 		}
 	}
 }
-#endregion /*Return to game END*/
+#endregion /* Return to game END */
 
-scr_options_menu(); /*Options*/
+scr_options_menu(); /* Options */
 
 scr_menu_navigation_with_joystick_delay();
 

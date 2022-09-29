@@ -1,6 +1,6 @@
-/*Seperate world map camera object from the normal level camera*/
-/*Exclusively used on the world map*/
-/*So no conflicting code from the normal camera is running*/
+/* Seperate world map camera object from the normal level camera */
+/* Exclusively used on the world map */
+/* So no conflicting code from the normal camera is running */
 
 key_player1_zoom_in_hold = noone;
 key_player2_zoom_in_hold = noone;
@@ -29,10 +29,10 @@ else
 	yy = y;
 }
 
-#region /*Smooth the camera out even more*/
+#region /* Smooth the camera out even more */
 view_wview_lerp = 0;
 view_hview_lerp = 0;
-#endregion /*Smooth the camera out even more END*/
+#endregion /* Smooth the camera out even more END */
 
 zoom_lerp = global.zoom_world_map;
 zoom_border_lerp = 0;

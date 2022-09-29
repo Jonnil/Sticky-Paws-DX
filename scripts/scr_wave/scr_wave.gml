@@ -13,7 +13,7 @@
 //      image_xscale = scr_wave(0.5, 2.0, 1.0, 0.0)
 //      image_yscale = scr_wave(2.0, 0.5, 1.0, 0.0)
 
-function scr_wave(from, to, duration, offset)
+function scr_wave(from = 100, to = 140, duration = 4.5, offset = 0)
 {
 	var _wave = (to - from) * 0.5;
 	return from + _wave + sin((((current_time * 0.001) + duration * offset) / duration) * (pi* 2)) * _wave;

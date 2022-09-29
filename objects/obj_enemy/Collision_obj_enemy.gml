@@ -1,4 +1,4 @@
-#region /*Turn around*/
+#region /* Turn around */
 if (die = false)
 and (sliding_along_ground = 0)
 and (other.die = false)
@@ -25,7 +25,7 @@ and (other.die = false)
 		image_xscale = -1;
 	}
 }
-#endregion /*Turn around END*/
+#endregion /* Turn around END */
 
 if (sliding_along_ground = +1)
 and (other.die = false)
@@ -95,9 +95,9 @@ and (other.sliding_along_ground = 0)
 		
 		scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
 		
-		#region /*Rewards*/
+		#region /* Rewards */
 		
-		#region /* 1 Coin*/
+		#region /* 1 Coin */
 		if (asset_get_type("obj_basic_collectible") == asset_object)
 		{
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -107,9 +107,9 @@ and (other.sliding_along_ground = 0)
 				bounceup = true;
 			}
 		}
-		#endregion /* 1 Coin END*/
+		#endregion /* 1 Coin END */
 		
-		#region /* 200 Score*/
+		#region /* 200 Score */
 		score += 200;
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -118,9 +118,9 @@ and (other.sliding_along_ground = 0)
 				scoreup = 200;
 			}
 		}
-		#endregion /* 200 Score END*/
+		#endregion /* 200 Score END */
 		
-		#endregion /*Rewards END*/
+		#endregion /* Rewards END */
 		
 		audio_sound_pitch(snd_stomp, 1);
 		scr_audio_play(snd_stomp, volume_source.sound);

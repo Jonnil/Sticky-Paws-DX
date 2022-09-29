@@ -4,7 +4,7 @@
 function scr_load_resource_pack_sprite()
 {
 	
-	#region /*Delete sprites before loading new sprites*/
+	#region /* Delete sprites before loading new sprites */
 	if (room != room_splash_screen)
 	{
 		if (global.resource_pack_sprite_logo_discord > 0){global.resource_pack_sprite_logo_discord = spr_noone;}
@@ -57,7 +57,7 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_buttons_playstation4 > 0){global.resource_pack_sprite_buttons_playstation4 = spr_noone;}
 		if (global.resource_pack_sprite_buttons_playstation5 > 0){global.resource_pack_sprite_buttons_playstation5 = spr_noone;}
 	}
-	#endregion /*Delete sprites before loading new sprites END*/
+	#endregion /* Delete sprites before loading new sprites END */
 	
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 	or (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))

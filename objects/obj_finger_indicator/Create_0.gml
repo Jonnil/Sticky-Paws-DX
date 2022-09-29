@@ -1,2 +1,2 @@
-/*This is set when created by object*/
+/* This is set when created by object */
 my_touch = -1;

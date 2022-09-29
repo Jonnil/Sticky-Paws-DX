@@ -1,7 +1,7 @@
-#region /*Keyboard Controls*/
+#region /* Keyboard Controls */
 var key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or (gamepad_axis_value(0, gp_axislh) < 0);
 var key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
-#endregion /*Keyboard Controls END*/
+#endregion /* Keyboard Controls END */
 
 xx = lerp(xx, window_get_width() / 2, 0.1);
 yy = lerp(yy, scr_wave(y- 8, y + 8, 4.5, 0), 0.1);
@@ -26,13 +26,13 @@ image_alpha = 0;
 image_speed = 0;
 depth = -10000;
 
-#region /*Draw Dark Background*/
+#region /* Draw Dark Background */
 draw_set_alpha(0.9);
 draw_rectangle_colour(0, 0, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
-#endregion /*Draw Dark Background END*/
+#endregion /* Draw Dark Background END */
 
-#region /*Draw Artwork*/
+#region /* Draw Artwork */
 if (image_index = 0) and (level1_big_collectible1 = true)
 or(image_index = 1) and (level1_big_collectible2 = true)
 or(image_index = 2) and (level1_big_collectible3 = true)
@@ -95,13 +95,13 @@ or(image_index = 49) and (levela_big_collectible5 = true)
 
 or(image_index >= max_artwork)
 {
-	draw_sprite_ext(sprite_index, image_index, xx, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Draw the actual artwork*/
+	draw_sprite_ext(sprite_index, image_index, xx, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Draw the actual artwork */
 	
-	#region /*Draw Comments*/
+	#region /* Draw Comments */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(+ 32, window_get_height() -94, string(current_comment), global.default_text_size, c_black, c_white, 1);
-	#endregion /*Draw Comments END*/
+	#endregion /* Draw Comments END */
 	
 }
 draw_set_halign(fa_center);
@@ -157,13 +157,13 @@ if (image_index = 47) and (levela_big_collectible3 < true){scr_draw_text_outline
 if (image_index = 48) and (levela_big_collectible4 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 4 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
 if (image_index = 49) and (levela_big_collectible5 < true){scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("To unlock this artwork") + ":\n " + l10n_text("Get big fish") + " 5 " + l10n_text("in level") + " A", global.default_text_size * 2, c_black, c_white, 1);}
 
-#endregion /*Draw Artwork END*/
+#endregion /* Draw Artwork END */
 
-#region /*Draw what artwork is selected*/
+#region /* Draw what artwork is selected */
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 scr_draw_text_outlined(+ 32, window_get_height() - 32, "< " + l10n_text("Artwork") + " " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
-#endregion /*Draw what artwork is selected END*/
+#endregion /* Draw what artwork is selected END */
 
 if (gamepad_is_connected(0))
 and (global.controls_used_for_menu_navigation == "controller")
@@ -193,7 +193,7 @@ and (global.controls_used_for_menu_navigation == "mouse")
 	draw_set_alpha(1);
 }
 
-#region /*Left and Right Navigation*/
+#region /* Left and Right Navigation */
 if (key_left)
 or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, window_get_width() / 2 - 100, window_get_height() - 42))
 and (mouse_check_button_pressed(mb_left))
@@ -231,9 +231,9 @@ and (mouse_check_button_pressed(mb_left))
 		gamepad_stick = false;
 	}
 }
-#endregion /*Left and Right Navigation END*/
+#endregion /* Left and Right Navigation END */
 
-#region /*Back*/
+#region /* Back */
 if (keyboard_check_pressed(ord("X")))
 or (keyboard_check_pressed(vk_backspace))
 or (keyboard_check_pressed(vk_escape))
@@ -250,7 +250,7 @@ and (mouse_check_button_released(mb_left))
 draw_menu_button(window_get_width() - 370, window_get_height() - 42, l10n_text("Back"), "back", "back");
 draw_sprite_ext(spr_icons_back, 0, window_get_width() - 370 + 20, window_get_height() - 42 + 21, 1, 1, 0, c_white, 1);
 
-#region /*Draw Back Key*/
+#region /* Draw Back Key */
 if (gamepad_is_connected(0))
 and (global.controls_used_for_menu_navigation == "controller")
 {
@@ -260,9 +260,9 @@ else
 {
 	draw_sprite_ext(spr_keyboard_keys, ord("X"), window_get_width() - 32, window_get_height() -21, 0.5, 0.5, 0, c_white, 1);
 }
-#endregion /*Draw Back key END*/
+#endregion /* Draw Back key END */
 
-#endregion /*Back END*/
+#endregion /* Back END */
 
 }
 else
@@ -273,7 +273,7 @@ else
 	and (instance_nearest(x, y, obj_player).can_move = true)
 	and (instance_nearest(x, y, obj_player).intro_animation = "")
 	{
-		image_alpha = lerp(image_alpha, 1, 0.1); /*Only show art collection enterance whenever the character can actually move, so it doesn't show up during cutscenes*/
+		image_alpha = lerp(image_alpha, 1, 0.1); /* Only show art collection enterance whenever the character can actually move, so it doesn't show up during cutscenes */
 	}
 	else
 	{
@@ -301,7 +301,7 @@ if (can_navigate = false)
 	gamepad_stick = false;
 }
 
-#region /*Comments*/
+#region /* Comments */
 if (image_index = 0){current_comment = l10n_text("Artist") + ": Jonnil - Sticky the Cat";}
 if (image_index = 1){current_comment = l10n_text("Artist") + ": Jonnil - Sticky the Cat doing a heroic pose";}
 if (image_index = 2){current_comment = l10n_text("Artist") + ": Jonnil - Sticky the Cat doing the OK sign";}
@@ -377,6 +377,6 @@ if (image_index = 71){current_comment = l10n_text("Artist") + ": DoruDoLasu - Ca
 if (image_index = 72){current_comment = l10n_text("Artist") + ": red_luigi - Sticky Pixel Art";}
 if (image_index = 73){current_comment = l10n_text("Artist") + ": Andrea Colunga - Catlyn and her prey";}
 if (image_index = 74){current_comment = l10n_text("Artist") + ": Furret76 - Sticcy pau and cetlun";}
-#endregion /*Comments END*/
+#endregion /* Comments END */
 
 scr_draw_mouse_cursor();

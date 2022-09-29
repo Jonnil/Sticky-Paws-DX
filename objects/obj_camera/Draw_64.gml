@@ -15,9 +15,9 @@ and (!instance_exists(obj_title))
 		game_restart();
 	}
 }
-var mouse_x_position = window_mouse_get_x(); /*Update x position of fake mouse*/
-var mouse_y_position = window_mouse_get_y(); /*Update y position of fake mouse*/
-var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /*Get distance from fake mouse to real mouse*/
+var mouse_x_position = window_mouse_get_x(); /* Update x position of fake mouse */
+var mouse_y_position = window_mouse_get_y(); /* Update y position of fake mouse */
+var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /* Get distance from fake mouse to real mouse */
 
 if (keyboard_check(vk_anykey))
 or (mouse_check_button(mb_any))
@@ -136,9 +136,9 @@ if (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 {
 	
-	#region /*Show HUD timers*/
+	#region /* Show HUD timers */
 	
-	#region /*If HUD show timer is set to always hide*/
+	#region /* If HUD show timer is set to always hide */
 	if (global.hud_hide_time <= 0)
 	or(show_letterbox > 0)
 	{
@@ -148,9 +148,9 @@ and (!instance_exists(obj_title))
 		global.hud_show_basic_collectibles = false;
 		global.hud_show_score = false;
 	}
-	#endregion /*If HUD show timer is set to always hide*/
+	#endregion /* If HUD show timer is set to always hide */
 	
-	#region /*If HUD show timer is set to never hide*/
+	#region /* If HUD show timer is set to never hide */
 	if (global.hud_hide_time >= 10)
 	{
 		global.hud_show_lives = true;
@@ -162,7 +162,7 @@ and (!instance_exists(obj_title))
 		global.hud_show_basic_collectibles = true;
 		global.hud_show_score = true;
 	}
-	#endregion /*If HUD show timer is set to never hide*/
+	#endregion /* If HUD show timer is set to never hide */
 	
 	if (global.hud_hide_time >= 10)
 	{
@@ -227,7 +227,7 @@ and (!instance_exists(obj_title))
 	if (global.hud_hide_time > 0)
 	{
 		
-		#region /*Show Lives*/
+		#region /* Show Lives */
 		if (asset_get_type("room_world_map") == asset_room)
 		and (room == room_world_map)
 		{
@@ -244,9 +244,9 @@ and (!instance_exists(obj_title))
 				hud_show_lives = lerp(hud_show_lives, - 32, 0.1);
 			}
 		}
-		#endregion /*Show Lives END*/
+		#endregion /* Show Lives END */
 		
-		#region /*Show Deaths*/
+		#region /* Show Deaths */
 		if (global.hud_show_deaths = true)
 		and (global.show_deaths_counter = true)
 		{
@@ -263,9 +263,9 @@ and (!instance_exists(obj_title))
 		{
 			hud_show_deaths = lerp(hud_show_deaths, - 32, 0.1);
 		}
-		#endregion /*Show Deaths END*/
+		#endregion /* Show Deaths END */
 		
-		#region /*Show Big Collectibles*/
+		#region /* Show Big Collectibles */
 		if (global.hud_show_big_collectibles = true)
 		{
 			if (hud_show_lives > 0)
@@ -292,9 +292,9 @@ and (!instance_exists(obj_title))
 		{
 			hud_show_big_collectibles = lerp(hud_show_big_collectibles, - 32, 0.1);
 		}
-		#endregion /*Show Big Collectibles END*/
+		#endregion /* Show Big Collectibles END */
 		
-		#region /*Show Basic Collectible*/
+		#region /* Show Basic Collectible */
 		if (global.hud_show_basic_collectibles = true)
 		{
 			if (hud_show_lives > 0)
@@ -342,9 +342,9 @@ and (!instance_exists(obj_title))
 		{
 			hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, - 32, 0.1);
 		}
-		#endregion /*Show Basic Collectible END*/
+		#endregion /* Show Basic Collectible END */
 		
-		#region /*Show Score*/
+		#region /* Show Score */
 		if (global.hud_show_score = true)
 		{
 			hud_show_score = lerp(hud_show_score, 32, 0.1);
@@ -353,18 +353,18 @@ and (!instance_exists(obj_title))
 		{
 			hud_show_score = lerp(hud_show_score, -64, 0.1);
 		}
-		#endregion /*Show Score END*/
+		#endregion /* Show Score END */
 		
 	}
 	
-	#endregion /*Show HUD timers END*/
+	#endregion /* Show HUD timers END */
 		
-	#region /*Lives, Deaths, Big Collectibles, Basic Collectibles, Score and Timer*/
+	#region /* Lives, Deaths, Big Collectibles, Basic Collectibles, Score and Timer */
 	if (asset_get_type("obj_pause") == asset_object)
 	and (!instance_exists(obj_pause))
 	{
 		
-		#region /*Lives*/
+		#region /* Lives */
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		if (sprite_lives_icon > noone)
@@ -379,9 +379,9 @@ and (!instance_exists(obj_title))
 		{
 			scr_draw_text_outlined(64, hud_show_lives, lives, global.default_text_size, c_black, c_white, 1);
 		}
-		#endregion /*Lives END*/
+		#endregion /* Lives END */
 		
-		#region /*Death Counter*/
+		#region /* Death Counter */
 		if (global.show_deaths_counter == true)
 		{
 			if (sprite_lives_icon > noone)
@@ -392,11 +392,11 @@ and (!instance_exists(obj_title))
 			draw_line_width_color(32 - 16, hud_show_deaths+ 16, 32 + 16, hud_show_deaths - 16, 3, c_red, c_red);
 			scr_draw_text_outlined(64, hud_show_deaths, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 		}
-		#endregion /*Death Counter END*/
+		#endregion /* Death Counter END */
 		
-		#region /*Big Collectibles*/
+		#region /* Big Collectibles */
 		
-		#region /*Big Collectible 1*/
+		#region /* Big Collectible 1 */
 		if (global.big_collectible1 = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -411,9 +411,9 @@ and (!instance_exists(obj_title))
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
-		#endregion /*Big Collectible 1 END*/
+		#endregion /* Big Collectible 1 END */
 		
-		#region /*Big Collectible 2*/
+		#region /* Big Collectible 2 */
 		if (global.big_collectible2 = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -428,9 +428,9 @@ and (!instance_exists(obj_title))
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
-		#endregion /*Big Collectible 2 END*/
+		#endregion /* Big Collectible 2 END */
 		
-		#region /*Big Collectible 3*/
+		#region /* Big Collectible 3 */
 		if (global.big_collectible3 = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -445,9 +445,9 @@ and (!instance_exists(obj_title))
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
-		#endregion /*Big Collectible 3 END*/
+		#endregion /* Big Collectible 3 END */
 		
-		#region /*Big Collectible 4 */
+		#region /* Big Collectible 4 */
 		if (global.big_collectible4 = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -462,9 +462,9 @@ and (!instance_exists(obj_title))
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
-		#endregion /*Big Collectible 4 END*/
+		#endregion /* Big Collectible 4 END */
 		
-		#region /*Big Collectible 5*/
+		#region /* Big Collectible 5 */
 		if (global.big_collectible5 = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -479,25 +479,25 @@ and (!instance_exists(obj_title))
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
 		}
-		#endregion /*Big Collectible 5 END*/
+		#endregion /* Big Collectible 5 END */
 		
-		#endregion /*Big Collectibles*/
+		#endregion /* Big Collectibles */
 		
-		#region /*Basic Collectible*/
+		#region /* Basic Collectible */
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 0, 32, hud_show_basic_collectibles, 0.75, 0.75, 0, c_white, 1);
 		scr_draw_text_outlined(64, hud_show_basic_collectibles, global.basic_collectibles, global.default_text_size, c_black, c_white, 1);
-		#endregion /*Basic Collectible END*/
+		#endregion /* Basic Collectible END */
 		
-		#region /*Score*/
+		#region /* Score */
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(window_get_width() - 200, hud_show_score, l10n_text("Score"), global.default_text_size, c_white, c_black, 1);
 		scr_draw_text_outlined(window_get_width() - 200, hud_show_score + 32, string(score), global.default_text_size, c_white, c_black, 1);
-		#endregion /*Score END*/
+		#endregion /* Score END */
 		
-		#region /*Time Countdown*/
+		#region /* Time Countdown */
 		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.enable_time_countdown == true)
@@ -507,11 +507,11 @@ and (!instance_exists(obj_title))
 		{
 			time_countup_y = 94;
 			
-			#region /*Time is running out message*/
+			#region /* Time is running out message */
 			if (global.player_has_entered_goal = false)
 			{
 				if (global.time_countdown <= 99)
-				and (hurry_up_message_timer <= 300) /*Make the hurry up message stay on screen for 5 seconds (which is 300 frames)*/
+				and (hurry_up_message_timer <= 300) /* Make the hurry up message stay on screen for 5 seconds (which is 300 frames) */
 				{
 					hurry_up_message_timer += 1;
 					draw_set_halign(fa_center);
@@ -520,9 +520,9 @@ and (!instance_exists(obj_title))
 					draw_text_transformed_color(display_get_gui_width() / 2, display_get_gui_height() / 2, l10n_text("HURRY UP!"), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 				}
 			}
-			#endregion /*Time is running out message END*/
+			#endregion /* Time is running out message END */
 			
-			#region /*Time Over Message*/
+			#region /* Time Over Message */
 			if (global.time_countdown == 0)
 			and (global.player_has_entered_goal == false)
 			{
@@ -530,7 +530,7 @@ and (!instance_exists(obj_title))
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, l10n_text("TIME OVER"), global.default_text_size * 5, c_black, c_white, 1);
 			}
-			#endregion /*Time Over Message END*/
+			#endregion /* Time Over Message END */
 			
 			if (global.hud_hide_time > 0)
 			if (global.time_countdown >= 0)
@@ -575,9 +575,9 @@ and (!instance_exists(obj_title))
 		{
 			time_countup_y = 32;
 		}
-		#endregion /*Time Countdown END*/
+		#endregion /* Time Countdown END */
 		
-		#region /*Time countup in Minutes, Seconds and Milliseconds*/
+		#region /* Time countup in Minutes, Seconds and Milliseconds */
 		if (global.show_timer = true)
 		{
 			draw_set_halign(fa_right)
@@ -596,10 +596,10 @@ and (!instance_exists(obj_title))
 			}
 			scr_draw_text_outlined(window_get_width() - 30, time_countup_y + 2, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
-		#endregion /*Time countup in Minutes, Seconds and Milliseconds END*/
+		#endregion /* Time countup in Minutes, Seconds and Milliseconds END */
 		
 	}
-	#endregion /*Lives, Deaths, Big Collectibles, Basic Collectibles, Score and Timer END*/
+	#endregion /* Lives, Deaths, Big Collectibles, Basic Collectibles, Score and Timer END */
 
 }
 
@@ -615,7 +615,7 @@ and (!instance_exists(obj_title))
 	scr_draw_text_outlined( 32, 164, l10n_text("Instance Count") + " : " + string(instance_count), global.default_text_size, c_black, c_white, 1);
 }
 
-#region /*Show if you are playing the demo version or not*/
+#region /* Show if you are playing the demo version or not */
 if (global.demo == true)
 and (global.play_attract_demo = false)
 {
@@ -635,9 +635,9 @@ and (global.play_attract_demo = false)
 		scr_draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + l10n_text("Demo"), global.default_text_size, c_black, c_white, 1);
 	}
 }
-#endregion /*Show if you are playing the demo version or not END*/
+#endregion /* Show if you are playing the demo version or not END */
 
-#region /*Show if you are playing on convention mode or not*/
+#region /* Show if you are playing on convention mode or not */
 if (global.convention_mode = true)
 and (global.demo == false)
 and (global.play_attract_demo = false)
@@ -647,9 +647,9 @@ and (room == room_title)
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(window_get_width() / 2, + 32, l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
 }
-#endregion /*Show if you are playing on convention mode or not END*/
+#endregion /* Show if you are playing on convention mode or not END */
 
-#region /*Show if you are playing on arcade mode or not*/
+#region /* Show if you are playing on arcade mode or not */
 if (global.arcade_mode = true)
 and (global.demo == false)
 and (global.play_attract_demo = false)
@@ -659,9 +659,9 @@ and (room == room_title)
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(window_get_width() / 2, + 32, l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
 }
-#endregion /*Show if you are playing on arcade mode or not END*/
+#endregion /* Show if you are playing on arcade mode or not END */
 
-#region /*Show if you have Assist mode enabled or not*/
+#region /* Show if you have Assist mode enabled or not */
 if (global.assist_enable == true)
 and (global.assist_show_assist_mode_text = true)
 and (asset_get_type("obj_title") == asset_object)
@@ -671,13 +671,13 @@ and (!instance_exists(obj_title))
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(window_get_width() - 32, window_get_height() - 32, l10n_text("Assist Mode"), global.default_text_size, c_black, c_white, 1);
 }
-#endregion /*Show if you have Assist mode enabled or not END*/
+#endregion /* Show if you have Assist mode enabled or not END */
 
-#region /*Show Controls*/
+#region /* Show Controls */
 
-#region /*Show keys x positions*/
+#region /* Show keys x positions */
 
-#region /*Player 1 show keys x positions*/
+#region /* Player 1 show keys x positions */
 player1_show_dive_key_x = 32;
 player1_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
 player1_show_crouch_key_x = player1_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
@@ -691,15 +691,15 @@ if (global.player1_sprint_toggle = false)
 }
 else
 {
-	player1_show_sprint_key_x = -999; /*Hide the sprint key if you have "Always Run" turned on*/
+	player1_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
 	player1_show_left_key_x = player1_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
 	player1_show_right_key_x = player1_show_left_key_x + string_width(l10n_text("Left")) + 37;
 	player1_show_down_key_x = player1_show_right_key_x + string_width(l10n_text("Right")) + 37;
 	player1_show_up_key_x = player1_show_down_key_x + string_width(l10n_text("Down")) + 37;
 }
-#endregion /*Player 1 show keys x positions END*/
+#endregion /* Player 1 show keys x positions END */
 
-#region /*Player 2 show keys x positions*/
+#region /* Player 2 show keys x positions */
 player2_show_dive_key_x = 32;
 player2_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
 player2_show_crouch_key_x = player2_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
@@ -713,15 +713,15 @@ if (global.player2_sprint_toggle = false)
 }
 else
 {
-	player2_show_sprint_key_x = -999; /*Hide the sprint key if you have "Always Run" turned on*/
+	player2_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
 	player2_show_left_key_x = player2_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
 	player2_show_right_key_x = player2_show_left_key_x + string_width(l10n_text("Left")) + 37;
 	player2_show_down_key_x = player2_show_right_key_x + string_width(l10n_text("Right")) + 37;
 	player2_show_up_key_x = player2_show_down_key_x + string_width(l10n_text("Down")) + 37;
 }
-#endregion /*Player 2 show keys x positions END*/
+#endregion /* Player 2 show keys x positions END */
 
-#region /*Player 3 show keys x positions*/
+#region /* Player 3 show keys x positions */
 player3_show_dive_key_x = 32;
 player3_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
 player3_show_crouch_key_x = player3_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
@@ -735,15 +735,15 @@ if (global.player3_sprint_toggle = false)
 }
 else
 {
-	player3_show_sprint_key_x = -999; /*Hide the sprint key if you have "Always Run" turned on*/
+	player3_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
 	player3_show_left_key_x = player3_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
 	player3_show_right_key_x = player3_show_left_key_x + string_width(l10n_text("Left")) + 37;
 	player3_show_down_key_x = player3_show_right_key_x + string_width(l10n_text("Right")) + 37;
 	player3_show_up_key_x = player3_show_down_key_x + string_width(l10n_text("Down")) + 37;
 }
-#endregion /*Player 3 show keys x positions END*/
+#endregion /* Player 3 show keys x positions END */
 
-#region /*Player 4 show keys x positions*/
+#region /* Player 4 show keys x positions */
 player4_show_dive_key_x = 32;
 player4_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
 player4_show_crouch_key_x = player4_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
@@ -757,15 +757,15 @@ if (global.player4_sprint_toggle = false)
 }
 else
 {
-	player4_show_sprint_key_x = -999; /*Hide the sprint key if you have "Always Run" turned on*/
+	player4_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
 	player4_show_left_key_x = player4_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
 	player4_show_right_key_x = player4_show_left_key_x + string_width(l10n_text("Left")) + 37;
 	player4_show_down_key_x = player4_show_right_key_x + string_width(l10n_text("Right")) + 37;
 	player4_show_up_key_x = player4_show_down_key_x + string_width(l10n_text("Down")) + 37;
 }
-#endregion /*Player 4 show keys x positions END*/
+#endregion /* Player 4 show keys x positions END */
 
-#endregion /*Show keys x positions END*/
+#endregion /* Show keys x positions END */
 
 if (os_type != os_ios)
 and (os_type != os_android)
@@ -773,23 +773,23 @@ and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	
-	#region /*Show Multiplayer Controls*/
+	#region /* Show Multiplayer Controls */
 	if (global.player1_can_play == true)
 	or (global.player2_can_play = true)
 	or (global.player3_can_play = true)
 	or (global.player4_can_play = true)
 	{
 		
-		#region /*Y position of show controls for each player*/
+		#region /* Y position of show controls for each player */
 		if (player1_show_controls_alpha > 0)
 		and (player2_show_controls_alpha <= 0)
 		and (player3_show_controls_alpha <= 0)
 		and (player4_show_controls_alpha <= 0)
 		{
 			show_player1_controls_y = lerp(show_player1_controls_y, 32, 0.1);
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 		}
 		else
 		if (player1_show_controls_alpha <= 0)
@@ -797,10 +797,10 @@ and (!instance_exists(obj_pause))
 		and (player3_show_controls_alpha <= 0)
 		and (player4_show_controls_alpha <= 0)
 		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 		}
 		else
 		if (player1_show_controls_alpha <= 0)
@@ -808,10 +808,10 @@ and (!instance_exists(obj_pause))
 		and (player3_show_controls_alpha > 0)
 		and (player4_show_controls_alpha <= 0)
 		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
 			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 		}
 		else
 		if (player1_show_controls_alpha <= 0)
@@ -819,9 +819,9 @@ and (!instance_exists(obj_pause))
 		and (player3_show_controls_alpha <= 0)
 		and (player4_show_controls_alpha > 0)
 		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
 			show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
 		}
 		else
@@ -832,8 +832,8 @@ and (!instance_exists(obj_pause))
 		{
 			show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
 			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 		}
 		else
 		if (player1_show_controls_alpha > 0)
@@ -844,7 +844,7 @@ and (!instance_exists(obj_pause))
 			show_player1_controls_y = lerp(show_player1_controls_y, 116, 0.1);
 			show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
 			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 		}
 		else
 		if (player1_show_controls_alpha > 0)
@@ -853,9 +853,9 @@ and (!instance_exists(obj_pause))
 		and (player4_show_controls_alpha <= 0)
 		{
 			show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
 			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 		}
 		else
 		if (player1_show_controls_alpha <= 0)
@@ -863,10 +863,10 @@ and (!instance_exists(obj_pause))
 		and (player3_show_controls_alpha > 0)
 		and (player4_show_controls_alpha <= 0)
 		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 			show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
 			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 		}
 		else
 		if (player1_show_controls_alpha <= 0)
@@ -874,10 +874,10 @@ and (!instance_exists(obj_pause))
 		and (player3_show_controls_alpha <= 0)
 		and (player4_show_controls_alpha <= 0)
 		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /*+ 32 = don't show*/
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /*+ 32 = don't show*/
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 		}
 		else
 		{
@@ -887,9 +887,9 @@ and (!instance_exists(obj_pause))
 			show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
 		}
 		
-		#endregion /*Y position of show controls for each player END*/
+		#endregion /* Y position of show controls for each player END */
 		
-		#region /*Multiplayer Player 1*/
+		#region /* Multiplayer Player 1 */
 		if (player1 > 0)
 		and (instance_exists(player1))
 		and (player1.partner_character = false)
@@ -900,7 +900,7 @@ and (!instance_exists(obj_pause))
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			#region /*Show Player 1 Dive Key*/
+			#region /* Show Player 1 Dive Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player1_gamepad_button_dive > noone)
@@ -930,9 +930,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player1_show_dive_key_x + 22, window_get_height() - show_player1_controls_y, l10n_text("Pounce"), global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player1_key2_dive, player1_show_dive_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
-			#endregion /*Show Player 1 Dive Key END*/
+			#endregion /* Show Player 1 Dive Key END */
 			
-			#region /*Show Player 1 Jump Key*/
+			#region /* Show Player 1 Jump Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player1_gamepad_button_jump > noone)
@@ -962,9 +962,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player1_show_jump_key_x + 22, window_get_height() - show_player1_controls_y, l10n_text("Jump"), global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, player1_show_jump_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
-			#endregion /*Show Player 1 Jump Key END*/
+			#endregion /* Show Player 1 Jump Key END */
 			
-			#region /*Show Player 1 Crouch Key*/
+			#region /* Show Player 1 Crouch Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player1_gamepad_button_crouch > noone)
@@ -1024,9 +1024,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player1_show_crouch_key_x + 22, window_get_height() - show_player1_controls_y, l10n_text("Crouch"), global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player1_key2_crouch_toggle, player1_show_crouch_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
-			#endregion /*Show Player 1 Crouch Key END*/
+			#endregion /* Show Player 1 Crouch Key END */
 			
-			#region /*Show Player 1 Sprint Key*/
+			#region /* Show Player 1 Sprint Key */
 			if (global.player1_sprint_toggle = false)
 			{
 				if (gamepad_is_connected(0))
@@ -1089,9 +1089,9 @@ and (!instance_exists(obj_pause))
 					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_sprint_toggle, player1_show_sprint_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 				}
 			}
-			#endregion /*Show Player 1 Sprint Key END*/
+			#endregion /* Show Player 1 Sprint Key END */
 			
-			#region /*Show Player 1 Left Key*/
+			#region /* Show Player 1 Left Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player1_gamepad_button_left > noone)
@@ -1121,9 +1121,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player1_show_left_key_x + 22, window_get_height() - show_player1_controls_y, l10n_text("Left"), global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player1_key2_left, player1_show_left_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
-			#endregion /*Show Player 1 Left Key END*/
+			#endregion /* Show Player 1 Left Key END */
 			
-			#region /*Show Player 1 Right Key*/
+			#region /* Show Player 1 Right Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player1_gamepad_button_right > noone)
@@ -1153,9 +1153,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player1_show_right_key_x + 22, window_get_height() - show_player1_controls_y, l10n_text("Right"), global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player1_key2_right, player1_show_right_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
-			#endregion /*Show Player 1 Right Key END*/
+			#endregion /* Show Player 1 Right Key END */
 			
-			#region /*Show Player 1 Down Key*/
+			#region /* Show Player 1 Down Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player1_gamepad_button_down > noone)
@@ -1185,9 +1185,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player1_show_down_key_x + 22, window_get_height() - show_player1_controls_y, l10n_text("Down"), global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player1_key2_down, player1_show_down_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
-			#endregion /*Show Player 1 Down Key END*/
+			#endregion /* Show Player 1 Down Key END */
 			
-			#region /*Show Player 1 Up Key*/
+			#region /* Show Player 1 Up Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player1_gamepad_button_up > noone)
@@ -1217,7 +1217,7 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player1_show_up_key_x + 22, window_get_height() - show_player1_controls_y, l10n_text("Up"), global.default_text_size, c_black, global.player1_color, player1_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player1_key2_up, player1_show_up_key_x, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 			}
-			#endregion /*Show Player 1 Down Key END*/
+			#endregion /* Show Player 1 Down Key END */
 			
 		}
 		else
@@ -1229,7 +1229,7 @@ and (!instance_exists(obj_pause))
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			#region /*Show Player 1 Join Game Key*/
+			#region /* Show Player 1 Join Game Key */
 			if (can_spawn_player1 = true)
 			and (lives > 0)
 			and (global.player1_show_controls >= 1)
@@ -1255,12 +1255,12 @@ and (!instance_exists(obj_pause))
 					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_jump, 252, window_get_height() - show_player1_controls_y, 0.5, 0.5, 0, c_white, player1_show_controls_alpha);
 				}
 			}
-			#endregion /*Show Player 1 Join Game Key END*/
+			#endregion /* Show Player 1 Join Game Key END */
 			
 		}
-		#endregion /*Multiplayer Player 1 END*/
+		#endregion /* Multiplayer Player 1 END */
 		
-		#region /*Multiplayer Player 2*/
+		#region /* Multiplayer Player 2 */
 		if (player2 > 0)
 		and (instance_exists(player2))
 		and (player2.partner_character = false)
@@ -1271,7 +1271,7 @@ and (!instance_exists(obj_pause))
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			#region /*Show Player 2 Dive Key*/
+			#region /* Show Player 2 Dive Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player2_gamepad_button_dive > noone)
@@ -1301,9 +1301,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player2_show_dive_key_x + 22, window_get_height() - show_player2_controls_y, l10n_text("Pounce"), global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player2_key2_dive, player2_show_dive_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
-			#endregion /*Show Player 2 Dive Key END*/
+			#endregion /* Show Player 2 Dive Key END */
 			
-			#region /*Show Player 2 Jump Key*/
+			#region /* Show Player 2 Jump Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player2_gamepad_button_jump > noone)
@@ -1333,9 +1333,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player2_show_jump_key_x + 22, window_get_height() - show_player2_controls_y, l10n_text("Jump"), global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, player2_show_jump_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
-			#endregion /*Show Player 2 Jump Key END*/
+			#endregion /* Show Player 2 Jump Key END */
 			
-			#region /*Show Player 2 Crouch Key*/
+			#region /* Show Player 2 Crouch Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player2_gamepad_button_crouch > noone)
@@ -1395,9 +1395,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player2_show_crouch_key_x + 22, window_get_height() - show_player2_controls_y, l10n_text("Crouch"), global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player2_key2_crouch_toggle, player2_show_crouch_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
-			#endregion /*Show Player 2 Crouch Key END*/
+			#endregion /* Show Player 2 Crouch Key END */
 			
-			#region /*Show Player 2 Sprint Key*/
+			#region /* Show Player 2 Sprint Key */
 			if (global.player2_sprint_toggle = false)
 			{
 				if (gamepad_is_connected(0))
@@ -1460,9 +1460,9 @@ and (!instance_exists(obj_pause))
 					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_sprint_toggle, player2_show_sprint_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 				}
 			}
-			#endregion /*Show Player 2 Sprint Key END*/
+			#endregion /* Show Player 2 Sprint Key END */
 			
-			#region /*Show Player 2 Left Key*/
+			#region /* Show Player 2 Left Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player2_gamepad_button_left > noone)
@@ -1492,9 +1492,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player2_show_left_key_x + 22, window_get_height() - show_player2_controls_y, l10n_text("Left"), global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player2_key2_left, player2_show_left_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
-			#endregion /*Show Player 2 Left Key END*/
+			#endregion /* Show Player 2 Left Key END */
 			
-			#region /*Show Player 2 Right Key*/
+			#region /* Show Player 2 Right Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player2_gamepad_button_right > noone)
@@ -1524,9 +1524,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player2_show_right_key_x + 22, window_get_height() - show_player2_controls_y, l10n_text("Right"), global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player2_key2_right, player2_show_right_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
-			#endregion /*Show Player 2 Right Key END*/
+			#endregion /* Show Player 2 Right Key END */
 			
-			#region /*Show Player 2 Down Key*/
+			#region /* Show Player 2 Down Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player2_gamepad_button_down > noone)
@@ -1556,9 +1556,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player2_show_down_key_x + 22, window_get_height() - show_player2_controls_y, l10n_text("Down"), global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player2_key2_down, player2_show_down_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
-			#endregion /*Show Player 2 Down Key END*/
+			#endregion /* Show Player 2 Down Key END */
 			
-			#region /*Show Player 2 Up Key*/
+			#region /* Show Player 2 Up Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player2_gamepad_button_up > noone)
@@ -1588,7 +1588,7 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player2_show_up_key_x + 22, window_get_height() - show_player2_controls_y, l10n_text("Up"), global.default_text_size, c_black, global.player2_color, player2_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player2_key2_up, player2_show_up_key_x, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 			}
-			#endregion /*Show Player 2 Down Key END*/
+			#endregion /* Show Player 2 Down Key END */
 			
 		}
 		else
@@ -1600,7 +1600,7 @@ and (!instance_exists(obj_pause))
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			#region /*Show Player 2 Join Game Key*/
+			#region /* Show Player 2 Join Game Key */
 			if (can_spawn_player2 = true)
 			and (lives > 0)
 			and (global.player2_show_controls >= 1)
@@ -1626,12 +1626,12 @@ and (!instance_exists(obj_pause))
 					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_jump, 252, window_get_height() - show_player2_controls_y, 0.5, 0.5, 0, c_white, player2_show_controls_alpha);
 				}
 			}
-			#endregion /*Show Player 2 Join Game Key END*/
+			#endregion /* Show Player 2 Join Game Key END */
 			
 		}
-		#endregion /*Multiplayer Player 2 END*/
+		#endregion /* Multiplayer Player 2 END */
 		
-		#region /*Multiplayer Player 3*/
+		#region /* Multiplayer Player 3 */
 		if (player3 > 0)
 		and (instance_exists(player3))
 		and (player3.partner_character = false)
@@ -1642,7 +1642,7 @@ and (!instance_exists(obj_pause))
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			#region /*Show Player 3 Dive Key*/
+			#region /* Show Player 3 Dive Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player3_gamepad_button_dive > noone)
@@ -1672,9 +1672,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player3_show_dive_key_x + 22, window_get_height() - show_player3_controls_y, l10n_text("Pounce"), global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player3_key2_dive, player3_show_dive_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
-			#endregion /*Show Player 3 Dive Key END*/
+			#endregion /* Show Player 3 Dive Key END */
 			
-			#region /*Show Player 3 Jump Key*/
+			#region /* Show Player 3 Jump Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player3_gamepad_button_jump > noone)
@@ -1704,9 +1704,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player3_show_jump_key_x + 22, window_get_height() - show_player3_controls_y, l10n_text("Jump"), global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, player3_show_jump_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
-			#endregion /*Show Player 3 Jump Key END*/
+			#endregion /* Show Player 3 Jump Key END */
 			
-			#region /*Show Player 3 Crouch Key*/
+			#region /* Show Player 3 Crouch Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player3_gamepad_button_crouch > noone)
@@ -1766,9 +1766,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player3_show_crouch_key_x + 22, window_get_height() - show_player3_controls_y, l10n_text("Crouch"), global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player3_key2_crouch_toggle, player3_show_crouch_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
-			#endregion /*Show Player 3 Crouch Key END*/
+			#endregion /* Show Player 3 Crouch Key END */
 			
-			#region /*Show Player 3 Sprint Key*/
+			#region /* Show Player 3 Sprint Key */
 			if (global.player3_sprint_toggle = false)
 			{
 				if (gamepad_is_connected(0))
@@ -1831,9 +1831,9 @@ and (!instance_exists(obj_pause))
 					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_sprint_toggle, player3_show_sprint_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 				}
 			}
-			#endregion /*Show Player 3 Sprint Key END*/
+			#endregion /* Show Player 3 Sprint Key END */
 			
-			#region /*Show Player 3 Left Key*/
+			#region /* Show Player 3 Left Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player3_gamepad_button_left > noone)
@@ -1863,9 +1863,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player3_show_left_key_x + 22, window_get_height() - show_player3_controls_y, l10n_text("Left"), global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player3_key2_left, player3_show_left_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
-			#endregion /*Show Player 3 Left Key END*/
+			#endregion /* Show Player 3 Left Key END */
 			
-			#region /*Show Player 3 Right Key*/
+			#region /* Show Player 3 Right Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player3_gamepad_button_right > noone)
@@ -1895,9 +1895,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player3_show_right_key_x + 22, window_get_height() - show_player3_controls_y, l10n_text("Right"), global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player3_key2_right, player3_show_right_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
-			#endregion /*Show Player 3 Right Key END*/
+			#endregion /* Show Player 3 Right Key END */
 			
-			#region /*Show Player 3 Down Key*/
+			#region /* Show Player 3 Down Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player3_gamepad_button_down > noone)
@@ -1927,9 +1927,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player3_show_down_key_x + 22, window_get_height() - show_player3_controls_y, l10n_text("Down"), global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player3_key2_down, player3_show_down_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
-			#endregion /*Show Player 3 Down Key END*/
+			#endregion /* Show Player 3 Down Key END */
 			
-			#region /*Show Player 3 Up Key*/
+			#region /* Show Player 3 Up Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player3_gamepad_button_up > noone)
@@ -1959,7 +1959,7 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player3_show_up_key_x + 22, window_get_height() - show_player3_controls_y, l10n_text("Up"), global.default_text_size, c_black, global.player3_color, player3_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player3_key2_up, player3_show_up_key_x, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 			}
-			#endregion /*Show Player 3 Down Key END*/
+			#endregion /* Show Player 3 Down Key END */
 			
 		}
 		else
@@ -1971,7 +1971,7 @@ and (!instance_exists(obj_pause))
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			#region /*Show Player 3 Join Game Key*/
+			#region /* Show Player 3 Join Game Key */
 			if (can_spawn_player3 = true)
 			and (lives > 0)
 			and (global.player3_show_controls >= 1)
@@ -1997,12 +1997,12 @@ and (!instance_exists(obj_pause))
 					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_jump, 252, window_get_height() - show_player3_controls_y, 0.5, 0.5, 0, c_white, player3_show_controls_alpha);
 				}
 			}
-			#endregion /*Show Player 3 Join Game Key END*/
+			#endregion /* Show Player 3 Join Game Key END */
 			
 		}
-		#endregion /*Multiplayer Player 3 END*/
+		#endregion /* Multiplayer Player 3 END */
 		
-		#region /*Multiplayer Player 4*/
+		#region /* Multiplayer Player 4 */
 		if (player4 > 0)
 		and (instance_exists(player4))
 		and (player4.partner_character = false)
@@ -2013,7 +2013,7 @@ and (!instance_exists(obj_pause))
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			#region /*Show Player 4 Dive Key*/
+			#region /* Show Player 4 Dive Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player4_gamepad_button_dive > noone)
@@ -2043,9 +2043,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player4_show_dive_key_x + 22, window_get_height() - show_player4_controls_y, l10n_text("Pounce"), global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player4_key2_dive, player4_show_dive_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
-			#endregion /*Show Player 4 Dive Key END*/
+			#endregion /* Show Player 4 Dive Key END */
 			
-			#region /*Show Player 4 Jump Key*/
+			#region /* Show Player 4 Jump Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player4_gamepad_button_jump > noone)
@@ -2075,9 +2075,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player4_show_jump_key_x + 22, window_get_height() - show_player4_controls_y, l10n_text("Jump"), global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, player4_show_jump_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
-			#endregion /*Show Player 4 Jump Key END*/
+			#endregion /* Show Player 4 Jump Key END */
 			
-			#region /*Show Player 4 Crouch Key*/
+			#region /* Show Player 4 Crouch Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player4_gamepad_button_crouch > noone)
@@ -2137,9 +2137,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player4_show_crouch_key_x + 22, window_get_height() - show_player4_controls_y, l10n_text("Crouch"), global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player4_key2_crouch_toggle, player4_show_crouch_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
-			#endregion /*Show Player 4 Crouch Key END*/
+			#endregion /* Show Player 4 Crouch Key END */
 			
-			#region /*Show Player 4 Sprint Key*/
+			#region /* Show Player 4 Sprint Key */
 			if (global.player4_sprint_toggle = false)
 			{
 				if (gamepad_is_connected(0))
@@ -2202,9 +2202,9 @@ and (!instance_exists(obj_pause))
 					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_sprint_toggle, player4_show_sprint_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 				}
 			}
-			#endregion /*Show Player 4 Sprint Key END*/
+			#endregion /* Show Player 4 Sprint Key END */
 			
-			#region /*Show Player 4 Left Key*/
+			#region /* Show Player 4 Left Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player4_gamepad_button_left > noone)
@@ -2234,9 +2234,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player4_show_left_key_x + 22, window_get_height() - show_player4_controls_y, l10n_text("Left"), global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player4_key2_left, player4_show_left_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
-			#endregion /*Show Player 4 Left Key END*/
+			#endregion /* Show Player 4 Left Key END */
 			
-			#region /*Show Player 4 Right Key*/
+			#region /* Show Player 4 Right Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player4_gamepad_button_right > noone)
@@ -2266,9 +2266,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player4_show_right_key_x + 22, window_get_height() - show_player4_controls_y, l10n_text("Right"), global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player4_key2_right, player4_show_right_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
-			#endregion /*Show Player 4 Right Key END*/
+			#endregion /* Show Player 4 Right Key END */
 			
-			#region /*Show Player 4 Down Key*/
+			#region /* Show Player 4 Down Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player4_gamepad_button_down > noone)
@@ -2298,9 +2298,9 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player4_show_down_key_x + 22, window_get_height() - show_player4_controls_y, l10n_text("Down"), global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player4_key2_down, player4_show_down_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
-			#endregion /*Show Player 4 Down Key END*/
+			#endregion /* Show Player 4 Down Key END */
 			
-			#region /*Show Player 4 Up Key*/
+			#region /* Show Player 4 Up Key */
 			if (gamepad_is_connected(0))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (global.player4_gamepad_button_up > noone)
@@ -2330,7 +2330,7 @@ and (!instance_exists(obj_pause))
 				scr_draw_text_outlined(player4_show_up_key_x + 22, window_get_height() - show_player4_controls_y, l10n_text("Up"), global.default_text_size, c_black, global.player4_color, player4_show_controls_alpha);
 				draw_sprite_ext(spr_keyboard_keys, global.player4_key2_up, player4_show_up_key_x, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 			}
-			#endregion /*Show Player 4 Down Key END*/
+			#endregion /* Show Player 4 Down Key END */
 			
 		}
 		else
@@ -2342,7 +2342,7 @@ and (!instance_exists(obj_pause))
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			#region /*Show Player 4 Join Game Key*/
+			#region /* Show Player 4 Join Game Key */
 			if (can_spawn_player4 = true)
 			and (lives > 0)
 			and (global.player4_show_controls >= 1)
@@ -2368,18 +2368,18 @@ and (!instance_exists(obj_pause))
 					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_jump, 252, window_get_height() - show_player4_controls_y, 0.5, 0.5, 0, c_white, player4_show_controls_alpha);
 				}
 			}
-			#endregion /*Show Player 4 Join Game Key END*/
+			#endregion /* Show Player 4 Join Game Key END */
 			
 		}
-		#endregion /*Multiplayer Player 4 END*/
+		#endregion /* Multiplayer Player 4 END */
 		
 	}
-	#endregion /*Show Multiplayer Controls END*/
+	#endregion /* Show Multiplayer Controls END */
 	
 }
-#endregion /*Show Controls END*/
+#endregion /* Show Controls END */
 
-#region /*Show what input is used*/
+#region /* Show what input is used */
 if (show_controller_input_change_prompt > 0)
 {
 	show_controller_input_change_prompt -= 1;
@@ -2401,7 +2401,7 @@ else
 {
 	show_keyboard_and_mouse_input_change_prompt_y = lerp(show_keyboard_and_mouse_input_change_prompt_y, 0, 0.1);
 }
-if (global.player1_can_play >= 1) /*Only show controller input change if there is only one player in the game*/
+if (global.player1_can_play >= 1) /* Only show controller input change if there is only one player in the game */
 and (global.player2_can_play <= 0)
 and (global.player3_can_play <= 0)
 and (global.player4_can_play <= 0)
@@ -2427,11 +2427,11 @@ and (global.player4_can_play >= 1)
 		draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_get_height() + 300 + show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
 	}
 }
-#endregion /*Show what input is used END*/
+#endregion /* Show what input is used END */
 
 scr_virtual_keys();
 
-#region /*Display Rank*/
+#region /* Display Rank */
 if (global.goal_active = true)
 and (global.show_ranks = true)
 and (global.enable_ranks = true)
@@ -2478,31 +2478,31 @@ and (global.enable_ranks = true)
 			scr_draw_text_outlined(window_get_width() / 2 - 32, window_get_height() / 2 + 74 + 32, l10n_text("Your Score") + ": " + string(score), global.default_text_size, c_black, c_white, 1);
 			if (score >= ini_read_real("rank", "rank_level_score", 0))
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank S*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank S */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 10000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank A*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank A */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 50000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank B*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank B */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 80000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank C*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank C */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 100000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank D*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank D */
 			}
 			else
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank E*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank E */
 			}
 		}
 		if (ini_key_exists("rank", "rank_timeattack_realmillisecond"))
@@ -2516,45 +2516,45 @@ and (global.enable_ranks = true)
 			
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0))
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank S*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank S */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 1000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank A*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank A */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 5000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank B*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank B */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 8000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank C*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank C */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 10000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank D*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank D */
 			}
 			else
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /*Rank E*/
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank E */
 			}
 		}
 		ini_close();
 	}
 }
-#endregion /*Display Rank END*/
+#endregion /* Display Rank END */
 
-#region /*Letterboxing during cutscenes (when the player object is absent)*/
+#region /* Letterboxing during cutscenes (when the player object is absent) */
 if (show_letterbox > 0)
 and (global.play_edited_level = false)
-and (global.actually_play_edited_level = false)
+and (global.actually_play_edited_level == false)
 or(show_letterbox > 0)
 and (global.play_edited_level = true)
-and (global.actually_play_edited_level = true)
+and (global.actually_play_edited_level == true)
 {
 	draw_rectangle_color(0, 0, room_width * 3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
 	draw_rectangle_color(0, letterbox_bottom_y, room_width * 3, window_get_height(), c_black, c_black, c_black, c_black, false);
@@ -2582,11 +2582,11 @@ else
 		show_letterbox -= 1;
 	}
 }
-#endregion /*Letterboxing during cutscenes (when the player object is absent) END*/
+#endregion /* Letterboxing during cutscenes (when the player object is absent) END */
 
 scr_draw_mouse_cursor();
 
-#region /*Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see*/
+#region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (iris_xscale <= 1)
 or (instance_exists(obj_player_die))
 and (obj_player_die.iris_xscale <= 1)
@@ -2600,4 +2600,4 @@ else
 draw_set_alpha(black_screen_gui_alpha);
 draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
-#endregion /*Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END*/
+#endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */

@@ -1,6 +1,6 @@
-#region /*Load correct sprite when you get the checkpoint*/
-if (global.x_checkpoint = x)
-and (global.y_checkpoint = y)
+#region /* Load correct sprite when you get the checkpoint */
+if (global.checkpoint_x = x)
+and (global.checkpoint_y = y)
 {
 	checkpoint_activated = true;
 	if (instance_exists(obj_camera))
@@ -51,4 +51,4 @@ and (global.y_checkpoint = y)
 		image_speed = 0;
 	}
 }
-#endregion /*Load correct sprite when you get the checkpoint END*/
+#endregion /* Load correct sprite when you get the checkpoint END */

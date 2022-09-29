@@ -1,12 +1,12 @@
-#region /*Push out of the solid object*/
+#region /* Push out of the solid object */
 while(place_meeting(x, y, other))
 {
 	x += lengthdir_x(0.5, point_direction(other.x, other.y, x, y));
 	y += lengthdir_y(0.5, point_direction(other.x, other.y, x, y));
 }
-#endregion /*Push out of the solid object END*/
+#endregion /* Push out of the solid object END */
 
-#region /*Landing on solid object*/
+#region /* Landing on solid object */
 if (place_meeting(x, y + 1, other))
 and (vspeed >= 0)
 {
@@ -27,4 +27,4 @@ and (vspeed >= 0)
 	draw_xscale = 1.25;
 	draw_yscale = 0.75;
 }
-#endregion /*Landing on solid object END*/
+#endregion /* Landing on solid object END */

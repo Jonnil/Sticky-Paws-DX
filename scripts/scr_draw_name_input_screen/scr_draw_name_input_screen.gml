@@ -1,21 +1,21 @@
 function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string)
 {
 	
-	#region /*Opaque transparent black rectangle over whole screen, but underneath name input screen*/
+	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
 	draw_set_alpha(0.5);
 	draw_rectangle_color(- 32, - 32, window_get_width() + 32, window_get_height() + 32, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
-	#endregion /*Opaque transparent black rectangle over whole screen, but underneath name input screen END*/
+	#endregion /* Opaque transparent black rectangle over whole screen, but underneath name input screen END */
 	
-	#region /*Box where name is written on*/
-	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, box_color, box_color, box_color, box_color, false); /*Rectangle where text is written on*/
+	#region /* Box where name is written on */
+	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
 	draw_set_alpha(black_rectangle_alpha);
-	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, c_black, c_black, c_black, c_black, false); /*Black transparent rectangle where text is written on*/
+	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
 	draw_set_alpha(1);
-	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, c_white, c_white, c_white, c_white, true); /*White outline*/
-	#endregion /*Box where name is written on END*/
+	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
+	#endregion /* Box where name is written on END */
 	
-	#region /*Draw the inputed text*/
+	#region /* Draw the inputed text */
 	draw_set_halign(fa_middle);
 	draw_set_valign(fa_middle);
 	
@@ -28,9 +28,9 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	{
 		scr_draw_text_outlined(xx, yy, string(what_string_to_edit), global.default_text_size, c_black, c_white, 1);
 	}
-	#endregion /*Draw the inputed text END*/
+	#endregion /* Draw the inputed text END */
 	
-	#region /*A file name can't contain any of the following characters*/
+	#region /* A file name can't contain any of the following characters */
 	if (ord(keyboard_lastchar) != ord("\\"))
 	and (ord(keyboard_lastchar) != ord("/"))
 	and (ord(keyboard_lastchar) != ord(":"))
@@ -47,18 +47,18 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	{
 		keyboard_string = string_copy(what_string_to_edit, 1, max_characters);
 	}
-	#endregion /*A file name can't contain any of the following characters END*/
+	#endregion /* A file name can't contain any of the following characters END */
 	
-	#region /*When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that*/
-	if (keyboard_string = "\u007f") /*This is the unicode for DEL character*/
+	#region /* When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that */
+	if (keyboard_string = "\u007f") /* This is the unicode for DEL character */
 	and (string_length(keyboard_string) <= 1)
 	{
 		keyboard_string = "";
 		what_string_to_edit = "";
 	}
-	#endregion /*When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that END*/
+	#endregion /* When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that END */
 	
-	#region /*Show how many characters a name has and what the max amount of characters is*/
+	#region /* Show how many characters a name has and what the max amount of characters is */
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
 	if (string_length(what_string_to_edit) >= max_characters)
@@ -69,9 +69,9 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	{
 		scr_draw_text_outlined(xx + 150, yy + 32, string(string_length(what_string_to_edit)) + "/" + string(max_characters), global.default_text_size, c_black, c_ltgray, 1);
 	}
-	#endregion /*Show how many characters a name has and what the max amount of characters is END*/
+	#endregion /* Show how many characters a name has and what the max amount of characters is END */
 	
-	#region /*OK and Cancel buttons under name input*/
+	#region /* OK and Cancel buttons under name input */
 	var buttons_x = -185;
 	var buttons_ok_y = +54;
 	var buttons_cancel_y = buttons_ok_y + 42;
@@ -128,7 +128,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			draw_sprite_ext(spr_keyboard_keys, vk_enter, xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, 0.5, 0, c_white, 1);
 		}
 	}
-	#endregion /*OK and Cancel buttons under name input END*/
+	#endregion /* OK and Cancel buttons under name input END */
 	
 	if (string_length(what_string_to_edit) > max_characters)
 	{

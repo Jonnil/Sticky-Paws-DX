@@ -1,6 +1,6 @@
-/*________________________________Draw Event________________________________*/
+/* ________________________________Draw Event________________________________ */
 
-/*Don't remove this, please, it's for debug*/
+/* Don't remove this, please, it's for debug */
 //scr_draw_text_outlined(x, y- 256, "Custom character: " + string(custom_character), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x, y- 200, "What player am I: " + string(player), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x, y - 128, "character for player 1: " + string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
@@ -14,7 +14,7 @@
 //scr_draw_text_outlined(x - 32, y - 128-64, "tongue_move_player_toward_wall: " + string(tongue_move_player_toward_wall), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x - 32, y - 128, "ground_pound" + ": " + string(ground_pound), global.default_text_size, c_white, c_red, 1);
 
-#region /*Draw Raycasts*/
+#region /* Draw Raycasts */
 if (hold_item_in_hands != "")
 and (key_up)
 {
@@ -52,9 +52,9 @@ and (key_up)
 		draw_line_width(xx, yy, raycast_info.x, raycast_info.y, 2);
 	}
 }
-#endregion /*Draw Raycasts END*/
+#endregion /* Draw Raycasts END */
 
-#region /*Heart above head*/
+#region /* Heart above head */
 if (asset_get_type("spr_heart") == asset_sprite)
 and (have_heart_balloon = true)
 {
@@ -96,7 +96,7 @@ else
 	xx_heart = lerp(xx_heart, x, 0.1);
 	yy_heart = lerp(yy_heart, y - 64, 0.1);
 }
-#endregion /*Heart above head END*/
+#endregion /* Heart above head END */
 
 if (hold_item_in_hands = "enemy_bowlingball")
 {
@@ -132,7 +132,7 @@ if (hold_item_in_hands = "enemy_bowlingball")
 	}
 }
 
-#region /*Draw arrow when player is outside top view*/
+#region /* Draw arrow when player is outside top view */
 if (y < camera_get_view_y(view_camera[view_current]))
 {
 	draw_arrow_outside_view_up_alpha = lerp(draw_arrow_outside_view_up_alpha, 1, 0.3);
@@ -173,9 +173,9 @@ if (draw_arrow_outside_view_up_alpha > 0.01)
 		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, draw_arrow_outside_view_up_alpha);
 	}
 }
-#endregion /*Draw arrow when player is outside top view END*/
+#endregion /* Draw arrow when player is outside top view END */
 
-#region /*Draw arrow when player is outside bottom view*/
+#region /* Draw arrow when player is outside bottom view */
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 and (y < room_height)
 {
@@ -217,9 +217,9 @@ if (draw_arrow_outside_view_down_alpha > 0.01)
 		draw_sprite_ext(sprite_index, image_index, x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32, draw_xscale * default_xscale / 2 * sign(image_xscale), draw_yscale * default_yscale / 2, angle, image_blend, draw_arrow_outside_view_down_alpha);
 	}
 }
-#endregion /*Draw arrow when player is outside bottom view END*/
+#endregion /* Draw arrow when player is outside bottom view END */
 
-#region /*Get 1-up if you get 100 basic collectibles*/
+#region /* Get 1-up if you get 100 basic collectibles */
 if (global.basic_collectibles > 99)
 {
 	global.basic_collectibles = 0;
@@ -238,19 +238,19 @@ if (global.basic_collectibles > 99)
 		}
 	}
 }
-#endregion /*Get 1-up if you get 100 basic collectibles END*/
+#endregion /* Get 1-up if you get 100 basic collectibles END */
 
-#region /*Draw Self*/
+#region /* Draw Self */
 
-#region /*Draw intro animation sprites (cutscene) if intro is playing*/
+#region /* Draw intro animation sprites (cutscene) if intro is playing */
 if (intro_animation != "")
 and (intro_animation_sprite > 0)
 {
 	draw_sprite_ext(intro_animation_sprite, intro_animation_image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 1);
 }
-#endregion /*Draw intro animation sprites (cutscene) if intro is playing END*/
+#endregion /* Draw intro animation sprites (cutscene) if intro is playing END */
 
-#region /*Make it obvious if you take damage*/
+#region /* Make it obvious if you take damage */
 if (takendamage >= takendamage_freezetime)
 {
 	dive = false;
@@ -285,7 +285,7 @@ and (hp >= 1)
 	audio_sound_pitch(voice_damage, default_voice_pitch);
 	scr_audio_play(voice_damage, volume_source.voice);
 }
-#endregion /*Make it obvious if you take damage END*/
+#endregion /* Make it obvious if you take damage END */
 
 redblinktimer += 1;
 if (redblinktimer > 30)
@@ -306,7 +306,7 @@ else
 	double_jump_depleted_blink = 0;
 }
 
-#region /*Blink red when only having 1 HP left and no heart balloon*/
+#region /* Blink red when only having 1 HP left and no heart balloon */
 if (redblinktimer > 25)
 and (have_heart_balloon = false)
 and (hp <= 1)
@@ -336,11 +336,11 @@ and (intro_animation = "")
 {
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 0.5);
 }
-#endregion /*Blink red when only having 1 HP left and no heart balloon END*/
+#endregion /* Blink red when only having 1 HP left and no heart balloon END */
 
-#endregion /*Draw Self END*/
+#endregion /* Draw Self END */
 
-#region /*Draw Collision Mask*/
+#region /* Draw Collision Mask */
 if (global.show_collision_mask = true)
 {
 	if (crouch == true)
@@ -361,9 +361,9 @@ else
 {
 	image_alpha = 1;
 }
-#endregion /*Draw Collision Mask END*/
+#endregion /* Draw Collision Mask END */
 
-#region /*Turnaround Effect*/
+#region /* Turnaround Effect */
 if (effect_turnaround_subimg < 10)
 {
 	if (climb == false)
@@ -374,9 +374,9 @@ if (effect_turnaround_subimg < 10)
 	}
 	effect_turnaround_subimg += 1;
 }
-#endregion /*Turnaround Effect END*/
+#endregion /* Turnaround Effect END */
 
-#region /*Running Sparks Effect*/
+#region /* Running Sparks Effect */
 if (effect_speedspark_subimg < 4)
 and (hold_item_in_hands == "")
 {
@@ -392,9 +392,9 @@ and (hold_item_in_hands == "")
 	}
 	effect_speedspark_subimg += 1;
 }
-#endregion /*Running Sparks Effect END*/
+#endregion /* Running Sparks Effect END */
 
-#region /*Invinsible*/
+#region /* Invinsible */
 if (assist_invincible = false)
 {
 	if (invincible >= true)
@@ -423,13 +423,13 @@ if (invincible >= true)
 		effect_create_above(ef_star, x +random_range(- 50, + 50), y+random_range(- 50, + 50), 0, c_white);
 	}
 }
-#endregion /*Invinsible END*/
+#endregion /* Invinsible END */
 
-#region /*Don't make it look like the player is teleporting when the player teleports*/
+#region /* Don't make it look like the player is teleporting when the player teleports */
 if (smooth_teleport < 1)
 {
-	xx = lerp(xx, x,smooth_teleport);
-	yy = lerp(yy, y,smooth_teleport);
+	xx = lerp(xx, x, smooth_teleport);
+	yy = lerp(yy, y, smooth_teleport);
 	smooth_teleport += 0.1;
 }
 else
@@ -444,13 +444,13 @@ else
 	xx = lerp(xx, x, 1);
 	yy = lerp(yy, y, 1);
 }
-#endregion /*Don't make it look like the player is teleporting when the player teleports END*/
+#endregion /* Don't make it look like the player is teleporting when the player teleports END */
 
-#region /*Homing Attack*/
+#region /* Homing Attack */
 if (allow_homing_attack == true)
 {
 	
-	#region /*Homing Enemy*/
+	#region /* Homing Enemy */
 	if (asset_get_type("obj_wall") == asset_object)
 	and (!place_meeting(x, y + 1, obj_wall))
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -478,11 +478,11 @@ if (allow_homing_attack == true)
 			draw_circle_color (instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 32, c_lime, c_lime, true);
 		}
 	}
-	#endregion /*Homing Enemy END*/
+	#endregion /* Homing Enemy END */
 	
 	else
 	
-	#region /*Homing Spring*/
+	#region /* Homing Spring */
 	if (asset_get_type("obj_wall") == asset_object)
 	and (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
@@ -509,16 +509,16 @@ if (allow_homing_attack == true)
 			draw_circle_color (instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 32, c_lime, c_lime, true);
 		}
 	}
-	#endregion /*Homing Spring END*/
+	#endregion /* Homing Spring END */
 
 	else
 	{
 		aim_image_index = 0;
 	}
 }
-#endregion /*Homing Attack END*/
+#endregion /* Homing Attack END */
 
-#region /*Display Player Number and Name*/
+#region /* Display Player Number and Name */
 if (global.player1_can_play == true)
 and (global.player2_can_play = true)
 or (global.player1_can_play = true)
@@ -542,7 +542,7 @@ and (global.player4_can_play = true)
 		}
 		else
 		{
-			scr_draw_text_outlined(x, y - 64,string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
+			scr_draw_text_outlined(x, y - 64, string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
 		}
 	}
 	if (player == 2)
@@ -553,7 +553,7 @@ and (global.player4_can_play = true)
 		}
 		else
 		{
-			scr_draw_text_outlined(x, y - 64,string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
+			scr_draw_text_outlined(x, y - 64, string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
 		}
 	}
 	if (player == 3)
@@ -564,7 +564,7 @@ and (global.player4_can_play = true)
 		}
 		else
 		{
-			scr_draw_text_outlined(x, y - 64,string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
+			scr_draw_text_outlined(x, y - 64, string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
 		}
 	}
 	if (player == 4)
@@ -575,26 +575,26 @@ and (global.player4_can_play = true)
 		}
 		else
 		{
-			scr_draw_text_outlined(x, y - 64,string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
+			scr_draw_text_outlined(x, y - 64, string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
 		}
 	}
 }
-#endregion /*Display Player Number and Name END*/
+#endregion /* Display Player Number and Name END */
 
-#region /*If player has more hp, show that*/
+#region /* If player has more hp, show that */
 if (hp > 0)
 and (global.assist_enable = true)
 and (global.assist_invincible = false)
 or(hp > 0)
 and (global.assist_enable = false)
 {
-	if (max_hp = 2) /*If there is only max 2 hp and there is no panting sprite, display HP*/
+	if (max_hp = 2) /* If there is only max 2 hp and there is no panting sprite, display HP */
 	and (sprite_panting == noone)
-	or(max_hp >= 3) /*If there is more than max 3 hp, always display HP*/
+	or(max_hp >= 3) /* If there is more than max 3 hp, always display HP */
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(x, bbox_top - 32, "HP: " + string(hp) + "/" + string(max_hp), global.default_text_size, c_white, c_black, 1);
 	}
 }
-#endregion /*If player has more hp, show that END*/
+#endregion /* If player has more hp, show that END */

@@ -2,8 +2,8 @@ depth = 10;
 image_speed = 0;
 mask_index = spr_checkpoint;
 get_rewards_cooldown = 10;
-if (global.x_checkpoint = x)
-and (global.y_checkpoint = y)
+if (global.checkpoint_x = x)
+and (global.checkpoint_y = y)
 {
 	checkpoint_activated = true;
 }
@@ -12,11 +12,11 @@ else
 	checkpoint_activated = false;
 }
 
-#region /*Load Level Editor Checkpoint*/
+#region /* Load Level Editor Checkpoint */
 if (asset_get_type("room_leveleditor") == asset_room)
 and (room == room_leveleditor)
 and (global.character_select_in_this_menu == "main_game")
-and (global.actually_play_edited_level = true)
+and (global.actually_play_edited_level == true)
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -31,7 +31,7 @@ else
 if (asset_get_type("room_leveleditor") == asset_room)
 and (room == room_leveleditor)
 and (global.character_select_in_this_menu == "level_editor")
-and (global.actually_play_edited_level = true)
+and (global.actually_play_edited_level == true)
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -42,6 +42,6 @@ and (global.actually_play_edited_level = true)
 	checkpoint_which_player = ini_read_real(level_name, "checkpoint_which_player", 1);
 	ini_close();
 }
-#endregion /*Load Level Editor Checkpoint END*/
+#endregion /* Load Level Editor Checkpoint END */
 
 alarm[0] = 2;

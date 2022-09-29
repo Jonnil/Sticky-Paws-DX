@@ -1,4 +1,4 @@
-if (os_type = os_linux)
+if (os_type == os_linux)
 {
 	var show_copy_to_clipboard_button = false;
 	if (menu == "copy_to_clipboard")
@@ -20,7 +20,7 @@ draw_set_valign(fa_middle);
 
 var key_open_localappdata_x = window_get_width() / 2 - 238;
 
-if (os_type = os_windows)
+if (os_type == os_windows)
 {
 	scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, l10n_text("Add custom things in Local Appdata"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
 	draw_sprite_ext(spr_keyboard_keys, 91, key_open_localappdata_x, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
@@ -30,7 +30,7 @@ if (os_type = os_windows)
 	scr_draw_text_outlined(key_open_localappdata_x + 110, window_get_height() / 2 - 90, l10n_text("Then type") + " " + "%localappdata%", global.default_text_size * 1.1, c_black, c_white, image_alpha);
 }
 else
-if (os_type = os_linux)
+if (os_type == os_linux)
 {
 	scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, l10n_text("Add custom things in .config"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
 	draw_sprite_ext(spr_keyboard_keys, vk_alt, key_open_localappdata_x, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
@@ -60,7 +60,7 @@ if (close = false)
 	draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 }
 
-#region /*Navigate menu up and down*/
+#region /* Navigate menu up and down */
 if (menu == "copy_to_clipboard")
 {
 	if (instance_exists(obj_title))
@@ -101,19 +101,19 @@ if (menu == "back_open_folder_text")
 		}
 	}
 }
-#endregion /*Navigate menu up and down END*/
+#endregion /* Navigate menu up and down END */
 
 if (show_copy_to_clipboard_button = true)
 {
 	if (instance_exists(obj_title))
 	and (obj_title.key_a_pressed)
-	and (menu = "copy_to_clipboard")
+	and (menu == "copy_to_clipboard")
 	or (instance_exists(obj_pause))
 	and (obj_pause.key_a_pressed)
-	and (menu = "copy_to_clipboard")
+	and (menu == "copy_to_clipboard")
 	or (instance_exists(obj_leveleditor))
 	and (obj_leveleditor.key_a_pressed)
-	and (menu = "copy_to_clipboard")
+	and (menu == "copy_to_clipboard")
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 42, window_get_width() / 2 - 185 + 370, window_get_height() / 2 + 42 + 39))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (mouse_check_button_pressed(mb_left))
@@ -135,7 +135,7 @@ if (show_copy_to_clipboard_button = true)
 	}
 }
 
-#region /*Close the open folder text by pressing any close button*/
+#region /* Close the open folder text by pressing any close button */
 if (keyboard_check_pressed(ord("X")))
 or (keyboard_check_pressed(vk_backspace))
 or (keyboard_check_pressed(vk_escape))
@@ -167,7 +167,7 @@ and (mouse_check_button_pressed(mb_left))
 {
 	close = true;
 }
-#endregion /*Close the open folder text by pressing any button END*/
+#endregion /* Close the open folder text by pressing any button END */
 
 if (close = true)
 {
@@ -182,7 +182,7 @@ else
 	image_alpha = lerp(image_alpha, 1, 0.3);
 }
 
-#region /*Make it so you can't click on any other button while open folder text exists*/
+#region /* Make it so you can't click on any other button while open folder text exists */
 if (instance_exists(obj_title))
 {
 	obj_title.menu_delay = 10;
@@ -195,6 +195,6 @@ if (instance_exists(obj_leveleditor))
 {
 	obj_leveleditor.menu_delay = 10;
 }
-#endregion /*Make it so you can't click on any other button while open folder text exists END*/
+#endregion /* Make it so you can't click on any other button while open folder text exists END */
 
 scr_draw_mouse_cursor();

@@ -20,17 +20,17 @@ else
 	continue_falling = false;
 }
 
-#region /*Game Over variables*/
+#region /* Game Over variables */
 game_over_sprite_y = - 300;
 game_over_text_y = - 300;
 sprite_game_over_character_portrait = noone;
-#endregion /*Game Over variables END*/
+#endregion /* Game Over variables END */
 
 default_voice_pitch = 1;
 default_xscale = 1;
 default_yscale = 1;
 
-#region /*Save how many times you have died*/
+#region /* Save how many times you have died */
 if (global.character_select_in_this_menu == "main_game")
 {
 	var uppercase_level_name;
@@ -54,7 +54,7 @@ if (global.character_select_in_this_menu == "level_editor")
 	ini_write_real(level_name, "number_of_deaths", ini_read_real(level_name, "number_of_deaths", 0) + 1);
 	ini_close();
 }
-#endregion /*Save how many times you have died END*/
+#endregion /* Save how many times you have died END */
 
 bubble = false;
 if (bubble = false)
@@ -85,9 +85,9 @@ and (instance_exists(obj_camera))
 voice_damage = noone;
 voice_burned_die = noone;
 
-#region /*Disable the players for the camera*/
+#region /* Disable the players for the camera */
 
-#region /*Disable player 1*/
+#region /* Disable player 1 */
 if (player == 1)
 {
 	with(obj_camera)
@@ -95,9 +95,9 @@ if (player == 1)
 		can_spawn_player1 = false;
 	}
 }
-#endregion /*Disable player 1 END*/
+#endregion /* Disable player 1 END */
 
-#region /*Disable player 2*/
+#region /* Disable player 2 */
 if (player == 2)
 {
 	with(obj_camera)
@@ -105,9 +105,9 @@ if (player == 2)
 		can_spawn_player2 = false;
 	}
 }
-#endregion /*Disable player 2 END*/
+#endregion /* Disable player 2 END */
 
-#region /*Disable player 3*/
+#region /* Disable player 3 */
 if (player == 3)
 {
 	with(obj_camera)
@@ -115,9 +115,9 @@ if (player == 3)
 		can_spawn_player3 = false;
 	}
 }
-#endregion /*Disable player 3 END*/
+#endregion /* Disable player 3 END */
 
-#region /*Disable player 4 */
+#region /* Disable player 4 */
 if (player == 4)
 {
 	with(obj_camera)
@@ -125,6 +125,6 @@ if (player == 4)
 		can_spawn_player4 = false;
 	}
 }
-#endregion /*Disable player 4 END*/
+#endregion /* Disable player 4 END */
 
-#endregion /*Disable the players for the camera END*/
+#endregion /* Disable the players for the camera END */

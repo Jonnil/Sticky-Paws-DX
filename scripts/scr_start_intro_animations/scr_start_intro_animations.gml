@@ -1,12 +1,12 @@
 function scr_start_intro_animations()
 {
 	
-	#region /*Start Intro Animations*/
-	if (global.x_checkpoint <= 0) /*Make sure that you aren't in the middle of a level by touching a checkpoint*/
-	and (global.y_checkpoint <= 0)
+	#region /* Start Intro Animations */
+	if (global.checkpoint_x <= 0) /* Make sure that you aren't in the middle of a level by touching a checkpoint */
+	and (global.checkpoint_y <= 0)
 	{
 		
-		#region /*This intro animation is called "cake_stolen", more intros can be added here*/
+		#region /* This intro animation is called "cake_stolen", more intros can be added here */
 		if (intro_animation = "cake_stolen")
 		and (instance_exists(obj_camera))
 		and (obj_camera.intro_animation_play_only_once = false)
@@ -75,11 +75,11 @@ function scr_start_intro_animations()
 				intro_animation = "";
 			}
 		}
-		#endregion /*This intro animation is called "cake_stolen", more intros can be added here END*/
+		#endregion /* This intro animation is called "cake_stolen", more intros can be added here END */
 		
 		else
 		
-		#region /*This intro animation is called "ending", more intros can be added here*/
+		#region /* This intro animation is called "ending", more intros can be added here */
 		if (intro_animation = "ending")
 		and (instance_exists(obj_camera))
 		and (obj_camera.intro_animation_play_only_once = false)
@@ -144,7 +144,7 @@ function scr_start_intro_animations()
 				intro_animation = "";
 			}
 		}
-		#endregion /*This intro animation is called "cake_stolen", more intros can be added here END*/
+		#endregion /* This intro animation is called "cake_stolen", more intros can be added here END */
 		
 		else
 		if (intro_animation = "ending_chair")
@@ -236,6 +236,6 @@ function scr_start_intro_animations()
 	{
 		intro_animation = "";
 	}
-	#endregion /*Start Intro Animations END*/
+	#endregion /* Start Intro Animations END */
 	
 }

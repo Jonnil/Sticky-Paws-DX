@@ -37,5 +37,5 @@ if (clear_rate = "clear")
 else
 {
 	image_alpha = 0.1;
-	level_color = c_black; /*Closed*/
+	level_color = c_black; /* Closed */
 }

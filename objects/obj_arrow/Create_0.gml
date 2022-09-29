@@ -1,4 +1,4 @@
-/*obj_arrow Create Event*/
+/* obj_arrow Create Event */
 scr_audio_play(snd_arrow, volume_source.sound);
 image_speed = 0.3;
 if asset_get_type("obj_player") == asset_object and instance_number(obj_player) > 0

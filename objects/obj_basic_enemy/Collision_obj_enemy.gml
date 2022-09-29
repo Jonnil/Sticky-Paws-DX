@@ -1,4 +1,4 @@
-#region /*Turn around*/
+#region /* Turn around */
 if (die = false)
 and (other.die = false)
 {
@@ -26,4 +26,4 @@ and (other.die = false)
 		image_xscale = -1;
 	}
 }
-#endregion /*Turn around END*/
+#endregion /* Turn around END */

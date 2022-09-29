@@ -1,4 +1,4 @@
-#region /*Landing on solid object*/
+#region /* Landing on solid object */
 if (position_meeting(x, bbox_bottom + 1, other))
 or (position_meeting(x, bbox_bottom + 2, other))
 or (position_meeting(x, bbox_bottom + 3, other))
@@ -28,4 +28,4 @@ or (position_meeting(bbox_right, bbox_bottom + 1, other))
 		gravity = 0;
 	}
 }
-#endregion /*Landing on solid object END*/
+#endregion /* Landing on solid object END */

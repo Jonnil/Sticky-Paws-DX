@@ -34,19 +34,19 @@ and (distance_to_object(obj_player) < 500)
 and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, true, true))
 and (has_seen_player == false)
 {
-	has_seen_player = true; /*Only see player if player is close and in line of sight*/
+	has_seen_player = true; /* Only see player if player is close and in line of sight */
 }
 
-#region /*If enemies are disabled, destroy this object*/
+#region /* If enemies are disabled, destroy this object */
 if (global.assist_enable == true)
 and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object END*/
+#endregion /* If enemies are disabled, destroy this object END */
 
-#region /*Set the gravity*/
-gravity_direction = 270; /*Direction of the gravity*/
+#region /* Set the gravity */
+gravity_direction = 270; /* Direction of the gravity */
 if (asset_get_type("obj_wall") == asset_object)
 and (!place_meeting(x, y + 1, obj_wall))
 and (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -59,16 +59,16 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 	and (y > camera_get_view_y(view_camera[view_current]))
 	{
-		gravity = 0.5; /*The gravity*/
+		gravity = 0.5; /* The gravity */
 	}
 }
 else
 {
 	gravity = 0;
 }
-#endregion /*Set the gravity END*/
+#endregion /* Set the gravity END */
 
-/*Put at right angle*/
+/* Put at right angle */
 if (angle < -360)
 {
 	angle += 16;
@@ -104,7 +104,7 @@ if (time == room_speed * 3)
 	sprite_index = spr_boss_stand;
 }
 
-#region /*Phase 1*/
+#region /* Phase 1 */
 if (hp >= 3)
 and (has_seen_player == true)
 {
@@ -232,11 +232,11 @@ and (has_seen_player == true)
 		hspeed = -5;
 	}
 }
-#endregion /*Phase 1 END*/
+#endregion /* Phase 1 END */
 
 else
 
-#region /*Phase 2*/
+#region /* Phase 2 */
 if (hp >= 2)
 and (has_seen_player == true)
 {
@@ -367,11 +367,11 @@ and (has_seen_player == true)
 		hspeed = -5;
 	}
 }
-#endregion /*Phase 2 END*/
+#endregion /* Phase 2 END */
 
 else
 
-#region /*Phase 3*/
+#region /* Phase 3 */
 if (has_seen_player == true)
 {
 	if (time < room_speed * 9)
@@ -504,7 +504,7 @@ if (has_seen_player == true)
 		hspeed = -5;
 	}
 }
-#endregion /*Phase 3 END*/
+#endregion /* Phase 3 END */
 
 if (place_meeting(x, y + 1, obj_wall))
 and (vspeed >= 0)
@@ -544,7 +544,7 @@ if (hp <= 0)
 		effect_create_above(ef_smoke, x + 42, y + 32, 2, c_white);
 		effect_create_above(ef_smoke, x + 32, y + 64, 2, c_white);
 
-		/* 1 Coin*/
+		/* 1 Coin */
 		if asset_get_type("obj_basic_collectible") == asset_object
 		{
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -554,7 +554,7 @@ if (hp <= 0)
 				bounceup = true;
 			}
 		}
-		/* 200 Score*/
+		/* 200 Score */
 		score += 200;
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -573,7 +573,7 @@ if (takendamage == 50)
 	scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 }
 
-#region /*Kill enemy if it's inside the wall*/
+#region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
 and (die = false)
 and (draw_xscale >= 0.8)
@@ -591,4 +591,4 @@ if (stuck_in_wall_counter > 0)
 {
 	stuck_in_wall_counter -= 1;
 }
-#endregion /*Kill enemy if it's inside the wall END*/
+#endregion /* Kill enemy if it's inside the wall END */

@@ -1,15 +1,15 @@
 function scr_options_keyboard_and_mouse_menu()
 {
 	
-	#region /*Keyboard and Mouse*/
+	#region /* Keyboard and Mouse */
 	if (global.settings_sidebar_menu = "keyboard_and_mouse_settings")
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		
-		#region /*Remap Keyboard and Mouse*/
+		#region /* Remap Keyboard and Mouse */
 		
-		#region /*Show what key is used*/
+		#region /* Show what key is used */
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			image_speed = 0;
@@ -17,9 +17,9 @@ function scr_options_keyboard_and_mouse_menu()
 			or_text_x = 900;
 			key2_x = 1000;
 		
-			#region /*Show the keys for every player*/
+			#region /* Show the keys for every player */
 		
-			#region /*Remapping Player 1 Key Variables*/
+			#region /* Remapping Player 1 Key Variables */
 			if (remapping_player = 0)
 			{
 				var remapping_player_key_dive = global.player1_key_dive;
@@ -50,7 +50,7 @@ function scr_options_keyboard_and_mouse_menu()
 				var remapping_player_key2_zoom_in = global.player1_key2_zoom_in;
 				var remapping_player_key2_zoom_out = global.player1_key2_zoom_out;
 				
-				#region /*Other player's keys*/
+				#region /* Other player's keys */
 				var remapping_other1_player_key_dive = global.player2_key_dive;
 				var remapping_other1_player_key_jump = global.player2_key_jump;
 				var remapping_other1_player_key_crouch = global.player2_key_crouch;
@@ -134,12 +134,12 @@ function scr_options_keyboard_and_mouse_menu()
 				var remapping_other3_player_key2_tongue = global.player4_key2_tongue;
 				var remapping_other3_player_key2_zoom_in = global.player4_key2_zoom_in;
 				var remapping_other3_player_key2_zoom_out = global.player4_key2_zoom_out;
-				#endregion /*Other player's keys END*/
+				#endregion /* Other player's keys END */
 				
 			}
-			#endregion /*Remapping Player 1 Key Variables END*/
+			#endregion /* Remapping Player 1 Key Variables END */
 			
-			#region /*Remapping Player 2 Key Variables*/
+			#region /* Remapping Player 2 Key Variables */
 			if (remapping_player = 1)
 			{
 				var remapping_player_key_dive = global.player2_key_dive;
@@ -170,7 +170,7 @@ function scr_options_keyboard_and_mouse_menu()
 				var remapping_player_key2_zoom_in = global.player2_key2_zoom_in;
 				var remapping_player_key2_zoom_out = global.player2_key2_zoom_out;
 				
-				#region /*Other player's keys*/
+				#region /* Other player's keys */
 				var remapping_other1_player_key_dive = global.player1_key_dive;
 				var remapping_other1_player_key_jump = global.player1_key_jump;
 				var remapping_other1_player_key_crouch = global.player1_key_crouch;
@@ -254,11 +254,11 @@ function scr_options_keyboard_and_mouse_menu()
 				var remapping_other3_player_key2_tongue = global.player4_key2_tongue;
 				var remapping_other3_player_key2_zoom_in = global.player4_key2_zoom_in;
 				var remapping_other3_player_key2_zoom_out = global.player4_key2_zoom_out;
-				#endregion /*Other player's keys END*/
+				#endregion /* Other player's keys END */
 			}
-			#endregion /*Remapping Player 2 Key Variables END*/
+			#endregion /* Remapping Player 2 Key Variables END */
 			
-			#region /*Remapping Player 3 Key Variables*/
+			#region /* Remapping Player 3 Key Variables */
 			if (remapping_player = 2)
 			{
 				var remapping_player_key_dive = global.player3_key_dive;
@@ -289,7 +289,7 @@ function scr_options_keyboard_and_mouse_menu()
 				var remapping_player_key2_zoom_in = global.player3_key2_zoom_in;
 				var remapping_player_key2_zoom_out = global.player3_key2_zoom_out;
 				
-				#region /*Other player's keys*/
+				#region /* Other player's keys */
 				var remapping_other1_player_key_dive = global.player2_key_dive;
 				var remapping_other1_player_key_jump = global.player2_key_jump;
 				var remapping_other1_player_key_crouch = global.player2_key_crouch;
@@ -373,12 +373,12 @@ function scr_options_keyboard_and_mouse_menu()
 				var remapping_other3_player_key2_tongue = global.player4_key2_tongue;
 				var remapping_other3_player_key2_zoom_in = global.player4_key2_zoom_in;
 				var remapping_other3_player_key2_zoom_out = global.player4_key2_zoom_out;
-				#endregion /*Other player's keys END*/
+				#endregion /* Other player's keys END */
 				
 			}
-			#endregion /*Remapping Player 3 Key Variables*/
+			#endregion /* Remapping Player 3 Key Variables */
 			
-			#region /*Remapping Player 4 Key Variables*/
+			#region /* Remapping Player 4 Key Variables */
 			if (remapping_player = 3)
 			{
 				var remapping_player_key_dive = global.player4_key_dive;
@@ -409,7 +409,7 @@ function scr_options_keyboard_and_mouse_menu()
 				var remapping_player_key2_zoom_in = global.player4_key2_zoom_in;
 				var remapping_player_key2_zoom_out = global.player4_key2_zoom_out;
 				
-				#region /*Other player's keys*/
+				#region /* Other player's keys */
 				var remapping_other1_player_key_dive = global.player2_key_dive;
 				var remapping_other1_player_key_jump = global.player2_key_jump;
 				var remapping_other1_player_key_crouch = global.player2_key_crouch;
@@ -493,16 +493,16 @@ function scr_options_keyboard_and_mouse_menu()
 				var remapping_other3_player_key2_tongue = global.player1_key2_tongue;
 				var remapping_other3_player_key2_zoom_in = global.player1_key2_zoom_in;
 				var remapping_other3_player_key2_zoom_out = global.player1_key2_zoom_out;
-				#endregion /*Other player's keys END*/
+				#endregion /* Other player's keys END */
 				
 			}
-			#endregion /*Remapping Player 4 Key Variables END*/
+			#endregion /* Remapping Player 4 Key Variables END */
 			
-			#region /*Make keys red if in conflict with other keys*/
+			#region /* Make keys red if in conflict with other keys */
 			
-			#region /*Key 1 Conflicts*/
+			#region /* Key 1 Conflicts */
 			
-			#region /*Dive Conflict*/
+			#region /* Dive Conflict */
 			if (remapping_player_key_dive = remapping_player_key_jump)
 			or(remapping_player_key_dive = remapping_player_key_crouch)
 			or(remapping_player_key_dive = remapping_player_key_crouch_toggle)
@@ -628,9 +628,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Dive Conflict END*/
+			#endregion /* Dive Conflict END */
 			
-			#region /*Jump Conflict*/
+			#region /* Jump Conflict */
 			if (remapping_player_key_jump = remapping_player_key_dive)
 			or(remapping_player_key_jump = remapping_player_key_crouch)
 			or(remapping_player_key_jump = remapping_player_key_crouch_toggle)
@@ -756,9 +756,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Jump Conflict END*/
+			#endregion /* Jump Conflict END */
 			
-			#region /*Crouch Conflict*/
+			#region /* Crouch Conflict */
 			if (remapping_player_key_crouch = remapping_player_key_dive)
 			or(remapping_player_key_crouch = remapping_player_key_jump)
 			or(remapping_player_key_crouch = remapping_player_key_crouch_toggle)
@@ -884,9 +884,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Crouch Conflict END*/
+			#endregion /* Crouch Conflict END */
 			
-			#region /*Crouch Toggle Conflict*/
+			#region /* Crouch Toggle Conflict */
 			if (remapping_player_key_crouch_toggle = remapping_player_key_dive)
 			or(remapping_player_key_crouch_toggle = remapping_player_key_jump)
 			or(remapping_player_key_crouch_toggle = remapping_player_key_crouch)
@@ -1012,9 +1012,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Crouch Toggle Conflict END*/
+			#endregion /* Crouch Toggle Conflict END */
 			
-			#region /*Sprint Conflict*/
+			#region /* Sprint Conflict */
 			if (remapping_player_key_sprint = remapping_player_key_dive)
 			or(remapping_player_key_sprint = remapping_player_key_jump)
 			or(remapping_player_key_sprint = remapping_player_key_crouch)
@@ -1140,9 +1140,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Sprint Conflict END*/
+			#endregion /* Sprint Conflict END */
 			
-			#region /*Sprint Toggle Conflict*/
+			#region /* Sprint Toggle Conflict */
 			if (remapping_player_key_sprint_toggle = remapping_player_key_dive)
 			or(remapping_player_key_sprint_toggle = remapping_player_key_jump)
 			or(remapping_player_key_sprint_toggle = remapping_player_key_crouch)
@@ -1268,9 +1268,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Sprint Toggle Conflict END*/
+			#endregion /* Sprint Toggle Conflict END */
 			
-			#region /*Left Conflict*/
+			#region /* Left Conflict */
 			if (remapping_player_key_left = remapping_player_key_dive)
 			or(remapping_player_key_left = remapping_player_key_jump)
 			or(remapping_player_key_left = remapping_player_key_crouch)
@@ -1396,9 +1396,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Left Conflict END*/
+			#endregion /* Left Conflict END */
 			
-			#region /*Right Conflict*/
+			#region /* Right Conflict */
 			if (remapping_player_key_right = remapping_player_key_dive)
 			or(remapping_player_key_right = remapping_player_key_jump)
 			or(remapping_player_key_right = remapping_player_key_crouch)
@@ -1524,9 +1524,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Right Conflict END*/
+			#endregion /* Right Conflict END */
 			
-			#region /*Down Conflict*/
+			#region /* Down Conflict */
 			if (remapping_player_key_down = remapping_player_key_dive)
 			or(remapping_player_key_down = remapping_player_key_jump)
 			or(remapping_player_key_down = remapping_player_key_crouch)
@@ -1652,9 +1652,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Down Conflict END*/
+			#endregion /* Down Conflict END */
 			
-			#region /*Up Conflict*/
+			#region /* Up Conflict */
 			if (remapping_player_key_up = remapping_player_key_dive)
 			or(remapping_player_key_up = remapping_player_key_jump)
 			or(remapping_player_key_up = remapping_player_key_crouch)
@@ -1780,9 +1780,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Up Conflict END*/
+			#endregion /* Up Conflict END */
 			
-			#region /*Tongue Conflict*/
+			#region /* Tongue Conflict */
 			if (remapping_player_key_tongue = remapping_player_key_dive)
 			or(remapping_player_key_tongue = remapping_player_key_jump)
 			or(remapping_player_key_tongue = remapping_player_key_crouch)
@@ -1908,9 +1908,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Tongue Conflict END*/
+			#endregion /* Tongue Conflict END */
 			
-			#region /*Zoom In Conflict*/
+			#region /* Zoom In Conflict */
 			if (remapping_player_key_zoom_in = remapping_player_key_dive)
 			or(remapping_player_key_zoom_in = remapping_player_key_jump)
 			or(remapping_player_key_zoom_in = remapping_player_key_crouch)
@@ -2036,9 +2036,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Zoom In Conflict END*/
+			#endregion /* Zoom In Conflict END */
 			
-			#region /*Zoom Out Conflict*/
+			#region /* Zoom Out Conflict */
 			if (remapping_player_key_zoom_out = remapping_player_key_dive)
 			or(remapping_player_key_zoom_out = remapping_player_key_jump)
 			or(remapping_player_key_zoom_out = remapping_player_key_crouch)
@@ -2164,13 +2164,13 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Zoom Out Conflict END*/
+			#endregion /* Zoom Out Conflict END */
 			
-			#endregion /*Key 1 Conflicts END*/
+			#endregion /* Key 1 Conflicts END */
 			
-			#region /*Key 2 Conflicts*/
+			#region /* Key 2 Conflicts */
 			
-			#region /*Dive 2 Conflict*/
+			#region /* Dive 2 Conflict */
 			if (remapping_player_key2_dive = remapping_player_key_dive)
 			or(remapping_player_key2_dive = remapping_player_key_jump)
 			or(remapping_player_key2_dive = remapping_player_key_crouch)
@@ -2296,9 +2296,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Dive 2 Conflict END*/
+			#endregion /* Dive 2 Conflict END */
 			
-			#region /*Jump 2 Conflict*/
+			#region /* Jump 2 Conflict */
 			if (remapping_player_key2_jump = remapping_player_key_dive)
 			or(remapping_player_key2_jump = remapping_player_key_jump)
 			or(remapping_player_key2_jump = remapping_player_key_crouch)
@@ -2424,9 +2424,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Jump 2 Conflict END*/
+			#endregion /* Jump 2 Conflict END */
 			
-			#region /*Crouch 2 Conflict*/
+			#region /* Crouch 2 Conflict */
 			if (remapping_player_key2_crouch = remapping_player_key_dive)
 			or(remapping_player_key2_crouch = remapping_player_key_jump)
 			or(remapping_player_key2_crouch = remapping_player_key_crouch)
@@ -2552,9 +2552,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Crouch 2 Conflict END*/
+			#endregion /* Crouch 2 Conflict END */
 			
-			#region /*Crouch Toggle 2 Conflict*/
+			#region /* Crouch Toggle 2 Conflict */
 			if (remapping_player_key2_crouch_toggle = remapping_player_key_dive)
 			or(remapping_player_key2_crouch_toggle = remapping_player_key_jump)
 			or(remapping_player_key2_crouch_toggle = remapping_player_key_crouch)
@@ -2680,9 +2680,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Crouch Toggle 2 Conflict END*/
+			#endregion /* Crouch Toggle 2 Conflict END */
 			
-			#region /*Sprint 2 Conflict*/
+			#region /* Sprint 2 Conflict */
 			if (remapping_player_key2_sprint = remapping_player_key_dive)
 			or(remapping_player_key2_sprint = remapping_player_key_jump)
 			or(remapping_player_key2_sprint = remapping_player_key_crouch)
@@ -2808,9 +2808,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Sprint 2 Conflict END*/
+			#endregion /* Sprint 2 Conflict END */
 			
-			#region /*Sprint Toggle 2 Conflict*/
+			#region /* Sprint Toggle 2 Conflict */
 			if (remapping_player_key2_sprint_toggle = remapping_player_key_dive)
 			or(remapping_player_key2_sprint_toggle = remapping_player_key_jump)
 			or(remapping_player_key2_sprint_toggle = remapping_player_key_crouch)
@@ -2936,9 +2936,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Sprint Toggle 2 Conflict END*/
+			#endregion /* Sprint Toggle 2 Conflict END */
 			
-			#region /*Left 2 Conflict*/
+			#region /* Left 2 Conflict */
 			if (remapping_player_key2_left = remapping_player_key_dive)
 			or(remapping_player_key2_left = remapping_player_key_jump)
 			or(remapping_player_key2_left = remapping_player_key_crouch)
@@ -3064,9 +3064,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Left 2 Conflict END*/
+			#endregion /* Left 2 Conflict END */
 			
-			#region /*Right 2 Conflict*/
+			#region /* Right 2 Conflict */
 			if (remapping_player_key2_right = remapping_player_key_dive)
 			or(remapping_player_key2_right = remapping_player_key_jump)
 			or(remapping_player_key2_right = remapping_player_key_crouch)
@@ -3192,9 +3192,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Right 2 Conflict END*/
+			#endregion /* Right 2 Conflict END */
 			
-			#region /*Down 2 Conflict*/
+			#region /* Down 2 Conflict */
 			if (remapping_player_key2_down = remapping_player_key_dive)
 			or(remapping_player_key2_down = remapping_player_key_jump)
 			or(remapping_player_key2_down = remapping_player_key_crouch)
@@ -3320,9 +3320,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Down 2 Conflict END*/
+			#endregion /* Down 2 Conflict END */
 			
-			#region /*Up 2 Conflict*/
+			#region /* Up 2 Conflict */
 			if (remapping_player_key2_up = remapping_player_key_dive)
 			or(remapping_player_key2_up = remapping_player_key_jump)
 			or(remapping_player_key2_up = remapping_player_key_crouch)
@@ -3448,9 +3448,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Up 2 Conflict END*/
+			#endregion /* Up 2 Conflict END */
 			
-			#region /*Tongue 2 Conflict*/
+			#region /* Tongue 2 Conflict */
 			if (remapping_player_key2_tongue = remapping_player_key_dive)
 			or(remapping_player_key2_tongue = remapping_player_key_jump)
 			or(remapping_player_key2_tongue = remapping_player_key_crouch)
@@ -3576,9 +3576,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Tongue 2 Conflict END*/
+			#endregion /* Tongue 2 Conflict END */
 			
-			#region /*Zoom In 2 Conflict*/
+			#region /* Zoom In 2 Conflict */
 			if (remapping_player_key2_zoom_in = remapping_player_key_dive)
 			or(remapping_player_key2_zoom_in = remapping_player_key_jump)
 			or(remapping_player_key2_zoom_in = remapping_player_key_crouch)
@@ -3704,9 +3704,9 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Zoom In 2 Conflict END*/
+			#endregion /* Zoom In 2 Conflict END */
 			
-			#region /*Zoom Out 2 Conflict*/
+			#region /* Zoom Out 2 Conflict */
 			if (remapping_player_key2_zoom_out = remapping_player_key_dive)
 			or(remapping_player_key2_zoom_out = remapping_player_key_jump)
 			or(remapping_player_key2_zoom_out = remapping_player_key_crouch)
@@ -3832,11 +3832,11 @@ function scr_options_keyboard_and_mouse_menu()
 					draw_set_alpha(1);
 				}
 			}
-			#endregion /*Zoom Out 2 Conflict END*/
+			#endregion /* Zoom Out 2 Conflict END */
 			
-			#endregion /*Key 2 Conflicts END*/
+			#endregion /* Key 2 Conflicts END */
 			
-			#endregion /*Make keys red if in conflict with other keys END*/
+			#endregion /* Make keys red if in conflict with other keys END */
 			
 			scr_draw_remap_key("remap_key_dive", "Dive", remapping_player_key_dive, remapping_player_key2_dive, key1_x, menu_y_remap_key_dive);
 			scr_draw_remap_key("remap_key_jump", "Jump", remapping_player_key_jump, remapping_player_key2_jump, key1_x, menu_y_remap_key_jump);
@@ -3849,7 +3849,7 @@ function scr_options_keyboard_and_mouse_menu()
 			scr_draw_remap_key("remap_key_down", "Down", remapping_player_key_down, remapping_player_key2_down, key1_x, menu_y_remap_key_down);
 			scr_draw_remap_key("remap_key_up", "Up", remapping_player_key_up, remapping_player_key2_up, key1_x, menu_y_remap_key_up);
 			
-			#region /*Remap Key Tongue*/
+			#region /* Remap Key Tongue */
 			if (remapping_player = 0)
 			and (allow_player1_tongue = true)
 			or (remapping_player = 1)
@@ -3861,23 +3861,23 @@ function scr_options_keyboard_and_mouse_menu()
 			{
 				scr_draw_remap_key("remap_key_tongue", "Tongue", remapping_player_key_tongue, remapping_player_key2_tongue, key1_x, menu_y_remap_key_tongue);
 			}
-			#endregion /*Remap Key Tongue END*/
+			#endregion /* Remap Key Tongue END */
 			
 			scr_draw_remap_key("remap_key_zoom_in", "Zoom In", remapping_player_key_zoom_in, remapping_player_key2_zoom_in, key1_x, menu_y_remap_key_zoom_in);
 			scr_draw_remap_key("remap_key_zoom_out", "Zoom Out", remapping_player_key_zoom_out, remapping_player_key2_zoom_out, key1_x, menu_y_remap_key_zoom_out);
 			
-			#endregion /*Show the keys for every player END*/
+			#endregion /* Show the keys for every player END */
 			
 		}
-		#endregion /*Show what key is used END*/
+		#endregion /* Show what key is used END */
 		
 		scr_options_reset_controls_to_default_settings();
 		
-		#region /*Keyboards Controls Remapping Navigation*/
+		#region /* Keyboards Controls Remapping Navigation */
 		if (menu_joystick_delay <= 0)
 		{
 			
-			#region /*Remap key dive*/
+			#region /* Remap key dive */
 			if (menu == "remap_key_dive")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -3896,11 +3896,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key dive END*/
+			#endregion /* Remap key dive END */
 			
 			else
 			
-			#region /*Remap key jump*/
+			#region /* Remap key jump */
 			if (menu == "remap_key_jump")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -3919,11 +3919,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key jump END*/
+			#endregion /* Remap key jump END */
 			
 			else
 			
-			#region /*Remap key crouch */
+			#region /* Remap key crouch */
 			if (menu == "remap_key_crouch")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -3942,11 +3942,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key crouch END*/
+			#endregion /* Remap key crouch END */
 			
 			else
 			
-			#region /*Remap key crouch toggle*/
+			#region /* Remap key crouch toggle */
 			if (menu == "remap_key_crouch_toggle")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -3965,11 +3965,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key crouch toggle END*/
+			#endregion /* Remap key crouch toggle END */
 			
 			else
 			
-			#region /*Remap key sprint*/
+			#region /* Remap key sprint */
 			if (menu == "remap_key_sprint")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -3988,11 +3988,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key sprint END*/
+			#endregion /* Remap key sprint END */
 			
 			else
 			
-			#region /*Remap key sprint toggle*/
+			#region /* Remap key sprint toggle */
 			if (menu == "remap_key_sprint_toggle")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -4011,11 +4011,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key sprint toggle END*/
+			#endregion /* Remap key sprint toggle END */
 			
 			else
 			
-			#region /*Remap key left*/
+			#region /* Remap key left */
 			if (menu == "remap_key_left")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -4034,11 +4034,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key left END*/
+			#endregion /* Remap key left END */
 			
 			else
 			
-			#region /*Remap key right*/
+			#region /* Remap key right */
 			if (menu == "remap_key_right")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -4057,11 +4057,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key right END*/
+			#endregion /* Remap key right END */
 			
 			else
 			
-			#region /*Remap key down*/
+			#region /* Remap key down */
 			if (menu == "remap_key_down")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -4080,11 +4080,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key down END*/
+			#endregion /* Remap key down END */
 			
 			else
 			
-			#region /*Remap key up*/
+			#region /* Remap key up */
 			if (menu == "remap_key_up")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -4117,11 +4117,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap key up END*/
+			#endregion /* Remap key up END */
 			
 			else
 			
-			#region /*Remap Key Tongue*/
+			#region /* Remap Key Tongue */
 			if (menu == "remap_key_tongue")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -4140,11 +4140,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap Key Tongue END*/
+			#endregion /* Remap Key Tongue END */
 			
 			else
 			
-			#region /*Remap Key Zoom In*/
+			#region /* Remap Key Zoom In */
 			if (menu == "remap_key_zoom_in")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -4177,9 +4177,9 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap Key Zoom In END*/
+			#endregion /* Remap Key Zoom In END */
 			
-			#region /*Remap Key Zoom Out*/
+			#region /* Remap Key Zoom Out */
 			if (menu == "remap_key_zoom_out")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -4198,11 +4198,11 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap Key Zoom Out END*/
+			#endregion /* Remap Key Zoom Out END */
 			
 			else
 			
-			#region /*Remap reset*/
+			#region /* Remap reset */
 			if (menu == "remap_reset")
 			and (can_remap_key = false)
 			and (input_key == false)
@@ -4221,9 +4221,9 @@ function scr_options_keyboard_and_mouse_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /*Remap reset END*/
+			#endregion /* Remap reset END */
 			
-			#region /*Menu remap key number*/
+			#region /* Menu remap key number */
 			if (menu == "remap_key_dive")
 			or (menu == "remap_key_jump")
 			or (menu == "remap_key_crouch")
@@ -4262,15 +4262,15 @@ function scr_options_keyboard_and_mouse_menu()
 					}
 				}
 			}
-			#endregion /*Menu remap key number*/
+			#endregion /* Menu remap key number */
 			
 		}
 		
-		#endregion /*Keyboards Controls Remapping Navigation END*/
+		#endregion /* Keyboards Controls Remapping Navigation END */
 		
-		#endregion /*Remap Keyboard and Mouse END*/
+		#endregion /* Remap Keyboard and Mouse END */
 		
-		#region /*Controls checkmarks and dropdown menu settings*/
+		#region /* Controls checkmarks and dropdown menu settings */
 		if (remapping_player = 0)
 		{
 			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player1_up_key_is_jump_key);
@@ -4342,9 +4342,9 @@ function scr_options_keyboard_and_mouse_menu()
 			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player4_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
 			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player4_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		}
-		#endregion /*Controls checkmarks and dropdown menu settings END*/
+		#endregion /* Controls checkmarks and dropdown menu settings END */
 		
-		#region /*Menu cursor y position*/
+		#region /* Menu cursor y position */
 		if (menu == "show_controls")
 		{
 			menu_cursor_y_position = menu_y_show_controls + 100;
@@ -4357,39 +4357,39 @@ function scr_options_keyboard_and_mouse_menu()
 		{
 			menu_cursor_y_position = menu_y_wall_jump_setting;
 		}
-		#endregion /*Menu cursor y position END*/
+		#endregion /* Menu cursor y position END */
 		
-		draw_menu_dropdown(390, 50 + menu_y_offset, l10n_text("Remap This Player"), "remap_select_player", remapping_player, l10n_text("Player 1"), l10n_text("Player 2"), l10n_text("Player 3"), l10n_text("Player 4")); /*Remap Select Player - Which player do you want to remap the controls for?*/
+		draw_menu_dropdown(390, 50 + menu_y_offset, l10n_text("Remap This Player"), "remap_select_player", remapping_player, l10n_text("Player 1"), l10n_text("Player 2"), l10n_text("Player 3"), l10n_text("Player 4")); /* Remap Select Player - Which player do you want to remap the controls for? */
 		
-		#region /*Show the player when they can input a gamepad button to remap controls*/
+		#region /* Show the player when they can input a gamepad button to remap controls */
 		if (input_key = true)
 		{
 			draw_set_alpha(0.75);
 			draw_rectangle_color(window_get_width() / 2 - 252, 32 - 20, window_get_width() / 2 + 252, 64 + 20, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			
-			if (remapping_player = 0) /*Text saying input gamepad button now for player 1*/
+			if (remapping_player = 0) /* Text saying input gamepad button now for player 1 */
 			{
 				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
-			if (remapping_player = 1) /*Text saying input gamepad button now for player 2*/
+			if (remapping_player = 1) /* Text saying input gamepad button now for player 2 */
 			{
 				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
-			if (remapping_player = 2) /*Text saying input gamepad button now for player 3*/
+			if (remapping_player = 2) /* Text saying input gamepad button now for player 3 */
 			{
 				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
-			if (remapping_player = 3) /*Text saying input gamepad button now for player 4 */
+			if (remapping_player = 3) /* Text saying input gamepad button now for player 4 */
 			{
 				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
@@ -4404,9 +4404,9 @@ function scr_options_keyboard_and_mouse_menu()
 				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() / 2 + 220, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 		}
-		#endregion /*Show the player when they can input a gamepad button to remap controls END*/
+		#endregion /* Show the player when they can input a gamepad button to remap controls END */
 		
 	}
-	#endregion /*Keyboard and Mouse END*/
+	#endregion /* Keyboard and Mouse END */
 	
 }

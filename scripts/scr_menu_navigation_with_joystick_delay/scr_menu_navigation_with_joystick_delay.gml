@@ -1,7 +1,7 @@
 function scr_menu_navigation_with_joystick_delay()
 {
 	
-	#region /*Menu navigation with joystick (This code must come after all menu navigation code)*/
+	#region /* Menu navigation with joystick (This code must come after all menu navigation code) */
 	if (gamepad_axis_value(0, gp_axislv) < 0)
 	or (gamepad_axis_value(0, gp_axislv) > 0)
 	or (gamepad_axis_value(0, gp_axislh) < 0)
@@ -40,6 +40,6 @@ function scr_menu_navigation_with_joystick_delay()
 	{
 		menu_joystick_delay -= 1;
 	}
-	#endregion /*Menu navigation with joystick (This code must come after all menu navigation code) END*/
+	#endregion /* Menu navigation with joystick (This code must come after all menu navigation code) END */
 	
 }

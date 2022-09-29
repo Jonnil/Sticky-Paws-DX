@@ -5,7 +5,7 @@ look_outward = 17;
 same_object = obj_ground;
 
 ground_surface = 0;
-/*
+/* 
 0 = default
 1 = dirt
 2 = glass
@@ -13,7 +13,7 @@ ground_surface = 0;
 4 = gravel
 5 = metal
 6 = stone
-7 = wood*/
+7 = wood */
 
 image_speed = 0;
 

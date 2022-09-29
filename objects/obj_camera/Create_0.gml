@@ -27,7 +27,7 @@ reset_game_if_no_interactivity_second_countdown_timer = 0;
 reset_game_if_no_interactivity_second_countdown = 60;
 
 saved_file_exists = false;
-can_save_to_character_config = false; /*Only turn true when playing as custom character*/
+can_save_to_character_config = false; /* Only turn true when playing as custom character */
 unused_x_origin_point = noone;
 unused_y_origin_point = noone;
 
@@ -108,7 +108,7 @@ else
 	global.make_every_tileset_into_default_tileset = false;
 }
 
-#region /*Lives Icon*/
+#region /* Lives Icon */
 if (global.player1_can_play == true)
 {
 	camera_player = 0;
@@ -146,10 +146,10 @@ else
 {
 	sprite_lives_icon = noone;
 }
-alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
-#endregion /*Lives Icon END*/
+alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
+#endregion /* Lives Icon END */
 
-#region /*Create Foreground and Background Brightness Layer*/
+#region /* Create Foreground and Background Brightness Layer */
 if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
 and (!instance_exists(obj_background_brightness_gameplay))
 {
@@ -175,7 +175,7 @@ and (!instance_exists(obj_foreground_secret))
 {
 	instance_create_depth(0, 0, 0, obj_foreground_secret);
 }
-#endregion /*Create Foreground and Background Brightness Layer END*/
+#endregion /* Create Foreground and Background Brightness Layer END */
 
 save_level_as_png = false;
 can_spawn_player1 = true;
@@ -187,15 +187,15 @@ show_player2_controls_y = +32;
 show_player3_controls_y = +32;
 show_player4_controls_y = +32;
 
-#region /*Smooth the camera out even more*/
+#region /* Smooth the camera out even more */
 view_wview_lerp = 0;
 view_hview_lerp = 0;
-#endregion /*Smooth the camera out even more END*/
+#endregion /* Smooth the camera out even more END */
 
 view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) / 2);
 view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) / 2);
 
-#region /*Hud Variables*/
+#region /* Hud Variables */
 global.hud_show_lives = true;
 global.hud_show_deaths = true;
 hud_show_lives = - 32;
@@ -208,37 +208,37 @@ hud_show_big_collectibles = - 32;
 hud_show_big_collectibles_timer = 0;
 hud_show_score = -64;
 hud_show_score_timer = 0;
-time_countup_y = 32; /*What y position the countup timer should be at*/
-hurry_up_message_timer = 0; /*How long the hurry up message should stay on screen*/
-#endregion /*Hud Variables END*/
+time_countup_y = 32; /* What y position the countup timer should be at */
+hurry_up_message_timer = 0; /* How long the hurry up message should stay on screen */
+#endregion /* Hud Variables END */
 
 player_has_spawned = false;
 
-#region /*Checkpoint*/
+#region /* Checkpoint */
 if (global.actually_play_edited_level = true)
 and (global.play_edited_level = true)
 {
-	if (global.x_checkpoint > 0)
-	or (global.y_checkpoint > 0)
+	if (global.checkpoint_x > 0)
+	or (global.checkpoint_y > 0)
 	{
-		camera_set_view_pos(view_camera[view_current], global.x_checkpoint, global.y_checkpoint)
+		camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y)
 		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		{
-			obj_player.x = global.x_checkpoint;
-			obj_player.y = global.y_checkpoint;
+			obj_player.x = global.checkpoint_x;
+			obj_player.y = global.checkpoint_y;
 		}
-		x = global.x_checkpoint;
-		y = global.y_checkpoint;
-		xx = global.x_checkpoint;
-		yy = global.y_checkpoint;
+		x = global.checkpoint_x;
+		y = global.checkpoint_y;
+		xx = global.checkpoint_x;
+		yy = global.checkpoint_y;
 	}
 }
-#endregion /*Checkpoint END*/
+#endregion /* Checkpoint END */
 
 scr_initialize_level_information_ini();
 
-#region /*Spawn Players*/
+#region /* Spawn Players */
 player1 = noone;
 player2 = noone;
 player3 = noone;
@@ -250,12 +250,12 @@ and (!instance_exists(obj_title))
 {
 	if (global.player1_can_play == true)
 	{
-		if (global.x_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		or (global.y_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
+		if (global.checkpoint_x > 0)
+		and (global.actually_play_edited_level == true)
+		or (global.checkpoint_y > 0)
+		and (global.actually_play_edited_level == true)
 		{
-			player1 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+			player1 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
 		if (global.actually_play_edited_level = true)
@@ -278,12 +278,12 @@ and (!instance_exists(obj_title))
 	}
 	if (global.player2_can_play == true)
 	{
-		if (global.x_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		or (global.y_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
+		if (global.checkpoint_x > 0)
+		and (global.actually_play_edited_level == true)
+		or (global.checkpoint_y > 0)
+		and (global.actually_play_edited_level == true)
 		{
-			player2 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+			player2 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
 		if (global.actually_play_edited_level = true)
@@ -306,12 +306,12 @@ and (!instance_exists(obj_title))
 	}
 	if (global.player3_can_play == true)
 	{
-		if (global.x_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		or (global.y_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
+		if (global.checkpoint_x > 0)
+		and (global.actually_play_edited_level == true)
+		or (global.checkpoint_y > 0)
+		and (global.actually_play_edited_level == true)
 		{
-			player3 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+			player3 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
 		if (global.actually_play_edited_level = true)
@@ -334,12 +334,12 @@ and (!instance_exists(obj_title))
 	}
 	if (global.player4_can_play == true)
 	{
-		if (global.x_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
-		or (global.y_checkpoint > 0)
-		and (global.actually_play_edited_level = true)
+		if (global.checkpoint_x > 0)
+		and (global.actually_play_edited_level == true)
+		or (global.checkpoint_y > 0)
+		and (global.actually_play_edited_level == true)
 		{
-			player4 = instance_create_depth(global.x_checkpoint, global.y_checkpoint, 0, obj_player);
+			player4 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
 		if (global.actually_play_edited_level = true)
@@ -362,14 +362,14 @@ and (!instance_exists(obj_title))
 	}
 	if (asset_get_type("room_leveleditor") == asset_room)
 	and (room == room_leveleditor)
-	and (global.actually_play_edited_level = true)
+	and (global.actually_play_edited_level == true)
 	{
 		player_has_spawned = true;
 	}
 }
-#endregion /*Spawn Players END*/
+#endregion /* Spawn Players END */
 
-#region /*HUD Show Controls keys that have been pressed*/
+#region /* HUD Show Controls keys that have been pressed */
 player1_show_controls_timer = 0;
 player2_show_controls_timer = 0;
 player3_show_controls_timer = 0;
@@ -384,7 +384,7 @@ show_sprint_toggle_for_player1 = 0;
 show_sprint_toggle_for_player2 = 0;
 show_sprint_toggle_for_player3 = 0;
 show_sprint_toggle_for_player4 = 0;
-#endregion /*HUD Show Controls keys that have been pressed END*/
+#endregion /* HUD Show Controls keys that have been pressed END */
 
 if (asset_get_type("obj_player_map") == asset_object)
 and (instance_exists(obj_player_map))
@@ -408,32 +408,32 @@ allow_iris = true;
 iris_zoom = 0;
 timer_blinking_alpha = 0;
 
-/*Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen*/
-#region /*Initialize View*/
+/* Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen */
+#region /* Initialize View */
 
-/*View Size*/
+/* View Size */
 view_wview= 1024 + 400 - 32;
 view_hview= 768- 32;
-/*View Size END*/
+/* View Size END */
 
-#region /*View Size*/
+#region /* View Size */
 if (os_type == os_ios)or(os_type == os_android){
 if (view_wport > 1920){view_wport = 1920;}if (view_wview> 1920 - 64){view_wview= 1920 - 64;}if (view_hport > 1080){view_hport = 1080;}if (view_hview> 1080 - 64){view_hview= 1080 - 64;}
 if (view_wport <640 - 320){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport <480){view_hport = 480;}if (view_hview<480){view_hview= 480;}
 }else{
 if (view_wport > 1920){view_wport = 1920;}if (view_wview> 1920){view_wview= 1920;}if (view_hport > 1080){view_hport = 1080;}if (view_hview> 1080){view_hview= 1080;}
 if (view_wport <640){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport <480){view_hport = 480;}if (view_hview<480){view_hview= 480;}}
-#endregion /*View Size END*/
+#endregion /* View Size END */
 
-#endregion /*Initialize View END*/
+#endregion /* Initialize View END */
 
-#region /*Custom Music*/
+#region /* Custom Music */
 if (asset_get_type("room_title") == asset_room)
 and (room != room_title)
 {
 	
-	#region /*Update Music*/
-	/*OGG small letter File*/
+	#region /* Update Music */
+	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
@@ -443,7 +443,7 @@ and (room != room_title)
 		global.music = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg");
 	}
 	else
-	/*OGG small letter File*/
+	/* OGG small letter File */
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/music.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	{
@@ -453,10 +453,10 @@ and (room != room_title)
 	{
 		global.music = noone;
 	}
-	#endregion /*Update Music END*/
+	#endregion /* Update Music END */
 	
-	#region /*Update Music Underwater*/
-	/*OGG small letter File*/
+	#region /* Update Music Underwater */
+	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
@@ -466,7 +466,7 @@ and (room != room_title)
 		global.music_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg");
 	}
 	else
-	/*OGG small letter File*/
+	/* OGG small letter File */
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	{
@@ -476,10 +476,10 @@ and (room != room_title)
 	{
 		global.music_underwater = noone;
 	}
-	#endregion /*Update Music Underwater END*/
+	#endregion /* Update Music Underwater END */
 	
-	#region /*Update Ambience*/
-	/*OGG small letter File*/
+	#region /* Update Ambience */
+	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
@@ -489,7 +489,7 @@ and (room != room_title)
 		global.ambience = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg");
 	}
 	else
-	/*OGG small letter File*/
+	/* OGG small letter File */
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/ambience.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	{
@@ -499,10 +499,10 @@ and (room != room_title)
 	{
 		global.ambience = noone;
 	}
-	#endregion /*Update Ambience END*/
+	#endregion /* Update Ambience END */
 	
-	#region /*Update Ambience Underwater*/
-	/*OGG small letter File*/
+	#region /* Update Ambience Underwater */
+	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
 	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
@@ -512,7 +512,7 @@ and (room != room_title)
 		global.ambience_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg");
 	}
 	else
-	/*OGG small letter File*/
+	/* OGG small letter File */
 	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	{
@@ -522,7 +522,7 @@ and (room != room_title)
 	{
 		global.ambience_underwater = noone;
 	}
-	#endregion /*Update Ambience Underwater END*/
+	#endregion /* Update Ambience Underwater END */
 	
 }
 else
@@ -532,12 +532,12 @@ else
 	global.ambience = noone;
 	global.ambience_underwater = noone;
 }
-#endregion /*Custom Music END*/
+#endregion /* Custom Music END */
 
 shake = false;
 scrolling_left = 0;
 
-#region /*Assist Item*/
+#region /* Assist Item */
 if (asset_get_type("obj_assist_item") == asset_object)
 and (asset_get_type("obj_player") == asset_object)
 and (global.assist_enable = true)
@@ -558,9 +558,9 @@ and (global.assist_enable = true)
 		}
 	}
 }
-#endregion /*Assist Item END*/
+#endregion /* Assist Item END */
 
-#region /*Start Timer*/
+#region /* Start Timer */
 time_second = 0;
 if (instance_exists(obj_player))
 and (asset_get_type("obj_player_map") == asset_object)
@@ -570,10 +570,10 @@ and (!instance_exists(obj_player_map))
 	{
 		if (global.actually_play_edited_level = true)
 		and (global.play_edited_level = true)
-		and (global.x_checkpoint > 0)
+		and (global.checkpoint_x > 0)
 		or (global.actually_play_edited_level = true)
 		and (global.play_edited_level = true)
-		and (global.y_checkpoint > 0)
+		and (global.checkpoint_y > 0)
 		{
 			global.timeattack_realmillisecond = global.checkpoint_realmillisecond;
 			global.timeattack_millisecond = global.checkpoint_millisecond;
@@ -589,9 +589,9 @@ and (!instance_exists(obj_player_map))
 		}
 	}
 }
-#endregion /*Start Timer END*/
+#endregion /* Start Timer END */
 
-#region /*Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default*/
+#region /* Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default */
 if (global.number_of_audio_channels = 0)
 {
 	audio_channel_num(32);
@@ -631,7 +631,7 @@ if (global.number_of_audio_channels = 7)
 {
 	audio_channel_num(256);
 }
-#endregion /*Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default END*/
+#endregion /* Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default END */
 
 zoom_lerp = global.zoom_level;
 zoom_border_lerp = 0;

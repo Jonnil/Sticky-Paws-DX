@@ -1,7 +1,7 @@
-function scr_choose_sound_variation(sound_variable_that_will_choose, variation1 = noone, variation2 = noone, variation3 = noone, variation4 = noone, variation5 = noone, variation6 = noone, variation7 = noone, variation8 = noone, variation9 = noone, variation10 = noone, variation11 = noone, variation12 = noone, variation13 = noone, variation14 = noone, variation15 = noone)//, variation16 = noone, variation17 = noone, variation18 = noone, variation19 = noone, variation20 = noone)
+function scr_choose_sound_variation(sound_variable_that_will_choose = noone, variation1 = noone, variation2 = noone, variation3 = noone, variation4 = noone, variation5 = noone, variation6 = noone, variation7 = noone, variation8 = noone, variation9 = noone, variation10 = noone, variation11 = noone, variation12 = noone, variation13 = noone, variation14 = noone, variation15 = noone) //, variation16 = noone, variation17 = noone, variation18 = noone, variation19 = noone, variation20 = noone)
 {
 	
-	#region /*Choose sound variation*/
+	#region /* Choose sound variation */
 	if (variation1 > noone)
 	and (variation2 == noone)
 	and (variation3 == noone)
@@ -296,6 +296,7 @@ function scr_choose_sound_variation(sound_variable_that_will_choose, variation1 
 	{
 		sound_variable_that_will_choose = noone;
 	}
-	#endregion /*Choose sound variation END*/
+	#endregion /* Choose sound variation END */
 	
+	return(sound_variable_that_will_choose);
 }

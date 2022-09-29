@@ -6,19 +6,19 @@ if (asset_get_type("spr_wall") == asset_sprite)
 	mask_index = spr_wall;
 }
 
-#region /*If inside wall, destroy yourself*/
+#region /* If inside wall, destroy yourself */
 if (position_meeting(x, y, obj_wall))
 {
 	instance_destroy();
 }
-#endregion /*If inside wall, destroy yourself END*/
+#endregion /* If inside wall, destroy yourself END */
 
-#region /*When falling, it's not bouncing up anymore*/
+#region /* When falling, it's not bouncing up anymore */
 if (vspeed >= 0)
 {
 	bounceup = false;
 }
-#endregion /*When falling, it's not bouncing up anymore END*/
+#endregion /* When falling, it's not bouncing up anymore END */
 
 if (instance_exists(obj_camera))
 and (obj_camera.sprite_lives_icon > noone)
@@ -28,7 +28,7 @@ and (obj_camera.sprite_lives_icon > noone)
 
 text_alpha = lerp(text_alpha, scr_wave(0, 1, 3, 0), 0.1);
 
-#region /*Color the extra live pickup differently if it grants you different amounts of lives*/
+#region /* Color the extra live pickup differently if it grants you different amounts of lives */
 if (number_of_extra_lives = 3)
 {
 	if (sprite_index > 0)
@@ -54,22 +54,22 @@ else
 	}
 	//scr_draw_text_outlined(x, y, "1-up", global.default_text_size * 0.75, c_white, c_black, text_alpha);
 }
-#endregion /*Color the extra live pickup differently if it grants you different amounts of lives END*/
+#endregion /* Color the extra live pickup differently if it grants you different amounts of lives END */
 
-#region /*Set the gravity*/
-gravity_direction = 270; /*Direction of the gravity*/
+#region /* Set the gravity */
+gravity_direction = 270; /* Direction of the gravity */
 if (asset_get_type("obj_wall") == asset_object)
 and (!place_meeting(x, y + 1, obj_wall))
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
-	gravity = 0.5; /*The gravity*/
+	gravity = 0.5; /* The gravity */
 }
 else
 {
 	gravity = 0;
 }
-#endregion /*Set the gravity END*/
+#endregion /* Set the gravity END */
 
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
@@ -117,7 +117,7 @@ and (instance_exists(obj_player))
 	and (bounceup = false)
 	{
 		
-		#region /*Give Life*/
+		#region /* Give Life */
 		if (number_of_extra_lives = 3)
 		{
 			lives += 3;
@@ -160,7 +160,7 @@ and (instance_exists(obj_player))
 				hud_show_lives_timer = global.hud_hide_time * 60;
 			}
 		}
-		#endregion /*Give Life END*/
+		#endregion /* Give Life END */
 		
 		effect_create_below(ef_ring, x, y, 1, c_white);
 		instance_destroy();
@@ -182,7 +182,7 @@ if (asset_get_type("obj_wall") == asset_object)
 	}
 }
 
-#region /*Expanding Ring Effect*/
+#region /* Expanding Ring Effect */
 if effect_time < 60
 {
 	effect_time += 1;
@@ -193,4 +193,4 @@ and (global.pause == false)
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);
 }
-#endregion /*Expanding Ring Effect END*/
+#endregion /* Expanding Ring Effect END */

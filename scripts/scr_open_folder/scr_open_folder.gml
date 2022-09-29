@@ -4,17 +4,17 @@ function scr_open_folder(dname)
 	{
 		menu_delay = 60 * 5;
 		var escapedfolder = string_replace_all(dname, "\"", "\\\"");
-		if (os_type = os_windows)
+		if (os_type == os_windows)
 		{
 			execute_shell("cmd", "explorer \"" + escapedfolder + "\"");
 		}
 		else
-		if (os_type = os_macosx)
+		if (os_type == os_macosx)
 		{
 			execute_shell("open", "\"" + escapedfolder + "\"");
 		}
 		else
-		if (os_type = os_linux)
+		if (os_type == os_linux)
 		{
 			execute_shell("xdg-mime", "\"" + escapedfolder + "\"");
 		}

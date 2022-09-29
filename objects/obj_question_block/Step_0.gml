@@ -1,4 +1,4 @@
-#region /*Collision Event with player*/
+#region /* Collision Event with player */
 if (bounceup = false)
 {
 	if (place_meeting(x, y - 4, obj_player))
@@ -6,15 +6,15 @@ if (bounceup = false)
 	and (instance_nearest(x, y, obj_player).ground_pound = true)
 	and (can_be_ground_pounded = true)
 	
-	or (position_meeting(x, bbox_bottom + 1, obj_player)) /*Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching*/
+	or (position_meeting(x, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 	and (!place_meeting(x, y + 1, obj_wall))
 	and (can_be_hit_from_below = true)
 	
-	or (position_meeting(bbox_left + 9, bbox_bottom + 1, obj_player)) /*Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching*/
+	or (position_meeting(bbox_left + 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 	and (!place_meeting(x, y + 1, obj_wall))
 	and (can_be_hit_from_below = true)
 	
-	or (position_meeting(bbox_right - 9, bbox_bottom + 1, obj_player)) /*Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching*/
+	or (position_meeting(bbox_right - 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 	and (!place_meeting(x, y + 1, obj_wall))
 	and (can_be_hit_from_below = true)
 	
@@ -92,9 +92,9 @@ if (bounceup = false)
 				}
 			}
 			
-			#region /*Different Items Inside*/
+			#region /* Different Items Inside */
 			
-			#region /*No Items Inside (1 Basic Collectible if it's a question block)*/
+			#region /* No Items Inside (1 Basic Collectible if it's a question block) */
 			if (item_inside = "none")
 			{
 				empty = true;
@@ -117,9 +117,9 @@ if (bounceup = false)
 					break_this_block = true;
 				}
 			}
-			#endregion /*No Items Inside (1 Basic Collectible if it's a question block) END*/
+			#endregion /* No Items Inside (1 Basic Collectible if it's a question block) END */
 			
-			#region /* 10 Basic Collectible*/
+			#region /* 10 Basic Collectible */
 			if (item_inside = "10_basic_collectibles")
 			{
 				if (hit <= 4)
@@ -135,7 +135,7 @@ if (bounceup = false)
 						}
 					}
 					
-					#region /* 2 Basic Collectibles per hit*/
+					#region /* 2 Basic Collectibles per hit */
 					if asset_get_type("obj_basic_collectible") == asset_object
 					{
 						scr_audio_play(snd_basic_collectible, volume_source.sound);
@@ -157,13 +157,13 @@ if (bounceup = false)
 					{
 						empty = true;
 					}
-					#endregion /* 2 Basic Collectibles per hit END*/
+					#endregion /* 2 Basic Collectibles per hit END */
 					
 				}
 			}
-			#endregion /* 10 Basic Collectible END*/
+			#endregion /* 10 Basic Collectible END */
 			
-			#region /*Heart Balloon*/
+			#region /* Heart Balloon */
 			if (item_inside = "heart_balloon")
 			{
 				if (asset_get_type("obj_heart_balloon") == asset_object)
@@ -178,9 +178,9 @@ if (bounceup = false)
 				}
 				empty = true;
 			}
-			#endregion /*Heart Balloon END*/
+			#endregion /* Heart Balloon END */
 			
-			#region /* 1-up*/
+			#region /* 1-up */
 			if (item_inside = "1-up")
 			{
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -196,9 +196,9 @@ if (bounceup = false)
 				}
 				empty = true;
 			}
-			#endregion /* 1-up END*/
+			#endregion /* 1-up END */
 			
-			#region /* 2-up*/
+			#region /* 2-up */
 			if (item_inside = "2-up")
 			{
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -214,9 +214,9 @@ if (bounceup = false)
 				}
 				empty = true;
 			}
-			#endregion /* 2-up END*/
+			#endregion /* 2-up END */
 			
-			#region /* 3-up*/
+			#region /* 3-up */
 			if (item_inside = "3-up")
 			{
 				if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -232,9 +232,9 @@ if (bounceup = false)
 				}
 				empty = true;
 			}
-			#endregion /* 3-up END*/
+			#endregion /* 3-up END */
 			
-			#region /*Invincibility Powerup*/
+			#region /* Invincibility Powerup */
 			if (item_inside = "invincibility_powerup")
 			{
 				if (asset_get_type("obj_invincibility_powerup") == asset_object)
@@ -251,9 +251,9 @@ if (bounceup = false)
 				}
 				empty = true;
 			}
-			#endregion /*Invincibility Powerup END*/
+			#endregion /* Invincibility Powerup END */
 			
-			#region /*Invincibility Powerup Coil Spring*/
+			#region /* Invincibility Powerup Coil Spring */
 			if (item_inside = "invincibility_powerup_coil_spring")
 			{
 				if (asset_get_type("obj_invincibility_powerup") == asset_object)
@@ -270,16 +270,16 @@ if (bounceup = false)
 				}
 				empty = true;
 			}
-			#endregion /*Invincibility Powerup END*/
+			#endregion /* Invincibility Powerup END */
 			
-			#endregion /*Different Items Inside END*/
+			#endregion /* Different Items Inside END */
 			
 		}
 	}
 }
-#endregion /*Collision Event with player END*/
+#endregion /* Collision Event with player END */
 
-#region /*Break this Block*/
+#region /* Break this Block */
 if (empty = true)
 {
 	break_this_block = true;
@@ -356,7 +356,7 @@ and (break_this_block = true)
 	scr_audio_play(snd_blockbreak, volume_source.sound);
 	instance_destroy();
 }
-#endregion /*Break this Block END*/
+#endregion /* Break this Block END */
 
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);

@@ -1,4 +1,4 @@
-function scr_draw_gamepad_buttons(what_button, xx, yy, scale, color, alpha)
+function scr_draw_gamepad_buttons(what_button, xx, yy, scale = 1, color = c_white, alpha = 1)
 {
 	if (global.chosen_controller_used = 0)
 	and (global.resource_pack_sprite_buttons_xboxone > noone)

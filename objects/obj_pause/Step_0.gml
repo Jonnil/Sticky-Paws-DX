@@ -3,8 +3,8 @@ gamepad_set_vibration(1, 0, 0);
 gamepad_set_vibration(2, 0, 0);
 gamepad_set_vibration(3, 0, 0);
 
-#region /*Set screen size*/
-camera_set_view_border(view_camera[view_current], 1920, 1080); /*View Border*/
+#region /* Set screen size */
+camera_set_view_border(view_camera[view_current], 1920, 1080); /* View Border */
 camera_set_view_size(view_camera[view_current], 1920, 1080);
 
 if (asset_get_type("obj_leveleditor") == asset_object)
@@ -13,14 +13,14 @@ and (!instance_exists(obj_leveleditor))
 	camera_set_view_target(view_camera[view_current], self);
 }
 display_set_gui_size(window_get_width(), window_get_height());
-#endregion /*Set screen size END*/
+#endregion /* Set screen size END */
 
 scr_toggle_fullscreen();
 
-#region /*Menu cursor image speed*/
+#region /* Menu cursor image speed */
 menu_cursor_index += 0.3;
 if (menu_cursor_index > 4)
 {
 	menu_cursor_index = 0;
 }
-#endregion /*Menu cursor image speed END*/
+#endregion /* Menu cursor image speed END */

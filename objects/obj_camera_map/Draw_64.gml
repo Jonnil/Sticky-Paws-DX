@@ -15,9 +15,9 @@ and (!instance_exists(obj_title))
 		game_restart();
 	}
 }
-var mouse_x_position = window_mouse_get_x(); /*Update x position of fake mouse*/
-var mouse_y_position = window_mouse_get_y(); /*Update y position of fake mouse*/
-var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /*Get distance from fake mouse to real mouse*/
+var mouse_x_position = window_mouse_get_x(); /* Update x position of fake mouse */
+var mouse_y_position = window_mouse_get_y(); /* Update y position of fake mouse */
+var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /* Get distance from fake mouse to real mouse */
 
 if (keyboard_check(vk_anykey))
 or (mouse_check_button(mb_any))

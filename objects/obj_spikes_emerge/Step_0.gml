@@ -1,17 +1,17 @@
-#region /*If spikes are disabled, destroy this object*/
+#region /* If spikes are disabled, destroy this object */
 if (global.assist_enable == true)
 and (global.assist_enable_spikes = false)
 {
 	instance_destroy();
 }
-#endregion /*If spikes are disabled, destroy this object*/
+#endregion /* If spikes are disabled, destroy this object */
 
 
 
 
 
 
-#region /*Normal timing*/
+#region /* Normal timing */
 if (global.spikes_emerge_time < room_speed * 1)
 {
 	if (timer_offset = false)
@@ -105,7 +105,7 @@ if (global.spikes_emerge_time > room_speed * 3)
 		mask_index = noone;
 	}
 }
-#endregion /*Normal timing END*/
+#endregion /* Normal timing END */
 
 
 
@@ -121,7 +121,7 @@ else
 	mask_index = noone;
 }
 
-#region /*Touching player*/
+#region /* Touching player */
 if (image_angle = 0)
 and (instance_exists(obj_player))
 and (place_meeting(x, y - 2, instance_nearest(x, y, obj_player)))
@@ -160,7 +160,7 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 				{
 					have_heart_balloon = false;
 					
-					#region /*Save heart balloon to be false*/
+					#region /* Save heart balloon to be false */
 					if (player == 1)
 					{
 						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
@@ -185,7 +185,7 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 						ini_write_real("Player", "player_4_have_heart_balloon", false);
 						ini_close();
 					}
-					#endregion /*Save heart balloon to be false END*/
+					#endregion /* Save heart balloon to be false END */
 					
 				}
 				else
@@ -197,7 +197,7 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 		}
 	}
 }
-#endregion /*Touching player END*/
+#endregion /* Touching player END */
 
 if (image_angle = 0)
 and (instance_exists(obj_player))

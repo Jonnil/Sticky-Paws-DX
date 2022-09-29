@@ -1,10 +1,10 @@
-#region /*If enemies are disabled, destroy this object*/
+#region /* If enemies are disabled, destroy this object */
 if (global.assist_enable == true)
 and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
-#endregion /*If enemies are disabled, destroy this object END*/
+#endregion /* If enemies are disabled, destroy this object END */
 
 if (die_volting = - 1)
 or(die_volting = +1)
@@ -19,10 +19,10 @@ or(die_volting = +1)
 		image_angle += 20;
 		hspeed = -4;
 	}
-	#region /*Set the gravity*/
-	gravity_direction = 270; /*Direction of the gravity*/
-	gravity = 0.5; /*The gravity*/
-	#endregion /*Set the gravity END*/
+	#region /* Set the gravity */
+	gravity_direction = 270; /* Direction of the gravity */
+	gravity = 0.5; /* The gravity */
+	#endregion /* Set the gravity END */
 	
 	sprite_index = global.resource_pack_sprite_bullet;
 }
@@ -30,16 +30,16 @@ else
 {
 	if (flat = false)
 	{
-		/*Set the gravity*/
-		gravity_direction = 270; /*Direction of the gravity*/
-		gravity = 0; /*The gravity*/
+		/* Set the gravity */
+		gravity_direction = 270; /* Direction of the gravity */
+		gravity = 0; /* The gravity */
 		sprite_index = global.resource_pack_sprite_bullet;
 	}
 	else
 	if (flat = true)
 	{
-		gravity_direction = 270; /*Direction of the gravity*/
-		gravity = 0.5; /*The gravity*/
+		gravity_direction = 270; /* Direction of the gravity */
+		gravity = 0.5; /* The gravity */
 		image_speed = 0.5;
 		sprite_index = global.resource_pack_sprite_bullet_flattened;
 		if (image_index > image_number - 1)
@@ -84,7 +84,7 @@ draw_xscale = lerp(draw_xscale, 1, 0.05);
 draw_yscale = lerp(draw_yscale, 1, 0.05);
 draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale *sign(image_xscale), draw_yscale, image_angle, image_blend, image_alpha);
 
-#region /*Kill enemy if it's inside the wall*/
+#region /* Kill enemy if it's inside the wall */
 if (draw_xscale >= 0.8)
 and (asset_get_type("obj_wall") == asset_object)
 {
@@ -105,4 +105,4 @@ and (asset_get_type("obj_wall") == asset_object)
 		stuck_in_wall_counter -= 1;
 	}
 }
-#endregion /*Kill enemy if it's inside the wall END*/
+#endregion /* Kill enemy if it's inside the wall END */

@@ -1,4 +1,4 @@
-#region /*Show Enter Level Key*/
+#region /* Show Enter Level Key */
 if (can_move == true)
 and (can_enter_level >= 30)
 and (asset_get_type("obj_level") == asset_object)
@@ -71,20 +71,20 @@ and (global.pause == false)
 		}
 	}
 }
-#endregion /*Show Enter Level Key END*/
+#endregion /* Show Enter Level Key END */
 
 scr_show_fps();
 
 scr_virtual_keys();
 
-#region /*Show if you are playing the demo version or not*/
+#region /* Show if you are playing the demo version or not */
 if (global.demo == true)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + l10n_text("Demo"), global.default_text_size, c_black, c_white, 1);
 }
-#endregion /*Show if you are playing the demo version or not END*/
+#endregion /* Show if you are playing the demo version or not END */
 
 if (show_demo_over_message = true)
 {
@@ -103,19 +103,19 @@ if (menu == noone)
 	show_demo_over_message = false;
 }
 
-#region /*Have a black screen at the first frame so transitions look natural*/
+#region /* Have a black screen at the first frame so transitions look natural */
 if (black_screen_at_start_delay < 1)
 {
 	draw_rectangle_color(0, 0, window_get_width()* 3, window_get_height()* 3, c_black, c_black, c_black, c_black, false);
 	black_screen_at_start_delay += 1;
 }
-#endregion /*Have a black screen at the first frame so transitions look natural END*/
+#endregion /* Have a black screen at the first frame so transitions look natural END */
 
 scr_draw_mouse_cursor();
 
-#region /*Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see*/
+#region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (iris_yscale <= 0.002)
 {
 	draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
 }
-#endregion /*Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END*/
+#endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */

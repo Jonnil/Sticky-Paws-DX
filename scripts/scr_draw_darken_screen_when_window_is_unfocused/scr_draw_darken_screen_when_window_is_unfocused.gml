@@ -1,8 +1,8 @@
 function scr_draw_darken_screen_when_window_is_unfocused()
 {
 	
-	#region /*If Window is unfocused, make the screen darker*/
-	if (!window_has_focus()) /*First check if window is unfocused before doing any other code*/
+	#region /* If Window is unfocused, make the screen darker */
+	if (!window_has_focus()) /* First check if window is unfocused before doing any other code */
 	{
 		if (asset_get_type("obj_pause") == asset_object)
 		and (self == obj_pause)
@@ -15,6 +15,6 @@ function scr_draw_darken_screen_when_window_is_unfocused()
 			draw_set_alpha(1);
 		}
 	}
-	#endregion /*If Window is unfocused, make the screen darker END*/
+	#endregion /* If Window is unfocused, make the screen darker END */
 	
 }

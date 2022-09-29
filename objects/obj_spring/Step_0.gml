@@ -10,7 +10,7 @@ if (can_bounce > 0)
 	can_bounce -= 1;
 }
 
-#region /*Make player spring*/
+#region /* Make player spring */
 if (asset_get_type("obj_player") == asset_object)
 and (place_meeting(x, y, instance_nearest(x, y, obj_player)))
 and (instance_exists(obj_player))
@@ -43,12 +43,12 @@ and (can_bounce = 0)
 		}
 	}
 }
-#endregion /*Make player spring END*/
+#endregion /* Make player spring END */
 
-#region /*Stop animation when animation is finished, don't loop*/
+#region /* Stop animation when animation is finished, don't loop */
 if (image_index > image_number - 1)
 {
 	image_index = 0;
 	image_speed = 0;
 }
-#endregion /*Stop animation when animation is finished, don't loop END*/
+#endregion /* Stop animation when animation is finished, don't loop END */

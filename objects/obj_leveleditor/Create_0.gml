@@ -1,11 +1,11 @@
-#region /*Loading selected level editing music*/
+#region /* Loading selected level editing music */
 if (file_exists("config.ini"))
 {
 	ini_open(working_directory + "config.ini");
 	if (ini_key_exists("config", "selected_level_editing_music"))
 	{
-		selected_level_editing_music = ini_read_real("config", "selected_level_editing_music", 1); /*The selected background music when editing in the level editor*/
-		previous_selected_level_editing_music = ini_read_real("config", "selected_level_editing_music", 1); /*When changing the editing music, you want to compare it to this variable*/
+		selected_level_editing_music = ini_read_real("config", "selected_level_editing_music", 1); /* The selected background music when editing in the level editor */
+		previous_selected_level_editing_music = ini_read_real("config", "selected_level_editing_music", 1); /* When changing the editing music, you want to compare it to this variable */
 	}
 	else
 	{
@@ -50,9 +50,9 @@ else
 {
 	level_editing_music = noone;
 }
-#endregion /*Loading selected level editing music END*/
+#endregion /* Loading selected level editing music END */
 
-#region /*Translate object names into object ID*/
+#region /* Translate object names into object ID */
 enum level_object_id
 {
 	id_wall = 1,
@@ -68,7 +68,7 @@ enum level_object_id
 	id_spikes = 2,
 	id_semisolid_platform = 3,
 	
-	#region /*Brick Block*/
+	#region /* Brick Block */
 	id_brick_block = 4,
 	id_brick_block_10_basic_collectibles = 5,
 	id_brick_block_heart_balloon = 6,
@@ -77,9 +77,9 @@ enum level_object_id
 	id_brick_block_three_up = 9,
 	id_brick_block_invincibility_powerup = 10,
 	id_brick_block_invincibility_powerup_coil_spring = 10001,
-	#endregion /*Brick Block END*/
+	#endregion /* Brick Block END */
 	
-	#region /*Question Block*/
+	#region /* Question Block */
 	id_question_block = 11,
 	id_question_block_10_basic_collectibles = 12,
 	id_question_block_heart_balloon = 13,
@@ -88,9 +88,9 @@ enum level_object_id
 	id_question_block_three_up = 16,
 	id_question_block_invincibility_powerup = 17,
 	id_question_block_invincibility_powerup_coil_spring = 17001,
-	#endregion /*Question Block END*/
+	#endregion /* Question Block END */
 	
-	#region /*Melon Block*/
+	#region /* Melon Block */
 	id_melon_block = 135121,
 	id_melon_block_10_basic_collectibles = 135122,
 	id_melon_block_heart_balloon = 135123,
@@ -99,7 +99,7 @@ enum level_object_id
 	id_melon_block_three_up = 135126,
 	id_melon_block_invincibility_powerup = 135127,
 	id_melon_block_invincibility_powerup_coil_spring = 135128,
-	#endregion /*Melon Block END*/
+	#endregion /* Melon Block END */
 	
 	id_hard_block = 18,
 	id_hard_block_alternate = 181,
@@ -114,7 +114,7 @@ enum level_object_id
 	id_cardboard = 26,
 	id_cardboard_long = 27,
 	
-	#region /*Bump in Ground*/
+	#region /* Bump in Ground */
 	id_bump_in_ground = 28,
 	id_bump_in_ground_8_basic_collectibles = 29,
 	id_bump_in_ground_heart_balloon = 30,
@@ -128,9 +128,9 @@ enum level_object_id
 	id_bump_in_ground_big_collectible_5 = 38,
 	id_bump_in_ground_invincibility_powerup = 39,
 	id_bump_in_ground_invincibility_powerup_coil_spring = 39001,
-	#endregion /*Bump in Ground END*/
+	#endregion /* Bump in Ground END */
 	
-	#region /*Invisible Bump in Ground*/
+	#region /* Invisible Bump in Ground */
 	id_invisible_bump_in_ground = 281,
 	id_invisible_bump_in_ground_8_basic_collectibles = 291,
 	id_invisible_bump_in_ground_heart_balloon = 301,
@@ -144,7 +144,7 @@ enum level_object_id
 	id_invisible_bump_in_ground_big_collectible_5 = 381,
 	id_invisible_bump_in_ground_invincibility_powerup = 391,
 	id_invisible_bump_in_ground_invincibility_powerup_coil_spring = 390011,
-	#endregion /*Invisible Bump in Ground END*/
+	#endregion /* Invisible Bump in Ground END */
 	
 	id_basic_collectible = 40,
 	id_basic_collectible_2 = 41,
@@ -183,7 +183,7 @@ enum level_object_id
 	id_arrow_sign_small = 65,
 	id_checkpoint = 66,
 	
-	#region /*Spikes Emerge Block*/
+	#region /* Spikes Emerge Block */
 	id_spikes_emerge_block = 67,
 	id_spikes_emerge_block_left = 671,
 	id_spikes_emerge_block_down = 672,
@@ -193,7 +193,7 @@ enum level_object_id
 	id_spikes_emerge_block_left_offset_time = 675,
 	id_spikes_emerge_block_down_offset_time = 676,
 	id_spikes_emerge_block_right_offset_time = 677,
-	#endregion /*Spikes Emerge Block END*/
+	#endregion /* Spikes Emerge Block END */
 	
 	id_oneway = 68,
 	id_oneway2 = 69,
@@ -233,7 +233,7 @@ enum world_object_id
 	id_up_left = 6,
 	id_left_down = 7
 }
-#endregion /*Translate object names into object ID*/
+#endregion /* Translate object names into object ID */
 
 sprite_basic_enemy = global.resource_pack_sprite_basic_enemy;
 sprite_basic_enemy_blind = global.resource_pack_sprite_basic_enemy_blind;
@@ -241,7 +241,7 @@ sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
 sprite_enemy_bowlingball_blind = global.resource_pack_sprite_enemy_bowlingball_blind_walk;
 sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
 
-#region /*Grid Initialization*/
+#region /* Grid Initialization */
 global.object_grid = ds_grid_create(12,0);
 add_object(level_object_id.id_wall, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_wall_dirt, spr_wall_dirt, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -256,7 +256,7 @@ add_object(level_object_id.id_wall_climb_panel, spr_wall_climb_panel, 0, spr_wal
 add_object(level_object_id.id_spikes, spr_spikes, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_semisolid_platform, spr_semisolid_platform, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 
-#region /*Brick Block*/
+#region /* Brick Block */
 add_object(level_object_id.id_brick_block, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_brick_block_10_basic_collectibles, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_brick_block_heart_balloon, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -265,9 +265,9 @@ add_object(level_object_id.id_brick_block_two_up, spr_brick_block, 0, spr_wall, 
 add_object(level_object_id.id_brick_block_three_up, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_brick_block_invincibility_powerup, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_brick_block_invincibility_powerup_coil_spring, spr_brick_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-#endregion /*Brick Block END*/
+#endregion /* Brick Block END */
 
-#region /*Question Block*/
+#region /* Question Block */
 add_object(level_object_id.id_question_block, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_question_block_10_basic_collectibles, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_question_block_heart_balloon, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -276,9 +276,9 @@ add_object(level_object_id.id_question_block_two_up, spr_question_block, 0, spr_
 add_object(level_object_id.id_question_block_three_up, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_question_block_invincibility_powerup, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_question_block_invincibility_powerup_coil_spring, spr_question_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-#endregion /*Question Block END*/
+#endregion /* Question Block END */
 
-#region /*Melon Block*/
+#region /* Melon Block */
 add_object(level_object_id.id_melon_block, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_melon_block_10_basic_collectibles, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_melon_block_heart_balloon, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -287,18 +287,18 @@ add_object(level_object_id.id_melon_block_two_up, spr_melon_block, 0, spr_wall, 
 add_object(level_object_id.id_melon_block_three_up, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_melon_block_invincibility_powerup, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_melon_block_invincibility_powerup_coil_spring, spr_melon_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-#endregion /*Melon Block END*/
+#endregion /* Melon Block END */
 
 add_object(level_object_id.id_hard_block, spr_hard_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_hard_block_alternate, spr_hard_block_alternate, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_hard_block_2x2, spr_hard_block_2x2, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 
-#region /*Falling Block*/
+#region /* Falling Block */
 add_object(level_object_id.id_falling_block, spr_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_falling_block_solid, spr_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_falling_block_long, spr_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_falling_block_long_solid, spr_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
-#endregion /*Falling Block END*/
+#endregion /* Falling Block END */
 
 add_object(level_object_id.id_cloud_block, spr_cloud_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_ice_block, spr_ice_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -306,7 +306,7 @@ add_object(level_object_id.id_cardboard_block, spr_cardboard_block, 0, spr_wall,
 add_object(level_object_id.id_cardboard, spr_cardboard, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_cardboard_long, spr_cardboard_long, 0, spr_cardboard_long, 1, 0, c_white, 1, "", noone, true, 0);
 
-#region /*Bump in Ground*/
+#region /* Bump in Ground */
 add_object(level_object_id.id_bump_in_ground, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_bump_in_ground_8_basic_collectibles, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_bump_in_ground_heart_balloon, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -320,9 +320,9 @@ add_object(level_object_id.id_bump_in_ground_big_collectible_4, spr_bump_in_grou
 add_object(level_object_id.id_bump_in_ground_big_collectible_5, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_bump_in_ground_invincibility_powerup, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-#endregion /*Bump in Ground END*/
+#endregion /* Bump in Ground END */
 
-#region /*Invisible Bump in Ground*/
+#region /* Invisible Bump in Ground */
 add_object(level_object_id.id_invisible_bump_in_ground, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 add_object(level_object_id.id_invisible_bump_in_ground_8_basic_collectibles, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 add_object(level_object_id.id_invisible_bump_in_ground_heart_balloon, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
@@ -336,9 +336,9 @@ add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_4, noone,
 add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_5, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-#endregion /*Invisible Bump in Ground END*/
+#endregion /* Invisible Bump in Ground END */
 
-#region /*Basic Collectible*/
+#region /* Basic Collectible */
 add_object(level_object_id.id_basic_collectible, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_basic_collectible_2, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 315, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_basic_collectible_3, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 270, c_white, 1, "", noone, true, 0);
@@ -347,26 +347,26 @@ add_object(level_object_id.id_basic_collectible_5, global.resource_pack_sprite_b
 add_object(level_object_id.id_basic_collectible_6, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 135, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_basic_collectible_7, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_basic_collectible_8, global.resource_pack_sprite_basic_collectible, 0, spr_wall, 1, 45, c_white, 1, "", noone, true, 0);
-#endregion /*Basic Collectible END*/
+#endregion /* Basic Collectible END */
 
-#region /*Big Collectible*/
+#region /* Big Collectible */
 add_object(level_object_id.id_big_collectible_1, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_big_collectible_2, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_big_collectible_3, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_big_collectible_4, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_big_collectible_5, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-#endregion /*Big Collectible END*/
+#endregion /* Big Collectible END */
 
 add_object(level_object_id.id_heart, spr_heart, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_hp_pickup, global.resource_pack_sprite_hp_pickup, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_invincibility_powerup, global.resource_pack_sprite_invincibility_powerup, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_invincibility_powerup_coil_spring, global.resource_pack_sprite_invincibility_powerup, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 
-#region /*Extra Lives*/
+#region /* Extra Lives */
 add_object(level_object_id.id_one_up, noone, 0, spr_wall, 1, 0, c_red, 1, "", noone, true, 0);
 add_object(level_object_id.id_two_up, noone, 0, spr_wall, 1, 0, c_lime, 1, "", noone, true, 0);
 add_object(level_object_id.id_three_up, noone, 0, spr_wall, 1, 0, c_blue, 1, "", noone, true, 0);
-#endregion /*Extra Lives END*/
+#endregion /* Extra Lives END */
 
 add_object(level_object_id.id_basic_enemy, global.resource_pack_sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_basic_enemy_blind, global.resource_pack_sprite_basic_enemy_blind, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -385,7 +385,7 @@ add_object(level_object_id.id_arrow_sign, noone, 0, spr_wall, 1, 0, c_white, 1, 
 add_object(level_object_id.id_arrow_sign_small, noone, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 add_object(level_object_id.id_checkpoint, spr_checkpoint, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 
-#region /*Spikes Emerge Block*/
+#region /* Spikes Emerge Block */
 add_object(level_object_id.id_spikes_emerge_block, spr_spikes_emerge_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_spikes_emerge_block_left, spr_spikes_emerge_block, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_spikes_emerge_block_down, spr_spikes_emerge_block, 0, spr_wall, 1, 180, c_white, 1, "", noone, true, 0);
@@ -395,14 +395,14 @@ add_object(level_object_id.id_spikes_emerge_block_offset_time, spr_spikes_emerge
 add_object(level_object_id.id_spikes_emerge_block_left_offset_time, spr_spikes_emerge_half_out, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_spikes_emerge_block_down_offset_time, spr_spikes_emerge_half_out, 0, spr_wall, 1, 180, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_spikes_emerge_block_right_offset_time, spr_spikes_emerge_half_out, 0, spr_wall, 1, 270, c_white, 1, "", noone, true, 0);
-#endregion /*Spikes Emerge Block END*/
+#endregion /* Spikes Emerge Block END */
 
-#region /*One Way*/
+#region /* One Way */
 add_object(level_object_id.id_oneway, spr_oneway, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_oneway2, spr_oneway, 0, spr_wall, 1, 90, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_oneway3, spr_oneway, 0, spr_wall, 1, 180, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_oneway4, spr_oneway, 0, spr_wall, 1, 270, c_white, 1, "", noone, true, 0);
-#endregion /*One Way END*/
+#endregion /* One Way END */
 
 add_object(level_object_id.id_horizontal_rope, spr_horizontal_rope, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_water, spr_water, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
@@ -417,23 +417,23 @@ add_object(level_object_id.id_clipped_sock, spr_clipped_sock, 0, spr_wall, 1, 0,
 add_object(level_object_id.id_bucket, spr_bucket, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_bird, spr_bird, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 
-#region /*Signs*/
+#region /* Signs */
 add_object(level_object_id.id_sign_crouch, spr_sign_crouch, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_sign_dive, spr_sign_dive, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_sign_ground_pound, spr_sign_ground_pound, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_sign_rope_spin, spr_sign_rope_spin, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_sign_wall_jump, spr_sign_wall_jump, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-#endregion /*Signs END*/
+#endregion /* Signs END */
 
 add_object(level_object_id.id_boss, spr_boss_stand, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_boss_barrier, spr_boss_barrier, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_cake_stealing_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_artwork_collection, spr_artwork_collection, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_block_only_when_player_is_near, global.resource_pack_sprite_block_only_when_player_is_near, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /*This dummy object is just here so the last object actually appears*/
-#endregion /*Grid Initialization END*/
+add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /* This dummy object is just here so the last object actually appears */
+#endregion /* Grid Initialization END */
 
-#region /*Controls for level editor*/
+#region /* Controls for level editor */
 key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or (gamepad_axis_value(0, gp_axislv) < 0);
 key_left = (keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right))or (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or (gamepad_axis_value(0, gp_axislh) < 0);
 key_right = (keyboard_check_pressed(global.player1_key_right)) and (!keyboard_check_pressed(global.player1_key_left))or (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
@@ -444,7 +444,7 @@ key_a_hold = (gamepad_button_check(0, gp_face1))or (keyboard_check(global.player
 key_b_hold = (gamepad_button_check(0, gp_face2))or (keyboard_check(global.player1_key_sprint))or (keyboard_check(ord("X")))or (keyboard_check(vk_backspace));
 key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or (keyboard_check_pressed(global.player1_key_sprint))or (keyboard_check_pressed(ord("X")))or (keyboard_check_pressed(vk_backspace))or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
 key_b_released = (gamepad_button_check_released(0, gp_face2))or (keyboard_check_released(global.player1_key_sprint))or (keyboard_check_released(ord("X")))or (keyboard_check_released(vk_backspace));
-#endregion /*Controls for level editor END*/
+#endregion /* Controls for level editor END */
 
 unused_x_origin_point = noone;
 unused_y_origin_point = noone;
@@ -459,12 +459,12 @@ global.time_countdown_bonus = 500;
 old_window_get_height = 0;
 old_window_get_width = 0;
 
-#region /*Mouse x and mouse y initializing*/
+#region /* Mouse x and mouse y initializing */
 mx = mouse_x;
 my = mouse_y;
-#endregion /*Mouse x and mouse y initializing END*/
+#endregion /* Mouse x and mouse y initializing END */
 
-#region /*Lives Icon*/
+#region /* Lives Icon */
 if (global.player1_can_play == true)
 {
 	camera_player = 0;
@@ -502,10 +502,10 @@ else
 {
 	sprite_lives_icon = noone;
 }
-alarm[0] = 1; /*Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm*/
-#endregion /*Lives Icon END*/
+alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
+#endregion /* Lives Icon END */
 
-#region /*Create Foreground*/
+#region /* Create Foreground */
 if (asset_get_type("obj_foreground1") == asset_object)
 and (!instance_exists(obj_foreground1))
 {
@@ -526,17 +526,17 @@ and (!instance_exists(obj_foreground_secret))
 {
 	instance_create_depth(0, 0, 0, obj_foreground_secret);
 }
-#endregion /*Create Foreground END*/
+#endregion /* Create Foreground END */
 
-#region /*Create Background Brightness in Gameplay*/
+#region /* Create Background Brightness in Gameplay */
 if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
 and (!instance_exists(obj_background_brightness_gameplay))
 {
 	instance_create_depth(x, y, 0, obj_background_brightness_gameplay);
 }
-#endregion /*Create Background Brightness in Gameplay END*/
+#endregion /* Create Background Brightness in Gameplay END */
 
-#region /*Create level height and level width objects*/
+#region /* Create level height and level width objects */
 if (asset_get_type("obj_level_height") == asset_object)
 and (!instance_exists(obj_level_height))
 {
@@ -553,7 +553,7 @@ and (!instance_exists(obj_water_level_height))
 {
 	instance_create_depth(0, obj_level_height.y + 32, 0, obj_water_level_height);
 }
-#endregion /*Create level height and level width objects END*/
+#endregion /* Create level height and level width objects END */
 
 
 audio_stop_all();
@@ -561,7 +561,7 @@ if (global.actually_play_edited_level = true)
 {
 	instance_destroy();
 }
-room_speed = global.max_fps; /*Set correct fps*/
+room_speed = global.max_fps; /* Set correct fps */
 x = mouse_x;
 y = mouse_y;
 view_hview_lerp = 0;
@@ -573,38 +573,38 @@ drag_x = mouse_x;
 drag_y = mouse_y;
 cursor_x = x;
 cursor_y = y;
-place_brush_size = 0; /*The size of the brush when placeing objects*/
-erase_brush_size = 0; /*The size of the brush when erasing*/
-can_make_place_brush_size_bigger = true; /*If you can make the brush size bigger for certain objects*/
-can_put_objects_above_other_objects = false; /*If you can put objects above other objects*/
-mouse_sprite = spr_cursor; /*Sets what cursor sprite to use*/
-undo_and_redo_buttons_enabled = false; /*If undo and redo buttons should appear or not*/
+place_brush_size = 0; /* The size of the brush when placeing objects */
+erase_brush_size = 0; /* The size of the brush when erasing */
+can_make_place_brush_size_bigger = true; /* If you can make the brush size bigger for certain objects */
+can_put_objects_above_other_objects = false; /* If you can put objects above other objects */
+mouse_sprite = spr_cursor; /* Sets what cursor sprite to use */
+undo_and_redo_buttons_enabled = false; /* If undo and redo buttons should appear or not */
 tooltip = "";
 show_tooltip = 0;
-show_grid = false; /*Grid should be false when you start level editor*/
+show_grid = false; /* Grid should be false when you start level editor */
 grid_alpha = 0;
-zoom_in = false; /*When this is true, zoom in*/
-zoom_reset = false; /*When this is true, reset zoom*/
-zoom_out = false; /*When this is true, zoom out*/
-difficulty_layer = 0; /* 0 = All, 1 = Easy, 2 = Normal, 3 = Hard*/
-set_difficulty_mode = false; /*Toggle so you get a pen that can select what object appear in what difficulty*/
+zoom_in = false; /* When this is true, zoom in */
+zoom_reset = false; /* When this is true, reset zoom */
+zoom_out = false; /* When this is true, zoom out */
+difficulty_layer = 0; /* 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
+set_difficulty_mode = false; /* Toggle so you get a pen that can select what object appear in what difficulty */
 place_object = noone;
-placing_object = 0; /*If you are currently placing any object or not. This check is used for when modifying other objects, it shouldn't happen when currently placing any object*/
+placing_object = 0; /* If you are currently placing any object or not. This check is used for when modifying other objects, it shouldn't happen when currently placing any object */
 show_icons_at_bottom = false;
 show_icons_at_top = false;
 icons_at_bottom_y = +100;
-show_undo_redo_icons = false; /*If the undo and redo buttons should show*/
-undo_redo_icons_y = +200; /*Undo and redo buttons y postition*/
-current_undo_value = 0; /*Every time you place down items, this value increases. When you undo, this value decreases.*/
+show_undo_redo_icons = false; /* If the undo and redo buttons should show */
+undo_redo_icons_y = +200; /* Undo and redo buttons y postition */
+current_undo_value = 0; /* Every time you place down items, this value increases. When you undo, this value decreases. */
 icons_at_top_y = - 100;
 selected_object = 0;
 selected_object_menu_x = 0;
 selected_menu_alpha = 0;
 total_number_of_objects = 0;
 drag_object = false;
-erase_mode = false; /*When erasing, this turns true*/
-fill_mode = false; /*When filling, this turns true*/
-fill_mode_type = "fill"; /*What type of filling you will do. Fill, Horizontal, Vertical*/
+erase_mode = false; /* When erasing, this turns true */
+fill_mode = false; /* When filling, this turns true */
+fill_mode_type = "fill"; /* What type of filling you will do. Fill, Horizontal, Vertical */
 can_input_level_name = false;
 quit_level_editor = false;
 menu_joystick_delay = 0;
@@ -623,8 +623,8 @@ background_brightness_lerp = 0;
 background_brightness_menu_lerp = 0;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;
-scroll_view = false; /*If you can scroll the view or not*/
-create_level_from_template_save_delay = 0; /*Save the level before starting to edit the template level*/
+scroll_view = false; /* If you can scroll the view or not */
+create_level_from_template_save_delay = 0; /* Save the level before starting to edit the template level */
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
@@ -654,15 +654,15 @@ fill_icon_x = 224;
 always_show_level_editor_buttons_x = 288;
 grid_button_x = display_get_gui_width() - 224;
 
-#region /*Options*/
+#region /* Options */
 can_navigate = false;
 menu_y_offset_real = 0;
 menu_cursor_y_position = 0;
 menu_remap_key_number = 0;
 menu_remap_gamepad_button_number = 0;
 
-#region /*Remapping options variables*/
-remapping_player = 0; /*remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
+#region /* Remapping options variables */
+remapping_player = 0; /* remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
 input_key = false;
 can_remap_key = false;
 input_gamepad_button = false;
@@ -671,9 +671,9 @@ allow_player1_tongue = false;
 allow_player2_tongue = false;
 allow_player3_tongue = false;
 allow_player4_tongue = false;
-#endregion /*Remapping options variables END*/
+#endregion /* Remapping options variables END */
 
-#region /*Character Name*/
+#region /* Character Name */
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 {
@@ -686,12 +686,12 @@ or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_v
 		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 	}
 						
-	#region /*Character Name*/
+	#region /* Character Name */
 	var uppercase_narrator_name;
 	uppercase_narrator_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 1));
 	uppercase_narrator_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.narrator))) - 1);
 	narrator_name = string(uppercase_narrator_name);
-	#endregion /*Character Name END*/
+	#endregion /* Character Name END */
 						
 	ini_close();
 }
@@ -699,22 +699,22 @@ else
 {
 	narrator_name = string(global.narrator + 1);
 }
-#endregion /*Character Name END*/
+#endregion /* Character Name END */
 
-#region /*Customize look of Options Menu*/
+#region /* Customize look of Options Menu */
 menu_y_offset = - 100;
 c_menu_outline = c_black;
 c_menu_fill = c_white;
-#endregion /*Customize look of Options Menu END*/
+#endregion /* Customize look of Options Menu END */
 
-#endregion /*Options END*/
+#endregion /* Options END */
 
-room_speed = global.max_fps; /*Room Speed is Max FPS*/
+room_speed = global.max_fps; /* Room Speed is Max FPS */
 
 image_speed = 0;
 image_index = 0;
 
-#region /*Initialize level_information.ini*/
+#region /* Initialize level_information.ini */
 if (global.character_select_in_this_menu == "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
@@ -755,10 +755,10 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		can_save_to_level_information = true;
 	}
 	
-	#region /*Custom Backgrounds*/
+	#region /* Custom Backgrounds */
 	
-	#region /*Custom Background 4 x and y parallax points*/
-	#region /*Custom Background 4 y parallax point*/
+	#region /* Custom Background 4 x and y parallax points */
+	#region /* Custom Background 4 y parallax point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_4_y_parallax"))
 	{
 		custom_background_4_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
@@ -772,9 +772,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_4_y_parallax = 9;
 	}
-	#endregion /*Custom Background 4 y parallax point END*/
+	#endregion /* Custom Background 4 y parallax point END */
 	
-	#region /*Custom Background 4 x parallax point*/
+	#region /* Custom Background 4 x parallax point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_4_x_parallax"))
 	{
 		custom_background_4_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
@@ -788,11 +788,11 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_4_x_parallax = 9;
 	}
-	#endregion /*Custom Background 4 x parallax point END*/
-	#endregion /*Custom Background 4 x and y parallax points END*/
+	#endregion /* Custom Background 4 x parallax point END */
+	#endregion /* Custom Background 4 x and y parallax points END */
 	
-	#region /*Custom Background 3 x and y parallax points*/
-	#region /*Custom Background 3 y parallax point*/
+	#region /* Custom Background 3 x and y parallax points */
+	#region /* Custom Background 3 y parallax point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_3_y_parallax"))
 	{
 		custom_background_3_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
@@ -806,9 +806,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_3_y_parallax = 7;
 	}
-	#endregion /*Custom Background 3 y parallax point END*/
+	#endregion /* Custom Background 3 y parallax point END */
 	
-	#region /*Custom Background 3 x parallax point*/
+	#region /* Custom Background 3 x parallax point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_3_x_parallax"))
 	{
 		custom_background_3_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
@@ -822,11 +822,11 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_3_x_parallax = 7;
 	}
-	#endregion /*Custom Background 3 x parallax point END*/
-	#endregion /*Custom Background 3 x and y parallax points END*/
+	#endregion /* Custom Background 3 x parallax point END */
+	#endregion /* Custom Background 3 x and y parallax points END */
 	
-	#region /*Custom Background 2 x and y parallax points*/
-	#region /*Custom Background 2 y parallax point*/
+	#region /* Custom Background 2 x and y parallax points */
+	#region /* Custom Background 2 y parallax point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_2_y_parallax"))
 	{
 		custom_background_2_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
@@ -840,9 +840,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_2_y_parallax = 5;
 	}
-	#endregion /*Custom Background 2 y parallax point END*/
+	#endregion /* Custom Background 2 y parallax point END */
 	
-	#region /*Custom Background 2 x parallax point*/
+	#region /* Custom Background 2 x parallax point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_2_x_parallax"))
 	{
 		custom_background_2_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
@@ -856,11 +856,11 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_2_x_parallax = 5;
 	}
-	#endregion /*Custom Background 2 x parallax point END*/
-	#endregion /*Custom Background 2 x and y parallax points END*/
+	#endregion /* Custom Background 2 x parallax point END */
+	#endregion /* Custom Background 2 x and y parallax points END */
 	
-	#region /*Custom Background 1 x and y parallax points*/
-	#region /*Custom Background 1 y parallax point*/
+	#region /* Custom Background 1 x and y parallax points */
+	#region /* Custom Background 1 y parallax point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_1_y_parallax"))
 	{
 		custom_background_1_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
@@ -874,9 +874,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_1_y_parallax = 3;
 	}
-	#endregion /*Custom Background 1 y parallax point END*/
+	#endregion /* Custom Background 1 y parallax point END */
 	
-	#region /*Custom Background 1 x parallax point*/
+	#region /* Custom Background 1 x parallax point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_1_x_parallax"))
 	{
 		custom_background_1_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
@@ -890,11 +890,11 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_1_x_parallax = 3;
 	}
-	#endregion /*Custom Background 1 x parallax point END*/
-	#endregion /*Custom Background 1 x and y parallax points END*/
+	#endregion /* Custom Background 1 x parallax point END */
+	#endregion /* Custom Background 1 x and y parallax points END */
 	
-	#region /*Custom Background 4 x and y offset points*/
-	#region /*Custom Background 4 y offset point*/
+	#region /* Custom Background 4 x and y offset points */
+	#region /* Custom Background 4 y offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_4_y_offset"))
 	{
 		custom_background_4_y_offset = ini_read_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
@@ -908,9 +908,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_4_y_offset = 0;
 	}
-	#endregion /*Custom Background 4 y offset point END*/
+	#endregion /* Custom Background 4 y offset point END */
 	
-	#region /*Custom Background 4 x offset point*/
+	#region /* Custom Background 4 x offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_4_x_offset"))
 	{
 		custom_background_4_x_offset = ini_read_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
@@ -924,11 +924,11 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_4_x_offset = 0;
 	}
-	#endregion /*Custom Background 4 x offset point END*/
-	#endregion /*Custom Background 4 x and y offset points END*/
+	#endregion /* Custom Background 4 x offset point END */
+	#endregion /* Custom Background 4 x and y offset points END */
 	
-	#region /*Custom Background 3 x and y offset points*/
-	#region /*Custom Background 3 y offset point*/
+	#region /* Custom Background 3 x and y offset points */
+	#region /* Custom Background 3 y offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_3_y_offset"))
 	{
 		custom_background_3_y_offset = ini_read_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
@@ -942,9 +942,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_3_y_offset = 0;
 	}
-	#endregion /*Custom Background 3 y offset point END*/
+	#endregion /* Custom Background 3 y offset point END */
 	
-	#region /*Custom Background 3 x offset point*/
+	#region /* Custom Background 3 x offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_3_x_offset"))
 	{
 		custom_background_3_x_offset = ini_read_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
@@ -958,11 +958,11 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_3_x_offset = 0;
 	}
-	#endregion /*Custom Background 3 x offset point END*/
-	#endregion /*Custom Background 3 x and y offset points END*/
+	#endregion /* Custom Background 3 x offset point END */
+	#endregion /* Custom Background 3 x and y offset points END */
 	
-	#region /*Custom Background 2 x and y offset points*/
-	#region /*Custom Background 2 y offset point*/
+	#region /* Custom Background 2 x and y offset points */
+	#region /* Custom Background 2 y offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_2_y_offset"))
 	{
 		custom_background_2_y_offset = ini_read_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
@@ -976,9 +976,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_2_y_offset = 0;
 	}
-	#endregion /*Custom Background 2 y offset point END*/
+	#endregion /* Custom Background 2 y offset point END */
 	
-	#region /*Custom Background 2 x offset point*/
+	#region /* Custom Background 2 x offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_2_x_offset"))
 	{
 		custom_background_2_x_offset = ini_read_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
@@ -992,11 +992,11 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_2_x_offset = 0;
 	}
-	#endregion /*Custom Background 2 x offset point END*/
-	#endregion /*Custom Background 2 x and y offset points END*/
+	#endregion /* Custom Background 2 x offset point END */
+	#endregion /* Custom Background 2 x and y offset points END */
 	
-	#region /*Custom Background 1 x and y offset points*/
-	#region /*Custom Background 1 y offset point*/
+	#region /* Custom Background 1 x and y offset points */
+	#region /* Custom Background 1 y offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_1_y_offset"))
 	{
 		custom_background_1_y_offset = ini_read_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
@@ -1010,9 +1010,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_1_y_offset = 0;
 	}
-	#endregion /*Custom Background 1 y offset point END*/
+	#endregion /* Custom Background 1 y offset point END */
 	
-	#region /*Custom Background 1 x offset point*/
+	#region /* Custom Background 1 x offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_background_1_x_offset"))
 	{
 		custom_background_1_x_offset = ini_read_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
@@ -1026,10 +1026,10 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		custom_background_1_x_offset = 0;
 	}
-	#endregion /*Custom Background 1 x offset point END*/
-	#endregion /*Custom Background 1 x and y offset points END*/
+	#endregion /* Custom Background 1 x offset point END */
+	#endregion /* Custom Background 1 x and y offset points END */
 	
-	#endregion /*Custom Backgrounds END*/
+	#endregion /* Custom Backgrounds END */
 	
 	if (ini_key_exists("info", "make_every_tileset_into_default_tileset"))
 	{
@@ -1059,7 +1059,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	if (ini_key_exists("info", "time_countdown"))
 	{
-		global.time_countdown = ini_read_real("info", "time_countdown", 500); /*Set the countdown to whatever is stored in the level_information.ini file*/
+		global.time_countdown = ini_read_real("info", "time_countdown", 500); /* Set the countdown to whatever is stored in the level_information.ini file */
 	}
 	else
 	{
@@ -1084,7 +1084,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		global.rain = false;
 	}
 	if(global.play_edited_level = false)
-	and (global.actually_play_edited_level = false)
+	and (global.actually_play_edited_level == false)
 	{
 		if (ini_key_exists("info", "view_xview"))
 		and (ini_key_exists("info", "view_yview"))
@@ -1133,15 +1133,15 @@ else
 	global.make_every_tileset_into_default_tileset = false;
 	global.rain = false;
 }
-#endregion /*Initialize level_information.ini END*/
+#endregion /* Initialize level_information.ini END */
 
-#region /*View Size*/
+#region /* View Size */
 view_wview = 1392;
 view_hview = 736;
-/*Default Views:   set_view_wview = 1024 + 400 - 32   set_view_hview = 768- 32  */
-#endregion /*View Size END*/
+/* Default Views:   set_view_wview = 1024 + 400 - 32   set_view_hview = 768- 32  */
+#endregion /* View Size END */
 
-#region /*Initialize Background*/
+#region /* Initialize Background */
 background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
 background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
 background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
@@ -1150,27 +1150,27 @@ background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;backgr
 background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
 background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
 background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;
-#endregion /*Initialize Background END*/
+#endregion /* Initialize Background END */
 
-/*HUD Show Controls keys that have been pressed*/
+/* HUD Show Controls keys that have been pressed */
 player1_show_controls_timer = 0;
 player1_show_controls_alpha = 0;
 
-#region /*Load Level*/
+#region /* Load Level */
 
-#region /*Destory all placed objects before loading the level, just in case there is leftover placed objects*/
+#region /* Destory all placed objects before loading the level, just in case there is leftover placed objects */
 with(obj_leveleditor_placed_object)
 {
 	instance_destroy();
 }
-#endregion /*Destory all placed objects before loading the level, just in case there is leftover placed objects END*/
+#endregion /* Destory all placed objects before loading the level, just in case there is leftover placed objects END */
 
-#region /*Load Main Game Level*/
+#region /* Load Main Game Level */
 if (global.character_select_in_this_menu == "main_game")
 or (global.create_level_from_template = true)
 {
 	
-	#region /*Object Placement*/
+	#region /* Object Placement */
 	var file, str, str_pos, str_temp, val, num;
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement.txt"))
 	{
@@ -1183,7 +1183,7 @@ or (global.create_level_from_template = true)
 	
 	if (file != -1)
 	{
-		/*Next objects*/
+		/* Next objects */
 		str = file_text_read_string(file);
 		//file_text_readln(file);
 		str_temp = "";
@@ -1200,13 +1200,13 @@ or (global.create_level_from_template = true)
 			str_temp = "";
 			str_pos += 1;
 			num += 1;
-			if (num = 6) /*Number of variables to check for.
+			if (num = 6) /* Number of variables to check for.
 			val[0] = object,
 			val[1] = x position,
 			val[2] = y position,
 			val[3] = easy,
 			val[4] = normal,
-			val[5] = hard*/
+			val[5] = hard */
 			{
 				num = 0;
 				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
@@ -1221,9 +1221,9 @@ or (global.create_level_from_template = true)
 		}
 		file_text_close(file);
 	}
-	#endregion /*Object Placement END*/
+	#endregion /* Object Placement END */
 	
-	#region /*Object With Rotation Placement*/
+	#region /* Object With Rotation Placement */
 	var file, str, str_pos, str_temp, val, num;
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"))
 	{
@@ -1236,7 +1236,7 @@ or (global.create_level_from_template = true)
 	
 	if (file != -1)
 	{
-		/*Next objects*/
+		/* Next objects */
 		str = file_text_read_string(file);
 		//file_text_readln(file);
 		str_temp = "";
@@ -1253,7 +1253,7 @@ or (global.create_level_from_template = true)
 			str_temp = "";
 			str_pos += 1;
 			num += 1;
-			if (num = 8) /*Number of variables to check for.
+			if (num = 8) /* Number of variables to check for.
 			val[0] = object,
 			val[1] = x position,
 			val[2] = y position,
@@ -1261,7 +1261,7 @@ or (global.create_level_from_template = true)
 			val[4] = normal,
 			val[5] = hard,
 			val[6] = second_x,
-			val[7] = second_y*/
+			val[7] = second_y */
 			{
 				num = 0;
 				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
@@ -1278,20 +1278,20 @@ or (global.create_level_from_template = true)
 		}
 		file_text_close(file);
 	}
-	#endregion /*Object With Rotation Placement END*/
+	#endregion /* Object With Rotation Placement END */
 	
 }
-#endregion /*Load Main Game Level END*/
+#endregion /* Load Main Game Level END */
 
 else
 
-#region /*Load Level Editor Level*/
+#region /* Load Level Editor Level */
 if (global.character_select_in_this_menu == "level_editor")
 {
 	
-	#region /*Create directories*/
+	#region /* Create directories */
 
-	#region /*Create directory for saving custom levels*/
+	#region /* Create directory for saving custom levels */
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))))
@@ -1304,9 +1304,9 @@ if (global.character_select_in_this_menu == "level_editor")
 	{
 		directory_create(working_directory + "/custom_levels/" + string(global.level_name));
 	}
-	#endregion /*Create directory for saving custom levels END*/
+	#endregion /* Create directory for saving custom levels END */
 	
-	#region /*Create directory for backgrouns in custom levels*/
+	#region /* Create directory for backgrouns in custom levels */
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds"))
@@ -1319,9 +1319,9 @@ if (global.character_select_in_this_menu == "level_editor")
 	{
 		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/backgrounds");
 	}
-	#endregion /*Create directory for backgrounds in custom levels END*/
+	#endregion /* Create directory for backgrounds in custom levels END */
 	
-	#region /*Create directory for data in custom levels*/
+	#region /* Create directory for data in custom levels */
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data"))
@@ -1334,9 +1334,9 @@ if (global.character_select_in_this_menu == "level_editor")
 	{
 		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/data");
 	}
-	#endregion /*Create directory for data in custom levels END*/
+	#endregion /* Create directory for data in custom levels END */
 	
-	#region /*Create directory for sounds in custom levels*/
+	#region /* Create directory for sounds in custom levels */
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound"))
@@ -1349,9 +1349,9 @@ if (global.character_select_in_this_menu == "level_editor")
 	{
 		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sound");
 	}
-	#endregion /*Create directory for sounds in custom levels END*/
+	#endregion /* Create directory for sounds in custom levels END */
 	
-	#region /*Create directory for tilesets in custom levels*/
+	#region /* Create directory for tilesets in custom levels */
 	if (global.select_level_index >= 1)
 	and (global.create_level_from_template == false)
 	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets"))
@@ -1364,11 +1364,11 @@ if (global.character_select_in_this_menu == "level_editor")
 	{
 		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets");
 	}
-	#endregion /*Create directory for tilesets in custom levels END*/
+	#endregion /* Create directory for tilesets in custom levels END */
 	
-	#endregion /*Create directories END*/
+	#endregion /* Create directories END */
 	
-		#region /*Object Placement*/
+		#region /* Object Placement */
 		var file, str, str_pos, str_temp, val, num;
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template == false)
@@ -1389,7 +1389,7 @@ if (global.character_select_in_this_menu == "level_editor")
 	
 		if (file != -1)
 		{
-			/*Next objects*/
+			/* Next objects */
 			str = file_text_read_string(file);
 			//file_text_readln(file);
 			str_temp = "";
@@ -1406,13 +1406,13 @@ if (global.character_select_in_this_menu == "level_editor")
 				str_temp = "";
 				str_pos += 1;
 				num += 1;
-				if (num = 6) /*Number of variables to check for.
+				if (num = 6) /* Number of variables to check for.
 				val[0] = object,
 				val[1] = x position,
 				val[2] = y position,
 				val[3] = easy,
 				val[4] = normal,
-				val[5] = hard*/
+				val[5] = hard */
 				{
 					num = 0;
 					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
@@ -1427,9 +1427,9 @@ if (global.character_select_in_this_menu == "level_editor")
 			}
 			file_text_close(file);
 		}
-		#endregion /*Object Placement END*/
+		#endregion /* Object Placement END */
 		
-		#region /*Object With Rotation Placement*/
+		#region /* Object With Rotation Placement */
 		var file, str, str_pos, str_temp, val, num;
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template == false)
@@ -1450,7 +1450,7 @@ if (global.character_select_in_this_menu == "level_editor")
 	
 		if (file != -1)
 		{
-			/*Next objects*/
+			/* Next objects */
 			str = file_text_read_string(file);
 			//file_text_readln(file);
 			str_temp = "";
@@ -1467,7 +1467,7 @@ if (global.character_select_in_this_menu == "level_editor")
 				str_temp = "";
 				str_pos += 1;
 				num += 1;
-				if (num = 8) /*Number of variables to check for.
+				if (num = 8) /* Number of variables to check for.
 				val[0] = object,
 				val[1] = x position,
 				val[2] = y position,
@@ -1475,7 +1475,7 @@ if (global.character_select_in_this_menu == "level_editor")
 				val[4] = normal,
 				val[5] = hard,
 				val[6] = second_x,
-				val[7] = second_y*/
+				val[7] = second_y */
 				{
 					num = 0;
 					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
@@ -1492,9 +1492,9 @@ if (global.character_select_in_this_menu == "level_editor")
 			}
 			file_text_close(file);
 		}
-		#endregion /*Object With Rotation Placement END*/
+		#endregion /* Object With Rotation Placement END */
 		
 }
-#endregion /*Load Level Editor Level END*/
+#endregion /* Load Level Editor Level END */
 
-#endregion /*Load Level END*/
+#endregion /* Load Level END */

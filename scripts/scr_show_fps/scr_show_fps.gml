@@ -1,13 +1,13 @@
 function scr_show_fps()
 {
 	
-	#region /*Show FPS*/
+	#region /* Show FPS */
 	if (global.pause = false)
 	and (asset_get_type("obj_title") == asset_object)
 	and (!instance_exists(obj_title))
 	{
 		
-		#region /*FPS*/
+		#region /* FPS */
 		if (global.show_fps = true)
 		{
 			draw_set_halign(fa_left);
@@ -23,9 +23,9 @@ function scr_show_fps()
 			}
 		
 		}
-		#endregion /*FPS END*/
+		#endregion /* FPS END */
 		
-		#region /*FPS Real*/
+		#region /* FPS Real */
 		if (global.show_fps_real = true)
 		{
 			if (fps_real >= 200)
@@ -37,9 +37,9 @@ function scr_show_fps()
 				scr_draw_text_outlined(30, 132, "FPS Real: " + string(fps_real), global.default_text_size, c_black, make_color_hsv(50/ 200 *fps_real, 255, 255), 1);
 			}
 		}
-		#endregion /*FPS Real END*/
+		#endregion /* FPS Real END */
 		
 	}
-	#endregion /*Show FPS END*/
+	#endregion /* Show FPS END */
 	
 }

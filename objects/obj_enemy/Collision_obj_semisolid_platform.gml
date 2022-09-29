@@ -1,6 +1,6 @@
 if (die = false)
 {
-	#region /*Push out of the solid object*/
+	#region /* Push out of the solid object */
 	if (position_meeting(x, bbox_bottom + 1, other))
 	or (position_meeting(x, bbox_bottom + 2, other))
 	or (position_meeting(x, bbox_bottom + 3, other))
@@ -18,9 +18,9 @@ if (die = false)
 	{
 		y -= 1;
 	}
-	#endregion /*Push out of the solid object END*/
+	#endregion /* Push out of the solid object END */
 
-	#region /*Landing on solid object*/
+	#region /* Landing on solid object */
 	if (position_meeting(x, bbox_bottom + 1, other))
 	and (vspeed > 0)
 	or (position_meeting(bbox_left, bbox_bottom + 1, other))
@@ -55,4 +55,4 @@ if (die = false)
 		gravity = 0;
 	}
 }
-#endregion /*Landing on solid object END*/
+#endregion /* Landing on solid object END */

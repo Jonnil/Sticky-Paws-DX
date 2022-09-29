@@ -2,12 +2,12 @@ draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, image_blend,
 
 if (brick_particle = true)
 {
-	#region /*Set the gravity*/
+	#region /* Set the gravity */
 	gravity_direction = 270;
 	gravity = 0.5;
-	#endregion /*Set the gravity END*/
+	#endregion /* Set the gravity END */
 	
-	#region /*Destroy outside view*/
+	#region /* Destroy outside view */
 	if (x < camera_get_view_x(view_camera[view_current]))
 	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	or(y < camera_get_view_y(view_camera[view_current]))
@@ -15,7 +15,7 @@ if (brick_particle = true)
 	{
 		instance_destroy();
 	}
-	#endregion /*Destroy outside view END*/
+	#endregion /* Destroy outside view END */
 	
 	if (hspeed < 0)
 	{

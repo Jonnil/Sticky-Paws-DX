@@ -1,4 +1,4 @@
-#region /*Play Attract Demo*/
+#region /* Play Attract Demo */
 if (global.play_attract_demo = false)
 and (global.enable_attract_demo = true)
 {
@@ -42,9 +42,9 @@ and (global.enable_attract_demo = true)
 		}
 	}
 }
-var mouse_x_position = window_mouse_get_x(); /*Update x position of fake mouse*/
-var mouse_y_position = window_mouse_get_y(); /*Update y position of fake mouse*/
-var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /*Get distance from fake mouse to real mouse*/
+var mouse_x_position = window_mouse_get_x(); /* Update x position of fake mouse */
+var mouse_y_position = window_mouse_get_y(); /* Update y position of fake mouse */
+var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /* Get distance from fake mouse to real mouse */
 
 if (keyboard_check(vk_anykey))
 or (mouse_check_button(mb_any))
@@ -168,7 +168,7 @@ if (global.play_attract_demo = 2)
 		video_pause();
 	}
 }
-#endregion /*Play Attract Demo END*/
+#endregion /* Play Attract Demo END */
 
 if (menu == "main_game")
 or (menu == "options")
@@ -183,7 +183,7 @@ or (menu == "link_twitter")
 or (menu == "link_wiki")
 {
 	
-	#region /*Enable convention mode via cheat code, type "conventionmode" on your keyboard*/
+	#region /* Enable convention mode via cheat code, type "conventionmode" on your keyboard */
 	if (keyboard_check_pressed(ord("C")))
 	and (keyboard_string != "arc")
 	and (can_input_level_name == false)
@@ -198,7 +198,7 @@ or (menu == "link_wiki")
 	if (keyboard_string = "conventionmode")
 	or (keyboard_string = "convention mode")
 	{
-		if (can_input_level_name = false)
+		if (can_input_level_name == false)
 		and (can_input_player1_name = false)
 		and (can_input_player2_name = false)
 		and (can_input_player3_name = false)
@@ -238,9 +238,9 @@ or (menu == "link_wiki")
 			ini_close();
 		}
 	}
-	#endregion /*Enable convention mode via cheat code, type "conventionmode" on your keyboard END*/
+	#endregion /* Enable convention mode via cheat code, type "conventionmode" on your keyboard END */
 	
-	#region /*Enable arcade mode via cheat code, type "arcademode" on your keyboard*/
+	#region /* Enable arcade mode via cheat code, type "arcademode" on your keyboard */
 	if (keyboard_check_pressed(ord("A")))
 	and (keyboard_string != "arca")
 	and (can_input_level_name == false)
@@ -255,7 +255,7 @@ or (menu == "link_wiki")
 	if (keyboard_string = "arcademode")
 	or (keyboard_string = "arcade mode")
 	{
-		if (can_input_level_name = false)
+		if (can_input_level_name == false)
 		and (can_input_player1_name = false)
 		and (can_input_player2_name = false)
 		and (can_input_player3_name = false)
@@ -295,7 +295,7 @@ or (menu == "link_wiki")
 			ini_close();
 		}
 	}
-	#endregion /*Enable arcade mode via cheat code, type "arcademode" on your keyboard END*/
+	#endregion /* Enable arcade mode via cheat code, type "arcademode" on your keyboard END */
 	
 }
 
@@ -335,9 +335,9 @@ and (show_arcade_mode_enable_text > 0)
 	draw_sprite_ext(spr_checkbox, false, 32, 32, 0.5, 0.5, 0, c_white, 1);
 }
 
-#region /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus*/
+#region /* Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus */
 
-#region /*Player 1 reset keys to noone if they happen to be 0*/
+#region /* Player 1 reset keys to noone if they happen to be 0 */
 if (global.player1_key_dive = 0){global.player1_key_dive = noone;}
 if (global.player1_key_jump = 0){global.player1_key_jump = noone;}
 if (global.player1_key_crouch = 0){global.player1_key_crouch = noone;}
@@ -360,9 +360,9 @@ if (global.player1_key2_right = 0){global.player1_key2_right = noone;}
 if (global.player1_key2_down = 0){global.player1_key2_down = noone;}
 if (global.player1_key2_up = 0){global.player1_key2_up = noone;}
 if (global.player1_key2_tongue = 0){global.player1_key2_tongue = noone;}
-#endregion /*Player 1 reset keys to noone if they happen to be 0 END*/
+#endregion /* Player 1 reset keys to noone if they happen to be 0 END */
 
-#region /*Player 2 reset keys to noone if they happen to be 0*/
+#region /* Player 2 reset keys to noone if they happen to be 0 */
 if (global.player2_key_dive = 0){global.player2_key_dive = noone;}
 if (global.player2_key_jump = 0){global.player2_key_jump = noone;}
 if (global.player2_key_crouch = 0){global.player2_key_crouch = noone;}
@@ -385,9 +385,9 @@ if (global.player2_key2_right = 0){global.player2_key2_right = noone;}
 if (global.player2_key2_down = 0){global.player2_key2_down = noone;}
 if (global.player2_key2_up = 0){global.player2_key2_up = noone;}
 if (global.player2_key2_tongue = 0){global.player2_key2_tongue = noone;}
-#endregion /*Player 2 reset keys to noone if they happen to be 0 END*/
+#endregion /* Player 2 reset keys to noone if they happen to be 0 END */
 
-#region /*Player 3 reset keys to noone if they happen to be 0*/
+#region /* Player 3 reset keys to noone if they happen to be 0 */
 if (global.player3_key_dive = 0){global.player3_key_dive = noone;}
 if (global.player3_key_jump = 0){global.player3_key_jump = noone;}
 if (global.player3_key_crouch = 0){global.player3_key_crouch = noone;}
@@ -410,9 +410,9 @@ if (global.player3_key2_right = 0){global.player3_key2_right = noone;}
 if (global.player3_key2_down = 0){global.player3_key2_down = noone;}
 if (global.player3_key2_up = 0){global.player3_key2_up = noone;}
 if (global.player3_key2_tongue = 0){global.player3_key2_tongue = noone;}
-#endregion /*Player 3 reset keys to noone if they happen to be 0 END*/
+#endregion /* Player 3 reset keys to noone if they happen to be 0 END */
 
-#region /*Player 4 reset keys to noone if they happen to be 0*/
+#region /* Player 4 reset keys to noone if they happen to be 0 */
 if (global.player4_key_dive = 0){global.player4_key_dive = noone;}
 if (global.player4_key_jump = 0){global.player4_key_jump = noone;}
 if (global.player4_key_crouch = 0){global.player4_key_crouch = noone;}
@@ -435,11 +435,11 @@ if (global.player4_key2_right = 0){global.player4_key2_right = noone;}
 if (global.player4_key2_down = 0){global.player4_key2_down = noone;}
 if (global.player4_key2_up = 0){global.player4_key2_up = noone;}
 if (global.player4_key2_tongue = 0){global.player4_key2_tongue = noone;}
-#endregion /*Player 4 reset keys to noone if they happen to be 0 END*/
+#endregion /* Player 4 reset keys to noone if they happen to be 0 END */
 
-#endregion /*Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus END*/
+#endregion /* Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus END */
 
-if (global.background_brightness_menu>-0.001)
+if (global.background_brightness_menu > -0.001)
 {
 	c_menu_outline = c_white;
 	c_menu_fill = c_black;
@@ -450,17 +450,17 @@ else
 	c_menu_fill = c_white;
 }
 
-/*Title Screen*/
+/* Title Screen */
 
-room_speed = global.max_fps; /*Room Speed END*/
+room_speed = global.max_fps; /* Room Speed END */
 
-#region /*Change the logo to different designs during specific times and dates*/
+#region /* Change the logo to different designs during specific times and dates */
 if (current_month = 12)
 {
 	if (current_day >= 24)
 	and (current_day <= 26)
 	{
-		effect_create_below(ef_snow, 0, 0, 2, c_white); /*Make the title screen snow when it's between 24th and 26th December*/
+		effect_create_below(ef_snow, 0, 0, 2, c_white); /* Make the title screen snow when it's between 24th and 26th December */
 	}
 	if (global.resource_pack_sprite_title_logo_christmas > noone)
 	{
@@ -487,9 +487,9 @@ else
 		title_logo_index = spr_wall;
 	}
 }
-#endregion /*Change the logo to different designs during specific times and dates END*/
+#endregion /* Change the logo to different designs during specific times and dates END */
 
-#region /*Volumes stay between 0 and 1*/
+#region /* Volumes stay between 0 and 1 */
 if (global.volume_music < 0)
 {
 	global.volume_music = 0;
@@ -526,18 +526,18 @@ if (global.volume_voice > 1)
 {
 	global.volume_voice = 1;
 }
-#endregion /*Volumes stay between 0 and 1 END*/
+#endregion /* Volumes stay between 0 and 1 END */
 
-#region /*Keyboard Controls*/
+#region /* Keyboard Controls */
 key_up = (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or (gamepad_axis_value(0, gp_axislv) < 0) or mouse_wheel_up();
 key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or (gamepad_axis_value(0, gp_axislh) < 0);
 key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
 key_down = (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or (keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or (gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or (gamepad_axis_value(0, gp_axislv) > 0) or mouse_wheel_down();
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or (keyboard_check_pressed(ord("Z")))or (keyboard_check_pressed(vk_enter))or (keyboard_check_pressed(vk_space));
 key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or (keyboard_check_pressed(ord("X")))or (keyboard_check_pressed(vk_escape))or (keyboard_check_pressed(vk_backspace))or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
-#endregion /*Keyboard Controls END*/
+#endregion /* Keyboard Controls END */
 
-#region /*Quit Game trough pause menu*/
+#region /* Quit Game trough pause menu */
 if (global.convention_mode = false)
 and (can_remap_key = false)
 and (input_key == false)
@@ -564,11 +564,11 @@ and (menu_delay == 0)
 		}
 	}
 }
-#endregion /*Quit Game trough pause menu END*/
+#endregion /* Quit Game trough pause menu END */
 
-/*Draw Event*/
+/* Draw Event */
 
-#region /*Fullscreen toggle*/
+#region /* Fullscreen toggle */
 if (os_type != os_ios)
 and (os_type != os_android)
 and (global.controls_used_for_menu_navigation != "controller")
@@ -615,11 +615,11 @@ and (menu != "quit_game_yes")
 	}
 	menu_delay = 3;
 }
-#endregion /*Fullscreen toggle END*/
+#endregion /* Fullscreen toggle END */
 
 scr_toggle_fullscreen();
 
-#region /*Build Date and Version*/
+#region /* Build Date and Version */
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 if (global.demo == false)
@@ -632,7 +632,7 @@ else
 }
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-#endregion /*Build Date and Version END*/
+#endregion /* Build Date and Version END */
 
 var link_discord_x = 16;
 var link_gamebanana_x = 56;
@@ -641,8 +641,8 @@ var link_reddit_x = 136;
 var link_twitter_x = 176;
 var link_wiki_x = 216;
 
-#region /*Links*/
-/*Put links underneath build date and version*/
+#region /* Links */
+/* Put links underneath build date and version */
 if (global.enable_links = true)
 {
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, link_discord_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
@@ -653,7 +653,7 @@ if (global.enable_links = true)
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_wiki, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_wiki", "link_wiki", false);
 	
 	if (key_a_pressed)
-	and (menu = "link_discord")
+	and (menu == "link_discord")
 	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_discord_x, display_get_gui_height() + 8 + version_y_pos, link_discord_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
@@ -664,7 +664,7 @@ if (global.enable_links = true)
 	}
 	else
 	if (key_a_pressed)
-	and (menu = "link_gamebanana")
+	and (menu == "link_gamebanana")
 	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, link_gamebanana_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
@@ -675,7 +675,7 @@ if (global.enable_links = true)
 	}
 	else
 	if (key_a_pressed)
-	and (menu = "link_instagram")
+	and (menu == "link_instagram")
 	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_instagram_x, display_get_gui_height() + 8 + version_y_pos, link_instagram_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
@@ -686,7 +686,7 @@ if (global.enable_links = true)
 	}
 	else
 	if (key_a_pressed)
-	and (menu = "link_reddit")
+	and (menu == "link_reddit")
 	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_reddit_x, display_get_gui_height() + 8 + version_y_pos, link_reddit_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
@@ -697,7 +697,7 @@ if (global.enable_links = true)
 	}
 	else
 	if (key_a_pressed)
-	and (menu = "link_twitter")
+	and (menu == "link_twitter")
 	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_twitter_x, display_get_gui_height() + 8 + version_y_pos, link_twitter_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
@@ -708,7 +708,7 @@ if (global.enable_links = true)
 	}
 	else
 	if (key_a_pressed)
-	and (menu = "link_wiki")
+	and (menu == "link_wiki")
 	and (menu_delay == 0)
 	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_wiki_x, display_get_gui_height() + 8 + version_y_pos, link_wiki_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
@@ -718,9 +718,9 @@ if (global.enable_links = true)
 		menu_delay = 3;
 	}
 }
-#endregion /*Links END*/
+#endregion /* Links END */
 
-#region /*Hide Fullscreen and Version text / Set certain variables to default value*/
+#region /* Hide Fullscreen and Version text / Set certain variables to default value */
 if (menu == "main_game")
 or (menu == "leveleditor")
 or (menu == "options")
@@ -739,20 +739,20 @@ or (menu == "link_wiki")
 	if (global.play_attract_demo = false)
 	{
 		
-		#region /*Character select Accept Selection*/
+		#region /* Character select Accept Selection */
 		player1_accept_selection = - 1;
 		player2_accept_selection = - 1;
 		player3_accept_selection = - 1;
 		player4_accept_selection = - 1;
 		player_start_game = false;
-		#endregion /*Character select Accept Selection END*/
+		#endregion /* Character select Accept Selection END */
 
-		#region /*What player can enter a name*/
+		#region /* What player can enter a name */
 		can_input_player1_name = false;
 		can_input_player2_name = false;
 		can_input_player3_name = false;
 		can_input_player4_name = false;
-		#endregion /*What player can enter a name END*/
+		#endregion /* What player can enter a name END */
 	
 		show_title_logo = true;
 		if (global.enable_links = true)
@@ -775,9 +775,9 @@ else
 	show_title_logo = false;
 	version_y_pos = lerp(version_y_pos, 128, 0.1);
 }
-#endregion /*Hide Fullscreen and Version text / Set certain variables to default value END*/
+#endregion /* Hide Fullscreen and Version text / Set certain variables to default value END */
 
-#region /*Draw Title Screen*/
+#region /* Draw Title Screen */
 if (global.title_logo_index >= 0)
 or (global.resource_pack_sprite_title_logo_christmas > 0)
 {
@@ -790,10 +790,10 @@ or (global.resource_pack_sprite_title_logo_christmas > 0)
 }
 
 if (menu!= "select_custom_level")
-and (menu!= "level_editor_play")
-and (menu!= "level_editor_make")
-and (menu!= "import_export_level")
-and (menu!= "delete_level")
+and (menu != "level_editor_play")
+and (menu != "level_editor_make")
+and (menu != "import_export_level")
+and (menu != "delete_level")
 and (show_title_logo = true)
 {
 	title_x = lerp(title_x, 0, 0.1);
@@ -819,9 +819,9 @@ else
 	title_xscale = lerp(title_xscale, 0.5, 0.1);
 	title_yscale = lerp(title_yscale, 0.5, 0.1);
 }
-#endregion /*Draw Title Screen END*/
+#endregion /* Draw Title Screen END */
 
-#region /*Create Camera*/
+#region /* Create Camera */
 if (asset_get_type("obj_camera") == asset_object)
 {
 	if (!instance_exists(obj_camera))
@@ -834,9 +834,9 @@ if (asset_get_type("obj_camera") == asset_object)
 		y = obj_camera.y;
 	}
 }
-#endregion /*Create Camera END*/
+#endregion /* Create Camera END */
 
-#region /*Arcade Mode Menu*/
+#region /* Arcade Mode Menu */
 if (global.arcade_mode = true)
 {
 	if (menu != "load_characters")
@@ -870,9 +870,9 @@ if (global.arcade_mode = true)
 		menu_delay = 3;
 	}
 }
-#endregion /*Arcade Mode Menu END*/
+#endregion /* Arcade Mode Menu END */
 
-#region /*Main Menu*/
+#region /* Main Menu */
 if (menu == "main_game")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
@@ -919,9 +919,9 @@ and (global.arcade_mode = false)
 	select_custom_level_menu_open = false;
 	can_input_level_name = false;
 	
-	#region /*Click on menu buttons*/
+	#region /* Click on menu buttons */
 	
-	#region /*Click Main Game*/
+	#region /* Click Main Game */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 40, display_get_gui_width() / 2 + 185, display_get_gui_height() / 2 + 100 + 60 + 19))
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
@@ -947,11 +947,11 @@ and (global.arcade_mode = false)
 		menu = "load_characters";
 		menu_delay = 3;
 	}
-	#endregion /*Click Main Game END*/
+	#endregion /* Click Main Game END */
 	
 	else
 	
-	#region /*Click Level Editor*/
+	#region /* Click Level Editor */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 +80 + 1, display_get_gui_width() / 2 + 185, display_get_gui_height() / 2 + 100 + 100 + 19))
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
@@ -973,9 +973,9 @@ and (global.arcade_mode = false)
 		player4_accept_selection = - 1;
 		in_settings = false;
 		
-		#region /*Select Level Editor*/
+		#region /* Select Level Editor */
 		if (asset_get_type("room_leveleditor") == asset_room)
-		and (menu = "leveleditor")
+		and (menu == "leveleditor")
 		and (menu_delay == 0)
 		and (global.demo == false)
 		{
@@ -988,14 +988,14 @@ and (global.arcade_mode = false)
 			menu_delay = 3;
 			global.level_editor_level = 1;
 		}
-		#endregion /*Select Level Editor END*/
+		#endregion /* Select Level Editor END */
 	
 	}
-	#endregion /*Click Level Editor END*/
+	#endregion /* Click Level Editor END */
 	
 	else
 	
-	#region /*Click Options*/
+	#region /* Click Options */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
 	display_get_gui_width() / 2 - 185,
 	options_and_quit_y + 2,
@@ -1010,30 +1010,30 @@ and (global.arcade_mode = false)
 	and (in_settings = false)
 	{
 		
-		#region /*Play Options Voice*/
+		#region /* Play Options Voice */
 		if (voice_options > noone)
 		{
 			audio_stop_sound(voice_game_title);
 			scr_audio_play(voice_options, volume_source.voice);
 		}
-		#endregion /*Play Options Voice END*/
+		#endregion /* Play Options Voice END */
 		
 		in_settings = true;
 		can_navigate_settings_sidebar = true;
 		menu = noone;
 		menu_delay = 3;
 	}
-	#endregion /*Click Options END*/
+	#endregion /* Click Options END */
 	
 	else
 
-	#region /*Click Language Shortcut*/
+	#region /* Click Language Shortcut */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
 	display_get_gui_width() / 2 - 250,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
 	display_get_gui_width() / 2 - 208,
 	display_get_gui_height() / 2 + 100 + 140 + 19))
-	and (menu = "language_shortcut")
+	and (menu == "language_shortcut")
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	and (global.show_language_shortcut = true)
@@ -1050,11 +1050,11 @@ and (global.arcade_mode = false)
 		global.settings_sidebar_menu = "language_settings";
 		menu = "Language" + string(global.language_localization);
 	}
-	#endregion /*Click Language Shortcut END*/
+	#endregion /* Click Language Shortcut END */
 	
 	else
 	
-	#region /*Language Shortcut*/
+	#region /* Language Shortcut */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
 	display_get_gui_width() / 2 - 250,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
@@ -1065,17 +1065,17 @@ and (global.arcade_mode = false)
 	{
 		menu = "language_shortcut";
 	}
-	#endregion /*Language Shortcut END*/
+	#endregion /* Language Shortcut END */
 	
 	else
 
-	#region /*Click Accessibility Shortcut*/
+	#region /* Click Accessibility Shortcut */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
 	display_get_gui_width() / 2 + 208,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
 	display_get_gui_width() / 2 + 250,
 	display_get_gui_height() / 2 + 100 + 140 + 19))
-	and (menu = "accessibility_shortcut")
+	and (menu == "accessibility_shortcut")
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	and (global.show_accessibility_shortcut = true)
@@ -1091,11 +1091,11 @@ and (global.arcade_mode = false)
 		global.settings_sidebar_menu = "accessibility_settings";
 		menu = noone;
 	}
-	#endregion /*Click Accessibility Shortcut END*/
+	#endregion /* Click Accessibility Shortcut END */
 	
 	else
 	
-	#region /*Accessibility Shortcut*/
+	#region /* Accessibility Shortcut */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
 	display_get_gui_width() / 2 + 208,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
@@ -1106,17 +1106,17 @@ and (global.arcade_mode = false)
 	{
 		menu = "accessibility_shortcut";
 	}
-	#endregion /*Accessibility Shortcut END*/
+	#endregion /* Accessibility Shortcut END */
 	
 	else
 
-	#region /*Click Profile Shortcut*/
+	#region /* Click Profile Shortcut */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
 	display_get_gui_width() / 2 + 208+ 50,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
 	display_get_gui_width() / 2 + 250 + 50,
 	display_get_gui_height() / 2 + 100 + 140 + 19))
-	and (menu = "profile_shortcut")
+	and (menu == "profile_shortcut")
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	and (global.show_profile_shortcut = true)
@@ -1133,11 +1133,11 @@ and (global.arcade_mode = false)
 		global.settings_sidebar_menu = "profile_settings";
 		menu = noone;
 	}
-	#endregion /*Click Profile Shortcut END*/
+	#endregion /* Click Profile Shortcut END */
 	
 	else
 	
-	#region /*Profile Shortcut*/
+	#region /* Profile Shortcut */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
 	display_get_gui_width() / 2 + 208+ 50,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
@@ -1148,11 +1148,11 @@ and (global.arcade_mode = false)
 	{
 		menu = "profile_shortcut";
 	}
-	#endregion /*Profile Shortcut END*/
+	#endregion /* Profile Shortcut END */
 	
 	else
 	
-	#region /*Click Credits*/
+	#region /* Click Credits */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
@@ -1171,11 +1171,11 @@ and (global.arcade_mode = false)
 		menu_delay = 3;
 		can_navigate_settings_sidebar = false;
 	}
-	#endregion /*Click Credits END*/
+	#endregion /* Click Credits END */
 	
 	else
 	
-	#region /*Click Quit*/
+	#region /* Click Quit */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2, options_and_quit_y + 2, display_get_gui_width() / 2 + 185, options_and_quit_y + 42))
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
@@ -1191,9 +1191,9 @@ and (global.arcade_mode = false)
 		menu = "quit_game_no";
 		menu_delay = 3;
 	}
-	#endregion /*Click Quit END*/
+	#endregion /* Click Quit END */
 	
-	#endregion /*Click on menu buttons END*/
+	#endregion /* Click on menu buttons END */
 	
 	if (menu == "main_game")
 	{
@@ -1201,13 +1201,13 @@ and (global.arcade_mode = false)
 	}
 	
 	if (asset_get_type("room_leveleditor") == asset_room)
-	and (menu = "leveleditor")
+	and (menu == "leveleditor")
 	{
 		if (global.level_editor_level > 0)
 		{
 			global.level_editor_level = 0;
 		}
-		global.character_select_in_this_menu = "level_editor"; /*No custom level is selected before you go into the level editor*/
+		global.character_select_in_this_menu = "level_editor"; /* No custom level is selected before you go into the level editor */
 	}
 	
 	if (global.demo == false)
@@ -1269,13 +1269,13 @@ and (global.arcade_mode = false)
 		draw_sprite_ext(spr_settings_icons, 7, display_get_gui_width() / 2 + 230 + 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 	}
 }
-#endregion /*Main Menu END*/
+#endregion /* Main Menu END */
 
-scr_options_menu(); /*Options*/
+scr_options_menu(); /* Options */
 
 scr_quit_to_desktop_menu("quit");
 
-#region /*Select Custom Level Menu*/
+#region /* Select Custom Level Menu */
 if (level_editor_template_select = true)
 and (global.play_attract_demo = false)
 {
@@ -1302,7 +1302,7 @@ and (global.play_attract_demo = false)
 		row = 1;
 	}
 	
-	column = clamp(floor (global.select_level_index / row), 0, floor(ds_list_size(global.all_loaded_main_levels)))
+	column = clamp(floor(global.select_level_index / row), 0, floor(ds_list_size(global.all_loaded_main_levels)))
 	if (global.controls_used_for_menu_navigation == "mouse")
 	and (can_input_level_name == false)
 	and (can_navigate == true)
@@ -1332,24 +1332,24 @@ and (global.play_attract_demo = false)
 	scr_select_custom_level_menu();
 	scr_custom_level_select_with_the_mouse()
 }
-#endregion /*Select Custom Level Menu END*/
+#endregion /* Select Custom Level Menu END */
 
-scr_character_select_menu(); /*Character select*/
+scr_character_select_menu(); /* Character select */
 
-#region /*Menu Navigation*/
+#region /* Menu Navigation */
 if (menu_joystick_delay <= 0)
 and (input_key == false)
 and (can_navigate == true)
 and (menu_delay == 0)
 {
 
-	/*Level Editor Menu*/
+	/* Level Editor Menu */
 	if (global.level_editor_level<= 0)
 	{
 		global.level_editor_level = 1;
 	}
 
-	#region /*Navigate Main Menu*/
+	#region /* Navigate Main Menu */
 	if (menu == "main_game")
 	{
 		if (key_up)
@@ -1779,14 +1779,14 @@ and (menu_delay == 0)
 			menu = "link_gamebanana";
 		}
 	}
-	#endregion /*Navigate Main Menu END*/
+	#endregion /* Navigate Main Menu END */
 
 }
-#endregion /*Menu Navigation END*/
+#endregion /* Menu Navigation END */
 
-#region /*Accept*/
+#region /* Accept */
 
-#region /*Select Quit*/
+#region /* Select Quit */
 if (menu == "quit")
 and (key_a_pressed)
 and (menu_delay == 0)
@@ -1795,17 +1795,17 @@ and (global.convention_mode = false)
 	menu = "quit_game_no";
 	menu_delay = 3;
 }
-#endregion /*Select Quit END*/
+#endregion /* Select Quit END */
 
-#endregion /*Accept END*/
+#endregion /* Accept END */
 
-#region /*Start Game*/
+#region /* Start Game */
 if (asset_get_type("obj_camera") == asset_object)
 and (instance_exists(obj_camera))
 and (iris_xscale <= 0.001)
 {
 	
-	#region /*Play Level Editor*/
+	#region /* Play Level Editor */
 	if (menu == "level_editor_play")
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template == false)
@@ -1821,7 +1821,7 @@ and (iris_xscale <= 0.001)
 		{
 			sprite_delete(title_screen_background);
 			
-			#region /*Update All Backgrounds*/
+			#region /* Update All Backgrounds */
 			
 			sprite_delete(global.custom_background1);
 			sprite_delete(global.custom_background2);
@@ -1832,361 +1832,361 @@ and (iris_xscale <= 0.001)
 			sprite_delete(global.custom_foreground2);
 			sprite_delete(global.custom_foreground_secret);
 			
-			#region /*Update Background1*/
-			/*BMP small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.bmp")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
-			/*BMP big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.bmp")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.png")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.png")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.gif")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.gif")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.jpg")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.jpg")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			#region /* Update Background1 */
+			/* BMP small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.bmp")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
+			/* BMP big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.bmp")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.png")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.png")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.gif")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.gif")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.jpg")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.jpg")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
 			{
 				global.custom_background1 = noone;
 			}
-			#endregion /*Update Background1 END*/
+			#endregion /* Update Background1 END */
 			
-			#region /*Update Background2*/
-			/*BMP small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.bmp")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
-			/*BMP big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.bmp")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.png")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.png")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.gif")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.gif")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.jpg")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.jpg")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			#region /* Update Background2 */
+			/* BMP small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.bmp")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
+			/* BMP big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.bmp")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.png")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.png")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.gif")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.gif")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.jpg")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.jpg")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
 			{
 				global.custom_background2 = noone;
 			}
-			#endregion /*Update Background2 END*/
+			#endregion /* Update Background2 END */
 			
-			#region /*Update Background3*/
-			/*BMP small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.bmp")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
-			/*BMP big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.bmp")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.png")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.png")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.gif")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.gif")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.jpg")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.jpg")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			#region /* Update Background3 */
+			/* BMP small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.bmp")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
+			/* BMP big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.bmp")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.png")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.png")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.gif")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.gif")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.jpg")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.jpg")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
 			{
 				global.custom_background3 = noone;
 			}
-			#endregion /*Update Background3 END*/
+			#endregion /* Update Background3 END */
 			
-			#region /*Update Background4 */
-			/*BMP small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.bmp")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
-			/*BMP big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.bmp")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.png")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.png")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.gif")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.gif")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.jpg")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.jpg")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			#region /* Update Background4 */
+			/* BMP small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.bmp")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
+			/* BMP big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.bmp")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.png")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.png")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.gif")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.gif")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.jpg")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.jpg")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
 			{
 				global.custom_background4 = noone;
 			}
-			#endregion /*Update Background4 END*/
+			#endregion /* Update Background4 END */
 			
-			#region /*Update Foreground1*/
+			#region /* Update Foreground1 */
 			
-			#region /*BMP small letter File*/
+			#region /* BMP small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.bmp"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP small letter File END*/
+			#endregion /* BMP small letter File END */
 			
-			#region /*BMP big letter File*/
+			#region /* BMP big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.bmp"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP big letter File END*/
+			#endregion /* BMP big letter File END */
 			
-			#region /*PNG small letter File*/
+			#region /* PNG small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.png"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG small letter File END*/
+			#endregion /* PNG small letter File END */
 			
-			#region /*PNG big letter File*/
+			#region /* PNG big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.png"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG big letter File END*/
+			#endregion /* PNG big letter File END */
 			
-			#region /*GIF small letter File*/
+			#region /* GIF small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.gif"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF small letter File END*/
+			#endregion /* GIF small letter File END */
 			
-			#region /*GIF big letter File*/
+			#region /* GIF big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.gif"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF big letter File END*/
+			#endregion /* GIF big letter File END */
 			
-			#region /*JPG small letter File*/
+			#region /* JPG small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.jpg"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG small letter File END*/
+			#endregion /* JPG small letter File END */
 			
-			#region /*JPG big letter File*/
+			#region /* JPG big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.jpg"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG big letter File END*/
+			#endregion /* JPG big letter File END */
 			
 			{
 				global.custom_foreground1 = noone;
 			}
 			
-			#endregion /*Update Foreround1 END*/
+			#endregion /* Update Foreround1 END */
 			
-			#region /*Update Foreground above static objects custom level*/
+			#region /* Update Foreground above static objects custom level */
 			
-			#region /*BMP small letter File*/
+			#region /* BMP small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.bmp"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP small letter File END*/
+			#endregion /* BMP small letter File END */
 			
-			#region /*BMP big letter File*/
+			#region /* BMP big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.bmp"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP big letter File END*/
+			#endregion /* BMP big letter File END */
 			
-			#region /*PNG small letter File*/
+			#region /* PNG small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.png"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG small letter File END*/
+			#endregion /* PNG small letter File END */
 			
-			#region /*PNG big letter File*/
+			#region /* PNG big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.png"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG big letter File END*/
+			#endregion /* PNG big letter File END */
 			
-			#region /*GIF small letter File*/
+			#region /* GIF small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.gif"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF small letter File END*/
+			#endregion /* GIF small letter File END */
 			
-			#region /*GIF big letter File*/
+			#region /* GIF big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.gif"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF big letter File END*/
+			#endregion /* GIF big letter File END */
 			
-			#region /*JPG small letter File*/
+			#region /* JPG small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.jpg"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG small letter File END*/
+			#endregion /* JPG small letter File END */
 			
-			#region /*JPG big letter File*/
+			#region /* JPG big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.jpg"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG big letter File END*/
+			#endregion /* JPG big letter File END */
 			
 			{
 				global.custom_foreground_above_static_objects = noone;
 			}
 			
-			#endregion /*Update Foreround above static objects custom level END*/
+			#endregion /* Update Foreround above static objects custom level END */
 			
-			#region /*Update Foreground2*/
+			#region /* Update Foreground2 */
 			
-			#region /*BMP small letter File*/
+			#region /* BMP small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.bmp")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP small letter File END*/
+			#endregion /* BMP small letter File END */
 			
-			#region /*BMP big letter File*/
+			#region /* BMP big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.bmp")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP big letter File END*/
+			#endregion /* BMP big letter File END */
 			
-			#region /*PNG small letter File*/
+			#region /* PNG small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.png")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG small letter File END*/
+			#endregion /* PNG small letter File END */
 			
-			#region /*PNG big letter File*/
+			#region /* PNG big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.png")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG big letter File END*/
+			#endregion /* PNG big letter File END */
 			
-			#region /*GIF small letter File*/
+			#region /* GIF small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.gif")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF small letter File END*/
+			#endregion /* GIF small letter File END */
 			
-			#region /*GIF big letter File*/
+			#region /* GIF big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.gif")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF big letter File END*/
+			#endregion /* GIF big letter File END */
 			
-			#region /*JPG small letter File*/
+			#region /* JPG small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.jpg")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG small letter File END*/
+			#endregion /* JPG small letter File END */
 			
-			#region /*JPG big letter File*/
+			#region /* JPG big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.jpg")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG big letter File END*/
+			#endregion /* JPG big letter File END */
 			
 			{
 				global.custom_foreground2 = noone;
 			}
 			
-			#endregion /*Update Foreround2 END*/
+			#endregion /* Update Foreround2 END */
 			
-			#region /*Update Foreground secret custom level*/
+			#region /* Update Foreground secret custom level */
 			
-			#region /*BMP small letter File*/
+			#region /* BMP small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.bmp")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.bmp", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*BMP small letter File END*/
+			#endregion /* BMP small letter File END */
 			
-			#region /*BMP big letter File*/
+			#region /* BMP big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.bmp")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.bmp", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*BMP big letter File END*/
+			#endregion /* BMP big letter File END */
 			
-			#region /*PNG small letter File*/
+			#region /* PNG small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.png")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.png", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*PNG small letter File END*/
+			#endregion /* PNG small letter File END */
 			
-			#region /*PNG big letter File*/
+			#region /* PNG big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.png")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.png", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*PNG big letter File END*/
+			#endregion /* PNG big letter File END */
 			
-			#region /*GIF small letter File*/
+			#region /* GIF small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.gif")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.gif", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*GIF small letter File END*/
+			#endregion /* GIF small letter File END */
 			
-			#region /*GIF big letter File*/
+			#region /* GIF big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.gif")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.gif", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*GIF big letter File END*/
+			#endregion /* GIF big letter File END */
 			
-			#region /*JPG small letter File*/
+			#region /* JPG small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.jpg")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.jpg", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*JPG small letter File END*/
+			#endregion /* JPG small letter File END */
 			
-			#region /*JPG big letter File*/
+			#region /* JPG big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.jpg")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.jpg", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*JPG big letter File END*/
+			#endregion /* JPG big letter File END */
 			
 			{
 				global.custom_foreground_secret = noone;
 			}
 			
-			#endregion /*Update Foreround secret custom level END*/
+			#endregion /* Update Foreround secret custom level END */
 			
-			#endregion /*Update All Backgrounds END*/
+			#endregion /* Update All Backgrounds END */
 			
-			#region /*Custom Level Tileset File*/
+			#region /* Custom Level Tileset File */
 			sprite_delete(global.custom_tileset);
 			
 			if (global.character_select_in_this_menu == "main_game")
@@ -2204,18 +2204,18 @@ and (iris_xscale <= 0.001)
 			{
 				global.custom_tileset = noone;
 			}
-			#endregion /*Custom Level Tileset File END*/
+			#endregion /* Custom Level Tileset File END */
 			
 			room_goto(room_leveleditor);
 		}
 		global.actually_play_edited_level = true;
 		global.play_edited_level = true;
 	}
-	#endregion /*Play Level Editor END*/
+	#endregion /* Play Level Editor END */
 	
 	else
 	
-	#region /*Make Level Editor*/
+	#region /* Make Level Editor */
 	if (menu == "level_editor_make")
 	and (global.character_select_in_this_menu == "level_editor")
 	{
@@ -2230,7 +2230,7 @@ and (iris_xscale <= 0.001)
 		{
 			sprite_delete(title_screen_background);
 			
-			#region /*Update All Backgrounds*/
+			#region /* Update All Backgrounds */
 			
 			sprite_delete(global.custom_background1);
 			sprite_delete(global.custom_background2);
@@ -2241,361 +2241,361 @@ and (iris_xscale <= 0.001)
 			sprite_delete(global.custom_foreground2);
 			sprite_delete(global.custom_foreground_secret);
 			
-			#region /*Update Background1*/
-			/*BMP small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.bmp")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
-			/*BMP big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.bmp")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.png")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.png")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.gif")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.gif")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.jpg")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.jpg")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			#region /* Update Background1 */
+			/* BMP small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.bmp")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
+			/* BMP big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.bmp")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.png")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.png")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.gif")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.gif")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.jpg")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background1.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.jpg")){global.custom_background1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background1.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
 			{
 				global.custom_background1 = noone;
 			}
-			#endregion /*Update Background1 END*/
+			#endregion /* Update Background1 END */
 			
-			#region /*Update Background2*/
-			/*BMP small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.bmp")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
-			/*BMP big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.bmp")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.png")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.png")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.gif")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.gif")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.jpg")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.jpg")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			#region /* Update Background2 */
+			/* BMP small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.bmp")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
+			/* BMP big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.bmp")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.png")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.png")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.gif")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.gif")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.jpg")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background2.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.jpg")){global.custom_background2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background2.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
 			{
 				global.custom_background2 = noone;
 			}
-			#endregion /*Update Background2 END*/
+			#endregion /* Update Background2 END */
 			
-			#region /*Update Background3*/
-			/*BMP small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.bmp")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
-			/*BMP big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.bmp")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.png")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.png")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.gif")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.gif")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.jpg")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.jpg")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			#region /* Update Background3 */
+			/* BMP small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.bmp")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
+			/* BMP big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.bmp")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.png")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.png")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.gif")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.gif")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.jpg")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background3.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.jpg")){global.custom_background3 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background3.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
 			{
 				global.custom_background3 = noone;
 			}
-			#endregion /*Update Background3 END*/
+			#endregion /* Update Background3 END */
 			
-			#region /*Update Background4 */
-			/*BMP small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.bmp")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
-			/*BMP big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.bmp")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.png")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*PNG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.png")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.gif")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*Gif (big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.gif")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG small letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.jpg")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
-			/*JPG big letter File*/if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.jpg")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			#region /* Update Background4 */
+			/* BMP small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.bmp")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_vtiled(0, true);}else
+			/* BMP big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.bmp")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.bmp", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.png")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* PNG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.png")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.png", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.gif")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* Gif (big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.gif")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.gif", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG small letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.jpg")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/background4.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
+			/* JPG big letter File */if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.jpg")){global.custom_background4 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Background4.jpg", 0, false, false, 0, 0);layer_background_htiled(0, true);layer_background_htiled(0, true);}else
 			{
 				global.custom_background4 = noone;
 			}
-			#endregion /*Update Background4 END*/
+			#endregion /* Update Background4 END */
 						
-			#region /*Update Foreground1*/
+			#region /* Update Foreground1 */
 			
-			#region /*BMP small letter File*/
+			#region /* BMP small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.bmp"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP small letter File END*/
+			#endregion /* BMP small letter File END */
 			
-			#region /*BMP big letter File*/
+			#region /* BMP big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.bmp"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP big letter File END*/
+			#endregion /* BMP big letter File END */
 			
-			#region /*PNG small letter File*/
+			#region /* PNG small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.png"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG small letter File END*/
+			#endregion /* PNG small letter File END */
 			
-			#region /*PNG big letter File*/
+			#region /* PNG big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.png"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG big letter File END*/
+			#endregion /* PNG big letter File END */
 			
-			#region /*GIF small letter File*/
+			#region /* GIF small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.gif"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF small letter File END*/
+			#endregion /* GIF small letter File END */
 			
-			#region /*GIF big letter File*/
+			#region /* GIF big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.gif"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF big letter File END*/
+			#endregion /* GIF big letter File END */
 			
-			#region /*JPG small letter File*/
+			#region /* JPG small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.jpg"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground1.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG small letter File END*/
+			#endregion /* JPG small letter File END */
 			
-			#region /*JPG big letter File*/
+			#region /* JPG big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.jpg"))
 			{
 				global.custom_foreground1 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground1.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG big letter File END*/
+			#endregion /* JPG big letter File END */
 			
 			{
 				global.custom_foreground1 = noone;
 			}
 			
-			#endregion /*Update Foreround1 END*/
+			#endregion /* Update Foreround1 END */
 			
-			#region /*Update Foreground above static objects custom level*/
+			#region /* Update Foreground above static objects custom level */
 			
-			#region /*BMP small letter File*/
+			#region /* BMP small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.bmp"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP small letter File END*/
+			#endregion /* BMP small letter File END */
 			
-			#region /*BMP big letter File*/
+			#region /* BMP big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.bmp"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP big letter File END*/
+			#endregion /* BMP big letter File END */
 			
-			#region /*PNG small letter File*/
+			#region /* PNG small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.png"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG small letter File END*/
+			#endregion /* PNG small letter File END */
 			
-			#region /*PNG big letter File*/
+			#region /* PNG big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.png"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG big letter File END*/
+			#endregion /* PNG big letter File END */
 			
-			#region /*GIF small letter File*/
+			#region /* GIF small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.gif"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF small letter File END*/
+			#endregion /* GIF small letter File END */
 			
-			#region /*GIF big letter File*/
+			#region /* GIF big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.gif"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF big letter File END*/
+			#endregion /* GIF big letter File END */
 			
-			#region /*JPG small letter File*/
+			#region /* JPG small letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.jpg"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_above_static_objects.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG small letter File END*/
+			#endregion /* JPG small letter File END */
 			
-			#region /*JPG big letter File*/
+			#region /* JPG big letter File */
 			if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.jpg"))
 			{
 				global.custom_foreground_above_static_objects = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_above_static_objects.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG big letter File END*/
+			#endregion /* JPG big letter File END */
 			
 			{
 				global.custom_foreground_above_static_objects = noone;
 			}
 	
-			#endregion /*Update Foreround above static objects custom level END*/
+			#endregion /* Update Foreround above static objects custom level END */
 			
-			#region /*Update Foreground2*/
+			#region /* Update Foreground2 */
 			
-			#region /*BMP small letter File*/
+			#region /* BMP small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.bmp")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP small letter File END*/
+			#endregion /* BMP small letter File END */
 			
-			#region /*BMP big letter File*/
+			#region /* BMP big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.bmp")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.bmp", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*BMP big letter File END*/
+			#endregion /* BMP big letter File END */
 			
-			#region /*PNG small letter File*/
+			#region /* PNG small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.png")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG small letter File END*/
+			#endregion /* PNG small letter File END */
 			
-			#region /*PNG big letter File*/
+			#region /* PNG big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.png")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.png", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*PNG big letter File END*/
+			#endregion /* PNG big letter File END */
 			
-			#region /*GIF small letter File*/
+			#region /* GIF small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.gif")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF small letter File END*/
+			#endregion /* GIF small letter File END */
 			
-			#region /*GIF big letter File*/
+			#region /* GIF big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.gif")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.gif", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*GIF big letter File END*/
+			#endregion /* GIF big letter File END */
 			
-			#region /*JPG small letter File*/
+			#region /* JPG small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.jpg")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground2.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG small letter File END*/
+			#endregion /* JPG small letter File END */
 			
-			#region /*JPG big letter File*/
+			#region /* JPG big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.jpg")
 			{
 				global.custom_foreground2 = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground2.jpg", image_speed, false, false, 0, 0);
 			}
 			else
-			#endregion /*JPG big letter File END*/
+			#endregion /* JPG big letter File END */
 			
 			{
 				global.custom_foreground2 = noone;
 			}
 			
-			#endregion /*Update Foreround2 END*/
+			#endregion /* Update Foreround2 END */
 			
-			#region /*Update Foreground secret custom level*/
+			#region /* Update Foreground secret custom level */
 			
-			#region /*BMP small letter File*/
+			#region /* BMP small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.bmp")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.bmp", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*BMP small letter File END*/
+			#endregion /* BMP small letter File END */
 			
-			#region /*BMP big letter File*/
+			#region /* BMP big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.bmp")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.bmp", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*BMP big letter File END*/
+			#endregion /* BMP big letter File END */
 			
-			#region /*PNG small letter File*/
+			#region /* PNG small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.png")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.png", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*PNG small letter File END*/
+			#endregion /* PNG small letter File END */
 			
-			#region /*PNG big letter File*/
+			#region /* PNG big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.png")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.png", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*PNG big letter File END*/
+			#endregion /* PNG big letter File END */
 			
-			#region /*GIF small letter File*/
+			#region /* GIF small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.gif")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.gif", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*GIF small letter File END*/
+			#endregion /* GIF small letter File END */
 			
-			#region /*GIF big letter File*/
+			#region /* GIF big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.gif")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.gif", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*GIF big letter File END*/
+			#endregion /* GIF big letter File END */
 			
-			#region /*JPG small letter File*/
+			#region /* JPG small letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.jpg")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/foreground_secret.jpg", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*JPG small letter File END*/
+			#endregion /* JPG small letter File END */
 			
-			#region /*JPG big letter File*/
+			#region /* JPG big letter File */
 			if file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.jpg")
 			{
 				global.custom_foreground_secret = sprite_add(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/Foreground_secret.jpg", image_speed, false, false, 0, 0);
 				sprite_collision_mask(global.custom_foreground_secret, false, 0, 0, 0, 0, 0, bboxkind_precise, 25);
 			}
 			else
-			#endregion /*JPG big letter File END*/
+			#endregion /* JPG big letter File END */
 			
 			{
 				global.custom_foreground_secret = noone;
 			}
 			
-			#endregion /*Update Foreround secret custom level END*/
+			#endregion /* Update Foreround secret custom level END */
 			
-			#endregion /*Update All Backgrounds END*/
+			#endregion /* Update All Backgrounds END */
 			
-			#region /*Custom Level Tileset File*/
+			#region /* Custom Level Tileset File */
 			sprite_delete(global.custom_tileset);
 			
 			if (global.character_select_in_this_menu == "main_game")
@@ -2613,18 +2613,18 @@ and (iris_xscale <= 0.001)
 			{
 				global.custom_tileset = noone;
 			}
-			#endregion /*Custom Level Tileset File END*/
+			#endregion /* Custom Level Tileset File END */
 			
 			room_goto(room_leveleditor);
 		}
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 	}
-	#endregion /*Make Level Editor END*/
+	#endregion /* Make Level Editor END */
 	
 	else
 	
-	#region /*Load File*/
+	#region /* Load File */
 	if (menu == "select_character")
 	or (menu == "back_from_character_select")
 	{
@@ -2642,14 +2642,14 @@ and (iris_xscale <= 0.001)
 			room_goto(room_world_map);
 		}
 	}
-	#endregion /*Load File END*/
+	#endregion /* Load File END */
 
 }
-#endregion /*Start Game END*/
+#endregion /* Start Game END */
 
 else
 
-#region /*Back*/
+#region /* Back */
 if (key_b_pressed)
 {
 	if (menu == "1player")
@@ -2672,9 +2672,9 @@ if (key_b_pressed)
 		}
 	}
 }
-#endregion /*Back END*/
+#endregion /* Back END */
 
-#region /*Menu Navigation Delay*/
+#region /* Menu Navigation Delay */
 if (menu_delay > 0)
 {
 	menu_delay -= 1;
@@ -2683,9 +2683,9 @@ if (menu_delay < 0)
 {
 	menu_delay = 0;
 }
-#endregion /*Menu Navigation Delay END*/
+#endregion /* Menu Navigation Delay END */
 
-#region /*If player object is present, destroy the player object*/
+#region /* If player object is present, destroy the player object */
 if (instance_exists(obj_player))
 {
 	with(obj_player)
@@ -2693,23 +2693,23 @@ if (instance_exists(obj_player))
 		instance_destroy();
 	}
 }
-#endregion /*If player object is present, destroy the player object END*/
+#endregion /* If player object is present, destroy the player object END */
 
 scr_menu_navigation_with_joystick_delay();
 
-#region /*Have a black screen at the first frame so transitions look natural*/
+#region /* Have a black screen at the first frame so transitions look natural */
 if (black_screen_at_start_delay < 1)
 {
 	draw_rectangle_color(0, 0, display_get_gui_width()* 3, display_get_gui_height()* 3, c_black, c_black, c_black, c_black, false);
 	black_screen_at_start_delay += 1;
 }
-#endregion /*Have a black screen at the first frame so transitions look natural END*/
+#endregion /* Have a black screen at the first frame so transitions look natural END */
 
 scr_draw_darken_screen_when_window_is_unfocused();
 
-#region /*Draw Iris Transitions*/
+#region /* Draw Iris Transitions */
 
-#region /*Iris Zooming*/
+#region /* Iris Zooming */
 if (menu_delay > 999)
 {
 	if (iris_zoom == 1)
@@ -2734,7 +2734,7 @@ if (menu_delay > 999)
 
 else
 
-#region /*Zoom Out*/
+#region /* Zoom Out */
 if (iris_zoom == 0)
 {
 	iris_xscale = lerp(iris_xscale, 1, 0.15);
@@ -2753,11 +2753,11 @@ else
 		iris_zoom = 1;
 	}
 }
-#endregion /*Zoom Out END*/
+#endregion /* Zoom Out END */
 
-#endregion /*Iris Zooming END*/
+#endregion /* Iris Zooming END */
 
-#region /*Loading Screen*/
+#region /* Loading Screen */
 if (menu == "load_custom_level")
 or (menu == "load_characters")
 or (menu == "load_official_level_template")
@@ -2767,7 +2767,7 @@ or (menu == "load_official_level_template")
 	scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 +64, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
 	scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 +64 + 32, string(file_found), global.default_text_size, c_white, c_black, 1);
 }
-#endregion /*Loading Screen END*/
+#endregion /* Loading Screen END */
 
 if (global.enable_transitions == true)
 {
@@ -2783,4 +2783,4 @@ if (global.enable_transitions == true)
 		draw_rectangle_color(0, display_get_gui_height() / 2 + iris_yscale * 128, display_get_gui_width()* 2, display_get_gui_height()* 2, c_black, c_black, c_black, c_black, false);
 	}
 }
-#endregion /*Draw Iris Transitions END*/
+#endregion /* Draw Iris Transitions END */

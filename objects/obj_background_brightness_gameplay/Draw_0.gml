@@ -1,4 +1,4 @@
-#region /*Background Brightness in Gameplay Options*/
+#region /* Background Brightness in Gameplay Options */
 if (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 {
@@ -17,4 +17,4 @@ and (!instance_exists(obj_title))
 		draw_set_alpha(1);
 	}
 }
-#endregion /*Background Brightness in Gameplay Options END*/
+#endregion /* Background Brightness in Gameplay Options END */

@@ -11,9 +11,9 @@
 function scr_key_initialize(key, hold0_press1_release2, which_player, this_player_key, this_player_key2, this_player_gamepad_button, this_player_gamepad_button2)
 {
 	
-	#region /*Mouse*/
+	#region /* Mouse */
 	
-	#region /*Mouse 1*/
+	#region /* Mouse 1 */
 	if (this_player_key = mouse_button_value.mb_left)
 	{
 		if (hold0_press1_release2 = 0)
@@ -117,9 +117,9 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	{
 		var key_mouse = noone;
 	}
-	#endregion /*Mouse 1 END*/
+	#endregion /* Mouse 1 END */
 	
-	#region /*Mouse 2*/
+	#region /* Mouse 2 */
 	if (this_player_key2 = mouse_button_value.mb_left)
 	{
 		if (hold0_press1_release2 = 0)
@@ -223,9 +223,9 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	{
 		var key2_mouse = noone;
 	}
-	#endregion /*Mouse 2 END*/
+	#endregion /* Mouse 2 END */
 	
-	#endregion /*Mouse END*/
+	#endregion /* Mouse END */
 	
 	var key_other =
 	(hold0_press1_release2 = 0)

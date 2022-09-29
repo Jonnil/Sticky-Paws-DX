@@ -5,7 +5,7 @@ and (sprite_index = spr_bucket)
 	{
 		sprite_index = spr_bucket_clothes;
 	}
-	#region /* 1 Basic Collectible*/
+	#region /* 1 Basic Collectible */
 	if (item_inside = "none")
 	{
 		if (asset_get_type("obj_coin") == asset_object)
@@ -18,9 +18,9 @@ and (sprite_index = spr_bucket)
 			}
 		}
 	}
-	#endregion /* 1 Basic Collectible END*/
+	#endregion /* 1 Basic Collectible END */
 	
-	#region /* 8 Basic Collectibles*/
+	#region /* 8 Basic Collectibles */
 	if (item_inside = "8_basic_collectibles")
 	{
 		if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -89,9 +89,9 @@ and (sprite_index = spr_bucket)
 			}
 		}
 	}
-	#endregion /* 8 Basic Collectibles END*/
+	#endregion /* 8 Basic Collectibles END */
 		
-		#region /*Heart Balloon*/
+		#region /* Heart Balloon */
 		if (item_inside = "heart_balloon")
 		{
 			if (asset_get_type("obj_heart_balloon") == asset_object)
@@ -103,9 +103,9 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*Heart Balloon END*/
+		#endregion /* Heart Balloon END */
 		
-		#region /* 1-up*/
+		#region /* 1-up */
 		if (item_inside = "1-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -118,9 +118,9 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /* 1-up END*/
+		#endregion /* 1-up END */
 		
-		#region /* 2-up*/
+		#region /* 2-up */
 		if (item_inside = "2-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -133,9 +133,9 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /* 2-up END*/
+		#endregion /* 2-up END */
 		
-		#region /* 3-up*/
+		#region /* 3-up */
 		if (item_inside = "3-up")
 		{
 			if (asset_get_type("obj_extra_life_pickup") == asset_object)
@@ -148,9 +148,9 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /* 3-up END*/
+		#endregion /* 3-up END */
 		
-		#region /*Big Collectible 1*/
+		#region /* Big Collectible 1 */
 		if (item_inside = "big_collectible_1")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -164,9 +164,9 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*Big Collectible 1 END*/
+		#endregion /* Big Collectible 1 END */
 		
-		#region /*Big Collectible 2*/
+		#region /* Big Collectible 2 */
 		if (item_inside = "big_collectible_2")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -180,9 +180,9 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*Big Collectible 2 END*/
+		#endregion /* Big Collectible 2 END */
 		
-		#region /*Big Collectible 3*/
+		#region /* Big Collectible 3 */
 		if (item_inside = "big_collectible_3")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -196,9 +196,9 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*Big Collectible 3 END*/
+		#endregion /* Big Collectible 3 END */
 		
-		#region /*Big Collectible 4 */
+		#region /* Big Collectible 4 */
 		if (item_inside = "big_collectible_4")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -212,9 +212,9 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*Big Collectible 4 END*/
+		#endregion /* Big Collectible 4 END */
 		
-		#region /*Big Collectible 5*/
+		#region /* Big Collectible 5 */
 		if (item_inside = "big_collectible_5")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
@@ -228,9 +228,9 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*Big Collectible 5 END*/
+		#endregion /* Big Collectible 5 END */
 		
-		#region /*Invincibility Powerup*/
+		#region /* Invincibility Powerup */
 		if (item_inside = "invincibility_powerup")
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
@@ -242,7 +242,7 @@ and (sprite_index = spr_bucket)
 				}
 			}
 		}
-		#endregion /*Invincibility Powerup END*/
+		#endregion /* Invincibility Powerup END */
 	
 }
 with(other)

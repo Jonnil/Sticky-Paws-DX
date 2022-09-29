@@ -1,4 +1,4 @@
-/*Collision Event with a solid object*/
+/* Collision Event with a solid object */
 
 if (position_meeting(x, bbox_bottom + 1, other))
 or (position_meeting(x, bbox_bottom + 2, other))
@@ -19,13 +19,13 @@ or (position_meeting(bbox_right, bbox_bottom + 4, other))
 	}
 }
 
-#region /*Landing on solid object*/
+#region /* Landing on solid object */
 if (position_meeting(x, bbox_bottom + 1, other))
 or (position_meeting(bbox_left, bbox_bottom + 1, other))
 or (position_meeting(bbox_right, bbox_bottom + 1, other))
 {
 	
-	#region /*Smoke Landing Effect*/
+	#region /* Smoke Landing Effect */
 	if (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_camera))
 	and (obj_camera.iris_xscale > 1)
@@ -62,7 +62,7 @@ or (position_meeting(bbox_right, bbox_bottom + 1, other))
 			}
 		}
 	}
-	#endregion /*Smoke Landing Effect END*/
+	#endregion /* Smoke Landing Effect END */
 	
 	if (vspeed >= 0)
 	{
@@ -70,4 +70,4 @@ or (position_meeting(bbox_right, bbox_bottom + 1, other))
 		gravity = 0;
 	}
 }
-#endregion /*Landing on solid object END*/
+#endregion /* Landing on solid object END */

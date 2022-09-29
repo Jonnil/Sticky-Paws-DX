@@ -1,52 +1,52 @@
 scr_zoom_camera_controls();
 
-#region /*Arcade Credit Increase*/
+#region /* Arcade Credit Increase */
 if (mouse_wheel_up())
 {
 	global.arcade_credit += 1;
 }
-#endregion /*Arcade Credit Increase END*/
+#endregion /* Arcade Credit Increase END */
 
-#region /*Stop gamepad vibration for player 1*/
+#region /* Stop gamepad vibration for player 1 */
 if (player1_vibration_active = false)
 {
 	player1_motor_speed = lerp(player1_motor_speed, 0, 0.1);
 }
 gamepad_set_vibration(0, player1_motor_speed, player1_motor_speed);
-#endregion /*Stop gamepad vibration for player 1 END*/
+#endregion /* Stop gamepad vibration for player 1 END */
 
-#region /*Stop gamepad vibration for player 2*/
+#region /* Stop gamepad vibration for player 2 */
 if (player2_vibration_active = false)
 {
 	player2_motor_speed = lerp(player2_motor_speed, 0, 0.1);
 }
 gamepad_set_vibration(1, player2_motor_speed, player2_motor_speed);
-#endregion /*Stop gamepad vibration for player 2 END*/
+#endregion /* Stop gamepad vibration for player 2 END */
 
-#region /*Stop gamepad vibration for player 3*/
+#region /* Stop gamepad vibration for player 3 */
 if (player3_vibration_active = false)
 {
 	player3_motor_speed = lerp(player3_motor_speed, 0, 0.1);
 }
 gamepad_set_vibration(2, player3_motor_speed, player3_motor_speed);
-#endregion /*Stop gamepad vibration for player 3 END*/
+#endregion /* Stop gamepad vibration for player 3 END */
 
-#region /*Stop gamepad vibration for player 4*/
+#region /* Stop gamepad vibration for player 4 */
 if (player4_vibration_active = false)
 {
 	player4_motor_speed = lerp(player4_motor_speed, 0, 0.1);
 }
 gamepad_set_vibration(3, player4_motor_speed, player4_motor_speed);
-#endregion /*Stop gamepad vibration for player 4 END*/
+#endregion /* Stop gamepad vibration for player 4 END */
 
 view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) / 2);
 view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) / 2);
 
-#region /*Deactivate instances outside view*/
+#region /* Deactivate instances outside view */
 if (delay = 2)
 {
 	instance_activate_all();
-	if (global.deactivate_objects_outsiede_view = true) /*This global variable is for debug purposes, and should always be set to true when playing the game normally*/
+	if (global.deactivate_objects_outsiede_view = true) /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
 	{
 		instance_deactivate_region(view_x_center - 1000, view_y_center - 1000, 2000, 2000, false, true);
 	}
@@ -55,9 +55,9 @@ else
 {
 	delay += 1;
 }
-#endregion /*Deactivate instances outside view END*/
+#endregion /* Deactivate instances outside view END */
 
-#region /*Activate objects that always should be active*/
+#region /* Activate objects that always should be active */
 if (asset_get_type("obj_level_player_1_start") == asset_object)
 {
 	instance_activate_object(obj_level_player_1_start);
@@ -126,16 +126,16 @@ if (asset_get_type("obj_title") == asset_object)
 {
 	instance_activate_object(obj_title);
 }
-#endregion /*Activate objects that always should be active END*/
+#endregion /* Activate objects that always should be active END */
 
-#region /*Make sure the lives counter never goes below 0*/
+#region /* Make sure the lives counter never goes below 0 */
 if (lives < 0)
 {
 	lives = 0;
 }
-#endregion /*Make sure the lives counter never goes below 0 END*/
+#endregion /* Make sure the lives counter never goes below 0 END */
 
-#region /*Spawn Players in multiplayer*/
+#region /* Spawn Players in multiplayer */
 if (instance_exists(obj_player))
 and (global.pause == false)
 and (global.goal_active = false)
@@ -269,7 +269,7 @@ and (!instance_exists(obj_title))
 		}
 	}
 }
-#endregion /*Spawn Players in multiplayer END*/
+#endregion /* Spawn Players in multiplayer END */
 
 if (save_level_as_png = false)
 {
@@ -283,7 +283,7 @@ if (save_level_as_png = false)
 	x = lerp(x, xx, 0.1);
 	y = lerp(y, yy, 0.1);
 	
-	#region /*World Map Camera*/
+	#region /* World Map Camera */
 	if (asset_get_type("obj_player_map") == asset_object)
 	and (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_player_map))
@@ -291,11 +291,11 @@ if (save_level_as_png = false)
 		xx = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).x;
 		yy = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).y;
 	}
-	#endregion /*World Map Camera END*/
+	#endregion /* World Map Camera END */
 	
 	else
 	
-	#region /*Boss Battle Camera*/
+	#region /* Boss Battle Camera */
 	if (asset_get_type("obj_player") == asset_object)
 	and (asset_get_type("obj_boss") == asset_object)
 	and (instance_exists(obj_player))
@@ -347,18 +347,18 @@ if (save_level_as_png = false)
 			}
 		}
 	}
-	#endregion /*Boss Battle Camera END*/
+	#endregion /* Boss Battle Camera END */
 	
 	else
 	
-	#region /*MULTIPLAYER CAMERA*/
+	#region /* MULTIPLAYER CAMERA */
 	if (asset_get_type("obj_player") == asset_object)
 	and (asset_get_type("obj_camera") == asset_object)
 	and (instance_number(obj_player) >= 1)
 	and (global.player_has_entered_goal == false)
 	{
 		
-		#region /*Camera should follow multiple players*/
+		#region /* Camera should follow multiple players */
 		
 		/* 1, 2, 3, 4 */
 		if (player1 > 0)
@@ -380,7 +380,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/* 1, 2, 3*/
+		/* 1, 2, 3 */
 		if (player1 > 0)
 		and (instance_exists(player1))
 		and (player1.partner_character = false)
@@ -397,7 +397,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/* 1, 2*/
+		/* 1, 2 */
 		if (player1 > 0)
 		and (instance_exists(player1))
 		and (player1.partner_character = false)
@@ -411,7 +411,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/* 1, 3*/
+		/* 1, 3 */
 		if (player1 > 0)
 		and (instance_exists(player1))
 		and (player1.partner_character = false)
@@ -439,7 +439,7 @@ if (save_level_as_png = false)
 		
 		else
 		
-		/* 2, 3*/
+		/* 2, 3 */
 		if (player2 > 0)
 		and (instance_exists(player2))
 		and (player2.partner_character = false)
@@ -478,20 +478,20 @@ if (save_level_as_png = false)
 			xx = mean(player3.x, player4.x);
 			yy = mean(player3.y, player4.y);
 		}
-		#endregion /*Camera should follow multiple players END*/
+		#endregion /* Camera should follow multiple players END */
 		
 		else
 		
-		#region /*Follow one player. In case something goes wrong, camera will always follow one player*/
-		/* 1*/
+		#region /* Follow one player. In case something goes wrong, camera will always follow one player */
+		/* 1 */
 		if (player1 > 0)
 		and (instance_exists(player1))
 		and (player1.partner_character = false)
 		{
 			
-			#region /*ONE PLAYER CAMERA*/
+			#region /* ONE PLAYER CAMERA */
 			
-			#region /*Tries to be a bit ahead of player*/
+			#region /* Tries to be a bit ahead of player */
 			xx = player1.x + player1.hspeed * 15;
 			if (player1.on_ground = true)
 			and (player1.vspeed >= 0)
@@ -512,9 +512,9 @@ if (save_level_as_png = false)
 			{
 				yy = player1.y;
 			}
-			#endregion /*Tries to be a bit ahead of player END*/
+			#endregion /* Tries to be a bit ahead of player END */
 			
-			#region /*Follow Player in y position when doing specific things*/
+			#region /* Follow Player in y position when doing specific things */
 			if (player1.in_water = true)
 			or (player1.stick_to_wall = true)
 			or (player1.spring = true)
@@ -529,25 +529,25 @@ if (save_level_as_png = false)
 					}
 				}
 			}
-			#endregion /*Follow Player in y position when doing specific things END*/
+			#endregion /* Follow Player in y position when doing specific things END */
 			
 			view_wview_lerp = lerp(view_wview_lerp, 0, 0.1);
 			view_hview_lerp = lerp(view_hview_lerp, 0, 0.1);
-			#endregion /*ONE PLAYER CAMERA END*/
+			#endregion /* ONE PLAYER CAMERA END */
 			
 		}
 		
 		else
 		
-		/* 2*/
+		/* 2 */
 		if (player2 > 0)
 		and (instance_exists(player2))
 		and (player2.partner_character = false)
 		{
 			
-			#region /*ONE PLAYER CAMERA*/
+			#region /* ONE PLAYER CAMERA */
 			
-			#region /*Tries to be a bit ahead of player*/
+			#region /* Tries to be a bit ahead of player */
 			xx = player2.x + player2.hspeed * 15;
 			if (player2.on_ground = true)
 			and (player2.vspeed >= 0)
@@ -568,9 +568,9 @@ if (save_level_as_png = false)
 			{
 				yy = player2.y;
 			}
-			#endregion /*Tries to be a bit ahead of player END*/
+			#endregion /* Tries to be a bit ahead of player END */
 			
-			#region /*Follow Player in y position when doing specific things*/
+			#region /* Follow Player in y position when doing specific things */
 			if (player2.in_water = true)
 			or (player2.stick_to_wall = true)
 			or (player2.spring = true)
@@ -585,25 +585,25 @@ if (save_level_as_png = false)
 					}
 				}
 			}
-			#endregion /*Follow Player in y position when doing specific things END*/
+			#endregion /* Follow Player in y position when doing specific things END */
 			
 			view_wview_lerp = lerp(view_wview_lerp, 0, 0.1);
 			view_hview_lerp = lerp(view_hview_lerp, 0, 0.1);
-			#endregion /*ONE PLAYER CAMERA END*/
+			#endregion /* ONE PLAYER CAMERA END */
 			
 		}
 		
 		else
 		
-		/* 3*/
+		/* 3 */
 		if (player3 > 0)
 		and (instance_exists(player3))
 		and (player3.partner_character = false)
 		{
 			
-			#region /*ONE PLAYER CAMERA*/
+			#region /* ONE PLAYER CAMERA */
 			
-			#region /*Tries to be a bit ahead of player*/
+			#region /* Tries to be a bit ahead of player */
 			xx = player3.x + player3.hspeed * 15;
 			if (player3.on_ground = true)
 			and (player3.vspeed >= 0)
@@ -624,9 +624,9 @@ if (save_level_as_png = false)
 			{
 				yy = player3.y;
 			}
-			#endregion /*Tries to be a bit ahead of player END*/
+			#endregion /* Tries to be a bit ahead of player END */
 			
-			#region /*Follow Player in y position when doing specific things*/
+			#region /* Follow Player in y position when doing specific things */
 			if (player3.in_water = true)
 			or (player3.stick_to_wall = true)
 			or (player3.spring = true)
@@ -641,11 +641,11 @@ if (save_level_as_png = false)
 					}
 				}
 			}
-			#endregion /*Follow Player in y position when doing specific things END*/
+			#endregion /* Follow Player in y position when doing specific things END */
 			
 			view_wview_lerp = lerp(view_wview_lerp, 0, 0.1);
 			view_hview_lerp = lerp(view_hview_lerp, 0, 0.1);
-			#endregion /*ONE PLAYER CAMERA END*/
+			#endregion /* ONE PLAYER CAMERA END */
 			
 		}
 		
@@ -657,9 +657,9 @@ if (save_level_as_png = false)
 		and (player4.partner_character = false)
 		{
 			
-			#region /*ONE PLAYER CAMERA*/
+			#region /* ONE PLAYER CAMERA */
 			
-			#region /*Tries to be a bit ahead of player*/
+			#region /* Tries to be a bit ahead of player */
 			xx = player4.x + player4.hspeed * 15;
 			if (player4.on_ground = true)
 			and (player4.vspeed >= 0)
@@ -680,9 +680,9 @@ if (save_level_as_png = false)
 			{
 				yy = player4.y;
 			}
-			#endregion /*Tries to be a bit ahead of player END*/
+			#endregion /* Tries to be a bit ahead of player END */
 			
-			#region /*Follow Player in y position when doing specific things*/
+			#region /* Follow Player in y position when doing specific things */
 			if (player4.in_water = true)
 			or (player4.stick_to_wall = true)
 			or (player4.spring = true)
@@ -697,25 +697,25 @@ if (save_level_as_png = false)
 					}
 				}
 			}
-			#endregion /*Follow Player in y position when doing specific things END*/
+			#endregion /* Follow Player in y position when doing specific things END */
 			
 			view_wview_lerp = lerp(view_wview_lerp, 0, 0.1);
 			view_hview_lerp = lerp(view_hview_lerp, 0, 0.1);
-			#endregion /*ONE PLAYER CAMERA END*/
+			#endregion /* ONE PLAYER CAMERA END */
 			
 		}
 		
 		else
 		
-		/*nothing*/
+		/* nothing */
 		{
 			xx = x;
 			yy = y;
 		}
-		#endregion /*Follow one player. In case something goes wrong, camera will always follow one player END*/
+		#endregion /* Follow one player. In case something goes wrong, camera will always follow one player END */
 		
-		#region /*Zoom out the view when players are going outside view*/
-		/*if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
+		#region /* Zoom out the view when players are going outside view */
+		/* if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
 		and (fps_real >= global.max_fps)
 		or (instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
 		and (fps_real >= global.max_fps)
@@ -742,15 +742,15 @@ if (save_level_as_png = false)
 		{
 			view_wview_lerp = lerp(view_wview_lerp, 0, 0.005);
 			view_hview_lerp = lerp(view_hview_lerp, 0, 0.005);
-		}*/
-		#endregion /*Zoom out the view when players are going outside view END*/
+		} */
+		#endregion /* Zoom out the view when players are going outside view END */
 		
 	}
-	#endregion /*MULTIPLAYER CAMERA*/
+	#endregion /* MULTIPLAYER CAMERA */
 	
 	else
 	
-	#region /*Camera when you win level*/
+	#region /* Camera when you win level */
 	if (global.player_has_entered_goal = true)
 	and (asset_get_type("obj_goal") == asset_object)
 	and (instance_exists(obj_goal))
@@ -760,15 +760,15 @@ if (save_level_as_png = false)
 		xx = mean(instance_nearest(obj_goal.x, obj_goal.y, obj_player).x, obj_goal.x);
 		yy = mean(instance_nearest(obj_goal.x, obj_goal.y, obj_player).y, obj_goal.y);
 	}
-	#endregion /*Camera when you win level END*/
+	#endregion /* Camera when you win level END */
 	
-	#region /*Iris*/
+	#region /* Iris */
 	if (allow_iris = true)
 	and (asset_get_type("obj_player_map") == asset_object)
 	and (!instance_exists(obj_player_map))
 	{
 		
-		#region /*Zoom In Player Goal*/
+		#region /* Zoom In Player Goal */
 		if (asset_get_type("obj_player") == asset_object)
 		and (asset_get_type("obj_goal") == asset_object)
 		and (instance_exists(obj_player))
@@ -795,9 +795,9 @@ if (save_level_as_png = false)
 				}
 			}
 		}
-		#endregion /*Zoom In Player Goal END*/
+		#endregion /* Zoom In Player Goal END */
 
-		#region /*Zoom In Player Map*/
+		#region /* Zoom In Player Map */
 		else
 		if (asset_get_type("obj_player_map") == asset_object)
 		and (instance_exists(obj_player_map))
@@ -822,11 +822,11 @@ if (save_level_as_png = false)
 				}
 			}
 		}
-		#endregion /*Zoom In Player Map END*/
+		#endregion /* Zoom In Player Map END */
 		
 		else
 		
-		#region /*Zoom Out*/
+		#region /* Zoom Out */
 		if (iris_zoom == 0)
 		{
 			iris_xscale = lerp(iris_xscale, 1, 0.15);
@@ -845,9 +845,9 @@ if (save_level_as_png = false)
 				iris_zoom = 1;
 			}
 		}
-		#endregion /*Zoom Out END*/
+		#endregion /* Zoom Out END */
 
 	}
-	#endregion /*Iris END*/
+	#endregion /* Iris END */
 	
 }

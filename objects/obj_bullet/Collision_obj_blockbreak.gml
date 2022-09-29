@@ -1,4 +1,4 @@
-/*Collision Event with player object*/
+/* Collision Event with player object */
 if (die = false)
 {
 	if (die_volting = false)
@@ -38,9 +38,9 @@ if (die = false)
 		
 		scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);
 		
-		#region /*Rewards*/
+		#region /* Rewards */
 		
-		#region /* 1 Coin*/
+		#region /* 1 Coin */
 		if (asset_get_type("obj_basic_collectible") == asset_object)
 		{
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -50,9 +50,9 @@ if (die = false)
 				bounceup = true;
 			}
 		}
-		#endregion /* 1 Coin END*/
+		#endregion /* 1 Coin END */
 		
-		#region /* 200 Score*/
+		#region /* 200 Score */
 		score += 200;
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
@@ -61,9 +61,9 @@ if (die = false)
 				scoreup = 200;
 			}
 		}
-		#endregion /* 200 Score END*/
+		#endregion /* 200 Score END */
 		
-		#endregion /*Rewards END*/
+		#endregion /* Rewards END */
 		
 		audio_sound_pitch(snd_stomp, 1);
 		scr_audio_play(snd_stomp, volume_source.sound);

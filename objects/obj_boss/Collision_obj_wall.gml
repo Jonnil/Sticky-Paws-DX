@@ -1,4 +1,4 @@
-/*________________________________Collision Event with a solid object________________________________*/
+/* ________________________________Collision Event with a solid object________________________________ */
 if (die = false)
 {
 	while (place_meeting(x, y, other))

@@ -14,8 +14,8 @@ function scr_virtual_keys()
 	var mobile_key_zoom_in_y = + 100;
 	var mobile_key_extra_deadzone = 50;
 	
-	#region /*Virtual Key, iOS and Android*/
-	if (os_type = os_ios)
+	#region /* Virtual Key, iOS and Android */
+	if (os_type == os_ios)
 	or (os_type = os_android)
 	or (global.show_virtual_controls = true)
 	{
@@ -81,9 +81,9 @@ function scr_virtual_keys()
 					draw_sprite_ext(spr_virtual_joystick_stick, 0, obj_virtual_joystick.xx + obj_virtual_joystick.var_x_dir_gui, obj_virtual_joystick.yy + obj_virtual_joystick.var_y_dir_gui, obj_virtual_joystick.var_screen_size, obj_virtual_joystick.var_screen_size, 0, c_white, 0.5);
 				}
 				
-				#region /*Virtual key add*/
+				#region /* Virtual key add */
 				
-				#region /*Virtual key add jump*/
+				#region /* Virtual key add jump */
 				if (global.player1_key_jump > noone)
 				{
 					virtual_key_add(mobile_key_jump_x - 128 - mobile_key_extra_deadzone, mobile_key_jump_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key_jump);
@@ -93,9 +93,9 @@ function scr_virtual_keys()
 				{
 					virtual_key_add(mobile_key_jump_x - 128 - mobile_key_extra_deadzone, mobile_key_jump_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key2_jump);
 				}
-				#endregion /*Virtual key add jump END*/
+				#endregion /* Virtual key add jump END */
 				
-				#region /*Virtual key add crouch */
+				#region /* Virtual key add crouch */
 				if (global.player1_key_crouch > noone)
 				{
 					virtual_key_add(mobile_key_crouch_x - 128 - mobile_key_extra_deadzone, mobile_key_crouch_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key_crouch);
@@ -105,9 +105,9 @@ function scr_virtual_keys()
 				{
 					virtual_key_add(mobile_key_crouch_x - 128 - mobile_key_extra_deadzone, mobile_key_crouch_x - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key2_crouch);
 				}
-				#endregion /*Virtual key add crouch END*/
+				#endregion /* Virtual key add crouch END */
 				
-				#region /*Virtual key add sprint*/
+				#region /* Virtual key add sprint */
 				if (global.player1_key_sprint > noone)
 				{
 					virtual_key_add(mobile_key_sprint_x - 128 - mobile_key_extra_deadzone, mobile_key_sprint_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key_sprint);
@@ -117,9 +117,9 @@ function scr_virtual_keys()
 				{
 					virtual_key_add(mobile_key_sprint_x - 128 - mobile_key_extra_deadzone, mobile_key_sprint_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key2_sprint);
 				}
-				#endregion /*Virtual key add sprint END*/
+				#endregion /* Virtual key add sprint END */
 				
-				#region /*Virtual key add dive*/
+				#region /* Virtual key add dive */
 				if (global.player1_key_dive > noone)
 				{
 					virtual_key_add(mobile_key_sprint_x - 128 - mobile_key_extra_deadzone, mobile_key_sprint_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key_dive);
@@ -129,9 +129,9 @@ function scr_virtual_keys()
 				{
 					virtual_key_add(mobile_key_sprint_x - 128 - mobile_key_extra_deadzone, mobile_key_sprint_y - 128 - mobile_key_extra_deadzone, 256 + (mobile_key_extra_deadzone * 2), 256 + (mobile_key_extra_deadzone * 2), global.player1_key2_dive);
 				}
-				#endregion /*Virtual key add dive END*/
+				#endregion /* Virtual key add dive END */
 				
-				#endregion /*Virtual key add END*/
+				#endregion /* Virtual key add END */
 				
 				if (keyboard_check(global.player1_key_jump))
 				or (keyboard_check(global.player1_key2_jump))
@@ -180,8 +180,8 @@ function scr_virtual_keys()
 					}
 				}
 			
-				#region /*Pause virtual key*/
-				virtual_key_add(mobile_key_pause_x - 64, mobile_key_pause_y - 64, 128, 128, vk_escape); /*Virtual key add pause*/
+				#region /* Pause virtual key */
+				virtual_key_add(mobile_key_pause_x - 64, mobile_key_pause_y - 64, 128, 128, vk_escape); /* Virtual key add pause */
 				if (keyboard_check(vk_escape))
 				{
 					draw_sprite_ext(spr_virtual_key_pause, 0, mobile_key_pause_x, mobile_key_pause_y, 1.95, 1.95, 0, c_gray, 0.5);
@@ -190,10 +190,10 @@ function scr_virtual_keys()
 				{
 					draw_sprite_ext(spr_virtual_key_pause, 0, mobile_key_pause_x, mobile_key_pause_y, 2, 2, 0, c_white, 0.5);
 				}
-				#endregion /*Pause virtual key END*/
+				#endregion /* Pause virtual key END */
 				
-				#region /*Zoom out virtual key*/
-				virtual_key_add(mobile_key_zoom_out_x - 64, mobile_key_zoom_out_y - 64, 128, 128, vk_subtract); /*Virtual key add zoom out*/
+				#region /* Zoom out virtual key */
+				virtual_key_add(mobile_key_zoom_out_x - 64, mobile_key_zoom_out_y - 64, 128, 128, vk_subtract); /* Virtual key add zoom out */
 				if (keyboard_check(vk_subtract))
 				{
 					draw_sprite_ext(spr_virtual_key_zoom_out, 0, mobile_key_zoom_out_x, mobile_key_zoom_out_y, 1.95, 1.95, 0, c_gray, 0.5);
@@ -202,10 +202,10 @@ function scr_virtual_keys()
 				{
 					draw_sprite_ext(spr_virtual_key_zoom_out, 0, mobile_key_zoom_out_x, mobile_key_zoom_out_y, 2, 2, 0, c_white, 0.5);
 				}
-				#endregion /*Zoom out virtual key END*/
+				#endregion /* Zoom out virtual key END */
 				
-				#region /*Zoom in virtual key*/
-				virtual_key_add(mobile_key_zoom_in_x - 64, mobile_key_zoom_in_y - 64, 128, 128, vk_add); /*Virtual key add zoom in*/
+				#region /* Zoom in virtual key */
+				virtual_key_add(mobile_key_zoom_in_x - 64, mobile_key_zoom_in_y - 64, 128, 128, vk_add); /* Virtual key add zoom in */
 				if (keyboard_check(vk_add))
 				{
 					draw_sprite_ext(spr_virtual_key_zoom_in, 0, mobile_key_zoom_in_x, mobile_key_zoom_in_y, 1.95, 1.95, 0, c_gray, 0.5);
@@ -214,11 +214,11 @@ function scr_virtual_keys()
 				{
 					draw_sprite_ext(spr_virtual_key_zoom_in, 0, mobile_key_zoom_in_x, mobile_key_zoom_in_y, 2, 2, 0, c_white, 0.5);
 				}
-				#endregion /*Zoom out virtual key END*/
+				#endregion /* Zoom out virtual key END */
 				
 			}
 		}
 	}
-	#endregion /*Virtual Key, iOS and Android END*/
+	#endregion /* Virtual Key, iOS and Android END */
 	
 }
