@@ -120,7 +120,6 @@ and (instance_exists(obj_player))
 		#region /* Give Life */
 		if (number_of_extra_lives = 3)
 		{
-			lives += 3;
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
@@ -132,7 +131,6 @@ and (instance_exists(obj_player))
 		else
 		if (number_of_extra_lives = 2)
 		{
-			lives += 2;
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
@@ -147,7 +145,7 @@ and (instance_exists(obj_player))
 			{
 				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 				{
-					scoreup = "1-UP";
+					scoreup = "1-up";
 				}
 			}
 		}

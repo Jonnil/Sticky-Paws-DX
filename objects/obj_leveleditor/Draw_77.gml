@@ -12,7 +12,7 @@ if (quit_level_editor >= true)
 		
 		#region /* Limit so cursor and view can't go outside room */
 		if (camera_get_view_width(view_camera[view_current]) < 1920)
-		or(camera_get_view_height(view_camera[view_current]) < 1080)
+		or (camera_get_view_height(view_camera[view_current]) < 1080)
 		{
 			camera_set_view_size(view_camera[view_current], 1920, 1080);
 		}

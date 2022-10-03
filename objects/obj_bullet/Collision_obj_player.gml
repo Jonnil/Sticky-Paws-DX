@@ -96,18 +96,18 @@ or(other.chain_reaction<= 1)
 	}
 	#endregion /* 200 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -147,18 +147,18 @@ or(other.chain_reaction = 2)
 	}
 	#endregion /* 400 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.1);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -212,18 +212,18 @@ or(other.chain_reaction = 3)
 	}
 	#endregion /* 800 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.2);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -277,18 +277,18 @@ or(other.chain_reaction = 4)
 	}
 	#endregion /* 1000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 
 	audio_sound_pitch(snd_stomp, 1.3);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -342,18 +342,18 @@ or(other.chain_reaction = 5)
 	}
 	#endregion /* 2000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.4);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -407,18 +407,18 @@ or(other.chain_reaction = 6)
 	}
 	#endregion /* 4000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP */
+	#endregion /* 1-up */
 	
 	audio_sound_pitch(snd_stomp, 1.5);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -472,18 +472,18 @@ or(other.chain_reaction = 7)
 	}
 	#endregion /* 8000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.6);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -526,18 +526,18 @@ or(other.chain_reaction >= 8)
 	}
 	#endregion /* 4 Coin END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.7);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -643,18 +643,18 @@ or(other.chain_reaction<= 1)
 	}
 	#endregion /* 200 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -694,18 +694,18 @@ or(other.chain_reaction = 2)
 	}
 	#endregion /* 400 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.1);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -759,18 +759,18 @@ or(other.chain_reaction = 3)
 	}
 	#endregion /* 800 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.2);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -824,18 +824,18 @@ or(other.chain_reaction = 4)
 	}
 	#endregion /* 1000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 
 	audio_sound_pitch(snd_stomp, 1.3);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -889,18 +889,18 @@ or(other.chain_reaction = 5)
 	}
 	#endregion /* 2000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.4);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -954,18 +954,18 @@ or(other.chain_reaction = 6)
 	}
 	#endregion /* 4000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP */
+	#endregion /* 1-up */
 	
 	audio_sound_pitch(snd_stomp, 1.5);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1019,18 +1019,18 @@ or(other.chain_reaction = 7)
 	}
 	#endregion /* 8000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.6);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1073,18 +1073,18 @@ or(other.chain_reaction >= 8)
 	}
 	#endregion /* 4 Coin END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.7);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1188,18 +1188,18 @@ or(other.chain_reaction<= 1)
 	}
 	#endregion /* 200 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1239,18 +1239,18 @@ or(other.chain_reaction = 2)
 	}
 	#endregion /* 400 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.1);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1304,18 +1304,18 @@ or(other.chain_reaction = 3)
 	}
 	#endregion /* 800 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.2);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1369,18 +1369,18 @@ or(other.chain_reaction = 4)
 	}
 	#endregion /* 1000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 
 	audio_sound_pitch(snd_stomp, 1.3);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1434,18 +1434,18 @@ or(other.chain_reaction = 5)
 	}
 	#endregion /* 2000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.4);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1499,18 +1499,18 @@ or(other.chain_reaction = 6)
 	}
 	#endregion /* 4000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP */
+	#endregion /* 1-up */
 	
 	audio_sound_pitch(snd_stomp, 1.5);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1564,18 +1564,18 @@ or(other.chain_reaction = 7)
 	}
 	#endregion /* 8000 Score END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.6);
 	scr_audio_play(snd_stomp, volume_source.sound);
@@ -1618,18 +1618,18 @@ or(other.chain_reaction >= 8)
 	}
 	#endregion /* 4 Coin END */
 	
-	#region /* 1-UP */
+	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
 		if (asset_get_type("obj_scoreup") == asset_object)
 		{
 			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 			{
-				scoreup = "1-UP";
+				scoreup = "1-up";
 			}
 		}
 	}
-	#endregion /* 1-UP END */
+	#endregion /* 1-up END */
 	
 	audio_sound_pitch(snd_stomp, 1.7);
 	scr_audio_play(snd_stomp, volume_source.sound);

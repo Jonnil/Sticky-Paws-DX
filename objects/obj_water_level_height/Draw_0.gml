@@ -8,8 +8,8 @@ or (keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
 or (keyboard_check(global.player1_key_sprint));
 
-if (global.actually_play_edited_level = false)
-and (global.play_edited_level = false)
+if (global.actually_play_edited_level == false)
+and (global.play_edited_level == false)
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(camera_get_view_x(view_camera[0]), y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_blue, c_blue, c_blue, c_blue, false);
@@ -23,7 +23,7 @@ and (global.play_edited_level = false)
 #region /* Drag Object */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
-and (obj_leveleditor.pause = false)
+and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
 	and (!mouse_check_button(mb_middle))
@@ -77,8 +77,8 @@ else
 }
 
 #region /* Make sure the level end isn't outside of the level, this code has to be after the drag object code */
-if (global.actually_play_edited_level = false)
-and (global.play_edited_level = false)
+if (global.actually_play_edited_level == false)
+and (global.play_edited_level == false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
@@ -90,13 +90,9 @@ if (y > room_height)
 }
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 
-if (global.play_edited_level = true)
-or (global.actually_play_edited_level = true)
+if (global.play_edited_level == true)
+or (global.actually_play_edited_level == true)
 {
-	if (global.actually_play_edited_level = true)
-	{
-		global.play_edited_level = true;
-	}
 	if (asset_get_type("obj_water_level") == asset_object)
 	{
 		instance_create_depth(x, y, 0, obj_water_level);
@@ -106,7 +102,7 @@ or (global.actually_play_edited_level = true)
 
 if (instance_exists(obj_level_height))
 and (drag_object == false)
-and (obj_level_height.drag_object = false)
+and (obj_level_height.drag_object == false)
 and (obj_level_height.y = y)
 {
 	y += 32;

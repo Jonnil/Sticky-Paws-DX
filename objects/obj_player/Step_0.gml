@@ -346,8 +346,8 @@ and (obj_camera.iris_xscale < 3)
 				{
 					scr_save_level(); /* Important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear */
 				}
-				if (global.actually_play_edited_level = false)
-				and (global.play_edited_level = true)
+				if (global.actually_play_edited_level == false)
+				and (global.play_edited_level == true)
 				and (global.character_select_in_this_menu == "level_editor")
 				{
 					global.actually_play_edited_level = false;
@@ -355,8 +355,8 @@ and (obj_camera.iris_xscale < 3)
 					room_restart();
 				}
 				else
-				if (global.actually_play_edited_level = true)
-				and (global.play_edited_level = true)
+				if (global.actually_play_edited_level == true)
+				and (global.play_edited_level == true)
 				and (global.character_select_in_this_menu == "level_editor")
 				and (asset_get_type("room_title") == asset_room)
 				{						
@@ -1171,7 +1171,7 @@ if (can_move == true)
 	or (gamepad_button_check_pressed(player - 1, gp_select))
 	or (!gamepad_is_connected(player - 1))
 	and (controller_connected = true)
-	or (global.actually_play_edited_level = true)
+	or (global.actually_play_edited_level == true)
 	and (!window_has_focus())
 	and (global.automatically_pause_when_window_is_unfocused == true)
 	{
@@ -1225,7 +1225,7 @@ if (can_move == true)
 		#endregion /* Show all HUD elements END */
 		
 		controller_connected = false;
-		if (global.play_edited_level = true)
+		if (global.play_edited_level == true)
 		and (global.actually_play_edited_level == false)
 		and (global.character_select_in_this_menu == "level_editor")
 		{
@@ -1808,7 +1808,7 @@ and (key_jump_hold)
 				}
 			}
 			else
-			if (!place_meeting(x, y- 8, obj_wall))
+			if (!place_meeting(x, y - 8, obj_wall))
 			{
 				if (!place_meeting(x, y - 8, obj_wall))
 				{
@@ -1939,7 +1939,7 @@ and (can_mid_air_jump = 0)
 		{
 			buffer_jump = 0;
 			dive = false;
-			if (!place_meeting(x, y-double_jump_height, obj_wall))
+			if (!place_meeting(x, y -double_jump_height, obj_wall))
 			{
 				vspeed = -double_jump_height;
 			}
@@ -2553,7 +2553,7 @@ and (global.pause == false)
 		{
 			if (!place_meeting(x-1, y, obj_wall))
 			or (!place_meeting(x+1, y, obj_wall))
-			or (!place_meeting(x, y-1, obj_wall))
+			or (!place_meeting(x, y -1, obj_wall))
 			or (!place_meeting(x, y+1, obj_wall))
 			{
 				move_towards_point(instance_nearest(x, y, obj_tongue).x, instance_nearest(x, y, obj_tongue).y, 16); /* This makes the player fly toward the tongue */
@@ -3576,7 +3576,7 @@ and (global.pause == false)
 				{
 					speed_max = 8;
 				}
-				if (!place_meeting(x, y- 8, obj_wall))
+				if (!place_meeting(x, y - 8, obj_wall))
 				{
 					vspeed = -6;
 				}
@@ -3857,7 +3857,7 @@ if (allow_ledge_grab = true)
 				#endregion /* Move against the ledge */
 				
 				#region /* Make sure we are the right height */
-				while(position_meeting(x + (17*hspeed_dir), y- 5, obj_wall))
+				while(position_meeting(x + (17*hspeed_dir), y - 5, obj_wall))
 				{
 					y -= 1;
 				}
@@ -4813,7 +4813,7 @@ and (goal == false)
 	
 	#region /* Update Level Editor Checkpoint Time */
 	if (asset_get_type("room_leveleditor") == asset_room)
-	and (room =room_leveleditor)
+	and (room == room_leveleditor)
 	and (global.actually_play_edited_level == true)
 	and (global.character_select_in_this_menu == "level_editor")
 	{
@@ -5061,44 +5061,6 @@ and (instance_exists(obj_spikes))
 	}
 }
 #endregion /* If you touch spikes, take damage END */
-
-#region /* Invincibility */
-if (asset_get_type("obj_invincibility_powerup") == asset_object)
-and (place_meeting(x, y, obj_invincibility_powerup))
-and (instance_nearest(x, y, obj_invincibility_powerup).bounceup == false)
-{
-	chain_reaction = 0;
-	invincible = true;
-	audio_sound_gain(global.music, 0, 0);
-	audio_sound_gain(global.music_underwater, 0, 0);
-	if (!audio_is_playing(snd_music_invincible))
-	{
-		scr_audio_play(snd_music_invincible, volume_source.music);
-	}
-	scr_audio_play(voice_get_star, volume_source.voice);
-	score += 1000;
-	global.hud_show_score = true;
-	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_score_timer = global.hud_hide_time * 60;
-		}
-	}
-	if (asset_get_type("obj_scoreup") == asset_object)
-	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
-		{
-			scoreup = 1000;
-		}
-	}
-	with(instance_nearest(x, y, obj_invincibility_powerup))
-	{
-		instance_destroy();
-	}
-}
-#endregion /* Invincibility END */
 
 #region /* Invincible Music */
 if (invincible >= true)
@@ -5724,7 +5686,11 @@ if (can_climb_horizontal_rope_cooldown > 0)
 
 if (asset_get_type("obj_horizontal_rope") == asset_object)
 and (place_meeting(x, y, obj_horizontal_rope))
-and (instance_nearest(x, y, obj_horizontal_rope).active == true)
+
+and (!instance_position(instance_nearest(x, y, obj_horizontal_rope).x, instance_nearest(x, y, obj_horizontal_rope).y + 64, obj_wall)) /*If there is no wall underneath the horizontal rope, then it's safe to grab onto the horizontal rope*/
+and (!instance_position(instance_nearest(x, y, obj_horizontal_rope).x, instance_nearest(x, y, obj_horizontal_rope).y + 32, obj_wall))
+and (!instance_position(instance_nearest(x, y, obj_horizontal_rope).x, instance_nearest(x, y, obj_horizontal_rope).y + 16, obj_wall))
+
 and (asset_get_type("obj_wall") == asset_object)
 and (!place_meeting(x, y + 1, obj_wall))
 and (asset_get_type("obj_semisolid_platform") == asset_object)
@@ -5742,6 +5708,7 @@ and (hold_item_in_hands == "")
 		jump_transition_to_fall_animation = 0;
 		climb = false;
 		jump = 0;
+		spring = false;
 		scr_audio_play(snd_catch_ivy, volume_source.sound); /* Make a sound effect that you have started cimbing */
 		scr_audio_play(voice_rope_catch, volume_source.voice);
 	}
@@ -5871,7 +5838,7 @@ and (hold_item_in_hands == "")
 				scr_gamepad_vibration(player, 0.4, 10);
 				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 35;
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
-				y-= 64;
+				y -= 64;
 				climb = false;
 				horizontal_rope_climb = false;
 				spring_animation = 0;
@@ -5924,7 +5891,7 @@ and (hold_item_in_hands == "")
 				scr_audio_play(snd_jump, volume_source.sound);
 				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 35;
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
-				y-= 64;
+				y -= 64;
 				climb = false;
 				horizontal_rope_climb = false;
 				spring_animation = 0;
@@ -6097,7 +6064,9 @@ and (hold_item_in_hands == "")
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 		}
-		if (instance_nearest(x, y, obj_horizontal_rope).active == false)
+		if (instance_position(instance_nearest(x, y, obj_horizontal_rope).x, instance_nearest(x, y, obj_horizontal_rope).y + 64, obj_wall)) /*If there is a wall underneath the horizontal rope, then release grab from horizontal rope*/
+		or (instance_position(instance_nearest(x, y, obj_horizontal_rope).x, instance_nearest(x, y, obj_horizontal_rope).y + 32, obj_wall))
+		or (instance_position(instance_nearest(x, y, obj_horizontal_rope).x, instance_nearest(x, y, obj_horizontal_rope).y + 16, obj_wall))
 		{
 			can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 10;
 			can_ground_pound = false;
@@ -6216,12 +6185,12 @@ and (place_meeting(x, y, obj_vine))
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 				if (key_sprint)
 				{
-					y-= 4;
+					y -= 4;
 					image_speed = 0.4;
 				}
 				else
 				{
-					y-= 2;
+					y -= 2;
 					image_speed = 0.2;
 				}
 				if (!audio_is_playing(snd_move_ivy))
@@ -6424,7 +6393,7 @@ else
 
 #region /* Don't Crouch Underwater */
 if (!key_crouch_hold)
-and (!place_meeting(x, y- 8, obj_wall))
+and (!place_meeting(x, y - 8, obj_wall))
 and (crouch == true)
 {
 	if (vspeed >= 0)

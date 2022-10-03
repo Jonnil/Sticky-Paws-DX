@@ -183,10 +183,10 @@ if (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 {
 	if (global.enable_transitions == true)
-	and (global.play_edited_level = false)
+	and (global.play_edited_level == false)
 	and (global.actually_play_edited_level == false)
 	or (global.enable_transitions = true)
-	and (global.play_edited_level = true)
+	and (global.play_edited_level == true)
 	and (global.actually_play_edited_level == true)
 	{
 		if (asset_get_type("obj_player") == asset_object)

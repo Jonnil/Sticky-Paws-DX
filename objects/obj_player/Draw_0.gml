@@ -1,8 +1,8 @@
 /* ________________________________Draw Event________________________________ */
 
 /* Don't remove this, please, it's for debug */
-//scr_draw_text_outlined(x, y- 256, "Custom character: " + string(custom_character), global.default_text_size, c_white, c_black, 1);
-//scr_draw_text_outlined(x, y- 200, "What player am I: " + string(player), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x, y - 256, "Custom character: " + string(custom_character), global.default_text_size, c_white, c_black, 1);
+//scr_draw_text_outlined(x, y - 200, "What player am I: " + string(player), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x, y - 128, "character for player 1: " + string(global.character_for_player_1), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x, y - 64, "character for player 2: " + string(global.character_for_player_2), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x, y - 64, "Overflow HP: " + string(overflow_hp) + "/" + string(max_overflow_hp), global.default_text_size, c_white, c_black, 1);
@@ -12,7 +12,8 @@
 //scr_draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x - 32, y - 128-64, "tongue_move_player_toward_wall: " + string(tongue_move_player_toward_wall), global.default_text_size, c_white, c_black, 1);
-//scr_draw_text_outlined(x - 32, y - 128, "ground_pound" + ": " + string(ground_pound), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 64, y - 128 - 64, "actually_play_edited_level" + ": " + string(global.actually_play_edited_level), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128, "play_edited_level" + ": " + string(global.play_edited_level), global.default_text_size, c_white, c_red, 1);
 
 #region /* Draw Raycasts */
 if (hold_item_in_hands != "")
@@ -234,7 +235,7 @@ if (global.basic_collectibles > 99)
 	{
 		with(instance_create_depth(x, y - 16, 0, obj_scoreup))
 		{
-			scoreup = "1-UP";
+			scoreup = "1-up";
 		}
 	}
 }
@@ -354,7 +355,7 @@ if (global.show_collision_mask = true)
 		draw_sprite_ext(sprite_mask, 0, x, y, image_xscale, 1, 0, c_white, 1);
 	}
 	draw_rectangle_color(x - 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
-	draw_rectangle_color(x, y- 2, x, y + 2, c_red, c_red, c_red, c_red, false);
+	draw_rectangle_color(x, y - 2, x, y + 2, c_red, c_red, c_red, c_red, false);
 	image_alpha = 0.5;
 }
 else

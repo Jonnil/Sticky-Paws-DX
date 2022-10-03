@@ -7,6 +7,8 @@ if (mouse_wheel_up())
 }
 #endregion /* Arcade Credit Increase END */
 
+#region /* Stop gamepad vibration for different players */
+
 #region /* Stop gamepad vibration for player 1 */
 if (player1_vibration_active = false)
 {
@@ -39,6 +41,8 @@ if (player4_vibration_active = false)
 gamepad_set_vibration(3, player4_motor_speed, player4_motor_speed);
 #endregion /* Stop gamepad vibration for player 4 END */
 
+#endregion /* Stop gamepad vibration for different players END */
+
 view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) / 2);
 view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) / 2);
 
@@ -46,7 +50,7 @@ view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_
 if (delay = 2)
 {
 	instance_activate_all();
-	if (global.deactivate_objects_outsiede_view = true) /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
+	if (global.deactivate_objects_outsiede_view == true) /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
 	{
 		instance_deactivate_region(view_x_center - 1000, view_y_center - 1000, 2000, 2000, false, true);
 	}

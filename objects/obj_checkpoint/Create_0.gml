@@ -2,6 +2,7 @@ depth = 10;
 image_speed = 0;
 mask_index = spr_checkpoint;
 get_rewards_cooldown = 10;
+last_checkpoint = false; /*Tell the player if the checkpoint they are activating is the last checkpoint in the level, the checkpoint cosest to the goal*/
 if (global.checkpoint_x = x)
 and (global.checkpoint_y = y)
 {

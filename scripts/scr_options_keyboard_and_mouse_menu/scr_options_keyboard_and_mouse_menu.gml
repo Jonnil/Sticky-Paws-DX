@@ -4365,7 +4365,7 @@ function scr_options_keyboard_and_mouse_menu()
 		if (input_key = true)
 		{
 			draw_set_alpha(0.75);
-			draw_rectangle_color(window_get_width() / 2 - 252, 32 - 20, window_get_width() / 2 + 252, 64 + 20, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color (window_get_width() / 2 - 252, 32 - 20, window_get_width() / 2 + 252, 64 + 20, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			
 			if (remapping_player = 0) /* Text saying input gamepad button now for player 1 */

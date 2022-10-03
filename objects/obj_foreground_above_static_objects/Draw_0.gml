@@ -1,5 +1,5 @@
 #region /* When editing a level, make the foreground transparent */
-if (global.play_edited_level = false)
+if (global.play_edited_level == false)
 {
 	image_alpha = 0.5;
 }

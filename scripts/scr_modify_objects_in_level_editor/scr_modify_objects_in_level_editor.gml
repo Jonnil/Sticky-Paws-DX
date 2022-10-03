@@ -14,7 +14,7 @@ function scr_modify_objects_in_level_editor()
 	and (instance_exists(obj_leveleditor))
 	and (obj_leveleditor.fill_mode = false)
 	and (obj_leveleditor.erase_mode = false)
-	and (obj_leveleditor.pause = false)
+	and (obj_leveleditor.pause == false)
 	and (obj_leveleditor.menu_delay = 0)
 	and (asset_get_type("obj_leveleditor_placed_object") == asset_object)
 	and (asset_get_type("obj_level_player_1_start") == asset_object)
@@ -64,42 +64,42 @@ function scr_modify_objects_in_level_editor()
 						{
 							
 							#region /* Change wall into it's different forms */
-							if (object = 1)
+							if (object == 1)
 							{
 								object = 1001;
 							}
 							else
-							if (object = 1001)
+							if (object == 1001)
 							{
 								object = 1002;
 							}
 							else
-							if (object = 1002)
+							if (object == 1002)
 							{
 								object = 1003;
 							}
 							else
-							if (object = 1003)
+							if (object == 1003)
 							{
 								object = 1004;
 							}
 							else
-							if (object = 1004)
+							if (object == 1004)
 							{
 								object = 1005;
 							}
 							else
-							if (object = 1005)
+							if (object == 1005)
 							{
 								object = 1006;
 							}
 							else
-							if (object = 1006)
+							if (object == 1006)
 							{
 								object = 1007;
 							}
 							else
-							if (object = 1007)
+							if (object == 1007)
 							{
 								object = 1;
 							}
@@ -108,134 +108,134 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change bump in ground to it's different forms */
-							if (object = 28)
+							if (object == 28)
 							{
 								object = 29;
 							}
 							else
-							if (object = 29)
+							if (object == 29)
 							{
 								object = 30;
 							}
 							else
-							if (object = 30)
+							if (object == 30)
 							{
 								object = 31;
 							}
 							else
-							if (object = 31)
+							if (object == 31)
 							{
 								object = 32;
 							}
 							else
-							if (object = 32)
+							if (object == 32)
 							{
 								object = 33;
 							}
 							else
-							if (object = 33)
+							if (object == 33)
 							{
 								object = 34;
 							}
 							else
-							if (object = 34)
+							if (object == 34)
 							{
 								object = 35;
 							}
 							else
-							if (object = 35)
+							if (object == 35)
 							{
 								object = 36;
 							}
 							else
-							if (object = 36)
+							if (object == 36)
 							{
 								object = 37;
 							}
 							else
-							if (object = 37)
+							if (object == 37)
 							{
 								object = 38;
 							}
 							else
-							if (object = 38)
+							if (object == 38)
 							{
 								object = 39;
 							}
 							else
-							if (object = 39)
+							if (object == 39)
 							{
 								object = 39001;
 							}
 							else
-							if (object = 39001)
+							if (object == 39001)
 							{
 								object = 281;
 							}
 							#endregion /* Change bump in ground to it's different forms END */
 								
 							#region /* Change invisible bump in ground to it's different forms */
-							if (object = 281)
+							if (object == 281)
 							{
 								object = 291;
 							}
 							else
-							if (object = 291)
+							if (object == 291)
 							{
 								object = 301;
 							}
 							else
-							if (object = 301)
+							if (object == 301)
 							{
 								object = 311;
 							}
 							else
-							if (object = 311)
+							if (object == 311)
 							{
 								object = 321;
 							}
 							else
-							if (object = 321)
+							if (object == 321)
 							{
 								object = 331;
 							}
 							else
-							if (object = 331)
+							if (object == 331)
 							{
 								object = 341;
 							}
 							else
-							if (object = 341)
+							if (object == 341)
 							{
 								object = 351;
 							}
 							else
-							if (object = 351)
+							if (object == 351)
 							{
 								object = 361;
 							}
 							else
-							if (object = 361)
+							if (object == 361)
 							{
 								object = 371;
 							}
 							else
-							if (object = 371)
+							if (object == 371)
 							{
 								object = 381;
 							}
 							else
-							if (object = 381)
+							if (object == 381)
 							{
 								object = 391;
 							}
 							else
-							if (object = 391)
+							if (object == 391)
 							{
 								object = 390011;
 							}
 							else
-							if (object = 390011)
+							if (object == 390011)
 							{
 								object = 28;
 							}
@@ -244,42 +244,42 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change Basic Collectible Direction */
-							if (object = level_object_id.id_basic_collectible)
+							if (object == level_object_id.id_basic_collectible)
 							{
 								object = level_object_id.id_basic_collectible_2;
 							}
 							else
-							if (object = level_object_id.id_basic_collectible_2)
+							if (object == level_object_id.id_basic_collectible_2)
 							{
 								object = level_object_id.id_basic_collectible_3;
 							}
 							else
-							if (object = level_object_id.id_basic_collectible_3)
+							if (object == level_object_id.id_basic_collectible_3)
 							{
 								object = level_object_id.id_basic_collectible_4;
 							}
 							else
-							if (object = level_object_id.id_basic_collectible_4)
+							if (object == level_object_id.id_basic_collectible_4)
 							{
 								object = level_object_id.id_basic_collectible_5;
 							}
 							else
-							if (object = level_object_id.id_basic_collectible_5)
+							if (object == level_object_id.id_basic_collectible_5)
 							{
 								object = level_object_id.id_basic_collectible_6;
 							}
 							else
-							if (object = level_object_id.id_basic_collectible_6)
+							if (object == level_object_id.id_basic_collectible_6)
 							{
 								object = level_object_id.id_basic_collectible_7;
 							}
 							else
-							if (object = level_object_id.id_basic_collectible_7)
+							if (object == level_object_id.id_basic_collectible_7)
 							{
 								object = level_object_id.id_basic_collectible_8;
 							}
 							else
-							if (object = level_object_id.id_basic_collectible_8)
+							if (object == level_object_id.id_basic_collectible_8)
 							{
 								object = level_object_id.id_basic_collectible;
 							}
@@ -288,27 +288,27 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change Big Collectible */
-							if (object = level_object_id.id_big_collectible_1)
+							if (object == level_object_id.id_big_collectible_1)
 							{
 								object = level_object_id.id_big_collectible_2;
 							}
 							else
-							if (object = level_object_id.id_big_collectible_2)
+							if (object == level_object_id.id_big_collectible_2)
 							{
 								object = level_object_id.id_big_collectible_3;
 							}
 							else
-							if (object = level_object_id.id_big_collectible_3)
+							if (object == level_object_id.id_big_collectible_3)
 							{
 								object = level_object_id.id_big_collectible_4;
 							}
 							else
-							if (object = level_object_id.id_big_collectible_4)
+							if (object == level_object_id.id_big_collectible_4)
 							{
 								object = level_object_id.id_big_collectible_5;
 							}
 							else
-							if (object = level_object_id.id_big_collectible_5)
+							if (object == level_object_id.id_big_collectible_5)
 							{
 								object = level_object_id.id_big_collectible_1;
 							}
@@ -317,22 +317,22 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Falling Block */
-							if (object = level_object_id.id_falling_block)
+							if (object == level_object_id.id_falling_block)
 							{
 								object = level_object_id.id_falling_block_solid;
 							}
 							else
-							if (object = level_object_id.id_falling_block_solid)
+							if (object == level_object_id.id_falling_block_solid)
 							{
 								object = level_object_id.id_falling_block;
 							}
 							else
-							if (object = level_object_id.id_falling_block_long)
+							if (object == level_object_id.id_falling_block_long)
 							{
 								object = level_object_id.id_falling_block_long_solid;
 							}
 							else
-							if (object = level_object_id.id_falling_block_long_solid)
+							if (object == level_object_id.id_falling_block_long_solid)
 							{
 								object = level_object_id.id_falling_block_long;
 							}
@@ -341,42 +341,42 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Brick Block */
-							if (object = level_object_id.id_brick_block)
+							if (object == level_object_id.id_brick_block)
 							{
 								object = level_object_id.id_brick_block_10_basic_collectibles;
 							}
 							else
-							if (object = level_object_id.id_brick_block_10_basic_collectibles)
+							if (object == level_object_id.id_brick_block_10_basic_collectibles)
 							{
 								object = level_object_id.id_brick_block_heart_balloon;
 							}
 							else
-							if (object = level_object_id.id_brick_block_heart_balloon)
+							if (object == level_object_id.id_brick_block_heart_balloon)
 							{
 								object = level_object_id.id_brick_block_one_up;
 							}
 							else
-							if (object = level_object_id.id_brick_block_one_up)
+							if (object == level_object_id.id_brick_block_one_up)
 							{
 								object = level_object_id.id_brick_block_two_up;
 							}
 							else
-							if (object = level_object_id.id_brick_block_two_up)
+							if (object == level_object_id.id_brick_block_two_up)
 							{
 								object = level_object_id.id_brick_block_three_up;
 							}
 							else
-							if (object = level_object_id.id_brick_block_three_up)
+							if (object == level_object_id.id_brick_block_three_up)
 							{
 								object = level_object_id.id_brick_block_invincibility_powerup;
 							}
 							else
-							if (object = level_object_id.id_brick_block_invincibility_powerup)
+							if (object == level_object_id.id_brick_block_invincibility_powerup)
 							{
 								object = level_object_id.id_brick_block_invincibility_powerup_coil_spring;
 							}
 							else
-							if (object = level_object_id.id_brick_block_invincibility_powerup_coil_spring)
+							if (object == level_object_id.id_brick_block_invincibility_powerup_coil_spring)
 							{
 								object = level_object_id.id_brick_block;
 							}
@@ -385,42 +385,42 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Question Block */
-							if (object = level_object_id.id_question_block)
+							if (object == level_object_id.id_question_block)
 							{
 								object = level_object_id.id_question_block_10_basic_collectibles;
 							}
 							else
-							if (object = level_object_id.id_question_block_10_basic_collectibles)
+							if (object == level_object_id.id_question_block_10_basic_collectibles)
 							{
 								object = level_object_id.id_question_block_heart_balloon;
 							}
 							else
-							if (object = level_object_id.id_question_block_heart_balloon)
+							if (object == level_object_id.id_question_block_heart_balloon)
 							{
 								object = level_object_id.id_question_block_one_up;
 							}
 							else
-							if (object = level_object_id.id_question_block_one_up)
+							if (object == level_object_id.id_question_block_one_up)
 							{
 								object = level_object_id.id_question_block_two_up;
 							}
 							else
-							if (object = level_object_id.id_question_block_two_up)
+							if (object == level_object_id.id_question_block_two_up)
 							{
 								object = level_object_id.id_question_block_three_up;
 							}
 							else
-							if (object = level_object_id.id_question_block_three_up)
+							if (object == level_object_id.id_question_block_three_up)
 							{
 								object = level_object_id.id_question_block_invincibility_powerup;
 							}
 							else
-							if (object = level_object_id.id_question_block_invincibility_powerup)
+							if (object == level_object_id.id_question_block_invincibility_powerup)
 							{
 								object = level_object_id.id_question_block_invincibility_powerup_coil_spring;
 							}
 							else
-							if (object = level_object_id.id_question_block_invincibility_powerup_coil_spring)
+							if (object == level_object_id.id_question_block_invincibility_powerup_coil_spring)
 							{
 								object = level_object_id.id_question_block;
 							}
@@ -429,42 +429,42 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Melon Block */
-							if (object = level_object_id.id_melon_block)
+							if (object == level_object_id.id_melon_block)
 							{
 								object = level_object_id.id_melon_block_10_basic_collectibles;
 							}
 							else
-							if (object = level_object_id.id_melon_block_10_basic_collectibles)
+							if (object == level_object_id.id_melon_block_10_basic_collectibles)
 							{
 								object = level_object_id.id_melon_block_heart_balloon;
 							}
 							else
-							if (object = level_object_id.id_melon_block_heart_balloon)
+							if (object == level_object_id.id_melon_block_heart_balloon)
 							{
 								object = level_object_id.id_melon_block_one_up;
 							}
 							else
-							if (object = level_object_id.id_melon_block_one_up)
+							if (object == level_object_id.id_melon_block_one_up)
 							{
 								object = level_object_id.id_melon_block_two_up;
 							}
 							else
-							if (object = level_object_id.id_melon_block_two_up)
+							if (object == level_object_id.id_melon_block_two_up)
 							{
 								object = level_object_id.id_melon_block_three_up;
 							}
 							else
-							if (object = level_object_id.id_melon_block_three_up)
+							if (object == level_object_id.id_melon_block_three_up)
 							{
 								object = level_object_id.id_melon_block_invincibility_powerup;
 							}
 							else
-							if (object = level_object_id.id_melon_block_invincibility_powerup)
+							if (object == level_object_id.id_melon_block_invincibility_powerup)
 							{
 								object = level_object_id.id_melon_block_invincibility_powerup_coil_spring;
 							}
 							else
-							if (object = level_object_id.id_melon_block_invincibility_powerup_coil_spring)
+							if (object == level_object_id.id_melon_block_invincibility_powerup_coil_spring)
 							{
 								object = level_object_id.id_melon_block;
 							}
@@ -473,17 +473,17 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Hard Block */
-							if (object = level_object_id.id_hard_block)
+							if (object == level_object_id.id_hard_block)
 							{
 								object = level_object_id.id_hard_block_alternate;
 							}
 							else
-							if (object = level_object_id.id_hard_block_alternate)
+							if (object == level_object_id.id_hard_block_alternate)
 							{
 								object = level_object_id.id_hard_block_2x2;
 							}
 							else
-							if (object = level_object_id.id_hard_block_2x2)
+							if (object == level_object_id.id_hard_block_2x2)
 							{
 								object = level_object_id.id_hard_block;
 							}
@@ -492,12 +492,12 @@ function scr_modify_objects_in_level_editor()
 							else
 								
 							#region /* Invincibility Powerup */
-							if (object = level_object_id.id_invincibility_powerup)
+							if (object == level_object_id.id_invincibility_powerup)
 							{
 								object = level_object_id.id_invincibility_powerup_coil_spring;
 							}
 							else
-							if (object = level_object_id.id_invincibility_powerup_coil_spring)
+							if (object == level_object_id.id_invincibility_powerup_coil_spring)
 							{
 								object = level_object_id.id_invincibility_powerup;
 							}
@@ -506,17 +506,17 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Extra Lives Pickup */
-							if (object = level_object_id.id_one_up)
+							if (object == level_object_id.id_one_up)
 							{
 								object = level_object_id.id_two_up;
 							}
 							else
-							if (object = level_object_id.id_two_up)
+							if (object == level_object_id.id_two_up)
 							{
 								object = level_object_id.id_three_up;
 							}
 							else
-							if (object = level_object_id.id_three_up)
+							if (object == level_object_id.id_three_up)
 							{
 								object = level_object_id.id_one_up;
 							}
@@ -525,22 +525,22 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Basic enemy */
-							if (object = level_object_id.id_basic_enemy)
+							if (object == level_object_id.id_basic_enemy)
 							{
 								object = level_object_id.id_basic_enemy_blind;
 							}
 							else
-							if (object = level_object_id.id_basic_enemy_blind)
+							if (object == level_object_id.id_basic_enemy_blind)
 							{
 								object = level_object_id.id_basic_enemy_coil_spring;
 							}
 							else
-							if (object = level_object_id.id_basic_enemy_coil_spring)
+							if (object == level_object_id.id_basic_enemy_coil_spring)
 							{
 								object = level_object_id.id_basic_enemy_blind_coil_spring;
 							}
 							else
-							if (object = level_object_id.id_basic_enemy_blind_coil_spring)
+							if (object == level_object_id.id_basic_enemy_blind_coil_spring)
 							{
 								object = level_object_id.id_basic_enemy;
 							}
@@ -549,22 +549,22 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Bowling ball enemy */
-							if (object = level_object_id.id_enemy_bowlingball)
+							if (object == level_object_id.id_enemy_bowlingball)
 							{
 								object = level_object_id.id_enemy_bowlingball_blind;
 							}
 							else
-							if (object = level_object_id.id_enemy_bowlingball_blind)
+							if (object == level_object_id.id_enemy_bowlingball_blind)
 							{
 								object = level_object_id.id_enemy_bowlingball_coil_spring;
 							}
 							else
-							if (object = level_object_id.id_enemy_bowlingball_coil_spring)
+							if (object == level_object_id.id_enemy_bowlingball_coil_spring)
 							{
 								object = level_object_id.id_enemy_bowlingball_blind_coil_spring;
 							}
 							else
-							if (object = level_object_id.id_enemy_bowlingball_blind_coil_spring)
+							if (object == level_object_id.id_enemy_bowlingball_blind_coil_spring)
 							{
 								object = level_object_id.id_enemy_bowlingball;
 							}
@@ -573,12 +573,12 @@ function scr_modify_objects_in_level_editor()
 							else
 								
 							#region /* Big Stationary Enemy */
-							if (object = level_object_id.id_big_stationary_enemy)
+							if (object == level_object_id.id_big_stationary_enemy)
 							{
 								object = level_object_id.id_big_stationary_enemy_coil_spring;
 							}
 							else
-							if (object = level_object_id.id_big_stationary_enemy_coil_spring)
+							if (object == level_object_id.id_big_stationary_enemy_coil_spring)
 							{
 								object = level_object_id.id_big_stationary_enemy;
 							}
@@ -587,42 +587,42 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Spikes Emerge Direction */
-							if (object = level_object_id.id_spikes_emerge_block)
+							if (object == level_object_id.id_spikes_emerge_block)
 							{
 								object = level_object_id.id_spikes_emerge_block_left;
 							}
 							else
-							if (object = level_object_id.id_spikes_emerge_block_left)
+							if (object == level_object_id.id_spikes_emerge_block_left)
 							{
 								object = level_object_id.id_spikes_emerge_block_down;
 							}
 							else
-							if (object = level_object_id.id_spikes_emerge_block_down)
+							if (object == level_object_id.id_spikes_emerge_block_down)
 							{
 								object = level_object_id.id_spikes_emerge_block_right;
 							}
 							else
-							if (object = level_object_id.id_spikes_emerge_block_right)
+							if (object == level_object_id.id_spikes_emerge_block_right)
 							{
 								object = level_object_id.id_spikes_emerge_block_offset_time;
 							}
 							else
-							if (object = level_object_id.id_spikes_emerge_block_offset_time)
+							if (object == level_object_id.id_spikes_emerge_block_offset_time)
 							{
 								object = level_object_id.id_spikes_emerge_block_left_offset_time;
 							}
 							else
-							if (object = level_object_id.id_spikes_emerge_block_left_offset_time)
+							if (object == level_object_id.id_spikes_emerge_block_left_offset_time)
 							{
 								object = level_object_id.id_spikes_emerge_block_down_offset_time;
 							}
 							else
-							if (object = level_object_id.id_spikes_emerge_block_down_offset_time)
+							if (object == level_object_id.id_spikes_emerge_block_down_offset_time)
 							{
 								object = level_object_id.id_spikes_emerge_block_right_offset_time;
 							}
 							else
-							if (object = level_object_id.id_spikes_emerge_block_right_offset_time)
+							if (object == level_object_id.id_spikes_emerge_block_right_offset_time)
 							{
 								object = level_object_id.id_spikes_emerge_block;
 							}
@@ -631,22 +631,22 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change Oneway Direction */
-							if (object = 68)
+							if (object == 68)
 							{
 								object = 69;
 							}
 							else
-							if (object = 69)
+							if (object == 69)
 							{
 								object = 70;
 							}
 							else
-							if (object = 70)
+							if (object == 70)
 							{
 								object = 71;
 							}
 							else
-							if (object = 71)
+							if (object == 71)
 							{
 								object = 68;
 							}
@@ -655,12 +655,12 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change Water Rope */
-							if (object = 73)
+							if (object == 73)
 							{
 								object = 731;
 							}
 							else
-							if (object = 731)
+							if (object == 731)
 							{
 								object = 73;
 							}
@@ -669,17 +669,17 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change Clipped Clothing on Rope */
-							if (object = 74)
+							if (object == 74)
 							{
 								object = 75;
 							}
 							else
-							if (object = 75)
+							if (object == 75)
 							{
 								object = 76;
 							}
 							else
-							if (object = 76)
+							if (object == 76)
 							{
 								object = 74;
 							}
@@ -688,62 +688,62 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change bucket to it's different forms */
-							if (object = 77)
+							if (object == 77)
 							{
 								object = 78;
 							}
 							else
-							if (object = 78)
+							if (object == 78)
 							{
 								object = 79;
 							}
 							else
-							if (object = 79)
+							if (object == 79)
 							{
 								object = 80;
 							}
 							else
-							if (object = 80)
+							if (object == 80)
 							{
 								object = 81;
 							}
 							else
-							if (object = 81)
+							if (object == 81)
 							{
 								object = 82;
 							}
 							else
-							if (object = 82)
+							if (object == 82)
 							{
 								object = 83;
 							}
 							else
-							if (object = 83)
+							if (object == 83)
 							{
 								object = 84;
 							}
 							else
-							if (object = 84)
+							if (object == 84)
 							{
 								object = 85;
 							}
 							else
-							if (object = 85)
+							if (object == 85)
 							{
 								object = 86;
 							}
 							else
-							if (object = 86)
+							if (object == 86)
 							{
 								object = 87;
 							}
 							else
-							if (object = 87)
+							if (object == 87)
 							{
 								object = 88;
 							}
 							else
-							if (object = 88)
+							if (object == 88)
 							{
 								object = 77;
 							}
@@ -752,27 +752,27 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change Moveset Signs */
-							if (object = 90)
+							if (object == 90)
 							{
 								object = 91;
 							}
 							else
-							if (object = 91)
+							if (object == 91)
 							{
 								object = 92;
 							}
 							else
-							if (object = 92)
+							if (object == 92)
 							{
 								object = 93;
 							}
 							else
-							if (object = 93)
+							if (object == 93)
 							{
 								object = 94;
 							}
 							else
-							if (object = 94)
+							if (object == 94)
 							{
 								object = 90;
 							}
@@ -787,22 +787,22 @@ function scr_modify_objects_in_level_editor()
 						{
 							
 							#region /* Change Turn */
-							if (object = 4)
+							if (object == 4)
 							{
 								object = 5;
 							}
 							else
-							if (object = 5)
+							if (object == 5)
 							{
 								object = 6;
 							}
 							else
-							if (object = 6)
+							if (object == 6)
 							{
 								object = 7;
 							}
 							else
-							if (object = 7)
+							if (object == 7)
 							{
 								object = 4;
 							}

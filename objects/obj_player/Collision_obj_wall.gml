@@ -76,7 +76,6 @@ and (stick_to_wall == false)
 if (position_meeting(bbox_left - 1, bbox_bottom - 8, other))
 or (position_meeting(bbox_left - 1, bbox_top + 8, other))
 or (position_meeting(bbox_left - 1, y, other))
-//or (place_meeting(x - 1, y, other))
 {
 	if (hspeed <= 0)
 	{
@@ -89,7 +88,6 @@ or (position_meeting(bbox_left - 1, y, other))
 if (position_meeting(bbox_right + 1, bbox_bottom - 8, other))
 or (position_meeting(bbox_right + 1, bbox_top + 8, other))
 or (position_meeting(bbox_right + 1, y, other))
-//or (place_meeting(x + 1, y, other))
 {
 	if (hspeed >= 0)
 	{
@@ -102,6 +100,7 @@ or (position_meeting(bbox_right + 1, y, other))
 
 #region /* Landing on different surfaces sound effects */
 if (place_meeting(x, y + 1, other))
+and (vspeed >= 0)
 {
 	if (asset_get_type("obj_ground") == asset_object)
 	and (place_meeting(x, y + 1, obj_ground))

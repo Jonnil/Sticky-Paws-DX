@@ -434,16 +434,16 @@ add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_
 #endregion /* Grid Initialization END */
 
 #region /* Controls for level editor */
-key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down))or (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or (gamepad_axis_value(0, gp_axislv) < 0);
-key_left = (keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right))or (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or (gamepad_axis_value(0, gp_axislh) < 0);
-key_right = (keyboard_check_pressed(global.player1_key_right)) and (!keyboard_check_pressed(global.player1_key_left))or (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
-key_down = (keyboard_check_pressed(global.player1_key_down)) and (!keyboard_check_pressed(global.player1_key_up))or (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or (keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or (gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or (gamepad_axis_value(0, gp_axislv) > 0);
-key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or (keyboard_check_pressed(global.player1_key_jump))or (keyboard_check_pressed(ord("Z")));
-key_a_released = (gamepad_button_check_released(0, gp_face1))or (keyboard_check_released(global.player1_key_jump))or (keyboard_check_released(ord("Z")));
-key_a_hold = (gamepad_button_check(0, gp_face1))or (keyboard_check(global.player1_key_jump))or (keyboard_check(ord("Z")));
-key_b_hold = (gamepad_button_check(0, gp_face2))or (keyboard_check(global.player1_key_sprint))or (keyboard_check(ord("X")))or (keyboard_check(vk_backspace));
-key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or (keyboard_check_pressed(global.player1_key_sprint))or (keyboard_check_pressed(ord("X")))or (keyboard_check_pressed(vk_backspace))or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
-key_b_released = (gamepad_button_check_released(0, gp_face2))or (keyboard_check_released(global.player1_key_sprint))or (keyboard_check_released(ord("X")))or (keyboard_check_released(vk_backspace));
+key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down)) or (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down)) or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S"))) or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd)) or (gamepad_axis_value(0, gp_axislv) < 0);
+key_left = (keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right)) or (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) < 0);
+key_right = (keyboard_check_pressed(global.player1_key_right)) and (!keyboard_check_pressed(global.player1_key_left)) or (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left)) or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A"))) or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl)) or (gamepad_axis_value(0, gp_axislh) > 0);
+key_down = (keyboard_check_pressed(global.player1_key_down)) and (!keyboard_check_pressed(global.player1_key_up)) or (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up)) or (keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W"))) or (gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu)) or (gamepad_axis_value(0, gp_axislv) > 0);
+key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or (keyboard_check_pressed(global.player1_key_jump)) or (keyboard_check_pressed(ord("Z")));
+key_a_released = (gamepad_button_check_released(0, gp_face1)) or (keyboard_check_released(global.player1_key_jump)) or (keyboard_check_released(ord("Z")));
+key_a_hold = (gamepad_button_check(0, gp_face1)) or (keyboard_check(global.player1_key_jump)) or (keyboard_check(ord("Z")));
+key_b_hold = (gamepad_button_check(0, gp_face2)) or (keyboard_check(global.player1_key_sprint)) or (keyboard_check(ord("X"))) or (keyboard_check(vk_backspace));
+key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or (keyboard_check_pressed(global.player1_key_sprint)) or (keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_backspace)) or (mouse_check_button_pressed(mb_right)) or (mouse_check_button_pressed(mb_side1));
+key_b_released = (gamepad_button_check_released(0, gp_face2)) or (keyboard_check_released(global.player1_key_sprint)) or (keyboard_check_released(ord("X"))) or (keyboard_check_released(vk_backspace));
 #endregion /* Controls for level editor END */
 
 unused_x_origin_point = noone;
@@ -557,7 +557,7 @@ and (!instance_exists(obj_water_level_height))
 
 
 audio_stop_all();
-if (global.actually_play_edited_level = true)
+if (global.actually_play_edited_level == true)
 {
 	instance_destroy();
 }

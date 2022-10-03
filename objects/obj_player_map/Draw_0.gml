@@ -791,7 +791,7 @@ and (global.quit_level == false)
 	if (asset_get_type("room_leveleditor") == asset_room)
 	{
 		global.actually_play_edited_level = true;
-		global.play_edited_level = false;
+		global.play_edited_level = true;
 		room_goto(room_leveleditor);
 	}
 }

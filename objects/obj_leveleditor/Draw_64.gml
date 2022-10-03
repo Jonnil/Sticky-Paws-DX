@@ -5,7 +5,7 @@ if (quit_level_editor == false)
 		var width = 10;
 		draw_set_alpha(0.5);
 		draw_rectangle_color(0, width + 1, width, window_get_height() - (width + 1), c_blue, c_blue, c_blue, c_blue, false); /* Left */
-		draw_rectangle_color(window_get_width() - width, 0, room_width * 2, window_get_height() - (width + 1), c_blue, c_blue, c_blue, c_blue, false); /* Right */
+		draw_rectangle_color (window_get_width() - width, 0, room_width * 2, window_get_height() - (width + 1), c_blue, c_blue, c_blue, c_blue, false); /* Right */
 		draw_rectangle_color(0, 0, window_get_width() - (width + 1), width, c_blue, c_blue, c_blue, c_blue, false); /* Top */
 		draw_rectangle_color(0, window_get_height() - width, room_width * 2, room_height* 2, c_blue, c_blue, c_blue, c_blue, false); /* Bottom */
 		draw_set_alpha(1);
@@ -1506,6 +1506,13 @@ if (quit_level_editor == false)
 			fill_mode = false;
 			erase_mode = false;
 			set_difficulty_mode = true;
+			if (instance_exists(obj_leveleditor_placed_object))
+			{
+				with (obj_leveleditor_placed_object)
+				{
+					scr_make_sprite_transparent_if_youre_setting_difficulty_levels();
+				}
+			}
 		}
 	}
 	#endregion /* Easy END */
@@ -1522,6 +1529,13 @@ if (quit_level_editor == false)
 			fill_mode = false;
 			erase_mode = false;
 			set_difficulty_mode = true;
+			if (instance_exists(obj_leveleditor_placed_object))
+			{
+				with (obj_leveleditor_placed_object)
+				{
+					scr_make_sprite_transparent_if_youre_setting_difficulty_levels();
+				}
+			}
 		}
 	}
 	#endregion /* Normal END */
@@ -1538,6 +1552,13 @@ if (quit_level_editor == false)
 			fill_mode = false;
 			erase_mode = false;
 			set_difficulty_mode = true;
+			if (instance_exists(obj_leveleditor_placed_object))
+			{
+				with (obj_leveleditor_placed_object)
+				{
+					scr_make_sprite_transparent_if_youre_setting_difficulty_levels();
+				}
+			}
 		}
 	}
 	#endregion /* Hard END */
@@ -1560,6 +1581,18 @@ if (quit_level_editor == false)
 			{
 				set_difficulty_mode = true;
 			}
+			var time_source = time_source_create(time_source_game, 2, time_source_units_frames, function() /*For some reason the script needs to play after a bit of delay, otherwise it doesn't do anything when clicking back*/
+			{
+				if (instance_exists(obj_leveleditor_placed_object))
+				{
+					with (obj_leveleditor_placed_object)
+					{
+						scr_make_sprite_transparent_if_youre_setting_difficulty_levels();
+					}
+				}
+			}
+			, [], 1);
+			time_source_start(time_source);
 		}
 	}
 	#endregion /* Set Difficulty Mode / Back */

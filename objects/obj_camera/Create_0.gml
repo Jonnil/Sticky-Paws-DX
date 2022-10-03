@@ -215,8 +215,8 @@ hurry_up_message_timer = 0; /* How long the hurry up message should stay on scre
 player_has_spawned = false;
 
 #region /* Checkpoint */
-if (global.actually_play_edited_level = true)
-and (global.play_edited_level = true)
+if (global.actually_play_edited_level == true)
+and (global.play_edited_level == true)
 {
 	if (global.checkpoint_x > 0)
 	or (global.checkpoint_y > 0)
@@ -258,7 +258,7 @@ and (!instance_exists(obj_title))
 			player1 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
-		if (global.actually_play_edited_level = true)
+		if (global.actually_play_edited_level == true)
 		and (instance_exists(obj_level_player_1_start))
 		{
 			player1 = instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_player);
@@ -286,7 +286,7 @@ and (!instance_exists(obj_title))
 			player2 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
-		if (global.actually_play_edited_level = true)
+		if (global.actually_play_edited_level == true)
 		and (instance_exists(obj_level_player_2_start))
 		{
 			player2 = instance_create_depth(obj_level_player_2_start.x, obj_level_player_2_start.y, 0, obj_player);
@@ -314,7 +314,7 @@ and (!instance_exists(obj_title))
 			player3 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
-		if (global.actually_play_edited_level = true)
+		if (global.actually_play_edited_level == true)
 		and (instance_exists(obj_level_player_3_start))
 		{
 			player3 = instance_create_depth(obj_level_player_3_start.x, obj_level_player_3_start.y, 0, obj_player);
@@ -342,7 +342,7 @@ and (!instance_exists(obj_title))
 			player4 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
-		if (global.actually_play_edited_level = true)
+		if (global.actually_play_edited_level == true)
 		and (instance_exists(obj_level_player_4_start))
 		{
 			player4 = instance_create_depth(obj_level_player_4_start.x, obj_level_player_4_start.y, 0, obj_player);
@@ -568,11 +568,11 @@ and (!instance_exists(obj_player_map))
 {
 	if (global.trigger_ending = false)
 	{
-		if (global.actually_play_edited_level = true)
-		and (global.play_edited_level = true)
+		if (global.actually_play_edited_level == true)
+		and (global.play_edited_level == true)
 		and (global.checkpoint_x > 0)
-		or (global.actually_play_edited_level = true)
-		and (global.play_edited_level = true)
+		or (global.actually_play_edited_level == true)
+		and (global.play_edited_level == true)
 		and (global.checkpoint_y > 0)
 		{
 			global.timeattack_realmillisecond = global.checkpoint_realmillisecond;

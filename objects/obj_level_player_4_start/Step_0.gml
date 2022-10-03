@@ -7,7 +7,7 @@ or (keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
 or (keyboard_check(global.player1_key_sprint));
 
-if (global.play_edited_level = true)
+if (global.play_edited_level == true)
 {
 	visible = false;
 }
@@ -33,7 +33,7 @@ and (obj_level_player_3_start.drag_object == false)
 #region /* Drag Object */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
-and (obj_leveleditor.pause = false)
+and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
 	and (!mouse_check_button(mb_middle))
@@ -109,13 +109,11 @@ if (y > room_height)
 }
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 
-if (global.play_edited_level = true)
-or (global.actually_play_edited_level = true)
+if (global.play_edited_level == true)
+or (global.actually_play_edited_level == true)
 {
-	if (global.actually_play_edited_level = true)
+	if (global.actually_play_edited_level == true)
 	{
-		global.play_edited_level = true;
-		background_visible[6] = false;
 		view_xview = x - view_wview / 2;
 		view_yview = y - view_hview / 2;
 		if (asset_get_type("obj_camera") == asset_object)

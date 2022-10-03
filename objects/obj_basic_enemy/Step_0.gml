@@ -161,7 +161,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
 			effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
 		}
-		scr_audio_play(snd_spring, volume_source.sound);
+		scr_audio_play(snd_spring, volume_source.sound, 0.1);
 	}
 	vspeed = -15;
 	gravity = 0;

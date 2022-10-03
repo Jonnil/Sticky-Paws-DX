@@ -529,12 +529,12 @@ if (global.volume_voice > 1)
 #endregion /* Volumes stay between 0 and 1 END */
 
 #region /* Keyboard Controls */
-key_up = (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down))or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S")))or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd))or (gamepad_axis_value(0, gp_axislv) < 0) or mouse_wheel_up();
-key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or (gamepad_axis_value(0, gp_axislh) < 0);
-key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
-key_down = (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up))or (keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W")))or (gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu))or (gamepad_axis_value(0, gp_axislv) > 0) or mouse_wheel_down();
-key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))or (keyboard_check_pressed(ord("Z")))or (keyboard_check_pressed(vk_enter))or (keyboard_check_pressed(vk_space));
-key_b_pressed = (gamepad_button_check_pressed(0, gp_face2))or (keyboard_check_pressed(ord("X")))or (keyboard_check_pressed(vk_escape))or (keyboard_check_pressed(vk_backspace))or (mouse_check_button_pressed(mb_right))or (mouse_check_button_pressed(mb_side1));
+key_up = (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down)) or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S"))) or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd)) or (gamepad_axis_value(0, gp_axislv) < 0) or mouse_wheel_up();
+key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) < 0);
+key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left)) or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A"))) or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl)) or (gamepad_axis_value(0, gp_axislh) > 0);
+key_down = (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up)) or (keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W"))) or (gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu)) or (gamepad_axis_value(0, gp_axislv) > 0) or mouse_wheel_down();
+key_a_pressed = (gamepad_button_check_pressed(0, gp_face1)) or (keyboard_check_pressed(ord("Z"))) or (keyboard_check_pressed(vk_enter)) or (keyboard_check_pressed(vk_space));
+key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or (keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_escape)) or (keyboard_check_pressed(vk_backspace)) or (mouse_check_button_pressed(mb_right)) or (mouse_check_button_pressed(mb_side1));
 #endregion /* Keyboard Controls END */
 
 #region /* Quit Game trough pause menu */

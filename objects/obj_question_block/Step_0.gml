@@ -7,15 +7,15 @@ if (bounceup = false)
 	and (can_be_ground_pounded = true)
 	
 	or (position_meeting(x, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
-	and (!place_meeting(x, y + 1, obj_wall))
+	and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 	and (can_be_hit_from_below = true)
 	
 	or (position_meeting(bbox_left + 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
-	and (!place_meeting(x, y + 1, obj_wall))
+	and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 	and (can_be_hit_from_below = true)
 	
 	or (position_meeting(bbox_right - 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
-	and (!place_meeting(x, y + 1, obj_wall))
+	and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 	and (can_be_hit_from_below = true)
 	
 	or (place_meeting(bbox_left -4, y, obj_player))
@@ -289,7 +289,7 @@ if (can_break_this_block = true)
 and (break_this_block = true)
 {
 	if (place_meeting(x, y + 1, obj_player))
-	and (!place_meeting(x, y + 1, obj_wall))
+	and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 	or (place_meeting(bbox_left -4, y, obj_player))
 	and (!place_meeting(x - 4, y, obj_wall))
 	and (instance_nearest(x, y, obj_player).dive = true)

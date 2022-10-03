@@ -55,18 +55,18 @@ and (stomped_delay = 0)
 		}
 		#endregion /* 200 Score END */
 		
-		#region /* 1-UP */
+		#region /* 1-up */
 		if (global.number_of_chain_kills_for_1up <= 1)
 		{
 			if (asset_get_type("obj_scoreup") == asset_object)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 				{
-					scoreup = "1-UP";
+					scoreup = "1-up";
 				}
 			}
 		}
-		#endregion /* 1-UP END */
+		#endregion /* 1-up END */
 		
 	}
 	#endregion /* Rewards END */

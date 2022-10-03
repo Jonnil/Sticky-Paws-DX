@@ -25,7 +25,7 @@ function scr_set_screen_size()
 	{
 		camera_set_view_size(view_camera[view_current], global.default_view_width + view_wview_lerp, global.default_view_height + view_hview_lerp);
 	}
-	if (global.play_edited_level = true)
+	if (global.play_edited_level == true)
 	or(room = room_world_map)
 	{
 		camera_set_view_speed(view_camera[view_current], - 1, - 1);

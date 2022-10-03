@@ -5,7 +5,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	#region /* Left Right Buttons */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(left_right_buttons_x, 20 + (left_right_buttons_y), text(string(left_right_buttons_text)) + ": " + string(left_right_buttons_variable_to_change), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(left_right_buttons_x, 20 + (left_right_buttons_y), l10n_text(string(left_right_buttons_text)) + ": " + string(left_right_buttons_variable_to_change), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 	
 	draw_sprite_ext(spr_keyboard_keys, vk_left, left_right_buttons_x - 32, 20 + (left_right_buttons_y), 0.5, 0.5, 0, c_white, 1);
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x - 32 + 16 + size_of_button_offset, 20 + (left_right_buttons_y) + 16))

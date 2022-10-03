@@ -548,12 +548,12 @@ and (!instance_exists(obj_title))
 						if (global.time_countdown >= 100)
 						{
 							scr_draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_yellow, 1);
-							draw_text_transformed_color(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
+							draw_text_transformed_color (window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
 						}
 						else
 						{
 							scr_draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_orange, 1);
-							draw_text_transformed_color(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
+							draw_text_transformed_color (window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 						}
 					}
 					if (global.timeattack_millisecond < room_speed / 2)
@@ -2550,10 +2550,10 @@ and (global.enable_ranks = true)
 
 #region /* Letterboxing during cutscenes (when the player object is absent) */
 if (show_letterbox > 0)
-and (global.play_edited_level = false)
+and (global.play_edited_level == false)
 and (global.actually_play_edited_level == false)
 or(show_letterbox > 0)
-and (global.play_edited_level = true)
+and (global.play_edited_level == true)
 and (global.actually_play_edited_level == true)
 {
 	draw_rectangle_color(0, 0, room_width * 3, letterbox_top_y, c_black, c_black, c_black, c_black, false);

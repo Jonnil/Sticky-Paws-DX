@@ -1,4 +1,5 @@
-image_speed = 0.1;
+draw_xscale = lerp(draw_xscale, 1, 0.1);
+draw_yscale = lerp(draw_yscale, 1, 0.1);
 
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */

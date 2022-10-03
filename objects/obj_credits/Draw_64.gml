@@ -239,7 +239,7 @@ if (global.enable_transitions == true)
 		}
 		draw_rectangle_color(0, 0, window_get_width()* 2, window_get_height() / 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, 0, window_get_width() / 2 - iris_xscale * 128, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color(window_get_width() / 2 + iris_xscale * 128 - 1, 0, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color (window_get_width() / 2 + iris_xscale * 128 - 1, 0, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, window_get_height() / 2 + iris_yscale * 128, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
 	}
 }

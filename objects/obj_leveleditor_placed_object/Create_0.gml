@@ -15,7 +15,6 @@ sprite_basic_enemy_blind = global.resource_pack_sprite_basic_enemy_blind;
 sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
 sprite_enemy_bowlingball_blind = global.resource_pack_sprite_enemy_bowlingball_blind_walk;
 sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
-sprite_lives_icon = noone;
 i = 0;
 
 place_object_angle = false;
@@ -31,3 +30,12 @@ depth = -110;
 mask_index = spr_wall;
 
 alarm[0] = 1;
+
+#region /* Initialize object mask */
+if (asset_get_type("spr_wall") == asset_sprite)
+{
+	mask_index = spr_wall;
+}
+image_speed = 0;
+image_index = 0;
+#endregion /* Initialize object mask END */

@@ -1,10 +1,10 @@
 #region /* Keyboard Controls */
-var key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right))or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D")))or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr))or (gamepad_axis_value(0, gp_axislh) < 0);
-var key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left))or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A")))or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl))or (gamepad_axis_value(0, gp_axislh) > 0);
+var key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) < 0);
+var key_right = (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left)) or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A"))) or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl)) or (gamepad_axis_value(0, gp_axislh) > 0);
 #endregion /* Keyboard Controls END */
 
 xx = lerp(xx, window_get_width() / 2, 0.1);
-yy = lerp(yy, scr_wave(y- 8, y + 8, 4.5, 0), 0.1);
+yy = lerp(yy, scr_wave(y - 8, y + 8, 4.5, 0), 0.1);
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (point_distance(x, y, obj_player.x, obj_player.y) < 64)
@@ -189,7 +189,7 @@ if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_wi
 and (global.controls_used_for_menu_navigation == "mouse")
 {
 	draw_set_alpha(0.5);
-	draw_rectangle_color(window_get_width() - 128 - 32, window_get_height() / 2 - 32, window_get_width() - 128 + 32, window_get_height() / 2 + 32, c_white, c_white, c_white, c_white, false);
+	draw_rectangle_color (window_get_width() - 128 - 32, window_get_height() / 2 - 32, window_get_width() - 128 + 32, window_get_height() / 2 + 32, c_white, c_white, c_white, c_white, false);
 	draw_set_alpha(1);
 }
 

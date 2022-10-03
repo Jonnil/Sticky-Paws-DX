@@ -490,7 +490,7 @@ function scr_initialize_level_information_ini()
 	}
 	#endregion /* Initialize level_information.ini END */
 	
-	if (global.create_level_from_template = true)
+	if (global.create_level_from_template == true)
 	{
 		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		ini_write_string("info", "intro_animation", intro_animation);

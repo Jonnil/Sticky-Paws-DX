@@ -1,60 +1,29 @@
-#region /* Don't go outside view boundary */
-if (x < camera_get_view_x(view_camera[view_current]) + 32)
-{
-	x = camera_get_view_x(view_camera[view_current]) + 32;
-}
-if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 32)
-{
-	x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 32;
-}
-if (y < camera_get_view_y(view_camera[view_current]) + 32)
-{
-	y = camera_get_view_y(view_camera[view_current]) + 32;
-}
-if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
-{
-	y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32;
-}
-#endregion /* Don't go outside view boundary END */
-
-if (time <5)
-{
-	y = lerp(y, ystart + 5, 0.1);
-	image_xscale = lerp(image_xscale, 2, 0.15);
-	image_yscale = lerp(image_yscale, 2, 0.15);
-}
-else
-{
-	y = lerp(y, ystart - 32, 0.1);
-	image_xscale = lerp(image_xscale, 1, 0.1);
-	image_yscale = lerp(image_yscale, 1, 0.1);
-}
 draw_set_halign(fa_center);
-if (scoreup = "1-UP")
-and (show_remaining_jumps = false)
-or(scoreup = "2-up")
-and (show_remaining_jumps = false)
-or(scoreup = "3-up")
-and (show_remaining_jumps = false)
+if (scoreup == "1-up")
+and (show_remaining_jumps == false)
+or (scoreup == "2-up")
+and (show_remaining_jumps == false)
+or (scoreup == "3-up")
+and (show_remaining_jumps == false)
 {
-	scr_draw_text_outlined(x, y, string(scoreup), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
+	scr_draw_text_outlined(x, y, string_upper(scoreup), global.default_text_size * 2 * image_xscale, c_black, c_lime, image_alpha);
 }
 else
-if (scoreup = "CHECKPOINT")
-and (show_remaining_jumps = false)
+if (scoreup == "checkpoint")
+and (show_remaining_jumps == false)
 {
-	scr_draw_text_outlined(x, y, l10n_text("Checkpoint"), global.default_text_size * 2* image_xscale, c_black, c_lime, image_alpha);
+	scr_draw_text_outlined(x, y, string_upper(l10n_text("Checkpoint")), global.default_text_size * 2 * image_xscale, c_black, c_lime, image_alpha);
 }
 else
-if (scoreup = "Copied")
-and (show_remaining_jumps = false)
+if (scoreup == "last checkpoint")
+and (show_remaining_jumps == false)
 {
-	/* Do nothing */
+	scr_draw_text_outlined(x, y, string_upper(l10n_text("Last Checkpoint")), global.default_text_size * 2 * image_xscale, c_black, c_lime, image_alpha);
 }
 else
-if (show_remaining_jumps = false)
+if (show_remaining_jumps == false)
 {
-	if (not_score = false)
+	if (not_score == false)
 	{
 		global.hud_show_score = true;
 		if (instance_exists(obj_camera))
@@ -65,25 +34,10 @@ if (show_remaining_jumps = false)
 			}
 		}
 	}
-	scr_draw_text_outlined(x, y, string(scoreup), global.default_text_size * image_xscale, c_white, c_black, image_alpha);
+	scr_draw_text_outlined(x, y, string_upper(scoreup), global.default_text_size * image_xscale, c_white, c_black, image_alpha);
 }
 
-if (show_remaining_jumps = true)
+if (show_remaining_jumps == true)
 {
-	scr_draw_text_outlined(x, y, string(scoreup), global.default_text_size * image_xscale, c_gray, c_white, image_alpha);
-}
-time += 1;
-if (time > room_speed)
-{
-	image_alpha = lerp(image_alpha, 0, 0.1);
-	if (image_alpha <= 0)
-	{
-		instance_destroy();
-	}
-}
-
-if (scoreup = undefined)
-or (scoreup = "undefined")
-{
-	instance_destroy();
+	scr_draw_text_outlined(x, y, string_upper(scoreup), global.default_text_size * image_xscale, c_gray, c_white, image_alpha);
 }

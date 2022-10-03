@@ -8,8 +8,8 @@ or (keyboard_check_released(global.player1_key_jump));
 key_b = (gamepad_button_check(0, gp_face2))
 or (keyboard_check(global.player1_key_sprint));
 
-if (global.actually_play_edited_level = false)
-and (global.play_edited_level = false)
+if (global.actually_play_edited_level == false)
+and (global.play_edited_level == false)
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, y - 16, obj_level_width.x - 16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
@@ -23,7 +23,7 @@ and (global.play_edited_level = false)
 #region /* Drag Object */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
-and (obj_leveleditor.pause = false)
+and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
 	and (!mouse_check_button(mb_middle))
@@ -80,34 +80,26 @@ else
 #region /* Make sure the level end isn't outside of the level, this code has to be after the drag object code */
 if (y < 1080 + 16)
 and (global.actually_play_edited_level == false)
-and (global.play_edited_level = false)
+and (global.play_edited_level == false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(x, y + 32, l10n_text("Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_red, 1);
-	scr_draw_text_outlined(x, y+64, l10n_text("Warning! Level height shorter than normal"), global.default_text_size * 0.75, c_black, c_red, 1);
+	scr_draw_text_outlined(x, y + 64, l10n_text("Warning! Level height shorter than normal"), global.default_text_size * 0.75, c_black, c_red, 1);
 }
 else
-if (global.actually_play_edited_level = false)
-and (global.play_edited_level = false)
+if (global.actually_play_edited_level == false)
+and (global.play_edited_level == false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(x, y + 32, l10n_text("Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_white, 1);
 }
-//if (y > room_height)
-//{
-//	y = room_height;
-//}
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 
-if (global.play_edited_level = true)
-or (global.actually_play_edited_level = true)
+if (global.play_edited_level == true)
+or (global.actually_play_edited_level == true)
 {
-	if (global.actually_play_edited_level = true)
-	{
-		global.play_edited_level = true;
-	}
 	room_height = bbox_top;
 	instance_destroy();
 }

@@ -124,18 +124,18 @@ else
 					}
 					#endregion /* 200 Score END */
 				
-					#region /* 1-UP */
+					#region /* 1-up */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
 							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
-								scoreup = "1-UP";
+								scoreup = "1-up";
 							}
 						}
 					}
-					#endregion /* 1-UP END */
+					#endregion /* 1-up END */
 					
 				}
 				audio_sound_pitch(snd_stomp, 1);
@@ -179,18 +179,18 @@ else
 					}
 					#endregion /* 200 Score END */
 				
-					#region /* 1-UP */
+					#region /* 1-up */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
 							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
-								scoreup = "1-UP";
+								scoreup = "1-up";
 							}
 						}
 					}
-					#endregion /* 1-UP END */
+					#endregion /* 1-up END */
 					
 				}
 				audio_sound_pitch(snd_stomp, 1);
@@ -234,18 +234,18 @@ else
 					}
 					#endregion /* 200 Score END */
 				
-					#region /* 1-UP */
+					#region /* 1-up */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
 							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
-								scoreup = "1-UP";
+								scoreup = "1-up";
 							}
 						}
 					}
-					#endregion /* 1-UP END */
+					#endregion /* 1-up END */
 					
 				}
 				
@@ -289,18 +289,18 @@ else
 					}
 					#endregion /* 200 Score END */
 				
-					#region /* 1-UP */
+					#region /* 1-up */
 					if (global.number_of_chain_kills_for_1up <= 1)
 					{
 						if (asset_get_type("obj_scoreup") == asset_object)
 						{
 							with(instance_create_depth(x, y - 32, 0, obj_scoreup))
 							{
-								scoreup = "1-UP";
+								scoreup = "1-up";
 							}
 						}
 					}
-					#endregion /* 1-UP END */
+					#endregion /* 1-up END */
 					
 				}
 				
@@ -389,7 +389,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
 			effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
 		}
-		scr_audio_play(snd_spring, volume_source.sound);
+		scr_audio_play(snd_spring, volume_source.sound, 0.1);
 	}
 	vspeed = -15;
 	gravity = 0;

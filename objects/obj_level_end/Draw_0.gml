@@ -8,7 +8,7 @@ or (keyboard_check(global.player1_key_sprint));
 
 if (asset_get_type("spr_goal") == asset_sprite)
 {
-	draw_sprite_ext(spr_goal, 0, x, y- 256, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_goal, 0, x, y - 256, 1, 1, 0, c_white, 1);
 }
 if (asset_get_type("spr_level_end") == asset_sprite)
 {
@@ -18,7 +18,7 @@ if (asset_get_type("spr_level_end") == asset_sprite)
 #region /* Drag Object */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_number(obj_leveleditor) > 0)
-and (obj_leveleditor.pause = false)
+and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
 	and (!mouse_check_button(mb_middle))
@@ -97,17 +97,12 @@ if (y > room_height)
 }
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 
-if (global.play_edited_level = true)
-or (global.actually_play_edited_level = true)
+if (global.play_edited_level == true)
+or (global.actually_play_edited_level == true)
 {
 	if (asset_get_type("obj_goal") == asset_object)
 	{
 		instance_create_depth(x, y - 256, 0, obj_goal);
-	}
-	if (global.actually_play_edited_level = true)
-	{
-		global.play_edited_level = true;
-		background_visible[6] = false;
 	}
 	instance_destroy();
 }

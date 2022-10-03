@@ -146,9 +146,19 @@ and (instance_exists(obj_player))
 							#region /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint */
 							if (asset_get_type("obj_scoreup") == asset_object)
 							{
-								with(instance_create_depth(x, y- 20, 0, obj_scoreup))
+								if (last_checkpoint = true) /*Tell the player if the checkpoint they are activating is the last checkpoint in the level, the checkpoint cosest to the goal*/
 								{
-									scoreup = "CHECKPOINT";
+									with(instance_create_depth(x, y - 20, 0, obj_scoreup))
+									{
+										scoreup = "last checkpoint";
+									}
+								}
+								else
+								{
+									with(instance_create_depth(x, y - 20, 0, obj_scoreup))
+									{
+										scoreup = "checkpoint";
+									}
 								}
 							}
 							#endregion /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END */

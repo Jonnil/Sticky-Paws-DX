@@ -1,4 +1,4 @@
-if (place_meeting(x, y- 8, other))
+if (place_meeting(x, y - 8, other))
 {
 	if (other.ground_pound = true)
 	{
@@ -233,7 +233,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
 			{
-				with(instance_create_depth(x, bbox_top - 16, 0, obj_invincibility_powerup))
+				with(instance_create_depth(x, bbox_top - 20, 0, obj_invincibility_powerup))
 				{
 					bounceup = true;
 					motion_set(90, 10);
@@ -247,7 +247,7 @@ if (place_meeting(x, y- 8, other))
 		{
 			if (asset_get_type("obj_invincibility_powerup") == asset_object)
 			{
-				with(instance_create_depth(x, bbox_top - 16, 0, obj_invincibility_powerup))
+				with(instance_create_depth(x, bbox_top - 20, 0, obj_invincibility_powerup))
 				{
 					bounceup = true;
 					coil_spring = true;

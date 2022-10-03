@@ -5,7 +5,7 @@ if (die = false)
 	and (vspeed < 0)
 	{
 		vspeed = 0;
-		scr_audio_play(snd_bump, volume_source.sound);
+		scr_audio_play(snd_bump, volume_source.sound, 0.1);
 	}
 	
 	#region /* Push out of the solid object */

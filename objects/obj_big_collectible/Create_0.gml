@@ -1,3 +1,4 @@
+alarm[0] = 1;
 depth = +10;
 sprite_index = global.resource_pack_sprite_big_collectible;
 bounceup = false;
